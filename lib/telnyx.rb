@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Telnyx Ruby bindings
-# API spec at https://developers.telnyx.com/clients
+# API spec at https://developers.telnyx.com
 require "cgi"
 require "faraday"
 require "json"

@@ -12,11 +12,11 @@ Gem::Specification.new do |s|
   s.description = "Telnyx enables anyone to deliver enterprise-grade real-time communications over the internet. See https://telnyx.com for details."
   s.author = "Telnyx"
   s.email = "support@telnyx.com"
-  s.homepage = "https://developers.telnyx.com/docs/v2/overview"
+  s.homepage = "https://developers.telnyx.com"
   s.license = "MIT"
 
   s.metadata = {
-    "documentation_uri" => "https://developers.telnyx.com/docs/v2/overview",
+    "documentation_uri" => "https://developers.telnyx.com/docs/api/v2/overview",
     "github_repo"       => "ssh://github.com/team-telnyx/telnyx-ruby",
     "homepage_uri"      => "https://telnyx.com",
     "source_code_uri"   => "https://github.com/team-telnyx/telnyx-ruby",

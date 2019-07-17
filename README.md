@@ -19,7 +19,7 @@ The library also provides other features. For example:
 
 ## Documentation
 
-See the [API docs](https://developers.telnyx.com/docs/v2/overview).
+See the [API docs](https://developers.telnyx.com/docs/api/v2/overview).
 
 ## Installation
 
