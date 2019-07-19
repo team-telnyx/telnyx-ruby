@@ -56,7 +56,7 @@ value:
 
 ``` ruby
 require "telnyx"
-Telnyx.api_key = "super-secret-key"
+Telnyx.api_key = "YOUR_API_KEY"
 
 # list messaging profiles
 Telnyx::MessagingProfile.list()
