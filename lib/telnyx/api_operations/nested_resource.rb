@@ -12,11 +12,7 @@ module Telnyx
     module NestedResource
       def nested_resource_class_methods(resource, path: nil, operations: nil)
         path ||= "#{resource}s"
-        if path.is_a? Array
-          path = path.map { |el| CGI.escape(el) }.join('/')
-        else
-          path = CGI.escape path
-        end
+        path = Array(path).map { |el| CGI.escape(el) }.join('/')
         raise ArgumentError, "operations array required" if operations.nil?
 
         resource_url_method = :"#{resource}s_url"
