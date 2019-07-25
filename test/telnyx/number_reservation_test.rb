@@ -8,5 +8,13 @@ module Telnyx
       assert_kind_of Telnyx::ListObject, number_reservations
       assert_kind_of Telnyx::NumberReservation, number_reservations.first
     end
+
+    should "call extend" do
+      number_reservation = Telnyx::NumberReservation.list.first
+      stub = stub_request(:post, "#{Telnyx.api_base}/v2/number_reservations/#{number_reservation.id}/actions/extend")
+             .to_return(body: JSON.generate(id: "123"))
+      number_reservation.extend_number
+      assert_requested stub
+    end
   end
 end
