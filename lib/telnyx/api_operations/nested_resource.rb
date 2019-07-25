@@ -12,11 +12,12 @@ module Telnyx
     module NestedResource
       def nested_resource_class_methods(resource, path: nil, operations: nil)
         path ||= "#{resource}s"
+        path = Array(path).map { |el| CGI.escape(el) }.join('/')
         raise ArgumentError, "operations array required" if operations.nil?
 
         resource_url_method = :"#{resource}s_url"
         define_singleton_method(resource_url_method) do |id, nested_id = nil|
-          url = "#{resource_url}/#{CGI.escape(id)}/#{CGI.escape(path)}"
+          url = "#{resource_url}/#{CGI.escape(id)}/#{path}"
           url += "/#{CGI.escape(nested_id)}" unless nested_id.nil?
           url
         end

@@ -53,7 +53,7 @@ module Test
       include Mocha
 
       setup do
-        Telnyx.api_key = "YOUR_API_KEY"
+        Telnyx.api_key = "KEYSUPERSECRET" # mock server expects this exact string
         Telnyx.api_base = "http://localhost:#{MOCK_PORT}"
 
         # stub_connect
