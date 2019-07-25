@@ -35,6 +35,7 @@ require "telnyx/api_resource"
 require "telnyx/singleton_api_resource"
 require "telnyx/webhook"
 
+require "telnyx/calls"
 require "telnyx/number_order"
 require "telnyx/number_reservation"
 require "telnyx/message"

@@ -48,6 +48,7 @@ module Telnyx
         PublicKey::OBJECT_NAME                  => PublicKey,
         NumberOrder::OBJECT_NAME                => NumberOrder,
         NumberReservation::OBJECT_NAME          => NumberReservation,
+        Calls::OBJECT_NAME                      => Calls,
       }
     end
 
