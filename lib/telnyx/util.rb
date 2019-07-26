@@ -52,6 +52,11 @@ module Telnyx
       }
     end
 
+    def self.push_object_class(key, klass)
+      object_classes
+      @object_classes[key] = klass
+    end
+
     # Converts a hash of fields or an array of hashes into a +TelnyxObject+ or
     # array of +TelnyxObject+s. These new objects will be created as a concrete
     # type as dictated by their `record_type` field (e.g. a `record_type` value of

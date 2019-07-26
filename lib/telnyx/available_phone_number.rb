@@ -3,7 +3,7 @@
 module Telnyx
   class AvailablePhoneNumber < APIResource
     extend Telnyx::APIOperations::List
-    def self.list(filters = {}, opts = {})        
+    def self.list(filters = {}, opts = {})
       return super(filters, opts) if filters.keys == ['filter']
 
       filters = { filter: filters }

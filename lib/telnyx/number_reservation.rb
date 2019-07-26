@@ -9,13 +9,10 @@ module Telnyx
 
     nested_resource_class_methods :extend, 
                                   path: %w[actions extend], 
-                                  operations: [:create]
+                                  operations: [:create],
+                                  instance_methods: {create: 'extend_number'}
     class << self
       alias extend_number create_extend
-    end
-
-    def extend_number(params = {}, opts = {})
-      self.class.extend_number(id, params, opts)
     end
 
     OBJECT_NAME = "number_reservation".freeze

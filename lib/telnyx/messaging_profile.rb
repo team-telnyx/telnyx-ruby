@@ -11,22 +11,13 @@ module Telnyx
     OBJECT_NAME = "messaging_profile".freeze
 
     nested_resource_class_methods :phone_number,
-                                  operations: %i[list]
+                                  operations: %i[list],
+                                  instance_methods: {list: 'phone_numbers'}
     nested_resource_class_methods :sender_id,
-                                  operations: %i[list]
+                                  operations: %i[list],
+                                  instance_methods: {list: 'sender_ids'}
     nested_resource_class_methods :short_code,
-                                  operations: %i[list]
-
-    def phone_numbers(params = {}, opts = {})
-      self.class.list_phone_numbers(id, params, opts)
-    end
-
-    def sender_ids(params = {}, opts = {})
-      self.class.list_sender_ids(id, params, opts)
-    end
-
-    def short_codes(params = {}, opts = {})
-      self.class.list_short_codes(id, params, opts)
-    end
+                                  operations: %i[list],
+                                  instance_methods: {list: 'short_codes'}
   end
 end
