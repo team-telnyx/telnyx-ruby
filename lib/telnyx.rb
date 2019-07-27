@@ -23,6 +23,7 @@ require "telnyx/api_operations/list"
 require "telnyx/api_operations/nested_resource"
 require "telnyx/api_operations/request"
 require "telnyx/api_operations/save"
+require "telnyx/api_operations/param_wrapper"
 
 # API resource support classes
 require "telnyx/errors"
