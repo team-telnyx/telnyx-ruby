@@ -4,7 +4,7 @@ module Telnyx
   class Calls < APIResource
     extend Telnyx::APIOperations::Create
     extend Telnyx::APIOperations::NestedResource
-    
+
     def id
       call_control_id
     end
@@ -14,10 +14,10 @@ module Telnyx
                  playback_stop record_start record_stop send_dtmf transfer].freeze
 
     ACTIONS.each do |action|
-      nested_resource_class_methods action, path: ['actions', action], operations: [:create], instance_methods: {create: action}
-      # define_method(action) do |params = {}, opts = {}|
-      #   self.class.send("create_#{action}", call_control_id, params, opts)
-      # end
+      nested_resource_class_methods action,
+                                    path: ['actions', action],
+                                    operations: [:create],
+                                    instance_methods: { create: action }
     end
 
     OBJECT_NAME = 'call'
