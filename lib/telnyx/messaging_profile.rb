@@ -12,12 +12,12 @@ module Telnyx
 
     nested_resource_class_methods :phone_number,
                                   operations: %i[list],
-                                  instance_methods: {list: 'phone_numbers'}
+                                  instance_methods: { list: "phone_numbers" }
     nested_resource_class_methods :sender_id,
                                   operations: %i[list],
-                                  instance_methods: {list: 'sender_ids'}
+                                  instance_methods: { list: "sender_ids" }
     nested_resource_class_methods :short_code,
                                   operations: %i[list],
-                                  instance_methods: {list: 'short_codes'}
+                                  instance_methods: { list: "short_codes" }
   end
 end

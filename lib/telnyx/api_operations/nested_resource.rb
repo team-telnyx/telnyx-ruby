@@ -9,10 +9,12 @@ module Telnyx
     # For examle, a transfer gains the static methods for reversals so that the
     # methods `.create_reversal`, `.retrieve_reversal`, `.update_reversal`,
     # etc. all become available.
+    # rubocop:disable  Metrics/AbcSize
+    # rubocop:disable  Metrics/MethodLength
     module NestedResource
       def nested_resource_class_methods(resource, path: nil, operations: nil, instance_methods: {})
         path ||= "#{resource}s"
-        path = Array(path).map { |el| CGI.escape(el) }.join('/')
+        path = Array(path).map { |el| CGI.escape(el) }.join("/")
         raise ArgumentError, "operations array required" if operations.nil?
 
         resource_url_method = :"#{resource}s_url"
