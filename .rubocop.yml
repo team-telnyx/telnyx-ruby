@@ -1,0 +1,61 @@
+
+AllCops:
+  DisplayCopNames: true
+  TargetRubyVersion: 2.0
+
+Layout/CaseIndentation:
+  EnforcedStyle: end
+
+Layout/IndentArray:
+  EnforcedStyle: consistent
+
+Layout/IndentHash:
+  EnforcedStyle: consistent
+
+Metrics/MethodLength:
+  # There's ~2 long methods in `TelnyxClient`. If we want to truncate those a
+  # little, we could move this to be closer to ~30 (but the default of 10 is
+  # probably too short).
+  Max: 50
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Metrics/AbcSize:
+  Max: 52
+
+Metrics/BlockLength:
+  Max: 498
+
+Metrics/ClassLength:
+  Max: 659
+
+# Offense count: 11
+Metrics/CyclomaticComplexity:
+  Max: 15
+
+Metrics/LineLength:
+  Max: 310
+
+Metrics/ParameterLists:
+  Max: 7
+
+Metrics/PerceivedComplexity:
+  Max: 17
+
+Style/ClassVars:
+  Exclude:
+    - 'lib/telnyx/telnyx_object.rb'
+    - 'test/telnyx/api_resource_test.rb'
+
+Style/Documentation:
+  Enabled: false

@@ -3,12 +3,8 @@
 module Telnyx
   class AvailablePhoneNumber < APIResource
     extend Telnyx::APIOperations::List
-    def self.list(filters = {}, opts = {})
-      return super(filters, opts) if filters.keys == ['filter']
-
-      filters = { filter: filters }
-      super filters, opts
-    end
+    extend Telnyx::APIOperations::ParamWrapper
+    wrap 'list', 'filter'
 
     OBJECT_NAME = "available_phone_number".freeze
   end

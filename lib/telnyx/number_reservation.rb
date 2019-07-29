@@ -7,10 +7,10 @@ module Telnyx
     extend Telnyx::APIOperations::NestedResource
     include Telnyx::APIOperations::Save
 
-    nested_resource_class_methods :extend, 
-                                  path: %w[actions extend], 
+    nested_resource_class_methods :extend,
+                                  path: %w[actions extend],
                                   operations: [:create],
-                                  instance_methods: {create: 'extend_number'}
+                                  instance_methods: { create: "extend_number" }
     class << self
       alias extend_number create_extend
     end

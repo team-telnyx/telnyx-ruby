@@ -40,7 +40,7 @@ module Telnyx
         Telnyx::Util.push_object_class OBJECT_NAME, self
         nested_resource_class_methods :nested,
                                       operations: %i[create retrieve update delete list],
-                                      instance_methods: {create: nil, retrieve: nil, update: nil, delete: nil, list: nil}
+                                      instance_methods: { create: nil, retrieve: nil, update: nil, delete: nil, list: nil }
       end
 
       should "define a create method" do
@@ -55,7 +55,7 @@ module Telnyx
         stub_request(:post, "#{Telnyx.api_base}/v2/mainresources/id/nesteds")
           .with(body: { foo: "bar" })
           .to_return(body: JSON.generate(id: "nested_id", object: "nested", foo: "bar"))
-        resource = Telnyx::Util.convert_to_telnyx_object({id: 'id', record_type: 'mainresource'})
+        resource = Telnyx::Util.convert_to_telnyx_object(id: "id", record_type: "mainresource")
         nested_resource = resource.create_nested(foo: "bar")
         assert_equal "bar", nested_resource.foo
       end
@@ -70,7 +70,7 @@ module Telnyx
       should "define a retrieve instance method" do
         stub_request(:get, "#{Telnyx.api_base}/v2/mainresources/id/nesteds/nested_id")
           .to_return(body: JSON.generate(id: "nested_id", object: "nested", foo: "bar"))
-        resource = Telnyx::Util.convert_to_telnyx_object({id: 'id', record_type: 'mainresource'})
+        resource = Telnyx::Util.convert_to_telnyx_object(id: "id", record_type: "mainresource")
         nested_resource = resource.retrieve_nested("nested_id")
         assert_equal "bar", nested_resource.foo
       end
@@ -83,12 +83,12 @@ module Telnyx
         assert_requested(stub_patch)
         assert_equal "baz", nested_resource.foo
       end
-      
+
       should "define an update instance method" do
         stub_patch = stub_request(:patch, "#{Telnyx.api_base}/v2/mainresources/id/nesteds/nested_id")
                      .with(body: { foo: "baz" })
                      .to_return(body: JSON.generate(id: "nested_id", object: "nested", foo: "baz"))
-        resource = Telnyx::Util.convert_to_telnyx_object({id: 'id', record_type: 'mainresource'})
+        resource = Telnyx::Util.convert_to_telnyx_object(id: "id", record_type: "mainresource")
         nested_resource = resource.update_nested("nested_id", foo: "baz")
         assert_requested(stub_patch)
         assert_equal "baz", nested_resource.foo
@@ -104,7 +104,7 @@ module Telnyx
       should "define a delete instance method" do
         stub_request(:delete, "#{Telnyx.api_base}/v2/mainresources/id/nesteds/nested_id")
           .to_return(body: JSON.generate(id: "nested_id", object: "nested", deleted: true))
-        resource = Telnyx::Util.convert_to_telnyx_object({id: 'id', record_type: 'mainresource'})
+        resource = Telnyx::Util.convert_to_telnyx_object(id: "id", record_type: "mainresource")
         nested_resource = resource.delete_nested("nested_id")
         assert_equal true, nested_resource.deleted
       end
@@ -117,11 +117,11 @@ module Telnyx
         assert nested_resources.is_a?(ListObject)
         assert nested_resources.data.is_a?(Array)
       end
-      
+
       should "define a list instance method" do
         stub_get = stub_request(:get, "#{Telnyx.api_base}/v2/mainresources/id/nesteds")
                    .to_return(body: JSON.generate(data: [{ record_type: "foo" }]))
-        resource = Telnyx::Util.convert_to_telnyx_object({id: 'id', record_type: 'mainresource'})
+        resource = Telnyx::Util.convert_to_telnyx_object(id: "id", record_type: "mainresource")
         nested_resources = resource.list_nesteds
         assert_requested(stub_get)
         assert nested_resources.is_a?(ListObject)

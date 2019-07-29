@@ -49,6 +49,7 @@ module Telnyx
         NumberOrder::OBJECT_NAME                => NumberOrder,
         NumberReservation::OBJECT_NAME          => NumberReservation,
         Calls::OBJECT_NAME                      => Calls,
+        Conferences::OBJECT_NAME                => Conferences,
       }
     end
 

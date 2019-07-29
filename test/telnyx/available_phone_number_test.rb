@@ -12,7 +12,7 @@ module Telnyx
     end
 
     should "accept params for list" do
-      Telnyx::AvailablePhoneNumber.list phone_number: { starts_with: '2&&', ends_with: 'ABC' }
+      Telnyx::AvailablePhoneNumber.list phone_number: { starts_with: "2&&", ends_with: "ABC" }
       assert_requested(:get, /#{"#{Telnyx.api_base}/v2/available_phone_numbers"}/)
     end
   end
