@@ -4,7 +4,7 @@ module Telnyx
   class AvailablePhoneNumber < APIResource
     extend Telnyx::APIOperations::List
     extend Telnyx::APIOperations::ParamWrapper
-    wrap 'list', 'filter'
+    wrap "list", "filter"
 
     OBJECT_NAME = "available_phone_number".freeze
   end
