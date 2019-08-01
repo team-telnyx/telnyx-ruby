@@ -1,48 +1,95 @@
 # frozen_string_literal: true
 
 require ::File.expand_path("../../test_helper", __FILE__)
+require "securerandom"
 
 module Telnyx
   class WebhookTest < Test::Unit::TestCase
     EVENT_PAYLOAD = <<-PAYLOAD.freeze
       {
         "data": {
-          "record_type": "event",
-          "id": "0ccc7b54-4df3-4bca-a65a-3da1ecc777f0",
-          "event_type": "port_request.ported",
-          "created_at": "2018-02-02T22:25:27.521992Z",
+          "event_type": "message.received",
+          "id": "39547d14-fe28-4759-8650-0a974f80a612",
+          "occurred_at": "2019-07-30T23:07:36.628+00:00",
           "payload": {
-            "id": "5ccc7b54-4df3-4bca-a65a-3da1ecc777f0"
-          }
+            "completed_at": null,
+            "cost": null,
+            "direction": "inbound",
+            "encoding": "GSM-7",
+            "errors": [],
+            "from": {
+              "carrier": "T-Mobile USA",
+              "line_type": "long_code",
+              "phone_number": "+15745203340",
+              "status": "webhook_delivered"
+            },
+            "id": "1e9ee507-56a5-4d1a-b26b-db3cebcc267b",
+            "media": [],
+            "messaging_profile_id": "13c22476-7a37-4b79-b432-e629fc3b529c",
+            "organization_id": "4fc14b9e-5f17-493d-bb3d-01a8e575566d",
+            "parts": 1,
+            "received_at": "2019-07-30T23:07:36.623+00:00",
+            "record_type": "message",
+            "sent_at": null,
+            "text": "And again",
+            "to": "+18446087849",
+            "type": "SMS",
+            "valid_until": null,
+            "webhook_failover_url": null,
+            "webhook_url": "http://webhook.site/b041b025-0111-49dc-be4f-6b5f4bca31e4"
+          },
+          "record_type": "event"
+        },
+        "meta": {
+          "attempt": 1,
+          "delivered_to": "http://webhook.site/b041b025-0111-49dc-be4f-6b5f4bca31e4"
         }
       }
     PAYLOAD
 
-    # rubocop:disable Metrics/LineLength
-    PUBLIC_KEY = "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwy/jPkkgBo7oQermYujj\nAmSqN+aHNg+D4K85lKn6T3khJ8O2t/FrgN5qSGqg+0U5hoIHZflEon28lbLdf6gZ\njPeKQ2a24w5zroR6e4MM00RyJWA6MWXdo6Tn6xqKMYuT8LffEJGnXCH4yTIkxAVD\nyK0dfewhtrlpmW5ojXcDCrZ3Oo1o588PLNwSIuQwU7wHZwOLglWxFt6LZ9Ps8zYf\nQNH/pXNczf1E4rGZ1QxrzqFbndvjCE5VDRhULhycT/X0H2EMvNgHsDQk4OhENnzo\nCal3vO5+P9MgC7NSZCR8Ubebq0tanL5dj5GGYyjWmeq3QhfDLX2mTpIv/B0e8+hg\n8QIDAQAB\n-----END PUBLIC KEY-----\n".freeze
-
-    PRIVATE_KEY = "-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQEAwy/jPkkgBo7oQermYujjAmSqN+aHNg+D4K85lKn6T3khJ8O2\nt/FrgN5qSGqg+0U5hoIHZflEon28lbLdf6gZjPeKQ2a24w5zroR6e4MM00RyJWA6\nMWXdo6Tn6xqKMYuT8LffEJGnXCH4yTIkxAVDyK0dfewhtrlpmW5ojXcDCrZ3Oo1o\n588PLNwSIuQwU7wHZwOLglWxFt6LZ9Ps8zYfQNH/pXNczf1E4rGZ1QxrzqFbndvj\nCE5VDRhULhycT/X0H2EMvNgHsDQk4OhENnzoCal3vO5+P9MgC7NSZCR8Ubebq0ta\nnL5dj5GGYyjWmeq3QhfDLX2mTpIv/B0e8+hg8QIDAQABAoIBAQCNwoP6wsVdvgD1\njxNQlu/41v/Bpc5h9xbC4sChNmqzubfY144nPlHjwKXUfoz4sag8Bsg0ybuNgGCt\nIME6a+5SsZ5boYgGlIJ0J4eFmQKBll6IwsDBC8jTh3thB1+C6GrEE+cQc5jnk0zL\nY33MWD6IyyJ2SD+cJEGLy+JnjB5LckGCQXWPQXwvpIKgGmFoLQzHCKfeKHZ3olB8\nC1+YKrQzLtyuuH9obDWxRSrqI5gOI/76PWmo+weNa4OrfFtBf5O9bo5OD17ilIT/\nuNpxb/7rOkpwU9x6D00/D/S7ecCdVoL2yBB5L635TNQKXxhvdSmBg1ceLlztwsUL\nOHIlglTZAoGBAOY3wyincm8iAUxLE+Z3AeTD94pjND4g2JXFF9E7UDxgRD6E3n38\nubNRdAMkxDmDYgyIOZsebykMadQ2vNiWqTjOBr6hxyQMFutHWrIJOU+peFCepn8u\nNX3Xg44l7KcwwqX5svoqgFl1FKwNpBOSo50oGX4lAgqtjYqEeMInfjZ7AoGBANkL\nz0wBNAr9oXsc0BN2WkQXB34RU/WcrymhxHfc+ZRzRShk9LOdBTuMYnj4rtjdG849\nJDDWlMk7UlzGjI07G5aT+n8Aq69BhV0IARC9PafTncE6G3sHswAQudHiurLflP9C\noj6kTakunrq8Kgj3Q1p6Ie+Hv7E01A3D0Difr4CDAoGAXORrLuBB4G3MMEirAvdK\nIFCidYiJ7/e47NXWQmq4eWQupTtfu15aX+yh7xLKypok2gGtnNWu7NVBbouXr507\nMtyPBCSrAfSO2uizw9rM8UPkdENP00mF8/0d7CGJV/zozafve9niaDZB3Rqz9eHZ\nevRPNQMhy8Uzs4y4XT8qQjkCgYBNuLjmkpe8R86Hc23fSkZQk56POk1CanUfB1p/\nQZXt3skpCd3GY7f39vFcOFEEP0kxtRs8kdp9pMx9hGvYNw5OAXd1+xt/iorjIXag\nM+PcMR8QjmpAyCUFJPglfHc2jnGgZpAKtnNI3fThEXhL9Z8cyxdT2tx97FjzBOeP\nHz+NWQKBgQCU0bSxTp2rbOCxHosQ/GDDTY0JkQ2z5q1SkibSiEnyAZ3yCHpXZRD7\nsa5BWs4qlasSKmxdmT9xgRDAL6CJH6kJizF3UIaIPOvPjIroOa7Mk1OFNbOi6Cao\n0LcWp5w1I2r5g7sOIRM/AcS3yVT5RJO4KB8WyDOvxCfP8cFsTacZmQ==\n-----END RSA PRIVATE KEY-----\n".freeze
-    # rubocop:enable Metrics/LineLength
+    def timestamp
+      @timestamp ||= Time.now.to_i
+    end
 
     def generate_signature(opts = {})
-      opts[:timestamp] ||= Time.now.to_i
+      opts[:timestamp] ||= timestamp
       opts[:payload] ||= EVENT_PAYLOAD
-      opts[:private_key] ||= PRIVATE_KEY
+      opts[:private_key] ||= signing_key
 
-      private_key = OpenSSL::PKey::RSA.new(opts[:private_key])
-      signature = private_key.sign(OpenSSL::Digest::SHA256.new, "#{opts[:timestamp]}|#{opts[:payload]}")
-      Base64.encode64(signature)
+      stamped_payload = "#{opts[:timestamp]}|#{opts[:payload]}"
+      Base64.encode64 opts[:private_key].sign(stamped_payload)
+    end
+
+    def signing_key
+      @signing_key ||= Ed25519::SigningKey.generate
     end
 
     def setup
       super
-      ENV["TELNYX_PUBLIC_KEY"] = PUBLIC_KEY
+      ENV["TELNYX_PUBLIC_KEY"] = Base64.encode64(signing_key.verify_key.to_bytes)
+      Telnyx::Webhook::Signature.reload_verify_key
+    end
+
+    context "generated test keys" do
+      should "sign and verify" do
+        message = "foobar"
+        signature = signing_key.sign message
+        verify_key = Ed25519::VerifyKey.new(Base64.decode64(ENV.fetch("TELNYX_PUBLIC_KEY")))
+        assert verify_key.verify(signature, message)
+      end
+
+      should "create and decode signature" do
+        message = "lorem ipsum"
+        stamped_message = "#{timestamp}|#{message}"
+        signature = generate_signature(payload: message)
+        verify_key = signing_key.verify_key
+        assert verify_key.verify(Base64.decode64(signature), stamped_message)
+      end
     end
 
     context ".construct_event" do
       should "return an Event instance from a valid JSON payload and valid signature header" do
-        timestamp = Time.now.to_i
-        signature = generate_signature(timestamp: timestamp)
+        signature = generate_signature
         event = Telnyx::Webhook.construct_event(EVENT_PAYLOAD, signature, timestamp)
         assert event.is_a?(Telnyx::Event)
       end
@@ -50,15 +97,13 @@ module Telnyx
       should "raise a JSON::ParserError from an invalid JSON payload" do
         assert_raises JSON::ParserError do
           payload = "this is not valid JSON"
-          timestamp = Time.now.to_i
-          signature = generate_signature(payload: payload, timestamp: timestamp)
+          signature = generate_signature payload: payload
           Telnyx::Webhook.construct_event(payload, signature, timestamp)
         end
       end
 
       should "raise a SignatureVerificationError from a valid JSON payload and an invalid signature header" do
-        signature = "bad_signature"
-        timestamp = Time.now.to_i
+        signature = SecureRandom.base64(64)
         assert_raises Telnyx::SignatureVerificationError do
           Telnyx::Webhook.construct_event(EVENT_PAYLOAD, signature, timestamp)
         end
@@ -67,15 +112,14 @@ module Telnyx
 
     context ".verify" do
       should "raise a SignatureVerificationError when the signature does not have the expected format" do
-        signature = "FAKEFAKEFAKE"
+        signature = SecureRandom.base64(64)
         e = assert_raises(Telnyx::SignatureVerificationError) do
-          Telnyx::Webhook::Signature.verify(EVENT_PAYLOAD, signature, Time.now.to_i)
+          Telnyx::Webhook::Signature.verify(EVENT_PAYLOAD, signature, timestamp)
         end
         assert_match("Signature is invalid and does not match the payload", e.message)
       end
 
       should "raise a SignatureVerificationError when there are no valid signatures for the payload" do
-        timestamp = Time.now.to_i
         signature = generate_signature(payload: "foo", timestamp: timestamp)
         e = assert_raises(Telnyx::SignatureVerificationError) do
           Telnyx::Webhook::Signature.verify(EVENT_PAYLOAD, signature, timestamp)
@@ -84,16 +128,14 @@ module Telnyx
       end
 
       should "raise a SignatureVerificationError when the timestamp is not within the tolerance" do
-        timestamp = Time.now.to_i - 15
         signature = generate_signature(timestamp: Time.now.to_i - 15)
         e = assert_raises(Telnyx::SignatureVerificationError) do
-          Telnyx::Webhook::Signature.verify(EVENT_PAYLOAD, signature, timestamp, tolerance: 10)
+          Telnyx::Webhook::Signature.verify(EVENT_PAYLOAD, signature, timestamp - 15, tolerance: 10)
         end
         assert_match("Timestamp outside the tolerance zone", e.message)
       end
 
       should "return true when the signature is valid and the timestamp is within the tolerance" do
-        timestamp = Time.now.to_i
         signature = generate_signature
         assert(Telnyx::Webhook::Signature.verify(EVENT_PAYLOAD, signature, timestamp, tolerance: 10))
       end
