@@ -66,7 +66,7 @@ module Telnyx
     end
 
     def create_call
-      Telnyx::Calls.create connection_id: "12345", to: "+15550001111", from: "+15550002222"
+      Telnyx::Call.create connection_id: "12345", to: "+15550001111", from: "+15550002222"
     end
 
     def format_url(conf, action)

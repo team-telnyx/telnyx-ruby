@@ -10,7 +10,7 @@ module Telnyx
     end
     context "call instance" do
       should "be correct class" do
-        assert create_call.is_a? Telnyx::Calls
+        assert create_call.is_a? Telnyx::Call
       end
 
       should "be initialized with data" do
@@ -96,7 +96,7 @@ module Telnyx
     end
 
     def create_call
-      Telnyx::Calls.create connection_id: "12345", to: "+15550001111", from: "+15550002222"
+      Telnyx::Call.create connection_id: "12345", to: "+15550001111", from: "+15550002222"
     end
 
     def format_url(call, action)

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Telnyx
-  class Calls < APIResource
+  class Call < APIResource
     extend Telnyx::APIOperations::Create
     extend Telnyx::APIOperations::NestedResource
 
