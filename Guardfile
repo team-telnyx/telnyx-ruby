@@ -6,3 +6,7 @@ directories(%w[lib test]) \
 guard "rake", task: "test" do
   watch(/.*/)
 end
+
+guard :rubocop, all_on_start: true, cli: ["-a"] do
+  watch(/.*/)
+end
