@@ -1,12 +1,9 @@
 # frozen_string_literal: true
 
-require "pry"
 module Telnyx
   class Call < APIResource
     extend Telnyx::APIOperations::Create
     extend Telnyx::APIOperations::NestedResource
-
-    attr_writer :id
 
     def id
       call_control_id if defined? call_control_id
