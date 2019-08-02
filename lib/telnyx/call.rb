@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "pry"
 module Telnyx
   class Call < APIResource
     extend Telnyx::APIOperations::Create
@@ -8,10 +9,19 @@ module Telnyx
     attr_writer :id
 
     def id
-      if respond_to?(:call_control_id)
-        call_control_id
-      else
-        @id
+      call_control_id if defined? call_control_id
+    end
+
+    def id=(val)
+      initialize_from({ call_control_id: val }, {}, true)
+    end
+
+    %w[call_leg_id call_session_id].each do |attribute|
+      define_method attribute do
+        send(attribute) if respond_to?(attribute)
+      end
+      define_method attribute + "=" do |val|
+        initialize_from({ attribute.to_sym => val }, {}, true)
       end
     end
 

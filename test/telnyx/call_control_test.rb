@@ -40,6 +40,57 @@ module Telnyx
       end
     end
 
+    context "ojbect created through #new" do
+      should "get and set call_control_id through alias" do
+        call = Call.new
+        refute call.id
+        call.id = "123"
+        assert_equal "123", call.id
+      end
+
+      should "have initialize_object accessors" do
+        call = Call.new
+        call.id = SecureRandom.base64(20)
+        call.call_leg_id = SecureRandom.base64(20)
+        call.call_session_id = SecureRandom.base64(20)
+
+        assert call.id
+        assert call.call_leg_id
+        assert call.call_session_id
+      end
+
+      should "send all commands" do
+        @call = Call.new
+        @call.id = "1234"
+        @call.reject
+        assert_requested :post, format_url(@call, "reject")
+        @call.answer
+        assert_requested :post, format_url(@call, "answer")
+        @call.hangup
+        assert_requested :post, format_url(@call, "hangup")
+        @call.bridge call_control_id: SecureRandom.base64(20)
+        assert_requested :post, format_url(@call, "bridge")
+        @call.speak language: "en-US", voice: "female", payload: "Telnyx call control test"
+        assert_requested :post, format_url(@call, "speak")
+        @call.fork_start call_control_id: SecureRandom.base64(20)
+        assert_requested :post, format_url(@call, "fork_start")
+        @call.fork_stop
+        assert_requested :post, format_url(@call, "fork_stop")
+        @call.gather_using_audio audio_url: "https://audio.example.com"
+        assert_requested :post, format_url(@call, "gather_using_audio")
+        @call.gather_using_speak language: "en-US", voice: "female", payload: "Telnyx call control test"
+        assert_requested :post, format_url(@call, "gather_using_speak")
+        @call.playback_start audio_url: "https://audio.example.com"
+        assert_requested :post, format_url(@call, "playback_start")
+        @call.playback_stop
+        assert_requested :post, format_url(@call, "playback_stop")
+        @call.send_dtmf digits: "1www2WABCDw9"
+        assert_requested :post, format_url(@call, "send_dtmf")
+        @call.transfer to: "+15552223333"
+        assert_requested :post, format_url(@call, "transfer")
+      end
+    end
+
     context "commands" do
       should "reject" do
         @call.reject
