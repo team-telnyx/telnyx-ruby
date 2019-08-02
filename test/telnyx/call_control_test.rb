@@ -40,6 +40,13 @@ module Telnyx
       end
     end
 
+    should "get and set call_control_id through alias" do
+      call = Call.new
+      refute call.id
+      call.id = '123'
+      assert_equal '123', call.id
+    end
+
     context "commands" do
       should "reject" do
         @call.reject
