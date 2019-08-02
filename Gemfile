@@ -20,6 +20,7 @@ group :development do
   # up-to-date, but it's not the end of the world if it's not.
   gem "guard"
   gem "guard-rake"
+  gem "guard-rubocop"
   gem "rubocop", "0.50.0"
   gem "solargraph"
 

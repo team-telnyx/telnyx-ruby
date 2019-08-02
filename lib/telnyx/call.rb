@@ -6,6 +6,8 @@ module Telnyx
     extend Telnyx::APIOperations::Create
     extend Telnyx::APIOperations::NestedResource
 
+    attr_writer :id
+
     def id
       call_control_id if defined? call_control_id
     end

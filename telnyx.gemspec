@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency("faraday", "~> 0.13")
   s.add_dependency("net-http-persistent", "~> 3.0")
+  s.add_dependency("ed25519", "~> 1")
 
   s.files = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- test/*`.split("\n")

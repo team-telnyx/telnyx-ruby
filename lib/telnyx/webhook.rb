@@ -2,6 +2,7 @@
 
 require "openssl"
 require "base64"
+require "ed25519"
 
 module Telnyx
   module Webhook
@@ -35,14 +36,8 @@ module Telnyx
       # Returns true otherwise
       def self.verify(payload, signature_header, timestamp, tolerance: nil)
         signature = Base64.decode64(signature_header)
+        timestamp = timestamp.to_i
         signed_payload = "#{timestamp}|#{payload}"
-
-        unless public_key.verify(digest, signature, signed_payload)
-          raise SignatureVerificationError.new(
-            "Signature is invalid and does not match the payload",
-            signature, http_body: payload
-          )
-        end
 
         if tolerance && timestamp < Time.now.to_f - tolerance
           raise SignatureVerificationError.new(
@@ -51,15 +46,24 @@ module Telnyx
           )
         end
 
+        begin
+          verify_key.verify(signature, signed_payload)
+        rescue Ed25519::VerifyError
+          raise SignatureVerificationError.new(
+            "Signature is invalid and does not match the payload",
+            signature, http_body: payload
+          )
+        end
+
         true
       end
 
-      def self.public_key
-        @public_key ||= OpenSSL::PKey::RSA.new(ENV.fetch("TELNYX_PUBLIC_KEY"))
+      def self.verify_key
+        @verify_key ||= reload_verify_key
       end
 
-      def self.digest
-        @digest ||= OpenSSL::Digest::SHA256.new
+      def self.reload_verify_key
+        @verify_key = Ed25519::VerifyKey.new(Base64.decode64(ENV.fetch("TELNYX_PUBLIC_KEY")))
       end
     end
   end
