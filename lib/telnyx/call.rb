@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'pry'
+require "pry"
 module Telnyx
   class Call < APIResource
     extend Telnyx::APIOperations::Create
@@ -11,15 +11,15 @@ module Telnyx
     end
 
     def id=(val)
-      initialize_from({call_control_id: val}, {}, true)
+      initialize_from({ call_control_id: val }, {}, true)
     end
 
-    %w[call_leg_id call_session_id is_alive record_type].each do |attribute|
+    %w[call_leg_id call_session_id].each do |attribute|
       define_method attribute do
-        send(attribute) if eval("defined? #{attribute}")
+        send(attribute) if respond_to?(attribute)
       end
-      define_method attribute+'=' do |val|
-        initialize_from({attribute.to_sym => val}, {}, true)
+      define_method attribute + "=" do |val|
+        initialize_from({ attribute.to_sym => val }, {}, true)
       end
     end
 
