@@ -5,8 +5,14 @@ module Telnyx
     extend Telnyx::APIOperations::Create
     extend Telnyx::APIOperations::NestedResource
 
+    attr_writer :id
+
     def id
-      call_control_id
+      if respond_to?(:call_control_id)
+        call_control_id
+      else
+        @id
+      end
     end
 
     ACTIONS = %w[reject answer hangup bridge speak fork_start fork_stop
