@@ -6,7 +6,11 @@ module Telnyx
     extend Telnyx::APIOperations::NestedResource
 
     def id
-      call_control_id
+      @call_control_id || nil
+    end
+
+    def id=(val)
+      @call_control_id = val
     end
 
     ACTIONS = %w[reject answer hangup bridge speak fork_start fork_stop
