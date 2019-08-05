@@ -5,7 +5,7 @@ module Telnyx
     extend Telnyx::APIOperations::Create
     extend Telnyx::APIOperations::NestedResource
 
-    def initialize(*args, **opts)
+    def initialize(*_args, **opts)
       super()
       opts.each do |k, v|
         setter = "#{k}=".to_sym
