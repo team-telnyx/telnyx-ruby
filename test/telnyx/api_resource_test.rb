@@ -167,7 +167,7 @@ module Telnyx
         mp.save
 
         assert_requested(:patch, "#{Telnyx.api_base}/v2/messaging_profiles/123", body: { "name" => "new name" })
-        assert mp.simplify_characters
+        assert mp.name == "new name"
       end
 
       should "updating should fail if api_key is overwritten with nil" do
