@@ -46,7 +46,6 @@ module Telnyx
         Message::OBJECT_NAME                    => Message,
         MessagingPhoneNumber::OBJECT_NAME       => MessagingPhoneNumber,
         MessagingProfile::OBJECT_NAME           => MessagingProfile,
-        # MessagingShortCode::OBJECT_NAME         => MessagingShortCode,
         NumberOrder::OBJECT_NAME                => NumberOrder,
         NumberReservation::OBJECT_NAME          => NumberReservation,
         PublicKey::OBJECT_NAME                  => PublicKey,
