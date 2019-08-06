@@ -39,17 +39,17 @@ module Telnyx
     def self.object_classes
       @object_classes ||= {
         # business objects
-        Message::OBJECT_NAME                    => Message,
-        MessagingProfile::OBJECT_NAME           => MessagingProfile,
-        MessagingPhoneNumber::OBJECT_NAME       => MessagingPhoneNumber,
-        MessagingSenderId::OBJECT_NAME          => MessagingSenderId,
-        MessagingShortCode::OBJECT_NAME         => MessagingShortCode,
+        AlphanumericSenderId::OBJECT_NAME       => AlphanumericSenderId,
         AvailablePhoneNumber::OBJECT_NAME       => AvailablePhoneNumber,
-        PublicKey::OBJECT_NAME                  => PublicKey,
+        Call::OBJECT_NAME                       => Call,
+        Conferences::OBJECT_NAME                => Conferences,
+        Message::OBJECT_NAME                    => Message,
+        MessagingPhoneNumber::OBJECT_NAME       => MessagingPhoneNumber,
+        MessagingProfile::OBJECT_NAME           => MessagingProfile,
+        # MessagingShortCode::OBJECT_NAME         => MessagingShortCode,
         NumberOrder::OBJECT_NAME                => NumberOrder,
         NumberReservation::OBJECT_NAME          => NumberReservation,
-        Call::OBJECT_NAME => Call,
-        Conferences::OBJECT_NAME => Conferences,
+        PublicKey::OBJECT_NAME                  => PublicKey,
       }
     end
 
