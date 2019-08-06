@@ -51,20 +51,18 @@ module Telnyx
       assert phone_numbers.data[0].is_a?(Telnyx::MessagingPhoneNumber)
     end
 
-    should "be able to list SenderIds" do
-      messaging_profile = Telnyx::MessagingProfile.retrieve("123")
-      sender_ids = messaging_profile.sender_ids
-      assert_requested :get, "#{Telnyx.api_base}/v2/messaging_profiles/123/sender_ids"
-      assert sender_ids.data.is_a?(Array)
-      assert sender_ids.data[0].is_a?(Telnyx::MessagingSenderId)
-    end
+    # should "be able to list ShortCodes" do
+    #   messaging_profile = Telnyx::MessagingProfile.retrieve("123")
+    #   short_codes = messaging_profile.short_codes
+    #   assert_requested :get, "#{Telnyx.api_base}/v2/messaging_profiles/123/short_codes"
+    #   assert short_codes.data.is_a?(Array)
+    #   assert_kind_of Telnyx::MessagingShortCode, short_codes.data.first
+    # end
 
-    should "be able to list ShortCodes" do
+    should "be able to list alphanumeric sender ids" do
       messaging_profile = Telnyx::MessagingProfile.retrieve("123")
-      short_codes = messaging_profile.short_codes
-      assert_requested :get, "#{Telnyx.api_base}/v2/messaging_profiles/123/short_codes"
-      assert short_codes.data.is_a?(Array)
-      assert short_codes.data[0].is_a?(Telnyx::MessagingShortCode)
+      _alphanumeric_sender_ids = messaging_profile.alphanumeric_sender_ids
+      assert_requested :get, "#{Telnyx.api_base}/v2/messaging_profiles/123/alphanumeric_sender_ids"
     end
   end
 end
