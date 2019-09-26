@@ -40,6 +40,10 @@ module Telnyx
       end
     end
 
+    should "retrieve call" do
+      Telnyx::Call.retrieve("1234")
+    end
+
     context "ojbect created through #new" do
       should "get and set call_control_id through alias" do
         call = Call.new

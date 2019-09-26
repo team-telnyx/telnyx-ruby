@@ -5,8 +5,8 @@ module Telnyx
     extend Telnyx::APIOperations::Create
     extend Telnyx::APIOperations::NestedResource
 
-    def initialize(*_args, **opts)
-      super()
+    def initialize(*args, **opts)
+      super
       opts.each do |k, v|
         setter = "#{k}=".to_sym
         next unless respond_to? setter
