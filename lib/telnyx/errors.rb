@@ -46,7 +46,7 @@ module Telnyx
     def message
       case @errors
       when Array
-        @errors[0]["title"] + " "
+        "#{@errors[0]['title']} "
       else
         @errors
       end
