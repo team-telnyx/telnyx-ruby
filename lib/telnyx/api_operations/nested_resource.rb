@@ -6,7 +6,7 @@ module Telnyx
     # that it's possible to do so from a static context (i.e. without a
     # pre-existing collection of subresources on the parent).
     #
-    # For examle, a transfer gains the static methods for reversals so that the
+    # For example, a transfer gains the static methods for reversals so that the
     # methods `.create_reversal`, `.retrieve_reversal`, `.update_reversal`,
     # etc. all become available.
     # rubocop:disable  Metrics/AbcSize
@@ -29,8 +29,19 @@ module Telnyx
         define_instance_method = lambda do |target_name, operation|
           return unless instance_methods.keys.include? operation
 
-          define_method(instance_methods[operation] || target_name) do |*opts|
-            self.class.send(target_name, id, *opts)
+          case operation
+          when :create, :list
+            define_method(instance_methods[operation] || target_name) do |*opts|
+              self.class.send(target_name, id, *opts)
+            end
+          when :retrieve
+            define_method(instance_methods[operation] || target_name) do |nested_id|
+              self.class.send(target_name, id, nested_id)
+            end
+          when :update, :delete
+            define_method(instance_methods[operation] || target_name) do |nested_id, *opts|
+              self.class.send(target_name, id, nested_id, *opts)
+            end
           end
         end
 
