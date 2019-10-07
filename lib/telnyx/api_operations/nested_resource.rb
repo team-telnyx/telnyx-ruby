@@ -19,7 +19,7 @@ module Telnyx
 
         resource_url_method = :"#{resource}s_url"
         define_singleton_method(resource_url_method) do |id, nested_id = nil|
-          raise ArgumentError, 'id is required' if id.nil?
+          raise ArgumentError, "id is required" if id.nil?
           url = "#{resource_url}/#{CGI.escape(id)}/#{path}"
           url += "/#{CGI.escape(nested_id)}" unless nested_id.nil?
           url
