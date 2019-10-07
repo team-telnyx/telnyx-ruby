@@ -22,7 +22,6 @@ group :development do
   gem "guard-rake"
   gem "guard-rubocop"
   gem "rubocop", "0.50.0"
-  gem "solargraph"
 
   # Rack 2.0+ requires Ruby >= 2.2.2 which is problematic for the test suite on
   # older Ruby versions. Check Ruby the version here and put a maximum

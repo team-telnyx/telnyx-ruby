@@ -50,6 +50,7 @@ module Telnyx
         NumberReservation::OBJECT_NAME          => NumberReservation,
         PublicKey::OBJECT_NAME                  => PublicKey,
         PhoneNumber::OBJECT_NAME                => PhoneNumber,
+        SimCard::OBJECT_NAME                    => SimCard,
       }
     end
 
