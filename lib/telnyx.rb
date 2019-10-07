@@ -47,7 +47,6 @@ require "telnyx/messaging_profile"
 require "telnyx/number_order"
 require "telnyx/number_reservation"
 require "telnyx/public_key"
-require "telnyx/sim_card.rb"
 
 module Telnyx
   @app_info = nil

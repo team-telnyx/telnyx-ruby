@@ -49,7 +49,6 @@ module Telnyx
         NumberOrder::OBJECT_NAME                => NumberOrder,
         NumberReservation::OBJECT_NAME          => NumberReservation,
         PublicKey::OBJECT_NAME                  => PublicKey,
-        SimCard::OBJECT_NAME                    => SimCard,
       }
     end
 
