@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
     "source_code_uri"   => "https://github.com/team-telnyx/telnyx-ruby",
   }
 
-  s.add_dependency("faraday", "~> 0.13", "< 0.16")
+  s.add_dependency("faraday", "~> 0.13", "!= 0.16.0", "!= 0.16.1", "!= 0.16.2")
   s.add_dependency("net-http-persistent", "~> 3.0")
   s.add_dependency("ed25519", "~> 1")
 
