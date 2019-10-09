@@ -11,6 +11,7 @@ module Telnyx
     # etc. all become available.
     # rubocop:disable  Metrics/AbcSize
     # rubocop:disable  Metrics/MethodLength
+    # rubocop:disable  Metrics/CyclomaticComplexity
     module NestedResource
       def nested_resource_class_methods(resource, path: nil, operations: nil, instance_methods: {})
         path ||= "#{resource}s"
