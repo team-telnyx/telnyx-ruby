@@ -2,9 +2,9 @@
 
 module Telnyx
   class PhoneNumber < APIResource
-    extend Telnyx::APIOperations::Create
-    extend Telnyx::APIOperations::NestedResource
     include Telnyx::APIOperations::Save
+    extend Telnyx::APIOperations::List
+    extend Telnyx::APIOperations::NestedResource
 
     ACTIONS = %w[voice messaging].freeze
 
