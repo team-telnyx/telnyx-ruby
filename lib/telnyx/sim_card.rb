@@ -2,12 +2,17 @@
 
 module Telnyx
   class SimCard < APIResource
-    extend Telnyx::APIOperations::NestedResource
+    include Telnyx::APIOperations::Save
+    extend APIOperations::NestedResource
+    extend APIOperations::List
 
-    nested_resource_class_methods "deactivate",
-                                  path: %w[actions deactivate],
-                                  operations: [:create],
-                                  instance_methods: { create: "deactivate" }
+    ACTIONS = %w[deactivate activate].freeze
+    ACTIONS.each do |action|
+      nested_resource_class_methods action,
+                                    path: %W[actions #{action}],
+                                    operations: [:create],
+                                    instance_methods: { create: action }
+    end
 
     OBJECT_NAME = "sim_card".freeze
   end
