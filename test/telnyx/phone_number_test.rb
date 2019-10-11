@@ -3,12 +3,13 @@
 require_relative "../test_helper"
 module Telnyx
   class PhoneNumberTest < Test::Unit::TestCase
-    should "create resource" do
-      stub = stub_request(:post, "#{Telnyx.api_base}/v2/phone_numbers")
-             .to_return(body: JSON.generate(mock_response))
-      phone_number = Telnyx::PhoneNumber.create
-      assert_kind_of Telnyx::PhoneNumber, phone_number
+    should "list resources" do
+      stub = stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers")
+             .to_return(body: JSON.generate(data: (1..5).map { |i| mock_response(i) }))
+      phone_numbers = Telnyx::PhoneNumber.list
       assert_requested stub
+      assert_kind_of Telnyx::ListObject, phone_numbers
+      assert_kind_of Telnyx::PhoneNumber, phone_numbers.first
     end
 
     should "get resource" do
@@ -32,12 +33,12 @@ module Telnyx
 
     context "nested commands" do
       should "post voice" do
-        stub_request(:post, "#{Telnyx.api_base}/v2/phone_numbers")
-          .to_return(body: JSON.generate(id: "123", record_type: "phone_number"))
+        stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers/123")
+          .to_return(body: JSON.generate(data: mock_response("123")))
         command_stub = stub_request(:post, "#{Telnyx.api_base}/v2/phone_numbers/123/voice")
                        .with(body: { connection_id: 123 })
                        .to_return(body: JSON.generate(data: mock_voice_response))
-        phone_number = Telnyx::PhoneNumber.create
+        phone_number = Telnyx::PhoneNumber.retrieve("123")
         phone_number.create_voice(connection_id: 123)
         assert_requested command_stub
       end
@@ -54,12 +55,12 @@ module Telnyx
       end
 
       should "post messaging" do
-        stub_request(:post, "#{Telnyx.api_base}/v2/phone_numbers")
-          .to_return(body: JSON.generate(id: "123", record_type: "phone_number"))
+        stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers/123")
+          .to_return(body: JSON.generate(data: mock_response("123")))
         command_stub = stub_request(:post, "#{Telnyx.api_base}/v2/phone_numbers/123/messaging")
                        .with(body: { foo: "bar" })
                        .to_return(body: JSON.generate(data: mock_messaging_response))
-        phone_number = Telnyx::PhoneNumber.create
+        phone_number = Telnyx::PhoneNumber.retrieve("123")
         phone_number.create_messaging(foo: "bar")
         assert_requested command_stub
       end
