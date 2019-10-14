@@ -25,6 +25,9 @@ module Telnyx
         .to_return(body: JSON.generate(data: { record_type: "sim_card", id: "123" }))
       stub = stub_request(:patch, "#{Telnyx.api_base}/v2/sim_cards/123")
              .to_return(body: JSON.generate(data: { record_type: "sim_card", id: "123" }))
+      sim = Telnyx::SimCard.retrieve "123"
+      sim.save
+      assert_requested stub
     end
 
     context "actions" do
