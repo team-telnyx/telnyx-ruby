@@ -32,14 +32,14 @@ module Telnyx
     end
 
     context "nested commands" do
-      should "post voice" do
+      should "update voice" do
         stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers/123")
           .to_return(body: JSON.generate(data: mock_response("123")))
         command_stub = stub_request(:post, "#{Telnyx.api_base}/v2/phone_numbers/123/voice")
                        .with(body: { connection_id: 123 })
                        .to_return(body: JSON.generate(data: mock_voice_response))
         phone_number = Telnyx::PhoneNumber.retrieve("123")
-        phone_number.create_voice(connection_id: 123)
+        phone_number.update_voice(connection_id: 123)
         assert_requested command_stub
       end
 
@@ -52,17 +52,6 @@ module Telnyx
         voice = phone_number.voice
         assert_requested command_stub
         assert_equal voice.data.connection_id, "456"
-      end
-
-      should "post messaging" do
-        stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers/123")
-          .to_return(body: JSON.generate(data: mock_response("123")))
-        command_stub = stub_request(:post, "#{Telnyx.api_base}/v2/phone_numbers/123/messaging")
-                       .with(body: { foo: "bar" })
-                       .to_return(body: JSON.generate(data: mock_messaging_response))
-        phone_number = Telnyx::PhoneNumber.retrieve("123")
-        phone_number.create_messaging(foo: "bar")
-        assert_requested command_stub
       end
 
       should "get messaging" do
