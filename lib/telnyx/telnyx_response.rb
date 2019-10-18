@@ -49,9 +49,10 @@ module Telnyx
 
     class << self
       private
+
       # Helper to handle when the server responds with a blank body (as is the case with SimCards).
       def preprocess_response(resp)
-        resp.empty? ? '{}' : resp
+        resp.empty? ? "{}" : resp
       end
     end
   end
