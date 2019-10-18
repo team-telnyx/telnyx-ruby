@@ -26,7 +26,7 @@ module Telnyx
     # This may throw JSON::ParserError if the response body is not valid JSON.
     def self.from_faraday_hash(http_resp)
       resp = TelnyxResponse.new
-      resp.data = JSON.parse(http_resp[:body], symbolize_names: true)
+      resp.data = JSON.parse(preprocess_response(http_resp[:body]), symbolize_names: true)
       resp.http_body = http_resp[:body]
       resp.http_headers = http_resp[:headers]
       resp.http_status = http_resp[:status]
@@ -39,12 +39,20 @@ module Telnyx
     # This may throw JSON::ParserError if the response body is not valid JSON.
     def self.from_faraday_response(http_resp)
       resp = TelnyxResponse.new
-      resp.data = JSON.parse(http_resp.body, symbolize_names: true)
+      resp.data = JSON.parse(preprocess_response(http_resp.body), symbolize_names: true)
       resp.http_body = http_resp.body
       resp.http_headers = http_resp.headers
       resp.http_status = http_resp.status
       resp.request_id = http_resp.headers["X-Request-Id"]
       resp
+    end
+
+    class << self
+      private
+      # Helper to handle when the server responds with a blank body (as is the case with SimCards).
+      def preprocess_response(resp)
+        resp.empty? ? '{}' : resp
+      end
     end
   end
 end
