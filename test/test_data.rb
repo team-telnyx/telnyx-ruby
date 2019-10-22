@@ -145,5 +145,25 @@ module Telnyx
         ],
       }
     end
+
+    def make_webhook_response(**args)
+      {
+        data: {
+          record_type: "event",
+          event_type: "call.initiated",
+          created_at: Time.now.strftime("%Y-%m-%dT%H:%M:%S.%L%zZ"),
+          id: "1234",
+          payload: {
+            to: "",
+            occurred_at: Time.now.strftime("%Y-%m-%dT%H:%M:%S.%L%zZ"),
+            from: "",
+            call_control_id: "1234",
+            call_session_id: "1234",
+            client_state: "1234",
+            state: "answered",
+          },
+        }.merge(**args),
+      }
+    end
   end
 end

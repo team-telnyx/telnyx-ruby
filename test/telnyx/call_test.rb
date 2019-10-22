@@ -4,10 +4,11 @@ require_relative "../test_helper"
 require "securerandom"
 
 module Telnyx
-  class CallControlTest < Test::Unit::TestCase
+  class CallTest < Test::Unit::TestCase
     setup do
       @call = create_call
     end
+
     context "call instance" do
       should "be correct class" do
         assert create_call.is_a? Telnyx::Call
@@ -147,6 +148,71 @@ module Telnyx
       should "transfer" do
         @call.transfer to: "+15552223333"
         assert_requested :post, format_url(@call, "transfer")
+      end
+    end
+
+    context "hook handler" do
+      should "register new hook event" do
+        call = create_call
+        call.id = SecureRandom.base64(20)
+        event = make_webhook_response(event_type: "call.answered", payload: { call_control_id: call.id })
+        event_object = TelnyxObject.construct_from(event[:data])
+
+        Telnyx::Call.parse_and_enqueue(event.to_json)
+        assert_equal call.call_event_list.length, 1
+        assert_equal call.call_event_list.first, event_object
+        assert_equal call.id, event_object.payload.call_control_id
+      end
+
+      should "call event proc" do
+        call = create_call
+        call.id = SecureRandom.base64(20)
+        event = make_webhook_response(event_type: "call.answered", payload: { call_control_id: call.id })
+        event_object = TelnyxObject.construct_from(event[:data])
+
+        block_called = false
+        call.on_event("call.answered") do |e|
+          block_called = true
+          assert_equal e, event_object
+        end
+        call.on_event("call.foobar") do |_e|
+          assert false, "this block should not execute"
+        end
+        Telnyx::Call.parse_and_enqueue(event.to_json)
+
+        assert block_called
+      end
+
+      should "call and override default event, and call global event proc" do
+        call = create_call
+        call.id = SecureRandom.base64(20)
+        event = make_webhook_response(event_type: "call.answered", payload: { call_control_id: call.id })
+
+        last_called_by = "none"
+        call.on_uncaught_event do
+          last_called_by = "default"
+        end
+        Telnyx::Call.parse_and_enqueue(event.to_json)
+        assert_equal "default", last_called_by
+
+        last_called_by = "none"
+        event_call_count = 0
+        call.on_event("call.answered") do
+          event_call_count += 1
+          last_called_by = "event handler"
+        end
+        Telnyx::Call.parse_and_enqueue(event.to_json)
+        assert_equal "event handler", last_called_by
+
+        global_called = false
+        call.on_any_event do
+          global_called = true
+          last_called_by = "global"
+        end
+        Telnyx::Call.parse_and_enqueue(event.to_json)
+        assert_equal "global", last_called_by
+        assert_equal 2, event_call_count
+        assert global_called
       end
     end
 
