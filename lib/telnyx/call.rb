@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-require "objspace"
-
 module Telnyx
   class Call < APIResource
     extend Telnyx::APIOperations::Create
     extend Telnyx::APIOperations::NestedResource
 
     attr_accessor :call_event_list
+    @instances = []
 
     def initialize(*args, **opts)
       super
@@ -15,6 +14,7 @@ module Telnyx
       @hook_handlers = {}
       @default_event_handler = nil
       @global_event_handler = nil
+      self.class.instances << self
       opts.each do |k, v|
         setter = "#{k}=".to_sym
         next unless respond_to? setter
@@ -79,18 +79,19 @@ module Telnyx
       @call_event_list.last
     end
 
-    def self.parse_and_enqueue(event)
-      enqueue(TelnyxObject.construct_from(JSON.parse(event)["data"]))
-    end
+    class << self
+      attr_accessor :instances
+      def parse_and_enqueue(event)
+        enqueue(TelnyxObject.construct_from(JSON.parse(event)["data"]))
+      end
 
-    def self.enqueue(event)
-      raise ArgumentError, "Please parse response as a TelnyxObject. Maybe you want to use #parse_and_enqueue?" unless event.is_a? TelnyxObject
-      return unless event.event_type =~ /^call\.+./
+      def enqueue(event)
+        raise ArgumentError, "Please parse response as a TelnyxObject. Maybe you want to use #parse_and_enqueue?" unless event.is_a? TelnyxObject
+        return unless event.event_type =~ /^call\.+./
 
-      call_id = event.payload.call_control_id
-      ObjectSpace.each_object(self) do |instance|
-        next unless instance.id == call_id
-        instance.process_event event
+        call_id = event.payload.call_control_id
+        call = @instances.find { |call| call.id == call_id }
+        call.process_event(event) if call # Old syntax for 2.0 compatibility
       end
     end
   end
