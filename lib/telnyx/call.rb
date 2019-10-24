@@ -90,7 +90,7 @@ module Telnyx
         return unless event.event_type =~ /^call\.+./
 
         call_id = event.payload.call_control_id
-        call = @instances.find { |call| call.id == call_id }
+        call = @instances.find { |c| c.id == call_id }
         call.process_event(event) if call # Old syntax for 2.0 compatibility
       end
     end
