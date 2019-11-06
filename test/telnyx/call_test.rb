@@ -154,42 +154,51 @@ module Telnyx
     context "hook handler" do
       should "register new hook event" do
         call = create_call
-        call.id = SecureRandom.base64(20)
-        event = make_webhook_response(event_type: "call.answered", payload: { call_control_id: call.id })
-        event_object = TelnyxObject.construct_from(event[:data])
+        call.id = nil
+        ccid = SecureRandom.base64(20)
+        event = make_webhook_response
+        event[:event_type] = "call.answered"
+        event[:payload][:call_control_id] = ccid
+        event_object = TelnyxObject.construct_from(event)
 
         Telnyx::Call.parse_and_enqueue(event.to_json)
-        assert_equal call.call_event_list.length, 1
-        assert_equal call.call_event_list.first, event_object
-        assert_equal call.id, event_object.payload.call_control_id
+        assert_equal 1, call.call_hook_list.length
+        assert_equal event_object, call.call_hook_list.first
+        assert_equal event_object.payload.call_control_id, call.id
+        call.cleanup
       end
 
       should "call event proc" do
         call = create_call
-        call.id = SecureRandom.base64(20)
-        event = make_webhook_response(event_type: "call.answered", payload: { call_control_id: call.id })
-        event_object = TelnyxObject.construct_from(event[:data])
+        ccid = SecureRandom.base64(20)
+        event = make_webhook_response
+        event[:event_type] = "call.answered"
+        event[:payload][:call_control_id] = ccid
+        event_object = TelnyxObject.construct_from(event)
 
         block_called = false
-        call.on_event("call.answered") do |e|
+        call.on_hook("call.answered") do |e|
           block_called = true
           assert_equal e, event_object
         end
-        call.on_event("call.foobar") do |_e|
+        call.on_hook("call.foobar") do |_e|
           assert false, "this block should not execute"
         end
         Telnyx::Call.parse_and_enqueue(event.to_json)
 
         assert block_called
+        call.cleanup
       end
 
       should "call and override default event, and call global event proc" do
         call = create_call
-        call.id = SecureRandom.base64(20)
-        event = make_webhook_response(event_type: "call.answered", payload: { call_control_id: call.id })
+        ccid = SecureRandom.base64(20)
+        event = make_webhook_response
+        event[:event_type] = "call.answered"
+        event[:payload][:call_control_id] = ccid
 
         last_called_by = "none"
-        call.on_uncaught_event do
+        call.on_uncaught_hook do
           last_called_by = "default"
         end
         Telnyx::Call.parse_and_enqueue(event.to_json)
@@ -197,7 +206,7 @@ module Telnyx
 
         last_called_by = "none"
         event_call_count = 0
-        call.on_event("call.answered") do
+        call.on_hook("call.answered") do
           event_call_count += 1
           last_called_by = "event handler"
         end
@@ -205,7 +214,7 @@ module Telnyx
         assert_equal "event handler", last_called_by
 
         global_called = false
-        call.on_any_event do
+        call.on_any_hook do
           global_called = true
           last_called_by = "global"
         end
@@ -213,11 +222,12 @@ module Telnyx
         assert_equal "global", last_called_by
         assert_equal 2, event_call_count
         assert global_called
+        call.cleanup
       end
     end
 
     def create_call
-      Telnyx::Call.create connection_id: "12345", to: "+15550001111", from: "+15550002222"
+      Telnyx::Call.create connection_id: "1234", to: "+15550001111", from: "+15550002222"
     end
 
     def format_url(call, action)
