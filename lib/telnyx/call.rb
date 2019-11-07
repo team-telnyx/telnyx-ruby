@@ -83,7 +83,7 @@ module Telnyx
     class << self
       attr_accessor :instances
       def parse_and_enqueue(event)
-        enqueue(TelnyxObject.construct_from(JSON.parse(event)))
+        enqueue(TelnyxObject.construct_from(event))
       end
 
       def enqueue(event)
