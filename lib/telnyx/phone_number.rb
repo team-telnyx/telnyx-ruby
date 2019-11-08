@@ -8,12 +8,20 @@ module Telnyx
 
     nested_resource_class_methods "voice",
                                   path: ["voice"],
-                                  operations: %i[create list],
-                                  instance_methods: { list: "voice", create: "update_voice" } # Using create instead of update because the endpoint requires a put, not patch request
+                                  operations: %i[update list],
+                                  instance_methods: { list: "voice" }
     nested_resource_class_methods "messaging",
                                   path: ["messaging"],
-                                  operations: %i[list],
+                                  operations: %i[update list],
                                   instance_methods: { list: "messaging" }
+
+    def update_messaging(opts)
+      self.class.update_messaging(id, nil, opts)
+    end
+
+    def update_voice(opts)
+      self.class.update_voice(id, nil, opts)
+    end
 
     OBJECT_NAME = "phone_number".freeze
   end

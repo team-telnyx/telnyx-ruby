@@ -35,7 +35,7 @@ module Telnyx
       should "update voice" do
         stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers/123")
           .to_return(body: JSON.generate(data: mock_response("123")))
-        command_stub = stub_request(:post, "#{Telnyx.api_base}/v2/phone_numbers/123/voice")
+        command_stub = stub_request(:patch, "#{Telnyx.api_base}/v2/phone_numbers/123/voice")
                        .with(body: { connection_id: 123 })
                        .to_return(body: JSON.generate(data: mock_voice_response))
         phone_number = Telnyx::PhoneNumber.retrieve("123")
@@ -61,6 +61,17 @@ module Telnyx
                        .to_return(body: JSON.generate(data: mock_messaging_response("456")))
         phone_number = Telnyx::PhoneNumber.retrieve("123")
         phone_number.messaging
+        assert_requested command_stub
+      end
+
+      should "update messaging" do
+        stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers/123")
+          .to_return(body: JSON.generate(data: mock_response("123")))
+        command_stub = stub_request(:patch, "#{Telnyx.api_base}/v2/phone_numbers/123/messaging")
+                       .with(body: { messaging_profile_id: "12345", messaging_product: "P2P" })
+                       .to_return(body: JSON.generate(data: mock_messaging_response))
+        phone_number = Telnyx::PhoneNumber.retrieve("123")
+        phone_number.update_messaging(messaging_profile_id: "12345", messaging_product: "P2P")
         assert_requested command_stub
       end
     end
