@@ -31,6 +31,16 @@ module Telnyx
       assert_requested stub
     end
 
+    should "delete resource" do
+      stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers/123")
+        .to_return(body: JSON.generate(data: mock_response("123")))
+      stub = stub_request(:delete, "#{Telnyx.api_base}/v2/phone_numbers/123")
+             .to_return(body: JSON.generate(data: mock_response("123")))
+      phone_number = Telnyx::PhoneNumber.retrieve("123")
+      phone_number.delete
+      assert_requested stub
+    end
+
     context "nested commands" do
       should "update voice" do
         stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers/123")
