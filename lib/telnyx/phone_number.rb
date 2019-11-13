@@ -3,6 +3,7 @@
 module Telnyx
   class PhoneNumber < APIResource
     include Telnyx::APIOperations::Save
+    include Telnyx::APIOperations::Delete
     extend Telnyx::APIOperations::List
     extend Telnyx::APIOperations::NestedResource
 
