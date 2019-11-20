@@ -79,7 +79,7 @@ module Telnyx
         # Try converting to a known object class. If none available, fall back to generic TelnyxObject
         if data[:data].is_a?(Array)
           ListObject.construct_from(data, opts)
-        elsif data[:data] && data[:data][:record_type]
+        elsif data[:data].is_a?(Hash) && data[:data][:record_type]
           object_classes.fetch(data[:data][:record_type], TelnyxObject).construct_from(data[:data], opts)
         elsif data[:record_type]
           object_classes.fetch(data[:record_type], TelnyxObject).construct_from(data, opts)

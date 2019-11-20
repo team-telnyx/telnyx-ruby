@@ -29,27 +29,15 @@ module Telnyx
 
     context "actions" do
       should "deactivate" do
-        stub_request(:get, "#{Telnyx.api_base}/v2/sim_cards/123")
-          .to_return(body: JSON.generate(data: { record_type: "sim_card", id: "123" }))
-
-        stub = stub_request(:post, "#{Telnyx.api_base}/v2/sim_cards/123/actions/deactivate")
-               .to_return(body: JSON.generate(errors: []), status: 202)
-
         sim = Telnyx::SimCard.retrieve "123"
         sim.deactivate
-        assert_requested stub
+        assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/123/actions/deactivate")
       end
 
       should "activate" do
-        stub_request(:get, "#{Telnyx.api_base}/v2/sim_cards/123")
-          .to_return(body: JSON.generate(data: { record_type: "sim_card", id: "123" }))
-
-        stub = stub_request(:post, "#{Telnyx.api_base}/v2/sim_cards/123/actions/activate")
-               .to_return(body: JSON.generate(errors: []), status: 202)
-
         sim = Telnyx::SimCard.retrieve "123"
         sim.activate
-        assert_requested stub
+        assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/123/actions/activate")
       end
     end
   end
