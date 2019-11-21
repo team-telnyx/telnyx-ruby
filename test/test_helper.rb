@@ -17,7 +17,7 @@ require ::File.expand_path("../test_data", __FILE__)
 require ::File.expand_path("../telnyx_mock", __FILE__)
 
 # If changing this number, please also change it in `.travis.yml`.
-MOCK_MINIMUM_VERSION = "0.4.0".freeze
+MOCK_MINIMUM_VERSION = "0.5.0".freeze
 MOCK_PORT = Telnyx::TelnyxMock.start
 
 # Disable all real network connections except those that are outgoing to
