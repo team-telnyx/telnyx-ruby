@@ -34,7 +34,7 @@ If you want to build the gem from source:
 
 ### Requirements
 
-* Ruby 2.0+.
+* Ruby 2.1.0+
 
 ### Bundler
 
