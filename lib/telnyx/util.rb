@@ -39,18 +39,25 @@ module Telnyx
     def self.object_classes
       @object_classes ||= {
         # business objects
-        AlphanumericSenderId::OBJECT_NAME       => AlphanumericSenderId,
-        AvailablePhoneNumber::OBJECT_NAME       => AvailablePhoneNumber,
-        Call::OBJECT_NAME                       => Call,
-        Conferences::OBJECT_NAME                => Conferences,
-        Message::OBJECT_NAME                    => Message,
-        MessagingPhoneNumber::OBJECT_NAME       => MessagingPhoneNumber,
-        MessagingProfile::OBJECT_NAME           => MessagingProfile,
-        NumberOrder::OBJECT_NAME                => NumberOrder,
-        NumberReservation::OBJECT_NAME          => NumberReservation,
-        PublicKey::OBJECT_NAME                  => PublicKey,
-        PhoneNumber::OBJECT_NAME                => PhoneNumber,
-        SimCard::OBJECT_NAME                    => SimCard,
+        AlphanumericSenderId::OBJECT_NAME             => AlphanumericSenderId,
+        AvailablePhoneNumber::OBJECT_NAME             => AvailablePhoneNumber,
+        Call::OBJECT_NAME                             => Call,
+        Conferences::OBJECT_NAME                      => Conferences,
+        Ip::OBJECT_NAME                               => Ip,
+        BillingGroup::OBJECT_NAME => BillingGroup,
+        IpConnection::OBJECT_NAME                     => IpConnection,
+        Message::OBJECT_NAME                          => Message,
+        MessagingPhoneNumber::OBJECT_NAME             => MessagingPhoneNumber,
+        MessagingProfile::OBJECT_NAME                 => MessagingProfile,
+        NumberOrder::OBJECT_NAME                      => NumberOrder,
+        NumberReservation::OBJECT_NAME                => NumberReservation,
+        PhoneNumber::OBJECT_NAME                      => PhoneNumber,
+        PhoneNumberRegulatoryRequirement::OBJECT_NAME => PhoneNumberRegulatoryRequirement,
+        Portout::OBJECT_NAME                          => Portout,
+        PublicKey::OBJECT_NAME                        => PublicKey,
+        RegulatoryRequirement::OBJECT_NAME            => RegulatoryRequirement,
+        NumberOrderDocument::OBJECT_NAME              => NumberOrderDocument,
+        SimCard::OBJECT_NAME                          => SimCard,
       }
     end
 
