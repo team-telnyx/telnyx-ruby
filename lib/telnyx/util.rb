@@ -44,7 +44,7 @@ module Telnyx
         Call::OBJECT_NAME                             => Call,
         Conferences::OBJECT_NAME                      => Conferences,
         Ip::OBJECT_NAME                               => Ip,
-        BillingGroup::OBJECT_NAME => BillingGroup,
+        BillingGroup::OBJECT_NAME                     => BillingGroup,
         IpConnection::OBJECT_NAME                     => IpConnection,
         Message::OBJECT_NAME                          => Message,
         MessagingPhoneNumber::OBJECT_NAME             => MessagingPhoneNumber,
@@ -58,6 +58,8 @@ module Telnyx
         RegulatoryRequirement::OBJECT_NAME            => RegulatoryRequirement,
         NumberOrderDocument::OBJECT_NAME              => NumberOrderDocument,
         SimCard::OBJECT_NAME                          => SimCard,
+        FQDNConnection::OBJECT_NAME                   => FQDNConnection,
+        CredentialConnection::OBJECT_NAME             => CredentialConnection,
       }
     end
 

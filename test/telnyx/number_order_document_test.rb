@@ -12,7 +12,7 @@ module Telnyx
     end
 
     should "be creatable" do
-      number_order_document = NumberOrderDocument.create(number_order_document_address: "0.0.0.0")
+      number_order_document = NumberOrderDocument.create
       assert_requested :post, "#{Telnyx.api_base}/v2/number_order_documents"
       assert_kind_of NumberOrderDocument, number_order_document
     end
@@ -26,7 +26,7 @@ module Telnyx
 
     should "be saveable" do
       number_order_document = NumberOrderDocument.retrieve("12345")
-      number_order_document.number_order_document_address = "0.0.0.0"
+      number_order_document.file_id = "1234"
       number_order_document.save
       assert_requested :patch, "#{Telnyx.api_base}/v2/number_order_documents/#{number_order_document.id}"
       assert_kind_of NumberOrderDocument, number_order_document
