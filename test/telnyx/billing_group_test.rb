@@ -12,7 +12,7 @@ module Telnyx
     end
 
     should "be creatable" do
-      billing_group = BillingGroup.create(billing_group_address: "0.0.0.0")
+      billing_group = BillingGroup.create
       assert_requested :post, "#{Telnyx.api_base}/v2/billing_groups"
       assert_kind_of BillingGroup, billing_group
     end
@@ -26,7 +26,7 @@ module Telnyx
 
     should "be saveable" do
       billing_group = BillingGroup.retrieve("12345")
-      billing_group.billing_group_address = "0.0.0.0"
+      billing_group.name = "foo"
       billing_group.save
       assert_requested :patch, "#{Telnyx.api_base}/v2/billing_groups/#{billing_group.id}"
       assert_kind_of BillingGroup, billing_group

@@ -12,7 +12,7 @@ module Telnyx
     end
 
     should "be creatable" do
-      ip_connection = IpConnection.create(ip_connection_address: "0.0.0.0")
+      ip_connection = IpConnection.create(ip_address: "0.0.0.0")
       assert_requested :post, "#{Telnyx.api_base}/v2/ip_connections"
       assert_kind_of IpConnection, ip_connection
     end
@@ -26,7 +26,7 @@ module Telnyx
 
     should "be saveable" do
       ip_connection = IpConnection.retrieve("12345")
-      ip_connection.ip_connection_address = "0.0.0.0"
+      ip_connection.ip_address = "0.0.0.0"
       ip_connection.save
       assert_requested :patch, "#{Telnyx.api_base}/v2/ip_connections/#{ip_connection.id}"
       assert_kind_of IpConnection, ip_connection
