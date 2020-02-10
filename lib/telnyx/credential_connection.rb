@@ -2,10 +2,10 @@
 
 module Telnyx
   class CredentialConnection < APIResource
-    extend APIOperations::List
-    extend APIOperations::Create
-    include APIOperations::Delete
-    include APIOperations::Save
+    extend Telnyx::APIOperations::List
+    extend Telnyx::APIOperations::Create
+    include Telnyx::APIOperations::Save
+    include Telnyx::APIOperations::Delete
 
     OBJECT_NAME = "credential_connection".freeze
   end

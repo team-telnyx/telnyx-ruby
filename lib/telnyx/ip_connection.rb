@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Telnyx
-  class IpConnection < APIResource
+  class IPConnection < APIResource
     extend APIOperations::List
     extend APIOperations::Create
     include APIOperations::Delete
