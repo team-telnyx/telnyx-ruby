@@ -47,6 +47,7 @@ module Telnyx
         Connection::OBJECT_NAME                       => Connection,
         CredentialConnection::OBJECT_NAME             => CredentialConnection,
         FQDNConnection::OBJECT_NAME                   => FQDNConnection,
+        FQDN::OBJECT_NAME                             => FQDN,
         IP::OBJECT_NAME                               => IP,
         IPConnection::OBJECT_NAME                     => IPConnection,
         Message::OBJECT_NAME                          => Message,
