@@ -41,6 +41,7 @@ module Telnyx
         # business objects
         AlphanumericSenderId::OBJECT_NAME       => AlphanumericSenderId,
         AvailablePhoneNumber::OBJECT_NAME       => AvailablePhoneNumber,
+        BillingGroup::OBJECT_NAME               => BillingGroup,
         Call::OBJECT_NAME                       => Call,
         Conferences::OBJECT_NAME                => Conferences,
         Message::OBJECT_NAME                    => Message,
@@ -48,8 +49,8 @@ module Telnyx
         MessagingProfile::OBJECT_NAME           => MessagingProfile,
         NumberOrder::OBJECT_NAME                => NumberOrder,
         NumberReservation::OBJECT_NAME          => NumberReservation,
-        PublicKey::OBJECT_NAME                  => PublicKey,
         PhoneNumber::OBJECT_NAME                => PhoneNumber,
+        PublicKey::OBJECT_NAME                  => PublicKey,
         SimCard::OBJECT_NAME                    => SimCard,
       }
     end
