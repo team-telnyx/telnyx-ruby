@@ -7,6 +7,6 @@ module Telnyx
     include Telnyx::APIOperations::Save
     include Telnyx::APIOperations::Delete
 
-    OBJECT_NAME = "billing_resource".freeze
+    OBJECT_NAME = "billing_group".freeze
   end
 end
