@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module Telnyx
-  class Ip < APIResource
-    extend APIOperations::List
-    extend APIOperations::Create
-    include APIOperations::Delete
-    include APIOperations::Save
+  class IP < APIResource
+    extend Telnyx::APIOperations::List
+    extend Telnyx::APIOperations::Create
+    include Telnyx::APIOperations::Delete
+    include Telnyx::APIOperations::Save
 
     OBJECT_NAME = "ip".freeze
   end

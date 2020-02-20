@@ -2,10 +2,10 @@
 
 module Telnyx
   class FQDNConnection < APIResource
-    extend APIOperations::List
-    extend APIOperations::Create
-    include APIOperations::Delete
-    include APIOperations::Save
+    extend Telnyx::APIOperations::List
+    extend Telnyx::APIOperations::Create
+    include Telnyx::APIOperations::Delete
+    include Telnyx::APIOperations::Save
 
     OBJECT_NAME = "fqdn_connection".freeze
   end

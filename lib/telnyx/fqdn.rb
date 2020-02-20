@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 module Telnyx
-  class CredentialConnection < APIResource
+  class FQDN < APIResource
     extend Telnyx::APIOperations::List
     extend Telnyx::APIOperations::Create
-    include Telnyx::APIOperations::Save
     include Telnyx::APIOperations::Delete
+    include Telnyx::APIOperations::Save
 
-    OBJECT_NAME = "credential_connection".freeze
+    OBJECT_NAME = "fqdn".freeze
   end
 end

@@ -1,42 +1,40 @@
-
 # frozen_string_literal: true
 
 require_relative "../test_helper"
 
 module Telnyx
-  class IpConnectionTest < Test::Unit::TestCase
-    should "be retrievable" do
-      ip_connection = IpConnection.retrieve "12345"
-      assert_requested :get, "#{Telnyx.api_base}/v2/ip_connections/12345"
-      assert_kind_of IpConnection, ip_connection
-    end
-
-    should "be creatable" do
-      ip_connection = IpConnection.create(ip_address: "0.0.0.0")
-      assert_requested :post, "#{Telnyx.api_base}/v2/ip_connections"
-      assert_kind_of IpConnection, ip_connection
-    end
-
-    should "be listable" do
-      ip_connections = IpConnection.list
+  class IPConnectionTest < Test::Unit::TestCase
+    should "list ip connections" do
+      ip_connections = IPConnection.list
       assert_requested :get, "#{Telnyx.api_base}/v2/ip_connections"
-      assert_kind_of Array, ip_connections.data
-      assert_kind_of IpConnection, ip_connections.first
+      assert_kind_of ListObject, ip_connections
+      assert_kind_of IPConnection, ip_connections.first
     end
 
-    should "be saveable" do
-      ip_connection = IpConnection.retrieve("12345")
-      ip_connection.ip_address = "0.0.0.0"
+    should "create ip connection" do
+      IPConnection.create
+      assert_requested :post, "#{Telnyx.api_base}/v2/ip_connections"
+    end
+
+    should "retrieve ip connection" do
+      ip_connection = IPConnection.retrieve("id")
+      assert_requested :get, "#{Telnyx.api_base}/v2/ip_connections/id"
+      assert_kind_of IPConnection, ip_connection
+    end
+
+    should "delete ip connection" do
+      ip_connection = IPConnection.retrieve("id")
+
+      ip_connection.delete
+      assert_requested :delete, "#{Telnyx.api_base}/v2/ip_connections/id"
+    end
+
+    should "update ip connection" do
+      ip_connection = IPConnection.retrieve("id")
+
+      ip_connection.active = false
       ip_connection.save
-      assert_requested :patch, "#{Telnyx.api_base}/v2/ip_connections/#{ip_connection.id}"
-      assert_kind_of IpConnection, ip_connection
-    end
-
-    should "be deletable" do
-      ip_connection = IpConnection.retrieve("12345")
-      ip_connection = ip_connection.delete
-      assert_requested :delete, "#{Telnyx.api_base}/v2/ip_connections/#{ip_connection.id}"
-      assert_kind_of IpConnection, ip_connection
+      assert_requested :patch, "#{Telnyx.api_base}/v2/ip_connections/id"
     end
   end
 end
