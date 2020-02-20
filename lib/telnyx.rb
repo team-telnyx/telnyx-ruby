@@ -38,7 +38,7 @@ require "telnyx/webhook"
 
 require "telnyx/alphanumeric_sender_id"
 require "telnyx/available_phone_number"
-require "telnyx/billing_group.rb"
+require "telnyx/billing_group"
 require "telnyx/call"
 require "telnyx/conferences"
 require "telnyx/event"
