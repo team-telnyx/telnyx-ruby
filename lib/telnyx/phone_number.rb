@@ -15,6 +15,9 @@ module Telnyx
                                   path: ["messaging"],
                                   operations: %i[update list],
                                   instance_methods: { list: "messaging" }
+    nested_resource_class_methods "inbound_channel",
+                                  path: ["inbound_channels"],
+                                  operations: %i[update list]
 
     def update_messaging(opts)
       self.class.update_messaging(id, nil, opts)
@@ -22,6 +25,14 @@ module Telnyx
 
     def update_voice(opts)
       self.class.update_voice(id, nil, opts)
+    end
+
+    def update_inbound_channels=(val)
+      self.class.update_inbound_channel(nil, nil, channels: val)
+    end
+
+    def inbound_channels
+      self.class.list_inbound_channels(nil).channels
     end
 
     OBJECT_NAME = "phone_number".freeze

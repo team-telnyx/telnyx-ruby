@@ -84,6 +84,44 @@ module Telnyx
         phone_number.update_messaging(messaging_profile_id: "12345", messaging_product: "P2P")
         assert_requested command_stub
       end
+
+      should "list inbound channels" do
+        stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers/123")
+          .to_return(body: JSON.generate(data: mock_response("123")))
+        command_stub = stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers/inbound_channels")
+                       .to_return(body: JSON.generate(
+                         data: {
+                           channels: 7,
+                           record_type: "inbound_channels",
+                         }
+                       ))
+        phone_number = Telnyx::PhoneNumber.retrieve("123")
+        inbound_channels = phone_number.inbound_channels
+        assert_equal inbound_channels, 7
+        assert_requested command_stub
+      end
+
+      should "update inbound channel" do
+        stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers/123")
+          .to_return(body: JSON.generate(data: mock_response("123")))
+        stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers/inbound_channels")
+          .to_return(body: JSON.generate(
+            data: {
+              channels: 7,
+              record_type: "inbound_channels",
+            }
+          ))
+        command_stub = stub_request(:patch, "#{Telnyx.api_base}/v2/phone_numbers/inbound_channels")
+                       .to_return(body: JSON.generate(
+                         data: {
+                           channels: 7,
+                           record_type: "inbound_channels",
+                         }
+                       ))
+        phone_number = Telnyx::PhoneNumber.retrieve("123")
+        phone_number.update_inbound_channels = 3
+        assert_requested command_stub
+      end
     end
 
     def mock_response(id = nil)
