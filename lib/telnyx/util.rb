@@ -65,6 +65,7 @@ module Telnyx
         # 'phone_number_regulatory_group'               => RegulatoryRequirement,
         RegulatoryRequirement::OBJECT_NAME            => RegulatoryRequirement,
         SimCard::OBJECT_NAME                          => SimCard,
+        OutboundVoiceProfile::OBJECT_NAME             => OutboundVoiceProfile,
       }
     end
 
