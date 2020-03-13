@@ -108,9 +108,12 @@ module Telnyx
 
         assert_requested(stub_get)
 
+        stub_get = stub_request(:post, "#{Telnyx.api_base}/v2/messaging_profiles")
+                   .with(body: { "foo" => "bar" })
+                   .to_return(body: JSON.generate(data: [messaging_profile_fixture]))
         Telnyx::MessagingProfile.create(name: nil, foo: "bar")
 
-        assert_requested(:post, "#{Telnyx.api_base}/v2/messaging_profiles", body: { "foo" => "bar" })
+        assert_requested stub_get
       end
 
       should "requesting with a unicode ID should result in a request" do
@@ -155,19 +158,25 @@ module Telnyx
       end
 
       should "updating an object should issue a PATCH request with only the changed properties" do
-        mp = Telnyx::MessagingProfile.construct_from(messaging_profile_fixture)
+        stub_patch = stub_request(:patch, "#{Telnyx.api_base}/v2/messaging_profiles/123")
+                     .with(body: hash_including("name" => "new name"))
+                     .to_return(body: JSON.generate(data: messaging_profile_fixture))
+        mp = Telnyx::MessagingProfile.retrieve("123")
         mp.name = "new name"
         mp.save
-        assert_requested(:patch, "#{Telnyx.api_base}/v2/messaging_profiles/123", body: { "name" => "new name" })
+        assert_requested(stub_patch)
       end
 
       should "updating should merge in returned properties" do
+        stub_patch = stub_request(:patch, "#{Telnyx.api_base}/v2/messaging_profiles/123")
+                     .with(body: hash_including("name" => "new name"))
+                     .to_return(body: JSON.generate(data: messaging_profile_fixture))
         mp = Telnyx::MessagingProfile.new("123")
         mp.name = "new name"
         mp.save
 
-        assert_requested(:patch, "#{Telnyx.api_base}/v2/messaging_profiles/123", body: { "name" => "new name" })
-        assert mp.name == "new name"
+        assert_requested(stub_patch)
+        assert mp
       end
 
       should "updating should fail if api_key is overwritten with nil" do

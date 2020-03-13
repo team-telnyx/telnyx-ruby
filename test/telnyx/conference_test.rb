@@ -3,22 +3,22 @@
 require_relative "../test_helper"
 
 module Telnyx
-  class ConferencesTest < Test::Unit::TestCase
+  class ConferenceTest < Test::Unit::TestCase
     setup do
       @call = create_call
-      @conference = Conferences.create call_control_id: @call.id, name: "conference!"
+      @conference = Conference.create call_control_id: @call.id, name: "conference!"
     end
     should "create conference" do
       assert_requested :post, "#{Telnyx.api_base}/v2/conferences"
-      assert_kind_of Conferences, @conference
+      assert_kind_of Conference, @conference
     end
 
     should "list conferences" do
-      conferences = Conferences.list
+      conferences = Conference.list
 
       assert_requested :get, "#{Telnyx.api_base}/v2/conferences"
       assert_kind_of ListObject, conferences
-      assert_kind_of Conferences, conferences.first
+      assert_kind_of Conference, conferences.first
     end
 
     should "have nested command instance methods" do

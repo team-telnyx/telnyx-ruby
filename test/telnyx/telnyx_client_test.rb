@@ -244,7 +244,7 @@ module Telnyx
               .to_return(body: JSON.generate(object: "account"))
 
             client = TelnyxClient.new
-            client.execute_request(:post, "/v2/messaging_profiles")
+            client.execute_request(:post, "/v2/messaging_profiles", params: { name: "foobar" })
           ensure
             Telnyx.telnyx_account = old
           end
