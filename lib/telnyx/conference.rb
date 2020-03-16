@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Telnyx
-  class Conferences < APIResource
+  class Conference < APIResource
     extend APIOperations::List
     extend APIOperations::Create
     extend APIOperations::NestedResource
@@ -16,4 +16,5 @@ module Telnyx
     end
     OBJECT_NAME = "conference".freeze
   end
+  Conferences = Conference # Name change without breaking existing code
 end
