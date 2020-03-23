@@ -36,6 +36,7 @@ require "telnyx/api_resource"
 require "telnyx/singleton_api_resource"
 require "telnyx/webhook"
 
+require "telnyx/address"
 require "telnyx/alphanumeric_sender_id"
 require "telnyx/available_phone_number"
 require "telnyx/billing_group"

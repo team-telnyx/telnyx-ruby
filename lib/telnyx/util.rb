@@ -39,6 +39,7 @@ module Telnyx
     def self.object_classes
       @object_classes ||= {
         # business objects
+        Address::OBJECT_NAME                          => Address,
         AlphanumericSenderId::OBJECT_NAME             => AlphanumericSenderId,
         AvailablePhoneNumber::OBJECT_NAME             => AvailablePhoneNumber,
         BillingGroup::OBJECT_NAME                     => BillingGroup,

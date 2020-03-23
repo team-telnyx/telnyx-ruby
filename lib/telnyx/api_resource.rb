@@ -20,7 +20,7 @@ module Telnyx
       end
       # Namespaces are separated in object names with periods (.) and in URLs
       # with forward slashes (/), so replace the former with the latter.
-      "/v2/#{self::OBJECT_NAME.downcase.tr('.', '/')}s"
+      const_defined?("RESOURCE_PATH") ? "/v2/#{self::RESOURCE_PATH}" : "/v2/#{self::OBJECT_NAME.downcase.tr('.', '/')}s"
     end
 
     # A metaprogramming call that specifies that a field of a resource can be
