@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Telnyx
-  class DetailRecordsReport < APIResource
+  class WirelessDetailRecordsReport < APIResource
     include APIOperations::Delete
     extend APIOperations::List
     extend APIOperations::Create

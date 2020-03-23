@@ -2,33 +2,33 @@
 
 require_relative "../test_helper"
 module Telnyx
-  class DetailRecordsReportTest < Test::Unit::TestCase
+  class WirelessDetailRecordsReportTest < Test::Unit::TestCase
     should "list detail records report" do
       stub = stub_request(:get, "#{Telnyx.api_base}/v2/wireless/detail_records_reports")
              .to_return(body: JSON.generate(data: [FIXTURE]))
-      detail_records_report = DetailRecordsReport.list
+      detail_records_report = WirelessDetailRecordsReport.list
       # assert_requested :get, "#{Telnyx.api_base}/v2/detail_records_report"
       assert_requested stub
       assert_kind_of ListObject, detail_records_report
-      assert_kind_of DetailRecordsReport, detail_records_report.first
+      assert_kind_of WirelessDetailRecordsReport, detail_records_report.first
     end
 
     should "create detail records report" do
       stub = stub_request(:post, "#{Telnyx.api_base}/v2/wireless/detail_records_reports")
              .to_return(body: JSON.generate(data: FIXTURE))
-      detail_records_report = DetailRecordsReport.create
+      detail_records_report = WirelessDetailRecordsReport.create
       # assert_requested :post, "#{Telnyx.api_base}/v2/detail_records_report"
       assert_requested stub
-      assert_kind_of DetailRecordsReport, detail_records_report
+      assert_kind_of WirelessDetailRecordsReport, detail_records_report
     end
 
     should "retrieve detail records report" do
       stub = stub_request(:get, "#{Telnyx.api_base}/v2/wireless/detail_records_reports/id")
              .to_return(body: JSON.generate(data: FIXTURE))
-      detail_records_report = DetailRecordsReport.retrieve("id")
+      detail_records_report = WirelessDetailRecordsReport.retrieve("id")
       # assert_requested :get, "#{Telnyx.api_base}/v2/detail_records_report/id"
       assert_requested stub
-      assert_kind_of DetailRecordsReport, detail_records_report
+      assert_kind_of WirelessDetailRecordsReport, detail_records_report
     end
 
     should "delete detail records report" do
@@ -36,7 +36,7 @@ module Telnyx
         .to_return(body: JSON.generate(data: FIXTURE))
       stub = stub_request(:delete, "#{Telnyx.api_base}/v2/wireless/detail_records_reports/id")
              .to_return(body: JSON.generate(data: FIXTURE))
-      detail_records_report = DetailRecordsReport.retrieve("id")
+      detail_records_report = WirelessDetailRecordsReport.retrieve("id")
 
       detail_records_report.delete
       # assert_requested :delete, "#{Telnyx.api_base}/v2/detail_records_report/id"
