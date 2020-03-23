@@ -63,6 +63,7 @@ require "telnyx/portout"
 require "telnyx/public_key"
 require "telnyx/regulatory_requirement"
 require "telnyx/sim_card"
+require "telnyx/wireless_detail_records_report"
 
 module Telnyx
   @app_info = nil
