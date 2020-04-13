@@ -12,7 +12,7 @@ module Telnyx
     end
 
     should "create call_control_application" do
-      CallControlApplication.create webhook_event_url: 'example.com', connection_name: 'telnyx'
+      CallControlApplication.create webhook_event_url: "example.com", connection_name: "telnyx"
       assert_requested :post, "#{Telnyx.api_base}/v2/call_control_applications"
     end
 
@@ -32,8 +32,8 @@ module Telnyx
     should "update call_control_application" do
       call_control_application = CallControlApplication.retrieve("id")
 
-      call_control_application.webhook_event_url = 'example.com'
-      call_control_application.connection_name = 'telnyx'
+      call_control_application.webhook_event_url = "example.com"
+      call_control_application.connection_name = "telnyx"
       call_control_application.save
       assert_requested :patch, "#{Telnyx.api_base}/v2/call_control_applications/id"
     end
