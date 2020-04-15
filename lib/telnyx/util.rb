@@ -44,6 +44,7 @@ module Telnyx
         AvailablePhoneNumber::OBJECT_NAME             => AvailablePhoneNumber,
         BillingGroup::OBJECT_NAME                     => BillingGroup,
         Call::OBJECT_NAME                             => Call,
+        CallControlApplication::OBJECT_NAME           => CallControlApplication,
         Conferences::OBJECT_NAME                      => Conferences,
         Connection::OBJECT_NAME                       => Connection,
         CredentialConnection::OBJECT_NAME             => CredentialConnection,
