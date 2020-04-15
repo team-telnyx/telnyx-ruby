@@ -65,6 +65,44 @@ Telnyx::MessagingProfile.list()
 Telnyx::MessagingProfile.retrieve("123")
 ```
 
+
+### Iterating over a resource
+
+API resources are paginated and the library comes with a handful of methods to
+ease dealing with them seemlessly.
+
+```ruby
+# list messaging profiles
+first_page = Telnyx::MessagingProfile.list()
+
+# check whether there are more pages to go through
+if first_page.more?
+  puts("There are still more pages to go.")
+else
+  puts("This is the last page.")
+end
+
+# get current page's size and number
+first_page.page_size
+first_page.page_number
+
+# fetch the next and previous pages
+second_page = first_page.next_page
+first_page = second_page.previous_page
+
+# iterate over the results of a *single page*
+second_page.each do |messaging_profile|
+  puts(messaging_profile.id)
+end
+
+# iterate over *all of the messaging profiles* starting at `first_page`
+# similar to `each`, but requests subsequent pages as needed
+first_page.auto_paging_each do |messaging_profile|
+  puts(messaging_profile.id)
+end
+```
+
+
 ### Configuring a Client
 
 While a default HTTP client is used by default, it's also possible to have the
