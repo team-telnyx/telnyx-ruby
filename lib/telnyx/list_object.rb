@@ -59,23 +59,6 @@ module Telnyx
       end
     end
 
-    # Iterates through each resource in all pages, making additional fetches to
-    # the API as necessary.
-    #
-    # Note that this method will make as many API calls as necessary to fetch
-    # all resources. For more granular control, please see +each+ and
-    # +next_page_by_token+.
-    def auto_paging_each_by_token(&blk)
-      return enum_for(:auto_paging_each_by_token) unless block_given?
-
-      page = self
-      loop do
-        page.each(&blk)
-        page = page.next_page_by_token
-        break if page.empty?
-      end
-    end
-
     # Returns true if the page object contains no elements.
     def empty?
       data.empty?
@@ -99,14 +82,6 @@ module Telnyx
       return self.class.empty_list(opts) unless more?
       next_page_number = page_number.to_i + 1
       pagination = { number: next_page_number, size: page_size(filters) }
-      params = filters.merge(params).merge(page: pagination)
-
-      list(params, opts)
-    end
-
-    def next_page_by_token(params = {}, opts = {})
-      return self.class.empty_list(opts) unless token
-      pagination = { token: token }
       params = filters.merge(params).merge(page: pagination)
 
       list(params, opts)
@@ -141,10 +116,6 @@ module Telnyx
       else
         1
       end
-    end
-
-    def token
-      return meta.next_page_token if meta && meta[:next_page_token]
     end
 
     def resource_url

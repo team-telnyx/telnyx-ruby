@@ -14,7 +14,7 @@ module Telnyx
         #
         # just for general cleanliness, remove any paging options
         obj.filters = filters.dup
-        obj.filters.delete(:page)
+        # obj.filters.delete(:page) # undo this as it interferes with the pagination system...
 
         obj
       end
