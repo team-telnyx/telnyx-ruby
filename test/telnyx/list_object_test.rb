@@ -139,6 +139,52 @@ module Telnyx
     end
 
     #
+    # page_size
+    #
+
+    should "fetch the current page size via #page_size" do
+      list = TestListObject.construct_from(
+        data: [
+          { id: 1 },
+          { id: 2 },
+          { id: 3 }
+        ],
+        meta: {
+          page_size: 5,
+          total_results: 3,
+          total_pages: 1,
+          page_number: 1
+        },
+        url: "/things"
+      )
+
+      assert_equal(list.page_size, 5)
+    end
+
+    #
+    # page_number
+    #
+
+    should "fetch the current page number via #page_number" do
+      list = TestListObject.construct_from(
+        data: [
+          { id: 1 },
+          { id: 2 },
+          { id: 3 }
+        ],
+        meta: {
+          page_size: 5,
+          total_results: 3,
+          total_pages: 1,
+          page_number: 1
+        },
+        url: "/things"
+      )
+
+      assert_equal(list.page_number, 1)
+    end
+
+    #
     # next_page
     #
 
