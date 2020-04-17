@@ -5,7 +5,8 @@
 require "irb"
 require "irb/completion"
 
-require "#{::File.dirname(__FILE__)}/../lib/telnyx"
+$LOAD_PATH.unshift File.expand_path('lib')
+require "telnyx"
 
 # Config IRB to enable --simple-prompt and auto indent
 IRB.conf[:PROMPT_MODE] = :SIMPLE
