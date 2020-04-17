@@ -4,6 +4,10 @@ require ::File.expand_path("../../test_helper", __FILE__)
 
 module Telnyx
   class AlphanumericSenderIdTest < Test::Unit::TestCase
+    setup do
+      omit "alphanumeric ids mock spec removed"
+    end
+
     should "be listable" do
       alphanumeric_sender_ids = Telnyx::AlphanumericSenderId.list
       assert_requested :get, "#{Telnyx.api_base}/v2/alphanumeric_sender_ids"
