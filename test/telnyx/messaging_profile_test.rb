@@ -62,6 +62,7 @@ module Telnyx
     end
 
     should "be able to list alphanumeric sender ids" do
+      omit "alphanumeric ids mock spec removed"
       messaging_profile = Telnyx::MessagingProfile.retrieve("123")
       alphanumeric_sender_ids = messaging_profile.alphanumeric_sender_ids
       assert_requested :get, "#{Telnyx.api_base}/v2/messaging_profiles/123/alphanumeric_sender_ids"

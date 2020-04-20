@@ -5,7 +5,7 @@
 require "irb"
 require "irb/completion"
 
-$LOAD_PATH.unshift File.expand_path('lib')
+$LOAD_PATH.unshift File.expand_path("lib")
 require "telnyx"
 
 # Config IRB to enable --simple-prompt and auto indent

@@ -78,59 +78,6 @@ module Telnyx
       assert_equal expected, actual
     end
 
-    should "provide #auto_paging_each_by_token" do
-      arr = [
-        { id: 1 },
-        { id: 2 },
-        { id: 3 },
-      ]
-      expected = Util.convert_to_telnyx_object(arr, {})
-
-      list = TestListObject.construct_from(data: [{ id: 1 }],
-                                           meta: { next_page_token: "123" },
-                                           url: "/things")
-      stub_request(:get, "#{Telnyx.api_base}/things")
-        .with(query: { page: { token: "123" } })
-        .to_return(body: JSON.generate(data: [{ id: 2 }], meta: { next_page_token: "456" }))
-      stub_request(:get, "#{Telnyx.api_base}/things")
-        .with(query: { page: { token: "456" } })
-        .to_return(body: JSON.generate(data: [{ id: 3 }], meta: { next_page_token: "789" }))
-      stub_request(:get, "#{Telnyx.api_base}/things")
-        .with(query: { page: { token: "789" } })
-        .to_return(body: JSON.generate(data: [], meta: { next_page_token: nil }))
-
-      assert_equal expected, list.auto_paging_each_by_token.to_a
-    end
-
-    should "provide #auto_paging_each_by_token that responds to a block" do
-      arr = [
-        { id: 1 },
-        { id: 2 },
-        { id: 3 },
-      ]
-      expected = Util.convert_to_telnyx_object(arr, {})
-
-      list = TestListObject.construct_from(data: [{ id: 1 }],
-                                           meta: { next_page_token: "123" },
-                                           url: "/things")
-      stub_request(:get, "#{Telnyx.api_base}/things")
-        .with(query: { page: { token: "123" } })
-        .to_return(body: JSON.generate(data: [{ id: 2 }], meta: { next_page_token: "456" }))
-      stub_request(:get, "#{Telnyx.api_base}/things")
-        .with(query: { page: { token: "456" } })
-        .to_return(body: JSON.generate(data: [{ id: 3 }], meta: { next_page_token: "789" }))
-      stub_request(:get, "#{Telnyx.api_base}/things")
-        .with(query: { page: { token: "789" } })
-        .to_return(body: JSON.generate(data: [], meta: { next_page_token: nil }))
-
-      actual = []
-      list.auto_paging_each_by_token do |obj|
-        actual << obj
-      end
-
-      assert_equal expected, actual
-    end
-
     should "provide #empty?" do
       list = Telnyx::ListObject.construct_from(data: [])
       assert list.empty?
@@ -208,7 +155,7 @@ module Telnyx
         .with(query: { page: { number: 2, size: 20 }, enabled: true })
         .to_return(body: JSON.generate(data: [{ id: 2 }], meta: { page_number: 2, total_pages: 2 }))
       next_list = list.next_page
-      assert_equal({ enabled: true }, next_list.filters)
+      assert_equal({ enabled: true, page: { number: 2, size: 20 } }, next_list.filters)
     end
 
     should "fetch an empty page through #next_page" do
@@ -216,41 +163,6 @@ module Telnyx
                                            meta: { page_number: 1, total_pages: 1 },
                                            url: "/things")
       next_list = list.next_page
-      assert_equal Telnyx::ListObject.empty_list, next_list
-    end
-
-    #
-    # next page by token
-    #
-
-    should "fetch a next page through #next_page_by_token" do
-      list = TestListObject.construct_from(data: [{ id: 1 }],
-                                           meta: { next_page_token: "123" },
-                                           url: "/things")
-      stub_request(:get, "#{Telnyx.api_base}/things")
-        .with(query: { page: { token: "123" } })
-        .to_return(body: JSON.generate(data: [{ id: 2 }]))
-      next_list = list.next_page_by_token
-      refute next_list.empty?
-    end
-
-    should "fetch a next page through #next_page_by_token and respect filters" do
-      list = TestListObject.construct_from(data: [{ id: 1 }],
-                                           meta: { next_page_token: "123" },
-                                           url: "/things")
-      list.filters = { enabled: true }
-      stub_request(:get, "#{Telnyx.api_base}/things")
-        .with(query: { page: { token: "123" }, enabled: true })
-        .to_return(body: JSON.generate(data: [{ id: 2 }], meta: { next_page_token: "456" }))
-      next_list = list.next_page_by_token
-      assert_equal({ enabled: true }, next_list.filters)
-    end
-
-    should "fetch an empty page through #next_page_by_token" do
-      list = TestListObject.construct_from(data: [{ id: 1 }],
-                                           meta: {},
-                                           url: "/things")
-      next_list = list.next_page_by_token
       assert_equal Telnyx::ListObject.empty_list, next_list
     end
 
@@ -280,7 +192,7 @@ module Telnyx
 
       next_list = list.previous_page
       assert_requested(stub_get)
-      assert_equal({ enabled: true }, next_list.filters)
+      assert_equal({ enabled: true, page: { number: 1, size: 20 } }, next_list.filters)
     end
   end
 end
