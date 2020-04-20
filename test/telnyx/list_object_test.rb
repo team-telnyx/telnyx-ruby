@@ -94,13 +94,13 @@ module Telnyx
         data: [
           { id: 1 },
           { id: 2 },
-          { id: 3 }
+          { id: 3 },
         ],
         meta: {
           page_size: 5,
           total_results: 3,
           total_pages: 1,
-          page_number: 1
+          page_number: 1,
         },
         url: "/things"
       )
@@ -117,13 +117,13 @@ module Telnyx
         data: [
           { id: 1 },
           { id: 2 },
-          { id: 3 }
+          { id: 3 },
         ],
         meta: {
           page_size: 5,
           total_results: 3,
           total_pages: 1,
-          page_number: 1
+          page_number: 1,
         },
         url: "/things"
       )
