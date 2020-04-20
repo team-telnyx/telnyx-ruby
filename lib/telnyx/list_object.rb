@@ -81,7 +81,7 @@ module Telnyx
     def next_page(params = {}, opts = {})
       return self.class.empty_list(opts) unless more?
       next_page_number = page_number.to_i + 1
-      pagination = { number: next_page_number, size: page_size(filters) }
+      pagination = { number: next_page_number, size: filter_page_size }
       params = filters.merge(params).merge(page: pagination)
 
       list(params, opts)
@@ -94,33 +94,48 @@ module Telnyx
     def previous_page(params = {}, opts = {})
       prev_page_number = page_number.to_i - 1
       prev_page_number = [prev_page_number, 1].max
-      pagination = { number: prev_page_number, size: page_size(filters) }
+      pagination = { number: prev_page_number, size: filter_page_size }
       params = filters.merge(params).merge(page: pagination)
 
       list(params, opts)
     end
 
-    # Fetch the current page size
-    def page_size(params)
-      if params && params[:page] && params[:page][:size]
-        params[:page][:size]
-      else
-        20
-      end
+    # Fetch the current page size from metadata.
+    def page_size
+      from_meta(:page_size, 20)
     end
 
-    # Fetch the current page number
+    # Fetch the current page number from metadata.
     def page_number
-      if meta && meta[:page_number]
-        meta.page_number
-      else
-        1
-      end
+      from_meta(:page_number, 1)
     end
 
     def resource_url
       url ||
         raise(ArgumentError, "List object does not contain a 'url' field.")
+    end
+
+    private
+
+    # Determine page size from filters
+    def filter_page_size
+      if filters && filters[:page] && filters[:page][:size]
+        filters[:page][:size]
+      else
+        20
+      end
+    end
+
+    # Fetches `attribute` from current page metada. If it's not found returns
+    # `default`, which defaults to `nil`.
+    def from_meta(attribute, default = nil)
+      attribute = attribute.to_sym
+
+      if meta && meta[attribute]
+        meta.public_send(attribute)
+      else
+        default
+      end
     end
   end
 end
