@@ -1,7 +1,7 @@
 # Telnyx Ruby Library
 
-[![Build Status](https://travis-ci.org/team-telnyx/telnyx-ruby.svg?branch=master)](https://travis-ci.org/telnyx/telnyx-ruby)
-[![Coverage Status](https://coveralls.io/repos/github/team-telnyx/telnyx-ruby/badge.svg?branch=master)](https://coveralls.io/github/telnyx/telnyx-ruby?branch=master)
+[![Build Status](https://travis-ci.org/team-telnyx/telnyx-ruby.svg?branch=master)](https://travis-ci.org/team-telnyx/telnyx-ruby)
+[![Coverage Status](https://coveralls.io/repos/github/team-telnyx/telnyx-ruby/badge.svg?branch=master)](https://coveralls.io/github/team-telnyx/telnyx-ruby?branch=master)
 
 The Telnyx Ruby library provides convenient access to the Telnyx API from
 applications written in the Ruby language. It includes a pre-defined set of
