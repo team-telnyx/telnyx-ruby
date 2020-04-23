@@ -358,7 +358,7 @@ module Telnyx
         message = "Could not connect to Telnyx (#{api_base}). " \
           "Please check your internet connection and try again. " \
           "If this problem persists, you should check Telnyx's service status at " \
-          "https://twitter.com/telnyxstatus, or let us know at support@telnyx.com."
+          "https://status.telnyx.com, or let us know at support@telnyx.com."
 
       else
         message = "Unexpected error communicating with Telnyx. " \
