@@ -35,6 +35,10 @@ module Telnyx
       self.class.list_inbound_channels(nil).channels
     end
 
+    def self.list_voice
+      list_voices nil
+    end
+
     OBJECT_NAME = "phone_number".freeze
   end
 end

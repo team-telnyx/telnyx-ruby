@@ -41,6 +41,11 @@ module Telnyx
       assert_requested stub
     end
 
+    should "list all voice settings" do
+      Telnyx::PhoneNumber.list_voice
+      assert_requested :get, "#{Telnyx.api_base}/v2/phone_numbers/voice"
+    end
+
     context "nested commands" do
       should "update voice" do
         stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers/123")
