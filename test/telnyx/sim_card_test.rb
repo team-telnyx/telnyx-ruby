@@ -31,13 +31,13 @@ module Telnyx
       should "deactivate" do
         sim = Telnyx::SimCard.retrieve "123"
         sim.deactivate
-        assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/123/actions/deactivate")
+        assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/#{sim.id}/actions/deactivate")
       end
 
       should "activate" do
         sim = Telnyx::SimCard.retrieve "123"
         sim.activate
-        assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/123/actions/activate")
+        assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/#{sim.id}/actions/activate")
       end
     end
   end
