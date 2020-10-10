@@ -22,7 +22,7 @@ module Telnyx
             end
           end
 
-          resp, opts = request(:patch, "#{resource_url}/#{id}", params, opts)
+          resp, opts = request(:patch, identified_resource_url(id), params, opts)
           Util.convert_to_telnyx_object(resp.data, opts)
         end
       end

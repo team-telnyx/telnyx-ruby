@@ -66,7 +66,7 @@ module Telnyx
       should "send all commands" do
         @call = Call.new
         @call.id = "1234"
-        @call.reject
+        @call.reject cause: "CALL_REJECTED"
         assert_requested :post, format_url(@call, "reject")
         @call.answer
         assert_requested :post, format_url(@call, "answer")
@@ -97,7 +97,7 @@ module Telnyx
 
     context "commands" do
       should "reject" do
-        @call.reject
+        @call.reject cause: "CALL_REJECTED"
         assert_requested :post, format_url(@call, "reject")
       end
       should "answer" do
@@ -151,7 +151,7 @@ module Telnyx
     end
 
     def create_call
-      Telnyx::Call.create connection_id: "12345", to: "+15550001111", from: "+15550002222"
+      Telnyx::Call.create connection_id: "12345", to: "+15550001111", from: "+15550002222", cause: "test"
     end
 
     def format_url(call, action)
