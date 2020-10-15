@@ -13,5 +13,10 @@ IRB.conf[:PROMPT_MODE] = :SIMPLE
 IRB.conf[:AUTO_INDENT] = true
 
 puts "Loaded gem 'telnyx'"
+def load_mock_settings!
+  Telnyx.api_base = "http://localhost:12111"
+  Telnyx.api_key = "KEYSUPERSECRET"
+  nil
+end
 
 IRB.start

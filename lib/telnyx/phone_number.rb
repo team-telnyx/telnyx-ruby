@@ -13,7 +13,7 @@ module Telnyx
                                   instance_methods: { list: "voice" }
     nested_resource_class_methods "messaging",
                                   path: ["messaging"],
-                                  operations: %i[update list],
+                                  operations: %i[update list retrieve],
                                   instance_methods: { list: "messaging" }
     nested_resource_class_methods "inbound_channel",
                                   path: ["inbound_channels"],
@@ -37,6 +37,10 @@ module Telnyx
 
     def self.list_voice
       list_voices nil
+    end
+
+    def self.messaging
+      list_messagings(nil)
     end
 
     OBJECT_NAME = "phone_number".freeze

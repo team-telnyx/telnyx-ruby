@@ -58,7 +58,7 @@ module Telnyx
       phone_numbers = messaging_profile.phone_numbers
       assert_requested :get, "#{Telnyx.api_base}/v2/messaging_profiles/123/phone_numbers"
       assert phone_numbers.data.is_a?(Array)
-      assert phone_numbers.data[0].is_a?(Telnyx::MessagingPhoneNumber)
+      assert_kind_of Telnyx::MessagingPhoneNumber, phone_numbers.data[0]
     end
 
     should "be able to list alphanumeric sender ids" do

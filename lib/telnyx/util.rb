@@ -54,6 +54,7 @@ module Telnyx
         IPConnection::OBJECT_NAME                     => IPConnection,
         Message::OBJECT_NAME                          => Message,
         MessagingPhoneNumber::OBJECT_NAME             => MessagingPhoneNumber,
+        "messaging_settings"                          => MessagingPhoneNumber,
         MessagingProfile::OBJECT_NAME                 => MessagingProfile,
         NumberLookup::OBJECT_NAME                     => NumberLookup,
         NumberOrder::OBJECT_NAME                      => NumberOrder,
