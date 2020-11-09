@@ -66,11 +66,12 @@ module Telnyx
         PhoneNumberRegulatoryRequirement::OBJECT_NAME => PhoneNumberRegulatoryRequirement,
         "phone_number_regulatory_group"               => PhoneNumberRegulatoryRequirement,
         Portout::OBJECT_NAME                          => Portout,
-        Profile2FA::OBJECT_NAME                       => Profile2FA,
+        "twofa_profile"                               => Profile2FA,
         PublicKey::OBJECT_NAME                        => PublicKey,
         RegulatoryRequirement::OBJECT_NAME            => RegulatoryRequirement,
         SimCard::OBJECT_NAME                          => SimCard,
-        Verification2FA::OBJECT_NAME                  => Verification2FA,
+        "twofa_verification"                          => Verification2FA,
+        "twofa_code_verify"                           => Verification2FA,
         WirelessDetailRecordsReport::OBJECT_NAME      => WirelessDetailRecordsReport,
       }
     end
