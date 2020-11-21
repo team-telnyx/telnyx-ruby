@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 require "telnyx"
-require "amazing_print" # for displaying the api requests nicely
-require "tty-prompt" # for prettier interactive prompts
+require "amazing_print" # for displaying the api requests nicely.
+require "tty-prompt" # for prettier interactive prompts.
 
 # Telnyx.api_key = "ENTER A YOUR KEY"
-
 raise "Please set your API key in this script!" unless Telnyx.api_key
 
 class Demo
@@ -34,7 +33,7 @@ class Demo
     # Check if we should use the existing one.
     return @profile = existing_profile if existing_profile && @prompt.yes?(%(Found a profile already called "#{profile_name}", would you like to use that instead of creating a new profile?))
 
-    # Create a new profile
+    # Create a new profile.
     @profile = Telnyx::Profile2FA.create name: profile_name
   end
 
@@ -51,13 +50,13 @@ class Demo
     loop do
       # Ask the user for the verification code.
       code = @prompt.ask "Enter verification code:"
-      # Ask the api if this is teh correct code.
-      response = Telnyx::Verification2FA.submit_code code: code, phone_number: @verification.data.phone_number # BUG!! verification is not being cast to Telnyx::Verification2FA, #data should not be needed
+      # Ask the api if this is the correct code.
+      response = Telnyx::Verification2FA.submit_code code: code, phone_number: @verification.data.phone_number # BUG!! verification is not being cast to Telnyx::Verification2FA, #data should not be needed.
       puts "Api responded with:"
       ap response
 
       # If it's not the right code try again.
-      break if response.data.response_code == "accepted" # BUG!! verification is not being cast to Telnyx::Verification2FA, #data should not be needed
+      break if response.data.response_code == "accepted" # BUG!! verification is not being cast to Telnyx::Verification2FA, #data should not be needed.
 
       puts "\e[31mIncorrect code, try again!\e[0m"
       create_profile if @prompt.yes?("Resend code?")
