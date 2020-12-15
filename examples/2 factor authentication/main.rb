@@ -4,8 +4,8 @@ require "telnyx"
 require "amazing_print" # for displaying the api requests nicely.
 require "tty-prompt" # for prettier interactive prompts.
 
-# Telnyx.api_key = "ENTER A YOUR KEY"
-raise "Please set your API key in this script!" unless Telnyx.api_key
+Telnyx.api_key = ENV["TELNYX_KEY"] # Set your key here
+raise "Please set your API key in this script, or set the TELNYX_KEY env variable!" unless Telnyx.api_key
 
 class Demo
   def initialize
@@ -29,19 +29,19 @@ class Demo
     # Ask what to call the new verification profile.
     profile_name = @prompt.ask("Profile name:", default: "demo profile")
     # Check if we already created a demo profile.
-    existing_profile = Telnyx::Profile2FA.list.first { |p| p.name == profile_name }
+    existing_profile = Telnyx::VerifyProfile.list.first { |p| p.name == profile_name }
     # Check if we should use the existing one.
     return @profile = existing_profile if existing_profile && @prompt.yes?(%(Found a profile already called "#{profile_name}", would you like to use that instead of creating a new profile?))
 
     # Create a new profile.
-    @profile = Telnyx::Profile2FA.create name: profile_name
+    @profile = Telnyx::VerifyProfile.create name: profile_name
   end
 
   def verify
     # Create a new verification, this will send a code via SMS to the number provided.
-    @verification = Telnyx::Verification2FA.create(
+    @verification = Telnyx::Verification.create(
       type: "sms",
-      twofa_profile_id: @profile.id,
+      verify_profile_id: @profile.id,
       phone_number: @prompt.ask("Enter a phone number to send a verification code to (must be e164 format, e.g., +15554443333):", value: "+1") { |p| p.validate(/^\+?[1-9]\d{1,14}$/) }
     )
   end
@@ -51,12 +51,12 @@ class Demo
       # Ask the user for the verification code.
       code = @prompt.ask "Enter verification code:"
       # Ask the api if this is the correct code.
-      response = Telnyx::Verification2FA.submit_code code: code, phone_number: @verification.data.phone_number # BUG!! verification is not being cast to Telnyx::Verification2FA, #data should not be needed.
+      response = Telnyx::Verification.submit_code code: code, phone_number: @verification.phone_number
       puts "Api responded with:"
       ap response
 
       # If it's not the right code try again.
-      break if response.data.response_code == "accepted" # BUG!! verification is not being cast to Telnyx::Verification2FA, #data should not be needed.
+      break if response.response_code == "accepted"
 
       puts "\e[31mIncorrect code, try again!\e[0m"
       create_profile if @prompt.yes?("Resend code?")

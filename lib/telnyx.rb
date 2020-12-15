@@ -61,11 +61,11 @@ require "telnyx/outbound_voice_profile"
 require "telnyx/phone_number_regulatory_requirement"
 require "telnyx/phone_number"
 require "telnyx/portout"
-require "telnyx/profile_2fa"
 require "telnyx/public_key"
 require "telnyx/regulatory_requirement"
 require "telnyx/sim_card"
-require "telnyx/verification_2fa"
+require "telnyx/verification"
+require "telnyx/verify_profile"
 require "telnyx/wireless_detail_records_report"
 
 module Telnyx

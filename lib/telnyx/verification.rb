@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 module Telnyx
-  class Verification2FA < APIResource
+  class Verification < APIResource
+    # Type for verification responses
+    class Response < TelnyxObject; end
+
     extend APIOperations::Create
     extend APIOperations::NestedResource
 
@@ -13,11 +16,12 @@ module Telnyx
                                   }
 
     def self.submit_code(phone_number: nil, code: nil)
-      url = "#{resource_url}/by_tn/#{CGI.escape phone_number}/actions/verify"
+      url = "#{resource_url}/by_phone_number/#{CGI.escape phone_number}/actions/verify"
       resp, _opts = request(:post, url, code: code)
-      Util.convert_to_telnyx_object(resp.data)
+      Response.construct_from resp.data[:data]
     end
 
-    OBJECT_NAME = "2fa_verification".freeze
+    OBJECT_NAME = "verify_verification".freeze
+    RESOURCE_PATH = "verifications"
   end
 end
