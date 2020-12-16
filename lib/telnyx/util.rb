@@ -66,9 +66,12 @@ module Telnyx
         PhoneNumberRegulatoryRequirement::OBJECT_NAME => PhoneNumberRegulatoryRequirement,
         "phone_number_regulatory_group"               => PhoneNumberRegulatoryRequirement,
         Portout::OBJECT_NAME                          => Portout,
+        VerifyProfile::OBJECT_NAME                    => VerifyProfile,
         PublicKey::OBJECT_NAME                        => PublicKey,
         RegulatoryRequirement::OBJECT_NAME            => RegulatoryRequirement,
         SimCard::OBJECT_NAME                          => SimCard,
+        Verification::OBJECT_NAME                     => Verification,
+        "verification"                                => Verification::Response,
         WirelessDetailRecordsReport::OBJECT_NAME      => WirelessDetailRecordsReport,
       }
     end
@@ -87,7 +90,7 @@ module Telnyx
     #
     # ==== Attributes
     #
-    # * +data+ - Hash of fields and values to be converted into a TelnyxObject.
+    # * +Data+ - Hash of fields and values to be converted into a TelnyxObject.
     # * +opts+ - Options for +TelnyxObject+ like an API key that will be reused
     #   on subsequent API calls.
     def self.convert_to_telnyx_object(data, opts = {})
