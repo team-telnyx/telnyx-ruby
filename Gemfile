@@ -22,7 +22,7 @@ group :development do
   gem "guard"
   gem "guard-rake"
   gem "guard-rubocop"
-  gem "rubocop", "0.50.0"
+  gem "rubocop", "~> 1.6"
 
   # Rack 2.0+ requires Ruby >= 2.2.2 which is problematic for the test suite on
   # older Ruby versions. Check Ruby the version here and put a maximum
@@ -34,8 +34,8 @@ group :development do
   end
 
   platforms :mri do
-    gem "byebug"
-    gem "pry"
-    gem "pry-byebug"
+    # gem "byebug"
+    # gem "pry"
+    # gem "pry-byebug"
   end
 end

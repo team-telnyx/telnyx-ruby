@@ -14,13 +14,22 @@ module Telnyx
       name.split("::")[-1]
     end
 
-    def self.resource_url
+    def self.resource_url(inner_id = nil)
       if self == APIResource
         raise NotImplementedError, "APIResource is an abstract class. You should perform actions on its subclasses"
       end
       # Namespaces are separated in object names with periods (.) and in URLs
       # with forward slashes (/), so replace the former with the latter.
-      const_defined?("RESOURCE_PATH") ? "/v2/#{self::RESOURCE_PATH}" : "/v2/#{self::OBJECT_NAME.downcase.tr('.', '/')}s"
+      return "/v2/#{resource_path(inner_id)}" if respond_to?("resource_path")
+      return "/v2/#{self::RESOURCE_PATH}" if const_defined?("RESOURCE_PATH")
+
+      "/v2/#{self::OBJECT_NAME.downcase.tr('.', '/')}s"
+    end
+
+    def self.identified_resource_url(id)
+      return "/v2/#{resource_path(id)}" if respond_to?("resource_path")
+
+      "#{resource_url}/#{CGI.escape(id)}"
     end
 
     # A metaprogramming call that specifies that a field of a resource can be
@@ -51,6 +60,8 @@ module Telnyx
       unless (id = self["id"])
         raise InvalidRequestError, "Could not determine which URL to request: #{self.class} instance has invalid ID: #{id.inspect}"
       end
+      return self.class.resource_url(id).to_s if self.class.respond_to?("resource_path") # Use resource_path defined paths
+
       "#{self.class.resource_url}/#{CGI.escape(id)}"
     end
 

@@ -69,41 +69,29 @@ module Telnyx
         assert_equal voice.data.connection_id, "456"
       end
 
+      should "list messaging" do
+        list = Telnyx::PhoneNumber.messaging
+        assert_kind_of Telnyx::ListObject, list
+        assert_requested :get, "#{Telnyx.api_base}/v2/phone_numbers/messaging"
+      end
+
       should "get messaging" do
-        stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers/123")
-          .to_return(body: JSON.generate(data: mock_response("123")))
-        command_stub = stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers/123/messaging")
-                       .to_return(body: JSON.generate(data: mock_messaging_response("456")))
         phone_number = Telnyx::PhoneNumber.retrieve("123")
         phone_number.messaging
-        assert_requested command_stub
+        assert_requested :get, "#{Telnyx.api_base}/v2/phone_numbers/123/messaging"
       end
 
       should "update messaging" do
-        stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers/123")
-          .to_return(body: JSON.generate(data: mock_response("123")))
-        command_stub = stub_request(:patch, "#{Telnyx.api_base}/v2/phone_numbers/123/messaging")
-                       .with(body: { messaging_profile_id: "12345", messaging_product: "P2P" })
-                       .to_return(body: JSON.generate(data: mock_messaging_response))
         phone_number = Telnyx::PhoneNumber.retrieve("123")
         phone_number.update_messaging(messaging_profile_id: "12345", messaging_product: "P2P")
-        assert_requested command_stub
+        assert_requested :patch, "#{Telnyx.api_base}/v2/phone_numbers/123/messaging"
       end
 
       should "list inbound channels" do
-        stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers/123")
-          .to_return(body: JSON.generate(data: mock_response("123")))
-        command_stub = stub_request(:get, "#{Telnyx.api_base}/v2/phone_numbers/inbound_channels")
-                       .to_return(body: JSON.generate(
-                         data: {
-                           channels: 7,
-                           record_type: "inbound_channels",
-                         }
-                       ))
         phone_number = Telnyx::PhoneNumber.retrieve("123")
         inbound_channels = phone_number.inbound_channels
         assert_equal inbound_channels, 7
-        assert_requested command_stub
+        assert_requested :get, "#{Telnyx.api_base}/v2/phone_numbers/inbound_channels"
       end
 
       should "update inbound channel" do

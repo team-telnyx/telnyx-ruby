@@ -28,16 +28,16 @@ module Telnyx
     end
 
     context "actions" do
-      should "deactivate" do
+      should "disable" do
         sim = Telnyx::SimCard.retrieve "123"
-        sim.deactivate
-        assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/#{sim.id}/actions/deactivate")
+        sim.disable
+        assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/#{sim.id}/actions/disable")
       end
 
-      should "activate" do
+      should "enable" do
         sim = Telnyx::SimCard.retrieve "123"
-        sim.activate
-        assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/#{sim.id}/actions/activate")
+        sim.enable
+        assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/#{sim.id}/actions/enable")
       end
     end
   end
