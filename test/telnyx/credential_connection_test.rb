@@ -13,10 +13,10 @@ module Telnyx
 
     should "create credential connection" do
       CredentialConnection.create(
-                                  connection_name: "Test connection_name",
-                                  user_name: "Test user_name",
-                                  password: "correct-horse-battery-staple"
-                                  )
+        connection_name: "Test connection_name",
+        user_name: "Test user_name",
+        password: "correct-horse-battery-staple"
+      )
       assert_requested :post, "#{Telnyx.api_base}/v2/credential_connections"
     end
 
