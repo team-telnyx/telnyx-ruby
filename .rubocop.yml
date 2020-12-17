@@ -1,18 +1,15 @@
-inherit_from: .rubocop_todo.yml
-
 
 AllCops:
   DisplayCopNames: true
-  TargetRubyVersion: 2.4
-  NewCops: disable
+  TargetRubyVersion: 2.0
 
 Layout/CaseIndentation:
   EnforcedStyle: end
 
-Layout/FirstArrayElementIndentation:
+Layout/IndentArray:
   EnforcedStyle: consistent
 
-Layout/FirstHashElementIndentation:
+Layout/IndentHash:
   EnforcedStyle: consistent
 
 Metrics/MethodLength:
@@ -29,3 +26,36 @@ Style/FrozenStringLiteralComment:
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Metrics/AbcSize:
+  Max: 52
+
+Metrics/BlockLength:
+  Max: 498
+
+Metrics/ClassLength:
+  Max: 659
+
+# Offense count: 11
+Metrics/CyclomaticComplexity:
+  Max: 15
+
+Metrics/LineLength:
+  Max: 310
+
+Metrics/ParameterLists:
+  Max: 7
+
+Metrics/PerceivedComplexity:
+  Max: 17
+
+Style/ClassVars:
+  Exclude:
+    - 'lib/telnyx/telnyx_object.rb'
+    - 'test/telnyx/api_resource_test.rb'
+
+Style/Documentation:
+  Enabled: false
