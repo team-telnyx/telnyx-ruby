@@ -1,52 +1,48 @@
 language: ruby
-
-
 rvm:
-  - 2.1
-  - 2.2
-  - 2.3
-  - 2.4
-  - 2.5
-  - 2.6
-  - 2.7
-
+- 2.1
+- 2.2
+- 2.3
+- 2.4
+- 2.5
+- 2.6
+- 2.7
 matrix:
   include:
-    - rvm: jruby-9.2.13.0
-      jdk: oraclejdk11
-
-
+  - rvm: jruby-9.2.13.0
+    jdk: oraclejdk11
 notifications:
   email:
     on_success: never
   slack:
     secure: AMXcZSwIL8SRZQ+opSFrlvNKoUXv1rZkWDgorBmz+BEHwGKWgVzYcZ4GwD5p6Z5uNdtvl9FZz6oLvvAcbW6CblbAPM+f2qLVDlZ/sazpOK8l6QIo7X86U3SuwJicY2CbbKvqN/A3u23Bbvf5u4djvm5oc73qASZY/RJHxm2xcmD57+z6hY12AvWtLJN95BsjVZ9RHXy8/qkJehqGnzSi9VGojNmd0voU9UrxJU0xS10kBA7dQFCCf+NZv9utguyFfAATpa9JTlD1a8QiB2fzvdPkBym1bnqr3nQPk5rNbgiFHf14OIlq7C2jwaNNoB1dDpkT/Vfvmn5EHzBDZQ30PrVpq9uNgQg45pOIMXp9ZLY0zYi/Gzk5tF/lTKUxk5evJ2+2Dtmzv4mzbk98pvGrA+MIkSXuYy6GHZuXanb3OQ5y42dSYVdy1c+WHdbYx1LOJSEGtALr9ADyjDu9KAu2eJMnmGQ14cJarl/33BF4UzCRKpPxV5CwOqI82+fK9pNiW0CLijfxpkFr9aaxViVsf43r5Ag12Jqme18IWCGJ1P5sMEo6bz/Gp4BuVMXQtYExorK+fWkrm1Wus6HGINlRonUswJ9LJ995M384j6KyP1121MJuiPAc1AdNqS1C992j/cDoUDlxsxW9HTX15nGoM712w00wNrj/vdQt0TlmENo=
-
 sudo: false
-
 env:
   global:
-    # If changing this number, please also change it in `test/test_helper.rb`.
-    - TELNYX_MOCK_VERSION=0.8.10
-
+  - TELNYX_MOCK_VERSION=0.8.10
 cache:
   directories:
-    - telnyx-mock
-
+  - telnyx-mock
 before_install:
-  # Install bundler 1.x, because we need to support Ruby 2.1 for now
-  - gem install bundler -v "~> 1.0"
-  # Unpack and start telnyx-mock so that the test suite can talk to it
-  - |
-    if [ ! -d "telnyx-mock/telnyx-mock_${TELNYX_MOCK_VERSION}" ]; then
-      mkdir -p telnyx-mock/${TELNYX_MOCK_VERSION}/
-      curl -L "https://github.com/team-telnyx/telnyx-mock/releases/download/v${TELNYX_MOCK_VERSION}/telnyx-mock_${TELNYX_MOCK_VERSION}_linux_amd64.tar.gz" -o "telnyx-mock/telnyx-mock_${TELNYX_MOCK_VERSION}_linux_amd64.tar.gz"
-      tar -zxf "telnyx-mock/telnyx-mock_${TELNYX_MOCK_VERSION}_linux_amd64.tar.gz" -C "telnyx-mock/${TELNYX_MOCK_VERSION}/"
-    fi
-  - |
-    telnyx-mock/${TELNYX_MOCK_VERSION}/telnyx-mock > /dev/null &
-    TELNYX_MOCK_PID=$!
-  - export PATH="${PATH}:${PWD}/telnyx-mock/${TELNYX_MOCK_VERSION}"
-
+- gem install bundler -v "~> 1.0"
+- |
+  if [ ! -d "telnyx-mock/telnyx-mock_${TELNYX_MOCK_VERSION}" ]; then
+    mkdir -p telnyx-mock/${TELNYX_MOCK_VERSION}/
+    curl -L "https://github.com/team-telnyx/telnyx-mock/releases/download/v${TELNYX_MOCK_VERSION}/telnyx-mock_${TELNYX_MOCK_VERSION}_linux_amd64.tar.gz" -o "telnyx-mock/telnyx-mock_${TELNYX_MOCK_VERSION}_linux_amd64.tar.gz"
+    tar -zxf "telnyx-mock/telnyx-mock_${TELNYX_MOCK_VERSION}_linux_amd64.tar.gz" -C "telnyx-mock/${TELNYX_MOCK_VERSION}/"
+  fi
+- |
+  telnyx-mock/${TELNYX_MOCK_VERSION}/telnyx-mock > /dev/null &
+  TELNYX_MOCK_PID=$!
+- export PATH="${PATH}:${PWD}/telnyx-mock/${TELNYX_MOCK_VERSION}"
 script:
-  - bundle exec rake
+- bundle exec rake
+deploy:
+  provider: rubygems
+  api_key:
+    secure: XHd4bArCZLBUw52X/d+X09tQZJwrTy68DF//i8JZDTJ3mCyw3z937DK9T58WM0ohipv1V4rjgjNPfDd0DegAUeYBwxaZo5ld57EhhKU/nk7xwtNpsrgSrg1HSh7OOYwze8c0pD6m4F467HgAoit0+mLtIDqYjJjQ+vY6bG/p47Bv63EWHEHqypB/JjbIyhpek6rC85LAF+dre27OXsUBBoB7XAdurIYYwQM0PYIxw9DaUNDuCLEr1gNH9XlZt0OUyijM7m5aVbec2REYW9OvCbRYJ8fX5DbSBKObR/NZzRhMSnVBqZyy5/GwjsuSR0Efe5THz3XAlmNWqQPhwvCKVkqkHZ6k7l7D6BL5wrlpDm8nappEj2HTXZJ6cYS+SHcSdCSiYuyGIm/caucWk91mwcKmuJyehLAQyt9K9P7V18oITFoAmISVT2S2YUhRmwl0k6OUfRc1Dg61rgXhWwI5QMxJWpC5oHrBi7Xbbu/CUpMJsZ/pklpUf7LeGP2G+zoONO9/nWnCBLP1y0FfRt7IvNtGwgkbVkDU/kQTOO5YLHoX/1L9jy2+H/DZ5Bnklwj6CsNywsmZWrkL+9QHmneOiXbsNy7mWy+uDdpN740tzgoQPrDC6J4R2aNrXBdHF1whXHAOH4zmq/9mLYm4U6QjvTH4Sy3ClnA6WmqqlO3FswU=
+  gem: telnyx
+  on:
+    tags: true
+    repo: team-telnyx/telnyx-ruby
+  skip_cleanup: 'true'
