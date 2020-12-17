@@ -22,6 +22,6 @@ module Telnyx
     end
 
     OBJECT_NAME = "verify_verification".freeze
-    RESOURCE_PATH = "verifications"
+    RESOURCE_PATH = "verifications".freeze
   end
 end
