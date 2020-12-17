@@ -1,6 +1,6 @@
 # Telnyx Ruby Library
 
-![Build Status](https://github.com/team-telnyx/telnyx-ruby/workflows/ruby.yml/badge.svg)
+![Build Status](https://github.com/team-telnyx/telnyx-ruby/workflows/Ruby/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/team-telnyx/telnyx-ruby/badge.svg?branch=master)](https://coveralls.io/github/team-telnyx/telnyx-ruby?branch=master)
 [![Join Slack](https://img.shields.io/badge/join-slack-infomational)](https://joinslack.telnyx.com/)
 
