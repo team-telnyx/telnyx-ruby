@@ -48,6 +48,8 @@ module Telnyx
         Conferences::OBJECT_NAME                      => Conferences,
         Connection::OBJECT_NAME                       => Connection,
         CredentialConnection::OBJECT_NAME             => CredentialConnection,
+        Fax::OBJECT_NAME                              => Fax,
+        FaxApplication::OBJECT_NAME                   => FaxApplication,
         FQDN::OBJECT_NAME                             => FQDN,
         FQDNConnection::OBJECT_NAME                   => FQDNConnection,
         IP::OBJECT_NAME                               => IP,
