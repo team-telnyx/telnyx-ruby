@@ -12,7 +12,7 @@ module Telnyx
     end
 
     should "create fqdn connection" do
-      FQDNConnection.create
+      FQDNConnection.create(connection_name: "test")
       assert_requested :post, "#{Telnyx.api_base}/v2/fqdn_connections"
     end
 
