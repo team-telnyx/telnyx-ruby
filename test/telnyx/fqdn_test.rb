@@ -12,7 +12,7 @@ module Telnyx
     end
 
     should "create fqdn" do
-      FQDN.create fqdn: "example.com"
+      FQDN.create fqdn: "example.com", dns_record_type: "A", connection_id: "abc"
       assert_requested :post, "#{Telnyx.api_base}/v2/fqdns"
     end
 
