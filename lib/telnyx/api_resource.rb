@@ -72,7 +72,7 @@ module Telnyx
 
     def self.retrieve(id, opts = {})
       opts = Util.normalize_opts(opts)
-      instance = new(id, opts)
+      instance = new(id, **opts)
       instance.refresh
       instance
     end
