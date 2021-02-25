@@ -6,7 +6,7 @@ gemspec
 
 group :development do
   gem "coveralls", require: false
-  gem "faraday", "0.17.3"
+  gem "faraday", "~> 1.0"
   gem "mocha", "~> 0.13.2"
   gem "rake"
   gem "shoulda-context"
