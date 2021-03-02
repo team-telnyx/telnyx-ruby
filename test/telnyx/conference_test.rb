@@ -5,12 +5,17 @@ require_relative "../test_helper"
 module Telnyx
   class ConferenceTest < Test::Unit::TestCase
     setup do
-      @call = create_call
-      @conference = Conference.create call_control_id: @call.id, name: "conference!"
+      @conference = Conference.create call_control_id: "foobar", name: "conference!"
     end
     should "create conference" do
       assert_requested :post, "#{Telnyx.api_base}/v2/conferences"
       assert_kind_of Conference, @conference
+    end
+
+    should "retrieve conference" do
+      conference = Conference.retrieve "foobar"
+      assert_kind_of Conference, conference
+      assert_requested :get, "#{Telnyx.api_base}/v2/conferences/foobar"
     end
 
     should "list conferences" do
@@ -26,42 +31,56 @@ module Telnyx
       assert defined? @conference.mute
       assert defined? @conference.unmute
       assert defined? @conference.unhold
+      assert defined? @conference.play
+      assert defined? @conference.start_recording
+      assert defined? @conference.stop_recording
+      assert defined? @conference.speak
     end
 
     context "commands" do
       should "join" do
-        stub = stub_request(:post, format_url(@conference, "join"))
-               .to_return(body: JSON.generate(result: "ok"))
-        @conference.join
-        assert_requested stub
+        @conference.join call_control_id: "foo_bar_baz"
+        assert_requested :post, action_url(@conference, "join")
       end
 
       should "mute" do
-        stub = stub_request(:post, format_url(@conference, "mute"))
-               .to_return(body: JSON.generate(result: "ok"))
         @conference.mute
-        assert_requested stub
+        assert_requested :post, action_url(@conference, "mute")
       end
 
       should "unmute" do
-        stub = stub_request(:post, format_url(@conference, "unmute"))
-               .to_return(body: JSON.generate(result: "ok"))
         @conference.unmute
-        assert_requested stub
+        assert_requested :post, action_url(@conference, "unmute")
       end
 
       should "hold" do
-        stub = stub_request(:post, format_url(@conference, "hold"))
-               .to_return(body: JSON.generate(result: "ok"))
         @conference.hold
-        assert_requested stub
+        assert_requested :post, action_url(@conference, "hold")
       end
 
       should "unhold" do
-        stub = stub_request(:post, format_url(@conference, "unhold"))
-               .to_return(body: JSON.generate(result: "ok"))
-        @conference.unhold
-        assert_requested stub
+        @conference.unhold call_control_ids: %w[foo bar baz]
+        assert_requested :post, action_url(@conference, "unhold")
+      end
+
+      should "play" do
+        @conference.play audio_url: "https://example.com/audio.mp3"
+        assert_requested :post, action_url(@conference, "play")
+      end
+
+      should "start recording" do
+        @conference.start_recording channels: "dual", format: "mp3"
+        assert_requested :post, action_url(@conference, "record_start")
+      end
+
+      should "stop recording" do
+        @conference.stop_recording
+        assert_requested :post, action_url(@conference, "record_stop")
+      end
+
+      should "speak" do
+        @conference.speak language: "en-US", payload: "test speech", voice: "female"
+        assert_requested :post, action_url(@conference, "speak")
       end
     end
 
@@ -69,7 +88,7 @@ module Telnyx
       Telnyx::Call.create connection_id: "12345", to: "+15550001111", from: "+15550002222"
     end
 
-    def format_url(conf, action)
+    def action_url(conf, action)
       "#{Telnyx.api_base}/v2/conferences/#{conf.id}/actions/#{action}"
     end
   end
