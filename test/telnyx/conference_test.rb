@@ -26,6 +26,12 @@ module Telnyx
       assert_kind_of Conference, conferences.first
     end
 
+    should "list participants" do
+      participants = @conference.participants
+      assert_requested :get, "#{Telnyx.api_base}/v2/conferences/#{@conference.id}/participants"
+      assert_kind_of ListObject, participants
+    end
+
     should "have nested command instance methods" do
       assert defined? @conference.join
       assert defined? @conference.mute
@@ -35,6 +41,8 @@ module Telnyx
       assert defined? @conference.start_recording
       assert defined? @conference.stop_recording
       assert defined? @conference.speak
+      assert defined? @conference.dial_participant
+      assert defined? @conference.update
     end
 
     context "commands" do
@@ -81,6 +89,16 @@ module Telnyx
       should "speak" do
         @conference.speak language: "en-US", payload: "test speech", voice: "female"
         assert_requested :post, action_url(@conference, "speak")
+      end
+
+      should "dial participant" do
+        @conference.dial_participant call_control_id: "foo", to: "+12223334444", from: "+12223335555"
+        assert_requested :post, action_url(@conference, "dial_participant")
+      end
+
+      should "update" do
+        @conference.update call_control_id: "foo"
+        assert_requested :post, action_url(@conference, "update")
       end
     end
 

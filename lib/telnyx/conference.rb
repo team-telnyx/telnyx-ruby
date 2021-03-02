@@ -6,7 +6,7 @@ module Telnyx
     extend APIOperations::Create
     extend APIOperations::NestedResource
 
-    ACTIONS = %w[join mute unmute hold unhold speak play].freeze
+    ACTIONS = %w[join mute unmute hold unhold speak play dial_participant update].freeze
 
     ACTIONS.each do |action|
       nested_resource_class_methods action,
@@ -24,6 +24,11 @@ module Telnyx
                                   path: ["actions", "record_stop"],
                                   operations: [:create],
                                   instance_methods: { create: "stop_recording" }
+
+    nested_resource_class_methods "participants",
+                                  path: "participants",
+                                  operations: [:list],
+                                  instance_methods: { list: "participants" }
 
     OBJECT_NAME = "conference".freeze
   end
