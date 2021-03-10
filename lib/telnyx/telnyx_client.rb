@@ -310,30 +310,21 @@ module Telnyx
         json_body: resp.data,
       }
 
-      case resp.http_status
-      when 400
-        InvalidRequestError.new(error_list, opts)
-      when 401
-        AuthenticationError.new(error_list, opts)
-      when 403
-        PermissionError.new(error_list, opts)
-      when 404
-        ResourceNotFoundError.new(error_list, opts)
-      when 405
-        MethodNotSupportedError.new(error_list, opts)
-      when 408
-        TimeoutError.new(error_list, opts)
-      when 422
-        InvalidParametersError.new(error_list, opts)
-      when 429
-        RateLimitError.new(error_list, opts)
-      when 500
-        APIError.new(error_list, opts)
-      when 503
-        ServiceUnavailableError.new(error_list, opts)
-      else
-        APIError.new(error_list, opts)
-      end
+      err_class = case resp.http_status
+                  when 400 then InvalidRequestError
+                  when 401 then AuthenticationError
+                  when 403 then PermissionError
+                  when 404 then ResourceNotFoundError
+                  when 405 then MethodNotSupportedError
+                  when 408 then TimeoutError
+                  when 422 then InvalidParametersError
+                  when 429 then RateLimitError
+                  when 500 then APIError
+                  when 503 then ServiceUnavailableError
+                  else APIError
+                  end
+
+      err_class.new(error_list, **opts)
     end
 
     def handle_network_error(e, context, num_retries, api_base = nil)
