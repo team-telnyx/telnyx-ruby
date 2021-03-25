@@ -240,7 +240,7 @@ module Telnyx
         end
 
         case e
-        when Faraday::ClientError
+        when Faraday::Error
           if e.response
             handle_error_response(e.response, error_context)
           else
