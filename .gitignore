@@ -7,3 +7,5 @@ tags
 coverage/
 .idea/
 vendor/*
+TAGS
+.ruby-version
