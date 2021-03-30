@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   }
 
   s.add_dependency("faraday", ">= 0.13", "< 2.0", "!= 0.16.0", "!= 0.16.1", "!= 0.16.2", "!= 0.17.1")
-  s.add_dependency("net-http-persistent", "~> 3.0")
+  s.add_dependency("net-http-persistent", ">= 3.0", "< 5.0")
   s.add_dependency("ed25519", "~> 1")
 
   s.files = `git ls-files`.split("\n")
