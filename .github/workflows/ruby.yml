@@ -16,7 +16,7 @@ on:
 jobs:
   test:
     env:
-      TELNYX_MOCK_VERSION: 0.8.10
+      TELNYX_MOCK_VERSION: 0.8.12
     runs-on: ubuntu-latest
     strategy:
       matrix:
