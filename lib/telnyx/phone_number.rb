@@ -35,8 +35,8 @@ module Telnyx
       self.class.list_inbound_channels(nil).channels
     end
 
-    def self.list_voice
-      list_voices nil
+    def self.list_voice(*args, **kwargs)
+      list_voices(nil, *args, **kwargs)
     end
 
     def self.messaging

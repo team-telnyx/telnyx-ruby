@@ -235,19 +235,17 @@ module Telnyx
 
       context "Telnyx-Account header" do
         should "use a globally set header" do
-          begin
-            old = Telnyx.telnyx_account
-            Telnyx.telnyx_account = "acct_1234"
+          old = Telnyx.telnyx_account
+          Telnyx.telnyx_account = "acct_1234"
 
-            stub_request(:post, "#{Telnyx.api_base}/v2/messaging_profiles")
-              .with(headers: { "Telnyx-Account" => Telnyx.telnyx_account })
-              .to_return(body: JSON.generate(object: "account"))
+          stub_request(:post, "#{Telnyx.api_base}/v2/messaging_profiles")
+            .with(headers: { "Telnyx-Account" => Telnyx.telnyx_account })
+            .to_return(body: JSON.generate(object: "account"))
 
-            client = TelnyxClient.new
-            client.execute_request(:post, "/v2/messaging_profiles", params: { name: "foobar" })
-          ensure
-            Telnyx.telnyx_account = old
-          end
+          client = TelnyxClient.new
+          client.execute_request(:post, "/v2/messaging_profiles", params: { name: "foobar" })
+        ensure
+          Telnyx.telnyx_account = old
         end
 
         should "use a locally set header" do
@@ -274,40 +272,38 @@ module Telnyx
 
       context "app_info" do
         should "send app_info if set" do
-          begin
-            old = Telnyx.app_info
-            Telnyx.set_app_info(
-              "MyAwesomePlugin",
-              partner_id: "partner_1234",
-              url: "https://myawesomeplugin.info",
-              version: "1.2.34"
-            )
+          old = Telnyx.app_info
+          Telnyx.set_app_info(
+            "MyAwesomePlugin",
+            partner_id: "partner_1234",
+            url: "https://myawesomeplugin.info",
+            version: "1.2.34"
+          )
 
-            stub_request(:post, "#{Telnyx.api_base}/v2/messaging_profiles")
-              .with do |req|
-                assert_equal \
-                  "Telnyx/v2 RubyBindings/#{Telnyx::VERSION} " \
-                  "MyAwesomePlugin/1.2.34 (https://myawesomeplugin.info)",
-                  req.headers["User-Agent"]
+          stub_request(:post, "#{Telnyx.api_base}/v2/messaging_profiles")
+            .with do |req|
+              assert_equal \
+                "Telnyx/v2 RubyBindings/#{Telnyx::VERSION} " \
+                "MyAwesomePlugin/1.2.34 (https://myawesomeplugin.info)",
+                req.headers["User-Agent"]
 
-                data = JSON.parse(req.headers["X-Telnyx-Client-User-Agent"],
-                                  symbolize_names: true)
+              data = JSON.parse(req.headers["X-Telnyx-Client-User-Agent"],
+                                symbolize_names: true)
 
-                assert_equal({
-                  name: "MyAwesomePlugin",
-                  partner_id: "partner_1234",
-                  url: "https://myawesomeplugin.info",
-                  version: "1.2.34",
-                }, data[:application])
+              assert_equal({
+                name: "MyAwesomePlugin",
+                partner_id: "partner_1234",
+                url: "https://myawesomeplugin.info",
+                version: "1.2.34",
+              }, data[:application])
 
-                true
-              end.to_return(body: JSON.generate(record_type: "messaging_profile"))
+              true
+            end.to_return(body: JSON.generate(record_type: "messaging_profile"))
 
-            client = TelnyxClient.new
-            client.execute_request(:post, "/v2/messaging_profiles")
-          ensure
-            Telnyx.app_info = old
-          end
+          client = TelnyxClient.new
+          client.execute_request(:post, "/v2/messaging_profiles")
+        ensure
+          Telnyx.app_info = old
         end
       end
 
@@ -591,16 +587,14 @@ module Telnyx
       end
 
       should "reset local thread state after a call" do
-        begin
-          Thread.current[:telnyx_client] = :telnyx_client
+        Thread.current[:telnyx_client] = :telnyx_client
 
-          client = TelnyxClient.new
-          client.request {}
+        client = TelnyxClient.new
+        client.request {}
 
-          assert_equal :telnyx_client, Thread.current[:telnyx_client]
-        ensure
-          Thread.current[:telnyx_client] = nil
-        end
+        assert_equal :telnyx_client, Thread.current[:telnyx_client]
+      ensure
+        Thread.current[:telnyx_client] = nil
       end
     end
   end
