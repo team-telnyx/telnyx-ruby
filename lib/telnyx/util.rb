@@ -38,7 +38,7 @@ module Telnyx
 
     def self.object_classes
       @object_classes ||= APIResource.descendants
-                                     .filter { |klass| klass.constants(false).include? :OBJECT_NAME }
+                                     .select { |klass| klass.constants(false).include? :OBJECT_NAME }
                                      .map { |klass| [klass::OBJECT_NAME, klass] }
                                      .to_h
                                      .merge(
