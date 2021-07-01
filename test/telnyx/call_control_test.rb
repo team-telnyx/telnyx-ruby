@@ -37,6 +37,8 @@ module Telnyx
         assert defined? @call.record_stop
         assert defined? @call.send_dtmf
         assert defined? @call.transfer
+        assert defined? @call.enqueue
+        assert defined? @call.leave_queue
       end
     end
 
@@ -61,37 +63,6 @@ module Telnyx
         assert call.id
         assert call.call_leg_id
         assert call.call_session_id
-      end
-
-      should "send all commands" do
-        @call = Call.new
-        @call.id = "1234"
-        @call.reject cause: "CALL_REJECTED"
-        assert_requested :post, format_action_url(@call, "reject")
-        @call.answer
-        assert_requested :post, format_action_url(@call, "answer")
-        @call.hangup
-        assert_requested :post, format_action_url(@call, "hangup")
-        @call.bridge call_control_id: SecureRandom.base64(20)
-        assert_requested :post, format_action_url(@call, "bridge")
-        @call.speak language: "en-US", voice: "female", payload: "Telnyx call control test"
-        assert_requested :post, format_action_url(@call, "speak")
-        @call.fork_start call_control_id: SecureRandom.base64(20)
-        assert_requested :post, format_action_url(@call, "fork_start")
-        @call.fork_stop
-        assert_requested :post, format_action_url(@call, "fork_stop")
-        @call.gather_using_audio audio_url: "https://audio.example.com"
-        assert_requested :post, format_action_url(@call, "gather_using_audio")
-        @call.gather_using_speak language: "en-US", voice: "female", payload: "Telnyx call control test"
-        assert_requested :post, format_action_url(@call, "gather_using_speak")
-        @call.playback_start audio_url: "https://audio.example.com"
-        assert_requested :post, format_action_url(@call, "playback_start")
-        @call.playback_stop
-        assert_requested :post, format_action_url(@call, "playback_stop")
-        @call.send_dtmf digits: "1www2WABCDw9"
-        assert_requested :post, format_action_url(@call, "send_dtmf")
-        @call.transfer to: "+15552223333"
-        assert_requested :post, format_action_url(@call, "transfer")
       end
     end
 
@@ -171,6 +142,14 @@ module Telnyx
       should "refer" do
         @call.refer sip_address: "sip:username@sip.non-telnyx-address.com"
         assert_requested :post, format_action_url(@call, "refer")
+      end
+      should "enqueue" do
+        @call.enqueue call_control_id: SecureRandom.base64(20)
+        assert_requested :post, format_action_url(@call, "enqueue")
+      end
+      should 'leave_queue' do
+        @call.leave_queue call_control_id: SecureRandom.base64(20)
+        assert_requested :post, format_action_url(@call, "leave_queue")
       end
     end
 
