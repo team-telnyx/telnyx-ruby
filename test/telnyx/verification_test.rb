@@ -5,8 +5,8 @@ require_relative "../test_helper"
 module Telnyx
   class VerificationTest < Test::Unit::TestCase
     should "create verification" do
-      Verification.create phone_number: "+15555555555", twofa_profile_id: "1234", type: "sms", verify_profile_id: "foobar"
-      assert_requested :post, "#{Telnyx.api_base}/v2/verifications"
+      Verification.call phone_number: "+15555555555", twofa_profile_id: "1234", type: "sms", verify_profile_id: "foobar"
+      assert_requested :post, "#{Telnyx.api_base}/v2/verifications/call"
     end
 
     should "retrieve verification" do
