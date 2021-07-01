@@ -37,46 +37,17 @@ module Telnyx
     end
 
     def self.object_classes
-      @object_classes ||= {
-        # business objects
-        Address::OBJECT_NAME                          => Address,
-        AlphanumericSenderId::OBJECT_NAME             => AlphanumericSenderId,
-        AvailablePhoneNumber::OBJECT_NAME             => AvailablePhoneNumber,
-        BillingGroup::OBJECT_NAME                     => BillingGroup,
-        Call::OBJECT_NAME                             => Call,
-        CallControlApplication::OBJECT_NAME           => CallControlApplication,
-        Conferences::OBJECT_NAME                      => Conferences,
-        Connection::OBJECT_NAME                       => Connection,
-        CredentialConnection::OBJECT_NAME             => CredentialConnection,
-        Fax::OBJECT_NAME                              => Fax,
-        FaxApplication::OBJECT_NAME                   => FaxApplication,
-        FQDN::OBJECT_NAME                             => FQDN,
-        FQDNConnection::OBJECT_NAME                   => FQDNConnection,
-        IP::OBJECT_NAME                               => IP,
-        IPConnection::OBJECT_NAME                     => IPConnection,
-        Message::OBJECT_NAME                          => Message,
-        MessagingPhoneNumber::OBJECT_NAME             => MessagingPhoneNumber,
-        "messaging_settings"                          => MessagingPhoneNumber,
-        MessagingProfile::OBJECT_NAME                 => MessagingProfile,
-        NumberLookup::OBJECT_NAME                     => NumberLookup,
-        NumberOrder::OBJECT_NAME                      => NumberOrder,
-        NumberOrderDocument::OBJECT_NAME              => NumberOrderDocument,
-        NumberReservation::OBJECT_NAME                => NumberReservation,
-        OutboundVoiceProfile::OBJECT_NAME             => OutboundVoiceProfile,
-        PhoneNumber::OBJECT_NAME                      => PhoneNumber,
-        "phone_number_reservation"                    => NumberReservation,
-        PhoneNumberRegulatoryRequirement::OBJECT_NAME => PhoneNumberRegulatoryRequirement,
-        "phone_number_regulatory_group"               => PhoneNumberRegulatoryRequirement,
-        Portout::OBJECT_NAME                          => Portout,
-        VerifyProfile::OBJECT_NAME                    => VerifyProfile,
-        "verification_profile"                        => VerifyProfile,
-        PublicKey::OBJECT_NAME                        => PublicKey,
-        RegulatoryRequirement::OBJECT_NAME            => RegulatoryRequirement,
-        SimCard::OBJECT_NAME                          => SimCard,
-        Verification::OBJECT_NAME                     => Verification,
-        "verification"                                => Verification::Response,
-        WirelessDetailRecordsReport::OBJECT_NAME      => WirelessDetailRecordsReport,
-      }
+      @object_classes ||= APIResource.descendants
+                                     .filter { |klass| klass.constants(false).include? :OBJECT_NAME }
+                                     .map { |klass| [klass::OBJECT_NAME, klass] }
+                                     .to_h
+                                     .merge(
+                                       "messaging_settings"                          => MessagingPhoneNumber,
+                                       "phone_number_regulatory_group"               => PhoneNumberRegulatoryRequirement,
+                                       "phone_number_reservation"                    => NumberReservation,
+                                       "verification_profile"                        => VerifyProfile,
+                                       "verification"                                => Verification::Response
+                                     )
     end
 
     def self.push_object_class(key, klass)
