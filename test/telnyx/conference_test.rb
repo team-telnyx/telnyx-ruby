@@ -97,7 +97,7 @@ module Telnyx
       end
 
       should "update" do
-        @conference.update call_control_id: "foo"
+        @conference.update call_control_id: "foo", supervisor_role: 'barge'
         assert_requested :post, action_url(@conference, "update")
       end
     end
