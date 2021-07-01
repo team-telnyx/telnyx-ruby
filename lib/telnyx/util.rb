@@ -69,6 +69,7 @@ module Telnyx
         "phone_number_regulatory_group"               => PhoneNumberRegulatoryRequirement,
         Portout::OBJECT_NAME                          => Portout,
         VerifyProfile::OBJECT_NAME                    => VerifyProfile,
+        "verification_profile"                        => VerifyProfile,
         PublicKey::OBJECT_NAME                        => PublicKey,
         RegulatoryRequirement::OBJECT_NAME            => RegulatoryRequirement,
         SimCard::OBJECT_NAME                          => SimCard,

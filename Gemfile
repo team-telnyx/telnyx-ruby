@@ -24,6 +24,10 @@ group :development do
   gem "guard-rubocop"
   gem "rubocop", "~> 1.6"
 
+  # debugging 
+  # gem 'httplog' # when included logs all http requests
+  # gem 'awesome_print'
+
   # Rack 2.0+ requires Ruby >= 2.2.2 which is problematic for the test suite on
   # older Ruby versions. Check Ruby the version here and put a maximum
   # constraint on Rack if necessary.
