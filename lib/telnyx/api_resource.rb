@@ -10,13 +10,13 @@ module Telnyx
     # own endpoints, but there are certain cases where this is allowed.
     attr_accessor :save_with_parent
 
-    def self.inherited(subclass)
-      super
-      @descendants ||= []
-      @descendants << subclass
-    end
-
     class << self
+      def inherited(subclass)
+        super
+        @descendants ||= []
+        @descendants << subclass
+      end
+
       attr_reader :descendants
     end
 
