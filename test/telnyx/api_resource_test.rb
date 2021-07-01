@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # frozen_string_literal: true
 
-require ::File.expand_path("../../test_helper", __FILE__)
+require_relative "../test_helper"
 
 module Telnyx
   class ApiResourceTest < Test::Unit::TestCase

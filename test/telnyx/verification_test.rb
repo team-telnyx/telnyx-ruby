@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "../test_helper"
+
 module Telnyx
   class VerificationTest < Test::Unit::TestCase
     should "create verification" do
