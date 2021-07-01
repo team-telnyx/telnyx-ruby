@@ -147,7 +147,7 @@ module Telnyx
         @call.enqueue call_control_id: SecureRandom.base64(20)
         assert_requested :post, format_action_url(@call, "enqueue")
       end
-      should 'leave_queue' do
+      should "leave_queue" do
         @call.leave_queue call_control_id: SecureRandom.base64(20)
         assert_requested :post, format_action_url(@call, "leave_queue")
       end

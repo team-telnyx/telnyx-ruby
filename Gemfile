@@ -24,7 +24,7 @@ group :development do
   gem "guard-rubocop"
   gem "rubocop", "~> 1.6"
 
-  # debugging 
+  # debugging
   # gem 'httplog' # when included logs all http requests
   # gem 'awesome_print'
 
