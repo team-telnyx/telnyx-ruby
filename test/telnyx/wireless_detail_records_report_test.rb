@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
+
 module Telnyx
   class WirelessDetailRecordsReportTest < Test::Unit::TestCase
     should "list detail records report" do

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "../test_helper"
+
 module Telnyx
   class VerifyProfileTest < Test::Unit::TestCase
     should "list verify_profiles" do
