@@ -25,9 +25,29 @@ module Telnyx
       Response.construct_from resp.data[:data]
     end
 
-    # Trigger a call verification
+    # Trigger a call verification.
     def self.call(params = {}, opts = {})
       create(params, { **opts, resource_url: "#{resource_url}/call" })
+    end
+
+    # Trigger an SMS verification.
+    def self.sms(params = {}, opts = {})
+      create(params, { **opts, resource_url: "#{resource_url}/sms" })
+    end
+
+    # Trigger a PSD2 verification.
+    def self.psd2(params = {}, opts = {})
+      create(params, { **opts, resource_url: "#{resource_url}/psd2" })
+    end
+
+    # Trigger a flashcall verification.
+    def self.flashcall(params = {}, opts = {})
+      create(params, { **opts, resource_url: "#{resource_url}/flashcall" })
+    end
+
+    # Trigger a whatsapp verification.
+    def self.whatsapp(params = {}, opts = {})
+      create(params, { **opts, resource_url: "#{resource_url}/whatsapp" })
     end
 
     OBJECT_NAME = "verify_verification".freeze
