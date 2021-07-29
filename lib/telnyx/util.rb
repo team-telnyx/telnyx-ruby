@@ -42,6 +42,7 @@ module Telnyx
                                      .map { |klass| [klass::OBJECT_NAME, klass] }
                                      .to_h
                                      .merge(
+                                       "credential"                                  => TelephonyCredential,
                                        "messaging_settings"                          => MessagingPhoneNumber,
                                        "phone_number_regulatory_group"               => PhoneNumberRegulatoryRequirement,
                                        "phone_number_reservation"                    => NumberReservation,
