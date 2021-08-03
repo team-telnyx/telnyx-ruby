@@ -7,7 +7,7 @@ module Telnyx
     nested_resource_class_methods(
       :queue_call,
       path: "calls",
-      operations: [:list, :retrieve],
+      operations: %i[list retrieve],
       instance_methods: {
         list: "list",
         retrieve: "retrieve"
