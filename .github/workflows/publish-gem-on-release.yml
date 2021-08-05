@@ -41,7 +41,6 @@ jobs:
         with:
           ruby-version: 2.6
       - run: bundle install
-
       - name: Publish to RubyGems
         run: |
           mkdir -p $HOME/.gem
