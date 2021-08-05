@@ -11,9 +11,8 @@ module Telnyx
     end
 
     should "create porting order" do
-      porting_order = PortingOrder.create phone_numbers: %w[12223334444 12223335555]
+      PortingOrder.create phone_numbers: %w[12223334444 12223335555]
       assert_requested :post, "#{Telnyx.api_base}/v2/porting_orders"
-      assert_kind_of PortingOrder, porting_order
     end
 
     should "retrieve porting order" do
