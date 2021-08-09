@@ -76,7 +76,7 @@ module Telnyx
               Util.convert_to_telnyx_object(resp.data, opts)
             end
             define_instance_method.call(:"delete_#{resource}", operation)
-          when :list
+          when :list # TODO: Add a plain :get case here and refactor code that (mis)uses this.
             define_singleton_method(:"list_#{resource}s") do |id, params = {}, opts = {}|
               url = send(resource_url_method, id)
               resp, opts = request(:get, url, params, opts)
