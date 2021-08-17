@@ -5,7 +5,7 @@ source "https://rubygems.org"
 gemspec
 
 group :development do
-  gem "coveralls", require: false
+  gem "coveralls_reborn", require: false
   gem "faraday", "~> 1.0"
   gem "mocha", "~> 0.13.2"
   gem "rake"
