@@ -52,7 +52,7 @@ module Telnyx
     end
 
     should "send verification code" do
-      Verification.submit_code code: "12345", phone_number: "+13035551234"
+      Verification.submit_code code: "12345", phone_number: "+13035551234", verify_profile_id: "12ade33a-21c0-473b-b055-b3c836e1c292"
 
       assert_requested :post, "#{Telnyx.api_base}/v2/verifications/by_phone_number/+13035551234/actions/verify"
     end
