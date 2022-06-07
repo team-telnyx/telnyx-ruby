@@ -5,36 +5,34 @@
 # This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
 # For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
 
-# DEPRECATED IN FAVOR OF PRISM MOCK SERVICE
-# name: Ruby
+name: Ruby
 
-# on:
-#   push:
-#     branches: [ master ]
-#   pull_request:
-#     branches: [ master ]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
-# jobs:
-#   test:
-#     env:
-#       TELNYX_MOCK_VERSION: 0.8.14
-#     runs-on: ubuntu-latest
-#     strategy:
-#       matrix:
-#         ruby: [ '2.5', '2.6', '2.7', '3.0' ]
-#     steps:
-#     - uses: actions/checkout@v2
-#     - name: Set up Ruby
-#     # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
-#     # change this to (see https://github.com/ruby/setup-ruby#versioning):
-#     # uses: ruby/setup-ruby@v1
-#       uses: ruby/setup-ruby@v1
-#       with:
-#         ruby-version: ${{ matrix.ruby }}
-#     - name: Run Setup Script to install mock
-#       run: source ./.github/scripts/before_install.sh
-#       shell: bash
-#     - name: Install dependencies
-#       run: bundle install
-#     - name: Run tests
-#       run: bundle exec rake
+jobs:
+  test:
+    env:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: [ '2.5', '2.6', '2.7', '3.0' ]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
+    # change this to (see https://github.com/ruby/setup-ruby#versioning):
+    # uses: ruby/setup-ruby@v1
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+    - name: Run Setup Script to install mock
+      run: source ./.github/scripts/before_install.sh
+      shell: bash
+    - name: Install dependencies
+      run: bundle install
+    - name: Run tests
+      run: bundle exec rake
