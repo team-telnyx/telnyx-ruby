@@ -14,6 +14,7 @@ module Telnyx
                                     path: %W[#{action}],
                                     operations: [:create],
                                     instance_methods: { create: action }
+    end
 
     OBJECT_NAME = "portout".freeze
   end
