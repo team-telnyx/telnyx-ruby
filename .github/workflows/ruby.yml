@@ -16,6 +16,7 @@ on:
 jobs:
   test:
     env:
+      TELNYX_MOCK_OPEN_API_URI: https://raw.githubusercontent.com/team-telnyx/openapi/master/openapi/spec3.json
     runs-on: ubuntu-latest
     strategy:
       matrix:
