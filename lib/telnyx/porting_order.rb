@@ -16,6 +16,26 @@ module Telnyx
                                   path: ["porting_phone_numbers"],
                                   operations: %i[list],
                                   instance_methods: { list: "porting_phone_numbers" }
+    nested_resource_class_methods :exception_types,
+                                  path: ["exception_types"],
+                                  operations: %i[list],
+                                  instance_methods: { list: "exception_types" }
+    nested_resource_class_methods :allowed_foc_windows,
+                                  path: ["allowed_foc_windows"],
+                                  operations: %i[list],
+                                  instance_methods: { list: "allowed_foc_windows" }
+    nested_resource_class_methods :activation_job,
+                                  path: ["activiation_jobs"],
+                                  operations: %i[list],
+                                  instance_methods: { list: "activation_jobs" }
+    nested_resource_class_methods :confirm,
+                                  path: ["confirm"],
+                                  operations: %i[create],
+                                  instance_methods: { create: "confirm" }
+    nested_resource_class_methods :cancel,
+                                  path: ["cancel"],
+                                  operations: %i[create],
+                                  instance_methods: { create: "cancel" }
     OBJECT_NAME = "porting_order"
   end
 end
