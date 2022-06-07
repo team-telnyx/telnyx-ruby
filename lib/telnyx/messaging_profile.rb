@@ -9,7 +9,13 @@ module Telnyx
     extend Telnyx::APIOperations::NestedResource
 
     OBJECT_NAME = "messaging_profile".freeze
-
+    
+    nested_resource_class_methods :messaging_profile_metric,
+                                  operations: %i[list],
+                                  instance_methods: { list: "messaging_profile_metrics" }
+    nested_resource_class_methods :metric,
+                                  operations: %i[list],
+                                  instance_methods: { list: "metrics" }
     nested_resource_class_methods :phone_number,
                                   operations: %i[list],
                                   instance_methods: { list: "phone_numbers" }

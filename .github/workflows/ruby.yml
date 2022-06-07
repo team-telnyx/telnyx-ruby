@@ -16,7 +16,7 @@ on:
 jobs:
   test:
     env:
-      TELNYX_MOCK_VERSION: 0.8.14
+      TELNYX_MOCK_OPEN_API_URI: https://raw.githubusercontent.com/team-telnyx/openapi/master/openapi/spec3.json
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -30,10 +30,10 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
-    - name: Run Setup Script to install mock
-      run: source ./.github/scripts/before_install.sh
-      shell: bash
-    - name: Install dependencies
-      run: bundle install
-    - name: Run tests
-      run: bundle exec rake
+    # - name: Run Setup Script to install prism mock
+    #   run: source ./.github/scripts/before_install.sh
+    #   shell: bash
+    # - name: Install dependencies
+    #   run: bundle install
+    # - name: Run tests
+    #   run: bundle exec rake

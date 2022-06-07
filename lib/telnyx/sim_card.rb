@@ -6,7 +6,7 @@ module Telnyx
     extend APIOperations::NestedResource
     extend APIOperations::List
 
-    ACTIONS = %w[enable disable].freeze
+    ACTIONS = %w[enable disable set_standby network_preferences public_ip wireless_connectivity_logs].freeze
     ACTIONS.each do |action|
       nested_resource_class_methods action,
                                     path: %W[actions #{action}],
