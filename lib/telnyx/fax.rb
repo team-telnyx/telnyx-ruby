@@ -17,5 +17,6 @@ module Telnyx
 
     OBJECT_NAME = "fax".freeze
     RESOURCE_PATH = "faxes".freeze
+    end
   end
 end
