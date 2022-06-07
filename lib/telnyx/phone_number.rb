@@ -20,7 +20,7 @@ module Telnyx
                                   operations: %i[update list]
     nested_resource_class_methods "job",
                                   path: ["jobs"],
-                                  operations: %i[update list delete]    
+                                  operations: %i[update list delete]
 
     def update_messaging(opts)
       self.class.update_messaging(id, nil, opts)
@@ -48,7 +48,7 @@ module Telnyx
 
     def update_jobs=(val)
       self.class.update_job(nil, nil, phone_number=value)
-    OBJECT_NAME = "phone_number".freeze
     end
+    OBJECT_NAME = "phone_number".freeze
   end
 end
