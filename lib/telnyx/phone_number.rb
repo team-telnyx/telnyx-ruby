@@ -49,5 +49,6 @@ module Telnyx
     def update_jobs=(val)
       self.class.update_job(nil, nil, phone_number=value)
     OBJECT_NAME = "phone_number".freeze
+    end
   end
 end
