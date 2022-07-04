@@ -19,7 +19,7 @@ module Telnyx
                                     retrieve: "by_telephone",
                                   }
 
-    def self.submit_code(phone_number: nil, code: nil:, verify_profile_id: nil)
+    def self.submit_code(phone_number: nil, code: nil, verify_profile_id: nil)
       url = "#{resource_url}/by_phone_number/#{CGI.escape phone_number}/actions/verify"
       resp, _opts = request(:post, url, code: code, verify_profile_id: verify_profile_id)
       Response.construct_from resp.data[:data]
