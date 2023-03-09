@@ -47,7 +47,8 @@ module Telnyx
                                        "phone_number_regulatory_group"               => PhoneNumberRegulatoryRequirement,
                                        "phone_number_reservation"                    => NumberReservation,
                                        "verification_profile"                        => VerifyProfile,
-                                       "verification"                                => Verification::Response
+                                       "verification"                                => Verification::Response,
+                                       "10dlc/brand"                                 => Brand
                                      )
     end
 

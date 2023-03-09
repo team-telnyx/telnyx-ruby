@@ -75,6 +75,7 @@ require "telnyx/telephony_credential"
 require "telnyx/verification"
 require "telnyx/verify_profile"
 require "telnyx/wireless_detail_records_report"
+require "telnyx/brand"
 
 module Telnyx
   @app_info = nil
