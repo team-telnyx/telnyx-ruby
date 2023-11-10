@@ -4,6 +4,8 @@
 # API spec at https://developers.telnyx.com
 require "cgi"
 require "faraday"
+require "faraday/multipart"
+require "faraday/net_http_persistent"
 require "json"
 require "logger"
 require "openssl"

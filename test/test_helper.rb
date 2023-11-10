@@ -14,11 +14,9 @@ require "webmock/test_unit"
 PROJECT_ROOT = ::File.expand_path("../../", __FILE__)
 
 require ::File.expand_path("../test_data", __FILE__)
-require ::File.expand_path("../telnyx_mock", __FILE__)
 
 # If changing this number, please also change it in `.travis.yml`.
-MOCK_MINIMUM_VERSION = "0.8.10".freeze
-MOCK_PORT = Telnyx::TelnyxMock.start
+MOCK_PORT = 4010
 
 # Disable all real network connections except those that are outgoing to
 # telnyx-mock.
@@ -30,20 +28,9 @@ WebMock.disable_net_connect!(allow: "localhost:#{MOCK_PORT}")
 begin
   conn = Faraday::Connection.new("http://localhost:#{MOCK_PORT}")
   resp = conn.get("/")
-  version = resp.headers["Telnyx-Mock-Version"]
-  if version != "master" &&
-     Gem::Version.new(version) < Gem::Version.new(MOCK_MINIMUM_VERSION)
-    abort("Your version of telnyx-mock (#{version}) is too old. The minimum " \
-      "version to run this test suite is #{MOCK_MINIMUM_VERSION}. Please " \
-      "see its repository for upgrade instructions.")
-  end
 rescue Faraday::ConnectionFailed
   abort("Couldn't reach telnyx-mock at `localhost:#{MOCK_PORT}`. Is " \
     "it running? Please see README for setup instructions.")
-end
-
-Test::Unit.at_exit do
-  Telnyx::TelnyxMock.stop
 end
 
 module Test

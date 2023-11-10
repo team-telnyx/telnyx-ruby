@@ -6,7 +6,9 @@ gemspec
 
 group :development do
   gem "coveralls_reborn", require: false
-  gem "faraday", "~> 1.0"
+  gem "faraday", "~> 2.0"
+  gem "faraday-multipart"
+  gem "faraday-net_http_persistent"
   gem "mocha", "~> 0.13.2"
   gem "rake"
   gem "shoulda-context"
