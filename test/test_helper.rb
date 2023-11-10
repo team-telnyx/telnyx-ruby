@@ -27,7 +27,7 @@ WebMock.disable_net_connect!(allow: "localhost:#{MOCK_PORT}")
 # they should fix the problem.
 begin
   conn = Faraday::Connection.new("http://localhost:#{MOCK_PORT}")
-  resp = conn.get("/")
+  conn.get("/")
 rescue Faraday::ConnectionFailed
   abort("Couldn't reach telnyx-mock at `localhost:#{MOCK_PORT}`. Is " \
     "it running? Please see README for setup instructions.")

@@ -410,7 +410,7 @@ module Telnyx
                      body: body,
                      request_id: context.request_id)
 
-      return unless context.request_id
+      nil unless context.request_id
     end
     private :log_response
 

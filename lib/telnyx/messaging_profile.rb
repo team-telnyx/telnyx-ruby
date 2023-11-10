@@ -9,7 +9,7 @@ module Telnyx
     extend Telnyx::APIOperations::NestedResource
 
     OBJECT_NAME = "messaging_profile".freeze
-    
+
     nested_resource_class_methods :messaging_profile_metric,
                                   operations: %i[list],
                                   instance_methods: { list: "messaging_profile_metrics" }

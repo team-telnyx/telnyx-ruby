@@ -24,5 +24,8 @@ def fetch_file(url, dest)
     end
     file.write(resp.body)
     puts "Successfully fetched: #{url}"
+    Rake::Task["task_that_might_fail"].invoke
+  rescue StandardError => e
+    puts "An error occurred: #{e.message}"
   end
 end

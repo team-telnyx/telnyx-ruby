@@ -15,8 +15,8 @@ module Telnyx
                                     operations: [:create],
                                     instance_methods: { create: action }
 
-    OBJECT_NAME = "fax".freeze
-    RESOURCE_PATH = "faxes".freeze
+      OBJECT_NAME = "fax".freeze
+      RESOURCE_PATH = "faxes".freeze
     end
   end
 end
