@@ -10,4 +10,3 @@ module Telnyx
     OBJECT_NAME = "authentication_providers".freeze
   end
 end
-y
