@@ -91,7 +91,7 @@ module Telnyx
 
       should "list inbound channels" do
         phone_number = Telnyx::PhoneNumber.retrieve("123")
-        inbound_channels = phone_number.inbound_channels
+        phone_number.inbound_channels
         # assert_equal inbound_channels, 7
         assert_requested :get, "#{Telnyx.api_base}/v2/phone_numbers/inbound_channels"
       end

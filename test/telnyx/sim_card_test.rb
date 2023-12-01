@@ -32,12 +32,12 @@ module Telnyx
 
     context "actions" do
       should "disable" do
-        sim = Telnyx::SimCard.retrieve @id
+        Telnyx::SimCard.retrieve @id
         assert_requested(:get, "#{Telnyx.api_base}/v2/sim_cards/#{@id}")
       end
 
       should "enable" do
-        sim = Telnyx::SimCard.retrieve @id
+        Telnyx::SimCard.retrieve @id
         assert_requested(:get, "#{Telnyx.api_base}/v2/sim_cards/#{@id}")
       end
     end
