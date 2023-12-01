@@ -8,7 +8,7 @@ module Telnyx
       telephony_credentials = TelephonyCredential.list
       assert_requested :get, "#{Telnyx.api_base}/v2/telephony_credentials"
       assert_kind_of ListObject, telephony_credentials
-      assert_kind_of TelephonyCredential, telephony_credentials.first
+      assert_kind_of TelnyxObject, telephony_credentials.first
     end
 
     should "create telephony credential" do
@@ -22,22 +22,22 @@ module Telnyx
     should "retrieve telephony credential" do
       telephony_credential = TelephonyCredential.retrieve("id")
       assert_requested :get, "#{Telnyx.api_base}/v2/telephony_credentials/id"
-      assert_kind_of TelephonyCredential, telephony_credential
+      assert_kind_of TelnyxObject, telephony_credential
     end
 
     should "delete telephony credential" do
       telephony_credential = TelephonyCredential.retrieve("id")
-
+      id = telephony_credential.id.gsub(/\s+/, "+").freeze
       telephony_credential.delete
-      assert_requested :delete, "#{Telnyx.api_base}/v2/telephony_credentials/id"
+      assert_requested :delete, "#{Telnyx.api_base}/v2/telephony_credentials/#{id}"
     end
 
     should "update telephony credential" do
       telephony_credential = TelephonyCredential.retrieve("id")
-
+      id = telephony_credential.id.gsub(/\s+/, "+").freeze
       telephony_credential.expires_at = "2021-07-27T17:58:54Z"
       telephony_credential.save
-      assert_requested :patch, "#{Telnyx.api_base}/v2/telephony_credentials/id"
+      assert_requested :patch, "#{Telnyx.api_base}/v2/telephony_credentials/#{id}"
     end
   end
 end

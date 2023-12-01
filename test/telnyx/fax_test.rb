@@ -18,16 +18,16 @@ module Telnyx
     end
 
     should "view fax" do
-      fax = Fax.retrieve "foo"
-      assert_requested :get, "#{Telnyx.api_base}/v2/faxes/foo"
+      fax = Fax.retrieve("3ae112cb-d72c-99c7-f765-fbcbfe4bca51")
+      assert_requested :get, "#{Telnyx.api_base}/v2/faxes/3ae112cb-d72c-99c7-f765-fbcbfe4bca51"
       assert_kind_of Fax, fax
     end
 
     should "delete fax" do
       omit "!!waiting for mock!!"
-      fax = Fax.retrieve "foo"
+      fax = Fax.retrieve "3ae112cb-d72c-99c7-f765-fbcbfe4bca51"
       fax.delete
-      assert_requested :delete, "#{Telnyx.api_base}/v2/faxes/foo"
+      assert_requested :delete, "#{Telnyx.api_base}/v2/faxes/3ae112cb-d72c-99c7-f765-fbcbfe4bca51"
     end
   end
 end

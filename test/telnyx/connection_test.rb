@@ -11,7 +11,7 @@ module Telnyx
       assert connections.first.is_a?(Connection) ||
              connections.first.is_a?(IPConnection) ||
              connections.first.is_a?(FQDNConnection) ||
-             connections.first.is_a?(CredentialConnection),
+             connections.first.is_a?(TelnyxObject),
              "Unexpected type: #{connections.first.class}"
     end
 

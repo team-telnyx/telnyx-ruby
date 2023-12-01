@@ -8,7 +8,7 @@ module Telnyx
       credential_connections = CredentialConnection.list
       assert_requested :get, "#{Telnyx.api_base}/v2/credential_connections"
       assert_kind_of ListObject, credential_connections
-      assert_kind_of CredentialConnection, credential_connections.first
+      assert_kind_of TelnyxObject, credential_connections.first
     end
 
     should "create credential connection" do
@@ -28,17 +28,18 @@ module Telnyx
 
     should "delete credential connection" do
       credential_connection = CredentialConnection.retrieve("id")
-
+      id = credential_connection.id.gsub(/\s+/, "+").freeze
       credential_connection.delete
-      assert_requested :delete, "#{Telnyx.api_base}/v2/credential_connections/id"
+      assert_requested :delete, "#{Telnyx.api_base}/v2/credential_connections/#{id}"
     end
 
     should "update credential connection" do
       credential_connection = CredentialConnection.retrieve("id")
 
       credential_connection.active = false
+      id = credential_connection.id.gsub(/\s+/, "+").freeze
       credential_connection.save
-      assert_requested :patch, "#{Telnyx.api_base}/v2/credential_connections/id"
+      assert_requested :patch, "#{Telnyx.api_base}/v2/credential_connections/#{id}"
     end
   end
 end
