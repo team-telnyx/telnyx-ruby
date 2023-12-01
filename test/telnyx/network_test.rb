@@ -4,41 +4,39 @@ require_relative "../test_helper"
 
 module Telnyx
   class NetworkTest < Test::Unit::TestCase
-    # should "be creatable" do
-    #   network = Telnyx::Network.create(name: "Foo")
-    #   assert_requested :post, "#{Telnyx.api_base}/v2/networks"
-    #   assert network.is_a?(Telnyx::Network)
-    # end
+    setup do
+      @id = "ebb9daec-eb8a-8caa-0105-2b6f56f5a11c"
+    end
+    should "be creatable" do
+      Telnyx::Network.create(name: "Foo")
+      assert_requested :post, "#{Telnyx.api_base}/v2/networks"
+    end
 
-    # should "be listable" do
-    #   networks = Telnyx::Network.list
-    #   assert_requested :get, "#{Telnyx.api_base}/v2/networks"
-    #   assert networks.data.is_a?(Array)
-    #   assert networks.first.is_a?(Telnyx::Network)
-    # end
+    should "be listable" do
+      networks = Telnyx::Network.list
+      assert_requested :get, "#{Telnyx.api_base}/v2/networks"
+      assert networks.data.is_a?(Array)
+    end
 
-    # should "be retrievable" do
-    #   exsisting_id = Telnyx::Network.list.first.id
-    #   network = Telnyx::Network.retrieve(exsisting_id)
-    #   assert_requested :get, "#{Telnyx.api_base}/v2/networks/#{exsisting_id}"
-    #   assert network.is_a?(Telnyx::Network)
-    # end
+    should "be retrievable" do
+      Telnyx::Network.retrieve(@id)
+      assert_requested :get, "#{Telnyx.api_base}/v2/networks/#{@id}"
+    end
 
-    # should "be updatable" do
-    #   exsisting_id = Telnyx::Network.list.first.id
-    #   stub = stub_request(:patch, "#{Telnyx.api_base}/v2/networks/#{exsisting_id}")
-    #          .with(body: hash_including(name: "foo"))
-    #          .to_return(body: JSON.generate(data: MessagingProfile.retrieve("123")))
-    #   network = Telnyx::Network.update(exsisting_id, name: "foo1")
-    #   assert_requested stub
-    #   assert network.is_a?(Telnyx::Network)
-    # end
+    should "be updatable" do
+      network = Network.retrieve(@id)
 
-    # should "be deletable" do
-    #   messaging_network = Telnyx::Network.list.first
-    #   messaging_network = messaging_network.delete
-    #   assert_requested :delete, "#{Telnyx.api_base}/v2/networks/#{messaging_network.id}"
-    #   assert messaging_network.is_a?(Telnyx::Network)
-    # end
+      network.name = "new name"
+      id = network.id.freeze
+      network.save
+      assert_requested :patch, "#{Telnyx.api_base}/v2/networks/#{id}"
+    end
+
+    should "be deletable" do
+      network = Network.retrieve(@id)
+      id = network.id.freeze
+      network.delete
+      assert_requested :delete, "#{Telnyx.api_base}/v2/networks/#{id}"
+    end
   end
 end

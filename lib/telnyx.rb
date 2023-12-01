@@ -79,6 +79,12 @@ require "telnyx/telephony_credential"
 require "telnyx/verification"
 require "telnyx/verify_profile"
 require "telnyx/wireless_detail_records_report"
+require "telnyx/room_composition"
+require "telnyx/room_participant"
+require "telnyx/room_recording"
+require "telnyx/room_session"
+require "telnyx/room"
+require "telnyx/wireguard_interface"
 
 module Telnyx
   @app_info = nil
