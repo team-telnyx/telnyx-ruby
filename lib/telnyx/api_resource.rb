@@ -34,7 +34,9 @@ module Telnyx
       return "/v2/#{self::RESOURCE_PATH}" if const_defined?("RESOURCE_PATH")
 
       object_name = self::OBJECT_NAME.downcase
-      object_name.include?("generate") ? "/v2/#{object_name.tr('.', '/')}" : "/v2/#{object_name.tr('.', '/')}s"
+      keywords = ["generate", "summarize"]
+      url_segment = object_name.tr(".", "/")
+      keywords.any? { |keyword| url_segment.include?(keyword) } ? "/v2/#{url_segment}" : "/v2/#{url_segment}s"
     end
 
     def self.identified_resource_url(id)

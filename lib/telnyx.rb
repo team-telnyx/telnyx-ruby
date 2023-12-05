@@ -100,6 +100,7 @@ require "telnyx/batch_mdr_report"
 require "telnyx/cdr_usage_report"
 require "telnyx/mdr_usage_report"
 require "telnyx/inference"
+require "telnyx/summary"
 
 module Telnyx
   @app_info = nil
