@@ -39,5 +39,25 @@ module Telnyx
       telephony_credential.save
       assert_requested :patch, "#{Telnyx.api_base}/v2/telephony_credentials/#{id}"
     end
+
+    context "actions" do
+      should "perform action activate" do
+        telephony_credential = TelephonyCredential.retrieve("id")
+        id = telephony_credential.id.gsub(/\s+/, "+").freeze
+        telephony_credential.activate
+        assert_requested :post, "#{Telnyx.api_base}/v2/telephony_credentials/#{id}/actions/activate"
+      end
+
+      should "deactivate" do
+        telephony_credential = TelephonyCredential.retrieve("id")
+        id = telephony_credential.id.gsub(/\s+/, "+").freeze
+        telephony_credential.deactivate
+        assert_requested :post, "#{Telnyx.api_base}/v2/telephony_credentials/#{id}/actions/deactivate"
+      end
+      should "tags" do
+        TelephonyCredential.tags
+        assert_requested :get, "#{Telnyx.api_base}/v2/telephony_credentials/tags"
+      end
+    end
   end
 end

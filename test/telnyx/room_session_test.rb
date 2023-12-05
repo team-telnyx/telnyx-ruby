@@ -35,6 +35,12 @@ module Telnyx
         @room_session.unmute
         assert_requested :post, "#{Telnyx.api_base}/v2/room_sessions/#{id}/actions/unmute"
       end
+
+      should "end the room session" do
+        id = @room_session.id.freeze
+        @room_session.end
+        assert_requested :post, "#{Telnyx.api_base}/v2/room_sessions/#{id}/actions/end"
+      end
     end
   end
 end

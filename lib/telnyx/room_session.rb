@@ -5,7 +5,7 @@ module Telnyx
     extend APIOperations::List
     extend APIOperations::Create
     extend APIOperations::NestedResource
-    ACTIONS = %w[kick mute unmute].freeze
+    ACTIONS = %w[kick mute unmute end].freeze
     ACTIONS.each do |action|
       nested_resource_class_methods action,
                                     path: %W[actions #{action}],

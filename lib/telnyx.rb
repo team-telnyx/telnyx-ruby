@@ -89,6 +89,16 @@ require "telnyx/short_code"
 require "telnyx/wireguard_peer"
 require "telnyx/virtual_cross_connect_region"
 require "telnyx/virtual_cross_connect"
+require "telnyx/verified_number"
+require "telnyx/sim_card_group"
+require "telnyx/sim_card_order"
+require "telnyx/sim_card_group_action"
+require "telnyx/sim_card_data_usage_notification"
+require "telnyx/requirement_type"
+require "telnyx/requirement"
+require "telnyx/batch_mdr_report"
+require "telnyx/cdr_usage_report"
+require "telnyx/mdr_usage_report"
 
 module Telnyx
   @app_info = nil
