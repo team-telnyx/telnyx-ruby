@@ -85,6 +85,10 @@ require "telnyx/room_recording"
 require "telnyx/room_session"
 require "telnyx/room"
 require "telnyx/wireguard_interface"
+require "telnyx/short_code"
+require "telnyx/wireguard_peer"
+require "telnyx/virtual_cross_connect_region"
+require "telnyx/virtual_cross_connect"
 
 module Telnyx
   @app_info = nil
