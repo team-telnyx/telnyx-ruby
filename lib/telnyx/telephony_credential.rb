@@ -15,6 +15,13 @@ module Telnyx
                                     operations: [:create],
                                     instance_methods: { create: action }
     end
+
+    %w[token].each do |action|
+      nested_resource_class_methods action,
+                                    path: %W[#{action}],
+                                    operations: [:create],
+                                    instance_methods: { create: action }
+    end
     # Additional action to list tags
     def self.tags(params = {}, opts = {})
       opts = Util.normalize_opts(opts)

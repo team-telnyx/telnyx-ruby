@@ -110,6 +110,14 @@ require "telnyx/mobile_push_credential"
 require "telnyx/messaging_tollfree_verification"
 require "telnyx/phone_number_block_job"
 require "telnyx/wdr"
+require "telnyx/embedding"
+require "telnyx/available_phone_numbers"
+require "telnyx/webhook_deliverie"
+require "telnyx/call_event"
+require "telnyx/messaging_url_domain"
+require "telnyx/verified_calls_display_profile"
+require "telnyx/detail_record"
+require "telnyx/business_identitie"
 
 module Telnyx
   @app_info = nil
