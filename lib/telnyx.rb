@@ -104,6 +104,11 @@ require "telnyx/summary"
 require "telnyx/call_recording"
 require "telnyx/public_internet_gateway"
 require "telnyx/private_wireless_gateway"
+require "telnyx/csv_download"
+require "telnyx/number_block_order"
+require "telnyx/mobile_push_credential"
+require "telnyx/messaging_tollfree_verification"
+require "telnyx/phone_number_block_job"
 
 module Telnyx
   @app_info = nil

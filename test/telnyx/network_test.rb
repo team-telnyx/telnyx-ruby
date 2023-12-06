@@ -38,5 +38,12 @@ module Telnyx
       network.delete
       assert_requested :delete, "#{Telnyx.api_base}/v2/networks/#{id}"
     end
+
+    should "list network_interfaces" do
+      network = Network.retrieve(@id)
+      id = network.id.freeze
+      network.network_interfaces
+      assert_requested :get, "#{Telnyx.api_base}/v2/networks/#{id}/network_interfaces"
+    end
   end
 end
