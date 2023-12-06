@@ -105,6 +105,7 @@ require "telnyx/embedding"
 require "telnyx/available_phone_numbers"
 require "telnyx/webhook_deliverie"
 require "telnyx/call_event"
+require "telnyx/messaging_url_domain"
 
 module Telnyx
   @app_info = nil
