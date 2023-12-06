@@ -58,14 +58,6 @@ module Telnyx
       assert_requested(:post, "#{Telnyx.api_base}/v2/messaging_tollfree/verification/requests")
     end
 
-    # should "update tollfree_verification" do
-    #   messaging_tollfree_verification = MessagingTollfreeVerification.retrieve @id
-    #   messaging_tollfree_verification.businessAddr1 = "second address"
-    #   id = messaging_tollfree_verification.id.freeze
-    #   messaging_tollfree_verification.save
-    #   assert_requested(:patch, "#{Telnyx.api_base}/v2/messaging_tollfree/verification/requests/#{id}")
-    # end
-
     should "delete tollfree_verification" do
       messaging_tollfree_verification = MessagingTollfreeVerification.retrieve @id
       id = messaging_tollfree_verification.id.freeze

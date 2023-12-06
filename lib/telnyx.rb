@@ -109,6 +109,7 @@ require "telnyx/number_block_order"
 require "telnyx/mobile_push_credential"
 require "telnyx/messaging_tollfree_verification"
 require "telnyx/phone_number_block_job"
+require "telnyx/wdr"
 
 module Telnyx
   @app_info = nil
