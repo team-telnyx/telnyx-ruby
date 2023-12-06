@@ -108,6 +108,7 @@ require "telnyx/call_event"
 require "telnyx/messaging_url_domain"
 require "telnyx/verified_calls_display_profile"
 require "telnyx/detail_record"
+require "telnyx/business_identitie"
 
 module Telnyx
   @app_info = nil
