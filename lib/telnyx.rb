@@ -102,6 +102,7 @@ require "telnyx/mdr_usage_report"
 require "telnyx/inference"
 require "telnyx/summary"
 require "telnyx/embedding"
+require "telnyx/available_phone_numbers"
 
 module Telnyx
   @app_info = nil
