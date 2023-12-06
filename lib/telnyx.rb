@@ -101,6 +101,9 @@ require "telnyx/cdr_usage_report"
 require "telnyx/mdr_usage_report"
 require "telnyx/inference"
 require "telnyx/summary"
+require "telnyx/call_recording"
+require "telnyx/public_internet_gateway"
+require "telnyx/private_wireless_gateway"
 
 module Telnyx
   @app_info = nil
