@@ -74,5 +74,12 @@ module Telnyx
       assert_kind_of Telnyx::ListObject, alphanumeric_sender_ids
       assert_kind_of Telnyx::AlphanumericSenderId, alphanumeric_sender_ids.first
     end
+
+    should "be able to list autoresp_configs" do
+      messaging_profile = Telnyx::MessagingProfile.retrieve(@id)
+      id = messaging_profile.id.freeze
+      messaging_profile.autoresp_configs
+      assert_requested :get, "#{Telnyx.api_base}/v2/messaging_profiles/#{id}/autoresp_configs"
+    end
   end
 end

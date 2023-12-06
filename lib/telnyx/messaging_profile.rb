@@ -6,8 +6,14 @@ module Telnyx
     include Telnyx::APIOperations::Delete
     extend Telnyx::APIOperations::List
     extend Telnyx::APIOperations::Create
-    extend Telnyx::APIOperations::NestedResource
-
+    extend APIOperations::NestedResource
+    ACTIONS = %w[autoresp_configs].freeze
+    ACTIONS.each do |action|
+      nested_resource_class_methods action,
+                                    path: %W[#{action}],
+                                    operations: [:list],
+                                    instance_methods: { list: action }
+    end
     OBJECT_NAME = "messaging_profile".freeze
 
     nested_resource_class_methods :messaging_profile_metric,
