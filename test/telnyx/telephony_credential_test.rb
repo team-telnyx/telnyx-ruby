@@ -59,5 +59,12 @@ module Telnyx
         assert_requested :get, "#{Telnyx.api_base}/v2/telephony_credentials/tags"
       end
     end
+    # Issue with response(RESPONSE SCHEMA: text/plain)
+    # should "create telephony credential token" do
+    #   telephony_credential = TelephonyCredential.retrieve("id")
+    #   id = telephony_credential.id.gsub(/\s+/, "+").freeze
+    #   telephony_credential.token
+    #   assert_requested :post, "#{Telnyx.api_base}/v2/telephony_credentials/#{id}/token"
+    # end
   end
 end
