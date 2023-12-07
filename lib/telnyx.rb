@@ -132,6 +132,7 @@ require "telnyx/bulk_sim_card_action"
 require "telnyx/campaign"
 require "telnyx/comment"
 require "telnyx/enum"
+require "telnyx/custom_storage_credential"
 
 module Telnyx
   @app_info = nil
