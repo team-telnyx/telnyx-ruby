@@ -92,6 +92,16 @@ module Telnyx
         assert_requested :post, action_url(@id, "speak")
       end
 
+      should "record_pause" do
+        @conference.record_pause
+        assert_requested :post, action_url(@id, "record_pause")
+      end
+
+      should "record_resume" do
+        @conference.record_resume
+        assert_requested :post, action_url(@id, "record_resume")
+      end
+
       # should "dial participant" do
       #   @conference.dial_participant call_control_id: "foo", to: "+12223334444", from: "+12223335555"
       #   assert_requested :post, action_url(@id, "dial_participant")
