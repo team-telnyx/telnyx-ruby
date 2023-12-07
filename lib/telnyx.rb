@@ -133,6 +133,7 @@ require "telnyx/campaign"
 require "telnyx/comment"
 require "telnyx/enum"
 require "telnyx/custom_storage_credential"
+require "telnyx/texml_application"
 
 module Telnyx
   @app_info = nil
