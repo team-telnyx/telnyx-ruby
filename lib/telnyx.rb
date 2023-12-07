@@ -130,6 +130,7 @@ require "telnyx/global_ip_allowed_port"
 require "telnyx/dialogflow_connection"
 require "telnyx/channel_zone"
 require "telnyx/bulk_sim_card_action"
+require "telnyx/campaign"
 
 module Telnyx
   @app_info = nil

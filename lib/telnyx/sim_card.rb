@@ -6,7 +6,7 @@ module Telnyx
     extend APIOperations::NestedResource
     extend APIOperations::List
 
-    ACTIONS = %w[enable disable set_standby network_preferences public_ip wireless_connectivity_logs device_details set_public_ip set_network_preferences remove_public_ip delete_network_preferences].freeze
+    ACTIONS = %w[enable disable set_standby public_ip wireless_connectivity_logs device_details set_public_ip set_network_preferences remove_public_ip delete_network_preferences].freeze
     ACTIONS.each do |action|
       nested_resource_class_methods action,
                                     path: %W[actions #{action}],
@@ -38,6 +38,11 @@ module Telnyx
     def self.bulk_set_public_ips(params = {}, opts = {})
       opts = Util.normalize_opts(opts)
       resp, opts = request(:post, "/v2/sim_cards/actions/bulk_set_public_ips", params, opts)
+      Util.convert_to_telnyx_object(resp.data, opts)
+    end
+
+    def self.network_preferences(params = {}, opts = {})
+      resp, opts = request(:put, "/v2/actions/network_preferences/sim_cards", params, opts)
       Util.convert_to_telnyx_object(resp.data, opts)
     end
 

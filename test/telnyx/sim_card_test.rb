@@ -95,6 +95,11 @@ module Telnyx
         sim.delete_network_preferences
         assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/#{id}/actions/delete_network_preferences")
       end
+
+      should "delete network preferences" do
+        SimCard.network_preferences
+        assert_requested(:put, "#{Telnyx.api_base}/v2/actions/network_preferences/sim_cards")
+      end
     end
   end
 end
