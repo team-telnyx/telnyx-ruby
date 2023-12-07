@@ -134,6 +134,7 @@ require "telnyx/comment"
 require "telnyx/enum"
 require "telnyx/custom_storage_credential"
 require "telnyx/texml_application"
+require "telnyx/bulk_credential"
 
 module Telnyx
   @app_info = nil
