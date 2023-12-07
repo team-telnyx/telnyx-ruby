@@ -119,6 +119,14 @@ require "telnyx/verified_calls_display_profile"
 require "telnyx/detail_record"
 require "telnyx/business_identitie"
 require "telnyx/managed_account"
+require "telnyx/ledger_billing_group_report"
+require "telnyx/global_ip"
+require "telnyx/global_ip_usage"
+require "telnyx/global_ip_protocol"
+require "telnyx/global_ip_latency"
+require "telnyx/global_ip_assignment"
+require "telnyx/global_ip_assignment_health"
+require "telnyx/global_ip_assignment_usage"
 
 module Telnyx
   @app_info = nil
