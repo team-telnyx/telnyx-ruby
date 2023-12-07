@@ -131,6 +131,7 @@ require "telnyx/channel_zone"
 require "telnyx/bulk_sim_card_action"
 require "telnyx/campaign"
 require "telnyx/comment"
+require "telnyx/enum"
 
 module Telnyx
   @app_info = nil
