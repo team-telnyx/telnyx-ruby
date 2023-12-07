@@ -10,7 +10,7 @@
 # TELNYX_MOCK_PID=$!
 # export PATH="${PATH}:${PWD}/telnyx-mock/${TELNYX_MOCK_VERSION}"
 
-TELNYX_MOCK_OPEN_API_URI: https://raw.githubusercontent.com/uqbaxcorebit/xcorebit-openApi/master/openapi/telnyx_openapi_spec.json
+TELNYX_MOCK_OPEN_API_URI: https://raw.githubusercontent.com/zeeshangulzar/openapi_specs/main/openapi/telnyx_openapi_spec.json
 
 npm install -g @stoplight/prism-cli
 
