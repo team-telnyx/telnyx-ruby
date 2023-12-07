@@ -120,6 +120,7 @@ require "telnyx/detail_record"
 require "telnyx/business_identitie"
 require "telnyx/managed_account"
 require "telnyx/bulk_sim_card_action"
+require "telnyx/comment"
 
 module Telnyx
   @app_info = nil
