@@ -119,6 +119,7 @@ require "telnyx/verified_calls_display_profile"
 require "telnyx/detail_record"
 require "telnyx/business_identitie"
 require "telnyx/managed_account"
+require "telnyx/bulk_sim_card_action"
 
 module Telnyx
   @app_info = nil
