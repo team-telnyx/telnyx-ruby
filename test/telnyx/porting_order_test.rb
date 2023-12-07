@@ -49,6 +49,37 @@ module Telnyx
         assert_requested :get, "#{Telnyx.api_base}/v2/porting_orders/#{porting_order.id}/loa_template"
       end
 
+      should "get sub request" do
+        porting_order = PortingOrder.retrieve(@id)
+
+        porting_order.sub_request
+
+        assert_requested :get, "#{Telnyx.api_base}/v2/porting_orders/#{porting_order.id}/sub_request"
+      end
+
+      should "get requirements" do
+        porting_order = PortingOrder.retrieve(@id)
+
+        req = porting_order.requirements
+        req.is_a?(Array)
+      end
+
+      should "get comments" do
+        porting_order = PortingOrder.retrieve(@id)
+
+        porting_order.comments
+
+        assert_requested :get, "#{Telnyx.api_base}/v2/porting_orders/#{porting_order.id}/comments"
+      end
+
+      should "activate porting order" do
+        porting_order = PortingOrder.retrieve(@id)
+
+        porting_order.activate
+
+        assert_requested :post, "#{Telnyx.api_base}/v2/porting_orders/#{porting_order.id}/actions/activate"
+      end
+
       should "fetch porting phone numbers" do
       end
     end
