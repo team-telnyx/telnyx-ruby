@@ -29,5 +29,13 @@ module Telnyx
       fax.delete
       assert_requested :delete, "#{Telnyx.api_base}/v2/faxes/3ae112cb-d72c-99c7-f765-fbcbfe4bca51"
     end
+    context "actions" do
+      should "cancel" do
+        fax = Fax.retrieve "3ae112cb-d72c-99c7-f765-fbcbfe4bca51"
+        id = fax.id.freeze
+        fax.cancel
+        assert_requested :post, "#{Telnyx.api_base}/v2/faxes/#{id}/actions/cancel"
+      end
+    end
   end
 end

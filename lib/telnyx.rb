@@ -127,6 +127,7 @@ require "telnyx/global_ip_latency"
 require "telnyx/global_ip_assignment"
 require "telnyx/global_ip_assignment_health"
 require "telnyx/global_ip_assignment_usage"
+require "telnyx/global_ip_allowed_port"
 
 module Telnyx
   @app_info = nil

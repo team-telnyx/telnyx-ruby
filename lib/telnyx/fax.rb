@@ -8,7 +8,7 @@ module Telnyx
     include Telnyx::APIOperations::Save
     extend APIOperations::NestedResource
 
-    ACTIONS = %w[refresh].freeze
+    ACTIONS = %w[refresh cancel].freeze
     ACTIONS.each do |action|
       nested_resource_class_methods action,
                                     path: %W[actions #{action}],
