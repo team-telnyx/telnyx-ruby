@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-require 'byebug'
 
 module Telnyx
   class CommentTest < Test::Unit::TestCase
@@ -20,7 +19,7 @@ module Telnyx
       assert_kind_of Telnyx::TelnyxObject, comment
     end
 
-     should "comments read" do
+    should "comments read" do
       comment = Comment.retrieve("12ade33a-21c0-473b-b055-b3c836e1c292")
       id = comment.id
       comment.read(name: "new")
