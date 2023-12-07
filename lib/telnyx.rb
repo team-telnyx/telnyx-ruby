@@ -89,7 +89,6 @@ require "telnyx/short_code"
 require "telnyx/wireguard_peer"
 require "telnyx/virtual_cross_connect_region"
 require "telnyx/virtual_cross_connect"
-require "telnyx/verified_number"
 require "telnyx/sim_card_group"
 require "telnyx/sim_card_order"
 require "telnyx/sim_card_group_action"
@@ -130,6 +129,7 @@ require "telnyx/global_ip_assignment_usage"
 require "telnyx/global_ip_allowed_port"
 require "telnyx/dialogflow_connection"
 require "telnyx/channel_zone"
+require "telnyx/bulk_sim_card_action"
 
 module Telnyx
   @app_info = nil
