@@ -110,7 +110,6 @@ require "telnyx/messaging_tollfree_verification"
 require "telnyx/phone_number_block_job"
 require "telnyx/wdr"
 require "telnyx/embedding"
-require "telnyx/available_phone_numbers"
 require "telnyx/webhook_deliverie"
 require "telnyx/call_event"
 require "telnyx/messaging_url_domain"
@@ -132,6 +131,10 @@ require "telnyx/channel_zone"
 require "telnyx/bulk_sim_card_action"
 require "telnyx/campaign"
 require "telnyx/comment"
+require "telnyx/enum"
+require "telnyx/custom_storage_credential"
+require "telnyx/texml_application"
+require "telnyx/bulk_credential"
 
 module Telnyx
   @app_info = nil
