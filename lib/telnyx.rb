@@ -128,6 +128,8 @@ require "telnyx/global_ip_assignment"
 require "telnyx/global_ip_assignment_health"
 require "telnyx/global_ip_assignment_usage"
 require "telnyx/global_ip_allowed_port"
+require "telnyx/dialogflow_connection"
+require "telnyx/channel_zone"
 
 module Telnyx
   @app_info = nil
