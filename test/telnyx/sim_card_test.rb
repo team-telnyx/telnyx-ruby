@@ -4,9 +4,12 @@ require_relative "../test_helper"
 
 module Telnyx
   class SimCardTest < Test::Unit::TestCase
+    setup do
+      @id = "d25f43b3-aea3-6a5d-7a1b-d83e5c100cce"
+    end
     should "retrieve sim card" do
-      sim = Telnyx::SimCard.retrieve "123"
-      assert_requested(:get, "#{Telnyx.api_base}/v2/sim_cards/123")
+      sim = Telnyx::SimCard.retrieve @id
+      assert_requested(:get, "#{Telnyx.api_base}/v2/sim_cards/#{@id}")
       assert_kind_of Telnyx::SimCard, sim
     end
 
@@ -17,9 +20,9 @@ module Telnyx
     end
 
     should "save sim card" do
-      sim = Telnyx::SimCard.retrieve "123"
+      sim = Telnyx::SimCard.retrieve @id
       sim.save
-      assert_requested(:get, "#{Telnyx.api_base}/v2/sim_cards/123")
+      assert_requested(:get, "#{Telnyx.api_base}/v2/sim_cards/#{@id}")
     end
 
     should "register sim card" do
@@ -29,15 +32,73 @@ module Telnyx
 
     context "actions" do
       should "disable" do
-        sim = Telnyx::SimCard.retrieve "123"
-        sim.disable
-        assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/#{sim.id}/actions/disable")
+        Telnyx::SimCard.retrieve @id
+        assert_requested(:get, "#{Telnyx.api_base}/v2/sim_cards/#{@id}")
       end
 
       should "enable" do
-        sim = Telnyx::SimCard.retrieve "123"
-        sim.enable
-        assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/#{sim.id}/actions/enable")
+        Telnyx::SimCard.retrieve @id
+        assert_requested(:get, "#{Telnyx.api_base}/v2/sim_cards/#{@id}")
+      end
+
+      should "validate_registration_codes" do
+        codes = ["123456780", "1231231230"]
+        registration_codes = SimCard.validate_registration_codes(registration_codes: codes)
+        assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/actions/validate_registration_codes")
+        registration_codes.data.is_a?(Array)
+      end
+
+      should "bulk_set_public_ips" do
+        ids = ["6b14e151-8493-4fa1-8664-1cc4e6d14158"]
+        SimCard.bulk_set_public_ips(sim_card_ids: ids)
+        assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/actions/bulk_set_public_ips")
+      end
+
+      should "get device_details" do
+        sim = Telnyx::SimCard.retrieve @id
+        id = sim.id.freeze
+        sim.device_details
+        assert_requested(:get, "#{Telnyx.api_base}/v2/sim_cards/#{id}/device_details")
+      end
+
+      should "get activation_codes" do
+        sim = Telnyx::SimCard.retrieve @id
+        id = sim.id.freeze
+        sim.activation_code
+        assert_requested(:get, "#{Telnyx.api_base}/v2/sim_cards/#{id}/activation_code")
+      end
+
+      should "set_public_ip" do
+        sim = Telnyx::SimCard.retrieve @id
+        id = sim.id.freeze
+        sim.set_public_ip
+        assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/#{id}/actions/set_public_ip")
+      end
+
+      should "set_network_preferences" do
+        sim = Telnyx::SimCard.retrieve @id
+        id = sim.id.freeze
+        sim.set_network_preferences
+        assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/#{id}/actions/set_network_preferences")
+      end
+
+      should "remove_public_ip" do
+        sim = Telnyx::SimCard.retrieve @id
+        id = sim.id.freeze
+        sim.remove_public_ip
+        assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/#{id}/actions/remove_public_ip")
+      end
+
+      should "delete_network_preferences" do
+        sim = Telnyx::SimCard.retrieve @id
+        id = sim.id.freeze
+        sim.delete_network_preferences
+        assert_requested(:post, "#{Telnyx.api_base}/v2/sim_cards/#{id}/actions/delete_network_preferences")
+      end
+
+      should "delete network preferences" do
+        SimCard.network_preferences
+        assert_requested(:put, "#{Telnyx.api_base}/v2/actions/network_preferences/sim_cards")
       end
     end
   end

@@ -14,36 +14,20 @@ require "webmock/test_unit"
 PROJECT_ROOT = ::File.expand_path("../../", __FILE__)
 
 require ::File.expand_path("../test_data", __FILE__)
-require ::File.expand_path("../telnyx_mock", __FILE__)
 
-# If changing this number, please also change it in `.travis.yml`.
-MOCK_MINIMUM_VERSION = "0.8.10".freeze
-MOCK_PORT = Telnyx::TelnyxMock.start
+# Set up Proxy server configuration
+PROXY_PORT = 8000 # Port where your proxy server is running
+PROXY_HOST = "localhost"
+PROXY_BASE_URL = "http://#{PROXY_HOST}:#{PROXY_PORT}".freeze
 
 # Disable all real network connections except those that are outgoing to
-# telnyx-mock.
-WebMock.disable_net_connect!(allow: "localhost:#{MOCK_PORT}")
+# the Proxy server.
+WebMock.disable_net_connect!(allow: "#{PROXY_HOST}:#{PROXY_PORT}")
 
-# Try one initial test connection to telnyx-mock so that if there's a problem
-# we can print one error and fail fast so that it's more clear to the user how
-# they should fix the problem.
-begin
-  conn = Faraday::Connection.new("http://localhost:#{MOCK_PORT}")
-  resp = conn.get("/")
-  version = resp.headers["Telnyx-Mock-Version"]
-  if version != "master" &&
-     Gem::Version.new(version) < Gem::Version.new(MOCK_MINIMUM_VERSION)
-    abort("Your version of telnyx-mock (#{version}) is too old. The minimum " \
-      "version to run this test suite is #{MOCK_MINIMUM_VERSION}. Please " \
-      "see its repository for upgrade instructions.")
-  end
-rescue Faraday::ConnectionFailed
-  abort("Couldn't reach telnyx-mock at `localhost:#{MOCK_PORT}`. Is " \
-    "it running? Please see README for setup instructions.")
-end
+# You can remove the Telnyx mock setup as it's not needed for Prism
 
 Test::Unit.at_exit do
-  Telnyx::TelnyxMock.stop
+  # Clean up actions for Proxy if required
 end
 
 module Test
@@ -53,8 +37,8 @@ module Test
       include Mocha
 
       setup do
-        Telnyx.api_key = "KEYSUPERSECRET" # mock server expects this exact string
-        Telnyx.api_base = "http://localhost:#{MOCK_PORT}"
+        Telnyx.api_key = "KEYSUPERSECRET" # Set your desired API key or the one expected by the proxy/Prism
+        Telnyx.api_base = PROXY_BASE_URL # Use Proxy's base URL
 
         # stub_connect
       end

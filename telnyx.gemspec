@@ -7,7 +7,7 @@ require "telnyx/version"
 Gem::Specification.new do |s|
   s.name = "telnyx"
   s.version = Telnyx::VERSION
-  s.required_ruby_version = ">= 2.1.0"
+  s.required_ruby_version = ">= 3.1.0"
   s.summary = "Ruby bindings for the Telnyx API"
   s.description = "Telnyx enables anyone to deliver enterprise-grade real-time communications over the internet. See https://telnyx.com for details."
   s.author = "Telnyx"
@@ -22,7 +22,9 @@ Gem::Specification.new do |s|
     "source_code_uri"   => "https://github.com/team-telnyx/telnyx-ruby",
   }
 
-  s.add_dependency("faraday", ">= 0.13", "< 2.0", "!= 0.16.0", "!= 0.16.1", "!= 0.16.2", "!= 0.17.1")
+  s.add_dependency("faraday", ">= 2.5.0")
+  s.add_dependency("faraday-multipart", "~> 1.0.4")
+  s.add_dependency("faraday-net_http_persistent", "~> 2.1.0")
   s.add_dependency("net-http-persistent", ">= 3.0", "< 5.0")
   s.add_dependency("ed25519", "~> 1")
 

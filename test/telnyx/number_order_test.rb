@@ -8,7 +8,7 @@ module Telnyx
       number_orders = Telnyx::NumberOrder.list
       assert_requested :get, "#{Telnyx.api_base}/v2/number_orders"
       assert_kind_of Telnyx::ListObject, number_orders
-      assert_kind_of Telnyx::NumberOrder, number_orders.first
+      assert_kind_of Telnyx::TelnyxObject, number_orders.first
     end
 
     should "be creatable" do
@@ -31,8 +31,9 @@ module Telnyx
     should "be savable" do
       number_order = Telnyx::NumberOrder.retrieve "123"
       number_order.customer_reference = "foobar"
+      id = number_order.id.freeze
       number_order.save
-      assert_requested :patch, "#{Telnyx.api_base}/v2/number_orders/123"
+      assert_requested :patch, "#{Telnyx.api_base}/v2/number_orders/#{id}"
       assert_kind_of Telnyx::NumberOrder, number_order
     end
   end

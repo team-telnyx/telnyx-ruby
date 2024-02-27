@@ -46,8 +46,8 @@ module Telnyx
       list_messagings(nil)
     end
 
-    def update_jobs=(val)
-      self.class.update_job(nil, nil, phone_number=value)
+    def update_jobs=(_val)
+      self.class.update_job(nil, nil, value)
     end
     OBJECT_NAME = "phone_number".freeze
   end

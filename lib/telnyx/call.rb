@@ -35,7 +35,7 @@ module Telnyx
                  gather_using_audio gather_using_speak playback_start
                  playback_stop record_start record_stop send_dtmf transfer
                  transcription_start transcription_stop record_pause
-                 record_resume register gather_stop refer enqueue leave_queue].freeze
+                 record_resume register gather_stop refer enqueue leave_queue streaming_start streaming_stop gather].freeze
 
     ACTIONS.each do |action|
       nested_resource_class_methods action,

@@ -6,8 +6,9 @@ require_relative "../test_helper"
 module Telnyx
   class RegulatoryRequirementTest < Test::Unit::TestCase
     should "be retrievable" do
-      reg_req = RegulatoryRequirement.retrieve "12345"
-      assert_requested :get, "#{Telnyx.api_base}/v2/regulatory_requirements/12345"
+      id = "a38c217a-8019-48f8-bff6-0fdd9939075b"
+      reg_req = RegulatoryRequirement.retrieve id
+      assert_requested :get, "#{Telnyx.api_base}/v2/regulatory_requirements/#{id}"
       assert_kind_of RegulatoryRequirement, reg_req
     end
 
@@ -15,7 +16,7 @@ module Telnyx
       reg_reqs = RegulatoryRequirement.list
       assert_requested :get, "#{Telnyx.api_base}/v2/regulatory_requirements"
       assert_kind_of Array, reg_reqs.data
-      assert_kind_of RegulatoryRequirement, reg_reqs.first
+      assert_kind_of TelnyxObject, reg_reqs.first
     end
   end
 end

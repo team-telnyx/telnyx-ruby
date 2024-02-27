@@ -22,9 +22,10 @@ module Telnyx
     should "be saveable" do
       messaging_phone_number = Telnyx::MessagingPhoneNumber.retrieve("123")
       messaging_phone_number.messaging_profile_id = "value"
+      id = messaging_phone_number.id.gsub(/\s+/, "+").freeze
       messaging_phone_number.save
       # assert_requested :patch, "#{Telnyx.api_base}/v2/messaging_phone_numbers/#{messaging_phone_number.id}"
-      assert_requested :patch, "#{Telnyx.api_base}/v2/phone_numbers/#{messaging_phone_number.id}/messaging"
+      assert_requested :patch, "#{Telnyx.api_base}/v2/phone_numbers/#{id}/messaging"
     end
 
     should "be updateable" do

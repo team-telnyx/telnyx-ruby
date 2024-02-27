@@ -11,7 +11,7 @@ module Telnyx
       assert connections.first.is_a?(Connection) ||
              connections.first.is_a?(IPConnection) ||
              connections.first.is_a?(FQDNConnection) ||
-             connections.first.is_a?(CredentialConnection),
+             connections.first.is_a?(TelnyxObject),
              "Unexpected type: #{connections.first.class}"
     end
 
@@ -23,6 +23,13 @@ module Telnyx
              connection.is_a?(FQDNConnection) ||
              connection.is_a?(CredentialConnection),
              "Unexpected type: #{connection.class}"
+    end
+
+    should "retrieve active_calls" do
+      connection = Connection.retrieve("id")
+      id = connection.id.gsub(/\s+/, "+").freeze
+      connection.active_calls
+      assert_requested :get, "#{Telnyx.api_base}/v2/connections/#{id}/active_calls"
     end
   end
 end

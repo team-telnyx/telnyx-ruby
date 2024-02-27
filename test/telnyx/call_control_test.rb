@@ -7,6 +7,7 @@ module Telnyx
   class CallControlTest < Test::Unit::TestCase
     setup do
       @call = create_call
+      @call_control_id = @call.call_control_id.gsub(/\s+/, "+").freeze
     end
     context "call instance" do
       should "be correct class" do
@@ -69,87 +70,87 @@ module Telnyx
     context "commands" do
       should "reject" do
         @call.reject cause: "CALL_REJECTED"
-        assert_requested :post, format_action_url(@call, "reject")
+        assert_requested :post, format_action_url(@call_control_id, "reject")
       end
       should "answer" do
         @call.answer
-        assert_requested :post, format_action_url(@call, "answer")
+        assert_requested :post, format_action_url(@call_control_id, "answer")
       end
       should "hangup" do
         @call.hangup
-        assert_requested :post, format_action_url(@call, "hangup")
+        assert_requested :post, format_action_url(@call_control_id, "hangup")
       end
       should "bridge" do
         @call.bridge call_control_id: SecureRandom.base64(20)
-        assert_requested :post, format_action_url(@call, "bridge")
+        assert_requested :post, format_action_url(@call_control_id, "bridge")
       end
       should "speak" do
         @call.speak language: "en-US", voice: "female", payload: "Telnyx call control test"
-        assert_requested :post, format_action_url(@call, "speak")
+        assert_requested :post, format_action_url(@call_control_id, "speak")
       end
       should "start fork" do
         @call.fork_start call_control_id: SecureRandom.base64(20)
-        assert_requested :post, format_action_url(@call, "fork_start")
+        assert_requested :post, format_action_url(@call_control_id, "fork_start")
       end
       should "stop fork" do
         @call.fork_stop
-        assert_requested :post, format_action_url(@call, "fork_stop")
+        assert_requested :post, format_action_url(@call_control_id, "fork_stop")
       end
       should "gather using audio" do
         @call.gather_using_audio audio_url: "https://audio.example.com"
-        assert_requested :post, format_action_url(@call, "gather_using_audio")
+        assert_requested :post, format_action_url(@call_control_id, "gather_using_audio")
       end
       should "gather using speak" do
         @call.gather_using_speak language: "en-US", voice: "female", payload: "Telnyx call control test"
-        assert_requested :post, format_action_url(@call, "gather_using_speak")
+        assert_requested :post, format_action_url(@call_control_id, "gather_using_speak")
       end
       should "playback start" do
         @call.playback_start audio_url: "https://audio.example.com"
-        assert_requested :post, format_action_url(@call, "playback_start")
+        assert_requested :post, format_action_url(@call_control_id, "playback_start")
       end
       should "playback stop" do
         @call.playback_stop
-        assert_requested :post, format_action_url(@call, "playback_stop")
+        assert_requested :post, format_action_url(@call_control_id, "playback_stop")
       end
       should "send dtmf" do
         @call.send_dtmf digits: "1www2WABCDw9"
-        assert_requested :post, format_action_url(@call, "send_dtmf")
+        assert_requested :post, format_action_url(@call_control_id, "send_dtmf")
       end
       should "transfer" do
         @call.transfer to: "+15552223333"
-        assert_requested :post, format_action_url(@call, "transfer")
+        assert_requested :post, format_action_url(@call_control_id, "transfer")
       end
       should "start transcription" do
         @call.transcription_start
-        assert_requested :post, format_action_url(@call, "transcription_start")
+        assert_requested :post, format_action_url(@call_control_id, "transcription_start")
       end
       should "end transcription" do
         @call.transcription_stop
-        assert_requested :post, format_action_url(@call, "transcription_stop")
+        assert_requested :post, format_action_url(@call_control_id, "transcription_stop")
       end
       should "pause recording" do
         @call.record_pause
-        assert_requested :post, format_action_url(@call, "record_pause")
+        assert_requested :post, format_action_url(@call_control_id, "record_pause")
       end
       should "resume recording" do
         @call.record_resume
-        assert_requested :post, format_action_url(@call, "record_resume")
+        assert_requested :post, format_action_url(@call_control_id, "record_resume")
       end
       should "gather stop" do
         @call.gather_stop
-        assert_requested :post, format_action_url(@call, "gather_stop")
+        assert_requested :post, format_action_url(@call_control_id, "gather_stop")
       end
       should "refer" do
         @call.refer sip_address: "sip:username@sip.non-telnyx-address.com"
-        assert_requested :post, format_action_url(@call, "refer")
+        assert_requested :post, format_action_url(@call_control_id, "refer")
       end
       should "enqueue" do
         @call.enqueue call_control_id: SecureRandom.base64(20)
-        assert_requested :post, format_action_url(@call, "enqueue")
+        assert_requested :post, format_action_url(@call_control_id, "enqueue")
       end
       should "leave_queue" do
         @call.leave_queue call_control_id: SecureRandom.base64(20)
-        assert_requested :post, format_action_url(@call, "leave_queue")
+        assert_requested :post, format_action_url(@call_control_id, "leave_queue")
       end
     end
 
@@ -157,8 +158,8 @@ module Telnyx
       Telnyx::Call.create connection_id: "12345", to: "+15550001111", from: "+15550002222", cause: "test"
     end
 
-    def format_action_url(call, action)
-      "#{Telnyx.api_base}/v2/calls/#{call.call_control_id}/actions/#{action}"
+    def format_action_url(call_control_id, action)
+      "#{Telnyx.api_base}/v2/calls/#{call_control_id}/actions/#{action}"
     end
   end
 end
