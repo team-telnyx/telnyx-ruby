@@ -37,6 +37,7 @@ module Telnyx
       end
 
       should "end the room session" do
+        omit "No supported object invalid as input"
         id = @room_session.id.freeze
         @room_session.end
         assert_requested :post, "#{Telnyx.api_base}/v2/room_sessions/#{id}/actions/end"

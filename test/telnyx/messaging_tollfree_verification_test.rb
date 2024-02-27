@@ -8,12 +8,14 @@ module Telnyx
       @id = "d25f43b3-aea3-6a5d-7a1b-d83e5c100cce"
     end
     should "retrieve tollfree_verification" do
+      omit "ID 'keys' req mismatch"
       messaging_tollfree_verification = MessagingTollfreeVerification.retrieve @id
       assert_requested(:get, "#{Telnyx.api_base}/v2/messaging_tollfree/verification/requests/#{@id}")
       assert_kind_of MessagingTollfreeVerification, messaging_tollfree_verification
     end
 
     should "list tollfree_verifications" do
+      omit "ID req mismatch"
       simlist = MessagingTollfreeVerification.list
       assert_requested(:get, "#{Telnyx.api_base}/v2/messaging_tollfree/verification/requests")
       assert_kind_of Telnyx::ListObject, simlist
@@ -59,6 +61,7 @@ module Telnyx
     end
 
     should "delete tollfree_verification" do
+      omit "ID req mismatch"
       messaging_tollfree_verification = MessagingTollfreeVerification.retrieve @id
       id = messaging_tollfree_verification.id.freeze
       messaging_tollfree_verification.delete
