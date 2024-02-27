@@ -7,7 +7,7 @@ require "telnyx/version"
 Gem::Specification.new do |s|
   s.name = "telnyx"
   s.version = Telnyx::VERSION
-  s.required_ruby_version = ">= 3.1.0"
+  s.required_ruby_version = ">= 3.0.0"
   s.summary = "Ruby bindings for the Telnyx API"
   s.description = "Telnyx enables anyone to deliver enterprise-grade real-time communications over the internet. See https://telnyx.com for details."
   s.author = "Telnyx"
