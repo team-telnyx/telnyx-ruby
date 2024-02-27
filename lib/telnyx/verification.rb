@@ -19,9 +19,9 @@ module Telnyx
                                     retrieve: "by_telephone",
                                   }
 
-    def self.submit_code(phone_number: nil, code: nil)
-      url = "#{resource_url}/by_phone_number/#{CGI.escape phone_number}/actions/verify"
-      resp, _opts = request(:post, url, code: code)
+    def self.submit_code(params = {})
+      url = "#{resource_url}/by_phone_number/#{CGI.escape params[:phone_number]}/actions/verify"
+      resp, _opts = request(:post, url, params)
       Response.construct_from resp.data[:data]
     end
 

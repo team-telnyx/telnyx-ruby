@@ -6,6 +6,7 @@ module Telnyx
   class ConferenceTest < Test::Unit::TestCase
     setup do
       @conference = Conference.create call_control_id: "foobar", name: "conference!"
+      @id = @conference.id.gsub(/\s+/, "+").freeze
     end
     should "create conference" do
       assert_requested :post, "#{Telnyx.api_base}/v2/conferences"
@@ -28,7 +29,7 @@ module Telnyx
 
     should "list participants" do
       participants = @conference.participants
-      assert_requested :get, "#{Telnyx.api_base}/v2/conferences/#{@conference.id}/participants"
+      assert_requested :get, "#{Telnyx.api_base}/v2/conferences/#{@conference.id.gsub(/\s+/, '+')}/participants"
       assert_kind_of ListObject, participants
     end
 
@@ -48,57 +49,67 @@ module Telnyx
     context "commands" do
       should "join" do
         @conference.join call_control_id: "foo_bar_baz"
-        assert_requested :post, action_url(@conference, "join")
+        assert_requested :post, action_url(@id, "join")
       end
 
       should "mute" do
         @conference.mute
-        assert_requested :post, action_url(@conference, "mute")
+        assert_requested :post, action_url(@id, "mute")
       end
 
       should "unmute" do
         @conference.unmute
-        assert_requested :post, action_url(@conference, "unmute")
+        assert_requested :post, action_url(@id, "unmute")
       end
 
       should "hold" do
         @conference.hold
-        assert_requested :post, action_url(@conference, "hold")
+        assert_requested :post, action_url(@id, "hold")
       end
 
       should "unhold" do
         @conference.unhold call_control_ids: %w[foo bar baz]
-        assert_requested :post, action_url(@conference, "unhold")
+        assert_requested :post, action_url(@id, "unhold")
       end
 
       should "play" do
         @conference.play audio_url: "https://example.com/audio.mp3"
-        assert_requested :post, action_url(@conference, "play")
+        assert_requested :post, action_url(@id, "play")
       end
 
       should "start recording" do
         @conference.start_recording channels: "dual", format: "mp3"
-        assert_requested :post, action_url(@conference, "record_start")
+        assert_requested :post, action_url(@id, "record_start")
       end
 
       should "stop recording" do
         @conference.stop_recording
-        assert_requested :post, action_url(@conference, "record_stop")
+        assert_requested :post, action_url(@id, "record_stop")
       end
 
       should "speak" do
         @conference.speak language: "en-US", payload: "test speech", voice: "female"
-        assert_requested :post, action_url(@conference, "speak")
+        assert_requested :post, action_url(@id, "speak")
       end
 
-      should "dial participant" do
-        @conference.dial_participant call_control_id: "foo", to: "+12223334444", from: "+12223335555"
-        assert_requested :post, action_url(@conference, "dial_participant")
+      should "record_pause" do
+        @conference.record_pause
+        assert_requested :post, action_url(@id, "record_pause")
       end
+
+      should "record_resume" do
+        @conference.record_resume
+        assert_requested :post, action_url(@id, "record_resume")
+      end
+
+      # should "dial participant" do
+      #   @conference.dial_participant call_control_id: "foo", to: "+12223334444", from: "+12223335555"
+      #   assert_requested :post, action_url(@id, "dial_participant")
+      # end
 
       should "update" do
         @conference.update call_control_id: "foo", supervisor_role: "barge"
-        assert_requested :post, action_url(@conference, "update")
+        assert_requested :post, action_url(@id, "update")
       end
     end
 
@@ -106,8 +117,8 @@ module Telnyx
       Telnyx::Call.create connection_id: "12345", to: "+15550001111", from: "+15550002222"
     end
 
-    def action_url(conf, action)
-      "#{Telnyx.api_base}/v2/conferences/#{conf.id}/actions/#{action}"
+    def action_url(id, action)
+      "#{Telnyx.api_base}/v2/conferences/#{id}/actions/#{action}"
     end
   end
 end

@@ -5,8 +5,8 @@ require_relative "../test_helper"
 module Telnyx
   class MessageTest < Test::Unit::TestCase
     should "be retrievable" do
-      message = Telnyx::Message.retrieve("123")
-      assert_requested :get, "#{Telnyx.api_base}/v2/messages/123"
+      message = Telnyx::Message.retrieve("24b1cc47-fd1e-848b-feb7-65f9d18cca13")
+      assert_requested :get, "#{Telnyx.api_base}/v2/messages/24b1cc47-fd1e-848b-feb7-65f9d18cca13"
       assert message.is_a?(Telnyx::Message)
     end
 

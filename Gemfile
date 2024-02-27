@@ -6,7 +6,10 @@ gemspec
 
 group :development do
   gem "coveralls_reborn", require: false
-  gem "faraday", "~> 1.0"
+  gem "faraday", "~> 2.5.0"
+  gem "faraday-multipart"
+  gem "faraday-net_http_persistent"
+  gem "faraday-retry"
   gem "mocha", "~> 0.13.2"
   gem "rake"
   gem "shoulda-context"
@@ -22,7 +25,7 @@ group :development do
   gem "guard"
   gem "guard-rake"
   gem "guard-rubocop"
-  gem "rubocop", "~> 1.6"
+  gem "rubocop", "~> 1.60.2"
 
   # debugging
   # gem 'httplog' # when included logs all http requests
@@ -31,11 +34,7 @@ group :development do
   # Rack 2.0+ requires Ruby >= 2.2.2 which is problematic for the test suite on
   # older Ruby versions. Check Ruby the version here and put a maximum
   # constraint on Rack if necessary.
-  if RUBY_VERSION >= "2.2.2"
-    gem "rack", ">= 2.1.4"
-  else
-    gem "rack", ">= 1.6.11", "< 2.0" # rubocop:disable Bundler/DuplicatedGem
-  end
+  gem "rack", ">= 2.2.8.1"
 
   platforms :mri do
     # gem "byebug"

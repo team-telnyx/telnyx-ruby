@@ -15,5 +15,11 @@ module Telnyx
       Telnyx::AvailablePhoneNumber.list phone_number: { starts_with: "2&&", ends_with: "ABC" }
       assert_requested(:get, /#{"#{Telnyx.api_base}/v2/available_phone_numbers"}/)
     end
+
+    should "be lists of block phone numbers" do
+      blocks = AvailablePhoneNumber.blocks
+      assert blocks.is_a?(ListObject)
+      assert blocks[:data].is_a?(Array)
+    end
   end
 end
