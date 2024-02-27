@@ -33,7 +33,10 @@ module Telnyx
       return "/v2/#{resource_path(inner_id)}" if respond_to?("resource_path")
       return "/v2/#{self::RESOURCE_PATH}" if const_defined?("RESOURCE_PATH")
 
-      "/v2/#{self::OBJECT_NAME.downcase.tr('.', '/')}s"
+      object_name = self::OBJECT_NAME.downcase
+      keywords = %w[generate summarize global_ip_usage global_ip_latency global_ip_assignment_usage global_ip_assignment_health sub_request campaign]
+      url_segment = object_name.tr(".", "/")
+      keywords.any? { |keyword| url_segment.include?(keyword) } ? "/v2/#{url_segment}" : "/v2/#{url_segment}s"
     end
 
     def self.identified_resource_url(id)

@@ -46,14 +46,14 @@ module Telnyx
     end
 
     should "retrieve verification" do
-      verification = Verification.retrieve("id")
-      assert_requested :get, "#{Telnyx.api_base}/v2/verifications/id"
+      id = "8b957e5d-0b58-a3e1-42ec-5c4519d08087"
+      verification = Verification.retrieve(id)
+      assert_requested :get, "#{Telnyx.api_base}/v2/verifications/#{id}"
       assert_kind_of Verification, verification
     end
 
     should "send verification code" do
-      Verification.submit_code code: "12345", phone_number: "+13035551234"
-
+      Verification.submit_code({ code: "12345", phone_number: "+13035551234", verify_profile_id: "080e8523-3b29-439b-c08c-edd4b0ec719e" })
       assert_requested :post, "#{Telnyx.api_base}/v2/verifications/by_phone_number/+13035551234/actions/verify"
     end
   end

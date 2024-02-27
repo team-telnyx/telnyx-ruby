@@ -7,7 +7,13 @@ module Telnyx
     extend APIOperations::NestedResource
     include APIOperations::Delete
     include Telnyx::APIOperations::Save
-
+    ACTIONS = %w[activate].freeze
+    ACTIONS.each do |action|
+      nested_resource_class_methods action,
+                                    path: %W[actions #{action}],
+                                    operations: [:create],
+                                    instance_methods: { create: action }
+    end
     nested_resource_class_methods :loa_template,
                                   path: ["loa_template"],
                                   operations: %i[list],
@@ -36,6 +42,18 @@ module Telnyx
                                   path: ["cancel"],
                                   operations: %i[create],
                                   instance_methods: { create: "cancel" }
+    nested_resource_class_methods :sub_request,
+                                  path: ["sub_request"],
+                                  operations: %i[list],
+                                  instance_methods: { list: "sub_request" }
+    nested_resource_class_methods :requirements,
+                                  path: ["requirements"],
+                                  operations: %i[list],
+                                  instance_methods: { list: "requirements" }
+    nested_resource_class_methods :comments,
+                                  path: ["comments"],
+                                  operations: %i[list],
+                                  instance_methods: { list: "comments" }
     OBJECT_NAME = "porting_order"
   end
 end

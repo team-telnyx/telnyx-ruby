@@ -32,7 +32,6 @@ module Telnyx
       # object per thread.
       Thread.current[:telnyx_client_default_conn] ||= begin
         conn = Faraday.new do |builder|
-          builder.use Faraday::Request::Multipart
           builder.use Faraday::Request::UrlEncoded
           builder.use Faraday::Response::RaiseError
 
@@ -411,7 +410,7 @@ module Telnyx
                      body: body,
                      request_id: context.request_id)
 
-      return unless context.request_id
+      nil unless context.request_id
     end
     private :log_response
 
