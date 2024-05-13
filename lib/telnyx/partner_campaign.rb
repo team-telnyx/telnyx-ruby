@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Telnyx
-  class Campaign < APIResource
+  class PartnerCampaign < APIResource
     extend Telnyx::APIOperations::List
     extend Telnyx::APIOperations::Create
     include Telnyx::APIOperations::Delete
@@ -15,28 +15,18 @@ module Telnyx
                                     operations: [:create],
                                     instance_methods: { create: action }
     end
-    def accept_sharing(params = {}, opts = {})
-      resp, opts = request(:post, "/10dlc/campaign/acceptSharing/#{campaignId.gsub(/\s+/, '+')}", params, opts)
-      Util.convert_to_telnyx_object(resp.data, opts)
-    end
-
     def sharing(params = {}, opts = {})
-      resp, opts = request(:get, "/10dlc/campaign/#{campaignId.gsub(/\s+/, '+')}/sharing", params, opts)
-      Util.convert_to_telnyx_object(resp.data, opts)
-    end
-
-    def osr_attributes(params = {}, opts = {})
-      resp, opts = request(:get, "/10dlc/campaign/#{campaignId.gsub(/\s+/, '+')}/osr/attributes", params, opts)
+      resp, opts = request(:post, "/10dlc/campaign/sharing/#{campaignId.gsub(/\s+/, '+')}", params, opts)
       Util.convert_to_telnyx_object(resp.data, opts)
     end
 
     def self.resource_url(inner_id = nil)
       path_prefix = "/10dlc"
-      object_path = "campaign"
+      object_path = "partnerCampaign"
 
       inner_id.nil? ? "#{path_prefix}/#{object_path}" : "#{path_prefix}/#{object_path}/#{CGI.escape(inner_id)}"
     end
 
-    OBJECT_NAME = "campaign".freeze
+    OBJECT_NAME = "partnerCampaign".freeze
   end
 end

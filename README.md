@@ -161,12 +161,36 @@ There are a few options for enabling it:
 
 ## Development
 
-The test suite depends on [telnyx-mock], so make sure to fetch and run it from a
-background terminal ([telnyx-mock's README][telnyx-mock] also contains
-instructions for installing via Homebrew and other methods):
+### Setup
+The test suite depends on the [Prism Mock Server](https://github.com/stoplightio/prism).
 
-    go get -u github.com/telnyx/telnyx-mock
-    telnyx-mock
+```bash
+npm install -g @stoplight/prism-cli
+
+# OR
+
+yarn global add @stoplight/prism-cli
+```
+
+Once installed, start the prism mock service with the following command:
+
+```bash
+prism mock https://raw.githubusercontent.com/team-telnyx/openapi/master/openapi/spec3.json
+```
+
+--------
+
+One final step -- because the Ruby SDK originally expected to reach the legacy `telnyx-mock` service at port 12111 (in addition to providing a `/v2/` base path), we need to setup a proxy server.
+
+You can do this any way you wish, but included is a server.js file which you can utilize:
+
+```bash
+# In new terminal window
+
+node server.js
+```
+
+### Running Tests
 
 Run all tests:
 
@@ -187,9 +211,6 @@ Run the linter:
 Run guard:
 
     bundle exec guard
-
-Update the bundled [telnyx-mock] by editing the version number found in
-`.travis.yml`.
 
 ### Adding a new resource
 
