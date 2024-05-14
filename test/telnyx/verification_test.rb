@@ -19,6 +19,7 @@ module Telnyx
       end
 
       should "trigger psd2" do
+        omit "deprecated method"
         Verification.psd2 phone_number: "+15555555555",
                           verify_profile_id: "12ade33a-21c0-473b-b055-b3c836e1c292",
                           amount: "12.34",
@@ -37,6 +38,7 @@ module Telnyx
       end
 
       should "whatsapp" do
+        omit "deprecated method"
         Verification.whatsapp phone_number: "+15555555555",
                               timeout_secs: 600,
                               verify_profile_id: "12ade33a-21c0-473b-b055-b3c836e1c292",

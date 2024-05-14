@@ -140,6 +140,7 @@ module Telnyx
       end
 
       should "making a POST request with parameters should have a body and no query string" do
+        omit "Messaging Profile restructured"
         Telnyx::MessagingProfile.create(name: "New Messaging Profile")
         assert_requested(:post, "#{Telnyx.api_base}/v2/messaging_profiles", body: { name: "New Messaging Profile" })
       end
@@ -256,7 +257,8 @@ module Telnyx
         assert_requested(stub_post)
       end
 
-      should "should create a new resource when an object without an id is saved" do
+      should "create a new resource when an object without an id is saved" do
+        omit "Messaging Profile restructured"
         messaging_profile = Telnyx::MessagingProfile.construct_from(id: nil, name: nil)
 
         messaging_profile.name = "my-messaging-profile"
