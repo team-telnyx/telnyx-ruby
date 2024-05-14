@@ -4,8 +4,8 @@ require_relative "../test_helper"
 
 module Telnyx
   class BatchMdrReportTest < Test::Unit::TestCase
-    omit "api change"
     should "list batch mdr reports" do
+      omit "api change"
       batch_mdr_reports = BatchMdrReport.list
       assert_requested :get, "#{Telnyx.api_base}/v2/reports/batch_mdr_reports"
       assert_kind_of ListObject, batch_mdr_reports
