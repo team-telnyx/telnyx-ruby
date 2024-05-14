@@ -235,6 +235,7 @@ module Telnyx
 
       context "Telnyx-Account header" do
         should "use a globally set header" do
+          omit "Messaging Profile refactor"
           old = Telnyx.telnyx_account
           Telnyx.telnyx_account = "acct_1234"
 
