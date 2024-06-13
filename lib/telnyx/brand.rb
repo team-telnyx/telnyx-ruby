@@ -15,6 +15,6 @@ module Telnyx
       inner_id.nil? ? "#{path_prefix}/#{object_path}" : "#{path_prefix}/#{object_path}/#{CGI.escape(inner_id)}"
     end
 
-    OBJECT_NAME = "10dlc/brand".freeze
+    OBJECT_NAME = "brand".freeze
   end
 end
