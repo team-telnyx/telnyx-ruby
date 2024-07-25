@@ -10,6 +10,16 @@ module Telnyx
       assert order.is_a?(Telnyx::MessagingHostedNumberOrder)
     end
 
+    should "be able to upload a file" do
+      order = Telnyx::MessagingHostedNumberOrder.retrieve("123")
+      file_upload = order.upload_file(
+        loa: File.new("path/to/loa.pdf"),
+        bill: File.new("path/to/bill.pdf")
+      )
+      assert_requested :post, "#{Telnyx.api_base}/v2/messaging_hosted_number_orders/123/actions/file_upload"
+      assert file_upload.is_a?(Telnyx::TelnyxObject)
+    end
+
     should "be creatable" do
       order = Telnyx::MessagingHostedNumberOrder.create(
         phone_number: "+1234567890",

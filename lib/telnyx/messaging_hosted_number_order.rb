@@ -17,5 +17,10 @@ module Telnyx
     end
 
     OBJECT_NAME = "messaging_hosted_number_order".freeze
+
+    def upload_file(params = {}, opts = {})
+      resp, opts = request(:post, "#{resource_url}/actions/file_upload", params, opts)
+      Util.convert_to_telnyx_object(resp.data, opts)
+    end
   end
 end
