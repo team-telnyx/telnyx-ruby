@@ -16,5 +16,11 @@ module Telnyx
     end
 
     OBJECT_NAME = "brand".freeze
+
+    def self.retrieve(id, opts = {})
+      instance = new(id, opts)
+      instance.refresh
+      instance
+    end
   end
 end
