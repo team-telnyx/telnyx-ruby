@@ -9,3 +9,4 @@ coverage/
 vendor/*
 TAGS
 .ruby-version
+.aider*
