@@ -46,7 +46,10 @@ module Telnyx
       Util.convert_to_telnyx_object(resp.data, opts)
     end
 
-    # depreciated api
+    def self.retrieve(id, params = {}, opts = {})
+      resp, opts = request(:get, "/v2/sim_cards/#{id}", params, opts)
+      Util.convert_to_telnyx_object(resp.data, opts)
+    end
     def activate
       warn "[DEPRECATION] SimCard#activate is deprecated, use enable instead."
       enable
