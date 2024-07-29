@@ -15,6 +15,11 @@ module Telnyx
                                     operations: [:create],
                                     instance_methods: { create: action }
     end
+    def self.create(params = {}, opts = {})
+      resp, opts = request(:post, "/10dlc/campaignBuilder", params, opts)
+      Util.convert_to_telnyx_object(resp.data, opts)
+    end
+
     def accept_sharing(params = {}, opts = {})
       resp, opts = request(:post, "/10dlc/campaign/acceptSharing/#{campaignId.gsub(/\s+/, '+')}", params, opts)
       Util.convert_to_telnyx_object(resp.data, opts)
@@ -27,6 +32,11 @@ module Telnyx
 
     def osr_attributes(params = {}, opts = {})
       resp, opts = request(:get, "/10dlc/campaign/#{campaignId.gsub(/\s+/, '+')}/osr/attributes", params, opts)
+      Util.convert_to_telnyx_object(resp.data, opts)
+    end
+
+    def self.retrieve(id, opts = {})
+      resp, opts = request(:get, resource_url(id), {}, opts)
       Util.convert_to_telnyx_object(resp.data, opts)
     end
 

@@ -16,7 +16,7 @@ PROJECT_ROOT = ::File.expand_path("../../", __FILE__)
 require ::File.expand_path("../test_data", __FILE__)
 
 # Set up Proxy server configuration
-PROXY_PORT = 12_111 # Port where your proxy server is running
+PROXY_PORT = 8000 # Port where your proxy server is running
 PROXY_HOST = "localhost"
 PROXY_BASE_URL = "http://#{PROXY_HOST}:#{PROXY_PORT}".freeze
 
