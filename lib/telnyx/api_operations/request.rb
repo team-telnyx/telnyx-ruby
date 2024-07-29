@@ -29,7 +29,6 @@ module Telnyx
           end
 
           [resp, opts_to_persist]
-        end
           warn_on_opts_in_params(params)
 
           opts = Util.normalize_opts(opts)
