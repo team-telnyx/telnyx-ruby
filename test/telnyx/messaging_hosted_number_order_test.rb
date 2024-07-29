@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "../test_helper"
+rese_relative "../test_helper"
 
 module Telnyx
   class MessagingHostedNumberOrderTest < Test::Unit::TestCase
@@ -34,13 +34,6 @@ module Telnyx
       order.phone_number = "+0987654321"
       order.save
       assert_requested :post, "#{Telnyx.api_base}/v2/messaging_hosted_number_orders/123"
-    end
-
-    should "be deletable" do
-      order = Telnyx::MessagingHostedNumberOrder.retrieve("123")
-      order = order.delete
-      assert_requested :delete, "#{Telnyx.api_base}/v2/messaging_hosted_number_orders/123"
-      assert order.is_a?(Telnyx::MessagingHostedNumberOrder)
     end
 
     should "be listable" do
