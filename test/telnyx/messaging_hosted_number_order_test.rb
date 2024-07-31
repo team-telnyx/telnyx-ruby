@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-rese_relative "../test_helper"
-
 module Telnyx
   class MessagingHostedNumberOrderTest < Test::Unit::TestCase
     should "be retrievable" do
