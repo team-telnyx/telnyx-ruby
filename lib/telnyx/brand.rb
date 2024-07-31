@@ -16,5 +16,16 @@ module Telnyx
     end
 
     OBJECT_NAME = "brand".freeze
+
+    def external_vetting(params = {}, opts = {})
+      resp, opts = request(:post, "#{resource_url}/externalVetting", params, opts)
+      Util.convert_to_telnyx_object(resp.data, opts)
+    end
+
+    def self.retrieve(id, opts = {})
+      instance = new(id, opts)
+      instance.refresh
+      instance
+    end
   end
 end
