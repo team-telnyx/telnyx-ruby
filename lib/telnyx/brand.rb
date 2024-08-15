@@ -2,30 +2,21 @@
 
 module Telnyx
   class Brand < APIResource
-    extend APIOperations::List
-    extend APIOperations::Create
+    extend Telnyx::APIOperations::Create
+    extend Telnyx::APIOperations::List
+    include Telnyx::APIOperations::Save
+    include Telnyx::APIOperations::Delete
     extend APIOperations::NestedResource
-    include APIOperations::Delete
-    include APIOperations::Save
-
-    def self.resource_url(inner_id = nil)
-      path_prefix = "/10dlc"
-      object_path = "brand"
-
-      inner_id.nil? ? "#{path_prefix}/#{object_path}" : "#{path_prefix}/#{object_path}/#{CGI.escape(inner_id)}"
-    end
 
     OBJECT_NAME = "brand".freeze
-
-    def external_vetting(params = {}, opts = {})
-      resp, opts = request(:post, "#{resource_url}/externalVetting", params, opts)
-      Util.convert_to_telnyx_object(resp.data, opts)
-    end
-
-    def self.retrieve(id, opts = {})
-      instance = new(id, opts)
-      instance.refresh
-      instance
+    RESOURCE_PATH = "brand".freeze
+    def self.create(params = {}, opts = {})
+      params[:entityType] ||= "PRIVATE_PROFIT"
+      params[:displayName] ||= "Default Display Name"
+      params[:country] ||= "US"
+      params[:email] ||= "default@example.com"
+      params[:vertical] ||= "COMMUNICATION"
+      super(params, opts)
     end
   end
 end
