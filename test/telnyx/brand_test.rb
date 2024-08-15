@@ -68,7 +68,7 @@ module Telnyx
 
     should "revet brand" do
       revet = Telnyx::Brand.revet("123")
-      assert_requested :put, "#{Telnyx.api_base}/brand/123/revets"
+      assert_requested :put, "#{Telnyx.api_base}/brand/123/revet"
       assert revet.is_a?(Telnyx::TelnyxObject)
     end
   end
