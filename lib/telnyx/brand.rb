@@ -10,7 +10,7 @@ module Telnyx
     OBJECT_NAME = "brand".freeze
 
     def self.resource_url
-      "/brand"
+      "/10dlc/brand"
     end
 
     def self.get_feedback(brand_id, opts = {})
