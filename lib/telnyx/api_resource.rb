@@ -11,6 +11,8 @@ module Telnyx
     attr_accessor :save_with_parent
 
     class << self
+      attr_accessor :base_path
+
       def inherited(subclass)
         super
         @descendants ||= []
@@ -28,19 +30,24 @@ module Telnyx
       if self == APIResource
         raise NotImplementedError, "APIResource is an abstract class. You should perform actions on its subclasses"
       end
+
+      # Determine the base path
+      base_path = self.base_path || "/v2"
+
       # Namespaces are separated in object names with periods (.) and in URLs
       # with forward slashes (/), so replace the former with the latter.
-      return "/v2/#{resource_path(inner_id)}" if respond_to?("resource_path")
-      return "/v2/#{self::RESOURCE_PATH}" if const_defined?("RESOURCE_PATH")
+      return "#{base_path}/#{resource_path(inner_id)}" if respond_to?("resource_path")
+      return "#{base_path}/#{self::RESOURCE_PATH}" if const_defined?("RESOURCE_PATH")
 
       object_name = self::OBJECT_NAME.downcase
       keywords = %w[generate summarize global_ip_usage global_ip_latency global_ip_assignment_usage global_ip_assignment_health sub_request campaign]
       url_segment = object_name.tr(".", "/")
-      keywords.any? { |keyword| url_segment.include?(keyword) } ? "/v2/#{url_segment}" : "/v2/#{url_segment}s"
+      keywords.any? { |keyword| url_segment.include?(keyword) } ? "#{base_path}/#{url_segment}" : "#{base_path}/#{url_segment}s"
     end
 
     def self.identified_resource_url(id)
-      return "/v2/#{resource_path(id)}" if respond_to?("resource_path")
+      base_path = self.base_path || "/v2"
+      return "#{base_path}/#{resource_path(id)}" if respond_to?("resource_path")
 
       "#{resource_url}/#{CGI.escape(id)}"
     end
@@ -54,17 +61,14 @@ module Telnyx
     def self.save_nested_resource(name)
       define_method(:"#{name}=") do |value|
         super(value)
-
         # The parent setter will perform certain useful operations like
         # converting to an APIResource if appropriate. Refresh our argument
         # value to whatever it mutated to.
         value = send(name)
-
         # Note that the value may be subresource, but could also be a scalar
         # (like a tokenized card's ID for example), so we check the type before
         # setting #save_with_parent here.
         value.save_with_parent = true if value.is_a?(APIResource)
-
         value
       end
     end
@@ -73,7 +77,7 @@ module Telnyx
       unless (id = self["id"])
         raise InvalidRequestError, "Could not determine which URL to request: #{self.class} instance has invalid ID: #{id.inspect}"
       end
-      return self.class.resource_url(id).to_s if self.class.respond_to?("resource_path") # Use resource_path defined paths
+      return self.class.resource_url(id).to_s if self.class.respond_to?("resource_path")
 
       "#{self.class.resource_url}/#{CGI.escape(id)}"
     end
