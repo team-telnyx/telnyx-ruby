@@ -11,7 +11,10 @@ module Telnyx
         ein_issuing_country: "US",
         entity_type: "PRIVATE_PROFIT",
         registration_status: "REGISTERED",
-        vertical: "COMMUNICATIONS"
+        vertical: "COMMUNICATION",
+        displayName: "Test Display Name",
+        country: "US",
+        email: "test@example.com"
       )
       assert_requested :post, "#{Telnyx.api_base}/brand"
       assert brand.is_a?(Telnyx::Brand)
