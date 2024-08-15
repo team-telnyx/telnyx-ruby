@@ -37,7 +37,7 @@ module Telnyx
     end
 
     def self.revet(brand_id, opts = {})
-      url = "#{resource_url(brand_id)}/revets"
+      url = "#{resource_url(brand_id)}/revet"
       resp, opts = request(:put, url, {}, opts)
       Util.convert_to_telnyx_object(resp.data, opts)
     end
