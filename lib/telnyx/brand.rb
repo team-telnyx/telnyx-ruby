@@ -12,6 +12,7 @@ module Telnyx
     def self.resource_url
       "/brand"
     end
+
     def self.get_feedback(brand_id, opts = {})
       url = "#{resource_url}/#{CGI.escape(brand_id)}/feedback"
       resp, opts = request(:get, url, {}, opts)
@@ -41,4 +42,5 @@ module Telnyx
       resp, opts = request(:put, url, {}, opts)
       Util.convert_to_telnyx_object(resp.data, opts)
     end
+  end
 end
