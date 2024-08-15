@@ -13,20 +13,20 @@ module Telnyx
         registration_status: "REGISTERED",
         vertical: "COMMUNICATIONS"
       )
-      assert_requested :post, "#{Telnyx.api_base}/10dlc/brands"
+      assert_requested :post, "#{Telnyx.api_base}/10dlc/brand"
       assert brand.is_a?(Telnyx::Brand)
     end
 
     should "be listable" do
-      brands = Telnyx::Brand.list
-      assert_requested :get, "#{Telnyx.api_base}/10dlc/brands"
-      assert brands.data.is_a?(Array)
-      assert brands.data[0].is_a?(Telnyx::Brand)
+      brand = Telnyx::Brand.list
+      assert_requested :get, "#{Telnyx.api_base}/10dlc/brand"
+      assert brand.data.is_a?(Array)
+      assert brand.data[0].is_a?(Telnyx::Brand)
     end
 
     should "be retrievable" do
       brand = Telnyx::Brand.retrieve("123")
-      assert_requested :get, "#{Telnyx.api_base}/10dlc/brands/123"
+      assert_requested :get, "#{Telnyx.api_base}/10dlc/brand/123"
       assert brand.is_a?(Telnyx::Brand)
     end
 
@@ -34,13 +34,13 @@ module Telnyx
       brand = Telnyx::Brand.retrieve("123")
       brand.name = "Updated Brand"
       brand.save
-      assert_requested :patch, "#{Telnyx.api_base}/10dlc/brands/123"
+      assert_requested :patch, "#{Telnyx.api_base}/10dlc/brand/123"
     end
 
     should "be deletable" do
       brand = Telnyx::Brand.retrieve("123")
       brand.delete
-      assert_requested :delete, "#{Telnyx.api_base}/10dlc/brands/123"
+      assert_requested :delete, "#{Telnyx.api_base}/10dlc/brand/123"
     end
   end
 end

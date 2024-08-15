@@ -10,7 +10,7 @@ module Telnyx
     OBJECT_NAME = "brand".freeze
 
     def self.resource_url
-      "/10dlc/brands"
+      "/10dlc/brand"
     end
   end
 end
