@@ -8,7 +8,7 @@ module Telnyx
     include Telnyx::APIOperations::Delete
 
     OBJECT_NAME = "brand".freeze
-    RESOURCE_PATH = "brands".freeze
+    RESOURCE_PATH = "brand".freeze
 
     self.base_path = "/10dlc"
 
