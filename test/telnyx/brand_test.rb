@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 module Telnyx
   class BrandTest < Test::Unit::TestCase
-    should "be creatable" do
+    should "create a brand" do
       brand = Telnyx::Brand.create(
         name: "Test Brand",
         ein: "123456789",
@@ -20,27 +20,27 @@ module Telnyx
       assert brand.is_a?(Telnyx::Brand)
     end
 
-    should "be listable" do
-      brand = Telnyx::Brand.list
+    should "list brands" do
+      brands = Telnyx::Brand.list
       assert_requested :get, "#{Telnyx.api_base}/brand"
-      assert brand.data.is_a?(Array)
-      assert brand.data[0].is_a?(Telnyx::Brand)
+      assert brands.data.is_a?(Array)
+      assert brands.data[0].is_a?(Telnyx::Brand)
     end
 
-    should "be retrievable" do
+    should "retrieve a brand" do
       brand = Telnyx::Brand.retrieve("123")
       assert_requested :get, "#{Telnyx.api_base}/brand/123"
       assert brand.is_a?(Telnyx::Brand)
     end
 
-    should "be saveable" do
+    should "update a brand" do
       brand = Telnyx::Brand.retrieve("123")
       brand.name = "Updated Brand"
       brand.save
       assert_requested :patch, "#{Telnyx.api_base}/brand/123"
     end
 
-    should "be deletable" do
+    should "delete a brand" do
       brand = Telnyx::Brand.retrieve("123")
       brand.delete
       assert_requested :delete, "#{Telnyx.api_base}/brand/123"
