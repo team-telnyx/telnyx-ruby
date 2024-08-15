@@ -10,9 +10,7 @@ module Telnyx
     OBJECT_NAME = "brand".freeze
     RESOURCE_PATH = "brand".freeze
 
-    def self.base_path
-      "/10dlc"
-    end
+    self.base_path = "/10dlc"
 
     def self.get_feedback(brand_id, opts = {})
       url = "#{resource_url}/#{CGI.escape(brand_id)}/feedback"
