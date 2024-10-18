@@ -16,11 +16,10 @@ module Telnyx
                                     instance_methods: { create: action }
     end
 
-    %w[token].each do |action|
-      nested_resource_class_methods action,
-                                    path: %W[#{action}],
-                                    operations: [:create],
-                                    instance_methods: { create: "create_#{action}" }
+    def create_token(params = {}, opts = {})
+      url = "#{resource_url}/token"
+      resp, opts = request(:post, url, params, opts)
+      Util.convert_to_telnyx_object(resp.data, opts)
     end
     # Additional action to list tags
     def self.tags(params = {}, opts = {})
