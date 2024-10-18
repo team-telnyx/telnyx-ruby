@@ -20,7 +20,7 @@ module Telnyx
       nested_resource_class_methods action,
                                     path: %W[#{action}],
                                     operations: [:create],
-                                    instance_methods: { create: "create_#{action}" }
+                                    instance_methods: { create: action }
     end
     # Additional action to list tags
     def self.tags(params = {}, opts = {})
