@@ -64,7 +64,17 @@ module Telnyx
 
       # Helper to handle when the server responds with a blank body (as is the case with SimCards).
       def preprocess_response(resp)
-        resp.empty? ? "{}" : resp
+        return "{}" if resp.empty?
+
+        return resp if valid_json?(resp)
+
+        # If the response is a plain string (as is with JWTs), wrap it in a JSON object
+        { token: resp }.to_json
+      end
+
+      # Helper method to check if the string is a valid JSON format
+      def valid_json?(resp)
+        resp.strip.start_with?("{", "[")
       end
     end
   end
