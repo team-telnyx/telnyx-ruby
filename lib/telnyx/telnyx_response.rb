@@ -34,9 +34,7 @@ module Telnyx
       resp
     end
 
-    private
 
-    # Parses the response body, checking if it's a JWT and wrapping it in a JSON object if necessary.
     def self.parse_response_body(body)
       if jwt_format?(body)
         { token: body }
@@ -45,7 +43,6 @@ module Telnyx
       end
     end
 
-    # Checks if the response body is in JWT format.
     def self.jwt_format?(body)
       body.count('.') == 2 && body.split('.').all? { |segment| segment.match?(/\A[a-zA-Z0-9_-]+\z/) }
     end
