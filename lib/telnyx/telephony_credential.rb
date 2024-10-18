@@ -16,11 +16,13 @@ module Telnyx
                                     instance_methods: { create: action }
     end
 
+    # Manually create JSON response object from JWT when calling token
     def create_token(params = {}, opts = {})
       url = "#{resource_url}/token"
       resp, opts = request(:post, url, params, opts)
       Util.convert_to_telnyx_object(resp.data, opts)
     end
+
     # Additional action to list tags
     def self.tags(params = {}, opts = {})
       opts = Util.normalize_opts(opts)

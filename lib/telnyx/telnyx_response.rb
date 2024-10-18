@@ -34,7 +34,6 @@ module Telnyx
       resp
     end
 
-
     def self.parse_response_body(body)
       if jwt_format?(body)
         { token: body }
@@ -44,7 +43,7 @@ module Telnyx
     end
 
     def self.jwt_format?(body)
-      body.count('.') == 2 && body.split('.').all? { |segment| segment.match?(/\A[a-zA-Z0-9_-]+\z/) }
+      body.count(".") == 2 && body.split(".").all? { |segment| segment.match?(/\A[a-zA-Z0-9_-]+\z/) }
     end
 
     # Initializes a TelnyxResponse object from a Faraday HTTP response object.
@@ -52,7 +51,7 @@ module Telnyx
     # This may throw JSON::ParserError if the response body is not valid JSON.
     def self.from_faraday_response(http_resp)
       resp = TelnyxResponse.new
-      resp.data = parse_response_body(http_resp.body)
+      resp.data = JSON.parse(preprocess_response(http_resp.body), symbolize_names: true)
       resp.http_body = http_resp.body
       resp.http_headers = http_resp.headers
       resp.http_status = http_resp.status
