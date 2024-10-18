@@ -37,7 +37,7 @@ module Telnyx
 
     def self.parse_response_body(body)
       if jwt_format?(body)
-        { token: Telnyx::TelephonyCredential.construct_from(token: body) }
+        { token: body }
       else
         JSON.parse(preprocess_response(body), symbolize_names: true)
       end
