@@ -13,10 +13,13 @@ module Telnyx
 
       def wrap(method_name, wrapper)
         define_singleton_method(method_name) do |filters = {}, opts = {}|
-          return super(filters, opts) if filters.keys == [wrapper]
-
-          filters = { wrapper => filters }
-          super filters, opts
+          # If the only key is the wrapper key (e.g., 'filter'), pass it through as is
+          if filters.keys == [wrapper.to_sym] || filters.keys == [wrapper.to_s]
+            super(filters, opts)
+          else
+            # Otherwise, wrap the parameters in the wrapper key
+            super({ wrapper => filters }, opts)
+          end
         end
       end
     end
