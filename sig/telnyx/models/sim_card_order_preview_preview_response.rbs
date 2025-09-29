@@ -1,0 +1,123 @@
+module Telnyx
+  module Models
+    type sim_card_order_preview_preview_response =
+      { data: Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data }
+
+    class SimCardOrderPreviewPreviewResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data?
+
+      def data=: (
+        Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data
+      ) -> Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data
+      }
+
+      type data =
+        {
+          quantity: Integer,
+          record_type: String,
+          shipping_cost: Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data::ShippingCost,
+          sim_cards_cost: Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data::SimCardsCost,
+          total_cost: Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data::TotalCost
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader quantity: Integer?
+
+        def quantity=: (Integer) -> Integer
+
+        attr_reader shipping_cost: Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data::ShippingCost?
+
+        def shipping_cost=: (
+          Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data::ShippingCost
+        ) -> Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data::ShippingCost
+
+        attr_reader sim_cards_cost: Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data::SimCardsCost?
+
+        def sim_cards_cost=: (
+          Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data::SimCardsCost
+        ) -> Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data::SimCardsCost
+
+        attr_reader total_cost: Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data::TotalCost?
+
+        def total_cost=: (
+          Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data::TotalCost
+        ) -> Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data::TotalCost
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?quantity: Integer,
+          ?record_type: String,
+          ?shipping_cost: Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data::ShippingCost,
+          ?sim_cards_cost: Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data::SimCardsCost,
+          ?total_cost: Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data::TotalCost
+        ) -> void
+
+        def to_hash: -> {
+          quantity: Integer,
+          record_type: String,
+          shipping_cost: Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data::ShippingCost,
+          sim_cards_cost: Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data::SimCardsCost,
+          total_cost: Telnyx::Models::SimCardOrderPreviewPreviewResponse::Data::TotalCost
+        }
+
+        type shipping_cost = { amount: String, currency: String }
+
+        class ShippingCost < Telnyx::Internal::Type::BaseModel
+          attr_reader amount: String?
+
+          def amount=: (String) -> String
+
+          attr_reader currency: String?
+
+          def currency=: (String) -> String
+
+          def initialize: (?amount: String, ?currency: String) -> void
+
+          def to_hash: -> { amount: String, currency: String }
+        end
+
+        type sim_cards_cost = { amount: String, currency: String }
+
+        class SimCardsCost < Telnyx::Internal::Type::BaseModel
+          attr_reader amount: String?
+
+          def amount=: (String) -> String
+
+          attr_reader currency: String?
+
+          def currency=: (String) -> String
+
+          def initialize: (?amount: String, ?currency: String) -> void
+
+          def to_hash: -> { amount: String, currency: String }
+        end
+
+        type total_cost = { amount: String, currency: String }
+
+        class TotalCost < Telnyx::Internal::Type::BaseModel
+          attr_reader amount: String?
+
+          def amount=: (String) -> String
+
+          attr_reader currency: String?
+
+          def currency=: (String) -> String
+
+          def initialize: (?amount: String, ?currency: String) -> void
+
+          def to_hash: -> { amount: String, currency: String }
+        end
+      end
+    end
+  end
+end

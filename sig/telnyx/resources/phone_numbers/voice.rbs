@@ -1,0 +1,35 @@
+module Telnyx
+  module Resources
+    class PhoneNumbers
+      class Voice
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::VoiceRetrieveResponse
+
+        def update: (
+          String id,
+          ?call_forwarding: Telnyx::PhoneNumbers::CallForwarding,
+          ?call_recording: Telnyx::PhoneNumbers::CallRecording,
+          ?caller_id_name_enabled: bool,
+          ?cnam_listing: Telnyx::PhoneNumbers::CnamListing,
+          ?inbound_call_screening: Telnyx::Models::PhoneNumbers::UpdateVoiceSettings::inbound_call_screening,
+          ?media_features: Telnyx::PhoneNumbers::MediaFeatures,
+          ?tech_prefix_enabled: bool,
+          ?translated_number: String,
+          ?usage_payment_method: Telnyx::Models::PhoneNumbers::UpdateVoiceSettings::usage_payment_method,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::VoiceUpdateResponse
+
+        def list: (
+          ?filter: Telnyx::PhoneNumbers::VoiceListParams::Filter,
+          ?page: Telnyx::PhoneNumbers::VoiceListParams::Page,
+          ?sort: Telnyx::Models::PhoneNumbers::VoiceListParams::sort,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::VoiceListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

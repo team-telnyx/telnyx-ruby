@@ -1,0 +1,14 @@
+module Telnyx
+  module Resources
+    class CredentialConnections
+      class Actions
+        def check_registration_status: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::CredentialConnections::ActionCheckRegistrationStatusResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,40 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_start_ai_assistant_response =
+        { data: Telnyx::Models::Calls::ActionStartAIAssistantResponse::Data }
+
+      class ActionStartAIAssistantResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::Calls::ActionStartAIAssistantResponse::Data?
+
+        def data=: (
+          Telnyx::Models::Calls::ActionStartAIAssistantResponse::Data
+        ) -> Telnyx::Models::Calls::ActionStartAIAssistantResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::Calls::ActionStartAIAssistantResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::Calls::ActionStartAIAssistantResponse::Data
+        }
+
+        type data = { conversation_id: String, result: String }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader conversation_id: String?
+
+          def conversation_id=: (String) -> String
+
+          attr_reader result: String?
+
+          def result=: (String) -> String
+
+          def initialize: (?conversation_id: String, ?result: String) -> void
+
+          def to_hash: -> { conversation_id: String, result: String }
+        end
+      end
+    end
+  end
+end

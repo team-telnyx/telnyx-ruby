@@ -1,0 +1,132 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type release_list_response =
+        {
+          data: ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::Data],
+          meta: Telnyx::ExternalVoiceIntegrationsPaginationMeta
+        }
+
+      class ReleaseListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::Data]?
+
+        def data=: (
+          ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::Data]
+        ) -> ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::Data]
+
+        attr_reader meta: Telnyx::ExternalVoiceIntegrationsPaginationMeta?
+
+        def meta=: (
+          Telnyx::ExternalVoiceIntegrationsPaginationMeta
+        ) -> Telnyx::ExternalVoiceIntegrationsPaginationMeta
+
+        def initialize: (
+          ?data: ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::Data],
+          ?meta: Telnyx::ExternalVoiceIntegrationsPaginationMeta
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::Data],
+          meta: Telnyx::ExternalVoiceIntegrationsPaginationMeta
+        }
+
+        type data =
+          {
+            created_at: String,
+            error_message: String,
+            status: Telnyx::Models::ExternalConnections::ReleaseListResponse::Data::status,
+            telephone_numbers: ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::Data::TelephoneNumber],
+            tenant_id: String,
+            ticket_id: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader created_at: String?
+
+          def created_at=: (String) -> String
+
+          attr_reader error_message: String?
+
+          def error_message=: (String) -> String
+
+          attr_reader status: Telnyx::Models::ExternalConnections::ReleaseListResponse::Data::status?
+
+          def status=: (
+            Telnyx::Models::ExternalConnections::ReleaseListResponse::Data::status
+          ) -> Telnyx::Models::ExternalConnections::ReleaseListResponse::Data::status
+
+          attr_reader telephone_numbers: ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::Data::TelephoneNumber]?
+
+          def telephone_numbers=: (
+            ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::Data::TelephoneNumber]
+          ) -> ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::Data::TelephoneNumber]
+
+          attr_reader tenant_id: String?
+
+          def tenant_id=: (String) -> String
+
+          attr_reader ticket_id: String?
+
+          def ticket_id=: (String) -> String
+
+          def initialize: (
+            ?created_at: String,
+            ?error_message: String,
+            ?status: Telnyx::Models::ExternalConnections::ReleaseListResponse::Data::status,
+            ?telephone_numbers: ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::Data::TelephoneNumber],
+            ?tenant_id: String,
+            ?ticket_id: String
+          ) -> void
+
+          def to_hash: -> {
+            created_at: String,
+            error_message: String,
+            status: Telnyx::Models::ExternalConnections::ReleaseListResponse::Data::status,
+            telephone_numbers: ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::Data::TelephoneNumber],
+            tenant_id: String,
+            ticket_id: String
+          }
+
+          type status =
+            :pending_upload
+            | :pending
+            | :in_progress
+            | :complete
+            | :failed
+            | :expired
+            | :unknown
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING_UPLOAD: :pending_upload
+            PENDING: :pending
+            IN_PROGRESS: :in_progress
+            COMPLETE: :complete
+            FAILED: :failed
+            EXPIRED: :expired
+            UNKNOWN: :unknown
+
+            def self?.values: -> ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::Data::status]
+          end
+
+          type telephone_number = { number_id: String, phone_number: String }
+
+          class TelephoneNumber < Telnyx::Internal::Type::BaseModel
+            attr_reader number_id: String?
+
+            def number_id=: (String) -> String
+
+            attr_reader phone_number: String?
+
+            def phone_number=: (String) -> String
+
+            def initialize: (?number_id: String, ?phone_number: String) -> void
+
+            def to_hash: -> { number_id: String, phone_number: String }
+          end
+        end
+      end
+    end
+  end
+end

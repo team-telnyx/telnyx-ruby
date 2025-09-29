@@ -1,0 +1,12 @@
+module Telnyx
+  module Resources
+    class InventoryCoverage
+      def list: (
+        ?filter: Telnyx::InventoryCoverageListParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::InventoryCoverageListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

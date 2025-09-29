@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    type wireguard_interface_retrieve_response =
+      { data: Telnyx::Models::WireguardInterfaceRetrieveResponse::Data }
+
+    class WireguardInterfaceRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::WireguardInterfaceRetrieveResponse::Data?
+
+      def data=: (
+        Telnyx::Models::WireguardInterfaceRetrieveResponse::Data
+      ) -> Telnyx::Models::WireguardInterfaceRetrieveResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::WireguardInterfaceRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::WireguardInterfaceRetrieveResponse::Data
+      }
+    end
+  end
+end

@@ -1,0 +1,43 @@
+module Telnyx
+  module Resources
+    class RequirementGroups
+      def create: (
+        action: Telnyx::Models::RequirementGroupCreateParams::action,
+        country_code: String,
+        phone_number_type: Telnyx::Models::RequirementGroupCreateParams::phone_number_type,
+        ?customer_reference: String,
+        ?regulatory_requirements: ::Array[Telnyx::RequirementGroupCreateParams::RegulatoryRequirement],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::RequirementGroup
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::RequirementGroup
+
+      def update: (
+        String id,
+        ?customer_reference: String,
+        ?regulatory_requirements: ::Array[Telnyx::RequirementGroupUpdateParams::RegulatoryRequirement],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::RequirementGroup
+
+      def list: (
+        ?filter: Telnyx::RequirementGroupListParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::requirement_group_list_response
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::RequirementGroup
+
+      def submit_for_approval: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::RequirementGroup
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

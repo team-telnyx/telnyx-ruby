@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module Calls
+      type interruption_settings = { enable: bool }
+
+      class InterruptionSettings < Telnyx::Internal::Type::BaseModel
+        attr_reader enable: bool?
+
+        def enable=: (bool) -> bool
+
+        def initialize: (?enable: bool) -> void
+
+        def to_hash: -> { enable: bool }
+      end
+    end
+  end
+end

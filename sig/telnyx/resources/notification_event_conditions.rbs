@@ -1,0 +1,13 @@
+module Telnyx
+  module Resources
+    class NotificationEventConditions
+      def list: (
+        ?filter: Telnyx::NotificationEventConditionListParams::Filter,
+        ?page: Telnyx::NotificationEventConditionListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NotificationEventConditionListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

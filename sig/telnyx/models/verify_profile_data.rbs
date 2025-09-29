@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type verify_profile_data = { data: Telnyx::VerifyProfile }
+
+    class VerifyProfileData < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::VerifyProfile?
+
+      def data=: (Telnyx::VerifyProfile) -> Telnyx::VerifyProfile
+
+      def initialize: (?data: Telnyx::VerifyProfile) -> void
+
+      def to_hash: -> { data: Telnyx::VerifyProfile }
+    end
+  end
+end

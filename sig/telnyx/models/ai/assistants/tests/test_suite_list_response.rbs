@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        module Tests
+          type test_suite_list_response = { data: ::Array[String] }
+
+          class TestSuiteListResponse < Telnyx::Internal::Type::BaseModel
+            attr_accessor data: ::Array[String]
+
+            def initialize: (data: ::Array[String]) -> void
+
+            def to_hash: -> { data: ::Array[String] }
+          end
+        end
+      end
+    end
+  end
+end

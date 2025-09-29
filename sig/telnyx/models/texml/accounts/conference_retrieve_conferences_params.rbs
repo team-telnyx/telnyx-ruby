@@ -1,0 +1,88 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        type conference_retrieve_conferences_params =
+          {
+            date_created: String,
+            date_updated: String,
+            friendly_name: String,
+            page: Integer,
+            page_size: Integer,
+            page_token: String,
+            status: Telnyx::Models::Texml::Accounts::ConferenceRetrieveConferencesParams::status
+          }
+          & Telnyx::Internal::Type::request_parameters
+
+        class ConferenceRetrieveConferencesParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_reader date_created: String?
+
+          def date_created=: (String) -> String
+
+          attr_reader date_updated: String?
+
+          def date_updated=: (String) -> String
+
+          attr_reader friendly_name: String?
+
+          def friendly_name=: (String) -> String
+
+          attr_reader page: Integer?
+
+          def page=: (Integer) -> Integer
+
+          attr_reader page_size: Integer?
+
+          def page_size=: (Integer) -> Integer
+
+          attr_reader page_token: String?
+
+          def page_token=: (String) -> String
+
+          attr_reader status: Telnyx::Models::Texml::Accounts::ConferenceRetrieveConferencesParams::status?
+
+          def status=: (
+            Telnyx::Models::Texml::Accounts::ConferenceRetrieveConferencesParams::status
+          ) -> Telnyx::Models::Texml::Accounts::ConferenceRetrieveConferencesParams::status
+
+          def initialize: (
+            ?date_created: String,
+            ?date_updated: String,
+            ?friendly_name: String,
+            ?page: Integer,
+            ?page_size: Integer,
+            ?page_token: String,
+            ?status: Telnyx::Models::Texml::Accounts::ConferenceRetrieveConferencesParams::status,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            date_created: String,
+            date_updated: String,
+            friendly_name: String,
+            page: Integer,
+            page_size: Integer,
+            page_token: String,
+            status: Telnyx::Models::Texml::Accounts::ConferenceRetrieveConferencesParams::status,
+            request_options: Telnyx::RequestOptions
+          }
+
+          type status = :init | :"in-progress" | :completed
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            INIT: :init
+            IN_PROGRESS: :"in-progress"
+            COMPLETED: :completed
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::ConferenceRetrieveConferencesParams::status]
+          end
+        end
+      end
+    end
+  end
+end

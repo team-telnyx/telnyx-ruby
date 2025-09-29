@@ -1,0 +1,43 @@
+module Telnyx
+  module Models
+    type porting_order_retrieve_response =
+      {
+        data: Telnyx::PortingOrder,
+        meta: Telnyx::Models::PortingOrderRetrieveResponse::Meta
+      }
+
+    class PortingOrderRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::PortingOrder?
+
+      def data=: (Telnyx::PortingOrder) -> Telnyx::PortingOrder
+
+      attr_reader meta: Telnyx::Models::PortingOrderRetrieveResponse::Meta?
+
+      def meta=: (
+        Telnyx::Models::PortingOrderRetrieveResponse::Meta
+      ) -> Telnyx::Models::PortingOrderRetrieveResponse::Meta
+
+      def initialize: (
+        ?data: Telnyx::PortingOrder,
+        ?meta: Telnyx::Models::PortingOrderRetrieveResponse::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::PortingOrder,
+        meta: Telnyx::Models::PortingOrderRetrieveResponse::Meta
+      }
+
+      type meta = { phone_numbers_url: String }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_reader phone_numbers_url: String?
+
+        def phone_numbers_url=: (String) -> String
+
+        def initialize: (?phone_numbers_url: String) -> void
+
+        def to_hash: -> { phone_numbers_url: String }
+      end
+    end
+  end
+end

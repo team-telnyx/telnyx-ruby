@@ -1,0 +1,17 @@
+module Telnyx
+  module Resources
+    class Texml
+      attr_reader accounts: Telnyx::Resources::Texml::Accounts
+
+      attr_reader calls: Telnyx::Resources::Texml::Calls
+
+      def secrets: (
+        name: String,
+        value: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TexmlSecretsResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

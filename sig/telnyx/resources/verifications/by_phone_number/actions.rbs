@@ -1,0 +1,18 @@
+module Telnyx
+  module Resources
+    class Verifications
+      class ByPhoneNumber
+        class Actions
+          def verify: (
+            String phone_number,
+            code: String,
+            verify_profile_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Verifications::ByPhoneNumber::VerifyVerificationCodeResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

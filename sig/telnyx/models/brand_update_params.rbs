@@ -1,0 +1,192 @@
+module Telnyx
+  module Models
+    type brand_update_params =
+      {
+        country: String,
+        display_name: String,
+        email: String,
+        entity_type: Telnyx::Models::entity_type,
+        vertical: Telnyx::Models::vertical,
+        alt_business_id: String,
+        alt_business_id_type: Telnyx::Models::alt_business_id_type,
+        business_contact_email: String,
+        city: String,
+        company_name: String,
+        ein: String,
+        first_name: String,
+        identity_status: Telnyx::Models::brand_identity_status,
+        ip_address: String,
+        is_reseller: bool,
+        last_name: String,
+        phone: String,
+        postal_code: String,
+        state: String,
+        stock_exchange: Telnyx::Models::stock_exchange,
+        stock_symbol: String,
+        street: String,
+        webhook_failover_url: String,
+        webhook_url: String,
+        website: String
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class BrandUpdateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor country: String
+
+      attr_accessor display_name: String
+
+      attr_accessor email: String
+
+      attr_accessor entity_type: Telnyx::Models::entity_type
+
+      attr_accessor vertical: Telnyx::Models::vertical
+
+      attr_reader alt_business_id: String?
+
+      def alt_business_id=: (String) -> String
+
+      attr_reader alt_business_id_type: Telnyx::Models::alt_business_id_type?
+
+      def alt_business_id_type=: (
+        Telnyx::Models::alt_business_id_type
+      ) -> Telnyx::Models::alt_business_id_type
+
+      attr_reader business_contact_email: String?
+
+      def business_contact_email=: (String) -> String
+
+      attr_reader city: String?
+
+      def city=: (String) -> String
+
+      attr_reader company_name: String?
+
+      def company_name=: (String) -> String
+
+      attr_reader ein: String?
+
+      def ein=: (String) -> String
+
+      attr_reader first_name: String?
+
+      def first_name=: (String) -> String
+
+      attr_reader identity_status: Telnyx::Models::brand_identity_status?
+
+      def identity_status=: (
+        Telnyx::Models::brand_identity_status
+      ) -> Telnyx::Models::brand_identity_status
+
+      attr_reader ip_address: String?
+
+      def ip_address=: (String) -> String
+
+      attr_reader is_reseller: bool?
+
+      def is_reseller=: (bool) -> bool
+
+      attr_reader last_name: String?
+
+      def last_name=: (String) -> String
+
+      attr_reader phone: String?
+
+      def phone=: (String) -> String
+
+      attr_reader postal_code: String?
+
+      def postal_code=: (String) -> String
+
+      attr_reader state: String?
+
+      def state=: (String) -> String
+
+      attr_reader stock_exchange: Telnyx::Models::stock_exchange?
+
+      def stock_exchange=: (
+        Telnyx::Models::stock_exchange
+      ) -> Telnyx::Models::stock_exchange
+
+      attr_reader stock_symbol: String?
+
+      def stock_symbol=: (String) -> String
+
+      attr_reader street: String?
+
+      def street=: (String) -> String
+
+      attr_reader webhook_failover_url: String?
+
+      def webhook_failover_url=: (String) -> String
+
+      attr_reader webhook_url: String?
+
+      def webhook_url=: (String) -> String
+
+      attr_reader website: String?
+
+      def website=: (String) -> String
+
+      def initialize: (
+        country: String,
+        display_name: String,
+        email: String,
+        entity_type: Telnyx::Models::entity_type,
+        vertical: Telnyx::Models::vertical,
+        ?alt_business_id: String,
+        ?alt_business_id_type: Telnyx::Models::alt_business_id_type,
+        ?business_contact_email: String,
+        ?city: String,
+        ?company_name: String,
+        ?ein: String,
+        ?first_name: String,
+        ?identity_status: Telnyx::Models::brand_identity_status,
+        ?ip_address: String,
+        ?is_reseller: bool,
+        ?last_name: String,
+        ?phone: String,
+        ?postal_code: String,
+        ?state: String,
+        ?stock_exchange: Telnyx::Models::stock_exchange,
+        ?stock_symbol: String,
+        ?street: String,
+        ?webhook_failover_url: String,
+        ?webhook_url: String,
+        ?website: String,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        country: String,
+        display_name: String,
+        email: String,
+        entity_type: Telnyx::Models::entity_type,
+        vertical: Telnyx::Models::vertical,
+        alt_business_id: String,
+        alt_business_id_type: Telnyx::Models::alt_business_id_type,
+        business_contact_email: String,
+        city: String,
+        company_name: String,
+        ein: String,
+        first_name: String,
+        identity_status: Telnyx::Models::brand_identity_status,
+        ip_address: String,
+        is_reseller: bool,
+        last_name: String,
+        phone: String,
+        postal_code: String,
+        state: String,
+        stock_exchange: Telnyx::Models::stock_exchange,
+        stock_symbol: String,
+        street: String,
+        webhook_failover_url: String,
+        webhook_url: String,
+        website: String,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

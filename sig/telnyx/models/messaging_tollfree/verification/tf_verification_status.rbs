@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    module MessagingTollfree
+      module Verification
+        type tf_verification_status =
+          :Verified
+          | :Rejected
+          | :"Waiting For Vendor"
+          | :"Waiting For Customer"
+          | :"Waiting For Telnyx"
+          | :"In Progress"
+
+        module TfVerificationStatus
+          extend Telnyx::Internal::Type::Enum
+
+          VERIFIED: :Verified
+          REJECTED: :Rejected
+          WAITING_FOR_VENDOR: :"Waiting For Vendor"
+          WAITING_FOR_CUSTOMER: :"Waiting For Customer"
+          WAITING_FOR_TELNYX: :"Waiting For Telnyx"
+          IN_PROGRESS: :"In Progress"
+
+          def self?.values: -> ::Array[Telnyx::Models::MessagingTollfree::Verification::tf_verification_status]
+        end
+      end
+    end
+  end
+end

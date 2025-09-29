@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type custom_sip_header = { name: String, value: String }
+
+    class CustomSipHeader < Telnyx::Internal::Type::BaseModel
+      attr_accessor name: String
+
+      attr_accessor value: String
+
+      def initialize: (name: String, value: String) -> void
+
+      def to_hash: -> { name: String, value: String }
+    end
+  end
+end

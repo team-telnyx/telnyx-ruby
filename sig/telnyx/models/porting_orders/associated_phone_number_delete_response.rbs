@@ -1,0 +1,24 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type associated_phone_number_delete_response =
+        { data: Telnyx::PortingOrders::PortingAssociatedPhoneNumber }
+
+      class AssociatedPhoneNumberDeleteResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::PortingOrders::PortingAssociatedPhoneNumber?
+
+        def data=: (
+          Telnyx::PortingOrders::PortingAssociatedPhoneNumber
+        ) -> Telnyx::PortingOrders::PortingAssociatedPhoneNumber
+
+        def initialize: (
+          ?data: Telnyx::PortingOrders::PortingAssociatedPhoneNumber
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::PortingOrders::PortingAssociatedPhoneNumber
+        }
+      end
+    end
+  end
+end

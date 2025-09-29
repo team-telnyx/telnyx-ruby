@@ -1,0 +1,34 @@
+module Telnyx
+  module Models
+    type ai_summarize_params =
+      { bucket: String, filename: String, system_prompt: String }
+      & Telnyx::Internal::Type::request_parameters
+
+    class AISummarizeParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor bucket: String
+
+      attr_accessor filename: String
+
+      attr_reader system_prompt: String?
+
+      def system_prompt=: (String) -> String
+
+      def initialize: (
+        bucket: String,
+        filename: String,
+        ?system_prompt: String,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        bucket: String,
+        filename: String,
+        system_prompt: String,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

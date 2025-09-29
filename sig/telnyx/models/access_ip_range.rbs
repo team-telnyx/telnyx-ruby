@@ -1,0 +1,56 @@
+module Telnyx
+  module Models
+    type access_ip_range =
+      {
+        id: String,
+        cidr_block: String,
+        status: Telnyx::Models::cloudflare_sync_status,
+        user_id: String,
+        created_at: Time,
+        description: String,
+        updated_at: Time
+      }
+
+    class AccessIPRange < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor cidr_block: String
+
+      attr_accessor status: Telnyx::Models::cloudflare_sync_status
+
+      attr_accessor user_id: String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader description: String?
+
+      def description=: (String) -> String
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        id: String,
+        cidr_block: String,
+        status: Telnyx::Models::cloudflare_sync_status,
+        user_id: String,
+        ?created_at: Time,
+        ?description: String,
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        cidr_block: String,
+        status: Telnyx::Models::cloudflare_sync_status,
+        user_id: String,
+        created_at: Time,
+        description: String,
+        updated_at: Time
+      }
+    end
+  end
+end

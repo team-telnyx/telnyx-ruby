@@ -1,0 +1,106 @@
+module Telnyx
+  module Models
+    type regulatory_requirement_retrieve_params =
+      { filter: Telnyx::RegulatoryRequirementRetrieveParams::Filter }
+      & Telnyx::Internal::Type::request_parameters
+
+    class RegulatoryRequirementRetrieveParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::RegulatoryRequirementRetrieveParams::Filter?
+
+      def filter=: (
+        Telnyx::RegulatoryRequirementRetrieveParams::Filter
+      ) -> Telnyx::RegulatoryRequirementRetrieveParams::Filter
+
+      def initialize: (
+        ?filter: Telnyx::RegulatoryRequirementRetrieveParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::RegulatoryRequirementRetrieveParams::Filter,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          action: Telnyx::Models::RegulatoryRequirementRetrieveParams::Filter::action,
+          country_code: String,
+          phone_number: String,
+          phone_number_type: Telnyx::Models::RegulatoryRequirementRetrieveParams::Filter::phone_number_type,
+          requirement_group_id: String
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader action: Telnyx::Models::RegulatoryRequirementRetrieveParams::Filter::action?
+
+        def action=: (
+          Telnyx::Models::RegulatoryRequirementRetrieveParams::Filter::action
+        ) -> Telnyx::Models::RegulatoryRequirementRetrieveParams::Filter::action
+
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader phone_number_type: Telnyx::Models::RegulatoryRequirementRetrieveParams::Filter::phone_number_type?
+
+        def phone_number_type=: (
+          Telnyx::Models::RegulatoryRequirementRetrieveParams::Filter::phone_number_type
+        ) -> Telnyx::Models::RegulatoryRequirementRetrieveParams::Filter::phone_number_type
+
+        attr_reader requirement_group_id: String?
+
+        def requirement_group_id=: (String) -> String
+
+        def initialize: (
+          ?action: Telnyx::Models::RegulatoryRequirementRetrieveParams::Filter::action,
+          ?country_code: String,
+          ?phone_number: String,
+          ?phone_number_type: Telnyx::Models::RegulatoryRequirementRetrieveParams::Filter::phone_number_type,
+          ?requirement_group_id: String
+        ) -> void
+
+        def to_hash: -> {
+          action: Telnyx::Models::RegulatoryRequirementRetrieveParams::Filter::action,
+          country_code: String,
+          phone_number: String,
+          phone_number_type: Telnyx::Models::RegulatoryRequirementRetrieveParams::Filter::phone_number_type,
+          requirement_group_id: String
+        }
+
+        type action = :ordering | :porting | :action
+
+        module Action
+          extend Telnyx::Internal::Type::Enum
+
+          ORDERING: :ordering
+          PORTING: :porting
+          ACTION: :action
+
+          def self?.values: -> ::Array[Telnyx::Models::RegulatoryRequirementRetrieveParams::Filter::action]
+        end
+
+        type phone_number_type =
+          :local | :toll_free | :mobile | :national | :shared_cost
+
+        module PhoneNumberType
+          extend Telnyx::Internal::Type::Enum
+
+          LOCAL: :local
+          TOLL_FREE: :toll_free
+          MOBILE: :mobile
+          NATIONAL: :national
+          SHARED_COST: :shared_cost
+
+          def self?.values: -> ::Array[Telnyx::Models::RegulatoryRequirementRetrieveParams::Filter::phone_number_type]
+        end
+      end
+    end
+  end
+end

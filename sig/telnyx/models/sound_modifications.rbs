@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    type sound_modifications =
+      { octaves: Float, pitch: Float, semitone: Float, track: String }
+
+    class SoundModifications < Telnyx::Internal::Type::BaseModel
+      attr_reader octaves: Float?
+
+      def octaves=: (Float) -> Float
+
+      attr_reader pitch: Float?
+
+      def pitch=: (Float) -> Float
+
+      attr_reader semitone: Float?
+
+      def semitone=: (Float) -> Float
+
+      attr_reader track: String?
+
+      def track=: (String) -> String
+
+      def initialize: (
+        ?octaves: Float,
+        ?pitch: Float,
+        ?semitone: Float,
+        ?track: String
+      ) -> void
+
+      def to_hash: -> {
+        octaves: Float,
+        pitch: Float,
+        semitone: Float,
+        track: String
+      }
+    end
+  end
+end

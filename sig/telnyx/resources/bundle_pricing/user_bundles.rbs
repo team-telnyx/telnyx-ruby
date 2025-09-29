@@ -1,0 +1,47 @@
+module Telnyx
+  module Resources
+    class BundlePricing
+      class UserBundles
+        def create: (
+          ?idempotency_key: String,
+          ?items: ::Array[Telnyx::BundlePricing::UserBundleCreateParams::Item],
+          ?authorization_bearer: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::BundlePricing::UserBundleCreateResponse
+
+        def retrieve: (
+          String user_bundle_id,
+          ?authorization_bearer: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::BundlePricing::UserBundleRetrieveResponse
+
+        def list: (
+          ?filter: Telnyx::BundlePricing::UserBundleListParams::Filter,
+          ?page: Telnyx::BundlePricing::UserBundleListParams::Page,
+          ?authorization_bearer: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::BundlePricing::UserBundleListResponse
+
+        def deactivate: (
+          String user_bundle_id,
+          ?authorization_bearer: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::BundlePricing::UserBundleDeactivateResponse
+
+        def list_resources: (
+          String user_bundle_id,
+          ?authorization_bearer: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::BundlePricing::UserBundleListResourcesResponse
+
+        def list_unused: (
+          ?filter: Telnyx::BundlePricing::UserBundleListUnusedParams::Filter,
+          ?authorization_bearer: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::BundlePricing::UserBundleListUnusedResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

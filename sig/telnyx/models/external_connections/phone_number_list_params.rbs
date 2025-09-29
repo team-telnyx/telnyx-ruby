@@ -1,0 +1,136 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type phone_number_list_params =
+        {
+          filter: Telnyx::ExternalConnections::PhoneNumberListParams::Filter,
+          page: Telnyx::ExternalConnections::PhoneNumberListParams::Page
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class PhoneNumberListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter: Telnyx::ExternalConnections::PhoneNumberListParams::Filter?
+
+        def filter=: (
+          Telnyx::ExternalConnections::PhoneNumberListParams::Filter
+        ) -> Telnyx::ExternalConnections::PhoneNumberListParams::Filter
+
+        attr_reader page: Telnyx::ExternalConnections::PhoneNumberListParams::Page?
+
+        def page=: (
+          Telnyx::ExternalConnections::PhoneNumberListParams::Page
+        ) -> Telnyx::ExternalConnections::PhoneNumberListParams::Page
+
+        def initialize: (
+          ?filter: Telnyx::ExternalConnections::PhoneNumberListParams::Filter,
+          ?page: Telnyx::ExternalConnections::PhoneNumberListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter: Telnyx::ExternalConnections::PhoneNumberListParams::Filter,
+          page: Telnyx::ExternalConnections::PhoneNumberListParams::Page,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter =
+          {
+            civic_address_id: Telnyx::ExternalConnections::PhoneNumberListParams::Filter::CivicAddressID,
+            location_id: Telnyx::ExternalConnections::PhoneNumberListParams::Filter::LocationID,
+            phone_number: Telnyx::ExternalConnections::PhoneNumberListParams::Filter::PhoneNumber
+          }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader civic_address_id: Telnyx::ExternalConnections::PhoneNumberListParams::Filter::CivicAddressID?
+
+          def civic_address_id=: (
+            Telnyx::ExternalConnections::PhoneNumberListParams::Filter::CivicAddressID
+          ) -> Telnyx::ExternalConnections::PhoneNumberListParams::Filter::CivicAddressID
+
+          attr_reader location_id: Telnyx::ExternalConnections::PhoneNumberListParams::Filter::LocationID?
+
+          def location_id=: (
+            Telnyx::ExternalConnections::PhoneNumberListParams::Filter::LocationID
+          ) -> Telnyx::ExternalConnections::PhoneNumberListParams::Filter::LocationID
+
+          attr_reader phone_number: Telnyx::ExternalConnections::PhoneNumberListParams::Filter::PhoneNumber?
+
+          def phone_number=: (
+            Telnyx::ExternalConnections::PhoneNumberListParams::Filter::PhoneNumber
+          ) -> Telnyx::ExternalConnections::PhoneNumberListParams::Filter::PhoneNumber
+
+          def initialize: (
+            ?civic_address_id: Telnyx::ExternalConnections::PhoneNumberListParams::Filter::CivicAddressID,
+            ?location_id: Telnyx::ExternalConnections::PhoneNumberListParams::Filter::LocationID,
+            ?phone_number: Telnyx::ExternalConnections::PhoneNumberListParams::Filter::PhoneNumber
+          ) -> void
+
+          def to_hash: -> {
+            civic_address_id: Telnyx::ExternalConnections::PhoneNumberListParams::Filter::CivicAddressID,
+            location_id: Telnyx::ExternalConnections::PhoneNumberListParams::Filter::LocationID,
+            phone_number: Telnyx::ExternalConnections::PhoneNumberListParams::Filter::PhoneNumber
+          }
+
+          type civic_address_id = { eq: String }
+
+          class CivicAddressID < Telnyx::Internal::Type::BaseModel
+            attr_reader eq: String?
+
+            def eq=: (String) -> String
+
+            def initialize: (?eq: String) -> void
+
+            def to_hash: -> { eq: String }
+          end
+
+          type location_id = { eq: String }
+
+          class LocationID < Telnyx::Internal::Type::BaseModel
+            attr_reader eq: String?
+
+            def eq=: (String) -> String
+
+            def initialize: (?eq: String) -> void
+
+            def to_hash: -> { eq: String }
+          end
+
+          type phone_number = { contains: String, eq: String }
+
+          class PhoneNumber < Telnyx::Internal::Type::BaseModel
+            attr_reader contains: String?
+
+            def contains=: (String) -> String
+
+            attr_reader eq: String?
+
+            def eq=: (String) -> String
+
+            def initialize: (?contains: String, ?eq: String) -> void
+
+            def to_hash: -> { contains: String, eq: String }
+          end
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
+        end
+      end
+    end
+  end
+end

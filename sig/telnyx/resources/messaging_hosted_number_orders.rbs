@@ -1,0 +1,48 @@
+module Telnyx
+  module Resources
+    class MessagingHostedNumberOrders
+      attr_reader actions: Telnyx::Resources::MessagingHostedNumberOrders::Actions
+
+      def create: (
+        ?messaging_profile_id: String,
+        ?phone_numbers: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingHostedNumberOrderCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingHostedNumberOrderRetrieveResponse
+
+      def list: (
+        ?page: Telnyx::MessagingHostedNumberOrderListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingHostedNumberOrderListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingHostedNumberOrderDeleteResponse
+
+      def check_eligibility: (
+        phone_numbers: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingHostedNumberOrderCheckEligibilityResponse
+
+      def create_verification_codes: (
+        String id,
+        phone_numbers: ::Array[String],
+        verification_method: Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesParams::verification_method,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse
+
+      def validate_codes: (
+        String id,
+        verification_codes: ::Array[Telnyx::MessagingHostedNumberOrderValidateCodesParams::VerificationCode],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingHostedNumberOrderValidateCodesResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

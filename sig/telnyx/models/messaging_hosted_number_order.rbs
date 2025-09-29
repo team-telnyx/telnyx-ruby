@@ -1,0 +1,85 @@
+module Telnyx
+  module Models
+    type messaging_hosted_number_order =
+      {
+        id: String,
+        messaging_profile_id: String?,
+        phone_numbers: ::Array[Telnyx::HostedNumber],
+        record_type: String,
+        status: Telnyx::Models::MessagingHostedNumberOrder::status
+      }
+
+    class MessagingHostedNumberOrder < Telnyx::Internal::Type::BaseModel
+      attr_accessor messaging_profile_id: String?
+
+      attr_reader phone_numbers: ::Array[Telnyx::HostedNumber]?
+
+      def phone_numbers=: (
+        ::Array[Telnyx::HostedNumber]
+      ) -> ::Array[Telnyx::HostedNumber]
+
+      attr_reader status: Telnyx::Models::MessagingHostedNumberOrder::status?
+
+      def status=: (
+        Telnyx::Models::MessagingHostedNumberOrder::status
+      ) -> Telnyx::Models::MessagingHostedNumberOrder::status
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?messaging_profile_id: String?,
+        ?phone_numbers: ::Array[Telnyx::HostedNumber],
+        ?record_type: String,
+        ?status: Telnyx::Models::MessagingHostedNumberOrder::status
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        messaging_profile_id: String?,
+        phone_numbers: ::Array[Telnyx::HostedNumber],
+        record_type: String,
+        status: Telnyx::Models::MessagingHostedNumberOrder::status
+      }
+
+      type status =
+        :carrier_rejected
+        | :compliance_review_failed
+        | :deleted
+        | :failed
+        | :incomplete_documentation
+        | :incorrect_billing_information
+        | :ineligible_carrier
+        | :loa_file_invalid
+        | :loa_file_successful
+        | :pending
+        | :provisioning
+        | :successful
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        CARRIER_REJECTED: :carrier_rejected
+        COMPLIANCE_REVIEW_FAILED: :compliance_review_failed
+        DELETED: :deleted
+        FAILED: :failed
+        INCOMPLETE_DOCUMENTATION: :incomplete_documentation
+        INCORRECT_BILLING_INFORMATION: :incorrect_billing_information
+        INELIGIBLE_CARRIER: :ineligible_carrier
+        LOA_FILE_INVALID: :loa_file_invalid
+        LOA_FILE_SUCCESSFUL: :loa_file_successful
+        PENDING: :pending
+        PROVISIONING: :provisioning
+        SUCCESSFUL: :successful
+
+        def self?.values: -> ::Array[Telnyx::Models::MessagingHostedNumberOrder::status]
+      end
+    end
+  end
+end

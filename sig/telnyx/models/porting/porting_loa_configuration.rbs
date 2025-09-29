@@ -1,0 +1,203 @@
+module Telnyx
+  module Models
+    class PortingLoaConfiguration = Porting::PortingLoaConfiguration
+
+    module Porting
+      type porting_loa_configuration =
+        {
+          id: String,
+          address: Telnyx::Porting::PortingLoaConfiguration::Address,
+          company_name: String,
+          contact: Telnyx::Porting::PortingLoaConfiguration::Contact,
+          created_at: Time,
+          logo: Telnyx::Porting::PortingLoaConfiguration::Logo,
+          name: String,
+          organization_id: String,
+          record_type: String,
+          updated_at: Time
+        }
+
+      class PortingLoaConfiguration < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader address: Telnyx::Porting::PortingLoaConfiguration::Address?
+
+        def address=: (
+          Telnyx::Porting::PortingLoaConfiguration::Address
+        ) -> Telnyx::Porting::PortingLoaConfiguration::Address
+
+        attr_reader company_name: String?
+
+        def company_name=: (String) -> String
+
+        attr_reader contact: Telnyx::Porting::PortingLoaConfiguration::Contact?
+
+        def contact=: (
+          Telnyx::Porting::PortingLoaConfiguration::Contact
+        ) -> Telnyx::Porting::PortingLoaConfiguration::Contact
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader logo: Telnyx::Porting::PortingLoaConfiguration::Logo?
+
+        def logo=: (
+          Telnyx::Porting::PortingLoaConfiguration::Logo
+        ) -> Telnyx::Porting::PortingLoaConfiguration::Logo
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader organization_id: String?
+
+        def organization_id=: (String) -> String
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?address: Telnyx::Porting::PortingLoaConfiguration::Address,
+          ?company_name: String,
+          ?contact: Telnyx::Porting::PortingLoaConfiguration::Contact,
+          ?created_at: Time,
+          ?logo: Telnyx::Porting::PortingLoaConfiguration::Logo,
+          ?name: String,
+          ?organization_id: String,
+          ?record_type: String,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          address: Telnyx::Porting::PortingLoaConfiguration::Address,
+          company_name: String,
+          contact: Telnyx::Porting::PortingLoaConfiguration::Contact,
+          created_at: Time,
+          logo: Telnyx::Porting::PortingLoaConfiguration::Logo,
+          name: String,
+          organization_id: String,
+          record_type: String,
+          updated_at: Time
+        }
+
+        type address =
+          {
+            city: String,
+            country_code: String,
+            extended_address: String,
+            state: String,
+            street_address: String,
+            zip_code: String
+          }
+
+        class Address < Telnyx::Internal::Type::BaseModel
+          attr_reader city: String?
+
+          def city=: (String) -> String
+
+          attr_reader country_code: String?
+
+          def country_code=: (String) -> String
+
+          attr_reader extended_address: String?
+
+          def extended_address=: (String) -> String
+
+          attr_reader state: String?
+
+          def state=: (String) -> String
+
+          attr_reader street_address: String?
+
+          def street_address=: (String) -> String
+
+          attr_reader zip_code: String?
+
+          def zip_code=: (String) -> String
+
+          def initialize: (
+            ?city: String,
+            ?country_code: String,
+            ?extended_address: String,
+            ?state: String,
+            ?street_address: String,
+            ?zip_code: String
+          ) -> void
+
+          def to_hash: -> {
+            city: String,
+            country_code: String,
+            extended_address: String,
+            state: String,
+            street_address: String,
+            zip_code: String
+          }
+        end
+
+        type contact = { email: String, phone_number: String }
+
+        class Contact < Telnyx::Internal::Type::BaseModel
+          attr_reader email: String?
+
+          def email=: (String) -> String
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          def initialize: (?email: String, ?phone_number: String) -> void
+
+          def to_hash: -> { email: String, phone_number: String }
+        end
+
+        type logo =
+          {
+            content_type: Telnyx::Models::Porting::PortingLoaConfiguration::Logo::content_type,
+            document_id: String
+          }
+
+        class Logo < Telnyx::Internal::Type::BaseModel
+          attr_reader content_type: Telnyx::Models::Porting::PortingLoaConfiguration::Logo::content_type?
+
+          def content_type=: (
+            Telnyx::Models::Porting::PortingLoaConfiguration::Logo::content_type
+          ) -> Telnyx::Models::Porting::PortingLoaConfiguration::Logo::content_type
+
+          attr_reader document_id: String?
+
+          def document_id=: (String) -> String
+
+          def initialize: (
+            ?content_type: Telnyx::Models::Porting::PortingLoaConfiguration::Logo::content_type,
+            ?document_id: String
+          ) -> void
+
+          def to_hash: -> {
+            content_type: Telnyx::Models::Porting::PortingLoaConfiguration::Logo::content_type,
+            document_id: String
+          }
+
+          type content_type = :"image/png"
+
+          module ContentType
+            extend Telnyx::Internal::Type::Enum
+
+            IMAGE_PNG: :"image/png"
+
+            def self?.values: -> ::Array[Telnyx::Models::Porting::PortingLoaConfiguration::Logo::content_type]
+          end
+        end
+      end
+    end
+  end
+end

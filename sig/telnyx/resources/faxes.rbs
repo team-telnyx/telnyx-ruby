@@ -1,0 +1,40 @@
+module Telnyx
+  module Resources
+    class Faxes
+      attr_reader actions: Telnyx::Resources::Faxes::Actions
+
+      def create: (
+        connection_id: String,
+        from: String,
+        to: String,
+        ?client_state: String,
+        ?from_display_name: String,
+        ?media_name: String,
+        ?media_url: String,
+        ?monochrome: bool,
+        ?preview_format: Telnyx::Models::FaxCreateParams::preview_format,
+        ?quality: Telnyx::Models::FaxCreateParams::quality,
+        ?store_media: bool,
+        ?store_preview: bool,
+        ?t38_enabled: bool,
+        ?webhook_url: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::FaxCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::FaxRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::FaxListParams::Filter,
+        ?page: Telnyx::FaxListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::FaxListResponse
+
+      def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,36 @@
+module Telnyx
+  module Models
+    type wireless_blocklist_value_list_params =
+      { type: Telnyx::Models::WirelessBlocklistValueListParams::type_ }
+      & Telnyx::Internal::Type::request_parameters
+
+    class WirelessBlocklistValueListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor type: Telnyx::Models::WirelessBlocklistValueListParams::type_
+
+      def initialize: (
+        type: Telnyx::Models::WirelessBlocklistValueListParams::type_,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        type: Telnyx::Models::WirelessBlocklistValueListParams::type_,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type type_ = :country | :mcc | :plmn
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        COUNTRY: :country
+        MCC: :mcc
+        PLMN: :plmn
+
+        def self?.values: -> ::Array[Telnyx::Models::WirelessBlocklistValueListParams::type_]
+      end
+    end
+  end
+end

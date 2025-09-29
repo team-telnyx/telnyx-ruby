@@ -1,0 +1,70 @@
+module Telnyx
+  module Models
+    module Portouts
+      type comment_create_response =
+        { data: Telnyx::Models::Portouts::CommentCreateResponse::Data }
+
+      class CommentCreateResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::Portouts::CommentCreateResponse::Data?
+
+        def data=: (
+          Telnyx::Models::Portouts::CommentCreateResponse::Data
+        ) -> Telnyx::Models::Portouts::CommentCreateResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::Portouts::CommentCreateResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::Portouts::CommentCreateResponse::Data
+        }
+
+        type data =
+          {
+            id: String,
+            body: String,
+            created_at: String,
+            user_id: String,
+            portout_id: String,
+            record_type: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor body: String
+
+          attr_accessor created_at: String
+
+          attr_accessor user_id: String
+
+          attr_reader portout_id: String?
+
+          def portout_id=: (String) -> String
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          def initialize: (
+            id: String,
+            body: String,
+            created_at: String,
+            user_id: String,
+            ?portout_id: String,
+            ?record_type: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            body: String,
+            created_at: String,
+            user_id: String,
+            portout_id: String,
+            record_type: String
+          }
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,75 @@
+module Telnyx
+  module Models
+    module Networks
+      type default_gateway_retrieve_response =
+        {
+          data: ::Array[Telnyx::Models::Networks::DefaultGatewayRetrieveResponse::Data],
+          meta: Telnyx::PaginationMeta
+        }
+
+      class DefaultGatewayRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::Models::Networks::DefaultGatewayRetrieveResponse::Data]?
+
+        def data=: (
+          ::Array[Telnyx::Models::Networks::DefaultGatewayRetrieveResponse::Data]
+        ) -> ::Array[Telnyx::Models::Networks::DefaultGatewayRetrieveResponse::Data]
+
+        attr_reader meta: Telnyx::PaginationMeta?
+
+        def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+        def initialize: (
+          ?data: ::Array[Telnyx::Models::Networks::DefaultGatewayRetrieveResponse::Data],
+          ?meta: Telnyx::PaginationMeta
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Models::Networks::DefaultGatewayRetrieveResponse::Data],
+          meta: Telnyx::PaginationMeta
+        }
+
+        type data =
+          {
+            network_id: String,
+            record_type: String,
+            status: Telnyx::Models::interface_status,
+            wireguard_peer_id: String
+          }
+
+        class Data < Telnyx::Models::Record
+          def wireguard_peer_id: -> String?
+
+          def wireguard_peer_id=: (String _) -> String
+
+          def network_id: -> String?
+
+          def network_id=: (String _) -> String
+
+          def record_type: -> String?
+
+          def record_type=: (String _) -> String
+
+          def status: -> Telnyx::Models::interface_status?
+
+          def status=: (
+            Telnyx::Models::interface_status _
+          ) -> Telnyx::Models::interface_status
+
+          def initialize: (
+            ?network_id: String,
+            ?record_type: String,
+            ?status: Telnyx::Models::interface_status,
+            ?wireguard_peer_id: String
+          ) -> void
+
+          def to_hash: -> {
+            network_id: String,
+            record_type: String,
+            status: Telnyx::Models::interface_status,
+            wireguard_peer_id: String
+          }
+        end
+      end
+    end
+  end
+end

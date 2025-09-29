@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type room_participant_retrieve_response = { data: Telnyx::RoomParticipant }
+
+    class RoomParticipantRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::RoomParticipant?
+
+      def data=: (Telnyx::RoomParticipant) -> Telnyx::RoomParticipant
+
+      def initialize: (?data: Telnyx::RoomParticipant) -> void
+
+      def to_hash: -> { data: Telnyx::RoomParticipant }
+    end
+  end
+end

@@ -1,0 +1,21 @@
+module Telnyx
+  module Models
+    module Storage
+      module Migrations
+        type action_stop_response = { data: Telnyx::Storage::MigrationParams }
+
+        class ActionStopResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: Telnyx::Storage::MigrationParams?
+
+          def data=: (
+            Telnyx::Storage::MigrationParams
+          ) -> Telnyx::Storage::MigrationParams
+
+          def initialize: (?data: Telnyx::Storage::MigrationParams) -> void
+
+          def to_hash: -> { data: Telnyx::Storage::MigrationParams }
+        end
+      end
+    end
+  end
+end

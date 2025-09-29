@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    module SimCards
+      type action_retrieve_response = { data: Telnyx::SimCards::SimCardAction }
+
+      class ActionRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::SimCards::SimCardAction?
+
+        def data=: (
+          Telnyx::SimCards::SimCardAction
+        ) -> Telnyx::SimCards::SimCardAction
+
+        def initialize: (?data: Telnyx::SimCards::SimCardAction) -> void
+
+        def to_hash: -> { data: Telnyx::SimCards::SimCardAction }
+      end
+    end
+  end
+end

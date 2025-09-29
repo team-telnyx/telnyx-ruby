@@ -1,0 +1,82 @@
+module Telnyx
+  module Models
+    type porting_orders_exception_type =
+      {
+        code: Telnyx::Models::PortingOrdersExceptionType::code,
+        description: String
+      }
+
+    class PortingOrdersExceptionType < Telnyx::Internal::Type::BaseModel
+      attr_reader code: Telnyx::Models::PortingOrdersExceptionType::code?
+
+      def code=: (
+        Telnyx::Models::PortingOrdersExceptionType::code
+      ) -> Telnyx::Models::PortingOrdersExceptionType::code
+
+      attr_reader description: String?
+
+      def description=: (String) -> String
+
+      def initialize: (
+        ?code: Telnyx::Models::PortingOrdersExceptionType::code,
+        ?description: String
+      ) -> void
+
+      def to_hash: -> {
+        code: Telnyx::Models::PortingOrdersExceptionType::code,
+        description: String
+      }
+
+      type code =
+        :ACCOUNT_NUMBER_MISMATCH
+        | :AUTH_PERSON_MISMATCH
+        | :BTN_ATN_MISMATCH
+        | :ENTITY_NAME_MISMATCH
+        | :FOC_EXPIRED
+        | :FOC_REJECTED
+        | :LOCATION_MISMATCH
+        | :LSR_PENDING
+        | :MAIN_BTN_PORTING
+        | :OSP_IRRESPONSIVE
+        | :OTHER
+        | :PASSCODE_PIN_INVALID
+        | :PHONE_NUMBER_HAS_SPECIAL_FEATURE
+        | :PHONE_NUMBER_MISMATCH
+        | :PHONE_NUMBER_NOT_PORTABLE
+        | :PORT_TYPE_INCORRECT
+        | :PORTING_ORDER_SPLIT_REQUIRED
+        | :POSTAL_CODE_MISMATCH
+        | :RATE_CENTER_NOT_PORTABLE
+        | :SV_CONFLICT
+        | :SV_UNKNOWN_FAILURE
+
+      module Code
+        extend Telnyx::Internal::Type::Enum
+
+        ACCOUNT_NUMBER_MISMATCH: :ACCOUNT_NUMBER_MISMATCH
+        AUTH_PERSON_MISMATCH: :AUTH_PERSON_MISMATCH
+        BTN_ATN_MISMATCH: :BTN_ATN_MISMATCH
+        ENTITY_NAME_MISMATCH: :ENTITY_NAME_MISMATCH
+        FOC_EXPIRED: :FOC_EXPIRED
+        FOC_REJECTED: :FOC_REJECTED
+        LOCATION_MISMATCH: :LOCATION_MISMATCH
+        LSR_PENDING: :LSR_PENDING
+        MAIN_BTN_PORTING: :MAIN_BTN_PORTING
+        OSP_IRRESPONSIVE: :OSP_IRRESPONSIVE
+        OTHER: :OTHER
+        PASSCODE_PIN_INVALID: :PASSCODE_PIN_INVALID
+        PHONE_NUMBER_HAS_SPECIAL_FEATURE: :PHONE_NUMBER_HAS_SPECIAL_FEATURE
+        PHONE_NUMBER_MISMATCH: :PHONE_NUMBER_MISMATCH
+        PHONE_NUMBER_NOT_PORTABLE: :PHONE_NUMBER_NOT_PORTABLE
+        PORT_TYPE_INCORRECT: :PORT_TYPE_INCORRECT
+        PORTING_ORDER_SPLIT_REQUIRED: :PORTING_ORDER_SPLIT_REQUIRED
+        POSTAL_CODE_MISMATCH: :POSTAL_CODE_MISMATCH
+        RATE_CENTER_NOT_PORTABLE: :RATE_CENTER_NOT_PORTABLE
+        SV_CONFLICT: :SV_CONFLICT
+        SV_UNKNOWN_FAILURE: :SV_UNKNOWN_FAILURE
+
+        def self?.values: -> ::Array[Telnyx::Models::PortingOrdersExceptionType::code]
+      end
+    end
+  end
+end

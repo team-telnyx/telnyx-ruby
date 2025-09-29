@@ -1,0 +1,114 @@
+module Telnyx
+  module Models
+    type oauth_register_params =
+      {
+        client_name: String,
+        grant_types: ::Array[Telnyx::Models::OAuthRegisterParams::grant_type],
+        logo_uri: String,
+        policy_uri: String,
+        redirect_uris: ::Array[String],
+        response_types: ::Array[String],
+        scope: String,
+        token_endpoint_auth_method: Telnyx::Models::OAuthRegisterParams::token_endpoint_auth_method,
+        tos_uri: String
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class OAuthRegisterParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader client_name: String?
+
+      def client_name=: (String) -> String
+
+      attr_reader grant_types: ::Array[Telnyx::Models::OAuthRegisterParams::grant_type]?
+
+      def grant_types=: (
+        ::Array[Telnyx::Models::OAuthRegisterParams::grant_type]
+      ) -> ::Array[Telnyx::Models::OAuthRegisterParams::grant_type]
+
+      attr_reader logo_uri: String?
+
+      def logo_uri=: (String) -> String
+
+      attr_reader policy_uri: String?
+
+      def policy_uri=: (String) -> String
+
+      attr_reader redirect_uris: ::Array[String]?
+
+      def redirect_uris=: (::Array[String]) -> ::Array[String]
+
+      attr_reader response_types: ::Array[String]?
+
+      def response_types=: (::Array[String]) -> ::Array[String]
+
+      attr_reader scope: String?
+
+      def scope=: (String) -> String
+
+      attr_reader token_endpoint_auth_method: Telnyx::Models::OAuthRegisterParams::token_endpoint_auth_method?
+
+      def token_endpoint_auth_method=: (
+        Telnyx::Models::OAuthRegisterParams::token_endpoint_auth_method
+      ) -> Telnyx::Models::OAuthRegisterParams::token_endpoint_auth_method
+
+      attr_reader tos_uri: String?
+
+      def tos_uri=: (String) -> String
+
+      def initialize: (
+        ?client_name: String,
+        ?grant_types: ::Array[Telnyx::Models::OAuthRegisterParams::grant_type],
+        ?logo_uri: String,
+        ?policy_uri: String,
+        ?redirect_uris: ::Array[String],
+        ?response_types: ::Array[String],
+        ?scope: String,
+        ?token_endpoint_auth_method: Telnyx::Models::OAuthRegisterParams::token_endpoint_auth_method,
+        ?tos_uri: String,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        client_name: String,
+        grant_types: ::Array[Telnyx::Models::OAuthRegisterParams::grant_type],
+        logo_uri: String,
+        policy_uri: String,
+        redirect_uris: ::Array[String],
+        response_types: ::Array[String],
+        scope: String,
+        token_endpoint_auth_method: Telnyx::Models::OAuthRegisterParams::token_endpoint_auth_method,
+        tos_uri: String,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type grant_type =
+        :authorization_code | :client_credentials | :refresh_token
+
+      module GrantType
+        extend Telnyx::Internal::Type::Enum
+
+        AUTHORIZATION_CODE: :authorization_code
+        CLIENT_CREDENTIALS: :client_credentials
+        REFRESH_TOKEN: :refresh_token
+
+        def self?.values: -> ::Array[Telnyx::Models::OAuthRegisterParams::grant_type]
+      end
+
+      type token_endpoint_auth_method =
+        :none | :client_secret_basic | :client_secret_post
+
+      module TokenEndpointAuthMethod
+        extend Telnyx::Internal::Type::Enum
+
+        NONE: :none
+        CLIENT_SECRET_BASIC: :client_secret_basic
+        CLIENT_SECRET_POST: :client_secret_post
+
+        def self?.values: -> ::Array[Telnyx::Models::OAuthRegisterParams::token_endpoint_auth_method]
+      end
+    end
+  end
+end

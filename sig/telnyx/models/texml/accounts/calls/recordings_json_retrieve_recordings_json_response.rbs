@@ -1,0 +1,86 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        module Calls
+          type recordings_json_retrieve_recordings_json_response =
+            {
+              end_: Integer,
+              first_page_uri: String,
+              next_page_uri: String,
+              page: Integer,
+              page_size: Integer,
+              previous_page_uri: String,
+              recordings: ::Array[Telnyx::Texml::TexmlGetCallRecordingResponseBody],
+              start: Integer,
+              uri: String
+            }
+
+          class RecordingsJsonRetrieveRecordingsJsonResponse < Telnyx::Internal::Type::BaseModel
+            attr_reader end_: Integer?
+
+            def end_=: (Integer) -> Integer
+
+            attr_reader first_page_uri: String?
+
+            def first_page_uri=: (String) -> String
+
+            attr_reader next_page_uri: String?
+
+            def next_page_uri=: (String) -> String
+
+            attr_reader page: Integer?
+
+            def page=: (Integer) -> Integer
+
+            attr_reader page_size: Integer?
+
+            def page_size=: (Integer) -> Integer
+
+            attr_reader previous_page_uri: String?
+
+            def previous_page_uri=: (String) -> String
+
+            attr_reader recordings: ::Array[Telnyx::Texml::TexmlGetCallRecordingResponseBody]?
+
+            def recordings=: (
+              ::Array[Telnyx::Texml::TexmlGetCallRecordingResponseBody]
+            ) -> ::Array[Telnyx::Texml::TexmlGetCallRecordingResponseBody]
+
+            attr_reader start: Integer?
+
+            def start=: (Integer) -> Integer
+
+            attr_reader uri: String?
+
+            def uri=: (String) -> String
+
+            def initialize: (
+              ?end_: Integer,
+              ?first_page_uri: String,
+              ?next_page_uri: String,
+              ?page: Integer,
+              ?page_size: Integer,
+              ?previous_page_uri: String,
+              ?recordings: ::Array[Telnyx::Texml::TexmlGetCallRecordingResponseBody],
+              ?start: Integer,
+              ?uri: String
+            ) -> void
+
+            def to_hash: -> {
+              end_: Integer,
+              first_page_uri: String,
+              next_page_uri: String,
+              page: Integer,
+              page_size: Integer,
+              previous_page_uri: String,
+              recordings: ::Array[Telnyx::Texml::TexmlGetCallRecordingResponseBody],
+              start: Integer,
+              uri: String
+            }
+          end
+        end
+      end
+    end
+  end
+end

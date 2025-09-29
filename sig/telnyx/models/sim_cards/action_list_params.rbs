@@ -1,0 +1,134 @@
+module Telnyx
+  module Models
+    module SimCards
+      type action_list_params =
+        {
+          filter: Telnyx::SimCards::ActionListParams::Filter,
+          page: Telnyx::SimCards::ActionListParams::Page
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter: Telnyx::SimCards::ActionListParams::Filter?
+
+        def filter=: (
+          Telnyx::SimCards::ActionListParams::Filter
+        ) -> Telnyx::SimCards::ActionListParams::Filter
+
+        attr_reader page: Telnyx::SimCards::ActionListParams::Page?
+
+        def page=: (
+          Telnyx::SimCards::ActionListParams::Page
+        ) -> Telnyx::SimCards::ActionListParams::Page
+
+        def initialize: (
+          ?filter: Telnyx::SimCards::ActionListParams::Filter,
+          ?page: Telnyx::SimCards::ActionListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter: Telnyx::SimCards::ActionListParams::Filter,
+          page: Telnyx::SimCards::ActionListParams::Page,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter =
+          {
+            action_type: Telnyx::Models::SimCards::ActionListParams::Filter::action_type,
+            bulk_sim_card_action_id: String,
+            sim_card_id: String,
+            status: Telnyx::Models::SimCards::ActionListParams::Filter::status
+          }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader action_type: Telnyx::Models::SimCards::ActionListParams::Filter::action_type?
+
+          def action_type=: (
+            Telnyx::Models::SimCards::ActionListParams::Filter::action_type
+          ) -> Telnyx::Models::SimCards::ActionListParams::Filter::action_type
+
+          attr_reader bulk_sim_card_action_id: String?
+
+          def bulk_sim_card_action_id=: (String) -> String
+
+          attr_reader sim_card_id: String?
+
+          def sim_card_id=: (String) -> String
+
+          attr_reader status: Telnyx::Models::SimCards::ActionListParams::Filter::status?
+
+          def status=: (
+            Telnyx::Models::SimCards::ActionListParams::Filter::status
+          ) -> Telnyx::Models::SimCards::ActionListParams::Filter::status
+
+          def initialize: (
+            ?action_type: Telnyx::Models::SimCards::ActionListParams::Filter::action_type,
+            ?bulk_sim_card_action_id: String,
+            ?sim_card_id: String,
+            ?status: Telnyx::Models::SimCards::ActionListParams::Filter::status
+          ) -> void
+
+          def to_hash: -> {
+            action_type: Telnyx::Models::SimCards::ActionListParams::Filter::action_type,
+            bulk_sim_card_action_id: String,
+            sim_card_id: String,
+            status: Telnyx::Models::SimCards::ActionListParams::Filter::status
+          }
+
+          type action_type =
+            :enable
+            | :enable_standby_sim_card
+            | :disable
+            | :set_standby
+            | :remove_public_ip
+            | :set_public_ip
+
+          module ActionType
+            extend Telnyx::Internal::Type::Enum
+
+            ENABLE: :enable
+            ENABLE_STANDBY_SIM_CARD: :enable_standby_sim_card
+            DISABLE: :disable
+            SET_STANDBY: :set_standby
+            REMOVE_PUBLIC_IP: :remove_public_ip
+            SET_PUBLIC_IP: :set_public_ip
+
+            def self?.values: -> ::Array[Telnyx::Models::SimCards::ActionListParams::Filter::action_type]
+          end
+
+          type status = :"in-progress" | :completed | :failed
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            IN_PROGRESS: :"in-progress"
+            COMPLETED: :completed
+            FAILED: :failed
+
+            def self?.values: -> ::Array[Telnyx::Models::SimCards::ActionListParams::Filter::status]
+          end
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
+        end
+      end
+    end
+  end
+end

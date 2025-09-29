@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    module SimCardGroups
+      type action_remove_wireless_blocklist_response =
+        { data: Telnyx::SimCardGroups::SimCardGroupAction }
+
+      class ActionRemoveWirelessBlocklistResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::SimCardGroups::SimCardGroupAction?
+
+        def data=: (
+          Telnyx::SimCardGroups::SimCardGroupAction
+        ) -> Telnyx::SimCardGroups::SimCardGroupAction
+
+        def initialize: (
+          ?data: Telnyx::SimCardGroups::SimCardGroupAction
+        ) -> void
+
+        def to_hash: -> { data: Telnyx::SimCardGroups::SimCardGroupAction }
+      end
+    end
+  end
+end

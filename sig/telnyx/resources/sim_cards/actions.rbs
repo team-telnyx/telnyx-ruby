@@ -1,0 +1,56 @@
+module Telnyx
+  module Resources
+    class SimCards
+      class Actions
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCards::ActionRetrieveResponse
+
+        def list: (
+          ?filter: Telnyx::SimCards::ActionListParams::Filter,
+          ?page: Telnyx::SimCards::ActionListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCards::ActionListResponse
+
+        def bulk_set_public_ips: (
+          sim_card_ids: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse
+
+        def disable: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCards::ActionDisableResponse
+
+        def enable: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCards::ActionEnableResponse
+
+        def remove_public_ip: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCards::ActionRemovePublicIPResponse
+
+        def set_public_ip: (
+          String id,
+          ?region_code: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCards::ActionSetPublicIPResponse
+
+        def set_standby: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCards::ActionSetStandbyResponse
+
+        def validate_registration_codes: (
+          ?registration_codes: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCards::ActionValidateRegistrationCodesResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

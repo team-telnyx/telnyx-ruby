@@ -1,0 +1,24 @@
+module Telnyx
+  module Resources
+    class SimCardOrders
+      def create: (
+        address_id: String,
+        quantity: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardOrderCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardOrderRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::SimCardOrderListParams::Filter,
+        ?page: Telnyx::SimCardOrderListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardOrderListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

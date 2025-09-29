@@ -1,0 +1,121 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        class TestRunResponse = Tests::TestRunResponse
+
+        module Tests
+          type test_run_response =
+            {
+              created_at: Time,
+              run_id: String,
+              status: Telnyx::Models::AI::Assistants::Tests::test_status,
+              test_id: String,
+              triggered_by: String,
+              completed_at: Time,
+              conversation_id: String,
+              conversation_insights_id: String,
+              detail_status: ::Array[Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus],
+              logs: String,
+              test_suite_run_id: String,
+              updated_at: Time
+            }
+
+          class TestRunResponse < Telnyx::Internal::Type::BaseModel
+            attr_accessor created_at: Time
+
+            attr_accessor run_id: String
+
+            attr_accessor status: Telnyx::Models::AI::Assistants::Tests::test_status
+
+            attr_accessor test_id: String
+
+            attr_accessor triggered_by: String
+
+            attr_reader completed_at: Time?
+
+            def completed_at=: (Time) -> Time
+
+            attr_reader conversation_id: String?
+
+            def conversation_id=: (String) -> String
+
+            attr_reader conversation_insights_id: String?
+
+            def conversation_insights_id=: (String) -> String
+
+            attr_reader detail_status: ::Array[Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus]?
+
+            def detail_status=: (
+              ::Array[Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus]
+            ) -> ::Array[Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus]
+
+            attr_reader logs: String?
+
+            def logs=: (String) -> String
+
+            attr_reader test_suite_run_id: String?
+
+            def test_suite_run_id=: (String) -> String
+
+            attr_reader updated_at: Time?
+
+            def updated_at=: (Time) -> Time
+
+            def initialize: (
+              created_at: Time,
+              run_id: String,
+              status: Telnyx::Models::AI::Assistants::Tests::test_status,
+              test_id: String,
+              triggered_by: String,
+              ?completed_at: Time,
+              ?conversation_id: String,
+              ?conversation_insights_id: String,
+              ?detail_status: ::Array[Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus],
+              ?logs: String,
+              ?test_suite_run_id: String,
+              ?updated_at: Time
+            ) -> void
+
+            def to_hash: -> {
+              created_at: Time,
+              run_id: String,
+              status: Telnyx::Models::AI::Assistants::Tests::test_status,
+              test_id: String,
+              triggered_by: String,
+              completed_at: Time,
+              conversation_id: String,
+              conversation_insights_id: String,
+              detail_status: ::Array[Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus],
+              logs: String,
+              test_suite_run_id: String,
+              updated_at: Time
+            }
+
+            type detail_status =
+              {
+                name: String,
+                status: Telnyx::Models::AI::Assistants::Tests::test_status
+              }
+
+            class DetailStatus < Telnyx::Internal::Type::BaseModel
+              attr_accessor name: String
+
+              attr_accessor status: Telnyx::Models::AI::Assistants::Tests::test_status
+
+              def initialize: (
+                name: String,
+                status: Telnyx::Models::AI::Assistants::Tests::test_status
+              ) -> void
+
+              def to_hash: -> {
+                name: String,
+                status: Telnyx::Models::AI::Assistants::Tests::test_status
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

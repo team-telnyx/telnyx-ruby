@@ -1,0 +1,21 @@
+module Telnyx
+  module Resources
+    class RecordingTranscriptions
+      def retrieve: (
+        String recording_transcription_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RecordingTranscriptionRetrieveResponse
+
+      def list: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RecordingTranscriptionListResponse
+
+      def delete: (
+        String recording_transcription_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RecordingTranscriptionDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

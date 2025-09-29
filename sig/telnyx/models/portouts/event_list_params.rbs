@@ -1,0 +1,125 @@
+module Telnyx
+  module Models
+    module Portouts
+      type event_list_params =
+        {
+          filter: Telnyx::Portouts::EventListParams::Filter,
+          page: Telnyx::Portouts::EventListParams::Page
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class EventListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter: Telnyx::Portouts::EventListParams::Filter?
+
+        def filter=: (
+          Telnyx::Portouts::EventListParams::Filter
+        ) -> Telnyx::Portouts::EventListParams::Filter
+
+        attr_reader page: Telnyx::Portouts::EventListParams::Page?
+
+        def page=: (
+          Telnyx::Portouts::EventListParams::Page
+        ) -> Telnyx::Portouts::EventListParams::Page
+
+        def initialize: (
+          ?filter: Telnyx::Portouts::EventListParams::Filter,
+          ?page: Telnyx::Portouts::EventListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter: Telnyx::Portouts::EventListParams::Filter,
+          page: Telnyx::Portouts::EventListParams::Page,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter =
+          {
+            created_at: Telnyx::Portouts::EventListParams::Filter::CreatedAt,
+            event_type: Telnyx::Models::Portouts::EventListParams::Filter::event_type,
+            portout_id: String
+          }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader created_at: Telnyx::Portouts::EventListParams::Filter::CreatedAt?
+
+          def created_at=: (
+            Telnyx::Portouts::EventListParams::Filter::CreatedAt
+          ) -> Telnyx::Portouts::EventListParams::Filter::CreatedAt
+
+          attr_reader event_type: Telnyx::Models::Portouts::EventListParams::Filter::event_type?
+
+          def event_type=: (
+            Telnyx::Models::Portouts::EventListParams::Filter::event_type
+          ) -> Telnyx::Models::Portouts::EventListParams::Filter::event_type
+
+          attr_reader portout_id: String?
+
+          def portout_id=: (String) -> String
+
+          def initialize: (
+            ?created_at: Telnyx::Portouts::EventListParams::Filter::CreatedAt,
+            ?event_type: Telnyx::Models::Portouts::EventListParams::Filter::event_type,
+            ?portout_id: String
+          ) -> void
+
+          def to_hash: -> {
+            created_at: Telnyx::Portouts::EventListParams::Filter::CreatedAt,
+            event_type: Telnyx::Models::Portouts::EventListParams::Filter::event_type,
+            portout_id: String
+          }
+
+          type created_at = { gte: Time, lte: Time }
+
+          class CreatedAt < Telnyx::Internal::Type::BaseModel
+            attr_reader gte: Time?
+
+            def gte=: (Time) -> Time
+
+            attr_reader lte: Time?
+
+            def lte=: (Time) -> Time
+
+            def initialize: (?gte: Time, ?lte: Time) -> void
+
+            def to_hash: -> { gte: Time, lte: Time }
+          end
+
+          type event_type =
+            :"portout.status_changed"
+            | :"portout.new_comment"
+            | :"portout.foc_date_changed"
+
+          module EventType
+            extend Telnyx::Internal::Type::Enum
+
+            PORTOUT_STATUS_CHANGED: :"portout.status_changed"
+            PORTOUT_NEW_COMMENT: :"portout.new_comment"
+            PORTOUT_FOC_DATE_CHANGED: :"portout.foc_date_changed"
+
+            def self?.values: -> ::Array[Telnyx::Models::Portouts::EventListParams::Filter::event_type]
+          end
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
+        end
+      end
+    end
+  end
+end

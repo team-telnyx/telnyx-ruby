@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type ip_update_response = { data: Telnyx::IP }
+
+    class IPUpdateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::IP?
+
+      def data=: (Telnyx::IP) -> Telnyx::IP
+
+      def initialize: (?data: Telnyx::IP) -> void
+
+      def to_hash: -> { data: Telnyx::IP }
+    end
+  end
+end

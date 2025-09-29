@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    module PhoneNumbers
+      type voicemail_retrieve_response =
+        { data: Telnyx::PhoneNumbers::VoicemailPrefResponse }
+
+      class VoicemailRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::PhoneNumbers::VoicemailPrefResponse?
+
+        def data=: (
+          Telnyx::PhoneNumbers::VoicemailPrefResponse
+        ) -> Telnyx::PhoneNumbers::VoicemailPrefResponse
+
+        def initialize: (
+          ?data: Telnyx::PhoneNumbers::VoicemailPrefResponse
+        ) -> void
+
+        def to_hash: -> { data: Telnyx::PhoneNumbers::VoicemailPrefResponse }
+      end
+    end
+  end
+end

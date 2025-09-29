@@ -1,0 +1,95 @@
+module Telnyx
+  module Models
+    module AI
+      type audio_transcribe_params =
+        {
+          model: Telnyx::Models::AI::AudioTranscribeParams::model,
+          file: Telnyx::Internal::file_input,
+          file_url: String,
+          response_format: Telnyx::Models::AI::AudioTranscribeParams::response_format,
+          timestamp_granularities: Telnyx::Models::AI::AudioTranscribeParams::timestamp_granularities
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class AudioTranscribeParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor model: Telnyx::Models::AI::AudioTranscribeParams::model
+
+        attr_reader file: Telnyx::Internal::file_input?
+
+        def file=: (
+          Telnyx::Internal::file_input
+        ) -> Telnyx::Internal::file_input
+
+        attr_reader file_url: String?
+
+        def file_url=: (String) -> String
+
+        attr_reader response_format: Telnyx::Models::AI::AudioTranscribeParams::response_format?
+
+        def response_format=: (
+          Telnyx::Models::AI::AudioTranscribeParams::response_format
+        ) -> Telnyx::Models::AI::AudioTranscribeParams::response_format
+
+        attr_reader timestamp_granularities: Telnyx::Models::AI::AudioTranscribeParams::timestamp_granularities?
+
+        def timestamp_granularities=: (
+          Telnyx::Models::AI::AudioTranscribeParams::timestamp_granularities
+        ) -> Telnyx::Models::AI::AudioTranscribeParams::timestamp_granularities
+
+        def initialize: (
+          model: Telnyx::Models::AI::AudioTranscribeParams::model,
+          ?file: Telnyx::Internal::file_input,
+          ?file_url: String,
+          ?response_format: Telnyx::Models::AI::AudioTranscribeParams::response_format,
+          ?timestamp_granularities: Telnyx::Models::AI::AudioTranscribeParams::timestamp_granularities,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          model: Telnyx::Models::AI::AudioTranscribeParams::model,
+          file: Telnyx::Internal::file_input,
+          file_url: String,
+          response_format: Telnyx::Models::AI::AudioTranscribeParams::response_format,
+          timestamp_granularities: Telnyx::Models::AI::AudioTranscribeParams::timestamp_granularities,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type model =
+          :"distil-whisper/distil-large-v2" | :"openai/whisper-large-v3-turbo"
+
+        module Model
+          extend Telnyx::Internal::Type::Enum
+
+          DISTIL_WHISPER_DISTIL_LARGE_V2: :"distil-whisper/distil-large-v2"
+          OPENAI_WHISPER_LARGE_V3_TURBO: :"openai/whisper-large-v3-turbo"
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::AudioTranscribeParams::model]
+        end
+
+        type response_format = :json | :verbose_json
+
+        module ResponseFormat
+          extend Telnyx::Internal::Type::Enum
+
+          JSON: :json
+          VERBOSE_JSON: :verbose_json
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::AudioTranscribeParams::response_format]
+        end
+
+        type timestamp_granularities = :segment
+
+        module TimestampGranularities
+          extend Telnyx::Internal::Type::Enum
+
+          SEGMENT: :segment
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::AudioTranscribeParams::timestamp_granularities]
+        end
+      end
+    end
+  end
+end

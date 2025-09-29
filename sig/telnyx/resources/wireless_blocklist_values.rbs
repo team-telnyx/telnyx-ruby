@@ -1,0 +1,12 @@
+module Telnyx
+  module Resources
+    class WirelessBlocklistValues
+      def list: (
+        type: Telnyx::Models::WirelessBlocklistValueListParams::type_,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WirelessBlocklistValueListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

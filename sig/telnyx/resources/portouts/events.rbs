@@ -1,0 +1,25 @@
+module Telnyx
+  module Resources
+    class Portouts
+      class Events
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Portouts::EventRetrieveResponse
+
+        def list: (
+          ?filter: Telnyx::Portouts::EventListParams::Filter,
+          ?page: Telnyx::Portouts::EventListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Portouts::EventListResponse
+
+        def republish: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

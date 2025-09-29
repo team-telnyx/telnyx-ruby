@@ -1,0 +1,43 @@
+module Telnyx
+  module Resources
+    class AI
+      class Conversations
+        class Insights
+          def create: (
+            instructions: String,
+            name: String,
+            ?json_schema: Telnyx::Models::AI::Conversations::InsightCreateParams::json_schema,
+            ?webhook: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::Conversations::InsightTemplateDetail
+
+          def retrieve: (
+            String insight_id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::Conversations::InsightTemplateDetail
+
+          def update: (
+            String insight_id,
+            ?instructions: String,
+            ?json_schema: Telnyx::Models::AI::Conversations::InsightUpdateParams::json_schema,
+            ?name: String,
+            ?webhook: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::Conversations::InsightTemplateDetail
+
+          def list: (
+            ?page: Telnyx::AI::Conversations::InsightListParams::Page,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Conversations::InsightListResponse
+
+          def delete: (
+            String insight_id,
+            ?request_options: Telnyx::request_opts
+          ) -> top
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

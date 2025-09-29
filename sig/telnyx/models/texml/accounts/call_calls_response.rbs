@@ -1,0 +1,27 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        type call_calls_response = { from: String, status: String, to: String }
+
+        class CallCallsResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader from: String?
+
+          def from=: (String) -> String
+
+          attr_reader status: String?
+
+          def status=: (String) -> String
+
+          attr_reader to: String?
+
+          def to=: (String) -> String
+
+          def initialize: (?from: String, ?status: String, ?to: String) -> void
+
+          def to_hash: -> { from: String, status: String, to: String }
+        end
+      end
+    end
+  end
+end

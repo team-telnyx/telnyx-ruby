@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    module PhoneNumbers
+      type media_features =
+        {
+          accept_any_rtp_packets_enabled: bool,
+          rtp_auto_adjust_enabled: bool,
+          :t38_fax_gateway_enabled => bool
+        }
+
+      class MediaFeatures < Telnyx::Internal::Type::BaseModel
+        attr_reader accept_any_rtp_packets_enabled: bool?
+
+        def accept_any_rtp_packets_enabled=: (bool) -> bool
+
+        attr_reader rtp_auto_adjust_enabled: bool?
+
+        def rtp_auto_adjust_enabled=: (bool) -> bool
+
+        attr_reader t38_fax_gateway_enabled: bool?
+
+        def t38_fax_gateway_enabled=: (bool) -> bool
+
+        def initialize: (
+          ?accept_any_rtp_packets_enabled: bool,
+          ?rtp_auto_adjust_enabled: bool,
+          ?t38_fax_gateway_enabled: bool
+        ) -> void
+
+        def to_hash: -> {
+          accept_any_rtp_packets_enabled: bool,
+          rtp_auto_adjust_enabled: bool,
+          :t38_fax_gateway_enabled => bool
+        }
+      end
+    end
+  end
+end

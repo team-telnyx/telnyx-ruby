@@ -1,0 +1,48 @@
+module Telnyx
+  module Models
+    type verified_number =
+      {
+        phone_number: String,
+        record_type: Telnyx::Models::VerifiedNumber::record_type,
+        verified_at: String
+      }
+
+    class VerifiedNumber < Telnyx::Internal::Type::BaseModel
+      attr_reader phone_number: String?
+
+      def phone_number=: (String) -> String
+
+      attr_reader record_type: Telnyx::Models::VerifiedNumber::record_type?
+
+      def record_type=: (
+        Telnyx::Models::VerifiedNumber::record_type
+      ) -> Telnyx::Models::VerifiedNumber::record_type
+
+      attr_reader verified_at: String?
+
+      def verified_at=: (String) -> String
+
+      def initialize: (
+        ?phone_number: String,
+        ?record_type: Telnyx::Models::VerifiedNumber::record_type,
+        ?verified_at: String
+      ) -> void
+
+      def to_hash: -> {
+        phone_number: String,
+        record_type: Telnyx::Models::VerifiedNumber::record_type,
+        verified_at: String
+      }
+
+      type record_type = :verified_number
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        VERIFIED_NUMBER: :verified_number
+
+        def self?.values: -> ::Array[Telnyx::Models::VerifiedNumber::record_type]
+      end
+    end
+  end
+end

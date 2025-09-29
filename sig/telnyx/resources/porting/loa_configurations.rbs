@@ -1,0 +1,54 @@
+module Telnyx
+  module Resources
+    class Porting
+      class LoaConfigurations
+        def create: (
+          address: Telnyx::Porting::LoaConfigurationCreateParams::Address,
+          company_name: String,
+          contact: Telnyx::Porting::LoaConfigurationCreateParams::Contact,
+          logo: Telnyx::Porting::LoaConfigurationCreateParams::Logo,
+          name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Porting::LoaConfigurationCreateResponse
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Porting::LoaConfigurationRetrieveResponse
+
+        def update: (
+          String id,
+          address: Telnyx::Porting::LoaConfigurationUpdateParams::Address,
+          company_name: String,
+          contact: Telnyx::Porting::LoaConfigurationUpdateParams::Contact,
+          logo: Telnyx::Porting::LoaConfigurationUpdateParams::Logo,
+          name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Porting::LoaConfigurationUpdateResponse
+
+        def list: (
+          ?page: Telnyx::Porting::LoaConfigurationListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Porting::LoaConfigurationListResponse
+
+        def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
+
+        def preview_0: (
+          address: Telnyx::Porting::LoaConfigurationPreview0Params::Address,
+          company_name: String,
+          contact: Telnyx::Porting::LoaConfigurationPreview0Params::Contact,
+          logo: Telnyx::Porting::LoaConfigurationPreview0Params::Logo,
+          name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> StringIO
+
+        def preview_1: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> StringIO
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

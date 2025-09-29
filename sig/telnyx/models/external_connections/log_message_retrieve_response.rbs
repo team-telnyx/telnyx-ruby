@@ -1,0 +1,118 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type log_message_retrieve_response =
+        {
+          log_messages: ::Array[Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage]
+        }
+
+      class LogMessageRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader log_messages: ::Array[Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage]?
+
+        def log_messages=: (
+          ::Array[Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage]
+        ) -> ::Array[Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage]
+
+        def initialize: (
+          ?log_messages: ::Array[Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage]
+        ) -> void
+
+        def to_hash: -> {
+          log_messages: ::Array[Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage]
+        }
+
+        type log_message =
+          {
+            code: String,
+            title: String,
+            detail: String,
+            meta: Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage::Meta,
+            source: Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage::Source
+          }
+
+        class LogMessage < Telnyx::Internal::Type::BaseModel
+          attr_accessor code: String
+
+          attr_accessor title: String
+
+          attr_reader detail: String?
+
+          def detail=: (String) -> String
+
+          attr_reader meta: Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage::Meta?
+
+          def meta=: (
+            Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage::Meta
+          ) -> Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage::Meta
+
+          attr_reader source: Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage::Source?
+
+          def source=: (
+            Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage::Source
+          ) -> Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage::Source
+
+          def initialize: (
+            code: String,
+            title: String,
+            ?detail: String,
+            ?meta: Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage::Meta,
+            ?source: Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage::Source
+          ) -> void
+
+          def to_hash: -> {
+            code: String,
+            title: String,
+            detail: String,
+            meta: Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage::Meta,
+            source: Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage::Source
+          }
+
+          type meta =
+            {
+              external_connection_id: String,
+              telephone_number: String,
+              ticket_id: String
+            }
+
+          class Meta < Telnyx::Internal::Type::BaseModel
+            attr_reader external_connection_id: String?
+
+            def external_connection_id=: (String) -> String
+
+            attr_reader telephone_number: String?
+
+            def telephone_number=: (String) -> String
+
+            attr_reader ticket_id: String?
+
+            def ticket_id=: (String) -> String
+
+            def initialize: (
+              ?external_connection_id: String,
+              ?telephone_number: String,
+              ?ticket_id: String
+            ) -> void
+
+            def to_hash: -> {
+              external_connection_id: String,
+              telephone_number: String,
+              ticket_id: String
+            }
+          end
+
+          type source = { pointer: String }
+
+          class Source < Telnyx::Internal::Type::BaseModel
+            attr_reader pointer: String?
+
+            def pointer=: (String) -> String
+
+            def initialize: (?pointer: String) -> void
+
+            def to_hash: -> { pointer: String }
+          end
+        end
+      end
+    end
+  end
+end

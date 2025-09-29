@@ -1,0 +1,72 @@
+module Telnyx
+  module Models
+    type notification_channel =
+      {
+        id: String,
+        channel_destination: String,
+        channel_type_id: Telnyx::Models::NotificationChannel::channel_type_id,
+        created_at: Time,
+        notification_profile_id: String,
+        updated_at: Time
+      }
+
+    class NotificationChannel < Telnyx::Internal::Type::BaseModel
+      attr_reader channel_destination: String?
+
+      def channel_destination=: (String) -> String
+
+      attr_reader channel_type_id: Telnyx::Models::NotificationChannel::channel_type_id?
+
+      def channel_type_id=: (
+        Telnyx::Models::NotificationChannel::channel_type_id
+      ) -> Telnyx::Models::NotificationChannel::channel_type_id
+
+      attr_reader notification_profile_id: String?
+
+      def notification_profile_id=: (String) -> String
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        ?id: String,
+        ?channel_destination: String,
+        ?channel_type_id: Telnyx::Models::NotificationChannel::channel_type_id,
+        ?created_at: Time,
+        ?notification_profile_id: String,
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        channel_destination: String,
+        channel_type_id: Telnyx::Models::NotificationChannel::channel_type_id,
+        created_at: Time,
+        notification_profile_id: String,
+        updated_at: Time
+      }
+
+      type channel_type_id = :sms | :voice | :email | :webhook
+
+      module ChannelTypeID
+        extend Telnyx::Internal::Type::Enum
+
+        SMS: :sms
+        VOICE: :voice
+        EMAIL: :email
+        WEBHOOK: :webhook
+
+        def self?.values: -> ::Array[Telnyx::Models::NotificationChannel::channel_type_id]
+      end
+    end
+  end
+end

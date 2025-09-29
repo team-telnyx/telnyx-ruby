@@ -1,0 +1,74 @@
+module Telnyx
+  module Models
+    type messaging_optout_list_response =
+      {
+        data: ::Array[Telnyx::Models::MessagingOptoutListResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class MessagingOptoutListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::MessagingOptoutListResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::MessagingOptoutListResponse::Data]
+      ) -> ::Array[Telnyx::Models::MessagingOptoutListResponse::Data]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::MessagingOptoutListResponse::Data],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::MessagingOptoutListResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+      type data =
+        {
+          created_at: Time,
+          from: String,
+          keyword: String?,
+          messaging_profile_id: String?,
+          to: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader from: String?
+
+        def from=: (String) -> String
+
+        attr_accessor keyword: String?
+
+        attr_accessor messaging_profile_id: String?
+
+        attr_reader to: String?
+
+        def to=: (String) -> String
+
+        def initialize: (
+          ?created_at: Time,
+          ?from: String,
+          ?keyword: String?,
+          ?messaging_profile_id: String?,
+          ?to: String
+        ) -> void
+
+        def to_hash: -> {
+          created_at: Time,
+          from: String,
+          keyword: String?,
+          messaging_profile_id: String?,
+          to: String
+        }
+      end
+    end
+  end
+end

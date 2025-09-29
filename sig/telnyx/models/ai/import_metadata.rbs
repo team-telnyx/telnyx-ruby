@@ -1,0 +1,44 @@
+module Telnyx
+  module Models
+    module AI
+      type import_metadata =
+        {
+          import_id: String,
+          import_provider: Telnyx::Models::AI::ImportMetadata::import_provider
+        }
+
+      class ImportMetadata < Telnyx::Internal::Type::BaseModel
+        attr_reader import_id: String?
+
+        def import_id=: (String) -> String
+
+        attr_reader import_provider: Telnyx::Models::AI::ImportMetadata::import_provider?
+
+        def import_provider=: (
+          Telnyx::Models::AI::ImportMetadata::import_provider
+        ) -> Telnyx::Models::AI::ImportMetadata::import_provider
+
+        def initialize: (
+          ?import_id: String,
+          ?import_provider: Telnyx::Models::AI::ImportMetadata::import_provider
+        ) -> void
+
+        def to_hash: -> {
+          import_id: String,
+          import_provider: Telnyx::Models::AI::ImportMetadata::import_provider
+        }
+
+        type import_provider = :elevenlabs | :vapi
+
+        module ImportProvider
+          extend Telnyx::Internal::Type::Enum
+
+          ELEVENLABS: :elevenlabs
+          VAPI: :vapi
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::ImportMetadata::import_provider]
+        end
+      end
+    end
+  end
+end

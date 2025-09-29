@@ -1,0 +1,154 @@
+module Telnyx
+  module Models
+    type sub_number_orders_report_retrieve_response =
+      { data: Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data }
+
+    class SubNumberOrdersReportRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data?
+
+      def data=: (
+        Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data
+      ) -> Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data
+      }
+
+      type data =
+        {
+          id: String,
+          created_at: Time,
+          filters: Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data::Filters,
+          order_type: String,
+          status: Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data::status,
+          updated_at: Time,
+          user_id: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader filters: Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data::Filters?
+
+        def filters=: (
+          Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data::Filters
+        ) -> Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data::Filters
+
+        attr_reader status: Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data::status?
+
+        def status=: (
+          Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data::status
+        ) -> Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data::status
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader order_type: String?
+
+        def order_type=: (String) -> String
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_reader user_id: String?
+
+        def user_id=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?created_at: Time,
+          ?filters: Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data::Filters,
+          ?order_type: String,
+          ?status: Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data::status,
+          ?updated_at: Time,
+          ?user_id: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          filters: Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data::Filters,
+          order_type: String,
+          status: Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data::status,
+          updated_at: Time,
+          user_id: String
+        }
+
+        type filters =
+          {
+            country_code: String,
+            created_at_gt: Time,
+            created_at_lt: Time,
+            customer_reference: String,
+            order_request_id: String,
+            status: String
+          }
+
+        class Filters < Telnyx::Internal::Type::BaseModel
+          attr_reader country_code: String?
+
+          def country_code=: (String) -> String
+
+          attr_reader created_at_gt: Time?
+
+          def created_at_gt=: (Time) -> Time
+
+          attr_reader created_at_lt: Time?
+
+          def created_at_lt=: (Time) -> Time
+
+          attr_reader customer_reference: String?
+
+          def customer_reference=: (String) -> String
+
+          attr_reader order_request_id: String?
+
+          def order_request_id=: (String) -> String
+
+          attr_reader status: String?
+
+          def status=: (String) -> String
+
+          def initialize: (
+            ?country_code: String,
+            ?created_at_gt: Time,
+            ?created_at_lt: Time,
+            ?customer_reference: String,
+            ?order_request_id: String,
+            ?status: String
+          ) -> void
+
+          def to_hash: -> {
+            country_code: String,
+            created_at_gt: Time,
+            created_at_lt: Time,
+            customer_reference: String,
+            order_request_id: String,
+            status: String
+          }
+        end
+
+        type status = :pending | :success | :failed | :expired
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          SUCCESS: :success
+          FAILED: :failed
+          EXPIRED: :expired
+
+          def self?.values: -> ::Array[Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data::status]
+        end
+      end
+    end
+  end
+end

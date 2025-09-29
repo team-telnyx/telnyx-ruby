@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type dtmf_type = :"RFC 2833" | :Inband | :"SIP INFO"
+
+    module DtmfType
+      extend Telnyx::Internal::Type::Enum
+
+      RFC_2833: :"RFC 2833"
+      INBAND: :Inband
+      SIP_INFO: :"SIP INFO"
+
+      def self?.values: -> ::Array[Telnyx::Models::dtmf_type]
+    end
+  end
+end

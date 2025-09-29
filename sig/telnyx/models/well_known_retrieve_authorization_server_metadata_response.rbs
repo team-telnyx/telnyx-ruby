@@ -1,0 +1,96 @@
+module Telnyx
+  module Models
+    type well_known_retrieve_authorization_server_metadata_response =
+      {
+        authorization_endpoint: String,
+        code_challenge_methods_supported: ::Array[String],
+        grant_types_supported: ::Array[String],
+        introspection_endpoint: String,
+        issuer: String,
+        jwks_uri: String,
+        registration_endpoint: String,
+        response_types_supported: ::Array[String],
+        scopes_supported: ::Array[String],
+        token_endpoint: String,
+        token_endpoint_auth_methods_supported: ::Array[String]
+      }
+
+    class WellKnownRetrieveAuthorizationServerMetadataResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader authorization_endpoint: String?
+
+      def authorization_endpoint=: (String) -> String
+
+      attr_reader code_challenge_methods_supported: ::Array[String]?
+
+      def code_challenge_methods_supported=: (
+        ::Array[String]
+      ) -> ::Array[String]
+
+      attr_reader grant_types_supported: ::Array[String]?
+
+      def grant_types_supported=: (::Array[String]) -> ::Array[String]
+
+      attr_reader introspection_endpoint: String?
+
+      def introspection_endpoint=: (String) -> String
+
+      attr_reader issuer: String?
+
+      def issuer=: (String) -> String
+
+      attr_reader jwks_uri: String?
+
+      def jwks_uri=: (String) -> String
+
+      attr_reader registration_endpoint: String?
+
+      def registration_endpoint=: (String) -> String
+
+      attr_reader response_types_supported: ::Array[String]?
+
+      def response_types_supported=: (::Array[String]) -> ::Array[String]
+
+      attr_reader scopes_supported: ::Array[String]?
+
+      def scopes_supported=: (::Array[String]) -> ::Array[String]
+
+      attr_reader token_endpoint: String?
+
+      def token_endpoint=: (String) -> String
+
+      attr_reader token_endpoint_auth_methods_supported: ::Array[String]?
+
+      def token_endpoint_auth_methods_supported=: (
+        ::Array[String]
+      ) -> ::Array[String]
+
+      def initialize: (
+        ?authorization_endpoint: String,
+        ?code_challenge_methods_supported: ::Array[String],
+        ?grant_types_supported: ::Array[String],
+        ?introspection_endpoint: String,
+        ?issuer: String,
+        ?jwks_uri: String,
+        ?registration_endpoint: String,
+        ?response_types_supported: ::Array[String],
+        ?scopes_supported: ::Array[String],
+        ?token_endpoint: String,
+        ?token_endpoint_auth_methods_supported: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        authorization_endpoint: String,
+        code_challenge_methods_supported: ::Array[String],
+        grant_types_supported: ::Array[String],
+        introspection_endpoint: String,
+        issuer: String,
+        jwks_uri: String,
+        registration_endpoint: String,
+        response_types_supported: ::Array[String],
+        scopes_supported: ::Array[String],
+        token_endpoint: String,
+        token_endpoint_auth_methods_supported: ::Array[String]
+      }
+    end
+  end
+end

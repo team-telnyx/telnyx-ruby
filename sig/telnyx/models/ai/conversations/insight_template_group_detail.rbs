@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    module AI
+      module Conversations
+        type insight_template_group_detail =
+          { data: Telnyx::AI::Conversations::InsightTemplateGroup }
+
+        class InsightTemplateGroupDetail < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: Telnyx::AI::Conversations::InsightTemplateGroup
+
+          def initialize: (
+            data: Telnyx::AI::Conversations::InsightTemplateGroup
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::AI::Conversations::InsightTemplateGroup
+          }
+        end
+      end
+    end
+  end
+end

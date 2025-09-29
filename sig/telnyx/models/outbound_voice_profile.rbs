@@ -1,0 +1,143 @@
+module Telnyx
+  module Models
+    type outbound_voice_profile =
+      {
+        name: String,
+        id: String,
+        billing_group_id: String?,
+        call_recording: Telnyx::OutboundCallRecording,
+        concurrent_call_limit: Integer?,
+        connections_count: Integer,
+        created_at: String,
+        daily_spend_limit: String,
+        daily_spend_limit_enabled: bool,
+        enabled: bool,
+        max_destination_rate: Float,
+        record_type: String,
+        service_plan: Telnyx::Models::service_plan,
+        tags: ::Array[String],
+        traffic_type: Telnyx::Models::traffic_type,
+        updated_at: String,
+        usage_payment_method: Telnyx::Models::usage_payment_method,
+        whitelisted_destinations: ::Array[String]
+      }
+
+    class OutboundVoiceProfile < Telnyx::Internal::Type::BaseModel
+      attr_accessor name: String
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_accessor billing_group_id: String?
+
+      attr_reader call_recording: Telnyx::OutboundCallRecording?
+
+      def call_recording=: (
+        Telnyx::OutboundCallRecording
+      ) -> Telnyx::OutboundCallRecording
+
+      attr_accessor concurrent_call_limit: Integer?
+
+      attr_reader connections_count: Integer?
+
+      def connections_count=: (Integer) -> Integer
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader daily_spend_limit: String?
+
+      def daily_spend_limit=: (String) -> String
+
+      attr_reader daily_spend_limit_enabled: bool?
+
+      def daily_spend_limit_enabled=: (bool) -> bool
+
+      attr_reader enabled: bool?
+
+      def enabled=: (bool) -> bool
+
+      attr_reader max_destination_rate: Float?
+
+      def max_destination_rate=: (Float) -> Float
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader service_plan: Telnyx::Models::service_plan?
+
+      def service_plan=: (
+        Telnyx::Models::service_plan
+      ) -> Telnyx::Models::service_plan
+
+      attr_reader tags: ::Array[String]?
+
+      def tags=: (::Array[String]) -> ::Array[String]
+
+      attr_reader traffic_type: Telnyx::Models::traffic_type?
+
+      def traffic_type=: (
+        Telnyx::Models::traffic_type
+      ) -> Telnyx::Models::traffic_type
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      attr_reader usage_payment_method: Telnyx::Models::usage_payment_method?
+
+      def usage_payment_method=: (
+        Telnyx::Models::usage_payment_method
+      ) -> Telnyx::Models::usage_payment_method
+
+      attr_reader whitelisted_destinations: ::Array[String]?
+
+      def whitelisted_destinations=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        name: String,
+        ?id: String,
+        ?billing_group_id: String?,
+        ?call_recording: Telnyx::OutboundCallRecording,
+        ?concurrent_call_limit: Integer?,
+        ?connections_count: Integer,
+        ?created_at: String,
+        ?daily_spend_limit: String,
+        ?daily_spend_limit_enabled: bool,
+        ?enabled: bool,
+        ?max_destination_rate: Float,
+        ?record_type: String,
+        ?service_plan: Telnyx::Models::service_plan,
+        ?tags: ::Array[String],
+        ?traffic_type: Telnyx::Models::traffic_type,
+        ?updated_at: String,
+        ?usage_payment_method: Telnyx::Models::usage_payment_method,
+        ?whitelisted_destinations: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        id: String,
+        billing_group_id: String?,
+        call_recording: Telnyx::OutboundCallRecording,
+        concurrent_call_limit: Integer?,
+        connections_count: Integer,
+        created_at: String,
+        daily_spend_limit: String,
+        daily_spend_limit_enabled: bool,
+        enabled: bool,
+        max_destination_rate: Float,
+        record_type: String,
+        service_plan: Telnyx::Models::service_plan,
+        tags: ::Array[String],
+        traffic_type: Telnyx::Models::traffic_type,
+        updated_at: String,
+        usage_payment_method: Telnyx::Models::usage_payment_method,
+        whitelisted_destinations: ::Array[String]
+      }
+    end
+  end
+end

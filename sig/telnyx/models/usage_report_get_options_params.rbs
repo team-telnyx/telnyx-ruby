@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    type usage_report_get_options_params =
+      { product: String, authorization_bearer: String }
+      & Telnyx::Internal::Type::request_parameters
+
+    class UsageReportGetOptionsParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader product: String?
+
+      def product=: (String) -> String
+
+      attr_reader authorization_bearer: String?
+
+      def authorization_bearer=: (String) -> String
+
+      def initialize: (
+        ?product: String,
+        ?authorization_bearer: String,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        product: String,
+        authorization_bearer: String,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

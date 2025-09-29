@@ -1,0 +1,14 @@
+module Telnyx
+  module Resources
+    class VirtualCrossConnectsCoverage
+      def list: (
+        ?filter: Telnyx::VirtualCrossConnectsCoverageListParams::Filter,
+        ?filters: Telnyx::VirtualCrossConnectsCoverageListParams::Filters,
+        ?page: Telnyx::VirtualCrossConnectsCoverageListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VirtualCrossConnectsCoverageListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

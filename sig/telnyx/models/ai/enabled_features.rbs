@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    module AI
+      type enabled_features = :telephony | :messaging
+
+      module EnabledFeatures
+        extend Telnyx::Internal::Type::Enum
+
+        TELEPHONY: :telephony
+        MESSAGING: :messaging
+
+        def self?.values: -> ::Array[Telnyx::Models::AI::enabled_features]
+      end
+    end
+  end
+end

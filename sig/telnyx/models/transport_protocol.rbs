@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type transport_protocol = :UDP | :TCP | :TLS
+
+    module TransportProtocol
+      extend Telnyx::Internal::Type::Enum
+
+      UDP: :UDP
+      TCP: :TCP
+      TLS: :TLS
+
+      def self?.values: -> ::Array[Telnyx::Models::transport_protocol]
+    end
+  end
+end

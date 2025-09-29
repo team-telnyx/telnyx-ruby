@@ -1,0 +1,130 @@
+module Telnyx
+  module Models
+    type notification_setting =
+      {
+        id: String,
+        associated_record_type: String,
+        associated_record_type_value: String,
+        created_at: Time,
+        notification_channel_id: String,
+        notification_event_condition_id: String,
+        notification_profile_id: String,
+        parameters: ::Array[Telnyx::NotificationSetting::Parameter],
+        status: Telnyx::Models::NotificationSetting::status,
+        updated_at: Time
+      }
+
+    class NotificationSetting < Telnyx::Internal::Type::BaseModel
+      attr_reader notification_channel_id: String?
+
+      def notification_channel_id=: (String) -> String
+
+      attr_reader notification_event_condition_id: String?
+
+      def notification_event_condition_id=: (String) -> String
+
+      attr_reader notification_profile_id: String?
+
+      def notification_profile_id=: (String) -> String
+
+      attr_reader parameters: ::Array[Telnyx::NotificationSetting::Parameter]?
+
+      def parameters=: (
+        ::Array[Telnyx::NotificationSetting::Parameter]
+      ) -> ::Array[Telnyx::NotificationSetting::Parameter]
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader associated_record_type: String?
+
+      def associated_record_type=: (String) -> String
+
+      attr_reader associated_record_type_value: String?
+
+      def associated_record_type_value=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader status: Telnyx::Models::NotificationSetting::status?
+
+      def status=: (
+        Telnyx::Models::NotificationSetting::status
+      ) -> Telnyx::Models::NotificationSetting::status
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        ?id: String,
+        ?associated_record_type: String,
+        ?associated_record_type_value: String,
+        ?created_at: Time,
+        ?notification_channel_id: String,
+        ?notification_event_condition_id: String,
+        ?notification_profile_id: String,
+        ?parameters: ::Array[Telnyx::NotificationSetting::Parameter],
+        ?status: Telnyx::Models::NotificationSetting::status,
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        associated_record_type: String,
+        associated_record_type_value: String,
+        created_at: Time,
+        notification_channel_id: String,
+        notification_event_condition_id: String,
+        notification_profile_id: String,
+        parameters: ::Array[Telnyx::NotificationSetting::Parameter],
+        status: Telnyx::Models::NotificationSetting::status,
+        updated_at: Time
+      }
+
+      type parameter = { name: String, value: String }
+
+      class Parameter < Telnyx::Internal::Type::BaseModel
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader value: String?
+
+        def value=: (String) -> String
+
+        def initialize: (?name: String, ?value: String) -> void
+
+        def to_hash: -> { name: String, value: String }
+      end
+
+      type status =
+        :enabled
+        | :"enable-received"
+        | :"enable-pending"
+        | :"enable-submtited"
+        | :"delete-received"
+        | :"delete-pending"
+        | :"delete-submitted"
+        | :deleted
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        ENABLED: :enabled
+        ENABLE_RECEIVED: :"enable-received"
+        ENABLE_PENDING: :"enable-pending"
+        ENABLE_SUBMTITED: :"enable-submtited"
+        DELETE_RECEIVED: :"delete-received"
+        DELETE_PENDING: :"delete-pending"
+        DELETE_SUBMITTED: :"delete-submitted"
+        DELETED: :deleted
+
+        def self?.values: -> ::Array[Telnyx::Models::NotificationSetting::status]
+      end
+    end
+  end
+end

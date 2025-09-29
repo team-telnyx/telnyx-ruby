@@ -1,0 +1,60 @@
+module Telnyx
+  module Resources
+    class CallControlApplications
+      def create: (
+        application_name: String,
+        webhook_event_url: String,
+        ?active: bool,
+        ?anchorsite_override: Telnyx::Models::CallControlApplicationCreateParams::anchorsite_override,
+        ?dtmf_type: Telnyx::Models::CallControlApplicationCreateParams::dtmf_type,
+        ?first_command_timeout: bool,
+        ?first_command_timeout_secs: Integer,
+        ?inbound: Telnyx::CallControlApplicationInbound,
+        ?outbound: Telnyx::CallControlApplicationOutbound,
+        ?redact_dtmf_debug_logging: bool,
+        ?webhook_api_version: Telnyx::Models::CallControlApplicationCreateParams::webhook_api_version,
+        ?webhook_event_failover_url: String?,
+        ?webhook_timeout_secs: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CallControlApplicationCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CallControlApplicationRetrieveResponse
+
+      def update: (
+        String id,
+        application_name: String,
+        webhook_event_url: String,
+        ?active: bool,
+        ?anchorsite_override: Telnyx::Models::CallControlApplicationUpdateParams::anchorsite_override,
+        ?dtmf_type: Telnyx::Models::CallControlApplicationUpdateParams::dtmf_type,
+        ?first_command_timeout: bool,
+        ?first_command_timeout_secs: Integer,
+        ?inbound: Telnyx::CallControlApplicationInbound,
+        ?outbound: Telnyx::CallControlApplicationOutbound,
+        ?redact_dtmf_debug_logging: bool,
+        ?tags: ::Array[String],
+        ?webhook_api_version: Telnyx::Models::CallControlApplicationUpdateParams::webhook_api_version,
+        ?webhook_event_failover_url: String?,
+        ?webhook_timeout_secs: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CallControlApplicationUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::CallControlApplicationListParams::Filter,
+        ?page: Telnyx::CallControlApplicationListParams::Page,
+        ?sort: Telnyx::Models::CallControlApplicationListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CallControlApplicationListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CallControlApplicationDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,34 @@
+module Telnyx
+  module Models
+    module Wireless
+      type detail_records_report_create_params =
+        { end_time: String, start_time: String }
+        & Telnyx::Internal::Type::request_parameters
+
+      class DetailRecordsReportCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader end_time: String?
+
+        def end_time=: (String) -> String
+
+        attr_reader start_time: String?
+
+        def start_time=: (String) -> String
+
+        def initialize: (
+          ?end_time: String,
+          ?start_time: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          end_time: String,
+          start_time: String,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

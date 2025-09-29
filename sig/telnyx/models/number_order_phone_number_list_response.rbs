@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    type number_order_phone_number_list_response =
+      {
+        data: ::Array[Telnyx::NumberOrderPhoneNumber],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class NumberOrderPhoneNumberListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::NumberOrderPhoneNumber]?
+
+      def data=: (
+        ::Array[Telnyx::NumberOrderPhoneNumber]
+      ) -> ::Array[Telnyx::NumberOrderPhoneNumber]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::NumberOrderPhoneNumber],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::NumberOrderPhoneNumber],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

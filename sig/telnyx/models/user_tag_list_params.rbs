@@ -1,0 +1,40 @@
+module Telnyx
+  module Models
+    type user_tag_list_params =
+      { filter: Telnyx::UserTagListParams::Filter }
+      & Telnyx::Internal::Type::request_parameters
+
+    class UserTagListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::UserTagListParams::Filter?
+
+      def filter=: (
+        Telnyx::UserTagListParams::Filter
+      ) -> Telnyx::UserTagListParams::Filter
+
+      def initialize: (
+        ?filter: Telnyx::UserTagListParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::UserTagListParams::Filter,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter = { starts_with: String }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader starts_with: String?
+
+        def starts_with=: (String) -> String
+
+        def initialize: (?starts_with: String) -> void
+
+        def to_hash: -> { starts_with: String }
+      end
+    end
+  end
+end

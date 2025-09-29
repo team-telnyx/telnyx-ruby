@@ -1,0 +1,163 @@
+module Telnyx
+  module Models
+    module AI
+      type voice_settings =
+        {
+          voice: String,
+          api_key_ref: String,
+          background_audio: Telnyx::Models::AI::VoiceSettings::background_audio,
+          voice_speed: Float
+        }
+
+      class VoiceSettings < Telnyx::Internal::Type::BaseModel
+        attr_accessor voice: String
+
+        attr_reader api_key_ref: String?
+
+        def api_key_ref=: (String) -> String
+
+        attr_reader background_audio: Telnyx::Models::AI::VoiceSettings::background_audio?
+
+        def background_audio=: (
+          Telnyx::Models::AI::VoiceSettings::background_audio
+        ) -> Telnyx::Models::AI::VoiceSettings::background_audio
+
+        attr_reader voice_speed: Float?
+
+        def voice_speed=: (Float) -> Float
+
+        def initialize: (
+          voice: String,
+          ?api_key_ref: String,
+          ?background_audio: Telnyx::Models::AI::VoiceSettings::background_audio,
+          ?voice_speed: Float
+        ) -> void
+
+        def to_hash: -> {
+          voice: String,
+          api_key_ref: String,
+          background_audio: Telnyx::Models::AI::VoiceSettings::background_audio,
+          voice_speed: Float
+        }
+
+        type background_audio =
+          Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0
+          | Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember1
+          | Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember2
+
+        module BackgroundAudio
+          extend Telnyx::Internal::Type::Union
+
+          type union_member0 =
+            {
+              type: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0::type_,
+              value: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0::value
+            }
+
+          class UnionMember0 < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0::type_
+
+            attr_accessor value: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0::value
+
+            def initialize: (
+              type: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0::type_,
+              value: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0::value
+            ) -> void
+
+            def to_hash: -> {
+              type: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0::type_,
+              value: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0::value
+            }
+
+            type type_ = :predefined_media
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              PREDEFINED_MEDIA: :predefined_media
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0::type_]
+            end
+
+            type value = :silence | :office
+
+            module Value
+              extend Telnyx::Internal::Type::Enum
+
+              SILENCE: :silence
+              OFFICE: :office
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0::value]
+            end
+          end
+
+          type union_member1 =
+            {
+              type: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember1::type_,
+              value: String
+            }
+
+          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember1::type_
+
+            attr_accessor value: String
+
+            def initialize: (
+              type: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember1::type_,
+              value: String
+            ) -> void
+
+            def to_hash: -> {
+              type: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember1::type_,
+              value: String
+            }
+
+            type type_ = :media_url
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              MEDIA_URL: :media_url
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember1::type_]
+            end
+          end
+
+          type union_member2 =
+            {
+              type: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember2::type_,
+              value: String
+            }
+
+          class UnionMember2 < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember2::type_
+
+            attr_accessor value: String
+
+            def initialize: (
+              type: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember2::type_,
+              value: String
+            ) -> void
+
+            def to_hash: -> {
+              type: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember2::type_,
+              value: String
+            }
+
+            type type_ = :media_name
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              MEDIA_NAME: :media_name
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember2::type_]
+            end
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::AI::VoiceSettings::background_audio]
+        end
+      end
+    end
+  end
+end

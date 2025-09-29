@@ -1,0 +1,11 @@
+module Telnyx
+  module Resources
+    class GlobalIPHealthCheckTypes
+      def list: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::GlobalIPHealthCheckTypeListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

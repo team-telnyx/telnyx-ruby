@@ -1,0 +1,31 @@
+module Telnyx
+  module Resources
+    class Wireless
+      class DetailRecordsReports
+        def create: (
+          ?end_time: String,
+          ?start_time: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Wireless::DetailRecordsReportCreateResponse
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Wireless::DetailRecordsReportRetrieveResponse
+
+        def list: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Wireless::DetailRecordsReportListResponse
+
+        def delete: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Wireless::DetailRecordsReportDeleteResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

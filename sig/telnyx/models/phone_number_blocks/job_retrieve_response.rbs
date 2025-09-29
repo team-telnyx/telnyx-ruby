@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    module PhoneNumberBlocks
+      type job_retrieve_response = { data: Telnyx::PhoneNumberBlocks::Job }
+
+      class JobRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::PhoneNumberBlocks::Job?
+
+        def data=: (
+          Telnyx::PhoneNumberBlocks::Job
+        ) -> Telnyx::PhoneNumberBlocks::Job
+
+        def initialize: (?data: Telnyx::PhoneNumberBlocks::Job) -> void
+
+        def to_hash: -> { data: Telnyx::PhoneNumberBlocks::Job }
+      end
+    end
+  end
+end

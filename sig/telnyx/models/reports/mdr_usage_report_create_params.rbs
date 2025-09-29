@@ -1,0 +1,57 @@
+module Telnyx
+  module Models
+    module Reports
+      type mdr_usage_report_create_params =
+        {
+          aggregation_type: Telnyx::Models::Reports::MdrUsageReportCreateParams::aggregation_type,
+          end_date: Time,
+          start_date: Time,
+          profiles: String
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class MdrUsageReportCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor aggregation_type: Telnyx::Models::Reports::MdrUsageReportCreateParams::aggregation_type
+
+        attr_accessor end_date: Time
+
+        attr_accessor start_date: Time
+
+        attr_reader profiles: String?
+
+        def profiles=: (String) -> String
+
+        def initialize: (
+          aggregation_type: Telnyx::Models::Reports::MdrUsageReportCreateParams::aggregation_type,
+          end_date: Time,
+          start_date: Time,
+          ?profiles: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          aggregation_type: Telnyx::Models::Reports::MdrUsageReportCreateParams::aggregation_type,
+          end_date: Time,
+          start_date: Time,
+          profiles: String,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type aggregation_type = :NO_AGGREGATION | :PROFILE | :TAGS
+
+        module AggregationType
+          extend Telnyx::Internal::Type::Enum
+
+          NO_AGGREGATION: :NO_AGGREGATION
+          PROFILE: :PROFILE
+          TAGS: :TAGS
+
+          def self?.values: -> ::Array[Telnyx::Models::Reports::MdrUsageReportCreateParams::aggregation_type]
+        end
+      end
+    end
+  end
+end

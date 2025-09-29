@@ -1,0 +1,54 @@
+module Telnyx
+  module Models
+    type managed_account_create_params =
+      {
+        business_name: String,
+        email: String,
+        managed_account_allow_custom_pricing: bool,
+        password: String,
+        rollup_billing: bool
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class ManagedAccountCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor business_name: String
+
+      attr_reader email: String?
+
+      def email=: (String) -> String
+
+      attr_reader managed_account_allow_custom_pricing: bool?
+
+      def managed_account_allow_custom_pricing=: (bool) -> bool
+
+      attr_reader password: String?
+
+      def password=: (String) -> String
+
+      attr_reader rollup_billing: bool?
+
+      def rollup_billing=: (bool) -> bool
+
+      def initialize: (
+        business_name: String,
+        ?email: String,
+        ?managed_account_allow_custom_pricing: bool,
+        ?password: String,
+        ?rollup_billing: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        business_name: String,
+        email: String,
+        managed_account_allow_custom_pricing: bool,
+        password: String,
+        rollup_billing: bool,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

@@ -1,0 +1,123 @@
+module Telnyx
+  module Models
+    type fqdn_connection_list_params =
+      {
+        filter: Telnyx::FqdnConnectionListParams::Filter,
+        page: Telnyx::FqdnConnectionListParams::Page,
+        sort: Telnyx::Models::FqdnConnectionListParams::sort
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class FqdnConnectionListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::FqdnConnectionListParams::Filter?
+
+      def filter=: (
+        Telnyx::FqdnConnectionListParams::Filter
+      ) -> Telnyx::FqdnConnectionListParams::Filter
+
+      attr_reader page: Telnyx::FqdnConnectionListParams::Page?
+
+      def page=: (
+        Telnyx::FqdnConnectionListParams::Page
+      ) -> Telnyx::FqdnConnectionListParams::Page
+
+      attr_reader sort: Telnyx::Models::FqdnConnectionListParams::sort?
+
+      def sort=: (
+        Telnyx::Models::FqdnConnectionListParams::sort
+      ) -> Telnyx::Models::FqdnConnectionListParams::sort
+
+      def initialize: (
+        ?filter: Telnyx::FqdnConnectionListParams::Filter,
+        ?page: Telnyx::FqdnConnectionListParams::Page,
+        ?sort: Telnyx::Models::FqdnConnectionListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::FqdnConnectionListParams::Filter,
+        page: Telnyx::FqdnConnectionListParams::Page,
+        sort: Telnyx::Models::FqdnConnectionListParams::sort,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          connection_name: Telnyx::FqdnConnectionListParams::Filter::ConnectionName,
+          fqdn: String,
+          outbound_voice_profile_id: String
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader connection_name: Telnyx::FqdnConnectionListParams::Filter::ConnectionName?
+
+        def connection_name=: (
+          Telnyx::FqdnConnectionListParams::Filter::ConnectionName
+        ) -> Telnyx::FqdnConnectionListParams::Filter::ConnectionName
+
+        attr_reader fqdn: String?
+
+        def fqdn=: (String) -> String
+
+        attr_reader outbound_voice_profile_id: String?
+
+        def outbound_voice_profile_id=: (String) -> String
+
+        def initialize: (
+          ?connection_name: Telnyx::FqdnConnectionListParams::Filter::ConnectionName,
+          ?fqdn: String,
+          ?outbound_voice_profile_id: String
+        ) -> void
+
+        def to_hash: -> {
+          connection_name: Telnyx::FqdnConnectionListParams::Filter::ConnectionName,
+          fqdn: String,
+          outbound_voice_profile_id: String
+        }
+
+        type connection_name = { contains: String }
+
+        class ConnectionName < Telnyx::Internal::Type::BaseModel
+          attr_reader contains: String?
+
+          def contains=: (String) -> String
+
+          def initialize: (?contains: String) -> void
+
+          def to_hash: -> { contains: String }
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+
+      type sort = :created_at | :connection_name | :active
+
+      module Sort
+        extend Telnyx::Internal::Type::Enum
+
+        CREATED_AT: :created_at
+        CONNECTION_NAME: :connection_name
+        ACTIVE: :active
+
+        def self?.values: -> ::Array[Telnyx::Models::FqdnConnectionListParams::sort]
+      end
+    end
+  end
+end

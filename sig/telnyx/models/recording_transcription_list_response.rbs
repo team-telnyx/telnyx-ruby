@@ -1,0 +1,84 @@
+module Telnyx
+  module Models
+    type recording_transcription_list_response =
+      {
+        data: ::Array[Telnyx::RecordingTranscription],
+        meta: Telnyx::Models::RecordingTranscriptionListResponse::Meta
+      }
+
+    class RecordingTranscriptionListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::RecordingTranscription]?
+
+      def data=: (
+        ::Array[Telnyx::RecordingTranscription]
+      ) -> ::Array[Telnyx::RecordingTranscription]
+
+      attr_reader meta: Telnyx::Models::RecordingTranscriptionListResponse::Meta?
+
+      def meta=: (
+        Telnyx::Models::RecordingTranscriptionListResponse::Meta
+      ) -> Telnyx::Models::RecordingTranscriptionListResponse::Meta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::RecordingTranscription],
+        ?meta: Telnyx::Models::RecordingTranscriptionListResponse::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::RecordingTranscription],
+        meta: Telnyx::Models::RecordingTranscriptionListResponse::Meta
+      }
+
+      type meta =
+        {
+          cursors: Telnyx::Models::RecordingTranscriptionListResponse::Meta::Cursors,
+          next_: String,
+          previous: String
+        }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_reader cursors: Telnyx::Models::RecordingTranscriptionListResponse::Meta::Cursors?
+
+        def cursors=: (
+          Telnyx::Models::RecordingTranscriptionListResponse::Meta::Cursors
+        ) -> Telnyx::Models::RecordingTranscriptionListResponse::Meta::Cursors
+
+        attr_reader next_: String?
+
+        def next_=: (String) -> String
+
+        attr_reader previous: String?
+
+        def previous=: (String) -> String
+
+        def initialize: (
+          ?cursors: Telnyx::Models::RecordingTranscriptionListResponse::Meta::Cursors,
+          ?next_: String,
+          ?previous: String
+        ) -> void
+
+        def to_hash: -> {
+          cursors: Telnyx::Models::RecordingTranscriptionListResponse::Meta::Cursors,
+          next_: String,
+          previous: String
+        }
+
+        type cursors = { after: String, before: String }
+
+        class Cursors < Telnyx::Internal::Type::BaseModel
+          attr_reader after: String?
+
+          def after=: (String) -> String
+
+          attr_reader before: String?
+
+          def before=: (String) -> String
+
+          def initialize: (?after: String, ?before: String) -> void
+
+          def to_hash: -> { after: String, before: String }
+        end
+      end
+    end
+  end
+end

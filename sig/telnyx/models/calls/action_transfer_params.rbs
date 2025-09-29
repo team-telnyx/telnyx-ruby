@@ -1,0 +1,478 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_transfer_params =
+        {
+          to: String,
+          answering_machine_detection: Telnyx::Models::Calls::ActionTransferParams::answering_machine_detection,
+          answering_machine_detection_config: Telnyx::Calls::ActionTransferParams::AnsweringMachineDetectionConfig,
+          audio_url: String,
+          client_state: String,
+          command_id: String,
+          custom_headers: ::Array[Telnyx::CustomSipHeader],
+          early_media: bool,
+          from: String,
+          from_display_name: String,
+          media_encryption: Telnyx::Models::Calls::ActionTransferParams::media_encryption,
+          media_name: String,
+          mute_dtmf: Telnyx::Models::Calls::ActionTransferParams::mute_dtmf,
+          park_after_unbridge: String,
+          record: Telnyx::Models::Calls::ActionTransferParams::record,
+          record_channels: Telnyx::Models::Calls::ActionTransferParams::record_channels,
+          record_custom_file_name: String,
+          record_format: Telnyx::Models::Calls::ActionTransferParams::record_format,
+          record_max_length: Integer,
+          record_timeout_secs: Integer,
+          record_track: Telnyx::Models::Calls::ActionTransferParams::record_track,
+          record_trim: Telnyx::Models::Calls::ActionTransferParams::record_trim,
+          sip_auth_password: String,
+          sip_auth_username: String,
+          sip_headers: ::Array[Telnyx::SipHeader],
+          sip_transport_protocol: Telnyx::Models::Calls::ActionTransferParams::sip_transport_protocol,
+          sound_modifications: Telnyx::SoundModifications,
+          target_leg_client_state: String,
+          time_limit_secs: Integer,
+          timeout_secs: Integer,
+          webhook_url: String,
+          webhook_url_method: Telnyx::Models::Calls::ActionTransferParams::webhook_url_method
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionTransferParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor to: String
+
+        attr_reader answering_machine_detection: Telnyx::Models::Calls::ActionTransferParams::answering_machine_detection?
+
+        def answering_machine_detection=: (
+          Telnyx::Models::Calls::ActionTransferParams::answering_machine_detection
+        ) -> Telnyx::Models::Calls::ActionTransferParams::answering_machine_detection
+
+        attr_reader answering_machine_detection_config: Telnyx::Calls::ActionTransferParams::AnsweringMachineDetectionConfig?
+
+        def answering_machine_detection_config=: (
+          Telnyx::Calls::ActionTransferParams::AnsweringMachineDetectionConfig
+        ) -> Telnyx::Calls::ActionTransferParams::AnsweringMachineDetectionConfig
+
+        attr_reader audio_url: String?
+
+        def audio_url=: (String) -> String
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader command_id: String?
+
+        def command_id=: (String) -> String
+
+        attr_reader custom_headers: ::Array[Telnyx::CustomSipHeader]?
+
+        def custom_headers=: (
+          ::Array[Telnyx::CustomSipHeader]
+        ) -> ::Array[Telnyx::CustomSipHeader]
+
+        attr_reader early_media: bool?
+
+        def early_media=: (bool) -> bool
+
+        attr_reader from: String?
+
+        def from=: (String) -> String
+
+        attr_reader from_display_name: String?
+
+        def from_display_name=: (String) -> String
+
+        attr_reader media_encryption: Telnyx::Models::Calls::ActionTransferParams::media_encryption?
+
+        def media_encryption=: (
+          Telnyx::Models::Calls::ActionTransferParams::media_encryption
+        ) -> Telnyx::Models::Calls::ActionTransferParams::media_encryption
+
+        attr_reader media_name: String?
+
+        def media_name=: (String) -> String
+
+        attr_reader mute_dtmf: Telnyx::Models::Calls::ActionTransferParams::mute_dtmf?
+
+        def mute_dtmf=: (
+          Telnyx::Models::Calls::ActionTransferParams::mute_dtmf
+        ) -> Telnyx::Models::Calls::ActionTransferParams::mute_dtmf
+
+        attr_reader park_after_unbridge: String?
+
+        def park_after_unbridge=: (String) -> String
+
+        attr_reader record: Telnyx::Models::Calls::ActionTransferParams::record?
+
+        def record=: (
+          Telnyx::Models::Calls::ActionTransferParams::record
+        ) -> Telnyx::Models::Calls::ActionTransferParams::record
+
+        attr_reader record_channels: Telnyx::Models::Calls::ActionTransferParams::record_channels?
+
+        def record_channels=: (
+          Telnyx::Models::Calls::ActionTransferParams::record_channels
+        ) -> Telnyx::Models::Calls::ActionTransferParams::record_channels
+
+        attr_reader record_custom_file_name: String?
+
+        def record_custom_file_name=: (String) -> String
+
+        attr_reader record_format: Telnyx::Models::Calls::ActionTransferParams::record_format?
+
+        def record_format=: (
+          Telnyx::Models::Calls::ActionTransferParams::record_format
+        ) -> Telnyx::Models::Calls::ActionTransferParams::record_format
+
+        attr_reader record_max_length: Integer?
+
+        def record_max_length=: (Integer) -> Integer
+
+        attr_reader record_timeout_secs: Integer?
+
+        def record_timeout_secs=: (Integer) -> Integer
+
+        attr_reader record_track: Telnyx::Models::Calls::ActionTransferParams::record_track?
+
+        def record_track=: (
+          Telnyx::Models::Calls::ActionTransferParams::record_track
+        ) -> Telnyx::Models::Calls::ActionTransferParams::record_track
+
+        attr_reader record_trim: Telnyx::Models::Calls::ActionTransferParams::record_trim?
+
+        def record_trim=: (
+          Telnyx::Models::Calls::ActionTransferParams::record_trim
+        ) -> Telnyx::Models::Calls::ActionTransferParams::record_trim
+
+        attr_reader sip_auth_password: String?
+
+        def sip_auth_password=: (String) -> String
+
+        attr_reader sip_auth_username: String?
+
+        def sip_auth_username=: (String) -> String
+
+        attr_reader sip_headers: ::Array[Telnyx::SipHeader]?
+
+        def sip_headers=: (
+          ::Array[Telnyx::SipHeader]
+        ) -> ::Array[Telnyx::SipHeader]
+
+        attr_reader sip_transport_protocol: Telnyx::Models::Calls::ActionTransferParams::sip_transport_protocol?
+
+        def sip_transport_protocol=: (
+          Telnyx::Models::Calls::ActionTransferParams::sip_transport_protocol
+        ) -> Telnyx::Models::Calls::ActionTransferParams::sip_transport_protocol
+
+        attr_reader sound_modifications: Telnyx::SoundModifications?
+
+        def sound_modifications=: (
+          Telnyx::SoundModifications
+        ) -> Telnyx::SoundModifications
+
+        attr_reader target_leg_client_state: String?
+
+        def target_leg_client_state=: (String) -> String
+
+        attr_reader time_limit_secs: Integer?
+
+        def time_limit_secs=: (Integer) -> Integer
+
+        attr_reader timeout_secs: Integer?
+
+        def timeout_secs=: (Integer) -> Integer
+
+        attr_reader webhook_url: String?
+
+        def webhook_url=: (String) -> String
+
+        attr_reader webhook_url_method: Telnyx::Models::Calls::ActionTransferParams::webhook_url_method?
+
+        def webhook_url_method=: (
+          Telnyx::Models::Calls::ActionTransferParams::webhook_url_method
+        ) -> Telnyx::Models::Calls::ActionTransferParams::webhook_url_method
+
+        def initialize: (
+          to: String,
+          ?answering_machine_detection: Telnyx::Models::Calls::ActionTransferParams::answering_machine_detection,
+          ?answering_machine_detection_config: Telnyx::Calls::ActionTransferParams::AnsweringMachineDetectionConfig,
+          ?audio_url: String,
+          ?client_state: String,
+          ?command_id: String,
+          ?custom_headers: ::Array[Telnyx::CustomSipHeader],
+          ?early_media: bool,
+          ?from: String,
+          ?from_display_name: String,
+          ?media_encryption: Telnyx::Models::Calls::ActionTransferParams::media_encryption,
+          ?media_name: String,
+          ?mute_dtmf: Telnyx::Models::Calls::ActionTransferParams::mute_dtmf,
+          ?park_after_unbridge: String,
+          ?record: Telnyx::Models::Calls::ActionTransferParams::record,
+          ?record_channels: Telnyx::Models::Calls::ActionTransferParams::record_channels,
+          ?record_custom_file_name: String,
+          ?record_format: Telnyx::Models::Calls::ActionTransferParams::record_format,
+          ?record_max_length: Integer,
+          ?record_timeout_secs: Integer,
+          ?record_track: Telnyx::Models::Calls::ActionTransferParams::record_track,
+          ?record_trim: Telnyx::Models::Calls::ActionTransferParams::record_trim,
+          ?sip_auth_password: String,
+          ?sip_auth_username: String,
+          ?sip_headers: ::Array[Telnyx::SipHeader],
+          ?sip_transport_protocol: Telnyx::Models::Calls::ActionTransferParams::sip_transport_protocol,
+          ?sound_modifications: Telnyx::SoundModifications,
+          ?target_leg_client_state: String,
+          ?time_limit_secs: Integer,
+          ?timeout_secs: Integer,
+          ?webhook_url: String,
+          ?webhook_url_method: Telnyx::Models::Calls::ActionTransferParams::webhook_url_method,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          to: String,
+          answering_machine_detection: Telnyx::Models::Calls::ActionTransferParams::answering_machine_detection,
+          answering_machine_detection_config: Telnyx::Calls::ActionTransferParams::AnsweringMachineDetectionConfig,
+          audio_url: String,
+          client_state: String,
+          command_id: String,
+          custom_headers: ::Array[Telnyx::CustomSipHeader],
+          early_media: bool,
+          from: String,
+          from_display_name: String,
+          media_encryption: Telnyx::Models::Calls::ActionTransferParams::media_encryption,
+          media_name: String,
+          mute_dtmf: Telnyx::Models::Calls::ActionTransferParams::mute_dtmf,
+          park_after_unbridge: String,
+          record: Telnyx::Models::Calls::ActionTransferParams::record,
+          record_channels: Telnyx::Models::Calls::ActionTransferParams::record_channels,
+          record_custom_file_name: String,
+          record_format: Telnyx::Models::Calls::ActionTransferParams::record_format,
+          record_max_length: Integer,
+          record_timeout_secs: Integer,
+          record_track: Telnyx::Models::Calls::ActionTransferParams::record_track,
+          record_trim: Telnyx::Models::Calls::ActionTransferParams::record_trim,
+          sip_auth_password: String,
+          sip_auth_username: String,
+          sip_headers: ::Array[Telnyx::SipHeader],
+          sip_transport_protocol: Telnyx::Models::Calls::ActionTransferParams::sip_transport_protocol,
+          sound_modifications: Telnyx::SoundModifications,
+          target_leg_client_state: String,
+          time_limit_secs: Integer,
+          timeout_secs: Integer,
+          webhook_url: String,
+          webhook_url_method: Telnyx::Models::Calls::ActionTransferParams::webhook_url_method,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type answering_machine_detection =
+          :premium
+          | :detect
+          | :detect_beep
+          | :detect_words
+          | :greeting_end
+          | :disabled
+
+        module AnsweringMachineDetection
+          extend Telnyx::Internal::Type::Enum
+
+          PREMIUM: :premium
+          DETECT: :detect
+          DETECT_BEEP: :detect_beep
+          DETECT_WORDS: :detect_words
+          GREETING_END: :greeting_end
+          DISABLED: :disabled
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionTransferParams::answering_machine_detection]
+        end
+
+        type answering_machine_detection_config =
+          {
+            after_greeting_silence_millis: Integer,
+            between_words_silence_millis: Integer,
+            greeting_duration_millis: Integer,
+            greeting_silence_duration_millis: Integer,
+            greeting_total_analysis_time_millis: Integer,
+            initial_silence_millis: Integer,
+            maximum_number_of_words: Integer,
+            maximum_word_length_millis: Integer,
+            silence_threshold: Integer,
+            total_analysis_time_millis: Integer
+          }
+
+        class AnsweringMachineDetectionConfig < Telnyx::Internal::Type::BaseModel
+          attr_reader after_greeting_silence_millis: Integer?
+
+          def after_greeting_silence_millis=: (Integer) -> Integer
+
+          attr_reader between_words_silence_millis: Integer?
+
+          def between_words_silence_millis=: (Integer) -> Integer
+
+          attr_reader greeting_duration_millis: Integer?
+
+          def greeting_duration_millis=: (Integer) -> Integer
+
+          attr_reader greeting_silence_duration_millis: Integer?
+
+          def greeting_silence_duration_millis=: (Integer) -> Integer
+
+          attr_reader greeting_total_analysis_time_millis: Integer?
+
+          def greeting_total_analysis_time_millis=: (Integer) -> Integer
+
+          attr_reader initial_silence_millis: Integer?
+
+          def initial_silence_millis=: (Integer) -> Integer
+
+          attr_reader maximum_number_of_words: Integer?
+
+          def maximum_number_of_words=: (Integer) -> Integer
+
+          attr_reader maximum_word_length_millis: Integer?
+
+          def maximum_word_length_millis=: (Integer) -> Integer
+
+          attr_reader silence_threshold: Integer?
+
+          def silence_threshold=: (Integer) -> Integer
+
+          attr_reader total_analysis_time_millis: Integer?
+
+          def total_analysis_time_millis=: (Integer) -> Integer
+
+          def initialize: (
+            ?after_greeting_silence_millis: Integer,
+            ?between_words_silence_millis: Integer,
+            ?greeting_duration_millis: Integer,
+            ?greeting_silence_duration_millis: Integer,
+            ?greeting_total_analysis_time_millis: Integer,
+            ?initial_silence_millis: Integer,
+            ?maximum_number_of_words: Integer,
+            ?maximum_word_length_millis: Integer,
+            ?silence_threshold: Integer,
+            ?total_analysis_time_millis: Integer
+          ) -> void
+
+          def to_hash: -> {
+            after_greeting_silence_millis: Integer,
+            between_words_silence_millis: Integer,
+            greeting_duration_millis: Integer,
+            greeting_silence_duration_millis: Integer,
+            greeting_total_analysis_time_millis: Integer,
+            initial_silence_millis: Integer,
+            maximum_number_of_words: Integer,
+            maximum_word_length_millis: Integer,
+            silence_threshold: Integer,
+            total_analysis_time_millis: Integer
+          }
+        end
+
+        type media_encryption = :disabled | :SRTP | :DTLS
+
+        module MediaEncryption
+          extend Telnyx::Internal::Type::Enum
+
+          DISABLED: :disabled
+          SRTP: :SRTP
+          DTLS: :DTLS
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionTransferParams::media_encryption]
+        end
+
+        type mute_dtmf = :none | :both | :self | :opposite
+
+        module MuteDtmf
+          extend Telnyx::Internal::Type::Enum
+
+          NONE: :none
+          BOTH: :both
+          SELF: :self
+          OPPOSITE: :opposite
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionTransferParams::mute_dtmf]
+        end
+
+        type record = :"record-from-answer"
+
+        module Record
+          extend Telnyx::Internal::Type::Enum
+
+          RECORD_FROM_ANSWER: :"record-from-answer"
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionTransferParams::record]
+        end
+
+        type record_channels = :single | :dual
+
+        module RecordChannels
+          extend Telnyx::Internal::Type::Enum
+
+          SINGLE: :single
+          DUAL: :dual
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionTransferParams::record_channels]
+        end
+
+        type record_format = :wav | :mp3
+
+        module RecordFormat
+          extend Telnyx::Internal::Type::Enum
+
+          WAV: :wav
+          MP3: :mp3
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionTransferParams::record_format]
+        end
+
+        type record_track = :both | :inbound | :outbound
+
+        module RecordTrack
+          extend Telnyx::Internal::Type::Enum
+
+          BOTH: :both
+          INBOUND: :inbound
+          OUTBOUND: :outbound
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionTransferParams::record_track]
+        end
+
+        type record_trim = :"trim-silence"
+
+        module RecordTrim
+          extend Telnyx::Internal::Type::Enum
+
+          TRIM_SILENCE: :"trim-silence"
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionTransferParams::record_trim]
+        end
+
+        type sip_transport_protocol = :UDP | :TCP | :TLS
+
+        module SipTransportProtocol
+          extend Telnyx::Internal::Type::Enum
+
+          UDP: :UDP
+          TCP: :TCP
+          TLS: :TLS
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionTransferParams::sip_transport_protocol]
+        end
+
+        type webhook_url_method = :POST | :GET
+
+        module WebhookURLMethod
+          extend Telnyx::Internal::Type::Enum
+
+          POST: :POST
+          GET: :GET
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionTransferParams::webhook_url_method]
+        end
+      end
+    end
+  end
+end

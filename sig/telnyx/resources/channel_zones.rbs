@@ -1,0 +1,18 @@
+module Telnyx
+  module Resources
+    class ChannelZones
+      def update: (
+        String channel_zone_id,
+        channels: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ChannelZoneUpdateResponse
+
+      def list: (
+        ?page: Telnyx::ChannelZoneListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ChannelZoneListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

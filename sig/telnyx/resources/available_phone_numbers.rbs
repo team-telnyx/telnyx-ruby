@@ -1,0 +1,12 @@
+module Telnyx
+  module Resources
+    class AvailablePhoneNumbers
+      def list: (
+        ?filter: Telnyx::AvailablePhoneNumberListParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AvailablePhoneNumberListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

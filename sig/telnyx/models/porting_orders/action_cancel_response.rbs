@@ -1,0 +1,45 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type action_cancel_response =
+        {
+          data: Telnyx::PortingOrder,
+          meta: Telnyx::Models::PortingOrders::ActionCancelResponse::Meta
+        }
+
+      class ActionCancelResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::PortingOrder?
+
+        def data=: (Telnyx::PortingOrder) -> Telnyx::PortingOrder
+
+        attr_reader meta: Telnyx::Models::PortingOrders::ActionCancelResponse::Meta?
+
+        def meta=: (
+          Telnyx::Models::PortingOrders::ActionCancelResponse::Meta
+        ) -> Telnyx::Models::PortingOrders::ActionCancelResponse::Meta
+
+        def initialize: (
+          ?data: Telnyx::PortingOrder,
+          ?meta: Telnyx::Models::PortingOrders::ActionCancelResponse::Meta
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::PortingOrder,
+          meta: Telnyx::Models::PortingOrders::ActionCancelResponse::Meta
+        }
+
+        type meta = { phone_numbers_url: String }
+
+        class Meta < Telnyx::Internal::Type::BaseModel
+          attr_reader phone_numbers_url: String?
+
+          def phone_numbers_url=: (String) -> String
+
+          def initialize: (?phone_numbers_url: String) -> void
+
+          def to_hash: -> { phone_numbers_url: String }
+        end
+      end
+    end
+  end
+end

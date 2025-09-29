@@ -1,0 +1,234 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        type conference_retrieve_recordings_response =
+          {
+            end_: Integer,
+            first_page_uri: String,
+            next_page_uri: String,
+            page: Integer,
+            page_size: Integer,
+            recordings: ::Array[Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording],
+            start: Integer,
+            uri: String
+          }
+
+        class ConferenceRetrieveRecordingsResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader end_: Integer?
+
+          def end_=: (Integer) -> Integer
+
+          attr_reader first_page_uri: String?
+
+          def first_page_uri=: (String) -> String
+
+          attr_reader next_page_uri: String?
+
+          def next_page_uri=: (String) -> String
+
+          attr_reader page: Integer?
+
+          def page=: (Integer) -> Integer
+
+          attr_reader page_size: Integer?
+
+          def page_size=: (Integer) -> Integer
+
+          attr_reader recordings: ::Array[Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording]?
+
+          def recordings=: (
+            ::Array[Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording]
+          ) -> ::Array[Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording]
+
+          attr_reader start: Integer?
+
+          def start=: (Integer) -> Integer
+
+          attr_reader uri: String?
+
+          def uri=: (String) -> String
+
+          def initialize: (
+            ?end_: Integer,
+            ?first_page_uri: String,
+            ?next_page_uri: String,
+            ?page: Integer,
+            ?page_size: Integer,
+            ?recordings: ::Array[Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording],
+            ?start: Integer,
+            ?uri: String
+          ) -> void
+
+          def to_hash: -> {
+            end_: Integer,
+            first_page_uri: String,
+            next_page_uri: String,
+            page: Integer,
+            page_size: Integer,
+            recordings: ::Array[Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording],
+            start: Integer,
+            uri: String
+          }
+
+          type recording =
+            {
+              account_sid: String,
+              call_sid: String,
+              channels: Integer,
+              conference_sid: String,
+              date_created: String,
+              date_updated: String,
+              duration: Integer,
+              error_code: String,
+              media_url: String,
+              sid: String,
+              source: Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording::source,
+              start_time: String,
+              status: Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording::status,
+              subresource_uris: ::Hash[Symbol, top],
+              uri: String
+            }
+
+          class Recording < Telnyx::Internal::Type::BaseModel
+            attr_reader account_sid: String?
+
+            def account_sid=: (String) -> String
+
+            attr_reader call_sid: String?
+
+            def call_sid=: (String) -> String
+
+            attr_reader channels: Integer?
+
+            def channels=: (Integer) -> Integer
+
+            attr_reader conference_sid: String?
+
+            def conference_sid=: (String) -> String
+
+            attr_reader date_created: String?
+
+            def date_created=: (String) -> String
+
+            attr_reader date_updated: String?
+
+            def date_updated=: (String) -> String
+
+            attr_reader duration: Integer?
+
+            def duration=: (Integer) -> Integer
+
+            attr_reader error_code: String?
+
+            def error_code=: (String) -> String
+
+            attr_reader media_url: String?
+
+            def media_url=: (String) -> String
+
+            attr_reader sid: String?
+
+            def sid=: (String) -> String
+
+            attr_reader source: Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording::source?
+
+            def source=: (
+              Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording::source
+            ) -> Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording::source
+
+            attr_reader start_time: String?
+
+            def start_time=: (String) -> String
+
+            attr_reader status: Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording::status?
+
+            def status=: (
+              Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording::status
+            ) -> Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording::status
+
+            attr_reader subresource_uris: ::Hash[Symbol, top]?
+
+            def subresource_uris=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+            attr_reader uri: String?
+
+            def uri=: (String) -> String
+
+            def initialize: (
+              ?account_sid: String,
+              ?call_sid: String,
+              ?channels: Integer,
+              ?conference_sid: String,
+              ?date_created: String,
+              ?date_updated: String,
+              ?duration: Integer,
+              ?error_code: String,
+              ?media_url: String,
+              ?sid: String,
+              ?source: Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording::source,
+              ?start_time: String,
+              ?status: Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording::status,
+              ?subresource_uris: ::Hash[Symbol, top],
+              ?uri: String
+            ) -> void
+
+            def to_hash: -> {
+              account_sid: String,
+              call_sid: String,
+              channels: Integer,
+              conference_sid: String,
+              date_created: String,
+              date_updated: String,
+              duration: Integer,
+              error_code: String,
+              media_url: String,
+              sid: String,
+              source: Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording::source,
+              start_time: String,
+              status: Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording::status,
+              subresource_uris: ::Hash[Symbol, top],
+              uri: String
+            }
+
+            type source =
+              :DialVerb
+              | :Conference
+              | :OutboundAPI
+              | :Trunking
+              | :RecordVerb
+              | :StartCallRecordingAPI
+              | :StartConferenceRecordingAPI
+
+            module Source
+              extend Telnyx::Internal::Type::Enum
+
+              DIAL_VERB: :DialVerb
+              CONFERENCE: :Conference
+              OUTBOUND_API: :OutboundAPI
+              TRUNKING: :Trunking
+              RECORD_VERB: :RecordVerb
+              START_CALL_RECORDING_API: :StartCallRecordingAPI
+              START_CONFERENCE_RECORDING_API: :StartConferenceRecordingAPI
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording::source]
+            end
+
+            type status = :processing | :absent | :completed | :deleted
+
+            module Status
+              extend Telnyx::Internal::Type::Enum
+
+              PROCESSING: :processing
+              ABSENT: :absent
+              COMPLETED: :completed
+              DELETED: :deleted
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording::status]
+            end
+          end
+        end
+      end
+    end
+  end
+end

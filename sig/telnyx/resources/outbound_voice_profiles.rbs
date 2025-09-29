@@ -1,0 +1,59 @@
+module Telnyx
+  module Resources
+    class OutboundVoiceProfiles
+      def create: (
+        name: String,
+        ?billing_group_id: String?,
+        ?call_recording: Telnyx::OutboundCallRecording,
+        ?concurrent_call_limit: Integer?,
+        ?daily_spend_limit: String,
+        ?daily_spend_limit_enabled: bool,
+        ?enabled: bool,
+        ?max_destination_rate: Float,
+        ?service_plan: Telnyx::Models::service_plan,
+        ?tags: ::Array[String],
+        ?traffic_type: Telnyx::Models::traffic_type,
+        ?usage_payment_method: Telnyx::Models::usage_payment_method,
+        ?whitelisted_destinations: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OutboundVoiceProfileCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OutboundVoiceProfileRetrieveResponse
+
+      def update: (
+        String id,
+        name: String,
+        ?billing_group_id: String?,
+        ?call_recording: Telnyx::OutboundCallRecording,
+        ?concurrent_call_limit: Integer?,
+        ?daily_spend_limit: String,
+        ?daily_spend_limit_enabled: bool,
+        ?enabled: bool,
+        ?max_destination_rate: Float,
+        ?service_plan: Telnyx::Models::service_plan,
+        ?tags: ::Array[String],
+        ?traffic_type: Telnyx::Models::traffic_type,
+        ?usage_payment_method: Telnyx::Models::usage_payment_method,
+        ?whitelisted_destinations: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OutboundVoiceProfileUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::OutboundVoiceProfileListParams::Filter,
+        ?page: Telnyx::OutboundVoiceProfileListParams::Page,
+        ?sort: Telnyx::Models::OutboundVoiceProfileListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OutboundVoiceProfileListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OutboundVoiceProfileDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

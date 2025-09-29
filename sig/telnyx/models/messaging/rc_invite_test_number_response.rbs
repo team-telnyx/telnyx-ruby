@@ -1,0 +1,72 @@
+module Telnyx
+  module Models
+    module Messaging
+      type rc_invite_test_number_response =
+        { data: Telnyx::Models::Messaging::RcInviteTestNumberResponse::Data }
+
+      class RcInviteTestNumberResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::Models::Messaging::RcInviteTestNumberResponse::Data
+
+        def initialize: (
+          data: Telnyx::Models::Messaging::RcInviteTestNumberResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::Messaging::RcInviteTestNumberResponse::Data
+        }
+
+        type data =
+          {
+            agent_id: String,
+            phone_number: String,
+            record_type: Telnyx::Models::Messaging::RcInviteTestNumberResponse::Data::record_type,
+            status: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader agent_id: String?
+
+          def agent_id=: (String) -> String
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          attr_reader record_type: Telnyx::Models::Messaging::RcInviteTestNumberResponse::Data::record_type?
+
+          def record_type=: (
+            Telnyx::Models::Messaging::RcInviteTestNumberResponse::Data::record_type
+          ) -> Telnyx::Models::Messaging::RcInviteTestNumberResponse::Data::record_type
+
+          attr_reader status: String?
+
+          def status=: (String) -> String
+
+          def initialize: (
+            ?agent_id: String,
+            ?phone_number: String,
+            ?record_type: Telnyx::Models::Messaging::RcInviteTestNumberResponse::Data::record_type,
+            ?status: String
+          ) -> void
+
+          def to_hash: -> {
+            agent_id: String,
+            phone_number: String,
+            record_type: Telnyx::Models::Messaging::RcInviteTestNumberResponse::Data::record_type,
+            status: String
+          }
+
+          type record_type = :"rcs.test_number_invite"
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            RCS_TEST_NUMBER_INVITE: :"rcs.test_number_invite"
+
+            def self?.values: -> ::Array[Telnyx::Models::Messaging::RcInviteTestNumberResponse::Data::record_type]
+          end
+        end
+      end
+    end
+  end
+end

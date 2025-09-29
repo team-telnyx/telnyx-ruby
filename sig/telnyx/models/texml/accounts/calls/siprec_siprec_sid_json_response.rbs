@@ -1,0 +1,83 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        module Calls
+          type siprec_siprec_sid_json_response =
+            {
+              account_sid: String,
+              call_sid: String,
+              date_updated: String,
+              error_code: String,
+              sid: String,
+              status: Telnyx::Models::Texml::Accounts::Calls::SiprecSiprecSidJsonResponse::status,
+              uri: String
+            }
+
+          class SiprecSiprecSidJsonResponse < Telnyx::Internal::Type::BaseModel
+            attr_reader account_sid: String?
+
+            def account_sid=: (String) -> String
+
+            attr_reader call_sid: String?
+
+            def call_sid=: (String) -> String
+
+            attr_reader date_updated: String?
+
+            def date_updated=: (String) -> String
+
+            attr_reader error_code: String?
+
+            def error_code=: (String) -> String
+
+            attr_reader sid: String?
+
+            def sid=: (String) -> String
+
+            attr_reader status: Telnyx::Models::Texml::Accounts::Calls::SiprecSiprecSidJsonResponse::status?
+
+            def status=: (
+              Telnyx::Models::Texml::Accounts::Calls::SiprecSiprecSidJsonResponse::status
+            ) -> Telnyx::Models::Texml::Accounts::Calls::SiprecSiprecSidJsonResponse::status
+
+            attr_reader uri: String?
+
+            def uri=: (String) -> String
+
+            def initialize: (
+              ?account_sid: String,
+              ?call_sid: String,
+              ?date_updated: String,
+              ?error_code: String,
+              ?sid: String,
+              ?status: Telnyx::Models::Texml::Accounts::Calls::SiprecSiprecSidJsonResponse::status,
+              ?uri: String
+            ) -> void
+
+            def to_hash: -> {
+              account_sid: String,
+              call_sid: String,
+              date_updated: String,
+              error_code: String,
+              sid: String,
+              status: Telnyx::Models::Texml::Accounts::Calls::SiprecSiprecSidJsonResponse::status,
+              uri: String
+            }
+
+            type status = :"in-progress" | :stopped
+
+            module Status
+              extend Telnyx::Internal::Type::Enum
+
+              IN_PROGRESS: :"in-progress"
+              STOPPED: :stopped
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Calls::SiprecSiprecSidJsonResponse::status]
+            end
+          end
+        end
+      end
+    end
+  end
+end

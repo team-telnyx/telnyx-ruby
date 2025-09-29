@@ -1,0 +1,31 @@
+module Telnyx
+  module Resources
+    class VerifiedNumbers
+      attr_reader actions: Telnyx::Resources::VerifiedNumbers::Actions
+
+      def create: (
+        phone_number: String,
+        verification_method: Telnyx::Models::VerifiedNumberCreateParams::verification_method,
+        ?extension: String?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VerifiedNumberCreateResponse
+
+      def retrieve: (
+        String phone_number,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::VerifiedNumberDataWrapper
+
+      def list: (
+        ?page: Telnyx::VerifiedNumberListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VerifiedNumberListResponse
+
+      def delete: (
+        String phone_number,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::VerifiedNumberDataWrapper
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

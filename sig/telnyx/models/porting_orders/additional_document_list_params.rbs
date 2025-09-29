@@ -1,0 +1,132 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type additional_document_list_params =
+        {
+          filter: Telnyx::PortingOrders::AdditionalDocumentListParams::Filter,
+          page: Telnyx::PortingOrders::AdditionalDocumentListParams::Page,
+          sort: Telnyx::PortingOrders::AdditionalDocumentListParams::Sort
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class AdditionalDocumentListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter: Telnyx::PortingOrders::AdditionalDocumentListParams::Filter?
+
+        def filter=: (
+          Telnyx::PortingOrders::AdditionalDocumentListParams::Filter
+        ) -> Telnyx::PortingOrders::AdditionalDocumentListParams::Filter
+
+        attr_reader page: Telnyx::PortingOrders::AdditionalDocumentListParams::Page?
+
+        def page=: (
+          Telnyx::PortingOrders::AdditionalDocumentListParams::Page
+        ) -> Telnyx::PortingOrders::AdditionalDocumentListParams::Page
+
+        attr_reader sort: Telnyx::PortingOrders::AdditionalDocumentListParams::Sort?
+
+        def sort=: (
+          Telnyx::PortingOrders::AdditionalDocumentListParams::Sort
+        ) -> Telnyx::PortingOrders::AdditionalDocumentListParams::Sort
+
+        def initialize: (
+          ?filter: Telnyx::PortingOrders::AdditionalDocumentListParams::Filter,
+          ?page: Telnyx::PortingOrders::AdditionalDocumentListParams::Page,
+          ?sort: Telnyx::PortingOrders::AdditionalDocumentListParams::Sort,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter: Telnyx::PortingOrders::AdditionalDocumentListParams::Filter,
+          page: Telnyx::PortingOrders::AdditionalDocumentListParams::Page,
+          sort: Telnyx::PortingOrders::AdditionalDocumentListParams::Sort,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter =
+          {
+            document_type: ::Array[Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Filter::document_type]
+          }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader document_type: ::Array[Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Filter::document_type]?
+
+          def document_type=: (
+            ::Array[Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Filter::document_type]
+          ) -> ::Array[Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Filter::document_type]
+
+          def initialize: (
+            ?document_type: ::Array[Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Filter::document_type]
+          ) -> void
+
+          def to_hash: -> {
+            document_type: ::Array[Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Filter::document_type]
+          }
+
+          type document_type = :loa | :invoice | :csr | :other
+
+          module DocumentType
+            extend Telnyx::Internal::Type::Enum
+
+            LOA: :loa
+            INVOICE: :invoice
+            CSR: :csr
+            OTHER: :other
+
+            def self?.values: -> ::Array[Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Filter::document_type]
+          end
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
+        end
+
+        type sort =
+          {
+            value: Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Sort::value
+          }
+
+        class Sort < Telnyx::Internal::Type::BaseModel
+          attr_reader value: Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Sort::value?
+
+          def value=: (
+            Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Sort::value
+          ) -> Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Sort::value
+
+          def initialize: (
+            ?value: Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Sort::value
+          ) -> void
+
+          def to_hash: -> {
+            value: Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Sort::value
+          }
+
+          type value = :created_at | :"-created_at"
+
+          module Value
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED_AT: :created_at
+            CREATED_AT_DESC: :"-created_at"
+
+            def self?.values: -> ::Array[Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Sort::value]
+          end
+        end
+      end
+    end
+  end
+end

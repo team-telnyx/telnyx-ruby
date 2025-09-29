@@ -1,0 +1,21 @@
+module Telnyx
+  module Models
+    module OperatorConnect
+      type action_refresh_response = { message: String, success: bool }
+
+      class ActionRefreshResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader message: String?
+
+        def message=: (String) -> String
+
+        attr_reader success: bool?
+
+        def success=: (bool) -> bool
+
+        def initialize: (?message: String, ?success: bool) -> void
+
+        def to_hash: -> { message: String, success: bool }
+      end
+    end
+  end
+end

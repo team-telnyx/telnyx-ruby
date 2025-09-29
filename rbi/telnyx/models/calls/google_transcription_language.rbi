@@ -1,0 +1,187 @@
+# typed: strong
+
+module Telnyx
+  module Models
+    module Calls
+      # Language to use for speech recognition
+      module GoogleTranscriptionLanguage
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Telnyx::Calls::GoogleTranscriptionLanguage)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        AF =
+          T.let(:af, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        SQ =
+          T.let(:sq, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        AM =
+          T.let(:am, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        AR =
+          T.let(:ar, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        HY =
+          T.let(:hy, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        AZ =
+          T.let(:az, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        EU =
+          T.let(:eu, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        BN =
+          T.let(:bn, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        BS =
+          T.let(:bs, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        BG =
+          T.let(:bg, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        MY =
+          T.let(:my, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        CA =
+          T.let(:ca, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        YUE =
+          T.let(:yue, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        ZH =
+          T.let(:zh, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        HR =
+          T.let(:hr, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        CS =
+          T.let(:cs, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        DA =
+          T.let(:da, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        NL =
+          T.let(:nl, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        EN =
+          T.let(:en, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        ET =
+          T.let(:et, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        FIL =
+          T.let(:fil, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        FI =
+          T.let(:fi, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        FR =
+          T.let(:fr, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        GL =
+          T.let(:gl, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        KA =
+          T.let(:ka, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        DE =
+          T.let(:de, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        EL =
+          T.let(:el, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        GU =
+          T.let(:gu, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        IW =
+          T.let(:iw, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        HI =
+          T.let(:hi, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        HU =
+          T.let(:hu, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        IS =
+          T.let(:is, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        ID =
+          T.let(:id, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        IT =
+          T.let(:it, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        JA =
+          T.let(:ja, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        JV =
+          T.let(:jv, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        KN =
+          T.let(:kn, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        KK =
+          T.let(:kk, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        KM =
+          T.let(:km, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        KO =
+          T.let(:ko, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        LO =
+          T.let(:lo, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        LV =
+          T.let(:lv, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        LT =
+          T.let(:lt, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        MK =
+          T.let(:mk, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        MS =
+          T.let(:ms, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        ML =
+          T.let(:ml, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        MR =
+          T.let(:mr, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        MN =
+          T.let(:mn, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        NE =
+          T.let(:ne, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        NO =
+          T.let(:no, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        FA =
+          T.let(:fa, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        PL =
+          T.let(:pl, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        PT =
+          T.let(:pt, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        PA =
+          T.let(:pa, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        RO =
+          T.let(:ro, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        RU =
+          T.let(:ru, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        RW =
+          T.let(:rw, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        SR =
+          T.let(:sr, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        SI =
+          T.let(:si, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        SK =
+          T.let(:sk, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        SL =
+          T.let(:sl, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        SS =
+          T.let(:ss, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        ST =
+          T.let(:st, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        ES =
+          T.let(:es, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        SU =
+          T.let(:su, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        SW =
+          T.let(:sw, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        SV =
+          T.let(:sv, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        TA =
+          T.let(:ta, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        TE =
+          T.let(:te, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        TH =
+          T.let(:th, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        TN =
+          T.let(:tn, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        TR =
+          T.let(:tr, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        TS =
+          T.let(:ts, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        UK =
+          T.let(:uk, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        UR =
+          T.let(:ur, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        UZ =
+          T.let(:uz, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        VE =
+          T.let(:ve, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        VI =
+          T.let(:vi, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        XH =
+          T.let(:xh, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+        ZU =
+          T.let(:zu, Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::Calls::GoogleTranscriptionLanguage::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+    end
+  end
+end

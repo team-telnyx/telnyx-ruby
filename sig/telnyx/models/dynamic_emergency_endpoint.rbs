@@ -1,0 +1,86 @@
+module Telnyx
+  module Models
+    type dynamic_emergency_endpoint =
+      {
+        callback_number: String,
+        caller_name: String,
+        dynamic_emergency_address_id: String,
+        id: String,
+        created_at: String,
+        record_type: String,
+        sip_from_id: String,
+        status: Telnyx::Models::DynamicEmergencyEndpoint::status,
+        updated_at: String
+      }
+
+    class DynamicEmergencyEndpoint < Telnyx::Internal::Type::BaseModel
+      attr_accessor callback_number: String
+
+      attr_accessor caller_name: String
+
+      attr_accessor dynamic_emergency_address_id: String
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader sip_from_id: String?
+
+      def sip_from_id=: (String) -> String
+
+      attr_reader status: Telnyx::Models::DynamicEmergencyEndpoint::status?
+
+      def status=: (
+        Telnyx::Models::DynamicEmergencyEndpoint::status
+      ) -> Telnyx::Models::DynamicEmergencyEndpoint::status
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      def initialize: (
+        callback_number: String,
+        caller_name: String,
+        dynamic_emergency_address_id: String,
+        ?id: String,
+        ?created_at: String,
+        ?record_type: String,
+        ?sip_from_id: String,
+        ?status: Telnyx::Models::DynamicEmergencyEndpoint::status,
+        ?updated_at: String
+      ) -> void
+
+      def to_hash: -> {
+        callback_number: String,
+        caller_name: String,
+        dynamic_emergency_address_id: String,
+        id: String,
+        created_at: String,
+        record_type: String,
+        sip_from_id: String,
+        status: Telnyx::Models::DynamicEmergencyEndpoint::status,
+        updated_at: String
+      }
+
+      type status = :pending | :activated | :rejected
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        ACTIVATED: :activated
+        REJECTED: :rejected
+
+        def self?.values: -> ::Array[Telnyx::Models::DynamicEmergencyEndpoint::status]
+      end
+    end
+  end
+end

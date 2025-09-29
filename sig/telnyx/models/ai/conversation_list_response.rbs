@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    module AI
+      type conversation_list_response =
+        { data: ::Array[Telnyx::AI::Conversation] }
+
+      class ConversationListResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Telnyx::AI::Conversation]
+
+        def initialize: (data: ::Array[Telnyx::AI::Conversation]) -> void
+
+        def to_hash: -> { data: ::Array[Telnyx::AI::Conversation] }
+      end
+    end
+  end
+end

@@ -1,0 +1,37 @@
+module Telnyx
+  module Models
+    module AI
+      type webhook_tool =
+        {
+          type: Telnyx::Models::AI::WebhookTool::type_,
+          webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams
+        }
+
+      class WebhookTool < Telnyx::Internal::Type::BaseModel
+        attr_accessor type: Telnyx::Models::AI::WebhookTool::type_
+
+        attr_accessor webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams
+
+        def initialize: (
+          type: Telnyx::Models::AI::WebhookTool::type_,
+          webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams
+        ) -> void
+
+        def to_hash: -> {
+          type: Telnyx::Models::AI::WebhookTool::type_,
+          webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams
+        }
+
+        type type_ = :webhook
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          WEBHOOK: :webhook
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::WebhookTool::type_]
+        end
+      end
+    end
+  end
+end

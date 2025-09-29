@@ -1,0 +1,26 @@
+module Telnyx
+  module Models
+    type address_list_response =
+      { data: ::Array[Telnyx::Address], meta: Telnyx::PaginationMeta }
+
+    class AddressListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Address]?
+
+      def data=: (::Array[Telnyx::Address]) -> ::Array[Telnyx::Address]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Address],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Address],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

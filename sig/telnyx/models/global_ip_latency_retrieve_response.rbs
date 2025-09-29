@@ -1,0 +1,326 @@
+module Telnyx
+  module Models
+    type global_ip_latency_retrieve_response =
+      { data: ::Array[Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data] }
+
+    class GlobalIPLatencyRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data]
+      ) -> ::Array[Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data]
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data]
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data]
+      }
+
+      type data =
+        {
+          global_ip: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::GlobalIP,
+          mean_latency: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::MeanLatency,
+          percentile_latency: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency,
+          prober_location: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::ProberLocation,
+          timestamp: Time
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader global_ip: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::GlobalIP?
+
+        def global_ip=: (
+          Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::GlobalIP
+        ) -> Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::GlobalIP
+
+        attr_reader mean_latency: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::MeanLatency?
+
+        def mean_latency=: (
+          Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::MeanLatency
+        ) -> Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::MeanLatency
+
+        attr_reader percentile_latency: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency?
+
+        def percentile_latency=: (
+          Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency
+        ) -> Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency
+
+        attr_reader prober_location: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::ProberLocation?
+
+        def prober_location=: (
+          Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::ProberLocation
+        ) -> Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::ProberLocation
+
+        attr_reader timestamp: Time?
+
+        def timestamp=: (Time) -> Time
+
+        def initialize: (
+          ?global_ip: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::GlobalIP,
+          ?mean_latency: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::MeanLatency,
+          ?percentile_latency: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency,
+          ?prober_location: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::ProberLocation,
+          ?timestamp: Time
+        ) -> void
+
+        def to_hash: -> {
+          global_ip: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::GlobalIP,
+          mean_latency: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::MeanLatency,
+          percentile_latency: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency,
+          prober_location: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::ProberLocation,
+          timestamp: Time
+        }
+
+        type global_ip = { id: String, ip_address: String }
+
+        class GlobalIP < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader ip_address: String?
+
+          def ip_address=: (String) -> String
+
+          def initialize: (?id: String, ?ip_address: String) -> void
+
+          def to_hash: -> { id: String, ip_address: String }
+        end
+
+        type mean_latency = { amount: Float, unit: String }
+
+        class MeanLatency < Telnyx::Internal::Type::BaseModel
+          attr_reader amount: Float?
+
+          def amount=: (Float) -> Float
+
+          attr_reader unit: String?
+
+          def unit=: (String) -> String
+
+          def initialize: (?amount: Float, ?unit: String) -> void
+
+          def to_hash: -> { amount: Float, unit: String }
+        end
+
+        type percentile_latency =
+          {
+            :p_0 => Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P0,
+            :p_100 => Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P100,
+            :p_25 => Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P25,
+            :p_50 => Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P50,
+            :p_75 => Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P75,
+            :p_90 => Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P90,
+            :p_99 => Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P99
+          }
+
+        class PercentileLatency < Telnyx::Internal::Type::BaseModel
+          attr_reader p_0: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P0?
+
+          def p_0=: (
+            Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P0
+          ) -> Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P0
+
+          attr_reader p_100: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P100?
+
+          def p_100=: (
+            Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P100
+          ) -> Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P100
+
+          attr_reader p_25: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P25?
+
+          def p_25=: (
+            Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P25
+          ) -> Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P25
+
+          attr_reader p_50: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P50?
+
+          def p_50=: (
+            Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P50
+          ) -> Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P50
+
+          attr_reader p_75: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P75?
+
+          def p_75=: (
+            Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P75
+          ) -> Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P75
+
+          attr_reader p_90: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P90?
+
+          def p_90=: (
+            Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P90
+          ) -> Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P90
+
+          attr_reader p_99: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P99?
+
+          def p_99=: (
+            Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P99
+          ) -> Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P99
+
+          def initialize: (
+            ?p_0: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P0,
+            ?p_100: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P100,
+            ?p_25: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P25,
+            ?p_50: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P50,
+            ?p_75: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P75,
+            ?p_90: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P90,
+            ?p_99: Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P99
+          ) -> void
+
+          def to_hash: -> {
+            :p_0 => Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P0,
+            :p_100 => Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P100,
+            :p_25 => Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P25,
+            :p_50 => Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P50,
+            :p_75 => Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P75,
+            :p_90 => Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P90,
+            :p_99 => Telnyx::Models::GlobalIPLatencyRetrieveResponse::Data::PercentileLatency::P99
+          }
+
+          type p0 = { amount: Float, unit: String }
+
+          class P0 < Telnyx::Internal::Type::BaseModel
+            attr_reader amount: Float?
+
+            def amount=: (Float) -> Float
+
+            attr_reader unit: String?
+
+            def unit=: (String) -> String
+
+            def initialize: (?amount: Float, ?unit: String) -> void
+
+            def to_hash: -> { amount: Float, unit: String }
+          end
+
+          type p100 = { amount: Float, unit: String }
+
+          class P100 < Telnyx::Internal::Type::BaseModel
+            attr_reader amount: Float?
+
+            def amount=: (Float) -> Float
+
+            attr_reader unit: String?
+
+            def unit=: (String) -> String
+
+            def initialize: (?amount: Float, ?unit: String) -> void
+
+            def to_hash: -> { amount: Float, unit: String }
+          end
+
+          type p25 = { amount: Float, unit: String }
+
+          class P25 < Telnyx::Internal::Type::BaseModel
+            attr_reader amount: Float?
+
+            def amount=: (Float) -> Float
+
+            attr_reader unit: String?
+
+            def unit=: (String) -> String
+
+            def initialize: (?amount: Float, ?unit: String) -> void
+
+            def to_hash: -> { amount: Float, unit: String }
+          end
+
+          type p50 = { amount: Float, unit: String }
+
+          class P50 < Telnyx::Internal::Type::BaseModel
+            attr_reader amount: Float?
+
+            def amount=: (Float) -> Float
+
+            attr_reader unit: String?
+
+            def unit=: (String) -> String
+
+            def initialize: (?amount: Float, ?unit: String) -> void
+
+            def to_hash: -> { amount: Float, unit: String }
+          end
+
+          type p75 = { amount: Float, unit: String }
+
+          class P75 < Telnyx::Internal::Type::BaseModel
+            attr_reader amount: Float?
+
+            def amount=: (Float) -> Float
+
+            attr_reader unit: String?
+
+            def unit=: (String) -> String
+
+            def initialize: (?amount: Float, ?unit: String) -> void
+
+            def to_hash: -> { amount: Float, unit: String }
+          end
+
+          type p90 = { amount: Float, unit: String }
+
+          class P90 < Telnyx::Internal::Type::BaseModel
+            attr_reader amount: Float?
+
+            def amount=: (Float) -> Float
+
+            attr_reader unit: String?
+
+            def unit=: (String) -> String
+
+            def initialize: (?amount: Float, ?unit: String) -> void
+
+            def to_hash: -> { amount: Float, unit: String }
+          end
+
+          type p99 = { amount: Float, unit: String }
+
+          class P99 < Telnyx::Internal::Type::BaseModel
+            attr_reader amount: Float?
+
+            def amount=: (Float) -> Float
+
+            attr_reader unit: String?
+
+            def unit=: (String) -> String
+
+            def initialize: (?amount: Float, ?unit: String) -> void
+
+            def to_hash: -> { amount: Float, unit: String }
+          end
+        end
+
+        type prober_location =
+          { id: String, lat: Float, lon: Float, name: String }
+
+        class ProberLocation < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader lat: Float?
+
+          def lat=: (Float) -> Float
+
+          attr_reader lon: Float?
+
+          def lon=: (Float) -> Float
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?lat: Float,
+            ?lon: Float,
+            ?name: String
+          ) -> void
+
+          def to_hash: -> { id: String, lat: Float, lon: Float, name: String }
+        end
+      end
+    end
+  end
+end

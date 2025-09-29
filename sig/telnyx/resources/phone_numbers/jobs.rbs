@@ -1,0 +1,47 @@
+module Telnyx
+  module Resources
+    class PhoneNumbers
+      class Jobs
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::JobRetrieveResponse
+
+        def list: (
+          ?filter: Telnyx::PhoneNumbers::JobListParams::Filter,
+          ?page: Telnyx::PhoneNumbers::JobListParams::Page,
+          ?sort: Telnyx::Models::PhoneNumbers::JobListParams::sort,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::JobListResponse
+
+        def delete_batch: (
+          phone_numbers: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::JobDeleteBatchResponse
+
+        def update_batch: (
+          phone_numbers: ::Array[String],
+          ?filter: Telnyx::PhoneNumbers::JobUpdateBatchParams::Filter,
+          ?billing_group_id: String,
+          ?connection_id: String,
+          ?customer_reference: String,
+          ?deletion_lock_enabled: bool,
+          ?external_pin: String,
+          ?hd_voice_enabled: bool,
+          ?tags: ::Array[String],
+          ?voice: Telnyx::PhoneNumbers::UpdateVoiceSettings,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::JobUpdateBatchResponse
+
+        def update_emergency_settings_batch: (
+          emergency_enabled: bool,
+          phone_numbers: ::Array[String],
+          ?emergency_address_id: String?,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::JobUpdateEmergencySettingsBatchResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

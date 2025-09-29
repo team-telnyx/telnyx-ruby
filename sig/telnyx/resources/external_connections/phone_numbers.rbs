@@ -1,0 +1,29 @@
+module Telnyx
+  module Resources
+    class ExternalConnections
+      class PhoneNumbers
+        def retrieve: (
+          String phone_number_id,
+          id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ExternalConnections::PhoneNumberRetrieveResponse
+
+        def update: (
+          String phone_number_id,
+          id: String,
+          ?location_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ExternalConnections::PhoneNumberUpdateResponse
+
+        def list: (
+          String id,
+          ?filter: Telnyx::ExternalConnections::PhoneNumberListParams::Filter,
+          ?page: Telnyx::ExternalConnections::PhoneNumberListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ExternalConnections::PhoneNumberListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

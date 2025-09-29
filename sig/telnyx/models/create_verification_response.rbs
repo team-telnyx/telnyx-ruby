@@ -1,0 +1,13 @@
+module Telnyx
+  module Models
+    type create_verification_response = { data: Telnyx::Verification }
+
+    class CreateVerificationResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::Verification
+
+      def initialize: (data: Telnyx::Verification) -> void
+
+      def to_hash: -> { data: Telnyx::Verification }
+    end
+  end
+end

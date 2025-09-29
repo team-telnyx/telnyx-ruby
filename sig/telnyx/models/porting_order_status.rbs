@@ -1,0 +1,58 @@
+module Telnyx
+  module Models
+    type porting_order_status =
+      {
+        details: ::Array[Telnyx::PortingOrdersExceptionType],
+        value: Telnyx::Models::PortingOrderStatus::value
+      }
+
+    class PortingOrderStatus < Telnyx::Internal::Type::BaseModel
+      attr_reader details: ::Array[Telnyx::PortingOrdersExceptionType]?
+
+      def details=: (
+        ::Array[Telnyx::PortingOrdersExceptionType]
+      ) -> ::Array[Telnyx::PortingOrdersExceptionType]
+
+      attr_reader value: Telnyx::Models::PortingOrderStatus::value?
+
+      def value=: (
+        Telnyx::Models::PortingOrderStatus::value
+      ) -> Telnyx::Models::PortingOrderStatus::value
+
+      def initialize: (
+        ?details: ::Array[Telnyx::PortingOrdersExceptionType],
+        ?value: Telnyx::Models::PortingOrderStatus::value
+      ) -> void
+
+      def to_hash: -> {
+        details: ::Array[Telnyx::PortingOrdersExceptionType],
+        value: Telnyx::Models::PortingOrderStatus::value
+      }
+
+      type value =
+        :draft
+        | :"in-process"
+        | :submitted
+        | :exception
+        | :"foc-date-confirmed"
+        | :ported
+        | :cancelled
+        | :"cancel-pending"
+
+      module Value
+        extend Telnyx::Internal::Type::Enum
+
+        DRAFT: :draft
+        IN_PROCESS: :"in-process"
+        SUBMITTED: :submitted
+        EXCEPTION: :exception
+        FOC_DATE_CONFIRMED: :"foc-date-confirmed"
+        PORTED: :ported
+        CANCELLED: :cancelled
+        CANCEL_PENDING: :"cancel-pending"
+
+        def self?.values: -> ::Array[Telnyx::Models::PortingOrderStatus::value]
+      end
+    end
+  end
+end

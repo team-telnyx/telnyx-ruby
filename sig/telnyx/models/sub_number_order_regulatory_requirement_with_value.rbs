@@ -1,0 +1,58 @@
+module Telnyx
+  module Models
+    type sub_number_order_regulatory_requirement_with_value =
+      {
+        field_type: Telnyx::Models::SubNumberOrderRegulatoryRequirementWithValue::field_type,
+        field_value: String,
+        record_type: String,
+        requirement_id: String
+      }
+
+    class SubNumberOrderRegulatoryRequirementWithValue < Telnyx::Internal::Type::BaseModel
+      attr_reader field_value: String?
+
+      def field_value=: (String) -> String
+
+      attr_reader requirement_id: String?
+
+      def requirement_id=: (String) -> String
+
+      attr_reader field_type: Telnyx::Models::SubNumberOrderRegulatoryRequirementWithValue::field_type?
+
+      def field_type=: (
+        Telnyx::Models::SubNumberOrderRegulatoryRequirementWithValue::field_type
+      ) -> Telnyx::Models::SubNumberOrderRegulatoryRequirementWithValue::field_type
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      def initialize: (
+        ?field_type: Telnyx::Models::SubNumberOrderRegulatoryRequirementWithValue::field_type,
+        ?field_value: String,
+        ?record_type: String,
+        ?requirement_id: String
+      ) -> void
+
+      def to_hash: -> {
+        field_type: Telnyx::Models::SubNumberOrderRegulatoryRequirementWithValue::field_type,
+        field_value: String,
+        record_type: String,
+        requirement_id: String
+      }
+
+      type field_type = :textual | :datetime | :address | :document
+
+      module FieldType
+        extend Telnyx::Internal::Type::Enum
+
+        TEXTUAL: :textual
+        DATETIME: :datetime
+        ADDRESS: :address
+        DOCUMENT: :document
+
+        def self?.values: -> ::Array[Telnyx::Models::SubNumberOrderRegulatoryRequirementWithValue::field_type]
+      end
+    end
+  end
+end

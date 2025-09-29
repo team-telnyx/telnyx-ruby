@@ -1,0 +1,62 @@
+module Telnyx
+  module Models
+    type oauth_introspect_response =
+      {
+        active: bool,
+        aud: String,
+        client_id: String,
+        exp: Integer,
+        iat: Integer,
+        iss: String,
+        scope: String
+      }
+
+    class OAuthIntrospectResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor active: bool
+
+      attr_reader aud: String?
+
+      def aud=: (String) -> String
+
+      attr_reader client_id: String?
+
+      def client_id=: (String) -> String
+
+      attr_reader exp: Integer?
+
+      def exp=: (Integer) -> Integer
+
+      attr_reader iat: Integer?
+
+      def iat=: (Integer) -> Integer
+
+      attr_reader iss: String?
+
+      def iss=: (String) -> String
+
+      attr_reader scope: String?
+
+      def scope=: (String) -> String
+
+      def initialize: (
+        active: bool,
+        ?aud: String,
+        ?client_id: String,
+        ?exp: Integer,
+        ?iat: Integer,
+        ?iss: String,
+        ?scope: String
+      ) -> void
+
+      def to_hash: -> {
+        active: bool,
+        aud: String,
+        client_id: String,
+        exp: Integer,
+        iat: Integer,
+        iss: String,
+        scope: String
+      }
+    end
+  end
+end

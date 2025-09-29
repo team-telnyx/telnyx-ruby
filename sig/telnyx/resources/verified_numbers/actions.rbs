@@ -1,0 +1,15 @@
+module Telnyx
+  module Resources
+    class VerifiedNumbers
+      class Actions
+        def submit_verification_code: (
+          String phone_number,
+          verification_code: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::VerifiedNumberDataWrapper
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,93 @@
+module Telnyx
+  module Models
+    type sim_card_get_public_ip_response =
+      { data: Telnyx::Models::SimCardGetPublicIPResponse::Data }
+
+    class SimCardGetPublicIPResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::SimCardGetPublicIPResponse::Data?
+
+      def data=: (
+        Telnyx::Models::SimCardGetPublicIPResponse::Data
+      ) -> Telnyx::Models::SimCardGetPublicIPResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::SimCardGetPublicIPResponse::Data
+      ) -> void
+
+      def to_hash: -> { data: Telnyx::Models::SimCardGetPublicIPResponse::Data }
+
+      type data =
+        {
+          created_at: String,
+          ip: String,
+          record_type: String,
+          region_code: String,
+          sim_card_id: String,
+          type: Telnyx::Models::SimCardGetPublicIPResponse::Data::type_,
+          updated_at: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader sim_card_id: String?
+
+        def sim_card_id=: (String) -> String
+
+        attr_reader created_at: String?
+
+        def created_at=: (String) -> String
+
+        attr_reader ip: String?
+
+        def ip=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader region_code: String?
+
+        def region_code=: (String) -> String
+
+        attr_reader type: Telnyx::Models::SimCardGetPublicIPResponse::Data::type_?
+
+        def type=: (
+          Telnyx::Models::SimCardGetPublicIPResponse::Data::type_
+        ) -> Telnyx::Models::SimCardGetPublicIPResponse::Data::type_
+
+        attr_reader updated_at: String?
+
+        def updated_at=: (String) -> String
+
+        def initialize: (
+          ?created_at: String,
+          ?ip: String,
+          ?record_type: String,
+          ?region_code: String,
+          ?sim_card_id: String,
+          ?type: Telnyx::Models::SimCardGetPublicIPResponse::Data::type_,
+          ?updated_at: String
+        ) -> void
+
+        def to_hash: -> {
+          created_at: String,
+          ip: String,
+          record_type: String,
+          region_code: String,
+          sim_card_id: String,
+          type: Telnyx::Models::SimCardGetPublicIPResponse::Data::type_,
+          updated_at: String
+        }
+
+        type type_ = :ipv4
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          IPV4: :ipv4
+
+          def self?.values: -> ::Array[Telnyx::Models::SimCardGetPublicIPResponse::Data::type_]
+        end
+      end
+    end
+  end
+end

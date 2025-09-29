@@ -1,0 +1,176 @@
+module Telnyx
+  module Models
+    type fax_queued_webhook_event =
+      {
+        id: String,
+        event_type: Telnyx::Models::FaxQueuedWebhookEvent::event_type,
+        payload: Telnyx::FaxQueuedWebhookEvent::Payload,
+        record_type: Telnyx::Models::FaxQueuedWebhookEvent::record_type
+      }
+
+    class FaxQueuedWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader event_type: Telnyx::Models::FaxQueuedWebhookEvent::event_type?
+
+      def event_type=: (
+        Telnyx::Models::FaxQueuedWebhookEvent::event_type
+      ) -> Telnyx::Models::FaxQueuedWebhookEvent::event_type
+
+      attr_reader payload: Telnyx::FaxQueuedWebhookEvent::Payload?
+
+      def payload=: (
+        Telnyx::FaxQueuedWebhookEvent::Payload
+      ) -> Telnyx::FaxQueuedWebhookEvent::Payload
+
+      attr_reader record_type: Telnyx::Models::FaxQueuedWebhookEvent::record_type?
+
+      def record_type=: (
+        Telnyx::Models::FaxQueuedWebhookEvent::record_type
+      ) -> Telnyx::Models::FaxQueuedWebhookEvent::record_type
+
+      def initialize: (
+        ?id: String,
+        ?event_type: Telnyx::Models::FaxQueuedWebhookEvent::event_type,
+        ?payload: Telnyx::FaxQueuedWebhookEvent::Payload,
+        ?record_type: Telnyx::Models::FaxQueuedWebhookEvent::record_type
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        event_type: Telnyx::Models::FaxQueuedWebhookEvent::event_type,
+        payload: Telnyx::FaxQueuedWebhookEvent::Payload,
+        record_type: Telnyx::Models::FaxQueuedWebhookEvent::record_type
+      }
+
+      type event_type = :"fax.queued"
+
+      module EventType
+        extend Telnyx::Internal::Type::Enum
+
+        FAX_QUEUED: :"fax.queued"
+
+        def self?.values: -> ::Array[Telnyx::Models::FaxQueuedWebhookEvent::event_type]
+      end
+
+      type payload =
+        {
+          client_state: String,
+          connection_id: String,
+          direction: Telnyx::Models::FaxQueuedWebhookEvent::Payload::direction,
+          fax_id: String,
+          from: String,
+          media_name: String,
+          original_media_url: String,
+          status: Telnyx::Models::FaxQueuedWebhookEvent::Payload::status,
+          to: String,
+          user_id: String
+        }
+
+      class Payload < Telnyx::Internal::Type::BaseModel
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader direction: Telnyx::Models::FaxQueuedWebhookEvent::Payload::direction?
+
+        def direction=: (
+          Telnyx::Models::FaxQueuedWebhookEvent::Payload::direction
+        ) -> Telnyx::Models::FaxQueuedWebhookEvent::Payload::direction
+
+        attr_reader fax_id: String?
+
+        def fax_id=: (String) -> String
+
+        attr_reader from: String?
+
+        def from=: (String) -> String
+
+        attr_reader media_name: String?
+
+        def media_name=: (String) -> String
+
+        attr_reader original_media_url: String?
+
+        def original_media_url=: (String) -> String
+
+        attr_reader status: Telnyx::Models::FaxQueuedWebhookEvent::Payload::status?
+
+        def status=: (
+          Telnyx::Models::FaxQueuedWebhookEvent::Payload::status
+        ) -> Telnyx::Models::FaxQueuedWebhookEvent::Payload::status
+
+        attr_reader to: String?
+
+        def to=: (String) -> String
+
+        attr_reader user_id: String?
+
+        def user_id=: (String) -> String
+
+        def initialize: (
+          ?client_state: String,
+          ?connection_id: String,
+          ?direction: Telnyx::Models::FaxQueuedWebhookEvent::Payload::direction,
+          ?fax_id: String,
+          ?from: String,
+          ?media_name: String,
+          ?original_media_url: String,
+          ?status: Telnyx::Models::FaxQueuedWebhookEvent::Payload::status,
+          ?to: String,
+          ?user_id: String
+        ) -> void
+
+        def to_hash: -> {
+          client_state: String,
+          connection_id: String,
+          direction: Telnyx::Models::FaxQueuedWebhookEvent::Payload::direction,
+          fax_id: String,
+          from: String,
+          media_name: String,
+          original_media_url: String,
+          status: Telnyx::Models::FaxQueuedWebhookEvent::Payload::status,
+          to: String,
+          user_id: String
+        }
+
+        type direction = :inbound | :outbound
+
+        module Direction
+          extend Telnyx::Internal::Type::Enum
+
+          INBOUND: :inbound
+          OUTBOUND: :outbound
+
+          def self?.values: -> ::Array[Telnyx::Models::FaxQueuedWebhookEvent::Payload::direction]
+        end
+
+        type status = :queued
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          QUEUED: :queued
+
+          def self?.values: -> ::Array[Telnyx::Models::FaxQueuedWebhookEvent::Payload::status]
+        end
+      end
+
+      type record_type = :event
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        EVENT: :event
+
+        def self?.values: -> ::Array[Telnyx::Models::FaxQueuedWebhookEvent::record_type]
+      end
+    end
+  end
+end

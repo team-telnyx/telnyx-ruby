@@ -1,0 +1,71 @@
+module Telnyx
+  module Resources
+    class AI
+      class Conversations
+        attr_reader insight_groups: Telnyx::Resources::AI::Conversations::InsightGroups
+
+        attr_reader insights: Telnyx::Resources::AI::Conversations::Insights
+
+        attr_reader messages: Telnyx::Resources::AI::Conversations::Messages
+
+        def create: (
+          ?metadata: ::Hash[Symbol, String],
+          ?name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AI::Conversation
+
+        def retrieve: (
+          String conversation_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::ConversationRetrieveResponse
+
+        def update: (
+          String conversation_id,
+          ?metadata: ::Hash[Symbol, String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::ConversationUpdateResponse
+
+        def list: (
+          ?id: String,
+          ?created_at: String,
+          ?last_message_at: String,
+          ?limit: Integer,
+          ?metadata_assistant_id: String,
+          ?metadata_call_control_id: String,
+          ?metadata_telnyx_agent_target: String,
+          ?metadata_telnyx_conversation_channel: String,
+          ?metadata_telnyx_end_user_target: String,
+          ?name: String,
+          ?or_: String,
+          ?order: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::ConversationListResponse
+
+        def delete: (
+          String conversation_id,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def add_message: (
+          String conversation_id,
+          role: String,
+          ?content: String,
+          ?metadata: ::Hash[Symbol, Telnyx::Models::AI::ConversationAddMessageParams::metadata],
+          ?name: String,
+          ?sent_at: Time,
+          ?tool_call_id: String,
+          ?tool_calls: ::Array[::Hash[Symbol, top]],
+          ?tool_choice: Telnyx::Models::AI::ConversationAddMessageParams::tool_choice,
+          ?request_options: Telnyx::request_opts
+        ) -> top
+
+        def retrieve_conversations_insights: (
+          String conversation_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::ConversationRetrieveConversationsInsightsResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

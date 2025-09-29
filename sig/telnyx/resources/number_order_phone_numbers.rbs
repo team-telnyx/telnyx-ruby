@@ -1,0 +1,29 @@
+module Telnyx
+  module Resources
+    class NumberOrderPhoneNumbers
+      def retrieve: (
+        String number_order_phone_number_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NumberOrderPhoneNumberRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::NumberOrderPhoneNumberListParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NumberOrderPhoneNumberListResponse
+
+      def update_requirement_group: (
+        String id,
+        requirement_group_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NumberOrderPhoneNumberUpdateRequirementGroupResponse
+
+      def update_requirements: (
+        String number_order_phone_number_id,
+        ?regulatory_requirements: ::Array[Telnyx::UpdateRegulatoryRequirement],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NumberOrderPhoneNumberUpdateRequirementsResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

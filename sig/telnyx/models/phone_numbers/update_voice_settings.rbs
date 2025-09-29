@@ -1,0 +1,115 @@
+module Telnyx
+  module Models
+    module PhoneNumbers
+      type update_voice_settings =
+        {
+          call_forwarding: Telnyx::PhoneNumbers::CallForwarding,
+          call_recording: Telnyx::PhoneNumbers::CallRecording,
+          caller_id_name_enabled: bool,
+          cnam_listing: Telnyx::PhoneNumbers::CnamListing,
+          inbound_call_screening: Telnyx::Models::PhoneNumbers::UpdateVoiceSettings::inbound_call_screening,
+          media_features: Telnyx::PhoneNumbers::MediaFeatures,
+          tech_prefix_enabled: bool,
+          translated_number: String,
+          usage_payment_method: Telnyx::Models::PhoneNumbers::UpdateVoiceSettings::usage_payment_method
+        }
+
+      class UpdateVoiceSettings < Telnyx::Internal::Type::BaseModel
+        attr_reader call_forwarding: Telnyx::PhoneNumbers::CallForwarding?
+
+        def call_forwarding=: (
+          Telnyx::PhoneNumbers::CallForwarding
+        ) -> Telnyx::PhoneNumbers::CallForwarding
+
+        attr_reader call_recording: Telnyx::PhoneNumbers::CallRecording?
+
+        def call_recording=: (
+          Telnyx::PhoneNumbers::CallRecording
+        ) -> Telnyx::PhoneNumbers::CallRecording
+
+        attr_reader caller_id_name_enabled: bool?
+
+        def caller_id_name_enabled=: (bool) -> bool
+
+        attr_reader cnam_listing: Telnyx::PhoneNumbers::CnamListing?
+
+        def cnam_listing=: (
+          Telnyx::PhoneNumbers::CnamListing
+        ) -> Telnyx::PhoneNumbers::CnamListing
+
+        attr_reader inbound_call_screening: Telnyx::Models::PhoneNumbers::UpdateVoiceSettings::inbound_call_screening?
+
+        def inbound_call_screening=: (
+          Telnyx::Models::PhoneNumbers::UpdateVoiceSettings::inbound_call_screening
+        ) -> Telnyx::Models::PhoneNumbers::UpdateVoiceSettings::inbound_call_screening
+
+        attr_reader media_features: Telnyx::PhoneNumbers::MediaFeatures?
+
+        def media_features=: (
+          Telnyx::PhoneNumbers::MediaFeatures
+        ) -> Telnyx::PhoneNumbers::MediaFeatures
+
+        attr_reader tech_prefix_enabled: bool?
+
+        def tech_prefix_enabled=: (bool) -> bool
+
+        attr_reader translated_number: String?
+
+        def translated_number=: (String) -> String
+
+        attr_reader usage_payment_method: Telnyx::Models::PhoneNumbers::UpdateVoiceSettings::usage_payment_method?
+
+        def usage_payment_method=: (
+          Telnyx::Models::PhoneNumbers::UpdateVoiceSettings::usage_payment_method
+        ) -> Telnyx::Models::PhoneNumbers::UpdateVoiceSettings::usage_payment_method
+
+        def initialize: (
+          ?call_forwarding: Telnyx::PhoneNumbers::CallForwarding,
+          ?call_recording: Telnyx::PhoneNumbers::CallRecording,
+          ?caller_id_name_enabled: bool,
+          ?cnam_listing: Telnyx::PhoneNumbers::CnamListing,
+          ?inbound_call_screening: Telnyx::Models::PhoneNumbers::UpdateVoiceSettings::inbound_call_screening,
+          ?media_features: Telnyx::PhoneNumbers::MediaFeatures,
+          ?tech_prefix_enabled: bool,
+          ?translated_number: String,
+          ?usage_payment_method: Telnyx::Models::PhoneNumbers::UpdateVoiceSettings::usage_payment_method
+        ) -> void
+
+        def to_hash: -> {
+          call_forwarding: Telnyx::PhoneNumbers::CallForwarding,
+          call_recording: Telnyx::PhoneNumbers::CallRecording,
+          caller_id_name_enabled: bool,
+          cnam_listing: Telnyx::PhoneNumbers::CnamListing,
+          inbound_call_screening: Telnyx::Models::PhoneNumbers::UpdateVoiceSettings::inbound_call_screening,
+          media_features: Telnyx::PhoneNumbers::MediaFeatures,
+          tech_prefix_enabled: bool,
+          translated_number: String,
+          usage_payment_method: Telnyx::Models::PhoneNumbers::UpdateVoiceSettings::usage_payment_method
+        }
+
+        type inbound_call_screening = :disabled | :reject_calls | :flag_calls
+
+        module InboundCallScreening
+          extend Telnyx::Internal::Type::Enum
+
+          DISABLED: :disabled
+          REJECT_CALLS: :reject_calls
+          FLAG_CALLS: :flag_calls
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::UpdateVoiceSettings::inbound_call_screening]
+        end
+
+        type usage_payment_method = :"pay-per-minute" | :channel
+
+        module UsagePaymentMethod
+          extend Telnyx::Internal::Type::Enum
+
+          PAY_PER_MINUTE: :"pay-per-minute"
+          CHANNEL: :channel
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::UpdateVoiceSettings::usage_payment_method]
+        end
+      end
+    end
+  end
+end

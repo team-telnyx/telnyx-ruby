@@ -1,0 +1,32 @@
+module Telnyx
+  module Resources
+    class Texml
+      class Accounts
+        class Calls
+          class RecordingsJson
+            def recordings_json: (
+              String call_sid,
+              account_sid: String,
+              ?play_beep: bool,
+              ?recording_channels: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_channels,
+              ?recording_status_callback: String,
+              ?recording_status_callback_event: String,
+              ?recording_status_callback_method: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_status_callback_method,
+              ?recording_track: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_track,
+              ?send_recording_url: bool,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse
+
+            def retrieve_recordings_json: (
+              String call_sid,
+              account_sid: String,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRetrieveRecordingsJsonResponse
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,78 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_start_noise_suppression_params =
+        {
+          client_state: String,
+          command_id: String,
+          direction: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction,
+          noise_suppression_engine: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionStartNoiseSuppressionParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader command_id: String?
+
+        def command_id=: (String) -> String
+
+        attr_reader direction: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction?
+
+        def direction=: (
+          Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction
+        ) -> Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction
+
+        attr_reader noise_suppression_engine: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine?
+
+        def noise_suppression_engine=: (
+          Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine
+        ) -> Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine
+
+        def initialize: (
+          ?client_state: String,
+          ?command_id: String,
+          ?direction: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction,
+          ?noise_suppression_engine: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          client_state: String,
+          command_id: String,
+          direction: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction,
+          noise_suppression_engine: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type direction = :inbound | :outbound | :both
+
+        module Direction
+          extend Telnyx::Internal::Type::Enum
+
+          INBOUND: :inbound
+          OUTBOUND: :outbound
+          BOTH: :both
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction]
+        end
+
+        type noise_suppression_engine = :A | :B
+
+        module NoiseSuppressionEngine
+          extend Telnyx::Internal::Type::Enum
+
+          A: :A
+          B: :B
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine]
+        end
+      end
+    end
+  end
+end

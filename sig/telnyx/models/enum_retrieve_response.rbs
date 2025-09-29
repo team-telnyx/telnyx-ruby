@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    type enum_retrieve_response =
+      ::Array[Telnyx::Models::EnumRetrieveResponse::enum_list_response] | top
+
+    module EnumRetrieveResponse
+      extend Telnyx::Internal::Type::Union
+
+      type enum_list_response = String | top
+
+      module EnumListResponse
+        extend Telnyx::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Telnyx::Models::EnumRetrieveResponse::enum_list_response]
+      end
+
+      def self?.variants: -> ::Array[Telnyx::Models::enum_retrieve_response]
+
+      EnumListResponseArray: Telnyx::Internal::Type::Converter
+    end
+  end
+end

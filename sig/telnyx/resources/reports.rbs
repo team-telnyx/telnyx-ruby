@@ -1,0 +1,40 @@
+module Telnyx
+  module Resources
+    class Reports
+      attr_reader cdr_usage_reports: Telnyx::Resources::Reports::CdrUsageReports
+
+      attr_reader mdr_usage_reports: Telnyx::Resources::Reports::MdrUsageReports
+
+      def list_mdrs: (
+        ?id: String,
+        ?cld: String,
+        ?cli: String,
+        ?direction: Telnyx::Models::ReportListMdrsParams::direction,
+        ?end_date: String,
+        ?message_type: Telnyx::Models::ReportListMdrsParams::message_type,
+        ?profile: String,
+        ?start_date: String,
+        ?status: Telnyx::Models::ReportListMdrsParams::status,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ReportListMdrsResponse
+
+      def list_wdrs: (
+        ?id: String,
+        ?end_date: String,
+        ?imsi: String,
+        ?mcc: String,
+        ?mnc: String,
+        ?page: Telnyx::ReportListWdrsParams::Page,
+        ?phone_number: String,
+        ?sim_card_id: String,
+        ?sim_group_id: String,
+        ?sim_group_name: String,
+        ?sort: ::Array[String],
+        ?start_date: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ReportListWdrsResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type ip_connection_create_response = { data: Telnyx::IPConnection }
+
+    class IPConnectionCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::IPConnection?
+
+      def data=: (Telnyx::IPConnection) -> Telnyx::IPConnection
+
+      def initialize: (?data: Telnyx::IPConnection) -> void
+
+      def to_hash: -> { data: Telnyx::IPConnection }
+    end
+  end
+end

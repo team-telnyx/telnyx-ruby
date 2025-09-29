@@ -1,0 +1,60 @@
+module Telnyx
+  module Models
+    module PhoneNumbers
+      type csv_download =
+        {
+          id: String,
+          record_type: String,
+          status: Telnyx::Models::PhoneNumbers::CsvDownload::status,
+          url: String
+        }
+
+      class CsvDownload < Telnyx::Internal::Type::BaseModel
+        attr_reader status: Telnyx::Models::PhoneNumbers::CsvDownload::status?
+
+        def status=: (
+          Telnyx::Models::PhoneNumbers::CsvDownload::status
+        ) -> Telnyx::Models::PhoneNumbers::CsvDownload::status
+
+        attr_reader url: String?
+
+        def url=: (String) -> String
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?record_type: String,
+          ?status: Telnyx::Models::PhoneNumbers::CsvDownload::status,
+          ?url: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          record_type: String,
+          status: Telnyx::Models::PhoneNumbers::CsvDownload::status,
+          url: String
+        }
+
+        type status = :pending | :complete | :failed | :expired
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          COMPLETE: :complete
+          FAILED: :failed
+          EXPIRED: :expired
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::CsvDownload::status]
+        end
+      end
+    end
+  end
+end

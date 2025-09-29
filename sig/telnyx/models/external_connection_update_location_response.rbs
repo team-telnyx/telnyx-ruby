@@ -1,0 +1,55 @@
+module Telnyx
+  module Models
+    type external_connection_update_location_response =
+      { data: Telnyx::Models::ExternalConnectionUpdateLocationResponse::Data }
+
+    class ExternalConnectionUpdateLocationResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::ExternalConnectionUpdateLocationResponse::Data?
+
+      def data=: (
+        Telnyx::Models::ExternalConnectionUpdateLocationResponse::Data
+      ) -> Telnyx::Models::ExternalConnectionUpdateLocationResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::ExternalConnectionUpdateLocationResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::ExternalConnectionUpdateLocationResponse::Data
+      }
+
+      type data =
+        {
+          accepted_address_suggestions: bool,
+          location_id: String,
+          static_emergency_address_id: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader accepted_address_suggestions: bool?
+
+        def accepted_address_suggestions=: (bool) -> bool
+
+        attr_reader location_id: String?
+
+        def location_id=: (String) -> String
+
+        attr_reader static_emergency_address_id: String?
+
+        def static_emergency_address_id=: (String) -> String
+
+        def initialize: (
+          ?accepted_address_suggestions: bool,
+          ?location_id: String,
+          ?static_emergency_address_id: String
+        ) -> void
+
+        def to_hash: -> {
+          accepted_address_suggestions: bool,
+          location_id: String,
+          static_emergency_address_id: String
+        }
+      end
+    end
+  end
+end

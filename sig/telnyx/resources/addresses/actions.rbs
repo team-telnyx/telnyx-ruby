@@ -1,0 +1,25 @@
+module Telnyx
+  module Resources
+    class Addresses
+      class Actions
+        def accept_suggestions: (
+          String path_id,
+          ?body_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Addresses::ActionAcceptSuggestionsResponse
+
+        def validate: (
+          country_code: String,
+          postal_code: String,
+          street_address: String,
+          ?administrative_area: String,
+          ?extended_address: String,
+          ?locality: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Addresses::ActionValidateResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,17 @@
+module Telnyx
+  module Resources
+    class Storage
+      attr_reader buckets: Telnyx::Resources::Storage::Buckets
+
+      attr_reader migration_sources: Telnyx::Resources::Storage::MigrationSources
+
+      attr_reader migrations: Telnyx::Resources::Storage::Migrations
+
+      def list_migration_source_coverage: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::StorageListMigrationSourceCoverageResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

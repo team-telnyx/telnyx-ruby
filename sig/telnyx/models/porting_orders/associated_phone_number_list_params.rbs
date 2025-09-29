@@ -1,0 +1,137 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type associated_phone_number_list_params =
+        {
+          filter: Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Filter,
+          page: Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Page,
+          sort: Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Sort
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class AssociatedPhoneNumberListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter: Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Filter?
+
+        def filter=: (
+          Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Filter
+        ) -> Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Filter
+
+        attr_reader page: Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Page?
+
+        def page=: (
+          Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Page
+        ) -> Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Page
+
+        attr_reader sort: Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Sort?
+
+        def sort=: (
+          Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Sort
+        ) -> Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Sort
+
+        def initialize: (
+          ?filter: Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Filter,
+          ?page: Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Page,
+          ?sort: Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Sort,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter: Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Filter,
+          page: Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Page,
+          sort: Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Sort,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter =
+          {
+            action: Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Filter::action,
+            phone_number: String
+          }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader action: Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Filter::action?
+
+          def action=: (
+            Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Filter::action
+          ) -> Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Filter::action
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          def initialize: (
+            ?action: Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Filter::action,
+            ?phone_number: String
+          ) -> void
+
+          def to_hash: -> {
+            action: Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Filter::action,
+            phone_number: String
+          }
+
+          type action = :keep | :disconnect
+
+          module Action
+            extend Telnyx::Internal::Type::Enum
+
+            KEEP: :keep
+            DISCONNECT: :disconnect
+
+            def self?.values: -> ::Array[Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Filter::action]
+          end
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
+        end
+
+        type sort =
+          {
+            value: Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Sort::value
+          }
+
+        class Sort < Telnyx::Internal::Type::BaseModel
+          attr_reader value: Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Sort::value?
+
+          def value=: (
+            Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Sort::value
+          ) -> Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Sort::value
+
+          def initialize: (
+            ?value: Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Sort::value
+          ) -> void
+
+          def to_hash: -> {
+            value: Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Sort::value
+          }
+
+          type value = :"-created_at" | :created_at
+
+          module Value
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED_AT_DESC: :"-created_at"
+            CREATED_AT: :created_at
+
+            def self?.values: -> ::Array[Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Sort::value]
+          end
+        end
+      end
+    end
+  end
+end

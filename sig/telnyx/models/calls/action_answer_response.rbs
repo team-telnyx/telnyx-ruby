@@ -1,0 +1,40 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_answer_response =
+        { data: Telnyx::Models::Calls::ActionAnswerResponse::Data }
+
+      class ActionAnswerResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::Calls::ActionAnswerResponse::Data?
+
+        def data=: (
+          Telnyx::Models::Calls::ActionAnswerResponse::Data
+        ) -> Telnyx::Models::Calls::ActionAnswerResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::Calls::ActionAnswerResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::Calls::ActionAnswerResponse::Data
+        }
+
+        type data = { recording_id: String, result: String }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader recording_id: String?
+
+          def recording_id=: (String) -> String
+
+          attr_reader result: String?
+
+          def result=: (String) -> String
+
+          def initialize: (?recording_id: String, ?result: String) -> void
+
+          def to_hash: -> { recording_id: String, result: String }
+        end
+      end
+    end
+  end
+end

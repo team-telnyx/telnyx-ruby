@@ -1,0 +1,132 @@
+module Telnyx
+  module Models
+    class SimCardAction = SimCards::SimCardAction
+
+    module SimCards
+      type sim_card_action =
+        {
+          id: String,
+          action_type: Telnyx::Models::SimCards::SimCardAction::action_type,
+          created_at: String,
+          record_type: String,
+          settings: ::Hash[Symbol, top]?,
+          sim_card_id: String,
+          status: Telnyx::SimCards::SimCardAction::Status,
+          updated_at: String
+        }
+
+      class SimCardAction < Telnyx::Internal::Type::BaseModel
+        attr_reader status: Telnyx::SimCards::SimCardAction::Status?
+
+        def status=: (
+          Telnyx::SimCards::SimCardAction::Status
+        ) -> Telnyx::SimCards::SimCardAction::Status
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader action_type: Telnyx::Models::SimCards::SimCardAction::action_type?
+
+        def action_type=: (
+          Telnyx::Models::SimCards::SimCardAction::action_type
+        ) -> Telnyx::Models::SimCards::SimCardAction::action_type
+
+        attr_reader created_at: String?
+
+        def created_at=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_accessor settings: ::Hash[Symbol, top]?
+
+        attr_reader sim_card_id: String?
+
+        def sim_card_id=: (String) -> String
+
+        attr_reader updated_at: String?
+
+        def updated_at=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?action_type: Telnyx::Models::SimCards::SimCardAction::action_type,
+          ?created_at: String,
+          ?record_type: String,
+          ?settings: ::Hash[Symbol, top]?,
+          ?sim_card_id: String,
+          ?status: Telnyx::SimCards::SimCardAction::Status,
+          ?updated_at: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          action_type: Telnyx::Models::SimCards::SimCardAction::action_type,
+          created_at: String,
+          record_type: String,
+          settings: ::Hash[Symbol, top]?,
+          sim_card_id: String,
+          status: Telnyx::SimCards::SimCardAction::Status,
+          updated_at: String
+        }
+
+        type action_type =
+          :enable | :enable_standby_sim_card | :disable | :set_standby
+
+        module ActionType
+          extend Telnyx::Internal::Type::Enum
+
+          ENABLE: :enable
+          ENABLE_STANDBY_SIM_CARD: :enable_standby_sim_card
+          DISABLE: :disable
+          SET_STANDBY: :set_standby
+
+          def self?.values: -> ::Array[Telnyx::Models::SimCards::SimCardAction::action_type]
+        end
+
+        type status =
+          {
+            reason: String,
+            value: Telnyx::Models::SimCards::SimCardAction::Status::value
+          }
+
+        class Status < Telnyx::Internal::Type::BaseModel
+          attr_reader reason: String?
+
+          def reason=: (String) -> String
+
+          attr_reader value: Telnyx::Models::SimCards::SimCardAction::Status::value?
+
+          def value=: (
+            Telnyx::Models::SimCards::SimCardAction::Status::value
+          ) -> Telnyx::Models::SimCards::SimCardAction::Status::value
+
+          def initialize: (
+            ?reason: String,
+            ?value: Telnyx::Models::SimCards::SimCardAction::Status::value
+          ) -> void
+
+          def to_hash: -> {
+            reason: String,
+            value: Telnyx::Models::SimCards::SimCardAction::Status::value
+          }
+
+          type value = :"in-progress" | :completed | :failed | :interrupted
+
+          module Value
+            extend Telnyx::Internal::Type::Enum
+
+            IN_PROGRESS: :"in-progress"
+            COMPLETED: :completed
+            FAILED: :failed
+            INTERRUPTED: :interrupted
+
+            def self?.values: -> ::Array[Telnyx::Models::SimCards::SimCardAction::Status::value]
+          end
+        end
+      end
+    end
+  end
+end

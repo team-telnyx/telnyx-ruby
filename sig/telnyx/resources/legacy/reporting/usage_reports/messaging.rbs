@@ -1,0 +1,39 @@
+module Telnyx
+  module Resources
+    class Legacy
+      class Reporting
+        class UsageReports
+          class Messaging
+            def create: (
+              aggregation_type: Integer,
+              ?end_time: Time,
+              ?managed_accounts: ::Array[String],
+              ?profiles: ::Array[String],
+              ?select_all_managed_accounts: bool,
+              ?start_time: Time,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::UsageReports::MessagingCreateResponse
+
+            def retrieve: (
+              String id,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::UsageReports::MessagingRetrieveResponse
+
+            def list: (
+              ?page: Integer,
+              ?per_page: Integer,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::UsageReports::MessagingListResponse
+
+            def delete: (
+              String id,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::UsageReports::MessagingDeleteResponse
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

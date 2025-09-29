@@ -1,0 +1,12 @@
+module Telnyx
+  module Resources
+    class PortabilityChecks
+      def run: (
+        ?phone_numbers: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PortabilityCheckRunResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

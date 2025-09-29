@@ -1,0 +1,178 @@
+module Telnyx
+  module Models
+    type global_ip_assignments_usage_retrieve_response =
+      {
+        data: ::Array[Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data]
+      }
+
+    class GlobalIPAssignmentsUsageRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data]
+      ) -> ::Array[Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data]
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data]
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data]
+      }
+
+      type data =
+        {
+          global_ip: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::GlobalIP,
+          global_ip_assignment: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::GlobalIPAssignment,
+          received: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::Received,
+          timestamp: Time,
+          transmitted: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::Transmitted
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader global_ip: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::GlobalIP?
+
+        def global_ip=: (
+          Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::GlobalIP
+        ) -> Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::GlobalIP
+
+        attr_reader global_ip_assignment: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::GlobalIPAssignment?
+
+        def global_ip_assignment=: (
+          Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::GlobalIPAssignment
+        ) -> Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::GlobalIPAssignment
+
+        attr_reader received: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::Received?
+
+        def received=: (
+          Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::Received
+        ) -> Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::Received
+
+        attr_reader timestamp: Time?
+
+        def timestamp=: (Time) -> Time
+
+        attr_reader transmitted: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::Transmitted?
+
+        def transmitted=: (
+          Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::Transmitted
+        ) -> Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::Transmitted
+
+        def initialize: (
+          ?global_ip: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::GlobalIP,
+          ?global_ip_assignment: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::GlobalIPAssignment,
+          ?received: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::Received,
+          ?timestamp: Time,
+          ?transmitted: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::Transmitted
+        ) -> void
+
+        def to_hash: -> {
+          global_ip: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::GlobalIP,
+          global_ip_assignment: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::GlobalIPAssignment,
+          received: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::Received,
+          timestamp: Time,
+          transmitted: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::Transmitted
+        }
+
+        type global_ip = { id: String, ip_address: String }
+
+        class GlobalIP < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader ip_address: String?
+
+          def ip_address=: (String) -> String
+
+          def initialize: (?id: String, ?ip_address: String) -> void
+
+          def to_hash: -> { id: String, ip_address: String }
+        end
+
+        type global_ip_assignment =
+          {
+            id: String,
+            wireguard_peer: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::GlobalIPAssignment::WireguardPeer,
+            wireguard_peer_id: String
+          }
+
+        class GlobalIPAssignment < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader wireguard_peer: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::GlobalIPAssignment::WireguardPeer?
+
+          def wireguard_peer=: (
+            Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::GlobalIPAssignment::WireguardPeer
+          ) -> Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::GlobalIPAssignment::WireguardPeer
+
+          attr_reader wireguard_peer_id: String?
+
+          def wireguard_peer_id=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?wireguard_peer: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::GlobalIPAssignment::WireguardPeer,
+            ?wireguard_peer_id: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            wireguard_peer: Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse::Data::GlobalIPAssignment::WireguardPeer,
+            wireguard_peer_id: String
+          }
+
+          type wireguard_peer = { ip_address: String, name: String }
+
+          class WireguardPeer < Telnyx::Internal::Type::BaseModel
+            attr_reader ip_address: String?
+
+            def ip_address=: (String) -> String
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            def initialize: (?ip_address: String, ?name: String) -> void
+
+            def to_hash: -> { ip_address: String, name: String }
+          end
+        end
+
+        type received = { amount: Float, unit: String }
+
+        class Received < Telnyx::Internal::Type::BaseModel
+          attr_reader amount: Float?
+
+          def amount=: (Float) -> Float
+
+          attr_reader unit: String?
+
+          def unit=: (String) -> String
+
+          def initialize: (?amount: Float, ?unit: String) -> void
+
+          def to_hash: -> { amount: Float, unit: String }
+        end
+
+        type transmitted = { amount: Float, unit: String }
+
+        class Transmitted < Telnyx::Internal::Type::BaseModel
+          attr_reader amount: Float?
+
+          def amount=: (Float) -> Float
+
+          attr_reader unit: String?
+
+          def unit=: (String) -> String
+
+          def initialize: (?amount: Float, ?unit: String) -> void
+
+          def to_hash: -> { amount: Float, unit: String }
+        end
+      end
+    end
+  end
+end

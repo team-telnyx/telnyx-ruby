@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        type canary_deploy =
+          { versions: ::Array[Telnyx::AI::Assistants::VersionConfig] }
+
+        class CanaryDeploy < Telnyx::Internal::Type::BaseModel
+          attr_accessor versions: ::Array[Telnyx::AI::Assistants::VersionConfig]
+
+          def initialize: (
+            versions: ::Array[Telnyx::AI::Assistants::VersionConfig]
+          ) -> void
+
+          def to_hash: -> {
+            versions: ::Array[Telnyx::AI::Assistants::VersionConfig]
+          }
+        end
+      end
+    end
+  end
+end

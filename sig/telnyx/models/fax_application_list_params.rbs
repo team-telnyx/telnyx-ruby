@@ -1,0 +1,116 @@
+module Telnyx
+  module Models
+    type fax_application_list_params =
+      {
+        filter: Telnyx::FaxApplicationListParams::Filter,
+        page: Telnyx::FaxApplicationListParams::Page,
+        sort: Telnyx::Models::FaxApplicationListParams::sort
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class FaxApplicationListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::FaxApplicationListParams::Filter?
+
+      def filter=: (
+        Telnyx::FaxApplicationListParams::Filter
+      ) -> Telnyx::FaxApplicationListParams::Filter
+
+      attr_reader page: Telnyx::FaxApplicationListParams::Page?
+
+      def page=: (
+        Telnyx::FaxApplicationListParams::Page
+      ) -> Telnyx::FaxApplicationListParams::Page
+
+      attr_reader sort: Telnyx::Models::FaxApplicationListParams::sort?
+
+      def sort=: (
+        Telnyx::Models::FaxApplicationListParams::sort
+      ) -> Telnyx::Models::FaxApplicationListParams::sort
+
+      def initialize: (
+        ?filter: Telnyx::FaxApplicationListParams::Filter,
+        ?page: Telnyx::FaxApplicationListParams::Page,
+        ?sort: Telnyx::Models::FaxApplicationListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::FaxApplicationListParams::Filter,
+        page: Telnyx::FaxApplicationListParams::Page,
+        sort: Telnyx::Models::FaxApplicationListParams::sort,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          application_name: Telnyx::FaxApplicationListParams::Filter::ApplicationName,
+          outbound_voice_profile_id: String
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader application_name: Telnyx::FaxApplicationListParams::Filter::ApplicationName?
+
+        def application_name=: (
+          Telnyx::FaxApplicationListParams::Filter::ApplicationName
+        ) -> Telnyx::FaxApplicationListParams::Filter::ApplicationName
+
+        attr_reader outbound_voice_profile_id: String?
+
+        def outbound_voice_profile_id=: (String) -> String
+
+        def initialize: (
+          ?application_name: Telnyx::FaxApplicationListParams::Filter::ApplicationName,
+          ?outbound_voice_profile_id: String
+        ) -> void
+
+        def to_hash: -> {
+          application_name: Telnyx::FaxApplicationListParams::Filter::ApplicationName,
+          outbound_voice_profile_id: String
+        }
+
+        type application_name = { contains: String }
+
+        class ApplicationName < Telnyx::Internal::Type::BaseModel
+          attr_reader contains: String?
+
+          def contains=: (String) -> String
+
+          def initialize: (?contains: String) -> void
+
+          def to_hash: -> { contains: String }
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+
+      type sort = :created_at | :application_name | :active
+
+      module Sort
+        extend Telnyx::Internal::Type::Enum
+
+        CREATED_AT: :created_at
+        APPLICATION_NAME: :application_name
+        ACTIVE: :active
+
+        def self?.values: -> ::Array[Telnyx::Models::FaxApplicationListParams::sort]
+      end
+    end
+  end
+end

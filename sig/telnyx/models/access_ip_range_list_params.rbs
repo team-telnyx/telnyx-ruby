@@ -1,0 +1,163 @@
+module Telnyx
+  module Models
+    type access_ip_range_list_params =
+      {
+        filter: Telnyx::AccessIPRangeListParams::Filter,
+        page: Telnyx::AccessIPRangeListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class AccessIPRangeListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::AccessIPRangeListParams::Filter?
+
+      def filter=: (
+        Telnyx::AccessIPRangeListParams::Filter
+      ) -> Telnyx::AccessIPRangeListParams::Filter
+
+      attr_reader page: Telnyx::AccessIPRangeListParams::Page?
+
+      def page=: (
+        Telnyx::AccessIPRangeListParams::Page
+      ) -> Telnyx::AccessIPRangeListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::AccessIPRangeListParams::Filter,
+        ?page: Telnyx::AccessIPRangeListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::AccessIPRangeListParams::Filter,
+        page: Telnyx::AccessIPRangeListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          cidr_block: Telnyx::Models::AccessIPRangeListParams::Filter::cidr_block,
+          created_at: Telnyx::Models::AccessIPRangeListParams::Filter::created_at
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader cidr_block: Telnyx::Models::AccessIPRangeListParams::Filter::cidr_block?
+
+        def cidr_block=: (
+          Telnyx::Models::AccessIPRangeListParams::Filter::cidr_block
+        ) -> Telnyx::Models::AccessIPRangeListParams::Filter::cidr_block
+
+        attr_reader created_at: Telnyx::Models::AccessIPRangeListParams::Filter::created_at?
+
+        def created_at=: (
+          Telnyx::Models::AccessIPRangeListParams::Filter::created_at
+        ) -> Telnyx::Models::AccessIPRangeListParams::Filter::created_at
+
+        def initialize: (
+          ?cidr_block: Telnyx::Models::AccessIPRangeListParams::Filter::cidr_block,
+          ?created_at: Telnyx::Models::AccessIPRangeListParams::Filter::created_at
+        ) -> void
+
+        def to_hash: -> {
+          cidr_block: Telnyx::Models::AccessIPRangeListParams::Filter::cidr_block,
+          created_at: Telnyx::Models::AccessIPRangeListParams::Filter::created_at
+        }
+
+        type cidr_block =
+          String
+          | Telnyx::AccessIPRangeListParams::Filter::CidrBlock::CidrBlockPatternFilter
+
+        module CidrBlock
+          extend Telnyx::Internal::Type::Union
+
+          type cidr_block_pattern_filter =
+            { contains: String, endswith: String, startswith: String }
+
+          class CidrBlockPatternFilter < Telnyx::Internal::Type::BaseModel
+            attr_reader contains: String?
+
+            def contains=: (String) -> String
+
+            attr_reader endswith: String?
+
+            def endswith=: (String) -> String
+
+            attr_reader startswith: String?
+
+            def startswith=: (String) -> String
+
+            def initialize: (
+              ?contains: String,
+              ?endswith: String,
+              ?startswith: String
+            ) -> void
+
+            def to_hash: -> {
+              contains: String,
+              endswith: String,
+              startswith: String
+            }
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::AccessIPRangeListParams::Filter::cidr_block]
+        end
+
+        type created_at =
+          Time
+          | Telnyx::AccessIPRangeListParams::Filter::CreatedAt::DateRangeFilter
+
+        module CreatedAt
+          extend Telnyx::Internal::Type::Union
+
+          type date_range_filter = { gt: Time, gte: Time, lt: Time, lte: Time }
+
+          class DateRangeFilter < Telnyx::Internal::Type::BaseModel
+            attr_reader gt: Time?
+
+            def gt=: (Time) -> Time
+
+            attr_reader gte: Time?
+
+            def gte=: (Time) -> Time
+
+            attr_reader lt: Time?
+
+            def lt=: (Time) -> Time
+
+            attr_reader lte: Time?
+
+            def lte=: (Time) -> Time
+
+            def initialize: (
+              ?gt: Time,
+              ?gte: Time,
+              ?lt: Time,
+              ?lte: Time
+            ) -> void
+
+            def to_hash: -> { gt: Time, gte: Time, lt: Time, lte: Time }
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::AccessIPRangeListParams::Filter::created_at]
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

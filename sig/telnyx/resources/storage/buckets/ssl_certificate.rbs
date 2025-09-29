@@ -1,0 +1,28 @@
+module Telnyx
+  module Resources
+    class Storage
+      class Buckets
+        class SslCertificate
+          def create: (
+            String bucket_name,
+            ?certificate: Telnyx::Internal::file_input,
+            ?private_key: Telnyx::Internal::file_input,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Storage::Buckets::SslCertificateCreateResponse
+
+          def retrieve: (
+            String bucket_name,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Storage::Buckets::SslCertificateRetrieveResponse
+
+          def delete: (
+            String bucket_name,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Storage::Buckets::SslCertificateDeleteResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

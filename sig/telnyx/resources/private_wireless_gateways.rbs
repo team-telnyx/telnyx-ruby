@@ -1,0 +1,35 @@
+module Telnyx
+  module Resources
+    class PrivateWirelessGateways
+      def create: (
+        name: String,
+        network_id: String,
+        ?region_code: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PrivateWirelessGatewayCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PrivateWirelessGatewayRetrieveResponse
+
+      def list: (
+        ?filter_created_at: String,
+        ?filter_ip_range: String,
+        ?filter_name: String,
+        ?filter_region_code: String,
+        ?filter_updated_at: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PrivateWirelessGatewayListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PrivateWirelessGatewayDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

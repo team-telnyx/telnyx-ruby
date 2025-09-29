@@ -1,0 +1,109 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        module Transcriptions
+          type json_retrieve_recording_transcription_sid_json_response =
+            {
+              account_sid: String,
+              api_version: String,
+              call_sid: String,
+              date_created: Time,
+              date_updated: Time,
+              duration: String?,
+              recording_sid: String,
+              sid: String,
+              status: Telnyx::Models::Texml::Accounts::Transcriptions::JsonRetrieveRecordingTranscriptionSidJsonResponse::status,
+              transcription_text: String,
+              uri: String
+            }
+
+          class JsonRetrieveRecordingTranscriptionSidJsonResponse < Telnyx::Internal::Type::BaseModel
+            attr_reader account_sid: String?
+
+            def account_sid=: (String) -> String
+
+            attr_reader api_version: String?
+
+            def api_version=: (String) -> String
+
+            attr_reader call_sid: String?
+
+            def call_sid=: (String) -> String
+
+            attr_reader date_created: Time?
+
+            def date_created=: (Time) -> Time
+
+            attr_reader date_updated: Time?
+
+            def date_updated=: (Time) -> Time
+
+            attr_accessor duration: String?
+
+            attr_reader recording_sid: String?
+
+            def recording_sid=: (String) -> String
+
+            attr_reader sid: String?
+
+            def sid=: (String) -> String
+
+            attr_reader status: Telnyx::Models::Texml::Accounts::Transcriptions::JsonRetrieveRecordingTranscriptionSidJsonResponse::status?
+
+            def status=: (
+              Telnyx::Models::Texml::Accounts::Transcriptions::JsonRetrieveRecordingTranscriptionSidJsonResponse::status
+            ) -> Telnyx::Models::Texml::Accounts::Transcriptions::JsonRetrieveRecordingTranscriptionSidJsonResponse::status
+
+            attr_reader transcription_text: String?
+
+            def transcription_text=: (String) -> String
+
+            attr_reader uri: String?
+
+            def uri=: (String) -> String
+
+            def initialize: (
+              ?account_sid: String,
+              ?api_version: String,
+              ?call_sid: String,
+              ?date_created: Time,
+              ?date_updated: Time,
+              ?duration: String?,
+              ?recording_sid: String,
+              ?sid: String,
+              ?status: Telnyx::Models::Texml::Accounts::Transcriptions::JsonRetrieveRecordingTranscriptionSidJsonResponse::status,
+              ?transcription_text: String,
+              ?uri: String
+            ) -> void
+
+            def to_hash: -> {
+              account_sid: String,
+              api_version: String,
+              call_sid: String,
+              date_created: Time,
+              date_updated: Time,
+              duration: String?,
+              recording_sid: String,
+              sid: String,
+              status: Telnyx::Models::Texml::Accounts::Transcriptions::JsonRetrieveRecordingTranscriptionSidJsonResponse::status,
+              transcription_text: String,
+              uri: String
+            }
+
+            type status = :"in-progress" | :completed
+
+            module Status
+              extend Telnyx::Internal::Type::Enum
+
+              IN_PROGRESS: :"in-progress"
+              COMPLETED: :completed
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Transcriptions::JsonRetrieveRecordingTranscriptionSidJsonResponse::status]
+            end
+          end
+        end
+      end
+    end
+  end
+end

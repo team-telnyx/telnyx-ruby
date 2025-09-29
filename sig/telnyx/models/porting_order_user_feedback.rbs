@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    type porting_order_user_feedback =
+      { user_comment: String, user_rating: Integer }
+
+    class PortingOrderUserFeedback < Telnyx::Internal::Type::BaseModel
+      attr_reader user_comment: String?
+
+      def user_comment=: (String) -> String
+
+      attr_reader user_rating: Integer?
+
+      def user_rating=: (Integer) -> Integer
+
+      def initialize: (?user_comment: String, ?user_rating: Integer) -> void
+
+      def to_hash: -> { user_comment: String, user_rating: Integer }
+    end
+  end
+end

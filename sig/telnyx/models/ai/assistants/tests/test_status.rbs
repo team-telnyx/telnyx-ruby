@@ -1,0 +1,27 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        module TestStatus = Tests::TestStatus
+
+        module Tests
+          type test_status =
+            :pending | :starting | :running | :passed | :failed | :error
+
+          module TestStatus
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :pending
+            STARTING: :starting
+            RUNNING: :running
+            PASSED: :passed
+            FAILED: :failed
+            ERROR: :error
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::Assistants::Tests::test_status]
+          end
+        end
+      end
+    end
+  end
+end

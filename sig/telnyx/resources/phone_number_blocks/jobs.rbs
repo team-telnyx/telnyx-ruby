@@ -1,0 +1,26 @@
+module Telnyx
+  module Resources
+    class PhoneNumberBlocks
+      class Jobs
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumberBlocks::JobRetrieveResponse
+
+        def list: (
+          ?filter: Telnyx::PhoneNumberBlocks::JobListParams::Filter,
+          ?page: Telnyx::PhoneNumberBlocks::JobListParams::Page,
+          ?sort: Telnyx::Models::PhoneNumberBlocks::JobListParams::sort,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumberBlocks::JobListResponse
+
+        def delete_phone_number_block: (
+          phone_number_block_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumberBlocks::JobDeletePhoneNumberBlockResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

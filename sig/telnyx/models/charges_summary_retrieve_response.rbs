@@ -1,0 +1,241 @@
+module Telnyx
+  module Models
+    type charges_summary_retrieve_response =
+      { data: Telnyx::Models::ChargesSummaryRetrieveResponse::Data }
+
+    class ChargesSummaryRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::Models::ChargesSummaryRetrieveResponse::Data
+
+      def initialize: (
+        data: Telnyx::Models::ChargesSummaryRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::ChargesSummaryRetrieveResponse::Data
+      }
+
+      type data =
+        {
+          currency: String,
+          end_date: Date,
+          start_date: Date,
+          summary: Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Summary,
+          total: Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Total,
+          user_email: String,
+          user_id: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor currency: String
+
+        attr_accessor end_date: Date
+
+        attr_accessor start_date: Date
+
+        attr_accessor summary: Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Summary
+
+        attr_accessor total: Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Total
+
+        attr_accessor user_email: String
+
+        attr_accessor user_id: String
+
+        def initialize: (
+          currency: String,
+          end_date: Date,
+          start_date: Date,
+          summary: Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Summary,
+          total: Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Total,
+          user_email: String,
+          user_id: String
+        ) -> void
+
+        def to_hash: -> {
+          currency: String,
+          end_date: Date,
+          start_date: Date,
+          summary: Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Summary,
+          total: Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Total,
+          user_email: String,
+          user_id: String
+        }
+
+        type summary =
+          {
+            adjustments: ::Array[Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Summary::Adjustment],
+            lines: ::Array[Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Summary::line]
+          }
+
+        class Summary < Telnyx::Internal::Type::BaseModel
+          attr_accessor adjustments: ::Array[Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Summary::Adjustment]
+
+          attr_accessor lines: ::Array[Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Summary::line]
+
+          def initialize: (
+            adjustments: ::Array[Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Summary::Adjustment],
+            lines: ::Array[Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Summary::line]
+          ) -> void
+
+          def to_hash: -> {
+            adjustments: ::Array[Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Summary::Adjustment],
+            lines: ::Array[Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Summary::line]
+          }
+
+          type adjustment =
+            { amount: String, description: String, event_date: Date }
+
+          class Adjustment < Telnyx::Internal::Type::BaseModel
+            attr_accessor amount: String
+
+            attr_accessor description: String
+
+            attr_accessor event_date: Date
+
+            def initialize: (
+              amount: String,
+              description: String,
+              event_date: Date
+            ) -> void
+
+            def to_hash: -> {
+              amount: String,
+              description: String,
+              event_date: Date
+            }
+          end
+
+          type line =
+            Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Summary::Line::Comparative
+            | Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Summary::Line::Simple
+
+          module Line
+            extend Telnyx::Internal::Type::Union
+
+            type comparative =
+              {
+                alias_: String,
+                existing_this_month: Telnyx::MonthDetail,
+                name: String,
+                new_this_month: Telnyx::MonthDetail,
+                type: :comparative
+              }
+
+            class Comparative < Telnyx::Internal::Type::BaseModel
+              attr_accessor alias_: String
+
+              attr_accessor existing_this_month: Telnyx::MonthDetail
+
+              attr_accessor name: String
+
+              attr_accessor new_this_month: Telnyx::MonthDetail
+
+              attr_accessor type: :comparative
+
+              def initialize: (
+                alias_: String,
+                existing_this_month: Telnyx::MonthDetail,
+                name: String,
+                new_this_month: Telnyx::MonthDetail,
+                ?type: :comparative
+              ) -> void
+
+              def to_hash: -> {
+                alias_: String,
+                existing_this_month: Telnyx::MonthDetail,
+                name: String,
+                new_this_month: Telnyx::MonthDetail,
+                type: :comparative
+              }
+            end
+
+            type simple =
+              {
+                alias_: String,
+                amount: String,
+                name: String,
+                quantity: Integer,
+                type: :simple
+              }
+
+            class Simple < Telnyx::Internal::Type::BaseModel
+              attr_accessor alias_: String
+
+              attr_accessor amount: String
+
+              attr_accessor name: String
+
+              attr_accessor quantity: Integer
+
+              attr_accessor type: :simple
+
+              def initialize: (
+                alias_: String,
+                amount: String,
+                name: String,
+                quantity: Integer,
+                ?type: :simple
+              ) -> void
+
+              def to_hash: -> {
+                alias_: String,
+                amount: String,
+                name: String,
+                quantity: Integer,
+                type: :simple
+              }
+            end
+
+            def self?.variants: -> ::Array[Telnyx::Models::ChargesSummaryRetrieveResponse::Data::Summary::line]
+          end
+        end
+
+        type total =
+          {
+            credits: String,
+            existing_mrc: String,
+            grand_total: String,
+            ledger_adjustments: String,
+            new_mrc: String,
+            new_otc: String,
+            other: String
+          }
+
+        class Total < Telnyx::Internal::Type::BaseModel
+          attr_accessor credits: String
+
+          attr_accessor existing_mrc: String
+
+          attr_accessor grand_total: String
+
+          attr_accessor ledger_adjustments: String
+
+          attr_accessor new_mrc: String
+
+          attr_accessor new_otc: String
+
+          attr_accessor other: String
+
+          def initialize: (
+            credits: String,
+            existing_mrc: String,
+            grand_total: String,
+            ledger_adjustments: String,
+            new_mrc: String,
+            new_otc: String,
+            other: String
+          ) -> void
+
+          def to_hash: -> {
+            credits: String,
+            existing_mrc: String,
+            grand_total: String,
+            ledger_adjustments: String,
+            new_mrc: String,
+            new_otc: String,
+            other: String
+          }
+        end
+      end
+    end
+  end
+end

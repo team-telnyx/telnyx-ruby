@@ -1,0 +1,67 @@
+module Telnyx
+  module Models
+    type messaging_profile_list_params =
+      {
+        filter: Telnyx::MessagingProfileListParams::Filter,
+        page: Telnyx::MessagingProfileListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class MessagingProfileListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::MessagingProfileListParams::Filter?
+
+      def filter=: (
+        Telnyx::MessagingProfileListParams::Filter
+      ) -> Telnyx::MessagingProfileListParams::Filter
+
+      attr_reader page: Telnyx::MessagingProfileListParams::Page?
+
+      def page=: (
+        Telnyx::MessagingProfileListParams::Page
+      ) -> Telnyx::MessagingProfileListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::MessagingProfileListParams::Filter,
+        ?page: Telnyx::MessagingProfileListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::MessagingProfileListParams::Filter,
+        page: Telnyx::MessagingProfileListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter = { name: String }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        def initialize: (?name: String) -> void
+
+        def to_hash: -> { name: String }
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

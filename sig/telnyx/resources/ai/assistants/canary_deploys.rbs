@@ -1,0 +1,33 @@
+module Telnyx
+  module Resources
+    class AI
+      class Assistants
+        class CanaryDeploys
+          def create: (
+            String assistant_id,
+            versions: ::Array[Telnyx::AI::Assistants::VersionConfig],
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::Assistants::CanaryDeployResponse
+
+          def retrieve: (
+            String assistant_id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::Assistants::CanaryDeployResponse
+
+          def update: (
+            String assistant_id,
+            versions: ::Array[Telnyx::AI::Assistants::VersionConfig],
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::Assistants::CanaryDeployResponse
+
+          def delete: (
+            String assistant_id,
+            ?request_options: Telnyx::request_opts
+          ) -> nil
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

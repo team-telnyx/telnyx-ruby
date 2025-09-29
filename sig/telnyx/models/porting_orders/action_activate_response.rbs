@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type action_activate_response =
+        { data: Telnyx::PortingOrdersActivationJob }
+
+      class ActionActivateResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::PortingOrdersActivationJob?
+
+        def data=: (
+          Telnyx::PortingOrdersActivationJob
+        ) -> Telnyx::PortingOrdersActivationJob
+
+        def initialize: (?data: Telnyx::PortingOrdersActivationJob) -> void
+
+        def to_hash: -> { data: Telnyx::PortingOrdersActivationJob }
+      end
+    end
+  end
+end

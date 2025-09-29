@@ -1,0 +1,99 @@
+module Telnyx
+  module Models
+    type messaging_hosted_number_order_check_eligibility_response =
+      {
+        phone_numbers: ::Array[Telnyx::Models::MessagingHostedNumberOrderCheckEligibilityResponse::PhoneNumber]
+      }
+
+    class MessagingHostedNumberOrderCheckEligibilityResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader phone_numbers: ::Array[Telnyx::Models::MessagingHostedNumberOrderCheckEligibilityResponse::PhoneNumber]?
+
+      def phone_numbers=: (
+        ::Array[Telnyx::Models::MessagingHostedNumberOrderCheckEligibilityResponse::PhoneNumber]
+      ) -> ::Array[Telnyx::Models::MessagingHostedNumberOrderCheckEligibilityResponse::PhoneNumber]
+
+      def initialize: (
+        ?phone_numbers: ::Array[Telnyx::Models::MessagingHostedNumberOrderCheckEligibilityResponse::PhoneNumber]
+      ) -> void
+
+      def to_hash: -> {
+        phone_numbers: ::Array[Telnyx::Models::MessagingHostedNumberOrderCheckEligibilityResponse::PhoneNumber]
+      }
+
+      type phone_number =
+        {
+          detail: String,
+          eligible: bool,
+          eligible_status: Telnyx::Models::MessagingHostedNumberOrderCheckEligibilityResponse::PhoneNumber::eligible_status,
+          phone_number: String
+        }
+
+      class PhoneNumber < Telnyx::Internal::Type::BaseModel
+        attr_reader detail: String?
+
+        def detail=: (String) -> String
+
+        attr_reader eligible: bool?
+
+        def eligible=: (bool) -> bool
+
+        attr_reader eligible_status: Telnyx::Models::MessagingHostedNumberOrderCheckEligibilityResponse::PhoneNumber::eligible_status?
+
+        def eligible_status=: (
+          Telnyx::Models::MessagingHostedNumberOrderCheckEligibilityResponse::PhoneNumber::eligible_status
+        ) -> Telnyx::Models::MessagingHostedNumberOrderCheckEligibilityResponse::PhoneNumber::eligible_status
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        def initialize: (
+          ?detail: String,
+          ?eligible: bool,
+          ?eligible_status: Telnyx::Models::MessagingHostedNumberOrderCheckEligibilityResponse::PhoneNumber::eligible_status,
+          ?phone_number: String
+        ) -> void
+
+        def to_hash: -> {
+          detail: String,
+          eligible: bool,
+          eligible_status: Telnyx::Models::MessagingHostedNumberOrderCheckEligibilityResponse::PhoneNumber::eligible_status,
+          phone_number: String
+        }
+
+        type eligible_status =
+          :NUMBER_CAN_NOT_BE_REPEATED
+          | :NUMBER_CAN_NOT_BE_VALIDATED
+          | :NUMBER_CAN_NOT_BE_WIRELESS
+          | :NUMBER_CAN_NOT_BE_ACTIVE_IN_YOUR_ACCOUNT
+          | :NUMBER_CAN_NOT_HOSTED_WITH_A_TELNYX_SUBSCRIBER
+          | :NUMBER_CAN_NOT_BE_IN_TELNYX
+          | :NUMBER_IS_NOT_A_US_NUMBER
+          | :NUMBER_IS_NOT_A_VALID_ROUTING_NUMBER
+          | :NUMBER_IS_NOT_IN_E164_FORMAT
+          | :BILLING_ACCOUNT_CHECK_FAILED
+          | :BILLING_ACCOUNT_IS_ABOLISHED
+          | :ELIGIBLE
+
+        module EligibleStatus
+          extend Telnyx::Internal::Type::Enum
+
+          NUMBER_CAN_NOT_BE_REPEATED: :NUMBER_CAN_NOT_BE_REPEATED
+          NUMBER_CAN_NOT_BE_VALIDATED: :NUMBER_CAN_NOT_BE_VALIDATED
+          NUMBER_CAN_NOT_BE_WIRELESS: :NUMBER_CAN_NOT_BE_WIRELESS
+          NUMBER_CAN_NOT_BE_ACTIVE_IN_YOUR_ACCOUNT: :NUMBER_CAN_NOT_BE_ACTIVE_IN_YOUR_ACCOUNT
+          NUMBER_CAN_NOT_HOSTED_WITH_A_TELNYX_SUBSCRIBER: :NUMBER_CAN_NOT_HOSTED_WITH_A_TELNYX_SUBSCRIBER
+          NUMBER_CAN_NOT_BE_IN_TELNYX: :NUMBER_CAN_NOT_BE_IN_TELNYX
+          NUMBER_IS_NOT_A_US_NUMBER: :NUMBER_IS_NOT_A_US_NUMBER
+          NUMBER_IS_NOT_A_VALID_ROUTING_NUMBER: :NUMBER_IS_NOT_A_VALID_ROUTING_NUMBER
+          NUMBER_IS_NOT_IN_E164_FORMAT: :NUMBER_IS_NOT_IN_E164_FORMAT
+          BILLING_ACCOUNT_CHECK_FAILED: :BILLING_ACCOUNT_CHECK_FAILED
+          BILLING_ACCOUNT_IS_ABOLISHED: :BILLING_ACCOUNT_IS_ABOLISHED
+          ELIGIBLE: :ELIGIBLE
+
+          def self?.values: -> ::Array[Telnyx::Models::MessagingHostedNumberOrderCheckEligibilityResponse::PhoneNumber::eligible_status]
+        end
+      end
+    end
+  end
+end

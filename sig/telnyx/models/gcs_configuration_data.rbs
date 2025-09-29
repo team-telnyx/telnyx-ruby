@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    type gcs_configuration_data = { bucket: String, credentials: String }
+
+    class GcsConfigurationData < Telnyx::Internal::Type::BaseModel
+      attr_reader bucket: String?
+
+      def bucket=: (String) -> String
+
+      attr_reader credentials: String?
+
+      def credentials=: (String) -> String
+
+      def initialize: (?bucket: String, ?credentials: String) -> void
+
+      def to_hash: -> { bucket: String, credentials: String }
+    end
+  end
+end

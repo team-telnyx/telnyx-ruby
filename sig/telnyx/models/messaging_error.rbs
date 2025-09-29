@@ -1,0 +1,64 @@
+module Telnyx
+  module Models
+    type messaging_error =
+      {
+        code: String,
+        title: String,
+        detail: String,
+        meta: top,
+        source: Telnyx::MessagingError::Source
+      }
+
+    class MessagingError < Telnyx::Internal::Type::BaseModel
+      attr_accessor code: String
+
+      attr_accessor title: String
+
+      attr_reader detail: String?
+
+      def detail=: (String) -> String
+
+      attr_reader meta: top?
+
+      def meta=: (top) -> top
+
+      attr_reader source: Telnyx::MessagingError::Source?
+
+      def source=: (
+        Telnyx::MessagingError::Source
+      ) -> Telnyx::MessagingError::Source
+
+      def initialize: (
+        code: String,
+        title: String,
+        ?detail: String,
+        ?meta: top,
+        ?source: Telnyx::MessagingError::Source
+      ) -> void
+
+      def to_hash: -> {
+        code: String,
+        title: String,
+        detail: String,
+        meta: top,
+        source: Telnyx::MessagingError::Source
+      }
+
+      type source = { parameter: String, pointer: String }
+
+      class Source < Telnyx::Internal::Type::BaseModel
+        attr_reader parameter: String?
+
+        def parameter=: (String) -> String
+
+        attr_reader pointer: String?
+
+        def pointer=: (String) -> String
+
+        def initialize: (?parameter: String, ?pointer: String) -> void
+
+        def to_hash: -> { parameter: String, pointer: String }
+      end
+    end
+  end
+end

@@ -1,0 +1,318 @@
+module Telnyx
+  module Models
+    type number_lookup_retrieve_response =
+      { data: Telnyx::Models::NumberLookupRetrieveResponse::Data }
+
+    class NumberLookupRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::NumberLookupRetrieveResponse::Data?
+
+      def data=: (
+        Telnyx::Models::NumberLookupRetrieveResponse::Data
+      ) -> Telnyx::Models::NumberLookupRetrieveResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::NumberLookupRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::NumberLookupRetrieveResponse::Data
+      }
+
+      type data =
+        {
+          caller_name: Telnyx::Models::NumberLookupRetrieveResponse::Data::CallerName,
+          carrier: Telnyx::Models::NumberLookupRetrieveResponse::Data::Carrier,
+          country_code: String,
+          fraud: String,
+          national_format: String,
+          phone_number: String,
+          portability: Telnyx::Models::NumberLookupRetrieveResponse::Data::Portability,
+          record_type: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader caller_name: Telnyx::Models::NumberLookupRetrieveResponse::Data::CallerName?
+
+        def caller_name=: (
+          Telnyx::Models::NumberLookupRetrieveResponse::Data::CallerName
+        ) -> Telnyx::Models::NumberLookupRetrieveResponse::Data::CallerName
+
+        attr_reader carrier: Telnyx::Models::NumberLookupRetrieveResponse::Data::Carrier?
+
+        def carrier=: (
+          Telnyx::Models::NumberLookupRetrieveResponse::Data::Carrier
+        ) -> Telnyx::Models::NumberLookupRetrieveResponse::Data::Carrier
+
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader fraud: String?
+
+        def fraud=: (String) -> String
+
+        attr_reader national_format: String?
+
+        def national_format=: (String) -> String
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader portability: Telnyx::Models::NumberLookupRetrieveResponse::Data::Portability?
+
+        def portability=: (
+          Telnyx::Models::NumberLookupRetrieveResponse::Data::Portability
+        ) -> Telnyx::Models::NumberLookupRetrieveResponse::Data::Portability
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?caller_name: Telnyx::Models::NumberLookupRetrieveResponse::Data::CallerName,
+          ?carrier: Telnyx::Models::NumberLookupRetrieveResponse::Data::Carrier,
+          ?country_code: String,
+          ?fraud: String,
+          ?national_format: String,
+          ?phone_number: String,
+          ?portability: Telnyx::Models::NumberLookupRetrieveResponse::Data::Portability,
+          ?record_type: String
+        ) -> void
+
+        def to_hash: -> {
+          caller_name: Telnyx::Models::NumberLookupRetrieveResponse::Data::CallerName,
+          carrier: Telnyx::Models::NumberLookupRetrieveResponse::Data::Carrier,
+          country_code: String,
+          fraud: String,
+          national_format: String,
+          phone_number: String,
+          portability: Telnyx::Models::NumberLookupRetrieveResponse::Data::Portability,
+          record_type: String
+        }
+
+        type caller_name = { caller_name: String, error_code: String }
+
+        class CallerName < Telnyx::Internal::Type::BaseModel
+          attr_reader caller_name: String?
+
+          def caller_name=: (String) -> String
+
+          attr_reader error_code: String?
+
+          def error_code=: (String) -> String
+
+          def initialize: (?caller_name: String, ?error_code: String) -> void
+
+          def to_hash: -> { caller_name: String, error_code: String }
+        end
+
+        type carrier =
+          {
+            error_code: String,
+            mobile_country_code: String,
+            mobile_network_code: String,
+            name: String,
+            normalized_carrier: String,
+            type: Telnyx::Models::NumberLookupRetrieveResponse::Data::Carrier::type_
+          }
+
+        class Carrier < Telnyx::Internal::Type::BaseModel
+          attr_reader error_code: String?
+
+          def error_code=: (String) -> String
+
+          attr_reader mobile_country_code: String?
+
+          def mobile_country_code=: (String) -> String
+
+          attr_reader mobile_network_code: String?
+
+          def mobile_network_code=: (String) -> String
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader normalized_carrier: String?
+
+          def normalized_carrier=: (String) -> String
+
+          attr_reader type: Telnyx::Models::NumberLookupRetrieveResponse::Data::Carrier::type_?
+
+          def type=: (
+            Telnyx::Models::NumberLookupRetrieveResponse::Data::Carrier::type_
+          ) -> Telnyx::Models::NumberLookupRetrieveResponse::Data::Carrier::type_
+
+          def initialize: (
+            ?error_code: String,
+            ?mobile_country_code: String,
+            ?mobile_network_code: String,
+            ?name: String,
+            ?normalized_carrier: String,
+            ?type: Telnyx::Models::NumberLookupRetrieveResponse::Data::Carrier::type_
+          ) -> void
+
+          def to_hash: -> {
+            error_code: String,
+            mobile_country_code: String,
+            mobile_network_code: String,
+            name: String,
+            normalized_carrier: String,
+            type: Telnyx::Models::NumberLookupRetrieveResponse::Data::Carrier::type_
+          }
+
+          type type_ =
+            :"fixed line"
+            | :mobile
+            | :voip
+            | :"fixed line or mobile"
+            | :"toll free"
+            | :"premium rate"
+            | :"shared cost"
+            | :"personal number"
+            | :pager
+            | :uan
+            | :voicemail
+            | :unknown
+
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            FIXED_LINE: :"fixed line"
+            MOBILE: :mobile
+            VOIP: :voip
+            FIXED_LINE_OR_MOBILE: :"fixed line or mobile"
+            TOLL_FREE: :"toll free"
+            PREMIUM_RATE: :"premium rate"
+            SHARED_COST: :"shared cost"
+            PERSONAL_NUMBER: :"personal number"
+            PAGER: :pager
+            UAN: :uan
+            VOICEMAIL: :voicemail
+            UNKNOWN: :unknown
+
+            def self?.values: -> ::Array[Telnyx::Models::NumberLookupRetrieveResponse::Data::Carrier::type_]
+          end
+        end
+
+        type portability =
+          {
+            altspid: String,
+            altspid_carrier_name: String,
+            altspid_carrier_type: String,
+            city: String,
+            line_type: String,
+            lrn: String,
+            ocn: String,
+            ported_date: String,
+            ported_status: Telnyx::Models::NumberLookupRetrieveResponse::Data::Portability::ported_status,
+            spid: String,
+            spid_carrier_name: String,
+            spid_carrier_type: String,
+            state: String
+          }
+
+        class Portability < Telnyx::Internal::Type::BaseModel
+          attr_reader altspid: String?
+
+          def altspid=: (String) -> String
+
+          attr_reader altspid_carrier_name: String?
+
+          def altspid_carrier_name=: (String) -> String
+
+          attr_reader altspid_carrier_type: String?
+
+          def altspid_carrier_type=: (String) -> String
+
+          attr_reader city: String?
+
+          def city=: (String) -> String
+
+          attr_reader line_type: String?
+
+          def line_type=: (String) -> String
+
+          attr_reader lrn: String?
+
+          def lrn=: (String) -> String
+
+          attr_reader ocn: String?
+
+          def ocn=: (String) -> String
+
+          attr_reader ported_date: String?
+
+          def ported_date=: (String) -> String
+
+          attr_reader ported_status: Telnyx::Models::NumberLookupRetrieveResponse::Data::Portability::ported_status?
+
+          def ported_status=: (
+            Telnyx::Models::NumberLookupRetrieveResponse::Data::Portability::ported_status
+          ) -> Telnyx::Models::NumberLookupRetrieveResponse::Data::Portability::ported_status
+
+          attr_reader spid: String?
+
+          def spid=: (String) -> String
+
+          attr_reader spid_carrier_name: String?
+
+          def spid_carrier_name=: (String) -> String
+
+          attr_reader spid_carrier_type: String?
+
+          def spid_carrier_type=: (String) -> String
+
+          attr_reader state: String?
+
+          def state=: (String) -> String
+
+          def initialize: (
+            ?altspid: String,
+            ?altspid_carrier_name: String,
+            ?altspid_carrier_type: String,
+            ?city: String,
+            ?line_type: String,
+            ?lrn: String,
+            ?ocn: String,
+            ?ported_date: String,
+            ?ported_status: Telnyx::Models::NumberLookupRetrieveResponse::Data::Portability::ported_status,
+            ?spid: String,
+            ?spid_carrier_name: String,
+            ?spid_carrier_type: String,
+            ?state: String
+          ) -> void
+
+          def to_hash: -> {
+            altspid: String,
+            altspid_carrier_name: String,
+            altspid_carrier_type: String,
+            city: String,
+            line_type: String,
+            lrn: String,
+            ocn: String,
+            ported_date: String,
+            ported_status: Telnyx::Models::NumberLookupRetrieveResponse::Data::Portability::ported_status,
+            spid: String,
+            spid_carrier_name: String,
+            spid_carrier_type: String,
+            state: String
+          }
+
+          type ported_status = :Y | :N | :""
+
+          module PortedStatus
+            extend Telnyx::Internal::Type::Enum
+
+            Y: :Y
+            N: :N
+            EMPTY: :""
+
+            def self?.values: -> ::Array[Telnyx::Models::NumberLookupRetrieveResponse::Data::Portability::ported_status]
+          end
+        end
+      end
+    end
+  end
+end

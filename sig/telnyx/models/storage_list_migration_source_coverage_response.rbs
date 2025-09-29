@@ -1,0 +1,71 @@
+module Telnyx
+  module Models
+    type storage_list_migration_source_coverage_response =
+      {
+        data: ::Array[Telnyx::Models::StorageListMigrationSourceCoverageResponse::Data],
+        meta: Telnyx::Storage::Buckets::PaginationMetaSimple
+      }
+
+    class StorageListMigrationSourceCoverageResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::StorageListMigrationSourceCoverageResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::StorageListMigrationSourceCoverageResponse::Data]
+      ) -> ::Array[Telnyx::Models::StorageListMigrationSourceCoverageResponse::Data]
+
+      attr_reader meta: Telnyx::Storage::Buckets::PaginationMetaSimple?
+
+      def meta=: (
+        Telnyx::Storage::Buckets::PaginationMetaSimple
+      ) -> Telnyx::Storage::Buckets::PaginationMetaSimple
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::StorageListMigrationSourceCoverageResponse::Data],
+        ?meta: Telnyx::Storage::Buckets::PaginationMetaSimple
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::StorageListMigrationSourceCoverageResponse::Data],
+        meta: Telnyx::Storage::Buckets::PaginationMetaSimple
+      }
+
+      type data =
+        {
+          provider: Telnyx::Models::StorageListMigrationSourceCoverageResponse::Data::provider,
+          source_region: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader provider: Telnyx::Models::StorageListMigrationSourceCoverageResponse::Data::provider?
+
+        def provider=: (
+          Telnyx::Models::StorageListMigrationSourceCoverageResponse::Data::provider
+        ) -> Telnyx::Models::StorageListMigrationSourceCoverageResponse::Data::provider
+
+        attr_reader source_region: String?
+
+        def source_region=: (String) -> String
+
+        def initialize: (
+          ?provider: Telnyx::Models::StorageListMigrationSourceCoverageResponse::Data::provider,
+          ?source_region: String
+        ) -> void
+
+        def to_hash: -> {
+          provider: Telnyx::Models::StorageListMigrationSourceCoverageResponse::Data::provider,
+          source_region: String
+        }
+
+        type provider = :aws
+
+        module Provider
+          extend Telnyx::Internal::Type::Enum
+
+          AWS: :aws
+
+          def self?.values: -> ::Array[Telnyx::Models::StorageListMigrationSourceCoverageResponse::Data::provider]
+        end
+      end
+    end
+  end
+end

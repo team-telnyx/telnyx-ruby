@@ -1,0 +1,26 @@
+module Telnyx
+  module Models
+    module AI
+      type inference_embedding_bucket_ids =
+        { bucket_ids: ::Array[String], max_num_results: Integer }
+
+      class InferenceEmbeddingBucketIDs < Telnyx::Internal::Type::BaseModel
+        attr_accessor bucket_ids: ::Array[String]
+
+        attr_reader max_num_results: Integer?
+
+        def max_num_results=: (Integer) -> Integer
+
+        def initialize: (
+          bucket_ids: ::Array[String],
+          ?max_num_results: Integer
+        ) -> void
+
+        def to_hash: -> {
+          bucket_ids: ::Array[String],
+          max_num_results: Integer
+        }
+      end
+    end
+  end
+end

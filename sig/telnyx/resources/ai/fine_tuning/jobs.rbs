@@ -1,0 +1,33 @@
+module Telnyx
+  module Resources
+    class AI
+      class FineTuning
+        class Jobs
+          def create: (
+            model: String,
+            training_file: String,
+            ?hyperparameters: Telnyx::AI::FineTuning::JobCreateParams::Hyperparameters,
+            ?suffix: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::FineTuning::FineTuningJob
+
+          def retrieve: (
+            String job_id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::FineTuning::FineTuningJob
+
+          def list: (
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::FineTuning::JobListResponse
+
+          def cancel: (
+            String job_id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::FineTuning::FineTuningJob
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

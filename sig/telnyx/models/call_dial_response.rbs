@@ -1,0 +1,99 @@
+module Telnyx
+  module Models
+    type call_dial_response = { data: Telnyx::Models::CallDialResponse::Data }
+
+    class CallDialResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::CallDialResponse::Data?
+
+      def data=: (
+        Telnyx::Models::CallDialResponse::Data
+      ) -> Telnyx::Models::CallDialResponse::Data
+
+      def initialize: (?data: Telnyx::Models::CallDialResponse::Data) -> void
+
+      def to_hash: -> { data: Telnyx::Models::CallDialResponse::Data }
+
+      type data =
+        {
+          call_control_id: String,
+          call_leg_id: String,
+          call_session_id: String,
+          is_alive: bool,
+          record_type: Telnyx::Models::CallDialResponse::Data::record_type,
+          call_duration: Integer,
+          client_state: String,
+          end_time: String,
+          recording_id: String,
+          start_time: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor call_control_id: String
+
+        attr_accessor call_leg_id: String
+
+        attr_accessor call_session_id: String
+
+        attr_accessor is_alive: bool
+
+        attr_accessor record_type: Telnyx::Models::CallDialResponse::Data::record_type
+
+        attr_reader call_duration: Integer?
+
+        def call_duration=: (Integer) -> Integer
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader end_time: String?
+
+        def end_time=: (String) -> String
+
+        attr_reader recording_id: String?
+
+        def recording_id=: (String) -> String
+
+        attr_reader start_time: String?
+
+        def start_time=: (String) -> String
+
+        def initialize: (
+          call_control_id: String,
+          call_leg_id: String,
+          call_session_id: String,
+          is_alive: bool,
+          record_type: Telnyx::Models::CallDialResponse::Data::record_type,
+          ?call_duration: Integer,
+          ?client_state: String,
+          ?end_time: String,
+          ?recording_id: String,
+          ?start_time: String
+        ) -> void
+
+        def to_hash: -> {
+          call_control_id: String,
+          call_leg_id: String,
+          call_session_id: String,
+          is_alive: bool,
+          record_type: Telnyx::Models::CallDialResponse::Data::record_type,
+          call_duration: Integer,
+          client_state: String,
+          end_time: String,
+          recording_id: String,
+          start_time: String
+        }
+
+        type record_type = :call
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          CALL: :call
+
+          def self?.values: -> ::Array[Telnyx::Models::CallDialResponse::Data::record_type]
+        end
+      end
+    end
+  end
+end

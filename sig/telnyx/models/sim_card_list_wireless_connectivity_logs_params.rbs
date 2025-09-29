@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    type sim_card_list_wireless_connectivity_logs_params =
+      { page_number: Integer, page_size: Integer }
+      & Telnyx::Internal::Type::request_parameters
+
+    class SimCardListWirelessConnectivityLogsParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader page_number: Integer?
+
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      def initialize: (
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        page_number: Integer,
+        page_size: Integer,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

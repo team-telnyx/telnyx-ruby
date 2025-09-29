@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    module AI
+      type messaging_settings =
+        {
+          default_messaging_profile_id: String,
+          delivery_status_webhook_url: String
+        }
+
+      class MessagingSettings < Telnyx::Internal::Type::BaseModel
+        attr_reader default_messaging_profile_id: String?
+
+        def default_messaging_profile_id=: (String) -> String
+
+        attr_reader delivery_status_webhook_url: String?
+
+        def delivery_status_webhook_url=: (String) -> String
+
+        def initialize: (
+          ?default_messaging_profile_id: String,
+          ?delivery_status_webhook_url: String
+        ) -> void
+
+        def to_hash: -> {
+          default_messaging_profile_id: String,
+          delivery_status_webhook_url: String
+        }
+      end
+    end
+  end
+end

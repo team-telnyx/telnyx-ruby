@@ -1,0 +1,81 @@
+module Telnyx
+  module Models
+    type messaging_hosted_number_order_create_verification_codes_response =
+      {
+        data: ::Array[Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::data]
+      }
+
+    class MessagingHostedNumberOrderCreateVerificationCodesResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::data]
+
+      def initialize: (
+        data: ::Array[Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::data]
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::data]
+      }
+
+      type data =
+        Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeSuccess
+        | Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeError
+
+      module Data
+        extend Telnyx::Internal::Type::Union
+
+        type verification_code_success =
+          {
+            phone_number: String,
+            type: Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeSuccess::type_,
+            verification_code_id: String
+          }
+
+        class VerificationCodeSuccess < Telnyx::Internal::Type::BaseModel
+          attr_accessor phone_number: String
+
+          attr_accessor type: Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeSuccess::type_
+
+          attr_accessor verification_code_id: String
+
+          def initialize: (
+            phone_number: String,
+            type: Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeSuccess::type_,
+            verification_code_id: String
+          ) -> void
+
+          def to_hash: -> {
+            phone_number: String,
+            type: Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeSuccess::type_,
+            verification_code_id: String
+          }
+
+          type type_ = :sms | :call | :flashcall
+
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            SMS: :sms
+            CALL: :call
+            FLASHCALL: :flashcall
+
+            def self?.values: -> ::Array[Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeSuccess::type_]
+          end
+        end
+
+        type verification_code_error = { error: String, phone_number: String }
+
+        class VerificationCodeError < Telnyx::Internal::Type::BaseModel
+          attr_accessor error: String
+
+          attr_accessor phone_number: String
+
+          def initialize: (error: String, phone_number: String) -> void
+
+          def to_hash: -> { error: String, phone_number: String }
+        end
+
+        def self?.variants: -> ::Array[Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::data]
+      end
+    end
+  end
+end

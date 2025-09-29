@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module NumberReservations
+      type action_extend_response = { data: Telnyx::NumberReservation }
+
+      class ActionExtendResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::NumberReservation?
+
+        def data=: (Telnyx::NumberReservation) -> Telnyx::NumberReservation
+
+        def initialize: (?data: Telnyx::NumberReservation) -> void
+
+        def to_hash: -> { data: Telnyx::NumberReservation }
+      end
+    end
+  end
+end

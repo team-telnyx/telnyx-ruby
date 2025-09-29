@@ -1,0 +1,33 @@
+module Telnyx
+  module Models
+    type porting_order_end_user =
+      {
+        admin: Telnyx::PortingOrderEndUserAdmin,
+        location: Telnyx::PortingOrderEndUserLocation
+      }
+
+    class PortingOrderEndUser < Telnyx::Internal::Type::BaseModel
+      attr_reader admin: Telnyx::PortingOrderEndUserAdmin?
+
+      def admin=: (
+        Telnyx::PortingOrderEndUserAdmin
+      ) -> Telnyx::PortingOrderEndUserAdmin
+
+      attr_reader location: Telnyx::PortingOrderEndUserLocation?
+
+      def location=: (
+        Telnyx::PortingOrderEndUserLocation
+      ) -> Telnyx::PortingOrderEndUserLocation
+
+      def initialize: (
+        ?admin: Telnyx::PortingOrderEndUserAdmin,
+        ?location: Telnyx::PortingOrderEndUserLocation
+      ) -> void
+
+      def to_hash: -> {
+        admin: Telnyx::PortingOrderEndUserAdmin,
+        location: Telnyx::PortingOrderEndUserLocation
+      }
+    end
+  end
+end

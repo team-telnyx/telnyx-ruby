@@ -1,0 +1,36 @@
+module Telnyx
+  module Models
+    module AI
+      type embedding_similarity_search_params =
+        { bucket_name: String, query: String, num_of_docs: Integer }
+        & Telnyx::Internal::Type::request_parameters
+
+      class EmbeddingSimilaritySearchParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor bucket_name: String
+
+        attr_accessor query: String
+
+        attr_reader num_of_docs: Integer?
+
+        def num_of_docs=: (Integer) -> Integer
+
+        def initialize: (
+          bucket_name: String,
+          query: String,
+          ?num_of_docs: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          bucket_name: String,
+          query: String,
+          num_of_docs: Integer,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

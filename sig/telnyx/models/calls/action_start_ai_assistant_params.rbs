@@ -1,0 +1,127 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_start_ai_assistant_params =
+        {
+          assistant: Telnyx::Calls::ActionStartAIAssistantParams::Assistant,
+          client_state: String,
+          command_id: String,
+          greeting: String,
+          interruption_settings: Telnyx::Calls::InterruptionSettings,
+          transcription: Telnyx::Calls::TranscriptionConfig,
+          voice: String,
+          voice_settings: Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionStartAIAssistantParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader assistant: Telnyx::Calls::ActionStartAIAssistantParams::Assistant?
+
+        def assistant=: (
+          Telnyx::Calls::ActionStartAIAssistantParams::Assistant
+        ) -> Telnyx::Calls::ActionStartAIAssistantParams::Assistant
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader command_id: String?
+
+        def command_id=: (String) -> String
+
+        attr_reader greeting: String?
+
+        def greeting=: (String) -> String
+
+        attr_reader interruption_settings: Telnyx::Calls::InterruptionSettings?
+
+        def interruption_settings=: (
+          Telnyx::Calls::InterruptionSettings
+        ) -> Telnyx::Calls::InterruptionSettings
+
+        attr_reader transcription: Telnyx::Calls::TranscriptionConfig?
+
+        def transcription=: (
+          Telnyx::Calls::TranscriptionConfig
+        ) -> Telnyx::Calls::TranscriptionConfig
+
+        attr_reader voice: String?
+
+        def voice=: (String) -> String
+
+        attr_reader voice_settings: Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings?
+
+        def voice_settings=: (
+          Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings
+        ) -> Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings
+
+        def initialize: (
+          ?assistant: Telnyx::Calls::ActionStartAIAssistantParams::Assistant,
+          ?client_state: String,
+          ?command_id: String,
+          ?greeting: String,
+          ?interruption_settings: Telnyx::Calls::InterruptionSettings,
+          ?transcription: Telnyx::Calls::TranscriptionConfig,
+          ?voice: String,
+          ?voice_settings: Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          assistant: Telnyx::Calls::ActionStartAIAssistantParams::Assistant,
+          client_state: String,
+          command_id: String,
+          greeting: String,
+          interruption_settings: Telnyx::Calls::InterruptionSettings,
+          transcription: Telnyx::Calls::TranscriptionConfig,
+          voice: String,
+          voice_settings: Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type assistant =
+          { id: String, instructions: String, openai_api_key_ref: String }
+
+        class Assistant < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader instructions: String?
+
+          def instructions=: (String) -> String
+
+          attr_reader openai_api_key_ref: String?
+
+          def openai_api_key_ref=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?instructions: String,
+            ?openai_api_key_ref: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            instructions: String,
+            openai_api_key_ref: String
+          }
+        end
+
+        type voice_settings =
+          Telnyx::Calls::ElevenLabsVoiceSettings
+          | Telnyx::Calls::TelnyxVoiceSettings
+          | top
+
+        module VoiceSettings
+          extend Telnyx::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings]
+        end
+      end
+    end
+  end
+end

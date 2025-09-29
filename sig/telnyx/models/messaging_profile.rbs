@@ -1,0 +1,157 @@
+module Telnyx
+  module Models
+    type messaging_profile =
+      {
+        id: String,
+        alpha_sender: String?,
+        created_at: Time,
+        daily_spend_limit: String,
+        daily_spend_limit_enabled: bool,
+        enabled: bool,
+        mms_fall_back_to_sms: bool,
+        mms_transcoding: bool,
+        name: String,
+        number_pool_settings: Telnyx::NumberPoolSettings?,
+        record_type: Telnyx::Models::MessagingProfile::record_type,
+        updated_at: Time,
+        url_shortener_settings: Telnyx::URLShortenerSettings?,
+        :v1_secret => String,
+        webhook_api_version: Telnyx::Models::MessagingProfile::webhook_api_version,
+        webhook_failover_url: String?,
+        webhook_url: String?,
+        whitelisted_destinations: ::Array[String]
+      }
+
+    class MessagingProfile < Telnyx::Internal::Type::BaseModel
+      attr_accessor alpha_sender: String?
+
+      attr_reader daily_spend_limit: String?
+
+      def daily_spend_limit=: (String) -> String
+
+      attr_reader daily_spend_limit_enabled: bool?
+
+      def daily_spend_limit_enabled=: (bool) -> bool
+
+      attr_reader enabled: bool?
+
+      def enabled=: (bool) -> bool
+
+      attr_reader mms_fall_back_to_sms: bool?
+
+      def mms_fall_back_to_sms=: (bool) -> bool
+
+      attr_reader mms_transcoding: bool?
+
+      def mms_transcoding=: (bool) -> bool
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_accessor number_pool_settings: Telnyx::NumberPoolSettings?
+
+      attr_accessor url_shortener_settings: Telnyx::URLShortenerSettings?
+
+      attr_reader v1_secret: String?
+
+      def v1_secret=: (String) -> String
+
+      attr_reader webhook_api_version: Telnyx::Models::MessagingProfile::webhook_api_version?
+
+      def webhook_api_version=: (
+        Telnyx::Models::MessagingProfile::webhook_api_version
+      ) -> Telnyx::Models::MessagingProfile::webhook_api_version
+
+      attr_accessor webhook_failover_url: String?
+
+      attr_accessor webhook_url: String?
+
+      attr_reader whitelisted_destinations: ::Array[String]?
+
+      def whitelisted_destinations=: (::Array[String]) -> ::Array[String]
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader record_type: Telnyx::Models::MessagingProfile::record_type?
+
+      def record_type=: (
+        Telnyx::Models::MessagingProfile::record_type
+      ) -> Telnyx::Models::MessagingProfile::record_type
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        ?id: String,
+        ?alpha_sender: String?,
+        ?created_at: Time,
+        ?daily_spend_limit: String,
+        ?daily_spend_limit_enabled: bool,
+        ?enabled: bool,
+        ?mms_fall_back_to_sms: bool,
+        ?mms_transcoding: bool,
+        ?name: String,
+        ?number_pool_settings: Telnyx::NumberPoolSettings?,
+        ?record_type: Telnyx::Models::MessagingProfile::record_type,
+        ?updated_at: Time,
+        ?url_shortener_settings: Telnyx::URLShortenerSettings?,
+        ?v1_secret: String,
+        ?webhook_api_version: Telnyx::Models::MessagingProfile::webhook_api_version,
+        ?webhook_failover_url: String?,
+        ?webhook_url: String?,
+        ?whitelisted_destinations: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        alpha_sender: String?,
+        created_at: Time,
+        daily_spend_limit: String,
+        daily_spend_limit_enabled: bool,
+        enabled: bool,
+        mms_fall_back_to_sms: bool,
+        mms_transcoding: bool,
+        name: String,
+        number_pool_settings: Telnyx::NumberPoolSettings?,
+        record_type: Telnyx::Models::MessagingProfile::record_type,
+        updated_at: Time,
+        url_shortener_settings: Telnyx::URLShortenerSettings?,
+        :v1_secret => String,
+        webhook_api_version: Telnyx::Models::MessagingProfile::webhook_api_version,
+        webhook_failover_url: String?,
+        webhook_url: String?,
+        whitelisted_destinations: ::Array[String]
+      }
+
+      type record_type = :messaging_profile
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        MESSAGING_PROFILE: :messaging_profile
+
+        def self?.values: -> ::Array[Telnyx::Models::MessagingProfile::record_type]
+      end
+
+      type webhook_api_version = :"1" | :"2" | :"2010-04-01"
+
+      module WebhookAPIVersion
+        extend Telnyx::Internal::Type::Enum
+
+        WEBHOOK_API_VERSION_1: :"1"
+        WEBHOOK_API_VERSION_2: :"2"
+        WEBHOOK_API_VERSION_2010_04_01: :"2010-04-01"
+
+        def self?.values: -> ::Array[Telnyx::Models::MessagingProfile::webhook_api_version]
+      end
+    end
+  end
+end

@@ -1,0 +1,183 @@
+module Telnyx
+  module Models
+    type sim_card_order_list_params =
+      {
+        filter: Telnyx::SimCardOrderListParams::Filter,
+        page: Telnyx::SimCardOrderListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class SimCardOrderListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::SimCardOrderListParams::Filter?
+
+      def filter=: (
+        Telnyx::SimCardOrderListParams::Filter
+      ) -> Telnyx::SimCardOrderListParams::Filter
+
+      attr_reader page: Telnyx::SimCardOrderListParams::Page?
+
+      def page=: (
+        Telnyx::SimCardOrderListParams::Page
+      ) -> Telnyx::SimCardOrderListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::SimCardOrderListParams::Filter,
+        ?page: Telnyx::SimCardOrderListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::SimCardOrderListParams::Filter,
+        page: Telnyx::SimCardOrderListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          address: Telnyx::SimCardOrderListParams::Filter::Address,
+          cost: Telnyx::SimCardOrderListParams::Filter::Cost,
+          created_at: Time,
+          quantity: Integer,
+          updated_at: Time
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader address: Telnyx::SimCardOrderListParams::Filter::Address?
+
+        def address=: (
+          Telnyx::SimCardOrderListParams::Filter::Address
+        ) -> Telnyx::SimCardOrderListParams::Filter::Address
+
+        attr_reader cost: Telnyx::SimCardOrderListParams::Filter::Cost?
+
+        def cost=: (
+          Telnyx::SimCardOrderListParams::Filter::Cost
+        ) -> Telnyx::SimCardOrderListParams::Filter::Cost
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader quantity: Integer?
+
+        def quantity=: (Integer) -> Integer
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        def initialize: (
+          ?address: Telnyx::SimCardOrderListParams::Filter::Address,
+          ?cost: Telnyx::SimCardOrderListParams::Filter::Cost,
+          ?created_at: Time,
+          ?quantity: Integer,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          address: Telnyx::SimCardOrderListParams::Filter::Address,
+          cost: Telnyx::SimCardOrderListParams::Filter::Cost,
+          created_at: Time,
+          quantity: Integer,
+          updated_at: Time
+        }
+
+        type address =
+          {
+            id: String,
+            administrative_area: String,
+            country_code: String,
+            extended_address: String,
+            locality: String,
+            postal_code: String,
+            street_address: String
+          }
+
+        class Address < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader administrative_area: String?
+
+          def administrative_area=: (String) -> String
+
+          attr_reader country_code: String?
+
+          def country_code=: (String) -> String
+
+          attr_reader extended_address: String?
+
+          def extended_address=: (String) -> String
+
+          attr_reader locality: String?
+
+          def locality=: (String) -> String
+
+          attr_reader postal_code: String?
+
+          def postal_code=: (String) -> String
+
+          attr_reader street_address: String?
+
+          def street_address=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?administrative_area: String,
+            ?country_code: String,
+            ?extended_address: String,
+            ?locality: String,
+            ?postal_code: String,
+            ?street_address: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            administrative_area: String,
+            country_code: String,
+            extended_address: String,
+            locality: String,
+            postal_code: String,
+            street_address: String
+          }
+        end
+
+        type cost = { amount: String, currency: String }
+
+        class Cost < Telnyx::Internal::Type::BaseModel
+          attr_reader amount: String?
+
+          def amount=: (String) -> String
+
+          attr_reader currency: String?
+
+          def currency=: (String) -> String
+
+          def initialize: (?amount: String, ?currency: String) -> void
+
+          def to_hash: -> { amount: String, currency: String }
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

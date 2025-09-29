@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type ip_list_response = { data: ::Array[Telnyx::IP] }
+
+    class IPListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::IP]?
+
+      def data=: (::Array[Telnyx::IP]) -> ::Array[Telnyx::IP]
+
+      def initialize: (?data: ::Array[Telnyx::IP]) -> void
+
+      def to_hash: -> { data: ::Array[Telnyx::IP] }
+    end
+  end
+end

@@ -1,0 +1,128 @@
+module Telnyx
+  module Models
+    type outbound_voice_profile_list_params =
+      {
+        filter: Telnyx::OutboundVoiceProfileListParams::Filter,
+        page: Telnyx::OutboundVoiceProfileListParams::Page,
+        sort: Telnyx::Models::OutboundVoiceProfileListParams::sort
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class OutboundVoiceProfileListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::OutboundVoiceProfileListParams::Filter?
+
+      def filter=: (
+        Telnyx::OutboundVoiceProfileListParams::Filter
+      ) -> Telnyx::OutboundVoiceProfileListParams::Filter
+
+      attr_reader page: Telnyx::OutboundVoiceProfileListParams::Page?
+
+      def page=: (
+        Telnyx::OutboundVoiceProfileListParams::Page
+      ) -> Telnyx::OutboundVoiceProfileListParams::Page
+
+      attr_reader sort: Telnyx::Models::OutboundVoiceProfileListParams::sort?
+
+      def sort=: (
+        Telnyx::Models::OutboundVoiceProfileListParams::sort
+      ) -> Telnyx::Models::OutboundVoiceProfileListParams::sort
+
+      def initialize: (
+        ?filter: Telnyx::OutboundVoiceProfileListParams::Filter,
+        ?page: Telnyx::OutboundVoiceProfileListParams::Page,
+        ?sort: Telnyx::Models::OutboundVoiceProfileListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::OutboundVoiceProfileListParams::Filter,
+        page: Telnyx::OutboundVoiceProfileListParams::Page,
+        sort: Telnyx::Models::OutboundVoiceProfileListParams::sort,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        { name: Telnyx::OutboundVoiceProfileListParams::Filter::Name }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader name: Telnyx::OutboundVoiceProfileListParams::Filter::Name?
+
+        def name=: (
+          Telnyx::OutboundVoiceProfileListParams::Filter::Name
+        ) -> Telnyx::OutboundVoiceProfileListParams::Filter::Name
+
+        def initialize: (
+          ?name: Telnyx::OutboundVoiceProfileListParams::Filter::Name
+        ) -> void
+
+        def to_hash: -> {
+          name: Telnyx::OutboundVoiceProfileListParams::Filter::Name
+        }
+
+        type name_ = { contains: String }
+
+        class Name < Telnyx::Internal::Type::BaseModel
+          attr_reader contains: String?
+
+          def contains=: (String) -> String
+
+          def initialize: (?contains: String) -> void
+
+          def to_hash: -> { contains: String }
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+
+      type sort =
+        :enabled
+        | :"-enabled"
+        | :created_at
+        | :"-created_at"
+        | :name
+        | :"-name"
+        | :service_plan
+        | :"-service_plan"
+        | :traffic_type
+        | :"-traffic_type"
+        | :usage_payment_method
+        | :"-usage_payment_method"
+
+      module Sort
+        extend Telnyx::Internal::Type::Enum
+
+        ENABLED: :enabled
+        ENABLED_DESC: :"-enabled"
+        CREATED_AT: :created_at
+        CREATED_AT_DESC: :"-created_at"
+        NAME: :name
+        NAME_DESC: :"-name"
+        SERVICE_PLAN: :service_plan
+        SERVICE_PLAN_DESC: :"-service_plan"
+        TRAFFIC_TYPE: :traffic_type
+        TRAFFIC_TYPE_DESC: :"-traffic_type"
+        USAGE_PAYMENT_METHOD: :usage_payment_method
+        USAGE_PAYMENT_METHOD_DESC: :"-usage_payment_method"
+
+        def self?.values: -> ::Array[Telnyx::Models::OutboundVoiceProfileListParams::sort]
+      end
+    end
+  end
+end

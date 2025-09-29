@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type messaging_hosted_number_order_create_response =
+      { data: Telnyx::MessagingHostedNumberOrder }
+
+    class MessagingHostedNumberOrderCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::MessagingHostedNumberOrder?
+
+      def data=: (
+        Telnyx::MessagingHostedNumberOrder
+      ) -> Telnyx::MessagingHostedNumberOrder
+
+      def initialize: (?data: Telnyx::MessagingHostedNumberOrder) -> void
+
+      def to_hash: -> { data: Telnyx::MessagingHostedNumberOrder }
+    end
+  end
+end

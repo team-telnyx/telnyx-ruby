@@ -1,0 +1,42 @@
+module Telnyx
+  module Resources
+    class SimCardGroups
+      attr_reader actions: Telnyx::Resources::SimCardGroups::Actions
+
+      def create: (
+        name: String,
+        ?data_limit: Telnyx::SimCardGroupCreateParams::DataLimit,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardGroupCreateResponse
+
+      def retrieve: (
+        String id,
+        ?include_iccids: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardGroupRetrieveResponse
+
+      def update: (
+        String id,
+        ?data_limit: Telnyx::SimCardGroupUpdateParams::DataLimit,
+        ?name: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardGroupUpdateResponse
+
+      def list: (
+        ?filter_name: String,
+        ?filter_private_wireless_gateway_id: String,
+        ?filter_wireless_blocklist_id: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardGroupListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardGroupDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

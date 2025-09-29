@@ -1,0 +1,85 @@
+module Telnyx
+  module Models
+    type outbound_call_recording =
+      {
+        call_recording_caller_phone_numbers: ::Array[String],
+        call_recording_channels: Telnyx::Models::OutboundCallRecording::call_recording_channels,
+        call_recording_format: Telnyx::Models::OutboundCallRecording::call_recording_format,
+        call_recording_type: Telnyx::Models::OutboundCallRecording::call_recording_type
+      }
+
+    class OutboundCallRecording < Telnyx::Internal::Type::BaseModel
+      attr_reader call_recording_caller_phone_numbers: ::Array[String]?
+
+      def call_recording_caller_phone_numbers=: (
+        ::Array[String]
+      ) -> ::Array[String]
+
+      attr_reader call_recording_channels: Telnyx::Models::OutboundCallRecording::call_recording_channels?
+
+      def call_recording_channels=: (
+        Telnyx::Models::OutboundCallRecording::call_recording_channels
+      ) -> Telnyx::Models::OutboundCallRecording::call_recording_channels
+
+      attr_reader call_recording_format: Telnyx::Models::OutboundCallRecording::call_recording_format?
+
+      def call_recording_format=: (
+        Telnyx::Models::OutboundCallRecording::call_recording_format
+      ) -> Telnyx::Models::OutboundCallRecording::call_recording_format
+
+      attr_reader call_recording_type: Telnyx::Models::OutboundCallRecording::call_recording_type?
+
+      def call_recording_type=: (
+        Telnyx::Models::OutboundCallRecording::call_recording_type
+      ) -> Telnyx::Models::OutboundCallRecording::call_recording_type
+
+      def initialize: (
+        ?call_recording_caller_phone_numbers: ::Array[String],
+        ?call_recording_channels: Telnyx::Models::OutboundCallRecording::call_recording_channels,
+        ?call_recording_format: Telnyx::Models::OutboundCallRecording::call_recording_format,
+        ?call_recording_type: Telnyx::Models::OutboundCallRecording::call_recording_type
+      ) -> void
+
+      def to_hash: -> {
+        call_recording_caller_phone_numbers: ::Array[String],
+        call_recording_channels: Telnyx::Models::OutboundCallRecording::call_recording_channels,
+        call_recording_format: Telnyx::Models::OutboundCallRecording::call_recording_format,
+        call_recording_type: Telnyx::Models::OutboundCallRecording::call_recording_type
+      }
+
+      type call_recording_channels = :single | :dual
+
+      module CallRecordingChannels
+        extend Telnyx::Internal::Type::Enum
+
+        SINGLE: :single
+        DUAL: :dual
+
+        def self?.values: -> ::Array[Telnyx::Models::OutboundCallRecording::call_recording_channels]
+      end
+
+      type call_recording_format = :wav | :mp3
+
+      module CallRecordingFormat
+        extend Telnyx::Internal::Type::Enum
+
+        WAV: :wav
+        MP3: :mp3
+
+        def self?.values: -> ::Array[Telnyx::Models::OutboundCallRecording::call_recording_format]
+      end
+
+      type call_recording_type = :all | :none | :by_caller_phone_number
+
+      module CallRecordingType
+        extend Telnyx::Internal::Type::Enum
+
+        ALL: :all
+        NONE: :none
+        BY_CALLER_PHONE_NUMBER: :by_caller_phone_number
+
+        def self?.values: -> ::Array[Telnyx::Models::OutboundCallRecording::call_recording_type]
+      end
+    end
+  end
+end

@@ -1,0 +1,366 @@
+module Telnyx
+  module Models
+    type ip_connection_create_params =
+      {
+        active: bool,
+        anchorsite_override: Telnyx::Models::anchorsite_override,
+        android_push_credential_id: String?,
+        connection_name: String,
+        default_on_hold_comfort_noise_enabled: bool,
+        dtmf_type: Telnyx::Models::dtmf_type,
+        encode_contact_header_enabled: bool,
+        encrypted_media: Telnyx::Models::encrypted_media?,
+        inbound: Telnyx::IPConnectionCreateParams::Inbound,
+        ios_push_credential_id: String?,
+        :onnet_t38_passthrough_enabled => bool,
+        outbound: Telnyx::OutboundIP,
+        rtcp_settings: Telnyx::ConnectionRtcpSettings,
+        tags: ::Array[String],
+        transport_protocol: Telnyx::Models::IPConnectionCreateParams::transport_protocol,
+        webhook_api_version: Telnyx::Models::IPConnectionCreateParams::webhook_api_version,
+        webhook_event_failover_url: String?,
+        webhook_event_url: String,
+        webhook_timeout_secs: Integer?
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class IPConnectionCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader active: bool?
+
+      def active=: (bool) -> bool
+
+      attr_reader anchorsite_override: Telnyx::Models::anchorsite_override?
+
+      def anchorsite_override=: (
+        Telnyx::Models::anchorsite_override
+      ) -> Telnyx::Models::anchorsite_override
+
+      attr_accessor android_push_credential_id: String?
+
+      attr_reader connection_name: String?
+
+      def connection_name=: (String) -> String
+
+      attr_reader default_on_hold_comfort_noise_enabled: bool?
+
+      def default_on_hold_comfort_noise_enabled=: (bool) -> bool
+
+      attr_reader dtmf_type: Telnyx::Models::dtmf_type?
+
+      def dtmf_type=: (Telnyx::Models::dtmf_type) -> Telnyx::Models::dtmf_type
+
+      attr_reader encode_contact_header_enabled: bool?
+
+      def encode_contact_header_enabled=: (bool) -> bool
+
+      attr_accessor encrypted_media: Telnyx::Models::encrypted_media?
+
+      attr_reader inbound: Telnyx::IPConnectionCreateParams::Inbound?
+
+      def inbound=: (
+        Telnyx::IPConnectionCreateParams::Inbound
+      ) -> Telnyx::IPConnectionCreateParams::Inbound
+
+      attr_accessor ios_push_credential_id: String?
+
+      attr_reader onnet_t38_passthrough_enabled: bool?
+
+      def onnet_t38_passthrough_enabled=: (bool) -> bool
+
+      attr_reader outbound: Telnyx::OutboundIP?
+
+      def outbound=: (Telnyx::OutboundIP) -> Telnyx::OutboundIP
+
+      attr_reader rtcp_settings: Telnyx::ConnectionRtcpSettings?
+
+      def rtcp_settings=: (
+        Telnyx::ConnectionRtcpSettings
+      ) -> Telnyx::ConnectionRtcpSettings
+
+      attr_reader tags: ::Array[String]?
+
+      def tags=: (::Array[String]) -> ::Array[String]
+
+      attr_reader transport_protocol: Telnyx::Models::IPConnectionCreateParams::transport_protocol?
+
+      def transport_protocol=: (
+        Telnyx::Models::IPConnectionCreateParams::transport_protocol
+      ) -> Telnyx::Models::IPConnectionCreateParams::transport_protocol
+
+      attr_reader webhook_api_version: Telnyx::Models::IPConnectionCreateParams::webhook_api_version?
+
+      def webhook_api_version=: (
+        Telnyx::Models::IPConnectionCreateParams::webhook_api_version
+      ) -> Telnyx::Models::IPConnectionCreateParams::webhook_api_version
+
+      attr_accessor webhook_event_failover_url: String?
+
+      attr_reader webhook_event_url: String?
+
+      def webhook_event_url=: (String) -> String
+
+      attr_accessor webhook_timeout_secs: Integer?
+
+      def initialize: (
+        ?active: bool,
+        ?anchorsite_override: Telnyx::Models::anchorsite_override,
+        ?android_push_credential_id: String?,
+        ?connection_name: String,
+        ?default_on_hold_comfort_noise_enabled: bool,
+        ?dtmf_type: Telnyx::Models::dtmf_type,
+        ?encode_contact_header_enabled: bool,
+        ?encrypted_media: Telnyx::Models::encrypted_media?,
+        ?inbound: Telnyx::IPConnectionCreateParams::Inbound,
+        ?ios_push_credential_id: String?,
+        ?onnet_t38_passthrough_enabled: bool,
+        ?outbound: Telnyx::OutboundIP,
+        ?rtcp_settings: Telnyx::ConnectionRtcpSettings,
+        ?tags: ::Array[String],
+        ?transport_protocol: Telnyx::Models::IPConnectionCreateParams::transport_protocol,
+        ?webhook_api_version: Telnyx::Models::IPConnectionCreateParams::webhook_api_version,
+        ?webhook_event_failover_url: String?,
+        ?webhook_event_url: String,
+        ?webhook_timeout_secs: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        active: bool,
+        anchorsite_override: Telnyx::Models::anchorsite_override,
+        android_push_credential_id: String?,
+        connection_name: String,
+        default_on_hold_comfort_noise_enabled: bool,
+        dtmf_type: Telnyx::Models::dtmf_type,
+        encode_contact_header_enabled: bool,
+        encrypted_media: Telnyx::Models::encrypted_media?,
+        inbound: Telnyx::IPConnectionCreateParams::Inbound,
+        ios_push_credential_id: String?,
+        :onnet_t38_passthrough_enabled => bool,
+        outbound: Telnyx::OutboundIP,
+        rtcp_settings: Telnyx::ConnectionRtcpSettings,
+        tags: ::Array[String],
+        transport_protocol: Telnyx::Models::IPConnectionCreateParams::transport_protocol,
+        webhook_api_version: Telnyx::Models::IPConnectionCreateParams::webhook_api_version,
+        webhook_event_failover_url: String?,
+        webhook_event_url: String,
+        webhook_timeout_secs: Integer?,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type inbound =
+        {
+          ani_number_format: Telnyx::Models::IPConnectionCreateParams::Inbound::ani_number_format,
+          channel_limit: Integer,
+          codecs: ::Array[String],
+          default_routing_method: Telnyx::Models::IPConnectionCreateParams::Inbound::default_routing_method,
+          dnis_number_format: Telnyx::Models::IPConnectionCreateParams::Inbound::dnis_number_format,
+          generate_ringback_tone: bool,
+          isup_headers_enabled: bool,
+          prack_enabled: bool,
+          shaken_stir_enabled: bool,
+          sip_compact_headers_enabled: bool,
+          sip_region: Telnyx::Models::IPConnectionCreateParams::Inbound::sip_region,
+          sip_subdomain: String,
+          sip_subdomain_receive_settings: Telnyx::Models::IPConnectionCreateParams::Inbound::sip_subdomain_receive_settings,
+          :timeout_1xx_secs => Integer,
+          :timeout_2xx_secs => Integer
+        }
+
+      class Inbound < Telnyx::Internal::Type::BaseModel
+        attr_reader ani_number_format: Telnyx::Models::IPConnectionCreateParams::Inbound::ani_number_format?
+
+        def ani_number_format=: (
+          Telnyx::Models::IPConnectionCreateParams::Inbound::ani_number_format
+        ) -> Telnyx::Models::IPConnectionCreateParams::Inbound::ani_number_format
+
+        attr_reader channel_limit: Integer?
+
+        def channel_limit=: (Integer) -> Integer
+
+        attr_reader codecs: ::Array[String]?
+
+        def codecs=: (::Array[String]) -> ::Array[String]
+
+        attr_reader default_routing_method: Telnyx::Models::IPConnectionCreateParams::Inbound::default_routing_method?
+
+        def default_routing_method=: (
+          Telnyx::Models::IPConnectionCreateParams::Inbound::default_routing_method
+        ) -> Telnyx::Models::IPConnectionCreateParams::Inbound::default_routing_method
+
+        attr_reader dnis_number_format: Telnyx::Models::IPConnectionCreateParams::Inbound::dnis_number_format?
+
+        def dnis_number_format=: (
+          Telnyx::Models::IPConnectionCreateParams::Inbound::dnis_number_format
+        ) -> Telnyx::Models::IPConnectionCreateParams::Inbound::dnis_number_format
+
+        attr_reader generate_ringback_tone: bool?
+
+        def generate_ringback_tone=: (bool) -> bool
+
+        attr_reader isup_headers_enabled: bool?
+
+        def isup_headers_enabled=: (bool) -> bool
+
+        attr_reader prack_enabled: bool?
+
+        def prack_enabled=: (bool) -> bool
+
+        attr_reader shaken_stir_enabled: bool?
+
+        def shaken_stir_enabled=: (bool) -> bool
+
+        attr_reader sip_compact_headers_enabled: bool?
+
+        def sip_compact_headers_enabled=: (bool) -> bool
+
+        attr_reader sip_region: Telnyx::Models::IPConnectionCreateParams::Inbound::sip_region?
+
+        def sip_region=: (
+          Telnyx::Models::IPConnectionCreateParams::Inbound::sip_region
+        ) -> Telnyx::Models::IPConnectionCreateParams::Inbound::sip_region
+
+        attr_reader sip_subdomain: String?
+
+        def sip_subdomain=: (String) -> String
+
+        attr_reader sip_subdomain_receive_settings: Telnyx::Models::IPConnectionCreateParams::Inbound::sip_subdomain_receive_settings?
+
+        def sip_subdomain_receive_settings=: (
+          Telnyx::Models::IPConnectionCreateParams::Inbound::sip_subdomain_receive_settings
+        ) -> Telnyx::Models::IPConnectionCreateParams::Inbound::sip_subdomain_receive_settings
+
+        attr_reader timeout_1xx_secs: Integer?
+
+        def timeout_1xx_secs=: (Integer) -> Integer
+
+        attr_reader timeout_2xx_secs: Integer?
+
+        def timeout_2xx_secs=: (Integer) -> Integer
+
+        def initialize: (
+          ?ani_number_format: Telnyx::Models::IPConnectionCreateParams::Inbound::ani_number_format,
+          ?channel_limit: Integer,
+          ?codecs: ::Array[String],
+          ?default_routing_method: Telnyx::Models::IPConnectionCreateParams::Inbound::default_routing_method,
+          ?dnis_number_format: Telnyx::Models::IPConnectionCreateParams::Inbound::dnis_number_format,
+          ?generate_ringback_tone: bool,
+          ?isup_headers_enabled: bool,
+          ?prack_enabled: bool,
+          ?shaken_stir_enabled: bool,
+          ?sip_compact_headers_enabled: bool,
+          ?sip_region: Telnyx::Models::IPConnectionCreateParams::Inbound::sip_region,
+          ?sip_subdomain: String,
+          ?sip_subdomain_receive_settings: Telnyx::Models::IPConnectionCreateParams::Inbound::sip_subdomain_receive_settings,
+          ?timeout_1xx_secs: Integer,
+          ?timeout_2xx_secs: Integer
+        ) -> void
+
+        def to_hash: -> {
+          ani_number_format: Telnyx::Models::IPConnectionCreateParams::Inbound::ani_number_format,
+          channel_limit: Integer,
+          codecs: ::Array[String],
+          default_routing_method: Telnyx::Models::IPConnectionCreateParams::Inbound::default_routing_method,
+          dnis_number_format: Telnyx::Models::IPConnectionCreateParams::Inbound::dnis_number_format,
+          generate_ringback_tone: bool,
+          isup_headers_enabled: bool,
+          prack_enabled: bool,
+          shaken_stir_enabled: bool,
+          sip_compact_headers_enabled: bool,
+          sip_region: Telnyx::Models::IPConnectionCreateParams::Inbound::sip_region,
+          sip_subdomain: String,
+          sip_subdomain_receive_settings: Telnyx::Models::IPConnectionCreateParams::Inbound::sip_subdomain_receive_settings,
+          :timeout_1xx_secs => Integer,
+          :timeout_2xx_secs => Integer
+        }
+
+        type ani_number_format =
+          :"+E.164" | :"E.164" | :"+E.164-national" | :"E.164-national"
+
+        module AniNumberFormat
+          extend Telnyx::Internal::Type::Enum
+
+          PLUS_E_164: :"+E.164"
+          E_164: :"E.164"
+          PLUS_E_164_NATIONAL: :"+E.164-national"
+          E_164_NATIONAL: :"E.164-national"
+
+          def self?.values: -> ::Array[Telnyx::Models::IPConnectionCreateParams::Inbound::ani_number_format]
+        end
+
+        type default_routing_method = :sequential | :"round-robin"
+
+        module DefaultRoutingMethod
+          extend Telnyx::Internal::Type::Enum
+
+          SEQUENTIAL: :sequential
+          ROUND_ROBIN: :"round-robin"
+
+          def self?.values: -> ::Array[Telnyx::Models::IPConnectionCreateParams::Inbound::default_routing_method]
+        end
+
+        type dnis_number_format = :"+e164" | :e164 | :national | :sip_username
+
+        module DnisNumberFormat
+          extend Telnyx::Internal::Type::Enum
+
+          PLUS_E164: :"+e164"
+          E164: :e164
+          NATIONAL: :national
+          SIP_USERNAME: :sip_username
+
+          def self?.values: -> ::Array[Telnyx::Models::IPConnectionCreateParams::Inbound::dnis_number_format]
+        end
+
+        type sip_region = :US | :Europe | :Australia
+
+        module SipRegion
+          extend Telnyx::Internal::Type::Enum
+
+          US: :US
+          EUROPE: :Europe
+          AUSTRALIA: :Australia
+
+          def self?.values: -> ::Array[Telnyx::Models::IPConnectionCreateParams::Inbound::sip_region]
+        end
+
+        type sip_subdomain_receive_settings =
+          :only_my_connections | :from_anyone
+
+        module SipSubdomainReceiveSettings
+          extend Telnyx::Internal::Type::Enum
+
+          ONLY_MY_CONNECTIONS: :only_my_connections
+          FROM_ANYONE: :from_anyone
+
+          def self?.values: -> ::Array[Telnyx::Models::IPConnectionCreateParams::Inbound::sip_subdomain_receive_settings]
+        end
+      end
+
+      type transport_protocol = :UDP | :TCP | :TLS
+
+      module TransportProtocol
+        extend Telnyx::Internal::Type::Enum
+
+        UDP: :UDP
+        TCP: :TCP
+        TLS: :TLS
+
+        def self?.values: -> ::Array[Telnyx::Models::IPConnectionCreateParams::transport_protocol]
+      end
+
+      type webhook_api_version = :"1" | :"2"
+
+      module WebhookAPIVersion
+        extend Telnyx::Internal::Type::Enum
+
+        WEBHOOK_API_VERSION_1: :"1"
+        WEBHOOK_API_VERSION_2: :"2"
+
+        def self?.values: -> ::Array[Telnyx::Models::IPConnectionCreateParams::webhook_api_version]
+      end
+    end
+  end
+end

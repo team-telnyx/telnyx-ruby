@@ -1,0 +1,24 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type phone_number_extension_delete_response =
+        { data: Telnyx::PortingOrders::PortingPhoneNumberExtension }
+
+      class PhoneNumberExtensionDeleteResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::PortingOrders::PortingPhoneNumberExtension?
+
+        def data=: (
+          Telnyx::PortingOrders::PortingPhoneNumberExtension
+        ) -> Telnyx::PortingOrders::PortingPhoneNumberExtension
+
+        def initialize: (
+          ?data: Telnyx::PortingOrders::PortingPhoneNumberExtension
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::PortingOrders::PortingPhoneNumberExtension
+        }
+      end
+    end
+  end
+end

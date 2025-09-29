@@ -1,0 +1,18 @@
+module Telnyx
+  module Resources
+    class MessagingNumbersBulkUpdates
+      def create: (
+        messaging_profile_id: String,
+        numbers: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingNumbersBulkUpdateCreateResponse
+
+      def retrieve: (
+        String order_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingNumbersBulkUpdateRetrieveResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

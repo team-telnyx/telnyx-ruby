@@ -1,0 +1,192 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type civic_address_retrieve_response =
+        {
+          data: Telnyx::Models::ExternalConnections::CivicAddressRetrieveResponse::Data
+        }
+
+      class CivicAddressRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::ExternalConnections::CivicAddressRetrieveResponse::Data?
+
+        def data=: (
+          Telnyx::Models::ExternalConnections::CivicAddressRetrieveResponse::Data
+        ) -> Telnyx::Models::ExternalConnections::CivicAddressRetrieveResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::ExternalConnections::CivicAddressRetrieveResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::ExternalConnections::CivicAddressRetrieveResponse::Data
+        }
+
+        type data =
+          {
+            id: String,
+            city_or_town: String,
+            city_or_town_alias: String,
+            company_name: String,
+            country: String,
+            country_or_district: String,
+            default_location_id: String,
+            description: String,
+            house_number: String,
+            house_number_suffix: String,
+            locations: ::Array[Telnyx::Models::ExternalConnections::CivicAddressRetrieveResponse::Data::Location],
+            postal_or_zip_code: String,
+            record_type: String,
+            state_or_province: String,
+            street_name: String,
+            street_suffix: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader city_or_town: String?
+
+          def city_or_town=: (String) -> String
+
+          attr_reader city_or_town_alias: String?
+
+          def city_or_town_alias=: (String) -> String
+
+          attr_reader company_name: String?
+
+          def company_name=: (String) -> String
+
+          attr_reader country: String?
+
+          def country=: (String) -> String
+
+          attr_reader country_or_district: String?
+
+          def country_or_district=: (String) -> String
+
+          attr_reader default_location_id: String?
+
+          def default_location_id=: (String) -> String
+
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
+          attr_reader house_number: String?
+
+          def house_number=: (String) -> String
+
+          attr_reader house_number_suffix: String?
+
+          def house_number_suffix=: (String) -> String
+
+          attr_reader locations: ::Array[Telnyx::Models::ExternalConnections::CivicAddressRetrieveResponse::Data::Location]?
+
+          def locations=: (
+            ::Array[Telnyx::Models::ExternalConnections::CivicAddressRetrieveResponse::Data::Location]
+          ) -> ::Array[Telnyx::Models::ExternalConnections::CivicAddressRetrieveResponse::Data::Location]
+
+          attr_reader postal_or_zip_code: String?
+
+          def postal_or_zip_code=: (String) -> String
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_reader state_or_province: String?
+
+          def state_or_province=: (String) -> String
+
+          attr_reader street_name: String?
+
+          def street_name=: (String) -> String
+
+          attr_reader street_suffix: String?
+
+          def street_suffix=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?city_or_town: String,
+            ?city_or_town_alias: String,
+            ?company_name: String,
+            ?country: String,
+            ?country_or_district: String,
+            ?default_location_id: String,
+            ?description: String,
+            ?house_number: String,
+            ?house_number_suffix: String,
+            ?locations: ::Array[Telnyx::Models::ExternalConnections::CivicAddressRetrieveResponse::Data::Location],
+            ?postal_or_zip_code: String,
+            ?record_type: String,
+            ?state_or_province: String,
+            ?street_name: String,
+            ?street_suffix: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            city_or_town: String,
+            city_or_town_alias: String,
+            company_name: String,
+            country: String,
+            country_or_district: String,
+            default_location_id: String,
+            description: String,
+            house_number: String,
+            house_number_suffix: String,
+            locations: ::Array[Telnyx::Models::ExternalConnections::CivicAddressRetrieveResponse::Data::Location],
+            postal_or_zip_code: String,
+            record_type: String,
+            state_or_province: String,
+            street_name: String,
+            street_suffix: String
+          }
+
+          type location =
+            {
+              id: String,
+              additional_info: String,
+              description: String,
+              is_default: bool
+            }
+
+          class Location < Telnyx::Internal::Type::BaseModel
+            attr_reader id: String?
+
+            def id=: (String) -> String
+
+            attr_reader additional_info: String?
+
+            def additional_info=: (String) -> String
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader is_default: bool?
+
+            def is_default=: (bool) -> bool
+
+            def initialize: (
+              ?id: String,
+              ?additional_info: String,
+              ?description: String,
+              ?is_default: bool
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              additional_info: String,
+              description: String,
+              is_default: bool
+            }
+          end
+        end
+      end
+    end
+  end
+end

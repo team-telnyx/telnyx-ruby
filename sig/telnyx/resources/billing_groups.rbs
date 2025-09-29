@@ -1,0 +1,33 @@
+module Telnyx
+  module Resources
+    class BillingGroups
+      def create: (
+        ?name: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::BillingGroupCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::BillingGroupRetrieveResponse
+
+      def update: (
+        String id,
+        ?name: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::BillingGroupUpdateResponse
+
+      def list: (
+        ?page: Telnyx::BillingGroupListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::BillingGroupListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::BillingGroupDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

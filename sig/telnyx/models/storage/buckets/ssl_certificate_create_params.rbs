@@ -1,0 +1,43 @@
+module Telnyx
+  module Models
+    module Storage
+      module Buckets
+        type ssl_certificate_create_params =
+          {
+            certificate: Telnyx::Internal::file_input,
+            private_key: Telnyx::Internal::file_input
+          }
+          & Telnyx::Internal::Type::request_parameters
+
+        class SslCertificateCreateParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_reader certificate: Telnyx::Internal::file_input?
+
+          def certificate=: (
+            Telnyx::Internal::file_input
+          ) -> Telnyx::Internal::file_input
+
+          attr_reader private_key: Telnyx::Internal::file_input?
+
+          def private_key=: (
+            Telnyx::Internal::file_input
+          ) -> Telnyx::Internal::file_input
+
+          def initialize: (
+            ?certificate: Telnyx::Internal::file_input,
+            ?private_key: Telnyx::Internal::file_input,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            certificate: Telnyx::Internal::file_input,
+            private_key: Telnyx::Internal::file_input,
+            request_options: Telnyx::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

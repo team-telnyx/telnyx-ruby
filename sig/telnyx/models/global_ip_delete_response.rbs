@@ -1,0 +1,67 @@
+module Telnyx
+  module Models
+    type global_ip_delete_response =
+      { data: Telnyx::Models::GlobalIPDeleteResponse::Data }
+
+    class GlobalIPDeleteResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::GlobalIPDeleteResponse::Data?
+
+      def data=: (
+        Telnyx::Models::GlobalIPDeleteResponse::Data
+      ) -> Telnyx::Models::GlobalIPDeleteResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::GlobalIPDeleteResponse::Data
+      ) -> void
+
+      def to_hash: -> { data: Telnyx::Models::GlobalIPDeleteResponse::Data }
+
+      type data =
+        {
+          description: String,
+          ip_address: String,
+          name: String,
+          ports: ::Hash[Symbol, top],
+          record_type: String
+        }
+
+      class Data < Telnyx::Models::Record
+        def description: -> String?
+
+        def description=: (String _) -> String
+
+        def name: -> String?
+
+        def name=: (String _) -> String
+
+        def ports: -> ::Hash[Symbol, top]?
+
+        def ports=: (::Hash[Symbol, top] _) -> ::Hash[Symbol, top]
+
+        def ip_address: -> String?
+
+        def ip_address=: (String _) -> String
+
+        def record_type: -> String?
+
+        def record_type=: (String _) -> String
+
+        def initialize: (
+          ?description: String,
+          ?ip_address: String,
+          ?name: String,
+          ?ports: ::Hash[Symbol, top],
+          ?record_type: String
+        ) -> void
+
+        def to_hash: -> {
+          description: String,
+          ip_address: String,
+          name: String,
+          ports: ::Hash[Symbol, top],
+          record_type: String
+        }
+      end
+    end
+  end
+end

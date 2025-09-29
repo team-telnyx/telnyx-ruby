@@ -1,0 +1,170 @@
+module Telnyx
+  module Models
+    module Reports
+      type cdr_usage_report_fetch_sync_response =
+        { data: Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data }
+
+      class CdrUsageReportFetchSyncResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data?
+
+        def data=: (
+          Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data
+        ) -> Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data
+        }
+
+        type data =
+          {
+            id: String,
+            aggregation_type: Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::aggregation_type,
+            connections: ::Array[Integer],
+            created_at: Time,
+            end_time: Time,
+            product_breakdown: Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::product_breakdown,
+            record_type: String,
+            report_url: String,
+            result: ::Hash[Symbol, top],
+            start_time: Time,
+            status: Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::status,
+            updated_at: Time
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader aggregation_type: Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::aggregation_type?
+
+          def aggregation_type=: (
+            Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::aggregation_type
+          ) -> Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::aggregation_type
+
+          attr_reader connections: ::Array[Integer]?
+
+          def connections=: (::Array[Integer]) -> ::Array[Integer]
+
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader end_time: Time?
+
+          def end_time=: (Time) -> Time
+
+          attr_reader product_breakdown: Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::product_breakdown?
+
+          def product_breakdown=: (
+            Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::product_breakdown
+          ) -> Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::product_breakdown
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_reader report_url: String?
+
+          def report_url=: (String) -> String
+
+          attr_reader result: ::Hash[Symbol, top]?
+
+          def result=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader start_time: Time?
+
+          def start_time=: (Time) -> Time
+
+          attr_reader status: Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::status?
+
+          def status=: (
+            Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::status
+          ) -> Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::status
+
+          attr_reader updated_at: Time?
+
+          def updated_at=: (Time) -> Time
+
+          def initialize: (
+            ?id: String,
+            ?aggregation_type: Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::aggregation_type,
+            ?connections: ::Array[Integer],
+            ?created_at: Time,
+            ?end_time: Time,
+            ?product_breakdown: Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::product_breakdown,
+            ?record_type: String,
+            ?report_url: String,
+            ?result: ::Hash[Symbol, top],
+            ?start_time: Time,
+            ?status: Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::status,
+            ?updated_at: Time
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            aggregation_type: Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::aggregation_type,
+            connections: ::Array[Integer],
+            created_at: Time,
+            end_time: Time,
+            product_breakdown: Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::product_breakdown,
+            record_type: String,
+            report_url: String,
+            result: ::Hash[Symbol, top],
+            start_time: Time,
+            status: Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::status,
+            updated_at: Time
+          }
+
+          type aggregation_type =
+            :NO_AGGREGATION | :CONNECTION | :TAG | :BILLING_GROUP
+
+          module AggregationType
+            extend Telnyx::Internal::Type::Enum
+
+            NO_AGGREGATION: :NO_AGGREGATION
+            CONNECTION: :CONNECTION
+            TAG: :TAG
+            BILLING_GROUP: :BILLING_GROUP
+
+            def self?.values: -> ::Array[Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::aggregation_type]
+          end
+
+          type product_breakdown =
+            :NO_BREAKDOWN
+            | :DID_VS_TOLL_FREE
+            | :COUNTRY
+            | :DID_VS_TOLL_FREE_PER_COUNTRY
+
+          module ProductBreakdown
+            extend Telnyx::Internal::Type::Enum
+
+            NO_BREAKDOWN: :NO_BREAKDOWN
+            DID_VS_TOLL_FREE: :DID_VS_TOLL_FREE
+            COUNTRY: :COUNTRY
+            DID_VS_TOLL_FREE_PER_COUNTRY: :DID_VS_TOLL_FREE_PER_COUNTRY
+
+            def self?.values: -> ::Array[Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::product_breakdown]
+          end
+
+          type status = :PENDING | :COMPLETE | :FAILED | :EXPIRED
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :PENDING
+            COMPLETE: :COMPLETE
+            FAILED: :FAILED
+            EXPIRED: :EXPIRED
+
+            def self?.values: -> ::Array[Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse::Data::status]
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,29 @@
+module Telnyx
+  module Resources
+    class GlobalIPs
+      def create: (
+        ?description: String,
+        ?name: String,
+        ?ports: ::Hash[Symbol, top],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::GlobalIPCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::GlobalIPRetrieveResponse
+
+      def list: (
+        ?page: Telnyx::GlobalIPListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::GlobalIPListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::GlobalIPDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

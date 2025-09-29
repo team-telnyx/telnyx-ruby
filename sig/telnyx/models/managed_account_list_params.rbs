@@ -1,0 +1,144 @@
+module Telnyx
+  module Models
+    type managed_account_list_params =
+      {
+        filter: Telnyx::ManagedAccountListParams::Filter,
+        include_cancelled_accounts: bool,
+        page: Telnyx::ManagedAccountListParams::Page,
+        sort: Telnyx::Models::ManagedAccountListParams::sort
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class ManagedAccountListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::ManagedAccountListParams::Filter?
+
+      def filter=: (
+        Telnyx::ManagedAccountListParams::Filter
+      ) -> Telnyx::ManagedAccountListParams::Filter
+
+      attr_reader include_cancelled_accounts: bool?
+
+      def include_cancelled_accounts=: (bool) -> bool
+
+      attr_reader page: Telnyx::ManagedAccountListParams::Page?
+
+      def page=: (
+        Telnyx::ManagedAccountListParams::Page
+      ) -> Telnyx::ManagedAccountListParams::Page
+
+      attr_reader sort: Telnyx::Models::ManagedAccountListParams::sort?
+
+      def sort=: (
+        Telnyx::Models::ManagedAccountListParams::sort
+      ) -> Telnyx::Models::ManagedAccountListParams::sort
+
+      def initialize: (
+        ?filter: Telnyx::ManagedAccountListParams::Filter,
+        ?include_cancelled_accounts: bool,
+        ?page: Telnyx::ManagedAccountListParams::Page,
+        ?sort: Telnyx::Models::ManagedAccountListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::ManagedAccountListParams::Filter,
+        include_cancelled_accounts: bool,
+        page: Telnyx::ManagedAccountListParams::Page,
+        sort: Telnyx::Models::ManagedAccountListParams::sort,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          email: Telnyx::ManagedAccountListParams::Filter::Email,
+          organization_name: Telnyx::ManagedAccountListParams::Filter::OrganizationName
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader email: Telnyx::ManagedAccountListParams::Filter::Email?
+
+        def email=: (
+          Telnyx::ManagedAccountListParams::Filter::Email
+        ) -> Telnyx::ManagedAccountListParams::Filter::Email
+
+        attr_reader organization_name: Telnyx::ManagedAccountListParams::Filter::OrganizationName?
+
+        def organization_name=: (
+          Telnyx::ManagedAccountListParams::Filter::OrganizationName
+        ) -> Telnyx::ManagedAccountListParams::Filter::OrganizationName
+
+        def initialize: (
+          ?email: Telnyx::ManagedAccountListParams::Filter::Email,
+          ?organization_name: Telnyx::ManagedAccountListParams::Filter::OrganizationName
+        ) -> void
+
+        def to_hash: -> {
+          email: Telnyx::ManagedAccountListParams::Filter::Email,
+          organization_name: Telnyx::ManagedAccountListParams::Filter::OrganizationName
+        }
+
+        type email = { contains: String, eq: String }
+
+        class Email < Telnyx::Internal::Type::BaseModel
+          attr_reader contains: String?
+
+          def contains=: (String) -> String
+
+          attr_reader eq: String?
+
+          def eq=: (String) -> String
+
+          def initialize: (?contains: String, ?eq: String) -> void
+
+          def to_hash: -> { contains: String, eq: String }
+        end
+
+        type organization_name = { contains: String, eq: String }
+
+        class OrganizationName < Telnyx::Internal::Type::BaseModel
+          attr_reader contains: String?
+
+          def contains=: (String) -> String
+
+          attr_reader eq: String?
+
+          def eq=: (String) -> String
+
+          def initialize: (?contains: String, ?eq: String) -> void
+
+          def to_hash: -> { contains: String, eq: String }
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+
+      type sort = :created_at | :email
+
+      module Sort
+        extend Telnyx::Internal::Type::Enum
+
+        CREATED_AT: :created_at
+        EMAIL: :email
+
+        def self?.values: -> ::Array[Telnyx::Models::ManagedAccountListParams::sort]
+      end
+    end
+  end
+end

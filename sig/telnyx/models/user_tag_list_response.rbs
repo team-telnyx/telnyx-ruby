@@ -1,0 +1,41 @@
+module Telnyx
+  module Models
+    type user_tag_list_response =
+      { data: Telnyx::Models::UserTagListResponse::Data }
+
+    class UserTagListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::UserTagListResponse::Data?
+
+      def data=: (
+        Telnyx::Models::UserTagListResponse::Data
+      ) -> Telnyx::Models::UserTagListResponse::Data
+
+      def initialize: (?data: Telnyx::Models::UserTagListResponse::Data) -> void
+
+      def to_hash: -> { data: Telnyx::Models::UserTagListResponse::Data }
+
+      type data =
+        { number_tags: ::Array[String], outbound_profile_tags: ::Array[String] }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader number_tags: ::Array[String]?
+
+        def number_tags=: (::Array[String]) -> ::Array[String]
+
+        attr_reader outbound_profile_tags: ::Array[String]?
+
+        def outbound_profile_tags=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          ?number_tags: ::Array[String],
+          ?outbound_profile_tags: ::Array[String]
+        ) -> void
+
+        def to_hash: -> {
+          number_tags: ::Array[String],
+          outbound_profile_tags: ::Array[String]
+        }
+      end
+    end
+  end
+end

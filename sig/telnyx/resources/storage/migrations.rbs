@@ -1,0 +1,28 @@
+module Telnyx
+  module Resources
+    class Storage
+      class Migrations
+        attr_reader actions: Telnyx::Resources::Storage::Migrations::Actions
+
+        def create: (
+          source_id: String,
+          target_bucket_name: String,
+          target_region: String,
+          ?refresh: bool,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Storage::MigrationCreateResponse
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Storage::MigrationRetrieveResponse
+
+        def list: (
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Storage::MigrationListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

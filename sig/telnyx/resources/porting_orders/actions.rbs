@@ -1,0 +1,31 @@
+module Telnyx
+  module Resources
+    class PortingOrders
+      class Actions
+        def activate: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::ActionActivateResponse
+
+        def cancel: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::ActionCancelResponse
+
+        def confirm: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::ActionConfirmResponse
+
+        def share: (
+          String id,
+          ?expires_in_seconds: Integer,
+          ?permissions: Telnyx::Models::PortingOrders::ActionShareParams::permissions,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::ActionShareResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

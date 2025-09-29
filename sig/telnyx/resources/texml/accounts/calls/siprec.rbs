@@ -1,0 +1,21 @@
+module Telnyx
+  module Resources
+    class Texml
+      class Accounts
+        class Calls
+          class Siprec
+            def siprec_sid_json: (
+              String siprec_sid,
+              account_sid: String,
+              call_sid: String,
+              ?status: Telnyx::Models::Texml::Accounts::Calls::SiprecSiprecSidJsonParams::status,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Texml::Accounts::Calls::SiprecSiprecSidJsonResponse
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

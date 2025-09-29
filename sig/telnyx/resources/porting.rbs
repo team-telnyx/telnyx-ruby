@@ -1,0 +1,17 @@
+module Telnyx
+  module Resources
+    class Porting
+      attr_reader events: Telnyx::Resources::Porting::Events
+
+      attr_reader reports: Telnyx::Resources::Porting::Reports
+
+      attr_reader loa_configurations: Telnyx::Resources::Porting::LoaConfigurations
+
+      def list_uk_carriers: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PortingListUkCarriersResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

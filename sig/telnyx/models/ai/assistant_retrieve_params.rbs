@@ -1,0 +1,51 @@
+module Telnyx
+  module Models
+    module AI
+      type assistant_retrieve_params =
+        {
+          call_control_id: String,
+          fetch_dynamic_variables_from_webhook: bool,
+          from: String,
+          to: String
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class AssistantRetrieveParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader call_control_id: String?
+
+        def call_control_id=: (String) -> String
+
+        attr_reader fetch_dynamic_variables_from_webhook: bool?
+
+        def fetch_dynamic_variables_from_webhook=: (bool) -> bool
+
+        attr_reader from: String?
+
+        def from=: (String) -> String
+
+        attr_reader to: String?
+
+        def to=: (String) -> String
+
+        def initialize: (
+          ?call_control_id: String,
+          ?fetch_dynamic_variables_from_webhook: bool,
+          ?from: String,
+          ?to: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          call_control_id: String,
+          fetch_dynamic_variables_from_webhook: bool,
+          from: String,
+          to: String,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

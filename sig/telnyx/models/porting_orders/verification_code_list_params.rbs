@@ -1,0 +1,110 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type verification_code_list_params =
+        {
+          filter: Telnyx::PortingOrders::VerificationCodeListParams::Filter,
+          page: Telnyx::PortingOrders::VerificationCodeListParams::Page,
+          sort: Telnyx::PortingOrders::VerificationCodeListParams::Sort
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class VerificationCodeListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter: Telnyx::PortingOrders::VerificationCodeListParams::Filter?
+
+        def filter=: (
+          Telnyx::PortingOrders::VerificationCodeListParams::Filter
+        ) -> Telnyx::PortingOrders::VerificationCodeListParams::Filter
+
+        attr_reader page: Telnyx::PortingOrders::VerificationCodeListParams::Page?
+
+        def page=: (
+          Telnyx::PortingOrders::VerificationCodeListParams::Page
+        ) -> Telnyx::PortingOrders::VerificationCodeListParams::Page
+
+        attr_reader sort: Telnyx::PortingOrders::VerificationCodeListParams::Sort?
+
+        def sort=: (
+          Telnyx::PortingOrders::VerificationCodeListParams::Sort
+        ) -> Telnyx::PortingOrders::VerificationCodeListParams::Sort
+
+        def initialize: (
+          ?filter: Telnyx::PortingOrders::VerificationCodeListParams::Filter,
+          ?page: Telnyx::PortingOrders::VerificationCodeListParams::Page,
+          ?sort: Telnyx::PortingOrders::VerificationCodeListParams::Sort,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter: Telnyx::PortingOrders::VerificationCodeListParams::Filter,
+          page: Telnyx::PortingOrders::VerificationCodeListParams::Page,
+          sort: Telnyx::PortingOrders::VerificationCodeListParams::Sort,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter = { verified: bool }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader verified: bool?
+
+          def verified=: (bool) -> bool
+
+          def initialize: (?verified: bool) -> void
+
+          def to_hash: -> { verified: bool }
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
+        end
+
+        type sort =
+          {
+            value: Telnyx::Models::PortingOrders::VerificationCodeListParams::Sort::value
+          }
+
+        class Sort < Telnyx::Internal::Type::BaseModel
+          attr_reader value: Telnyx::Models::PortingOrders::VerificationCodeListParams::Sort::value?
+
+          def value=: (
+            Telnyx::Models::PortingOrders::VerificationCodeListParams::Sort::value
+          ) -> Telnyx::Models::PortingOrders::VerificationCodeListParams::Sort::value
+
+          def initialize: (
+            ?value: Telnyx::Models::PortingOrders::VerificationCodeListParams::Sort::value
+          ) -> void
+
+          def to_hash: -> {
+            value: Telnyx::Models::PortingOrders::VerificationCodeListParams::Sort::value
+          }
+
+          type value = :created_at | :"-created_at"
+
+          module Value
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED_AT: :created_at
+            CREATED_AT_DESC: :"-created_at"
+
+            def self?.values: -> ::Array[Telnyx::Models::PortingOrders::VerificationCodeListParams::Sort::value]
+          end
+        end
+      end
+    end
+  end
+end

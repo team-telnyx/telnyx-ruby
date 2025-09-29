@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    type virtual_cross_connect_update_response =
+      { data: Telnyx::Models::VirtualCrossConnectUpdateResponse::Data }
+
+    class VirtualCrossConnectUpdateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::VirtualCrossConnectUpdateResponse::Data?
+
+      def data=: (
+        Telnyx::Models::VirtualCrossConnectUpdateResponse::Data
+      ) -> Telnyx::Models::VirtualCrossConnectUpdateResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::VirtualCrossConnectUpdateResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::VirtualCrossConnectUpdateResponse::Data
+      }
+    end
+  end
+end

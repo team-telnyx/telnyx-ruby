@@ -1,0 +1,13 @@
+module Telnyx
+  module Resources
+    class ChargesSummary
+      def retrieve: (
+        end_date: Date,
+        start_date: Date,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ChargesSummaryRetrieveResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

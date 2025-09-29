@@ -1,0 +1,77 @@
+module Telnyx
+  module Models
+    module Calls
+      type transcription_start_request =
+        {
+          client_state: String,
+          command_id: String,
+          transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine,
+          transcription_engine_config: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config,
+          transcription_tracks: String
+        }
+
+      class TranscriptionStartRequest < Telnyx::Internal::Type::BaseModel
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader command_id: String?
+
+        def command_id=: (String) -> String
+
+        attr_reader transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine?
+
+        def transcription_engine=: (
+          Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine
+        ) -> Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine
+
+        attr_reader transcription_engine_config: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config?
+
+        def transcription_engine_config=: (
+          Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config
+        ) -> Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config
+
+        attr_reader transcription_tracks: String?
+
+        def transcription_tracks=: (String) -> String
+
+        def initialize: (
+          ?client_state: String,
+          ?command_id: String,
+          ?transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine,
+          ?transcription_engine_config: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config,
+          ?transcription_tracks: String
+        ) -> void
+
+        def to_hash: -> {
+          client_state: String,
+          command_id: String,
+          transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine,
+          transcription_engine_config: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config,
+          transcription_tracks: String
+        }
+
+        type transcription_engine = :A | :B
+
+        module TranscriptionEngine
+          extend Telnyx::Internal::Type::Enum
+
+          A: :A
+          B: :B
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine]
+        end
+
+        type transcription_engine_config =
+          Telnyx::Calls::TranscriptionEngineAConfig
+          | Telnyx::Calls::TranscriptionEngineBConfig
+
+        module TranscriptionEngineConfig
+          extend Telnyx::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,83 @@
+module Telnyx
+  module Models
+    module AI
+      type embedding_create_params =
+        {
+          bucket_name: String,
+          document_chunk_overlap_size: Integer,
+          document_chunk_size: Integer,
+          embedding_model: Telnyx::Models::AI::EmbeddingCreateParams::embedding_model,
+          loader: Telnyx::Models::AI::EmbeddingCreateParams::loader
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class EmbeddingCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor bucket_name: String
+
+        attr_reader document_chunk_overlap_size: Integer?
+
+        def document_chunk_overlap_size=: (Integer) -> Integer
+
+        attr_reader document_chunk_size: Integer?
+
+        def document_chunk_size=: (Integer) -> Integer
+
+        attr_reader embedding_model: Telnyx::Models::AI::EmbeddingCreateParams::embedding_model?
+
+        def embedding_model=: (
+          Telnyx::Models::AI::EmbeddingCreateParams::embedding_model
+        ) -> Telnyx::Models::AI::EmbeddingCreateParams::embedding_model
+
+        attr_reader loader: Telnyx::Models::AI::EmbeddingCreateParams::loader?
+
+        def loader=: (
+          Telnyx::Models::AI::EmbeddingCreateParams::loader
+        ) -> Telnyx::Models::AI::EmbeddingCreateParams::loader
+
+        def initialize: (
+          bucket_name: String,
+          ?document_chunk_overlap_size: Integer,
+          ?document_chunk_size: Integer,
+          ?embedding_model: Telnyx::Models::AI::EmbeddingCreateParams::embedding_model,
+          ?loader: Telnyx::Models::AI::EmbeddingCreateParams::loader,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          bucket_name: String,
+          document_chunk_overlap_size: Integer,
+          document_chunk_size: Integer,
+          embedding_model: Telnyx::Models::AI::EmbeddingCreateParams::embedding_model,
+          loader: Telnyx::Models::AI::EmbeddingCreateParams::loader,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type embedding_model =
+          :"thenlper/gte-large" | :"intfloat/multilingual-e5-large"
+
+        module EmbeddingModel
+          extend Telnyx::Internal::Type::Enum
+
+          THENLPER_GTE_LARGE: :"thenlper/gte-large"
+          INTFLOAT_MULTILINGUAL_E5_LARGE: :"intfloat/multilingual-e5-large"
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::EmbeddingCreateParams::embedding_model]
+        end
+
+        type loader = :default | :intercom
+
+        module Loader
+          extend Telnyx::Internal::Type::Enum
+
+          DEFAULT: :default
+          INTERCOM: :intercom
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::EmbeddingCreateParams::loader]
+        end
+      end
+    end
+  end
+end

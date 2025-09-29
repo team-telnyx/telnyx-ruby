@@ -1,0 +1,72 @@
+module Telnyx
+  module Models
+    type rcs_agent =
+      {
+        agent_id: String,
+        agent_name: String,
+        created_at: Time,
+        enabled: bool,
+        profile_id: String?,
+        updated_at: Time,
+        user_id: String,
+        webhook_failover_url: String?,
+        webhook_url: String?
+      }
+
+    class RcsAgent < Telnyx::Internal::Type::BaseModel
+      attr_reader agent_id: String?
+
+      def agent_id=: (String) -> String
+
+      attr_reader agent_name: String?
+
+      def agent_name=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader enabled: bool?
+
+      def enabled=: (bool) -> bool
+
+      attr_accessor profile_id: String?
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      attr_reader user_id: String?
+
+      def user_id=: (String) -> String
+
+      attr_accessor webhook_failover_url: String?
+
+      attr_accessor webhook_url: String?
+
+      def initialize: (
+        ?agent_id: String,
+        ?agent_name: String,
+        ?created_at: Time,
+        ?enabled: bool,
+        ?profile_id: String?,
+        ?updated_at: Time,
+        ?user_id: String,
+        ?webhook_failover_url: String?,
+        ?webhook_url: String?
+      ) -> void
+
+      def to_hash: -> {
+        agent_id: String,
+        agent_name: String,
+        created_at: Time,
+        enabled: bool,
+        profile_id: String?,
+        updated_at: Time,
+        user_id: String,
+        webhook_failover_url: String?,
+        webhook_url: String?
+      }
+    end
+  end
+end

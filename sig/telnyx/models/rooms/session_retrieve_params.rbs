@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    module Rooms
+      type session_retrieve_params =
+        { include_participants: bool }
+        & Telnyx::Internal::Type::request_parameters
+
+      class SessionRetrieveParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader include_participants: bool?
+
+        def include_participants=: (bool) -> bool
+
+        def initialize: (
+          ?include_participants: bool,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          include_participants: bool,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,29 @@
+module Telnyx
+  module Resources
+    class Comments
+      def create: (
+        ?body: String,
+        ?comment_record_id: String,
+        ?comment_record_type: Telnyx::Models::CommentCreateParams::comment_record_type,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CommentCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CommentRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::CommentListParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CommentListResponse
+
+      def mark_as_read: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CommentMarkAsReadResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

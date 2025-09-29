@@ -1,0 +1,203 @@
+module Telnyx
+  module Models
+    type call_answered_webhook_event =
+      { data: Telnyx::CallAnsweredWebhookEvent::Data }
+
+    class CallAnsweredWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::CallAnsweredWebhookEvent::Data?
+
+      def data=: (
+        Telnyx::CallAnsweredWebhookEvent::Data
+      ) -> Telnyx::CallAnsweredWebhookEvent::Data
+
+      def initialize: (?data: Telnyx::CallAnsweredWebhookEvent::Data) -> void
+
+      def to_hash: -> { data: Telnyx::CallAnsweredWebhookEvent::Data }
+
+      type data =
+        {
+          id: String,
+          event_type: Telnyx::Models::CallAnsweredWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::CallAnsweredWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::CallAnsweredWebhookEvent::Data::record_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader event_type: Telnyx::Models::CallAnsweredWebhookEvent::Data::event_type?
+
+        def event_type=: (
+          Telnyx::Models::CallAnsweredWebhookEvent::Data::event_type
+        ) -> Telnyx::Models::CallAnsweredWebhookEvent::Data::event_type
+
+        attr_reader occurred_at: Time?
+
+        def occurred_at=: (Time) -> Time
+
+        attr_reader payload: Telnyx::CallAnsweredWebhookEvent::Data::Payload?
+
+        def payload=: (
+          Telnyx::CallAnsweredWebhookEvent::Data::Payload
+        ) -> Telnyx::CallAnsweredWebhookEvent::Data::Payload
+
+        attr_reader record_type: Telnyx::Models::CallAnsweredWebhookEvent::Data::record_type?
+
+        def record_type=: (
+          Telnyx::Models::CallAnsweredWebhookEvent::Data::record_type
+        ) -> Telnyx::Models::CallAnsweredWebhookEvent::Data::record_type
+
+        def initialize: (
+          ?id: String,
+          ?event_type: Telnyx::Models::CallAnsweredWebhookEvent::Data::event_type,
+          ?occurred_at: Time,
+          ?payload: Telnyx::CallAnsweredWebhookEvent::Data::Payload,
+          ?record_type: Telnyx::Models::CallAnsweredWebhookEvent::Data::record_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: Telnyx::Models::CallAnsweredWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::CallAnsweredWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::CallAnsweredWebhookEvent::Data::record_type
+        }
+
+        type event_type = :"call.answered"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          CALL_ANSWERED: :"call.answered"
+
+          def self?.values: -> ::Array[Telnyx::Models::CallAnsweredWebhookEvent::Data::event_type]
+        end
+
+        type payload =
+          {
+            call_control_id: String,
+            call_leg_id: String,
+            call_session_id: String,
+            client_state: String,
+            connection_id: String,
+            custom_headers: ::Array[Telnyx::CustomSipHeader],
+            from: String,
+            sip_headers: ::Array[Telnyx::SipHeader],
+            start_time: Time,
+            state: Telnyx::Models::CallAnsweredWebhookEvent::Data::Payload::state,
+            tags: ::Array[String],
+            to: String
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_reader call_control_id: String?
+
+          def call_control_id=: (String) -> String
+
+          attr_reader call_leg_id: String?
+
+          def call_leg_id=: (String) -> String
+
+          attr_reader call_session_id: String?
+
+          def call_session_id=: (String) -> String
+
+          attr_reader client_state: String?
+
+          def client_state=: (String) -> String
+
+          attr_reader connection_id: String?
+
+          def connection_id=: (String) -> String
+
+          attr_reader custom_headers: ::Array[Telnyx::CustomSipHeader]?
+
+          def custom_headers=: (
+            ::Array[Telnyx::CustomSipHeader]
+          ) -> ::Array[Telnyx::CustomSipHeader]
+
+          attr_reader from: String?
+
+          def from=: (String) -> String
+
+          attr_reader sip_headers: ::Array[Telnyx::SipHeader]?
+
+          def sip_headers=: (
+            ::Array[Telnyx::SipHeader]
+          ) -> ::Array[Telnyx::SipHeader]
+
+          attr_reader start_time: Time?
+
+          def start_time=: (Time) -> Time
+
+          attr_reader state: Telnyx::Models::CallAnsweredWebhookEvent::Data::Payload::state?
+
+          def state=: (
+            Telnyx::Models::CallAnsweredWebhookEvent::Data::Payload::state
+          ) -> Telnyx::Models::CallAnsweredWebhookEvent::Data::Payload::state
+
+          attr_reader tags: ::Array[String]?
+
+          def tags=: (::Array[String]) -> ::Array[String]
+
+          attr_reader to: String?
+
+          def to=: (String) -> String
+
+          def initialize: (
+            ?call_control_id: String,
+            ?call_leg_id: String,
+            ?call_session_id: String,
+            ?client_state: String,
+            ?connection_id: String,
+            ?custom_headers: ::Array[Telnyx::CustomSipHeader],
+            ?from: String,
+            ?sip_headers: ::Array[Telnyx::SipHeader],
+            ?start_time: Time,
+            ?state: Telnyx::Models::CallAnsweredWebhookEvent::Data::Payload::state,
+            ?tags: ::Array[String],
+            ?to: String
+          ) -> void
+
+          def to_hash: -> {
+            call_control_id: String,
+            call_leg_id: String,
+            call_session_id: String,
+            client_state: String,
+            connection_id: String,
+            custom_headers: ::Array[Telnyx::CustomSipHeader],
+            from: String,
+            sip_headers: ::Array[Telnyx::SipHeader],
+            start_time: Time,
+            state: Telnyx::Models::CallAnsweredWebhookEvent::Data::Payload::state,
+            tags: ::Array[String],
+            to: String
+          }
+
+          type state = :answered
+
+          module State
+            extend Telnyx::Internal::Type::Enum
+
+            ANSWERED: :answered
+
+            def self?.values: -> ::Array[Telnyx::Models::CallAnsweredWebhookEvent::Data::Payload::state]
+          end
+        end
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::CallAnsweredWebhookEvent::Data::record_type]
+        end
+      end
+    end
+  end
+end

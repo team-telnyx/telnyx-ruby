@@ -1,0 +1,102 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type porting_phone_number_extension =
+        {
+          id: String,
+          activation_ranges: ::Array[Telnyx::PortingOrders::PortingPhoneNumberExtension::ActivationRange],
+          created_at: Time,
+          extension_range: Telnyx::PortingOrders::PortingPhoneNumberExtension::ExtensionRange,
+          porting_phone_number_id: String,
+          record_type: String,
+          updated_at: Time
+        }
+
+      class PortingPhoneNumberExtension < Telnyx::Internal::Type::BaseModel
+        attr_reader activation_ranges: ::Array[Telnyx::PortingOrders::PortingPhoneNumberExtension::ActivationRange]?
+
+        def activation_ranges=: (
+          ::Array[Telnyx::PortingOrders::PortingPhoneNumberExtension::ActivationRange]
+        ) -> ::Array[Telnyx::PortingOrders::PortingPhoneNumberExtension::ActivationRange]
+
+        attr_reader extension_range: Telnyx::PortingOrders::PortingPhoneNumberExtension::ExtensionRange?
+
+        def extension_range=: (
+          Telnyx::PortingOrders::PortingPhoneNumberExtension::ExtensionRange
+        ) -> Telnyx::PortingOrders::PortingPhoneNumberExtension::ExtensionRange
+
+        attr_reader porting_phone_number_id: String?
+
+        def porting_phone_number_id=: (String) -> String
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        def initialize: (
+          ?id: String,
+          ?activation_ranges: ::Array[Telnyx::PortingOrders::PortingPhoneNumberExtension::ActivationRange],
+          ?created_at: Time,
+          ?extension_range: Telnyx::PortingOrders::PortingPhoneNumberExtension::ExtensionRange,
+          ?porting_phone_number_id: String,
+          ?record_type: String,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          activation_ranges: ::Array[Telnyx::PortingOrders::PortingPhoneNumberExtension::ActivationRange],
+          created_at: Time,
+          extension_range: Telnyx::PortingOrders::PortingPhoneNumberExtension::ExtensionRange,
+          porting_phone_number_id: String,
+          record_type: String,
+          updated_at: Time
+        }
+
+        type activation_range = { end_at: Integer, start_at: Integer }
+
+        class ActivationRange < Telnyx::Internal::Type::BaseModel
+          attr_reader end_at: Integer?
+
+          def end_at=: (Integer) -> Integer
+
+          attr_reader start_at: Integer?
+
+          def start_at=: (Integer) -> Integer
+
+          def initialize: (?end_at: Integer, ?start_at: Integer) -> void
+
+          def to_hash: -> { end_at: Integer, start_at: Integer }
+        end
+
+        type extension_range = { end_at: Integer, start_at: Integer }
+
+        class ExtensionRange < Telnyx::Internal::Type::BaseModel
+          attr_reader end_at: Integer?
+
+          def end_at=: (Integer) -> Integer
+
+          attr_reader start_at: Integer?
+
+          def start_at=: (Integer) -> Integer
+
+          def initialize: (?end_at: Integer, ?start_at: Integer) -> void
+
+          def to_hash: -> { end_at: Integer, start_at: Integer }
+        end
+      end
+    end
+  end
+end

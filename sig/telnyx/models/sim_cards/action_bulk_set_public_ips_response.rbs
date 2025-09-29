@@ -1,0 +1,90 @@
+module Telnyx
+  module Models
+    module SimCards
+      type action_bulk_set_public_ips_response =
+        { data: Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data }
+
+      class ActionBulkSetPublicIPsResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data?
+
+        def data=: (
+          Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data
+        ) -> Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data
+        }
+
+        type data =
+          {
+            id: String,
+            action_type: Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::action_type,
+            created_at: String,
+            record_type: String,
+            settings: ::Hash[Symbol, top],
+            updated_at: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader action_type: Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::action_type?
+
+          def action_type=: (
+            Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::action_type
+          ) -> Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::action_type
+
+          attr_reader created_at: String?
+
+          def created_at=: (String) -> String
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_reader settings: ::Hash[Symbol, top]?
+
+          def settings=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader updated_at: String?
+
+          def updated_at=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?action_type: Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::action_type,
+            ?created_at: String,
+            ?record_type: String,
+            ?settings: ::Hash[Symbol, top],
+            ?updated_at: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            action_type: Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::action_type,
+            created_at: String,
+            record_type: String,
+            settings: ::Hash[Symbol, top],
+            updated_at: String
+          }
+
+          type action_type = :bulk_set_public_ips
+
+          module ActionType
+            extend Telnyx::Internal::Type::Enum
+
+            BULK_SET_PUBLIC_IPS: :bulk_set_public_ips
+
+            def self?.values: -> ::Array[Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::action_type]
+          end
+        end
+      end
+    end
+  end
+end

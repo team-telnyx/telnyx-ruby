@@ -1,0 +1,113 @@
+module Telnyx
+  module Models
+    type number_reservation_list_params =
+      {
+        filter: Telnyx::NumberReservationListParams::Filter,
+        page: Telnyx::NumberReservationListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class NumberReservationListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::NumberReservationListParams::Filter?
+
+      def filter=: (
+        Telnyx::NumberReservationListParams::Filter
+      ) -> Telnyx::NumberReservationListParams::Filter
+
+      attr_reader page: Telnyx::NumberReservationListParams::Page?
+
+      def page=: (
+        Telnyx::NumberReservationListParams::Page
+      ) -> Telnyx::NumberReservationListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::NumberReservationListParams::Filter,
+        ?page: Telnyx::NumberReservationListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::NumberReservationListParams::Filter,
+        page: Telnyx::NumberReservationListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          created_at: Telnyx::NumberReservationListParams::Filter::CreatedAt,
+          customer_reference: String,
+          phone_numbers_phone_number: String,
+          status: String
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader created_at: Telnyx::NumberReservationListParams::Filter::CreatedAt?
+
+        def created_at=: (
+          Telnyx::NumberReservationListParams::Filter::CreatedAt
+        ) -> Telnyx::NumberReservationListParams::Filter::CreatedAt
+
+        attr_reader customer_reference: String?
+
+        def customer_reference=: (String) -> String
+
+        attr_reader phone_numbers_phone_number: String?
+
+        def phone_numbers_phone_number=: (String) -> String
+
+        attr_reader status: String?
+
+        def status=: (String) -> String
+
+        def initialize: (
+          ?created_at: Telnyx::NumberReservationListParams::Filter::CreatedAt,
+          ?customer_reference: String,
+          ?phone_numbers_phone_number: String,
+          ?status: String
+        ) -> void
+
+        def to_hash: -> {
+          created_at: Telnyx::NumberReservationListParams::Filter::CreatedAt,
+          customer_reference: String,
+          phone_numbers_phone_number: String,
+          status: String
+        }
+
+        type created_at = { gt: String, lt: String }
+
+        class CreatedAt < Telnyx::Internal::Type::BaseModel
+          attr_reader gt: String?
+
+          def gt=: (String) -> String
+
+          attr_reader lt: String?
+
+          def lt=: (String) -> String
+
+          def initialize: (?gt: String, ?lt: String) -> void
+
+          def to_hash: -> { gt: String, lt: String }
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

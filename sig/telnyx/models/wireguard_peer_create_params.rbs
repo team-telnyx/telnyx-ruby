@@ -1,0 +1,30 @@
+module Telnyx
+  module Models
+    type wireguard_peer_create_params =
+      { wireguard_interface_id: String, public_key: String }
+      & Telnyx::Internal::Type::request_parameters
+
+    class WireguardPeerCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor wireguard_interface_id: String
+
+      attr_reader public_key: String?
+
+      def public_key=: (String) -> String
+
+      def initialize: (
+        wireguard_interface_id: String,
+        ?public_key: String,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        wireguard_interface_id: String,
+        public_key: String,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

@@ -1,0 +1,179 @@
+module Telnyx
+  module Models
+    type messsage_rcs_response =
+      { data: Telnyx::Models::MesssageRcsResponse::Data }
+
+    class MesssageRcsResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::MesssageRcsResponse::Data?
+
+      def data=: (
+        Telnyx::Models::MesssageRcsResponse::Data
+      ) -> Telnyx::Models::MesssageRcsResponse::Data
+
+      def initialize: (?data: Telnyx::Models::MesssageRcsResponse::Data) -> void
+
+      def to_hash: -> { data: Telnyx::Models::MesssageRcsResponse::Data }
+
+      type data =
+        {
+          id: String,
+          body: Telnyx::RcsAgentMessage,
+          direction: String,
+          encoding: String,
+          from: Telnyx::Models::MesssageRcsResponse::Data::From,
+          messaging_profile_id: String,
+          organization_id: String,
+          received_at: Time,
+          record_type: String,
+          to: ::Array[Telnyx::Models::MesssageRcsResponse::Data::To],
+          type: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader body: Telnyx::RcsAgentMessage?
+
+        def body=: (Telnyx::RcsAgentMessage) -> Telnyx::RcsAgentMessage
+
+        attr_reader direction: String?
+
+        def direction=: (String) -> String
+
+        attr_reader encoding: String?
+
+        def encoding=: (String) -> String
+
+        attr_reader from: Telnyx::Models::MesssageRcsResponse::Data::From?
+
+        def from=: (
+          Telnyx::Models::MesssageRcsResponse::Data::From
+        ) -> Telnyx::Models::MesssageRcsResponse::Data::From
+
+        attr_reader messaging_profile_id: String?
+
+        def messaging_profile_id=: (String) -> String
+
+        attr_reader organization_id: String?
+
+        def organization_id=: (String) -> String
+
+        attr_reader received_at: Time?
+
+        def received_at=: (Time) -> Time
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader to: ::Array[Telnyx::Models::MesssageRcsResponse::Data::To]?
+
+        def to=: (
+          ::Array[Telnyx::Models::MesssageRcsResponse::Data::To]
+        ) -> ::Array[Telnyx::Models::MesssageRcsResponse::Data::To]
+
+        attr_reader type: String?
+
+        def type=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?body: Telnyx::RcsAgentMessage,
+          ?direction: String,
+          ?encoding: String,
+          ?from: Telnyx::Models::MesssageRcsResponse::Data::From,
+          ?messaging_profile_id: String,
+          ?organization_id: String,
+          ?received_at: Time,
+          ?record_type: String,
+          ?to: ::Array[Telnyx::Models::MesssageRcsResponse::Data::To],
+          ?type: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          body: Telnyx::RcsAgentMessage,
+          direction: String,
+          encoding: String,
+          from: Telnyx::Models::MesssageRcsResponse::Data::From,
+          messaging_profile_id: String,
+          organization_id: String,
+          received_at: Time,
+          record_type: String,
+          to: ::Array[Telnyx::Models::MesssageRcsResponse::Data::To],
+          type: String
+        }
+
+        type from = { agent_id: String, agent_name: String, carrier: String }
+
+        class From < Telnyx::Internal::Type::BaseModel
+          attr_reader agent_id: String?
+
+          def agent_id=: (String) -> String
+
+          attr_reader agent_name: String?
+
+          def agent_name=: (String) -> String
+
+          attr_reader carrier: String?
+
+          def carrier=: (String) -> String
+
+          def initialize: (
+            ?agent_id: String,
+            ?agent_name: String,
+            ?carrier: String
+          ) -> void
+
+          def to_hash: -> {
+            agent_id: String,
+            agent_name: String,
+            carrier: String
+          }
+        end
+
+        type to =
+          {
+            carrier: String,
+            line_type: String,
+            phone_number: String,
+            status: String
+          }
+
+        class To < Telnyx::Internal::Type::BaseModel
+          attr_reader carrier: String?
+
+          def carrier=: (String) -> String
+
+          attr_reader line_type: String?
+
+          def line_type=: (String) -> String
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          attr_reader status: String?
+
+          def status=: (String) -> String
+
+          def initialize: (
+            ?carrier: String,
+            ?line_type: String,
+            ?phone_number: String,
+            ?status: String
+          ) -> void
+
+          def to_hash: -> {
+            carrier: String,
+            line_type: String,
+            phone_number: String,
+            status: String
+          }
+        end
+      end
+    end
+  end
+end

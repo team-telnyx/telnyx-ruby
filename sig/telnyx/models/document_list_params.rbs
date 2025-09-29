@@ -1,0 +1,168 @@
+module Telnyx
+  module Models
+    type document_list_params =
+      {
+        filter: Telnyx::DocumentListParams::Filter,
+        page: Telnyx::DocumentListParams::Page,
+        sort: ::Array[Telnyx::Models::DocumentListParams::sort]
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class DocumentListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::DocumentListParams::Filter?
+
+      def filter=: (
+        Telnyx::DocumentListParams::Filter
+      ) -> Telnyx::DocumentListParams::Filter
+
+      attr_reader page: Telnyx::DocumentListParams::Page?
+
+      def page=: (
+        Telnyx::DocumentListParams::Page
+      ) -> Telnyx::DocumentListParams::Page
+
+      attr_reader sort: ::Array[Telnyx::Models::DocumentListParams::sort]?
+
+      def sort=: (
+        ::Array[Telnyx::Models::DocumentListParams::sort]
+      ) -> ::Array[Telnyx::Models::DocumentListParams::sort]
+
+      def initialize: (
+        ?filter: Telnyx::DocumentListParams::Filter,
+        ?page: Telnyx::DocumentListParams::Page,
+        ?sort: ::Array[Telnyx::Models::DocumentListParams::sort],
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::DocumentListParams::Filter,
+        page: Telnyx::DocumentListParams::Page,
+        sort: ::Array[Telnyx::Models::DocumentListParams::sort],
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          created_at: Telnyx::DocumentListParams::Filter::CreatedAt,
+          customer_reference: Telnyx::DocumentListParams::Filter::CustomerReference,
+          filename: Telnyx::DocumentListParams::Filter::Filename
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader created_at: Telnyx::DocumentListParams::Filter::CreatedAt?
+
+        def created_at=: (
+          Telnyx::DocumentListParams::Filter::CreatedAt
+        ) -> Telnyx::DocumentListParams::Filter::CreatedAt
+
+        attr_reader customer_reference: Telnyx::DocumentListParams::Filter::CustomerReference?
+
+        def customer_reference=: (
+          Telnyx::DocumentListParams::Filter::CustomerReference
+        ) -> Telnyx::DocumentListParams::Filter::CustomerReference
+
+        attr_reader filename: Telnyx::DocumentListParams::Filter::Filename?
+
+        def filename=: (
+          Telnyx::DocumentListParams::Filter::Filename
+        ) -> Telnyx::DocumentListParams::Filter::Filename
+
+        def initialize: (
+          ?created_at: Telnyx::DocumentListParams::Filter::CreatedAt,
+          ?customer_reference: Telnyx::DocumentListParams::Filter::CustomerReference,
+          ?filename: Telnyx::DocumentListParams::Filter::Filename
+        ) -> void
+
+        def to_hash: -> {
+          created_at: Telnyx::DocumentListParams::Filter::CreatedAt,
+          customer_reference: Telnyx::DocumentListParams::Filter::CustomerReference,
+          filename: Telnyx::DocumentListParams::Filter::Filename
+        }
+
+        type created_at = { gt: Time, lt: Time }
+
+        class CreatedAt < Telnyx::Internal::Type::BaseModel
+          attr_reader gt: Time?
+
+          def gt=: (Time) -> Time
+
+          attr_reader lt: Time?
+
+          def lt=: (Time) -> Time
+
+          def initialize: (?gt: Time, ?lt: Time) -> void
+
+          def to_hash: -> { gt: Time, lt: Time }
+        end
+
+        type customer_reference = { eq: String, in_: ::Array[String] }
+
+        class CustomerReference < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: String?
+
+          def eq=: (String) -> String
+
+          attr_reader in_: ::Array[String]?
+
+          def in_=: (::Array[String]) -> ::Array[String]
+
+          def initialize: (?eq: String, ?in_: ::Array[String]) -> void
+
+          def to_hash: -> { eq: String, in_: ::Array[String] }
+        end
+
+        type filename = { contains: String }
+
+        class Filename < Telnyx::Internal::Type::BaseModel
+          attr_reader contains: String?
+
+          def contains=: (String) -> String
+
+          def initialize: (?contains: String) -> void
+
+          def to_hash: -> { contains: String }
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+
+      type sort =
+        :filename
+        | :created_at
+        | :updated_at
+        | :"-filename"
+        | :"-created_at"
+        | :"-updated_at"
+
+      module Sort
+        extend Telnyx::Internal::Type::Enum
+
+        FILENAME: :filename
+        CREATED_AT: :created_at
+        UPDATED_AT: :updated_at
+        FILENAME_DESC: :"-filename"
+        CREATED_AT_DESC: :"-created_at"
+        UPDATED_AT_DESC: :"-updated_at"
+
+        def self?.values: -> ::Array[Telnyx::Models::DocumentListParams::sort]
+      end
+    end
+  end
+end

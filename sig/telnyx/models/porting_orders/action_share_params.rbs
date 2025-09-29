@@ -1,0 +1,51 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type action_share_params =
+        {
+          expires_in_seconds: Integer,
+          permissions: Telnyx::Models::PortingOrders::ActionShareParams::permissions
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionShareParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader expires_in_seconds: Integer?
+
+        def expires_in_seconds=: (Integer) -> Integer
+
+        attr_reader permissions: Telnyx::Models::PortingOrders::ActionShareParams::permissions?
+
+        def permissions=: (
+          Telnyx::Models::PortingOrders::ActionShareParams::permissions
+        ) -> Telnyx::Models::PortingOrders::ActionShareParams::permissions
+
+        def initialize: (
+          ?expires_in_seconds: Integer,
+          ?permissions: Telnyx::Models::PortingOrders::ActionShareParams::permissions,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          expires_in_seconds: Integer,
+          permissions: Telnyx::Models::PortingOrders::ActionShareParams::permissions,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type permissions =
+          :"porting_order.document.read" | :"porting_order.document.update"
+
+        module Permissions
+          extend Telnyx::Internal::Type::Enum
+
+          PORTING_ORDER_DOCUMENT_READ: :"porting_order.document.read"
+          PORTING_ORDER_DOCUMENT_UPDATE: :"porting_order.document.update"
+
+          def self?.values: -> ::Array[Telnyx::Models::PortingOrders::ActionShareParams::permissions]
+        end
+      end
+    end
+  end
+end

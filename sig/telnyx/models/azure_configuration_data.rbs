@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    type azure_configuration_data =
+      { account_key: String, account_name: String, bucket: String }
+
+    class AzureConfigurationData < Telnyx::Internal::Type::BaseModel
+      attr_reader account_key: String?
+
+      def account_key=: (String) -> String
+
+      attr_reader account_name: String?
+
+      def account_name=: (String) -> String
+
+      attr_reader bucket: String?
+
+      def bucket=: (String) -> String
+
+      def initialize: (
+        ?account_key: String,
+        ?account_name: String,
+        ?bucket: String
+      ) -> void
+
+      def to_hash: -> {
+        account_key: String,
+        account_name: String,
+        bucket: String
+      }
+    end
+  end
+end

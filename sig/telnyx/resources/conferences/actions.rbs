@@ -1,0 +1,129 @@
+module Telnyx
+  module Resources
+    class Conferences
+      class Actions
+        def update: (
+          String id,
+          call_control_id: String,
+          supervisor_role: Telnyx::Models::Conferences::UpdateConference::supervisor_role,
+          ?command_id: String,
+          ?whisper_call_control_ids: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Conferences::ActionUpdateResponse
+
+        def hold: (
+          String id,
+          ?audio_url: String,
+          ?call_control_ids: ::Array[String],
+          ?media_name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Conferences::ActionHoldResponse
+
+        def join: (
+          String id,
+          call_control_id: String,
+          ?beep_enabled: Telnyx::Models::Conferences::ActionJoinParams::beep_enabled,
+          ?client_state: String,
+          ?command_id: String,
+          ?end_conference_on_exit: bool,
+          ?hold: bool,
+          ?hold_audio_url: String,
+          ?hold_media_name: String,
+          ?mute: bool,
+          ?soft_end_conference_on_exit: bool,
+          ?start_conference_on_enter: bool,
+          ?supervisor_role: Telnyx::Models::Conferences::ActionJoinParams::supervisor_role,
+          ?whisper_call_control_ids: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Conferences::ActionJoinResponse
+
+        def leave: (
+          String id,
+          call_control_id: String,
+          ?beep_enabled: Telnyx::Models::Conferences::ActionLeaveParams::beep_enabled,
+          ?command_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Conferences::ActionLeaveResponse
+
+        def mute: (
+          String id,
+          ?call_control_ids: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Conferences::ActionMuteResponse
+
+        def play: (
+          String id,
+          ?audio_url: String,
+          ?call_control_ids: ::Array[String],
+          ?loop_: Telnyx::Models::Calls::loopcount,
+          ?media_name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Conferences::ActionPlayResponse
+
+        def record_pause: (
+          String id,
+          ?command_id: String,
+          ?recording_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Conferences::ActionRecordPauseResponse
+
+        def record_resume: (
+          String id,
+          ?command_id: String,
+          ?recording_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Conferences::ActionRecordResumeResponse
+
+        def record_start: (
+          String id,
+          format_: Telnyx::Models::Conferences::ActionRecordStartParams::format_,
+          ?command_id: String,
+          ?custom_file_name: String,
+          ?play_beep: bool,
+          ?trim: Telnyx::Models::Conferences::ActionRecordStartParams::trim,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Conferences::ActionRecordStartResponse
+
+        def record_stop: (
+          String id,
+          ?client_state: String,
+          ?command_id: String,
+          ?recording_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Conferences::ActionRecordStopResponse
+
+        def speak: (
+          String id,
+          payload: String,
+          voice: String,
+          ?call_control_ids: ::Array[String],
+          ?command_id: String,
+          ?language: Telnyx::Models::Conferences::ActionSpeakParams::language,
+          ?payload_type: Telnyx::Models::Conferences::ActionSpeakParams::payload_type,
+          ?voice_settings: Telnyx::Models::Conferences::ActionSpeakParams::voice_settings,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Conferences::ActionSpeakResponse
+
+        def stop: (
+          String id,
+          ?call_control_ids: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Conferences::ActionStopResponse
+
+        def unhold: (
+          String id,
+          call_control_ids: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Conferences::ActionUnholdResponse
+
+        def unmute: (
+          String id,
+          ?call_control_ids: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Conferences::ActionUnmuteResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

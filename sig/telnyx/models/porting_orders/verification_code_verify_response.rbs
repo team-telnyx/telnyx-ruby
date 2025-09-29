@@ -1,0 +1,87 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type verification_code_verify_response =
+        {
+          data: ::Array[Telnyx::Models::PortingOrders::VerificationCodeVerifyResponse::Data]
+        }
+
+      class VerificationCodeVerifyResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::Models::PortingOrders::VerificationCodeVerifyResponse::Data]?
+
+        def data=: (
+          ::Array[Telnyx::Models::PortingOrders::VerificationCodeVerifyResponse::Data]
+        ) -> ::Array[Telnyx::Models::PortingOrders::VerificationCodeVerifyResponse::Data]
+
+        def initialize: (
+          ?data: ::Array[Telnyx::Models::PortingOrders::VerificationCodeVerifyResponse::Data]
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Models::PortingOrders::VerificationCodeVerifyResponse::Data]
+        }
+
+        type data =
+          {
+            id: String,
+            created_at: Time,
+            phone_number: String,
+            porting_order_id: String,
+            record_type: String,
+            updated_at: Time,
+            verified: bool
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          attr_reader porting_order_id: String?
+
+          def porting_order_id=: (String) -> String
+
+          attr_reader updated_at: Time?
+
+          def updated_at=: (Time) -> Time
+
+          attr_reader verified: bool?
+
+          def verified=: (bool) -> bool
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?created_at: Time,
+            ?phone_number: String,
+            ?porting_order_id: String,
+            ?record_type: String,
+            ?updated_at: Time,
+            ?verified: bool
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            created_at: Time,
+            phone_number: String,
+            porting_order_id: String,
+            record_type: String,
+            updated_at: Time,
+            verified: bool
+          }
+        end
+      end
+    end
+  end
+end

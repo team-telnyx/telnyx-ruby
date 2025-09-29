@@ -1,0 +1,52 @@
+module Telnyx
+  module Resources
+    class FaxApplications
+      def create: (
+        application_name: String,
+        webhook_event_url: String,
+        ?active: bool,
+        ?anchorsite_override: Telnyx::Models::anchorsite_override,
+        ?inbound: Telnyx::FaxApplicationCreateParams::Inbound,
+        ?outbound: Telnyx::FaxApplicationCreateParams::Outbound,
+        ?tags: ::Array[String],
+        ?webhook_event_failover_url: String?,
+        ?webhook_timeout_secs: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::FaxApplicationCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::FaxApplicationRetrieveResponse
+
+      def update: (
+        String id,
+        application_name: String,
+        webhook_event_url: String,
+        ?active: bool,
+        ?anchorsite_override: Telnyx::Models::anchorsite_override,
+        ?fax_email_recipient: String?,
+        ?inbound: Telnyx::FaxApplicationUpdateParams::Inbound,
+        ?outbound: Telnyx::FaxApplicationUpdateParams::Outbound,
+        ?tags: ::Array[String],
+        ?webhook_event_failover_url: String?,
+        ?webhook_timeout_secs: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::FaxApplicationUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::FaxApplicationListParams::Filter,
+        ?page: Telnyx::FaxApplicationListParams::Page,
+        ?sort: Telnyx::Models::FaxApplicationListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::FaxApplicationListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::FaxApplicationDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

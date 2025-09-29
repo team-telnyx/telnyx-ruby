@@ -1,0 +1,35 @@
+module Telnyx
+  module Resources
+    class GlobalIPAssignments
+      def create: (
+        ?global_ip_id: String,
+        ?is_in_maintenance: bool,
+        ?wireguard_peer_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::GlobalIPAssignmentCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::GlobalIPAssignmentRetrieveResponse
+
+      def update: (
+        String id,
+        body: Telnyx::GlobalIPAssignmentUpdateParams::Body,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::GlobalIPAssignmentUpdateResponse
+
+      def list: (
+        ?page: Telnyx::GlobalIPAssignmentListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::GlobalIPAssignmentListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::GlobalIPAssignmentDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

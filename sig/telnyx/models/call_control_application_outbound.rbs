@@ -1,0 +1,26 @@
+module Telnyx
+  module Models
+    type call_control_application_outbound =
+      { channel_limit: Integer, outbound_voice_profile_id: String }
+
+    class CallControlApplicationOutbound < Telnyx::Internal::Type::BaseModel
+      attr_reader channel_limit: Integer?
+
+      def channel_limit=: (Integer) -> Integer
+
+      attr_reader outbound_voice_profile_id: String?
+
+      def outbound_voice_profile_id=: (String) -> String
+
+      def initialize: (
+        ?channel_limit: Integer,
+        ?outbound_voice_profile_id: String
+      ) -> void
+
+      def to_hash: -> {
+        channel_limit: Integer,
+        outbound_voice_profile_id: String
+      }
+    end
+  end
+end

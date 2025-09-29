@@ -1,0 +1,27 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type comment_create_params =
+        { body: String } & Telnyx::Internal::Type::request_parameters
+
+      class CommentCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader body: String?
+
+        def body=: (String) -> String
+
+        def initialize: (
+          ?body: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          body: String,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,317 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_bridge_params =
+        {
+          body_call_control_id: String,
+          client_state: String,
+          command_id: String,
+          mute_dtmf: Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf,
+          park_after_unbridge: String,
+          play_ringtone: bool,
+          queue: String,
+          record: Telnyx::Models::Calls::ActionBridgeParams::record,
+          record_channels: Telnyx::Models::Calls::ActionBridgeParams::record_channels,
+          record_custom_file_name: String,
+          record_format: Telnyx::Models::Calls::ActionBridgeParams::record_format,
+          record_max_length: Integer,
+          record_timeout_secs: Integer,
+          record_track: Telnyx::Models::Calls::ActionBridgeParams::record_track,
+          record_trim: Telnyx::Models::Calls::ActionBridgeParams::record_trim,
+          ringtone: Telnyx::Models::Calls::ActionBridgeParams::ringtone,
+          video_room_context: String,
+          video_room_id: String
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionBridgeParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor body_call_control_id: String
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader command_id: String?
+
+        def command_id=: (String) -> String
+
+        attr_reader mute_dtmf: Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf?
+
+        def mute_dtmf=: (
+          Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf
+        ) -> Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf
+
+        attr_reader park_after_unbridge: String?
+
+        def park_after_unbridge=: (String) -> String
+
+        attr_reader play_ringtone: bool?
+
+        def play_ringtone=: (bool) -> bool
+
+        attr_reader queue: String?
+
+        def queue=: (String) -> String
+
+        attr_reader record: Telnyx::Models::Calls::ActionBridgeParams::record?
+
+        def record=: (
+          Telnyx::Models::Calls::ActionBridgeParams::record
+        ) -> Telnyx::Models::Calls::ActionBridgeParams::record
+
+        attr_reader record_channels: Telnyx::Models::Calls::ActionBridgeParams::record_channels?
+
+        def record_channels=: (
+          Telnyx::Models::Calls::ActionBridgeParams::record_channels
+        ) -> Telnyx::Models::Calls::ActionBridgeParams::record_channels
+
+        attr_reader record_custom_file_name: String?
+
+        def record_custom_file_name=: (String) -> String
+
+        attr_reader record_format: Telnyx::Models::Calls::ActionBridgeParams::record_format?
+
+        def record_format=: (
+          Telnyx::Models::Calls::ActionBridgeParams::record_format
+        ) -> Telnyx::Models::Calls::ActionBridgeParams::record_format
+
+        attr_reader record_max_length: Integer?
+
+        def record_max_length=: (Integer) -> Integer
+
+        attr_reader record_timeout_secs: Integer?
+
+        def record_timeout_secs=: (Integer) -> Integer
+
+        attr_reader record_track: Telnyx::Models::Calls::ActionBridgeParams::record_track?
+
+        def record_track=: (
+          Telnyx::Models::Calls::ActionBridgeParams::record_track
+        ) -> Telnyx::Models::Calls::ActionBridgeParams::record_track
+
+        attr_reader record_trim: Telnyx::Models::Calls::ActionBridgeParams::record_trim?
+
+        def record_trim=: (
+          Telnyx::Models::Calls::ActionBridgeParams::record_trim
+        ) -> Telnyx::Models::Calls::ActionBridgeParams::record_trim
+
+        attr_reader ringtone: Telnyx::Models::Calls::ActionBridgeParams::ringtone?
+
+        def ringtone=: (
+          Telnyx::Models::Calls::ActionBridgeParams::ringtone
+        ) -> Telnyx::Models::Calls::ActionBridgeParams::ringtone
+
+        attr_reader video_room_context: String?
+
+        def video_room_context=: (String) -> String
+
+        attr_reader video_room_id: String?
+
+        def video_room_id=: (String) -> String
+
+        def initialize: (
+          body_call_control_id: String,
+          ?client_state: String,
+          ?command_id: String,
+          ?mute_dtmf: Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf,
+          ?park_after_unbridge: String,
+          ?play_ringtone: bool,
+          ?queue: String,
+          ?record: Telnyx::Models::Calls::ActionBridgeParams::record,
+          ?record_channels: Telnyx::Models::Calls::ActionBridgeParams::record_channels,
+          ?record_custom_file_name: String,
+          ?record_format: Telnyx::Models::Calls::ActionBridgeParams::record_format,
+          ?record_max_length: Integer,
+          ?record_timeout_secs: Integer,
+          ?record_track: Telnyx::Models::Calls::ActionBridgeParams::record_track,
+          ?record_trim: Telnyx::Models::Calls::ActionBridgeParams::record_trim,
+          ?ringtone: Telnyx::Models::Calls::ActionBridgeParams::ringtone,
+          ?video_room_context: String,
+          ?video_room_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          body_call_control_id: String,
+          client_state: String,
+          command_id: String,
+          mute_dtmf: Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf,
+          park_after_unbridge: String,
+          play_ringtone: bool,
+          queue: String,
+          record: Telnyx::Models::Calls::ActionBridgeParams::record,
+          record_channels: Telnyx::Models::Calls::ActionBridgeParams::record_channels,
+          record_custom_file_name: String,
+          record_format: Telnyx::Models::Calls::ActionBridgeParams::record_format,
+          record_max_length: Integer,
+          record_timeout_secs: Integer,
+          record_track: Telnyx::Models::Calls::ActionBridgeParams::record_track,
+          record_trim: Telnyx::Models::Calls::ActionBridgeParams::record_trim,
+          ringtone: Telnyx::Models::Calls::ActionBridgeParams::ringtone,
+          video_room_context: String,
+          video_room_id: String,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type mute_dtmf = :none | :both | :self | :opposite
+
+        module MuteDtmf
+          extend Telnyx::Internal::Type::Enum
+
+          NONE: :none
+          BOTH: :both
+          SELF: :self
+          OPPOSITE: :opposite
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf]
+        end
+
+        type record = :"record-from-answer"
+
+        module Record
+          extend Telnyx::Internal::Type::Enum
+
+          RECORD_FROM_ANSWER: :"record-from-answer"
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionBridgeParams::record]
+        end
+
+        type record_channels = :single | :dual
+
+        module RecordChannels
+          extend Telnyx::Internal::Type::Enum
+
+          SINGLE: :single
+          DUAL: :dual
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionBridgeParams::record_channels]
+        end
+
+        type record_format = :wav | :mp3
+
+        module RecordFormat
+          extend Telnyx::Internal::Type::Enum
+
+          WAV: :wav
+          MP3: :mp3
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionBridgeParams::record_format]
+        end
+
+        type record_track = :both | :inbound | :outbound
+
+        module RecordTrack
+          extend Telnyx::Internal::Type::Enum
+
+          BOTH: :both
+          INBOUND: :inbound
+          OUTBOUND: :outbound
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionBridgeParams::record_track]
+        end
+
+        type record_trim = :"trim-silence"
+
+        module RecordTrim
+          extend Telnyx::Internal::Type::Enum
+
+          TRIM_SILENCE: :"trim-silence"
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionBridgeParams::record_trim]
+        end
+
+        type ringtone =
+          :at
+          | :au
+          | :be
+          | :bg
+          | :br
+          | :ch
+          | :cl
+          | :cn
+          | :cz
+          | :de
+          | :dk
+          | :ee
+          | :es
+          | :fi
+          | :fr
+          | :gr
+          | :hu
+          | :il
+          | :in
+          | :it
+          | :jp
+          | :lt
+          | :mx
+          | :my
+          | :nl
+          | :no
+          | :nz
+          | :ph
+          | :pl
+          | :pt
+          | :ru
+          | :se
+          | :sg
+          | :th
+          | :tw
+          | :uk
+          | :"us-old"
+          | :us
+          | :ve
+          | :za
+
+        module Ringtone
+          extend Telnyx::Internal::Type::Enum
+
+          AT: :at
+          AU: :au
+          BE: :be
+          BG: :bg
+          BR: :br
+          CH: :ch
+          CL: :cl
+          CN: :cn
+          CZ: :cz
+          DE: :de
+          DK: :dk
+          EE: :ee
+          ES: :es
+          FI: :fi
+          FR: :fr
+          GR: :gr
+          HU: :hu
+          IL: :il
+          IN: :in
+          IT: :it
+          JP: :jp
+          LT: :lt
+          MX: :mx
+          MY: :my
+          NL: :nl
+          NO: :no
+          NZ: :nz
+          PH: :ph
+          PL: :pl
+          PT: :pt
+          RU: :ru
+          SE: :se
+          SG: :sg
+          TH: :th
+          TW: :tw
+          UK: :uk
+          US_OLD: :"us-old"
+          US: :us
+          VE: :ve
+          ZA: :za
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionBridgeParams::ringtone]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,69 @@
+module Telnyx
+  module Models
+    module AI
+      type recursive_cluster =
+        {
+          cluster_id: String,
+          cluster_summary: String,
+          total_number_of_nodes: Integer,
+          cluster_header: String,
+          nodes: ::Array[Telnyx::AI::RecursiveCluster::Node],
+          subclusters: ::Array[Telnyx::AI::RecursiveCluster]
+        }
+
+      class RecursiveCluster < Telnyx::Internal::Type::BaseModel
+        attr_accessor cluster_id: String
+
+        attr_accessor cluster_summary: String
+
+        attr_accessor total_number_of_nodes: Integer
+
+        attr_reader cluster_header: String?
+
+        def cluster_header=: (String) -> String
+
+        attr_reader nodes: ::Array[Telnyx::AI::RecursiveCluster::Node]?
+
+        def nodes=: (
+          ::Array[Telnyx::AI::RecursiveCluster::Node]
+        ) -> ::Array[Telnyx::AI::RecursiveCluster::Node]
+
+        attr_reader subclusters: ::Array[Telnyx::AI::RecursiveCluster]?
+
+        def subclusters=: (
+          ::Array[Telnyx::AI::RecursiveCluster]
+        ) -> ::Array[Telnyx::AI::RecursiveCluster]
+
+        def initialize: (
+          cluster_id: String,
+          cluster_summary: String,
+          total_number_of_nodes: Integer,
+          ?cluster_header: String,
+          ?nodes: ::Array[Telnyx::AI::RecursiveCluster::Node],
+          ?subclusters: ::Array[Telnyx::AI::RecursiveCluster]
+        ) -> void
+
+        def to_hash: -> {
+          cluster_id: String,
+          cluster_summary: String,
+          total_number_of_nodes: Integer,
+          cluster_header: String,
+          nodes: ::Array[Telnyx::AI::RecursiveCluster::Node],
+          subclusters: ::Array[Telnyx::AI::RecursiveCluster]
+        }
+
+        type node = { filename: String, text: String }
+
+        class Node < Telnyx::Internal::Type::BaseModel
+          attr_accessor filename: String
+
+          attr_accessor text: String
+
+          def initialize: (filename: String, text: String) -> void
+
+          def to_hash: -> { filename: String, text: String }
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,33 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type phone_number_extension_list_response =
+        {
+          data: ::Array[Telnyx::PortingOrders::PortingPhoneNumberExtension],
+          meta: Telnyx::PaginationMeta
+        }
+
+      class PhoneNumberExtensionListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::PortingOrders::PortingPhoneNumberExtension]?
+
+        def data=: (
+          ::Array[Telnyx::PortingOrders::PortingPhoneNumberExtension]
+        ) -> ::Array[Telnyx::PortingOrders::PortingPhoneNumberExtension]
+
+        attr_reader meta: Telnyx::PaginationMeta?
+
+        def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+        def initialize: (
+          ?data: ::Array[Telnyx::PortingOrders::PortingPhoneNumberExtension],
+          ?meta: Telnyx::PaginationMeta
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::PortingOrders::PortingPhoneNumberExtension],
+          meta: Telnyx::PaginationMeta
+        }
+      end
+    end
+  end
+end

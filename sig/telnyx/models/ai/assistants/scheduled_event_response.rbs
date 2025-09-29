@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        type scheduled_event_response =
+          Telnyx::AI::Assistants::ScheduledPhoneCallEventResponse
+          | Telnyx::AI::Assistants::ScheduledSMSEventResponse
+
+        module ScheduledEventResponse
+          extend Telnyx::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Telnyx::Models::AI::Assistants::scheduled_event_response]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,5 @@
+module Telnyx
+  module Models
+    CampaignAcceptSharingResponse: Telnyx::Internal::Type::Converter
+  end
+end

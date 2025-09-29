@@ -1,0 +1,40 @@
+module Telnyx
+  module Resources
+    class WireguardPeers
+      def create: (
+        wireguard_interface_id: String,
+        ?public_key: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WireguardPeerCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WireguardPeerRetrieveResponse
+
+      def update: (
+        String id,
+        ?public_key: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WireguardPeerUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::WireguardPeerListParams::Filter,
+        ?page: Telnyx::WireguardPeerListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WireguardPeerListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WireguardPeerDeleteResponse
+
+      def retrieve_config: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> String
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,49 @@
+module Telnyx
+  module Resources
+    class Documents
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DocumentRetrieveResponse
+
+      def update: (
+        String id,
+        ?customer_reference: String,
+        ?filename: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DocumentUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::DocumentListParams::Filter,
+        ?page: Telnyx::DocumentListParams::Page,
+        ?sort: ::Array[Telnyx::Models::DocumentListParams::sort],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DocumentListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DocumentDeleteResponse
+
+      def download: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> StringIO
+
+      def generate_download_link: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DocumentGenerateDownloadLinkResponse
+
+      def upload: (
+        url: String,
+        file: String,
+        ?customer_reference: String,
+        ?filename: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DocumentUploadResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

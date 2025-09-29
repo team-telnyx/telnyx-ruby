@@ -1,0 +1,30 @@
+module Telnyx
+  module Models
+    module AI
+      type cluster_compute_response =
+        { data: Telnyx::Models::AI::ClusterComputeResponse::Data }
+
+      class ClusterComputeResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::Models::AI::ClusterComputeResponse::Data
+
+        def initialize: (
+          data: Telnyx::Models::AI::ClusterComputeResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::AI::ClusterComputeResponse::Data
+        }
+
+        type data = { task_id: String }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor task_id: String
+
+          def initialize: (task_id: String) -> void
+
+          def to_hash: -> { task_id: String }
+        end
+      end
+    end
+  end
+end

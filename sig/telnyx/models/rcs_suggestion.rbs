@@ -1,0 +1,281 @@
+module Telnyx
+  module Models
+    type rcs_suggestion =
+      {
+        action: Telnyx::RcsSuggestion::Action,
+        reply: Telnyx::RcsSuggestion::Reply
+      }
+
+    class RcsSuggestion < Telnyx::Internal::Type::BaseModel
+      attr_reader action: Telnyx::RcsSuggestion::Action?
+
+      def action=: (
+        Telnyx::RcsSuggestion::Action
+      ) -> Telnyx::RcsSuggestion::Action
+
+      attr_reader reply: Telnyx::RcsSuggestion::Reply?
+
+      def reply=: (Telnyx::RcsSuggestion::Reply) -> Telnyx::RcsSuggestion::Reply
+
+      def initialize: (
+        ?action: Telnyx::RcsSuggestion::Action,
+        ?reply: Telnyx::RcsSuggestion::Reply
+      ) -> void
+
+      def to_hash: -> {
+        action: Telnyx::RcsSuggestion::Action,
+        reply: Telnyx::RcsSuggestion::Reply
+      }
+
+      type action =
+        {
+          create_calendar_event_action: Telnyx::RcsSuggestion::Action::CreateCalendarEventAction,
+          dial_action: Telnyx::RcsSuggestion::Action::DialAction,
+          fallback_url: String,
+          open_url_action: Telnyx::RcsSuggestion::Action::OpenURLAction,
+          postback_data: String,
+          share_location_action: top,
+          text: String,
+          view_location_action: Telnyx::RcsSuggestion::Action::ViewLocationAction
+        }
+
+      class Action < Telnyx::Internal::Type::BaseModel
+        attr_reader create_calendar_event_action: Telnyx::RcsSuggestion::Action::CreateCalendarEventAction?
+
+        def create_calendar_event_action=: (
+          Telnyx::RcsSuggestion::Action::CreateCalendarEventAction
+        ) -> Telnyx::RcsSuggestion::Action::CreateCalendarEventAction
+
+        attr_reader dial_action: Telnyx::RcsSuggestion::Action::DialAction?
+
+        def dial_action=: (
+          Telnyx::RcsSuggestion::Action::DialAction
+        ) -> Telnyx::RcsSuggestion::Action::DialAction
+
+        attr_reader fallback_url: String?
+
+        def fallback_url=: (String) -> String
+
+        attr_reader open_url_action: Telnyx::RcsSuggestion::Action::OpenURLAction?
+
+        def open_url_action=: (
+          Telnyx::RcsSuggestion::Action::OpenURLAction
+        ) -> Telnyx::RcsSuggestion::Action::OpenURLAction
+
+        attr_reader postback_data: String?
+
+        def postback_data=: (String) -> String
+
+        attr_reader share_location_action: top?
+
+        def share_location_action=: (top) -> top
+
+        attr_reader text: String?
+
+        def text=: (String) -> String
+
+        attr_reader view_location_action: Telnyx::RcsSuggestion::Action::ViewLocationAction?
+
+        def view_location_action=: (
+          Telnyx::RcsSuggestion::Action::ViewLocationAction
+        ) -> Telnyx::RcsSuggestion::Action::ViewLocationAction
+
+        def initialize: (
+          ?create_calendar_event_action: Telnyx::RcsSuggestion::Action::CreateCalendarEventAction,
+          ?dial_action: Telnyx::RcsSuggestion::Action::DialAction,
+          ?fallback_url: String,
+          ?open_url_action: Telnyx::RcsSuggestion::Action::OpenURLAction,
+          ?postback_data: String,
+          ?share_location_action: top,
+          ?text: String,
+          ?view_location_action: Telnyx::RcsSuggestion::Action::ViewLocationAction
+        ) -> void
+
+        def to_hash: -> {
+          create_calendar_event_action: Telnyx::RcsSuggestion::Action::CreateCalendarEventAction,
+          dial_action: Telnyx::RcsSuggestion::Action::DialAction,
+          fallback_url: String,
+          open_url_action: Telnyx::RcsSuggestion::Action::OpenURLAction,
+          postback_data: String,
+          share_location_action: top,
+          text: String,
+          view_location_action: Telnyx::RcsSuggestion::Action::ViewLocationAction
+        }
+
+        type create_calendar_event_action =
+          {
+            description: String,
+            end_time: Time,
+            start_time: Time,
+            title: String
+          }
+
+        class CreateCalendarEventAction < Telnyx::Internal::Type::BaseModel
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
+          attr_reader end_time: Time?
+
+          def end_time=: (Time) -> Time
+
+          attr_reader start_time: Time?
+
+          def start_time=: (Time) -> Time
+
+          attr_reader title: String?
+
+          def title=: (String) -> String
+
+          def initialize: (
+            ?description: String,
+            ?end_time: Time,
+            ?start_time: Time,
+            ?title: String
+          ) -> void
+
+          def to_hash: -> {
+            description: String,
+            end_time: Time,
+            start_time: Time,
+            title: String
+          }
+        end
+
+        type dial_action = { phone_number: String }
+
+        class DialAction < Telnyx::Internal::Type::BaseModel
+          attr_accessor phone_number: String
+
+          def initialize: (phone_number: String) -> void
+
+          def to_hash: -> { phone_number: String }
+        end
+
+        type open_url_action =
+          {
+            application: Telnyx::Models::RcsSuggestion::Action::OpenURLAction::application,
+            url: String,
+            webview_view_mode: Telnyx::Models::RcsSuggestion::Action::OpenURLAction::webview_view_mode,
+            description: String
+          }
+
+        class OpenURLAction < Telnyx::Internal::Type::BaseModel
+          attr_accessor application: Telnyx::Models::RcsSuggestion::Action::OpenURLAction::application
+
+          attr_accessor url: String
+
+          attr_accessor webview_view_mode: Telnyx::Models::RcsSuggestion::Action::OpenURLAction::webview_view_mode
+
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
+          def initialize: (
+            application: Telnyx::Models::RcsSuggestion::Action::OpenURLAction::application,
+            url: String,
+            webview_view_mode: Telnyx::Models::RcsSuggestion::Action::OpenURLAction::webview_view_mode,
+            ?description: String
+          ) -> void
+
+          def to_hash: -> {
+            application: Telnyx::Models::RcsSuggestion::Action::OpenURLAction::application,
+            url: String,
+            webview_view_mode: Telnyx::Models::RcsSuggestion::Action::OpenURLAction::webview_view_mode,
+            description: String
+          }
+
+          type application =
+            :OPEN_URL_APPLICATION_UNSPECIFIED | :BROWSER | :WEBVIEW
+
+          module Application
+            extend Telnyx::Internal::Type::Enum
+
+            OPEN_URL_APPLICATION_UNSPECIFIED: :OPEN_URL_APPLICATION_UNSPECIFIED
+            BROWSER: :BROWSER
+            WEBVIEW: :WEBVIEW
+
+            def self?.values: -> ::Array[Telnyx::Models::RcsSuggestion::Action::OpenURLAction::application]
+          end
+
+          type webview_view_mode =
+            :WEBVIEW_VIEW_MODE_UNSPECIFIED | :FULL | :HALF | :TALL
+
+          module WebviewViewMode
+            extend Telnyx::Internal::Type::Enum
+
+            WEBVIEW_VIEW_MODE_UNSPECIFIED: :WEBVIEW_VIEW_MODE_UNSPECIFIED
+            FULL: :FULL
+            HALF: :HALF
+            TALL: :TALL
+
+            def self?.values: -> ::Array[Telnyx::Models::RcsSuggestion::Action::OpenURLAction::webview_view_mode]
+          end
+        end
+
+        type view_location_action =
+          {
+            label: String,
+            lat_long: Telnyx::RcsSuggestion::Action::ViewLocationAction::LatLong,
+            query: String
+          }
+
+        class ViewLocationAction < Telnyx::Internal::Type::BaseModel
+          attr_reader label: String?
+
+          def label=: (String) -> String
+
+          attr_reader lat_long: Telnyx::RcsSuggestion::Action::ViewLocationAction::LatLong?
+
+          def lat_long=: (
+            Telnyx::RcsSuggestion::Action::ViewLocationAction::LatLong
+          ) -> Telnyx::RcsSuggestion::Action::ViewLocationAction::LatLong
+
+          attr_reader query: String?
+
+          def query=: (String) -> String
+
+          def initialize: (
+            ?label: String,
+            ?lat_long: Telnyx::RcsSuggestion::Action::ViewLocationAction::LatLong,
+            ?query: String
+          ) -> void
+
+          def to_hash: -> {
+            label: String,
+            lat_long: Telnyx::RcsSuggestion::Action::ViewLocationAction::LatLong,
+            query: String
+          }
+
+          type lat_long = { latitude: Float, longitude: Float }
+
+          class LatLong < Telnyx::Internal::Type::BaseModel
+            attr_accessor latitude: Float
+
+            attr_accessor longitude: Float
+
+            def initialize: (latitude: Float, longitude: Float) -> void
+
+            def to_hash: -> { latitude: Float, longitude: Float }
+          end
+        end
+      end
+
+      type reply = { postback_data: String, text: String }
+
+      class Reply < Telnyx::Internal::Type::BaseModel
+        attr_reader postback_data: String?
+
+        def postback_data=: (String) -> String
+
+        attr_reader text: String?
+
+        def text=: (String) -> String
+
+        def initialize: (?postback_data: String, ?text: String) -> void
+
+        def to_hash: -> { postback_data: String, text: String }
+      end
+    end
+  end
+end

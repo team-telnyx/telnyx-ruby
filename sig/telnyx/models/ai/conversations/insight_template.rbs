@@ -1,0 +1,85 @@
+module Telnyx
+  module Models
+    module AI
+      module Conversations
+        type insight_template =
+          {
+            id: String,
+            created_at: Time,
+            instructions: String,
+            insight_type: Telnyx::Models::AI::Conversations::InsightTemplate::insight_type,
+            json_schema: Telnyx::Models::AI::Conversations::InsightTemplate::json_schema,
+            name: String,
+            webhook: String
+          }
+
+        class InsightTemplate < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor created_at: Time
+
+          attr_accessor instructions: String
+
+          attr_reader insight_type: Telnyx::Models::AI::Conversations::InsightTemplate::insight_type?
+
+          def insight_type=: (
+            Telnyx::Models::AI::Conversations::InsightTemplate::insight_type
+          ) -> Telnyx::Models::AI::Conversations::InsightTemplate::insight_type
+
+          attr_reader json_schema: Telnyx::Models::AI::Conversations::InsightTemplate::json_schema?
+
+          def json_schema=: (
+            Telnyx::Models::AI::Conversations::InsightTemplate::json_schema
+          ) -> Telnyx::Models::AI::Conversations::InsightTemplate::json_schema
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader webhook: String?
+
+          def webhook=: (String) -> String
+
+          def initialize: (
+            id: String,
+            created_at: Time,
+            instructions: String,
+            ?insight_type: Telnyx::Models::AI::Conversations::InsightTemplate::insight_type,
+            ?json_schema: Telnyx::Models::AI::Conversations::InsightTemplate::json_schema,
+            ?name: String,
+            ?webhook: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            created_at: Time,
+            instructions: String,
+            insight_type: Telnyx::Models::AI::Conversations::InsightTemplate::insight_type,
+            json_schema: Telnyx::Models::AI::Conversations::InsightTemplate::json_schema,
+            name: String,
+            webhook: String
+          }
+
+          type insight_type = :custom | :default
+
+          module InsightType
+            extend Telnyx::Internal::Type::Enum
+
+            CUSTOM: :custom
+            DEFAULT: :default
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::Conversations::InsightTemplate::insight_type]
+          end
+
+          type json_schema = String | top
+
+          module JsonSchema
+            extend Telnyx::Internal::Type::Union
+
+            def self?.variants: -> ::Array[Telnyx::Models::AI::Conversations::InsightTemplate::json_schema]
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type messaging_profile_create_response = { data: Telnyx::MessagingProfile }
+
+    class MessagingProfileCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::MessagingProfile?
+
+      def data=: (Telnyx::MessagingProfile) -> Telnyx::MessagingProfile
+
+      def initialize: (?data: Telnyx::MessagingProfile) -> void
+
+      def to_hash: -> { data: Telnyx::MessagingProfile }
+    end
+  end
+end

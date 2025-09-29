@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module AI
+      type privacy_settings = { data_retention: bool }
+
+      class PrivacySettings < Telnyx::Internal::Type::BaseModel
+        attr_reader data_retention: bool?
+
+        def data_retention=: (bool) -> bool
+
+        def initialize: (?data_retention: bool) -> void
+
+        def to_hash: -> { data_retention: bool }
+      end
+    end
+  end
+end

@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    type sim_card_retrieve_params =
+      { include_pin_puk_codes: bool, include_sim_card_group: bool }
+      & Telnyx::Internal::Type::request_parameters
+
+    class SimCardRetrieveParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader include_pin_puk_codes: bool?
+
+      def include_pin_puk_codes=: (bool) -> bool
+
+      attr_reader include_sim_card_group: bool?
+
+      def include_sim_card_group=: (bool) -> bool
+
+      def initialize: (
+        ?include_pin_puk_codes: bool,
+        ?include_sim_card_group: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        include_pin_puk_codes: bool,
+        include_sim_card_group: bool,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

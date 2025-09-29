@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module AI
+      type assistant_delete_response =
+        { id: String, deleted: bool, object: String }
+
+      class AssistantDeleteResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor deleted: bool
+
+        attr_accessor object: String
+
+        def initialize: (id: String, deleted: bool, object: String) -> void
+
+        def to_hash: -> { id: String, deleted: bool, object: String }
+      end
+    end
+  end
+end

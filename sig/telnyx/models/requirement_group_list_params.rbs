@@ -1,0 +1,121 @@
+module Telnyx
+  module Models
+    type requirement_group_list_params =
+      { filter: Telnyx::RequirementGroupListParams::Filter }
+      & Telnyx::Internal::Type::request_parameters
+
+    class RequirementGroupListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::RequirementGroupListParams::Filter?
+
+      def filter=: (
+        Telnyx::RequirementGroupListParams::Filter
+      ) -> Telnyx::RequirementGroupListParams::Filter
+
+      def initialize: (
+        ?filter: Telnyx::RequirementGroupListParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::RequirementGroupListParams::Filter,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          action: Telnyx::Models::RequirementGroupListParams::Filter::action,
+          country_code: String,
+          customer_reference: String,
+          phone_number_type: Telnyx::Models::RequirementGroupListParams::Filter::phone_number_type,
+          status: Telnyx::Models::RequirementGroupListParams::Filter::status
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader action: Telnyx::Models::RequirementGroupListParams::Filter::action?
+
+        def action=: (
+          Telnyx::Models::RequirementGroupListParams::Filter::action
+        ) -> Telnyx::Models::RequirementGroupListParams::Filter::action
+
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader customer_reference: String?
+
+        def customer_reference=: (String) -> String
+
+        attr_reader phone_number_type: Telnyx::Models::RequirementGroupListParams::Filter::phone_number_type?
+
+        def phone_number_type=: (
+          Telnyx::Models::RequirementGroupListParams::Filter::phone_number_type
+        ) -> Telnyx::Models::RequirementGroupListParams::Filter::phone_number_type
+
+        attr_reader status: Telnyx::Models::RequirementGroupListParams::Filter::status?
+
+        def status=: (
+          Telnyx::Models::RequirementGroupListParams::Filter::status
+        ) -> Telnyx::Models::RequirementGroupListParams::Filter::status
+
+        def initialize: (
+          ?action: Telnyx::Models::RequirementGroupListParams::Filter::action,
+          ?country_code: String,
+          ?customer_reference: String,
+          ?phone_number_type: Telnyx::Models::RequirementGroupListParams::Filter::phone_number_type,
+          ?status: Telnyx::Models::RequirementGroupListParams::Filter::status
+        ) -> void
+
+        def to_hash: -> {
+          action: Telnyx::Models::RequirementGroupListParams::Filter::action,
+          country_code: String,
+          customer_reference: String,
+          phone_number_type: Telnyx::Models::RequirementGroupListParams::Filter::phone_number_type,
+          status: Telnyx::Models::RequirementGroupListParams::Filter::status
+        }
+
+        type action = :ordering | :porting | :action
+
+        module Action
+          extend Telnyx::Internal::Type::Enum
+
+          ORDERING: :ordering
+          PORTING: :porting
+          ACTION: :action
+
+          def self?.values: -> ::Array[Telnyx::Models::RequirementGroupListParams::Filter::action]
+        end
+
+        type phone_number_type =
+          :local | :toll_free | :mobile | :national | :shared_cost
+
+        module PhoneNumberType
+          extend Telnyx::Internal::Type::Enum
+
+          LOCAL: :local
+          TOLL_FREE: :toll_free
+          MOBILE: :mobile
+          NATIONAL: :national
+          SHARED_COST: :shared_cost
+
+          def self?.values: -> ::Array[Telnyx::Models::RequirementGroupListParams::Filter::phone_number_type]
+        end
+
+        type status = :approved | :unapproved | :"pending-approval" | :declined
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          APPROVED: :approved
+          UNAPPROVED: :unapproved
+          PENDING_APPROVAL: :"pending-approval"
+          DECLINED: :declined
+
+          def self?.values: -> ::Array[Telnyx::Models::RequirementGroupListParams::Filter::status]
+        end
+      end
+    end
+  end
+end

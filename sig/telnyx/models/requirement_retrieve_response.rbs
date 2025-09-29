@@ -1,0 +1,128 @@
+module Telnyx
+  module Models
+    type requirement_retrieve_response =
+      { data: Telnyx::Models::RequirementRetrieveResponse::Data }
+
+    class RequirementRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::RequirementRetrieveResponse::Data?
+
+      def data=: (
+        Telnyx::Models::RequirementRetrieveResponse::Data
+      ) -> Telnyx::Models::RequirementRetrieveResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::RequirementRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::RequirementRetrieveResponse::Data
+      }
+
+      type data =
+        {
+          id: String,
+          action: Telnyx::Models::RequirementRetrieveResponse::Data::action,
+          country_code: String,
+          created_at: String,
+          locality: String,
+          phone_number_type: Telnyx::Models::RequirementRetrieveResponse::Data::phone_number_type,
+          record_type: String,
+          requirements_types: ::Array[Telnyx::DocReqsRequirementType],
+          updated_at: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader action: Telnyx::Models::RequirementRetrieveResponse::Data::action?
+
+        def action=: (
+          Telnyx::Models::RequirementRetrieveResponse::Data::action
+        ) -> Telnyx::Models::RequirementRetrieveResponse::Data::action
+
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader locality: String?
+
+        def locality=: (String) -> String
+
+        attr_reader phone_number_type: Telnyx::Models::RequirementRetrieveResponse::Data::phone_number_type?
+
+        def phone_number_type=: (
+          Telnyx::Models::RequirementRetrieveResponse::Data::phone_number_type
+        ) -> Telnyx::Models::RequirementRetrieveResponse::Data::phone_number_type
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: String?
+
+        def created_at=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader requirements_types: ::Array[Telnyx::DocReqsRequirementType]?
+
+        def requirements_types=: (
+          ::Array[Telnyx::DocReqsRequirementType]
+        ) -> ::Array[Telnyx::DocReqsRequirementType]
+
+        attr_reader updated_at: String?
+
+        def updated_at=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?action: Telnyx::Models::RequirementRetrieveResponse::Data::action,
+          ?country_code: String,
+          ?created_at: String,
+          ?locality: String,
+          ?phone_number_type: Telnyx::Models::RequirementRetrieveResponse::Data::phone_number_type,
+          ?record_type: String,
+          ?requirements_types: ::Array[Telnyx::DocReqsRequirementType],
+          ?updated_at: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          action: Telnyx::Models::RequirementRetrieveResponse::Data::action,
+          country_code: String,
+          created_at: String,
+          locality: String,
+          phone_number_type: Telnyx::Models::RequirementRetrieveResponse::Data::phone_number_type,
+          record_type: String,
+          requirements_types: ::Array[Telnyx::DocReqsRequirementType],
+          updated_at: String
+        }
+
+        type action = :both | :branded_calling | :ordering | :porting
+
+        module Action
+          extend Telnyx::Internal::Type::Enum
+
+          BOTH: :both
+          BRANDED_CALLING: :branded_calling
+          ORDERING: :ordering
+          PORTING: :porting
+
+          def self?.values: -> ::Array[Telnyx::Models::RequirementRetrieveResponse::Data::action]
+        end
+
+        type phone_number_type = :local | :national | :toll_free
+
+        module PhoneNumberType
+          extend Telnyx::Internal::Type::Enum
+
+          LOCAL: :local
+          NATIONAL: :national
+          TOLL_FREE: :toll_free
+
+          def self?.values: -> ::Array[Telnyx::Models::RequirementRetrieveResponse::Data::phone_number_type]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,10 @@
+*.gem
+.idea/
+.ignore
+.prism.log
+.ruby-lsp/
+.yardoc/
+bin/tapioca
+Brewfile.lock.json
+doc/
+sorbet/tapioca/*

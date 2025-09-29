@@ -1,0 +1,30 @@
+module Telnyx
+  module Models
+    type rcs_content_info =
+      { file_url: String, force_refresh: bool, thumbnail_url: String }
+
+    class RcsContentInfo < Telnyx::Internal::Type::BaseModel
+      attr_accessor file_url: String
+
+      attr_reader force_refresh: bool?
+
+      def force_refresh=: (bool) -> bool
+
+      attr_reader thumbnail_url: String?
+
+      def thumbnail_url=: (String) -> String
+
+      def initialize: (
+        file_url: String,
+        ?force_refresh: bool,
+        ?thumbnail_url: String
+      ) -> void
+
+      def to_hash: -> {
+        file_url: String,
+        force_refresh: bool,
+        thumbnail_url: String
+      }
+    end
+  end
+end

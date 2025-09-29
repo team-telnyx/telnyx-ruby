@@ -1,0 +1,73 @@
+module Telnyx
+  module Models
+    type room_session =
+      {
+        id: String,
+        active: bool,
+        created_at: Time,
+        ended_at: Time,
+        participants: ::Array[Telnyx::RoomParticipant],
+        record_type: String,
+        room_id: String,
+        updated_at: Time
+      }
+
+    class RoomSession < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader active: bool?
+
+      def active=: (bool) -> bool
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader ended_at: Time?
+
+      def ended_at=: (Time) -> Time
+
+      attr_reader participants: ::Array[Telnyx::RoomParticipant]?
+
+      def participants=: (
+        ::Array[Telnyx::RoomParticipant]
+      ) -> ::Array[Telnyx::RoomParticipant]
+
+      attr_reader room_id: String?
+
+      def room_id=: (String) -> String
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?active: bool,
+        ?created_at: Time,
+        ?ended_at: Time,
+        ?participants: ::Array[Telnyx::RoomParticipant],
+        ?record_type: String,
+        ?room_id: String,
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        active: bool,
+        created_at: Time,
+        ended_at: Time,
+        participants: ::Array[Telnyx::RoomParticipant],
+        record_type: String,
+        room_id: String,
+        updated_at: Time
+      }
+    end
+  end
+end

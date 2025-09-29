@@ -1,0 +1,27 @@
+module Telnyx
+  module Resources
+    class NumberBlockOrders
+      def create: (
+        range: Integer,
+        starting_number: String,
+        ?connection_id: String,
+        ?customer_reference: String,
+        ?messaging_profile_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NumberBlockOrderCreateResponse
+
+      def retrieve: (
+        String number_block_order_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NumberBlockOrderRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::NumberBlockOrderListParams::Filter,
+        ?page: Telnyx::NumberBlockOrderListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NumberBlockOrderListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

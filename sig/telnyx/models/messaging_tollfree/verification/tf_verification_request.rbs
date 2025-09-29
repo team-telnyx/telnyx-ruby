@@ -1,0 +1,128 @@
+module Telnyx
+  module Models
+    module MessagingTollfree
+      module Verification
+        type tf_verification_request =
+          {
+            additional_information: String,
+            :business_addr1 => String,
+            business_city: String,
+            business_contact_email: String,
+            business_contact_first_name: String,
+            business_contact_last_name: String,
+            business_contact_phone: String,
+            business_name: String,
+            business_state: String,
+            business_zip: String,
+            corporate_website: String,
+            isv_reseller: String,
+            message_volume: Telnyx::Models::MessagingTollfree::Verification::volume,
+            opt_in_workflow: String,
+            opt_in_workflow_image_urls: ::Array[Telnyx::MessagingTollfree::Verification::URL],
+            phone_numbers: ::Array[Telnyx::MessagingTollfree::Verification::TfPhoneNumber],
+            production_message_content: String,
+            use_case: Telnyx::Models::MessagingTollfree::Verification::use_case_categories,
+            use_case_summary: String,
+            :business_addr2 => String,
+            webhook_url: String
+          }
+
+        class TfVerificationRequest < Telnyx::Internal::Type::BaseModel
+          attr_accessor additional_information: String
+
+          attr_accessor business_addr1: String
+
+          attr_accessor business_city: String
+
+          attr_accessor business_contact_email: String
+
+          attr_accessor business_contact_first_name: String
+
+          attr_accessor business_contact_last_name: String
+
+          attr_accessor business_contact_phone: String
+
+          attr_accessor business_name: String
+
+          attr_accessor business_state: String
+
+          attr_accessor business_zip: String
+
+          attr_accessor corporate_website: String
+
+          attr_accessor isv_reseller: String
+
+          attr_accessor message_volume: Telnyx::Models::MessagingTollfree::Verification::volume
+
+          attr_accessor opt_in_workflow: String
+
+          attr_accessor opt_in_workflow_image_urls: ::Array[Telnyx::MessagingTollfree::Verification::URL]
+
+          attr_accessor phone_numbers: ::Array[Telnyx::MessagingTollfree::Verification::TfPhoneNumber]
+
+          attr_accessor production_message_content: String
+
+          attr_accessor use_case: Telnyx::Models::MessagingTollfree::Verification::use_case_categories
+
+          attr_accessor use_case_summary: String
+
+          attr_reader business_addr2: String?
+
+          def business_addr2=: (String) -> String
+
+          attr_reader webhook_url: String?
+
+          def webhook_url=: (String) -> String
+
+          def initialize: (
+            additional_information: String,
+            business_addr1: String,
+            business_city: String,
+            business_contact_email: String,
+            business_contact_first_name: String,
+            business_contact_last_name: String,
+            business_contact_phone: String,
+            business_name: String,
+            business_state: String,
+            business_zip: String,
+            corporate_website: String,
+            isv_reseller: String,
+            message_volume: Telnyx::Models::MessagingTollfree::Verification::volume,
+            opt_in_workflow: String,
+            opt_in_workflow_image_urls: ::Array[Telnyx::MessagingTollfree::Verification::URL],
+            phone_numbers: ::Array[Telnyx::MessagingTollfree::Verification::TfPhoneNumber],
+            production_message_content: String,
+            use_case: Telnyx::Models::MessagingTollfree::Verification::use_case_categories,
+            use_case_summary: String,
+            ?business_addr2: String,
+            ?webhook_url: String
+          ) -> void
+
+          def to_hash: -> {
+            additional_information: String,
+            :business_addr1 => String,
+            business_city: String,
+            business_contact_email: String,
+            business_contact_first_name: String,
+            business_contact_last_name: String,
+            business_contact_phone: String,
+            business_name: String,
+            business_state: String,
+            business_zip: String,
+            corporate_website: String,
+            isv_reseller: String,
+            message_volume: Telnyx::Models::MessagingTollfree::Verification::volume,
+            opt_in_workflow: String,
+            opt_in_workflow_image_urls: ::Array[Telnyx::MessagingTollfree::Verification::URL],
+            phone_numbers: ::Array[Telnyx::MessagingTollfree::Verification::TfPhoneNumber],
+            production_message_content: String,
+            use_case: Telnyx::Models::MessagingTollfree::Verification::use_case_categories,
+            use_case_summary: String,
+            :business_addr2 => String,
+            webhook_url: String
+          }
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,64 @@
+module Telnyx
+  module Models
+    module SimCards
+      type action_validate_registration_codes_response =
+        {
+          data: ::Array[Telnyx::Models::SimCards::ActionValidateRegistrationCodesResponse::Data]
+        }
+
+      class ActionValidateRegistrationCodesResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::Models::SimCards::ActionValidateRegistrationCodesResponse::Data]?
+
+        def data=: (
+          ::Array[Telnyx::Models::SimCards::ActionValidateRegistrationCodesResponse::Data]
+        ) -> ::Array[Telnyx::Models::SimCards::ActionValidateRegistrationCodesResponse::Data]
+
+        def initialize: (
+          ?data: ::Array[Telnyx::Models::SimCards::ActionValidateRegistrationCodesResponse::Data]
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Models::SimCards::ActionValidateRegistrationCodesResponse::Data]
+        }
+
+        type data =
+          {
+            invalid_detail: String?,
+            record_type: String,
+            registration_code: String,
+            valid: bool
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor invalid_detail: String?
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_reader registration_code: String?
+
+          def registration_code=: (String) -> String
+
+          attr_reader valid: bool?
+
+          def valid=: (bool) -> bool
+
+          def initialize: (
+            ?invalid_detail: String?,
+            ?record_type: String,
+            ?registration_code: String,
+            ?valid: bool
+          ) -> void
+
+          def to_hash: -> {
+            invalid_detail: String?,
+            record_type: String,
+            registration_code: String,
+            valid: bool
+          }
+        end
+      end
+    end
+  end
+end

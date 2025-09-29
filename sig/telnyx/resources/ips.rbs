@@ -1,0 +1,38 @@
+module Telnyx
+  module Resources
+    class IPs
+      def create: (
+        ip_address: String,
+        ?connection_id: String,
+        ?port: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::IPCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::IPRetrieveResponse
+
+      def update: (
+        String id,
+        ip_address: String,
+        ?connection_id: String,
+        ?port: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::IPUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::IPListParams::Filter,
+        ?page: Telnyx::IPListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::IPListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::IPDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

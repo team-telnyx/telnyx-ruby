@@ -1,0 +1,42 @@
+module Telnyx
+  module Resources
+    class Conferences
+      attr_reader actions: Telnyx::Resources::Conferences::Actions
+
+      def create: (
+        call_control_id: String,
+        name: String,
+        ?beep_enabled: Telnyx::Models::ConferenceCreateParams::beep_enabled,
+        ?client_state: String,
+        ?comfort_noise: bool,
+        ?command_id: String,
+        ?duration_minutes: Integer,
+        ?hold_audio_url: String,
+        ?hold_media_name: String,
+        ?max_participants: Integer,
+        ?start_conference_on_create: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ConferenceCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ConferenceRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::ConferenceListParams::Filter,
+        ?page: Telnyx::ConferenceListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ConferenceListResponse
+
+      def list_participants: (
+        String conference_id,
+        ?filter: Telnyx::ConferenceListParticipantsParams::Filter,
+        ?page: Telnyx::ConferenceListParticipantsParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ConferenceListParticipantsResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

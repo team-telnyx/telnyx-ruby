@@ -1,0 +1,153 @@
+module Telnyx
+  module Models
+    type global_ip_assignment_health_retrieve_response =
+      {
+        data: ::Array[Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data]
+      }
+
+    class GlobalIPAssignmentHealthRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data]
+      ) -> ::Array[Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data]
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data]
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data]
+      }
+
+      type data =
+        {
+          global_ip: Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::GlobalIP,
+          global_ip_assignment: Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::GlobalIPAssignment,
+          health: Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::Health,
+          timestamp: Time
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader global_ip: Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::GlobalIP?
+
+        def global_ip=: (
+          Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::GlobalIP
+        ) -> Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::GlobalIP
+
+        attr_reader global_ip_assignment: Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::GlobalIPAssignment?
+
+        def global_ip_assignment=: (
+          Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::GlobalIPAssignment
+        ) -> Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::GlobalIPAssignment
+
+        attr_reader health: Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::Health?
+
+        def health=: (
+          Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::Health
+        ) -> Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::Health
+
+        attr_reader timestamp: Time?
+
+        def timestamp=: (Time) -> Time
+
+        def initialize: (
+          ?global_ip: Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::GlobalIP,
+          ?global_ip_assignment: Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::GlobalIPAssignment,
+          ?health: Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::Health,
+          ?timestamp: Time
+        ) -> void
+
+        def to_hash: -> {
+          global_ip: Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::GlobalIP,
+          global_ip_assignment: Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::GlobalIPAssignment,
+          health: Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::Health,
+          timestamp: Time
+        }
+
+        type global_ip = { id: String, ip_address: String }
+
+        class GlobalIP < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader ip_address: String?
+
+          def ip_address=: (String) -> String
+
+          def initialize: (?id: String, ?ip_address: String) -> void
+
+          def to_hash: -> { id: String, ip_address: String }
+        end
+
+        type global_ip_assignment =
+          {
+            id: String,
+            wireguard_peer: Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::GlobalIPAssignment::WireguardPeer,
+            wireguard_peer_id: String
+          }
+
+        class GlobalIPAssignment < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader wireguard_peer: Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::GlobalIPAssignment::WireguardPeer?
+
+          def wireguard_peer=: (
+            Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::GlobalIPAssignment::WireguardPeer
+          ) -> Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::GlobalIPAssignment::WireguardPeer
+
+          attr_reader wireguard_peer_id: String?
+
+          def wireguard_peer_id=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?wireguard_peer: Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::GlobalIPAssignment::WireguardPeer,
+            ?wireguard_peer_id: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            wireguard_peer: Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data::GlobalIPAssignment::WireguardPeer,
+            wireguard_peer_id: String
+          }
+
+          type wireguard_peer = { ip_address: String, name: String }
+
+          class WireguardPeer < Telnyx::Internal::Type::BaseModel
+            attr_reader ip_address: String?
+
+            def ip_address=: (String) -> String
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            def initialize: (?ip_address: String, ?name: String) -> void
+
+            def to_hash: -> { ip_address: String, name: String }
+          end
+        end
+
+        type health = { fail_: Float, pass: Float }
+
+        class Health < Telnyx::Internal::Type::BaseModel
+          attr_reader fail_: Float?
+
+          def fail_=: (Float) -> Float
+
+          attr_reader pass: Float?
+
+          def pass=: (Float) -> Float
+
+          def initialize: (?fail_: Float, ?pass: Float) -> void
+
+          def to_hash: -> { fail_: Float, pass: Float }
+        end
+      end
+    end
+  end
+end

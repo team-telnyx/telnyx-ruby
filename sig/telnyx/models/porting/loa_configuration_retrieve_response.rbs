@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    module Porting
+      type loa_configuration_retrieve_response =
+        { data: Telnyx::Porting::PortingLoaConfiguration }
+
+      class LoaConfigurationRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Porting::PortingLoaConfiguration?
+
+        def data=: (
+          Telnyx::Porting::PortingLoaConfiguration
+        ) -> Telnyx::Porting::PortingLoaConfiguration
+
+        def initialize: (
+          ?data: Telnyx::Porting::PortingLoaConfiguration
+        ) -> void
+
+        def to_hash: -> { data: Telnyx::Porting::PortingLoaConfiguration }
+      end
+    end
+  end
+end

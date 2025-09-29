@@ -1,0 +1,168 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        module Calls
+          type recordings_json_recordings_json_response =
+            {
+              account_sid: String,
+              call_sid: String,
+              channels: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::channels,
+              conference_sid: String?,
+              date_created: Time,
+              date_updated: Time,
+              duration: String?,
+              error_code: String?,
+              price: String?,
+              price_unit: String?,
+              sid: String,
+              source: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::source,
+              start_time: Time,
+              track: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::track,
+              uri: String
+            }
+
+          class RecordingsJsonRecordingsJsonResponse < Telnyx::Internal::Type::BaseModel
+            attr_reader account_sid: String?
+
+            def account_sid=: (String) -> String
+
+            attr_reader call_sid: String?
+
+            def call_sid=: (String) -> String
+
+            attr_reader channels: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::channels?
+
+            def channels=: (
+              Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::channels
+            ) -> Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::channels
+
+            attr_accessor conference_sid: String?
+
+            attr_reader date_created: Time?
+
+            def date_created=: (Time) -> Time
+
+            attr_reader date_updated: Time?
+
+            def date_updated=: (Time) -> Time
+
+            attr_accessor duration: String?
+
+            attr_accessor error_code: String?
+
+            attr_accessor price: String?
+
+            attr_accessor price_unit: String?
+
+            attr_reader sid: String?
+
+            def sid=: (String) -> String
+
+            attr_reader source: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::source?
+
+            def source=: (
+              Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::source
+            ) -> Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::source
+
+            attr_reader start_time: Time?
+
+            def start_time=: (Time) -> Time
+
+            attr_reader track: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::track?
+
+            def track=: (
+              Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::track
+            ) -> Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::track
+
+            attr_reader uri: String?
+
+            def uri=: (String) -> String
+
+            def initialize: (
+              ?account_sid: String,
+              ?call_sid: String,
+              ?channels: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::channels,
+              ?conference_sid: String?,
+              ?date_created: Time,
+              ?date_updated: Time,
+              ?duration: String?,
+              ?error_code: String?,
+              ?price: String?,
+              ?price_unit: String?,
+              ?sid: String,
+              ?source: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::source,
+              ?start_time: Time,
+              ?track: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::track,
+              ?uri: String
+            ) -> void
+
+            def to_hash: -> {
+              account_sid: String,
+              call_sid: String,
+              channels: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::channels,
+              conference_sid: String?,
+              date_created: Time,
+              date_updated: Time,
+              duration: String?,
+              error_code: String?,
+              price: String?,
+              price_unit: String?,
+              sid: String,
+              source: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::source,
+              start_time: Time,
+              track: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::track,
+              uri: String
+            }
+
+            type channels = 1 | 2
+
+            module Channels
+              extend Telnyx::Internal::Type::Enum
+
+              CHANNELS_1: 1
+              CHANNELS_2: 2
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::channels]
+            end
+
+            type source =
+              :StartCallRecordingAPI
+              | :StartConferenceRecordingAPI
+              | :OutboundAPI
+              | :DialVerb
+              | :Conference
+              | :RecordVerb
+              | :Trunking
+
+            module Source
+              extend Telnyx::Internal::Type::Enum
+
+              START_CALL_RECORDING_API: :StartCallRecordingAPI
+              START_CONFERENCE_RECORDING_API: :StartConferenceRecordingAPI
+              OUTBOUND_API: :OutboundAPI
+              DIAL_VERB: :DialVerb
+              CONFERENCE: :Conference
+              RECORD_VERB: :RecordVerb
+              TRUNKING: :Trunking
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::source]
+            end
+
+            type track = :inbound | :outbound | :both
+
+            module Track
+              extend Telnyx::Internal::Type::Enum
+
+              INBOUND: :inbound
+              OUTBOUND: :outbound
+              BOTH: :both
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::track]
+            end
+          end
+        end
+      end
+    end
+  end
+end

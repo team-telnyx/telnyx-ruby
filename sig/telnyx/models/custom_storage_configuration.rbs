@@ -1,0 +1,48 @@
+module Telnyx
+  module Models
+    type custom_storage_configuration =
+      {
+        backend: Telnyx::Models::CustomStorageConfiguration::backend,
+        configuration: Telnyx::Models::CustomStorageConfiguration::configuration
+      }
+
+    class CustomStorageConfiguration < Telnyx::Internal::Type::BaseModel
+      attr_accessor backend: Telnyx::Models::CustomStorageConfiguration::backend
+
+      attr_accessor configuration: Telnyx::Models::CustomStorageConfiguration::configuration
+
+      def initialize: (
+        backend: Telnyx::Models::CustomStorageConfiguration::backend,
+        configuration: Telnyx::Models::CustomStorageConfiguration::configuration
+      ) -> void
+
+      def to_hash: -> {
+        backend: Telnyx::Models::CustomStorageConfiguration::backend,
+        configuration: Telnyx::Models::CustomStorageConfiguration::configuration
+      }
+
+      type backend = :gcs | :s3 | :azure
+
+      module Backend
+        extend Telnyx::Internal::Type::Enum
+
+        GCS: :gcs
+        S3: :s3
+        AZURE: :azure
+
+        def self?.values: -> ::Array[Telnyx::Models::CustomStorageConfiguration::backend]
+      end
+
+      type configuration =
+        Telnyx::GcsConfigurationData
+        | Telnyx::S3ConfigurationData
+        | Telnyx::AzureConfigurationData
+
+      module Configuration
+        extend Telnyx::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Telnyx::Models::CustomStorageConfiguration::configuration]
+      end
+    end
+  end
+end

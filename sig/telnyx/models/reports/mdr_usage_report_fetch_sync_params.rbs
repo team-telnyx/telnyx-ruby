@@ -1,0 +1,61 @@
+module Telnyx
+  module Models
+    module Reports
+      type mdr_usage_report_fetch_sync_params =
+        {
+          aggregation_type: Telnyx::Models::Reports::MdrUsageReportFetchSyncParams::aggregation_type,
+          end_date: Time,
+          profiles: ::Array[String],
+          start_date: Time
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class MdrUsageReportFetchSyncParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor aggregation_type: Telnyx::Models::Reports::MdrUsageReportFetchSyncParams::aggregation_type
+
+        attr_reader end_date: Time?
+
+        def end_date=: (Time) -> Time
+
+        attr_reader profiles: ::Array[String]?
+
+        def profiles=: (::Array[String]) -> ::Array[String]
+
+        attr_reader start_date: Time?
+
+        def start_date=: (Time) -> Time
+
+        def initialize: (
+          aggregation_type: Telnyx::Models::Reports::MdrUsageReportFetchSyncParams::aggregation_type,
+          ?end_date: Time,
+          ?profiles: ::Array[String],
+          ?start_date: Time,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          aggregation_type: Telnyx::Models::Reports::MdrUsageReportFetchSyncParams::aggregation_type,
+          end_date: Time,
+          profiles: ::Array[String],
+          start_date: Time,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type aggregation_type = :NO_AGGREGATION | :PROFILE | :TAGS
+
+        module AggregationType
+          extend Telnyx::Internal::Type::Enum
+
+          NO_AGGREGATION: :NO_AGGREGATION
+          PROFILE: :PROFILE
+          TAGS: :TAGS
+
+          def self?.values: -> ::Array[Telnyx::Models::Reports::MdrUsageReportFetchSyncParams::aggregation_type]
+        end
+      end
+    end
+  end
+end

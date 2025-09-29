@@ -1,0 +1,27 @@
+module Telnyx
+  module Resources
+    class SubNumberOrdersReport
+      def create: (
+        ?country_code: String,
+        ?created_at_gt: Time,
+        ?created_at_lt: Time,
+        ?customer_reference: String,
+        ?order_request_id: String,
+        ?status: Telnyx::Models::SubNumberOrdersReportCreateParams::status,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SubNumberOrdersReportCreateResponse
+
+      def retrieve: (
+        String report_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SubNumberOrdersReportRetrieveResponse
+
+      def download: (
+        String report_id,
+        ?request_options: Telnyx::request_opts
+      ) -> StringIO
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

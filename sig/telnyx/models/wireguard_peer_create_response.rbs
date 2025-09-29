@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    type wireguard_peer_create_response =
+      { data: Telnyx::Models::WireguardPeerCreateResponse::Data }
+
+    class WireguardPeerCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::WireguardPeerCreateResponse::Data?
+
+      def data=: (
+        Telnyx::Models::WireguardPeerCreateResponse::Data
+      ) -> Telnyx::Models::WireguardPeerCreateResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::WireguardPeerCreateResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::WireguardPeerCreateResponse::Data
+      }
+    end
+  end
+end

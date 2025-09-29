@@ -1,0 +1,166 @@
+module Telnyx
+  module Models
+    type detail_record_list_params =
+      {
+        filter: Telnyx::DetailRecordListParams::Filter,
+        page: Telnyx::DetailRecordListParams::Page,
+        sort: ::Array[String]
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class DetailRecordListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::DetailRecordListParams::Filter?
+
+      def filter=: (
+        Telnyx::DetailRecordListParams::Filter
+      ) -> Telnyx::DetailRecordListParams::Filter
+
+      attr_reader page: Telnyx::DetailRecordListParams::Page?
+
+      def page=: (
+        Telnyx::DetailRecordListParams::Page
+      ) -> Telnyx::DetailRecordListParams::Page
+
+      attr_reader sort: ::Array[String]?
+
+      def sort=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        ?filter: Telnyx::DetailRecordListParams::Filter,
+        ?page: Telnyx::DetailRecordListParams::Page,
+        ?sort: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::DetailRecordListParams::Filter,
+        page: Telnyx::DetailRecordListParams::Page,
+        sort: ::Array[String],
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          record_type: Telnyx::Models::DetailRecordListParams::Filter::record_type,
+          date_range: Telnyx::Models::DetailRecordListParams::Filter::date_range
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_accessor record_type: Telnyx::Models::DetailRecordListParams::Filter::record_type
+
+        attr_reader date_range: Telnyx::Models::DetailRecordListParams::Filter::date_range?
+
+        def date_range=: (
+          Telnyx::Models::DetailRecordListParams::Filter::date_range
+        ) -> Telnyx::Models::DetailRecordListParams::Filter::date_range
+
+        def initialize: (
+          record_type: Telnyx::Models::DetailRecordListParams::Filter::record_type,
+          ?date_range: Telnyx::Models::DetailRecordListParams::Filter::date_range
+        ) -> void
+
+        def to_hash: -> {
+          record_type: Telnyx::Models::DetailRecordListParams::Filter::record_type,
+          date_range: Telnyx::Models::DetailRecordListParams::Filter::date_range
+        }
+
+        type record_type =
+          :"ai-voice-assistant"
+          | :amd
+          | :"call-control"
+          | :conference
+          | :"conference-participant"
+          | :embedding
+          | :fax
+          | :inference
+          | :"inference-speech-to-text"
+          | :media_storage
+          | :"media-streaming"
+          | :messaging
+          | :"noise-suppression"
+          | :recording
+          | :"sip-trunking"
+          | :"siprec-client"
+          | :stt
+          | :tts
+          | :verify
+          | :webrtc
+          | :wireless
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          AI_VOICE_ASSISTANT: :"ai-voice-assistant"
+          AMD: :amd
+          CALL_CONTROL: :"call-control"
+          CONFERENCE: :conference
+          CONFERENCE_PARTICIPANT: :"conference-participant"
+          EMBEDDING: :embedding
+          FAX: :fax
+          INFERENCE: :inference
+          INFERENCE_SPEECH_TO_TEXT: :"inference-speech-to-text"
+          MEDIA_STORAGE: :media_storage
+          MEDIA_STREAMING: :"media-streaming"
+          MESSAGING: :messaging
+          NOISE_SUPPRESSION: :"noise-suppression"
+          RECORDING: :recording
+          SIP_TRUNKING: :"sip-trunking"
+          SIPREC_CLIENT: :"siprec-client"
+          STT: :stt
+          TTS: :tts
+          VERIFY: :verify
+          WEBRTC: :webrtc
+          WIRELESS: :wireless
+
+          def self?.values: -> ::Array[Telnyx::Models::DetailRecordListParams::Filter::record_type]
+        end
+
+        type date_range =
+          :yesterday
+          | :today
+          | :tomorrow
+          | :last_week
+          | :this_week
+          | :next_week
+          | :last_month
+          | :this_month
+          | :next_month
+
+        module DateRange
+          extend Telnyx::Internal::Type::Enum
+
+          YESTERDAY: :yesterday
+          TODAY: :today
+          TOMORROW: :tomorrow
+          LAST_WEEK: :last_week
+          THIS_WEEK: :this_week
+          NEXT_WEEK: :next_week
+          LAST_MONTH: :last_month
+          THIS_MONTH: :this_month
+          NEXT_MONTH: :next_month
+
+          def self?.values: -> ::Array[Telnyx::Models::DetailRecordListParams::Filter::date_range]
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

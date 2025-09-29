@@ -1,0 +1,158 @@
+module Telnyx
+  module Models
+    module AI
+      type assistant_update_params =
+        {
+          description: String,
+          dynamic_variables: ::Hash[Symbol, top],
+          dynamic_variables_webhook_url: String,
+          enabled_features: ::Array[Telnyx::Models::AI::enabled_features],
+          greeting: String,
+          insight_settings: Telnyx::AI::InsightSettings,
+          instructions: String,
+          llm_api_key_ref: String,
+          messaging_settings: Telnyx::AI::MessagingSettings,
+          model: String,
+          name: String,
+          privacy_settings: Telnyx::AI::PrivacySettings,
+          promote_to_main: bool,
+          telephony_settings: Telnyx::AI::TelephonySettings,
+          tools: ::Array[Telnyx::Models::AI::assistant_tool],
+          transcription: Telnyx::AI::TranscriptionSettings,
+          voice_settings: Telnyx::AI::VoiceSettings
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class AssistantUpdateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader description: String?
+
+        def description=: (String) -> String
+
+        attr_reader dynamic_variables: ::Hash[Symbol, top]?
+
+        def dynamic_variables=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        attr_reader dynamic_variables_webhook_url: String?
+
+        def dynamic_variables_webhook_url=: (String) -> String
+
+        attr_reader enabled_features: ::Array[Telnyx::Models::AI::enabled_features]?
+
+        def enabled_features=: (
+          ::Array[Telnyx::Models::AI::enabled_features]
+        ) -> ::Array[Telnyx::Models::AI::enabled_features]
+
+        attr_reader greeting: String?
+
+        def greeting=: (String) -> String
+
+        attr_reader insight_settings: Telnyx::AI::InsightSettings?
+
+        def insight_settings=: (
+          Telnyx::AI::InsightSettings
+        ) -> Telnyx::AI::InsightSettings
+
+        attr_reader instructions: String?
+
+        def instructions=: (String) -> String
+
+        attr_reader llm_api_key_ref: String?
+
+        def llm_api_key_ref=: (String) -> String
+
+        attr_reader messaging_settings: Telnyx::AI::MessagingSettings?
+
+        def messaging_settings=: (
+          Telnyx::AI::MessagingSettings
+        ) -> Telnyx::AI::MessagingSettings
+
+        attr_reader model: String?
+
+        def model=: (String) -> String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader privacy_settings: Telnyx::AI::PrivacySettings?
+
+        def privacy_settings=: (
+          Telnyx::AI::PrivacySettings
+        ) -> Telnyx::AI::PrivacySettings
+
+        attr_reader promote_to_main: bool?
+
+        def promote_to_main=: (bool) -> bool
+
+        attr_reader telephony_settings: Telnyx::AI::TelephonySettings?
+
+        def telephony_settings=: (
+          Telnyx::AI::TelephonySettings
+        ) -> Telnyx::AI::TelephonySettings
+
+        attr_reader tools: ::Array[Telnyx::Models::AI::assistant_tool]?
+
+        def tools=: (
+          ::Array[Telnyx::Models::AI::assistant_tool]
+        ) -> ::Array[Telnyx::Models::AI::assistant_tool]
+
+        attr_reader transcription: Telnyx::AI::TranscriptionSettings?
+
+        def transcription=: (
+          Telnyx::AI::TranscriptionSettings
+        ) -> Telnyx::AI::TranscriptionSettings
+
+        attr_reader voice_settings: Telnyx::AI::VoiceSettings?
+
+        def voice_settings=: (
+          Telnyx::AI::VoiceSettings
+        ) -> Telnyx::AI::VoiceSettings
+
+        def initialize: (
+          ?description: String,
+          ?dynamic_variables: ::Hash[Symbol, top],
+          ?dynamic_variables_webhook_url: String,
+          ?enabled_features: ::Array[Telnyx::Models::AI::enabled_features],
+          ?greeting: String,
+          ?insight_settings: Telnyx::AI::InsightSettings,
+          ?instructions: String,
+          ?llm_api_key_ref: String,
+          ?messaging_settings: Telnyx::AI::MessagingSettings,
+          ?model: String,
+          ?name: String,
+          ?privacy_settings: Telnyx::AI::PrivacySettings,
+          ?promote_to_main: bool,
+          ?telephony_settings: Telnyx::AI::TelephonySettings,
+          ?tools: ::Array[Telnyx::Models::AI::assistant_tool],
+          ?transcription: Telnyx::AI::TranscriptionSettings,
+          ?voice_settings: Telnyx::AI::VoiceSettings,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          description: String,
+          dynamic_variables: ::Hash[Symbol, top],
+          dynamic_variables_webhook_url: String,
+          enabled_features: ::Array[Telnyx::Models::AI::enabled_features],
+          greeting: String,
+          insight_settings: Telnyx::AI::InsightSettings,
+          instructions: String,
+          llm_api_key_ref: String,
+          messaging_settings: Telnyx::AI::MessagingSettings,
+          model: String,
+          name: String,
+          privacy_settings: Telnyx::AI::PrivacySettings,
+          promote_to_main: bool,
+          telephony_settings: Telnyx::AI::TelephonySettings,
+          tools: ::Array[Telnyx::Models::AI::assistant_tool],
+          transcription: Telnyx::AI::TranscriptionSettings,
+          voice_settings: Telnyx::AI::VoiceSettings,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

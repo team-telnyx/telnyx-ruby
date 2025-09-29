@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_switch_supervisor_role_params =
+        { role: Telnyx::Models::Calls::ActionSwitchSupervisorRoleParams::role }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionSwitchSupervisorRoleParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor role: Telnyx::Models::Calls::ActionSwitchSupervisorRoleParams::role
+
+        def initialize: (
+          role: Telnyx::Models::Calls::ActionSwitchSupervisorRoleParams::role,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          role: Telnyx::Models::Calls::ActionSwitchSupervisorRoleParams::role,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type role = :barge | :whisper | :monitor
+
+        module Role
+          extend Telnyx::Internal::Type::Enum
+
+          BARGE: :barge
+          WHISPER: :whisper
+          MONITOR: :monitor
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionSwitchSupervisorRoleParams::role]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,102 @@
+module Telnyx
+  module Models
+    class PortingReport = Porting::PortingReport
+
+    module Porting
+      type porting_report =
+        {
+          id: String,
+          created_at: Time,
+          document_id: String,
+          params: Telnyx::Porting::ExportPortingOrdersCsvReport,
+          record_type: String,
+          report_type: Telnyx::Models::Porting::PortingReport::report_type,
+          status: Telnyx::Models::Porting::PortingReport::status,
+          updated_at: Time
+        }
+
+      class PortingReport < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader document_id: String?
+
+        def document_id=: (String) -> String
+
+        attr_reader params: Telnyx::Porting::ExportPortingOrdersCsvReport?
+
+        def params=: (
+          Telnyx::Porting::ExportPortingOrdersCsvReport
+        ) -> Telnyx::Porting::ExportPortingOrdersCsvReport
+
+        attr_reader report_type: Telnyx::Models::Porting::PortingReport::report_type?
+
+        def report_type=: (
+          Telnyx::Models::Porting::PortingReport::report_type
+        ) -> Telnyx::Models::Porting::PortingReport::report_type
+
+        attr_reader status: Telnyx::Models::Porting::PortingReport::status?
+
+        def status=: (
+          Telnyx::Models::Porting::PortingReport::status
+        ) -> Telnyx::Models::Porting::PortingReport::status
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?created_at: Time,
+          ?document_id: String,
+          ?params: Telnyx::Porting::ExportPortingOrdersCsvReport,
+          ?record_type: String,
+          ?report_type: Telnyx::Models::Porting::PortingReport::report_type,
+          ?status: Telnyx::Models::Porting::PortingReport::status,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          document_id: String,
+          params: Telnyx::Porting::ExportPortingOrdersCsvReport,
+          record_type: String,
+          report_type: Telnyx::Models::Porting::PortingReport::report_type,
+          status: Telnyx::Models::Porting::PortingReport::status,
+          updated_at: Time
+        }
+
+        type report_type = :export_porting_orders_csv
+
+        module ReportType
+          extend Telnyx::Internal::Type::Enum
+
+          EXPORT_PORTING_ORDERS_CSV: :export_porting_orders_csv
+
+          def self?.values: -> ::Array[Telnyx::Models::Porting::PortingReport::report_type]
+        end
+
+        type status = :pending | :completed
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          COMPLETED: :completed
+
+          def self?.values: -> ::Array[Telnyx::Models::Porting::PortingReport::status]
+        end
+      end
+    end
+  end
+end

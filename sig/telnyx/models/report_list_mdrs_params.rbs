@@ -1,0 +1,135 @@
+module Telnyx
+  module Models
+    type report_list_mdrs_params =
+      {
+        id: String,
+        cld: String,
+        cli: String,
+        direction: Telnyx::Models::ReportListMdrsParams::direction,
+        end_date: String,
+        message_type: Telnyx::Models::ReportListMdrsParams::message_type,
+        profile: String,
+        start_date: String,
+        status: Telnyx::Models::ReportListMdrsParams::status
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class ReportListMdrsParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader cld: String?
+
+      def cld=: (String) -> String
+
+      attr_reader cli: String?
+
+      def cli=: (String) -> String
+
+      attr_reader direction: Telnyx::Models::ReportListMdrsParams::direction?
+
+      def direction=: (
+        Telnyx::Models::ReportListMdrsParams::direction
+      ) -> Telnyx::Models::ReportListMdrsParams::direction
+
+      attr_reader end_date: String?
+
+      def end_date=: (String) -> String
+
+      attr_reader message_type: Telnyx::Models::ReportListMdrsParams::message_type?
+
+      def message_type=: (
+        Telnyx::Models::ReportListMdrsParams::message_type
+      ) -> Telnyx::Models::ReportListMdrsParams::message_type
+
+      attr_reader profile: String?
+
+      def profile=: (String) -> String
+
+      attr_reader start_date: String?
+
+      def start_date=: (String) -> String
+
+      attr_reader status: Telnyx::Models::ReportListMdrsParams::status?
+
+      def status=: (
+        Telnyx::Models::ReportListMdrsParams::status
+      ) -> Telnyx::Models::ReportListMdrsParams::status
+
+      def initialize: (
+        ?id: String,
+        ?cld: String,
+        ?cli: String,
+        ?direction: Telnyx::Models::ReportListMdrsParams::direction,
+        ?end_date: String,
+        ?message_type: Telnyx::Models::ReportListMdrsParams::message_type,
+        ?profile: String,
+        ?start_date: String,
+        ?status: Telnyx::Models::ReportListMdrsParams::status,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        cld: String,
+        cli: String,
+        direction: Telnyx::Models::ReportListMdrsParams::direction,
+        end_date: String,
+        message_type: Telnyx::Models::ReportListMdrsParams::message_type,
+        profile: String,
+        start_date: String,
+        status: Telnyx::Models::ReportListMdrsParams::status,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type direction = :INBOUND | :OUTBOUND
+
+      module Direction
+        extend Telnyx::Internal::Type::Enum
+
+        INBOUND: :INBOUND
+        OUTBOUND: :OUTBOUND
+
+        def self?.values: -> ::Array[Telnyx::Models::ReportListMdrsParams::direction]
+      end
+
+      type message_type = :SMS | :MMS
+
+      module MessageType
+        extend Telnyx::Internal::Type::Enum
+
+        SMS: :SMS
+        MMS: :MMS
+
+        def self?.values: -> ::Array[Telnyx::Models::ReportListMdrsParams::message_type]
+      end
+
+      type status =
+        :GW_TIMEOUT
+        | :DELIVERED
+        | :DLR_UNCONFIRMED
+        | :DLR_TIMEOUT
+        | :RECEIVED
+        | :GW_REJECT
+        | :FAILED
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        GW_TIMEOUT: :GW_TIMEOUT
+        DELIVERED: :DELIVERED
+        DLR_UNCONFIRMED: :DLR_UNCONFIRMED
+        DLR_TIMEOUT: :DLR_TIMEOUT
+        RECEIVED: :RECEIVED
+        GW_REJECT: :GW_REJECT
+        FAILED: :FAILED
+
+        def self?.values: -> ::Array[Telnyx::Models::ReportListMdrsParams::status]
+      end
+    end
+  end
+end

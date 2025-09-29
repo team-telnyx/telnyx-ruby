@@ -1,0 +1,25 @@
+module Telnyx
+  module Resources
+    class Porting
+      class Events
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Porting::EventRetrieveResponse
+
+        def list: (
+          ?filter: Telnyx::Porting::EventListParams::Filter,
+          ?page: Telnyx::Porting::EventListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Porting::EventListResponse
+
+        def republish: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

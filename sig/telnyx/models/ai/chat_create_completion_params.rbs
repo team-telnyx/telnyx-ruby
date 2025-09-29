@@ -1,0 +1,422 @@
+module Telnyx
+  module Models
+    module AI
+      type chat_create_completion_params =
+        {
+          messages: ::Array[Telnyx::AI::ChatCreateCompletionParams::Message],
+          api_key_ref: String,
+          best_of: Integer,
+          early_stopping: bool,
+          frequency_penalty: Float,
+          guided_choice: ::Array[String],
+          guided_json: ::Hash[Symbol, top],
+          guided_regex: String,
+          length_penalty: Float,
+          logprobs: bool,
+          max_tokens: Integer,
+          min_p: Float,
+          model: String,
+          n: Float,
+          presence_penalty: Float,
+          response_format: Telnyx::AI::ChatCreateCompletionParams::ResponseFormat,
+          stream: bool,
+          temperature: Float,
+          tool_choice: Telnyx::Models::AI::ChatCreateCompletionParams::tool_choice,
+          tools: ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::tool],
+          top_logprobs: Integer,
+          top_p: Float,
+          use_beam_search: bool
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ChatCreateCompletionParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor messages: ::Array[Telnyx::AI::ChatCreateCompletionParams::Message]
+
+        attr_reader api_key_ref: String?
+
+        def api_key_ref=: (String) -> String
+
+        attr_reader best_of: Integer?
+
+        def best_of=: (Integer) -> Integer
+
+        attr_reader early_stopping: bool?
+
+        def early_stopping=: (bool) -> bool
+
+        attr_reader frequency_penalty: Float?
+
+        def frequency_penalty=: (Float) -> Float
+
+        attr_reader guided_choice: ::Array[String]?
+
+        def guided_choice=: (::Array[String]) -> ::Array[String]
+
+        attr_reader guided_json: ::Hash[Symbol, top]?
+
+        def guided_json=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        attr_reader guided_regex: String?
+
+        def guided_regex=: (String) -> String
+
+        attr_reader length_penalty: Float?
+
+        def length_penalty=: (Float) -> Float
+
+        attr_reader logprobs: bool?
+
+        def logprobs=: (bool) -> bool
+
+        attr_reader max_tokens: Integer?
+
+        def max_tokens=: (Integer) -> Integer
+
+        attr_reader min_p: Float?
+
+        def min_p=: (Float) -> Float
+
+        attr_reader model: String?
+
+        def model=: (String) -> String
+
+        attr_reader n: Float?
+
+        def n=: (Float) -> Float
+
+        attr_reader presence_penalty: Float?
+
+        def presence_penalty=: (Float) -> Float
+
+        attr_reader response_format: Telnyx::AI::ChatCreateCompletionParams::ResponseFormat?
+
+        def response_format=: (
+          Telnyx::AI::ChatCreateCompletionParams::ResponseFormat
+        ) -> Telnyx::AI::ChatCreateCompletionParams::ResponseFormat
+
+        attr_reader stream: bool?
+
+        def stream=: (bool) -> bool
+
+        attr_reader temperature: Float?
+
+        def temperature=: (Float) -> Float
+
+        attr_reader tool_choice: Telnyx::Models::AI::ChatCreateCompletionParams::tool_choice?
+
+        def tool_choice=: (
+          Telnyx::Models::AI::ChatCreateCompletionParams::tool_choice
+        ) -> Telnyx::Models::AI::ChatCreateCompletionParams::tool_choice
+
+        attr_reader tools: ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::tool]?
+
+        def tools=: (
+          ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::tool]
+        ) -> ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::tool]
+
+        attr_reader top_logprobs: Integer?
+
+        def top_logprobs=: (Integer) -> Integer
+
+        attr_reader top_p: Float?
+
+        def top_p=: (Float) -> Float
+
+        attr_reader use_beam_search: bool?
+
+        def use_beam_search=: (bool) -> bool
+
+        def initialize: (
+          messages: ::Array[Telnyx::AI::ChatCreateCompletionParams::Message],
+          ?api_key_ref: String,
+          ?best_of: Integer,
+          ?early_stopping: bool,
+          ?frequency_penalty: Float,
+          ?guided_choice: ::Array[String],
+          ?guided_json: ::Hash[Symbol, top],
+          ?guided_regex: String,
+          ?length_penalty: Float,
+          ?logprobs: bool,
+          ?max_tokens: Integer,
+          ?min_p: Float,
+          ?model: String,
+          ?n: Float,
+          ?presence_penalty: Float,
+          ?response_format: Telnyx::AI::ChatCreateCompletionParams::ResponseFormat,
+          ?stream: bool,
+          ?temperature: Float,
+          ?tool_choice: Telnyx::Models::AI::ChatCreateCompletionParams::tool_choice,
+          ?tools: ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::tool],
+          ?top_logprobs: Integer,
+          ?top_p: Float,
+          ?use_beam_search: bool,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          messages: ::Array[Telnyx::AI::ChatCreateCompletionParams::Message],
+          api_key_ref: String,
+          best_of: Integer,
+          early_stopping: bool,
+          frequency_penalty: Float,
+          guided_choice: ::Array[String],
+          guided_json: ::Hash[Symbol, top],
+          guided_regex: String,
+          length_penalty: Float,
+          logprobs: bool,
+          max_tokens: Integer,
+          min_p: Float,
+          model: String,
+          n: Float,
+          presence_penalty: Float,
+          response_format: Telnyx::AI::ChatCreateCompletionParams::ResponseFormat,
+          stream: bool,
+          temperature: Float,
+          tool_choice: Telnyx::Models::AI::ChatCreateCompletionParams::tool_choice,
+          tools: ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::tool],
+          top_logprobs: Integer,
+          top_p: Float,
+          use_beam_search: bool,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type message =
+          {
+            content: Telnyx::Models::AI::ChatCreateCompletionParams::Message::content,
+            role: Telnyx::Models::AI::ChatCreateCompletionParams::Message::role
+          }
+
+        class Message < Telnyx::Internal::Type::BaseModel
+          attr_accessor content: Telnyx::Models::AI::ChatCreateCompletionParams::Message::content
+
+          attr_accessor role: Telnyx::Models::AI::ChatCreateCompletionParams::Message::role
+
+          def initialize: (
+            content: Telnyx::Models::AI::ChatCreateCompletionParams::Message::content,
+            role: Telnyx::Models::AI::ChatCreateCompletionParams::Message::role
+          ) -> void
+
+          def to_hash: -> {
+            content: Telnyx::Models::AI::ChatCreateCompletionParams::Message::content,
+            role: Telnyx::Models::AI::ChatCreateCompletionParams::Message::role
+          }
+
+          type content =
+            String
+            | ::Array[Telnyx::AI::ChatCreateCompletionParams::Message::Content::TextAndImageArray]
+
+          module Content
+            extend Telnyx::Internal::Type::Union
+
+            type text_and_image_array =
+              {
+                type: Telnyx::Models::AI::ChatCreateCompletionParams::Message::Content::TextAndImageArray::type_,
+                image_url: String,
+                text: String
+              }
+
+            class TextAndImageArray < Telnyx::Internal::Type::BaseModel
+              attr_accessor type: Telnyx::Models::AI::ChatCreateCompletionParams::Message::Content::TextAndImageArray::type_
+
+              attr_reader image_url: String?
+
+              def image_url=: (String) -> String
+
+              attr_reader text: String?
+
+              def text=: (String) -> String
+
+              def initialize: (
+                type: Telnyx::Models::AI::ChatCreateCompletionParams::Message::Content::TextAndImageArray::type_,
+                ?image_url: String,
+                ?text: String
+              ) -> void
+
+              def to_hash: -> {
+                type: Telnyx::Models::AI::ChatCreateCompletionParams::Message::Content::TextAndImageArray::type_,
+                image_url: String,
+                text: String
+              }
+
+              type type_ = :text | :image_url
+
+              module Type
+                extend Telnyx::Internal::Type::Enum
+
+                TEXT: :text
+                IMAGE_URL: :image_url
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::Message::Content::TextAndImageArray::type_]
+              end
+            end
+
+            def self?.variants: -> ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::Message::content]
+
+            TextAndImage2DArray: Telnyx::Internal::Type::Converter
+          end
+
+          type role = :system | :user | :assistant | :tool
+
+          module Role
+            extend Telnyx::Internal::Type::Enum
+
+            SYSTEM: :system
+            USER: :user
+            ASSISTANT: :assistant
+            TOOL: :tool
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::Message::role]
+          end
+        end
+
+        type response_format =
+          {
+            type: Telnyx::Models::AI::ChatCreateCompletionParams::ResponseFormat::type_
+          }
+
+        class ResponseFormat < Telnyx::Internal::Type::BaseModel
+          attr_accessor type: Telnyx::Models::AI::ChatCreateCompletionParams::ResponseFormat::type_
+
+          def initialize: (
+            type: Telnyx::Models::AI::ChatCreateCompletionParams::ResponseFormat::type_
+          ) -> void
+
+          def to_hash: -> {
+            type: Telnyx::Models::AI::ChatCreateCompletionParams::ResponseFormat::type_
+          }
+
+          type type_ = :text | :json_object
+
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            TEXT: :text
+            JSON_OBJECT: :json_object
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::ResponseFormat::type_]
+          end
+        end
+
+        type tool_choice = :none | :auto | :required
+
+        module ToolChoice
+          extend Telnyx::Internal::Type::Enum
+
+          NONE: :none
+          AUTO: :auto
+          REQUIRED: :required
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::tool_choice]
+        end
+
+        type tool =
+          Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam
+          | Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval
+
+        module Tool
+          extend Telnyx::Internal::Type::Union
+
+          type chat_completion_tool_param =
+            {
+              function: Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Function,
+              type: Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::type_
+            }
+
+          class ChatCompletionToolParam < Telnyx::Internal::Type::BaseModel
+            attr_accessor function: Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Function
+
+            attr_accessor type: Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::type_
+
+            def initialize: (
+              function: Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Function,
+              type: Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::type_
+            ) -> void
+
+            def to_hash: -> {
+              function: Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Function,
+              type: Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::type_
+            }
+
+            type function =
+              {
+                name: String,
+                description: String,
+                parameters: ::Hash[Symbol, top]
+              }
+
+            class Function < Telnyx::Internal::Type::BaseModel
+              attr_accessor name: String
+
+              attr_reader description: String?
+
+              def description=: (String) -> String
+
+              attr_reader parameters: ::Hash[Symbol, top]?
+
+              def parameters=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+              def initialize: (
+                name: String,
+                ?description: String,
+                ?parameters: ::Hash[Symbol, top]
+              ) -> void
+
+              def to_hash: -> {
+                name: String,
+                description: String,
+                parameters: ::Hash[Symbol, top]
+              }
+            end
+
+            type type_ = :function
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              FUNCTION: :function
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::type_]
+            end
+          end
+
+          type retrieval =
+            {
+              retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs,
+              type: Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval::type_
+            }
+
+          class Retrieval < Telnyx::Internal::Type::BaseModel
+            attr_accessor retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs
+
+            attr_accessor type: Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval::type_
+
+            def initialize: (
+              retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs,
+              type: Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval::type_
+            ) -> void
+
+            def to_hash: -> {
+              retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs,
+              type: Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval::type_
+            }
+
+            type type_ = :retrieval
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              RETRIEVAL: :retrieval
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval::type_]
+            end
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::tool]
+        end
+      end
+    end
+  end
+end

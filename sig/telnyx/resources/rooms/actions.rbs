@@ -1,0 +1,23 @@
+module Telnyx
+  module Resources
+    class Rooms
+      class Actions
+        def generate_join_client_token: (
+          String room_id,
+          ?refresh_token_ttl_secs: Integer,
+          ?token_ttl_secs: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Rooms::ActionGenerateJoinClientTokenResponse
+
+        def refresh_client_token: (
+          String room_id,
+          refresh_token: String,
+          ?token_ttl_secs: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Rooms::ActionRefreshClientTokenResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,48 @@
+module Telnyx
+  module Resources
+    class ExternalConnections
+      class Uploads
+        def create: (
+          String id,
+          number_ids: ::Array[String],
+          ?additional_usages: ::Array[Telnyx::Models::ExternalConnections::UploadCreateParams::additional_usage],
+          ?civic_address_id: String,
+          ?location_id: String,
+          ?usage: Telnyx::Models::ExternalConnections::UploadCreateParams::usage,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ExternalConnections::UploadCreateResponse
+
+        def retrieve: (
+          String ticket_id,
+          id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ExternalConnections::UploadRetrieveResponse
+
+        def list: (
+          String id,
+          ?filter: Telnyx::ExternalConnections::UploadListParams::Filter,
+          ?page: Telnyx::ExternalConnections::UploadListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ExternalConnections::UploadListResponse
+
+        def pending_count: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ExternalConnections::UploadPendingCountResponse
+
+        def refresh_status: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ExternalConnections::UploadRefreshStatusResponse
+
+        def retry_: (
+          String ticket_id,
+          id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ExternalConnections::UploadRetryResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

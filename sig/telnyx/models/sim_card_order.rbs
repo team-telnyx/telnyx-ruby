@@ -1,0 +1,201 @@
+module Telnyx
+  module Models
+    type sim_card_order =
+      {
+        id: String,
+        cost: Telnyx::SimCardOrder::Cost,
+        created_at: String,
+        order_address: Telnyx::SimCardOrder::OrderAddress,
+        quantity: Integer,
+        record_type: String,
+        status: Telnyx::Models::SimCardOrder::status,
+        tracking_url: String,
+        updated_at: String
+      }
+
+    class SimCardOrder < Telnyx::Internal::Type::BaseModel
+      attr_reader cost: Telnyx::SimCardOrder::Cost?
+
+      def cost=: (Telnyx::SimCardOrder::Cost) -> Telnyx::SimCardOrder::Cost
+
+      attr_reader quantity: Integer?
+
+      def quantity=: (Integer) -> Integer
+
+      attr_reader status: Telnyx::Models::SimCardOrder::status?
+
+      def status=: (
+        Telnyx::Models::SimCardOrder::status
+      ) -> Telnyx::Models::SimCardOrder::status
+
+      attr_reader tracking_url: String?
+
+      def tracking_url=: (String) -> String
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader order_address: Telnyx::SimCardOrder::OrderAddress?
+
+      def order_address=: (
+        Telnyx::SimCardOrder::OrderAddress
+      ) -> Telnyx::SimCardOrder::OrderAddress
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?cost: Telnyx::SimCardOrder::Cost,
+        ?created_at: String,
+        ?order_address: Telnyx::SimCardOrder::OrderAddress,
+        ?quantity: Integer,
+        ?record_type: String,
+        ?status: Telnyx::Models::SimCardOrder::status,
+        ?tracking_url: String,
+        ?updated_at: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        cost: Telnyx::SimCardOrder::Cost,
+        created_at: String,
+        order_address: Telnyx::SimCardOrder::OrderAddress,
+        quantity: Integer,
+        record_type: String,
+        status: Telnyx::Models::SimCardOrder::status,
+        tracking_url: String,
+        updated_at: String
+      }
+
+      type cost = { amount: String, currency: String }
+
+      class Cost < Telnyx::Internal::Type::BaseModel
+        attr_reader amount: String?
+
+        def amount=: (String) -> String
+
+        attr_reader currency: String?
+
+        def currency=: (String) -> String
+
+        def initialize: (?amount: String, ?currency: String) -> void
+
+        def to_hash: -> { amount: String, currency: String }
+      end
+
+      type order_address =
+        {
+          id: String,
+          administrative_area: String,
+          business_name: String,
+          country_code: String,
+          extended_address: String,
+          first_name: String,
+          last_name: String,
+          locality: String,
+          postal_code: String,
+          street_address: String
+        }
+
+      class OrderAddress < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader administrative_area: String?
+
+        def administrative_area=: (String) -> String
+
+        attr_reader business_name: String?
+
+        def business_name=: (String) -> String
+
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader extended_address: String?
+
+        def extended_address=: (String) -> String
+
+        attr_reader first_name: String?
+
+        def first_name=: (String) -> String
+
+        attr_reader last_name: String?
+
+        def last_name=: (String) -> String
+
+        attr_reader locality: String?
+
+        def locality=: (String) -> String
+
+        attr_reader postal_code: String?
+
+        def postal_code=: (String) -> String
+
+        attr_reader street_address: String?
+
+        def street_address=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?administrative_area: String,
+          ?business_name: String,
+          ?country_code: String,
+          ?extended_address: String,
+          ?first_name: String,
+          ?last_name: String,
+          ?locality: String,
+          ?postal_code: String,
+          ?street_address: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          administrative_area: String,
+          business_name: String,
+          country_code: String,
+          extended_address: String,
+          first_name: String,
+          last_name: String,
+          locality: String,
+          postal_code: String,
+          street_address: String
+        }
+      end
+
+      type status =
+        :pending
+        | :processing
+        | :ready_to_ship
+        | :shipped
+        | :delivered
+        | :canceled
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        PROCESSING: :processing
+        READY_TO_SHIP: :ready_to_ship
+        SHIPPED: :shipped
+        DELIVERED: :delivered
+        CANCELED: :canceled
+
+        def self?.values: -> ::Array[Telnyx::Models::SimCardOrder::status]
+      end
+    end
+  end
+end

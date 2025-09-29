@@ -1,0 +1,80 @@
+module Telnyx
+  module Models
+    module MessagingProfiles
+      type autoresp_config_list_params =
+        {
+          country_code: String,
+          created_at: Telnyx::MessagingProfiles::AutorespConfigListParams::CreatedAt,
+          updated_at: Telnyx::MessagingProfiles::AutorespConfigListParams::UpdatedAt
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class AutorespConfigListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader created_at: Telnyx::MessagingProfiles::AutorespConfigListParams::CreatedAt?
+
+        def created_at=: (
+          Telnyx::MessagingProfiles::AutorespConfigListParams::CreatedAt
+        ) -> Telnyx::MessagingProfiles::AutorespConfigListParams::CreatedAt
+
+        attr_reader updated_at: Telnyx::MessagingProfiles::AutorespConfigListParams::UpdatedAt?
+
+        def updated_at=: (
+          Telnyx::MessagingProfiles::AutorespConfigListParams::UpdatedAt
+        ) -> Telnyx::MessagingProfiles::AutorespConfigListParams::UpdatedAt
+
+        def initialize: (
+          ?country_code: String,
+          ?created_at: Telnyx::MessagingProfiles::AutorespConfigListParams::CreatedAt,
+          ?updated_at: Telnyx::MessagingProfiles::AutorespConfigListParams::UpdatedAt,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          country_code: String,
+          created_at: Telnyx::MessagingProfiles::AutorespConfigListParams::CreatedAt,
+          updated_at: Telnyx::MessagingProfiles::AutorespConfigListParams::UpdatedAt,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type created_at = { gte: String, lte: String }
+
+        class CreatedAt < Telnyx::Internal::Type::BaseModel
+          attr_reader gte: String?
+
+          def gte=: (String) -> String
+
+          attr_reader lte: String?
+
+          def lte=: (String) -> String
+
+          def initialize: (?gte: String, ?lte: String) -> void
+
+          def to_hash: -> { gte: String, lte: String }
+        end
+
+        type updated_at = { gte: String, lte: String }
+
+        class UpdatedAt < Telnyx::Internal::Type::BaseModel
+          attr_reader gte: String?
+
+          def gte=: (String) -> String
+
+          attr_reader lte: String?
+
+          def lte=: (String) -> String
+
+          def initialize: (?gte: String, ?lte: String) -> void
+
+          def to_hash: -> { gte: String, lte: String }
+        end
+      end
+    end
+  end
+end

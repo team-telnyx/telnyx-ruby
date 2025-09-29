@@ -1,0 +1,44 @@
+module Telnyx
+  module Models
+    type number_pool_settings =
+      {
+        long_code_weight: Float,
+        skip_unhealthy: bool,
+        toll_free_weight: Float,
+        geomatch: bool,
+        sticky_sender: bool
+      }
+
+    class NumberPoolSettings < Telnyx::Internal::Type::BaseModel
+      attr_accessor long_code_weight: Float
+
+      attr_accessor skip_unhealthy: bool
+
+      attr_accessor toll_free_weight: Float
+
+      attr_reader geomatch: bool?
+
+      def geomatch=: (bool) -> bool
+
+      attr_reader sticky_sender: bool?
+
+      def sticky_sender=: (bool) -> bool
+
+      def initialize: (
+        long_code_weight: Float,
+        skip_unhealthy: bool,
+        toll_free_weight: Float,
+        ?geomatch: bool,
+        ?sticky_sender: bool
+      ) -> void
+
+      def to_hash: -> {
+        long_code_weight: Float,
+        skip_unhealthy: bool,
+        toll_free_weight: Float,
+        geomatch: bool,
+        sticky_sender: bool
+      }
+    end
+  end
+end

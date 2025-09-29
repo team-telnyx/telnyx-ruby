@@ -1,0 +1,39 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        type canary_deploy_response =
+          {
+            assistant_id: String,
+            created_at: Time,
+            updated_at: Time,
+            versions: ::Array[Telnyx::AI::Assistants::VersionConfig]
+          }
+
+        class CanaryDeployResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor assistant_id: String
+
+          attr_accessor created_at: Time
+
+          attr_accessor updated_at: Time
+
+          attr_accessor versions: ::Array[Telnyx::AI::Assistants::VersionConfig]
+
+          def initialize: (
+            assistant_id: String,
+            created_at: Time,
+            updated_at: Time,
+            versions: ::Array[Telnyx::AI::Assistants::VersionConfig]
+          ) -> void
+
+          def to_hash: -> {
+            assistant_id: String,
+            created_at: Time,
+            updated_at: Time,
+            versions: ::Array[Telnyx::AI::Assistants::VersionConfig]
+          }
+        end
+      end
+    end
+  end
+end

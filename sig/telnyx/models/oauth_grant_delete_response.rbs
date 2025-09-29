@@ -1,0 +1,72 @@
+module Telnyx
+  module Models
+    type oauth_grant_delete_response =
+      { data: Telnyx::Models::OAuthGrantDeleteResponse::Data }
+
+    class OAuthGrantDeleteResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::OAuthGrantDeleteResponse::Data?
+
+      def data=: (
+        Telnyx::Models::OAuthGrantDeleteResponse::Data
+      ) -> Telnyx::Models::OAuthGrantDeleteResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::OAuthGrantDeleteResponse::Data
+      ) -> void
+
+      def to_hash: -> { data: Telnyx::Models::OAuthGrantDeleteResponse::Data }
+
+      type data =
+        {
+          id: String,
+          client_id: String,
+          created_at: Time,
+          record_type: Telnyx::Models::OAuthGrantDeleteResponse::Data::record_type,
+          scopes: ::Array[String],
+          last_used_at: Time?
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor client_id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor record_type: Telnyx::Models::OAuthGrantDeleteResponse::Data::record_type
+
+        attr_accessor scopes: ::Array[String]
+
+        attr_accessor last_used_at: Time?
+
+        def initialize: (
+          id: String,
+          client_id: String,
+          created_at: Time,
+          record_type: Telnyx::Models::OAuthGrantDeleteResponse::Data::record_type,
+          scopes: ::Array[String],
+          ?last_used_at: Time?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          client_id: String,
+          created_at: Time,
+          record_type: Telnyx::Models::OAuthGrantDeleteResponse::Data::record_type,
+          scopes: ::Array[String],
+          last_used_at: Time?
+        }
+
+        type record_type = :oauth_grant
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          OAUTH_GRANT: :oauth_grant
+
+          def self?.values: -> ::Array[Telnyx::Models::OAuthGrantDeleteResponse::Data::record_type]
+        end
+      end
+    end
+  end
+end

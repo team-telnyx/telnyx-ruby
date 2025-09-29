@@ -1,0 +1,21 @@
+module Telnyx
+  module Resources
+    class Texml
+      class Accounts
+        class Calls
+          class Streams
+            def streaming_sid_json: (
+              String streaming_sid,
+              account_sid: String,
+              call_sid: String,
+              ?status: Telnyx::Models::Texml::Accounts::Calls::StreamStreamingSidJsonParams::status,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Texml::Accounts::Calls::StreamStreamingSidJsonResponse
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

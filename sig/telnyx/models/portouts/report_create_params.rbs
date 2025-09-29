@@ -1,0 +1,43 @@
+module Telnyx
+  module Models
+    module Portouts
+      type report_create_params =
+        {
+          params: Telnyx::Portouts::ExportPortoutsCsvReport,
+          report_type: Telnyx::Models::Portouts::ReportCreateParams::report_type
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ReportCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor params: Telnyx::Portouts::ExportPortoutsCsvReport
+
+        attr_accessor report_type: Telnyx::Models::Portouts::ReportCreateParams::report_type
+
+        def initialize: (
+          params: Telnyx::Portouts::ExportPortoutsCsvReport,
+          report_type: Telnyx::Models::Portouts::ReportCreateParams::report_type,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          params: Telnyx::Portouts::ExportPortoutsCsvReport,
+          report_type: Telnyx::Models::Portouts::ReportCreateParams::report_type,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type report_type = :export_portouts_csv
+
+        module ReportType
+          extend Telnyx::Internal::Type::Enum
+
+          EXPORT_PORTOUTS_CSV: :export_portouts_csv
+
+          def self?.values: -> ::Array[Telnyx::Models::Portouts::ReportCreateParams::report_type]
+        end
+      end
+    end
+  end
+end

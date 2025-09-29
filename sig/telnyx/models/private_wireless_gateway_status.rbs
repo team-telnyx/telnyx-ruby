@@ -1,0 +1,51 @@
+module Telnyx
+  module Models
+    type private_wireless_gateway_status =
+      {
+        error_code: String,
+        error_description: String,
+        value: Telnyx::Models::PrivateWirelessGatewayStatus::value
+      }
+
+    class PrivateWirelessGatewayStatus < Telnyx::Internal::Type::BaseModel
+      attr_reader error_code: String?
+
+      def error_code=: (String) -> String
+
+      attr_reader error_description: String?
+
+      def error_description=: (String) -> String
+
+      attr_reader value: Telnyx::Models::PrivateWirelessGatewayStatus::value?
+
+      def value=: (
+        Telnyx::Models::PrivateWirelessGatewayStatus::value
+      ) -> Telnyx::Models::PrivateWirelessGatewayStatus::value
+
+      def initialize: (
+        ?error_code: String,
+        ?error_description: String,
+        ?value: Telnyx::Models::PrivateWirelessGatewayStatus::value
+      ) -> void
+
+      def to_hash: -> {
+        error_code: String,
+        error_description: String,
+        value: Telnyx::Models::PrivateWirelessGatewayStatus::value
+      }
+
+      type value = :provisioning | :provisioned | :failed | :decommissioning
+
+      module Value
+        extend Telnyx::Internal::Type::Enum
+
+        PROVISIONING: :provisioning
+        PROVISIONED: :provisioned
+        FAILED: :failed
+        DECOMMISSIONING: :decommissioning
+
+        def self?.values: -> ::Array[Telnyx::Models::PrivateWirelessGatewayStatus::value]
+      end
+    end
+  end
+end

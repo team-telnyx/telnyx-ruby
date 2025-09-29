@@ -1,0 +1,287 @@
+module Telnyx
+  module Models
+    type call_event_list_params =
+      {
+        filter: Telnyx::CallEventListParams::Filter,
+        page: Telnyx::CallEventListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class CallEventListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::CallEventListParams::Filter?
+
+      def filter=: (
+        Telnyx::CallEventListParams::Filter
+      ) -> Telnyx::CallEventListParams::Filter
+
+      attr_reader page: Telnyx::CallEventListParams::Page?
+
+      def page=: (
+        Telnyx::CallEventListParams::Page
+      ) -> Telnyx::CallEventListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::CallEventListParams::Filter,
+        ?page: Telnyx::CallEventListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::CallEventListParams::Filter,
+        page: Telnyx::CallEventListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          application_name: Telnyx::CallEventListParams::Filter::ApplicationName,
+          application_session_id: String,
+          connection_id: String,
+          failed: bool,
+          from: String,
+          leg_id: String,
+          name: String,
+          occurred_at: Telnyx::CallEventListParams::Filter::OccurredAt,
+          outbound_outbound_voice_profile_id: String,
+          product: Telnyx::Models::CallEventListParams::Filter::product,
+          status: Telnyx::Models::CallEventListParams::Filter::status,
+          to: String,
+          type: Telnyx::Models::CallEventListParams::Filter::type_
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader application_name: Telnyx::CallEventListParams::Filter::ApplicationName?
+
+        def application_name=: (
+          Telnyx::CallEventListParams::Filter::ApplicationName
+        ) -> Telnyx::CallEventListParams::Filter::ApplicationName
+
+        attr_reader application_session_id: String?
+
+        def application_session_id=: (String) -> String
+
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader failed: bool?
+
+        def failed=: (bool) -> bool
+
+        attr_reader from: String?
+
+        def from=: (String) -> String
+
+        attr_reader leg_id: String?
+
+        def leg_id=: (String) -> String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader occurred_at: Telnyx::CallEventListParams::Filter::OccurredAt?
+
+        def occurred_at=: (
+          Telnyx::CallEventListParams::Filter::OccurredAt
+        ) -> Telnyx::CallEventListParams::Filter::OccurredAt
+
+        attr_reader outbound_outbound_voice_profile_id: String?
+
+        def outbound_outbound_voice_profile_id=: (String) -> String
+
+        attr_reader product: Telnyx::Models::CallEventListParams::Filter::product?
+
+        def product=: (
+          Telnyx::Models::CallEventListParams::Filter::product
+        ) -> Telnyx::Models::CallEventListParams::Filter::product
+
+        attr_reader status: Telnyx::Models::CallEventListParams::Filter::status?
+
+        def status=: (
+          Telnyx::Models::CallEventListParams::Filter::status
+        ) -> Telnyx::Models::CallEventListParams::Filter::status
+
+        attr_reader to: String?
+
+        def to=: (String) -> String
+
+        attr_reader type: Telnyx::Models::CallEventListParams::Filter::type_?
+
+        def type=: (
+          Telnyx::Models::CallEventListParams::Filter::type_
+        ) -> Telnyx::Models::CallEventListParams::Filter::type_
+
+        def initialize: (
+          ?application_name: Telnyx::CallEventListParams::Filter::ApplicationName,
+          ?application_session_id: String,
+          ?connection_id: String,
+          ?failed: bool,
+          ?from: String,
+          ?leg_id: String,
+          ?name: String,
+          ?occurred_at: Telnyx::CallEventListParams::Filter::OccurredAt,
+          ?outbound_outbound_voice_profile_id: String,
+          ?product: Telnyx::Models::CallEventListParams::Filter::product,
+          ?status: Telnyx::Models::CallEventListParams::Filter::status,
+          ?to: String,
+          ?type: Telnyx::Models::CallEventListParams::Filter::type_
+        ) -> void
+
+        def to_hash: -> {
+          application_name: Telnyx::CallEventListParams::Filter::ApplicationName,
+          application_session_id: String,
+          connection_id: String,
+          failed: bool,
+          from: String,
+          leg_id: String,
+          name: String,
+          occurred_at: Telnyx::CallEventListParams::Filter::OccurredAt,
+          outbound_outbound_voice_profile_id: String,
+          product: Telnyx::Models::CallEventListParams::Filter::product,
+          status: Telnyx::Models::CallEventListParams::Filter::status,
+          to: String,
+          type: Telnyx::Models::CallEventListParams::Filter::type_
+        }
+
+        type application_name = { contains: String }
+
+        class ApplicationName < Telnyx::Internal::Type::BaseModel
+          attr_reader contains: String?
+
+          def contains=: (String) -> String
+
+          def initialize: (?contains: String) -> void
+
+          def to_hash: -> { contains: String }
+        end
+
+        type occurred_at =
+          { eq: String, gt: String, gte: String, lt: String, lte: String }
+
+        class OccurredAt < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: String?
+
+          def eq=: (String) -> String
+
+          attr_reader gt: String?
+
+          def gt=: (String) -> String
+
+          attr_reader gte: String?
+
+          def gte=: (String) -> String
+
+          attr_reader lt: String?
+
+          def lt=: (String) -> String
+
+          attr_reader lte: String?
+
+          def lte=: (String) -> String
+
+          def initialize: (
+            ?eq: String,
+            ?gt: String,
+            ?gte: String,
+            ?lt: String,
+            ?lte: String
+          ) -> void
+
+          def to_hash: -> {
+            eq: String,
+            gt: String,
+            gte: String,
+            lt: String,
+            lte: String
+          }
+        end
+
+        type product = :call_control | :fax | :texml
+
+        module Product
+          extend Telnyx::Internal::Type::Enum
+
+          CALL_CONTROL: :call_control
+          FAX: :fax
+          TEXML: :texml
+
+          def self?.values: -> ::Array[Telnyx::Models::CallEventListParams::Filter::product]
+        end
+
+        type status = :init | :in_progress | :completed
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          INIT: :init
+          IN_PROGRESS: :in_progress
+          COMPLETED: :completed
+
+          def self?.values: -> ::Array[Telnyx::Models::CallEventListParams::Filter::status]
+        end
+
+        type type_ = :command | :webhook
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          COMMAND: :command
+          WEBHOOK: :webhook
+
+          def self?.values: -> ::Array[Telnyx::Models::CallEventListParams::Filter::type_]
+        end
+      end
+
+      type page =
+        {
+          after: String,
+          before: String,
+          limit: Integer,
+          number: Integer,
+          size: Integer
+        }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader after: String?
+
+        def after=: (String) -> String
+
+        attr_reader before: String?
+
+        def before=: (String) -> String
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (
+          ?after: String,
+          ?before: String,
+          ?limit: Integer,
+          ?number: Integer,
+          ?size: Integer
+        ) -> void
+
+        def to_hash: -> {
+          after: String,
+          before: String,
+          limit: Integer,
+          number: Integer,
+          size: Integer
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,116 @@
+module Telnyx
+  module Models
+    type external_connection_create_params =
+      {
+        external_sip_connection: Telnyx::Models::ExternalConnectionCreateParams::external_sip_connection,
+        outbound: Telnyx::ExternalConnectionCreateParams::Outbound,
+        active: bool,
+        inbound: Telnyx::ExternalConnectionCreateParams::Inbound,
+        tags: ::Array[String],
+        webhook_event_failover_url: String?,
+        webhook_event_url: String,
+        webhook_timeout_secs: Integer?
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class ExternalConnectionCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor external_sip_connection: Telnyx::Models::ExternalConnectionCreateParams::external_sip_connection
+
+      attr_accessor outbound: Telnyx::ExternalConnectionCreateParams::Outbound
+
+      attr_reader active: bool?
+
+      def active=: (bool) -> bool
+
+      attr_reader inbound: Telnyx::ExternalConnectionCreateParams::Inbound?
+
+      def inbound=: (
+        Telnyx::ExternalConnectionCreateParams::Inbound
+      ) -> Telnyx::ExternalConnectionCreateParams::Inbound
+
+      attr_reader tags: ::Array[String]?
+
+      def tags=: (::Array[String]) -> ::Array[String]
+
+      attr_accessor webhook_event_failover_url: String?
+
+      attr_reader webhook_event_url: String?
+
+      def webhook_event_url=: (String) -> String
+
+      attr_accessor webhook_timeout_secs: Integer?
+
+      def initialize: (
+        external_sip_connection: Telnyx::Models::ExternalConnectionCreateParams::external_sip_connection,
+        outbound: Telnyx::ExternalConnectionCreateParams::Outbound,
+        ?active: bool,
+        ?inbound: Telnyx::ExternalConnectionCreateParams::Inbound,
+        ?tags: ::Array[String],
+        ?webhook_event_failover_url: String?,
+        ?webhook_event_url: String,
+        ?webhook_timeout_secs: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        external_sip_connection: Telnyx::Models::ExternalConnectionCreateParams::external_sip_connection,
+        outbound: Telnyx::ExternalConnectionCreateParams::Outbound,
+        active: bool,
+        inbound: Telnyx::ExternalConnectionCreateParams::Inbound,
+        tags: ::Array[String],
+        webhook_event_failover_url: String?,
+        webhook_event_url: String,
+        webhook_timeout_secs: Integer?,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type external_sip_connection = :zoom
+
+      module ExternalSipConnection
+        extend Telnyx::Internal::Type::Enum
+
+        ZOOM: :zoom
+
+        def self?.values: -> ::Array[Telnyx::Models::ExternalConnectionCreateParams::external_sip_connection]
+      end
+
+      type outbound =
+        { channel_limit: Integer, outbound_voice_profile_id: String }
+
+      class Outbound < Telnyx::Internal::Type::BaseModel
+        attr_reader channel_limit: Integer?
+
+        def channel_limit=: (Integer) -> Integer
+
+        attr_reader outbound_voice_profile_id: String?
+
+        def outbound_voice_profile_id=: (String) -> String
+
+        def initialize: (
+          ?channel_limit: Integer,
+          ?outbound_voice_profile_id: String
+        ) -> void
+
+        def to_hash: -> {
+          channel_limit: Integer,
+          outbound_voice_profile_id: String
+        }
+      end
+
+      type inbound = { channel_limit: Integer }
+
+      class Inbound < Telnyx::Internal::Type::BaseModel
+        attr_reader channel_limit: Integer?
+
+        def channel_limit=: (Integer) -> Integer
+
+        def initialize: (?channel_limit: Integer) -> void
+
+        def to_hash: -> { channel_limit: Integer }
+      end
+    end
+  end
+end

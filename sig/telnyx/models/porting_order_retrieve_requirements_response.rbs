@@ -1,0 +1,147 @@
+module Telnyx
+  module Models
+    type porting_order_retrieve_requirements_response =
+      {
+        data: ::Array[Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class PortingOrderRetrieveRequirementsResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data]
+      ) -> ::Array[Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+      type data =
+        {
+          field_type: Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data::field_type,
+          field_value: String,
+          record_type: String,
+          requirement_status: String,
+          requirement_type: Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data::RequirementType
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader field_type: Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data::field_type?
+
+        def field_type=: (
+          Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data::field_type
+        ) -> Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data::field_type
+
+        attr_reader field_value: String?
+
+        def field_value=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader requirement_status: String?
+
+        def requirement_status=: (String) -> String
+
+        attr_reader requirement_type: Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data::RequirementType?
+
+        def requirement_type=: (
+          Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data::RequirementType
+        ) -> Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data::RequirementType
+
+        def initialize: (
+          ?field_type: Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data::field_type,
+          ?field_value: String,
+          ?record_type: String,
+          ?requirement_status: String,
+          ?requirement_type: Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data::RequirementType
+        ) -> void
+
+        def to_hash: -> {
+          field_type: Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data::field_type,
+          field_value: String,
+          record_type: String,
+          requirement_status: String,
+          requirement_type: Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data::RequirementType
+        }
+
+        type field_type = :document | :textual
+
+        module FieldType
+          extend Telnyx::Internal::Type::Enum
+
+          DOCUMENT: :document
+          TEXTUAL: :textual
+
+          def self?.values: -> ::Array[Telnyx::Models::PortingOrderRetrieveRequirementsResponse::Data::field_type]
+        end
+
+        type requirement_type =
+          {
+            id: String,
+            acceptance_criteria: ::Hash[Symbol, top],
+            description: String,
+            example: String,
+            name: String,
+            type: String
+          }
+
+        class RequirementType < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader acceptance_criteria: ::Hash[Symbol, top]?
+
+          def acceptance_criteria=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
+          attr_reader example: String?
+
+          def example=: (String) -> String
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader type: String?
+
+          def type=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?acceptance_criteria: ::Hash[Symbol, top],
+            ?description: String,
+            ?example: String,
+            ?name: String,
+            ?type: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            acceptance_criteria: ::Hash[Symbol, top],
+            description: String,
+            example: String,
+            name: String,
+            type: String
+          }
+        end
+      end
+    end
+  end
+end

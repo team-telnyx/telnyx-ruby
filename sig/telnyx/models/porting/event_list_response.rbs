@@ -1,0 +1,538 @@
+module Telnyx
+  module Models
+    module Porting
+      type event_list_response =
+        {
+          data: ::Array[Telnyx::Models::Porting::EventListResponse::Data],
+          meta: Telnyx::PaginationMeta
+        }
+
+      class EventListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::Models::Porting::EventListResponse::Data]?
+
+        def data=: (
+          ::Array[Telnyx::Models::Porting::EventListResponse::Data]
+        ) -> ::Array[Telnyx::Models::Porting::EventListResponse::Data]
+
+        attr_reader meta: Telnyx::PaginationMeta?
+
+        def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+        def initialize: (
+          ?data: ::Array[Telnyx::Models::Porting::EventListResponse::Data],
+          ?meta: Telnyx::PaginationMeta
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Models::Porting::EventListResponse::Data],
+          meta: Telnyx::PaginationMeta
+        }
+
+        type data =
+          {
+            id: String,
+            available_notification_methods: ::Array[Telnyx::Models::Porting::EventListResponse::Data::available_notification_method],
+            created_at: Time,
+            event_type: Telnyx::Models::Porting::EventListResponse::Data::event_type,
+            payload: Telnyx::Models::Porting::EventListResponse::Data::payload,
+            payload_status: Telnyx::Models::Porting::EventListResponse::Data::payload_status,
+            porting_order_id: String,
+            record_type: String,
+            updated_at: Time
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader available_notification_methods: ::Array[Telnyx::Models::Porting::EventListResponse::Data::available_notification_method]?
+
+          def available_notification_methods=: (
+            ::Array[Telnyx::Models::Porting::EventListResponse::Data::available_notification_method]
+          ) -> ::Array[Telnyx::Models::Porting::EventListResponse::Data::available_notification_method]
+
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader event_type: Telnyx::Models::Porting::EventListResponse::Data::event_type?
+
+          def event_type=: (
+            Telnyx::Models::Porting::EventListResponse::Data::event_type
+          ) -> Telnyx::Models::Porting::EventListResponse::Data::event_type
+
+          attr_reader payload: Telnyx::Models::Porting::EventListResponse::Data::payload?
+
+          def payload=: (
+            Telnyx::Models::Porting::EventListResponse::Data::payload
+          ) -> Telnyx::Models::Porting::EventListResponse::Data::payload
+
+          attr_reader payload_status: Telnyx::Models::Porting::EventListResponse::Data::payload_status?
+
+          def payload_status=: (
+            Telnyx::Models::Porting::EventListResponse::Data::payload_status
+          ) -> Telnyx::Models::Porting::EventListResponse::Data::payload_status
+
+          attr_reader porting_order_id: String?
+
+          def porting_order_id=: (String) -> String
+
+          attr_reader updated_at: Time?
+
+          def updated_at=: (Time) -> Time
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?available_notification_methods: ::Array[Telnyx::Models::Porting::EventListResponse::Data::available_notification_method],
+            ?created_at: Time,
+            ?event_type: Telnyx::Models::Porting::EventListResponse::Data::event_type,
+            ?payload: Telnyx::Models::Porting::EventListResponse::Data::payload,
+            ?payload_status: Telnyx::Models::Porting::EventListResponse::Data::payload_status,
+            ?porting_order_id: String,
+            ?record_type: String,
+            ?updated_at: Time
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            available_notification_methods: ::Array[Telnyx::Models::Porting::EventListResponse::Data::available_notification_method],
+            created_at: Time,
+            event_type: Telnyx::Models::Porting::EventListResponse::Data::event_type,
+            payload: Telnyx::Models::Porting::EventListResponse::Data::payload,
+            payload_status: Telnyx::Models::Porting::EventListResponse::Data::payload_status,
+            porting_order_id: String,
+            record_type: String,
+            updated_at: Time
+          }
+
+          type available_notification_method = :email | :webhook | :webhook_v1
+
+          module AvailableNotificationMethod
+            extend Telnyx::Internal::Type::Enum
+
+            EMAIL: :email
+            WEBHOOK: :webhook
+            WEBHOOK_V1: :webhook_v1
+
+            def self?.values: -> ::Array[Telnyx::Models::Porting::EventListResponse::Data::available_notification_method]
+          end
+
+          type event_type =
+            :"porting_order.deleted"
+            | :"porting_order.loa_updated"
+            | :"porting_order.messaging_changed"
+            | :"porting_order.status_changed"
+            | :"porting_order.sharing_token_expired"
+            | :"porting_order.new_comment"
+            | :"porting_order.split"
+
+          module EventType
+            extend Telnyx::Internal::Type::Enum
+
+            PORTING_ORDER_DELETED: :"porting_order.deleted"
+            PORTING_ORDER_LOA_UPDATED: :"porting_order.loa_updated"
+            PORTING_ORDER_MESSAGING_CHANGED: :"porting_order.messaging_changed"
+            PORTING_ORDER_STATUS_CHANGED: :"porting_order.status_changed"
+            PORTING_ORDER_SHARING_TOKEN_EXPIRED: :"porting_order.sharing_token_expired"
+            PORTING_ORDER_NEW_COMMENT: :"porting_order.new_comment"
+            PORTING_ORDER_SPLIT: :"porting_order.split"
+
+            def self?.values: -> ::Array[Telnyx::Models::Porting::EventListResponse::Data::event_type]
+          end
+
+          type payload =
+            Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderDeletedPayload
+            | Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderMessagingChangedPayload
+            | Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderStatusChangedPayload
+            | Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderNewCommentPayload
+            | Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload
+
+          module Payload
+            extend Telnyx::Internal::Type::Union
+
+            type webhook_porting_order_deleted_payload =
+              { id: String, customer_reference: String, deleted_at: Time }
+
+            class WebhookPortingOrderDeletedPayload < Telnyx::Internal::Type::BaseModel
+              attr_reader id: String?
+
+              def id=: (String) -> String
+
+              attr_reader customer_reference: String?
+
+              def customer_reference=: (String) -> String
+
+              attr_reader deleted_at: Time?
+
+              def deleted_at=: (Time) -> Time
+
+              def initialize: (
+                ?id: String,
+                ?customer_reference: String,
+                ?deleted_at: Time
+              ) -> void
+
+              def to_hash: -> {
+                id: String,
+                customer_reference: String,
+                deleted_at: Time
+              }
+            end
+
+            type webhook_porting_order_messaging_changed_payload =
+              {
+                id: String,
+                customer_reference: String,
+                messaging: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging,
+                support_key: String
+              }
+
+            class WebhookPortingOrderMessagingChangedPayload < Telnyx::Internal::Type::BaseModel
+              attr_reader id: String?
+
+              def id=: (String) -> String
+
+              attr_reader customer_reference: String?
+
+              def customer_reference=: (String) -> String
+
+              attr_reader messaging: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging?
+
+              def messaging=: (
+                Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging
+              ) -> Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging
+
+              attr_reader support_key: String?
+
+              def support_key=: (String) -> String
+
+              def initialize: (
+                ?id: String,
+                ?customer_reference: String,
+                ?messaging: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging,
+                ?support_key: String
+              ) -> void
+
+              def to_hash: -> {
+                id: String,
+                customer_reference: String,
+                messaging: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging,
+                support_key: String
+              }
+
+              type messaging =
+                {
+                  enable_messaging: bool,
+                  messaging_capable: bool,
+                  messaging_port_completed: bool,
+                  messaging_port_status: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging::messaging_port_status
+                }
+
+              class Messaging < Telnyx::Internal::Type::BaseModel
+                attr_reader enable_messaging: bool?
+
+                def enable_messaging=: (bool) -> bool
+
+                attr_reader messaging_capable: bool?
+
+                def messaging_capable=: (bool) -> bool
+
+                attr_reader messaging_port_completed: bool?
+
+                def messaging_port_completed=: (bool) -> bool
+
+                attr_reader messaging_port_status: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging::messaging_port_status?
+
+                def messaging_port_status=: (
+                  Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging::messaging_port_status
+                ) -> Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging::messaging_port_status
+
+                def initialize: (
+                  ?enable_messaging: bool,
+                  ?messaging_capable: bool,
+                  ?messaging_port_completed: bool,
+                  ?messaging_port_status: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging::messaging_port_status
+                ) -> void
+
+                def to_hash: -> {
+                  enable_messaging: bool,
+                  messaging_capable: bool,
+                  messaging_port_completed: bool,
+                  messaging_port_status: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging::messaging_port_status
+                }
+
+                type messaging_port_status =
+                  :not_applicable
+                  | :pending
+                  | :activating
+                  | :exception
+                  | :canceled
+                  | :partial_port_complete
+                  | :ported
+
+                module MessagingPortStatus
+                  extend Telnyx::Internal::Type::Enum
+
+                  NOT_APPLICABLE: :not_applicable
+                  PENDING: :pending
+                  ACTIVATING: :activating
+                  EXCEPTION: :exception
+                  CANCELED: :canceled
+                  PARTIAL_PORT_COMPLETE: :partial_port_complete
+                  PORTED: :ported
+
+                  def self?.values: -> ::Array[Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging::messaging_port_status]
+                end
+              end
+            end
+
+            type webhook_porting_order_status_changed_payload =
+              {
+                id: String,
+                customer_reference: String,
+                status: Telnyx::PortingOrderStatus,
+                support_key: String,
+                updated_at: Time,
+                webhook_url: String
+              }
+
+            class WebhookPortingOrderStatusChangedPayload < Telnyx::Internal::Type::BaseModel
+              attr_reader id: String?
+
+              def id=: (String) -> String
+
+              attr_reader customer_reference: String?
+
+              def customer_reference=: (String) -> String
+
+              attr_reader status: Telnyx::PortingOrderStatus?
+
+              def status=: (
+                Telnyx::PortingOrderStatus
+              ) -> Telnyx::PortingOrderStatus
+
+              attr_reader support_key: String?
+
+              def support_key=: (String) -> String
+
+              attr_reader updated_at: Time?
+
+              def updated_at=: (Time) -> Time
+
+              attr_reader webhook_url: String?
+
+              def webhook_url=: (String) -> String
+
+              def initialize: (
+                ?id: String,
+                ?customer_reference: String,
+                ?status: Telnyx::PortingOrderStatus,
+                ?support_key: String,
+                ?updated_at: Time,
+                ?webhook_url: String
+              ) -> void
+
+              def to_hash: -> {
+                id: String,
+                customer_reference: String,
+                status: Telnyx::PortingOrderStatus,
+                support_key: String,
+                updated_at: Time,
+                webhook_url: String
+              }
+            end
+
+            type webhook_porting_order_new_comment_payload =
+              {
+                comment: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderNewCommentPayload::Comment,
+                porting_order_id: String,
+                support_key: String
+              }
+
+            class WebhookPortingOrderNewCommentPayload < Telnyx::Internal::Type::BaseModel
+              attr_reader comment: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderNewCommentPayload::Comment?
+
+              def comment=: (
+                Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderNewCommentPayload::Comment
+              ) -> Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderNewCommentPayload::Comment
+
+              attr_reader porting_order_id: String?
+
+              def porting_order_id=: (String) -> String
+
+              attr_reader support_key: String?
+
+              def support_key=: (String) -> String
+
+              def initialize: (
+                ?comment: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderNewCommentPayload::Comment,
+                ?porting_order_id: String,
+                ?support_key: String
+              ) -> void
+
+              def to_hash: -> {
+                comment: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderNewCommentPayload::Comment,
+                porting_order_id: String,
+                support_key: String
+              }
+
+              type comment =
+                {
+                  id: String,
+                  body: String,
+                  inserted_at: Time,
+                  user_id: String,
+                  user_type: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderNewCommentPayload::Comment::user_type
+                }
+
+              class Comment < Telnyx::Internal::Type::BaseModel
+                attr_reader id: String?
+
+                def id=: (String) -> String
+
+                attr_reader body: String?
+
+                def body=: (String) -> String
+
+                attr_reader inserted_at: Time?
+
+                def inserted_at=: (Time) -> Time
+
+                attr_reader user_id: String?
+
+                def user_id=: (String) -> String
+
+                attr_reader user_type: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderNewCommentPayload::Comment::user_type?
+
+                def user_type=: (
+                  Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderNewCommentPayload::Comment::user_type
+                ) -> Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderNewCommentPayload::Comment::user_type
+
+                def initialize: (
+                  ?id: String,
+                  ?body: String,
+                  ?inserted_at: Time,
+                  ?user_id: String,
+                  ?user_type: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderNewCommentPayload::Comment::user_type
+                ) -> void
+
+                def to_hash: -> {
+                  id: String,
+                  body: String,
+                  inserted_at: Time,
+                  user_id: String,
+                  user_type: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderNewCommentPayload::Comment::user_type
+                }
+
+                type user_type = :user | :admin | :system
+
+                module UserType
+                  extend Telnyx::Internal::Type::Enum
+
+                  USER: :user
+                  ADMIN: :admin
+                  SYSTEM: :system
+
+                  def self?.values: -> ::Array[Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderNewCommentPayload::Comment::user_type]
+                end
+              end
+            end
+
+            type webhook_porting_order_split_payload =
+              {
+                from: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload::From,
+                porting_phone_numbers: ::Array[Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload::PortingPhoneNumber],
+                to: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload::To
+              }
+
+            class WebhookPortingOrderSplitPayload < Telnyx::Internal::Type::BaseModel
+              attr_reader from: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload::From?
+
+              def from=: (
+                Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload::From
+              ) -> Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload::From
+
+              attr_reader porting_phone_numbers: ::Array[Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload::PortingPhoneNumber]?
+
+              def porting_phone_numbers=: (
+                ::Array[Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload::PortingPhoneNumber]
+              ) -> ::Array[Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload::PortingPhoneNumber]
+
+              attr_reader to: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload::To?
+
+              def to=: (
+                Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload::To
+              ) -> Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload::To
+
+              def initialize: (
+                ?from: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload::From,
+                ?porting_phone_numbers: ::Array[Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload::PortingPhoneNumber],
+                ?to: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload::To
+              ) -> void
+
+              def to_hash: -> {
+                from: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload::From,
+                porting_phone_numbers: ::Array[Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload::PortingPhoneNumber],
+                to: Telnyx::Models::Porting::EventListResponse::Data::Payload::WebhookPortingOrderSplitPayload::To
+              }
+
+              type from = { id: String }
+
+              class From < Telnyx::Internal::Type::BaseModel
+                attr_reader id: String?
+
+                def id=: (String) -> String
+
+                def initialize: (?id: String) -> void
+
+                def to_hash: -> { id: String }
+              end
+
+              type porting_phone_number = { id: String }
+
+              class PortingPhoneNumber < Telnyx::Internal::Type::BaseModel
+                attr_reader id: String?
+
+                def id=: (String) -> String
+
+                def initialize: (?id: String) -> void
+
+                def to_hash: -> { id: String }
+              end
+
+              type to = { id: String }
+
+              class To < Telnyx::Internal::Type::BaseModel
+                attr_reader id: String?
+
+                def id=: (String) -> String
+
+                def initialize: (?id: String) -> void
+
+                def to_hash: -> { id: String }
+              end
+            end
+
+            def self?.variants: -> ::Array[Telnyx::Models::Porting::EventListResponse::Data::payload]
+          end
+
+          type payload_status = :created | :completed
+
+          module PayloadStatus
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED: :created
+            COMPLETED: :completed
+
+            def self?.values: -> ::Array[Telnyx::Models::Porting::EventListResponse::Data::payload_status]
+          end
+        end
+      end
+    end
+  end
+end

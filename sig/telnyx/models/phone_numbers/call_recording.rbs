@@ -1,0 +1,64 @@
+module Telnyx
+  module Models
+    module PhoneNumbers
+      type call_recording =
+        {
+          inbound_call_recording_channels: Telnyx::Models::PhoneNumbers::CallRecording::inbound_call_recording_channels,
+          inbound_call_recording_enabled: bool,
+          inbound_call_recording_format: Telnyx::Models::PhoneNumbers::CallRecording::inbound_call_recording_format
+        }
+
+      class CallRecording < Telnyx::Internal::Type::BaseModel
+        attr_reader inbound_call_recording_channels: Telnyx::Models::PhoneNumbers::CallRecording::inbound_call_recording_channels?
+
+        def inbound_call_recording_channels=: (
+          Telnyx::Models::PhoneNumbers::CallRecording::inbound_call_recording_channels
+        ) -> Telnyx::Models::PhoneNumbers::CallRecording::inbound_call_recording_channels
+
+        attr_reader inbound_call_recording_enabled: bool?
+
+        def inbound_call_recording_enabled=: (bool) -> bool
+
+        attr_reader inbound_call_recording_format: Telnyx::Models::PhoneNumbers::CallRecording::inbound_call_recording_format?
+
+        def inbound_call_recording_format=: (
+          Telnyx::Models::PhoneNumbers::CallRecording::inbound_call_recording_format
+        ) -> Telnyx::Models::PhoneNumbers::CallRecording::inbound_call_recording_format
+
+        def initialize: (
+          ?inbound_call_recording_channels: Telnyx::Models::PhoneNumbers::CallRecording::inbound_call_recording_channels,
+          ?inbound_call_recording_enabled: bool,
+          ?inbound_call_recording_format: Telnyx::Models::PhoneNumbers::CallRecording::inbound_call_recording_format
+        ) -> void
+
+        def to_hash: -> {
+          inbound_call_recording_channels: Telnyx::Models::PhoneNumbers::CallRecording::inbound_call_recording_channels,
+          inbound_call_recording_enabled: bool,
+          inbound_call_recording_format: Telnyx::Models::PhoneNumbers::CallRecording::inbound_call_recording_format
+        }
+
+        type inbound_call_recording_channels = :single | :dual
+
+        module InboundCallRecordingChannels
+          extend Telnyx::Internal::Type::Enum
+
+          SINGLE: :single
+          DUAL: :dual
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::CallRecording::inbound_call_recording_channels]
+        end
+
+        type inbound_call_recording_format = :wav | :mp3
+
+        module InboundCallRecordingFormat
+          extend Telnyx::Internal::Type::Enum
+
+          WAV: :wav
+          MP3: :mp3
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::CallRecording::inbound_call_recording_format]
+        end
+      end
+    end
+  end
+end

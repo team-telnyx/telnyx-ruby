@@ -1,0 +1,62 @@
+module Telnyx
+  module Models
+    type api_error =
+      {
+        code: String,
+        title: String,
+        detail: String,
+        meta: ::Hash[Symbol, top],
+        source: Telnyx::APIError::Source
+      }
+
+    class APIError < Telnyx::Internal::Type::BaseModel
+      attr_accessor code: String
+
+      attr_accessor title: String
+
+      attr_reader detail: String?
+
+      def detail=: (String) -> String
+
+      attr_reader meta: ::Hash[Symbol, top]?
+
+      def meta=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+      attr_reader source: Telnyx::APIError::Source?
+
+      def source=: (Telnyx::APIError::Source) -> Telnyx::APIError::Source
+
+      def initialize: (
+        code: String,
+        title: String,
+        ?detail: String,
+        ?meta: ::Hash[Symbol, top],
+        ?source: Telnyx::APIError::Source
+      ) -> void
+
+      def to_hash: -> {
+        code: String,
+        title: String,
+        detail: String,
+        meta: ::Hash[Symbol, top],
+        source: Telnyx::APIError::Source
+      }
+
+      type source = { parameter: String, pointer: String }
+
+      class Source < Telnyx::Internal::Type::BaseModel
+        attr_reader parameter: String?
+
+        def parameter=: (String) -> String
+
+        attr_reader pointer: String?
+
+        def pointer=: (String) -> String
+
+        def initialize: (?parameter: String, ?pointer: String) -> void
+
+        def to_hash: -> { parameter: String, pointer: String }
+      end
+    end
+  end
+end

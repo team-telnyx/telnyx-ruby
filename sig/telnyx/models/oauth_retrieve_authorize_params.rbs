@@ -1,0 +1,87 @@
+module Telnyx
+  module Models
+    type oauth_retrieve_authorize_params =
+      {
+        client_id: String,
+        redirect_uri: String,
+        response_type: Telnyx::Models::OAuthRetrieveAuthorizeParams::response_type,
+        code_challenge: String,
+        code_challenge_method: Telnyx::Models::OAuthRetrieveAuthorizeParams::code_challenge_method,
+        scope: String,
+        state: String
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class OAuthRetrieveAuthorizeParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor client_id: String
+
+      attr_accessor redirect_uri: String
+
+      attr_accessor response_type: Telnyx::Models::OAuthRetrieveAuthorizeParams::response_type
+
+      attr_reader code_challenge: String?
+
+      def code_challenge=: (String) -> String
+
+      attr_reader code_challenge_method: Telnyx::Models::OAuthRetrieveAuthorizeParams::code_challenge_method?
+
+      def code_challenge_method=: (
+        Telnyx::Models::OAuthRetrieveAuthorizeParams::code_challenge_method
+      ) -> Telnyx::Models::OAuthRetrieveAuthorizeParams::code_challenge_method
+
+      attr_reader scope: String?
+
+      def scope=: (String) -> String
+
+      attr_reader state: String?
+
+      def state=: (String) -> String
+
+      def initialize: (
+        client_id: String,
+        redirect_uri: String,
+        response_type: Telnyx::Models::OAuthRetrieveAuthorizeParams::response_type,
+        ?code_challenge: String,
+        ?code_challenge_method: Telnyx::Models::OAuthRetrieveAuthorizeParams::code_challenge_method,
+        ?scope: String,
+        ?state: String,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        client_id: String,
+        redirect_uri: String,
+        response_type: Telnyx::Models::OAuthRetrieveAuthorizeParams::response_type,
+        code_challenge: String,
+        code_challenge_method: Telnyx::Models::OAuthRetrieveAuthorizeParams::code_challenge_method,
+        scope: String,
+        state: String,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type response_type = :code
+
+      module ResponseType
+        extend Telnyx::Internal::Type::Enum
+
+        CODE: :code
+
+        def self?.values: -> ::Array[Telnyx::Models::OAuthRetrieveAuthorizeParams::response_type]
+      end
+
+      type code_challenge_method = :plain | :S256
+
+      module CodeChallengeMethod
+        extend Telnyx::Internal::Type::Enum
+
+        PLAIN: :plain
+        S256: :S256
+
+        def self?.values: -> ::Array[Telnyx::Models::OAuthRetrieveAuthorizeParams::code_challenge_method]
+      end
+    end
+  end
+end

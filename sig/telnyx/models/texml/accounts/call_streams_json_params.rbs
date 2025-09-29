@@ -1,0 +1,133 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        type call_streams_json_params =
+          {
+            account_sid: String,
+            bidirectional_codec: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_codec,
+            bidirectional_mode: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_mode,
+            name: String,
+            status_callback: String,
+            status_callback_method: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::status_callback_method,
+            track: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::track,
+            url: String
+          }
+          & Telnyx::Internal::Type::request_parameters
+
+        class CallStreamsJsonParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor account_sid: String
+
+          attr_reader bidirectional_codec: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_codec?
+
+          def bidirectional_codec=: (
+            Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_codec
+          ) -> Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_codec
+
+          attr_reader bidirectional_mode: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_mode?
+
+          def bidirectional_mode=: (
+            Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_mode
+          ) -> Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_mode
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader status_callback: String?
+
+          def status_callback=: (String) -> String
+
+          attr_reader status_callback_method: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::status_callback_method?
+
+          def status_callback_method=: (
+            Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::status_callback_method
+          ) -> Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::status_callback_method
+
+          attr_reader track: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::track?
+
+          def track=: (
+            Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::track
+          ) -> Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::track
+
+          attr_reader url: String?
+
+          def url=: (String) -> String
+
+          def initialize: (
+            account_sid: String,
+            ?bidirectional_codec: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_codec,
+            ?bidirectional_mode: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_mode,
+            ?name: String,
+            ?status_callback: String,
+            ?status_callback_method: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::status_callback_method,
+            ?track: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::track,
+            ?url: String,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            account_sid: String,
+            bidirectional_codec: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_codec,
+            bidirectional_mode: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_mode,
+            name: String,
+            status_callback: String,
+            status_callback_method: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::status_callback_method,
+            track: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::track,
+            url: String,
+            request_options: Telnyx::RequestOptions
+          }
+
+          type bidirectional_codec = :PCMU | :PCMA | :G722
+
+          module BidirectionalCodec
+            extend Telnyx::Internal::Type::Enum
+
+            PCMU: :PCMU
+            PCMA: :PCMA
+            G722: :G722
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_codec]
+          end
+
+          type bidirectional_mode = :mp3 | :rtp
+
+          module BidirectionalMode
+            extend Telnyx::Internal::Type::Enum
+
+            MP3: :mp3
+            RTP: :rtp
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_mode]
+          end
+
+          type status_callback_method = :GET | :POST
+
+          module StatusCallbackMethod
+            extend Telnyx::Internal::Type::Enum
+
+            GET: :GET
+            POST: :POST
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::status_callback_method]
+          end
+
+          type track = :inbound_track | :outbound_track | :both_tracks
+
+          module Track
+            extend Telnyx::Internal::Type::Enum
+
+            INBOUND_TRACK: :inbound_track
+            OUTBOUND_TRACK: :outbound_track
+            BOTH_TRACKS: :both_tracks
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::track]
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,125 @@
+module Telnyx
+  module Models
+    type verification =
+      {
+        id: String,
+        created_at: String,
+        custom_code: String?,
+        phone_number: String,
+        record_type: Telnyx::Models::Verification::record_type,
+        status: Telnyx::Models::Verification::status,
+        timeout_secs: Integer,
+        type: Telnyx::Models::Verification::type_,
+        updated_at: String,
+        verify_profile_id: String
+      }
+
+    class Verification < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_accessor custom_code: String?
+
+      attr_reader phone_number: String?
+
+      def phone_number=: (String) -> String
+
+      attr_reader record_type: Telnyx::Models::Verification::record_type?
+
+      def record_type=: (
+        Telnyx::Models::Verification::record_type
+      ) -> Telnyx::Models::Verification::record_type
+
+      attr_reader status: Telnyx::Models::Verification::status?
+
+      def status=: (
+        Telnyx::Models::Verification::status
+      ) -> Telnyx::Models::Verification::status
+
+      attr_reader timeout_secs: Integer?
+
+      def timeout_secs=: (Integer) -> Integer
+
+      attr_reader type: Telnyx::Models::Verification::type_?
+
+      def type=: (
+        Telnyx::Models::Verification::type_
+      ) -> Telnyx::Models::Verification::type_
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      attr_reader verify_profile_id: String?
+
+      def verify_profile_id=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?created_at: String,
+        ?custom_code: String?,
+        ?phone_number: String,
+        ?record_type: Telnyx::Models::Verification::record_type,
+        ?status: Telnyx::Models::Verification::status,
+        ?timeout_secs: Integer,
+        ?type: Telnyx::Models::Verification::type_,
+        ?updated_at: String,
+        ?verify_profile_id: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: String,
+        custom_code: String?,
+        phone_number: String,
+        record_type: Telnyx::Models::Verification::record_type,
+        status: Telnyx::Models::Verification::status,
+        timeout_secs: Integer,
+        type: Telnyx::Models::Verification::type_,
+        updated_at: String,
+        verify_profile_id: String
+      }
+
+      type record_type = :verification
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        VERIFICATION: :verification
+
+        def self?.values: -> ::Array[Telnyx::Models::Verification::record_type]
+      end
+
+      type status = :pending | :accepted | :invalid | :expired | :error
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        ACCEPTED: :accepted
+        INVALID: :invalid
+        EXPIRED: :expired
+        ERROR: :error
+
+        def self?.values: -> ::Array[Telnyx::Models::Verification::status]
+      end
+
+      type type_ = :sms | :call | :flashcall
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        SMS: :sms
+        CALL: :call
+        FLASHCALL: :flashcall
+
+        def self?.values: -> ::Array[Telnyx::Models::Verification::type_]
+      end
+    end
+  end
+end

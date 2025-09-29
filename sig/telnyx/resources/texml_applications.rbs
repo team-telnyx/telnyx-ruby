@@ -1,0 +1,61 @@
+module Telnyx
+  module Resources
+    class TexmlApplications
+      def create: (
+        friendly_name: String,
+        voice_url: String,
+        ?active: bool,
+        ?anchorsite_override: Telnyx::Models::anchorsite_override,
+        ?dtmf_type: Telnyx::Models::dtmf_type,
+        ?first_command_timeout: bool,
+        ?first_command_timeout_secs: Integer,
+        ?inbound: Telnyx::TexmlApplicationCreateParams::Inbound,
+        ?outbound: Telnyx::TexmlApplicationCreateParams::Outbound,
+        ?status_callback: String,
+        ?status_callback_method: Telnyx::Models::TexmlApplicationCreateParams::status_callback_method,
+        ?tags: ::Array[String],
+        ?voice_fallback_url: String,
+        ?voice_method: Telnyx::Models::TexmlApplicationCreateParams::voice_method,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TexmlApplicationCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TexmlApplicationRetrieveResponse
+
+      def update: (
+        String id,
+        friendly_name: String,
+        voice_url: String,
+        ?active: bool,
+        ?anchorsite_override: Telnyx::Models::anchorsite_override,
+        ?dtmf_type: Telnyx::Models::dtmf_type,
+        ?first_command_timeout: bool,
+        ?first_command_timeout_secs: Integer,
+        ?inbound: Telnyx::TexmlApplicationUpdateParams::Inbound,
+        ?outbound: Telnyx::TexmlApplicationUpdateParams::Outbound,
+        ?status_callback: String,
+        ?status_callback_method: Telnyx::Models::TexmlApplicationUpdateParams::status_callback_method,
+        ?tags: ::Array[String],
+        ?voice_fallback_url: String,
+        ?voice_method: Telnyx::Models::TexmlApplicationUpdateParams::voice_method,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TexmlApplicationUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::TexmlApplicationListParams::Filter,
+        ?page: Telnyx::TexmlApplicationListParams::Page,
+        ?sort: Telnyx::Models::TexmlApplicationListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TexmlApplicationListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TexmlApplicationDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

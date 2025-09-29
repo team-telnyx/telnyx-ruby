@@ -1,0 +1,20 @@
+module Telnyx
+  module Resources
+    class Portouts
+      class Comments
+        def create: (
+          String id,
+          ?body: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Portouts::CommentCreateResponse
+
+        def list: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Portouts::CommentListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,60 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type associated_phone_number_create_params =
+        {
+          action: Telnyx::Models::PortingOrders::AssociatedPhoneNumberCreateParams::action,
+          phone_number_range: Telnyx::PortingOrders::AssociatedPhoneNumberCreateParams::PhoneNumberRange
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class AssociatedPhoneNumberCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor action: Telnyx::Models::PortingOrders::AssociatedPhoneNumberCreateParams::action
+
+        attr_accessor phone_number_range: Telnyx::PortingOrders::AssociatedPhoneNumberCreateParams::PhoneNumberRange
+
+        def initialize: (
+          action: Telnyx::Models::PortingOrders::AssociatedPhoneNumberCreateParams::action,
+          phone_number_range: Telnyx::PortingOrders::AssociatedPhoneNumberCreateParams::PhoneNumberRange,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          action: Telnyx::Models::PortingOrders::AssociatedPhoneNumberCreateParams::action,
+          phone_number_range: Telnyx::PortingOrders::AssociatedPhoneNumberCreateParams::PhoneNumberRange,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type action = :keep | :disconnect
+
+        module Action
+          extend Telnyx::Internal::Type::Enum
+
+          KEEP: :keep
+          DISCONNECT: :disconnect
+
+          def self?.values: -> ::Array[Telnyx::Models::PortingOrders::AssociatedPhoneNumberCreateParams::action]
+        end
+
+        type phone_number_range = { end_at: String, start_at: String }
+
+        class PhoneNumberRange < Telnyx::Internal::Type::BaseModel
+          attr_reader end_at: String?
+
+          def end_at=: (String) -> String
+
+          attr_reader start_at: String?
+
+          def start_at=: (String) -> String
+
+          def initialize: (?end_at: String, ?start_at: String) -> void
+
+          def to_hash: -> { end_at: String, start_at: String }
+        end
+      end
+    end
+  end
+end

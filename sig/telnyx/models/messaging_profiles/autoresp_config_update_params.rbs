@@ -1,0 +1,27 @@
+module Telnyx
+  module Models
+    module MessagingProfiles
+      type autoresp_config_update_params =
+        { profile_id: String } & Telnyx::Internal::Type::request_parameters
+
+      class AutorespConfigUpdateParams < Telnyx::Models::MessagingProfiles::AutoRespConfigCreate
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        def profile_id: -> String
+
+        def profile_id=: (String _) -> String
+
+        def initialize: (
+          profile_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          profile_id: String,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

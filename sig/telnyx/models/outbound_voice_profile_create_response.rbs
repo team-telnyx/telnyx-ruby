@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    type outbound_voice_profile_create_response =
+      { data: Telnyx::OutboundVoiceProfile }
+
+    class OutboundVoiceProfileCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::OutboundVoiceProfile?
+
+      def data=: (Telnyx::OutboundVoiceProfile) -> Telnyx::OutboundVoiceProfile
+
+      def initialize: (?data: Telnyx::OutboundVoiceProfile) -> void
+
+      def to_hash: -> { data: Telnyx::OutboundVoiceProfile }
+    end
+  end
+end

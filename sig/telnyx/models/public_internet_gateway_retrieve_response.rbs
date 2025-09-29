@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    type public_internet_gateway_retrieve_response =
+      { data: Telnyx::Models::PublicInternetGatewayRetrieveResponse::Data }
+
+    class PublicInternetGatewayRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::PublicInternetGatewayRetrieveResponse::Data?
+
+      def data=: (
+        Telnyx::Models::PublicInternetGatewayRetrieveResponse::Data
+      ) -> Telnyx::Models::PublicInternetGatewayRetrieveResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::PublicInternetGatewayRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::PublicInternetGatewayRetrieveResponse::Data
+      }
+    end
+  end
+end

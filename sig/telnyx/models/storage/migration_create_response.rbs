@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module Storage
+      type migration_create_response =
+        { data: Telnyx::Storage::MigrationParams }
+
+      class MigrationCreateResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Storage::MigrationParams?
+
+        def data=: (
+          Telnyx::Storage::MigrationParams
+        ) -> Telnyx::Storage::MigrationParams
+
+        def initialize: (?data: Telnyx::Storage::MigrationParams) -> void
+
+        def to_hash: -> { data: Telnyx::Storage::MigrationParams }
+      end
+    end
+  end
+end

@@ -1,0 +1,48 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type verification_code_verify_params =
+        {
+          verification_codes: ::Array[Telnyx::PortingOrders::VerificationCodeVerifyParams::VerificationCode]
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class VerificationCodeVerifyParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader verification_codes: ::Array[Telnyx::PortingOrders::VerificationCodeVerifyParams::VerificationCode]?
+
+        def verification_codes=: (
+          ::Array[Telnyx::PortingOrders::VerificationCodeVerifyParams::VerificationCode]
+        ) -> ::Array[Telnyx::PortingOrders::VerificationCodeVerifyParams::VerificationCode]
+
+        def initialize: (
+          ?verification_codes: ::Array[Telnyx::PortingOrders::VerificationCodeVerifyParams::VerificationCode],
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          verification_codes: ::Array[Telnyx::PortingOrders::VerificationCodeVerifyParams::VerificationCode],
+          request_options: Telnyx::RequestOptions
+        }
+
+        type verification_code = { code: String, phone_number: String }
+
+        class VerificationCode < Telnyx::Internal::Type::BaseModel
+          attr_reader code: String?
+
+          def code=: (String) -> String
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          def initialize: (?code: String, ?phone_number: String) -> void
+
+          def to_hash: -> { code: String, phone_number: String }
+        end
+      end
+    end
+  end
+end

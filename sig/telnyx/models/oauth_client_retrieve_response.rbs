@@ -1,0 +1,156 @@
+module Telnyx
+  module Models
+    type oauth_client_retrieve_response =
+      { data: Telnyx::Models::OAuthClientRetrieveResponse::Data }
+
+    class OAuthClientRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::OAuthClientRetrieveResponse::Data?
+
+      def data=: (
+        Telnyx::Models::OAuthClientRetrieveResponse::Data
+      ) -> Telnyx::Models::OAuthClientRetrieveResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::OAuthClientRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::OAuthClientRetrieveResponse::Data
+      }
+
+      type data =
+        {
+          client_id: String,
+          client_type: Telnyx::Models::OAuthClientRetrieveResponse::Data::client_type,
+          created_at: Time,
+          name: String,
+          org_id: String,
+          record_type: Telnyx::Models::OAuthClientRetrieveResponse::Data::record_type,
+          require_pkce: bool,
+          updated_at: Time,
+          user_id: String,
+          allowed_grant_types: ::Array[Telnyx::Models::OAuthClientRetrieveResponse::Data::allowed_grant_type],
+          allowed_scopes: ::Array[String],
+          client_secret: String?,
+          logo_uri: String?,
+          policy_uri: String?,
+          redirect_uris: ::Array[String],
+          tos_uri: String?
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor client_id: String
+
+        attr_accessor client_type: Telnyx::Models::OAuthClientRetrieveResponse::Data::client_type
+
+        attr_accessor created_at: Time
+
+        attr_accessor name: String
+
+        attr_accessor org_id: String
+
+        attr_accessor record_type: Telnyx::Models::OAuthClientRetrieveResponse::Data::record_type
+
+        attr_accessor require_pkce: bool
+
+        attr_accessor updated_at: Time
+
+        attr_accessor user_id: String
+
+        attr_reader allowed_grant_types: ::Array[Telnyx::Models::OAuthClientRetrieveResponse::Data::allowed_grant_type]?
+
+        def allowed_grant_types=: (
+          ::Array[Telnyx::Models::OAuthClientRetrieveResponse::Data::allowed_grant_type]
+        ) -> ::Array[Telnyx::Models::OAuthClientRetrieveResponse::Data::allowed_grant_type]
+
+        attr_reader allowed_scopes: ::Array[String]?
+
+        def allowed_scopes=: (::Array[String]) -> ::Array[String]
+
+        attr_accessor client_secret: String?
+
+        attr_accessor logo_uri: String?
+
+        attr_accessor policy_uri: String?
+
+        attr_reader redirect_uris: ::Array[String]?
+
+        def redirect_uris=: (::Array[String]) -> ::Array[String]
+
+        attr_accessor tos_uri: String?
+
+        def initialize: (
+          client_id: String,
+          client_type: Telnyx::Models::OAuthClientRetrieveResponse::Data::client_type,
+          created_at: Time,
+          name: String,
+          org_id: String,
+          record_type: Telnyx::Models::OAuthClientRetrieveResponse::Data::record_type,
+          require_pkce: bool,
+          updated_at: Time,
+          user_id: String,
+          ?allowed_grant_types: ::Array[Telnyx::Models::OAuthClientRetrieveResponse::Data::allowed_grant_type],
+          ?allowed_scopes: ::Array[String],
+          ?client_secret: String?,
+          ?logo_uri: String?,
+          ?policy_uri: String?,
+          ?redirect_uris: ::Array[String],
+          ?tos_uri: String?
+        ) -> void
+
+        def to_hash: -> {
+          client_id: String,
+          client_type: Telnyx::Models::OAuthClientRetrieveResponse::Data::client_type,
+          created_at: Time,
+          name: String,
+          org_id: String,
+          record_type: Telnyx::Models::OAuthClientRetrieveResponse::Data::record_type,
+          require_pkce: bool,
+          updated_at: Time,
+          user_id: String,
+          allowed_grant_types: ::Array[Telnyx::Models::OAuthClientRetrieveResponse::Data::allowed_grant_type],
+          allowed_scopes: ::Array[String],
+          client_secret: String?,
+          logo_uri: String?,
+          policy_uri: String?,
+          redirect_uris: ::Array[String],
+          tos_uri: String?
+        }
+
+        type client_type = :public | :confidential
+
+        module ClientType
+          extend Telnyx::Internal::Type::Enum
+
+          PUBLIC: :public
+          CONFIDENTIAL: :confidential
+
+          def self?.values: -> ::Array[Telnyx::Models::OAuthClientRetrieveResponse::Data::client_type]
+        end
+
+        type record_type = :oauth_client
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          OAUTH_CLIENT: :oauth_client
+
+          def self?.values: -> ::Array[Telnyx::Models::OAuthClientRetrieveResponse::Data::record_type]
+        end
+
+        type allowed_grant_type =
+          :client_credentials | :authorization_code | :refresh_token
+
+        module AllowedGrantType
+          extend Telnyx::Internal::Type::Enum
+
+          CLIENT_CREDENTIALS: :client_credentials
+          AUTHORIZATION_CODE: :authorization_code
+          REFRESH_TOKEN: :refresh_token
+
+          def self?.values: -> ::Array[Telnyx::Models::OAuthClientRetrieveResponse::Data::allowed_grant_type]
+        end
+      end
+    end
+  end
+end

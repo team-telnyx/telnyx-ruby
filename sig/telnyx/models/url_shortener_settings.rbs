@@ -1,0 +1,41 @@
+module Telnyx
+  module Models
+    type url_shortener_settings =
+      {
+        domain: String,
+        prefix: String,
+        replace_blacklist_only: bool,
+        send_webhooks: bool
+      }
+
+    class URLShortenerSettings < Telnyx::Internal::Type::BaseModel
+      attr_accessor domain: String
+
+      attr_reader prefix: String?
+
+      def prefix=: (String) -> String
+
+      attr_reader replace_blacklist_only: bool?
+
+      def replace_blacklist_only=: (bool) -> bool
+
+      attr_reader send_webhooks: bool?
+
+      def send_webhooks=: (bool) -> bool
+
+      def initialize: (
+        domain: String,
+        ?prefix: String,
+        ?replace_blacklist_only: bool,
+        ?send_webhooks: bool
+      ) -> void
+
+      def to_hash: -> {
+        domain: String,
+        prefix: String,
+        replace_blacklist_only: bool,
+        send_webhooks: bool
+      }
+    end
+  end
+end

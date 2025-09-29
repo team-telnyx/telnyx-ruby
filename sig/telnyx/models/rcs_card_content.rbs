@@ -1,0 +1,88 @@
+module Telnyx
+  module Models
+    type rcs_card_content =
+      {
+        description: String,
+        media: Telnyx::RcsCardContent::Media,
+        suggestions: ::Array[Telnyx::RcsSuggestion],
+        title: String
+      }
+
+    class RcsCardContent < Telnyx::Internal::Type::BaseModel
+      attr_reader description: String?
+
+      def description=: (String) -> String
+
+      attr_reader media: Telnyx::RcsCardContent::Media?
+
+      def media=: (
+        Telnyx::RcsCardContent::Media
+      ) -> Telnyx::RcsCardContent::Media
+
+      attr_reader suggestions: ::Array[Telnyx::RcsSuggestion]?
+
+      def suggestions=: (
+        ::Array[Telnyx::RcsSuggestion]
+      ) -> ::Array[Telnyx::RcsSuggestion]
+
+      attr_reader title: String?
+
+      def title=: (String) -> String
+
+      def initialize: (
+        ?description: String,
+        ?media: Telnyx::RcsCardContent::Media,
+        ?suggestions: ::Array[Telnyx::RcsSuggestion],
+        ?title: String
+      ) -> void
+
+      def to_hash: -> {
+        description: String,
+        media: Telnyx::RcsCardContent::Media,
+        suggestions: ::Array[Telnyx::RcsSuggestion],
+        title: String
+      }
+
+      type media =
+        {
+          content_info: Telnyx::RcsContentInfo,
+          height: Telnyx::Models::RcsCardContent::Media::height
+        }
+
+      class Media < Telnyx::Internal::Type::BaseModel
+        attr_reader content_info: Telnyx::RcsContentInfo?
+
+        def content_info=: (Telnyx::RcsContentInfo) -> Telnyx::RcsContentInfo
+
+        attr_reader height: Telnyx::Models::RcsCardContent::Media::height?
+
+        def height=: (
+          Telnyx::Models::RcsCardContent::Media::height
+        ) -> Telnyx::Models::RcsCardContent::Media::height
+
+        def initialize: (
+          ?content_info: Telnyx::RcsContentInfo,
+          ?height: Telnyx::Models::RcsCardContent::Media::height
+        ) -> void
+
+        def to_hash: -> {
+          content_info: Telnyx::RcsContentInfo,
+          height: Telnyx::Models::RcsCardContent::Media::height
+        }
+
+        type height = :HEIGHT_UNSPECIFIED | :SHORT | :MEDIUM | :TALL
+
+        module Height
+          extend Telnyx::Internal::Type::Enum
+
+          HEIGHT_UNSPECIFIED: :HEIGHT_UNSPECIFIED
+          SHORT: :SHORT
+          MEDIUM: :MEDIUM
+          TALL: :TALL
+
+          def self?.values: -> ::Array[Telnyx::Models::RcsCardContent::Media::height]
+        end
+      end
+    end
+  end
+end

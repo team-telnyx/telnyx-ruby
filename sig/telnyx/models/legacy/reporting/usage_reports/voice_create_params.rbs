@@ -1,0 +1,72 @@
+module Telnyx
+  module Models
+    module Legacy
+      module Reporting
+        module UsageReports
+          type voice_create_params =
+            {
+              end_time: Time,
+              start_time: Time,
+              aggregation_type: Integer,
+              connections: ::Array[Integer],
+              managed_accounts: ::Array[String],
+              product_breakdown: Integer,
+              select_all_managed_accounts: bool
+            }
+            & Telnyx::Internal::Type::request_parameters
+
+          class VoiceCreateParams < Telnyx::Internal::Type::BaseModel
+            extend Telnyx::Internal::Type::RequestParameters::Converter
+            include Telnyx::Internal::Type::RequestParameters
+
+            attr_accessor end_time: Time
+
+            attr_accessor start_time: Time
+
+            attr_reader aggregation_type: Integer?
+
+            def aggregation_type=: (Integer) -> Integer
+
+            attr_reader connections: ::Array[Integer]?
+
+            def connections=: (::Array[Integer]) -> ::Array[Integer]
+
+            attr_reader managed_accounts: ::Array[String]?
+
+            def managed_accounts=: (::Array[String]) -> ::Array[String]
+
+            attr_reader product_breakdown: Integer?
+
+            def product_breakdown=: (Integer) -> Integer
+
+            attr_reader select_all_managed_accounts: bool?
+
+            def select_all_managed_accounts=: (bool) -> bool
+
+            def initialize: (
+              end_time: Time,
+              start_time: Time,
+              ?aggregation_type: Integer,
+              ?connections: ::Array[Integer],
+              ?managed_accounts: ::Array[String],
+              ?product_breakdown: Integer,
+              ?select_all_managed_accounts: bool,
+              ?request_options: Telnyx::request_opts
+            ) -> void
+
+            def to_hash: -> {
+              end_time: Time,
+              start_time: Time,
+              aggregation_type: Integer,
+              connections: ::Array[Integer],
+              managed_accounts: ::Array[String],
+              product_breakdown: Integer,
+              select_all_managed_accounts: bool,
+              request_options: Telnyx::RequestOptions
+            }
+          end
+        end
+      end
+    end
+  end
+end

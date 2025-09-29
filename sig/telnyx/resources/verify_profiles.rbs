@@ -1,0 +1,61 @@
+module Telnyx
+  module Resources
+    class VerifyProfiles
+      def create: (
+        name: String,
+        ?call: Telnyx::VerifyProfileCreateParams::Call,
+        ?flashcall: Telnyx::VerifyProfileCreateParams::Flashcall,
+        ?language: String,
+        ?sms: Telnyx::VerifyProfileCreateParams::SMS,
+        ?webhook_failover_url: String,
+        ?webhook_url: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::VerifyProfileData
+
+      def retrieve: (
+        String verify_profile_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::VerifyProfileData
+
+      def update: (
+        String verify_profile_id,
+        ?call: Telnyx::VerifyProfileUpdateParams::Call,
+        ?flashcall: Telnyx::VerifyProfileUpdateParams::Flashcall,
+        ?language: String,
+        ?name: String,
+        ?sms: Telnyx::VerifyProfileUpdateParams::SMS,
+        ?webhook_failover_url: String,
+        ?webhook_url: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::VerifyProfileData
+
+      def list: (
+        ?filter: Telnyx::VerifyProfileListParams::Filter,
+        ?page: Telnyx::VerifyProfileListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VerifyProfileListResponse
+
+      def delete: (
+        String verify_profile_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::VerifyProfileData
+
+      def create_template: (
+        text: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VerifyProfileCreateTemplateResponse
+
+      def retrieve_templates: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VerifyProfileRetrieveTemplatesResponse
+
+      def update_template: (
+        String template_id,
+        text: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VerifyProfileUpdateTemplateResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end
