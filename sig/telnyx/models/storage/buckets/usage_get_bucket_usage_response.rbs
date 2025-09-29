@@ -1,0 +1,77 @@
+module Telnyx
+  module Models
+    module Storage
+      module Buckets
+        type usage_get_bucket_usage_response =
+          {
+            data: ::Array[Telnyx::Models::Storage::Buckets::UsageGetBucketUsageResponse::Data],
+            meta: Telnyx::Storage::Buckets::PaginationMetaSimple
+          }
+
+        class UsageGetBucketUsageResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: ::Array[Telnyx::Models::Storage::Buckets::UsageGetBucketUsageResponse::Data]?
+
+          def data=: (
+            ::Array[Telnyx::Models::Storage::Buckets::UsageGetBucketUsageResponse::Data]
+          ) -> ::Array[Telnyx::Models::Storage::Buckets::UsageGetBucketUsageResponse::Data]
+
+          attr_reader meta: Telnyx::Storage::Buckets::PaginationMetaSimple?
+
+          def meta=: (
+            Telnyx::Storage::Buckets::PaginationMetaSimple
+          ) -> Telnyx::Storage::Buckets::PaginationMetaSimple
+
+          def initialize: (
+            ?data: ::Array[Telnyx::Models::Storage::Buckets::UsageGetBucketUsageResponse::Data],
+            ?meta: Telnyx::Storage::Buckets::PaginationMetaSimple
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[Telnyx::Models::Storage::Buckets::UsageGetBucketUsageResponse::Data],
+            meta: Telnyx::Storage::Buckets::PaginationMetaSimple
+          }
+
+          type data =
+            {
+              num_objects: Integer,
+              size: Integer,
+              size_kb: Integer,
+              timestamp: Time
+            }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_reader num_objects: Integer?
+
+            def num_objects=: (Integer) -> Integer
+
+            attr_reader size: Integer?
+
+            def size=: (Integer) -> Integer
+
+            attr_reader size_kb: Integer?
+
+            def size_kb=: (Integer) -> Integer
+
+            attr_reader timestamp: Time?
+
+            def timestamp=: (Time) -> Time
+
+            def initialize: (
+              ?num_objects: Integer,
+              ?size: Integer,
+              ?size_kb: Integer,
+              ?timestamp: Time
+            ) -> void
+
+            def to_hash: -> {
+              num_objects: Integer,
+              size: Integer,
+              size_kb: Integer,
+              timestamp: Time
+            }
+          end
+        end
+      end
+    end
+  end
+end

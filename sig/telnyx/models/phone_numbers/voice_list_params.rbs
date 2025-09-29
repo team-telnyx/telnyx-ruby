@@ -1,0 +1,150 @@
+module Telnyx
+  module Models
+    module PhoneNumbers
+      type voice_list_params =
+        {
+          filter: Telnyx::PhoneNumbers::VoiceListParams::Filter,
+          page: Telnyx::PhoneNumbers::VoiceListParams::Page,
+          sort: Telnyx::Models::PhoneNumbers::VoiceListParams::sort
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class VoiceListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter: Telnyx::PhoneNumbers::VoiceListParams::Filter?
+
+        def filter=: (
+          Telnyx::PhoneNumbers::VoiceListParams::Filter
+        ) -> Telnyx::PhoneNumbers::VoiceListParams::Filter
+
+        attr_reader page: Telnyx::PhoneNumbers::VoiceListParams::Page?
+
+        def page=: (
+          Telnyx::PhoneNumbers::VoiceListParams::Page
+        ) -> Telnyx::PhoneNumbers::VoiceListParams::Page
+
+        attr_reader sort: Telnyx::Models::PhoneNumbers::VoiceListParams::sort?
+
+        def sort=: (
+          Telnyx::Models::PhoneNumbers::VoiceListParams::sort
+        ) -> Telnyx::Models::PhoneNumbers::VoiceListParams::sort
+
+        def initialize: (
+          ?filter: Telnyx::PhoneNumbers::VoiceListParams::Filter,
+          ?page: Telnyx::PhoneNumbers::VoiceListParams::Page,
+          ?sort: Telnyx::Models::PhoneNumbers::VoiceListParams::sort,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter: Telnyx::PhoneNumbers::VoiceListParams::Filter,
+          page: Telnyx::PhoneNumbers::VoiceListParams::Page,
+          sort: Telnyx::Models::PhoneNumbers::VoiceListParams::sort,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter =
+          {
+            connection_name: Telnyx::PhoneNumbers::VoiceListParams::Filter::ConnectionName,
+            customer_reference: String,
+            phone_number: String,
+            voice_usage_payment_method: Telnyx::Models::PhoneNumbers::VoiceListParams::Filter::voice_usage_payment_method
+          }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader connection_name: Telnyx::PhoneNumbers::VoiceListParams::Filter::ConnectionName?
+
+          def connection_name=: (
+            Telnyx::PhoneNumbers::VoiceListParams::Filter::ConnectionName
+          ) -> Telnyx::PhoneNumbers::VoiceListParams::Filter::ConnectionName
+
+          attr_reader customer_reference: String?
+
+          def customer_reference=: (String) -> String
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          attr_reader voice_usage_payment_method: Telnyx::Models::PhoneNumbers::VoiceListParams::Filter::voice_usage_payment_method?
+
+          def voice_usage_payment_method=: (
+            Telnyx::Models::PhoneNumbers::VoiceListParams::Filter::voice_usage_payment_method
+          ) -> Telnyx::Models::PhoneNumbers::VoiceListParams::Filter::voice_usage_payment_method
+
+          def initialize: (
+            ?connection_name: Telnyx::PhoneNumbers::VoiceListParams::Filter::ConnectionName,
+            ?customer_reference: String,
+            ?phone_number: String,
+            ?voice_usage_payment_method: Telnyx::Models::PhoneNumbers::VoiceListParams::Filter::voice_usage_payment_method
+          ) -> void
+
+          def to_hash: -> {
+            connection_name: Telnyx::PhoneNumbers::VoiceListParams::Filter::ConnectionName,
+            customer_reference: String,
+            phone_number: String,
+            voice_usage_payment_method: Telnyx::Models::PhoneNumbers::VoiceListParams::Filter::voice_usage_payment_method
+          }
+
+          type connection_name = { contains: String }
+
+          class ConnectionName < Telnyx::Internal::Type::BaseModel
+            attr_reader contains: String?
+
+            def contains=: (String) -> String
+
+            def initialize: (?contains: String) -> void
+
+            def to_hash: -> { contains: String }
+          end
+
+          type voice_usage_payment_method = :"pay-per-minute" | :channel
+
+          module VoiceUsagePaymentMethod
+            extend Telnyx::Internal::Type::Enum
+
+            PAY_PER_MINUTE: :"pay-per-minute"
+            CHANNEL: :channel
+
+            def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::VoiceListParams::Filter::voice_usage_payment_method]
+          end
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
+        end
+
+        type sort =
+          :purchased_at
+          | :phone_number
+          | :connection_name
+          | :usage_payment_method
+
+        module Sort
+          extend Telnyx::Internal::Type::Enum
+
+          PURCHASED_AT: :purchased_at
+          PHONE_NUMBER: :phone_number
+          CONNECTION_NAME: :connection_name
+          USAGE_PAYMENT_METHOD: :usage_payment_method
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::VoiceListParams::sort]
+        end
+      end
+    end
+  end
+end

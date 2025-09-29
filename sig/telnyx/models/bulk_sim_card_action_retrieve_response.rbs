@@ -1,0 +1,138 @@
+module Telnyx
+  module Models
+    type bulk_sim_card_action_retrieve_response =
+      { data: Telnyx::Models::BulkSimCardActionRetrieveResponse::Data }
+
+    class BulkSimCardActionRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::BulkSimCardActionRetrieveResponse::Data?
+
+      def data=: (
+        Telnyx::Models::BulkSimCardActionRetrieveResponse::Data
+      ) -> Telnyx::Models::BulkSimCardActionRetrieveResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::BulkSimCardActionRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::BulkSimCardActionRetrieveResponse::Data
+      }
+
+      type data =
+        {
+          id: String,
+          action_type: Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::action_type,
+          created_at: String,
+          record_type: String,
+          settings: ::Hash[Symbol, top],
+          sim_card_actions_summary: ::Array[Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary],
+          updated_at: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader sim_card_actions_summary: ::Array[Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary]?
+
+        def sim_card_actions_summary=: (
+          ::Array[Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary]
+        ) -> ::Array[Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary]
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader action_type: Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::action_type?
+
+        def action_type=: (
+          Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::action_type
+        ) -> Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::action_type
+
+        attr_reader created_at: String?
+
+        def created_at=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader settings: ::Hash[Symbol, top]?
+
+        def settings=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        attr_reader updated_at: String?
+
+        def updated_at=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?action_type: Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::action_type,
+          ?created_at: String,
+          ?record_type: String,
+          ?settings: ::Hash[Symbol, top],
+          ?sim_card_actions_summary: ::Array[Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary],
+          ?updated_at: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          action_type: Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::action_type,
+          created_at: String,
+          record_type: String,
+          settings: ::Hash[Symbol, top],
+          sim_card_actions_summary: ::Array[Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary],
+          updated_at: String
+        }
+
+        type action_type = :bulk_set_public_ips
+
+        module ActionType
+          extend Telnyx::Internal::Type::Enum
+
+          BULK_SET_PUBLIC_IPS: :bulk_set_public_ips
+
+          def self?.values: -> ::Array[Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::action_type]
+        end
+
+        type sim_card_actions_summary =
+          {
+            count: Integer,
+            status: Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::status
+          }
+
+        class SimCardActionsSummary < Telnyx::Internal::Type::BaseModel
+          attr_reader count: Integer?
+
+          def count=: (Integer) -> Integer
+
+          attr_reader status: Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::status?
+
+          def status=: (
+            Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::status
+          ) -> Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::status
+
+          def initialize: (
+            ?count: Integer,
+            ?status: Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::status
+          ) -> void
+
+          def to_hash: -> {
+            count: Integer,
+            status: Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::status
+          }
+
+          type status = :"in-progress" | :completed | :failed | :interrupted
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            IN_PROGRESS: :"in-progress"
+            COMPLETED: :completed
+            FAILED: :failed
+            INTERRUPTED: :interrupted
+
+            def self?.values: -> ::Array[Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::status]
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,115 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_start_playback_params =
+        {
+          audio_type: Telnyx::Models::Calls::ActionStartPlaybackParams::audio_type,
+          audio_url: String,
+          cache_audio: bool,
+          client_state: String,
+          command_id: String,
+          loop_: Telnyx::Models::Calls::loopcount,
+          media_name: String,
+          overlay: bool,
+          playback_content: String,
+          stop: String,
+          target_legs: String
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionStartPlaybackParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader audio_type: Telnyx::Models::Calls::ActionStartPlaybackParams::audio_type?
+
+        def audio_type=: (
+          Telnyx::Models::Calls::ActionStartPlaybackParams::audio_type
+        ) -> Telnyx::Models::Calls::ActionStartPlaybackParams::audio_type
+
+        attr_reader audio_url: String?
+
+        def audio_url=: (String) -> String
+
+        attr_reader cache_audio: bool?
+
+        def cache_audio=: (bool) -> bool
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader command_id: String?
+
+        def command_id=: (String) -> String
+
+        attr_reader loop_: Telnyx::Models::Calls::loopcount?
+
+        def loop_=: (
+          Telnyx::Models::Calls::loopcount
+        ) -> Telnyx::Models::Calls::loopcount
+
+        attr_reader media_name: String?
+
+        def media_name=: (String) -> String
+
+        attr_reader overlay: bool?
+
+        def overlay=: (bool) -> bool
+
+        attr_reader playback_content: String?
+
+        def playback_content=: (String) -> String
+
+        attr_reader stop: String?
+
+        def stop=: (String) -> String
+
+        attr_reader target_legs: String?
+
+        def target_legs=: (String) -> String
+
+        def initialize: (
+          ?audio_type: Telnyx::Models::Calls::ActionStartPlaybackParams::audio_type,
+          ?audio_url: String,
+          ?cache_audio: bool,
+          ?client_state: String,
+          ?command_id: String,
+          ?loop_: Telnyx::Models::Calls::loopcount,
+          ?media_name: String,
+          ?overlay: bool,
+          ?playback_content: String,
+          ?stop: String,
+          ?target_legs: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          audio_type: Telnyx::Models::Calls::ActionStartPlaybackParams::audio_type,
+          audio_url: String,
+          cache_audio: bool,
+          client_state: String,
+          command_id: String,
+          loop_: Telnyx::Models::Calls::loopcount,
+          media_name: String,
+          overlay: bool,
+          playback_content: String,
+          stop: String,
+          target_legs: String,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type audio_type = :mp3 | :wav
+
+        module AudioType
+          extend Telnyx::Internal::Type::Enum
+
+          MP3: :mp3
+          WAV: :wav
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartPlaybackParams::audio_type]
+        end
+      end
+    end
+  end
+end

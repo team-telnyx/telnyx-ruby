@@ -1,0 +1,54 @@
+module Telnyx
+  module Models
+    type bulk_sim_card_action_list_params =
+      {
+        filter_action_type: Telnyx::Models::BulkSimCardActionListParams::filter_action_type,
+        page_number: Integer,
+        page_size: Integer
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class BulkSimCardActionListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter_action_type: Telnyx::Models::BulkSimCardActionListParams::filter_action_type?
+
+      def filter_action_type=: (
+        Telnyx::Models::BulkSimCardActionListParams::filter_action_type
+      ) -> Telnyx::Models::BulkSimCardActionListParams::filter_action_type
+
+      attr_reader page_number: Integer?
+
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      def initialize: (
+        ?filter_action_type: Telnyx::Models::BulkSimCardActionListParams::filter_action_type,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter_action_type: Telnyx::Models::BulkSimCardActionListParams::filter_action_type,
+        page_number: Integer,
+        page_size: Integer,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter_action_type = :bulk_set_public_ips
+
+      module FilterActionType
+        extend Telnyx::Internal::Type::Enum
+
+        BULK_SET_PUBLIC_IPS: :bulk_set_public_ips
+
+        def self?.values: -> ::Array[Telnyx::Models::BulkSimCardActionListParams::filter_action_type]
+      end
+    end
+  end
+end

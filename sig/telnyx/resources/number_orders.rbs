@@ -1,0 +1,34 @@
+module Telnyx
+  module Resources
+    class NumberOrders
+      def create: (
+        ?billing_group_id: String,
+        ?connection_id: String,
+        ?customer_reference: String,
+        ?messaging_profile_id: String,
+        ?phone_numbers: ::Array[Telnyx::NumberOrderCreateParams::PhoneNumber],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NumberOrderCreateResponse
+
+      def retrieve: (
+        String number_order_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NumberOrderRetrieveResponse
+
+      def update: (
+        String number_order_id,
+        ?customer_reference: String,
+        ?regulatory_requirements: ::Array[Telnyx::UpdateRegulatoryRequirement],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NumberOrderUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::NumberOrderListParams::Filter,
+        ?page: Telnyx::NumberOrderListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NumberOrderListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

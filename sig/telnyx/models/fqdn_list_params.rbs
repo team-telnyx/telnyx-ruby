@@ -1,0 +1,93 @@
+module Telnyx
+  module Models
+    type fqdn_list_params =
+      {
+        filter: Telnyx::FqdnListParams::Filter,
+        page: Telnyx::FqdnListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class FqdnListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::FqdnListParams::Filter?
+
+      def filter=: (
+        Telnyx::FqdnListParams::Filter
+      ) -> Telnyx::FqdnListParams::Filter
+
+      attr_reader page: Telnyx::FqdnListParams::Page?
+
+      def page=: (Telnyx::FqdnListParams::Page) -> Telnyx::FqdnListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::FqdnListParams::Filter,
+        ?page: Telnyx::FqdnListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::FqdnListParams::Filter,
+        page: Telnyx::FqdnListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          connection_id: String,
+          dns_record_type: String,
+          fqdn: String,
+          port: Integer
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader dns_record_type: String?
+
+        def dns_record_type=: (String) -> String
+
+        attr_reader fqdn: String?
+
+        def fqdn=: (String) -> String
+
+        attr_reader port: Integer?
+
+        def port=: (Integer) -> Integer
+
+        def initialize: (
+          ?connection_id: String,
+          ?dns_record_type: String,
+          ?fqdn: String,
+          ?port: Integer
+        ) -> void
+
+        def to_hash: -> {
+          connection_id: String,
+          dns_record_type: String,
+          fqdn: String,
+          port: Integer
+        }
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

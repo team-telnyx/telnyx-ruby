@@ -1,0 +1,81 @@
+module Telnyx
+  module Models
+    type invoice_retrieve_response =
+      { data: Telnyx::Models::InvoiceRetrieveResponse::Data }
+
+    class InvoiceRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::InvoiceRetrieveResponse::Data?
+
+      def data=: (
+        Telnyx::Models::InvoiceRetrieveResponse::Data
+      ) -> Telnyx::Models::InvoiceRetrieveResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::InvoiceRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> { data: Telnyx::Models::InvoiceRetrieveResponse::Data }
+
+      type data =
+        {
+          download_url: String,
+          file_id: String,
+          invoice_id: String,
+          paid: bool,
+          period_end: Date,
+          period_start: Date,
+          url: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader download_url: String?
+
+        def download_url=: (String) -> String
+
+        attr_reader file_id: String?
+
+        def file_id=: (String) -> String
+
+        attr_reader invoice_id: String?
+
+        def invoice_id=: (String) -> String
+
+        attr_reader paid: bool?
+
+        def paid=: (bool) -> bool
+
+        attr_reader period_end: Date?
+
+        def period_end=: (Date) -> Date
+
+        attr_reader period_start: Date?
+
+        def period_start=: (Date) -> Date
+
+        attr_reader url: String?
+
+        def url=: (String) -> String
+
+        def initialize: (
+          ?download_url: String,
+          ?file_id: String,
+          ?invoice_id: String,
+          ?paid: bool,
+          ?period_end: Date,
+          ?period_start: Date,
+          ?url: String
+        ) -> void
+
+        def to_hash: -> {
+          download_url: String,
+          file_id: String,
+          invoice_id: String,
+          paid: bool,
+          period_end: Date,
+          period_start: Date,
+          url: String
+        }
+      end
+    end
+  end
+end

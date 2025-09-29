@@ -1,0 +1,12 @@
+module Telnyx
+  module Resources
+    class PhoneNumbersRegulatoryRequirements
+      def retrieve: (
+        ?filter: Telnyx::PhoneNumbersRegulatoryRequirementRetrieveParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

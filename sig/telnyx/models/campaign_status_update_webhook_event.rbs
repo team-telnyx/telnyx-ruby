@@ -1,0 +1,50 @@
+module Telnyx
+  module Models
+    type campaign_status_update_webhook_event =
+      {
+        brand_id: String,
+        campaign_id: String,
+        create_date: String,
+        csp_id: String,
+        is_t_mobile_registered: bool
+      }
+
+    class CampaignStatusUpdateWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_reader brand_id: String?
+
+      def brand_id=: (String) -> String
+
+      attr_reader campaign_id: String?
+
+      def campaign_id=: (String) -> String
+
+      attr_reader create_date: String?
+
+      def create_date=: (String) -> String
+
+      attr_reader csp_id: String?
+
+      def csp_id=: (String) -> String
+
+      attr_reader is_t_mobile_registered: bool?
+
+      def is_t_mobile_registered=: (bool) -> bool
+
+      def initialize: (
+        ?brand_id: String,
+        ?campaign_id: String,
+        ?create_date: String,
+        ?csp_id: String,
+        ?is_t_mobile_registered: bool
+      ) -> void
+
+      def to_hash: -> {
+        brand_id: String,
+        campaign_id: String,
+        create_date: String,
+        csp_id: String,
+        is_t_mobile_registered: bool
+      }
+    end
+  end
+end

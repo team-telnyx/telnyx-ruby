@@ -1,0 +1,25 @@
+module Telnyx
+  module Resources
+    class ExternalConnections
+      class LogMessages
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse
+
+        def list: (
+          ?filter: Telnyx::ExternalConnections::LogMessageListParams::Filter,
+          ?page: Telnyx::ExternalConnections::LogMessageListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ExternalConnections::LogMessageListResponse
+
+        def dismiss: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ExternalConnections::LogMessageDismissResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

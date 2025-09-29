@@ -1,0 +1,40 @@
+module Telnyx
+  module Resources
+    class Portouts
+      attr_reader events: Telnyx::Resources::Portouts::Events
+
+      attr_reader reports: Telnyx::Resources::Portouts::Reports
+
+      attr_reader comments: Telnyx::Resources::Portouts::Comments
+
+      attr_reader supporting_documents: Telnyx::Resources::Portouts::SupportingDocuments
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PortoutRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::PortoutListParams::Filter,
+        ?page: Telnyx::PortoutListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PortoutListResponse
+
+      def list_rejection_codes: (
+        String portout_id,
+        ?filter: Telnyx::PortoutListRejectionCodesParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PortoutListRejectionCodesResponse
+
+      def update_status: (
+        Telnyx::Models::PortoutUpdateStatusParams::status status,
+        id: String,
+        reason: String,
+        ?host_messaging: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PortoutUpdateStatusResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

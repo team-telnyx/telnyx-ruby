@@ -1,0 +1,16 @@
+module Telnyx
+  module Resources
+    class List
+      def retrieve_all: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ListRetrieveAllResponse
+
+      def retrieve_by_zone: (
+        String channel_zone_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ListRetrieveByZoneResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

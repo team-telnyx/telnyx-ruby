@@ -1,0 +1,137 @@
+module Telnyx
+  module Models
+    type room_list_params =
+      {
+        filter: Telnyx::RoomListParams::Filter,
+        include_sessions: bool,
+        page: Telnyx::RoomListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class RoomListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::RoomListParams::Filter?
+
+      def filter=: (
+        Telnyx::RoomListParams::Filter
+      ) -> Telnyx::RoomListParams::Filter
+
+      attr_reader include_sessions: bool?
+
+      def include_sessions=: (bool) -> bool
+
+      attr_reader page: Telnyx::RoomListParams::Page?
+
+      def page=: (Telnyx::RoomListParams::Page) -> Telnyx::RoomListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::RoomListParams::Filter,
+        ?include_sessions: bool,
+        ?page: Telnyx::RoomListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::RoomListParams::Filter,
+        include_sessions: bool,
+        page: Telnyx::RoomListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          date_created_at: Telnyx::RoomListParams::Filter::DateCreatedAt,
+          date_updated_at: Telnyx::RoomListParams::Filter::DateUpdatedAt,
+          unique_name: String
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader date_created_at: Telnyx::RoomListParams::Filter::DateCreatedAt?
+
+        def date_created_at=: (
+          Telnyx::RoomListParams::Filter::DateCreatedAt
+        ) -> Telnyx::RoomListParams::Filter::DateCreatedAt
+
+        attr_reader date_updated_at: Telnyx::RoomListParams::Filter::DateUpdatedAt?
+
+        def date_updated_at=: (
+          Telnyx::RoomListParams::Filter::DateUpdatedAt
+        ) -> Telnyx::RoomListParams::Filter::DateUpdatedAt
+
+        attr_reader unique_name: String?
+
+        def unique_name=: (String) -> String
+
+        def initialize: (
+          ?date_created_at: Telnyx::RoomListParams::Filter::DateCreatedAt,
+          ?date_updated_at: Telnyx::RoomListParams::Filter::DateUpdatedAt,
+          ?unique_name: String
+        ) -> void
+
+        def to_hash: -> {
+          date_created_at: Telnyx::RoomListParams::Filter::DateCreatedAt,
+          date_updated_at: Telnyx::RoomListParams::Filter::DateUpdatedAt,
+          unique_name: String
+        }
+
+        type date_created_at = { eq: Date, gte: Date, lte: Date }
+
+        class DateCreatedAt < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: Date?
+
+          def eq=: (Date) -> Date
+
+          attr_reader gte: Date?
+
+          def gte=: (Date) -> Date
+
+          attr_reader lte: Date?
+
+          def lte=: (Date) -> Date
+
+          def initialize: (?eq: Date, ?gte: Date, ?lte: Date) -> void
+
+          def to_hash: -> { eq: Date, gte: Date, lte: Date }
+        end
+
+        type date_updated_at = { eq: Date, gte: Date, lte: Date }
+
+        class DateUpdatedAt < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: Date?
+
+          def eq=: (Date) -> Date
+
+          attr_reader gte: Date?
+
+          def gte=: (Date) -> Date
+
+          attr_reader lte: Date?
+
+          def lte=: (Date) -> Date
+
+          def initialize: (?eq: Date, ?gte: Date, ?lte: Date) -> void
+
+          def to_hash: -> { eq: Date, gte: Date, lte: Date }
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

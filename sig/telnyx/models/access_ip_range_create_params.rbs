@@ -1,0 +1,30 @@
+module Telnyx
+  module Models
+    type access_ip_range_create_params =
+      { cidr_block: String, description: String }
+      & Telnyx::Internal::Type::request_parameters
+
+    class AccessIPRangeCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor cidr_block: String
+
+      attr_reader description: String?
+
+      def description=: (String) -> String
+
+      def initialize: (
+        cidr_block: String,
+        ?description: String,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        cidr_block: String,
+        description: String,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

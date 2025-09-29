@@ -1,0 +1,18 @@
+module Telnyx
+  module Resources
+    class Reports
+      class CdrUsageReports
+        def fetch_sync: (
+          aggregation_type: Telnyx::Models::Reports::CdrUsageReportFetchSyncParams::aggregation_type,
+          product_breakdown: Telnyx::Models::Reports::CdrUsageReportFetchSyncParams::product_breakdown,
+          ?connections: ::Array[Float],
+          ?end_date: Time,
+          ?start_date: Time,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

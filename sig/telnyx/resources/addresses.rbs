@@ -1,0 +1,45 @@
+module Telnyx
+  module Resources
+    class Addresses
+      attr_reader actions: Telnyx::Resources::Addresses::Actions
+
+      def create: (
+        business_name: String,
+        country_code: String,
+        first_name: String,
+        last_name: String,
+        locality: String,
+        street_address: String,
+        ?address_book: bool,
+        ?administrative_area: String,
+        ?borough: String,
+        ?customer_reference: String,
+        ?extended_address: String,
+        ?neighborhood: String,
+        ?phone_number: String,
+        ?postal_code: String,
+        ?validate_address: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AddressCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AddressRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::AddressListParams::Filter,
+        ?page: Telnyx::AddressListParams::Page,
+        ?sort: Telnyx::Models::AddressListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AddressListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AddressDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

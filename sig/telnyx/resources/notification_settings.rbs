@@ -1,0 +1,31 @@
+module Telnyx
+  module Resources
+    class NotificationSettings
+      def create: (
+        ?notification_channel_id: String,
+        ?notification_event_condition_id: String,
+        ?notification_profile_id: String,
+        ?parameters: ::Array[Telnyx::NotificationSetting::Parameter],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NotificationSettingCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NotificationSettingRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::NotificationSettingListParams::Filter,
+        ?page: Telnyx::NotificationSettingListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NotificationSettingListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NotificationSettingDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

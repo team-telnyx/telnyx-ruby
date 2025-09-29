@@ -1,0 +1,48 @@
+module Telnyx
+  module Resources
+    class Legacy
+      class Reporting
+        class BatchDetailRecords
+          class Voice
+            def create: (
+              end_time: Time,
+              start_time: Time,
+              ?call_types: ::Array[Integer],
+              ?connections: ::Array[Integer],
+              ?fields: ::Array[String],
+              ?filters: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter],
+              ?include_all_metadata: bool,
+              ?managed_accounts: ::Array[String],
+              ?record_types: ::Array[Integer],
+              ?report_name: String,
+              ?select_all_managed_accounts: bool,
+              ?source: String,
+              ?timezone: String,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateResponse
+
+            def retrieve: (
+              String id,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceRetrieveResponse
+
+            def list: (
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceListResponse
+
+            def delete: (
+              String id,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceDeleteResponse
+
+            def retrieve_fields: (
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceRetrieveFieldsResponse
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

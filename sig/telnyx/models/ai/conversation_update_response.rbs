@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module AI
+      type conversation_update_response = { data: Telnyx::AI::Conversation }
+
+      class ConversationUpdateResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::AI::Conversation?
+
+        def data=: (Telnyx::AI::Conversation) -> Telnyx::AI::Conversation
+
+        def initialize: (?data: Telnyx::AI::Conversation) -> void
+
+        def to_hash: -> { data: Telnyx::AI::Conversation }
+      end
+    end
+  end
+end

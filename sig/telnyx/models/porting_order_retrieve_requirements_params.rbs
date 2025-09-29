@@ -1,0 +1,44 @@
+module Telnyx
+  module Models
+    type porting_order_retrieve_requirements_params =
+      { page: Telnyx::PortingOrderRetrieveRequirementsParams::Page }
+      & Telnyx::Internal::Type::request_parameters
+
+    class PortingOrderRetrieveRequirementsParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader page: Telnyx::PortingOrderRetrieveRequirementsParams::Page?
+
+      def page=: (
+        Telnyx::PortingOrderRetrieveRequirementsParams::Page
+      ) -> Telnyx::PortingOrderRetrieveRequirementsParams::Page
+
+      def initialize: (
+        ?page: Telnyx::PortingOrderRetrieveRequirementsParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        page: Telnyx::PortingOrderRetrieveRequirementsParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

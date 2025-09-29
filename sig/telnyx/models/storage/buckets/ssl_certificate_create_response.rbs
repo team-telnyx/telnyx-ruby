@@ -1,0 +1,26 @@
+module Telnyx
+  module Models
+    module Storage
+      module Buckets
+        type ssl_certificate_create_response =
+          { data: Telnyx::Storage::Buckets::BucketsSslCertificate }
+
+        class SslCertificateCreateResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: Telnyx::Storage::Buckets::BucketsSslCertificate?
+
+          def data=: (
+            Telnyx::Storage::Buckets::BucketsSslCertificate
+          ) -> Telnyx::Storage::Buckets::BucketsSslCertificate
+
+          def initialize: (
+            ?data: Telnyx::Storage::Buckets::BucketsSslCertificate
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::Storage::Buckets::BucketsSslCertificate
+          }
+        end
+      end
+    end
+  end
+end

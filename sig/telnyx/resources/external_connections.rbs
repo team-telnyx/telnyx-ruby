@@ -1,0 +1,64 @@
+module Telnyx
+  module Resources
+    class ExternalConnections
+      attr_reader log_messages: Telnyx::Resources::ExternalConnections::LogMessages
+
+      attr_reader civic_addresses: Telnyx::Resources::ExternalConnections::CivicAddresses
+
+      attr_reader phone_numbers: Telnyx::Resources::ExternalConnections::PhoneNumbers
+
+      attr_reader releases: Telnyx::Resources::ExternalConnections::Releases
+
+      attr_reader uploads: Telnyx::Resources::ExternalConnections::Uploads
+
+      def create: (
+        external_sip_connection: Telnyx::Models::ExternalConnectionCreateParams::external_sip_connection,
+        outbound: Telnyx::ExternalConnectionCreateParams::Outbound,
+        ?active: bool,
+        ?inbound: Telnyx::ExternalConnectionCreateParams::Inbound,
+        ?tags: ::Array[String],
+        ?webhook_event_failover_url: String?,
+        ?webhook_event_url: String,
+        ?webhook_timeout_secs: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ExternalConnectionCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ExternalConnectionRetrieveResponse
+
+      def update: (
+        String id,
+        outbound: Telnyx::ExternalConnectionUpdateParams::Outbound,
+        ?active: bool,
+        ?inbound: Telnyx::ExternalConnectionUpdateParams::Inbound,
+        ?tags: ::Array[String],
+        ?webhook_event_failover_url: String?,
+        ?webhook_event_url: String,
+        ?webhook_timeout_secs: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ExternalConnectionUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::ExternalConnectionListParams::Filter,
+        ?page: Telnyx::ExternalConnectionListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ExternalConnectionListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ExternalConnectionDeleteResponse
+
+      def update_location: (
+        String location_id,
+        id: String,
+        static_emergency_address_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ExternalConnectionUpdateLocationResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

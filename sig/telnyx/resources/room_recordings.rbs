@@ -1,0 +1,29 @@
+module Telnyx
+  module Resources
+    class RoomRecordings
+      def retrieve: (
+        String room_recording_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RoomRecordingRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::RoomRecordingListParams::Filter,
+        ?page: Telnyx::RoomRecordingListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RoomRecordingListResponse
+
+      def delete: (
+        String room_recording_id,
+        ?request_options: Telnyx::request_opts
+      ) -> nil
+
+      def delete_bulk: (
+        ?filter: Telnyx::RoomRecordingDeleteBulkParams::Filter,
+        ?page: Telnyx::RoomRecordingDeleteBulkParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RoomRecordingDeleteBulkResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,160 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        type call_siprec_json_params =
+          {
+            account_sid: String,
+            connector_name: String,
+            include_metadata_custom_headers: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::include_metadata_custom_headers,
+            name: String,
+            secure: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::secure,
+            session_timeout_secs: Integer,
+            sip_transport: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::sip_transport,
+            status_callback: String,
+            status_callback_method: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::status_callback_method,
+            track: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::track
+          }
+          & Telnyx::Internal::Type::request_parameters
+
+        class CallSiprecJsonParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor account_sid: String
+
+          attr_reader connector_name: String?
+
+          def connector_name=: (String) -> String
+
+          attr_reader include_metadata_custom_headers: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::include_metadata_custom_headers?
+
+          def include_metadata_custom_headers=: (
+            Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::include_metadata_custom_headers
+          ) -> Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::include_metadata_custom_headers
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader secure: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::secure?
+
+          def secure=: (
+            Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::secure
+          ) -> Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::secure
+
+          attr_reader session_timeout_secs: Integer?
+
+          def session_timeout_secs=: (Integer) -> Integer
+
+          attr_reader sip_transport: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::sip_transport?
+
+          def sip_transport=: (
+            Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::sip_transport
+          ) -> Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::sip_transport
+
+          attr_reader status_callback: String?
+
+          def status_callback=: (String) -> String
+
+          attr_reader status_callback_method: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::status_callback_method?
+
+          def status_callback_method=: (
+            Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::status_callback_method
+          ) -> Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::status_callback_method
+
+          attr_reader track: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::track?
+
+          def track=: (
+            Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::track
+          ) -> Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::track
+
+          def initialize: (
+            account_sid: String,
+            ?connector_name: String,
+            ?include_metadata_custom_headers: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::include_metadata_custom_headers,
+            ?name: String,
+            ?secure: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::secure,
+            ?session_timeout_secs: Integer,
+            ?sip_transport: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::sip_transport,
+            ?status_callback: String,
+            ?status_callback_method: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::status_callback_method,
+            ?track: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::track,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            account_sid: String,
+            connector_name: String,
+            include_metadata_custom_headers: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::include_metadata_custom_headers,
+            name: String,
+            secure: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::secure,
+            session_timeout_secs: Integer,
+            sip_transport: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::sip_transport,
+            status_callback: String,
+            status_callback_method: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::status_callback_method,
+            track: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::track,
+            request_options: Telnyx::RequestOptions
+          }
+
+          type include_metadata_custom_headers = true | false
+
+          module IncludeMetadataCustomHeaders
+            extend Telnyx::Internal::Type::Enum
+
+            TRUE: true
+            FALSE: false
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::include_metadata_custom_headers]
+          end
+
+          type secure = true | false
+
+          module Secure
+            extend Telnyx::Internal::Type::Enum
+
+            TRUE: true
+            FALSE: false
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::secure]
+          end
+
+          type sip_transport = :udp | :tcp | :tls
+
+          module SipTransport
+            extend Telnyx::Internal::Type::Enum
+
+            UDP: :udp
+            TCP: :tcp
+            TLS: :tls
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::sip_transport]
+          end
+
+          type status_callback_method = :GET | :POST
+
+          module StatusCallbackMethod
+            extend Telnyx::Internal::Type::Enum
+
+            GET: :GET
+            POST: :POST
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::status_callback_method]
+          end
+
+          type track = :both_tracks | :inbound_track | :outbound_track
+
+          module Track
+            extend Telnyx::Internal::Type::Enum
+
+            BOTH_TRACKS: :both_tracks
+            INBOUND_TRACK: :inbound_track
+            OUTBOUND_TRACK: :outbound_track
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::track]
+          end
+        end
+      end
+    end
+  end
+end

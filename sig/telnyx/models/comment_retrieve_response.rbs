@@ -1,0 +1,121 @@
+module Telnyx
+  module Models
+    type comment_retrieve_response =
+      { data: Telnyx::Models::CommentRetrieveResponse::Data }
+
+    class CommentRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::CommentRetrieveResponse::Data?
+
+      def data=: (
+        Telnyx::Models::CommentRetrieveResponse::Data
+      ) -> Telnyx::Models::CommentRetrieveResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::CommentRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> { data: Telnyx::Models::CommentRetrieveResponse::Data }
+
+      type data =
+        {
+          id: String,
+          body: String,
+          comment_record_id: String,
+          comment_record_type: Telnyx::Models::CommentRetrieveResponse::Data::comment_record_type,
+          commenter: String,
+          commenter_type: Telnyx::Models::CommentRetrieveResponse::Data::commenter_type,
+          created_at: Time,
+          read_at: Time,
+          updated_at: Time
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader body: String?
+
+        def body=: (String) -> String
+
+        attr_reader comment_record_id: String?
+
+        def comment_record_id=: (String) -> String
+
+        attr_reader comment_record_type: Telnyx::Models::CommentRetrieveResponse::Data::comment_record_type?
+
+        def comment_record_type=: (
+          Telnyx::Models::CommentRetrieveResponse::Data::comment_record_type
+        ) -> Telnyx::Models::CommentRetrieveResponse::Data::comment_record_type
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader commenter: String?
+
+        def commenter=: (String) -> String
+
+        attr_reader commenter_type: Telnyx::Models::CommentRetrieveResponse::Data::commenter_type?
+
+        def commenter_type=: (
+          Telnyx::Models::CommentRetrieveResponse::Data::commenter_type
+        ) -> Telnyx::Models::CommentRetrieveResponse::Data::commenter_type
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader read_at: Time?
+
+        def read_at=: (Time) -> Time
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        def initialize: (
+          ?id: String,
+          ?body: String,
+          ?comment_record_id: String,
+          ?comment_record_type: Telnyx::Models::CommentRetrieveResponse::Data::comment_record_type,
+          ?commenter: String,
+          ?commenter_type: Telnyx::Models::CommentRetrieveResponse::Data::commenter_type,
+          ?created_at: Time,
+          ?read_at: Time,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          body: String,
+          comment_record_id: String,
+          comment_record_type: Telnyx::Models::CommentRetrieveResponse::Data::comment_record_type,
+          commenter: String,
+          commenter_type: Telnyx::Models::CommentRetrieveResponse::Data::commenter_type,
+          created_at: Time,
+          read_at: Time,
+          updated_at: Time
+        }
+
+        type comment_record_type = :sub_number_order | :requirement_group
+
+        module CommentRecordType
+          extend Telnyx::Internal::Type::Enum
+
+          SUB_NUMBER_ORDER: :sub_number_order
+          REQUIREMENT_GROUP: :requirement_group
+
+          def self?.values: -> ::Array[Telnyx::Models::CommentRetrieveResponse::Data::comment_record_type]
+        end
+
+        type commenter_type = :admin | :user
+
+        module CommenterType
+          extend Telnyx::Internal::Type::Enum
+
+          ADMIN: :admin
+          USER: :user
+
+          def self?.values: -> ::Array[Telnyx::Models::CommentRetrieveResponse::Data::commenter_type]
+        end
+      end
+    end
+  end
+end

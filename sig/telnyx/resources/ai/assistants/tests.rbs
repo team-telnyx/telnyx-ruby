@@ -1,0 +1,58 @@
+module Telnyx
+  module Resources
+    class AI
+      class Assistants
+        class Tests
+          attr_reader test_suites: Telnyx::Resources::AI::Assistants::Tests::TestSuites
+
+          attr_reader runs: Telnyx::Resources::AI::Assistants::Tests::Runs
+
+          def create: (
+            destination: String,
+            instructions: String,
+            name: String,
+            rubric: ::Array[Telnyx::AI::Assistants::TestCreateParams::Rubric],
+            ?description: String,
+            ?max_duration_seconds: Integer,
+            ?telnyx_conversation_channel: Telnyx::Models::AI::Assistants::telnyx_conversation_channel,
+            ?test_suite: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::Assistants::AssistantTest
+
+          def retrieve: (
+            String test_id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::Assistants::AssistantTest
+
+          def update: (
+            String test_id,
+            ?description: String,
+            ?destination: String,
+            ?instructions: String,
+            ?max_duration_seconds: Integer,
+            ?name: String,
+            ?rubric: ::Array[Telnyx::AI::Assistants::TestUpdateParams::Rubric],
+            ?telnyx_conversation_channel: Telnyx::Models::AI::Assistants::telnyx_conversation_channel,
+            ?test_suite: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::Assistants::AssistantTest
+
+          def list: (
+            ?destination: String,
+            ?page: Telnyx::AI::Assistants::TestListParams::Page,
+            ?telnyx_conversation_channel: String,
+            ?test_suite: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Assistants::TestListResponse
+
+          def delete: (
+            String test_id,
+            ?request_options: Telnyx::request_opts
+          ) -> top
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

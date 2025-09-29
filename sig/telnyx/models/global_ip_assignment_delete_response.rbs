@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    type global_ip_assignment_delete_response =
+      { data: Telnyx::GlobalIPAssignment }
+
+    class GlobalIPAssignmentDeleteResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::GlobalIPAssignment?
+
+      def data=: (Telnyx::GlobalIPAssignment) -> Telnyx::GlobalIPAssignment
+
+      def initialize: (?data: Telnyx::GlobalIPAssignment) -> void
+
+      def to_hash: -> { data: Telnyx::GlobalIPAssignment }
+    end
+  end
+end

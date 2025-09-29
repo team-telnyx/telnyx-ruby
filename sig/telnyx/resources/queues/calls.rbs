@@ -1,0 +1,21 @@
+module Telnyx
+  module Resources
+    class Queues
+      class Calls
+        def retrieve: (
+          String call_control_id,
+          queue_name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Queues::CallRetrieveResponse
+
+        def list: (
+          String queue_name,
+          ?page: Telnyx::Queues::CallListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Queues::CallListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

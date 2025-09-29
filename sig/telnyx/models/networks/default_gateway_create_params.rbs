@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    module Networks
+      type default_gateway_create_params =
+        { wireguard_peer_id: String }
+        & Telnyx::Internal::Type::request_parameters
+
+      class DefaultGatewayCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader wireguard_peer_id: String?
+
+        def wireguard_peer_id=: (String) -> String
+
+        def initialize: (
+          ?wireguard_peer_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          wireguard_peer_id: String,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

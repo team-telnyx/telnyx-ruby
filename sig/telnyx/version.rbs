@@ -1,0 +1,3 @@
+module Telnyx
+  VERSION: String
+end

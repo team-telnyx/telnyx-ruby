@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module Rooms
+      type session_retrieve_response = { data: Telnyx::RoomSession }
+
+      class SessionRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::RoomSession?
+
+        def data=: (Telnyx::RoomSession) -> Telnyx::RoomSession
+
+        def initialize: (?data: Telnyx::RoomSession) -> void
+
+        def to_hash: -> { data: Telnyx::RoomSession }
+      end
+    end
+  end
+end

@@ -1,0 +1,314 @@
+module Telnyx
+  module Models
+    type phone_number_detailed =
+      {
+        id: String,
+        billing_group_id: String,
+        call_forwarding_enabled: bool,
+        call_recording_enabled: bool,
+        caller_id_name_enabled: bool,
+        cnam_listing_enabled: bool,
+        connection_id: String,
+        connection_name: String,
+        :country_iso_alpha2 => String,
+        created_at: String,
+        customer_reference: String,
+        deletion_lock_enabled: bool,
+        emergency_address_id: String,
+        emergency_enabled: bool,
+        emergency_status: Telnyx::Models::PhoneNumberDetailed::emergency_status,
+        external_pin: String,
+        inbound_call_screening: Telnyx::Models::PhoneNumberDetailed::inbound_call_screening,
+        messaging_profile_id: String,
+        messaging_profile_name: String,
+        phone_number: String,
+        phone_number_type: Telnyx::Models::PhoneNumberDetailed::phone_number_type,
+        purchased_at: String,
+        record_type: String,
+        source_type: Telnyx::Models::PhoneNumberDetailed::source_type?,
+        status: Telnyx::Models::PhoneNumberDetailed::status,
+        :t38_fax_gateway_enabled => bool,
+        tags: ::Array[String]
+      }
+
+    class PhoneNumberDetailed < Telnyx::Internal::Type::BaseModel
+      attr_reader billing_group_id: String?
+
+      def billing_group_id=: (String) -> String
+
+      attr_reader connection_id: String?
+
+      def connection_id=: (String) -> String
+
+      attr_reader customer_reference: String?
+
+      def customer_reference=: (String) -> String
+
+      attr_reader deletion_lock_enabled: bool?
+
+      def deletion_lock_enabled=: (bool) -> bool
+
+      attr_reader emergency_status: Telnyx::Models::PhoneNumberDetailed::emergency_status?
+
+      def emergency_status=: (
+        Telnyx::Models::PhoneNumberDetailed::emergency_status
+      ) -> Telnyx::Models::PhoneNumberDetailed::emergency_status
+
+      attr_reader external_pin: String?
+
+      def external_pin=: (String) -> String
+
+      attr_reader inbound_call_screening: Telnyx::Models::PhoneNumberDetailed::inbound_call_screening?
+
+      def inbound_call_screening=: (
+        Telnyx::Models::PhoneNumberDetailed::inbound_call_screening
+      ) -> Telnyx::Models::PhoneNumberDetailed::inbound_call_screening
+
+      attr_reader messaging_profile_id: String?
+
+      def messaging_profile_id=: (String) -> String
+
+      attr_reader messaging_profile_name: String?
+
+      def messaging_profile_name=: (String) -> String
+
+      attr_reader tags: ::Array[String]?
+
+      def tags=: (::Array[String]) -> ::Array[String]
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader call_forwarding_enabled: bool?
+
+      def call_forwarding_enabled=: (bool) -> bool
+
+      attr_reader call_recording_enabled: bool?
+
+      def call_recording_enabled=: (bool) -> bool
+
+      attr_reader caller_id_name_enabled: bool?
+
+      def caller_id_name_enabled=: (bool) -> bool
+
+      attr_reader cnam_listing_enabled: bool?
+
+      def cnam_listing_enabled=: (bool) -> bool
+
+      attr_reader connection_name: String?
+
+      def connection_name=: (String) -> String
+
+      attr_reader country_iso_alpha2: String?
+
+      def country_iso_alpha2=: (String) -> String
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader emergency_address_id: String?
+
+      def emergency_address_id=: (String) -> String
+
+      attr_reader emergency_enabled: bool?
+
+      def emergency_enabled=: (bool) -> bool
+
+      attr_reader phone_number: String?
+
+      def phone_number=: (String) -> String
+
+      attr_reader phone_number_type: Telnyx::Models::PhoneNumberDetailed::phone_number_type?
+
+      def phone_number_type=: (
+        Telnyx::Models::PhoneNumberDetailed::phone_number_type
+      ) -> Telnyx::Models::PhoneNumberDetailed::phone_number_type
+
+      attr_reader purchased_at: String?
+
+      def purchased_at=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_accessor source_type: Telnyx::Models::PhoneNumberDetailed::source_type?
+
+      attr_reader status: Telnyx::Models::PhoneNumberDetailed::status?
+
+      def status=: (
+        Telnyx::Models::PhoneNumberDetailed::status
+      ) -> Telnyx::Models::PhoneNumberDetailed::status
+
+      attr_reader t38_fax_gateway_enabled: bool?
+
+      def t38_fax_gateway_enabled=: (bool) -> bool
+
+      def initialize: (
+        ?id: String,
+        ?billing_group_id: String,
+        ?call_forwarding_enabled: bool,
+        ?call_recording_enabled: bool,
+        ?caller_id_name_enabled: bool,
+        ?cnam_listing_enabled: bool,
+        ?connection_id: String,
+        ?connection_name: String,
+        ?country_iso_alpha2: String,
+        ?created_at: String,
+        ?customer_reference: String,
+        ?deletion_lock_enabled: bool,
+        ?emergency_address_id: String,
+        ?emergency_enabled: bool,
+        ?emergency_status: Telnyx::Models::PhoneNumberDetailed::emergency_status,
+        ?external_pin: String,
+        ?inbound_call_screening: Telnyx::Models::PhoneNumberDetailed::inbound_call_screening,
+        ?messaging_profile_id: String,
+        ?messaging_profile_name: String,
+        ?phone_number: String,
+        ?phone_number_type: Telnyx::Models::PhoneNumberDetailed::phone_number_type,
+        ?purchased_at: String,
+        ?record_type: String,
+        ?source_type: Telnyx::Models::PhoneNumberDetailed::source_type?,
+        ?status: Telnyx::Models::PhoneNumberDetailed::status,
+        ?t38_fax_gateway_enabled: bool,
+        ?tags: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        billing_group_id: String,
+        call_forwarding_enabled: bool,
+        call_recording_enabled: bool,
+        caller_id_name_enabled: bool,
+        cnam_listing_enabled: bool,
+        connection_id: String,
+        connection_name: String,
+        :country_iso_alpha2 => String,
+        created_at: String,
+        customer_reference: String,
+        deletion_lock_enabled: bool,
+        emergency_address_id: String,
+        emergency_enabled: bool,
+        emergency_status: Telnyx::Models::PhoneNumberDetailed::emergency_status,
+        external_pin: String,
+        inbound_call_screening: Telnyx::Models::PhoneNumberDetailed::inbound_call_screening,
+        messaging_profile_id: String,
+        messaging_profile_name: String,
+        phone_number: String,
+        phone_number_type: Telnyx::Models::PhoneNumberDetailed::phone_number_type,
+        purchased_at: String,
+        record_type: String,
+        source_type: Telnyx::Models::PhoneNumberDetailed::source_type?,
+        status: Telnyx::Models::PhoneNumberDetailed::status,
+        :t38_fax_gateway_enabled => bool,
+        tags: ::Array[String]
+      }
+
+      type emergency_status =
+        :active
+        | :deprovisioning
+        | :disabled
+        | :provisioning
+        | :"provisioning-failed"
+
+      module EmergencyStatus
+        extend Telnyx::Internal::Type::Enum
+
+        ACTIVE: :active
+        DEPROVISIONING: :deprovisioning
+        DISABLED: :disabled
+        PROVISIONING: :provisioning
+        PROVISIONING_FAILED: :"provisioning-failed"
+
+        def self?.values: -> ::Array[Telnyx::Models::PhoneNumberDetailed::emergency_status]
+      end
+
+      type inbound_call_screening = :disabled | :reject_calls | :flag_calls
+
+      module InboundCallScreening
+        extend Telnyx::Internal::Type::Enum
+
+        DISABLED: :disabled
+        REJECT_CALLS: :reject_calls
+        FLAG_CALLS: :flag_calls
+
+        def self?.values: -> ::Array[Telnyx::Models::PhoneNumberDetailed::inbound_call_screening]
+      end
+
+      type phone_number_type =
+        :local
+        | :toll_free
+        | :mobile
+        | :national
+        | :shared_cost
+        | :landline
+        | :tollfree
+        | :shortcode
+        | :longcode
+
+      module PhoneNumberType
+        extend Telnyx::Internal::Type::Enum
+
+        LOCAL: :local
+        TOLL_FREE: :toll_free
+        MOBILE: :mobile
+        NATIONAL: :national
+        SHARED_COST: :shared_cost
+        LANDLINE: :landline
+        TOLLFREE: :tollfree
+        SHORTCODE: :shortcode
+        LONGCODE: :longcode
+
+        def self?.values: -> ::Array[Telnyx::Models::PhoneNumberDetailed::phone_number_type]
+      end
+
+      type source_type = :number_order | :port_request
+
+      module SourceType
+        extend Telnyx::Internal::Type::Enum
+
+        NUMBER_ORDER: :number_order
+        PORT_REQUEST: :port_request
+
+        def self?.values: -> ::Array[Telnyx::Models::PhoneNumberDetailed::source_type]
+      end
+
+      type status =
+        :"purchase-pending"
+        | :"purchase-failed"
+        | :"port-pending"
+        | :"port-failed"
+        | :active
+        | :deleted
+        | :"emergency-only"
+        | :"ported-out"
+        | :"port-out-pending"
+        | :"requirement-info-pending"
+        | :"requirement-info-under-review"
+        | :"requirement-info-exception"
+        | :"provision-pending"
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PURCHASE_PENDING: :"purchase-pending"
+        PURCHASE_FAILED: :"purchase-failed"
+        PORT_PENDING: :"port-pending"
+        PORT_FAILED: :"port-failed"
+        ACTIVE: :active
+        DELETED: :deleted
+        EMERGENCY_ONLY: :"emergency-only"
+        PORTED_OUT: :"ported-out"
+        PORT_OUT_PENDING: :"port-out-pending"
+        REQUIREMENT_INFO_PENDING: :"requirement-info-pending"
+        REQUIREMENT_INFO_UNDER_REVIEW: :"requirement-info-under-review"
+        REQUIREMENT_INFO_EXCEPTION: :"requirement-info-exception"
+        PROVISION_PENDING: :"provision-pending"
+
+        def self?.values: -> ::Array[Telnyx::Models::PhoneNumberDetailed::status]
+      end
+    end
+  end
+end

@@ -1,0 +1,24 @@
+module Telnyx
+  module Resources
+    class AccessIPRanges
+      def create: (
+        cidr_block: String,
+        ?description: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::AccessIPRange
+
+      def list: (
+        ?filter: Telnyx::AccessIPRangeListParams::Filter,
+        ?page: Telnyx::AccessIPRangeListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AccessIPRangeListResponse
+
+      def delete: (
+        String access_ip_range_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::AccessIPRange
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    type ledger_billing_group_report_create_params =
+      { month: Integer, year: Integer }
+      & Telnyx::Internal::Type::request_parameters
+
+    class LedgerBillingGroupReportCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader month: Integer?
+
+      def month=: (Integer) -> Integer
+
+      attr_reader year: Integer?
+
+      def year=: (Integer) -> Integer
+
+      def initialize: (
+        ?month: Integer,
+        ?year: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        month: Integer,
+        year: Integer,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

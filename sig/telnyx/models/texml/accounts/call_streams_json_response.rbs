@@ -1,0 +1,80 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        type call_streams_json_response =
+          {
+            account_sid: String,
+            call_sid: String,
+            date_updated: Time,
+            name: String,
+            sid: String,
+            status: Telnyx::Models::Texml::Accounts::CallStreamsJsonResponse::status,
+            uri: String
+          }
+
+        class CallStreamsJsonResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader account_sid: String?
+
+          def account_sid=: (String) -> String
+
+          attr_reader call_sid: String?
+
+          def call_sid=: (String) -> String
+
+          attr_reader date_updated: Time?
+
+          def date_updated=: (Time) -> Time
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader sid: String?
+
+          def sid=: (String) -> String
+
+          attr_reader status: Telnyx::Models::Texml::Accounts::CallStreamsJsonResponse::status?
+
+          def status=: (
+            Telnyx::Models::Texml::Accounts::CallStreamsJsonResponse::status
+          ) -> Telnyx::Models::Texml::Accounts::CallStreamsJsonResponse::status
+
+          attr_reader uri: String?
+
+          def uri=: (String) -> String
+
+          def initialize: (
+            ?account_sid: String,
+            ?call_sid: String,
+            ?date_updated: Time,
+            ?name: String,
+            ?sid: String,
+            ?status: Telnyx::Models::Texml::Accounts::CallStreamsJsonResponse::status,
+            ?uri: String
+          ) -> void
+
+          def to_hash: -> {
+            account_sid: String,
+            call_sid: String,
+            date_updated: Time,
+            name: String,
+            sid: String,
+            status: Telnyx::Models::Texml::Accounts::CallStreamsJsonResponse::status,
+            uri: String
+          }
+
+          type status = :"in-progress"
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            IN_PROGRESS: :"in-progress"
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallStreamsJsonResponse::status]
+          end
+        end
+      end
+    end
+  end
+end

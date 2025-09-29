@@ -1,0 +1,13 @@
+module Telnyx
+  module Resources
+    class Texml
+      class Accounts
+        class Transcriptions
+          attr_reader json: Telnyx::Resources::Texml::Accounts::Transcriptions::Json
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

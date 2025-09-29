@@ -1,0 +1,48 @@
+module Telnyx
+  module Models
+    module AI
+      module Conversations
+        type insight_list_params =
+          { page: Telnyx::AI::Conversations::InsightListParams::Page }
+          & Telnyx::Internal::Type::request_parameters
+
+        class InsightListParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_reader page: Telnyx::AI::Conversations::InsightListParams::Page?
+
+          def page=: (
+            Telnyx::AI::Conversations::InsightListParams::Page
+          ) -> Telnyx::AI::Conversations::InsightListParams::Page
+
+          def initialize: (
+            ?page: Telnyx::AI::Conversations::InsightListParams::Page,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            page: Telnyx::AI::Conversations::InsightListParams::Page,
+            request_options: Telnyx::RequestOptions
+          }
+
+          type page = { number: Integer, size: Integer }
+
+          class Page < Telnyx::Internal::Type::BaseModel
+            attr_reader number: Integer?
+
+            def number=: (Integer) -> Integer
+
+            attr_reader size: Integer?
+
+            def size=: (Integer) -> Integer
+
+            def initialize: (?number: Integer, ?size: Integer) -> void
+
+            def to_hash: -> { number: Integer, size: Integer }
+          end
+        end
+      end
+    end
+  end
+end

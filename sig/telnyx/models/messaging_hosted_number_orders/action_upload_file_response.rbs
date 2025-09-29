@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module MessagingHostedNumberOrders
+      type action_upload_file_response =
+        { data: Telnyx::MessagingHostedNumberOrder }
+
+      class ActionUploadFileResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::MessagingHostedNumberOrder?
+
+        def data=: (
+          Telnyx::MessagingHostedNumberOrder
+        ) -> Telnyx::MessagingHostedNumberOrder
+
+        def initialize: (?data: Telnyx::MessagingHostedNumberOrder) -> void
+
+        def to_hash: -> { data: Telnyx::MessagingHostedNumberOrder }
+      end
+    end
+  end
+end

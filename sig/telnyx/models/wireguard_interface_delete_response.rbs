@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    type wireguard_interface_delete_response =
+      { data: Telnyx::Models::WireguardInterfaceDeleteResponse::Data }
+
+    class WireguardInterfaceDeleteResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::WireguardInterfaceDeleteResponse::Data?
+
+      def data=: (
+        Telnyx::Models::WireguardInterfaceDeleteResponse::Data
+      ) -> Telnyx::Models::WireguardInterfaceDeleteResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::WireguardInterfaceDeleteResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::WireguardInterfaceDeleteResponse::Data
+      }
+    end
+  end
+end

@@ -1,0 +1,33 @@
+module Telnyx
+  module Models
+    module PhoneNumbers
+      type messaging_list_response =
+        {
+          data: ::Array[Telnyx::PhoneNumberWithMessagingSettings],
+          meta: Telnyx::PaginationMeta
+        }
+
+      class MessagingListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::PhoneNumberWithMessagingSettings]?
+
+        def data=: (
+          ::Array[Telnyx::PhoneNumberWithMessagingSettings]
+        ) -> ::Array[Telnyx::PhoneNumberWithMessagingSettings]
+
+        attr_reader meta: Telnyx::PaginationMeta?
+
+        def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+        def initialize: (
+          ?data: ::Array[Telnyx::PhoneNumberWithMessagingSettings],
+          ?meta: Telnyx::PaginationMeta
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::PhoneNumberWithMessagingSettings],
+          meta: Telnyx::PaginationMeta
+        }
+      end
+    end
+  end
+end

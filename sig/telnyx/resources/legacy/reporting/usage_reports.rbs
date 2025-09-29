@@ -1,0 +1,23 @@
+module Telnyx
+  module Resources
+    class Legacy
+      class Reporting
+        class UsageReports
+          attr_reader messaging: Telnyx::Resources::Legacy::Reporting::UsageReports::Messaging
+
+          attr_reader number_lookup: Telnyx::Resources::Legacy::Reporting::UsageReports::NumberLookup
+
+          attr_reader voice: Telnyx::Resources::Legacy::Reporting::UsageReports::Voice
+
+          def retrieve_speech_to_text: (
+            ?end_date: Time,
+            ?start_date: Time,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Legacy::Reporting::UsageReportRetrieveSpeechToTextResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

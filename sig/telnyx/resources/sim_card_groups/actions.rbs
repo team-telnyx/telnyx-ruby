@@ -1,0 +1,45 @@
+module Telnyx
+  module Resources
+    class SimCardGroups
+      class Actions
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCardGroups::ActionRetrieveResponse
+
+        def list: (
+          ?filter_sim_card_group_id: String,
+          ?filter_status: Telnyx::Models::SimCardGroups::ActionListParams::filter_status,
+          ?filter_type: Telnyx::Models::SimCardGroups::ActionListParams::filter_type,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCardGroups::ActionListResponse
+
+        def remove_private_wireless_gateway: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCardGroups::ActionRemovePrivateWirelessGatewayResponse
+
+        def remove_wireless_blocklist: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCardGroups::ActionRemoveWirelessBlocklistResponse
+
+        def set_private_wireless_gateway: (
+          String id,
+          private_wireless_gateway_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCardGroups::ActionSetPrivateWirelessGatewayResponse
+
+        def set_wireless_blocklist: (
+          String id,
+          wireless_blocklist_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCardGroups::ActionSetWirelessBlocklistResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

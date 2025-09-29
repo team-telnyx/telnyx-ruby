@@ -1,0 +1,129 @@
+module Telnyx
+  module Models
+    type access_ip_address_list_params =
+      {
+        filter: Telnyx::AccessIPAddressListParams::Filter,
+        page: Telnyx::AccessIPAddressListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class AccessIPAddressListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::AccessIPAddressListParams::Filter?
+
+      def filter=: (
+        Telnyx::AccessIPAddressListParams::Filter
+      ) -> Telnyx::AccessIPAddressListParams::Filter
+
+      attr_reader page: Telnyx::AccessIPAddressListParams::Page?
+
+      def page=: (
+        Telnyx::AccessIPAddressListParams::Page
+      ) -> Telnyx::AccessIPAddressListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::AccessIPAddressListParams::Filter,
+        ?page: Telnyx::AccessIPAddressListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::AccessIPAddressListParams::Filter,
+        page: Telnyx::AccessIPAddressListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          created_at: Telnyx::Models::AccessIPAddressListParams::Filter::created_at,
+          ip_address: String,
+          ip_source: String
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader created_at: Telnyx::Models::AccessIPAddressListParams::Filter::created_at?
+
+        def created_at=: (
+          Telnyx::Models::AccessIPAddressListParams::Filter::created_at
+        ) -> Telnyx::Models::AccessIPAddressListParams::Filter::created_at
+
+        attr_reader ip_address: String?
+
+        def ip_address=: (String) -> String
+
+        attr_reader ip_source: String?
+
+        def ip_source=: (String) -> String
+
+        def initialize: (
+          ?created_at: Telnyx::Models::AccessIPAddressListParams::Filter::created_at,
+          ?ip_address: String,
+          ?ip_source: String
+        ) -> void
+
+        def to_hash: -> {
+          created_at: Telnyx::Models::AccessIPAddressListParams::Filter::created_at,
+          ip_address: String,
+          ip_source: String
+        }
+
+        type created_at =
+          Time
+          | Telnyx::AccessIPAddressListParams::Filter::CreatedAt::DateRangeFilter
+
+        module CreatedAt
+          extend Telnyx::Internal::Type::Union
+
+          type date_range_filter = { gt: Time, gte: Time, lt: Time, lte: Time }
+
+          class DateRangeFilter < Telnyx::Internal::Type::BaseModel
+            attr_reader gt: Time?
+
+            def gt=: (Time) -> Time
+
+            attr_reader gte: Time?
+
+            def gte=: (Time) -> Time
+
+            attr_reader lt: Time?
+
+            def lt=: (Time) -> Time
+
+            attr_reader lte: Time?
+
+            def lte=: (Time) -> Time
+
+            def initialize: (
+              ?gt: Time,
+              ?gte: Time,
+              ?lt: Time,
+              ?lte: Time
+            ) -> void
+
+            def to_hash: -> { gt: Time, gte: Time, lt: Time, lte: Time }
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::AccessIPAddressListParams::Filter::created_at]
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

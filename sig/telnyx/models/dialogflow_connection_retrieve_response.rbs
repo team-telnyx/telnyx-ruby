@@ -1,0 +1,65 @@
+module Telnyx
+  module Models
+    type dialogflow_connection_retrieve_response =
+      { data: Telnyx::Models::DialogflowConnectionRetrieveResponse::Data }
+
+    class DialogflowConnectionRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::Models::DialogflowConnectionRetrieveResponse::Data
+
+      def initialize: (
+        data: Telnyx::Models::DialogflowConnectionRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::DialogflowConnectionRetrieveResponse::Data
+      }
+
+      type data =
+        {
+          connection_id: String,
+          conversation_profile_id: String,
+          environment: String,
+          record_type: String,
+          service_account: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader conversation_profile_id: String?
+
+        def conversation_profile_id=: (String) -> String
+
+        attr_reader environment: String?
+
+        def environment=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader service_account: String?
+
+        def service_account=: (String) -> String
+
+        def initialize: (
+          ?connection_id: String,
+          ?conversation_profile_id: String,
+          ?environment: String,
+          ?record_type: String,
+          ?service_account: String
+        ) -> void
+
+        def to_hash: -> {
+          connection_id: String,
+          conversation_profile_id: String,
+          environment: String,
+          record_type: String,
+          service_account: String
+        }
+      end
+    end
+  end
+end

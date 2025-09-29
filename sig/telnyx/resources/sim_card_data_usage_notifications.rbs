@@ -1,0 +1,37 @@
+module Telnyx
+  module Resources
+    class SimCardDataUsageNotifications
+      def create: (
+        sim_card_id: String,
+        threshold: Telnyx::SimCardDataUsageNotificationCreateParams::Threshold,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardDataUsageNotificationCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardDataUsageNotificationRetrieveResponse
+
+      def update: (
+        String id,
+        ?sim_card_id: String,
+        ?threshold: Telnyx::SimCardDataUsageNotification::Threshold,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardDataUsageNotificationUpdateResponse
+
+      def list: (
+        ?filter_sim_card_id: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardDataUsageNotificationListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardDataUsageNotificationDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

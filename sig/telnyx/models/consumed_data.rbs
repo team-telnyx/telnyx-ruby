@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    type consumed_data = { amount: String, unit: String }
+
+    class ConsumedData < Telnyx::Internal::Type::BaseModel
+      attr_reader amount: String?
+
+      def amount=: (String) -> String
+
+      attr_reader unit: String?
+
+      def unit=: (String) -> String
+
+      def initialize: (?amount: String, ?unit: String) -> void
+
+      def to_hash: -> { amount: String, unit: String }
+    end
+  end
+end

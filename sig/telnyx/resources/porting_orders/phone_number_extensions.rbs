@@ -1,0 +1,31 @@
+module Telnyx
+  module Resources
+    class PortingOrders
+      class PhoneNumberExtensions
+        def create: (
+          String porting_order_id,
+          activation_ranges: ::Array[Telnyx::PortingOrders::PhoneNumberExtensionCreateParams::ActivationRange],
+          extension_range: Telnyx::PortingOrders::PhoneNumberExtensionCreateParams::ExtensionRange,
+          porting_phone_number_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::PhoneNumberExtensionCreateResponse
+
+        def list: (
+          String porting_order_id,
+          ?filter: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Filter,
+          ?page: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Page,
+          ?sort: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Sort,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::PhoneNumberExtensionListResponse
+
+        def delete: (
+          String id,
+          porting_order_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::PhoneNumberExtensionDeleteResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

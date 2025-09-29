@@ -1,0 +1,24 @@
+module Telnyx
+  module Models
+    type ai_summarize_response =
+      { data: Telnyx::Models::AISummarizeResponse::Data }
+
+    class AISummarizeResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::Models::AISummarizeResponse::Data
+
+      def initialize: (data: Telnyx::Models::AISummarizeResponse::Data) -> void
+
+      def to_hash: -> { data: Telnyx::Models::AISummarizeResponse::Data }
+
+      type data = { summary: String }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor summary: String
+
+        def initialize: (summary: String) -> void
+
+        def to_hash: -> { summary: String }
+      end
+    end
+  end
+end

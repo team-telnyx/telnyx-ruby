@@ -1,0 +1,101 @@
+module Telnyx
+  module Models
+    type porting_phone_number_list_params =
+      {
+        filter: Telnyx::PortingPhoneNumberListParams::Filter,
+        page: Telnyx::PortingPhoneNumberListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class PortingPhoneNumberListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::PortingPhoneNumberListParams::Filter?
+
+      def filter=: (
+        Telnyx::PortingPhoneNumberListParams::Filter
+      ) -> Telnyx::PortingPhoneNumberListParams::Filter
+
+      attr_reader page: Telnyx::PortingPhoneNumberListParams::Page?
+
+      def page=: (
+        Telnyx::PortingPhoneNumberListParams::Page
+      ) -> Telnyx::PortingPhoneNumberListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::PortingPhoneNumberListParams::Filter,
+        ?page: Telnyx::PortingPhoneNumberListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::PortingPhoneNumberListParams::Filter,
+        page: Telnyx::PortingPhoneNumberListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          porting_order_status: Telnyx::Models::PortingPhoneNumberListParams::Filter::porting_order_status
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader porting_order_status: Telnyx::Models::PortingPhoneNumberListParams::Filter::porting_order_status?
+
+        def porting_order_status=: (
+          Telnyx::Models::PortingPhoneNumberListParams::Filter::porting_order_status
+        ) -> Telnyx::Models::PortingPhoneNumberListParams::Filter::porting_order_status
+
+        def initialize: (
+          ?porting_order_status: Telnyx::Models::PortingPhoneNumberListParams::Filter::porting_order_status
+        ) -> void
+
+        def to_hash: -> {
+          porting_order_status: Telnyx::Models::PortingPhoneNumberListParams::Filter::porting_order_status
+        }
+
+        type porting_order_status =
+          :draft
+          | :"in-process"
+          | :submitted
+          | :exception
+          | :"foc-date-confirmed"
+          | :"cancel-pending"
+          | :ported
+          | :cancelled
+
+        module PortingOrderStatus
+          extend Telnyx::Internal::Type::Enum
+
+          DRAFT: :draft
+          IN_PROCESS: :"in-process"
+          SUBMITTED: :submitted
+          EXCEPTION: :exception
+          FOC_DATE_CONFIRMED: :"foc-date-confirmed"
+          CANCEL_PENDING: :"cancel-pending"
+          PORTED: :ported
+          CANCELLED: :cancelled
+
+          def self?.values: -> ::Array[Telnyx::Models::PortingPhoneNumberListParams::Filter::porting_order_status]
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

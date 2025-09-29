@@ -1,0 +1,117 @@
+module Telnyx
+  module Models
+    type porting_orders_activation_job =
+      {
+        id: String,
+        activate_at: Time,
+        activation_type: Telnyx::Models::PortingOrdersActivationJob::activation_type,
+        activation_windows: ::Array[Telnyx::PortingOrdersActivationJob::ActivationWindow],
+        created_at: Time,
+        record_type: String,
+        status: Telnyx::Models::PortingOrdersActivationJob::status,
+        updated_at: Time
+      }
+
+    class PortingOrdersActivationJob < Telnyx::Internal::Type::BaseModel
+      attr_reader activate_at: Time?
+
+      def activate_at=: (Time) -> Time
+
+      attr_reader activation_type: Telnyx::Models::PortingOrdersActivationJob::activation_type?
+
+      def activation_type=: (
+        Telnyx::Models::PortingOrdersActivationJob::activation_type
+      ) -> Telnyx::Models::PortingOrdersActivationJob::activation_type
+
+      attr_reader activation_windows: ::Array[Telnyx::PortingOrdersActivationJob::ActivationWindow]?
+
+      def activation_windows=: (
+        ::Array[Telnyx::PortingOrdersActivationJob::ActivationWindow]
+      ) -> ::Array[Telnyx::PortingOrdersActivationJob::ActivationWindow]
+
+      attr_reader status: Telnyx::Models::PortingOrdersActivationJob::status?
+
+      def status=: (
+        Telnyx::Models::PortingOrdersActivationJob::status
+      ) -> Telnyx::Models::PortingOrdersActivationJob::status
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        ?id: String,
+        ?activate_at: Time,
+        ?activation_type: Telnyx::Models::PortingOrdersActivationJob::activation_type,
+        ?activation_windows: ::Array[Telnyx::PortingOrdersActivationJob::ActivationWindow],
+        ?created_at: Time,
+        ?record_type: String,
+        ?status: Telnyx::Models::PortingOrdersActivationJob::status,
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        activate_at: Time,
+        activation_type: Telnyx::Models::PortingOrdersActivationJob::activation_type,
+        activation_windows: ::Array[Telnyx::PortingOrdersActivationJob::ActivationWindow],
+        created_at: Time,
+        record_type: String,
+        status: Telnyx::Models::PortingOrdersActivationJob::status,
+        updated_at: Time
+      }
+
+      type activation_type = :scheduled | :"on-demand"
+
+      module ActivationType
+        extend Telnyx::Internal::Type::Enum
+
+        SCHEDULED: :scheduled
+        ON_DEMAND: :"on-demand"
+
+        def self?.values: -> ::Array[Telnyx::Models::PortingOrdersActivationJob::activation_type]
+      end
+
+      type activation_window = { end_at: Time, start_at: Time }
+
+      class ActivationWindow < Telnyx::Internal::Type::BaseModel
+        attr_reader end_at: Time?
+
+        def end_at=: (Time) -> Time
+
+        attr_reader start_at: Time?
+
+        def start_at=: (Time) -> Time
+
+        def initialize: (?end_at: Time, ?start_at: Time) -> void
+
+        def to_hash: -> { end_at: Time, start_at: Time }
+      end
+
+      type status = :created | :"in-process" | :completed | :failed
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        CREATED: :created
+        IN_PROCESS: :"in-process"
+        COMPLETED: :completed
+        FAILED: :failed
+
+        def self?.values: -> ::Array[Telnyx::Models::PortingOrdersActivationJob::status]
+      end
+    end
+  end
+end

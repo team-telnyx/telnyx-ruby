@@ -1,0 +1,24 @@
+module Telnyx
+  module Resources
+    class PortingOrders
+      class ActionRequirements
+        def list: (
+          String porting_order_id,
+          ?filter: Telnyx::PortingOrders::ActionRequirementListParams::Filter,
+          ?page: Telnyx::PortingOrders::ActionRequirementListParams::Page,
+          ?sort: Telnyx::PortingOrders::ActionRequirementListParams::Sort,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::ActionRequirementListResponse
+
+        def initiate: (
+          String id,
+          porting_order_id: String,
+          params: Telnyx::PortingOrders::ActionRequirementInitiateParams::Params,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::ActionRequirementInitiateResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

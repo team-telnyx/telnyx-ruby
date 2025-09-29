@@ -1,0 +1,37 @@
+module Telnyx
+  module Resources
+    class Rooms
+      class Sessions
+        class Actions
+          def end_: (
+            String room_session_id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Rooms::Sessions::ActionEndResponse
+
+          def kick: (
+            String room_session_id,
+            ?exclude: ::Array[String],
+            ?participants: Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::participants,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Rooms::Sessions::ActionKickResponse
+
+          def mute: (
+            String room_session_id,
+            ?exclude: ::Array[String],
+            ?participants: Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::participants,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Rooms::Sessions::ActionMuteResponse
+
+          def unmute: (
+            String room_session_id,
+            ?exclude: ::Array[String],
+            ?participants: Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::participants,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Rooms::Sessions::ActionUnmuteResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

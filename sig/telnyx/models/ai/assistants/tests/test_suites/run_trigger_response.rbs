@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        module Tests
+          module TestSuites
+            type run_trigger_response =
+              ::Array[Telnyx::AI::Assistants::Tests::TestRunResponse]
+
+            RunTriggerResponse: Telnyx::Internal::Type::Converter
+          end
+        end
+      end
+    end
+  end
+end

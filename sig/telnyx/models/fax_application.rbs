@@ -1,0 +1,178 @@
+module Telnyx
+  module Models
+    type fax_application =
+      {
+        id: String,
+        active: bool,
+        anchorsite_override: Telnyx::Models::anchorsite_override,
+        application_name: String,
+        created_at: String,
+        inbound: Telnyx::FaxApplication::Inbound,
+        outbound: Telnyx::FaxApplication::Outbound,
+        record_type: String,
+        tags: ::Array[String],
+        updated_at: String,
+        webhook_event_failover_url: String?,
+        webhook_event_url: String,
+        webhook_timeout_secs: Integer?
+      }
+
+    class FaxApplication < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader active: bool?
+
+      def active=: (bool) -> bool
+
+      attr_reader anchorsite_override: Telnyx::Models::anchorsite_override?
+
+      def anchorsite_override=: (
+        Telnyx::Models::anchorsite_override
+      ) -> Telnyx::Models::anchorsite_override
+
+      attr_reader application_name: String?
+
+      def application_name=: (String) -> String
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader inbound: Telnyx::FaxApplication::Inbound?
+
+      def inbound=: (
+        Telnyx::FaxApplication::Inbound
+      ) -> Telnyx::FaxApplication::Inbound
+
+      attr_reader outbound: Telnyx::FaxApplication::Outbound?
+
+      def outbound=: (
+        Telnyx::FaxApplication::Outbound
+      ) -> Telnyx::FaxApplication::Outbound
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader tags: ::Array[String]?
+
+      def tags=: (::Array[String]) -> ::Array[String]
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      attr_accessor webhook_event_failover_url: String?
+
+      attr_reader webhook_event_url: String?
+
+      def webhook_event_url=: (String) -> String
+
+      attr_accessor webhook_timeout_secs: Integer?
+
+      def initialize: (
+        ?id: String,
+        ?active: bool,
+        ?anchorsite_override: Telnyx::Models::anchorsite_override,
+        ?application_name: String,
+        ?created_at: String,
+        ?inbound: Telnyx::FaxApplication::Inbound,
+        ?outbound: Telnyx::FaxApplication::Outbound,
+        ?record_type: String,
+        ?tags: ::Array[String],
+        ?updated_at: String,
+        ?webhook_event_failover_url: String?,
+        ?webhook_event_url: String,
+        ?webhook_timeout_secs: Integer?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        active: bool,
+        anchorsite_override: Telnyx::Models::anchorsite_override,
+        application_name: String,
+        created_at: String,
+        inbound: Telnyx::FaxApplication::Inbound,
+        outbound: Telnyx::FaxApplication::Outbound,
+        record_type: String,
+        tags: ::Array[String],
+        updated_at: String,
+        webhook_event_failover_url: String?,
+        webhook_event_url: String,
+        webhook_timeout_secs: Integer?
+      }
+
+      type inbound =
+        {
+          channel_limit: Integer,
+          sip_subdomain: String,
+          sip_subdomain_receive_settings: Telnyx::Models::FaxApplication::Inbound::sip_subdomain_receive_settings
+        }
+
+      class Inbound < Telnyx::Internal::Type::BaseModel
+        attr_reader channel_limit: Integer?
+
+        def channel_limit=: (Integer) -> Integer
+
+        attr_reader sip_subdomain: String?
+
+        def sip_subdomain=: (String) -> String
+
+        attr_reader sip_subdomain_receive_settings: Telnyx::Models::FaxApplication::Inbound::sip_subdomain_receive_settings?
+
+        def sip_subdomain_receive_settings=: (
+          Telnyx::Models::FaxApplication::Inbound::sip_subdomain_receive_settings
+        ) -> Telnyx::Models::FaxApplication::Inbound::sip_subdomain_receive_settings
+
+        def initialize: (
+          ?channel_limit: Integer,
+          ?sip_subdomain: String,
+          ?sip_subdomain_receive_settings: Telnyx::Models::FaxApplication::Inbound::sip_subdomain_receive_settings
+        ) -> void
+
+        def to_hash: -> {
+          channel_limit: Integer,
+          sip_subdomain: String,
+          sip_subdomain_receive_settings: Telnyx::Models::FaxApplication::Inbound::sip_subdomain_receive_settings
+        }
+
+        type sip_subdomain_receive_settings =
+          :only_my_connections | :from_anyone
+
+        module SipSubdomainReceiveSettings
+          extend Telnyx::Internal::Type::Enum
+
+          ONLY_MY_CONNECTIONS: :only_my_connections
+          FROM_ANYONE: :from_anyone
+
+          def self?.values: -> ::Array[Telnyx::Models::FaxApplication::Inbound::sip_subdomain_receive_settings]
+        end
+      end
+
+      type outbound =
+        { channel_limit: Integer, outbound_voice_profile_id: String }
+
+      class Outbound < Telnyx::Internal::Type::BaseModel
+        attr_reader channel_limit: Integer?
+
+        def channel_limit=: (Integer) -> Integer
+
+        attr_reader outbound_voice_profile_id: String?
+
+        def outbound_voice_profile_id=: (String) -> String
+
+        def initialize: (
+          ?channel_limit: Integer,
+          ?outbound_voice_profile_id: String
+        ) -> void
+
+        def to_hash: -> {
+          channel_limit: Integer,
+          outbound_voice_profile_id: String
+        }
+      end
+    end
+  end
+end

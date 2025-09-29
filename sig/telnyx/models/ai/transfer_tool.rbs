@@ -1,0 +1,37 @@
+module Telnyx
+  module Models
+    module AI
+      type transfer_tool =
+        {
+          transfer: Telnyx::AI::InferenceEmbeddingTransferToolParams,
+          type: Telnyx::Models::AI::TransferTool::type_
+        }
+
+      class TransferTool < Telnyx::Internal::Type::BaseModel
+        attr_accessor transfer: Telnyx::AI::InferenceEmbeddingTransferToolParams
+
+        attr_accessor type: Telnyx::Models::AI::TransferTool::type_
+
+        def initialize: (
+          transfer: Telnyx::AI::InferenceEmbeddingTransferToolParams,
+          type: Telnyx::Models::AI::TransferTool::type_
+        ) -> void
+
+        def to_hash: -> {
+          transfer: Telnyx::AI::InferenceEmbeddingTransferToolParams,
+          type: Telnyx::Models::AI::TransferTool::type_
+        }
+
+        type type_ = :transfer
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          TRANSFER: :transfer
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::TransferTool::type_]
+        end
+      end
+    end
+  end
+end

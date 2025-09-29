@@ -1,0 +1,25 @@
+module Telnyx
+  module Resources
+    class AI
+      class Conversations
+        class InsightGroups
+          class Insights
+            def assign: (
+              String insight_id,
+              group_id: String,
+              ?request_options: Telnyx::request_opts
+            ) -> top
+
+            def delete_unassign: (
+              String insight_id,
+              group_id: String,
+              ?request_options: Telnyx::request_opts
+            ) -> top
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

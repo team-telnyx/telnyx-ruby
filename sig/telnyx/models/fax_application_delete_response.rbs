@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type fax_application_delete_response = { data: Telnyx::FaxApplication }
+
+    class FaxApplicationDeleteResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::FaxApplication?
+
+      def data=: (Telnyx::FaxApplication) -> Telnyx::FaxApplication
+
+      def initialize: (?data: Telnyx::FaxApplication) -> void
+
+      def to_hash: -> { data: Telnyx::FaxApplication }
+    end
+  end
+end

@@ -1,0 +1,25 @@
+module Telnyx
+  module Resources
+    class Networks
+      class DefaultGateway
+        def create: (
+          String id,
+          ?wireguard_peer_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Networks::DefaultGatewayCreateResponse
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Networks::DefaultGatewayRetrieveResponse
+
+        def delete: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Networks::DefaultGatewayDeleteResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

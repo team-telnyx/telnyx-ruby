@@ -1,0 +1,25 @@
+module Telnyx
+  module Resources
+    class PhoneNumbers
+      class CsvDownloads
+        def create: (
+          ?csv_format: Telnyx::Models::PhoneNumbers::CsvDownloadCreateParams::csv_format,
+          ?filter: Telnyx::PhoneNumbers::CsvDownloadCreateParams::Filter,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::CsvDownloadCreateResponse
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::CsvDownloadRetrieveResponse
+
+        def list: (
+          ?page: Telnyx::PhoneNumbers::CsvDownloadListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::CsvDownloadListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,20 @@
+module Telnyx
+  module Resources
+    class ManagedAccounts
+      class Actions
+        def disable: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ManagedAccounts::ActionDisableResponse
+
+        def enable: (
+          String id,
+          ?reenable_all_connections: bool,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ManagedAccounts::ActionEnableResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

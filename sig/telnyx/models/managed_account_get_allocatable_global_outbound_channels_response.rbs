@@ -1,0 +1,64 @@
+module Telnyx
+  module Models
+    type managed_account_get_allocatable_global_outbound_channels_response =
+      {
+        data: Telnyx::Models::ManagedAccountGetAllocatableGlobalOutboundChannelsResponse::Data
+      }
+
+    class ManagedAccountGetAllocatableGlobalOutboundChannelsResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::ManagedAccountGetAllocatableGlobalOutboundChannelsResponse::Data?
+
+      def data=: (
+        Telnyx::Models::ManagedAccountGetAllocatableGlobalOutboundChannelsResponse::Data
+      ) -> Telnyx::Models::ManagedAccountGetAllocatableGlobalOutboundChannelsResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::ManagedAccountGetAllocatableGlobalOutboundChannelsResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::ManagedAccountGetAllocatableGlobalOutboundChannelsResponse::Data
+      }
+
+      type data =
+        {
+          allocatable_global_outbound_channels: Integer,
+          managed_account_allow_custom_pricing: bool,
+          record_type: String,
+          total_global_channels_allocated: Integer
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader allocatable_global_outbound_channels: Integer?
+
+        def allocatable_global_outbound_channels=: (Integer) -> Integer
+
+        attr_reader managed_account_allow_custom_pricing: bool?
+
+        def managed_account_allow_custom_pricing=: (bool) -> bool
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader total_global_channels_allocated: Integer?
+
+        def total_global_channels_allocated=: (Integer) -> Integer
+
+        def initialize: (
+          ?allocatable_global_outbound_channels: Integer,
+          ?managed_account_allow_custom_pricing: bool,
+          ?record_type: String,
+          ?total_global_channels_allocated: Integer
+        ) -> void
+
+        def to_hash: -> {
+          allocatable_global_outbound_channels: Integer,
+          managed_account_allow_custom_pricing: bool,
+          record_type: String,
+          total_global_channels_allocated: Integer
+        }
+      end
+    end
+  end
+end

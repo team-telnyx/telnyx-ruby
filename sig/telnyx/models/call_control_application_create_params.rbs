@@ -1,0 +1,154 @@
+module Telnyx
+  module Models
+    type call_control_application_create_params =
+      {
+        application_name: String,
+        webhook_event_url: String,
+        active: bool,
+        anchorsite_override: Telnyx::Models::CallControlApplicationCreateParams::anchorsite_override,
+        dtmf_type: Telnyx::Models::CallControlApplicationCreateParams::dtmf_type,
+        first_command_timeout: bool,
+        first_command_timeout_secs: Integer,
+        inbound: Telnyx::CallControlApplicationInbound,
+        outbound: Telnyx::CallControlApplicationOutbound,
+        redact_dtmf_debug_logging: bool,
+        webhook_api_version: Telnyx::Models::CallControlApplicationCreateParams::webhook_api_version,
+        webhook_event_failover_url: String?,
+        webhook_timeout_secs: Integer?
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class CallControlApplicationCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor application_name: String
+
+      attr_accessor webhook_event_url: String
+
+      attr_reader active: bool?
+
+      def active=: (bool) -> bool
+
+      attr_reader anchorsite_override: Telnyx::Models::CallControlApplicationCreateParams::anchorsite_override?
+
+      def anchorsite_override=: (
+        Telnyx::Models::CallControlApplicationCreateParams::anchorsite_override
+      ) -> Telnyx::Models::CallControlApplicationCreateParams::anchorsite_override
+
+      attr_reader dtmf_type: Telnyx::Models::CallControlApplicationCreateParams::dtmf_type?
+
+      def dtmf_type=: (
+        Telnyx::Models::CallControlApplicationCreateParams::dtmf_type
+      ) -> Telnyx::Models::CallControlApplicationCreateParams::dtmf_type
+
+      attr_reader first_command_timeout: bool?
+
+      def first_command_timeout=: (bool) -> bool
+
+      attr_reader first_command_timeout_secs: Integer?
+
+      def first_command_timeout_secs=: (Integer) -> Integer
+
+      attr_reader inbound: Telnyx::CallControlApplicationInbound?
+
+      def inbound=: (
+        Telnyx::CallControlApplicationInbound
+      ) -> Telnyx::CallControlApplicationInbound
+
+      attr_reader outbound: Telnyx::CallControlApplicationOutbound?
+
+      def outbound=: (
+        Telnyx::CallControlApplicationOutbound
+      ) -> Telnyx::CallControlApplicationOutbound
+
+      attr_reader redact_dtmf_debug_logging: bool?
+
+      def redact_dtmf_debug_logging=: (bool) -> bool
+
+      attr_reader webhook_api_version: Telnyx::Models::CallControlApplicationCreateParams::webhook_api_version?
+
+      def webhook_api_version=: (
+        Telnyx::Models::CallControlApplicationCreateParams::webhook_api_version
+      ) -> Telnyx::Models::CallControlApplicationCreateParams::webhook_api_version
+
+      attr_accessor webhook_event_failover_url: String?
+
+      attr_accessor webhook_timeout_secs: Integer?
+
+      def initialize: (
+        application_name: String,
+        webhook_event_url: String,
+        ?active: bool,
+        ?anchorsite_override: Telnyx::Models::CallControlApplicationCreateParams::anchorsite_override,
+        ?dtmf_type: Telnyx::Models::CallControlApplicationCreateParams::dtmf_type,
+        ?first_command_timeout: bool,
+        ?first_command_timeout_secs: Integer,
+        ?inbound: Telnyx::CallControlApplicationInbound,
+        ?outbound: Telnyx::CallControlApplicationOutbound,
+        ?redact_dtmf_debug_logging: bool,
+        ?webhook_api_version: Telnyx::Models::CallControlApplicationCreateParams::webhook_api_version,
+        ?webhook_event_failover_url: String?,
+        ?webhook_timeout_secs: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        application_name: String,
+        webhook_event_url: String,
+        active: bool,
+        anchorsite_override: Telnyx::Models::CallControlApplicationCreateParams::anchorsite_override,
+        dtmf_type: Telnyx::Models::CallControlApplicationCreateParams::dtmf_type,
+        first_command_timeout: bool,
+        first_command_timeout_secs: Integer,
+        inbound: Telnyx::CallControlApplicationInbound,
+        outbound: Telnyx::CallControlApplicationOutbound,
+        redact_dtmf_debug_logging: bool,
+        webhook_api_version: Telnyx::Models::CallControlApplicationCreateParams::webhook_api_version,
+        webhook_event_failover_url: String?,
+        webhook_timeout_secs: Integer?,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type anchorsite_override =
+        :"\"Latency\""
+        | :"\"Chicago, IL\""
+        | :"\"Ashburn, VA\""
+        | :"\"San Jose, CA\""
+
+      module AnchorsiteOverride
+        extend Telnyx::Internal::Type::Enum
+
+        LATENCY: :"\"Latency\""
+        CHICAGO_IL: :"\"Chicago, IL\""
+        ASHBURN_VA: :"\"Ashburn, VA\""
+        SAN_JOSE_CA: :"\"San Jose, CA\""
+
+        def self?.values: -> ::Array[Telnyx::Models::CallControlApplicationCreateParams::anchorsite_override]
+      end
+
+      type dtmf_type = :"RFC 2833" | :Inband | :"SIP INFO"
+
+      module DtmfType
+        extend Telnyx::Internal::Type::Enum
+
+        RFC_2833: :"RFC 2833"
+        INBAND: :Inband
+        SIP_INFO: :"SIP INFO"
+
+        def self?.values: -> ::Array[Telnyx::Models::CallControlApplicationCreateParams::dtmf_type]
+      end
+
+      type webhook_api_version = :"1" | :"2"
+
+      module WebhookAPIVersion
+        extend Telnyx::Internal::Type::Enum
+
+        WEBHOOK_API_VERSION_1: :"1"
+        WEBHOOK_API_VERSION_2: :"2"
+
+        def self?.values: -> ::Array[Telnyx::Models::CallControlApplicationCreateParams::webhook_api_version]
+      end
+    end
+  end
+end

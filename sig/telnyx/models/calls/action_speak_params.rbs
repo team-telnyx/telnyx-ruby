@@ -1,0 +1,190 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_speak_params =
+        {
+          payload: String,
+          voice: String,
+          client_state: String,
+          command_id: String,
+          language: Telnyx::Models::Calls::ActionSpeakParams::language,
+          payload_type: Telnyx::Models::Calls::ActionSpeakParams::payload_type,
+          service_level: Telnyx::Models::Calls::ActionSpeakParams::service_level,
+          stop: String,
+          voice_settings: Telnyx::Models::Calls::ActionSpeakParams::voice_settings
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionSpeakParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor payload: String
+
+        attr_accessor voice: String
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader command_id: String?
+
+        def command_id=: (String) -> String
+
+        attr_reader language: Telnyx::Models::Calls::ActionSpeakParams::language?
+
+        def language=: (
+          Telnyx::Models::Calls::ActionSpeakParams::language
+        ) -> Telnyx::Models::Calls::ActionSpeakParams::language
+
+        attr_reader payload_type: Telnyx::Models::Calls::ActionSpeakParams::payload_type?
+
+        def payload_type=: (
+          Telnyx::Models::Calls::ActionSpeakParams::payload_type
+        ) -> Telnyx::Models::Calls::ActionSpeakParams::payload_type
+
+        attr_reader service_level: Telnyx::Models::Calls::ActionSpeakParams::service_level?
+
+        def service_level=: (
+          Telnyx::Models::Calls::ActionSpeakParams::service_level
+        ) -> Telnyx::Models::Calls::ActionSpeakParams::service_level
+
+        attr_reader stop: String?
+
+        def stop=: (String) -> String
+
+        attr_reader voice_settings: Telnyx::Models::Calls::ActionSpeakParams::voice_settings?
+
+        def voice_settings=: (
+          Telnyx::Models::Calls::ActionSpeakParams::voice_settings
+        ) -> Telnyx::Models::Calls::ActionSpeakParams::voice_settings
+
+        def initialize: (
+          payload: String,
+          voice: String,
+          ?client_state: String,
+          ?command_id: String,
+          ?language: Telnyx::Models::Calls::ActionSpeakParams::language,
+          ?payload_type: Telnyx::Models::Calls::ActionSpeakParams::payload_type,
+          ?service_level: Telnyx::Models::Calls::ActionSpeakParams::service_level,
+          ?stop: String,
+          ?voice_settings: Telnyx::Models::Calls::ActionSpeakParams::voice_settings,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          payload: String,
+          voice: String,
+          client_state: String,
+          command_id: String,
+          language: Telnyx::Models::Calls::ActionSpeakParams::language,
+          payload_type: Telnyx::Models::Calls::ActionSpeakParams::payload_type,
+          service_level: Telnyx::Models::Calls::ActionSpeakParams::service_level,
+          stop: String,
+          voice_settings: Telnyx::Models::Calls::ActionSpeakParams::voice_settings,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type language =
+          :arb
+          | :"cmn-CN"
+          | :"cy-GB"
+          | :"da-DK"
+          | :"de-DE"
+          | :"en-AU"
+          | :"en-GB"
+          | :"en-GB-WLS"
+          | :"en-IN"
+          | :"en-US"
+          | :"es-ES"
+          | :"es-MX"
+          | :"es-US"
+          | :"fr-CA"
+          | :"fr-FR"
+          | :"hi-IN"
+          | :"is-IS"
+          | :"it-IT"
+          | :"ja-JP"
+          | :"ko-KR"
+          | :"nb-NO"
+          | :"nl-NL"
+          | :"pl-PL"
+          | :"pt-BR"
+          | :"pt-PT"
+          | :"ro-RO"
+          | :"ru-RU"
+          | :"sv-SE"
+          | :"tr-TR"
+
+        module Language
+          extend Telnyx::Internal::Type::Enum
+
+          ARB: :arb
+          CMN_CN: :"cmn-CN"
+          CY_GB: :"cy-GB"
+          DA_DK: :"da-DK"
+          DE_DE: :"de-DE"
+          EN_AU: :"en-AU"
+          EN_GB: :"en-GB"
+          EN_GB_WLS: :"en-GB-WLS"
+          EN_IN: :"en-IN"
+          EN_US: :"en-US"
+          ES_ES: :"es-ES"
+          ES_MX: :"es-MX"
+          ES_US: :"es-US"
+          FR_CA: :"fr-CA"
+          FR_FR: :"fr-FR"
+          HI_IN: :"hi-IN"
+          IS_IS: :"is-IS"
+          IT_IT: :"it-IT"
+          JA_JP: :"ja-JP"
+          KO_KR: :"ko-KR"
+          NB_NO: :"nb-NO"
+          NL_NL: :"nl-NL"
+          PL_PL: :"pl-PL"
+          PT_BR: :"pt-BR"
+          PT_PT: :"pt-PT"
+          RO_RO: :"ro-RO"
+          RU_RU: :"ru-RU"
+          SV_SE: :"sv-SE"
+          TR_TR: :"tr-TR"
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionSpeakParams::language]
+        end
+
+        type payload_type = :text | :ssml
+
+        module PayloadType
+          extend Telnyx::Internal::Type::Enum
+
+          TEXT: :text
+          SSML: :ssml
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionSpeakParams::payload_type]
+        end
+
+        type service_level = :basic | :premium
+
+        module ServiceLevel
+          extend Telnyx::Internal::Type::Enum
+
+          BASIC: :basic
+          PREMIUM: :premium
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionSpeakParams::service_level]
+        end
+
+        type voice_settings =
+          Telnyx::Calls::ElevenLabsVoiceSettings
+          | Telnyx::Calls::TelnyxVoiceSettings
+          | top
+
+        module VoiceSettings
+          extend Telnyx::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Telnyx::Models::Calls::ActionSpeakParams::voice_settings]
+        end
+      end
+    end
+  end
+end

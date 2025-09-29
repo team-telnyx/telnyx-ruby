@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type log_message_dismiss_response = { success: bool }
+
+      class LogMessageDismissResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader success: bool?
+
+        def success=: (bool) -> bool
+
+        def initialize: (?success: bool) -> void
+
+        def to_hash: -> { success: bool }
+      end
+    end
+  end
+end

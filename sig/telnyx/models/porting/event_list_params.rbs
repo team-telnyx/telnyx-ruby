@@ -1,0 +1,133 @@
+module Telnyx
+  module Models
+    module Porting
+      type event_list_params =
+        {
+          filter: Telnyx::Porting::EventListParams::Filter,
+          page: Telnyx::Porting::EventListParams::Page
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class EventListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter: Telnyx::Porting::EventListParams::Filter?
+
+        def filter=: (
+          Telnyx::Porting::EventListParams::Filter
+        ) -> Telnyx::Porting::EventListParams::Filter
+
+        attr_reader page: Telnyx::Porting::EventListParams::Page?
+
+        def page=: (
+          Telnyx::Porting::EventListParams::Page
+        ) -> Telnyx::Porting::EventListParams::Page
+
+        def initialize: (
+          ?filter: Telnyx::Porting::EventListParams::Filter,
+          ?page: Telnyx::Porting::EventListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter: Telnyx::Porting::EventListParams::Filter,
+          page: Telnyx::Porting::EventListParams::Page,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter =
+          {
+            created_at: Telnyx::Porting::EventListParams::Filter::CreatedAt,
+            porting_order_id: String,
+            type: Telnyx::Models::Porting::EventListParams::Filter::type_
+          }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader created_at: Telnyx::Porting::EventListParams::Filter::CreatedAt?
+
+          def created_at=: (
+            Telnyx::Porting::EventListParams::Filter::CreatedAt
+          ) -> Telnyx::Porting::EventListParams::Filter::CreatedAt
+
+          attr_reader porting_order_id: String?
+
+          def porting_order_id=: (String) -> String
+
+          attr_reader type: Telnyx::Models::Porting::EventListParams::Filter::type_?
+
+          def type=: (
+            Telnyx::Models::Porting::EventListParams::Filter::type_
+          ) -> Telnyx::Models::Porting::EventListParams::Filter::type_
+
+          def initialize: (
+            ?created_at: Telnyx::Porting::EventListParams::Filter::CreatedAt,
+            ?porting_order_id: String,
+            ?type: Telnyx::Models::Porting::EventListParams::Filter::type_
+          ) -> void
+
+          def to_hash: -> {
+            created_at: Telnyx::Porting::EventListParams::Filter::CreatedAt,
+            porting_order_id: String,
+            type: Telnyx::Models::Porting::EventListParams::Filter::type_
+          }
+
+          type created_at = { gte: Time, lte: Time }
+
+          class CreatedAt < Telnyx::Internal::Type::BaseModel
+            attr_reader gte: Time?
+
+            def gte=: (Time) -> Time
+
+            attr_reader lte: Time?
+
+            def lte=: (Time) -> Time
+
+            def initialize: (?gte: Time, ?lte: Time) -> void
+
+            def to_hash: -> { gte: Time, lte: Time }
+          end
+
+          type type_ =
+            :"porting_order.deleted"
+            | :"porting_order.loa_updated"
+            | :"porting_order.messaging_changed"
+            | :"porting_order.status_changed"
+            | :"porting_order.sharing_token_expired"
+            | :"porting_order.new_comment"
+            | :"porting_order.split"
+
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            PORTING_ORDER_DELETED: :"porting_order.deleted"
+            PORTING_ORDER_LOA_UPDATED: :"porting_order.loa_updated"
+            PORTING_ORDER_MESSAGING_CHANGED: :"porting_order.messaging_changed"
+            PORTING_ORDER_STATUS_CHANGED: :"porting_order.status_changed"
+            PORTING_ORDER_SHARING_TOKEN_EXPIRED: :"porting_order.sharing_token_expired"
+            PORTING_ORDER_NEW_COMMENT: :"porting_order.new_comment"
+            PORTING_ORDER_SPLIT: :"porting_order.split"
+
+            def self?.values: -> ::Array[Telnyx::Models::Porting::EventListParams::Filter::type_]
+          end
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
+        end
+      end
+    end
+  end
+end

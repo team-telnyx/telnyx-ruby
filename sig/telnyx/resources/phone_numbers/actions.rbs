@@ -1,0 +1,27 @@
+module Telnyx
+  module Resources
+    class PhoneNumbers
+      class Actions
+        def change_bundle_status: (
+          String id,
+          bundle_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::ActionChangeBundleStatusResponse
+
+        def enable_emergency: (
+          String id,
+          emergency_address_id: String,
+          emergency_enabled: bool,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::ActionEnableEmergencyResponse
+
+        def verify_ownership: (
+          phone_numbers: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::ActionVerifyOwnershipResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

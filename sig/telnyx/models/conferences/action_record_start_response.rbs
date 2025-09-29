@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    module Conferences
+      type action_record_start_response =
+        { data: Telnyx::Conferences::ConferenceCommandResult }
+
+      class ActionRecordStartResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Conferences::ConferenceCommandResult?
+
+        def data=: (
+          Telnyx::Conferences::ConferenceCommandResult
+        ) -> Telnyx::Conferences::ConferenceCommandResult
+
+        def initialize: (
+          ?data: Telnyx::Conferences::ConferenceCommandResult
+        ) -> void
+
+        def to_hash: -> { data: Telnyx::Conferences::ConferenceCommandResult }
+      end
+    end
+  end
+end

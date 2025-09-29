@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    class TexmlRecordingSubresourcesUris = Texml::TexmlRecordingSubresourcesUris
+
+    module Texml
+      type texml_recording_subresources_uris = { transcriptions: String? }
+
+      class TexmlRecordingSubresourcesUris < Telnyx::Internal::Type::BaseModel
+        attr_accessor transcriptions: String?
+
+        def initialize: (?transcriptions: String?) -> void
+
+        def to_hash: -> { transcriptions: String? }
+      end
+    end
+  end
+end

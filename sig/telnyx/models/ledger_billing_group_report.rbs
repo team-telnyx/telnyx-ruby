@@ -1,0 +1,89 @@
+module Telnyx
+  module Models
+    type ledger_billing_group_report =
+      {
+        id: String,
+        created_at: Time,
+        organization_id: String,
+        record_type: Telnyx::Models::LedgerBillingGroupReport::record_type,
+        report_url: String?,
+        status: Telnyx::Models::LedgerBillingGroupReport::status,
+        updated_at: Time
+      }
+
+    class LedgerBillingGroupReport < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader organization_id: String?
+
+      def organization_id=: (String) -> String
+
+      attr_reader record_type: Telnyx::Models::LedgerBillingGroupReport::record_type?
+
+      def record_type=: (
+        Telnyx::Models::LedgerBillingGroupReport::record_type
+      ) -> Telnyx::Models::LedgerBillingGroupReport::record_type
+
+      attr_accessor report_url: String?
+
+      attr_reader status: Telnyx::Models::LedgerBillingGroupReport::status?
+
+      def status=: (
+        Telnyx::Models::LedgerBillingGroupReport::status
+      ) -> Telnyx::Models::LedgerBillingGroupReport::status
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        ?id: String,
+        ?created_at: Time,
+        ?organization_id: String,
+        ?record_type: Telnyx::Models::LedgerBillingGroupReport::record_type,
+        ?report_url: String?,
+        ?status: Telnyx::Models::LedgerBillingGroupReport::status,
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        organization_id: String,
+        record_type: Telnyx::Models::LedgerBillingGroupReport::record_type,
+        report_url: String?,
+        status: Telnyx::Models::LedgerBillingGroupReport::status,
+        updated_at: Time
+      }
+
+      type record_type = :ledger_billing_group_report
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        LEDGER_BILLING_GROUP_REPORT: :ledger_billing_group_report
+
+        def self?.values: -> ::Array[Telnyx::Models::LedgerBillingGroupReport::record_type]
+      end
+
+      type status = :pending | :complete | :failed | :deleted
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        COMPLETE: :complete
+        FAILED: :failed
+        DELETED: :deleted
+
+        def self?.values: -> ::Array[Telnyx::Models::LedgerBillingGroupReport::status]
+      end
+    end
+  end
+end

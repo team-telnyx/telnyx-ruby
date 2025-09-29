@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    type wireguard_interface_list_response =
+      {
+        data: ::Array[Telnyx::Models::WireguardInterfaceListResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class WireguardInterfaceListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::WireguardInterfaceListResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::WireguardInterfaceListResponse::Data]
+      ) -> ::Array[Telnyx::Models::WireguardInterfaceListResponse::Data]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::WireguardInterfaceListResponse::Data],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::WireguardInterfaceListResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

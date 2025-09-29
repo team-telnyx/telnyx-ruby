@@ -1,0 +1,39 @@
+module Telnyx
+  module Models
+    type number_lookup_retrieve_params =
+      { type: Telnyx::Models::NumberLookupRetrieveParams::type_ }
+      & Telnyx::Internal::Type::request_parameters
+
+    class NumberLookupRetrieveParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader type: Telnyx::Models::NumberLookupRetrieveParams::type_?
+
+      def type=: (
+        Telnyx::Models::NumberLookupRetrieveParams::type_
+      ) -> Telnyx::Models::NumberLookupRetrieveParams::type_
+
+      def initialize: (
+        ?type: Telnyx::Models::NumberLookupRetrieveParams::type_,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        type: Telnyx::Models::NumberLookupRetrieveParams::type_,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type type_ = :carrier | :"caller-name"
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        CARRIER: :carrier
+        CALLER_NAME: :"caller-name"
+
+        def self?.values: -> ::Array[Telnyx::Models::NumberLookupRetrieveParams::type_]
+      end
+    end
+  end
+end

@@ -1,0 +1,78 @@
+module Telnyx
+  module Models
+    type hosted_number =
+      {
+        id: String,
+        phone_number: String,
+        record_type: String,
+        status: Telnyx::Models::HostedNumber::status
+      }
+
+    class HostedNumber < Telnyx::Internal::Type::BaseModel
+      attr_reader phone_number: String?
+
+      def phone_number=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader status: Telnyx::Models::HostedNumber::status?
+
+      def status=: (
+        Telnyx::Models::HostedNumber::status
+      ) -> Telnyx::Models::HostedNumber::status
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?phone_number: String,
+        ?record_type: String,
+        ?status: Telnyx::Models::HostedNumber::status
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        phone_number: String,
+        record_type: String,
+        status: Telnyx::Models::HostedNumber::status
+      }
+
+      type status =
+        :deleted
+        | :failed
+        | :failed_activation
+        | :failed_carrier_rejected
+        | :failed_ineligible_carrier
+        | :failed_number_already_hosted
+        | :failed_number_not_found
+        | :failed_ownership_verification
+        | :failed_timeout
+        | :pending
+        | :provisioning
+        | :successful
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        DELETED: :deleted
+        FAILED: :failed
+        FAILED_ACTIVATION: :failed_activation
+        FAILED_CARRIER_REJECTED: :failed_carrier_rejected
+        FAILED_INELIGIBLE_CARRIER: :failed_ineligible_carrier
+        FAILED_NUMBER_ALREADY_HOSTED: :failed_number_already_hosted
+        FAILED_NUMBER_NOT_FOUND: :failed_number_not_found
+        FAILED_OWNERSHIP_VERIFICATION: :failed_ownership_verification
+        FAILED_TIMEOUT: :failed_timeout
+        PENDING: :pending
+        PROVISIONING: :provisioning
+        SUCCESSFUL: :successful
+
+        def self?.values: -> ::Array[Telnyx::Models::HostedNumber::status]
+      end
+    end
+  end
+end

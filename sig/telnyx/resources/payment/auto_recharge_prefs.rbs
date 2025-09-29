@@ -1,0 +1,22 @@
+module Telnyx
+  module Resources
+    class Payment
+      class AutoRechargePrefs
+        def update: (
+          ?enabled: bool,
+          ?invoice_enabled: bool,
+          ?preference: Telnyx::Models::Payment::AutoRechargePrefUpdateParams::preference,
+          ?recharge_amount: String,
+          ?threshold_amount: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Payment::AutoRechargePrefUpdateResponse
+
+        def list: (
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Payment::AutoRechargePrefListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

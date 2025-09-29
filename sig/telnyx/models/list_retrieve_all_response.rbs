@@ -1,0 +1,89 @@
+module Telnyx
+  module Models
+    type list_retrieve_all_response =
+      {
+        data: ::Array[Telnyx::Models::ListRetrieveAllResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class ListRetrieveAllResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::ListRetrieveAllResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::ListRetrieveAllResponse::Data]
+      ) -> ::Array[Telnyx::Models::ListRetrieveAllResponse::Data]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::ListRetrieveAllResponse::Data],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::ListRetrieveAllResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+      type data =
+        {
+          number_of_channels: Integer,
+          numbers: ::Array[Telnyx::Models::ListRetrieveAllResponse::Data::Number],
+          zone_id: String,
+          zone_name: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader number_of_channels: Integer?
+
+        def number_of_channels=: (Integer) -> Integer
+
+        attr_reader numbers: ::Array[Telnyx::Models::ListRetrieveAllResponse::Data::Number]?
+
+        def numbers=: (
+          ::Array[Telnyx::Models::ListRetrieveAllResponse::Data::Number]
+        ) -> ::Array[Telnyx::Models::ListRetrieveAllResponse::Data::Number]
+
+        attr_reader zone_id: String?
+
+        def zone_id=: (String) -> String
+
+        attr_reader zone_name: String?
+
+        def zone_name=: (String) -> String
+
+        def initialize: (
+          ?number_of_channels: Integer,
+          ?numbers: ::Array[Telnyx::Models::ListRetrieveAllResponse::Data::Number],
+          ?zone_id: String,
+          ?zone_name: String
+        ) -> void
+
+        def to_hash: -> {
+          number_of_channels: Integer,
+          numbers: ::Array[Telnyx::Models::ListRetrieveAllResponse::Data::Number],
+          zone_id: String,
+          zone_name: String
+        }
+
+        type number = { country: String, number: String }
+
+        class Number < Telnyx::Internal::Type::BaseModel
+          attr_reader country: String?
+
+          def country=: (String) -> String
+
+          attr_reader number: String?
+
+          def number=: (String) -> String
+
+          def initialize: (?country: String, ?number: String) -> void
+
+          def to_hash: -> { country: String, number: String }
+        end
+      end
+    end
+  end
+end

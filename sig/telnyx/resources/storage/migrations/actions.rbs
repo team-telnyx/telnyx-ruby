@@ -1,0 +1,16 @@
+module Telnyx
+  module Resources
+    class Storage
+      class Migrations
+        class Actions
+          def stop: (
+            String id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Storage::Migrations::ActionStopResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

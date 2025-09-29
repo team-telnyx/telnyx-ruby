@@ -1,0 +1,18 @@
+module Telnyx
+  module Resources
+    class OtaUpdates
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OtaUpdateRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::OtaUpdateListParams::Filter,
+        ?page: Telnyx::OtaUpdateListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OtaUpdateListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

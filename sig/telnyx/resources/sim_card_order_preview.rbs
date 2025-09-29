@@ -1,0 +1,13 @@
+module Telnyx
+  module Resources
+    class SimCardOrderPreview
+      def preview: (
+        address_id: String,
+        quantity: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardOrderPreviewPreviewResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

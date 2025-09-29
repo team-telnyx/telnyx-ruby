@@ -1,0 +1,26 @@
+module Telnyx
+  module Resources
+    class Portouts
+      class Reports
+        def create: (
+          params: Telnyx::Portouts::ExportPortoutsCsvReport,
+          report_type: Telnyx::Models::Portouts::ReportCreateParams::report_type,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Portouts::ReportCreateResponse
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Portouts::ReportRetrieveResponse
+
+        def list: (
+          ?filter: Telnyx::Portouts::ReportListParams::Filter,
+          ?page: Telnyx::Portouts::ReportListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Portouts::ReportListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

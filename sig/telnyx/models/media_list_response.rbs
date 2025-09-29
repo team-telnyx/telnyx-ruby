@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    type media_list_response =
+      { data: ::Array[Telnyx::MediaResource], meta: Telnyx::PaginationMeta }
+
+    class MediaListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::MediaResource]?
+
+      def data=: (
+        ::Array[Telnyx::MediaResource]
+      ) -> ::Array[Telnyx::MediaResource]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::MediaResource],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::MediaResource],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

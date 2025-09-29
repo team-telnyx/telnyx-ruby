@@ -1,0 +1,219 @@
+module Telnyx
+  module Models
+    type customer_service_record_list_params =
+      {
+        filter: Telnyx::CustomerServiceRecordListParams::Filter,
+        page: Telnyx::CustomerServiceRecordListParams::Page,
+        sort: Telnyx::CustomerServiceRecordListParams::Sort
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class CustomerServiceRecordListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::CustomerServiceRecordListParams::Filter?
+
+      def filter=: (
+        Telnyx::CustomerServiceRecordListParams::Filter
+      ) -> Telnyx::CustomerServiceRecordListParams::Filter
+
+      attr_reader page: Telnyx::CustomerServiceRecordListParams::Page?
+
+      def page=: (
+        Telnyx::CustomerServiceRecordListParams::Page
+      ) -> Telnyx::CustomerServiceRecordListParams::Page
+
+      attr_reader sort: Telnyx::CustomerServiceRecordListParams::Sort?
+
+      def sort=: (
+        Telnyx::CustomerServiceRecordListParams::Sort
+      ) -> Telnyx::CustomerServiceRecordListParams::Sort
+
+      def initialize: (
+        ?filter: Telnyx::CustomerServiceRecordListParams::Filter,
+        ?page: Telnyx::CustomerServiceRecordListParams::Page,
+        ?sort: Telnyx::CustomerServiceRecordListParams::Sort,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::CustomerServiceRecordListParams::Filter,
+        page: Telnyx::CustomerServiceRecordListParams::Page,
+        sort: Telnyx::CustomerServiceRecordListParams::Sort,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          created_at: Telnyx::CustomerServiceRecordListParams::Filter::CreatedAt,
+          phone_number: Telnyx::CustomerServiceRecordListParams::Filter::PhoneNumber,
+          status: Telnyx::CustomerServiceRecordListParams::Filter::Status
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader created_at: Telnyx::CustomerServiceRecordListParams::Filter::CreatedAt?
+
+        def created_at=: (
+          Telnyx::CustomerServiceRecordListParams::Filter::CreatedAt
+        ) -> Telnyx::CustomerServiceRecordListParams::Filter::CreatedAt
+
+        attr_reader phone_number: Telnyx::CustomerServiceRecordListParams::Filter::PhoneNumber?
+
+        def phone_number=: (
+          Telnyx::CustomerServiceRecordListParams::Filter::PhoneNumber
+        ) -> Telnyx::CustomerServiceRecordListParams::Filter::PhoneNumber
+
+        attr_reader status: Telnyx::CustomerServiceRecordListParams::Filter::Status?
+
+        def status=: (
+          Telnyx::CustomerServiceRecordListParams::Filter::Status
+        ) -> Telnyx::CustomerServiceRecordListParams::Filter::Status
+
+        def initialize: (
+          ?created_at: Telnyx::CustomerServiceRecordListParams::Filter::CreatedAt,
+          ?phone_number: Telnyx::CustomerServiceRecordListParams::Filter::PhoneNumber,
+          ?status: Telnyx::CustomerServiceRecordListParams::Filter::Status
+        ) -> void
+
+        def to_hash: -> {
+          created_at: Telnyx::CustomerServiceRecordListParams::Filter::CreatedAt,
+          phone_number: Telnyx::CustomerServiceRecordListParams::Filter::PhoneNumber,
+          status: Telnyx::CustomerServiceRecordListParams::Filter::Status
+        }
+
+        type created_at = { gt: Time, lt: Time }
+
+        class CreatedAt < Telnyx::Internal::Type::BaseModel
+          attr_reader gt: Time?
+
+          def gt=: (Time) -> Time
+
+          attr_reader lt: Time?
+
+          def lt=: (Time) -> Time
+
+          def initialize: (?gt: Time, ?lt: Time) -> void
+
+          def to_hash: -> { gt: Time, lt: Time }
+        end
+
+        type phone_number = { eq: String, in_: ::Array[String] }
+
+        class PhoneNumber < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: String?
+
+          def eq=: (String) -> String
+
+          attr_reader in_: ::Array[String]?
+
+          def in_=: (::Array[String]) -> ::Array[String]
+
+          def initialize: (?eq: String, ?in_: ::Array[String]) -> void
+
+          def to_hash: -> { eq: String, in_: ::Array[String] }
+        end
+
+        type status =
+          {
+            eq: Telnyx::Models::CustomerServiceRecordListParams::Filter::Status::eq,
+            in_: ::Array[Telnyx::Models::CustomerServiceRecordListParams::Filter::Status::in_]
+          }
+
+        class Status < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: Telnyx::Models::CustomerServiceRecordListParams::Filter::Status::eq?
+
+          def eq=: (
+            Telnyx::Models::CustomerServiceRecordListParams::Filter::Status::eq
+          ) -> Telnyx::Models::CustomerServiceRecordListParams::Filter::Status::eq
+
+          attr_reader in_: ::Array[Telnyx::Models::CustomerServiceRecordListParams::Filter::Status::in_]?
+
+          def in_=: (
+            ::Array[Telnyx::Models::CustomerServiceRecordListParams::Filter::Status::in_]
+          ) -> ::Array[Telnyx::Models::CustomerServiceRecordListParams::Filter::Status::in_]
+
+          def initialize: (
+            ?eq: Telnyx::Models::CustomerServiceRecordListParams::Filter::Status::eq,
+            ?in_: ::Array[Telnyx::Models::CustomerServiceRecordListParams::Filter::Status::in_]
+          ) -> void
+
+          def to_hash: -> {
+            eq: Telnyx::Models::CustomerServiceRecordListParams::Filter::Status::eq,
+            in_: ::Array[Telnyx::Models::CustomerServiceRecordListParams::Filter::Status::in_]
+          }
+
+          type eq = :pending | :completed | :failed
+
+          module Eq
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :pending
+            COMPLETED: :completed
+            FAILED: :failed
+
+            def self?.values: -> ::Array[Telnyx::Models::CustomerServiceRecordListParams::Filter::Status::eq]
+          end
+
+          type in_ = :pending | :completed | :failed
+
+          module In
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :pending
+            COMPLETED: :completed
+            FAILED: :failed
+
+            def self?.values: -> ::Array[Telnyx::Models::CustomerServiceRecordListParams::Filter::Status::in_]
+          end
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+
+      type sort =
+        { value: Telnyx::Models::CustomerServiceRecordListParams::Sort::value }
+
+      class Sort < Telnyx::Internal::Type::BaseModel
+        attr_reader value: Telnyx::Models::CustomerServiceRecordListParams::Sort::value?
+
+        def value=: (
+          Telnyx::Models::CustomerServiceRecordListParams::Sort::value
+        ) -> Telnyx::Models::CustomerServiceRecordListParams::Sort::value
+
+        def initialize: (
+          ?value: Telnyx::Models::CustomerServiceRecordListParams::Sort::value
+        ) -> void
+
+        def to_hash: -> {
+          value: Telnyx::Models::CustomerServiceRecordListParams::Sort::value
+        }
+
+        type value = :created_at | :"-created_at"
+
+        module Value
+          extend Telnyx::Internal::Type::Enum
+
+          CREATED_AT: :created_at
+          CREATED_AT_DESC: :"-created_at"
+
+          def self?.values: -> ::Array[Telnyx::Models::CustomerServiceRecordListParams::Sort::value]
+        end
+      end
+    end
+  end
+end

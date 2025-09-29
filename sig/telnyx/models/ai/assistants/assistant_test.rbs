@@ -1,0 +1,93 @@
+module Telnyx
+  module Models
+    module AI
+      class AssistantTest = Assistants::AssistantTest
+
+      module Assistants
+        type assistant_test =
+          {
+            created_at: Time,
+            name: String,
+            rubric: ::Array[Telnyx::AI::Assistants::AssistantTest::Rubric],
+            telnyx_conversation_channel: Telnyx::Models::AI::Assistants::telnyx_conversation_channel,
+            test_id: String,
+            description: String,
+            destination: String,
+            instructions: String,
+            max_duration_seconds: Integer,
+            test_suite: String
+          }
+
+        class AssistantTest < Telnyx::Internal::Type::BaseModel
+          attr_accessor created_at: Time
+
+          attr_accessor name: String
+
+          attr_accessor rubric: ::Array[Telnyx::AI::Assistants::AssistantTest::Rubric]
+
+          attr_accessor telnyx_conversation_channel: Telnyx::Models::AI::Assistants::telnyx_conversation_channel
+
+          attr_accessor test_id: String
+
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
+          attr_reader destination: String?
+
+          def destination=: (String) -> String
+
+          attr_reader instructions: String?
+
+          def instructions=: (String) -> String
+
+          attr_reader max_duration_seconds: Integer?
+
+          def max_duration_seconds=: (Integer) -> Integer
+
+          attr_reader test_suite: String?
+
+          def test_suite=: (String) -> String
+
+          def initialize: (
+            created_at: Time,
+            name: String,
+            rubric: ::Array[Telnyx::AI::Assistants::AssistantTest::Rubric],
+            telnyx_conversation_channel: Telnyx::Models::AI::Assistants::telnyx_conversation_channel,
+            test_id: String,
+            ?description: String,
+            ?destination: String,
+            ?instructions: String,
+            ?max_duration_seconds: Integer,
+            ?test_suite: String
+          ) -> void
+
+          def to_hash: -> {
+            created_at: Time,
+            name: String,
+            rubric: ::Array[Telnyx::AI::Assistants::AssistantTest::Rubric],
+            telnyx_conversation_channel: Telnyx::Models::AI::Assistants::telnyx_conversation_channel,
+            test_id: String,
+            description: String,
+            destination: String,
+            instructions: String,
+            max_duration_seconds: Integer,
+            test_suite: String
+          }
+
+          type rubric = { criteria: String, name: String }
+
+          class Rubric < Telnyx::Internal::Type::BaseModel
+            attr_accessor criteria: String
+
+            attr_accessor name: String
+
+            def initialize: (criteria: String, name: String) -> void
+
+            def to_hash: -> { criteria: String, name: String }
+          end
+        end
+      end
+    end
+  end
+end

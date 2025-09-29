@@ -1,0 +1,122 @@
+module Telnyx
+  module Models
+    class SimCardGroupAction = SimCardGroups::SimCardGroupAction
+
+    module SimCardGroups
+      type sim_card_group_action =
+        {
+          id: String,
+          created_at: String,
+          record_type: String,
+          settings: Telnyx::SimCardGroups::SimCardGroupAction::Settings,
+          sim_card_group_id: String,
+          status: Telnyx::Models::SimCardGroups::SimCardGroupAction::status,
+          type: Telnyx::Models::SimCardGroups::SimCardGroupAction::type_,
+          updated_at: String
+        }
+
+      class SimCardGroupAction < Telnyx::Internal::Type::BaseModel
+        attr_reader settings: Telnyx::SimCardGroups::SimCardGroupAction::Settings?
+
+        def settings=: (
+          Telnyx::SimCardGroups::SimCardGroupAction::Settings
+        ) -> Telnyx::SimCardGroups::SimCardGroupAction::Settings
+
+        attr_reader sim_card_group_id: String?
+
+        def sim_card_group_id=: (String) -> String
+
+        attr_reader status: Telnyx::Models::SimCardGroups::SimCardGroupAction::status?
+
+        def status=: (
+          Telnyx::Models::SimCardGroups::SimCardGroupAction::status
+        ) -> Telnyx::Models::SimCardGroups::SimCardGroupAction::status
+
+        attr_reader type: Telnyx::Models::SimCardGroups::SimCardGroupAction::type_?
+
+        def type=: (
+          Telnyx::Models::SimCardGroups::SimCardGroupAction::type_
+        ) -> Telnyx::Models::SimCardGroups::SimCardGroupAction::type_
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: String?
+
+        def created_at=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader updated_at: String?
+
+        def updated_at=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?created_at: String,
+          ?record_type: String,
+          ?settings: Telnyx::SimCardGroups::SimCardGroupAction::Settings,
+          ?sim_card_group_id: String,
+          ?status: Telnyx::Models::SimCardGroups::SimCardGroupAction::status,
+          ?type: Telnyx::Models::SimCardGroups::SimCardGroupAction::type_,
+          ?updated_at: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: String,
+          record_type: String,
+          settings: Telnyx::SimCardGroups::SimCardGroupAction::Settings,
+          sim_card_group_id: String,
+          status: Telnyx::Models::SimCardGroups::SimCardGroupAction::status,
+          type: Telnyx::Models::SimCardGroups::SimCardGroupAction::type_,
+          updated_at: String
+        }
+
+        type settings = { private_wireless_gateway_id: String }
+
+        class Settings < Telnyx::Internal::Type::BaseModel
+          attr_reader private_wireless_gateway_id: String?
+
+          def private_wireless_gateway_id=: (String) -> String
+
+          def initialize: (?private_wireless_gateway_id: String) -> void
+
+          def to_hash: -> { private_wireless_gateway_id: String }
+        end
+
+        type status = :"in-progress" | :completed | :failed
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          IN_PROGRESS: :"in-progress"
+          COMPLETED: :completed
+          FAILED: :failed
+
+          def self?.values: -> ::Array[Telnyx::Models::SimCardGroups::SimCardGroupAction::status]
+        end
+
+        type type_ =
+          :set_private_wireless_gateway
+          | :remove_private_wireless_gateway
+          | :set_wireless_blocklist
+          | :remove_wireless_blocklist
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          SET_PRIVATE_WIRELESS_GATEWAY: :set_private_wireless_gateway
+          REMOVE_PRIVATE_WIRELESS_GATEWAY: :remove_private_wireless_gateway
+          SET_WIRELESS_BLOCKLIST: :set_wireless_blocklist
+          REMOVE_WIRELESS_BLOCKLIST: :remove_wireless_blocklist
+
+          def self?.values: -> ::Array[Telnyx::Models::SimCardGroups::SimCardGroupAction::type_]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,95 @@
+module Telnyx
+  module Models
+    module AI
+      type embedding_similarity_search_response =
+        {
+          data: ::Array[Telnyx::Models::AI::EmbeddingSimilaritySearchResponse::Data]
+        }
+
+      class EmbeddingSimilaritySearchResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Telnyx::Models::AI::EmbeddingSimilaritySearchResponse::Data]
+
+        def initialize: (
+          data: ::Array[Telnyx::Models::AI::EmbeddingSimilaritySearchResponse::Data]
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Models::AI::EmbeddingSimilaritySearchResponse::Data]
+        }
+
+        type data =
+          {
+            distance: Float,
+            document_chunk: String,
+            metadata: Telnyx::Models::AI::EmbeddingSimilaritySearchResponse::Data::Metadata
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor distance: Float
+
+          attr_accessor document_chunk: String
+
+          attr_accessor metadata: Telnyx::Models::AI::EmbeddingSimilaritySearchResponse::Data::Metadata
+
+          def initialize: (
+            distance: Float,
+            document_chunk: String,
+            metadata: Telnyx::Models::AI::EmbeddingSimilaritySearchResponse::Data::Metadata
+          ) -> void
+
+          def to_hash: -> {
+            distance: Float,
+            document_chunk: String,
+            metadata: Telnyx::Models::AI::EmbeddingSimilaritySearchResponse::Data::Metadata
+          }
+
+          type metadata =
+            {
+              checksum: String,
+              embedding: String,
+              filename: String,
+              source: String,
+              certainty: Float,
+              loader_metadata: ::Hash[Symbol, top]
+            }
+
+          class Metadata < Telnyx::Internal::Type::BaseModel
+            attr_accessor checksum: String
+
+            attr_accessor embedding: String
+
+            attr_accessor filename: String
+
+            attr_accessor source: String
+
+            attr_reader certainty: Float?
+
+            def certainty=: (Float) -> Float
+
+            attr_reader loader_metadata: ::Hash[Symbol, top]?
+
+            def loader_metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+            def initialize: (
+              checksum: String,
+              embedding: String,
+              filename: String,
+              source: String,
+              ?certainty: Float,
+              ?loader_metadata: ::Hash[Symbol, top]
+            ) -> void
+
+            def to_hash: -> {
+              checksum: String,
+              embedding: String,
+              filename: String,
+              source: String,
+              certainty: Float,
+              loader_metadata: ::Hash[Symbol, top]
+            }
+          end
+        end
+      end
+    end
+  end
+end

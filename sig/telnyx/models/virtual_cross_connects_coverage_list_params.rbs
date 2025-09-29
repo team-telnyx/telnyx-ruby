@@ -1,0 +1,175 @@
+module Telnyx
+  module Models
+    type virtual_cross_connects_coverage_list_params =
+      {
+        filter: Telnyx::VirtualCrossConnectsCoverageListParams::Filter,
+        filters: Telnyx::VirtualCrossConnectsCoverageListParams::Filters,
+        page: Telnyx::VirtualCrossConnectsCoverageListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class VirtualCrossConnectsCoverageListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::VirtualCrossConnectsCoverageListParams::Filter?
+
+      def filter=: (
+        Telnyx::VirtualCrossConnectsCoverageListParams::Filter
+      ) -> Telnyx::VirtualCrossConnectsCoverageListParams::Filter
+
+      attr_reader filters: Telnyx::VirtualCrossConnectsCoverageListParams::Filters?
+
+      def filters=: (
+        Telnyx::VirtualCrossConnectsCoverageListParams::Filters
+      ) -> Telnyx::VirtualCrossConnectsCoverageListParams::Filters
+
+      attr_reader page: Telnyx::VirtualCrossConnectsCoverageListParams::Page?
+
+      def page=: (
+        Telnyx::VirtualCrossConnectsCoverageListParams::Page
+      ) -> Telnyx::VirtualCrossConnectsCoverageListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::VirtualCrossConnectsCoverageListParams::Filter,
+        ?filters: Telnyx::VirtualCrossConnectsCoverageListParams::Filters,
+        ?page: Telnyx::VirtualCrossConnectsCoverageListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::VirtualCrossConnectsCoverageListParams::Filter,
+        filters: Telnyx::VirtualCrossConnectsCoverageListParams::Filters,
+        page: Telnyx::VirtualCrossConnectsCoverageListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          cloud_provider: Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filter::cloud_provider,
+          cloud_provider_region: String,
+          location_code: String,
+          location_pop: String,
+          location_region: String,
+          location_site: String
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader cloud_provider: Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filter::cloud_provider?
+
+        def cloud_provider=: (
+          Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filter::cloud_provider
+        ) -> Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filter::cloud_provider
+
+        attr_reader cloud_provider_region: String?
+
+        def cloud_provider_region=: (String) -> String
+
+        attr_reader location_code: String?
+
+        def location_code=: (String) -> String
+
+        attr_reader location_pop: String?
+
+        def location_pop=: (String) -> String
+
+        attr_reader location_region: String?
+
+        def location_region=: (String) -> String
+
+        attr_reader location_site: String?
+
+        def location_site=: (String) -> String
+
+        def initialize: (
+          ?cloud_provider: Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filter::cloud_provider,
+          ?cloud_provider_region: String,
+          ?location_code: String,
+          ?location_pop: String,
+          ?location_region: String,
+          ?location_site: String
+        ) -> void
+
+        def to_hash: -> {
+          cloud_provider: Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filter::cloud_provider,
+          cloud_provider_region: String,
+          location_code: String,
+          location_pop: String,
+          location_region: String,
+          location_site: String
+        }
+
+        type cloud_provider = :aws | :azure | :gce
+
+        module CloudProvider
+          extend Telnyx::Internal::Type::Enum
+
+          AWS: :aws
+          AZURE: :azure
+          GCE: :gce
+
+          def self?.values: -> ::Array[Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filter::cloud_provider]
+        end
+      end
+
+      type filters =
+        {
+          available_bandwidth: Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filters::available_bandwidth
+        }
+
+      class Filters < Telnyx::Internal::Type::BaseModel
+        attr_reader available_bandwidth: Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filters::available_bandwidth?
+
+        def available_bandwidth=: (
+          Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filters::available_bandwidth
+        ) -> Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filters::available_bandwidth
+
+        def initialize: (
+          ?available_bandwidth: Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filters::available_bandwidth
+        ) -> void
+
+        def to_hash: -> {
+          available_bandwidth: Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filters::available_bandwidth
+        }
+
+        type available_bandwidth =
+          Integer
+          | Telnyx::VirtualCrossConnectsCoverageListParams::Filters::AvailableBandwidth::Contains
+
+        module AvailableBandwidth
+          extend Telnyx::Internal::Type::Union
+
+          type contains = { contains: Integer }
+
+          class Contains < Telnyx::Internal::Type::BaseModel
+            attr_reader contains: Integer?
+
+            def contains=: (Integer) -> Integer
+
+            def initialize: (?contains: Integer) -> void
+
+            def to_hash: -> { contains: Integer }
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filters::available_bandwidth]
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

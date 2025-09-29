@@ -1,0 +1,57 @@
+module Telnyx
+  module Models
+    type global_ip_health_check_type_list_response =
+      {
+        data: ::Array[Telnyx::Models::GlobalIPHealthCheckTypeListResponse::Data]
+      }
+
+    class GlobalIPHealthCheckTypeListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::GlobalIPHealthCheckTypeListResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::GlobalIPHealthCheckTypeListResponse::Data]
+      ) -> ::Array[Telnyx::Models::GlobalIPHealthCheckTypeListResponse::Data]
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::GlobalIPHealthCheckTypeListResponse::Data]
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::GlobalIPHealthCheckTypeListResponse::Data]
+      }
+
+      type data =
+        {
+          health_check_params: ::Hash[Symbol, top],
+          health_check_type: String,
+          record_type: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader health_check_params: ::Hash[Symbol, top]?
+
+        def health_check_params=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        attr_reader health_check_type: String?
+
+        def health_check_type=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?health_check_params: ::Hash[Symbol, top],
+          ?health_check_type: String,
+          ?record_type: String
+        ) -> void
+
+        def to_hash: -> {
+          health_check_params: ::Hash[Symbol, top],
+          health_check_type: String,
+          record_type: String
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,21 @@
+module Telnyx
+  module Resources
+    class PortingOrders
+      class PhoneNumberConfigurations
+        def create: (
+          ?phone_number_configurations: ::Array[Telnyx::PortingOrders::PhoneNumberConfigurationCreateParams::PhoneNumberConfiguration],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::PhoneNumberConfigurationCreateResponse
+
+        def list: (
+          ?filter: Telnyx::PortingOrders::PhoneNumberConfigurationListParams::Filter,
+          ?page: Telnyx::PortingOrders::PhoneNumberConfigurationListParams::Page,
+          ?sort: Telnyx::PortingOrders::PhoneNumberConfigurationListParams::Sort,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

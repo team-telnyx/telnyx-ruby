@@ -1,0 +1,84 @@
+module Telnyx
+  module Models
+    module AI
+      type conversation_retrieve_conversations_insights_response =
+        {
+          data: ::Array[Telnyx::Models::AI::ConversationRetrieveConversationsInsightsResponse::Data],
+          meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+        }
+
+      class ConversationRetrieveConversationsInsightsResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Telnyx::Models::AI::ConversationRetrieveConversationsInsightsResponse::Data]
+
+        attr_accessor meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+
+        def initialize: (
+          data: ::Array[Telnyx::Models::AI::ConversationRetrieveConversationsInsightsResponse::Data],
+          meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Models::AI::ConversationRetrieveConversationsInsightsResponse::Data],
+          meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+        }
+
+        type data =
+          {
+            id: String,
+            conversation_insights: ::Array[Telnyx::Models::AI::ConversationRetrieveConversationsInsightsResponse::Data::ConversationInsight],
+            created_at: Time,
+            status: Telnyx::Models::AI::ConversationRetrieveConversationsInsightsResponse::Data::status
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor conversation_insights: ::Array[Telnyx::Models::AI::ConversationRetrieveConversationsInsightsResponse::Data::ConversationInsight]
+
+          attr_accessor created_at: Time
+
+          attr_accessor status: Telnyx::Models::AI::ConversationRetrieveConversationsInsightsResponse::Data::status
+
+          def initialize: (
+            id: String,
+            conversation_insights: ::Array[Telnyx::Models::AI::ConversationRetrieveConversationsInsightsResponse::Data::ConversationInsight],
+            created_at: Time,
+            status: Telnyx::Models::AI::ConversationRetrieveConversationsInsightsResponse::Data::status
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            conversation_insights: ::Array[Telnyx::Models::AI::ConversationRetrieveConversationsInsightsResponse::Data::ConversationInsight],
+            created_at: Time,
+            status: Telnyx::Models::AI::ConversationRetrieveConversationsInsightsResponse::Data::status
+          }
+
+          type conversation_insight = { insight_id: String, result: String }
+
+          class ConversationInsight < Telnyx::Internal::Type::BaseModel
+            attr_accessor insight_id: String
+
+            attr_accessor result: String
+
+            def initialize: (insight_id: String, result: String) -> void
+
+            def to_hash: -> { insight_id: String, result: String }
+          end
+
+          type status = :pending | :in_progress | :completed | :failed
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :pending
+            IN_PROGRESS: :in_progress
+            COMPLETED: :completed
+            FAILED: :failed
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::ConversationRetrieveConversationsInsightsResponse::Data::status]
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,116 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        type call_siprec_json_response =
+          {
+            account_sid: String,
+            call_sid: String,
+            date_created: String,
+            date_updated: String,
+            error_code: String,
+            sid: String,
+            start_time: String,
+            status: Telnyx::Models::Texml::Accounts::CallSiprecJsonResponse::status,
+            track: Telnyx::Models::Texml::Accounts::CallSiprecJsonResponse::track,
+            uri: String
+          }
+
+        class CallSiprecJsonResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader account_sid: String?
+
+          def account_sid=: (String) -> String
+
+          attr_reader call_sid: String?
+
+          def call_sid=: (String) -> String
+
+          attr_reader date_created: String?
+
+          def date_created=: (String) -> String
+
+          attr_reader date_updated: String?
+
+          def date_updated=: (String) -> String
+
+          attr_reader error_code: String?
+
+          def error_code=: (String) -> String
+
+          attr_reader sid: String?
+
+          def sid=: (String) -> String
+
+          attr_reader start_time: String?
+
+          def start_time=: (String) -> String
+
+          attr_reader status: Telnyx::Models::Texml::Accounts::CallSiprecJsonResponse::status?
+
+          def status=: (
+            Telnyx::Models::Texml::Accounts::CallSiprecJsonResponse::status
+          ) -> Telnyx::Models::Texml::Accounts::CallSiprecJsonResponse::status
+
+          attr_reader track: Telnyx::Models::Texml::Accounts::CallSiprecJsonResponse::track?
+
+          def track=: (
+            Telnyx::Models::Texml::Accounts::CallSiprecJsonResponse::track
+          ) -> Telnyx::Models::Texml::Accounts::CallSiprecJsonResponse::track
+
+          attr_reader uri: String?
+
+          def uri=: (String) -> String
+
+          def initialize: (
+            ?account_sid: String,
+            ?call_sid: String,
+            ?date_created: String,
+            ?date_updated: String,
+            ?error_code: String,
+            ?sid: String,
+            ?start_time: String,
+            ?status: Telnyx::Models::Texml::Accounts::CallSiprecJsonResponse::status,
+            ?track: Telnyx::Models::Texml::Accounts::CallSiprecJsonResponse::track,
+            ?uri: String
+          ) -> void
+
+          def to_hash: -> {
+            account_sid: String,
+            call_sid: String,
+            date_created: String,
+            date_updated: String,
+            error_code: String,
+            sid: String,
+            start_time: String,
+            status: Telnyx::Models::Texml::Accounts::CallSiprecJsonResponse::status,
+            track: Telnyx::Models::Texml::Accounts::CallSiprecJsonResponse::track,
+            uri: String
+          }
+
+          type status = :"in-progress" | :stopped
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            IN_PROGRESS: :"in-progress"
+            STOPPED: :stopped
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallSiprecJsonResponse::status]
+          end
+
+          type track = :both_tracks | :inbound_track | :outbound_track
+
+          module Track
+            extend Telnyx::Internal::Type::Enum
+
+            BOTH_TRACKS: :both_tracks
+            INBOUND_TRACK: :inbound_track
+            OUTBOUND_TRACK: :outbound_track
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallSiprecJsonResponse::track]
+          end
+        end
+      end
+    end
+  end
+end

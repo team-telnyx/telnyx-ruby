@@ -1,0 +1,190 @@
+module Telnyx
+  module Models
+    type regulatory_requirement_retrieve_response =
+      {
+        data: ::Array[Telnyx::Models::RegulatoryRequirementRetrieveResponse::Data]
+      }
+
+    class RegulatoryRequirementRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::RegulatoryRequirementRetrieveResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::RegulatoryRequirementRetrieveResponse::Data]
+      ) -> ::Array[Telnyx::Models::RegulatoryRequirementRetrieveResponse::Data]
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::RegulatoryRequirementRetrieveResponse::Data]
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::RegulatoryRequirementRetrieveResponse::Data]
+      }
+
+      type data =
+        {
+          action: String,
+          country_code: String,
+          phone_number_type: String,
+          regulatory_requirements: ::Array[Telnyx::Models::RegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement]
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader regulatory_requirements: ::Array[Telnyx::Models::RegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement]?
+
+        def regulatory_requirements=: (
+          ::Array[Telnyx::Models::RegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement]
+        ) -> ::Array[Telnyx::Models::RegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement]
+
+        attr_reader action: String?
+
+        def action=: (String) -> String
+
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader phone_number_type: String?
+
+        def phone_number_type=: (String) -> String
+
+        def initialize: (
+          ?action: String,
+          ?country_code: String,
+          ?phone_number_type: String,
+          ?regulatory_requirements: ::Array[Telnyx::Models::RegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement]
+        ) -> void
+
+        def to_hash: -> {
+          action: String,
+          country_code: String,
+          phone_number_type: String,
+          regulatory_requirements: ::Array[Telnyx::Models::RegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement]
+        }
+
+        type regulatory_requirement =
+          {
+            id: String,
+            acceptance_criteria: Telnyx::Models::RegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement::AcceptanceCriteria,
+            description: String,
+            example: String,
+            field_type: String,
+            name: String
+          }
+
+        class RegulatoryRequirement < Telnyx::Internal::Type::BaseModel
+          attr_reader acceptance_criteria: Telnyx::Models::RegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement::AcceptanceCriteria?
+
+          def acceptance_criteria=: (
+            Telnyx::Models::RegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement::AcceptanceCriteria
+          ) -> Telnyx::Models::RegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement::AcceptanceCriteria
+
+          attr_reader field_type: String?
+
+          def field_type=: (String) -> String
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
+          attr_reader example: String?
+
+          def example=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?acceptance_criteria: Telnyx::Models::RegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement::AcceptanceCriteria,
+            ?description: String,
+            ?example: String,
+            ?field_type: String,
+            ?name: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            acceptance_criteria: Telnyx::Models::RegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement::AcceptanceCriteria,
+            description: String,
+            example: String,
+            field_type: String,
+            name: String
+          }
+
+          type acceptance_criteria =
+            {
+              acceptable_characters: String,
+              acceptable_values: ::Array[String],
+              case_sensitive: String,
+              locality_limit: String,
+              max_length: String,
+              min_length: String,
+              regex: String,
+              time_limit: String
+            }
+
+          class AcceptanceCriteria < Telnyx::Internal::Type::BaseModel
+            attr_reader acceptable_characters: String?
+
+            def acceptable_characters=: (String) -> String
+
+            attr_reader acceptable_values: ::Array[String]?
+
+            def acceptable_values=: (::Array[String]) -> ::Array[String]
+
+            attr_reader case_sensitive: String?
+
+            def case_sensitive=: (String) -> String
+
+            attr_reader locality_limit: String?
+
+            def locality_limit=: (String) -> String
+
+            attr_reader max_length: String?
+
+            def max_length=: (String) -> String
+
+            attr_reader min_length: String?
+
+            def min_length=: (String) -> String
+
+            attr_reader regex: String?
+
+            def regex=: (String) -> String
+
+            attr_reader time_limit: String?
+
+            def time_limit=: (String) -> String
+
+            def initialize: (
+              ?acceptable_characters: String,
+              ?acceptable_values: ::Array[String],
+              ?case_sensitive: String,
+              ?locality_limit: String,
+              ?max_length: String,
+              ?min_length: String,
+              ?regex: String,
+              ?time_limit: String
+            ) -> void
+
+            def to_hash: -> {
+              acceptable_characters: String,
+              acceptable_values: ::Array[String],
+              case_sensitive: String,
+              locality_limit: String,
+              max_length: String,
+              min_length: String,
+              regex: String,
+              time_limit: String
+            }
+          end
+        end
+      end
+    end
+  end
+end

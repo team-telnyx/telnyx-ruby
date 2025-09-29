@@ -1,0 +1,14 @@
+module Telnyx
+  module Resources
+    class Recordings
+      class Actions
+        def delete: (
+          ids: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,22 @@
+module Telnyx
+  module Resources
+    class BundlePricing
+      class BillingBundles
+        def retrieve: (
+          String bundle_id,
+          ?authorization_bearer: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::BundlePricing::BillingBundleRetrieveResponse
+
+        def list: (
+          ?filter: Telnyx::BundlePricing::BillingBundleListParams::Filter,
+          ?page: Telnyx::BundlePricing::BillingBundleListParams::Page,
+          ?authorization_bearer: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::BundlePricing::BillingBundleListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

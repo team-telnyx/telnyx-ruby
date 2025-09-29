@@ -1,0 +1,129 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type porting_associated_phone_number =
+        {
+          id: String,
+          action: Telnyx::Models::PortingOrders::PortingAssociatedPhoneNumber::action,
+          country_code: String,
+          created_at: Time,
+          phone_number_range: Telnyx::PortingOrders::PortingAssociatedPhoneNumber::PhoneNumberRange,
+          phone_number_type: Telnyx::Models::PortingOrders::PortingAssociatedPhoneNumber::phone_number_type,
+          porting_order_id: String,
+          record_type: String,
+          updated_at: Time
+        }
+
+      class PortingAssociatedPhoneNumber < Telnyx::Internal::Type::BaseModel
+        attr_reader action: Telnyx::Models::PortingOrders::PortingAssociatedPhoneNumber::action?
+
+        def action=: (
+          Telnyx::Models::PortingOrders::PortingAssociatedPhoneNumber::action
+        ) -> Telnyx::Models::PortingOrders::PortingAssociatedPhoneNumber::action
+
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader phone_number_range: Telnyx::PortingOrders::PortingAssociatedPhoneNumber::PhoneNumberRange?
+
+        def phone_number_range=: (
+          Telnyx::PortingOrders::PortingAssociatedPhoneNumber::PhoneNumberRange
+        ) -> Telnyx::PortingOrders::PortingAssociatedPhoneNumber::PhoneNumberRange
+
+        attr_reader phone_number_type: Telnyx::Models::PortingOrders::PortingAssociatedPhoneNumber::phone_number_type?
+
+        def phone_number_type=: (
+          Telnyx::Models::PortingOrders::PortingAssociatedPhoneNumber::phone_number_type
+        ) -> Telnyx::Models::PortingOrders::PortingAssociatedPhoneNumber::phone_number_type
+
+        attr_reader porting_order_id: String?
+
+        def porting_order_id=: (String) -> String
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        def initialize: (
+          ?id: String,
+          ?action: Telnyx::Models::PortingOrders::PortingAssociatedPhoneNumber::action,
+          ?country_code: String,
+          ?created_at: Time,
+          ?phone_number_range: Telnyx::PortingOrders::PortingAssociatedPhoneNumber::PhoneNumberRange,
+          ?phone_number_type: Telnyx::Models::PortingOrders::PortingAssociatedPhoneNumber::phone_number_type,
+          ?porting_order_id: String,
+          ?record_type: String,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          action: Telnyx::Models::PortingOrders::PortingAssociatedPhoneNumber::action,
+          country_code: String,
+          created_at: Time,
+          phone_number_range: Telnyx::PortingOrders::PortingAssociatedPhoneNumber::PhoneNumberRange,
+          phone_number_type: Telnyx::Models::PortingOrders::PortingAssociatedPhoneNumber::phone_number_type,
+          porting_order_id: String,
+          record_type: String,
+          updated_at: Time
+        }
+
+        type action = :keep | :disconnect
+
+        module Action
+          extend Telnyx::Internal::Type::Enum
+
+          KEEP: :keep
+          DISCONNECT: :disconnect
+
+          def self?.values: -> ::Array[Telnyx::Models::PortingOrders::PortingAssociatedPhoneNumber::action]
+        end
+
+        type phone_number_range = { end_at: String, start_at: String }
+
+        class PhoneNumberRange < Telnyx::Internal::Type::BaseModel
+          attr_reader end_at: String?
+
+          def end_at=: (String) -> String
+
+          attr_reader start_at: String?
+
+          def start_at=: (String) -> String
+
+          def initialize: (?end_at: String, ?start_at: String) -> void
+
+          def to_hash: -> { end_at: String, start_at: String }
+        end
+
+        type phone_number_type =
+          :landline | :local | :mobile | :national | :shared_cost | :toll_free
+
+        module PhoneNumberType
+          extend Telnyx::Internal::Type::Enum
+
+          LANDLINE: :landline
+          LOCAL: :local
+          MOBILE: :mobile
+          NATIONAL: :national
+          SHARED_COST: :shared_cost
+          TOLL_FREE: :toll_free
+
+          def self?.values: -> ::Array[Telnyx::Models::PortingOrders::PortingAssociatedPhoneNumber::phone_number_type]
+        end
+      end
+    end
+  end
+end

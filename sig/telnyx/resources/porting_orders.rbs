@@ -1,0 +1,93 @@
+module Telnyx
+  module Resources
+    class PortingOrders
+      attr_reader phone_number_configurations: Telnyx::Resources::PortingOrders::PhoneNumberConfigurations
+
+      attr_reader actions: Telnyx::Resources::PortingOrders::Actions
+
+      attr_reader activation_jobs: Telnyx::Resources::PortingOrders::ActivationJobs
+
+      attr_reader additional_documents: Telnyx::Resources::PortingOrders::AdditionalDocuments
+
+      attr_reader comments: Telnyx::Resources::PortingOrders::Comments
+
+      attr_reader verification_codes: Telnyx::Resources::PortingOrders::VerificationCodes
+
+      attr_reader action_requirements: Telnyx::Resources::PortingOrders::ActionRequirements
+
+      attr_reader associated_phone_numbers: Telnyx::Resources::PortingOrders::AssociatedPhoneNumbers
+
+      attr_reader phone_number_blocks: Telnyx::Resources::PortingOrders::PhoneNumberBlocks
+
+      attr_reader phone_number_extensions: Telnyx::Resources::PortingOrders::PhoneNumberExtensions
+
+      def create: (
+        phone_numbers: ::Array[String],
+        ?customer_group_reference: String,
+        ?customer_reference: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PortingOrderCreateResponse
+
+      def retrieve: (
+        String id,
+        ?include_phone_numbers: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PortingOrderRetrieveResponse
+
+      def update: (
+        String id,
+        ?activation_settings: Telnyx::PortingOrderUpdateParams::ActivationSettings,
+        ?customer_group_reference: String,
+        ?customer_reference: String,
+        ?documents: Telnyx::PortingOrderDocuments,
+        ?end_user: Telnyx::PortingOrderEndUser,
+        ?messaging: Telnyx::PortingOrderUpdateParams::Messaging,
+        ?misc: Telnyx::PortingOrderMisc,
+        ?phone_number_configuration: Telnyx::PortingOrderPhoneNumberConfiguration,
+        ?requirement_group_id: String,
+        ?requirements: ::Array[Telnyx::PortingOrderUpdateParams::Requirement],
+        ?user_feedback: Telnyx::PortingOrderUserFeedback,
+        ?webhook_url: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PortingOrderUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::PortingOrderListParams::Filter,
+        ?include_phone_numbers: bool,
+        ?page: Telnyx::PortingOrderListParams::Page,
+        ?sort: Telnyx::PortingOrderListParams::Sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PortingOrderListResponse
+
+      def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
+
+      def retrieve_allowed_foc_windows: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PortingOrderRetrieveAllowedFocWindowsResponse
+
+      def retrieve_exception_types: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PortingOrderRetrieveExceptionTypesResponse
+
+      def retrieve_loa_template: (
+        String id,
+        ?loa_configuration_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> StringIO
+
+      def retrieve_requirements: (
+        String id,
+        ?page: Telnyx::PortingOrderRetrieveRequirementsParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PortingOrderRetrieveRequirementsResponse
+
+      def retrieve_sub_request: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PortingOrderRetrieveSubRequestResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

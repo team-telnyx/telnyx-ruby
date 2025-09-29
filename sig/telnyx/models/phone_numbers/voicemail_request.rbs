@@ -1,0 +1,21 @@
+module Telnyx
+  module Models
+    module PhoneNumbers
+      type voicemail_request = { enabled: bool, pin: String }
+
+      class VoicemailRequest < Telnyx::Internal::Type::BaseModel
+        attr_reader enabled: bool?
+
+        def enabled=: (bool) -> bool
+
+        attr_reader pin: String?
+
+        def pin=: (String) -> String
+
+        def initialize: (?enabled: bool, ?pin: String) -> void
+
+        def to_hash: -> { enabled: bool, pin: String }
+      end
+    end
+  end
+end

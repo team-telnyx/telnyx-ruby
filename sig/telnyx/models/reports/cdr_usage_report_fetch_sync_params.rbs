@@ -1,0 +1,85 @@
+module Telnyx
+  module Models
+    module Reports
+      type cdr_usage_report_fetch_sync_params =
+        {
+          aggregation_type: Telnyx::Models::Reports::CdrUsageReportFetchSyncParams::aggregation_type,
+          product_breakdown: Telnyx::Models::Reports::CdrUsageReportFetchSyncParams::product_breakdown,
+          connections: ::Array[Float],
+          end_date: Time,
+          start_date: Time
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class CdrUsageReportFetchSyncParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor aggregation_type: Telnyx::Models::Reports::CdrUsageReportFetchSyncParams::aggregation_type
+
+        attr_accessor product_breakdown: Telnyx::Models::Reports::CdrUsageReportFetchSyncParams::product_breakdown
+
+        attr_reader connections: ::Array[Float]?
+
+        def connections=: (::Array[Float]) -> ::Array[Float]
+
+        attr_reader end_date: Time?
+
+        def end_date=: (Time) -> Time
+
+        attr_reader start_date: Time?
+
+        def start_date=: (Time) -> Time
+
+        def initialize: (
+          aggregation_type: Telnyx::Models::Reports::CdrUsageReportFetchSyncParams::aggregation_type,
+          product_breakdown: Telnyx::Models::Reports::CdrUsageReportFetchSyncParams::product_breakdown,
+          ?connections: ::Array[Float],
+          ?end_date: Time,
+          ?start_date: Time,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          aggregation_type: Telnyx::Models::Reports::CdrUsageReportFetchSyncParams::aggregation_type,
+          product_breakdown: Telnyx::Models::Reports::CdrUsageReportFetchSyncParams::product_breakdown,
+          connections: ::Array[Float],
+          end_date: Time,
+          start_date: Time,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type aggregation_type =
+          :NO_AGGREGATION | :CONNECTION | :TAG | :BILLING_GROUP
+
+        module AggregationType
+          extend Telnyx::Internal::Type::Enum
+
+          NO_AGGREGATION: :NO_AGGREGATION
+          CONNECTION: :CONNECTION
+          TAG: :TAG
+          BILLING_GROUP: :BILLING_GROUP
+
+          def self?.values: -> ::Array[Telnyx::Models::Reports::CdrUsageReportFetchSyncParams::aggregation_type]
+        end
+
+        type product_breakdown =
+          :NO_BREAKDOWN
+          | :DID_VS_TOLL_FREE
+          | :COUNTRY
+          | :DID_VS_TOLL_FREE_PER_COUNTRY
+
+        module ProductBreakdown
+          extend Telnyx::Internal::Type::Enum
+
+          NO_BREAKDOWN: :NO_BREAKDOWN
+          DID_VS_TOLL_FREE: :DID_VS_TOLL_FREE
+          COUNTRY: :COUNTRY
+          DID_VS_TOLL_FREE_PER_COUNTRY: :DID_VS_TOLL_FREE_PER_COUNTRY
+
+          def self?.values: -> ::Array[Telnyx::Models::Reports::CdrUsageReportFetchSyncParams::product_breakdown]
+        end
+      end
+    end
+  end
+end

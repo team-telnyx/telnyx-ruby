@@ -1,0 +1,208 @@
+module Telnyx
+  module Models
+    class PhoneNumberWithVoiceSettings = PhoneNumbers::PhoneNumberWithVoiceSettings
+
+    module PhoneNumbers
+      type phone_number_with_voice_settings =
+        {
+          id: String,
+          call_forwarding: Telnyx::PhoneNumbers::CallForwarding,
+          call_recording: Telnyx::PhoneNumbers::CallRecording,
+          cnam_listing: Telnyx::PhoneNumbers::CnamListing,
+          connection_id: String,
+          customer_reference: String,
+          emergency: Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings::Emergency,
+          inbound_call_screening: Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::inbound_call_screening,
+          media_features: Telnyx::PhoneNumbers::MediaFeatures,
+          phone_number: String,
+          record_type: String,
+          tech_prefix_enabled: bool,
+          translated_number: String,
+          usage_payment_method: Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::usage_payment_method
+        }
+
+      class PhoneNumberWithVoiceSettings < Telnyx::Internal::Type::BaseModel
+        attr_reader call_forwarding: Telnyx::PhoneNumbers::CallForwarding?
+
+        def call_forwarding=: (
+          Telnyx::PhoneNumbers::CallForwarding
+        ) -> Telnyx::PhoneNumbers::CallForwarding
+
+        attr_reader call_recording: Telnyx::PhoneNumbers::CallRecording?
+
+        def call_recording=: (
+          Telnyx::PhoneNumbers::CallRecording
+        ) -> Telnyx::PhoneNumbers::CallRecording
+
+        attr_reader cnam_listing: Telnyx::PhoneNumbers::CnamListing?
+
+        def cnam_listing=: (
+          Telnyx::PhoneNumbers::CnamListing
+        ) -> Telnyx::PhoneNumbers::CnamListing
+
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader customer_reference: String?
+
+        def customer_reference=: (String) -> String
+
+        attr_reader emergency: Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings::Emergency?
+
+        def emergency=: (
+          Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings::Emergency
+        ) -> Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings::Emergency
+
+        attr_reader inbound_call_screening: Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::inbound_call_screening?
+
+        def inbound_call_screening=: (
+          Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::inbound_call_screening
+        ) -> Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::inbound_call_screening
+
+        attr_reader media_features: Telnyx::PhoneNumbers::MediaFeatures?
+
+        def media_features=: (
+          Telnyx::PhoneNumbers::MediaFeatures
+        ) -> Telnyx::PhoneNumbers::MediaFeatures
+
+        attr_reader tech_prefix_enabled: bool?
+
+        def tech_prefix_enabled=: (bool) -> bool
+
+        attr_reader translated_number: String?
+
+        def translated_number=: (String) -> String
+
+        attr_reader usage_payment_method: Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::usage_payment_method?
+
+        def usage_payment_method=: (
+          Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::usage_payment_method
+        ) -> Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::usage_payment_method
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?call_forwarding: Telnyx::PhoneNumbers::CallForwarding,
+          ?call_recording: Telnyx::PhoneNumbers::CallRecording,
+          ?cnam_listing: Telnyx::PhoneNumbers::CnamListing,
+          ?connection_id: String,
+          ?customer_reference: String,
+          ?emergency: Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings::Emergency,
+          ?inbound_call_screening: Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::inbound_call_screening,
+          ?media_features: Telnyx::PhoneNumbers::MediaFeatures,
+          ?phone_number: String,
+          ?record_type: String,
+          ?tech_prefix_enabled: bool,
+          ?translated_number: String,
+          ?usage_payment_method: Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::usage_payment_method
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          call_forwarding: Telnyx::PhoneNumbers::CallForwarding,
+          call_recording: Telnyx::PhoneNumbers::CallRecording,
+          cnam_listing: Telnyx::PhoneNumbers::CnamListing,
+          connection_id: String,
+          customer_reference: String,
+          emergency: Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings::Emergency,
+          inbound_call_screening: Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::inbound_call_screening,
+          media_features: Telnyx::PhoneNumbers::MediaFeatures,
+          phone_number: String,
+          record_type: String,
+          tech_prefix_enabled: bool,
+          translated_number: String,
+          usage_payment_method: Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::usage_payment_method
+        }
+
+        type emergency =
+          {
+            emergency_address_id: String,
+            emergency_enabled: bool,
+            emergency_status: Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::Emergency::emergency_status
+          }
+
+        class Emergency < Telnyx::Internal::Type::BaseModel
+          attr_reader emergency_address_id: String?
+
+          def emergency_address_id=: (String) -> String
+
+          attr_reader emergency_enabled: bool?
+
+          def emergency_enabled=: (bool) -> bool
+
+          attr_reader emergency_status: Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::Emergency::emergency_status?
+
+          def emergency_status=: (
+            Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::Emergency::emergency_status
+          ) -> Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::Emergency::emergency_status
+
+          def initialize: (
+            ?emergency_address_id: String,
+            ?emergency_enabled: bool,
+            ?emergency_status: Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::Emergency::emergency_status
+          ) -> void
+
+          def to_hash: -> {
+            emergency_address_id: String,
+            emergency_enabled: bool,
+            emergency_status: Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::Emergency::emergency_status
+          }
+
+          type emergency_status =
+            :disabled
+            | :active
+            | :provisioning
+            | :deprovisioning
+            | :"provisioning-failed"
+
+          module EmergencyStatus
+            extend Telnyx::Internal::Type::Enum
+
+            DISABLED: :disabled
+            ACTIVE: :active
+            PROVISIONING: :provisioning
+            DEPROVISIONING: :deprovisioning
+            PROVISIONING_FAILED: :"provisioning-failed"
+
+            def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::Emergency::emergency_status]
+          end
+        end
+
+        type inbound_call_screening = :disabled | :reject_calls | :flag_calls
+
+        module InboundCallScreening
+          extend Telnyx::Internal::Type::Enum
+
+          DISABLED: :disabled
+          REJECT_CALLS: :reject_calls
+          FLAG_CALLS: :flag_calls
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::inbound_call_screening]
+        end
+
+        type usage_payment_method = :"pay-per-minute" | :channel
+
+        module UsagePaymentMethod
+          extend Telnyx::Internal::Type::Enum
+
+          PAY_PER_MINUTE: :"pay-per-minute"
+          CHANNEL: :channel
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::PhoneNumberWithVoiceSettings::usage_payment_method]
+        end
+      end
+    end
+  end
+end

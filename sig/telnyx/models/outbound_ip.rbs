@@ -1,0 +1,147 @@
+module Telnyx
+  module Models
+    type outbound_ip =
+      {
+        ani_override: String,
+        ani_override_type: Telnyx::Models::OutboundIP::ani_override_type,
+        call_parking_enabled: bool?,
+        channel_limit: Integer,
+        generate_ringback_tone: bool,
+        instant_ringback_enabled: bool,
+        ip_authentication_method: Telnyx::Models::OutboundIP::ip_authentication_method,
+        ip_authentication_token: String,
+        localization: String,
+        outbound_voice_profile_id: String,
+        :t38_reinvite_source => Telnyx::Models::OutboundIP::t38_reinvite_source,
+        tech_prefix: String
+      }
+
+    class OutboundIP < Telnyx::Internal::Type::BaseModel
+      attr_reader ani_override: String?
+
+      def ani_override=: (String) -> String
+
+      attr_reader ani_override_type: Telnyx::Models::OutboundIP::ani_override_type?
+
+      def ani_override_type=: (
+        Telnyx::Models::OutboundIP::ani_override_type
+      ) -> Telnyx::Models::OutboundIP::ani_override_type
+
+      attr_accessor call_parking_enabled: bool?
+
+      attr_reader channel_limit: Integer?
+
+      def channel_limit=: (Integer) -> Integer
+
+      attr_reader generate_ringback_tone: bool?
+
+      def generate_ringback_tone=: (bool) -> bool
+
+      attr_reader instant_ringback_enabled: bool?
+
+      def instant_ringback_enabled=: (bool) -> bool
+
+      attr_reader ip_authentication_method: Telnyx::Models::OutboundIP::ip_authentication_method?
+
+      def ip_authentication_method=: (
+        Telnyx::Models::OutboundIP::ip_authentication_method
+      ) -> Telnyx::Models::OutboundIP::ip_authentication_method
+
+      attr_reader ip_authentication_token: String?
+
+      def ip_authentication_token=: (String) -> String
+
+      attr_reader localization: String?
+
+      def localization=: (String) -> String
+
+      attr_reader outbound_voice_profile_id: String?
+
+      def outbound_voice_profile_id=: (String) -> String
+
+      attr_reader t38_reinvite_source: Telnyx::Models::OutboundIP::t38_reinvite_source?
+
+      def t38_reinvite_source=: (
+        Telnyx::Models::OutboundIP::t38_reinvite_source
+      ) -> Telnyx::Models::OutboundIP::t38_reinvite_source
+
+      attr_reader tech_prefix: String?
+
+      def tech_prefix=: (String) -> String
+
+      def initialize: (
+        ?ani_override: String,
+        ?ani_override_type: Telnyx::Models::OutboundIP::ani_override_type,
+        ?call_parking_enabled: bool?,
+        ?channel_limit: Integer,
+        ?generate_ringback_tone: bool,
+        ?instant_ringback_enabled: bool,
+        ?ip_authentication_method: Telnyx::Models::OutboundIP::ip_authentication_method,
+        ?ip_authentication_token: String,
+        ?localization: String,
+        ?outbound_voice_profile_id: String,
+        ?t38_reinvite_source: Telnyx::Models::OutboundIP::t38_reinvite_source,
+        ?tech_prefix: String
+      ) -> void
+
+      def to_hash: -> {
+        ani_override: String,
+        ani_override_type: Telnyx::Models::OutboundIP::ani_override_type,
+        call_parking_enabled: bool?,
+        channel_limit: Integer,
+        generate_ringback_tone: bool,
+        instant_ringback_enabled: bool,
+        ip_authentication_method: Telnyx::Models::OutboundIP::ip_authentication_method,
+        ip_authentication_token: String,
+        localization: String,
+        outbound_voice_profile_id: String,
+        :t38_reinvite_source => Telnyx::Models::OutboundIP::t38_reinvite_source,
+        tech_prefix: String
+      }
+
+      type ani_override_type = :always | :normal | :emergency
+
+      module AniOverrideType
+        extend Telnyx::Internal::Type::Enum
+
+        ALWAYS: :always
+        NORMAL: :normal
+        EMERGENCY: :emergency
+
+        def self?.values: -> ::Array[Telnyx::Models::OutboundIP::ani_override_type]
+      end
+
+      type ip_authentication_method = :"tech-prefixp-charge-info" | :token
+
+      module IPAuthenticationMethod
+        extend Telnyx::Internal::Type::Enum
+
+        TECH_PREFIXP_CHARGE_INFO: :"tech-prefixp-charge-info"
+        TOKEN: :token
+
+        def self?.values: -> ::Array[Telnyx::Models::OutboundIP::ip_authentication_method]
+      end
+
+      type t38_reinvite_source =
+        :telnyx
+        | :customer
+        | :disabled
+        | :passthru
+        | :"caller-passthru"
+        | :"callee-passthru"
+
+      module T38ReinviteSource
+        extend Telnyx::Internal::Type::Enum
+
+        TELNYX: :telnyx
+        CUSTOMER: :customer
+        DISABLED: :disabled
+        PASSTHRU: :passthru
+        CALLER_PASSTHRU: :"caller-passthru"
+        CALLEE_PASSTHRU: :"callee-passthru"
+
+        def self?.values: -> ::Array[Telnyx::Models::OutboundIP::t38_reinvite_source]
+      end
+    end
+  end
+end

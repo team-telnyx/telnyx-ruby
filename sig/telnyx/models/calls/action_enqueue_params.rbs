@@ -1,0 +1,56 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_enqueue_params =
+        {
+          queue_name: String,
+          client_state: String,
+          command_id: String,
+          max_size: Integer,
+          max_wait_time_secs: Integer
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionEnqueueParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor queue_name: String
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader command_id: String?
+
+        def command_id=: (String) -> String
+
+        attr_reader max_size: Integer?
+
+        def max_size=: (Integer) -> Integer
+
+        attr_reader max_wait_time_secs: Integer?
+
+        def max_wait_time_secs=: (Integer) -> Integer
+
+        def initialize: (
+          queue_name: String,
+          ?client_state: String,
+          ?command_id: String,
+          ?max_size: Integer,
+          ?max_wait_time_secs: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          queue_name: String,
+          client_state: String,
+          command_id: String,
+          max_size: Integer,
+          max_wait_time_secs: Integer,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,182 @@
+module Telnyx
+  module Models
+    module BundlePricing
+      type billing_bundle_retrieve_response =
+        {
+          data: Telnyx::Models::BundlePricing::BillingBundleRetrieveResponse::Data
+        }
+
+      class BillingBundleRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::Models::BundlePricing::BillingBundleRetrieveResponse::Data
+
+        def initialize: (
+          data: Telnyx::Models::BundlePricing::BillingBundleRetrieveResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::BundlePricing::BillingBundleRetrieveResponse::Data
+        }
+
+        type data =
+          {
+            id: String,
+            active: bool,
+            bundle_limits: ::Array[Telnyx::Models::BundlePricing::BillingBundleRetrieveResponse::Data::BundleLimit],
+            cost_code: String,
+            created_at: Date,
+            is_public: bool,
+            name: String,
+            slug: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor active: bool
+
+          attr_accessor bundle_limits: ::Array[Telnyx::Models::BundlePricing::BillingBundleRetrieveResponse::Data::BundleLimit]
+
+          attr_accessor cost_code: String
+
+          attr_accessor created_at: Date
+
+          attr_accessor is_public: bool
+
+          attr_accessor name: String
+
+          attr_reader slug: String?
+
+          def slug=: (String) -> String
+
+          def initialize: (
+            id: String,
+            active: bool,
+            bundle_limits: ::Array[Telnyx::Models::BundlePricing::BillingBundleRetrieveResponse::Data::BundleLimit],
+            cost_code: String,
+            created_at: Date,
+            is_public: bool,
+            name: String,
+            ?slug: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            active: bool,
+            bundle_limits: ::Array[Telnyx::Models::BundlePricing::BillingBundleRetrieveResponse::Data::BundleLimit],
+            cost_code: String,
+            created_at: Date,
+            is_public: bool,
+            name: String,
+            slug: String
+          }
+
+          type bundle_limit =
+            {
+              id: String,
+              created_at: Date,
+              metric: String,
+              service: String,
+              updated_at: Date,
+              billing_service: String,
+              country: String,
+              country_code: Integer,
+              country_iso: String,
+              direction: Telnyx::Models::BundlePricing::BillingBundleRetrieveResponse::Data::BundleLimit::direction,
+              limit: Integer,
+              rate: String,
+              types: ::Array[String]
+            }
+
+          class BundleLimit < Telnyx::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor created_at: Date
+
+            attr_accessor metric: String
+
+            attr_accessor service: String
+
+            attr_accessor updated_at: Date
+
+            attr_reader billing_service: String?
+
+            def billing_service=: (String) -> String
+
+            attr_reader country: String?
+
+            def country=: (String) -> String
+
+            attr_reader country_code: Integer?
+
+            def country_code=: (Integer) -> Integer
+
+            attr_reader country_iso: String?
+
+            def country_iso=: (String) -> String
+
+            attr_reader direction: Telnyx::Models::BundlePricing::BillingBundleRetrieveResponse::Data::BundleLimit::direction?
+
+            def direction=: (
+              Telnyx::Models::BundlePricing::BillingBundleRetrieveResponse::Data::BundleLimit::direction
+            ) -> Telnyx::Models::BundlePricing::BillingBundleRetrieveResponse::Data::BundleLimit::direction
+
+            attr_reader limit: Integer?
+
+            def limit=: (Integer) -> Integer
+
+            attr_reader rate: String?
+
+            def rate=: (String) -> String
+
+            attr_reader types: ::Array[String]?
+
+            def types=: (::Array[String]) -> ::Array[String]
+
+            def initialize: (
+              id: String,
+              created_at: Date,
+              metric: String,
+              service: String,
+              updated_at: Date,
+              ?billing_service: String,
+              ?country: String,
+              ?country_code: Integer,
+              ?country_iso: String,
+              ?direction: Telnyx::Models::BundlePricing::BillingBundleRetrieveResponse::Data::BundleLimit::direction,
+              ?limit: Integer,
+              ?rate: String,
+              ?types: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              created_at: Date,
+              metric: String,
+              service: String,
+              updated_at: Date,
+              billing_service: String,
+              country: String,
+              country_code: Integer,
+              country_iso: String,
+              direction: Telnyx::Models::BundlePricing::BillingBundleRetrieveResponse::Data::BundleLimit::direction,
+              limit: Integer,
+              rate: String,
+              types: ::Array[String]
+            }
+
+            type direction = :inbound | :outbound
+
+            module Direction
+              extend Telnyx::Internal::Type::Enum
+
+              INBOUND: :inbound
+              OUTBOUND: :outbound
+
+              def self?.values: -> ::Array[Telnyx::Models::BundlePricing::BillingBundleRetrieveResponse::Data::BundleLimit::direction]
+            end
+          end
+        end
+      end
+    end
+  end
+end

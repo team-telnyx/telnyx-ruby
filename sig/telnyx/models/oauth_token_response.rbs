@@ -1,0 +1,54 @@
+module Telnyx
+  module Models
+    type oauth_token_response =
+      {
+        access_token: String,
+        expires_in: Integer,
+        token_type: Telnyx::Models::OAuthTokenResponse::token_type,
+        refresh_token: String,
+        scope: String
+      }
+
+    class OAuthTokenResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor access_token: String
+
+      attr_accessor expires_in: Integer
+
+      attr_accessor token_type: Telnyx::Models::OAuthTokenResponse::token_type
+
+      attr_reader refresh_token: String?
+
+      def refresh_token=: (String) -> String
+
+      attr_reader scope: String?
+
+      def scope=: (String) -> String
+
+      def initialize: (
+        access_token: String,
+        expires_in: Integer,
+        token_type: Telnyx::Models::OAuthTokenResponse::token_type,
+        ?refresh_token: String,
+        ?scope: String
+      ) -> void
+
+      def to_hash: -> {
+        access_token: String,
+        expires_in: Integer,
+        token_type: Telnyx::Models::OAuthTokenResponse::token_type,
+        refresh_token: String,
+        scope: String
+      }
+
+      type token_type = :Bearer
+
+      module TokenType
+        extend Telnyx::Internal::Type::Enum
+
+        BEARER: :Bearer
+
+        def self?.values: -> ::Array[Telnyx::Models::OAuthTokenResponse::token_type]
+      end
+    end
+  end
+end

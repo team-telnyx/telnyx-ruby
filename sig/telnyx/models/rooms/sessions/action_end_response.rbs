@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    module Rooms
+      module Sessions
+        type action_end_response =
+          { data: Telnyx::Models::Rooms::Sessions::ActionEndResponse::Data }
+
+        class ActionEndResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: Telnyx::Models::Rooms::Sessions::ActionEndResponse::Data?
+
+          def data=: (
+            Telnyx::Models::Rooms::Sessions::ActionEndResponse::Data
+          ) -> Telnyx::Models::Rooms::Sessions::ActionEndResponse::Data
+
+          def initialize: (
+            ?data: Telnyx::Models::Rooms::Sessions::ActionEndResponse::Data
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::Models::Rooms::Sessions::ActionEndResponse::Data
+          }
+
+          type data = { result: String }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_reader result: String?
+
+            def result=: (String) -> String
+
+            def initialize: (?result: String) -> void
+
+            def to_hash: -> { result: String }
+          end
+        end
+      end
+    end
+  end
+end

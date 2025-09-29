@@ -1,0 +1,142 @@
+module Telnyx
+  module Models
+    type sim_card_list_params =
+      {
+        filter: Telnyx::SimCardListParams::Filter,
+        filter_sim_card_group_id: String,
+        include_sim_card_group: bool,
+        page: Telnyx::SimCardListParams::Page,
+        sort: Telnyx::Models::SimCardListParams::sort
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class SimCardListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::SimCardListParams::Filter?
+
+      def filter=: (
+        Telnyx::SimCardListParams::Filter
+      ) -> Telnyx::SimCardListParams::Filter
+
+      attr_reader filter_sim_card_group_id: String?
+
+      def filter_sim_card_group_id=: (String) -> String
+
+      attr_reader include_sim_card_group: bool?
+
+      def include_sim_card_group=: (bool) -> bool
+
+      attr_reader page: Telnyx::SimCardListParams::Page?
+
+      def page=: (
+        Telnyx::SimCardListParams::Page
+      ) -> Telnyx::SimCardListParams::Page
+
+      attr_reader sort: Telnyx::Models::SimCardListParams::sort?
+
+      def sort=: (
+        Telnyx::Models::SimCardListParams::sort
+      ) -> Telnyx::Models::SimCardListParams::sort
+
+      def initialize: (
+        ?filter: Telnyx::SimCardListParams::Filter,
+        ?filter_sim_card_group_id: String,
+        ?include_sim_card_group: bool,
+        ?page: Telnyx::SimCardListParams::Page,
+        ?sort: Telnyx::Models::SimCardListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::SimCardListParams::Filter,
+        filter_sim_card_group_id: String,
+        include_sim_card_group: bool,
+        page: Telnyx::SimCardListParams::Page,
+        sort: Telnyx::Models::SimCardListParams::sort,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          iccid: String,
+          status: ::Array[Telnyx::Models::SimCardListParams::Filter::status],
+          tags: ::Array[String]
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader iccid: String?
+
+        def iccid=: (String) -> String
+
+        attr_reader status: ::Array[Telnyx::Models::SimCardListParams::Filter::status]?
+
+        def status=: (
+          ::Array[Telnyx::Models::SimCardListParams::Filter::status]
+        ) -> ::Array[Telnyx::Models::SimCardListParams::Filter::status]
+
+        attr_reader tags: ::Array[String]?
+
+        def tags=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          ?iccid: String,
+          ?status: ::Array[Telnyx::Models::SimCardListParams::Filter::status],
+          ?tags: ::Array[String]
+        ) -> void
+
+        def to_hash: -> {
+          iccid: String,
+          status: ::Array[Telnyx::Models::SimCardListParams::Filter::status],
+          tags: ::Array[String]
+        }
+
+        type status =
+          :enabled
+          | :disabled
+          | :standby
+          | :data_limit_exceeded
+          | :unauthorized_imei
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          ENABLED: :enabled
+          DISABLED: :disabled
+          STANDBY: :standby
+          DATA_LIMIT_EXCEEDED: :data_limit_exceeded
+          UNAUTHORIZED_IMEI: :unauthorized_imei
+
+          def self?.values: -> ::Array[Telnyx::Models::SimCardListParams::Filter::status]
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+
+      type sort = :"current_billing_period_consumed_data.amount"
+
+      module Sort
+        extend Telnyx::Internal::Type::Enum
+
+        CURRENT_BILLING_PERIOD_CONSUMED_DATA_AMOUNT: :"current_billing_period_consumed_data.amount"
+
+        def self?.values: -> ::Array[Telnyx::Models::SimCardListParams::sort]
+      end
+    end
+  end
+end

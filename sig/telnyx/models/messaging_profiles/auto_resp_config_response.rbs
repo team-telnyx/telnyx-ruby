@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    module MessagingProfiles
+      type auto_resp_config_response =
+        { data: Telnyx::MessagingProfiles::AutoRespConfig }
+
+      class AutoRespConfigResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::MessagingProfiles::AutoRespConfig
+
+        def initialize: (
+          data: Telnyx::MessagingProfiles::AutoRespConfig
+        ) -> void
+
+        def to_hash: -> { data: Telnyx::MessagingProfiles::AutoRespConfig }
+      end
+    end
+  end
+end

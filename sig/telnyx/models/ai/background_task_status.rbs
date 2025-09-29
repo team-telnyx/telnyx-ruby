@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module AI
+      type background_task_status =
+        :queued | :processing | :success | :failure | :partial_success
+
+      module BackgroundTaskStatus
+        extend Telnyx::Internal::Type::Enum
+
+        QUEUED: :queued
+        PROCESSING: :processing
+        SUCCESS: :success
+        FAILURE: :failure
+        PARTIAL_SUCCESS: :partial_success
+
+        def self?.values: -> ::Array[Telnyx::Models::AI::background_task_status]
+      end
+    end
+  end
+end

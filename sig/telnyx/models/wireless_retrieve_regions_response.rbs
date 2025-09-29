@@ -1,0 +1,53 @@
+module Telnyx
+  module Models
+    type wireless_retrieve_regions_response =
+      { data: ::Array[Telnyx::Models::WirelessRetrieveRegionsResponse::Data] }
+
+    class WirelessRetrieveRegionsResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::WirelessRetrieveRegionsResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::WirelessRetrieveRegionsResponse::Data]
+      ) -> ::Array[Telnyx::Models::WirelessRetrieveRegionsResponse::Data]
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::WirelessRetrieveRegionsResponse::Data]
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::WirelessRetrieveRegionsResponse::Data]
+      }
+
+      type data =
+        { code: String, name: String, inserted_at: Time, updated_at: Time }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor code: String
+
+        attr_accessor name: String
+
+        attr_reader inserted_at: Time?
+
+        def inserted_at=: (Time) -> Time
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        def initialize: (
+          code: String,
+          name: String,
+          ?inserted_at: Time,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          code: String,
+          name: String,
+          inserted_at: Time,
+          updated_at: Time
+        }
+      end
+    end
+  end
+end

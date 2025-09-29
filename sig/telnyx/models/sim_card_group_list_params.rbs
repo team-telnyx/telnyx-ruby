@@ -1,0 +1,56 @@
+module Telnyx
+  module Models
+    type sim_card_group_list_params =
+      {
+        filter_name: String,
+        filter_private_wireless_gateway_id: String,
+        filter_wireless_blocklist_id: String,
+        page_number: Integer,
+        page_size: Integer
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class SimCardGroupListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter_name: String?
+
+      def filter_name=: (String) -> String
+
+      attr_reader filter_private_wireless_gateway_id: String?
+
+      def filter_private_wireless_gateway_id=: (String) -> String
+
+      attr_reader filter_wireless_blocklist_id: String?
+
+      def filter_wireless_blocklist_id=: (String) -> String
+
+      attr_reader page_number: Integer?
+
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      def initialize: (
+        ?filter_name: String,
+        ?filter_private_wireless_gateway_id: String,
+        ?filter_wireless_blocklist_id: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter_name: String,
+        filter_private_wireless_gateway_id: String,
+        filter_wireless_blocklist_id: String,
+        page_number: Integer,
+        page_size: Integer,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

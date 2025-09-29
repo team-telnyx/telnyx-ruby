@@ -1,0 +1,117 @@
+module Telnyx
+  module Models
+    module CredentialConnections
+      type action_check_registration_status_response =
+        {
+          data: Telnyx::Models::CredentialConnections::ActionCheckRegistrationStatusResponse::Data
+        }
+
+      class ActionCheckRegistrationStatusResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::CredentialConnections::ActionCheckRegistrationStatusResponse::Data?
+
+        def data=: (
+          Telnyx::Models::CredentialConnections::ActionCheckRegistrationStatusResponse::Data
+        ) -> Telnyx::Models::CredentialConnections::ActionCheckRegistrationStatusResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::CredentialConnections::ActionCheckRegistrationStatusResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::CredentialConnections::ActionCheckRegistrationStatusResponse::Data
+        }
+
+        type data =
+          {
+            ip_address: String,
+            last_registration: String,
+            port: Integer,
+            record_type: String,
+            sip_username: String,
+            status: Telnyx::Models::CredentialConnections::ActionCheckRegistrationStatusResponse::Data::status,
+            transport: String,
+            user_agent: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader ip_address: String?
+
+          def ip_address=: (String) -> String
+
+          attr_reader last_registration: String?
+
+          def last_registration=: (String) -> String
+
+          attr_reader port: Integer?
+
+          def port=: (Integer) -> Integer
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_reader sip_username: String?
+
+          def sip_username=: (String) -> String
+
+          attr_reader status: Telnyx::Models::CredentialConnections::ActionCheckRegistrationStatusResponse::Data::status?
+
+          def status=: (
+            Telnyx::Models::CredentialConnections::ActionCheckRegistrationStatusResponse::Data::status
+          ) -> Telnyx::Models::CredentialConnections::ActionCheckRegistrationStatusResponse::Data::status
+
+          attr_reader transport: String?
+
+          def transport=: (String) -> String
+
+          attr_reader user_agent: String?
+
+          def user_agent=: (String) -> String
+
+          def initialize: (
+            ?ip_address: String,
+            ?last_registration: String,
+            ?port: Integer,
+            ?record_type: String,
+            ?sip_username: String,
+            ?status: Telnyx::Models::CredentialConnections::ActionCheckRegistrationStatusResponse::Data::status,
+            ?transport: String,
+            ?user_agent: String
+          ) -> void
+
+          def to_hash: -> {
+            ip_address: String,
+            last_registration: String,
+            port: Integer,
+            record_type: String,
+            sip_username: String,
+            status: Telnyx::Models::CredentialConnections::ActionCheckRegistrationStatusResponse::Data::status,
+            transport: String,
+            user_agent: String
+          }
+
+          type status =
+            :"Not Applicable"
+            | :"Not Registered"
+            | :Failed
+            | :Expired
+            | :Registered
+            | :Unregistered
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            NOT_APPLICABLE: :"Not Applicable"
+            NOT_REGISTERED: :"Not Registered"
+            FAILED: :Failed
+            EXPIRED: :Expired
+            REGISTERED: :Registered
+            UNREGISTERED: :Unregistered
+
+            def self?.values: -> ::Array[Telnyx::Models::CredentialConnections::ActionCheckRegistrationStatusResponse::Data::status]
+          end
+        end
+      end
+    end
+  end
+end

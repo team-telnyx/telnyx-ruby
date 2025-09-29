@@ -1,0 +1,127 @@
+module Telnyx
+  module Models
+    type invoice_list_response =
+      {
+        data: ::Array[Telnyx::Models::InvoiceListResponse::Data],
+        meta: Telnyx::Models::InvoiceListResponse::Meta
+      }
+
+    class InvoiceListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::InvoiceListResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::InvoiceListResponse::Data]
+      ) -> ::Array[Telnyx::Models::InvoiceListResponse::Data]
+
+      attr_reader meta: Telnyx::Models::InvoiceListResponse::Meta?
+
+      def meta=: (
+        Telnyx::Models::InvoiceListResponse::Meta
+      ) -> Telnyx::Models::InvoiceListResponse::Meta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::InvoiceListResponse::Data],
+        ?meta: Telnyx::Models::InvoiceListResponse::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::InvoiceListResponse::Data],
+        meta: Telnyx::Models::InvoiceListResponse::Meta
+      }
+
+      type data =
+        {
+          file_id: String,
+          invoice_id: String,
+          paid: bool,
+          period_end: Date,
+          period_start: Date,
+          url: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader file_id: String?
+
+        def file_id=: (String) -> String
+
+        attr_reader invoice_id: String?
+
+        def invoice_id=: (String) -> String
+
+        attr_reader paid: bool?
+
+        def paid=: (bool) -> bool
+
+        attr_reader period_end: Date?
+
+        def period_end=: (Date) -> Date
+
+        attr_reader period_start: Date?
+
+        def period_start=: (Date) -> Date
+
+        attr_reader url: String?
+
+        def url=: (String) -> String
+
+        def initialize: (
+          ?file_id: String,
+          ?invoice_id: String,
+          ?paid: bool,
+          ?period_end: Date,
+          ?period_start: Date,
+          ?url: String
+        ) -> void
+
+        def to_hash: -> {
+          file_id: String,
+          invoice_id: String,
+          paid: bool,
+          period_end: Date,
+          period_start: Date,
+          url: String
+        }
+      end
+
+      type meta =
+        {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_reader page_number: Integer?
+
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        attr_reader total_pages: Integer?
+
+        def total_pages=: (Integer) -> Integer
+
+        attr_reader total_results: Integer?
+
+        def total_results=: (Integer) -> Integer
+
+        def initialize: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?total_pages: Integer,
+          ?total_results: Integer
+        ) -> void
+
+        def to_hash: -> {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+      end
+    end
+  end
+end

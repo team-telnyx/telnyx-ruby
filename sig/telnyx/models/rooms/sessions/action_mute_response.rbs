@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    module Rooms
+      module Sessions
+        type action_mute_response =
+          { data: Telnyx::Models::Rooms::Sessions::ActionMuteResponse::Data }
+
+        class ActionMuteResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: Telnyx::Models::Rooms::Sessions::ActionMuteResponse::Data?
+
+          def data=: (
+            Telnyx::Models::Rooms::Sessions::ActionMuteResponse::Data
+          ) -> Telnyx::Models::Rooms::Sessions::ActionMuteResponse::Data
+
+          def initialize: (
+            ?data: Telnyx::Models::Rooms::Sessions::ActionMuteResponse::Data
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::Models::Rooms::Sessions::ActionMuteResponse::Data
+          }
+
+          type data = { result: String }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_reader result: String?
+
+            def result=: (String) -> String
+
+            def initialize: (?result: String) -> void
+
+            def to_hash: -> { result: String }
+          end
+        end
+      end
+    end
+  end
+end

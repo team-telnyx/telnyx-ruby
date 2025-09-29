@@ -1,0 +1,57 @@
+module Telnyx
+  module Models
+    type video_region =
+      {
+        height: Integer?,
+        max_columns: Integer?,
+        max_rows: Integer?,
+        video_sources: ::Array[String],
+        width: Integer?,
+        x_pos: Integer?,
+        y_pos: Integer?,
+        z_pos: Integer?
+      }
+
+    class VideoRegion < Telnyx::Internal::Type::BaseModel
+      attr_accessor height: Integer?
+
+      attr_accessor max_columns: Integer?
+
+      attr_accessor max_rows: Integer?
+
+      attr_reader video_sources: ::Array[String]?
+
+      def video_sources=: (::Array[String]) -> ::Array[String]
+
+      attr_accessor width: Integer?
+
+      attr_accessor x_pos: Integer?
+
+      attr_accessor y_pos: Integer?
+
+      attr_accessor z_pos: Integer?
+
+      def initialize: (
+        ?height: Integer?,
+        ?max_columns: Integer?,
+        ?max_rows: Integer?,
+        ?video_sources: ::Array[String],
+        ?width: Integer?,
+        ?x_pos: Integer?,
+        ?y_pos: Integer?,
+        ?z_pos: Integer?
+      ) -> void
+
+      def to_hash: -> {
+        height: Integer?,
+        max_columns: Integer?,
+        max_rows: Integer?,
+        video_sources: ::Array[String],
+        width: Integer?,
+        x_pos: Integer?,
+        y_pos: Integer?,
+        z_pos: Integer?
+      }
+    end
+  end
+end

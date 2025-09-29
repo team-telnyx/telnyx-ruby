@@ -1,0 +1,58 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        module Calls
+          type recording_recording_sid_json_params =
+            {
+              account_sid: String,
+              call_sid: String,
+              status: Telnyx::Models::Texml::Accounts::Calls::RecordingRecordingSidJsonParams::status
+            }
+            & Telnyx::Internal::Type::request_parameters
+
+          class RecordingRecordingSidJsonParams < Telnyx::Internal::Type::BaseModel
+            extend Telnyx::Internal::Type::RequestParameters::Converter
+            include Telnyx::Internal::Type::RequestParameters
+
+            attr_accessor account_sid: String
+
+            attr_accessor call_sid: String
+
+            attr_reader status: Telnyx::Models::Texml::Accounts::Calls::RecordingRecordingSidJsonParams::status?
+
+            def status=: (
+              Telnyx::Models::Texml::Accounts::Calls::RecordingRecordingSidJsonParams::status
+            ) -> Telnyx::Models::Texml::Accounts::Calls::RecordingRecordingSidJsonParams::status
+
+            def initialize: (
+              account_sid: String,
+              call_sid: String,
+              ?status: Telnyx::Models::Texml::Accounts::Calls::RecordingRecordingSidJsonParams::status,
+              ?request_options: Telnyx::request_opts
+            ) -> void
+
+            def to_hash: -> {
+              account_sid: String,
+              call_sid: String,
+              status: Telnyx::Models::Texml::Accounts::Calls::RecordingRecordingSidJsonParams::status,
+              request_options: Telnyx::RequestOptions
+            }
+
+            type status = :"in-progress" | :paused | :stopped
+
+            module Status
+              extend Telnyx::Internal::Type::Enum
+
+              IN_PROGRESS: :"in-progress"
+              PAUSED: :paused
+              STOPPED: :stopped
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Calls::RecordingRecordingSidJsonParams::status]
+            end
+          end
+        end
+      end
+    end
+  end
+end

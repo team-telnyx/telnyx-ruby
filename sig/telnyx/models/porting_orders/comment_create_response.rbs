@@ -1,0 +1,92 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type comment_create_response =
+        { data: Telnyx::Models::PortingOrders::CommentCreateResponse::Data }
+
+      class CommentCreateResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::PortingOrders::CommentCreateResponse::Data?
+
+        def data=: (
+          Telnyx::Models::PortingOrders::CommentCreateResponse::Data
+        ) -> Telnyx::Models::PortingOrders::CommentCreateResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::PortingOrders::CommentCreateResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::PortingOrders::CommentCreateResponse::Data
+        }
+
+        type data =
+          {
+            id: String,
+            body: String,
+            created_at: Time,
+            porting_order_id: String,
+            record_type: String,
+            user_type: Telnyx::Models::PortingOrders::CommentCreateResponse::Data::user_type
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader body: String?
+
+          def body=: (String) -> String
+
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader porting_order_id: String?
+
+          def porting_order_id=: (String) -> String
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_reader user_type: Telnyx::Models::PortingOrders::CommentCreateResponse::Data::user_type?
+
+          def user_type=: (
+            Telnyx::Models::PortingOrders::CommentCreateResponse::Data::user_type
+          ) -> Telnyx::Models::PortingOrders::CommentCreateResponse::Data::user_type
+
+          def initialize: (
+            ?id: String,
+            ?body: String,
+            ?created_at: Time,
+            ?porting_order_id: String,
+            ?record_type: String,
+            ?user_type: Telnyx::Models::PortingOrders::CommentCreateResponse::Data::user_type
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            body: String,
+            created_at: Time,
+            porting_order_id: String,
+            record_type: String,
+            user_type: Telnyx::Models::PortingOrders::CommentCreateResponse::Data::user_type
+          }
+
+          type user_type = :admin | :user | :system
+
+          module UserType
+            extend Telnyx::Internal::Type::Enum
+
+            ADMIN: :admin
+            USER: :user
+            SYSTEM: :system
+
+            def self?.values: -> ::Array[Telnyx::Models::PortingOrders::CommentCreateResponse::Data::user_type]
+          end
+        end
+      end
+    end
+  end
+end

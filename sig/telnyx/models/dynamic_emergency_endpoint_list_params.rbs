@@ -1,0 +1,95 @@
+module Telnyx
+  module Models
+    type dynamic_emergency_endpoint_list_params =
+      {
+        filter: Telnyx::DynamicEmergencyEndpointListParams::Filter,
+        page: Telnyx::DynamicEmergencyEndpointListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class DynamicEmergencyEndpointListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::DynamicEmergencyEndpointListParams::Filter?
+
+      def filter=: (
+        Telnyx::DynamicEmergencyEndpointListParams::Filter
+      ) -> Telnyx::DynamicEmergencyEndpointListParams::Filter
+
+      attr_reader page: Telnyx::DynamicEmergencyEndpointListParams::Page?
+
+      def page=: (
+        Telnyx::DynamicEmergencyEndpointListParams::Page
+      ) -> Telnyx::DynamicEmergencyEndpointListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::DynamicEmergencyEndpointListParams::Filter,
+        ?page: Telnyx::DynamicEmergencyEndpointListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::DynamicEmergencyEndpointListParams::Filter,
+        page: Telnyx::DynamicEmergencyEndpointListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          country_code: String,
+          status: Telnyx::Models::DynamicEmergencyEndpointListParams::Filter::status
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader status: Telnyx::Models::DynamicEmergencyEndpointListParams::Filter::status?
+
+        def status=: (
+          Telnyx::Models::DynamicEmergencyEndpointListParams::Filter::status
+        ) -> Telnyx::Models::DynamicEmergencyEndpointListParams::Filter::status
+
+        def initialize: (
+          ?country_code: String,
+          ?status: Telnyx::Models::DynamicEmergencyEndpointListParams::Filter::status
+        ) -> void
+
+        def to_hash: -> {
+          country_code: String,
+          status: Telnyx::Models::DynamicEmergencyEndpointListParams::Filter::status
+        }
+
+        type status = :pending | :activated | :rejected
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          ACTIVATED: :activated
+          REJECTED: :rejected
+
+          def self?.values: -> ::Array[Telnyx::Models::DynamicEmergencyEndpointListParams::Filter::status]
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

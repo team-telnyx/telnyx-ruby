@@ -1,0 +1,190 @@
+module Telnyx
+  module Models
+    type phone_numbers_regulatory_requirement_retrieve_response =
+      {
+        data: ::Array[Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class PhoneNumbersRegulatoryRequirementRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data]
+      ) -> ::Array[Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+      type data =
+        {
+          phone_number: String,
+          phone_number_type: String,
+          record_type: String,
+          region_information: ::Array[Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data::RegionInformation],
+          regulatory_requirements: ::Array[Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement]
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader region_information: ::Array[Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data::RegionInformation]?
+
+        def region_information=: (
+          ::Array[Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data::RegionInformation]
+        ) -> ::Array[Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data::RegionInformation]
+
+        attr_reader regulatory_requirements: ::Array[Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement]?
+
+        def regulatory_requirements=: (
+          ::Array[Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement]
+        ) -> ::Array[Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement]
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader phone_number_type: String?
+
+        def phone_number_type=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?phone_number: String,
+          ?phone_number_type: String,
+          ?record_type: String,
+          ?region_information: ::Array[Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data::RegionInformation],
+          ?regulatory_requirements: ::Array[Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement]
+        ) -> void
+
+        def to_hash: -> {
+          phone_number: String,
+          phone_number_type: String,
+          record_type: String,
+          region_information: ::Array[Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data::RegionInformation],
+          regulatory_requirements: ::Array[Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement]
+        }
+
+        type region_information = { region_name: String, region_type: String }
+
+        class RegionInformation < Telnyx::Internal::Type::BaseModel
+          attr_reader region_name: String?
+
+          def region_name=: (String) -> String
+
+          attr_reader region_type: String?
+
+          def region_type=: (String) -> String
+
+          def initialize: (?region_name: String, ?region_type: String) -> void
+
+          def to_hash: -> { region_name: String, region_type: String }
+        end
+
+        type regulatory_requirement =
+          {
+            id: String,
+            acceptance_criteria: Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement::AcceptanceCriteria,
+            description: String,
+            example: String,
+            field_type: String,
+            label: String,
+            record_type: String
+          }
+
+        class RegulatoryRequirement < Telnyx::Internal::Type::BaseModel
+          attr_reader acceptance_criteria: Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement::AcceptanceCriteria?
+
+          def acceptance_criteria=: (
+            Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement::AcceptanceCriteria
+          ) -> Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement::AcceptanceCriteria
+
+          attr_reader field_type: String?
+
+          def field_type=: (String) -> String
+
+          attr_reader label: String?
+
+          def label=: (String) -> String
+
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
+          attr_reader example: String?
+
+          def example=: (String) -> String
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?acceptance_criteria: Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement::AcceptanceCriteria,
+            ?description: String,
+            ?example: String,
+            ?field_type: String,
+            ?label: String,
+            ?record_type: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            acceptance_criteria: Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse::Data::RegulatoryRequirement::AcceptanceCriteria,
+            description: String,
+            example: String,
+            field_type: String,
+            label: String,
+            record_type: String
+          }
+
+          type acceptance_criteria =
+            { field_type: String, field_value: String, locality_limit: String }
+
+          class AcceptanceCriteria < Telnyx::Internal::Type::BaseModel
+            attr_reader field_type: String?
+
+            def field_type=: (String) -> String
+
+            attr_reader field_value: String?
+
+            def field_value=: (String) -> String
+
+            attr_reader locality_limit: String?
+
+            def locality_limit=: (String) -> String
+
+            def initialize: (
+              ?field_type: String,
+              ?field_value: String,
+              ?locality_limit: String
+            ) -> void
+
+            def to_hash: -> {
+              field_type: String,
+              field_value: String,
+              locality_limit: String
+            }
+          end
+        end
+      end
+    end
+  end
+end

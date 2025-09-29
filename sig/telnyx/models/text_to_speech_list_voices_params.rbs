@@ -1,0 +1,50 @@
+module Telnyx
+  module Models
+    type text_to_speech_list_voices_params =
+      {
+        elevenlabs_api_key_ref: String,
+        provider: Telnyx::Models::TextToSpeechListVoicesParams::provider
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class TextToSpeechListVoicesParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader elevenlabs_api_key_ref: String?
+
+      def elevenlabs_api_key_ref=: (String) -> String
+
+      attr_reader provider: Telnyx::Models::TextToSpeechListVoicesParams::provider?
+
+      def provider=: (
+        Telnyx::Models::TextToSpeechListVoicesParams::provider
+      ) -> Telnyx::Models::TextToSpeechListVoicesParams::provider
+
+      def initialize: (
+        ?elevenlabs_api_key_ref: String,
+        ?provider: Telnyx::Models::TextToSpeechListVoicesParams::provider,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        elevenlabs_api_key_ref: String,
+        provider: Telnyx::Models::TextToSpeechListVoicesParams::provider,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type provider = :aws | :azure | :elevenlabs | :telnyx
+
+      module Provider
+        extend Telnyx::Internal::Type::Enum
+
+        AWS: :aws
+        AZURE: :azure
+        ELEVENLABS: :elevenlabs
+        TELNYX: :telnyx
+
+        def self?.values: -> ::Array[Telnyx::Models::TextToSpeechListVoicesParams::provider]
+      end
+    end
+  end
+end

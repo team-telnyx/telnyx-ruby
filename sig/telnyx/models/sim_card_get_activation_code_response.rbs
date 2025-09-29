@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    type sim_card_get_activation_code_response =
+      { data: Telnyx::Models::SimCardGetActivationCodeResponse::Data }
+
+    class SimCardGetActivationCodeResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::SimCardGetActivationCodeResponse::Data?
+
+      def data=: (
+        Telnyx::Models::SimCardGetActivationCodeResponse::Data
+      ) -> Telnyx::Models::SimCardGetActivationCodeResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::SimCardGetActivationCodeResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::SimCardGetActivationCodeResponse::Data
+      }
+
+      type data = { activation_code: String, record_type: String }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader activation_code: String?
+
+        def activation_code=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (?activation_code: String, ?record_type: String) -> void
+
+        def to_hash: -> { activation_code: String, record_type: String }
+      end
+    end
+  end
+end

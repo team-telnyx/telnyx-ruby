@@ -1,0 +1,51 @@
+module Telnyx
+  module Models
+    type oauth_retrieve_jwks_response =
+      { keys: ::Array[Telnyx::Models::OAuthRetrieveJwksResponse::Key] }
+
+    class OAuthRetrieveJwksResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader keys: ::Array[Telnyx::Models::OAuthRetrieveJwksResponse::Key]?
+
+      def keys=: (
+        ::Array[Telnyx::Models::OAuthRetrieveJwksResponse::Key]
+      ) -> ::Array[Telnyx::Models::OAuthRetrieveJwksResponse::Key]
+
+      def initialize: (
+        ?keys: ::Array[Telnyx::Models::OAuthRetrieveJwksResponse::Key]
+      ) -> void
+
+      def to_hash: -> {
+        keys: ::Array[Telnyx::Models::OAuthRetrieveJwksResponse::Key]
+      }
+
+      type key = { alg: String, kid: String, kty: String, use: String }
+
+      class Key < Telnyx::Internal::Type::BaseModel
+        attr_reader alg: String?
+
+        def alg=: (String) -> String
+
+        attr_reader kid: String?
+
+        def kid=: (String) -> String
+
+        attr_reader kty: String?
+
+        def kty=: (String) -> String
+
+        attr_reader use: String?
+
+        def use=: (String) -> String
+
+        def initialize: (
+          ?alg: String,
+          ?kid: String,
+          ?kty: String,
+          ?use: String
+        ) -> void
+
+        def to_hash: -> { alg: String, kid: String, kty: String, use: String }
+      end
+    end
+  end
+end

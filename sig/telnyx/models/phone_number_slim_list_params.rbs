@@ -1,0 +1,334 @@
+module Telnyx
+  module Models
+    type phone_number_slim_list_params =
+      {
+        filter: Telnyx::PhoneNumberSlimListParams::Filter,
+        include_connection: bool,
+        include_tags: bool,
+        page: Telnyx::PhoneNumberSlimListParams::Page,
+        sort: Telnyx::Models::PhoneNumberSlimListParams::sort
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class PhoneNumberSlimListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::PhoneNumberSlimListParams::Filter?
+
+      def filter=: (
+        Telnyx::PhoneNumberSlimListParams::Filter
+      ) -> Telnyx::PhoneNumberSlimListParams::Filter
+
+      attr_reader include_connection: bool?
+
+      def include_connection=: (bool) -> bool
+
+      attr_reader include_tags: bool?
+
+      def include_tags=: (bool) -> bool
+
+      attr_reader page: Telnyx::PhoneNumberSlimListParams::Page?
+
+      def page=: (
+        Telnyx::PhoneNumberSlimListParams::Page
+      ) -> Telnyx::PhoneNumberSlimListParams::Page
+
+      attr_reader sort: Telnyx::Models::PhoneNumberSlimListParams::sort?
+
+      def sort=: (
+        Telnyx::Models::PhoneNumberSlimListParams::sort
+      ) -> Telnyx::Models::PhoneNumberSlimListParams::sort
+
+      def initialize: (
+        ?filter: Telnyx::PhoneNumberSlimListParams::Filter,
+        ?include_connection: bool,
+        ?include_tags: bool,
+        ?page: Telnyx::PhoneNumberSlimListParams::Page,
+        ?sort: Telnyx::Models::PhoneNumberSlimListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::PhoneNumberSlimListParams::Filter,
+        include_connection: bool,
+        include_tags: bool,
+        page: Telnyx::PhoneNumberSlimListParams::Page,
+        sort: Telnyx::Models::PhoneNumberSlimListParams::sort,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          billing_group_id: String,
+          connection_id: String,
+          :country_iso_alpha2 => Telnyx::Models::PhoneNumberSlimListParams::Filter::country_iso_alpha2,
+          customer_reference: String,
+          emergency_address_id: String,
+          number_type: Telnyx::PhoneNumberSlimListParams::Filter::NumberType,
+          phone_number: String,
+          source: Telnyx::Models::PhoneNumberSlimListParams::Filter::source,
+          status: Telnyx::Models::PhoneNumberSlimListParams::Filter::status,
+          tag: String,
+          voice_connection_name: Telnyx::PhoneNumberSlimListParams::Filter::VoiceConnectionName,
+          voice_usage_payment_method: Telnyx::Models::PhoneNumberSlimListParams::Filter::voice_usage_payment_method
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader billing_group_id: String?
+
+        def billing_group_id=: (String) -> String
+
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader country_iso_alpha2: Telnyx::Models::PhoneNumberSlimListParams::Filter::country_iso_alpha2?
+
+        def country_iso_alpha2=: (
+          Telnyx::Models::PhoneNumberSlimListParams::Filter::country_iso_alpha2
+        ) -> Telnyx::Models::PhoneNumberSlimListParams::Filter::country_iso_alpha2
+
+        attr_reader customer_reference: String?
+
+        def customer_reference=: (String) -> String
+
+        attr_reader emergency_address_id: String?
+
+        def emergency_address_id=: (String) -> String
+
+        attr_reader number_type: Telnyx::PhoneNumberSlimListParams::Filter::NumberType?
+
+        def number_type=: (
+          Telnyx::PhoneNumberSlimListParams::Filter::NumberType
+        ) -> Telnyx::PhoneNumberSlimListParams::Filter::NumberType
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader source: Telnyx::Models::PhoneNumberSlimListParams::Filter::source?
+
+        def source=: (
+          Telnyx::Models::PhoneNumberSlimListParams::Filter::source
+        ) -> Telnyx::Models::PhoneNumberSlimListParams::Filter::source
+
+        attr_reader status: Telnyx::Models::PhoneNumberSlimListParams::Filter::status?
+
+        def status=: (
+          Telnyx::Models::PhoneNumberSlimListParams::Filter::status
+        ) -> Telnyx::Models::PhoneNumberSlimListParams::Filter::status
+
+        attr_reader tag: String?
+
+        def tag=: (String) -> String
+
+        attr_reader voice_connection_name: Telnyx::PhoneNumberSlimListParams::Filter::VoiceConnectionName?
+
+        def voice_connection_name=: (
+          Telnyx::PhoneNumberSlimListParams::Filter::VoiceConnectionName
+        ) -> Telnyx::PhoneNumberSlimListParams::Filter::VoiceConnectionName
+
+        attr_reader voice_usage_payment_method: Telnyx::Models::PhoneNumberSlimListParams::Filter::voice_usage_payment_method?
+
+        def voice_usage_payment_method=: (
+          Telnyx::Models::PhoneNumberSlimListParams::Filter::voice_usage_payment_method
+        ) -> Telnyx::Models::PhoneNumberSlimListParams::Filter::voice_usage_payment_method
+
+        def initialize: (
+          ?billing_group_id: String,
+          ?connection_id: String,
+          ?country_iso_alpha2: Telnyx::Models::PhoneNumberSlimListParams::Filter::country_iso_alpha2,
+          ?customer_reference: String,
+          ?emergency_address_id: String,
+          ?number_type: Telnyx::PhoneNumberSlimListParams::Filter::NumberType,
+          ?phone_number: String,
+          ?source: Telnyx::Models::PhoneNumberSlimListParams::Filter::source,
+          ?status: Telnyx::Models::PhoneNumberSlimListParams::Filter::status,
+          ?tag: String,
+          ?voice_connection_name: Telnyx::PhoneNumberSlimListParams::Filter::VoiceConnectionName,
+          ?voice_usage_payment_method: Telnyx::Models::PhoneNumberSlimListParams::Filter::voice_usage_payment_method
+        ) -> void
+
+        def to_hash: -> {
+          billing_group_id: String,
+          connection_id: String,
+          :country_iso_alpha2 => Telnyx::Models::PhoneNumberSlimListParams::Filter::country_iso_alpha2,
+          customer_reference: String,
+          emergency_address_id: String,
+          number_type: Telnyx::PhoneNumberSlimListParams::Filter::NumberType,
+          phone_number: String,
+          source: Telnyx::Models::PhoneNumberSlimListParams::Filter::source,
+          status: Telnyx::Models::PhoneNumberSlimListParams::Filter::status,
+          tag: String,
+          voice_connection_name: Telnyx::PhoneNumberSlimListParams::Filter::VoiceConnectionName,
+          voice_usage_payment_method: Telnyx::Models::PhoneNumberSlimListParams::Filter::voice_usage_payment_method
+        }
+
+        type country_iso_alpha2 = String | ::Array[String]
+
+        module CountryISOAlpha2
+          extend Telnyx::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Telnyx::Models::PhoneNumberSlimListParams::Filter::country_iso_alpha2]
+
+          StringArray: Telnyx::Internal::Type::Converter
+        end
+
+        type number_type =
+          {
+            eq: Telnyx::Models::PhoneNumberSlimListParams::Filter::NumberType::eq
+          }
+
+        class NumberType < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: Telnyx::Models::PhoneNumberSlimListParams::Filter::NumberType::eq?
+
+          def eq=: (
+            Telnyx::Models::PhoneNumberSlimListParams::Filter::NumberType::eq
+          ) -> Telnyx::Models::PhoneNumberSlimListParams::Filter::NumberType::eq
+
+          def initialize: (
+            ?eq: Telnyx::Models::PhoneNumberSlimListParams::Filter::NumberType::eq
+          ) -> void
+
+          def to_hash: -> {
+            eq: Telnyx::Models::PhoneNumberSlimListParams::Filter::NumberType::eq
+          }
+
+          type eq = :local | :national | :toll_free | :mobile | :shared_cost
+
+          module Eq
+            extend Telnyx::Internal::Type::Enum
+
+            LOCAL: :local
+            NATIONAL: :national
+            TOLL_FREE: :toll_free
+            MOBILE: :mobile
+            SHARED_COST: :shared_cost
+
+            def self?.values: -> ::Array[Telnyx::Models::PhoneNumberSlimListParams::Filter::NumberType::eq]
+          end
+        end
+
+        type source = :ported | :purchased
+
+        module Source
+          extend Telnyx::Internal::Type::Enum
+
+          PORTED: :ported
+          PURCHASED: :purchased
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumberSlimListParams::Filter::source]
+        end
+
+        type status =
+          :"purchase-pending"
+          | :"purchase-failed"
+          | :port_pending
+          | :active
+          | :deleted
+          | :"port-failed"
+          | :"emergency-only"
+          | :"ported-out"
+          | :"port-out-pending"
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PURCHASE_PENDING: :"purchase-pending"
+          PURCHASE_FAILED: :"purchase-failed"
+          PORT_PENDING: :port_pending
+          ACTIVE: :active
+          DELETED: :deleted
+          PORT_FAILED: :"port-failed"
+          EMERGENCY_ONLY: :"emergency-only"
+          PORTED_OUT: :"ported-out"
+          PORT_OUT_PENDING: :"port-out-pending"
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumberSlimListParams::Filter::status]
+        end
+
+        type voice_connection_name =
+          {
+            contains: String,
+            ends_with: String,
+            eq: String,
+            starts_with: String
+          }
+
+        class VoiceConnectionName < Telnyx::Internal::Type::BaseModel
+          attr_reader contains: String?
+
+          def contains=: (String) -> String
+
+          attr_reader ends_with: String?
+
+          def ends_with=: (String) -> String
+
+          attr_reader eq: String?
+
+          def eq=: (String) -> String
+
+          attr_reader starts_with: String?
+
+          def starts_with=: (String) -> String
+
+          def initialize: (
+            ?contains: String,
+            ?ends_with: String,
+            ?eq: String,
+            ?starts_with: String
+          ) -> void
+
+          def to_hash: -> {
+            contains: String,
+            ends_with: String,
+            eq: String,
+            starts_with: String
+          }
+        end
+
+        type voice_usage_payment_method = :"pay-per-minute" | :channel
+
+        module VoiceUsagePaymentMethod
+          extend Telnyx::Internal::Type::Enum
+
+          PAY_PER_MINUTE: :"pay-per-minute"
+          CHANNEL: :channel
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumberSlimListParams::Filter::voice_usage_payment_method]
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+
+      type sort =
+        :purchased_at | :phone_number | :connection_name | :usage_payment_method
+
+      module Sort
+        extend Telnyx::Internal::Type::Enum
+
+        PURCHASED_AT: :purchased_at
+        PHONE_NUMBER: :phone_number
+        CONNECTION_NAME: :connection_name
+        USAGE_PAYMENT_METHOD: :usage_payment_method
+
+        def self?.values: -> ::Array[Telnyx::Models::PhoneNumberSlimListParams::sort]
+      end
+    end
+  end
+end

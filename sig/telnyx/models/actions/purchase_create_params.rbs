@@ -1,0 +1,77 @@
+module Telnyx
+  module Models
+    module Actions
+      type purchase_create_params =
+        {
+          amount: Integer,
+          product: String,
+          sim_card_group_id: String,
+          status: Telnyx::Models::Actions::PurchaseCreateParams::status,
+          tags: ::Array[String],
+          whitelabel_name: String
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class PurchaseCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor amount: Integer
+
+        attr_reader product: String?
+
+        def product=: (String) -> String
+
+        attr_reader sim_card_group_id: String?
+
+        def sim_card_group_id=: (String) -> String
+
+        attr_reader status: Telnyx::Models::Actions::PurchaseCreateParams::status?
+
+        def status=: (
+          Telnyx::Models::Actions::PurchaseCreateParams::status
+        ) -> Telnyx::Models::Actions::PurchaseCreateParams::status
+
+        attr_reader tags: ::Array[String]?
+
+        def tags=: (::Array[String]) -> ::Array[String]
+
+        attr_reader whitelabel_name: String?
+
+        def whitelabel_name=: (String) -> String
+
+        def initialize: (
+          amount: Integer,
+          ?product: String,
+          ?sim_card_group_id: String,
+          ?status: Telnyx::Models::Actions::PurchaseCreateParams::status,
+          ?tags: ::Array[String],
+          ?whitelabel_name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          amount: Integer,
+          product: String,
+          sim_card_group_id: String,
+          status: Telnyx::Models::Actions::PurchaseCreateParams::status,
+          tags: ::Array[String],
+          whitelabel_name: String,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type status = :enabled | :disabled | :standby
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          ENABLED: :enabled
+          DISABLED: :disabled
+          STANDBY: :standby
+
+          def self?.values: -> ::Array[Telnyx::Models::Actions::PurchaseCreateParams::status]
+        end
+      end
+    end
+  end
+end

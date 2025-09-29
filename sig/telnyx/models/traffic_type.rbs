@@ -1,0 +1,13 @@
+module Telnyx
+  module Models
+    type traffic_type = :conversational
+
+    module TrafficType
+      extend Telnyx::Internal::Type::Enum
+
+      CONVERSATIONAL: :conversational
+
+      def self?.values: -> ::Array[Telnyx::Models::traffic_type]
+    end
+  end
+end

@@ -1,0 +1,23 @@
+module Telnyx
+  module Models
+    type verified_number_create_response =
+      { phone_number: String, verification_method: String }
+
+    class VerifiedNumberCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader phone_number: String?
+
+      def phone_number=: (String) -> String
+
+      attr_reader verification_method: String?
+
+      def verification_method=: (String) -> String
+
+      def initialize: (
+        ?phone_number: String,
+        ?verification_method: String
+      ) -> void
+
+      def to_hash: -> { phone_number: String, verification_method: String }
+    end
+  end
+end

@@ -1,0 +1,19 @@
+module Telnyx
+  module Resources
+    class AI
+      class Assistants
+        class Tools
+          def test_: (
+            String tool_id,
+            assistant_id: String,
+            ?arguments: ::Hash[Symbol, top],
+            ?dynamic_variables: ::Hash[Symbol, top],
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Assistants::ToolTestResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,89 @@
+module Telnyx
+  module Models
+    type private_wireless_gateway =
+      {
+        id: String,
+        assigned_resources: ::Array[Telnyx::PwgAssignedResourcesSummary],
+        created_at: String,
+        ip_range: String,
+        name: String,
+        network_id: String,
+        record_type: String,
+        region_code: String,
+        status: Telnyx::PrivateWirelessGatewayStatus,
+        updated_at: String
+      }
+
+    class PrivateWirelessGateway < Telnyx::Internal::Type::BaseModel
+      attr_reader assigned_resources: ::Array[Telnyx::PwgAssignedResourcesSummary]?
+
+      def assigned_resources=: (
+        ::Array[Telnyx::PwgAssignedResourcesSummary]
+      ) -> ::Array[Telnyx::PwgAssignedResourcesSummary]
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader network_id: String?
+
+      def network_id=: (String) -> String
+
+      attr_reader region_code: String?
+
+      def region_code=: (String) -> String
+
+      attr_reader status: Telnyx::PrivateWirelessGatewayStatus?
+
+      def status=: (
+        Telnyx::PrivateWirelessGatewayStatus
+      ) -> Telnyx::PrivateWirelessGatewayStatus
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader ip_range: String?
+
+      def ip_range=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?assigned_resources: ::Array[Telnyx::PwgAssignedResourcesSummary],
+        ?created_at: String,
+        ?ip_range: String,
+        ?name: String,
+        ?network_id: String,
+        ?record_type: String,
+        ?region_code: String,
+        ?status: Telnyx::PrivateWirelessGatewayStatus,
+        ?updated_at: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        assigned_resources: ::Array[Telnyx::PwgAssignedResourcesSummary],
+        created_at: String,
+        ip_range: String,
+        name: String,
+        network_id: String,
+        record_type: String,
+        region_code: String,
+        status: Telnyx::PrivateWirelessGatewayStatus,
+        updated_at: String
+      }
+    end
+  end
+end

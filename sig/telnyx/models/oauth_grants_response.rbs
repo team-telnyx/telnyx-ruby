@@ -1,0 +1,13 @@
+module Telnyx
+  module Models
+    type oauth_grants_response = { redirect_uri: String }
+
+    class OAuthGrantsResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor redirect_uri: String
+
+      def initialize: (redirect_uri: String) -> void
+
+      def to_hash: -> { redirect_uri: String }
+    end
+  end
+end

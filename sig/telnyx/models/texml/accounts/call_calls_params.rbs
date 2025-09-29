@@ -1,0 +1,385 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        type call_calls_params =
+          {
+            application_sid: String,
+            from: String,
+            to: String,
+            async_amd: bool,
+            async_amd_status_callback: String,
+            async_amd_status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::async_amd_status_callback_method,
+            caller_id: String,
+            cancel_playback_on_detect_message_end: bool,
+            cancel_playback_on_machine_detection: bool,
+            detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::detection_mode,
+            fallback_url: String,
+            machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::machine_detection,
+            machine_detection_silence_timeout: Integer,
+            machine_detection_speech_end_threshold: Integer,
+            machine_detection_speech_threshold: Integer,
+            machine_detection_timeout: Integer,
+            preferred_codecs: String,
+            record: bool,
+            recording_channels: Telnyx::Models::Texml::Accounts::CallCallsParams::recording_channels,
+            recording_status_callback: String,
+            recording_status_callback_event: String,
+            recording_status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::recording_status_callback_method,
+            recording_timeout: Integer,
+            recording_track: Telnyx::Models::Texml::Accounts::CallCallsParams::recording_track,
+            send_recording_url: bool,
+            sip_auth_password: String,
+            sip_auth_username: String,
+            status_callback: String,
+            status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_event,
+            status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method,
+            trim: Telnyx::Models::Texml::Accounts::CallCallsParams::trim,
+            url: String,
+            url_method: Telnyx::Models::Texml::Accounts::CallCallsParams::url_method
+          }
+          & Telnyx::Internal::Type::request_parameters
+
+        class CallCallsParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor application_sid: String
+
+          attr_accessor from: String
+
+          attr_accessor to: String
+
+          attr_reader async_amd: bool?
+
+          def async_amd=: (bool) -> bool
+
+          attr_reader async_amd_status_callback: String?
+
+          def async_amd_status_callback=: (String) -> String
+
+          attr_reader async_amd_status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::async_amd_status_callback_method?
+
+          def async_amd_status_callback_method=: (
+            Telnyx::Models::Texml::Accounts::CallCallsParams::async_amd_status_callback_method
+          ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::async_amd_status_callback_method
+
+          attr_reader caller_id: String?
+
+          def caller_id=: (String) -> String
+
+          attr_reader cancel_playback_on_detect_message_end: bool?
+
+          def cancel_playback_on_detect_message_end=: (bool) -> bool
+
+          attr_reader cancel_playback_on_machine_detection: bool?
+
+          def cancel_playback_on_machine_detection=: (bool) -> bool
+
+          attr_reader detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::detection_mode?
+
+          def detection_mode=: (
+            Telnyx::Models::Texml::Accounts::CallCallsParams::detection_mode
+          ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::detection_mode
+
+          attr_reader fallback_url: String?
+
+          def fallback_url=: (String) -> String
+
+          attr_reader machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::machine_detection?
+
+          def machine_detection=: (
+            Telnyx::Models::Texml::Accounts::CallCallsParams::machine_detection
+          ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::machine_detection
+
+          attr_reader machine_detection_silence_timeout: Integer?
+
+          def machine_detection_silence_timeout=: (Integer) -> Integer
+
+          attr_reader machine_detection_speech_end_threshold: Integer?
+
+          def machine_detection_speech_end_threshold=: (Integer) -> Integer
+
+          attr_reader machine_detection_speech_threshold: Integer?
+
+          def machine_detection_speech_threshold=: (Integer) -> Integer
+
+          attr_reader machine_detection_timeout: Integer?
+
+          def machine_detection_timeout=: (Integer) -> Integer
+
+          attr_reader preferred_codecs: String?
+
+          def preferred_codecs=: (String) -> String
+
+          attr_reader record: bool?
+
+          def record=: (bool) -> bool
+
+          attr_reader recording_channels: Telnyx::Models::Texml::Accounts::CallCallsParams::recording_channels?
+
+          def recording_channels=: (
+            Telnyx::Models::Texml::Accounts::CallCallsParams::recording_channels
+          ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::recording_channels
+
+          attr_reader recording_status_callback: String?
+
+          def recording_status_callback=: (String) -> String
+
+          attr_reader recording_status_callback_event: String?
+
+          def recording_status_callback_event=: (String) -> String
+
+          attr_reader recording_status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::recording_status_callback_method?
+
+          def recording_status_callback_method=: (
+            Telnyx::Models::Texml::Accounts::CallCallsParams::recording_status_callback_method
+          ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::recording_status_callback_method
+
+          attr_reader recording_timeout: Integer?
+
+          def recording_timeout=: (Integer) -> Integer
+
+          attr_reader recording_track: Telnyx::Models::Texml::Accounts::CallCallsParams::recording_track?
+
+          def recording_track=: (
+            Telnyx::Models::Texml::Accounts::CallCallsParams::recording_track
+          ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::recording_track
+
+          attr_reader send_recording_url: bool?
+
+          def send_recording_url=: (bool) -> bool
+
+          attr_reader sip_auth_password: String?
+
+          def sip_auth_password=: (String) -> String
+
+          attr_reader sip_auth_username: String?
+
+          def sip_auth_username=: (String) -> String
+
+          attr_reader status_callback: String?
+
+          def status_callback=: (String) -> String
+
+          attr_reader status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_event?
+
+          def status_callback_event=: (
+            Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_event
+          ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_event
+
+          attr_reader status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method?
+
+          def status_callback_method=: (
+            Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method
+          ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method
+
+          attr_reader trim: Telnyx::Models::Texml::Accounts::CallCallsParams::trim?
+
+          def trim=: (
+            Telnyx::Models::Texml::Accounts::CallCallsParams::trim
+          ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::trim
+
+          attr_reader url: String?
+
+          def url=: (String) -> String
+
+          attr_reader url_method: Telnyx::Models::Texml::Accounts::CallCallsParams::url_method?
+
+          def url_method=: (
+            Telnyx::Models::Texml::Accounts::CallCallsParams::url_method
+          ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::url_method
+
+          def initialize: (
+            application_sid: String,
+            from: String,
+            to: String,
+            ?async_amd: bool,
+            ?async_amd_status_callback: String,
+            ?async_amd_status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::async_amd_status_callback_method,
+            ?caller_id: String,
+            ?cancel_playback_on_detect_message_end: bool,
+            ?cancel_playback_on_machine_detection: bool,
+            ?detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::detection_mode,
+            ?fallback_url: String,
+            ?machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::machine_detection,
+            ?machine_detection_silence_timeout: Integer,
+            ?machine_detection_speech_end_threshold: Integer,
+            ?machine_detection_speech_threshold: Integer,
+            ?machine_detection_timeout: Integer,
+            ?preferred_codecs: String,
+            ?record: bool,
+            ?recording_channels: Telnyx::Models::Texml::Accounts::CallCallsParams::recording_channels,
+            ?recording_status_callback: String,
+            ?recording_status_callback_event: String,
+            ?recording_status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::recording_status_callback_method,
+            ?recording_timeout: Integer,
+            ?recording_track: Telnyx::Models::Texml::Accounts::CallCallsParams::recording_track,
+            ?send_recording_url: bool,
+            ?sip_auth_password: String,
+            ?sip_auth_username: String,
+            ?status_callback: String,
+            ?status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_event,
+            ?status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method,
+            ?trim: Telnyx::Models::Texml::Accounts::CallCallsParams::trim,
+            ?url: String,
+            ?url_method: Telnyx::Models::Texml::Accounts::CallCallsParams::url_method,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            application_sid: String,
+            from: String,
+            to: String,
+            async_amd: bool,
+            async_amd_status_callback: String,
+            async_amd_status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::async_amd_status_callback_method,
+            caller_id: String,
+            cancel_playback_on_detect_message_end: bool,
+            cancel_playback_on_machine_detection: bool,
+            detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::detection_mode,
+            fallback_url: String,
+            machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::machine_detection,
+            machine_detection_silence_timeout: Integer,
+            machine_detection_speech_end_threshold: Integer,
+            machine_detection_speech_threshold: Integer,
+            machine_detection_timeout: Integer,
+            preferred_codecs: String,
+            record: bool,
+            recording_channels: Telnyx::Models::Texml::Accounts::CallCallsParams::recording_channels,
+            recording_status_callback: String,
+            recording_status_callback_event: String,
+            recording_status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::recording_status_callback_method,
+            recording_timeout: Integer,
+            recording_track: Telnyx::Models::Texml::Accounts::CallCallsParams::recording_track,
+            send_recording_url: bool,
+            sip_auth_password: String,
+            sip_auth_username: String,
+            status_callback: String,
+            status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_event,
+            status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method,
+            trim: Telnyx::Models::Texml::Accounts::CallCallsParams::trim,
+            url: String,
+            url_method: Telnyx::Models::Texml::Accounts::CallCallsParams::url_method,
+            request_options: Telnyx::RequestOptions
+          }
+
+          type async_amd_status_callback_method = :GET | :POST
+
+          module AsyncAmdStatusCallbackMethod
+            extend Telnyx::Internal::Type::Enum
+
+            GET: :GET
+            POST: :POST
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::async_amd_status_callback_method]
+          end
+
+          type detection_mode = :Premium | :Regular
+
+          module DetectionMode
+            extend Telnyx::Internal::Type::Enum
+
+            PREMIUM: :Premium
+            REGULAR: :Regular
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::detection_mode]
+          end
+
+          type machine_detection = :Enable | :Disable | :DetectMessageEnd
+
+          module MachineDetection
+            extend Telnyx::Internal::Type::Enum
+
+            ENABLE: :Enable
+            DISABLE: :Disable
+            DETECT_MESSAGE_END: :DetectMessageEnd
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::machine_detection]
+          end
+
+          type recording_channels = :mono | :dual
+
+          module RecordingChannels
+            extend Telnyx::Internal::Type::Enum
+
+            MONO: :mono
+            DUAL: :dual
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::recording_channels]
+          end
+
+          type recording_status_callback_method = :GET | :POST
+
+          module RecordingStatusCallbackMethod
+            extend Telnyx::Internal::Type::Enum
+
+            GET: :GET
+            POST: :POST
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::recording_status_callback_method]
+          end
+
+          type recording_track = :inbound | :outbound | :both
+
+          module RecordingTrack
+            extend Telnyx::Internal::Type::Enum
+
+            INBOUND: :inbound
+            OUTBOUND: :outbound
+            BOTH: :both
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::recording_track]
+          end
+
+          type status_callback_event =
+            :initiated | :ringing | :answered | :completed
+
+          module StatusCallbackEvent
+            extend Telnyx::Internal::Type::Enum
+
+            INITIATED: :initiated
+            RINGING: :ringing
+            ANSWERED: :answered
+            COMPLETED: :completed
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_event]
+          end
+
+          type status_callback_method = :GET | :POST
+
+          module StatusCallbackMethod
+            extend Telnyx::Internal::Type::Enum
+
+            GET: :GET
+            POST: :POST
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method]
+          end
+
+          type trim = :"trim-silence" | :"do-not-trim"
+
+          module Trim
+            extend Telnyx::Internal::Type::Enum
+
+            TRIM_SILENCE: :"trim-silence"
+            DO_NOT_TRIM: :"do-not-trim"
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::trim]
+          end
+
+          type url_method = :GET | :POST
+
+          module URLMethod
+            extend Telnyx::Internal::Type::Enum
+
+            GET: :GET
+            POST: :POST
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::url_method]
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    type public_internet_gateway_create_params =
+      { name: String, network_id: String, region_code: String }
+      & Telnyx::Internal::Type::request_parameters
+
+    class PublicInternetGatewayCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader network_id: String?
+
+      def network_id=: (String) -> String
+
+      attr_reader region_code: String?
+
+      def region_code=: (String) -> String
+
+      def initialize: (
+        ?name: String,
+        ?network_id: String,
+        ?region_code: String,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        network_id: String,
+        region_code: String,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

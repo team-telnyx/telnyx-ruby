@@ -1,0 +1,50 @@
+module Telnyx
+  module Resources
+    class Rooms
+      attr_reader actions: Telnyx::Resources::Rooms::Actions
+
+      attr_reader sessions: Telnyx::Resources::Rooms::Sessions
+
+      def create: (
+        ?enable_recording: bool,
+        ?max_participants: Integer,
+        ?unique_name: String,
+        ?webhook_event_failover_url: String?,
+        ?webhook_event_url: String,
+        ?webhook_timeout_secs: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RoomCreateResponse
+
+      def retrieve: (
+        String room_id,
+        ?include_sessions: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RoomRetrieveResponse
+
+      def update: (
+        String room_id,
+        ?enable_recording: bool,
+        ?max_participants: Integer,
+        ?unique_name: String,
+        ?webhook_event_failover_url: String?,
+        ?webhook_event_url: String,
+        ?webhook_timeout_secs: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RoomUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::RoomListParams::Filter,
+        ?include_sessions: bool,
+        ?page: Telnyx::RoomListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RoomListResponse
+
+      def delete: (
+        String room_id,
+        ?request_options: Telnyx::request_opts
+      ) -> nil
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

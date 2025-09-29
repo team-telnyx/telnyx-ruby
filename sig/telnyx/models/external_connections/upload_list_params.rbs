@@ -1,0 +1,181 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type upload_list_params =
+        {
+          filter: Telnyx::ExternalConnections::UploadListParams::Filter,
+          page: Telnyx::ExternalConnections::UploadListParams::Page
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class UploadListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter: Telnyx::ExternalConnections::UploadListParams::Filter?
+
+        def filter=: (
+          Telnyx::ExternalConnections::UploadListParams::Filter
+        ) -> Telnyx::ExternalConnections::UploadListParams::Filter
+
+        attr_reader page: Telnyx::ExternalConnections::UploadListParams::Page?
+
+        def page=: (
+          Telnyx::ExternalConnections::UploadListParams::Page
+        ) -> Telnyx::ExternalConnections::UploadListParams::Page
+
+        def initialize: (
+          ?filter: Telnyx::ExternalConnections::UploadListParams::Filter,
+          ?page: Telnyx::ExternalConnections::UploadListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter: Telnyx::ExternalConnections::UploadListParams::Filter,
+          page: Telnyx::ExternalConnections::UploadListParams::Page,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter =
+          {
+            civic_address_id: Telnyx::ExternalConnections::UploadListParams::Filter::CivicAddressID,
+            location_id: Telnyx::ExternalConnections::UploadListParams::Filter::LocationID,
+            phone_number: Telnyx::ExternalConnections::UploadListParams::Filter::PhoneNumber,
+            status: Telnyx::ExternalConnections::UploadListParams::Filter::Status
+          }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader civic_address_id: Telnyx::ExternalConnections::UploadListParams::Filter::CivicAddressID?
+
+          def civic_address_id=: (
+            Telnyx::ExternalConnections::UploadListParams::Filter::CivicAddressID
+          ) -> Telnyx::ExternalConnections::UploadListParams::Filter::CivicAddressID
+
+          attr_reader location_id: Telnyx::ExternalConnections::UploadListParams::Filter::LocationID?
+
+          def location_id=: (
+            Telnyx::ExternalConnections::UploadListParams::Filter::LocationID
+          ) -> Telnyx::ExternalConnections::UploadListParams::Filter::LocationID
+
+          attr_reader phone_number: Telnyx::ExternalConnections::UploadListParams::Filter::PhoneNumber?
+
+          def phone_number=: (
+            Telnyx::ExternalConnections::UploadListParams::Filter::PhoneNumber
+          ) -> Telnyx::ExternalConnections::UploadListParams::Filter::PhoneNumber
+
+          attr_reader status: Telnyx::ExternalConnections::UploadListParams::Filter::Status?
+
+          def status=: (
+            Telnyx::ExternalConnections::UploadListParams::Filter::Status
+          ) -> Telnyx::ExternalConnections::UploadListParams::Filter::Status
+
+          def initialize: (
+            ?civic_address_id: Telnyx::ExternalConnections::UploadListParams::Filter::CivicAddressID,
+            ?location_id: Telnyx::ExternalConnections::UploadListParams::Filter::LocationID,
+            ?phone_number: Telnyx::ExternalConnections::UploadListParams::Filter::PhoneNumber,
+            ?status: Telnyx::ExternalConnections::UploadListParams::Filter::Status
+          ) -> void
+
+          def to_hash: -> {
+            civic_address_id: Telnyx::ExternalConnections::UploadListParams::Filter::CivicAddressID,
+            location_id: Telnyx::ExternalConnections::UploadListParams::Filter::LocationID,
+            phone_number: Telnyx::ExternalConnections::UploadListParams::Filter::PhoneNumber,
+            status: Telnyx::ExternalConnections::UploadListParams::Filter::Status
+          }
+
+          type civic_address_id = { eq: String }
+
+          class CivicAddressID < Telnyx::Internal::Type::BaseModel
+            attr_reader eq: String?
+
+            def eq=: (String) -> String
+
+            def initialize: (?eq: String) -> void
+
+            def to_hash: -> { eq: String }
+          end
+
+          type location_id = { eq: String }
+
+          class LocationID < Telnyx::Internal::Type::BaseModel
+            attr_reader eq: String?
+
+            def eq=: (String) -> String
+
+            def initialize: (?eq: String) -> void
+
+            def to_hash: -> { eq: String }
+          end
+
+          type phone_number = { contains: String, eq: String }
+
+          class PhoneNumber < Telnyx::Internal::Type::BaseModel
+            attr_reader contains: String?
+
+            def contains=: (String) -> String
+
+            attr_reader eq: String?
+
+            def eq=: (String) -> String
+
+            def initialize: (?contains: String, ?eq: String) -> void
+
+            def to_hash: -> { contains: String, eq: String }
+          end
+
+          type status =
+            {
+              eq: ::Array[Telnyx::Models::ExternalConnections::UploadListParams::Filter::Status::eq]
+            }
+
+          class Status < Telnyx::Internal::Type::BaseModel
+            attr_reader eq: ::Array[Telnyx::Models::ExternalConnections::UploadListParams::Filter::Status::eq]?
+
+            def eq=: (
+              ::Array[Telnyx::Models::ExternalConnections::UploadListParams::Filter::Status::eq]
+            ) -> ::Array[Telnyx::Models::ExternalConnections::UploadListParams::Filter::Status::eq]
+
+            def initialize: (
+              ?eq: ::Array[Telnyx::Models::ExternalConnections::UploadListParams::Filter::Status::eq]
+            ) -> void
+
+            def to_hash: -> {
+              eq: ::Array[Telnyx::Models::ExternalConnections::UploadListParams::Filter::Status::eq]
+            }
+
+            type eq =
+              :pending_upload | :pending | :in_progress | :success | :error
+
+            module Eq
+              extend Telnyx::Internal::Type::Enum
+
+              PENDING_UPLOAD: :pending_upload
+              PENDING: :pending
+              IN_PROGRESS: :in_progress
+              SUCCESS: :success
+              ERROR: :error
+
+              def self?.values: -> ::Array[Telnyx::Models::ExternalConnections::UploadListParams::Filter::Status::eq]
+            end
+          end
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
+        end
+      end
+    end
+  end
+end

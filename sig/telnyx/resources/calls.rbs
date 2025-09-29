@@ -1,0 +1,69 @@
+module Telnyx
+  module Resources
+    class Calls
+      attr_reader actions: Telnyx::Resources::Calls::Actions
+
+      def dial: (
+        connection_id: String,
+        from: String,
+        to: Telnyx::Models::CallDialParams::to,
+        ?answering_machine_detection: Telnyx::Models::CallDialParams::answering_machine_detection,
+        ?answering_machine_detection_config: Telnyx::CallDialParams::AnsweringMachineDetectionConfig,
+        ?audio_url: String,
+        ?billing_group_id: String,
+        ?bridge_intent: bool,
+        ?bridge_on_answer: bool,
+        ?client_state: String,
+        ?command_id: String,
+        ?conference_config: Telnyx::CallDialParams::ConferenceConfig,
+        ?custom_headers: ::Array[Telnyx::CustomSipHeader],
+        ?dialogflow_config: Telnyx::DialogflowConfig,
+        ?enable_dialogflow: bool,
+        ?from_display_name: String,
+        ?link_to: String,
+        ?media_encryption: Telnyx::Models::CallDialParams::media_encryption,
+        ?media_name: String,
+        ?park_after_unbridge: String,
+        ?preferred_codecs: String,
+        ?record: Telnyx::Models::CallDialParams::record,
+        ?record_channels: Telnyx::Models::CallDialParams::record_channels,
+        ?record_custom_file_name: String,
+        ?record_format: Telnyx::Models::CallDialParams::record_format,
+        ?record_max_length: Integer,
+        ?record_timeout_secs: Integer,
+        ?record_track: Telnyx::Models::CallDialParams::record_track,
+        ?record_trim: Telnyx::Models::CallDialParams::record_trim,
+        ?send_silence_when_idle: bool,
+        ?sip_auth_password: String,
+        ?sip_auth_username: String,
+        ?sip_headers: ::Array[Telnyx::SipHeader],
+        ?sip_transport_protocol: Telnyx::Models::CallDialParams::sip_transport_protocol,
+        ?sound_modifications: Telnyx::SoundModifications,
+        ?stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
+        ?stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
+        ?stream_bidirectional_sampling_rate: Telnyx::Models::CallDialParams::stream_bidirectional_sampling_rate,
+        ?stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs,
+        ?stream_codec: Telnyx::Models::stream_codec,
+        ?stream_establish_before_call_originate: bool,
+        ?stream_track: Telnyx::Models::CallDialParams::stream_track,
+        ?stream_url: String,
+        ?supervise_call_control_id: String,
+        ?supervisor_role: Telnyx::Models::CallDialParams::supervisor_role,
+        ?time_limit_secs: Integer,
+        ?timeout_secs: Integer,
+        ?transcription: bool,
+        ?transcription_config: Telnyx::Calls::TranscriptionStartRequest,
+        ?webhook_url: String,
+        ?webhook_url_method: Telnyx::Models::CallDialParams::webhook_url_method,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CallDialResponse
+
+      def retrieve_status: (
+        String call_control_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CallRetrieveStatusResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

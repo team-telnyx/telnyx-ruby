@@ -1,0 +1,5 @@
+module Telnyx
+  module Models
+    BrandDeleteResponse: Telnyx::Internal::Type::Converter
+  end
+end

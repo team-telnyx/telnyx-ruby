@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type verified_number_data_wrapper = { data: Telnyx::VerifiedNumber }
+
+    class VerifiedNumberDataWrapper < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::VerifiedNumber?
+
+      def data=: (Telnyx::VerifiedNumber) -> Telnyx::VerifiedNumber
+
+      def initialize: (?data: Telnyx::VerifiedNumber) -> void
+
+      def to_hash: -> { data: Telnyx::VerifiedNumber }
+    end
+  end
+end

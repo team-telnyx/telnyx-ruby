@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module AI
+      type insight_settings = { insight_group_id: String }
+
+      class InsightSettings < Telnyx::Internal::Type::BaseModel
+        attr_reader insight_group_id: String?
+
+        def insight_group_id=: (String) -> String
+
+        def initialize: (?insight_group_id: String) -> void
+
+        def to_hash: -> { insight_group_id: String }
+      end
+    end
+  end
+end

@@ -1,0 +1,29 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        type version_update_params =
+          { assistant_id: String } & Telnyx::Internal::Type::request_parameters
+
+        class VersionUpdateParams < Telnyx::Models::AI::Assistants::UpdateAssistant
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          def assistant_id: -> String
+
+          def assistant_id=: (String _) -> String
+
+          def initialize: (
+            assistant_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            assistant_id: String,
+            request_options: Telnyx::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

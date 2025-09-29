@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    type porting_order_retrieve_exception_types_response =
+      { data: ::Array[Telnyx::PortingOrdersExceptionType] }
+
+    class PortingOrderRetrieveExceptionTypesResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::PortingOrdersExceptionType]?
+
+      def data=: (
+        ::Array[Telnyx::PortingOrdersExceptionType]
+      ) -> ::Array[Telnyx::PortingOrdersExceptionType]
+
+      def initialize: (
+        ?data: ::Array[Telnyx::PortingOrdersExceptionType]
+      ) -> void
+
+      def to_hash: -> { data: ::Array[Telnyx::PortingOrdersExceptionType] }
+    end
+  end
+end

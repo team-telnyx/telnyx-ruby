@@ -1,0 +1,178 @@
+module Telnyx
+  module Models
+    type requirement_group =
+      {
+        id: String,
+        action: String,
+        country_code: String,
+        created_at: Time,
+        customer_reference: String,
+        phone_number_type: String,
+        record_type: String,
+        regulatory_requirements: ::Array[Telnyx::RequirementGroup::RegulatoryRequirement],
+        status: Telnyx::Models::RequirementGroup::status,
+        updated_at: Time
+      }
+
+    class RequirementGroup < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader action: String?
+
+      def action=: (String) -> String
+
+      attr_reader country_code: String?
+
+      def country_code=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader customer_reference: String?
+
+      def customer_reference=: (String) -> String
+
+      attr_reader phone_number_type: String?
+
+      def phone_number_type=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader regulatory_requirements: ::Array[Telnyx::RequirementGroup::RegulatoryRequirement]?
+
+      def regulatory_requirements=: (
+        ::Array[Telnyx::RequirementGroup::RegulatoryRequirement]
+      ) -> ::Array[Telnyx::RequirementGroup::RegulatoryRequirement]
+
+      attr_reader status: Telnyx::Models::RequirementGroup::status?
+
+      def status=: (
+        Telnyx::Models::RequirementGroup::status
+      ) -> Telnyx::Models::RequirementGroup::status
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        ?id: String,
+        ?action: String,
+        ?country_code: String,
+        ?created_at: Time,
+        ?customer_reference: String,
+        ?phone_number_type: String,
+        ?record_type: String,
+        ?regulatory_requirements: ::Array[Telnyx::RequirementGroup::RegulatoryRequirement],
+        ?status: Telnyx::Models::RequirementGroup::status,
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        action: String,
+        country_code: String,
+        created_at: Time,
+        customer_reference: String,
+        phone_number_type: String,
+        record_type: String,
+        regulatory_requirements: ::Array[Telnyx::RequirementGroup::RegulatoryRequirement],
+        status: Telnyx::Models::RequirementGroup::status,
+        updated_at: Time
+      }
+
+      type regulatory_requirement =
+        {
+          created_at: Time,
+          expires_at: Time,
+          field_type: String,
+          field_value: String,
+          requirement_id: String,
+          status: Telnyx::Models::RequirementGroup::RegulatoryRequirement::status,
+          updated_at: Time
+        }
+
+      class RegulatoryRequirement < Telnyx::Internal::Type::BaseModel
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader expires_at: Time?
+
+        def expires_at=: (Time) -> Time
+
+        attr_reader field_type: String?
+
+        def field_type=: (String) -> String
+
+        attr_reader field_value: String?
+
+        def field_value=: (String) -> String
+
+        attr_reader requirement_id: String?
+
+        def requirement_id=: (String) -> String
+
+        attr_reader status: Telnyx::Models::RequirementGroup::RegulatoryRequirement::status?
+
+        def status=: (
+          Telnyx::Models::RequirementGroup::RegulatoryRequirement::status
+        ) -> Telnyx::Models::RequirementGroup::RegulatoryRequirement::status
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        def initialize: (
+          ?created_at: Time,
+          ?expires_at: Time,
+          ?field_type: String,
+          ?field_value: String,
+          ?requirement_id: String,
+          ?status: Telnyx::Models::RequirementGroup::RegulatoryRequirement::status,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          created_at: Time,
+          expires_at: Time,
+          field_type: String,
+          field_value: String,
+          requirement_id: String,
+          status: Telnyx::Models::RequirementGroup::RegulatoryRequirement::status,
+          updated_at: Time
+        }
+
+        type status = :approved | :unapproved | :"pending-approval" | :declined
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          APPROVED: :approved
+          UNAPPROVED: :unapproved
+          PENDING_APPROVAL: :"pending-approval"
+          DECLINED: :declined
+
+          def self?.values: -> ::Array[Telnyx::Models::RequirementGroup::RegulatoryRequirement::status]
+        end
+      end
+
+      type status = :approved | :unapproved | :"pending-approval" | :declined
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        APPROVED: :approved
+        UNAPPROVED: :unapproved
+        PENDING_APPROVAL: :"pending-approval"
+        DECLINED: :declined
+
+        def self?.values: -> ::Array[Telnyx::Models::RequirementGroup::status]
+      end
+    end
+  end
+end

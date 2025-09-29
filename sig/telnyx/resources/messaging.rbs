@@ -1,0 +1,9 @@
+module Telnyx
+  module Resources
+    class Messaging
+      attr_reader rcs: Telnyx::Resources::Messaging::Rcs
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

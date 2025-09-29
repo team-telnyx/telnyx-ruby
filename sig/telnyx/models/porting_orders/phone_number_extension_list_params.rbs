@@ -1,0 +1,110 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type phone_number_extension_list_params =
+        {
+          filter: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Filter,
+          page: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Page,
+          sort: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Sort
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class PhoneNumberExtensionListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Filter?
+
+        def filter=: (
+          Telnyx::PortingOrders::PhoneNumberExtensionListParams::Filter
+        ) -> Telnyx::PortingOrders::PhoneNumberExtensionListParams::Filter
+
+        attr_reader page: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Page?
+
+        def page=: (
+          Telnyx::PortingOrders::PhoneNumberExtensionListParams::Page
+        ) -> Telnyx::PortingOrders::PhoneNumberExtensionListParams::Page
+
+        attr_reader sort: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Sort?
+
+        def sort=: (
+          Telnyx::PortingOrders::PhoneNumberExtensionListParams::Sort
+        ) -> Telnyx::PortingOrders::PhoneNumberExtensionListParams::Sort
+
+        def initialize: (
+          ?filter: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Filter,
+          ?page: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Page,
+          ?sort: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Sort,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Filter,
+          page: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Page,
+          sort: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Sort,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter = { porting_phone_number_id: String }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader porting_phone_number_id: String?
+
+          def porting_phone_number_id=: (String) -> String
+
+          def initialize: (?porting_phone_number_id: String) -> void
+
+          def to_hash: -> { porting_phone_number_id: String }
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
+        end
+
+        type sort =
+          {
+            value: Telnyx::Models::PortingOrders::PhoneNumberExtensionListParams::Sort::value
+          }
+
+        class Sort < Telnyx::Internal::Type::BaseModel
+          attr_reader value: Telnyx::Models::PortingOrders::PhoneNumberExtensionListParams::Sort::value?
+
+          def value=: (
+            Telnyx::Models::PortingOrders::PhoneNumberExtensionListParams::Sort::value
+          ) -> Telnyx::Models::PortingOrders::PhoneNumberExtensionListParams::Sort::value
+
+          def initialize: (
+            ?value: Telnyx::Models::PortingOrders::PhoneNumberExtensionListParams::Sort::value
+          ) -> void
+
+          def to_hash: -> {
+            value: Telnyx::Models::PortingOrders::PhoneNumberExtensionListParams::Sort::value
+          }
+
+          type value = :"-created_at" | :created_at
+
+          module Value
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED_AT_DESC: :"-created_at"
+            CREATED_AT: :created_at
+
+            def self?.values: -> ::Array[Telnyx::Models::PortingOrders::PhoneNumberExtensionListParams::Sort::value]
+          end
+        end
+      end
+    end
+  end
+end

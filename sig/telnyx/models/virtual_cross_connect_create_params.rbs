@@ -1,0 +1,126 @@
+module Telnyx
+  module Models
+    type virtual_cross_connect_create_params =
+      {
+        bgp_asn: Float,
+        cloud_provider: Telnyx::Models::VirtualCrossConnectCreateParams::cloud_provider,
+        cloud_provider_region: String,
+        network_id: String,
+        primary_cloud_account_id: String,
+        region_code: String,
+        bandwidth_mbps: Float,
+        name: String,
+        primary_bgp_key: String,
+        primary_cloud_ip: String,
+        primary_telnyx_ip: String,
+        secondary_bgp_key: String,
+        secondary_cloud_account_id: String,
+        secondary_cloud_ip: String,
+        secondary_telnyx_ip: String
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class VirtualCrossConnectCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor bgp_asn: Float
+
+      attr_accessor cloud_provider: Telnyx::Models::VirtualCrossConnectCreateParams::cloud_provider
+
+      attr_accessor cloud_provider_region: String
+
+      attr_accessor network_id: String
+
+      attr_accessor primary_cloud_account_id: String
+
+      attr_accessor region_code: String
+
+      attr_reader bandwidth_mbps: Float?
+
+      def bandwidth_mbps=: (Float) -> Float
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader primary_bgp_key: String?
+
+      def primary_bgp_key=: (String) -> String
+
+      attr_reader primary_cloud_ip: String?
+
+      def primary_cloud_ip=: (String) -> String
+
+      attr_reader primary_telnyx_ip: String?
+
+      def primary_telnyx_ip=: (String) -> String
+
+      attr_reader secondary_bgp_key: String?
+
+      def secondary_bgp_key=: (String) -> String
+
+      attr_reader secondary_cloud_account_id: String?
+
+      def secondary_cloud_account_id=: (String) -> String
+
+      attr_reader secondary_cloud_ip: String?
+
+      def secondary_cloud_ip=: (String) -> String
+
+      attr_reader secondary_telnyx_ip: String?
+
+      def secondary_telnyx_ip=: (String) -> String
+
+      def initialize: (
+        bgp_asn: Float,
+        cloud_provider: Telnyx::Models::VirtualCrossConnectCreateParams::cloud_provider,
+        cloud_provider_region: String,
+        network_id: String,
+        primary_cloud_account_id: String,
+        region_code: String,
+        ?bandwidth_mbps: Float,
+        ?name: String,
+        ?primary_bgp_key: String,
+        ?primary_cloud_ip: String,
+        ?primary_telnyx_ip: String,
+        ?secondary_bgp_key: String,
+        ?secondary_cloud_account_id: String,
+        ?secondary_cloud_ip: String,
+        ?secondary_telnyx_ip: String,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        bgp_asn: Float,
+        cloud_provider: Telnyx::Models::VirtualCrossConnectCreateParams::cloud_provider,
+        cloud_provider_region: String,
+        network_id: String,
+        primary_cloud_account_id: String,
+        region_code: String,
+        bandwidth_mbps: Float,
+        name: String,
+        primary_bgp_key: String,
+        primary_cloud_ip: String,
+        primary_telnyx_ip: String,
+        secondary_bgp_key: String,
+        secondary_cloud_account_id: String,
+        secondary_cloud_ip: String,
+        secondary_telnyx_ip: String,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type cloud_provider = :aws | :azure | :gce
+
+      module CloudProvider
+        extend Telnyx::Internal::Type::Enum
+
+        AWS: :aws
+        AZURE: :azure
+        GCE: :gce
+
+        def self?.values: -> ::Array[Telnyx::Models::VirtualCrossConnectCreateParams::cloud_provider]
+      end
+    end
+  end
+end

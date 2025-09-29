@@ -1,0 +1,126 @@
+module Telnyx
+  module Models
+    type conference_speak_ended_webhook_event =
+      { data: Telnyx::ConferenceSpeakEndedWebhookEvent::Data }
+
+    class ConferenceSpeakEndedWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::ConferenceSpeakEndedWebhookEvent::Data?
+
+      def data=: (
+        Telnyx::ConferenceSpeakEndedWebhookEvent::Data
+      ) -> Telnyx::ConferenceSpeakEndedWebhookEvent::Data
+
+      def initialize: (
+        ?data: Telnyx::ConferenceSpeakEndedWebhookEvent::Data
+      ) -> void
+
+      def to_hash: -> { data: Telnyx::ConferenceSpeakEndedWebhookEvent::Data }
+
+      type data =
+        {
+          id: String,
+          event_type: Telnyx::Models::ConferenceSpeakEndedWebhookEvent::Data::event_type,
+          payload: Telnyx::ConferenceSpeakEndedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::ConferenceSpeakEndedWebhookEvent::Data::record_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader event_type: Telnyx::Models::ConferenceSpeakEndedWebhookEvent::Data::event_type?
+
+        def event_type=: (
+          Telnyx::Models::ConferenceSpeakEndedWebhookEvent::Data::event_type
+        ) -> Telnyx::Models::ConferenceSpeakEndedWebhookEvent::Data::event_type
+
+        attr_reader payload: Telnyx::ConferenceSpeakEndedWebhookEvent::Data::Payload?
+
+        def payload=: (
+          Telnyx::ConferenceSpeakEndedWebhookEvent::Data::Payload
+        ) -> Telnyx::ConferenceSpeakEndedWebhookEvent::Data::Payload
+
+        attr_reader record_type: Telnyx::Models::ConferenceSpeakEndedWebhookEvent::Data::record_type?
+
+        def record_type=: (
+          Telnyx::Models::ConferenceSpeakEndedWebhookEvent::Data::record_type
+        ) -> Telnyx::Models::ConferenceSpeakEndedWebhookEvent::Data::record_type
+
+        def initialize: (
+          ?id: String,
+          ?event_type: Telnyx::Models::ConferenceSpeakEndedWebhookEvent::Data::event_type,
+          ?payload: Telnyx::ConferenceSpeakEndedWebhookEvent::Data::Payload,
+          ?record_type: Telnyx::Models::ConferenceSpeakEndedWebhookEvent::Data::record_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: Telnyx::Models::ConferenceSpeakEndedWebhookEvent::Data::event_type,
+          payload: Telnyx::ConferenceSpeakEndedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::ConferenceSpeakEndedWebhookEvent::Data::record_type
+        }
+
+        type event_type = :"conference.speak.ended"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          CONFERENCE_SPEAK_ENDED: :"conference.speak.ended"
+
+          def self?.values: -> ::Array[Telnyx::Models::ConferenceSpeakEndedWebhookEvent::Data::event_type]
+        end
+
+        type payload =
+          {
+            conference_id: String,
+            connection_id: String,
+            creator_call_session_id: String,
+            occurred_at: Time
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_reader conference_id: String?
+
+          def conference_id=: (String) -> String
+
+          attr_reader connection_id: String?
+
+          def connection_id=: (String) -> String
+
+          attr_reader creator_call_session_id: String?
+
+          def creator_call_session_id=: (String) -> String
+
+          attr_reader occurred_at: Time?
+
+          def occurred_at=: (Time) -> Time
+
+          def initialize: (
+            ?conference_id: String,
+            ?connection_id: String,
+            ?creator_call_session_id: String,
+            ?occurred_at: Time
+          ) -> void
+
+          def to_hash: -> {
+            conference_id: String,
+            connection_id: String,
+            creator_call_session_id: String,
+            occurred_at: Time
+          }
+        end
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::ConferenceSpeakEndedWebhookEvent::Data::record_type]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,98 @@
+module Telnyx
+  module Models
+    module Payment
+      type auto_recharge_pref_update_response =
+        { data: Telnyx::Models::Payment::AutoRechargePrefUpdateResponse::Data }
+
+      class AutoRechargePrefUpdateResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::Payment::AutoRechargePrefUpdateResponse::Data?
+
+        def data=: (
+          Telnyx::Models::Payment::AutoRechargePrefUpdateResponse::Data
+        ) -> Telnyx::Models::Payment::AutoRechargePrefUpdateResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::Payment::AutoRechargePrefUpdateResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::Payment::AutoRechargePrefUpdateResponse::Data
+        }
+
+        type data =
+          {
+            id: String,
+            enabled: bool,
+            invoice_enabled: bool,
+            preference: Telnyx::Models::Payment::AutoRechargePrefUpdateResponse::Data::preference,
+            recharge_amount: String,
+            record_type: String,
+            threshold_amount: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader enabled: bool?
+
+          def enabled=: (bool) -> bool
+
+          attr_reader invoice_enabled: bool?
+
+          def invoice_enabled=: (bool) -> bool
+
+          attr_reader preference: Telnyx::Models::Payment::AutoRechargePrefUpdateResponse::Data::preference?
+
+          def preference=: (
+            Telnyx::Models::Payment::AutoRechargePrefUpdateResponse::Data::preference
+          ) -> Telnyx::Models::Payment::AutoRechargePrefUpdateResponse::Data::preference
+
+          attr_reader recharge_amount: String?
+
+          def recharge_amount=: (String) -> String
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_reader threshold_amount: String?
+
+          def threshold_amount=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?enabled: bool,
+            ?invoice_enabled: bool,
+            ?preference: Telnyx::Models::Payment::AutoRechargePrefUpdateResponse::Data::preference,
+            ?recharge_amount: String,
+            ?record_type: String,
+            ?threshold_amount: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            enabled: bool,
+            invoice_enabled: bool,
+            preference: Telnyx::Models::Payment::AutoRechargePrefUpdateResponse::Data::preference,
+            recharge_amount: String,
+            record_type: String,
+            threshold_amount: String
+          }
+
+          type preference = :credit_paypal | :ach
+
+          module Preference
+            extend Telnyx::Internal::Type::Enum
+
+            CREDIT_PAYPAL: :credit_paypal
+            ACH: :ach
+
+            def self?.values: -> ::Array[Telnyx::Models::Payment::AutoRechargePrefUpdateResponse::Data::preference]
+          end
+        end
+      end
+    end
+  end
+end

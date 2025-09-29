@@ -1,0 +1,32 @@
+module Telnyx
+  module Resources
+    class AI
+      attr_reader assistants: Telnyx::Resources::AI::Assistants
+
+      attr_reader audio: Telnyx::Resources::AI::Audio
+
+      attr_reader chat: Telnyx::Resources::AI::Chat
+
+      attr_reader clusters: Telnyx::Resources::AI::Clusters
+
+      attr_reader conversations: Telnyx::Resources::AI::Conversations
+
+      attr_reader embeddings: Telnyx::Resources::AI::Embeddings
+
+      attr_reader fine_tuning: Telnyx::Resources::AI::FineTuning
+
+      def retrieve_models: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AIRetrieveModelsResponse
+
+      def summarize: (
+        bucket: String,
+        filename: String,
+        ?system_prompt: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AISummarizeResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

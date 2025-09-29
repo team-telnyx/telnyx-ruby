@@ -1,0 +1,80 @@
+module Telnyx
+  module Models
+    type number_reservation =
+      {
+        id: String,
+        created_at: Time,
+        customer_reference: String,
+        phone_numbers: ::Array[Telnyx::ReservedPhoneNumber],
+        record_type: String,
+        status: Telnyx::Models::NumberReservation::status,
+        updated_at: Time
+      }
+
+    class NumberReservation < Telnyx::Internal::Type::BaseModel
+      attr_reader customer_reference: String?
+
+      def customer_reference=: (String) -> String
+
+      attr_reader phone_numbers: ::Array[Telnyx::ReservedPhoneNumber]?
+
+      def phone_numbers=: (
+        ::Array[Telnyx::ReservedPhoneNumber]
+      ) -> ::Array[Telnyx::ReservedPhoneNumber]
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader status: Telnyx::Models::NumberReservation::status?
+
+      def status=: (
+        Telnyx::Models::NumberReservation::status
+      ) -> Telnyx::Models::NumberReservation::status
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        ?id: String,
+        ?created_at: Time,
+        ?customer_reference: String,
+        ?phone_numbers: ::Array[Telnyx::ReservedPhoneNumber],
+        ?record_type: String,
+        ?status: Telnyx::Models::NumberReservation::status,
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        customer_reference: String,
+        phone_numbers: ::Array[Telnyx::ReservedPhoneNumber],
+        record_type: String,
+        status: Telnyx::Models::NumberReservation::status,
+        updated_at: Time
+      }
+
+      type status = :pending | :success | :failure
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        SUCCESS: :success
+        FAILURE: :failure
+
+        def self?.values: -> ::Array[Telnyx::Models::NumberReservation::status]
+      end
+    end
+  end
+end

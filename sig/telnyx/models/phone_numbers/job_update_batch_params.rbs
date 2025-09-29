@@ -1,0 +1,261 @@
+module Telnyx
+  module Models
+    module PhoneNumbers
+      type job_update_batch_params =
+        {
+          phone_numbers: ::Array[String],
+          filter: Telnyx::PhoneNumbers::JobUpdateBatchParams::Filter,
+          billing_group_id: String,
+          connection_id: String,
+          customer_reference: String,
+          deletion_lock_enabled: bool,
+          external_pin: String,
+          hd_voice_enabled: bool,
+          tags: ::Array[String],
+          voice: Telnyx::PhoneNumbers::UpdateVoiceSettings
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class JobUpdateBatchParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor phone_numbers: ::Array[String]
+
+        attr_reader filter: Telnyx::PhoneNumbers::JobUpdateBatchParams::Filter?
+
+        def filter=: (
+          Telnyx::PhoneNumbers::JobUpdateBatchParams::Filter
+        ) -> Telnyx::PhoneNumbers::JobUpdateBatchParams::Filter
+
+        attr_reader billing_group_id: String?
+
+        def billing_group_id=: (String) -> String
+
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader customer_reference: String?
+
+        def customer_reference=: (String) -> String
+
+        attr_reader deletion_lock_enabled: bool?
+
+        def deletion_lock_enabled=: (bool) -> bool
+
+        attr_reader external_pin: String?
+
+        def external_pin=: (String) -> String
+
+        attr_reader hd_voice_enabled: bool?
+
+        def hd_voice_enabled=: (bool) -> bool
+
+        attr_reader tags: ::Array[String]?
+
+        def tags=: (::Array[String]) -> ::Array[String]
+
+        attr_reader voice: Telnyx::PhoneNumbers::UpdateVoiceSettings?
+
+        def voice=: (
+          Telnyx::PhoneNumbers::UpdateVoiceSettings
+        ) -> Telnyx::PhoneNumbers::UpdateVoiceSettings
+
+        def initialize: (
+          phone_numbers: ::Array[String],
+          ?filter: Telnyx::PhoneNumbers::JobUpdateBatchParams::Filter,
+          ?billing_group_id: String,
+          ?connection_id: String,
+          ?customer_reference: String,
+          ?deletion_lock_enabled: bool,
+          ?external_pin: String,
+          ?hd_voice_enabled: bool,
+          ?tags: ::Array[String],
+          ?voice: Telnyx::PhoneNumbers::UpdateVoiceSettings,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          phone_numbers: ::Array[String],
+          filter: Telnyx::PhoneNumbers::JobUpdateBatchParams::Filter,
+          billing_group_id: String,
+          connection_id: String,
+          customer_reference: String,
+          deletion_lock_enabled: bool,
+          external_pin: String,
+          hd_voice_enabled: bool,
+          tags: ::Array[String],
+          voice: Telnyx::PhoneNumbers::UpdateVoiceSettings,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter =
+          {
+            billing_group_id: String,
+            connection_id: String,
+            customer_reference: String,
+            emergency_address_id: String,
+            has_bundle: String,
+            phone_number: String,
+            status: Telnyx::Models::PhoneNumbers::JobUpdateBatchParams::Filter::status,
+            tag: String,
+            voice_connection_name: Telnyx::PhoneNumbers::JobUpdateBatchParams::Filter::VoiceConnectionName,
+            voice_usage_payment_method: Telnyx::Models::PhoneNumbers::JobUpdateBatchParams::Filter::voice_usage_payment_method
+          }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader billing_group_id: String?
+
+          def billing_group_id=: (String) -> String
+
+          attr_reader connection_id: String?
+
+          def connection_id=: (String) -> String
+
+          attr_reader customer_reference: String?
+
+          def customer_reference=: (String) -> String
+
+          attr_reader emergency_address_id: String?
+
+          def emergency_address_id=: (String) -> String
+
+          attr_reader has_bundle: String?
+
+          def has_bundle=: (String) -> String
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          attr_reader status: Telnyx::Models::PhoneNumbers::JobUpdateBatchParams::Filter::status?
+
+          def status=: (
+            Telnyx::Models::PhoneNumbers::JobUpdateBatchParams::Filter::status
+          ) -> Telnyx::Models::PhoneNumbers::JobUpdateBatchParams::Filter::status
+
+          attr_reader tag: String?
+
+          def tag=: (String) -> String
+
+          attr_reader voice_connection_name: Telnyx::PhoneNumbers::JobUpdateBatchParams::Filter::VoiceConnectionName?
+
+          def voice_connection_name=: (
+            Telnyx::PhoneNumbers::JobUpdateBatchParams::Filter::VoiceConnectionName
+          ) -> Telnyx::PhoneNumbers::JobUpdateBatchParams::Filter::VoiceConnectionName
+
+          attr_reader voice_usage_payment_method: Telnyx::Models::PhoneNumbers::JobUpdateBatchParams::Filter::voice_usage_payment_method?
+
+          def voice_usage_payment_method=: (
+            Telnyx::Models::PhoneNumbers::JobUpdateBatchParams::Filter::voice_usage_payment_method
+          ) -> Telnyx::Models::PhoneNumbers::JobUpdateBatchParams::Filter::voice_usage_payment_method
+
+          def initialize: (
+            ?billing_group_id: String,
+            ?connection_id: String,
+            ?customer_reference: String,
+            ?emergency_address_id: String,
+            ?has_bundle: String,
+            ?phone_number: String,
+            ?status: Telnyx::Models::PhoneNumbers::JobUpdateBatchParams::Filter::status,
+            ?tag: String,
+            ?voice_connection_name: Telnyx::PhoneNumbers::JobUpdateBatchParams::Filter::VoiceConnectionName,
+            ?voice_usage_payment_method: Telnyx::Models::PhoneNumbers::JobUpdateBatchParams::Filter::voice_usage_payment_method
+          ) -> void
+
+          def to_hash: -> {
+            billing_group_id: String,
+            connection_id: String,
+            customer_reference: String,
+            emergency_address_id: String,
+            has_bundle: String,
+            phone_number: String,
+            status: Telnyx::Models::PhoneNumbers::JobUpdateBatchParams::Filter::status,
+            tag: String,
+            voice_connection_name: Telnyx::PhoneNumbers::JobUpdateBatchParams::Filter::VoiceConnectionName,
+            voice_usage_payment_method: Telnyx::Models::PhoneNumbers::JobUpdateBatchParams::Filter::voice_usage_payment_method
+          }
+
+          type status =
+            :"purchase-pending"
+            | :"purchase-failed"
+            | :"port-pending"
+            | :active
+            | :deleted
+            | :"port-failed"
+            | :"emergency-only"
+            | :"ported-out"
+            | :"port-out-pending"
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            PURCHASE_PENDING: :"purchase-pending"
+            PURCHASE_FAILED: :"purchase-failed"
+            PORT_PENDING: :"port-pending"
+            ACTIVE: :active
+            DELETED: :deleted
+            PORT_FAILED: :"port-failed"
+            EMERGENCY_ONLY: :"emergency-only"
+            PORTED_OUT: :"ported-out"
+            PORT_OUT_PENDING: :"port-out-pending"
+
+            def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::JobUpdateBatchParams::Filter::status]
+          end
+
+          type voice_connection_name =
+            {
+              contains: String,
+              ends_with: String,
+              eq: String,
+              starts_with: String
+            }
+
+          class VoiceConnectionName < Telnyx::Internal::Type::BaseModel
+            attr_reader contains: String?
+
+            def contains=: (String) -> String
+
+            attr_reader ends_with: String?
+
+            def ends_with=: (String) -> String
+
+            attr_reader eq: String?
+
+            def eq=: (String) -> String
+
+            attr_reader starts_with: String?
+
+            def starts_with=: (String) -> String
+
+            def initialize: (
+              ?contains: String,
+              ?ends_with: String,
+              ?eq: String,
+              ?starts_with: String
+            ) -> void
+
+            def to_hash: -> {
+              contains: String,
+              ends_with: String,
+              eq: String,
+              starts_with: String
+            }
+          end
+
+          type voice_usage_payment_method = :"pay-per-minute" | :channel
+
+          module VoiceUsagePaymentMethod
+            extend Telnyx::Internal::Type::Enum
+
+            PAY_PER_MINUTE: :"pay-per-minute"
+            CHANNEL: :channel
+
+            def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::JobUpdateBatchParams::Filter::voice_usage_payment_method]
+          end
+        end
+      end
+    end
+  end
+end

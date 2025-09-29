@@ -1,0 +1,96 @@
+module Telnyx
+  module Models
+    module Actions
+      type register_create_response =
+        {
+          data: ::Array[Telnyx::SimpleSimCard],
+          errors: ::Array[Telnyx::Models::Actions::RegisterCreateResponse::Error]
+        }
+
+      class RegisterCreateResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::SimpleSimCard]?
+
+        def data=: (
+          ::Array[Telnyx::SimpleSimCard]
+        ) -> ::Array[Telnyx::SimpleSimCard]
+
+        attr_reader errors: ::Array[Telnyx::Models::Actions::RegisterCreateResponse::Error]?
+
+        def errors=: (
+          ::Array[Telnyx::Models::Actions::RegisterCreateResponse::Error]
+        ) -> ::Array[Telnyx::Models::Actions::RegisterCreateResponse::Error]
+
+        def initialize: (
+          ?data: ::Array[Telnyx::SimpleSimCard],
+          ?errors: ::Array[Telnyx::Models::Actions::RegisterCreateResponse::Error]
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::SimpleSimCard],
+          errors: ::Array[Telnyx::Models::Actions::RegisterCreateResponse::Error]
+        }
+
+        type error =
+          {
+            code: String,
+            title: String,
+            detail: String,
+            meta: ::Hash[Symbol, top],
+            source: Telnyx::Models::Actions::RegisterCreateResponse::Error::Source
+          }
+
+        class Error < Telnyx::Internal::Type::BaseModel
+          attr_accessor code: String
+
+          attr_accessor title: String
+
+          attr_reader detail: String?
+
+          def detail=: (String) -> String
+
+          attr_reader meta: ::Hash[Symbol, top]?
+
+          def meta=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader source: Telnyx::Models::Actions::RegisterCreateResponse::Error::Source?
+
+          def source=: (
+            Telnyx::Models::Actions::RegisterCreateResponse::Error::Source
+          ) -> Telnyx::Models::Actions::RegisterCreateResponse::Error::Source
+
+          def initialize: (
+            code: String,
+            title: String,
+            ?detail: String,
+            ?meta: ::Hash[Symbol, top],
+            ?source: Telnyx::Models::Actions::RegisterCreateResponse::Error::Source
+          ) -> void
+
+          def to_hash: -> {
+            code: String,
+            title: String,
+            detail: String,
+            meta: ::Hash[Symbol, top],
+            source: Telnyx::Models::Actions::RegisterCreateResponse::Error::Source
+          }
+
+          type source = { parameter: String, pointer: String }
+
+          class Source < Telnyx::Internal::Type::BaseModel
+            attr_reader parameter: String?
+
+            def parameter=: (String) -> String
+
+            attr_reader pointer: String?
+
+            def pointer=: (String) -> String
+
+            def initialize: (?parameter: String, ?pointer: String) -> void
+
+            def to_hash: -> { parameter: String, pointer: String }
+          end
+        end
+      end
+    end
+  end
+end

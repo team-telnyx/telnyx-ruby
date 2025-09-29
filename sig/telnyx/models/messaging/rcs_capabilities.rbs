@@ -1,0 +1,64 @@
+module Telnyx
+  module Models
+    module Messaging
+      type rcs_capabilities =
+        {
+          agent_id: String,
+          agent_name: String,
+          features: ::Array[String],
+          phone_number: String,
+          record_type: Telnyx::Models::Messaging::RcsCapabilities::record_type
+        }
+
+      class RcsCapabilities < Telnyx::Internal::Type::BaseModel
+        attr_reader agent_id: String?
+
+        def agent_id=: (String) -> String
+
+        attr_reader agent_name: String?
+
+        def agent_name=: (String) -> String
+
+        attr_reader features: ::Array[String]?
+
+        def features=: (::Array[String]) -> ::Array[String]
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader record_type: Telnyx::Models::Messaging::RcsCapabilities::record_type?
+
+        def record_type=: (
+          Telnyx::Models::Messaging::RcsCapabilities::record_type
+        ) -> Telnyx::Models::Messaging::RcsCapabilities::record_type
+
+        def initialize: (
+          ?agent_id: String,
+          ?agent_name: String,
+          ?features: ::Array[String],
+          ?phone_number: String,
+          ?record_type: Telnyx::Models::Messaging::RcsCapabilities::record_type
+        ) -> void
+
+        def to_hash: -> {
+          agent_id: String,
+          agent_name: String,
+          features: ::Array[String],
+          phone_number: String,
+          record_type: Telnyx::Models::Messaging::RcsCapabilities::record_type
+        }
+
+        type record_type = :"rcs.capabilities"
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          RCS_CAPABILITIES: :"rcs.capabilities"
+
+          def self?.values: -> ::Array[Telnyx::Models::Messaging::RcsCapabilities::record_type]
+        end
+      end
+    end
+  end
+end

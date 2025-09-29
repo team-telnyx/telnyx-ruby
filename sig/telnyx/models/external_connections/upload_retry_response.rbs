@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type upload_retry_response = { data: Telnyx::ExternalConnections::Upload }
+
+      class UploadRetryResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::ExternalConnections::Upload?
+
+        def data=: (
+          Telnyx::ExternalConnections::Upload
+        ) -> Telnyx::ExternalConnections::Upload
+
+        def initialize: (?data: Telnyx::ExternalConnections::Upload) -> void
+
+        def to_hash: -> { data: Telnyx::ExternalConnections::Upload }
+      end
+    end
+  end
+end

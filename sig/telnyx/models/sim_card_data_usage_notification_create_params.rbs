@@ -1,0 +1,70 @@
+module Telnyx
+  module Models
+    type sim_card_data_usage_notification_create_params =
+      {
+        sim_card_id: String,
+        threshold: Telnyx::SimCardDataUsageNotificationCreateParams::Threshold
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class SimCardDataUsageNotificationCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor sim_card_id: String
+
+      attr_accessor threshold: Telnyx::SimCardDataUsageNotificationCreateParams::Threshold
+
+      def initialize: (
+        sim_card_id: String,
+        threshold: Telnyx::SimCardDataUsageNotificationCreateParams::Threshold,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        sim_card_id: String,
+        threshold: Telnyx::SimCardDataUsageNotificationCreateParams::Threshold,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type threshold =
+        {
+          amount: String,
+          unit: Telnyx::Models::SimCardDataUsageNotificationCreateParams::Threshold::unit
+        }
+
+      class Threshold < Telnyx::Internal::Type::BaseModel
+        attr_reader amount: String?
+
+        def amount=: (String) -> String
+
+        attr_reader unit: Telnyx::Models::SimCardDataUsageNotificationCreateParams::Threshold::unit?
+
+        def unit=: (
+          Telnyx::Models::SimCardDataUsageNotificationCreateParams::Threshold::unit
+        ) -> Telnyx::Models::SimCardDataUsageNotificationCreateParams::Threshold::unit
+
+        def initialize: (
+          ?amount: String,
+          ?unit: Telnyx::Models::SimCardDataUsageNotificationCreateParams::Threshold::unit
+        ) -> void
+
+        def to_hash: -> {
+          amount: String,
+          unit: Telnyx::Models::SimCardDataUsageNotificationCreateParams::Threshold::unit
+        }
+
+        type unit = :MB | :GB
+
+        module Unit
+          extend Telnyx::Internal::Type::Enum
+
+          MB: :MB
+          GB: :GB
+
+          def self?.values: -> ::Array[Telnyx::Models::SimCardDataUsageNotificationCreateParams::Threshold::unit]
+        end
+      end
+    end
+  end
+end

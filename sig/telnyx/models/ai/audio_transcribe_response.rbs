@@ -1,0 +1,59 @@
+module Telnyx
+  module Models
+    module AI
+      type audio_transcribe_response =
+        {
+          text: String,
+          duration: Float,
+          segments: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment]
+        }
+
+      class AudioTranscribeResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor text: String
+
+        attr_reader duration: Float?
+
+        def duration=: (Float) -> Float
+
+        attr_reader segments: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment]?
+
+        def segments=: (
+          ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment]
+        ) -> ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment]
+
+        def initialize: (
+          text: String,
+          ?duration: Float,
+          ?segments: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment]
+        ) -> void
+
+        def to_hash: -> {
+          text: String,
+          duration: Float,
+          segments: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment]
+        }
+
+        type segment = { id: Float, end_: Float, start: Float, text: String }
+
+        class Segment < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: Float
+
+          attr_accessor end_: Float
+
+          attr_accessor start: Float
+
+          attr_accessor text: String
+
+          def initialize: (
+            id: Float,
+            end_: Float,
+            start: Float,
+            text: String
+          ) -> void
+
+          def to_hash: -> { id: Float, end_: Float, start: Float, text: String }
+        end
+      end
+    end
+  end
+end

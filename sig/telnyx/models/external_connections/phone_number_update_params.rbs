@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type phone_number_update_params =
+        { id: String, location_id: String }
+        & Telnyx::Internal::Type::request_parameters
+
+      class PhoneNumberUpdateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor id: String
+
+        attr_reader location_id: String?
+
+        def location_id=: (String) -> String
+
+        def initialize: (
+          id: String,
+          ?location_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          location_id: String,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

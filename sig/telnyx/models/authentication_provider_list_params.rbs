@@ -1,0 +1,84 @@
+module Telnyx
+  module Models
+    type authentication_provider_list_params =
+      {
+        page: Telnyx::AuthenticationProviderListParams::Page,
+        sort: Telnyx::Models::AuthenticationProviderListParams::sort
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class AuthenticationProviderListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader page: Telnyx::AuthenticationProviderListParams::Page?
+
+      def page=: (
+        Telnyx::AuthenticationProviderListParams::Page
+      ) -> Telnyx::AuthenticationProviderListParams::Page
+
+      attr_reader sort: Telnyx::Models::AuthenticationProviderListParams::sort?
+
+      def sort=: (
+        Telnyx::Models::AuthenticationProviderListParams::sort
+      ) -> Telnyx::Models::AuthenticationProviderListParams::sort
+
+      def initialize: (
+        ?page: Telnyx::AuthenticationProviderListParams::Page,
+        ?sort: Telnyx::Models::AuthenticationProviderListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        page: Telnyx::AuthenticationProviderListParams::Page,
+        sort: Telnyx::Models::AuthenticationProviderListParams::sort,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+
+      type sort =
+        :name
+        | :"-name"
+        | :short_name
+        | :"-short_name"
+        | :active
+        | :"-active"
+        | :created_at
+        | :"-created_at"
+        | :updated_at
+        | :"-updated_at"
+
+      module Sort
+        extend Telnyx::Internal::Type::Enum
+
+        NAME: :name
+        NAME_DESC: :"-name"
+        SHORT_NAME: :short_name
+        SHORT_NAME_DESC: :"-short_name"
+        ACTIVE: :active
+        ACTIVE_DESC: :"-active"
+        CREATED_AT: :created_at
+        CREATED_AT_DESC: :"-created_at"
+        UPDATED_AT: :updated_at
+        UPDATED_AT_DESC: :"-updated_at"
+
+        def self?.values: -> ::Array[Telnyx::Models::AuthenticationProviderListParams::sort]
+      end
+    end
+  end
+end

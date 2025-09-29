@@ -1,0 +1,18 @@
+module Telnyx
+  module Resources
+    class RoomParticipants
+      def retrieve: (
+        String room_participant_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RoomParticipantRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::RoomParticipantListParams::Filter,
+        ?page: Telnyx::RoomParticipantListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RoomParticipantListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

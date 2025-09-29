@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module PhoneNumbers
+      type voicemail_create_params =
+        {  } & Telnyx::Internal::Type::request_parameters
+
+      class VoicemailCreateParams < Telnyx::Models::PhoneNumbers::VoicemailRequest
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        def initialize: (?request_options: Telnyx::request_opts) -> void
+
+        def to_hash: -> { request_options: Telnyx::RequestOptions }
+      end
+    end
+  end
+end

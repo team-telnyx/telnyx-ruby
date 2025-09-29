@@ -1,0 +1,37 @@
+module Telnyx
+  module Models
+    module BundlePricing
+      type pagination_response =
+        {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+
+      class PaginationResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor page_number: Integer
+
+        attr_accessor page_size: Integer
+
+        attr_accessor total_pages: Integer
+
+        attr_accessor total_results: Integer
+
+        def initialize: (
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        ) -> void
+
+        def to_hash: -> {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+      end
+    end
+  end
+end

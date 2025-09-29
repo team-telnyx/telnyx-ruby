@@ -1,0 +1,148 @@
+module Telnyx
+  module Models
+    type dynamic_emergency_address =
+      {
+        administrative_area: String,
+        country_code: Telnyx::Models::DynamicEmergencyAddress::country_code,
+        house_number: String,
+        locality: String,
+        postal_code: String,
+        street_name: String,
+        id: String,
+        created_at: String,
+        extended_address: String,
+        house_suffix: String,
+        record_type: String,
+        sip_geolocation_id: String,
+        status: Telnyx::Models::DynamicEmergencyAddress::status,
+        street_post_directional: String,
+        street_pre_directional: String,
+        street_suffix: String,
+        updated_at: String
+      }
+
+    class DynamicEmergencyAddress < Telnyx::Internal::Type::BaseModel
+      attr_accessor administrative_area: String
+
+      attr_accessor country_code: Telnyx::Models::DynamicEmergencyAddress::country_code
+
+      attr_accessor house_number: String
+
+      attr_accessor locality: String
+
+      attr_accessor postal_code: String
+
+      attr_accessor street_name: String
+
+      attr_reader extended_address: String?
+
+      def extended_address=: (String) -> String
+
+      attr_reader house_suffix: String?
+
+      def house_suffix=: (String) -> String
+
+      attr_reader street_post_directional: String?
+
+      def street_post_directional=: (String) -> String
+
+      attr_reader street_pre_directional: String?
+
+      def street_pre_directional=: (String) -> String
+
+      attr_reader street_suffix: String?
+
+      def street_suffix=: (String) -> String
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader sip_geolocation_id: String?
+
+      def sip_geolocation_id=: (String) -> String
+
+      attr_reader status: Telnyx::Models::DynamicEmergencyAddress::status?
+
+      def status=: (
+        Telnyx::Models::DynamicEmergencyAddress::status
+      ) -> Telnyx::Models::DynamicEmergencyAddress::status
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      def initialize: (
+        administrative_area: String,
+        country_code: Telnyx::Models::DynamicEmergencyAddress::country_code,
+        house_number: String,
+        locality: String,
+        postal_code: String,
+        street_name: String,
+        ?id: String,
+        ?created_at: String,
+        ?extended_address: String,
+        ?house_suffix: String,
+        ?record_type: String,
+        ?sip_geolocation_id: String,
+        ?status: Telnyx::Models::DynamicEmergencyAddress::status,
+        ?street_post_directional: String,
+        ?street_pre_directional: String,
+        ?street_suffix: String,
+        ?updated_at: String
+      ) -> void
+
+      def to_hash: -> {
+        administrative_area: String,
+        country_code: Telnyx::Models::DynamicEmergencyAddress::country_code,
+        house_number: String,
+        locality: String,
+        postal_code: String,
+        street_name: String,
+        id: String,
+        created_at: String,
+        extended_address: String,
+        house_suffix: String,
+        record_type: String,
+        sip_geolocation_id: String,
+        status: Telnyx::Models::DynamicEmergencyAddress::status,
+        street_post_directional: String,
+        street_pre_directional: String,
+        street_suffix: String,
+        updated_at: String
+      }
+
+      type country_code = :US | :CA | :PR
+
+      module CountryCode
+        extend Telnyx::Internal::Type::Enum
+
+        US: :US
+        CA: :CA
+        PR: :PR
+
+        def self?.values: -> ::Array[Telnyx::Models::DynamicEmergencyAddress::country_code]
+      end
+
+      type status = :pending | :activated | :rejected
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        ACTIVATED: :activated
+        REJECTED: :rejected
+
+        def self?.values: -> ::Array[Telnyx::Models::DynamicEmergencyAddress::status]
+      end
+    end
+  end
+end

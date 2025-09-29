@@ -1,0 +1,13 @@
+module Telnyx
+  module Resources
+    class NumberLookup
+      def retrieve: (
+        String phone_number,
+        ?type: Telnyx::Models::NumberLookupRetrieveParams::type_,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NumberLookupRetrieveResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,13 @@
+module Telnyx
+  module Resources
+    class CallEvents
+      def list: (
+        ?filter: Telnyx::CallEventListParams::Filter,
+        ?page: Telnyx::CallEventListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CallEventListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

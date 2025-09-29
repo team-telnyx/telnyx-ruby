@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type managed_account_update_response = { data: Telnyx::ManagedAccount }
+
+    class ManagedAccountUpdateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::ManagedAccount?
+
+      def data=: (Telnyx::ManagedAccount) -> Telnyx::ManagedAccount
+
+      def initialize: (?data: Telnyx::ManagedAccount) -> void
+
+      def to_hash: -> { data: Telnyx::ManagedAccount }
+    end
+  end
+end

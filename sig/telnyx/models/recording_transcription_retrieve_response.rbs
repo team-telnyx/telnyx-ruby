@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type recording_transcription_retrieve_response =
+      { data: Telnyx::RecordingTranscription }
+
+    class RecordingTranscriptionRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::RecordingTranscription?
+
+      def data=: (
+        Telnyx::RecordingTranscription
+      ) -> Telnyx::RecordingTranscription
+
+      def initialize: (?data: Telnyx::RecordingTranscription) -> void
+
+      def to_hash: -> { data: Telnyx::RecordingTranscription }
+    end
+  end
+end

@@ -1,0 +1,16 @@
+module Telnyx
+  module Resources
+    class InboundChannels
+      def update: (
+        channels: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::InboundChannelUpdateResponse
+
+      def list: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::InboundChannelListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

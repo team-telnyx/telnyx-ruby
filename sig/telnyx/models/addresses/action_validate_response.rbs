@@ -1,0 +1,125 @@
+module Telnyx
+  module Models
+    module Addresses
+      type action_validate_response =
+        { data: Telnyx::Models::Addresses::ActionValidateResponse::Data }
+
+      class ActionValidateResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::Addresses::ActionValidateResponse::Data?
+
+        def data=: (
+          Telnyx::Models::Addresses::ActionValidateResponse::Data
+        ) -> Telnyx::Models::Addresses::ActionValidateResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::Addresses::ActionValidateResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::Addresses::ActionValidateResponse::Data
+        }
+
+        type data =
+          {
+            result: Telnyx::Models::Addresses::ActionValidateResponse::Data::result,
+            suggested: Telnyx::Models::Addresses::ActionValidateResponse::Data::Suggested,
+            errors: ::Array[Telnyx::APIError],
+            record_type: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor result: Telnyx::Models::Addresses::ActionValidateResponse::Data::result
+
+          attr_accessor suggested: Telnyx::Models::Addresses::ActionValidateResponse::Data::Suggested
+
+          attr_reader errors: ::Array[Telnyx::APIError]?
+
+          def errors=: (::Array[Telnyx::APIError]) -> ::Array[Telnyx::APIError]
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          def initialize: (
+            result: Telnyx::Models::Addresses::ActionValidateResponse::Data::result,
+            suggested: Telnyx::Models::Addresses::ActionValidateResponse::Data::Suggested,
+            ?errors: ::Array[Telnyx::APIError],
+            ?record_type: String
+          ) -> void
+
+          def to_hash: -> {
+            result: Telnyx::Models::Addresses::ActionValidateResponse::Data::result,
+            suggested: Telnyx::Models::Addresses::ActionValidateResponse::Data::Suggested,
+            errors: ::Array[Telnyx::APIError],
+            record_type: String
+          }
+
+          type result = :valid | :invalid
+
+          module Result
+            extend Telnyx::Internal::Type::Enum
+
+            VALID: :valid
+            INVALID: :invalid
+
+            def self?.values: -> ::Array[Telnyx::Models::Addresses::ActionValidateResponse::Data::result]
+          end
+
+          type suggested =
+            {
+              administrative_area: String,
+              country_code: String,
+              extended_address: String,
+              locality: String,
+              postal_code: String,
+              street_address: String
+            }
+
+          class Suggested < Telnyx::Internal::Type::BaseModel
+            attr_reader administrative_area: String?
+
+            def administrative_area=: (String) -> String
+
+            attr_reader country_code: String?
+
+            def country_code=: (String) -> String
+
+            attr_reader extended_address: String?
+
+            def extended_address=: (String) -> String
+
+            attr_reader locality: String?
+
+            def locality=: (String) -> String
+
+            attr_reader postal_code: String?
+
+            def postal_code=: (String) -> String
+
+            attr_reader street_address: String?
+
+            def street_address=: (String) -> String
+
+            def initialize: (
+              ?administrative_area: String,
+              ?country_code: String,
+              ?extended_address: String,
+              ?locality: String,
+              ?postal_code: String,
+              ?street_address: String
+            ) -> void
+
+            def to_hash: -> {
+              administrative_area: String,
+              country_code: String,
+              extended_address: String,
+              locality: String,
+              postal_code: String,
+              street_address: String
+            }
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,56 @@
+module Telnyx
+  module Models
+    class UpdateConference = Conferences::UpdateConference
+
+    module Conferences
+      type update_conference =
+        {
+          call_control_id: String,
+          supervisor_role: Telnyx::Models::Conferences::UpdateConference::supervisor_role,
+          command_id: String,
+          whisper_call_control_ids: ::Array[String]
+        }
+
+      class UpdateConference < Telnyx::Internal::Type::BaseModel
+        attr_accessor call_control_id: String
+
+        attr_accessor supervisor_role: Telnyx::Models::Conferences::UpdateConference::supervisor_role
+
+        attr_reader command_id: String?
+
+        def command_id=: (String) -> String
+
+        attr_reader whisper_call_control_ids: ::Array[String]?
+
+        def whisper_call_control_ids=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          call_control_id: String,
+          supervisor_role: Telnyx::Models::Conferences::UpdateConference::supervisor_role,
+          ?command_id: String,
+          ?whisper_call_control_ids: ::Array[String]
+        ) -> void
+
+        def to_hash: -> {
+          call_control_id: String,
+          supervisor_role: Telnyx::Models::Conferences::UpdateConference::supervisor_role,
+          command_id: String,
+          whisper_call_control_ids: ::Array[String]
+        }
+
+        type supervisor_role = :barge | :monitor | :none | :whisper
+
+        module SupervisorRole
+          extend Telnyx::Internal::Type::Enum
+
+          BARGE: :barge
+          MONITOR: :monitor
+          NONE: :none
+          WHISPER: :whisper
+
+          def self?.values: -> ::Array[Telnyx::Models::Conferences::UpdateConference::supervisor_role]
+        end
+      end
+    end
+  end
+end

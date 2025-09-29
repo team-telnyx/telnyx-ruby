@@ -1,0 +1,21 @@
+module Telnyx
+  module Resources
+    class ExternalConnections
+      class CivicAddresses
+        def retrieve: (
+          String address_id,
+          id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ExternalConnections::CivicAddressRetrieveResponse
+
+        def list: (
+          String id,
+          ?filter: Telnyx::ExternalConnections::CivicAddressListParams::Filter,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ExternalConnections::CivicAddressListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

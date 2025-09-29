@@ -1,0 +1,26 @@
+module Telnyx
+  module Models
+    module VerifiedNumbers
+      type action_submit_verification_code_params =
+        { verification_code: String }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionSubmitVerificationCodeParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor verification_code: String
+
+        def initialize: (
+          verification_code: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          verification_code: String,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

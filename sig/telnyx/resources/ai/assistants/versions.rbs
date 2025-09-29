@@ -1,0 +1,57 @@
+module Telnyx
+  module Resources
+    class AI
+      class Assistants
+        class Versions
+          def retrieve: (
+            String version_id,
+            assistant_id: String,
+            ?include_mcp_servers: bool,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Assistants::VersionRetrieveResponse
+
+          def update: (
+            String version_id,
+            assistant_id: String,
+            ?description: String,
+            ?dynamic_variables: ::Hash[Symbol, top],
+            ?dynamic_variables_webhook_url: String,
+            ?enabled_features: ::Array[Telnyx::Models::AI::enabled_features],
+            ?greeting: String,
+            ?insight_settings: Telnyx::AI::InsightSettings,
+            ?instructions: String,
+            ?llm_api_key_ref: String,
+            ?messaging_settings: Telnyx::AI::MessagingSettings,
+            ?model: String,
+            ?name: String,
+            ?privacy_settings: Telnyx::AI::PrivacySettings,
+            ?telephony_settings: Telnyx::AI::TelephonySettings,
+            ?tools: ::Array[Telnyx::Models::AI::assistant_tool],
+            ?transcription: Telnyx::AI::TranscriptionSettings,
+            ?voice_settings: Telnyx::AI::VoiceSettings,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Assistants::VersionUpdateResponse
+
+          def list: (
+            String assistant_id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::AssistantsList
+
+          def delete: (
+            String version_id,
+            assistant_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> nil
+
+          def promote: (
+            String version_id,
+            assistant_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Assistants::VersionPromoteResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

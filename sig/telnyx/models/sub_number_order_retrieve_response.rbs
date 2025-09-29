@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type sub_number_order_retrieve_response = { data: Telnyx::SubNumberOrder }
+
+    class SubNumberOrderRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::SubNumberOrder?
+
+      def data=: (Telnyx::SubNumberOrder) -> Telnyx::SubNumberOrder
+
+      def initialize: (?data: Telnyx::SubNumberOrder) -> void
+
+      def to_hash: -> { data: Telnyx::SubNumberOrder }
+    end
+  end
+end

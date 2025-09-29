@@ -1,0 +1,134 @@
+module Telnyx
+  module Models
+    type user_address =
+      {
+        id: String,
+        administrative_area: String,
+        borough: String,
+        business_name: String,
+        country_code: String,
+        created_at: String,
+        customer_reference: String,
+        extended_address: String,
+        first_name: String,
+        last_name: String,
+        locality: String,
+        neighborhood: String,
+        phone_number: String,
+        postal_code: String,
+        record_type: String,
+        street_address: String,
+        updated_at: String
+      }
+
+    class UserAddress < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader administrative_area: String?
+
+      def administrative_area=: (String) -> String
+
+      attr_reader borough: String?
+
+      def borough=: (String) -> String
+
+      attr_reader business_name: String?
+
+      def business_name=: (String) -> String
+
+      attr_reader country_code: String?
+
+      def country_code=: (String) -> String
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader customer_reference: String?
+
+      def customer_reference=: (String) -> String
+
+      attr_reader extended_address: String?
+
+      def extended_address=: (String) -> String
+
+      attr_reader first_name: String?
+
+      def first_name=: (String) -> String
+
+      attr_reader last_name: String?
+
+      def last_name=: (String) -> String
+
+      attr_reader locality: String?
+
+      def locality=: (String) -> String
+
+      attr_reader neighborhood: String?
+
+      def neighborhood=: (String) -> String
+
+      attr_reader phone_number: String?
+
+      def phone_number=: (String) -> String
+
+      attr_reader postal_code: String?
+
+      def postal_code=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader street_address: String?
+
+      def street_address=: (String) -> String
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?administrative_area: String,
+        ?borough: String,
+        ?business_name: String,
+        ?country_code: String,
+        ?created_at: String,
+        ?customer_reference: String,
+        ?extended_address: String,
+        ?first_name: String,
+        ?last_name: String,
+        ?locality: String,
+        ?neighborhood: String,
+        ?phone_number: String,
+        ?postal_code: String,
+        ?record_type: String,
+        ?street_address: String,
+        ?updated_at: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        administrative_area: String,
+        borough: String,
+        business_name: String,
+        country_code: String,
+        created_at: String,
+        customer_reference: String,
+        extended_address: String,
+        first_name: String,
+        last_name: String,
+        locality: String,
+        neighborhood: String,
+        phone_number: String,
+        postal_code: String,
+        record_type: String,
+        street_address: String,
+        updated_at: String
+      }
+    end
+  end
+end

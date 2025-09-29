@@ -1,0 +1,9 @@
+module Telnyx
+  module Resources
+    class Payment
+      attr_reader auto_recharge_prefs: Telnyx::Resources::Payment::AutoRechargePrefs
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,182 @@
+module Telnyx
+  module Models
+    module Texml
+      type account_retrieve_transcriptions_json_response =
+        {
+          end_: Integer,
+          first_page_uri: String,
+          next_page_uri: String,
+          page: Integer,
+          page_size: Integer,
+          previous_page_uri: String,
+          start: Integer,
+          transcriptions: ::Array[Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonResponse::Transcription],
+          uri: String
+        }
+
+      class AccountRetrieveTranscriptionsJsonResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader end_: Integer?
+
+        def end_=: (Integer) -> Integer
+
+        attr_reader first_page_uri: String?
+
+        def first_page_uri=: (String) -> String
+
+        attr_reader next_page_uri: String?
+
+        def next_page_uri=: (String) -> String
+
+        attr_reader page: Integer?
+
+        def page=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        attr_reader previous_page_uri: String?
+
+        def previous_page_uri=: (String) -> String
+
+        attr_reader start: Integer?
+
+        def start=: (Integer) -> Integer
+
+        attr_reader transcriptions: ::Array[Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonResponse::Transcription]?
+
+        def transcriptions=: (
+          ::Array[Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonResponse::Transcription]
+        ) -> ::Array[Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonResponse::Transcription]
+
+        attr_reader uri: String?
+
+        def uri=: (String) -> String
+
+        def initialize: (
+          ?end_: Integer,
+          ?first_page_uri: String,
+          ?next_page_uri: String,
+          ?page: Integer,
+          ?page_size: Integer,
+          ?previous_page_uri: String,
+          ?start: Integer,
+          ?transcriptions: ::Array[Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonResponse::Transcription],
+          ?uri: String
+        ) -> void
+
+        def to_hash: -> {
+          end_: Integer,
+          first_page_uri: String,
+          next_page_uri: String,
+          page: Integer,
+          page_size: Integer,
+          previous_page_uri: String,
+          start: Integer,
+          transcriptions: ::Array[Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonResponse::Transcription],
+          uri: String
+        }
+
+        type transcription =
+          {
+            account_sid: String,
+            api_version: String,
+            call_sid: String,
+            date_created: Time,
+            date_updated: Time,
+            duration: String?,
+            recording_sid: String,
+            sid: String,
+            status: Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonResponse::Transcription::status,
+            transcription_text: String,
+            uri: String
+          }
+
+        class Transcription < Telnyx::Internal::Type::BaseModel
+          attr_reader account_sid: String?
+
+          def account_sid=: (String) -> String
+
+          attr_reader api_version: String?
+
+          def api_version=: (String) -> String
+
+          attr_reader call_sid: String?
+
+          def call_sid=: (String) -> String
+
+          attr_reader date_created: Time?
+
+          def date_created=: (Time) -> Time
+
+          attr_reader date_updated: Time?
+
+          def date_updated=: (Time) -> Time
+
+          attr_accessor duration: String?
+
+          attr_reader recording_sid: String?
+
+          def recording_sid=: (String) -> String
+
+          attr_reader sid: String?
+
+          def sid=: (String) -> String
+
+          attr_reader status: Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonResponse::Transcription::status?
+
+          def status=: (
+            Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonResponse::Transcription::status
+          ) -> Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonResponse::Transcription::status
+
+          attr_reader transcription_text: String?
+
+          def transcription_text=: (String) -> String
+
+          attr_reader uri: String?
+
+          def uri=: (String) -> String
+
+          def initialize: (
+            ?account_sid: String,
+            ?api_version: String,
+            ?call_sid: String,
+            ?date_created: Time,
+            ?date_updated: Time,
+            ?duration: String?,
+            ?recording_sid: String,
+            ?sid: String,
+            ?status: Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonResponse::Transcription::status,
+            ?transcription_text: String,
+            ?uri: String
+          ) -> void
+
+          def to_hash: -> {
+            account_sid: String,
+            api_version: String,
+            call_sid: String,
+            date_created: Time,
+            date_updated: Time,
+            duration: String?,
+            recording_sid: String,
+            sid: String,
+            status: Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonResponse::Transcription::status,
+            transcription_text: String,
+            uri: String
+          }
+
+          type status = :"in-progress" | :completed
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            IN_PROGRESS: :"in-progress"
+            COMPLETED: :completed
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonResponse::Transcription::status]
+          end
+        end
+      end
+    end
+  end
+end

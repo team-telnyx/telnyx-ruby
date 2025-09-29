@@ -1,0 +1,50 @@
+module Telnyx
+  module Models
+    type porting_order_phone_number_configuration =
+      {
+        billing_group_id: String,
+        connection_id: String,
+        emergency_address_id: String,
+        messaging_profile_id: String,
+        tags: ::Array[String]
+      }
+
+    class PortingOrderPhoneNumberConfiguration < Telnyx::Internal::Type::BaseModel
+      attr_reader billing_group_id: String?
+
+      def billing_group_id=: (String) -> String
+
+      attr_reader connection_id: String?
+
+      def connection_id=: (String) -> String
+
+      attr_reader emergency_address_id: String?
+
+      def emergency_address_id=: (String) -> String
+
+      attr_reader messaging_profile_id: String?
+
+      def messaging_profile_id=: (String) -> String
+
+      attr_reader tags: ::Array[String]?
+
+      def tags=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        ?billing_group_id: String,
+        ?connection_id: String,
+        ?emergency_address_id: String,
+        ?messaging_profile_id: String,
+        ?tags: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        billing_group_id: String,
+        connection_id: String,
+        emergency_address_id: String,
+        messaging_profile_id: String,
+        tags: ::Array[String]
+      }
+    end
+  end
+end

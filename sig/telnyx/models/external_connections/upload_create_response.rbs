@@ -1,0 +1,21 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type upload_create_response = { success: bool, ticket_id: String }
+
+      class UploadCreateResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader success: bool?
+
+        def success=: (bool) -> bool
+
+        attr_reader ticket_id: String?
+
+        def ticket_id=: (String) -> String
+
+        def initialize: (?success: bool, ?ticket_id: String) -> void
+
+        def to_hash: -> { success: bool, ticket_id: String }
+      end
+    end
+  end
+end

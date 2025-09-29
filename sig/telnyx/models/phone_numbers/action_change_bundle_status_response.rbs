@@ -1,0 +1,24 @@
+module Telnyx
+  module Models
+    module PhoneNumbers
+      type action_change_bundle_status_response =
+        { data: Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings }
+
+      class ActionChangeBundleStatusResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings?
+
+        def data=: (
+          Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings
+        ) -> Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings
+
+        def initialize: (
+          ?data: Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings
+        }
+      end
+    end
+  end
+end

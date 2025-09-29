@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    module AI
+      module FineTuning
+        type job_list_response =
+          { data: ::Array[Telnyx::AI::FineTuning::FineTuningJob] }
+
+        class JobListResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: ::Array[Telnyx::AI::FineTuning::FineTuningJob]
+
+          def initialize: (
+            data: ::Array[Telnyx::AI::FineTuning::FineTuningJob]
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[Telnyx::AI::FineTuning::FineTuningJob]
+          }
+        end
+      end
+    end
+  end
+end

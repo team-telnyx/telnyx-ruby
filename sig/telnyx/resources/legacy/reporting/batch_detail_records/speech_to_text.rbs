@@ -1,0 +1,33 @@
+module Telnyx
+  module Resources
+    class Legacy
+      class Reporting
+        class BatchDetailRecords
+          class SpeechToText
+            def create: (
+              end_date: Time,
+              start_date: Time,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextCreateResponse
+
+            def retrieve: (
+              String id,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextRetrieveResponse
+
+            def list: (
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextListResponse
+
+            def delete: (
+              String id,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextDeleteResponse
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

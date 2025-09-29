@@ -1,0 +1,12 @@
+module Telnyx
+  module Resources
+    class GlobalIPAssignmentHealth
+      def retrieve: (
+        ?filter: Telnyx::GlobalIPAssignmentHealthRetrieveParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,64 @@
+module Telnyx
+  module Models
+    type channel_zone_update_response =
+      {
+        id: String,
+        channels: Integer,
+        countries: ::Array[String],
+        name: String,
+        record_type: Telnyx::Models::ChannelZoneUpdateResponse::record_type,
+        created_at: String,
+        updated_at: String
+      }
+
+    class ChannelZoneUpdateResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor channels: Integer
+
+      attr_accessor countries: ::Array[String]
+
+      attr_accessor name: String
+
+      attr_accessor record_type: Telnyx::Models::ChannelZoneUpdateResponse::record_type
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      def initialize: (
+        id: String,
+        channels: Integer,
+        countries: ::Array[String],
+        name: String,
+        record_type: Telnyx::Models::ChannelZoneUpdateResponse::record_type,
+        ?created_at: String,
+        ?updated_at: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        channels: Integer,
+        countries: ::Array[String],
+        name: String,
+        record_type: Telnyx::Models::ChannelZoneUpdateResponse::record_type,
+        created_at: String,
+        updated_at: String
+      }
+
+      type record_type = :channel_zone
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        CHANNEL_ZONE: :channel_zone
+
+        def self?.values: -> ::Array[Telnyx::Models::ChannelZoneUpdateResponse::record_type]
+      end
+    end
+  end
+end

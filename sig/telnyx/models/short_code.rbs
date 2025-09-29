@@ -1,0 +1,74 @@
+module Telnyx
+  module Models
+    type short_code =
+      {
+        messaging_profile_id: String?,
+        id: String,
+        country_code: String,
+        created_at: Time,
+        record_type: Telnyx::Models::ShortCode::record_type,
+        short_code: String,
+        updated_at: Time
+      }
+
+    class ShortCode < Telnyx::Internal::Type::BaseModel
+      attr_accessor messaging_profile_id: String?
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader country_code: String?
+
+      def country_code=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader record_type: Telnyx::Models::ShortCode::record_type?
+
+      def record_type=: (
+        Telnyx::Models::ShortCode::record_type
+      ) -> Telnyx::Models::ShortCode::record_type
+
+      attr_reader short_code: String?
+
+      def short_code=: (String) -> String
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        messaging_profile_id: String?,
+        ?id: String,
+        ?country_code: String,
+        ?created_at: Time,
+        ?record_type: Telnyx::Models::ShortCode::record_type,
+        ?short_code: String,
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        messaging_profile_id: String?,
+        id: String,
+        country_code: String,
+        created_at: Time,
+        record_type: Telnyx::Models::ShortCode::record_type,
+        short_code: String,
+        updated_at: Time
+      }
+
+      type record_type = :short_code
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        SHORT_CODE: :short_code
+
+        def self?.values: -> ::Array[Telnyx::Models::ShortCode::record_type]
+      end
+    end
+  end
+end

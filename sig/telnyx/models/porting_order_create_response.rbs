@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    type porting_order_create_response = { data: ::Array[Telnyx::PortingOrder] }
+
+    class PortingOrderCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::PortingOrder]?
+
+      def data=: (
+        ::Array[Telnyx::PortingOrder]
+      ) -> ::Array[Telnyx::PortingOrder]
+
+      def initialize: (?data: ::Array[Telnyx::PortingOrder]) -> void
+
+      def to_hash: -> { data: ::Array[Telnyx::PortingOrder] }
+    end
+  end
+end

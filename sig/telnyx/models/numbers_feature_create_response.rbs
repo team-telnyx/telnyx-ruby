@@ -1,0 +1,37 @@
+module Telnyx
+  module Models
+    type numbers_feature_create_response =
+      { data: ::Array[Telnyx::Models::NumbersFeatureCreateResponse::Data] }
+
+    class NumbersFeatureCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::NumbersFeatureCreateResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::NumbersFeatureCreateResponse::Data]
+      ) -> ::Array[Telnyx::Models::NumbersFeatureCreateResponse::Data]
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::NumbersFeatureCreateResponse::Data]
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::NumbersFeatureCreateResponse::Data]
+      }
+
+      type data = { features: ::Array[String], phone_number: String }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor features: ::Array[String]
+
+        attr_accessor phone_number: String
+
+        def initialize: (
+          features: ::Array[String],
+          phone_number: String
+        ) -> void
+
+        def to_hash: -> { features: ::Array[String], phone_number: String }
+      end
+    end
+  end
+end

@@ -1,0 +1,25 @@
+module Telnyx
+  module Resources
+    class Texml
+      class Accounts
+        class Transcriptions
+          class Json
+            def delete_recording_transcription_sid_json: (
+              String recording_transcription_sid,
+              account_sid: String,
+              ?request_options: Telnyx::request_opts
+            ) -> nil
+
+            def retrieve_recording_transcription_sid_json: (
+              String recording_transcription_sid,
+              account_sid: String,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Texml::Accounts::Transcriptions::JsonRetrieveRecordingTranscriptionSidJsonResponse
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

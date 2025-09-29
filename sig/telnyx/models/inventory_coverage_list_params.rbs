@@ -1,0 +1,227 @@
+module Telnyx
+  module Models
+    type inventory_coverage_list_params =
+      { filter: Telnyx::InventoryCoverageListParams::Filter }
+      & Telnyx::Internal::Type::request_parameters
+
+    class InventoryCoverageListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::InventoryCoverageListParams::Filter?
+
+      def filter=: (
+        Telnyx::InventoryCoverageListParams::Filter
+      ) -> Telnyx::InventoryCoverageListParams::Filter
+
+      def initialize: (
+        ?filter: Telnyx::InventoryCoverageListParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::InventoryCoverageListParams::Filter,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          administrative_area: String,
+          count: bool,
+          country_code: Telnyx::Models::InventoryCoverageListParams::Filter::country_code,
+          features: ::Array[Telnyx::Models::InventoryCoverageListParams::Filter::feature],
+          group_by: Telnyx::Models::InventoryCoverageListParams::Filter::group_by,
+          npa: Integer,
+          nxx: Integer,
+          phone_number_type: Telnyx::Models::InventoryCoverageListParams::Filter::phone_number_type
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader administrative_area: String?
+
+        def administrative_area=: (String) -> String
+
+        attr_reader count: bool?
+
+        def count=: (bool) -> bool
+
+        attr_reader country_code: Telnyx::Models::InventoryCoverageListParams::Filter::country_code?
+
+        def country_code=: (
+          Telnyx::Models::InventoryCoverageListParams::Filter::country_code
+        ) -> Telnyx::Models::InventoryCoverageListParams::Filter::country_code
+
+        attr_reader features: ::Array[Telnyx::Models::InventoryCoverageListParams::Filter::feature]?
+
+        def features=: (
+          ::Array[Telnyx::Models::InventoryCoverageListParams::Filter::feature]
+        ) -> ::Array[Telnyx::Models::InventoryCoverageListParams::Filter::feature]
+
+        attr_reader group_by: Telnyx::Models::InventoryCoverageListParams::Filter::group_by?
+
+        def group_by=: (
+          Telnyx::Models::InventoryCoverageListParams::Filter::group_by
+        ) -> Telnyx::Models::InventoryCoverageListParams::Filter::group_by
+
+        attr_reader npa: Integer?
+
+        def npa=: (Integer) -> Integer
+
+        attr_reader nxx: Integer?
+
+        def nxx=: (Integer) -> Integer
+
+        attr_reader phone_number_type: Telnyx::Models::InventoryCoverageListParams::Filter::phone_number_type?
+
+        def phone_number_type=: (
+          Telnyx::Models::InventoryCoverageListParams::Filter::phone_number_type
+        ) -> Telnyx::Models::InventoryCoverageListParams::Filter::phone_number_type
+
+        def initialize: (
+          ?administrative_area: String,
+          ?count: bool,
+          ?country_code: Telnyx::Models::InventoryCoverageListParams::Filter::country_code,
+          ?features: ::Array[Telnyx::Models::InventoryCoverageListParams::Filter::feature],
+          ?group_by: Telnyx::Models::InventoryCoverageListParams::Filter::group_by,
+          ?npa: Integer,
+          ?nxx: Integer,
+          ?phone_number_type: Telnyx::Models::InventoryCoverageListParams::Filter::phone_number_type
+        ) -> void
+
+        def to_hash: -> {
+          administrative_area: String,
+          count: bool,
+          country_code: Telnyx::Models::InventoryCoverageListParams::Filter::country_code,
+          features: ::Array[Telnyx::Models::InventoryCoverageListParams::Filter::feature],
+          group_by: Telnyx::Models::InventoryCoverageListParams::Filter::group_by,
+          npa: Integer,
+          nxx: Integer,
+          phone_number_type: Telnyx::Models::InventoryCoverageListParams::Filter::phone_number_type
+        }
+
+        type country_code =
+          :AT
+          | :AU
+          | :BE
+          | :BG
+          | :CA
+          | :CH
+          | :CN
+          | :CY
+          | :CZ
+          | :DE
+          | :DK
+          | :EE
+          | :ES
+          | :FI
+          | :FR
+          | :GB
+          | :GR
+          | :HU
+          | :HR
+          | :IE
+          | :IT
+          | :LT
+          | :LU
+          | :LV
+          | :NL
+          | :NZ
+          | :MX
+          | :NO
+          | :PL
+          | :PT
+          | :RO
+          | :SE
+          | :SG
+          | :SI
+          | :SK
+          | :US
+
+        module CountryCode
+          extend Telnyx::Internal::Type::Enum
+
+          AT: :AT
+          AU: :AU
+          BE: :BE
+          BG: :BG
+          CA: :CA
+          CH: :CH
+          CN: :CN
+          CY: :CY
+          CZ: :CZ
+          DE: :DE
+          DK: :DK
+          EE: :EE
+          ES: :ES
+          FI: :FI
+          FR: :FR
+          GB: :GB
+          GR: :GR
+          HU: :HU
+          HR: :HR
+          IE: :IE
+          IT: :IT
+          LT: :LT
+          LU: :LU
+          LV: :LV
+          NL: :NL
+          NZ: :NZ
+          MX: :MX
+          NO: :NO
+          PL: :PL
+          PT: :PT
+          RO: :RO
+          SE: :SE
+          SG: :SG
+          SI: :SI
+          SK: :SK
+          US: :US
+
+          def self?.values: -> ::Array[Telnyx::Models::InventoryCoverageListParams::Filter::country_code]
+        end
+
+        type feature = :sms | :mms | :voice | :fax | :emergency
+
+        module Feature
+          extend Telnyx::Internal::Type::Enum
+
+          SMS: :sms
+          MMS: :mms
+          VOICE: :voice
+          FAX: :fax
+          EMERGENCY: :emergency
+
+          def self?.values: -> ::Array[Telnyx::Models::InventoryCoverageListParams::Filter::feature]
+        end
+
+        type group_by = :locality | :npa | :national_destination_code
+
+        module GroupBy
+          extend Telnyx::Internal::Type::Enum
+
+          LOCALITY: :locality
+          NPA: :npa
+          NATIONAL_DESTINATION_CODE: :national_destination_code
+
+          def self?.values: -> ::Array[Telnyx::Models::InventoryCoverageListParams::Filter::group_by]
+        end
+
+        type phone_number_type =
+          :local | :toll_free | :national | :mobile | :landline | :shared_cost
+
+        module PhoneNumberType
+          extend Telnyx::Internal::Type::Enum
+
+          LOCAL: :local
+          TOLL_FREE: :toll_free
+          NATIONAL: :national
+          MOBILE: :mobile
+          LANDLINE: :landline
+          SHARED_COST: :shared_cost
+
+          def self?.values: -> ::Array[Telnyx::Models::InventoryCoverageListParams::Filter::phone_number_type]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,30 @@
+module Telnyx
+  module Resources
+    class DynamicEmergencyEndpoints
+      def create: (
+        callback_number: String,
+        caller_name: String,
+        dynamic_emergency_address_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DynamicEmergencyEndpointCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DynamicEmergencyEndpointRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::DynamicEmergencyEndpointListParams::Filter,
+        ?page: Telnyx::DynamicEmergencyEndpointListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DynamicEmergencyEndpointListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DynamicEmergencyEndpointDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

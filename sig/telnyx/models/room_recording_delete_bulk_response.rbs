@@ -1,0 +1,34 @@
+module Telnyx
+  module Models
+    type room_recording_delete_bulk_response =
+      { data: Telnyx::Models::RoomRecordingDeleteBulkResponse::Data }
+
+    class RoomRecordingDeleteBulkResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::RoomRecordingDeleteBulkResponse::Data?
+
+      def data=: (
+        Telnyx::Models::RoomRecordingDeleteBulkResponse::Data
+      ) -> Telnyx::Models::RoomRecordingDeleteBulkResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::RoomRecordingDeleteBulkResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::RoomRecordingDeleteBulkResponse::Data
+      }
+
+      type data = { room_recordings: Integer }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader room_recordings: Integer?
+
+        def room_recordings=: (Integer) -> Integer
+
+        def initialize: (?room_recordings: Integer) -> void
+
+        def to_hash: -> { room_recordings: Integer }
+      end
+    end
+  end
+end

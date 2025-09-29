@@ -1,0 +1,9 @@
+module Telnyx
+  module Resources
+    class MessagingTollfree
+      attr_reader verification: Telnyx::Resources::MessagingTollfree::Verification
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

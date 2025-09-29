@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    module AI
+      module Embeddings
+        type bucket_list_response =
+          { data: Telnyx::Models::AI::Embeddings::BucketListResponse::Data }
+
+        class BucketListResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: Telnyx::Models::AI::Embeddings::BucketListResponse::Data
+
+          def initialize: (
+            data: Telnyx::Models::AI::Embeddings::BucketListResponse::Data
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::Models::AI::Embeddings::BucketListResponse::Data
+          }
+
+          type data = { buckets: ::Array[String] }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_accessor buckets: ::Array[String]
+
+            def initialize: (buckets: ::Array[String]) -> void
+
+            def to_hash: -> { buckets: ::Array[String] }
+          end
+        end
+      end
+    end
+  end
+end

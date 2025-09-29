@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    module AI
+      type telephony_settings =
+        {
+          default_texml_app_id: String,
+          supports_unauthenticated_web_calls: bool
+        }
+
+      class TelephonySettings < Telnyx::Internal::Type::BaseModel
+        attr_reader default_texml_app_id: String?
+
+        def default_texml_app_id=: (String) -> String
+
+        attr_reader supports_unauthenticated_web_calls: bool?
+
+        def supports_unauthenticated_web_calls=: (bool) -> bool
+
+        def initialize: (
+          ?default_texml_app_id: String,
+          ?supports_unauthenticated_web_calls: bool
+        ) -> void
+
+        def to_hash: -> {
+          default_texml_app_id: String,
+          supports_unauthenticated_web_calls: bool
+        }
+      end
+    end
+  end
+end

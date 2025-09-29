@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    type porting_order_documents = { invoice: String, loa: String }
+
+    class PortingOrderDocuments < Telnyx::Internal::Type::BaseModel
+      attr_reader invoice: String?
+
+      def invoice=: (String) -> String
+
+      attr_reader loa: String?
+
+      def loa=: (String) -> String
+
+      def initialize: (?invoice: String, ?loa: String) -> void
+
+      def to_hash: -> { invoice: String, loa: String }
+    end
+  end
+end

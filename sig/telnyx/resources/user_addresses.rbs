@@ -1,0 +1,37 @@
+module Telnyx
+  module Resources
+    class UserAddresses
+      def create: (
+        business_name: String,
+        country_code: String,
+        first_name: String,
+        last_name: String,
+        locality: String,
+        street_address: String,
+        ?administrative_area: String,
+        ?borough: String,
+        ?customer_reference: String,
+        ?extended_address: String,
+        ?neighborhood: String,
+        ?phone_number: String,
+        ?postal_code: String,
+        ?skip_address_verification: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::UserAddressCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::UserAddressRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::UserAddressListParams::Filter,
+        ?page: Telnyx::UserAddressListParams::Page,
+        ?sort: Telnyx::Models::UserAddressListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::UserAddressListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,29 @@
+module Telnyx
+  module Resources
+    class UsageReports
+      def list: (
+        dimensions: ::Array[String],
+        metrics: ::Array[String],
+        product: String,
+        ?date_range: String,
+        ?end_date: String,
+        ?filter: String,
+        ?format_: Telnyx::Models::UsageReportListParams::format_,
+        ?managed_accounts: bool,
+        ?page: Telnyx::UsageReportListParams::Page,
+        ?sort: ::Array[String],
+        ?start_date: String,
+        ?authorization_bearer: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::UsageReportListResponse
+
+      def get_options: (
+        ?product: String,
+        ?authorization_bearer: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::UsageReportGetOptionsResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

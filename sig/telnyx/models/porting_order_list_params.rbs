@@ -1,0 +1,318 @@
+module Telnyx
+  module Models
+    type porting_order_list_params =
+      {
+        filter: Telnyx::PortingOrderListParams::Filter,
+        include_phone_numbers: bool,
+        page: Telnyx::PortingOrderListParams::Page,
+        sort: Telnyx::PortingOrderListParams::Sort
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class PortingOrderListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::PortingOrderListParams::Filter?
+
+      def filter=: (
+        Telnyx::PortingOrderListParams::Filter
+      ) -> Telnyx::PortingOrderListParams::Filter
+
+      attr_reader include_phone_numbers: bool?
+
+      def include_phone_numbers=: (bool) -> bool
+
+      attr_reader page: Telnyx::PortingOrderListParams::Page?
+
+      def page=: (
+        Telnyx::PortingOrderListParams::Page
+      ) -> Telnyx::PortingOrderListParams::Page
+
+      attr_reader sort: Telnyx::PortingOrderListParams::Sort?
+
+      def sort=: (
+        Telnyx::PortingOrderListParams::Sort
+      ) -> Telnyx::PortingOrderListParams::Sort
+
+      def initialize: (
+        ?filter: Telnyx::PortingOrderListParams::Filter,
+        ?include_phone_numbers: bool,
+        ?page: Telnyx::PortingOrderListParams::Page,
+        ?sort: Telnyx::PortingOrderListParams::Sort,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::PortingOrderListParams::Filter,
+        include_phone_numbers: bool,
+        page: Telnyx::PortingOrderListParams::Page,
+        sort: Telnyx::PortingOrderListParams::Sort,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          activation_settings: Telnyx::PortingOrderListParams::Filter::ActivationSettings,
+          customer_group_reference: String,
+          customer_reference: String,
+          end_user: Telnyx::PortingOrderListParams::Filter::EndUser,
+          misc: Telnyx::PortingOrderListParams::Filter::Misc,
+          parent_support_key: String,
+          phone_numbers: Telnyx::PortingOrderListParams::Filter::PhoneNumbers
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader activation_settings: Telnyx::PortingOrderListParams::Filter::ActivationSettings?
+
+        def activation_settings=: (
+          Telnyx::PortingOrderListParams::Filter::ActivationSettings
+        ) -> Telnyx::PortingOrderListParams::Filter::ActivationSettings
+
+        attr_reader customer_group_reference: String?
+
+        def customer_group_reference=: (String) -> String
+
+        attr_reader customer_reference: String?
+
+        def customer_reference=: (String) -> String
+
+        attr_reader end_user: Telnyx::PortingOrderListParams::Filter::EndUser?
+
+        def end_user=: (
+          Telnyx::PortingOrderListParams::Filter::EndUser
+        ) -> Telnyx::PortingOrderListParams::Filter::EndUser
+
+        attr_reader misc: Telnyx::PortingOrderListParams::Filter::Misc?
+
+        def misc=: (
+          Telnyx::PortingOrderListParams::Filter::Misc
+        ) -> Telnyx::PortingOrderListParams::Filter::Misc
+
+        attr_reader parent_support_key: String?
+
+        def parent_support_key=: (String) -> String
+
+        attr_reader phone_numbers: Telnyx::PortingOrderListParams::Filter::PhoneNumbers?
+
+        def phone_numbers=: (
+          Telnyx::PortingOrderListParams::Filter::PhoneNumbers
+        ) -> Telnyx::PortingOrderListParams::Filter::PhoneNumbers
+
+        def initialize: (
+          ?activation_settings: Telnyx::PortingOrderListParams::Filter::ActivationSettings,
+          ?customer_group_reference: String,
+          ?customer_reference: String,
+          ?end_user: Telnyx::PortingOrderListParams::Filter::EndUser,
+          ?misc: Telnyx::PortingOrderListParams::Filter::Misc,
+          ?parent_support_key: String,
+          ?phone_numbers: Telnyx::PortingOrderListParams::Filter::PhoneNumbers
+        ) -> void
+
+        def to_hash: -> {
+          activation_settings: Telnyx::PortingOrderListParams::Filter::ActivationSettings,
+          customer_group_reference: String,
+          customer_reference: String,
+          end_user: Telnyx::PortingOrderListParams::Filter::EndUser,
+          misc: Telnyx::PortingOrderListParams::Filter::Misc,
+          parent_support_key: String,
+          phone_numbers: Telnyx::PortingOrderListParams::Filter::PhoneNumbers
+        }
+
+        type activation_settings =
+          {
+            fast_port_eligible: bool,
+            foc_datetime_requested: Telnyx::PortingOrderListParams::Filter::ActivationSettings::FocDatetimeRequested
+          }
+
+        class ActivationSettings < Telnyx::Internal::Type::BaseModel
+          attr_reader fast_port_eligible: bool?
+
+          def fast_port_eligible=: (bool) -> bool
+
+          attr_reader foc_datetime_requested: Telnyx::PortingOrderListParams::Filter::ActivationSettings::FocDatetimeRequested?
+
+          def foc_datetime_requested=: (
+            Telnyx::PortingOrderListParams::Filter::ActivationSettings::FocDatetimeRequested
+          ) -> Telnyx::PortingOrderListParams::Filter::ActivationSettings::FocDatetimeRequested
+
+          def initialize: (
+            ?fast_port_eligible: bool,
+            ?foc_datetime_requested: Telnyx::PortingOrderListParams::Filter::ActivationSettings::FocDatetimeRequested
+          ) -> void
+
+          def to_hash: -> {
+            fast_port_eligible: bool,
+            foc_datetime_requested: Telnyx::PortingOrderListParams::Filter::ActivationSettings::FocDatetimeRequested
+          }
+
+          type foc_datetime_requested = { gt: String, lt: String }
+
+          class FocDatetimeRequested < Telnyx::Internal::Type::BaseModel
+            attr_reader gt: String?
+
+            def gt=: (String) -> String
+
+            attr_reader lt: String?
+
+            def lt=: (String) -> String
+
+            def initialize: (?gt: String, ?lt: String) -> void
+
+            def to_hash: -> { gt: String, lt: String }
+          end
+        end
+
+        type end_user =
+          { admin: Telnyx::PortingOrderListParams::Filter::EndUser::Admin }
+
+        class EndUser < Telnyx::Internal::Type::BaseModel
+          attr_reader admin: Telnyx::PortingOrderListParams::Filter::EndUser::Admin?
+
+          def admin=: (
+            Telnyx::PortingOrderListParams::Filter::EndUser::Admin
+          ) -> Telnyx::PortingOrderListParams::Filter::EndUser::Admin
+
+          def initialize: (
+            ?admin: Telnyx::PortingOrderListParams::Filter::EndUser::Admin
+          ) -> void
+
+          def to_hash: -> {
+            admin: Telnyx::PortingOrderListParams::Filter::EndUser::Admin
+          }
+
+          type admin = { auth_person_name: String, entity_name: String }
+
+          class Admin < Telnyx::Internal::Type::BaseModel
+            attr_reader auth_person_name: String?
+
+            def auth_person_name=: (String) -> String
+
+            attr_reader entity_name: String?
+
+            def entity_name=: (String) -> String
+
+            def initialize: (
+              ?auth_person_name: String,
+              ?entity_name: String
+            ) -> void
+
+            def to_hash: -> { auth_person_name: String, entity_name: String }
+          end
+        end
+
+        type misc = { type: Telnyx::Models::porting_order_type }
+
+        class Misc < Telnyx::Internal::Type::BaseModel
+          attr_reader type: Telnyx::Models::porting_order_type?
+
+          def type=: (
+            Telnyx::Models::porting_order_type
+          ) -> Telnyx::Models::porting_order_type
+
+          def initialize: (?type: Telnyx::Models::porting_order_type) -> void
+
+          def to_hash: -> { type: Telnyx::Models::porting_order_type }
+        end
+
+        type phone_numbers =
+          {
+            carrier_name: String,
+            country_code: String,
+            phone_number: Telnyx::PortingOrderListParams::Filter::PhoneNumbers::PhoneNumber
+          }
+
+        class PhoneNumbers < Telnyx::Internal::Type::BaseModel
+          attr_reader carrier_name: String?
+
+          def carrier_name=: (String) -> String
+
+          attr_reader country_code: String?
+
+          def country_code=: (String) -> String
+
+          attr_reader phone_number: Telnyx::PortingOrderListParams::Filter::PhoneNumbers::PhoneNumber?
+
+          def phone_number=: (
+            Telnyx::PortingOrderListParams::Filter::PhoneNumbers::PhoneNumber
+          ) -> Telnyx::PortingOrderListParams::Filter::PhoneNumbers::PhoneNumber
+
+          def initialize: (
+            ?carrier_name: String,
+            ?country_code: String,
+            ?phone_number: Telnyx::PortingOrderListParams::Filter::PhoneNumbers::PhoneNumber
+          ) -> void
+
+          def to_hash: -> {
+            carrier_name: String,
+            country_code: String,
+            phone_number: Telnyx::PortingOrderListParams::Filter::PhoneNumbers::PhoneNumber
+          }
+
+          type phone_number = { contains: String }
+
+          class PhoneNumber < Telnyx::Internal::Type::BaseModel
+            attr_reader contains: String?
+
+            def contains=: (String) -> String
+
+            def initialize: (?contains: String) -> void
+
+            def to_hash: -> { contains: String }
+          end
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+
+      type sort = { value: Telnyx::Models::PortingOrderListParams::Sort::value }
+
+      class Sort < Telnyx::Internal::Type::BaseModel
+        attr_reader value: Telnyx::Models::PortingOrderListParams::Sort::value?
+
+        def value=: (
+          Telnyx::Models::PortingOrderListParams::Sort::value
+        ) -> Telnyx::Models::PortingOrderListParams::Sort::value
+
+        def initialize: (
+          ?value: Telnyx::Models::PortingOrderListParams::Sort::value
+        ) -> void
+
+        def to_hash: -> {
+          value: Telnyx::Models::PortingOrderListParams::Sort::value
+        }
+
+        type value =
+          :created_at
+          | :"-created_at"
+          | :"activation_settings.foc_datetime_requested"
+          | :"-activation_settings.foc_datetime_requested"
+
+        module Value
+          extend Telnyx::Internal::Type::Enum
+
+          CREATED_AT: :created_at
+          CREATED_AT_DESC: :"-created_at"
+          ACTIVATION_SETTINGS_FOC_DATETIME_REQUESTED: :"activation_settings.foc_datetime_requested"
+          ACTIVATION_SETTINGS_FOC_DATETIME_REQUESTED_DESC: :"-activation_settings.foc_datetime_requested"
+
+          def self?.values: -> ::Array[Telnyx::Models::PortingOrderListParams::Sort::value]
+        end
+      end
+    end
+  end
+end

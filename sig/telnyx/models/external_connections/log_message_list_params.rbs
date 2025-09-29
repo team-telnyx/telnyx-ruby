@@ -1,0 +1,101 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type log_message_list_params =
+        {
+          filter: Telnyx::ExternalConnections::LogMessageListParams::Filter,
+          page: Telnyx::ExternalConnections::LogMessageListParams::Page
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class LogMessageListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter: Telnyx::ExternalConnections::LogMessageListParams::Filter?
+
+        def filter=: (
+          Telnyx::ExternalConnections::LogMessageListParams::Filter
+        ) -> Telnyx::ExternalConnections::LogMessageListParams::Filter
+
+        attr_reader page: Telnyx::ExternalConnections::LogMessageListParams::Page?
+
+        def page=: (
+          Telnyx::ExternalConnections::LogMessageListParams::Page
+        ) -> Telnyx::ExternalConnections::LogMessageListParams::Page
+
+        def initialize: (
+          ?filter: Telnyx::ExternalConnections::LogMessageListParams::Filter,
+          ?page: Telnyx::ExternalConnections::LogMessageListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter: Telnyx::ExternalConnections::LogMessageListParams::Filter,
+          page: Telnyx::ExternalConnections::LogMessageListParams::Page,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter =
+          {
+            external_connection_id: String,
+            telephone_number: Telnyx::ExternalConnections::LogMessageListParams::Filter::TelephoneNumber
+          }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader external_connection_id: String?
+
+          def external_connection_id=: (String) -> String
+
+          attr_reader telephone_number: Telnyx::ExternalConnections::LogMessageListParams::Filter::TelephoneNumber?
+
+          def telephone_number=: (
+            Telnyx::ExternalConnections::LogMessageListParams::Filter::TelephoneNumber
+          ) -> Telnyx::ExternalConnections::LogMessageListParams::Filter::TelephoneNumber
+
+          def initialize: (
+            ?external_connection_id: String,
+            ?telephone_number: Telnyx::ExternalConnections::LogMessageListParams::Filter::TelephoneNumber
+          ) -> void
+
+          def to_hash: -> {
+            external_connection_id: String,
+            telephone_number: Telnyx::ExternalConnections::LogMessageListParams::Filter::TelephoneNumber
+          }
+
+          type telephone_number = { contains: String, eq: String }
+
+          class TelephoneNumber < Telnyx::Internal::Type::BaseModel
+            attr_reader contains: String?
+
+            def contains=: (String) -> String
+
+            attr_reader eq: String?
+
+            def eq=: (String) -> String
+
+            def initialize: (?contains: String, ?eq: String) -> void
+
+            def to_hash: -> { contains: String, eq: String }
+          end
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
+        end
+      end
+    end
+  end
+end

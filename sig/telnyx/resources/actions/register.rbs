@@ -1,0 +1,17 @@
+module Telnyx
+  module Resources
+    class Actions
+      class Register
+        def create: (
+          registration_codes: ::Array[String],
+          ?sim_card_group_id: String,
+          ?status: Telnyx::Models::Actions::RegisterCreateParams::status,
+          ?tags: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Actions::RegisterCreateResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

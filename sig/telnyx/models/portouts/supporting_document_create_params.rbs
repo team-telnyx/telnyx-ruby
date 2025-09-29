@@ -1,0 +1,65 @@
+module Telnyx
+  module Models
+    module Portouts
+      type supporting_document_create_params =
+        {
+          documents: ::Array[Telnyx::Portouts::SupportingDocumentCreateParams::Document]
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class SupportingDocumentCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader documents: ::Array[Telnyx::Portouts::SupportingDocumentCreateParams::Document]?
+
+        def documents=: (
+          ::Array[Telnyx::Portouts::SupportingDocumentCreateParams::Document]
+        ) -> ::Array[Telnyx::Portouts::SupportingDocumentCreateParams::Document]
+
+        def initialize: (
+          ?documents: ::Array[Telnyx::Portouts::SupportingDocumentCreateParams::Document],
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          documents: ::Array[Telnyx::Portouts::SupportingDocumentCreateParams::Document],
+          request_options: Telnyx::RequestOptions
+        }
+
+        type document =
+          {
+            document_id: String,
+            type: Telnyx::Models::Portouts::SupportingDocumentCreateParams::Document::type_
+          }
+
+        class Document < Telnyx::Internal::Type::BaseModel
+          attr_accessor document_id: String
+
+          attr_accessor type: Telnyx::Models::Portouts::SupportingDocumentCreateParams::Document::type_
+
+          def initialize: (
+            document_id: String,
+            type: Telnyx::Models::Portouts::SupportingDocumentCreateParams::Document::type_
+          ) -> void
+
+          def to_hash: -> {
+            document_id: String,
+            type: Telnyx::Models::Portouts::SupportingDocumentCreateParams::Document::type_
+          }
+
+          type type_ = :loa | :invoice
+
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            LOA: :loa
+            INVOICE: :invoice
+
+            def self?.values: -> ::Array[Telnyx::Models::Portouts::SupportingDocumentCreateParams::Document::type_]
+          end
+        end
+      end
+    end
+  end
+end

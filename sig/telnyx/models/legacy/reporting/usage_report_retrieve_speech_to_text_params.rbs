@@ -1,0 +1,36 @@
+module Telnyx
+  module Models
+    module Legacy
+      module Reporting
+        type usage_report_retrieve_speech_to_text_params =
+          { end_date: Time, start_date: Time }
+          & Telnyx::Internal::Type::request_parameters
+
+        class UsageReportRetrieveSpeechToTextParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_reader end_date: Time?
+
+          def end_date=: (Time) -> Time
+
+          attr_reader start_date: Time?
+
+          def start_date=: (Time) -> Time
+
+          def initialize: (
+            ?end_date: Time,
+            ?start_date: Time,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            end_date: Time,
+            start_date: Time,
+            request_options: Telnyx::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

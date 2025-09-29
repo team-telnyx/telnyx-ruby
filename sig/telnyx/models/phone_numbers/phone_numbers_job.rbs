@@ -1,0 +1,295 @@
+module Telnyx
+  module Models
+    class PhoneNumbersJob = PhoneNumbers::PhoneNumbersJob
+
+    module PhoneNumbers
+      type phone_numbers_job =
+        {
+          id: String,
+          created_at: String,
+          etc: Time,
+          failed_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation],
+          pending_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PendingOperation],
+          phone_numbers: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber],
+          record_type: String,
+          status: Telnyx::Models::PhoneNumbers::PhoneNumbersJob::status,
+          successful_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::SuccessfulOperation],
+          type: Telnyx::Models::PhoneNumbers::PhoneNumbersJob::type_,
+          updated_at: String
+        }
+
+      class PhoneNumbersJob < Telnyx::Internal::Type::BaseModel
+        attr_reader phone_numbers: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber]?
+
+        def phone_numbers=: (
+          ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber]
+        ) -> ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber]
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: String?
+
+        def created_at=: (String) -> String
+
+        attr_reader etc: Time?
+
+        def etc=: (Time) -> Time
+
+        attr_reader failed_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation]?
+
+        def failed_operations=: (
+          ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation]
+        ) -> ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation]
+
+        attr_reader pending_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PendingOperation]?
+
+        def pending_operations=: (
+          ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PendingOperation]
+        ) -> ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PendingOperation]
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader status: Telnyx::Models::PhoneNumbers::PhoneNumbersJob::status?
+
+        def status=: (
+          Telnyx::Models::PhoneNumbers::PhoneNumbersJob::status
+        ) -> Telnyx::Models::PhoneNumbers::PhoneNumbersJob::status
+
+        attr_reader successful_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::SuccessfulOperation]?
+
+        def successful_operations=: (
+          ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::SuccessfulOperation]
+        ) -> ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::SuccessfulOperation]
+
+        attr_reader type: Telnyx::Models::PhoneNumbers::PhoneNumbersJob::type_?
+
+        def type=: (
+          Telnyx::Models::PhoneNumbers::PhoneNumbersJob::type_
+        ) -> Telnyx::Models::PhoneNumbers::PhoneNumbersJob::type_
+
+        attr_reader updated_at: String?
+
+        def updated_at=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?created_at: String,
+          ?etc: Time,
+          ?failed_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation],
+          ?pending_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PendingOperation],
+          ?phone_numbers: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber],
+          ?record_type: String,
+          ?status: Telnyx::Models::PhoneNumbers::PhoneNumbersJob::status,
+          ?successful_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::SuccessfulOperation],
+          ?type: Telnyx::Models::PhoneNumbers::PhoneNumbersJob::type_,
+          ?updated_at: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: String,
+          etc: Time,
+          failed_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation],
+          pending_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PendingOperation],
+          phone_numbers: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber],
+          record_type: String,
+          status: Telnyx::Models::PhoneNumbers::PhoneNumbersJob::status,
+          successful_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::SuccessfulOperation],
+          type: Telnyx::Models::PhoneNumbers::PhoneNumbersJob::type_,
+          updated_at: String
+        }
+
+        type failed_operation =
+          {
+            id: String,
+            errors: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error],
+            phone_number: String
+          }
+
+        class FailedOperation < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader errors: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error]?
+
+          def errors=: (
+            ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error]
+          ) -> ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error]
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?errors: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error],
+            ?phone_number: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            errors: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error],
+            phone_number: String
+          }
+
+          type error =
+            {
+              code: String,
+              title: String,
+              detail: String,
+              meta: Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Meta,
+              source: Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Source
+            }
+
+          class Error < Telnyx::Internal::Type::BaseModel
+            attr_accessor code: String
+
+            attr_accessor title: String
+
+            attr_reader detail: String?
+
+            def detail=: (String) -> String
+
+            attr_reader meta: Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Meta?
+
+            def meta=: (
+              Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Meta
+            ) -> Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Meta
+
+            attr_reader source: Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Source?
+
+            def source=: (
+              Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Source
+            ) -> Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Source
+
+            def initialize: (
+              code: String,
+              title: String,
+              ?detail: String,
+              ?meta: Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Meta,
+              ?source: Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Source
+            ) -> void
+
+            def to_hash: -> {
+              code: String,
+              title: String,
+              detail: String,
+              meta: Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Meta,
+              source: Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Source
+            }
+
+            type meta = { url: String }
+
+            class Meta < Telnyx::Internal::Type::BaseModel
+              attr_reader url: String?
+
+              def url=: (String) -> String
+
+              def initialize: (?url: String) -> void
+
+              def to_hash: -> { url: String }
+            end
+
+            type source = { parameter: String, pointer: String }
+
+            class Source < Telnyx::Internal::Type::BaseModel
+              attr_reader parameter: String?
+
+              def parameter=: (String) -> String
+
+              attr_reader pointer: String?
+
+              def pointer=: (String) -> String
+
+              def initialize: (?parameter: String, ?pointer: String) -> void
+
+              def to_hash: -> { parameter: String, pointer: String }
+            end
+          end
+        end
+
+        type pending_operation = { id: String, phone_number: String }
+
+        class PendingOperation < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          def initialize: (?id: String, ?phone_number: String) -> void
+
+          def to_hash: -> { id: String, phone_number: String }
+        end
+
+        type phone_number = { id: String, phone_number: String }
+
+        class PhoneNumber < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          def initialize: (?id: String, ?phone_number: String) -> void
+
+          def to_hash: -> { id: String, phone_number: String }
+        end
+
+        type status = :pending | :in_progress | :completed | :failed | :expired
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          IN_PROGRESS: :in_progress
+          COMPLETED: :completed
+          FAILED: :failed
+          EXPIRED: :expired
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::PhoneNumbersJob::status]
+        end
+
+        type successful_operation = { id: String, phone_number: String }
+
+        class SuccessfulOperation < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          def initialize: (?id: String, ?phone_number: String) -> void
+
+          def to_hash: -> { id: String, phone_number: String }
+        end
+
+        type type_ =
+          :update_emergency_settings
+          | :delete_phone_numbers
+          | :update_phone_numbers
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          UPDATE_EMERGENCY_SETTINGS: :update_emergency_settings
+          DELETE_PHONE_NUMBERS: :delete_phone_numbers
+          UPDATE_PHONE_NUMBERS: :update_phone_numbers
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::PhoneNumbersJob::type_]
+        end
+      end
+    end
+  end
+end

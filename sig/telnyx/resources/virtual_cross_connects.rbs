@@ -1,0 +1,53 @@
+module Telnyx
+  module Resources
+    class VirtualCrossConnects
+      def create: (
+        bgp_asn: Float,
+        cloud_provider: Telnyx::Models::VirtualCrossConnectCreateParams::cloud_provider,
+        cloud_provider_region: String,
+        network_id: String,
+        primary_cloud_account_id: String,
+        region_code: String,
+        ?bandwidth_mbps: Float,
+        ?name: String,
+        ?primary_bgp_key: String,
+        ?primary_cloud_ip: String,
+        ?primary_telnyx_ip: String,
+        ?secondary_bgp_key: String,
+        ?secondary_cloud_account_id: String,
+        ?secondary_cloud_ip: String,
+        ?secondary_telnyx_ip: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VirtualCrossConnectCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VirtualCrossConnectRetrieveResponse
+
+      def update: (
+        String id,
+        ?primary_cloud_ip: String,
+        ?primary_enabled: bool,
+        ?primary_routing_announcement: bool,
+        ?secondary_cloud_ip: String,
+        ?secondary_enabled: bool,
+        ?secondary_routing_announcement: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VirtualCrossConnectUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::VirtualCrossConnectListParams::Filter,
+        ?page: Telnyx::VirtualCrossConnectListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VirtualCrossConnectListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VirtualCrossConnectDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

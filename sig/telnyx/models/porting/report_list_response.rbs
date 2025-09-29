@@ -1,0 +1,33 @@
+module Telnyx
+  module Models
+    module Porting
+      type report_list_response =
+        {
+          data: ::Array[Telnyx::Porting::PortingReport],
+          meta: Telnyx::PaginationMeta
+        }
+
+      class ReportListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::Porting::PortingReport]?
+
+        def data=: (
+          ::Array[Telnyx::Porting::PortingReport]
+        ) -> ::Array[Telnyx::Porting::PortingReport]
+
+        attr_reader meta: Telnyx::PaginationMeta?
+
+        def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+        def initialize: (
+          ?data: ::Array[Telnyx::Porting::PortingReport],
+          ?meta: Telnyx::PaginationMeta
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Porting::PortingReport],
+          meta: Telnyx::PaginationMeta
+        }
+      end
+    end
+  end
+end

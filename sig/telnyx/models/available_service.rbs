@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    type available_service =
+      :cloud_vpn | :private_wireless_gateway | :virtual_cross_connect
+
+    module AvailableService
+      extend Telnyx::Internal::Type::Enum
+
+      CLOUD_VPN: :cloud_vpn
+      PRIVATE_WIRELESS_GATEWAY: :private_wireless_gateway
+      VIRTUAL_CROSS_CONNECT: :virtual_cross_connect
+
+      def self?.values: -> ::Array[Telnyx::Models::available_service]
+    end
+  end
+end

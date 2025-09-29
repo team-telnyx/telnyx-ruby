@@ -1,0 +1,124 @@
+module Telnyx
+  module Models
+    type room_composition_list_params =
+      {
+        filter: Telnyx::RoomCompositionListParams::Filter,
+        page: Telnyx::RoomCompositionListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class RoomCompositionListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::RoomCompositionListParams::Filter?
+
+      def filter=: (
+        Telnyx::RoomCompositionListParams::Filter
+      ) -> Telnyx::RoomCompositionListParams::Filter
+
+      attr_reader page: Telnyx::RoomCompositionListParams::Page?
+
+      def page=: (
+        Telnyx::RoomCompositionListParams::Page
+      ) -> Telnyx::RoomCompositionListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::RoomCompositionListParams::Filter,
+        ?page: Telnyx::RoomCompositionListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::RoomCompositionListParams::Filter,
+        page: Telnyx::RoomCompositionListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          date_created_at: Telnyx::RoomCompositionListParams::Filter::DateCreatedAt,
+          session_id: String,
+          status: Telnyx::Models::RoomCompositionListParams::Filter::status
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader date_created_at: Telnyx::RoomCompositionListParams::Filter::DateCreatedAt?
+
+        def date_created_at=: (
+          Telnyx::RoomCompositionListParams::Filter::DateCreatedAt
+        ) -> Telnyx::RoomCompositionListParams::Filter::DateCreatedAt
+
+        attr_reader session_id: String?
+
+        def session_id=: (String) -> String
+
+        attr_reader status: Telnyx::Models::RoomCompositionListParams::Filter::status?
+
+        def status=: (
+          Telnyx::Models::RoomCompositionListParams::Filter::status
+        ) -> Telnyx::Models::RoomCompositionListParams::Filter::status
+
+        def initialize: (
+          ?date_created_at: Telnyx::RoomCompositionListParams::Filter::DateCreatedAt,
+          ?session_id: String,
+          ?status: Telnyx::Models::RoomCompositionListParams::Filter::status
+        ) -> void
+
+        def to_hash: -> {
+          date_created_at: Telnyx::RoomCompositionListParams::Filter::DateCreatedAt,
+          session_id: String,
+          status: Telnyx::Models::RoomCompositionListParams::Filter::status
+        }
+
+        type date_created_at = { eq: Date, gte: Date, lte: Date }
+
+        class DateCreatedAt < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: Date?
+
+          def eq=: (Date) -> Date
+
+          attr_reader gte: Date?
+
+          def gte=: (Date) -> Date
+
+          attr_reader lte: Date?
+
+          def lte=: (Date) -> Date
+
+          def initialize: (?eq: Date, ?gte: Date, ?lte: Date) -> void
+
+          def to_hash: -> { eq: Date, gte: Date, lte: Date }
+        end
+
+        type status = :completed | :processing | :enqueued
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          COMPLETED: :completed
+          PROCESSING: :processing
+          ENQUEUED: :enqueued
+
+          def self?.values: -> ::Array[Telnyx::Models::RoomCompositionListParams::Filter::status]
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

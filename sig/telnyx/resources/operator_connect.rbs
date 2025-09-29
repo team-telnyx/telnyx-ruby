@@ -1,0 +1,9 @@
+module Telnyx
+  module Resources
+    class OperatorConnect
+      attr_reader actions: Telnyx::Resources::OperatorConnect::Actions
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

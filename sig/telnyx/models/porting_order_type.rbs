@@ -1,0 +1,14 @@
+module Telnyx
+  module Models
+    type porting_order_type = :full | :partial
+
+    module PortingOrderType
+      extend Telnyx::Internal::Type::Enum
+
+      FULL: :full
+      PARTIAL: :partial
+
+      def self?.values: -> ::Array[Telnyx::Models::porting_order_type]
+    end
+  end
+end

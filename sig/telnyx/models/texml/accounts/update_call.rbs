@@ -1,0 +1,114 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        type update_call =
+          {
+            fallback_method: Telnyx::Models::Texml::Accounts::UpdateCall::fallback_method,
+            fallback_url: String,
+            method_: Telnyx::Models::Texml::Accounts::UpdateCall::method_,
+            status: String,
+            status_callback: String,
+            status_callback_method: Telnyx::Models::Texml::Accounts::UpdateCall::status_callback_method,
+            texml: String,
+            url: String
+          }
+
+        class UpdateCall < Telnyx::Internal::Type::BaseModel
+          attr_reader fallback_method: Telnyx::Models::Texml::Accounts::UpdateCall::fallback_method?
+
+          def fallback_method=: (
+            Telnyx::Models::Texml::Accounts::UpdateCall::fallback_method
+          ) -> Telnyx::Models::Texml::Accounts::UpdateCall::fallback_method
+
+          attr_reader fallback_url: String?
+
+          def fallback_url=: (String) -> String
+
+          attr_reader method_: Telnyx::Models::Texml::Accounts::UpdateCall::method_?
+
+          def method_=: (
+            Telnyx::Models::Texml::Accounts::UpdateCall::method_
+          ) -> Telnyx::Models::Texml::Accounts::UpdateCall::method_
+
+          attr_reader status: String?
+
+          def status=: (String) -> String
+
+          attr_reader status_callback: String?
+
+          def status_callback=: (String) -> String
+
+          attr_reader status_callback_method: Telnyx::Models::Texml::Accounts::UpdateCall::status_callback_method?
+
+          def status_callback_method=: (
+            Telnyx::Models::Texml::Accounts::UpdateCall::status_callback_method
+          ) -> Telnyx::Models::Texml::Accounts::UpdateCall::status_callback_method
+
+          attr_reader texml: String?
+
+          def texml=: (String) -> String
+
+          attr_reader url: String?
+
+          def url=: (String) -> String
+
+          def initialize: (
+            ?fallback_method: Telnyx::Models::Texml::Accounts::UpdateCall::fallback_method,
+            ?fallback_url: String,
+            ?method_: Telnyx::Models::Texml::Accounts::UpdateCall::method_,
+            ?status: String,
+            ?status_callback: String,
+            ?status_callback_method: Telnyx::Models::Texml::Accounts::UpdateCall::status_callback_method,
+            ?texml: String,
+            ?url: String
+          ) -> void
+
+          def to_hash: -> {
+            fallback_method: Telnyx::Models::Texml::Accounts::UpdateCall::fallback_method,
+            fallback_url: String,
+            method_: Telnyx::Models::Texml::Accounts::UpdateCall::method_,
+            status: String,
+            status_callback: String,
+            status_callback_method: Telnyx::Models::Texml::Accounts::UpdateCall::status_callback_method,
+            texml: String,
+            url: String
+          }
+
+          type fallback_method = :GET | :POST
+
+          module FallbackMethod
+            extend Telnyx::Internal::Type::Enum
+
+            GET: :GET
+            POST: :POST
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::UpdateCall::fallback_method]
+          end
+
+          type method_ = :GET | :POST
+
+          module Method
+            extend Telnyx::Internal::Type::Enum
+
+            GET: :GET
+            POST: :POST
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::UpdateCall::method_]
+          end
+
+          type status_callback_method = :GET | :POST
+
+          module StatusCallbackMethod
+            extend Telnyx::Internal::Type::Enum
+
+            GET: :GET
+            POST: :POST
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::UpdateCall::status_callback_method]
+          end
+        end
+      end
+    end
+  end
+end

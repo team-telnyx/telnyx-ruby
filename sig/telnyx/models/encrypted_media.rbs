@@ -1,0 +1,13 @@
+module Telnyx
+  module Models
+    type encrypted_media = :SRTP
+
+    module EncryptedMedia
+      extend Telnyx::Internal::Type::Enum
+
+      SRTP: :SRTP
+
+      def self?.values: -> ::Array[Telnyx::Models::encrypted_media]
+    end
+  end
+end

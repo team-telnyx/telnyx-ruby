@@ -1,0 +1,43 @@
+module Telnyx
+  module Resources
+    class AI
+      class Embeddings
+        attr_reader buckets: Telnyx::Resources::AI::Embeddings::Buckets
+
+        def create: (
+          bucket_name: String,
+          ?document_chunk_overlap_size: Integer,
+          ?document_chunk_size: Integer,
+          ?embedding_model: Telnyx::Models::AI::EmbeddingCreateParams::embedding_model,
+          ?loader: Telnyx::Models::AI::EmbeddingCreateParams::loader,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AI::EmbeddingResponse
+
+        def retrieve: (
+          String task_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::EmbeddingRetrieveResponse
+
+        def list: (
+          ?status: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::EmbeddingListResponse
+
+        def similarity_search: (
+          bucket_name: String,
+          query: String,
+          ?num_of_docs: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::EmbeddingSimilaritySearchResponse
+
+        def url: (
+          bucket_name: String,
+          url: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AI::EmbeddingResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

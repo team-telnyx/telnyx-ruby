@@ -1,0 +1,16 @@
+module Telnyx
+  module Resources
+    class AI
+      class Conversations
+        class Messages
+          def list: (
+            String conversation_id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Conversations::MessageListResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

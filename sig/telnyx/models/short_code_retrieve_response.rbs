@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type short_code_retrieve_response = { data: Telnyx::ShortCode }
+
+    class ShortCodeRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::ShortCode?
+
+      def data=: (Telnyx::ShortCode) -> Telnyx::ShortCode
+
+      def initialize: (?data: Telnyx::ShortCode) -> void
+
+      def to_hash: -> { data: Telnyx::ShortCode }
+    end
+  end
+end

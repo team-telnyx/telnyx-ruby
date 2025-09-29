@@ -1,0 +1,19 @@
+module Telnyx
+  module Resources
+    class BulkSimCardActions
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::BulkSimCardActionRetrieveResponse
+
+      def list: (
+        ?filter_action_type: Telnyx::Models::BulkSimCardActionListParams::filter_action_type,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::BulkSimCardActionListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

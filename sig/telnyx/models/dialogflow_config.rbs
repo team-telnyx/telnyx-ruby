@@ -1,0 +1,26 @@
+module Telnyx
+  module Models
+    type dialogflow_config =
+      { analyze_sentiment: bool, partial_automated_agent_reply: bool }
+
+    class DialogflowConfig < Telnyx::Internal::Type::BaseModel
+      attr_reader analyze_sentiment: bool?
+
+      def analyze_sentiment=: (bool) -> bool
+
+      attr_reader partial_automated_agent_reply: bool?
+
+      def partial_automated_agent_reply=: (bool) -> bool
+
+      def initialize: (
+        ?analyze_sentiment: bool,
+        ?partial_automated_agent_reply: bool
+      ) -> void
+
+      def to_hash: -> {
+        analyze_sentiment: bool,
+        partial_automated_agent_reply: bool
+      }
+    end
+  end
+end

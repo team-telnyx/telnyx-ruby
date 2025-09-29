@@ -1,0 +1,136 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type tn_upload_entry =
+        {
+          civic_address_id: String,
+          error_code: Telnyx::Models::ExternalConnections::TnUploadEntry::error_code,
+          error_message: String,
+          internal_status: Telnyx::Models::ExternalConnections::TnUploadEntry::internal_status,
+          location_id: String,
+          number_id: String,
+          phone_number: String,
+          status: Telnyx::Models::ExternalConnections::TnUploadEntry::status
+        }
+
+      class TnUploadEntry < Telnyx::Internal::Type::BaseModel
+        attr_reader civic_address_id: String?
+
+        def civic_address_id=: (String) -> String
+
+        attr_reader error_code: Telnyx::Models::ExternalConnections::TnUploadEntry::error_code?
+
+        def error_code=: (
+          Telnyx::Models::ExternalConnections::TnUploadEntry::error_code
+        ) -> Telnyx::Models::ExternalConnections::TnUploadEntry::error_code
+
+        attr_reader error_message: String?
+
+        def error_message=: (String) -> String
+
+        attr_reader internal_status: Telnyx::Models::ExternalConnections::TnUploadEntry::internal_status?
+
+        def internal_status=: (
+          Telnyx::Models::ExternalConnections::TnUploadEntry::internal_status
+        ) -> Telnyx::Models::ExternalConnections::TnUploadEntry::internal_status
+
+        attr_reader location_id: String?
+
+        def location_id=: (String) -> String
+
+        attr_reader number_id: String?
+
+        def number_id=: (String) -> String
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader status: Telnyx::Models::ExternalConnections::TnUploadEntry::status?
+
+        def status=: (
+          Telnyx::Models::ExternalConnections::TnUploadEntry::status
+        ) -> Telnyx::Models::ExternalConnections::TnUploadEntry::status
+
+        def initialize: (
+          ?civic_address_id: String,
+          ?error_code: Telnyx::Models::ExternalConnections::TnUploadEntry::error_code,
+          ?error_message: String,
+          ?internal_status: Telnyx::Models::ExternalConnections::TnUploadEntry::internal_status,
+          ?location_id: String,
+          ?number_id: String,
+          ?phone_number: String,
+          ?status: Telnyx::Models::ExternalConnections::TnUploadEntry::status
+        ) -> void
+
+        def to_hash: -> {
+          civic_address_id: String,
+          error_code: Telnyx::Models::ExternalConnections::TnUploadEntry::error_code,
+          error_message: String,
+          internal_status: Telnyx::Models::ExternalConnections::TnUploadEntry::internal_status,
+          location_id: String,
+          number_id: String,
+          phone_number: String,
+          status: Telnyx::Models::ExternalConnections::TnUploadEntry::status
+        }
+
+        type error_code =
+          :internal_error
+          | :unable_to_retrieve_default_location
+          | :unknown_country_code
+          | :unable_to_retrieve_location
+          | :unable_to_retrieve_partner_info
+          | :unable_to_match_geography_entry
+
+        module ErrorCode
+          extend Telnyx::Internal::Type::Enum
+
+          INTERNAL_ERROR: :internal_error
+          UNABLE_TO_RETRIEVE_DEFAULT_LOCATION: :unable_to_retrieve_default_location
+          UNKNOWN_COUNTRY_CODE: :unknown_country_code
+          UNABLE_TO_RETRIEVE_LOCATION: :unable_to_retrieve_location
+          UNABLE_TO_RETRIEVE_PARTNER_INFO: :unable_to_retrieve_partner_info
+          UNABLE_TO_MATCH_GEOGRAPHY_ENTRY: :unable_to_match_geography_entry
+
+          def self?.values: -> ::Array[Telnyx::Models::ExternalConnections::TnUploadEntry::error_code]
+        end
+
+        type internal_status =
+          :pending_assignment
+          | :in_progress
+          | :all_internal_jobs_completed
+          | :release_requested
+          | :release_completed
+          | :error
+
+        module InternalStatus
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING_ASSIGNMENT: :pending_assignment
+          IN_PROGRESS: :in_progress
+          ALL_INTERNAL_JOBS_COMPLETED: :all_internal_jobs_completed
+          RELEASE_REQUESTED: :release_requested
+          RELEASE_COMPLETED: :release_completed
+          ERROR: :error
+
+          def self?.values: -> ::Array[Telnyx::Models::ExternalConnections::TnUploadEntry::internal_status]
+        end
+
+        type status =
+          :pending_upload | :pending | :in_progress | :success | :error
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING_UPLOAD: :pending_upload
+          PENDING: :pending
+          IN_PROGRESS: :in_progress
+          SUCCESS: :success
+          ERROR: :error
+
+          def self?.values: -> ::Array[Telnyx::Models::ExternalConnections::TnUploadEntry::status]
+        end
+      end
+    end
+  end
+end

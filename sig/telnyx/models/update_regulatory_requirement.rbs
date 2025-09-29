@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    type update_regulatory_requirement =
+      { field_value: String, requirement_id: String }
+
+    class UpdateRegulatoryRequirement < Telnyx::Internal::Type::BaseModel
+      attr_reader field_value: String?
+
+      def field_value=: (String) -> String
+
+      attr_reader requirement_id: String?
+
+      def requirement_id=: (String) -> String
+
+      def initialize: (?field_value: String, ?requirement_id: String) -> void
+
+      def to_hash: -> { field_value: String, requirement_id: String }
+    end
+  end
+end

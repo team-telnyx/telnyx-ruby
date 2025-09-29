@@ -1,0 +1,30 @@
+module Telnyx
+  module Models
+    module PhoneNumbers
+      type action_enable_emergency_params =
+        { emergency_address_id: String, emergency_enabled: bool }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionEnableEmergencyParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor emergency_address_id: String
+
+        attr_accessor emergency_enabled: bool
+
+        def initialize: (
+          emergency_address_id: String,
+          emergency_enabled: bool,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          emergency_address_id: String,
+          emergency_enabled: bool,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,14 @@
+module Telnyx
+  module Models
+    type stream_bidirectional_mode = :mp3 | :rtp
+
+    module StreamBidirectionalMode
+      extend Telnyx::Internal::Type::Enum
+
+      MP3: :mp3
+      RTP: :rtp
+
+      def self?.values: -> ::Array[Telnyx::Models::stream_bidirectional_mode]
+    end
+  end
+end

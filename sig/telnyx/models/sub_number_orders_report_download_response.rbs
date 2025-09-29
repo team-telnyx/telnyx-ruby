@@ -1,0 +1,5 @@
+module Telnyx
+  module Models
+    class SubNumberOrdersReportDownloadResponse = StringIO
+  end
+end

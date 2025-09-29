@@ -1,0 +1,35 @@
+module Telnyx
+  module Resources
+    class SubNumberOrders
+      def retrieve: (
+        String sub_number_order_id,
+        ?filter: Telnyx::SubNumberOrderRetrieveParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SubNumberOrderRetrieveResponse
+
+      def update: (
+        String sub_number_order_id,
+        ?regulatory_requirements: ::Array[Telnyx::UpdateRegulatoryRequirement],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SubNumberOrderUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::SubNumberOrderListParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SubNumberOrderListResponse
+
+      def cancel: (
+        String sub_number_order_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SubNumberOrderCancelResponse
+
+      def update_requirement_group: (
+        String id,
+        requirement_group_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

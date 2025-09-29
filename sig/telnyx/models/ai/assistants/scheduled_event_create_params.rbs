@@ -1,0 +1,69 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        type scheduled_event_create_params =
+          {
+            scheduled_at_fixed_datetime: Time,
+            telnyx_agent_target: String,
+            telnyx_conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
+            telnyx_end_user_target: String,
+            conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata],
+            text: String
+          }
+          & Telnyx::Internal::Type::request_parameters
+
+        class ScheduledEventCreateParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor scheduled_at_fixed_datetime: Time
+
+          attr_accessor telnyx_agent_target: String
+
+          attr_accessor telnyx_conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type
+
+          attr_accessor telnyx_end_user_target: String
+
+          attr_reader conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata]?
+
+          def conversation_metadata=: (
+            ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata]
+          ) -> ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata]
+
+          attr_reader text: String?
+
+          def text=: (String) -> String
+
+          def initialize: (
+            scheduled_at_fixed_datetime: Time,
+            telnyx_agent_target: String,
+            telnyx_conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
+            telnyx_end_user_target: String,
+            ?conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata],
+            ?text: String,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            scheduled_at_fixed_datetime: Time,
+            telnyx_agent_target: String,
+            telnyx_conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
+            telnyx_end_user_target: String,
+            conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata],
+            text: String,
+            request_options: Telnyx::RequestOptions
+          }
+
+          type conversation_metadata = String | Integer | bool
+
+          module ConversationMetadata
+            extend Telnyx::Internal::Type::Union
+
+            def self?.variants: -> ::Array[Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata]
+          end
+        end
+      end
+    end
+  end
+end

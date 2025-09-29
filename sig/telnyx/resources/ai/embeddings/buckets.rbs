@@ -1,0 +1,25 @@
+module Telnyx
+  module Resources
+    class AI
+      class Embeddings
+        class Buckets
+          def retrieve: (
+            String bucket_name,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Embeddings::BucketRetrieveResponse
+
+          def list: (
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Embeddings::BucketListResponse
+
+          def delete: (
+            String bucket_name,
+            ?request_options: Telnyx::request_opts
+          ) -> nil
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

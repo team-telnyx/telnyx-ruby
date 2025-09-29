@@ -1,0 +1,84 @@
+module Telnyx
+  module Models
+    type wireless_blocklist_value_list_response =
+      {
+        data: Telnyx::Models::WirelessBlocklistValueListResponse::data,
+        meta: Telnyx::PaginationMeta
+      }
+
+    class WirelessBlocklistValueListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::WirelessBlocklistValueListResponse::data?
+
+      def data=: (
+        Telnyx::Models::WirelessBlocklistValueListResponse::data
+      ) -> Telnyx::Models::WirelessBlocklistValueListResponse::data
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: Telnyx::Models::WirelessBlocklistValueListResponse::data,
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::WirelessBlocklistValueListResponse::data,
+        meta: Telnyx::PaginationMeta
+      }
+
+      type data =
+        ::Array[Telnyx::Models::WirelessBlocklistValueListResponse::Data::Country]
+        | ::Array[Telnyx::Models::WirelessBlocklistValueListResponse::Data::Mcc]
+        | ::Array[Telnyx::Models::WirelessBlocklistValueListResponse::Data::Plmn]
+
+      module Data
+        extend Telnyx::Internal::Type::Union
+
+        type country = { code: String, name: String }
+
+        class Country < Telnyx::Internal::Type::BaseModel
+          attr_accessor code: String
+
+          attr_accessor name: String
+
+          def initialize: (code: String, name: String) -> void
+
+          def to_hash: -> { code: String, name: String }
+        end
+
+        type mcc = { code: String, name: String }
+
+        class Mcc < Telnyx::Internal::Type::BaseModel
+          attr_accessor code: String
+
+          attr_accessor name: String
+
+          def initialize: (code: String, name: String) -> void
+
+          def to_hash: -> { code: String, name: String }
+        end
+
+        type plmn = { code: String, name: String }
+
+        class Plmn < Telnyx::Internal::Type::BaseModel
+          attr_accessor code: String
+
+          attr_accessor name: String
+
+          def initialize: (code: String, name: String) -> void
+
+          def to_hash: -> { code: String, name: String }
+        end
+
+        def self?.variants: -> ::Array[Telnyx::Models::WirelessBlocklistValueListResponse::data]
+
+        CountryArray: Telnyx::Internal::Type::Converter
+
+        MccArray: Telnyx::Internal::Type::Converter
+
+        PlmnArray: Telnyx::Internal::Type::Converter
+      end
+    end
+  end
+end

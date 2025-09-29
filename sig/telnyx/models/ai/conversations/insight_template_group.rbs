@@ -1,0 +1,57 @@
+module Telnyx
+  module Models
+    module AI
+      module Conversations
+        type insight_template_group =
+          {
+            id: String,
+            created_at: Time,
+            name: String,
+            description: String,
+            insights: ::Array[Telnyx::AI::Conversations::InsightTemplate],
+            webhook: String
+          }
+
+        class InsightTemplateGroup < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor created_at: Time
+
+          attr_accessor name: String
+
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
+          attr_reader insights: ::Array[Telnyx::AI::Conversations::InsightTemplate]?
+
+          def insights=: (
+            ::Array[Telnyx::AI::Conversations::InsightTemplate]
+          ) -> ::Array[Telnyx::AI::Conversations::InsightTemplate]
+
+          attr_reader webhook: String?
+
+          def webhook=: (String) -> String
+
+          def initialize: (
+            id: String,
+            created_at: Time,
+            name: String,
+            ?description: String,
+            ?insights: ::Array[Telnyx::AI::Conversations::InsightTemplate],
+            ?webhook: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            created_at: Time,
+            name: String,
+            description: String,
+            insights: ::Array[Telnyx::AI::Conversations::InsightTemplate],
+            webhook: String
+          }
+        end
+      end
+    end
+  end
+end

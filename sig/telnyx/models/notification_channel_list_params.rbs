@@ -1,0 +1,269 @@
+module Telnyx
+  module Models
+    type notification_channel_list_params =
+      {
+        filter: Telnyx::NotificationChannelListParams::Filter,
+        page: Telnyx::NotificationChannelListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class NotificationChannelListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::NotificationChannelListParams::Filter?
+
+      def filter=: (
+        Telnyx::NotificationChannelListParams::Filter
+      ) -> Telnyx::NotificationChannelListParams::Filter
+
+      attr_reader page: Telnyx::NotificationChannelListParams::Page?
+
+      def page=: (
+        Telnyx::NotificationChannelListParams::Page
+      ) -> Telnyx::NotificationChannelListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::NotificationChannelListParams::Filter,
+        ?page: Telnyx::NotificationChannelListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::NotificationChannelListParams::Filter,
+        page: Telnyx::NotificationChannelListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          associated_record_type: Telnyx::NotificationChannelListParams::Filter::AssociatedRecordType,
+          channel_type_id: Telnyx::NotificationChannelListParams::Filter::ChannelTypeID,
+          notification_channel: Telnyx::NotificationChannelListParams::Filter::NotificationChannel,
+          notification_event_condition_id: Telnyx::NotificationChannelListParams::Filter::NotificationEventConditionID,
+          notification_profile_id: Telnyx::NotificationChannelListParams::Filter::NotificationProfileID,
+          status: Telnyx::NotificationChannelListParams::Filter::Status
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader associated_record_type: Telnyx::NotificationChannelListParams::Filter::AssociatedRecordType?
+
+        def associated_record_type=: (
+          Telnyx::NotificationChannelListParams::Filter::AssociatedRecordType
+        ) -> Telnyx::NotificationChannelListParams::Filter::AssociatedRecordType
+
+        attr_reader channel_type_id: Telnyx::NotificationChannelListParams::Filter::ChannelTypeID?
+
+        def channel_type_id=: (
+          Telnyx::NotificationChannelListParams::Filter::ChannelTypeID
+        ) -> Telnyx::NotificationChannelListParams::Filter::ChannelTypeID
+
+        attr_reader notification_channel: Telnyx::NotificationChannelListParams::Filter::NotificationChannel?
+
+        def notification_channel=: (
+          Telnyx::NotificationChannelListParams::Filter::NotificationChannel
+        ) -> Telnyx::NotificationChannelListParams::Filter::NotificationChannel
+
+        attr_reader notification_event_condition_id: Telnyx::NotificationChannelListParams::Filter::NotificationEventConditionID?
+
+        def notification_event_condition_id=: (
+          Telnyx::NotificationChannelListParams::Filter::NotificationEventConditionID
+        ) -> Telnyx::NotificationChannelListParams::Filter::NotificationEventConditionID
+
+        attr_reader notification_profile_id: Telnyx::NotificationChannelListParams::Filter::NotificationProfileID?
+
+        def notification_profile_id=: (
+          Telnyx::NotificationChannelListParams::Filter::NotificationProfileID
+        ) -> Telnyx::NotificationChannelListParams::Filter::NotificationProfileID
+
+        attr_reader status: Telnyx::NotificationChannelListParams::Filter::Status?
+
+        def status=: (
+          Telnyx::NotificationChannelListParams::Filter::Status
+        ) -> Telnyx::NotificationChannelListParams::Filter::Status
+
+        def initialize: (
+          ?associated_record_type: Telnyx::NotificationChannelListParams::Filter::AssociatedRecordType,
+          ?channel_type_id: Telnyx::NotificationChannelListParams::Filter::ChannelTypeID,
+          ?notification_channel: Telnyx::NotificationChannelListParams::Filter::NotificationChannel,
+          ?notification_event_condition_id: Telnyx::NotificationChannelListParams::Filter::NotificationEventConditionID,
+          ?notification_profile_id: Telnyx::NotificationChannelListParams::Filter::NotificationProfileID,
+          ?status: Telnyx::NotificationChannelListParams::Filter::Status
+        ) -> void
+
+        def to_hash: -> {
+          associated_record_type: Telnyx::NotificationChannelListParams::Filter::AssociatedRecordType,
+          channel_type_id: Telnyx::NotificationChannelListParams::Filter::ChannelTypeID,
+          notification_channel: Telnyx::NotificationChannelListParams::Filter::NotificationChannel,
+          notification_event_condition_id: Telnyx::NotificationChannelListParams::Filter::NotificationEventConditionID,
+          notification_profile_id: Telnyx::NotificationChannelListParams::Filter::NotificationProfileID,
+          status: Telnyx::NotificationChannelListParams::Filter::Status
+        }
+
+        type associated_record_type =
+          {
+            eq: Telnyx::Models::NotificationChannelListParams::Filter::AssociatedRecordType::eq
+          }
+
+        class AssociatedRecordType < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: Telnyx::Models::NotificationChannelListParams::Filter::AssociatedRecordType::eq?
+
+          def eq=: (
+            Telnyx::Models::NotificationChannelListParams::Filter::AssociatedRecordType::eq
+          ) -> Telnyx::Models::NotificationChannelListParams::Filter::AssociatedRecordType::eq
+
+          def initialize: (
+            ?eq: Telnyx::Models::NotificationChannelListParams::Filter::AssociatedRecordType::eq
+          ) -> void
+
+          def to_hash: -> {
+            eq: Telnyx::Models::NotificationChannelListParams::Filter::AssociatedRecordType::eq
+          }
+
+          type eq = :account | :phone_number
+
+          module Eq
+            extend Telnyx::Internal::Type::Enum
+
+            ACCOUNT: :account
+            PHONE_NUMBER: :phone_number
+
+            def self?.values: -> ::Array[Telnyx::Models::NotificationChannelListParams::Filter::AssociatedRecordType::eq]
+          end
+        end
+
+        type channel_type_id =
+          {
+            eq: Telnyx::Models::NotificationChannelListParams::Filter::ChannelTypeID::eq
+          }
+
+        class ChannelTypeID < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: Telnyx::Models::NotificationChannelListParams::Filter::ChannelTypeID::eq?
+
+          def eq=: (
+            Telnyx::Models::NotificationChannelListParams::Filter::ChannelTypeID::eq
+          ) -> Telnyx::Models::NotificationChannelListParams::Filter::ChannelTypeID::eq
+
+          def initialize: (
+            ?eq: Telnyx::Models::NotificationChannelListParams::Filter::ChannelTypeID::eq
+          ) -> void
+
+          def to_hash: -> {
+            eq: Telnyx::Models::NotificationChannelListParams::Filter::ChannelTypeID::eq
+          }
+
+          type eq = :webhook | :sms | :email | :voice
+
+          module Eq
+            extend Telnyx::Internal::Type::Enum
+
+            WEBHOOK: :webhook
+            SMS: :sms
+            EMAIL: :email
+            VOICE: :voice
+
+            def self?.values: -> ::Array[Telnyx::Models::NotificationChannelListParams::Filter::ChannelTypeID::eq]
+          end
+        end
+
+        type notification_channel = { eq: String }
+
+        class NotificationChannel < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: String?
+
+          def eq=: (String) -> String
+
+          def initialize: (?eq: String) -> void
+
+          def to_hash: -> { eq: String }
+        end
+
+        type notification_event_condition_id = { eq: String }
+
+        class NotificationEventConditionID < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: String?
+
+          def eq=: (String) -> String
+
+          def initialize: (?eq: String) -> void
+
+          def to_hash: -> { eq: String }
+        end
+
+        type notification_profile_id = { eq: String }
+
+        class NotificationProfileID < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: String?
+
+          def eq=: (String) -> String
+
+          def initialize: (?eq: String) -> void
+
+          def to_hash: -> { eq: String }
+        end
+
+        type status =
+          {
+            eq: Telnyx::Models::NotificationChannelListParams::Filter::Status::eq
+          }
+
+        class Status < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: Telnyx::Models::NotificationChannelListParams::Filter::Status::eq?
+
+          def eq=: (
+            Telnyx::Models::NotificationChannelListParams::Filter::Status::eq
+          ) -> Telnyx::Models::NotificationChannelListParams::Filter::Status::eq
+
+          def initialize: (
+            ?eq: Telnyx::Models::NotificationChannelListParams::Filter::Status::eq
+          ) -> void
+
+          def to_hash: -> {
+            eq: Telnyx::Models::NotificationChannelListParams::Filter::Status::eq
+          }
+
+          type eq =
+            :enabled
+            | :"enable-received"
+            | :"enable-pending"
+            | :"enable-submtited"
+            | :"delete-received"
+            | :"delete-pending"
+            | :"delete-submitted"
+            | :deleted
+
+          module Eq
+            extend Telnyx::Internal::Type::Enum
+
+            ENABLED: :enabled
+            ENABLE_RECEIVED: :"enable-received"
+            ENABLE_PENDING: :"enable-pending"
+            ENABLE_SUBMTITED: :"enable-submtited"
+            DELETE_RECEIVED: :"delete-received"
+            DELETE_PENDING: :"delete-pending"
+            DELETE_SUBMITTED: :"delete-submitted"
+            DELETED: :deleted
+
+            def self?.values: -> ::Array[Telnyx::Models::NotificationChannelListParams::Filter::Status::eq]
+          end
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

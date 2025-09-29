@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    type external_connection_update_response =
+      { data: Telnyx::ExternalConnection }
+
+    class ExternalConnectionUpdateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::ExternalConnection?
+
+      def data=: (Telnyx::ExternalConnection) -> Telnyx::ExternalConnection
+
+      def initialize: (?data: Telnyx::ExternalConnection) -> void
+
+      def to_hash: -> { data: Telnyx::ExternalConnection }
+    end
+  end
+end

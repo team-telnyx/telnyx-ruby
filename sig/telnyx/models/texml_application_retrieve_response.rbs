@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    type texml_application_retrieve_response =
+      { data: Telnyx::TexmlApplication }
+
+    class TexmlApplicationRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::TexmlApplication?
+
+      def data=: (Telnyx::TexmlApplication) -> Telnyx::TexmlApplication
+
+      def initialize: (?data: Telnyx::TexmlApplication) -> void
+
+      def to_hash: -> { data: Telnyx::TexmlApplication }
+    end
+  end
+end

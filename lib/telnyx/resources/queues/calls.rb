@@ -1,0 +1,70 @@
+# frozen_string_literal: true
+
+module Telnyx
+  module Resources
+    class Queues
+      class Calls
+        # Retrieve an existing call from an existing queue
+        #
+        # @overload retrieve(call_control_id, queue_name:, request_options: {})
+        #
+        # @param call_control_id [String] Unique identifier and token for controlling the call
+        #
+        # @param queue_name [String] Uniquely identifies the queue by name
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Queues::CallRetrieveResponse]
+        #
+        # @see Telnyx::Models::Queues::CallRetrieveParams
+        def retrieve(call_control_id, params)
+          parsed, options = Telnyx::Queues::CallRetrieveParams.dump_request(params)
+          queue_name =
+            parsed.delete(:queue_name) do
+              raise ArgumentError.new("missing required path argument #{_1}")
+            end
+          @client.request(
+            method: :get,
+            path: ["queues/%1$s/calls/%2$s", queue_name, call_control_id],
+            model: Telnyx::Models::Queues::CallRetrieveResponse,
+            options: options
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Queues::CallListParams} for more details.
+        #
+        # Retrieve the list of calls in an existing queue
+        #
+        # @overload list(queue_name, page: nil, request_options: {})
+        #
+        # @param queue_name [String] Uniquely identifies the queue by name
+        #
+        # @param page [Telnyx::Models::Queues::CallListParams::Page] Consolidated page parameter (deepObject style). Originally: page[after], page[be
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Queues::CallListResponse]
+        #
+        # @see Telnyx::Models::Queues::CallListParams
+        def list(queue_name, params = {})
+          parsed, options = Telnyx::Queues::CallListParams.dump_request(params)
+          @client.request(
+            method: :get,
+            path: ["queues/%1$s/calls", queue_name],
+            query: parsed,
+            model: Telnyx::Models::Queues::CallListResponse,
+            options: options
+          )
+        end
+
+        # @api private
+        #
+        # @param client [Telnyx::Client]
+        def initialize(client:)
+          @client = client
+        end
+      end
+    end
+  end
+end

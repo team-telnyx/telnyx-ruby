@@ -1,0 +1,134 @@
+module Telnyx
+  module Models
+    type recording_list_params =
+      {
+        filter: Telnyx::RecordingListParams::Filter,
+        page: Telnyx::RecordingListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class RecordingListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::RecordingListParams::Filter?
+
+      def filter=: (
+        Telnyx::RecordingListParams::Filter
+      ) -> Telnyx::RecordingListParams::Filter
+
+      attr_reader page: Telnyx::RecordingListParams::Page?
+
+      def page=: (
+        Telnyx::RecordingListParams::Page
+      ) -> Telnyx::RecordingListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::RecordingListParams::Filter,
+        ?page: Telnyx::RecordingListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::RecordingListParams::Filter,
+        page: Telnyx::RecordingListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          call_leg_id: String,
+          call_session_id: String,
+          conference_id: String,
+          connection_id: String,
+          created_at: Telnyx::RecordingListParams::Filter::CreatedAt,
+          from: String,
+          to: String
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader call_leg_id: String?
+
+        def call_leg_id=: (String) -> String
+
+        attr_reader call_session_id: String?
+
+        def call_session_id=: (String) -> String
+
+        attr_reader conference_id: String?
+
+        def conference_id=: (String) -> String
+
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader created_at: Telnyx::RecordingListParams::Filter::CreatedAt?
+
+        def created_at=: (
+          Telnyx::RecordingListParams::Filter::CreatedAt
+        ) -> Telnyx::RecordingListParams::Filter::CreatedAt
+
+        attr_reader from: String?
+
+        def from=: (String) -> String
+
+        attr_reader to: String?
+
+        def to=: (String) -> String
+
+        def initialize: (
+          ?call_leg_id: String,
+          ?call_session_id: String,
+          ?conference_id: String,
+          ?connection_id: String,
+          ?created_at: Telnyx::RecordingListParams::Filter::CreatedAt,
+          ?from: String,
+          ?to: String
+        ) -> void
+
+        def to_hash: -> {
+          call_leg_id: String,
+          call_session_id: String,
+          conference_id: String,
+          connection_id: String,
+          created_at: Telnyx::RecordingListParams::Filter::CreatedAt,
+          from: String,
+          to: String
+        }
+
+        type created_at = { gte: String, lte: String }
+
+        class CreatedAt < Telnyx::Internal::Type::BaseModel
+          attr_reader gte: String?
+
+          def gte=: (String) -> String
+
+          attr_reader lte: String?
+
+          def lte=: (String) -> String
+
+          def initialize: (?gte: String, ?lte: String) -> void
+
+          def to_hash: -> { gte: String, lte: String }
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

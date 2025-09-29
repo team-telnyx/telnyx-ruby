@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    type document_generate_download_link_response =
+      { data: Telnyx::Models::DocumentGenerateDownloadLinkResponse::Data }
+
+    class DocumentGenerateDownloadLinkResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::Models::DocumentGenerateDownloadLinkResponse::Data
+
+      def initialize: (
+        data: Telnyx::Models::DocumentGenerateDownloadLinkResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::DocumentGenerateDownloadLinkResponse::Data
+      }
+
+      type data = { url: String }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor url: String
+
+        def initialize: (url: String) -> void
+
+        def to_hash: -> { url: String }
+      end
+    end
+  end
+end

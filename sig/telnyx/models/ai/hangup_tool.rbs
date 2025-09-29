@@ -1,0 +1,37 @@
+module Telnyx
+  module Models
+    module AI
+      type hangup_tool =
+        {
+          hangup: Telnyx::AI::HangupToolParams,
+          type: Telnyx::Models::AI::HangupTool::type_
+        }
+
+      class HangupTool < Telnyx::Internal::Type::BaseModel
+        attr_accessor hangup: Telnyx::AI::HangupToolParams
+
+        attr_accessor type: Telnyx::Models::AI::HangupTool::type_
+
+        def initialize: (
+          hangup: Telnyx::AI::HangupToolParams,
+          type: Telnyx::Models::AI::HangupTool::type_
+        ) -> void
+
+        def to_hash: -> {
+          hangup: Telnyx::AI::HangupToolParams,
+          type: Telnyx::Models::AI::HangupTool::type_
+        }
+
+        type type_ = :hangup
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          HANGUP: :hangup
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::HangupTool::type_]
+        end
+      end
+    end
+  end
+end

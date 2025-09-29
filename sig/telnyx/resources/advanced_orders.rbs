@@ -1,0 +1,39 @@
+module Telnyx
+  module Resources
+    class AdvancedOrders
+      def create: (
+        ?area_code: String,
+        ?comments: String,
+        ?country_code: String,
+        ?customer_reference: String,
+        ?features: ::Array[Telnyx::Models::AdvancedOrderCreateParams::feature],
+        ?phone_number_type: Telnyx::Models::AdvancedOrderCreateParams::phone_number_type,
+        ?quantity: Integer,
+        ?requirement_group_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> top
+
+      def retrieve: (
+        String order_id,
+        ?request_options: Telnyx::request_opts
+      ) -> top
+
+      def update: (
+        String order_id,
+        ?area_code: String,
+        ?comments: String,
+        ?country_code: String,
+        ?customer_reference: String,
+        ?features: ::Array[Telnyx::Models::AdvancedOrderUpdateParams::feature],
+        ?phone_number_type: Telnyx::Models::AdvancedOrderUpdateParams::phone_number_type,
+        ?quantity: Integer,
+        ?requirement_group_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> top
+
+      def list: (?request_options: Telnyx::request_opts) -> top
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

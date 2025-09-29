@@ -1,0 +1,62 @@
+module Telnyx
+  module Models
+    type managed_account_balance =
+      {
+        available_credit: String,
+        balance: String,
+        credit_limit: String,
+        currency: String,
+        record_type: Telnyx::Models::ManagedAccountBalance::record_type
+      }
+
+    class ManagedAccountBalance < Telnyx::Internal::Type::BaseModel
+      attr_reader available_credit: String?
+
+      def available_credit=: (String) -> String
+
+      attr_reader balance: String?
+
+      def balance=: (String) -> String
+
+      attr_reader credit_limit: String?
+
+      def credit_limit=: (String) -> String
+
+      attr_reader currency: String?
+
+      def currency=: (String) -> String
+
+      attr_reader record_type: Telnyx::Models::ManagedAccountBalance::record_type?
+
+      def record_type=: (
+        Telnyx::Models::ManagedAccountBalance::record_type
+      ) -> Telnyx::Models::ManagedAccountBalance::record_type
+
+      def initialize: (
+        ?available_credit: String,
+        ?balance: String,
+        ?credit_limit: String,
+        ?currency: String,
+        ?record_type: Telnyx::Models::ManagedAccountBalance::record_type
+      ) -> void
+
+      def to_hash: -> {
+        available_credit: String,
+        balance: String,
+        credit_limit: String,
+        currency: String,
+        record_type: Telnyx::Models::ManagedAccountBalance::record_type
+      }
+
+      type record_type = :balance
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        BALANCE: :balance
+
+        def self?.values: -> ::Array[Telnyx::Models::ManagedAccountBalance::record_type]
+      end
+    end
+  end
+end

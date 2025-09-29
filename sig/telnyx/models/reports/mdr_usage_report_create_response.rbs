@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module Reports
+      type mdr_usage_report_create_response =
+        { data: Telnyx::Reports::MdrUsageReport }
+
+      class MdrUsageReportCreateResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Reports::MdrUsageReport?
+
+        def data=: (
+          Telnyx::Reports::MdrUsageReport
+        ) -> Telnyx::Reports::MdrUsageReport
+
+        def initialize: (?data: Telnyx::Reports::MdrUsageReport) -> void
+
+        def to_hash: -> { data: Telnyx::Reports::MdrUsageReport }
+      end
+    end
+  end
+end

@@ -1,0 +1,177 @@
+module Telnyx
+  module Models
+    module AI
+      type assistant =
+        {
+          instructions: String,
+          model: String,
+          openai_api_key_ref: String,
+          tools: ::Array[Telnyx::Models::AI::Assistant::tool]
+        }
+
+      class Assistant < Telnyx::Internal::Type::BaseModel
+        attr_reader instructions: String?
+
+        def instructions=: (String) -> String
+
+        attr_reader model: String?
+
+        def model=: (String) -> String
+
+        attr_reader openai_api_key_ref: String?
+
+        def openai_api_key_ref=: (String) -> String
+
+        attr_reader tools: ::Array[Telnyx::Models::AI::Assistant::tool]?
+
+        def tools=: (
+          ::Array[Telnyx::Models::AI::Assistant::tool]
+        ) -> ::Array[Telnyx::Models::AI::Assistant::tool]
+
+        def initialize: (
+          ?instructions: String,
+          ?model: String,
+          ?openai_api_key_ref: String,
+          ?tools: ::Array[Telnyx::Models::AI::Assistant::tool]
+        ) -> void
+
+        def to_hash: -> {
+          instructions: String,
+          model: String,
+          openai_api_key_ref: String,
+          tools: ::Array[Telnyx::Models::AI::Assistant::tool]
+        }
+
+        type tool =
+          Telnyx::AI::Assistant::Tool::BookAppointmentTool
+          | Telnyx::AI::Assistant::Tool::CheckAvailabilityTool
+          | Telnyx::AI::WebhookTool
+          | Telnyx::AI::HangupTool
+          | Telnyx::AI::TransferTool
+          | Telnyx::AI::RetrievalTool
+
+        module Tool
+          extend Telnyx::Internal::Type::Union
+
+          type book_appointment_tool =
+            {
+              book_appointment: Telnyx::AI::Assistant::Tool::BookAppointmentTool::BookAppointment,
+              type: Telnyx::Models::AI::Assistant::Tool::BookAppointmentTool::type_
+            }
+
+          class BookAppointmentTool < Telnyx::Internal::Type::BaseModel
+            attr_accessor book_appointment: Telnyx::AI::Assistant::Tool::BookAppointmentTool::BookAppointment
+
+            attr_accessor type: Telnyx::Models::AI::Assistant::Tool::BookAppointmentTool::type_
+
+            def initialize: (
+              book_appointment: Telnyx::AI::Assistant::Tool::BookAppointmentTool::BookAppointment,
+              type: Telnyx::Models::AI::Assistant::Tool::BookAppointmentTool::type_
+            ) -> void
+
+            def to_hash: -> {
+              book_appointment: Telnyx::AI::Assistant::Tool::BookAppointmentTool::BookAppointment,
+              type: Telnyx::Models::AI::Assistant::Tool::BookAppointmentTool::type_
+            }
+
+            type book_appointment =
+              {
+                api_key_ref: String,
+                event_type_id: Integer,
+                attendee_name: String,
+                attendee_timezone: String
+              }
+
+            class BookAppointment < Telnyx::Internal::Type::BaseModel
+              attr_accessor api_key_ref: String
+
+              attr_accessor event_type_id: Integer
+
+              attr_reader attendee_name: String?
+
+              def attendee_name=: (String) -> String
+
+              attr_reader attendee_timezone: String?
+
+              def attendee_timezone=: (String) -> String
+
+              def initialize: (
+                api_key_ref: String,
+                event_type_id: Integer,
+                ?attendee_name: String,
+                ?attendee_timezone: String
+              ) -> void
+
+              def to_hash: -> {
+                api_key_ref: String,
+                event_type_id: Integer,
+                attendee_name: String,
+                attendee_timezone: String
+              }
+            end
+
+            type type_ = :book_appointment
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              BOOK_APPOINTMENT: :book_appointment
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::Assistant::Tool::BookAppointmentTool::type_]
+            end
+          end
+
+          type check_availability_tool =
+            {
+              check_availability: Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::CheckAvailability,
+              type: Telnyx::Models::AI::Assistant::Tool::CheckAvailabilityTool::type_
+            }
+
+          class CheckAvailabilityTool < Telnyx::Internal::Type::BaseModel
+            attr_accessor check_availability: Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::CheckAvailability
+
+            attr_accessor type: Telnyx::Models::AI::Assistant::Tool::CheckAvailabilityTool::type_
+
+            def initialize: (
+              check_availability: Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::CheckAvailability,
+              type: Telnyx::Models::AI::Assistant::Tool::CheckAvailabilityTool::type_
+            ) -> void
+
+            def to_hash: -> {
+              check_availability: Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::CheckAvailability,
+              type: Telnyx::Models::AI::Assistant::Tool::CheckAvailabilityTool::type_
+            }
+
+            type check_availability =
+              { api_key_ref: String, event_type_id: Integer }
+
+            class CheckAvailability < Telnyx::Internal::Type::BaseModel
+              attr_accessor api_key_ref: String
+
+              attr_accessor event_type_id: Integer
+
+              def initialize: (
+                api_key_ref: String,
+                event_type_id: Integer
+              ) -> void
+
+              def to_hash: -> { api_key_ref: String, event_type_id: Integer }
+            end
+
+            type type_ = :check_availability
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              CHECK_AVAILABILITY: :check_availability
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::Assistant::Tool::CheckAvailabilityTool::type_]
+            end
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::AI::Assistant::tool]
+        end
+      end
+    end
+  end
+end

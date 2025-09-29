@@ -1,0 +1,291 @@
+module Telnyx
+  module Models
+    type sub_number_order_update_requirement_group_response =
+      {
+        data: Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data
+      }
+
+    class SubNumberOrderUpdateRequirementGroupResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data?
+
+      def data=: (
+        Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data
+      ) -> Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data
+      }
+
+      type data =
+        {
+          id: String,
+          country_code: String,
+          created_at: Time,
+          customer_reference: String,
+          is_block_sub_number_order: bool,
+          order_request_id: String,
+          phone_number_type: String,
+          phone_numbers: ::Array[Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data::PhoneNumber],
+          phone_numbers_count: Integer,
+          record_type: String,
+          regulatory_requirements: ::Array[Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data::RegulatoryRequirement],
+          requirements_met: bool,
+          status: String,
+          updated_at: Time
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader customer_reference: String?
+
+        def customer_reference=: (String) -> String
+
+        attr_reader is_block_sub_number_order: bool?
+
+        def is_block_sub_number_order=: (bool) -> bool
+
+        attr_reader order_request_id: String?
+
+        def order_request_id=: (String) -> String
+
+        attr_reader phone_number_type: String?
+
+        def phone_number_type=: (String) -> String
+
+        attr_reader phone_numbers: ::Array[Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data::PhoneNumber]?
+
+        def phone_numbers=: (
+          ::Array[Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data::PhoneNumber]
+        ) -> ::Array[Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data::PhoneNumber]
+
+        attr_reader phone_numbers_count: Integer?
+
+        def phone_numbers_count=: (Integer) -> Integer
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader regulatory_requirements: ::Array[Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data::RegulatoryRequirement]?
+
+        def regulatory_requirements=: (
+          ::Array[Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data::RegulatoryRequirement]
+        ) -> ::Array[Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data::RegulatoryRequirement]
+
+        attr_reader requirements_met: bool?
+
+        def requirements_met=: (bool) -> bool
+
+        attr_reader status: String?
+
+        def status=: (String) -> String
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        def initialize: (
+          ?id: String,
+          ?country_code: String,
+          ?created_at: Time,
+          ?customer_reference: String,
+          ?is_block_sub_number_order: bool,
+          ?order_request_id: String,
+          ?phone_number_type: String,
+          ?phone_numbers: ::Array[Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data::PhoneNumber],
+          ?phone_numbers_count: Integer,
+          ?record_type: String,
+          ?regulatory_requirements: ::Array[Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data::RegulatoryRequirement],
+          ?requirements_met: bool,
+          ?status: String,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          country_code: String,
+          created_at: Time,
+          customer_reference: String,
+          is_block_sub_number_order: bool,
+          order_request_id: String,
+          phone_number_type: String,
+          phone_numbers: ::Array[Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data::PhoneNumber],
+          phone_numbers_count: Integer,
+          record_type: String,
+          regulatory_requirements: ::Array[Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data::RegulatoryRequirement],
+          requirements_met: bool,
+          status: String,
+          updated_at: Time
+        }
+
+        type phone_number =
+          {
+            id: String,
+            bundle_id: String,
+            country_code: String,
+            phone_number: String,
+            phone_number_type: String,
+            record_type: String,
+            regulatory_requirements: ::Array[Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data::PhoneNumber::RegulatoryRequirement],
+            requirements_met: bool,
+            requirements_status: String,
+            status: String
+          }
+
+        class PhoneNumber < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader bundle_id: String?
+
+          def bundle_id=: (String) -> String
+
+          attr_reader country_code: String?
+
+          def country_code=: (String) -> String
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          attr_reader phone_number_type: String?
+
+          def phone_number_type=: (String) -> String
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_reader regulatory_requirements: ::Array[Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data::PhoneNumber::RegulatoryRequirement]?
+
+          def regulatory_requirements=: (
+            ::Array[Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data::PhoneNumber::RegulatoryRequirement]
+          ) -> ::Array[Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data::PhoneNumber::RegulatoryRequirement]
+
+          attr_reader requirements_met: bool?
+
+          def requirements_met=: (bool) -> bool
+
+          attr_reader requirements_status: String?
+
+          def requirements_status=: (String) -> String
+
+          attr_reader status: String?
+
+          def status=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?bundle_id: String,
+            ?country_code: String,
+            ?phone_number: String,
+            ?phone_number_type: String,
+            ?record_type: String,
+            ?regulatory_requirements: ::Array[Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data::PhoneNumber::RegulatoryRequirement],
+            ?requirements_met: bool,
+            ?requirements_status: String,
+            ?status: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            bundle_id: String,
+            country_code: String,
+            phone_number: String,
+            phone_number_type: String,
+            record_type: String,
+            regulatory_requirements: ::Array[Telnyx::Models::SubNumberOrderUpdateRequirementGroupResponse::Data::PhoneNumber::RegulatoryRequirement],
+            requirements_met: bool,
+            requirements_status: String,
+            status: String
+          }
+
+          type regulatory_requirement =
+            {
+              field_type: String,
+              field_value: String,
+              requirement_id: String,
+              status: String
+            }
+
+          class RegulatoryRequirement < Telnyx::Internal::Type::BaseModel
+            attr_reader field_type: String?
+
+            def field_type=: (String) -> String
+
+            attr_reader field_value: String?
+
+            def field_value=: (String) -> String
+
+            attr_reader requirement_id: String?
+
+            def requirement_id=: (String) -> String
+
+            attr_reader status: String?
+
+            def status=: (String) -> String
+
+            def initialize: (
+              ?field_type: String,
+              ?field_value: String,
+              ?requirement_id: String,
+              ?status: String
+            ) -> void
+
+            def to_hash: -> {
+              field_type: String,
+              field_value: String,
+              requirement_id: String,
+              status: String
+            }
+          end
+        end
+
+        type regulatory_requirement =
+          { field_type: String, record_type: String, requirement_id: String }
+
+        class RegulatoryRequirement < Telnyx::Internal::Type::BaseModel
+          attr_reader field_type: String?
+
+          def field_type=: (String) -> String
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_reader requirement_id: String?
+
+          def requirement_id=: (String) -> String
+
+          def initialize: (
+            ?field_type: String,
+            ?record_type: String,
+            ?requirement_id: String
+          ) -> void
+
+          def to_hash: -> {
+            field_type: String,
+            record_type: String,
+            requirement_id: String
+          }
+        end
+      end
+    end
+  end
+end

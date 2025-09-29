@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    type verify_profile_update_template_response =
+      { data: Telnyx::Models::VerifyProfileUpdateTemplateResponse::Data }
+
+    class VerifyProfileUpdateTemplateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::VerifyProfileUpdateTemplateResponse::Data?
+
+      def data=: (
+        Telnyx::Models::VerifyProfileUpdateTemplateResponse::Data
+      ) -> Telnyx::Models::VerifyProfileUpdateTemplateResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::VerifyProfileUpdateTemplateResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::VerifyProfileUpdateTemplateResponse::Data
+      }
+
+      type data = { id: String, text: String }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader text: String?
+
+        def text=: (String) -> String
+
+        def initialize: (?id: String, ?text: String) -> void
+
+        def to_hash: -> { id: String, text: String }
+      end
+    end
+  end
+end

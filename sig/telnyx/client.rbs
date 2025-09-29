@@ -1,0 +1,332 @@
+module Telnyx
+  class Client < Telnyx::Internal::Transport::BaseClient
+    DEFAULT_MAX_RETRIES: 2
+
+    DEFAULT_TIMEOUT_IN_SECONDS: Float
+
+    DEFAULT_INITIAL_RETRY_DELAY: Float
+
+    DEFAULT_MAX_RETRY_DELAY: Float
+
+    attr_reader api_key: String
+
+    attr_reader legacy: Telnyx::Resources::Legacy
+
+    attr_reader oauth: Telnyx::Resources::OAuth
+
+    attr_reader oauth_clients: Telnyx::Resources::OAuthClients
+
+    attr_reader oauth_grants: Telnyx::Resources::OAuthGrants
+
+    attr_reader webhooks: Telnyx::Resources::Webhooks
+
+    attr_reader access_ip_address: Telnyx::Resources::AccessIPAddress
+
+    attr_reader access_ip_ranges: Telnyx::Resources::AccessIPRanges
+
+    attr_reader actions: Telnyx::Resources::Actions
+
+    attr_reader addresses: Telnyx::Resources::Addresses
+
+    attr_reader advanced_orders: Telnyx::Resources::AdvancedOrders
+
+    attr_reader ai: Telnyx::Resources::AI
+
+    attr_reader audit_events: Telnyx::Resources::AuditEvents
+
+    attr_reader authentication_providers: Telnyx::Resources::AuthenticationProviders
+
+    attr_reader available_phone_number_blocks: Telnyx::Resources::AvailablePhoneNumberBlocks
+
+    attr_reader available_phone_numbers: Telnyx::Resources::AvailablePhoneNumbers
+
+    attr_reader balance: Telnyx::Resources::Balance
+
+    attr_reader billing_groups: Telnyx::Resources::BillingGroups
+
+    attr_reader brand: Telnyx::Resources::Brand
+
+    attr_reader bulk_sim_card_actions: Telnyx::Resources::BulkSimCardActions
+
+    attr_reader bundle_pricing: Telnyx::Resources::BundlePricing
+
+    attr_reader call_control_applications: Telnyx::Resources::CallControlApplications
+
+    attr_reader call_events: Telnyx::Resources::CallEvents
+
+    attr_reader calls: Telnyx::Resources::Calls
+
+    attr_reader campaign: Telnyx::Resources::Campaign
+
+    attr_reader campaign_builder: Telnyx::Resources::CampaignBuilder
+
+    attr_reader channel_zones: Telnyx::Resources::ChannelZones
+
+    attr_reader charges_breakdown: Telnyx::Resources::ChargesBreakdown
+
+    attr_reader charges_summary: Telnyx::Resources::ChargesSummary
+
+    attr_reader comments: Telnyx::Resources::Comments
+
+    attr_reader conferences: Telnyx::Resources::Conferences
+
+    attr_reader connections: Telnyx::Resources::Connections
+
+    attr_reader country_coverage: Telnyx::Resources::CountryCoverage
+
+    attr_reader credential_connections: Telnyx::Resources::CredentialConnections
+
+    attr_reader custom_storage_credentials: Telnyx::Resources::CustomStorageCredentials
+
+    attr_reader customer_service_records: Telnyx::Resources::CustomerServiceRecords
+
+    attr_reader detail_records: Telnyx::Resources::DetailRecords
+
+    attr_reader dialogflow_connections: Telnyx::Resources::DialogflowConnections
+
+    attr_reader document_links: Telnyx::Resources::DocumentLinks
+
+    attr_reader documents: Telnyx::Resources::Documents
+
+    attr_reader dynamic_emergency_addresses: Telnyx::Resources::DynamicEmergencyAddresses
+
+    attr_reader dynamic_emergency_endpoints: Telnyx::Resources::DynamicEmergencyEndpoints
+
+    attr_reader enum: Telnyx::Resources::Enum
+
+    attr_reader external_connections: Telnyx::Resources::ExternalConnections
+
+    attr_reader fax_applications: Telnyx::Resources::FaxApplications
+
+    attr_reader faxes: Telnyx::Resources::Faxes
+
+    attr_reader fqdn_connections: Telnyx::Resources::FqdnConnections
+
+    attr_reader fqdns: Telnyx::Resources::Fqdns
+
+    attr_reader global_ip_allowed_ports: Telnyx::Resources::GlobalIPAllowedPorts
+
+    attr_reader global_ip_assignment_health: Telnyx::Resources::GlobalIPAssignmentHealth
+
+    attr_reader global_ip_assignments: Telnyx::Resources::GlobalIPAssignments
+
+    attr_reader global_ip_assignments_usage: Telnyx::Resources::GlobalIPAssignmentsUsage
+
+    attr_reader global_ip_health_check_types: Telnyx::Resources::GlobalIPHealthCheckTypes
+
+    attr_reader global_ip_health_checks: Telnyx::Resources::GlobalIPHealthChecks
+
+    attr_reader global_ip_latency: Telnyx::Resources::GlobalIPLatency
+
+    attr_reader global_ip_protocols: Telnyx::Resources::GlobalIPProtocols
+
+    attr_reader global_ip_usage: Telnyx::Resources::GlobalIPUsage
+
+    attr_reader global_ips: Telnyx::Resources::GlobalIPs
+
+    attr_reader inbound_channels: Telnyx::Resources::InboundChannels
+
+    attr_reader integration_secrets: Telnyx::Resources::IntegrationSecrets
+
+    attr_reader inventory_coverage: Telnyx::Resources::InventoryCoverage
+
+    attr_reader invoices: Telnyx::Resources::Invoices
+
+    attr_reader ip_connections: Telnyx::Resources::IPConnections
+
+    attr_reader ips: Telnyx::Resources::IPs
+
+    attr_reader ledger_billing_group_reports: Telnyx::Resources::LedgerBillingGroupReports
+
+    attr_reader list: Telnyx::Resources::List
+
+    attr_reader managed_accounts: Telnyx::Resources::ManagedAccounts
+
+    attr_reader media: Telnyx::Resources::Media
+
+    attr_reader messages: Telnyx::Resources::Messages
+
+    attr_reader messaging: Telnyx::Resources::Messaging
+
+    attr_reader messaging_hosted_number_orders: Telnyx::Resources::MessagingHostedNumberOrders
+
+    attr_reader messaging_hosted_numbers: Telnyx::Resources::MessagingHostedNumbers
+
+    attr_reader messaging_numbers_bulk_updates: Telnyx::Resources::MessagingNumbersBulkUpdates
+
+    attr_reader messaging_optouts: Telnyx::Resources::MessagingOptouts
+
+    attr_reader messaging_profiles: Telnyx::Resources::MessagingProfiles
+
+    attr_reader messaging_tollfree: Telnyx::Resources::MessagingTollfree
+
+    attr_reader messaging_url_domains: Telnyx::Resources::MessagingURLDomains
+
+    attr_reader messsages: Telnyx::Resources::Messsages
+
+    attr_reader mobile_network_operators: Telnyx::Resources::MobileNetworkOperators
+
+    attr_reader mobile_push_credentials: Telnyx::Resources::MobilePushCredentials
+
+    attr_reader network_coverage: Telnyx::Resources::NetworkCoverage
+
+    attr_reader networks: Telnyx::Resources::Networks
+
+    attr_reader notification_channels: Telnyx::Resources::NotificationChannels
+
+    attr_reader notification_event_conditions: Telnyx::Resources::NotificationEventConditions
+
+    attr_reader notification_events: Telnyx::Resources::NotificationEvents
+
+    attr_reader notification_profiles: Telnyx::Resources::NotificationProfiles
+
+    attr_reader notification_settings: Telnyx::Resources::NotificationSettings
+
+    attr_reader number_block_orders: Telnyx::Resources::NumberBlockOrders
+
+    attr_reader number_lookup: Telnyx::Resources::NumberLookup
+
+    attr_reader number_order_phone_numbers: Telnyx::Resources::NumberOrderPhoneNumbers
+
+    attr_reader number_orders: Telnyx::Resources::NumberOrders
+
+    attr_reader number_reservations: Telnyx::Resources::NumberReservations
+
+    attr_reader numbers_features: Telnyx::Resources::NumbersFeatures
+
+    attr_reader operator_connect: Telnyx::Resources::OperatorConnect
+
+    attr_reader ota_updates: Telnyx::Resources::OtaUpdates
+
+    attr_reader outbound_voice_profiles: Telnyx::Resources::OutboundVoiceProfiles
+
+    attr_reader payment: Telnyx::Resources::Payment
+
+    attr_reader phone_number_assignment_by_profile: Telnyx::Resources::PhoneNumberAssignmentByProfile
+
+    attr_reader phone_number_blocks: Telnyx::Resources::PhoneNumberBlocks
+
+    attr_reader phone_number_campaigns: Telnyx::Resources::PhoneNumberCampaigns
+
+    attr_reader phone_numbers: Telnyx::Resources::PhoneNumbers
+
+    attr_reader phone_numbers_regulatory_requirements: Telnyx::Resources::PhoneNumbersRegulatoryRequirements
+
+    attr_reader portability_checks: Telnyx::Resources::PortabilityChecks
+
+    attr_reader porting: Telnyx::Resources::Porting
+
+    attr_reader porting_orders: Telnyx::Resources::PortingOrders
+
+    attr_reader porting_phone_numbers: Telnyx::Resources::PortingPhoneNumbers
+
+    attr_reader portouts: Telnyx::Resources::Portouts
+
+    attr_reader private_wireless_gateways: Telnyx::Resources::PrivateWirelessGateways
+
+    attr_reader public_internet_gateways: Telnyx::Resources::PublicInternetGateways
+
+    attr_reader queues: Telnyx::Resources::Queues
+
+    attr_reader rcs_agents: Telnyx::Resources::RcsAgents
+
+    attr_reader recording_transcriptions: Telnyx::Resources::RecordingTranscriptions
+
+    attr_reader recordings: Telnyx::Resources::Recordings
+
+    attr_reader regions: Telnyx::Resources::Regions
+
+    attr_reader regulatory_requirements: Telnyx::Resources::RegulatoryRequirements
+
+    attr_reader reports: Telnyx::Resources::Reports
+
+    attr_reader requirement_groups: Telnyx::Resources::RequirementGroups
+
+    attr_reader requirement_types: Telnyx::Resources::RequirementTypes
+
+    attr_reader requirements: Telnyx::Resources::Requirements
+
+    attr_reader room_compositions: Telnyx::Resources::RoomCompositions
+
+    attr_reader room_participants: Telnyx::Resources::RoomParticipants
+
+    attr_reader room_recordings: Telnyx::Resources::RoomRecordings
+
+    attr_reader rooms: Telnyx::Resources::Rooms
+
+    attr_reader seti: Telnyx::Resources::Seti
+
+    attr_reader short_codes: Telnyx::Resources::ShortCodes
+
+    attr_reader sim_card_data_usage_notifications: Telnyx::Resources::SimCardDataUsageNotifications
+
+    attr_reader sim_card_groups: Telnyx::Resources::SimCardGroups
+
+    attr_reader sim_card_order_preview: Telnyx::Resources::SimCardOrderPreview
+
+    attr_reader sim_card_orders: Telnyx::Resources::SimCardOrders
+
+    attr_reader sim_cards: Telnyx::Resources::SimCards
+
+    attr_reader siprec_connectors: Telnyx::Resources::SiprecConnectors
+
+    attr_reader storage: Telnyx::Resources::Storage
+
+    attr_reader sub_number_orders: Telnyx::Resources::SubNumberOrders
+
+    attr_reader sub_number_orders_report: Telnyx::Resources::SubNumberOrdersReport
+
+    attr_reader telephony_credentials: Telnyx::Resources::TelephonyCredentials
+
+    attr_reader texml: Telnyx::Resources::Texml
+
+    attr_reader texml_applications: Telnyx::Resources::TexmlApplications
+
+    attr_reader text_to_speech: Telnyx::Resources::TextToSpeech
+
+    attr_reader usage_reports: Telnyx::Resources::UsageReports
+
+    attr_reader user_addresses: Telnyx::Resources::UserAddresses
+
+    attr_reader user_tags: Telnyx::Resources::UserTags
+
+    attr_reader verifications: Telnyx::Resources::Verifications
+
+    attr_reader verified_numbers: Telnyx::Resources::VerifiedNumbers
+
+    attr_reader verify_profiles: Telnyx::Resources::VerifyProfiles
+
+    attr_reader virtual_cross_connects: Telnyx::Resources::VirtualCrossConnects
+
+    attr_reader virtual_cross_connects_coverage: Telnyx::Resources::VirtualCrossConnectsCoverage
+
+    attr_reader webhook_deliveries: Telnyx::Resources::WebhookDeliveries
+
+    attr_reader wireguard_interfaces: Telnyx::Resources::WireguardInterfaces
+
+    attr_reader wireguard_peers: Telnyx::Resources::WireguardPeers
+
+    attr_reader wireless: Telnyx::Resources::Wireless
+
+    attr_reader wireless_blocklist_values: Telnyx::Resources::WirelessBlocklistValues
+
+    attr_reader wireless_blocklists: Telnyx::Resources::WirelessBlocklists
+
+    attr_reader partner_campaigns: Telnyx::Resources::PartnerCampaigns
+
+    attr_reader well_known: Telnyx::Resources::WellKnown
+
+    private def auth_headers: -> ::Hash[String, String]
+
+    def base_url_overridden?: -> bool
+
+    def initialize: (
+      ?api_key: String?,
+      ?base_url: String?,
+      ?max_retries: Integer,
+      ?timeout: Float,
+      ?initial_retry_delay: Float,
+      ?max_retry_delay: Float
+    ) -> void
+  end
+end

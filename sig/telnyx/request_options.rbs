@@ -1,0 +1,34 @@
+module Telnyx
+  type request_opts =
+    Telnyx::RequestOptions | Telnyx::request_options | ::Hash[Symbol, top]
+
+  type request_options =
+    {
+      idempotency_key: String?,
+      extra_query: ::Hash[String, (::Array[String] | String)?]?,
+      extra_headers: ::Hash[String, String?]?,
+      extra_body: top?,
+      max_retries: Integer?,
+      timeout: Float?
+    }
+
+  class RequestOptions < Telnyx::Internal::Type::BaseModel
+    def self.validate!: (Telnyx::request_opts opts) -> void
+
+    attr_accessor idempotency_key: String?
+
+    attr_accessor extra_query: ::Hash[String, (::Array[String] | String)?]?
+
+    attr_accessor extra_headers: ::Hash[String, String?]?
+
+    attr_accessor extra_body: top?
+
+    attr_accessor max_retries: Integer?
+
+    attr_accessor timeout: Float?
+
+    def initialize: (
+      ?Telnyx::request_options | ::Hash[Symbol, top] values
+    ) -> void
+  end
+end

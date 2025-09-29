@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    module BundlePricing
+      type user_bundle_create_response =
+        { data: ::Array[Telnyx::BundlePricing::UserBundle] }
+
+      class UserBundleCreateResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Telnyx::BundlePricing::UserBundle]
+
+        def initialize: (
+          data: ::Array[Telnyx::BundlePricing::UserBundle]
+        ) -> void
+
+        def to_hash: -> { data: ::Array[Telnyx::BundlePricing::UserBundle] }
+      end
+    end
+  end
+end

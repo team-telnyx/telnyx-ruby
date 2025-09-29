@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    type stream_bidirectional_codec =
+      :PCMU | :PCMA | :G722 | :OPUS | :"AMR-WB" | :L16
+
+    module StreamBidirectionalCodec
+      extend Telnyx::Internal::Type::Enum
+
+      PCMU: :PCMU
+      PCMA: :PCMA
+      G722: :G722
+      OPUS: :OPUS
+      AMR_WB: :"AMR-WB"
+      L16: :L16
+
+      def self?.values: -> ::Array[Telnyx::Models::stream_bidirectional_codec]
+    end
+  end
+end

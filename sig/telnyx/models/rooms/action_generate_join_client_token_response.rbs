@@ -1,0 +1,66 @@
+module Telnyx
+  module Models
+    module Rooms
+      type action_generate_join_client_token_response =
+        {
+          data: Telnyx::Models::Rooms::ActionGenerateJoinClientTokenResponse::Data
+        }
+
+      class ActionGenerateJoinClientTokenResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::Rooms::ActionGenerateJoinClientTokenResponse::Data?
+
+        def data=: (
+          Telnyx::Models::Rooms::ActionGenerateJoinClientTokenResponse::Data
+        ) -> Telnyx::Models::Rooms::ActionGenerateJoinClientTokenResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::Rooms::ActionGenerateJoinClientTokenResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::Rooms::ActionGenerateJoinClientTokenResponse::Data
+        }
+
+        type data =
+          {
+            token: String,
+            refresh_token: String,
+            refresh_token_expires_at: Time,
+            token_expires_at: Time
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader token: String?
+
+          def token=: (String) -> String
+
+          attr_reader refresh_token: String?
+
+          def refresh_token=: (String) -> String
+
+          attr_reader refresh_token_expires_at: Time?
+
+          def refresh_token_expires_at=: (Time) -> Time
+
+          attr_reader token_expires_at: Time?
+
+          def token_expires_at=: (Time) -> Time
+
+          def initialize: (
+            ?token: String,
+            ?refresh_token: String,
+            ?refresh_token_expires_at: Time,
+            ?token_expires_at: Time
+          ) -> void
+
+          def to_hash: -> {
+            token: String,
+            refresh_token: String,
+            refresh_token_expires_at: Time,
+            token_expires_at: Time
+          }
+        end
+      end
+    end
+  end
+end

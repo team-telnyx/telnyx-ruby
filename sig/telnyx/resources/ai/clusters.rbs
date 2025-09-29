@@ -1,0 +1,41 @@
+module Telnyx
+  module Resources
+    class AI
+      class Clusters
+        def retrieve: (
+          String task_id,
+          ?show_subclusters: bool,
+          ?top_n_nodes: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::ClusterRetrieveResponse
+
+        def list: (
+          ?page: Telnyx::AI::ClusterListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::ClusterListResponse
+
+        def delete: (
+          String task_id,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def compute: (
+          bucket: String,
+          ?files: ::Array[String],
+          ?min_cluster_size: Integer,
+          ?min_subcluster_size: Integer,
+          ?prefix: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::ClusterComputeResponse
+
+        def fetch_graph: (
+          String task_id,
+          ?cluster_id: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> top
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

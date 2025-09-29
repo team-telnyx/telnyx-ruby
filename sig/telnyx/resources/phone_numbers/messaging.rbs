@@ -1,0 +1,26 @@
+module Telnyx
+  module Resources
+    class PhoneNumbers
+      class Messaging
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::MessagingRetrieveResponse
+
+        def update: (
+          String id,
+          ?messaging_product: String,
+          ?messaging_profile_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::MessagingUpdateResponse
+
+        def list: (
+          ?page: Telnyx::PhoneNumbers::MessagingListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::MessagingListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

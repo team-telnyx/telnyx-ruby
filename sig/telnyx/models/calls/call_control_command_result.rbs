@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    class CallControlCommandResult = Calls::CallControlCommandResult
+
+    module Calls
+      type call_control_command_result = { result: String }
+
+      class CallControlCommandResult < Telnyx::Internal::Type::BaseModel
+        attr_reader result: String?
+
+        def result=: (String) -> String
+
+        def initialize: (?result: String) -> void
+
+        def to_hash: -> { result: String }
+      end
+    end
+  end
+end

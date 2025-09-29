@@ -1,0 +1,71 @@
+module Telnyx
+  module Models
+    module AI
+      type embedding_list_response =
+        { data: ::Array[Telnyx::Models::AI::EmbeddingListResponse::Data] }
+
+      class EmbeddingListResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Telnyx::Models::AI::EmbeddingListResponse::Data]
+
+        def initialize: (
+          data: ::Array[Telnyx::Models::AI::EmbeddingListResponse::Data]
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Models::AI::EmbeddingListResponse::Data]
+        }
+
+        type data =
+          {
+            created_at: Time,
+            status: Telnyx::Models::AI::background_task_status,
+            task_id: String,
+            task_name: String,
+            user_id: String,
+            bucket: String,
+            finished_at: Time
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor created_at: Time
+
+          attr_accessor status: Telnyx::Models::AI::background_task_status
+
+          attr_accessor task_id: String
+
+          attr_accessor task_name: String
+
+          attr_accessor user_id: String
+
+          attr_reader bucket: String?
+
+          def bucket=: (String) -> String
+
+          attr_reader finished_at: Time?
+
+          def finished_at=: (Time) -> Time
+
+          def initialize: (
+            created_at: Time,
+            status: Telnyx::Models::AI::background_task_status,
+            task_id: String,
+            task_name: String,
+            user_id: String,
+            ?bucket: String,
+            ?finished_at: Time
+          ) -> void
+
+          def to_hash: -> {
+            created_at: Time,
+            status: Telnyx::Models::AI::background_task_status,
+            task_id: String,
+            task_name: String,
+            user_id: String,
+            bucket: String,
+            finished_at: Time
+          }
+        end
+      end
+    end
+  end
+end

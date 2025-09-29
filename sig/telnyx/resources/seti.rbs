@@ -1,0 +1,12 @@
+module Telnyx
+  module Resources
+    class Seti
+      def retrieve_black_box_test_results: (
+        ?filter: Telnyx::SetiRetrieveBlackBoxTestResultsParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SetiRetrieveBlackBoxTestResultsResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

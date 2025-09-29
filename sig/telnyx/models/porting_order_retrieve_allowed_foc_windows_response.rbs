@@ -1,0 +1,59 @@
+module Telnyx
+  module Models
+    type porting_order_retrieve_allowed_foc_windows_response =
+      {
+        data: ::Array[Telnyx::Models::PortingOrderRetrieveAllowedFocWindowsResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class PortingOrderRetrieveAllowedFocWindowsResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::PortingOrderRetrieveAllowedFocWindowsResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::PortingOrderRetrieveAllowedFocWindowsResponse::Data]
+      ) -> ::Array[Telnyx::Models::PortingOrderRetrieveAllowedFocWindowsResponse::Data]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::PortingOrderRetrieveAllowedFocWindowsResponse::Data],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::PortingOrderRetrieveAllowedFocWindowsResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+      type data = { ended_at: Time, record_type: String, started_at: Time }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader ended_at: Time?
+
+        def ended_at=: (Time) -> Time
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader started_at: Time?
+
+        def started_at=: (Time) -> Time
+
+        def initialize: (
+          ?ended_at: Time,
+          ?record_type: String,
+          ?started_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          ended_at: Time,
+          record_type: String,
+          started_at: Time
+        }
+      end
+    end
+  end
+end

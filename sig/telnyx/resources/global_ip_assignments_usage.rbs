@@ -1,0 +1,12 @@
+module Telnyx
+  module Resources
+    class GlobalIPAssignmentsUsage
+      def retrieve: (
+        ?filter: Telnyx::GlobalIPAssignmentsUsageRetrieveParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::GlobalIPAssignmentsUsageRetrieveResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

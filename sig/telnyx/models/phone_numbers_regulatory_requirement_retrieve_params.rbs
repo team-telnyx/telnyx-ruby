@@ -1,0 +1,42 @@
+module Telnyx
+  module Models
+    type phone_numbers_regulatory_requirement_retrieve_params =
+      {
+        filter: Telnyx::PhoneNumbersRegulatoryRequirementRetrieveParams::Filter
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class PhoneNumbersRegulatoryRequirementRetrieveParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::PhoneNumbersRegulatoryRequirementRetrieveParams::Filter?
+
+      def filter=: (
+        Telnyx::PhoneNumbersRegulatoryRequirementRetrieveParams::Filter
+      ) -> Telnyx::PhoneNumbersRegulatoryRequirementRetrieveParams::Filter
+
+      def initialize: (
+        ?filter: Telnyx::PhoneNumbersRegulatoryRequirementRetrieveParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::PhoneNumbersRegulatoryRequirementRetrieveParams::Filter,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter = { phone_number: String }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        def initialize: (?phone_number: String) -> void
+
+        def to_hash: -> { phone_number: String }
+      end
+    end
+  end
+end

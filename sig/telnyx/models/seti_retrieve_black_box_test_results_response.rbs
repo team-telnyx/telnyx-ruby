@@ -1,0 +1,83 @@
+module Telnyx
+  module Models
+    type seti_retrieve_black_box_test_results_response =
+      {
+        data: ::Array[Telnyx::Models::SetiRetrieveBlackBoxTestResultsResponse::Data]
+      }
+
+    class SetiRetrieveBlackBoxTestResultsResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::SetiRetrieveBlackBoxTestResultsResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::SetiRetrieveBlackBoxTestResultsResponse::Data]
+      ) -> ::Array[Telnyx::Models::SetiRetrieveBlackBoxTestResultsResponse::Data]
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::SetiRetrieveBlackBoxTestResultsResponse::Data]
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::SetiRetrieveBlackBoxTestResultsResponse::Data]
+      }
+
+      type data =
+        {
+          black_box_tests: ::Array[Telnyx::Models::SetiRetrieveBlackBoxTestResultsResponse::Data::BlackBoxTest],
+          product: String,
+          record_type: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader black_box_tests: ::Array[Telnyx::Models::SetiRetrieveBlackBoxTestResultsResponse::Data::BlackBoxTest]?
+
+        def black_box_tests=: (
+          ::Array[Telnyx::Models::SetiRetrieveBlackBoxTestResultsResponse::Data::BlackBoxTest]
+        ) -> ::Array[Telnyx::Models::SetiRetrieveBlackBoxTestResultsResponse::Data::BlackBoxTest]
+
+        attr_reader product: String?
+
+        def product=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?black_box_tests: ::Array[Telnyx::Models::SetiRetrieveBlackBoxTestResultsResponse::Data::BlackBoxTest],
+          ?product: String,
+          ?record_type: String
+        ) -> void
+
+        def to_hash: -> {
+          black_box_tests: ::Array[Telnyx::Models::SetiRetrieveBlackBoxTestResultsResponse::Data::BlackBoxTest],
+          product: String,
+          record_type: String
+        }
+
+        type black_box_test = { id: String, record_type: String, result: Float }
+
+        class BlackBoxTest < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_reader result: Float?
+
+          def result=: (Float) -> Float
+
+          def initialize: (
+            ?id: String,
+            ?record_type: String,
+            ?result: Float
+          ) -> void
+
+          def to_hash: -> { id: String, record_type: String, result: Float }
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    module PhoneNumbers
+      type cnam_listing =
+        { cnam_listing_details: String, cnam_listing_enabled: bool }
+
+      class CnamListing < Telnyx::Internal::Type::BaseModel
+        attr_reader cnam_listing_details: String?
+
+        def cnam_listing_details=: (String) -> String
+
+        attr_reader cnam_listing_enabled: bool?
+
+        def cnam_listing_enabled=: (bool) -> bool
+
+        def initialize: (
+          ?cnam_listing_details: String,
+          ?cnam_listing_enabled: bool
+        ) -> void
+
+        def to_hash: -> {
+          cnam_listing_details: String,
+          cnam_listing_enabled: bool
+        }
+      end
+    end
+  end
+end

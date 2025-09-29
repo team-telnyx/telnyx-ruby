@@ -1,0 +1,11 @@
+module Telnyx
+  module Resources
+    class GlobalIPProtocols
+      def list: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::GlobalIPProtocolListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

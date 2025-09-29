@@ -1,0 +1,218 @@
+module Telnyx
+  module Models
+    type fax =
+      {
+        id: String,
+        client_state: String,
+        connection_id: String,
+        created_at: Time,
+        direction: Telnyx::Models::Fax::direction,
+        from: String,
+        from_display_name: String,
+        media_name: String,
+        media_url: String,
+        preview_url: String,
+        quality: Telnyx::Models::Fax::quality,
+        record_type: Telnyx::Models::Fax::record_type,
+        status: Telnyx::Models::Fax::status,
+        store_media: bool,
+        stored_media_url: String,
+        to: String,
+        updated_at: Time,
+        webhook_failover_url: String,
+        webhook_url: String
+      }
+
+    class Fax < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader client_state: String?
+
+      def client_state=: (String) -> String
+
+      attr_reader connection_id: String?
+
+      def connection_id=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader direction: Telnyx::Models::Fax::direction?
+
+      def direction=: (
+        Telnyx::Models::Fax::direction
+      ) -> Telnyx::Models::Fax::direction
+
+      attr_reader from: String?
+
+      def from=: (String) -> String
+
+      attr_reader from_display_name: String?
+
+      def from_display_name=: (String) -> String
+
+      attr_reader media_name: String?
+
+      def media_name=: (String) -> String
+
+      attr_reader media_url: String?
+
+      def media_url=: (String) -> String
+
+      attr_reader preview_url: String?
+
+      def preview_url=: (String) -> String
+
+      attr_reader quality: Telnyx::Models::Fax::quality?
+
+      def quality=: (
+        Telnyx::Models::Fax::quality
+      ) -> Telnyx::Models::Fax::quality
+
+      attr_reader record_type: Telnyx::Models::Fax::record_type?
+
+      def record_type=: (
+        Telnyx::Models::Fax::record_type
+      ) -> Telnyx::Models::Fax::record_type
+
+      attr_reader status: Telnyx::Models::Fax::status?
+
+      def status=: (Telnyx::Models::Fax::status) -> Telnyx::Models::Fax::status
+
+      attr_reader store_media: bool?
+
+      def store_media=: (bool) -> bool
+
+      attr_reader stored_media_url: String?
+
+      def stored_media_url=: (String) -> String
+
+      attr_reader to: String?
+
+      def to=: (String) -> String
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      attr_reader webhook_failover_url: String?
+
+      def webhook_failover_url=: (String) -> String
+
+      attr_reader webhook_url: String?
+
+      def webhook_url=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?client_state: String,
+        ?connection_id: String,
+        ?created_at: Time,
+        ?direction: Telnyx::Models::Fax::direction,
+        ?from: String,
+        ?from_display_name: String,
+        ?media_name: String,
+        ?media_url: String,
+        ?preview_url: String,
+        ?quality: Telnyx::Models::Fax::quality,
+        ?record_type: Telnyx::Models::Fax::record_type,
+        ?status: Telnyx::Models::Fax::status,
+        ?store_media: bool,
+        ?stored_media_url: String,
+        ?to: String,
+        ?updated_at: Time,
+        ?webhook_failover_url: String,
+        ?webhook_url: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        client_state: String,
+        connection_id: String,
+        created_at: Time,
+        direction: Telnyx::Models::Fax::direction,
+        from: String,
+        from_display_name: String,
+        media_name: String,
+        media_url: String,
+        preview_url: String,
+        quality: Telnyx::Models::Fax::quality,
+        record_type: Telnyx::Models::Fax::record_type,
+        status: Telnyx::Models::Fax::status,
+        store_media: bool,
+        stored_media_url: String,
+        to: String,
+        updated_at: Time,
+        webhook_failover_url: String,
+        webhook_url: String
+      }
+
+      type direction = :inbound | :outbound
+
+      module Direction
+        extend Telnyx::Internal::Type::Enum
+
+        INBOUND: :inbound
+        OUTBOUND: :outbound
+
+        def self?.values: -> ::Array[Telnyx::Models::Fax::direction]
+      end
+
+      type quality = :normal | :high | :very_high | :ultra_light | :ultra_dark
+
+      module Quality
+        extend Telnyx::Internal::Type::Enum
+
+        NORMAL: :normal
+        HIGH: :high
+        VERY_HIGH: :very_high
+        ULTRA_LIGHT: :ultra_light
+        ULTRA_DARK: :ultra_dark
+
+        def self?.values: -> ::Array[Telnyx::Models::Fax::quality]
+      end
+
+      type record_type = :fax
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        FAX: :fax
+
+        def self?.values: -> ::Array[Telnyx::Models::Fax::record_type]
+      end
+
+      type status =
+        :queued
+        | :"media.processed"
+        | :originated
+        | :sending
+        | :delivered
+        | :failed
+        | :initiated
+        | :receiving
+        | :"media.processing"
+        | :received
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        QUEUED: :queued
+        MEDIA_PROCESSED: :"media.processed"
+        ORIGINATED: :originated
+        SENDING: :sending
+        DELIVERED: :delivered
+        FAILED: :failed
+        INITIATED: :initiated
+        RECEIVING: :receiving
+        MEDIA_PROCESSING: :"media.processing"
+        RECEIVED: :received
+
+        def self?.values: -> ::Array[Telnyx::Models::Fax::status]
+      end
+    end
+  end
+end

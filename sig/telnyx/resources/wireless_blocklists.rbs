@@ -1,0 +1,40 @@
+module Telnyx
+  module Resources
+    class WirelessBlocklists
+      def create: (
+        name: String,
+        type: Telnyx::Models::WirelessBlocklistCreateParams::type_,
+        values: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WirelessBlocklistCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WirelessBlocklistRetrieveResponse
+
+      def update: (
+        ?name: String,
+        ?type: Telnyx::Models::WirelessBlocklistUpdateParams::type_,
+        ?values: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WirelessBlocklistUpdateResponse
+
+      def list: (
+        ?filter_name: String,
+        ?filter_type: String,
+        ?filter_values: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WirelessBlocklistListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WirelessBlocklistDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

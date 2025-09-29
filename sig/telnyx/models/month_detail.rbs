@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    type month_detail = { mrc: String, quantity: Integer, otc: String? }
+
+    class MonthDetail < Telnyx::Internal::Type::BaseModel
+      attr_accessor mrc: String
+
+      attr_accessor quantity: Integer
+
+      attr_accessor otc: String?
+
+      def initialize: (mrc: String, quantity: Integer, ?otc: String?) -> void
+
+      def to_hash: -> { mrc: String, quantity: Integer, otc: String? }
+    end
+  end
+end

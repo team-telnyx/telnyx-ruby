@@ -1,0 +1,71 @@
+module Telnyx
+  module Resources
+    class IPConnections
+      def create: (
+        ?active: bool,
+        ?anchorsite_override: Telnyx::Models::anchorsite_override,
+        ?android_push_credential_id: String?,
+        ?connection_name: String,
+        ?default_on_hold_comfort_noise_enabled: bool,
+        ?dtmf_type: Telnyx::Models::dtmf_type,
+        ?encode_contact_header_enabled: bool,
+        ?encrypted_media: Telnyx::Models::encrypted_media?,
+        ?inbound: Telnyx::IPConnectionCreateParams::Inbound,
+        ?ios_push_credential_id: String?,
+        ?onnet_t38_passthrough_enabled: bool,
+        ?outbound: Telnyx::OutboundIP,
+        ?rtcp_settings: Telnyx::ConnectionRtcpSettings,
+        ?tags: ::Array[String],
+        ?transport_protocol: Telnyx::Models::IPConnectionCreateParams::transport_protocol,
+        ?webhook_api_version: Telnyx::Models::IPConnectionCreateParams::webhook_api_version,
+        ?webhook_event_failover_url: String?,
+        ?webhook_event_url: String,
+        ?webhook_timeout_secs: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::IPConnectionCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::IPConnectionRetrieveResponse
+
+      def update: (
+        String id,
+        ?active: bool,
+        ?anchorsite_override: Telnyx::Models::anchorsite_override,
+        ?android_push_credential_id: String?,
+        ?connection_name: String,
+        ?default_on_hold_comfort_noise_enabled: bool,
+        ?dtmf_type: Telnyx::Models::dtmf_type,
+        ?encode_contact_header_enabled: bool,
+        ?encrypted_media: Telnyx::Models::encrypted_media?,
+        ?inbound: Telnyx::InboundIP,
+        ?ios_push_credential_id: String?,
+        ?onnet_t38_passthrough_enabled: bool,
+        ?outbound: Telnyx::OutboundIP,
+        ?rtcp_settings: Telnyx::ConnectionRtcpSettings,
+        ?tags: ::Array[String],
+        ?transport_protocol: Telnyx::Models::IPConnectionUpdateParams::transport_protocol,
+        ?webhook_api_version: Telnyx::Models::IPConnectionUpdateParams::webhook_api_version,
+        ?webhook_event_failover_url: String?,
+        ?webhook_event_url: String,
+        ?webhook_timeout_secs: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::IPConnectionUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::IPConnectionListParams::Filter,
+        ?page: Telnyx::IPConnectionListParams::Page,
+        ?sort: Telnyx::Models::IPConnectionListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::IPConnectionListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::IPConnectionDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,68 @@
+module Telnyx
+  module Models
+    module Legacy
+      module Reporting
+        module UsageReports
+          type number_lookup_create_params =
+            {
+              aggregation_type: Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupCreateParams::aggregation_type,
+              end_date: Date,
+              managed_accounts: ::Array[String],
+              start_date: Date
+            }
+            & Telnyx::Internal::Type::request_parameters
+
+          class NumberLookupCreateParams < Telnyx::Internal::Type::BaseModel
+            extend Telnyx::Internal::Type::RequestParameters::Converter
+            include Telnyx::Internal::Type::RequestParameters
+
+            attr_reader aggregation_type: Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupCreateParams::aggregation_type?
+
+            def aggregation_type=: (
+              Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupCreateParams::aggregation_type
+            ) -> Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupCreateParams::aggregation_type
+
+            attr_reader end_date: Date?
+
+            def end_date=: (Date) -> Date
+
+            attr_reader managed_accounts: ::Array[String]?
+
+            def managed_accounts=: (::Array[String]) -> ::Array[String]
+
+            attr_reader start_date: Date?
+
+            def start_date=: (Date) -> Date
+
+            def initialize: (
+              ?aggregation_type: Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupCreateParams::aggregation_type,
+              ?end_date: Date,
+              ?managed_accounts: ::Array[String],
+              ?start_date: Date,
+              ?request_options: Telnyx::request_opts
+            ) -> void
+
+            def to_hash: -> {
+              aggregation_type: Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupCreateParams::aggregation_type,
+              end_date: Date,
+              managed_accounts: ::Array[String],
+              start_date: Date,
+              request_options: Telnyx::RequestOptions
+            }
+
+            type aggregation_type = :ALL | :BY_ORGANIZATION_MEMBER
+
+            module AggregationType
+              extend Telnyx::Internal::Type::Enum
+
+              ALL: :ALL
+              BY_ORGANIZATION_MEMBER: :BY_ORGANIZATION_MEMBER
+
+              def self?.values: -> ::Array[Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupCreateParams::aggregation_type]
+            end
+          end
+        end
+      end
+    end
+  end
+end

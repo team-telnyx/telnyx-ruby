@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    type notification_profile =
+      { id: String, created_at: Time, name: String, updated_at: Time }
+
+    class NotificationProfile < Telnyx::Internal::Type::BaseModel
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        ?id: String,
+        ?created_at: Time,
+        ?name: String,
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        name: String,
+        updated_at: Time
+      }
+    end
+  end
+end

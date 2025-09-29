@@ -1,0 +1,117 @@
+module Telnyx
+  module Models
+    type doc_service_document =
+      {
+        id: String,
+        content_type: String,
+        created_at: String,
+        customer_reference: String,
+        filename: String,
+        record_type: String,
+        :sha256 => String,
+        size: Telnyx::DocServiceDocument::Size,
+        status: Telnyx::Models::DocServiceDocument::status,
+        updated_at: String
+      }
+
+    class DocServiceDocument < Telnyx::Internal::Type::BaseModel
+      attr_reader customer_reference: String?
+
+      def customer_reference=: (String) -> String
+
+      attr_reader filename: String?
+
+      def filename=: (String) -> String
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader content_type: String?
+
+      def content_type=: (String) -> String
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader sha256: String?
+
+      def sha256=: (String) -> String
+
+      attr_reader size: Telnyx::DocServiceDocument::Size?
+
+      def size=: (
+        Telnyx::DocServiceDocument::Size
+      ) -> Telnyx::DocServiceDocument::Size
+
+      attr_reader status: Telnyx::Models::DocServiceDocument::status?
+
+      def status=: (
+        Telnyx::Models::DocServiceDocument::status
+      ) -> Telnyx::Models::DocServiceDocument::status
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?content_type: String,
+        ?created_at: String,
+        ?customer_reference: String,
+        ?filename: String,
+        ?record_type: String,
+        ?sha256: String,
+        ?size: Telnyx::DocServiceDocument::Size,
+        ?status: Telnyx::Models::DocServiceDocument::status,
+        ?updated_at: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        content_type: String,
+        created_at: String,
+        customer_reference: String,
+        filename: String,
+        record_type: String,
+        :sha256 => String,
+        size: Telnyx::DocServiceDocument::Size,
+        status: Telnyx::Models::DocServiceDocument::status,
+        updated_at: String
+      }
+
+      type size = { amount: Integer, unit: String }
+
+      class Size < Telnyx::Internal::Type::BaseModel
+        attr_reader amount: Integer?
+
+        def amount=: (Integer) -> Integer
+
+        attr_reader unit: String?
+
+        def unit=: (String) -> String
+
+        def initialize: (?amount: Integer, ?unit: String) -> void
+
+        def to_hash: -> { amount: Integer, unit: String }
+      end
+
+      type status = :pending | :verified | :denied
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        VERIFIED: :verified
+        DENIED: :denied
+
+        def self?.values: -> ::Array[Telnyx::Models::DocServiceDocument::status]
+      end
+    end
+  end
+end

@@ -1,0 +1,40 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_gather_using_ai_response =
+        { data: Telnyx::Models::Calls::ActionGatherUsingAIResponse::Data }
+
+      class ActionGatherUsingAIResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::Calls::ActionGatherUsingAIResponse::Data?
+
+        def data=: (
+          Telnyx::Models::Calls::ActionGatherUsingAIResponse::Data
+        ) -> Telnyx::Models::Calls::ActionGatherUsingAIResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::Calls::ActionGatherUsingAIResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::Calls::ActionGatherUsingAIResponse::Data
+        }
+
+        type data = { conversation_id: String, result: String }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader conversation_id: String?
+
+          def conversation_id=: (String) -> String
+
+          attr_reader result: String?
+
+          def result=: (String) -> String
+
+          def initialize: (?conversation_id: String, ?result: String) -> void
+
+          def to_hash: -> { conversation_id: String, result: String }
+        end
+      end
+    end
+  end
+end

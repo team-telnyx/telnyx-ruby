@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module Faxes
+      type action_cancel_response = { result: String }
+
+      class ActionCancelResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader result: String?
+
+        def result=: (String) -> String
+
+        def initialize: (?result: String) -> void
+
+        def to_hash: -> { result: String }
+      end
+    end
+  end
+end

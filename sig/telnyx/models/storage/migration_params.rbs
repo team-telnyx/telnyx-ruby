@@ -1,0 +1,113 @@
+module Telnyx
+  module Models
+    module Storage
+      type migration_params =
+        {
+          source_id: String,
+          target_bucket_name: String,
+          target_region: String,
+          id: String,
+          bytes_migrated: Integer,
+          bytes_to_migrate: Integer,
+          created_at: Time,
+          eta: Time,
+          last_copy: Time,
+          refresh: bool,
+          speed: Integer,
+          status: Telnyx::Models::Storage::MigrationParams::status
+        }
+
+      class MigrationParams < Telnyx::Internal::Type::BaseModel
+        attr_accessor source_id: String
+
+        attr_accessor target_bucket_name: String
+
+        attr_accessor target_region: String
+
+        attr_reader refresh: bool?
+
+        def refresh=: (bool) -> bool
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader bytes_migrated: Integer?
+
+        def bytes_migrated=: (Integer) -> Integer
+
+        attr_reader bytes_to_migrate: Integer?
+
+        def bytes_to_migrate=: (Integer) -> Integer
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader eta: Time?
+
+        def eta=: (Time) -> Time
+
+        attr_reader last_copy: Time?
+
+        def last_copy=: (Time) -> Time
+
+        attr_reader speed: Integer?
+
+        def speed=: (Integer) -> Integer
+
+        attr_reader status: Telnyx::Models::Storage::MigrationParams::status?
+
+        def status=: (
+          Telnyx::Models::Storage::MigrationParams::status
+        ) -> Telnyx::Models::Storage::MigrationParams::status
+
+        def initialize: (
+          source_id: String,
+          target_bucket_name: String,
+          target_region: String,
+          ?id: String,
+          ?bytes_migrated: Integer,
+          ?bytes_to_migrate: Integer,
+          ?created_at: Time,
+          ?eta: Time,
+          ?last_copy: Time,
+          ?refresh: bool,
+          ?speed: Integer,
+          ?status: Telnyx::Models::Storage::MigrationParams::status
+        ) -> void
+
+        def to_hash: -> {
+          source_id: String,
+          target_bucket_name: String,
+          target_region: String,
+          id: String,
+          bytes_migrated: Integer,
+          bytes_to_migrate: Integer,
+          created_at: Time,
+          eta: Time,
+          last_copy: Time,
+          refresh: bool,
+          speed: Integer,
+          status: Telnyx::Models::Storage::MigrationParams::status
+        }
+
+        type status =
+          :pending | :checking | :migrating | :complete | :error | :stopped
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          CHECKING: :checking
+          MIGRATING: :migrating
+          COMPLETE: :complete
+          ERROR: :error
+          STOPPED: :stopped
+
+          def self?.values: -> ::Array[Telnyx::Models::Storage::MigrationParams::status]
+        end
+      end
+    end
+  end
+end

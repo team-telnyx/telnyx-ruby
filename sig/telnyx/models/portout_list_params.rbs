@@ -1,0 +1,233 @@
+module Telnyx
+  module Models
+    type portout_list_params =
+      {
+        filter: Telnyx::PortoutListParams::Filter,
+        page: Telnyx::PortoutListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class PortoutListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::PortoutListParams::Filter?
+
+      def filter=: (
+        Telnyx::PortoutListParams::Filter
+      ) -> Telnyx::PortoutListParams::Filter
+
+      attr_reader page: Telnyx::PortoutListParams::Page?
+
+      def page=: (
+        Telnyx::PortoutListParams::Page
+      ) -> Telnyx::PortoutListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::PortoutListParams::Filter,
+        ?page: Telnyx::PortoutListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::PortoutListParams::Filter,
+        page: Telnyx::PortoutListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          carrier_name: String,
+          country_code: String,
+          country_code_in: ::Array[String],
+          foc_date: Time,
+          inserted_at: Telnyx::PortoutListParams::Filter::InsertedAt,
+          phone_number: String,
+          pon: String,
+          ported_out_at: Telnyx::PortoutListParams::Filter::PortedOutAt,
+          spid: String,
+          status: Telnyx::Models::PortoutListParams::Filter::status,
+          status_in: ::Array[Telnyx::Models::PortoutListParams::Filter::status_in],
+          support_key: String
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader carrier_name: String?
+
+        def carrier_name=: (String) -> String
+
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader country_code_in: ::Array[String]?
+
+        def country_code_in=: (::Array[String]) -> ::Array[String]
+
+        attr_reader foc_date: Time?
+
+        def foc_date=: (Time) -> Time
+
+        attr_reader inserted_at: Telnyx::PortoutListParams::Filter::InsertedAt?
+
+        def inserted_at=: (
+          Telnyx::PortoutListParams::Filter::InsertedAt
+        ) -> Telnyx::PortoutListParams::Filter::InsertedAt
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader pon: String?
+
+        def pon=: (String) -> String
+
+        attr_reader ported_out_at: Telnyx::PortoutListParams::Filter::PortedOutAt?
+
+        def ported_out_at=: (
+          Telnyx::PortoutListParams::Filter::PortedOutAt
+        ) -> Telnyx::PortoutListParams::Filter::PortedOutAt
+
+        attr_reader spid: String?
+
+        def spid=: (String) -> String
+
+        attr_reader status: Telnyx::Models::PortoutListParams::Filter::status?
+
+        def status=: (
+          Telnyx::Models::PortoutListParams::Filter::status
+        ) -> Telnyx::Models::PortoutListParams::Filter::status
+
+        attr_reader status_in: ::Array[Telnyx::Models::PortoutListParams::Filter::status_in]?
+
+        def status_in=: (
+          ::Array[Telnyx::Models::PortoutListParams::Filter::status_in]
+        ) -> ::Array[Telnyx::Models::PortoutListParams::Filter::status_in]
+
+        attr_reader support_key: String?
+
+        def support_key=: (String) -> String
+
+        def initialize: (
+          ?carrier_name: String,
+          ?country_code: String,
+          ?country_code_in: ::Array[String],
+          ?foc_date: Time,
+          ?inserted_at: Telnyx::PortoutListParams::Filter::InsertedAt,
+          ?phone_number: String,
+          ?pon: String,
+          ?ported_out_at: Telnyx::PortoutListParams::Filter::PortedOutAt,
+          ?spid: String,
+          ?status: Telnyx::Models::PortoutListParams::Filter::status,
+          ?status_in: ::Array[Telnyx::Models::PortoutListParams::Filter::status_in],
+          ?support_key: String
+        ) -> void
+
+        def to_hash: -> {
+          carrier_name: String,
+          country_code: String,
+          country_code_in: ::Array[String],
+          foc_date: Time,
+          inserted_at: Telnyx::PortoutListParams::Filter::InsertedAt,
+          phone_number: String,
+          pon: String,
+          ported_out_at: Telnyx::PortoutListParams::Filter::PortedOutAt,
+          spid: String,
+          status: Telnyx::Models::PortoutListParams::Filter::status,
+          status_in: ::Array[Telnyx::Models::PortoutListParams::Filter::status_in],
+          support_key: String
+        }
+
+        type inserted_at = { gte: Time, lte: Time }
+
+        class InsertedAt < Telnyx::Internal::Type::BaseModel
+          attr_reader gte: Time?
+
+          def gte=: (Time) -> Time
+
+          attr_reader lte: Time?
+
+          def lte=: (Time) -> Time
+
+          def initialize: (?gte: Time, ?lte: Time) -> void
+
+          def to_hash: -> { gte: Time, lte: Time }
+        end
+
+        type ported_out_at = { gte: Time, lte: Time }
+
+        class PortedOutAt < Telnyx::Internal::Type::BaseModel
+          attr_reader gte: Time?
+
+          def gte=: (Time) -> Time
+
+          attr_reader lte: Time?
+
+          def lte=: (Time) -> Time
+
+          def initialize: (?gte: Time, ?lte: Time) -> void
+
+          def to_hash: -> { gte: Time, lte: Time }
+        end
+
+        type status =
+          :pending
+          | :authorized
+          | :ported
+          | :rejected
+          | :"rejected-pending"
+          | :canceled
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          AUTHORIZED: :authorized
+          PORTED: :ported
+          REJECTED: :rejected
+          REJECTED_PENDING: :"rejected-pending"
+          CANCELED: :canceled
+
+          def self?.values: -> ::Array[Telnyx::Models::PortoutListParams::Filter::status]
+        end
+
+        type status_in =
+          :pending
+          | :authorized
+          | :ported
+          | :rejected
+          | :"rejected-pending"
+          | :canceled
+
+        module StatusIn
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          AUTHORIZED: :authorized
+          PORTED: :ported
+          REJECTED: :rejected
+          REJECTED_PENDING: :"rejected-pending"
+          CANCELED: :canceled
+
+          def self?.values: -> ::Array[Telnyx::Models::PortoutListParams::Filter::status_in]
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

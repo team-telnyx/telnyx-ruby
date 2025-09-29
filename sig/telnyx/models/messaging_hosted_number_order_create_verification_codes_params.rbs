@@ -1,0 +1,43 @@
+module Telnyx
+  module Models
+    type messaging_hosted_number_order_create_verification_codes_params =
+      {
+        phone_numbers: ::Array[String],
+        verification_method: Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesParams::verification_method
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class MessagingHostedNumberOrderCreateVerificationCodesParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor phone_numbers: ::Array[String]
+
+      attr_accessor verification_method: Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesParams::verification_method
+
+      def initialize: (
+        phone_numbers: ::Array[String],
+        verification_method: Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesParams::verification_method,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        phone_numbers: ::Array[String],
+        verification_method: Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesParams::verification_method,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type verification_method = :sms | :call | :flashcall
+
+      module VerificationMethod
+        extend Telnyx::Internal::Type::Enum
+
+        SMS: :sms
+        CALL: :call
+        FLASHCALL: :flashcall
+
+        def self?.values: -> ::Array[Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesParams::verification_method]
+      end
+    end
+  end
+end

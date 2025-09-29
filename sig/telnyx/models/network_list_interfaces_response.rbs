@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    type network_list_interfaces_response =
+      {
+        data: ::Array[Telnyx::Models::NetworkListInterfacesResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class NetworkListInterfacesResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::NetworkListInterfacesResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::NetworkListInterfacesResponse::Data]
+      ) -> ::Array[Telnyx::Models::NetworkListInterfacesResponse::Data]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::NetworkListInterfacesResponse::Data],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::NetworkListInterfacesResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

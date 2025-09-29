@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type dynamic_emergency_address_create_response =
+      { data: Telnyx::DynamicEmergencyAddress }
+
+    class DynamicEmergencyAddressCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::DynamicEmergencyAddress?
+
+      def data=: (
+        Telnyx::DynamicEmergencyAddress
+      ) -> Telnyx::DynamicEmergencyAddress
+
+      def initialize: (?data: Telnyx::DynamicEmergencyAddress) -> void
+
+      def to_hash: -> { data: Telnyx::DynamicEmergencyAddress }
+    end
+  end
+end

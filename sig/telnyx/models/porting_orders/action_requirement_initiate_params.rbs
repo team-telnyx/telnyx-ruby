@@ -1,0 +1,45 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type action_requirement_initiate_params =
+        {
+          porting_order_id: String,
+          params: Telnyx::PortingOrders::ActionRequirementInitiateParams::Params
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionRequirementInitiateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor porting_order_id: String
+
+        attr_accessor params: Telnyx::PortingOrders::ActionRequirementInitiateParams::Params
+
+        def initialize: (
+          porting_order_id: String,
+          params: Telnyx::PortingOrders::ActionRequirementInitiateParams::Params,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          porting_order_id: String,
+          params: Telnyx::PortingOrders::ActionRequirementInitiateParams::Params,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type params = { first_name: String, last_name: String }
+
+        class Params < Telnyx::Internal::Type::BaseModel
+          attr_accessor first_name: String
+
+          attr_accessor last_name: String
+
+          def initialize: (first_name: String, last_name: String) -> void
+
+          def to_hash: -> { first_name: String, last_name: String }
+        end
+      end
+    end
+  end
+end

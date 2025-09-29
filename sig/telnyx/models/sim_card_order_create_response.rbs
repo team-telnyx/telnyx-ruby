@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type sim_card_order_create_response = { data: Telnyx::SimCardOrder }
+
+    class SimCardOrderCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::SimCardOrder?
+
+      def data=: (Telnyx::SimCardOrder) -> Telnyx::SimCardOrder
+
+      def initialize: (?data: Telnyx::SimCardOrder) -> void
+
+      def to_hash: -> { data: Telnyx::SimCardOrder }
+    end
+  end
+end

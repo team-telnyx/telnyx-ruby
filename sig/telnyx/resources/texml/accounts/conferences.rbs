@@ -1,0 +1,52 @@
+module Telnyx
+  module Resources
+    class Texml
+      class Accounts
+        class Conferences
+          attr_reader participants: Telnyx::Resources::Texml::Accounts::Conferences::Participants
+
+          def retrieve: (
+            String conference_sid,
+            account_sid: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse
+
+          def update: (
+            String conference_sid,
+            account_sid: String,
+            ?announce_method: Telnyx::Models::Texml::Accounts::ConferenceUpdateParams::announce_method,
+            ?announce_url: String,
+            ?status: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Texml::Accounts::ConferenceUpdateResponse
+
+          def retrieve_conferences: (
+            String account_sid,
+            ?date_created: String,
+            ?date_updated: String,
+            ?friendly_name: String,
+            ?page: Integer,
+            ?page_size: Integer,
+            ?page_token: String,
+            ?status: Telnyx::Models::Texml::Accounts::ConferenceRetrieveConferencesParams::status,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Texml::Accounts::ConferenceRetrieveConferencesResponse
+
+          def retrieve_recordings: (
+            String conference_sid,
+            account_sid: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse
+
+          def retrieve_recordings_json: (
+            String conference_sid,
+            account_sid: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsJsonResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

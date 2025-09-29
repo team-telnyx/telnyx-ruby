@@ -1,0 +1,67 @@
+module Telnyx
+  module Models
+    module AI
+      type embedding_response = { data: Telnyx::AI::EmbeddingResponse::Data }
+
+      class EmbeddingResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::AI::EmbeddingResponse::Data
+
+        def initialize: (data: Telnyx::AI::EmbeddingResponse::Data) -> void
+
+        def to_hash: -> { data: Telnyx::AI::EmbeddingResponse::Data }
+
+        type data =
+          {
+            created_at: String,
+            finished_at: String?,
+            status: String,
+            task_id: String,
+            task_name: String,
+            user_id: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader created_at: String?
+
+          def created_at=: (String) -> String
+
+          attr_accessor finished_at: String?
+
+          attr_reader status: String?
+
+          def status=: (String) -> String
+
+          attr_reader task_id: String?
+
+          def task_id=: (String) -> String
+
+          attr_reader task_name: String?
+
+          def task_name=: (String) -> String
+
+          attr_reader user_id: String?
+
+          def user_id=: (String) -> String
+
+          def initialize: (
+            ?created_at: String,
+            ?finished_at: String?,
+            ?status: String,
+            ?task_id: String,
+            ?task_name: String,
+            ?user_id: String
+          ) -> void
+
+          def to_hash: -> {
+            created_at: String,
+            finished_at: String?,
+            status: String,
+            task_id: String,
+            task_name: String,
+            user_id: String
+          }
+        end
+      end
+    end
+  end
+end

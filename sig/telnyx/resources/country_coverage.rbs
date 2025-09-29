@@ -1,0 +1,16 @@
+module Telnyx
+  module Resources
+    class CountryCoverage
+      def retrieve: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CountryCoverageRetrieveResponse
+
+      def retrieve_country: (
+        String country_code,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CountryCoverageRetrieveCountryResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,11 @@
+module Telnyx
+  module Resources
+    class BundlePricing
+      attr_reader billing_bundles: Telnyx::Resources::BundlePricing::BillingBundles
+
+      attr_reader user_bundles: Telnyx::Resources::BundlePricing::UserBundles
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

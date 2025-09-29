@@ -1,0 +1,113 @@
+module Telnyx
+  module Models
+    module AI
+      type conversation_add_message_params =
+        {
+          role: String,
+          content: String,
+          metadata: ::Hash[Symbol, Telnyx::Models::AI::ConversationAddMessageParams::metadata],
+          name: String,
+          sent_at: Time,
+          tool_call_id: String,
+          tool_calls: ::Array[::Hash[Symbol, top]],
+          tool_choice: Telnyx::Models::AI::ConversationAddMessageParams::tool_choice
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ConversationAddMessageParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor role: String
+
+        attr_reader content: String?
+
+        def content=: (String) -> String
+
+        attr_reader metadata: ::Hash[Symbol, Telnyx::Models::AI::ConversationAddMessageParams::metadata]?
+
+        def metadata=: (
+          ::Hash[Symbol, Telnyx::Models::AI::ConversationAddMessageParams::metadata]
+        ) -> ::Hash[Symbol, Telnyx::Models::AI::ConversationAddMessageParams::metadata]
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader sent_at: Time?
+
+        def sent_at=: (Time) -> Time
+
+        attr_reader tool_call_id: String?
+
+        def tool_call_id=: (String) -> String
+
+        attr_reader tool_calls: ::Array[::Hash[Symbol, top]]?
+
+        def tool_calls=: (
+          ::Array[::Hash[Symbol, top]]
+        ) -> ::Array[::Hash[Symbol, top]]
+
+        attr_reader tool_choice: Telnyx::Models::AI::ConversationAddMessageParams::tool_choice?
+
+        def tool_choice=: (
+          Telnyx::Models::AI::ConversationAddMessageParams::tool_choice
+        ) -> Telnyx::Models::AI::ConversationAddMessageParams::tool_choice
+
+        def initialize: (
+          role: String,
+          ?content: String,
+          ?metadata: ::Hash[Symbol, Telnyx::Models::AI::ConversationAddMessageParams::metadata],
+          ?name: String,
+          ?sent_at: Time,
+          ?tool_call_id: String,
+          ?tool_calls: ::Array[::Hash[Symbol, top]],
+          ?tool_choice: Telnyx::Models::AI::ConversationAddMessageParams::tool_choice,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          role: String,
+          content: String,
+          metadata: ::Hash[Symbol, Telnyx::Models::AI::ConversationAddMessageParams::metadata],
+          name: String,
+          sent_at: Time,
+          tool_call_id: String,
+          tool_calls: ::Array[::Hash[Symbol, top]],
+          tool_choice: Telnyx::Models::AI::ConversationAddMessageParams::tool_choice,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type metadata =
+          String
+          | Integer
+          | bool
+          | ::Array[Telnyx::Models::AI::ConversationAddMessageParams::Metadata::union_member3]
+
+        module Metadata
+          extend Telnyx::Internal::Type::Union
+
+          type union_member3 = String | Integer | bool
+
+          module UnionMember3
+            extend Telnyx::Internal::Type::Union
+
+            def self?.variants: -> ::Array[Telnyx::Models::AI::ConversationAddMessageParams::Metadata::union_member3]
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::AI::ConversationAddMessageParams::metadata]
+
+          UnionMember3Array: Telnyx::Internal::Type::Converter
+        end
+
+        type tool_choice = String | top
+
+        module ToolChoice
+          extend Telnyx::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Telnyx::Models::AI::ConversationAddMessageParams::tool_choice]
+        end
+      end
+    end
+  end
+end

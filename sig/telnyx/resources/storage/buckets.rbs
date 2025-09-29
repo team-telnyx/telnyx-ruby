@@ -1,0 +1,20 @@
+module Telnyx
+  module Resources
+    class Storage
+      class Buckets
+        attr_reader ssl_certificate: Telnyx::Resources::Storage::Buckets::SslCertificate
+
+        attr_reader usage: Telnyx::Resources::Storage::Buckets::Usage
+
+        def create_presigned_url: (
+          String object_name,
+          bucket_name: String,
+          ?ttl: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Storage::BucketCreatePresignedURLResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

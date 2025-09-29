@@ -1,0 +1,16 @@
+module Telnyx
+  module Resources
+    class Verifications
+      class ByPhoneNumber
+        attr_reader actions: Telnyx::Resources::Verifications::ByPhoneNumber::Actions
+
+        def list: (
+          String phone_number,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Verifications::ByPhoneNumberListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

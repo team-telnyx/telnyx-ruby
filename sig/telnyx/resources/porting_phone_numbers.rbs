@@ -1,0 +1,13 @@
+module Telnyx
+  module Resources
+    class PortingPhoneNumbers
+      def list: (
+        ?filter: Telnyx::PortingPhoneNumberListParams::Filter,
+        ?page: Telnyx::PortingPhoneNumberListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PortingPhoneNumberListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,85 @@
+module Telnyx
+  module Models
+    type notification_event_list_response =
+      {
+        data: ::Array[Telnyx::Models::NotificationEventListResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class NotificationEventListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::NotificationEventListResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::NotificationEventListResponse::Data]
+      ) -> ::Array[Telnyx::Models::NotificationEventListResponse::Data]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::NotificationEventListResponse::Data],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::NotificationEventListResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+      type data =
+        {
+          id: String,
+          created_at: Time,
+          enabled: bool,
+          name: String,
+          notification_category: String,
+          updated_at: Time
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader enabled: bool?
+
+        def enabled=: (bool) -> bool
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader notification_category: String?
+
+        def notification_category=: (String) -> String
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?created_at: Time,
+          ?enabled: bool,
+          ?name: String,
+          ?notification_category: String,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          enabled: bool,
+          name: String,
+          notification_category: String,
+          updated_at: Time
+        }
+      end
+    end
+  end
+end

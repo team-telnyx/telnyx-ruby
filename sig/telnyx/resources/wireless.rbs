@@ -1,0 +1,14 @@
+module Telnyx
+  module Resources
+    class Wireless
+      attr_reader detail_records_reports: Telnyx::Resources::Wireless::DetailRecordsReports
+
+      def retrieve_regions: (
+        product: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WirelessRetrieveRegionsResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

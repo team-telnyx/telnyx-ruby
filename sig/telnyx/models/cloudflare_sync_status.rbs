@@ -1,0 +1,14 @@
+module Telnyx
+  module Models
+    type cloudflare_sync_status = :pending | :added
+
+    module CloudflareSyncStatus
+      extend Telnyx::Internal::Type::Enum
+
+      PENDING: :pending
+      ADDED: :added
+
+      def self?.values: -> ::Array[Telnyx::Models::cloudflare_sync_status]
+    end
+  end
+end

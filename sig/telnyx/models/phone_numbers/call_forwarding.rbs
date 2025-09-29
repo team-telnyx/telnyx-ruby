@@ -1,0 +1,51 @@
+module Telnyx
+  module Models
+    module PhoneNumbers
+      type call_forwarding =
+        {
+          call_forwarding_enabled: bool,
+          forwarding_type: Telnyx::Models::PhoneNumbers::CallForwarding::forwarding_type,
+          forwards_to: String
+        }
+
+      class CallForwarding < Telnyx::Internal::Type::BaseModel
+        attr_reader call_forwarding_enabled: bool?
+
+        def call_forwarding_enabled=: (bool) -> bool
+
+        attr_reader forwarding_type: Telnyx::Models::PhoneNumbers::CallForwarding::forwarding_type?
+
+        def forwarding_type=: (
+          Telnyx::Models::PhoneNumbers::CallForwarding::forwarding_type
+        ) -> Telnyx::Models::PhoneNumbers::CallForwarding::forwarding_type
+
+        attr_reader forwards_to: String?
+
+        def forwards_to=: (String) -> String
+
+        def initialize: (
+          ?call_forwarding_enabled: bool,
+          ?forwarding_type: Telnyx::Models::PhoneNumbers::CallForwarding::forwarding_type,
+          ?forwards_to: String
+        ) -> void
+
+        def to_hash: -> {
+          call_forwarding_enabled: bool,
+          forwarding_type: Telnyx::Models::PhoneNumbers::CallForwarding::forwarding_type,
+          forwards_to: String
+        }
+
+        type forwarding_type = :always | :"on-failure"
+
+        module ForwardingType
+          extend Telnyx::Internal::Type::Enum
+
+          ALWAYS: :always
+          ON_FAILURE: :"on-failure"
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::CallForwarding::forwarding_type]
+        end
+      end
+    end
+  end
+end

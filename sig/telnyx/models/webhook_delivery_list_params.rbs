@@ -1,0 +1,205 @@
+module Telnyx
+  module Models
+    type webhook_delivery_list_params =
+      {
+        filter: Telnyx::WebhookDeliveryListParams::Filter,
+        page: Telnyx::WebhookDeliveryListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class WebhookDeliveryListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::WebhookDeliveryListParams::Filter?
+
+      def filter=: (
+        Telnyx::WebhookDeliveryListParams::Filter
+      ) -> Telnyx::WebhookDeliveryListParams::Filter
+
+      attr_reader page: Telnyx::WebhookDeliveryListParams::Page?
+
+      def page=: (
+        Telnyx::WebhookDeliveryListParams::Page
+      ) -> Telnyx::WebhookDeliveryListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::WebhookDeliveryListParams::Filter,
+        ?page: Telnyx::WebhookDeliveryListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::WebhookDeliveryListParams::Filter,
+        page: Telnyx::WebhookDeliveryListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          attempts: Telnyx::WebhookDeliveryListParams::Filter::Attempts,
+          event_type: String,
+          finished_at: Telnyx::WebhookDeliveryListParams::Filter::FinishedAt,
+          started_at: Telnyx::WebhookDeliveryListParams::Filter::StartedAt,
+          status: Telnyx::WebhookDeliveryListParams::Filter::Status,
+          webhook: Telnyx::WebhookDeliveryListParams::Filter::Webhook
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader attempts: Telnyx::WebhookDeliveryListParams::Filter::Attempts?
+
+        def attempts=: (
+          Telnyx::WebhookDeliveryListParams::Filter::Attempts
+        ) -> Telnyx::WebhookDeliveryListParams::Filter::Attempts
+
+        attr_reader event_type: String?
+
+        def event_type=: (String) -> String
+
+        attr_reader finished_at: Telnyx::WebhookDeliveryListParams::Filter::FinishedAt?
+
+        def finished_at=: (
+          Telnyx::WebhookDeliveryListParams::Filter::FinishedAt
+        ) -> Telnyx::WebhookDeliveryListParams::Filter::FinishedAt
+
+        attr_reader started_at: Telnyx::WebhookDeliveryListParams::Filter::StartedAt?
+
+        def started_at=: (
+          Telnyx::WebhookDeliveryListParams::Filter::StartedAt
+        ) -> Telnyx::WebhookDeliveryListParams::Filter::StartedAt
+
+        attr_reader status: Telnyx::WebhookDeliveryListParams::Filter::Status?
+
+        def status=: (
+          Telnyx::WebhookDeliveryListParams::Filter::Status
+        ) -> Telnyx::WebhookDeliveryListParams::Filter::Status
+
+        attr_reader webhook: Telnyx::WebhookDeliveryListParams::Filter::Webhook?
+
+        def webhook=: (
+          Telnyx::WebhookDeliveryListParams::Filter::Webhook
+        ) -> Telnyx::WebhookDeliveryListParams::Filter::Webhook
+
+        def initialize: (
+          ?attempts: Telnyx::WebhookDeliveryListParams::Filter::Attempts,
+          ?event_type: String,
+          ?finished_at: Telnyx::WebhookDeliveryListParams::Filter::FinishedAt,
+          ?started_at: Telnyx::WebhookDeliveryListParams::Filter::StartedAt,
+          ?status: Telnyx::WebhookDeliveryListParams::Filter::Status,
+          ?webhook: Telnyx::WebhookDeliveryListParams::Filter::Webhook
+        ) -> void
+
+        def to_hash: -> {
+          attempts: Telnyx::WebhookDeliveryListParams::Filter::Attempts,
+          event_type: String,
+          finished_at: Telnyx::WebhookDeliveryListParams::Filter::FinishedAt,
+          started_at: Telnyx::WebhookDeliveryListParams::Filter::StartedAt,
+          status: Telnyx::WebhookDeliveryListParams::Filter::Status,
+          webhook: Telnyx::WebhookDeliveryListParams::Filter::Webhook
+        }
+
+        type attempts = { contains: String }
+
+        class Attempts < Telnyx::Internal::Type::BaseModel
+          attr_reader contains: String?
+
+          def contains=: (String) -> String
+
+          def initialize: (?contains: String) -> void
+
+          def to_hash: -> { contains: String }
+        end
+
+        type finished_at = { gte: String, lte: String }
+
+        class FinishedAt < Telnyx::Internal::Type::BaseModel
+          attr_reader gte: String?
+
+          def gte=: (String) -> String
+
+          attr_reader lte: String?
+
+          def lte=: (String) -> String
+
+          def initialize: (?gte: String, ?lte: String) -> void
+
+          def to_hash: -> { gte: String, lte: String }
+        end
+
+        type started_at = { gte: String, lte: String }
+
+        class StartedAt < Telnyx::Internal::Type::BaseModel
+          attr_reader gte: String?
+
+          def gte=: (String) -> String
+
+          attr_reader lte: String?
+
+          def lte=: (String) -> String
+
+          def initialize: (?gte: String, ?lte: String) -> void
+
+          def to_hash: -> { gte: String, lte: String }
+        end
+
+        type status =
+          { eq: Telnyx::Models::WebhookDeliveryListParams::Filter::Status::eq }
+
+        class Status < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: Telnyx::Models::WebhookDeliveryListParams::Filter::Status::eq?
+
+          def eq=: (
+            Telnyx::Models::WebhookDeliveryListParams::Filter::Status::eq
+          ) -> Telnyx::Models::WebhookDeliveryListParams::Filter::Status::eq
+
+          def initialize: (
+            ?eq: Telnyx::Models::WebhookDeliveryListParams::Filter::Status::eq
+          ) -> void
+
+          def to_hash: -> {
+            eq: Telnyx::Models::WebhookDeliveryListParams::Filter::Status::eq
+          }
+
+          type eq = :delivered | :failed
+
+          module Eq
+            extend Telnyx::Internal::Type::Enum
+
+            DELIVERED: :delivered
+            FAILED: :failed
+
+            def self?.values: -> ::Array[Telnyx::Models::WebhookDeliveryListParams::Filter::Status::eq]
+          end
+        end
+
+        type webhook = { contains: String }
+
+        class Webhook < Telnyx::Internal::Type::BaseModel
+          attr_reader contains: String?
+
+          def contains=: (String) -> String
+
+          def initialize: (?contains: String) -> void
+
+          def to_hash: -> { contains: String }
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

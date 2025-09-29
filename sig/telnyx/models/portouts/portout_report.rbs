@@ -1,0 +1,102 @@
+module Telnyx
+  module Models
+    class PortoutReport = Portouts::PortoutReport
+
+    module Portouts
+      type portout_report =
+        {
+          id: String,
+          created_at: Time,
+          document_id: String,
+          params: Telnyx::Portouts::ExportPortoutsCsvReport,
+          record_type: String,
+          report_type: Telnyx::Models::Portouts::PortoutReport::report_type,
+          status: Telnyx::Models::Portouts::PortoutReport::status,
+          updated_at: Time
+        }
+
+      class PortoutReport < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader document_id: String?
+
+        def document_id=: (String) -> String
+
+        attr_reader params: Telnyx::Portouts::ExportPortoutsCsvReport?
+
+        def params=: (
+          Telnyx::Portouts::ExportPortoutsCsvReport
+        ) -> Telnyx::Portouts::ExportPortoutsCsvReport
+
+        attr_reader report_type: Telnyx::Models::Portouts::PortoutReport::report_type?
+
+        def report_type=: (
+          Telnyx::Models::Portouts::PortoutReport::report_type
+        ) -> Telnyx::Models::Portouts::PortoutReport::report_type
+
+        attr_reader status: Telnyx::Models::Portouts::PortoutReport::status?
+
+        def status=: (
+          Telnyx::Models::Portouts::PortoutReport::status
+        ) -> Telnyx::Models::Portouts::PortoutReport::status
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?created_at: Time,
+          ?document_id: String,
+          ?params: Telnyx::Portouts::ExportPortoutsCsvReport,
+          ?record_type: String,
+          ?report_type: Telnyx::Models::Portouts::PortoutReport::report_type,
+          ?status: Telnyx::Models::Portouts::PortoutReport::status,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          document_id: String,
+          params: Telnyx::Portouts::ExportPortoutsCsvReport,
+          record_type: String,
+          report_type: Telnyx::Models::Portouts::PortoutReport::report_type,
+          status: Telnyx::Models::Portouts::PortoutReport::status,
+          updated_at: Time
+        }
+
+        type report_type = :export_portouts_csv
+
+        module ReportType
+          extend Telnyx::Internal::Type::Enum
+
+          EXPORT_PORTOUTS_CSV: :export_portouts_csv
+
+          def self?.values: -> ::Array[Telnyx::Models::Portouts::PortoutReport::report_type]
+        end
+
+        type status = :pending | :completed
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          COMPLETED: :completed
+
+          def self?.values: -> ::Array[Telnyx::Models::Portouts::PortoutReport::status]
+        end
+      end
+    end
+  end
+end

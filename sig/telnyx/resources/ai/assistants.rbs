@@ -1,0 +1,103 @@
+module Telnyx
+  module Resources
+    class AI
+      class Assistants
+        attr_reader tests: Telnyx::Resources::AI::Assistants::Tests
+
+        attr_reader canary_deploys: Telnyx::Resources::AI::Assistants::CanaryDeploys
+
+        attr_reader scheduled_events: Telnyx::Resources::AI::Assistants::ScheduledEvents
+
+        attr_reader tools: Telnyx::Resources::AI::Assistants::Tools
+
+        attr_reader versions: Telnyx::Resources::AI::Assistants::Versions
+
+        def create: (
+          instructions: String,
+          model: String,
+          name: String,
+          ?description: String,
+          ?dynamic_variables: ::Hash[Symbol, top],
+          ?dynamic_variables_webhook_url: String,
+          ?enabled_features: ::Array[Telnyx::Models::AI::enabled_features],
+          ?greeting: String,
+          ?insight_settings: Telnyx::AI::InsightSettings,
+          ?llm_api_key_ref: String,
+          ?messaging_settings: Telnyx::AI::MessagingSettings,
+          ?privacy_settings: Telnyx::AI::PrivacySettings,
+          ?telephony_settings: Telnyx::AI::TelephonySettings,
+          ?tools: ::Array[Telnyx::Models::AI::assistant_tool],
+          ?transcription: Telnyx::AI::TranscriptionSettings,
+          ?voice_settings: Telnyx::AI::VoiceSettings,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::AssistantCreateResponse
+
+        def retrieve: (
+          String assistant_id,
+          ?call_control_id: String,
+          ?fetch_dynamic_variables_from_webhook: bool,
+          ?from: String,
+          ?to: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::AssistantRetrieveResponse
+
+        def update: (
+          String assistant_id,
+          ?description: String,
+          ?dynamic_variables: ::Hash[Symbol, top],
+          ?dynamic_variables_webhook_url: String,
+          ?enabled_features: ::Array[Telnyx::Models::AI::enabled_features],
+          ?greeting: String,
+          ?insight_settings: Telnyx::AI::InsightSettings,
+          ?instructions: String,
+          ?llm_api_key_ref: String,
+          ?messaging_settings: Telnyx::AI::MessagingSettings,
+          ?model: String,
+          ?name: String,
+          ?privacy_settings: Telnyx::AI::PrivacySettings,
+          ?promote_to_main: bool,
+          ?telephony_settings: Telnyx::AI::TelephonySettings,
+          ?tools: ::Array[Telnyx::Models::AI::assistant_tool],
+          ?transcription: Telnyx::AI::TranscriptionSettings,
+          ?voice_settings: Telnyx::AI::VoiceSettings,
+          ?request_options: Telnyx::request_opts
+        ) -> top
+
+        def list: (
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AI::AssistantsList
+
+        def delete: (
+          String assistant_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::AssistantDeleteResponse
+
+        def chat: (
+          String assistant_id,
+          content: String,
+          conversation_id: String,
+          ?name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::AssistantChatResponse
+
+        def clone_: (
+          String assistant_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::AssistantCloneResponse
+
+        def get_texml: (
+          String assistant_id,
+          ?request_options: Telnyx::request_opts
+        ) -> String
+
+        def import: (
+          api_key_ref: String,
+          provider: Telnyx::Models::AI::AssistantImportParams::provider,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AI::AssistantsList
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

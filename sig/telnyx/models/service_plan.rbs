@@ -1,0 +1,13 @@
+module Telnyx
+  module Models
+    type service_plan = :global
+
+    module ServicePlan
+      extend Telnyx::Internal::Type::Enum
+
+      GLOBAL: :global
+
+      def self?.values: -> ::Array[Telnyx::Models::service_plan]
+    end
+  end
+end

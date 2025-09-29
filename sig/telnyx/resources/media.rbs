@@ -1,0 +1,41 @@
+module Telnyx
+  module Resources
+    class Media
+      def retrieve: (
+        String media_name,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MediaRetrieveResponse
+
+      def update: (
+        String media_name,
+        ?media_url: String,
+        ?ttl_secs: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MediaUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::MediaListParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MediaListResponse
+
+      def delete: (
+        String media_name,
+        ?request_options: Telnyx::request_opts
+      ) -> nil
+
+      def download: (
+        String media_name,
+        ?request_options: Telnyx::request_opts
+      ) -> StringIO
+
+      def upload: (
+        media_url: String,
+        ?media_name: String,
+        ?ttl_secs: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MediaUploadResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

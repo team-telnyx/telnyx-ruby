@@ -1,0 +1,509 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        module Conferences
+          type participant_participants_params =
+            {
+              account_sid: String,
+              amd_status_callback: String,
+              amd_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::amd_status_callback_method,
+              beep: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::beep,
+              caller_id: String,
+              call_sid_to_coach: String,
+              cancel_playback_on_detect_message_end: bool,
+              cancel_playback_on_machine_detection: bool,
+              coaching: bool,
+              conference_record: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_record,
+              conference_recording_status_callback: String,
+              conference_recording_status_callback_event: String,
+              conference_recording_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_recording_status_callback_method,
+              conference_recording_timeout: Integer,
+              conference_status_callback: String,
+              conference_status_callback_event: String,
+              conference_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_status_callback_method,
+              conference_trim: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_trim,
+              early_media: bool,
+              end_conference_on_exit: bool,
+              from: String,
+              machine_detection: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection,
+              machine_detection_silence_timeout: Integer,
+              machine_detection_speech_end_threshold: Integer,
+              machine_detection_speech_threshold: Integer,
+              machine_detection_timeout: Integer,
+              max_participants: Integer,
+              muted: bool,
+              preferred_codecs: String,
+              record: bool,
+              recording_channels: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_channels,
+              recording_status_callback: String,
+              recording_status_callback_event: String,
+              recording_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_status_callback_method,
+              recording_track: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_track,
+              sip_auth_password: String,
+              sip_auth_username: String,
+              start_conference_on_enter: bool,
+              status_callback: String,
+              status_callback_event: String,
+              status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::status_callback_method,
+              time_limit: Integer,
+              timeout_seconds: Integer,
+              to: String,
+              trim: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::trim,
+              wait_url: String
+            }
+            & Telnyx::Internal::Type::request_parameters
+
+          class ParticipantParticipantsParams < Telnyx::Internal::Type::BaseModel
+            extend Telnyx::Internal::Type::RequestParameters::Converter
+            include Telnyx::Internal::Type::RequestParameters
+
+            attr_accessor account_sid: String
+
+            attr_reader amd_status_callback: String?
+
+            def amd_status_callback=: (String) -> String
+
+            attr_reader amd_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::amd_status_callback_method?
+
+            def amd_status_callback_method=: (
+              Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::amd_status_callback_method
+            ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::amd_status_callback_method
+
+            attr_reader beep: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::beep?
+
+            def beep=: (
+              Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::beep
+            ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::beep
+
+            attr_reader caller_id: String?
+
+            def caller_id=: (String) -> String
+
+            attr_reader call_sid_to_coach: String?
+
+            def call_sid_to_coach=: (String) -> String
+
+            attr_reader cancel_playback_on_detect_message_end: bool?
+
+            def cancel_playback_on_detect_message_end=: (bool) -> bool
+
+            attr_reader cancel_playback_on_machine_detection: bool?
+
+            def cancel_playback_on_machine_detection=: (bool) -> bool
+
+            attr_reader coaching: bool?
+
+            def coaching=: (bool) -> bool
+
+            attr_reader conference_record: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_record?
+
+            def conference_record=: (
+              Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_record
+            ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_record
+
+            attr_reader conference_recording_status_callback: String?
+
+            def conference_recording_status_callback=: (String) -> String
+
+            attr_reader conference_recording_status_callback_event: String?
+
+            def conference_recording_status_callback_event=: (String) -> String
+
+            attr_reader conference_recording_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_recording_status_callback_method?
+
+            def conference_recording_status_callback_method=: (
+              Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_recording_status_callback_method
+            ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_recording_status_callback_method
+
+            attr_reader conference_recording_timeout: Integer?
+
+            def conference_recording_timeout=: (Integer) -> Integer
+
+            attr_reader conference_status_callback: String?
+
+            def conference_status_callback=: (String) -> String
+
+            attr_reader conference_status_callback_event: String?
+
+            def conference_status_callback_event=: (String) -> String
+
+            attr_reader conference_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_status_callback_method?
+
+            def conference_status_callback_method=: (
+              Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_status_callback_method
+            ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_status_callback_method
+
+            attr_reader conference_trim: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_trim?
+
+            def conference_trim=: (
+              Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_trim
+            ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_trim
+
+            attr_reader early_media: bool?
+
+            def early_media=: (bool) -> bool
+
+            attr_reader end_conference_on_exit: bool?
+
+            def end_conference_on_exit=: (bool) -> bool
+
+            attr_reader from: String?
+
+            def from=: (String) -> String
+
+            attr_reader machine_detection: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection?
+
+            def machine_detection=: (
+              Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection
+            ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection
+
+            attr_reader machine_detection_silence_timeout: Integer?
+
+            def machine_detection_silence_timeout=: (Integer) -> Integer
+
+            attr_reader machine_detection_speech_end_threshold: Integer?
+
+            def machine_detection_speech_end_threshold=: (Integer) -> Integer
+
+            attr_reader machine_detection_speech_threshold: Integer?
+
+            def machine_detection_speech_threshold=: (Integer) -> Integer
+
+            attr_reader machine_detection_timeout: Integer?
+
+            def machine_detection_timeout=: (Integer) -> Integer
+
+            attr_reader max_participants: Integer?
+
+            def max_participants=: (Integer) -> Integer
+
+            attr_reader muted: bool?
+
+            def muted=: (bool) -> bool
+
+            attr_reader preferred_codecs: String?
+
+            def preferred_codecs=: (String) -> String
+
+            attr_reader record: bool?
+
+            def record=: (bool) -> bool
+
+            attr_reader recording_channels: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_channels?
+
+            def recording_channels=: (
+              Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_channels
+            ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_channels
+
+            attr_reader recording_status_callback: String?
+
+            def recording_status_callback=: (String) -> String
+
+            attr_reader recording_status_callback_event: String?
+
+            def recording_status_callback_event=: (String) -> String
+
+            attr_reader recording_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_status_callback_method?
+
+            def recording_status_callback_method=: (
+              Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_status_callback_method
+            ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_status_callback_method
+
+            attr_reader recording_track: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_track?
+
+            def recording_track=: (
+              Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_track
+            ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_track
+
+            attr_reader sip_auth_password: String?
+
+            def sip_auth_password=: (String) -> String
+
+            attr_reader sip_auth_username: String?
+
+            def sip_auth_username=: (String) -> String
+
+            attr_reader start_conference_on_enter: bool?
+
+            def start_conference_on_enter=: (bool) -> bool
+
+            attr_reader status_callback: String?
+
+            def status_callback=: (String) -> String
+
+            attr_reader status_callback_event: String?
+
+            def status_callback_event=: (String) -> String
+
+            attr_reader status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::status_callback_method?
+
+            def status_callback_method=: (
+              Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::status_callback_method
+            ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::status_callback_method
+
+            attr_reader time_limit: Integer?
+
+            def time_limit=: (Integer) -> Integer
+
+            attr_reader timeout_seconds: Integer?
+
+            def timeout_seconds=: (Integer) -> Integer
+
+            attr_reader to: String?
+
+            def to=: (String) -> String
+
+            attr_reader trim: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::trim?
+
+            def trim=: (
+              Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::trim
+            ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::trim
+
+            attr_reader wait_url: String?
+
+            def wait_url=: (String) -> String
+
+            def initialize: (
+              account_sid: String,
+              ?amd_status_callback: String,
+              ?amd_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::amd_status_callback_method,
+              ?beep: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::beep,
+              ?caller_id: String,
+              ?call_sid_to_coach: String,
+              ?cancel_playback_on_detect_message_end: bool,
+              ?cancel_playback_on_machine_detection: bool,
+              ?coaching: bool,
+              ?conference_record: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_record,
+              ?conference_recording_status_callback: String,
+              ?conference_recording_status_callback_event: String,
+              ?conference_recording_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_recording_status_callback_method,
+              ?conference_recording_timeout: Integer,
+              ?conference_status_callback: String,
+              ?conference_status_callback_event: String,
+              ?conference_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_status_callback_method,
+              ?conference_trim: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_trim,
+              ?early_media: bool,
+              ?end_conference_on_exit: bool,
+              ?from: String,
+              ?machine_detection: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection,
+              ?machine_detection_silence_timeout: Integer,
+              ?machine_detection_speech_end_threshold: Integer,
+              ?machine_detection_speech_threshold: Integer,
+              ?machine_detection_timeout: Integer,
+              ?max_participants: Integer,
+              ?muted: bool,
+              ?preferred_codecs: String,
+              ?record: bool,
+              ?recording_channels: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_channels,
+              ?recording_status_callback: String,
+              ?recording_status_callback_event: String,
+              ?recording_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_status_callback_method,
+              ?recording_track: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_track,
+              ?sip_auth_password: String,
+              ?sip_auth_username: String,
+              ?start_conference_on_enter: bool,
+              ?status_callback: String,
+              ?status_callback_event: String,
+              ?status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::status_callback_method,
+              ?time_limit: Integer,
+              ?timeout_seconds: Integer,
+              ?to: String,
+              ?trim: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::trim,
+              ?wait_url: String,
+              ?request_options: Telnyx::request_opts
+            ) -> void
+
+            def to_hash: -> {
+              account_sid: String,
+              amd_status_callback: String,
+              amd_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::amd_status_callback_method,
+              beep: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::beep,
+              caller_id: String,
+              call_sid_to_coach: String,
+              cancel_playback_on_detect_message_end: bool,
+              cancel_playback_on_machine_detection: bool,
+              coaching: bool,
+              conference_record: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_record,
+              conference_recording_status_callback: String,
+              conference_recording_status_callback_event: String,
+              conference_recording_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_recording_status_callback_method,
+              conference_recording_timeout: Integer,
+              conference_status_callback: String,
+              conference_status_callback_event: String,
+              conference_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_status_callback_method,
+              conference_trim: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_trim,
+              early_media: bool,
+              end_conference_on_exit: bool,
+              from: String,
+              machine_detection: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection,
+              machine_detection_silence_timeout: Integer,
+              machine_detection_speech_end_threshold: Integer,
+              machine_detection_speech_threshold: Integer,
+              machine_detection_timeout: Integer,
+              max_participants: Integer,
+              muted: bool,
+              preferred_codecs: String,
+              record: bool,
+              recording_channels: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_channels,
+              recording_status_callback: String,
+              recording_status_callback_event: String,
+              recording_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_status_callback_method,
+              recording_track: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_track,
+              sip_auth_password: String,
+              sip_auth_username: String,
+              start_conference_on_enter: bool,
+              status_callback: String,
+              status_callback_event: String,
+              status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::status_callback_method,
+              time_limit: Integer,
+              timeout_seconds: Integer,
+              to: String,
+              trim: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::trim,
+              wait_url: String,
+              request_options: Telnyx::RequestOptions
+            }
+
+            type amd_status_callback_method = :GET | :POST
+
+            module AmdStatusCallbackMethod
+              extend Telnyx::Internal::Type::Enum
+
+              GET: :GET
+              POST: :POST
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::amd_status_callback_method]
+            end
+
+            type beep = :true | :false | :onEnter | :onExit
+
+            module Beep
+              extend Telnyx::Internal::Type::Enum
+
+              TRUE: :true
+              FALSE: :false
+              ON_ENTER: :onEnter
+              ON_EXIT: :onExit
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::beep]
+            end
+
+            type conference_record =
+              :true | :false | :"record-from-start" | :"do-not-record"
+
+            module ConferenceRecord
+              extend Telnyx::Internal::Type::Enum
+
+              TRUE: :true
+              FALSE: :false
+              RECORD_FROM_START: :"record-from-start"
+              DO_NOT_RECORD: :"do-not-record"
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_record]
+            end
+
+            type conference_recording_status_callback_method = :GET | :POST
+
+            module ConferenceRecordingStatusCallbackMethod
+              extend Telnyx::Internal::Type::Enum
+
+              GET: :GET
+              POST: :POST
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_recording_status_callback_method]
+            end
+
+            type conference_status_callback_method = :GET | :POST
+
+            module ConferenceStatusCallbackMethod
+              extend Telnyx::Internal::Type::Enum
+
+              GET: :GET
+              POST: :POST
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_status_callback_method]
+            end
+
+            type conference_trim = :"trim-silence" | :"do-not-trim"
+
+            module ConferenceTrim
+              extend Telnyx::Internal::Type::Enum
+
+              TRIM_SILENCE: :"trim-silence"
+              DO_NOT_TRIM: :"do-not-trim"
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_trim]
+            end
+
+            type machine_detection = :Enable | :DetectMessageEnd
+
+            module MachineDetection
+              extend Telnyx::Internal::Type::Enum
+
+              ENABLE: :Enable
+              DETECT_MESSAGE_END: :DetectMessageEnd
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection]
+            end
+
+            type recording_channels = :mono | :dual
+
+            module RecordingChannels
+              extend Telnyx::Internal::Type::Enum
+
+              MONO: :mono
+              DUAL: :dual
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_channels]
+            end
+
+            type recording_status_callback_method = :GET | :POST
+
+            module RecordingStatusCallbackMethod
+              extend Telnyx::Internal::Type::Enum
+
+              GET: :GET
+              POST: :POST
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_status_callback_method]
+            end
+
+            type recording_track = :inbound | :outbound | :both
+
+            module RecordingTrack
+              extend Telnyx::Internal::Type::Enum
+
+              INBOUND: :inbound
+              OUTBOUND: :outbound
+              BOTH: :both
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::recording_track]
+            end
+
+            type status_callback_method = :GET | :POST
+
+            module StatusCallbackMethod
+              extend Telnyx::Internal::Type::Enum
+
+              GET: :GET
+              POST: :POST
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::status_callback_method]
+            end
+
+            type trim = :"trim-silence" | :"do-not-trim"
+
+            module Trim
+              extend Telnyx::Internal::Type::Enum
+
+              TRIM_SILENCE: :"trim-silence"
+              DO_NOT_TRIM: :"do-not-trim"
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::trim]
+            end
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,14 @@
+module Telnyx
+  module Resources
+    class ChargesBreakdown
+      def retrieve: (
+        start_date: Date,
+        ?end_date: Date,
+        ?format_: Telnyx::Models::ChargesBreakdownRetrieveParams::format_,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ChargesBreakdownRetrieveResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

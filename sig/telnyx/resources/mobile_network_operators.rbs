@@ -1,0 +1,13 @@
+module Telnyx
+  module Resources
+    class MobileNetworkOperators
+      def list: (
+        ?filter: Telnyx::MobileNetworkOperatorListParams::Filter,
+        ?page: Telnyx::MobileNetworkOperatorListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MobileNetworkOperatorListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end
