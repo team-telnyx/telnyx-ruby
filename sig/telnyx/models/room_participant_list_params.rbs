@@ -1,0 +1,168 @@
+module Telnyx
+  module Models
+    type room_participant_list_params =
+      {
+        filter: Telnyx::RoomParticipantListParams::Filter,
+        page: Telnyx::RoomParticipantListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class RoomParticipantListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::RoomParticipantListParams::Filter?
+
+      def filter=: (
+        Telnyx::RoomParticipantListParams::Filter
+      ) -> Telnyx::RoomParticipantListParams::Filter
+
+      attr_reader page: Telnyx::RoomParticipantListParams::Page?
+
+      def page=: (
+        Telnyx::RoomParticipantListParams::Page
+      ) -> Telnyx::RoomParticipantListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::RoomParticipantListParams::Filter,
+        ?page: Telnyx::RoomParticipantListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::RoomParticipantListParams::Filter,
+        page: Telnyx::RoomParticipantListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          context: String,
+          date_joined_at: Telnyx::RoomParticipantListParams::Filter::DateJoinedAt,
+          date_left_at: Telnyx::RoomParticipantListParams::Filter::DateLeftAt,
+          date_updated_at: Telnyx::RoomParticipantListParams::Filter::DateUpdatedAt,
+          session_id: String
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader context: String?
+
+        def context=: (String) -> String
+
+        attr_reader date_joined_at: Telnyx::RoomParticipantListParams::Filter::DateJoinedAt?
+
+        def date_joined_at=: (
+          Telnyx::RoomParticipantListParams::Filter::DateJoinedAt
+        ) -> Telnyx::RoomParticipantListParams::Filter::DateJoinedAt
+
+        attr_reader date_left_at: Telnyx::RoomParticipantListParams::Filter::DateLeftAt?
+
+        def date_left_at=: (
+          Telnyx::RoomParticipantListParams::Filter::DateLeftAt
+        ) -> Telnyx::RoomParticipantListParams::Filter::DateLeftAt
+
+        attr_reader date_updated_at: Telnyx::RoomParticipantListParams::Filter::DateUpdatedAt?
+
+        def date_updated_at=: (
+          Telnyx::RoomParticipantListParams::Filter::DateUpdatedAt
+        ) -> Telnyx::RoomParticipantListParams::Filter::DateUpdatedAt
+
+        attr_reader session_id: String?
+
+        def session_id=: (String) -> String
+
+        def initialize: (
+          ?context: String,
+          ?date_joined_at: Telnyx::RoomParticipantListParams::Filter::DateJoinedAt,
+          ?date_left_at: Telnyx::RoomParticipantListParams::Filter::DateLeftAt,
+          ?date_updated_at: Telnyx::RoomParticipantListParams::Filter::DateUpdatedAt,
+          ?session_id: String
+        ) -> void
+
+        def to_hash: -> {
+          context: String,
+          date_joined_at: Telnyx::RoomParticipantListParams::Filter::DateJoinedAt,
+          date_left_at: Telnyx::RoomParticipantListParams::Filter::DateLeftAt,
+          date_updated_at: Telnyx::RoomParticipantListParams::Filter::DateUpdatedAt,
+          session_id: String
+        }
+
+        type date_joined_at = { eq: Date, gte: Date, lte: Date }
+
+        class DateJoinedAt < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: Date?
+
+          def eq=: (Date) -> Date
+
+          attr_reader gte: Date?
+
+          def gte=: (Date) -> Date
+
+          attr_reader lte: Date?
+
+          def lte=: (Date) -> Date
+
+          def initialize: (?eq: Date, ?gte: Date, ?lte: Date) -> void
+
+          def to_hash: -> { eq: Date, gte: Date, lte: Date }
+        end
+
+        type date_left_at = { eq: Date, gte: Date, lte: Date }
+
+        class DateLeftAt < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: Date?
+
+          def eq=: (Date) -> Date
+
+          attr_reader gte: Date?
+
+          def gte=: (Date) -> Date
+
+          attr_reader lte: Date?
+
+          def lte=: (Date) -> Date
+
+          def initialize: (?eq: Date, ?gte: Date, ?lte: Date) -> void
+
+          def to_hash: -> { eq: Date, gte: Date, lte: Date }
+        end
+
+        type date_updated_at = { eq: Date, gte: Date, lte: Date }
+
+        class DateUpdatedAt < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: Date?
+
+          def eq=: (Date) -> Date
+
+          attr_reader gte: Date?
+
+          def gte=: (Date) -> Date
+
+          attr_reader lte: Date?
+
+          def lte=: (Date) -> Date
+
+          def initialize: (?eq: Date, ?gte: Date, ?lte: Date) -> void
+
+          def to_hash: -> { eq: Date, gte: Date, lte: Date }
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

@@ -1,0 +1,57 @@
+module Telnyx
+  module Models
+    type portout_list_rejection_codes_params =
+      { filter: Telnyx::PortoutListRejectionCodesParams::Filter }
+      & Telnyx::Internal::Type::request_parameters
+
+    class PortoutListRejectionCodesParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::PortoutListRejectionCodesParams::Filter?
+
+      def filter=: (
+        Telnyx::PortoutListRejectionCodesParams::Filter
+      ) -> Telnyx::PortoutListRejectionCodesParams::Filter
+
+      def initialize: (
+        ?filter: Telnyx::PortoutListRejectionCodesParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::PortoutListRejectionCodesParams::Filter,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        { code: Telnyx::Models::PortoutListRejectionCodesParams::Filter::code }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader code: Telnyx::Models::PortoutListRejectionCodesParams::Filter::code?
+
+        def code=: (
+          Telnyx::Models::PortoutListRejectionCodesParams::Filter::code
+        ) -> Telnyx::Models::PortoutListRejectionCodesParams::Filter::code
+
+        def initialize: (
+          ?code: Telnyx::Models::PortoutListRejectionCodesParams::Filter::code
+        ) -> void
+
+        def to_hash: -> {
+          code: Telnyx::Models::PortoutListRejectionCodesParams::Filter::code
+        }
+
+        type code = Integer | ::Array[Integer]
+
+        module Code
+          extend Telnyx::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Telnyx::Models::PortoutListRejectionCodesParams::Filter::code]
+
+          IntegerArray: Telnyx::Internal::Type::Converter
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,70 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_start_forking_params =
+        {
+          client_state: String,
+          command_id: String,
+          rx: String,
+          stream_type: Telnyx::Models::Calls::ActionStartForkingParams::stream_type,
+          tx: String
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionStartForkingParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader command_id: String?
+
+        def command_id=: (String) -> String
+
+        attr_reader rx: String?
+
+        def rx=: (String) -> String
+
+        attr_reader stream_type: Telnyx::Models::Calls::ActionStartForkingParams::stream_type?
+
+        def stream_type=: (
+          Telnyx::Models::Calls::ActionStartForkingParams::stream_type
+        ) -> Telnyx::Models::Calls::ActionStartForkingParams::stream_type
+
+        attr_reader tx: String?
+
+        def tx=: (String) -> String
+
+        def initialize: (
+          ?client_state: String,
+          ?command_id: String,
+          ?rx: String,
+          ?stream_type: Telnyx::Models::Calls::ActionStartForkingParams::stream_type,
+          ?tx: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          client_state: String,
+          command_id: String,
+          rx: String,
+          stream_type: Telnyx::Models::Calls::ActionStartForkingParams::stream_type,
+          tx: String,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type stream_type = :decrypted
+
+        module StreamType
+          extend Telnyx::Internal::Type::Enum
+
+          DECRYPTED: :decrypted
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartForkingParams::stream_type]
+        end
+      end
+    end
+  end
+end

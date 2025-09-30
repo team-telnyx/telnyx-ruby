@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    type fax_list_response = { data: ::Array[Telnyx::Fax], meta: top }
+
+    class FaxListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Fax]?
+
+      def data=: (::Array[Telnyx::Fax]) -> ::Array[Telnyx::Fax]
+
+      attr_reader meta: top?
+
+      def meta=: (top) -> top
+
+      def initialize: (?data: ::Array[Telnyx::Fax], ?meta: top) -> void
+
+      def to_hash: -> { data: ::Array[Telnyx::Fax], meta: top }
+    end
+  end
+end

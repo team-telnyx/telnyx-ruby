@@ -1,0 +1,40 @@
+module Telnyx
+  module Resources
+    class Legacy
+      class Reporting
+        class UsageReports
+          class Voice
+            def create: (
+              end_time: Time,
+              start_time: Time,
+              ?aggregation_type: Integer,
+              ?connections: ::Array[Integer],
+              ?managed_accounts: ::Array[String],
+              ?product_breakdown: Integer,
+              ?select_all_managed_accounts: bool,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::UsageReports::VoiceCreateResponse
+
+            def retrieve: (
+              String id,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::UsageReports::VoiceRetrieveResponse
+
+            def list: (
+              ?page: Integer,
+              ?per_page: Integer,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::UsageReports::VoiceListResponse
+
+            def delete: (
+              String id,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::UsageReports::VoiceDeleteResponse
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

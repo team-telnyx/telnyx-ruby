@@ -1,0 +1,36 @@
+module Telnyx
+  module Models
+    type network_retrieve_response =
+      { data: Telnyx::Models::NetworkRetrieveResponse::Data }
+
+    class NetworkRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::NetworkRetrieveResponse::Data?
+
+      def data=: (
+        Telnyx::Models::NetworkRetrieveResponse::Data
+      ) -> Telnyx::Models::NetworkRetrieveResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::NetworkRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> { data: Telnyx::Models::NetworkRetrieveResponse::Data }
+
+      type data = { name: String, record_type: String }
+
+      class Data < Telnyx::Models::Record
+        def name: -> String?
+
+        def name=: (String _) -> String
+
+        def record_type: -> String?
+
+        def record_type=: (String _) -> String
+
+        def initialize: (?name: String, ?record_type: String) -> void
+
+        def to_hash: -> { name: String, record_type: String }
+      end
+    end
+  end
+end

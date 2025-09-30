@@ -1,0 +1,133 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        module Conferences
+          type participant_update_response =
+            {
+              account_sid: String,
+              api_version: String,
+              call_sid: String,
+              call_sid_legacy: String,
+              coaching: bool,
+              coaching_call_sid: String,
+              coaching_call_sid_legacy: String,
+              date_created: String,
+              date_updated: String,
+              end_conference_on_exit: bool,
+              hold: bool,
+              muted: bool,
+              status: Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateResponse::status,
+              uri: String
+            }
+
+          class ParticipantUpdateResponse < Telnyx::Internal::Type::BaseModel
+            attr_reader account_sid: String?
+
+            def account_sid=: (String) -> String
+
+            attr_reader api_version: String?
+
+            def api_version=: (String) -> String
+
+            attr_reader call_sid: String?
+
+            def call_sid=: (String) -> String
+
+            attr_reader call_sid_legacy: String?
+
+            def call_sid_legacy=: (String) -> String
+
+            attr_reader coaching: bool?
+
+            def coaching=: (bool) -> bool
+
+            attr_reader coaching_call_sid: String?
+
+            def coaching_call_sid=: (String) -> String
+
+            attr_reader coaching_call_sid_legacy: String?
+
+            def coaching_call_sid_legacy=: (String) -> String
+
+            attr_reader date_created: String?
+
+            def date_created=: (String) -> String
+
+            attr_reader date_updated: String?
+
+            def date_updated=: (String) -> String
+
+            attr_reader end_conference_on_exit: bool?
+
+            def end_conference_on_exit=: (bool) -> bool
+
+            attr_reader hold: bool?
+
+            def hold=: (bool) -> bool
+
+            attr_reader muted: bool?
+
+            def muted=: (bool) -> bool
+
+            attr_reader status: Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateResponse::status?
+
+            def status=: (
+              Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateResponse::status
+            ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateResponse::status
+
+            attr_reader uri: String?
+
+            def uri=: (String) -> String
+
+            def initialize: (
+              ?account_sid: String,
+              ?api_version: String,
+              ?call_sid: String,
+              ?call_sid_legacy: String,
+              ?coaching: bool,
+              ?coaching_call_sid: String,
+              ?coaching_call_sid_legacy: String,
+              ?date_created: String,
+              ?date_updated: String,
+              ?end_conference_on_exit: bool,
+              ?hold: bool,
+              ?muted: bool,
+              ?status: Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateResponse::status,
+              ?uri: String
+            ) -> void
+
+            def to_hash: -> {
+              account_sid: String,
+              api_version: String,
+              call_sid: String,
+              call_sid_legacy: String,
+              coaching: bool,
+              coaching_call_sid: String,
+              coaching_call_sid_legacy: String,
+              date_created: String,
+              date_updated: String,
+              end_conference_on_exit: bool,
+              hold: bool,
+              muted: bool,
+              status: Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateResponse::status,
+              uri: String
+            }
+
+            type status = :connecting | :connected | :completed
+
+            module Status
+              extend Telnyx::Internal::Type::Enum
+
+              CONNECTING: :connecting
+              CONNECTED: :connected
+              COMPLETED: :completed
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateResponse::status]
+            end
+          end
+        end
+      end
+    end
+  end
+end

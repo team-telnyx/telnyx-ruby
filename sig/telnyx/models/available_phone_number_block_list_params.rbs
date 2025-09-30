@@ -1,0 +1,85 @@
+module Telnyx
+  module Models
+    type available_phone_number_block_list_params =
+      { filter: Telnyx::AvailablePhoneNumberBlockListParams::Filter }
+      & Telnyx::Internal::Type::request_parameters
+
+    class AvailablePhoneNumberBlockListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::AvailablePhoneNumberBlockListParams::Filter?
+
+      def filter=: (
+        Telnyx::AvailablePhoneNumberBlockListParams::Filter
+      ) -> Telnyx::AvailablePhoneNumberBlockListParams::Filter
+
+      def initialize: (
+        ?filter: Telnyx::AvailablePhoneNumberBlockListParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::AvailablePhoneNumberBlockListParams::Filter,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          country_code: String,
+          locality: String,
+          national_destination_code: String,
+          phone_number_type: Telnyx::Models::AvailablePhoneNumberBlockListParams::Filter::phone_number_type
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader locality: String?
+
+        def locality=: (String) -> String
+
+        attr_reader national_destination_code: String?
+
+        def national_destination_code=: (String) -> String
+
+        attr_reader phone_number_type: Telnyx::Models::AvailablePhoneNumberBlockListParams::Filter::phone_number_type?
+
+        def phone_number_type=: (
+          Telnyx::Models::AvailablePhoneNumberBlockListParams::Filter::phone_number_type
+        ) -> Telnyx::Models::AvailablePhoneNumberBlockListParams::Filter::phone_number_type
+
+        def initialize: (
+          ?country_code: String,
+          ?locality: String,
+          ?national_destination_code: String,
+          ?phone_number_type: Telnyx::Models::AvailablePhoneNumberBlockListParams::Filter::phone_number_type
+        ) -> void
+
+        def to_hash: -> {
+          country_code: String,
+          locality: String,
+          national_destination_code: String,
+          phone_number_type: Telnyx::Models::AvailablePhoneNumberBlockListParams::Filter::phone_number_type
+        }
+
+        type phone_number_type =
+          :local | :toll_free | :mobile | :national | :shared_cost
+
+        module PhoneNumberType
+          extend Telnyx::Internal::Type::Enum
+
+          LOCAL: :local
+          TOLL_FREE: :toll_free
+          MOBILE: :mobile
+          NATIONAL: :national
+          SHARED_COST: :shared_cost
+
+          def self?.values: -> ::Array[Telnyx::Models::AvailablePhoneNumberBlockListParams::Filter::phone_number_type]
+        end
+      end
+    end
+  end
+end

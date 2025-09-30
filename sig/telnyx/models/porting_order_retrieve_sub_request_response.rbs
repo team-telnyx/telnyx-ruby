@@ -1,0 +1,41 @@
+module Telnyx
+  module Models
+    type porting_order_retrieve_sub_request_response =
+      { data: Telnyx::Models::PortingOrderRetrieveSubRequestResponse::Data }
+
+    class PortingOrderRetrieveSubRequestResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::PortingOrderRetrieveSubRequestResponse::Data?
+
+      def data=: (
+        Telnyx::Models::PortingOrderRetrieveSubRequestResponse::Data
+      ) -> Telnyx::Models::PortingOrderRetrieveSubRequestResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::PortingOrderRetrieveSubRequestResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::PortingOrderRetrieveSubRequestResponse::Data
+      }
+
+      type data = { port_request_id: String, sub_request_id: String }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader port_request_id: String?
+
+        def port_request_id=: (String) -> String
+
+        attr_reader sub_request_id: String?
+
+        def sub_request_id=: (String) -> String
+
+        def initialize: (
+          ?port_request_id: String,
+          ?sub_request_id: String
+        ) -> void
+
+        def to_hash: -> { port_request_id: String, sub_request_id: String }
+      end
+    end
+  end
+end

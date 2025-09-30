@@ -1,0 +1,11 @@
+module Telnyx
+  module Resources
+    class AI
+      class FineTuning
+        attr_reader jobs: Telnyx::Resources::AI::FineTuning::Jobs
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

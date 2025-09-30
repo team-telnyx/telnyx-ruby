@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type authentication_provider_delete_response =
+      { data: Telnyx::AuthenticationProvider }
+
+    class AuthenticationProviderDeleteResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::AuthenticationProvider?
+
+      def data=: (
+        Telnyx::AuthenticationProvider
+      ) -> Telnyx::AuthenticationProvider
+
+      def initialize: (?data: Telnyx::AuthenticationProvider) -> void
+
+      def to_hash: -> { data: Telnyx::AuthenticationProvider }
+    end
+  end
+end

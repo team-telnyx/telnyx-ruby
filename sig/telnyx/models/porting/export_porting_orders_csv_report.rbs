@@ -1,0 +1,87 @@
+module Telnyx
+  module Models
+    module Porting
+      type export_porting_orders_csv_report =
+        { filters: Telnyx::Porting::ExportPortingOrdersCsvReport::Filters }
+
+      class ExportPortingOrdersCsvReport < Telnyx::Internal::Type::BaseModel
+        attr_accessor filters: Telnyx::Porting::ExportPortingOrdersCsvReport::Filters
+
+        def initialize: (
+          filters: Telnyx::Porting::ExportPortingOrdersCsvReport::Filters
+        ) -> void
+
+        def to_hash: -> {
+          filters: Telnyx::Porting::ExportPortingOrdersCsvReport::Filters
+        }
+
+        type filters =
+          {
+            created_at_gt: Time,
+            created_at_lt: Time,
+            customer_reference_in: ::Array[String],
+            status_in: ::Array[Telnyx::Models::Porting::ExportPortingOrdersCsvReport::Filters::status_in]
+          }
+
+        class Filters < Telnyx::Internal::Type::BaseModel
+          attr_reader created_at_gt: Time?
+
+          def created_at_gt=: (Time) -> Time
+
+          attr_reader created_at_lt: Time?
+
+          def created_at_lt=: (Time) -> Time
+
+          attr_reader customer_reference_in: ::Array[String]?
+
+          def customer_reference_in=: (::Array[String]) -> ::Array[String]
+
+          attr_reader status_in: ::Array[Telnyx::Models::Porting::ExportPortingOrdersCsvReport::Filters::status_in]?
+
+          def status_in=: (
+            ::Array[Telnyx::Models::Porting::ExportPortingOrdersCsvReport::Filters::status_in]
+          ) -> ::Array[Telnyx::Models::Porting::ExportPortingOrdersCsvReport::Filters::status_in]
+
+          def initialize: (
+            ?created_at_gt: Time,
+            ?created_at_lt: Time,
+            ?customer_reference_in: ::Array[String],
+            ?status_in: ::Array[Telnyx::Models::Porting::ExportPortingOrdersCsvReport::Filters::status_in]
+          ) -> void
+
+          def to_hash: -> {
+            created_at_gt: Time,
+            created_at_lt: Time,
+            customer_reference_in: ::Array[String],
+            status_in: ::Array[Telnyx::Models::Porting::ExportPortingOrdersCsvReport::Filters::status_in]
+          }
+
+          type status_in =
+            :draft
+            | :"in-process"
+            | :submitted
+            | :exception
+            | :"foc-date-confirmed"
+            | :"cancel-pending"
+            | :ported
+            | :cancelled
+
+          module StatusIn
+            extend Telnyx::Internal::Type::Enum
+
+            DRAFT: :draft
+            IN_PROCESS: :"in-process"
+            SUBMITTED: :submitted
+            EXCEPTION: :exception
+            FOC_DATE_CONFIRMED: :"foc-date-confirmed"
+            CANCEL_PENDING: :"cancel-pending"
+            PORTED: :ported
+            CANCELLED: :cancelled
+
+            def self?.values: -> ::Array[Telnyx::Models::Porting::ExportPortingOrdersCsvReport::Filters::status_in]
+          end
+        end
+      end
+    end
+  end
+end

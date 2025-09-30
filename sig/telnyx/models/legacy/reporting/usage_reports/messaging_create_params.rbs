@@ -1,0 +1,67 @@
+module Telnyx
+  module Models
+    module Legacy
+      module Reporting
+        module UsageReports
+          type messaging_create_params =
+            {
+              aggregation_type: Integer,
+              end_time: Time,
+              managed_accounts: ::Array[String],
+              profiles: ::Array[String],
+              select_all_managed_accounts: bool,
+              start_time: Time
+            }
+            & Telnyx::Internal::Type::request_parameters
+
+          class MessagingCreateParams < Telnyx::Internal::Type::BaseModel
+            extend Telnyx::Internal::Type::RequestParameters::Converter
+            include Telnyx::Internal::Type::RequestParameters
+
+            attr_accessor aggregation_type: Integer
+
+            attr_reader end_time: Time?
+
+            def end_time=: (Time) -> Time
+
+            attr_reader managed_accounts: ::Array[String]?
+
+            def managed_accounts=: (::Array[String]) -> ::Array[String]
+
+            attr_reader profiles: ::Array[String]?
+
+            def profiles=: (::Array[String]) -> ::Array[String]
+
+            attr_reader select_all_managed_accounts: bool?
+
+            def select_all_managed_accounts=: (bool) -> bool
+
+            attr_reader start_time: Time?
+
+            def start_time=: (Time) -> Time
+
+            def initialize: (
+              aggregation_type: Integer,
+              ?end_time: Time,
+              ?managed_accounts: ::Array[String],
+              ?profiles: ::Array[String],
+              ?select_all_managed_accounts: bool,
+              ?start_time: Time,
+              ?request_options: Telnyx::request_opts
+            ) -> void
+
+            def to_hash: -> {
+              aggregation_type: Integer,
+              end_time: Time,
+              managed_accounts: ::Array[String],
+              profiles: ::Array[String],
+              select_all_managed_accounts: bool,
+              start_time: Time,
+              request_options: Telnyx::RequestOptions
+            }
+          end
+        end
+      end
+    end
+  end
+end

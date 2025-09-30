@@ -1,0 +1,179 @@
+module Telnyx
+  module Models
+    type address_list_params =
+      {
+        filter: Telnyx::AddressListParams::Filter,
+        page: Telnyx::AddressListParams::Page,
+        sort: Telnyx::Models::AddressListParams::sort
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class AddressListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::AddressListParams::Filter?
+
+      def filter=: (
+        Telnyx::AddressListParams::Filter
+      ) -> Telnyx::AddressListParams::Filter
+
+      attr_reader page: Telnyx::AddressListParams::Page?
+
+      def page=: (
+        Telnyx::AddressListParams::Page
+      ) -> Telnyx::AddressListParams::Page
+
+      attr_reader sort: Telnyx::Models::AddressListParams::sort?
+
+      def sort=: (
+        Telnyx::Models::AddressListParams::sort
+      ) -> Telnyx::Models::AddressListParams::sort
+
+      def initialize: (
+        ?filter: Telnyx::AddressListParams::Filter,
+        ?page: Telnyx::AddressListParams::Page,
+        ?sort: Telnyx::Models::AddressListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::AddressListParams::Filter,
+        page: Telnyx::AddressListParams::Page,
+        sort: Telnyx::Models::AddressListParams::sort,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          address_book: Telnyx::AddressListParams::Filter::AddressBook,
+          customer_reference: Telnyx::Models::AddressListParams::Filter::customer_reference,
+          street_address: Telnyx::AddressListParams::Filter::StreetAddress,
+          used_as_emergency: String
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader address_book: Telnyx::AddressListParams::Filter::AddressBook?
+
+        def address_book=: (
+          Telnyx::AddressListParams::Filter::AddressBook
+        ) -> Telnyx::AddressListParams::Filter::AddressBook
+
+        attr_reader customer_reference: Telnyx::Models::AddressListParams::Filter::customer_reference?
+
+        def customer_reference=: (
+          Telnyx::Models::AddressListParams::Filter::customer_reference
+        ) -> Telnyx::Models::AddressListParams::Filter::customer_reference
+
+        attr_reader street_address: Telnyx::AddressListParams::Filter::StreetAddress?
+
+        def street_address=: (
+          Telnyx::AddressListParams::Filter::StreetAddress
+        ) -> Telnyx::AddressListParams::Filter::StreetAddress
+
+        attr_reader used_as_emergency: String?
+
+        def used_as_emergency=: (String) -> String
+
+        def initialize: (
+          ?address_book: Telnyx::AddressListParams::Filter::AddressBook,
+          ?customer_reference: Telnyx::Models::AddressListParams::Filter::customer_reference,
+          ?street_address: Telnyx::AddressListParams::Filter::StreetAddress,
+          ?used_as_emergency: String
+        ) -> void
+
+        def to_hash: -> {
+          address_book: Telnyx::AddressListParams::Filter::AddressBook,
+          customer_reference: Telnyx::Models::AddressListParams::Filter::customer_reference,
+          street_address: Telnyx::AddressListParams::Filter::StreetAddress,
+          used_as_emergency: String
+        }
+
+        type address_book = { eq: String }
+
+        class AddressBook < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: String?
+
+          def eq=: (String) -> String
+
+          def initialize: (?eq: String) -> void
+
+          def to_hash: -> { eq: String }
+        end
+
+        type customer_reference =
+          String
+          | Telnyx::AddressListParams::Filter::CustomerReference::UnionMember1
+
+        module CustomerReference
+          extend Telnyx::Internal::Type::Union
+
+          type union_member1 = { contains: String, eq: String }
+
+          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            attr_reader contains: String?
+
+            def contains=: (String) -> String
+
+            attr_reader eq: String?
+
+            def eq=: (String) -> String
+
+            def initialize: (?contains: String, ?eq: String) -> void
+
+            def to_hash: -> { contains: String, eq: String }
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::AddressListParams::Filter::customer_reference]
+        end
+
+        type street_address = { contains: String }
+
+        class StreetAddress < Telnyx::Internal::Type::BaseModel
+          attr_reader contains: String?
+
+          def contains=: (String) -> String
+
+          def initialize: (?contains: String) -> void
+
+          def to_hash: -> { contains: String }
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+
+      type sort =
+        :created_at
+        | :first_name
+        | :last_name
+        | :business_name
+        | :street_address
+
+      module Sort
+        extend Telnyx::Internal::Type::Enum
+
+        CREATED_AT: :created_at
+        FIRST_NAME: :first_name
+        LAST_NAME: :last_name
+        BUSINESS_NAME: :business_name
+        STREET_ADDRESS: :street_address
+
+        def self?.values: -> ::Array[Telnyx::Models::AddressListParams::sort]
+      end
+    end
+  end
+end

@@ -1,0 +1,17 @@
+module Telnyx
+  module Resources
+    class Legacy
+      class Reporting
+        class BatchDetailRecords
+          attr_reader messaging: Telnyx::Resources::Legacy::Reporting::BatchDetailRecords::Messaging
+
+          attr_reader speech_to_text: Telnyx::Resources::Legacy::Reporting::BatchDetailRecords::SpeechToText
+
+          attr_reader voice: Telnyx::Resources::Legacy::Reporting::BatchDetailRecords::Voice
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

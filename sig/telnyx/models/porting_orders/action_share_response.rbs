@@ -1,0 +1,106 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type action_share_response =
+        { data: Telnyx::Models::PortingOrders::ActionShareResponse::Data }
+
+      class ActionShareResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::PortingOrders::ActionShareResponse::Data?
+
+        def data=: (
+          Telnyx::Models::PortingOrders::ActionShareResponse::Data
+        ) -> Telnyx::Models::PortingOrders::ActionShareResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::PortingOrders::ActionShareResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::PortingOrders::ActionShareResponse::Data
+        }
+
+        type data =
+          {
+            id: String,
+            token: String,
+            created_at: Time,
+            expires_at: Time,
+            expires_in_seconds: Integer,
+            permissions: ::Array[Telnyx::Models::PortingOrders::ActionShareResponse::Data::permission],
+            porting_order_id: String,
+            record_type: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader token: String?
+
+          def token=: (String) -> String
+
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader expires_at: Time?
+
+          def expires_at=: (Time) -> Time
+
+          attr_reader expires_in_seconds: Integer?
+
+          def expires_in_seconds=: (Integer) -> Integer
+
+          attr_reader permissions: ::Array[Telnyx::Models::PortingOrders::ActionShareResponse::Data::permission]?
+
+          def permissions=: (
+            ::Array[Telnyx::Models::PortingOrders::ActionShareResponse::Data::permission]
+          ) -> ::Array[Telnyx::Models::PortingOrders::ActionShareResponse::Data::permission]
+
+          attr_reader porting_order_id: String?
+
+          def porting_order_id=: (String) -> String
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?token: String,
+            ?created_at: Time,
+            ?expires_at: Time,
+            ?expires_in_seconds: Integer,
+            ?permissions: ::Array[Telnyx::Models::PortingOrders::ActionShareResponse::Data::permission],
+            ?porting_order_id: String,
+            ?record_type: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            token: String,
+            created_at: Time,
+            expires_at: Time,
+            expires_in_seconds: Integer,
+            permissions: ::Array[Telnyx::Models::PortingOrders::ActionShareResponse::Data::permission],
+            porting_order_id: String,
+            record_type: String
+          }
+
+          type permission =
+            :"porting_order.document.read" | :"porting_order.document.update"
+
+          module Permission
+            extend Telnyx::Internal::Type::Enum
+
+            PORTING_ORDER_DOCUMENT_READ: :"porting_order.document.read"
+            PORTING_ORDER_DOCUMENT_UPDATE: :"porting_order.document.update"
+
+            def self?.values: -> ::Array[Telnyx::Models::PortingOrders::ActionShareResponse::Data::permission]
+          end
+        end
+      end
+    end
+  end
+end

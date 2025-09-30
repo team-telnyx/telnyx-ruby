@@ -1,0 +1,217 @@
+module Telnyx
+  module Models
+    type verify_profile =
+      {
+        id: String,
+        call: Telnyx::VerifyProfile::Call,
+        created_at: String,
+        flashcall: Telnyx::VerifyProfile::Flashcall,
+        language: String,
+        name: String,
+        record_type: Telnyx::Models::VerifyProfile::record_type,
+        sms: Telnyx::VerifyProfile::SMS,
+        updated_at: String,
+        webhook_failover_url: String,
+        webhook_url: String
+      }
+
+    class VerifyProfile < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader call: Telnyx::VerifyProfile::Call?
+
+      def call=: (Telnyx::VerifyProfile::Call) -> Telnyx::VerifyProfile::Call
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader flashcall: Telnyx::VerifyProfile::Flashcall?
+
+      def flashcall=: (
+        Telnyx::VerifyProfile::Flashcall
+      ) -> Telnyx::VerifyProfile::Flashcall
+
+      attr_reader language: String?
+
+      def language=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader record_type: Telnyx::Models::VerifyProfile::record_type?
+
+      def record_type=: (
+        Telnyx::Models::VerifyProfile::record_type
+      ) -> Telnyx::Models::VerifyProfile::record_type
+
+      attr_reader sms: Telnyx::VerifyProfile::SMS?
+
+      def sms=: (Telnyx::VerifyProfile::SMS) -> Telnyx::VerifyProfile::SMS
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      attr_reader webhook_failover_url: String?
+
+      def webhook_failover_url=: (String) -> String
+
+      attr_reader webhook_url: String?
+
+      def webhook_url=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?call: Telnyx::VerifyProfile::Call,
+        ?created_at: String,
+        ?flashcall: Telnyx::VerifyProfile::Flashcall,
+        ?language: String,
+        ?name: String,
+        ?record_type: Telnyx::Models::VerifyProfile::record_type,
+        ?sms: Telnyx::VerifyProfile::SMS,
+        ?updated_at: String,
+        ?webhook_failover_url: String,
+        ?webhook_url: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        call: Telnyx::VerifyProfile::Call,
+        created_at: String,
+        flashcall: Telnyx::VerifyProfile::Flashcall,
+        language: String,
+        name: String,
+        record_type: Telnyx::Models::VerifyProfile::record_type,
+        sms: Telnyx::VerifyProfile::SMS,
+        updated_at: String,
+        webhook_failover_url: String,
+        webhook_url: String
+      }
+
+      type call =
+        {
+          app_name: String,
+          code_length: Integer,
+          default_verification_timeout_secs: Integer,
+          messaging_template_id: String,
+          whitelisted_destinations: ::Array[String]
+        }
+
+      class Call < Telnyx::Internal::Type::BaseModel
+        attr_reader app_name: String?
+
+        def app_name=: (String) -> String
+
+        attr_reader code_length: Integer?
+
+        def code_length=: (Integer) -> Integer
+
+        attr_reader default_verification_timeout_secs: Integer?
+
+        def default_verification_timeout_secs=: (Integer) -> Integer
+
+        attr_reader messaging_template_id: String?
+
+        def messaging_template_id=: (String) -> String
+
+        attr_reader whitelisted_destinations: ::Array[String]?
+
+        def whitelisted_destinations=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          ?app_name: String,
+          ?code_length: Integer,
+          ?default_verification_timeout_secs: Integer,
+          ?messaging_template_id: String,
+          ?whitelisted_destinations: ::Array[String]
+        ) -> void
+
+        def to_hash: -> {
+          app_name: String,
+          code_length: Integer,
+          default_verification_timeout_secs: Integer,
+          messaging_template_id: String,
+          whitelisted_destinations: ::Array[String]
+        }
+      end
+
+      type flashcall = { default_verification_timeout_secs: Integer }
+
+      class Flashcall < Telnyx::Internal::Type::BaseModel
+        attr_reader default_verification_timeout_secs: Integer?
+
+        def default_verification_timeout_secs=: (Integer) -> Integer
+
+        def initialize: (?default_verification_timeout_secs: Integer) -> void
+
+        def to_hash: -> { default_verification_timeout_secs: Integer }
+      end
+
+      type record_type = :verification_profile
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        VERIFICATION_PROFILE: :verification_profile
+
+        def self?.values: -> ::Array[Telnyx::Models::VerifyProfile::record_type]
+      end
+
+      type sms =
+        {
+          alpha_sender: String?,
+          app_name: String,
+          code_length: Integer,
+          default_verification_timeout_secs: Integer,
+          messaging_template_id: String,
+          whitelisted_destinations: ::Array[String]
+        }
+
+      class SMS < Telnyx::Internal::Type::BaseModel
+        attr_accessor alpha_sender: String?
+
+        attr_reader app_name: String?
+
+        def app_name=: (String) -> String
+
+        attr_reader code_length: Integer?
+
+        def code_length=: (Integer) -> Integer
+
+        attr_reader default_verification_timeout_secs: Integer?
+
+        def default_verification_timeout_secs=: (Integer) -> Integer
+
+        attr_reader messaging_template_id: String?
+
+        def messaging_template_id=: (String) -> String
+
+        attr_reader whitelisted_destinations: ::Array[String]?
+
+        def whitelisted_destinations=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          ?alpha_sender: String?,
+          ?app_name: String,
+          ?code_length: Integer,
+          ?default_verification_timeout_secs: Integer,
+          ?messaging_template_id: String,
+          ?whitelisted_destinations: ::Array[String]
+        ) -> void
+
+        def to_hash: -> {
+          alpha_sender: String?,
+          app_name: String,
+          code_length: Integer,
+          default_verification_timeout_secs: Integer,
+          messaging_template_id: String,
+          whitelisted_destinations: ::Array[String]
+        }
+      end
+    end
+  end
+end

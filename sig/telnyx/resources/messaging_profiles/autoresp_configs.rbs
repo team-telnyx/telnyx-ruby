@@ -1,0 +1,48 @@
+module Telnyx
+  module Resources
+    class MessagingProfiles
+      class AutorespConfigs
+        def create: (
+          String profile_id,
+          country_code: String,
+          keywords: ::Array[String],
+          op: Telnyx::Models::MessagingProfiles::AutoRespConfigCreate::op,
+          ?resp_text: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::MessagingProfiles::AutoRespConfigResponse
+
+        def retrieve: (
+          String autoresp_cfg_id,
+          profile_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::MessagingProfiles::AutoRespConfigResponse
+
+        def update: (
+          String autoresp_cfg_id,
+          profile_id: String,
+          country_code: String,
+          keywords: ::Array[String],
+          op: Telnyx::Models::MessagingProfiles::AutoRespConfigCreate::op,
+          ?resp_text: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::MessagingProfiles::AutoRespConfigResponse
+
+        def list: (
+          String profile_id,
+          ?country_code: String,
+          ?created_at: Telnyx::MessagingProfiles::AutorespConfigListParams::CreatedAt,
+          ?updated_at: Telnyx::MessagingProfiles::AutorespConfigListParams::UpdatedAt,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::MessagingProfiles::AutorespConfigListResponse
+
+        def delete: (
+          String autoresp_cfg_id,
+          profile_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> top
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

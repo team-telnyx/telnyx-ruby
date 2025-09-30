@@ -1,0 +1,56 @@
+module Telnyx
+  module Resources
+    class PhoneNumbers
+      attr_reader actions: Telnyx::Resources::PhoneNumbers::Actions
+
+      attr_reader csv_downloads: Telnyx::Resources::PhoneNumbers::CsvDownloads
+
+      attr_reader jobs: Telnyx::Resources::PhoneNumbers::Jobs
+
+      attr_reader messaging: Telnyx::Resources::PhoneNumbers::Messaging
+
+      attr_reader voice: Telnyx::Resources::PhoneNumbers::Voice
+
+      attr_reader voicemail: Telnyx::Resources::PhoneNumbers::Voicemail
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PhoneNumberRetrieveResponse
+
+      def update: (
+        String id,
+        ?billing_group_id: String,
+        ?connection_id: String,
+        ?customer_reference: String,
+        ?external_pin: String,
+        ?hd_voice_enabled: bool,
+        ?tags: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PhoneNumberUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::PhoneNumberListParams::Filter,
+        ?page: Telnyx::PhoneNumberListParams::Page,
+        ?sort: Telnyx::Models::PhoneNumberListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PhoneNumberListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PhoneNumberDeleteResponse
+
+      def slim_list: (
+        ?filter: Telnyx::PhoneNumberSlimListParams::Filter,
+        ?include_connection: bool,
+        ?include_tags: bool,
+        ?page: Telnyx::PhoneNumberSlimListParams::Page,
+        ?sort: Telnyx::Models::PhoneNumberSlimListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PhoneNumberSlimListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

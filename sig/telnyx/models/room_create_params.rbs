@@ -1,0 +1,59 @@
+module Telnyx
+  module Models
+    type room_create_params =
+      {
+        enable_recording: bool,
+        max_participants: Integer,
+        unique_name: String,
+        webhook_event_failover_url: String?,
+        webhook_event_url: String,
+        webhook_timeout_secs: Integer?
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class RoomCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader enable_recording: bool?
+
+      def enable_recording=: (bool) -> bool
+
+      attr_reader max_participants: Integer?
+
+      def max_participants=: (Integer) -> Integer
+
+      attr_reader unique_name: String?
+
+      def unique_name=: (String) -> String
+
+      attr_accessor webhook_event_failover_url: String?
+
+      attr_reader webhook_event_url: String?
+
+      def webhook_event_url=: (String) -> String
+
+      attr_accessor webhook_timeout_secs: Integer?
+
+      def initialize: (
+        ?enable_recording: bool,
+        ?max_participants: Integer,
+        ?unique_name: String,
+        ?webhook_event_failover_url: String?,
+        ?webhook_event_url: String,
+        ?webhook_timeout_secs: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        enable_recording: bool,
+        max_participants: Integer,
+        unique_name: String,
+        webhook_event_failover_url: String?,
+        webhook_event_url: String,
+        webhook_timeout_secs: Integer?,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

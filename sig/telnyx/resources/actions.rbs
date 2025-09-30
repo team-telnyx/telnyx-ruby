@@ -1,0 +1,11 @@
+module Telnyx
+  module Resources
+    class Actions
+      attr_reader purchase: Telnyx::Resources::Actions::Purchase
+
+      attr_reader register: Telnyx::Resources::Actions::Register
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type media_update_response = { data: Telnyx::MediaResource }
+
+    class MediaUpdateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::MediaResource?
+
+      def data=: (Telnyx::MediaResource) -> Telnyx::MediaResource
+
+      def initialize: (?data: Telnyx::MediaResource) -> void
+
+      def to_hash: -> { data: Telnyx::MediaResource }
+    end
+  end
+end

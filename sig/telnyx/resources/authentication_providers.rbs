@@ -1,0 +1,42 @@
+module Telnyx
+  module Resources
+    class AuthenticationProviders
+      def create: (
+        name: String,
+        settings: Telnyx::Settings,
+        short_name: String,
+        ?active: bool,
+        ?settings_url: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AuthenticationProviderCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AuthenticationProviderRetrieveResponse
+
+      def update: (
+        String id,
+        ?active: bool,
+        ?name: String,
+        ?settings: Telnyx::Settings,
+        ?settings_url: String,
+        ?short_name: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AuthenticationProviderUpdateResponse
+
+      def list: (
+        ?page: Telnyx::AuthenticationProviderListParams::Page,
+        ?sort: Telnyx::Models::AuthenticationProviderListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AuthenticationProviderListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AuthenticationProviderDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

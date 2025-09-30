@@ -1,0 +1,136 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        type conference_retrieve_response =
+          {
+            account_sid: String,
+            api_version: String,
+            call_sid_ending_conference: String,
+            date_created: String,
+            date_updated: String,
+            friendly_name: String,
+            reason_conference_ended: Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse::reason_conference_ended,
+            region: String,
+            sid: String,
+            status: Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse::status,
+            subresource_uris: ::Hash[Symbol, top],
+            uri: String
+          }
+
+        class ConferenceRetrieveResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader account_sid: String?
+
+          def account_sid=: (String) -> String
+
+          attr_reader api_version: String?
+
+          def api_version=: (String) -> String
+
+          attr_reader call_sid_ending_conference: String?
+
+          def call_sid_ending_conference=: (String) -> String
+
+          attr_reader date_created: String?
+
+          def date_created=: (String) -> String
+
+          attr_reader date_updated: String?
+
+          def date_updated=: (String) -> String
+
+          attr_reader friendly_name: String?
+
+          def friendly_name=: (String) -> String
+
+          attr_reader reason_conference_ended: Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse::reason_conference_ended?
+
+          def reason_conference_ended=: (
+            Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse::reason_conference_ended
+          ) -> Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse::reason_conference_ended
+
+          attr_reader region: String?
+
+          def region=: (String) -> String
+
+          attr_reader sid: String?
+
+          def sid=: (String) -> String
+
+          attr_reader status: Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse::status?
+
+          def status=: (
+            Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse::status
+          ) -> Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse::status
+
+          attr_reader subresource_uris: ::Hash[Symbol, top]?
+
+          def subresource_uris=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader uri: String?
+
+          def uri=: (String) -> String
+
+          def initialize: (
+            ?account_sid: String,
+            ?api_version: String,
+            ?call_sid_ending_conference: String,
+            ?date_created: String,
+            ?date_updated: String,
+            ?friendly_name: String,
+            ?reason_conference_ended: Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse::reason_conference_ended,
+            ?region: String,
+            ?sid: String,
+            ?status: Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse::status,
+            ?subresource_uris: ::Hash[Symbol, top],
+            ?uri: String
+          ) -> void
+
+          def to_hash: -> {
+            account_sid: String,
+            api_version: String,
+            call_sid_ending_conference: String,
+            date_created: String,
+            date_updated: String,
+            friendly_name: String,
+            reason_conference_ended: Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse::reason_conference_ended,
+            region: String,
+            sid: String,
+            status: Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse::status,
+            subresource_uris: ::Hash[Symbol, top],
+            uri: String
+          }
+
+          type reason_conference_ended =
+            :"participant-with-end-conference-on-exit-left"
+            | :"last-participant-left"
+            | :"conference-ended-via-api"
+            | :"time-exceeded"
+
+          module ReasonConferenceEnded
+            extend Telnyx::Internal::Type::Enum
+
+            PARTICIPANT_WITH_END_CONFERENCE_ON_EXIT_LEFT: :"participant-with-end-conference-on-exit-left"
+            LAST_PARTICIPANT_LEFT: :"last-participant-left"
+            CONFERENCE_ENDED_VIA_API: :"conference-ended-via-api"
+            TIME_EXCEEDED: :"time-exceeded"
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse::reason_conference_ended]
+          end
+
+          type status = :init | :"in-progress" | :completed
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            INIT: :init
+            IN_PROGRESS: :"in-progress"
+            COMPLETED: :completed
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse::status]
+          end
+        end
+      end
+    end
+  end
+end

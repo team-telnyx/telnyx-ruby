@@ -1,0 +1,19 @@
+module Telnyx
+  module Resources
+    class AI
+      class Assistants
+        class Tests
+          class TestSuites
+            attr_reader runs: Telnyx::Resources::AI::Assistants::Tests::TestSuites::Runs
+
+            def list: (
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::AI::Assistants::Tests::TestSuiteListResponse
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

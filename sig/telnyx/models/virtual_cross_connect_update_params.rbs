@@ -1,0 +1,63 @@
+module Telnyx
+  module Models
+    type virtual_cross_connect_update_params =
+      {
+        primary_cloud_ip: String,
+        primary_enabled: bool,
+        primary_routing_announcement: bool,
+        secondary_cloud_ip: String,
+        secondary_enabled: bool,
+        secondary_routing_announcement: bool
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class VirtualCrossConnectUpdateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader primary_cloud_ip: String?
+
+      def primary_cloud_ip=: (String) -> String
+
+      attr_reader primary_enabled: bool?
+
+      def primary_enabled=: (bool) -> bool
+
+      attr_reader primary_routing_announcement: bool?
+
+      def primary_routing_announcement=: (bool) -> bool
+
+      attr_reader secondary_cloud_ip: String?
+
+      def secondary_cloud_ip=: (String) -> String
+
+      attr_reader secondary_enabled: bool?
+
+      def secondary_enabled=: (bool) -> bool
+
+      attr_reader secondary_routing_announcement: bool?
+
+      def secondary_routing_announcement=: (bool) -> bool
+
+      def initialize: (
+        ?primary_cloud_ip: String,
+        ?primary_enabled: bool,
+        ?primary_routing_announcement: bool,
+        ?secondary_cloud_ip: String,
+        ?secondary_enabled: bool,
+        ?secondary_routing_announcement: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        primary_cloud_ip: String,
+        primary_enabled: bool,
+        primary_routing_announcement: bool,
+        secondary_cloud_ip: String,
+        secondary_enabled: bool,
+        secondary_routing_announcement: bool,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

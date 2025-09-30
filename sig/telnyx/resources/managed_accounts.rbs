@@ -1,0 +1,47 @@
+module Telnyx
+  module Resources
+    class ManagedAccounts
+      attr_reader actions: Telnyx::Resources::ManagedAccounts::Actions
+
+      def create: (
+        business_name: String,
+        ?email: String,
+        ?managed_account_allow_custom_pricing: bool,
+        ?password: String,
+        ?rollup_billing: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ManagedAccountCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ManagedAccountRetrieveResponse
+
+      def update: (
+        String id,
+        ?managed_account_allow_custom_pricing: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ManagedAccountUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::ManagedAccountListParams::Filter,
+        ?include_cancelled_accounts: bool,
+        ?page: Telnyx::ManagedAccountListParams::Page,
+        ?sort: Telnyx::Models::ManagedAccountListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ManagedAccountListResponse
+
+      def get_allocatable_global_outbound_channels: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ManagedAccountGetAllocatableGlobalOutboundChannelsResponse
+
+      def update_global_channel_limit: (
+        String id,
+        ?channel_limit: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ManagedAccountUpdateGlobalChannelLimitResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

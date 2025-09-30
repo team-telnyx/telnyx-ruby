@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    module AI
+      type assistant_chat_response = { content: String }
+
+      class AssistantChatResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor content: String
+
+        def initialize: (content: String) -> void
+
+        def to_hash: -> { content: String }
+      end
+    end
+  end
+end

@@ -1,0 +1,26 @@
+module Telnyx
+  module Models
+    type well_known_retrieve_protected_resource_metadata_response =
+      { authorization_servers: ::Array[String], resource: String }
+
+    class WellKnownRetrieveProtectedResourceMetadataResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader authorization_servers: ::Array[String]?
+
+      def authorization_servers=: (::Array[String]) -> ::Array[String]
+
+      attr_reader resource: String?
+
+      def resource=: (String) -> String
+
+      def initialize: (
+        ?authorization_servers: ::Array[String],
+        ?resource: String
+      ) -> void
+
+      def to_hash: -> {
+        authorization_servers: ::Array[String],
+        resource: String
+      }
+    end
+  end
+end

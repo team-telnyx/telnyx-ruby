@@ -1,0 +1,31 @@
+module Telnyx
+  module Resources
+    class CustomerServiceRecords
+      def create: (
+        phone_number: String,
+        ?additional_data: Telnyx::CustomerServiceRecordCreateParams::AdditionalData,
+        ?webhook_url: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CustomerServiceRecordCreateResponse
+
+      def retrieve: (
+        String customer_service_record_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CustomerServiceRecordRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::CustomerServiceRecordListParams::Filter,
+        ?page: Telnyx::CustomerServiceRecordListParams::Page,
+        ?sort: Telnyx::CustomerServiceRecordListParams::Sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CustomerServiceRecordListResponse
+
+      def verify_phone_number_coverage: (
+        phone_numbers: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CustomerServiceRecordVerifyPhoneNumberCoverageResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

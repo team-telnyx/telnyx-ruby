@@ -1,0 +1,177 @@
+module Telnyx
+  module Models
+    module Rooms
+      type session_list0_params =
+        {
+          filter: Telnyx::Rooms::SessionList0Params::Filter,
+          include_participants: bool,
+          page: Telnyx::Rooms::SessionList0Params::Page
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class SessionList0Params < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter: Telnyx::Rooms::SessionList0Params::Filter?
+
+        def filter=: (
+          Telnyx::Rooms::SessionList0Params::Filter
+        ) -> Telnyx::Rooms::SessionList0Params::Filter
+
+        attr_reader include_participants: bool?
+
+        def include_participants=: (bool) -> bool
+
+        attr_reader page: Telnyx::Rooms::SessionList0Params::Page?
+
+        def page=: (
+          Telnyx::Rooms::SessionList0Params::Page
+        ) -> Telnyx::Rooms::SessionList0Params::Page
+
+        def initialize: (
+          ?filter: Telnyx::Rooms::SessionList0Params::Filter,
+          ?include_participants: bool,
+          ?page: Telnyx::Rooms::SessionList0Params::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter: Telnyx::Rooms::SessionList0Params::Filter,
+          include_participants: bool,
+          page: Telnyx::Rooms::SessionList0Params::Page,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter =
+          {
+            active: bool,
+            date_created_at: Telnyx::Rooms::SessionList0Params::Filter::DateCreatedAt,
+            date_ended_at: Telnyx::Rooms::SessionList0Params::Filter::DateEndedAt,
+            date_updated_at: Telnyx::Rooms::SessionList0Params::Filter::DateUpdatedAt,
+            room_id: String
+          }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader active: bool?
+
+          def active=: (bool) -> bool
+
+          attr_reader date_created_at: Telnyx::Rooms::SessionList0Params::Filter::DateCreatedAt?
+
+          def date_created_at=: (
+            Telnyx::Rooms::SessionList0Params::Filter::DateCreatedAt
+          ) -> Telnyx::Rooms::SessionList0Params::Filter::DateCreatedAt
+
+          attr_reader date_ended_at: Telnyx::Rooms::SessionList0Params::Filter::DateEndedAt?
+
+          def date_ended_at=: (
+            Telnyx::Rooms::SessionList0Params::Filter::DateEndedAt
+          ) -> Telnyx::Rooms::SessionList0Params::Filter::DateEndedAt
+
+          attr_reader date_updated_at: Telnyx::Rooms::SessionList0Params::Filter::DateUpdatedAt?
+
+          def date_updated_at=: (
+            Telnyx::Rooms::SessionList0Params::Filter::DateUpdatedAt
+          ) -> Telnyx::Rooms::SessionList0Params::Filter::DateUpdatedAt
+
+          attr_reader room_id: String?
+
+          def room_id=: (String) -> String
+
+          def initialize: (
+            ?active: bool,
+            ?date_created_at: Telnyx::Rooms::SessionList0Params::Filter::DateCreatedAt,
+            ?date_ended_at: Telnyx::Rooms::SessionList0Params::Filter::DateEndedAt,
+            ?date_updated_at: Telnyx::Rooms::SessionList0Params::Filter::DateUpdatedAt,
+            ?room_id: String
+          ) -> void
+
+          def to_hash: -> {
+            active: bool,
+            date_created_at: Telnyx::Rooms::SessionList0Params::Filter::DateCreatedAt,
+            date_ended_at: Telnyx::Rooms::SessionList0Params::Filter::DateEndedAt,
+            date_updated_at: Telnyx::Rooms::SessionList0Params::Filter::DateUpdatedAt,
+            room_id: String
+          }
+
+          type date_created_at = { eq: Date, gte: Date, lte: Date }
+
+          class DateCreatedAt < Telnyx::Internal::Type::BaseModel
+            attr_reader eq: Date?
+
+            def eq=: (Date) -> Date
+
+            attr_reader gte: Date?
+
+            def gte=: (Date) -> Date
+
+            attr_reader lte: Date?
+
+            def lte=: (Date) -> Date
+
+            def initialize: (?eq: Date, ?gte: Date, ?lte: Date) -> void
+
+            def to_hash: -> { eq: Date, gte: Date, lte: Date }
+          end
+
+          type date_ended_at = { eq: Date, gte: Date, lte: Date }
+
+          class DateEndedAt < Telnyx::Internal::Type::BaseModel
+            attr_reader eq: Date?
+
+            def eq=: (Date) -> Date
+
+            attr_reader gte: Date?
+
+            def gte=: (Date) -> Date
+
+            attr_reader lte: Date?
+
+            def lte=: (Date) -> Date
+
+            def initialize: (?eq: Date, ?gte: Date, ?lte: Date) -> void
+
+            def to_hash: -> { eq: Date, gte: Date, lte: Date }
+          end
+
+          type date_updated_at = { eq: Date, gte: Date, lte: Date }
+
+          class DateUpdatedAt < Telnyx::Internal::Type::BaseModel
+            attr_reader eq: Date?
+
+            def eq=: (Date) -> Date
+
+            attr_reader gte: Date?
+
+            def gte=: (Date) -> Date
+
+            attr_reader lte: Date?
+
+            def lte=: (Date) -> Date
+
+            def initialize: (?eq: Date, ?gte: Date, ?lte: Date) -> void
+
+            def to_hash: -> { eq: Date, gte: Date, lte: Date }
+          end
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
+        end
+      end
+    end
+  end
+end

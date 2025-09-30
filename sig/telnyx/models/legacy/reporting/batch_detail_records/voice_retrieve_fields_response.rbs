@@ -1,0 +1,49 @@
+module Telnyx
+  module Models
+    module Legacy
+      module Reporting
+        module BatchDetailRecords
+          type voice_retrieve_fields_response =
+            {
+              billing: ::Array[String],
+              interaction_data: ::Array[String],
+              number_information: ::Array[String],
+              telephony_data: ::Array[String]
+            }
+
+          class VoiceRetrieveFieldsResponse < Telnyx::Internal::Type::BaseModel
+            attr_reader billing: ::Array[String]?
+
+            def billing=: (::Array[String]) -> ::Array[String]
+
+            attr_reader interaction_data: ::Array[String]?
+
+            def interaction_data=: (::Array[String]) -> ::Array[String]
+
+            attr_reader number_information: ::Array[String]?
+
+            def number_information=: (::Array[String]) -> ::Array[String]
+
+            attr_reader telephony_data: ::Array[String]?
+
+            def telephony_data=: (::Array[String]) -> ::Array[String]
+
+            def initialize: (
+              ?billing: ::Array[String],
+              ?interaction_data: ::Array[String],
+              ?number_information: ::Array[String],
+              ?telephony_data: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              billing: ::Array[String],
+              interaction_data: ::Array[String],
+              number_information: ::Array[String],
+              telephony_data: ::Array[String]
+            }
+          end
+        end
+      end
+    end
+  end
+end

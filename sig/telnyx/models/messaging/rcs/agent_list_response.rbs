@@ -1,0 +1,30 @@
+module Telnyx
+  module Models
+    module Messaging
+      module Rcs
+        type agent_list_response =
+          { data: ::Array[Telnyx::RcsAgent], meta: Telnyx::PaginationMeta }
+
+        class AgentListResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: ::Array[Telnyx::RcsAgent]?
+
+          def data=: (::Array[Telnyx::RcsAgent]) -> ::Array[Telnyx::RcsAgent]
+
+          attr_reader meta: Telnyx::PaginationMeta?
+
+          def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+          def initialize: (
+            ?data: ::Array[Telnyx::RcsAgent],
+            ?meta: Telnyx::PaginationMeta
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[Telnyx::RcsAgent],
+            meta: Telnyx::PaginationMeta
+          }
+        end
+      end
+    end
+  end
+end

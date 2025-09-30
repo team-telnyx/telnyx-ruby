@@ -1,0 +1,13 @@
+module Telnyx
+  module Models
+    type usage_payment_method = :"rate-deck"
+
+    module UsagePaymentMethod
+      extend Telnyx::Internal::Type::Enum
+
+      RATE_DECK: :"rate-deck"
+
+      def self?.values: -> ::Array[Telnyx::Models::usage_payment_method]
+    end
+  end
+end

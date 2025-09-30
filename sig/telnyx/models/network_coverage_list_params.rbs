@@ -1,0 +1,151 @@
+module Telnyx
+  module Models
+    type network_coverage_list_params =
+      {
+        filter: Telnyx::NetworkCoverageListParams::Filter,
+        filters: Telnyx::NetworkCoverageListParams::Filters,
+        page: Telnyx::NetworkCoverageListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class NetworkCoverageListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::NetworkCoverageListParams::Filter?
+
+      def filter=: (
+        Telnyx::NetworkCoverageListParams::Filter
+      ) -> Telnyx::NetworkCoverageListParams::Filter
+
+      attr_reader filters: Telnyx::NetworkCoverageListParams::Filters?
+
+      def filters=: (
+        Telnyx::NetworkCoverageListParams::Filters
+      ) -> Telnyx::NetworkCoverageListParams::Filters
+
+      attr_reader page: Telnyx::NetworkCoverageListParams::Page?
+
+      def page=: (
+        Telnyx::NetworkCoverageListParams::Page
+      ) -> Telnyx::NetworkCoverageListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::NetworkCoverageListParams::Filter,
+        ?filters: Telnyx::NetworkCoverageListParams::Filters,
+        ?page: Telnyx::NetworkCoverageListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::NetworkCoverageListParams::Filter,
+        filters: Telnyx::NetworkCoverageListParams::Filters,
+        page: Telnyx::NetworkCoverageListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          location_code: String,
+          location_pop: String,
+          location_region: String,
+          location_site: String
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader location_code: String?
+
+        def location_code=: (String) -> String
+
+        attr_reader location_pop: String?
+
+        def location_pop=: (String) -> String
+
+        attr_reader location_region: String?
+
+        def location_region=: (String) -> String
+
+        attr_reader location_site: String?
+
+        def location_site=: (String) -> String
+
+        def initialize: (
+          ?location_code: String,
+          ?location_pop: String,
+          ?location_region: String,
+          ?location_site: String
+        ) -> void
+
+        def to_hash: -> {
+          location_code: String,
+          location_pop: String,
+          location_region: String,
+          location_site: String
+        }
+      end
+
+      type filters =
+        {
+          available_services: Telnyx::Models::NetworkCoverageListParams::Filters::available_services
+        }
+
+      class Filters < Telnyx::Internal::Type::BaseModel
+        attr_reader available_services: Telnyx::Models::NetworkCoverageListParams::Filters::available_services?
+
+        def available_services=: (
+          Telnyx::Models::NetworkCoverageListParams::Filters::available_services
+        ) -> Telnyx::Models::NetworkCoverageListParams::Filters::available_services
+
+        def initialize: (
+          ?available_services: Telnyx::Models::NetworkCoverageListParams::Filters::available_services
+        ) -> void
+
+        def to_hash: -> {
+          available_services: Telnyx::Models::NetworkCoverageListParams::Filters::available_services
+        }
+
+        type available_services =
+          Telnyx::Models::available_service
+          | Telnyx::NetworkCoverageListParams::Filters::AvailableServices::Contains
+
+        module AvailableServices
+          extend Telnyx::Internal::Type::Union
+
+          type contains = { contains: Telnyx::Models::available_service }
+
+          class Contains < Telnyx::Internal::Type::BaseModel
+            attr_reader contains: Telnyx::Models::available_service?
+
+            def contains=: (
+              Telnyx::Models::available_service
+            ) -> Telnyx::Models::available_service
+
+            def initialize: (
+              ?contains: Telnyx::Models::available_service
+            ) -> void
+
+            def to_hash: -> { contains: Telnyx::Models::available_service }
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::NetworkCoverageListParams::Filters::available_services]
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

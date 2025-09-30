@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module AI
+      type hangup_tool_params = { description: String }
+
+      class HangupToolParams < Telnyx::Internal::Type::BaseModel
+        attr_reader description: String?
+
+        def description=: (String) -> String
+
+        def initialize: (?description: String) -> void
+
+        def to_hash: -> { description: String }
+      end
+    end
+  end
+end

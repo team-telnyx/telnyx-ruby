@@ -1,0 +1,63 @@
+module Telnyx
+  module Resources
+    class OAuth
+      def retrieve: (
+        String consent_token,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OAuthRetrieveResponse
+
+      def grants: (
+        allowed: bool,
+        consent_token: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OAuthGrantsResponse
+
+      def introspect: (
+        token: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OAuthIntrospectResponse
+
+      def register: (
+        ?client_name: String,
+        ?grant_types: ::Array[Telnyx::Models::OAuthRegisterParams::grant_type],
+        ?logo_uri: String,
+        ?policy_uri: String,
+        ?redirect_uris: ::Array[String],
+        ?response_types: ::Array[String],
+        ?scope: String,
+        ?token_endpoint_auth_method: Telnyx::Models::OAuthRegisterParams::token_endpoint_auth_method,
+        ?tos_uri: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OAuthRegisterResponse
+
+      def retrieve_authorize: (
+        client_id: String,
+        redirect_uri: String,
+        response_type: Telnyx::Models::OAuthRetrieveAuthorizeParams::response_type,
+        ?code_challenge: String,
+        ?code_challenge_method: Telnyx::Models::OAuthRetrieveAuthorizeParams::code_challenge_method,
+        ?scope: String,
+        ?state: String,
+        ?request_options: Telnyx::request_opts
+      ) -> nil
+
+      def retrieve_jwks: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OAuthRetrieveJwksResponse
+
+      def token: (
+        grant_type: Telnyx::Models::OAuthTokenParams::grant_type,
+        ?client_id: String,
+        ?client_secret: String,
+        ?code: String,
+        ?code_verifier: String,
+        ?redirect_uri: String,
+        ?refresh_token: String,
+        ?scope: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OAuthTokenResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

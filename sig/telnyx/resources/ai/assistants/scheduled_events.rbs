@@ -1,0 +1,43 @@
+module Telnyx
+  module Resources
+    class AI
+      class Assistants
+        class ScheduledEvents
+          def create: (
+            String assistant_id,
+            scheduled_at_fixed_datetime: Time,
+            telnyx_agent_target: String,
+            telnyx_conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
+            telnyx_end_user_target: String,
+            ?conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata],
+            ?text: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Assistants::scheduled_event_response
+
+          def retrieve: (
+            String event_id,
+            assistant_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Assistants::scheduled_event_response
+
+          def list: (
+            String assistant_id,
+            ?conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
+            ?from_date: Time,
+            ?page: Telnyx::AI::Assistants::ScheduledEventListParams::Page,
+            ?to_date: Time,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Assistants::ScheduledEventListResponse
+
+          def delete: (
+            String event_id,
+            assistant_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> top
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

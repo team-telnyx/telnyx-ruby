@@ -1,0 +1,183 @@
+module Telnyx
+  module Models
+    module Storage
+      module Buckets
+        type usage_get_api_usage_response =
+          {
+            data: ::Array[Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data]
+          }
+
+        class UsageGetAPIUsageResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: ::Array[Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data]?
+
+          def data=: (
+            ::Array[Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data]
+          ) -> ::Array[Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data]
+
+          def initialize: (
+            ?data: ::Array[Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data]
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data]
+          }
+
+          type data =
+            {
+              categories: ::Array[Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Category],
+              timestamp: Time,
+              total: Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Total
+            }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_reader categories: ::Array[Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Category]?
+
+            def categories=: (
+              ::Array[Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Category]
+            ) -> ::Array[Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Category]
+
+            attr_reader timestamp: Time?
+
+            def timestamp=: (Time) -> Time
+
+            attr_reader total: Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Total?
+
+            def total=: (
+              Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Total
+            ) -> Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Total
+
+            def initialize: (
+              ?categories: ::Array[Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Category],
+              ?timestamp: Time,
+              ?total: Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Total
+            ) -> void
+
+            def to_hash: -> {
+              categories: ::Array[Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Category],
+              timestamp: Time,
+              total: Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Total
+            }
+
+            type category =
+              {
+                bytes_received: Integer,
+                bytes_sent: Integer,
+                category: Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Category::category,
+                ops: Integer,
+                successful_ops: Integer
+              }
+
+            class Category < Telnyx::Internal::Type::BaseModel
+              attr_reader bytes_received: Integer?
+
+              def bytes_received=: (Integer) -> Integer
+
+              attr_reader bytes_sent: Integer?
+
+              def bytes_sent=: (Integer) -> Integer
+
+              attr_reader category: Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Category::category?
+
+              def category=: (
+                Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Category::category
+              ) -> Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Category::category
+
+              attr_reader ops: Integer?
+
+              def ops=: (Integer) -> Integer
+
+              attr_reader successful_ops: Integer?
+
+              def successful_ops=: (Integer) -> Integer
+
+              def initialize: (
+                ?bytes_received: Integer,
+                ?bytes_sent: Integer,
+                ?category: Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Category::category,
+                ?ops: Integer,
+                ?successful_ops: Integer
+              ) -> void
+
+              def to_hash: -> {
+                bytes_received: Integer,
+                bytes_sent: Integer,
+                category: Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Category::category,
+                ops: Integer,
+                successful_ops: Integer
+              }
+
+              type category =
+                :list_bucket
+                | :list_buckets
+                | :"get-bucket_location"
+                | :create_bucket
+                | :stat_bucket
+                | :get_bucket_versioning
+                | :set_bucket_versioning
+                | :get_obj
+                | :put_obj
+                | :delete_obj
+
+              module Category
+                extend Telnyx::Internal::Type::Enum
+
+                LIST_BUCKET: :list_bucket
+                LIST_BUCKETS: :list_buckets
+                GET_BUCKET_LOCATION: :"get-bucket_location"
+                CREATE_BUCKET: :create_bucket
+                STAT_BUCKET: :stat_bucket
+                GET_BUCKET_VERSIONING: :get_bucket_versioning
+                SET_BUCKET_VERSIONING: :set_bucket_versioning
+                GET_OBJ: :get_obj
+                PUT_OBJ: :put_obj
+                DELETE_OBJ: :delete_obj
+
+                def self?.values: -> ::Array[Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse::Data::Category::category]
+              end
+            end
+
+            type total =
+              {
+                bytes_received: Integer,
+                bytes_sent: Integer,
+                ops: Integer,
+                successful_ops: Integer
+              }
+
+            class Total < Telnyx::Internal::Type::BaseModel
+              attr_reader bytes_received: Integer?
+
+              def bytes_received=: (Integer) -> Integer
+
+              attr_reader bytes_sent: Integer?
+
+              def bytes_sent=: (Integer) -> Integer
+
+              attr_reader ops: Integer?
+
+              def ops=: (Integer) -> Integer
+
+              attr_reader successful_ops: Integer?
+
+              def successful_ops=: (Integer) -> Integer
+
+              def initialize: (
+                ?bytes_received: Integer,
+                ?bytes_sent: Integer,
+                ?ops: Integer,
+                ?successful_ops: Integer
+              ) -> void
+
+              def to_hash: -> {
+                bytes_received: Integer,
+                bytes_sent: Integer,
+                ops: Integer,
+                successful_ops: Integer
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    type sub_number_order_list_response =
+      { data: ::Array[Telnyx::SubNumberOrder], meta: Telnyx::PaginationMeta }
+
+    class SubNumberOrderListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::SubNumberOrder]?
+
+      def data=: (
+        ::Array[Telnyx::SubNumberOrder]
+      ) -> ::Array[Telnyx::SubNumberOrder]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::SubNumberOrder],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::SubNumberOrder],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

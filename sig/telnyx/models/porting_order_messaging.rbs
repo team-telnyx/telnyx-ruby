@@ -1,0 +1,68 @@
+module Telnyx
+  module Models
+    type porting_order_messaging =
+      {
+        enable_messaging: bool,
+        messaging_capable: bool,
+        messaging_port_completed: bool,
+        messaging_port_status: Telnyx::Models::PortingOrderMessaging::messaging_port_status
+      }
+
+    class PortingOrderMessaging < Telnyx::Internal::Type::BaseModel
+      attr_reader enable_messaging: bool?
+
+      def enable_messaging=: (bool) -> bool
+
+      attr_reader messaging_capable: bool?
+
+      def messaging_capable=: (bool) -> bool
+
+      attr_reader messaging_port_completed: bool?
+
+      def messaging_port_completed=: (bool) -> bool
+
+      attr_reader messaging_port_status: Telnyx::Models::PortingOrderMessaging::messaging_port_status?
+
+      def messaging_port_status=: (
+        Telnyx::Models::PortingOrderMessaging::messaging_port_status
+      ) -> Telnyx::Models::PortingOrderMessaging::messaging_port_status
+
+      def initialize: (
+        ?enable_messaging: bool,
+        ?messaging_capable: bool,
+        ?messaging_port_completed: bool,
+        ?messaging_port_status: Telnyx::Models::PortingOrderMessaging::messaging_port_status
+      ) -> void
+
+      def to_hash: -> {
+        enable_messaging: bool,
+        messaging_capable: bool,
+        messaging_port_completed: bool,
+        messaging_port_status: Telnyx::Models::PortingOrderMessaging::messaging_port_status
+      }
+
+      type messaging_port_status =
+        :not_applicable
+        | :pending
+        | :activating
+        | :exception
+        | :canceled
+        | :partial_port_complete
+        | :ported
+
+      module MessagingPortStatus
+        extend Telnyx::Internal::Type::Enum
+
+        NOT_APPLICABLE: :not_applicable
+        PENDING: :pending
+        ACTIVATING: :activating
+        EXCEPTION: :exception
+        CANCELED: :canceled
+        PARTIAL_PORT_COMPLETE: :partial_port_complete
+        PORTED: :ported
+
+        def self?.values: -> ::Array[Telnyx::Models::PortingOrderMessaging::messaging_port_status]
+      end
+    end
+  end
+end

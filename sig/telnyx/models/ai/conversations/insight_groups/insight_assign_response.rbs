@@ -1,0 +1,11 @@
+module Telnyx
+  module Models
+    module AI
+      module Conversations
+        module InsightGroups
+          InsightAssignResponse: Telnyx::Internal::Type::Converter
+        end
+      end
+    end
+  end
+end

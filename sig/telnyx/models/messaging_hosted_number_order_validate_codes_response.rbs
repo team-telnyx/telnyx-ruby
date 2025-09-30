@@ -1,0 +1,80 @@
+module Telnyx
+  module Models
+    type messaging_hosted_number_order_validate_codes_response =
+      {
+        data: Telnyx::Models::MessagingHostedNumberOrderValidateCodesResponse::Data
+      }
+
+    class MessagingHostedNumberOrderValidateCodesResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::MessagingHostedNumberOrderValidateCodesResponse::Data?
+
+      def data=: (
+        Telnyx::Models::MessagingHostedNumberOrderValidateCodesResponse::Data
+      ) -> Telnyx::Models::MessagingHostedNumberOrderValidateCodesResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::MessagingHostedNumberOrderValidateCodesResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::MessagingHostedNumberOrderValidateCodesResponse::Data
+      }
+
+      type data =
+        {
+          order_id: String,
+          phone_numbers: ::Array[Telnyx::Models::MessagingHostedNumberOrderValidateCodesResponse::Data::PhoneNumber]
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor order_id: String
+
+        attr_accessor phone_numbers: ::Array[Telnyx::Models::MessagingHostedNumberOrderValidateCodesResponse::Data::PhoneNumber]
+
+        def initialize: (
+          order_id: String,
+          phone_numbers: ::Array[Telnyx::Models::MessagingHostedNumberOrderValidateCodesResponse::Data::PhoneNumber]
+        ) -> void
+
+        def to_hash: -> {
+          order_id: String,
+          phone_numbers: ::Array[Telnyx::Models::MessagingHostedNumberOrderValidateCodesResponse::Data::PhoneNumber]
+        }
+
+        type phone_number =
+          {
+            phone_number: String,
+            status: Telnyx::Models::MessagingHostedNumberOrderValidateCodesResponse::Data::PhoneNumber::status
+          }
+
+        class PhoneNumber < Telnyx::Internal::Type::BaseModel
+          attr_accessor phone_number: String
+
+          attr_accessor status: Telnyx::Models::MessagingHostedNumberOrderValidateCodesResponse::Data::PhoneNumber::status
+
+          def initialize: (
+            phone_number: String,
+            status: Telnyx::Models::MessagingHostedNumberOrderValidateCodesResponse::Data::PhoneNumber::status
+          ) -> void
+
+          def to_hash: -> {
+            phone_number: String,
+            status: Telnyx::Models::MessagingHostedNumberOrderValidateCodesResponse::Data::PhoneNumber::status
+          }
+
+          type status = :verified | :rejected | :already_verified
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            VERIFIED: :verified
+            REJECTED: :rejected
+            ALREADY_VERIFIED: :already_verified
+
+            def self?.values: -> ::Array[Telnyx::Models::MessagingHostedNumberOrderValidateCodesResponse::Data::PhoneNumber::status]
+          end
+        end
+      end
+    end
+  end
+end

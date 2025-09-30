@@ -1,0 +1,25 @@
+module Telnyx
+  module Resources
+    class Connections
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ConnectionRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::ConnectionListParams::Filter,
+        ?page: Telnyx::ConnectionListParams::Page,
+        ?sort: Telnyx::Models::ConnectionListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ConnectionListResponse
+
+      def list_active_calls: (
+        String connection_id,
+        ?page: Telnyx::ConnectionListActiveCallsParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ConnectionListActiveCallsResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

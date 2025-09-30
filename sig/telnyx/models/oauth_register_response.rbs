@@ -1,0 +1,95 @@
+module Telnyx
+  module Models
+    type oauth_register_response =
+      {
+        client_id: String,
+        client_id_issued_at: Integer,
+        client_name: String,
+        client_secret: String,
+        grant_types: ::Array[String],
+        logo_uri: String,
+        policy_uri: String,
+        redirect_uris: ::Array[String],
+        response_types: ::Array[String],
+        scope: String,
+        token_endpoint_auth_method: String,
+        tos_uri: String
+      }
+
+    class OAuthRegisterResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor client_id: String
+
+      attr_accessor client_id_issued_at: Integer
+
+      attr_reader client_name: String?
+
+      def client_name=: (String) -> String
+
+      attr_reader client_secret: String?
+
+      def client_secret=: (String) -> String
+
+      attr_reader grant_types: ::Array[String]?
+
+      def grant_types=: (::Array[String]) -> ::Array[String]
+
+      attr_reader logo_uri: String?
+
+      def logo_uri=: (String) -> String
+
+      attr_reader policy_uri: String?
+
+      def policy_uri=: (String) -> String
+
+      attr_reader redirect_uris: ::Array[String]?
+
+      def redirect_uris=: (::Array[String]) -> ::Array[String]
+
+      attr_reader response_types: ::Array[String]?
+
+      def response_types=: (::Array[String]) -> ::Array[String]
+
+      attr_reader scope: String?
+
+      def scope=: (String) -> String
+
+      attr_reader token_endpoint_auth_method: String?
+
+      def token_endpoint_auth_method=: (String) -> String
+
+      attr_reader tos_uri: String?
+
+      def tos_uri=: (String) -> String
+
+      def initialize: (
+        client_id: String,
+        client_id_issued_at: Integer,
+        ?client_name: String,
+        ?client_secret: String,
+        ?grant_types: ::Array[String],
+        ?logo_uri: String,
+        ?policy_uri: String,
+        ?redirect_uris: ::Array[String],
+        ?response_types: ::Array[String],
+        ?scope: String,
+        ?token_endpoint_auth_method: String,
+        ?tos_uri: String
+      ) -> void
+
+      def to_hash: -> {
+        client_id: String,
+        client_id_issued_at: Integer,
+        client_name: String,
+        client_secret: String,
+        grant_types: ::Array[String],
+        logo_uri: String,
+        policy_uri: String,
+        redirect_uris: ::Array[String],
+        response_types: ::Array[String],
+        scope: String,
+        token_endpoint_auth_method: String,
+        tos_uri: String
+      }
+    end
+  end
+end

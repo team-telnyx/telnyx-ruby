@@ -1,0 +1,249 @@
+module Telnyx
+  module Models
+    type country_coverage_retrieve_country_response =
+      { data: Telnyx::Models::CountryCoverageRetrieveCountryResponse::Data }
+
+    class CountryCoverageRetrieveCountryResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::CountryCoverageRetrieveCountryResponse::Data?
+
+      def data=: (
+        Telnyx::Models::CountryCoverageRetrieveCountryResponse::Data
+      ) -> Telnyx::Models::CountryCoverageRetrieveCountryResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::CountryCoverageRetrieveCountryResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::CountryCoverageRetrieveCountryResponse::Data
+      }
+
+      type data =
+        {
+          code: String,
+          features: ::Array[String],
+          international_sms: bool,
+          inventory_coverage: bool,
+          local: Telnyx::Models::CountryCoverageRetrieveCountryResponse::Data::Local,
+          mobile: ::Hash[Symbol, top],
+          national: ::Hash[Symbol, top],
+          numbers: bool,
+          :p2p => bool,
+          phone_number_type: ::Array[String],
+          quickship: bool,
+          region: String?,
+          reservable: bool,
+          shared_cost: ::Hash[Symbol, top],
+          toll_free: Telnyx::Models::CountryCoverageRetrieveCountryResponse::Data::TollFree
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader code: String?
+
+        def code=: (String) -> String
+
+        attr_reader features: ::Array[String]?
+
+        def features=: (::Array[String]) -> ::Array[String]
+
+        attr_reader international_sms: bool?
+
+        def international_sms=: (bool) -> bool
+
+        attr_reader inventory_coverage: bool?
+
+        def inventory_coverage=: (bool) -> bool
+
+        attr_reader local: Telnyx::Models::CountryCoverageRetrieveCountryResponse::Data::Local?
+
+        def local=: (
+          Telnyx::Models::CountryCoverageRetrieveCountryResponse::Data::Local
+        ) -> Telnyx::Models::CountryCoverageRetrieveCountryResponse::Data::Local
+
+        attr_reader mobile: ::Hash[Symbol, top]?
+
+        def mobile=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        attr_reader national: ::Hash[Symbol, top]?
+
+        def national=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        attr_reader numbers: bool?
+
+        def numbers=: (bool) -> bool
+
+        attr_reader p2p: bool?
+
+        def p2p=: (bool) -> bool
+
+        attr_reader phone_number_type: ::Array[String]?
+
+        def phone_number_type=: (::Array[String]) -> ::Array[String]
+
+        attr_reader quickship: bool?
+
+        def quickship=: (bool) -> bool
+
+        attr_accessor region: String?
+
+        attr_reader reservable: bool?
+
+        def reservable=: (bool) -> bool
+
+        attr_reader shared_cost: ::Hash[Symbol, top]?
+
+        def shared_cost=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        attr_reader toll_free: Telnyx::Models::CountryCoverageRetrieveCountryResponse::Data::TollFree?
+
+        def toll_free=: (
+          Telnyx::Models::CountryCoverageRetrieveCountryResponse::Data::TollFree
+        ) -> Telnyx::Models::CountryCoverageRetrieveCountryResponse::Data::TollFree
+
+        def initialize: (
+          ?code: String,
+          ?features: ::Array[String],
+          ?international_sms: bool,
+          ?inventory_coverage: bool,
+          ?local: Telnyx::Models::CountryCoverageRetrieveCountryResponse::Data::Local,
+          ?mobile: ::Hash[Symbol, top],
+          ?national: ::Hash[Symbol, top],
+          ?numbers: bool,
+          ?p2p: bool,
+          ?phone_number_type: ::Array[String],
+          ?quickship: bool,
+          ?region: String?,
+          ?reservable: bool,
+          ?shared_cost: ::Hash[Symbol, top],
+          ?toll_free: Telnyx::Models::CountryCoverageRetrieveCountryResponse::Data::TollFree
+        ) -> void
+
+        def to_hash: -> {
+          code: String,
+          features: ::Array[String],
+          international_sms: bool,
+          inventory_coverage: bool,
+          local: Telnyx::Models::CountryCoverageRetrieveCountryResponse::Data::Local,
+          mobile: ::Hash[Symbol, top],
+          national: ::Hash[Symbol, top],
+          numbers: bool,
+          :p2p => bool,
+          phone_number_type: ::Array[String],
+          quickship: bool,
+          region: String?,
+          reservable: bool,
+          shared_cost: ::Hash[Symbol, top],
+          toll_free: Telnyx::Models::CountryCoverageRetrieveCountryResponse::Data::TollFree
+        }
+
+        type local =
+          {
+            features: ::Array[String],
+            full_pstn_replacement: bool,
+            international_sms: bool,
+            :p2p => bool,
+            quickship: bool,
+            reservable: bool
+          }
+
+        class Local < Telnyx::Internal::Type::BaseModel
+          attr_reader features: ::Array[String]?
+
+          def features=: (::Array[String]) -> ::Array[String]
+
+          attr_reader full_pstn_replacement: bool?
+
+          def full_pstn_replacement=: (bool) -> bool
+
+          attr_reader international_sms: bool?
+
+          def international_sms=: (bool) -> bool
+
+          attr_reader p2p: bool?
+
+          def p2p=: (bool) -> bool
+
+          attr_reader quickship: bool?
+
+          def quickship=: (bool) -> bool
+
+          attr_reader reservable: bool?
+
+          def reservable=: (bool) -> bool
+
+          def initialize: (
+            ?features: ::Array[String],
+            ?full_pstn_replacement: bool,
+            ?international_sms: bool,
+            ?p2p: bool,
+            ?quickship: bool,
+            ?reservable: bool
+          ) -> void
+
+          def to_hash: -> {
+            features: ::Array[String],
+            full_pstn_replacement: bool,
+            international_sms: bool,
+            :p2p => bool,
+            quickship: bool,
+            reservable: bool
+          }
+        end
+
+        type toll_free =
+          {
+            features: ::Array[String],
+            full_pstn_replacement: bool,
+            international_sms: bool,
+            :p2p => bool,
+            quickship: bool,
+            reservable: bool
+          }
+
+        class TollFree < Telnyx::Internal::Type::BaseModel
+          attr_reader features: ::Array[String]?
+
+          def features=: (::Array[String]) -> ::Array[String]
+
+          attr_reader full_pstn_replacement: bool?
+
+          def full_pstn_replacement=: (bool) -> bool
+
+          attr_reader international_sms: bool?
+
+          def international_sms=: (bool) -> bool
+
+          attr_reader p2p: bool?
+
+          def p2p=: (bool) -> bool
+
+          attr_reader quickship: bool?
+
+          def quickship=: (bool) -> bool
+
+          attr_reader reservable: bool?
+
+          def reservable=: (bool) -> bool
+
+          def initialize: (
+            ?features: ::Array[String],
+            ?full_pstn_replacement: bool,
+            ?international_sms: bool,
+            ?p2p: bool,
+            ?quickship: bool,
+            ?reservable: bool
+          ) -> void
+
+          def to_hash: -> {
+            features: ::Array[String],
+            full_pstn_replacement: bool,
+            international_sms: bool,
+            :p2p => bool,
+            quickship: bool,
+            reservable: bool
+          }
+        end
+      end
+    end
+  end
+end

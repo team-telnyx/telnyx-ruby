@@ -1,0 +1,18 @@
+module Telnyx
+  module Resources
+    class WebhookDeliveries
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WebhookDeliveryRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::WebhookDeliveryListParams::Filter,
+        ?page: Telnyx::WebhookDeliveryListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WebhookDeliveryListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

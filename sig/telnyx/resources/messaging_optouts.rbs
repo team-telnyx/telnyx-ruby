@@ -1,0 +1,15 @@
+module Telnyx
+  module Resources
+    class MessagingOptouts
+      def list: (
+        ?created_at: Telnyx::MessagingOptoutListParams::CreatedAt,
+        ?filter: Telnyx::MessagingOptoutListParams::Filter,
+        ?page: Telnyx::MessagingOptoutListParams::Page,
+        ?redaction_enabled: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingOptoutListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

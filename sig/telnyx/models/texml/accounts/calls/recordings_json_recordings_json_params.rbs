@@ -1,0 +1,121 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        module Calls
+          type recordings_json_recordings_json_params =
+            {
+              account_sid: String,
+              play_beep: bool,
+              recording_channels: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_channels,
+              recording_status_callback: String,
+              recording_status_callback_event: String,
+              recording_status_callback_method: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_status_callback_method,
+              recording_track: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_track,
+              send_recording_url: bool
+            }
+            & Telnyx::Internal::Type::request_parameters
+
+          class RecordingsJsonRecordingsJsonParams < Telnyx::Internal::Type::BaseModel
+            extend Telnyx::Internal::Type::RequestParameters::Converter
+            include Telnyx::Internal::Type::RequestParameters
+
+            attr_accessor account_sid: String
+
+            attr_reader play_beep: bool?
+
+            def play_beep=: (bool) -> bool
+
+            attr_reader recording_channels: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_channels?
+
+            def recording_channels=: (
+              Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_channels
+            ) -> Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_channels
+
+            attr_reader recording_status_callback: String?
+
+            def recording_status_callback=: (String) -> String
+
+            attr_reader recording_status_callback_event: String?
+
+            def recording_status_callback_event=: (String) -> String
+
+            attr_reader recording_status_callback_method: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_status_callback_method?
+
+            def recording_status_callback_method=: (
+              Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_status_callback_method
+            ) -> Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_status_callback_method
+
+            attr_reader recording_track: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_track?
+
+            def recording_track=: (
+              Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_track
+            ) -> Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_track
+
+            attr_reader send_recording_url: bool?
+
+            def send_recording_url=: (bool) -> bool
+
+            def initialize: (
+              account_sid: String,
+              ?play_beep: bool,
+              ?recording_channels: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_channels,
+              ?recording_status_callback: String,
+              ?recording_status_callback_event: String,
+              ?recording_status_callback_method: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_status_callback_method,
+              ?recording_track: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_track,
+              ?send_recording_url: bool,
+              ?request_options: Telnyx::request_opts
+            ) -> void
+
+            def to_hash: -> {
+              account_sid: String,
+              play_beep: bool,
+              recording_channels: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_channels,
+              recording_status_callback: String,
+              recording_status_callback_event: String,
+              recording_status_callback_method: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_status_callback_method,
+              recording_track: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_track,
+              send_recording_url: bool,
+              request_options: Telnyx::RequestOptions
+            }
+
+            type recording_channels = :single | :dual
+
+            module RecordingChannels
+              extend Telnyx::Internal::Type::Enum
+
+              SINGLE: :single
+              DUAL: :dual
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_channels]
+            end
+
+            type recording_status_callback_method = :GET | :POST
+
+            module RecordingStatusCallbackMethod
+              extend Telnyx::Internal::Type::Enum
+
+              GET: :GET
+              POST: :POST
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_status_callback_method]
+            end
+
+            type recording_track = :inbound | :outbound | :both
+
+            module RecordingTrack
+              extend Telnyx::Internal::Type::Enum
+
+              INBOUND: :inbound
+              OUTBOUND: :outbound
+              BOTH: :both
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_track]
+            end
+          end
+        end
+      end
+    end
+  end
+end

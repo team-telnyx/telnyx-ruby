@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    type network_create = { name: String, record_type: String }
+
+    class NetworkCreate < Telnyx::Models::Record
+      def name: -> String
+
+      def name=: (String _) -> String
+
+      def record_type: -> String?
+
+      def record_type=: (String _) -> String
+
+      def initialize: (name: String, ?record_type: String) -> void
+
+      def to_hash: -> { name: String, record_type: String }
+    end
+  end
+end

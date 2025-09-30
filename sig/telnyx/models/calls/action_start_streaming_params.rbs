@@ -1,0 +1,141 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_start_streaming_params =
+        {
+          client_state: String,
+          command_id: String,
+          dialogflow_config: Telnyx::DialogflowConfig,
+          enable_dialogflow: bool,
+          stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
+          stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
+          stream_bidirectional_sampling_rate: Telnyx::Models::Calls::ActionStartStreamingParams::stream_bidirectional_sampling_rate,
+          stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs,
+          stream_codec: Telnyx::Models::stream_codec,
+          stream_track: Telnyx::Models::Calls::ActionStartStreamingParams::stream_track,
+          stream_url: String
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionStartStreamingParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader command_id: String?
+
+        def command_id=: (String) -> String
+
+        attr_reader dialogflow_config: Telnyx::DialogflowConfig?
+
+        def dialogflow_config=: (
+          Telnyx::DialogflowConfig
+        ) -> Telnyx::DialogflowConfig
+
+        attr_reader enable_dialogflow: bool?
+
+        def enable_dialogflow=: (bool) -> bool
+
+        attr_reader stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec?
+
+        def stream_bidirectional_codec=: (
+          Telnyx::Models::stream_bidirectional_codec
+        ) -> Telnyx::Models::stream_bidirectional_codec
+
+        attr_reader stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode?
+
+        def stream_bidirectional_mode=: (
+          Telnyx::Models::stream_bidirectional_mode
+        ) -> Telnyx::Models::stream_bidirectional_mode
+
+        attr_reader stream_bidirectional_sampling_rate: Telnyx::Models::Calls::ActionStartStreamingParams::stream_bidirectional_sampling_rate?
+
+        def stream_bidirectional_sampling_rate=: (
+          Telnyx::Models::Calls::ActionStartStreamingParams::stream_bidirectional_sampling_rate
+        ) -> Telnyx::Models::Calls::ActionStartStreamingParams::stream_bidirectional_sampling_rate
+
+        attr_reader stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs?
+
+        def stream_bidirectional_target_legs=: (
+          Telnyx::Models::stream_bidirectional_target_legs
+        ) -> Telnyx::Models::stream_bidirectional_target_legs
+
+        attr_reader stream_codec: Telnyx::Models::stream_codec?
+
+        def stream_codec=: (
+          Telnyx::Models::stream_codec
+        ) -> Telnyx::Models::stream_codec
+
+        attr_reader stream_track: Telnyx::Models::Calls::ActionStartStreamingParams::stream_track?
+
+        def stream_track=: (
+          Telnyx::Models::Calls::ActionStartStreamingParams::stream_track
+        ) -> Telnyx::Models::Calls::ActionStartStreamingParams::stream_track
+
+        attr_reader stream_url: String?
+
+        def stream_url=: (String) -> String
+
+        def initialize: (
+          ?client_state: String,
+          ?command_id: String,
+          ?dialogflow_config: Telnyx::DialogflowConfig,
+          ?enable_dialogflow: bool,
+          ?stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
+          ?stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
+          ?stream_bidirectional_sampling_rate: Telnyx::Models::Calls::ActionStartStreamingParams::stream_bidirectional_sampling_rate,
+          ?stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs,
+          ?stream_codec: Telnyx::Models::stream_codec,
+          ?stream_track: Telnyx::Models::Calls::ActionStartStreamingParams::stream_track,
+          ?stream_url: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          client_state: String,
+          command_id: String,
+          dialogflow_config: Telnyx::DialogflowConfig,
+          enable_dialogflow: bool,
+          stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
+          stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
+          stream_bidirectional_sampling_rate: Telnyx::Models::Calls::ActionStartStreamingParams::stream_bidirectional_sampling_rate,
+          stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs,
+          stream_codec: Telnyx::Models::stream_codec,
+          stream_track: Telnyx::Models::Calls::ActionStartStreamingParams::stream_track,
+          stream_url: String,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type stream_bidirectional_sampling_rate =
+          8000 | 16000 | 22050 | 24000 | 48000
+
+        module StreamBidirectionalSamplingRate
+          extend Telnyx::Internal::Type::Enum
+
+          STREAM_BIDIRECTIONAL_SAMPLING_RATE_8000: 8000
+          STREAM_BIDIRECTIONAL_SAMPLING_RATE_16000: 16000
+          STREAM_BIDIRECTIONAL_SAMPLING_RATE_22050: 22050
+          STREAM_BIDIRECTIONAL_SAMPLING_RATE_24000: 24000
+          STREAM_BIDIRECTIONAL_SAMPLING_RATE_48000: 48000
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartStreamingParams::stream_bidirectional_sampling_rate]
+        end
+
+        type stream_track = :inbound_track | :outbound_track | :both_tracks
+
+        module StreamTrack
+          extend Telnyx::Internal::Type::Enum
+
+          INBOUND_TRACK: :inbound_track
+          OUTBOUND_TRACK: :outbound_track
+          BOTH_TRACKS: :both_tracks
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartStreamingParams::stream_track]
+        end
+      end
+    end
+  end
+end

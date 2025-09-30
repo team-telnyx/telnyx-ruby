@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type fqdn_delete_response = { data: Telnyx::Fqdn }
+
+    class FqdnDeleteResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Fqdn?
+
+      def data=: (Telnyx::Fqdn) -> Telnyx::Fqdn
+
+      def initialize: (?data: Telnyx::Fqdn) -> void
+
+      def to_hash: -> { data: Telnyx::Fqdn }
+    end
+  end
+end

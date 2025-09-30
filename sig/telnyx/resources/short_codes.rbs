@@ -1,0 +1,24 @@
+module Telnyx
+  module Resources
+    class ShortCodes
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ShortCodeRetrieveResponse
+
+      def update: (
+        String id,
+        messaging_profile_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ShortCodeUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::ShortCodeListParams::Filter,
+        ?page: Telnyx::ShortCodeListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ShortCodeListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

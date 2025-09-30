@@ -1,0 +1,113 @@
+module Telnyx
+  module Models
+    type number_block_order =
+      {
+        id: String,
+        connection_id: String,
+        created_at: Time,
+        customer_reference: String,
+        messaging_profile_id: String,
+        phone_numbers_count: Integer,
+        range: Integer,
+        record_type: String,
+        requirements_met: bool,
+        starting_number: String,
+        status: Telnyx::Models::NumberBlockOrder::status,
+        updated_at: Time
+      }
+
+    class NumberBlockOrder < Telnyx::Internal::Type::BaseModel
+      attr_reader connection_id: String?
+
+      def connection_id=: (String) -> String
+
+      attr_reader customer_reference: String?
+
+      def customer_reference=: (String) -> String
+
+      attr_reader messaging_profile_id: String?
+
+      def messaging_profile_id=: (String) -> String
+
+      attr_reader range: Integer?
+
+      def range=: (Integer) -> Integer
+
+      attr_reader starting_number: String?
+
+      def starting_number=: (String) -> String
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader phone_numbers_count: Integer?
+
+      def phone_numbers_count=: (Integer) -> Integer
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader requirements_met: bool?
+
+      def requirements_met=: (bool) -> bool
+
+      attr_reader status: Telnyx::Models::NumberBlockOrder::status?
+
+      def status=: (
+        Telnyx::Models::NumberBlockOrder::status
+      ) -> Telnyx::Models::NumberBlockOrder::status
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        ?id: String,
+        ?connection_id: String,
+        ?created_at: Time,
+        ?customer_reference: String,
+        ?messaging_profile_id: String,
+        ?phone_numbers_count: Integer,
+        ?range: Integer,
+        ?record_type: String,
+        ?requirements_met: bool,
+        ?starting_number: String,
+        ?status: Telnyx::Models::NumberBlockOrder::status,
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        connection_id: String,
+        created_at: Time,
+        customer_reference: String,
+        messaging_profile_id: String,
+        phone_numbers_count: Integer,
+        range: Integer,
+        record_type: String,
+        requirements_met: bool,
+        starting_number: String,
+        status: Telnyx::Models::NumberBlockOrder::status,
+        updated_at: Time
+      }
+
+      type status = :pending | :success | :failure
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        SUCCESS: :success
+        FAILURE: :failure
+
+        def self?.values: -> ::Array[Telnyx::Models::NumberBlockOrder::status]
+      end
+    end
+  end
+end

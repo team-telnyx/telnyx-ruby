@@ -1,0 +1,16 @@
+module Telnyx
+  module Resources
+    class MessagingHostedNumberOrders
+      class Actions
+        def upload_file: (
+          String id,
+          ?bill: Telnyx::Internal::file_input,
+          ?loa: Telnyx::Internal::file_input,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::MessagingHostedNumberOrders::ActionUploadFileResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    type virtual_cross_connect_list_response =
+      {
+        data: ::Array[Telnyx::Models::VirtualCrossConnectListResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class VirtualCrossConnectListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::VirtualCrossConnectListResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::VirtualCrossConnectListResponse::Data]
+      ) -> ::Array[Telnyx::Models::VirtualCrossConnectListResponse::Data]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::VirtualCrossConnectListResponse::Data],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::VirtualCrossConnectListResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

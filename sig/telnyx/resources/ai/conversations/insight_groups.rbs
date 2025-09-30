@@ -1,0 +1,43 @@
+module Telnyx
+  module Resources
+    class AI
+      class Conversations
+        class InsightGroups
+          attr_reader insights: Telnyx::Resources::AI::Conversations::InsightGroups::Insights
+
+          def retrieve: (
+            String group_id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::Conversations::InsightTemplateGroupDetail
+
+          def update: (
+            String group_id,
+            ?description: String,
+            ?name: String,
+            ?webhook: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::Conversations::InsightTemplateGroupDetail
+
+          def delete: (
+            String group_id,
+            ?request_options: Telnyx::request_opts
+          ) -> top
+
+          def insight_groups: (
+            name: String,
+            ?description: String,
+            ?webhook: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::Conversations::InsightTemplateGroupDetail
+
+          def retrieve_insight_groups: (
+            ?page: Telnyx::AI::Conversations::InsightGroupRetrieveInsightGroupsParams::Page,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Conversations::InsightGroupRetrieveInsightGroupsResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

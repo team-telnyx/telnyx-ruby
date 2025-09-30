@@ -1,0 +1,89 @@
+module Telnyx
+  module Models
+    type number_order_create_params =
+      {
+        billing_group_id: String,
+        connection_id: String,
+        customer_reference: String,
+        messaging_profile_id: String,
+        phone_numbers: ::Array[Telnyx::NumberOrderCreateParams::PhoneNumber]
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class NumberOrderCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader billing_group_id: String?
+
+      def billing_group_id=: (String) -> String
+
+      attr_reader connection_id: String?
+
+      def connection_id=: (String) -> String
+
+      attr_reader customer_reference: String?
+
+      def customer_reference=: (String) -> String
+
+      attr_reader messaging_profile_id: String?
+
+      def messaging_profile_id=: (String) -> String
+
+      attr_reader phone_numbers: ::Array[Telnyx::NumberOrderCreateParams::PhoneNumber]?
+
+      def phone_numbers=: (
+        ::Array[Telnyx::NumberOrderCreateParams::PhoneNumber]
+      ) -> ::Array[Telnyx::NumberOrderCreateParams::PhoneNumber]
+
+      def initialize: (
+        ?billing_group_id: String,
+        ?connection_id: String,
+        ?customer_reference: String,
+        ?messaging_profile_id: String,
+        ?phone_numbers: ::Array[Telnyx::NumberOrderCreateParams::PhoneNumber],
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        billing_group_id: String,
+        connection_id: String,
+        customer_reference: String,
+        messaging_profile_id: String,
+        phone_numbers: ::Array[Telnyx::NumberOrderCreateParams::PhoneNumber],
+        request_options: Telnyx::RequestOptions
+      }
+
+      type phone_number =
+        {
+          phone_number: String,
+          bundle_id: String,
+          requirement_group_id: String
+        }
+
+      class PhoneNumber < Telnyx::Internal::Type::BaseModel
+        attr_accessor phone_number: String
+
+        attr_reader bundle_id: String?
+
+        def bundle_id=: (String) -> String
+
+        attr_reader requirement_group_id: String?
+
+        def requirement_group_id=: (String) -> String
+
+        def initialize: (
+          phone_number: String,
+          ?bundle_id: String,
+          ?requirement_group_id: String
+        ) -> void
+
+        def to_hash: -> {
+          phone_number: String,
+          bundle_id: String,
+          requirement_group_id: String
+        }
+      end
+    end
+  end
+end

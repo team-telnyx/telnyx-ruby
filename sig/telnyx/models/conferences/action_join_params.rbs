@@ -1,0 +1,142 @@
+module Telnyx
+  module Models
+    module Conferences
+      type action_join_params =
+        {
+          call_control_id: String,
+          beep_enabled: Telnyx::Models::Conferences::ActionJoinParams::beep_enabled,
+          client_state: String,
+          command_id: String,
+          end_conference_on_exit: bool,
+          hold: bool,
+          hold_audio_url: String,
+          hold_media_name: String,
+          mute: bool,
+          soft_end_conference_on_exit: bool,
+          start_conference_on_enter: bool,
+          supervisor_role: Telnyx::Models::Conferences::ActionJoinParams::supervisor_role,
+          whisper_call_control_ids: ::Array[String]
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionJoinParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
+
+        attr_reader beep_enabled: Telnyx::Models::Conferences::ActionJoinParams::beep_enabled?
+
+        def beep_enabled=: (
+          Telnyx::Models::Conferences::ActionJoinParams::beep_enabled
+        ) -> Telnyx::Models::Conferences::ActionJoinParams::beep_enabled
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader command_id: String?
+
+        def command_id=: (String) -> String
+
+        attr_reader end_conference_on_exit: bool?
+
+        def end_conference_on_exit=: (bool) -> bool
+
+        attr_reader hold: bool?
+
+        def hold=: (bool) -> bool
+
+        attr_reader hold_audio_url: String?
+
+        def hold_audio_url=: (String) -> String
+
+        attr_reader hold_media_name: String?
+
+        def hold_media_name=: (String) -> String
+
+        attr_reader mute: bool?
+
+        def mute=: (bool) -> bool
+
+        attr_reader soft_end_conference_on_exit: bool?
+
+        def soft_end_conference_on_exit=: (bool) -> bool
+
+        attr_reader start_conference_on_enter: bool?
+
+        def start_conference_on_enter=: (bool) -> bool
+
+        attr_reader supervisor_role: Telnyx::Models::Conferences::ActionJoinParams::supervisor_role?
+
+        def supervisor_role=: (
+          Telnyx::Models::Conferences::ActionJoinParams::supervisor_role
+        ) -> Telnyx::Models::Conferences::ActionJoinParams::supervisor_role
+
+        attr_reader whisper_call_control_ids: ::Array[String]?
+
+        def whisper_call_control_ids=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          call_control_id: String,
+          ?beep_enabled: Telnyx::Models::Conferences::ActionJoinParams::beep_enabled,
+          ?client_state: String,
+          ?command_id: String,
+          ?end_conference_on_exit: bool,
+          ?hold: bool,
+          ?hold_audio_url: String,
+          ?hold_media_name: String,
+          ?mute: bool,
+          ?soft_end_conference_on_exit: bool,
+          ?start_conference_on_enter: bool,
+          ?supervisor_role: Telnyx::Models::Conferences::ActionJoinParams::supervisor_role,
+          ?whisper_call_control_ids: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          call_control_id: String,
+          beep_enabled: Telnyx::Models::Conferences::ActionJoinParams::beep_enabled,
+          client_state: String,
+          command_id: String,
+          end_conference_on_exit: bool,
+          hold: bool,
+          hold_audio_url: String,
+          hold_media_name: String,
+          mute: bool,
+          soft_end_conference_on_exit: bool,
+          start_conference_on_enter: bool,
+          supervisor_role: Telnyx::Models::Conferences::ActionJoinParams::supervisor_role,
+          whisper_call_control_ids: ::Array[String],
+          request_options: Telnyx::RequestOptions
+        }
+
+        type beep_enabled = :always | :never | :on_enter | :on_exit
+
+        module BeepEnabled
+          extend Telnyx::Internal::Type::Enum
+
+          ALWAYS: :always
+          NEVER: :never
+          ON_ENTER: :on_enter
+          ON_EXIT: :on_exit
+
+          def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionJoinParams::beep_enabled]
+        end
+
+        type supervisor_role = :barge | :monitor | :none | :whisper
+
+        module SupervisorRole
+          extend Telnyx::Internal::Type::Enum
+
+          BARGE: :barge
+          MONITOR: :monitor
+          NONE: :none
+          WHISPER: :whisper
+
+          def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionJoinParams::supervisor_role]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type phone_number_retrieve_response = { data: Telnyx::PhoneNumberDetailed }
+
+    class PhoneNumberRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::PhoneNumberDetailed?
+
+      def data=: (Telnyx::PhoneNumberDetailed) -> Telnyx::PhoneNumberDetailed
+
+      def initialize: (?data: Telnyx::PhoneNumberDetailed) -> void
+
+      def to_hash: -> { data: Telnyx::PhoneNumberDetailed }
+    end
+  end
+end

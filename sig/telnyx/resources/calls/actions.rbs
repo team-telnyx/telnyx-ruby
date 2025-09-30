@@ -1,0 +1,453 @@
+module Telnyx
+  module Resources
+    class Calls
+      class Actions
+        def answer: (
+          String call_control_id,
+          ?billing_group_id: String,
+          ?client_state: String,
+          ?command_id: String,
+          ?custom_headers: ::Array[Telnyx::CustomSipHeader],
+          ?preferred_codecs: Telnyx::Models::Calls::ActionAnswerParams::preferred_codecs,
+          ?record: Telnyx::Models::Calls::ActionAnswerParams::record,
+          ?record_channels: Telnyx::Models::Calls::ActionAnswerParams::record_channels,
+          ?record_custom_file_name: String,
+          ?record_format: Telnyx::Models::Calls::ActionAnswerParams::record_format,
+          ?record_max_length: Integer,
+          ?record_timeout_secs: Integer,
+          ?record_track: Telnyx::Models::Calls::ActionAnswerParams::record_track,
+          ?record_trim: Telnyx::Models::Calls::ActionAnswerParams::record_trim,
+          ?send_silence_when_idle: bool,
+          ?sip_headers: ::Array[Telnyx::SipHeader],
+          ?sound_modifications: Telnyx::SoundModifications,
+          ?stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
+          ?stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
+          ?stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs,
+          ?stream_codec: Telnyx::Models::stream_codec,
+          ?stream_track: Telnyx::Models::Calls::ActionAnswerParams::stream_track,
+          ?stream_url: String,
+          ?transcription: bool,
+          ?transcription_config: Telnyx::Calls::TranscriptionStartRequest,
+          ?webhook_url: String,
+          ?webhook_url_method: Telnyx::Models::Calls::ActionAnswerParams::webhook_url_method,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionAnswerResponse
+
+        def bridge: (
+          String path_call_control_id,
+          body_call_control_id: String,
+          ?client_state: String,
+          ?command_id: String,
+          ?mute_dtmf: Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf,
+          ?park_after_unbridge: String,
+          ?play_ringtone: bool,
+          ?queue: String,
+          ?record: Telnyx::Models::Calls::ActionBridgeParams::record,
+          ?record_channels: Telnyx::Models::Calls::ActionBridgeParams::record_channels,
+          ?record_custom_file_name: String,
+          ?record_format: Telnyx::Models::Calls::ActionBridgeParams::record_format,
+          ?record_max_length: Integer,
+          ?record_timeout_secs: Integer,
+          ?record_track: Telnyx::Models::Calls::ActionBridgeParams::record_track,
+          ?record_trim: Telnyx::Models::Calls::ActionBridgeParams::record_trim,
+          ?ringtone: Telnyx::Models::Calls::ActionBridgeParams::ringtone,
+          ?video_room_context: String,
+          ?video_room_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionBridgeResponse
+
+        def enqueue: (
+          String call_control_id,
+          queue_name: String,
+          ?client_state: String,
+          ?command_id: String,
+          ?max_size: Integer,
+          ?max_wait_time_secs: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionEnqueueResponse
+
+        def gather: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?gather_id: String,
+          ?initial_timeout_millis: Integer,
+          ?inter_digit_timeout_millis: Integer,
+          ?maximum_digits: Integer,
+          ?minimum_digits: Integer,
+          ?terminating_digit: String,
+          ?timeout_millis: Integer,
+          ?valid_digits: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionGatherResponse
+
+        def gather_using_ai: (
+          String call_control_id,
+          parameters: top,
+          ?assistant: Telnyx::AI::Assistant,
+          ?client_state: String,
+          ?command_id: String,
+          ?greeting: String,
+          ?interruption_settings: Telnyx::Calls::InterruptionSettings,
+          ?language: Telnyx::Models::Calls::google_transcription_language,
+          ?message_history: ::Array[Telnyx::Calls::ActionGatherUsingAIParams::MessageHistory],
+          ?send_message_history_updates: bool,
+          ?send_partial_results: bool,
+          ?transcription: Telnyx::Calls::TranscriptionConfig,
+          ?user_response_timeout_ms: Integer,
+          ?voice: String,
+          ?voice_settings: Telnyx::Models::Calls::ActionGatherUsingAIParams::voice_settings,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionGatherUsingAIResponse
+
+        def gather_using_audio: (
+          String call_control_id,
+          ?audio_url: String,
+          ?client_state: String,
+          ?command_id: String,
+          ?inter_digit_timeout_millis: Integer,
+          ?invalid_audio_url: String,
+          ?invalid_media_name: String,
+          ?maximum_digits: Integer,
+          ?maximum_tries: Integer,
+          ?media_name: String,
+          ?minimum_digits: Integer,
+          ?terminating_digit: String,
+          ?timeout_millis: Integer,
+          ?valid_digits: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionGatherUsingAudioResponse
+
+        def gather_using_speak: (
+          String call_control_id,
+          payload: String,
+          voice: String,
+          ?client_state: String,
+          ?command_id: String,
+          ?inter_digit_timeout_millis: Integer,
+          ?invalid_payload: String,
+          ?language: Telnyx::Models::Calls::ActionGatherUsingSpeakParams::language,
+          ?maximum_digits: Integer,
+          ?maximum_tries: Integer,
+          ?minimum_digits: Integer,
+          ?payload_type: Telnyx::Models::Calls::ActionGatherUsingSpeakParams::payload_type,
+          ?service_level: Telnyx::Models::Calls::ActionGatherUsingSpeakParams::service_level,
+          ?terminating_digit: String,
+          ?timeout_millis: Integer,
+          ?valid_digits: String,
+          ?voice_settings: Telnyx::Models::Calls::ActionGatherUsingSpeakParams::voice_settings,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionGatherUsingSpeakResponse
+
+        def hangup: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionHangupResponse
+
+        def leave_queue: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionLeaveQueueResponse
+
+        def pause_recording: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?recording_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionPauseRecordingResponse
+
+        def refer: (
+          String call_control_id,
+          sip_address: String,
+          ?client_state: String,
+          ?command_id: String,
+          ?custom_headers: ::Array[Telnyx::CustomSipHeader],
+          ?sip_auth_password: String,
+          ?sip_auth_username: String,
+          ?sip_headers: ::Array[Telnyx::SipHeader],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionReferResponse
+
+        def reject: (
+          String call_control_id,
+          cause: Telnyx::Models::Calls::ActionRejectParams::cause,
+          ?client_state: String,
+          ?command_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionRejectResponse
+
+        def resume_recording: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?recording_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionResumeRecordingResponse
+
+        def send_dtmf: (
+          String call_control_id,
+          digits: String,
+          ?client_state: String,
+          ?command_id: String,
+          ?duration_millis: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionSendDtmfResponse
+
+        def send_sip_info: (
+          String call_control_id,
+          body: String,
+          content_type: String,
+          ?client_state: String,
+          ?command_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionSendSipInfoResponse
+
+        def speak: (
+          String call_control_id,
+          payload: String,
+          voice: String,
+          ?client_state: String,
+          ?command_id: String,
+          ?language: Telnyx::Models::Calls::ActionSpeakParams::language,
+          ?payload_type: Telnyx::Models::Calls::ActionSpeakParams::payload_type,
+          ?service_level: Telnyx::Models::Calls::ActionSpeakParams::service_level,
+          ?stop: String,
+          ?voice_settings: Telnyx::Models::Calls::ActionSpeakParams::voice_settings,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionSpeakResponse
+
+        def start_ai_assistant: (
+          String call_control_id,
+          ?assistant: Telnyx::Calls::ActionStartAIAssistantParams::Assistant,
+          ?client_state: String,
+          ?command_id: String,
+          ?greeting: String,
+          ?interruption_settings: Telnyx::Calls::InterruptionSettings,
+          ?transcription: Telnyx::Calls::TranscriptionConfig,
+          ?voice: String,
+          ?voice_settings: Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionStartAIAssistantResponse
+
+        def start_forking: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?rx: String,
+          ?stream_type: Telnyx::Models::Calls::ActionStartForkingParams::stream_type,
+          ?tx: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionStartForkingResponse
+
+        def start_noise_suppression: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?direction: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction,
+          ?noise_suppression_engine: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionStartNoiseSuppressionResponse
+
+        def start_playback: (
+          String call_control_id,
+          ?audio_type: Telnyx::Models::Calls::ActionStartPlaybackParams::audio_type,
+          ?audio_url: String,
+          ?cache_audio: bool,
+          ?client_state: String,
+          ?command_id: String,
+          ?loop_: Telnyx::Models::Calls::loopcount,
+          ?media_name: String,
+          ?overlay: bool,
+          ?playback_content: String,
+          ?stop: String,
+          ?target_legs: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionStartPlaybackResponse
+
+        def start_recording: (
+          String call_control_id,
+          channels: Telnyx::Models::Calls::ActionStartRecordingParams::channels,
+          format_: Telnyx::Models::Calls::ActionStartRecordingParams::format_,
+          ?client_state: String,
+          ?command_id: String,
+          ?custom_file_name: String,
+          ?max_length: Integer,
+          ?play_beep: bool,
+          ?recording_track: Telnyx::Models::Calls::ActionStartRecordingParams::recording_track,
+          ?timeout_secs: Integer,
+          ?transcription: bool,
+          ?transcription_engine: String,
+          ?transcription_language: Telnyx::Models::Calls::ActionStartRecordingParams::transcription_language,
+          ?transcription_max_speaker_count: Integer,
+          ?transcription_min_speaker_count: Integer,
+          ?transcription_profanity_filter: bool,
+          ?transcription_speaker_diarization: bool,
+          ?trim: Telnyx::Models::Calls::ActionStartRecordingParams::trim,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionStartRecordingResponse
+
+        def start_siprec: (
+          String call_control_id,
+          ?client_state: String,
+          ?connector_name: String,
+          ?include_metadata_custom_headers: Telnyx::Models::Calls::ActionStartSiprecParams::include_metadata_custom_headers,
+          ?secure: Telnyx::Models::Calls::ActionStartSiprecParams::secure,
+          ?session_timeout_secs: Integer,
+          ?sip_transport: Telnyx::Models::Calls::ActionStartSiprecParams::sip_transport,
+          ?siprec_track: Telnyx::Models::Calls::ActionStartSiprecParams::siprec_track,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionStartSiprecResponse
+
+        def start_streaming: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?dialogflow_config: Telnyx::DialogflowConfig,
+          ?enable_dialogflow: bool,
+          ?stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
+          ?stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
+          ?stream_bidirectional_sampling_rate: Telnyx::Models::Calls::ActionStartStreamingParams::stream_bidirectional_sampling_rate,
+          ?stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs,
+          ?stream_codec: Telnyx::Models::stream_codec,
+          ?stream_track: Telnyx::Models::Calls::ActionStartStreamingParams::stream_track,
+          ?stream_url: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionStartStreamingResponse
+
+        def start_transcription: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine,
+          ?transcription_engine_config: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config,
+          ?transcription_tracks: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionStartTranscriptionResponse
+
+        def stop_ai_assistant: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionStopAIAssistantResponse
+
+        def stop_forking: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?stream_type: Telnyx::Models::Calls::ActionStopForkingParams::stream_type,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionStopForkingResponse
+
+        def stop_gather: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionStopGatherResponse
+
+        def stop_noise_suppression: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionStopNoiseSuppressionResponse
+
+        def stop_playback: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?overlay: bool,
+          ?stop: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionStopPlaybackResponse
+
+        def stop_recording: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?recording_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionStopRecordingResponse
+
+        def stop_siprec: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionStopSiprecResponse
+
+        def stop_streaming: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?stream_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionStopStreamingResponse
+
+        def stop_transcription: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionStopTranscriptionResponse
+
+        def switch_supervisor_role: (
+          String call_control_id,
+          role: Telnyx::Models::Calls::ActionSwitchSupervisorRoleParams::role,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionSwitchSupervisorRoleResponse
+
+        def transfer: (
+          String call_control_id,
+          to: String,
+          ?answering_machine_detection: Telnyx::Models::Calls::ActionTransferParams::answering_machine_detection,
+          ?answering_machine_detection_config: Telnyx::Calls::ActionTransferParams::AnsweringMachineDetectionConfig,
+          ?audio_url: String,
+          ?client_state: String,
+          ?command_id: String,
+          ?custom_headers: ::Array[Telnyx::CustomSipHeader],
+          ?early_media: bool,
+          ?from: String,
+          ?from_display_name: String,
+          ?media_encryption: Telnyx::Models::Calls::ActionTransferParams::media_encryption,
+          ?media_name: String,
+          ?mute_dtmf: Telnyx::Models::Calls::ActionTransferParams::mute_dtmf,
+          ?park_after_unbridge: String,
+          ?record: Telnyx::Models::Calls::ActionTransferParams::record,
+          ?record_channels: Telnyx::Models::Calls::ActionTransferParams::record_channels,
+          ?record_custom_file_name: String,
+          ?record_format: Telnyx::Models::Calls::ActionTransferParams::record_format,
+          ?record_max_length: Integer,
+          ?record_timeout_secs: Integer,
+          ?record_track: Telnyx::Models::Calls::ActionTransferParams::record_track,
+          ?record_trim: Telnyx::Models::Calls::ActionTransferParams::record_trim,
+          ?sip_auth_password: String,
+          ?sip_auth_username: String,
+          ?sip_headers: ::Array[Telnyx::SipHeader],
+          ?sip_transport_protocol: Telnyx::Models::Calls::ActionTransferParams::sip_transport_protocol,
+          ?sound_modifications: Telnyx::SoundModifications,
+          ?target_leg_client_state: String,
+          ?time_limit_secs: Integer,
+          ?timeout_secs: Integer,
+          ?webhook_url: String,
+          ?webhook_url_method: Telnyx::Models::Calls::ActionTransferParams::webhook_url_method,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionTransferResponse
+
+        def update_client_state: (
+          String call_control_id,
+          client_state: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionUpdateClientStateResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

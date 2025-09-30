@@ -1,0 +1,71 @@
+module Telnyx
+  module Models
+    type managed_account_update_global_channel_limit_response =
+      {
+        data: Telnyx::Models::ManagedAccountUpdateGlobalChannelLimitResponse::Data
+      }
+
+    class ManagedAccountUpdateGlobalChannelLimitResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::ManagedAccountUpdateGlobalChannelLimitResponse::Data?
+
+      def data=: (
+        Telnyx::Models::ManagedAccountUpdateGlobalChannelLimitResponse::Data
+      ) -> Telnyx::Models::ManagedAccountUpdateGlobalChannelLimitResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::ManagedAccountUpdateGlobalChannelLimitResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::ManagedAccountUpdateGlobalChannelLimitResponse::Data
+      }
+
+      type data =
+        {
+          id: String,
+          channel_limit: Integer,
+          email: String,
+          manager_account_id: String,
+          record_type: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader channel_limit: Integer?
+
+        def channel_limit=: (Integer) -> Integer
+
+        attr_reader email: String?
+
+        def email=: (String) -> String
+
+        attr_reader manager_account_id: String?
+
+        def manager_account_id=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?channel_limit: Integer,
+          ?email: String,
+          ?manager_account_id: String,
+          ?record_type: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          channel_limit: Integer,
+          email: String,
+          manager_account_id: String,
+          record_type: String
+        }
+      end
+    end
+  end
+end

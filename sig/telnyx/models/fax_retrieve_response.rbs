@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type fax_retrieve_response = { data: Telnyx::Fax }
+
+    class FaxRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Fax?
+
+      def data=: (Telnyx::Fax) -> Telnyx::Fax
+
+      def initialize: (?data: Telnyx::Fax) -> void
+
+      def to_hash: -> { data: Telnyx::Fax }
+    end
+  end
+end

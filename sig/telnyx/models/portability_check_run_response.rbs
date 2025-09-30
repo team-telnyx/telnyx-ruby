@@ -1,0 +1,69 @@
+module Telnyx
+  module Models
+    type portability_check_run_response =
+      { data: ::Array[Telnyx::Models::PortabilityCheckRunResponse::Data] }
+
+    class PortabilityCheckRunResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::PortabilityCheckRunResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::PortabilityCheckRunResponse::Data]
+      ) -> ::Array[Telnyx::Models::PortabilityCheckRunResponse::Data]
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::PortabilityCheckRunResponse::Data]
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::PortabilityCheckRunResponse::Data]
+      }
+
+      type data =
+        {
+          fast_portable: bool,
+          not_portable_reason: String,
+          phone_number: String,
+          portable: bool,
+          record_type: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader fast_portable: bool?
+
+        def fast_portable=: (bool) -> bool
+
+        attr_reader not_portable_reason: String?
+
+        def not_portable_reason=: (String) -> String
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader portable: bool?
+
+        def portable=: (bool) -> bool
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?fast_portable: bool,
+          ?not_portable_reason: String,
+          ?phone_number: String,
+          ?portable: bool,
+          ?record_type: String
+        ) -> void
+
+        def to_hash: -> {
+          fast_portable: bool,
+          not_portable_reason: String,
+          phone_number: String,
+          portable: bool,
+          record_type: String
+        }
+      end
+    end
+  end
+end

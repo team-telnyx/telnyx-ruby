@@ -1,0 +1,66 @@
+module Telnyx
+  module Models
+    type global_ip_assignment =
+      {
+        global_ip_id: String,
+        is_announced: bool,
+        is_connected: bool,
+        is_in_maintenance: bool,
+        record_type: String,
+        status: Telnyx::Models::interface_status,
+        wireguard_peer_id: String
+      }
+
+    class GlobalIPAssignment < Telnyx::Models::Record
+      def global_ip_id: -> String?
+
+      def global_ip_id=: (String _) -> String
+
+      def is_in_maintenance: -> bool?
+
+      def is_in_maintenance=: (bool _) -> bool
+
+      def wireguard_peer_id: -> String?
+
+      def wireguard_peer_id=: (String _) -> String
+
+      def is_announced: -> bool?
+
+      def is_announced=: (bool _) -> bool
+
+      def is_connected: -> bool?
+
+      def is_connected=: (bool _) -> bool
+
+      def record_type: -> String?
+
+      def record_type=: (String _) -> String
+
+      def status: -> Telnyx::Models::interface_status?
+
+      def status=: (
+        Telnyx::Models::interface_status _
+      ) -> Telnyx::Models::interface_status
+
+      def initialize: (
+        ?global_ip_id: String,
+        ?is_announced: bool,
+        ?is_connected: bool,
+        ?is_in_maintenance: bool,
+        ?record_type: String,
+        ?status: Telnyx::Models::interface_status,
+        ?wireguard_peer_id: String
+      ) -> void
+
+      def to_hash: -> {
+        global_ip_id: String,
+        is_announced: bool,
+        is_connected: bool,
+        is_in_maintenance: bool,
+        record_type: String,
+        status: Telnyx::Models::interface_status,
+        wireguard_peer_id: String
+      }
+    end
+  end
+end

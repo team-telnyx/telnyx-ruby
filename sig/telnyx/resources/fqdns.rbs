@@ -1,0 +1,40 @@
+module Telnyx
+  module Resources
+    class Fqdns
+      def create: (
+        connection_id: String,
+        dns_record_type: String,
+        fqdn: String,
+        ?port: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::FqdnCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::FqdnRetrieveResponse
+
+      def update: (
+        String id,
+        ?connection_id: String,
+        ?dns_record_type: String,
+        ?fqdn: String,
+        ?port: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::FqdnUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::FqdnListParams::Filter,
+        ?page: Telnyx::FqdnListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::FqdnListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::FqdnDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

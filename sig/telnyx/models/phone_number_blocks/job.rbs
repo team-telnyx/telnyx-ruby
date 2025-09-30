@@ -1,0 +1,237 @@
+module Telnyx
+  module Models
+    module PhoneNumberBlocks
+      type job =
+        {
+          id: String,
+          created_at: String,
+          etc: Time,
+          failed_operations: ::Array[Telnyx::PhoneNumberBlocks::Job::FailedOperation],
+          record_type: String,
+          status: Telnyx::Models::PhoneNumberBlocks::Job::status,
+          successful_operations: ::Array[Telnyx::PhoneNumberBlocks::Job::SuccessfulOperation],
+          type: Telnyx::Models::PhoneNumberBlocks::Job::type_,
+          updated_at: String
+        }
+
+      class Job < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: String?
+
+        def created_at=: (String) -> String
+
+        attr_reader etc: Time?
+
+        def etc=: (Time) -> Time
+
+        attr_reader failed_operations: ::Array[Telnyx::PhoneNumberBlocks::Job::FailedOperation]?
+
+        def failed_operations=: (
+          ::Array[Telnyx::PhoneNumberBlocks::Job::FailedOperation]
+        ) -> ::Array[Telnyx::PhoneNumberBlocks::Job::FailedOperation]
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader status: Telnyx::Models::PhoneNumberBlocks::Job::status?
+
+        def status=: (
+          Telnyx::Models::PhoneNumberBlocks::Job::status
+        ) -> Telnyx::Models::PhoneNumberBlocks::Job::status
+
+        attr_reader successful_operations: ::Array[Telnyx::PhoneNumberBlocks::Job::SuccessfulOperation]?
+
+        def successful_operations=: (
+          ::Array[Telnyx::PhoneNumberBlocks::Job::SuccessfulOperation]
+        ) -> ::Array[Telnyx::PhoneNumberBlocks::Job::SuccessfulOperation]
+
+        attr_reader type: Telnyx::Models::PhoneNumberBlocks::Job::type_?
+
+        def type=: (
+          Telnyx::Models::PhoneNumberBlocks::Job::type_
+        ) -> Telnyx::Models::PhoneNumberBlocks::Job::type_
+
+        attr_reader updated_at: String?
+
+        def updated_at=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?created_at: String,
+          ?etc: Time,
+          ?failed_operations: ::Array[Telnyx::PhoneNumberBlocks::Job::FailedOperation],
+          ?record_type: String,
+          ?status: Telnyx::Models::PhoneNumberBlocks::Job::status,
+          ?successful_operations: ::Array[Telnyx::PhoneNumberBlocks::Job::SuccessfulOperation],
+          ?type: Telnyx::Models::PhoneNumberBlocks::Job::type_,
+          ?updated_at: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: String,
+          etc: Time,
+          failed_operations: ::Array[Telnyx::PhoneNumberBlocks::Job::FailedOperation],
+          record_type: String,
+          status: Telnyx::Models::PhoneNumberBlocks::Job::status,
+          successful_operations: ::Array[Telnyx::PhoneNumberBlocks::Job::SuccessfulOperation],
+          type: Telnyx::Models::PhoneNumberBlocks::Job::type_,
+          updated_at: String
+        }
+
+        type failed_operation =
+          {
+            id: String,
+            errors: ::Array[Telnyx::PhoneNumberBlocks::Job::FailedOperation::Error],
+            phone_number: String
+          }
+
+        class FailedOperation < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader errors: ::Array[Telnyx::PhoneNumberBlocks::Job::FailedOperation::Error]?
+
+          def errors=: (
+            ::Array[Telnyx::PhoneNumberBlocks::Job::FailedOperation::Error]
+          ) -> ::Array[Telnyx::PhoneNumberBlocks::Job::FailedOperation::Error]
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?errors: ::Array[Telnyx::PhoneNumberBlocks::Job::FailedOperation::Error],
+            ?phone_number: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            errors: ::Array[Telnyx::PhoneNumberBlocks::Job::FailedOperation::Error],
+            phone_number: String
+          }
+
+          type error =
+            {
+              code: String,
+              title: String,
+              detail: String,
+              meta: Telnyx::PhoneNumberBlocks::Job::FailedOperation::Error::Meta,
+              source: Telnyx::PhoneNumberBlocks::Job::FailedOperation::Error::Source
+            }
+
+          class Error < Telnyx::Internal::Type::BaseModel
+            attr_accessor code: String
+
+            attr_accessor title: String
+
+            attr_reader detail: String?
+
+            def detail=: (String) -> String
+
+            attr_reader meta: Telnyx::PhoneNumberBlocks::Job::FailedOperation::Error::Meta?
+
+            def meta=: (
+              Telnyx::PhoneNumberBlocks::Job::FailedOperation::Error::Meta
+            ) -> Telnyx::PhoneNumberBlocks::Job::FailedOperation::Error::Meta
+
+            attr_reader source: Telnyx::PhoneNumberBlocks::Job::FailedOperation::Error::Source?
+
+            def source=: (
+              Telnyx::PhoneNumberBlocks::Job::FailedOperation::Error::Source
+            ) -> Telnyx::PhoneNumberBlocks::Job::FailedOperation::Error::Source
+
+            def initialize: (
+              code: String,
+              title: String,
+              ?detail: String,
+              ?meta: Telnyx::PhoneNumberBlocks::Job::FailedOperation::Error::Meta,
+              ?source: Telnyx::PhoneNumberBlocks::Job::FailedOperation::Error::Source
+            ) -> void
+
+            def to_hash: -> {
+              code: String,
+              title: String,
+              detail: String,
+              meta: Telnyx::PhoneNumberBlocks::Job::FailedOperation::Error::Meta,
+              source: Telnyx::PhoneNumberBlocks::Job::FailedOperation::Error::Source
+            }
+
+            type meta = { url: String }
+
+            class Meta < Telnyx::Internal::Type::BaseModel
+              attr_reader url: String?
+
+              def url=: (String) -> String
+
+              def initialize: (?url: String) -> void
+
+              def to_hash: -> { url: String }
+            end
+
+            type source = { parameter: String, pointer: String }
+
+            class Source < Telnyx::Internal::Type::BaseModel
+              attr_reader parameter: String?
+
+              def parameter=: (String) -> String
+
+              attr_reader pointer: String?
+
+              def pointer=: (String) -> String
+
+              def initialize: (?parameter: String, ?pointer: String) -> void
+
+              def to_hash: -> { parameter: String, pointer: String }
+            end
+          end
+        end
+
+        type status = :pending | :in_progress | :completed | :failed
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          IN_PROGRESS: :in_progress
+          COMPLETED: :completed
+          FAILED: :failed
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumberBlocks::Job::status]
+        end
+
+        type successful_operation = { id: String, phone_number: String }
+
+        class SuccessfulOperation < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          def initialize: (?id: String, ?phone_number: String) -> void
+
+          def to_hash: -> { id: String, phone_number: String }
+        end
+
+        type type_ = :delete_phone_number_block
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          DELETE_PHONE_NUMBER_BLOCK: :delete_phone_number_block
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumberBlocks::Job::type_]
+        end
+      end
+    end
+  end
+end

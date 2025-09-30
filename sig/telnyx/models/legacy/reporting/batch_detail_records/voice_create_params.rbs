@@ -1,0 +1,218 @@
+module Telnyx
+  module Models
+    module Legacy
+      module Reporting
+        module BatchDetailRecords
+          type voice_create_params =
+            {
+              end_time: Time,
+              start_time: Time,
+              call_types: ::Array[Integer],
+              connections: ::Array[Integer],
+              fields: ::Array[String],
+              filters: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter],
+              include_all_metadata: bool,
+              managed_accounts: ::Array[String],
+              record_types: ::Array[Integer],
+              report_name: String,
+              select_all_managed_accounts: bool,
+              source: String,
+              timezone: String
+            }
+            & Telnyx::Internal::Type::request_parameters
+
+          class VoiceCreateParams < Telnyx::Internal::Type::BaseModel
+            extend Telnyx::Internal::Type::RequestParameters::Converter
+            include Telnyx::Internal::Type::RequestParameters
+
+            attr_accessor end_time: Time
+
+            attr_accessor start_time: Time
+
+            attr_reader call_types: ::Array[Integer]?
+
+            def call_types=: (::Array[Integer]) -> ::Array[Integer]
+
+            attr_reader connections: ::Array[Integer]?
+
+            def connections=: (::Array[Integer]) -> ::Array[Integer]
+
+            attr_reader fields: ::Array[String]?
+
+            def fields=: (::Array[String]) -> ::Array[String]
+
+            attr_reader filters: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter]?
+
+            def filters=: (
+              ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter]
+            ) -> ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter]
+
+            attr_reader include_all_metadata: bool?
+
+            def include_all_metadata=: (bool) -> bool
+
+            attr_reader managed_accounts: ::Array[String]?
+
+            def managed_accounts=: (::Array[String]) -> ::Array[String]
+
+            attr_reader record_types: ::Array[Integer]?
+
+            def record_types=: (::Array[Integer]) -> ::Array[Integer]
+
+            attr_reader report_name: String?
+
+            def report_name=: (String) -> String
+
+            attr_reader select_all_managed_accounts: bool?
+
+            def select_all_managed_accounts=: (bool) -> bool
+
+            attr_reader source: String?
+
+            def source=: (String) -> String
+
+            attr_reader timezone: String?
+
+            def timezone=: (String) -> String
+
+            def initialize: (
+              end_time: Time,
+              start_time: Time,
+              ?call_types: ::Array[Integer],
+              ?connections: ::Array[Integer],
+              ?fields: ::Array[String],
+              ?filters: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter],
+              ?include_all_metadata: bool,
+              ?managed_accounts: ::Array[String],
+              ?record_types: ::Array[Integer],
+              ?report_name: String,
+              ?select_all_managed_accounts: bool,
+              ?source: String,
+              ?timezone: String,
+              ?request_options: Telnyx::request_opts
+            ) -> void
+
+            def to_hash: -> {
+              end_time: Time,
+              start_time: Time,
+              call_types: ::Array[Integer],
+              connections: ::Array[Integer],
+              fields: ::Array[String],
+              filters: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter],
+              include_all_metadata: bool,
+              managed_accounts: ::Array[String],
+              record_types: ::Array[Integer],
+              report_name: String,
+              select_all_managed_accounts: bool,
+              source: String,
+              timezone: String,
+              request_options: Telnyx::RequestOptions
+            }
+
+            type filter =
+              {
+                billing_group: String,
+                cld: String,
+                cld_filter: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::cld_filter,
+                cli: String,
+                cli_filter: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::cli_filter,
+                filter_type: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::filter_type,
+                tags_list: String
+              }
+
+            class Filter < Telnyx::Internal::Type::BaseModel
+              attr_reader billing_group: String?
+
+              def billing_group=: (String) -> String
+
+              attr_reader cld: String?
+
+              def cld=: (String) -> String
+
+              attr_reader cld_filter: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::cld_filter?
+
+              def cld_filter=: (
+                Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::cld_filter
+              ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::cld_filter
+
+              attr_reader cli: String?
+
+              def cli=: (String) -> String
+
+              attr_reader cli_filter: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::cli_filter?
+
+              def cli_filter=: (
+                Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::cli_filter
+              ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::cli_filter
+
+              attr_reader filter_type: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::filter_type?
+
+              def filter_type=: (
+                Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::filter_type
+              ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::filter_type
+
+              attr_reader tags_list: String?
+
+              def tags_list=: (String) -> String
+
+              def initialize: (
+                ?billing_group: String,
+                ?cld: String,
+                ?cld_filter: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::cld_filter,
+                ?cli: String,
+                ?cli_filter: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::cli_filter,
+                ?filter_type: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::filter_type,
+                ?tags_list: String
+              ) -> void
+
+              def to_hash: -> {
+                billing_group: String,
+                cld: String,
+                cld_filter: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::cld_filter,
+                cli: String,
+                cli_filter: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::cli_filter,
+                filter_type: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::filter_type,
+                tags_list: String
+              }
+
+              type cld_filter = :contains | :starts_with | :ends_with
+
+              module CldFilter
+                extend Telnyx::Internal::Type::Enum
+
+                CONTAINS: :contains
+                STARTS_WITH: :starts_with
+                ENDS_WITH: :ends_with
+
+                def self?.values: -> ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::cld_filter]
+              end
+
+              type cli_filter = :contains | :starts_with | :ends_with
+
+              module CliFilter
+                extend Telnyx::Internal::Type::Enum
+
+                CONTAINS: :contains
+                STARTS_WITH: :starts_with
+                ENDS_WITH: :ends_with
+
+                def self?.values: -> ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::cli_filter]
+              end
+
+              type filter_type = :and | :or
+
+              module FilterType
+                extend Telnyx::Internal::Type::Enum
+
+                AND: :and
+                OR: :or
+
+                def self?.values: -> ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::filter_type]
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    type notification_setting_delete_response =
+      { data: Telnyx::NotificationSetting }
+
+    class NotificationSettingDeleteResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::NotificationSetting?
+
+      def data=: (Telnyx::NotificationSetting) -> Telnyx::NotificationSetting
+
+      def initialize: (?data: Telnyx::NotificationSetting) -> void
+
+      def to_hash: -> { data: Telnyx::NotificationSetting }
+    end
+  end
+end

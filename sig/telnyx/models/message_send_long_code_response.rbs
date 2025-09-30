@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type message_send_long_code_response =
+      { data: Telnyx::OutboundMessagePayload }
+
+    class MessageSendLongCodeResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::OutboundMessagePayload?
+
+      def data=: (
+        Telnyx::OutboundMessagePayload
+      ) -> Telnyx::OutboundMessagePayload
+
+      def initialize: (?data: Telnyx::OutboundMessagePayload) -> void
+
+      def to_hash: -> { data: Telnyx::OutboundMessagePayload }
+    end
+  end
+end

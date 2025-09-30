@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module MessagingTollfree
+      module Verification
+        type tf_phone_number = { phone_number: String }
+
+        class TfPhoneNumber < Telnyx::Internal::Type::BaseModel
+          attr_accessor phone_number: String
+
+          def initialize: (phone_number: String) -> void
+
+          def to_hash: -> { phone_number: String }
+        end
+      end
+    end
+  end
+end

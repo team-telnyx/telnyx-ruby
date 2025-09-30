@@ -1,0 +1,158 @@
+module Telnyx
+  module Models
+    type porting_order_update_params =
+      {
+        activation_settings: Telnyx::PortingOrderUpdateParams::ActivationSettings,
+        customer_group_reference: String,
+        customer_reference: String,
+        documents: Telnyx::PortingOrderDocuments,
+        end_user: Telnyx::PortingOrderEndUser,
+        messaging: Telnyx::PortingOrderUpdateParams::Messaging,
+        misc: Telnyx::PortingOrderMisc,
+        phone_number_configuration: Telnyx::PortingOrderPhoneNumberConfiguration,
+        requirement_group_id: String,
+        requirements: ::Array[Telnyx::PortingOrderUpdateParams::Requirement],
+        user_feedback: Telnyx::PortingOrderUserFeedback,
+        webhook_url: String
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class PortingOrderUpdateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader activation_settings: Telnyx::PortingOrderUpdateParams::ActivationSettings?
+
+      def activation_settings=: (
+        Telnyx::PortingOrderUpdateParams::ActivationSettings
+      ) -> Telnyx::PortingOrderUpdateParams::ActivationSettings
+
+      attr_reader customer_group_reference: String?
+
+      def customer_group_reference=: (String) -> String
+
+      attr_reader customer_reference: String?
+
+      def customer_reference=: (String) -> String
+
+      attr_reader documents: Telnyx::PortingOrderDocuments?
+
+      def documents=: (
+        Telnyx::PortingOrderDocuments
+      ) -> Telnyx::PortingOrderDocuments
+
+      attr_reader end_user: Telnyx::PortingOrderEndUser?
+
+      def end_user=: (
+        Telnyx::PortingOrderEndUser
+      ) -> Telnyx::PortingOrderEndUser
+
+      attr_reader messaging: Telnyx::PortingOrderUpdateParams::Messaging?
+
+      def messaging=: (
+        Telnyx::PortingOrderUpdateParams::Messaging
+      ) -> Telnyx::PortingOrderUpdateParams::Messaging
+
+      attr_reader misc: Telnyx::PortingOrderMisc?
+
+      def misc=: (Telnyx::PortingOrderMisc) -> Telnyx::PortingOrderMisc
+
+      attr_reader phone_number_configuration: Telnyx::PortingOrderPhoneNumberConfiguration?
+
+      def phone_number_configuration=: (
+        Telnyx::PortingOrderPhoneNumberConfiguration
+      ) -> Telnyx::PortingOrderPhoneNumberConfiguration
+
+      attr_reader requirement_group_id: String?
+
+      def requirement_group_id=: (String) -> String
+
+      attr_reader requirements: ::Array[Telnyx::PortingOrderUpdateParams::Requirement]?
+
+      def requirements=: (
+        ::Array[Telnyx::PortingOrderUpdateParams::Requirement]
+      ) -> ::Array[Telnyx::PortingOrderUpdateParams::Requirement]
+
+      attr_reader user_feedback: Telnyx::PortingOrderUserFeedback?
+
+      def user_feedback=: (
+        Telnyx::PortingOrderUserFeedback
+      ) -> Telnyx::PortingOrderUserFeedback
+
+      attr_reader webhook_url: String?
+
+      def webhook_url=: (String) -> String
+
+      def initialize: (
+        ?activation_settings: Telnyx::PortingOrderUpdateParams::ActivationSettings,
+        ?customer_group_reference: String,
+        ?customer_reference: String,
+        ?documents: Telnyx::PortingOrderDocuments,
+        ?end_user: Telnyx::PortingOrderEndUser,
+        ?messaging: Telnyx::PortingOrderUpdateParams::Messaging,
+        ?misc: Telnyx::PortingOrderMisc,
+        ?phone_number_configuration: Telnyx::PortingOrderPhoneNumberConfiguration,
+        ?requirement_group_id: String,
+        ?requirements: ::Array[Telnyx::PortingOrderUpdateParams::Requirement],
+        ?user_feedback: Telnyx::PortingOrderUserFeedback,
+        ?webhook_url: String,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        activation_settings: Telnyx::PortingOrderUpdateParams::ActivationSettings,
+        customer_group_reference: String,
+        customer_reference: String,
+        documents: Telnyx::PortingOrderDocuments,
+        end_user: Telnyx::PortingOrderEndUser,
+        messaging: Telnyx::PortingOrderUpdateParams::Messaging,
+        misc: Telnyx::PortingOrderMisc,
+        phone_number_configuration: Telnyx::PortingOrderPhoneNumberConfiguration,
+        requirement_group_id: String,
+        requirements: ::Array[Telnyx::PortingOrderUpdateParams::Requirement],
+        user_feedback: Telnyx::PortingOrderUserFeedback,
+        webhook_url: String,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type activation_settings = { foc_datetime_requested: Time }
+
+      class ActivationSettings < Telnyx::Internal::Type::BaseModel
+        attr_reader foc_datetime_requested: Time?
+
+        def foc_datetime_requested=: (Time) -> Time
+
+        def initialize: (?foc_datetime_requested: Time) -> void
+
+        def to_hash: -> { foc_datetime_requested: Time }
+      end
+
+      type messaging = { enable_messaging: bool }
+
+      class Messaging < Telnyx::Internal::Type::BaseModel
+        attr_reader enable_messaging: bool?
+
+        def enable_messaging=: (bool) -> bool
+
+        def initialize: (?enable_messaging: bool) -> void
+
+        def to_hash: -> { enable_messaging: bool }
+      end
+
+      type requirement = { field_value: String, requirement_type_id: String }
+
+      class Requirement < Telnyx::Internal::Type::BaseModel
+        attr_accessor field_value: String
+
+        attr_accessor requirement_type_id: String
+
+        def initialize: (
+          field_value: String,
+          requirement_type_id: String
+        ) -> void
+
+        def to_hash: -> { field_value: String, requirement_type_id: String }
+      end
+    end
+  end
+end

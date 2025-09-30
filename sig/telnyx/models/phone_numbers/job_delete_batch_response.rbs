@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module PhoneNumbers
+      type job_delete_batch_response =
+        { data: Telnyx::PhoneNumbers::PhoneNumbersJob }
+
+      class JobDeleteBatchResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::PhoneNumbers::PhoneNumbersJob?
+
+        def data=: (
+          Telnyx::PhoneNumbers::PhoneNumbersJob
+        ) -> Telnyx::PhoneNumbers::PhoneNumbersJob
+
+        def initialize: (?data: Telnyx::PhoneNumbers::PhoneNumbersJob) -> void
+
+        def to_hash: -> { data: Telnyx::PhoneNumbers::PhoneNumbersJob }
+      end
+    end
+  end
+end

@@ -1,0 +1,26 @@
+module Telnyx
+  module Internal
+    module Type
+      class Unknown
+        extend Telnyx::Internal::Type::Converter
+        extend Telnyx::Internal::Util::SorbetRuntimeSupport
+
+        def self.===: (top other) -> bool
+
+        def self.==: (top other) -> bool
+
+        def self.coerce: (
+          top value,
+          state: Telnyx::Internal::Type::Converter::coerce_state
+        ) -> top
+
+        def self.dump: (
+          top value,
+          state: Telnyx::Internal::Type::Converter::dump_state
+        ) -> top
+
+        def self.to_sorbet_type: -> top
+      end
+    end
+  end
+end

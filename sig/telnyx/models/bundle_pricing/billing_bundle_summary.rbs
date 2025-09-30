@@ -1,0 +1,70 @@
+module Telnyx
+  module Models
+    module BundlePricing
+      type billing_bundle_summary =
+        {
+          id: String,
+          cost_code: String,
+          created_at: Date,
+          is_public: bool,
+          name: String,
+          currency: String,
+          mrc_price: Float,
+          slug: String,
+          specs: ::Array[String]
+        }
+
+      class BillingBundleSummary < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor cost_code: String
+
+        attr_accessor created_at: Date
+
+        attr_accessor is_public: bool
+
+        attr_accessor name: String
+
+        attr_reader currency: String?
+
+        def currency=: (String) -> String
+
+        attr_reader mrc_price: Float?
+
+        def mrc_price=: (Float) -> Float
+
+        attr_reader slug: String?
+
+        def slug=: (String) -> String
+
+        attr_reader specs: ::Array[String]?
+
+        def specs=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          id: String,
+          cost_code: String,
+          created_at: Date,
+          is_public: bool,
+          name: String,
+          ?currency: String,
+          ?mrc_price: Float,
+          ?slug: String,
+          ?specs: ::Array[String]
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          cost_code: String,
+          created_at: Date,
+          is_public: bool,
+          name: String,
+          currency: String,
+          mrc_price: Float,
+          slug: String,
+          specs: ::Array[String]
+        }
+      end
+    end
+  end
+end

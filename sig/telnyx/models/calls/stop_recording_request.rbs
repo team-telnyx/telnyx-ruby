@@ -1,0 +1,34 @@
+module Telnyx
+  module Models
+    module Calls
+      type stop_recording_request =
+        { client_state: String, command_id: String, recording_id: String }
+
+      class StopRecordingRequest < Telnyx::Internal::Type::BaseModel
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader command_id: String?
+
+        def command_id=: (String) -> String
+
+        attr_reader recording_id: String?
+
+        def recording_id=: (String) -> String
+
+        def initialize: (
+          ?client_state: String,
+          ?command_id: String,
+          ?recording_id: String
+        ) -> void
+
+        def to_hash: -> {
+          client_state: String,
+          command_id: String,
+          recording_id: String
+        }
+      end
+    end
+  end
+end

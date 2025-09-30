@@ -1,0 +1,7 @@
+module Telnyx
+  module Models
+    module AI
+      ConversationAddMessageResponse: Telnyx::Internal::Type::Converter
+    end
+  end
+end

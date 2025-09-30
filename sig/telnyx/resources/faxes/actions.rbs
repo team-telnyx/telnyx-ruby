@@ -1,0 +1,19 @@
+module Telnyx
+  module Resources
+    class Faxes
+      class Actions
+        def cancel: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Faxes::ActionCancelResponse
+
+        def refresh: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Faxes::ActionRefreshResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

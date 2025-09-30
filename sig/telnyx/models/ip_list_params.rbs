@@ -1,0 +1,78 @@
+module Telnyx
+  module Models
+    type ip_list_params =
+      { filter: Telnyx::IPListParams::Filter, page: Telnyx::IPListParams::Page }
+      & Telnyx::Internal::Type::request_parameters
+
+    class IPListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::IPListParams::Filter?
+
+      def filter=: (
+        Telnyx::IPListParams::Filter
+      ) -> Telnyx::IPListParams::Filter
+
+      attr_reader page: Telnyx::IPListParams::Page?
+
+      def page=: (Telnyx::IPListParams::Page) -> Telnyx::IPListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::IPListParams::Filter,
+        ?page: Telnyx::IPListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::IPListParams::Filter,
+        page: Telnyx::IPListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter = { connection_id: String, ip_address: String, port: Integer }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader ip_address: String?
+
+        def ip_address=: (String) -> String
+
+        attr_reader port: Integer?
+
+        def port=: (Integer) -> Integer
+
+        def initialize: (
+          ?connection_id: String,
+          ?ip_address: String,
+          ?port: Integer
+        ) -> void
+
+        def to_hash: -> {
+          connection_id: String,
+          ip_address: String,
+          port: Integer
+        }
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

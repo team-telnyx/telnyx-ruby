@@ -1,0 +1,38 @@
+module Telnyx
+  module Resources
+    class DynamicEmergencyAddresses
+      def create: (
+        administrative_area: String,
+        country_code: Telnyx::Models::DynamicEmergencyAddress::country_code,
+        house_number: String,
+        locality: String,
+        postal_code: String,
+        street_name: String,
+        ?extended_address: String,
+        ?house_suffix: String,
+        ?street_post_directional: String,
+        ?street_pre_directional: String,
+        ?street_suffix: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DynamicEmergencyAddressCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DynamicEmergencyAddressRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::DynamicEmergencyAddressListParams::Filter,
+        ?page: Telnyx::DynamicEmergencyAddressListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DynamicEmergencyAddressListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DynamicEmergencyAddressDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

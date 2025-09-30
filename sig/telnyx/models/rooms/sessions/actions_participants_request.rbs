@@ -1,0 +1,47 @@
+module Telnyx
+  module Models
+    module Rooms
+      module Sessions
+        type actions_participants_request =
+          {
+            exclude: ::Array[String],
+            participants: Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::participants
+          }
+
+        class ActionsParticipantsRequest < Telnyx::Internal::Type::BaseModel
+          attr_reader exclude: ::Array[String]?
+
+          def exclude=: (::Array[String]) -> ::Array[String]
+
+          attr_reader participants: Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::participants?
+
+          def participants=: (
+            Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::participants
+          ) -> Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::participants
+
+          def initialize: (
+            ?exclude: ::Array[String],
+            ?participants: Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::participants
+          ) -> void
+
+          def to_hash: -> {
+            exclude: ::Array[String],
+            participants: Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::participants
+          }
+
+          type participants = :all | ::Array[String]
+
+          module Participants
+            extend Telnyx::Internal::Type::Union
+
+            def self?.variants: -> ::Array[Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::participants]
+
+            ALL: :all
+
+            StringArray: Telnyx::Internal::Type::Converter
+          end
+        end
+      end
+    end
+  end
+end

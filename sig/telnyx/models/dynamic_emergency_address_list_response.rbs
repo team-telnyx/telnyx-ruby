@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    type dynamic_emergency_address_list_response =
+      { data: ::Array[Telnyx::DynamicEmergencyAddress], meta: Telnyx::Metadata }
+
+    class DynamicEmergencyAddressListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::DynamicEmergencyAddress]?
+
+      def data=: (
+        ::Array[Telnyx::DynamicEmergencyAddress]
+      ) -> ::Array[Telnyx::DynamicEmergencyAddress]
+
+      attr_reader meta: Telnyx::Metadata?
+
+      def meta=: (Telnyx::Metadata) -> Telnyx::Metadata
+
+      def initialize: (
+        ?data: ::Array[Telnyx::DynamicEmergencyAddress],
+        ?meta: Telnyx::Metadata
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::DynamicEmergencyAddress],
+        meta: Telnyx::Metadata
+      }
+    end
+  end
+end

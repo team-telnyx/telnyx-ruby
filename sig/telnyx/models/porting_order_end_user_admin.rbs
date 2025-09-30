@@ -1,0 +1,64 @@
+module Telnyx
+  module Models
+    type porting_order_end_user_admin =
+      {
+        account_number: String,
+        auth_person_name: String,
+        billing_phone_number: String,
+        business_identifier: String,
+        entity_name: String,
+        pin_passcode: String,
+        tax_identifier: String
+      }
+
+    class PortingOrderEndUserAdmin < Telnyx::Internal::Type::BaseModel
+      attr_reader account_number: String?
+
+      def account_number=: (String) -> String
+
+      attr_reader auth_person_name: String?
+
+      def auth_person_name=: (String) -> String
+
+      attr_reader billing_phone_number: String?
+
+      def billing_phone_number=: (String) -> String
+
+      attr_reader business_identifier: String?
+
+      def business_identifier=: (String) -> String
+
+      attr_reader entity_name: String?
+
+      def entity_name=: (String) -> String
+
+      attr_reader pin_passcode: String?
+
+      def pin_passcode=: (String) -> String
+
+      attr_reader tax_identifier: String?
+
+      def tax_identifier=: (String) -> String
+
+      def initialize: (
+        ?account_number: String,
+        ?auth_person_name: String,
+        ?billing_phone_number: String,
+        ?business_identifier: String,
+        ?entity_name: String,
+        ?pin_passcode: String,
+        ?tax_identifier: String
+      ) -> void
+
+      def to_hash: -> {
+        account_number: String,
+        auth_person_name: String,
+        billing_phone_number: String,
+        business_identifier: String,
+        entity_name: String,
+        pin_passcode: String,
+        tax_identifier: String
+      }
+    end
+  end
+end

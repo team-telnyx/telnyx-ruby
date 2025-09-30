@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type wireguard_peer_patch = { public_key: String }
+
+    class WireguardPeerPatch < Telnyx::Internal::Type::BaseModel
+      attr_reader public_key: String?
+
+      def public_key=: (String) -> String
+
+      def initialize: (?public_key: String) -> void
+
+      def to_hash: -> { public_key: String }
+    end
+  end
+end

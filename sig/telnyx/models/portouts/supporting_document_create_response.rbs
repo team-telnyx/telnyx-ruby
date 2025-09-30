@@ -1,0 +1,84 @@
+module Telnyx
+  module Models
+    module Portouts
+      type supporting_document_create_response =
+        {
+          data: ::Array[Telnyx::Models::Portouts::SupportingDocumentCreateResponse::Data]
+        }
+
+      class SupportingDocumentCreateResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::Models::Portouts::SupportingDocumentCreateResponse::Data]?
+
+        def data=: (
+          ::Array[Telnyx::Models::Portouts::SupportingDocumentCreateResponse::Data]
+        ) -> ::Array[Telnyx::Models::Portouts::SupportingDocumentCreateResponse::Data]
+
+        def initialize: (
+          ?data: ::Array[Telnyx::Models::Portouts::SupportingDocumentCreateResponse::Data]
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Models::Portouts::SupportingDocumentCreateResponse::Data]
+        }
+
+        type data =
+          {
+            id: String,
+            created_at: String,
+            document_id: String,
+            portout_id: String,
+            record_type: String,
+            type: Telnyx::Models::Portouts::SupportingDocumentCreateResponse::Data::type_,
+            updated_at: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor created_at: String
+
+          attr_accessor document_id: String
+
+          attr_accessor updated_at: String
+
+          attr_accessor portout_id: String
+
+          attr_accessor record_type: String
+
+          attr_accessor type: Telnyx::Models::Portouts::SupportingDocumentCreateResponse::Data::type_
+
+          def initialize: (
+            id: String,
+            created_at: String,
+            document_id: String,
+            portout_id: String,
+            record_type: String,
+            type: Telnyx::Models::Portouts::SupportingDocumentCreateResponse::Data::type_,
+            updated_at: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            created_at: String,
+            document_id: String,
+            portout_id: String,
+            record_type: String,
+            type: Telnyx::Models::Portouts::SupportingDocumentCreateResponse::Data::type_,
+            updated_at: String
+          }
+
+          type type_ = :loa | :invoice
+
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            LOA: :loa
+            INVOICE: :invoice
+
+            def self?.values: -> ::Array[Telnyx::Models::Portouts::SupportingDocumentCreateResponse::Data::type_]
+          end
+        end
+      end
+    end
+  end
+end

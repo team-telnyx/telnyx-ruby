@@ -1,0 +1,169 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type action_requirement_list_params =
+        {
+          filter: Telnyx::PortingOrders::ActionRequirementListParams::Filter,
+          page: Telnyx::PortingOrders::ActionRequirementListParams::Page,
+          sort: Telnyx::PortingOrders::ActionRequirementListParams::Sort
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionRequirementListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter: Telnyx::PortingOrders::ActionRequirementListParams::Filter?
+
+        def filter=: (
+          Telnyx::PortingOrders::ActionRequirementListParams::Filter
+        ) -> Telnyx::PortingOrders::ActionRequirementListParams::Filter
+
+        attr_reader page: Telnyx::PortingOrders::ActionRequirementListParams::Page?
+
+        def page=: (
+          Telnyx::PortingOrders::ActionRequirementListParams::Page
+        ) -> Telnyx::PortingOrders::ActionRequirementListParams::Page
+
+        attr_reader sort: Telnyx::PortingOrders::ActionRequirementListParams::Sort?
+
+        def sort=: (
+          Telnyx::PortingOrders::ActionRequirementListParams::Sort
+        ) -> Telnyx::PortingOrders::ActionRequirementListParams::Sort
+
+        def initialize: (
+          ?filter: Telnyx::PortingOrders::ActionRequirementListParams::Filter,
+          ?page: Telnyx::PortingOrders::ActionRequirementListParams::Page,
+          ?sort: Telnyx::PortingOrders::ActionRequirementListParams::Sort,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter: Telnyx::PortingOrders::ActionRequirementListParams::Filter,
+          page: Telnyx::PortingOrders::ActionRequirementListParams::Page,
+          sort: Telnyx::PortingOrders::ActionRequirementListParams::Sort,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter =
+          {
+            id: ::Array[String],
+            action_type: Telnyx::Models::PortingOrders::ActionRequirementListParams::Filter::action_type,
+            requirement_type_id: String,
+            status: Telnyx::Models::PortingOrders::ActionRequirementListParams::Filter::status
+          }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader id: ::Array[String]?
+
+          def id=: (::Array[String]) -> ::Array[String]
+
+          attr_reader action_type: Telnyx::Models::PortingOrders::ActionRequirementListParams::Filter::action_type?
+
+          def action_type=: (
+            Telnyx::Models::PortingOrders::ActionRequirementListParams::Filter::action_type
+          ) -> Telnyx::Models::PortingOrders::ActionRequirementListParams::Filter::action_type
+
+          attr_reader requirement_type_id: String?
+
+          def requirement_type_id=: (String) -> String
+
+          attr_reader status: Telnyx::Models::PortingOrders::ActionRequirementListParams::Filter::status?
+
+          def status=: (
+            Telnyx::Models::PortingOrders::ActionRequirementListParams::Filter::status
+          ) -> Telnyx::Models::PortingOrders::ActionRequirementListParams::Filter::status
+
+          def initialize: (
+            ?id: ::Array[String],
+            ?action_type: Telnyx::Models::PortingOrders::ActionRequirementListParams::Filter::action_type,
+            ?requirement_type_id: String,
+            ?status: Telnyx::Models::PortingOrders::ActionRequirementListParams::Filter::status
+          ) -> void
+
+          def to_hash: -> {
+            id: ::Array[String],
+            action_type: Telnyx::Models::PortingOrders::ActionRequirementListParams::Filter::action_type,
+            requirement_type_id: String,
+            status: Telnyx::Models::PortingOrders::ActionRequirementListParams::Filter::status
+          }
+
+          type action_type = :au_id_verification
+
+          module ActionType
+            extend Telnyx::Internal::Type::Enum
+
+            AU_ID_VERIFICATION: :au_id_verification
+
+            def self?.values: -> ::Array[Telnyx::Models::PortingOrders::ActionRequirementListParams::Filter::action_type]
+          end
+
+          type status = :created | :pending | :completed | :cancelled | :failed
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED: :created
+            PENDING: :pending
+            COMPLETED: :completed
+            CANCELLED: :cancelled
+            FAILED: :failed
+
+            def self?.values: -> ::Array[Telnyx::Models::PortingOrders::ActionRequirementListParams::Filter::status]
+          end
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
+        end
+
+        type sort =
+          {
+            value: Telnyx::Models::PortingOrders::ActionRequirementListParams::Sort::value
+          }
+
+        class Sort < Telnyx::Internal::Type::BaseModel
+          attr_reader value: Telnyx::Models::PortingOrders::ActionRequirementListParams::Sort::value?
+
+          def value=: (
+            Telnyx::Models::PortingOrders::ActionRequirementListParams::Sort::value
+          ) -> Telnyx::Models::PortingOrders::ActionRequirementListParams::Sort::value
+
+          def initialize: (
+            ?value: Telnyx::Models::PortingOrders::ActionRequirementListParams::Sort::value
+          ) -> void
+
+          def to_hash: -> {
+            value: Telnyx::Models::PortingOrders::ActionRequirementListParams::Sort::value
+          }
+
+          type value =
+            :created_at | :"-created_at" | :updated_at | :"-updated_at"
+
+          module Value
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED_AT: :created_at
+            CREATED_AT_DESC: :"-created_at"
+            UPDATED_AT: :updated_at
+            UPDATED_AT_DESC: :"-updated_at"
+
+            def self?.values: -> ::Array[Telnyx::Models::PortingOrders::ActionRequirementListParams::Sort::value]
+          end
+        end
+      end
+    end
+  end
+end

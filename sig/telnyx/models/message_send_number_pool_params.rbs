@@ -1,0 +1,100 @@
+module Telnyx
+  module Models
+    type message_send_number_pool_params =
+      {
+        messaging_profile_id: String,
+        to: String,
+        auto_detect: bool,
+        media_urls: ::Array[String],
+        subject: String,
+        text: String,
+        type: Telnyx::Models::MessageSendNumberPoolParams::type_,
+        use_profile_webhooks: bool,
+        webhook_failover_url: String,
+        webhook_url: String
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class MessageSendNumberPoolParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor messaging_profile_id: String
+
+      attr_accessor to: String
+
+      attr_reader auto_detect: bool?
+
+      def auto_detect=: (bool) -> bool
+
+      attr_reader media_urls: ::Array[String]?
+
+      def media_urls=: (::Array[String]) -> ::Array[String]
+
+      attr_reader subject: String?
+
+      def subject=: (String) -> String
+
+      attr_reader text: String?
+
+      def text=: (String) -> String
+
+      attr_reader type: Telnyx::Models::MessageSendNumberPoolParams::type_?
+
+      def type=: (
+        Telnyx::Models::MessageSendNumberPoolParams::type_
+      ) -> Telnyx::Models::MessageSendNumberPoolParams::type_
+
+      attr_reader use_profile_webhooks: bool?
+
+      def use_profile_webhooks=: (bool) -> bool
+
+      attr_reader webhook_failover_url: String?
+
+      def webhook_failover_url=: (String) -> String
+
+      attr_reader webhook_url: String?
+
+      def webhook_url=: (String) -> String
+
+      def initialize: (
+        messaging_profile_id: String,
+        to: String,
+        ?auto_detect: bool,
+        ?media_urls: ::Array[String],
+        ?subject: String,
+        ?text: String,
+        ?type: Telnyx::Models::MessageSendNumberPoolParams::type_,
+        ?use_profile_webhooks: bool,
+        ?webhook_failover_url: String,
+        ?webhook_url: String,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        messaging_profile_id: String,
+        to: String,
+        auto_detect: bool,
+        media_urls: ::Array[String],
+        subject: String,
+        text: String,
+        type: Telnyx::Models::MessageSendNumberPoolParams::type_,
+        use_profile_webhooks: bool,
+        webhook_failover_url: String,
+        webhook_url: String,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type type_ = :SMS | :MMS
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        SMS: :SMS
+        MMS: :MMS
+
+        def self?.values: -> ::Array[Telnyx::Models::MessageSendNumberPoolParams::type_]
+      end
+    end
+  end
+end

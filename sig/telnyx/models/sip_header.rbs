@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    type sip_header = { name: Telnyx::Models::SipHeader::name_, value: String }
+
+    class SipHeader < Telnyx::Internal::Type::BaseModel
+      attr_accessor name: Telnyx::Models::SipHeader::name_
+
+      attr_accessor value: String
+
+      def initialize: (
+        name: Telnyx::Models::SipHeader::name_,
+        value: String
+      ) -> void
+
+      def to_hash: -> { name: Telnyx::Models::SipHeader::name_, value: String }
+
+      type name_ = :"User-to-User"
+
+      module Name
+        extend Telnyx::Internal::Type::Enum
+
+        USER_TO_USER: :"User-to-User"
+
+        def self?.values: -> ::Array[Telnyx::Models::SipHeader::name_]
+      end
+    end
+  end
+end

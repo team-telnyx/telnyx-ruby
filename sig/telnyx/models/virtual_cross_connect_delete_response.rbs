@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    type virtual_cross_connect_delete_response =
+      { data: Telnyx::Models::VirtualCrossConnectDeleteResponse::Data }
+
+    class VirtualCrossConnectDeleteResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::VirtualCrossConnectDeleteResponse::Data?
+
+      def data=: (
+        Telnyx::Models::VirtualCrossConnectDeleteResponse::Data
+      ) -> Telnyx::Models::VirtualCrossConnectDeleteResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::VirtualCrossConnectDeleteResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::VirtualCrossConnectDeleteResponse::Data
+      }
+    end
+  end
+end

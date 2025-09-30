@@ -1,0 +1,43 @@
+module Telnyx
+  module Resources
+    class Networks
+      attr_reader default_gateway: Telnyx::Resources::Networks::DefaultGateway
+
+      def create: (
+        name: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NetworkCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NetworkRetrieveResponse
+
+      def update: (
+        String id,
+        name: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NetworkUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::NetworkListParams::Filter,
+        ?page: Telnyx::NetworkListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NetworkListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NetworkDeleteResponse
+
+      def list_interfaces: (
+        String id,
+        ?filter: Telnyx::NetworkListInterfacesParams::Filter,
+        ?page: Telnyx::NetworkListInterfacesParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NetworkListInterfacesResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

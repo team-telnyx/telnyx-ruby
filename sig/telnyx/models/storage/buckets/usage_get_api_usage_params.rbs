@@ -1,0 +1,40 @@
+module Telnyx
+  module Models
+    module Storage
+      module Buckets
+        type usage_get_api_usage_params =
+          { filter: Telnyx::Storage::Buckets::UsageGetAPIUsageParams::Filter }
+          & Telnyx::Internal::Type::request_parameters
+
+        class UsageGetAPIUsageParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor filter: Telnyx::Storage::Buckets::UsageGetAPIUsageParams::Filter
+
+          def initialize: (
+            filter: Telnyx::Storage::Buckets::UsageGetAPIUsageParams::Filter,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            filter: Telnyx::Storage::Buckets::UsageGetAPIUsageParams::Filter,
+            request_options: Telnyx::RequestOptions
+          }
+
+          type filter = { end_time: Time, start_time: Time }
+
+          class Filter < Telnyx::Internal::Type::BaseModel
+            attr_accessor end_time: Time
+
+            attr_accessor start_time: Time
+
+            def initialize: (end_time: Time, start_time: Time) -> void
+
+            def to_hash: -> { end_time: Time, start_time: Time }
+          end
+        end
+      end
+    end
+  end
+end

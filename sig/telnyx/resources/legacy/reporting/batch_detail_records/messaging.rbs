@@ -1,0 +1,43 @@
+module Telnyx
+  module Resources
+    class Legacy
+      class Reporting
+        class BatchDetailRecords
+          class Messaging
+            def create: (
+              end_time: Time,
+              start_time: Time,
+              ?connections: ::Array[Integer],
+              ?directions: ::Array[Integer],
+              ?filters: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter],
+              ?include_message_body: bool,
+              ?managed_accounts: ::Array[String],
+              ?profiles: ::Array[String],
+              ?record_types: ::Array[Integer],
+              ?report_name: String,
+              ?select_all_managed_accounts: bool,
+              ?timezone: String,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateResponse
+
+            def retrieve: (
+              String id,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingRetrieveResponse
+
+            def list: (
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingListResponse
+
+            def delete: (
+              String id,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingDeleteResponse
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

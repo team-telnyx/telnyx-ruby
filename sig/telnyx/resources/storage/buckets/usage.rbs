@@ -1,0 +1,22 @@
+module Telnyx
+  module Resources
+    class Storage
+      class Buckets
+        class Usage
+          def get_api_usage: (
+            String bucket_name,
+            filter: Telnyx::Storage::Buckets::UsageGetAPIUsageParams::Filter,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse
+
+          def get_bucket_usage: (
+            String bucket_name,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Storage::Buckets::UsageGetBucketUsageResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

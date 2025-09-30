@@ -1,0 +1,29 @@
+module Telnyx
+  module Resources
+    class GlobalIPHealthChecks
+      def create: (
+        ?global_ip_id: String,
+        ?health_check_params: ::Hash[Symbol, top],
+        ?health_check_type: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::GlobalIPHealthCheckCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::GlobalIPHealthCheckRetrieveResponse
+
+      def list: (
+        ?page: Telnyx::GlobalIPHealthCheckListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::GlobalIPHealthCheckListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::GlobalIPHealthCheckDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

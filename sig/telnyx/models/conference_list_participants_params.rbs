@@ -1,0 +1,110 @@
+module Telnyx
+  module Models
+    type conference_list_participants_params =
+      {
+        filter: Telnyx::ConferenceListParticipantsParams::Filter,
+        page: Telnyx::ConferenceListParticipantsParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class ConferenceListParticipantsParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::ConferenceListParticipantsParams::Filter?
+
+      def filter=: (
+        Telnyx::ConferenceListParticipantsParams::Filter
+      ) -> Telnyx::ConferenceListParticipantsParams::Filter
+
+      attr_reader page: Telnyx::ConferenceListParticipantsParams::Page?
+
+      def page=: (
+        Telnyx::ConferenceListParticipantsParams::Page
+      ) -> Telnyx::ConferenceListParticipantsParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::ConferenceListParticipantsParams::Filter,
+        ?page: Telnyx::ConferenceListParticipantsParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::ConferenceListParticipantsParams::Filter,
+        page: Telnyx::ConferenceListParticipantsParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter = { muted: bool, on_hold: bool, whispering: bool }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader muted: bool?
+
+        def muted=: (bool) -> bool
+
+        attr_reader on_hold: bool?
+
+        def on_hold=: (bool) -> bool
+
+        attr_reader whispering: bool?
+
+        def whispering=: (bool) -> bool
+
+        def initialize: (
+          ?muted: bool,
+          ?on_hold: bool,
+          ?whispering: bool
+        ) -> void
+
+        def to_hash: -> { muted: bool, on_hold: bool, whispering: bool }
+      end
+
+      type page =
+        {
+          after: String,
+          before: String,
+          limit: Integer,
+          number: Integer,
+          size: Integer
+        }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader after: String?
+
+        def after=: (String) -> String
+
+        attr_reader before: String?
+
+        def before=: (String) -> String
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (
+          ?after: String,
+          ?before: String,
+          ?limit: Integer,
+          ?number: Integer,
+          ?size: Integer
+        ) -> void
+
+        def to_hash: -> {
+          after: String,
+          before: String,
+          limit: Integer,
+          number: Integer,
+          size: Integer
+        }
+      end
+    end
+  end
+end

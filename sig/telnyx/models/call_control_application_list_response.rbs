@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    type call_control_application_list_response =
+      {
+        data: ::Array[Telnyx::CallControlApplication],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class CallControlApplicationListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::CallControlApplication]?
+
+      def data=: (
+        ::Array[Telnyx::CallControlApplication]
+      ) -> ::Array[Telnyx::CallControlApplication]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::CallControlApplication],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::CallControlApplication],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

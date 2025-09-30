@@ -1,0 +1,198 @@
+module Telnyx
+  module Models
+    type inbound_fqdn =
+      {
+        ani_number_format: Telnyx::Models::InboundFqdn::ani_number_format,
+        channel_limit: Integer?,
+        codecs: ::Array[String],
+        default_primary_fqdn_id: String?,
+        default_routing_method: Telnyx::Models::InboundFqdn::default_routing_method?,
+        default_secondary_fqdn_id: String?,
+        default_tertiary_fqdn_id: String?,
+        dnis_number_format: Telnyx::Models::InboundFqdn::dnis_number_format,
+        generate_ringback_tone: bool,
+        isup_headers_enabled: bool,
+        prack_enabled: bool,
+        shaken_stir_enabled: bool,
+        sip_compact_headers_enabled: bool,
+        sip_region: Telnyx::Models::InboundFqdn::sip_region,
+        sip_subdomain: String?,
+        sip_subdomain_receive_settings: Telnyx::Models::InboundFqdn::sip_subdomain_receive_settings,
+        :timeout_1xx_secs => Integer,
+        :timeout_2xx_secs => Integer
+      }
+
+    class InboundFqdn < Telnyx::Internal::Type::BaseModel
+      attr_reader ani_number_format: Telnyx::Models::InboundFqdn::ani_number_format?
+
+      def ani_number_format=: (
+        Telnyx::Models::InboundFqdn::ani_number_format
+      ) -> Telnyx::Models::InboundFqdn::ani_number_format
+
+      attr_accessor channel_limit: Integer?
+
+      attr_reader codecs: ::Array[String]?
+
+      def codecs=: (::Array[String]) -> ::Array[String]
+
+      attr_accessor default_primary_fqdn_id: String?
+
+      attr_accessor default_routing_method: Telnyx::Models::InboundFqdn::default_routing_method?
+
+      attr_accessor default_secondary_fqdn_id: String?
+
+      attr_accessor default_tertiary_fqdn_id: String?
+
+      attr_reader dnis_number_format: Telnyx::Models::InboundFqdn::dnis_number_format?
+
+      def dnis_number_format=: (
+        Telnyx::Models::InboundFqdn::dnis_number_format
+      ) -> Telnyx::Models::InboundFqdn::dnis_number_format
+
+      attr_reader generate_ringback_tone: bool?
+
+      def generate_ringback_tone=: (bool) -> bool
+
+      attr_reader isup_headers_enabled: bool?
+
+      def isup_headers_enabled=: (bool) -> bool
+
+      attr_reader prack_enabled: bool?
+
+      def prack_enabled=: (bool) -> bool
+
+      attr_reader shaken_stir_enabled: bool?
+
+      def shaken_stir_enabled=: (bool) -> bool
+
+      attr_reader sip_compact_headers_enabled: bool?
+
+      def sip_compact_headers_enabled=: (bool) -> bool
+
+      attr_reader sip_region: Telnyx::Models::InboundFqdn::sip_region?
+
+      def sip_region=: (
+        Telnyx::Models::InboundFqdn::sip_region
+      ) -> Telnyx::Models::InboundFqdn::sip_region
+
+      attr_accessor sip_subdomain: String?
+
+      attr_reader sip_subdomain_receive_settings: Telnyx::Models::InboundFqdn::sip_subdomain_receive_settings?
+
+      def sip_subdomain_receive_settings=: (
+        Telnyx::Models::InboundFqdn::sip_subdomain_receive_settings
+      ) -> Telnyx::Models::InboundFqdn::sip_subdomain_receive_settings
+
+      attr_reader timeout_1xx_secs: Integer?
+
+      def timeout_1xx_secs=: (Integer) -> Integer
+
+      attr_reader timeout_2xx_secs: Integer?
+
+      def timeout_2xx_secs=: (Integer) -> Integer
+
+      def initialize: (
+        ?ani_number_format: Telnyx::Models::InboundFqdn::ani_number_format,
+        ?channel_limit: Integer?,
+        ?codecs: ::Array[String],
+        ?default_primary_fqdn_id: String?,
+        ?default_routing_method: Telnyx::Models::InboundFqdn::default_routing_method?,
+        ?default_secondary_fqdn_id: String?,
+        ?default_tertiary_fqdn_id: String?,
+        ?dnis_number_format: Telnyx::Models::InboundFqdn::dnis_number_format,
+        ?generate_ringback_tone: bool,
+        ?isup_headers_enabled: bool,
+        ?prack_enabled: bool,
+        ?shaken_stir_enabled: bool,
+        ?sip_compact_headers_enabled: bool,
+        ?sip_region: Telnyx::Models::InboundFqdn::sip_region,
+        ?sip_subdomain: String?,
+        ?sip_subdomain_receive_settings: Telnyx::Models::InboundFqdn::sip_subdomain_receive_settings,
+        ?timeout_1xx_secs: Integer,
+        ?timeout_2xx_secs: Integer
+      ) -> void
+
+      def to_hash: -> {
+        ani_number_format: Telnyx::Models::InboundFqdn::ani_number_format,
+        channel_limit: Integer?,
+        codecs: ::Array[String],
+        default_primary_fqdn_id: String?,
+        default_routing_method: Telnyx::Models::InboundFqdn::default_routing_method?,
+        default_secondary_fqdn_id: String?,
+        default_tertiary_fqdn_id: String?,
+        dnis_number_format: Telnyx::Models::InboundFqdn::dnis_number_format,
+        generate_ringback_tone: bool,
+        isup_headers_enabled: bool,
+        prack_enabled: bool,
+        shaken_stir_enabled: bool,
+        sip_compact_headers_enabled: bool,
+        sip_region: Telnyx::Models::InboundFqdn::sip_region,
+        sip_subdomain: String?,
+        sip_subdomain_receive_settings: Telnyx::Models::InboundFqdn::sip_subdomain_receive_settings,
+        :timeout_1xx_secs => Integer,
+        :timeout_2xx_secs => Integer
+      }
+
+      type ani_number_format =
+        :"+E.164" | :"E.164" | :"+E.164-national" | :"E.164-national"
+
+      module AniNumberFormat
+        extend Telnyx::Internal::Type::Enum
+
+        PLUS_E_164: :"+E.164"
+        E_164: :"E.164"
+        PLUS_E_164_NATIONAL: :"+E.164-national"
+        E_164_NATIONAL: :"E.164-national"
+
+        def self?.values: -> ::Array[Telnyx::Models::InboundFqdn::ani_number_format]
+      end
+
+      type default_routing_method = :sequential | :"round-robin"
+
+      module DefaultRoutingMethod
+        extend Telnyx::Internal::Type::Enum
+
+        SEQUENTIAL: :sequential
+        ROUND_ROBIN: :"round-robin"
+
+        def self?.values: -> ::Array[Telnyx::Models::InboundFqdn::default_routing_method]
+      end
+
+      type dnis_number_format = :"+e164" | :e164 | :national | :sip_username
+
+      module DnisNumberFormat
+        extend Telnyx::Internal::Type::Enum
+
+        PLUS_E164: :"+e164"
+        E164: :e164
+        NATIONAL: :national
+        SIP_USERNAME: :sip_username
+
+        def self?.values: -> ::Array[Telnyx::Models::InboundFqdn::dnis_number_format]
+      end
+
+      type sip_region = :US | :Europe | :Australia
+
+      module SipRegion
+        extend Telnyx::Internal::Type::Enum
+
+        US: :US
+        EUROPE: :Europe
+        AUSTRALIA: :Australia
+
+        def self?.values: -> ::Array[Telnyx::Models::InboundFqdn::sip_region]
+      end
+
+      type sip_subdomain_receive_settings = :only_my_connections | :from_anyone
+
+      module SipSubdomainReceiveSettings
+        extend Telnyx::Internal::Type::Enum
+
+        ONLY_MY_CONNECTIONS: :only_my_connections
+        FROM_ANYONE: :from_anyone
+
+        def self?.values: -> ::Array[Telnyx::Models::InboundFqdn::sip_subdomain_receive_settings]
+      end
+    end
+  end
+end

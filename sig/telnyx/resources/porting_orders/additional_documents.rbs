@@ -1,0 +1,29 @@
+module Telnyx
+  module Resources
+    class PortingOrders
+      class AdditionalDocuments
+        def create: (
+          String id,
+          ?additional_documents: ::Array[Telnyx::PortingOrders::AdditionalDocumentCreateParams::AdditionalDocument],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::AdditionalDocumentCreateResponse
+
+        def list: (
+          String id,
+          ?filter: Telnyx::PortingOrders::AdditionalDocumentListParams::Filter,
+          ?page: Telnyx::PortingOrders::AdditionalDocumentListParams::Page,
+          ?sort: Telnyx::PortingOrders::AdditionalDocumentListParams::Sort,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::AdditionalDocumentListResponse
+
+        def delete: (
+          String additional_document_id,
+          id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

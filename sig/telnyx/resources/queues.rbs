@@ -1,0 +1,14 @@
+module Telnyx
+  module Resources
+    class Queues
+      attr_reader calls: Telnyx::Resources::Queues::Calls
+
+      def retrieve: (
+        String queue_name,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::QueueRetrieveResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

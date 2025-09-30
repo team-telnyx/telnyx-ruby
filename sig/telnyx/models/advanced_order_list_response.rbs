@@ -1,0 +1,5 @@
+module Telnyx
+  module Models
+    AdvancedOrderListResponse: Telnyx::Internal::Type::Converter
+  end
+end

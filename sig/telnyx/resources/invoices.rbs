@@ -1,0 +1,19 @@
+module Telnyx
+  module Resources
+    class Invoices
+      def retrieve: (
+        String id,
+        ?action: Telnyx::Models::InvoiceRetrieveParams::action,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::InvoiceRetrieveResponse
+
+      def list: (
+        ?page: Telnyx::InvoiceListParams::Page,
+        ?sort: Telnyx::Models::InvoiceListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::InvoiceListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

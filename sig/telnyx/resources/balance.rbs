@@ -1,0 +1,11 @@
+module Telnyx
+  module Resources
+    class Balance
+      def retrieve: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::BalanceRetrieveResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

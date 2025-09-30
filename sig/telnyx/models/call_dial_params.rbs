@@ -1,0 +1,799 @@
+module Telnyx
+  module Models
+    type call_dial_params =
+      {
+        connection_id: String,
+        from: String,
+        to: Telnyx::Models::CallDialParams::to,
+        answering_machine_detection: Telnyx::Models::CallDialParams::answering_machine_detection,
+        answering_machine_detection_config: Telnyx::CallDialParams::AnsweringMachineDetectionConfig,
+        audio_url: String,
+        billing_group_id: String,
+        bridge_intent: bool,
+        bridge_on_answer: bool,
+        client_state: String,
+        command_id: String,
+        conference_config: Telnyx::CallDialParams::ConferenceConfig,
+        custom_headers: ::Array[Telnyx::CustomSipHeader],
+        dialogflow_config: Telnyx::DialogflowConfig,
+        enable_dialogflow: bool,
+        from_display_name: String,
+        link_to: String,
+        media_encryption: Telnyx::Models::CallDialParams::media_encryption,
+        media_name: String,
+        park_after_unbridge: String,
+        preferred_codecs: String,
+        record: Telnyx::Models::CallDialParams::record,
+        record_channels: Telnyx::Models::CallDialParams::record_channels,
+        record_custom_file_name: String,
+        record_format: Telnyx::Models::CallDialParams::record_format,
+        record_max_length: Integer,
+        record_timeout_secs: Integer,
+        record_track: Telnyx::Models::CallDialParams::record_track,
+        record_trim: Telnyx::Models::CallDialParams::record_trim,
+        send_silence_when_idle: bool,
+        sip_auth_password: String,
+        sip_auth_username: String,
+        sip_headers: ::Array[Telnyx::SipHeader],
+        sip_transport_protocol: Telnyx::Models::CallDialParams::sip_transport_protocol,
+        sound_modifications: Telnyx::SoundModifications,
+        stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
+        stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
+        stream_bidirectional_sampling_rate: Telnyx::Models::CallDialParams::stream_bidirectional_sampling_rate,
+        stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs,
+        stream_codec: Telnyx::Models::stream_codec,
+        stream_establish_before_call_originate: bool,
+        stream_track: Telnyx::Models::CallDialParams::stream_track,
+        stream_url: String,
+        supervise_call_control_id: String,
+        supervisor_role: Telnyx::Models::CallDialParams::supervisor_role,
+        time_limit_secs: Integer,
+        timeout_secs: Integer,
+        transcription: bool,
+        transcription_config: Telnyx::Calls::TranscriptionStartRequest,
+        webhook_url: String,
+        webhook_url_method: Telnyx::Models::CallDialParams::webhook_url_method
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class CallDialParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor connection_id: String
+
+      attr_accessor from: String
+
+      attr_accessor to: Telnyx::Models::CallDialParams::to
+
+      attr_reader answering_machine_detection: Telnyx::Models::CallDialParams::answering_machine_detection?
+
+      def answering_machine_detection=: (
+        Telnyx::Models::CallDialParams::answering_machine_detection
+      ) -> Telnyx::Models::CallDialParams::answering_machine_detection
+
+      attr_reader answering_machine_detection_config: Telnyx::CallDialParams::AnsweringMachineDetectionConfig?
+
+      def answering_machine_detection_config=: (
+        Telnyx::CallDialParams::AnsweringMachineDetectionConfig
+      ) -> Telnyx::CallDialParams::AnsweringMachineDetectionConfig
+
+      attr_reader audio_url: String?
+
+      def audio_url=: (String) -> String
+
+      attr_reader billing_group_id: String?
+
+      def billing_group_id=: (String) -> String
+
+      attr_reader bridge_intent: bool?
+
+      def bridge_intent=: (bool) -> bool
+
+      attr_reader bridge_on_answer: bool?
+
+      def bridge_on_answer=: (bool) -> bool
+
+      attr_reader client_state: String?
+
+      def client_state=: (String) -> String
+
+      attr_reader command_id: String?
+
+      def command_id=: (String) -> String
+
+      attr_reader conference_config: Telnyx::CallDialParams::ConferenceConfig?
+
+      def conference_config=: (
+        Telnyx::CallDialParams::ConferenceConfig
+      ) -> Telnyx::CallDialParams::ConferenceConfig
+
+      attr_reader custom_headers: ::Array[Telnyx::CustomSipHeader]?
+
+      def custom_headers=: (
+        ::Array[Telnyx::CustomSipHeader]
+      ) -> ::Array[Telnyx::CustomSipHeader]
+
+      attr_reader dialogflow_config: Telnyx::DialogflowConfig?
+
+      def dialogflow_config=: (
+        Telnyx::DialogflowConfig
+      ) -> Telnyx::DialogflowConfig
+
+      attr_reader enable_dialogflow: bool?
+
+      def enable_dialogflow=: (bool) -> bool
+
+      attr_reader from_display_name: String?
+
+      def from_display_name=: (String) -> String
+
+      attr_reader link_to: String?
+
+      def link_to=: (String) -> String
+
+      attr_reader media_encryption: Telnyx::Models::CallDialParams::media_encryption?
+
+      def media_encryption=: (
+        Telnyx::Models::CallDialParams::media_encryption
+      ) -> Telnyx::Models::CallDialParams::media_encryption
+
+      attr_reader media_name: String?
+
+      def media_name=: (String) -> String
+
+      attr_reader park_after_unbridge: String?
+
+      def park_after_unbridge=: (String) -> String
+
+      attr_reader preferred_codecs: String?
+
+      def preferred_codecs=: (String) -> String
+
+      attr_reader record: Telnyx::Models::CallDialParams::record?
+
+      def record=: (
+        Telnyx::Models::CallDialParams::record
+      ) -> Telnyx::Models::CallDialParams::record
+
+      attr_reader record_channels: Telnyx::Models::CallDialParams::record_channels?
+
+      def record_channels=: (
+        Telnyx::Models::CallDialParams::record_channels
+      ) -> Telnyx::Models::CallDialParams::record_channels
+
+      attr_reader record_custom_file_name: String?
+
+      def record_custom_file_name=: (String) -> String
+
+      attr_reader record_format: Telnyx::Models::CallDialParams::record_format?
+
+      def record_format=: (
+        Telnyx::Models::CallDialParams::record_format
+      ) -> Telnyx::Models::CallDialParams::record_format
+
+      attr_reader record_max_length: Integer?
+
+      def record_max_length=: (Integer) -> Integer
+
+      attr_reader record_timeout_secs: Integer?
+
+      def record_timeout_secs=: (Integer) -> Integer
+
+      attr_reader record_track: Telnyx::Models::CallDialParams::record_track?
+
+      def record_track=: (
+        Telnyx::Models::CallDialParams::record_track
+      ) -> Telnyx::Models::CallDialParams::record_track
+
+      attr_reader record_trim: Telnyx::Models::CallDialParams::record_trim?
+
+      def record_trim=: (
+        Telnyx::Models::CallDialParams::record_trim
+      ) -> Telnyx::Models::CallDialParams::record_trim
+
+      attr_reader send_silence_when_idle: bool?
+
+      def send_silence_when_idle=: (bool) -> bool
+
+      attr_reader sip_auth_password: String?
+
+      def sip_auth_password=: (String) -> String
+
+      attr_reader sip_auth_username: String?
+
+      def sip_auth_username=: (String) -> String
+
+      attr_reader sip_headers: ::Array[Telnyx::SipHeader]?
+
+      def sip_headers=: (
+        ::Array[Telnyx::SipHeader]
+      ) -> ::Array[Telnyx::SipHeader]
+
+      attr_reader sip_transport_protocol: Telnyx::Models::CallDialParams::sip_transport_protocol?
+
+      def sip_transport_protocol=: (
+        Telnyx::Models::CallDialParams::sip_transport_protocol
+      ) -> Telnyx::Models::CallDialParams::sip_transport_protocol
+
+      attr_reader sound_modifications: Telnyx::SoundModifications?
+
+      def sound_modifications=: (
+        Telnyx::SoundModifications
+      ) -> Telnyx::SoundModifications
+
+      attr_reader stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec?
+
+      def stream_bidirectional_codec=: (
+        Telnyx::Models::stream_bidirectional_codec
+      ) -> Telnyx::Models::stream_bidirectional_codec
+
+      attr_reader stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode?
+
+      def stream_bidirectional_mode=: (
+        Telnyx::Models::stream_bidirectional_mode
+      ) -> Telnyx::Models::stream_bidirectional_mode
+
+      attr_reader stream_bidirectional_sampling_rate: Telnyx::Models::CallDialParams::stream_bidirectional_sampling_rate?
+
+      def stream_bidirectional_sampling_rate=: (
+        Telnyx::Models::CallDialParams::stream_bidirectional_sampling_rate
+      ) -> Telnyx::Models::CallDialParams::stream_bidirectional_sampling_rate
+
+      attr_reader stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs?
+
+      def stream_bidirectional_target_legs=: (
+        Telnyx::Models::stream_bidirectional_target_legs
+      ) -> Telnyx::Models::stream_bidirectional_target_legs
+
+      attr_reader stream_codec: Telnyx::Models::stream_codec?
+
+      def stream_codec=: (
+        Telnyx::Models::stream_codec
+      ) -> Telnyx::Models::stream_codec
+
+      attr_reader stream_establish_before_call_originate: bool?
+
+      def stream_establish_before_call_originate=: (bool) -> bool
+
+      attr_reader stream_track: Telnyx::Models::CallDialParams::stream_track?
+
+      def stream_track=: (
+        Telnyx::Models::CallDialParams::stream_track
+      ) -> Telnyx::Models::CallDialParams::stream_track
+
+      attr_reader stream_url: String?
+
+      def stream_url=: (String) -> String
+
+      attr_reader supervise_call_control_id: String?
+
+      def supervise_call_control_id=: (String) -> String
+
+      attr_reader supervisor_role: Telnyx::Models::CallDialParams::supervisor_role?
+
+      def supervisor_role=: (
+        Telnyx::Models::CallDialParams::supervisor_role
+      ) -> Telnyx::Models::CallDialParams::supervisor_role
+
+      attr_reader time_limit_secs: Integer?
+
+      def time_limit_secs=: (Integer) -> Integer
+
+      attr_reader timeout_secs: Integer?
+
+      def timeout_secs=: (Integer) -> Integer
+
+      attr_reader transcription: bool?
+
+      def transcription=: (bool) -> bool
+
+      attr_reader transcription_config: Telnyx::Calls::TranscriptionStartRequest?
+
+      def transcription_config=: (
+        Telnyx::Calls::TranscriptionStartRequest
+      ) -> Telnyx::Calls::TranscriptionStartRequest
+
+      attr_reader webhook_url: String?
+
+      def webhook_url=: (String) -> String
+
+      attr_reader webhook_url_method: Telnyx::Models::CallDialParams::webhook_url_method?
+
+      def webhook_url_method=: (
+        Telnyx::Models::CallDialParams::webhook_url_method
+      ) -> Telnyx::Models::CallDialParams::webhook_url_method
+
+      def initialize: (
+        connection_id: String,
+        from: String,
+        to: Telnyx::Models::CallDialParams::to,
+        ?answering_machine_detection: Telnyx::Models::CallDialParams::answering_machine_detection,
+        ?answering_machine_detection_config: Telnyx::CallDialParams::AnsweringMachineDetectionConfig,
+        ?audio_url: String,
+        ?billing_group_id: String,
+        ?bridge_intent: bool,
+        ?bridge_on_answer: bool,
+        ?client_state: String,
+        ?command_id: String,
+        ?conference_config: Telnyx::CallDialParams::ConferenceConfig,
+        ?custom_headers: ::Array[Telnyx::CustomSipHeader],
+        ?dialogflow_config: Telnyx::DialogflowConfig,
+        ?enable_dialogflow: bool,
+        ?from_display_name: String,
+        ?link_to: String,
+        ?media_encryption: Telnyx::Models::CallDialParams::media_encryption,
+        ?media_name: String,
+        ?park_after_unbridge: String,
+        ?preferred_codecs: String,
+        ?record: Telnyx::Models::CallDialParams::record,
+        ?record_channels: Telnyx::Models::CallDialParams::record_channels,
+        ?record_custom_file_name: String,
+        ?record_format: Telnyx::Models::CallDialParams::record_format,
+        ?record_max_length: Integer,
+        ?record_timeout_secs: Integer,
+        ?record_track: Telnyx::Models::CallDialParams::record_track,
+        ?record_trim: Telnyx::Models::CallDialParams::record_trim,
+        ?send_silence_when_idle: bool,
+        ?sip_auth_password: String,
+        ?sip_auth_username: String,
+        ?sip_headers: ::Array[Telnyx::SipHeader],
+        ?sip_transport_protocol: Telnyx::Models::CallDialParams::sip_transport_protocol,
+        ?sound_modifications: Telnyx::SoundModifications,
+        ?stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
+        ?stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
+        ?stream_bidirectional_sampling_rate: Telnyx::Models::CallDialParams::stream_bidirectional_sampling_rate,
+        ?stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs,
+        ?stream_codec: Telnyx::Models::stream_codec,
+        ?stream_establish_before_call_originate: bool,
+        ?stream_track: Telnyx::Models::CallDialParams::stream_track,
+        ?stream_url: String,
+        ?supervise_call_control_id: String,
+        ?supervisor_role: Telnyx::Models::CallDialParams::supervisor_role,
+        ?time_limit_secs: Integer,
+        ?timeout_secs: Integer,
+        ?transcription: bool,
+        ?transcription_config: Telnyx::Calls::TranscriptionStartRequest,
+        ?webhook_url: String,
+        ?webhook_url_method: Telnyx::Models::CallDialParams::webhook_url_method,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        connection_id: String,
+        from: String,
+        to: Telnyx::Models::CallDialParams::to,
+        answering_machine_detection: Telnyx::Models::CallDialParams::answering_machine_detection,
+        answering_machine_detection_config: Telnyx::CallDialParams::AnsweringMachineDetectionConfig,
+        audio_url: String,
+        billing_group_id: String,
+        bridge_intent: bool,
+        bridge_on_answer: bool,
+        client_state: String,
+        command_id: String,
+        conference_config: Telnyx::CallDialParams::ConferenceConfig,
+        custom_headers: ::Array[Telnyx::CustomSipHeader],
+        dialogflow_config: Telnyx::DialogflowConfig,
+        enable_dialogflow: bool,
+        from_display_name: String,
+        link_to: String,
+        media_encryption: Telnyx::Models::CallDialParams::media_encryption,
+        media_name: String,
+        park_after_unbridge: String,
+        preferred_codecs: String,
+        record: Telnyx::Models::CallDialParams::record,
+        record_channels: Telnyx::Models::CallDialParams::record_channels,
+        record_custom_file_name: String,
+        record_format: Telnyx::Models::CallDialParams::record_format,
+        record_max_length: Integer,
+        record_timeout_secs: Integer,
+        record_track: Telnyx::Models::CallDialParams::record_track,
+        record_trim: Telnyx::Models::CallDialParams::record_trim,
+        send_silence_when_idle: bool,
+        sip_auth_password: String,
+        sip_auth_username: String,
+        sip_headers: ::Array[Telnyx::SipHeader],
+        sip_transport_protocol: Telnyx::Models::CallDialParams::sip_transport_protocol,
+        sound_modifications: Telnyx::SoundModifications,
+        stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
+        stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
+        stream_bidirectional_sampling_rate: Telnyx::Models::CallDialParams::stream_bidirectional_sampling_rate,
+        stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs,
+        stream_codec: Telnyx::Models::stream_codec,
+        stream_establish_before_call_originate: bool,
+        stream_track: Telnyx::Models::CallDialParams::stream_track,
+        stream_url: String,
+        supervise_call_control_id: String,
+        supervisor_role: Telnyx::Models::CallDialParams::supervisor_role,
+        time_limit_secs: Integer,
+        timeout_secs: Integer,
+        transcription: bool,
+        transcription_config: Telnyx::Calls::TranscriptionStartRequest,
+        webhook_url: String,
+        webhook_url_method: Telnyx::Models::CallDialParams::webhook_url_method,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type to = String | ::Array[String]
+
+      module To
+        extend Telnyx::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Telnyx::Models::CallDialParams::to]
+
+        StringArray: Telnyx::Internal::Type::Converter
+      end
+
+      type answering_machine_detection =
+        :premium
+        | :detect
+        | :detect_beep
+        | :detect_words
+        | :greeting_end
+        | :disabled
+
+      module AnsweringMachineDetection
+        extend Telnyx::Internal::Type::Enum
+
+        PREMIUM: :premium
+        DETECT: :detect
+        DETECT_BEEP: :detect_beep
+        DETECT_WORDS: :detect_words
+        GREETING_END: :greeting_end
+        DISABLED: :disabled
+
+        def self?.values: -> ::Array[Telnyx::Models::CallDialParams::answering_machine_detection]
+      end
+
+      type answering_machine_detection_config =
+        {
+          after_greeting_silence_millis: Integer,
+          between_words_silence_millis: Integer,
+          greeting_duration_millis: Integer,
+          greeting_silence_duration_millis: Integer,
+          greeting_total_analysis_time_millis: Integer,
+          initial_silence_millis: Integer,
+          maximum_number_of_words: Integer,
+          maximum_word_length_millis: Integer,
+          silence_threshold: Integer,
+          total_analysis_time_millis: Integer
+        }
+
+      class AnsweringMachineDetectionConfig < Telnyx::Internal::Type::BaseModel
+        attr_reader after_greeting_silence_millis: Integer?
+
+        def after_greeting_silence_millis=: (Integer) -> Integer
+
+        attr_reader between_words_silence_millis: Integer?
+
+        def between_words_silence_millis=: (Integer) -> Integer
+
+        attr_reader greeting_duration_millis: Integer?
+
+        def greeting_duration_millis=: (Integer) -> Integer
+
+        attr_reader greeting_silence_duration_millis: Integer?
+
+        def greeting_silence_duration_millis=: (Integer) -> Integer
+
+        attr_reader greeting_total_analysis_time_millis: Integer?
+
+        def greeting_total_analysis_time_millis=: (Integer) -> Integer
+
+        attr_reader initial_silence_millis: Integer?
+
+        def initial_silence_millis=: (Integer) -> Integer
+
+        attr_reader maximum_number_of_words: Integer?
+
+        def maximum_number_of_words=: (Integer) -> Integer
+
+        attr_reader maximum_word_length_millis: Integer?
+
+        def maximum_word_length_millis=: (Integer) -> Integer
+
+        attr_reader silence_threshold: Integer?
+
+        def silence_threshold=: (Integer) -> Integer
+
+        attr_reader total_analysis_time_millis: Integer?
+
+        def total_analysis_time_millis=: (Integer) -> Integer
+
+        def initialize: (
+          ?after_greeting_silence_millis: Integer,
+          ?between_words_silence_millis: Integer,
+          ?greeting_duration_millis: Integer,
+          ?greeting_silence_duration_millis: Integer,
+          ?greeting_total_analysis_time_millis: Integer,
+          ?initial_silence_millis: Integer,
+          ?maximum_number_of_words: Integer,
+          ?maximum_word_length_millis: Integer,
+          ?silence_threshold: Integer,
+          ?total_analysis_time_millis: Integer
+        ) -> void
+
+        def to_hash: -> {
+          after_greeting_silence_millis: Integer,
+          between_words_silence_millis: Integer,
+          greeting_duration_millis: Integer,
+          greeting_silence_duration_millis: Integer,
+          greeting_total_analysis_time_millis: Integer,
+          initial_silence_millis: Integer,
+          maximum_number_of_words: Integer,
+          maximum_word_length_millis: Integer,
+          silence_threshold: Integer,
+          total_analysis_time_millis: Integer
+        }
+      end
+
+      type conference_config =
+        {
+          id: String,
+          beep_enabled: Telnyx::Models::CallDialParams::ConferenceConfig::beep_enabled,
+          conference_name: String,
+          early_media: bool,
+          end_conference_on_exit: bool,
+          hold: bool,
+          hold_audio_url: String,
+          hold_media_name: String,
+          mute: bool,
+          soft_end_conference_on_exit: bool,
+          start_conference_on_create: bool,
+          start_conference_on_enter: bool,
+          supervisor_role: Telnyx::Models::CallDialParams::ConferenceConfig::supervisor_role,
+          whisper_call_control_ids: ::Array[String]
+        }
+
+      class ConferenceConfig < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader beep_enabled: Telnyx::Models::CallDialParams::ConferenceConfig::beep_enabled?
+
+        def beep_enabled=: (
+          Telnyx::Models::CallDialParams::ConferenceConfig::beep_enabled
+        ) -> Telnyx::Models::CallDialParams::ConferenceConfig::beep_enabled
+
+        attr_reader conference_name: String?
+
+        def conference_name=: (String) -> String
+
+        attr_reader early_media: bool?
+
+        def early_media=: (bool) -> bool
+
+        attr_reader end_conference_on_exit: bool?
+
+        def end_conference_on_exit=: (bool) -> bool
+
+        attr_reader hold: bool?
+
+        def hold=: (bool) -> bool
+
+        attr_reader hold_audio_url: String?
+
+        def hold_audio_url=: (String) -> String
+
+        attr_reader hold_media_name: String?
+
+        def hold_media_name=: (String) -> String
+
+        attr_reader mute: bool?
+
+        def mute=: (bool) -> bool
+
+        attr_reader soft_end_conference_on_exit: bool?
+
+        def soft_end_conference_on_exit=: (bool) -> bool
+
+        attr_reader start_conference_on_create: bool?
+
+        def start_conference_on_create=: (bool) -> bool
+
+        attr_reader start_conference_on_enter: bool?
+
+        def start_conference_on_enter=: (bool) -> bool
+
+        attr_reader supervisor_role: Telnyx::Models::CallDialParams::ConferenceConfig::supervisor_role?
+
+        def supervisor_role=: (
+          Telnyx::Models::CallDialParams::ConferenceConfig::supervisor_role
+        ) -> Telnyx::Models::CallDialParams::ConferenceConfig::supervisor_role
+
+        attr_reader whisper_call_control_ids: ::Array[String]?
+
+        def whisper_call_control_ids=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          ?id: String,
+          ?beep_enabled: Telnyx::Models::CallDialParams::ConferenceConfig::beep_enabled,
+          ?conference_name: String,
+          ?early_media: bool,
+          ?end_conference_on_exit: bool,
+          ?hold: bool,
+          ?hold_audio_url: String,
+          ?hold_media_name: String,
+          ?mute: bool,
+          ?soft_end_conference_on_exit: bool,
+          ?start_conference_on_create: bool,
+          ?start_conference_on_enter: bool,
+          ?supervisor_role: Telnyx::Models::CallDialParams::ConferenceConfig::supervisor_role,
+          ?whisper_call_control_ids: ::Array[String]
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          beep_enabled: Telnyx::Models::CallDialParams::ConferenceConfig::beep_enabled,
+          conference_name: String,
+          early_media: bool,
+          end_conference_on_exit: bool,
+          hold: bool,
+          hold_audio_url: String,
+          hold_media_name: String,
+          mute: bool,
+          soft_end_conference_on_exit: bool,
+          start_conference_on_create: bool,
+          start_conference_on_enter: bool,
+          supervisor_role: Telnyx::Models::CallDialParams::ConferenceConfig::supervisor_role,
+          whisper_call_control_ids: ::Array[String]
+        }
+
+        type beep_enabled = :always | :never | :on_enter | :on_exit
+
+        module BeepEnabled
+          extend Telnyx::Internal::Type::Enum
+
+          ALWAYS: :always
+          NEVER: :never
+          ON_ENTER: :on_enter
+          ON_EXIT: :on_exit
+
+          def self?.values: -> ::Array[Telnyx::Models::CallDialParams::ConferenceConfig::beep_enabled]
+        end
+
+        type supervisor_role = :barge | :monitor | :none | :whisper
+
+        module SupervisorRole
+          extend Telnyx::Internal::Type::Enum
+
+          BARGE: :barge
+          MONITOR: :monitor
+          NONE: :none
+          WHISPER: :whisper
+
+          def self?.values: -> ::Array[Telnyx::Models::CallDialParams::ConferenceConfig::supervisor_role]
+        end
+      end
+
+      type media_encryption = :disabled | :SRTP | :DTLS
+
+      module MediaEncryption
+        extend Telnyx::Internal::Type::Enum
+
+        DISABLED: :disabled
+        SRTP: :SRTP
+        DTLS: :DTLS
+
+        def self?.values: -> ::Array[Telnyx::Models::CallDialParams::media_encryption]
+      end
+
+      type record = :"record-from-answer"
+
+      module Record
+        extend Telnyx::Internal::Type::Enum
+
+        RECORD_FROM_ANSWER: :"record-from-answer"
+
+        def self?.values: -> ::Array[Telnyx::Models::CallDialParams::record]
+      end
+
+      type record_channels = :single | :dual
+
+      module RecordChannels
+        extend Telnyx::Internal::Type::Enum
+
+        SINGLE: :single
+        DUAL: :dual
+
+        def self?.values: -> ::Array[Telnyx::Models::CallDialParams::record_channels]
+      end
+
+      type record_format = :wav | :mp3
+
+      module RecordFormat
+        extend Telnyx::Internal::Type::Enum
+
+        WAV: :wav
+        MP3: :mp3
+
+        def self?.values: -> ::Array[Telnyx::Models::CallDialParams::record_format]
+      end
+
+      type record_track = :both | :inbound | :outbound
+
+      module RecordTrack
+        extend Telnyx::Internal::Type::Enum
+
+        BOTH: :both
+        INBOUND: :inbound
+        OUTBOUND: :outbound
+
+        def self?.values: -> ::Array[Telnyx::Models::CallDialParams::record_track]
+      end
+
+      type record_trim = :"trim-silence"
+
+      module RecordTrim
+        extend Telnyx::Internal::Type::Enum
+
+        TRIM_SILENCE: :"trim-silence"
+
+        def self?.values: -> ::Array[Telnyx::Models::CallDialParams::record_trim]
+      end
+
+      type sip_transport_protocol = :UDP | :TCP | :TLS
+
+      module SipTransportProtocol
+        extend Telnyx::Internal::Type::Enum
+
+        UDP: :UDP
+        TCP: :TCP
+        TLS: :TLS
+
+        def self?.values: -> ::Array[Telnyx::Models::CallDialParams::sip_transport_protocol]
+      end
+
+      type stream_bidirectional_sampling_rate =
+        8000 | 16000 | 22050 | 24000 | 48000
+
+      module StreamBidirectionalSamplingRate
+        extend Telnyx::Internal::Type::Enum
+
+        STREAM_BIDIRECTIONAL_SAMPLING_RATE_8000: 8000
+        STREAM_BIDIRECTIONAL_SAMPLING_RATE_16000: 16000
+        STREAM_BIDIRECTIONAL_SAMPLING_RATE_22050: 22050
+        STREAM_BIDIRECTIONAL_SAMPLING_RATE_24000: 24000
+        STREAM_BIDIRECTIONAL_SAMPLING_RATE_48000: 48000
+
+        def self?.values: -> ::Array[Telnyx::Models::CallDialParams::stream_bidirectional_sampling_rate]
+      end
+
+      type stream_track = :inbound_track | :outbound_track | :both_tracks
+
+      module StreamTrack
+        extend Telnyx::Internal::Type::Enum
+
+        INBOUND_TRACK: :inbound_track
+        OUTBOUND_TRACK: :outbound_track
+        BOTH_TRACKS: :both_tracks
+
+        def self?.values: -> ::Array[Telnyx::Models::CallDialParams::stream_track]
+      end
+
+      type supervisor_role = :barge | :whisper | :monitor
+
+      module SupervisorRole
+        extend Telnyx::Internal::Type::Enum
+
+        BARGE: :barge
+        WHISPER: :whisper
+        MONITOR: :monitor
+
+        def self?.values: -> ::Array[Telnyx::Models::CallDialParams::supervisor_role]
+      end
+
+      type webhook_url_method = :POST | :GET
+
+      module WebhookURLMethod
+        extend Telnyx::Internal::Type::Enum
+
+        POST: :POST
+        GET: :GET
+
+        def self?.values: -> ::Array[Telnyx::Models::CallDialParams::webhook_url_method]
+      end
+    end
+  end
+end

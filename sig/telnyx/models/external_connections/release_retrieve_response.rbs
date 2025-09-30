@@ -1,0 +1,123 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type release_retrieve_response =
+        {
+          data: Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data
+        }
+
+      class ReleaseRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data?
+
+        def data=: (
+          Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data
+        ) -> Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data
+        }
+
+        type data =
+          {
+            created_at: String,
+            error_message: String,
+            status: Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::status,
+            telephone_numbers: ::Array[Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::TelephoneNumber],
+            tenant_id: String,
+            ticket_id: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader created_at: String?
+
+          def created_at=: (String) -> String
+
+          attr_reader error_message: String?
+
+          def error_message=: (String) -> String
+
+          attr_reader status: Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::status?
+
+          def status=: (
+            Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::status
+          ) -> Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::status
+
+          attr_reader telephone_numbers: ::Array[Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::TelephoneNumber]?
+
+          def telephone_numbers=: (
+            ::Array[Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::TelephoneNumber]
+          ) -> ::Array[Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::TelephoneNumber]
+
+          attr_reader tenant_id: String?
+
+          def tenant_id=: (String) -> String
+
+          attr_reader ticket_id: String?
+
+          def ticket_id=: (String) -> String
+
+          def initialize: (
+            ?created_at: String,
+            ?error_message: String,
+            ?status: Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::status,
+            ?telephone_numbers: ::Array[Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::TelephoneNumber],
+            ?tenant_id: String,
+            ?ticket_id: String
+          ) -> void
+
+          def to_hash: -> {
+            created_at: String,
+            error_message: String,
+            status: Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::status,
+            telephone_numbers: ::Array[Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::TelephoneNumber],
+            tenant_id: String,
+            ticket_id: String
+          }
+
+          type status =
+            :pending_upload
+            | :pending
+            | :in_progress
+            | :complete
+            | :failed
+            | :expired
+            | :unknown
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING_UPLOAD: :pending_upload
+            PENDING: :pending
+            IN_PROGRESS: :in_progress
+            COMPLETE: :complete
+            FAILED: :failed
+            EXPIRED: :expired
+            UNKNOWN: :unknown
+
+            def self?.values: -> ::Array[Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::status]
+          end
+
+          type telephone_number = { number_id: String, phone_number: String }
+
+          class TelephoneNumber < Telnyx::Internal::Type::BaseModel
+            attr_reader number_id: String?
+
+            def number_id=: (String) -> String
+
+            attr_reader phone_number: String?
+
+            def phone_number=: (String) -> String
+
+            def initialize: (?number_id: String, ?phone_number: String) -> void
+
+            def to_hash: -> { number_id: String, phone_number: String }
+          end
+        end
+      end
+    end
+  end
+end

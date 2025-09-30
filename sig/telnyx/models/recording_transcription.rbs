@@ -1,0 +1,96 @@
+module Telnyx
+  module Models
+    type recording_transcription =
+      {
+        id: String,
+        created_at: String,
+        duration_millis: Integer,
+        record_type: Telnyx::Models::RecordingTranscription::record_type,
+        recording_id: String,
+        status: Telnyx::Models::RecordingTranscription::status,
+        transcription_text: String,
+        updated_at: String
+      }
+
+    class RecordingTranscription < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader duration_millis: Integer?
+
+      def duration_millis=: (Integer) -> Integer
+
+      attr_reader record_type: Telnyx::Models::RecordingTranscription::record_type?
+
+      def record_type=: (
+        Telnyx::Models::RecordingTranscription::record_type
+      ) -> Telnyx::Models::RecordingTranscription::record_type
+
+      attr_reader recording_id: String?
+
+      def recording_id=: (String) -> String
+
+      attr_reader status: Telnyx::Models::RecordingTranscription::status?
+
+      def status=: (
+        Telnyx::Models::RecordingTranscription::status
+      ) -> Telnyx::Models::RecordingTranscription::status
+
+      attr_reader transcription_text: String?
+
+      def transcription_text=: (String) -> String
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?created_at: String,
+        ?duration_millis: Integer,
+        ?record_type: Telnyx::Models::RecordingTranscription::record_type,
+        ?recording_id: String,
+        ?status: Telnyx::Models::RecordingTranscription::status,
+        ?transcription_text: String,
+        ?updated_at: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: String,
+        duration_millis: Integer,
+        record_type: Telnyx::Models::RecordingTranscription::record_type,
+        recording_id: String,
+        status: Telnyx::Models::RecordingTranscription::status,
+        transcription_text: String,
+        updated_at: String
+      }
+
+      type record_type = :recording_transcription
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        RECORDING_TRANSCRIPTION: :recording_transcription
+
+        def self?.values: -> ::Array[Telnyx::Models::RecordingTranscription::record_type]
+      end
+
+      type status = :"in-progress" | :completed
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        IN_PROGRESS: :"in-progress"
+        COMPLETED: :completed
+
+        def self?.values: -> ::Array[Telnyx::Models::RecordingTranscription::status]
+      end
+    end
+  end
+end

@@ -1,0 +1,43 @@
+module Telnyx
+  module Models
+    type s3_configuration_data =
+      {
+        aws_access_key_id: String,
+        aws_secret_access_key: String,
+        bucket: String,
+        region: String
+      }
+
+    class S3ConfigurationData < Telnyx::Internal::Type::BaseModel
+      attr_reader aws_access_key_id: String?
+
+      def aws_access_key_id=: (String) -> String
+
+      attr_reader aws_secret_access_key: String?
+
+      def aws_secret_access_key=: (String) -> String
+
+      attr_reader bucket: String?
+
+      def bucket=: (String) -> String
+
+      attr_reader region: String?
+
+      def region=: (String) -> String
+
+      def initialize: (
+        ?aws_access_key_id: String,
+        ?aws_secret_access_key: String,
+        ?bucket: String,
+        ?region: String
+      ) -> void
+
+      def to_hash: -> {
+        aws_access_key_id: String,
+        aws_secret_access_key: String,
+        bucket: String,
+        region: String
+      }
+    end
+  end
+end

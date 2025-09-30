@@ -1,0 +1,33 @@
+module Telnyx
+  module Models
+    type fqdn_connection_list_response =
+      {
+        data: ::Array[Telnyx::FqdnConnection],
+        meta: Telnyx::ConnectionsPaginationMeta
+      }
+
+    class FqdnConnectionListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::FqdnConnection]?
+
+      def data=: (
+        ::Array[Telnyx::FqdnConnection]
+      ) -> ::Array[Telnyx::FqdnConnection]
+
+      attr_reader meta: Telnyx::ConnectionsPaginationMeta?
+
+      def meta=: (
+        Telnyx::ConnectionsPaginationMeta
+      ) -> Telnyx::ConnectionsPaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::FqdnConnection],
+        ?meta: Telnyx::ConnectionsPaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::FqdnConnection],
+        meta: Telnyx::ConnectionsPaginationMeta
+      }
+    end
+  end
+end

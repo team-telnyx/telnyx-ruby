@@ -1,0 +1,23 @@
+module Telnyx
+  module Resources
+    class OAuthGrants
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OAuthGrantRetrieveResponse
+
+      def list: (
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OAuthGrantListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OAuthGrantDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,90 @@
+module Telnyx
+  module Models
+    type requirement_type_list_params =
+      {
+        filter: Telnyx::RequirementTypeListParams::Filter,
+        sort: ::Array[Telnyx::Models::RequirementTypeListParams::sort]
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class RequirementTypeListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::RequirementTypeListParams::Filter?
+
+      def filter=: (
+        Telnyx::RequirementTypeListParams::Filter
+      ) -> Telnyx::RequirementTypeListParams::Filter
+
+      attr_reader sort: ::Array[Telnyx::Models::RequirementTypeListParams::sort]?
+
+      def sort=: (
+        ::Array[Telnyx::Models::RequirementTypeListParams::sort]
+      ) -> ::Array[Telnyx::Models::RequirementTypeListParams::sort]
+
+      def initialize: (
+        ?filter: Telnyx::RequirementTypeListParams::Filter,
+        ?sort: ::Array[Telnyx::Models::RequirementTypeListParams::sort],
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::RequirementTypeListParams::Filter,
+        sort: ::Array[Telnyx::Models::RequirementTypeListParams::sort],
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter = { name: Telnyx::RequirementTypeListParams::Filter::Name }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader name: Telnyx::RequirementTypeListParams::Filter::Name?
+
+        def name=: (
+          Telnyx::RequirementTypeListParams::Filter::Name
+        ) -> Telnyx::RequirementTypeListParams::Filter::Name
+
+        def initialize: (
+          ?name: Telnyx::RequirementTypeListParams::Filter::Name
+        ) -> void
+
+        def to_hash: -> {
+          name: Telnyx::RequirementTypeListParams::Filter::Name
+        }
+
+        type name_ = { contains: String }
+
+        class Name < Telnyx::Internal::Type::BaseModel
+          attr_reader contains: String?
+
+          def contains=: (String) -> String
+
+          def initialize: (?contains: String) -> void
+
+          def to_hash: -> { contains: String }
+        end
+      end
+
+      type sort =
+        :name
+        | :created_at
+        | :updated_at
+        | :"-name"
+        | :"-created_at"
+        | :"-updated_at"
+
+      module Sort
+        extend Telnyx::Internal::Type::Enum
+
+        NAME: :name
+        CREATED_AT: :created_at
+        UPDATED_AT: :updated_at
+        NAME_DESC: :"-name"
+        CREATED_AT_DESC: :"-created_at"
+        UPDATED_AT_DESC: :"-updated_at"
+
+        def self?.values: -> ::Array[Telnyx::Models::RequirementTypeListParams::sort]
+      end
+    end
+  end
+end

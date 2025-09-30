@@ -1,0 +1,79 @@
+module Telnyx
+  module Resources
+    class MessagingTollfree
+      class Verification
+        class Requests
+          def create: (
+            additional_information: String,
+            business_addr1: String,
+            business_city: String,
+            business_contact_email: String,
+            business_contact_first_name: String,
+            business_contact_last_name: String,
+            business_contact_phone: String,
+            business_name: String,
+            business_state: String,
+            business_zip: String,
+            corporate_website: String,
+            isv_reseller: String,
+            message_volume: Telnyx::Models::MessagingTollfree::Verification::volume,
+            opt_in_workflow: String,
+            opt_in_workflow_image_urls: ::Array[Telnyx::MessagingTollfree::Verification::URL],
+            phone_numbers: ::Array[Telnyx::MessagingTollfree::Verification::TfPhoneNumber],
+            production_message_content: String,
+            use_case: Telnyx::Models::MessagingTollfree::Verification::use_case_categories,
+            use_case_summary: String,
+            ?business_addr2: String,
+            ?webhook_url: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::MessagingTollfree::Verification::VerificationRequestEgress
+
+          def retrieve: (
+            String id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::MessagingTollfree::Verification::VerificationRequestStatus
+
+          def update: (
+            String id,
+            additional_information: String,
+            business_addr1: String,
+            business_city: String,
+            business_contact_email: String,
+            business_contact_first_name: String,
+            business_contact_last_name: String,
+            business_contact_phone: String,
+            business_name: String,
+            business_state: String,
+            business_zip: String,
+            corporate_website: String,
+            isv_reseller: String,
+            message_volume: Telnyx::Models::MessagingTollfree::Verification::volume,
+            opt_in_workflow: String,
+            opt_in_workflow_image_urls: ::Array[Telnyx::MessagingTollfree::Verification::URL],
+            phone_numbers: ::Array[Telnyx::MessagingTollfree::Verification::TfPhoneNumber],
+            production_message_content: String,
+            use_case: Telnyx::Models::MessagingTollfree::Verification::use_case_categories,
+            use_case_summary: String,
+            ?business_addr2: String,
+            ?webhook_url: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::MessagingTollfree::Verification::VerificationRequestEgress
+
+          def list: (
+            page: Integer,
+            page_size: Integer,
+            ?date_end: Time,
+            ?date_start: Time,
+            ?phone_number: String,
+            ?status: Telnyx::Models::MessagingTollfree::Verification::tf_verification_status,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::MessagingTollfree::Verification::RequestListResponse
+
+          def delete: (String id, ?request_options: Telnyx::request_opts) -> top
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

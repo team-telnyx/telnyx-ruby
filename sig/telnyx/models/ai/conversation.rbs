@@ -1,0 +1,44 @@
+module Telnyx
+  module Models
+    module AI
+      type conversation =
+        {
+          id: String,
+          created_at: Time,
+          last_message_at: Time,
+          metadata: ::Hash[Symbol, String],
+          name: String
+        }
+
+      class Conversation < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor last_message_at: Time
+
+        attr_accessor metadata: ::Hash[Symbol, String]
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        def initialize: (
+          id: String,
+          created_at: Time,
+          last_message_at: Time,
+          metadata: ::Hash[Symbol, String],
+          ?name: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          last_message_at: Time,
+          metadata: ::Hash[Symbol, String],
+          name: String
+        }
+      end
+    end
+  end
+end

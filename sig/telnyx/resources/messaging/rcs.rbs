@@ -1,0 +1,29 @@
+module Telnyx
+  module Resources
+    class Messaging
+      class Rcs
+        attr_reader agents: Telnyx::Resources::Messaging::Rcs::Agents
+
+        def invite_test_number: (
+          String phone_number,
+          id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Messaging::RcInviteTestNumberResponse
+
+        def list_bulk_capabilities: (
+          agent_id: String,
+          phone_numbers: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Messaging::RcListBulkCapabilitiesResponse
+
+        def retrieve_capabilities: (
+          String phone_number,
+          agent_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Messaging::RcRetrieveCapabilitiesResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

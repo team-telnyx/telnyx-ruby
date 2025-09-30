@@ -1,0 +1,26 @@
+module Telnyx
+  module Models
+    type managed_account_update_params =
+      { managed_account_allow_custom_pricing: bool }
+      & Telnyx::Internal::Type::request_parameters
+
+    class ManagedAccountUpdateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader managed_account_allow_custom_pricing: bool?
+
+      def managed_account_allow_custom_pricing=: (bool) -> bool
+
+      def initialize: (
+        ?managed_account_allow_custom_pricing: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        managed_account_allow_custom_pricing: bool,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

@@ -1,0 +1,57 @@
+module Telnyx
+  module Models
+    type access_ip_address_list_response =
+      {
+        data: ::Array[Telnyx::AccessIPAddressResponse],
+        meta: Telnyx::Models::AccessIPAddressListResponse::Meta
+      }
+
+    class AccessIPAddressListResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::AccessIPAddressResponse]
+
+      attr_accessor meta: Telnyx::Models::AccessIPAddressListResponse::Meta
+
+      def initialize: (
+        data: ::Array[Telnyx::AccessIPAddressResponse],
+        meta: Telnyx::Models::AccessIPAddressListResponse::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::AccessIPAddressResponse],
+        meta: Telnyx::Models::AccessIPAddressListResponse::Meta
+      }
+
+      type meta =
+        {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor page_number: Integer
+
+        attr_accessor page_size: Integer
+
+        attr_accessor total_pages: Integer
+
+        attr_accessor total_results: Integer
+
+        def initialize: (
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        ) -> void
+
+        def to_hash: -> {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+      end
+    end
+  end
+end

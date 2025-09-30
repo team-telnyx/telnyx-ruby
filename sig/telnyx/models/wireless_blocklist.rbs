@@ -1,0 +1,78 @@
+module Telnyx
+  module Models
+    type wireless_blocklist =
+      {
+        id: String,
+        created_at: String,
+        name: String,
+        record_type: String,
+        type: Telnyx::Models::WirelessBlocklist::type_,
+        updated_at: String,
+        values: ::Array[String]
+      }
+
+    class WirelessBlocklist < Telnyx::Internal::Type::BaseModel
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader type: Telnyx::Models::WirelessBlocklist::type_?
+
+      def type=: (
+        Telnyx::Models::WirelessBlocklist::type_
+      ) -> Telnyx::Models::WirelessBlocklist::type_
+
+      attr_reader values: ::Array[String]?
+
+      def values=: (::Array[String]) -> ::Array[String]
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?created_at: String,
+        ?name: String,
+        ?record_type: String,
+        ?type: Telnyx::Models::WirelessBlocklist::type_,
+        ?updated_at: String,
+        ?values: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: String,
+        name: String,
+        record_type: String,
+        type: Telnyx::Models::WirelessBlocklist::type_,
+        updated_at: String,
+        values: ::Array[String]
+      }
+
+      type type_ = :country | :mcc | :plmn
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        COUNTRY: :country
+        MCC: :mcc
+        PLMN: :plmn
+
+        def self?.values: -> ::Array[Telnyx::Models::WirelessBlocklist::type_]
+      end
+    end
+  end
+end

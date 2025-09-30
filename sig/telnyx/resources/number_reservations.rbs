@@ -1,0 +1,26 @@
+module Telnyx
+  module Resources
+    class NumberReservations
+      attr_reader actions: Telnyx::Resources::NumberReservations::Actions
+
+      def create: (
+        ?customer_reference: String,
+        ?phone_numbers: ::Array[Telnyx::ReservedPhoneNumber],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NumberReservationCreateResponse
+
+      def retrieve: (
+        String number_reservation_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NumberReservationRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::NumberReservationListParams::Filter,
+        ?page: Telnyx::NumberReservationListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NumberReservationListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

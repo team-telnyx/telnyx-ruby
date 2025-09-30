@@ -1,0 +1,57 @@
+module Telnyx
+  module Models
+    type porting_order_end_user_location =
+      {
+        administrative_area: String,
+        country_code: String,
+        extended_address: String,
+        locality: String,
+        postal_code: String,
+        street_address: String
+      }
+
+    class PortingOrderEndUserLocation < Telnyx::Internal::Type::BaseModel
+      attr_reader administrative_area: String?
+
+      def administrative_area=: (String) -> String
+
+      attr_reader country_code: String?
+
+      def country_code=: (String) -> String
+
+      attr_reader extended_address: String?
+
+      def extended_address=: (String) -> String
+
+      attr_reader locality: String?
+
+      def locality=: (String) -> String
+
+      attr_reader postal_code: String?
+
+      def postal_code=: (String) -> String
+
+      attr_reader street_address: String?
+
+      def street_address=: (String) -> String
+
+      def initialize: (
+        ?administrative_area: String,
+        ?country_code: String,
+        ?extended_address: String,
+        ?locality: String,
+        ?postal_code: String,
+        ?street_address: String
+      ) -> void
+
+      def to_hash: -> {
+        administrative_area: String,
+        country_code: String,
+        extended_address: String,
+        locality: String,
+        postal_code: String,
+        street_address: String
+      }
+    end
+  end
+end

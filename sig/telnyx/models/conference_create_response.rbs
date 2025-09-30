@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type conference_create_response = { data: Telnyx::Conference }
+
+    class ConferenceCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Conference?
+
+      def data=: (Telnyx::Conference) -> Telnyx::Conference
+
+      def initialize: (?data: Telnyx::Conference) -> void
+
+      def to_hash: -> { data: Telnyx::Conference }
+    end
+  end
+end

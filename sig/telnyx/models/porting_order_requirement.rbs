@@ -1,0 +1,55 @@
+module Telnyx
+  module Models
+    type porting_order_requirement =
+      {
+        field_type: Telnyx::Models::PortingOrderRequirement::field_type,
+        field_value: String,
+        record_type: String,
+        requirement_type_id: String
+      }
+
+    class PortingOrderRequirement < Telnyx::Internal::Type::BaseModel
+      attr_reader field_type: Telnyx::Models::PortingOrderRequirement::field_type?
+
+      def field_type=: (
+        Telnyx::Models::PortingOrderRequirement::field_type
+      ) -> Telnyx::Models::PortingOrderRequirement::field_type
+
+      attr_reader field_value: String?
+
+      def field_value=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader requirement_type_id: String?
+
+      def requirement_type_id=: (String) -> String
+
+      def initialize: (
+        ?field_type: Telnyx::Models::PortingOrderRequirement::field_type,
+        ?field_value: String,
+        ?record_type: String,
+        ?requirement_type_id: String
+      ) -> void
+
+      def to_hash: -> {
+        field_type: Telnyx::Models::PortingOrderRequirement::field_type,
+        field_value: String,
+        record_type: String,
+        requirement_type_id: String
+      }
+
+      type field_type = :document
+
+      module FieldType
+        extend Telnyx::Internal::Type::Enum
+
+        DOCUMENT: :document
+
+        def self?.values: -> ::Array[Telnyx::Models::PortingOrderRequirement::field_type]
+      end
+    end
+  end
+end

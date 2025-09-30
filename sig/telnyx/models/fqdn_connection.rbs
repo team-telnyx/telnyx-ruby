@@ -1,0 +1,260 @@
+module Telnyx
+  module Models
+    type fqdn_connection =
+      {
+        connection_name: String,
+        id: String,
+        active: bool,
+        adjust_dtmf_timestamp: bool,
+        anchorsite_override: Telnyx::Models::anchorsite_override,
+        call_cost_enabled: bool,
+        created_at: String,
+        default_on_hold_comfort_noise_enabled: bool,
+        dtmf_type: Telnyx::Models::dtmf_type,
+        encode_contact_header_enabled: bool,
+        encrypted_media: Telnyx::Models::encrypted_media?,
+        ignore_dtmf_duration: bool,
+        ignore_mark_bit: bool,
+        inbound: Telnyx::InboundFqdn,
+        microsoft_teams_sbc: bool,
+        noise_suppression: bool,
+        :onnet_t38_passthrough_enabled => bool,
+        outbound: Telnyx::OutboundFqdn,
+        password: String,
+        record_type: String,
+        rtcp_settings: Telnyx::ConnectionRtcpSettings,
+        rtp_pass_codecs_on_stream_change: bool,
+        send_normalized_timestamps: bool,
+        tags: ::Array[String],
+        third_party_control_enabled: bool,
+        transport_protocol: Telnyx::Models::transport_protocol,
+        txt_name: String,
+        txt_ttl: Integer,
+        txt_value: String,
+        updated_at: String,
+        user_name: String,
+        webhook_api_version: Telnyx::Models::webhook_api_version,
+        webhook_event_failover_url: String?,
+        webhook_event_url: String,
+        webhook_timeout_secs: Integer?
+      }
+
+    class FqdnConnection < Telnyx::Internal::Type::BaseModel
+      attr_accessor connection_name: String
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader active: bool?
+
+      def active=: (bool) -> bool
+
+      attr_reader adjust_dtmf_timestamp: bool?
+
+      def adjust_dtmf_timestamp=: (bool) -> bool
+
+      attr_reader anchorsite_override: Telnyx::Models::anchorsite_override?
+
+      def anchorsite_override=: (
+        Telnyx::Models::anchorsite_override
+      ) -> Telnyx::Models::anchorsite_override
+
+      attr_reader call_cost_enabled: bool?
+
+      def call_cost_enabled=: (bool) -> bool
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader default_on_hold_comfort_noise_enabled: bool?
+
+      def default_on_hold_comfort_noise_enabled=: (bool) -> bool
+
+      attr_reader dtmf_type: Telnyx::Models::dtmf_type?
+
+      def dtmf_type=: (Telnyx::Models::dtmf_type) -> Telnyx::Models::dtmf_type
+
+      attr_reader encode_contact_header_enabled: bool?
+
+      def encode_contact_header_enabled=: (bool) -> bool
+
+      attr_accessor encrypted_media: Telnyx::Models::encrypted_media?
+
+      attr_reader ignore_dtmf_duration: bool?
+
+      def ignore_dtmf_duration=: (bool) -> bool
+
+      attr_reader ignore_mark_bit: bool?
+
+      def ignore_mark_bit=: (bool) -> bool
+
+      attr_reader inbound: Telnyx::InboundFqdn?
+
+      def inbound=: (Telnyx::InboundFqdn) -> Telnyx::InboundFqdn
+
+      attr_reader microsoft_teams_sbc: bool?
+
+      def microsoft_teams_sbc=: (bool) -> bool
+
+      attr_reader noise_suppression: bool?
+
+      def noise_suppression=: (bool) -> bool
+
+      attr_reader onnet_t38_passthrough_enabled: bool?
+
+      def onnet_t38_passthrough_enabled=: (bool) -> bool
+
+      attr_reader outbound: Telnyx::OutboundFqdn?
+
+      def outbound=: (Telnyx::OutboundFqdn) -> Telnyx::OutboundFqdn
+
+      attr_reader password: String?
+
+      def password=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader rtcp_settings: Telnyx::ConnectionRtcpSettings?
+
+      def rtcp_settings=: (
+        Telnyx::ConnectionRtcpSettings
+      ) -> Telnyx::ConnectionRtcpSettings
+
+      attr_reader rtp_pass_codecs_on_stream_change: bool?
+
+      def rtp_pass_codecs_on_stream_change=: (bool) -> bool
+
+      attr_reader send_normalized_timestamps: bool?
+
+      def send_normalized_timestamps=: (bool) -> bool
+
+      attr_reader tags: ::Array[String]?
+
+      def tags=: (::Array[String]) -> ::Array[String]
+
+      attr_reader third_party_control_enabled: bool?
+
+      def third_party_control_enabled=: (bool) -> bool
+
+      attr_reader transport_protocol: Telnyx::Models::transport_protocol?
+
+      def transport_protocol=: (
+        Telnyx::Models::transport_protocol
+      ) -> Telnyx::Models::transport_protocol
+
+      attr_reader txt_name: String?
+
+      def txt_name=: (String) -> String
+
+      attr_reader txt_ttl: Integer?
+
+      def txt_ttl=: (Integer) -> Integer
+
+      attr_reader txt_value: String?
+
+      def txt_value=: (String) -> String
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      attr_reader user_name: String?
+
+      def user_name=: (String) -> String
+
+      attr_reader webhook_api_version: Telnyx::Models::webhook_api_version?
+
+      def webhook_api_version=: (
+        Telnyx::Models::webhook_api_version
+      ) -> Telnyx::Models::webhook_api_version
+
+      attr_accessor webhook_event_failover_url: String?
+
+      attr_reader webhook_event_url: String?
+
+      def webhook_event_url=: (String) -> String
+
+      attr_accessor webhook_timeout_secs: Integer?
+
+      def initialize: (
+        connection_name: String,
+        ?id: String,
+        ?active: bool,
+        ?adjust_dtmf_timestamp: bool,
+        ?anchorsite_override: Telnyx::Models::anchorsite_override,
+        ?call_cost_enabled: bool,
+        ?created_at: String,
+        ?default_on_hold_comfort_noise_enabled: bool,
+        ?dtmf_type: Telnyx::Models::dtmf_type,
+        ?encode_contact_header_enabled: bool,
+        ?encrypted_media: Telnyx::Models::encrypted_media?,
+        ?ignore_dtmf_duration: bool,
+        ?ignore_mark_bit: bool,
+        ?inbound: Telnyx::InboundFqdn,
+        ?microsoft_teams_sbc: bool,
+        ?noise_suppression: bool,
+        ?onnet_t38_passthrough_enabled: bool,
+        ?outbound: Telnyx::OutboundFqdn,
+        ?password: String,
+        ?record_type: String,
+        ?rtcp_settings: Telnyx::ConnectionRtcpSettings,
+        ?rtp_pass_codecs_on_stream_change: bool,
+        ?send_normalized_timestamps: bool,
+        ?tags: ::Array[String],
+        ?third_party_control_enabled: bool,
+        ?transport_protocol: Telnyx::Models::transport_protocol,
+        ?txt_name: String,
+        ?txt_ttl: Integer,
+        ?txt_value: String,
+        ?updated_at: String,
+        ?user_name: String,
+        ?webhook_api_version: Telnyx::Models::webhook_api_version,
+        ?webhook_event_failover_url: String?,
+        ?webhook_event_url: String,
+        ?webhook_timeout_secs: Integer?
+      ) -> void
+
+      def to_hash: -> {
+        connection_name: String,
+        id: String,
+        active: bool,
+        adjust_dtmf_timestamp: bool,
+        anchorsite_override: Telnyx::Models::anchorsite_override,
+        call_cost_enabled: bool,
+        created_at: String,
+        default_on_hold_comfort_noise_enabled: bool,
+        dtmf_type: Telnyx::Models::dtmf_type,
+        encode_contact_header_enabled: bool,
+        encrypted_media: Telnyx::Models::encrypted_media?,
+        ignore_dtmf_duration: bool,
+        ignore_mark_bit: bool,
+        inbound: Telnyx::InboundFqdn,
+        microsoft_teams_sbc: bool,
+        noise_suppression: bool,
+        :onnet_t38_passthrough_enabled => bool,
+        outbound: Telnyx::OutboundFqdn,
+        password: String,
+        record_type: String,
+        rtcp_settings: Telnyx::ConnectionRtcpSettings,
+        rtp_pass_codecs_on_stream_change: bool,
+        send_normalized_timestamps: bool,
+        tags: ::Array[String],
+        third_party_control_enabled: bool,
+        transport_protocol: Telnyx::Models::transport_protocol,
+        txt_name: String,
+        txt_ttl: Integer,
+        txt_value: String,
+        updated_at: String,
+        user_name: String,
+        webhook_api_version: Telnyx::Models::webhook_api_version,
+        webhook_event_failover_url: String?,
+        webhook_event_url: String,
+        webhook_timeout_secs: Integer?
+      }
+    end
+  end
+end

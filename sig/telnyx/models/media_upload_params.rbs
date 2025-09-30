@@ -1,0 +1,36 @@
+module Telnyx
+  module Models
+    type media_upload_params =
+      { media_url: String, media_name: String, ttl_secs: Integer }
+      & Telnyx::Internal::Type::request_parameters
+
+    class MediaUploadParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor media_url: String
+
+      attr_reader media_name: String?
+
+      def media_name=: (String) -> String
+
+      attr_reader ttl_secs: Integer?
+
+      def ttl_secs=: (Integer) -> Integer
+
+      def initialize: (
+        media_url: String,
+        ?media_name: String,
+        ?ttl_secs: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        media_url: String,
+        media_name: String,
+        ttl_secs: Integer,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

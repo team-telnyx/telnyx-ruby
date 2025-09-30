@@ -1,0 +1,108 @@
+module Telnyx
+  module Models
+    type oauth_retrieve_response =
+      { data: Telnyx::Models::OAuthRetrieveResponse::Data }
+
+    class OAuthRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::OAuthRetrieveResponse::Data?
+
+      def data=: (
+        Telnyx::Models::OAuthRetrieveResponse::Data
+      ) -> Telnyx::Models::OAuthRetrieveResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::OAuthRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> { data: Telnyx::Models::OAuthRetrieveResponse::Data }
+
+      type data =
+        {
+          client_id: String,
+          logo_uri: String?,
+          name: String,
+          policy_uri: String?,
+          redirect_uri: String,
+          requested_scopes: ::Array[Telnyx::Models::OAuthRetrieveResponse::Data::RequestedScope],
+          tos_uri: String?,
+          verified: bool
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader client_id: String?
+
+        def client_id=: (String) -> String
+
+        attr_accessor logo_uri: String?
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_accessor policy_uri: String?
+
+        attr_reader redirect_uri: String?
+
+        def redirect_uri=: (String) -> String
+
+        attr_reader requested_scopes: ::Array[Telnyx::Models::OAuthRetrieveResponse::Data::RequestedScope]?
+
+        def requested_scopes=: (
+          ::Array[Telnyx::Models::OAuthRetrieveResponse::Data::RequestedScope]
+        ) -> ::Array[Telnyx::Models::OAuthRetrieveResponse::Data::RequestedScope]
+
+        attr_accessor tos_uri: String?
+
+        attr_reader verified: bool?
+
+        def verified=: (bool) -> bool
+
+        def initialize: (
+          ?client_id: String,
+          ?logo_uri: String?,
+          ?name: String,
+          ?policy_uri: String?,
+          ?redirect_uri: String,
+          ?requested_scopes: ::Array[Telnyx::Models::OAuthRetrieveResponse::Data::RequestedScope],
+          ?tos_uri: String?,
+          ?verified: bool
+        ) -> void
+
+        def to_hash: -> {
+          client_id: String,
+          logo_uri: String?,
+          name: String,
+          policy_uri: String?,
+          redirect_uri: String,
+          requested_scopes: ::Array[Telnyx::Models::OAuthRetrieveResponse::Data::RequestedScope],
+          tos_uri: String?,
+          verified: bool
+        }
+
+        type requested_scope = { id: String, description: String, name: String }
+
+        class RequestedScope < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?description: String,
+            ?name: String
+          ) -> void
+
+          def to_hash: -> { id: String, description: String, name: String }
+        end
+      end
+    end
+  end
+end

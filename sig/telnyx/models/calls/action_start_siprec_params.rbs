@@ -1,0 +1,126 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_start_siprec_params =
+        {
+          client_state: String,
+          connector_name: String,
+          include_metadata_custom_headers: Telnyx::Models::Calls::ActionStartSiprecParams::include_metadata_custom_headers,
+          secure: Telnyx::Models::Calls::ActionStartSiprecParams::secure,
+          session_timeout_secs: Integer,
+          sip_transport: Telnyx::Models::Calls::ActionStartSiprecParams::sip_transport,
+          siprec_track: Telnyx::Models::Calls::ActionStartSiprecParams::siprec_track
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionStartSiprecParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader connector_name: String?
+
+        def connector_name=: (String) -> String
+
+        attr_reader include_metadata_custom_headers: Telnyx::Models::Calls::ActionStartSiprecParams::include_metadata_custom_headers?
+
+        def include_metadata_custom_headers=: (
+          Telnyx::Models::Calls::ActionStartSiprecParams::include_metadata_custom_headers
+        ) -> Telnyx::Models::Calls::ActionStartSiprecParams::include_metadata_custom_headers
+
+        attr_reader secure: Telnyx::Models::Calls::ActionStartSiprecParams::secure?
+
+        def secure=: (
+          Telnyx::Models::Calls::ActionStartSiprecParams::secure
+        ) -> Telnyx::Models::Calls::ActionStartSiprecParams::secure
+
+        attr_reader session_timeout_secs: Integer?
+
+        def session_timeout_secs=: (Integer) -> Integer
+
+        attr_reader sip_transport: Telnyx::Models::Calls::ActionStartSiprecParams::sip_transport?
+
+        def sip_transport=: (
+          Telnyx::Models::Calls::ActionStartSiprecParams::sip_transport
+        ) -> Telnyx::Models::Calls::ActionStartSiprecParams::sip_transport
+
+        attr_reader siprec_track: Telnyx::Models::Calls::ActionStartSiprecParams::siprec_track?
+
+        def siprec_track=: (
+          Telnyx::Models::Calls::ActionStartSiprecParams::siprec_track
+        ) -> Telnyx::Models::Calls::ActionStartSiprecParams::siprec_track
+
+        def initialize: (
+          ?client_state: String,
+          ?connector_name: String,
+          ?include_metadata_custom_headers: Telnyx::Models::Calls::ActionStartSiprecParams::include_metadata_custom_headers,
+          ?secure: Telnyx::Models::Calls::ActionStartSiprecParams::secure,
+          ?session_timeout_secs: Integer,
+          ?sip_transport: Telnyx::Models::Calls::ActionStartSiprecParams::sip_transport,
+          ?siprec_track: Telnyx::Models::Calls::ActionStartSiprecParams::siprec_track,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          client_state: String,
+          connector_name: String,
+          include_metadata_custom_headers: Telnyx::Models::Calls::ActionStartSiprecParams::include_metadata_custom_headers,
+          secure: Telnyx::Models::Calls::ActionStartSiprecParams::secure,
+          session_timeout_secs: Integer,
+          sip_transport: Telnyx::Models::Calls::ActionStartSiprecParams::sip_transport,
+          siprec_track: Telnyx::Models::Calls::ActionStartSiprecParams::siprec_track,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type include_metadata_custom_headers = true | false
+
+        module IncludeMetadataCustomHeaders
+          extend Telnyx::Internal::Type::Enum
+
+          TRUE: true
+          FALSE: false
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartSiprecParams::include_metadata_custom_headers]
+        end
+
+        type secure = true | false
+
+        module Secure
+          extend Telnyx::Internal::Type::Enum
+
+          TRUE: true
+          FALSE: false
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartSiprecParams::secure]
+        end
+
+        type sip_transport = :udp | :tcp | :tls
+
+        module SipTransport
+          extend Telnyx::Internal::Type::Enum
+
+          UDP: :udp
+          TCP: :tcp
+          TLS: :tls
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartSiprecParams::sip_transport]
+        end
+
+        type siprec_track = :inbound_track | :outbound_track | :both_tracks
+
+        module SiprecTrack
+          extend Telnyx::Internal::Type::Enum
+
+          INBOUND_TRACK: :inbound_track
+          OUTBOUND_TRACK: :outbound_track
+          BOTH_TRACKS: :both_tracks
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartSiprecParams::siprec_track]
+        end
+      end
+    end
+  end
+end

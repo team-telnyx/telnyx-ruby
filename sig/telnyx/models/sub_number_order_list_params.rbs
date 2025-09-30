@@ -1,0 +1,75 @@
+module Telnyx
+  module Models
+    type sub_number_order_list_params =
+      { filter: Telnyx::SubNumberOrderListParams::Filter }
+      & Telnyx::Internal::Type::request_parameters
+
+    class SubNumberOrderListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::SubNumberOrderListParams::Filter?
+
+      def filter=: (
+        Telnyx::SubNumberOrderListParams::Filter
+      ) -> Telnyx::SubNumberOrderListParams::Filter
+
+      def initialize: (
+        ?filter: Telnyx::SubNumberOrderListParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::SubNumberOrderListParams::Filter,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          country_code: String,
+          order_request_id: String,
+          phone_number_type: String,
+          phone_numbers_count: Integer,
+          status: String
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader order_request_id: String?
+
+        def order_request_id=: (String) -> String
+
+        attr_reader phone_number_type: String?
+
+        def phone_number_type=: (String) -> String
+
+        attr_reader phone_numbers_count: Integer?
+
+        def phone_numbers_count=: (Integer) -> Integer
+
+        attr_reader status: String?
+
+        def status=: (String) -> String
+
+        def initialize: (
+          ?country_code: String,
+          ?order_request_id: String,
+          ?phone_number_type: String,
+          ?phone_numbers_count: Integer,
+          ?status: String
+        ) -> void
+
+        def to_hash: -> {
+          country_code: String,
+          order_request_id: String,
+          phone_number_type: String,
+          phone_numbers_count: Integer,
+          status: String
+        }
+      end
+    end
+  end
+end

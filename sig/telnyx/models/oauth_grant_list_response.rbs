@@ -1,0 +1,125 @@
+module Telnyx
+  module Models
+    type oauth_grant_list_response =
+      {
+        data: ::Array[Telnyx::Models::OAuthGrantListResponse::Data],
+        meta: Telnyx::Models::OAuthGrantListResponse::Meta
+      }
+
+    class OAuthGrantListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::OAuthGrantListResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::OAuthGrantListResponse::Data]
+      ) -> ::Array[Telnyx::Models::OAuthGrantListResponse::Data]
+
+      attr_reader meta: Telnyx::Models::OAuthGrantListResponse::Meta?
+
+      def meta=: (
+        Telnyx::Models::OAuthGrantListResponse::Meta
+      ) -> Telnyx::Models::OAuthGrantListResponse::Meta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::OAuthGrantListResponse::Data],
+        ?meta: Telnyx::Models::OAuthGrantListResponse::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::OAuthGrantListResponse::Data],
+        meta: Telnyx::Models::OAuthGrantListResponse::Meta
+      }
+
+      type data =
+        {
+          id: String,
+          client_id: String,
+          created_at: Time,
+          record_type: Telnyx::Models::OAuthGrantListResponse::Data::record_type,
+          scopes: ::Array[String],
+          last_used_at: Time?
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor client_id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor record_type: Telnyx::Models::OAuthGrantListResponse::Data::record_type
+
+        attr_accessor scopes: ::Array[String]
+
+        attr_accessor last_used_at: Time?
+
+        def initialize: (
+          id: String,
+          client_id: String,
+          created_at: Time,
+          record_type: Telnyx::Models::OAuthGrantListResponse::Data::record_type,
+          scopes: ::Array[String],
+          ?last_used_at: Time?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          client_id: String,
+          created_at: Time,
+          record_type: Telnyx::Models::OAuthGrantListResponse::Data::record_type,
+          scopes: ::Array[String],
+          last_used_at: Time?
+        }
+
+        type record_type = :oauth_grant
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          OAUTH_GRANT: :oauth_grant
+
+          def self?.values: -> ::Array[Telnyx::Models::OAuthGrantListResponse::Data::record_type]
+        end
+      end
+
+      type meta =
+        {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_reader page_number: Integer?
+
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        attr_reader total_pages: Integer?
+
+        def total_pages=: (Integer) -> Integer
+
+        attr_reader total_results: Integer?
+
+        def total_results=: (Integer) -> Integer
+
+        def initialize: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?total_pages: Integer,
+          ?total_results: Integer
+        ) -> void
+
+        def to_hash: -> {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+      end
+    end
+  end
+end

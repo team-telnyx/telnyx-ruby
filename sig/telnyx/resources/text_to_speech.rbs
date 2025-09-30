@@ -1,0 +1,19 @@
+module Telnyx
+  module Resources
+    class TextToSpeech
+      def generate_speech: (
+        text: String,
+        voice: String,
+        ?request_options: Telnyx::request_opts
+      ) -> StringIO
+
+      def list_voices: (
+        ?elevenlabs_api_key_ref: String,
+        ?provider: Telnyx::Models::TextToSpeechListVoicesParams::provider,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TextToSpeechListVoicesResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

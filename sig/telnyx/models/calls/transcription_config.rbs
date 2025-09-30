@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module Calls
+      type transcription_config = { model: String }
+
+      class TranscriptionConfig < Telnyx::Internal::Type::BaseModel
+        attr_reader model: String?
+
+        def model=: (String) -> String
+
+        def initialize: (?model: String) -> void
+
+        def to_hash: -> { model: String }
+      end
+    end
+  end
+end

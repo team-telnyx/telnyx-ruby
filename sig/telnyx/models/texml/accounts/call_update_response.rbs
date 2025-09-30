@@ -1,0 +1,197 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        type call_update_response =
+          {
+            account_sid: String,
+            answered_by: Telnyx::Models::Texml::Accounts::CallUpdateResponse::answered_by,
+            caller_name: String,
+            date_created: String,
+            date_updated: String,
+            direction: Telnyx::Models::Texml::Accounts::CallUpdateResponse::direction,
+            duration: String,
+            end_time: String,
+            from: String,
+            from_formatted: String,
+            price: String,
+            price_unit: String,
+            sid: String,
+            start_time: String,
+            status: Telnyx::Models::Texml::Accounts::CallUpdateResponse::status,
+            to: String,
+            to_formatted: String,
+            uri: String
+          }
+
+        class CallUpdateResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader account_sid: String?
+
+          def account_sid=: (String) -> String
+
+          attr_reader answered_by: Telnyx::Models::Texml::Accounts::CallUpdateResponse::answered_by?
+
+          def answered_by=: (
+            Telnyx::Models::Texml::Accounts::CallUpdateResponse::answered_by
+          ) -> Telnyx::Models::Texml::Accounts::CallUpdateResponse::answered_by
+
+          attr_reader caller_name: String?
+
+          def caller_name=: (String) -> String
+
+          attr_reader date_created: String?
+
+          def date_created=: (String) -> String
+
+          attr_reader date_updated: String?
+
+          def date_updated=: (String) -> String
+
+          attr_reader direction: Telnyx::Models::Texml::Accounts::CallUpdateResponse::direction?
+
+          def direction=: (
+            Telnyx::Models::Texml::Accounts::CallUpdateResponse::direction
+          ) -> Telnyx::Models::Texml::Accounts::CallUpdateResponse::direction
+
+          attr_reader duration: String?
+
+          def duration=: (String) -> String
+
+          attr_reader end_time: String?
+
+          def end_time=: (String) -> String
+
+          attr_reader from: String?
+
+          def from=: (String) -> String
+
+          attr_reader from_formatted: String?
+
+          def from_formatted=: (String) -> String
+
+          attr_reader price: String?
+
+          def price=: (String) -> String
+
+          attr_reader price_unit: String?
+
+          def price_unit=: (String) -> String
+
+          attr_reader sid: String?
+
+          def sid=: (String) -> String
+
+          attr_reader start_time: String?
+
+          def start_time=: (String) -> String
+
+          attr_reader status: Telnyx::Models::Texml::Accounts::CallUpdateResponse::status?
+
+          def status=: (
+            Telnyx::Models::Texml::Accounts::CallUpdateResponse::status
+          ) -> Telnyx::Models::Texml::Accounts::CallUpdateResponse::status
+
+          attr_reader to: String?
+
+          def to=: (String) -> String
+
+          attr_reader to_formatted: String?
+
+          def to_formatted=: (String) -> String
+
+          attr_reader uri: String?
+
+          def uri=: (String) -> String
+
+          def initialize: (
+            ?account_sid: String,
+            ?answered_by: Telnyx::Models::Texml::Accounts::CallUpdateResponse::answered_by,
+            ?caller_name: String,
+            ?date_created: String,
+            ?date_updated: String,
+            ?direction: Telnyx::Models::Texml::Accounts::CallUpdateResponse::direction,
+            ?duration: String,
+            ?end_time: String,
+            ?from: String,
+            ?from_formatted: String,
+            ?price: String,
+            ?price_unit: String,
+            ?sid: String,
+            ?start_time: String,
+            ?status: Telnyx::Models::Texml::Accounts::CallUpdateResponse::status,
+            ?to: String,
+            ?to_formatted: String,
+            ?uri: String
+          ) -> void
+
+          def to_hash: -> {
+            account_sid: String,
+            answered_by: Telnyx::Models::Texml::Accounts::CallUpdateResponse::answered_by,
+            caller_name: String,
+            date_created: String,
+            date_updated: String,
+            direction: Telnyx::Models::Texml::Accounts::CallUpdateResponse::direction,
+            duration: String,
+            end_time: String,
+            from: String,
+            from_formatted: String,
+            price: String,
+            price_unit: String,
+            sid: String,
+            start_time: String,
+            status: Telnyx::Models::Texml::Accounts::CallUpdateResponse::status,
+            to: String,
+            to_formatted: String,
+            uri: String
+          }
+
+          type answered_by = :human | :machine | :not_sure
+
+          module AnsweredBy
+            extend Telnyx::Internal::Type::Enum
+
+            HUMAN: :human
+            MACHINE: :machine
+            NOT_SURE: :not_sure
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallUpdateResponse::answered_by]
+          end
+
+          type direction = :inbound | :outbound
+
+          module Direction
+            extend Telnyx::Internal::Type::Enum
+
+            INBOUND: :inbound
+            OUTBOUND: :outbound
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallUpdateResponse::direction]
+          end
+
+          type status =
+            :ringing
+            | :"in-progress"
+            | :canceled
+            | :completed
+            | :failed
+            | :busy
+            | :"no-answer"
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            RINGING: :ringing
+            IN_PROGRESS: :"in-progress"
+            CANCELED: :canceled
+            COMPLETED: :completed
+            FAILED: :failed
+            BUSY: :busy
+            NO_ANSWER: :"no-answer"
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallUpdateResponse::status]
+          end
+        end
+      end
+    end
+  end
+end

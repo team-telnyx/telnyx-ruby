@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        type conversation_channel_type = :phone_call | :sms_chat
+
+        module ConversationChannelType
+          extend Telnyx::Internal::Type::Enum
+
+          PHONE_CALL: :phone_call
+          SMS_CHAT: :sms_chat
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::Assistants::conversation_channel_type]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,29 @@
+module Telnyx
+  module Models
+    module AI
+      module Conversations
+        type insight_group_retrieve_insight_groups_response =
+          {
+            data: ::Array[Telnyx::AI::Conversations::InsightTemplateGroup],
+            meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+          }
+
+        class InsightGroupRetrieveInsightGroupsResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: ::Array[Telnyx::AI::Conversations::InsightTemplateGroup]
+
+          attr_accessor meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+
+          def initialize: (
+            data: ::Array[Telnyx::AI::Conversations::InsightTemplateGroup],
+            meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[Telnyx::AI::Conversations::InsightTemplateGroup],
+            meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+          }
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,54 @@
+module Telnyx
+  module Models
+    type requirement_group_update_params =
+      {
+        customer_reference: String,
+        regulatory_requirements: ::Array[Telnyx::RequirementGroupUpdateParams::RegulatoryRequirement]
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class RequirementGroupUpdateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader customer_reference: String?
+
+      def customer_reference=: (String) -> String
+
+      attr_reader regulatory_requirements: ::Array[Telnyx::RequirementGroupUpdateParams::RegulatoryRequirement]?
+
+      def regulatory_requirements=: (
+        ::Array[Telnyx::RequirementGroupUpdateParams::RegulatoryRequirement]
+      ) -> ::Array[Telnyx::RequirementGroupUpdateParams::RegulatoryRequirement]
+
+      def initialize: (
+        ?customer_reference: String,
+        ?regulatory_requirements: ::Array[Telnyx::RequirementGroupUpdateParams::RegulatoryRequirement],
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        customer_reference: String,
+        regulatory_requirements: ::Array[Telnyx::RequirementGroupUpdateParams::RegulatoryRequirement],
+        request_options: Telnyx::RequestOptions
+      }
+
+      type regulatory_requirement =
+        { field_value: String, requirement_id: String }
+
+      class RegulatoryRequirement < Telnyx::Internal::Type::BaseModel
+        attr_reader field_value: String?
+
+        def field_value=: (String) -> String
+
+        attr_reader requirement_id: String?
+
+        def requirement_id=: (String) -> String
+
+        def initialize: (?field_value: String, ?requirement_id: String) -> void
+
+        def to_hash: -> { field_value: String, requirement_id: String }
+      end
+    end
+  end
+end

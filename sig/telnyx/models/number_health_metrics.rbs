@@ -1,0 +1,35 @@
+module Telnyx
+  module Models
+    type number_health_metrics =
+      {
+        inbound_outbound_ratio: Float,
+        message_count: Integer,
+        spam_ratio: Float,
+        success_ratio: Float
+      }
+
+    class NumberHealthMetrics < Telnyx::Internal::Type::BaseModel
+      attr_accessor inbound_outbound_ratio: Float
+
+      attr_accessor message_count: Integer
+
+      attr_accessor spam_ratio: Float
+
+      attr_accessor success_ratio: Float
+
+      def initialize: (
+        inbound_outbound_ratio: Float,
+        message_count: Integer,
+        spam_ratio: Float,
+        success_ratio: Float
+      ) -> void
+
+      def to_hash: -> {
+        inbound_outbound_ratio: Float,
+        message_count: Integer,
+        spam_ratio: Float,
+        success_ratio: Float
+      }
+    end
+  end
+end

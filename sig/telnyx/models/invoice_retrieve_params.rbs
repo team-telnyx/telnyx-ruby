@@ -1,0 +1,39 @@
+module Telnyx
+  module Models
+    type invoice_retrieve_params =
+      { action: Telnyx::Models::InvoiceRetrieveParams::action }
+      & Telnyx::Internal::Type::request_parameters
+
+    class InvoiceRetrieveParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader action: Telnyx::Models::InvoiceRetrieveParams::action?
+
+      def action=: (
+        Telnyx::Models::InvoiceRetrieveParams::action
+      ) -> Telnyx::Models::InvoiceRetrieveParams::action
+
+      def initialize: (
+        ?action: Telnyx::Models::InvoiceRetrieveParams::action,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        action: Telnyx::Models::InvoiceRetrieveParams::action,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type action = :json | :link
+
+      module Action
+        extend Telnyx::Internal::Type::Enum
+
+        JSON: :json
+        LINK: :link
+
+        def self?.values: -> ::Array[Telnyx::Models::InvoiceRetrieveParams::action]
+      end
+    end
+  end
+end

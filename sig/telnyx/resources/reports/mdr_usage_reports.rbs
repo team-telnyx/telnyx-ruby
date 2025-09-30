@@ -1,0 +1,40 @@
+module Telnyx
+  module Resources
+    class Reports
+      class MdrUsageReports
+        def create: (
+          aggregation_type: Telnyx::Models::Reports::MdrUsageReportCreateParams::aggregation_type,
+          end_date: Time,
+          start_date: Time,
+          ?profiles: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Reports::MdrUsageReportCreateResponse
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Reports::MdrUsageReportRetrieveResponse
+
+        def list: (
+          ?page: Telnyx::Reports::MdrUsageReportListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Reports::MdrUsageReportListResponse
+
+        def delete: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Reports::MdrUsageReportDeleteResponse
+
+        def fetch_sync: (
+          aggregation_type: Telnyx::Models::Reports::MdrUsageReportFetchSyncParams::aggregation_type,
+          ?end_date: Time,
+          ?profiles: ::Array[String],
+          ?start_date: Time,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Reports::MdrUsageReportFetchSyncResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,50 @@
+module Telnyx
+  module Models
+    type media_resource =
+      {
+        content_type: String,
+        created_at: String,
+        expires_at: String,
+        media_name: String,
+        updated_at: String
+      }
+
+    class MediaResource < Telnyx::Internal::Type::BaseModel
+      attr_reader content_type: String?
+
+      def content_type=: (String) -> String
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader expires_at: String?
+
+      def expires_at=: (String) -> String
+
+      attr_reader media_name: String?
+
+      def media_name=: (String) -> String
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      def initialize: (
+        ?content_type: String,
+        ?created_at: String,
+        ?expires_at: String,
+        ?media_name: String,
+        ?updated_at: String
+      ) -> void
+
+      def to_hash: -> {
+        content_type: String,
+        created_at: String,
+        expires_at: String,
+        media_name: String,
+        updated_at: String
+      }
+    end
+  end
+end

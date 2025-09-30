@@ -1,0 +1,83 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type upload_create_params =
+        {
+          number_ids: ::Array[String],
+          additional_usages: ::Array[Telnyx::Models::ExternalConnections::UploadCreateParams::additional_usage],
+          civic_address_id: String,
+          location_id: String,
+          usage: Telnyx::Models::ExternalConnections::UploadCreateParams::usage
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class UploadCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor number_ids: ::Array[String]
+
+        attr_reader additional_usages: ::Array[Telnyx::Models::ExternalConnections::UploadCreateParams::additional_usage]?
+
+        def additional_usages=: (
+          ::Array[Telnyx::Models::ExternalConnections::UploadCreateParams::additional_usage]
+        ) -> ::Array[Telnyx::Models::ExternalConnections::UploadCreateParams::additional_usage]
+
+        attr_reader civic_address_id: String?
+
+        def civic_address_id=: (String) -> String
+
+        attr_reader location_id: String?
+
+        def location_id=: (String) -> String
+
+        attr_reader usage: Telnyx::Models::ExternalConnections::UploadCreateParams::usage?
+
+        def usage=: (
+          Telnyx::Models::ExternalConnections::UploadCreateParams::usage
+        ) -> Telnyx::Models::ExternalConnections::UploadCreateParams::usage
+
+        def initialize: (
+          number_ids: ::Array[String],
+          ?additional_usages: ::Array[Telnyx::Models::ExternalConnections::UploadCreateParams::additional_usage],
+          ?civic_address_id: String,
+          ?location_id: String,
+          ?usage: Telnyx::Models::ExternalConnections::UploadCreateParams::usage,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          number_ids: ::Array[String],
+          additional_usages: ::Array[Telnyx::Models::ExternalConnections::UploadCreateParams::additional_usage],
+          civic_address_id: String,
+          location_id: String,
+          usage: Telnyx::Models::ExternalConnections::UploadCreateParams::usage,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type additional_usage =
+          :calling_user_assignment | :first_party_app_assignment
+
+        module AdditionalUsage
+          extend Telnyx::Internal::Type::Enum
+
+          CALLING_USER_ASSIGNMENT: :calling_user_assignment
+          FIRST_PARTY_APP_ASSIGNMENT: :first_party_app_assignment
+
+          def self?.values: -> ::Array[Telnyx::Models::ExternalConnections::UploadCreateParams::additional_usage]
+        end
+
+        type usage = :calling_user_assignment | :first_party_app_assignment
+
+        module Usage
+          extend Telnyx::Internal::Type::Enum
+
+          CALLING_USER_ASSIGNMENT: :calling_user_assignment
+          FIRST_PARTY_APP_ASSIGNMENT: :first_party_app_assignment
+
+          def self?.values: -> ::Array[Telnyx::Models::ExternalConnections::UploadCreateParams::usage]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,53 @@
+module Telnyx
+  module Models
+    type sim_card_status =
+      { reason: String, value: Telnyx::Models::SimCardStatus::value }
+
+    class SimCardStatus < Telnyx::Internal::Type::BaseModel
+      attr_reader reason: String?
+
+      def reason=: (String) -> String
+
+      attr_reader value: Telnyx::Models::SimCardStatus::value?
+
+      def value=: (
+        Telnyx::Models::SimCardStatus::value
+      ) -> Telnyx::Models::SimCardStatus::value
+
+      def initialize: (
+        ?reason: String,
+        ?value: Telnyx::Models::SimCardStatus::value
+      ) -> void
+
+      def to_hash: -> {
+        reason: String,
+        value: Telnyx::Models::SimCardStatus::value
+      }
+
+      type value =
+        :registering
+        | :enabling
+        | :enabled
+        | :disabling
+        | :disabled
+        | :data_limit_exceeded
+        | :setting_standby
+        | :standby
+
+      module Value
+        extend Telnyx::Internal::Type::Enum
+
+        REGISTERING: :registering
+        ENABLING: :enabling
+        ENABLED: :enabled
+        DISABLING: :disabling
+        DISABLED: :disabled
+        DATA_LIMIT_EXCEEDED: :data_limit_exceeded
+        SETTING_STANDBY: :setting_standby
+        STANDBY: :standby
+
+        def self?.values: -> ::Array[Telnyx::Models::SimCardStatus::value]
+      end
+    end
+  end
+end

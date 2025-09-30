@@ -1,0 +1,49 @@
+module Telnyx
+  module Models
+    type connection_rtcp_settings =
+      {
+        capture_enabled: bool,
+        port: Telnyx::Models::ConnectionRtcpSettings::port,
+        report_frequency_secs: Integer
+      }
+
+    class ConnectionRtcpSettings < Telnyx::Internal::Type::BaseModel
+      attr_reader capture_enabled: bool?
+
+      def capture_enabled=: (bool) -> bool
+
+      attr_reader port: Telnyx::Models::ConnectionRtcpSettings::port?
+
+      def port=: (
+        Telnyx::Models::ConnectionRtcpSettings::port
+      ) -> Telnyx::Models::ConnectionRtcpSettings::port
+
+      attr_reader report_frequency_secs: Integer?
+
+      def report_frequency_secs=: (Integer) -> Integer
+
+      def initialize: (
+        ?capture_enabled: bool,
+        ?port: Telnyx::Models::ConnectionRtcpSettings::port,
+        ?report_frequency_secs: Integer
+      ) -> void
+
+      def to_hash: -> {
+        capture_enabled: bool,
+        port: Telnyx::Models::ConnectionRtcpSettings::port,
+        report_frequency_secs: Integer
+      }
+
+      type port = :"rtcp-mux" | :"rtp+1"
+
+      module Port
+        extend Telnyx::Internal::Type::Enum
+
+        RTCP_MUX: :"rtcp-mux"
+        RTP_1: :"rtp+1"
+
+        def self?.values: -> ::Array[Telnyx::Models::ConnectionRtcpSettings::port]
+      end
+    end
+  end
+end

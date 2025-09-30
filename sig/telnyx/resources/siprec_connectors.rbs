@@ -1,0 +1,34 @@
+module Telnyx
+  module Resources
+    class SiprecConnectors
+      def create: (
+        host: String,
+        name: String,
+        port: Integer,
+        ?app_subdomain: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SiprecConnectorCreateResponse
+
+      def retrieve: (
+        String connector_name,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SiprecConnectorRetrieveResponse
+
+      def update: (
+        String connector_name,
+        host: String,
+        name: String,
+        port: Integer,
+        ?app_subdomain: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SiprecConnectorUpdateResponse
+
+      def delete: (
+        String connector_name,
+        ?request_options: Telnyx::request_opts
+      ) -> nil
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

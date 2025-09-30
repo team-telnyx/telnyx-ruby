@@ -1,0 +1,37 @@
+module Telnyx
+  module Resources
+    class DialogflowConnections
+      def create: (
+        String connection_id,
+        service_account: ::Hash[Symbol, top],
+        ?conversation_profile_id: String,
+        ?dialogflow_api: Telnyx::Models::DialogflowConnectionCreateParams::dialogflow_api,
+        ?environment: String,
+        ?location: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DialogflowConnectionCreateResponse
+
+      def retrieve: (
+        String connection_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DialogflowConnectionRetrieveResponse
+
+      def update: (
+        String connection_id,
+        service_account: ::Hash[Symbol, top],
+        ?conversation_profile_id: String,
+        ?dialogflow_api: Telnyx::Models::DialogflowConnectionUpdateParams::dialogflow_api,
+        ?environment: String,
+        ?location: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DialogflowConnectionUpdateResponse
+
+      def delete: (
+        String connection_id,
+        ?request_options: Telnyx::request_opts
+      ) -> nil
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

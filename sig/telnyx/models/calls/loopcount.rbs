@@ -1,0 +1,13 @@
+module Telnyx
+  module Models
+    module Calls
+      type loopcount = String | Integer
+
+      module Loopcount
+        extend Telnyx::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Telnyx::Models::Calls::loopcount]
+      end
+    end
+  end
+end

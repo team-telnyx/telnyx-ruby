@@ -1,0 +1,19 @@
+module Telnyx
+  module Resources
+    class Actions
+      class Purchase
+        def create: (
+          amount: Integer,
+          ?product: String,
+          ?sim_card_group_id: String,
+          ?status: Telnyx::Models::Actions::PurchaseCreateParams::status,
+          ?tags: ::Array[String],
+          ?whitelabel_name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Actions::PurchaseCreateResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,148 @@
+module Telnyx
+  module Models
+    type doc_reqs_requirement_type =
+      {
+        id: String,
+        acceptance_criteria: Telnyx::DocReqsRequirementType::AcceptanceCriteria,
+        created_at: String,
+        description: String,
+        example: String,
+        name: String,
+        record_type: String,
+        type: Telnyx::Models::DocReqsRequirementType::type_,
+        updated_at: String
+      }
+
+    class DocReqsRequirementType < Telnyx::Internal::Type::BaseModel
+      attr_reader acceptance_criteria: Telnyx::DocReqsRequirementType::AcceptanceCriteria?
+
+      def acceptance_criteria=: (
+        Telnyx::DocReqsRequirementType::AcceptanceCriteria
+      ) -> Telnyx::DocReqsRequirementType::AcceptanceCriteria
+
+      attr_reader description: String?
+
+      def description=: (String) -> String
+
+      attr_reader example: String?
+
+      def example=: (String) -> String
+
+      attr_reader type: Telnyx::Models::DocReqsRequirementType::type_?
+
+      def type=: (
+        Telnyx::Models::DocReqsRequirementType::type_
+      ) -> Telnyx::Models::DocReqsRequirementType::type_
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?acceptance_criteria: Telnyx::DocReqsRequirementType::AcceptanceCriteria,
+        ?created_at: String,
+        ?description: String,
+        ?example: String,
+        ?name: String,
+        ?record_type: String,
+        ?type: Telnyx::Models::DocReqsRequirementType::type_,
+        ?updated_at: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        acceptance_criteria: Telnyx::DocReqsRequirementType::AcceptanceCriteria,
+        created_at: String,
+        description: String,
+        example: String,
+        name: String,
+        record_type: String,
+        type: Telnyx::Models::DocReqsRequirementType::type_,
+        updated_at: String
+      }
+
+      type acceptance_criteria =
+        {
+          acceptable_characters: String,
+          acceptable_values: ::Array[String],
+          locality_limit: String,
+          max_length: Integer,
+          min_length: Integer,
+          time_limit: String
+        }
+
+      class AcceptanceCriteria < Telnyx::Internal::Type::BaseModel
+        attr_reader acceptable_characters: String?
+
+        def acceptable_characters=: (String) -> String
+
+        attr_reader acceptable_values: ::Array[String]?
+
+        def acceptable_values=: (::Array[String]) -> ::Array[String]
+
+        attr_reader locality_limit: String?
+
+        def locality_limit=: (String) -> String
+
+        attr_reader max_length: Integer?
+
+        def max_length=: (Integer) -> Integer
+
+        attr_reader min_length: Integer?
+
+        def min_length=: (Integer) -> Integer
+
+        attr_reader time_limit: String?
+
+        def time_limit=: (String) -> String
+
+        def initialize: (
+          ?acceptable_characters: String,
+          ?acceptable_values: ::Array[String],
+          ?locality_limit: String,
+          ?max_length: Integer,
+          ?min_length: Integer,
+          ?time_limit: String
+        ) -> void
+
+        def to_hash: -> {
+          acceptable_characters: String,
+          acceptable_values: ::Array[String],
+          locality_limit: String,
+          max_length: Integer,
+          min_length: Integer,
+          time_limit: String
+        }
+      end
+
+      type type_ = :document | :address | :textual
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        DOCUMENT: :document
+        ADDRESS: :address
+        TEXTUAL: :textual
+
+        def self?.values: -> ::Array[Telnyx::Models::DocReqsRequirementType::type_]
+      end
+    end
+  end
+end

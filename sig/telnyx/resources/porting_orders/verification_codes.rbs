@@ -1,0 +1,30 @@
+module Telnyx
+  module Resources
+    class PortingOrders
+      class VerificationCodes
+        def list: (
+          String id,
+          ?filter: Telnyx::PortingOrders::VerificationCodeListParams::Filter,
+          ?page: Telnyx::PortingOrders::VerificationCodeListParams::Page,
+          ?sort: Telnyx::PortingOrders::VerificationCodeListParams::Sort,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::VerificationCodeListResponse
+
+        def send_: (
+          String id,
+          ?phone_numbers: ::Array[String],
+          ?verification_method: Telnyx::Models::PortingOrders::VerificationCodeSendParams::verification_method,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def verify: (
+          String id,
+          ?verification_codes: ::Array[Telnyx::PortingOrders::VerificationCodeVerifyParams::VerificationCode],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::VerificationCodeVerifyResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

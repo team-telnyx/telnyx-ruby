@@ -1,0 +1,52 @@
+module Telnyx
+  module Resources
+    class OAuthClients
+      def create: (
+        allowed_grant_types: ::Array[Telnyx::Models::OAuthClientCreateParams::allowed_grant_type],
+        allowed_scopes: ::Array[String],
+        client_type: Telnyx::Models::OAuthClientCreateParams::client_type,
+        name: String,
+        ?logo_uri: String,
+        ?policy_uri: String,
+        ?redirect_uris: ::Array[String],
+        ?require_pkce: bool,
+        ?tos_uri: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OAuthClientCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OAuthClientRetrieveResponse
+
+      def update: (
+        String id,
+        ?allowed_grant_types: ::Array[Telnyx::Models::OAuthClientUpdateParams::allowed_grant_type],
+        ?allowed_scopes: ::Array[String],
+        ?logo_uri: String,
+        ?name: String,
+        ?policy_uri: String,
+        ?redirect_uris: ::Array[String],
+        ?require_pkce: bool,
+        ?tos_uri: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OAuthClientUpdateResponse
+
+      def list: (
+        ?filter_allowed_grant_types_contains: Telnyx::Models::OAuthClientListParams::filter_allowed_grant_types_contains,
+        ?filter_client_id: String,
+        ?filter_client_type: Telnyx::Models::OAuthClientListParams::filter_client_type,
+        ?filter_name: String,
+        ?filter_name_contains: String,
+        ?filter_verified: bool,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::OAuthClientListResponse
+
+      def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,230 @@
+module Telnyx
+  module Models
+    type report_list_mdrs_response =
+      {
+        data: ::Array[Telnyx::Models::ReportListMdrsResponse::Data],
+        meta: Telnyx::Models::ReportListMdrsResponse::Meta
+      }
+
+    class ReportListMdrsResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::ReportListMdrsResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::ReportListMdrsResponse::Data]
+      ) -> ::Array[Telnyx::Models::ReportListMdrsResponse::Data]
+
+      attr_reader meta: Telnyx::Models::ReportListMdrsResponse::Meta?
+
+      def meta=: (
+        Telnyx::Models::ReportListMdrsResponse::Meta
+      ) -> Telnyx::Models::ReportListMdrsResponse::Meta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::ReportListMdrsResponse::Data],
+        ?meta: Telnyx::Models::ReportListMdrsResponse::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::ReportListMdrsResponse::Data],
+        meta: Telnyx::Models::ReportListMdrsResponse::Meta
+      }
+
+      type data =
+        {
+          id: String,
+          cld: String,
+          cli: String,
+          cost: String,
+          created_at: Time,
+          currency: Telnyx::Models::ReportListMdrsResponse::Data::currency,
+          direction: String,
+          message_type: Telnyx::Models::ReportListMdrsResponse::Data::message_type,
+          parts: Float,
+          profile_name: String,
+          rate: String,
+          record_type: String,
+          status: Telnyx::Models::ReportListMdrsResponse::Data::status
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader cld: String?
+
+        def cld=: (String) -> String
+
+        attr_reader cli: String?
+
+        def cli=: (String) -> String
+
+        attr_reader cost: String?
+
+        def cost=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader currency: Telnyx::Models::ReportListMdrsResponse::Data::currency?
+
+        def currency=: (
+          Telnyx::Models::ReportListMdrsResponse::Data::currency
+        ) -> Telnyx::Models::ReportListMdrsResponse::Data::currency
+
+        attr_reader direction: String?
+
+        def direction=: (String) -> String
+
+        attr_reader message_type: Telnyx::Models::ReportListMdrsResponse::Data::message_type?
+
+        def message_type=: (
+          Telnyx::Models::ReportListMdrsResponse::Data::message_type
+        ) -> Telnyx::Models::ReportListMdrsResponse::Data::message_type
+
+        attr_reader parts: Float?
+
+        def parts=: (Float) -> Float
+
+        attr_reader profile_name: String?
+
+        def profile_name=: (String) -> String
+
+        attr_reader rate: String?
+
+        def rate=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader status: Telnyx::Models::ReportListMdrsResponse::Data::status?
+
+        def status=: (
+          Telnyx::Models::ReportListMdrsResponse::Data::status
+        ) -> Telnyx::Models::ReportListMdrsResponse::Data::status
+
+        def initialize: (
+          ?id: String,
+          ?cld: String,
+          ?cli: String,
+          ?cost: String,
+          ?created_at: Time,
+          ?currency: Telnyx::Models::ReportListMdrsResponse::Data::currency,
+          ?direction: String,
+          ?message_type: Telnyx::Models::ReportListMdrsResponse::Data::message_type,
+          ?parts: Float,
+          ?profile_name: String,
+          ?rate: String,
+          ?record_type: String,
+          ?status: Telnyx::Models::ReportListMdrsResponse::Data::status
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          cld: String,
+          cli: String,
+          cost: String,
+          created_at: Time,
+          currency: Telnyx::Models::ReportListMdrsResponse::Data::currency,
+          direction: String,
+          message_type: Telnyx::Models::ReportListMdrsResponse::Data::message_type,
+          parts: Float,
+          profile_name: String,
+          rate: String,
+          record_type: String,
+          status: Telnyx::Models::ReportListMdrsResponse::Data::status
+        }
+
+        type currency = :AUD | :CAD | :EUR | :GBP | :USD
+
+        module Currency
+          extend Telnyx::Internal::Type::Enum
+
+          AUD: :AUD
+          CAD: :CAD
+          EUR: :EUR
+          GBP: :GBP
+          USD: :USD
+
+          def self?.values: -> ::Array[Telnyx::Models::ReportListMdrsResponse::Data::currency]
+        end
+
+        type message_type = :SMS | :MMS
+
+        module MessageType
+          extend Telnyx::Internal::Type::Enum
+
+          SMS: :SMS
+          MMS: :MMS
+
+          def self?.values: -> ::Array[Telnyx::Models::ReportListMdrsResponse::Data::message_type]
+        end
+
+        type status =
+          :GW_TIMEOUT
+          | :DELIVERED
+          | :DLR_UNCONFIRMED
+          | :DLR_TIMEOUT
+          | :RECEIVED
+          | :GW_REJECT
+          | :FAILED
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          GW_TIMEOUT: :GW_TIMEOUT
+          DELIVERED: :DELIVERED
+          DLR_UNCONFIRMED: :DLR_UNCONFIRMED
+          DLR_TIMEOUT: :DLR_TIMEOUT
+          RECEIVED: :RECEIVED
+          GW_REJECT: :GW_REJECT
+          FAILED: :FAILED
+
+          def self?.values: -> ::Array[Telnyx::Models::ReportListMdrsResponse::Data::status]
+        end
+      end
+
+      type meta =
+        {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_reader page_number: Integer?
+
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        attr_reader total_pages: Integer?
+
+        def total_pages=: (Integer) -> Integer
+
+        attr_reader total_results: Integer?
+
+        def total_results=: (Integer) -> Integer
+
+        def initialize: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?total_pages: Integer,
+          ?total_results: Integer
+        ) -> void
+
+        def to_hash: -> {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+      end
+    end
+  end
+end

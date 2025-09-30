@@ -1,0 +1,97 @@
+module Telnyx
+  module Models
+    module Portouts
+      type export_portouts_csv_report =
+        { filters: Telnyx::Portouts::ExportPortoutsCsvReport::Filters }
+
+      class ExportPortoutsCsvReport < Telnyx::Internal::Type::BaseModel
+        attr_accessor filters: Telnyx::Portouts::ExportPortoutsCsvReport::Filters
+
+        def initialize: (
+          filters: Telnyx::Portouts::ExportPortoutsCsvReport::Filters
+        ) -> void
+
+        def to_hash: -> {
+          filters: Telnyx::Portouts::ExportPortoutsCsvReport::Filters
+        }
+
+        type filters =
+          {
+            created_at_gt: Time,
+            created_at_lt: Time,
+            customer_reference_in: ::Array[String],
+            end_user_name: String,
+            phone_numbers_overlaps: ::Array[String],
+            status_in: ::Array[Telnyx::Models::Portouts::ExportPortoutsCsvReport::Filters::status_in]
+          }
+
+        class Filters < Telnyx::Internal::Type::BaseModel
+          attr_reader created_at_gt: Time?
+
+          def created_at_gt=: (Time) -> Time
+
+          attr_reader created_at_lt: Time?
+
+          def created_at_lt=: (Time) -> Time
+
+          attr_reader customer_reference_in: ::Array[String]?
+
+          def customer_reference_in=: (::Array[String]) -> ::Array[String]
+
+          attr_reader end_user_name: String?
+
+          def end_user_name=: (String) -> String
+
+          attr_reader phone_numbers_overlaps: ::Array[String]?
+
+          def phone_numbers_overlaps=: (::Array[String]) -> ::Array[String]
+
+          attr_reader status_in: ::Array[Telnyx::Models::Portouts::ExportPortoutsCsvReport::Filters::status_in]?
+
+          def status_in=: (
+            ::Array[Telnyx::Models::Portouts::ExportPortoutsCsvReport::Filters::status_in]
+          ) -> ::Array[Telnyx::Models::Portouts::ExportPortoutsCsvReport::Filters::status_in]
+
+          def initialize: (
+            ?created_at_gt: Time,
+            ?created_at_lt: Time,
+            ?customer_reference_in: ::Array[String],
+            ?end_user_name: String,
+            ?phone_numbers_overlaps: ::Array[String],
+            ?status_in: ::Array[Telnyx::Models::Portouts::ExportPortoutsCsvReport::Filters::status_in]
+          ) -> void
+
+          def to_hash: -> {
+            created_at_gt: Time,
+            created_at_lt: Time,
+            customer_reference_in: ::Array[String],
+            end_user_name: String,
+            phone_numbers_overlaps: ::Array[String],
+            status_in: ::Array[Telnyx::Models::Portouts::ExportPortoutsCsvReport::Filters::status_in]
+          }
+
+          type status_in =
+            :pending
+            | :authorized
+            | :ported
+            | :rejected
+            | :"rejected-pending"
+            | :canceled
+
+          module StatusIn
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :pending
+            AUTHORIZED: :authorized
+            PORTED: :ported
+            REJECTED: :rejected
+            REJECTED_PENDING: :"rejected-pending"
+            CANCELED: :canceled
+
+            def self?.values: -> ::Array[Telnyx::Models::Portouts::ExportPortoutsCsvReport::Filters::status_in]
+          end
+        end
+      end
+    end
+  end
+end

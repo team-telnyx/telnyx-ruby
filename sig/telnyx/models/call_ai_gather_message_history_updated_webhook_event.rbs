@@ -1,0 +1,204 @@
+module Telnyx
+  module Models
+    type call_ai_gather_message_history_updated_webhook_event =
+      { data: Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data }
+
+    class CallAIGatherMessageHistoryUpdatedWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data?
+
+      def data=: (
+        Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data
+      ) -> Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data
+
+      def initialize: (
+        ?data: Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data
+      }
+
+      type data =
+        {
+          id: String,
+          event_type: Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::record_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader event_type: Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::event_type?
+
+        def event_type=: (
+          Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::event_type
+        ) -> Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::event_type
+
+        attr_reader occurred_at: Time?
+
+        def occurred_at=: (Time) -> Time
+
+        attr_reader payload: Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload?
+
+        def payload=: (
+          Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload
+        ) -> Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload
+
+        attr_reader record_type: Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::record_type?
+
+        def record_type=: (
+          Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::record_type
+        ) -> Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::record_type
+
+        def initialize: (
+          ?id: String,
+          ?event_type: Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::event_type,
+          ?occurred_at: Time,
+          ?payload: Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload,
+          ?record_type: Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::record_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::record_type
+        }
+
+        type event_type = :"call.ai_gather.message_history_updated"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          CALL_AI_GATHER_MESSAGE_HISTORY_UPDATED: :"call.ai_gather.message_history_updated"
+
+          def self?.values: -> ::Array[Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::event_type]
+        end
+
+        type payload =
+          {
+            call_control_id: String,
+            call_leg_id: String,
+            call_session_id: String,
+            client_state: String,
+            connection_id: String,
+            from: String,
+            message_history: ::Array[Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload::MessageHistory],
+            to: String
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_reader call_control_id: String?
+
+          def call_control_id=: (String) -> String
+
+          attr_reader call_leg_id: String?
+
+          def call_leg_id=: (String) -> String
+
+          attr_reader call_session_id: String?
+
+          def call_session_id=: (String) -> String
+
+          attr_reader client_state: String?
+
+          def client_state=: (String) -> String
+
+          attr_reader connection_id: String?
+
+          def connection_id=: (String) -> String
+
+          attr_reader from: String?
+
+          def from=: (String) -> String
+
+          attr_reader message_history: ::Array[Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload::MessageHistory]?
+
+          def message_history=: (
+            ::Array[Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload::MessageHistory]
+          ) -> ::Array[Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload::MessageHistory]
+
+          attr_reader to: String?
+
+          def to=: (String) -> String
+
+          def initialize: (
+            ?call_control_id: String,
+            ?call_leg_id: String,
+            ?call_session_id: String,
+            ?client_state: String,
+            ?connection_id: String,
+            ?from: String,
+            ?message_history: ::Array[Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload::MessageHistory],
+            ?to: String
+          ) -> void
+
+          def to_hash: -> {
+            call_control_id: String,
+            call_leg_id: String,
+            call_session_id: String,
+            client_state: String,
+            connection_id: String,
+            from: String,
+            message_history: ::Array[Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload::MessageHistory],
+            to: String
+          }
+
+          type message_history =
+            {
+              content: String,
+              role: Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload::MessageHistory::role
+            }
+
+          class MessageHistory < Telnyx::Internal::Type::BaseModel
+            attr_reader content: String?
+
+            def content=: (String) -> String
+
+            attr_reader role: Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload::MessageHistory::role?
+
+            def role=: (
+              Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload::MessageHistory::role
+            ) -> Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload::MessageHistory::role
+
+            def initialize: (
+              ?content: String,
+              ?role: Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload::MessageHistory::role
+            ) -> void
+
+            def to_hash: -> {
+              content: String,
+              role: Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload::MessageHistory::role
+            }
+
+            type role = :assistant | :user
+
+            module Role
+              extend Telnyx::Internal::Type::Enum
+
+              ASSISTANT: :assistant
+              USER: :user
+
+              def self?.values: -> ::Array[Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::Payload::MessageHistory::role]
+            end
+          end
+        end
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent::Data::record_type]
+        end
+      end
+    end
+  end
+end

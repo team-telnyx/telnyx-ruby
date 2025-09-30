@@ -1,0 +1,15 @@
+module Telnyx
+  module Resources
+    class WellKnown
+      def retrieve_authorization_server_metadata: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WellKnownRetrieveAuthorizationServerMetadataResponse
+
+      def retrieve_protected_resource_metadata: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WellKnownRetrieveProtectedResourceMetadataResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

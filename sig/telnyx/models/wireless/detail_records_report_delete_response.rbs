@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    module Wireless
+      type detail_records_report_delete_response =
+        { data: Telnyx::Wireless::WdrReport }
+
+      class DetailRecordsReportDeleteResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Wireless::WdrReport?
+
+        def data=: (Telnyx::Wireless::WdrReport) -> Telnyx::Wireless::WdrReport
+
+        def initialize: (?data: Telnyx::Wireless::WdrReport) -> void
+
+        def to_hash: -> { data: Telnyx::Wireless::WdrReport }
+      end
+    end
+  end
+end

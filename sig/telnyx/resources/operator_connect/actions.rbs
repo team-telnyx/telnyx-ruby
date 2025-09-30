@@ -1,0 +1,13 @@
+module Telnyx
+  module Resources
+    class OperatorConnect
+      class Actions
+        def refresh: (
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::OperatorConnect::ActionRefreshResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

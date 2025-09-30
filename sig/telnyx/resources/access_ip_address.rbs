@@ -1,0 +1,29 @@
+module Telnyx
+  module Resources
+    class AccessIPAddress
+      def create: (
+        ip_address: String,
+        ?description: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::AccessIPAddressResponse
+
+      def retrieve: (
+        String access_ip_address_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::AccessIPAddressResponse
+
+      def list: (
+        ?filter: Telnyx::AccessIPAddressListParams::Filter,
+        ?page: Telnyx::AccessIPAddressListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AccessIPAddressListResponse
+
+      def delete: (
+        String access_ip_address_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::AccessIPAddressResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

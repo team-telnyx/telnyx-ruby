@@ -1,0 +1,140 @@
+module Telnyx
+  module Models
+    type mobile_network_operator_list_params =
+      {
+        filter: Telnyx::MobileNetworkOperatorListParams::Filter,
+        page: Telnyx::MobileNetworkOperatorListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class MobileNetworkOperatorListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::MobileNetworkOperatorListParams::Filter?
+
+      def filter=: (
+        Telnyx::MobileNetworkOperatorListParams::Filter
+      ) -> Telnyx::MobileNetworkOperatorListParams::Filter
+
+      attr_reader page: Telnyx::MobileNetworkOperatorListParams::Page?
+
+      def page=: (
+        Telnyx::MobileNetworkOperatorListParams::Page
+      ) -> Telnyx::MobileNetworkOperatorListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::MobileNetworkOperatorListParams::Filter,
+        ?page: Telnyx::MobileNetworkOperatorListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::MobileNetworkOperatorListParams::Filter,
+        page: Telnyx::MobileNetworkOperatorListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          country_code: String,
+          mcc: String,
+          mnc: String,
+          name: Telnyx::MobileNetworkOperatorListParams::Filter::Name,
+          network_preferences_enabled: bool,
+          tadig: String
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader mcc: String?
+
+        def mcc=: (String) -> String
+
+        attr_reader mnc: String?
+
+        def mnc=: (String) -> String
+
+        attr_reader name: Telnyx::MobileNetworkOperatorListParams::Filter::Name?
+
+        def name=: (
+          Telnyx::MobileNetworkOperatorListParams::Filter::Name
+        ) -> Telnyx::MobileNetworkOperatorListParams::Filter::Name
+
+        attr_reader network_preferences_enabled: bool?
+
+        def network_preferences_enabled=: (bool) -> bool
+
+        attr_reader tadig: String?
+
+        def tadig=: (String) -> String
+
+        def initialize: (
+          ?country_code: String,
+          ?mcc: String,
+          ?mnc: String,
+          ?name: Telnyx::MobileNetworkOperatorListParams::Filter::Name,
+          ?network_preferences_enabled: bool,
+          ?tadig: String
+        ) -> void
+
+        def to_hash: -> {
+          country_code: String,
+          mcc: String,
+          mnc: String,
+          name: Telnyx::MobileNetworkOperatorListParams::Filter::Name,
+          network_preferences_enabled: bool,
+          tadig: String
+        }
+
+        type name_ =
+          { contains: String, ends_with: String, starts_with: String }
+
+        class Name < Telnyx::Internal::Type::BaseModel
+          attr_reader contains: String?
+
+          def contains=: (String) -> String
+
+          attr_reader ends_with: String?
+
+          def ends_with=: (String) -> String
+
+          attr_reader starts_with: String?
+
+          def starts_with=: (String) -> String
+
+          def initialize: (
+            ?contains: String,
+            ?ends_with: String,
+            ?starts_with: String
+          ) -> void
+
+          def to_hash: -> {
+            contains: String,
+            ends_with: String,
+            starts_with: String
+          }
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

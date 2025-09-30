@@ -1,0 +1,77 @@
+module Telnyx
+  module Models
+    module PhoneNumbers
+      type action_verify_ownership_response =
+        {
+          data: Telnyx::Models::PhoneNumbers::ActionVerifyOwnershipResponse::Data
+        }
+
+      class ActionVerifyOwnershipResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::PhoneNumbers::ActionVerifyOwnershipResponse::Data?
+
+        def data=: (
+          Telnyx::Models::PhoneNumbers::ActionVerifyOwnershipResponse::Data
+        ) -> Telnyx::Models::PhoneNumbers::ActionVerifyOwnershipResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::PhoneNumbers::ActionVerifyOwnershipResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::PhoneNumbers::ActionVerifyOwnershipResponse::Data
+        }
+
+        type data =
+          {
+            found: ::Array[Telnyx::Models::PhoneNumbers::ActionVerifyOwnershipResponse::Data::Found],
+            not_found: ::Array[String],
+            record_type: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader found: ::Array[Telnyx::Models::PhoneNumbers::ActionVerifyOwnershipResponse::Data::Found]?
+
+          def found=: (
+            ::Array[Telnyx::Models::PhoneNumbers::ActionVerifyOwnershipResponse::Data::Found]
+          ) -> ::Array[Telnyx::Models::PhoneNumbers::ActionVerifyOwnershipResponse::Data::Found]
+
+          attr_reader not_found: ::Array[String]?
+
+          def not_found=: (::Array[String]) -> ::Array[String]
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          def initialize: (
+            ?found: ::Array[Telnyx::Models::PhoneNumbers::ActionVerifyOwnershipResponse::Data::Found],
+            ?not_found: ::Array[String],
+            ?record_type: String
+          ) -> void
+
+          def to_hash: -> {
+            found: ::Array[Telnyx::Models::PhoneNumbers::ActionVerifyOwnershipResponse::Data::Found],
+            not_found: ::Array[String],
+            record_type: String
+          }
+
+          type found = { id: String, :number_val_e164 => String }
+
+          class Found < Telnyx::Internal::Type::BaseModel
+            attr_reader number_val_e164: String?
+
+            def number_val_e164=: (String) -> String
+
+            attr_reader id: String?
+
+            def id=: (String) -> String
+
+            def initialize: (?id: String, ?number_val_e164: String) -> void
+
+            def to_hash: -> { id: String, :number_val_e164 => String }
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,112 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type upload =
+        {
+          available_usages: ::Array[Telnyx::Models::ExternalConnections::Upload::available_usage],
+          error_code: String,
+          error_message: String,
+          location_id: String,
+          status: Telnyx::Models::ExternalConnections::Upload::status,
+          tenant_id: String,
+          ticket_id: String,
+          tn_upload_entries: ::Array[Telnyx::ExternalConnections::TnUploadEntry]
+        }
+
+      class Upload < Telnyx::Internal::Type::BaseModel
+        attr_reader available_usages: ::Array[Telnyx::Models::ExternalConnections::Upload::available_usage]?
+
+        def available_usages=: (
+          ::Array[Telnyx::Models::ExternalConnections::Upload::available_usage]
+        ) -> ::Array[Telnyx::Models::ExternalConnections::Upload::available_usage]
+
+        attr_reader error_code: String?
+
+        def error_code=: (String) -> String
+
+        attr_reader error_message: String?
+
+        def error_message=: (String) -> String
+
+        attr_reader location_id: String?
+
+        def location_id=: (String) -> String
+
+        attr_reader status: Telnyx::Models::ExternalConnections::Upload::status?
+
+        def status=: (
+          Telnyx::Models::ExternalConnections::Upload::status
+        ) -> Telnyx::Models::ExternalConnections::Upload::status
+
+        attr_reader tenant_id: String?
+
+        def tenant_id=: (String) -> String
+
+        attr_reader ticket_id: String?
+
+        def ticket_id=: (String) -> String
+
+        attr_reader tn_upload_entries: ::Array[Telnyx::ExternalConnections::TnUploadEntry]?
+
+        def tn_upload_entries=: (
+          ::Array[Telnyx::ExternalConnections::TnUploadEntry]
+        ) -> ::Array[Telnyx::ExternalConnections::TnUploadEntry]
+
+        def initialize: (
+          ?available_usages: ::Array[Telnyx::Models::ExternalConnections::Upload::available_usage],
+          ?error_code: String,
+          ?error_message: String,
+          ?location_id: String,
+          ?status: Telnyx::Models::ExternalConnections::Upload::status,
+          ?tenant_id: String,
+          ?ticket_id: String,
+          ?tn_upload_entries: ::Array[Telnyx::ExternalConnections::TnUploadEntry]
+        ) -> void
+
+        def to_hash: -> {
+          available_usages: ::Array[Telnyx::Models::ExternalConnections::Upload::available_usage],
+          error_code: String,
+          error_message: String,
+          location_id: String,
+          status: Telnyx::Models::ExternalConnections::Upload::status,
+          tenant_id: String,
+          ticket_id: String,
+          tn_upload_entries: ::Array[Telnyx::ExternalConnections::TnUploadEntry]
+        }
+
+        type available_usage =
+          :calling_user_assignment | :first_party_app_assignment
+
+        module AvailableUsage
+          extend Telnyx::Internal::Type::Enum
+
+          CALLING_USER_ASSIGNMENT: :calling_user_assignment
+          FIRST_PARTY_APP_ASSIGNMENT: :first_party_app_assignment
+
+          def self?.values: -> ::Array[Telnyx::Models::ExternalConnections::Upload::available_usage]
+        end
+
+        type status =
+          :pending_upload
+          | :pending
+          | :in_progress
+          | :partial_success
+          | :success
+          | :error
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING_UPLOAD: :pending_upload
+          PENDING: :pending
+          IN_PROGRESS: :in_progress
+          PARTIAL_SUCCESS: :partial_success
+          SUCCESS: :success
+          ERROR: :error
+
+          def self?.values: -> ::Array[Telnyx::Models::ExternalConnections::Upload::status]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,40 @@
+module Telnyx
+  module Resources
+    class Verifications
+      attr_reader by_phone_number: Telnyx::Resources::Verifications::ByPhoneNumber
+
+      attr_reader actions: Telnyx::Resources::Verifications::Actions
+
+      def retrieve: (
+        String verification_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VerificationRetrieveResponse
+
+      def trigger_call: (
+        phone_number: String,
+        verify_profile_id: String,
+        ?custom_code: String?,
+        ?extension: String?,
+        ?timeout_secs: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::CreateVerificationResponse
+
+      def trigger_flashcall: (
+        phone_number: String,
+        verify_profile_id: String,
+        ?timeout_secs: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::CreateVerificationResponse
+
+      def trigger_sms: (
+        phone_number: String,
+        verify_profile_id: String,
+        ?custom_code: String?,
+        ?timeout_secs: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::CreateVerificationResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

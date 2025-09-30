@@ -1,0 +1,98 @@
+module Telnyx
+  module Models
+    type texml_application_list_params =
+      {
+        filter: Telnyx::TexmlApplicationListParams::Filter,
+        page: Telnyx::TexmlApplicationListParams::Page,
+        sort: Telnyx::Models::TexmlApplicationListParams::sort
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class TexmlApplicationListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::TexmlApplicationListParams::Filter?
+
+      def filter=: (
+        Telnyx::TexmlApplicationListParams::Filter
+      ) -> Telnyx::TexmlApplicationListParams::Filter
+
+      attr_reader page: Telnyx::TexmlApplicationListParams::Page?
+
+      def page=: (
+        Telnyx::TexmlApplicationListParams::Page
+      ) -> Telnyx::TexmlApplicationListParams::Page
+
+      attr_reader sort: Telnyx::Models::TexmlApplicationListParams::sort?
+
+      def sort=: (
+        Telnyx::Models::TexmlApplicationListParams::sort
+      ) -> Telnyx::Models::TexmlApplicationListParams::sort
+
+      def initialize: (
+        ?filter: Telnyx::TexmlApplicationListParams::Filter,
+        ?page: Telnyx::TexmlApplicationListParams::Page,
+        ?sort: Telnyx::Models::TexmlApplicationListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::TexmlApplicationListParams::Filter,
+        page: Telnyx::TexmlApplicationListParams::Page,
+        sort: Telnyx::Models::TexmlApplicationListParams::sort,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter = { friendly_name: String, outbound_voice_profile_id: String }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader friendly_name: String?
+
+        def friendly_name=: (String) -> String
+
+        attr_reader outbound_voice_profile_id: String?
+
+        def outbound_voice_profile_id=: (String) -> String
+
+        def initialize: (
+          ?friendly_name: String,
+          ?outbound_voice_profile_id: String
+        ) -> void
+
+        def to_hash: -> {
+          friendly_name: String,
+          outbound_voice_profile_id: String
+        }
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+
+      type sort = :created_at | :friendly_name | :active
+
+      module Sort
+        extend Telnyx::Internal::Type::Enum
+
+        CREATED_AT: :created_at
+        FRIENDLY_NAME: :friendly_name
+        ACTIVE: :active
+
+        def self?.values: -> ::Array[Telnyx::Models::TexmlApplicationListParams::sort]
+      end
+    end
+  end
+end

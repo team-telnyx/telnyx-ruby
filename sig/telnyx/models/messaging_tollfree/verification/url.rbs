@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module MessagingTollfree
+      module Verification
+        type url = { url: String }
+
+        class URL < Telnyx::Internal::Type::BaseModel
+          attr_accessor url: String
+
+          def initialize: (url: String) -> void
+
+          def to_hash: -> { url: String }
+        end
+      end
+    end
+  end
+end

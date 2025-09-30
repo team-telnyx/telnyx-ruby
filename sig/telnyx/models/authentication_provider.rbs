@@ -1,0 +1,157 @@
+module Telnyx
+  module Models
+    type authentication_provider =
+      {
+        id: String,
+        active: bool,
+        created_at: Time,
+        name: String,
+        organization_id: String,
+        record_type: String,
+        settings: Telnyx::AuthenticationProvider::Settings,
+        short_name: String,
+        updated_at: Time
+      }
+
+    class AuthenticationProvider < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader active: bool?
+
+      def active=: (bool) -> bool
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader organization_id: String?
+
+      def organization_id=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader settings: Telnyx::AuthenticationProvider::Settings?
+
+      def settings=: (
+        Telnyx::AuthenticationProvider::Settings
+      ) -> Telnyx::AuthenticationProvider::Settings
+
+      attr_reader short_name: String?
+
+      def short_name=: (String) -> String
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        ?id: String,
+        ?active: bool,
+        ?created_at: Time,
+        ?name: String,
+        ?organization_id: String,
+        ?record_type: String,
+        ?settings: Telnyx::AuthenticationProvider::Settings,
+        ?short_name: String,
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        active: bool,
+        created_at: Time,
+        name: String,
+        organization_id: String,
+        record_type: String,
+        settings: Telnyx::AuthenticationProvider::Settings,
+        short_name: String,
+        updated_at: Time
+      }
+
+      type settings =
+        {
+          assertion_consumer_service_url: String,
+          idp_cert_fingerprint: String,
+          idp_cert_fingerprint_algorithm: Telnyx::Models::AuthenticationProvider::Settings::idp_cert_fingerprint_algorithm,
+          idp_entity_id: String,
+          idp_sso_target_url: String,
+          name_identifier_format: String,
+          service_provider_entity_id: String
+        }
+
+      class Settings < Telnyx::Internal::Type::BaseModel
+        attr_reader assertion_consumer_service_url: String?
+
+        def assertion_consumer_service_url=: (String) -> String
+
+        attr_reader idp_cert_fingerprint: String?
+
+        def idp_cert_fingerprint=: (String) -> String
+
+        attr_reader idp_cert_fingerprint_algorithm: Telnyx::Models::AuthenticationProvider::Settings::idp_cert_fingerprint_algorithm?
+
+        def idp_cert_fingerprint_algorithm=: (
+          Telnyx::Models::AuthenticationProvider::Settings::idp_cert_fingerprint_algorithm
+        ) -> Telnyx::Models::AuthenticationProvider::Settings::idp_cert_fingerprint_algorithm
+
+        attr_reader idp_entity_id: String?
+
+        def idp_entity_id=: (String) -> String
+
+        attr_reader idp_sso_target_url: String?
+
+        def idp_sso_target_url=: (String) -> String
+
+        attr_reader name_identifier_format: String?
+
+        def name_identifier_format=: (String) -> String
+
+        attr_reader service_provider_entity_id: String?
+
+        def service_provider_entity_id=: (String) -> String
+
+        def initialize: (
+          ?assertion_consumer_service_url: String,
+          ?idp_cert_fingerprint: String,
+          ?idp_cert_fingerprint_algorithm: Telnyx::Models::AuthenticationProvider::Settings::idp_cert_fingerprint_algorithm,
+          ?idp_entity_id: String,
+          ?idp_sso_target_url: String,
+          ?name_identifier_format: String,
+          ?service_provider_entity_id: String
+        ) -> void
+
+        def to_hash: -> {
+          assertion_consumer_service_url: String,
+          idp_cert_fingerprint: String,
+          idp_cert_fingerprint_algorithm: Telnyx::Models::AuthenticationProvider::Settings::idp_cert_fingerprint_algorithm,
+          idp_entity_id: String,
+          idp_sso_target_url: String,
+          name_identifier_format: String,
+          service_provider_entity_id: String
+        }
+
+        type idp_cert_fingerprint_algorithm =
+          :sha1 | :sha256 | :sha384 | :sha512
+
+        module IdpCertFingerprintAlgorithm
+          extend Telnyx::Internal::Type::Enum
+
+          SHA1: :sha1
+          SHA256: :sha256
+          SHA384: :sha384
+          SHA512: :sha512
+
+          def self?.values: -> ::Array[Telnyx::Models::AuthenticationProvider::Settings::idp_cert_fingerprint_algorithm]
+        end
+      end
+    end
+  end
+end

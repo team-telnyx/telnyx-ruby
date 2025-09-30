@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    module BundlePricing
+      type user_bundle_deactivate_response =
+        { data: Telnyx::BundlePricing::UserBundle }
+
+      class UserBundleDeactivateResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::BundlePricing::UserBundle
+
+        def initialize: (data: Telnyx::BundlePricing::UserBundle) -> void
+
+        def to_hash: -> { data: Telnyx::BundlePricing::UserBundle }
+      end
+    end
+  end
+end

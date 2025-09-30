@@ -1,0 +1,28 @@
+module Telnyx
+  module Resources
+    class PortingOrders
+      class ActivationJobs
+        def retrieve: (
+          String activation_job_id,
+          id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::ActivationJobRetrieveResponse
+
+        def update: (
+          String activation_job_id,
+          id: String,
+          ?activate_at: Time,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::ActivationJobUpdateResponse
+
+        def list: (
+          String id,
+          ?page: Telnyx::PortingOrders::ActivationJobListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::ActivationJobListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

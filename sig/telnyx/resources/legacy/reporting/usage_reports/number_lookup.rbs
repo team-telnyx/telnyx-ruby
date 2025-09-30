@@ -1,0 +1,37 @@
+module Telnyx
+  module Resources
+    class Legacy
+      class Reporting
+        class UsageReports
+          class NumberLookup
+            def create: (
+              ?aggregation_type: Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupCreateParams::aggregation_type,
+              ?end_date: Date,
+              ?managed_accounts: ::Array[String],
+              ?start_date: Date,
+              ?request_options: Telnyx::request_opts
+            ) -> nil
+
+            def retrieve: (
+              String id,
+              ?request_options: Telnyx::request_opts
+            ) -> nil
+
+            def list: (
+              ?page: Integer,
+              ?per_page: Integer,
+              ?request_options: Telnyx::request_opts
+            ) -> nil
+
+            def delete: (
+              String id,
+              ?request_options: Telnyx::request_opts
+            ) -> nil
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

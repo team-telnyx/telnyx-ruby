@@ -1,0 +1,52 @@
+module Telnyx
+  module Models
+    type settings =
+      {
+        idp_cert_fingerprint: String,
+        idp_entity_id: String,
+        idp_sso_target_url: String,
+        idp_cert_fingerprint_algorithm: Telnyx::Models::Settings::idp_cert_fingerprint_algorithm
+      }
+
+    class Settings < Telnyx::Internal::Type::BaseModel
+      attr_accessor idp_cert_fingerprint: String
+
+      attr_accessor idp_entity_id: String
+
+      attr_accessor idp_sso_target_url: String
+
+      attr_reader idp_cert_fingerprint_algorithm: Telnyx::Models::Settings::idp_cert_fingerprint_algorithm?
+
+      def idp_cert_fingerprint_algorithm=: (
+        Telnyx::Models::Settings::idp_cert_fingerprint_algorithm
+      ) -> Telnyx::Models::Settings::idp_cert_fingerprint_algorithm
+
+      def initialize: (
+        idp_cert_fingerprint: String,
+        idp_entity_id: String,
+        idp_sso_target_url: String,
+        ?idp_cert_fingerprint_algorithm: Telnyx::Models::Settings::idp_cert_fingerprint_algorithm
+      ) -> void
+
+      def to_hash: -> {
+        idp_cert_fingerprint: String,
+        idp_entity_id: String,
+        idp_sso_target_url: String,
+        idp_cert_fingerprint_algorithm: Telnyx::Models::Settings::idp_cert_fingerprint_algorithm
+      }
+
+      type idp_cert_fingerprint_algorithm = :sha1 | :sha256 | :sha384 | :sha512
+
+      module IdpCertFingerprintAlgorithm
+        extend Telnyx::Internal::Type::Enum
+
+        SHA1: :sha1
+        SHA256: :sha256
+        SHA384: :sha384
+        SHA512: :sha512
+
+        def self?.values: -> ::Array[Telnyx::Models::Settings::idp_cert_fingerprint_algorithm]
+      end
+    end
+  end
+end

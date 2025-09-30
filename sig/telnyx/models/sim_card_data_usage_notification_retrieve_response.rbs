@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type sim_card_data_usage_notification_retrieve_response =
+      { data: Telnyx::SimCardDataUsageNotification }
+
+    class SimCardDataUsageNotificationRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::SimCardDataUsageNotification?
+
+      def data=: (
+        Telnyx::SimCardDataUsageNotification
+      ) -> Telnyx::SimCardDataUsageNotification
+
+      def initialize: (?data: Telnyx::SimCardDataUsageNotification) -> void
+
+      def to_hash: -> { data: Telnyx::SimCardDataUsageNotification }
+    end
+  end
+end

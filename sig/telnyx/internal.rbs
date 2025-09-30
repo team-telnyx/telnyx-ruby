@@ -1,0 +1,9 @@
+module Telnyx
+  module Internal
+    extend Telnyx::Internal::Util::SorbetRuntimeSupport
+
+    type file_input = Pathname | StringIO | IO | String | Telnyx::FilePart
+
+    OMIT: Object
+  end
+end

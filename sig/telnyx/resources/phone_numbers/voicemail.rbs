@@ -1,0 +1,28 @@
+module Telnyx
+  module Resources
+    class PhoneNumbers
+      class Voicemail
+        def create: (
+          String phone_number_id,
+          ?enabled: bool,
+          ?pin: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::VoicemailCreateResponse
+
+        def retrieve: (
+          String phone_number_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::VoicemailRetrieveResponse
+
+        def update: (
+          String phone_number_id,
+          ?enabled: bool,
+          ?pin: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PhoneNumbers::VoicemailUpdateResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

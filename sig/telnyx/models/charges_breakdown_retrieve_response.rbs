@@ -1,0 +1,115 @@
+module Telnyx
+  module Models
+    type charges_breakdown_retrieve_response =
+      { data: Telnyx::Models::ChargesBreakdownRetrieveResponse::Data }
+
+    class ChargesBreakdownRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::Models::ChargesBreakdownRetrieveResponse::Data
+
+      def initialize: (
+        data: Telnyx::Models::ChargesBreakdownRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::ChargesBreakdownRetrieveResponse::Data
+      }
+
+      type data =
+        {
+          currency: String,
+          end_date: Date,
+          results: ::Array[Telnyx::Models::ChargesBreakdownRetrieveResponse::Data::Result],
+          start_date: Date,
+          user_email: String,
+          user_id: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor currency: String
+
+        attr_accessor end_date: Date
+
+        attr_accessor results: ::Array[Telnyx::Models::ChargesBreakdownRetrieveResponse::Data::Result]
+
+        attr_accessor start_date: Date
+
+        attr_accessor user_email: String
+
+        attr_accessor user_id: String
+
+        def initialize: (
+          currency: String,
+          end_date: Date,
+          results: ::Array[Telnyx::Models::ChargesBreakdownRetrieveResponse::Data::Result],
+          start_date: Date,
+          user_email: String,
+          user_id: String
+        ) -> void
+
+        def to_hash: -> {
+          currency: String,
+          end_date: Date,
+          results: ::Array[Telnyx::Models::ChargesBreakdownRetrieveResponse::Data::Result],
+          start_date: Date,
+          user_email: String,
+          user_id: String
+        }
+
+        type result =
+          {
+            charge_type: String,
+            service_owner_email: String,
+            service_owner_user_id: String,
+            services: ::Array[Telnyx::Models::ChargesBreakdownRetrieveResponse::Data::Result::Service],
+            tn: String
+          }
+
+        class Result < Telnyx::Internal::Type::BaseModel
+          attr_accessor charge_type: String
+
+          attr_accessor service_owner_email: String
+
+          attr_accessor service_owner_user_id: String
+
+          attr_accessor services: ::Array[Telnyx::Models::ChargesBreakdownRetrieveResponse::Data::Result::Service]
+
+          attr_accessor tn: String
+
+          def initialize: (
+            charge_type: String,
+            service_owner_email: String,
+            service_owner_user_id: String,
+            services: ::Array[Telnyx::Models::ChargesBreakdownRetrieveResponse::Data::Result::Service],
+            tn: String
+          ) -> void
+
+          def to_hash: -> {
+            charge_type: String,
+            service_owner_email: String,
+            service_owner_user_id: String,
+            services: ::Array[Telnyx::Models::ChargesBreakdownRetrieveResponse::Data::Result::Service],
+            tn: String
+          }
+
+          type service = { cost: String, cost_type: String, name: String }
+
+          class Service < Telnyx::Internal::Type::BaseModel
+            attr_accessor cost: String
+
+            attr_accessor cost_type: String
+
+            attr_accessor name: String
+
+            def initialize: (
+              cost: String,
+              cost_type: String,
+              name: String
+            ) -> void
+
+            def to_hash: -> { cost: String, cost_type: String, name: String }
+          end
+        end
+      end
+    end
+  end
+end

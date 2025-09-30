@@ -1,0 +1,9 @@
+module Telnyx
+  module Resources
+    class Legacy
+      attr_reader reporting: Telnyx::Resources::Legacy::Reporting
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,32 @@
+module Telnyx
+  module Resources
+    class Texml
+      class Accounts
+        attr_reader calls: Telnyx::Resources::Texml::Accounts::Calls
+
+        attr_reader conferences: Telnyx::Resources::Texml::Accounts::Conferences
+
+        attr_reader recordings: Telnyx::Resources::Texml::Accounts::Recordings
+
+        attr_reader transcriptions: Telnyx::Resources::Texml::Accounts::Transcriptions
+
+        def retrieve_recordings_json: (
+          String account_sid,
+          ?date_created: Time,
+          ?page: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Texml::AccountRetrieveRecordingsJsonResponse
+
+        def retrieve_transcriptions_json: (
+          String account_sid,
+          ?page_size: Integer,
+          ?page_token: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

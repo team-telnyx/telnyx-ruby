@@ -1,0 +1,51 @@
+module Telnyx
+  module Models
+    module MessagingProfiles
+      type auto_resp_config_create =
+        {
+          country_code: String,
+          keywords: ::Array[String],
+          op: Telnyx::Models::MessagingProfiles::AutoRespConfigCreate::op,
+          resp_text: String
+        }
+
+      class AutoRespConfigCreate < Telnyx::Internal::Type::BaseModel
+        attr_accessor country_code: String
+
+        attr_accessor keywords: ::Array[String]
+
+        attr_accessor op: Telnyx::Models::MessagingProfiles::AutoRespConfigCreate::op
+
+        attr_reader resp_text: String?
+
+        def resp_text=: (String) -> String
+
+        def initialize: (
+          country_code: String,
+          keywords: ::Array[String],
+          op: Telnyx::Models::MessagingProfiles::AutoRespConfigCreate::op,
+          ?resp_text: String
+        ) -> void
+
+        def to_hash: -> {
+          country_code: String,
+          keywords: ::Array[String],
+          op: Telnyx::Models::MessagingProfiles::AutoRespConfigCreate::op,
+          resp_text: String
+        }
+
+        type op = :start | :stop | :info
+
+        module Op
+          extend Telnyx::Internal::Type::Enum
+
+          START: :start
+          STOP: :stop
+          INFO: :info
+
+          def self?.values: -> ::Array[Telnyx::Models::MessagingProfiles::AutoRespConfigCreate::op]
+        end
+      end
+    end
+  end
+end

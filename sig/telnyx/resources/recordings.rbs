@@ -1,0 +1,25 @@
+module Telnyx
+  module Resources
+    class Recordings
+      attr_reader actions: Telnyx::Resources::Recordings::Actions
+
+      def retrieve: (
+        String recording_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RecordingRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::RecordingListParams::Filter,
+        ?page: Telnyx::RecordingListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RecordingListResponse
+
+      def delete: (
+        String recording_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RecordingDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

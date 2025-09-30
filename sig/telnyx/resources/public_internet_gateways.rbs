@@ -1,0 +1,30 @@
+module Telnyx
+  module Resources
+    class PublicInternetGateways
+      def create: (
+        ?name: String,
+        ?network_id: String,
+        ?region_code: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PublicInternetGatewayCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PublicInternetGatewayRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::PublicInternetGatewayListParams::Filter,
+        ?page: Telnyx::PublicInternetGatewayListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PublicInternetGatewayListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PublicInternetGatewayDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

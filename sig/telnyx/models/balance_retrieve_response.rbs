@@ -1,0 +1,86 @@
+module Telnyx
+  module Models
+    type balance_retrieve_response =
+      { data: Telnyx::Models::BalanceRetrieveResponse::Data }
+
+    class BalanceRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::BalanceRetrieveResponse::Data?
+
+      def data=: (
+        Telnyx::Models::BalanceRetrieveResponse::Data
+      ) -> Telnyx::Models::BalanceRetrieveResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::BalanceRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> { data: Telnyx::Models::BalanceRetrieveResponse::Data }
+
+      type data =
+        {
+          available_credit: String,
+          balance: String,
+          credit_limit: String,
+          currency: String,
+          pending: String,
+          record_type: Telnyx::Models::BalanceRetrieveResponse::Data::record_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader available_credit: String?
+
+        def available_credit=: (String) -> String
+
+        attr_reader balance: String?
+
+        def balance=: (String) -> String
+
+        attr_reader credit_limit: String?
+
+        def credit_limit=: (String) -> String
+
+        attr_reader currency: String?
+
+        def currency=: (String) -> String
+
+        attr_reader pending: String?
+
+        def pending=: (String) -> String
+
+        attr_reader record_type: Telnyx::Models::BalanceRetrieveResponse::Data::record_type?
+
+        def record_type=: (
+          Telnyx::Models::BalanceRetrieveResponse::Data::record_type
+        ) -> Telnyx::Models::BalanceRetrieveResponse::Data::record_type
+
+        def initialize: (
+          ?available_credit: String,
+          ?balance: String,
+          ?credit_limit: String,
+          ?currency: String,
+          ?pending: String,
+          ?record_type: Telnyx::Models::BalanceRetrieveResponse::Data::record_type
+        ) -> void
+
+        def to_hash: -> {
+          available_credit: String,
+          balance: String,
+          credit_limit: String,
+          currency: String,
+          pending: String,
+          record_type: Telnyx::Models::BalanceRetrieveResponse::Data::record_type
+        }
+
+        type record_type = :balance
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          BALANCE: :balance
+
+          def self?.values: -> ::Array[Telnyx::Models::BalanceRetrieveResponse::Data::record_type]
+        end
+      end
+    end
+  end
+end

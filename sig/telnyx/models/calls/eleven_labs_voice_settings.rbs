@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module Calls
+      type eleven_labs_voice_settings = { api_key_ref: String }
+
+      class ElevenLabsVoiceSettings < Telnyx::Internal::Type::BaseModel
+        attr_reader api_key_ref: String?
+
+        def api_key_ref=: (String) -> String
+
+        def initialize: (?api_key_ref: String) -> void
+
+        def to_hash: -> { api_key_ref: String }
+      end
+    end
+  end
+end

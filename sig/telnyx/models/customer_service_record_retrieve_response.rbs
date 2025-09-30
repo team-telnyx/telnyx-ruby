@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type customer_service_record_retrieve_response =
+      { data: Telnyx::CustomerServiceRecord }
+
+    class CustomerServiceRecordRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::CustomerServiceRecord?
+
+      def data=: (
+        Telnyx::CustomerServiceRecord
+      ) -> Telnyx::CustomerServiceRecord
+
+      def initialize: (?data: Telnyx::CustomerServiceRecord) -> void
+
+      def to_hash: -> { data: Telnyx::CustomerServiceRecord }
+    end
+  end
+end

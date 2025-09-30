@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type number_order_phone_number_update_requirements_response =
+      { data: Telnyx::NumberOrderPhoneNumber }
+
+    class NumberOrderPhoneNumberUpdateRequirementsResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::NumberOrderPhoneNumber?
+
+      def data=: (
+        Telnyx::NumberOrderPhoneNumber
+      ) -> Telnyx::NumberOrderPhoneNumber
+
+      def initialize: (?data: Telnyx::NumberOrderPhoneNumber) -> void
+
+      def to_hash: -> { data: Telnyx::NumberOrderPhoneNumber }
+    end
+  end
+end

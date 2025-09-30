@@ -1,0 +1,71 @@
+module Telnyx
+  module Models
+    module Addresses
+      type action_accept_suggestions_response =
+        {
+          data: Telnyx::Models::Addresses::ActionAcceptSuggestionsResponse::Data
+        }
+
+      class ActionAcceptSuggestionsResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::Addresses::ActionAcceptSuggestionsResponse::Data?
+
+        def data=: (
+          Telnyx::Models::Addresses::ActionAcceptSuggestionsResponse::Data
+        ) -> Telnyx::Models::Addresses::ActionAcceptSuggestionsResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::Addresses::ActionAcceptSuggestionsResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::Addresses::ActionAcceptSuggestionsResponse::Data
+        }
+
+        type data =
+          {
+            id: String,
+            accepted: bool,
+            record_type: Telnyx::Models::Addresses::ActionAcceptSuggestionsResponse::Data::record_type
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader accepted: bool?
+
+          def accepted=: (bool) -> bool
+
+          attr_reader record_type: Telnyx::Models::Addresses::ActionAcceptSuggestionsResponse::Data::record_type?
+
+          def record_type=: (
+            Telnyx::Models::Addresses::ActionAcceptSuggestionsResponse::Data::record_type
+          ) -> Telnyx::Models::Addresses::ActionAcceptSuggestionsResponse::Data::record_type
+
+          def initialize: (
+            ?id: String,
+            ?accepted: bool,
+            ?record_type: Telnyx::Models::Addresses::ActionAcceptSuggestionsResponse::Data::record_type
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            accepted: bool,
+            record_type: Telnyx::Models::Addresses::ActionAcceptSuggestionsResponse::Data::record_type
+          }
+
+          type record_type = :address_suggestion
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            ADDRESS_SUGGESTION: :address_suggestion
+
+            def self?.values: -> ::Array[Telnyx::Models::Addresses::ActionAcceptSuggestionsResponse::Data::record_type]
+          end
+        end
+      end
+    end
+  end
+end

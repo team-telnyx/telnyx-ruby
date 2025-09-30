@@ -1,0 +1,35 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type phone_number_list_response =
+        {
+          data: ::Array[Telnyx::ExternalConnections::ExternalConnectionPhoneNumber],
+          meta: Telnyx::ExternalVoiceIntegrationsPaginationMeta
+        }
+
+      class PhoneNumberListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::ExternalConnections::ExternalConnectionPhoneNumber]?
+
+        def data=: (
+          ::Array[Telnyx::ExternalConnections::ExternalConnectionPhoneNumber]
+        ) -> ::Array[Telnyx::ExternalConnections::ExternalConnectionPhoneNumber]
+
+        attr_reader meta: Telnyx::ExternalVoiceIntegrationsPaginationMeta?
+
+        def meta=: (
+          Telnyx::ExternalVoiceIntegrationsPaginationMeta
+        ) -> Telnyx::ExternalVoiceIntegrationsPaginationMeta
+
+        def initialize: (
+          ?data: ::Array[Telnyx::ExternalConnections::ExternalConnectionPhoneNumber],
+          ?meta: Telnyx::ExternalVoiceIntegrationsPaginationMeta
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::ExternalConnections::ExternalConnectionPhoneNumber],
+          meta: Telnyx::ExternalVoiceIntegrationsPaginationMeta
+        }
+      end
+    end
+  end
+end

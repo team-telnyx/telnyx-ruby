@@ -1,0 +1,13 @@
+module Telnyx
+  module Resources
+    class DocumentLinks
+      def list: (
+        ?filter: Telnyx::DocumentLinkListParams::Filter,
+        ?page: Telnyx::DocumentLinkListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DocumentLinkListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type document_update_response = { data: Telnyx::DocServiceDocument }
+
+    class DocumentUpdateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::DocServiceDocument?
+
+      def data=: (Telnyx::DocServiceDocument) -> Telnyx::DocServiceDocument
+
+      def initialize: (?data: Telnyx::DocServiceDocument) -> void
+
+      def to_hash: -> { data: Telnyx::DocServiceDocument }
+    end
+  end
+end

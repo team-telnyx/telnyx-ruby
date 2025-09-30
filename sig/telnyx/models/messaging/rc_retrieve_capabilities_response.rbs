@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module Messaging
+      type rc_retrieve_capabilities_response =
+        { data: Telnyx::Messaging::RcsCapabilities }
+
+      class RcRetrieveCapabilitiesResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Messaging::RcsCapabilities?
+
+        def data=: (
+          Telnyx::Messaging::RcsCapabilities
+        ) -> Telnyx::Messaging::RcsCapabilities
+
+        def initialize: (?data: Telnyx::Messaging::RcsCapabilities) -> void
+
+        def to_hash: -> { data: Telnyx::Messaging::RcsCapabilities }
+      end
+    end
+  end
+end

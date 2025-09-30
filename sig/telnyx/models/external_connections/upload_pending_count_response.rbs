@@ -1,0 +1,49 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type upload_pending_count_response =
+        {
+          data: Telnyx::Models::ExternalConnections::UploadPendingCountResponse::Data
+        }
+
+      class UploadPendingCountResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::ExternalConnections::UploadPendingCountResponse::Data?
+
+        def data=: (
+          Telnyx::Models::ExternalConnections::UploadPendingCountResponse::Data
+        ) -> Telnyx::Models::ExternalConnections::UploadPendingCountResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::ExternalConnections::UploadPendingCountResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::ExternalConnections::UploadPendingCountResponse::Data
+        }
+
+        type data =
+          { pending_numbers_count: Integer, pending_orders_count: Integer }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader pending_numbers_count: Integer?
+
+          def pending_numbers_count=: (Integer) -> Integer
+
+          attr_reader pending_orders_count: Integer?
+
+          def pending_orders_count=: (Integer) -> Integer
+
+          def initialize: (
+            ?pending_numbers_count: Integer,
+            ?pending_orders_count: Integer
+          ) -> void
+
+          def to_hash: -> {
+            pending_numbers_count: Integer,
+            pending_orders_count: Integer
+          }
+        end
+      end
+    end
+  end
+end

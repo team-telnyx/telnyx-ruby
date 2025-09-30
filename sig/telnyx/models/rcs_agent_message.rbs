@@ -1,0 +1,239 @@
+module Telnyx
+  module Models
+    type rcs_agent_message =
+      {
+        content_message: Telnyx::RcsAgentMessage::ContentMessage,
+        event: Telnyx::RcsAgentMessage::Event,
+        expire_time: Time,
+        ttl: String
+      }
+
+    class RcsAgentMessage < Telnyx::Internal::Type::BaseModel
+      attr_reader content_message: Telnyx::RcsAgentMessage::ContentMessage?
+
+      def content_message=: (
+        Telnyx::RcsAgentMessage::ContentMessage
+      ) -> Telnyx::RcsAgentMessage::ContentMessage
+
+      attr_reader event: Telnyx::RcsAgentMessage::Event?
+
+      def event=: (
+        Telnyx::RcsAgentMessage::Event
+      ) -> Telnyx::RcsAgentMessage::Event
+
+      attr_reader expire_time: Time?
+
+      def expire_time=: (Time) -> Time
+
+      attr_reader ttl: String?
+
+      def ttl=: (String) -> String
+
+      def initialize: (
+        ?content_message: Telnyx::RcsAgentMessage::ContentMessage,
+        ?event: Telnyx::RcsAgentMessage::Event,
+        ?expire_time: Time,
+        ?ttl: String
+      ) -> void
+
+      def to_hash: -> {
+        content_message: Telnyx::RcsAgentMessage::ContentMessage,
+        event: Telnyx::RcsAgentMessage::Event,
+        expire_time: Time,
+        ttl: String
+      }
+
+      type content_message =
+        {
+          content_info: Telnyx::RcsContentInfo,
+          rich_card: Telnyx::RcsAgentMessage::ContentMessage::RichCard,
+          suggestions: ::Array[Telnyx::RcsSuggestion],
+          text: String
+        }
+
+      class ContentMessage < Telnyx::Internal::Type::BaseModel
+        attr_reader content_info: Telnyx::RcsContentInfo?
+
+        def content_info=: (Telnyx::RcsContentInfo) -> Telnyx::RcsContentInfo
+
+        attr_reader rich_card: Telnyx::RcsAgentMessage::ContentMessage::RichCard?
+
+        def rich_card=: (
+          Telnyx::RcsAgentMessage::ContentMessage::RichCard
+        ) -> Telnyx::RcsAgentMessage::ContentMessage::RichCard
+
+        attr_reader suggestions: ::Array[Telnyx::RcsSuggestion]?
+
+        def suggestions=: (
+          ::Array[Telnyx::RcsSuggestion]
+        ) -> ::Array[Telnyx::RcsSuggestion]
+
+        attr_reader text: String?
+
+        def text=: (String) -> String
+
+        def initialize: (
+          ?content_info: Telnyx::RcsContentInfo,
+          ?rich_card: Telnyx::RcsAgentMessage::ContentMessage::RichCard,
+          ?suggestions: ::Array[Telnyx::RcsSuggestion],
+          ?text: String
+        ) -> void
+
+        def to_hash: -> {
+          content_info: Telnyx::RcsContentInfo,
+          rich_card: Telnyx::RcsAgentMessage::ContentMessage::RichCard,
+          suggestions: ::Array[Telnyx::RcsSuggestion],
+          text: String
+        }
+
+        type rich_card =
+          {
+            carousel_card: Telnyx::RcsAgentMessage::ContentMessage::RichCard::CarouselCard,
+            standalone_card: Telnyx::RcsAgentMessage::ContentMessage::RichCard::StandaloneCard
+          }
+
+        class RichCard < Telnyx::Internal::Type::BaseModel
+          attr_reader carousel_card: Telnyx::RcsAgentMessage::ContentMessage::RichCard::CarouselCard?
+
+          def carousel_card=: (
+            Telnyx::RcsAgentMessage::ContentMessage::RichCard::CarouselCard
+          ) -> Telnyx::RcsAgentMessage::ContentMessage::RichCard::CarouselCard
+
+          attr_reader standalone_card: Telnyx::RcsAgentMessage::ContentMessage::RichCard::StandaloneCard?
+
+          def standalone_card=: (
+            Telnyx::RcsAgentMessage::ContentMessage::RichCard::StandaloneCard
+          ) -> Telnyx::RcsAgentMessage::ContentMessage::RichCard::StandaloneCard
+
+          def initialize: (
+            ?carousel_card: Telnyx::RcsAgentMessage::ContentMessage::RichCard::CarouselCard,
+            ?standalone_card: Telnyx::RcsAgentMessage::ContentMessage::RichCard::StandaloneCard
+          ) -> void
+
+          def to_hash: -> {
+            carousel_card: Telnyx::RcsAgentMessage::ContentMessage::RichCard::CarouselCard,
+            standalone_card: Telnyx::RcsAgentMessage::ContentMessage::RichCard::StandaloneCard
+          }
+
+          type carousel_card =
+            {
+              card_contents: ::Array[Telnyx::RcsCardContent],
+              card_width: Telnyx::Models::RcsAgentMessage::ContentMessage::RichCard::CarouselCard::card_width
+            }
+
+          class CarouselCard < Telnyx::Internal::Type::BaseModel
+            attr_accessor card_contents: ::Array[Telnyx::RcsCardContent]
+
+            attr_accessor card_width: Telnyx::Models::RcsAgentMessage::ContentMessage::RichCard::CarouselCard::card_width
+
+            def initialize: (
+              card_contents: ::Array[Telnyx::RcsCardContent],
+              card_width: Telnyx::Models::RcsAgentMessage::ContentMessage::RichCard::CarouselCard::card_width
+            ) -> void
+
+            def to_hash: -> {
+              card_contents: ::Array[Telnyx::RcsCardContent],
+              card_width: Telnyx::Models::RcsAgentMessage::ContentMessage::RichCard::CarouselCard::card_width
+            }
+
+            type card_width = :CARD_WIDTH_UNSPECIFIED | :SMALL | :MEDIUM
+
+            module CardWidth
+              extend Telnyx::Internal::Type::Enum
+
+              CARD_WIDTH_UNSPECIFIED: :CARD_WIDTH_UNSPECIFIED
+              SMALL: :SMALL
+              MEDIUM: :MEDIUM
+
+              def self?.values: -> ::Array[Telnyx::Models::RcsAgentMessage::ContentMessage::RichCard::CarouselCard::card_width]
+            end
+          end
+
+          type standalone_card =
+            {
+              card_content: Telnyx::RcsCardContent,
+              card_orientation: Telnyx::Models::RcsAgentMessage::ContentMessage::RichCard::StandaloneCard::card_orientation,
+              thumbnail_image_alignment: Telnyx::Models::RcsAgentMessage::ContentMessage::RichCard::StandaloneCard::thumbnail_image_alignment
+            }
+
+          class StandaloneCard < Telnyx::Internal::Type::BaseModel
+            attr_accessor card_content: Telnyx::RcsCardContent
+
+            attr_accessor card_orientation: Telnyx::Models::RcsAgentMessage::ContentMessage::RichCard::StandaloneCard::card_orientation
+
+            attr_accessor thumbnail_image_alignment: Telnyx::Models::RcsAgentMessage::ContentMessage::RichCard::StandaloneCard::thumbnail_image_alignment
+
+            def initialize: (
+              card_content: Telnyx::RcsCardContent,
+              card_orientation: Telnyx::Models::RcsAgentMessage::ContentMessage::RichCard::StandaloneCard::card_orientation,
+              thumbnail_image_alignment: Telnyx::Models::RcsAgentMessage::ContentMessage::RichCard::StandaloneCard::thumbnail_image_alignment
+            ) -> void
+
+            def to_hash: -> {
+              card_content: Telnyx::RcsCardContent,
+              card_orientation: Telnyx::Models::RcsAgentMessage::ContentMessage::RichCard::StandaloneCard::card_orientation,
+              thumbnail_image_alignment: Telnyx::Models::RcsAgentMessage::ContentMessage::RichCard::StandaloneCard::thumbnail_image_alignment
+            }
+
+            type card_orientation =
+              :CARD_ORIENTATION_UNSPECIFIED | :HORIZONTAL | :VERTICAL
+
+            module CardOrientation
+              extend Telnyx::Internal::Type::Enum
+
+              CARD_ORIENTATION_UNSPECIFIED: :CARD_ORIENTATION_UNSPECIFIED
+              HORIZONTAL: :HORIZONTAL
+              VERTICAL: :VERTICAL
+
+              def self?.values: -> ::Array[Telnyx::Models::RcsAgentMessage::ContentMessage::RichCard::StandaloneCard::card_orientation]
+            end
+
+            type thumbnail_image_alignment =
+              :THUMBNAIL_IMAGE_ALIGNMENT_UNSPECIFIED | :LEFT | :RIGHT
+
+            module ThumbnailImageAlignment
+              extend Telnyx::Internal::Type::Enum
+
+              THUMBNAIL_IMAGE_ALIGNMENT_UNSPECIFIED: :THUMBNAIL_IMAGE_ALIGNMENT_UNSPECIFIED
+              LEFT: :LEFT
+              RIGHT: :RIGHT
+
+              def self?.values: -> ::Array[Telnyx::Models::RcsAgentMessage::ContentMessage::RichCard::StandaloneCard::thumbnail_image_alignment]
+            end
+          end
+        end
+      end
+
+      type event =
+        { event_type: Telnyx::Models::RcsAgentMessage::Event::event_type }
+
+      class Event < Telnyx::Internal::Type::BaseModel
+        attr_reader event_type: Telnyx::Models::RcsAgentMessage::Event::event_type?
+
+        def event_type=: (
+          Telnyx::Models::RcsAgentMessage::Event::event_type
+        ) -> Telnyx::Models::RcsAgentMessage::Event::event_type
+
+        def initialize: (
+          ?event_type: Telnyx::Models::RcsAgentMessage::Event::event_type
+        ) -> void
+
+        def to_hash: -> {
+          event_type: Telnyx::Models::RcsAgentMessage::Event::event_type
+        }
+
+        type event_type = :TYPE_UNSPECIFIED | :IS_TYPING | :READ
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          TYPE_UNSPECIFIED: :TYPE_UNSPECIFIED
+          IS_TYPING: :IS_TYPING
+          READ: :READ
+
+          def self?.values: -> ::Array[Telnyx::Models::RcsAgentMessage::Event::event_type]
+        end
+      end
+    end
+  end
+end

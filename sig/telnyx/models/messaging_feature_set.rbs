@@ -1,0 +1,30 @@
+module Telnyx
+  module Models
+    type messaging_feature_set =
+      {
+        domestic_two_way: bool,
+        international_inbound: bool,
+        international_outbound: bool
+      }
+
+    class MessagingFeatureSet < Telnyx::Internal::Type::BaseModel
+      attr_accessor domestic_two_way: bool
+
+      attr_accessor international_inbound: bool
+
+      attr_accessor international_outbound: bool
+
+      def initialize: (
+        domestic_two_way: bool,
+        international_inbound: bool,
+        international_outbound: bool
+      ) -> void
+
+      def to_hash: -> {
+        domestic_two_way: bool,
+        international_inbound: bool,
+        international_outbound: bool
+      }
+    end
+  end
+end

@@ -1,0 +1,21 @@
+module Telnyx
+  module Resources
+    class PortingOrders
+      class Comments
+        def create: (
+          String id,
+          ?body: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::CommentCreateResponse
+
+        def list: (
+          String id,
+          ?page: Telnyx::PortingOrders::CommentListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::PortingOrders::CommentListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

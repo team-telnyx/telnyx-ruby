@@ -1,0 +1,372 @@
+module Telnyx
+  module Models
+    type sim_card =
+      {
+        id: String,
+        actions_in_progress: bool,
+        authorized_imeis: ::Array[String]?,
+        created_at: String,
+        current_billing_period_consumed_data: Telnyx::SimCard::CurrentBillingPeriodConsumedData,
+        current_device_location: Telnyx::SimCard::CurrentDeviceLocation,
+        current_imei: String,
+        current_mcc: String,
+        current_mnc: String,
+        data_limit: Telnyx::SimCard::DataLimit,
+        eid: String?,
+        esim_installation_status: Telnyx::Models::SimCard::esim_installation_status?,
+        iccid: String,
+        imsi: String,
+        :ipv4 => String,
+        :ipv6 => String,
+        live_data_session: Telnyx::Models::SimCard::live_data_session,
+        msisdn: String,
+        pin_puk_codes: Telnyx::SimCard::PinPukCodes,
+        record_type: String,
+        resources_with_in_progress_actions: ::Array[top],
+        sim_card_group_id: String,
+        status: Telnyx::SimCardStatus,
+        tags: ::Array[String],
+        type: Telnyx::Models::SimCard::type_,
+        updated_at: String,
+        version: String
+      }
+
+    class SimCard < Telnyx::Internal::Type::BaseModel
+      attr_accessor authorized_imeis: ::Array[String]?
+
+      attr_reader data_limit: Telnyx::SimCard::DataLimit?
+
+      def data_limit=: (
+        Telnyx::SimCard::DataLimit
+      ) -> Telnyx::SimCard::DataLimit
+
+      attr_reader sim_card_group_id: String?
+
+      def sim_card_group_id=: (String) -> String
+
+      attr_reader status: Telnyx::SimCardStatus?
+
+      def status=: (Telnyx::SimCardStatus) -> Telnyx::SimCardStatus
+
+      attr_reader tags: ::Array[String]?
+
+      def tags=: (::Array[String]) -> ::Array[String]
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader actions_in_progress: bool?
+
+      def actions_in_progress=: (bool) -> bool
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader current_billing_period_consumed_data: Telnyx::SimCard::CurrentBillingPeriodConsumedData?
+
+      def current_billing_period_consumed_data=: (
+        Telnyx::SimCard::CurrentBillingPeriodConsumedData
+      ) -> Telnyx::SimCard::CurrentBillingPeriodConsumedData
+
+      attr_reader current_device_location: Telnyx::SimCard::CurrentDeviceLocation?
+
+      def current_device_location=: (
+        Telnyx::SimCard::CurrentDeviceLocation
+      ) -> Telnyx::SimCard::CurrentDeviceLocation
+
+      attr_reader current_imei: String?
+
+      def current_imei=: (String) -> String
+
+      attr_reader current_mcc: String?
+
+      def current_mcc=: (String) -> String
+
+      attr_reader current_mnc: String?
+
+      def current_mnc=: (String) -> String
+
+      attr_accessor eid: String?
+
+      attr_accessor esim_installation_status: Telnyx::Models::SimCard::esim_installation_status?
+
+      attr_reader iccid: String?
+
+      def iccid=: (String) -> String
+
+      attr_reader imsi: String?
+
+      def imsi=: (String) -> String
+
+      attr_reader ipv4: String?
+
+      def ipv4=: (String) -> String
+
+      attr_reader ipv6: String?
+
+      def ipv6=: (String) -> String
+
+      attr_reader live_data_session: Telnyx::Models::SimCard::live_data_session?
+
+      def live_data_session=: (
+        Telnyx::Models::SimCard::live_data_session
+      ) -> Telnyx::Models::SimCard::live_data_session
+
+      attr_reader msisdn: String?
+
+      def msisdn=: (String) -> String
+
+      attr_reader pin_puk_codes: Telnyx::SimCard::PinPukCodes?
+
+      def pin_puk_codes=: (
+        Telnyx::SimCard::PinPukCodes
+      ) -> Telnyx::SimCard::PinPukCodes
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader resources_with_in_progress_actions: ::Array[top]?
+
+      def resources_with_in_progress_actions=: (::Array[top]) -> ::Array[top]
+
+      attr_reader type: Telnyx::Models::SimCard::type_?
+
+      def type=: (
+        Telnyx::Models::SimCard::type_
+      ) -> Telnyx::Models::SimCard::type_
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      attr_reader version: String?
+
+      def version=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?actions_in_progress: bool,
+        ?authorized_imeis: ::Array[String]?,
+        ?created_at: String,
+        ?current_billing_period_consumed_data: Telnyx::SimCard::CurrentBillingPeriodConsumedData,
+        ?current_device_location: Telnyx::SimCard::CurrentDeviceLocation,
+        ?current_imei: String,
+        ?current_mcc: String,
+        ?current_mnc: String,
+        ?data_limit: Telnyx::SimCard::DataLimit,
+        ?eid: String?,
+        ?esim_installation_status: Telnyx::Models::SimCard::esim_installation_status?,
+        ?iccid: String,
+        ?imsi: String,
+        ?ipv4: String,
+        ?ipv6: String,
+        ?live_data_session: Telnyx::Models::SimCard::live_data_session,
+        ?msisdn: String,
+        ?pin_puk_codes: Telnyx::SimCard::PinPukCodes,
+        ?record_type: String,
+        ?resources_with_in_progress_actions: ::Array[top],
+        ?sim_card_group_id: String,
+        ?status: Telnyx::SimCardStatus,
+        ?tags: ::Array[String],
+        ?type: Telnyx::Models::SimCard::type_,
+        ?updated_at: String,
+        ?version: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        actions_in_progress: bool,
+        authorized_imeis: ::Array[String]?,
+        created_at: String,
+        current_billing_period_consumed_data: Telnyx::SimCard::CurrentBillingPeriodConsumedData,
+        current_device_location: Telnyx::SimCard::CurrentDeviceLocation,
+        current_imei: String,
+        current_mcc: String,
+        current_mnc: String,
+        data_limit: Telnyx::SimCard::DataLimit,
+        eid: String?,
+        esim_installation_status: Telnyx::Models::SimCard::esim_installation_status?,
+        iccid: String,
+        imsi: String,
+        :ipv4 => String,
+        :ipv6 => String,
+        live_data_session: Telnyx::Models::SimCard::live_data_session,
+        msisdn: String,
+        pin_puk_codes: Telnyx::SimCard::PinPukCodes,
+        record_type: String,
+        resources_with_in_progress_actions: ::Array[top],
+        sim_card_group_id: String,
+        status: Telnyx::SimCardStatus,
+        tags: ::Array[String],
+        type: Telnyx::Models::SimCard::type_,
+        updated_at: String,
+        version: String
+      }
+
+      type current_billing_period_consumed_data =
+        { amount: String, unit: String }
+
+      class CurrentBillingPeriodConsumedData < Telnyx::Internal::Type::BaseModel
+        attr_reader amount: String?
+
+        def amount=: (String) -> String
+
+        attr_reader unit: String?
+
+        def unit=: (String) -> String
+
+        def initialize: (?amount: String, ?unit: String) -> void
+
+        def to_hash: -> { amount: String, unit: String }
+      end
+
+      type current_device_location =
+        {
+          accuracy: Integer,
+          accuracy_unit: String,
+          latitude: String,
+          longitude: String
+        }
+
+      class CurrentDeviceLocation < Telnyx::Internal::Type::BaseModel
+        attr_reader accuracy: Integer?
+
+        def accuracy=: (Integer) -> Integer
+
+        attr_reader accuracy_unit: String?
+
+        def accuracy_unit=: (String) -> String
+
+        attr_reader latitude: String?
+
+        def latitude=: (String) -> String
+
+        attr_reader longitude: String?
+
+        def longitude=: (String) -> String
+
+        def initialize: (
+          ?accuracy: Integer,
+          ?accuracy_unit: String,
+          ?latitude: String,
+          ?longitude: String
+        ) -> void
+
+        def to_hash: -> {
+          accuracy: Integer,
+          accuracy_unit: String,
+          latitude: String,
+          longitude: String
+        }
+      end
+
+      type data_limit =
+        { amount: String, unit: Telnyx::Models::SimCard::DataLimit::unit }
+
+      class DataLimit < Telnyx::Internal::Type::BaseModel
+        attr_reader amount: String?
+
+        def amount=: (String) -> String
+
+        attr_reader unit: Telnyx::Models::SimCard::DataLimit::unit?
+
+        def unit=: (
+          Telnyx::Models::SimCard::DataLimit::unit
+        ) -> Telnyx::Models::SimCard::DataLimit::unit
+
+        def initialize: (
+          ?amount: String,
+          ?unit: Telnyx::Models::SimCard::DataLimit::unit
+        ) -> void
+
+        def to_hash: -> {
+          amount: String,
+          unit: Telnyx::Models::SimCard::DataLimit::unit
+        }
+
+        type unit = :MB | :GB
+
+        module Unit
+          extend Telnyx::Internal::Type::Enum
+
+          MB: :MB
+          GB: :GB
+
+          def self?.values: -> ::Array[Telnyx::Models::SimCard::DataLimit::unit]
+        end
+      end
+
+      type esim_installation_status = :released | :disabled
+
+      module EsimInstallationStatus
+        extend Telnyx::Internal::Type::Enum
+
+        RELEASED: :released
+        DISABLED: :disabled
+
+        def self?.values: -> ::Array[Telnyx::Models::SimCard::esim_installation_status]
+      end
+
+      type live_data_session = :connected | :disconnected | :unknown
+
+      module LiveDataSession
+        extend Telnyx::Internal::Type::Enum
+
+        CONNECTED: :connected
+        DISCONNECTED: :disconnected
+        UNKNOWN: :unknown
+
+        def self?.values: -> ::Array[Telnyx::Models::SimCard::live_data_session]
+      end
+
+      type pin_puk_codes =
+        { :pin1 => String, :pin2 => String, :puk1 => String, :puk2 => String }
+
+      class PinPukCodes < Telnyx::Internal::Type::BaseModel
+        attr_reader pin1: String?
+
+        def pin1=: (String) -> String
+
+        attr_reader pin2: String?
+
+        def pin2=: (String) -> String
+
+        attr_reader puk1: String?
+
+        def puk1=: (String) -> String
+
+        attr_reader puk2: String?
+
+        def puk2=: (String) -> String
+
+        def initialize: (
+          ?pin1: String,
+          ?pin2: String,
+          ?puk1: String,
+          ?puk2: String
+        ) -> void
+
+        def to_hash: -> {
+          :pin1 => String,
+          :pin2 => String,
+          :puk1 => String,
+          :puk2 => String
+        }
+      end
+
+      type type_ = :physical | :esim
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        PHYSICAL: :physical
+        ESIM: :esim
+
+        def self?.values: -> ::Array[Telnyx::Models::SimCard::type_]
+      end
+    end
+  end
+end

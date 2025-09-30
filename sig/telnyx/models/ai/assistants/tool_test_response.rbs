@@ -1,0 +1,59 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        type tool_test_response =
+          { data: Telnyx::Models::AI::Assistants::ToolTestResponse::Data }
+
+        class ToolTestResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: Telnyx::Models::AI::Assistants::ToolTestResponse::Data
+
+          def initialize: (
+            data: Telnyx::Models::AI::Assistants::ToolTestResponse::Data
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::Models::AI::Assistants::ToolTestResponse::Data
+          }
+
+          type data =
+            {
+              content_type: String,
+              request: ::Hash[Symbol, top],
+              response: String,
+              status_code: Integer,
+              success: bool
+            }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_accessor content_type: String
+
+            attr_accessor request: ::Hash[Symbol, top]
+
+            attr_accessor response: String
+
+            attr_accessor status_code: Integer
+
+            attr_accessor success: bool
+
+            def initialize: (
+              content_type: String,
+              request: ::Hash[Symbol, top],
+              response: String,
+              status_code: Integer,
+              success: bool
+            ) -> void
+
+            def to_hash: -> {
+              content_type: String,
+              request: ::Hash[Symbol, top],
+              response: String,
+              status_code: Integer,
+              success: bool
+            }
+          end
+        end
+      end
+    end
+  end
+end

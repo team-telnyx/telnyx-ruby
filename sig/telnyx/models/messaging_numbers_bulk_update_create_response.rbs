@@ -1,0 +1,81 @@
+module Telnyx
+  module Models
+    type messaging_numbers_bulk_update_create_response =
+      { data: Telnyx::Models::MessagingNumbersBulkUpdateCreateResponse::Data }
+
+    class MessagingNumbersBulkUpdateCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::MessagingNumbersBulkUpdateCreateResponse::Data?
+
+      def data=: (
+        Telnyx::Models::MessagingNumbersBulkUpdateCreateResponse::Data
+      ) -> Telnyx::Models::MessagingNumbersBulkUpdateCreateResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::MessagingNumbersBulkUpdateCreateResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::MessagingNumbersBulkUpdateCreateResponse::Data
+      }
+
+      type data =
+        {
+          failed: ::Array[String],
+          order_id: String,
+          pending: ::Array[String],
+          record_type: Telnyx::Models::MessagingNumbersBulkUpdateCreateResponse::Data::record_type,
+          success: ::Array[String]
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader failed: ::Array[String]?
+
+        def failed=: (::Array[String]) -> ::Array[String]
+
+        attr_reader pending: ::Array[String]?
+
+        def pending=: (::Array[String]) -> ::Array[String]
+
+        attr_reader success: ::Array[String]?
+
+        def success=: (::Array[String]) -> ::Array[String]
+
+        attr_reader order_id: String?
+
+        def order_id=: (String) -> String
+
+        attr_reader record_type: Telnyx::Models::MessagingNumbersBulkUpdateCreateResponse::Data::record_type?
+
+        def record_type=: (
+          Telnyx::Models::MessagingNumbersBulkUpdateCreateResponse::Data::record_type
+        ) -> Telnyx::Models::MessagingNumbersBulkUpdateCreateResponse::Data::record_type
+
+        def initialize: (
+          ?failed: ::Array[String],
+          ?order_id: String,
+          ?pending: ::Array[String],
+          ?record_type: Telnyx::Models::MessagingNumbersBulkUpdateCreateResponse::Data::record_type,
+          ?success: ::Array[String]
+        ) -> void
+
+        def to_hash: -> {
+          failed: ::Array[String],
+          order_id: String,
+          pending: ::Array[String],
+          record_type: Telnyx::Models::MessagingNumbersBulkUpdateCreateResponse::Data::record_type,
+          success: ::Array[String]
+        }
+
+        type record_type = :messaging_numbers_bulk_update
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          MESSAGING_NUMBERS_BULK_UPDATE: :messaging_numbers_bulk_update
+
+          def self?.values: -> ::Array[Telnyx::Models::MessagingNumbersBulkUpdateCreateResponse::Data::record_type]
+        end
+      end
+    end
+  end
+end

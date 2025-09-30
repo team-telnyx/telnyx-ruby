@@ -1,0 +1,37 @@
+module Telnyx
+  module Models
+    module AI
+      type retrieval_tool =
+        {
+          retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs,
+          type: Telnyx::Models::AI::RetrievalTool::type_
+        }
+
+      class RetrievalTool < Telnyx::Internal::Type::BaseModel
+        attr_accessor retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs
+
+        attr_accessor type: Telnyx::Models::AI::RetrievalTool::type_
+
+        def initialize: (
+          retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs,
+          type: Telnyx::Models::AI::RetrievalTool::type_
+        ) -> void
+
+        def to_hash: -> {
+          retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs,
+          type: Telnyx::Models::AI::RetrievalTool::type_
+        }
+
+        type type_ = :retrieval
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          RETRIEVAL: :retrieval
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::RetrievalTool::type_]
+        end
+      end
+    end
+  end
+end

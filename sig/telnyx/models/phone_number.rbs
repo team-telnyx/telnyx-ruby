@@ -1,0 +1,150 @@
+module Telnyx
+  module Models
+    type phone_number =
+      {
+        id: String,
+        bundle_id: String,
+        country_code: String,
+        :country_iso_alpha2 => String,
+        phone_number: String,
+        phone_number_type: Telnyx::Models::PhoneNumber::phone_number_type,
+        record_type: String,
+        regulatory_requirements: ::Array[Telnyx::SubNumberOrderRegulatoryRequirementWithValue],
+        requirements_met: bool,
+        requirements_status: Telnyx::Models::PhoneNumber::requirements_status,
+        status: Telnyx::Models::PhoneNumber::status
+      }
+
+    class PhoneNumber < Telnyx::Internal::Type::BaseModel
+      attr_reader phone_number: String?
+
+      def phone_number=: (String) -> String
+
+      attr_reader regulatory_requirements: ::Array[Telnyx::SubNumberOrderRegulatoryRequirementWithValue]?
+
+      def regulatory_requirements=: (
+        ::Array[Telnyx::SubNumberOrderRegulatoryRequirementWithValue]
+      ) -> ::Array[Telnyx::SubNumberOrderRegulatoryRequirementWithValue]
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader bundle_id: String?
+
+      def bundle_id=: (String) -> String
+
+      attr_reader country_code: String?
+
+      def country_code=: (String) -> String
+
+      attr_reader country_iso_alpha2: String?
+
+      def country_iso_alpha2=: (String) -> String
+
+      attr_reader phone_number_type: Telnyx::Models::PhoneNumber::phone_number_type?
+
+      def phone_number_type=: (
+        Telnyx::Models::PhoneNumber::phone_number_type
+      ) -> Telnyx::Models::PhoneNumber::phone_number_type
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader requirements_met: bool?
+
+      def requirements_met=: (bool) -> bool
+
+      attr_reader requirements_status: Telnyx::Models::PhoneNumber::requirements_status?
+
+      def requirements_status=: (
+        Telnyx::Models::PhoneNumber::requirements_status
+      ) -> Telnyx::Models::PhoneNumber::requirements_status
+
+      attr_reader status: Telnyx::Models::PhoneNumber::status?
+
+      def status=: (
+        Telnyx::Models::PhoneNumber::status
+      ) -> Telnyx::Models::PhoneNumber::status
+
+      def initialize: (
+        ?id: String,
+        ?bundle_id: String,
+        ?country_code: String,
+        ?country_iso_alpha2: String,
+        ?phone_number: String,
+        ?phone_number_type: Telnyx::Models::PhoneNumber::phone_number_type,
+        ?record_type: String,
+        ?regulatory_requirements: ::Array[Telnyx::SubNumberOrderRegulatoryRequirementWithValue],
+        ?requirements_met: bool,
+        ?requirements_status: Telnyx::Models::PhoneNumber::requirements_status,
+        ?status: Telnyx::Models::PhoneNumber::status
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        bundle_id: String,
+        country_code: String,
+        :country_iso_alpha2 => String,
+        phone_number: String,
+        phone_number_type: Telnyx::Models::PhoneNumber::phone_number_type,
+        record_type: String,
+        regulatory_requirements: ::Array[Telnyx::SubNumberOrderRegulatoryRequirementWithValue],
+        requirements_met: bool,
+        requirements_status: Telnyx::Models::PhoneNumber::requirements_status,
+        status: Telnyx::Models::PhoneNumber::status
+      }
+
+      type phone_number_type =
+        :local | :mobile | :national | :shared_cost | :toll_free
+
+      module PhoneNumberType
+        extend Telnyx::Internal::Type::Enum
+
+        LOCAL: :local
+        MOBILE: :mobile
+        NATIONAL: :national
+        SHARED_COST: :shared_cost
+        TOLL_FREE: :toll_free
+
+        def self?.values: -> ::Array[Telnyx::Models::PhoneNumber::phone_number_type]
+      end
+
+      type requirements_status =
+        :pending
+        | :approved
+        | :cancelled
+        | :deleted
+        | :"requirement-info-exception"
+        | :"requirement-info-pending"
+        | :"requirement-info-under-review"
+
+      module RequirementsStatus
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        APPROVED: :approved
+        CANCELLED: :cancelled
+        DELETED: :deleted
+        REQUIREMENT_INFO_EXCEPTION: :"requirement-info-exception"
+        REQUIREMENT_INFO_PENDING: :"requirement-info-pending"
+        REQUIREMENT_INFO_UNDER_REVIEW: :"requirement-info-under-review"
+
+        def self?.values: -> ::Array[Telnyx::Models::PhoneNumber::requirements_status]
+      end
+
+      type status = :pending | :success | :failure
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        SUCCESS: :success
+        FAILURE: :failure
+
+        def self?.values: -> ::Array[Telnyx::Models::PhoneNumber::status]
+      end
+    end
+  end
+end

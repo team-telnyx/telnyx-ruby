@@ -1,0 +1,12 @@
+module Telnyx
+  module Resources
+    class MessagingURLDomains
+      def list: (
+        ?page: Telnyx::MessagingURLDomainListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingURLDomainListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

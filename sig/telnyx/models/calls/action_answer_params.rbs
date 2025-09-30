@@ -1,0 +1,324 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_answer_params =
+        {
+          billing_group_id: String,
+          client_state: String,
+          command_id: String,
+          custom_headers: ::Array[Telnyx::CustomSipHeader],
+          preferred_codecs: Telnyx::Models::Calls::ActionAnswerParams::preferred_codecs,
+          record: Telnyx::Models::Calls::ActionAnswerParams::record,
+          record_channels: Telnyx::Models::Calls::ActionAnswerParams::record_channels,
+          record_custom_file_name: String,
+          record_format: Telnyx::Models::Calls::ActionAnswerParams::record_format,
+          record_max_length: Integer,
+          record_timeout_secs: Integer,
+          record_track: Telnyx::Models::Calls::ActionAnswerParams::record_track,
+          record_trim: Telnyx::Models::Calls::ActionAnswerParams::record_trim,
+          send_silence_when_idle: bool,
+          sip_headers: ::Array[Telnyx::SipHeader],
+          sound_modifications: Telnyx::SoundModifications,
+          stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
+          stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
+          stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs,
+          stream_codec: Telnyx::Models::stream_codec,
+          stream_track: Telnyx::Models::Calls::ActionAnswerParams::stream_track,
+          stream_url: String,
+          transcription: bool,
+          transcription_config: Telnyx::Calls::TranscriptionStartRequest,
+          webhook_url: String,
+          webhook_url_method: Telnyx::Models::Calls::ActionAnswerParams::webhook_url_method
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionAnswerParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader billing_group_id: String?
+
+        def billing_group_id=: (String) -> String
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader command_id: String?
+
+        def command_id=: (String) -> String
+
+        attr_reader custom_headers: ::Array[Telnyx::CustomSipHeader]?
+
+        def custom_headers=: (
+          ::Array[Telnyx::CustomSipHeader]
+        ) -> ::Array[Telnyx::CustomSipHeader]
+
+        attr_reader preferred_codecs: Telnyx::Models::Calls::ActionAnswerParams::preferred_codecs?
+
+        def preferred_codecs=: (
+          Telnyx::Models::Calls::ActionAnswerParams::preferred_codecs
+        ) -> Telnyx::Models::Calls::ActionAnswerParams::preferred_codecs
+
+        attr_reader record: Telnyx::Models::Calls::ActionAnswerParams::record?
+
+        def record=: (
+          Telnyx::Models::Calls::ActionAnswerParams::record
+        ) -> Telnyx::Models::Calls::ActionAnswerParams::record
+
+        attr_reader record_channels: Telnyx::Models::Calls::ActionAnswerParams::record_channels?
+
+        def record_channels=: (
+          Telnyx::Models::Calls::ActionAnswerParams::record_channels
+        ) -> Telnyx::Models::Calls::ActionAnswerParams::record_channels
+
+        attr_reader record_custom_file_name: String?
+
+        def record_custom_file_name=: (String) -> String
+
+        attr_reader record_format: Telnyx::Models::Calls::ActionAnswerParams::record_format?
+
+        def record_format=: (
+          Telnyx::Models::Calls::ActionAnswerParams::record_format
+        ) -> Telnyx::Models::Calls::ActionAnswerParams::record_format
+
+        attr_reader record_max_length: Integer?
+
+        def record_max_length=: (Integer) -> Integer
+
+        attr_reader record_timeout_secs: Integer?
+
+        def record_timeout_secs=: (Integer) -> Integer
+
+        attr_reader record_track: Telnyx::Models::Calls::ActionAnswerParams::record_track?
+
+        def record_track=: (
+          Telnyx::Models::Calls::ActionAnswerParams::record_track
+        ) -> Telnyx::Models::Calls::ActionAnswerParams::record_track
+
+        attr_reader record_trim: Telnyx::Models::Calls::ActionAnswerParams::record_trim?
+
+        def record_trim=: (
+          Telnyx::Models::Calls::ActionAnswerParams::record_trim
+        ) -> Telnyx::Models::Calls::ActionAnswerParams::record_trim
+
+        attr_reader send_silence_when_idle: bool?
+
+        def send_silence_when_idle=: (bool) -> bool
+
+        attr_reader sip_headers: ::Array[Telnyx::SipHeader]?
+
+        def sip_headers=: (
+          ::Array[Telnyx::SipHeader]
+        ) -> ::Array[Telnyx::SipHeader]
+
+        attr_reader sound_modifications: Telnyx::SoundModifications?
+
+        def sound_modifications=: (
+          Telnyx::SoundModifications
+        ) -> Telnyx::SoundModifications
+
+        attr_reader stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec?
+
+        def stream_bidirectional_codec=: (
+          Telnyx::Models::stream_bidirectional_codec
+        ) -> Telnyx::Models::stream_bidirectional_codec
+
+        attr_reader stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode?
+
+        def stream_bidirectional_mode=: (
+          Telnyx::Models::stream_bidirectional_mode
+        ) -> Telnyx::Models::stream_bidirectional_mode
+
+        attr_reader stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs?
+
+        def stream_bidirectional_target_legs=: (
+          Telnyx::Models::stream_bidirectional_target_legs
+        ) -> Telnyx::Models::stream_bidirectional_target_legs
+
+        attr_reader stream_codec: Telnyx::Models::stream_codec?
+
+        def stream_codec=: (
+          Telnyx::Models::stream_codec
+        ) -> Telnyx::Models::stream_codec
+
+        attr_reader stream_track: Telnyx::Models::Calls::ActionAnswerParams::stream_track?
+
+        def stream_track=: (
+          Telnyx::Models::Calls::ActionAnswerParams::stream_track
+        ) -> Telnyx::Models::Calls::ActionAnswerParams::stream_track
+
+        attr_reader stream_url: String?
+
+        def stream_url=: (String) -> String
+
+        attr_reader transcription: bool?
+
+        def transcription=: (bool) -> bool
+
+        attr_reader transcription_config: Telnyx::Calls::TranscriptionStartRequest?
+
+        def transcription_config=: (
+          Telnyx::Calls::TranscriptionStartRequest
+        ) -> Telnyx::Calls::TranscriptionStartRequest
+
+        attr_reader webhook_url: String?
+
+        def webhook_url=: (String) -> String
+
+        attr_reader webhook_url_method: Telnyx::Models::Calls::ActionAnswerParams::webhook_url_method?
+
+        def webhook_url_method=: (
+          Telnyx::Models::Calls::ActionAnswerParams::webhook_url_method
+        ) -> Telnyx::Models::Calls::ActionAnswerParams::webhook_url_method
+
+        def initialize: (
+          ?billing_group_id: String,
+          ?client_state: String,
+          ?command_id: String,
+          ?custom_headers: ::Array[Telnyx::CustomSipHeader],
+          ?preferred_codecs: Telnyx::Models::Calls::ActionAnswerParams::preferred_codecs,
+          ?record: Telnyx::Models::Calls::ActionAnswerParams::record,
+          ?record_channels: Telnyx::Models::Calls::ActionAnswerParams::record_channels,
+          ?record_custom_file_name: String,
+          ?record_format: Telnyx::Models::Calls::ActionAnswerParams::record_format,
+          ?record_max_length: Integer,
+          ?record_timeout_secs: Integer,
+          ?record_track: Telnyx::Models::Calls::ActionAnswerParams::record_track,
+          ?record_trim: Telnyx::Models::Calls::ActionAnswerParams::record_trim,
+          ?send_silence_when_idle: bool,
+          ?sip_headers: ::Array[Telnyx::SipHeader],
+          ?sound_modifications: Telnyx::SoundModifications,
+          ?stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
+          ?stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
+          ?stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs,
+          ?stream_codec: Telnyx::Models::stream_codec,
+          ?stream_track: Telnyx::Models::Calls::ActionAnswerParams::stream_track,
+          ?stream_url: String,
+          ?transcription: bool,
+          ?transcription_config: Telnyx::Calls::TranscriptionStartRequest,
+          ?webhook_url: String,
+          ?webhook_url_method: Telnyx::Models::Calls::ActionAnswerParams::webhook_url_method,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          billing_group_id: String,
+          client_state: String,
+          command_id: String,
+          custom_headers: ::Array[Telnyx::CustomSipHeader],
+          preferred_codecs: Telnyx::Models::Calls::ActionAnswerParams::preferred_codecs,
+          record: Telnyx::Models::Calls::ActionAnswerParams::record,
+          record_channels: Telnyx::Models::Calls::ActionAnswerParams::record_channels,
+          record_custom_file_name: String,
+          record_format: Telnyx::Models::Calls::ActionAnswerParams::record_format,
+          record_max_length: Integer,
+          record_timeout_secs: Integer,
+          record_track: Telnyx::Models::Calls::ActionAnswerParams::record_track,
+          record_trim: Telnyx::Models::Calls::ActionAnswerParams::record_trim,
+          send_silence_when_idle: bool,
+          sip_headers: ::Array[Telnyx::SipHeader],
+          sound_modifications: Telnyx::SoundModifications,
+          stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
+          stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
+          stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs,
+          stream_codec: Telnyx::Models::stream_codec,
+          stream_track: Telnyx::Models::Calls::ActionAnswerParams::stream_track,
+          stream_url: String,
+          transcription: bool,
+          transcription_config: Telnyx::Calls::TranscriptionStartRequest,
+          webhook_url: String,
+          webhook_url_method: Telnyx::Models::Calls::ActionAnswerParams::webhook_url_method,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type preferred_codecs = :"G722,PCMU,PCMA,G729,OPUS,VP8,H264"
+
+        module PreferredCodecs
+          extend Telnyx::Internal::Type::Enum
+
+          G722_PCMU_PCMA_G729_OPUS_VP8_H264: :"G722,PCMU,PCMA,G729,OPUS,VP8,H264"
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionAnswerParams::preferred_codecs]
+        end
+
+        type record = :"record-from-answer"
+
+        module Record
+          extend Telnyx::Internal::Type::Enum
+
+          RECORD_FROM_ANSWER: :"record-from-answer"
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionAnswerParams::record]
+        end
+
+        type record_channels = :single | :dual
+
+        module RecordChannels
+          extend Telnyx::Internal::Type::Enum
+
+          SINGLE: :single
+          DUAL: :dual
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionAnswerParams::record_channels]
+        end
+
+        type record_format = :wav | :mp3
+
+        module RecordFormat
+          extend Telnyx::Internal::Type::Enum
+
+          WAV: :wav
+          MP3: :mp3
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionAnswerParams::record_format]
+        end
+
+        type record_track = :both | :inbound | :outbound
+
+        module RecordTrack
+          extend Telnyx::Internal::Type::Enum
+
+          BOTH: :both
+          INBOUND: :inbound
+          OUTBOUND: :outbound
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionAnswerParams::record_track]
+        end
+
+        type record_trim = :"trim-silence"
+
+        module RecordTrim
+          extend Telnyx::Internal::Type::Enum
+
+          TRIM_SILENCE: :"trim-silence"
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionAnswerParams::record_trim]
+        end
+
+        type stream_track = :inbound_track | :outbound_track | :both_tracks
+
+        module StreamTrack
+          extend Telnyx::Internal::Type::Enum
+
+          INBOUND_TRACK: :inbound_track
+          OUTBOUND_TRACK: :outbound_track
+          BOTH_TRACKS: :both_tracks
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionAnswerParams::stream_track]
+        end
+
+        type webhook_url_method = :POST | :GET
+
+        module WebhookURLMethod
+          extend Telnyx::Internal::Type::Enum
+
+          POST: :POST
+          GET: :GET
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionAnswerParams::webhook_url_method]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,22 @@
+module Telnyx
+  module Resources
+    class ExternalConnections
+      class Releases
+        def retrieve: (
+          String release_id,
+          id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse
+
+        def list: (
+          String id,
+          ?filter: Telnyx::ExternalConnections::ReleaseListParams::Filter,
+          ?page: Telnyx::ExternalConnections::ReleaseListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ExternalConnections::ReleaseListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

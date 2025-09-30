@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    module Rooms
+      module Sessions
+        type action_kick_response =
+          { data: Telnyx::Models::Rooms::Sessions::ActionKickResponse::Data }
+
+        class ActionKickResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: Telnyx::Models::Rooms::Sessions::ActionKickResponse::Data?
+
+          def data=: (
+            Telnyx::Models::Rooms::Sessions::ActionKickResponse::Data
+          ) -> Telnyx::Models::Rooms::Sessions::ActionKickResponse::Data
+
+          def initialize: (
+            ?data: Telnyx::Models::Rooms::Sessions::ActionKickResponse::Data
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::Models::Rooms::Sessions::ActionKickResponse::Data
+          }
+
+          type data = { result: String }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_reader result: String?
+
+            def result=: (String) -> String
+
+            def initialize: (?result: String) -> void
+
+            def to_hash: -> { result: String }
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,83 @@
+module Telnyx
+  module Models
+    type porting_list_uk_carriers_response =
+      { data: ::Array[Telnyx::Models::PortingListUkCarriersResponse::Data] }
+
+    class PortingListUkCarriersResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::PortingListUkCarriersResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::PortingListUkCarriersResponse::Data]
+      ) -> ::Array[Telnyx::Models::PortingListUkCarriersResponse::Data]
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::PortingListUkCarriersResponse::Data]
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::PortingListUkCarriersResponse::Data]
+      }
+
+      type data =
+        {
+          id: String,
+          alternative_cupids: ::Array[String],
+          created_at: Time,
+          cupid: String,
+          name: String,
+          record_type: String,
+          updated_at: Time
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader alternative_cupids: ::Array[String]?
+
+        def alternative_cupids=: (::Array[String]) -> ::Array[String]
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader cupid: String?
+
+        def cupid=: (String) -> String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        def initialize: (
+          ?id: String,
+          ?alternative_cupids: ::Array[String],
+          ?created_at: Time,
+          ?cupid: String,
+          ?name: String,
+          ?record_type: String,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          alternative_cupids: ::Array[String],
+          created_at: Time,
+          cupid: String,
+          name: String,
+          record_type: String,
+          updated_at: Time
+        }
+      end
+    end
+  end
+end

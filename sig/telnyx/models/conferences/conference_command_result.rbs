@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    class ConferenceCommandResult = Conferences::ConferenceCommandResult
+
+    module Conferences
+      type conference_command_result = { result: String }
+
+      class ConferenceCommandResult < Telnyx::Internal::Type::BaseModel
+        attr_accessor result: String
+
+        def initialize: (result: String) -> void
+
+        def to_hash: -> { result: String }
+      end
+    end
+  end
+end

@@ -1,233 +1,281 @@
-# Telnyx Ruby Library
+# Telnyx Ruby API library
 
-![Build Status](https://github.com/team-telnyx/telnyx-ruby/workflows/Ruby/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/team-telnyx/telnyx-ruby/badge.svg?branch=master)](https://coveralls.io/github/team-telnyx/telnyx-ruby?branch=master)
-[![Join Slack](https://img.shields.io/badge/join-slack-infomational)](https://joinslack.telnyx.com/)
+The Telnyx Ruby library provides convenient access to the Telnyx REST API from any Ruby 3.2.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/team-telnyx/telnyx-ruby#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
 
-The Telnyx Ruby library provides convenient access to the Telnyx API from
-applications written in the Ruby language. It includes a pre-defined set of
-classes for API resources that initialize themselves dynamically from API
-responses.
-
-The library also provides other features. For example:
-
-* Easy configuration path for fast setup and use.
-* Helpers for pagination.
-* Tracking of "fresh" values in API resources so that partial updates can be
-  executed.
-* Built-in mechanisms for the serialization of parameters according to the
-  expectations of Telnyx's API.
+It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
-See the [API docs](https://developers.telnyx.com/docs/api/v2/overview).
+Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/telnyx).
 
 ## Installation
 
-You don't need this source code unless you want to modify the gem. If you just
-want to use the package, just run:
+To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
 
-    gem install telnyx
+<!-- x-release-please-start-version -->
 
-If you want to build the gem from source:
-
-    gem build telnyx.gemspec
-
-### Requirements
-
-* Ruby 3.0.0+
-
-### Bundler
-
-If you are installing via bundler, you should be sure to use the https rubygems
-source in your Gemfile, as any gems fetched over http could potentially be
-compromised in transit and alter the code of gems fetched securely over https:
-
-``` ruby
-source 'https://rubygems.org'
-
-gem 'telnyx'
+```ruby
+gem "telnyx", "~> 4.0.0"
 ```
+
+<!-- x-release-please-end -->
 
 ## Usage
 
-The library needs to be configured with your account's secret key which is
-available in your [Telnyx Portal][api-keys]. Set `Telnyx.api_key` to its
-value:
-
-``` ruby
+```ruby
+require "bundler/setup"
 require "telnyx"
-Telnyx.api_key = "YOUR_API_KEY"
 
-# list messaging profiles
-Telnyx::MessagingProfile.list()
+telnyx = Telnyx::Client.new(
+  api_key: ENV["TELNYX_API_KEY"] # This is the default and can be omitted
+)
 
-# retrieve single messaging profile
-Telnyx::MessagingProfile.retrieve("123")
+response = telnyx.calls.dial(
+  connection_id: "conn12345",
+  from: "+15557654321",
+  to: "+15551234567",
+  webhook_url: "https://your-webhook.url/events"
+)
+
+puts(response.data)
 ```
 
+### File uploads
 
-### Iterating over a resource
-
-API resources are paginated and the library comes with a handful of methods to
-ease dealing with them seemlessly.
+Request parameters that correspond to file uploads can be passed as raw contents, a [`Pathname`](https://rubyapi.org/3.2/o/pathname) instance, [`StringIO`](https://rubyapi.org/3.2/o/stringio), or more.
 
 ```ruby
-# list messaging profiles
-first_page = Telnyx::MessagingProfile.list()
+require "pathname"
 
-# check whether there are more pages to go through
-if first_page.more?
-  puts("There are still more pages to go.")
-else
-  puts("This is the last page.")
-end
+# Use `Pathname` to send the filename and/or avoid paging a large file into memory:
+response = telnyx.ai.audio.transcribe(file: Pathname("/path/to/file"))
 
-# get current page's size and number
-first_page.page_size
-first_page.page_number
+# Alternatively, pass file contents or a `StringIO` directly:
+response = telnyx.ai.audio.transcribe(file: File.read("/path/to/file"))
 
-# fetch the next and previous pages
-second_page = first_page.next_page
-first_page = second_page.previous_page
+# Or, to control the filename and/or content type:
+file = Telnyx::FilePart.new(File.read("/path/to/file"), filename: "/path/to/file", content_type: "…")
+response = telnyx.ai.audio.transcribe(file: file)
 
-# iterate over the results of a *single page*
-second_page.each do |messaging_profile|
-  puts(messaging_profile.id)
-end
+puts(response.text)
+```
 
-# iterate over *all of the messaging profiles* starting at `first_page`
-# similar to `each`, but requests subsequent pages as needed
-first_page.auto_paging_each do |messaging_profile|
-  puts(messaging_profile.id)
+Note that you can also pass a raw `IO` descriptor, but this disables retries, as the library can't be sure if the descriptor is a file or pipe (which cannot be rewound).
+
+### Handling errors
+
+When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `Telnyx::Errors::APIError` will be thrown:
+
+```ruby
+begin
+  number_order = telnyx.number_orders.create(phone_numbers: [{phone_number: "+15558675309"}])
+rescue Telnyx::Errors::APIConnectionError => e
+  puts("The server could not be reached")
+  puts(e.cause)  # an underlying Exception, likely raised within `net/http`
+rescue Telnyx::Errors::RateLimitError => e
+  puts("A 429 status code was received; we should back off a bit.")
+rescue Telnyx::Errors::APIStatusError => e
+  puts("Another non-200-range status code was received")
+  puts(e.status)
 end
 ```
 
+Error codes are as follows:
 
-### Configuring a Client
+| Cause            | Error Type                 |
+| ---------------- | -------------------------- |
+| HTTP 400         | `BadRequestError`          |
+| HTTP 401         | `AuthenticationError`      |
+| HTTP 403         | `PermissionDeniedError`    |
+| HTTP 404         | `NotFoundError`            |
+| HTTP 409         | `ConflictError`            |
+| HTTP 422         | `UnprocessableEntityError` |
+| HTTP 429         | `RateLimitError`           |
+| HTTP >= 500      | `InternalServerError`      |
+| Other HTTP error | `APIStatusError`           |
+| Timeout          | `APITimeoutError`          |
+| Network error    | `APIConnectionError`       |
 
-While a default HTTP client is used by default, it's also possible to have the
-library use any client supported by [Faraday][faraday] by initializing a
-`Telnyx::TelnyxClient` object and giving it a connection:
+### Retries
 
-``` ruby
-conn = Faraday.new
-client = Telnyx::TelnyxClient.new(conn)
-connection, resp = client.request do
-  Telnyx::MessagingProfile.retrieve(
-    "123",
+Certain errors will be automatically retried 2 times by default, with a short exponential backoff.
+
+Connection errors (for example, due to a network connectivity problem), 408 Request Timeout, 409 Conflict, 429 Rate Limit, >=500 Internal errors, and timeouts will all be retried by default.
+
+You can use the `max_retries` option to configure or disable this:
+
+```ruby
+# Configure the default for all requests:
+telnyx = Telnyx::Client.new(
+  max_retries: 0 # default is 2
+)
+
+# Or, configure per-request:
+telnyx.number_orders.create(
+  phone_numbers: [{phone_number: "+15558675309"}],
+  request_options: {max_retries: 5}
+)
+```
+
+### Timeouts
+
+By default, requests will time out after 60 seconds. You can use the timeout option to configure or disable this:
+
+```ruby
+# Configure the default for all requests:
+telnyx = Telnyx::Client.new(
+  timeout: nil # default is 60
+)
+
+# Or, configure per-request:
+telnyx.number_orders.create(
+  phone_numbers: [{phone_number: "+15558675309"}],
+  request_options: {timeout: 5}
+)
+```
+
+On timeout, `Telnyx::Errors::APITimeoutError` is raised.
+
+Note that requests that time out are retried by default.
+
+## Advanced concepts
+
+### BaseModel
+
+All parameter and response objects inherit from `Telnyx::Internal::Type::BaseModel`, which provides several conveniences, including:
+
+1. All fields, including unknown ones, are accessible with `obj[:prop]` syntax, and can be destructured with `obj => {prop: prop}` or pattern-matching syntax.
+
+2. Structural equivalence for equality; if two API calls return the same values, comparing the responses with == will return true.
+
+3. Both instances and the classes themselves can be pretty-printed.
+
+4. Helpers such as `#to_h`, `#deep_to_h`, `#to_json`, and `#to_yaml`.
+
+### Making custom or undocumented requests
+
+#### Undocumented properties
+
+You can send undocumented parameters to any endpoint, and read undocumented response properties, like so:
+
+Note: the `extra_` parameters of the same name overrides the documented parameters.
+
+```ruby
+number_order =
+  telnyx.number_orders.create(
+    phone_numbers: [{phone_number: "+15558675309"}],
+    request_options: {
+      extra_query: {my_query_parameter: value},
+      extra_body: {my_body_parameter: value},
+      extra_headers: {"my-header": value}
+    }
   )
-end
-puts resp.request_id
+
+puts(number_order[:my_undocumented_property])
 ```
 
-### Configuring Automatic Retries
+#### Undocumented request params
 
-The library can be configured to automatically retry requests that fail due to
-an intermittent network problem:
+If you want to explicitly send an extra param, you can do so with the `extra_query`, `extra_body`, and `extra_headers` under the `request_options:` parameter when making a request, as seen in the examples above.
 
-    Telnyx.max_network_retries = 2
+#### Undocumented endpoints
 
-### Configuring Timeouts
-
-Open and read timeouts are configurable:
+To make requests to undocumented endpoints while retaining the benefit of auth, retries, and so on, you can make requests using `client.request`, like so:
 
 ```ruby
-Telnyx.open_timeout = 30 # in seconds
-Telnyx.read_timeout = 80
+response = client.request(
+  method: :post,
+  path: '/undocumented/endpoint',
+  query: {"dog": "woof"},
+  headers: {"useful-header": "interesting-value"},
+  body: {"hello": "world"}
+)
 ```
 
-Please take care to set conservative read timeouts. Some API requests can take
-some time, and a short timeout increases the likelihood of a problem within our
-servers.
+### Concurrency & connection pooling
 
-### Logging
+The `Telnyx::Client` instances are threadsafe, but are only are fork-safe when there are no in-flight HTTP requests.
 
-The library can be configured to emit logging that will give you better insight
-into what it's doing. The `info` logging level is usually most appropriate for
-production use, but `debug` is also available for more verbosity.
+Each instance of `Telnyx::Client` has its own HTTP connection pool with a default size of 99. As such, we recommend instantiating the client once per application in most settings.
 
-There are a few options for enabling it:
+When all available connections from the pool are checked out, requests wait for a new connection to become available, with queue time counting towards the request timeout.
 
-1. Set the environment variable `TELNYX_LOG_LEVEL` to the value `debug` or `info`:
-   ```
-   $ export TELNYX_LOG_LEVEL=info
-   ```
+Unless otherwise specified, other classes in the SDK do not have locks protecting their underlying data structure.
 
-2. Set `Telnyx.log_level`:
-   ``` ruby
-   Telnyx.log_level = Telnyx::LEVEL_INFO
-   ```
+## Sorbet
 
-## Development
+This library provides comprehensive [RBI](https://sorbet.org/docs/rbi) definitions, and has no dependency on sorbet-runtime.
 
-### Setup
-The test suite depends on the [Prism Mock Server](https://github.com/stoplightio/prism).
+You can provide typesafe request parameters like so:
 
-```bash
-npm install -g @stoplight/prism-cli
-
-# OR
-
-yarn global add @stoplight/prism-cli
+```ruby
+telnyx.calls.dial(
+  connection_id: "conn12345",
+  from: "+15557654321",
+  to: "+15551234567",
+  webhook_url: "https://your-webhook.url/events"
+)
 ```
 
-Once installed, start the prism mock service with the following command:
+Or, equivalently:
 
-```bash
-prism mock https://raw.githubusercontent.com/team-telnyx/openapi/master/openapi/spec3.json
+```ruby
+# Hashes work, but are not typesafe:
+telnyx.calls.dial(
+  connection_id: "conn12345",
+  from: "+15557654321",
+  to: "+15551234567",
+  webhook_url: "https://your-webhook.url/events"
+)
+
+# You can also splat a full Params class:
+params = Telnyx::CallDialParams.new(
+  connection_id: "conn12345",
+  from: "+15557654321",
+  to: "+15551234567",
+  webhook_url: "https://your-webhook.url/events"
+)
+telnyx.calls.dial(**params)
 ```
 
---------
+### Enums
 
-One final step -- because the Ruby SDK originally expected to reach the legacy `telnyx-mock` service at port 12111 (in addition to providing a `/v2/` base path), we need to setup a proxy server.
+Since this library does not depend on `sorbet-runtime`, it cannot provide [`T::Enum`](https://sorbet.org/docs/tenum) instances. Instead, we provide "tagged symbols" instead, which is always a primitive at runtime:
 
-You can do this any way you wish, but included is a server.js file which you can utilize:
+```ruby
+# :ALL
+puts(Telnyx::Legacy::Reporting::UsageReports::NumberLookupCreateParams::AggregationType::ALL)
 
-```bash
-# In new terminal window
-
-node server.js
+# Revealed type: `T.all(Telnyx::Legacy::Reporting::UsageReports::NumberLookupCreateParams::AggregationType, Symbol)`
+T.reveal_type(Telnyx::Legacy::Reporting::UsageReports::NumberLookupCreateParams::AggregationType::ALL)
 ```
 
-### Running Tests
+Enum parameters have a "relaxed" type, so you can either pass in enum constants or their literal value:
 
-Run all tests:
+```ruby
+# Using the enum constants preserves the tagged type information:
+telnyx.legacy.reporting.usage_reports.number_lookup.create(
+  aggregation_type: Telnyx::Legacy::Reporting::UsageReports::NumberLookupCreateParams::AggregationType::ALL,
+  # …
+)
 
-    bundle exec rake test
+# Literal values are also permissible:
+telnyx.legacy.reporting.usage_reports.number_lookup.create(
+  aggregation_type: :ALL,
+  # …
+)
+```
 
-Run a single test suite:
+## Versioning
 
-    bundle exec ruby -Ilib/ test/telnyx/util_test.rb
+This package follows [SemVer](https://semver.org/spec/v2.0.0.html) conventions. As the library is in initial development and has a major version of `0`, APIs may change at any time.
 
-Run a single test:
+This package considers improvements to the (non-runtime) `*.rbi` and `*.rbs` type definitions to be non-breaking changes.
 
-    bundle exec ruby -Ilib/ test/telnyx/util_test.rb -n /should.convert.names.to.symbols/
+## Requirements
 
-Run the linter:
+Ruby 3.2.0 or higher.
 
-    bundle exec rake rubocop
+## Contributing
 
-Run guard:
-
-    bundle exec guard
-
-### Adding a new resource
-
-To add a new resource:
-
-1. Add the class for the resource under `lib/telnyx/`.
-2. Require the new class in `lib/telnyx.rb`.
-3. Add the association between `OBJECT_NAME` and class name in the `object_classes` hash in `lib/telnyx/util.rb`.
-4. Add tests to validate the behaviour of the new class.
-
-## Acknowledgements
-
-The contributors and maintainers of Telnyx Ruby would like to extend their deep gratitude to the
-authors of [Stripe Ruby](https://github.com/stripe/stripe-ruby), upon which
-this project is based. Thank you for developing such elegant, usable, extensible code
-and for sharing it with the community.
-
-[api-keys]: https://portal.telnyx.com/#/app/auth/v2
-[faraday]: https://github.com/lostisland/faraday
-[telnyx-mock]: https://github.com/telnyx/telnyx-mock
+See [the contributing documentation](https://github.com/team-telnyx/telnyx-ruby/tree/master/CONTRIBUTING.md).

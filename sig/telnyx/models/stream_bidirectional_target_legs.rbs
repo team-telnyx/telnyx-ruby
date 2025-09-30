@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type stream_bidirectional_target_legs = :both | :self | :opposite
+
+    module StreamBidirectionalTargetLegs
+      extend Telnyx::Internal::Type::Enum
+
+      BOTH: :both
+      SELF: :self
+      OPPOSITE: :opposite
+
+      def self?.values: -> ::Array[Telnyx::Models::stream_bidirectional_target_legs]
+    end
+  end
+end

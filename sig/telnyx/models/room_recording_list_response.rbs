@@ -1,0 +1,181 @@
+module Telnyx
+  module Models
+    type room_recording_list_response =
+      {
+        data: ::Array[Telnyx::Models::RoomRecordingListResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class RoomRecordingListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::RoomRecordingListResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::RoomRecordingListResponse::Data]
+      ) -> ::Array[Telnyx::Models::RoomRecordingListResponse::Data]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::RoomRecordingListResponse::Data],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::RoomRecordingListResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+      type data =
+        {
+          id: String,
+          codec: String,
+          completed_at: Time,
+          created_at: Time,
+          download_url: String,
+          duration_secs: Integer,
+          ended_at: Time,
+          participant_id: String,
+          record_type: String,
+          room_id: String,
+          session_id: String,
+          size_mb: Float,
+          started_at: Time,
+          status: Telnyx::Models::RoomRecordingListResponse::Data::status,
+          type: Telnyx::Models::RoomRecordingListResponse::Data::type_,
+          updated_at: Time
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader codec: String?
+
+        def codec=: (String) -> String
+
+        attr_reader completed_at: Time?
+
+        def completed_at=: (Time) -> Time
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader download_url: String?
+
+        def download_url=: (String) -> String
+
+        attr_reader duration_secs: Integer?
+
+        def duration_secs=: (Integer) -> Integer
+
+        attr_reader ended_at: Time?
+
+        def ended_at=: (Time) -> Time
+
+        attr_reader participant_id: String?
+
+        def participant_id=: (String) -> String
+
+        attr_reader room_id: String?
+
+        def room_id=: (String) -> String
+
+        attr_reader session_id: String?
+
+        def session_id=: (String) -> String
+
+        attr_reader size_mb: Float?
+
+        def size_mb=: (Float) -> Float
+
+        attr_reader started_at: Time?
+
+        def started_at=: (Time) -> Time
+
+        attr_reader status: Telnyx::Models::RoomRecordingListResponse::Data::status?
+
+        def status=: (
+          Telnyx::Models::RoomRecordingListResponse::Data::status
+        ) -> Telnyx::Models::RoomRecordingListResponse::Data::status
+
+        attr_reader type: Telnyx::Models::RoomRecordingListResponse::Data::type_?
+
+        def type=: (
+          Telnyx::Models::RoomRecordingListResponse::Data::type_
+        ) -> Telnyx::Models::RoomRecordingListResponse::Data::type_
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?codec: String,
+          ?completed_at: Time,
+          ?created_at: Time,
+          ?download_url: String,
+          ?duration_secs: Integer,
+          ?ended_at: Time,
+          ?participant_id: String,
+          ?record_type: String,
+          ?room_id: String,
+          ?session_id: String,
+          ?size_mb: Float,
+          ?started_at: Time,
+          ?status: Telnyx::Models::RoomRecordingListResponse::Data::status,
+          ?type: Telnyx::Models::RoomRecordingListResponse::Data::type_,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          codec: String,
+          completed_at: Time,
+          created_at: Time,
+          download_url: String,
+          duration_secs: Integer,
+          ended_at: Time,
+          participant_id: String,
+          record_type: String,
+          room_id: String,
+          session_id: String,
+          size_mb: Float,
+          started_at: Time,
+          status: Telnyx::Models::RoomRecordingListResponse::Data::status,
+          type: Telnyx::Models::RoomRecordingListResponse::Data::type_,
+          updated_at: Time
+        }
+
+        type status = :completed | :processing
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          COMPLETED: :completed
+          PROCESSING: :processing
+
+          def self?.values: -> ::Array[Telnyx::Models::RoomRecordingListResponse::Data::status]
+        end
+
+        type type_ = :audio | :video
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          AUDIO: :audio
+          VIDEO: :video
+
+          def self?.values: -> ::Array[Telnyx::Models::RoomRecordingListResponse::Data::type_]
+        end
+      end
+    end
+  end
+end

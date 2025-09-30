@@ -1,0 +1,108 @@
+module Telnyx
+  module Models
+    module Portouts
+      type report_list_params =
+        {
+          filter: Telnyx::Portouts::ReportListParams::Filter,
+          page: Telnyx::Portouts::ReportListParams::Page
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ReportListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter: Telnyx::Portouts::ReportListParams::Filter?
+
+        def filter=: (
+          Telnyx::Portouts::ReportListParams::Filter
+        ) -> Telnyx::Portouts::ReportListParams::Filter
+
+        attr_reader page: Telnyx::Portouts::ReportListParams::Page?
+
+        def page=: (
+          Telnyx::Portouts::ReportListParams::Page
+        ) -> Telnyx::Portouts::ReportListParams::Page
+
+        def initialize: (
+          ?filter: Telnyx::Portouts::ReportListParams::Filter,
+          ?page: Telnyx::Portouts::ReportListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter: Telnyx::Portouts::ReportListParams::Filter,
+          page: Telnyx::Portouts::ReportListParams::Page,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter =
+          {
+            report_type: Telnyx::Models::Portouts::ReportListParams::Filter::report_type,
+            status: Telnyx::Models::Portouts::ReportListParams::Filter::status
+          }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader report_type: Telnyx::Models::Portouts::ReportListParams::Filter::report_type?
+
+          def report_type=: (
+            Telnyx::Models::Portouts::ReportListParams::Filter::report_type
+          ) -> Telnyx::Models::Portouts::ReportListParams::Filter::report_type
+
+          attr_reader status: Telnyx::Models::Portouts::ReportListParams::Filter::status?
+
+          def status=: (
+            Telnyx::Models::Portouts::ReportListParams::Filter::status
+          ) -> Telnyx::Models::Portouts::ReportListParams::Filter::status
+
+          def initialize: (
+            ?report_type: Telnyx::Models::Portouts::ReportListParams::Filter::report_type,
+            ?status: Telnyx::Models::Portouts::ReportListParams::Filter::status
+          ) -> void
+
+          def to_hash: -> {
+            report_type: Telnyx::Models::Portouts::ReportListParams::Filter::report_type,
+            status: Telnyx::Models::Portouts::ReportListParams::Filter::status
+          }
+
+          type report_type = :export_portouts_csv
+
+          module ReportType
+            extend Telnyx::Internal::Type::Enum
+
+            EXPORT_PORTOUTS_CSV: :export_portouts_csv
+
+            def self?.values: -> ::Array[Telnyx::Models::Portouts::ReportListParams::Filter::report_type]
+          end
+
+          type status = :pending | :completed
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :pending
+            COMPLETED: :completed
+
+            def self?.values: -> ::Array[Telnyx::Models::Portouts::ReportListParams::Filter::status]
+          end
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
+        end
+      end
+    end
+  end
+end

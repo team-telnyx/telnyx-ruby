@@ -1,0 +1,35 @@
+module Telnyx
+  module Models
+    module Storage
+      type migration_list_response =
+        {
+          data: ::Array[Telnyx::Storage::MigrationParams],
+          meta: Telnyx::Storage::Buckets::PaginationMetaSimple
+        }
+
+      class MigrationListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::Storage::MigrationParams]?
+
+        def data=: (
+          ::Array[Telnyx::Storage::MigrationParams]
+        ) -> ::Array[Telnyx::Storage::MigrationParams]
+
+        attr_reader meta: Telnyx::Storage::Buckets::PaginationMetaSimple?
+
+        def meta=: (
+          Telnyx::Storage::Buckets::PaginationMetaSimple
+        ) -> Telnyx::Storage::Buckets::PaginationMetaSimple
+
+        def initialize: (
+          ?data: ::Array[Telnyx::Storage::MigrationParams],
+          ?meta: Telnyx::Storage::Buckets::PaginationMetaSimple
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Storage::MigrationParams],
+          meta: Telnyx::Storage::Buckets::PaginationMetaSimple
+        }
+      end
+    end
+  end
+end

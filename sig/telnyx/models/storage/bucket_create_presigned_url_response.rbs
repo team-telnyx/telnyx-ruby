@@ -1,0 +1,55 @@
+module Telnyx
+  module Models
+    module Storage
+      type bucket_create_presigned_url_response =
+        {
+          content: Telnyx::Models::Storage::BucketCreatePresignedURLResponse::Content
+        }
+
+      class BucketCreatePresignedURLResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader content: Telnyx::Models::Storage::BucketCreatePresignedURLResponse::Content?
+
+        def content=: (
+          Telnyx::Models::Storage::BucketCreatePresignedURLResponse::Content
+        ) -> Telnyx::Models::Storage::BucketCreatePresignedURLResponse::Content
+
+        def initialize: (
+          ?content: Telnyx::Models::Storage::BucketCreatePresignedURLResponse::Content
+        ) -> void
+
+        def to_hash: -> {
+          content: Telnyx::Models::Storage::BucketCreatePresignedURLResponse::Content
+        }
+
+        type content =
+          { token: String, expires_at: Time, presigned_url: String }
+
+        class Content < Telnyx::Internal::Type::BaseModel
+          attr_reader token: String?
+
+          def token=: (String) -> String
+
+          attr_reader expires_at: Time?
+
+          def expires_at=: (Time) -> Time
+
+          attr_reader presigned_url: String?
+
+          def presigned_url=: (String) -> String
+
+          def initialize: (
+            ?token: String,
+            ?expires_at: Time,
+            ?presigned_url: String
+          ) -> void
+
+          def to_hash: -> {
+            token: String,
+            expires_at: Time,
+            presigned_url: String
+          }
+        end
+      end
+    end
+  end
+end

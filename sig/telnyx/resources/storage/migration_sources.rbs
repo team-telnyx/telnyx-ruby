@@ -1,0 +1,31 @@
+module Telnyx
+  module Resources
+    class Storage
+      class MigrationSources
+        def create: (
+          bucket_name: String,
+          provider: Telnyx::Models::Storage::MigrationSourceParams::provider,
+          provider_auth: Telnyx::Storage::MigrationSourceParams::ProviderAuth,
+          ?source_region: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Storage::MigrationSourceCreateResponse
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Storage::MigrationSourceRetrieveResponse
+
+        def list: (
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Storage::MigrationSourceListResponse
+
+        def delete: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Storage::MigrationSourceDeleteResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

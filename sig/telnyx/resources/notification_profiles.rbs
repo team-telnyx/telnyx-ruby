@@ -1,0 +1,33 @@
+module Telnyx
+  module Resources
+    class NotificationProfiles
+      def create: (
+        ?name: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NotificationProfileCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NotificationProfileRetrieveResponse
+
+      def update: (
+        String id,
+        ?name: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NotificationProfileUpdateResponse
+
+      def list: (
+        ?page: Telnyx::NotificationProfileListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NotificationProfileListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NotificationProfileDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

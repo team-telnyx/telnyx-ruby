@@ -1,0 +1,143 @@
+module Telnyx
+  module Models
+    type external_connection_list_params =
+      {
+        filter: Telnyx::ExternalConnectionListParams::Filter,
+        page: Telnyx::ExternalConnectionListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class ExternalConnectionListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::ExternalConnectionListParams::Filter?
+
+      def filter=: (
+        Telnyx::ExternalConnectionListParams::Filter
+      ) -> Telnyx::ExternalConnectionListParams::Filter
+
+      attr_reader page: Telnyx::ExternalConnectionListParams::Page?
+
+      def page=: (
+        Telnyx::ExternalConnectionListParams::Page
+      ) -> Telnyx::ExternalConnectionListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::ExternalConnectionListParams::Filter,
+        ?page: Telnyx::ExternalConnectionListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::ExternalConnectionListParams::Filter,
+        page: Telnyx::ExternalConnectionListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          id: String,
+          connection_name: Telnyx::ExternalConnectionListParams::Filter::ConnectionName,
+          created_at: String,
+          external_sip_connection: Telnyx::Models::ExternalConnectionListParams::Filter::external_sip_connection,
+          phone_number: Telnyx::ExternalConnectionListParams::Filter::PhoneNumber
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader connection_name: Telnyx::ExternalConnectionListParams::Filter::ConnectionName?
+
+        def connection_name=: (
+          Telnyx::ExternalConnectionListParams::Filter::ConnectionName
+        ) -> Telnyx::ExternalConnectionListParams::Filter::ConnectionName
+
+        attr_reader created_at: String?
+
+        def created_at=: (String) -> String
+
+        attr_reader external_sip_connection: Telnyx::Models::ExternalConnectionListParams::Filter::external_sip_connection?
+
+        def external_sip_connection=: (
+          Telnyx::Models::ExternalConnectionListParams::Filter::external_sip_connection
+        ) -> Telnyx::Models::ExternalConnectionListParams::Filter::external_sip_connection
+
+        attr_reader phone_number: Telnyx::ExternalConnectionListParams::Filter::PhoneNumber?
+
+        def phone_number=: (
+          Telnyx::ExternalConnectionListParams::Filter::PhoneNumber
+        ) -> Telnyx::ExternalConnectionListParams::Filter::PhoneNumber
+
+        def initialize: (
+          ?id: String,
+          ?connection_name: Telnyx::ExternalConnectionListParams::Filter::ConnectionName,
+          ?created_at: String,
+          ?external_sip_connection: Telnyx::Models::ExternalConnectionListParams::Filter::external_sip_connection,
+          ?phone_number: Telnyx::ExternalConnectionListParams::Filter::PhoneNumber
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          connection_name: Telnyx::ExternalConnectionListParams::Filter::ConnectionName,
+          created_at: String,
+          external_sip_connection: Telnyx::Models::ExternalConnectionListParams::Filter::external_sip_connection,
+          phone_number: Telnyx::ExternalConnectionListParams::Filter::PhoneNumber
+        }
+
+        type connection_name = { contains: String }
+
+        class ConnectionName < Telnyx::Internal::Type::BaseModel
+          attr_reader contains: String?
+
+          def contains=: (String) -> String
+
+          def initialize: (?contains: String) -> void
+
+          def to_hash: -> { contains: String }
+        end
+
+        type external_sip_connection = :zoom | :operator_connect
+
+        module ExternalSipConnection
+          extend Telnyx::Internal::Type::Enum
+
+          ZOOM: :zoom
+          OPERATOR_CONNECT: :operator_connect
+
+          def self?.values: -> ::Array[Telnyx::Models::ExternalConnectionListParams::Filter::external_sip_connection]
+        end
+
+        type phone_number = { contains: String }
+
+        class PhoneNumber < Telnyx::Internal::Type::BaseModel
+          attr_reader contains: String?
+
+          def contains=: (String) -> String
+
+          def initialize: (?contains: String) -> void
+
+          def to_hash: -> { contains: String }
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

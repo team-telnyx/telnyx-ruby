@@ -1,0 +1,51 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type phone_number_configuration_create_params =
+        {
+          phone_number_configurations: ::Array[Telnyx::PortingOrders::PhoneNumberConfigurationCreateParams::PhoneNumberConfiguration]
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class PhoneNumberConfigurationCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader phone_number_configurations: ::Array[Telnyx::PortingOrders::PhoneNumberConfigurationCreateParams::PhoneNumberConfiguration]?
+
+        def phone_number_configurations=: (
+          ::Array[Telnyx::PortingOrders::PhoneNumberConfigurationCreateParams::PhoneNumberConfiguration]
+        ) -> ::Array[Telnyx::PortingOrders::PhoneNumberConfigurationCreateParams::PhoneNumberConfiguration]
+
+        def initialize: (
+          ?phone_number_configurations: ::Array[Telnyx::PortingOrders::PhoneNumberConfigurationCreateParams::PhoneNumberConfiguration],
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          phone_number_configurations: ::Array[Telnyx::PortingOrders::PhoneNumberConfigurationCreateParams::PhoneNumberConfiguration],
+          request_options: Telnyx::RequestOptions
+        }
+
+        type phone_number_configuration =
+          { porting_phone_number_id: String, user_bundle_id: String }
+
+        class PhoneNumberConfiguration < Telnyx::Internal::Type::BaseModel
+          attr_accessor porting_phone_number_id: String
+
+          attr_accessor user_bundle_id: String
+
+          def initialize: (
+            porting_phone_number_id: String,
+            user_bundle_id: String
+          ) -> void
+
+          def to_hash: -> {
+            porting_phone_number_id: String,
+            user_bundle_id: String
+          }
+        end
+      end
+    end
+  end
+end

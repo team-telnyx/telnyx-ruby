@@ -1,0 +1,161 @@
+module Telnyx
+  module Models
+    type fax_list_params =
+      {
+        filter: Telnyx::FaxListParams::Filter,
+        page: Telnyx::FaxListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class FaxListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::FaxListParams::Filter?
+
+      def filter=: (
+        Telnyx::FaxListParams::Filter
+      ) -> Telnyx::FaxListParams::Filter
+
+      attr_reader page: Telnyx::FaxListParams::Page?
+
+      def page=: (Telnyx::FaxListParams::Page) -> Telnyx::FaxListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::FaxListParams::Filter,
+        ?page: Telnyx::FaxListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::FaxListParams::Filter,
+        page: Telnyx::FaxListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          created_at: Telnyx::FaxListParams::Filter::CreatedAt,
+          direction: Telnyx::FaxListParams::Filter::Direction,
+          from: Telnyx::FaxListParams::Filter::From,
+          to: Telnyx::FaxListParams::Filter::To
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader created_at: Telnyx::FaxListParams::Filter::CreatedAt?
+
+        def created_at=: (
+          Telnyx::FaxListParams::Filter::CreatedAt
+        ) -> Telnyx::FaxListParams::Filter::CreatedAt
+
+        attr_reader direction: Telnyx::FaxListParams::Filter::Direction?
+
+        def direction=: (
+          Telnyx::FaxListParams::Filter::Direction
+        ) -> Telnyx::FaxListParams::Filter::Direction
+
+        attr_reader from: Telnyx::FaxListParams::Filter::From?
+
+        def from=: (
+          Telnyx::FaxListParams::Filter::From
+        ) -> Telnyx::FaxListParams::Filter::From
+
+        attr_reader to: Telnyx::FaxListParams::Filter::To?
+
+        def to=: (
+          Telnyx::FaxListParams::Filter::To
+        ) -> Telnyx::FaxListParams::Filter::To
+
+        def initialize: (
+          ?created_at: Telnyx::FaxListParams::Filter::CreatedAt,
+          ?direction: Telnyx::FaxListParams::Filter::Direction,
+          ?from: Telnyx::FaxListParams::Filter::From,
+          ?to: Telnyx::FaxListParams::Filter::To
+        ) -> void
+
+        def to_hash: -> {
+          created_at: Telnyx::FaxListParams::Filter::CreatedAt,
+          direction: Telnyx::FaxListParams::Filter::Direction,
+          from: Telnyx::FaxListParams::Filter::From,
+          to: Telnyx::FaxListParams::Filter::To
+        }
+
+        type created_at = { gt: Time, gte: Time, lt: Time, lte: Time }
+
+        class CreatedAt < Telnyx::Internal::Type::BaseModel
+          attr_reader gt: Time?
+
+          def gt=: (Time) -> Time
+
+          attr_reader gte: Time?
+
+          def gte=: (Time) -> Time
+
+          attr_reader lt: Time?
+
+          def lt=: (Time) -> Time
+
+          attr_reader lte: Time?
+
+          def lte=: (Time) -> Time
+
+          def initialize: (?gt: Time, ?gte: Time, ?lt: Time, ?lte: Time) -> void
+
+          def to_hash: -> { gt: Time, gte: Time, lt: Time, lte: Time }
+        end
+
+        type direction = { eq: String }
+
+        class Direction < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: String?
+
+          def eq=: (String) -> String
+
+          def initialize: (?eq: String) -> void
+
+          def to_hash: -> { eq: String }
+        end
+
+        type from = { eq: String }
+
+        class From < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: String?
+
+          def eq=: (String) -> String
+
+          def initialize: (?eq: String) -> void
+
+          def to_hash: -> { eq: String }
+        end
+
+        type to = { eq: String }
+
+        class To < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: String?
+
+          def eq=: (String) -> String
+
+          def initialize: (?eq: String) -> void
+
+          def to_hash: -> { eq: String }
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

@@ -1,0 +1,30 @@
+module Telnyx
+  module Models
+    module Messages
+      type rc_generate_deeplink_response =
+        { data: Telnyx::Models::Messages::RcGenerateDeeplinkResponse::Data }
+
+      class RcGenerateDeeplinkResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::Models::Messages::RcGenerateDeeplinkResponse::Data
+
+        def initialize: (
+          data: Telnyx::Models::Messages::RcGenerateDeeplinkResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::Messages::RcGenerateDeeplinkResponse::Data
+        }
+
+        type data = { url: String }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor url: String
+
+          def initialize: (url: String) -> void
+
+          def to_hash: -> { url: String }
+        end
+      end
+    end
+  end
+end

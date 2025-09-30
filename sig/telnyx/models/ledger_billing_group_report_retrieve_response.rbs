@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type ledger_billing_group_report_retrieve_response =
+      { data: Telnyx::LedgerBillingGroupReport }
+
+    class LedgerBillingGroupReportRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::LedgerBillingGroupReport?
+
+      def data=: (
+        Telnyx::LedgerBillingGroupReport
+      ) -> Telnyx::LedgerBillingGroupReport
+
+      def initialize: (?data: Telnyx::LedgerBillingGroupReport) -> void
+
+      def to_hash: -> { data: Telnyx::LedgerBillingGroupReport }
+    end
+  end
+end

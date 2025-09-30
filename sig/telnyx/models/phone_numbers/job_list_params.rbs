@@ -1,0 +1,110 @@
+module Telnyx
+  module Models
+    module PhoneNumbers
+      type job_list_params =
+        {
+          filter: Telnyx::PhoneNumbers::JobListParams::Filter,
+          page: Telnyx::PhoneNumbers::JobListParams::Page,
+          sort: Telnyx::Models::PhoneNumbers::JobListParams::sort
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class JobListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter: Telnyx::PhoneNumbers::JobListParams::Filter?
+
+        def filter=: (
+          Telnyx::PhoneNumbers::JobListParams::Filter
+        ) -> Telnyx::PhoneNumbers::JobListParams::Filter
+
+        attr_reader page: Telnyx::PhoneNumbers::JobListParams::Page?
+
+        def page=: (
+          Telnyx::PhoneNumbers::JobListParams::Page
+        ) -> Telnyx::PhoneNumbers::JobListParams::Page
+
+        attr_reader sort: Telnyx::Models::PhoneNumbers::JobListParams::sort?
+
+        def sort=: (
+          Telnyx::Models::PhoneNumbers::JobListParams::sort
+        ) -> Telnyx::Models::PhoneNumbers::JobListParams::sort
+
+        def initialize: (
+          ?filter: Telnyx::PhoneNumbers::JobListParams::Filter,
+          ?page: Telnyx::PhoneNumbers::JobListParams::Page,
+          ?sort: Telnyx::Models::PhoneNumbers::JobListParams::sort,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter: Telnyx::PhoneNumbers::JobListParams::Filter,
+          page: Telnyx::PhoneNumbers::JobListParams::Page,
+          sort: Telnyx::Models::PhoneNumbers::JobListParams::sort,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter =
+          { type: Telnyx::Models::PhoneNumbers::JobListParams::Filter::type_ }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader type: Telnyx::Models::PhoneNumbers::JobListParams::Filter::type_?
+
+          def type=: (
+            Telnyx::Models::PhoneNumbers::JobListParams::Filter::type_
+          ) -> Telnyx::Models::PhoneNumbers::JobListParams::Filter::type_
+
+          def initialize: (
+            ?type: Telnyx::Models::PhoneNumbers::JobListParams::Filter::type_
+          ) -> void
+
+          def to_hash: -> {
+            type: Telnyx::Models::PhoneNumbers::JobListParams::Filter::type_
+          }
+
+          type type_ =
+            :update_emergency_settings
+            | :delete_phone_numbers
+            | :update_phone_numbers
+
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            UPDATE_EMERGENCY_SETTINGS: :update_emergency_settings
+            DELETE_PHONE_NUMBERS: :delete_phone_numbers
+            UPDATE_PHONE_NUMBERS: :update_phone_numbers
+
+            def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::JobListParams::Filter::type_]
+          end
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
+        end
+
+        type sort = :created_at
+
+        module Sort
+          extend Telnyx::Internal::Type::Enum
+
+          CREATED_AT: :created_at
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::JobListParams::sort]
+        end
+      end
+    end
+  end
+end

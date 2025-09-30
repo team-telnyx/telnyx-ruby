@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    type notification_channel_update_response =
+      { data: Telnyx::NotificationChannel }
+
+    class NotificationChannelUpdateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::NotificationChannel?
+
+      def data=: (Telnyx::NotificationChannel) -> Telnyx::NotificationChannel
+
+      def initialize: (?data: Telnyx::NotificationChannel) -> void
+
+      def to_hash: -> { data: Telnyx::NotificationChannel }
+    end
+  end
+end

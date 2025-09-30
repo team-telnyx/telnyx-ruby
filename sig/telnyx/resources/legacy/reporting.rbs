@@ -1,0 +1,13 @@
+module Telnyx
+  module Resources
+    class Legacy
+      class Reporting
+        attr_reader batch_detail_records: Telnyx::Resources::Legacy::Reporting::BatchDetailRecords
+
+        attr_reader usage_reports: Telnyx::Resources::Legacy::Reporting::UsageReports
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

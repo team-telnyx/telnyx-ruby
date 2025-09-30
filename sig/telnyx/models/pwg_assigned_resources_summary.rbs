@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    type pwg_assigned_resources_summary =
+      { count: Integer, record_type: String }
+
+    class PwgAssignedResourcesSummary < Telnyx::Internal::Type::BaseModel
+      attr_reader count: Integer?
+
+      def count=: (Integer) -> Integer
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      def initialize: (?count: Integer, ?record_type: String) -> void
+
+      def to_hash: -> { count: Integer, record_type: String }
+    end
+  end
+end

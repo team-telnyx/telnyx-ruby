@@ -1,35 +1,28 @@
 # frozen_string_literal: true
 
-$LOAD_PATH.unshift(::File.join(::File.dirname(__FILE__), "lib"))
-
-require "telnyx/version"
+require_relative "lib/telnyx/version"
 
 Gem::Specification.new do |s|
   s.name = "telnyx"
   s.version = Telnyx::VERSION
-  s.required_ruby_version = ">= 3.0.0"
-  s.summary = "Ruby bindings for the Telnyx API"
-  s.description = "Telnyx enables anyone to deliver enterprise-grade real-time communications over the internet. See https://telnyx.com for details."
-  s.author = "Telnyx"
+  s.summary = "Ruby library to access the Telnyx API"
+  s.authors = ["Telnyx"]
   s.email = "support@telnyx.com"
-  s.homepage = "https://developers.telnyx.com"
-  s.license = "MIT"
+  s.homepage = "https://gemdocs.org/gems/telnyx"
+  s.metadata["homepage_uri"] = s.homepage
+  s.metadata["source_code_uri"] = "https://github.com/team-telnyx/telnyx-ruby"
+  s.metadata["rubygems_mfa_required"] = false.to_s
+  s.required_ruby_version = ">= 3.2.0"
 
-  s.metadata = {
-    "documentation_uri" => "https://developers.telnyx.com/docs/api/v2/overview",
-    "github_repo"       => "ssh://github.com/team-telnyx/telnyx-ruby",
-    "homepage_uri"      => "https://telnyx.com",
-    "source_code_uri"   => "https://github.com/team-telnyx/telnyx-ruby",
-  }
-
-  s.add_dependency("faraday", ">= 2.5.0")
-  s.add_dependency("faraday-multipart", "~> 1.0.4")
-  s.add_dependency("faraday-net_http_persistent", "~> 2.1.0")
-  s.add_dependency("net-http-persistent", ">= 3.0", "< 5.0")
-  s.add_dependency("ed25519", "~> 1")
-
-  s.files = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- test/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| ::File.basename(f) }
-  s.require_paths = ["lib"]
+  s.files = Dir[
+    "lib/**/*.rb",
+    "rbi/**/*.rbi",
+    "sig/**/*.rbs",
+    "manifest.yaml",
+    "SECURITY.md",
+    "CHANGELOG.md",
+    ".ignore"
+  ]
+  s.extra_rdoc_files = ["README.md"]
+  s.add_dependency "connection_pool"
 end

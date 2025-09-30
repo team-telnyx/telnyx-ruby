@@ -1,0 +1,73 @@
+module Telnyx
+  module Resources
+    class MessagingProfiles
+      attr_reader autoresp_configs: Telnyx::Resources::MessagingProfiles::AutorespConfigs
+
+      def create: (
+        name: String,
+        whitelisted_destinations: ::Array[String],
+        ?alpha_sender: String?,
+        ?daily_spend_limit: String,
+        ?daily_spend_limit_enabled: bool,
+        ?enabled: bool,
+        ?mms_fall_back_to_sms: bool,
+        ?mms_transcoding: bool,
+        ?number_pool_settings: Telnyx::NumberPoolSettings?,
+        ?url_shortener_settings: Telnyx::URLShortenerSettings?,
+        ?webhook_api_version: Telnyx::Models::MessagingProfileCreateParams::webhook_api_version,
+        ?webhook_failover_url: String?,
+        ?webhook_url: String?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingProfileCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingProfileRetrieveResponse
+
+      def update: (
+        String id,
+        ?alpha_sender: String?,
+        ?daily_spend_limit: String,
+        ?daily_spend_limit_enabled: bool,
+        ?enabled: bool,
+        ?mms_fall_back_to_sms: bool,
+        ?mms_transcoding: bool,
+        ?name: String,
+        ?number_pool_settings: Telnyx::NumberPoolSettings?,
+        ?url_shortener_settings: Telnyx::URLShortenerSettings?,
+        ?v1_secret: String,
+        ?webhook_api_version: Telnyx::Models::MessagingProfileUpdateParams::webhook_api_version,
+        ?webhook_failover_url: String?,
+        ?webhook_url: String?,
+        ?whitelisted_destinations: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingProfileUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::MessagingProfileListParams::Filter,
+        ?page: Telnyx::MessagingProfileListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingProfileListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingProfileDeleteResponse
+
+      def list_phone_numbers: (
+        String id,
+        ?page: Telnyx::MessagingProfileListPhoneNumbersParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingProfileListPhoneNumbersResponse
+
+      def list_short_codes: (
+        String id,
+        ?page: Telnyx::MessagingProfileListShortCodesParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingProfileListShortCodesResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

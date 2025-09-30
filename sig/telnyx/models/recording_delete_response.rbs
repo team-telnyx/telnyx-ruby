@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    type recording_delete_response = { data: Telnyx::RecordingResponseData }
+
+    class RecordingDeleteResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::RecordingResponseData?
+
+      def data=: (
+        Telnyx::RecordingResponseData
+      ) -> Telnyx::RecordingResponseData
+
+      def initialize: (?data: Telnyx::RecordingResponseData) -> void
+
+      def to_hash: -> { data: Telnyx::RecordingResponseData }
+    end
+  end
+end

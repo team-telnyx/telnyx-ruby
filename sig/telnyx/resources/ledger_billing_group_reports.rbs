@@ -1,0 +1,18 @@
+module Telnyx
+  module Resources
+    class LedgerBillingGroupReports
+      def create: (
+        ?month: Integer,
+        ?year: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::LedgerBillingGroupReportCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::LedgerBillingGroupReportRetrieveResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

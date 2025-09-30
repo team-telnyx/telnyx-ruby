@@ -1,0 +1,270 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type phone_number_block_list_params =
+        {
+          filter: Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter,
+          page: Telnyx::PortingOrders::PhoneNumberBlockListParams::Page,
+          sort: Telnyx::PortingOrders::PhoneNumberBlockListParams::Sort
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class PhoneNumberBlockListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter: Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter?
+
+        def filter=: (
+          Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter
+        ) -> Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter
+
+        attr_reader page: Telnyx::PortingOrders::PhoneNumberBlockListParams::Page?
+
+        def page=: (
+          Telnyx::PortingOrders::PhoneNumberBlockListParams::Page
+        ) -> Telnyx::PortingOrders::PhoneNumberBlockListParams::Page
+
+        attr_reader sort: Telnyx::PortingOrders::PhoneNumberBlockListParams::Sort?
+
+        def sort=: (
+          Telnyx::PortingOrders::PhoneNumberBlockListParams::Sort
+        ) -> Telnyx::PortingOrders::PhoneNumberBlockListParams::Sort
+
+        def initialize: (
+          ?filter: Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter,
+          ?page: Telnyx::PortingOrders::PhoneNumberBlockListParams::Page,
+          ?sort: Telnyx::PortingOrders::PhoneNumberBlockListParams::Sort,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter: Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter,
+          page: Telnyx::PortingOrders::PhoneNumberBlockListParams::Page,
+          sort: Telnyx::PortingOrders::PhoneNumberBlockListParams::Sort,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter =
+          {
+            activation_status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::activation_status,
+            phone_number: ::Array[String],
+            portability_status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::portability_status,
+            porting_order_id: ::Array[String],
+            status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::status,
+            support_key: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::support_key
+          }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader activation_status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::activation_status?
+
+          def activation_status=: (
+            Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::activation_status
+          ) -> Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::activation_status
+
+          attr_reader phone_number: ::Array[String]?
+
+          def phone_number=: (::Array[String]) -> ::Array[String]
+
+          attr_reader portability_status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::portability_status?
+
+          def portability_status=: (
+            Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::portability_status
+          ) -> Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::portability_status
+
+          attr_reader porting_order_id: ::Array[String]?
+
+          def porting_order_id=: (::Array[String]) -> ::Array[String]
+
+          attr_reader status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::status?
+
+          def status=: (
+            Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::status
+          ) -> Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::status
+
+          attr_reader support_key: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::support_key?
+
+          def support_key=: (
+            Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::support_key
+          ) -> Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::support_key
+
+          def initialize: (
+            ?activation_status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::activation_status,
+            ?phone_number: ::Array[String],
+            ?portability_status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::portability_status,
+            ?porting_order_id: ::Array[String],
+            ?status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::status,
+            ?support_key: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::support_key
+          ) -> void
+
+          def to_hash: -> {
+            activation_status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::activation_status,
+            phone_number: ::Array[String],
+            portability_status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::portability_status,
+            porting_order_id: ::Array[String],
+            status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::status,
+            support_key: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::support_key
+          }
+
+          type activation_status =
+            :New
+            | :Pending
+            | :Conflict
+            | :"Cancel Pending"
+            | :Failed
+            | :Concurred
+            | :"Activate RDY"
+            | :"Disconnect Pending"
+            | :"Concurrence Sent"
+            | :Old
+            | :Sending
+            | :Active
+            | :Cancelled
+
+          module ActivationStatus
+            extend Telnyx::Internal::Type::Enum
+
+            NEW: :New
+            PENDING: :Pending
+            CONFLICT: :Conflict
+            CANCEL_PENDING: :"Cancel Pending"
+            FAILED: :Failed
+            CONCURRED: :Concurred
+            ACTIVATE_RDY: :"Activate RDY"
+            DISCONNECT_PENDING: :"Disconnect Pending"
+            CONCURRENCE_SENT: :"Concurrence Sent"
+            OLD: :Old
+            SENDING: :Sending
+            ACTIVE: :Active
+            CANCELLED: :Cancelled
+
+            def self?.values: -> ::Array[Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::activation_status]
+          end
+
+          type portability_status = :pending | :confirmed | :provisional
+
+          module PortabilityStatus
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :pending
+            CONFIRMED: :confirmed
+            PROVISIONAL: :provisional
+
+            def self?.values: -> ::Array[Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::portability_status]
+          end
+
+          type status =
+            :draft
+            | :"in-process"
+            | :submitted
+            | :exception
+            | :"foc-date-confirmed"
+            | :"cancel-pending"
+            | :ported
+            | :cancelled
+            | ::Array[Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::union_member1]
+
+          module Status
+            extend Telnyx::Internal::Type::Union
+
+            type union_member1 =
+              :draft
+              | :"in-process"
+              | :submitted
+              | :exception
+              | :"foc-date-confirmed"
+              | :"cancel-pending"
+              | :ported
+              | :cancelled
+
+            module UnionMember1
+              extend Telnyx::Internal::Type::Enum
+
+              DRAFT: :draft
+              IN_PROCESS: :"in-process"
+              SUBMITTED: :submitted
+              EXCEPTION: :exception
+              FOC_DATE_CONFIRMED: :"foc-date-confirmed"
+              CANCEL_PENDING: :"cancel-pending"
+              PORTED: :ported
+              CANCELLED: :cancelled
+
+              def self?.values: -> ::Array[Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::union_member1]
+            end
+
+            def self?.variants: -> ::Array[Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::status]
+
+            DRAFT: :draft
+            IN_PROCESS: :"in-process"
+            SUBMITTED: :submitted
+            EXCEPTION: :exception
+            FOC_DATE_CONFIRMED: :"foc-date-confirmed"
+            CANCEL_PENDING: :"cancel-pending"
+            PORTED: :ported
+            CANCELLED: :cancelled
+
+            UnionMember1Array: Telnyx::Internal::Type::Converter
+          end
+
+          type support_key = String | ::Array[String]
+
+          module SupportKey
+            extend Telnyx::Internal::Type::Union
+
+            def self?.variants: -> ::Array[Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::support_key]
+
+            StringArray: Telnyx::Internal::Type::Converter
+          end
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
+        end
+
+        type sort =
+          {
+            value: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Sort::value
+          }
+
+        class Sort < Telnyx::Internal::Type::BaseModel
+          attr_reader value: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Sort::value?
+
+          def value=: (
+            Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Sort::value
+          ) -> Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Sort::value
+
+          def initialize: (
+            ?value: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Sort::value
+          ) -> void
+
+          def to_hash: -> {
+            value: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Sort::value
+          }
+
+          type value = :"-created_at" | :created_at
+
+          module Value
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED_AT_DESC: :"-created_at"
+            CREATED_AT: :created_at
+
+            def self?.values: -> ::Array[Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Sort::value]
+          end
+        end
+      end
+    end
+  end
+end

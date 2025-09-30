@@ -1,0 +1,44 @@
+module Telnyx
+  module Models
+    module BundlePricing
+      type user_bundle_list_unused_response =
+        {
+          data: ::Array[Telnyx::Models::BundlePricing::UserBundleListUnusedResponse::Data]
+        }
+
+      class UserBundleListUnusedResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Telnyx::Models::BundlePricing::UserBundleListUnusedResponse::Data]
+
+        def initialize: (
+          data: ::Array[Telnyx::Models::BundlePricing::UserBundleListUnusedResponse::Data]
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Models::BundlePricing::UserBundleListUnusedResponse::Data]
+        }
+
+        type data =
+          {
+            billing_bundle: Telnyx::BundlePricing::BillingBundleSummary,
+            user_bundle_ids: ::Array[String]
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor billing_bundle: Telnyx::BundlePricing::BillingBundleSummary
+
+          attr_accessor user_bundle_ids: ::Array[String]
+
+          def initialize: (
+            billing_bundle: Telnyx::BundlePricing::BillingBundleSummary,
+            user_bundle_ids: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            billing_bundle: Telnyx::BundlePricing::BillingBundleSummary,
+            user_bundle_ids: ::Array[String]
+          }
+        end
+      end
+    end
+  end
+end

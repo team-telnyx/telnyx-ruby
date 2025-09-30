@@ -1,0 +1,14 @@
+module Telnyx
+  module Resources
+    class NetworkCoverage
+      def list: (
+        ?filter: Telnyx::NetworkCoverageListParams::Filter,
+        ?filters: Telnyx::NetworkCoverageListParams::Filters,
+        ?page: Telnyx::NetworkCoverageListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NetworkCoverageListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

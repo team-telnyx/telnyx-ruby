@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type address_create_response = { data: Telnyx::Address }
+
+    class AddressCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Address?
+
+      def data=: (Telnyx::Address) -> Telnyx::Address
+
+      def initialize: (?data: Telnyx::Address) -> void
+
+      def to_hash: -> { data: Telnyx::Address }
+    end
+  end
+end

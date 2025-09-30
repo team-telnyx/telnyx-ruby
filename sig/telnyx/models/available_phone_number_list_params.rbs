@@ -1,0 +1,206 @@
+module Telnyx
+  module Models
+    type available_phone_number_list_params =
+      { filter: Telnyx::AvailablePhoneNumberListParams::Filter }
+      & Telnyx::Internal::Type::request_parameters
+
+    class AvailablePhoneNumberListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::AvailablePhoneNumberListParams::Filter?
+
+      def filter=: (
+        Telnyx::AvailablePhoneNumberListParams::Filter
+      ) -> Telnyx::AvailablePhoneNumberListParams::Filter
+
+      def initialize: (
+        ?filter: Telnyx::AvailablePhoneNumberListParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::AvailablePhoneNumberListParams::Filter,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          administrative_area: String,
+          best_effort: bool,
+          country_code: String,
+          exclude_held_numbers: bool,
+          features: ::Array[Telnyx::Models::AvailablePhoneNumberListParams::Filter::feature],
+          limit: Integer,
+          locality: String,
+          national_destination_code: String,
+          phone_number: Telnyx::AvailablePhoneNumberListParams::Filter::PhoneNumber,
+          phone_number_type: Telnyx::Models::AvailablePhoneNumberListParams::Filter::phone_number_type,
+          quickship: bool,
+          rate_center: String,
+          reservable: bool
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader administrative_area: String?
+
+        def administrative_area=: (String) -> String
+
+        attr_reader best_effort: bool?
+
+        def best_effort=: (bool) -> bool
+
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader exclude_held_numbers: bool?
+
+        def exclude_held_numbers=: (bool) -> bool
+
+        attr_reader features: ::Array[Telnyx::Models::AvailablePhoneNumberListParams::Filter::feature]?
+
+        def features=: (
+          ::Array[Telnyx::Models::AvailablePhoneNumberListParams::Filter::feature]
+        ) -> ::Array[Telnyx::Models::AvailablePhoneNumberListParams::Filter::feature]
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        attr_reader locality: String?
+
+        def locality=: (String) -> String
+
+        attr_reader national_destination_code: String?
+
+        def national_destination_code=: (String) -> String
+
+        attr_reader phone_number: Telnyx::AvailablePhoneNumberListParams::Filter::PhoneNumber?
+
+        def phone_number=: (
+          Telnyx::AvailablePhoneNumberListParams::Filter::PhoneNumber
+        ) -> Telnyx::AvailablePhoneNumberListParams::Filter::PhoneNumber
+
+        attr_reader phone_number_type: Telnyx::Models::AvailablePhoneNumberListParams::Filter::phone_number_type?
+
+        def phone_number_type=: (
+          Telnyx::Models::AvailablePhoneNumberListParams::Filter::phone_number_type
+        ) -> Telnyx::Models::AvailablePhoneNumberListParams::Filter::phone_number_type
+
+        attr_reader quickship: bool?
+
+        def quickship=: (bool) -> bool
+
+        attr_reader rate_center: String?
+
+        def rate_center=: (String) -> String
+
+        attr_reader reservable: bool?
+
+        def reservable=: (bool) -> bool
+
+        def initialize: (
+          ?administrative_area: String,
+          ?best_effort: bool,
+          ?country_code: String,
+          ?exclude_held_numbers: bool,
+          ?features: ::Array[Telnyx::Models::AvailablePhoneNumberListParams::Filter::feature],
+          ?limit: Integer,
+          ?locality: String,
+          ?national_destination_code: String,
+          ?phone_number: Telnyx::AvailablePhoneNumberListParams::Filter::PhoneNumber,
+          ?phone_number_type: Telnyx::Models::AvailablePhoneNumberListParams::Filter::phone_number_type,
+          ?quickship: bool,
+          ?rate_center: String,
+          ?reservable: bool
+        ) -> void
+
+        def to_hash: -> {
+          administrative_area: String,
+          best_effort: bool,
+          country_code: String,
+          exclude_held_numbers: bool,
+          features: ::Array[Telnyx::Models::AvailablePhoneNumberListParams::Filter::feature],
+          limit: Integer,
+          locality: String,
+          national_destination_code: String,
+          phone_number: Telnyx::AvailablePhoneNumberListParams::Filter::PhoneNumber,
+          phone_number_type: Telnyx::Models::AvailablePhoneNumberListParams::Filter::phone_number_type,
+          quickship: bool,
+          rate_center: String,
+          reservable: bool
+        }
+
+        type feature =
+          :sms
+          | :mms
+          | :voice
+          | :fax
+          | :emergency
+          | :hd_voice
+          | :international_sms
+          | :local_calling
+
+        module Feature
+          extend Telnyx::Internal::Type::Enum
+
+          SMS: :sms
+          MMS: :mms
+          VOICE: :voice
+          FAX: :fax
+          EMERGENCY: :emergency
+          HD_VOICE: :hd_voice
+          INTERNATIONAL_SMS: :international_sms
+          LOCAL_CALLING: :local_calling
+
+          def self?.values: -> ::Array[Telnyx::Models::AvailablePhoneNumberListParams::Filter::feature]
+        end
+
+        type phone_number =
+          { contains: String, ends_with: String, starts_with: String }
+
+        class PhoneNumber < Telnyx::Internal::Type::BaseModel
+          attr_reader contains: String?
+
+          def contains=: (String) -> String
+
+          attr_reader ends_with: String?
+
+          def ends_with=: (String) -> String
+
+          attr_reader starts_with: String?
+
+          def starts_with=: (String) -> String
+
+          def initialize: (
+            ?contains: String,
+            ?ends_with: String,
+            ?starts_with: String
+          ) -> void
+
+          def to_hash: -> {
+            contains: String,
+            ends_with: String,
+            starts_with: String
+          }
+        end
+
+        type phone_number_type =
+          :local | :toll_free | :mobile | :national | :shared_cost
+
+        module PhoneNumberType
+          extend Telnyx::Internal::Type::Enum
+
+          LOCAL: :local
+          TOLL_FREE: :toll_free
+          MOBILE: :mobile
+          NATIONAL: :national
+          SHARED_COST: :shared_cost
+
+          def self?.values: -> ::Array[Telnyx::Models::AvailablePhoneNumberListParams::Filter::phone_number_type]
+        end
+      end
+    end
+  end
+end

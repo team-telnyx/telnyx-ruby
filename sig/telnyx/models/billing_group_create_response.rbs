@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type billing_group_create_response = { data: Telnyx::BillingGroup }
+
+    class BillingGroupCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::BillingGroup?
+
+      def data=: (Telnyx::BillingGroup) -> Telnyx::BillingGroup
+
+      def initialize: (?data: Telnyx::BillingGroup) -> void
+
+      def to_hash: -> { data: Telnyx::BillingGroup }
+    end
+  end
+end

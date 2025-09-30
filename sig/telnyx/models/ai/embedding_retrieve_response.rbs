@@ -1,0 +1,69 @@
+module Telnyx
+  module Models
+    module AI
+      type embedding_retrieve_response =
+        { data: Telnyx::Models::AI::EmbeddingRetrieveResponse::Data }
+
+      class EmbeddingRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::Models::AI::EmbeddingRetrieveResponse::Data
+
+        def initialize: (
+          data: Telnyx::Models::AI::EmbeddingRetrieveResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::AI::EmbeddingRetrieveResponse::Data
+        }
+
+        type data =
+          {
+            created_at: String,
+            finished_at: String,
+            status: Telnyx::Models::AI::background_task_status,
+            task_id: String,
+            task_name: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader created_at: String?
+
+          def created_at=: (String) -> String
+
+          attr_reader finished_at: String?
+
+          def finished_at=: (String) -> String
+
+          attr_reader status: Telnyx::Models::AI::background_task_status?
+
+          def status=: (
+            Telnyx::Models::AI::background_task_status
+          ) -> Telnyx::Models::AI::background_task_status
+
+          attr_reader task_id: String?
+
+          def task_id=: (String) -> String
+
+          attr_reader task_name: String?
+
+          def task_name=: (String) -> String
+
+          def initialize: (
+            ?created_at: String,
+            ?finished_at: String,
+            ?status: Telnyx::Models::AI::background_task_status,
+            ?task_id: String,
+            ?task_name: String
+          ) -> void
+
+          def to_hash: -> {
+            created_at: String,
+            finished_at: String,
+            status: Telnyx::Models::AI::background_task_status,
+            task_id: String,
+            task_name: String
+          }
+        end
+      end
+    end
+  end
+end

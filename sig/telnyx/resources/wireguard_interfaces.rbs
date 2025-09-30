@@ -1,0 +1,31 @@
+module Telnyx
+  module Resources
+    class WireguardInterfaces
+      def create: (
+        network_id: String,
+        region_code: String,
+        ?enable_sip_trunking: bool,
+        ?name: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WireguardInterfaceCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WireguardInterfaceRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::WireguardInterfaceListParams::Filter,
+        ?page: Telnyx::WireguardInterfaceListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WireguardInterfaceListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WireguardInterfaceDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

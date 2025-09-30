@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_resume_recording_response =
+        { data: Telnyx::Calls::CallControlCommandResult }
+
+      class ActionResumeRecordingResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Calls::CallControlCommandResult?
+
+        def data=: (
+          Telnyx::Calls::CallControlCommandResult
+        ) -> Telnyx::Calls::CallControlCommandResult
+
+        def initialize: (?data: Telnyx::Calls::CallControlCommandResult) -> void
+
+        def to_hash: -> { data: Telnyx::Calls::CallControlCommandResult }
+      end
+    end
+  end
+end

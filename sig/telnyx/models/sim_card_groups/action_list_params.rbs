@@ -1,0 +1,91 @@
+module Telnyx
+  module Models
+    module SimCardGroups
+      type action_list_params =
+        {
+          filter_sim_card_group_id: String,
+          filter_status: Telnyx::Models::SimCardGroups::ActionListParams::filter_status,
+          filter_type: Telnyx::Models::SimCardGroups::ActionListParams::filter_type,
+          page_number: Integer,
+          page_size: Integer
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter_sim_card_group_id: String?
+
+        def filter_sim_card_group_id=: (String) -> String
+
+        attr_reader filter_status: Telnyx::Models::SimCardGroups::ActionListParams::filter_status?
+
+        def filter_status=: (
+          Telnyx::Models::SimCardGroups::ActionListParams::filter_status
+        ) -> Telnyx::Models::SimCardGroups::ActionListParams::filter_status
+
+        attr_reader filter_type: Telnyx::Models::SimCardGroups::ActionListParams::filter_type?
+
+        def filter_type=: (
+          Telnyx::Models::SimCardGroups::ActionListParams::filter_type
+        ) -> Telnyx::Models::SimCardGroups::ActionListParams::filter_type
+
+        attr_reader page_number: Integer?
+
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        def initialize: (
+          ?filter_sim_card_group_id: String,
+          ?filter_status: Telnyx::Models::SimCardGroups::ActionListParams::filter_status,
+          ?filter_type: Telnyx::Models::SimCardGroups::ActionListParams::filter_type,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter_sim_card_group_id: String,
+          filter_status: Telnyx::Models::SimCardGroups::ActionListParams::filter_status,
+          filter_type: Telnyx::Models::SimCardGroups::ActionListParams::filter_type,
+          page_number: Integer,
+          page_size: Integer,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter_status = :"in-progress" | :completed | :failed
+
+        module FilterStatus
+          extend Telnyx::Internal::Type::Enum
+
+          IN_PROGRESS: :"in-progress"
+          COMPLETED: :completed
+          FAILED: :failed
+
+          def self?.values: -> ::Array[Telnyx::Models::SimCardGroups::ActionListParams::filter_status]
+        end
+
+        type filter_type =
+          :set_private_wireless_gateway
+          | :remove_private_wireless_gateway
+          | :set_wireless_blocklist
+          | :remove_wireless_blocklist
+
+        module FilterType
+          extend Telnyx::Internal::Type::Enum
+
+          SET_PRIVATE_WIRELESS_GATEWAY: :set_private_wireless_gateway
+          REMOVE_PRIVATE_WIRELESS_GATEWAY: :remove_private_wireless_gateway
+          SET_WIRELESS_BLOCKLIST: :set_wireless_blocklist
+          REMOVE_WIRELESS_BLOCKLIST: :remove_wireless_blocklist
+
+          def self?.values: -> ::Array[Telnyx::Models::SimCardGroups::ActionListParams::filter_type]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,90 @@
+module Telnyx
+  module Models
+    type text_to_speech_list_voices_response =
+      { voices: ::Array[Telnyx::Models::TextToSpeechListVoicesResponse::Voice] }
+
+    class TextToSpeechListVoicesResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader voices: ::Array[Telnyx::Models::TextToSpeechListVoicesResponse::Voice]?
+
+      def voices=: (
+        ::Array[Telnyx::Models::TextToSpeechListVoicesResponse::Voice]
+      ) -> ::Array[Telnyx::Models::TextToSpeechListVoicesResponse::Voice]
+
+      def initialize: (
+        ?voices: ::Array[Telnyx::Models::TextToSpeechListVoicesResponse::Voice]
+      ) -> void
+
+      def to_hash: -> {
+        voices: ::Array[Telnyx::Models::TextToSpeechListVoicesResponse::Voice]
+      }
+
+      type voice =
+        {
+          id: String,
+          accent: String,
+          age: String,
+          gender: String,
+          label: String,
+          language: String,
+          name: String,
+          provider: String
+        }
+
+      class Voice < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader accent: String?
+
+        def accent=: (String) -> String
+
+        attr_reader age: String?
+
+        def age=: (String) -> String
+
+        attr_reader gender: String?
+
+        def gender=: (String) -> String
+
+        attr_reader label: String?
+
+        def label=: (String) -> String
+
+        attr_reader language: String?
+
+        def language=: (String) -> String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader provider: String?
+
+        def provider=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?accent: String,
+          ?age: String,
+          ?gender: String,
+          ?label: String,
+          ?language: String,
+          ?name: String,
+          ?provider: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          accent: String,
+          age: String,
+          gender: String,
+          label: String,
+          language: String,
+          name: String,
+          provider: String
+        }
+      end
+    end
+  end
+end

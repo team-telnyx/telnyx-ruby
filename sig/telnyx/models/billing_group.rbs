@@ -1,0 +1,74 @@
+module Telnyx
+  module Models
+    type billing_group =
+      {
+        id: String,
+        created_at: Time,
+        deleted_at: Time?,
+        name: String,
+        organization_id: String,
+        record_type: Telnyx::Models::BillingGroup::record_type,
+        updated_at: Time
+      }
+
+    class BillingGroup < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_accessor deleted_at: Time?
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader organization_id: String?
+
+      def organization_id=: (String) -> String
+
+      attr_reader record_type: Telnyx::Models::BillingGroup::record_type?
+
+      def record_type=: (
+        Telnyx::Models::BillingGroup::record_type
+      ) -> Telnyx::Models::BillingGroup::record_type
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        ?id: String,
+        ?created_at: Time,
+        ?deleted_at: Time?,
+        ?name: String,
+        ?organization_id: String,
+        ?record_type: Telnyx::Models::BillingGroup::record_type,
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        deleted_at: Time?,
+        name: String,
+        organization_id: String,
+        record_type: Telnyx::Models::BillingGroup::record_type,
+        updated_at: Time
+      }
+
+      type record_type = :billing_group
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        BILLING_GROUP: :billing_group
+
+        def self?.values: -> ::Array[Telnyx::Models::BillingGroup::record_type]
+      end
+    end
+  end
+end

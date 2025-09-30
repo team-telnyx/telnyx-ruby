@@ -1,0 +1,63 @@
+module Telnyx
+  module Resources
+    class SimCards
+      attr_reader actions: Telnyx::Resources::SimCards::Actions
+
+      def retrieve: (
+        String id,
+        ?include_pin_puk_codes: bool,
+        ?include_sim_card_group: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardRetrieveResponse
+
+      def update: (
+        String id,
+        ?authorized_imeis: ::Array[String]?,
+        ?data_limit: Telnyx::SimCard::DataLimit,
+        ?sim_card_group_id: String,
+        ?status: Telnyx::SimCardStatus,
+        ?tags: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::SimCardListParams::Filter,
+        ?filter_sim_card_group_id: String,
+        ?include_sim_card_group: bool,
+        ?page: Telnyx::SimCardListParams::Page,
+        ?sort: Telnyx::Models::SimCardListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardListResponse
+
+      def delete: (
+        String id,
+        ?report_lost: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardDeleteResponse
+
+      def get_activation_code: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardGetActivationCodeResponse
+
+      def get_device_details: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardGetDeviceDetailsResponse
+
+      def get_public_ip: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardGetPublicIPResponse
+
+      def list_wireless_connectivity_logs: (
+        String id,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SimCardListWirelessConnectivityLogsResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

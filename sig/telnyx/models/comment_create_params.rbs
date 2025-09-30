@@ -1,0 +1,55 @@
+module Telnyx
+  module Models
+    type comment_create_params =
+      {
+        body: String,
+        comment_record_id: String,
+        comment_record_type: Telnyx::Models::CommentCreateParams::comment_record_type
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class CommentCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader body: String?
+
+      def body=: (String) -> String
+
+      attr_reader comment_record_id: String?
+
+      def comment_record_id=: (String) -> String
+
+      attr_reader comment_record_type: Telnyx::Models::CommentCreateParams::comment_record_type?
+
+      def comment_record_type=: (
+        Telnyx::Models::CommentCreateParams::comment_record_type
+      ) -> Telnyx::Models::CommentCreateParams::comment_record_type
+
+      def initialize: (
+        ?body: String,
+        ?comment_record_id: String,
+        ?comment_record_type: Telnyx::Models::CommentCreateParams::comment_record_type,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        body: String,
+        comment_record_id: String,
+        comment_record_type: Telnyx::Models::CommentCreateParams::comment_record_type,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type comment_record_type = :sub_number_order | :requirement_group
+
+      module CommentRecordType
+        extend Telnyx::Internal::Type::Enum
+
+        SUB_NUMBER_ORDER: :sub_number_order
+        REQUIREMENT_GROUP: :requirement_group
+
+        def self?.values: -> ::Array[Telnyx::Models::CommentCreateParams::comment_record_type]
+      end
+    end
+  end
+end

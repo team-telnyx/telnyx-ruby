@@ -1,0 +1,67 @@
+module Telnyx
+  module Models
+    type comment_list_params =
+      { filter: Telnyx::CommentListParams::Filter }
+      & Telnyx::Internal::Type::request_parameters
+
+    class CommentListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::CommentListParams::Filter?
+
+      def filter=: (
+        Telnyx::CommentListParams::Filter
+      ) -> Telnyx::CommentListParams::Filter
+
+      def initialize: (
+        ?filter: Telnyx::CommentListParams::Filter,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::CommentListParams::Filter,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          comment_record_id: String,
+          comment_record_type: Telnyx::Models::CommentListParams::Filter::comment_record_type
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader comment_record_id: String?
+
+        def comment_record_id=: (String) -> String
+
+        attr_reader comment_record_type: Telnyx::Models::CommentListParams::Filter::comment_record_type?
+
+        def comment_record_type=: (
+          Telnyx::Models::CommentListParams::Filter::comment_record_type
+        ) -> Telnyx::Models::CommentListParams::Filter::comment_record_type
+
+        def initialize: (
+          ?comment_record_id: String,
+          ?comment_record_type: Telnyx::Models::CommentListParams::Filter::comment_record_type
+        ) -> void
+
+        def to_hash: -> {
+          comment_record_id: String,
+          comment_record_type: Telnyx::Models::CommentListParams::Filter::comment_record_type
+        }
+
+        type comment_record_type = :sub_number_order | :requirement_group
+
+        module CommentRecordType
+          extend Telnyx::Internal::Type::Enum
+
+          SUB_NUMBER_ORDER: :sub_number_order
+          REQUIREMENT_GROUP: :requirement_group
+
+          def self?.values: -> ::Array[Telnyx::Models::CommentListParams::Filter::comment_record_type]
+        end
+      end
+    end
+  end
+end

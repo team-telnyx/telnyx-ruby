@@ -1,0 +1,57 @@
+module Telnyx
+  module Models
+    module Verifications
+      module ByPhoneNumber
+        type verify_verification_code_response =
+          {
+            data: Telnyx::Verifications::ByPhoneNumber::VerifyVerificationCodeResponse::Data
+          }
+
+        class VerifyVerificationCodeResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: Telnyx::Verifications::ByPhoneNumber::VerifyVerificationCodeResponse::Data
+
+          def initialize: (
+            data: Telnyx::Verifications::ByPhoneNumber::VerifyVerificationCodeResponse::Data
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::Verifications::ByPhoneNumber::VerifyVerificationCodeResponse::Data
+          }
+
+          type data =
+            {
+              phone_number: String,
+              response_code: Telnyx::Models::Verifications::ByPhoneNumber::VerifyVerificationCodeResponse::Data::response_code
+            }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_accessor phone_number: String
+
+            attr_accessor response_code: Telnyx::Models::Verifications::ByPhoneNumber::VerifyVerificationCodeResponse::Data::response_code
+
+            def initialize: (
+              phone_number: String,
+              response_code: Telnyx::Models::Verifications::ByPhoneNumber::VerifyVerificationCodeResponse::Data::response_code
+            ) -> void
+
+            def to_hash: -> {
+              phone_number: String,
+              response_code: Telnyx::Models::Verifications::ByPhoneNumber::VerifyVerificationCodeResponse::Data::response_code
+            }
+
+            type response_code = :accepted | :rejected
+
+            module ResponseCode
+              extend Telnyx::Internal::Type::Enum
+
+              ACCEPTED: :accepted
+              REJECTED: :rejected
+
+              def self?.values: -> ::Array[Telnyx::Models::Verifications::ByPhoneNumber::VerifyVerificationCodeResponse::Data::response_code]
+            end
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    type global_ip_create_params =
+      { description: String, name: String, ports: ::Hash[Symbol, top] }
+      & Telnyx::Internal::Type::request_parameters
+
+    class GlobalIPCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader description: String?
+
+      def description=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader ports: ::Hash[Symbol, top]?
+
+      def ports=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+      def initialize: (
+        ?description: String,
+        ?name: String,
+        ?ports: ::Hash[Symbol, top],
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        description: String,
+        name: String,
+        ports: ::Hash[Symbol, top],
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

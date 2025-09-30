@@ -1,0 +1,1465 @@
+module Telnyx
+  class AccessIPAddressCreateParams = Telnyx::Models::AccessIPAddressCreateParams
+
+  class AccessIPAddressDeleteParams = Telnyx::Models::AccessIPAddressDeleteParams
+
+  class AccessIPAddressListParams = Telnyx::Models::AccessIPAddressListParams
+
+  class AccessIPAddressResponse = Telnyx::Models::AccessIPAddressResponse
+
+  class AccessIPAddressRetrieveParams = Telnyx::Models::AccessIPAddressRetrieveParams
+
+  class AccessIPRange = Telnyx::Models::AccessIPRange
+
+  class AccessIPRangeCreateParams = Telnyx::Models::AccessIPRangeCreateParams
+
+  class AccessIPRangeDeleteParams = Telnyx::Models::AccessIPRangeDeleteParams
+
+  class AccessIPRangeListParams = Telnyx::Models::AccessIPRangeListParams
+
+  module Actions = Telnyx::Models::Actions
+
+  class Address = Telnyx::Models::Address
+
+  class AddressCreateParams = Telnyx::Models::AddressCreateParams
+
+  class AddressDeleteParams = Telnyx::Models::AddressDeleteParams
+
+  module Addresses = Telnyx::Models::Addresses
+
+  class AddressListParams = Telnyx::Models::AddressListParams
+
+  class AddressRetrieveParams = Telnyx::Models::AddressRetrieveParams
+
+  class AdvancedOrderCreateParams = Telnyx::Models::AdvancedOrderCreateParams
+
+  class AdvancedOrderListParams = Telnyx::Models::AdvancedOrderListParams
+
+  class AdvancedOrderRetrieveParams = Telnyx::Models::AdvancedOrderRetrieveParams
+
+  class AdvancedOrderUpdateParams = Telnyx::Models::AdvancedOrderUpdateParams
+
+  module AI = Telnyx::Models::AI
+
+  class AIRetrieveModelsParams = Telnyx::Models::AIRetrieveModelsParams
+
+  class AISummarizeParams = Telnyx::Models::AISummarizeParams
+
+  module AltBusinessIDType = Telnyx::Models::AltBusinessIDType
+
+  module AnchorsiteOverride = Telnyx::Models::AnchorsiteOverride
+
+  class APIError = Telnyx::Models::APIError
+
+  class AuditEventListParams = Telnyx::Models::AuditEventListParams
+
+  class AuthenticationProvider = Telnyx::Models::AuthenticationProvider
+
+  class AuthenticationProviderCreateParams = Telnyx::Models::AuthenticationProviderCreateParams
+
+  class AuthenticationProviderDeleteParams = Telnyx::Models::AuthenticationProviderDeleteParams
+
+  class AuthenticationProviderListParams = Telnyx::Models::AuthenticationProviderListParams
+
+  class AuthenticationProviderRetrieveParams = Telnyx::Models::AuthenticationProviderRetrieveParams
+
+  class AuthenticationProviderUpdateParams = Telnyx::Models::AuthenticationProviderUpdateParams
+
+  class AvailablePhoneNumberBlockListParams = Telnyx::Models::AvailablePhoneNumberBlockListParams
+
+  class AvailablePhoneNumberListParams = Telnyx::Models::AvailablePhoneNumberListParams
+
+  module AvailableService = Telnyx::Models::AvailableService
+
+  class AzureConfigurationData = Telnyx::Models::AzureConfigurationData
+
+  class BalanceRetrieveParams = Telnyx::Models::BalanceRetrieveParams
+
+  class BillingGroup = Telnyx::Models::BillingGroup
+
+  class BillingGroupCreateParams = Telnyx::Models::BillingGroupCreateParams
+
+  class BillingGroupDeleteParams = Telnyx::Models::BillingGroupDeleteParams
+
+  class BillingGroupListParams = Telnyx::Models::BillingGroupListParams
+
+  class BillingGroupRetrieveParams = Telnyx::Models::BillingGroupRetrieveParams
+
+  class BillingGroupUpdateParams = Telnyx::Models::BillingGroupUpdateParams
+
+  module Brand = Telnyx::Models::Brand
+
+  class BrandCreateParams = Telnyx::Models::BrandCreateParams
+
+  class BrandDeleteParams = Telnyx::Models::BrandDeleteParams
+
+  class BrandGetFeedbackParams = Telnyx::Models::BrandGetFeedbackParams
+
+  module BrandIdentityStatus = Telnyx::Models::BrandIdentityStatus
+
+  class BrandListParams = Telnyx::Models::BrandListParams
+
+  class BrandResend2faEmailParams = Telnyx::Models::BrandResend2faEmailParams
+
+  class BrandRetrieveParams = Telnyx::Models::BrandRetrieveParams
+
+  class BrandRevetParams = Telnyx::Models::BrandRevetParams
+
+  class BrandUpdateParams = Telnyx::Models::BrandUpdateParams
+
+  class BulkSimCardActionListParams = Telnyx::Models::BulkSimCardActionListParams
+
+  class BulkSimCardActionRetrieveParams = Telnyx::Models::BulkSimCardActionRetrieveParams
+
+  module BundlePricing = Telnyx::Models::BundlePricing
+
+  class CallAIGatherEndedWebhookEvent = Telnyx::Models::CallAIGatherEndedWebhookEvent
+
+  class CallAIGatherMessageHistoryUpdatedWebhookEvent = Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent
+
+  class CallAIGatherPartialResultsWebhookEvent = Telnyx::Models::CallAIGatherPartialResultsWebhookEvent
+
+  class CallAnsweredWebhookEvent = Telnyx::Models::CallAnsweredWebhookEvent
+
+  class CallBridgedWebhookEvent = Telnyx::Models::CallBridgedWebhookEvent
+
+  class CallControlApplication = Telnyx::Models::CallControlApplication
+
+  class CallControlApplicationCreateParams = Telnyx::Models::CallControlApplicationCreateParams
+
+  class CallControlApplicationDeleteParams = Telnyx::Models::CallControlApplicationDeleteParams
+
+  class CallControlApplicationInbound = Telnyx::Models::CallControlApplicationInbound
+
+  class CallControlApplicationListParams = Telnyx::Models::CallControlApplicationListParams
+
+  class CallControlApplicationOutbound = Telnyx::Models::CallControlApplicationOutbound
+
+  class CallControlApplicationRetrieveParams = Telnyx::Models::CallControlApplicationRetrieveParams
+
+  class CallControlApplicationUpdateParams = Telnyx::Models::CallControlApplicationUpdateParams
+
+  class CallConversationEndedWebhookEvent = Telnyx::Models::CallConversationEndedWebhookEvent
+
+  class CallConversationInsightsGeneratedWebhookEvent = Telnyx::Models::CallConversationInsightsGeneratedWebhookEvent
+
+  class CallDialParams = Telnyx::Models::CallDialParams
+
+  class CallDtmfReceivedWebhookEvent = Telnyx::Models::CallDtmfReceivedWebhookEvent
+
+  class CallEnqueuedWebhookEvent = Telnyx::Models::CallEnqueuedWebhookEvent
+
+  class CallEventListParams = Telnyx::Models::CallEventListParams
+
+  class CallForkStartedWebhookEvent = Telnyx::Models::CallForkStartedWebhookEvent
+
+  class CallForkStoppedWebhookEvent = Telnyx::Models::CallForkStoppedWebhookEvent
+
+  class CallGatherEndedWebhookEvent = Telnyx::Models::CallGatherEndedWebhookEvent
+
+  class CallHangupWebhookEvent = Telnyx::Models::CallHangupWebhookEvent
+
+  class CallInitiatedWebhookEvent = Telnyx::Models::CallInitiatedWebhookEvent
+
+  class CallLeftQueueWebhookEvent = Telnyx::Models::CallLeftQueueWebhookEvent
+
+  class CallMachineDetectionEndedWebhookEvent = Telnyx::Models::CallMachineDetectionEndedWebhookEvent
+
+  class CallMachineGreetingEndedWebhookEvent = Telnyx::Models::CallMachineGreetingEndedWebhookEvent
+
+  class CallMachinePremiumDetectionEndedWebhookEvent = Telnyx::Models::CallMachinePremiumDetectionEndedWebhookEvent
+
+  class CallMachinePremiumGreetingEndedWebhookEvent = Telnyx::Models::CallMachinePremiumGreetingEndedWebhookEvent
+
+  class CallPlaybackEndedWebhookEvent = Telnyx::Models::CallPlaybackEndedWebhookEvent
+
+  class CallPlaybackStartedWebhookEvent = Telnyx::Models::CallPlaybackStartedWebhookEvent
+
+  class CallRecordingErrorWebhookEvent = Telnyx::Models::CallRecordingErrorWebhookEvent
+
+  class CallRecordingSavedWebhookEvent = Telnyx::Models::CallRecordingSavedWebhookEvent
+
+  class CallRecordingTranscriptionSavedWebhookEvent = Telnyx::Models::CallRecordingTranscriptionSavedWebhookEvent
+
+  class CallReferCompletedWebhookEvent = Telnyx::Models::CallReferCompletedWebhookEvent
+
+  class CallReferFailedWebhookEvent = Telnyx::Models::CallReferFailedWebhookEvent
+
+  class CallReferStartedWebhookEvent = Telnyx::Models::CallReferStartedWebhookEvent
+
+  class CallRetrieveStatusParams = Telnyx::Models::CallRetrieveStatusParams
+
+  module Calls = Telnyx::Models::Calls
+
+  class CallSiprecFailedWebhookEvent = Telnyx::Models::CallSiprecFailedWebhookEvent
+
+  class CallSiprecStartedWebhookEvent = Telnyx::Models::CallSiprecStartedWebhookEvent
+
+  class CallSiprecStoppedWebhookEvent = Telnyx::Models::CallSiprecStoppedWebhookEvent
+
+  class CallSpeakEndedWebhookEvent = Telnyx::Models::CallSpeakEndedWebhookEvent
+
+  class CallSpeakStartedWebhookEvent = Telnyx::Models::CallSpeakStartedWebhookEvent
+
+  class CallStreamingFailedWebhookEvent = Telnyx::Models::CallStreamingFailedWebhookEvent
+
+  class CallStreamingStartedWebhookEvent = Telnyx::Models::CallStreamingStartedWebhookEvent
+
+  class CallStreamingStoppedWebhookEvent = Telnyx::Models::CallStreamingStoppedWebhookEvent
+
+  module Campaign = Telnyx::Models::Campaign
+
+  class CampaignAcceptSharingParams = Telnyx::Models::CampaignAcceptSharingParams
+
+  module CampaignBuilder = Telnyx::Models::CampaignBuilder
+
+  class CampaignBuilderCreateParams = Telnyx::Models::CampaignBuilderCreateParams
+
+  class CampaignDeactivateParams = Telnyx::Models::CampaignDeactivateParams
+
+  class CampaignGetMnoMetadataParams = Telnyx::Models::CampaignGetMnoMetadataParams
+
+  class CampaignGetOperationStatusParams = Telnyx::Models::CampaignGetOperationStatusParams
+
+  class CampaignGetSharingStatusParams = Telnyx::Models::CampaignGetSharingStatusParams
+
+  class CampaignListParams = Telnyx::Models::CampaignListParams
+
+  class CampaignRetrieveParams = Telnyx::Models::CampaignRetrieveParams
+
+  class CampaignSharingStatus = Telnyx::Models::CampaignSharingStatus
+
+  class CampaignStatusUpdateWebhookEvent = Telnyx::Models::CampaignStatusUpdateWebhookEvent
+
+  class CampaignSubmitAppealParams = Telnyx::Models::CampaignSubmitAppealParams
+
+  class CampaignUpdateParams = Telnyx::Models::CampaignUpdateParams
+
+  class ChannelZoneListParams = Telnyx::Models::ChannelZoneListParams
+
+  class ChannelZoneUpdateParams = Telnyx::Models::ChannelZoneUpdateParams
+
+  class ChargesBreakdownRetrieveParams = Telnyx::Models::ChargesBreakdownRetrieveParams
+
+  class ChargesSummaryRetrieveParams = Telnyx::Models::ChargesSummaryRetrieveParams
+
+  module CloudflareSyncStatus = Telnyx::Models::CloudflareSyncStatus
+
+  class CommentCreateParams = Telnyx::Models::CommentCreateParams
+
+  class CommentListParams = Telnyx::Models::CommentListParams
+
+  class CommentMarkAsReadParams = Telnyx::Models::CommentMarkAsReadParams
+
+  class CommentRetrieveParams = Telnyx::Models::CommentRetrieveParams
+
+  class Conference = Telnyx::Models::Conference
+
+  class ConferenceCreatedWebhookEvent = Telnyx::Models::ConferenceCreatedWebhookEvent
+
+  class ConferenceCreateParams = Telnyx::Models::ConferenceCreateParams
+
+  class ConferenceEndedWebhookEvent = Telnyx::Models::ConferenceEndedWebhookEvent
+
+  class ConferenceFloorChangedWebhookEvent = Telnyx::Models::ConferenceFloorChangedWebhookEvent
+
+  class ConferenceListParams = Telnyx::Models::ConferenceListParams
+
+  class ConferenceListParticipantsParams = Telnyx::Models::ConferenceListParticipantsParams
+
+  class ConferenceParticipantJoinedWebhookEvent = Telnyx::Models::ConferenceParticipantJoinedWebhookEvent
+
+  class ConferenceParticipantLeftWebhookEvent = Telnyx::Models::ConferenceParticipantLeftWebhookEvent
+
+  class ConferenceParticipantPlaybackEndedWebhookEvent = Telnyx::Models::ConferenceParticipantPlaybackEndedWebhookEvent
+
+  class ConferenceParticipantPlaybackStartedWebhookEvent = Telnyx::Models::ConferenceParticipantPlaybackStartedWebhookEvent
+
+  class ConferenceParticipantSpeakEndedWebhookEvent = Telnyx::Models::ConferenceParticipantSpeakEndedWebhookEvent
+
+  class ConferenceParticipantSpeakStartedWebhookEvent = Telnyx::Models::ConferenceParticipantSpeakStartedWebhookEvent
+
+  class ConferencePlaybackEndedWebhookEvent = Telnyx::Models::ConferencePlaybackEndedWebhookEvent
+
+  class ConferencePlaybackStartedWebhookEvent = Telnyx::Models::ConferencePlaybackStartedWebhookEvent
+
+  class ConferenceRecordingSavedWebhookEvent = Telnyx::Models::ConferenceRecordingSavedWebhookEvent
+
+  class ConferenceRetrieveParams = Telnyx::Models::ConferenceRetrieveParams
+
+  module Conferences = Telnyx::Models::Conferences
+
+  class ConferenceSpeakEndedWebhookEvent = Telnyx::Models::ConferenceSpeakEndedWebhookEvent
+
+  class ConferenceSpeakStartedWebhookEvent = Telnyx::Models::ConferenceSpeakStartedWebhookEvent
+
+  class ConnectionListActiveCallsParams = Telnyx::Models::ConnectionListActiveCallsParams
+
+  class ConnectionListParams = Telnyx::Models::ConnectionListParams
+
+  class ConnectionRetrieveParams = Telnyx::Models::ConnectionRetrieveParams
+
+  class ConnectionRtcpSettings = Telnyx::Models::ConnectionRtcpSettings
+
+  class ConnectionsPaginationMeta = Telnyx::Models::ConnectionsPaginationMeta
+
+  class ConsumedData = Telnyx::Models::ConsumedData
+
+  class CountryCoverageRetrieveCountryParams = Telnyx::Models::CountryCoverageRetrieveCountryParams
+
+  class CountryCoverageRetrieveParams = Telnyx::Models::CountryCoverageRetrieveParams
+
+  class CreateVerificationResponse = Telnyx::Models::CreateVerificationResponse
+
+  class CredentialConnection = Telnyx::Models::CredentialConnection
+
+  class CredentialConnectionCreateParams = Telnyx::Models::CredentialConnectionCreateParams
+
+  class CredentialConnectionDeleteParams = Telnyx::Models::CredentialConnectionDeleteParams
+
+  class CredentialConnectionListParams = Telnyx::Models::CredentialConnectionListParams
+
+  class CredentialConnectionRetrieveParams = Telnyx::Models::CredentialConnectionRetrieveParams
+
+  module CredentialConnections = Telnyx::Models::CredentialConnections
+
+  class CredentialConnectionUpdateParams = Telnyx::Models::CredentialConnectionUpdateParams
+
+  class CredentialInbound = Telnyx::Models::CredentialInbound
+
+  class CredentialOutbound = Telnyx::Models::CredentialOutbound
+
+  class CustomerServiceRecord = Telnyx::Models::CustomerServiceRecord
+
+  class CustomerServiceRecordCreateParams = Telnyx::Models::CustomerServiceRecordCreateParams
+
+  class CustomerServiceRecordListParams = Telnyx::Models::CustomerServiceRecordListParams
+
+  class CustomerServiceRecordRetrieveParams = Telnyx::Models::CustomerServiceRecordRetrieveParams
+
+  class CustomerServiceRecordStatusChangedWebhookEvent = Telnyx::Models::CustomerServiceRecordStatusChangedWebhookEvent
+
+  class CustomerServiceRecordVerifyPhoneNumberCoverageParams = Telnyx::Models::CustomerServiceRecordVerifyPhoneNumberCoverageParams
+
+  class CustomSipHeader = Telnyx::Models::CustomSipHeader
+
+  class CustomStorageConfiguration = Telnyx::Models::CustomStorageConfiguration
+
+  class CustomStorageCredentialCreateParams = Telnyx::Models::CustomStorageCredentialCreateParams
+
+  class CustomStorageCredentialDeleteParams = Telnyx::Models::CustomStorageCredentialDeleteParams
+
+  class CustomStorageCredentialRetrieveParams = Telnyx::Models::CustomStorageCredentialRetrieveParams
+
+  class CustomStorageCredentialUpdateParams = Telnyx::Models::CustomStorageCredentialUpdateParams
+
+  class DeliveryUpdateWebhookEvent = Telnyx::Models::DeliveryUpdateWebhookEvent
+
+  class DetailRecordListParams = Telnyx::Models::DetailRecordListParams
+
+  class DialogflowConfig = Telnyx::Models::DialogflowConfig
+
+  class DialogflowConnectionCreateParams = Telnyx::Models::DialogflowConnectionCreateParams
+
+  class DialogflowConnectionDeleteParams = Telnyx::Models::DialogflowConnectionDeleteParams
+
+  class DialogflowConnectionRetrieveParams = Telnyx::Models::DialogflowConnectionRetrieveParams
+
+  class DialogflowConnectionUpdateParams = Telnyx::Models::DialogflowConnectionUpdateParams
+
+  class DocReqsRequirementType = Telnyx::Models::DocReqsRequirementType
+
+  class DocServiceDocument = Telnyx::Models::DocServiceDocument
+
+  class DocumentDeleteParams = Telnyx::Models::DocumentDeleteParams
+
+  class DocumentDownloadParams = Telnyx::Models::DocumentDownloadParams
+
+  class DocumentGenerateDownloadLinkParams = Telnyx::Models::DocumentGenerateDownloadLinkParams
+
+  class DocumentLinkListParams = Telnyx::Models::DocumentLinkListParams
+
+  class DocumentListParams = Telnyx::Models::DocumentListParams
+
+  class DocumentRetrieveParams = Telnyx::Models::DocumentRetrieveParams
+
+  class DocumentUpdateParams = Telnyx::Models::DocumentUpdateParams
+
+  class DocumentUploadParams = Telnyx::Models::DocumentUploadParams
+
+  module DtmfType = Telnyx::Models::DtmfType
+
+  class DynamicEmergencyAddress = Telnyx::Models::DynamicEmergencyAddress
+
+  class DynamicEmergencyAddressCreateParams = Telnyx::Models::DynamicEmergencyAddressCreateParams
+
+  class DynamicEmergencyAddressDeleteParams = Telnyx::Models::DynamicEmergencyAddressDeleteParams
+
+  class DynamicEmergencyAddressListParams = Telnyx::Models::DynamicEmergencyAddressListParams
+
+  class DynamicEmergencyAddressRetrieveParams = Telnyx::Models::DynamicEmergencyAddressRetrieveParams
+
+  class DynamicEmergencyEndpoint = Telnyx::Models::DynamicEmergencyEndpoint
+
+  class DynamicEmergencyEndpointCreateParams = Telnyx::Models::DynamicEmergencyEndpointCreateParams
+
+  class DynamicEmergencyEndpointDeleteParams = Telnyx::Models::DynamicEmergencyEndpointDeleteParams
+
+  class DynamicEmergencyEndpointListParams = Telnyx::Models::DynamicEmergencyEndpointListParams
+
+  class DynamicEmergencyEndpointRetrieveParams = Telnyx::Models::DynamicEmergencyEndpointRetrieveParams
+
+  module EncryptedMedia = Telnyx::Models::EncryptedMedia
+
+  module EntityType = Telnyx::Models::EntityType
+
+  class EnumRetrieveParams = Telnyx::Models::EnumRetrieveParams
+
+  class ExternalConnection = Telnyx::Models::ExternalConnection
+
+  class ExternalConnectionCreateParams = Telnyx::Models::ExternalConnectionCreateParams
+
+  class ExternalConnectionDeleteParams = Telnyx::Models::ExternalConnectionDeleteParams
+
+  class ExternalConnectionListParams = Telnyx::Models::ExternalConnectionListParams
+
+  class ExternalConnectionRetrieveParams = Telnyx::Models::ExternalConnectionRetrieveParams
+
+  module ExternalConnections = Telnyx::Models::ExternalConnections
+
+  class ExternalConnectionUpdateLocationParams = Telnyx::Models::ExternalConnectionUpdateLocationParams
+
+  class ExternalConnectionUpdateParams = Telnyx::Models::ExternalConnectionUpdateParams
+
+  class ExternalVoiceIntegrationsPaginationMeta = Telnyx::Models::ExternalVoiceIntegrationsPaginationMeta
+
+  class Fax = Telnyx::Models::Fax
+
+  class FaxApplication = Telnyx::Models::FaxApplication
+
+  class FaxApplicationCreateParams = Telnyx::Models::FaxApplicationCreateParams
+
+  class FaxApplicationDeleteParams = Telnyx::Models::FaxApplicationDeleteParams
+
+  class FaxApplicationListParams = Telnyx::Models::FaxApplicationListParams
+
+  class FaxApplicationRetrieveParams = Telnyx::Models::FaxApplicationRetrieveParams
+
+  class FaxApplicationUpdateParams = Telnyx::Models::FaxApplicationUpdateParams
+
+  class FaxCreateParams = Telnyx::Models::FaxCreateParams
+
+  class FaxDeleteParams = Telnyx::Models::FaxDeleteParams
+
+  class FaxDeliveredWebhookEvent = Telnyx::Models::FaxDeliveredWebhookEvent
+
+  module Faxes = Telnyx::Models::Faxes
+
+  class FaxFailedWebhookEvent = Telnyx::Models::FaxFailedWebhookEvent
+
+  class FaxListParams = Telnyx::Models::FaxListParams
+
+  class FaxMediaProcessedWebhookEvent = Telnyx::Models::FaxMediaProcessedWebhookEvent
+
+  class FaxQueuedWebhookEvent = Telnyx::Models::FaxQueuedWebhookEvent
+
+  class FaxRetrieveParams = Telnyx::Models::FaxRetrieveParams
+
+  class FaxSendingStartedWebhookEvent = Telnyx::Models::FaxSendingStartedWebhookEvent
+
+  class Fqdn = Telnyx::Models::Fqdn
+
+  class FqdnConnection = Telnyx::Models::FqdnConnection
+
+  class FqdnConnectionCreateParams = Telnyx::Models::FqdnConnectionCreateParams
+
+  class FqdnConnectionDeleteParams = Telnyx::Models::FqdnConnectionDeleteParams
+
+  class FqdnConnectionListParams = Telnyx::Models::FqdnConnectionListParams
+
+  class FqdnConnectionRetrieveParams = Telnyx::Models::FqdnConnectionRetrieveParams
+
+  class FqdnConnectionUpdateParams = Telnyx::Models::FqdnConnectionUpdateParams
+
+  class FqdnCreateParams = Telnyx::Models::FqdnCreateParams
+
+  class FqdnDeleteParams = Telnyx::Models::FqdnDeleteParams
+
+  class FqdnListParams = Telnyx::Models::FqdnListParams
+
+  class FqdnRetrieveParams = Telnyx::Models::FqdnRetrieveParams
+
+  class FqdnUpdateParams = Telnyx::Models::FqdnUpdateParams
+
+  class GcsConfigurationData = Telnyx::Models::GcsConfigurationData
+
+  class GlobalIPAllowedPortListParams = Telnyx::Models::GlobalIPAllowedPortListParams
+
+  class GlobalIPAssignment = Telnyx::Models::GlobalIPAssignment
+
+  class GlobalIPAssignmentCreateParams = Telnyx::Models::GlobalIPAssignmentCreateParams
+
+  class GlobalIPAssignmentDeleteParams = Telnyx::Models::GlobalIPAssignmentDeleteParams
+
+  class GlobalIPAssignmentHealthRetrieveParams = Telnyx::Models::GlobalIPAssignmentHealthRetrieveParams
+
+  class GlobalIPAssignmentListParams = Telnyx::Models::GlobalIPAssignmentListParams
+
+  class GlobalIPAssignmentRetrieveParams = Telnyx::Models::GlobalIPAssignmentRetrieveParams
+
+  class GlobalIPAssignmentsUsageRetrieveParams = Telnyx::Models::GlobalIPAssignmentsUsageRetrieveParams
+
+  class GlobalIPAssignmentUpdateParams = Telnyx::Models::GlobalIPAssignmentUpdateParams
+
+  class GlobalIPCreateParams = Telnyx::Models::GlobalIPCreateParams
+
+  class GlobalIPDeleteParams = Telnyx::Models::GlobalIPDeleteParams
+
+  class GlobalIPHealthCheckCreateParams = Telnyx::Models::GlobalIPHealthCheckCreateParams
+
+  class GlobalIPHealthCheckDeleteParams = Telnyx::Models::GlobalIPHealthCheckDeleteParams
+
+  class GlobalIPHealthCheckListParams = Telnyx::Models::GlobalIPHealthCheckListParams
+
+  class GlobalIPHealthCheckRetrieveParams = Telnyx::Models::GlobalIPHealthCheckRetrieveParams
+
+  class GlobalIPHealthCheckTypeListParams = Telnyx::Models::GlobalIPHealthCheckTypeListParams
+
+  class GlobalIPLatencyRetrieveParams = Telnyx::Models::GlobalIPLatencyRetrieveParams
+
+  class GlobalIPListParams = Telnyx::Models::GlobalIPListParams
+
+  class GlobalIPProtocolListParams = Telnyx::Models::GlobalIPProtocolListParams
+
+  class GlobalIPRetrieveParams = Telnyx::Models::GlobalIPRetrieveParams
+
+  class GlobalIPUsageRetrieveParams = Telnyx::Models::GlobalIPUsageRetrieveParams
+
+  class HostedNumber = Telnyx::Models::HostedNumber
+
+  class InboundChannelListParams = Telnyx::Models::InboundChannelListParams
+
+  class InboundChannelUpdateParams = Telnyx::Models::InboundChannelUpdateParams
+
+  class InboundFqdn = Telnyx::Models::InboundFqdn
+
+  class InboundIP = Telnyx::Models::InboundIP
+
+  class InboundMessageWebhookEvent = Telnyx::Models::InboundMessageWebhookEvent
+
+  class IntegrationSecret = Telnyx::Models::IntegrationSecret
+
+  class IntegrationSecretCreateParams = Telnyx::Models::IntegrationSecretCreateParams
+
+  class IntegrationSecretDeleteParams = Telnyx::Models::IntegrationSecretDeleteParams
+
+  class IntegrationSecretListParams = Telnyx::Models::IntegrationSecretListParams
+
+  class Interface = Telnyx::Models::Interface
+
+  module InterfaceStatus = Telnyx::Models::InterfaceStatus
+
+  class InventoryCoverageListParams = Telnyx::Models::InventoryCoverageListParams
+
+  class InvoiceListParams = Telnyx::Models::InvoiceListParams
+
+  class InvoiceRetrieveParams = Telnyx::Models::InvoiceRetrieveParams
+
+  class IP = Telnyx::Models::IP
+
+  class IPConnection = Telnyx::Models::IPConnection
+
+  class IPConnectionCreateParams = Telnyx::Models::IPConnectionCreateParams
+
+  class IPConnectionDeleteParams = Telnyx::Models::IPConnectionDeleteParams
+
+  class IPConnectionListParams = Telnyx::Models::IPConnectionListParams
+
+  class IPConnectionRetrieveParams = Telnyx::Models::IPConnectionRetrieveParams
+
+  class IPConnectionUpdateParams = Telnyx::Models::IPConnectionUpdateParams
+
+  class IPCreateParams = Telnyx::Models::IPCreateParams
+
+  class IPDeleteParams = Telnyx::Models::IPDeleteParams
+
+  class IPListParams = Telnyx::Models::IPListParams
+
+  class IPRetrieveParams = Telnyx::Models::IPRetrieveParams
+
+  class IPUpdateParams = Telnyx::Models::IPUpdateParams
+
+  class LedgerBillingGroupReport = Telnyx::Models::LedgerBillingGroupReport
+
+  class LedgerBillingGroupReportCreateParams = Telnyx::Models::LedgerBillingGroupReportCreateParams
+
+  class LedgerBillingGroupReportRetrieveParams = Telnyx::Models::LedgerBillingGroupReportRetrieveParams
+
+  module Legacy = Telnyx::Models::Legacy
+
+  class ListRetrieveAllParams = Telnyx::Models::ListRetrieveAllParams
+
+  class ListRetrieveByZoneParams = Telnyx::Models::ListRetrieveByZoneParams
+
+  class ManagedAccount = Telnyx::Models::ManagedAccount
+
+  class ManagedAccountBalance = Telnyx::Models::ManagedAccountBalance
+
+  class ManagedAccountCreateParams = Telnyx::Models::ManagedAccountCreateParams
+
+  class ManagedAccountGetAllocatableGlobalOutboundChannelsParams = Telnyx::Models::ManagedAccountGetAllocatableGlobalOutboundChannelsParams
+
+  class ManagedAccountListParams = Telnyx::Models::ManagedAccountListParams
+
+  class ManagedAccountRetrieveParams = Telnyx::Models::ManagedAccountRetrieveParams
+
+  module ManagedAccounts = Telnyx::Models::ManagedAccounts
+
+  class ManagedAccountUpdateGlobalChannelLimitParams = Telnyx::Models::ManagedAccountUpdateGlobalChannelLimitParams
+
+  class ManagedAccountUpdateParams = Telnyx::Models::ManagedAccountUpdateParams
+
+  class MediaDeleteParams = Telnyx::Models::MediaDeleteParams
+
+  class MediaDownloadParams = Telnyx::Models::MediaDownloadParams
+
+  class MediaListParams = Telnyx::Models::MediaListParams
+
+  class MediaResource = Telnyx::Models::MediaResource
+
+  class MediaRetrieveParams = Telnyx::Models::MediaRetrieveParams
+
+  class MediaUpdateParams = Telnyx::Models::MediaUpdateParams
+
+  class MediaUploadParams = Telnyx::Models::MediaUploadParams
+
+  class MessageCancelScheduledParams = Telnyx::Models::MessageCancelScheduledParams
+
+  class MessageRetrieveParams = Telnyx::Models::MessageRetrieveParams
+
+  module Messages = Telnyx::Models::Messages
+
+  class MessageScheduleParams = Telnyx::Models::MessageScheduleParams
+
+  class MessageSendGroupMmsParams = Telnyx::Models::MessageSendGroupMmsParams
+
+  class MessageSendLongCodeParams = Telnyx::Models::MessageSendLongCodeParams
+
+  class MessageSendNumberPoolParams = Telnyx::Models::MessageSendNumberPoolParams
+
+  class MessageSendParams = Telnyx::Models::MessageSendParams
+
+  class MessageSendShortCodeParams = Telnyx::Models::MessageSendShortCodeParams
+
+  module Messaging = Telnyx::Models::Messaging
+
+  class MessagingError = Telnyx::Models::MessagingError
+
+  class MessagingFeatureSet = Telnyx::Models::MessagingFeatureSet
+
+  class MessagingHostedNumberDeleteParams = Telnyx::Models::MessagingHostedNumberDeleteParams
+
+  class MessagingHostedNumberOrder = Telnyx::Models::MessagingHostedNumberOrder
+
+  class MessagingHostedNumberOrderCheckEligibilityParams = Telnyx::Models::MessagingHostedNumberOrderCheckEligibilityParams
+
+  class MessagingHostedNumberOrderCreateParams = Telnyx::Models::MessagingHostedNumberOrderCreateParams
+
+  class MessagingHostedNumberOrderCreateVerificationCodesParams = Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesParams
+
+  class MessagingHostedNumberOrderDeleteParams = Telnyx::Models::MessagingHostedNumberOrderDeleteParams
+
+  class MessagingHostedNumberOrderListParams = Telnyx::Models::MessagingHostedNumberOrderListParams
+
+  class MessagingHostedNumberOrderRetrieveParams = Telnyx::Models::MessagingHostedNumberOrderRetrieveParams
+
+  module MessagingHostedNumberOrders = Telnyx::Models::MessagingHostedNumberOrders
+
+  class MessagingHostedNumberOrderValidateCodesParams = Telnyx::Models::MessagingHostedNumberOrderValidateCodesParams
+
+  class MessagingNumbersBulkUpdateCreateParams = Telnyx::Models::MessagingNumbersBulkUpdateCreateParams
+
+  class MessagingNumbersBulkUpdateRetrieveParams = Telnyx::Models::MessagingNumbersBulkUpdateRetrieveParams
+
+  class MessagingOptoutListParams = Telnyx::Models::MessagingOptoutListParams
+
+  class MessagingProfile = Telnyx::Models::MessagingProfile
+
+  class MessagingProfileCreateParams = Telnyx::Models::MessagingProfileCreateParams
+
+  class MessagingProfileDeleteParams = Telnyx::Models::MessagingProfileDeleteParams
+
+  class MessagingProfileListParams = Telnyx::Models::MessagingProfileListParams
+
+  class MessagingProfileListPhoneNumbersParams = Telnyx::Models::MessagingProfileListPhoneNumbersParams
+
+  class MessagingProfileListShortCodesParams = Telnyx::Models::MessagingProfileListShortCodesParams
+
+  class MessagingProfileRetrieveParams = Telnyx::Models::MessagingProfileRetrieveParams
+
+  module MessagingProfiles = Telnyx::Models::MessagingProfiles
+
+  class MessagingProfileUpdateParams = Telnyx::Models::MessagingProfileUpdateParams
+
+  module MessagingTollfree = Telnyx::Models::MessagingTollfree
+
+  class MessagingURLDomainListParams = Telnyx::Models::MessagingURLDomainListParams
+
+  class MesssageRcsParams = Telnyx::Models::MesssageRcsParams
+
+  class Metadata = Telnyx::Models::Metadata
+
+  class MobileNetworkOperatorListParams = Telnyx::Models::MobileNetworkOperatorListParams
+
+  class MobilePushCredentialCreateParams = Telnyx::Models::MobilePushCredentialCreateParams
+
+  class MobilePushCredentialDeleteParams = Telnyx::Models::MobilePushCredentialDeleteParams
+
+  class MobilePushCredentialListParams = Telnyx::Models::MobilePushCredentialListParams
+
+  class MobilePushCredentialRetrieveParams = Telnyx::Models::MobilePushCredentialRetrieveParams
+
+  class MonthDetail = Telnyx::Models::MonthDetail
+
+  class NetworkCoverageListParams = Telnyx::Models::NetworkCoverageListParams
+
+  class NetworkCreate = Telnyx::Models::NetworkCreate
+
+  class NetworkCreateParams = Telnyx::Models::NetworkCreateParams
+
+  class NetworkDeleteParams = Telnyx::Models::NetworkDeleteParams
+
+  class NetworkListInterfacesParams = Telnyx::Models::NetworkListInterfacesParams
+
+  class NetworkListParams = Telnyx::Models::NetworkListParams
+
+  class NetworkRetrieveParams = Telnyx::Models::NetworkRetrieveParams
+
+  module Networks = Telnyx::Models::Networks
+
+  class NetworkUpdateParams = Telnyx::Models::NetworkUpdateParams
+
+  class NotificationChannel = Telnyx::Models::NotificationChannel
+
+  class NotificationChannelCreateParams = Telnyx::Models::NotificationChannelCreateParams
+
+  class NotificationChannelDeleteParams = Telnyx::Models::NotificationChannelDeleteParams
+
+  class NotificationChannelListParams = Telnyx::Models::NotificationChannelListParams
+
+  class NotificationChannelRetrieveParams = Telnyx::Models::NotificationChannelRetrieveParams
+
+  class NotificationChannelUpdateParams = Telnyx::Models::NotificationChannelUpdateParams
+
+  class NotificationEventConditionListParams = Telnyx::Models::NotificationEventConditionListParams
+
+  class NotificationEventListParams = Telnyx::Models::NotificationEventListParams
+
+  class NotificationProfile = Telnyx::Models::NotificationProfile
+
+  class NotificationProfileCreateParams = Telnyx::Models::NotificationProfileCreateParams
+
+  class NotificationProfileDeleteParams = Telnyx::Models::NotificationProfileDeleteParams
+
+  class NotificationProfileListParams = Telnyx::Models::NotificationProfileListParams
+
+  class NotificationProfileRetrieveParams = Telnyx::Models::NotificationProfileRetrieveParams
+
+  class NotificationProfileUpdateParams = Telnyx::Models::NotificationProfileUpdateParams
+
+  class NotificationSetting = Telnyx::Models::NotificationSetting
+
+  class NotificationSettingCreateParams = Telnyx::Models::NotificationSettingCreateParams
+
+  class NotificationSettingDeleteParams = Telnyx::Models::NotificationSettingDeleteParams
+
+  class NotificationSettingListParams = Telnyx::Models::NotificationSettingListParams
+
+  class NotificationSettingRetrieveParams = Telnyx::Models::NotificationSettingRetrieveParams
+
+  class NumberBlockOrder = Telnyx::Models::NumberBlockOrder
+
+  class NumberBlockOrderCreateParams = Telnyx::Models::NumberBlockOrderCreateParams
+
+  class NumberBlockOrderListParams = Telnyx::Models::NumberBlockOrderListParams
+
+  class NumberBlockOrderRetrieveParams = Telnyx::Models::NumberBlockOrderRetrieveParams
+
+  class NumberHealthMetrics = Telnyx::Models::NumberHealthMetrics
+
+  class NumberLookupRetrieveParams = Telnyx::Models::NumberLookupRetrieveParams
+
+  class NumberOrderCreateParams = Telnyx::Models::NumberOrderCreateParams
+
+  class NumberOrderListParams = Telnyx::Models::NumberOrderListParams
+
+  class NumberOrderPhoneNumber = Telnyx::Models::NumberOrderPhoneNumber
+
+  class NumberOrderPhoneNumberListParams = Telnyx::Models::NumberOrderPhoneNumberListParams
+
+  class NumberOrderPhoneNumberRetrieveParams = Telnyx::Models::NumberOrderPhoneNumberRetrieveParams
+
+  class NumberOrderPhoneNumberUpdateRequirementGroupParams = Telnyx::Models::NumberOrderPhoneNumberUpdateRequirementGroupParams
+
+  class NumberOrderPhoneNumberUpdateRequirementsParams = Telnyx::Models::NumberOrderPhoneNumberUpdateRequirementsParams
+
+  class NumberOrderRetrieveParams = Telnyx::Models::NumberOrderRetrieveParams
+
+  class NumberOrderStatusUpdateWebhookEvent = Telnyx::Models::NumberOrderStatusUpdateWebhookEvent
+
+  class NumberOrderUpdateParams = Telnyx::Models::NumberOrderUpdateParams
+
+  class NumberOrderWithPhoneNumbers = Telnyx::Models::NumberOrderWithPhoneNumbers
+
+  class NumberPoolSettings = Telnyx::Models::NumberPoolSettings
+
+  class NumberReservation = Telnyx::Models::NumberReservation
+
+  class NumberReservationCreateParams = Telnyx::Models::NumberReservationCreateParams
+
+  class NumberReservationListParams = Telnyx::Models::NumberReservationListParams
+
+  class NumberReservationRetrieveParams = Telnyx::Models::NumberReservationRetrieveParams
+
+  module NumberReservations = Telnyx::Models::NumberReservations
+
+  class NumbersFeatureCreateParams = Telnyx::Models::NumbersFeatureCreateParams
+
+  class OAuthClientCreateParams = Telnyx::Models::OAuthClientCreateParams
+
+  class OAuthClientDeleteParams = Telnyx::Models::OAuthClientDeleteParams
+
+  class OAuthClientListParams = Telnyx::Models::OAuthClientListParams
+
+  class OAuthClientRetrieveParams = Telnyx::Models::OAuthClientRetrieveParams
+
+  class OAuthClientUpdateParams = Telnyx::Models::OAuthClientUpdateParams
+
+  class OAuthGrantDeleteParams = Telnyx::Models::OAuthGrantDeleteParams
+
+  class OAuthGrantListParams = Telnyx::Models::OAuthGrantListParams
+
+  class OAuthGrantRetrieveParams = Telnyx::Models::OAuthGrantRetrieveParams
+
+  class OAuthGrantsParams = Telnyx::Models::OAuthGrantsParams
+
+  class OAuthIntrospectParams = Telnyx::Models::OAuthIntrospectParams
+
+  class OAuthRegisterParams = Telnyx::Models::OAuthRegisterParams
+
+  class OAuthRetrieveAuthorizeParams = Telnyx::Models::OAuthRetrieveAuthorizeParams
+
+  class OAuthRetrieveJwksParams = Telnyx::Models::OAuthRetrieveJwksParams
+
+  class OAuthRetrieveParams = Telnyx::Models::OAuthRetrieveParams
+
+  class OAuthTokenParams = Telnyx::Models::OAuthTokenParams
+
+  module OperatorConnect = Telnyx::Models::OperatorConnect
+
+  class OtaUpdateListParams = Telnyx::Models::OtaUpdateListParams
+
+  class OtaUpdateRetrieveParams = Telnyx::Models::OtaUpdateRetrieveParams
+
+  class OutboundCallRecording = Telnyx::Models::OutboundCallRecording
+
+  class OutboundFqdn = Telnyx::Models::OutboundFqdn
+
+  class OutboundIP = Telnyx::Models::OutboundIP
+
+  class OutboundMessagePayload = Telnyx::Models::OutboundMessagePayload
+
+  class OutboundVoiceProfile = Telnyx::Models::OutboundVoiceProfile
+
+  class OutboundVoiceProfileCreateParams = Telnyx::Models::OutboundVoiceProfileCreateParams
+
+  class OutboundVoiceProfileDeleteParams = Telnyx::Models::OutboundVoiceProfileDeleteParams
+
+  class OutboundVoiceProfileListParams = Telnyx::Models::OutboundVoiceProfileListParams
+
+  class OutboundVoiceProfileRetrieveParams = Telnyx::Models::OutboundVoiceProfileRetrieveParams
+
+  class OutboundVoiceProfileUpdateParams = Telnyx::Models::OutboundVoiceProfileUpdateParams
+
+  class PaginationMeta = Telnyx::Models::PaginationMeta
+
+  class PartnerCampaignListParams = Telnyx::Models::PartnerCampaignListParams
+
+  class PartnerCampaignListSharedByMeParams = Telnyx::Models::PartnerCampaignListSharedByMeParams
+
+  class PartnerCampaignRetrieveParams = Telnyx::Models::PartnerCampaignRetrieveParams
+
+  class PartnerCampaignRetrieveSharingStatusParams = Telnyx::Models::PartnerCampaignRetrieveSharingStatusParams
+
+  class PartnerCampaignUpdateParams = Telnyx::Models::PartnerCampaignUpdateParams
+
+  module Payment = Telnyx::Models::Payment
+
+  class PhoneNumber = Telnyx::Models::PhoneNumber
+
+  class PhoneNumberAssignmentByProfileAssignParams = Telnyx::Models::PhoneNumberAssignmentByProfileAssignParams
+
+  class PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusParams = Telnyx::Models::PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusParams
+
+  class PhoneNumberAssignmentByProfileRetrieveStatusParams = Telnyx::Models::PhoneNumberAssignmentByProfileRetrieveStatusParams
+
+  module PhoneNumberBlocks = Telnyx::Models::PhoneNumberBlocks
+
+  class PhoneNumberCampaign = Telnyx::Models::PhoneNumberCampaign
+
+  class PhoneNumberCampaignCreate = Telnyx::Models::PhoneNumberCampaignCreate
+
+  class PhoneNumberCampaignCreateParams = Telnyx::Models::PhoneNumberCampaignCreateParams
+
+  class PhoneNumberCampaignDeleteParams = Telnyx::Models::PhoneNumberCampaignDeleteParams
+
+  class PhoneNumberCampaignListParams = Telnyx::Models::PhoneNumberCampaignListParams
+
+  class PhoneNumberCampaignRetrieveParams = Telnyx::Models::PhoneNumberCampaignRetrieveParams
+
+  class PhoneNumberCampaignUpdateParams = Telnyx::Models::PhoneNumberCampaignUpdateParams
+
+  class PhoneNumberDeleteParams = Telnyx::Models::PhoneNumberDeleteParams
+
+  class PhoneNumberDetailed = Telnyx::Models::PhoneNumberDetailed
+
+  class PhoneNumberListParams = Telnyx::Models::PhoneNumberListParams
+
+  class PhoneNumberRetrieveParams = Telnyx::Models::PhoneNumberRetrieveParams
+
+  module PhoneNumbers = Telnyx::Models::PhoneNumbers
+
+  class PhoneNumberSlimListParams = Telnyx::Models::PhoneNumberSlimListParams
+
+  class PhoneNumbersRegulatoryRequirementRetrieveParams = Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveParams
+
+  class PhoneNumberUpdateParams = Telnyx::Models::PhoneNumberUpdateParams
+
+  class PhoneNumberWithMessagingSettings = Telnyx::Models::PhoneNumberWithMessagingSettings
+
+  class PortabilityCheckRunParams = Telnyx::Models::PortabilityCheckRunParams
+
+  module Porting = Telnyx::Models::Porting
+
+  class PortingListUkCarriersParams = Telnyx::Models::PortingListUkCarriersParams
+
+  class PortingOrder = Telnyx::Models::PortingOrder
+
+  class PortingOrderActivationSettings = Telnyx::Models::PortingOrderActivationSettings
+
+  class PortingOrderCreateParams = Telnyx::Models::PortingOrderCreateParams
+
+  class PortingOrderDeleteParams = Telnyx::Models::PortingOrderDeleteParams
+
+  class PortingOrderDocuments = Telnyx::Models::PortingOrderDocuments
+
+  class PortingOrderEndUser = Telnyx::Models::PortingOrderEndUser
+
+  class PortingOrderEndUserAdmin = Telnyx::Models::PortingOrderEndUserAdmin
+
+  class PortingOrderEndUserLocation = Telnyx::Models::PortingOrderEndUserLocation
+
+  class PortingOrderListParams = Telnyx::Models::PortingOrderListParams
+
+  class PortingOrderMessaging = Telnyx::Models::PortingOrderMessaging
+
+  class PortingOrderMisc = Telnyx::Models::PortingOrderMisc
+
+  class PortingOrderPhoneNumberConfiguration = Telnyx::Models::PortingOrderPhoneNumberConfiguration
+
+  class PortingOrderRequirement = Telnyx::Models::PortingOrderRequirement
+
+  class PortingOrderRetrieveAllowedFocWindowsParams = Telnyx::Models::PortingOrderRetrieveAllowedFocWindowsParams
+
+  class PortingOrderRetrieveExceptionTypesParams = Telnyx::Models::PortingOrderRetrieveExceptionTypesParams
+
+  class PortingOrderRetrieveLoaTemplateParams = Telnyx::Models::PortingOrderRetrieveLoaTemplateParams
+
+  class PortingOrderRetrieveParams = Telnyx::Models::PortingOrderRetrieveParams
+
+  class PortingOrderRetrieveRequirementsParams = Telnyx::Models::PortingOrderRetrieveRequirementsParams
+
+  class PortingOrderRetrieveSubRequestParams = Telnyx::Models::PortingOrderRetrieveSubRequestParams
+
+  module PortingOrders = Telnyx::Models::PortingOrders
+
+  class PortingOrdersActivationJob = Telnyx::Models::PortingOrdersActivationJob
+
+  class PortingOrdersExceptionType = Telnyx::Models::PortingOrdersExceptionType
+
+  class PortingOrderStatus = Telnyx::Models::PortingOrderStatus
+
+  module PortingOrderType = Telnyx::Models::PortingOrderType
+
+  class PortingOrderUpdateParams = Telnyx::Models::PortingOrderUpdateParams
+
+  class PortingOrderUserFeedback = Telnyx::Models::PortingOrderUserFeedback
+
+  class PortingPhoneNumberListParams = Telnyx::Models::PortingPhoneNumberListParams
+
+  class PortoutDetails = Telnyx::Models::PortoutDetails
+
+  class PortoutListParams = Telnyx::Models::PortoutListParams
+
+  class PortoutListRejectionCodesParams = Telnyx::Models::PortoutListRejectionCodesParams
+
+  class PortoutRetrieveParams = Telnyx::Models::PortoutRetrieveParams
+
+  module Portouts = Telnyx::Models::Portouts
+
+  class PortoutUpdateStatusParams = Telnyx::Models::PortoutUpdateStatusParams
+
+  class PrivateWirelessGateway = Telnyx::Models::PrivateWirelessGateway
+
+  class PrivateWirelessGatewayCreateParams = Telnyx::Models::PrivateWirelessGatewayCreateParams
+
+  class PrivateWirelessGatewayDeleteParams = Telnyx::Models::PrivateWirelessGatewayDeleteParams
+
+  class PrivateWirelessGatewayListParams = Telnyx::Models::PrivateWirelessGatewayListParams
+
+  class PrivateWirelessGatewayRetrieveParams = Telnyx::Models::PrivateWirelessGatewayRetrieveParams
+
+  class PrivateWirelessGatewayStatus = Telnyx::Models::PrivateWirelessGatewayStatus
+
+  class PublicInternetGatewayCreateParams = Telnyx::Models::PublicInternetGatewayCreateParams
+
+  class PublicInternetGatewayDeleteParams = Telnyx::Models::PublicInternetGatewayDeleteParams
+
+  class PublicInternetGatewayListParams = Telnyx::Models::PublicInternetGatewayListParams
+
+  class PublicInternetGatewayRetrieveParams = Telnyx::Models::PublicInternetGatewayRetrieveParams
+
+  class PushCredential = Telnyx::Models::PushCredential
+
+  class PushCredentialResponse = Telnyx::Models::PushCredentialResponse
+
+  class PwgAssignedResourcesSummary = Telnyx::Models::PwgAssignedResourcesSummary
+
+  class QueueRetrieveParams = Telnyx::Models::QueueRetrieveParams
+
+  module Queues = Telnyx::Models::Queues
+
+  class RcsAgent = Telnyx::Models::RcsAgent
+
+  class RcsAgentMessage = Telnyx::Models::RcsAgentMessage
+
+  class RcsAgentResponse = Telnyx::Models::RcsAgentResponse
+
+  class RcsCardContent = Telnyx::Models::RcsCardContent
+
+  class RcsContentInfo = Telnyx::Models::RcsContentInfo
+
+  class RcsSuggestion = Telnyx::Models::RcsSuggestion
+
+  class Record = Telnyx::Models::Record
+
+  class RecordingDeleteParams = Telnyx::Models::RecordingDeleteParams
+
+  class RecordingListParams = Telnyx::Models::RecordingListParams
+
+  class RecordingResponseData = Telnyx::Models::RecordingResponseData
+
+  class RecordingRetrieveParams = Telnyx::Models::RecordingRetrieveParams
+
+  module Recordings = Telnyx::Models::Recordings
+
+  class RecordingTranscription = Telnyx::Models::RecordingTranscription
+
+  class RecordingTranscriptionDeleteParams = Telnyx::Models::RecordingTranscriptionDeleteParams
+
+  class RecordingTranscriptionListParams = Telnyx::Models::RecordingTranscriptionListParams
+
+  class RecordingTranscriptionRetrieveParams = Telnyx::Models::RecordingTranscriptionRetrieveParams
+
+  class RegionIn = Telnyx::Models::RegionIn
+
+  class RegionListParams = Telnyx::Models::RegionListParams
+
+  class RegulatoryRequirementRetrieveParams = Telnyx::Models::RegulatoryRequirementRetrieveParams
+
+  class ReplacedLinkClickWebhookEvent = Telnyx::Models::ReplacedLinkClickWebhookEvent
+
+  class ReportListMdrsParams = Telnyx::Models::ReportListMdrsParams
+
+  class ReportListWdrsParams = Telnyx::Models::ReportListWdrsParams
+
+  module Reports = Telnyx::Models::Reports
+
+  class RequirementGroup = Telnyx::Models::RequirementGroup
+
+  class RequirementGroupCreateParams = Telnyx::Models::RequirementGroupCreateParams
+
+  class RequirementGroupDeleteParams = Telnyx::Models::RequirementGroupDeleteParams
+
+  class RequirementGroupListParams = Telnyx::Models::RequirementGroupListParams
+
+  class RequirementGroupRetrieveParams = Telnyx::Models::RequirementGroupRetrieveParams
+
+  class RequirementGroupSubmitForApprovalParams = Telnyx::Models::RequirementGroupSubmitForApprovalParams
+
+  class RequirementGroupUpdateParams = Telnyx::Models::RequirementGroupUpdateParams
+
+  class RequirementListParams = Telnyx::Models::RequirementListParams
+
+  class RequirementRetrieveParams = Telnyx::Models::RequirementRetrieveParams
+
+  class RequirementTypeListParams = Telnyx::Models::RequirementTypeListParams
+
+  class RequirementTypeRetrieveParams = Telnyx::Models::RequirementTypeRetrieveParams
+
+  class ReservedPhoneNumber = Telnyx::Models::ReservedPhoneNumber
+
+  class Room = Telnyx::Models::Room
+
+  class RoomComposition = Telnyx::Models::RoomComposition
+
+  class RoomCompositionCreateParams = Telnyx::Models::RoomCompositionCreateParams
+
+  class RoomCompositionDeleteParams = Telnyx::Models::RoomCompositionDeleteParams
+
+  class RoomCompositionListParams = Telnyx::Models::RoomCompositionListParams
+
+  class RoomCompositionRetrieveParams = Telnyx::Models::RoomCompositionRetrieveParams
+
+  class RoomCreateParams = Telnyx::Models::RoomCreateParams
+
+  class RoomDeleteParams = Telnyx::Models::RoomDeleteParams
+
+  class RoomListParams = Telnyx::Models::RoomListParams
+
+  class RoomParticipant = Telnyx::Models::RoomParticipant
+
+  class RoomParticipantListParams = Telnyx::Models::RoomParticipantListParams
+
+  class RoomParticipantRetrieveParams = Telnyx::Models::RoomParticipantRetrieveParams
+
+  class RoomRecordingDeleteBulkParams = Telnyx::Models::RoomRecordingDeleteBulkParams
+
+  class RoomRecordingDeleteParams = Telnyx::Models::RoomRecordingDeleteParams
+
+  class RoomRecordingListParams = Telnyx::Models::RoomRecordingListParams
+
+  class RoomRecordingRetrieveParams = Telnyx::Models::RoomRecordingRetrieveParams
+
+  class RoomRetrieveParams = Telnyx::Models::RoomRetrieveParams
+
+  module Rooms = Telnyx::Models::Rooms
+
+  class RoomSession = Telnyx::Models::RoomSession
+
+  class RoomUpdateParams = Telnyx::Models::RoomUpdateParams
+
+  class S3ConfigurationData = Telnyx::Models::S3ConfigurationData
+
+  module ServicePlan = Telnyx::Models::ServicePlan
+
+  class SetiRetrieveBlackBoxTestResultsParams = Telnyx::Models::SetiRetrieveBlackBoxTestResultsParams
+
+  class Settings = Telnyx::Models::Settings
+
+  class ShortCode = Telnyx::Models::ShortCode
+
+  class ShortCodeListParams = Telnyx::Models::ShortCodeListParams
+
+  class ShortCodeRetrieveParams = Telnyx::Models::ShortCodeRetrieveParams
+
+  class ShortCodeUpdateParams = Telnyx::Models::ShortCodeUpdateParams
+
+  class SimCard = Telnyx::Models::SimCard
+
+  class SimCardDataUsageNotification = Telnyx::Models::SimCardDataUsageNotification
+
+  class SimCardDataUsageNotificationCreateParams = Telnyx::Models::SimCardDataUsageNotificationCreateParams
+
+  class SimCardDataUsageNotificationDeleteParams = Telnyx::Models::SimCardDataUsageNotificationDeleteParams
+
+  class SimCardDataUsageNotificationListParams = Telnyx::Models::SimCardDataUsageNotificationListParams
+
+  class SimCardDataUsageNotificationRetrieveParams = Telnyx::Models::SimCardDataUsageNotificationRetrieveParams
+
+  class SimCardDataUsageNotificationUpdateParams = Telnyx::Models::SimCardDataUsageNotificationUpdateParams
+
+  class SimCardDeleteParams = Telnyx::Models::SimCardDeleteParams
+
+  class SimCardGetActivationCodeParams = Telnyx::Models::SimCardGetActivationCodeParams
+
+  class SimCardGetDeviceDetailsParams = Telnyx::Models::SimCardGetDeviceDetailsParams
+
+  class SimCardGetPublicIPParams = Telnyx::Models::SimCardGetPublicIPParams
+
+  class SimCardGroup = Telnyx::Models::SimCardGroup
+
+  class SimCardGroupCreateParams = Telnyx::Models::SimCardGroupCreateParams
+
+  class SimCardGroupDeleteParams = Telnyx::Models::SimCardGroupDeleteParams
+
+  class SimCardGroupListParams = Telnyx::Models::SimCardGroupListParams
+
+  class SimCardGroupRetrieveParams = Telnyx::Models::SimCardGroupRetrieveParams
+
+  module SimCardGroups = Telnyx::Models::SimCardGroups
+
+  class SimCardGroupUpdateParams = Telnyx::Models::SimCardGroupUpdateParams
+
+  class SimCardListParams = Telnyx::Models::SimCardListParams
+
+  class SimCardListWirelessConnectivityLogsParams = Telnyx::Models::SimCardListWirelessConnectivityLogsParams
+
+  class SimCardOrder = Telnyx::Models::SimCardOrder
+
+  class SimCardOrderCreateParams = Telnyx::Models::SimCardOrderCreateParams
+
+  class SimCardOrderListParams = Telnyx::Models::SimCardOrderListParams
+
+  class SimCardOrderPreviewPreviewParams = Telnyx::Models::SimCardOrderPreviewPreviewParams
+
+  class SimCardOrderRetrieveParams = Telnyx::Models::SimCardOrderRetrieveParams
+
+  class SimCardRetrieveParams = Telnyx::Models::SimCardRetrieveParams
+
+  module SimCards = Telnyx::Models::SimCards
+
+  class SimCardStatus = Telnyx::Models::SimCardStatus
+
+  class SimCardUpdateParams = Telnyx::Models::SimCardUpdateParams
+
+  class SimpleSimCard = Telnyx::Models::SimpleSimCard
+
+  class SipHeader = Telnyx::Models::SipHeader
+
+  class SiprecConnectorCreateParams = Telnyx::Models::SiprecConnectorCreateParams
+
+  class SiprecConnectorDeleteParams = Telnyx::Models::SiprecConnectorDeleteParams
+
+  class SiprecConnectorRetrieveParams = Telnyx::Models::SiprecConnectorRetrieveParams
+
+  class SiprecConnectorUpdateParams = Telnyx::Models::SiprecConnectorUpdateParams
+
+  class SoundModifications = Telnyx::Models::SoundModifications
+
+  module StockExchange = Telnyx::Models::StockExchange
+
+  module Storage = Telnyx::Models::Storage
+
+  class StorageListMigrationSourceCoverageParams = Telnyx::Models::StorageListMigrationSourceCoverageParams
+
+  module StreamBidirectionalCodec = Telnyx::Models::StreamBidirectionalCodec
+
+  module StreamBidirectionalMode = Telnyx::Models::StreamBidirectionalMode
+
+  module StreamBidirectionalTargetLegs = Telnyx::Models::StreamBidirectionalTargetLegs
+
+  module StreamCodec = Telnyx::Models::StreamCodec
+
+  class StreamingFailedWebhookEvent = Telnyx::Models::StreamingFailedWebhookEvent
+
+  class StreamingStartedWebhookEvent = Telnyx::Models::StreamingStartedWebhookEvent
+
+  class StreamingStoppedWebhookEvent = Telnyx::Models::StreamingStoppedWebhookEvent
+
+  class SubNumberOrder = Telnyx::Models::SubNumberOrder
+
+  class SubNumberOrderCancelParams = Telnyx::Models::SubNumberOrderCancelParams
+
+  class SubNumberOrderListParams = Telnyx::Models::SubNumberOrderListParams
+
+  class SubNumberOrderRegulatoryRequirement = Telnyx::Models::SubNumberOrderRegulatoryRequirement
+
+  class SubNumberOrderRegulatoryRequirementWithValue = Telnyx::Models::SubNumberOrderRegulatoryRequirementWithValue
+
+  class SubNumberOrderRetrieveParams = Telnyx::Models::SubNumberOrderRetrieveParams
+
+  class SubNumberOrdersReportCreateParams = Telnyx::Models::SubNumberOrdersReportCreateParams
+
+  class SubNumberOrdersReportDownloadParams = Telnyx::Models::SubNumberOrdersReportDownloadParams
+
+  class SubNumberOrdersReportRetrieveParams = Telnyx::Models::SubNumberOrdersReportRetrieveParams
+
+  class SubNumberOrderUpdateParams = Telnyx::Models::SubNumberOrderUpdateParams
+
+  class SubNumberOrderUpdateRequirementGroupParams = Telnyx::Models::SubNumberOrderUpdateRequirementGroupParams
+
+  module TaskStatus = Telnyx::Models::TaskStatus
+
+  class TelephonyCredential = Telnyx::Models::TelephonyCredential
+
+  class TelephonyCredentialCreateParams = Telnyx::Models::TelephonyCredentialCreateParams
+
+  class TelephonyCredentialCreateTokenParams = Telnyx::Models::TelephonyCredentialCreateTokenParams
+
+  class TelephonyCredentialDeleteParams = Telnyx::Models::TelephonyCredentialDeleteParams
+
+  class TelephonyCredentialListParams = Telnyx::Models::TelephonyCredentialListParams
+
+  class TelephonyCredentialRetrieveParams = Telnyx::Models::TelephonyCredentialRetrieveParams
+
+  class TelephonyCredentialUpdateParams = Telnyx::Models::TelephonyCredentialUpdateParams
+
+  class TelnyxBrand = Telnyx::Models::TelnyxBrand
+
+  class TelnyxCampaignCsp = Telnyx::Models::TelnyxCampaignCsp
+
+  class TelnyxDownstreamCampaign = Telnyx::Models::TelnyxDownstreamCampaign
+
+  module Texml = Telnyx::Models::Texml
+
+  class TexmlApplication = Telnyx::Models::TexmlApplication
+
+  class TexmlApplicationCreateParams = Telnyx::Models::TexmlApplicationCreateParams
+
+  class TexmlApplicationDeleteParams = Telnyx::Models::TexmlApplicationDeleteParams
+
+  class TexmlApplicationListParams = Telnyx::Models::TexmlApplicationListParams
+
+  class TexmlApplicationRetrieveParams = Telnyx::Models::TexmlApplicationRetrieveParams
+
+  class TexmlApplicationUpdateParams = Telnyx::Models::TexmlApplicationUpdateParams
+
+  class TexmlSecretsParams = Telnyx::Models::TexmlSecretsParams
+
+  class TextToSpeechGenerateSpeechParams = Telnyx::Models::TextToSpeechGenerateSpeechParams
+
+  class TextToSpeechListVoicesParams = Telnyx::Models::TextToSpeechListVoicesParams
+
+  module TrafficType = Telnyx::Models::TrafficType
+
+  class TranscriptionWebhookEvent = Telnyx::Models::TranscriptionWebhookEvent
+
+  module TransportProtocol = Telnyx::Models::TransportProtocol
+
+  module UnwrapWebhookEvent = Telnyx::Models::UnwrapWebhookEvent
+
+  class UpdateRegulatoryRequirement = Telnyx::Models::UpdateRegulatoryRequirement
+
+  class URLShortenerSettings = Telnyx::Models::URLShortenerSettings
+
+  module UsagePaymentMethod = Telnyx::Models::UsagePaymentMethod
+
+  class UsageReportGetOptionsParams = Telnyx::Models::UsageReportGetOptionsParams
+
+  class UsageReportListParams = Telnyx::Models::UsageReportListParams
+
+  class UserAddress = Telnyx::Models::UserAddress
+
+  class UserAddressCreateParams = Telnyx::Models::UserAddressCreateParams
+
+  class UserAddressListParams = Telnyx::Models::UserAddressListParams
+
+  class UserAddressRetrieveParams = Telnyx::Models::UserAddressRetrieveParams
+
+  class UserTagListParams = Telnyx::Models::UserTagListParams
+
+  class Verification = Telnyx::Models::Verification
+
+  class VerificationRetrieveParams = Telnyx::Models::VerificationRetrieveParams
+
+  module Verifications = Telnyx::Models::Verifications
+
+  class VerificationTriggerCallParams = Telnyx::Models::VerificationTriggerCallParams
+
+  class VerificationTriggerFlashcallParams = Telnyx::Models::VerificationTriggerFlashcallParams
+
+  class VerificationTriggerSMSParams = Telnyx::Models::VerificationTriggerSMSParams
+
+  class VerifiedNumber = Telnyx::Models::VerifiedNumber
+
+  class VerifiedNumberCreateParams = Telnyx::Models::VerifiedNumberCreateParams
+
+  class VerifiedNumberDataWrapper = Telnyx::Models::VerifiedNumberDataWrapper
+
+  class VerifiedNumberDeleteParams = Telnyx::Models::VerifiedNumberDeleteParams
+
+  class VerifiedNumberListParams = Telnyx::Models::VerifiedNumberListParams
+
+  class VerifiedNumberRetrieveParams = Telnyx::Models::VerifiedNumberRetrieveParams
+
+  module VerifiedNumbers = Telnyx::Models::VerifiedNumbers
+
+  class VerifyProfile = Telnyx::Models::VerifyProfile
+
+  class VerifyProfileCreateParams = Telnyx::Models::VerifyProfileCreateParams
+
+  class VerifyProfileCreateTemplateParams = Telnyx::Models::VerifyProfileCreateTemplateParams
+
+  class VerifyProfileData = Telnyx::Models::VerifyProfileData
+
+  class VerifyProfileDeleteParams = Telnyx::Models::VerifyProfileDeleteParams
+
+  class VerifyProfileListParams = Telnyx::Models::VerifyProfileListParams
+
+  class VerifyProfileRetrieveParams = Telnyx::Models::VerifyProfileRetrieveParams
+
+  class VerifyProfileRetrieveTemplatesParams = Telnyx::Models::VerifyProfileRetrieveTemplatesParams
+
+  class VerifyProfileUpdateParams = Telnyx::Models::VerifyProfileUpdateParams
+
+  class VerifyProfileUpdateTemplateParams = Telnyx::Models::VerifyProfileUpdateTemplateParams
+
+  module Vertical = Telnyx::Models::Vertical
+
+  class VideoRegion = Telnyx::Models::VideoRegion
+
+  class VirtualCrossConnectCreateParams = Telnyx::Models::VirtualCrossConnectCreateParams
+
+  class VirtualCrossConnectDeleteParams = Telnyx::Models::VirtualCrossConnectDeleteParams
+
+  class VirtualCrossConnectListParams = Telnyx::Models::VirtualCrossConnectListParams
+
+  class VirtualCrossConnectRetrieveParams = Telnyx::Models::VirtualCrossConnectRetrieveParams
+
+  class VirtualCrossConnectsCoverageListParams = Telnyx::Models::VirtualCrossConnectsCoverageListParams
+
+  class VirtualCrossConnectUpdateParams = Telnyx::Models::VirtualCrossConnectUpdateParams
+
+  module WebhookAPIVersion = Telnyx::Models::WebhookAPIVersion
+
+  class WebhookDeliveryListParams = Telnyx::Models::WebhookDeliveryListParams
+
+  class WebhookDeliveryRetrieveParams = Telnyx::Models::WebhookDeliveryRetrieveParams
+
+  class WebhookUnwrapParams = Telnyx::Models::WebhookUnwrapParams
+
+  class WellKnownRetrieveAuthorizationServerMetadataParams = Telnyx::Models::WellKnownRetrieveAuthorizationServerMetadataParams
+
+  class WellKnownRetrieveProtectedResourceMetadataParams = Telnyx::Models::WellKnownRetrieveProtectedResourceMetadataParams
+
+  class WireguardInterfaceCreateParams = Telnyx::Models::WireguardInterfaceCreateParams
+
+  class WireguardInterfaceDeleteParams = Telnyx::Models::WireguardInterfaceDeleteParams
+
+  class WireguardInterfaceListParams = Telnyx::Models::WireguardInterfaceListParams
+
+  class WireguardInterfaceRetrieveParams = Telnyx::Models::WireguardInterfaceRetrieveParams
+
+  class WireguardPeerCreateParams = Telnyx::Models::WireguardPeerCreateParams
+
+  class WireguardPeerDeleteParams = Telnyx::Models::WireguardPeerDeleteParams
+
+  class WireguardPeerListParams = Telnyx::Models::WireguardPeerListParams
+
+  class WireguardPeerPatch = Telnyx::Models::WireguardPeerPatch
+
+  class WireguardPeerRetrieveConfigParams = Telnyx::Models::WireguardPeerRetrieveConfigParams
+
+  class WireguardPeerRetrieveParams = Telnyx::Models::WireguardPeerRetrieveParams
+
+  class WireguardPeerUpdateParams = Telnyx::Models::WireguardPeerUpdateParams
+
+  module Wireless = Telnyx::Models::Wireless
+
+  class WirelessBlocklist = Telnyx::Models::WirelessBlocklist
+
+  class WirelessBlocklistCreateParams = Telnyx::Models::WirelessBlocklistCreateParams
+
+  class WirelessBlocklistDeleteParams = Telnyx::Models::WirelessBlocklistDeleteParams
+
+  class WirelessBlocklistListParams = Telnyx::Models::WirelessBlocklistListParams
+
+  class WirelessBlocklistRetrieveParams = Telnyx::Models::WirelessBlocklistRetrieveParams
+
+  class WirelessBlocklistUpdateParams = Telnyx::Models::WirelessBlocklistUpdateParams
+
+  class WirelessBlocklistValueListParams = Telnyx::Models::WirelessBlocklistValueListParams
+
+  class WirelessRetrieveRegionsParams = Telnyx::Models::WirelessRetrieveRegionsParams
+end

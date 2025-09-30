@@ -1,0 +1,52 @@
+module Telnyx
+  module Models
+    module BundlePricing
+      type user_bundle =
+        {
+          id: String,
+          active: bool,
+          billing_bundle: Telnyx::BundlePricing::BillingBundleSummary,
+          created_at: Date,
+          resources: ::Array[Telnyx::BundlePricing::UserBundleResource],
+          user_id: String,
+          updated_at: Date?
+        }
+
+      class UserBundle < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor active: bool
+
+        attr_accessor billing_bundle: Telnyx::BundlePricing::BillingBundleSummary
+
+        attr_accessor created_at: Date
+
+        attr_accessor resources: ::Array[Telnyx::BundlePricing::UserBundleResource]
+
+        attr_accessor user_id: String
+
+        attr_accessor updated_at: Date?
+
+        def initialize: (
+          id: String,
+          active: bool,
+          billing_bundle: Telnyx::BundlePricing::BillingBundleSummary,
+          created_at: Date,
+          resources: ::Array[Telnyx::BundlePricing::UserBundleResource],
+          user_id: String,
+          ?updated_at: Date?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          active: bool,
+          billing_bundle: Telnyx::BundlePricing::BillingBundleSummary,
+          created_at: Date,
+          resources: ::Array[Telnyx::BundlePricing::UserBundleResource],
+          user_id: String,
+          updated_at: Date?
+        }
+      end
+    end
+  end
+end

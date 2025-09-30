@@ -1,0 +1,153 @@
+module Telnyx
+  module Models
+    module Calls
+      type transcription_engine_a_config =
+        {
+          enable_speaker_diarization: bool,
+          hints: ::Array[String],
+          interim_results: bool,
+          language: Telnyx::Models::Calls::google_transcription_language,
+          max_speaker_count: Integer,
+          min_speaker_count: Integer,
+          model: Telnyx::Models::Calls::TranscriptionEngineAConfig::model,
+          profanity_filter: bool,
+          speech_context: ::Array[Telnyx::Calls::TranscriptionEngineAConfig::SpeechContext],
+          transcription_engine: Telnyx::Models::Calls::TranscriptionEngineAConfig::transcription_engine,
+          use_enhanced: bool
+        }
+
+      class TranscriptionEngineAConfig < Telnyx::Internal::Type::BaseModel
+        attr_reader enable_speaker_diarization: bool?
+
+        def enable_speaker_diarization=: (bool) -> bool
+
+        attr_reader hints: ::Array[String]?
+
+        def hints=: (::Array[String]) -> ::Array[String]
+
+        attr_reader interim_results: bool?
+
+        def interim_results=: (bool) -> bool
+
+        attr_reader language: Telnyx::Models::Calls::google_transcription_language?
+
+        def language=: (
+          Telnyx::Models::Calls::google_transcription_language
+        ) -> Telnyx::Models::Calls::google_transcription_language
+
+        attr_reader max_speaker_count: Integer?
+
+        def max_speaker_count=: (Integer) -> Integer
+
+        attr_reader min_speaker_count: Integer?
+
+        def min_speaker_count=: (Integer) -> Integer
+
+        attr_reader model: Telnyx::Models::Calls::TranscriptionEngineAConfig::model?
+
+        def model=: (
+          Telnyx::Models::Calls::TranscriptionEngineAConfig::model
+        ) -> Telnyx::Models::Calls::TranscriptionEngineAConfig::model
+
+        attr_reader profanity_filter: bool?
+
+        def profanity_filter=: (bool) -> bool
+
+        attr_reader speech_context: ::Array[Telnyx::Calls::TranscriptionEngineAConfig::SpeechContext]?
+
+        def speech_context=: (
+          ::Array[Telnyx::Calls::TranscriptionEngineAConfig::SpeechContext]
+        ) -> ::Array[Telnyx::Calls::TranscriptionEngineAConfig::SpeechContext]
+
+        attr_reader transcription_engine: Telnyx::Models::Calls::TranscriptionEngineAConfig::transcription_engine?
+
+        def transcription_engine=: (
+          Telnyx::Models::Calls::TranscriptionEngineAConfig::transcription_engine
+        ) -> Telnyx::Models::Calls::TranscriptionEngineAConfig::transcription_engine
+
+        attr_reader use_enhanced: bool?
+
+        def use_enhanced=: (bool) -> bool
+
+        def initialize: (
+          ?enable_speaker_diarization: bool,
+          ?hints: ::Array[String],
+          ?interim_results: bool,
+          ?language: Telnyx::Models::Calls::google_transcription_language,
+          ?max_speaker_count: Integer,
+          ?min_speaker_count: Integer,
+          ?model: Telnyx::Models::Calls::TranscriptionEngineAConfig::model,
+          ?profanity_filter: bool,
+          ?speech_context: ::Array[Telnyx::Calls::TranscriptionEngineAConfig::SpeechContext],
+          ?transcription_engine: Telnyx::Models::Calls::TranscriptionEngineAConfig::transcription_engine,
+          ?use_enhanced: bool
+        ) -> void
+
+        def to_hash: -> {
+          enable_speaker_diarization: bool,
+          hints: ::Array[String],
+          interim_results: bool,
+          language: Telnyx::Models::Calls::google_transcription_language,
+          max_speaker_count: Integer,
+          min_speaker_count: Integer,
+          model: Telnyx::Models::Calls::TranscriptionEngineAConfig::model,
+          profanity_filter: bool,
+          speech_context: ::Array[Telnyx::Calls::TranscriptionEngineAConfig::SpeechContext],
+          transcription_engine: Telnyx::Models::Calls::TranscriptionEngineAConfig::transcription_engine,
+          use_enhanced: bool
+        }
+
+        type model =
+          :latest_long
+          | :latest_short
+          | :command_and_search
+          | :phone_call
+          | :video
+          | :default
+          | :medical_conversation
+          | :medical_dictation
+
+        module Model
+          extend Telnyx::Internal::Type::Enum
+
+          LATEST_LONG: :latest_long
+          LATEST_SHORT: :latest_short
+          COMMAND_AND_SEARCH: :command_and_search
+          PHONE_CALL: :phone_call
+          VIDEO: :video
+          DEFAULT: :default
+          MEDICAL_CONVERSATION: :medical_conversation
+          MEDICAL_DICTATION: :medical_dictation
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineAConfig::model]
+        end
+
+        type speech_context = { boost: Float, phrases: ::Array[String] }
+
+        class SpeechContext < Telnyx::Internal::Type::BaseModel
+          attr_reader boost: Float?
+
+          def boost=: (Float) -> Float
+
+          attr_reader phrases: ::Array[String]?
+
+          def phrases=: (::Array[String]) -> ::Array[String]
+
+          def initialize: (?boost: Float, ?phrases: ::Array[String]) -> void
+
+          def to_hash: -> { boost: Float, phrases: ::Array[String] }
+        end
+
+        type transcription_engine = :A
+
+        module TranscriptionEngine
+          extend Telnyx::Internal::Type::Enum
+
+          A: :A
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineAConfig::transcription_engine]
+        end
+      end
+    end
+  end
+end

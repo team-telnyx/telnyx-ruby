@@ -1,0 +1,105 @@
+module Telnyx
+  module Resources
+    class Messages
+      attr_reader rcs: Telnyx::Resources::Messages::Rcs
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessageRetrieveResponse
+
+      def cancel_scheduled: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessageCancelScheduledResponse
+
+      def schedule: (
+        to: String,
+        ?auto_detect: bool,
+        ?from: String,
+        ?media_urls: ::Array[String],
+        ?messaging_profile_id: String,
+        ?send_at: Time,
+        ?subject: String,
+        ?text: String,
+        ?type: Telnyx::Models::MessageScheduleParams::type_,
+        ?use_profile_webhooks: bool,
+        ?webhook_failover_url: String,
+        ?webhook_url: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessageScheduleResponse
+
+      def send_: (
+        to: String,
+        ?auto_detect: bool,
+        ?from: String,
+        ?media_urls: ::Array[String],
+        ?messaging_profile_id: String,
+        ?send_at: Time?,
+        ?subject: String,
+        ?text: String,
+        ?type: Telnyx::Models::MessageSendParams::type_,
+        ?use_profile_webhooks: bool,
+        ?webhook_failover_url: String,
+        ?webhook_url: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessageSendResponse
+
+      def send_group_mms: (
+        from: String,
+        to: ::Array[String],
+        ?media_urls: ::Array[String],
+        ?subject: String,
+        ?text: String,
+        ?use_profile_webhooks: bool,
+        ?webhook_failover_url: String,
+        ?webhook_url: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessageSendGroupMmsResponse
+
+      def send_long_code: (
+        from: String,
+        to: String,
+        ?auto_detect: bool,
+        ?media_urls: ::Array[String],
+        ?subject: String,
+        ?text: String,
+        ?type: Telnyx::Models::MessageSendLongCodeParams::type_,
+        ?use_profile_webhooks: bool,
+        ?webhook_failover_url: String,
+        ?webhook_url: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessageSendLongCodeResponse
+
+      def send_number_pool: (
+        messaging_profile_id: String,
+        to: String,
+        ?auto_detect: bool,
+        ?media_urls: ::Array[String],
+        ?subject: String,
+        ?text: String,
+        ?type: Telnyx::Models::MessageSendNumberPoolParams::type_,
+        ?use_profile_webhooks: bool,
+        ?webhook_failover_url: String,
+        ?webhook_url: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessageSendNumberPoolResponse
+
+      def send_short_code: (
+        from: String,
+        to: String,
+        ?auto_detect: bool,
+        ?media_urls: ::Array[String],
+        ?subject: String,
+        ?text: String,
+        ?type: Telnyx::Models::MessageSendShortCodeParams::type_,
+        ?use_profile_webhooks: bool,
+        ?webhook_failover_url: String,
+        ?webhook_url: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessageSendShortCodeResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

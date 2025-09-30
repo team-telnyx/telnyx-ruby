@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type private_wireless_gateway_create_response =
+      { data: Telnyx::PrivateWirelessGateway }
+
+    class PrivateWirelessGatewayCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::PrivateWirelessGateway?
+
+      def data=: (
+        Telnyx::PrivateWirelessGateway
+      ) -> Telnyx::PrivateWirelessGateway
+
+      def initialize: (?data: Telnyx::PrivateWirelessGateway) -> void
+
+      def to_hash: -> { data: Telnyx::PrivateWirelessGateway }
+    end
+  end
+end

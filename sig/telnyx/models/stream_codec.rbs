@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    type stream_codec =
+      :PCMU | :PCMA | :G722 | :OPUS | :"AMR-WB" | :L16 | :default
+
+    module StreamCodec
+      extend Telnyx::Internal::Type::Enum
+
+      PCMU: :PCMU
+      PCMA: :PCMA
+      G722: :G722
+      OPUS: :OPUS
+      AMR_WB: :"AMR-WB"
+      L16: :L16
+      DEFAULT: :default
+
+      def self?.values: -> ::Array[Telnyx::Models::stream_codec]
+    end
+  end
+end

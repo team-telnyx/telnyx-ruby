@@ -1,0 +1,679 @@
+module Telnyx
+  module Models
+    type inbound_message_webhook_event =
+      { data: Telnyx::InboundMessageWebhookEvent::Data }
+
+    class InboundMessageWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::InboundMessageWebhookEvent::Data?
+
+      def data=: (
+        Telnyx::InboundMessageWebhookEvent::Data
+      ) -> Telnyx::InboundMessageWebhookEvent::Data
+
+      def initialize: (?data: Telnyx::InboundMessageWebhookEvent::Data) -> void
+
+      def to_hash: -> { data: Telnyx::InboundMessageWebhookEvent::Data }
+
+      type data =
+        {
+          id: String,
+          event_type: Telnyx::Models::InboundMessageWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::InboundMessageWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::InboundMessageWebhookEvent::Data::record_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader event_type: Telnyx::Models::InboundMessageWebhookEvent::Data::event_type?
+
+        def event_type=: (
+          Telnyx::Models::InboundMessageWebhookEvent::Data::event_type
+        ) -> Telnyx::Models::InboundMessageWebhookEvent::Data::event_type
+
+        attr_reader occurred_at: Time?
+
+        def occurred_at=: (Time) -> Time
+
+        attr_reader payload: Telnyx::InboundMessageWebhookEvent::Data::Payload?
+
+        def payload=: (
+          Telnyx::InboundMessageWebhookEvent::Data::Payload
+        ) -> Telnyx::InboundMessageWebhookEvent::Data::Payload
+
+        attr_reader record_type: Telnyx::Models::InboundMessageWebhookEvent::Data::record_type?
+
+        def record_type=: (
+          Telnyx::Models::InboundMessageWebhookEvent::Data::record_type
+        ) -> Telnyx::Models::InboundMessageWebhookEvent::Data::record_type
+
+        def initialize: (
+          ?id: String,
+          ?event_type: Telnyx::Models::InboundMessageWebhookEvent::Data::event_type,
+          ?occurred_at: Time,
+          ?payload: Telnyx::InboundMessageWebhookEvent::Data::Payload,
+          ?record_type: Telnyx::Models::InboundMessageWebhookEvent::Data::record_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: Telnyx::Models::InboundMessageWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::InboundMessageWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::InboundMessageWebhookEvent::Data::record_type
+        }
+
+        type event_type = :"message.received"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          MESSAGE_RECEIVED: :"message.received"
+
+          def self?.values: -> ::Array[Telnyx::Models::InboundMessageWebhookEvent::Data::event_type]
+        end
+
+        type payload =
+          {
+            id: String,
+            cc: ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::Cc],
+            completed_at: Time?,
+            cost: Telnyx::InboundMessageWebhookEvent::Data::Payload::Cost?,
+            cost_breakdown: Telnyx::InboundMessageWebhookEvent::Data::Payload::CostBreakdown?,
+            direction: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::direction,
+            encoding: String,
+            errors: ::Array[Telnyx::MessagingError],
+            from: Telnyx::InboundMessageWebhookEvent::Data::Payload::From,
+            media: ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::Media],
+            messaging_profile_id: String,
+            parts: Integer,
+            received_at: Time,
+            record_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::record_type,
+            sent_at: Time?,
+            tags: ::Array[String],
+            tcr_campaign_billable: bool,
+            tcr_campaign_id: String?,
+            tcr_campaign_registered: String?,
+            text: String,
+            to: ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::To],
+            type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::type_,
+            valid_until: Time?,
+            webhook_failover_url: String?,
+            webhook_url: String?
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader cc: ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::Cc]?
+
+          def cc=: (
+            ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::Cc]
+          ) -> ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::Cc]
+
+          attr_accessor completed_at: Time?
+
+          attr_accessor cost: Telnyx::InboundMessageWebhookEvent::Data::Payload::Cost?
+
+          attr_accessor cost_breakdown: Telnyx::InboundMessageWebhookEvent::Data::Payload::CostBreakdown?
+
+          attr_reader direction: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::direction?
+
+          def direction=: (
+            Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::direction
+          ) -> Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::direction
+
+          attr_reader encoding: String?
+
+          def encoding=: (String) -> String
+
+          attr_reader errors: ::Array[Telnyx::MessagingError]?
+
+          def errors=: (
+            ::Array[Telnyx::MessagingError]
+          ) -> ::Array[Telnyx::MessagingError]
+
+          attr_reader from: Telnyx::InboundMessageWebhookEvent::Data::Payload::From?
+
+          def from=: (
+            Telnyx::InboundMessageWebhookEvent::Data::Payload::From
+          ) -> Telnyx::InboundMessageWebhookEvent::Data::Payload::From
+
+          attr_reader media: ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::Media]?
+
+          def media=: (
+            ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::Media]
+          ) -> ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::Media]
+
+          attr_reader messaging_profile_id: String?
+
+          def messaging_profile_id=: (String) -> String
+
+          attr_reader parts: Integer?
+
+          def parts=: (Integer) -> Integer
+
+          attr_reader received_at: Time?
+
+          def received_at=: (Time) -> Time
+
+          attr_reader record_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::record_type?
+
+          def record_type=: (
+            Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::record_type
+          ) -> Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::record_type
+
+          attr_accessor sent_at: Time?
+
+          attr_reader tags: ::Array[String]?
+
+          def tags=: (::Array[String]) -> ::Array[String]
+
+          attr_reader tcr_campaign_billable: bool?
+
+          def tcr_campaign_billable=: (bool) -> bool
+
+          attr_accessor tcr_campaign_id: String?
+
+          attr_accessor tcr_campaign_registered: String?
+
+          attr_reader text: String?
+
+          def text=: (String) -> String
+
+          attr_reader to: ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::To]?
+
+          def to=: (
+            ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::To]
+          ) -> ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::To]
+
+          attr_reader type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::type_?
+
+          def type=: (
+            Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::type_
+          ) -> Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::type_
+
+          attr_accessor valid_until: Time?
+
+          attr_accessor webhook_failover_url: String?
+
+          attr_accessor webhook_url: String?
+
+          def initialize: (
+            ?id: String,
+            ?cc: ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::Cc],
+            ?completed_at: Time?,
+            ?cost: Telnyx::InboundMessageWebhookEvent::Data::Payload::Cost?,
+            ?cost_breakdown: Telnyx::InboundMessageWebhookEvent::Data::Payload::CostBreakdown?,
+            ?direction: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::direction,
+            ?encoding: String,
+            ?errors: ::Array[Telnyx::MessagingError],
+            ?from: Telnyx::InboundMessageWebhookEvent::Data::Payload::From,
+            ?media: ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::Media],
+            ?messaging_profile_id: String,
+            ?parts: Integer,
+            ?received_at: Time,
+            ?record_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::record_type,
+            ?sent_at: Time?,
+            ?tags: ::Array[String],
+            ?tcr_campaign_billable: bool,
+            ?tcr_campaign_id: String?,
+            ?tcr_campaign_registered: String?,
+            ?text: String,
+            ?to: ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::To],
+            ?type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::type_,
+            ?valid_until: Time?,
+            ?webhook_failover_url: String?,
+            ?webhook_url: String?
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            cc: ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::Cc],
+            completed_at: Time?,
+            cost: Telnyx::InboundMessageWebhookEvent::Data::Payload::Cost?,
+            cost_breakdown: Telnyx::InboundMessageWebhookEvent::Data::Payload::CostBreakdown?,
+            direction: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::direction,
+            encoding: String,
+            errors: ::Array[Telnyx::MessagingError],
+            from: Telnyx::InboundMessageWebhookEvent::Data::Payload::From,
+            media: ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::Media],
+            messaging_profile_id: String,
+            parts: Integer,
+            received_at: Time,
+            record_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::record_type,
+            sent_at: Time?,
+            tags: ::Array[String],
+            tcr_campaign_billable: bool,
+            tcr_campaign_id: String?,
+            tcr_campaign_registered: String?,
+            text: String,
+            to: ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::To],
+            type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::type_,
+            valid_until: Time?,
+            webhook_failover_url: String?,
+            webhook_url: String?
+          }
+
+          type cc =
+            {
+              carrier: String,
+              line_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::Cc::line_type,
+              phone_number: String,
+              status: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::Cc::status
+            }
+
+          class Cc < Telnyx::Internal::Type::BaseModel
+            attr_reader carrier: String?
+
+            def carrier=: (String) -> String
+
+            attr_reader line_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::Cc::line_type?
+
+            def line_type=: (
+              Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::Cc::line_type
+            ) -> Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::Cc::line_type
+
+            attr_reader phone_number: String?
+
+            def phone_number=: (String) -> String
+
+            attr_reader status: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::Cc::status?
+
+            def status=: (
+              Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::Cc::status
+            ) -> Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::Cc::status
+
+            def initialize: (
+              ?carrier: String,
+              ?line_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::Cc::line_type,
+              ?phone_number: String,
+              ?status: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::Cc::status
+            ) -> void
+
+            def to_hash: -> {
+              carrier: String,
+              line_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::Cc::line_type,
+              phone_number: String,
+              status: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::Cc::status
+            }
+
+            type line_type =
+              :Wireline
+              | :Wireless
+              | :VoWiFi
+              | :VoIP
+              | :"Pre-Paid Wireless"
+              | :""
+
+            module LineType
+              extend Telnyx::Internal::Type::Enum
+
+              WIRELINE: :Wireline
+              WIRELESS: :Wireless
+              VO_WI_FI: :VoWiFi
+              VO_IP: :VoIP
+              PRE_PAID_WIRELESS: :"Pre-Paid Wireless"
+              EMPTY: :""
+
+              def self?.values: -> ::Array[Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::Cc::line_type]
+            end
+
+            type status =
+              :queued
+              | :sending
+              | :sent
+              | :delivered
+              | :sending_failed
+              | :delivery_failed
+              | :delivery_unconfirmed
+
+            module Status
+              extend Telnyx::Internal::Type::Enum
+
+              QUEUED: :queued
+              SENDING: :sending
+              SENT: :sent
+              DELIVERED: :delivered
+              SENDING_FAILED: :sending_failed
+              DELIVERY_FAILED: :delivery_failed
+              DELIVERY_UNCONFIRMED: :delivery_unconfirmed
+
+              def self?.values: -> ::Array[Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::Cc::status]
+            end
+          end
+
+          type cost = { amount: String, currency: String }
+
+          class Cost < Telnyx::Internal::Type::BaseModel
+            attr_reader amount: String?
+
+            def amount=: (String) -> String
+
+            attr_reader currency: String?
+
+            def currency=: (String) -> String
+
+            def initialize: (?amount: String, ?currency: String) -> void
+
+            def to_hash: -> { amount: String, currency: String }
+          end
+
+          type cost_breakdown =
+            {
+              carrier_fee: Telnyx::InboundMessageWebhookEvent::Data::Payload::CostBreakdown::CarrierFee,
+              rate: Telnyx::InboundMessageWebhookEvent::Data::Payload::CostBreakdown::Rate
+            }
+
+          class CostBreakdown < Telnyx::Internal::Type::BaseModel
+            attr_reader carrier_fee: Telnyx::InboundMessageWebhookEvent::Data::Payload::CostBreakdown::CarrierFee?
+
+            def carrier_fee=: (
+              Telnyx::InboundMessageWebhookEvent::Data::Payload::CostBreakdown::CarrierFee
+            ) -> Telnyx::InboundMessageWebhookEvent::Data::Payload::CostBreakdown::CarrierFee
+
+            attr_reader rate: Telnyx::InboundMessageWebhookEvent::Data::Payload::CostBreakdown::Rate?
+
+            def rate=: (
+              Telnyx::InboundMessageWebhookEvent::Data::Payload::CostBreakdown::Rate
+            ) -> Telnyx::InboundMessageWebhookEvent::Data::Payload::CostBreakdown::Rate
+
+            def initialize: (
+              ?carrier_fee: Telnyx::InboundMessageWebhookEvent::Data::Payload::CostBreakdown::CarrierFee,
+              ?rate: Telnyx::InboundMessageWebhookEvent::Data::Payload::CostBreakdown::Rate
+            ) -> void
+
+            def to_hash: -> {
+              carrier_fee: Telnyx::InboundMessageWebhookEvent::Data::Payload::CostBreakdown::CarrierFee,
+              rate: Telnyx::InboundMessageWebhookEvent::Data::Payload::CostBreakdown::Rate
+            }
+
+            type carrier_fee = { amount: String, currency: String }
+
+            class CarrierFee < Telnyx::Internal::Type::BaseModel
+              attr_reader amount: String?
+
+              def amount=: (String) -> String
+
+              attr_reader currency: String?
+
+              def currency=: (String) -> String
+
+              def initialize: (?amount: String, ?currency: String) -> void
+
+              def to_hash: -> { amount: String, currency: String }
+            end
+
+            type rate = { amount: String, currency: String }
+
+            class Rate < Telnyx::Internal::Type::BaseModel
+              attr_reader amount: String?
+
+              def amount=: (String) -> String
+
+              attr_reader currency: String?
+
+              def currency=: (String) -> String
+
+              def initialize: (?amount: String, ?currency: String) -> void
+
+              def to_hash: -> { amount: String, currency: String }
+            end
+          end
+
+          type direction = :inbound
+
+          module Direction
+            extend Telnyx::Internal::Type::Enum
+
+            INBOUND: :inbound
+
+            def self?.values: -> ::Array[Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::direction]
+          end
+
+          type from =
+            {
+              carrier: String,
+              line_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::From::line_type,
+              phone_number: String,
+              status: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::From::status
+            }
+
+          class From < Telnyx::Internal::Type::BaseModel
+            attr_reader carrier: String?
+
+            def carrier=: (String) -> String
+
+            attr_reader line_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::From::line_type?
+
+            def line_type=: (
+              Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::From::line_type
+            ) -> Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::From::line_type
+
+            attr_reader phone_number: String?
+
+            def phone_number=: (String) -> String
+
+            attr_reader status: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::From::status?
+
+            def status=: (
+              Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::From::status
+            ) -> Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::From::status
+
+            def initialize: (
+              ?carrier: String,
+              ?line_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::From::line_type,
+              ?phone_number: String,
+              ?status: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::From::status
+            ) -> void
+
+            def to_hash: -> {
+              carrier: String,
+              line_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::From::line_type,
+              phone_number: String,
+              status: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::From::status
+            }
+
+            type line_type =
+              :Wireline
+              | :Wireless
+              | :VoWiFi
+              | :VoIP
+              | :"Pre-Paid Wireless"
+              | :""
+
+            module LineType
+              extend Telnyx::Internal::Type::Enum
+
+              WIRELINE: :Wireline
+              WIRELESS: :Wireless
+              VO_WI_FI: :VoWiFi
+              VO_IP: :VoIP
+              PRE_PAID_WIRELESS: :"Pre-Paid Wireless"
+              EMPTY: :""
+
+              def self?.values: -> ::Array[Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::From::line_type]
+            end
+
+            type status = :received | :delivered
+
+            module Status
+              extend Telnyx::Internal::Type::Enum
+
+              RECEIVED: :received
+              DELIVERED: :delivered
+
+              def self?.values: -> ::Array[Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::From::status]
+            end
+          end
+
+          type media =
+            {
+              content_type: String,
+              :hash_sha256 => String,
+              size: Integer,
+              url: String
+            }
+
+          class Media < Telnyx::Internal::Type::BaseModel
+            attr_reader content_type: String?
+
+            def content_type=: (String) -> String
+
+            attr_reader hash_sha256: String?
+
+            def hash_sha256=: (String) -> String
+
+            attr_reader size: Integer?
+
+            def size=: (Integer) -> Integer
+
+            attr_reader url: String?
+
+            def url=: (String) -> String
+
+            def initialize: (
+              ?content_type: String,
+              ?hash_sha256: String,
+              ?size: Integer,
+              ?url: String
+            ) -> void
+
+            def to_hash: -> {
+              content_type: String,
+              :hash_sha256 => String,
+              size: Integer,
+              url: String
+            }
+          end
+
+          type record_type = :message
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            MESSAGE: :message
+
+            def self?.values: -> ::Array[Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::record_type]
+          end
+
+          type to =
+            {
+              carrier: String,
+              line_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::To::line_type,
+              phone_number: String,
+              status: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::To::status
+            }
+
+          class To < Telnyx::Internal::Type::BaseModel
+            attr_reader carrier: String?
+
+            def carrier=: (String) -> String
+
+            attr_reader line_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::To::line_type?
+
+            def line_type=: (
+              Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::To::line_type
+            ) -> Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::To::line_type
+
+            attr_reader phone_number: String?
+
+            def phone_number=: (String) -> String
+
+            attr_reader status: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::To::status?
+
+            def status=: (
+              Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::To::status
+            ) -> Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::To::status
+
+            def initialize: (
+              ?carrier: String,
+              ?line_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::To::line_type,
+              ?phone_number: String,
+              ?status: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::To::status
+            ) -> void
+
+            def to_hash: -> {
+              carrier: String,
+              line_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::To::line_type,
+              phone_number: String,
+              status: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::To::status
+            }
+
+            type line_type =
+              :Wireline
+              | :Wireless
+              | :VoWiFi
+              | :VoIP
+              | :"Pre-Paid Wireless"
+              | :""
+
+            module LineType
+              extend Telnyx::Internal::Type::Enum
+
+              WIRELINE: :Wireline
+              WIRELESS: :Wireless
+              VO_WI_FI: :VoWiFi
+              VO_IP: :VoIP
+              PRE_PAID_WIRELESS: :"Pre-Paid Wireless"
+              EMPTY: :""
+
+              def self?.values: -> ::Array[Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::To::line_type]
+            end
+
+            type status =
+              :queued
+              | :sending
+              | :sent
+              | :delivered
+              | :sending_failed
+              | :delivery_failed
+              | :delivery_unconfirmed
+              | :webhook_delivered
+
+            module Status
+              extend Telnyx::Internal::Type::Enum
+
+              QUEUED: :queued
+              SENDING: :sending
+              SENT: :sent
+              DELIVERED: :delivered
+              SENDING_FAILED: :sending_failed
+              DELIVERY_FAILED: :delivery_failed
+              DELIVERY_UNCONFIRMED: :delivery_unconfirmed
+              WEBHOOK_DELIVERED: :webhook_delivered
+
+              def self?.values: -> ::Array[Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::To::status]
+            end
+          end
+
+          type type_ = :SMS | :MMS
+
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            SMS: :SMS
+            MMS: :MMS
+
+            def self?.values: -> ::Array[Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::type_]
+          end
+        end
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::InboundMessageWebhookEvent::Data::record_type]
+        end
+      end
+    end
+  end
+end

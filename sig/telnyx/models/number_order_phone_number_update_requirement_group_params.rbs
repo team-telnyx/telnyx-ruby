@@ -1,0 +1,24 @@
+module Telnyx
+  module Models
+    type number_order_phone_number_update_requirement_group_params =
+      { requirement_group_id: String }
+      & Telnyx::Internal::Type::request_parameters
+
+    class NumberOrderPhoneNumberUpdateRequirementGroupParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor requirement_group_id: String
+
+      def initialize: (
+        requirement_group_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        requirement_group_id: String,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

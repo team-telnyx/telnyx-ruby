@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    type number_reservation_create_response =
+      { data: Telnyx::NumberReservation }
+
+    class NumberReservationCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::NumberReservation?
+
+      def data=: (Telnyx::NumberReservation) -> Telnyx::NumberReservation
+
+      def initialize: (?data: Telnyx::NumberReservation) -> void
+
+      def to_hash: -> { data: Telnyx::NumberReservation }
+    end
+  end
+end

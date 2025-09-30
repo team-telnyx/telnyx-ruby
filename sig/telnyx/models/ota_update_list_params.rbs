@@ -1,0 +1,114 @@
+module Telnyx
+  module Models
+    type ota_update_list_params =
+      {
+        filter: Telnyx::OtaUpdateListParams::Filter,
+        page: Telnyx::OtaUpdateListParams::Page
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class OtaUpdateListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter: Telnyx::OtaUpdateListParams::Filter?
+
+      def filter=: (
+        Telnyx::OtaUpdateListParams::Filter
+      ) -> Telnyx::OtaUpdateListParams::Filter
+
+      attr_reader page: Telnyx::OtaUpdateListParams::Page?
+
+      def page=: (
+        Telnyx::OtaUpdateListParams::Page
+      ) -> Telnyx::OtaUpdateListParams::Page
+
+      def initialize: (
+        ?filter: Telnyx::OtaUpdateListParams::Filter,
+        ?page: Telnyx::OtaUpdateListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::OtaUpdateListParams::Filter,
+        page: Telnyx::OtaUpdateListParams::Page,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          sim_card_id: String,
+          status: Telnyx::Models::OtaUpdateListParams::Filter::status,
+          type: Telnyx::Models::OtaUpdateListParams::Filter::type_
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader sim_card_id: String?
+
+        def sim_card_id=: (String) -> String
+
+        attr_reader status: Telnyx::Models::OtaUpdateListParams::Filter::status?
+
+        def status=: (
+          Telnyx::Models::OtaUpdateListParams::Filter::status
+        ) -> Telnyx::Models::OtaUpdateListParams::Filter::status
+
+        attr_reader type: Telnyx::Models::OtaUpdateListParams::Filter::type_?
+
+        def type=: (
+          Telnyx::Models::OtaUpdateListParams::Filter::type_
+        ) -> Telnyx::Models::OtaUpdateListParams::Filter::type_
+
+        def initialize: (
+          ?sim_card_id: String,
+          ?status: Telnyx::Models::OtaUpdateListParams::Filter::status,
+          ?type: Telnyx::Models::OtaUpdateListParams::Filter::type_
+        ) -> void
+
+        def to_hash: -> {
+          sim_card_id: String,
+          status: Telnyx::Models::OtaUpdateListParams::Filter::status,
+          type: Telnyx::Models::OtaUpdateListParams::Filter::type_
+        }
+
+        type status = :"in-progress" | :completed | :failed
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          IN_PROGRESS: :"in-progress"
+          COMPLETED: :completed
+          FAILED: :failed
+
+          def self?.values: -> ::Array[Telnyx::Models::OtaUpdateListParams::Filter::status]
+        end
+
+        type type_ = :sim_card_network_preferences
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          SIM_CARD_NETWORK_PREFERENCES: :sim_card_network_preferences
+
+          def self?.values: -> ::Array[Telnyx::Models::OtaUpdateListParams::Filter::type_]
+        end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

@@ -1,0 +1,90 @@
+module Telnyx
+  module Models
+    module AI
+      class FineTuningJob = FineTuning::FineTuningJob
+
+      module FineTuning
+        type fine_tuning_job =
+          {
+            id: String,
+            created_at: Integer,
+            finished_at: Integer?,
+            hyperparameters: Telnyx::AI::FineTuning::FineTuningJob::Hyperparameters,
+            model: String,
+            organization_id: String,
+            status: Telnyx::Models::AI::FineTuning::FineTuningJob::status,
+            trained_tokens: Integer?,
+            training_file: String
+          }
+
+        class FineTuningJob < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor created_at: Integer
+
+          attr_accessor finished_at: Integer?
+
+          attr_accessor hyperparameters: Telnyx::AI::FineTuning::FineTuningJob::Hyperparameters
+
+          attr_accessor model: String
+
+          attr_accessor organization_id: String
+
+          attr_accessor status: Telnyx::Models::AI::FineTuning::FineTuningJob::status
+
+          attr_accessor trained_tokens: Integer?
+
+          attr_accessor training_file: String
+
+          def initialize: (
+            id: String,
+            created_at: Integer,
+            finished_at: Integer?,
+            hyperparameters: Telnyx::AI::FineTuning::FineTuningJob::Hyperparameters,
+            model: String,
+            organization_id: String,
+            status: Telnyx::Models::AI::FineTuning::FineTuningJob::status,
+            trained_tokens: Integer?,
+            training_file: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            created_at: Integer,
+            finished_at: Integer?,
+            hyperparameters: Telnyx::AI::FineTuning::FineTuningJob::Hyperparameters,
+            model: String,
+            organization_id: String,
+            status: Telnyx::Models::AI::FineTuning::FineTuningJob::status,
+            trained_tokens: Integer?,
+            training_file: String
+          }
+
+          type hyperparameters = { n_epochs: Integer }
+
+          class Hyperparameters < Telnyx::Internal::Type::BaseModel
+            attr_accessor n_epochs: Integer
+
+            def initialize: (n_epochs: Integer) -> void
+
+            def to_hash: -> { n_epochs: Integer }
+          end
+
+          type status = :queued | :running | :succeeded | :failed | :cancelled
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            QUEUED: :queued
+            RUNNING: :running
+            SUCCEEDED: :succeeded
+            FAILED: :failed
+            CANCELLED: :cancelled
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::FineTuning::FineTuningJob::status]
+          end
+        end
+      end
+    end
+  end
+end

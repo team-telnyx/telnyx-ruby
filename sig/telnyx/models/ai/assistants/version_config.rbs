@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        type version_config = { percentage: Float, version_id: String }
+
+        class VersionConfig < Telnyx::Internal::Type::BaseModel
+          attr_accessor percentage: Float
+
+          attr_accessor version_id: String
+
+          def initialize: (percentage: Float, version_id: String) -> void
+
+          def to_hash: -> { percentage: Float, version_id: String }
+        end
+      end
+    end
+  end
+end

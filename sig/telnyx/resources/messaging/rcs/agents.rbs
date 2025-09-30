@@ -1,0 +1,29 @@
+module Telnyx
+  module Resources
+    class Messaging
+      class Rcs
+        class Agents
+          def retrieve: (
+            String id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::RcsAgentResponse
+
+          def update: (
+            String id,
+            ?profile_id: String?,
+            ?webhook_failover_url: String?,
+            ?webhook_url: String?,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::RcsAgentResponse
+
+          def list: (
+            ?page: Telnyx::Messaging::Rcs::AgentListParams::Page,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Messaging::Rcs::AgentListResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,173 @@
+module Telnyx
+  module Models
+    class TexmlGetCallRecordingResponseBody = Texml::TexmlGetCallRecordingResponseBody
+
+    module Texml
+      type texml_get_call_recording_response_body =
+        {
+          account_sid: String,
+          call_sid: String,
+          channels: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::channels,
+          conference_sid: String?,
+          date_created: Time,
+          date_updated: Time,
+          duration: String?,
+          error_code: String?,
+          media_url: String,
+          sid: String,
+          source: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::source,
+          start_time: Time,
+          status: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::status,
+          subresources_uris: Telnyx::Texml::TexmlRecordingSubresourcesUris,
+          uri: String
+        }
+
+      class TexmlGetCallRecordingResponseBody < Telnyx::Internal::Type::BaseModel
+        attr_reader account_sid: String?
+
+        def account_sid=: (String) -> String
+
+        attr_reader call_sid: String?
+
+        def call_sid=: (String) -> String
+
+        attr_reader channels: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::channels?
+
+        def channels=: (
+          Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::channels
+        ) -> Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::channels
+
+        attr_accessor conference_sid: String?
+
+        attr_reader date_created: Time?
+
+        def date_created=: (Time) -> Time
+
+        attr_reader date_updated: Time?
+
+        def date_updated=: (Time) -> Time
+
+        attr_accessor duration: String?
+
+        attr_accessor error_code: String?
+
+        attr_reader media_url: String?
+
+        def media_url=: (String) -> String
+
+        attr_reader sid: String?
+
+        def sid=: (String) -> String
+
+        attr_reader source: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::source?
+
+        def source=: (
+          Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::source
+        ) -> Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::source
+
+        attr_reader start_time: Time?
+
+        def start_time=: (Time) -> Time
+
+        attr_reader status: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::status?
+
+        def status=: (
+          Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::status
+        ) -> Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::status
+
+        attr_reader subresources_uris: Telnyx::Texml::TexmlRecordingSubresourcesUris?
+
+        def subresources_uris=: (
+          Telnyx::Texml::TexmlRecordingSubresourcesUris
+        ) -> Telnyx::Texml::TexmlRecordingSubresourcesUris
+
+        attr_reader uri: String?
+
+        def uri=: (String) -> String
+
+        def initialize: (
+          ?account_sid: String,
+          ?call_sid: String,
+          ?channels: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::channels,
+          ?conference_sid: String?,
+          ?date_created: Time,
+          ?date_updated: Time,
+          ?duration: String?,
+          ?error_code: String?,
+          ?media_url: String,
+          ?sid: String,
+          ?source: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::source,
+          ?start_time: Time,
+          ?status: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::status,
+          ?subresources_uris: Telnyx::Texml::TexmlRecordingSubresourcesUris,
+          ?uri: String
+        ) -> void
+
+        def to_hash: -> {
+          account_sid: String,
+          call_sid: String,
+          channels: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::channels,
+          conference_sid: String?,
+          date_created: Time,
+          date_updated: Time,
+          duration: String?,
+          error_code: String?,
+          media_url: String,
+          sid: String,
+          source: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::source,
+          start_time: Time,
+          status: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::status,
+          subresources_uris: Telnyx::Texml::TexmlRecordingSubresourcesUris,
+          uri: String
+        }
+
+        type channels = 1 | 2
+
+        module Channels
+          extend Telnyx::Internal::Type::Enum
+
+          CHANNELS_1: 1
+          CHANNELS_2: 2
+
+          def self?.values: -> ::Array[Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::channels]
+        end
+
+        type source =
+          :StartCallRecordingAPI
+          | :StartConferenceRecordingAPI
+          | :OutboundAPI
+          | :DialVerb
+          | :Conference
+          | :RecordVerb
+          | :Trunking
+
+        module Source
+          extend Telnyx::Internal::Type::Enum
+
+          START_CALL_RECORDING_API: :StartCallRecordingAPI
+          START_CONFERENCE_RECORDING_API: :StartConferenceRecordingAPI
+          OUTBOUND_API: :OutboundAPI
+          DIAL_VERB: :DialVerb
+          CONFERENCE: :Conference
+          RECORD_VERB: :RecordVerb
+          TRUNKING: :Trunking
+
+          def self?.values: -> ::Array[Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::source]
+        end
+
+        type status = :"in-progress" | :completed | :paused | :stopped
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          IN_PROGRESS: :"in-progress"
+          COMPLETED: :completed
+          PAUSED: :paused
+          STOPPED: :stopped
+
+          def self?.values: -> ::Array[Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::status]
+        end
+      end
+    end
+  end
+end

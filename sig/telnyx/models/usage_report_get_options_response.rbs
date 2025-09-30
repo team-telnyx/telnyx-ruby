@@ -1,0 +1,97 @@
+module Telnyx
+  module Models
+    type usage_report_get_options_response =
+      { data: ::Array[Telnyx::Models::UsageReportGetOptionsResponse::Data] }
+
+    class UsageReportGetOptionsResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::UsageReportGetOptionsResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::UsageReportGetOptionsResponse::Data]
+      ) -> ::Array[Telnyx::Models::UsageReportGetOptionsResponse::Data]
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::UsageReportGetOptionsResponse::Data]
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::UsageReportGetOptionsResponse::Data]
+      }
+
+      type data =
+        {
+          product: String,
+          product_dimensions: ::Array[String],
+          product_metrics: ::Array[String],
+          record_types: ::Array[Telnyx::Models::UsageReportGetOptionsResponse::Data::RecordType]
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader product: String?
+
+        def product=: (String) -> String
+
+        attr_reader product_dimensions: ::Array[String]?
+
+        def product_dimensions=: (::Array[String]) -> ::Array[String]
+
+        attr_reader product_metrics: ::Array[String]?
+
+        def product_metrics=: (::Array[String]) -> ::Array[String]
+
+        attr_reader record_types: ::Array[Telnyx::Models::UsageReportGetOptionsResponse::Data::RecordType]?
+
+        def record_types=: (
+          ::Array[Telnyx::Models::UsageReportGetOptionsResponse::Data::RecordType]
+        ) -> ::Array[Telnyx::Models::UsageReportGetOptionsResponse::Data::RecordType]
+
+        def initialize: (
+          ?product: String,
+          ?product_dimensions: ::Array[String],
+          ?product_metrics: ::Array[String],
+          ?record_types: ::Array[Telnyx::Models::UsageReportGetOptionsResponse::Data::RecordType]
+        ) -> void
+
+        def to_hash: -> {
+          product: String,
+          product_dimensions: ::Array[String],
+          product_metrics: ::Array[String],
+          record_types: ::Array[Telnyx::Models::UsageReportGetOptionsResponse::Data::RecordType]
+        }
+
+        type record_type =
+          {
+            product_dimensions: ::Array[String],
+            product_metrics: ::Array[String],
+            record_type: String
+          }
+
+        class RecordType < Telnyx::Internal::Type::BaseModel
+          attr_reader product_dimensions: ::Array[String]?
+
+          def product_dimensions=: (::Array[String]) -> ::Array[String]
+
+          attr_reader product_metrics: ::Array[String]?
+
+          def product_metrics=: (::Array[String]) -> ::Array[String]
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          def initialize: (
+            ?product_dimensions: ::Array[String],
+            ?product_metrics: ::Array[String],
+            ?record_type: String
+          ) -> void
+
+          def to_hash: -> {
+            product_dimensions: ::Array[String],
+            product_metrics: ::Array[String],
+            record_type: String
+          }
+        end
+      end
+    end
+  end
+end

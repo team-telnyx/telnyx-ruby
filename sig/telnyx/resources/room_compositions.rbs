@@ -1,0 +1,34 @@
+module Telnyx
+  module Resources
+    class RoomCompositions
+      def create: (
+        ?format_: String?,
+        ?resolution: String?,
+        ?session_id: String?,
+        ?video_layout: ::Hash[Symbol, Telnyx::VideoRegion],
+        ?webhook_event_failover_url: String?,
+        ?webhook_event_url: String,
+        ?webhook_timeout_secs: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RoomCompositionCreateResponse
+
+      def retrieve: (
+        String room_composition_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RoomCompositionRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::RoomCompositionListParams::Filter,
+        ?page: Telnyx::RoomCompositionListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RoomCompositionListResponse
+
+      def delete: (
+        String room_composition_id,
+        ?request_options: Telnyx::request_opts
+      ) -> nil
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

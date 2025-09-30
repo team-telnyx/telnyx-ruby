@@ -1,0 +1,33 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        module Tests
+          module TestSuites
+            type paginated_test_run_list =
+              {
+                data: ::Array[Telnyx::AI::Assistants::Tests::TestRunResponse],
+                meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+              }
+
+            class PaginatedTestRunList < Telnyx::Internal::Type::BaseModel
+              attr_accessor data: ::Array[Telnyx::AI::Assistants::Tests::TestRunResponse]
+
+              attr_accessor meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+
+              def initialize: (
+                data: ::Array[Telnyx::AI::Assistants::Tests::TestRunResponse],
+                meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+              ) -> void
+
+              def to_hash: -> {
+                data: ::Array[Telnyx::AI::Assistants::Tests::TestRunResponse],
+                meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

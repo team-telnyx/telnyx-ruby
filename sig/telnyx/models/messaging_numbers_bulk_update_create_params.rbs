@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    type messaging_numbers_bulk_update_create_params =
+      { messaging_profile_id: String, numbers: ::Array[String] }
+      & Telnyx::Internal::Type::request_parameters
+
+    class MessagingNumbersBulkUpdateCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor messaging_profile_id: String
+
+      attr_accessor numbers: ::Array[String]
+
+      def initialize: (
+        messaging_profile_id: String,
+        numbers: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        messaging_profile_id: String,
+        numbers: ::Array[String],
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

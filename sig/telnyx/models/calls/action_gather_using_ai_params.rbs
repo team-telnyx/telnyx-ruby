@@ -1,0 +1,179 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_gather_using_ai_params =
+        {
+          parameters: top,
+          assistant: Telnyx::AI::Assistant,
+          client_state: String,
+          command_id: String,
+          greeting: String,
+          interruption_settings: Telnyx::Calls::InterruptionSettings,
+          language: Telnyx::Models::Calls::google_transcription_language,
+          message_history: ::Array[Telnyx::Calls::ActionGatherUsingAIParams::MessageHistory],
+          send_message_history_updates: bool,
+          send_partial_results: bool,
+          transcription: Telnyx::Calls::TranscriptionConfig,
+          user_response_timeout_ms: Integer,
+          voice: String,
+          voice_settings: Telnyx::Models::Calls::ActionGatherUsingAIParams::voice_settings
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionGatherUsingAIParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor parameters: top
+
+        attr_reader assistant: Telnyx::AI::Assistant?
+
+        def assistant=: (Telnyx::AI::Assistant) -> Telnyx::AI::Assistant
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader command_id: String?
+
+        def command_id=: (String) -> String
+
+        attr_reader greeting: String?
+
+        def greeting=: (String) -> String
+
+        attr_reader interruption_settings: Telnyx::Calls::InterruptionSettings?
+
+        def interruption_settings=: (
+          Telnyx::Calls::InterruptionSettings
+        ) -> Telnyx::Calls::InterruptionSettings
+
+        attr_reader language: Telnyx::Models::Calls::google_transcription_language?
+
+        def language=: (
+          Telnyx::Models::Calls::google_transcription_language
+        ) -> Telnyx::Models::Calls::google_transcription_language
+
+        attr_reader message_history: ::Array[Telnyx::Calls::ActionGatherUsingAIParams::MessageHistory]?
+
+        def message_history=: (
+          ::Array[Telnyx::Calls::ActionGatherUsingAIParams::MessageHistory]
+        ) -> ::Array[Telnyx::Calls::ActionGatherUsingAIParams::MessageHistory]
+
+        attr_reader send_message_history_updates: bool?
+
+        def send_message_history_updates=: (bool) -> bool
+
+        attr_reader send_partial_results: bool?
+
+        def send_partial_results=: (bool) -> bool
+
+        attr_reader transcription: Telnyx::Calls::TranscriptionConfig?
+
+        def transcription=: (
+          Telnyx::Calls::TranscriptionConfig
+        ) -> Telnyx::Calls::TranscriptionConfig
+
+        attr_reader user_response_timeout_ms: Integer?
+
+        def user_response_timeout_ms=: (Integer) -> Integer
+
+        attr_reader voice: String?
+
+        def voice=: (String) -> String
+
+        attr_reader voice_settings: Telnyx::Models::Calls::ActionGatherUsingAIParams::voice_settings?
+
+        def voice_settings=: (
+          Telnyx::Models::Calls::ActionGatherUsingAIParams::voice_settings
+        ) -> Telnyx::Models::Calls::ActionGatherUsingAIParams::voice_settings
+
+        def initialize: (
+          parameters: top,
+          ?assistant: Telnyx::AI::Assistant,
+          ?client_state: String,
+          ?command_id: String,
+          ?greeting: String,
+          ?interruption_settings: Telnyx::Calls::InterruptionSettings,
+          ?language: Telnyx::Models::Calls::google_transcription_language,
+          ?message_history: ::Array[Telnyx::Calls::ActionGatherUsingAIParams::MessageHistory],
+          ?send_message_history_updates: bool,
+          ?send_partial_results: bool,
+          ?transcription: Telnyx::Calls::TranscriptionConfig,
+          ?user_response_timeout_ms: Integer,
+          ?voice: String,
+          ?voice_settings: Telnyx::Models::Calls::ActionGatherUsingAIParams::voice_settings,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          parameters: top,
+          assistant: Telnyx::AI::Assistant,
+          client_state: String,
+          command_id: String,
+          greeting: String,
+          interruption_settings: Telnyx::Calls::InterruptionSettings,
+          language: Telnyx::Models::Calls::google_transcription_language,
+          message_history: ::Array[Telnyx::Calls::ActionGatherUsingAIParams::MessageHistory],
+          send_message_history_updates: bool,
+          send_partial_results: bool,
+          transcription: Telnyx::Calls::TranscriptionConfig,
+          user_response_timeout_ms: Integer,
+          voice: String,
+          voice_settings: Telnyx::Models::Calls::ActionGatherUsingAIParams::voice_settings,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type message_history =
+          {
+            content: String,
+            role: Telnyx::Models::Calls::ActionGatherUsingAIParams::MessageHistory::role
+          }
+
+        class MessageHistory < Telnyx::Internal::Type::BaseModel
+          attr_reader content: String?
+
+          def content=: (String) -> String
+
+          attr_reader role: Telnyx::Models::Calls::ActionGatherUsingAIParams::MessageHistory::role?
+
+          def role=: (
+            Telnyx::Models::Calls::ActionGatherUsingAIParams::MessageHistory::role
+          ) -> Telnyx::Models::Calls::ActionGatherUsingAIParams::MessageHistory::role
+
+          def initialize: (
+            ?content: String,
+            ?role: Telnyx::Models::Calls::ActionGatherUsingAIParams::MessageHistory::role
+          ) -> void
+
+          def to_hash: -> {
+            content: String,
+            role: Telnyx::Models::Calls::ActionGatherUsingAIParams::MessageHistory::role
+          }
+
+          type role = :assistant | :user
+
+          module Role
+            extend Telnyx::Internal::Type::Enum
+
+            ASSISTANT: :assistant
+            USER: :user
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::ActionGatherUsingAIParams::MessageHistory::role]
+          end
+        end
+
+        type voice_settings =
+          Telnyx::Calls::ElevenLabsVoiceSettings
+          | Telnyx::Calls::TelnyxVoiceSettings
+          | top
+
+        module VoiceSettings
+          extend Telnyx::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Telnyx::Models::Calls::ActionGatherUsingAIParams::voice_settings]
+        end
+      end
+    end
+  end
+end

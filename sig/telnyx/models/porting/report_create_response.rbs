@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    module Porting
+      type report_create_response = { data: Telnyx::Porting::PortingReport }
+
+      class ReportCreateResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Porting::PortingReport?
+
+        def data=: (
+          Telnyx::Porting::PortingReport
+        ) -> Telnyx::Porting::PortingReport
+
+        def initialize: (?data: Telnyx::Porting::PortingReport) -> void
+
+        def to_hash: -> { data: Telnyx::Porting::PortingReport }
+      end
+    end
+  end
+end

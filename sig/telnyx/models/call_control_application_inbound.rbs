@@ -1,0 +1,56 @@
+module Telnyx
+  module Models
+    type call_control_application_inbound =
+      {
+        channel_limit: Integer,
+        shaken_stir_enabled: bool,
+        sip_subdomain: String,
+        sip_subdomain_receive_settings: Telnyx::Models::CallControlApplicationInbound::sip_subdomain_receive_settings
+      }
+
+    class CallControlApplicationInbound < Telnyx::Internal::Type::BaseModel
+      attr_reader channel_limit: Integer?
+
+      def channel_limit=: (Integer) -> Integer
+
+      attr_reader shaken_stir_enabled: bool?
+
+      def shaken_stir_enabled=: (bool) -> bool
+
+      attr_reader sip_subdomain: String?
+
+      def sip_subdomain=: (String) -> String
+
+      attr_reader sip_subdomain_receive_settings: Telnyx::Models::CallControlApplicationInbound::sip_subdomain_receive_settings?
+
+      def sip_subdomain_receive_settings=: (
+        Telnyx::Models::CallControlApplicationInbound::sip_subdomain_receive_settings
+      ) -> Telnyx::Models::CallControlApplicationInbound::sip_subdomain_receive_settings
+
+      def initialize: (
+        ?channel_limit: Integer,
+        ?shaken_stir_enabled: bool,
+        ?sip_subdomain: String,
+        ?sip_subdomain_receive_settings: Telnyx::Models::CallControlApplicationInbound::sip_subdomain_receive_settings
+      ) -> void
+
+      def to_hash: -> {
+        channel_limit: Integer,
+        shaken_stir_enabled: bool,
+        sip_subdomain: String,
+        sip_subdomain_receive_settings: Telnyx::Models::CallControlApplicationInbound::sip_subdomain_receive_settings
+      }
+
+      type sip_subdomain_receive_settings = :only_my_connections | :from_anyone
+
+      module SipSubdomainReceiveSettings
+        extend Telnyx::Internal::Type::Enum
+
+        ONLY_MY_CONNECTIONS: :only_my_connections
+        FROM_ANYONE: :from_anyone
+
+        def self?.values: -> ::Array[Telnyx::Models::CallControlApplicationInbound::sip_subdomain_receive_settings]
+      end
+    end
+  end
+end

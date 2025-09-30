@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type number_block_order_create_response = { data: Telnyx::NumberBlockOrder }
+
+    class NumberBlockOrderCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::NumberBlockOrder?
+
+      def data=: (Telnyx::NumberBlockOrder) -> Telnyx::NumberBlockOrder
+
+      def initialize: (?data: Telnyx::NumberBlockOrder) -> void
+
+      def to_hash: -> { data: Telnyx::NumberBlockOrder }
+    end
+  end
+end

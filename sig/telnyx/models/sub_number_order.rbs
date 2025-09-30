@@ -1,0 +1,147 @@
+module Telnyx
+  module Models
+    type sub_number_order =
+      {
+        id: String,
+        country_code: String,
+        created_at: Time,
+        customer_reference: String,
+        is_block_sub_number_order: bool,
+        order_request_id: String,
+        phone_number_type: Telnyx::Models::SubNumberOrder::phone_number_type,
+        phone_numbers_count: Integer,
+        record_type: String,
+        regulatory_requirements: ::Array[Telnyx::SubNumberOrderRegulatoryRequirement],
+        requirements_met: bool,
+        status: Telnyx::Models::SubNumberOrder::status,
+        updated_at: Time,
+        user_id: String
+      }
+
+    class SubNumberOrder < Telnyx::Internal::Type::BaseModel
+      attr_reader customer_reference: String?
+
+      def customer_reference=: (String) -> String
+
+      attr_reader phone_number_type: Telnyx::Models::SubNumberOrder::phone_number_type?
+
+      def phone_number_type=: (
+        Telnyx::Models::SubNumberOrder::phone_number_type
+      ) -> Telnyx::Models::SubNumberOrder::phone_number_type
+
+      attr_reader regulatory_requirements: ::Array[Telnyx::SubNumberOrderRegulatoryRequirement]?
+
+      def regulatory_requirements=: (
+        ::Array[Telnyx::SubNumberOrderRegulatoryRequirement]
+      ) -> ::Array[Telnyx::SubNumberOrderRegulatoryRequirement]
+
+      attr_reader user_id: String?
+
+      def user_id=: (String) -> String
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader country_code: String?
+
+      def country_code=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader is_block_sub_number_order: bool?
+
+      def is_block_sub_number_order=: (bool) -> bool
+
+      attr_reader order_request_id: String?
+
+      def order_request_id=: (String) -> String
+
+      attr_reader phone_numbers_count: Integer?
+
+      def phone_numbers_count=: (Integer) -> Integer
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader requirements_met: bool?
+
+      def requirements_met=: (bool) -> bool
+
+      attr_reader status: Telnyx::Models::SubNumberOrder::status?
+
+      def status=: (
+        Telnyx::Models::SubNumberOrder::status
+      ) -> Telnyx::Models::SubNumberOrder::status
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        ?id: String,
+        ?country_code: String,
+        ?created_at: Time,
+        ?customer_reference: String,
+        ?is_block_sub_number_order: bool,
+        ?order_request_id: String,
+        ?phone_number_type: Telnyx::Models::SubNumberOrder::phone_number_type,
+        ?phone_numbers_count: Integer,
+        ?record_type: String,
+        ?regulatory_requirements: ::Array[Telnyx::SubNumberOrderRegulatoryRequirement],
+        ?requirements_met: bool,
+        ?status: Telnyx::Models::SubNumberOrder::status,
+        ?updated_at: Time,
+        ?user_id: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        country_code: String,
+        created_at: Time,
+        customer_reference: String,
+        is_block_sub_number_order: bool,
+        order_request_id: String,
+        phone_number_type: Telnyx::Models::SubNumberOrder::phone_number_type,
+        phone_numbers_count: Integer,
+        record_type: String,
+        regulatory_requirements: ::Array[Telnyx::SubNumberOrderRegulatoryRequirement],
+        requirements_met: bool,
+        status: Telnyx::Models::SubNumberOrder::status,
+        updated_at: Time,
+        user_id: String
+      }
+
+      type phone_number_type =
+        :local | :toll_free | :mobile | :national | :shared_cost | :landline
+
+      module PhoneNumberType
+        extend Telnyx::Internal::Type::Enum
+
+        LOCAL: :local
+        TOLL_FREE: :toll_free
+        MOBILE: :mobile
+        NATIONAL: :national
+        SHARED_COST: :shared_cost
+        LANDLINE: :landline
+
+        def self?.values: -> ::Array[Telnyx::Models::SubNumberOrder::phone_number_type]
+      end
+
+      type status = :pending | :success | :failure
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        SUCCESS: :success
+        FAILURE: :failure
+
+        def self?.values: -> ::Array[Telnyx::Models::SubNumberOrder::status]
+      end
+    end
+  end
+end

@@ -1,0 +1,50 @@
+module Telnyx
+  module Models
+    type portout_list_rejection_codes_response =
+      { data: ::Array[Telnyx::Models::PortoutListRejectionCodesResponse::Data] }
+
+    class PortoutListRejectionCodesResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::PortoutListRejectionCodesResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::PortoutListRejectionCodesResponse::Data]
+      ) -> ::Array[Telnyx::Models::PortoutListRejectionCodesResponse::Data]
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::PortoutListRejectionCodesResponse::Data]
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::PortoutListRejectionCodesResponse::Data]
+      }
+
+      type data = { code: Integer, description: String, reason_required: bool }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader code: Integer?
+
+        def code=: (Integer) -> Integer
+
+        attr_reader description: String?
+
+        def description=: (String) -> String
+
+        attr_reader reason_required: bool?
+
+        def reason_required=: (bool) -> bool
+
+        def initialize: (
+          ?code: Integer,
+          ?description: String,
+          ?reason_required: bool
+        ) -> void
+
+        def to_hash: -> {
+          code: Integer,
+          description: String,
+          reason_required: bool
+        }
+      end
+    end
+  end
+end

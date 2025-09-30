@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type room_composition_retrieve_response = { data: Telnyx::RoomComposition }
+
+    class RoomCompositionRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::RoomComposition?
+
+      def data=: (Telnyx::RoomComposition) -> Telnyx::RoomComposition
+
+      def initialize: (?data: Telnyx::RoomComposition) -> void
+
+      def to_hash: -> { data: Telnyx::RoomComposition }
+    end
+  end
+end

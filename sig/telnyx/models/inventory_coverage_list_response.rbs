@@ -1,0 +1,171 @@
+module Telnyx
+  module Models
+    type inventory_coverage_list_response =
+      {
+        data: ::Array[Telnyx::Models::InventoryCoverageListResponse::Data],
+        meta: Telnyx::Models::InventoryCoverageListResponse::Meta
+      }
+
+    class InventoryCoverageListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::InventoryCoverageListResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::InventoryCoverageListResponse::Data]
+      ) -> ::Array[Telnyx::Models::InventoryCoverageListResponse::Data]
+
+      attr_reader meta: Telnyx::Models::InventoryCoverageListResponse::Meta?
+
+      def meta=: (
+        Telnyx::Models::InventoryCoverageListResponse::Meta
+      ) -> Telnyx::Models::InventoryCoverageListResponse::Meta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::InventoryCoverageListResponse::Data],
+        ?meta: Telnyx::Models::InventoryCoverageListResponse::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::InventoryCoverageListResponse::Data],
+        meta: Telnyx::Models::InventoryCoverageListResponse::Meta
+      }
+
+      type data =
+        {
+          administrative_area: String,
+          advance_requirements: bool,
+          count: Integer,
+          coverage_type: Telnyx::Models::InventoryCoverageListResponse::Data::coverage_type,
+          group: String,
+          group_type: String,
+          number_range: Integer,
+          number_type: Telnyx::Models::InventoryCoverageListResponse::Data::number_type,
+          phone_number_type: Telnyx::Models::InventoryCoverageListResponse::Data::phone_number_type,
+          record_type: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader administrative_area: String?
+
+        def administrative_area=: (String) -> String
+
+        attr_reader advance_requirements: bool?
+
+        def advance_requirements=: (bool) -> bool
+
+        attr_reader count: Integer?
+
+        def count=: (Integer) -> Integer
+
+        attr_reader coverage_type: Telnyx::Models::InventoryCoverageListResponse::Data::coverage_type?
+
+        def coverage_type=: (
+          Telnyx::Models::InventoryCoverageListResponse::Data::coverage_type
+        ) -> Telnyx::Models::InventoryCoverageListResponse::Data::coverage_type
+
+        attr_reader group: String?
+
+        def group=: (String) -> String
+
+        attr_reader group_type: String?
+
+        def group_type=: (String) -> String
+
+        attr_reader number_range: Integer?
+
+        def number_range=: (Integer) -> Integer
+
+        attr_reader number_type: Telnyx::Models::InventoryCoverageListResponse::Data::number_type?
+
+        def number_type=: (
+          Telnyx::Models::InventoryCoverageListResponse::Data::number_type
+        ) -> Telnyx::Models::InventoryCoverageListResponse::Data::number_type
+
+        attr_reader phone_number_type: Telnyx::Models::InventoryCoverageListResponse::Data::phone_number_type?
+
+        def phone_number_type=: (
+          Telnyx::Models::InventoryCoverageListResponse::Data::phone_number_type
+        ) -> Telnyx::Models::InventoryCoverageListResponse::Data::phone_number_type
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?administrative_area: String,
+          ?advance_requirements: bool,
+          ?count: Integer,
+          ?coverage_type: Telnyx::Models::InventoryCoverageListResponse::Data::coverage_type,
+          ?group: String,
+          ?group_type: String,
+          ?number_range: Integer,
+          ?number_type: Telnyx::Models::InventoryCoverageListResponse::Data::number_type,
+          ?phone_number_type: Telnyx::Models::InventoryCoverageListResponse::Data::phone_number_type,
+          ?record_type: String
+        ) -> void
+
+        def to_hash: -> {
+          administrative_area: String,
+          advance_requirements: bool,
+          count: Integer,
+          coverage_type: Telnyx::Models::InventoryCoverageListResponse::Data::coverage_type,
+          group: String,
+          group_type: String,
+          number_range: Integer,
+          number_type: Telnyx::Models::InventoryCoverageListResponse::Data::number_type,
+          phone_number_type: Telnyx::Models::InventoryCoverageListResponse::Data::phone_number_type,
+          record_type: String
+        }
+
+        type coverage_type = :number | :block
+
+        module CoverageType
+          extend Telnyx::Internal::Type::Enum
+
+          NUMBER: :number
+          BLOCK: :block
+
+          def self?.values: -> ::Array[Telnyx::Models::InventoryCoverageListResponse::Data::coverage_type]
+        end
+
+        type number_type = :did | :"toll-free"
+
+        module NumberType
+          extend Telnyx::Internal::Type::Enum
+
+          DID: :did
+          TOLL_FREE: :"toll-free"
+
+          def self?.values: -> ::Array[Telnyx::Models::InventoryCoverageListResponse::Data::number_type]
+        end
+
+        type phone_number_type =
+          :local | :toll_free | :national | :landline | :shared_cost | :mobile
+
+        module PhoneNumberType
+          extend Telnyx::Internal::Type::Enum
+
+          LOCAL: :local
+          TOLL_FREE: :toll_free
+          NATIONAL: :national
+          LANDLINE: :landline
+          SHARED_COST: :shared_cost
+          MOBILE: :mobile
+
+          def self?.values: -> ::Array[Telnyx::Models::InventoryCoverageListResponse::Data::phone_number_type]
+        end
+      end
+
+      type meta = { total_results: Integer }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_reader total_results: Integer?
+
+        def total_results=: (Integer) -> Integer
+
+        def initialize: (?total_results: Integer) -> void
+
+        def to_hash: -> { total_results: Integer }
+      end
+    end
+  end
+end

@@ -1,0 +1,19 @@
+module Telnyx
+  module Resources
+    class Requirements
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RequirementRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::RequirementListParams::Filter,
+        ?page: Telnyx::RequirementListParams::Page,
+        ?sort: ::Array[Telnyx::Models::RequirementListParams::sort],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::RequirementListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

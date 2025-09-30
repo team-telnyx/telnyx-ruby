@@ -1,0 +1,75 @@
+module Telnyx
+  module Models
+    module Reports
+      type mdr_usage_report_list_response =
+        {
+          data: ::Array[Telnyx::Reports::MdrUsageReport],
+          meta: Telnyx::Models::Reports::MdrUsageReportListResponse::Meta
+        }
+
+      class MdrUsageReportListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::Reports::MdrUsageReport]?
+
+        def data=: (
+          ::Array[Telnyx::Reports::MdrUsageReport]
+        ) -> ::Array[Telnyx::Reports::MdrUsageReport]
+
+        attr_reader meta: Telnyx::Models::Reports::MdrUsageReportListResponse::Meta?
+
+        def meta=: (
+          Telnyx::Models::Reports::MdrUsageReportListResponse::Meta
+        ) -> Telnyx::Models::Reports::MdrUsageReportListResponse::Meta
+
+        def initialize: (
+          ?data: ::Array[Telnyx::Reports::MdrUsageReport],
+          ?meta: Telnyx::Models::Reports::MdrUsageReportListResponse::Meta
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Reports::MdrUsageReport],
+          meta: Telnyx::Models::Reports::MdrUsageReportListResponse::Meta
+        }
+
+        type meta =
+          {
+            page_number: Integer,
+            page_size: Integer,
+            total_pages: Integer,
+            total_results: Integer
+          }
+
+        class Meta < Telnyx::Internal::Type::BaseModel
+          attr_reader page_number: Integer?
+
+          def page_number=: (Integer) -> Integer
+
+          attr_reader page_size: Integer?
+
+          def page_size=: (Integer) -> Integer
+
+          attr_reader total_pages: Integer?
+
+          def total_pages=: (Integer) -> Integer
+
+          attr_reader total_results: Integer?
+
+          def total_results=: (Integer) -> Integer
+
+          def initialize: (
+            ?page_number: Integer,
+            ?page_size: Integer,
+            ?total_pages: Integer,
+            ?total_results: Integer
+          ) -> void
+
+          def to_hash: -> {
+            page_number: Integer,
+            page_size: Integer,
+            total_pages: Integer,
+            total_results: Integer
+          }
+        end
+      end
+    end
+  end
+end

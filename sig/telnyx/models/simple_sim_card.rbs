@@ -1,0 +1,223 @@
+module Telnyx
+  module Models
+    type simple_sim_card =
+      {
+        id: String,
+        actions_in_progress: bool,
+        authorized_imeis: ::Array[String]?,
+        created_at: String,
+        current_billing_period_consumed_data: Telnyx::SimpleSimCard::CurrentBillingPeriodConsumedData,
+        data_limit: Telnyx::SimpleSimCard::DataLimit,
+        eid: String?,
+        esim_installation_status: Telnyx::Models::SimpleSimCard::esim_installation_status?,
+        iccid: String,
+        imsi: String,
+        msisdn: String,
+        record_type: String,
+        resources_with_in_progress_actions: ::Array[top],
+        sim_card_group_id: String,
+        status: Telnyx::SimCardStatus,
+        tags: ::Array[String],
+        type: Telnyx::Models::SimpleSimCard::type_,
+        updated_at: String,
+        version: String
+      }
+
+    class SimpleSimCard < Telnyx::Internal::Type::BaseModel
+      attr_accessor authorized_imeis: ::Array[String]?
+
+      attr_reader sim_card_group_id: String?
+
+      def sim_card_group_id=: (String) -> String
+
+      attr_reader status: Telnyx::SimCardStatus?
+
+      def status=: (Telnyx::SimCardStatus) -> Telnyx::SimCardStatus
+
+      attr_reader tags: ::Array[String]?
+
+      def tags=: (::Array[String]) -> ::Array[String]
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader actions_in_progress: bool?
+
+      def actions_in_progress=: (bool) -> bool
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader current_billing_period_consumed_data: Telnyx::SimpleSimCard::CurrentBillingPeriodConsumedData?
+
+      def current_billing_period_consumed_data=: (
+        Telnyx::SimpleSimCard::CurrentBillingPeriodConsumedData
+      ) -> Telnyx::SimpleSimCard::CurrentBillingPeriodConsumedData
+
+      attr_reader data_limit: Telnyx::SimpleSimCard::DataLimit?
+
+      def data_limit=: (
+        Telnyx::SimpleSimCard::DataLimit
+      ) -> Telnyx::SimpleSimCard::DataLimit
+
+      attr_accessor eid: String?
+
+      attr_accessor esim_installation_status: Telnyx::Models::SimpleSimCard::esim_installation_status?
+
+      attr_reader iccid: String?
+
+      def iccid=: (String) -> String
+
+      attr_reader imsi: String?
+
+      def imsi=: (String) -> String
+
+      attr_reader msisdn: String?
+
+      def msisdn=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader resources_with_in_progress_actions: ::Array[top]?
+
+      def resources_with_in_progress_actions=: (::Array[top]) -> ::Array[top]
+
+      attr_reader type: Telnyx::Models::SimpleSimCard::type_?
+
+      def type=: (
+        Telnyx::Models::SimpleSimCard::type_
+      ) -> Telnyx::Models::SimpleSimCard::type_
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      attr_reader version: String?
+
+      def version=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?actions_in_progress: bool,
+        ?authorized_imeis: ::Array[String]?,
+        ?created_at: String,
+        ?current_billing_period_consumed_data: Telnyx::SimpleSimCard::CurrentBillingPeriodConsumedData,
+        ?data_limit: Telnyx::SimpleSimCard::DataLimit,
+        ?eid: String?,
+        ?esim_installation_status: Telnyx::Models::SimpleSimCard::esim_installation_status?,
+        ?iccid: String,
+        ?imsi: String,
+        ?msisdn: String,
+        ?record_type: String,
+        ?resources_with_in_progress_actions: ::Array[top],
+        ?sim_card_group_id: String,
+        ?status: Telnyx::SimCardStatus,
+        ?tags: ::Array[String],
+        ?type: Telnyx::Models::SimpleSimCard::type_,
+        ?updated_at: String,
+        ?version: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        actions_in_progress: bool,
+        authorized_imeis: ::Array[String]?,
+        created_at: String,
+        current_billing_period_consumed_data: Telnyx::SimpleSimCard::CurrentBillingPeriodConsumedData,
+        data_limit: Telnyx::SimpleSimCard::DataLimit,
+        eid: String?,
+        esim_installation_status: Telnyx::Models::SimpleSimCard::esim_installation_status?,
+        iccid: String,
+        imsi: String,
+        msisdn: String,
+        record_type: String,
+        resources_with_in_progress_actions: ::Array[top],
+        sim_card_group_id: String,
+        status: Telnyx::SimCardStatus,
+        tags: ::Array[String],
+        type: Telnyx::Models::SimpleSimCard::type_,
+        updated_at: String,
+        version: String
+      }
+
+      type current_billing_period_consumed_data =
+        { amount: String, unit: String }
+
+      class CurrentBillingPeriodConsumedData < Telnyx::Internal::Type::BaseModel
+        attr_reader amount: String?
+
+        def amount=: (String) -> String
+
+        attr_reader unit: String?
+
+        def unit=: (String) -> String
+
+        def initialize: (?amount: String, ?unit: String) -> void
+
+        def to_hash: -> { amount: String, unit: String }
+      end
+
+      type data_limit =
+        { amount: String, unit: Telnyx::Models::SimpleSimCard::DataLimit::unit }
+
+      class DataLimit < Telnyx::Internal::Type::BaseModel
+        attr_reader amount: String?
+
+        def amount=: (String) -> String
+
+        attr_reader unit: Telnyx::Models::SimpleSimCard::DataLimit::unit?
+
+        def unit=: (
+          Telnyx::Models::SimpleSimCard::DataLimit::unit
+        ) -> Telnyx::Models::SimpleSimCard::DataLimit::unit
+
+        def initialize: (
+          ?amount: String,
+          ?unit: Telnyx::Models::SimpleSimCard::DataLimit::unit
+        ) -> void
+
+        def to_hash: -> {
+          amount: String,
+          unit: Telnyx::Models::SimpleSimCard::DataLimit::unit
+        }
+
+        type unit = :MB | :GB
+
+        module Unit
+          extend Telnyx::Internal::Type::Enum
+
+          MB: :MB
+          GB: :GB
+
+          def self?.values: -> ::Array[Telnyx::Models::SimpleSimCard::DataLimit::unit]
+        end
+      end
+
+      type esim_installation_status = :released | :disabled
+
+      module EsimInstallationStatus
+        extend Telnyx::Internal::Type::Enum
+
+        RELEASED: :released
+        DISABLED: :disabled
+
+        def self?.values: -> ::Array[Telnyx::Models::SimpleSimCard::esim_installation_status]
+      end
+
+      type type_ = :physical | :esim
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        PHYSICAL: :physical
+        ESIM: :esim
+
+        def self?.values: -> ::Array[Telnyx::Models::SimpleSimCard::type_]
+      end
+    end
+  end
+end

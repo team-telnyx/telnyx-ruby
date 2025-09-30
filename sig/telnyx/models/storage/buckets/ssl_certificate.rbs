@@ -1,0 +1,131 @@
+module Telnyx
+  module Models
+    module Storage
+      module Buckets
+        type buckets_ssl_certificate =
+          {
+            id: String,
+            created_at: Time,
+            issued_by: Telnyx::Storage::Buckets::BucketsSslCertificate::IssuedBy,
+            issued_to: Telnyx::Storage::Buckets::BucketsSslCertificate::IssuedTo,
+            valid_from: Time,
+            valid_to: Time
+          }
+
+        class BucketsSslCertificate < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader issued_by: Telnyx::Storage::Buckets::BucketsSslCertificate::IssuedBy?
+
+          def issued_by=: (
+            Telnyx::Storage::Buckets::BucketsSslCertificate::IssuedBy
+          ) -> Telnyx::Storage::Buckets::BucketsSslCertificate::IssuedBy
+
+          attr_reader issued_to: Telnyx::Storage::Buckets::BucketsSslCertificate::IssuedTo?
+
+          def issued_to=: (
+            Telnyx::Storage::Buckets::BucketsSslCertificate::IssuedTo
+          ) -> Telnyx::Storage::Buckets::BucketsSslCertificate::IssuedTo
+
+          attr_reader valid_from: Time?
+
+          def valid_from=: (Time) -> Time
+
+          attr_reader valid_to: Time?
+
+          def valid_to=: (Time) -> Time
+
+          def initialize: (
+            ?id: String,
+            ?created_at: Time,
+            ?issued_by: Telnyx::Storage::Buckets::BucketsSslCertificate::IssuedBy,
+            ?issued_to: Telnyx::Storage::Buckets::BucketsSslCertificate::IssuedTo,
+            ?valid_from: Time,
+            ?valid_to: Time
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            created_at: Time,
+            issued_by: Telnyx::Storage::Buckets::BucketsSslCertificate::IssuedBy,
+            issued_to: Telnyx::Storage::Buckets::BucketsSslCertificate::IssuedTo,
+            valid_from: Time,
+            valid_to: Time
+          }
+
+          type issued_by =
+            {
+              common_name: String,
+              organization: String,
+              organization_unit: String
+            }
+
+          class IssuedBy < Telnyx::Internal::Type::BaseModel
+            attr_reader common_name: String?
+
+            def common_name=: (String) -> String
+
+            attr_reader organization: String?
+
+            def organization=: (String) -> String
+
+            attr_reader organization_unit: String?
+
+            def organization_unit=: (String) -> String
+
+            def initialize: (
+              ?common_name: String,
+              ?organization: String,
+              ?organization_unit: String
+            ) -> void
+
+            def to_hash: -> {
+              common_name: String,
+              organization: String,
+              organization_unit: String
+            }
+          end
+
+          type issued_to =
+            {
+              common_name: String,
+              organization: String,
+              organization_unit: String
+            }
+
+          class IssuedTo < Telnyx::Internal::Type::BaseModel
+            attr_reader common_name: String?
+
+            def common_name=: (String) -> String
+
+            attr_reader organization: String?
+
+            def organization=: (String) -> String
+
+            attr_reader organization_unit: String?
+
+            def organization_unit=: (String) -> String
+
+            def initialize: (
+              ?common_name: String,
+              ?organization: String,
+              ?organization_unit: String
+            ) -> void
+
+            def to_hash: -> {
+              common_name: String,
+              organization: String,
+              organization_unit: String
+            }
+          end
+        end
+      end
+    end
+  end
+end

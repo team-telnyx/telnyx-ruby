@@ -1,0 +1,72 @@
+module Telnyx
+  module Models
+    module AI
+      module Embeddings
+        type bucket_retrieve_response =
+          {
+            data: ::Array[Telnyx::Models::AI::Embeddings::BucketRetrieveResponse::Data]
+          }
+
+        class BucketRetrieveResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: ::Array[Telnyx::Models::AI::Embeddings::BucketRetrieveResponse::Data]
+
+          def initialize: (
+            data: ::Array[Telnyx::Models::AI::Embeddings::BucketRetrieveResponse::Data]
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[Telnyx::Models::AI::Embeddings::BucketRetrieveResponse::Data]
+          }
+
+          type data =
+            {
+              created_at: Time,
+              filename: String,
+              status: String,
+              error_reason: String,
+              last_embedded_at: Time,
+              updated_at: Time
+            }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_accessor created_at: Time
+
+            attr_accessor filename: String
+
+            attr_accessor status: String
+
+            attr_reader error_reason: String?
+
+            def error_reason=: (String) -> String
+
+            attr_reader last_embedded_at: Time?
+
+            def last_embedded_at=: (Time) -> Time
+
+            attr_reader updated_at: Time?
+
+            def updated_at=: (Time) -> Time
+
+            def initialize: (
+              created_at: Time,
+              filename: String,
+              status: String,
+              ?error_reason: String,
+              ?last_embedded_at: Time,
+              ?updated_at: Time
+            ) -> void
+
+            def to_hash: -> {
+              created_at: Time,
+              filename: String,
+              status: String,
+              error_reason: String,
+              last_embedded_at: Time,
+              updated_at: Time
+            }
+          end
+        end
+      end
+    end
+  end
+end

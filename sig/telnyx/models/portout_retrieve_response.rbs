@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type portout_retrieve_response = { data: Telnyx::PortoutDetails }
+
+    class PortoutRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::PortoutDetails?
+
+      def data=: (Telnyx::PortoutDetails) -> Telnyx::PortoutDetails
+
+      def initialize: (?data: Telnyx::PortoutDetails) -> void
+
+      def to_hash: -> { data: Telnyx::PortoutDetails }
+    end
+  end
+end

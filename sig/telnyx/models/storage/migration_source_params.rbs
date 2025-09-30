@@ -1,0 +1,76 @@
+module Telnyx
+  module Models
+    module Storage
+      type migration_source_params =
+        {
+          bucket_name: String,
+          provider: Telnyx::Models::Storage::MigrationSourceParams::provider,
+          provider_auth: Telnyx::Storage::MigrationSourceParams::ProviderAuth,
+          id: String,
+          source_region: String
+        }
+
+      class MigrationSourceParams < Telnyx::Internal::Type::BaseModel
+        attr_accessor bucket_name: String
+
+        attr_accessor provider: Telnyx::Models::Storage::MigrationSourceParams::provider
+
+        attr_accessor provider_auth: Telnyx::Storage::MigrationSourceParams::ProviderAuth
+
+        attr_reader source_region: String?
+
+        def source_region=: (String) -> String
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        def initialize: (
+          bucket_name: String,
+          provider: Telnyx::Models::Storage::MigrationSourceParams::provider,
+          provider_auth: Telnyx::Storage::MigrationSourceParams::ProviderAuth,
+          ?id: String,
+          ?source_region: String
+        ) -> void
+
+        def to_hash: -> {
+          bucket_name: String,
+          provider: Telnyx::Models::Storage::MigrationSourceParams::provider,
+          provider_auth: Telnyx::Storage::MigrationSourceParams::ProviderAuth,
+          id: String,
+          source_region: String
+        }
+
+        type provider = :aws | :telnyx
+
+        module Provider
+          extend Telnyx::Internal::Type::Enum
+
+          AWS: :aws
+          TELNYX: :telnyx
+
+          def self?.values: -> ::Array[Telnyx::Models::Storage::MigrationSourceParams::provider]
+        end
+
+        type provider_auth = { access_key: String, secret_access_key: String }
+
+        class ProviderAuth < Telnyx::Internal::Type::BaseModel
+          attr_reader access_key: String?
+
+          def access_key=: (String) -> String
+
+          attr_reader secret_access_key: String?
+
+          def secret_access_key=: (String) -> String
+
+          def initialize: (
+            ?access_key: String,
+            ?secret_access_key: String
+          ) -> void
+
+          def to_hash: -> { access_key: String, secret_access_key: String }
+        end
+      end
+    end
+  end
+end

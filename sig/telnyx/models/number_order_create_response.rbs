@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type number_order_create_response =
+      { data: Telnyx::NumberOrderWithPhoneNumbers }
+
+    class NumberOrderCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::NumberOrderWithPhoneNumbers?
+
+      def data=: (
+        Telnyx::NumberOrderWithPhoneNumbers
+      ) -> Telnyx::NumberOrderWithPhoneNumbers
+
+      def initialize: (?data: Telnyx::NumberOrderWithPhoneNumbers) -> void
+
+      def to_hash: -> { data: Telnyx::NumberOrderWithPhoneNumbers }
+    end
+  end
+end

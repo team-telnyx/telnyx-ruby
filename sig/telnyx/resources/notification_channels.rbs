@@ -1,0 +1,38 @@
+module Telnyx
+  module Resources
+    class NotificationChannels
+      def create: (
+        ?channel_destination: String,
+        ?channel_type_id: Telnyx::Models::NotificationChannel::channel_type_id,
+        ?notification_profile_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NotificationChannelCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NotificationChannelRetrieveResponse
+
+      def update: (
+        String id,
+        ?channel_destination: String,
+        ?channel_type_id: Telnyx::Models::NotificationChannel::channel_type_id,
+        ?notification_profile_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NotificationChannelUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::NotificationChannelListParams::Filter,
+        ?page: Telnyx::NotificationChannelListParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NotificationChannelListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NotificationChannelDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

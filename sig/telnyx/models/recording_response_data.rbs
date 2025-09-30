@@ -1,0 +1,188 @@
+module Telnyx
+  module Models
+    type recording_response_data =
+      {
+        id: String,
+        call_control_id: String,
+        call_leg_id: String,
+        call_session_id: String,
+        channels: Telnyx::Models::RecordingResponseData::channels,
+        conference_id: String,
+        created_at: String,
+        download_urls: Telnyx::RecordingResponseData::DownloadURLs,
+        duration_millis: Integer,
+        record_type: Telnyx::Models::RecordingResponseData::record_type,
+        recording_ended_at: String,
+        recording_started_at: String,
+        source: Telnyx::Models::RecordingResponseData::source,
+        status: Telnyx::Models::RecordingResponseData::status,
+        updated_at: String
+      }
+
+    class RecordingResponseData < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader call_control_id: String?
+
+      def call_control_id=: (String) -> String
+
+      attr_reader call_leg_id: String?
+
+      def call_leg_id=: (String) -> String
+
+      attr_reader call_session_id: String?
+
+      def call_session_id=: (String) -> String
+
+      attr_reader channels: Telnyx::Models::RecordingResponseData::channels?
+
+      def channels=: (
+        Telnyx::Models::RecordingResponseData::channels
+      ) -> Telnyx::Models::RecordingResponseData::channels
+
+      attr_reader conference_id: String?
+
+      def conference_id=: (String) -> String
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader download_urls: Telnyx::RecordingResponseData::DownloadURLs?
+
+      def download_urls=: (
+        Telnyx::RecordingResponseData::DownloadURLs
+      ) -> Telnyx::RecordingResponseData::DownloadURLs
+
+      attr_reader duration_millis: Integer?
+
+      def duration_millis=: (Integer) -> Integer
+
+      attr_reader record_type: Telnyx::Models::RecordingResponseData::record_type?
+
+      def record_type=: (
+        Telnyx::Models::RecordingResponseData::record_type
+      ) -> Telnyx::Models::RecordingResponseData::record_type
+
+      attr_reader recording_ended_at: String?
+
+      def recording_ended_at=: (String) -> String
+
+      attr_reader recording_started_at: String?
+
+      def recording_started_at=: (String) -> String
+
+      attr_reader source: Telnyx::Models::RecordingResponseData::source?
+
+      def source=: (
+        Telnyx::Models::RecordingResponseData::source
+      ) -> Telnyx::Models::RecordingResponseData::source
+
+      attr_reader status: Telnyx::Models::RecordingResponseData::status?
+
+      def status=: (
+        Telnyx::Models::RecordingResponseData::status
+      ) -> Telnyx::Models::RecordingResponseData::status
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?call_control_id: String,
+        ?call_leg_id: String,
+        ?call_session_id: String,
+        ?channels: Telnyx::Models::RecordingResponseData::channels,
+        ?conference_id: String,
+        ?created_at: String,
+        ?download_urls: Telnyx::RecordingResponseData::DownloadURLs,
+        ?duration_millis: Integer,
+        ?record_type: Telnyx::Models::RecordingResponseData::record_type,
+        ?recording_ended_at: String,
+        ?recording_started_at: String,
+        ?source: Telnyx::Models::RecordingResponseData::source,
+        ?status: Telnyx::Models::RecordingResponseData::status,
+        ?updated_at: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        call_control_id: String,
+        call_leg_id: String,
+        call_session_id: String,
+        channels: Telnyx::Models::RecordingResponseData::channels,
+        conference_id: String,
+        created_at: String,
+        download_urls: Telnyx::RecordingResponseData::DownloadURLs,
+        duration_millis: Integer,
+        record_type: Telnyx::Models::RecordingResponseData::record_type,
+        recording_ended_at: String,
+        recording_started_at: String,
+        source: Telnyx::Models::RecordingResponseData::source,
+        status: Telnyx::Models::RecordingResponseData::status,
+        updated_at: String
+      }
+
+      type channels = :single | :dual
+
+      module Channels
+        extend Telnyx::Internal::Type::Enum
+
+        SINGLE: :single
+        DUAL: :dual
+
+        def self?.values: -> ::Array[Telnyx::Models::RecordingResponseData::channels]
+      end
+
+      type download_urls = { :mp3 => String, wav: String }
+
+      class DownloadURLs < Telnyx::Internal::Type::BaseModel
+        attr_reader mp3: String?
+
+        def mp3=: (String) -> String
+
+        attr_reader wav: String?
+
+        def wav=: (String) -> String
+
+        def initialize: (?mp3: String, ?wav: String) -> void
+
+        def to_hash: -> { :mp3 => String, wav: String }
+      end
+
+      type record_type = :recording
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        RECORDING: :recording
+
+        def self?.values: -> ::Array[Telnyx::Models::RecordingResponseData::record_type]
+      end
+
+      type source = :conference | :call
+
+      module Source
+        extend Telnyx::Internal::Type::Enum
+
+        CONFERENCE: :conference
+        CALL: :call
+
+        def self?.values: -> ::Array[Telnyx::Models::RecordingResponseData::source]
+      end
+
+      type status = :completed
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        COMPLETED: :completed
+
+        def self?.values: -> ::Array[Telnyx::Models::RecordingResponseData::status]
+      end
+    end
+  end
+end

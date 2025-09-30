@@ -1,0 +1,224 @@
+module Telnyx
+  module Models
+    type texml_application_update_params =
+      {
+        friendly_name: String,
+        voice_url: String,
+        active: bool,
+        anchorsite_override: Telnyx::Models::anchorsite_override,
+        dtmf_type: Telnyx::Models::dtmf_type,
+        first_command_timeout: bool,
+        first_command_timeout_secs: Integer,
+        inbound: Telnyx::TexmlApplicationUpdateParams::Inbound,
+        outbound: Telnyx::TexmlApplicationUpdateParams::Outbound,
+        status_callback: String,
+        status_callback_method: Telnyx::Models::TexmlApplicationUpdateParams::status_callback_method,
+        tags: ::Array[String],
+        voice_fallback_url: String,
+        voice_method: Telnyx::Models::TexmlApplicationUpdateParams::voice_method
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class TexmlApplicationUpdateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor friendly_name: String
+
+      attr_accessor voice_url: String
+
+      attr_reader active: bool?
+
+      def active=: (bool) -> bool
+
+      attr_reader anchorsite_override: Telnyx::Models::anchorsite_override?
+
+      def anchorsite_override=: (
+        Telnyx::Models::anchorsite_override
+      ) -> Telnyx::Models::anchorsite_override
+
+      attr_reader dtmf_type: Telnyx::Models::dtmf_type?
+
+      def dtmf_type=: (Telnyx::Models::dtmf_type) -> Telnyx::Models::dtmf_type
+
+      attr_reader first_command_timeout: bool?
+
+      def first_command_timeout=: (bool) -> bool
+
+      attr_reader first_command_timeout_secs: Integer?
+
+      def first_command_timeout_secs=: (Integer) -> Integer
+
+      attr_reader inbound: Telnyx::TexmlApplicationUpdateParams::Inbound?
+
+      def inbound=: (
+        Telnyx::TexmlApplicationUpdateParams::Inbound
+      ) -> Telnyx::TexmlApplicationUpdateParams::Inbound
+
+      attr_reader outbound: Telnyx::TexmlApplicationUpdateParams::Outbound?
+
+      def outbound=: (
+        Telnyx::TexmlApplicationUpdateParams::Outbound
+      ) -> Telnyx::TexmlApplicationUpdateParams::Outbound
+
+      attr_reader status_callback: String?
+
+      def status_callback=: (String) -> String
+
+      attr_reader status_callback_method: Telnyx::Models::TexmlApplicationUpdateParams::status_callback_method?
+
+      def status_callback_method=: (
+        Telnyx::Models::TexmlApplicationUpdateParams::status_callback_method
+      ) -> Telnyx::Models::TexmlApplicationUpdateParams::status_callback_method
+
+      attr_reader tags: ::Array[String]?
+
+      def tags=: (::Array[String]) -> ::Array[String]
+
+      attr_reader voice_fallback_url: String?
+
+      def voice_fallback_url=: (String) -> String
+
+      attr_reader voice_method: Telnyx::Models::TexmlApplicationUpdateParams::voice_method?
+
+      def voice_method=: (
+        Telnyx::Models::TexmlApplicationUpdateParams::voice_method
+      ) -> Telnyx::Models::TexmlApplicationUpdateParams::voice_method
+
+      def initialize: (
+        friendly_name: String,
+        voice_url: String,
+        ?active: bool,
+        ?anchorsite_override: Telnyx::Models::anchorsite_override,
+        ?dtmf_type: Telnyx::Models::dtmf_type,
+        ?first_command_timeout: bool,
+        ?first_command_timeout_secs: Integer,
+        ?inbound: Telnyx::TexmlApplicationUpdateParams::Inbound,
+        ?outbound: Telnyx::TexmlApplicationUpdateParams::Outbound,
+        ?status_callback: String,
+        ?status_callback_method: Telnyx::Models::TexmlApplicationUpdateParams::status_callback_method,
+        ?tags: ::Array[String],
+        ?voice_fallback_url: String,
+        ?voice_method: Telnyx::Models::TexmlApplicationUpdateParams::voice_method,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        friendly_name: String,
+        voice_url: String,
+        active: bool,
+        anchorsite_override: Telnyx::Models::anchorsite_override,
+        dtmf_type: Telnyx::Models::dtmf_type,
+        first_command_timeout: bool,
+        first_command_timeout_secs: Integer,
+        inbound: Telnyx::TexmlApplicationUpdateParams::Inbound,
+        outbound: Telnyx::TexmlApplicationUpdateParams::Outbound,
+        status_callback: String,
+        status_callback_method: Telnyx::Models::TexmlApplicationUpdateParams::status_callback_method,
+        tags: ::Array[String],
+        voice_fallback_url: String,
+        voice_method: Telnyx::Models::TexmlApplicationUpdateParams::voice_method,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type inbound =
+        {
+          channel_limit: Integer,
+          shaken_stir_enabled: bool,
+          sip_subdomain: String,
+          sip_subdomain_receive_settings: Telnyx::Models::TexmlApplicationUpdateParams::Inbound::sip_subdomain_receive_settings
+        }
+
+      class Inbound < Telnyx::Internal::Type::BaseModel
+        attr_reader channel_limit: Integer?
+
+        def channel_limit=: (Integer) -> Integer
+
+        attr_reader shaken_stir_enabled: bool?
+
+        def shaken_stir_enabled=: (bool) -> bool
+
+        attr_reader sip_subdomain: String?
+
+        def sip_subdomain=: (String) -> String
+
+        attr_reader sip_subdomain_receive_settings: Telnyx::Models::TexmlApplicationUpdateParams::Inbound::sip_subdomain_receive_settings?
+
+        def sip_subdomain_receive_settings=: (
+          Telnyx::Models::TexmlApplicationUpdateParams::Inbound::sip_subdomain_receive_settings
+        ) -> Telnyx::Models::TexmlApplicationUpdateParams::Inbound::sip_subdomain_receive_settings
+
+        def initialize: (
+          ?channel_limit: Integer,
+          ?shaken_stir_enabled: bool,
+          ?sip_subdomain: String,
+          ?sip_subdomain_receive_settings: Telnyx::Models::TexmlApplicationUpdateParams::Inbound::sip_subdomain_receive_settings
+        ) -> void
+
+        def to_hash: -> {
+          channel_limit: Integer,
+          shaken_stir_enabled: bool,
+          sip_subdomain: String,
+          sip_subdomain_receive_settings: Telnyx::Models::TexmlApplicationUpdateParams::Inbound::sip_subdomain_receive_settings
+        }
+
+        type sip_subdomain_receive_settings =
+          :only_my_connections | :from_anyone
+
+        module SipSubdomainReceiveSettings
+          extend Telnyx::Internal::Type::Enum
+
+          ONLY_MY_CONNECTIONS: :only_my_connections
+          FROM_ANYONE: :from_anyone
+
+          def self?.values: -> ::Array[Telnyx::Models::TexmlApplicationUpdateParams::Inbound::sip_subdomain_receive_settings]
+        end
+      end
+
+      type outbound =
+        { channel_limit: Integer, outbound_voice_profile_id: String }
+
+      class Outbound < Telnyx::Internal::Type::BaseModel
+        attr_reader channel_limit: Integer?
+
+        def channel_limit=: (Integer) -> Integer
+
+        attr_reader outbound_voice_profile_id: String?
+
+        def outbound_voice_profile_id=: (String) -> String
+
+        def initialize: (
+          ?channel_limit: Integer,
+          ?outbound_voice_profile_id: String
+        ) -> void
+
+        def to_hash: -> {
+          channel_limit: Integer,
+          outbound_voice_profile_id: String
+        }
+      end
+
+      type status_callback_method = :get | :post
+
+      module StatusCallbackMethod
+        extend Telnyx::Internal::Type::Enum
+
+        GET: :get
+        POST: :post
+
+        def self?.values: -> ::Array[Telnyx::Models::TexmlApplicationUpdateParams::status_callback_method]
+      end
+
+      type voice_method = :get | :post
+
+      module VoiceMethod
+        extend Telnyx::Internal::Type::Enum
+
+        GET: :get
+        POST: :post
+
+        def self?.values: -> ::Array[Telnyx::Models::TexmlApplicationUpdateParams::voice_method]
+      end
+    end
+  end
+end

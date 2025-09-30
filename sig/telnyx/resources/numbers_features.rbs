@@ -1,0 +1,12 @@
+module Telnyx
+  module Resources
+    class NumbersFeatures
+      def create: (
+        phone_numbers: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NumbersFeatureCreateResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

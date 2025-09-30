@@ -1,0 +1,114 @@
+module Telnyx
+  module Models
+    module Porting
+      type loa_configuration_preview0_params =
+        {
+          address: Telnyx::Porting::LoaConfigurationPreview0Params::Address,
+          company_name: String,
+          contact: Telnyx::Porting::LoaConfigurationPreview0Params::Contact,
+          logo: Telnyx::Porting::LoaConfigurationPreview0Params::Logo,
+          name: String
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class LoaConfigurationPreview0Params < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor address: Telnyx::Porting::LoaConfigurationPreview0Params::Address
+
+        attr_accessor company_name: String
+
+        attr_accessor contact: Telnyx::Porting::LoaConfigurationPreview0Params::Contact
+
+        attr_accessor logo: Telnyx::Porting::LoaConfigurationPreview0Params::Logo
+
+        attr_accessor name: String
+
+        def initialize: (
+          address: Telnyx::Porting::LoaConfigurationPreview0Params::Address,
+          company_name: String,
+          contact: Telnyx::Porting::LoaConfigurationPreview0Params::Contact,
+          logo: Telnyx::Porting::LoaConfigurationPreview0Params::Logo,
+          name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          address: Telnyx::Porting::LoaConfigurationPreview0Params::Address,
+          company_name: String,
+          contact: Telnyx::Porting::LoaConfigurationPreview0Params::Contact,
+          logo: Telnyx::Porting::LoaConfigurationPreview0Params::Logo,
+          name: String,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type address =
+          {
+            city: String,
+            country_code: String,
+            state: String,
+            street_address: String,
+            zip_code: String,
+            extended_address: String
+          }
+
+        class Address < Telnyx::Internal::Type::BaseModel
+          attr_accessor city: String
+
+          attr_accessor country_code: String
+
+          attr_accessor state: String
+
+          attr_accessor street_address: String
+
+          attr_accessor zip_code: String
+
+          attr_reader extended_address: String?
+
+          def extended_address=: (String) -> String
+
+          def initialize: (
+            city: String,
+            country_code: String,
+            state: String,
+            street_address: String,
+            zip_code: String,
+            ?extended_address: String
+          ) -> void
+
+          def to_hash: -> {
+            city: String,
+            country_code: String,
+            state: String,
+            street_address: String,
+            zip_code: String,
+            extended_address: String
+          }
+        end
+
+        type contact = { email: String, phone_number: String }
+
+        class Contact < Telnyx::Internal::Type::BaseModel
+          attr_accessor email: String
+
+          attr_accessor phone_number: String
+
+          def initialize: (email: String, phone_number: String) -> void
+
+          def to_hash: -> { email: String, phone_number: String }
+        end
+
+        type logo = { document_id: String }
+
+        class Logo < Telnyx::Internal::Type::BaseModel
+          attr_accessor document_id: String
+
+          def initialize: (document_id: String) -> void
+
+          def to_hash: -> { document_id: String }
+        end
+      end
+    end
+  end
+end

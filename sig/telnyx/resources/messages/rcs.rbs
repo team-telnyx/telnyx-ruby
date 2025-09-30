@@ -1,0 +1,16 @@
+module Telnyx
+  module Resources
+    class Messages
+      class Rcs
+        def generate_deeplink: (
+          String agent_id,
+          ?body: String,
+          ?phone_number: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Messages::RcGenerateDeeplinkResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

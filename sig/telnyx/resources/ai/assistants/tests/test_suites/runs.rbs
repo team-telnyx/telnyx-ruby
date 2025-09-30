@@ -1,0 +1,29 @@
+module Telnyx
+  module Resources
+    class AI
+      class Assistants
+        class Tests
+          class TestSuites
+            class Runs
+              def list: (
+                String suite_name,
+                ?page: Telnyx::AI::Assistants::Tests::TestSuites::RunListParams::Page,
+                ?status: String,
+                ?test_suite_run_id: String,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::AI::Assistants::Tests::TestSuites::PaginatedTestRunList
+
+              def trigger: (
+                String suite_name,
+                ?destination_version_id: String,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::Models::AI::Assistants::Tests::TestSuites::run_trigger_response
+
+              def initialize: (client: Telnyx::Client) -> void
+            end
+          end
+        end
+      end
+    end
+  end
+end

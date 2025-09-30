@@ -1,0 +1,20 @@
+module Telnyx
+  module Resources
+    class Portouts
+      class SupportingDocuments
+        def create: (
+          String id,
+          ?documents: ::Array[Telnyx::Portouts::SupportingDocumentCreateParams::Document],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Portouts::SupportingDocumentCreateResponse
+
+        def list: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Portouts::SupportingDocumentListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    type interface_status = :created | :provisioning | :provisioned | :deleting
+
+    module InterfaceStatus
+      extend Telnyx::Internal::Type::Enum
+
+      CREATED: :created
+      PROVISIONING: :provisioning
+      PROVISIONED: :provisioned
+      DELETING: :deleting
+
+      def self?.values: -> ::Array[Telnyx::Models::interface_status]
+    end
+  end
+end

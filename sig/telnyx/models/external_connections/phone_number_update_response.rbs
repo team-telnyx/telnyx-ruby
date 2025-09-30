@@ -1,0 +1,24 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type phone_number_update_response =
+        { data: Telnyx::ExternalConnections::ExternalConnectionPhoneNumber }
+
+      class PhoneNumberUpdateResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::ExternalConnections::ExternalConnectionPhoneNumber?
+
+        def data=: (
+          Telnyx::ExternalConnections::ExternalConnectionPhoneNumber
+        ) -> Telnyx::ExternalConnections::ExternalConnectionPhoneNumber
+
+        def initialize: (
+          ?data: Telnyx::ExternalConnections::ExternalConnectionPhoneNumber
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::ExternalConnections::ExternalConnectionPhoneNumber
+        }
+      end
+    end
+  end
+end

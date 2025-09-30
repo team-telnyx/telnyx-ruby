@@ -1,0 +1,50 @@
+module Telnyx
+  module Models
+    module PortingOrders
+      type verification_code_send_params =
+        {
+          phone_numbers: ::Array[String],
+          verification_method: Telnyx::Models::PortingOrders::VerificationCodeSendParams::verification_method
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class VerificationCodeSendParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader phone_numbers: ::Array[String]?
+
+        def phone_numbers=: (::Array[String]) -> ::Array[String]
+
+        attr_reader verification_method: Telnyx::Models::PortingOrders::VerificationCodeSendParams::verification_method?
+
+        def verification_method=: (
+          Telnyx::Models::PortingOrders::VerificationCodeSendParams::verification_method
+        ) -> Telnyx::Models::PortingOrders::VerificationCodeSendParams::verification_method
+
+        def initialize: (
+          ?phone_numbers: ::Array[String],
+          ?verification_method: Telnyx::Models::PortingOrders::VerificationCodeSendParams::verification_method,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          phone_numbers: ::Array[String],
+          verification_method: Telnyx::Models::PortingOrders::VerificationCodeSendParams::verification_method,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type verification_method = :sms | :call
+
+        module VerificationMethod
+          extend Telnyx::Internal::Type::Enum
+
+          SMS: :sms
+          CALL: :call
+
+          def self?.values: -> ::Array[Telnyx::Models::PortingOrders::VerificationCodeSendParams::verification_method]
+        end
+      end
+    end
+  end
+end

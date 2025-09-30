@@ -1,0 +1,102 @@
+module Telnyx
+  module Models
+    type customer_service_record_verify_phone_number_coverage_response =
+      {
+        data: ::Array[Telnyx::Models::CustomerServiceRecordVerifyPhoneNumberCoverageResponse::Data]
+      }
+
+    class CustomerServiceRecordVerifyPhoneNumberCoverageResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::CustomerServiceRecordVerifyPhoneNumberCoverageResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::CustomerServiceRecordVerifyPhoneNumberCoverageResponse::Data]
+      ) -> ::Array[Telnyx::Models::CustomerServiceRecordVerifyPhoneNumberCoverageResponse::Data]
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::CustomerServiceRecordVerifyPhoneNumberCoverageResponse::Data]
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::CustomerServiceRecordVerifyPhoneNumberCoverageResponse::Data]
+      }
+
+      type data =
+        {
+          additional_data_required: ::Array[Telnyx::Models::CustomerServiceRecordVerifyPhoneNumberCoverageResponse::Data::additional_data_required],
+          has_csr_coverage: bool,
+          phone_number: String,
+          reason: String,
+          record_type: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader additional_data_required: ::Array[Telnyx::Models::CustomerServiceRecordVerifyPhoneNumberCoverageResponse::Data::additional_data_required]?
+
+        def additional_data_required=: (
+          ::Array[Telnyx::Models::CustomerServiceRecordVerifyPhoneNumberCoverageResponse::Data::additional_data_required]
+        ) -> ::Array[Telnyx::Models::CustomerServiceRecordVerifyPhoneNumberCoverageResponse::Data::additional_data_required]
+
+        attr_reader has_csr_coverage: bool?
+
+        def has_csr_coverage=: (bool) -> bool
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader reason: String?
+
+        def reason=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?additional_data_required: ::Array[Telnyx::Models::CustomerServiceRecordVerifyPhoneNumberCoverageResponse::Data::additional_data_required],
+          ?has_csr_coverage: bool,
+          ?phone_number: String,
+          ?reason: String,
+          ?record_type: String
+        ) -> void
+
+        def to_hash: -> {
+          additional_data_required: ::Array[Telnyx::Models::CustomerServiceRecordVerifyPhoneNumberCoverageResponse::Data::additional_data_required],
+          has_csr_coverage: bool,
+          phone_number: String,
+          reason: String,
+          record_type: String
+        }
+
+        type additional_data_required =
+          :name
+          | :authorized_person_name
+          | :account_number
+          | :customer_code
+          | :pin
+          | :address_line_1
+          | :city
+          | :state
+          | :zip_code
+          | :billing_phone_number
+
+        module AdditionalDataRequired
+          extend Telnyx::Internal::Type::Enum
+
+          NAME: :name
+          AUTHORIZED_PERSON_NAME: :authorized_person_name
+          ACCOUNT_NUMBER: :account_number
+          CUSTOMER_CODE: :customer_code
+          PIN: :pin
+          ADDRESS_LINE_1: :address_line_1
+          CITY: :city
+          STATE: :state
+          ZIP_CODE: :zip_code
+          BILLING_PHONE_NUMBER: :billing_phone_number
+
+          def self?.values: -> ::Array[Telnyx::Models::CustomerServiceRecordVerifyPhoneNumberCoverageResponse::Data::additional_data_required]
+        end
+      end
+    end
+  end
+end
