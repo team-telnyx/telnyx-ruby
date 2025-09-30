@@ -40,7 +40,8 @@ module Telnyx
       # @!attribute business_contact_email
       #   Business contact email.
       #
-      #   Required if `entityType` is `PUBLIC_PROFIT`.
+      #   Required if `entityType` is `PUBLIC_PROFIT`. Otherwise, it is recommended to
+      #   either omit this field or set it to `null`.
       #
       #   @return [String, nil]
       optional :business_contact_email, String, api_name: :businessContactEmail

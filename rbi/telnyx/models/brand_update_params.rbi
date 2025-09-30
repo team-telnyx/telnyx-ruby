@@ -49,7 +49,8 @@ module Telnyx
 
       # Business contact email.
       #
-      # Required if `entityType` will be changed to `PUBLIC_PROFIT`.
+      # Required if `entityType` will be changed to `PUBLIC_PROFIT`. Otherwise, it is
+      # recommended to either omit this field or set it to `null`.
       sig { returns(T.nilable(String)) }
       attr_reader :business_contact_email
 
@@ -224,7 +225,8 @@ module Telnyx
         alt_business_id_type: nil,
         # Business contact email.
         #
-        # Required if `entityType` will be changed to `PUBLIC_PROFIT`.
+        # Required if `entityType` will be changed to `PUBLIC_PROFIT`. Otherwise, it is
+        # recommended to either omit this field or set it to `null`.
         business_contact_email: nil,
         # City name
         city: nil,
