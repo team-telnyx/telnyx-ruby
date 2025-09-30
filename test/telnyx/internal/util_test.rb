@@ -227,20 +227,24 @@ class Telnyx::Test::UtilFormDataEncodingTest < Minitest::Test
 
   def test_file_encode
     file = Pathname(__FILE__)
+    fileinput = Telnyx::Internal::Type::Converter.dump(Telnyx::Internal::Type::FileInput, "abc")
     headers = {"content-type" => "multipart/form-data"}
     cases = {
-      "abc" => "abc",
-      StringIO.new("abc") => "abc",
-      Telnyx::FilePart.new("abc") => "abc",
-      Telnyx::FilePart.new(StringIO.new("abc")) => "abc",
-      file => /^class Telnyx/,
-      Telnyx::FilePart.new(file) => /^class Telnyx/
+      "abc" => ["", "abc"],
+      StringIO.new("abc") => ["", "abc"],
+      fileinput => %w[upload abc],
+      Telnyx::FilePart.new(StringIO.new("abc")) => ["", "abc"],
+      file => [file.basename.to_path, /^class Telnyx/],
+      Telnyx::FilePart.new(file, filename: "d o g") => ["d%20o%20g", /^class Telnyx/]
     }
-    cases.each do |body, val|
+    cases.each do |body, testcase|
+      filename, val = testcase
       encoded = Telnyx::Internal::Util.encode_content(headers, body)
       cgi = FakeCGI.new(*encoded)
+      io = cgi[""]
       assert_pattern do
-        cgi[""].read => ^val
+        io.original_filename => ^filename
+        io.read => ^val
       end
     end
   end
@@ -261,7 +265,14 @@ class Telnyx::Test::UtilFormDataEncodingTest < Minitest::Test
       cgi = FakeCGI.new(*encoded)
       testcase.each do |key, val|
         assert_pattern do
-          cgi[key] => ^val
+          parsed =
+            case (p = cgi[key])
+            in StringIO
+              p.read
+            else
+              p
+            end
+          parsed => ^val
         end
       end
     end
