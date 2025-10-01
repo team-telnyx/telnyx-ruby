@@ -2,8 +2,8 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::AdvancedOrders#update
-    class AdvancedOrderUpdateParams < Telnyx::Internal::Type::BaseModel
+    # @see Telnyx::Resources::AdvancedOrders#update_requirement_group
+    class AdvancedOrderUpdateRequirementGroupParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
@@ -29,14 +29,15 @@ module Telnyx
 
       # @!attribute features
       #
-      #   @return [Array<Symbol, Telnyx::Models::AdvancedOrderUpdateParams::Feature>, nil]
+      #   @return [Array<Symbol, Telnyx::Models::AdvancedOrderUpdateRequirementGroupParams::Feature>, nil]
       optional :features,
-               -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AdvancedOrderUpdateParams::Feature] }
+               -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AdvancedOrderUpdateRequirementGroupParams::Feature] }
 
       # @!attribute phone_number_type
       #
-      #   @return [Symbol, Telnyx::Models::AdvancedOrderUpdateParams::PhoneNumberType, nil]
-      optional :phone_number_type, enum: -> { Telnyx::AdvancedOrderUpdateParams::PhoneNumberType }
+      #   @return [Symbol, Telnyx::Models::AdvancedOrderUpdateRequirementGroupParams::PhoneNumberType, nil]
+      optional :phone_number_type,
+               enum: -> { Telnyx::AdvancedOrderUpdateRequirementGroupParams::PhoneNumberType }
 
       # @!attribute quantity
       #
@@ -58,9 +59,9 @@ module Telnyx
       #
       #   @param customer_reference [String]
       #
-      #   @param features [Array<Symbol, Telnyx::Models::AdvancedOrderUpdateParams::Feature>]
+      #   @param features [Array<Symbol, Telnyx::Models::AdvancedOrderUpdateRequirementGroupParams::Feature>]
       #
-      #   @param phone_number_type [Symbol, Telnyx::Models::AdvancedOrderUpdateParams::PhoneNumberType]
+      #   @param phone_number_type [Symbol, Telnyx::Models::AdvancedOrderUpdateRequirementGroupParams::PhoneNumberType]
       #
       #   @param quantity [Integer]
       #
