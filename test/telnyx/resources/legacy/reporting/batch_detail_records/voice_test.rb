@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::VoiceTest 
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateResponse::Data | nil
+        data: Telnyx::Legacy::Reporting::BatchDetailRecords::CdrDetailedReqResponse | nil
       }
     end
   end
@@ -35,7 +35,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::VoiceTest 
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceRetrieveResponse::Data | nil
+        data: Telnyx::Legacy::Reporting::BatchDetailRecords::CdrDetailedReqResponse | nil
       }
     end
   end
@@ -51,7 +51,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::VoiceTest 
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceListResponse::Data]) | nil,
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Legacy::Reporting::BatchDetailRecords::CdrDetailedReqResponse]) | nil,
         meta: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceListResponse::Meta | nil
       }
     end
@@ -69,7 +69,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::VoiceTest 
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceDeleteResponse::Data | nil
+        data: Telnyx::Legacy::Reporting::BatchDetailRecords::CdrDetailedReqResponse | nil
       }
     end
   end

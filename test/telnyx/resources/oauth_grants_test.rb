@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::OAuthGrantsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::OAuthGrantRetrieveResponse::Data | nil
+        data: Telnyx::OAuthGrant | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::OAuthGrantsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::OAuthGrantListResponse::Data]) | nil,
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::OAuthGrant]) | nil,
         meta: Telnyx::Models::OAuthGrantListResponse::Meta | nil
       }
     end
@@ -47,7 +47,7 @@ class Telnyx::Test::Resources::OAuthGrantsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::OAuthGrantDeleteResponse::Data | nil
+        data: Telnyx::OAuthGrant | nil
       }
     end
   end

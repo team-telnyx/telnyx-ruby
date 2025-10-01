@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    type verify_profile_message_template_response = { id: String, text: String }
+
+    class VerifyProfileMessageTemplateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader text: String?
+
+      def text=: (String) -> String
+
+      def initialize: (?id: String, ?text: String) -> void
+
+      def to_hash: -> { id: String, text: String }
+    end
+  end
+end

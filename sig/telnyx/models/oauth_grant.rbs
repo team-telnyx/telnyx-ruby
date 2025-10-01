@@ -1,0 +1,55 @@
+module Telnyx
+  module Models
+    type oauth_grant =
+      {
+        id: String,
+        client_id: String,
+        created_at: Time,
+        record_type: Telnyx::Models::OAuthGrant::record_type,
+        scopes: ::Array[String],
+        last_used_at: Time?
+      }
+
+    class OAuthGrant < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor client_id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor record_type: Telnyx::Models::OAuthGrant::record_type
+
+      attr_accessor scopes: ::Array[String]
+
+      attr_accessor last_used_at: Time?
+
+      def initialize: (
+        id: String,
+        client_id: String,
+        created_at: Time,
+        record_type: Telnyx::Models::OAuthGrant::record_type,
+        scopes: ::Array[String],
+        ?last_used_at: Time?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        client_id: String,
+        created_at: Time,
+        record_type: Telnyx::Models::OAuthGrant::record_type,
+        scopes: ::Array[String],
+        last_used_at: Time?
+      }
+
+      type record_type = :oauth_grant
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        OAUTH_GRANT: :oauth_grant
+
+        def self?.values: -> ::Array[Telnyx::Models::OAuthGrant::record_type]
+      end
+    end
+  end
+end

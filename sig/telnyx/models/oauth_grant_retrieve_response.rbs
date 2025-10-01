@@ -1,72 +1,15 @@
 module Telnyx
   module Models
-    type oauth_grant_retrieve_response =
-      { data: Telnyx::Models::OAuthGrantRetrieveResponse::Data }
+    type oauth_grant_retrieve_response = { data: Telnyx::OAuthGrant }
 
     class OAuthGrantRetrieveResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::Models::OAuthGrantRetrieveResponse::Data?
+      attr_reader data: Telnyx::OAuthGrant?
 
-      def data=: (
-        Telnyx::Models::OAuthGrantRetrieveResponse::Data
-      ) -> Telnyx::Models::OAuthGrantRetrieveResponse::Data
+      def data=: (Telnyx::OAuthGrant) -> Telnyx::OAuthGrant
 
-      def initialize: (
-        ?data: Telnyx::Models::OAuthGrantRetrieveResponse::Data
-      ) -> void
+      def initialize: (?data: Telnyx::OAuthGrant) -> void
 
-      def to_hash: -> { data: Telnyx::Models::OAuthGrantRetrieveResponse::Data }
-
-      type data =
-        {
-          id: String,
-          client_id: String,
-          created_at: Time,
-          record_type: Telnyx::Models::OAuthGrantRetrieveResponse::Data::record_type,
-          scopes: ::Array[String],
-          last_used_at: Time?
-        }
-
-      class Data < Telnyx::Internal::Type::BaseModel
-        attr_accessor id: String
-
-        attr_accessor client_id: String
-
-        attr_accessor created_at: Time
-
-        attr_accessor record_type: Telnyx::Models::OAuthGrantRetrieveResponse::Data::record_type
-
-        attr_accessor scopes: ::Array[String]
-
-        attr_accessor last_used_at: Time?
-
-        def initialize: (
-          id: String,
-          client_id: String,
-          created_at: Time,
-          record_type: Telnyx::Models::OAuthGrantRetrieveResponse::Data::record_type,
-          scopes: ::Array[String],
-          ?last_used_at: Time?
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          client_id: String,
-          created_at: Time,
-          record_type: Telnyx::Models::OAuthGrantRetrieveResponse::Data::record_type,
-          scopes: ::Array[String],
-          last_used_at: Time?
-        }
-
-        type record_type = :oauth_grant
-
-        module RecordType
-          extend Telnyx::Internal::Type::Enum
-
-          OAUTH_GRANT: :oauth_grant
-
-          def self?.values: -> ::Array[Telnyx::Models::OAuthGrantRetrieveResponse::Data::record_type]
-        end
-      end
+      def to_hash: -> { data: Telnyx::OAuthGrant }
     end
   end
 end

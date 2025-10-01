@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::SpeechToTe
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextCreateResponse::Data | nil
+        data: Telnyx::Legacy::Reporting::BatchDetailRecords::SttDetailReportResponse | nil
       }
     end
   end
@@ -37,7 +37,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::SpeechToTe
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextRetrieveResponse::Data | nil
+        data: Telnyx::Legacy::Reporting::BatchDetailRecords::SttDetailReportResponse | nil
       }
     end
   end
@@ -53,7 +53,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::SpeechToTe
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextListResponse::Data]) | nil
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Legacy::Reporting::BatchDetailRecords::SttDetailReportResponse]) | nil
       }
     end
   end
@@ -72,7 +72,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::SpeechToTe
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextDeleteResponse::Data | nil
+        data: Telnyx::Legacy::Reporting::BatchDetailRecords::SttDetailReportResponse | nil
       }
     end
   end

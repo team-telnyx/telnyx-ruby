@@ -9,7 +9,7 @@ module Telnyx
               start_time: Time,
               ?connections: ::Array[Integer],
               ?directions: ::Array[Integer],
-              ?filters: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter],
+              ?filters: ::Array[Telnyx::Legacy::Reporting::Filter],
               ?include_message_body: bool,
               ?managed_accounts: ::Array[String],
               ?profiles: ::Array[String],

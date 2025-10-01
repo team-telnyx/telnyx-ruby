@@ -1,0 +1,163 @@
+module Telnyx
+  module Models
+    module Legacy
+      module Reporting
+        module BatchDetailRecords
+          type mdr_detail_report_response =
+            {
+              id: String,
+              connections: ::Array[Integer],
+              created_at: Time,
+              directions: ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::direction],
+              end_date: Time,
+              filters: ::Array[Telnyx::Legacy::Reporting::Filter],
+              profiles: ::Array[String],
+              record_type: String,
+              record_types: ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::record_type],
+              report_name: String,
+              report_url: String,
+              start_date: Time,
+              status: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::status,
+              updated_at: Time
+            }
+
+          class MdrDetailReportResponse < Telnyx::Internal::Type::BaseModel
+            attr_reader id: String?
+
+            def id=: (String) -> String
+
+            attr_reader connections: ::Array[Integer]?
+
+            def connections=: (::Array[Integer]) -> ::Array[Integer]
+
+            attr_reader created_at: Time?
+
+            def created_at=: (Time) -> Time
+
+            attr_reader directions: ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::direction]?
+
+            def directions=: (
+              ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::direction]
+            ) -> ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::direction]
+
+            attr_reader end_date: Time?
+
+            def end_date=: (Time) -> Time
+
+            attr_reader filters: ::Array[Telnyx::Legacy::Reporting::Filter]?
+
+            def filters=: (
+              ::Array[Telnyx::Legacy::Reporting::Filter]
+            ) -> ::Array[Telnyx::Legacy::Reporting::Filter]
+
+            attr_reader profiles: ::Array[String]?
+
+            def profiles=: (::Array[String]) -> ::Array[String]
+
+            attr_reader record_type: String?
+
+            def record_type=: (String) -> String
+
+            attr_reader record_types: ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::record_type]?
+
+            def record_types=: (
+              ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::record_type]
+            ) -> ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::record_type]
+
+            attr_reader report_name: String?
+
+            def report_name=: (String) -> String
+
+            attr_reader report_url: String?
+
+            def report_url=: (String) -> String
+
+            attr_reader start_date: Time?
+
+            def start_date=: (Time) -> Time
+
+            attr_reader status: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::status?
+
+            def status=: (
+              Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::status
+            ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::status
+
+            attr_reader updated_at: Time?
+
+            def updated_at=: (Time) -> Time
+
+            def initialize: (
+              ?id: String,
+              ?connections: ::Array[Integer],
+              ?created_at: Time,
+              ?directions: ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::direction],
+              ?end_date: Time,
+              ?filters: ::Array[Telnyx::Legacy::Reporting::Filter],
+              ?profiles: ::Array[String],
+              ?record_type: String,
+              ?record_types: ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::record_type],
+              ?report_name: String,
+              ?report_url: String,
+              ?start_date: Time,
+              ?status: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::status,
+              ?updated_at: Time
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              connections: ::Array[Integer],
+              created_at: Time,
+              directions: ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::direction],
+              end_date: Time,
+              filters: ::Array[Telnyx::Legacy::Reporting::Filter],
+              profiles: ::Array[String],
+              record_type: String,
+              record_types: ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::record_type],
+              report_name: String,
+              report_url: String,
+              start_date: Time,
+              status: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::status,
+              updated_at: Time
+            }
+
+            type direction = :INBOUND | :OUTBOUND
+
+            module Direction
+              extend Telnyx::Internal::Type::Enum
+
+              INBOUND: :INBOUND
+              OUTBOUND: :OUTBOUND
+
+              def self?.values: -> ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::direction]
+            end
+
+            type record_type = :INCOMPLETE | :COMPLETED | :ERRORS
+
+            module RecordType
+              extend Telnyx::Internal::Type::Enum
+
+              INCOMPLETE: :INCOMPLETE
+              COMPLETED: :COMPLETED
+              ERRORS: :ERRORS
+
+              def self?.values: -> ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::record_type]
+            end
+
+            type status = :PENDING | :COMPLETE | :FAILED | :EXPIRED
+
+            module Status
+              extend Telnyx::Internal::Type::Enum
+
+              PENDING: :PENDING
+              COMPLETE: :COMPLETE
+              FAILED: :FAILED
+              EXPIRED: :EXPIRED
+
+              def self?.values: -> ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::status]
+            end
+          end
+        end
+      end
+    end
+  end
+end

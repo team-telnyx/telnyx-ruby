@@ -1,0 +1,142 @@
+module Telnyx
+  module Models
+    module Legacy
+      module Reporting
+        module BatchDetailRecords
+          type cdr_detailed_req_response =
+            {
+              id: String,
+              call_types: ::Array[Integer],
+              connections: ::Array[Integer],
+              created_at: String,
+              end_time: String,
+              filters: ::Array[Telnyx::Legacy::Reporting::Filter],
+              managed_accounts: ::Array[String],
+              record_type: String,
+              record_types: ::Array[Integer],
+              report_name: String,
+              report_url: String,
+              retry_: Integer,
+              source: String,
+              start_time: String,
+              status: Integer,
+              timezone: String,
+              updated_at: String
+            }
+
+          class CdrDetailedReqResponse < Telnyx::Internal::Type::BaseModel
+            attr_reader id: String?
+
+            def id=: (String) -> String
+
+            attr_reader call_types: ::Array[Integer]?
+
+            def call_types=: (::Array[Integer]) -> ::Array[Integer]
+
+            attr_reader connections: ::Array[Integer]?
+
+            def connections=: (::Array[Integer]) -> ::Array[Integer]
+
+            attr_reader created_at: String?
+
+            def created_at=: (String) -> String
+
+            attr_reader end_time: String?
+
+            def end_time=: (String) -> String
+
+            attr_reader filters: ::Array[Telnyx::Legacy::Reporting::Filter]?
+
+            def filters=: (
+              ::Array[Telnyx::Legacy::Reporting::Filter]
+            ) -> ::Array[Telnyx::Legacy::Reporting::Filter]
+
+            attr_reader managed_accounts: ::Array[String]?
+
+            def managed_accounts=: (::Array[String]) -> ::Array[String]
+
+            attr_reader record_type: String?
+
+            def record_type=: (String) -> String
+
+            attr_reader record_types: ::Array[Integer]?
+
+            def record_types=: (::Array[Integer]) -> ::Array[Integer]
+
+            attr_reader report_name: String?
+
+            def report_name=: (String) -> String
+
+            attr_reader report_url: String?
+
+            def report_url=: (String) -> String
+
+            attr_reader retry_: Integer?
+
+            def retry_=: (Integer) -> Integer
+
+            attr_reader source: String?
+
+            def source=: (String) -> String
+
+            attr_reader start_time: String?
+
+            def start_time=: (String) -> String
+
+            attr_reader status: Integer?
+
+            def status=: (Integer) -> Integer
+
+            attr_reader timezone: String?
+
+            def timezone=: (String) -> String
+
+            attr_reader updated_at: String?
+
+            def updated_at=: (String) -> String
+
+            def initialize: (
+              ?id: String,
+              ?call_types: ::Array[Integer],
+              ?connections: ::Array[Integer],
+              ?created_at: String,
+              ?end_time: String,
+              ?filters: ::Array[Telnyx::Legacy::Reporting::Filter],
+              ?managed_accounts: ::Array[String],
+              ?record_type: String,
+              ?record_types: ::Array[Integer],
+              ?report_name: String,
+              ?report_url: String,
+              ?retry_: Integer,
+              ?source: String,
+              ?start_time: String,
+              ?status: Integer,
+              ?timezone: String,
+              ?updated_at: String
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              call_types: ::Array[Integer],
+              connections: ::Array[Integer],
+              created_at: String,
+              end_time: String,
+              filters: ::Array[Telnyx::Legacy::Reporting::Filter],
+              managed_accounts: ::Array[String],
+              record_type: String,
+              record_types: ::Array[Integer],
+              report_name: String,
+              report_url: String,
+              retry_: Integer,
+              source: String,
+              start_time: String,
+              status: Integer,
+              timezone: String,
+              updated_at: String
+            }
+          end
+        end
+      end
+    end
+  end
+end

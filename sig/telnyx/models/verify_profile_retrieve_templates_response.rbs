@@ -1,36 +1,18 @@
 module Telnyx
   module Models
     type verify_profile_retrieve_templates_response =
-      {
-        data: ::Array[Telnyx::Models::VerifyProfileRetrieveTemplatesResponse::Data]
-      }
+      { data: ::Array[Telnyx::VerifyProfileMessageTemplateResponse] }
 
     class VerifyProfileRetrieveTemplatesResponse < Telnyx::Internal::Type::BaseModel
-      attr_accessor data: ::Array[Telnyx::Models::VerifyProfileRetrieveTemplatesResponse::Data]
+      attr_accessor data: ::Array[Telnyx::VerifyProfileMessageTemplateResponse]
 
       def initialize: (
-        data: ::Array[Telnyx::Models::VerifyProfileRetrieveTemplatesResponse::Data]
+        data: ::Array[Telnyx::VerifyProfileMessageTemplateResponse]
       ) -> void
 
       def to_hash: -> {
-        data: ::Array[Telnyx::Models::VerifyProfileRetrieveTemplatesResponse::Data]
+        data: ::Array[Telnyx::VerifyProfileMessageTemplateResponse]
       }
-
-      type data = { id: String, text: String }
-
-      class Data < Telnyx::Internal::Type::BaseModel
-        attr_reader id: String?
-
-        def id=: (String) -> String
-
-        attr_reader text: String?
-
-        def text=: (String) -> String
-
-        def initialize: (?id: String, ?text: String) -> void
-
-        def to_hash: -> { id: String, text: String }
-      end
     end
   end
 end
