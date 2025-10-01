@@ -96,7 +96,7 @@ class Telnyx::Test::Resources::VerifyProfilesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::VerifyProfileCreateTemplateResponse::Data | nil
+        data: Telnyx::VerifyProfileMessageTemplateResponse | nil
       }
     end
   end
@@ -112,7 +112,7 @@ class Telnyx::Test::Resources::VerifyProfilesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::VerifyProfileRetrieveTemplatesResponse::Data])
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::VerifyProfileMessageTemplateResponse])
       }
     end
   end
@@ -132,7 +132,7 @@ class Telnyx::Test::Resources::VerifyProfilesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::VerifyProfileUpdateTemplateResponse::Data | nil
+        data: Telnyx::VerifyProfileMessageTemplateResponse | nil
       }
     end
   end

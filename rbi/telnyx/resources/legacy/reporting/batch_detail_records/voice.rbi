@@ -14,10 +14,7 @@ module Telnyx
                 call_types: T::Array[Integer],
                 connections: T::Array[Integer],
                 fields: T::Array[String],
-                filters:
-                  T::Array[
-                    Telnyx::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter::OrHash
-                  ],
+                filters: T::Array[Telnyx::Legacy::Reporting::Filter::OrHash],
                 include_all_metadata: T::Boolean,
                 managed_accounts: T::Array[String],
                 record_types: T::Array[Integer],

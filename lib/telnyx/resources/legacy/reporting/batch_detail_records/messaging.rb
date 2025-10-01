@@ -22,7 +22,7 @@ module Telnyx
             #
             # @param directions [Array<Integer>] List of directions to filter by (Inbound = 1, Outbound = 2)
             #
-            # @param filters [Array<Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter>] List of filters to apply
+            # @param filters [Array<Telnyx::Models::Legacy::Reporting::Filter>] List of filters to apply
             #
             # @param include_message_body [Boolean] Whether to include message body in the report
             #

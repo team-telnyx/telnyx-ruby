@@ -5,99 +5,23 @@ module Telnyx
         module BatchDetailRecords
           type speech_to_text_list_response =
             {
-              data: ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextListResponse::Data]
+              data: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::SttDetailReportResponse]
             }
 
           class SpeechToTextListResponse < Telnyx::Internal::Type::BaseModel
-            attr_reader data: ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextListResponse::Data]?
+            attr_reader data: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::SttDetailReportResponse]?
 
             def data=: (
-              ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextListResponse::Data]
-            ) -> ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextListResponse::Data]
+              ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::SttDetailReportResponse]
+            ) -> ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::SttDetailReportResponse]
 
             def initialize: (
-              ?data: ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextListResponse::Data]
+              ?data: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::SttDetailReportResponse]
             ) -> void
 
             def to_hash: -> {
-              data: ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextListResponse::Data]
+              data: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::SttDetailReportResponse]
             }
-
-            type data =
-              {
-                id: String,
-                created_at: Time,
-                download_link: String,
-                end_date: Time,
-                record_type: String,
-                start_date: Time,
-                status: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextListResponse::Data::status
-              }
-
-            class Data < Telnyx::Internal::Type::BaseModel
-              attr_reader id: String?
-
-              def id=: (String) -> String
-
-              attr_reader created_at: Time?
-
-              def created_at=: (Time) -> Time
-
-              attr_reader download_link: String?
-
-              def download_link=: (String) -> String
-
-              attr_reader end_date: Time?
-
-              def end_date=: (Time) -> Time
-
-              attr_reader record_type: String?
-
-              def record_type=: (String) -> String
-
-              attr_reader start_date: Time?
-
-              def start_date=: (Time) -> Time
-
-              attr_reader status: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextListResponse::Data::status?
-
-              def status=: (
-                Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextListResponse::Data::status
-              ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextListResponse::Data::status
-
-              def initialize: (
-                ?id: String,
-                ?created_at: Time,
-                ?download_link: String,
-                ?end_date: Time,
-                ?record_type: String,
-                ?start_date: Time,
-                ?status: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextListResponse::Data::status
-              ) -> void
-
-              def to_hash: -> {
-                id: String,
-                created_at: Time,
-                download_link: String,
-                end_date: Time,
-                record_type: String,
-                start_date: Time,
-                status: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextListResponse::Data::status
-              }
-
-              type status = :PENDING | :COMPLETE | :FAILED | :EXPIRED
-
-              module Status
-                extend Telnyx::Internal::Type::Enum
-
-                PENDING: :PENDING
-                COMPLETE: :COMPLETE
-                FAILED: :FAILED
-                EXPIRED: :EXPIRED
-
-                def self?.values: -> ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextListResponse::Data::status]
-              end
-            end
           end
         end
       end

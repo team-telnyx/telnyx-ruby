@@ -1,0 +1,109 @@
+module Telnyx
+  module Models
+    module Legacy
+      module Reporting
+        type filter =
+          {
+            billing_group: String,
+            cld: String,
+            cld_filter: Telnyx::Models::Legacy::Reporting::Filter::cld_filter,
+            cli: String,
+            cli_filter: Telnyx::Models::Legacy::Reporting::Filter::cli_filter,
+            filter_type: Telnyx::Models::Legacy::Reporting::Filter::filter_type,
+            tags_list: String
+          }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader billing_group: String?
+
+          def billing_group=: (String) -> String
+
+          attr_reader cld: String?
+
+          def cld=: (String) -> String
+
+          attr_reader cld_filter: Telnyx::Models::Legacy::Reporting::Filter::cld_filter?
+
+          def cld_filter=: (
+            Telnyx::Models::Legacy::Reporting::Filter::cld_filter
+          ) -> Telnyx::Models::Legacy::Reporting::Filter::cld_filter
+
+          attr_reader cli: String?
+
+          def cli=: (String) -> String
+
+          attr_reader cli_filter: Telnyx::Models::Legacy::Reporting::Filter::cli_filter?
+
+          def cli_filter=: (
+            Telnyx::Models::Legacy::Reporting::Filter::cli_filter
+          ) -> Telnyx::Models::Legacy::Reporting::Filter::cli_filter
+
+          attr_reader filter_type: Telnyx::Models::Legacy::Reporting::Filter::filter_type?
+
+          def filter_type=: (
+            Telnyx::Models::Legacy::Reporting::Filter::filter_type
+          ) -> Telnyx::Models::Legacy::Reporting::Filter::filter_type
+
+          attr_reader tags_list: String?
+
+          def tags_list=: (String) -> String
+
+          def initialize: (
+            ?billing_group: String,
+            ?cld: String,
+            ?cld_filter: Telnyx::Models::Legacy::Reporting::Filter::cld_filter,
+            ?cli: String,
+            ?cli_filter: Telnyx::Models::Legacy::Reporting::Filter::cli_filter,
+            ?filter_type: Telnyx::Models::Legacy::Reporting::Filter::filter_type,
+            ?tags_list: String
+          ) -> void
+
+          def to_hash: -> {
+            billing_group: String,
+            cld: String,
+            cld_filter: Telnyx::Models::Legacy::Reporting::Filter::cld_filter,
+            cli: String,
+            cli_filter: Telnyx::Models::Legacy::Reporting::Filter::cli_filter,
+            filter_type: Telnyx::Models::Legacy::Reporting::Filter::filter_type,
+            tags_list: String
+          }
+
+          type cld_filter = :contains | :starts_with | :ends_with
+
+          module CldFilter
+            extend Telnyx::Internal::Type::Enum
+
+            CONTAINS: :contains
+            STARTS_WITH: :starts_with
+            ENDS_WITH: :ends_with
+
+            def self?.values: -> ::Array[Telnyx::Models::Legacy::Reporting::Filter::cld_filter]
+          end
+
+          type cli_filter = :contains | :starts_with | :ends_with
+
+          module CliFilter
+            extend Telnyx::Internal::Type::Enum
+
+            CONTAINS: :contains
+            STARTS_WITH: :starts_with
+            ENDS_WITH: :ends_with
+
+            def self?.values: -> ::Array[Telnyx::Models::Legacy::Reporting::Filter::cli_filter]
+          end
+
+          type filter_type = :and | :or
+
+          module FilterType
+            extend Telnyx::Internal::Type::Enum
+
+            AND: :and
+            OR: :or
+
+            def self?.values: -> ::Array[Telnyx::Models::Legacy::Reporting::Filter::filter_type]
+          end
+        end
+      end
+    end
+  end
+end

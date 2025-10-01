@@ -5,119 +5,23 @@ module Telnyx
         module UsageReports
           type messaging_create_response =
             {
-              data: Telnyx::Models::Legacy::Reporting::UsageReports::MessagingCreateResponse::Data
+              data: Telnyx::Legacy::Reporting::UsageReports::MdrUsageReportResponseLegacy
             }
 
           class MessagingCreateResponse < Telnyx::Internal::Type::BaseModel
-            attr_reader data: Telnyx::Models::Legacy::Reporting::UsageReports::MessagingCreateResponse::Data?
+            attr_reader data: Telnyx::Legacy::Reporting::UsageReports::MdrUsageReportResponseLegacy?
 
             def data=: (
-              Telnyx::Models::Legacy::Reporting::UsageReports::MessagingCreateResponse::Data
-            ) -> Telnyx::Models::Legacy::Reporting::UsageReports::MessagingCreateResponse::Data
+              Telnyx::Legacy::Reporting::UsageReports::MdrUsageReportResponseLegacy
+            ) -> Telnyx::Legacy::Reporting::UsageReports::MdrUsageReportResponseLegacy
 
             def initialize: (
-              ?data: Telnyx::Models::Legacy::Reporting::UsageReports::MessagingCreateResponse::Data
+              ?data: Telnyx::Legacy::Reporting::UsageReports::MdrUsageReportResponseLegacy
             ) -> void
 
             def to_hash: -> {
-              data: Telnyx::Models::Legacy::Reporting::UsageReports::MessagingCreateResponse::Data
+              data: Telnyx::Legacy::Reporting::UsageReports::MdrUsageReportResponseLegacy
             }
-
-            type data =
-              {
-                id: String,
-                aggregation_type: Integer,
-                connections: ::Array[Integer],
-                created_at: Time,
-                end_time: Time,
-                profiles: ::Array[String],
-                record_type: String,
-                report_url: String,
-                result: top,
-                start_time: Time,
-                status: Integer,
-                updated_at: Time
-              }
-
-            class Data < Telnyx::Internal::Type::BaseModel
-              attr_reader id: String?
-
-              def id=: (String) -> String
-
-              attr_reader aggregation_type: Integer?
-
-              def aggregation_type=: (Integer) -> Integer
-
-              attr_reader connections: ::Array[Integer]?
-
-              def connections=: (::Array[Integer]) -> ::Array[Integer]
-
-              attr_reader created_at: Time?
-
-              def created_at=: (Time) -> Time
-
-              attr_reader end_time: Time?
-
-              def end_time=: (Time) -> Time
-
-              attr_reader profiles: ::Array[String]?
-
-              def profiles=: (::Array[String]) -> ::Array[String]
-
-              attr_reader record_type: String?
-
-              def record_type=: (String) -> String
-
-              attr_reader report_url: String?
-
-              def report_url=: (String) -> String
-
-              attr_reader result: top?
-
-              def result=: (top) -> top
-
-              attr_reader start_time: Time?
-
-              def start_time=: (Time) -> Time
-
-              attr_reader status: Integer?
-
-              def status=: (Integer) -> Integer
-
-              attr_reader updated_at: Time?
-
-              def updated_at=: (Time) -> Time
-
-              def initialize: (
-                ?id: String,
-                ?aggregation_type: Integer,
-                ?connections: ::Array[Integer],
-                ?created_at: Time,
-                ?end_time: Time,
-                ?profiles: ::Array[String],
-                ?record_type: String,
-                ?report_url: String,
-                ?result: top,
-                ?start_time: Time,
-                ?status: Integer,
-                ?updated_at: Time
-              ) -> void
-
-              def to_hash: -> {
-                id: String,
-                aggregation_type: Integer,
-                connections: ::Array[Integer],
-                created_at: Time,
-                end_time: Time,
-                profiles: ::Array[String],
-                record_type: String,
-                report_url: String,
-                result: top,
-                start_time: Time,
-                status: Integer,
-                updated_at: Time
-              }
-            end
           end
         end
       end

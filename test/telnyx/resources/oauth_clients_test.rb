@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::OAuthClientsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::OAuthClientCreateResponse::Data | nil
+        data: Telnyx::OAuthClient | nil
       }
     end
   end
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::OAuthClientsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::OAuthClientRetrieveResponse::Data | nil
+        data: Telnyx::OAuthClient | nil
       }
     end
   end
@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::OAuthClientsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::OAuthClientUpdateResponse::Data | nil
+        data: Telnyx::OAuthClient | nil
       }
     end
   end
@@ -68,7 +68,7 @@ class Telnyx::Test::Resources::OAuthClientsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::OAuthClientListResponse::Data]) | nil,
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::OAuthClient]) | nil,
         meta: Telnyx::Models::OAuthClientListResponse::Meta | nil
       }
     end

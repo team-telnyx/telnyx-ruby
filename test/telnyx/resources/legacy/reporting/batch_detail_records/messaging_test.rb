@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::MessagingT
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateResponse::Data | nil
+        data: Telnyx::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse | nil
       }
     end
   end
@@ -35,7 +35,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::MessagingT
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingRetrieveResponse::Data | nil
+        data: Telnyx::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse | nil
       }
     end
   end
@@ -51,7 +51,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::MessagingT
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingListResponse::Data]) | nil,
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse]) | nil,
         meta: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingListResponse::Meta | nil
       }
     end
@@ -69,7 +69,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::MessagingT
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingDeleteResponse::Data | nil
+        data: Telnyx::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse | nil
       }
     end
   end

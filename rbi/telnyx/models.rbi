@@ -961,6 +961,8 @@ module Telnyx
 
   NumbersFeatureCreateParams = Telnyx::Models::NumbersFeatureCreateParams
 
+  OAuthClient = Telnyx::Models::OAuthClient
+
   OAuthClientCreateParams = Telnyx::Models::OAuthClientCreateParams
 
   OAuthClientDeleteParams = Telnyx::Models::OAuthClientDeleteParams
@@ -970,6 +972,8 @@ module Telnyx
   OAuthClientRetrieveParams = Telnyx::Models::OAuthClientRetrieveParams
 
   OAuthClientUpdateParams = Telnyx::Models::OAuthClientUpdateParams
+
+  OAuthGrant = Telnyx::Models::OAuthGrant
 
   OAuthGrantDeleteParams = Telnyx::Models::OAuthGrantDeleteParams
 
@@ -1585,6 +1589,9 @@ module Telnyx
   VerifyProfileDeleteParams = Telnyx::Models::VerifyProfileDeleteParams
 
   VerifyProfileListParams = Telnyx::Models::VerifyProfileListParams
+
+  VerifyProfileMessageTemplateResponse =
+    Telnyx::Models::VerifyProfileMessageTemplateResponse
 
   VerifyProfileRetrieveParams = Telnyx::Models::VerifyProfileRetrieveParams
 
