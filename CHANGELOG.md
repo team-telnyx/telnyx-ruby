@@ -1,5 +1,19 @@
 # Changelog
 
+## 4.1.0 (2025-10-01)
+
+Full Changelog: [v4.0.0...v4.1.0](https://github.com/team-telnyx/telnyx-ruby/compare/v4.0.0...v4.1.0)
+
+### Features
+
+* **api:** manual updates ([29742e6](https://github.com/team-telnyx/telnyx-ruby/commit/29742e6ad6d820a8dab36a6b8dc620947c9eaddb))
+* Engdesk 44932 ([6b9578e](https://github.com/team-telnyx/telnyx-ruby/commit/6b9578e96c7c5f173a8a1410839177c72a5019c3))
+
+
+### Bug Fixes
+
+* coroutine leaks from connection pool ([af594e7](https://github.com/team-telnyx/telnyx-ruby/commit/af594e7c7ca9c21523ff23af7e603cd8c73384a1))
+
 ## 4.0.0 (2025-09-30)
 
 Full Changelog: [v3.0.6...v4.0.0](https://github.com/team-telnyx/telnyx-ruby/compare/v3.0.6...v4.0.0)
