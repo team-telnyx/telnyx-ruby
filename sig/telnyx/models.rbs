@@ -37,7 +37,7 @@ module Telnyx
 
   class AdvancedOrderRetrieveParams = Telnyx::Models::AdvancedOrderRetrieveParams
 
-  class AdvancedOrderUpdateParams = Telnyx::Models::AdvancedOrderUpdateParams
+  class AdvancedOrderUpdateRequirementGroupParams = Telnyx::Models::AdvancedOrderUpdateRequirementGroupParams
 
   module AI = Telnyx::Models::AI
 

@@ -23,20 +23,20 @@ class Telnyx::Test::Resources::AdvancedOrdersTest < Telnyx::Test::ResourceTest
     end
   end
 
-  def test_update
+  def test_list
     skip("Prism tests are disabled")
 
-    response = @telnyx.advanced_orders.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+    response = @telnyx.advanced_orders.list
 
     assert_pattern do
       response => Telnyx::Internal::Type::Unknown
     end
   end
 
-  def test_list
+  def test_update_requirement_group
     skip("Prism tests are disabled")
 
-    response = @telnyx.advanced_orders.list
+    response = @telnyx.advanced_orders.update_requirement_group("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
       response => Telnyx::Internal::Type::Unknown

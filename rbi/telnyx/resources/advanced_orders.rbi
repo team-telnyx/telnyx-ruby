@@ -43,25 +43,36 @@ module Telnyx
       def retrieve(order_id, request_options: {})
       end
 
+      # List Advanced Orders
+      sig do
+        params(request_options: Telnyx::RequestOptions::OrHash).returns(
+          T.anything
+        )
+      end
+      def list(request_options: {})
+      end
+
       # Update Advanced Order
       sig do
         params(
-          order_id: String,
+          advanced_order_id: String,
           area_code: String,
           comments: String,
           country_code: String,
           customer_reference: String,
           features:
-            T::Array[Telnyx::AdvancedOrderUpdateParams::Feature::OrSymbol],
+            T::Array[
+              Telnyx::AdvancedOrderUpdateRequirementGroupParams::Feature::OrSymbol
+            ],
           phone_number_type:
-            Telnyx::AdvancedOrderUpdateParams::PhoneNumberType::OrSymbol,
+            Telnyx::AdvancedOrderUpdateRequirementGroupParams::PhoneNumberType::OrSymbol,
           quantity: Integer,
           requirement_group_id: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.anything)
       end
-      def update(
-        order_id,
+      def update_requirement_group(
+        advanced_order_id,
         area_code: nil,
         comments: nil,
         country_code: nil,
@@ -73,15 +84,6 @@ module Telnyx
         requirement_group_id: nil,
         request_options: {}
       )
-      end
-
-      # List Advanced Orders
-      sig do
-        params(request_options: Telnyx::RequestOptions::OrHash).returns(
-          T.anything
-        )
-      end
-      def list(request_options: {})
       end
 
       # @api private

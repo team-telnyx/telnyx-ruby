@@ -3,6 +3,6 @@
 module Telnyx
   module Models
     # @type [Telnyx::Internal::Type::Converter]
-    AdvancedOrderUpdateResponse = Telnyx::Internal::Type::Unknown
+    AdvancedOrderUpdateRequirementGroupResponse = Telnyx::Internal::Type::Unknown
   end
 end

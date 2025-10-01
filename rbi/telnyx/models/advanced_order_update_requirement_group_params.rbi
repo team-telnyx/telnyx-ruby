@@ -2,13 +2,16 @@
 
 module Telnyx
   module Models
-    class AdvancedOrderUpdateParams < Telnyx::Internal::Type::BaseModel
+    class AdvancedOrderUpdateRequirementGroupParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
       OrHash =
         T.type_alias do
-          T.any(Telnyx::AdvancedOrderUpdateParams, Telnyx::Internal::AnyHash)
+          T.any(
+            Telnyx::AdvancedOrderUpdateRequirementGroupParams,
+            Telnyx::Internal::AnyHash
+          )
         end
 
       sig { returns(T.nilable(String)) }
@@ -38,7 +41,9 @@ module Telnyx
       sig do
         returns(
           T.nilable(
-            T::Array[Telnyx::AdvancedOrderUpdateParams::Feature::OrSymbol]
+            T::Array[
+              Telnyx::AdvancedOrderUpdateRequirementGroupParams::Feature::OrSymbol
+            ]
           )
         )
       end
@@ -47,7 +52,9 @@ module Telnyx
       sig do
         params(
           features:
-            T::Array[Telnyx::AdvancedOrderUpdateParams::Feature::OrSymbol]
+            T::Array[
+              Telnyx::AdvancedOrderUpdateRequirementGroupParams::Feature::OrSymbol
+            ]
         ).void
       end
       attr_writer :features
@@ -55,7 +62,7 @@ module Telnyx
       sig do
         returns(
           T.nilable(
-            Telnyx::AdvancedOrderUpdateParams::PhoneNumberType::OrSymbol
+            Telnyx::AdvancedOrderUpdateRequirementGroupParams::PhoneNumberType::OrSymbol
           )
         )
       end
@@ -64,7 +71,7 @@ module Telnyx
       sig do
         params(
           phone_number_type:
-            Telnyx::AdvancedOrderUpdateParams::PhoneNumberType::OrSymbol
+            Telnyx::AdvancedOrderUpdateRequirementGroupParams::PhoneNumberType::OrSymbol
         ).void
       end
       attr_writer :phone_number_type
@@ -89,9 +96,11 @@ module Telnyx
           country_code: String,
           customer_reference: String,
           features:
-            T::Array[Telnyx::AdvancedOrderUpdateParams::Feature::OrSymbol],
+            T::Array[
+              Telnyx::AdvancedOrderUpdateRequirementGroupParams::Feature::OrSymbol
+            ],
           phone_number_type:
-            Telnyx::AdvancedOrderUpdateParams::PhoneNumberType::OrSymbol,
+            Telnyx::AdvancedOrderUpdateRequirementGroupParams::PhoneNumberType::OrSymbol,
           quantity: Integer,
           requirement_group_id: String,
           request_options: Telnyx::RequestOptions::OrHash
@@ -119,9 +128,11 @@ module Telnyx
             country_code: String,
             customer_reference: String,
             features:
-              T::Array[Telnyx::AdvancedOrderUpdateParams::Feature::OrSymbol],
+              T::Array[
+                Telnyx::AdvancedOrderUpdateRequirementGroupParams::Feature::OrSymbol
+              ],
             phone_number_type:
-              Telnyx::AdvancedOrderUpdateParams::PhoneNumberType::OrSymbol,
+              Telnyx::AdvancedOrderUpdateRequirementGroupParams::PhoneNumberType::OrSymbol,
             quantity: Integer,
             requirement_group_id: String,
             request_options: Telnyx::RequestOptions
@@ -136,30 +147,44 @@ module Telnyx
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Telnyx::AdvancedOrderUpdateParams::Feature)
+            T.all(
+              Symbol,
+              Telnyx::AdvancedOrderUpdateRequirementGroupParams::Feature
+            )
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         SMS =
-          T.let(:sms, Telnyx::AdvancedOrderUpdateParams::Feature::TaggedSymbol)
+          T.let(
+            :sms,
+            Telnyx::AdvancedOrderUpdateRequirementGroupParams::Feature::TaggedSymbol
+          )
         MMS =
-          T.let(:mms, Telnyx::AdvancedOrderUpdateParams::Feature::TaggedSymbol)
+          T.let(
+            :mms,
+            Telnyx::AdvancedOrderUpdateRequirementGroupParams::Feature::TaggedSymbol
+          )
         VOICE =
           T.let(
             :voice,
-            Telnyx::AdvancedOrderUpdateParams::Feature::TaggedSymbol
+            Telnyx::AdvancedOrderUpdateRequirementGroupParams::Feature::TaggedSymbol
           )
         FAX =
-          T.let(:fax, Telnyx::AdvancedOrderUpdateParams::Feature::TaggedSymbol)
+          T.let(
+            :fax,
+            Telnyx::AdvancedOrderUpdateRequirementGroupParams::Feature::TaggedSymbol
+          )
         EMERGENCY =
           T.let(
             :emergency,
-            Telnyx::AdvancedOrderUpdateParams::Feature::TaggedSymbol
+            Telnyx::AdvancedOrderUpdateRequirementGroupParams::Feature::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Telnyx::AdvancedOrderUpdateParams::Feature::TaggedSymbol]
+            T::Array[
+              Telnyx::AdvancedOrderUpdateRequirementGroupParams::Feature::TaggedSymbol
+            ]
           )
         end
         def self.values
@@ -171,45 +196,48 @@ module Telnyx
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Telnyx::AdvancedOrderUpdateParams::PhoneNumberType)
+            T.all(
+              Symbol,
+              Telnyx::AdvancedOrderUpdateRequirementGroupParams::PhoneNumberType
+            )
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         LOCAL =
           T.let(
             :local,
-            Telnyx::AdvancedOrderUpdateParams::PhoneNumberType::TaggedSymbol
+            Telnyx::AdvancedOrderUpdateRequirementGroupParams::PhoneNumberType::TaggedSymbol
           )
         MOBILE =
           T.let(
             :mobile,
-            Telnyx::AdvancedOrderUpdateParams::PhoneNumberType::TaggedSymbol
+            Telnyx::AdvancedOrderUpdateRequirementGroupParams::PhoneNumberType::TaggedSymbol
           )
         TOLL_FREE =
           T.let(
             :toll_free,
-            Telnyx::AdvancedOrderUpdateParams::PhoneNumberType::TaggedSymbol
+            Telnyx::AdvancedOrderUpdateRequirementGroupParams::PhoneNumberType::TaggedSymbol
           )
         SHARED_COST =
           T.let(
             :shared_cost,
-            Telnyx::AdvancedOrderUpdateParams::PhoneNumberType::TaggedSymbol
+            Telnyx::AdvancedOrderUpdateRequirementGroupParams::PhoneNumberType::TaggedSymbol
           )
         NATIONAL =
           T.let(
             :national,
-            Telnyx::AdvancedOrderUpdateParams::PhoneNumberType::TaggedSymbol
+            Telnyx::AdvancedOrderUpdateRequirementGroupParams::PhoneNumberType::TaggedSymbol
           )
         LANDLINE =
           T.let(
             :landline,
-            Telnyx::AdvancedOrderUpdateParams::PhoneNumberType::TaggedSymbol
+            Telnyx::AdvancedOrderUpdateRequirementGroupParams::PhoneNumberType::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              Telnyx::AdvancedOrderUpdateParams::PhoneNumberType::TaggedSymbol
+              Telnyx::AdvancedOrderUpdateRequirementGroupParams::PhoneNumberType::TaggedSymbol
             ]
           )
         end
