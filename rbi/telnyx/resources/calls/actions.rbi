@@ -1430,6 +1430,9 @@ module Telnyx
               Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngine::OrSymbol,
             transcription_engine_config:
               T.any(
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::OrHash,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::OrHash,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash
               ),
@@ -1446,7 +1449,8 @@ module Telnyx
           # Use this field to avoid duplicate commands. Telnyx will ignore any command with
           # the same `command_id` for the same `call_control_id`.
           command_id: nil,
-          # Engine to use for speech recognition. `A` - `Google`, `B` - `Telnyx`.
+          # Engine to use for speech recognition. Legacy values `A` - `Google`, `B` -
+          # `Telnyx` are supported for backward compatibility.
           transcription_engine: nil,
           transcription_engine_config: nil,
           # Indicates which leg of the call will be transcribed. Use `inbound` for the leg
