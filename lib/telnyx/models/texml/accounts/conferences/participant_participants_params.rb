@@ -166,6 +166,17 @@ module Telnyx
                      },
                      api_name: :ConferenceTrim
 
+            # @!attribute custom_headers
+            #   Custom HTTP headers to be sent with the call. Each header should be an object
+            #   with 'name' and 'value' properties.
+            #
+            #   @return [Array<Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::CustomHeader>, nil]
+            optional :custom_headers,
+                     -> {
+                       Telnyx::Internal::Type::ArrayOf[Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::CustomHeader]
+                     },
+                     api_name: :CustomHeaders
+
             # @!attribute early_media
             #   Whether participant shall be bridged to conference before the participant
             #   answers (from early media if available). Defaults to `false`.
@@ -379,7 +390,7 @@ module Telnyx
             #   @return [String, nil]
             optional :wait_url, String, api_name: :WaitUrl
 
-            # @!method initialize(account_sid:, amd_status_callback: nil, amd_status_callback_method: nil, beep: nil, caller_id: nil, call_sid_to_coach: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, coaching: nil, conference_record: nil, conference_recording_status_callback: nil, conference_recording_status_callback_event: nil, conference_recording_status_callback_method: nil, conference_recording_timeout: nil, conference_status_callback: nil, conference_status_callback_event: nil, conference_status_callback_method: nil, conference_trim: nil, early_media: nil, end_conference_on_exit: nil, from: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, max_participants: nil, muted: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_track: nil, sip_auth_password: nil, sip_auth_username: nil, start_conference_on_enter: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, time_limit: nil, timeout_seconds: nil, to: nil, trim: nil, wait_url: nil, request_options: {})
+            # @!method initialize(account_sid:, amd_status_callback: nil, amd_status_callback_method: nil, beep: nil, caller_id: nil, call_sid_to_coach: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, coaching: nil, conference_record: nil, conference_recording_status_callback: nil, conference_recording_status_callback_event: nil, conference_recording_status_callback_method: nil, conference_recording_timeout: nil, conference_status_callback: nil, conference_status_callback_event: nil, conference_status_callback_method: nil, conference_trim: nil, custom_headers: nil, early_media: nil, end_conference_on_exit: nil, from: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, max_participants: nil, muted: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_track: nil, sip_auth_password: nil, sip_auth_username: nil, start_conference_on_enter: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, time_limit: nil, timeout_seconds: nil, to: nil, trim: nil, wait_url: nil, request_options: {})
             #   Some parameter documentations has been truncated, see
             #   {Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams}
             #   for more details.
@@ -419,6 +430,8 @@ module Telnyx
             #   @param conference_status_callback_method [Symbol, Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::ConferenceStatusCallbackMethod] HTTP request type used for `ConferenceStatusCallback`. Defaults to `POST`.
             #
             #   @param conference_trim [Symbol, Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::ConferenceTrim] Whether to trim any leading and trailing silence from the conference recording.
+            #
+            #   @param custom_headers [Array<Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::CustomHeader>] Custom HTTP headers to be sent with the call. Each header should be an object wi
             #
             #   @param early_media [Boolean] Whether participant shall be bridged to conference before the participant answer
             #
@@ -551,6 +564,25 @@ module Telnyx
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+
+            class CustomHeader < Telnyx::Internal::Type::BaseModel
+              # @!attribute name
+              #   The name of the custom header
+              #
+              #   @return [String]
+              required :name, String
+
+              # @!attribute value
+              #   The value of the custom header
+              #
+              #   @return [String]
+              required :value, String
+
+              # @!method initialize(name:, value:)
+              #   @param name [String] The name of the custom header
+              #
+              #   @param value [String] The value of the custom header
             end
 
             # Whether to detect if a human or an answering machine picked up the call. Use

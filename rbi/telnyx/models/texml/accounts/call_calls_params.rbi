@@ -89,6 +89,27 @@ module Telnyx
           sig { params(cancel_playback_on_machine_detection: T::Boolean).void }
           attr_writer :cancel_playback_on_machine_detection
 
+          # Custom HTTP headers to be sent with the call. Each header should be an object
+          # with 'name' and 'value' properties.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[Telnyx::Texml::Accounts::CallCallsParams::CustomHeader]
+              )
+            )
+          end
+          attr_reader :custom_headers
+
+          sig do
+            params(
+              custom_headers:
+                T::Array[
+                  Telnyx::Texml::Accounts::CallCallsParams::CustomHeader::OrHash
+                ]
+            ).void
+          end
+          attr_writer :custom_headers
+
           # Allows you to chose between Premium and Standard detections.
           sig do
             returns(
@@ -379,6 +400,10 @@ module Telnyx
               caller_id: String,
               cancel_playback_on_detect_message_end: T::Boolean,
               cancel_playback_on_machine_detection: T::Boolean,
+              custom_headers:
+                T::Array[
+                  Telnyx::Texml::Accounts::CallCallsParams::CustomHeader::OrHash
+                ],
               detection_mode:
                 Telnyx::Texml::Accounts::CallCallsParams::DetectionMode::OrSymbol,
               fallback_url: String,
@@ -441,6 +466,9 @@ module Telnyx
             cancel_playback_on_detect_message_end: nil,
             # Whether to cancel ongoing playback on `machine` detection. Defaults to `true`.
             cancel_playback_on_machine_detection: nil,
+            # Custom HTTP headers to be sent with the call. Each header should be an object
+            # with 'name' and 'value' properties.
+            custom_headers: nil,
             # Allows you to chose between Premium and Standard detections.
             detection_mode: nil,
             # A failover URL for which Telnyx will retrieve the TeXML call instructions if the
@@ -518,6 +546,10 @@ module Telnyx
                 caller_id: String,
                 cancel_playback_on_detect_message_end: T::Boolean,
                 cancel_playback_on_machine_detection: T::Boolean,
+                custom_headers:
+                  T::Array[
+                    Telnyx::Texml::Accounts::CallCallsParams::CustomHeader
+                  ],
                 detection_mode:
                   Telnyx::Texml::Accounts::CallCallsParams::DetectionMode::OrSymbol,
                 fallback_url: String,
@@ -590,6 +622,39 @@ module Telnyx
               )
             end
             def self.values
+            end
+          end
+
+          class CustomHeader < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::Texml::Accounts::CallCallsParams::CustomHeader,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # The name of the custom header
+            sig { returns(String) }
+            attr_accessor :name
+
+            # The value of the custom header
+            sig { returns(String) }
+            attr_accessor :value
+
+            sig do
+              params(name: String, value: String).returns(T.attached_class)
+            end
+            def self.new(
+              # The name of the custom header
+              name:,
+              # The value of the custom header
+              value:
+            )
+            end
+
+            sig { override.returns({ name: String, value: String }) }
+            def to_hash
             end
           end
 

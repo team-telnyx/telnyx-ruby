@@ -230,6 +230,29 @@ module Telnyx
             end
             attr_writer :conference_trim
 
+            # Custom HTTP headers to be sent with the call. Each header should be an object
+            # with 'name' and 'value' properties.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::CustomHeader
+                  ]
+                )
+              )
+            end
+            attr_reader :custom_headers
+
+            sig do
+              params(
+                custom_headers:
+                  T::Array[
+                    Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::CustomHeader::OrHash
+                  ]
+              ).void
+            end
+            attr_writer :custom_headers
+
             # Whether participant shall be bridged to conference before the participant
             # answers (from early media if available). Defaults to `false`.
             sig { returns(T.nilable(T::Boolean)) }
@@ -537,6 +560,10 @@ module Telnyx
                   Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::ConferenceStatusCallbackMethod::OrSymbol,
                 conference_trim:
                   Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::ConferenceTrim::OrSymbol,
+                custom_headers:
+                  T::Array[
+                    Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::CustomHeader::OrHash
+                  ],
                 early_media: T::Boolean,
                 end_conference_on_exit: T::Boolean,
                 from: String,
@@ -629,6 +656,9 @@ module Telnyx
               # Whether to trim any leading and trailing silence from the conference recording.
               # Defaults to `trim-silence`.
               conference_trim: nil,
+              # Custom HTTP headers to be sent with the call. Each header should be an object
+              # with 'name' and 'value' properties.
+              custom_headers: nil,
               # Whether participant shall be bridged to conference before the participant
               # answers (from early media if available). Defaults to `false`.
               early_media: nil,
@@ -735,6 +765,10 @@ module Telnyx
                     Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::ConferenceStatusCallbackMethod::OrSymbol,
                   conference_trim:
                     Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::ConferenceTrim::OrSymbol,
+                  custom_headers:
+                    T::Array[
+                      Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::CustomHeader
+                    ],
                   early_media: T::Boolean,
                   end_conference_on_exit: T::Boolean,
                   from: String,
@@ -1008,6 +1042,39 @@ module Telnyx
                 )
               end
               def self.values
+              end
+            end
+
+            class CustomHeader < Telnyx::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::CustomHeader,
+                    Telnyx::Internal::AnyHash
+                  )
+                end
+
+              # The name of the custom header
+              sig { returns(String) }
+              attr_accessor :name
+
+              # The value of the custom header
+              sig { returns(String) }
+              attr_accessor :value
+
+              sig do
+                params(name: String, value: String).returns(T.attached_class)
+              end
+              def self.new(
+                # The name of the custom header
+                name:,
+                # The value of the custom header
+                value:
+              )
+              end
+
+              sig { override.returns({ name: String, value: String }) }
+              def to_hash
               end
             end
 

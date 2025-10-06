@@ -42,6 +42,7 @@ module Telnyx
             ?caller_id: String,
             ?cancel_playback_on_detect_message_end: bool,
             ?cancel_playback_on_machine_detection: bool,
+            ?custom_headers: ::Array[Telnyx::Texml::Accounts::CallCallsParams::CustomHeader],
             ?detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::detection_mode,
             ?fallback_url: String,
             ?machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::machine_detection,
