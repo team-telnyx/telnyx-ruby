@@ -23,6 +23,7 @@ module Telnyx
               conference_status_callback_event: String,
               conference_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_status_callback_method,
               conference_trim: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_trim,
+              custom_headers: ::Array[Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::CustomHeader],
               early_media: bool,
               end_conference_on_exit: bool,
               from: String,
@@ -139,6 +140,12 @@ module Telnyx
             def conference_trim=: (
               Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_trim
             ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_trim
+
+            attr_reader custom_headers: ::Array[Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::CustomHeader]?
+
+            def custom_headers=: (
+              ::Array[Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::CustomHeader]
+            ) -> ::Array[Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::CustomHeader]
 
             attr_reader early_media: bool?
 
@@ -283,6 +290,7 @@ module Telnyx
               ?conference_status_callback_event: String,
               ?conference_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_status_callback_method,
               ?conference_trim: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_trim,
+              ?custom_headers: ::Array[Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::CustomHeader],
               ?early_media: bool,
               ?end_conference_on_exit: bool,
               ?from: String,
@@ -333,6 +341,7 @@ module Telnyx
               conference_status_callback_event: String,
               conference_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_status_callback_method,
               conference_trim: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_trim,
+              custom_headers: ::Array[Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::CustomHeader],
               early_media: bool,
               end_conference_on_exit: bool,
               from: String,
@@ -433,6 +442,18 @@ module Telnyx
               DO_NOT_TRIM: :"do-not-trim"
 
               def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_trim]
+            end
+
+            type custom_header = { name: String, value: String }
+
+            class CustomHeader < Telnyx::Internal::Type::BaseModel
+              attr_accessor name: String
+
+              attr_accessor value: String
+
+              def initialize: (name: String, value: String) -> void
+
+              def to_hash: -> { name: String, value: String }
             end
 
             type machine_detection = :Enable | :DetectMessageEnd

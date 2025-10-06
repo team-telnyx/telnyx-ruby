@@ -13,6 +13,7 @@ module Telnyx
             caller_id: String,
             cancel_playback_on_detect_message_end: bool,
             cancel_playback_on_machine_detection: bool,
+            custom_headers: ::Array[Telnyx::Texml::Accounts::CallCallsParams::CustomHeader],
             detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::detection_mode,
             fallback_url: String,
             machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::machine_detection,
@@ -75,6 +76,12 @@ module Telnyx
           attr_reader cancel_playback_on_machine_detection: bool?
 
           def cancel_playback_on_machine_detection=: (bool) -> bool
+
+          attr_reader custom_headers: ::Array[Telnyx::Texml::Accounts::CallCallsParams::CustomHeader]?
+
+          def custom_headers=: (
+            ::Array[Telnyx::Texml::Accounts::CallCallsParams::CustomHeader]
+          ) -> ::Array[Telnyx::Texml::Accounts::CallCallsParams::CustomHeader]
 
           attr_reader detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::detection_mode?
 
@@ -200,6 +207,7 @@ module Telnyx
             ?caller_id: String,
             ?cancel_playback_on_detect_message_end: bool,
             ?cancel_playback_on_machine_detection: bool,
+            ?custom_headers: ::Array[Telnyx::Texml::Accounts::CallCallsParams::CustomHeader],
             ?detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::detection_mode,
             ?fallback_url: String,
             ?machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::machine_detection,
@@ -237,6 +245,7 @@ module Telnyx
             caller_id: String,
             cancel_playback_on_detect_message_end: bool,
             cancel_playback_on_machine_detection: bool,
+            custom_headers: ::Array[Telnyx::Texml::Accounts::CallCallsParams::CustomHeader],
             detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::detection_mode,
             fallback_url: String,
             machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::machine_detection,
@@ -273,6 +282,18 @@ module Telnyx
             POST: :POST
 
             def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::async_amd_status_callback_method]
+          end
+
+          type custom_header = { name: String, value: String }
+
+          class CustomHeader < Telnyx::Internal::Type::BaseModel
+            attr_accessor name: String
+
+            attr_accessor value: String
+
+            def initialize: (name: String, value: String) -> void
+
+            def to_hash: -> { name: String, value: String }
           end
 
           type detection_mode = :Premium | :Regular

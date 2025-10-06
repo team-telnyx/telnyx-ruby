@@ -100,6 +100,10 @@ module Telnyx
               caller_id: String,
               cancel_playback_on_detect_message_end: T::Boolean,
               cancel_playback_on_machine_detection: T::Boolean,
+              custom_headers:
+                T::Array[
+                  Telnyx::Texml::Accounts::CallCallsParams::CustomHeader::OrHash
+                ],
               detection_mode:
                 Telnyx::Texml::Accounts::CallCallsParams::DetectionMode::OrSymbol,
               fallback_url: String,
@@ -164,6 +168,9 @@ module Telnyx
             cancel_playback_on_detect_message_end: nil,
             # Whether to cancel ongoing playback on `machine` detection. Defaults to `true`.
             cancel_playback_on_machine_detection: nil,
+            # Custom HTTP headers to be sent with the call. Each header should be an object
+            # with 'name' and 'value' properties.
+            custom_headers: nil,
             # Allows you to chose between Premium and Standard detections.
             detection_mode: nil,
             # A failover URL for which Telnyx will retrieve the TeXML call instructions if the

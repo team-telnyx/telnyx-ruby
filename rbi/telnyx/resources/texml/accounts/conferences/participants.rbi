@@ -143,6 +143,10 @@ module Telnyx
                   Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::ConferenceStatusCallbackMethod::OrSymbol,
                 conference_trim:
                   Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::ConferenceTrim::OrSymbol,
+                custom_headers:
+                  T::Array[
+                    Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::CustomHeader::OrHash
+                  ],
                 early_media: T::Boolean,
                 end_conference_on_exit: T::Boolean,
                 from: String,
@@ -245,6 +249,9 @@ module Telnyx
               # Body param: Whether to trim any leading and trailing silence from the conference
               # recording. Defaults to `trim-silence`.
               conference_trim: nil,
+              # Body param: Custom HTTP headers to be sent with the call. Each header should be
+              # an object with 'name' and 'value' properties.
+              custom_headers: nil,
               # Body param: Whether participant shall be bridged to conference before the
               # participant answers (from early media if available). Defaults to `false`.
               early_media: nil,
