@@ -62,6 +62,13 @@ module Telnyx
       sig { params(mms_transcoding: T::Boolean).void }
       attr_writer :mms_transcoding
 
+      # Send messages only to mobile phone numbers.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :mobile_only
+
+      sig { params(mobile_only: T::Boolean).void }
+      attr_writer :mobile_only
+
       # Number Pool allows you to send messages from a pool of numbers of different
       # types, assigning weights to each type. The pool consists of all the long code
       # and toll free numbers assigned to the messaging profile.
@@ -133,6 +140,7 @@ module Telnyx
           enabled: T::Boolean,
           mms_fall_back_to_sms: T::Boolean,
           mms_transcoding: T::Boolean,
+          mobile_only: T::Boolean,
           number_pool_settings: T.nilable(Telnyx::NumberPoolSettings::OrHash),
           url_shortener_settings:
             T.nilable(Telnyx::URLShortenerSettings::OrHash),
@@ -164,6 +172,8 @@ module Telnyx
         mms_fall_back_to_sms: nil,
         # enables automated resizing of MMS media.
         mms_transcoding: nil,
+        # Send messages only to mobile phone numbers.
+        mobile_only: nil,
         # Number Pool allows you to send messages from a pool of numbers of different
         # types, assigning weights to each type. The pool consists of all the long code
         # and toll free numbers assigned to the messaging profile.
@@ -201,6 +211,7 @@ module Telnyx
             enabled: T::Boolean,
             mms_fall_back_to_sms: T::Boolean,
             mms_transcoding: T::Boolean,
+            mobile_only: T::Boolean,
             number_pool_settings: T.nilable(Telnyx::NumberPoolSettings),
             url_shortener_settings: T.nilable(Telnyx::URLShortenerSettings),
             webhook_api_version:

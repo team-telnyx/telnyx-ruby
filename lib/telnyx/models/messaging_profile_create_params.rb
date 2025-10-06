@@ -59,6 +59,12 @@ module Telnyx
       #   @return [Boolean, nil]
       optional :mms_transcoding, Telnyx::Internal::Type::Boolean
 
+      # @!attribute mobile_only
+      #   Send messages only to mobile phone numbers.
+      #
+      #   @return [Boolean, nil]
+      optional :mobile_only, Telnyx::Internal::Type::Boolean
+
       # @!attribute number_pool_settings
       #   Number Pool allows you to send messages from a pool of numbers of different
       #   types, assigning weights to each type. The pool consists of all the long code
@@ -101,7 +107,7 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String, nil?: true
 
-      # @!method initialize(name:, whitelisted_destinations:, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, number_pool_settings: nil, url_shortener_settings: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @!method initialize(name:, whitelisted_destinations:, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, number_pool_settings: nil, url_shortener_settings: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessagingProfileCreateParams} for more details.
       #
@@ -120,6 +126,8 @@ module Telnyx
       #   @param mms_fall_back_to_sms [Boolean] enables SMS fallback for MMS messages.
       #
       #   @param mms_transcoding [Boolean] enables automated resizing of MMS media.
+      #
+      #   @param mobile_only [Boolean] Send messages only to mobile phone numbers.
       #
       #   @param number_pool_settings [Telnyx::Models::NumberPoolSettings, nil] Number Pool allows you to send messages from a pool of numbers of different type
       #

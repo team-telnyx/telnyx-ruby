@@ -8,6 +8,7 @@ module Telnyx
         enabled: bool,
         mms_fall_back_to_sms: bool,
         mms_transcoding: bool,
+        mobile_only: bool,
         name: String,
         number_pool_settings: Telnyx::NumberPoolSettings?,
         url_shortener_settings: Telnyx::URLShortenerSettings?,
@@ -45,6 +46,10 @@ module Telnyx
 
       def mms_transcoding=: (bool) -> bool
 
+      attr_reader mobile_only: bool?
+
+      def mobile_only=: (bool) -> bool
+
       attr_reader name: String?
 
       def name=: (String) -> String
@@ -78,6 +83,7 @@ module Telnyx
         ?enabled: bool,
         ?mms_fall_back_to_sms: bool,
         ?mms_transcoding: bool,
+        ?mobile_only: bool,
         ?name: String,
         ?number_pool_settings: Telnyx::NumberPoolSettings?,
         ?url_shortener_settings: Telnyx::URLShortenerSettings?,
@@ -96,6 +102,7 @@ module Telnyx
         enabled: bool,
         mms_fall_back_to_sms: bool,
         mms_transcoding: bool,
+        mobile_only: bool,
         name: String,
         number_pool_settings: Telnyx::NumberPoolSettings?,
         url_shortener_settings: Telnyx::URLShortenerSettings?,

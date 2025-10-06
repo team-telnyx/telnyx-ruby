@@ -10,6 +10,7 @@ module Telnyx
         enabled: bool,
         mms_fall_back_to_sms: bool,
         mms_transcoding: bool,
+        mobile_only: bool,
         name: String,
         number_pool_settings: Telnyx::NumberPoolSettings?,
         record_type: Telnyx::Models::MessagingProfile::record_type,
@@ -44,6 +45,10 @@ module Telnyx
       attr_reader mms_transcoding: bool?
 
       def mms_transcoding=: (bool) -> bool
+
+      attr_reader mobile_only: bool?
+
+      def mobile_only=: (bool) -> bool
 
       attr_reader name: String?
 
@@ -98,6 +103,7 @@ module Telnyx
         ?enabled: bool,
         ?mms_fall_back_to_sms: bool,
         ?mms_transcoding: bool,
+        ?mobile_only: bool,
         ?name: String,
         ?number_pool_settings: Telnyx::NumberPoolSettings?,
         ?record_type: Telnyx::Models::MessagingProfile::record_type,
@@ -119,6 +125,7 @@ module Telnyx
         enabled: bool,
         mms_fall_back_to_sms: bool,
         mms_transcoding: bool,
+        mobile_only: bool,
         name: String,
         number_pool_settings: Telnyx::NumberPoolSettings?,
         record_type: Telnyx::Models::MessagingProfile::record_type,
