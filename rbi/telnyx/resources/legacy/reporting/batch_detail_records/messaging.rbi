@@ -13,10 +13,7 @@ module Telnyx
                 start_time: Time,
                 connections: T::Array[Integer],
                 directions: T::Array[Integer],
-                filters:
-                  T::Array[
-                    Telnyx::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::OrHash
-                  ],
+                filters: T::Array[Telnyx::Legacy::Reporting::Filter::OrHash],
                 include_message_body: T::Boolean,
                 managed_accounts: T::Array[String],
                 profiles: T::Array[String],

@@ -9,7 +9,7 @@ module Telnyx
               start_time: Time,
               connections: ::Array[Integer],
               directions: ::Array[Integer],
-              filters: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter],
+              filters: ::Array[Telnyx::Legacy::Reporting::Filter],
               include_message_body: bool,
               managed_accounts: ::Array[String],
               profiles: ::Array[String],
@@ -36,11 +36,11 @@ module Telnyx
 
             def directions=: (::Array[Integer]) -> ::Array[Integer]
 
-            attr_reader filters: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter]?
+            attr_reader filters: ::Array[Telnyx::Legacy::Reporting::Filter]?
 
             def filters=: (
-              ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter]
-            ) -> ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter]
+              ::Array[Telnyx::Legacy::Reporting::Filter]
+            ) -> ::Array[Telnyx::Legacy::Reporting::Filter]
 
             attr_reader include_message_body: bool?
 
@@ -75,7 +75,7 @@ module Telnyx
               start_time: Time,
               ?connections: ::Array[Integer],
               ?directions: ::Array[Integer],
-              ?filters: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter],
+              ?filters: ::Array[Telnyx::Legacy::Reporting::Filter],
               ?include_message_body: bool,
               ?managed_accounts: ::Array[String],
               ?profiles: ::Array[String],
@@ -91,7 +91,7 @@ module Telnyx
               start_time: Time,
               connections: ::Array[Integer],
               directions: ::Array[Integer],
-              filters: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter],
+              filters: ::Array[Telnyx::Legacy::Reporting::Filter],
               include_message_body: bool,
               managed_accounts: ::Array[String],
               profiles: ::Array[String],
@@ -101,108 +101,6 @@ module Telnyx
               timezone: String,
               request_options: Telnyx::RequestOptions
             }
-
-            type filter =
-              {
-                billing_group: String,
-                cld: String,
-                cld_filter: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::cld_filter,
-                cli: String,
-                cli_filter: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::cli_filter,
-                filter_type: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::filter_type,
-                tags_list: String
-              }
-
-            class Filter < Telnyx::Internal::Type::BaseModel
-              attr_reader billing_group: String?
-
-              def billing_group=: (String) -> String
-
-              attr_reader cld: String?
-
-              def cld=: (String) -> String
-
-              attr_reader cld_filter: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::cld_filter?
-
-              def cld_filter=: (
-                Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::cld_filter
-              ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::cld_filter
-
-              attr_reader cli: String?
-
-              def cli=: (String) -> String
-
-              attr_reader cli_filter: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::cli_filter?
-
-              def cli_filter=: (
-                Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::cli_filter
-              ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::cli_filter
-
-              attr_reader filter_type: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::filter_type?
-
-              def filter_type=: (
-                Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::filter_type
-              ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::filter_type
-
-              attr_reader tags_list: String?
-
-              def tags_list=: (String) -> String
-
-              def initialize: (
-                ?billing_group: String,
-                ?cld: String,
-                ?cld_filter: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::cld_filter,
-                ?cli: String,
-                ?cli_filter: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::cli_filter,
-                ?filter_type: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::filter_type,
-                ?tags_list: String
-              ) -> void
-
-              def to_hash: -> {
-                billing_group: String,
-                cld: String,
-                cld_filter: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::cld_filter,
-                cli: String,
-                cli_filter: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::cli_filter,
-                filter_type: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::filter_type,
-                tags_list: String
-              }
-
-              type cld_filter = :contains | :starts_with | :ends_with
-
-              module CldFilter
-                extend Telnyx::Internal::Type::Enum
-
-                CONTAINS: :contains
-                STARTS_WITH: :starts_with
-                ENDS_WITH: :ends_with
-
-                def self?.values: -> ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::cld_filter]
-              end
-
-              type cli_filter = :contains | :starts_with | :ends_with
-
-              module CliFilter
-                extend Telnyx::Internal::Type::Enum
-
-                CONTAINS: :contains
-                STARTS_WITH: :starts_with
-                ENDS_WITH: :ends_with
-
-                def self?.values: -> ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::cli_filter]
-              end
-
-              type filter_type = :and | :or
-
-              module FilterType
-                extend Telnyx::Internal::Type::Enum
-
-                AND: :and
-                OR: :or
-
-                def self?.values: -> ::Array[Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams::Filter::filter_type]
-              end
-            end
           end
         end
       end

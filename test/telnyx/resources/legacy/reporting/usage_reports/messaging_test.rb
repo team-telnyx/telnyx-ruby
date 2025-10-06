@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::UsageReports::MessagingTest < 
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Legacy::Reporting::UsageReports::MessagingCreateResponse::Data | nil
+        data: Telnyx::Legacy::Reporting::UsageReports::MdrUsageReportResponseLegacy | nil
       }
     end
   end
@@ -31,7 +31,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::UsageReports::MessagingTest < 
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Legacy::Reporting::UsageReports::MessagingRetrieveResponse::Data | nil
+        data: Telnyx::Legacy::Reporting::UsageReports::MdrUsageReportResponseLegacy | nil
       }
     end
   end
@@ -47,7 +47,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::UsageReports::MessagingTest < 
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Legacy::Reporting::UsageReports::MessagingListResponse::Data]) | nil,
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Legacy::Reporting::UsageReports::MdrUsageReportResponseLegacy]) | nil,
         meta: Telnyx::Models::Legacy::Reporting::UsageReports::MessagingListResponse::Meta | nil
       }
     end
@@ -65,7 +65,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::UsageReports::MessagingTest < 
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Legacy::Reporting::UsageReports::MessagingDeleteResponse::Data | nil
+        data: Telnyx::Legacy::Reporting::UsageReports::MdrUsageReportResponseLegacy | nil
       }
     end
   end

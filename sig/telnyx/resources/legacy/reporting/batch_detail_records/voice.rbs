@@ -10,7 +10,7 @@ module Telnyx
               ?call_types: ::Array[Integer],
               ?connections: ::Array[Integer],
               ?fields: ::Array[String],
-              ?filters: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter],
+              ?filters: ::Array[Telnyx::Legacy::Reporting::Filter],
               ?include_all_metadata: bool,
               ?managed_accounts: ::Array[String],
               ?record_types: ::Array[Integer],

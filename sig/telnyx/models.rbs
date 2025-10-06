@@ -37,7 +37,7 @@ module Telnyx
 
   class AdvancedOrderRetrieveParams = Telnyx::Models::AdvancedOrderRetrieveParams
 
-  class AdvancedOrderUpdateParams = Telnyx::Models::AdvancedOrderUpdateParams
+  class AdvancedOrderUpdateRequirementGroupParams = Telnyx::Models::AdvancedOrderUpdateRequirementGroupParams
 
   module AI = Telnyx::Models::AI
 
@@ -825,6 +825,8 @@ module Telnyx
 
   class NumbersFeatureCreateParams = Telnyx::Models::NumbersFeatureCreateParams
 
+  class OAuthClient = Telnyx::Models::OAuthClient
+
   class OAuthClientCreateParams = Telnyx::Models::OAuthClientCreateParams
 
   class OAuthClientDeleteParams = Telnyx::Models::OAuthClientDeleteParams
@@ -834,6 +836,8 @@ module Telnyx
   class OAuthClientRetrieveParams = Telnyx::Models::OAuthClientRetrieveParams
 
   class OAuthClientUpdateParams = Telnyx::Models::OAuthClientUpdateParams
+
+  class OAuthGrant = Telnyx::Models::OAuthGrant
 
   class OAuthGrantDeleteParams = Telnyx::Models::OAuthGrantDeleteParams
 
@@ -1386,6 +1390,8 @@ module Telnyx
   class VerifyProfileDeleteParams = Telnyx::Models::VerifyProfileDeleteParams
 
   class VerifyProfileListParams = Telnyx::Models::VerifyProfileListParams
+
+  class VerifyProfileMessageTemplateResponse = Telnyx::Models::VerifyProfileMessageTemplateResponse
 
   class VerifyProfileRetrieveParams = Telnyx::Models::VerifyProfileRetrieveParams
 

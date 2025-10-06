@@ -24,7 +24,7 @@ module Telnyx
             #
             # @param fields [Array<String>] Set of fields to include in the report
             #
-            # @param filters [Array<Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams::Filter>] List of filters to apply
+            # @param filters [Array<Telnyx::Models::Legacy::Reporting::Filter>] List of filters to apply
             #
             # @param include_all_metadata [Boolean] Whether to include all metadata
             #
