@@ -6,7 +6,7 @@ module Telnyx
           client_state: String,
           command_id: String,
           transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine,
-          transcription_engine_config: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config,
+          transcription_engine_config: ::Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config,
           transcription_tracks: String
         }
 
@@ -25,11 +25,11 @@ module Telnyx
           Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine
         ) -> Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine
 
-        attr_reader transcription_engine_config: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config?
+        attr_reader transcription_engine_config: ::Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config?
 
         def transcription_engine_config=: (
-          Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config
-        ) -> Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config
+          ::Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config
+        ) -> ::Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config
 
         attr_reader transcription_tracks: String?
 
@@ -39,7 +39,7 @@ module Telnyx
           ?client_state: String,
           ?command_id: String,
           ?transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine,
-          ?transcription_engine_config: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config,
+          ?transcription_engine_config: ::Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config,
           ?transcription_tracks: String
         ) -> void
 
@@ -47,7 +47,7 @@ module Telnyx
           client_state: String,
           command_id: String,
           transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine,
-          transcription_engine_config: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config,
+          transcription_engine_config: ::Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config,
           transcription_tracks: String
         }
 
@@ -66,31 +66,31 @@ module Telnyx
         end
 
         type transcription_engine_config =
-          Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google
-          | Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx
-          | Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram
-          | Telnyx::Calls::TranscriptionEngineAConfig
-          | Telnyx::Calls::TranscriptionEngineBConfig
+          ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google
+          | ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx
+          | ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram
+          | ::Telnyx::Calls::TranscriptionEngineAConfig
+          | ::Telnyx::Calls::TranscriptionEngineBConfig
 
         module TranscriptionEngineConfig
-          extend Telnyx::Internal::Type::Union
+          extend ::Telnyx::Internal::Type::Union
 
           type google =
             {
               enable_speaker_diarization: bool,
               hints: ::Array[String],
               interim_results: bool,
-              language: Telnyx::Models::Calls::google_transcription_language,
+              language: ::Telnyx::Models::Calls::google_transcription_language,
               max_speaker_count: Integer,
               min_speaker_count: Integer,
-              model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::model,
+              model: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::model,
               profanity_filter: bool,
-              speech_context: ::Array[Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::SpeechContext],
-              transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::transcription_engine,
+              speech_context: ::Array[::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::SpeechContext],
+              transcription_engine: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::transcription_engine,
               use_enhanced: bool
             }
 
-          class Google < Telnyx::Internal::Type::BaseModel
+          class Google < ::Telnyx::Internal::Type::BaseModel
             attr_reader enable_speaker_diarization: bool?
 
             def enable_speaker_diarization=: (bool) -> bool
@@ -103,11 +103,11 @@ module Telnyx
 
             def interim_results=: (bool) -> bool
 
-            attr_reader language: Telnyx::Models::Calls::google_transcription_language?
+            attr_reader language: ::Telnyx::Models::Calls::google_transcription_language?
 
             def language=: (
-              Telnyx::Models::Calls::google_transcription_language
-            ) -> Telnyx::Models::Calls::google_transcription_language
+              ::Telnyx::Models::Calls::google_transcription_language
+            ) -> ::Telnyx::Models::Calls::google_transcription_language
 
             attr_reader max_speaker_count: Integer?
 
@@ -117,27 +117,27 @@ module Telnyx
 
             def min_speaker_count=: (Integer) -> Integer
 
-            attr_reader model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::model?
+            attr_reader model: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::model?
 
             def model=: (
-              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::model
-            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::model
+              ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::model
+            ) -> ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::model
 
             attr_reader profanity_filter: bool?
 
             def profanity_filter=: (bool) -> bool
 
-            attr_reader speech_context: ::Array[Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::SpeechContext]?
+            attr_reader speech_context: ::Array[::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::SpeechContext]?
 
             def speech_context=: (
-              ::Array[Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::SpeechContext]
-            ) -> ::Array[Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::SpeechContext]
+              ::Array[::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::SpeechContext]
+            ) -> ::Array[::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::SpeechContext]
 
-            attr_reader transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::transcription_engine?
+            attr_reader transcription_engine: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::transcription_engine?
 
             def transcription_engine=: (
-              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::transcription_engine
-            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::transcription_engine
+              ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::transcription_engine
+            ) -> ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::transcription_engine
 
             attr_reader use_enhanced: bool?
 
@@ -147,13 +147,13 @@ module Telnyx
               ?enable_speaker_diarization: bool,
               ?hints: ::Array[String],
               ?interim_results: bool,
-              ?language: Telnyx::Models::Calls::google_transcription_language,
+              ?language: ::Telnyx::Models::Calls::google_transcription_language,
               ?max_speaker_count: Integer,
               ?min_speaker_count: Integer,
-              ?model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::model,
+              ?model: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::model,
               ?profanity_filter: bool,
-              ?speech_context: ::Array[Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::SpeechContext],
-              ?transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::transcription_engine,
+              ?speech_context: ::Array[::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::SpeechContext],
+              ?transcription_engine: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::transcription_engine,
               ?use_enhanced: bool
             ) -> void
 
@@ -161,13 +161,13 @@ module Telnyx
               enable_speaker_diarization: bool,
               hints: ::Array[String],
               interim_results: bool,
-              language: Telnyx::Models::Calls::google_transcription_language,
+              language: ::Telnyx::Models::Calls::google_transcription_language,
               max_speaker_count: Integer,
               min_speaker_count: Integer,
-              model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::model,
+              model: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::model,
               profanity_filter: bool,
-              speech_context: ::Array[Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::SpeechContext],
-              transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::transcription_engine,
+              speech_context: ::Array[::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::SpeechContext],
+              transcription_engine: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::transcription_engine,
               use_enhanced: bool
             }
 
@@ -182,7 +182,7 @@ module Telnyx
               | :medical_dictation
 
             module Model
-              extend Telnyx::Internal::Type::Enum
+              extend ::Telnyx::Internal::Type::Enum
 
               LATEST_LONG: :latest_long
               LATEST_SHORT: :latest_short
@@ -193,12 +193,12 @@ module Telnyx
               MEDICAL_CONVERSATION: :medical_conversation
               MEDICAL_DICTATION: :medical_dictation
 
-              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::model]
+              def self?.values: -> ::Array[::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::model]
             end
 
             type speech_context = { boost: Float, phrases: ::Array[String] }
 
-            class SpeechContext < Telnyx::Internal::Type::BaseModel
+            class SpeechContext < ::Telnyx::Internal::Type::BaseModel
               attr_reader boost: Float?
 
               def boost=: (Float) -> Float
@@ -215,50 +215,50 @@ module Telnyx
             type transcription_engine = :Google
 
             module TranscriptionEngine
-              extend Telnyx::Internal::Type::Enum
+              extend ::Telnyx::Internal::Type::Enum
 
               GOOGLE: :Google
 
-              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::transcription_engine]
+              def self?.values: -> ::Array[::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::transcription_engine]
             end
           end
 
           type telnyx =
             {
-              language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::language,
-              transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_engine,
-              transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_model
+              language: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::language,
+              transcription_engine: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_engine,
+              transcription_model: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_model
             }
 
-          class Telnyx < Telnyx::Internal::Type::BaseModel
-            attr_reader language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::language?
+          class Telnyx < ::Telnyx::Internal::Type::BaseModel
+            attr_reader language: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::language?
 
             def language=: (
-              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::language
-            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::language
+              ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::language
+            ) -> ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::language
 
-            attr_reader transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_engine?
+            attr_reader transcription_engine: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_engine?
 
             def transcription_engine=: (
-              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_engine
-            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_engine
+              ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_engine
+            ) -> ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_engine
 
-            attr_reader transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_model?
+            attr_reader transcription_model: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_model?
 
             def transcription_model=: (
-              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_model
-            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_model
+              ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_model
+            ) -> ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_model
 
             def initialize: (
-              ?language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::language,
-              ?transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_engine,
-              ?transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_model
+              ?language: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::language,
+              ?transcription_engine: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_engine,
+              ?transcription_model: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_model
             ) -> void
 
             def to_hash: -> {
-              language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::language,
-              transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_engine,
-              transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_model
+              language: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::language,
+              transcription_engine: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_engine,
+              transcription_model: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_model
             }
 
             type language =
@@ -364,7 +364,7 @@ module Telnyx
               | :auto_detect
 
             module Language
-              extend Telnyx::Internal::Type::Enum
+              extend ::Telnyx::Internal::Type::Enum
 
               EN: :en
               ZH: :zh
@@ -467,71 +467,71 @@ module Telnyx
               SU: :su
               AUTO_DETECT: :auto_detect
 
-              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::language]
+              def self?.values: -> ::Array[::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::language]
             end
 
             type transcription_engine = :Telnyx
 
             module TranscriptionEngine
-              extend Telnyx::Internal::Type::Enum
+              extend ::Telnyx::Internal::Type::Enum
 
               TELNYX: :Telnyx
 
-              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_engine]
+              def self?.values: -> ::Array[::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_engine]
             end
 
             type transcription_model =
               :"openai/whisper-tiny" | :"openai/whisper-large-v3-turbo"
 
             module TranscriptionModel
-              extend Telnyx::Internal::Type::Enum
+              extend ::Telnyx::Internal::Type::Enum
 
               OPENAI_WHISPER_TINY: :"openai/whisper-tiny"
               OPENAI_WHISPER_LARGE_V3_TURBO: :"openai/whisper-large-v3-turbo"
 
-              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_model]
+              def self?.values: -> ::Array[::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::transcription_model]
             end
           end
 
           type deepgram =
             {
               transcription_engine: :Deepgram,
-              transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::transcription_model,
-              language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language
+              transcription_model: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::transcription_model,
+              language: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language
             }
 
-          class Deepgram < Telnyx::Internal::Type::BaseModel
+          class Deepgram < ::Telnyx::Internal::Type::BaseModel
             attr_accessor transcription_engine: :Deepgram
 
-            attr_accessor transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::transcription_model
+            attr_accessor transcription_model: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::transcription_model
 
-            attr_reader language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language?
+            attr_reader language: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language?
 
             def language=: (
-              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language
-            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language
+              ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language
+            ) -> ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language
 
             def initialize: (
-              transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::transcription_model,
-              ?language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language,
+              transcription_model: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::transcription_model,
+              ?language: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language,
               ?transcription_engine: :Deepgram
             ) -> void
 
             def to_hash: -> {
               transcription_engine: :Deepgram,
-              transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::transcription_model,
-              language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language
+              transcription_model: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::transcription_model,
+              language: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language
             }
 
             type transcription_model = :"deepgram/nova-2" | :"deepgram/nova-3"
 
             module TranscriptionModel
-              extend Telnyx::Internal::Type::Enum
+              extend ::Telnyx::Internal::Type::Enum
 
               DEEPGRAM_NOVA_2: :"deepgram/nova-2"
               DEEPGRAM_NOVA_3: :"deepgram/nova-3"
 
-              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::transcription_model]
+              def self?.values: -> ::Array[::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::transcription_model]
             end
 
             type language =
@@ -591,7 +591,7 @@ module Telnyx
               | :auto_detect
 
             module Language
-              extend Telnyx::Internal::Type::Enum
+              extend ::Telnyx::Internal::Type::Enum
 
               BG: :bg
               CA: :ca
@@ -648,11 +648,11 @@ module Telnyx
               VI: :vi
               AUTO_DETECT: :auto_detect
 
-              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language]
+              def self?.values: -> ::Array[::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language]
             end
           end
 
-          def self?.variants: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config]
+          def self?.variants: -> ::Array[::Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config]
         end
       end
     end

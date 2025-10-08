@@ -56,6 +56,7 @@ module Telnyx
               ?conference_status_callback_event: String,
               ?conference_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_status_callback_method,
               ?conference_trim: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_trim,
+              ?custom_headers: ::Array[Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::CustomHeader],
               ?early_media: bool,
               ?end_conference_on_exit: bool,
               ?from: String,

@@ -1430,11 +1430,11 @@ module Telnyx
               Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngine::OrSymbol,
             transcription_engine_config:
               T.any(
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::OrHash,
-                Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
-                Telnyx::Calls::TranscriptionEngineBConfig::OrHash
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::OrHash,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::OrHash,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::OrHash,
+                ::Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
+                ::Telnyx::Calls::TranscriptionEngineBConfig::OrHash
               ),
             transcription_tracks: String,
             request_options: Telnyx::RequestOptions::OrHash

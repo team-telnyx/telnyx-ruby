@@ -11,7 +11,7 @@ module Telnyx
       #
       # Create a messaging profile
       #
-      # @overload create(name:, whitelisted_destinations:, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, number_pool_settings: nil, url_shortener_settings: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @overload create(name:, whitelisted_destinations:, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, number_pool_settings: nil, url_shortener_settings: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #
       # @param name [String] A user friendly name for the messaging profile.
       #
@@ -28,6 +28,8 @@ module Telnyx
       # @param mms_fall_back_to_sms [Boolean] enables SMS fallback for MMS messages.
       #
       # @param mms_transcoding [Boolean] enables automated resizing of MMS media.
+      #
+      # @param mobile_only [Boolean] Send messages only to mobile phone numbers.
       #
       # @param number_pool_settings [Telnyx::Models::NumberPoolSettings, nil] Number Pool allows you to send messages from a pool of numbers of different type
       #
@@ -80,7 +82,7 @@ module Telnyx
       #
       # Update a messaging profile
       #
-      # @overload update(id, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, name: nil, number_pool_settings: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil, request_options: {})
+      # @overload update(id, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil, request_options: {})
       #
       # @param id [String] The id of the messaging profile to retrieve
       #
@@ -95,6 +97,8 @@ module Telnyx
       # @param mms_fall_back_to_sms [Boolean] enables SMS fallback for MMS messages.
       #
       # @param mms_transcoding [Boolean] enables automated resizing of MMS media.
+      #
+      # @param mobile_only [Boolean] Send messages only to mobile phone numbers.
       #
       # @param name [String] A user friendly name for the messaging profile.
       #

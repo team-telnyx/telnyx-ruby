@@ -3,15 +3,15 @@
 module Telnyx
   module Models
     module Calls
-      class ActionStartTranscriptionParams < Telnyx::Models::Calls::TranscriptionStartRequest
-        extend Telnyx::Internal::Type::RequestParameters::Converter
-        include Telnyx::Internal::Type::RequestParameters
+      class ActionStartTranscriptionParams < ::Telnyx::Models::Calls::TranscriptionStartRequest
+        extend ::Telnyx::Internal::Type::RequestParameters::Converter
+        include ::Telnyx::Internal::Type::RequestParameters
 
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Calls::ActionStartTranscriptionParams,
-              Telnyx::Internal::AnyHash
+              ::Telnyx::Calls::ActionStartTranscriptionParams,
+              ::Telnyx::Internal::AnyHash
             )
           end
 
@@ -23,7 +23,7 @@ module Telnyx
         def self.new(request_options: {})
         end
 
-        sig { override.returns({ request_options: Telnyx::RequestOptions }) }
+        sig { override.returns({ request_options: ::Telnyx::RequestOptions }) }
         def to_hash
         end
       end

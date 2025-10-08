@@ -77,6 +77,17 @@ module Telnyx
                    Telnyx::Internal::Type::Boolean,
                    api_name: :CancelPlaybackOnMachineDetection
 
+          # @!attribute custom_headers
+          #   Custom HTTP headers to be sent with the call. Each header should be an object
+          #   with 'name' and 'value' properties.
+          #
+          #   @return [Array<Telnyx::Models::Texml::Accounts::CallCallsParams::CustomHeader>, nil]
+          optional :custom_headers,
+                   -> {
+                     Telnyx::Internal::Type::ArrayOf[Telnyx::Texml::Accounts::CallCallsParams::CustomHeader]
+                   },
+                   api_name: :CustomHeaders
+
           # @!attribute detection_mode
           #   Allows you to chose between Premium and Standard detections.
           #
@@ -251,7 +262,7 @@ module Telnyx
                    enum: -> { Telnyx::Texml::Accounts::CallCallsParams::URLMethod },
                    api_name: :UrlMethod
 
-          # @!method initialize(application_sid:, from:, to:, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, detection_mode: nil, fallback_url: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, trim: nil, url: nil, url_method: nil, request_options: {})
+          # @!method initialize(application_sid:, from:, to:, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, detection_mode: nil, fallback_url: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, trim: nil, url: nil, url_method: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Texml::Accounts::CallCallsParams} for more details.
           #
@@ -272,6 +283,8 @@ module Telnyx
           #   @param cancel_playback_on_detect_message_end [Boolean] Whether to cancel ongoing playback on `greeting ended` detection. Defaults to `t
           #
           #   @param cancel_playback_on_machine_detection [Boolean] Whether to cancel ongoing playback on `machine` detection. Defaults to `true`.
+          #
+          #   @param custom_headers [Array<Telnyx::Models::Texml::Accounts::CallCallsParams::CustomHeader>] Custom HTTP headers to be sent with the call. Each header should be an object wi
           #
           #   @param detection_mode [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::DetectionMode] Allows you to chose between Premium and Standard detections.
           #
@@ -333,6 +346,25 @@ module Telnyx
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+
+          class CustomHeader < Telnyx::Internal::Type::BaseModel
+            # @!attribute name
+            #   The name of the custom header
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute value
+            #   The value of the custom header
+            #
+            #   @return [String]
+            required :value, String
+
+            # @!method initialize(name:, value:)
+            #   @param name [String] The name of the custom header
+            #
+            #   @param value [String] The value of the custom header
           end
 
           # Allows you to chose between Premium and Standard detections.
