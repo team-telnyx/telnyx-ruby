@@ -324,7 +324,7 @@ module Telnyx
           ?client_state: String,
           ?command_id: String,
           ?transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine,
-          ?transcription_engine_config: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config,
+          ?transcription_engine_config: ::Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config,
           ?transcription_tracks: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionStartTranscriptionResponse
