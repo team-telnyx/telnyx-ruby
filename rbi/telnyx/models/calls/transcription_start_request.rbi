@@ -212,7 +212,7 @@ module Telnyx
               T.type_alias do
                 T.any(
                   ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google,
-                  Telnyx::Internal::AnyHash
+                  ::Telnyx::Internal::AnyHash
                 )
               end
 
@@ -485,7 +485,7 @@ module Telnyx
                 T.type_alias do
                   T.any(
                     ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::SpeechContext,
-                    Telnyx::Internal::AnyHash
+                    ::Telnyx::Internal::AnyHash
                   )
                 end
 
@@ -557,7 +557,7 @@ module Telnyx
               T.type_alias do
                 T.any(
                   ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx,
-                  Telnyx::Internal::AnyHash
+                  ::Telnyx::Internal::AnyHash
                 )
               end
 
@@ -1246,7 +1246,7 @@ module Telnyx
               T.type_alias do
                 T.any(
                   ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram,
-                  Telnyx::Internal::AnyHash
+                  ::Telnyx::Internal::AnyHash
                 )
               end
 

@@ -26,6 +26,116 @@ module Telnyx
         data: ::Array[Telnyx::Models::NetworkListInterfacesResponse::Data],
         meta: Telnyx::PaginationMeta
       }
+
+      type data =
+        {
+          id: String,
+          created_at: String,
+          record_type: String,
+          updated_at: String,
+          name: String,
+          network_id: String,
+          status: Telnyx::Models::interface_status,
+          region: Telnyx::Models::NetworkListInterfacesResponse::Data::Region,
+          region_code: String,
+          type: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader network_id: String?
+
+        def network_id=: (String) -> String
+
+        attr_reader region: Telnyx::Models::NetworkListInterfacesResponse::Data::Region?
+
+        def region=: (
+          Telnyx::Models::NetworkListInterfacesResponse::Data::Region
+        ) -> Telnyx::Models::NetworkListInterfacesResponse::Data::Region
+
+        attr_reader region_code: String?
+
+        def region_code=: (String) -> String
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: String?
+
+        def created_at=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader updated_at: String?
+
+        def updated_at=: (String) -> String
+
+        attr_reader status: Telnyx::Models::interface_status?
+
+        def status=: (
+          Telnyx::Models::interface_status
+        ) -> Telnyx::Models::interface_status
+
+        attr_reader type: String?
+
+        def type=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?created_at: String,
+          ?record_type: String,
+          ?updated_at: String,
+          ?name: String,
+          ?network_id: String,
+          ?status: Telnyx::Models::interface_status,
+          ?region: Telnyx::Models::NetworkListInterfacesResponse::Data::Region,
+          ?region_code: String,
+          ?type: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: String,
+          record_type: String,
+          updated_at: String,
+          name: String,
+          network_id: String,
+          status: Telnyx::Models::interface_status,
+          region: Telnyx::Models::NetworkListInterfacesResponse::Data::Region,
+          region_code: String,
+          type: String
+        }
+
+        type region = { code: String, name: String, record_type: String }
+
+        class Region < Telnyx::Internal::Type::BaseModel
+          attr_reader code: String?
+
+          def code=: (String) -> String
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          def initialize: (
+            ?code: String,
+            ?name: String,
+            ?record_type: String
+          ) -> void
+
+          def to_hash: -> { code: String, name: String, record_type: String }
+        end
+      end
     end
   end
 end

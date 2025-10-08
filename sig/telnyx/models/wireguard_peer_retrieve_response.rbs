@@ -17,6 +17,74 @@ module Telnyx
       def to_hash: -> {
         data: Telnyx::Models::WireguardPeerRetrieveResponse::Data
       }
+
+      type data =
+        {
+          id: String,
+          created_at: String,
+          record_type: String,
+          updated_at: String,
+          public_key: String,
+          last_seen: String,
+          private_key: String,
+          wireguard_interface_id: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader public_key: String?
+
+        def public_key=: (String) -> String
+
+        attr_reader wireguard_interface_id: String?
+
+        def wireguard_interface_id=: (String) -> String
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: String?
+
+        def created_at=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader updated_at: String?
+
+        def updated_at=: (String) -> String
+
+        attr_reader last_seen: String?
+
+        def last_seen=: (String) -> String
+
+        attr_reader private_key: String?
+
+        def private_key=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?created_at: String,
+          ?record_type: String,
+          ?updated_at: String,
+          ?public_key: String,
+          ?last_seen: String,
+          ?private_key: String,
+          ?wireguard_interface_id: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: String,
+          record_type: String,
+          updated_at: String,
+          public_key: String,
+          last_seen: String,
+          private_key: String,
+          wireguard_interface_id: String
+        }
+      end
     end
   end
 end
