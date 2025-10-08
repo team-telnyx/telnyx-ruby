@@ -11,7 +11,7 @@ module Telnyx
           T.type_alias do
             T.any(
               ::Telnyx::Calls::ActionStartTranscriptionParams,
-              Telnyx::Internal::AnyHash
+              ::Telnyx::Internal::AnyHash
             )
           end
 
