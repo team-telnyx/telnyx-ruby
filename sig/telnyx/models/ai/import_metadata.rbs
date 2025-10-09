@@ -28,13 +28,14 @@ module Telnyx
           import_provider: Telnyx::Models::AI::ImportMetadata::import_provider
         }
 
-        type import_provider = :elevenlabs | :vapi
+        type import_provider = :elevenlabs | :vapi | :retell
 
         module ImportProvider
           extend Telnyx::Internal::Type::Enum
 
           ELEVENLABS: :elevenlabs
           VAPI: :vapi
+          RETELL: :retell
 
           def self?.values: -> ::Array[Telnyx::Models::AI::ImportMetadata::import_provider]
         end

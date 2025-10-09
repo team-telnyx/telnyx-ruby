@@ -64,16 +64,13 @@ module Telnyx
 
         # List of interface types supported in this region.
         sig do
-          returns(
-            T.nilable(T::Array[Telnyx::Models::AvailableService::TaggedSymbol])
-          )
+          returns(T.nilable(T::Array[Telnyx::AvailableService::TaggedSymbol]))
         end
         attr_reader :available_services
 
         sig do
           params(
-            available_services:
-              T::Array[Telnyx::Models::AvailableService::OrSymbol]
+            available_services: T::Array[Telnyx::AvailableService::OrSymbol]
           ).void
         end
         attr_writer :available_services
@@ -104,8 +101,7 @@ module Telnyx
 
         sig do
           params(
-            available_services:
-              T::Array[Telnyx::Models::AvailableService::OrSymbol],
+            available_services: T::Array[Telnyx::AvailableService::OrSymbol],
             location:
               Telnyx::Models::NetworkCoverageListResponse::Data::Location::OrHash,
             record_type: String
@@ -124,7 +120,7 @@ module Telnyx
           override.returns(
             {
               available_services:
-                T::Array[Telnyx::Models::AvailableService::TaggedSymbol],
+                T::Array[Telnyx::AvailableService::TaggedSymbol],
               location:
                 Telnyx::Models::NetworkCoverageListResponse::Data::Location,
               record_type: String

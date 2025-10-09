@@ -28,13 +28,14 @@ module Telnyx
           request_options: Telnyx::RequestOptions
         }
 
-        type provider = :elevenlabs | :vapi
+        type provider = :elevenlabs | :vapi | :retell
 
         module Provider
           extend Telnyx::Internal::Type::Enum
 
           ELEVENLABS: :elevenlabs
           VAPI: :vapi
+          RETELL: :retell
 
           def self?.values: -> ::Array[Telnyx::Models::AI::AssistantImportParams::provider]
         end

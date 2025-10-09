@@ -1,5 +1,19 @@
 # Changelog
 
+## 4.3.0 (2025-10-09)
+
+Full Changelog: [v4.2.0...v4.3.0](https://github.com/team-telnyx/telnyx-ruby/compare/v4.2.0...v4.3.0)
+
+### Features
+
+* Retell assistants import ([432388a](https://github.com/team-telnyx/telnyx-ruby/commit/432388ad8cd23ff535b3eceeda26ca3d320eeb1a))
+
+
+### Chores
+
+* ignore linter error for tests having large collections ([8d69855](https://github.com/team-telnyx/telnyx-ruby/commit/8d6985599250a4e429445c1369d809f5c0346ecf))
+* simplify model references ([d2c4915](https://github.com/team-telnyx/telnyx-ruby/commit/d2c491501c248ea07dc8502c7b1a5aa662b7ac25))
+
 ## 4.2.0 (2025-10-08)
 
 Full Changelog: [v4.1.0...v4.2.0](https://github.com/team-telnyx/telnyx-ruby/compare/v4.1.0...v4.2.0)
