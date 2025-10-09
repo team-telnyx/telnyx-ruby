@@ -72,6 +72,11 @@ module Telnyx
               :vapi,
               Telnyx::AI::AssistantImportParams::Provider::TaggedSymbol
             )
+          RETELL =
+            T.let(
+              :retell,
+              Telnyx::AI::AssistantImportParams::Provider::TaggedSymbol
+            )
 
           sig do
             override.returns(
