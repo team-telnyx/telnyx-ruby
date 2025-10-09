@@ -29,6 +29,7 @@ module Telnyx
 
           ELEVENLABS = :elevenlabs
           VAPI = :vapi
+          RETELL = :retell
 
           # @!method self.values
           #   @return [Array<Symbol>]
