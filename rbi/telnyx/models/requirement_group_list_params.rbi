@@ -285,6 +285,11 @@ module Telnyx
               :declined,
               Telnyx::RequirementGroupListParams::Filter::Status::TaggedSymbol
             )
+          EXPIRED =
+            T.let(
+              :expired,
+              Telnyx::RequirementGroupListParams::Filter::Status::TaggedSymbol
+            )
 
           sig do
             override.returns(

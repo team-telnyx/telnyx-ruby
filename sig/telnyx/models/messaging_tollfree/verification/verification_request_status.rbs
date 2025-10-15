@@ -27,9 +27,20 @@ module Telnyx
             use_case: Telnyx::Models::MessagingTollfree::Verification::use_case_categories,
             use_case_summary: String,
             verification_status: Telnyx::Models::MessagingTollfree::Verification::tf_verification_status,
+            age_gated_content: bool,
             :business_addr2 => String,
+            business_registration_country: String,
+            business_registration_number: String,
+            business_registration_type: String,
             created_at: Time,
+            doing_business_as: String,
+            entity_type: Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus::entity_type,
+            help_message_response: String,
+            opt_in_confirmation_response: String,
+            opt_in_keywords: String,
+            privacy_policy_url: String,
             reason: String,
+            terms_and_condition_url: String,
             updated_at: Time,
             webhook_url: String
           }
@@ -77,17 +88,63 @@ module Telnyx
 
           attr_accessor verification_status: Telnyx::Models::MessagingTollfree::Verification::tf_verification_status
 
+          attr_reader age_gated_content: bool?
+
+          def age_gated_content=: (bool) -> bool
+
           attr_reader business_addr2: String?
 
           def business_addr2=: (String) -> String
+
+          attr_reader business_registration_country: String?
+
+          def business_registration_country=: (String) -> String
+
+          attr_reader business_registration_number: String?
+
+          def business_registration_number=: (String) -> String
+
+          attr_reader business_registration_type: String?
+
+          def business_registration_type=: (String) -> String
 
           attr_reader created_at: Time?
 
           def created_at=: (Time) -> Time
 
+          attr_reader doing_business_as: String?
+
+          def doing_business_as=: (String) -> String
+
+          attr_reader entity_type: Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus::entity_type?
+
+          def entity_type=: (
+            Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus::entity_type
+          ) -> Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus::entity_type
+
+          attr_reader help_message_response: String?
+
+          def help_message_response=: (String) -> String
+
+          attr_reader opt_in_confirmation_response: String?
+
+          def opt_in_confirmation_response=: (String) -> String
+
+          attr_reader opt_in_keywords: String?
+
+          def opt_in_keywords=: (String) -> String
+
+          attr_reader privacy_policy_url: String?
+
+          def privacy_policy_url=: (String) -> String
+
           attr_reader reason: String?
 
           def reason=: (String) -> String
+
+          attr_reader terms_and_condition_url: String?
+
+          def terms_and_condition_url=: (String) -> String
 
           attr_reader updated_at: Time?
 
@@ -119,9 +176,20 @@ module Telnyx
             use_case: Telnyx::Models::MessagingTollfree::Verification::use_case_categories,
             use_case_summary: String,
             verification_status: Telnyx::Models::MessagingTollfree::Verification::tf_verification_status,
+            ?age_gated_content: bool,
             ?business_addr2: String,
+            ?business_registration_country: String,
+            ?business_registration_number: String,
+            ?business_registration_type: String,
             ?created_at: Time,
+            ?doing_business_as: String,
+            ?entity_type: Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus::entity_type,
+            ?help_message_response: String,
+            ?opt_in_confirmation_response: String,
+            ?opt_in_keywords: String,
+            ?privacy_policy_url: String,
             ?reason: String,
+            ?terms_and_condition_url: String,
             ?updated_at: Time,
             ?webhook_url: String
           ) -> void
@@ -148,12 +216,42 @@ module Telnyx
             use_case: Telnyx::Models::MessagingTollfree::Verification::use_case_categories,
             use_case_summary: String,
             verification_status: Telnyx::Models::MessagingTollfree::Verification::tf_verification_status,
+            age_gated_content: bool,
             :business_addr2 => String,
+            business_registration_country: String,
+            business_registration_number: String,
+            business_registration_type: String,
             created_at: Time,
+            doing_business_as: String,
+            entity_type: Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus::entity_type,
+            help_message_response: String,
+            opt_in_confirmation_response: String,
+            opt_in_keywords: String,
+            privacy_policy_url: String,
             reason: String,
+            terms_and_condition_url: String,
             updated_at: Time,
             webhook_url: String
           }
+
+          type entity_type =
+            :SOLE_PROPRIETOR
+            | :PRIVATE_PROFIT
+            | :PUBLIC_PROFIT
+            | :NON_PROFIT
+            | :GOVERNMENT
+
+          module EntityType
+            extend Telnyx::Internal::Type::Enum
+
+            SOLE_PROPRIETOR: :SOLE_PROPRIETOR
+            PRIVATE_PROFIT: :PRIVATE_PROFIT
+            PUBLIC_PROFIT: :PUBLIC_PROFIT
+            NON_PROFIT: :NON_PROFIT
+            GOVERNMENT: :GOVERNMENT
+
+            def self?.values: -> ::Array[Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus::entity_type]
+          end
         end
       end
     end

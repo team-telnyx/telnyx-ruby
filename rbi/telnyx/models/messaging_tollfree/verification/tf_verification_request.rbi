@@ -105,12 +105,71 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :use_case_summary
 
+          # Indicates if messaging content requires age gating (e.g., 18+). Defaults to
+          # false if not provided.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :age_gated_content
+
+          sig { params(age_gated_content: T::Boolean).void }
+          attr_writer :age_gated_content
+
           # Line 2 of the business address
           sig { returns(T.nilable(String)) }
           attr_reader :business_addr2
 
           sig { params(business_addr2: String).void }
           attr_writer :business_addr2
+
+          # ISO 3166-1 alpha-2 country code of the issuing business authority. Must be
+          # exactly 2 letters. Automatically converted to uppercase. Required from
+          # January 2026.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :business_registration_country
+
+          # Official business registration number (e.g., Employer Identification Number
+          # (EIN) in the U.S.). Required from January 2026.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :business_registration_number
+
+          # Type of business registration being provided. Required from January 2026.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :business_registration_type
+
+          # Doing Business As (DBA) name if different from legal name
+          sig { returns(T.nilable(String)) }
+          attr_accessor :doing_business_as
+
+          # Business entity classification
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::OrSymbol
+              )
+            )
+          end
+          attr_accessor :entity_type
+
+          # The message returned when users text 'HELP'
+          sig { returns(T.nilable(String)) }
+          attr_accessor :help_message_response
+
+          # Message sent to users confirming their opt-in to receive messages
+          sig { returns(T.nilable(String)) }
+          attr_accessor :opt_in_confirmation_response
+
+          # Keywords used to collect and process consumer opt-ins
+          sig { returns(T.nilable(String)) }
+          attr_accessor :opt_in_keywords
+
+          # URL pointing to the business's privacy policy. Plain string, no URL format
+          # validation.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :privacy_policy_url
+
+          # URL pointing to the business's terms and conditions. Plain string, no URL format
+          # validation.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :terms_and_condition_url
 
           # URL that should receive webhooks relating to this verification request
           sig { returns(T.nilable(String)) }
@@ -147,7 +206,21 @@ module Telnyx
               use_case:
                 Telnyx::MessagingTollfree::Verification::UseCaseCategories::OrSymbol,
               use_case_summary: String,
+              age_gated_content: T::Boolean,
               business_addr2: String,
+              business_registration_country: T.nilable(String),
+              business_registration_number: T.nilable(String),
+              business_registration_type: T.nilable(String),
+              doing_business_as: T.nilable(String),
+              entity_type:
+                T.nilable(
+                  Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::OrSymbol
+                ),
+              help_message_response: T.nilable(String),
+              opt_in_confirmation_response: T.nilable(String),
+              opt_in_keywords: T.nilable(String),
+              privacy_policy_url: T.nilable(String),
+              terms_and_condition_url: T.nilable(String),
               webhook_url: String
             ).returns(T.attached_class)
           end
@@ -194,8 +267,36 @@ module Telnyx
             use_case:,
             # Human-readable summary of the desired use-case
             use_case_summary:,
+            # Indicates if messaging content requires age gating (e.g., 18+). Defaults to
+            # false if not provided.
+            age_gated_content: nil,
             # Line 2 of the business address
             business_addr2: nil,
+            # ISO 3166-1 alpha-2 country code of the issuing business authority. Must be
+            # exactly 2 letters. Automatically converted to uppercase. Required from
+            # January 2026.
+            business_registration_country: nil,
+            # Official business registration number (e.g., Employer Identification Number
+            # (EIN) in the U.S.). Required from January 2026.
+            business_registration_number: nil,
+            # Type of business registration being provided. Required from January 2026.
+            business_registration_type: nil,
+            # Doing Business As (DBA) name if different from legal name
+            doing_business_as: nil,
+            # Business entity classification
+            entity_type: nil,
+            # The message returned when users text 'HELP'
+            help_message_response: nil,
+            # Message sent to users confirming their opt-in to receive messages
+            opt_in_confirmation_response: nil,
+            # Keywords used to collect and process consumer opt-ins
+            opt_in_keywords: nil,
+            # URL pointing to the business's privacy policy. Plain string, no URL format
+            # validation.
+            privacy_policy_url: nil,
+            # URL pointing to the business's terms and conditions. Plain string, no URL format
+            # validation.
+            terms_and_condition_url: nil,
             # URL that should receive webhooks relating to this verification request
             webhook_url: nil
           )
@@ -229,12 +330,76 @@ module Telnyx
                 use_case:
                   Telnyx::MessagingTollfree::Verification::UseCaseCategories::OrSymbol,
                 use_case_summary: String,
+                age_gated_content: T::Boolean,
                 business_addr2: String,
+                business_registration_country: T.nilable(String),
+                business_registration_number: T.nilable(String),
+                business_registration_type: T.nilable(String),
+                doing_business_as: T.nilable(String),
+                entity_type:
+                  T.nilable(
+                    Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::OrSymbol
+                  ),
+                help_message_response: T.nilable(String),
+                opt_in_confirmation_response: T.nilable(String),
+                opt_in_keywords: T.nilable(String),
+                privacy_policy_url: T.nilable(String),
+                terms_and_condition_url: T.nilable(String),
                 webhook_url: String
               }
             )
           end
           def to_hash
+          end
+
+          # Business entity classification
+          module EntityType
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            SOLE_PROPRIETOR =
+              T.let(
+                :SOLE_PROPRIETOR,
+                Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::TaggedSymbol
+              )
+            PRIVATE_PROFIT =
+              T.let(
+                :PRIVATE_PROFIT,
+                Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::TaggedSymbol
+              )
+            PUBLIC_PROFIT =
+              T.let(
+                :PUBLIC_PROFIT,
+                Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::TaggedSymbol
+              )
+            NON_PROFIT =
+              T.let(
+                :NON_PROFIT,
+                Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::TaggedSymbol
+              )
+            GOVERNMENT =
+              T.let(
+                :GOVERNMENT,
+                Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
       end

@@ -94,11 +94,89 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :verification_request_id
 
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :age_gated_content
+
+          sig { params(age_gated_content: T::Boolean).void }
+          attr_writer :age_gated_content
+
           sig { returns(T.nilable(String)) }
           attr_reader :business_addr2
 
           sig { params(business_addr2: String).void }
           attr_writer :business_addr2
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :business_registration_country
+
+          sig { params(business_registration_country: String).void }
+          attr_writer :business_registration_country
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :business_registration_number
+
+          sig { params(business_registration_number: String).void }
+          attr_writer :business_registration_number
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :business_registration_type
+
+          sig { params(business_registration_type: String).void }
+          attr_writer :business_registration_type
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :doing_business_as
+
+          sig { params(doing_business_as: String).void }
+          attr_writer :doing_business_as
+
+          # Business entity classification
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::MessagingTollfree::Verification::VerificationRequestEgress::EntityType::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :entity_type
+
+          sig do
+            params(
+              entity_type:
+                Telnyx::MessagingTollfree::Verification::VerificationRequestEgress::EntityType::OrSymbol
+            ).void
+          end
+          attr_writer :entity_type
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :help_message_response
+
+          sig { params(help_message_response: String).void }
+          attr_writer :help_message_response
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :opt_in_confirmation_response
+
+          sig { params(opt_in_confirmation_response: String).void }
+          attr_writer :opt_in_confirmation_response
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :opt_in_keywords
+
+          sig { params(opt_in_keywords: String).void }
+          attr_writer :opt_in_keywords
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :privacy_policy_url
+
+          sig { params(privacy_policy_url: String).void }
+          attr_writer :privacy_policy_url
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :terms_and_condition_url
+
+          sig { params(terms_and_condition_url: String).void }
+          attr_writer :terms_and_condition_url
 
           # Tollfree verification status
           sig do
@@ -154,7 +232,19 @@ module Telnyx
                 Telnyx::MessagingTollfree::Verification::UseCaseCategories::OrSymbol,
               use_case_summary: String,
               verification_request_id: String,
+              age_gated_content: T::Boolean,
               business_addr2: String,
+              business_registration_country: String,
+              business_registration_number: String,
+              business_registration_type: String,
+              doing_business_as: String,
+              entity_type:
+                Telnyx::MessagingTollfree::Verification::VerificationRequestEgress::EntityType::OrSymbol,
+              help_message_response: String,
+              opt_in_confirmation_response: String,
+              opt_in_keywords: String,
+              privacy_policy_url: String,
+              terms_and_condition_url: String,
               verification_status:
                 Telnyx::MessagingTollfree::Verification::TfVerificationStatus::OrSymbol,
               webhook_url: String
@@ -184,7 +274,19 @@ module Telnyx
             use_case:,
             use_case_summary:,
             verification_request_id:,
+            age_gated_content: nil,
             business_addr2: nil,
+            business_registration_country: nil,
+            business_registration_number: nil,
+            business_registration_type: nil,
+            doing_business_as: nil,
+            # Business entity classification
+            entity_type: nil,
+            help_message_response: nil,
+            opt_in_confirmation_response: nil,
+            opt_in_keywords: nil,
+            privacy_policy_url: nil,
+            terms_and_condition_url: nil,
             # Tollfree verification status
             verification_status: nil,
             webhook_url: nil
@@ -221,7 +323,19 @@ module Telnyx
                   Telnyx::MessagingTollfree::Verification::UseCaseCategories::TaggedSymbol,
                 use_case_summary: String,
                 verification_request_id: String,
+                age_gated_content: T::Boolean,
                 business_addr2: String,
+                business_registration_country: String,
+                business_registration_number: String,
+                business_registration_type: String,
+                doing_business_as: String,
+                entity_type:
+                  Telnyx::MessagingTollfree::Verification::VerificationRequestEgress::EntityType::TaggedSymbol,
+                help_message_response: String,
+                opt_in_confirmation_response: String,
+                opt_in_keywords: String,
+                privacy_policy_url: String,
+                terms_and_condition_url: String,
                 verification_status:
                   Telnyx::MessagingTollfree::Verification::TfVerificationStatus::TaggedSymbol,
                 webhook_url: String
@@ -229,6 +343,56 @@ module Telnyx
             )
           end
           def to_hash
+          end
+
+          # Business entity classification
+          module EntityType
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::MessagingTollfree::Verification::VerificationRequestEgress::EntityType
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            SOLE_PROPRIETOR =
+              T.let(
+                :SOLE_PROPRIETOR,
+                Telnyx::MessagingTollfree::Verification::VerificationRequestEgress::EntityType::TaggedSymbol
+              )
+            PRIVATE_PROFIT =
+              T.let(
+                :PRIVATE_PROFIT,
+                Telnyx::MessagingTollfree::Verification::VerificationRequestEgress::EntityType::TaggedSymbol
+              )
+            PUBLIC_PROFIT =
+              T.let(
+                :PUBLIC_PROFIT,
+                Telnyx::MessagingTollfree::Verification::VerificationRequestEgress::EntityType::TaggedSymbol
+              )
+            NON_PROFIT =
+              T.let(
+                :NON_PROFIT,
+                Telnyx::MessagingTollfree::Verification::VerificationRequestEgress::EntityType::TaggedSymbol
+              )
+            GOVERNMENT =
+              T.let(
+                :GOVERNMENT,
+                Telnyx::MessagingTollfree::Verification::VerificationRequestEgress::EntityType::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::MessagingTollfree::Verification::VerificationRequestEgress::EntityType::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
       end
