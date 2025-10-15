@@ -133,11 +133,86 @@ module Telnyx
           #   @return [String]
           required :use_case_summary, String, api_name: :useCaseSummary
 
+          # @!attribute age_gated_content
+          #   Indicates if messaging content requires age gating (e.g., 18+). Defaults to
+          #   false if not provided.
+          #
+          #   @return [Boolean, nil]
+          optional :age_gated_content, Telnyx::Internal::Type::Boolean, api_name: :ageGatedContent
+
           # @!attribute business_addr2
           #   Line 2 of the business address
           #
           #   @return [String, nil]
           optional :business_addr2, String, api_name: :businessAddr2
+
+          # @!attribute business_registration_country
+          #   ISO 3166-1 alpha-2 country code of the issuing business authority. Must be
+          #   exactly 2 letters. Automatically converted to uppercase. Required from
+          #   January 2026.
+          #
+          #   @return [String, nil]
+          optional :business_registration_country, String, api_name: :businessRegistrationCountry, nil?: true
+
+          # @!attribute business_registration_number
+          #   Official business registration number (e.g., Employer Identification Number
+          #   (EIN) in the U.S.). Required from January 2026.
+          #
+          #   @return [String, nil]
+          optional :business_registration_number, String, api_name: :businessRegistrationNumber, nil?: true
+
+          # @!attribute business_registration_type
+          #   Type of business registration being provided. Required from January 2026.
+          #
+          #   @return [String, nil]
+          optional :business_registration_type, String, api_name: :businessRegistrationType, nil?: true
+
+          # @!attribute doing_business_as
+          #   Doing Business As (DBA) name if different from legal name
+          #
+          #   @return [String, nil]
+          optional :doing_business_as, String, api_name: :doingBusinessAs, nil?: true
+
+          # @!attribute entity_type
+          #   Business entity classification
+          #
+          #   @return [Symbol, Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest::EntityType, nil]
+          optional :entity_type,
+                   enum: -> { Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType },
+                   api_name: :entityType,
+                   nil?: true
+
+          # @!attribute help_message_response
+          #   The message returned when users text 'HELP'
+          #
+          #   @return [String, nil]
+          optional :help_message_response, String, api_name: :helpMessageResponse, nil?: true
+
+          # @!attribute opt_in_confirmation_response
+          #   Message sent to users confirming their opt-in to receive messages
+          #
+          #   @return [String, nil]
+          optional :opt_in_confirmation_response, String, api_name: :optInConfirmationResponse, nil?: true
+
+          # @!attribute opt_in_keywords
+          #   Keywords used to collect and process consumer opt-ins
+          #
+          #   @return [String, nil]
+          optional :opt_in_keywords, String, api_name: :optInKeywords, nil?: true
+
+          # @!attribute privacy_policy_url
+          #   URL pointing to the business's privacy policy. Plain string, no URL format
+          #   validation.
+          #
+          #   @return [String, nil]
+          optional :privacy_policy_url, String, api_name: :privacyPolicyURL, nil?: true
+
+          # @!attribute terms_and_condition_url
+          #   URL pointing to the business's terms and conditions. Plain string, no URL format
+          #   validation.
+          #
+          #   @return [String, nil]
+          optional :terms_and_condition_url, String, api_name: :termsAndConditionURL, nil?: true
 
           # @!attribute webhook_url
           #   URL that should receive webhooks relating to this verification request
@@ -145,7 +220,7 @@ module Telnyx
           #   @return [String, nil]
           optional :webhook_url, String, api_name: :webhookUrl
 
-          # @!method initialize(additional_information:, business_addr1:, business_city:, business_contact_email:, business_contact_first_name:, business_contact_last_name:, business_contact_phone:, business_name:, business_state:, business_zip:, corporate_website:, isv_reseller:, message_volume:, opt_in_workflow:, opt_in_workflow_image_urls:, phone_numbers:, production_message_content:, use_case:, use_case_summary:, business_addr2: nil, webhook_url: nil)
+          # @!method initialize(additional_information:, business_addr1:, business_city:, business_contact_email:, business_contact_first_name:, business_contact_last_name:, business_contact_phone:, business_name:, business_state:, business_zip:, corporate_website:, isv_reseller:, message_volume:, opt_in_workflow:, opt_in_workflow_image_urls:, phone_numbers:, production_message_content:, use_case:, use_case_summary:, age_gated_content: nil, business_addr2: nil, business_registration_country: nil, business_registration_number: nil, business_registration_type: nil, doing_business_as: nil, entity_type: nil, help_message_response: nil, opt_in_confirmation_response: nil, opt_in_keywords: nil, privacy_policy_url: nil, terms_and_condition_url: nil, webhook_url: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest} for
           #   more details.
@@ -190,9 +265,47 @@ module Telnyx
           #
           #   @param use_case_summary [String] Human-readable summary of the desired use-case
           #
+          #   @param age_gated_content [Boolean] Indicates if messaging content requires age gating (e.g., 18+). Defaults to fals
+          #
           #   @param business_addr2 [String] Line 2 of the business address
           #
+          #   @param business_registration_country [String, nil] ISO 3166-1 alpha-2 country code of the issuing business authority. Must be exact
+          #
+          #   @param business_registration_number [String, nil] Official business registration number (e.g., Employer Identification Number (EIN
+          #
+          #   @param business_registration_type [String, nil] Type of business registration being provided. Required from January 2026.
+          #
+          #   @param doing_business_as [String, nil] Doing Business As (DBA) name if different from legal name
+          #
+          #   @param entity_type [Symbol, Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest::EntityType, nil] Business entity classification
+          #
+          #   @param help_message_response [String, nil] The message returned when users text 'HELP'
+          #
+          #   @param opt_in_confirmation_response [String, nil] Message sent to users confirming their opt-in to receive messages
+          #
+          #   @param opt_in_keywords [String, nil] Keywords used to collect and process consumer opt-ins
+          #
+          #   @param privacy_policy_url [String, nil] URL pointing to the business's privacy policy. Plain string, no URL format valid
+          #
+          #   @param terms_and_condition_url [String, nil] URL pointing to the business's terms and conditions. Plain string, no URL format
+          #
           #   @param webhook_url [String] URL that should receive webhooks relating to this verification request
+
+          # Business entity classification
+          #
+          # @see Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest#entity_type
+          module EntityType
+            extend Telnyx::Internal::Type::Enum
+
+            SOLE_PROPRIETOR = :SOLE_PROPRIETOR
+            PRIVATE_PROFIT = :PRIVATE_PROFIT
+            PUBLIC_PROFIT = :PUBLIC_PROFIT
+            NON_PROFIT = :NON_PROFIT
+            GOVERNMENT = :GOVERNMENT
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
       end
     end

@@ -260,6 +260,11 @@ module Telnyx
               :declined,
               Telnyx::RequirementGroup::RegulatoryRequirement::Status::TaggedSymbol
             )
+          EXPIRED =
+            T.let(
+              :expired,
+              Telnyx::RequirementGroup::RegulatoryRequirement::Status::TaggedSymbol
+            )
 
           sig do
             override.returns(
@@ -291,6 +296,8 @@ module Telnyx
           )
         DECLINED =
           T.let(:declined, Telnyx::RequirementGroup::Status::TaggedSymbol)
+        EXPIRED =
+          T.let(:expired, Telnyx::RequirementGroup::Status::TaggedSymbol)
 
         sig do
           override.returns(

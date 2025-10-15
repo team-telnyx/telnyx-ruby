@@ -33,7 +33,21 @@ module Telnyx
               use_case:
                 Telnyx::MessagingTollfree::Verification::UseCaseCategories::OrSymbol,
               use_case_summary: String,
+              age_gated_content: T::Boolean,
               business_addr2: String,
+              business_registration_country: T.nilable(String),
+              business_registration_number: T.nilable(String),
+              business_registration_type: T.nilable(String),
+              doing_business_as: T.nilable(String),
+              entity_type:
+                T.nilable(
+                  Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::OrSymbol
+                ),
+              help_message_response: T.nilable(String),
+              opt_in_confirmation_response: T.nilable(String),
+              opt_in_keywords: T.nilable(String),
+              privacy_policy_url: T.nilable(String),
+              terms_and_condition_url: T.nilable(String),
               webhook_url: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
@@ -83,8 +97,36 @@ module Telnyx
             use_case:,
             # Human-readable summary of the desired use-case
             use_case_summary:,
+            # Indicates if messaging content requires age gating (e.g., 18+). Defaults to
+            # false if not provided.
+            age_gated_content: nil,
             # Line 2 of the business address
             business_addr2: nil,
+            # ISO 3166-1 alpha-2 country code of the issuing business authority. Must be
+            # exactly 2 letters. Automatically converted to uppercase. Required from
+            # January 2026.
+            business_registration_country: nil,
+            # Official business registration number (e.g., Employer Identification Number
+            # (EIN) in the U.S.). Required from January 2026.
+            business_registration_number: nil,
+            # Type of business registration being provided. Required from January 2026.
+            business_registration_type: nil,
+            # Doing Business As (DBA) name if different from legal name
+            doing_business_as: nil,
+            # Business entity classification
+            entity_type: nil,
+            # The message returned when users text 'HELP'
+            help_message_response: nil,
+            # Message sent to users confirming their opt-in to receive messages
+            opt_in_confirmation_response: nil,
+            # Keywords used to collect and process consumer opt-ins
+            opt_in_keywords: nil,
+            # URL pointing to the business's privacy policy. Plain string, no URL format
+            # validation.
+            privacy_policy_url: nil,
+            # URL pointing to the business's terms and conditions. Plain string, no URL format
+            # validation.
+            terms_and_condition_url: nil,
             # URL that should receive webhooks relating to this verification request
             webhook_url: nil,
             request_options: {}
@@ -133,7 +175,21 @@ module Telnyx
               use_case:
                 Telnyx::MessagingTollfree::Verification::UseCaseCategories::OrSymbol,
               use_case_summary: String,
+              age_gated_content: T::Boolean,
               business_addr2: String,
+              business_registration_country: T.nilable(String),
+              business_registration_number: T.nilable(String),
+              business_registration_type: T.nilable(String),
+              doing_business_as: T.nilable(String),
+              entity_type:
+                T.nilable(
+                  Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::OrSymbol
+                ),
+              help_message_response: T.nilable(String),
+              opt_in_confirmation_response: T.nilable(String),
+              opt_in_keywords: T.nilable(String),
+              privacy_policy_url: T.nilable(String),
+              terms_and_condition_url: T.nilable(String),
               webhook_url: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
@@ -184,8 +240,36 @@ module Telnyx
             use_case:,
             # Human-readable summary of the desired use-case
             use_case_summary:,
+            # Indicates if messaging content requires age gating (e.g., 18+). Defaults to
+            # false if not provided.
+            age_gated_content: nil,
             # Line 2 of the business address
             business_addr2: nil,
+            # ISO 3166-1 alpha-2 country code of the issuing business authority. Must be
+            # exactly 2 letters. Automatically converted to uppercase. Required from
+            # January 2026.
+            business_registration_country: nil,
+            # Official business registration number (e.g., Employer Identification Number
+            # (EIN) in the U.S.). Required from January 2026.
+            business_registration_number: nil,
+            # Type of business registration being provided. Required from January 2026.
+            business_registration_type: nil,
+            # Doing Business As (DBA) name if different from legal name
+            doing_business_as: nil,
+            # Business entity classification
+            entity_type: nil,
+            # The message returned when users text 'HELP'
+            help_message_response: nil,
+            # Message sent to users confirming their opt-in to receive messages
+            opt_in_confirmation_response: nil,
+            # Keywords used to collect and process consumer opt-ins
+            opt_in_keywords: nil,
+            # URL pointing to the business's privacy policy. Plain string, no URL format
+            # validation.
+            privacy_policy_url: nil,
+            # URL pointing to the business's terms and conditions. Plain string, no URL format
+            # validation.
+            terms_and_condition_url: nil,
             # URL that should receive webhooks relating to this verification request
             webhook_url: nil,
             request_options: {}

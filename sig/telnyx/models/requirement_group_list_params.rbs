@@ -103,7 +103,8 @@ module Telnyx
           def self?.values: -> ::Array[Telnyx::Models::RequirementGroupListParams::Filter::phone_number_type]
         end
 
-        type status = :approved | :unapproved | :"pending-approval" | :declined
+        type status =
+          :approved | :unapproved | :"pending-approval" | :declined | :expired
 
         module Status
           extend Telnyx::Internal::Type::Enum
@@ -112,6 +113,7 @@ module Telnyx
           UNAPPROVED: :unapproved
           PENDING_APPROVAL: :"pending-approval"
           DECLINED: :declined
+          EXPIRED: :expired
 
           def self?.values: -> ::Array[Telnyx::Models::RequirementGroupListParams::Filter::status]
         end
