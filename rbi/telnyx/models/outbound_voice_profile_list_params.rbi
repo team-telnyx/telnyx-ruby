@@ -26,8 +26,8 @@ module Telnyx
       end
       attr_writer :filter
 
-      # Consolidated page parameter (deepObject style). Originally: page[number],
-      # page[size]
+      # Consolidated page parameter (deepObject style). Originally: page[size],
+      # page[number]
       sig { returns(T.nilable(Telnyx::OutboundVoiceProfileListParams::Page)) }
       attr_reader :page
 
@@ -76,8 +76,8 @@ module Telnyx
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[name][contains]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
         page: nil,
         # Specifies the sort order for results. By default sorting direction is ascending.
         # To have the results sorted in descending order add the <code>-</code>
@@ -209,8 +209,8 @@ module Telnyx
         sig { params(size: Integer).void }
         attr_writer :size
 
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
         sig { params(number: Integer, size: Integer).returns(T.attached_class) }
         def self.new(
           # The page number to load.

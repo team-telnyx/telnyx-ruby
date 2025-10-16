@@ -8,13 +8,15 @@ module Telnyx
       #
       # Create an outbound voice profile.
       #
-      # @overload create(name:, billing_group_id: nil, call_recording: nil, concurrent_call_limit: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, max_destination_rate: nil, service_plan: nil, tags: nil, traffic_type: nil, usage_payment_method: nil, whitelisted_destinations: nil, request_options: {})
+      # @overload create(name:, billing_group_id: nil, call_recording: nil, calling_window: nil, concurrent_call_limit: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, max_destination_rate: nil, service_plan: nil, tags: nil, traffic_type: nil, usage_payment_method: nil, whitelisted_destinations: nil, request_options: {})
       #
       # @param name [String] A user-supplied name to help with organization.
       #
       # @param billing_group_id [String, nil] The ID of the billing group associated with the outbound proflile. Defaults to n
       #
       # @param call_recording [Telnyx::Models::OutboundCallRecording]
+      #
+      # @param calling_window [Telnyx::Models::OutboundVoiceProfileCreateParams::CallingWindow] (BETA) Specifies the time window and call limits for calls made using this outbo
       #
       # @param concurrent_call_limit [Integer, nil] Must be no more than your global concurrent call limit. Null means no limit.
       #
@@ -77,7 +79,7 @@ module Telnyx
       #
       # Updates an existing outbound voice profile.
       #
-      # @overload update(id, name:, billing_group_id: nil, call_recording: nil, concurrent_call_limit: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, max_destination_rate: nil, service_plan: nil, tags: nil, traffic_type: nil, usage_payment_method: nil, whitelisted_destinations: nil, request_options: {})
+      # @overload update(id, name:, billing_group_id: nil, call_recording: nil, calling_window: nil, concurrent_call_limit: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, max_destination_rate: nil, service_plan: nil, tags: nil, traffic_type: nil, usage_payment_method: nil, whitelisted_destinations: nil, request_options: {})
       #
       # @param id [String] Identifies the resource.
       #
@@ -86,6 +88,8 @@ module Telnyx
       # @param billing_group_id [String, nil] The ID of the billing group associated with the outbound proflile. Defaults to n
       #
       # @param call_recording [Telnyx::Models::OutboundCallRecording]
+      #
+      # @param calling_window [Telnyx::Models::OutboundVoiceProfileUpdateParams::CallingWindow] (BETA) Specifies the time window and call limits for calls made using this outbo
       #
       # @param concurrent_call_limit [Integer, nil] Must be no more than your global concurrent call limit. Null means no limit.
       #
@@ -133,7 +137,7 @@ module Telnyx
       #
       # @param filter [Telnyx::Models::OutboundVoiceProfileListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[name]conta
       #
-      # @param page [Telnyx::Models::OutboundVoiceProfileListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      # @param page [Telnyx::Models::OutboundVoiceProfileListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
       #
       # @param sort [Symbol, Telnyx::Models::OutboundVoiceProfileListParams::Sort] Specifies the sort order for results. By default sorting direction is ascending.
       #

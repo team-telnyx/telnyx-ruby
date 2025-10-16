@@ -27,6 +27,13 @@ module Telnyx
       #   @return [Telnyx::Models::OutboundCallRecording, nil]
       optional :call_recording, -> { Telnyx::OutboundCallRecording }
 
+      # @!attribute calling_window
+      #   (BETA) Specifies the time window and call limits for calls made using this
+      #   outbound voice profile. Note that all times are UTC in 24-hour clock time.
+      #
+      #   @return [Telnyx::Models::OutboundVoiceProfile::CallingWindow, nil]
+      optional :calling_window, -> { Telnyx::OutboundVoiceProfile::CallingWindow }
+
       # @!attribute concurrent_call_limit
       #   Must be no more than your global concurrent call limit. Null means no limit.
       #
@@ -115,7 +122,7 @@ module Telnyx
       #   @return [Array<String>, nil]
       optional :whitelisted_destinations, Telnyx::Internal::Type::ArrayOf[String]
 
-      # @!method initialize(name:, id: nil, billing_group_id: nil, call_recording: nil, concurrent_call_limit: nil, connections_count: nil, created_at: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, max_destination_rate: nil, record_type: nil, service_plan: nil, tags: nil, traffic_type: nil, updated_at: nil, usage_payment_method: nil, whitelisted_destinations: nil)
+      # @!method initialize(name:, id: nil, billing_group_id: nil, call_recording: nil, calling_window: nil, concurrent_call_limit: nil, connections_count: nil, created_at: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, max_destination_rate: nil, record_type: nil, service_plan: nil, tags: nil, traffic_type: nil, updated_at: nil, usage_payment_method: nil, whitelisted_destinations: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::OutboundVoiceProfile} for more details.
       #
@@ -126,6 +133,8 @@ module Telnyx
       #   @param billing_group_id [String, nil] The ID of the billing group associated with the outbound proflile. Defaults to n
       #
       #   @param call_recording [Telnyx::Models::OutboundCallRecording]
+      #
+      #   @param calling_window [Telnyx::Models::OutboundVoiceProfile::CallingWindow] (BETA) Specifies the time window and call limits for calls made using this outbo
       #
       #   @param concurrent_call_limit [Integer, nil] Must be no more than your global concurrent call limit. Null means no limit.
       #
@@ -154,6 +163,43 @@ module Telnyx
       #   @param usage_payment_method [Symbol, Telnyx::Models::UsagePaymentMethod] Setting for how costs for outbound profile are calculated.
       #
       #   @param whitelisted_destinations [Array<String>] The list of destinations you want to be able to call using this outbound voice p
+
+      # @see Telnyx::Models::OutboundVoiceProfile#calling_window
+      class CallingWindow < Telnyx::Internal::Type::BaseModel
+        # @!attribute calls_per_cld
+        #   (BETA) The maximum number of calls that can be initiated to a single called
+        #   party (CLD) within the calling window. A null value means no limit.
+        #
+        #   @return [Integer, nil]
+        optional :calls_per_cld, Integer
+
+        # @!attribute end_time
+        #   (BETA) The UTC time of day (in HH:MM format, 24-hour clock) when calls are no
+        #   longer allowed to start.
+        #
+        #   @return [String, nil]
+        optional :end_time, String
+
+        # @!attribute start_time
+        #   (BETA) The UTC time of day (in HH:MM format, 24-hour clock) when calls are
+        #   allowed to start.
+        #
+        #   @return [String, nil]
+        optional :start_time, String
+
+        # @!method initialize(calls_per_cld: nil, end_time: nil, start_time: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::OutboundVoiceProfile::CallingWindow} for more details.
+        #
+        #   (BETA) Specifies the time window and call limits for calls made using this
+        #   outbound voice profile. Note that all times are UTC in 24-hour clock time.
+        #
+        #   @param calls_per_cld [Integer] (BETA) The maximum number of calls that can be initiated to a single called part
+        #
+        #   @param end_time [String] (BETA) The UTC time of day (in HH:MM format, 24-hour clock) when calls are no lo
+        #
+        #   @param start_time [String] (BETA) The UTC time of day (in HH:MM format, 24-hour clock) when calls are allow
+      end
     end
   end
 end

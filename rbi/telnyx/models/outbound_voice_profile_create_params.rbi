@@ -29,6 +29,23 @@ module Telnyx
       sig { params(call_recording: Telnyx::OutboundCallRecording::OrHash).void }
       attr_writer :call_recording
 
+      # (BETA) Specifies the time window and call limits for calls made using this
+      # outbound voice profile. Note that all times are UTC in 24-hour clock time.
+      sig do
+        returns(
+          T.nilable(Telnyx::OutboundVoiceProfileCreateParams::CallingWindow)
+        )
+      end
+      attr_reader :calling_window
+
+      sig do
+        params(
+          calling_window:
+            Telnyx::OutboundVoiceProfileCreateParams::CallingWindow::OrHash
+        ).void
+      end
+      attr_writer :calling_window
+
       # Must be no more than your global concurrent call limit. Null means no limit.
       sig { returns(T.nilable(Integer)) }
       attr_accessor :concurrent_call_limit
@@ -107,6 +124,8 @@ module Telnyx
           name: String,
           billing_group_id: T.nilable(String),
           call_recording: Telnyx::OutboundCallRecording::OrHash,
+          calling_window:
+            Telnyx::OutboundVoiceProfileCreateParams::CallingWindow::OrHash,
           concurrent_call_limit: T.nilable(Integer),
           daily_spend_limit: String,
           daily_spend_limit_enabled: T::Boolean,
@@ -127,6 +146,9 @@ module Telnyx
         # null (for no group assigned).
         billing_group_id: nil,
         call_recording: nil,
+        # (BETA) Specifies the time window and call limits for calls made using this
+        # outbound voice profile. Note that all times are UTC in 24-hour clock time.
+        calling_window: nil,
         # Must be no more than your global concurrent call limit. Null means no limit.
         concurrent_call_limit: nil,
         # The maximum amount of usage charges, in USD, you want Telnyx to allow on this
@@ -161,6 +183,8 @@ module Telnyx
             name: String,
             billing_group_id: T.nilable(String),
             call_recording: Telnyx::OutboundCallRecording,
+            calling_window:
+              Telnyx::OutboundVoiceProfileCreateParams::CallingWindow,
             concurrent_call_limit: T.nilable(Integer),
             daily_spend_limit: String,
             daily_spend_limit_enabled: T::Boolean,
@@ -176,6 +200,70 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      class CallingWindow < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::OutboundVoiceProfileCreateParams::CallingWindow,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        # (BETA) The maximum number of calls that can be initiated to a single called
+        # party (CLD) within the calling window. A null value means no limit.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :calls_per_cld
+
+        sig { params(calls_per_cld: Integer).void }
+        attr_writer :calls_per_cld
+
+        # (BETA) The UTC time of day (in HH:MM format, 24-hour clock) when calls are no
+        # longer allowed to start.
+        sig { returns(T.nilable(Time)) }
+        attr_reader :end_time
+
+        sig { params(end_time: Time).void }
+        attr_writer :end_time
+
+        # (BETA) The UTC time of day (in HH:MM format, 24-hour clock) when calls are
+        # allowed to start.
+        sig { returns(T.nilable(Time)) }
+        attr_reader :start_time
+
+        sig { params(start_time: Time).void }
+        attr_writer :start_time
+
+        # (BETA) Specifies the time window and call limits for calls made using this
+        # outbound voice profile. Note that all times are UTC in 24-hour clock time.
+        sig do
+          params(
+            calls_per_cld: Integer,
+            end_time: Time,
+            start_time: Time
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # (BETA) The maximum number of calls that can be initiated to a single called
+          # party (CLD) within the calling window. A null value means no limit.
+          calls_per_cld: nil,
+          # (BETA) The UTC time of day (in HH:MM format, 24-hour clock) when calls are no
+          # longer allowed to start.
+          end_time: nil,
+          # (BETA) The UTC time of day (in HH:MM format, 24-hour clock) when calls are
+          # allowed to start.
+          start_time: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            { calls_per_cld: Integer, end_time: Time, start_time: Time }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

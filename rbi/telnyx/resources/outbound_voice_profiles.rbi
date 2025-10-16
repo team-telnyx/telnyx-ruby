@@ -9,6 +9,8 @@ module Telnyx
           name: String,
           billing_group_id: T.nilable(String),
           call_recording: Telnyx::OutboundCallRecording::OrHash,
+          calling_window:
+            Telnyx::OutboundVoiceProfileCreateParams::CallingWindow::OrHash,
           concurrent_call_limit: T.nilable(Integer),
           daily_spend_limit: String,
           daily_spend_limit_enabled: T::Boolean,
@@ -29,6 +31,9 @@ module Telnyx
         # null (for no group assigned).
         billing_group_id: nil,
         call_recording: nil,
+        # (BETA) Specifies the time window and call limits for calls made using this
+        # outbound voice profile. Note that all times are UTC in 24-hour clock time.
+        calling_window: nil,
         # Must be no more than your global concurrent call limit. Null means no limit.
         concurrent_call_limit: nil,
         # The maximum amount of usage charges, in USD, you want Telnyx to allow on this
@@ -78,6 +83,8 @@ module Telnyx
           name: String,
           billing_group_id: T.nilable(String),
           call_recording: Telnyx::OutboundCallRecording::OrHash,
+          calling_window:
+            Telnyx::OutboundVoiceProfileUpdateParams::CallingWindow::OrHash,
           concurrent_call_limit: T.nilable(Integer),
           daily_spend_limit: String,
           daily_spend_limit_enabled: T::Boolean,
@@ -100,6 +107,9 @@ module Telnyx
         # null (for no group assigned).
         billing_group_id: nil,
         call_recording: nil,
+        # (BETA) Specifies the time window and call limits for calls made using this
+        # outbound voice profile.
+        calling_window: nil,
         # Must be no more than your global concurrent call limit. Null means no limit.
         concurrent_call_limit: nil,
         # The maximum amount of usage charges, in USD, you want Telnyx to allow on this
@@ -142,8 +152,8 @@ module Telnyx
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[name][contains]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
         page: nil,
         # Specifies the sort order for results. By default sorting direction is ascending.
         # To have the results sorted in descending order add the <code>-</code>
