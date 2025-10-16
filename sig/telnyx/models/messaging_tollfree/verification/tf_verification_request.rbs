@@ -23,7 +23,18 @@ module Telnyx
             production_message_content: String,
             use_case: Telnyx::Models::MessagingTollfree::Verification::use_case_categories,
             use_case_summary: String,
+            age_gated_content: bool,
             :business_addr2 => String,
+            business_registration_country: String?,
+            business_registration_number: String?,
+            business_registration_type: String?,
+            doing_business_as: String?,
+            entity_type: Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest::entity_type?,
+            help_message_response: String?,
+            opt_in_confirmation_response: String?,
+            opt_in_keywords: String?,
+            privacy_policy_url: String?,
+            terms_and_condition_url: String?,
             webhook_url: String
           }
 
@@ -66,9 +77,33 @@ module Telnyx
 
           attr_accessor use_case_summary: String
 
+          attr_reader age_gated_content: bool?
+
+          def age_gated_content=: (bool) -> bool
+
           attr_reader business_addr2: String?
 
           def business_addr2=: (String) -> String
+
+          attr_accessor business_registration_country: String?
+
+          attr_accessor business_registration_number: String?
+
+          attr_accessor business_registration_type: String?
+
+          attr_accessor doing_business_as: String?
+
+          attr_accessor entity_type: Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest::entity_type?
+
+          attr_accessor help_message_response: String?
+
+          attr_accessor opt_in_confirmation_response: String?
+
+          attr_accessor opt_in_keywords: String?
+
+          attr_accessor privacy_policy_url: String?
+
+          attr_accessor terms_and_condition_url: String?
 
           attr_reader webhook_url: String?
 
@@ -94,7 +129,18 @@ module Telnyx
             production_message_content: String,
             use_case: Telnyx::Models::MessagingTollfree::Verification::use_case_categories,
             use_case_summary: String,
+            ?age_gated_content: bool,
             ?business_addr2: String,
+            ?business_registration_country: String?,
+            ?business_registration_number: String?,
+            ?business_registration_type: String?,
+            ?doing_business_as: String?,
+            ?entity_type: Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest::entity_type?,
+            ?help_message_response: String?,
+            ?opt_in_confirmation_response: String?,
+            ?opt_in_keywords: String?,
+            ?privacy_policy_url: String?,
+            ?terms_and_condition_url: String?,
             ?webhook_url: String
           ) -> void
 
@@ -118,9 +164,39 @@ module Telnyx
             production_message_content: String,
             use_case: Telnyx::Models::MessagingTollfree::Verification::use_case_categories,
             use_case_summary: String,
+            age_gated_content: bool,
             :business_addr2 => String,
+            business_registration_country: String?,
+            business_registration_number: String?,
+            business_registration_type: String?,
+            doing_business_as: String?,
+            entity_type: Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest::entity_type?,
+            help_message_response: String?,
+            opt_in_confirmation_response: String?,
+            opt_in_keywords: String?,
+            privacy_policy_url: String?,
+            terms_and_condition_url: String?,
             webhook_url: String
           }
+
+          type entity_type =
+            :SOLE_PROPRIETOR
+            | :PRIVATE_PROFIT
+            | :PUBLIC_PROFIT
+            | :NON_PROFIT
+            | :GOVERNMENT
+
+          module EntityType
+            extend Telnyx::Internal::Type::Enum
+
+            SOLE_PROPRIETOR: :SOLE_PROPRIETOR
+            PRIVATE_PROFIT: :PRIVATE_PROFIT
+            PUBLIC_PROFIT: :PUBLIC_PROFIT
+            NON_PROFIT: :NON_PROFIT
+            GOVERNMENT: :GOVERNMENT
+
+            def self?.values: -> ::Array[Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest::entity_type]
+          end
         end
       end
     end

@@ -109,6 +109,7 @@ module Telnyx
           UNAPPROVED = :unapproved
           PENDING_APPROVAL = :"pending-approval"
           DECLINED = :declined
+          EXPIRED = :expired
 
           # @!method self.values
           #   @return [Array<Symbol>]

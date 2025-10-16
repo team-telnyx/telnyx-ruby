@@ -123,10 +123,70 @@ module Telnyx
           #   @return [String]
           required :verification_request_id, String, api_name: :verificationRequestId
 
+          # @!attribute age_gated_content
+          #
+          #   @return [Boolean, nil]
+          optional :age_gated_content, Telnyx::Internal::Type::Boolean, api_name: :ageGatedContent
+
           # @!attribute business_addr2
           #
           #   @return [String, nil]
           optional :business_addr2, String, api_name: :businessAddr2
+
+          # @!attribute business_registration_country
+          #
+          #   @return [String, nil]
+          optional :business_registration_country, String, api_name: :businessRegistrationCountry
+
+          # @!attribute business_registration_number
+          #
+          #   @return [String, nil]
+          optional :business_registration_number, String, api_name: :businessRegistrationNumber
+
+          # @!attribute business_registration_type
+          #
+          #   @return [String, nil]
+          optional :business_registration_type, String, api_name: :businessRegistrationType
+
+          # @!attribute doing_business_as
+          #
+          #   @return [String, nil]
+          optional :doing_business_as, String, api_name: :doingBusinessAs
+
+          # @!attribute entity_type
+          #   Business entity classification
+          #
+          #   @return [Symbol, Telnyx::Models::MessagingTollfree::Verification::VerificationRequestEgress::EntityType, nil]
+          optional :entity_type,
+                   enum: -> {
+                     Telnyx::MessagingTollfree::Verification::VerificationRequestEgress::EntityType
+                   },
+                   api_name: :entityType
+
+          # @!attribute help_message_response
+          #
+          #   @return [String, nil]
+          optional :help_message_response, String, api_name: :helpMessageResponse
+
+          # @!attribute opt_in_confirmation_response
+          #
+          #   @return [String, nil]
+          optional :opt_in_confirmation_response, String, api_name: :optInConfirmationResponse
+
+          # @!attribute opt_in_keywords
+          #
+          #   @return [String, nil]
+          optional :opt_in_keywords, String, api_name: :optInKeywords
+
+          # @!attribute privacy_policy_url
+          #
+          #   @return [String, nil]
+          optional :privacy_policy_url, String, api_name: :privacyPolicyURL
+
+          # @!attribute terms_and_condition_url
+          #
+          #   @return [String, nil]
+          optional :terms_and_condition_url, String, api_name: :termsAndConditionURL
 
           # @!attribute verification_status
           #   Tollfree verification status
@@ -141,7 +201,7 @@ module Telnyx
           #   @return [String, nil]
           optional :webhook_url, String, api_name: :webhookUrl
 
-          # @!method initialize(id:, additional_information:, business_addr1:, business_city:, business_contact_email:, business_contact_first_name:, business_contact_last_name:, business_contact_phone:, business_name:, business_state:, business_zip:, corporate_website:, isv_reseller:, message_volume:, opt_in_workflow:, opt_in_workflow_image_urls:, phone_numbers:, production_message_content:, use_case:, use_case_summary:, verification_request_id:, business_addr2: nil, verification_status: nil, webhook_url: nil)
+          # @!method initialize(id:, additional_information:, business_addr1:, business_city:, business_contact_email:, business_contact_first_name:, business_contact_last_name:, business_contact_phone:, business_name:, business_state:, business_zip:, corporate_website:, isv_reseller:, message_volume:, opt_in_workflow:, opt_in_workflow_image_urls:, phone_numbers:, production_message_content:, use_case:, use_case_summary:, verification_request_id:, age_gated_content: nil, business_addr2: nil, business_registration_country: nil, business_registration_number: nil, business_registration_type: nil, doing_business_as: nil, entity_type: nil, help_message_response: nil, opt_in_confirmation_response: nil, opt_in_keywords: nil, privacy_policy_url: nil, terms_and_condition_url: nil, verification_status: nil, webhook_url: nil)
           #   A verification request as it comes out of the database
           #
           #   @param id [String]
@@ -186,11 +246,49 @@ module Telnyx
           #
           #   @param verification_request_id [String]
           #
+          #   @param age_gated_content [Boolean]
+          #
           #   @param business_addr2 [String]
+          #
+          #   @param business_registration_country [String]
+          #
+          #   @param business_registration_number [String]
+          #
+          #   @param business_registration_type [String]
+          #
+          #   @param doing_business_as [String]
+          #
+          #   @param entity_type [Symbol, Telnyx::Models::MessagingTollfree::Verification::VerificationRequestEgress::EntityType] Business entity classification
+          #
+          #   @param help_message_response [String]
+          #
+          #   @param opt_in_confirmation_response [String]
+          #
+          #   @param opt_in_keywords [String]
+          #
+          #   @param privacy_policy_url [String]
+          #
+          #   @param terms_and_condition_url [String]
           #
           #   @param verification_status [Symbol, Telnyx::Models::MessagingTollfree::Verification::TfVerificationStatus] Tollfree verification status
           #
           #   @param webhook_url [String]
+
+          # Business entity classification
+          #
+          # @see Telnyx::Models::MessagingTollfree::Verification::VerificationRequestEgress#entity_type
+          module EntityType
+            extend Telnyx::Internal::Type::Enum
+
+            SOLE_PROPRIETOR = :SOLE_PROPRIETOR
+            PRIVATE_PROFIT = :PRIVATE_PROFIT
+            PUBLIC_PROFIT = :PUBLIC_PROFIT
+            NON_PROFIT = :NON_PROFIT
+            GOVERNMENT = :GOVERNMENT
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
       end
 

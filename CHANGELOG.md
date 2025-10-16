@@ -1,5 +1,28 @@
 # Changelog
 
+## 4.3.0 (2025-10-16)
+
+Full Changelog: [v4.2.0...v4.3.0](https://github.com/team-telnyx/telnyx-ruby/compare/v4.2.0...v4.3.0)
+
+### Features
+
+* ENGDESK-45836: Document private endpoint for republishing account events ([3dc8f26](https://github.com/team-telnyx/telnyx-ruby/commit/3dc8f262508aeb51a03b9dd45ffad74a3c5549a9))
+* Fix broken link to List SIM card action ([743a217](https://github.com/team-telnyx/telnyx-ruby/commit/743a2177c49ed45fef13b1109f301c32a857f58c))
+* MSG-5978: Add BRN fields to toll-free verification OpenAPI specs ([aa3e232](https://github.com/team-telnyx/telnyx-ruby/commit/aa3e232f11e83ec7a8dd873d755f331101d63ec8))
+* Retell assistants import ([432388a](https://github.com/team-telnyx/telnyx-ruby/commit/432388ad8cd23ff535b3eceeda26ca3d320eeb1a))
+
+
+### Bug Fixes
+
+* absolutely qualified uris should always override the default ([12809be](https://github.com/team-telnyx/telnyx-ruby/commit/12809bebb9177e7ac3f48bfa7d80860d90bde7e9))
+* should not reuse buffers for `IO.copy_stream` interop ([2e35266](https://github.com/team-telnyx/telnyx-ruby/commit/2e3526691c82d412beb27418e7d55ffad5449c12))
+
+
+### Chores
+
+* ignore linter error for tests having large collections ([8d69855](https://github.com/team-telnyx/telnyx-ruby/commit/8d6985599250a4e429445c1369d809f5c0346ecf))
+* simplify model references ([d2c4915](https://github.com/team-telnyx/telnyx-ruby/commit/d2c491501c248ea07dc8502c7b1a5aa662b7ac25))
+
 ## 4.2.0 (2025-10-08)
 
 Full Changelog: [v4.1.0...v4.2.0](https://github.com/team-telnyx/telnyx-ruby/compare/v4.1.0...v4.2.0)

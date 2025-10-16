@@ -15,8 +15,8 @@ module Telnyx
       optional :filter, -> { Telnyx::OutboundVoiceProfileListParams::Filter }
 
       # @!attribute page
-      #   Consolidated page parameter (deepObject style). Originally: page[number],
-      #   page[size]
+      #   Consolidated page parameter (deepObject style). Originally: page[size],
+      #   page[number]
       #
       #   @return [Telnyx::Models::OutboundVoiceProfileListParams::Page, nil]
       optional :page, -> { Telnyx::OutboundVoiceProfileListParams::Page }
@@ -46,7 +46,7 @@ module Telnyx
       #
       #   @param filter [Telnyx::Models::OutboundVoiceProfileListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[name]conta
       #
-      #   @param page [Telnyx::Models::OutboundVoiceProfileListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      #   @param page [Telnyx::Models::OutboundVoiceProfileListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
       #
       #   @param sort [Symbol, Telnyx::Models::OutboundVoiceProfileListParams::Sort] Specifies the sort order for results. By default sorting direction is ascending.
       #
@@ -94,8 +94,8 @@ module Telnyx
         optional :size, Integer
 
         # @!method initialize(number: nil, size: nil)
-        #   Consolidated page parameter (deepObject style). Originally: page[number],
-        #   page[size]
+        #   Consolidated page parameter (deepObject style). Originally: page[size],
+        #   page[number]
         #
         #   @param number [Integer] The page number to load.
         #

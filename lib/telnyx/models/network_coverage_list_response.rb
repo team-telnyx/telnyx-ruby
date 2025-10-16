@@ -23,8 +23,7 @@ module Telnyx
         #   List of interface types supported in this region.
         #
         #   @return [Array<Symbol, Telnyx::Models::AvailableService>, nil]
-        optional :available_services,
-                 -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::AvailableService] }
+        optional :available_services, -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AvailableService] }
 
         # @!attribute location
         #

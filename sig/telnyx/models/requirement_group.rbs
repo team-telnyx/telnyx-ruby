@@ -147,7 +147,8 @@ module Telnyx
           updated_at: Time
         }
 
-        type status = :approved | :unapproved | :"pending-approval" | :declined
+        type status =
+          :approved | :unapproved | :"pending-approval" | :declined | :expired
 
         module Status
           extend Telnyx::Internal::Type::Enum
@@ -156,12 +157,14 @@ module Telnyx
           UNAPPROVED: :unapproved
           PENDING_APPROVAL: :"pending-approval"
           DECLINED: :declined
+          EXPIRED: :expired
 
           def self?.values: -> ::Array[Telnyx::Models::RequirementGroup::RegulatoryRequirement::status]
         end
       end
 
-      type status = :approved | :unapproved | :"pending-approval" | :declined
+      type status =
+        :approved | :unapproved | :"pending-approval" | :declined | :expired
 
       module Status
         extend Telnyx::Internal::Type::Enum
@@ -170,6 +173,7 @@ module Telnyx
         UNAPPROVED: :unapproved
         PENDING_APPROVAL: :"pending-approval"
         DECLINED: :declined
+        EXPIRED: :expired
 
         def self?.values: -> ::Array[Telnyx::Models::RequirementGroup::status]
       end
