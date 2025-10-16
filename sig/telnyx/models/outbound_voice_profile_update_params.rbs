@@ -5,6 +5,7 @@ module Telnyx
         name: String,
         billing_group_id: String?,
         call_recording: Telnyx::OutboundCallRecording,
+        calling_window: Telnyx::OutboundVoiceProfileUpdateParams::CallingWindow,
         concurrent_call_limit: Integer?,
         daily_spend_limit: String,
         daily_spend_limit_enabled: bool,
@@ -31,6 +32,12 @@ module Telnyx
       def call_recording=: (
         Telnyx::OutboundCallRecording
       ) -> Telnyx::OutboundCallRecording
+
+      attr_reader calling_window: Telnyx::OutboundVoiceProfileUpdateParams::CallingWindow?
+
+      def calling_window=: (
+        Telnyx::OutboundVoiceProfileUpdateParams::CallingWindow
+      ) -> Telnyx::OutboundVoiceProfileUpdateParams::CallingWindow
 
       attr_accessor concurrent_call_limit: Integer?
 
@@ -80,6 +87,7 @@ module Telnyx
         name: String,
         ?billing_group_id: String?,
         ?call_recording: Telnyx::OutboundCallRecording,
+        ?calling_window: Telnyx::OutboundVoiceProfileUpdateParams::CallingWindow,
         ?concurrent_call_limit: Integer?,
         ?daily_spend_limit: String,
         ?daily_spend_limit_enabled: bool,
@@ -97,6 +105,7 @@ module Telnyx
         name: String,
         billing_group_id: String?,
         call_recording: Telnyx::OutboundCallRecording,
+        calling_window: Telnyx::OutboundVoiceProfileUpdateParams::CallingWindow,
         concurrent_call_limit: Integer?,
         daily_spend_limit: String,
         daily_spend_limit_enabled: bool,
@@ -109,6 +118,35 @@ module Telnyx
         whitelisted_destinations: ::Array[String],
         request_options: Telnyx::RequestOptions
       }
+
+      type calling_window =
+        { calls_per_cld: Integer, end_time: Time, start_time: Time }
+
+      class CallingWindow < Telnyx::Internal::Type::BaseModel
+        attr_reader calls_per_cld: Integer?
+
+        def calls_per_cld=: (Integer) -> Integer
+
+        attr_reader end_time: Time?
+
+        def end_time=: (Time) -> Time
+
+        attr_reader start_time: Time?
+
+        def start_time=: (Time) -> Time
+
+        def initialize: (
+          ?calls_per_cld: Integer,
+          ?end_time: Time,
+          ?start_time: Time
+        ) -> void
+
+        def to_hash: -> {
+          calls_per_cld: Integer,
+          end_time: Time,
+          start_time: Time
+        }
+      end
     end
   end
 end

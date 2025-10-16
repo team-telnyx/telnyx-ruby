@@ -6,6 +6,7 @@ module Telnyx
         id: String,
         billing_group_id: String?,
         call_recording: Telnyx::OutboundCallRecording,
+        calling_window: Telnyx::OutboundVoiceProfile::CallingWindow,
         concurrent_call_limit: Integer?,
         connections_count: Integer,
         created_at: String,
@@ -36,6 +37,12 @@ module Telnyx
       def call_recording=: (
         Telnyx::OutboundCallRecording
       ) -> Telnyx::OutboundCallRecording
+
+      attr_reader calling_window: Telnyx::OutboundVoiceProfile::CallingWindow?
+
+      def calling_window=: (
+        Telnyx::OutboundVoiceProfile::CallingWindow
+      ) -> Telnyx::OutboundVoiceProfile::CallingWindow
 
       attr_accessor concurrent_call_limit: Integer?
 
@@ -102,6 +109,7 @@ module Telnyx
         ?id: String,
         ?billing_group_id: String?,
         ?call_recording: Telnyx::OutboundCallRecording,
+        ?calling_window: Telnyx::OutboundVoiceProfile::CallingWindow,
         ?concurrent_call_limit: Integer?,
         ?connections_count: Integer,
         ?created_at: String,
@@ -123,6 +131,7 @@ module Telnyx
         id: String,
         billing_group_id: String?,
         call_recording: Telnyx::OutboundCallRecording,
+        calling_window: Telnyx::OutboundVoiceProfile::CallingWindow,
         concurrent_call_limit: Integer?,
         connections_count: Integer,
         created_at: String,
@@ -138,6 +147,35 @@ module Telnyx
         usage_payment_method: Telnyx::Models::usage_payment_method,
         whitelisted_destinations: ::Array[String]
       }
+
+      type calling_window =
+        { calls_per_cld: Integer, end_time: String, start_time: String }
+
+      class CallingWindow < Telnyx::Internal::Type::BaseModel
+        attr_reader calls_per_cld: Integer?
+
+        def calls_per_cld=: (Integer) -> Integer
+
+        attr_reader end_time: String?
+
+        def end_time=: (String) -> String
+
+        attr_reader start_time: String?
+
+        def start_time=: (String) -> String
+
+        def initialize: (
+          ?calls_per_cld: Integer,
+          ?end_time: String,
+          ?start_time: String
+        ) -> void
+
+        def to_hash: -> {
+          calls_per_cld: Integer,
+          end_time: String,
+          start_time: String
+        }
+      end
     end
   end
 end
