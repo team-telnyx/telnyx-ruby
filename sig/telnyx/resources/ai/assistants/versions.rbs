@@ -8,7 +8,7 @@ module Telnyx
             assistant_id: String,
             ?include_mcp_servers: bool,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::AI::Assistants::VersionRetrieveResponse
+          ) -> Telnyx::AI::InferenceEmbedding
 
           def update: (
             String version_id,
@@ -30,7 +30,7 @@ module Telnyx
             ?transcription: Telnyx::AI::TranscriptionSettings,
             ?voice_settings: Telnyx::AI::VoiceSettings,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::AI::Assistants::VersionUpdateResponse
+          ) -> Telnyx::AI::InferenceEmbedding
 
           def list: (
             String assistant_id,
@@ -47,7 +47,7 @@ module Telnyx
             String version_id,
             assistant_id: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::AI::Assistants::VersionPromoteResponse
+          ) -> Telnyx::AI::InferenceEmbedding
 
           def initialize: (client: Telnyx::Client) -> void
         end

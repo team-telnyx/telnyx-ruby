@@ -141,7 +141,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::VerifyProfileCreateTemplateResponse]
+      # @return [Telnyx::Models::MessageTemplate]
       #
       # @see Telnyx::Models::VerifyProfileCreateTemplateParams
       def create_template(params)
@@ -150,7 +150,7 @@ module Telnyx
           method: :post,
           path: "verify_profiles/templates",
           body: parsed,
-          model: Telnyx::Models::VerifyProfileCreateTemplateResponse,
+          model: Telnyx::MessageTemplate,
           options: options
         )
       end
@@ -183,7 +183,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::VerifyProfileUpdateTemplateResponse]
+      # @return [Telnyx::Models::MessageTemplate]
       #
       # @see Telnyx::Models::VerifyProfileUpdateTemplateParams
       def update_template(template_id, params)
@@ -192,7 +192,7 @@ module Telnyx
           method: :patch,
           path: ["verify_profiles/templates/%1$s", template_id],
           body: parsed,
-          model: Telnyx::Models::VerifyProfileUpdateTemplateResponse,
+          model: Telnyx::MessageTemplate,
           options: options
         )
       end

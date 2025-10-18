@@ -107,7 +107,7 @@ module Telnyx
         params(
           text: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::VerifyProfileCreateTemplateResponse)
+        ).returns(Telnyx::MessageTemplate)
       end
       def create_template(
         # The text content of the message template.
@@ -131,7 +131,7 @@ module Telnyx
           template_id: String,
           text: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::VerifyProfileUpdateTemplateResponse)
+        ).returns(Telnyx::MessageTemplate)
       end
       def update_template(
         # The identifier of the message template to update.

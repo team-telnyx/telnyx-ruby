@@ -3,7 +3,7 @@
 module Telnyx
   module Models
     # @see Telnyx::Resources::VerifyProfiles#create_template
-    class VerifyProfileCreateTemplateResponse < Telnyx::Internal::Type::BaseModel
+    class MessageTemplate < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
       #   @return [Telnyx::Models::VerifyProfileMessageTemplateResponse, nil]

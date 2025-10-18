@@ -48,7 +48,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::UsageReports::MessagingTest < 
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Legacy::Reporting::UsageReports::MdrUsageReportResponseLegacy]) | nil,
-        meta: Telnyx::Models::Legacy::Reporting::UsageReports::MessagingListResponse::Meta | nil
+        meta: Telnyx::Legacy::Reporting::UsageReports::StandardPaginationMeta | nil
       }
     end
   end

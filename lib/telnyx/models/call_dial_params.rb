@@ -283,9 +283,8 @@ module Telnyx
       # @!attribute stream_bidirectional_sampling_rate
       #   Audio sampling rate.
       #
-      #   @return [Integer, Telnyx::Models::CallDialParams::StreamBidirectionalSamplingRate, nil]
-      optional :stream_bidirectional_sampling_rate,
-               enum: -> { Telnyx::CallDialParams::StreamBidirectionalSamplingRate }
+      #   @return [Integer, Telnyx::Models::StreamBidirectionalSamplingRate, nil]
+      optional :stream_bidirectional_sampling_rate, enum: -> { Telnyx::StreamBidirectionalSamplingRate }
 
       # @!attribute stream_bidirectional_target_legs
       #   Specifies which call legs should receive the bidirectional stream audio.
@@ -459,7 +458,7 @@ module Telnyx
       #
       #   @param stream_bidirectional_mode [Symbol, Telnyx::Models::StreamBidirectionalMode] Configures method of bidirectional streaming (mp3, rtp).
       #
-      #   @param stream_bidirectional_sampling_rate [Integer, Telnyx::Models::CallDialParams::StreamBidirectionalSamplingRate] Audio sampling rate.
+      #   @param stream_bidirectional_sampling_rate [Integer, Telnyx::Models::StreamBidirectionalSamplingRate] Audio sampling rate.
       #
       #   @param stream_bidirectional_target_legs [Symbol, Telnyx::Models::StreamBidirectionalTargetLegs] Specifies which call legs should receive the bidirectional stream audio.
       #
@@ -891,20 +890,6 @@ module Telnyx
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      # Audio sampling rate.
-      module StreamBidirectionalSamplingRate
-        extend Telnyx::Internal::Type::Enum
-
-        STREAM_BIDIRECTIONAL_SAMPLING_RATE_8000 = 8000
-        STREAM_BIDIRECTIONAL_SAMPLING_RATE_16000 = 16_000
-        STREAM_BIDIRECTIONAL_SAMPLING_RATE_22050 = 22_050
-        STREAM_BIDIRECTIONAL_SAMPLING_RATE_24000 = 24_000
-        STREAM_BIDIRECTIONAL_SAMPLING_RATE_48000 = 48_000
-
-        # @!method self.values
-        #   @return [Array<Integer>]
       end
 
       # Specifies which track should be streamed.

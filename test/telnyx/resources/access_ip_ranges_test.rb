@@ -37,7 +37,7 @@ class Telnyx::Test::Resources::AccessIPRangesTest < Telnyx::Test::ResourceTest
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AccessIPRange]),
-        meta: Telnyx::Models::AccessIPRangeListResponse::Meta
+        meta: Telnyx::PaginationMetaCloudflareIPListSync
       }
     end
   end

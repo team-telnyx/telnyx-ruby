@@ -1,71 +1,26 @@
 module Telnyx
   module Models
     type oauth_client_list_response =
-      {
-        data: ::Array[Telnyx::OAuthClient],
-        meta: Telnyx::Models::OAuthClientListResponse::Meta
-      }
+      { data: ::Array[Telnyx::OAuthClient], meta: Telnyx::PaginationMetaOAuth }
 
     class OAuthClientListResponse < Telnyx::Internal::Type::BaseModel
       attr_reader data: ::Array[Telnyx::OAuthClient]?
 
       def data=: (::Array[Telnyx::OAuthClient]) -> ::Array[Telnyx::OAuthClient]
 
-      attr_reader meta: Telnyx::Models::OAuthClientListResponse::Meta?
+      attr_reader meta: Telnyx::PaginationMetaOAuth?
 
-      def meta=: (
-        Telnyx::Models::OAuthClientListResponse::Meta
-      ) -> Telnyx::Models::OAuthClientListResponse::Meta
+      def meta=: (Telnyx::PaginationMetaOAuth) -> Telnyx::PaginationMetaOAuth
 
       def initialize: (
         ?data: ::Array[Telnyx::OAuthClient],
-        ?meta: Telnyx::Models::OAuthClientListResponse::Meta
+        ?meta: Telnyx::PaginationMetaOAuth
       ) -> void
 
       def to_hash: -> {
         data: ::Array[Telnyx::OAuthClient],
-        meta: Telnyx::Models::OAuthClientListResponse::Meta
+        meta: Telnyx::PaginationMetaOAuth
       }
-
-      type meta =
-        {
-          page_number: Integer,
-          page_size: Integer,
-          total_pages: Integer,
-          total_results: Integer
-        }
-
-      class Meta < Telnyx::Internal::Type::BaseModel
-        attr_reader page_number: Integer?
-
-        def page_number=: (Integer) -> Integer
-
-        attr_reader page_size: Integer?
-
-        def page_size=: (Integer) -> Integer
-
-        attr_reader total_pages: Integer?
-
-        def total_pages=: (Integer) -> Integer
-
-        attr_reader total_results: Integer?
-
-        def total_results=: (Integer) -> Integer
-
-        def initialize: (
-          ?page_number: Integer,
-          ?page_size: Integer,
-          ?total_pages: Integer,
-          ?total_results: Integer
-        ) -> void
-
-        def to_hash: -> {
-          page_number: Integer,
-          page_size: Integer,
-          total_pages: Integer,
-          total_results: Integer
-        }
-      end
     end
   end
 end

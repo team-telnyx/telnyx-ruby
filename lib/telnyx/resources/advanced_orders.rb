@@ -15,9 +15,9 @@ module Telnyx
       #
       # @param customer_reference [String]
       #
-      # @param features [Array<Symbol, Telnyx::Models::AdvancedOrderCreateParams::Feature>]
+      # @param features [Array<Symbol, Telnyx::Models::AdvancedOrder::Feature>]
       #
-      # @param phone_number_type [Symbol, Telnyx::Models::AdvancedOrderCreateParams::PhoneNumberType]
+      # @param phone_number_type [Symbol, Telnyx::Models::AdvancedOrder::PhoneNumberType]
       #
       # @param quantity [Integer]
       #
@@ -90,9 +90,9 @@ module Telnyx
       #
       # @param customer_reference [String]
       #
-      # @param features [Array<Symbol, Telnyx::Models::AdvancedOrderUpdateRequirementGroupParams::Feature>]
+      # @param features [Array<Symbol, Telnyx::Models::AdvancedOrder::Feature>]
       #
-      # @param phone_number_type [Symbol, Telnyx::Models::AdvancedOrderUpdateRequirementGroupParams::PhoneNumberType]
+      # @param phone_number_type [Symbol, Telnyx::Models::AdvancedOrder::PhoneNumberType]
       #
       # @param quantity [Integer]
       #
