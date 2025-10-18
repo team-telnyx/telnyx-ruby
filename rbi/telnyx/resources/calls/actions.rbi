@@ -1373,7 +1373,7 @@ module Telnyx
             stream_bidirectional_mode:
               Telnyx::StreamBidirectionalMode::OrSymbol,
             stream_bidirectional_sampling_rate:
-              Telnyx::Calls::ActionStartStreamingParams::StreamBidirectionalSamplingRate::OrInteger,
+              Telnyx::StreamBidirectionalSamplingRate::OrInteger,
             stream_bidirectional_target_legs:
               Telnyx::StreamBidirectionalTargetLegs::OrSymbol,
             stream_codec: Telnyx::StreamCodec::OrSymbol,

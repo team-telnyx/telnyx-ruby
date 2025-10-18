@@ -6,8 +6,8 @@ module Telnyx
         ?comments: String,
         ?country_code: String,
         ?customer_reference: String,
-        ?features: ::Array[Telnyx::Models::AdvancedOrderCreateParams::feature],
-        ?phone_number_type: Telnyx::Models::AdvancedOrderCreateParams::phone_number_type,
+        ?features: ::Array[Telnyx::Models::AdvancedOrder::feature],
+        ?phone_number_type: Telnyx::Models::AdvancedOrder::phone_number_type,
         ?quantity: Integer,
         ?requirement_group_id: String,
         ?request_options: Telnyx::request_opts
@@ -26,8 +26,8 @@ module Telnyx
         ?comments: String,
         ?country_code: String,
         ?customer_reference: String,
-        ?features: ::Array[Telnyx::Models::AdvancedOrderUpdateRequirementGroupParams::feature],
-        ?phone_number_type: Telnyx::Models::AdvancedOrderUpdateRequirementGroupParams::phone_number_type,
+        ?features: ::Array[Telnyx::Models::AdvancedOrder::feature],
+        ?phone_number_type: Telnyx::Models::AdvancedOrder::phone_number_type,
         ?quantity: Integer,
         ?requirement_group_id: String,
         ?request_options: Telnyx::request_opts

@@ -71,6 +71,8 @@ module Telnyx
 
   AddressRetrieveParams = Telnyx::Models::AddressRetrieveParams
 
+  AdvancedOrder = Telnyx::Models::AdvancedOrder
+
   AdvancedOrderCreateParams = Telnyx::Models::AdvancedOrderCreateParams
 
   AdvancedOrderListParams = Telnyx::Models::AdvancedOrderListParams
@@ -701,6 +703,8 @@ module Telnyx
 
   MessageSendShortCodeParams = Telnyx::Models::MessageSendShortCodeParams
 
+  MessageTemplate = Telnyx::Models::MessageTemplate
+
   Messaging = Telnyx::Models::Messaging
 
   MessagingError = Telnyx::Models::MessagingError
@@ -941,6 +945,10 @@ module Telnyx
   OutboundVoiceProfileUpdateParams = Telnyx::Models::OutboundVoiceProfileUpdateParams
 
   PaginationMeta = Telnyx::Models::PaginationMeta
+
+  PaginationMetaCloudflareIPListSync = Telnyx::Models::PaginationMetaCloudflareIPListSync
+
+  PaginationMetaOAuth = Telnyx::Models::PaginationMetaOAuth
 
   PartnerCampaignListParams = Telnyx::Models::PartnerCampaignListParams
 
@@ -1308,6 +1316,8 @@ module Telnyx
   StreamBidirectionalCodec = Telnyx::Models::StreamBidirectionalCodec
 
   StreamBidirectionalMode = Telnyx::Models::StreamBidirectionalMode
+
+  StreamBidirectionalSamplingRate = Telnyx::Models::StreamBidirectionalSamplingRate
 
   StreamBidirectionalTargetLegs = Telnyx::Models::StreamBidirectionalTargetLegs
 

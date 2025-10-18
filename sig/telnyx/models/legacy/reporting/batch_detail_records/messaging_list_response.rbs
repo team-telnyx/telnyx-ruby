@@ -6,7 +6,7 @@ module Telnyx
           type messaging_list_response =
             {
               data: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse],
-              meta: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingListResponse::Meta
+              meta: Telnyx::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta
             }
 
           class MessagingListResponse < Telnyx::Internal::Type::BaseModel
@@ -16,61 +16,21 @@ module Telnyx
               ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse]
             ) -> ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse]
 
-            attr_reader meta: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingListResponse::Meta?
+            attr_reader meta: Telnyx::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta?
 
             def meta=: (
-              Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingListResponse::Meta
-            ) -> Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingListResponse::Meta
+              Telnyx::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta
+            ) -> Telnyx::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta
 
             def initialize: (
               ?data: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse],
-              ?meta: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingListResponse::Meta
+              ?meta: Telnyx::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta
             ) -> void
 
             def to_hash: -> {
               data: ::Array[Telnyx::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse],
-              meta: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingListResponse::Meta
+              meta: Telnyx::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta
             }
-
-            type meta =
-              {
-                page_number: Integer,
-                page_size: Integer,
-                total_pages: Integer,
-                total_results: Integer
-              }
-
-            class Meta < Telnyx::Internal::Type::BaseModel
-              attr_reader page_number: Integer?
-
-              def page_number=: (Integer) -> Integer
-
-              attr_reader page_size: Integer?
-
-              def page_size=: (Integer) -> Integer
-
-              attr_reader total_pages: Integer?
-
-              def total_pages=: (Integer) -> Integer
-
-              attr_reader total_results: Integer?
-
-              def total_results=: (Integer) -> Integer
-
-              def initialize: (
-                ?page_number: Integer,
-                ?page_size: Integer,
-                ?total_pages: Integer,
-                ?total_results: Integer
-              ) -> void
-
-              def to_hash: -> {
-                page_number: Integer,
-                page_size: Integer,
-                total_pages: Integer,
-                total_results: Integer
-              }
-            end
           end
         end
       end

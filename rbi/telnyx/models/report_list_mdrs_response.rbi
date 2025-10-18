@@ -25,18 +25,18 @@ module Telnyx
       end
       attr_writer :data
 
-      sig { returns(T.nilable(Telnyx::Models::ReportListMdrsResponse::Meta)) }
+      sig { returns(T.nilable(Telnyx::Reports::PaginationMetaReporting)) }
       attr_reader :meta
 
       sig do
-        params(meta: Telnyx::Models::ReportListMdrsResponse::Meta::OrHash).void
+        params(meta: Telnyx::Reports::PaginationMetaReporting::OrHash).void
       end
       attr_writer :meta
 
       sig do
         params(
           data: T::Array[Telnyx::Models::ReportListMdrsResponse::Data::OrHash],
-          meta: Telnyx::Models::ReportListMdrsResponse::Meta::OrHash
+          meta: Telnyx::Reports::PaginationMetaReporting::OrHash
         ).returns(T.attached_class)
       end
       def self.new(data: nil, meta: nil)
@@ -46,7 +46,7 @@ module Telnyx
         override.returns(
           {
             data: T::Array[Telnyx::Models::ReportListMdrsResponse::Data],
-            meta: Telnyx::Models::ReportListMdrsResponse::Meta
+            meta: Telnyx::Reports::PaginationMetaReporting
           }
         )
       end
@@ -406,69 +406,6 @@ module Telnyx
           end
           def self.values
           end
-        end
-      end
-
-      class Meta < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::Models::ReportListMdrsResponse::Meta,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :page_number
-
-        sig { params(page_number: Integer).void }
-        attr_writer :page_number
-
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :page_size
-
-        sig { params(page_size: Integer).void }
-        attr_writer :page_size
-
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :total_pages
-
-        sig { params(total_pages: Integer).void }
-        attr_writer :total_pages
-
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :total_results
-
-        sig { params(total_results: Integer).void }
-        attr_writer :total_results
-
-        sig do
-          params(
-            page_number: Integer,
-            page_size: Integer,
-            total_pages: Integer,
-            total_results: Integer
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          page_number: nil,
-          page_size: nil,
-          total_pages: nil,
-          total_results: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              page_number: Integer,
-              page_size: Integer,
-              total_pages: Integer,
-              total_results: Integer
-            }
-          )
-        end
-        def to_hash
         end
       end
     end

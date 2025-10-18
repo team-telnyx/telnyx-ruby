@@ -41,7 +41,7 @@ module Telnyx
               doing_business_as: T.nilable(String),
               entity_type:
                 T.nilable(
-                  Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::OrSymbol
+                  Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::OrSymbol
                 ),
               help_message_response: T.nilable(String),
               opt_in_confirmation_response: T.nilable(String),
@@ -183,7 +183,7 @@ module Telnyx
               doing_business_as: T.nilable(String),
               entity_type:
                 T.nilable(
-                  Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::OrSymbol
+                  Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::OrSymbol
                 ),
               help_message_response: T.nilable(String),
               opt_in_confirmation_response: T.nilable(String),

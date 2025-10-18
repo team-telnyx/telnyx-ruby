@@ -31,7 +31,7 @@ class Telnyx::Test::Resources::OAuthGrantsTest < Telnyx::Test::ResourceTest
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::OAuthGrant]) | nil,
-        meta: Telnyx::Models::OAuthGrantListResponse::Meta | nil
+        meta: Telnyx::PaginationMetaOAuth | nil
       }
     end
   end

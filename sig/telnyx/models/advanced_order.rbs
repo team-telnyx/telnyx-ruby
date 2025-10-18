@@ -1,0 +1,105 @@
+module Telnyx
+  module Models
+    type advanced_order =
+      {
+        area_code: String,
+        comments: String,
+        country_code: String,
+        customer_reference: String,
+        features: ::Array[Telnyx::Models::AdvancedOrder::feature],
+        phone_number_type: Telnyx::Models::AdvancedOrder::phone_number_type,
+        quantity: Integer,
+        requirement_group_id: String
+      }
+
+    class AdvancedOrder < Telnyx::Internal::Type::BaseModel
+      attr_reader area_code: String?
+
+      def area_code=: (String) -> String
+
+      attr_reader comments: String?
+
+      def comments=: (String) -> String
+
+      attr_reader country_code: String?
+
+      def country_code=: (String) -> String
+
+      attr_reader customer_reference: String?
+
+      def customer_reference=: (String) -> String
+
+      attr_reader features: ::Array[Telnyx::Models::AdvancedOrder::feature]?
+
+      def features=: (
+        ::Array[Telnyx::Models::AdvancedOrder::feature]
+      ) -> ::Array[Telnyx::Models::AdvancedOrder::feature]
+
+      attr_reader phone_number_type: Telnyx::Models::AdvancedOrder::phone_number_type?
+
+      def phone_number_type=: (
+        Telnyx::Models::AdvancedOrder::phone_number_type
+      ) -> Telnyx::Models::AdvancedOrder::phone_number_type
+
+      attr_reader quantity: Integer?
+
+      def quantity=: (Integer) -> Integer
+
+      attr_reader requirement_group_id: String?
+
+      def requirement_group_id=: (String) -> String
+
+      def initialize: (
+        ?area_code: String,
+        ?comments: String,
+        ?country_code: String,
+        ?customer_reference: String,
+        ?features: ::Array[Telnyx::Models::AdvancedOrder::feature],
+        ?phone_number_type: Telnyx::Models::AdvancedOrder::phone_number_type,
+        ?quantity: Integer,
+        ?requirement_group_id: String
+      ) -> void
+
+      def to_hash: -> {
+        area_code: String,
+        comments: String,
+        country_code: String,
+        customer_reference: String,
+        features: ::Array[Telnyx::Models::AdvancedOrder::feature],
+        phone_number_type: Telnyx::Models::AdvancedOrder::phone_number_type,
+        quantity: Integer,
+        requirement_group_id: String
+      }
+
+      type feature = :sms | :mms | :voice | :fax | :emergency
+
+      module Feature
+        extend Telnyx::Internal::Type::Enum
+
+        SMS: :sms
+        MMS: :mms
+        VOICE: :voice
+        FAX: :fax
+        EMERGENCY: :emergency
+
+        def self?.values: -> ::Array[Telnyx::Models::AdvancedOrder::feature]
+      end
+
+      type phone_number_type =
+        :local | :mobile | :toll_free | :shared_cost | :national | :landline
+
+      module PhoneNumberType
+        extend Telnyx::Internal::Type::Enum
+
+        LOCAL: :local
+        MOBILE: :mobile
+        TOLL_FREE: :toll_free
+        SHARED_COST: :shared_cost
+        NATIONAL: :national
+        LANDLINE: :landline
+
+        def self?.values: -> ::Array[Telnyx::Models::AdvancedOrder::phone_number_type]
+      end
+    end
+  end
+end

@@ -63,7 +63,7 @@ class Telnyx::Test::Resources::VerifyProfilesTest < Telnyx::Test::ResourceTest
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::VerifyProfile]),
-        meta: Telnyx::Models::VerifyProfileListResponse::Meta
+        meta: Telnyx::Verifications::VerifyMeta
       }
     end
   end
@@ -91,7 +91,7 @@ class Telnyx::Test::Resources::VerifyProfilesTest < Telnyx::Test::ResourceTest
       @telnyx.verify_profiles.create_template(text: "Your {{app_name}} verification code is: {{code}}.")
 
     assert_pattern do
-      response => Telnyx::Models::VerifyProfileCreateTemplateResponse
+      response => Telnyx::MessageTemplate
     end
 
     assert_pattern do
@@ -127,7 +127,7 @@ class Telnyx::Test::Resources::VerifyProfilesTest < Telnyx::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Telnyx::Models::VerifyProfileUpdateTemplateResponse
+      response => Telnyx::MessageTemplate
     end
 
     assert_pattern do

@@ -70,18 +70,14 @@ module Telnyx
 
         # Audio sampling rate.
         sig do
-          returns(
-            T.nilable(
-              Telnyx::Calls::ActionStartStreamingParams::StreamBidirectionalSamplingRate::OrInteger
-            )
-          )
+          returns(T.nilable(Telnyx::StreamBidirectionalSamplingRate::OrInteger))
         end
         attr_reader :stream_bidirectional_sampling_rate
 
         sig do
           params(
             stream_bidirectional_sampling_rate:
-              Telnyx::Calls::ActionStartStreamingParams::StreamBidirectionalSamplingRate::OrInteger
+              Telnyx::StreamBidirectionalSamplingRate::OrInteger
           ).void
         end
         attr_writer :stream_bidirectional_sampling_rate
@@ -144,7 +140,7 @@ module Telnyx
             stream_bidirectional_mode:
               Telnyx::StreamBidirectionalMode::OrSymbol,
             stream_bidirectional_sampling_rate:
-              Telnyx::Calls::ActionStartStreamingParams::StreamBidirectionalSamplingRate::OrInteger,
+              Telnyx::StreamBidirectionalSamplingRate::OrInteger,
             stream_bidirectional_target_legs:
               Telnyx::StreamBidirectionalTargetLegs::OrSymbol,
             stream_codec: Telnyx::StreamCodec::OrSymbol,
@@ -196,7 +192,7 @@ module Telnyx
               stream_bidirectional_mode:
                 Telnyx::StreamBidirectionalMode::OrSymbol,
               stream_bidirectional_sampling_rate:
-                Telnyx::Calls::ActionStartStreamingParams::StreamBidirectionalSamplingRate::OrInteger,
+                Telnyx::StreamBidirectionalSamplingRate::OrInteger,
               stream_bidirectional_target_legs:
                 Telnyx::StreamBidirectionalTargetLegs::OrSymbol,
               stream_codec: Telnyx::StreamCodec::OrSymbol,
@@ -208,56 +204,6 @@ module Telnyx
           )
         end
         def to_hash
-        end
-
-        # Audio sampling rate.
-        module StreamBidirectionalSamplingRate
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedInteger =
-            T.type_alias do
-              T.all(
-                Integer,
-                Telnyx::Calls::ActionStartStreamingParams::StreamBidirectionalSamplingRate
-              )
-            end
-          OrInteger = T.type_alias { Integer }
-
-          STREAM_BIDIRECTIONAL_SAMPLING_RATE_8000 =
-            T.let(
-              8000,
-              Telnyx::Calls::ActionStartStreamingParams::StreamBidirectionalSamplingRate::TaggedInteger
-            )
-          STREAM_BIDIRECTIONAL_SAMPLING_RATE_16000 =
-            T.let(
-              16_000,
-              Telnyx::Calls::ActionStartStreamingParams::StreamBidirectionalSamplingRate::TaggedInteger
-            )
-          STREAM_BIDIRECTIONAL_SAMPLING_RATE_22050 =
-            T.let(
-              22_050,
-              Telnyx::Calls::ActionStartStreamingParams::StreamBidirectionalSamplingRate::TaggedInteger
-            )
-          STREAM_BIDIRECTIONAL_SAMPLING_RATE_24000 =
-            T.let(
-              24_000,
-              Telnyx::Calls::ActionStartStreamingParams::StreamBidirectionalSamplingRate::TaggedInteger
-            )
-          STREAM_BIDIRECTIONAL_SAMPLING_RATE_48000 =
-            T.let(
-              48_000,
-              Telnyx::Calls::ActionStartStreamingParams::StreamBidirectionalSamplingRate::TaggedInteger
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Calls::ActionStartStreamingParams::StreamBidirectionalSamplingRate::TaggedInteger
-              ]
-            )
-          end
-          def self.values
-          end
         end
 
         # Specifies which track should be streamed.

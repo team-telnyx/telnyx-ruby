@@ -17,7 +17,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::AI::Assistants::VersionRetrieveResponse]
+          # @return [Telnyx::Models::AI::InferenceEmbedding]
           #
           # @see Telnyx::Models::AI::Assistants::VersionRetrieveParams
           def retrieve(version_id, params)
@@ -30,7 +30,7 @@ module Telnyx
               method: :get,
               path: ["ai/assistants/%1$s/versions/%2$s", assistant_id, version_id],
               query: parsed,
-              model: Telnyx::Models::AI::Assistants::VersionRetrieveResponse,
+              model: Telnyx::AI::InferenceEmbedding,
               options: options
             )
           end
@@ -81,7 +81,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::AI::Assistants::VersionUpdateResponse]
+          # @return [Telnyx::Models::AI::InferenceEmbedding]
           #
           # @see Telnyx::Models::AI::Assistants::VersionUpdateParams
           def update(version_id, params)
@@ -94,7 +94,7 @@ module Telnyx
               method: :post,
               path: ["ai/assistants/%1$s/versions/%2$s", assistant_id, version_id],
               body: parsed,
-              model: Telnyx::Models::AI::Assistants::VersionUpdateResponse,
+              model: Telnyx::AI::InferenceEmbedding,
               options: options
             )
           end
@@ -155,7 +155,7 @@ module Telnyx
           # @param assistant_id [String]
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::AI::Assistants::VersionPromoteResponse]
+          # @return [Telnyx::Models::AI::InferenceEmbedding]
           #
           # @see Telnyx::Models::AI::Assistants::VersionPromoteParams
           def promote(version_id, params)
@@ -167,7 +167,7 @@ module Telnyx
             @client.request(
               method: :post,
               path: ["ai/assistants/%1$s/versions/%2$s/promote", assistant_id, version_id],
-              model: Telnyx::Models::AI::Assistants::VersionPromoteResponse,
+              model: Telnyx::AI::InferenceEmbedding,
               options: options
             )
           end

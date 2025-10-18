@@ -10,10 +10,8 @@ module Telnyx
           comments: String,
           country_code: String,
           customer_reference: String,
-          features:
-            T::Array[Telnyx::AdvancedOrderCreateParams::Feature::OrSymbol],
-          phone_number_type:
-            Telnyx::AdvancedOrderCreateParams::PhoneNumberType::OrSymbol,
+          features: T::Array[Telnyx::AdvancedOrder::Feature::OrSymbol],
+          phone_number_type: Telnyx::AdvancedOrder::PhoneNumberType::OrSymbol,
           quantity: Integer,
           requirement_group_id: String,
           request_options: Telnyx::RequestOptions::OrHash
@@ -60,12 +58,8 @@ module Telnyx
           comments: String,
           country_code: String,
           customer_reference: String,
-          features:
-            T::Array[
-              Telnyx::AdvancedOrderUpdateRequirementGroupParams::Feature::OrSymbol
-            ],
-          phone_number_type:
-            Telnyx::AdvancedOrderUpdateRequirementGroupParams::PhoneNumberType::OrSymbol,
+          features: T::Array[Telnyx::AdvancedOrder::Feature::OrSymbol],
+          phone_number_type: Telnyx::AdvancedOrder::PhoneNumberType::OrSymbol,
           quantity: Integer,
           requirement_group_id: String,
           request_options: Telnyx::RequestOptions::OrHash
