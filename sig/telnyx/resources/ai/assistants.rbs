@@ -30,7 +30,7 @@ module Telnyx
           ?transcription: Telnyx::AI::TranscriptionSettings,
           ?voice_settings: Telnyx::AI::VoiceSettings,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::AI::AssistantCreateResponse
+        ) -> Telnyx::AI::InferenceEmbedding
 
         def retrieve: (
           String assistant_id,
@@ -39,7 +39,7 @@ module Telnyx
           ?from: String,
           ?to: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::AI::AssistantRetrieveResponse
+        ) -> Telnyx::AI::InferenceEmbedding
 
         def update: (
           String assistant_id,
@@ -83,7 +83,7 @@ module Telnyx
         def clone_: (
           String assistant_id,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::AI::AssistantCloneResponse
+        ) -> Telnyx::AI::InferenceEmbedding
 
         def get_texml: (
           String assistant_id,

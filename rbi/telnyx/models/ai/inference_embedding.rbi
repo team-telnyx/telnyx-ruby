@@ -3,13 +3,10 @@
 module Telnyx
   module Models
     module AI
-      class AssistantCloneResponse < Telnyx::Internal::Type::BaseModel
+      class InferenceEmbedding < Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
-            T.any(
-              Telnyx::Models::AI::AssistantCloneResponse,
-              Telnyx::Internal::AnyHash
-            )
+            T.any(Telnyx::AI::InferenceEmbedding, Telnyx::Internal::AnyHash)
           end
 
         sig { returns(String) }

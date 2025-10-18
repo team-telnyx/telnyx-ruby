@@ -43,7 +43,7 @@ module Telnyx
       def create_template: (
         text: String,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::VerifyProfileCreateTemplateResponse
+      ) -> Telnyx::MessageTemplate
 
       def retrieve_templates: (
         ?request_options: Telnyx::request_opts
@@ -53,7 +53,7 @@ module Telnyx
         String template_id,
         text: String,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::VerifyProfileUpdateTemplateResponse
+      ) -> Telnyx::MessageTemplate
 
       def initialize: (client: Telnyx::Client) -> void
     end

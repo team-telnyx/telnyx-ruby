@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type stream_bidirectional_sampling_rate =
+      8000 | 16000 | 22050 | 24000 | 48000
+
+    module StreamBidirectionalSamplingRate
+      extend Telnyx::Internal::Type::Enum
+
+      STREAM_BIDIRECTIONAL_SAMPLING_RATE_8000: 8000
+      STREAM_BIDIRECTIONAL_SAMPLING_RATE_16000: 16000
+      STREAM_BIDIRECTIONAL_SAMPLING_RATE_22050: 22050
+      STREAM_BIDIRECTIONAL_SAMPLING_RATE_24000: 24000
+      STREAM_BIDIRECTIONAL_SAMPLING_RATE_48000: 48000
+
+      def self?.values: -> ::Array[Telnyx::Models::stream_bidirectional_sampling_rate]
+    end
+  end
+end

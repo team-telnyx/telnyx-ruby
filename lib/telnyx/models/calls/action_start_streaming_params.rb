@@ -49,9 +49,8 @@ module Telnyx
         # @!attribute stream_bidirectional_sampling_rate
         #   Audio sampling rate.
         #
-        #   @return [Integer, Telnyx::Models::Calls::ActionStartStreamingParams::StreamBidirectionalSamplingRate, nil]
-        optional :stream_bidirectional_sampling_rate,
-                 enum: -> { Telnyx::Calls::ActionStartStreamingParams::StreamBidirectionalSamplingRate }
+        #   @return [Integer, Telnyx::Models::StreamBidirectionalSamplingRate, nil]
+        optional :stream_bidirectional_sampling_rate, enum: -> { Telnyx::StreamBidirectionalSamplingRate }
 
         # @!attribute stream_bidirectional_target_legs
         #   Specifies which call legs should receive the bidirectional stream audio.
@@ -95,7 +94,7 @@ module Telnyx
         #
         #   @param stream_bidirectional_mode [Symbol, Telnyx::Models::StreamBidirectionalMode] Configures method of bidirectional streaming (mp3, rtp).
         #
-        #   @param stream_bidirectional_sampling_rate [Integer, Telnyx::Models::Calls::ActionStartStreamingParams::StreamBidirectionalSamplingRate] Audio sampling rate.
+        #   @param stream_bidirectional_sampling_rate [Integer, Telnyx::Models::StreamBidirectionalSamplingRate] Audio sampling rate.
         #
         #   @param stream_bidirectional_target_legs [Symbol, Telnyx::Models::StreamBidirectionalTargetLegs] Specifies which call legs should receive the bidirectional stream audio.
         #
@@ -106,20 +105,6 @@ module Telnyx
         #   @param stream_url [String] The destination WebSocket address where the stream is going to be delivered.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-        # Audio sampling rate.
-        module StreamBidirectionalSamplingRate
-          extend Telnyx::Internal::Type::Enum
-
-          STREAM_BIDIRECTIONAL_SAMPLING_RATE_8000 = 8000
-          STREAM_BIDIRECTIONAL_SAMPLING_RATE_16000 = 16_000
-          STREAM_BIDIRECTIONAL_SAMPLING_RATE_22050 = 22_050
-          STREAM_BIDIRECTIONAL_SAMPLING_RATE_24000 = 24_000
-          STREAM_BIDIRECTIONAL_SAMPLING_RATE_48000 = 48_000
-
-          # @!method self.values
-          #   @return [Array<Integer>]
-        end
 
         # Specifies which track should be streamed.
         module StreamTrack

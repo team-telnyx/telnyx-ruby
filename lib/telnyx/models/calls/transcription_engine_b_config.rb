@@ -7,8 +7,8 @@ module Telnyx
         # @!attribute language
         #   Language to use for speech recognition
         #
-        #   @return [Symbol, Telnyx::Models::Calls::TranscriptionEngineBConfig::Language, nil]
-        optional :language, enum: -> { Telnyx::Calls::TranscriptionEngineBConfig::Language }
+        #   @return [Symbol, Telnyx::Models::Calls::TelnyxTranscriptionLanguage, nil]
+        optional :language, enum: -> { Telnyx::Calls::TelnyxTranscriptionLanguage }
 
         # @!attribute transcription_engine
         #   Engine identifier for Telnyx transcription service
@@ -24,122 +24,11 @@ module Telnyx
         optional :transcription_model, enum: -> { Telnyx::Calls::TranscriptionEngineBConfig::TranscriptionModel }
 
         # @!method initialize(language: nil, transcription_engine: nil, transcription_model: nil)
-        #   @param language [Symbol, Telnyx::Models::Calls::TranscriptionEngineBConfig::Language] Language to use for speech recognition
+        #   @param language [Symbol, Telnyx::Models::Calls::TelnyxTranscriptionLanguage] Language to use for speech recognition
         #
         #   @param transcription_engine [Symbol, Telnyx::Models::Calls::TranscriptionEngineBConfig::TranscriptionEngine] Engine identifier for Telnyx transcription service
         #
         #   @param transcription_model [Symbol, Telnyx::Models::Calls::TranscriptionEngineBConfig::TranscriptionModel] The model to use for transcription.
-
-        # Language to use for speech recognition
-        #
-        # @see Telnyx::Models::Calls::TranscriptionEngineBConfig#language
-        module Language
-          extend Telnyx::Internal::Type::Enum
-
-          EN = :en
-          ZH = :zh
-          DE = :de
-          ES = :es
-          RU = :ru
-          KO = :ko
-          FR = :fr
-          JA = :ja
-          PT = :pt
-          TR = :tr
-          PL = :pl
-          CA = :ca
-          NL = :nl
-          AR = :ar
-          SV = :sv
-          IT = :it
-          ID = :id
-          HI = :hi
-          FI = :fi
-          VI = :vi
-          HE = :he
-          UK = :uk
-          EL = :el
-          MS = :ms
-          CS = :cs
-          RO = :ro
-          DA = :da
-          HU = :hu
-          TA = :ta
-          NO = :no
-          TH = :th
-          UR = :ur
-          HR = :hr
-          BG = :bg
-          LT = :lt
-          LA = :la
-          MI = :mi
-          ML = :ml
-          CY = :cy
-          SK = :sk
-          TE = :te
-          FA = :fa
-          LV = :lv
-          BN = :bn
-          SR = :sr
-          AZ = :az
-          SL = :sl
-          KN = :kn
-          ET = :et
-          MK = :mk
-          BR = :br
-          EU = :eu
-          IS = :is
-          HY = :hy
-          NE = :ne
-          MN = :mn
-          BS = :bs
-          KK = :kk
-          SQ = :sq
-          SW = :sw
-          GL = :gl
-          MR = :mr
-          PA = :pa
-          SI = :si
-          KM = :km
-          SN = :sn
-          YO = :yo
-          SO = :so
-          AF = :af
-          OC = :oc
-          KA = :ka
-          BE = :be
-          TG = :tg
-          SD = :sd
-          GU = :gu
-          AM = :am
-          YI = :yi
-          LO = :lo
-          UZ = :uz
-          FO = :fo
-          HT = :ht
-          PS = :ps
-          TK = :tk
-          NN = :nn
-          MT = :mt
-          SA = :sa
-          LB = :lb
-          MY = :my
-          BO = :bo
-          TL = :tl
-          MG = :mg
-          AS = :as
-          TT = :tt
-          HAW = :haw
-          LN = :ln
-          HA = :ha
-          BA = :ba
-          JW = :jw
-          SU = :su
-          AUTO_DETECT = :auto_detect
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
 
         # Engine identifier for Telnyx transcription service
         #

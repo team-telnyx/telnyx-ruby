@@ -1104,7 +1104,7 @@ module Telnyx
         #
         # @param stream_bidirectional_mode [Symbol, Telnyx::Models::StreamBidirectionalMode] Configures method of bidirectional streaming (mp3, rtp).
         #
-        # @param stream_bidirectional_sampling_rate [Integer, Telnyx::Models::Calls::ActionStartStreamingParams::StreamBidirectionalSamplingRate] Audio sampling rate.
+        # @param stream_bidirectional_sampling_rate [Integer, Telnyx::Models::StreamBidirectionalSamplingRate] Audio sampling rate.
         #
         # @param stream_bidirectional_target_legs [Symbol, Telnyx::Models::StreamBidirectionalTargetLegs] Specifies which call legs should receive the bidirectional stream audio.
         #

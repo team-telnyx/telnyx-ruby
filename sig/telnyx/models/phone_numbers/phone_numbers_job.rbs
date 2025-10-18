@@ -106,7 +106,7 @@ module Telnyx
         type failed_operation =
           {
             id: String,
-            errors: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error],
+            errors: ::Array[Telnyx::PhoneNumberBlocks::JobError],
             phone_number: String
           }
 
@@ -115,11 +115,11 @@ module Telnyx
 
           def id=: (String) -> String
 
-          attr_reader errors: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error]?
+          attr_reader errors: ::Array[Telnyx::PhoneNumberBlocks::JobError]?
 
           def errors=: (
-            ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error]
-          ) -> ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error]
+            ::Array[Telnyx::PhoneNumberBlocks::JobError]
+          ) -> ::Array[Telnyx::PhoneNumberBlocks::JobError]
 
           attr_reader phone_number: String?
 
@@ -127,90 +127,15 @@ module Telnyx
 
           def initialize: (
             ?id: String,
-            ?errors: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error],
+            ?errors: ::Array[Telnyx::PhoneNumberBlocks::JobError],
             ?phone_number: String
           ) -> void
 
           def to_hash: -> {
             id: String,
-            errors: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error],
+            errors: ::Array[Telnyx::PhoneNumberBlocks::JobError],
             phone_number: String
           }
-
-          type error =
-            {
-              code: String,
-              title: String,
-              detail: String,
-              meta: Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Meta,
-              source: Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Source
-            }
-
-          class Error < Telnyx::Internal::Type::BaseModel
-            attr_accessor code: String
-
-            attr_accessor title: String
-
-            attr_reader detail: String?
-
-            def detail=: (String) -> String
-
-            attr_reader meta: Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Meta?
-
-            def meta=: (
-              Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Meta
-            ) -> Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Meta
-
-            attr_reader source: Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Source?
-
-            def source=: (
-              Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Source
-            ) -> Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Source
-
-            def initialize: (
-              code: String,
-              title: String,
-              ?detail: String,
-              ?meta: Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Meta,
-              ?source: Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Source
-            ) -> void
-
-            def to_hash: -> {
-              code: String,
-              title: String,
-              detail: String,
-              meta: Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Meta,
-              source: Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Source
-            }
-
-            type meta = { url: String }
-
-            class Meta < Telnyx::Internal::Type::BaseModel
-              attr_reader url: String?
-
-              def url=: (String) -> String
-
-              def initialize: (?url: String) -> void
-
-              def to_hash: -> { url: String }
-            end
-
-            type source = { parameter: String, pointer: String }
-
-            class Source < Telnyx::Internal::Type::BaseModel
-              attr_reader parameter: String?
-
-              def parameter=: (String) -> String
-
-              attr_reader pointer: String?
-
-              def pointer=: (String) -> String
-
-              def initialize: (?parameter: String, ?pointer: String) -> void
-
-              def to_hash: -> { parameter: String, pointer: String }
-            end
-          end
         end
 
         type pending_operation = { id: String, phone_number: String }

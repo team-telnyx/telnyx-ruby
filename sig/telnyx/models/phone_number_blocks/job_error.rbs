@@ -1,0 +1,80 @@
+module Telnyx
+  module Models
+    module PhoneNumberBlocks
+      type job_error =
+        {
+          code: String,
+          title: String,
+          detail: String,
+          meta: Telnyx::PhoneNumberBlocks::JobError::Meta,
+          source: Telnyx::PhoneNumberBlocks::JobError::Source
+        }
+
+      class JobError < Telnyx::Internal::Type::BaseModel
+        attr_accessor code: String
+
+        attr_accessor title: String
+
+        attr_reader detail: String?
+
+        def detail=: (String) -> String
+
+        attr_reader meta: Telnyx::PhoneNumberBlocks::JobError::Meta?
+
+        def meta=: (
+          Telnyx::PhoneNumberBlocks::JobError::Meta
+        ) -> Telnyx::PhoneNumberBlocks::JobError::Meta
+
+        attr_reader source: Telnyx::PhoneNumberBlocks::JobError::Source?
+
+        def source=: (
+          Telnyx::PhoneNumberBlocks::JobError::Source
+        ) -> Telnyx::PhoneNumberBlocks::JobError::Source
+
+        def initialize: (
+          code: String,
+          title: String,
+          ?detail: String,
+          ?meta: Telnyx::PhoneNumberBlocks::JobError::Meta,
+          ?source: Telnyx::PhoneNumberBlocks::JobError::Source
+        ) -> void
+
+        def to_hash: -> {
+          code: String,
+          title: String,
+          detail: String,
+          meta: Telnyx::PhoneNumberBlocks::JobError::Meta,
+          source: Telnyx::PhoneNumberBlocks::JobError::Source
+        }
+
+        type meta = { url: String }
+
+        class Meta < Telnyx::Internal::Type::BaseModel
+          attr_reader url: String?
+
+          def url=: (String) -> String
+
+          def initialize: (?url: String) -> void
+
+          def to_hash: -> { url: String }
+        end
+
+        type source = { parameter: String, pointer: String }
+
+        class Source < Telnyx::Internal::Type::BaseModel
+          attr_reader parameter: String?
+
+          def parameter=: (String) -> String
+
+          attr_reader pointer: String?
+
+          def pointer=: (String) -> String
+
+          def initialize: (?parameter: String, ?pointer: String) -> void
+
+          def to_hash: -> { parameter: String, pointer: String }
+        end
+      end
+    end
+  end
+end

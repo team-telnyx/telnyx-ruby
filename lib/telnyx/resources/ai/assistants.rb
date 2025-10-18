@@ -60,7 +60,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::AI::AssistantCreateResponse]
+        # @return [Telnyx::Models::AI::InferenceEmbedding]
         #
         # @see Telnyx::Models::AI::AssistantCreateParams
         def create(params)
@@ -69,7 +69,7 @@ module Telnyx
             method: :post,
             path: "ai/assistants",
             body: parsed,
-            model: Telnyx::Models::AI::AssistantCreateResponse,
+            model: Telnyx::AI::InferenceEmbedding,
             options: options
           )
         end
@@ -85,7 +85,7 @@ module Telnyx
         # @param to [String]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::AI::AssistantRetrieveResponse]
+        # @return [Telnyx::Models::AI::InferenceEmbedding]
         #
         # @see Telnyx::Models::AI::AssistantRetrieveParams
         def retrieve(assistant_id, params = {})
@@ -94,7 +94,7 @@ module Telnyx
             method: :get,
             path: ["ai/assistants/%1$s", assistant_id],
             query: parsed,
-            model: Telnyx::Models::AI::AssistantRetrieveResponse,
+            model: Telnyx::AI::InferenceEmbedding,
             options: options
           )
         end
@@ -237,14 +237,14 @@ module Telnyx
         # @param assistant_id [String]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::AI::AssistantCloneResponse]
+        # @return [Telnyx::Models::AI::InferenceEmbedding]
         #
         # @see Telnyx::Models::AI::AssistantCloneParams
         def clone_(assistant_id, params = {})
           @client.request(
             method: :post,
             path: ["ai/assistants/%1$s/clone", assistant_id],
-            model: Telnyx::Models::AI::AssistantCloneResponse,
+            model: Telnyx::AI::InferenceEmbedding,
             options: params[:request_options]
           )
         end

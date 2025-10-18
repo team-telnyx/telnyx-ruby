@@ -1,7 +1,7 @@
 module Telnyx
   module Models
     module AI
-      type assistant_clone_response =
+      type inference_embedding =
         {
           id: String,
           created_at: Time,
@@ -24,7 +24,7 @@ module Telnyx
           voice_settings: Telnyx::AI::VoiceSettings
         }
 
-      class AssistantCloneResponse < Telnyx::Internal::Type::BaseModel
+      class InferenceEmbedding < Telnyx::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor created_at: Time

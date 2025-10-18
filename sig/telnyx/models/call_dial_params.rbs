@@ -39,7 +39,7 @@ module Telnyx
         sound_modifications: Telnyx::SoundModifications,
         stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
         stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
-        stream_bidirectional_sampling_rate: Telnyx::Models::CallDialParams::stream_bidirectional_sampling_rate,
+        stream_bidirectional_sampling_rate: Telnyx::Models::stream_bidirectional_sampling_rate,
         stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs,
         stream_codec: Telnyx::Models::stream_codec,
         stream_establish_before_call_originate: bool,
@@ -234,11 +234,11 @@ module Telnyx
         Telnyx::Models::stream_bidirectional_mode
       ) -> Telnyx::Models::stream_bidirectional_mode
 
-      attr_reader stream_bidirectional_sampling_rate: Telnyx::Models::CallDialParams::stream_bidirectional_sampling_rate?
+      attr_reader stream_bidirectional_sampling_rate: Telnyx::Models::stream_bidirectional_sampling_rate?
 
       def stream_bidirectional_sampling_rate=: (
-        Telnyx::Models::CallDialParams::stream_bidirectional_sampling_rate
-      ) -> Telnyx::Models::CallDialParams::stream_bidirectional_sampling_rate
+        Telnyx::Models::stream_bidirectional_sampling_rate
+      ) -> Telnyx::Models::stream_bidirectional_sampling_rate
 
       attr_reader stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs?
 
@@ -342,7 +342,7 @@ module Telnyx
         ?sound_modifications: Telnyx::SoundModifications,
         ?stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
         ?stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
-        ?stream_bidirectional_sampling_rate: Telnyx::Models::CallDialParams::stream_bidirectional_sampling_rate,
+        ?stream_bidirectional_sampling_rate: Telnyx::Models::stream_bidirectional_sampling_rate,
         ?stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs,
         ?stream_codec: Telnyx::Models::stream_codec,
         ?stream_establish_before_call_originate: bool,
@@ -397,7 +397,7 @@ module Telnyx
         sound_modifications: Telnyx::SoundModifications,
         stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
         stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
-        stream_bidirectional_sampling_rate: Telnyx::Models::CallDialParams::stream_bidirectional_sampling_rate,
+        stream_bidirectional_sampling_rate: Telnyx::Models::stream_bidirectional_sampling_rate,
         stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs,
         stream_codec: Telnyx::Models::stream_codec,
         stream_establish_before_call_originate: bool,
@@ -743,21 +743,6 @@ module Telnyx
         TLS: :TLS
 
         def self?.values: -> ::Array[Telnyx::Models::CallDialParams::sip_transport_protocol]
-      end
-
-      type stream_bidirectional_sampling_rate =
-        8000 | 16000 | 22050 | 24000 | 48000
-
-      module StreamBidirectionalSamplingRate
-        extend Telnyx::Internal::Type::Enum
-
-        STREAM_BIDIRECTIONAL_SAMPLING_RATE_8000: 8000
-        STREAM_BIDIRECTIONAL_SAMPLING_RATE_16000: 16000
-        STREAM_BIDIRECTIONAL_SAMPLING_RATE_22050: 22050
-        STREAM_BIDIRECTIONAL_SAMPLING_RATE_24000: 24000
-        STREAM_BIDIRECTIONAL_SAMPLING_RATE_48000: 48000
-
-        def self?.values: -> ::Array[Telnyx::Models::CallDialParams::stream_bidirectional_sampling_rate]
       end
 
       type stream_track = :inbound_track | :outbound_track | :both_tracks

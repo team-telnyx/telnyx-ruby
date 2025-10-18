@@ -4,7 +4,7 @@ module Telnyx
   module Models
     module AI
       # @see Telnyx::Resources::AI::Assistants#create
-      class AssistantCreateResponse < Telnyx::Internal::Type::BaseModel
+      class InferenceEmbedding < Telnyx::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String]
@@ -122,7 +122,7 @@ module Telnyx
 
         # @!method initialize(id:, created_at:, instructions:, model:, name:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, import_metadata: nil, insight_settings: nil, llm_api_key_ref: nil, messaging_settings: nil, privacy_settings: nil, telephony_settings: nil, tools: nil, transcription: nil, voice_settings: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::AI::AssistantCreateResponse} for more details.
+        #   {Telnyx::Models::AI::InferenceEmbedding} for more details.
         #
         #   @param id [String]
         #

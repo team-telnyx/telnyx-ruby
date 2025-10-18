@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::AI::Assistants::VersionsTest < Telnyx::Test::Reso
     response = @telnyx.ai.assistants.versions.retrieve("version_id", assistant_id: "assistant_id")
 
     assert_pattern do
-      response => Telnyx::Models::AI::Assistants::VersionRetrieveResponse
+      response => Telnyx::AI::InferenceEmbedding
     end
 
     assert_pattern do
@@ -43,7 +43,7 @@ class Telnyx::Test::Resources::AI::Assistants::VersionsTest < Telnyx::Test::Reso
     response = @telnyx.ai.assistants.versions.update("version_id", assistant_id: "assistant_id")
 
     assert_pattern do
-      response => Telnyx::Models::AI::Assistants::VersionUpdateResponse
+      response => Telnyx::AI::InferenceEmbedding
     end
 
     assert_pattern do
@@ -82,7 +82,7 @@ class Telnyx::Test::Resources::AI::Assistants::VersionsTest < Telnyx::Test::Reso
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantsList::Data])
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::InferenceEmbedding])
       }
     end
   end
@@ -103,7 +103,7 @@ class Telnyx::Test::Resources::AI::Assistants::VersionsTest < Telnyx::Test::Reso
     response = @telnyx.ai.assistants.versions.promote("version_id", assistant_id: "assistant_id")
 
     assert_pattern do
-      response => Telnyx::Models::AI::Assistants::VersionPromoteResponse
+      response => Telnyx::AI::InferenceEmbedding
     end
 
     assert_pattern do

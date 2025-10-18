@@ -1,9 +1,9 @@
 module Telnyx
   module Models
-    type verify_profile_create_template_response =
+    type message_template =
       { data: Telnyx::VerifyProfileMessageTemplateResponse }
 
-    class VerifyProfileCreateTemplateResponse < Telnyx::Internal::Type::BaseModel
+    class MessageTemplate < Telnyx::Internal::Type::BaseModel
       attr_reader data: Telnyx::VerifyProfileMessageTemplateResponse?
 
       def data=: (

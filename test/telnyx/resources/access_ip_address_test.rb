@@ -61,7 +61,7 @@ class Telnyx::Test::Resources::AccessIPAddressTest < Telnyx::Test::ResourceTest
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AccessIPAddressResponse]),
-        meta: Telnyx::Models::AccessIPAddressListResponse::Meta
+        meta: Telnyx::PaginationMetaCloudflareIPListSync
       }
     end
   end

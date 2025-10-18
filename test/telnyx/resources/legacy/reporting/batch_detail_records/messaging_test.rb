@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::MessagingT
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse]) | nil,
-        meta: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingListResponse::Meta | nil
+        meta: Telnyx::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta | nil
       }
     end
   end

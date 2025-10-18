@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.assistants.create(instructions: "instructions", model: "model", name: "name")
 
     assert_pattern do
-      response => Telnyx::Models::AI::AssistantCreateResponse
+      response => Telnyx::AI::InferenceEmbedding
     end
 
     assert_pattern do
@@ -43,7 +43,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.assistants.retrieve("assistant_id")
 
     assert_pattern do
-      response => Telnyx::Models::AI::AssistantRetrieveResponse
+      response => Telnyx::AI::InferenceEmbedding
     end
 
     assert_pattern do
@@ -92,7 +92,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantsList::Data])
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::InferenceEmbedding])
       }
     end
   end
@@ -142,7 +142,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.assistants.clone_("assistant_id")
 
     assert_pattern do
-      response => Telnyx::Models::AI::AssistantCloneResponse
+      response => Telnyx::AI::InferenceEmbedding
     end
 
     assert_pattern do
@@ -191,7 +191,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantsList::Data])
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::InferenceEmbedding])
       }
     end
   end

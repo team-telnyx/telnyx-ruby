@@ -176,9 +176,9 @@ module Telnyx
           # @!attribute entity_type
           #   Business entity classification
           #
-          #   @return [Symbol, Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest::EntityType, nil]
+          #   @return [Symbol, Telnyx::Models::MessagingTollfree::Verification::TollFreeVerificationEntityType, nil]
           optional :entity_type,
-                   enum: -> { Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType },
+                   enum: -> { Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType },
                    api_name: :entityType,
                    nil?: true
 
@@ -277,7 +277,7 @@ module Telnyx
           #
           #   @param doing_business_as [String, nil] Doing Business As (DBA) name if different from legal name
           #
-          #   @param entity_type [Symbol, Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest::EntityType, nil] Business entity classification
+          #   @param entity_type [Symbol, Telnyx::Models::MessagingTollfree::Verification::TollFreeVerificationEntityType, nil] Business entity classification
           #
           #   @param help_message_response [String, nil] The message returned when users text 'HELP'
           #
@@ -290,22 +290,6 @@ module Telnyx
           #   @param terms_and_condition_url [String, nil] URL pointing to the business's terms and conditions. Plain string, no URL format
           #
           #   @param webhook_url [String] URL that should receive webhooks relating to this verification request
-
-          # Business entity classification
-          #
-          # @see Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest#entity_type
-          module EntityType
-            extend Telnyx::Internal::Type::Enum
-
-            SOLE_PROPRIETOR = :SOLE_PROPRIETOR
-            PRIVATE_PROFIT = :PRIVATE_PROFIT
-            PUBLIC_PROFIT = :PUBLIC_PROFIT
-            NON_PROFIT = :NON_PROFIT
-            GOVERNMENT = :GOVERNMENT
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
         end
       end
     end

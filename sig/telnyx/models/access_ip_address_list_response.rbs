@@ -3,55 +3,23 @@ module Telnyx
     type access_ip_address_list_response =
       {
         data: ::Array[Telnyx::AccessIPAddressResponse],
-        meta: Telnyx::Models::AccessIPAddressListResponse::Meta
+        meta: Telnyx::PaginationMetaCloudflareIPListSync
       }
 
     class AccessIPAddressListResponse < Telnyx::Internal::Type::BaseModel
       attr_accessor data: ::Array[Telnyx::AccessIPAddressResponse]
 
-      attr_accessor meta: Telnyx::Models::AccessIPAddressListResponse::Meta
+      attr_accessor meta: Telnyx::PaginationMetaCloudflareIPListSync
 
       def initialize: (
         data: ::Array[Telnyx::AccessIPAddressResponse],
-        meta: Telnyx::Models::AccessIPAddressListResponse::Meta
+        meta: Telnyx::PaginationMetaCloudflareIPListSync
       ) -> void
 
       def to_hash: -> {
         data: ::Array[Telnyx::AccessIPAddressResponse],
-        meta: Telnyx::Models::AccessIPAddressListResponse::Meta
+        meta: Telnyx::PaginationMetaCloudflareIPListSync
       }
-
-      type meta =
-        {
-          page_number: Integer,
-          page_size: Integer,
-          total_pages: Integer,
-          total_results: Integer
-        }
-
-      class Meta < Telnyx::Internal::Type::BaseModel
-        attr_accessor page_number: Integer
-
-        attr_accessor page_size: Integer
-
-        attr_accessor total_pages: Integer
-
-        attr_accessor total_results: Integer
-
-        def initialize: (
-          page_number: Integer,
-          page_size: Integer,
-          total_pages: Integer,
-          total_results: Integer
-        ) -> void
-
-        def to_hash: -> {
-          page_number: Integer,
-          page_size: Integer,
-          total_pages: Integer,
-          total_results: Integer
-        }
-      end
     end
   end
 end

@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.4.0 (2025-10-18)
+
+Full Changelog: [v4.3.0...v4.4.0](https://github.com/team-telnyx/telnyx-ruby/compare/v4.3.0...v4.4.0)
+
+### Features
+
+* define more models ([a923e21](https://github.com/team-telnyx/telnyx-ruby/commit/a923e2121ff330f9bd2d837cc3a8fc3915498ccd))
+
 ## 4.3.0 (2025-10-16)
 
 Full Changelog: [v4.2.0...v4.3.0](https://github.com/team-telnyx/telnyx-ruby/compare/v4.2.0...v4.3.0)

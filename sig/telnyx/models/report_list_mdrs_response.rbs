@@ -3,7 +3,7 @@ module Telnyx
     type report_list_mdrs_response =
       {
         data: ::Array[Telnyx::Models::ReportListMdrsResponse::Data],
-        meta: Telnyx::Models::ReportListMdrsResponse::Meta
+        meta: Telnyx::Reports::PaginationMetaReporting
       }
 
     class ReportListMdrsResponse < Telnyx::Internal::Type::BaseModel
@@ -13,20 +13,20 @@ module Telnyx
         ::Array[Telnyx::Models::ReportListMdrsResponse::Data]
       ) -> ::Array[Telnyx::Models::ReportListMdrsResponse::Data]
 
-      attr_reader meta: Telnyx::Models::ReportListMdrsResponse::Meta?
+      attr_reader meta: Telnyx::Reports::PaginationMetaReporting?
 
       def meta=: (
-        Telnyx::Models::ReportListMdrsResponse::Meta
-      ) -> Telnyx::Models::ReportListMdrsResponse::Meta
+        Telnyx::Reports::PaginationMetaReporting
+      ) -> Telnyx::Reports::PaginationMetaReporting
 
       def initialize: (
         ?data: ::Array[Telnyx::Models::ReportListMdrsResponse::Data],
-        ?meta: Telnyx::Models::ReportListMdrsResponse::Meta
+        ?meta: Telnyx::Reports::PaginationMetaReporting
       ) -> void
 
       def to_hash: -> {
         data: ::Array[Telnyx::Models::ReportListMdrsResponse::Data],
-        meta: Telnyx::Models::ReportListMdrsResponse::Meta
+        meta: Telnyx::Reports::PaginationMetaReporting
       }
 
       type data =
@@ -184,46 +184,6 @@ module Telnyx
 
           def self?.values: -> ::Array[Telnyx::Models::ReportListMdrsResponse::Data::status]
         end
-      end
-
-      type meta =
-        {
-          page_number: Integer,
-          page_size: Integer,
-          total_pages: Integer,
-          total_results: Integer
-        }
-
-      class Meta < Telnyx::Internal::Type::BaseModel
-        attr_reader page_number: Integer?
-
-        def page_number=: (Integer) -> Integer
-
-        attr_reader page_size: Integer?
-
-        def page_size=: (Integer) -> Integer
-
-        attr_reader total_pages: Integer?
-
-        def total_pages=: (Integer) -> Integer
-
-        attr_reader total_results: Integer?
-
-        def total_results=: (Integer) -> Integer
-
-        def initialize: (
-          ?page_number: Integer,
-          ?page_size: Integer,
-          ?total_pages: Integer,
-          ?total_results: Integer
-        ) -> void
-
-        def to_hash: -> {
-          page_number: Integer,
-          page_size: Integer,
-          total_pages: Integer,
-          total_results: Integer
-        }
       end
     end
   end

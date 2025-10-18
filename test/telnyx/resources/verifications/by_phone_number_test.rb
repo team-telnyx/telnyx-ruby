@@ -15,7 +15,7 @@ class Telnyx::Test::Resources::Verifications::ByPhoneNumberTest < Telnyx::Test::
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Verification]),
-        meta: Telnyx::Models::Verifications::ByPhoneNumberListResponse::Meta
+        meta: Telnyx::Verifications::VerifyMeta
       }
     end
   end

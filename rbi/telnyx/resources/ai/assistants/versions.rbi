@@ -12,7 +12,7 @@ module Telnyx
               assistant_id: String,
               include_mcp_servers: T::Boolean,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::AI::Assistants::VersionRetrieveResponse)
+            ).returns(Telnyx::AI::InferenceEmbedding)
           end
           def retrieve(
             # Path param:
@@ -59,7 +59,7 @@ module Telnyx
               transcription: Telnyx::AI::TranscriptionSettings::OrHash,
               voice_settings: Telnyx::AI::VoiceSettings::OrHash,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::AI::Assistants::VersionUpdateResponse)
+            ).returns(Telnyx::AI::InferenceEmbedding)
           end
           def update(
             # Path param:
@@ -146,7 +146,7 @@ module Telnyx
               version_id: String,
               assistant_id: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::AI::Assistants::VersionPromoteResponse)
+            ).returns(Telnyx::AI::InferenceEmbedding)
           end
           def promote(version_id, assistant_id:, request_options: {})
           end

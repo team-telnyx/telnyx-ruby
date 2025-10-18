@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::Reports::MdrUsageReportsTest < Telnyx::Test::Reso
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Reports::MdrUsageReport]) | nil,
-        meta: Telnyx::Models::Reports::MdrUsageReportListResponse::Meta | nil
+        meta: Telnyx::Reports::PaginationMetaReporting | nil
       }
     end
   end

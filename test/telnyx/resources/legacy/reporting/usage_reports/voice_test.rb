@@ -51,7 +51,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::UsageReports::VoiceTest < Teln
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Legacy::Reporting::UsageReports::CdrUsageReportResponseLegacy]) | nil,
-        meta: Telnyx::Models::Legacy::Reporting::UsageReports::VoiceListResponse::Meta | nil
+        meta: Telnyx::Legacy::Reporting::UsageReports::StandardPaginationMeta | nil
       }
     end
   end
