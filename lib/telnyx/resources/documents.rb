@@ -167,9 +167,41 @@ module Telnyx
         parsed, options = Telnyx::DocumentUploadParams.dump_request(params)
         @client.request(
           method: :post,
-          path: "documents",
+          path: "documents?content-type=multipart",
           body: parsed,
           model: Telnyx::Models::DocumentUploadResponse,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::DocumentUploadJsonParams} for more details.
+      #
+      # Upload a document.<br /><br />Uploaded files must be linked to a service within
+      # 30 minutes or they will be automatically deleted.
+      #
+      # @overload upload_json(url:, file:, customer_reference: nil, filename: nil, request_options: {})
+      #
+      # @param url [String] If the file is already hosted publicly, you can provide a URL and have the docum
+      #
+      # @param file [String] The Base64 encoded contents of the file you are uploading.
+      #
+      # @param customer_reference [String] A customer reference string for customer look ups.
+      #
+      # @param filename [String] The filename of the document.
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::DocumentUploadJsonResponse]
+      #
+      # @see Telnyx::Models::DocumentUploadJsonParams
+      def upload_json(params)
+        parsed, options = Telnyx::DocumentUploadJsonParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "documents",
+          body: parsed,
+          model: Telnyx::Models::DocumentUploadJsonResponse,
           options: options
         )
       end
