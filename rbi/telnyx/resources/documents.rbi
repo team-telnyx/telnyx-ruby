@@ -130,6 +130,31 @@ module Telnyx
       )
       end
 
+      # Upload a document.<br /><br />Uploaded files must be linked to a service within
+      # 30 minutes or they will be automatically deleted.
+      sig do
+        params(
+          url: String,
+          file: String,
+          customer_reference: String,
+          filename: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::Models::DocumentUploadJsonResponse)
+      end
+      def upload_json(
+        # If the file is already hosted publicly, you can provide a URL and have the
+        # documents service fetch it for you.
+        url:,
+        # The Base64 encoded contents of the file you are uploading.
+        file:,
+        # A customer reference string for customer look ups.
+        customer_reference: nil,
+        # The filename of the document.
+        filename: nil,
+        request_options: {}
+      )
+      end
+
       # @api private
       sig { params(client: Telnyx::Client).returns(T.attached_class) }
       def self.new(client:)

@@ -43,6 +43,14 @@ module Telnyx
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::DocumentUploadResponse
 
+      def upload_json: (
+        url: String,
+        file: String,
+        ?customer_reference: String,
+        ?filename: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DocumentUploadJsonResponse
+
       def initialize: (client: Telnyx::Client) -> void
     end
   end

@@ -387,6 +387,8 @@ module Telnyx
 
   class DocumentUpdateParams = Telnyx::Models::DocumentUpdateParams
 
+  class DocumentUploadJsonParams = Telnyx::Models::DocumentUploadJsonParams
+
   class DocumentUploadParams = Telnyx::Models::DocumentUploadParams
 
   module DtmfType = Telnyx::Models::DtmfType

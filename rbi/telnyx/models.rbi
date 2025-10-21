@@ -458,6 +458,8 @@ module Telnyx
 
   DocumentUpdateParams = Telnyx::Models::DocumentUpdateParams
 
+  DocumentUploadJsonParams = Telnyx::Models::DocumentUploadJsonParams
+
   DocumentUploadParams = Telnyx::Models::DocumentUploadParams
 
   DtmfType = Telnyx::Models::DtmfType
