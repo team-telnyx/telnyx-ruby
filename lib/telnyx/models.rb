@@ -1402,6 +1402,8 @@ module Telnyx
 
   TransportProtocol = Telnyx::Models::TransportProtocol
 
+  UnsafeUnwrapWebhookEvent = Telnyx::Models::UnsafeUnwrapWebhookEvent
+
   UnwrapWebhookEvent = Telnyx::Models::UnwrapWebhookEvent
 
   UpdateRegulatoryRequirement = Telnyx::Models::UpdateRegulatoryRequirement
@@ -1493,6 +1495,8 @@ module Telnyx
   WebhookDeliveryListParams = Telnyx::Models::WebhookDeliveryListParams
 
   WebhookDeliveryRetrieveParams = Telnyx::Models::WebhookDeliveryRetrieveParams
+
+  WebhookUnsafeUnwrapParams = Telnyx::Models::WebhookUnsafeUnwrapParams
 
   WebhookUnwrapParams = Telnyx::Models::WebhookUnwrapParams
 
