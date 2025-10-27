@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    telnyx (4.3.0)
+    telnyx (4.4.0)
       connection_pool
 
 GEM
