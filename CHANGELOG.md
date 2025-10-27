@@ -1,5 +1,22 @@
 # Changelog
 
+## 4.4.0 (2025-10-27)
+
+Full Changelog: [v4.3.0...v4.4.0](https://github.com/team-telnyx/telnyx-ruby/compare/v4.3.0...v4.4.0)
+
+### Features
+
+* **api:** add method to upload JSON documents ([56c70d5](https://github.com/team-telnyx/telnyx-ruby/commit/56c70d5c38b93891f7f74c5e6db6db0d852030d7))
+* **api:** added webhook public key ([a37fe4c](https://github.com/team-telnyx/telnyx-ruby/commit/a37fe4c90b7e01a8991361f68c4fbefa9f17befd))
+* **api:** manual updates ([df6f135](https://github.com/team-telnyx/telnyx-ruby/commit/df6f1352160d21406056e85f6eaab8bc0f8cc3b8))
+* define more models ([a923e21](https://github.com/team-telnyx/telnyx-ruby/commit/a923e2121ff330f9bd2d837cc3a8fc3915498ccd))
+* handle thread interrupts in the core HTTP client ([6596282](https://github.com/team-telnyx/telnyx-ruby/commit/65962822840d249b535d9d9dea22349a892b7eef))
+
+
+### Documentation
+
+* update gemspec summary and description ([#1](https://github.com/team-telnyx/telnyx-ruby/issues/1)) ([75eba51](https://github.com/team-telnyx/telnyx-ruby/commit/75eba51e13d138690c5a8a5948d14d80cfe7d843))
+
 ## 4.3.0 (2025-10-16)
 
 Full Changelog: [v4.2.0...v4.3.0](https://github.com/team-telnyx/telnyx-ruby/compare/v4.2.0...v4.3.0)
