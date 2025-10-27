@@ -50,7 +50,7 @@ module Telnyx
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
             voice_settings: Telnyx::AI::VoiceSettings::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::AI::AssistantCreateResponse)
+          ).returns(Telnyx::AI::InferenceEmbedding)
         end
         def create(
           # System instructions for the assistant. These may be templated with
@@ -102,7 +102,7 @@ module Telnyx
             from: String,
             to: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::AI::AssistantRetrieveResponse)
+          ).returns(Telnyx::AI::InferenceEmbedding)
         end
         def retrieve(
           assistant_id,
@@ -247,7 +247,7 @@ module Telnyx
           params(
             assistant_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::AI::AssistantCloneResponse)
+          ).returns(Telnyx::AI::InferenceEmbedding)
         end
         def clone_(assistant_id, request_options: {})
         end

@@ -18,6 +18,9 @@ module Telnyx
     # @return [String]
     attr_reader :api_key
 
+    # @return [String, nil]
+    attr_reader :public_key
+
     # @return [Telnyx::Resources::Legacy]
     attr_reader :legacy
 
@@ -495,6 +498,8 @@ module Telnyx
     #
     # @param api_key [String, nil] Defaults to `ENV["TELNYX_API_KEY"]`
     #
+    # @param public_key [String, nil] Defaults to `ENV["TELNYX_PUBLIC_KEY"]`
+    #
     # @param base_url [String, nil] Override the default base URL for the API, e.g.,
     # `"https://api.example.com/v2/"`. Defaults to `ENV["TELNYX_BASE_URL"]`
     #
@@ -507,6 +512,7 @@ module Telnyx
     # @param max_retry_delay [Float]
     def initialize(
       api_key: ENV["TELNYX_API_KEY"],
+      public_key: ENV["TELNYX_PUBLIC_KEY"],
       base_url: ENV["TELNYX_BASE_URL"],
       max_retries: self.class::DEFAULT_MAX_RETRIES,
       timeout: self.class::DEFAULT_TIMEOUT_IN_SECONDS,
@@ -522,6 +528,7 @@ module Telnyx
       end
 
       @api_key = api_key.to_s
+      @public_key = public_key&.to_s
 
       super(
         base_url: base_url,

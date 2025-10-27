@@ -6,16 +6,16 @@ module Telnyx
       # @api private
       #
       # @example
-      #   # `unwrap_webhook_event` is a `Telnyx::UnwrapWebhookEvent`
-      #   case unwrap_webhook_event
+      #   # `unsafe_unwrap_webhook_event` is a `Telnyx::UnsafeUnwrapWebhookEvent`
+      #   case unsafe_unwrap_webhook_event
       #   when Telnyx::CallAIGatherEndedWebhookEvent
-      #     puts(unwrap_webhook_event.data)
+      #     puts(unsafe_unwrap_webhook_event.data)
       #   when Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent
-      #     puts(unwrap_webhook_event.data)
+      #     puts(unsafe_unwrap_webhook_event.data)
       #   when Telnyx::CallAIGatherPartialResultsWebhookEvent
-      #     puts(unwrap_webhook_event.data)
+      #     puts(unsafe_unwrap_webhook_event.data)
       #   else
-      #     puts(unwrap_webhook_event)
+      #     puts(unsafe_unwrap_webhook_event)
       #   end
       module Union
         include Telnyx::Internal::Type::Converter

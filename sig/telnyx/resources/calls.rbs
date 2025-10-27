@@ -41,7 +41,7 @@ module Telnyx
         ?sound_modifications: Telnyx::SoundModifications,
         ?stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
         ?stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
-        ?stream_bidirectional_sampling_rate: Telnyx::Models::CallDialParams::stream_bidirectional_sampling_rate,
+        ?stream_bidirectional_sampling_rate: Telnyx::Models::stream_bidirectional_sampling_rate,
         ?stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs,
         ?stream_codec: Telnyx::Models::stream_codec,
         ?stream_establish_before_call_originate: bool,

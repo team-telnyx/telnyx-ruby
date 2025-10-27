@@ -110,4 +110,23 @@ class Telnyx::Test::Resources::DocumentsTest < Telnyx::Test::ResourceTest
       }
     end
   end
+
+  def test_upload_json_required_params
+    skip("Prism tests are disabled")
+
+    response =
+      @telnyx.documents.upload_json(
+        url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::DocumentUploadJsonResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::DocServiceDocument | nil
+      }
+    end
+  end
 end

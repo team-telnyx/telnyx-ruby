@@ -29,7 +29,7 @@ module Telnyx
             business_registration_number: String?,
             business_registration_type: String?,
             doing_business_as: String?,
-            entity_type: Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest::entity_type?,
+            entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type?,
             help_message_response: String?,
             opt_in_confirmation_response: String?,
             opt_in_keywords: String?,
@@ -93,7 +93,7 @@ module Telnyx
 
           attr_accessor doing_business_as: String?
 
-          attr_accessor entity_type: Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest::entity_type?
+          attr_accessor entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type?
 
           attr_accessor help_message_response: String?
 
@@ -135,7 +135,7 @@ module Telnyx
             ?business_registration_number: String?,
             ?business_registration_type: String?,
             ?doing_business_as: String?,
-            ?entity_type: Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest::entity_type?,
+            ?entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type?,
             ?help_message_response: String?,
             ?opt_in_confirmation_response: String?,
             ?opt_in_keywords: String?,
@@ -170,7 +170,7 @@ module Telnyx
             business_registration_number: String?,
             business_registration_type: String?,
             doing_business_as: String?,
-            entity_type: Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest::entity_type?,
+            entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type?,
             help_message_response: String?,
             opt_in_confirmation_response: String?,
             opt_in_keywords: String?,
@@ -178,25 +178,6 @@ module Telnyx
             terms_and_condition_url: String?,
             webhook_url: String
           }
-
-          type entity_type =
-            :SOLE_PROPRIETOR
-            | :PRIVATE_PROFIT
-            | :PUBLIC_PROFIT
-            | :NON_PROFIT
-            | :GOVERNMENT
-
-          module EntityType
-            extend Telnyx::Internal::Type::Enum
-
-            SOLE_PROPRIETOR: :SOLE_PROPRIETOR
-            PRIVATE_PROFIT: :PRIVATE_PROFIT
-            PUBLIC_PROFIT: :PUBLIC_PROFIT
-            NON_PROFIT: :NON_PROFIT
-            GOVERNMENT: :GOVERNMENT
-
-            def self?.values: -> ::Array[Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest::entity_type]
-          end
         end
       end
     end

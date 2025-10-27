@@ -13,6 +13,9 @@ module Telnyx
     sig { returns(String) }
     attr_reader :api_key
 
+    sig { returns(T.nilable(String)) }
+    attr_reader :public_key
+
     sig { returns(Telnyx::Resources::Legacy) }
     attr_reader :legacy
 
@@ -486,6 +489,7 @@ module Telnyx
     sig do
       params(
         api_key: T.nilable(String),
+        public_key: T.nilable(String),
         base_url: T.nilable(String),
         max_retries: Integer,
         timeout: Float,
@@ -496,6 +500,8 @@ module Telnyx
     def self.new(
       # Defaults to `ENV["TELNYX_API_KEY"]`
       api_key: ENV["TELNYX_API_KEY"],
+      # Defaults to `ENV["TELNYX_PUBLIC_KEY"]`
+      public_key: ENV["TELNYX_PUBLIC_KEY"],
       # Override the default base URL for the API, e.g.,
       # `"https://api.example.com/v2/"`. Defaults to `ENV["TELNYX_BASE_URL"]`
       base_url: ENV["TELNYX_BASE_URL"],

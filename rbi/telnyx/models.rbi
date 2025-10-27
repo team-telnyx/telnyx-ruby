@@ -33,6 +33,8 @@ module Telnyx
 
   AddressRetrieveParams = Telnyx::Models::AddressRetrieveParams
 
+  AdvancedOrder = Telnyx::Models::AdvancedOrder
+
   AdvancedOrderCreateParams = Telnyx::Models::AdvancedOrderCreateParams
 
   AdvancedOrderListParams = Telnyx::Models::AdvancedOrderListParams
@@ -456,6 +458,8 @@ module Telnyx
 
   DocumentUpdateParams = Telnyx::Models::DocumentUpdateParams
 
+  DocumentUploadJsonParams = Telnyx::Models::DocumentUploadJsonParams
+
   DocumentUploadParams = Telnyx::Models::DocumentUploadParams
 
   DtmfType = Telnyx::Models::DtmfType
@@ -750,6 +754,8 @@ module Telnyx
 
   MessageSendShortCodeParams = Telnyx::Models::MessageSendShortCodeParams
 
+  MessageTemplate = Telnyx::Models::MessageTemplate
+
   Messaging = Telnyx::Models::Messaging
 
   MessagingError = Telnyx::Models::MessagingError
@@ -1027,6 +1033,11 @@ module Telnyx
     Telnyx::Models::OutboundVoiceProfileUpdateParams
 
   PaginationMeta = Telnyx::Models::PaginationMeta
+
+  PaginationMetaCloudflareIPListSync =
+    Telnyx::Models::PaginationMetaCloudflareIPListSync
+
+  PaginationMetaOAuth = Telnyx::Models::PaginationMetaOAuth
 
   PartnerCampaignListParams = Telnyx::Models::PartnerCampaignListParams
 
@@ -1435,6 +1446,9 @@ module Telnyx
 
   StreamBidirectionalMode = Telnyx::Models::StreamBidirectionalMode
 
+  StreamBidirectionalSamplingRate =
+    Telnyx::Models::StreamBidirectionalSamplingRate
+
   StreamBidirectionalTargetLegs = Telnyx::Models::StreamBidirectionalTargetLegs
 
   StreamCodec = Telnyx::Models::StreamCodec
@@ -1527,6 +1541,8 @@ module Telnyx
   TranscriptionWebhookEvent = Telnyx::Models::TranscriptionWebhookEvent
 
   TransportProtocol = Telnyx::Models::TransportProtocol
+
+  UnsafeUnwrapWebhookEvent = Telnyx::Models::UnsafeUnwrapWebhookEvent
 
   UnwrapWebhookEvent = Telnyx::Models::UnwrapWebhookEvent
 
@@ -1629,6 +1645,8 @@ module Telnyx
   WebhookDeliveryListParams = Telnyx::Models::WebhookDeliveryListParams
 
   WebhookDeliveryRetrieveParams = Telnyx::Models::WebhookDeliveryRetrieveParams
+
+  WebhookUnsafeUnwrapParams = Telnyx::Models::WebhookUnsafeUnwrapParams
 
   WebhookUnwrapParams = Telnyx::Models::WebhookUnwrapParams
 

@@ -108,9 +108,8 @@ module Telnyx
 
           # @!attribute errors
           #
-          #   @return [Array<Telnyx::Models::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error>, nil]
-          optional :errors,
-                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error] }
+          #   @return [Array<Telnyx::Models::PhoneNumberBlocks::JobError>, nil]
+          optional :errors, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumberBlocks::JobError] }
 
           # @!attribute phone_number
           #   The phone number in e164 format.
@@ -121,75 +120,9 @@ module Telnyx
           # @!method initialize(id: nil, errors: nil, phone_number: nil)
           #   @param id [String] The phone number's ID
           #
-          #   @param errors [Array<Telnyx::Models::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error>]
+          #   @param errors [Array<Telnyx::Models::PhoneNumberBlocks::JobError>]
           #
           #   @param phone_number [String] The phone number in e164 format.
-
-          class Error < Telnyx::Internal::Type::BaseModel
-            # @!attribute code
-            #
-            #   @return [String]
-            required :code, String
-
-            # @!attribute title
-            #
-            #   @return [String]
-            required :title, String
-
-            # @!attribute detail
-            #
-            #   @return [String, nil]
-            optional :detail, String
-
-            # @!attribute meta
-            #
-            #   @return [Telnyx::Models::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Meta, nil]
-            optional :meta, -> { Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Meta }
-
-            # @!attribute source
-            #
-            #   @return [Telnyx::Models::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Source, nil]
-            optional :source, -> { Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Source }
-
-            # @!method initialize(code:, title:, detail: nil, meta: nil, source: nil)
-            #   @param code [String]
-            #   @param title [String]
-            #   @param detail [String]
-            #   @param meta [Telnyx::Models::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Meta]
-            #   @param source [Telnyx::Models::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error::Source]
-
-            # @see Telnyx::Models::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error#meta
-            class Meta < Telnyx::Internal::Type::BaseModel
-              # @!attribute url
-              #   URL with additional information on the error.
-              #
-              #   @return [String, nil]
-              optional :url, String
-
-              # @!method initialize(url: nil)
-              #   @param url [String] URL with additional information on the error.
-            end
-
-            # @see Telnyx::Models::PhoneNumbers::PhoneNumbersJob::FailedOperation::Error#source
-            class Source < Telnyx::Internal::Type::BaseModel
-              # @!attribute parameter
-              #   Indicates which query parameter caused the error.
-              #
-              #   @return [String, nil]
-              optional :parameter, String
-
-              # @!attribute pointer
-              #   JSON pointer (RFC6901) to the offending entity.
-              #
-              #   @return [String, nil]
-              optional :pointer, String
-
-              # @!method initialize(parameter: nil, pointer: nil)
-              #   @param parameter [String] Indicates which query parameter caused the error.
-              #
-              #   @param pointer [String] JSON pointer (RFC6901) to the offending entity.
-            end
-          end
         end
 
         class PendingOperation < Telnyx::Internal::Type::BaseModel

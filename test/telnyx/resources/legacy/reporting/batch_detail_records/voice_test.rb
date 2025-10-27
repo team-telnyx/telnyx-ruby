@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::VoiceTest 
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Legacy::Reporting::BatchDetailRecords::CdrDetailedReqResponse]) | nil,
-        meta: Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceListResponse::Meta | nil
+        meta: Telnyx::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta | nil
       }
     end
   end

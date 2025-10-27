@@ -143,7 +143,7 @@ module Telnyx
           sig do
             returns(
               T.nilable(
-                Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::OrSymbol
+                Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::OrSymbol
               )
             )
           end
@@ -214,7 +214,7 @@ module Telnyx
               doing_business_as: T.nilable(String),
               entity_type:
                 T.nilable(
-                  Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::OrSymbol
+                  Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::OrSymbol
                 ),
               help_message_response: T.nilable(String),
               opt_in_confirmation_response: T.nilable(String),
@@ -338,7 +338,7 @@ module Telnyx
                 doing_business_as: T.nilable(String),
                 entity_type:
                   T.nilable(
-                    Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::OrSymbol
+                    Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::OrSymbol
                   ),
                 help_message_response: T.nilable(String),
                 opt_in_confirmation_response: T.nilable(String),
@@ -350,56 +350,6 @@ module Telnyx
             )
           end
           def to_hash
-          end
-
-          # Business entity classification
-          module EntityType
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            SOLE_PROPRIETOR =
-              T.let(
-                :SOLE_PROPRIETOR,
-                Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::TaggedSymbol
-              )
-            PRIVATE_PROFIT =
-              T.let(
-                :PRIVATE_PROFIT,
-                Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::TaggedSymbol
-              )
-            PUBLIC_PROFIT =
-              T.let(
-                :PUBLIC_PROFIT,
-                Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::TaggedSymbol
-              )
-            NON_PROFIT =
-              T.let(
-                :NON_PROFIT,
-                Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::TaggedSymbol
-              )
-            GOVERNMENT =
-              T.let(
-                :GOVERNMENT,
-                Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::MessagingTollfree::Verification::TfVerificationRequest::EntityType::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
           end
         end
       end

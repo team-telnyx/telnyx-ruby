@@ -63,7 +63,7 @@ module Telnyx
           #
           # @param doing_business_as [String, nil] Doing Business As (DBA) name if different from legal name
           #
-          # @param entity_type [Symbol, Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest::EntityType, nil] Business entity classification
+          # @param entity_type [Symbol, Telnyx::Models::MessagingTollfree::Verification::TollFreeVerificationEntityType, nil] Business entity classification
           #
           # @param help_message_response [String, nil] The message returned when users text 'HELP'
           #
@@ -173,7 +173,7 @@ module Telnyx
           #
           # @param doing_business_as [String, nil] Doing Business As (DBA) name if different from legal name
           #
-          # @param entity_type [Symbol, Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest::EntityType, nil] Business entity classification
+          # @param entity_type [Symbol, Telnyx::Models::MessagingTollfree::Verification::TollFreeVerificationEntityType, nil] Business entity classification
           #
           # @param help_message_response [String, nil] The message returned when users text 'HELP'
           #

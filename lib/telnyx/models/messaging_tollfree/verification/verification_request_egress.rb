@@ -156,11 +156,9 @@ module Telnyx
           # @!attribute entity_type
           #   Business entity classification
           #
-          #   @return [Symbol, Telnyx::Models::MessagingTollfree::Verification::VerificationRequestEgress::EntityType, nil]
+          #   @return [Symbol, Telnyx::Models::MessagingTollfree::Verification::TollFreeVerificationEntityType, nil]
           optional :entity_type,
-                   enum: -> {
-                     Telnyx::MessagingTollfree::Verification::VerificationRequestEgress::EntityType
-                   },
+                   enum: -> { Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType },
                    api_name: :entityType
 
           # @!attribute help_message_response
@@ -258,7 +256,7 @@ module Telnyx
           #
           #   @param doing_business_as [String]
           #
-          #   @param entity_type [Symbol, Telnyx::Models::MessagingTollfree::Verification::VerificationRequestEgress::EntityType] Business entity classification
+          #   @param entity_type [Symbol, Telnyx::Models::MessagingTollfree::Verification::TollFreeVerificationEntityType] Business entity classification
           #
           #   @param help_message_response [String]
           #
@@ -273,22 +271,6 @@ module Telnyx
           #   @param verification_status [Symbol, Telnyx::Models::MessagingTollfree::Verification::TfVerificationStatus] Tollfree verification status
           #
           #   @param webhook_url [String]
-
-          # Business entity classification
-          #
-          # @see Telnyx::Models::MessagingTollfree::Verification::VerificationRequestEgress#entity_type
-          module EntityType
-            extend Telnyx::Internal::Type::Enum
-
-            SOLE_PROPRIETOR = :SOLE_PROPRIETOR
-            PRIVATE_PROFIT = :PRIVATE_PROFIT
-            PUBLIC_PROFIT = :PUBLIC_PROFIT
-            NON_PROFIT = :NON_PROFIT
-            GOVERNMENT = :GOVERNMENT
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
         end
       end
 

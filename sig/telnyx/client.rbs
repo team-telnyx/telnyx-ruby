@@ -10,6 +10,8 @@ module Telnyx
 
     attr_reader api_key: String
 
+    attr_reader public_key: String?
+
     attr_reader legacy: Telnyx::Resources::Legacy
 
     attr_reader oauth: Telnyx::Resources::OAuth
@@ -322,6 +324,7 @@ module Telnyx
 
     def initialize: (
       ?api_key: String?,
+      ?public_key: String?,
       ?base_url: String?,
       ?max_retries: Integer,
       ?timeout: Float,

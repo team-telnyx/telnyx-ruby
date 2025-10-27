@@ -69,7 +69,7 @@ class Telnyx::Test::Resources::OAuthClientsTest < Telnyx::Test::ResourceTest
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::OAuthClient]) | nil,
-        meta: Telnyx::Models::OAuthClientListResponse::Meta | nil
+        meta: Telnyx::PaginationMetaOAuth | nil
       }
     end
   end

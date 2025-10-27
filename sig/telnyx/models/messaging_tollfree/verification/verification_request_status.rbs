@@ -34,7 +34,7 @@ module Telnyx
             business_registration_type: String,
             created_at: Time,
             doing_business_as: String,
-            entity_type: Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus::entity_type,
+            entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type,
             help_message_response: String,
             opt_in_confirmation_response: String,
             opt_in_keywords: String,
@@ -116,11 +116,11 @@ module Telnyx
 
           def doing_business_as=: (String) -> String
 
-          attr_reader entity_type: Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus::entity_type?
+          attr_reader entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type?
 
           def entity_type=: (
-            Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus::entity_type
-          ) -> Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus::entity_type
+            Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type
+          ) -> Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type
 
           attr_reader help_message_response: String?
 
@@ -183,7 +183,7 @@ module Telnyx
             ?business_registration_type: String,
             ?created_at: Time,
             ?doing_business_as: String,
-            ?entity_type: Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus::entity_type,
+            ?entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type,
             ?help_message_response: String,
             ?opt_in_confirmation_response: String,
             ?opt_in_keywords: String,
@@ -223,7 +223,7 @@ module Telnyx
             business_registration_type: String,
             created_at: Time,
             doing_business_as: String,
-            entity_type: Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus::entity_type,
+            entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type,
             help_message_response: String,
             opt_in_confirmation_response: String,
             opt_in_keywords: String,
@@ -233,25 +233,6 @@ module Telnyx
             updated_at: Time,
             webhook_url: String
           }
-
-          type entity_type =
-            :SOLE_PROPRIETOR
-            | :PRIVATE_PROFIT
-            | :PUBLIC_PROFIT
-            | :NON_PROFIT
-            | :GOVERNMENT
-
-          module EntityType
-            extend Telnyx::Internal::Type::Enum
-
-            SOLE_PROPRIETOR: :SOLE_PROPRIETOR
-            PRIVATE_PROFIT: :PRIVATE_PROFIT
-            PUBLIC_PROFIT: :PUBLIC_PROFIT
-            NON_PROFIT: :NON_PROFIT
-            GOVERNMENT: :GOVERNMENT
-
-            def self?.values: -> ::Array[Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus::entity_type]
-          end
         end
       end
     end

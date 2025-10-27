@@ -311,7 +311,7 @@ module Telnyx
           ?enable_dialogflow: bool,
           ?stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
           ?stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
-          ?stream_bidirectional_sampling_rate: Telnyx::Models::Calls::ActionStartStreamingParams::stream_bidirectional_sampling_rate,
+          ?stream_bidirectional_sampling_rate: Telnyx::Models::stream_bidirectional_sampling_rate,
           ?stream_bidirectional_target_legs: Telnyx::Models::stream_bidirectional_target_legs,
           ?stream_codec: Telnyx::Models::stream_codec,
           ?stream_track: Telnyx::Models::Calls::ActionStartStreamingParams::stream_track,
