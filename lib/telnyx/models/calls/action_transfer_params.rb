@@ -195,6 +195,12 @@ module Telnyx
         #   @return [Array<Telnyx::Models::SipHeader>, nil]
         optional :sip_headers, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::SipHeader] }
 
+        # @!attribute sip_region
+        #   Defines the SIP region to be used for the call.
+        #
+        #   @return [Symbol, Telnyx::Models::Calls::ActionTransferParams::SipRegion, nil]
+        optional :sip_region, enum: -> { Telnyx::Calls::ActionTransferParams::SipRegion }
+
         # @!attribute sip_transport_protocol
         #   Defines SIP transport protocol to be used on the call.
         #
@@ -248,7 +254,7 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::ActionTransferParams::WebhookURLMethod, nil]
         optional :webhook_url_method, enum: -> { Telnyx::Calls::ActionTransferParams::WebhookURLMethod }
 
-        # @!method initialize(to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, client_state: nil, command_id: nil, custom_headers: nil, early_media: nil, from: nil, from_display_name: nil, media_encryption: nil, media_name: nil, mute_dtmf: nil, park_after_unbridge: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_transport_protocol: nil, sound_modifications: nil, target_leg_client_state: nil, time_limit_secs: nil, timeout_secs: nil, webhook_url: nil, webhook_url_method: nil, request_options: {})
+        # @!method initialize(to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, client_state: nil, command_id: nil, custom_headers: nil, early_media: nil, from: nil, from_display_name: nil, media_encryption: nil, media_name: nil, mute_dtmf: nil, park_after_unbridge: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, target_leg_client_state: nil, time_limit_secs: nil, timeout_secs: nil, webhook_url: nil, webhook_url_method: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionTransferParams} for more details.
         #
@@ -301,6 +307,8 @@ module Telnyx
         #   @param sip_auth_username [String] SIP Authentication username used for SIP challenges.
         #
         #   @param sip_headers [Array<Telnyx::Models::SipHeader>] SIP headers to be added to the SIP INVITE. Currently only User-to-User header is
+        #
+        #   @param sip_region [Symbol, Telnyx::Models::Calls::ActionTransferParams::SipRegion] Defines the SIP region to be used for the call.
         #
         #   @param sip_transport_protocol [Symbol, Telnyx::Models::Calls::ActionTransferParams::SipTransportProtocol] Defines SIP transport protocol to be used on the call.
         #
@@ -512,6 +520,20 @@ module Telnyx
           extend Telnyx::Internal::Type::Enum
 
           TRIM_SILENCE = :"trim-silence"
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Defines the SIP region to be used for the call.
+        module SipRegion
+          extend Telnyx::Internal::Type::Enum
+
+          US = :US
+          EUROPE = :Europe
+          CANADA = :Canada
+          AUSTRALIA = :Australia
+          MIDDLE_EAST = :"Middle East"
 
           # @!method self.values
           #   @return [Array<Symbol>]

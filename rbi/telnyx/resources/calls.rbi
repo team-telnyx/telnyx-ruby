@@ -63,6 +63,7 @@ module Telnyx
           sip_auth_password: String,
           sip_auth_username: String,
           sip_headers: T::Array[Telnyx::SipHeader::OrHash],
+          sip_region: Telnyx::CallDialParams::SipRegion::OrSymbol,
           sip_transport_protocol:
             Telnyx::CallDialParams::SipTransportProtocol::OrSymbol,
           sound_modifications: Telnyx::SoundModifications::OrHash,
@@ -206,6 +207,8 @@ module Telnyx
         # SIP headers to be added to the SIP INVITE request. Currently only User-to-User
         # header is supported.
         sip_headers: nil,
+        # Defines the SIP region to be used for the call.
+        sip_region: nil,
         # Defines SIP transport protocol to be used on the call.
         sip_transport_protocol: nil,
         # Use this field to modify sound effects, for example adjust the pitch.
