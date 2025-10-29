@@ -2,15 +2,64 @@ module Telnyx
   module Models
     module Conferences
       type action_record_stop_params =
-        {  } & Telnyx::Internal::Type::request_parameters
+        {
+          client_state: String,
+          command_id: String,
+          recording_id: String,
+          region: Telnyx::Models::Conferences::ActionRecordStopParams::region
+        }
+        & Telnyx::Internal::Type::request_parameters
 
-      class ActionRecordStopParams < Telnyx::Models::Calls::StopRecordingRequest
+      class ActionRecordStopParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
-        def initialize: (?request_options: Telnyx::request_opts) -> void
+        attr_reader client_state: String?
 
-        def to_hash: -> { request_options: Telnyx::RequestOptions }
+        def client_state=: (String) -> String
+
+        attr_reader command_id: String?
+
+        def command_id=: (String) -> String
+
+        attr_reader recording_id: String?
+
+        def recording_id=: (String) -> String
+
+        attr_reader region: Telnyx::Models::Conferences::ActionRecordStopParams::region?
+
+        def region=: (
+          Telnyx::Models::Conferences::ActionRecordStopParams::region
+        ) -> Telnyx::Models::Conferences::ActionRecordStopParams::region
+
+        def initialize: (
+          ?client_state: String,
+          ?command_id: String,
+          ?recording_id: String,
+          ?region: Telnyx::Models::Conferences::ActionRecordStopParams::region,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          client_state: String,
+          command_id: String,
+          recording_id: String,
+          region: Telnyx::Models::Conferences::ActionRecordStopParams::region,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type region = :Australia | :Europe | :"Middle East" | :US
+
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          AUSTRALIA: :Australia
+          EUROPE: :Europe
+          MIDDLE_EAST: :"Middle East"
+          US: :US
+
+          def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionRecordStopParams::region]
+        end
       end
     end
   end
