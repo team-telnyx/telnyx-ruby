@@ -21,7 +21,14 @@ module Telnyx
         #   @return [String, nil]
         optional :recording_id, String
 
-        # @!method initialize(command_id: nil, recording_id: nil, request_options: {})
+        # @!attribute region
+        #   Region where the conference data is located. Defaults to the region defined in
+        #   user's data locality settings (Europe or US).
+        #
+        #   @return [Symbol, Telnyx::Models::Conferences::ActionRecordPauseParams::Region, nil]
+        optional :region, enum: -> { Telnyx::Conferences::ActionRecordPauseParams::Region }
+
+        # @!method initialize(command_id: nil, recording_id: nil, region: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::ActionRecordPauseParams} for more details.
         #
@@ -29,7 +36,23 @@ module Telnyx
         #
         #   @param recording_id [String] Use this field to pause specific recording.
         #
+        #   @param region [Symbol, Telnyx::Models::Conferences::ActionRecordPauseParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
+
+        # Region where the conference data is located. Defaults to the region defined in
+        # user's data locality settings (Europe or US).
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          AUSTRALIA = :Australia
+          EUROPE = :Europe
+          MIDDLE_EAST = :"Middle East"
+          US = :US
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
     end
   end

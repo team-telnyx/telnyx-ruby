@@ -47,6 +47,25 @@ module Telnyx
         sig { params(play_beep: T::Boolean).void }
         attr_writer :play_beep
 
+        # Region where the conference data is located. Defaults to the region defined in
+        # user's data locality settings (Europe or US).
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::Conferences::ActionRecordStartParams::Region::OrSymbol
+            )
+          )
+        end
+        attr_reader :region
+
+        sig do
+          params(
+            region:
+              Telnyx::Conferences::ActionRecordStartParams::Region::OrSymbol
+          ).void
+        end
+        attr_writer :region
+
         # When set to `trim-silence`, silence will be removed from the beginning and end
         # of the recording.
         sig do
@@ -72,6 +91,8 @@ module Telnyx
             command_id: String,
             custom_file_name: String,
             play_beep: T::Boolean,
+            region:
+              Telnyx::Conferences::ActionRecordStartParams::Region::OrSymbol,
             trim: Telnyx::Conferences::ActionRecordStartParams::Trim::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -88,6 +109,9 @@ module Telnyx
           custom_file_name: nil,
           # If enabled, a beep sound will be played at the start of a recording.
           play_beep: nil,
+          # Region where the conference data is located. Defaults to the region defined in
+          # user's data locality settings (Europe or US).
+          region: nil,
           # When set to `trim-silence`, silence will be removed from the beginning and end
           # of the recording.
           trim: nil,
@@ -103,6 +127,8 @@ module Telnyx
               command_id: String,
               custom_file_name: String,
               play_beep: T::Boolean,
+              region:
+                Telnyx::Conferences::ActionRecordStartParams::Region::OrSymbol,
               trim:
                 Telnyx::Conferences::ActionRecordStartParams::Trim::OrSymbol,
               request_options: Telnyx::RequestOptions
@@ -141,6 +167,52 @@ module Telnyx
             override.returns(
               T::Array[
                 Telnyx::Conferences::ActionRecordStartParams::Format::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Region where the conference data is located. Defaults to the region defined in
+        # user's data locality settings (Europe or US).
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::Conferences::ActionRecordStartParams::Region
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          AUSTRALIA =
+            T.let(
+              :Australia,
+              Telnyx::Conferences::ActionRecordStartParams::Region::TaggedSymbol
+            )
+          EUROPE =
+            T.let(
+              :Europe,
+              Telnyx::Conferences::ActionRecordStartParams::Region::TaggedSymbol
+            )
+          MIDDLE_EAST =
+            T.let(
+              :"Middle East",
+              Telnyx::Conferences::ActionRecordStartParams::Region::TaggedSymbol
+            )
+          US =
+            T.let(
+              :US,
+              Telnyx::Conferences::ActionRecordStartParams::Region::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Conferences::ActionRecordStartParams::Region::TaggedSymbol
               ]
             )
           end

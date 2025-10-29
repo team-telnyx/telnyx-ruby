@@ -32,6 +32,7 @@ module Telnyx
             send_recording_url: bool,
             sip_auth_password: String,
             sip_auth_username: String,
+            sip_region: Telnyx::Models::Texml::Accounts::CallCallsParams::sip_region,
             status_callback: String,
             status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_event,
             status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method,
@@ -165,6 +166,12 @@ module Telnyx
 
           def sip_auth_username=: (String) -> String
 
+          attr_reader sip_region: Telnyx::Models::Texml::Accounts::CallCallsParams::sip_region?
+
+          def sip_region=: (
+            Telnyx::Models::Texml::Accounts::CallCallsParams::sip_region
+          ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::sip_region
+
           attr_reader status_callback: String?
 
           def status_callback=: (String) -> String
@@ -226,6 +233,7 @@ module Telnyx
             ?send_recording_url: bool,
             ?sip_auth_password: String,
             ?sip_auth_username: String,
+            ?sip_region: Telnyx::Models::Texml::Accounts::CallCallsParams::sip_region,
             ?status_callback: String,
             ?status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_event,
             ?status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method,
@@ -264,6 +272,7 @@ module Telnyx
             send_recording_url: bool,
             sip_auth_password: String,
             sip_auth_username: String,
+            sip_region: Telnyx::Models::Texml::Accounts::CallCallsParams::sip_region,
             status_callback: String,
             status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_event,
             status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method,
@@ -351,6 +360,21 @@ module Telnyx
             BOTH: :both
 
             def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::recording_track]
+          end
+
+          type sip_region =
+            :US | :Europe | :Canada | :Australia | :"Middle East"
+
+          module SipRegion
+            extend Telnyx::Internal::Type::Enum
+
+            US: :US
+            EUROPE: :Europe
+            CANADA: :Canada
+            AUSTRALIA: :Australia
+            MIDDLE_EAST: :"Middle East"
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::sip_region]
           end
 
           type status_callback_event =

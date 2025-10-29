@@ -5,7 +5,8 @@ module Telnyx
         {
           audio_url: String,
           call_control_ids: ::Array[String],
-          media_name: String
+          media_name: String,
+          region: Telnyx::Models::Conferences::ActionHoldParams::region
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -25,10 +26,17 @@ module Telnyx
 
         def media_name=: (String) -> String
 
+        attr_reader region: Telnyx::Models::Conferences::ActionHoldParams::region?
+
+        def region=: (
+          Telnyx::Models::Conferences::ActionHoldParams::region
+        ) -> Telnyx::Models::Conferences::ActionHoldParams::region
+
         def initialize: (
           ?audio_url: String,
           ?call_control_ids: ::Array[String],
           ?media_name: String,
+          ?region: Telnyx::Models::Conferences::ActionHoldParams::region,
           ?request_options: Telnyx::request_opts
         ) -> void
 
@@ -36,8 +44,22 @@ module Telnyx
           audio_url: String,
           call_control_ids: ::Array[String],
           media_name: String,
+          region: Telnyx::Models::Conferences::ActionHoldParams::region,
           request_options: Telnyx::RequestOptions
         }
+
+        type region = :Australia | :Europe | :"Middle East" | :US
+
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          AUSTRALIA: :Australia
+          EUROPE: :Europe
+          MIDDLE_EAST: :"Middle East"
+          US: :US
+
+          def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionHoldParams::region]
+        end
       end
     end
   end

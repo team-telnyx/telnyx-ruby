@@ -2,7 +2,11 @@ module Telnyx
   module Models
     module Conferences
       type action_record_resume_params =
-        { command_id: String, recording_id: String }
+        {
+          command_id: String,
+          recording_id: String,
+          region: Telnyx::Models::Conferences::ActionRecordResumeParams::region
+        }
         & Telnyx::Internal::Type::request_parameters
 
       class ActionRecordResumeParams < Telnyx::Internal::Type::BaseModel
@@ -17,17 +21,38 @@ module Telnyx
 
         def recording_id=: (String) -> String
 
+        attr_reader region: Telnyx::Models::Conferences::ActionRecordResumeParams::region?
+
+        def region=: (
+          Telnyx::Models::Conferences::ActionRecordResumeParams::region
+        ) -> Telnyx::Models::Conferences::ActionRecordResumeParams::region
+
         def initialize: (
           ?command_id: String,
           ?recording_id: String,
+          ?region: Telnyx::Models::Conferences::ActionRecordResumeParams::region,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           command_id: String,
           recording_id: String,
+          region: Telnyx::Models::Conferences::ActionRecordResumeParams::region,
           request_options: Telnyx::RequestOptions
         }
+
+        type region = :Australia | :Europe | :"Middle East" | :US
+
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          AUSTRALIA: :Australia
+          EUROPE: :Europe
+          MIDDLE_EAST: :"Middle East"
+          US: :US
+
+          def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionRecordResumeParams::region]
+        end
       end
     end
   end

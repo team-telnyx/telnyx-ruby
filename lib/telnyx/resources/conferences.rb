@@ -24,7 +24,7 @@ module Telnyx
       # - `conference.recording.saved`
       # - `conference.floor.changed`
       #
-      # @overload create(call_control_id:, name:, beep_enabled: nil, client_state: nil, comfort_noise: nil, command_id: nil, duration_minutes: nil, hold_audio_url: nil, hold_media_name: nil, max_participants: nil, start_conference_on_create: nil, request_options: {})
+      # @overload create(call_control_id:, name:, beep_enabled: nil, client_state: nil, comfort_noise: nil, command_id: nil, duration_minutes: nil, hold_audio_url: nil, hold_media_name: nil, max_participants: nil, region: nil, start_conference_on_create: nil, request_options: {})
       #
       # @param call_control_id [String] Unique identifier and token for controlling the call
       #
@@ -46,6 +46,8 @@ module Telnyx
       #
       # @param max_participants [Integer] The maximum number of active conference participants to allow. Must be between 2
       #
+      # @param region [Symbol, Telnyx::Models::ConferenceCreateParams::Region] Sets the region where the conference data will be hosted. Defaults to the region
+      #
       # @param start_conference_on_create [Boolean] Whether the conference should be started on creation. If the conference isn't st
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
@@ -66,9 +68,11 @@ module Telnyx
 
       # Retrieve an existing conference
       #
-      # @overload retrieve(id, request_options: {})
+      # @overload retrieve(id, region: nil, request_options: {})
       #
       # @param id [String] Uniquely identifies the conference by id
+      #
+      # @param region [Symbol, Telnyx::Models::ConferenceRetrieveParams::Region] Region where the conference data is located
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -76,11 +80,13 @@ module Telnyx
       #
       # @see Telnyx::Models::ConferenceRetrieveParams
       def retrieve(id, params = {})
+        parsed, options = Telnyx::ConferenceRetrieveParams.dump_request(params)
         @client.request(
           method: :get,
           path: ["conferences/%1$s", id],
+          query: parsed,
           model: Telnyx::Models::ConferenceRetrieveResponse,
-          options: params[:request_options]
+          options: options
         )
       end
 
@@ -92,11 +98,13 @@ module Telnyx
       # of active participants. Conferences are listed in descending order by
       # `expires_at`.
       #
-      # @overload list(filter: nil, page: nil, request_options: {})
+      # @overload list(filter: nil, page: nil, region: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::ConferenceListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[application
       #
       # @param page [Telnyx::Models::ConferenceListParams::Page] Consolidated page parameter (deepObject style). Originally: page[after], page[be
+      #
+      # @param region [Symbol, Telnyx::Models::ConferenceListParams::Region] Region where the conference data is located
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -119,13 +127,15 @@ module Telnyx
       #
       # Lists conference participants
       #
-      # @overload list_participants(conference_id, filter: nil, page: nil, request_options: {})
+      # @overload list_participants(conference_id, filter: nil, page: nil, region: nil, request_options: {})
       #
       # @param conference_id [String] Uniquely identifies the conference by id
       #
       # @param filter [Telnyx::Models::ConferenceListParticipantsParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[muted], fil
       #
       # @param page [Telnyx::Models::ConferenceListParticipantsParams::Page] Consolidated page parameter (deepObject style). Originally: page[after], page[be
+      #
+      # @param region [Symbol, Telnyx::Models::ConferenceListParticipantsParams::Region] Region where the conference data is located
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

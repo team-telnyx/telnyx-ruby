@@ -47,12 +47,29 @@ module Telnyx
         sig { params(command_id: String).void }
         attr_writer :command_id
 
+        # Region where the conference data is located. Defaults to the region defined in
+        # user's data locality settings (Europe or US).
+        sig do
+          returns(
+            T.nilable(Telnyx::Conferences::ActionLeaveParams::Region::OrSymbol)
+          )
+        end
+        attr_reader :region
+
+        sig do
+          params(
+            region: Telnyx::Conferences::ActionLeaveParams::Region::OrSymbol
+          ).void
+        end
+        attr_writer :region
+
         sig do
           params(
             call_control_id: String,
             beep_enabled:
               Telnyx::Conferences::ActionLeaveParams::BeepEnabled::OrSymbol,
             command_id: String,
+            region: Telnyx::Conferences::ActionLeaveParams::Region::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -66,6 +83,9 @@ module Telnyx
           # subsequent commands with the same `command_id` as one that has already been
           # executed.
           command_id: nil,
+          # Region where the conference data is located. Defaults to the region defined in
+          # user's data locality settings (Europe or US).
+          region: nil,
           request_options: {}
         )
         end
@@ -77,6 +97,7 @@ module Telnyx
               beep_enabled:
                 Telnyx::Conferences::ActionLeaveParams::BeepEnabled::OrSymbol,
               command_id: String,
+              region: Telnyx::Conferences::ActionLeaveParams::Region::OrSymbol,
               request_options: Telnyx::RequestOptions
             }
           )
@@ -120,6 +141,49 @@ module Telnyx
             override.returns(
               T::Array[
                 Telnyx::Conferences::ActionLeaveParams::BeepEnabled::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Region where the conference data is located. Defaults to the region defined in
+        # user's data locality settings (Europe or US).
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::Conferences::ActionLeaveParams::Region)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          AUSTRALIA =
+            T.let(
+              :Australia,
+              Telnyx::Conferences::ActionLeaveParams::Region::TaggedSymbol
+            )
+          EUROPE =
+            T.let(
+              :Europe,
+              Telnyx::Conferences::ActionLeaveParams::Region::TaggedSymbol
+            )
+          MIDDLE_EAST =
+            T.let(
+              :"Middle East",
+              Telnyx::Conferences::ActionLeaveParams::Region::TaggedSymbol
+            )
+          US =
+            T.let(
+              :US,
+              Telnyx::Conferences::ActionLeaveParams::Region::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Conferences::ActionLeaveParams::Region::TaggedSymbol
               ]
             )
           end

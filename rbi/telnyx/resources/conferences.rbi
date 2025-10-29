@@ -32,6 +32,7 @@ module Telnyx
           hold_audio_url: String,
           hold_media_name: String,
           max_participants: Integer,
+          region: Telnyx::ConferenceCreateParams::Region::OrSymbol,
           start_conference_on_create: T::Boolean,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::ConferenceCreateResponse)
@@ -70,6 +71,9 @@ module Telnyx
         # The maximum number of active conference participants to allow. Must be between 2
         # and 800. Defaults to 250
         max_participants: nil,
+        # Sets the region where the conference data will be hosted. Defaults to the region
+        # defined in user's data locality settings (Europe or US).
+        region: nil,
         # Whether the conference should be started on creation. If the conference isn't
         # started all participants that join are automatically put on hold. Defaults to
         # "true".
@@ -82,12 +86,15 @@ module Telnyx
       sig do
         params(
           id: String,
+          region: Telnyx::ConferenceRetrieveParams::Region::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::ConferenceRetrieveResponse)
       end
       def retrieve(
         # Uniquely identifies the conference by id
         id,
+        # Region where the conference data is located
+        region: nil,
         request_options: {}
       )
       end
@@ -100,6 +107,7 @@ module Telnyx
         params(
           filter: Telnyx::ConferenceListParams::Filter::OrHash,
           page: Telnyx::ConferenceListParams::Page::OrHash,
+          region: Telnyx::ConferenceListParams::Region::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::ConferenceListResponse)
       end
@@ -113,6 +121,8 @@ module Telnyx
         # Consolidated page parameter (deepObject style). Originally: page[after],
         # page[before], page[limit], page[size], page[number]
         page: nil,
+        # Region where the conference data is located
+        region: nil,
         request_options: {}
       )
       end
@@ -123,6 +133,7 @@ module Telnyx
           conference_id: String,
           filter: Telnyx::ConferenceListParticipantsParams::Filter::OrHash,
           page: Telnyx::ConferenceListParticipantsParams::Page::OrHash,
+          region: Telnyx::ConferenceListParticipantsParams::Region::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::ConferenceListParticipantsResponse)
       end
@@ -135,6 +146,8 @@ module Telnyx
         # Consolidated page parameter (deepObject style). Originally: page[after],
         # page[before], page[limit], page[size], page[number]
         page: nil,
+        # Region where the conference data is located
+        region: nil,
         request_options: {}
       )
       end

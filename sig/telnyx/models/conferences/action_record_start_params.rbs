@@ -7,6 +7,7 @@ module Telnyx
           command_id: String,
           custom_file_name: String,
           play_beep: bool,
+          region: Telnyx::Models::Conferences::ActionRecordStartParams::region,
           trim: Telnyx::Models::Conferences::ActionRecordStartParams::trim
         }
         & Telnyx::Internal::Type::request_parameters
@@ -29,6 +30,12 @@ module Telnyx
 
         def play_beep=: (bool) -> bool
 
+        attr_reader region: Telnyx::Models::Conferences::ActionRecordStartParams::region?
+
+        def region=: (
+          Telnyx::Models::Conferences::ActionRecordStartParams::region
+        ) -> Telnyx::Models::Conferences::ActionRecordStartParams::region
+
         attr_reader trim: Telnyx::Models::Conferences::ActionRecordStartParams::trim?
 
         def trim=: (
@@ -40,6 +47,7 @@ module Telnyx
           ?command_id: String,
           ?custom_file_name: String,
           ?play_beep: bool,
+          ?region: Telnyx::Models::Conferences::ActionRecordStartParams::region,
           ?trim: Telnyx::Models::Conferences::ActionRecordStartParams::trim,
           ?request_options: Telnyx::request_opts
         ) -> void
@@ -49,6 +57,7 @@ module Telnyx
           command_id: String,
           custom_file_name: String,
           play_beep: bool,
+          region: Telnyx::Models::Conferences::ActionRecordStartParams::region,
           trim: Telnyx::Models::Conferences::ActionRecordStartParams::trim,
           request_options: Telnyx::RequestOptions
         }
@@ -62,6 +71,19 @@ module Telnyx
           MP3: :mp3
 
           def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionRecordStartParams::format_]
+        end
+
+        type region = :Australia | :Europe | :"Middle East" | :US
+
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          AUSTRALIA: :Australia
+          EUROPE: :Europe
+          MIDDLE_EAST: :"Middle East"
+          US: :US
+
+          def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionRecordStartParams::region]
         end
 
         type trim = :"trim-silence"
