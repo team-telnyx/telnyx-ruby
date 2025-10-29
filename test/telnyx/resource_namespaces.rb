@@ -41,6 +41,9 @@ module Telnyx
 
         module FineTuning
         end
+
+        module Integrations
+        end
       end
 
       module Assistants
@@ -98,6 +101,9 @@ module Telnyx
       end
 
       module InsightGroups
+      end
+
+      module Integrations
       end
 
       module Legacy
