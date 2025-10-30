@@ -31,6 +31,36 @@ module Telnyx
           )
         end
 
+        # Update queued call's keep_after_hangup flag
+        #
+        # @overload update(call_control_id, queue_name:, keep_after_hangup: nil, request_options: {})
+        #
+        # @param call_control_id [String] Path param: Unique identifier and token for controlling the call
+        #
+        # @param queue_name [String] Path param: Uniquely identifies the queue by name
+        #
+        # @param keep_after_hangup [Boolean] Body param: Whether the call should remain in queue after hangup.
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [nil]
+        #
+        # @see Telnyx::Models::Queues::CallUpdateParams
+        def update(call_control_id, params)
+          parsed, options = Telnyx::Queues::CallUpdateParams.dump_request(params)
+          queue_name =
+            parsed.delete(:queue_name) do
+              raise ArgumentError.new("missing required path argument #{_1}")
+            end
+          @client.request(
+            method: :patch,
+            path: ["queues/%1$s/calls/%2$s", queue_name, call_control_id],
+            body: parsed,
+            model: NilClass,
+            options: options
+          )
+        end
+
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Queues::CallListParams} for more details.
         #

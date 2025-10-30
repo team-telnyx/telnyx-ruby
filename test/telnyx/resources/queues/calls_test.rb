@@ -19,6 +19,16 @@ class Telnyx::Test::Resources::Queues::CallsTest < Telnyx::Test::ResourceTest
     end
   end
 
+  def test_update_required_params
+    skip("Prism tests are disabled")
+
+    response = @telnyx.queues.calls.update("call_control_id", queue_name: "queue_name")
+
+    assert_pattern do
+      response => nil
+    end
+  end
+
   def test_list
     skip("Prism tests are disabled")
 
