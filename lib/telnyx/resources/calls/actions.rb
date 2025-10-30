@@ -164,7 +164,7 @@ module Telnyx
         #
         # Put the call in a queue.
         #
-        # @overload enqueue(call_control_id, queue_name:, client_state: nil, command_id: nil, max_size: nil, max_wait_time_secs: nil, request_options: {})
+        # @overload enqueue(call_control_id, queue_name:, client_state: nil, command_id: nil, keep_after_hangup: nil, max_size: nil, max_wait_time_secs: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -173,6 +173,8 @@ module Telnyx
         # @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #
         # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
+        #
+        # @param keep_after_hangup [Boolean] If set to true, the call will remain in the queue after hangup. In this case bri
         #
         # @param max_size [Integer] The maximum number of calls allowed in the queue at a given time. Can't be modif
         #
@@ -1515,7 +1517,7 @@ module Telnyx
         # - `call.machine.premium.greeting.ended` if `answering_machine_detection=premium`
         #   was requested and a beep was detected
         #
-        # @overload transfer(call_control_id, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, client_state: nil, command_id: nil, custom_headers: nil, early_media: nil, from: nil, from_display_name: nil, media_encryption: nil, media_name: nil, mute_dtmf: nil, park_after_unbridge: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_transport_protocol: nil, sound_modifications: nil, target_leg_client_state: nil, time_limit_secs: nil, timeout_secs: nil, webhook_url: nil, webhook_url_method: nil, request_options: {})
+        # @overload transfer(call_control_id, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, client_state: nil, command_id: nil, custom_headers: nil, early_media: nil, from: nil, from_display_name: nil, media_encryption: nil, media_name: nil, mute_dtmf: nil, park_after_unbridge: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, target_leg_client_state: nil, time_limit_secs: nil, timeout_secs: nil, webhook_url: nil, webhook_url_method: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -1568,6 +1570,8 @@ module Telnyx
         # @param sip_auth_username [String] SIP Authentication username used for SIP challenges.
         #
         # @param sip_headers [Array<Telnyx::Models::SipHeader>] SIP headers to be added to the SIP INVITE. Currently only User-to-User header is
+        #
+        # @param sip_region [Symbol, Telnyx::Models::Calls::ActionTransferParams::SipRegion] Defines the SIP region to be used for the call.
         #
         # @param sip_transport_protocol [Symbol, Telnyx::Models::Calls::ActionTransferParams::SipTransportProtocol] Defines SIP transport protocol to be used on the call.
         #

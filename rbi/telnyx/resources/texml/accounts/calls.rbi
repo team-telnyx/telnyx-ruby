@@ -127,6 +127,8 @@ module Telnyx
               send_recording_url: T::Boolean,
               sip_auth_password: String,
               sip_auth_username: String,
+              sip_region:
+                Telnyx::Texml::Accounts::CallCallsParams::SipRegion::OrSymbol,
               status_callback: String,
               status_callback_event:
                 Telnyx::Texml::Accounts::CallCallsParams::StatusCallbackEvent::OrSymbol,
@@ -216,6 +218,8 @@ module Telnyx
             sip_auth_password: nil,
             # The username to use for SIP authentication.
             sip_auth_username: nil,
+            # Defines the SIP region to be used for the call.
+            sip_region: nil,
             # URL destination for Telnyx to send status callback events to for the call.
             status_callback: nil,
             # The call events for which Telnyx should send a webhook. Multiple events can be

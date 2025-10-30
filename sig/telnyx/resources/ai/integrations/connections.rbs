@@ -1,0 +1,25 @@
+module Telnyx
+  module Resources
+    class AI
+      class Integrations
+        class Connections
+          def retrieve: (
+            String user_connection_id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Integrations::ConnectionRetrieveResponse
+
+          def list: (
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Integrations::ConnectionListResponse
+
+          def delete: (
+            String user_connection_id,
+            ?request_options: Telnyx::request_opts
+          ) -> nil
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

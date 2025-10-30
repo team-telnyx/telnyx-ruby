@@ -24,13 +24,21 @@ module Telnyx
       #   @return [Telnyx::Models::ConferenceListParams::Page, nil]
       optional :page, -> { Telnyx::ConferenceListParams::Page }
 
-      # @!method initialize(filter: nil, page: nil, request_options: {})
+      # @!attribute region
+      #   Region where the conference data is located
+      #
+      #   @return [Symbol, Telnyx::Models::ConferenceListParams::Region, nil]
+      optional :region, enum: -> { Telnyx::ConferenceListParams::Region }
+
+      # @!method initialize(filter: nil, page: nil, region: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::ConferenceListParams} for more details.
       #
       #   @param filter [Telnyx::Models::ConferenceListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[application
       #
       #   @param page [Telnyx::Models::ConferenceListParams::Page] Consolidated page parameter (deepObject style). Originally: page[after], page[be
+      #
+      #   @param region [Symbol, Telnyx::Models::ConferenceListParams::Region] Region where the conference data is located
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -303,6 +311,19 @@ module Telnyx
         #   @param number [Integer] The page number to load
         #
         #   @param size [Integer] The size of the page
+      end
+
+      # Region where the conference data is located
+      module Region
+        extend Telnyx::Internal::Type::Enum
+
+        AUSTRALIA = :Australia
+        EUROPE = :Europe
+        MIDDLE_EAST = :"Middle East"
+        US = :US
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

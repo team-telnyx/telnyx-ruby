@@ -255,6 +255,12 @@ module Telnyx
       #   @return [Array<Telnyx::Models::SipHeader>, nil]
       optional :sip_headers, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::SipHeader] }
 
+      # @!attribute sip_region
+      #   Defines the SIP region to be used for the call.
+      #
+      #   @return [Symbol, Telnyx::Models::CallDialParams::SipRegion, nil]
+      optional :sip_region, enum: -> { Telnyx::CallDialParams::SipRegion }
+
       # @!attribute sip_transport_protocol
       #   Defines SIP transport protocol to be used on the call.
       #
@@ -379,7 +385,7 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::CallDialParams::WebhookURLMethod, nil]
       optional :webhook_url_method, enum: -> { Telnyx::CallDialParams::WebhookURLMethod }
 
-      # @!method initialize(connection_id:, from:, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, billing_group_id: nil, bridge_intent: nil, bridge_on_answer: nil, client_state: nil, command_id: nil, conference_config: nil, custom_headers: nil, dialogflow_config: nil, enable_dialogflow: nil, from_display_name: nil, link_to: nil, media_encryption: nil, media_name: nil, park_after_unbridge: nil, preferred_codecs: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_transport_protocol: nil, sound_modifications: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_establish_before_call_originate: nil, stream_track: nil, stream_url: nil, supervise_call_control_id: nil, supervisor_role: nil, time_limit_secs: nil, timeout_secs: nil, transcription: nil, transcription_config: nil, webhook_url: nil, webhook_url_method: nil, request_options: {})
+      # @!method initialize(connection_id:, from:, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, billing_group_id: nil, bridge_intent: nil, bridge_on_answer: nil, client_state: nil, command_id: nil, conference_config: nil, custom_headers: nil, dialogflow_config: nil, enable_dialogflow: nil, from_display_name: nil, link_to: nil, media_encryption: nil, media_name: nil, park_after_unbridge: nil, preferred_codecs: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_establish_before_call_originate: nil, stream_track: nil, stream_url: nil, supervise_call_control_id: nil, supervisor_role: nil, time_limit_secs: nil, timeout_secs: nil, transcription: nil, transcription_config: nil, webhook_url: nil, webhook_url_method: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CallDialParams} for more details.
       #
@@ -448,6 +454,8 @@ module Telnyx
       #   @param sip_auth_username [String] SIP Authentication username used for SIP challenges.
       #
       #   @param sip_headers [Array<Telnyx::Models::SipHeader>] SIP headers to be added to the SIP INVITE request. Currently only User-to-User h
+      #
+      #   @param sip_region [Symbol, Telnyx::Models::CallDialParams::SipRegion] Defines the SIP region to be used for the call.
       #
       #   @param sip_transport_protocol [Symbol, Telnyx::Models::CallDialParams::SipTransportProtocol] Defines SIP transport protocol to be used on the call.
       #
@@ -875,6 +883,20 @@ module Telnyx
         extend Telnyx::Internal::Type::Enum
 
         TRIM_SILENCE = :"trim-silence"
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # Defines the SIP region to be used for the call.
+      module SipRegion
+        extend Telnyx::Internal::Type::Enum
+
+        US = :US
+        EUROPE = :Europe
+        CANADA = :Canada
+        AUSTRALIA = :Australia
+        MIDDLE_EAST = :"Middle East"
 
         # @!method self.values
         #   @return [Array<Symbol>]

@@ -1,15 +1,41 @@
 module Telnyx
   module Models
     type conference_retrieve_params =
-      {  } & Telnyx::Internal::Type::request_parameters
+      { region: Telnyx::Models::ConferenceRetrieveParams::region }
+      & Telnyx::Internal::Type::request_parameters
 
     class ConferenceRetrieveParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      def initialize: (?request_options: Telnyx::request_opts) -> void
+      attr_reader region: Telnyx::Models::ConferenceRetrieveParams::region?
 
-      def to_hash: -> { request_options: Telnyx::RequestOptions }
+      def region=: (
+        Telnyx::Models::ConferenceRetrieveParams::region
+      ) -> Telnyx::Models::ConferenceRetrieveParams::region
+
+      def initialize: (
+        ?region: Telnyx::Models::ConferenceRetrieveParams::region,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        region: Telnyx::Models::ConferenceRetrieveParams::region,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type region = :Australia | :Europe | :"Middle East" | :US
+
+      module Region
+        extend Telnyx::Internal::Type::Enum
+
+        AUSTRALIA: :Australia
+        EUROPE: :Europe
+        MIDDLE_EAST: :"Middle East"
+        US: :US
+
+        def self?.values: -> ::Array[Telnyx::Models::ConferenceRetrieveParams::region]
+      end
     end
   end
 end

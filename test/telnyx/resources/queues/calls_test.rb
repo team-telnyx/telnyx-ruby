@@ -19,6 +19,16 @@ class Telnyx::Test::Resources::Queues::CallsTest < Telnyx::Test::ResourceTest
     end
   end
 
+  def test_update_required_params
+    skip("Prism tests are disabled")
+
+    response = @telnyx.queues.calls.update("call_control_id", queue_name: "queue_name")
+
+    assert_pattern do
+      response => nil
+    end
+  end
+
   def test_list
     skip("Prism tests are disabled")
 
@@ -33,6 +43,16 @@ class Telnyx::Test::Resources::Queues::CallsTest < Telnyx::Test::ResourceTest
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Queues::CallListResponse::Data]) | nil,
         meta: Telnyx::PaginationMeta | nil
       }
+    end
+  end
+
+  def test_remove_required_params
+    skip("Prism tests are disabled")
+
+    response = @telnyx.queues.calls.remove("call_control_id", queue_name: "queue_name")
+
+    assert_pattern do
+      response => nil
     end
   end
 end
