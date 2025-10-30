@@ -1,5 +1,19 @@
 # Changelog
 
+## 4.5.0 (2025-10-30)
+
+Full Changelog: [v4.4.0...v4.5.0](https://github.com/team-telnyx/telnyx-ruby/compare/v4.4.0...v4.5.0)
+
+### Features
+
+* AI-1842: Add MCP Servers and Integrations sections ([5f53a7a](https://github.com/team-telnyx/telnyx-ruby/commit/5f53a7ab61c0943cb80c0e25991e2c7a4d1ae41b))
+* ENGDESK-44767 - Document force remove calls from queue ([a9abed5](https://github.com/team-telnyx/telnyx-ruby/commit/a9abed5b202d5d61d43edc2639756fc5e8eecb86))
+* ENGDESK-45429 - Add sip_region documentation for dial and transfer command ([6a9e20d](https://github.com/team-telnyx/telnyx-ruby/commit/6a9e20dade3787715bf06a6f1bd10d87ff00c791))
+* ENGDESK-46399 - Add sip_call_id filter for retreiving recordings ([4a75607](https://github.com/team-telnyx/telnyx-ruby/commit/4a75607b1a780e8f9fe579e8768b364af623ddb8))
+* TELAPPS-5399 Add region to conference commands ([d07f3dd](https://github.com/team-telnyx/telnyx-ruby/commit/d07f3dd7b2534dc8b26813310ea7a27b51a39133))
+* TELAPPS-ENGDESK-46395 Add keep_after_hangup to enqueue command ([3d54ab9](https://github.com/team-telnyx/telnyx-ruby/commit/3d54ab9752c4da1184c618507dbb9cad26f7dd00))
+* TELAPPS-ENGDESK-46395 Add PATCH /queues/{queue_name}/calls/{call_control_id} endpoint ([4f16724](https://github.com/team-telnyx/telnyx-ruby/commit/4f16724b5446edeb695a7c42798022d7b33c7541))
+
 ## 4.4.0 (2025-10-27)
 
 Full Changelog: [v4.3.0...v4.4.0](https://github.com/team-telnyx/telnyx-ruby/compare/v4.3.0...v4.4.0)
