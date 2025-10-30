@@ -61,6 +61,7 @@ module Telnyx
           queue_name: String,
           ?client_state: String,
           ?command_id: String,
+          ?keep_after_hangup: bool,
           ?max_size: Integer,
           ?max_wait_time_secs: Integer,
           ?request_options: Telnyx::request_opts

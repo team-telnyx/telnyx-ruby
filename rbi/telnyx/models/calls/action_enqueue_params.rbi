@@ -33,6 +33,15 @@ module Telnyx
         sig { params(command_id: String).void }
         attr_writer :command_id
 
+        # If set to true, the call will remain in the queue after hangup. In this case
+        # bridging to such call will fail with necessary information needed to
+        # re-establish the call.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :keep_after_hangup
+
+        sig { params(keep_after_hangup: T::Boolean).void }
+        attr_writer :keep_after_hangup
+
         # The maximum number of calls allowed in the queue at a given time. Can't be
         # modified for an existing queue.
         sig { returns(T.nilable(Integer)) }
@@ -53,6 +62,7 @@ module Telnyx
             queue_name: String,
             client_state: String,
             command_id: String,
+            keep_after_hangup: T::Boolean,
             max_size: Integer,
             max_wait_time_secs: Integer,
             request_options: Telnyx::RequestOptions::OrHash
@@ -68,6 +78,10 @@ module Telnyx
           # Use this field to avoid duplicate commands. Telnyx will ignore any command with
           # the same `command_id` for the same `call_control_id`.
           command_id: nil,
+          # If set to true, the call will remain in the queue after hangup. In this case
+          # bridging to such call will fail with necessary information needed to
+          # re-establish the call.
+          keep_after_hangup: nil,
           # The maximum number of calls allowed in the queue at a given time. Can't be
           # modified for an existing queue.
           max_size: nil,
@@ -83,6 +97,7 @@ module Telnyx
               queue_name: String,
               client_state: String,
               command_id: String,
+              keep_after_hangup: T::Boolean,
               max_size: Integer,
               max_wait_time_secs: Integer,
               request_options: Telnyx::RequestOptions

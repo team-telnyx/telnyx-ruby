@@ -164,7 +164,7 @@ module Telnyx
         #
         # Put the call in a queue.
         #
-        # @overload enqueue(call_control_id, queue_name:, client_state: nil, command_id: nil, max_size: nil, max_wait_time_secs: nil, request_options: {})
+        # @overload enqueue(call_control_id, queue_name:, client_state: nil, command_id: nil, keep_after_hangup: nil, max_size: nil, max_wait_time_secs: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -173,6 +173,8 @@ module Telnyx
         # @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #
         # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
+        #
+        # @param keep_after_hangup [Boolean] If set to true, the call will remain in the queue after hangup. In this case bri
         #
         # @param max_size [Integer] The maximum number of calls allowed in the queue at a given time. Can't be modif
         #
