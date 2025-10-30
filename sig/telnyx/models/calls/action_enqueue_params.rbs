@@ -6,6 +6,7 @@ module Telnyx
           queue_name: String,
           client_state: String,
           command_id: String,
+          keep_after_hangup: bool,
           max_size: Integer,
           max_wait_time_secs: Integer
         }
@@ -25,6 +26,10 @@ module Telnyx
 
         def command_id=: (String) -> String
 
+        attr_reader keep_after_hangup: bool?
+
+        def keep_after_hangup=: (bool) -> bool
+
         attr_reader max_size: Integer?
 
         def max_size=: (Integer) -> Integer
@@ -37,6 +42,7 @@ module Telnyx
           queue_name: String,
           ?client_state: String,
           ?command_id: String,
+          ?keep_after_hangup: bool,
           ?max_size: Integer,
           ?max_wait_time_secs: Integer,
           ?request_options: Telnyx::request_opts
@@ -46,6 +52,7 @@ module Telnyx
           queue_name: String,
           client_state: String,
           command_id: String,
+          keep_after_hangup: bool,
           max_size: Integer,
           max_wait_time_secs: Integer,
           request_options: Telnyx::RequestOptions
