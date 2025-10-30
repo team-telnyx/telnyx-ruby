@@ -21,6 +21,12 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Queues::CallListResponse
 
+        def remove: (
+          String call_control_id,
+          queue_name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
         def initialize: (client: Telnyx::Client) -> void
       end
     end

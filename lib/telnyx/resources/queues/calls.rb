@@ -88,6 +88,34 @@ module Telnyx
           )
         end
 
+        # Removes an inactive call from a queue. If the call is no longer active, use this
+        # command to remove it from the queue.
+        #
+        # @overload remove(call_control_id, queue_name:, request_options: {})
+        #
+        # @param call_control_id [String] Unique identifier and token for controlling the call
+        #
+        # @param queue_name [String] Uniquely identifies the queue by name
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [nil]
+        #
+        # @see Telnyx::Models::Queues::CallRemoveParams
+        def remove(call_control_id, params)
+          parsed, options = Telnyx::Queues::CallRemoveParams.dump_request(params)
+          queue_name =
+            parsed.delete(:queue_name) do
+              raise ArgumentError.new("missing required path argument #{_1}")
+            end
+          @client.request(
+            method: :delete,
+            path: ["queues/%1$s/calls/%2$s", queue_name, call_control_id],
+            model: NilClass,
+            options: options
+          )
+        end
+
         # @api private
         #
         # @param client [Telnyx::Client]
