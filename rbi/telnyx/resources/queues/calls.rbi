@@ -59,6 +59,24 @@ module Telnyx
         )
         end
 
+        # Removes an inactive call from a queue. If the call is no longer active, use this
+        # command to remove it from the queue.
+        sig do
+          params(
+            call_control_id: String,
+            queue_name: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).void
+        end
+        def remove(
+          # Unique identifier and token for controlling the call
+          call_control_id,
+          # Uniquely identifies the queue by name
+          queue_name:,
+          request_options: {}
+        )
+        end
+
         # @api private
         sig { params(client: Telnyx::Client).returns(T.attached_class) }
         def self.new(client:)
