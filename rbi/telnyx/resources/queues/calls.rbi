@@ -21,6 +21,26 @@ module Telnyx
         )
         end
 
+        # Update queued call's keep_after_hangup flag
+        sig do
+          params(
+            call_control_id: String,
+            queue_name: String,
+            keep_after_hangup: T::Boolean,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).void
+        end
+        def update(
+          # Path param: Unique identifier and token for controlling the call
+          call_control_id,
+          # Path param: Uniquely identifies the queue by name
+          queue_name:,
+          # Body param: Whether the call should remain in queue after hangup.
+          keep_after_hangup: nil,
+          request_options: {}
+        )
+        end
+
         # Retrieve the list of calls in an existing queue
         sig do
           params(
