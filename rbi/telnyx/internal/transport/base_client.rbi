@@ -178,6 +178,11 @@ module Telnyx
 
         # @api private
         sig { returns(String) }
+        private def user_agent
+        end
+
+        # @api private
+        sig { returns(String) }
         private def generate_idempotency_key
         end
 
