@@ -35,6 +35,7 @@ module Telnyx
         sip_auth_password: String,
         sip_auth_username: String,
         sip_headers: ::Array[Telnyx::SipHeader],
+        sip_region: Telnyx::Models::CallDialParams::sip_region,
         sip_transport_protocol: Telnyx::Models::CallDialParams::sip_transport_protocol,
         sound_modifications: Telnyx::SoundModifications,
         stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
@@ -210,6 +211,12 @@ module Telnyx
         ::Array[Telnyx::SipHeader]
       ) -> ::Array[Telnyx::SipHeader]
 
+      attr_reader sip_region: Telnyx::Models::CallDialParams::sip_region?
+
+      def sip_region=: (
+        Telnyx::Models::CallDialParams::sip_region
+      ) -> Telnyx::Models::CallDialParams::sip_region
+
       attr_reader sip_transport_protocol: Telnyx::Models::CallDialParams::sip_transport_protocol?
 
       def sip_transport_protocol=: (
@@ -338,6 +345,7 @@ module Telnyx
         ?sip_auth_password: String,
         ?sip_auth_username: String,
         ?sip_headers: ::Array[Telnyx::SipHeader],
+        ?sip_region: Telnyx::Models::CallDialParams::sip_region,
         ?sip_transport_protocol: Telnyx::Models::CallDialParams::sip_transport_protocol,
         ?sound_modifications: Telnyx::SoundModifications,
         ?stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
@@ -393,6 +401,7 @@ module Telnyx
         sip_auth_password: String,
         sip_auth_username: String,
         sip_headers: ::Array[Telnyx::SipHeader],
+        sip_region: Telnyx::Models::CallDialParams::sip_region,
         sip_transport_protocol: Telnyx::Models::CallDialParams::sip_transport_protocol,
         sound_modifications: Telnyx::SoundModifications,
         stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
@@ -731,6 +740,20 @@ module Telnyx
         TRIM_SILENCE: :"trim-silence"
 
         def self?.values: -> ::Array[Telnyx::Models::CallDialParams::record_trim]
+      end
+
+      type sip_region = :US | :Europe | :Canada | :Australia | :"Middle East"
+
+      module SipRegion
+        extend Telnyx::Internal::Type::Enum
+
+        US: :US
+        EUROPE: :Europe
+        CANADA: :Canada
+        AUSTRALIA: :Australia
+        MIDDLE_EAST: :"Middle East"
+
+        def self?.values: -> ::Array[Telnyx::Models::CallDialParams::sip_region]
       end
 
       type sip_transport_protocol = :UDP | :TCP | :TLS

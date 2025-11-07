@@ -7,6 +7,7 @@ module Telnyx
           call_control_id: String,
           supervisor_role: Telnyx::Models::Conferences::UpdateConference::supervisor_role,
           ?command_id: String,
+          ?region: Telnyx::Models::Conferences::UpdateConference::region,
           ?whisper_call_control_ids: ::Array[String],
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Conferences::ActionUpdateResponse
@@ -16,6 +17,7 @@ module Telnyx
           ?audio_url: String,
           ?call_control_ids: ::Array[String],
           ?media_name: String,
+          ?region: Telnyx::Models::Conferences::ActionHoldParams::region,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Conferences::ActionHoldResponse
 
@@ -30,6 +32,7 @@ module Telnyx
           ?hold_audio_url: String,
           ?hold_media_name: String,
           ?mute: bool,
+          ?region: Telnyx::Models::Conferences::ActionJoinParams::region,
           ?soft_end_conference_on_exit: bool,
           ?start_conference_on_enter: bool,
           ?supervisor_role: Telnyx::Models::Conferences::ActionJoinParams::supervisor_role,
@@ -42,12 +45,14 @@ module Telnyx
           call_control_id: String,
           ?beep_enabled: Telnyx::Models::Conferences::ActionLeaveParams::beep_enabled,
           ?command_id: String,
+          ?region: Telnyx::Models::Conferences::ActionLeaveParams::region,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Conferences::ActionLeaveResponse
 
         def mute: (
           String id,
           ?call_control_ids: ::Array[String],
+          ?region: Telnyx::Models::Conferences::ActionMuteParams::region,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Conferences::ActionMuteResponse
 
@@ -57,6 +62,7 @@ module Telnyx
           ?call_control_ids: ::Array[String],
           ?loop_: Telnyx::Models::Calls::loopcount,
           ?media_name: String,
+          ?region: Telnyx::Models::Conferences::ActionPlayParams::region,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Conferences::ActionPlayResponse
 
@@ -64,6 +70,7 @@ module Telnyx
           String id,
           ?command_id: String,
           ?recording_id: String,
+          ?region: Telnyx::Models::Conferences::ActionRecordPauseParams::region,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Conferences::ActionRecordPauseResponse
 
@@ -71,6 +78,7 @@ module Telnyx
           String id,
           ?command_id: String,
           ?recording_id: String,
+          ?region: Telnyx::Models::Conferences::ActionRecordResumeParams::region,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Conferences::ActionRecordResumeResponse
 
@@ -80,6 +88,7 @@ module Telnyx
           ?command_id: String,
           ?custom_file_name: String,
           ?play_beep: bool,
+          ?region: Telnyx::Models::Conferences::ActionRecordStartParams::region,
           ?trim: Telnyx::Models::Conferences::ActionRecordStartParams::trim,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Conferences::ActionRecordStartResponse
@@ -89,6 +98,7 @@ module Telnyx
           ?client_state: String,
           ?command_id: String,
           ?recording_id: String,
+          ?region: Telnyx::Models::Conferences::ActionRecordStopParams::region,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Conferences::ActionRecordStopResponse
 
@@ -100,6 +110,7 @@ module Telnyx
           ?command_id: String,
           ?language: Telnyx::Models::Conferences::ActionSpeakParams::language,
           ?payload_type: Telnyx::Models::Conferences::ActionSpeakParams::payload_type,
+          ?region: Telnyx::Models::Conferences::ActionSpeakParams::region,
           ?voice_settings: Telnyx::Models::Conferences::ActionSpeakParams::voice_settings,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Conferences::ActionSpeakResponse
@@ -107,18 +118,21 @@ module Telnyx
         def stop: (
           String id,
           ?call_control_ids: ::Array[String],
+          ?region: Telnyx::Models::Conferences::ActionStopParams::region,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Conferences::ActionStopResponse
 
         def unhold: (
           String id,
           call_control_ids: ::Array[String],
+          ?region: Telnyx::Models::Conferences::ActionUnholdParams::region,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Conferences::ActionUnholdResponse
 
         def unmute: (
           String id,
           ?call_control_ids: ::Array[String],
+          ?region: Telnyx::Models::Conferences::ActionUnmuteParams::region,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Conferences::ActionUnmuteResponse
 

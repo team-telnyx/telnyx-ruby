@@ -61,6 +61,7 @@ module Telnyx
           queue_name: String,
           ?client_state: String,
           ?command_id: String,
+          ?keep_after_hangup: bool,
           ?max_size: Integer,
           ?max_wait_time_secs: Integer,
           ?request_options: Telnyx::request_opts
@@ -430,6 +431,7 @@ module Telnyx
           ?sip_auth_password: String,
           ?sip_auth_username: String,
           ?sip_headers: ::Array[Telnyx::SipHeader],
+          ?sip_region: Telnyx::Models::Calls::ActionTransferParams::sip_region,
           ?sip_transport_protocol: Telnyx::Models::Calls::ActionTransferParams::sip_transport_protocol,
           ?sound_modifications: Telnyx::SoundModifications,
           ?target_leg_client_state: String,

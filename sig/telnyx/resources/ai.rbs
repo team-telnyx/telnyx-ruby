@@ -15,6 +15,10 @@ module Telnyx
 
       attr_reader fine_tuning: Telnyx::Resources::AI::FineTuning
 
+      attr_reader integrations: Telnyx::Resources::AI::Integrations
+
+      attr_reader mcp_servers: Telnyx::Resources::AI::McpServers
+
       def retrieve_models: (
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::AIRetrieveModelsResponse

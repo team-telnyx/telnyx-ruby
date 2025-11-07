@@ -76,13 +76,20 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Conferences::ActionSpeakParams::PayloadType, nil]
         optional :payload_type, enum: -> { Telnyx::Conferences::ActionSpeakParams::PayloadType }
 
+        # @!attribute region
+        #   Region where the conference data is located. Defaults to the region defined in
+        #   user's data locality settings (Europe or US).
+        #
+        #   @return [Symbol, Telnyx::Models::Conferences::ActionSpeakParams::Region, nil]
+        optional :region, enum: -> { Telnyx::Conferences::ActionSpeakParams::Region }
+
         # @!attribute voice_settings
         #   The settings associated with the voice selected
         #
         #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Object, nil]
         optional :voice_settings, union: -> { Telnyx::Conferences::ActionSpeakParams::VoiceSettings }
 
-        # @!method initialize(payload:, voice:, call_control_ids: nil, command_id: nil, language: nil, payload_type: nil, voice_settings: nil, request_options: {})
+        # @!method initialize(payload:, voice:, call_control_ids: nil, command_id: nil, language: nil, payload_type: nil, region: nil, voice_settings: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::ActionSpeakParams} for more details.
         #
@@ -97,6 +104,8 @@ module Telnyx
         #   @param language [Symbol, Telnyx::Models::Conferences::ActionSpeakParams::Language] The language you want spoken. This parameter is ignored when a `Polly.*` voice i
         #
         #   @param payload_type [Symbol, Telnyx::Models::Conferences::ActionSpeakParams::PayloadType] The type of the provided payload. The payload can either be plain text, or Speec
+        #
+        #   @param region [Symbol, Telnyx::Models::Conferences::ActionSpeakParams::Region] Region where the conference data is located. Defaults to the region defined in u
         #
         #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Object] The settings associated with the voice selected
         #
@@ -148,6 +157,20 @@ module Telnyx
 
           TEXT = :text
           SSML = :ssml
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Region where the conference data is located. Defaults to the region defined in
+        # user's data locality settings (Europe or US).
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          AUSTRALIA = :Australia
+          EUROPE = :Europe
+          MIDDLE_EAST = :"Middle East"
+          US = :US
 
           # @!method self.values
           #   @return [Array<Symbol>]

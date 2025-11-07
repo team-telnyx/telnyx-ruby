@@ -300,6 +300,24 @@ module Telnyx
           sig { params(sip_auth_username: String).void }
           attr_writer :sip_auth_username
 
+          # Defines the SIP region to be used for the call.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Texml::Accounts::CallCallsParams::SipRegion::OrSymbol
+              )
+            )
+          end
+          attr_reader :sip_region
+
+          sig do
+            params(
+              sip_region:
+                Telnyx::Texml::Accounts::CallCallsParams::SipRegion::OrSymbol
+            ).void
+          end
+          attr_writer :sip_region
+
           # URL destination for Telnyx to send status callback events to for the call.
           sig { returns(T.nilable(String)) }
           attr_reader :status_callback
@@ -427,6 +445,8 @@ module Telnyx
               send_recording_url: T::Boolean,
               sip_auth_password: String,
               sip_auth_username: String,
+              sip_region:
+                Telnyx::Texml::Accounts::CallCallsParams::SipRegion::OrSymbol,
               status_callback: String,
               status_callback_event:
                 Telnyx::Texml::Accounts::CallCallsParams::StatusCallbackEvent::OrSymbol,
@@ -514,6 +534,8 @@ module Telnyx
             sip_auth_password: nil,
             # The username to use for SIP authentication.
             sip_auth_username: nil,
+            # Defines the SIP region to be used for the call.
+            sip_region: nil,
             # URL destination for Telnyx to send status callback events to for the call.
             status_callback: nil,
             # The call events for which Telnyx should send a webhook. Multiple events can be
@@ -573,6 +595,8 @@ module Telnyx
                 send_recording_url: T::Boolean,
                 sip_auth_password: String,
                 sip_auth_username: String,
+                sip_region:
+                  Telnyx::Texml::Accounts::CallCallsParams::SipRegion::OrSymbol,
                 status_callback: String,
                 status_callback_event:
                   Telnyx::Texml::Accounts::CallCallsParams::StatusCallbackEvent::OrSymbol,
@@ -836,6 +860,56 @@ module Telnyx
               override.returns(
                 T::Array[
                   Telnyx::Texml::Accounts::CallCallsParams::RecordingTrack::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Defines the SIP region to be used for the call.
+          module SipRegion
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Texml::Accounts::CallCallsParams::SipRegion
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            US =
+              T.let(
+                :US,
+                Telnyx::Texml::Accounts::CallCallsParams::SipRegion::TaggedSymbol
+              )
+            EUROPE =
+              T.let(
+                :Europe,
+                Telnyx::Texml::Accounts::CallCallsParams::SipRegion::TaggedSymbol
+              )
+            CANADA =
+              T.let(
+                :Canada,
+                Telnyx::Texml::Accounts::CallCallsParams::SipRegion::TaggedSymbol
+              )
+            AUSTRALIA =
+              T.let(
+                :Australia,
+                Telnyx::Texml::Accounts::CallCallsParams::SipRegion::TaggedSymbol
+              )
+            MIDDLE_EAST =
+              T.let(
+                :"Middle East",
+                Telnyx::Texml::Accounts::CallCallsParams::SipRegion::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Texml::Accounts::CallCallsParams::SipRegion::TaggedSymbol
                 ]
               )
             end

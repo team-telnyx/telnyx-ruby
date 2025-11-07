@@ -29,6 +29,14 @@ module Telnyx
         #   @return [String, nil]
         optional :command_id, String
 
+        # @!attribute keep_after_hangup
+        #   If set to true, the call will remain in the queue after hangup. In this case
+        #   bridging to such call will fail with necessary information needed to
+        #   re-establish the call.
+        #
+        #   @return [Boolean, nil]
+        optional :keep_after_hangup, Telnyx::Internal::Type::Boolean
+
         # @!attribute max_size
         #   The maximum number of calls allowed in the queue at a given time. Can't be
         #   modified for an existing queue.
@@ -42,7 +50,7 @@ module Telnyx
         #   @return [Integer, nil]
         optional :max_wait_time_secs, Integer
 
-        # @!method initialize(queue_name:, client_state: nil, command_id: nil, max_size: nil, max_wait_time_secs: nil, request_options: {})
+        # @!method initialize(queue_name:, client_state: nil, command_id: nil, keep_after_hangup: nil, max_size: nil, max_wait_time_secs: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionEnqueueParams} for more details.
         #
@@ -51,6 +59,8 @@ module Telnyx
         #   @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #
         #   @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
+        #
+        #   @param keep_after_hangup [Boolean] If set to true, the call will remain in the queue after hangup. In this case bri
         #
         #   @param max_size [Integer] The maximum number of calls allowed in the queue at a given time. Can't be modif
         #

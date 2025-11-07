@@ -5,7 +5,8 @@ module Telnyx
         {
           call_control_id: String,
           beep_enabled: Telnyx::Models::Conferences::ActionLeaveParams::beep_enabled,
-          command_id: String
+          command_id: String,
+          region: Telnyx::Models::Conferences::ActionLeaveParams::region
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -25,10 +26,17 @@ module Telnyx
 
         def command_id=: (String) -> String
 
+        attr_reader region: Telnyx::Models::Conferences::ActionLeaveParams::region?
+
+        def region=: (
+          Telnyx::Models::Conferences::ActionLeaveParams::region
+        ) -> Telnyx::Models::Conferences::ActionLeaveParams::region
+
         def initialize: (
           call_control_id: String,
           ?beep_enabled: Telnyx::Models::Conferences::ActionLeaveParams::beep_enabled,
           ?command_id: String,
+          ?region: Telnyx::Models::Conferences::ActionLeaveParams::region,
           ?request_options: Telnyx::request_opts
         ) -> void
 
@@ -36,6 +44,7 @@ module Telnyx
           call_control_id: String,
           beep_enabled: Telnyx::Models::Conferences::ActionLeaveParams::beep_enabled,
           command_id: String,
+          region: Telnyx::Models::Conferences::ActionLeaveParams::region,
           request_options: Telnyx::RequestOptions
         }
 
@@ -50,6 +59,19 @@ module Telnyx
           ON_EXIT: :on_exit
 
           def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionLeaveParams::beep_enabled]
+        end
+
+        type region = :Australia | :Europe | :"Middle East" | :US
+
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          AUSTRALIA: :Australia
+          EUROPE: :Europe
+          MIDDLE_EAST: :"Middle East"
+          US: :US
+
+          def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionLeaveParams::region]
         end
       end
     end
