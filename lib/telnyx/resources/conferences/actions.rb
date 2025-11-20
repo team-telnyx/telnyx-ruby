@@ -9,7 +9,7 @@ module Telnyx
         #
         # Update conference participant supervisor_role
         #
-        # @overload update(id, call_control_id:, supervisor_role:, command_id: nil, whisper_call_control_ids: nil, request_options: {})
+        # @overload update(id, call_control_id:, supervisor_role:, command_id: nil, region: nil, whisper_call_control_ids: nil, request_options: {})
         #
         # @param id [String] Uniquely identifies the conference by id or name
         #
@@ -18,6 +18,8 @@ module Telnyx
         # @param supervisor_role [Symbol, Telnyx::Models::Conferences::UpdateConference::SupervisorRole] Sets the participant as a supervisor for the conference. A conference can have m
         #
         # @param command_id [String] Use this field to avoid execution of duplicate commands. Telnyx will ignore subs
+        #
+        # @param region [Symbol, Telnyx::Models::Conferences::UpdateConference::Region] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param whisper_call_control_ids [Array<String>] Array of unique call_control_ids the supervisor can whisper to. If none provided
         #
@@ -42,7 +44,7 @@ module Telnyx
         #
         # Hold a list of participants in a conference call
         #
-        # @overload hold(id, audio_url: nil, call_control_ids: nil, media_name: nil, request_options: {})
+        # @overload hold(id, audio_url: nil, call_control_ids: nil, media_name: nil, region: nil, request_options: {})
         #
         # @param id [String] Uniquely identifies the conference by id or name
         #
@@ -51,6 +53,8 @@ module Telnyx
         # @param call_control_ids [Array<String>] List of unique identifiers and tokens for controlling the call. When empty all p
         #
         # @param media_name [String] The media_name of a file to be played to the participants when they are put on h
+        #
+        # @param region [Symbol, Telnyx::Models::Conferences::ActionHoldParams::Region] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -82,7 +86,7 @@ module Telnyx
         # - `conference.participant.joined`
         # - `conference.participant.left`
         #
-        # @overload join(id, call_control_id:, beep_enabled: nil, client_state: nil, command_id: nil, end_conference_on_exit: nil, hold: nil, hold_audio_url: nil, hold_media_name: nil, mute: nil, soft_end_conference_on_exit: nil, start_conference_on_enter: nil, supervisor_role: nil, whisper_call_control_ids: nil, request_options: {})
+        # @overload join(id, call_control_id:, beep_enabled: nil, client_state: nil, command_id: nil, end_conference_on_exit: nil, hold: nil, hold_audio_url: nil, hold_media_name: nil, mute: nil, region: nil, soft_end_conference_on_exit: nil, start_conference_on_enter: nil, supervisor_role: nil, whisper_call_control_ids: nil, request_options: {})
         #
         # @param id [String] Uniquely identifies the conference by id or name
         #
@@ -103,6 +107,8 @@ module Telnyx
         # @param hold_media_name [String] The media_name of a file to be played to the participant when they are put on ho
         #
         # @param mute [Boolean] Whether the participant should be muted immediately after joining the conference
+        #
+        # @param region [Symbol, Telnyx::Models::Conferences::ActionJoinParams::Region] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param soft_end_conference_on_exit [Boolean] Whether the conference should end after the participant leaves the conference. N
         #
@@ -137,7 +143,7 @@ module Telnyx
         #
         # - `conference.participant.left`
         #
-        # @overload leave(id, call_control_id:, beep_enabled: nil, command_id: nil, request_options: {})
+        # @overload leave(id, call_control_id:, beep_enabled: nil, command_id: nil, region: nil, request_options: {})
         #
         # @param id [String] Uniquely identifies the conference by id or name
         #
@@ -146,6 +152,8 @@ module Telnyx
         # @param beep_enabled [Symbol, Telnyx::Models::Conferences::ActionLeaveParams::BeepEnabled] Whether a beep sound should be played when the participant leaves the conference
         #
         # @param command_id [String] Use this field to avoid execution of duplicate commands. Telnyx will ignore subs
+        #
+        # @param region [Symbol, Telnyx::Models::Conferences::ActionLeaveParams::Region] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -168,11 +176,13 @@ module Telnyx
         #
         # Mute a list of participants in a conference call
         #
-        # @overload mute(id, call_control_ids: nil, request_options: {})
+        # @overload mute(id, call_control_ids: nil, region: nil, request_options: {})
         #
         # @param id [String] Uniquely identifies the conference by id or name
         #
         # @param call_control_ids [Array<String>] Array of unique identifiers and tokens for controlling the call. When empty all
+        #
+        # @param region [Symbol, Telnyx::Models::Conferences::ActionMuteParams::Region] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -195,7 +205,7 @@ module Telnyx
         #
         # Play audio to all or some participants on a conference call.
         #
-        # @overload play(id, audio_url: nil, call_control_ids: nil, loop_: nil, media_name: nil, request_options: {})
+        # @overload play(id, audio_url: nil, call_control_ids: nil, loop_: nil, media_name: nil, region: nil, request_options: {})
         #
         # @param id [String] Uniquely identifies the conference by id or name
         #
@@ -206,6 +216,8 @@ module Telnyx
         # @param loop_ [String, Integer] The number of times the audio file should be played. If supplied, the value must
         #
         # @param media_name [String] The media_name of a file to be played back in the conference. The media_name mus
+        #
+        # @param region [Symbol, Telnyx::Models::Conferences::ActionPlayParams::Region] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -228,13 +240,15 @@ module Telnyx
         #
         # Pause conference recording.
         #
-        # @overload record_pause(id, command_id: nil, recording_id: nil, request_options: {})
+        # @overload record_pause(id, command_id: nil, recording_id: nil, region: nil, request_options: {})
         #
         # @param id [String] Specifies the conference by id or name
         #
         # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #
         # @param recording_id [String] Use this field to pause specific recording.
+        #
+        # @param region [Symbol, Telnyx::Models::Conferences::ActionRecordPauseParams::Region] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -257,13 +271,15 @@ module Telnyx
         #
         # Resume conference recording.
         #
-        # @overload record_resume(id, command_id: nil, recording_id: nil, request_options: {})
+        # @overload record_resume(id, command_id: nil, recording_id: nil, region: nil, request_options: {})
         #
         # @param id [String] Specifies the conference by id or name
         #
         # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #
         # @param recording_id [String] Use this field to resume specific recording.
+        #
+        # @param region [Symbol, Telnyx::Models::Conferences::ActionRecordResumeParams::Region] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -291,7 +307,7 @@ module Telnyx
         #
         # - `conference.recording.saved`
         #
-        # @overload record_start(id, format_:, command_id: nil, custom_file_name: nil, play_beep: nil, trim: nil, request_options: {})
+        # @overload record_start(id, format_:, command_id: nil, custom_file_name: nil, play_beep: nil, region: nil, trim: nil, request_options: {})
         #
         # @param id [String] Specifies the conference to record by id or name
         #
@@ -302,6 +318,8 @@ module Telnyx
         # @param custom_file_name [String] The custom recording file name to be used instead of the default `call_leg_id`.
         #
         # @param play_beep [Boolean] If enabled, a beep sound will be played at the start of a recording.
+        #
+        # @param region [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Region] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param trim [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Trim] When set to `trim-silence`, silence will be removed from the beginning and end o
         #
@@ -330,7 +348,7 @@ module Telnyx
         #
         # - `conference.recording.saved`
         #
-        # @overload record_stop(id, client_state: nil, command_id: nil, recording_id: nil, request_options: {})
+        # @overload record_stop(id, client_state: nil, command_id: nil, recording_id: nil, region: nil, request_options: {})
         #
         # @param id [String] Specifies the conference to stop the recording for by id or name
         #
@@ -339,6 +357,8 @@ module Telnyx
         # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #
         # @param recording_id [String] Uniquely identifies the resource.
+        #
+        # @param region [Symbol, Telnyx::Models::Conferences::ActionRecordStopParams::Region] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -361,7 +381,7 @@ module Telnyx
         #
         # Convert text to speech and play it to all or some participants.
         #
-        # @overload speak(id, payload:, voice:, call_control_ids: nil, command_id: nil, language: nil, payload_type: nil, voice_settings: nil, request_options: {})
+        # @overload speak(id, payload:, voice:, call_control_ids: nil, command_id: nil, language: nil, payload_type: nil, region: nil, voice_settings: nil, request_options: {})
         #
         # @param id [String] Specifies the conference by id or name
         #
@@ -376,6 +396,8 @@ module Telnyx
         # @param language [Symbol, Telnyx::Models::Conferences::ActionSpeakParams::Language] The language you want spoken. This parameter is ignored when a `Polly.*` voice i
         #
         # @param payload_type [Symbol, Telnyx::Models::Conferences::ActionSpeakParams::PayloadType] The type of the provided payload. The payload can either be plain text, or Speec
+        #
+        # @param region [Symbol, Telnyx::Models::Conferences::ActionSpeakParams::Region] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Object] The settings associated with the voice selected
         #
@@ -400,11 +422,13 @@ module Telnyx
         #
         # Stop audio being played to all or some participants on a conference call.
         #
-        # @overload stop(id, call_control_ids: nil, request_options: {})
+        # @overload stop(id, call_control_ids: nil, region: nil, request_options: {})
         #
         # @param id [String] Uniquely identifies the conference by id or name
         #
         # @param call_control_ids [Array<String>] List of call control ids identifying participants the audio file should stop be
+        #
+        # @param region [Symbol, Telnyx::Models::Conferences::ActionStopParams::Region] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -427,11 +451,13 @@ module Telnyx
         #
         # Unhold a list of participants in a conference call
         #
-        # @overload unhold(id, call_control_ids:, request_options: {})
+        # @overload unhold(id, call_control_ids:, region: nil, request_options: {})
         #
         # @param id [String] Uniquely identifies the conference by id or name
         #
         # @param call_control_ids [Array<String>] List of unique identifiers and tokens for controlling the call. Enter each call
+        #
+        # @param region [Symbol, Telnyx::Models::Conferences::ActionUnholdParams::Region] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -454,11 +480,13 @@ module Telnyx
         #
         # Unmute a list of participants in a conference call
         #
-        # @overload unmute(id, call_control_ids: nil, request_options: {})
+        # @overload unmute(id, call_control_ids: nil, region: nil, request_options: {})
         #
         # @param id [String] Uniquely identifies the conference by id or name
         #
         # @param call_control_ids [Array<String>] List of unique identifiers and tokens for controlling the call. Enter each call
+        #
+        # @param region [Symbol, Telnyx::Models::Conferences::ActionUnmuteParams::Region] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

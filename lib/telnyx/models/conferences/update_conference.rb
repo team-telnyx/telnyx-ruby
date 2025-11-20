@@ -28,6 +28,13 @@ module Telnyx
         #   @return [String, nil]
         optional :command_id, String
 
+        # @!attribute region
+        #   Region where the conference data is located. Defaults to the region defined in
+        #   user's data locality settings (Europe or US).
+        #
+        #   @return [Symbol, Telnyx::Models::Conferences::UpdateConference::Region, nil]
+        optional :region, enum: -> { Telnyx::Conferences::UpdateConference::Region }
+
         # @!attribute whisper_call_control_ids
         #   Array of unique call_control_ids the supervisor can whisper to. If none
         #   provided, the supervisor will join the conference as a monitoring participant
@@ -36,7 +43,7 @@ module Telnyx
         #   @return [Array<String>, nil]
         optional :whisper_call_control_ids, Telnyx::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(call_control_id:, supervisor_role:, command_id: nil, whisper_call_control_ids: nil)
+        # @!method initialize(call_control_id:, supervisor_role:, command_id: nil, region: nil, whisper_call_control_ids: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::UpdateConference} for more details.
         #
@@ -45,6 +52,8 @@ module Telnyx
         #   @param supervisor_role [Symbol, Telnyx::Models::Conferences::UpdateConference::SupervisorRole] Sets the participant as a supervisor for the conference. A conference can have m
         #
         #   @param command_id [String] Use this field to avoid execution of duplicate commands. Telnyx will ignore subs
+        #
+        #   @param region [Symbol, Telnyx::Models::Conferences::UpdateConference::Region] Region where the conference data is located. Defaults to the region defined in u
         #
         #   @param whisper_call_control_ids [Array<String>] Array of unique call_control_ids the supervisor can whisper to. If none provided
 
@@ -62,6 +71,22 @@ module Telnyx
           MONITOR = :monitor
           NONE = :none
           WHISPER = :whisper
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Region where the conference data is located. Defaults to the region defined in
+        # user's data locality settings (Europe or US).
+        #
+        # @see Telnyx::Models::Conferences::UpdateConference#region
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          AUSTRALIA = :Australia
+          EUROPE = :Europe
+          MIDDLE_EAST = :"Middle East"
+          US = :US
 
           # @!method self.values
           #   @return [Array<Symbol>]

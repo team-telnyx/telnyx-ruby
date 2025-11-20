@@ -96,6 +96,18 @@ module Telnyx
       sig { params(max_participants: Integer).void }
       attr_writer :max_participants
 
+      # Sets the region where the conference data will be hosted. Defaults to the region
+      # defined in user's data locality settings (Europe or US).
+      sig do
+        returns(T.nilable(Telnyx::ConferenceCreateParams::Region::OrSymbol))
+      end
+      attr_reader :region
+
+      sig do
+        params(region: Telnyx::ConferenceCreateParams::Region::OrSymbol).void
+      end
+      attr_writer :region
+
       # Whether the conference should be started on creation. If the conference isn't
       # started all participants that join are automatically put on hold. Defaults to
       # "true".
@@ -117,6 +129,7 @@ module Telnyx
           hold_audio_url: String,
           hold_media_name: String,
           max_participants: Integer,
+          region: Telnyx::ConferenceCreateParams::Region::OrSymbol,
           start_conference_on_create: T::Boolean,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -155,6 +168,9 @@ module Telnyx
         # The maximum number of active conference participants to allow. Must be between 2
         # and 800. Defaults to 250
         max_participants: nil,
+        # Sets the region where the conference data will be hosted. Defaults to the region
+        # defined in user's data locality settings (Europe or US).
+        region: nil,
         # Whether the conference should be started on creation. If the conference isn't
         # started all participants that join are automatically put on hold. Defaults to
         # "true".
@@ -176,6 +192,7 @@ module Telnyx
             hold_audio_url: String,
             hold_media_name: String,
             max_participants: Integer,
+            region: Telnyx::ConferenceCreateParams::Region::OrSymbol,
             start_conference_on_create: T::Boolean,
             request_options: Telnyx::RequestOptions
           }
@@ -219,6 +236,38 @@ module Telnyx
         sig do
           override.returns(
             T::Array[Telnyx::ConferenceCreateParams::BeepEnabled::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+
+      # Sets the region where the conference data will be hosted. Defaults to the region
+      # defined in user's data locality settings (Europe or US).
+      module Region
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Telnyx::ConferenceCreateParams::Region) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        AUSTRALIA =
+          T.let(
+            :Australia,
+            Telnyx::ConferenceCreateParams::Region::TaggedSymbol
+          )
+        EUROPE =
+          T.let(:Europe, Telnyx::ConferenceCreateParams::Region::TaggedSymbol)
+        MIDDLE_EAST =
+          T.let(
+            :"Middle East",
+            Telnyx::ConferenceCreateParams::Region::TaggedSymbol
+          )
+        US = T.let(:US, Telnyx::ConferenceCreateParams::Region::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::ConferenceCreateParams::Region::TaggedSymbol]
           )
         end
         def self.values

@@ -24,6 +24,12 @@ module Telnyx
       # @return [Telnyx::Resources::AI::FineTuning]
       attr_reader :fine_tuning
 
+      # @return [Telnyx::Resources::AI::Integrations]
+      attr_reader :integrations
+
+      # @return [Telnyx::Resources::AI::McpServers]
+      attr_reader :mcp_servers
+
       # This endpoint returns a list of Open Source and OpenAI models that are available
       # for use. <br /><br /> **Note**: Model `id`'s will be in the form
       # `{source}/{model_name}`. For example `openai/gpt-4` or
@@ -94,6 +100,8 @@ module Telnyx
         @conversations = Telnyx::Resources::AI::Conversations.new(client: client)
         @embeddings = Telnyx::Resources::AI::Embeddings.new(client: client)
         @fine_tuning = Telnyx::Resources::AI::FineTuning.new(client: client)
+        @integrations = Telnyx::Resources::AI::Integrations.new(client: client)
+        @mcp_servers = Telnyx::Resources::AI::McpServers.new(client: client)
       end
     end
   end

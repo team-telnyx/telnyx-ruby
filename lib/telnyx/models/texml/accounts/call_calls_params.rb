@@ -217,6 +217,14 @@ module Telnyx
           #   @return [String, nil]
           optional :sip_auth_username, String, api_name: :SipAuthUsername
 
+          # @!attribute sip_region
+          #   Defines the SIP region to be used for the call.
+          #
+          #   @return [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::SipRegion, nil]
+          optional :sip_region,
+                   enum: -> { Telnyx::Texml::Accounts::CallCallsParams::SipRegion },
+                   api_name: :SipRegion
+
           # @!attribute status_callback
           #   URL destination for Telnyx to send status callback events to for the call.
           #
@@ -262,7 +270,7 @@ module Telnyx
                    enum: -> { Telnyx::Texml::Accounts::CallCallsParams::URLMethod },
                    api_name: :UrlMethod
 
-          # @!method initialize(application_sid:, from:, to:, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, detection_mode: nil, fallback_url: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, trim: nil, url: nil, url_method: nil, request_options: {})
+          # @!method initialize(application_sid:, from:, to:, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, detection_mode: nil, fallback_url: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, trim: nil, url: nil, url_method: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Texml::Accounts::CallCallsParams} for more details.
           #
@@ -321,6 +329,8 @@ module Telnyx
           #   @param sip_auth_password [String] The password to use for SIP authentication.
           #
           #   @param sip_auth_username [String] The username to use for SIP authentication.
+          #
+          #   @param sip_region [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::SipRegion] Defines the SIP region to be used for the call.
           #
           #   @param status_callback [String] URL destination for Telnyx to send status callback events to for the call.
           #
@@ -419,6 +429,20 @@ module Telnyx
             INBOUND = :inbound
             OUTBOUND = :outbound
             BOTH = :both
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Defines the SIP region to be used for the call.
+          module SipRegion
+            extend Telnyx::Internal::Type::Enum
+
+            US = :US
+            EUROPE = :Europe
+            CANADA = :Canada
+            AUSTRALIA = :Australia
+            MIDDLE_EAST = :"Middle East"
 
             # @!method self.values
             #   @return [Array<Symbol>]

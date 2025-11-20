@@ -39,6 +39,22 @@ module Telnyx
         sig { params(command_id: String).void }
         attr_writer :command_id
 
+        # Region where the conference data is located. Defaults to the region defined in
+        # user's data locality settings (Europe or US).
+        sig do
+          returns(
+            T.nilable(Telnyx::Conferences::UpdateConference::Region::OrSymbol)
+          )
+        end
+        attr_reader :region
+
+        sig do
+          params(
+            region: Telnyx::Conferences::UpdateConference::Region::OrSymbol
+          ).void
+        end
+        attr_writer :region
+
         # Array of unique call_control_ids the supervisor can whisper to. If none
         # provided, the supervisor will join the conference as a monitoring participant
         # only.
@@ -54,6 +70,7 @@ module Telnyx
             supervisor_role:
               Telnyx::Conferences::UpdateConference::SupervisorRole::OrSymbol,
             command_id: String,
+            region: Telnyx::Conferences::UpdateConference::Region::OrSymbol,
             whisper_call_control_ids: T::Array[String]
           ).returns(T.attached_class)
         end
@@ -70,6 +87,9 @@ module Telnyx
           # subsequent commands with the same `command_id` as one that has already been
           # executed.
           command_id: nil,
+          # Region where the conference data is located. Defaults to the region defined in
+          # user's data locality settings (Europe or US).
+          region: nil,
           # Array of unique call_control_ids the supervisor can whisper to. If none
           # provided, the supervisor will join the conference as a monitoring participant
           # only.
@@ -84,6 +104,7 @@ module Telnyx
               supervisor_role:
                 Telnyx::Conferences::UpdateConference::SupervisorRole::OrSymbol,
               command_id: String,
+              region: Telnyx::Conferences::UpdateConference::Region::OrSymbol,
               whisper_call_control_ids: T::Array[String]
             }
           )
@@ -133,6 +154,49 @@ module Telnyx
             override.returns(
               T::Array[
                 Telnyx::Conferences::UpdateConference::SupervisorRole::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Region where the conference data is located. Defaults to the region defined in
+        # user's data locality settings (Europe or US).
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::Conferences::UpdateConference::Region)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          AUSTRALIA =
+            T.let(
+              :Australia,
+              Telnyx::Conferences::UpdateConference::Region::TaggedSymbol
+            )
+          EUROPE =
+            T.let(
+              :Europe,
+              Telnyx::Conferences::UpdateConference::Region::TaggedSymbol
+            )
+          MIDDLE_EAST =
+            T.let(
+              :"Middle East",
+              Telnyx::Conferences::UpdateConference::Region::TaggedSymbol
+            )
+          US =
+            T.let(
+              :US,
+              Telnyx::Conferences::UpdateConference::Region::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Conferences::UpdateConference::Region::TaggedSymbol
               ]
             )
           end
