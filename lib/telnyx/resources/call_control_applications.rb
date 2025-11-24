@@ -8,7 +8,7 @@ module Telnyx
       #
       # Create a call control application.
       #
-      # @overload create(application_name:, webhook_event_url:, active: nil, anchorsite_override: nil, dtmf_type: nil, first_command_timeout: nil, first_command_timeout_secs: nil, inbound: nil, outbound: nil, redact_dtmf_debug_logging: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @overload create(application_name:, webhook_event_url:, active: nil, anchorsite_override: nil, call_cost_in_webhooks: nil, dtmf_type: nil, first_command_timeout: nil, first_command_timeout_secs: nil, inbound: nil, outbound: nil, redact_dtmf_debug_logging: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_timeout_secs: nil, request_options: {})
       #
       # @param application_name [String] A user-assigned name to help manage the application.
       #
@@ -17,6 +17,8 @@ module Telnyx
       # @param active [Boolean] Specifies whether the connection can be used.
       #
       # @param anchorsite_override [Symbol, Telnyx::Models::CallControlApplicationCreateParams::AnchorsiteOverride] <code>Latency</code> directs Telnyx to route media through the site with the low
+      #
+      # @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this Call Control Application
       #
       # @param dtmf_type [Symbol, Telnyx::Models::CallControlApplicationCreateParams::DtmfType] Sets the type of DTMF digits sent from Telnyx to this Connection. Note that DTMF
       #
@@ -77,7 +79,7 @@ module Telnyx
       #
       # Updates settings of an existing call control application.
       #
-      # @overload update(id, application_name:, webhook_event_url:, active: nil, anchorsite_override: nil, dtmf_type: nil, first_command_timeout: nil, first_command_timeout_secs: nil, inbound: nil, outbound: nil, redact_dtmf_debug_logging: nil, tags: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @overload update(id, application_name:, webhook_event_url:, active: nil, anchorsite_override: nil, call_cost_in_webhooks: nil, dtmf_type: nil, first_command_timeout: nil, first_command_timeout_secs: nil, inbound: nil, outbound: nil, redact_dtmf_debug_logging: nil, tags: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_timeout_secs: nil, request_options: {})
       #
       # @param id [String] Identifies the resource.
       #
@@ -88,6 +90,8 @@ module Telnyx
       # @param active [Boolean] Specifies whether the connection can be used.
       #
       # @param anchorsite_override [Symbol, Telnyx::Models::CallControlApplicationUpdateParams::AnchorsiteOverride] <code>Latency</code> directs Telnyx to route media through the site with the low
+      #
+      # @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this Call Control Application
       #
       # @param dtmf_type [Symbol, Telnyx::Models::CallControlApplicationUpdateParams::DtmfType] Sets the type of DTMF digits sent from Telnyx to this Connection. Note that DTMF
       #

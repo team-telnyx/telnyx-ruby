@@ -23,6 +23,12 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::AnchorsiteOverride, nil]
       optional :anchorsite_override, enum: -> { Telnyx::AnchorsiteOverride }
 
+      # @!attribute call_cost_in_webhooks
+      #   Specifies if call cost webhooks should be sent for this TeXML Application.
+      #
+      #   @return [Boolean, nil]
+      optional :call_cost_in_webhooks, Telnyx::Internal::Type::Boolean
+
       # @!attribute created_at
       #   ISO 8601 formatted date indicating when the resource was created.
       #
@@ -116,7 +122,7 @@ module Telnyx
       #   @return [String, nil]
       optional :voice_url, String
 
-      # @!method initialize(id: nil, active: nil, anchorsite_override: nil, created_at: nil, dtmf_type: nil, first_command_timeout: nil, first_command_timeout_secs: nil, friendly_name: nil, inbound: nil, outbound: nil, record_type: nil, status_callback: nil, status_callback_method: nil, tags: nil, updated_at: nil, voice_fallback_url: nil, voice_method: nil, voice_url: nil)
+      # @!method initialize(id: nil, active: nil, anchorsite_override: nil, call_cost_in_webhooks: nil, created_at: nil, dtmf_type: nil, first_command_timeout: nil, first_command_timeout_secs: nil, friendly_name: nil, inbound: nil, outbound: nil, record_type: nil, status_callback: nil, status_callback_method: nil, tags: nil, updated_at: nil, voice_fallback_url: nil, voice_method: nil, voice_url: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::TexmlApplication} for more details.
       #
@@ -125,6 +131,8 @@ module Telnyx
       #   @param active [Boolean] Specifies whether the connection can be used.
       #
       #   @param anchorsite_override [Symbol, Telnyx::Models::AnchorsiteOverride] `Latency` directs Telnyx to route media through the site with the lowest round-t
+      #
+      #   @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this TeXML Application.
       #
       #   @param created_at [String] ISO 8601 formatted date indicating when the resource was created.
       #

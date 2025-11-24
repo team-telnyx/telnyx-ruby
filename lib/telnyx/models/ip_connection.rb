@@ -23,6 +23,12 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::AnchorsiteOverride, nil]
       optional :anchorsite_override, enum: -> { Telnyx::AnchorsiteOverride }
 
+      # @!attribute call_cost_in_webhooks
+      #   Specifies if call cost webhooks should be sent for this connection.
+      #
+      #   @return [Boolean, nil]
+      optional :call_cost_in_webhooks, Telnyx::Internal::Type::Boolean
+
       # @!attribute connection_name
       #
       #   @return [String, nil]
@@ -137,7 +143,7 @@ module Telnyx
       #   @return [Integer, nil]
       optional :webhook_timeout_secs, Integer, nil?: true
 
-      # @!method initialize(id: nil, active: nil, anchorsite_override: nil, connection_name: nil, created_at: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, record_type: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, updated_at: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
+      # @!method initialize(id: nil, active: nil, anchorsite_override: nil, call_cost_in_webhooks: nil, connection_name: nil, created_at: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, record_type: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, updated_at: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::IPConnection} for more details.
       #
@@ -146,6 +152,8 @@ module Telnyx
       #   @param active [Boolean] Defaults to true
       #
       #   @param anchorsite_override [Symbol, Telnyx::Models::AnchorsiteOverride] `Latency` directs Telnyx to route media through the site with the lowest round-t
+      #
+      #   @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this connection.
       #
       #   @param connection_name [String]
       #

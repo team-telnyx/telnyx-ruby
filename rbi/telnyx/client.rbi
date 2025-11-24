@@ -475,6 +475,9 @@ module Telnyx
     sig { returns(Telnyx::Resources::WellKnown) }
     attr_reader :well_known
 
+    sig { returns(Telnyx::Resources::InexplicitNumberOrders) }
+    attr_reader :inexplicit_number_orders
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

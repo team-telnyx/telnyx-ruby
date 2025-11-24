@@ -29,6 +29,21 @@ module Telnyx
       sig { params(id: String).void }
       attr_writer :id
 
+      # The antivirus scan status of the document.
+      sig do
+        returns(
+          T.nilable(Telnyx::DocServiceDocument::AvScanStatus::TaggedSymbol)
+        )
+      end
+      attr_reader :av_scan_status
+
+      sig do
+        params(
+          av_scan_status: Telnyx::DocServiceDocument::AvScanStatus::OrSymbol
+        ).void
+      end
+      attr_writer :av_scan_status
+
       # The document's content_type.
       sig { returns(T.nilable(String)) }
       attr_reader :content_type
@@ -83,6 +98,7 @@ module Telnyx
       sig do
         params(
           id: String,
+          av_scan_status: Telnyx::DocServiceDocument::AvScanStatus::OrSymbol,
           content_type: String,
           created_at: String,
           customer_reference: String,
@@ -97,6 +113,8 @@ module Telnyx
       def self.new(
         # Identifies the resource.
         id: nil,
+        # The antivirus scan status of the document.
+        av_scan_status: nil,
         # The document's content_type.
         content_type: nil,
         # ISO 8601 formatted date-time indicating when the resource was created.
@@ -122,6 +140,8 @@ module Telnyx
         override.returns(
           {
             id: String,
+            av_scan_status:
+              Telnyx::DocServiceDocument::AvScanStatus::TaggedSymbol,
             content_type: String,
             created_at: String,
             customer_reference: String,
@@ -135,6 +155,46 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      # The antivirus scan status of the document.
+      module AvScanStatus
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Telnyx::DocServiceDocument::AvScanStatus)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        SCANNED =
+          T.let(
+            :scanned,
+            Telnyx::DocServiceDocument::AvScanStatus::TaggedSymbol
+          )
+        INFECTED =
+          T.let(
+            :infected,
+            Telnyx::DocServiceDocument::AvScanStatus::TaggedSymbol
+          )
+        PENDING_SCAN =
+          T.let(
+            :pending_scan,
+            Telnyx::DocServiceDocument::AvScanStatus::TaggedSymbol
+          )
+        NOT_SCANNED =
+          T.let(
+            :not_scanned,
+            Telnyx::DocServiceDocument::AvScanStatus::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::DocServiceDocument::AvScanStatus::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       class Size < Telnyx::Internal::Type::BaseModel

@@ -6,6 +6,7 @@ module Telnyx
         active: bool,
         anchorsite_override: Telnyx::Models::anchorsite_override,
         android_push_credential_id: String?,
+        call_cost_in_webhooks: bool,
         default_on_hold_comfort_noise_enabled: bool,
         dtmf_type: Telnyx::Models::dtmf_type,
         encode_contact_header_enabled: bool,
@@ -42,6 +43,10 @@ module Telnyx
       ) -> Telnyx::Models::anchorsite_override
 
       attr_accessor android_push_credential_id: String?
+
+      attr_reader call_cost_in_webhooks: bool?
+
+      def call_cost_in_webhooks=: (bool) -> bool
 
       attr_reader default_on_hold_comfort_noise_enabled: bool?
 
@@ -110,6 +115,7 @@ module Telnyx
         ?active: bool,
         ?anchorsite_override: Telnyx::Models::anchorsite_override,
         ?android_push_credential_id: String?,
+        ?call_cost_in_webhooks: bool,
         ?default_on_hold_comfort_noise_enabled: bool,
         ?dtmf_type: Telnyx::Models::dtmf_type,
         ?encode_contact_header_enabled: bool,
@@ -134,6 +140,7 @@ module Telnyx
         active: bool,
         anchorsite_override: Telnyx::Models::anchorsite_override,
         android_push_credential_id: String?,
+        call_cost_in_webhooks: bool,
         default_on_hold_comfort_noise_enabled: bool,
         dtmf_type: Telnyx::Models::dtmf_type,
         encode_contact_header_enabled: bool,

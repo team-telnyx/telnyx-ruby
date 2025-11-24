@@ -881,7 +881,7 @@ module Telnyx
         #
         # Noise Suppression Start (BETA)
         #
-        # @overload start_noise_suppression(call_control_id, client_state: nil, command_id: nil, direction: nil, noise_suppression_engine: nil, request_options: {})
+        # @overload start_noise_suppression(call_control_id, client_state: nil, command_id: nil, direction: nil, noise_suppression_engine: nil, noise_suppression_engine_config: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -892,6 +892,8 @@ module Telnyx
         # @param direction [Symbol, Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::Direction] The direction of the audio stream to be noise suppressed.
         #
         # @param noise_suppression_engine [Symbol, Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine] The engine to use for noise suppression.
+        #
+        # @param noise_suppression_engine_config [Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig] Configuration parameters for noise suppression engines.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

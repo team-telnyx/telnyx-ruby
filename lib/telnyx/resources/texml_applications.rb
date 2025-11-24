@@ -8,7 +8,7 @@ module Telnyx
       #
       # Creates a TeXML Application.
       #
-      # @overload create(friendly_name:, voice_url:, active: nil, anchorsite_override: nil, dtmf_type: nil, first_command_timeout: nil, first_command_timeout_secs: nil, inbound: nil, outbound: nil, status_callback: nil, status_callback_method: nil, tags: nil, voice_fallback_url: nil, voice_method: nil, request_options: {})
+      # @overload create(friendly_name:, voice_url:, active: nil, anchorsite_override: nil, call_cost_in_webhooks: nil, dtmf_type: nil, first_command_timeout: nil, first_command_timeout_secs: nil, inbound: nil, outbound: nil, status_callback: nil, status_callback_method: nil, tags: nil, voice_fallback_url: nil, voice_method: nil, request_options: {})
       #
       # @param friendly_name [String] A user-assigned name to help manage the application.
       #
@@ -17,6 +17,8 @@ module Telnyx
       # @param active [Boolean] Specifies whether the connection can be used.
       #
       # @param anchorsite_override [Symbol, Telnyx::Models::AnchorsiteOverride] `Latency` directs Telnyx to route media through the site with the lowest round-t
+      #
+      # @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this TeXML Application.
       #
       # @param dtmf_type [Symbol, Telnyx::Models::DtmfType] Sets the type of DTMF digits sent from Telnyx to this Connection. Note that DTMF
       #
@@ -79,7 +81,7 @@ module Telnyx
       #
       # Updates settings of an existing TeXML Application.
       #
-      # @overload update(id, friendly_name:, voice_url:, active: nil, anchorsite_override: nil, dtmf_type: nil, first_command_timeout: nil, first_command_timeout_secs: nil, inbound: nil, outbound: nil, status_callback: nil, status_callback_method: nil, tags: nil, voice_fallback_url: nil, voice_method: nil, request_options: {})
+      # @overload update(id, friendly_name:, voice_url:, active: nil, anchorsite_override: nil, call_cost_in_webhooks: nil, dtmf_type: nil, first_command_timeout: nil, first_command_timeout_secs: nil, inbound: nil, outbound: nil, status_callback: nil, status_callback_method: nil, tags: nil, voice_fallback_url: nil, voice_method: nil, request_options: {})
       #
       # @param id [String] Identifies the resource.
       #
@@ -90,6 +92,8 @@ module Telnyx
       # @param active [Boolean] Specifies whether the connection can be used.
       #
       # @param anchorsite_override [Symbol, Telnyx::Models::AnchorsiteOverride] `Latency` directs Telnyx to route media through the site with the lowest round-t
+      #
+      # @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this TeXML Application.
       #
       # @param dtmf_type [Symbol, Telnyx::Models::DtmfType] Sets the type of DTMF digits sent from Telnyx to this Connection. Note that DTMF
       #

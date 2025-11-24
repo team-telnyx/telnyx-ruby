@@ -36,6 +36,13 @@ module Telnyx
       sig { returns(T.nilable(String)) }
       attr_accessor :android_push_credential_id
 
+      # Specifies if call cost webhooks should be sent for this connection.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :call_cost_in_webhooks
+
+      sig { params(call_cost_in_webhooks: T::Boolean).void }
+      attr_writer :call_cost_in_webhooks
+
       # A user-assigned name to help manage the connection.
       sig { returns(T.nilable(String)) }
       attr_reader :connection_name
@@ -189,6 +196,7 @@ module Telnyx
           active: T::Boolean,
           anchorsite_override: Telnyx::AnchorsiteOverride::OrSymbol,
           android_push_credential_id: T.nilable(String),
+          call_cost_in_webhooks: T::Boolean,
           connection_name: String,
           default_on_hold_comfort_noise_enabled: T::Boolean,
           dtmf_type: Telnyx::DtmfType::OrSymbol,
@@ -221,6 +229,8 @@ module Telnyx
         anchorsite_override: nil,
         # The uuid of the push credential for Android
         android_push_credential_id: nil,
+        # Specifies if call cost webhooks should be sent for this connection.
+        call_cost_in_webhooks: nil,
         # A user-assigned name to help manage the connection.
         connection_name: nil,
         # When enabled, Telnyx will generate comfort noise when you place the call on
@@ -279,6 +289,7 @@ module Telnyx
             active: T::Boolean,
             anchorsite_override: Telnyx::AnchorsiteOverride::OrSymbol,
             android_push_credential_id: T.nilable(String),
+            call_cost_in_webhooks: T::Boolean,
             connection_name: String,
             default_on_hold_comfort_noise_enabled: T::Boolean,
             dtmf_type: Telnyx::DtmfType::OrSymbol,

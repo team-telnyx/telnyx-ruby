@@ -297,6 +297,42 @@ module Telnyx
           )
         end
 
+        # Send an SMS message for an assistant. This endpoint:
+        #
+        # 1. Validates the assistant exists and has messaging profile configured
+        # 2. If should_create_conversation is true, creates a new conversation with
+        #    metadata
+        # 3. Sends the SMS message (If `text` is set, this will be sent. Otherwise, if
+        #    this is the first message in the conversation and the assistant has a
+        #    `greeting` configured, this will be sent. Otherwise the assistant will
+        #    generate the text to send.)
+        # 4. Updates conversation metadata if provided
+        # 5. Returns the conversation ID
+        #
+        # @overload send_sms(assistant_id, from:, text:, to:, conversation_metadata: nil, should_create_conversation: nil, request_options: {})
+        #
+        # @param assistant_id [String]
+        # @param from [String]
+        # @param text [String]
+        # @param to [String]
+        # @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}]
+        # @param should_create_conversation [Boolean]
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::AI::AssistantSendSMSResponse]
+        #
+        # @see Telnyx::Models::AI::AssistantSendSMSParams
+        def send_sms(assistant_id, params)
+          parsed, options = Telnyx::AI::AssistantSendSMSParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: ["ai/assistants/%1$s/chat/sms", assistant_id],
+            body: parsed,
+            model: Telnyx::Models::AI::AssistantSendSMSResponse,
+            options: options
+          )
+        end
+
         # @api private
         #
         # @param client [Telnyx::Client]

@@ -1,0 +1,27 @@
+module Telnyx
+  module Resources
+    class InexplicitNumberOrders
+      def create: (
+        ordering_groups: ::Array[Telnyx::InexplicitNumberOrderCreateParams::OrderingGroup],
+        ?billing_group_id: String,
+        ?connection_id: String,
+        ?customer_reference: String,
+        ?messaging_profile_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::InexplicitNumberOrderCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::InexplicitNumberOrderRetrieveResponse
+
+      def list: (
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::InexplicitNumberOrderListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

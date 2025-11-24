@@ -551,6 +551,12 @@ module Telnyx
 
   class InboundMessageWebhookEvent = Telnyx::Models::InboundMessageWebhookEvent
 
+  class InexplicitNumberOrderCreateParams = Telnyx::Models::InexplicitNumberOrderCreateParams
+
+  class InexplicitNumberOrderListParams = Telnyx::Models::InexplicitNumberOrderListParams
+
+  class InexplicitNumberOrderRetrieveParams = Telnyx::Models::InexplicitNumberOrderRetrieveParams
+
   class IntegrationSecret = Telnyx::Models::IntegrationSecret
 
   class IntegrationSecretCreateParams = Telnyx::Models::IntegrationSecretCreateParams

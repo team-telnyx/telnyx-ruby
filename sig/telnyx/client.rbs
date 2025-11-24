@@ -318,6 +318,8 @@ module Telnyx
 
     attr_reader well_known: Telnyx::Resources::WellKnown
 
+    attr_reader inexplicit_number_orders: Telnyx::Resources::InexplicitNumberOrders
+
     private def auth_headers: -> ::Hash[String, String]
 
     def base_url_overridden?: -> bool

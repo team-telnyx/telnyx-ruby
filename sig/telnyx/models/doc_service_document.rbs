@@ -3,6 +3,7 @@ module Telnyx
     type doc_service_document =
       {
         id: String,
+        av_scan_status: Telnyx::Models::DocServiceDocument::av_scan_status,
         content_type: String,
         created_at: String,
         customer_reference: String,
@@ -26,6 +27,12 @@ module Telnyx
       attr_reader id: String?
 
       def id=: (String) -> String
+
+      attr_reader av_scan_status: Telnyx::Models::DocServiceDocument::av_scan_status?
+
+      def av_scan_status=: (
+        Telnyx::Models::DocServiceDocument::av_scan_status
+      ) -> Telnyx::Models::DocServiceDocument::av_scan_status
 
       attr_reader content_type: String?
 
@@ -61,6 +68,7 @@ module Telnyx
 
       def initialize: (
         ?id: String,
+        ?av_scan_status: Telnyx::Models::DocServiceDocument::av_scan_status,
         ?content_type: String,
         ?created_at: String,
         ?customer_reference: String,
@@ -74,6 +82,7 @@ module Telnyx
 
       def to_hash: -> {
         id: String,
+        av_scan_status: Telnyx::Models::DocServiceDocument::av_scan_status,
         content_type: String,
         created_at: String,
         customer_reference: String,
@@ -84,6 +93,19 @@ module Telnyx
         status: Telnyx::Models::DocServiceDocument::status,
         updated_at: String
       }
+
+      type av_scan_status = :scanned | :infected | :pending_scan | :not_scanned
+
+      module AvScanStatus
+        extend Telnyx::Internal::Type::Enum
+
+        SCANNED: :scanned
+        INFECTED: :infected
+        PENDING_SCAN: :pending_scan
+        NOT_SCANNED: :not_scanned
+
+        def self?.values: -> ::Array[Telnyx::Models::DocServiceDocument::av_scan_status]
+      end
 
       type size = { amount: Integer, unit: String }
 

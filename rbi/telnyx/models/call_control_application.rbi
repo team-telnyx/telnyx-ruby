@@ -48,6 +48,14 @@ module Telnyx
       sig { params(application_name: String).void }
       attr_writer :application_name
 
+      # Specifies if call cost webhooks should be sent for this Call Control
+      # Application.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :call_cost_in_webhooks
+
+      sig { params(call_cost_in_webhooks: T::Boolean).void }
+      attr_writer :call_cost_in_webhooks
+
       # ISO 8601 formatted date of when the resource was created
       sig { returns(T.nilable(String)) }
       attr_reader :created_at
@@ -179,6 +187,7 @@ module Telnyx
           anchorsite_override:
             Telnyx::CallControlApplication::AnchorsiteOverride::OrSymbol,
           application_name: String,
+          call_cost_in_webhooks: T::Boolean,
           created_at: String,
           dtmf_type: Telnyx::CallControlApplication::DtmfType::OrSymbol,
           first_command_timeout: T::Boolean,
@@ -206,6 +215,9 @@ module Telnyx
         anchorsite_override: nil,
         # A user-assigned name to help manage the application.
         application_name: nil,
+        # Specifies if call cost webhooks should be sent for this Call Control
+        # Application.
+        call_cost_in_webhooks: nil,
         # ISO 8601 formatted date of when the resource was created
         created_at: nil,
         # Sets the type of DTMF digits sent from Telnyx to this Connection. Note that DTMF
@@ -246,6 +258,7 @@ module Telnyx
             anchorsite_override:
               Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol,
             application_name: String,
+            call_cost_in_webhooks: T::Boolean,
             created_at: String,
             dtmf_type: Telnyx::CallControlApplication::DtmfType::TaggedSymbol,
             first_command_timeout: T::Boolean,
