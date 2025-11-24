@@ -29,14 +29,21 @@ module Telnyx
         optional :direction, enum: -> { Telnyx::Calls::ActionStartNoiseSuppressionParams::Direction }
 
         # @!attribute noise_suppression_engine
-        #   The engine to use for noise suppression. A - rnnoise engine B - deepfilter
-        #   engine.
+        #   The engine to use for noise suppression. For backward compatibility, engines A
+        #   and B are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
         #
         #   @return [Symbol, Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine, nil]
         optional :noise_suppression_engine,
                  enum: -> { Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine }
 
-        # @!method initialize(client_state: nil, command_id: nil, direction: nil, noise_suppression_engine: nil, request_options: {})
+        # @!attribute noise_suppression_engine_config
+        #   Configuration parameters for noise suppression engines.
+        #
+        #   @return [Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig, nil]
+        optional :noise_suppression_engine_config,
+                 -> { Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig }
+
+        # @!method initialize(client_state: nil, command_id: nil, direction: nil, noise_suppression_engine: nil, noise_suppression_engine_config: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionStartNoiseSuppressionParams} for more details.
         #
@@ -47,6 +54,8 @@ module Telnyx
         #   @param direction [Symbol, Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::Direction] The direction of the audio stream to be noise suppressed.
         #
         #   @param noise_suppression_engine [Symbol, Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine] The engine to use for noise suppression.
+        #
+        #   @param noise_suppression_engine_config [Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig] Configuration parameters for noise suppression engines.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -62,16 +71,34 @@ module Telnyx
           #   @return [Array<Symbol>]
         end
 
-        # The engine to use for noise suppression. A - rnnoise engine B - deepfilter
-        # engine.
+        # The engine to use for noise suppression. For backward compatibility, engines A
+        # and B are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
         module NoiseSuppressionEngine
           extend Telnyx::Internal::Type::Enum
 
-          A = :A
-          B = :B
+          DENOISER = :Denoiser
+          DEEP_FILTER_NET = :DeepFilterNet
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class NoiseSuppressionEngineConfig < Telnyx::Internal::Type::BaseModel
+          # @!attribute attenuation_limit
+          #   The attenuation limit for noise suppression (0-100). Only applicable for
+          #   DeepFilterNet.
+          #
+          #   @return [Integer, nil]
+          optional :attenuation_limit, Integer
+
+          # @!method initialize(attenuation_limit: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig}
+          #   for more details.
+          #
+          #   Configuration parameters for noise suppression engines.
+          #
+          #   @param attenuation_limit [Integer] The attenuation limit for noise suppression (0-100). Only applicable for DeepFil
         end
       end
     end

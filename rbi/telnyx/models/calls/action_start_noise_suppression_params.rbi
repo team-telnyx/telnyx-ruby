@@ -49,8 +49,8 @@ module Telnyx
         end
         attr_writer :direction
 
-        # The engine to use for noise suppression. A - rnnoise engine B - deepfilter
-        # engine.
+        # The engine to use for noise suppression. For backward compatibility, engines A
+        # and B are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
         sig do
           returns(
             T.nilable(
@@ -68,6 +68,24 @@ module Telnyx
         end
         attr_writer :noise_suppression_engine
 
+        # Configuration parameters for noise suppression engines.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig
+            )
+          )
+        end
+        attr_reader :noise_suppression_engine_config
+
+        sig do
+          params(
+            noise_suppression_engine_config:
+              Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::OrHash
+          ).void
+        end
+        attr_writer :noise_suppression_engine_config
+
         sig do
           params(
             client_state: String,
@@ -76,6 +94,8 @@ module Telnyx
               Telnyx::Calls::ActionStartNoiseSuppressionParams::Direction::OrSymbol,
             noise_suppression_engine:
               Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine::OrSymbol,
+            noise_suppression_engine_config:
+              Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -88,9 +108,11 @@ module Telnyx
           command_id: nil,
           # The direction of the audio stream to be noise suppressed.
           direction: nil,
-          # The engine to use for noise suppression. A - rnnoise engine B - deepfilter
-          # engine.
+          # The engine to use for noise suppression. For backward compatibility, engines A
+          # and B are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
           noise_suppression_engine: nil,
+          # Configuration parameters for noise suppression engines.
+          noise_suppression_engine_config: nil,
           request_options: {}
         )
         end
@@ -104,6 +126,8 @@ module Telnyx
                 Telnyx::Calls::ActionStartNoiseSuppressionParams::Direction::OrSymbol,
               noise_suppression_engine:
                 Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine::OrSymbol,
+              noise_suppression_engine_config:
+                Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig,
               request_options: Telnyx::RequestOptions
             }
           )
@@ -151,8 +175,8 @@ module Telnyx
           end
         end
 
-        # The engine to use for noise suppression. A - rnnoise engine B - deepfilter
-        # engine.
+        # The engine to use for noise suppression. For backward compatibility, engines A
+        # and B are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
         module NoiseSuppressionEngine
           extend Telnyx::Internal::Type::Enum
 
@@ -165,14 +189,14 @@ module Telnyx
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          A =
+          DENOISER =
             T.let(
-              :A,
+              :Denoiser,
               Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine::TaggedSymbol
             )
-          B =
+          DEEP_FILTER_NET =
             T.let(
-              :B,
+              :DeepFilterNet,
               Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine::TaggedSymbol
             )
 
@@ -184,6 +208,37 @@ module Telnyx
             )
           end
           def self.values
+          end
+        end
+
+        class NoiseSuppressionEngineConfig < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # The attenuation limit for noise suppression (0-100). Only applicable for
+          # DeepFilterNet.
+          sig { returns(T.nilable(Integer)) }
+          attr_reader :attenuation_limit
+
+          sig { params(attenuation_limit: Integer).void }
+          attr_writer :attenuation_limit
+
+          # Configuration parameters for noise suppression engines.
+          sig { params(attenuation_limit: Integer).returns(T.attached_class) }
+          def self.new(
+            # The attenuation limit for noise suppression (0-100). Only applicable for
+            # DeepFilterNet.
+            attenuation_limit: nil
+          )
+          end
+
+          sig { override.returns({ attenuation_limit: Integer }) }
+          def to_hash
           end
         end
       end

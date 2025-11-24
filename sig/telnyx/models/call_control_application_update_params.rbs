@@ -6,6 +6,7 @@ module Telnyx
         webhook_event_url: String,
         active: bool,
         anchorsite_override: Telnyx::Models::CallControlApplicationUpdateParams::anchorsite_override,
+        call_cost_in_webhooks: bool,
         dtmf_type: Telnyx::Models::CallControlApplicationUpdateParams::dtmf_type,
         first_command_timeout: bool,
         first_command_timeout_secs: Integer,
@@ -36,6 +37,10 @@ module Telnyx
       def anchorsite_override=: (
         Telnyx::Models::CallControlApplicationUpdateParams::anchorsite_override
       ) -> Telnyx::Models::CallControlApplicationUpdateParams::anchorsite_override
+
+      attr_reader call_cost_in_webhooks: bool?
+
+      def call_cost_in_webhooks=: (bool) -> bool
 
       attr_reader dtmf_type: Telnyx::Models::CallControlApplicationUpdateParams::dtmf_type?
 
@@ -86,6 +91,7 @@ module Telnyx
         webhook_event_url: String,
         ?active: bool,
         ?anchorsite_override: Telnyx::Models::CallControlApplicationUpdateParams::anchorsite_override,
+        ?call_cost_in_webhooks: bool,
         ?dtmf_type: Telnyx::Models::CallControlApplicationUpdateParams::dtmf_type,
         ?first_command_timeout: bool,
         ?first_command_timeout_secs: Integer,
@@ -104,6 +110,7 @@ module Telnyx
         webhook_event_url: String,
         active: bool,
         anchorsite_override: Telnyx::Models::CallControlApplicationUpdateParams::anchorsite_override,
+        call_cost_in_webhooks: bool,
         dtmf_type: Telnyx::Models::CallControlApplicationUpdateParams::dtmf_type,
         first_command_timeout: bool,
         first_command_timeout_secs: Integer,

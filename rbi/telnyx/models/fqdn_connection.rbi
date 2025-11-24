@@ -51,6 +51,13 @@ module Telnyx
       sig { params(call_cost_enabled: T::Boolean).void }
       attr_writer :call_cost_enabled
 
+      # Specifies if call cost webhooks should be sent for this connection.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :call_cost_in_webhooks
+
+      sig { params(call_cost_in_webhooks: T::Boolean).void }
+      attr_writer :call_cost_in_webhooks
+
       # ISO 8601 formatted date indicating when the resource was created.
       sig { returns(T.nilable(String)) }
       attr_reader :created_at
@@ -264,6 +271,7 @@ module Telnyx
           adjust_dtmf_timestamp: T::Boolean,
           anchorsite_override: Telnyx::AnchorsiteOverride::OrSymbol,
           call_cost_enabled: T::Boolean,
+          call_cost_in_webhooks: T::Boolean,
           created_at: String,
           default_on_hold_comfort_noise_enabled: T::Boolean,
           dtmf_type: Telnyx::DtmfType::OrSymbol,
@@ -310,6 +318,8 @@ module Telnyx
         anchorsite_override: nil,
         # Indicates whether call cost calculation is enabled.
         call_cost_enabled: nil,
+        # Specifies if call cost webhooks should be sent for this connection.
+        call_cost_in_webhooks: nil,
         # ISO 8601 formatted date indicating when the resource was created.
         created_at: nil,
         # When enabled, Telnyx will generate comfort noise when you place the call on
@@ -387,6 +397,7 @@ module Telnyx
             adjust_dtmf_timestamp: T::Boolean,
             anchorsite_override: Telnyx::AnchorsiteOverride::TaggedSymbol,
             call_cost_enabled: T::Boolean,
+            call_cost_in_webhooks: T::Boolean,
             created_at: String,
             default_on_hold_comfort_noise_enabled: T::Boolean,
             dtmf_type: Telnyx::DtmfType::TaggedSymbol,

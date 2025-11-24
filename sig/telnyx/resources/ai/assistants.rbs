@@ -96,6 +96,16 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::AI::AssistantsList
 
+        def send_sms: (
+          String assistant_id,
+          from: String,
+          text: String,
+          to: String,
+          ?conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::AssistantSendSMSParams::conversation_metadata],
+          ?should_create_conversation: bool,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::AssistantSendSMSResponse
+
         def initialize: (client: Telnyx::Client) -> void
       end
     end

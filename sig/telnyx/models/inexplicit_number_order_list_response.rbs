@@ -1,0 +1,269 @@
+module Telnyx
+  module Models
+    type inexplicit_number_order_list_response =
+      {
+        data: ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class InexplicitNumberOrderListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data]
+      ) -> ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data],
+        meta: Telnyx::PaginationMeta
+      }
+
+      type data =
+        {
+          id: String,
+          billing_group_id: String,
+          connection_id: String,
+          created_at: Time,
+          customer_reference: String,
+          messaging_profile_id: String,
+          ordering_groups: ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup],
+          updated_at: Time
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader billing_group_id: String?
+
+        def billing_group_id=: (String) -> String
+
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader customer_reference: String?
+
+        def customer_reference=: (String) -> String
+
+        attr_reader messaging_profile_id: String?
+
+        def messaging_profile_id=: (String) -> String
+
+        attr_reader ordering_groups: ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup]?
+
+        def ordering_groups=: (
+          ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup]
+        ) -> ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup]
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        def initialize: (
+          ?id: String,
+          ?billing_group_id: String,
+          ?connection_id: String,
+          ?created_at: Time,
+          ?customer_reference: String,
+          ?messaging_profile_id: String,
+          ?ordering_groups: ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup],
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          billing_group_id: String,
+          connection_id: String,
+          created_at: Time,
+          customer_reference: String,
+          messaging_profile_id: String,
+          ordering_groups: ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup],
+          updated_at: Time
+        }
+
+        type ordering_group =
+          {
+            administrative_area: String,
+            count_allocated: Integer,
+            count_requested: Integer,
+            country_iso: String,
+            created_at: Time,
+            error_reason: String,
+            national_destination_code: String,
+            orders: ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::Order],
+            phone_number_type: String,
+            phone_number_contains: String,
+            phone_number_ends_with: String,
+            phone_number_starts_with: String,
+            status: Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::status,
+            strategy: Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::strategy,
+            updated_at: Time
+          }
+
+        class OrderingGroup < Telnyx::Internal::Type::BaseModel
+          attr_reader administrative_area: String?
+
+          def administrative_area=: (String) -> String
+
+          attr_reader count_allocated: Integer?
+
+          def count_allocated=: (Integer) -> Integer
+
+          attr_reader count_requested: Integer?
+
+          def count_requested=: (Integer) -> Integer
+
+          attr_reader country_iso: String?
+
+          def country_iso=: (String) -> String
+
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader error_reason: String?
+
+          def error_reason=: (String) -> String
+
+          attr_reader national_destination_code: String?
+
+          def national_destination_code=: (String) -> String
+
+          attr_reader orders: ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::Order]?
+
+          def orders=: (
+            ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::Order]
+          ) -> ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::Order]
+
+          attr_reader phone_number_type: String?
+
+          def phone_number_type=: (String) -> String
+
+          attr_reader phone_number_contains: String?
+
+          def phone_number_contains=: (String) -> String
+
+          attr_reader phone_number_ends_with: String?
+
+          def phone_number_ends_with=: (String) -> String
+
+          attr_reader phone_number_starts_with: String?
+
+          def phone_number_starts_with=: (String) -> String
+
+          attr_reader status: Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::status?
+
+          def status=: (
+            Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::status
+          ) -> Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::status
+
+          attr_reader strategy: Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::strategy?
+
+          def strategy=: (
+            Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::strategy
+          ) -> Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::strategy
+
+          attr_reader updated_at: Time?
+
+          def updated_at=: (Time) -> Time
+
+          def initialize: (
+            ?administrative_area: String,
+            ?count_allocated: Integer,
+            ?count_requested: Integer,
+            ?country_iso: String,
+            ?created_at: Time,
+            ?error_reason: String,
+            ?national_destination_code: String,
+            ?orders: ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::Order],
+            ?phone_number_type: String,
+            ?phone_number_contains: String,
+            ?phone_number_ends_with: String,
+            ?phone_number_starts_with: String,
+            ?status: Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::status,
+            ?strategy: Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::strategy,
+            ?updated_at: Time
+          ) -> void
+
+          def to_hash: -> {
+            administrative_area: String,
+            count_allocated: Integer,
+            count_requested: Integer,
+            country_iso: String,
+            created_at: Time,
+            error_reason: String,
+            national_destination_code: String,
+            orders: ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::Order],
+            phone_number_type: String,
+            phone_number_contains: String,
+            phone_number_ends_with: String,
+            phone_number_starts_with: String,
+            status: Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::status,
+            strategy: Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::strategy,
+            updated_at: Time
+          }
+
+          type order =
+            { number_order_id: String, sub_number_order_ids: ::Array[String] }
+
+          class Order < Telnyx::Internal::Type::BaseModel
+            attr_accessor number_order_id: String
+
+            attr_accessor sub_number_order_ids: ::Array[String]
+
+            def initialize: (
+              number_order_id: String,
+              sub_number_order_ids: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              number_order_id: String,
+              sub_number_order_ids: ::Array[String]
+            }
+          end
+
+          type status =
+            :pending | :processing | :failed | :success | :partial_success
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :pending
+            PROCESSING: :processing
+            FAILED: :failed
+            SUCCESS: :success
+            PARTIAL_SUCCESS: :partial_success
+
+            def self?.values: -> ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::status]
+          end
+
+          type strategy = :always | :never
+
+          module Strategy
+            extend Telnyx::Internal::Type::Enum
+
+            ALWAYS: :always
+            NEVER: :never
+
+            def self?.values: -> ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::strategy]
+          end
+        end
+      end
+    end
+  end
+end

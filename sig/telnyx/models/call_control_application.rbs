@@ -6,6 +6,7 @@ module Telnyx
         active: bool,
         anchorsite_override: Telnyx::Models::CallControlApplication::anchorsite_override,
         application_name: String,
+        call_cost_in_webhooks: bool,
         created_at: String,
         dtmf_type: Telnyx::Models::CallControlApplication::dtmf_type,
         first_command_timeout: bool,
@@ -40,6 +41,10 @@ module Telnyx
       attr_reader application_name: String?
 
       def application_name=: (String) -> String
+
+      attr_reader call_cost_in_webhooks: bool?
+
+      def call_cost_in_webhooks=: (bool) -> bool
 
       attr_reader created_at: String?
 
@@ -108,6 +113,7 @@ module Telnyx
         ?active: bool,
         ?anchorsite_override: Telnyx::Models::CallControlApplication::anchorsite_override,
         ?application_name: String,
+        ?call_cost_in_webhooks: bool,
         ?created_at: String,
         ?dtmf_type: Telnyx::Models::CallControlApplication::dtmf_type,
         ?first_command_timeout: bool,
@@ -129,6 +135,7 @@ module Telnyx
         active: bool,
         anchorsite_override: Telnyx::Models::CallControlApplication::anchorsite_override,
         application_name: String,
+        call_cost_in_webhooks: bool,
         created_at: String,
         dtmf_type: Telnyx::Models::CallControlApplication::dtmf_type,
         first_command_timeout: bool,

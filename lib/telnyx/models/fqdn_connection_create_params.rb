@@ -33,6 +33,12 @@ module Telnyx
       #   @return [String, nil]
       optional :android_push_credential_id, String, nil?: true
 
+      # @!attribute call_cost_in_webhooks
+      #   Specifies if call cost webhooks should be sent for this connection.
+      #
+      #   @return [Boolean, nil]
+      optional :call_cost_in_webhooks, Telnyx::Internal::Type::Boolean
+
       # @!attribute default_on_hold_comfort_noise_enabled
       #   When enabled, Telnyx will generate comfort noise when you place the call on
       #   hold. If disabled, you will need to generate comfort noise or on hold music to
@@ -137,7 +143,7 @@ module Telnyx
       #   @return [Integer, nil]
       optional :webhook_timeout_secs, Integer, nil?: true
 
-      # @!method initialize(connection_name:, active: nil, anchorsite_override: nil, android_push_credential_id: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, microsoft_teams_sbc: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @!method initialize(connection_name:, active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, microsoft_teams_sbc: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::FqdnConnectionCreateParams} for more details.
       #
@@ -148,6 +154,8 @@ module Telnyx
       #   @param anchorsite_override [Symbol, Telnyx::Models::AnchorsiteOverride] `Latency` directs Telnyx to route media through the site with the lowest round-t
       #
       #   @param android_push_credential_id [String, nil] The uuid of the push credential for Android
+      #
+      #   @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this connection.
       #
       #   @param default_on_hold_comfort_noise_enabled [Boolean] When enabled, Telnyx will generate comfort noise when you place the call on hold
       #

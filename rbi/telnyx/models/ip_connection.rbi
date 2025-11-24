@@ -31,6 +31,13 @@ module Telnyx
       end
       attr_writer :anchorsite_override
 
+      # Specifies if call cost webhooks should be sent for this connection.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :call_cost_in_webhooks
+
+      sig { params(call_cost_in_webhooks: T::Boolean).void }
+      attr_writer :call_cost_in_webhooks
+
       sig { returns(T.nilable(String)) }
       attr_reader :connection_name
 
@@ -175,6 +182,7 @@ module Telnyx
           id: String,
           active: T::Boolean,
           anchorsite_override: Telnyx::AnchorsiteOverride::OrSymbol,
+          call_cost_in_webhooks: T::Boolean,
           connection_name: String,
           created_at: String,
           default_on_hold_comfort_noise_enabled: T::Boolean,
@@ -205,6 +213,8 @@ module Telnyx
         # round-trip time to the user's connection. Telnyx calculates this time using ICMP
         # ping messages. This can be disabled by specifying a site to handle all media.
         anchorsite_override: nil,
+        # Specifies if call cost webhooks should be sent for this connection.
+        call_cost_in_webhooks: nil,
         connection_name: nil,
         # ISO 8601 formatted date indicating when the resource was created.
         created_at: nil,
@@ -256,6 +266,7 @@ module Telnyx
             id: String,
             active: T::Boolean,
             anchorsite_override: Telnyx::AnchorsiteOverride::TaggedSymbol,
+            call_cost_in_webhooks: T::Boolean,
             connection_name: String,
             created_at: String,
             default_on_hold_comfort_noise_enabled: T::Boolean,

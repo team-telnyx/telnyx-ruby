@@ -8,6 +8,7 @@ module Telnyx
         adjust_dtmf_timestamp: bool,
         anchorsite_override: Telnyx::Models::anchorsite_override,
         call_cost_enabled: bool,
+        call_cost_in_webhooks: bool,
         created_at: String,
         default_on_hold_comfort_noise_enabled: bool,
         dtmf_type: Telnyx::Models::dtmf_type,
@@ -63,6 +64,10 @@ module Telnyx
       attr_reader call_cost_enabled: bool?
 
       def call_cost_enabled=: (bool) -> bool
+
+      attr_reader call_cost_in_webhooks: bool?
+
+      def call_cost_in_webhooks=: (bool) -> bool
 
       attr_reader created_at: String?
 
@@ -187,6 +192,7 @@ module Telnyx
         ?adjust_dtmf_timestamp: bool,
         ?anchorsite_override: Telnyx::Models::anchorsite_override,
         ?call_cost_enabled: bool,
+        ?call_cost_in_webhooks: bool,
         ?created_at: String,
         ?default_on_hold_comfort_noise_enabled: bool,
         ?dtmf_type: Telnyx::Models::dtmf_type,
@@ -225,6 +231,7 @@ module Telnyx
         adjust_dtmf_timestamp: bool,
         anchorsite_override: Telnyx::Models::anchorsite_override,
         call_cost_enabled: bool,
+        call_cost_in_webhooks: bool,
         created_at: String,
         default_on_hold_comfort_noise_enabled: bool,
         dtmf_type: Telnyx::Models::dtmf_type,

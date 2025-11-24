@@ -6,6 +6,7 @@ module Telnyx
         voice_url: String,
         active: bool,
         anchorsite_override: Telnyx::Models::anchorsite_override,
+        call_cost_in_webhooks: bool,
         dtmf_type: Telnyx::Models::dtmf_type,
         first_command_timeout: bool,
         first_command_timeout_secs: Integer,
@@ -36,6 +37,10 @@ module Telnyx
       def anchorsite_override=: (
         Telnyx::Models::anchorsite_override
       ) -> Telnyx::Models::anchorsite_override
+
+      attr_reader call_cost_in_webhooks: bool?
+
+      def call_cost_in_webhooks=: (bool) -> bool
 
       attr_reader dtmf_type: Telnyx::Models::dtmf_type?
 
@@ -90,6 +95,7 @@ module Telnyx
         voice_url: String,
         ?active: bool,
         ?anchorsite_override: Telnyx::Models::anchorsite_override,
+        ?call_cost_in_webhooks: bool,
         ?dtmf_type: Telnyx::Models::dtmf_type,
         ?first_command_timeout: bool,
         ?first_command_timeout_secs: Integer,
@@ -108,6 +114,7 @@ module Telnyx
         voice_url: String,
         active: bool,
         anchorsite_override: Telnyx::Models::anchorsite_override,
+        call_cost_in_webhooks: bool,
         dtmf_type: Telnyx::Models::dtmf_type,
         first_command_timeout: bool,
         first_command_timeout_secs: Integer,

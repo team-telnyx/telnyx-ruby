@@ -1122,6 +1122,8 @@ module Telnyx
               Telnyx::Calls::ActionStartNoiseSuppressionParams::Direction::OrSymbol,
             noise_suppression_engine:
               Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine::OrSymbol,
+            noise_suppression_engine_config:
+              Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartNoiseSuppressionResponse)
         end
@@ -1136,9 +1138,11 @@ module Telnyx
           command_id: nil,
           # The direction of the audio stream to be noise suppressed.
           direction: nil,
-          # The engine to use for noise suppression. A - rnnoise engine B - deepfilter
-          # engine.
+          # The engine to use for noise suppression. For backward compatibility, engines A
+          # and B are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
           noise_suppression_engine: nil,
+          # Configuration parameters for noise suppression engines.
+          noise_suppression_engine_config: nil,
           request_options: {}
         )
         end

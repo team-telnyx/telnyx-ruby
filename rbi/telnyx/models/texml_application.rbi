@@ -33,6 +33,13 @@ module Telnyx
       end
       attr_writer :anchorsite_override
 
+      # Specifies if call cost webhooks should be sent for this TeXML Application.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :call_cost_in_webhooks
+
+      sig { params(call_cost_in_webhooks: T::Boolean).void }
+      attr_writer :call_cost_in_webhooks
+
       # ISO 8601 formatted date indicating when the resource was created.
       sig { returns(T.nilable(String)) }
       attr_reader :created_at
@@ -163,6 +170,7 @@ module Telnyx
           id: String,
           active: T::Boolean,
           anchorsite_override: Telnyx::AnchorsiteOverride::OrSymbol,
+          call_cost_in_webhooks: T::Boolean,
           created_at: String,
           dtmf_type: Telnyx::DtmfType::OrSymbol,
           first_command_timeout: T::Boolean,
@@ -190,6 +198,8 @@ module Telnyx
         # round-trip time to the user's connection. Telnyx calculates this time using ICMP
         # ping messages. This can be disabled by specifying a site to handle all media.
         anchorsite_override: nil,
+        # Specifies if call cost webhooks should be sent for this TeXML Application.
+        call_cost_in_webhooks: nil,
         # ISO 8601 formatted date indicating when the resource was created.
         created_at: nil,
         # Sets the type of DTMF digits sent from Telnyx to this Connection. Note that DTMF
@@ -232,6 +242,7 @@ module Telnyx
             id: String,
             active: T::Boolean,
             anchorsite_override: Telnyx::AnchorsiteOverride::TaggedSymbol,
+            call_cost_in_webhooks: T::Boolean,
             created_at: String,
             dtmf_type: Telnyx::DtmfType::TaggedSymbol,
             first_command_timeout: T::Boolean,

@@ -6,7 +6,8 @@ module Telnyx
           client_state: String,
           command_id: String,
           direction: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction,
-          noise_suppression_engine: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine
+          noise_suppression_engine: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine,
+          noise_suppression_engine_config: Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -34,11 +35,18 @@ module Telnyx
           Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine
         ) -> Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine
 
+        attr_reader noise_suppression_engine_config: Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig?
+
+        def noise_suppression_engine_config=: (
+          Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig
+        ) -> Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig
+
         def initialize: (
           ?client_state: String,
           ?command_id: String,
           ?direction: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction,
           ?noise_suppression_engine: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine,
+          ?noise_suppression_engine_config: Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig,
           ?request_options: Telnyx::request_opts
         ) -> void
 
@@ -47,6 +55,7 @@ module Telnyx
           command_id: String,
           direction: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction,
           noise_suppression_engine: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine,
+          noise_suppression_engine_config: Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig,
           request_options: Telnyx::RequestOptions
         }
 
@@ -62,15 +71,27 @@ module Telnyx
           def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction]
         end
 
-        type noise_suppression_engine = :A | :B
+        type noise_suppression_engine = :Denoiser | :DeepFilterNet
 
         module NoiseSuppressionEngine
           extend Telnyx::Internal::Type::Enum
 
-          A: :A
-          B: :B
+          DENOISER: :Denoiser
+          DEEP_FILTER_NET: :DeepFilterNet
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine]
+        end
+
+        type noise_suppression_engine_config = { attenuation_limit: Integer }
+
+        class NoiseSuppressionEngineConfig < Telnyx::Internal::Type::BaseModel
+          attr_reader attenuation_limit: Integer?
+
+          def attenuation_limit=: (Integer) -> Integer
+
+          def initialize: (?attenuation_limit: Integer) -> void
+
+          def to_hash: -> { attenuation_limit: Integer }
         end
       end
     end

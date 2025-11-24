@@ -93,10 +93,7 @@ module Telnyx
         optional :min_p, Float
 
         # @!attribute model
-        #   The language model to chat with. If you are optimizing for speed + price, try
-        #   `meta-llama/Meta-Llama-3.1-8B-Instruct`. For quality, try
-        #   `meta-llama/Meta-Llama-3.1-70B-Instruct`. Or explore our
-        #   [LLM Library](https://telnyx.com/products/llm-library).
+        #   The language model to chat with.
         #
         #   @return [String, nil]
         optional :model, String
@@ -201,7 +198,7 @@ module Telnyx
         #
         #   @param min_p [Float] This is an alternative to `top_p` that [many prefer](https://github.com/huggingf
         #
-        #   @param model [String] The language model to chat with. If you are optimizing for speed + price, try `m
+        #   @param model [String] The language model to chat with.
         #
         #   @param n [Float] This will return multiple choices for you instead of a single chat completion.
         #

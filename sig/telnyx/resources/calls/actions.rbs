@@ -251,6 +251,7 @@ module Telnyx
           ?command_id: String,
           ?direction: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction,
           ?noise_suppression_engine: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine,
+          ?noise_suppression_engine_config: Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionStartNoiseSuppressionResponse
 

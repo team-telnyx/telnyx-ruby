@@ -195,4 +195,20 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
       }
     end
   end
+
+  def test_send_sms_required_params
+    skip("Prism tests are disabled")
+
+    response = @telnyx.ai.assistants.send_sms("assistant_id", from: "from", text: "text", to: "to")
+
+    assert_pattern do
+      response => Telnyx::Models::AI::AssistantSendSMSResponse
+    end
+
+    assert_pattern do
+      response => {
+        conversation_id: String | nil
+      }
+    end
+  end
 end

@@ -480,6 +480,9 @@ module Telnyx
     # @return [Telnyx::Resources::WellKnown]
     attr_reader :well_known
 
+    # @return [Telnyx::Resources::InexplicitNumberOrders]
+    attr_reader :inexplicit_number_orders
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -692,6 +695,7 @@ module Telnyx
       @wireless_blocklists = Telnyx::Resources::WirelessBlocklists.new(client: self)
       @partner_campaigns = Telnyx::Resources::PartnerCampaigns.new(client: self)
       @well_known = Telnyx::Resources::WellKnown.new(client: self)
+      @inexplicit_number_orders = Telnyx::Resources::InexplicitNumberOrders.new(client: self)
     end
   end
 end

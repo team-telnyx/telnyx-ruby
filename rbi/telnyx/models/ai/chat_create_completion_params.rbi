@@ -109,10 +109,7 @@ module Telnyx
         sig { params(min_p: Float).void }
         attr_writer :min_p
 
-        # The language model to chat with. If you are optimizing for speed + price, try
-        # `meta-llama/Meta-Llama-3.1-8B-Instruct`. For quality, try
-        # `meta-llama/Meta-Llama-3.1-70B-Instruct`. Or explore our
-        # [LLM Library](https://telnyx.com/products/llm-library).
+        # The language model to chat with.
         sig { returns(T.nilable(String)) }
         attr_reader :model
 
@@ -314,10 +311,7 @@ module Telnyx
           # [many prefer](https://github.com/huggingface/transformers/issues/27670). Must be
           # in [0, 1].
           min_p: nil,
-          # The language model to chat with. If you are optimizing for speed + price, try
-          # `meta-llama/Meta-Llama-3.1-8B-Instruct`. For quality, try
-          # `meta-llama/Meta-Llama-3.1-70B-Instruct`. Or explore our
-          # [LLM Library](https://telnyx.com/products/llm-library).
+          # The language model to chat with.
           model: nil,
           # This will return multiple choices for you instead of a single chat completion.
           n: nil,

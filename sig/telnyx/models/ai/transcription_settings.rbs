@@ -1,20 +1,109 @@
 module Telnyx
   module Models
     module AI
-      type transcription_settings = { language: String, model: String }
+      type transcription_settings =
+        {
+          language: String,
+          model: Telnyx::Models::AI::TranscriptionSettings::model,
+          region: String,
+          settings: Telnyx::AI::TranscriptionSettings::Settings
+        }
 
       class TranscriptionSettings < Telnyx::Internal::Type::BaseModel
         attr_reader language: String?
 
         def language=: (String) -> String
 
-        attr_reader model: String?
+        attr_reader model: Telnyx::Models::AI::TranscriptionSettings::model?
 
-        def model=: (String) -> String
+        def model=: (
+          Telnyx::Models::AI::TranscriptionSettings::model
+        ) -> Telnyx::Models::AI::TranscriptionSettings::model
 
-        def initialize: (?language: String, ?model: String) -> void
+        attr_reader region: String?
 
-        def to_hash: -> { language: String, model: String }
+        def region=: (String) -> String
+
+        attr_reader settings: Telnyx::AI::TranscriptionSettings::Settings?
+
+        def settings=: (
+          Telnyx::AI::TranscriptionSettings::Settings
+        ) -> Telnyx::AI::TranscriptionSettings::Settings
+
+        def initialize: (
+          ?language: String,
+          ?model: Telnyx::Models::AI::TranscriptionSettings::model,
+          ?region: String,
+          ?settings: Telnyx::AI::TranscriptionSettings::Settings
+        ) -> void
+
+        def to_hash: -> {
+          language: String,
+          model: Telnyx::Models::AI::TranscriptionSettings::model,
+          region: String,
+          settings: Telnyx::AI::TranscriptionSettings::Settings
+        }
+
+        type model =
+          :"deepgram/flux"
+          | :"deepgram/nova-3"
+          | :"deepgram/nova-2"
+          | :"azure/fast"
+          | :"distil-whisper/distil-large-v2"
+          | :"openai/whisper-large-v3-turbo"
+
+        module Model
+          extend Telnyx::Internal::Type::Enum
+
+          DEEPGRAM_FLUX: :"deepgram/flux"
+          DEEPGRAM_NOVA_3: :"deepgram/nova-3"
+          DEEPGRAM_NOVA_2: :"deepgram/nova-2"
+          AZURE_FAST: :"azure/fast"
+          DISTIL_WHISPER_DISTIL_LARGE_V2: :"distil-whisper/distil-large-v2"
+          OPENAI_WHISPER_LARGE_V3_TURBO: :"openai/whisper-large-v3-turbo"
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::TranscriptionSettings::model]
+        end
+
+        type settings =
+          {
+            eot_threshold: Float,
+            eot_timeout_ms: Integer,
+            numerals: bool,
+            smart_format: bool
+          }
+
+        class Settings < Telnyx::Internal::Type::BaseModel
+          attr_reader eot_threshold: Float?
+
+          def eot_threshold=: (Float) -> Float
+
+          attr_reader eot_timeout_ms: Integer?
+
+          def eot_timeout_ms=: (Integer) -> Integer
+
+          attr_reader numerals: bool?
+
+          def numerals=: (bool) -> bool
+
+          attr_reader smart_format: bool?
+
+          def smart_format=: (bool) -> bool
+
+          def initialize: (
+            ?eot_threshold: Float,
+            ?eot_timeout_ms: Integer,
+            ?numerals: bool,
+            ?smart_format: bool
+          ) -> void
+
+          def to_hash: -> {
+            eot_threshold: Float,
+            eot_timeout_ms: Integer,
+            numerals: bool,
+            smart_format: bool
+          }
+        end
       end
     end
   end

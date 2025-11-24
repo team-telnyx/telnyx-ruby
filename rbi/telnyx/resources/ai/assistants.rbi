@@ -283,6 +283,43 @@ module Telnyx
         )
         end
 
+        # Send an SMS message for an assistant. This endpoint:
+        #
+        # 1. Validates the assistant exists and has messaging profile configured
+        # 2. If should_create_conversation is true, creates a new conversation with
+        #    metadata
+        # 3. Sends the SMS message (If `text` is set, this will be sent. Otherwise, if
+        #    this is the first message in the conversation and the assistant has a
+        #    `greeting` configured, this will be sent. Otherwise the assistant will
+        #    generate the text to send.)
+        # 4. Updates conversation metadata if provided
+        # 5. Returns the conversation ID
+        sig do
+          params(
+            assistant_id: String,
+            from: String,
+            text: String,
+            to: String,
+            conversation_metadata:
+              T::Hash[
+                Symbol,
+                Telnyx::AI::AssistantSendSMSParams::ConversationMetadata::Variants
+              ],
+            should_create_conversation: T::Boolean,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::AI::AssistantSendSMSResponse)
+        end
+        def send_sms(
+          assistant_id,
+          from:,
+          text:,
+          to:,
+          conversation_metadata: nil,
+          should_create_conversation: nil,
+          request_options: {}
+        )
+        end
+
         # @api private
         sig { params(client: Telnyx::Client).returns(T.attached_class) }
         def self.new(client:)
