@@ -216,6 +216,10 @@ module Telnyx
             )
           end
 
+        # The ID of the outbound voice profile to use for inbound calls.
+        sig { returns(String) }
+        attr_accessor :outbound_voice_profile_id
+
         # When set, this will limit the number of concurrent inbound calls to phone
         # numbers associated with this connection.
         sig { returns(T.nilable(Integer)) }
@@ -224,15 +228,26 @@ module Telnyx
         sig { params(channel_limit: Integer).void }
         attr_writer :channel_limit
 
-        sig { params(channel_limit: Integer).returns(T.attached_class) }
+        sig do
+          params(
+            outbound_voice_profile_id: String,
+            channel_limit: Integer
+          ).returns(T.attached_class)
+        end
         def self.new(
+          # The ID of the outbound voice profile to use for inbound calls.
+          outbound_voice_profile_id:,
           # When set, this will limit the number of concurrent inbound calls to phone
           # numbers associated with this connection.
           channel_limit: nil
         )
         end
 
-        sig { override.returns({ channel_limit: Integer }) }
+        sig do
+          override.returns(
+            { outbound_voice_profile_id: String, channel_limit: Integer }
+          )
+        end
         def to_hash
         end
       end
