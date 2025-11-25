@@ -231,7 +231,7 @@ module Telnyx
 
   class CampaignSharingStatus = Telnyx::Models::CampaignSharingStatus
 
-  class CampaignStatusUpdateWebhookEvent = Telnyx::Models::CampaignStatusUpdateWebhookEvent
+  module CampaignStatusUpdateWebhookEvent = Telnyx::Models::CampaignStatusUpdateWebhookEvent
 
   class CampaignSubmitAppealParams = Telnyx::Models::CampaignSubmitAppealParams
 
