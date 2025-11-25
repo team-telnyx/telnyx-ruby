@@ -100,16 +100,25 @@ module Telnyx
         }
       end
 
-      type inbound = { channel_limit: Integer }
+      type inbound =
+        { outbound_voice_profile_id: String, channel_limit: Integer }
 
       class Inbound < Telnyx::Internal::Type::BaseModel
+        attr_accessor outbound_voice_profile_id: String
+
         attr_reader channel_limit: Integer?
 
         def channel_limit=: (Integer) -> Integer
 
-        def initialize: (?channel_limit: Integer) -> void
+        def initialize: (
+          outbound_voice_profile_id: String,
+          ?channel_limit: Integer
+        ) -> void
 
-        def to_hash: -> { channel_limit: Integer }
+        def to_hash: -> {
+          outbound_voice_profile_id: String,
+          channel_limit: Integer
+        }
       end
     end
   end
