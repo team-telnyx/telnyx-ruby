@@ -91,10 +91,7 @@ module Telnyx
 
         # Unused
         sig { returns(T.nilable(String)) }
-        attr_reader :fraud
-
-        sig { params(fraud: String).void }
-        attr_writer :fraud
+        attr_accessor :fraud
 
         # Hyphen-separated national number, preceded by the national destination code
         # (NDC), with a 0 prefix, if an NDC is found
@@ -142,7 +139,7 @@ module Telnyx
             carrier:
               Telnyx::Models::NumberLookupRetrieveResponse::Data::Carrier::OrHash,
             country_code: String,
-            fraud: String,
+            fraud: T.nilable(String),
             national_format: String,
             phone_number: String,
             portability:
@@ -176,7 +173,7 @@ module Telnyx
               carrier:
                 Telnyx::Models::NumberLookupRetrieveResponse::Data::Carrier,
               country_code: String,
-              fraud: String,
+              fraud: T.nilable(String),
               national_format: String,
               phone_number: String,
               portability:
@@ -242,10 +239,7 @@ module Telnyx
 
           # Unused
           sig { returns(T.nilable(String)) }
-          attr_reader :error_code
-
-          sig { params(error_code: String).void }
-          attr_writer :error_code
+          attr_accessor :error_code
 
           # Region code that matches the specific country calling code if the requested
           # phone number type is mobile
@@ -299,7 +293,7 @@ module Telnyx
 
           sig do
             params(
-              error_code: String,
+              error_code: T.nilable(String),
               mobile_country_code: String,
               mobile_network_code: String,
               name: String,
@@ -331,7 +325,7 @@ module Telnyx
           sig do
             override.returns(
               {
-                error_code: String,
+                error_code: T.nilable(String),
                 mobile_country_code: String,
                 mobile_network_code: String,
                 name: String,

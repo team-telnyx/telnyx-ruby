@@ -34,7 +34,7 @@ module Telnyx
         #   Unused
         #
         #   @return [String, nil]
-        optional :fraud, String
+        optional :fraud, String, nil?: true
 
         # @!attribute national_format
         #   Hyphen-separated national number, preceded by the national destination code
@@ -70,7 +70,7 @@ module Telnyx
         #
         #   @param country_code [String] Region code that matches the specific country calling code
         #
-        #   @param fraud [String] Unused
+        #   @param fraud [String, nil] Unused
         #
         #   @param national_format [String] Hyphen-separated national number, preceded by the national destination code (NDC
         #
@@ -111,7 +111,7 @@ module Telnyx
           #   Unused
           #
           #   @return [String, nil]
-          optional :error_code, String
+          optional :error_code, String, nil?: true
 
           # @!attribute mobile_country_code
           #   Region code that matches the specific country calling code if the requested
@@ -151,7 +151,7 @@ module Telnyx
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::NumberLookupRetrieveResponse::Data::Carrier} for more details.
           #
-          #   @param error_code [String] Unused
+          #   @param error_code [String, nil] Unused
           #
           #   @param mobile_country_code [String] Region code that matches the specific country calling code if the requested phon
           #
