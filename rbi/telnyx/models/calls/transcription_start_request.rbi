@@ -54,6 +54,7 @@ module Telnyx
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure,
                 ::Telnyx::Calls::TranscriptionEngineAConfig,
                 ::Telnyx::Calls::TranscriptionEngineBConfig
               )
@@ -69,6 +70,7 @@ module Telnyx
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::OrHash,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::OrHash,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::OrHash,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::OrHash,
                 ::Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 ::Telnyx::Calls::TranscriptionEngineBConfig::OrHash
               )
@@ -96,6 +98,7 @@ module Telnyx
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::OrHash,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::OrHash,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::OrHash,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::OrHash,
                 ::Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 ::Telnyx::Calls::TranscriptionEngineBConfig::OrHash
               ),
@@ -132,6 +135,7 @@ module Telnyx
                   ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google,
                   ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx,
                   ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure,
                   ::Telnyx::Calls::TranscriptionEngineAConfig,
                   ::Telnyx::Calls::TranscriptionEngineBConfig
                 ),
@@ -171,6 +175,11 @@ module Telnyx
               :Deepgram,
               Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngine::TaggedSymbol
             )
+          AZURE =
+            T.let(
+              :Azure,
+              Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngine::TaggedSymbol
+            )
           A =
             T.let(
               :A,
@@ -202,6 +211,7 @@ module Telnyx
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure,
                 ::Telnyx::Calls::TranscriptionEngineAConfig,
                 ::Telnyx::Calls::TranscriptionEngineBConfig
               )
@@ -1113,6 +1123,551 @@ module Telnyx
                 override.returns(
                   T::Array[
                     ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+
+          class Azure < ::Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure,
+                  ::Telnyx::Internal::AnyHash
+                )
+              end
+
+            # Azure region to use for speech recognition
+            sig do
+              returns(
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Region::OrSymbol
+              )
+            end
+            attr_accessor :region
+
+            # Engine identifier for Azure transcription service
+            sig { returns(Symbol) }
+            attr_accessor :transcription_engine
+
+            # Reference to the API key for authentication. See
+            # [integration secrets documentation](https://developers.telnyx.com/api/secrets-manager/integration-secrets/create-integration-secret)
+            # for details. The parameter is optional as defaults are available for some
+            # regions.
+            sig { returns(T.nilable(String)) }
+            attr_reader :api_key_ref
+
+            sig { params(api_key_ref: String).void }
+            attr_writer :api_key_ref
+
+            # Language to use for speech recognition
+            sig do
+              returns(
+                T.nilable(
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::OrSymbol
+                )
+              )
+            end
+            attr_reader :language
+
+            sig do
+              params(
+                language:
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::OrSymbol
+              ).void
+            end
+            attr_writer :language
+
+            sig do
+              params(
+                region:
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Region::OrSymbol,
+                api_key_ref: String,
+                language:
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::OrSymbol,
+                transcription_engine: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Azure region to use for speech recognition
+              region:,
+              # Reference to the API key for authentication. See
+              # [integration secrets documentation](https://developers.telnyx.com/api/secrets-manager/integration-secrets/create-integration-secret)
+              # for details. The parameter is optional as defaults are available for some
+              # regions.
+              api_key_ref: nil,
+              # Language to use for speech recognition
+              language: nil,
+              # Engine identifier for Azure transcription service
+              transcription_engine: :Azure
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  region:
+                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Region::OrSymbol,
+                  transcription_engine: Symbol,
+                  api_key_ref: String,
+                  language:
+                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::OrSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # Azure region to use for speech recognition
+            module Region
+              extend ::Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Region
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              AUSTRALIAEAST =
+                T.let(
+                  :australiaeast,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Region::TaggedSymbol
+                )
+              CENTRALINDIA =
+                T.let(
+                  :centralindia,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Region::TaggedSymbol
+                )
+              EASTUS =
+                T.let(
+                  :eastus,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Region::TaggedSymbol
+                )
+              NORTHCENTRALUS =
+                T.let(
+                  :northcentralus,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Region::TaggedSymbol
+                )
+              WESTEUROPE =
+                T.let(
+                  :westeurope,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Region::TaggedSymbol
+                )
+              WESTUS2 =
+                T.let(
+                  :westus2,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Region::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Region::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            # Language to use for speech recognition
+            module Language
+              extend ::Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              AF =
+                T.let(
+                  :af,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              AM =
+                T.let(
+                  :am,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              AR =
+                T.let(
+                  :ar,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              BG =
+                T.let(
+                  :bg,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              BN =
+                T.let(
+                  :bn,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              BS =
+                T.let(
+                  :bs,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              CA =
+                T.let(
+                  :ca,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              CS =
+                T.let(
+                  :cs,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              CY =
+                T.let(
+                  :cy,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              DA =
+                T.let(
+                  :da,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              DE =
+                T.let(
+                  :de,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              EL =
+                T.let(
+                  :el,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              EN =
+                T.let(
+                  :en,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              ES =
+                T.let(
+                  :es,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              ET =
+                T.let(
+                  :et,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              EU =
+                T.let(
+                  :eu,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              FA =
+                T.let(
+                  :fa,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              FI =
+                T.let(
+                  :fi,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              FR =
+                T.let(
+                  :fr,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              GA =
+                T.let(
+                  :ga,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              GL =
+                T.let(
+                  :gl,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              GU =
+                T.let(
+                  :gu,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              HE =
+                T.let(
+                  :he,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              HI =
+                T.let(
+                  :hi,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              HR =
+                T.let(
+                  :hr,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              HU =
+                T.let(
+                  :hu,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              HY =
+                T.let(
+                  :hy,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              ID =
+                T.let(
+                  :id,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              IS =
+                T.let(
+                  :is,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              IT =
+                T.let(
+                  :it,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              JA =
+                T.let(
+                  :ja,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              KA =
+                T.let(
+                  :ka,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              KK =
+                T.let(
+                  :kk,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              KM =
+                T.let(
+                  :km,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              KN =
+                T.let(
+                  :kn,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              KO =
+                T.let(
+                  :ko,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              LO =
+                T.let(
+                  :lo,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              LT =
+                T.let(
+                  :lt,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              LV =
+                T.let(
+                  :lv,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              MK =
+                T.let(
+                  :mk,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              ML =
+                T.let(
+                  :ml,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              MN =
+                T.let(
+                  :mn,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              MR =
+                T.let(
+                  :mr,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              MS =
+                T.let(
+                  :ms,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              MT =
+                T.let(
+                  :mt,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              MY =
+                T.let(
+                  :my,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              NB =
+                T.let(
+                  :nb,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              NE =
+                T.let(
+                  :ne,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              NL =
+                T.let(
+                  :nl,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              PL =
+                T.let(
+                  :pl,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              PS =
+                T.let(
+                  :ps,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              PT =
+                T.let(
+                  :pt,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              RO =
+                T.let(
+                  :ro,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              RU =
+                T.let(
+                  :ru,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              SI =
+                T.let(
+                  :si,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              SK =
+                T.let(
+                  :sk,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              SL =
+                T.let(
+                  :sl,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              SO =
+                T.let(
+                  :so,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              SQ =
+                T.let(
+                  :sq,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              SR =
+                T.let(
+                  :sr,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              SV =
+                T.let(
+                  :sv,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              SW =
+                T.let(
+                  :sw,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              TA =
+                T.let(
+                  :ta,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              TE =
+                T.let(
+                  :te,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              TH =
+                T.let(
+                  :th,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              TR =
+                T.let(
+                  :tr,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              UK =
+                T.let(
+                  :uk,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              UR =
+                T.let(
+                  :ur,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              UZ =
+                T.let(
+                  :uz,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              VI =
+                T.let(
+                  :vi,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              WUU =
+                T.let(
+                  :wuu,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              YUE =
+                T.let(
+                  :yue,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              ZH =
+                T.let(
+                  :zh,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              ZU =
+                T.let(
+                  :zu,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+              AUTO =
+                T.let(
+                  :auto,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language::TaggedSymbol
                   ]
                 )
               end

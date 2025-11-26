@@ -51,7 +51,8 @@ module Telnyx
           transcription_tracks: String
         }
 
-        type transcription_engine = :Google | :Telnyx | :Deepgram | :A | :B
+        type transcription_engine =
+          :Google | :Telnyx | :Deepgram | :Azure | :A | :B
 
         module TranscriptionEngine
           extend Telnyx::Internal::Type::Enum
@@ -59,6 +60,7 @@ module Telnyx
           GOOGLE: :Google
           TELNYX: :Telnyx
           DEEPGRAM: :Deepgram
+          AZURE: :Azure
           A: :A
           B: :B
 
@@ -69,6 +71,7 @@ module Telnyx
           ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google
           | ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx
           | ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram
+          | ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure
           | ::Telnyx::Calls::TranscriptionEngineAConfig
           | ::Telnyx::Calls::TranscriptionEngineBConfig
 
@@ -440,6 +443,224 @@ module Telnyx
               AUTO_DETECT: :auto_detect
 
               def self?.values: -> ::Array[::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language]
+            end
+          end
+
+          type azure =
+            {
+              region: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::region,
+              transcription_engine: :Azure,
+              api_key_ref: String,
+              language: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::language
+            }
+
+          class Azure < ::Telnyx::Internal::Type::BaseModel
+            attr_accessor region: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::region
+
+            attr_accessor transcription_engine: :Azure
+
+            attr_reader api_key_ref: String?
+
+            def api_key_ref=: (String) -> String
+
+            attr_reader language: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::language?
+
+            def language=: (
+              ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::language
+            ) -> ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::language
+
+            def initialize: (
+              region: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::region,
+              ?api_key_ref: String,
+              ?language: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::language,
+              ?transcription_engine: :Azure
+            ) -> void
+
+            def to_hash: -> {
+              region: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::region,
+              transcription_engine: :Azure,
+              api_key_ref: String,
+              language: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::language
+            }
+
+            type region =
+              :australiaeast
+              | :centralindia
+              | :eastus
+              | :northcentralus
+              | :westeurope
+              | :westus2
+
+            module Region
+              extend ::Telnyx::Internal::Type::Enum
+
+              AUSTRALIAEAST: :australiaeast
+              CENTRALINDIA: :centralindia
+              EASTUS: :eastus
+              NORTHCENTRALUS: :northcentralus
+              WESTEUROPE: :westeurope
+              WESTUS2: :westus2
+
+              def self?.values: -> ::Array[::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::region]
+            end
+
+            type language =
+              :af
+              | :am
+              | :ar
+              | :bg
+              | :bn
+              | :bs
+              | :ca
+              | :cs
+              | :cy
+              | :da
+              | :de
+              | :el
+              | :en
+              | :es
+              | :et
+              | :eu
+              | :fa
+              | :fi
+              | :fr
+              | :ga
+              | :gl
+              | :gu
+              | :he
+              | :hi
+              | :hr
+              | :hu
+              | :hy
+              | :id
+              | :is
+              | :it
+              | :ja
+              | :ka
+              | :kk
+              | :km
+              | :kn
+              | :ko
+              | :lo
+              | :lt
+              | :lv
+              | :mk
+              | :ml
+              | :mn
+              | :mr
+              | :ms
+              | :mt
+              | :my
+              | :nb
+              | :ne
+              | :nl
+              | :pl
+              | :ps
+              | :pt
+              | :ro
+              | :ru
+              | :si
+              | :sk
+              | :sl
+              | :so
+              | :sq
+              | :sr
+              | :sv
+              | :sw
+              | :ta
+              | :te
+              | :th
+              | :tr
+              | :uk
+              | :ur
+              | :uz
+              | :vi
+              | :wuu
+              | :yue
+              | :zh
+              | :zu
+              | :auto
+
+            module Language
+              extend ::Telnyx::Internal::Type::Enum
+
+              AF: :af
+              AM: :am
+              AR: :ar
+              BG: :bg
+              BN: :bn
+              BS: :bs
+              CA: :ca
+              CS: :cs
+              CY: :cy
+              DA: :da
+              DE: :de
+              EL: :el
+              EN: :en
+              ES: :es
+              ET: :et
+              EU: :eu
+              FA: :fa
+              FI: :fi
+              FR: :fr
+              GA: :ga
+              GL: :gl
+              GU: :gu
+              HE: :he
+              HI: :hi
+              HR: :hr
+              HU: :hu
+              HY: :hy
+              ID: :id
+              IS: :is
+              IT: :it
+              JA: :ja
+              KA: :ka
+              KK: :kk
+              KM: :km
+              KN: :kn
+              KO: :ko
+              LO: :lo
+              LT: :lt
+              LV: :lv
+              MK: :mk
+              ML: :ml
+              MN: :mn
+              MR: :mr
+              MS: :ms
+              MT: :mt
+              MY: :my
+              NB: :nb
+              NE: :ne
+              NL: :nl
+              PL: :pl
+              PS: :ps
+              PT: :pt
+              RO: :ro
+              RU: :ru
+              SI: :si
+              SK: :sk
+              SL: :sl
+              SO: :so
+              SQ: :sq
+              SR: :sr
+              SV: :sv
+              SW: :sw
+              TA: :ta
+              TE: :te
+              TH: :th
+              TR: :tr
+              UK: :uk
+              UR: :ur
+              UZ: :uz
+              VI: :vi
+              WUU: :wuu
+              YUE: :yue
+              ZH: :zh
+              ZU: :zu
+              AUTO: :auto
+
+              def self?.values: -> ::Array[::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::language]
             end
           end
 

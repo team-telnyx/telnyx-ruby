@@ -1442,6 +1442,7 @@ module Telnyx
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::OrHash,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::OrHash,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::OrHash,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::OrHash,
                 ::Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 ::Telnyx::Calls::TranscriptionEngineBConfig::OrHash
               ),

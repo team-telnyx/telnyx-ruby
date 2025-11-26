@@ -1154,7 +1154,7 @@ module Telnyx
         #
         # @param transcription_engine [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngine] Engine to use for speech recognition. Legacy values `A` - `Google`, `B` - `Telny
         #
-        # @param transcription_engine_config [::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram, ::Telnyx::Models::Calls::TranscriptionEngineAConfig, ::Telnyx::Models::Calls::TranscriptionEngineBConfig]
+        # @param transcription_engine_config [::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure, ::Telnyx::Models::Calls::TranscriptionEngineAConfig, ::Telnyx::Models::Calls::TranscriptionEngineBConfig]
         #
         # @param transcription_tracks [String] Indicates which leg of the call will be transcribed. Use `inbound` for the leg t
         #
