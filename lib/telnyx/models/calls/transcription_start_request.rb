@@ -27,7 +27,7 @@ module Telnyx
 
         # @!attribute transcription_engine_config
         #
-        #   @return [::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram, ::Telnyx::Models::Calls::TranscriptionEngineAConfig, ::Telnyx::Models::Calls::TranscriptionEngineBConfig, nil]
+        #   @return [::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure, ::Telnyx::Models::Calls::TranscriptionEngineAConfig, ::Telnyx::Models::Calls::TranscriptionEngineBConfig, nil]
         optional :transcription_engine_config,
                  union: -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig }
 
@@ -49,7 +49,7 @@ module Telnyx
         #
         #   @param transcription_engine [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngine] Engine to use for speech recognition. Legacy values `A` - `Google`, `B` - `Telny
         #
-        #   @param transcription_engine_config [::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram, ::Telnyx::Models::Calls::TranscriptionEngineAConfig, ::Telnyx::Models::Calls::TranscriptionEngineBConfig]
+        #   @param transcription_engine_config [::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure, ::Telnyx::Models::Calls::TranscriptionEngineAConfig, ::Telnyx::Models::Calls::TranscriptionEngineBConfig]
         #
         #   @param transcription_tracks [String] Indicates which leg of the call will be transcribed. Use `inbound` for the leg t
 
@@ -63,6 +63,7 @@ module Telnyx
           GOOGLE = :Google
           TELNYX = :Telnyx
           DEEPGRAM = :Deepgram
+          AZURE = :Azure
           A = :A
           B = :B
 
@@ -81,6 +82,8 @@ module Telnyx
           variant :Telnyx, -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx }
 
           variant :Deepgram, -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram }
+
+          variant :Azure, -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure }
 
           variant :A, -> { ::Telnyx::Calls::TranscriptionEngineAConfig }
 
@@ -401,8 +404,155 @@ module Telnyx
             end
           end
 
+          class Azure < ::Telnyx::Internal::Type::BaseModel
+            # @!attribute region
+            #   Azure region to use for speech recognition
+            #
+            #   @return [Symbol, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Region]
+            required :region,
+                     enum: -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Region }
+
+            # @!attribute transcription_engine
+            #   Engine identifier for Azure transcription service
+            #
+            #   @return [Symbol, :Azure]
+            required :transcription_engine, const: :Azure
+
+            # @!attribute api_key_ref
+            #   Reference to the API key for authentication. See
+            #   [integration secrets documentation](https://developers.telnyx.com/api/secrets-manager/integration-secrets/create-integration-secret)
+            #   for details. The parameter is optional as defaults are available for some
+            #   regions.
+            #
+            #   @return [String, nil]
+            optional :api_key_ref, String
+
+            # @!attribute language
+            #   Language to use for speech recognition
+            #
+            #   @return [Symbol, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language, nil]
+            optional :language,
+                     enum: -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language }
+
+            # @!method initialize(region:, api_key_ref: nil, language: nil, transcription_engine: :Azure)
+            #   Some parameter documentations has been truncated, see
+            #   {::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure}
+            #   for more details.
+            #
+            #   @param region [Symbol, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Region] Azure region to use for speech recognition
+            #
+            #   @param api_key_ref [String] Reference to the API key for authentication. See [integration secrets documentat
+            #
+            #   @param language [Symbol, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::Language] Language to use for speech recognition
+            #
+            #   @param transcription_engine [Symbol, :Azure] Engine identifier for Azure transcription service
+
+            # Azure region to use for speech recognition
+            #
+            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure#region
+            module Region
+              extend ::Telnyx::Internal::Type::Enum
+
+              AUSTRALIAEAST = :australiaeast
+              CENTRALINDIA = :centralindia
+              EASTUS = :eastus
+              NORTHCENTRALUS = :northcentralus
+              WESTEUROPE = :westeurope
+              WESTUS2 = :westus2
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Language to use for speech recognition
+            #
+            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure#language
+            module Language
+              extend ::Telnyx::Internal::Type::Enum
+
+              AF = :af
+              AM = :am
+              AR = :ar
+              BG = :bg
+              BN = :bn
+              BS = :bs
+              CA = :ca
+              CS = :cs
+              CY = :cy
+              DA = :da
+              DE = :de
+              EL = :el
+              EN = :en
+              ES = :es
+              ET = :et
+              EU = :eu
+              FA = :fa
+              FI = :fi
+              FR = :fr
+              GA = :ga
+              GL = :gl
+              GU = :gu
+              HE = :he
+              HI = :hi
+              HR = :hr
+              HU = :hu
+              HY = :hy
+              ID = :id
+              IS = :is
+              IT = :it
+              JA = :ja
+              KA = :ka
+              KK = :kk
+              KM = :km
+              KN = :kn
+              KO = :ko
+              LO = :lo
+              LT = :lt
+              LV = :lv
+              MK = :mk
+              ML = :ml
+              MN = :mn
+              MR = :mr
+              MS = :ms
+              MT = :mt
+              MY = :my
+              NB = :nb
+              NE = :ne
+              NL = :nl
+              PL = :pl
+              PS = :ps
+              PT = :pt
+              RO = :ro
+              RU = :ru
+              SI = :si
+              SK = :sk
+              SL = :sl
+              SO = :so
+              SQ = :sq
+              SR = :sr
+              SV = :sv
+              SW = :sw
+              TA = :ta
+              TE = :te
+              TH = :th
+              TR = :tr
+              UK = :uk
+              UR = :ur
+              UZ = :uz
+              VI = :vi
+              WUU = :wuu
+              YUE = :yue
+              ZH = :zh
+              ZU = :zu
+              AUTO = :auto
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
           # @!method self.variants
-          #   @return [Array(::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig)]
+          #   @return [Array(::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig)]
         end
       end
     end
