@@ -76,7 +76,7 @@ class Telnyx::Test::Resources::Reports::MdrUsageReportsTest < Telnyx::Test::Reso
   def test_fetch_sync_required_params
     skip("Prism tests are disabled")
 
-    response = @telnyx.reports.mdr_usage_reports.fetch_sync(aggregation_type: :NO_AGGREGATION)
+    response = @telnyx.reports.mdr_usage_reports.fetch_sync(aggregation_type: :PROFILE)
 
     assert_pattern do
       response => Telnyx::Models::Reports::MdrUsageReportFetchSyncResponse
