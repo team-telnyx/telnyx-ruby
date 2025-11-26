@@ -28,10 +28,10 @@ module Telnyx
             sig { params(aggregation_type: Integer).void }
             attr_writer :aggregation_type
 
-            sig { returns(T.nilable(T::Array[Integer])) }
+            sig { returns(T.nilable(T::Array[String])) }
             attr_reader :connections
 
-            sig { params(connections: T::Array[Integer]).void }
+            sig { params(connections: T::Array[String]).void }
             attr_writer :connections
 
             sig { returns(T.nilable(Time)) }
@@ -96,7 +96,7 @@ module Telnyx
               params(
                 id: String,
                 aggregation_type: Integer,
-                connections: T::Array[Integer],
+                connections: T::Array[String],
                 created_at: Time,
                 end_time: Time,
                 product_breakdown: Integer,
@@ -134,7 +134,7 @@ module Telnyx
                 {
                   id: String,
                   aggregation_type: Integer,
-                  connections: T::Array[Integer],
+                  connections: T::Array[String],
                   created_at: Time,
                   end_time: Time,
                   product_breakdown: Integer,

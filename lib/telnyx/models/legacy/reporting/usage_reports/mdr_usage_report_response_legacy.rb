@@ -20,8 +20,8 @@ module Telnyx
 
             # @!attribute connections
             #
-            #   @return [Array<Integer>, nil]
-            optional :connections, Telnyx::Internal::Type::ArrayOf[Integer]
+            #   @return [Array<String>, nil]
+            optional :connections, Telnyx::Internal::Type::ArrayOf[String]
 
             # @!attribute created_at
             #
@@ -77,7 +77,7 @@ module Telnyx
             #
             #   @param aggregation_type [Integer] Aggregation type: No aggregation = 0, By Messaging Profile = 1, By Tags = 2
             #
-            #   @param connections [Array<Integer>]
+            #   @param connections [Array<String>]
             #
             #   @param created_at [Time]
             #
