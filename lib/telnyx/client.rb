@@ -483,6 +483,12 @@ module Telnyx
     # @return [Telnyx::Resources::InexplicitNumberOrders]
     attr_reader :inexplicit_number_orders
 
+    # @return [Telnyx::Resources::MobilePhoneNumbers]
+    attr_reader :mobile_phone_numbers
+
+    # @return [Telnyx::Resources::MobileVoiceConnections]
+    attr_reader :mobile_voice_connections
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -696,6 +702,8 @@ module Telnyx
       @partner_campaigns = Telnyx::Resources::PartnerCampaigns.new(client: self)
       @well_known = Telnyx::Resources::WellKnown.new(client: self)
       @inexplicit_number_orders = Telnyx::Resources::InexplicitNumberOrders.new(client: self)
+      @mobile_phone_numbers = Telnyx::Resources::MobilePhoneNumbers.new(client: self)
+      @mobile_voice_connections = Telnyx::Resources::MobileVoiceConnections.new(client: self)
     end
   end
 end

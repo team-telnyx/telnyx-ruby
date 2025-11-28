@@ -1,0 +1,173 @@
+module Telnyx
+  module Models
+    type mobile_voice_connection_create_response =
+      { data: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data }
+
+    class MobileVoiceConnectionCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data?
+
+      def data=: (
+        Telnyx::Models::MobileVoiceConnectionCreateResponse::Data
+      ) -> Telnyx::Models::MobileVoiceConnectionCreateResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data
+      }
+
+      type data =
+        {
+          id: String,
+          active: bool,
+          connection_name: String,
+          created_at: Time,
+          inbound: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::Inbound,
+          outbound: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::Outbound,
+          record_type: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::record_type,
+          tags: ::Array[String],
+          updated_at: Time,
+          webhook_api_version: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::webhook_api_version?,
+          webhook_event_failover_url: String?,
+          webhook_event_url: String?,
+          webhook_timeout_secs: Integer?
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader active: bool?
+
+        def active=: (bool) -> bool
+
+        attr_reader connection_name: String?
+
+        def connection_name=: (String) -> String
+
+        attr_reader inbound: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::Inbound?
+
+        def inbound=: (
+          Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::Inbound
+        ) -> Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::Inbound
+
+        attr_reader outbound: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::Outbound?
+
+        def outbound=: (
+          Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::Outbound
+        ) -> Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::Outbound
+
+        attr_reader tags: ::Array[String]?
+
+        def tags=: (::Array[String]) -> ::Array[String]
+
+        attr_accessor webhook_api_version: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::webhook_api_version?
+
+        attr_accessor webhook_event_failover_url: String?
+
+        attr_accessor webhook_event_url: String?
+
+        attr_accessor webhook_timeout_secs: Integer?
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader record_type: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::record_type?
+
+        def record_type=: (
+          Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::record_type
+        ) -> Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::record_type
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        def initialize: (
+          ?id: String,
+          ?active: bool,
+          ?connection_name: String,
+          ?created_at: Time,
+          ?inbound: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::Inbound,
+          ?outbound: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::Outbound,
+          ?record_type: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::record_type,
+          ?tags: ::Array[String],
+          ?updated_at: Time,
+          ?webhook_api_version: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::webhook_api_version?,
+          ?webhook_event_failover_url: String?,
+          ?webhook_event_url: String?,
+          ?webhook_timeout_secs: Integer?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          active: bool,
+          connection_name: String,
+          created_at: Time,
+          inbound: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::Inbound,
+          outbound: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::Outbound,
+          record_type: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::record_type,
+          tags: ::Array[String],
+          updated_at: Time,
+          webhook_api_version: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::webhook_api_version?,
+          webhook_event_failover_url: String?,
+          webhook_event_url: String?,
+          webhook_timeout_secs: Integer?
+        }
+
+        type inbound = { channel_limit: Integer? }
+
+        class Inbound < Telnyx::Internal::Type::BaseModel
+          attr_accessor channel_limit: Integer?
+
+          def initialize: (?channel_limit: Integer?) -> void
+
+          def to_hash: -> { channel_limit: Integer? }
+        end
+
+        type outbound =
+          { channel_limit: Integer?, outbound_voice_profile_id: String? }
+
+        class Outbound < Telnyx::Internal::Type::BaseModel
+          attr_accessor channel_limit: Integer?
+
+          attr_accessor outbound_voice_profile_id: String?
+
+          def initialize: (
+            ?channel_limit: Integer?,
+            ?outbound_voice_profile_id: String?
+          ) -> void
+
+          def to_hash: -> {
+            channel_limit: Integer?,
+            outbound_voice_profile_id: String?
+          }
+        end
+
+        type record_type = :mobile_voice_connection
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          MOBILE_VOICE_CONNECTION: :mobile_voice_connection
+
+          def self?.values: -> ::Array[Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::record_type]
+        end
+
+        type webhook_api_version = :"1" | :"2"
+
+        module WebhookAPIVersion
+          extend Telnyx::Internal::Type::Enum
+
+          WEBHOOK_API_VERSION_1: :"1"
+          WEBHOOK_API_VERSION_2: :"2"
+
+          def self?.values: -> ::Array[Telnyx::Models::MobileVoiceConnectionCreateResponse::Data::webhook_api_version]
+        end
+      end
+    end
+  end
+end

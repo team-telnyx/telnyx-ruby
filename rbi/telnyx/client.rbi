@@ -478,6 +478,12 @@ module Telnyx
     sig { returns(Telnyx::Resources::InexplicitNumberOrders) }
     attr_reader :inexplicit_number_orders
 
+    sig { returns(Telnyx::Resources::MobilePhoneNumbers) }
+    attr_reader :mobile_phone_numbers
+
+    sig { returns(Telnyx::Resources::MobileVoiceConnections) }
+    attr_reader :mobile_voice_connections
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers
