@@ -320,6 +320,10 @@ module Telnyx
 
     attr_reader inexplicit_number_orders: Telnyx::Resources::InexplicitNumberOrders
 
+    attr_reader mobile_phone_numbers: Telnyx::Resources::MobilePhoneNumbers
+
+    attr_reader mobile_voice_connections: Telnyx::Resources::MobileVoiceConnections
+
     private def auth_headers: -> ::Hash[String, String]
 
     def base_url_overridden?: -> bool

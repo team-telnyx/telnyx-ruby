@@ -776,6 +776,12 @@ module Telnyx
 
   MobileNetworkOperatorListParams = Telnyx::Models::MobileNetworkOperatorListParams
 
+  MobilePhoneNumberListParams = Telnyx::Models::MobilePhoneNumberListParams
+
+  MobilePhoneNumberRetrieveParams = Telnyx::Models::MobilePhoneNumberRetrieveParams
+
+  MobilePhoneNumberUpdateParams = Telnyx::Models::MobilePhoneNumberUpdateParams
+
   MobilePushCredentialCreateParams = Telnyx::Models::MobilePushCredentialCreateParams
 
   MobilePushCredentialDeleteParams = Telnyx::Models::MobilePushCredentialDeleteParams
@@ -783,6 +789,16 @@ module Telnyx
   MobilePushCredentialListParams = Telnyx::Models::MobilePushCredentialListParams
 
   MobilePushCredentialRetrieveParams = Telnyx::Models::MobilePushCredentialRetrieveParams
+
+  MobileVoiceConnectionCreateParams = Telnyx::Models::MobileVoiceConnectionCreateParams
+
+  MobileVoiceConnectionDeleteParams = Telnyx::Models::MobileVoiceConnectionDeleteParams
+
+  MobileVoiceConnectionListParams = Telnyx::Models::MobileVoiceConnectionListParams
+
+  MobileVoiceConnectionRetrieveParams = Telnyx::Models::MobileVoiceConnectionRetrieveParams
+
+  MobileVoiceConnectionUpdateParams = Telnyx::Models::MobileVoiceConnectionUpdateParams
 
   MonthDetail = Telnyx::Models::MonthDetail
 
