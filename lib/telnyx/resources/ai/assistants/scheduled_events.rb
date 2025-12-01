@@ -109,7 +109,7 @@ module Telnyx
           # @param assistant_id [String]
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Object]
+          # @return [nil]
           #
           # @see Telnyx::Models::AI::Assistants::ScheduledEventDeleteParams
           def delete(event_id, params)
@@ -121,7 +121,7 @@ module Telnyx
             @client.request(
               method: :delete,
               path: ["ai/assistants/%1$s/scheduled_events/%2$s", assistant_id, event_id],
-              model: Telnyx::Internal::Type::Unknown,
+              model: NilClass,
               options: options
             )
           end

@@ -85,7 +85,7 @@ class Telnyx::Test::Resources::AI::McpServersTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.mcp_servers.delete("mcp_server_id")
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => nil
     end
   end
 end

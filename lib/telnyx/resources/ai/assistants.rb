@@ -144,7 +144,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Object]
+        # @return [Telnyx::Models::AI::InferenceEmbedding]
         #
         # @see Telnyx::Models::AI::AssistantUpdateParams
         def update(assistant_id, params = {})
@@ -153,7 +153,7 @@ module Telnyx
             method: :post,
             path: ["ai/assistants/%1$s", assistant_id],
             body: parsed,
-            model: Telnyx::Internal::Type::Unknown,
+            model: Telnyx::AI::InferenceEmbedding,
             options: options
           )
         end

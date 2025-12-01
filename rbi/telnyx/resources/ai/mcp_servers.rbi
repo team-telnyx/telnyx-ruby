@@ -86,7 +86,7 @@ module Telnyx
           params(
             mcp_server_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(T.anything)
+          ).void
         end
         def delete(mcp_server_id, request_options: {})
         end

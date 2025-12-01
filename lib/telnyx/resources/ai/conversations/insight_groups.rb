@@ -64,14 +64,14 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Object]
+          # @return [nil]
           #
           # @see Telnyx::Models::AI::Conversations::InsightGroupDeleteParams
           def delete(group_id, params = {})
             @client.request(
               method: :delete,
               path: ["ai/conversations/insight-groups/%1$s", group_id],
-              model: Telnyx::Internal::Type::Unknown,
+              model: NilClass,
               options: params[:request_options]
             )
           end

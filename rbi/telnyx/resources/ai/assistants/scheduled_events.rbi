@@ -86,7 +86,7 @@ module Telnyx
               event_id: String,
               assistant_id: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(T.anything)
+            ).void
           end
           def delete(event_id, assistant_id:, request_options: {})
           end

@@ -33,7 +33,7 @@ module Telnyx
           def delete: (
             String insight_id,
             ?request_options: Telnyx::request_opts
-          ) -> top
+          ) -> nil
 
           def initialize: (client: Telnyx::Client) -> void
         end

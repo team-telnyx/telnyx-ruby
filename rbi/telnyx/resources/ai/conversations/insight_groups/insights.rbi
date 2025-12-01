@@ -12,7 +12,7 @@ module Telnyx
                 insight_id: String,
                 group_id: String,
                 request_options: Telnyx::RequestOptions::OrHash
-              ).returns(T.anything)
+              ).void
             end
             def assign(
               # The ID of the insight
@@ -29,7 +29,7 @@ module Telnyx
                 insight_id: String,
                 group_id: String,
                 request_options: Telnyx::RequestOptions::OrHash
-              ).returns(T.anything)
+              ).void
             end
             def delete_unassign(
               # The ID of the insight

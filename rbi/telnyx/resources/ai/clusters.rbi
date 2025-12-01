@@ -87,7 +87,7 @@ module Telnyx
             task_id: String,
             cluster_id: Integer,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(T.anything)
+          ).returns(StringIO)
         end
         def fetch_graph(task_id, cluster_id: nil, request_options: {})
         end

@@ -74,7 +74,7 @@ class Telnyx::Test::Resources::AI::Conversations::InsightsTest < Telnyx::Test::R
     response = @telnyx.ai.conversations.insights.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => nil
     end
   end
 end

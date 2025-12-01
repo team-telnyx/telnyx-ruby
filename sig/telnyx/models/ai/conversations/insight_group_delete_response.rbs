@@ -1,9 +1,0 @@
-module Telnyx
-  module Models
-    module AI
-      module Conversations
-        InsightGroupDeleteResponse: Telnyx::Internal::Type::Converter
-      end
-    end
-  end
-end

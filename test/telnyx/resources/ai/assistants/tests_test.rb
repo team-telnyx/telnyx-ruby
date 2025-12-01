@@ -110,7 +110,7 @@ class Telnyx::Test::Resources::AI::Assistants::TestsTest < Telnyx::Test::Resourc
     response = @telnyx.ai.assistants.tests.delete("test_id")
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => nil
     end
   end
 end

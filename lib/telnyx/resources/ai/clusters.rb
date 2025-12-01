@@ -120,7 +120,7 @@ module Telnyx
         # @param cluster_id [Integer]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Object]
+        # @return [StringIO]
         #
         # @see Telnyx::Models::AI::ClusterFetchGraphParams
         def fetch_graph(task_id, params = {})
@@ -129,7 +129,8 @@ module Telnyx
             method: :get,
             path: ["ai/clusters/%1$s/graph", task_id],
             query: parsed,
-            model: Telnyx::Internal::Type::Unknown,
+            headers: {"accept" => "image/png"},
+            model: StringIO,
             options: options
           )
         end

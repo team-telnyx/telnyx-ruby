@@ -32,7 +32,7 @@ module Telnyx
           String task_id,
           ?cluster_id: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> top
+        ) -> StringIO
 
         def initialize: (client: Telnyx::Client) -> void
       end

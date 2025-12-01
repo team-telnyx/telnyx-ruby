@@ -57,7 +57,7 @@ module Telnyx
           ?tool_calls: ::Array[::Hash[Symbol, top]],
           ?tool_choice: Telnyx::Models::AI::ConversationAddMessageParams::tool_choice,
           ?request_options: Telnyx::request_opts
-        ) -> top
+        ) -> nil
 
         def retrieve_conversations_insights: (
           String conversation_id,

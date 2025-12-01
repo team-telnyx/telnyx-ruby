@@ -51,7 +51,7 @@ module Telnyx
             params(
               group_id: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(T.anything)
+            ).void
           end
           def delete(
             # The ID of the insight group
