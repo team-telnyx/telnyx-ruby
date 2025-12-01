@@ -4,7 +4,7 @@ module Telnyx
       {
         phone_numbers: ::Array[String],
         customer_group_reference: String,
-        customer_reference: String
+        customer_reference: String?
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -18,21 +18,19 @@ module Telnyx
 
       def customer_group_reference=: (String) -> String
 
-      attr_reader customer_reference: String?
-
-      def customer_reference=: (String) -> String
+      attr_accessor customer_reference: String?
 
       def initialize: (
         phone_numbers: ::Array[String],
         ?customer_group_reference: String,
-        ?customer_reference: String,
+        ?customer_reference: String?,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         phone_numbers: ::Array[String],
         customer_group_reference: String,
-        customer_reference: String,
+        customer_reference: String?,
         request_options: Telnyx::RequestOptions
       }
     end

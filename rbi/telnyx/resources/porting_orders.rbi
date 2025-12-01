@@ -40,7 +40,7 @@ module Telnyx
         params(
           phone_numbers: T::Array[String],
           customer_group_reference: String,
-          customer_reference: String,
+          customer_reference: T.nilable(String),
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::PortingOrderCreateResponse)
       end
@@ -91,7 +91,7 @@ module Telnyx
           documents: Telnyx::PortingOrderDocuments::OrHash,
           end_user: Telnyx::PortingOrderEndUser::OrHash,
           messaging: Telnyx::PortingOrderUpdateParams::Messaging::OrHash,
-          misc: Telnyx::PortingOrderMisc::OrHash,
+          misc: T.nilable(Telnyx::PortingOrderMisc::OrHash),
           phone_number_configuration:
             Telnyx::PortingOrderPhoneNumberConfiguration::OrHash,
           requirement_group_id: String,

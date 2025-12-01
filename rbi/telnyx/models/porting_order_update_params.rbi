@@ -62,7 +62,7 @@ module Telnyx
       sig { returns(T.nilable(Telnyx::PortingOrderMisc)) }
       attr_reader :misc
 
-      sig { params(misc: Telnyx::PortingOrderMisc::OrHash).void }
+      sig { params(misc: T.nilable(Telnyx::PortingOrderMisc::OrHash)).void }
       attr_writer :misc
 
       sig { returns(T.nilable(Telnyx::PortingOrderPhoneNumberConfiguration)) }
@@ -126,7 +126,7 @@ module Telnyx
           documents: Telnyx::PortingOrderDocuments::OrHash,
           end_user: Telnyx::PortingOrderEndUser::OrHash,
           messaging: Telnyx::PortingOrderUpdateParams::Messaging::OrHash,
-          misc: Telnyx::PortingOrderMisc::OrHash,
+          misc: T.nilable(Telnyx::PortingOrderMisc::OrHash),
           phone_number_configuration:
             Telnyx::PortingOrderPhoneNumberConfiguration::OrHash,
           requirement_group_id: String,
@@ -171,7 +171,7 @@ module Telnyx
             documents: Telnyx::PortingOrderDocuments,
             end_user: Telnyx::PortingOrderEndUser,
             messaging: Telnyx::PortingOrderUpdateParams::Messaging,
-            misc: Telnyx::PortingOrderMisc,
+            misc: T.nilable(Telnyx::PortingOrderMisc),
             phone_number_configuration:
               Telnyx::PortingOrderPhoneNumberConfiguration,
             requirement_group_id: String,

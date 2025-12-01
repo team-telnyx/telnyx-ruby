@@ -380,10 +380,7 @@ module Telnyx
               # The reason why the order is being rejected by the user. If the order is
               # authorized, this field can be left null
               sig { returns(T.nilable(String)) }
-              attr_reader :rejection_reason
-
-              sig { params(rejection_reason: String).void }
-              attr_writer :rejection_reason
+              attr_accessor :rejection_reason
 
               # The new carrier SPID.
               sig { returns(T.nilable(String)) }
@@ -431,7 +428,7 @@ module Telnyx
                   attempted_pin: String,
                   carrier_name: String,
                   phone_numbers: T::Array[String],
-                  rejection_reason: String,
+                  rejection_reason: T.nilable(String),
                   spid: String,
                   status:
                     Telnyx::Models::Portouts::EventListResponse::Data::Payload::WebhookPortoutStatusChangedPayload::Status::OrSymbol,
@@ -469,7 +466,7 @@ module Telnyx
                     attempted_pin: String,
                     carrier_name: String,
                     phone_numbers: T::Array[String],
-                    rejection_reason: String,
+                    rejection_reason: T.nilable(String),
                     spid: String,
                     status:
                       Telnyx::Models::Portouts::EventListResponse::Data::Payload::WebhookPortoutStatusChangedPayload::Status::TaggedSymbol,

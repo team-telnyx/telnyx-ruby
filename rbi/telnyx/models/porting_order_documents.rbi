@@ -10,20 +10,18 @@ module Telnyx
 
       # Returned ID of the submitted Invoice via the Documents endpoint
       sig { returns(T.nilable(String)) }
-      attr_reader :invoice
-
-      sig { params(invoice: String).void }
-      attr_writer :invoice
+      attr_accessor :invoice
 
       # Returned ID of the submitted LOA via the Documents endpoint
       sig { returns(T.nilable(String)) }
-      attr_reader :loa
-
-      sig { params(loa: String).void }
-      attr_writer :loa
+      attr_accessor :loa
 
       # Can be specified directly or via the `requirement_group_id` parameter.
-      sig { params(invoice: String, loa: String).returns(T.attached_class) }
+      sig do
+        params(invoice: T.nilable(String), loa: T.nilable(String)).returns(
+          T.attached_class
+        )
+      end
       def self.new(
         # Returned ID of the submitted Invoice via the Documents endpoint
         invoice: nil,
@@ -32,7 +30,9 @@ module Telnyx
       )
       end
 
-      sig { override.returns({ invoice: String, loa: String }) }
+      sig do
+        override.returns({ invoice: T.nilable(String), loa: T.nilable(String) })
+      end
       def to_hash
       end
     end

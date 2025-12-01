@@ -4,28 +4,22 @@ module Telnyx
       {
         id: String,
         created_at: Time,
-        error_message: String,
+        error_message: String?,
         phone_number: String,
         record_type: String,
-        result: Telnyx::CustomerServiceRecord::Result,
+        result: Telnyx::CustomerServiceRecord::Result?,
         status: Telnyx::Models::CustomerServiceRecord::status,
         updated_at: Time
       }
 
     class CustomerServiceRecord < Telnyx::Internal::Type::BaseModel
-      attr_reader error_message: String?
-
-      def error_message=: (String) -> String
+      attr_accessor error_message: String?
 
       attr_reader phone_number: String?
 
       def phone_number=: (String) -> String
 
-      attr_reader result: Telnyx::CustomerServiceRecord::Result?
-
-      def result=: (
-        Telnyx::CustomerServiceRecord::Result
-      ) -> Telnyx::CustomerServiceRecord::Result
+      attr_accessor result: Telnyx::CustomerServiceRecord::Result?
 
       attr_reader status: Telnyx::Models::CustomerServiceRecord::status?
 
@@ -52,10 +46,10 @@ module Telnyx
       def initialize: (
         ?id: String,
         ?created_at: Time,
-        ?error_message: String,
+        ?error_message: String?,
         ?phone_number: String,
         ?record_type: String,
-        ?result: Telnyx::CustomerServiceRecord::Result,
+        ?result: Telnyx::CustomerServiceRecord::Result?,
         ?status: Telnyx::Models::CustomerServiceRecord::status,
         ?updated_at: Time
       ) -> void
@@ -63,10 +57,10 @@ module Telnyx
       def to_hash: -> {
         id: String,
         created_at: Time,
-        error_message: String,
+        error_message: String?,
         phone_number: String,
         record_type: String,
-        result: Telnyx::CustomerServiceRecord::Result,
+        result: Telnyx::CustomerServiceRecord::Result?,
         status: Telnyx::Models::CustomerServiceRecord::status,
         updated_at: Time
       }

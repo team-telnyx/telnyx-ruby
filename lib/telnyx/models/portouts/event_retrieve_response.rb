@@ -161,7 +161,7 @@ module Telnyx
               #   authorized, this field can be left null
               #
               #   @return [String, nil]
-              optional :rejection_reason, String
+              optional :rejection_reason, String, nil?: true
 
               # @!attribute spid
               #   The new carrier SPID.
@@ -203,7 +203,7 @@ module Telnyx
               #
               #   @param phone_numbers [Array<String>] Phone numbers associated with this port-out order
               #
-              #   @param rejection_reason [String] The reason why the order is being rejected by the user. If the order is authoriz
+              #   @param rejection_reason [String, nil] The reason why the order is being rejected by the user. If the order is authoriz
               #
               #   @param spid [String] The new carrier SPID.
               #

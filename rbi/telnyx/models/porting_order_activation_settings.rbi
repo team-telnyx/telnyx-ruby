@@ -19,29 +19,15 @@ module Telnyx
           )
         )
       end
-      attr_reader :activation_status
-
-      sig do
-        params(
-          activation_status:
-            Telnyx::PortingOrderActivationSettings::ActivationStatus::OrSymbol
-        ).void
-      end
-      attr_writer :activation_status
+      attr_accessor :activation_status
 
       # ISO 8601 formatted Date/Time of the FOC date
       sig { returns(T.nilable(Time)) }
-      attr_reader :foc_datetime_actual
-
-      sig { params(foc_datetime_actual: Time).void }
-      attr_writer :foc_datetime_actual
+      attr_accessor :foc_datetime_actual
 
       # ISO 8601 formatted Date/Time requested for the FOC date
       sig { returns(T.nilable(Time)) }
-      attr_reader :foc_datetime_requested
-
-      sig { params(foc_datetime_requested: Time).void }
-      attr_writer :foc_datetime_requested
+      attr_accessor :foc_datetime_requested
 
       # Indicates whether this porting order is eligible for FastPort
       sig { returns(T.nilable(T::Boolean)) }
@@ -53,10 +39,12 @@ module Telnyx
       sig do
         params(
           activation_status:
-            Telnyx::PortingOrderActivationSettings::ActivationStatus::OrSymbol,
+            T.nilable(
+              Telnyx::PortingOrderActivationSettings::ActivationStatus::OrSymbol
+            ),
           fast_port_eligible: T::Boolean,
-          foc_datetime_actual: Time,
-          foc_datetime_requested: Time
+          foc_datetime_actual: T.nilable(Time),
+          foc_datetime_requested: T.nilable(Time)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -75,10 +63,12 @@ module Telnyx
         override.returns(
           {
             activation_status:
-              Telnyx::PortingOrderActivationSettings::ActivationStatus::TaggedSymbol,
+              T.nilable(
+                Telnyx::PortingOrderActivationSettings::ActivationStatus::TaggedSymbol
+              ),
             fast_port_eligible: T::Boolean,
-            foc_datetime_actual: Time,
-            foc_datetime_requested: Time
+            foc_datetime_actual: T.nilable(Time),
+            foc_datetime_requested: T.nilable(Time)
           }
         )
       end

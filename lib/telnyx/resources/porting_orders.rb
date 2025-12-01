@@ -41,7 +41,7 @@ module Telnyx
       #
       # @param customer_group_reference [String] A customer-specified group reference for customer bookkeeping purposes
       #
-      # @param customer_reference [String] A customer-specified reference number for customer bookkeeping purposes
+      # @param customer_reference [String, nil] A customer-specified reference number for customer bookkeeping purposes
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -112,7 +112,7 @@ module Telnyx
       #
       # @param messaging [Telnyx::Models::PortingOrderUpdateParams::Messaging]
       #
-      # @param misc [Telnyx::Models::PortingOrderMisc]
+      # @param misc [Telnyx::Models::PortingOrderMisc, nil]
       #
       # @param phone_number_configuration [Telnyx::Models::PortingOrderPhoneNumberConfiguration]
       #

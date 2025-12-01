@@ -8,7 +8,7 @@ module Telnyx
         documents: Telnyx::PortingOrderDocuments,
         end_user: Telnyx::PortingOrderEndUser,
         messaging: Telnyx::PortingOrderUpdateParams::Messaging,
-        misc: Telnyx::PortingOrderMisc,
+        misc: Telnyx::PortingOrderMisc?,
         phone_number_configuration: Telnyx::PortingOrderPhoneNumberConfiguration,
         requirement_group_id: String,
         requirements: ::Array[Telnyx::PortingOrderUpdateParams::Requirement],
@@ -53,9 +53,7 @@ module Telnyx
         Telnyx::PortingOrderUpdateParams::Messaging
       ) -> Telnyx::PortingOrderUpdateParams::Messaging
 
-      attr_reader misc: Telnyx::PortingOrderMisc?
-
-      def misc=: (Telnyx::PortingOrderMisc) -> Telnyx::PortingOrderMisc
+      attr_accessor misc: Telnyx::PortingOrderMisc?
 
       attr_reader phone_number_configuration: Telnyx::PortingOrderPhoneNumberConfiguration?
 
@@ -90,7 +88,7 @@ module Telnyx
         ?documents: Telnyx::PortingOrderDocuments,
         ?end_user: Telnyx::PortingOrderEndUser,
         ?messaging: Telnyx::PortingOrderUpdateParams::Messaging,
-        ?misc: Telnyx::PortingOrderMisc,
+        ?misc: Telnyx::PortingOrderMisc?,
         ?phone_number_configuration: Telnyx::PortingOrderPhoneNumberConfiguration,
         ?requirement_group_id: String,
         ?requirements: ::Array[Telnyx::PortingOrderUpdateParams::Requirement],
@@ -106,7 +104,7 @@ module Telnyx
         documents: Telnyx::PortingOrderDocuments,
         end_user: Telnyx::PortingOrderEndUser,
         messaging: Telnyx::PortingOrderUpdateParams::Messaging,
-        misc: Telnyx::PortingOrderMisc,
+        misc: Telnyx::PortingOrderMisc?,
         phone_number_configuration: Telnyx::PortingOrderPhoneNumberConfiguration,
         requirement_group_id: String,
         requirements: ::Array[Telnyx::PortingOrderUpdateParams::Requirement],

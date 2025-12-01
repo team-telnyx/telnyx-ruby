@@ -13,10 +13,7 @@ module Telnyx
       # with your current service provider and should be one of the numbers remaining on
       # that account.
       sig { returns(T.nilable(String)) }
-      attr_reader :new_billing_phone_number
-
-      sig { params(new_billing_phone_number: String).void }
-      attr_writer :new_billing_phone_number
+      attr_accessor :new_billing_phone_number
 
       # Remaining numbers can be either kept with their current service provider or
       # disconnected. 'new_billing_telephone_number' is required when
@@ -26,15 +23,7 @@ module Telnyx
           T.nilable(Telnyx::PortingOrderMisc::RemainingNumbersAction::OrSymbol)
         )
       end
-      attr_reader :remaining_numbers_action
-
-      sig do
-        params(
-          remaining_numbers_action:
-            Telnyx::PortingOrderMisc::RemainingNumbersAction::OrSymbol
-        ).void
-      end
-      attr_writer :remaining_numbers_action
+      attr_accessor :remaining_numbers_action
 
       # A port can be either 'full' or 'partial'. When type is 'full' the other
       # attributes should be omitted.
@@ -46,9 +35,11 @@ module Telnyx
 
       sig do
         params(
-          new_billing_phone_number: String,
+          new_billing_phone_number: T.nilable(String),
           remaining_numbers_action:
-            Telnyx::PortingOrderMisc::RemainingNumbersAction::OrSymbol,
+            T.nilable(
+              Telnyx::PortingOrderMisc::RemainingNumbersAction::OrSymbol
+            ),
           type: Telnyx::PortingOrderType::OrSymbol
         ).returns(T.attached_class)
       end
@@ -71,9 +62,11 @@ module Telnyx
       sig do
         override.returns(
           {
-            new_billing_phone_number: String,
+            new_billing_phone_number: T.nilable(String),
             remaining_numbers_action:
-              Telnyx::PortingOrderMisc::RemainingNumbersAction::OrSymbol,
+              T.nilable(
+                Telnyx::PortingOrderMisc::RemainingNumbersAction::OrSymbol
+              ),
             type: Telnyx::PortingOrderType::OrSymbol
           }
         )

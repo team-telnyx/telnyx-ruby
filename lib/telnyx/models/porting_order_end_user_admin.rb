@@ -7,62 +7,62 @@ module Telnyx
       #   The authorized person's account number with the current service provider
       #
       #   @return [String, nil]
-      optional :account_number, String
+      optional :account_number, String, nil?: true
 
       # @!attribute auth_person_name
       #   Name of person authorizing the porting order
       #
       #   @return [String, nil]
-      optional :auth_person_name, String
+      optional :auth_person_name, String, nil?: true
 
       # @!attribute billing_phone_number
       #   Billing phone number associated with these phone numbers
       #
       #   @return [String, nil]
-      optional :billing_phone_number, String
+      optional :billing_phone_number, String, nil?: true
 
       # @!attribute business_identifier
       #   European business identification number. Applicable only in the European Union
       #
       #   @return [String, nil]
-      optional :business_identifier, String
+      optional :business_identifier, String, nil?: true
 
       # @!attribute entity_name
       #   Person Name or Company name requesting the port
       #
       #   @return [String, nil]
-      optional :entity_name, String
+      optional :entity_name, String, nil?: true
 
       # @!attribute pin_passcode
       #   PIN/passcode possibly required by the old service provider for extra
       #   verification
       #
       #   @return [String, nil]
-      optional :pin_passcode, String
+      optional :pin_passcode, String, nil?: true
 
       # @!attribute tax_identifier
       #   European tax identification number. Applicable only in the European Union
       #
       #   @return [String, nil]
-      optional :tax_identifier, String
+      optional :tax_identifier, String, nil?: true
 
       # @!method initialize(account_number: nil, auth_person_name: nil, billing_phone_number: nil, business_identifier: nil, entity_name: nil, pin_passcode: nil, tax_identifier: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::PortingOrderEndUserAdmin} for more details.
       #
-      #   @param account_number [String] The authorized person's account number with the current service provider
+      #   @param account_number [String, nil] The authorized person's account number with the current service provider
       #
-      #   @param auth_person_name [String] Name of person authorizing the porting order
+      #   @param auth_person_name [String, nil] Name of person authorizing the porting order
       #
-      #   @param billing_phone_number [String] Billing phone number associated with these phone numbers
+      #   @param billing_phone_number [String, nil] Billing phone number associated with these phone numbers
       #
-      #   @param business_identifier [String] European business identification number. Applicable only in the European Union
+      #   @param business_identifier [String, nil] European business identification number. Applicable only in the European Union
       #
-      #   @param entity_name [String] Person Name or Company name requesting the port
+      #   @param entity_name [String, nil] Person Name or Company name requesting the port
       #
-      #   @param pin_passcode [String] PIN/passcode possibly required by the old service provider for extra verificatio
+      #   @param pin_passcode [String, nil] PIN/passcode possibly required by the old service provider for extra verificatio
       #
-      #   @param tax_identifier [String] European tax identification number. Applicable only in the European Union
+      #   @param tax_identifier [String, nil] European tax identification number. Applicable only in the European Union
     end
   end
 end

@@ -11,10 +11,7 @@ module Telnyx
       # The error message in case status is `failed`. This field would be null in case
       # of `pending` or `completed` status.
       sig { returns(T.nilable(String)) }
-      attr_reader :error_message
-
-      sig { params(error_message: String).void }
-      attr_writer :error_message
+      attr_accessor :error_message
 
       # The phone number of the customer service record.
       sig { returns(T.nilable(String)) }
@@ -28,7 +25,11 @@ module Telnyx
       sig { returns(T.nilable(Telnyx::CustomerServiceRecord::Result)) }
       attr_reader :result
 
-      sig { params(result: Telnyx::CustomerServiceRecord::Result::OrHash).void }
+      sig do
+        params(
+          result: T.nilable(Telnyx::CustomerServiceRecord::Result::OrHash)
+        ).void
+      end
       attr_writer :result
 
       # The status of the customer service record
@@ -74,10 +75,10 @@ module Telnyx
         params(
           id: String,
           created_at: Time,
-          error_message: String,
+          error_message: T.nilable(String),
           phone_number: String,
           record_type: String,
-          result: Telnyx::CustomerServiceRecord::Result::OrHash,
+          result: T.nilable(Telnyx::CustomerServiceRecord::Result::OrHash),
           status: Telnyx::CustomerServiceRecord::Status::OrSymbol,
           updated_at: Time
         ).returns(T.attached_class)
@@ -109,10 +110,10 @@ module Telnyx
           {
             id: String,
             created_at: Time,
-            error_message: String,
+            error_message: T.nilable(String),
             phone_number: String,
             record_type: String,
-            result: Telnyx::CustomerServiceRecord::Result,
+            result: T.nilable(Telnyx::CustomerServiceRecord::Result),
             status: Telnyx::CustomerServiceRecord::Status::TaggedSymbol,
             updated_at: Time
           }
