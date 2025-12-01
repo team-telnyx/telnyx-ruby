@@ -139,10 +139,15 @@ module Telnyx
       module AnchorsiteOverride
         extend Telnyx::Internal::Type::Enum
 
-        LATENCY = :"\"Latency\""
-        CHICAGO_IL = :"\"Chicago, IL\""
-        ASHBURN_VA = :"\"Ashburn, VA\""
-        SAN_JOSE_CA = :"\"San Jose, CA\""
+        LATENCY = :Latency
+        CHICAGO_IL = :"Chicago, IL"
+        ASHBURN_VA = :"Ashburn, VA"
+        SAN_JOSE_CA = :"San Jose, CA"
+        LONDON_UK = :"London, UK"
+        CHENNAI_IN = :"Chennai, IN"
+        AMSTERDAM_NETHERLANDS = :"Amsterdam, Netherlands"
+        TORONTO_CANADA = :"Toronto, Canada"
+        SYDNEY_AUSTRALIA = :"Sydney, Australia"
 
         # @!method self.values
         #   @return [Array<Symbol>]
