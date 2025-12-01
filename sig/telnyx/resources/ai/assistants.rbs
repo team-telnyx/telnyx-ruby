@@ -61,7 +61,7 @@ module Telnyx
           ?transcription: Telnyx::AI::TranscriptionSettings,
           ?voice_settings: Telnyx::AI::VoiceSettings,
           ?request_options: Telnyx::request_opts
-        ) -> top
+        ) -> Telnyx::AI::InferenceEmbedding
 
         def list: (
           ?request_options: Telnyx::request_opts

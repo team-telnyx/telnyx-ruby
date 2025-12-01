@@ -21,7 +21,7 @@ module Telnyx
           def delete: (
             String group_id,
             ?request_options: Telnyx::request_opts
-          ) -> top
+          ) -> nil
 
           def insight_groups: (
             name: String,

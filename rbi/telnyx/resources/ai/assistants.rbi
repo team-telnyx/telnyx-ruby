@@ -147,7 +147,7 @@ module Telnyx
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
             voice_settings: Telnyx::AI::VoiceSettings::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(T.anything)
+          ).returns(Telnyx::AI::InferenceEmbedding)
         end
         def update(
           assistant_id,

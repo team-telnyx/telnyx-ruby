@@ -16,7 +16,7 @@ module Telnyx
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Object]
+            # @return [nil]
             #
             # @see Telnyx::Models::AI::Conversations::InsightGroups::InsightAssignParams
             def assign(insight_id, params)
@@ -28,7 +28,7 @@ module Telnyx
               @client.request(
                 method: :post,
                 path: ["ai/conversations/insight-groups/%1$s/insights/%2$s/assign", group_id, insight_id],
-                model: Telnyx::Internal::Type::Unknown,
+                model: NilClass,
                 options: options
               )
             end
@@ -43,7 +43,7 @@ module Telnyx
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Object]
+            # @return [nil]
             #
             # @see Telnyx::Models::AI::Conversations::InsightGroups::InsightDeleteUnassignParams
             def delete_unassign(insight_id, params)
@@ -56,7 +56,7 @@ module Telnyx
               @client.request(
                 method: :delete,
                 path: ["ai/conversations/insight-groups/%1$s/insights/%2$s/unassign", group_id, insight_id],
-                model: Telnyx::Internal::Type::Unknown,
+                model: NilClass,
                 options: options
               )
             end

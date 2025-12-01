@@ -63,12 +63,12 @@ class Telnyx::Test::Resources::AI::ClustersTest < Telnyx::Test::ResourceTest
   end
 
   def test_fetch_graph
-    skip("Prism tests are disabled")
+    skip("Prism doesn't support image/png responses")
 
     response = @telnyx.ai.clusters.fetch_graph("task_id")
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => StringIO
     end
   end
 end

@@ -107,14 +107,14 @@ module Telnyx
         # @param mcp_server_id [String]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Object]
+        # @return [nil]
         #
         # @see Telnyx::Models::AI::McpServerDeleteParams
         def delete(mcp_server_id, params = {})
           @client.request(
             method: :delete,
             path: ["ai/mcp_servers/%1$s", mcp_server_id],
-            model: Telnyx::Internal::Type::Unknown,
+            model: NilClass,
             options: params[:request_options]
           )
         end

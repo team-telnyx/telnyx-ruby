@@ -140,7 +140,7 @@ module Telnyx
             params(
               test_id: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(T.anything)
+            ).void
           end
           def delete(test_id, request_options: {})
           end

@@ -39,7 +39,7 @@ module Telnyx
         def delete: (
           String mcp_server_id,
           ?request_options: Telnyx::request_opts
-        ) -> top
+        ) -> nil
 
         def initialize: (client: Telnyx::Client) -> void
       end

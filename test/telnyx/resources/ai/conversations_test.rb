@@ -87,7 +87,7 @@ class Telnyx::Test::Resources::AI::ConversationsTest < Telnyx::Test::ResourceTes
     response = @telnyx.ai.conversations.add_message("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", role: "role")
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => nil
     end
   end
 

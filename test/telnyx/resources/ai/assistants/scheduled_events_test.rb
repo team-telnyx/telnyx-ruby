@@ -67,7 +67,7 @@ class Telnyx::Test::Resources::AI::Assistants::ScheduledEventsTest < Telnyx::Tes
     response = @telnyx.ai.assistants.scheduled_events.delete("event_id", assistant_id: "assistant_id")
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => nil
     end
   end
 end

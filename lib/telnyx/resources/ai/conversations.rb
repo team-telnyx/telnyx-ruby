@@ -184,7 +184,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Object]
+        # @return [nil]
         #
         # @see Telnyx::Models::AI::ConversationAddMessageParams
         def add_message(conversation_id, params)
@@ -193,7 +193,7 @@ module Telnyx
             method: :post,
             path: ["ai/conversations/%1$s/message", conversation_id],
             body: parsed,
-            model: Telnyx::Internal::Type::Unknown,
+            model: NilClass,
             options: options
           )
         end

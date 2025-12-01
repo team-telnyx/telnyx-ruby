@@ -147,14 +147,14 @@ module Telnyx
           # @param test_id [String]
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Object]
+          # @return [nil]
           #
           # @see Telnyx::Models::AI::Assistants::TestDeleteParams
           def delete(test_id, params = {})
             @client.request(
               method: :delete,
               path: ["ai/assistants/tests/%1$s", test_id],
-              model: Telnyx::Internal::Type::Unknown,
+              model: NilClass,
               options: params[:request_options]
             )
           end
