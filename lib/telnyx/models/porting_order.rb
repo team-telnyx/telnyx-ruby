@@ -20,13 +20,13 @@ module Telnyx
       #   A customer-specified group reference for customer bookkeeping purposes
       #
       #   @return [String, nil]
-      optional :customer_group_reference, String
+      optional :customer_group_reference, String, nil?: true
 
       # @!attribute customer_reference
       #   A customer-specified reference number for customer bookkeeping purposes
       #
       #   @return [String, nil]
-      optional :customer_reference, String
+      optional :customer_reference, String, nil?: true
 
       # @!attribute documents
       #   Can be specified directly or via the `requirement_group_id` parameter.
@@ -48,7 +48,7 @@ module Telnyx
       # @!attribute misc
       #
       #   @return [Telnyx::Models::PortingOrderMisc, nil]
-      optional :misc, -> { Telnyx::PortingOrderMisc }
+      optional :misc, -> { Telnyx::PortingOrderMisc }, nil?: true
 
       # @!attribute phone_number_configuration
       #
@@ -94,7 +94,7 @@ module Telnyx
       # @!attribute webhook_url
       #
       #   @return [String, nil]
-      optional :webhook_url, String
+      optional :webhook_url, String, nil?: true
 
       response_only do
         # @!attribute id
@@ -126,7 +126,7 @@ module Telnyx
         #   support. This information is not available for porting orders in `draft` state
         #
         #   @return [String, nil]
-        optional :parent_support_key, String
+        optional :parent_support_key, String, nil?: true
 
         # @!attribute porting_phone_numbers_count
         #   Count of phone numbers associated with this porting order
@@ -145,7 +145,7 @@ module Telnyx
         #   This information is not available in draft porting orders.
         #
         #   @return [String, nil]
-        optional :support_key, String
+        optional :support_key, String, nil?: true
 
         # @!attribute updated_at
         #   ISO 8601 formatted date indicating when the resource was created.
@@ -166,9 +166,9 @@ module Telnyx
       #
       #   @param created_at [Time] ISO 8601 formatted date indicating when the resource was created.
       #
-      #   @param customer_group_reference [String] A customer-specified group reference for customer bookkeeping purposes
+      #   @param customer_group_reference [String, nil] A customer-specified group reference for customer bookkeeping purposes
       #
-      #   @param customer_reference [String] A customer-specified reference number for customer bookkeeping purposes
+      #   @param customer_reference [String, nil] A customer-specified reference number for customer bookkeeping purposes
       #
       #   @param description [String] A description of the porting order
       #
@@ -178,11 +178,11 @@ module Telnyx
       #
       #   @param messaging [Telnyx::Models::PortingOrderMessaging] Information about messaging porting process.
       #
-      #   @param misc [Telnyx::Models::PortingOrderMisc]
+      #   @param misc [Telnyx::Models::PortingOrderMisc, nil]
       #
       #   @param old_service_provider_ocn [String] Identifies the old service provider
       #
-      #   @param parent_support_key [String] A key to reference for the porting order group when contacting Telnyx customer s
+      #   @param parent_support_key [String, nil] A key to reference for the porting order group when contacting Telnyx customer s
       #
       #   @param phone_number_configuration [Telnyx::Models::PortingOrderPhoneNumberConfiguration]
       #
@@ -198,7 +198,7 @@ module Telnyx
       #
       #   @param status [Telnyx::Models::PortingOrderStatus] Porting order status
       #
-      #   @param support_key [String] A key to reference this porting order when contacting Telnyx customer support. T
+      #   @param support_key [String, nil] A key to reference this porting order when contacting Telnyx customer support. T
       #
       #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was created.
       #
@@ -206,7 +206,7 @@ module Telnyx
       #
       #   @param user_id [String] Identifies the user (or organization) who requested the porting order
       #
-      #   @param webhook_url [String]
+      #   @param webhook_url [String, nil]
 
       module AdditionalStep
         extend Telnyx::Internal::Type::Enum

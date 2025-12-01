@@ -2,43 +2,35 @@ module Telnyx
   module Models
     type porting_order_activation_settings =
       {
-        activation_status: Telnyx::Models::PortingOrderActivationSettings::activation_status,
+        activation_status: Telnyx::Models::PortingOrderActivationSettings::activation_status?,
         fast_port_eligible: bool,
-        foc_datetime_actual: Time,
-        foc_datetime_requested: Time
+        foc_datetime_actual: Time?,
+        foc_datetime_requested: Time?
       }
 
     class PortingOrderActivationSettings < Telnyx::Internal::Type::BaseModel
-      attr_reader activation_status: Telnyx::Models::PortingOrderActivationSettings::activation_status?
+      attr_accessor activation_status: Telnyx::Models::PortingOrderActivationSettings::activation_status?
 
-      def activation_status=: (
-        Telnyx::Models::PortingOrderActivationSettings::activation_status
-      ) -> Telnyx::Models::PortingOrderActivationSettings::activation_status
+      attr_accessor foc_datetime_actual: Time?
 
-      attr_reader foc_datetime_actual: Time?
-
-      def foc_datetime_actual=: (Time) -> Time
-
-      attr_reader foc_datetime_requested: Time?
-
-      def foc_datetime_requested=: (Time) -> Time
+      attr_accessor foc_datetime_requested: Time?
 
       attr_reader fast_port_eligible: bool?
 
       def fast_port_eligible=: (bool) -> bool
 
       def initialize: (
-        ?activation_status: Telnyx::Models::PortingOrderActivationSettings::activation_status,
+        ?activation_status: Telnyx::Models::PortingOrderActivationSettings::activation_status?,
         ?fast_port_eligible: bool,
-        ?foc_datetime_actual: Time,
-        ?foc_datetime_requested: Time
+        ?foc_datetime_actual: Time?,
+        ?foc_datetime_requested: Time?
       ) -> void
 
       def to_hash: -> {
-        activation_status: Telnyx::Models::PortingOrderActivationSettings::activation_status,
+        activation_status: Telnyx::Models::PortingOrderActivationSettings::activation_status?,
         fast_port_eligible: bool,
-        foc_datetime_actual: Time,
-        foc_datetime_requested: Time
+        foc_datetime_actual: Time?,
+        foc_datetime_requested: Time?
       }
 
       type activation_status =

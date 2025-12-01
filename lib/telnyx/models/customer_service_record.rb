@@ -8,7 +8,7 @@ module Telnyx
       #   of `pending` or `completed` status.
       #
       #   @return [String, nil]
-      optional :error_message, String
+      optional :error_message, String, nil?: true
 
       # @!attribute phone_number
       #   The phone number of the customer service record.
@@ -21,7 +21,7 @@ module Telnyx
       #   `failed` status.
       #
       #   @return [Telnyx::Models::CustomerServiceRecord::Result, nil]
-      optional :result, -> { Telnyx::CustomerServiceRecord::Result }
+      optional :result, -> { Telnyx::CustomerServiceRecord::Result }, nil?: true
 
       # @!attribute status
       #   The status of the customer service record
@@ -63,13 +63,13 @@ module Telnyx
       #
       #   @param created_at [Time] ISO 8601 formatted date indicating when the resource was created.
       #
-      #   @param error_message [String] The error message in case status is `failed`. This field would be null in case o
+      #   @param error_message [String, nil] The error message in case status is `failed`. This field would be null in case o
       #
       #   @param phone_number [String] The phone number of the customer service record.
       #
       #   @param record_type [String] Identifies the type of the resource.
       #
-      #   @param result [Telnyx::Models::CustomerServiceRecord::Result] The result of the CSR request. This field would be null in case of `pending` or
+      #   @param result [Telnyx::Models::CustomerServiceRecord::Result, nil] The result of the CSR request. This field would be null in case of `pending` or
       #
       #   @param status [Symbol, Telnyx::Models::CustomerServiceRecord::Status] The status of the customer service record
       #

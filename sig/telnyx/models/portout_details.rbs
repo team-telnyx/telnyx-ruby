@@ -16,7 +16,7 @@ module Telnyx
         lsr: ::Array[String],
         phone_numbers: ::Array[String],
         pon: String,
-        reason: String,
+        reason: String?,
         record_type: String,
         rejection_code: Integer,
         requested_foc_date: String,
@@ -88,9 +88,7 @@ module Telnyx
 
       def pon=: (String) -> String
 
-      attr_reader reason: String?
-
-      def reason=: (String) -> String
+      attr_accessor reason: String?
 
       attr_reader rejection_code: Integer?
 
@@ -157,7 +155,7 @@ module Telnyx
         ?lsr: ::Array[String],
         ?phone_numbers: ::Array[String],
         ?pon: String,
-        ?reason: String,
+        ?reason: String?,
         ?record_type: String,
         ?rejection_code: Integer,
         ?requested_foc_date: String,
@@ -187,7 +185,7 @@ module Telnyx
         lsr: ::Array[String],
         phone_numbers: ::Array[String],
         pon: String,
-        reason: String,
+        reason: String?,
         record_type: String,
         rejection_code: Integer,
         requested_foc_date: String,

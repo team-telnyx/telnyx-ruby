@@ -150,7 +150,7 @@ module Telnyx
                 attempted_pin: String,
                 carrier_name: String,
                 phone_numbers: ::Array[String],
-                rejection_reason: String,
+                rejection_reason: String?,
                 spid: String,
                 status: Telnyx::Models::Portouts::EventListResponse::Data::Payload::WebhookPortoutStatusChangedPayload::status,
                 subscriber_name: String,
@@ -174,9 +174,7 @@ module Telnyx
 
               def phone_numbers=: (::Array[String]) -> ::Array[String]
 
-              attr_reader rejection_reason: String?
-
-              def rejection_reason=: (String) -> String
+              attr_accessor rejection_reason: String?
 
               attr_reader spid: String?
 
@@ -201,7 +199,7 @@ module Telnyx
                 ?attempted_pin: String,
                 ?carrier_name: String,
                 ?phone_numbers: ::Array[String],
-                ?rejection_reason: String,
+                ?rejection_reason: String?,
                 ?spid: String,
                 ?status: Telnyx::Models::Portouts::EventListResponse::Data::Payload::WebhookPortoutStatusChangedPayload::status,
                 ?subscriber_name: String,
@@ -213,7 +211,7 @@ module Telnyx
                 attempted_pin: String,
                 carrier_name: String,
                 phone_numbers: ::Array[String],
-                rejection_reason: String,
+                rejection_reason: String?,
                 spid: String,
                 status: Telnyx::Models::Portouts::EventListResponse::Data::Payload::WebhookPortoutStatusChangedPayload::status,
                 subscriber_name: String,

@@ -10,23 +10,18 @@ module Telnyx
 
       # A comment related to the customer rating.
       sig { returns(T.nilable(String)) }
-      attr_reader :user_comment
-
-      sig { params(user_comment: String).void }
-      attr_writer :user_comment
+      attr_accessor :user_comment
 
       # Once an order is ported, cancellation is requested or the request is cancelled,
       # the user may rate their experience
       sig { returns(T.nilable(Integer)) }
-      attr_reader :user_rating
-
-      sig { params(user_rating: Integer).void }
-      attr_writer :user_rating
+      attr_accessor :user_rating
 
       sig do
-        params(user_comment: String, user_rating: Integer).returns(
-          T.attached_class
-        )
+        params(
+          user_comment: T.nilable(String),
+          user_rating: T.nilable(Integer)
+        ).returns(T.attached_class)
       end
       def self.new(
         # A comment related to the customer rating.
@@ -37,7 +32,11 @@ module Telnyx
       )
       end
 
-      sig { override.returns({ user_comment: String, user_rating: Integer }) }
+      sig do
+        override.returns(
+          { user_comment: T.nilable(String), user_rating: T.nilable(Integer) }
+        )
+      end
       def to_hash
       end
     end

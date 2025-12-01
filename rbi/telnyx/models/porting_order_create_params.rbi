@@ -24,16 +24,13 @@ module Telnyx
 
       # A customer-specified reference number for customer bookkeeping purposes
       sig { returns(T.nilable(String)) }
-      attr_reader :customer_reference
-
-      sig { params(customer_reference: String).void }
-      attr_writer :customer_reference
+      attr_accessor :customer_reference
 
       sig do
         params(
           phone_numbers: T::Array[String],
           customer_group_reference: String,
-          customer_reference: String,
+          customer_reference: T.nilable(String),
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -53,7 +50,7 @@ module Telnyx
           {
             phone_numbers: T::Array[String],
             customer_group_reference: String,
-            customer_reference: String,
+            customer_reference: T.nilable(String),
             request_options: Telnyx::RequestOptions
           }
         )
