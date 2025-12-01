@@ -21,9 +21,10 @@ module Telnyx
       sig { params(active: T::Boolean).void }
       attr_writer :active
 
-      # `Latency` directs Telnyx to route media through the site with the lowest
-      # round-trip time to the user's connection. Telnyx calculates this time using ICMP
-      # ping messages. This can be disabled by specifying a site to handle all media.
+      # <code>Latency</code> directs Telnyx to route media through the site with the
+      # lowest round-trip time to the user's connection. Telnyx calculates this time
+      # using ICMP ping messages. This can be disabled by specifying a site to handle
+      # all media.
       sig do
         returns(
           T.nilable(
@@ -209,9 +210,10 @@ module Telnyx
         id: nil,
         # Specifies whether the connection can be used.
         active: nil,
-        # `Latency` directs Telnyx to route media through the site with the lowest
-        # round-trip time to the user's connection. Telnyx calculates this time using ICMP
-        # ping messages. This can be disabled by specifying a site to handle all media.
+        # <code>Latency</code> directs Telnyx to route media through the site with the
+        # lowest round-trip time to the user's connection. Telnyx calculates this time
+        # using ICMP ping messages. This can be disabled by specifying a site to handle
+        # all media.
         anchorsite_override: nil,
         # A user-assigned name to help manage the application.
         application_name: nil,
@@ -281,9 +283,10 @@ module Telnyx
       def to_hash
       end
 
-      # `Latency` directs Telnyx to route media through the site with the lowest
-      # round-trip time to the user's connection. Telnyx calculates this time using ICMP
-      # ping messages. This can be disabled by specifying a site to handle all media.
+      # <code>Latency</code> directs Telnyx to route media through the site with the
+      # lowest round-trip time to the user's connection. Telnyx calculates this time
+      # using ICMP ping messages. This can be disabled by specifying a site to handle
+      # all media.
       module AnchorsiteOverride
         extend Telnyx::Internal::Type::Enum
 
@@ -295,22 +298,47 @@ module Telnyx
 
         LATENCY =
           T.let(
-            :"\"Latency\"",
+            :Latency,
             Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol
           )
         CHICAGO_IL =
           T.let(
-            :"\"Chicago, IL\"",
+            :"Chicago, IL",
             Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol
           )
         ASHBURN_VA =
           T.let(
-            :"\"Ashburn, VA\"",
+            :"Ashburn, VA",
             Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol
           )
         SAN_JOSE_CA =
           T.let(
-            :"\"San Jose, CA\"",
+            :"San Jose, CA",
+            Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol
+          )
+        LONDON_UK =
+          T.let(
+            :"London, UK",
+            Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol
+          )
+        CHENNAI_IN =
+          T.let(
+            :"Chennai, IN",
+            Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol
+          )
+        AMSTERDAM_NETHERLANDS =
+          T.let(
+            :"Amsterdam, Netherlands",
+            Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol
+          )
+        TORONTO_CANADA =
+          T.let(
+            :"Toronto, Canada",
+            Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol
+          )
+        SYDNEY_AUSTRALIA =
+          T.let(
+            :"Sydney, Australia",
             Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol
           )
 

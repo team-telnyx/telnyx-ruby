@@ -125,18 +125,28 @@ module Telnyx
       }
 
       type anchorsite_override =
-        :"\"Latency\""
-        | :"\"Chicago, IL\""
-        | :"\"Ashburn, VA\""
-        | :"\"San Jose, CA\""
+        :Latency
+        | :"Chicago, IL"
+        | :"Ashburn, VA"
+        | :"San Jose, CA"
+        | :"London, UK"
+        | :"Chennai, IN"
+        | :"Amsterdam, Netherlands"
+        | :"Toronto, Canada"
+        | :"Sydney, Australia"
 
       module AnchorsiteOverride
         extend Telnyx::Internal::Type::Enum
 
-        LATENCY: :"\"Latency\""
-        CHICAGO_IL: :"\"Chicago, IL\""
-        ASHBURN_VA: :"\"Ashburn, VA\""
-        SAN_JOSE_CA: :"\"San Jose, CA\""
+        LATENCY: :Latency
+        CHICAGO_IL: :"Chicago, IL"
+        ASHBURN_VA: :"Ashburn, VA"
+        SAN_JOSE_CA: :"San Jose, CA"
+        LONDON_UK: :"London, UK"
+        CHENNAI_IN: :"Chennai, IN"
+        AMSTERDAM_NETHERLANDS: :"Amsterdam, Netherlands"
+        TORONTO_CANADA: :"Toronto, Canada"
+        SYDNEY_AUSTRALIA: :"Sydney, Australia"
 
         def self?.values: -> ::Array[Telnyx::Models::CallControlApplicationUpdateParams::anchorsite_override]
       end

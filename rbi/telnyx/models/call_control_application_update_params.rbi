@@ -262,22 +262,47 @@ module Telnyx
 
         LATENCY =
           T.let(
-            :"\"Latency\"",
+            :Latency,
             Telnyx::CallControlApplicationUpdateParams::AnchorsiteOverride::TaggedSymbol
           )
         CHICAGO_IL =
           T.let(
-            :"\"Chicago, IL\"",
+            :"Chicago, IL",
             Telnyx::CallControlApplicationUpdateParams::AnchorsiteOverride::TaggedSymbol
           )
         ASHBURN_VA =
           T.let(
-            :"\"Ashburn, VA\"",
+            :"Ashburn, VA",
             Telnyx::CallControlApplicationUpdateParams::AnchorsiteOverride::TaggedSymbol
           )
         SAN_JOSE_CA =
           T.let(
-            :"\"San Jose, CA\"",
+            :"San Jose, CA",
+            Telnyx::CallControlApplicationUpdateParams::AnchorsiteOverride::TaggedSymbol
+          )
+        LONDON_UK =
+          T.let(
+            :"London, UK",
+            Telnyx::CallControlApplicationUpdateParams::AnchorsiteOverride::TaggedSymbol
+          )
+        CHENNAI_IN =
+          T.let(
+            :"Chennai, IN",
+            Telnyx::CallControlApplicationUpdateParams::AnchorsiteOverride::TaggedSymbol
+          )
+        AMSTERDAM_NETHERLANDS =
+          T.let(
+            :"Amsterdam, Netherlands",
+            Telnyx::CallControlApplicationUpdateParams::AnchorsiteOverride::TaggedSymbol
+          )
+        TORONTO_CANADA =
+          T.let(
+            :"Toronto, Canada",
+            Telnyx::CallControlApplicationUpdateParams::AnchorsiteOverride::TaggedSymbol
+          )
+        SYDNEY_AUSTRALIA =
+          T.let(
+            :"Sydney, Australia",
             Telnyx::CallControlApplicationUpdateParams::AnchorsiteOverride::TaggedSymbol
           )
 

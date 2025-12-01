@@ -15,9 +15,10 @@ module Telnyx
       optional :active, Telnyx::Internal::Type::Boolean
 
       # @!attribute anchorsite_override
-      #   `Latency` directs Telnyx to route media through the site with the lowest
-      #   round-trip time to the user's connection. Telnyx calculates this time using ICMP
-      #   ping messages. This can be disabled by specifying a site to handle all media.
+      #   <code>Latency</code> directs Telnyx to route media through the site with the
+      #   lowest round-trip time to the user's connection. Telnyx calculates this time
+      #   using ICMP ping messages. This can be disabled by specifying a site to handle
+      #   all media.
       #
       #   @return [Symbol, Telnyx::Models::CallControlApplication::AnchorsiteOverride, nil]
       optional :anchorsite_override, enum: -> { Telnyx::CallControlApplication::AnchorsiteOverride }
@@ -128,7 +129,7 @@ module Telnyx
       #
       #   @param active [Boolean] Specifies whether the connection can be used.
       #
-      #   @param anchorsite_override [Symbol, Telnyx::Models::CallControlApplication::AnchorsiteOverride] `Latency` directs Telnyx to route media through the site with the lowest round-t
+      #   @param anchorsite_override [Symbol, Telnyx::Models::CallControlApplication::AnchorsiteOverride] <code>Latency</code> directs Telnyx to route media through the site with the low
       #
       #   @param application_name [String] A user-assigned name to help manage the application.
       #
@@ -162,18 +163,24 @@ module Telnyx
       #
       #   @param webhook_timeout_secs [Integer, nil]
 
-      # `Latency` directs Telnyx to route media through the site with the lowest
-      # round-trip time to the user's connection. Telnyx calculates this time using ICMP
-      # ping messages. This can be disabled by specifying a site to handle all media.
+      # <code>Latency</code> directs Telnyx to route media through the site with the
+      # lowest round-trip time to the user's connection. Telnyx calculates this time
+      # using ICMP ping messages. This can be disabled by specifying a site to handle
+      # all media.
       #
       # @see Telnyx::Models::CallControlApplication#anchorsite_override
       module AnchorsiteOverride
         extend Telnyx::Internal::Type::Enum
 
-        LATENCY = :"\"Latency\""
-        CHICAGO_IL = :"\"Chicago, IL\""
-        ASHBURN_VA = :"\"Ashburn, VA\""
-        SAN_JOSE_CA = :"\"San Jose, CA\""
+        LATENCY = :Latency
+        CHICAGO_IL = :"Chicago, IL"
+        ASHBURN_VA = :"Ashburn, VA"
+        SAN_JOSE_CA = :"San Jose, CA"
+        LONDON_UK = :"London, UK"
+        CHENNAI_IN = :"Chennai, IN"
+        AMSTERDAM_NETHERLANDS = :"Amsterdam, Netherlands"
+        TORONTO_CANADA = :"Toronto, Canada"
+        SYDNEY_AUSTRALIA = :"Sydney, Australia"
 
         # @!method self.values
         #   @return [Array<Symbol>]
