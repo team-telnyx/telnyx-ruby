@@ -266,14 +266,10 @@ module Telnyx
 
   CampaignSharingStatus = Telnyx::Models::CampaignSharingStatus
 
-  CampaignStatusUpdateEvent = Telnyx::Models::CampaignStatusUpdateEvent
-
   CampaignStatusUpdateWebhookEvent =
     Telnyx::Models::CampaignStatusUpdateWebhookEvent
 
   CampaignSubmitAppealParams = Telnyx::Models::CampaignSubmitAppealParams
-
-  CampaignSuspendedEvent = Telnyx::Models::CampaignSuspendedEvent
 
   CampaignUpdateParams = Telnyx::Models::CampaignUpdateParams
 
