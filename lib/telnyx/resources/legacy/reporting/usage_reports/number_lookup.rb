@@ -20,7 +20,7 @@ module Telnyx
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [nil]
+            # @return [Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupCreateResponse]
             #
             # @see Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupCreateParams
             def create(params = {})
@@ -30,7 +30,7 @@ module Telnyx
                 path: "legacy/reporting/usage_reports/number_lookup",
                 headers: {"content-type" => "*/*"},
                 body: parsed,
-                model: NilClass,
+                model: Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupCreateResponse,
                 options: options
               )
             end
@@ -42,37 +42,33 @@ module Telnyx
             # @param id [String]
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [nil]
+            # @return [Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse]
             #
             # @see Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveParams
             def retrieve(id, params = {})
               @client.request(
                 method: :get,
                 path: ["legacy/reporting/usage_reports/number_lookup/%1$s", id],
-                model: NilClass,
+                model: Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse,
                 options: params[:request_options]
               )
             end
 
             # Retrieve a paginated list of telco data usage reports
             #
-            # @overload list(page: nil, per_page: nil, request_options: {})
+            # @overload list(request_options: {})
             #
-            # @param page [Integer]
-            # @param per_page [Integer]
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [nil]
+            # @return [Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupListResponse]
             #
             # @see Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupListParams
             def list(params = {})
-              parsed, options = Telnyx::Legacy::Reporting::UsageReports::NumberLookupListParams.dump_request(params)
               @client.request(
                 method: :get,
                 path: "legacy/reporting/usage_reports/number_lookup",
-                query: parsed,
-                model: NilClass,
-                options: options
+                model: Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupListResponse,
+                options: params[:request_options]
               )
             end
 
