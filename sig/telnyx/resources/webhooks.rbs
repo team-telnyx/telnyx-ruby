@@ -39,8 +39,8 @@ module Telnyx
       | Telnyx::CallStreamingFailedWebhookEvent
       | Telnyx::CallStreamingStartedWebhookEvent
       | Telnyx::CallStreamingStoppedWebhookEvent
-      | Telnyx::CampaignStatusUpdateEvent
-      | Telnyx::CampaignSuspendedEvent
+      | Telnyx::UnsafeUnwrapWebhookEvent::CampaignStatusUpdateEvent
+      | Telnyx::UnsafeUnwrapWebhookEvent::CampaignSuspendedEvent
       | Telnyx::ConferenceCreatedWebhookEvent
       | Telnyx::ConferenceEndedWebhookEvent
       | Telnyx::ConferenceFloorChangedWebhookEvent
@@ -107,8 +107,8 @@ module Telnyx
       | Telnyx::CallStreamingFailedWebhookEvent
       | Telnyx::CallStreamingStartedWebhookEvent
       | Telnyx::CallStreamingStoppedWebhookEvent
-      | Telnyx::CampaignStatusUpdateEvent
-      | Telnyx::CampaignSuspendedEvent
+      | Telnyx::UnwrapWebhookEvent::CampaignStatusUpdateEvent
+      | Telnyx::UnwrapWebhookEvent::CampaignSuspendedEvent
       | Telnyx::ConferenceCreatedWebhookEvent
       | Telnyx::ConferenceEndedWebhookEvent
       | Telnyx::ConferenceFloorChangedWebhookEvent
