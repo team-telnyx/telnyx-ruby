@@ -56,10 +56,12 @@ module Telnyx
           country_iso: Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::country_iso,
           phone_number_type: String,
           administrative_area: String,
+          exclude_held_numbers: bool,
           features: ::Array[String],
           locality: String,
           national_destination_code: String,
           phone_number: Telnyx::InexplicitNumberOrderCreateParams::OrderingGroup::PhoneNumber,
+          quickship: bool,
           strategy: Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::strategy
         }
 
@@ -73,6 +75,10 @@ module Telnyx
         attr_reader administrative_area: String?
 
         def administrative_area=: (String) -> String
+
+        attr_reader exclude_held_numbers: bool?
+
+        def exclude_held_numbers=: (bool) -> bool
 
         attr_reader features: ::Array[String]?
 
@@ -92,6 +98,10 @@ module Telnyx
           Telnyx::InexplicitNumberOrderCreateParams::OrderingGroup::PhoneNumber
         ) -> Telnyx::InexplicitNumberOrderCreateParams::OrderingGroup::PhoneNumber
 
+        attr_reader quickship: bool?
+
+        def quickship=: (bool) -> bool
+
         attr_reader strategy: Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::strategy?
 
         def strategy=: (
@@ -103,10 +113,12 @@ module Telnyx
           country_iso: Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::country_iso,
           phone_number_type: String,
           ?administrative_area: String,
+          ?exclude_held_numbers: bool,
           ?features: ::Array[String],
           ?locality: String,
           ?national_destination_code: String,
           ?phone_number: Telnyx::InexplicitNumberOrderCreateParams::OrderingGroup::PhoneNumber,
+          ?quickship: bool,
           ?strategy: Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::strategy
         ) -> void
 
@@ -115,10 +127,12 @@ module Telnyx
           country_iso: Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::country_iso,
           phone_number_type: String,
           administrative_area: String,
+          exclude_held_numbers: bool,
           features: ::Array[String],
           locality: String,
           national_destination_code: String,
           phone_number: Telnyx::InexplicitNumberOrderCreateParams::OrderingGroup::PhoneNumber,
+          quickship: bool,
           strategy: Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::strategy
         }
 

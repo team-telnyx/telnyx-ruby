@@ -80,6 +80,13 @@ module Telnyx
         #   @return [String, nil]
         optional :administrative_area, String
 
+        # @!attribute exclude_held_numbers
+        #   Filter to exclude phone numbers that are currently on hold/reserved for your
+        #   account.
+        #
+        #   @return [Boolean, nil]
+        optional :exclude_held_numbers, Telnyx::Internal::Type::Boolean
+
         # @!attribute features
         #   Filter for phone numbers that have the features to satisfy your use case (e.g.,
         #   ["voice"])
@@ -105,6 +112,13 @@ module Telnyx
         #   @return [Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::PhoneNumber, nil]
         optional :phone_number, -> { Telnyx::InexplicitNumberOrderCreateParams::OrderingGroup::PhoneNumber }
 
+        # @!attribute quickship
+        #   Filter to exclude phone numbers that need additional time after to purchase to
+        #   activate. Only applicable for +1 toll_free numbers.
+        #
+        #   @return [Boolean, nil]
+        optional :quickship, Telnyx::Internal::Type::Boolean
+
         # @!attribute strategy
         #   Ordering strategy. Define what action should be taken if we don't have enough
         #   phone numbers to fulfill your request. Allowable values are: always = proceed
@@ -115,7 +129,7 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::Strategy, nil]
         optional :strategy, enum: -> { Telnyx::InexplicitNumberOrderCreateParams::OrderingGroup::Strategy }
 
-        # @!method initialize(count_requested:, country_iso:, phone_number_type:, administrative_area: nil, features: nil, locality: nil, national_destination_code: nil, phone_number: nil, strategy: nil)
+        # @!method initialize(count_requested:, country_iso:, phone_number_type:, administrative_area: nil, exclude_held_numbers: nil, features: nil, locality: nil, national_destination_code: nil, phone_number: nil, quickship: nil, strategy: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup} for more
         #   details.
@@ -128,6 +142,8 @@ module Telnyx
         #
         #   @param administrative_area [String] Filter for phone numbers in a given state / province
         #
+        #   @param exclude_held_numbers [Boolean] Filter to exclude phone numbers that are currently on hold/reserved for your acc
+        #
         #   @param features [Array<String>] Filter for phone numbers that have the features to satisfy your use case (e.g.,
         #
         #   @param locality [String] Filter for phone numbers in a given city / region / rate center
@@ -135,6 +151,8 @@ module Telnyx
         #   @param national_destination_code [String] Filter by area code
         #
         #   @param phone_number [Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::PhoneNumber] Phone number search criteria
+        #
+        #   @param quickship [Boolean] Filter to exclude phone numbers that need additional time after to purchase to a
         #
         #   @param strategy [Symbol, Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::Strategy] Ordering strategy. Define what action should be taken if we don't have enough ph
 
