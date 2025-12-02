@@ -11,14 +11,14 @@ module Telnyx
         # @param campaign_id [String]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Object]
+        # @return [Hash{Symbol=>Object}]
         #
         # @see Telnyx::Models::Campaign::OsrGetAttributesParams
         def get_attributes(campaign_id, params = {})
           @client.request(
             method: :get,
             path: ["campaign/%1$s/osr/attributes", campaign_id],
-            model: Telnyx::Internal::Type::Unknown,
+            model: Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
             options: params[:request_options]
           )
         end

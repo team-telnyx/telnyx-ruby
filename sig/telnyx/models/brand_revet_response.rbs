@@ -1,5 +1,0 @@
-module Telnyx
-  module Models
-    BrandRevetResponse: Telnyx::Internal::Type::Converter
-  end
-end

@@ -98,7 +98,7 @@ module Telnyx
             autoresp_cfg_id: String,
             profile_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(T.anything)
+          ).returns(String)
         end
         def delete(autoresp_cfg_id, profile_id:, request_options: {})
         end

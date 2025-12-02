@@ -91,7 +91,7 @@ module Telnyx
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::Models::MessagingTollfree::Verification::RequestListResponse
 
-          def delete: (String id, ?request_options: Telnyx::request_opts) -> top
+          def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 
           def initialize: (client: Telnyx::Client) -> void
         end

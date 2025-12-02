@@ -37,7 +37,7 @@ module Telnyx
       def accept_sharing: (
         String campaign_id,
         ?request_options: Telnyx::request_opts
-      ) -> top
+      ) -> Telnyx::Models::campaign_accept_sharing_response
 
       def deactivate: (
         String campaign_id,
@@ -52,7 +52,7 @@ module Telnyx
       def get_operation_status: (
         String campaign_id,
         ?request_options: Telnyx::request_opts
-      ) -> top
+      ) -> Telnyx::Models::campaign_get_operation_status_response
 
       def get_sharing_status: (
         String campaign_id,

@@ -252,14 +252,14 @@ module Telnyx
           # @param id [String]
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Object]
+          # @return [nil]
           #
           # @see Telnyx::Models::MessagingTollfree::Verification::RequestDeleteParams
           def delete(id, params = {})
             @client.request(
               method: :delete,
               path: ["messaging_tollfree/verification/requests/%1$s", id],
-              model: Telnyx::Internal::Type::Unknown,
+              model: NilClass,
               options: params[:request_options]
             )
           end

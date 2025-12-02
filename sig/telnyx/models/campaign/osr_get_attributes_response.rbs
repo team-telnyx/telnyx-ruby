@@ -1,6 +1,8 @@
 module Telnyx
   module Models
     module Campaign
+      type osr_get_attributes_response = ::Hash[Symbol, top]
+
       OsrGetAttributesResponse: Telnyx::Internal::Type::Converter
     end
   end

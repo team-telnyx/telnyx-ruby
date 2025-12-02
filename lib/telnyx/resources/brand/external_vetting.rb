@@ -11,14 +11,14 @@ module Telnyx
         # @param brand_id [String]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Object]
+        # @return [Array<Telnyx::Models::Brand::ExternalVettingListResponseItem>]
         #
         # @see Telnyx::Models::Brand::ExternalVettingListParams
         def list(brand_id, params = {})
           @client.request(
             method: :get,
             path: ["brand/%1$s/externalVetting", brand_id],
-            model: Telnyx::Internal::Type::Unknown,
+            model: Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Brand::ExternalVettingListResponseItem],
             options: params[:request_options]
           )
         end
@@ -69,7 +69,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Object]
+        # @return [Telnyx::Models::Brand::ExternalVettingOrderResponse]
         #
         # @see Telnyx::Models::Brand::ExternalVettingOrderParams
         def order(brand_id, params)
@@ -78,7 +78,7 @@ module Telnyx
             method: :post,
             path: ["brand/%1$s/externalVetting", brand_id],
             body: parsed,
-            model: Telnyx::Internal::Type::Unknown,
+            model: Telnyx::Models::Brand::ExternalVettingOrderResponse,
             options: options
           )
         end

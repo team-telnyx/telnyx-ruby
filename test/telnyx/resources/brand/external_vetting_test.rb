@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::Brand::ExternalVettingTest < Telnyx::Test::Resour
     response = @telnyx.brand.external_vetting.list("brandId")
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Brand::ExternalVettingListResponseItem])
     end
   end
 
@@ -42,7 +42,19 @@ class Telnyx::Test::Resources::Brand::ExternalVettingTest < Telnyx::Test::Resour
       @telnyx.brand.external_vetting.order("brandId", evp_id: "evpId", vetting_class: "vettingClass")
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => Telnyx::Models::Brand::ExternalVettingOrderResponse
+    end
+
+    assert_pattern do
+      response => {
+        create_date: String | nil,
+        evp_id: String | nil,
+        vetted_date: String | nil,
+        vetting_class: String | nil,
+        vetting_id: String | nil,
+        vetting_score: Integer | nil,
+        vetting_token: String | nil
+      }
     end
   end
 end

@@ -5,7 +5,7 @@ module Telnyx
         def get_attributes: (
           String campaign_id,
           ?request_options: Telnyx::request_opts
-        ) -> top
+        ) -> Telnyx::Models::Campaign::osr_get_attributes_response
 
         def initialize: (client: Telnyx::Client) -> void
       end

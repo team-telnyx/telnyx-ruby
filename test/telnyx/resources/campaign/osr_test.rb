@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::Campaign::OsrTest < Telnyx::Test::ResourceTest
     response = @telnyx.campaign.osr.get_attributes("campaignId")
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown])
     end
   end
 end

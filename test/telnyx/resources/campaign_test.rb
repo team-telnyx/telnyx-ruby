@@ -157,7 +157,7 @@ class Telnyx::Test::Resources::CampaignTest < Telnyx::Test::ResourceTest
     response = @telnyx.campaign.accept_sharing("C26F1KLZN")
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown])
     end
   end
 
@@ -201,7 +201,7 @@ class Telnyx::Test::Resources::CampaignTest < Telnyx::Test::ResourceTest
     response = @telnyx.campaign.get_operation_status("campaignId")
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown])
     end
   end
 

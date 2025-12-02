@@ -9,7 +9,7 @@ module Telnyx
           params(
             campaign_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(T.anything)
+          ).returns(T::Hash[Symbol, T.anything])
         end
         def get_attributes(campaign_id, request_options: {})
         end

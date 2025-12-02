@@ -96,7 +96,7 @@ module Telnyx
         params(
           campaign_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(T.anything)
+        ).returns(T::Hash[Symbol, T.anything])
       end
       def accept_sharing(
         # TCR's ID for the campaign to import
@@ -134,7 +134,7 @@ module Telnyx
         params(
           campaign_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(T.anything)
+        ).returns(T::Hash[Symbol, T.anything])
       end
       def get_operation_status(campaign_id, request_options: {})
       end
