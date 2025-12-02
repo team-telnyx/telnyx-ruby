@@ -6,16 +6,14 @@ module Telnyx
       # @api private
       #
       # @example
-      #   # `unsafe_unwrap_webhook_event` is a `Telnyx::UnsafeUnwrapWebhookEvent`
-      #   case unsafe_unwrap_webhook_event
-      #   when Telnyx::CallAIGatherEndedWebhookEvent
-      #     puts(unsafe_unwrap_webhook_event.data)
-      #   when Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent
-      #     puts(unsafe_unwrap_webhook_event.data)
-      #   when Telnyx::CallAIGatherPartialResultsWebhookEvent
-      #     puts(unsafe_unwrap_webhook_event.data)
+      #   # `campaign_status_update_webhook_event` is a `Telnyx::CampaignStatusUpdateWebhookEvent`
+      #   case campaign_status_update_webhook_event
+      #   when Telnyx::CampaignStatusUpdateWebhookEvent::CampaignStatusUpdateEvent
+      #     puts(campaign_status_update_webhook_event.brand_id)
+      #   when Telnyx::CampaignStatusUpdateWebhookEvent::CampaignSuspendedEvent
+      #     puts(campaign_status_update_webhook_event.campaign_id)
       #   else
-      #     puts(unsafe_unwrap_webhook_event)
+      #     puts(campaign_status_update_webhook_event)
       #   end
       module Union
         include Telnyx::Internal::Type::Converter
