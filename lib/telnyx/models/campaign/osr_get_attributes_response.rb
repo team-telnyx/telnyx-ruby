@@ -4,7 +4,7 @@ module Telnyx
   module Models
     module Campaign
       # @type [Telnyx::Internal::Type::Converter]
-      OsrGetAttributesResponse = Telnyx::Internal::Type::Unknown
+      OsrGetAttributesResponse = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
     end
   end
 end

@@ -5,7 +5,7 @@ module Telnyx
         def list: (
           String brand_id,
           ?request_options: Telnyx::request_opts
-        ) -> top
+        ) -> Telnyx::Models::Brand::external_vetting_list_response
 
         def import: (
           String brand_id,
@@ -20,7 +20,7 @@ module Telnyx
           evp_id: String,
           vetting_class: String,
           ?request_options: Telnyx::request_opts
-        ) -> top
+        ) -> Telnyx::Models::Brand::ExternalVettingOrderResponse
 
         def initialize: (client: Telnyx::Client) -> void
       end

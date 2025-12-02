@@ -82,7 +82,7 @@ module Telnyx
       def delete: (
         String brand_id,
         ?request_options: Telnyx::request_opts
-      ) -> top
+      ) -> nil
 
       def get_feedback: (
         String brand_id,
@@ -97,7 +97,7 @@ module Telnyx
       def revet: (
         String brand_id,
         ?request_options: Telnyx::request_opts
-      ) -> top
+      ) -> Telnyx::TelnyxBrand
 
       def initialize: (client: Telnyx::Client) -> void
     end

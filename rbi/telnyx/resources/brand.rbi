@@ -237,7 +237,7 @@ module Telnyx
         params(
           brand_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(T.anything)
+        ).void
       end
       def delete(brand_id, request_options: {})
       end
@@ -281,7 +281,7 @@ module Telnyx
         params(
           brand_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(T.anything)
+        ).returns(Telnyx::TelnyxBrand)
       end
       def revet(brand_id, request_options: {})
       end

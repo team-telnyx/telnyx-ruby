@@ -40,7 +40,7 @@ module Telnyx
         ?webhook_failover_url: String,
         ?webhook_url: String,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::campaign_builder_create_response
+      ) -> Telnyx::TelnyxCampaignCsp
 
       def initialize: (client: Telnyx::Client) -> void
     end

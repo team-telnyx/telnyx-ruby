@@ -230,14 +230,14 @@ module Telnyx
       # @param brand_id [String]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Object]
+      # @return [nil]
       #
       # @see Telnyx::Models::BrandDeleteParams
       def delete(brand_id, params = {})
         @client.request(
           method: :delete,
           path: ["brand/%1$s", brand_id],
-          model: Telnyx::Internal::Type::Unknown,
+          model: NilClass,
           options: params[:request_options]
         )
       end
@@ -301,14 +301,14 @@ module Telnyx
       # @param brand_id [String]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Object]
+      # @return [Telnyx::Models::TelnyxBrand]
       #
       # @see Telnyx::Models::BrandRevetParams
       def revet(brand_id, params = {})
         @client.request(
           method: :put,
           path: ["brand/%1$s/revet", brand_id],
-          model: Telnyx::Internal::Type::Unknown,
+          model: Telnyx::TelnyxBrand,
           options: params[:request_options]
         )
       end

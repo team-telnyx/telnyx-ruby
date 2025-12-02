@@ -9,7 +9,9 @@ module Telnyx
           params(
             brand_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(T.anything)
+          ).returns(
+            T::Array[Telnyx::Models::Brand::ExternalVettingListResponseItem]
+          )
         end
         def list(brand_id, request_options: {})
         end
@@ -47,7 +49,7 @@ module Telnyx
             evp_id: String,
             vetting_class: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(T.anything)
+          ).returns(Telnyx::Models::Brand::ExternalVettingOrderResponse)
         end
         def order(
           brand_id,

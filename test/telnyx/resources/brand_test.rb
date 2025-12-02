@@ -158,7 +158,7 @@ class Telnyx::Test::Resources::BrandTest < Telnyx::Test::ResourceTest
     response = @telnyx.brand.delete("brandId")
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => nil
     end
   end
 
@@ -195,7 +195,50 @@ class Telnyx::Test::Resources::BrandTest < Telnyx::Test::ResourceTest
     response = @telnyx.brand.revet("brandId")
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => Telnyx::TelnyxBrand
+    end
+
+    assert_pattern do
+      response => {
+        brand_relationship: Telnyx::TelnyxBrand::BrandRelationship,
+        country: String,
+        display_name: String,
+        email: String,
+        entity_type: Telnyx::EntityType,
+        vertical: String,
+        alt_business_id: String | nil,
+        alt_business_id_type: Telnyx::AltBusinessIDType | nil,
+        brand_id: String | nil,
+        business_contact_email: String | nil,
+        city: String | nil,
+        company_name: String | nil,
+        created_at: String | nil,
+        csp_id: String | nil,
+        ein: String | nil,
+        failure_reasons: String | nil,
+        first_name: String | nil,
+        identity_status: Telnyx::BrandIdentityStatus | nil,
+        ip_address: String | nil,
+        is_reseller: Telnyx::Internal::Type::Boolean | nil,
+        last_name: String | nil,
+        mobile_phone: String | nil,
+        mock: Telnyx::Internal::Type::Boolean | nil,
+        optional_attributes: Telnyx::TelnyxBrand::OptionalAttributes | nil,
+        phone: String | nil,
+        postal_code: String | nil,
+        reference_id: String | nil,
+        state: String | nil,
+        status: Telnyx::TelnyxBrand::Status | nil,
+        stock_exchange: Telnyx::StockExchange | nil,
+        stock_symbol: String | nil,
+        street: String | nil,
+        tcr_brand_id: String | nil,
+        universal_ein: String | nil,
+        updated_at: String | nil,
+        webhook_failover_url: String | nil,
+        webhook_url: String | nil,
+        website: String | nil
+      }
     end
   end
 end

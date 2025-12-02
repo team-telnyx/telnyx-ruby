@@ -3,6 +3,9 @@
 module Telnyx
   module Models
     CampaignGetOperationStatusResponse =
-      T.let(T.anything, Telnyx::Internal::Type::Converter)
+      T.let(
+        Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
+        Telnyx::Internal::Type::Converter
+      )
   end
 end

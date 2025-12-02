@@ -95,7 +95,7 @@ class Telnyx::Test::Resources::MessagingProfiles::AutorespConfigsTest < Telnyx::
       )
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => String
     end
   end
 end

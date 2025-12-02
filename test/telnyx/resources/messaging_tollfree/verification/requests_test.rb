@@ -223,7 +223,7 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
       @telnyx.messaging_tollfree.verification.requests.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => nil
     end
   end
 end
