@@ -10,19 +10,7 @@ module Telnyx
             extend Telnyx::Internal::Type::RequestParameters::Converter
             include Telnyx::Internal::Type::RequestParameters
 
-            # @!attribute page
-            #
-            #   @return [Integer, nil]
-            optional :page, Integer
-
-            # @!attribute per_page
-            #
-            #   @return [Integer, nil]
-            optional :per_page, Integer
-
-            # @!method initialize(page: nil, per_page: nil, request_options: {})
-            #   @param page [Integer]
-            #   @param per_page [Integer]
+            # @!method initialize(request_options: {})
             #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
           end
         end
