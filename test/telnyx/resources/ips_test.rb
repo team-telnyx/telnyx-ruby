@@ -62,7 +62,8 @@ class Telnyx::Test::Resources::IPsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::IP]) | nil
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::IP]) | nil,
+        meta: Telnyx::ConnectionsPaginationMeta | nil
       }
     end
   end

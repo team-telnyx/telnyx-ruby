@@ -9,8 +9,14 @@ module Telnyx
       #   @return [Array<Telnyx::Models::IP>, nil]
       optional :data, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::IP] }
 
-      # @!method initialize(data: nil)
+      # @!attribute meta
+      #
+      #   @return [Telnyx::Models::ConnectionsPaginationMeta, nil]
+      optional :meta, -> { Telnyx::ConnectionsPaginationMeta }
+
+      # @!method initialize(data: nil, meta: nil)
       #   @param data [Array<Telnyx::Models::IP>]
+      #   @param meta [Telnyx::Models::ConnectionsPaginationMeta]
     end
   end
 end
