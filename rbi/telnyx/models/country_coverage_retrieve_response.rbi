@@ -14,7 +14,10 @@ module Telnyx
       sig do
         returns(
           T.nilable(
-            T::Array[Telnyx::Models::CountryCoverageRetrieveResponse::Data]
+            T::Hash[
+              Symbol,
+              Telnyx::Models::CountryCoverageRetrieveResponse::Data
+            ]
           )
         )
       end
@@ -23,7 +26,8 @@ module Telnyx
       sig do
         params(
           data:
-            T::Array[
+            T::Hash[
+              Symbol,
               Telnyx::Models::CountryCoverageRetrieveResponse::Data::OrHash
             ]
         ).void
@@ -33,7 +37,8 @@ module Telnyx
       sig do
         params(
           data:
-            T::Array[
+            T::Hash[
+              Symbol,
               Telnyx::Models::CountryCoverageRetrieveResponse::Data::OrHash
             ]
         ).returns(T.attached_class)
@@ -45,7 +50,10 @@ module Telnyx
         override.returns(
           {
             data:
-              T::Array[Telnyx::Models::CountryCoverageRetrieveResponse::Data]
+              T::Hash[
+                Symbol,
+                Telnyx::Models::CountryCoverageRetrieveResponse::Data
+              ]
           }
         )
       end

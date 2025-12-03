@@ -1,5 +1,159 @@
 module Telnyx
   module Models
-    AdvancedOrderListResponse: Telnyx::Internal::Type::Converter
+    type advanced_order_list_response =
+      { data: ::Array[Telnyx::Models::AdvancedOrderListResponse::Data] }
+
+    class AdvancedOrderListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::AdvancedOrderListResponse::Data]?
+
+      def data=: (
+        ::Array[Telnyx::Models::AdvancedOrderListResponse::Data]
+      ) -> ::Array[Telnyx::Models::AdvancedOrderListResponse::Data]
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Models::AdvancedOrderListResponse::Data]
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::AdvancedOrderListResponse::Data]
+      }
+
+      type data =
+        {
+          id: String,
+          area_code: String,
+          comments: String,
+          country_code: String,
+          customer_reference: String,
+          features: ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::feature],
+          orders: ::Array[String],
+          phone_number_type: ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::phone_number_type],
+          quantity: Integer,
+          requirement_group_id: String,
+          status: ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::status]
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader area_code: String?
+
+        def area_code=: (String) -> String
+
+        attr_reader comments: String?
+
+        def comments=: (String) -> String
+
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader customer_reference: String?
+
+        def customer_reference=: (String) -> String
+
+        attr_reader features: ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::feature]?
+
+        def features=: (
+          ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::feature]
+        ) -> ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::feature]
+
+        attr_reader orders: ::Array[String]?
+
+        def orders=: (::Array[String]) -> ::Array[String]
+
+        attr_reader phone_number_type: ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::phone_number_type]?
+
+        def phone_number_type=: (
+          ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::phone_number_type]
+        ) -> ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::phone_number_type]
+
+        attr_reader quantity: Integer?
+
+        def quantity=: (Integer) -> Integer
+
+        attr_reader requirement_group_id: String?
+
+        def requirement_group_id=: (String) -> String
+
+        attr_reader status: ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::status]?
+
+        def status=: (
+          ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::status]
+        ) -> ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::status]
+
+        def initialize: (
+          ?id: String,
+          ?area_code: String,
+          ?comments: String,
+          ?country_code: String,
+          ?customer_reference: String,
+          ?features: ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::feature],
+          ?orders: ::Array[String],
+          ?phone_number_type: ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::phone_number_type],
+          ?quantity: Integer,
+          ?requirement_group_id: String,
+          ?status: ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::status]
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          area_code: String,
+          comments: String,
+          country_code: String,
+          customer_reference: String,
+          features: ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::feature],
+          orders: ::Array[String],
+          phone_number_type: ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::phone_number_type],
+          quantity: Integer,
+          requirement_group_id: String,
+          status: ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::status]
+        }
+
+        type feature = :sms | :mms | :voice | :fax | :emergency
+
+        module Feature
+          extend Telnyx::Internal::Type::Enum
+
+          SMS: :sms
+          MMS: :mms
+          VOICE: :voice
+          FAX: :fax
+          EMERGENCY: :emergency
+
+          def self?.values: -> ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::feature]
+        end
+
+        type phone_number_type =
+          :local | :mobile | :toll_free | :shared_cost | :national | :landline
+
+        module PhoneNumberType
+          extend Telnyx::Internal::Type::Enum
+
+          LOCAL: :local
+          MOBILE: :mobile
+          TOLL_FREE: :toll_free
+          SHARED_COST: :shared_cost
+          NATIONAL: :national
+          LANDLINE: :landline
+
+          def self?.values: -> ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::phone_number_type]
+        end
+
+        type status = :pending | :processing | :ordered
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          PROCESSING: :processing
+          ORDERED: :ordered
+
+          def self?.values: -> ::Array[Telnyx::Models::AdvancedOrderListResponse::Data::status]
+        end
+      end
+    end
   end
 end
