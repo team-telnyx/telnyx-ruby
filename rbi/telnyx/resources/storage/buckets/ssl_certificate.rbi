@@ -5,7 +5,7 @@ module Telnyx
     class Storage
       class Buckets
         class SslCertificate
-          # Uploads an SSL certificate and its matching secret so that you can use Telnyx’s
+          # Uploads an SSL certificate and its matching secret so that you can use Telnyx's
           # storage as your CDN.
           sig do
             params(

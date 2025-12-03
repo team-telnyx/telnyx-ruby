@@ -31,7 +31,7 @@ class Telnyx::Test::Resources::WebhookDeliveriesTest < Telnyx::Test::ResourceTes
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::WebhookDeliveryListResponse::Data]) | nil,
-        meta: Telnyx::Models::WebhookDeliveryListResponse::Meta | nil
+        meta: Telnyx::Storage::Buckets::PaginationMetaSimple | nil
       }
     end
   end

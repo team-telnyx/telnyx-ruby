@@ -5,7 +5,7 @@ module Telnyx
     class Storage
       class Buckets
         class SslCertificate
-          # Uploads an SSL certificate and its matching secret so that you can use Telnyx’s
+          # Uploads an SSL certificate and its matching secret so that you can use Telnyx's
           # storage as your CDN.
           #
           # @overload create(bucket_name, certificate: nil, private_key: nil, request_options: {})
