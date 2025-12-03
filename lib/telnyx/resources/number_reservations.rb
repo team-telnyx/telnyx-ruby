@@ -63,7 +63,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::NumberReservationListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::NumberReservation>]
       #
       # @see Telnyx::Models::NumberReservationListParams
       def list(params = {})
@@ -72,7 +72,8 @@ module Telnyx
           method: :get,
           path: "number_reservations",
           query: parsed,
-          model: Telnyx::Models::NumberReservationListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::NumberReservation,
           options: options
         )
       end

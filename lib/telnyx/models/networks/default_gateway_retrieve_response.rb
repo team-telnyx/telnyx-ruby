@@ -34,12 +34,6 @@ module Telnyx
             #   @return [String, nil]
             optional :network_id, String
 
-            # @!attribute record_type
-            #   Identifies the type of the resource.
-            #
-            #   @return [String, nil]
-            optional :record_type, String
-
             # @!attribute status
             #   The current status of the interface deployment.
             #
@@ -47,10 +41,8 @@ module Telnyx
             optional :status, enum: -> { Telnyx::InterfaceStatus }
           end
 
-          # @!method initialize(network_id: nil, record_type: nil, status: nil, wireguard_peer_id: nil)
+          # @!method initialize(network_id: nil, status: nil, wireguard_peer_id: nil)
           #   @param network_id [String] Network ID.
-          #
-          #   @param record_type [String] Identifies the type of the resource.
           #
           #   @param status [Symbol, Telnyx::Models::InterfaceStatus] The current status of the interface deployment.
           #

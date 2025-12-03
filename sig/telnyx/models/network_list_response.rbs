@@ -1,47 +1,15 @@
 module Telnyx
   module Models
-    type network_list_response =
-      {
-        data: ::Array[Telnyx::Models::NetworkListResponse::Data],
-        meta: Telnyx::PaginationMeta
-      }
+    type network_list_response = { name: String }
 
-    class NetworkListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: ::Array[Telnyx::Models::NetworkListResponse::Data]?
+    class NetworkListResponse < Telnyx::Models::Record
+      def name: -> String?
 
-      def data=: (
-        ::Array[Telnyx::Models::NetworkListResponse::Data]
-      ) -> ::Array[Telnyx::Models::NetworkListResponse::Data]
+      def name=: (String _) -> String
 
-      attr_reader meta: Telnyx::PaginationMeta?
+      def initialize: (?name: String) -> void
 
-      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
-
-      def initialize: (
-        ?data: ::Array[Telnyx::Models::NetworkListResponse::Data],
-        ?meta: Telnyx::PaginationMeta
-      ) -> void
-
-      def to_hash: -> {
-        data: ::Array[Telnyx::Models::NetworkListResponse::Data],
-        meta: Telnyx::PaginationMeta
-      }
-
-      type data = { name: String, record_type: String }
-
-      class Data < Telnyx::Models::Record
-        def name: -> String?
-
-        def name=: (String _) -> String
-
-        def record_type: -> String?
-
-        def record_type=: (String _) -> String
-
-        def initialize: (?name: String, ?record_type: String) -> void
-
-        def to_hash: -> { name: String, record_type: String }
-      end
+      def to_hash: -> { name: String }
     end
   end
 end

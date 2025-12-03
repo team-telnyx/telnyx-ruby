@@ -15,7 +15,11 @@ module Telnyx
             sort:
               Telnyx::PortingOrders::VerificationCodeListParams::Sort::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::PortingOrders::VerificationCodeListResponse)
+          ).returns(
+            Telnyx::Internal::DefaultPagination[
+              Telnyx::Models::PortingOrders::VerificationCodeListResponse
+            ]
+          )
         end
         def list(
           # Porting Order id

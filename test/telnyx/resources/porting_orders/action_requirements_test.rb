@@ -9,13 +9,28 @@ class Telnyx::Test::Resources::PortingOrders::ActionRequirementsTest < Telnyx::T
     response = @telnyx.porting_orders.action_requirements.list("porting_order_id")
 
     assert_pattern do
-      response => Telnyx::Models::PortingOrders::ActionRequirementListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::PortingOrders::ActionRequirementListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        action_type: String | nil,
+        action_url: String | nil,
+        cancel_reason: String | nil,
+        created_at: Time | nil,
+        porting_order_id: String | nil,
+        record_type: Telnyx::Models::PortingOrders::ActionRequirementListResponse::RecordType | nil,
+        requirement_type_id: String | nil,
+        status: Telnyx::Models::PortingOrders::ActionRequirementListResponse::Status | nil,
+        updated_at: Time | nil
       }
     end
   end

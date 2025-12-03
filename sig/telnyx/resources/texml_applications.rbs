@@ -50,7 +50,7 @@ module Telnyx
         ?page: Telnyx::TexmlApplicationListParams::Page,
         ?sort: Telnyx::Models::TexmlApplicationListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::TexmlApplicationListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::TexmlApplication]
 
       def delete: (
         String id,

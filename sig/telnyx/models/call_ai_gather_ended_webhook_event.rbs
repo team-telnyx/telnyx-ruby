@@ -87,7 +87,7 @@ module Telnyx
             connection_id: String,
             from: String,
             message_history: ::Array[Telnyx::CallAIGatherEndedWebhookEvent::Data::Payload::MessageHistory],
-            result: top,
+            result: ::Hash[Symbol, top],
             status: Telnyx::Models::CallAIGatherEndedWebhookEvent::Data::Payload::status,
             to: String
           }
@@ -123,9 +123,9 @@ module Telnyx
             ::Array[Telnyx::CallAIGatherEndedWebhookEvent::Data::Payload::MessageHistory]
           ) -> ::Array[Telnyx::CallAIGatherEndedWebhookEvent::Data::Payload::MessageHistory]
 
-          attr_reader result: top?
+          attr_reader result: ::Hash[Symbol, top]?
 
-          def result=: (top) -> top
+          def result=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
           attr_reader status: Telnyx::Models::CallAIGatherEndedWebhookEvent::Data::Payload::status?
 
@@ -145,7 +145,7 @@ module Telnyx
             ?connection_id: String,
             ?from: String,
             ?message_history: ::Array[Telnyx::CallAIGatherEndedWebhookEvent::Data::Payload::MessageHistory],
-            ?result: top,
+            ?result: ::Hash[Symbol, top],
             ?status: Telnyx::Models::CallAIGatherEndedWebhookEvent::Data::Payload::status,
             ?to: String
           ) -> void
@@ -158,7 +158,7 @@ module Telnyx
             connection_id: String,
             from: String,
             message_history: ::Array[Telnyx::CallAIGatherEndedWebhookEvent::Data::Payload::MessageHistory],
-            result: top,
+            result: ::Hash[Symbol, top],
             status: Telnyx::Models::CallAIGatherEndedWebhookEvent::Data::Payload::status,
             to: String
           }

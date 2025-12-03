@@ -92,15 +92,17 @@ module Telnyx
       #
       # View a list of faxes
       #
-      # @overload list(filter: nil, page: nil, request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::FaxListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[created_at]
       #
-      # @param page [Telnyx::Models::FaxListParams::Page] Consolidated pagination parameter (deepObject style). Originally: page[size], pa
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::FaxListResponse]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Fax>]
       #
       # @see Telnyx::Models::FaxListParams
       def list(params = {})
@@ -108,8 +110,9 @@ module Telnyx
         @client.request(
           method: :get,
           path: "faxes",
-          query: parsed,
-          model: Telnyx::Models::FaxListResponse,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
+          model: Telnyx::Fax,
           options: options
         )
       end

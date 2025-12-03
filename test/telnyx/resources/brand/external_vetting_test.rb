@@ -13,13 +13,13 @@ class Telnyx::Test::Resources::Brand::ExternalVettingTest < Telnyx::Test::Resour
     end
   end
 
-  def test_import_required_params
+  def test_imports_required_params
     skip("Prism tests are disabled")
 
-    response = @telnyx.brand.external_vetting.import("brandId", evp_id: "evpId", vetting_id: "vettingId")
+    response = @telnyx.brand.external_vetting.imports("brandId", evp_id: "evpId", vetting_id: "vettingId")
 
     assert_pattern do
-      response => Telnyx::Models::Brand::ExternalVettingImportResponse
+      response => Telnyx::Models::Brand::ExternalVettingImportsResponse
     end
 
     assert_pattern do

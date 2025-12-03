@@ -21,7 +21,7 @@ module Telnyx
         ?filter: Telnyx::RoomCompositionListParams::Filter,
         ?page: Telnyx::RoomCompositionListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::RoomCompositionListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::RoomComposition]
 
       def delete: (
         String room_composition_id,

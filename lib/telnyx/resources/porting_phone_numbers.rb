@@ -16,7 +16,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::PortingPhoneNumberListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PortingPhoneNumberListResponse>]
       #
       # @see Telnyx::Models::PortingPhoneNumberListParams
       def list(params = {})
@@ -25,6 +25,7 @@ module Telnyx
           method: :get,
           path: "porting_phone_numbers",
           query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::PortingPhoneNumberListResponse,
           options: options
         )

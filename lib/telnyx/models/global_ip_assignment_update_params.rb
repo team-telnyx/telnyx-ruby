@@ -7,16 +7,18 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      # @!attribute body
+      # @!attribute global_ip_assignment_update_request
       #
-      #   @return [Telnyx::Models::GlobalIPAssignmentUpdateParams::Body]
-      required :body, -> { Telnyx::GlobalIPAssignmentUpdateParams::Body }
+      #   @return [Telnyx::Models::GlobalIPAssignmentUpdateParams::GlobalIPAssignmentUpdateRequest]
+      required :global_ip_assignment_update_request,
+               -> { Telnyx::GlobalIPAssignmentUpdateParams::GlobalIPAssignmentUpdateRequest },
+               api_name: :globalIpAssignmentUpdateRequest
 
-      # @!method initialize(body:, request_options: {})
-      #   @param body [Telnyx::Models::GlobalIPAssignmentUpdateParams::Body]
+      # @!method initialize(global_ip_assignment_update_request:, request_options: {})
+      #   @param global_ip_assignment_update_request [Telnyx::Models::GlobalIPAssignmentUpdateParams::GlobalIPAssignmentUpdateRequest]
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
-      class Body < Telnyx::Models::GlobalIPAssignment
+      class GlobalIPAssignmentUpdateRequest < Telnyx::Models::GlobalIPAssignment
         # @!method initialize
       end
     end

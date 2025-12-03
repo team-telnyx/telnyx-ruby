@@ -14,7 +14,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::MessagingURLDomainListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::MessagingURLDomainListResponse>]
       #
       # @see Telnyx::Models::MessagingURLDomainListParams
       def list(params = {})
@@ -23,6 +23,7 @@ module Telnyx
           method: :get,
           path: "messaging_url_domains",
           query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::MessagingURLDomainListResponse,
           options: options
         )

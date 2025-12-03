@@ -1,0 +1,13 @@
+module Telnyx
+  module Models
+    type enumeration_retrieve_response = ::Array[String] | top
+
+    module EnumerationRetrieveResponse
+      extend Telnyx::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Telnyx::Models::enumeration_retrieve_response]
+
+      StringArray: Telnyx::Internal::Type::Converter
+    end
+  end
+end

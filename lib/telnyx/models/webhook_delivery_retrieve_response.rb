@@ -252,8 +252,8 @@ module Telnyx
 
           # @!attribute payload
           #
-          #   @return [Object, nil]
-          optional :payload, Telnyx::Internal::Type::Unknown
+          #   @return [Hash{Symbol=>Object}, nil]
+          optional :payload, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
           # @!attribute record_type
           #   Identifies the type of the resource.
@@ -271,7 +271,7 @@ module Telnyx
           #
           #   @param occurred_at [Time] ISO 8601 datetime of when the event occurred.
           #
-          #   @param payload [Object]
+          #   @param payload [Hash{Symbol=>Object}]
           #
           #   @param record_type [Symbol, Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Webhook::RecordType] Identifies the type of the resource.
 

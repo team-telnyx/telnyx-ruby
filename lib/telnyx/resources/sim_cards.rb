@@ -40,9 +40,9 @@ module Telnyx
       #
       # Updates SIM card data
       #
-      # @overload update(id, authorized_imeis: nil, data_limit: nil, sim_card_group_id: nil, status: nil, tags: nil, request_options: {})
+      # @overload update(sim_card_id, authorized_imeis: nil, data_limit: nil, sim_card_group_id: nil, status: nil, tags: nil, request_options: {})
       #
-      # @param id [String] Identifies the SIM.
+      # @param sim_card_id [String] Identifies the SIM.
       #
       # @param authorized_imeis [Array<String>, nil] List of IMEIs authorized to use a given SIM card.
       #
@@ -59,11 +59,11 @@ module Telnyx
       # @return [Telnyx::Models::SimCardUpdateResponse]
       #
       # @see Telnyx::Models::SimCardUpdateParams
-      def update(id, params = {})
+      def update(sim_card_id, params = {})
         parsed, options = Telnyx::SimCardUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["sim_cards/%1$s", id],
+          path: ["sim_cards/%1$s", sim_card_id],
           body: parsed,
           model: Telnyx::Models::SimCardUpdateResponse,
           options: options
@@ -89,7 +89,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::SimCardListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::SimpleSimCard>]
       #
       # @see Telnyx::Models::SimCardListParams
       def list(params = {})
@@ -98,7 +98,8 @@ module Telnyx
           method: :get,
           path: "sim_cards",
           query: parsed.transform_keys(filter_sim_card_group_id: "filter[sim_card_group_id]"),
-          model: Telnyx::Models::SimCardListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::SimpleSimCard,
           options: options
         )
       end
@@ -211,7 +212,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::SimCardListWirelessConnectivityLogsResponse]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::SimCardListWirelessConnectivityLogsResponse>]
       #
       # @see Telnyx::Models::SimCardListWirelessConnectivityLogsParams
       def list_wireless_connectivity_logs(id, params = {})
@@ -220,6 +221,7 @@ module Telnyx
           method: :get,
           path: ["sim_cards/%1$s/wireless_connectivity_logs", id],
           query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::SimCardListWirelessConnectivityLogsResponse,
           options: options
         )

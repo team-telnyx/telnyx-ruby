@@ -32,7 +32,11 @@ module Telnyx
             page_number: Integer,
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::SimCardGroups::ActionListResponse)
+          ).returns(
+            Telnyx::Internal::DefaultFlatPagination[
+              Telnyx::SimCardGroups::SimCardGroupAction
+            ]
+          )
         end
         def list(
           # A valid SIM card group ID.

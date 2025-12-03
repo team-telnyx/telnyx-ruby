@@ -11,14 +11,16 @@ module Telnyx
         ?quantity: Integer,
         ?requirement_group_id: String,
         ?request_options: Telnyx::request_opts
-      ) -> top
+      ) -> Telnyx::Models::AdvancedOrderCreateResponse
 
       def retrieve: (
         String order_id,
         ?request_options: Telnyx::request_opts
-      ) -> top
+      ) -> Telnyx::Models::AdvancedOrderRetrieveResponse
 
-      def list: (?request_options: Telnyx::request_opts) -> top
+      def list: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AdvancedOrderListResponse
 
       def update_requirement_group: (
         String advanced_order_id,
@@ -31,7 +33,7 @@ module Telnyx
         ?quantity: Integer,
         ?requirement_group_id: String,
         ?request_options: Telnyx::request_opts
-      ) -> top
+      ) -> Telnyx::Models::AdvancedOrderUpdateRequirementGroupResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

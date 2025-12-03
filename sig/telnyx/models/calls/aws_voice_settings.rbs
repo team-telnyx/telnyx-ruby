@@ -1,6 +1,8 @@
 module Telnyx
   module Models
     module Calls
+      type aws_voice_settings = ::Hash[Symbol, top]
+
       AwsVoiceSettings: Telnyx::Internal::Type::Converter
     end
   end

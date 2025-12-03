@@ -40,6 +40,34 @@ response = telnyx.calls.dial(
 puts(response.data)
 ```
 
+### Pagination
+
+List methods in the Telnyx API are paginated.
+
+This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
+
+```ruby
+page = telnyx.access_ip_address.list
+
+# Fetch single item from page.
+access_ip_address = page.data[0]
+puts(access_ip_address.id)
+
+# Automatically fetches more pages as needed.
+page.auto_paging_each do |access_ip_address|
+  puts(access_ip_address.id)
+end
+```
+
+Alternatively, you can use the `#next_page?` and `#next_page` methods for more granular control working with pages.
+
+```ruby
+if page.next_page?
+  new_page = page.next_page
+  puts(new_page.data[0].id)
+end
+```
+
 ### File uploads
 
 Request parameters that correspond to file uploads can be passed as raw contents, a [`Pathname`](https://rubyapi.org/3.2/o/pathname) instance, [`StringIO`](https://rubyapi.org/3.2/o/stringio), or more.

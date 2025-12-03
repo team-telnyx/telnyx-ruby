@@ -25,7 +25,7 @@ module Telnyx
         ?filter: Telnyx::IPListParams::Filter,
         ?page: Telnyx::IPListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::IPListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::IP]
 
       def delete: (
         String id,

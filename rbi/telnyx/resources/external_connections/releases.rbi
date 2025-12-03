@@ -33,7 +33,11 @@ module Telnyx
               Telnyx::ExternalConnections::ReleaseListParams::Filter::OrHash,
             page: Telnyx::ExternalConnections::ReleaseListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::ExternalConnections::ReleaseListResponse)
+          ).returns(
+            Telnyx::Internal::DefaultPagination[
+              Telnyx::Models::ExternalConnections::ReleaseListResponse
+            ]
+          )
         end
         def list(
           # Identifies the resource.

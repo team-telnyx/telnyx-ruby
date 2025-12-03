@@ -39,16 +39,16 @@ module Telnyx
         # for specified time period and breakdown
         sig do
           params(
-            page: Telnyx::Reports::MdrUsageReportListParams::Page::OrHash,
+            page_number: Integer,
+            page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Reports::MdrUsageReportListResponse)
+          ).returns(
+            Telnyx::Internal::DefaultFlatPagination[
+              Telnyx::Reports::MdrUsageReport
+            ]
+          )
         end
-        def list(
-          # Consolidated page parameter (deepObject style). Originally: page[number],
-          # page[size]
-          page: nil,
-          request_options: {}
-        )
+        def list(page_number: nil, page_size: nil, request_options: {})
         end
 
         # Delete messaging usage report by id

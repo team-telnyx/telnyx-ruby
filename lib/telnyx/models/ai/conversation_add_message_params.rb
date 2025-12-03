@@ -47,7 +47,7 @@ module Telnyx
 
         # @!attribute tool_choice
         #
-        #   @return [String, Object, nil]
+        #   @return [String, Hash{Symbol=>Object}, nil]
         optional :tool_choice, union: -> { Telnyx::AI::ConversationAddMessageParams::ToolChoice }
 
         # @!method initialize(role:, content: nil, metadata: nil, name: nil, sent_at: nil, tool_call_id: nil, tool_calls: nil, tool_choice: nil, request_options: {})
@@ -58,7 +58,7 @@ module Telnyx
         #   @param sent_at [Time]
         #   @param tool_call_id [String]
         #   @param tool_calls [Array<Hash{Symbol=>Object}>]
-        #   @param tool_choice [String, Object]
+        #   @param tool_choice [String, Hash{Symbol=>Object}]
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
         module Metadata
@@ -100,10 +100,13 @@ module Telnyx
 
           variant String
 
-          variant Telnyx::Internal::Type::Unknown
+          variant -> { Telnyx::Models::AI::ConversationAddMessageParams::ToolChoice::ToolChoiceObjectMap }
 
           # @!method self.variants
-          #   @return [Array(String, Object)]
+          #   @return [Array(String, Hash{Symbol=>Object})]
+
+          # @type [Telnyx::Internal::Type::Converter]
+          ToolChoiceObjectMap = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
         end
       end
     end

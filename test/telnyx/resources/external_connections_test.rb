@@ -61,13 +61,32 @@ class Telnyx::Test::Resources::ExternalConnectionsTest < Telnyx::Test::ResourceT
     response = @telnyx.external_connections.list
 
     assert_pattern do
-      response => Telnyx::Models::ExternalConnectionListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::ExternalConnection
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::ExternalConnection]) | nil,
-        meta: Telnyx::ExternalVoiceIntegrationsPaginationMeta | nil
+      row => {
+        id: String | nil,
+        active: Telnyx::Internal::Type::Boolean | nil,
+        created_at: String | nil,
+        credential_active: Telnyx::Internal::Type::Boolean | nil,
+        external_sip_connection: Telnyx::ExternalConnection::ExternalSipConnection | nil,
+        inbound: Telnyx::ExternalConnection::Inbound | nil,
+        outbound: Telnyx::ExternalConnection::Outbound | nil,
+        record_type: String | nil,
+        tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
+        updated_at: String | nil,
+        webhook_api_version: Telnyx::ExternalConnection::WebhookAPIVersion | nil,
+        webhook_event_failover_url: String | nil,
+        webhook_event_url: String | nil,
+        webhook_timeout_secs: Integer | nil
       }
     end
   end

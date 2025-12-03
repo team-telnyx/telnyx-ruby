@@ -3,7 +3,7 @@ module Telnyx
     class Networks
       class DefaultGateway
         def create: (
-          String id,
+          String network_identifier,
           ?wireguard_peer_id: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Networks::DefaultGatewayCreateResponse

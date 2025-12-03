@@ -13,7 +13,7 @@ module Telnyx
           ?page: Telnyx::BundlePricing::BillingBundleListParams::Page,
           ?authorization_bearer: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::BundlePricing::BillingBundleListResponse
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::BundlePricing::BillingBundleSummary]
 
         def initialize: (client: Telnyx::Client) -> void
       end

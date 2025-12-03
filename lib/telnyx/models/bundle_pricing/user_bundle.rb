@@ -3,6 +3,7 @@
 module Telnyx
   module Models
     module BundlePricing
+      # @see Telnyx::Resources::BundlePricing::UserBundles#list
       class UserBundle < Telnyx::Internal::Type::BaseModel
         # @!attribute id
         #   User bundle's ID, this is used to identify the user bundle in the API.

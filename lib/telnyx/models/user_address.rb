@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::UserAddresses#list
     class UserAddress < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Uniquely identifies the user address.

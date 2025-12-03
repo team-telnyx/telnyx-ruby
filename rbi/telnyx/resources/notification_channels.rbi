@@ -40,7 +40,7 @@ module Telnyx
       # Update a notification channel.
       sig do
         params(
-          id: String,
+          notification_channel_id: String,
           channel_destination: String,
           channel_type_id: Telnyx::NotificationChannel::ChannelTypeID::OrSymbol,
           notification_profile_id: String,
@@ -49,7 +49,7 @@ module Telnyx
       end
       def update(
         # The id of the resource.
-        id,
+        notification_channel_id,
         # The destination associated with the channel type.
         channel_destination: nil,
         # A Channel Type ID
@@ -66,7 +66,9 @@ module Telnyx
           filter: Telnyx::NotificationChannelListParams::Filter::OrHash,
           page: Telnyx::NotificationChannelListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::NotificationChannelListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[Telnyx::NotificationChannel]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

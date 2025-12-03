@@ -22,8 +22,7 @@ module Telnyx
         {
           global_ip_id: String,
           health_check_params: ::Hash[Symbol, top],
-          health_check_type: String,
-          record_type: String
+          health_check_type: String
         }
 
       class Data < Telnyx::Models::Record
@@ -39,22 +38,16 @@ module Telnyx
 
         def health_check_type=: (String _) -> String
 
-        def record_type: -> String?
-
-        def record_type=: (String _) -> String
-
         def initialize: (
           ?global_ip_id: String,
           ?health_check_params: ::Hash[Symbol, top],
-          ?health_check_type: String,
-          ?record_type: String
+          ?health_check_type: String
         ) -> void
 
         def to_hash: -> {
           global_ip_id: String,
           health_check_params: ::Hash[Symbol, top],
-          health_check_type: String,
-          record_type: String
+          health_check_type: String
         }
       end
     end

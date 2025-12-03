@@ -63,7 +63,11 @@ module Telnyx
               Telnyx::ExternalConnections::UploadListParams::Filter::OrHash,
             page: Telnyx::ExternalConnections::UploadListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::ExternalConnections::UploadListResponse)
+          ).returns(
+            Telnyx::Internal::DefaultPagination[
+              Telnyx::ExternalConnections::Upload
+            ]
+          )
         end
         def list(
           # Identifies the resource.

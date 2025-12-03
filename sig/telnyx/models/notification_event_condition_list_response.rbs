@@ -2,164 +2,136 @@ module Telnyx
   module Models
     type notification_event_condition_list_response =
       {
-        data: ::Array[Telnyx::Models::NotificationEventConditionListResponse::Data],
-        meta: Telnyx::PaginationMeta
+        id: String,
+        allow_multiple_channels: bool,
+        associated_record_type: Telnyx::Models::NotificationEventConditionListResponse::associated_record_type,
+        asynchronous: bool,
+        created_at: Time,
+        description: String,
+        enabled: bool,
+        name: String,
+        notification_event_id: String,
+        parameters: ::Array[Telnyx::Models::NotificationEventConditionListResponse::Parameter],
+        supported_channels: ::Array[String],
+        updated_at: Time
       }
 
     class NotificationEventConditionListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: ::Array[Telnyx::Models::NotificationEventConditionListResponse::Data]?
+      attr_reader allow_multiple_channels: bool?
 
-      def data=: (
-        ::Array[Telnyx::Models::NotificationEventConditionListResponse::Data]
-      ) -> ::Array[Telnyx::Models::NotificationEventConditionListResponse::Data]
+      def allow_multiple_channels=: (bool) -> bool
 
-      attr_reader meta: Telnyx::PaginationMeta?
+      attr_reader associated_record_type: Telnyx::Models::NotificationEventConditionListResponse::associated_record_type?
 
-      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+      def associated_record_type=: (
+        Telnyx::Models::NotificationEventConditionListResponse::associated_record_type
+      ) -> Telnyx::Models::NotificationEventConditionListResponse::associated_record_type
+
+      attr_reader asynchronous: bool?
+
+      def asynchronous=: (bool) -> bool
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader description: String?
+
+      def description=: (String) -> String
+
+      attr_reader enabled: bool?
+
+      def enabled=: (bool) -> bool
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader notification_event_id: String?
+
+      def notification_event_id=: (String) -> String
+
+      attr_reader parameters: ::Array[Telnyx::Models::NotificationEventConditionListResponse::Parameter]?
+
+      def parameters=: (
+        ::Array[Telnyx::Models::NotificationEventConditionListResponse::Parameter]
+      ) -> ::Array[Telnyx::Models::NotificationEventConditionListResponse::Parameter]
+
+      attr_reader supported_channels: ::Array[String]?
+
+      def supported_channels=: (::Array[String]) -> ::Array[String]
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
 
       def initialize: (
-        ?data: ::Array[Telnyx::Models::NotificationEventConditionListResponse::Data],
-        ?meta: Telnyx::PaginationMeta
+        ?id: String,
+        ?allow_multiple_channels: bool,
+        ?associated_record_type: Telnyx::Models::NotificationEventConditionListResponse::associated_record_type,
+        ?asynchronous: bool,
+        ?created_at: Time,
+        ?description: String,
+        ?enabled: bool,
+        ?name: String,
+        ?notification_event_id: String,
+        ?parameters: ::Array[Telnyx::Models::NotificationEventConditionListResponse::Parameter],
+        ?supported_channels: ::Array[String],
+        ?updated_at: Time
       ) -> void
 
       def to_hash: -> {
-        data: ::Array[Telnyx::Models::NotificationEventConditionListResponse::Data],
-        meta: Telnyx::PaginationMeta
+        id: String,
+        allow_multiple_channels: bool,
+        associated_record_type: Telnyx::Models::NotificationEventConditionListResponse::associated_record_type,
+        asynchronous: bool,
+        created_at: Time,
+        description: String,
+        enabled: bool,
+        name: String,
+        notification_event_id: String,
+        parameters: ::Array[Telnyx::Models::NotificationEventConditionListResponse::Parameter],
+        supported_channels: ::Array[String],
+        updated_at: Time
       }
 
-      type data =
-        {
-          id: String,
-          allow_multiple_channels: bool,
-          associated_record_type: Telnyx::Models::NotificationEventConditionListResponse::Data::associated_record_type,
-          asynchronous: bool,
-          created_at: Time,
-          description: String,
-          enabled: bool,
-          name: String,
-          notification_event_id: String,
-          parameters: ::Array[Telnyx::Models::NotificationEventConditionListResponse::Data::Parameter],
-          supported_channels: ::Array[String],
-          updated_at: Time
-        }
+      type associated_record_type = :account | :phone_number
 
-      class Data < Telnyx::Internal::Type::BaseModel
-        attr_reader allow_multiple_channels: bool?
+      module AssociatedRecordType
+        extend Telnyx::Internal::Type::Enum
 
-        def allow_multiple_channels=: (bool) -> bool
+        ACCOUNT: :account
+        PHONE_NUMBER: :phone_number
 
-        attr_reader associated_record_type: Telnyx::Models::NotificationEventConditionListResponse::Data::associated_record_type?
+        def self?.values: -> ::Array[Telnyx::Models::NotificationEventConditionListResponse::associated_record_type]
+      end
 
-        def associated_record_type=: (
-          Telnyx::Models::NotificationEventConditionListResponse::Data::associated_record_type
-        ) -> Telnyx::Models::NotificationEventConditionListResponse::Data::associated_record_type
+      type parameter = { data_type: String, name: String, optional: bool }
 
-        attr_reader asynchronous: bool?
+      class Parameter < Telnyx::Internal::Type::BaseModel
+        attr_reader data_type: String?
 
-        def asynchronous=: (bool) -> bool
-
-        attr_reader created_at: Time?
-
-        def created_at=: (Time) -> Time
-
-        attr_reader description: String?
-
-        def description=: (String) -> String
-
-        attr_reader enabled: bool?
-
-        def enabled=: (bool) -> bool
+        def data_type=: (String) -> String
 
         attr_reader name: String?
 
         def name=: (String) -> String
 
-        attr_reader notification_event_id: String?
+        attr_reader optional: bool?
 
-        def notification_event_id=: (String) -> String
-
-        attr_reader parameters: ::Array[Telnyx::Models::NotificationEventConditionListResponse::Data::Parameter]?
-
-        def parameters=: (
-          ::Array[Telnyx::Models::NotificationEventConditionListResponse::Data::Parameter]
-        ) -> ::Array[Telnyx::Models::NotificationEventConditionListResponse::Data::Parameter]
-
-        attr_reader supported_channels: ::Array[String]?
-
-        def supported_channels=: (::Array[String]) -> ::Array[String]
-
-        attr_reader updated_at: Time?
-
-        def updated_at=: (Time) -> Time
-
-        attr_reader id: String?
-
-        def id=: (String) -> String
+        def optional=: (bool) -> bool
 
         def initialize: (
-          ?id: String,
-          ?allow_multiple_channels: bool,
-          ?associated_record_type: Telnyx::Models::NotificationEventConditionListResponse::Data::associated_record_type,
-          ?asynchronous: bool,
-          ?created_at: Time,
-          ?description: String,
-          ?enabled: bool,
+          ?data_type: String,
           ?name: String,
-          ?notification_event_id: String,
-          ?parameters: ::Array[Telnyx::Models::NotificationEventConditionListResponse::Data::Parameter],
-          ?supported_channels: ::Array[String],
-          ?updated_at: Time
+          ?optional: bool
         ) -> void
 
-        def to_hash: -> {
-          id: String,
-          allow_multiple_channels: bool,
-          associated_record_type: Telnyx::Models::NotificationEventConditionListResponse::Data::associated_record_type,
-          asynchronous: bool,
-          created_at: Time,
-          description: String,
-          enabled: bool,
-          name: String,
-          notification_event_id: String,
-          parameters: ::Array[Telnyx::Models::NotificationEventConditionListResponse::Data::Parameter],
-          supported_channels: ::Array[String],
-          updated_at: Time
-        }
-
-        type associated_record_type = :account | :phone_number
-
-        module AssociatedRecordType
-          extend Telnyx::Internal::Type::Enum
-
-          ACCOUNT: :account
-          PHONE_NUMBER: :phone_number
-
-          def self?.values: -> ::Array[Telnyx::Models::NotificationEventConditionListResponse::Data::associated_record_type]
-        end
-
-        type parameter = { data_type: String, name: String, optional: bool }
-
-        class Parameter < Telnyx::Internal::Type::BaseModel
-          attr_reader data_type: String?
-
-          def data_type=: (String) -> String
-
-          attr_reader name: String?
-
-          def name=: (String) -> String
-
-          attr_reader optional: bool?
-
-          def optional=: (bool) -> bool
-
-          def initialize: (
-            ?data_type: String,
-            ?name: String,
-            ?optional: bool
-          ) -> void
-
-          def to_hash: -> { data_type: String, name: String, optional: bool }
-        end
+        def to_hash: -> { data_type: String, name: String, optional: bool }
       end
     end
   end

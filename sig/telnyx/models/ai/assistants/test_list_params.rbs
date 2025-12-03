@@ -5,7 +5,8 @@ module Telnyx
         type test_list_params =
           {
             destination: String,
-            page: Telnyx::AI::Assistants::TestListParams::Page,
+            page_number: Integer,
+            page_size: Integer,
             telnyx_conversation_channel: String,
             test_suite: String
           }
@@ -19,11 +20,13 @@ module Telnyx
 
           def destination=: (String) -> String
 
-          attr_reader page: Telnyx::AI::Assistants::TestListParams::Page?
+          attr_reader page_number: Integer?
 
-          def page=: (
-            Telnyx::AI::Assistants::TestListParams::Page
-          ) -> Telnyx::AI::Assistants::TestListParams::Page
+          def page_number=: (Integer) -> Integer
+
+          attr_reader page_size: Integer?
+
+          def page_size=: (Integer) -> Integer
 
           attr_reader telnyx_conversation_channel: String?
 
@@ -35,7 +38,8 @@ module Telnyx
 
           def initialize: (
             ?destination: String,
-            ?page: Telnyx::AI::Assistants::TestListParams::Page,
+            ?page_number: Integer,
+            ?page_size: Integer,
             ?telnyx_conversation_channel: String,
             ?test_suite: String,
             ?request_options: Telnyx::request_opts
@@ -43,27 +47,12 @@ module Telnyx
 
           def to_hash: -> {
             destination: String,
-            page: Telnyx::AI::Assistants::TestListParams::Page,
+            page_number: Integer,
+            page_size: Integer,
             telnyx_conversation_channel: String,
             test_suite: String,
             request_options: Telnyx::RequestOptions
           }
-
-          type page = { number: Integer, size: Integer }
-
-          class Page < Telnyx::Internal::Type::BaseModel
-            attr_reader number: Integer?
-
-            def number=: (Integer) -> Integer
-
-            attr_reader size: Integer?
-
-            def size=: (Integer) -> Integer
-
-            def initialize: (?number: Integer, ?size: Integer) -> void
-
-            def to_hash: -> { number: Integer, size: Integer }
-          end
         end
       end
     end

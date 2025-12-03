@@ -71,31 +71,6 @@ module Telnyx
         sig { params(region_code: String).void }
         attr_writer :region_code
 
-        # The Border Gateway Protocol (BGP) Autonomous System Number (ASN). If null, value
-        # will be assigned by Telnyx.
-        sig { returns(Float) }
-        attr_accessor :bgp_asn
-
-        # The Virtual Private Cloud with which you would like to establish a cross
-        # connect.
-        sig do
-          returns(
-            Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::CloudProvider::TaggedSymbol
-          )
-        end
-        attr_accessor :cloud_provider
-
-        # The region where your Virtual Private Cloud hosts are located.<br /><br />The
-        # available regions can be found using the /virtual_cross_connect_regions
-        # endpoint.
-        sig { returns(String) }
-        attr_accessor :cloud_provider_region
-
-        # The identifier for your Virtual Private Cloud. The number will be different
-        # based upon your Cloud provider.
-        sig { returns(String) }
-        attr_accessor :primary_cloud_account_id
-
         # The desired throughput in Megabits per Second (Mbps) for your Virtual Cross
         # Connect.<br /><br />The available bandwidths can be found using the
         # /virtual_cross_connect_regions endpoint.
@@ -105,12 +80,56 @@ module Telnyx
         sig { params(bandwidth_mbps: Float).void }
         attr_writer :bandwidth_mbps
 
+        # The Border Gateway Protocol (BGP) Autonomous System Number (ASN). If null, value
+        # will be assigned by Telnyx.
+        sig { returns(T.nilable(Float)) }
+        attr_reader :bgp_asn
+
+        sig { params(bgp_asn: Float).void }
+        attr_writer :bgp_asn
+
+        # The Virtual Private Cloud with which you would like to establish a cross
+        # connect.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::CloudProvider::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :cloud_provider
+
+        sig do
+          params(
+            cloud_provider:
+              Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::CloudProvider::OrSymbol
+          ).void
+        end
+        attr_writer :cloud_provider
+
+        # The region where your Virtual Private Cloud hosts are located.<br /><br />The
+        # available regions can be found using the /virtual_cross_connect_regions
+        # endpoint.
+        sig { returns(T.nilable(String)) }
+        attr_reader :cloud_provider_region
+
+        sig { params(cloud_provider_region: String).void }
+        attr_writer :cloud_provider_region
+
         # The authentication key for BGP peer configuration.
         sig { returns(T.nilable(String)) }
         attr_reader :primary_bgp_key
 
         sig { params(primary_bgp_key: String).void }
         attr_writer :primary_bgp_key
+
+        # The identifier for your Virtual Private Cloud. The number will be different
+        # based upon your Cloud provider.
+        sig { returns(T.nilable(String)) }
+        attr_reader :primary_cloud_account_id
+
+        sig { params(primary_cloud_account_id: String).void }
+        attr_writer :primary_cloud_account_id
 
         # The IP address assigned for your side of the Virtual Cross
         # Connect.<br /><br />If none is provided, one will be generated for
@@ -250,11 +269,6 @@ module Telnyx
 
         sig do
           params(
-            bgp_asn: Float,
-            cloud_provider:
-              Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::CloudProvider::OrSymbol,
-            cloud_provider_region: String,
-            primary_cloud_account_id: String,
             id: String,
             created_at: String,
             record_type: String,
@@ -264,7 +278,12 @@ module Telnyx
             status: Telnyx::InterfaceStatus::OrSymbol,
             region_code: String,
             bandwidth_mbps: Float,
+            bgp_asn: Float,
+            cloud_provider:
+              Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::CloudProvider::OrSymbol,
+            cloud_provider_region: String,
             primary_bgp_key: String,
+            primary_cloud_account_id: String,
             primary_cloud_ip: String,
             primary_enabled: T::Boolean,
             primary_routing_announcement: T::Boolean,
@@ -280,19 +299,6 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
-          # The Border Gateway Protocol (BGP) Autonomous System Number (ASN). If null, value
-          # will be assigned by Telnyx.
-          bgp_asn:,
-          # The Virtual Private Cloud with which you would like to establish a cross
-          # connect.
-          cloud_provider:,
-          # The region where your Virtual Private Cloud hosts are located.<br /><br />The
-          # available regions can be found using the /virtual_cross_connect_regions
-          # endpoint.
-          cloud_provider_region:,
-          # The identifier for your Virtual Private Cloud. The number will be different
-          # based upon your Cloud provider.
-          primary_cloud_account_id:,
           # Identifies the resource.
           id: nil,
           # ISO 8601 formatted date-time indicating when the resource was created.
@@ -313,8 +319,21 @@ module Telnyx
           # Connect.<br /><br />The available bandwidths can be found using the
           # /virtual_cross_connect_regions endpoint.
           bandwidth_mbps: nil,
+          # The Border Gateway Protocol (BGP) Autonomous System Number (ASN). If null, value
+          # will be assigned by Telnyx.
+          bgp_asn: nil,
+          # The Virtual Private Cloud with which you would like to establish a cross
+          # connect.
+          cloud_provider: nil,
+          # The region where your Virtual Private Cloud hosts are located.<br /><br />The
+          # available regions can be found using the /virtual_cross_connect_regions
+          # endpoint.
+          cloud_provider_region: nil,
           # The authentication key for BGP peer configuration.
           primary_bgp_key: nil,
+          # The identifier for your Virtual Private Cloud. The number will be different
+          # based upon your Cloud provider.
+          primary_cloud_account_id: nil,
           # The IP address assigned for your side of the Virtual Cross
           # Connect.<br /><br />If none is provided, one will be generated for
           # you.<br /><br />This value can not be patched once the VXC has bene provisioned.
@@ -364,13 +383,13 @@ module Telnyx
               network_id: String,
               status: Telnyx::InterfaceStatus::TaggedSymbol,
               region_code: String,
+              bandwidth_mbps: Float,
               bgp_asn: Float,
               cloud_provider:
                 Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::CloudProvider::TaggedSymbol,
               cloud_provider_region: String,
-              primary_cloud_account_id: String,
-              bandwidth_mbps: Float,
               primary_bgp_key: String,
+              primary_cloud_account_id: String,
               primary_cloud_ip: String,
               primary_enabled: T::Boolean,
               primary_routing_announcement: T::Boolean,

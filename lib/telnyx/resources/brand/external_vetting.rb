@@ -24,14 +24,14 @@ module Telnyx
         end
 
         # Some parameter documentations has been truncated, see
-        # {Telnyx::Models::Brand::ExternalVettingImportParams} for more details.
+        # {Telnyx::Models::Brand::ExternalVettingImportsParams} for more details.
         #
         # This operation can be used to import an external vetting record from a
         # TCR-approved vetting provider. If the vetting provider confirms validity of the
         # record, it will be saved with the brand and will be considered for future
         # campaign qualification.
         #
-        # @overload import(brand_id, evp_id:, vetting_id:, vetting_token: nil, request_options: {})
+        # @overload imports(brand_id, evp_id:, vetting_id:, vetting_token: nil, request_options: {})
         #
         # @param brand_id [String]
         #
@@ -43,16 +43,16 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Brand::ExternalVettingImportResponse]
+        # @return [Telnyx::Models::Brand::ExternalVettingImportsResponse]
         #
-        # @see Telnyx::Models::Brand::ExternalVettingImportParams
-        def import(brand_id, params)
-          parsed, options = Telnyx::Brand::ExternalVettingImportParams.dump_request(params)
+        # @see Telnyx::Models::Brand::ExternalVettingImportsParams
+        def imports(brand_id, params)
+          parsed, options = Telnyx::Brand::ExternalVettingImportsParams.dump_request(params)
           @client.request(
             method: :put,
             path: ["brand/%1$s/externalVetting", brand_id],
             body: parsed,
-            model: Telnyx::Models::Brand::ExternalVettingImportResponse,
+            model: Telnyx::Models::Brand::ExternalVettingImportsResponse,
             options: options
           )
         end

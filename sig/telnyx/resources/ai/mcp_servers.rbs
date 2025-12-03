@@ -34,7 +34,7 @@ module Telnyx
           ?type: String,
           ?url: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::AI::mcp_server_list_response
+        ) -> Telnyx::Internal::DefaultFlatPaginationTopLevelArray[Telnyx::Models::AI::McpServerListResponse]
 
         def delete: (
           String mcp_server_id,

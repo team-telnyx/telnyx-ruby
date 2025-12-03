@@ -209,7 +209,11 @@ module Telnyx
           state: String,
           tcr_brand_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::BrandListResponse)
+        ).returns(
+          Telnyx::Internal::PerPagePaginationV2[
+            Telnyx::Models::BrandListResponse
+          ]
+        )
       end
       def list(
         # Filter results by the Telnyx Brand id

@@ -64,7 +64,7 @@ class Telnyx::Test::Resources::PhoneNumberCampaignsTest < Telnyx::Test::Resource
       @telnyx.phone_number_campaigns.update(
         "phoneNumber",
         campaign_id: "4b300178-131c-d902-d54e-72d90ba1620j",
-        body_phone_number: "+18005550199"
+        phone_number: "+18005550199"
       )
 
     assert_pattern do
@@ -93,14 +93,28 @@ class Telnyx::Test::Resources::PhoneNumberCampaignsTest < Telnyx::Test::Resource
     response = @telnyx.phone_number_campaigns.list
 
     assert_pattern do
-      response => Telnyx::Models::PhoneNumberCampaignListResponse
+      response => Telnyx::Internal::PerPagePaginationV2
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::PhoneNumberCampaign
     end
 
     assert_pattern do
-      response => {
-        page: Integer,
-        records: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumberCampaign]),
-        total_records: Integer
+      row => {
+        campaign_id: String,
+        created_at: String,
+        phone_number: String,
+        updated_at: String,
+        assignment_status: Telnyx::PhoneNumberCampaign::AssignmentStatus | nil,
+        brand_id: String | nil,
+        failure_reasons: String | nil,
+        tcr_brand_id: String | nil,
+        tcr_campaign_id: String | nil,
+        telnyx_campaign_id: String | nil
       }
     end
   end

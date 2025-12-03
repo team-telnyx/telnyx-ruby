@@ -327,10 +327,8 @@ module Telnyx
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        WEBHOOK_API_VERSION_1 =
-          T.let(:"1", Telnyx::IPConnection::WebhookAPIVersion::TaggedSymbol)
-        WEBHOOK_API_VERSION_2 =
-          T.let(:"2", Telnyx::IPConnection::WebhookAPIVersion::TaggedSymbol)
+        V1 = T.let(:"1", Telnyx::IPConnection::WebhookAPIVersion::TaggedSymbol)
+        V2 = T.let(:"2", Telnyx::IPConnection::WebhookAPIVersion::TaggedSymbol)
 
         sig do
           override.returns(

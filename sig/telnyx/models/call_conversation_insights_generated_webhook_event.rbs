@@ -189,12 +189,14 @@ module Telnyx
               result: Telnyx::Models::CallConversationInsightsGeneratedWebhookEvent::Data::Payload::Result::result
             }
 
-            type result = top | String
+            type result = ::Hash[Symbol, top] | String
 
             module Result
               extend Telnyx::Internal::Type::Union
 
               def self?.variants: -> ::Array[Telnyx::Models::CallConversationInsightsGeneratedWebhookEvent::Data::Payload::Result::result]
+
+              InsightObjectResultMap: Telnyx::Internal::Type::Converter
             end
           end
         end

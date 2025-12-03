@@ -57,13 +57,22 @@ class Telnyx::Test::Resources::NotificationProfilesTest < Telnyx::Test::Resource
     response = @telnyx.notification_profiles.list
 
     assert_pattern do
-      response => Telnyx::Models::NotificationProfileListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::NotificationProfile
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::NotificationProfile]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        created_at: Time | nil,
+        name: String | nil,
+        updated_at: Time | nil
       }
     end
   end

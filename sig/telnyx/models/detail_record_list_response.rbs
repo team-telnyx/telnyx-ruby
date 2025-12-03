@@ -1,1126 +1,1056 @@
 module Telnyx
   module Models
     type detail_record_list_response =
-      {
-        data: ::Array[Telnyx::Models::DetailRecordListResponse::data],
-        meta: Telnyx::Models::DetailRecordListResponse::Meta
-      }
-
-    class DetailRecordListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: ::Array[Telnyx::Models::DetailRecordListResponse::data]?
-
-      def data=: (
-        ::Array[Telnyx::Models::DetailRecordListResponse::data]
-      ) -> ::Array[Telnyx::Models::DetailRecordListResponse::data]
-
-      attr_reader meta: Telnyx::Models::DetailRecordListResponse::Meta?
-
-      def meta=: (
-        Telnyx::Models::DetailRecordListResponse::Meta
-      ) -> Telnyx::Models::DetailRecordListResponse::Meta
-
-      def initialize: (
-        ?data: ::Array[Telnyx::Models::DetailRecordListResponse::data],
-        ?meta: Telnyx::Models::DetailRecordListResponse::Meta
-      ) -> void
-
-      def to_hash: -> {
-        data: ::Array[Telnyx::Models::DetailRecordListResponse::data],
-        meta: Telnyx::Models::DetailRecordListResponse::Meta
-      }
-
-      type data =
-        Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord
-        | Telnyx::Models::DetailRecordListResponse::Data::ConferenceDetailRecord
-        | Telnyx::Models::DetailRecordListResponse::Data::ConferenceParticipantDetailRecord
-        | Telnyx::Models::DetailRecordListResponse::Data::AmdDetailRecord
-        | Telnyx::Models::DetailRecordListResponse::Data::VerifyDetailRecord
-        | Telnyx::Models::DetailRecordListResponse::Data::SimCardUsageDetailRecord
-        | Telnyx::Models::DetailRecordListResponse::Data::MediaStorageDetailRecord
-
-      module Data
-        extend Telnyx::Internal::Type::Union
-
-        type message_detail_record =
-          {
-            record_type: String,
-            carrier: String,
-            carrier_fee: String,
-            cld: String,
-            cli: String,
-            completed_at: Time,
-            cost: String,
-            country_code: String,
-            created_at: Time,
-            currency: String,
-            delivery_status: String,
-            delivery_status_failover_url: String,
-            delivery_status_webhook_url: String,
-            direction: Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::direction,
-            errors: ::Array[String],
-            fteu: bool,
-            mcc: String,
-            message_type: Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::message_type,
-            mnc: String,
-            on_net: bool,
-            parts: Integer,
-            profile_id: String,
-            profile_name: String,
-            rate: String,
-            sent_at: Time,
-            source_country_code: String,
-            status: Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::status,
-            tags: String,
-            updated_at: Time,
-            user_id: String,
-            uuid: String
-          }
-
-        class MessageDetailRecord < Telnyx::Internal::Type::BaseModel
-          attr_accessor record_type: String
-
-          attr_reader carrier: String?
-
-          def carrier=: (String) -> String
-
-          attr_reader carrier_fee: String?
-
-          def carrier_fee=: (String) -> String
-
-          attr_reader cld: String?
-
-          def cld=: (String) -> String
-
-          attr_reader cli: String?
-
-          def cli=: (String) -> String
-
-          attr_reader completed_at: Time?
-
-          def completed_at=: (Time) -> Time
-
-          attr_reader cost: String?
-
-          def cost=: (String) -> String
-
-          attr_reader country_code: String?
-
-          def country_code=: (String) -> String
-
-          attr_reader created_at: Time?
-
-          def created_at=: (Time) -> Time
-
-          attr_reader currency: String?
-
-          def currency=: (String) -> String
-
-          attr_reader delivery_status: String?
-
-          def delivery_status=: (String) -> String
-
-          attr_reader delivery_status_failover_url: String?
-
-          def delivery_status_failover_url=: (String) -> String
-
-          attr_reader delivery_status_webhook_url: String?
-
-          def delivery_status_webhook_url=: (String) -> String
-
-          attr_reader direction: Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::direction?
-
-          def direction=: (
-            Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::direction
-          ) -> Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::direction
-
-          attr_reader errors: ::Array[String]?
-
-          def errors=: (::Array[String]) -> ::Array[String]
-
-          attr_reader fteu: bool?
-
-          def fteu=: (bool) -> bool
-
-          attr_reader mcc: String?
-
-          def mcc=: (String) -> String
-
-          attr_reader message_type: Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::message_type?
-
-          def message_type=: (
-            Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::message_type
-          ) -> Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::message_type
-
-          attr_reader mnc: String?
-
-          def mnc=: (String) -> String
-
-          attr_reader on_net: bool?
-
-          def on_net=: (bool) -> bool
-
-          attr_reader parts: Integer?
-
-          def parts=: (Integer) -> Integer
-
-          attr_reader profile_id: String?
-
-          def profile_id=: (String) -> String
-
-          attr_reader profile_name: String?
-
-          def profile_name=: (String) -> String
-
-          attr_reader rate: String?
-
-          def rate=: (String) -> String
-
-          attr_reader sent_at: Time?
-
-          def sent_at=: (Time) -> Time
-
-          attr_reader source_country_code: String?
-
-          def source_country_code=: (String) -> String
-
-          attr_reader status: Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::status?
-
-          def status=: (
-            Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::status
-          ) -> Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::status
-
-          attr_reader tags: String?
-
-          def tags=: (String) -> String
-
-          attr_reader updated_at: Time?
-
-          def updated_at=: (Time) -> Time
-
-          attr_reader user_id: String?
-
-          def user_id=: (String) -> String
-
-          attr_reader uuid: String?
-
-          def uuid=: (String) -> String
-
-          def initialize: (
-            record_type: String,
-            ?carrier: String,
-            ?carrier_fee: String,
-            ?cld: String,
-            ?cli: String,
-            ?completed_at: Time,
-            ?cost: String,
-            ?country_code: String,
-            ?created_at: Time,
-            ?currency: String,
-            ?delivery_status: String,
-            ?delivery_status_failover_url: String,
-            ?delivery_status_webhook_url: String,
-            ?direction: Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::direction,
-            ?errors: ::Array[String],
-            ?fteu: bool,
-            ?mcc: String,
-            ?message_type: Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::message_type,
-            ?mnc: String,
-            ?on_net: bool,
-            ?parts: Integer,
-            ?profile_id: String,
-            ?profile_name: String,
-            ?rate: String,
-            ?sent_at: Time,
-            ?source_country_code: String,
-            ?status: Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::status,
-            ?tags: String,
-            ?updated_at: Time,
-            ?user_id: String,
-            ?uuid: String
-          ) -> void
-
-          def to_hash: -> {
-            record_type: String,
-            carrier: String,
-            carrier_fee: String,
-            cld: String,
-            cli: String,
-            completed_at: Time,
-            cost: String,
-            country_code: String,
-            created_at: Time,
-            currency: String,
-            delivery_status: String,
-            delivery_status_failover_url: String,
-            delivery_status_webhook_url: String,
-            direction: Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::direction,
-            errors: ::Array[String],
-            fteu: bool,
-            mcc: String,
-            message_type: Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::message_type,
-            mnc: String,
-            on_net: bool,
-            parts: Integer,
-            profile_id: String,
-            profile_name: String,
-            rate: String,
-            sent_at: Time,
-            source_country_code: String,
-            status: Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::status,
-            tags: String,
-            updated_at: Time,
-            user_id: String,
-            uuid: String
-          }
-
-          type direction = :inbound | :outbound
-
-          module Direction
-            extend Telnyx::Internal::Type::Enum
-
-            INBOUND: :inbound
-            OUTBOUND: :outbound
-
-            def self?.values: -> ::Array[Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::direction]
-          end
-
-          type message_type = :SMS | :MMS | :RCS
-
-          module MessageType
-            extend Telnyx::Internal::Type::Enum
-
-            SMS: :SMS
-            MMS: :MMS
-            RCS: :RCS
-
-            def self?.values: -> ::Array[Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::message_type]
-          end
-
-          type status =
-            :gw_timeout
-            | :delivered
-            | :dlr_unconfirmed
-            | :dlr_timeout
-            | :received
-            | :gw_reject
-            | :failed
-
-          module Status
-            extend Telnyx::Internal::Type::Enum
-
-            GW_TIMEOUT: :gw_timeout
-            DELIVERED: :delivered
-            DLR_UNCONFIRMED: :dlr_unconfirmed
-            DLR_TIMEOUT: :dlr_timeout
-            RECEIVED: :received
-            GW_REJECT: :gw_reject
-            FAILED: :failed
-
-            def self?.values: -> ::Array[Telnyx::Models::DetailRecordListResponse::Data::MessageDetailRecord::status]
-          end
-        end
-
-        type conference_detail_record =
-          {
-            record_type: String,
-            id: String,
-            call_leg_id: String,
-            call_sec: Integer,
-            call_session_id: String,
-            connection_id: String,
-            ended_at: Time,
-            expires_at: Time,
-            is_telnyx_billable: bool,
-            name: String,
-            participant_call_sec: Integer,
-            participant_count: Integer,
-            region: String,
-            started_at: Time,
-            user_id: String
-          }
-
-        class ConferenceDetailRecord < Telnyx::Internal::Type::BaseModel
-          attr_accessor record_type: String
-
-          attr_reader id: String?
-
-          def id=: (String) -> String
-
-          attr_reader call_leg_id: String?
-
-          def call_leg_id=: (String) -> String
-
-          attr_reader call_sec: Integer?
-
-          def call_sec=: (Integer) -> Integer
-
-          attr_reader call_session_id: String?
-
-          def call_session_id=: (String) -> String
-
-          attr_reader connection_id: String?
-
-          def connection_id=: (String) -> String
-
-          attr_reader ended_at: Time?
-
-          def ended_at=: (Time) -> Time
-
-          attr_reader expires_at: Time?
-
-          def expires_at=: (Time) -> Time
-
-          attr_reader is_telnyx_billable: bool?
-
-          def is_telnyx_billable=: (bool) -> bool
-
-          attr_reader name: String?
-
-          def name=: (String) -> String
-
-          attr_reader participant_call_sec: Integer?
-
-          def participant_call_sec=: (Integer) -> Integer
-
-          attr_reader participant_count: Integer?
-
-          def participant_count=: (Integer) -> Integer
-
-          attr_reader region: String?
-
-          def region=: (String) -> String
-
-          attr_reader started_at: Time?
-
-          def started_at=: (Time) -> Time
-
-          attr_reader user_id: String?
-
-          def user_id=: (String) -> String
-
-          def initialize: (
-            record_type: String,
-            ?id: String,
-            ?call_leg_id: String,
-            ?call_sec: Integer,
-            ?call_session_id: String,
-            ?connection_id: String,
-            ?ended_at: Time,
-            ?expires_at: Time,
-            ?is_telnyx_billable: bool,
-            ?name: String,
-            ?participant_call_sec: Integer,
-            ?participant_count: Integer,
-            ?region: String,
-            ?started_at: Time,
-            ?user_id: String
-          ) -> void
-
-          def to_hash: -> {
-            record_type: String,
-            id: String,
-            call_leg_id: String,
-            call_sec: Integer,
-            call_session_id: String,
-            connection_id: String,
-            ended_at: Time,
-            expires_at: Time,
-            is_telnyx_billable: bool,
-            name: String,
-            participant_call_sec: Integer,
-            participant_count: Integer,
-            region: String,
-            started_at: Time,
-            user_id: String
-          }
-        end
-
-        type conference_participant_detail_record =
-          {
-            record_type: String,
-            id: String,
-            billed_sec: Integer,
-            call_leg_id: String,
-            call_sec: Integer,
-            call_session_id: String,
-            conference_id: String,
-            cost: String,
-            currency: String,
-            destination_number: String,
-            is_telnyx_billable: bool,
-            joined_at: Time,
-            left_at: Time,
-            originating_number: String,
-            rate: String,
-            rate_measured_in: String,
-            user_id: String
-          }
-
-        class ConferenceParticipantDetailRecord < Telnyx::Internal::Type::BaseModel
-          attr_accessor record_type: String
-
-          attr_reader id: String?
-
-          def id=: (String) -> String
-
-          attr_reader billed_sec: Integer?
-
-          def billed_sec=: (Integer) -> Integer
-
-          attr_reader call_leg_id: String?
-
-          def call_leg_id=: (String) -> String
-
-          attr_reader call_sec: Integer?
-
-          def call_sec=: (Integer) -> Integer
-
-          attr_reader call_session_id: String?
-
-          def call_session_id=: (String) -> String
-
-          attr_reader conference_id: String?
-
-          def conference_id=: (String) -> String
-
-          attr_reader cost: String?
-
-          def cost=: (String) -> String
-
-          attr_reader currency: String?
-
-          def currency=: (String) -> String
-
-          attr_reader destination_number: String?
-
-          def destination_number=: (String) -> String
-
-          attr_reader is_telnyx_billable: bool?
-
-          def is_telnyx_billable=: (bool) -> bool
-
-          attr_reader joined_at: Time?
-
-          def joined_at=: (Time) -> Time
-
-          attr_reader left_at: Time?
-
-          def left_at=: (Time) -> Time
-
-          attr_reader originating_number: String?
-
-          def originating_number=: (String) -> String
-
-          attr_reader rate: String?
-
-          def rate=: (String) -> String
-
-          attr_reader rate_measured_in: String?
-
-          def rate_measured_in=: (String) -> String
-
-          attr_reader user_id: String?
-
-          def user_id=: (String) -> String
-
-          def initialize: (
-            record_type: String,
-            ?id: String,
-            ?billed_sec: Integer,
-            ?call_leg_id: String,
-            ?call_sec: Integer,
-            ?call_session_id: String,
-            ?conference_id: String,
-            ?cost: String,
-            ?currency: String,
-            ?destination_number: String,
-            ?is_telnyx_billable: bool,
-            ?joined_at: Time,
-            ?left_at: Time,
-            ?originating_number: String,
-            ?rate: String,
-            ?rate_measured_in: String,
-            ?user_id: String
-          ) -> void
-
-          def to_hash: -> {
-            record_type: String,
-            id: String,
-            billed_sec: Integer,
-            call_leg_id: String,
-            call_sec: Integer,
-            call_session_id: String,
-            conference_id: String,
-            cost: String,
-            currency: String,
-            destination_number: String,
-            is_telnyx_billable: bool,
-            joined_at: Time,
-            left_at: Time,
-            originating_number: String,
-            rate: String,
-            rate_measured_in: String,
-            user_id: String
-          }
-        end
-
-        type amd_detail_record =
-          {
-            record_type: String,
-            id: String,
-            billing_group_id: String,
-            billing_group_name: String,
-            call_leg_id: String,
-            call_session_id: String,
-            connection_id: String,
-            connection_name: String,
-            cost: String,
-            currency: String,
-            feature: Telnyx::Models::DetailRecordListResponse::Data::AmdDetailRecord::feature,
-            invoked_at: Time,
-            is_telnyx_billable: bool,
-            rate: String,
-            rate_measured_in: String,
-            tags: String
-          }
-
-        class AmdDetailRecord < Telnyx::Internal::Type::BaseModel
-          attr_accessor record_type: String
-
-          attr_reader id: String?
-
-          def id=: (String) -> String
-
-          attr_reader billing_group_id: String?
-
-          def billing_group_id=: (String) -> String
-
-          attr_reader billing_group_name: String?
-
-          def billing_group_name=: (String) -> String
-
-          attr_reader call_leg_id: String?
-
-          def call_leg_id=: (String) -> String
-
-          attr_reader call_session_id: String?
-
-          def call_session_id=: (String) -> String
-
-          attr_reader connection_id: String?
-
-          def connection_id=: (String) -> String
-
-          attr_reader connection_name: String?
-
-          def connection_name=: (String) -> String
-
-          attr_reader cost: String?
-
-          def cost=: (String) -> String
-
-          attr_reader currency: String?
-
-          def currency=: (String) -> String
-
-          attr_reader feature: Telnyx::Models::DetailRecordListResponse::Data::AmdDetailRecord::feature?
-
-          def feature=: (
-            Telnyx::Models::DetailRecordListResponse::Data::AmdDetailRecord::feature
-          ) -> Telnyx::Models::DetailRecordListResponse::Data::AmdDetailRecord::feature
-
-          attr_reader invoked_at: Time?
-
-          def invoked_at=: (Time) -> Time
-
-          attr_reader is_telnyx_billable: bool?
-
-          def is_telnyx_billable=: (bool) -> bool
-
-          attr_reader rate: String?
-
-          def rate=: (String) -> String
-
-          attr_reader rate_measured_in: String?
-
-          def rate_measured_in=: (String) -> String
-
-          attr_reader tags: String?
-
-          def tags=: (String) -> String
-
-          def initialize: (
-            record_type: String,
-            ?id: String,
-            ?billing_group_id: String,
-            ?billing_group_name: String,
-            ?call_leg_id: String,
-            ?call_session_id: String,
-            ?connection_id: String,
-            ?connection_name: String,
-            ?cost: String,
-            ?currency: String,
-            ?feature: Telnyx::Models::DetailRecordListResponse::Data::AmdDetailRecord::feature,
-            ?invoked_at: Time,
-            ?is_telnyx_billable: bool,
-            ?rate: String,
-            ?rate_measured_in: String,
-            ?tags: String
-          ) -> void
-
-          def to_hash: -> {
-            record_type: String,
-            id: String,
-            billing_group_id: String,
-            billing_group_name: String,
-            call_leg_id: String,
-            call_session_id: String,
-            connection_id: String,
-            connection_name: String,
-            cost: String,
-            currency: String,
-            feature: Telnyx::Models::DetailRecordListResponse::Data::AmdDetailRecord::feature,
-            invoked_at: Time,
-            is_telnyx_billable: bool,
-            rate: String,
-            rate_measured_in: String,
-            tags: String
-          }
-
-          type feature = :PREMIUM
-
-          module Feature
-            extend Telnyx::Internal::Type::Enum
-
-            PREMIUM: :PREMIUM
-
-            def self?.values: -> ::Array[Telnyx::Models::DetailRecordListResponse::Data::AmdDetailRecord::feature]
-          end
-        end
-
-        type verify_detail_record =
-          {
-            record_type: String,
-            id: String,
-            created_at: Time,
-            currency: String,
-            delivery_status: String,
-            destination_phone_number: String,
-            rate: String,
-            rate_measured_in: String,
-            updated_at: Time,
-            verification_status: String,
-            verify_channel_id: String,
-            verify_channel_type: Telnyx::Models::DetailRecordListResponse::Data::VerifyDetailRecord::verify_channel_type,
-            verify_profile_id: String,
-            verify_usage_fee: String
-          }
-
-        class VerifyDetailRecord < Telnyx::Internal::Type::BaseModel
-          attr_accessor record_type: String
-
-          attr_reader id: String?
-
-          def id=: (String) -> String
-
-          attr_reader created_at: Time?
-
-          def created_at=: (Time) -> Time
-
-          attr_reader currency: String?
-
-          def currency=: (String) -> String
-
-          attr_reader delivery_status: String?
-
-          def delivery_status=: (String) -> String
-
-          attr_reader destination_phone_number: String?
-
-          def destination_phone_number=: (String) -> String
-
-          attr_reader rate: String?
-
-          def rate=: (String) -> String
-
-          attr_reader rate_measured_in: String?
-
-          def rate_measured_in=: (String) -> String
-
-          attr_reader updated_at: Time?
-
-          def updated_at=: (Time) -> Time
-
-          attr_reader verification_status: String?
-
-          def verification_status=: (String) -> String
-
-          attr_reader verify_channel_id: String?
-
-          def verify_channel_id=: (String) -> String
-
-          attr_reader verify_channel_type: Telnyx::Models::DetailRecordListResponse::Data::VerifyDetailRecord::verify_channel_type?
-
-          def verify_channel_type=: (
-            Telnyx::Models::DetailRecordListResponse::Data::VerifyDetailRecord::verify_channel_type
-          ) -> Telnyx::Models::DetailRecordListResponse::Data::VerifyDetailRecord::verify_channel_type
-
-          attr_reader verify_profile_id: String?
-
-          def verify_profile_id=: (String) -> String
-
-          attr_reader verify_usage_fee: String?
-
-          def verify_usage_fee=: (String) -> String
-
-          def initialize: (
-            record_type: String,
-            ?id: String,
-            ?created_at: Time,
-            ?currency: String,
-            ?delivery_status: String,
-            ?destination_phone_number: String,
-            ?rate: String,
-            ?rate_measured_in: String,
-            ?updated_at: Time,
-            ?verification_status: String,
-            ?verify_channel_id: String,
-            ?verify_channel_type: Telnyx::Models::DetailRecordListResponse::Data::VerifyDetailRecord::verify_channel_type,
-            ?verify_profile_id: String,
-            ?verify_usage_fee: String
-          ) -> void
-
-          def to_hash: -> {
-            record_type: String,
-            id: String,
-            created_at: Time,
-            currency: String,
-            delivery_status: String,
-            destination_phone_number: String,
-            rate: String,
-            rate_measured_in: String,
-            updated_at: Time,
-            verification_status: String,
-            verify_channel_id: String,
-            verify_channel_type: Telnyx::Models::DetailRecordListResponse::Data::VerifyDetailRecord::verify_channel_type,
-            verify_profile_id: String,
-            verify_usage_fee: String
-          }
-
-          type verify_channel_type = :sms | :psd2 | :call | :flashcall
-
-          module VerifyChannelType
-            extend Telnyx::Internal::Type::Enum
-
-            SMS: :sms
-            PSD2: :psd2
-            CALL: :call
-            FLASHCALL: :flashcall
-
-            def self?.values: -> ::Array[Telnyx::Models::DetailRecordListResponse::Data::VerifyDetailRecord::verify_channel_type]
-          end
-        end
-
-        type sim_card_usage_detail_record =
-          {
-            record_type: String,
-            id: String,
-            closed_at: Time,
-            created_at: Time,
-            currency: String,
-            data_cost: Float,
-            data_rate: String,
-            data_unit: String,
-            downlink_data: Float,
-            imsi: String,
-            ip_address: String,
-            mcc: String,
-            mnc: String,
-            phone_number: String,
-            sim_card_id: String,
-            sim_card_tags: String,
-            sim_group_id: String,
-            sim_group_name: String,
-            uplink_data: Float
-          }
-
-        class SimCardUsageDetailRecord < Telnyx::Internal::Type::BaseModel
-          attr_accessor record_type: String
-
-          attr_reader id: String?
-
-          def id=: (String) -> String
-
-          attr_reader closed_at: Time?
-
-          def closed_at=: (Time) -> Time
-
-          attr_reader created_at: Time?
-
-          def created_at=: (Time) -> Time
-
-          attr_reader currency: String?
-
-          def currency=: (String) -> String
-
-          attr_reader data_cost: Float?
-
-          def data_cost=: (Float) -> Float
-
-          attr_reader data_rate: String?
-
-          def data_rate=: (String) -> String
-
-          attr_reader data_unit: String?
-
-          def data_unit=: (String) -> String
-
-          attr_reader downlink_data: Float?
-
-          def downlink_data=: (Float) -> Float
-
-          attr_reader imsi: String?
-
-          def imsi=: (String) -> String
-
-          attr_reader ip_address: String?
-
-          def ip_address=: (String) -> String
-
-          attr_reader mcc: String?
-
-          def mcc=: (String) -> String
-
-          attr_reader mnc: String?
-
-          def mnc=: (String) -> String
-
-          attr_reader phone_number: String?
-
-          def phone_number=: (String) -> String
-
-          attr_reader sim_card_id: String?
-
-          def sim_card_id=: (String) -> String
-
-          attr_reader sim_card_tags: String?
-
-          def sim_card_tags=: (String) -> String
-
-          attr_reader sim_group_id: String?
-
-          def sim_group_id=: (String) -> String
-
-          attr_reader sim_group_name: String?
-
-          def sim_group_name=: (String) -> String
-
-          attr_reader uplink_data: Float?
-
-          def uplink_data=: (Float) -> Float
-
-          def initialize: (
-            record_type: String,
-            ?id: String,
-            ?closed_at: Time,
-            ?created_at: Time,
-            ?currency: String,
-            ?data_cost: Float,
-            ?data_rate: String,
-            ?data_unit: String,
-            ?downlink_data: Float,
-            ?imsi: String,
-            ?ip_address: String,
-            ?mcc: String,
-            ?mnc: String,
-            ?phone_number: String,
-            ?sim_card_id: String,
-            ?sim_card_tags: String,
-            ?sim_group_id: String,
-            ?sim_group_name: String,
-            ?uplink_data: Float
-          ) -> void
-
-          def to_hash: -> {
-            record_type: String,
-            id: String,
-            closed_at: Time,
-            created_at: Time,
-            currency: String,
-            data_cost: Float,
-            data_rate: String,
-            data_unit: String,
-            downlink_data: Float,
-            imsi: String,
-            ip_address: String,
-            mcc: String,
-            mnc: String,
-            phone_number: String,
-            sim_card_id: String,
-            sim_card_tags: String,
-            sim_group_id: String,
-            sim_group_name: String,
-            uplink_data: Float
-          }
-        end
-
-        type media_storage_detail_record =
-          {
-            record_type: String,
-            id: String,
-            action_type: String,
-            asset_id: String,
-            cost: String,
-            created_at: Time,
-            currency: String,
-            link_channel_id: String,
-            link_channel_type: String,
-            org_id: String,
-            rate: String,
-            rate_measured_in: String,
-            status: String,
-            user_id: String,
-            webhook_id: String
-          }
-
-        class MediaStorageDetailRecord < Telnyx::Internal::Type::BaseModel
-          attr_accessor record_type: String
-
-          attr_reader id: String?
-
-          def id=: (String) -> String
-
-          attr_reader action_type: String?
-
-          def action_type=: (String) -> String
-
-          attr_reader asset_id: String?
-
-          def asset_id=: (String) -> String
-
-          attr_reader cost: String?
-
-          def cost=: (String) -> String
-
-          attr_reader created_at: Time?
-
-          def created_at=: (Time) -> Time
-
-          attr_reader currency: String?
-
-          def currency=: (String) -> String
-
-          attr_reader link_channel_id: String?
-
-          def link_channel_id=: (String) -> String
-
-          attr_reader link_channel_type: String?
-
-          def link_channel_type=: (String) -> String
-
-          attr_reader org_id: String?
-
-          def org_id=: (String) -> String
-
-          attr_reader rate: String?
-
-          def rate=: (String) -> String
-
-          attr_reader rate_measured_in: String?
-
-          def rate_measured_in=: (String) -> String
-
-          attr_reader status: String?
-
-          def status=: (String) -> String
-
-          attr_reader user_id: String?
-
-          def user_id=: (String) -> String
-
-          attr_reader webhook_id: String?
-
-          def webhook_id=: (String) -> String
-
-          def initialize: (
-            record_type: String,
-            ?id: String,
-            ?action_type: String,
-            ?asset_id: String,
-            ?cost: String,
-            ?created_at: Time,
-            ?currency: String,
-            ?link_channel_id: String,
-            ?link_channel_type: String,
-            ?org_id: String,
-            ?rate: String,
-            ?rate_measured_in: String,
-            ?status: String,
-            ?user_id: String,
-            ?webhook_id: String
-          ) -> void
-
-          def to_hash: -> {
-            record_type: String,
-            id: String,
-            action_type: String,
-            asset_id: String,
-            cost: String,
-            created_at: Time,
-            currency: String,
-            link_channel_id: String,
-            link_channel_type: String,
-            org_id: String,
-            rate: String,
-            rate_measured_in: String,
-            status: String,
-            user_id: String,
-            webhook_id: String
-          }
-        end
-
-        def self?.variants: -> ::Array[Telnyx::Models::DetailRecordListResponse::data]
-      end
-
-      type meta =
+      Telnyx::Models::DetailRecordListResponse::MessageDetailRecord
+      | Telnyx::Models::DetailRecordListResponse::ConferenceDetailRecord
+      | Telnyx::Models::DetailRecordListResponse::ConferenceParticipantDetailRecord
+      | Telnyx::Models::DetailRecordListResponse::AmdDetailRecord
+      | Telnyx::Models::DetailRecordListResponse::VerifyDetailRecord
+      | Telnyx::Models::DetailRecordListResponse::SimCardUsageDetailRecord
+      | Telnyx::Models::DetailRecordListResponse::MediaStorageDetailRecord
+
+    module DetailRecordListResponse
+      extend Telnyx::Internal::Type::Union
+
+      type message_detail_record =
         {
-          page_number: Integer,
-          page_size: Integer,
-          total_pages: Integer,
-          total_results: Integer
+          record_type: String,
+          carrier: String,
+          carrier_fee: String,
+          cld: String,
+          cli: String,
+          completed_at: Time,
+          cost: String,
+          country_code: String,
+          created_at: Time,
+          currency: String,
+          delivery_status: String,
+          delivery_status_failover_url: String,
+          delivery_status_webhook_url: String,
+          direction: Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::direction,
+          errors: ::Array[String],
+          fteu: bool,
+          mcc: String,
+          message_type: Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::message_type,
+          mnc: String,
+          on_net: bool,
+          parts: Integer,
+          profile_id: String,
+          profile_name: String,
+          rate: String,
+          sent_at: Time,
+          source_country_code: String,
+          status: Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::status,
+          tags: String,
+          updated_at: Time,
+          user_id: String,
+          uuid: String
         }
 
-      class Meta < Telnyx::Internal::Type::BaseModel
-        attr_reader page_number: Integer?
+      class MessageDetailRecord < Telnyx::Internal::Type::BaseModel
+        attr_accessor record_type: String
 
-        def page_number=: (Integer) -> Integer
+        attr_reader carrier: String?
 
-        attr_reader page_size: Integer?
+        def carrier=: (String) -> String
 
-        def page_size=: (Integer) -> Integer
+        attr_reader carrier_fee: String?
 
-        attr_reader total_pages: Integer?
+        def carrier_fee=: (String) -> String
 
-        def total_pages=: (Integer) -> Integer
+        attr_reader cld: String?
 
-        attr_reader total_results: Integer?
+        def cld=: (String) -> String
 
-        def total_results=: (Integer) -> Integer
+        attr_reader cli: String?
+
+        def cli=: (String) -> String
+
+        attr_reader completed_at: Time?
+
+        def completed_at=: (Time) -> Time
+
+        attr_reader cost: String?
+
+        def cost=: (String) -> String
+
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader currency: String?
+
+        def currency=: (String) -> String
+
+        attr_reader delivery_status: String?
+
+        def delivery_status=: (String) -> String
+
+        attr_reader delivery_status_failover_url: String?
+
+        def delivery_status_failover_url=: (String) -> String
+
+        attr_reader delivery_status_webhook_url: String?
+
+        def delivery_status_webhook_url=: (String) -> String
+
+        attr_reader direction: Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::direction?
+
+        def direction=: (
+          Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::direction
+        ) -> Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::direction
+
+        attr_reader errors: ::Array[String]?
+
+        def errors=: (::Array[String]) -> ::Array[String]
+
+        attr_reader fteu: bool?
+
+        def fteu=: (bool) -> bool
+
+        attr_reader mcc: String?
+
+        def mcc=: (String) -> String
+
+        attr_reader message_type: Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::message_type?
+
+        def message_type=: (
+          Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::message_type
+        ) -> Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::message_type
+
+        attr_reader mnc: String?
+
+        def mnc=: (String) -> String
+
+        attr_reader on_net: bool?
+
+        def on_net=: (bool) -> bool
+
+        attr_reader parts: Integer?
+
+        def parts=: (Integer) -> Integer
+
+        attr_reader profile_id: String?
+
+        def profile_id=: (String) -> String
+
+        attr_reader profile_name: String?
+
+        def profile_name=: (String) -> String
+
+        attr_reader rate: String?
+
+        def rate=: (String) -> String
+
+        attr_reader sent_at: Time?
+
+        def sent_at=: (Time) -> Time
+
+        attr_reader source_country_code: String?
+
+        def source_country_code=: (String) -> String
+
+        attr_reader status: Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::status?
+
+        def status=: (
+          Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::status
+        ) -> Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::status
+
+        attr_reader tags: String?
+
+        def tags=: (String) -> String
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_reader user_id: String?
+
+        def user_id=: (String) -> String
+
+        attr_reader uuid: String?
+
+        def uuid=: (String) -> String
 
         def initialize: (
-          ?page_number: Integer,
-          ?page_size: Integer,
-          ?total_pages: Integer,
-          ?total_results: Integer
+          record_type: String,
+          ?carrier: String,
+          ?carrier_fee: String,
+          ?cld: String,
+          ?cli: String,
+          ?completed_at: Time,
+          ?cost: String,
+          ?country_code: String,
+          ?created_at: Time,
+          ?currency: String,
+          ?delivery_status: String,
+          ?delivery_status_failover_url: String,
+          ?delivery_status_webhook_url: String,
+          ?direction: Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::direction,
+          ?errors: ::Array[String],
+          ?fteu: bool,
+          ?mcc: String,
+          ?message_type: Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::message_type,
+          ?mnc: String,
+          ?on_net: bool,
+          ?parts: Integer,
+          ?profile_id: String,
+          ?profile_name: String,
+          ?rate: String,
+          ?sent_at: Time,
+          ?source_country_code: String,
+          ?status: Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::status,
+          ?tags: String,
+          ?updated_at: Time,
+          ?user_id: String,
+          ?uuid: String
         ) -> void
 
         def to_hash: -> {
-          page_number: Integer,
-          page_size: Integer,
-          total_pages: Integer,
-          total_results: Integer
+          record_type: String,
+          carrier: String,
+          carrier_fee: String,
+          cld: String,
+          cli: String,
+          completed_at: Time,
+          cost: String,
+          country_code: String,
+          created_at: Time,
+          currency: String,
+          delivery_status: String,
+          delivery_status_failover_url: String,
+          delivery_status_webhook_url: String,
+          direction: Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::direction,
+          errors: ::Array[String],
+          fteu: bool,
+          mcc: String,
+          message_type: Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::message_type,
+          mnc: String,
+          on_net: bool,
+          parts: Integer,
+          profile_id: String,
+          profile_name: String,
+          rate: String,
+          sent_at: Time,
+          source_country_code: String,
+          status: Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::status,
+          tags: String,
+          updated_at: Time,
+          user_id: String,
+          uuid: String
+        }
+
+        type direction = :inbound | :outbound
+
+        module Direction
+          extend Telnyx::Internal::Type::Enum
+
+          INBOUND: :inbound
+          OUTBOUND: :outbound
+
+          def self?.values: -> ::Array[Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::direction]
+        end
+
+        type message_type = :SMS | :MMS | :RCS
+
+        module MessageType
+          extend Telnyx::Internal::Type::Enum
+
+          SMS: :SMS
+          MMS: :MMS
+          RCS: :RCS
+
+          def self?.values: -> ::Array[Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::message_type]
+        end
+
+        type status =
+          :gw_timeout
+          | :delivered
+          | :dlr_unconfirmed
+          | :dlr_timeout
+          | :received
+          | :gw_reject
+          | :failed
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          GW_TIMEOUT: :gw_timeout
+          DELIVERED: :delivered
+          DLR_UNCONFIRMED: :dlr_unconfirmed
+          DLR_TIMEOUT: :dlr_timeout
+          RECEIVED: :received
+          GW_REJECT: :gw_reject
+          FAILED: :failed
+
+          def self?.values: -> ::Array[Telnyx::Models::DetailRecordListResponse::MessageDetailRecord::status]
+        end
+      end
+
+      type conference_detail_record =
+        {
+          record_type: String,
+          id: String,
+          call_leg_id: String,
+          call_sec: Integer,
+          call_session_id: String,
+          connection_id: String,
+          ended_at: Time,
+          expires_at: Time,
+          is_telnyx_billable: bool,
+          name: String,
+          participant_call_sec: Integer,
+          participant_count: Integer,
+          region: String,
+          started_at: Time,
+          user_id: String
+        }
+
+      class ConferenceDetailRecord < Telnyx::Internal::Type::BaseModel
+        attr_accessor record_type: String
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader call_leg_id: String?
+
+        def call_leg_id=: (String) -> String
+
+        attr_reader call_sec: Integer?
+
+        def call_sec=: (Integer) -> Integer
+
+        attr_reader call_session_id: String?
+
+        def call_session_id=: (String) -> String
+
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader ended_at: Time?
+
+        def ended_at=: (Time) -> Time
+
+        attr_reader expires_at: Time?
+
+        def expires_at=: (Time) -> Time
+
+        attr_reader is_telnyx_billable: bool?
+
+        def is_telnyx_billable=: (bool) -> bool
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader participant_call_sec: Integer?
+
+        def participant_call_sec=: (Integer) -> Integer
+
+        attr_reader participant_count: Integer?
+
+        def participant_count=: (Integer) -> Integer
+
+        attr_reader region: String?
+
+        def region=: (String) -> String
+
+        attr_reader started_at: Time?
+
+        def started_at=: (Time) -> Time
+
+        attr_reader user_id: String?
+
+        def user_id=: (String) -> String
+
+        def initialize: (
+          record_type: String,
+          ?id: String,
+          ?call_leg_id: String,
+          ?call_sec: Integer,
+          ?call_session_id: String,
+          ?connection_id: String,
+          ?ended_at: Time,
+          ?expires_at: Time,
+          ?is_telnyx_billable: bool,
+          ?name: String,
+          ?participant_call_sec: Integer,
+          ?participant_count: Integer,
+          ?region: String,
+          ?started_at: Time,
+          ?user_id: String
+        ) -> void
+
+        def to_hash: -> {
+          record_type: String,
+          id: String,
+          call_leg_id: String,
+          call_sec: Integer,
+          call_session_id: String,
+          connection_id: String,
+          ended_at: Time,
+          expires_at: Time,
+          is_telnyx_billable: bool,
+          name: String,
+          participant_call_sec: Integer,
+          participant_count: Integer,
+          region: String,
+          started_at: Time,
+          user_id: String
         }
       end
+
+      type conference_participant_detail_record =
+        {
+          record_type: String,
+          id: String,
+          billed_sec: Integer,
+          call_leg_id: String,
+          call_sec: Integer,
+          call_session_id: String,
+          conference_id: String,
+          cost: String,
+          currency: String,
+          destination_number: String,
+          is_telnyx_billable: bool,
+          joined_at: Time,
+          left_at: Time,
+          originating_number: String,
+          rate: String,
+          rate_measured_in: String,
+          user_id: String
+        }
+
+      class ConferenceParticipantDetailRecord < Telnyx::Internal::Type::BaseModel
+        attr_accessor record_type: String
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader billed_sec: Integer?
+
+        def billed_sec=: (Integer) -> Integer
+
+        attr_reader call_leg_id: String?
+
+        def call_leg_id=: (String) -> String
+
+        attr_reader call_sec: Integer?
+
+        def call_sec=: (Integer) -> Integer
+
+        attr_reader call_session_id: String?
+
+        def call_session_id=: (String) -> String
+
+        attr_reader conference_id: String?
+
+        def conference_id=: (String) -> String
+
+        attr_reader cost: String?
+
+        def cost=: (String) -> String
+
+        attr_reader currency: String?
+
+        def currency=: (String) -> String
+
+        attr_reader destination_number: String?
+
+        def destination_number=: (String) -> String
+
+        attr_reader is_telnyx_billable: bool?
+
+        def is_telnyx_billable=: (bool) -> bool
+
+        attr_reader joined_at: Time?
+
+        def joined_at=: (Time) -> Time
+
+        attr_reader left_at: Time?
+
+        def left_at=: (Time) -> Time
+
+        attr_reader originating_number: String?
+
+        def originating_number=: (String) -> String
+
+        attr_reader rate: String?
+
+        def rate=: (String) -> String
+
+        attr_reader rate_measured_in: String?
+
+        def rate_measured_in=: (String) -> String
+
+        attr_reader user_id: String?
+
+        def user_id=: (String) -> String
+
+        def initialize: (
+          record_type: String,
+          ?id: String,
+          ?billed_sec: Integer,
+          ?call_leg_id: String,
+          ?call_sec: Integer,
+          ?call_session_id: String,
+          ?conference_id: String,
+          ?cost: String,
+          ?currency: String,
+          ?destination_number: String,
+          ?is_telnyx_billable: bool,
+          ?joined_at: Time,
+          ?left_at: Time,
+          ?originating_number: String,
+          ?rate: String,
+          ?rate_measured_in: String,
+          ?user_id: String
+        ) -> void
+
+        def to_hash: -> {
+          record_type: String,
+          id: String,
+          billed_sec: Integer,
+          call_leg_id: String,
+          call_sec: Integer,
+          call_session_id: String,
+          conference_id: String,
+          cost: String,
+          currency: String,
+          destination_number: String,
+          is_telnyx_billable: bool,
+          joined_at: Time,
+          left_at: Time,
+          originating_number: String,
+          rate: String,
+          rate_measured_in: String,
+          user_id: String
+        }
+      end
+
+      type amd_detail_record =
+        {
+          record_type: String,
+          id: String,
+          billing_group_id: String,
+          billing_group_name: String,
+          call_leg_id: String,
+          call_session_id: String,
+          connection_id: String,
+          connection_name: String,
+          cost: String,
+          currency: String,
+          feature: Telnyx::Models::DetailRecordListResponse::AmdDetailRecord::feature,
+          invoked_at: Time,
+          is_telnyx_billable: bool,
+          rate: String,
+          rate_measured_in: String,
+          tags: String
+        }
+
+      class AmdDetailRecord < Telnyx::Internal::Type::BaseModel
+        attr_accessor record_type: String
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader billing_group_id: String?
+
+        def billing_group_id=: (String) -> String
+
+        attr_reader billing_group_name: String?
+
+        def billing_group_name=: (String) -> String
+
+        attr_reader call_leg_id: String?
+
+        def call_leg_id=: (String) -> String
+
+        attr_reader call_session_id: String?
+
+        def call_session_id=: (String) -> String
+
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader connection_name: String?
+
+        def connection_name=: (String) -> String
+
+        attr_reader cost: String?
+
+        def cost=: (String) -> String
+
+        attr_reader currency: String?
+
+        def currency=: (String) -> String
+
+        attr_reader feature: Telnyx::Models::DetailRecordListResponse::AmdDetailRecord::feature?
+
+        def feature=: (
+          Telnyx::Models::DetailRecordListResponse::AmdDetailRecord::feature
+        ) -> Telnyx::Models::DetailRecordListResponse::AmdDetailRecord::feature
+
+        attr_reader invoked_at: Time?
+
+        def invoked_at=: (Time) -> Time
+
+        attr_reader is_telnyx_billable: bool?
+
+        def is_telnyx_billable=: (bool) -> bool
+
+        attr_reader rate: String?
+
+        def rate=: (String) -> String
+
+        attr_reader rate_measured_in: String?
+
+        def rate_measured_in=: (String) -> String
+
+        attr_reader tags: String?
+
+        def tags=: (String) -> String
+
+        def initialize: (
+          record_type: String,
+          ?id: String,
+          ?billing_group_id: String,
+          ?billing_group_name: String,
+          ?call_leg_id: String,
+          ?call_session_id: String,
+          ?connection_id: String,
+          ?connection_name: String,
+          ?cost: String,
+          ?currency: String,
+          ?feature: Telnyx::Models::DetailRecordListResponse::AmdDetailRecord::feature,
+          ?invoked_at: Time,
+          ?is_telnyx_billable: bool,
+          ?rate: String,
+          ?rate_measured_in: String,
+          ?tags: String
+        ) -> void
+
+        def to_hash: -> {
+          record_type: String,
+          id: String,
+          billing_group_id: String,
+          billing_group_name: String,
+          call_leg_id: String,
+          call_session_id: String,
+          connection_id: String,
+          connection_name: String,
+          cost: String,
+          currency: String,
+          feature: Telnyx::Models::DetailRecordListResponse::AmdDetailRecord::feature,
+          invoked_at: Time,
+          is_telnyx_billable: bool,
+          rate: String,
+          rate_measured_in: String,
+          tags: String
+        }
+
+        type feature = :PREMIUM
+
+        module Feature
+          extend Telnyx::Internal::Type::Enum
+
+          PREMIUM: :PREMIUM
+
+          def self?.values: -> ::Array[Telnyx::Models::DetailRecordListResponse::AmdDetailRecord::feature]
+        end
+      end
+
+      type verify_detail_record =
+        {
+          record_type: String,
+          id: String,
+          created_at: Time,
+          currency: String,
+          delivery_status: String,
+          destination_phone_number: String,
+          rate: String,
+          rate_measured_in: String,
+          updated_at: Time,
+          verification_status: String,
+          verify_channel_id: String,
+          verify_channel_type: Telnyx::Models::DetailRecordListResponse::VerifyDetailRecord::verify_channel_type,
+          verify_profile_id: String,
+          verify_usage_fee: String
+        }
+
+      class VerifyDetailRecord < Telnyx::Internal::Type::BaseModel
+        attr_accessor record_type: String
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader currency: String?
+
+        def currency=: (String) -> String
+
+        attr_reader delivery_status: String?
+
+        def delivery_status=: (String) -> String
+
+        attr_reader destination_phone_number: String?
+
+        def destination_phone_number=: (String) -> String
+
+        attr_reader rate: String?
+
+        def rate=: (String) -> String
+
+        attr_reader rate_measured_in: String?
+
+        def rate_measured_in=: (String) -> String
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_reader verification_status: String?
+
+        def verification_status=: (String) -> String
+
+        attr_reader verify_channel_id: String?
+
+        def verify_channel_id=: (String) -> String
+
+        attr_reader verify_channel_type: Telnyx::Models::DetailRecordListResponse::VerifyDetailRecord::verify_channel_type?
+
+        def verify_channel_type=: (
+          Telnyx::Models::DetailRecordListResponse::VerifyDetailRecord::verify_channel_type
+        ) -> Telnyx::Models::DetailRecordListResponse::VerifyDetailRecord::verify_channel_type
+
+        attr_reader verify_profile_id: String?
+
+        def verify_profile_id=: (String) -> String
+
+        attr_reader verify_usage_fee: String?
+
+        def verify_usage_fee=: (String) -> String
+
+        def initialize: (
+          record_type: String,
+          ?id: String,
+          ?created_at: Time,
+          ?currency: String,
+          ?delivery_status: String,
+          ?destination_phone_number: String,
+          ?rate: String,
+          ?rate_measured_in: String,
+          ?updated_at: Time,
+          ?verification_status: String,
+          ?verify_channel_id: String,
+          ?verify_channel_type: Telnyx::Models::DetailRecordListResponse::VerifyDetailRecord::verify_channel_type,
+          ?verify_profile_id: String,
+          ?verify_usage_fee: String
+        ) -> void
+
+        def to_hash: -> {
+          record_type: String,
+          id: String,
+          created_at: Time,
+          currency: String,
+          delivery_status: String,
+          destination_phone_number: String,
+          rate: String,
+          rate_measured_in: String,
+          updated_at: Time,
+          verification_status: String,
+          verify_channel_id: String,
+          verify_channel_type: Telnyx::Models::DetailRecordListResponse::VerifyDetailRecord::verify_channel_type,
+          verify_profile_id: String,
+          verify_usage_fee: String
+        }
+
+        type verify_channel_type = :sms | :psd2 | :call | :flashcall
+
+        module VerifyChannelType
+          extend Telnyx::Internal::Type::Enum
+
+          SMS: :sms
+          PSD2: :psd2
+          CALL: :call
+          FLASHCALL: :flashcall
+
+          def self?.values: -> ::Array[Telnyx::Models::DetailRecordListResponse::VerifyDetailRecord::verify_channel_type]
+        end
+      end
+
+      type sim_card_usage_detail_record =
+        {
+          record_type: String,
+          id: String,
+          closed_at: Time,
+          created_at: Time,
+          currency: String,
+          data_cost: Float,
+          data_rate: String,
+          data_unit: String,
+          downlink_data: Float,
+          imsi: String,
+          ip_address: String,
+          mcc: String,
+          mnc: String,
+          phone_number: String,
+          sim_card_id: String,
+          sim_card_tags: String,
+          sim_group_id: String,
+          sim_group_name: String,
+          uplink_data: Float
+        }
+
+      class SimCardUsageDetailRecord < Telnyx::Internal::Type::BaseModel
+        attr_accessor record_type: String
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader closed_at: Time?
+
+        def closed_at=: (Time) -> Time
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader currency: String?
+
+        def currency=: (String) -> String
+
+        attr_reader data_cost: Float?
+
+        def data_cost=: (Float) -> Float
+
+        attr_reader data_rate: String?
+
+        def data_rate=: (String) -> String
+
+        attr_reader data_unit: String?
+
+        def data_unit=: (String) -> String
+
+        attr_reader downlink_data: Float?
+
+        def downlink_data=: (Float) -> Float
+
+        attr_reader imsi: String?
+
+        def imsi=: (String) -> String
+
+        attr_reader ip_address: String?
+
+        def ip_address=: (String) -> String
+
+        attr_reader mcc: String?
+
+        def mcc=: (String) -> String
+
+        attr_reader mnc: String?
+
+        def mnc=: (String) -> String
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader sim_card_id: String?
+
+        def sim_card_id=: (String) -> String
+
+        attr_reader sim_card_tags: String?
+
+        def sim_card_tags=: (String) -> String
+
+        attr_reader sim_group_id: String?
+
+        def sim_group_id=: (String) -> String
+
+        attr_reader sim_group_name: String?
+
+        def sim_group_name=: (String) -> String
+
+        attr_reader uplink_data: Float?
+
+        def uplink_data=: (Float) -> Float
+
+        def initialize: (
+          record_type: String,
+          ?id: String,
+          ?closed_at: Time,
+          ?created_at: Time,
+          ?currency: String,
+          ?data_cost: Float,
+          ?data_rate: String,
+          ?data_unit: String,
+          ?downlink_data: Float,
+          ?imsi: String,
+          ?ip_address: String,
+          ?mcc: String,
+          ?mnc: String,
+          ?phone_number: String,
+          ?sim_card_id: String,
+          ?sim_card_tags: String,
+          ?sim_group_id: String,
+          ?sim_group_name: String,
+          ?uplink_data: Float
+        ) -> void
+
+        def to_hash: -> {
+          record_type: String,
+          id: String,
+          closed_at: Time,
+          created_at: Time,
+          currency: String,
+          data_cost: Float,
+          data_rate: String,
+          data_unit: String,
+          downlink_data: Float,
+          imsi: String,
+          ip_address: String,
+          mcc: String,
+          mnc: String,
+          phone_number: String,
+          sim_card_id: String,
+          sim_card_tags: String,
+          sim_group_id: String,
+          sim_group_name: String,
+          uplink_data: Float
+        }
+      end
+
+      type media_storage_detail_record =
+        {
+          record_type: String,
+          id: String,
+          action_type: String,
+          asset_id: String,
+          cost: String,
+          created_at: Time,
+          currency: String,
+          link_channel_id: String,
+          link_channel_type: String,
+          org_id: String,
+          rate: String,
+          rate_measured_in: String,
+          status: String,
+          user_id: String,
+          webhook_id: String
+        }
+
+      class MediaStorageDetailRecord < Telnyx::Internal::Type::BaseModel
+        attr_accessor record_type: String
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader action_type: String?
+
+        def action_type=: (String) -> String
+
+        attr_reader asset_id: String?
+
+        def asset_id=: (String) -> String
+
+        attr_reader cost: String?
+
+        def cost=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader currency: String?
+
+        def currency=: (String) -> String
+
+        attr_reader link_channel_id: String?
+
+        def link_channel_id=: (String) -> String
+
+        attr_reader link_channel_type: String?
+
+        def link_channel_type=: (String) -> String
+
+        attr_reader org_id: String?
+
+        def org_id=: (String) -> String
+
+        attr_reader rate: String?
+
+        def rate=: (String) -> String
+
+        attr_reader rate_measured_in: String?
+
+        def rate_measured_in=: (String) -> String
+
+        attr_reader status: String?
+
+        def status=: (String) -> String
+
+        attr_reader user_id: String?
+
+        def user_id=: (String) -> String
+
+        attr_reader webhook_id: String?
+
+        def webhook_id=: (String) -> String
+
+        def initialize: (
+          record_type: String,
+          ?id: String,
+          ?action_type: String,
+          ?asset_id: String,
+          ?cost: String,
+          ?created_at: Time,
+          ?currency: String,
+          ?link_channel_id: String,
+          ?link_channel_type: String,
+          ?org_id: String,
+          ?rate: String,
+          ?rate_measured_in: String,
+          ?status: String,
+          ?user_id: String,
+          ?webhook_id: String
+        ) -> void
+
+        def to_hash: -> {
+          record_type: String,
+          id: String,
+          action_type: String,
+          asset_id: String,
+          cost: String,
+          created_at: Time,
+          currency: String,
+          link_channel_id: String,
+          link_channel_type: String,
+          org_id: String,
+          rate: String,
+          rate_measured_in: String,
+          status: String,
+          user_id: String,
+          webhook_id: String
+        }
+      end
+
+      def self?.variants: -> ::Array[Telnyx::Models::detail_record_list_response]
     end
   end
 end

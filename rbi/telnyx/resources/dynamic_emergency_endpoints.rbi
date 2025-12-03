@@ -41,7 +41,9 @@ module Telnyx
           filter: Telnyx::DynamicEmergencyEndpointListParams::Filter::OrHash,
           page: Telnyx::DynamicEmergencyEndpointListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::DynamicEmergencyEndpointListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[Telnyx::DynamicEmergencyEndpoint]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[status],

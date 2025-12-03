@@ -246,9 +246,15 @@ module Telnyx
 
   CallSpeakStartedWebhookEvent = Telnyx::Models::CallSpeakStartedWebhookEvent
 
+  CallStreamingFailed = Telnyx::Models::CallStreamingFailed
+
   CallStreamingFailedWebhookEvent = Telnyx::Models::CallStreamingFailedWebhookEvent
 
+  CallStreamingStarted = Telnyx::Models::CallStreamingStarted
+
   CallStreamingStartedWebhookEvent = Telnyx::Models::CallStreamingStartedWebhookEvent
+
+  CallStreamingStopped = Telnyx::Models::CallStreamingStopped
 
   CallStreamingStoppedWebhookEvent = Telnyx::Models::CallStreamingStoppedWebhookEvent
 
@@ -274,9 +280,13 @@ module Telnyx
 
   CampaignSharingStatus = Telnyx::Models::CampaignSharingStatus
 
+  CampaignStatusUpdateEvent = Telnyx::Models::CampaignStatusUpdateEvent
+
   CampaignStatusUpdateWebhookEvent = Telnyx::Models::CampaignStatusUpdateWebhookEvent
 
   CampaignSubmitAppealParams = Telnyx::Models::CampaignSubmitAppealParams
+
+  CampaignSuspendedEvent = Telnyx::Models::CampaignSuspendedEvent
 
   CampaignUpdateParams = Telnyx::Models::CampaignUpdateParams
 
@@ -465,7 +475,7 @@ module Telnyx
 
   EntityType = Telnyx::Models::EntityType
 
-  EnumRetrieveParams = Telnyx::Models::EnumRetrieveParams
+  EnumerationRetrieveParams = Telnyx::Models::EnumerationRetrieveParams
 
   ExternalConnection = Telnyx::Models::ExternalConnection
 
@@ -597,11 +607,15 @@ module Telnyx
 
   InboundIP = Telnyx::Models::InboundIP
 
+  InboundMessagePayload = Telnyx::Models::InboundMessagePayload
+
   InboundMessageWebhookEvent = Telnyx::Models::InboundMessageWebhookEvent
 
   InexplicitNumberOrderCreateParams = Telnyx::Models::InexplicitNumberOrderCreateParams
 
   InexplicitNumberOrderListParams = Telnyx::Models::InexplicitNumberOrderListParams
+
+  InexplicitNumberOrderResponse = Telnyx::Models::InexplicitNumberOrderResponse
 
   InexplicitNumberOrderRetrieveParams = Telnyx::Models::InexplicitNumberOrderRetrieveParams
 
@@ -612,8 +626,6 @@ module Telnyx
   IntegrationSecretDeleteParams = Telnyx::Models::IntegrationSecretDeleteParams
 
   IntegrationSecretListParams = Telnyx::Models::IntegrationSecretListParams
-
-  Interface = Telnyx::Models::Interface
 
   InterfaceStatus = Telnyx::Models::InterfaceStatus
 
@@ -776,6 +788,8 @@ module Telnyx
 
   MobileNetworkOperatorListParams = Telnyx::Models::MobileNetworkOperatorListParams
 
+  MobilePhoneNumber = Telnyx::Models::MobilePhoneNumber
+
   MobilePhoneNumberListParams = Telnyx::Models::MobilePhoneNumberListParams
 
   MobilePhoneNumberRetrieveParams = Telnyx::Models::MobilePhoneNumberRetrieveParams
@@ -789,6 +803,8 @@ module Telnyx
   MobilePushCredentialListParams = Telnyx::Models::MobilePushCredentialListParams
 
   MobilePushCredentialRetrieveParams = Telnyx::Models::MobilePushCredentialRetrieveParams
+
+  MobileVoiceConnection = Telnyx::Models::MobileVoiceConnection
 
   MobileVoiceConnectionCreateParams = Telnyx::Models::MobileVoiceConnectionCreateParams
 
@@ -809,6 +825,10 @@ module Telnyx
   NetworkCreateParams = Telnyx::Models::NetworkCreateParams
 
   NetworkDeleteParams = Telnyx::Models::NetworkDeleteParams
+
+  NetworkInterface = Telnyx::Models::NetworkInterface
+
+  NetworkInterfaceRegion = Telnyx::Models::NetworkInterfaceRegion
 
   NetworkListInterfacesParams = Telnyx::Models::NetworkListInterfacesParams
 
@@ -1164,8 +1184,6 @@ module Telnyx
   RecordingTranscriptionListParams = Telnyx::Models::RecordingTranscriptionListParams
 
   RecordingTranscriptionRetrieveParams = Telnyx::Models::RecordingTranscriptionRetrieveParams
-
-  RegionIn = Telnyx::Models::RegionIn
 
   RegionListParams = Telnyx::Models::RegionListParams
 

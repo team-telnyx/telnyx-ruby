@@ -15,7 +15,7 @@ module Telnyx
           quantity: Integer,
           requirement_group_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(T.anything)
+        ).returns(Telnyx::Models::AdvancedOrderCreateResponse)
       end
       def create(
         area_code: nil,
@@ -36,7 +36,7 @@ module Telnyx
         params(
           order_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(T.anything)
+        ).returns(Telnyx::Models::AdvancedOrderRetrieveResponse)
       end
       def retrieve(order_id, request_options: {})
       end
@@ -44,7 +44,7 @@ module Telnyx
       # List Advanced Orders
       sig do
         params(request_options: Telnyx::RequestOptions::OrHash).returns(
-          T.anything
+          Telnyx::Models::AdvancedOrderListResponse
         )
       end
       def list(request_options: {})
@@ -63,7 +63,7 @@ module Telnyx
           quantity: Integer,
           requirement_group_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(T.anything)
+        ).returns(Telnyx::Models::AdvancedOrderUpdateRequirementGroupResponse)
       end
       def update_requirement_group(
         advanced_order_id,

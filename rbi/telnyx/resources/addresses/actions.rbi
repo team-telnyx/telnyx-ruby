@@ -8,16 +8,16 @@ module Telnyx
         # and finishes the uploads of the numbers associated with it to Microsoft.
         sig do
           params(
-            path_id: String,
-            body_id: String,
+            address_uuid: String,
+            id: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Addresses::ActionAcceptSuggestionsResponse)
         end
         def accept_suggestions(
           # The UUID of the address that should be accepted.
-          path_id,
+          address_uuid,
           # The ID of the address.
-          body_id: nil,
+          id: nil,
           request_options: {}
         )
         end

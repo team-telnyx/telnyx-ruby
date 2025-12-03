@@ -88,13 +88,6 @@ module Telnyx
           sig { params(network_id: String).void }
           attr_writer :network_id
 
-          # Identifies the type of the resource.
-          sig { returns(T.nilable(String)) }
-          attr_reader :record_type
-
-          sig { params(record_type: String).void }
-          attr_writer :record_type
-
           # The current status of the interface deployment.
           sig { returns(T.nilable(Telnyx::InterfaceStatus::TaggedSymbol)) }
           attr_reader :status
@@ -105,7 +98,6 @@ module Telnyx
           sig do
             params(
               network_id: String,
-              record_type: String,
               status: Telnyx::InterfaceStatus::OrSymbol,
               wireguard_peer_id: String
             ).returns(T.attached_class)
@@ -113,8 +105,6 @@ module Telnyx
           def self.new(
             # Network ID.
             network_id: nil,
-            # Identifies the type of the resource.
-            record_type: nil,
             # The current status of the interface deployment.
             status: nil,
             # Wireguard peer ID.
@@ -126,7 +116,6 @@ module Telnyx
             override.returns(
               {
                 network_id: String,
-                record_type: String,
                 status: Telnyx::InterfaceStatus::TaggedSymbol,
                 wireguard_peer_id: String
               }

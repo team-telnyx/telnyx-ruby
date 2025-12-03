@@ -3,119 +3,91 @@ module Telnyx
     module PortingOrders
       type additional_document_list_response =
         {
-          data: ::Array[Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::Data],
-          meta: Telnyx::PaginationMeta
+          id: String,
+          content_type: String,
+          created_at: Time,
+          document_id: String,
+          document_type: Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::document_type,
+          filename: String,
+          porting_order_id: String,
+          record_type: String,
+          updated_at: Time
         }
 
       class AdditionalDocumentListResponse < Telnyx::Internal::Type::BaseModel
-        attr_reader data: ::Array[Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::Data]?
+        attr_reader id: String?
 
-        def data=: (
-          ::Array[Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::Data]
-        ) -> ::Array[Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::Data]
+        def id=: (String) -> String
 
-        attr_reader meta: Telnyx::PaginationMeta?
+        attr_reader content_type: String?
 
-        def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+        def content_type=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader document_id: String?
+
+        def document_id=: (String) -> String
+
+        attr_reader document_type: Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::document_type?
+
+        def document_type=: (
+          Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::document_type
+        ) -> Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::document_type
+
+        attr_reader filename: String?
+
+        def filename=: (String) -> String
+
+        attr_reader porting_order_id: String?
+
+        def porting_order_id=: (String) -> String
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
 
         def initialize: (
-          ?data: ::Array[Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::Data],
-          ?meta: Telnyx::PaginationMeta
+          ?id: String,
+          ?content_type: String,
+          ?created_at: Time,
+          ?document_id: String,
+          ?document_type: Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::document_type,
+          ?filename: String,
+          ?porting_order_id: String,
+          ?record_type: String,
+          ?updated_at: Time
         ) -> void
 
         def to_hash: -> {
-          data: ::Array[Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::Data],
-          meta: Telnyx::PaginationMeta
+          id: String,
+          content_type: String,
+          created_at: Time,
+          document_id: String,
+          document_type: Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::document_type,
+          filename: String,
+          porting_order_id: String,
+          record_type: String,
+          updated_at: Time
         }
 
-        type data =
-          {
-            id: String,
-            content_type: String,
-            created_at: Time,
-            document_id: String,
-            document_type: Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::Data::document_type,
-            filename: String,
-            porting_order_id: String,
-            record_type: String,
-            updated_at: Time
-          }
+        type document_type = :loa | :invoice | :csr | :other
 
-        class Data < Telnyx::Internal::Type::BaseModel
-          attr_reader id: String?
+        module DocumentType
+          extend Telnyx::Internal::Type::Enum
 
-          def id=: (String) -> String
+          LOA: :loa
+          INVOICE: :invoice
+          CSR: :csr
+          OTHER: :other
 
-          attr_reader content_type: String?
-
-          def content_type=: (String) -> String
-
-          attr_reader created_at: Time?
-
-          def created_at=: (Time) -> Time
-
-          attr_reader document_id: String?
-
-          def document_id=: (String) -> String
-
-          attr_reader document_type: Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::Data::document_type?
-
-          def document_type=: (
-            Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::Data::document_type
-          ) -> Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::Data::document_type
-
-          attr_reader filename: String?
-
-          def filename=: (String) -> String
-
-          attr_reader porting_order_id: String?
-
-          def porting_order_id=: (String) -> String
-
-          attr_reader updated_at: Time?
-
-          def updated_at=: (Time) -> Time
-
-          attr_reader record_type: String?
-
-          def record_type=: (String) -> String
-
-          def initialize: (
-            ?id: String,
-            ?content_type: String,
-            ?created_at: Time,
-            ?document_id: String,
-            ?document_type: Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::Data::document_type,
-            ?filename: String,
-            ?porting_order_id: String,
-            ?record_type: String,
-            ?updated_at: Time
-          ) -> void
-
-          def to_hash: -> {
-            id: String,
-            content_type: String,
-            created_at: Time,
-            document_id: String,
-            document_type: Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::Data::document_type,
-            filename: String,
-            porting_order_id: String,
-            record_type: String,
-            updated_at: Time
-          }
-
-          type document_type = :loa | :invoice | :csr | :other
-
-          module DocumentType
-            extend Telnyx::Internal::Type::Enum
-
-            LOA: :loa
-            INVOICE: :invoice
-            CSR: :csr
-            OTHER: :other
-
-            def self?.values: -> ::Array[Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::Data::document_type]
-          end
+          def self?.values: -> ::Array[Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::document_type]
         end
       end
     end

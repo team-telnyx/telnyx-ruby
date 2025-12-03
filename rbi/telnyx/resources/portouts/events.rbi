@@ -24,7 +24,11 @@ module Telnyx
             filter: Telnyx::Portouts::EventListParams::Filter::OrHash,
             page: Telnyx::Portouts::EventListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Portouts::EventListResponse)
+          ).returns(
+            Telnyx::Internal::DefaultPagination[
+              Telnyx::Models::Portouts::EventListResponse
+            ]
+          )
         end
         def list(
           # Consolidated filter parameter (deepObject style). Originally:
