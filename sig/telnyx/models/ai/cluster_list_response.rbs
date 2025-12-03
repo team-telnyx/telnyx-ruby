@@ -3,49 +3,71 @@ module Telnyx
     module AI
       type cluster_list_response =
         {
-          bucket: String,
-          created_at: Time,
-          finished_at: Time,
-          min_cluster_size: Integer,
-          min_subcluster_size: Integer,
-          status: Telnyx::Models::task_status,
-          task_id: String
+          data: ::Array[Telnyx::Models::AI::ClusterListResponse::Data],
+          meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
         }
 
       class ClusterListResponse < Telnyx::Internal::Type::BaseModel
-        attr_accessor bucket: String
+        attr_accessor data: ::Array[Telnyx::Models::AI::ClusterListResponse::Data]
 
-        attr_accessor created_at: Time
-
-        attr_accessor finished_at: Time
-
-        attr_accessor min_cluster_size: Integer
-
-        attr_accessor min_subcluster_size: Integer
-
-        attr_accessor status: Telnyx::Models::task_status
-
-        attr_accessor task_id: String
+        attr_accessor meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
 
         def initialize: (
-          bucket: String,
-          created_at: Time,
-          finished_at: Time,
-          min_cluster_size: Integer,
-          min_subcluster_size: Integer,
-          status: Telnyx::Models::task_status,
-          task_id: String
+          data: ::Array[Telnyx::Models::AI::ClusterListResponse::Data],
+          meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
         ) -> void
 
         def to_hash: -> {
-          bucket: String,
-          created_at: Time,
-          finished_at: Time,
-          min_cluster_size: Integer,
-          min_subcluster_size: Integer,
-          status: Telnyx::Models::task_status,
-          task_id: String
+          data: ::Array[Telnyx::Models::AI::ClusterListResponse::Data],
+          meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
         }
+
+        type data =
+          {
+            bucket: String,
+            created_at: Time,
+            finished_at: Time,
+            min_cluster_size: Integer,
+            min_subcluster_size: Integer,
+            status: Telnyx::Models::task_status,
+            task_id: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor bucket: String
+
+          attr_accessor created_at: Time
+
+          attr_accessor finished_at: Time
+
+          attr_accessor min_cluster_size: Integer
+
+          attr_accessor min_subcluster_size: Integer
+
+          attr_accessor status: Telnyx::Models::task_status
+
+          attr_accessor task_id: String
+
+          def initialize: (
+            bucket: String,
+            created_at: Time,
+            finished_at: Time,
+            min_cluster_size: Integer,
+            min_subcluster_size: Integer,
+            status: Telnyx::Models::task_status,
+            task_id: String
+          ) -> void
+
+          def to_hash: -> {
+            bucket: String,
+            created_at: Time,
+            finished_at: Time,
+            min_cluster_size: Integer,
+            min_subcluster_size: Integer,
+            status: Telnyx::Models::task_status,
+            task_id: String
+          }
+        end
       end
     end
   end

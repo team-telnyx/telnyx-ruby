@@ -48,7 +48,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ExternalConnections::ReleaseListResponse>]
+        # @return [Telnyx::Models::ExternalConnections::ReleaseListResponse]
         #
         # @see Telnyx::Models::ExternalConnections::ReleaseListParams
         def list(id, params = {})
@@ -57,7 +57,6 @@ module Telnyx
             method: :get,
             path: ["external_connections/%1$s/releases", id],
             query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
             model: Telnyx::Models::ExternalConnections::ReleaseListResponse,
             options: options
           )

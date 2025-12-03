@@ -24,11 +24,7 @@ module Telnyx
           filter: Telnyx::WebhookDeliveryListParams::Filter::OrHash,
           page: Telnyx::WebhookDeliveryListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[
-            Telnyx::Models::WebhookDeliveryListResponse
-          ]
-        )
+        ).returns(Telnyx::Models::WebhookDeliveryListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

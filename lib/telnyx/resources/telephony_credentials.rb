@@ -94,7 +94,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::TelephonyCredential>]
+      # @return [Telnyx::Models::TelephonyCredentialListResponse]
       #
       # @see Telnyx::Models::TelephonyCredentialListParams
       def list(params = {})
@@ -103,8 +103,7 @@ module Telnyx
           method: :get,
           path: "telephony_credentials",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
-          model: Telnyx::TelephonyCredential,
+          model: Telnyx::Models::TelephonyCredentialListResponse,
           options: options
         )
       end

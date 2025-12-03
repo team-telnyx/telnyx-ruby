@@ -19,7 +19,7 @@ module Telnyx
         ?filter: Telnyx::NumberBlockOrderListParams::Filter,
         ?page: Telnyx::NumberBlockOrderListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::NumberBlockOrder]
+      ) -> Telnyx::Models::NumberBlockOrderListResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

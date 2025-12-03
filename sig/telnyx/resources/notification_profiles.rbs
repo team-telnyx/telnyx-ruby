@@ -12,7 +12,7 @@ module Telnyx
       ) -> Telnyx::Models::NotificationProfileRetrieveResponse
 
       def update: (
-        String notification_profile_id,
+        String id,
         ?name: String,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::NotificationProfileUpdateResponse
@@ -20,7 +20,7 @@ module Telnyx
       def list: (
         ?page: Telnyx::NotificationProfileListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::NotificationProfile]
+      ) -> Telnyx::Models::NotificationProfileListResponse
 
       def delete: (
         String id,

@@ -1,15 +1,221 @@
 module Telnyx
   module Models
-    type streaming_failed_webhook_event = { data: Telnyx::CallStreamingFailed }
+    type streaming_failed_webhook_event =
+      { data: Telnyx::StreamingFailedWebhookEvent::Data }
 
     class StreamingFailedWebhookEvent < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::CallStreamingFailed?
+      attr_reader data: Telnyx::StreamingFailedWebhookEvent::Data?
 
-      def data=: (Telnyx::CallStreamingFailed) -> Telnyx::CallStreamingFailed
+      def data=: (
+        Telnyx::StreamingFailedWebhookEvent::Data
+      ) -> Telnyx::StreamingFailedWebhookEvent::Data
 
-      def initialize: (?data: Telnyx::CallStreamingFailed) -> void
+      def initialize: (?data: Telnyx::StreamingFailedWebhookEvent::Data) -> void
 
-      def to_hash: -> { data: Telnyx::CallStreamingFailed }
+      def to_hash: -> { data: Telnyx::StreamingFailedWebhookEvent::Data }
+
+      type data =
+        {
+          id: String,
+          event_type: Telnyx::Models::StreamingFailedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::StreamingFailedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::StreamingFailedWebhookEvent::Data::record_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader event_type: Telnyx::Models::StreamingFailedWebhookEvent::Data::event_type?
+
+        def event_type=: (
+          Telnyx::Models::StreamingFailedWebhookEvent::Data::event_type
+        ) -> Telnyx::Models::StreamingFailedWebhookEvent::Data::event_type
+
+        attr_reader occurred_at: Time?
+
+        def occurred_at=: (Time) -> Time
+
+        attr_reader payload: Telnyx::StreamingFailedWebhookEvent::Data::Payload?
+
+        def payload=: (
+          Telnyx::StreamingFailedWebhookEvent::Data::Payload
+        ) -> Telnyx::StreamingFailedWebhookEvent::Data::Payload
+
+        attr_reader record_type: Telnyx::Models::StreamingFailedWebhookEvent::Data::record_type?
+
+        def record_type=: (
+          Telnyx::Models::StreamingFailedWebhookEvent::Data::record_type
+        ) -> Telnyx::Models::StreamingFailedWebhookEvent::Data::record_type
+
+        def initialize: (
+          ?id: String,
+          ?event_type: Telnyx::Models::StreamingFailedWebhookEvent::Data::event_type,
+          ?occurred_at: Time,
+          ?payload: Telnyx::StreamingFailedWebhookEvent::Data::Payload,
+          ?record_type: Telnyx::Models::StreamingFailedWebhookEvent::Data::record_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: Telnyx::Models::StreamingFailedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::StreamingFailedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::StreamingFailedWebhookEvent::Data::record_type
+        }
+
+        type event_type = :"streaming.failed"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          STREAMING_FAILED: :"streaming.failed"
+
+          def self?.values: -> ::Array[Telnyx::Models::StreamingFailedWebhookEvent::Data::event_type]
+        end
+
+        type payload =
+          {
+            call_control_id: String,
+            call_leg_id: String,
+            call_session_id: String,
+            client_state: String,
+            connection_id: String,
+            failure_reason: String,
+            stream_id: String,
+            stream_params: Telnyx::StreamingFailedWebhookEvent::Data::Payload::StreamParams,
+            stream_type: Telnyx::Models::StreamingFailedWebhookEvent::Data::Payload::stream_type
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_reader call_control_id: String?
+
+          def call_control_id=: (String) -> String
+
+          attr_reader call_leg_id: String?
+
+          def call_leg_id=: (String) -> String
+
+          attr_reader call_session_id: String?
+
+          def call_session_id=: (String) -> String
+
+          attr_reader client_state: String?
+
+          def client_state=: (String) -> String
+
+          attr_reader connection_id: String?
+
+          def connection_id=: (String) -> String
+
+          attr_reader failure_reason: String?
+
+          def failure_reason=: (String) -> String
+
+          attr_reader stream_id: String?
+
+          def stream_id=: (String) -> String
+
+          attr_reader stream_params: Telnyx::StreamingFailedWebhookEvent::Data::Payload::StreamParams?
+
+          def stream_params=: (
+            Telnyx::StreamingFailedWebhookEvent::Data::Payload::StreamParams
+          ) -> Telnyx::StreamingFailedWebhookEvent::Data::Payload::StreamParams
+
+          attr_reader stream_type: Telnyx::Models::StreamingFailedWebhookEvent::Data::Payload::stream_type?
+
+          def stream_type=: (
+            Telnyx::Models::StreamingFailedWebhookEvent::Data::Payload::stream_type
+          ) -> Telnyx::Models::StreamingFailedWebhookEvent::Data::Payload::stream_type
+
+          def initialize: (
+            ?call_control_id: String,
+            ?call_leg_id: String,
+            ?call_session_id: String,
+            ?client_state: String,
+            ?connection_id: String,
+            ?failure_reason: String,
+            ?stream_id: String,
+            ?stream_params: Telnyx::StreamingFailedWebhookEvent::Data::Payload::StreamParams,
+            ?stream_type: Telnyx::Models::StreamingFailedWebhookEvent::Data::Payload::stream_type
+          ) -> void
+
+          def to_hash: -> {
+            call_control_id: String,
+            call_leg_id: String,
+            call_session_id: String,
+            client_state: String,
+            connection_id: String,
+            failure_reason: String,
+            stream_id: String,
+            stream_params: Telnyx::StreamingFailedWebhookEvent::Data::Payload::StreamParams,
+            stream_type: Telnyx::Models::StreamingFailedWebhookEvent::Data::Payload::stream_type
+          }
+
+          type stream_params =
+            {
+              stream_url: String,
+              track: Telnyx::Models::StreamingFailedWebhookEvent::Data::Payload::StreamParams::track
+            }
+
+          class StreamParams < Telnyx::Internal::Type::BaseModel
+            attr_reader stream_url: String?
+
+            def stream_url=: (String) -> String
+
+            attr_reader track: Telnyx::Models::StreamingFailedWebhookEvent::Data::Payload::StreamParams::track?
+
+            def track=: (
+              Telnyx::Models::StreamingFailedWebhookEvent::Data::Payload::StreamParams::track
+            ) -> Telnyx::Models::StreamingFailedWebhookEvent::Data::Payload::StreamParams::track
+
+            def initialize: (
+              ?stream_url: String,
+              ?track: Telnyx::Models::StreamingFailedWebhookEvent::Data::Payload::StreamParams::track
+            ) -> void
+
+            def to_hash: -> {
+              stream_url: String,
+              track: Telnyx::Models::StreamingFailedWebhookEvent::Data::Payload::StreamParams::track
+            }
+
+            type track = :inbound_track | :outbound_track | :both_tracks
+
+            module Track
+              extend Telnyx::Internal::Type::Enum
+
+              INBOUND_TRACK: :inbound_track
+              OUTBOUND_TRACK: :outbound_track
+              BOTH_TRACKS: :both_tracks
+
+              def self?.values: -> ::Array[Telnyx::Models::StreamingFailedWebhookEvent::Data::Payload::StreamParams::track]
+            end
+          end
+
+          type stream_type = :websocket | :dialogflow
+
+          module StreamType
+            extend Telnyx::Internal::Type::Enum
+
+            WEBSOCKET: :websocket
+            DIALOGFLOW: :dialogflow
+
+            def self?.values: -> ::Array[Telnyx::Models::StreamingFailedWebhookEvent::Data::Payload::stream_type]
+          end
+        end
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::StreamingFailedWebhookEvent::Data::record_type]
+        end
+      end
     end
   end
 end

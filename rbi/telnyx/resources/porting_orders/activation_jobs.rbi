@@ -50,11 +50,7 @@ module Telnyx
             id: String,
             page: Telnyx::PortingOrders::ActivationJobListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(
-            Telnyx::Internal::DefaultPagination[
-              Telnyx::PortingOrdersActivationJob
-            ]
-          )
+          ).returns(Telnyx::Models::PortingOrders::ActivationJobListResponse)
         end
         def list(
           # Porting Order id

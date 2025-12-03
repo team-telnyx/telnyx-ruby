@@ -146,7 +146,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::TexmlApplication>]
+      # @return [Telnyx::Models::TexmlApplicationListResponse]
       #
       # @see Telnyx::Models::TexmlApplicationListParams
       def list(params = {})
@@ -155,8 +155,7 @@ module Telnyx
           method: :get,
           path: "texml_applications",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
-          model: Telnyx::TexmlApplication,
+          model: Telnyx::Models::TexmlApplicationListResponse,
           options: options
         )
       end

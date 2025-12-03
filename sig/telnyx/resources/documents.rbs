@@ -7,7 +7,7 @@ module Telnyx
       ) -> Telnyx::Models::DocumentRetrieveResponse
 
       def update: (
-        String document_id,
+        String id,
         ?customer_reference: String,
         ?filename: String,
         ?request_options: Telnyx::request_opts
@@ -18,7 +18,7 @@ module Telnyx
         ?page: Telnyx::DocumentListParams::Page,
         ?sort: ::Array[Telnyx::Models::DocumentListParams::sort],
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::DocServiceDocument]
+      ) -> Telnyx::Models::DocumentListResponse
 
       def delete: (
         String id,
@@ -36,12 +36,18 @@ module Telnyx
       ) -> Telnyx::Models::DocumentGenerateDownloadLinkResponse
 
       def upload: (
-        document: Telnyx::Models::DocumentUploadParams::document,
+        url: String,
+        file: String,
+        ?customer_reference: String,
+        ?filename: String,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::DocumentUploadResponse
 
       def upload_json: (
-        document: Telnyx::Models::DocumentUploadJsonParams::document,
+        url: String,
+        file: String,
+        ?customer_reference: String,
+        ?filename: String,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::DocumentUploadJsonResponse
 

@@ -1,7 +1,71 @@
 module Telnyx
   module Models
-    type usage_report_list_response = ::Hash[Symbol, top]
+    type usage_report_list_response =
+      {
+        data: ::Array[::Hash[Symbol, top]],
+        meta: Telnyx::Models::UsageReportListResponse::Meta
+      }
 
-    UsageReportListResponse: Telnyx::Internal::Type::Converter
+    class UsageReportListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[::Hash[Symbol, top]]?
+
+      def data=: (::Array[::Hash[Symbol, top]]) -> ::Array[::Hash[Symbol, top]]
+
+      attr_reader meta: Telnyx::Models::UsageReportListResponse::Meta?
+
+      def meta=: (
+        Telnyx::Models::UsageReportListResponse::Meta
+      ) -> Telnyx::Models::UsageReportListResponse::Meta
+
+      def initialize: (
+        ?data: ::Array[::Hash[Symbol, top]],
+        ?meta: Telnyx::Models::UsageReportListResponse::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[::Hash[Symbol, top]],
+        meta: Telnyx::Models::UsageReportListResponse::Meta
+      }
+
+      type meta =
+        {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_reader page_number: Integer?
+
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        attr_reader total_pages: Integer?
+
+        def total_pages=: (Integer) -> Integer
+
+        attr_reader total_results: Integer?
+
+        def total_results=: (Integer) -> Integer
+
+        def initialize: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?total_pages: Integer,
+          ?total_results: Integer
+        ) -> void
+
+        def to_hash: -> {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+      end
+    end
   end
 end

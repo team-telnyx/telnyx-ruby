@@ -8,7 +8,7 @@ module Telnyx
       #
       # Get Telnyx usage data by product, broken out by the specified dimensions
       #
-      # @overload list(dimensions:, metrics:, product:, date_range: nil, end_date: nil, filter: nil, format_: nil, managed_accounts: nil, page_number: nil, page_size: nil, sort: nil, start_date: nil, authorization_bearer: nil, request_options: {})
+      # @overload list(dimensions:, metrics:, product:, date_range: nil, end_date: nil, filter: nil, format_: nil, managed_accounts: nil, page: nil, sort: nil, start_date: nil, authorization_bearer: nil, request_options: {})
       #
       # @param dimensions [Array<String>] Query param: Breakout by specified product dimensions
       #
@@ -26,9 +26,7 @@ module Telnyx
       #
       # @param managed_accounts [Boolean] Query param: Return the aggregations for all Managed Accounts under the user mak
       #
-      # @param page_number [Integer] Query param:
-      #
-      # @param page_size [Integer] Query param:
+      # @param page [Telnyx::Models::UsageReportListParams::Page] Query param: Consolidated page parameter (deepObject style). Originally: page[nu
       #
       # @param sort [Array<String>] Query param: Specifies the sort order for results
       #
@@ -38,7 +36,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Hash{Symbol=>Object}>]
+      # @return [Telnyx::Models::UsageReportListResponse]
       #
       # @see Telnyx::Models::UsageReportListParams
       def list(params)
@@ -53,22 +51,16 @@ module Telnyx
             :filter,
             :format_,
             :managed_accounts,
-            :page_number,
-            :page_size,
+            :page,
             :sort,
             :start_date
           ]
         @client.request(
           method: :get,
           path: "usage_reports",
-          query: parsed.slice(*query_params).transform_keys(
-            format_: "format",
-            page_number: "page[number]",
-            page_size: "page[size]"
-          ),
+          query: parsed.slice(*query_params).transform_keys(format_: "format"),
           headers: parsed.except(*query_params),
-          page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
+          model: Telnyx::Models::UsageReportListResponse,
           options: options
         )
       end

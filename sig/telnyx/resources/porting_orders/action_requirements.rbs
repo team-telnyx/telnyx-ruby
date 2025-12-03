@@ -8,7 +8,7 @@ module Telnyx
           ?page: Telnyx::PortingOrders::ActionRequirementListParams::Page,
           ?sort: Telnyx::PortingOrders::ActionRequirementListParams::Sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::PortingOrders::ActionRequirementListResponse]
+        ) -> Telnyx::Models::PortingOrders::ActionRequirementListResponse
 
         def initiate: (
           String id,

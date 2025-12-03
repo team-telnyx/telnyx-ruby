@@ -75,26 +75,7 @@ class Telnyx::Test::Resources::AI::McpServersTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.mcp_servers.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPaginationTopLevelArray
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Models::AI::McpServerListResponse
-    end
-
-    assert_pattern do
-      row => {
-        id: String,
-        created_at: Time,
-        name: String,
-        type: String,
-        url: String,
-        allowed_tools: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
-        api_key_ref: String | nil
-      }
+      response => ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::McpServerListResponseItem])
     end
   end
 

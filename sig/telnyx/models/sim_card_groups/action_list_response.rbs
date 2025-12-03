@@ -1,0 +1,33 @@
+module Telnyx
+  module Models
+    module SimCardGroups
+      type action_list_response =
+        {
+          data: ::Array[Telnyx::SimCardGroups::SimCardGroupAction],
+          meta: Telnyx::PaginationMeta
+        }
+
+      class ActionListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::SimCardGroups::SimCardGroupAction]?
+
+        def data=: (
+          ::Array[Telnyx::SimCardGroups::SimCardGroupAction]
+        ) -> ::Array[Telnyx::SimCardGroups::SimCardGroupAction]
+
+        attr_reader meta: Telnyx::PaginationMeta?
+
+        def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+        def initialize: (
+          ?data: ::Array[Telnyx::SimCardGroups::SimCardGroupAction],
+          ?meta: Telnyx::PaginationMeta
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::SimCardGroups::SimCardGroupAction],
+          meta: Telnyx::PaginationMeta
+        }
+      end
+    end
+  end
+end

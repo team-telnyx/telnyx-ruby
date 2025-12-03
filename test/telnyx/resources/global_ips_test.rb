@@ -41,14 +41,14 @@ class Telnyx::Test::Resources::GlobalIPsTest < Telnyx::Test::ResourceTest
     response = @telnyx.global_ips.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Models::GlobalIPListResponse
     end
 
-    row = response.to_enum.first
-    return if row.nil?
-
     assert_pattern do
-      row => Telnyx::Models::GlobalIPListResponse
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::GlobalIPListResponse::Data]) | nil,
+        meta: Telnyx::PaginationMeta | nil
+      }
     end
   end
 

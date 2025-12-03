@@ -8,12 +8,10 @@ class Telnyx::Test::Resources::MobilePushCredentialsTest < Telnyx::Test::Resourc
 
     response =
       @telnyx.mobile_push_credentials.create(
-        create_mobile_push_credential_request: {
-          alias: "LucyIosCredential",
-          certificate: "-----BEGIN CERTIFICATE----- MIIGVDCCBTKCAQEAsNlRJVZn9ZvXcECQm65czs... -----END CERTIFICATE-----",
-          private_key: "-----BEGIN RSA PRIVATE KEY----- MIIEpQIBAAKCAQEAsNlRJVZn9ZvXcECQm65czs... -----END RSA PRIVATE KEY-----",
-          type: :ios
-        }
+        alias_: "LucyIosCredential",
+        certificate: "-----BEGIN CERTIFICATE----- MIIGVDCCBTKCAQEAsNlRJVZn9ZvXcECQm65czs... -----END CERTIFICATE-----",
+        private_key: "-----BEGIN RSA PRIVATE KEY----- MIIEpQIBAAKCAQEAsNlRJVZn9ZvXcECQm65czs... -----END RSA PRIVATE KEY-----",
+        type: :ios
       )
 
     assert_pattern do
@@ -49,27 +47,13 @@ class Telnyx::Test::Resources::MobilePushCredentialsTest < Telnyx::Test::Resourc
     response = @telnyx.mobile_push_credentials.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::PushCredential
+      response => Telnyx::Models::MobilePushCredentialListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String,
-        alias_: String,
-        certificate: String,
-        created_at: Time,
-        private_key: String,
-        project_account_json_file: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]),
-        record_type: String,
-        type: String,
-        updated_at: Time
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PushCredential]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

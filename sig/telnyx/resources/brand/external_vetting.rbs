@@ -7,13 +7,13 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Brand::external_vetting_list_response
 
-        def imports: (
+        def import: (
           String brand_id,
           evp_id: String,
           vetting_id: String,
           ?vetting_token: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Brand::ExternalVettingImportsResponse
+        ) -> Telnyx::Models::Brand::ExternalVettingImportResponse
 
         def order: (
           String brand_id,

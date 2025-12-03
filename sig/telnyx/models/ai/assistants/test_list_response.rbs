@@ -1,0 +1,29 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        type test_list_response =
+          {
+            data: ::Array[Telnyx::AI::Assistants::AssistantTest],
+            meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+          }
+
+        class TestListResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: ::Array[Telnyx::AI::Assistants::AssistantTest]
+
+          attr_accessor meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+
+          def initialize: (
+            data: ::Array[Telnyx::AI::Assistants::AssistantTest],
+            meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[Telnyx::AI::Assistants::AssistantTest],
+            meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+          }
+        end
+      end
+    end
+  end
+end

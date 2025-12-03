@@ -117,9 +117,7 @@ module Telnyx
           filter: Telnyx::ExternalConnectionListParams::Filter::OrHash,
           page: Telnyx::ExternalConnectionListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[Telnyx::ExternalConnection]
-        )
+        ).returns(Telnyx::Models::ExternalConnectionListResponse)
       end
       def list(
         # Filter parameter for external connections (deepObject style). Supports filtering

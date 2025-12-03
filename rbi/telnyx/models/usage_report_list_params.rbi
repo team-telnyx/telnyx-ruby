@@ -66,17 +66,13 @@ module Telnyx
       sig { params(managed_accounts: T::Boolean).void }
       attr_writer :managed_accounts
 
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :page_number
+      # Consolidated page parameter (deepObject style). Originally: page[number],
+      # page[size]
+      sig { returns(T.nilable(Telnyx::UsageReportListParams::Page)) }
+      attr_reader :page
 
-      sig { params(page_number: Integer).void }
-      attr_writer :page_number
-
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :page_size
-
-      sig { params(page_size: Integer).void }
-      attr_writer :page_size
+      sig { params(page: Telnyx::UsageReportListParams::Page::OrHash).void }
+      attr_writer :page
 
       # Specifies the sort order for results
       sig { returns(T.nilable(T::Array[String])) }
@@ -110,8 +106,7 @@ module Telnyx
           filter: String,
           format_: Telnyx::UsageReportListParams::Format::OrSymbol,
           managed_accounts: T::Boolean,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::UsageReportListParams::Page::OrHash,
           sort: T::Array[String],
           start_date: String,
           authorization_bearer: String,
@@ -139,8 +134,9 @@ module Telnyx
         # Return the aggregations for all Managed Accounts under the user making the
         # request.
         managed_accounts: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[number],
+        # page[size]
+        page: nil,
         # Specifies the sort order for results
         sort: nil,
         # The start date for the time range you are interested in. The maximum time range
@@ -163,8 +159,7 @@ module Telnyx
             filter: String,
             format_: Telnyx::UsageReportListParams::Format::OrSymbol,
             managed_accounts: T::Boolean,
-            page_number: Integer,
-            page_size: Integer,
+            page: Telnyx::UsageReportListParams::Page,
             sort: T::Array[String],
             start_date: String,
             authorization_bearer: String,
@@ -193,6 +188,38 @@ module Telnyx
           )
         end
         def self.values
+        end
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::UsageReportListParams::Page,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :number
+
+        sig { params(number: Integer).void }
+        attr_writer :number
+
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :size
+
+        sig { params(size: Integer).void }
+        attr_writer :size
+
+        # Consolidated page parameter (deepObject style). Originally: page[number],
+        # page[size]
+        sig { params(number: Integer, size: Integer).returns(T.attached_class) }
+        def self.new(number: nil, size: nil)
+        end
+
+        sig { override.returns({ number: Integer, size: Integer }) }
+        def to_hash
         end
       end
     end

@@ -602,10 +602,10 @@ module Telnyx
           sig { params(occurred_at: Time).void }
           attr_writer :occurred_at
 
-          sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+          sig { returns(T.nilable(T.anything)) }
           attr_reader :payload
 
-          sig { params(payload: T::Hash[Symbol, T.anything]).void }
+          sig { params(payload: T.anything).void }
           attr_writer :payload
 
           # Identifies the type of the resource.
@@ -632,7 +632,7 @@ module Telnyx
               id: String,
               event_type: String,
               occurred_at: Time,
-              payload: T::Hash[Symbol, T.anything],
+              payload: T.anything,
               record_type:
                 Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Webhook::RecordType::OrSymbol
             ).returns(T.attached_class)
@@ -656,7 +656,7 @@ module Telnyx
                 id: String,
                 event_type: String,
                 occurred_at: Time,
-                payload: T::Hash[Symbol, T.anything],
+                payload: T.anything,
                 record_type:
                   Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Webhook::RecordType::TaggedSymbol
               }

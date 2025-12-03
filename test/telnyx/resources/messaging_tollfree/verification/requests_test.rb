@@ -205,55 +205,13 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
     response = @telnyx.messaging_tollfree.verification.requests.list(page: 1, page_size: 1)
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPaginationForMessagingTollfree
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::MessagingTollfree::Verification::VerificationRequestStatus
+      response => Telnyx::Models::MessagingTollfree::Verification::RequestListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String,
-        additional_information: String,
-        business_addr1: String,
-        business_city: String,
-        business_contact_email: String,
-        business_contact_first_name: String,
-        business_contact_last_name: String,
-        business_contact_phone: String,
-        business_name: String,
-        business_state: String,
-        business_zip: String,
-        corporate_website: String,
-        isv_reseller: String,
-        message_volume: Telnyx::MessagingTollfree::Verification::Volume,
-        opt_in_workflow: String,
-        opt_in_workflow_image_urls: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingTollfree::Verification::URL]),
-        phone_numbers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingTollfree::Verification::TfPhoneNumber]),
-        production_message_content: String,
-        use_case: Telnyx::MessagingTollfree::Verification::UseCaseCategories,
-        use_case_summary: String,
-        verification_status: Telnyx::MessagingTollfree::Verification::TfVerificationStatus,
-        age_gated_content: Telnyx::Internal::Type::Boolean | nil,
-        business_addr2: String | nil,
-        business_registration_country: String | nil,
-        business_registration_number: String | nil,
-        business_registration_type: String | nil,
-        created_at: Time | nil,
-        doing_business_as: String | nil,
-        entity_type: Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType | nil,
-        help_message_response: String | nil,
-        opt_in_confirmation_response: String | nil,
-        opt_in_keywords: String | nil,
-        privacy_policy_url: String | nil,
-        reason: String | nil,
-        terms_and_condition_url: String | nil,
-        updated_at: Time | nil,
-        webhook_url: String | nil
+      response => {
+        records: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingTollfree::Verification::VerificationRequestStatus]) | nil,
+        total_records: Integer | nil
       }
     end
   end

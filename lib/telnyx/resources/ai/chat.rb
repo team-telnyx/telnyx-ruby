@@ -51,7 +51,7 @@ module Telnyx
         #
         # @param tool_choice [Symbol, Telnyx::Models::AI::ChatCreateCompletionParams::ToolChoice]
         #
-        # @param tools [Array<Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Function, Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval>] The `function` tool type follows the same schema as the [OpenAI Chat Completions
+        # @param tools [Array<Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam, Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval>] The `function` tool type follows the same schema as the [OpenAI Chat Completions
         #
         # @param top_logprobs [Integer] This is used with `logprobs`. An integer between 0 and 20 specifying the number
         #

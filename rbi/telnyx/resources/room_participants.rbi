@@ -23,7 +23,7 @@ module Telnyx
           filter: Telnyx::RoomParticipantListParams::Filter::OrHash,
           page: Telnyx::RoomParticipantListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::RoomParticipant])
+        ).returns(Telnyx::Models::RoomParticipantListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

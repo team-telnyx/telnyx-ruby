@@ -3,7 +3,7 @@ module Telnyx
     module Calls
       type action_gather_using_ai_params =
         {
-          parameters: ::Hash[Symbol, top],
+          parameters: top,
           assistant: Telnyx::AI::Assistant,
           client_state: String,
           command_id: String,
@@ -24,7 +24,7 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
-        attr_accessor parameters: ::Hash[Symbol, top]
+        attr_accessor parameters: top
 
         attr_reader assistant: Telnyx::AI::Assistant?
 
@@ -89,7 +89,7 @@ module Telnyx
         ) -> Telnyx::Models::Calls::ActionGatherUsingAIParams::voice_settings
 
         def initialize: (
-          parameters: ::Hash[Symbol, top],
+          parameters: top,
           ?assistant: Telnyx::AI::Assistant,
           ?client_state: String,
           ?command_id: String,
@@ -107,7 +107,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
-          parameters: ::Hash[Symbol, top],
+          parameters: top,
           assistant: Telnyx::AI::Assistant,
           client_state: String,
           command_id: String,
@@ -166,7 +166,7 @@ module Telnyx
         type voice_settings =
           Telnyx::Calls::ElevenLabsVoiceSettings
           | Telnyx::Calls::TelnyxVoiceSettings
-          | Telnyx::Models::Calls::aws_voice_settings
+          | top
 
         module VoiceSettings
           extend Telnyx::Internal::Type::Union

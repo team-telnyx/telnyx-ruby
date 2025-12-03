@@ -59,19 +59,19 @@ module Telnyx
 
       # Retrieve a messaging profile
       #
-      # @overload retrieve(messaging_profile_id, request_options: {})
+      # @overload retrieve(id, request_options: {})
       #
-      # @param messaging_profile_id [String] The id of the messaging profile to retrieve
+      # @param id [String] The id of the messaging profile to retrieve
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::MessagingProfileRetrieveResponse]
       #
       # @see Telnyx::Models::MessagingProfileRetrieveParams
-      def retrieve(messaging_profile_id, params = {})
+      def retrieve(id, params = {})
         @client.request(
           method: :get,
-          path: ["messaging_profiles/%1$s", messaging_profile_id],
+          path: ["messaging_profiles/%1$s", id],
           model: Telnyx::Models::MessagingProfileRetrieveResponse,
           options: params[:request_options]
         )
@@ -82,9 +82,9 @@ module Telnyx
       #
       # Update a messaging profile
       #
-      # @overload update(messaging_profile_id, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil, request_options: {})
+      # @overload update(id, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil, request_options: {})
       #
-      # @param messaging_profile_id [String] The id of the messaging profile to retrieve
+      # @param id [String] The id of the messaging profile to retrieve
       #
       # @param alpha_sender [String, nil] The alphanumeric sender ID to use when sending to destinations that require an a
       #
@@ -121,11 +121,11 @@ module Telnyx
       # @return [Telnyx::Models::MessagingProfileUpdateResponse]
       #
       # @see Telnyx::Models::MessagingProfileUpdateParams
-      def update(messaging_profile_id, params = {})
+      def update(id, params = {})
         parsed, options = Telnyx::MessagingProfileUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["messaging_profiles/%1$s", messaging_profile_id],
+          path: ["messaging_profiles/%1$s", id],
           body: parsed,
           model: Telnyx::Models::MessagingProfileUpdateResponse,
           options: options
@@ -145,7 +145,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::MessagingProfile>]
+      # @return [Telnyx::Models::MessagingProfileListResponse]
       #
       # @see Telnyx::Models::MessagingProfileListParams
       def list(params = {})
@@ -154,27 +154,26 @@ module Telnyx
           method: :get,
           path: "messaging_profiles",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
-          model: Telnyx::MessagingProfile,
+          model: Telnyx::Models::MessagingProfileListResponse,
           options: options
         )
       end
 
       # Delete a messaging profile
       #
-      # @overload delete(messaging_profile_id, request_options: {})
+      # @overload delete(id, request_options: {})
       #
-      # @param messaging_profile_id [String] The id of the messaging profile to retrieve
+      # @param id [String] The id of the messaging profile to retrieve
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::MessagingProfileDeleteResponse]
       #
       # @see Telnyx::Models::MessagingProfileDeleteParams
-      def delete(messaging_profile_id, params = {})
+      def delete(id, params = {})
         @client.request(
           method: :delete,
-          path: ["messaging_profiles/%1$s", messaging_profile_id],
+          path: ["messaging_profiles/%1$s", id],
           model: Telnyx::Models::MessagingProfileDeleteResponse,
           options: params[:request_options]
         )
@@ -185,25 +184,24 @@ module Telnyx
       #
       # List phone numbers associated with a messaging profile
       #
-      # @overload list_phone_numbers(messaging_profile_id, page: nil, request_options: {})
+      # @overload list_phone_numbers(id, page: nil, request_options: {})
       #
-      # @param messaging_profile_id [String] The id of the messaging profile to retrieve
+      # @param id [String] The id of the messaging profile to retrieve
       #
       # @param page [Telnyx::Models::MessagingProfileListPhoneNumbersParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PhoneNumberWithMessagingSettings>]
+      # @return [Telnyx::Models::MessagingProfileListPhoneNumbersResponse]
       #
       # @see Telnyx::Models::MessagingProfileListPhoneNumbersParams
-      def list_phone_numbers(messaging_profile_id, params = {})
+      def list_phone_numbers(id, params = {})
         parsed, options = Telnyx::MessagingProfileListPhoneNumbersParams.dump_request(params)
         @client.request(
           method: :get,
-          path: ["messaging_profiles/%1$s/phone_numbers", messaging_profile_id],
+          path: ["messaging_profiles/%1$s/phone_numbers", id],
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
-          model: Telnyx::PhoneNumberWithMessagingSettings,
+          model: Telnyx::Models::MessagingProfileListPhoneNumbersResponse,
           options: options
         )
       end
@@ -213,25 +211,24 @@ module Telnyx
       #
       # List short codes associated with a messaging profile
       #
-      # @overload list_short_codes(messaging_profile_id, page: nil, request_options: {})
+      # @overload list_short_codes(id, page: nil, request_options: {})
       #
-      # @param messaging_profile_id [String] The id of the messaging profile to retrieve
+      # @param id [String] The id of the messaging profile to retrieve
       #
       # @param page [Telnyx::Models::MessagingProfileListShortCodesParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ShortCode>]
+      # @return [Telnyx::Models::MessagingProfileListShortCodesResponse]
       #
       # @see Telnyx::Models::MessagingProfileListShortCodesParams
-      def list_short_codes(messaging_profile_id, params = {})
+      def list_short_codes(id, params = {})
         parsed, options = Telnyx::MessagingProfileListShortCodesParams.dump_request(params)
         @client.request(
           method: :get,
-          path: ["messaging_profiles/%1$s/short_codes", messaging_profile_id],
+          path: ["messaging_profiles/%1$s/short_codes", id],
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
-          model: Telnyx::ShortCode,
+          model: Telnyx::Models::MessagingProfileListShortCodesResponse,
           options: options
         )
       end

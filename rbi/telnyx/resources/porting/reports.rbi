@@ -42,9 +42,7 @@ module Telnyx
             filter: Telnyx::Porting::ReportListParams::Filter::OrHash,
             page: Telnyx::Porting::ReportListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(
-            Telnyx::Internal::DefaultPagination[Telnyx::Porting::PortingReport]
-          )
+          ).returns(Telnyx::Models::Porting::ReportListResponse)
         end
         def list(
           # Consolidated filter parameter (deepObject style). Originally:

@@ -16,16 +16,20 @@ module Telnyx
 
       def to_hash: -> { data: Telnyx::Models::NetworkUpdateResponse::Data }
 
-      type data = { name: String }
+      type data = { name: String, record_type: String }
 
       class Data < Telnyx::Models::Record
         def name: -> String?
 
         def name=: (String _) -> String
 
-        def initialize: (?name: String) -> void
+        def record_type: -> String?
 
-        def to_hash: -> { name: String }
+        def record_type=: (String _) -> String
+
+        def initialize: (?name: String, ?record_type: String) -> void
+
+        def to_hash: -> { name: String, record_type: String }
       end
     end
   end

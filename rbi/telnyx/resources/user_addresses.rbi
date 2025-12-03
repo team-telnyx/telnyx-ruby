@@ -92,7 +92,7 @@ module Telnyx
           page: Telnyx::UserAddressListParams::Page::OrHash,
           sort: Telnyx::UserAddressListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::UserAddress])
+        ).returns(Telnyx::Models::UserAddressListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

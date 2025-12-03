@@ -108,7 +108,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::Conference>]
+      # @return [Telnyx::Models::ConferenceListResponse]
       #
       # @see Telnyx::Models::ConferenceListParams
       def list(params = {})
@@ -117,8 +117,7 @@ module Telnyx
           method: :get,
           path: "conferences",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
-          model: Telnyx::Conference,
+          model: Telnyx::Models::ConferenceListResponse,
           options: options
         )
       end
@@ -140,7 +139,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ConferenceListParticipantsResponse>]
+      # @return [Telnyx::Models::ConferenceListParticipantsResponse]
       #
       # @see Telnyx::Models::ConferenceListParticipantsParams
       def list_participants(conference_id, params = {})
@@ -149,7 +148,6 @@ module Telnyx
           method: :get,
           path: ["conferences/%1$s/participants", conference_id],
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::ConferenceListParticipantsResponse,
           options: options
         )

@@ -2,152 +2,180 @@ module Telnyx
   module Models
     type sim_card_list_wireless_connectivity_logs_response =
       {
-        id: Integer,
-        apn: String,
-        cell_id: String,
-        created_at: String,
-        imei: String,
-        imsi: String,
-        :ipv4 => String,
-        :ipv6 => String,
-        last_seen: String,
-        log_type: Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::log_type,
-        mobile_country_code: String,
-        mobile_network_code: String,
-        radio_access_technology: String,
-        record_type: String,
-        sim_card_id: String,
-        start_time: String,
-        state: String,
-        stop_time: String
+        data: ::Array[Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::Data],
+        meta: Telnyx::PaginationMeta
       }
 
     class SimCardListWirelessConnectivityLogsResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader sim_card_id: String?
+      attr_reader data: ::Array[Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::Data]?
 
-      def sim_card_id=: (String) -> String
+      def data=: (
+        ::Array[Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::Data]
+      ) -> ::Array[Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::Data]
 
-      attr_reader id: Integer?
+      attr_reader meta: Telnyx::PaginationMeta?
 
-      def id=: (Integer) -> Integer
-
-      attr_reader apn: String?
-
-      def apn=: (String) -> String
-
-      attr_reader cell_id: String?
-
-      def cell_id=: (String) -> String
-
-      attr_reader created_at: String?
-
-      def created_at=: (String) -> String
-
-      attr_reader imei: String?
-
-      def imei=: (String) -> String
-
-      attr_reader imsi: String?
-
-      def imsi=: (String) -> String
-
-      attr_reader ipv4: String?
-
-      def ipv4=: (String) -> String
-
-      attr_reader ipv6: String?
-
-      def ipv6=: (String) -> String
-
-      attr_reader last_seen: String?
-
-      def last_seen=: (String) -> String
-
-      attr_reader log_type: Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::log_type?
-
-      def log_type=: (
-        Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::log_type
-      ) -> Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::log_type
-
-      attr_reader mobile_country_code: String?
-
-      def mobile_country_code=: (String) -> String
-
-      attr_reader mobile_network_code: String?
-
-      def mobile_network_code=: (String) -> String
-
-      attr_reader radio_access_technology: String?
-
-      def radio_access_technology=: (String) -> String
-
-      attr_reader record_type: String?
-
-      def record_type=: (String) -> String
-
-      attr_reader start_time: String?
-
-      def start_time=: (String) -> String
-
-      attr_reader state: String?
-
-      def state=: (String) -> String
-
-      attr_reader stop_time: String?
-
-      def stop_time=: (String) -> String
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
 
       def initialize: (
-        ?id: Integer,
-        ?apn: String,
-        ?cell_id: String,
-        ?created_at: String,
-        ?imei: String,
-        ?imsi: String,
-        ?ipv4: String,
-        ?ipv6: String,
-        ?last_seen: String,
-        ?log_type: Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::log_type,
-        ?mobile_country_code: String,
-        ?mobile_network_code: String,
-        ?radio_access_technology: String,
-        ?record_type: String,
-        ?sim_card_id: String,
-        ?start_time: String,
-        ?state: String,
-        ?stop_time: String
+        ?data: ::Array[Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::Data],
+        ?meta: Telnyx::PaginationMeta
       ) -> void
 
       def to_hash: -> {
-        id: Integer,
-        apn: String,
-        cell_id: String,
-        created_at: String,
-        imei: String,
-        imsi: String,
-        :ipv4 => String,
-        :ipv6 => String,
-        last_seen: String,
-        log_type: Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::log_type,
-        mobile_country_code: String,
-        mobile_network_code: String,
-        radio_access_technology: String,
-        record_type: String,
-        sim_card_id: String,
-        start_time: String,
-        state: String,
-        stop_time: String
+        data: ::Array[Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::Data],
+        meta: Telnyx::PaginationMeta
       }
 
-      type log_type = :registration | :data
+      type data =
+        {
+          id: Integer,
+          apn: String,
+          cell_id: String,
+          created_at: String,
+          imei: String,
+          imsi: String,
+          :ipv4 => String,
+          :ipv6 => String,
+          last_seen: String,
+          log_type: Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::Data::log_type,
+          mobile_country_code: String,
+          mobile_network_code: String,
+          radio_access_technology: String,
+          record_type: String,
+          sim_card_id: String,
+          start_time: String,
+          state: String,
+          stop_time: String
+        }
 
-      module LogType
-        extend Telnyx::Internal::Type::Enum
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader sim_card_id: String?
 
-        REGISTRATION: :registration
-        DATA: :data
+        def sim_card_id=: (String) -> String
 
-        def self?.values: -> ::Array[Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::log_type]
+        attr_reader id: Integer?
+
+        def id=: (Integer) -> Integer
+
+        attr_reader apn: String?
+
+        def apn=: (String) -> String
+
+        attr_reader cell_id: String?
+
+        def cell_id=: (String) -> String
+
+        attr_reader created_at: String?
+
+        def created_at=: (String) -> String
+
+        attr_reader imei: String?
+
+        def imei=: (String) -> String
+
+        attr_reader imsi: String?
+
+        def imsi=: (String) -> String
+
+        attr_reader ipv4: String?
+
+        def ipv4=: (String) -> String
+
+        attr_reader ipv6: String?
+
+        def ipv6=: (String) -> String
+
+        attr_reader last_seen: String?
+
+        def last_seen=: (String) -> String
+
+        attr_reader log_type: Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::Data::log_type?
+
+        def log_type=: (
+          Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::Data::log_type
+        ) -> Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::Data::log_type
+
+        attr_reader mobile_country_code: String?
+
+        def mobile_country_code=: (String) -> String
+
+        attr_reader mobile_network_code: String?
+
+        def mobile_network_code=: (String) -> String
+
+        attr_reader radio_access_technology: String?
+
+        def radio_access_technology=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader start_time: String?
+
+        def start_time=: (String) -> String
+
+        attr_reader state: String?
+
+        def state=: (String) -> String
+
+        attr_reader stop_time: String?
+
+        def stop_time=: (String) -> String
+
+        def initialize: (
+          ?id: Integer,
+          ?apn: String,
+          ?cell_id: String,
+          ?created_at: String,
+          ?imei: String,
+          ?imsi: String,
+          ?ipv4: String,
+          ?ipv6: String,
+          ?last_seen: String,
+          ?log_type: Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::Data::log_type,
+          ?mobile_country_code: String,
+          ?mobile_network_code: String,
+          ?radio_access_technology: String,
+          ?record_type: String,
+          ?sim_card_id: String,
+          ?start_time: String,
+          ?state: String,
+          ?stop_time: String
+        ) -> void
+
+        def to_hash: -> {
+          id: Integer,
+          apn: String,
+          cell_id: String,
+          created_at: String,
+          imei: String,
+          imsi: String,
+          :ipv4 => String,
+          :ipv6 => String,
+          last_seen: String,
+          log_type: Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::Data::log_type,
+          mobile_country_code: String,
+          mobile_network_code: String,
+          radio_access_technology: String,
+          record_type: String,
+          sim_card_id: String,
+          start_time: String,
+          state: String,
+          stop_time: String
+        }
+
+        type log_type = :registration | :data
+
+        module LogType
+          extend Telnyx::Internal::Type::Enum
+
+          REGISTRATION: :registration
+          DATA: :data
+
+          def self?.values: -> ::Array[Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::Data::log_type]
+        end
       end
     end
   end

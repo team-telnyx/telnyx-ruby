@@ -1,0 +1,39 @@
+module Telnyx
+  module Models
+    module Legacy
+      module Reporting
+        module UsageReports
+          type voice_list_response =
+            {
+              data: ::Array[Telnyx::Legacy::Reporting::UsageReports::CdrUsageReportResponseLegacy],
+              meta: Telnyx::Legacy::Reporting::UsageReports::StandardPaginationMeta
+            }
+
+          class VoiceListResponse < Telnyx::Internal::Type::BaseModel
+            attr_reader data: ::Array[Telnyx::Legacy::Reporting::UsageReports::CdrUsageReportResponseLegacy]?
+
+            def data=: (
+              ::Array[Telnyx::Legacy::Reporting::UsageReports::CdrUsageReportResponseLegacy]
+            ) -> ::Array[Telnyx::Legacy::Reporting::UsageReports::CdrUsageReportResponseLegacy]
+
+            attr_reader meta: Telnyx::Legacy::Reporting::UsageReports::StandardPaginationMeta?
+
+            def meta=: (
+              Telnyx::Legacy::Reporting::UsageReports::StandardPaginationMeta
+            ) -> Telnyx::Legacy::Reporting::UsageReports::StandardPaginationMeta
+
+            def initialize: (
+              ?data: ::Array[Telnyx::Legacy::Reporting::UsageReports::CdrUsageReportResponseLegacy],
+              ?meta: Telnyx::Legacy::Reporting::UsageReports::StandardPaginationMeta
+            ) -> void
+
+            def to_hash: -> {
+              data: ::Array[Telnyx::Legacy::Reporting::UsageReports::CdrUsageReportResponseLegacy],
+              meta: Telnyx::Legacy::Reporting::UsageReports::StandardPaginationMeta
+            }
+          end
+        end
+      end
+    end
+  end
+end

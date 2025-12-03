@@ -25,9 +25,9 @@ module Telnyx
 
       # Update a document.
       #
-      # @overload update(document_id, customer_reference: nil, filename: nil, request_options: {})
+      # @overload update(id, customer_reference: nil, filename: nil, request_options: {})
       #
-      # @param document_id [String] Identifies the resource.
+      # @param id [String] Identifies the resource.
       #
       # @param customer_reference [String] Optional reference string for customer tracking.
       #
@@ -38,11 +38,11 @@ module Telnyx
       # @return [Telnyx::Models::DocumentUpdateResponse]
       #
       # @see Telnyx::Models::DocumentUpdateParams
-      def update(document_id, params = {})
+      def update(id, params = {})
         parsed, options = Telnyx::DocumentUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["documents/%1$s", document_id],
+          path: ["documents/%1$s", id],
           body: parsed,
           model: Telnyx::Models::DocumentUpdateResponse,
           options: options
@@ -64,7 +64,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::DocServiceDocument>]
+      # @return [Telnyx::Models::DocumentListResponse]
       #
       # @see Telnyx::Models::DocumentListParams
       def list(params = {})
@@ -73,8 +73,7 @@ module Telnyx
           method: :get,
           path: "documents",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
-          model: Telnyx::DocServiceDocument,
+          model: Telnyx::Models::DocumentListResponse,
           options: options
         )
       end
@@ -116,7 +115,7 @@ module Telnyx
         @client.request(
           method: :get,
           path: ["documents/%1$s/download", id],
-          headers: {"accept" => "application/octet-stream"},
+          headers: {"accept" => "*"},
           model: StringIO,
           options: params[:request_options]
         )
@@ -143,12 +142,22 @@ module Telnyx
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::DocumentUploadParams} for more details.
+      #
       # Upload a document.<br /><br />Uploaded files must be linked to a service within
       # 30 minutes or they will be automatically deleted.
       #
-      # @overload upload(document:, request_options: {})
+      # @overload upload(url:, file:, customer_reference: nil, filename: nil, request_options: {})
       #
-      # @param document [Telnyx::Models::DocumentUploadParams::Document::DocServiceDocumentUploadURL, Telnyx::Models::DocumentUploadParams::Document::DocServiceDocumentUploadInline]
+      # @param url [String] If the file is already hosted publicly, you can provide a URL and have the docum
+      #
+      # @param file [String] The Base64 encoded contents of the file you are uploading.
+      #
+      # @param customer_reference [String] A customer reference string for customer look ups.
+      #
+      # @param filename [String] The filename of the document.
+      #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::DocumentUploadResponse]
@@ -159,18 +168,28 @@ module Telnyx
         @client.request(
           method: :post,
           path: "documents?content-type=multipart",
-          body: parsed[:document],
+          body: parsed,
           model: Telnyx::Models::DocumentUploadResponse,
           options: options
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::DocumentUploadJsonParams} for more details.
+      #
       # Upload a document.<br /><br />Uploaded files must be linked to a service within
       # 30 minutes or they will be automatically deleted.
       #
-      # @overload upload_json(document:, request_options: {})
+      # @overload upload_json(url:, file:, customer_reference: nil, filename: nil, request_options: {})
       #
-      # @param document [Telnyx::Models::DocumentUploadJsonParams::Document::DocServiceDocumentUploadURL, Telnyx::Models::DocumentUploadJsonParams::Document::DocServiceDocumentUploadInline]
+      # @param url [String] If the file is already hosted publicly, you can provide a URL and have the docum
+      #
+      # @param file [String] The Base64 encoded contents of the file you are uploading.
+      #
+      # @param customer_reference [String] A customer reference string for customer look ups.
+      #
+      # @param filename [String] The filename of the document.
+      #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::DocumentUploadJsonResponse]
@@ -181,7 +200,7 @@ module Telnyx
         @client.request(
           method: :post,
           path: "documents",
-          body: parsed[:document],
+          body: parsed,
           model: Telnyx::Models::DocumentUploadJsonResponse,
           options: options
         )

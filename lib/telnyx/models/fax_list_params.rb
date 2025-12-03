@@ -15,25 +15,20 @@ module Telnyx
       #   @return [Telnyx::Models::FaxListParams::Filter, nil]
       optional :filter, -> { Telnyx::FaxListParams::Filter }
 
-      # @!attribute page_number
+      # @!attribute page
+      #   Consolidated pagination parameter (deepObject style). Originally: page[size],
+      #   page[number]
       #
-      #   @return [Integer, nil]
-      optional :page_number, Integer
+      #   @return [Telnyx::Models::FaxListParams::Page, nil]
+      optional :page, -> { Telnyx::FaxListParams::Page }
 
-      # @!attribute page_size
-      #
-      #   @return [Integer, nil]
-      optional :page_size, Integer
-
-      # @!method initialize(filter: nil, page_number: nil, page_size: nil, request_options: {})
+      # @!method initialize(filter: nil, page: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::FaxListParams} for more details.
       #
       #   @param filter [Telnyx::Models::FaxListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[created_at]
       #
-      #   @param page_number [Integer]
-      #
-      #   @param page_size [Integer]
+      #   @param page [Telnyx::Models::FaxListParams::Page] Consolidated pagination parameter (deepObject style). Originally: page[size], pa
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -154,6 +149,28 @@ module Telnyx
           #
           #   @param eq [String] The phone number, in E.164 format for filtering faxes sent to this number
         end
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        # @!attribute number
+        #   Number of the page to be retrieved
+        #
+        #   @return [Integer, nil]
+        optional :number, Integer
+
+        # @!attribute size
+        #   Number of fax resources for the single page returned
+        #
+        #   @return [Integer, nil]
+        optional :size, Integer
+
+        # @!method initialize(number: nil, size: nil)
+        #   Consolidated pagination parameter (deepObject style). Originally: page[size],
+        #   page[number]
+        #
+        #   @param number [Integer] Number of the page to be retrieved
+        #
+        #   @param size [Integer] Number of fax resources for the single page returned
       end
     end
   end

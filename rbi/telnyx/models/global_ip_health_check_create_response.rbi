@@ -71,11 +71,19 @@ module Telnyx
         sig { params(health_check_type: String).void }
         attr_writer :health_check_type
 
+        # Identifies the type of the resource.
+        sig { returns(T.nilable(String)) }
+        attr_reader :record_type
+
+        sig { params(record_type: String).void }
+        attr_writer :record_type
+
         sig do
           params(
             global_ip_id: String,
             health_check_params: T::Hash[Symbol, T.anything],
-            health_check_type: String
+            health_check_type: String,
+            record_type: String
           ).returns(T.attached_class)
         end
         def self.new(
@@ -84,7 +92,9 @@ module Telnyx
           # A Global IP health check params.
           health_check_params: nil,
           # The Global IP health check type.
-          health_check_type: nil
+          health_check_type: nil,
+          # Identifies the type of the resource.
+          record_type: nil
         )
         end
 
@@ -93,7 +103,8 @@ module Telnyx
             {
               global_ip_id: String,
               health_check_params: T::Hash[Symbol, T.anything],
-              health_check_type: String
+              health_check_type: String,
+              record_type: String
             }
           )
         end

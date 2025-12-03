@@ -4,472 +4,494 @@ module Telnyx
   module Models
     # @see Telnyx::Resources::Campaign#list
     class CampaignListResponse < Telnyx::Internal::Type::BaseModel
-      # @!attribute age_gated
-      #   Age gated content in campaign.
+      # @!attribute page
       #
-      #   @return [Boolean, nil]
-      optional :age_gated, Telnyx::Internal::Type::Boolean, api_name: :ageGated
+      #   @return [Integer, nil]
+      optional :page, Integer
 
-      # @!attribute assigned_phone_numbers_count
-      #   Number of phone numbers associated with the campaign
+      # @!attribute records
       #
-      #   @return [Float, nil]
-      optional :assigned_phone_numbers_count, Float, api_name: :assignedPhoneNumbersCount
+      #   @return [Array<Telnyx::Models::CampaignListResponse::Record>, nil]
+      optional :records, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::CampaignListResponse::Record] }
 
-      # @!attribute auto_renewal
-      #   Campaign subscription auto-renewal status.
+      # @!attribute total_records
       #
-      #   @return [Boolean, nil]
-      optional :auto_renewal, Telnyx::Internal::Type::Boolean, api_name: :autoRenewal
+      #   @return [Integer, nil]
+      optional :total_records, Integer, api_name: :totalRecords
 
-      # @!attribute billed_date
-      #   Campaign recent billed date.
-      #
-      #   @return [String, nil]
-      optional :billed_date, String, api_name: :billedDate
+      # @!method initialize(page: nil, records: nil, total_records: nil)
+      #   @param page [Integer]
+      #   @param records [Array<Telnyx::Models::CampaignListResponse::Record>]
+      #   @param total_records [Integer]
 
-      # @!attribute brand_display_name
-      #   Display or marketing name of the brand.
-      #
-      #   @return [String, nil]
-      optional :brand_display_name, String, api_name: :brandDisplayName
+      class Record < Telnyx::Internal::Type::BaseModel
+        # @!attribute age_gated
+        #   Age gated content in campaign.
+        #
+        #   @return [Boolean, nil]
+        optional :age_gated, Telnyx::Internal::Type::Boolean, api_name: :ageGated
 
-      # @!attribute brand_id
-      #   Unique identifier assigned to the brand.
-      #
-      #   @return [String, nil]
-      optional :brand_id, String, api_name: :brandId
+        # @!attribute assigned_phone_numbers_count
+        #   Number of phone numbers associated with the campaign
+        #
+        #   @return [Float, nil]
+        optional :assigned_phone_numbers_count, Float, api_name: :assignedPhoneNumbersCount
 
-      # @!attribute campaign_id
-      #   Unique identifier for a campaign.
-      #
-      #   @return [String, nil]
-      optional :campaign_id, String, api_name: :campaignId
+        # @!attribute auto_renewal
+        #   Campaign subscription auto-renewal status.
+        #
+        #   @return [Boolean, nil]
+        optional :auto_renewal, Telnyx::Internal::Type::Boolean, api_name: :autoRenewal
 
-      # @!attribute campaign_status
-      #   Campaign status
-      #
-      #   @return [Symbol, Telnyx::Models::CampaignListResponse::CampaignStatus, nil]
-      optional :campaign_status,
-               enum: -> { Telnyx::Models::CampaignListResponse::CampaignStatus },
-               api_name: :campaignStatus
+        # @!attribute billed_date
+        #   Campaign recent billed date.
+        #
+        #   @return [String, nil]
+        optional :billed_date, String, api_name: :billedDate
 
-      # @!attribute create_date
-      #   Unix timestamp when campaign was created.
-      #
-      #   @return [String, nil]
-      optional :create_date, String, api_name: :createDate
+        # @!attribute brand_display_name
+        #   Display or marketing name of the brand.
+        #
+        #   @return [String, nil]
+        optional :brand_display_name, String, api_name: :brandDisplayName
 
-      # @!attribute csp_id
-      #   Alphanumeric identifier of the CSP associated with this campaign.
-      #
-      #   @return [String, nil]
-      optional :csp_id, String, api_name: :cspId
+        # @!attribute brand_id
+        #   Unique identifier assigned to the brand.
+        #
+        #   @return [String, nil]
+        optional :brand_id, String, api_name: :brandId
 
-      # @!attribute description
-      #   Summary description of this campaign.
-      #
-      #   @return [String, nil]
-      optional :description, String
+        # @!attribute campaign_id
+        #   Unique identifier for a campaign.
+        #
+        #   @return [String, nil]
+        optional :campaign_id, String, api_name: :campaignId
 
-      # @!attribute direct_lending
-      #
-      #   @return [Boolean, nil]
-      optional :direct_lending, Telnyx::Internal::Type::Boolean, api_name: :directLending
+        # @!attribute campaign_status
+        #   Campaign status
+        #
+        #   @return [Symbol, Telnyx::Models::CampaignListResponse::Record::CampaignStatus, nil]
+        optional :campaign_status,
+                 enum: -> { Telnyx::Models::CampaignListResponse::Record::CampaignStatus },
+                 api_name: :campaignStatus
 
-      # @!attribute embedded_link
-      #   Does message generated by the campaign include URL link in SMS?
-      #
-      #   @return [Boolean, nil]
-      optional :embedded_link, Telnyx::Internal::Type::Boolean, api_name: :embeddedLink
+        # @!attribute create_date
+        #   Unix timestamp when campaign was created.
+        #
+        #   @return [String, nil]
+        optional :create_date, String, api_name: :createDate
 
-      # @!attribute embedded_link_sample
-      #   Sample of an embedded link that will be sent to subscribers.
-      #
-      #   @return [String, nil]
-      optional :embedded_link_sample, String, api_name: :embeddedLinkSample
+        # @!attribute csp_id
+        #   Alphanumeric identifier of the CSP associated with this campaign.
+        #
+        #   @return [String, nil]
+        optional :csp_id, String, api_name: :cspId
 
-      # @!attribute embedded_phone
-      #   Does message generated by the campaign include phone number in SMS?
-      #
-      #   @return [Boolean, nil]
-      optional :embedded_phone, Telnyx::Internal::Type::Boolean, api_name: :embeddedPhone
+        # @!attribute description
+        #   Summary description of this campaign.
+        #
+        #   @return [String, nil]
+        optional :description, String
 
-      # @!attribute failure_reasons
-      #   Failure reasons if campaign submission failed
-      #
-      #   @return [String, nil]
-      optional :failure_reasons, String, api_name: :failureReasons
+        # @!attribute direct_lending
+        #
+        #   @return [Boolean, nil]
+        optional :direct_lending, Telnyx::Internal::Type::Boolean, api_name: :directLending
 
-      # @!attribute help_keywords
-      #   Subscriber help keywords. Multiple keywords are comma separated without space.
-      #
-      #   @return [String, nil]
-      optional :help_keywords, String, api_name: :helpKeywords
+        # @!attribute embedded_link
+        #   Does message generated by the campaign include URL link in SMS?
+        #
+        #   @return [Boolean, nil]
+        optional :embedded_link, Telnyx::Internal::Type::Boolean, api_name: :embeddedLink
 
-      # @!attribute help_message
-      #   Help message of the campaign.
-      #
-      #   @return [String, nil]
-      optional :help_message, String, api_name: :helpMessage
+        # @!attribute embedded_link_sample
+        #   Sample of an embedded link that will be sent to subscribers.
+        #
+        #   @return [String, nil]
+        optional :embedded_link_sample, String, api_name: :embeddedLinkSample
 
-      # @!attribute is_t_mobile_number_pooling_enabled
-      #   Indicates whether the campaign has a T-Mobile number pool ID associated with it.
-      #
-      #   @return [Boolean, nil]
-      optional :is_t_mobile_number_pooling_enabled,
-               Telnyx::Internal::Type::Boolean,
-               api_name: :isTMobileNumberPoolingEnabled
+        # @!attribute embedded_phone
+        #   Does message generated by the campaign include phone number in SMS?
+        #
+        #   @return [Boolean, nil]
+        optional :embedded_phone, Telnyx::Internal::Type::Boolean, api_name: :embeddedPhone
 
-      # @!attribute is_t_mobile_registered
-      #   Indicates whether the campaign is registered with T-Mobile.
-      #
-      #   @return [Boolean, nil]
-      optional :is_t_mobile_registered, Telnyx::Internal::Type::Boolean, api_name: :isTMobileRegistered
+        # @!attribute failure_reasons
+        #   Failure reasons if campaign submission failed
+        #
+        #   @return [String, nil]
+        optional :failure_reasons, String, api_name: :failureReasons
 
-      # @!attribute is_t_mobile_suspended
-      #   Indicates whether the campaign is suspended with T-Mobile.
-      #
-      #   @return [Boolean, nil]
-      optional :is_t_mobile_suspended, Telnyx::Internal::Type::Boolean, api_name: :isTMobileSuspended
+        # @!attribute help_keywords
+        #   Subscriber help keywords. Multiple keywords are comma separated without space.
+        #
+        #   @return [String, nil]
+        optional :help_keywords, String, api_name: :helpKeywords
 
-      # @!attribute message_flow
-      #   Message flow description.
-      #
-      #   @return [String, nil]
-      optional :message_flow, String, api_name: :messageFlow
+        # @!attribute help_message
+        #   Help message of the campaign.
+        #
+        #   @return [String, nil]
+        optional :help_message, String, api_name: :helpMessage
 
-      # @!attribute mock
-      #   Campaign created from mock brand. Mocked campaign cannot be shared with an
-      #   upstream CNP.
-      #
-      #   @return [Boolean, nil]
-      optional :mock, Telnyx::Internal::Type::Boolean
+        # @!attribute is_t_mobile_number_pooling_enabled
+        #   Indicates whether the campaign has a T-Mobile number pool ID associated with it.
+        #
+        #   @return [Boolean, nil]
+        optional :is_t_mobile_number_pooling_enabled,
+                 Telnyx::Internal::Type::Boolean,
+                 api_name: :isTMobileNumberPoolingEnabled
 
-      # @!attribute next_renewal_or_expiration_date
-      #   When the campaign would be due for its next renew/bill date.
-      #
-      #   @return [String, nil]
-      optional :next_renewal_or_expiration_date, String, api_name: :nextRenewalOrExpirationDate
+        # @!attribute is_t_mobile_registered
+        #   Indicates whether the campaign is registered with T-Mobile.
+        #
+        #   @return [Boolean, nil]
+        optional :is_t_mobile_registered, Telnyx::Internal::Type::Boolean, api_name: :isTMobileRegistered
 
-      # @!attribute number_pool
-      #   Does campaign utilize pool of phone numbers?
-      #
-      #   @return [Boolean, nil]
-      optional :number_pool, Telnyx::Internal::Type::Boolean, api_name: :numberPool
+        # @!attribute is_t_mobile_suspended
+        #   Indicates whether the campaign is suspended with T-Mobile.
+        #
+        #   @return [Boolean, nil]
+        optional :is_t_mobile_suspended, Telnyx::Internal::Type::Boolean, api_name: :isTMobileSuspended
 
-      # @!attribute optin_keywords
-      #   Subscriber opt-in keywords. Multiple keywords are comma separated without space.
-      #
-      #   @return [String, nil]
-      optional :optin_keywords, String, api_name: :optinKeywords
+        # @!attribute message_flow
+        #   Message flow description.
+        #
+        #   @return [String, nil]
+        optional :message_flow, String, api_name: :messageFlow
 
-      # @!attribute optin_message
-      #   Subscriber opt-in message.
-      #
-      #   @return [String, nil]
-      optional :optin_message, String, api_name: :optinMessage
+        # @!attribute mock
+        #   Campaign created from mock brand. Mocked campaign cannot be shared with an
+        #   upstream CNP.
+        #
+        #   @return [Boolean, nil]
+        optional :mock, Telnyx::Internal::Type::Boolean
 
-      # @!attribute optout_keywords
-      #   Subscriber opt-out keywords. Multiple keywords are comma separated without
-      #   space.
-      #
-      #   @return [String, nil]
-      optional :optout_keywords, String, api_name: :optoutKeywords
+        # @!attribute next_renewal_or_expiration_date
+        #   When the campaign would be due for its next renew/bill date.
+        #
+        #   @return [String, nil]
+        optional :next_renewal_or_expiration_date, String, api_name: :nextRenewalOrExpirationDate
 
-      # @!attribute optout_message
-      #   Subscriber opt-out message.
-      #
-      #   @return [String, nil]
-      optional :optout_message, String, api_name: :optoutMessage
+        # @!attribute number_pool
+        #   Does campaign utilize pool of phone numbers?
+        #
+        #   @return [Boolean, nil]
+        optional :number_pool, Telnyx::Internal::Type::Boolean, api_name: :numberPool
 
-      # @!attribute privacy_policy_link
-      #   Link to the campaign's privacy policy.
-      #
-      #   @return [String, nil]
-      optional :privacy_policy_link, String, api_name: :privacyPolicyLink
+        # @!attribute optin_keywords
+        #   Subscriber opt-in keywords. Multiple keywords are comma separated without space.
+        #
+        #   @return [String, nil]
+        optional :optin_keywords, String, api_name: :optinKeywords
 
-      # @!attribute reference_id
-      #   Caller supplied campaign reference ID. If supplied, the value must be unique
-      #   across all submitted campaigns. Can be used to prevent duplicate campaign
-      #   registrations.
-      #
-      #   @return [String, nil]
-      optional :reference_id, String, api_name: :referenceId
+        # @!attribute optin_message
+        #   Subscriber opt-in message.
+        #
+        #   @return [String, nil]
+        optional :optin_message, String, api_name: :optinMessage
 
-      # @!attribute reseller_id
-      #   Alphanumeric identifier of the reseller that you want to associate with this
-      #   campaign.
-      #
-      #   @return [String, nil]
-      optional :reseller_id, String, api_name: :resellerId
+        # @!attribute optout_keywords
+        #   Subscriber opt-out keywords. Multiple keywords are comma separated without
+        #   space.
+        #
+        #   @return [String, nil]
+        optional :optout_keywords, String, api_name: :optoutKeywords
 
-      # @!attribute sample1
-      #   Message sample. Some campaign tiers require 1 or more message samples.
-      #
-      #   @return [String, nil]
-      optional :sample1, String
+        # @!attribute optout_message
+        #   Subscriber opt-out message.
+        #
+        #   @return [String, nil]
+        optional :optout_message, String, api_name: :optoutMessage
 
-      # @!attribute sample2
-      #   Message sample. Some campaign tiers require 2 or more message samples.
-      #
-      #   @return [String, nil]
-      optional :sample2, String
+        # @!attribute privacy_policy_link
+        #   Link to the campaign's privacy policy.
+        #
+        #   @return [String, nil]
+        optional :privacy_policy_link, String, api_name: :privacyPolicyLink
 
-      # @!attribute sample3
-      #   Message sample. Some campaign tiers require 3 or more message samples.
-      #
-      #   @return [String, nil]
-      optional :sample3, String
+        # @!attribute reference_id
+        #   Caller supplied campaign reference ID. If supplied, the value must be unique
+        #   across all submitted campaigns. Can be used to prevent duplicate campaign
+        #   registrations.
+        #
+        #   @return [String, nil]
+        optional :reference_id, String, api_name: :referenceId
 
-      # @!attribute sample4
-      #   Message sample. Some campaign tiers require 4 or more message samples.
-      #
-      #   @return [String, nil]
-      optional :sample4, String
+        # @!attribute reseller_id
+        #   Alphanumeric identifier of the reseller that you want to associate with this
+        #   campaign.
+        #
+        #   @return [String, nil]
+        optional :reseller_id, String, api_name: :resellerId
 
-      # @!attribute sample5
-      #   Message sample. Some campaign tiers require 5 or more message samples.
-      #
-      #   @return [String, nil]
-      optional :sample5, String
+        # @!attribute sample1
+        #   Message sample. Some campaign tiers require 1 or more message samples.
+        #
+        #   @return [String, nil]
+        optional :sample1, String
 
-      # @!attribute status
-      #   Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created
-      #   campaign defaults to ACTIVE status.
-      #
-      #   @return [String, nil]
-      optional :status, String
+        # @!attribute sample2
+        #   Message sample. Some campaign tiers require 2 or more message samples.
+        #
+        #   @return [String, nil]
+        optional :sample2, String
 
-      # @!attribute submission_status
-      #   Campaign submission status
-      #
-      #   @return [Symbol, Telnyx::Models::CampaignListResponse::SubmissionStatus, nil]
-      optional :submission_status,
-               enum: -> { Telnyx::Models::CampaignListResponse::SubmissionStatus },
-               api_name: :submissionStatus
+        # @!attribute sample3
+        #   Message sample. Some campaign tiers require 3 or more message samples.
+        #
+        #   @return [String, nil]
+        optional :sample3, String
 
-      # @!attribute subscriber_help
-      #   Does campaign responds to help keyword(s)?
-      #
-      #   @return [Boolean, nil]
-      optional :subscriber_help, Telnyx::Internal::Type::Boolean, api_name: :subscriberHelp
+        # @!attribute sample4
+        #   Message sample. Some campaign tiers require 4 or more message samples.
+        #
+        #   @return [String, nil]
+        optional :sample4, String
 
-      # @!attribute subscriber_optin
-      #   Does campaign require subscriber to opt-in before SMS is sent to subscriber?
-      #
-      #   @return [Boolean, nil]
-      optional :subscriber_optin, Telnyx::Internal::Type::Boolean, api_name: :subscriberOptin
+        # @!attribute sample5
+        #   Message sample. Some campaign tiers require 5 or more message samples.
+        #
+        #   @return [String, nil]
+        optional :sample5, String
 
-      # @!attribute subscriber_optout
-      #   Does campaign support subscriber opt-out keyword(s)?
-      #
-      #   @return [Boolean, nil]
-      optional :subscriber_optout, Telnyx::Internal::Type::Boolean, api_name: :subscriberOptout
+        # @!attribute status
+        #   Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created
+        #   campaign defaults to ACTIVE status.
+        #
+        #   @return [String, nil]
+        optional :status, String
 
-      # @!attribute sub_usecases
-      #   Campaign sub-usecases. Must be of defined valid sub-usecase types. Use
-      #   `/registry/enum/usecase` operation to retrieve list of valid sub-usecases
-      #
-      #   @return [Array<String>, nil]
-      optional :sub_usecases, Telnyx::Internal::Type::ArrayOf[String], api_name: :subUsecases
+        # @!attribute submission_status
+        #   Campaign submission status
+        #
+        #   @return [Symbol, Telnyx::Models::CampaignListResponse::Record::SubmissionStatus, nil]
+        optional :submission_status,
+                 enum: -> { Telnyx::Models::CampaignListResponse::Record::SubmissionStatus },
+                 api_name: :submissionStatus
 
-      # @!attribute tcr_brand_id
-      #   Unique identifier assigned to the brand by the registry.
-      #
-      #   @return [String, nil]
-      optional :tcr_brand_id, String, api_name: :tcrBrandId
+        # @!attribute subscriber_help
+        #   Does campaign responds to help keyword(s)?
+        #
+        #   @return [Boolean, nil]
+        optional :subscriber_help, Telnyx::Internal::Type::Boolean, api_name: :subscriberHelp
 
-      # @!attribute tcr_campaign_id
-      #   Unique identifier assigned to the campaign by the registry.
-      #
-      #   @return [String, nil]
-      optional :tcr_campaign_id, String, api_name: :tcrCampaignId
+        # @!attribute subscriber_optin
+        #   Does campaign require subscriber to opt-in before SMS is sent to subscriber?
+        #
+        #   @return [Boolean, nil]
+        optional :subscriber_optin, Telnyx::Internal::Type::Boolean, api_name: :subscriberOptin
 
-      # @!attribute terms_and_conditions
-      #   Is terms & conditions accepted?
-      #
-      #   @return [Boolean, nil]
-      optional :terms_and_conditions, Telnyx::Internal::Type::Boolean, api_name: :termsAndConditions
+        # @!attribute subscriber_optout
+        #   Does campaign support subscriber opt-out keyword(s)?
+        #
+        #   @return [Boolean, nil]
+        optional :subscriber_optout, Telnyx::Internal::Type::Boolean, api_name: :subscriberOptout
 
-      # @!attribute terms_and_conditions_link
-      #   Link to the campaign's terms and conditions.
-      #
-      #   @return [String, nil]
-      optional :terms_and_conditions_link, String, api_name: :termsAndConditionsLink
+        # @!attribute sub_usecases
+        #   Campaign sub-usecases. Must be of defined valid sub-usecase types. Use
+        #   `/registry/enum/usecase` operation to retrieve list of valid sub-usecases
+        #
+        #   @return [Array<String>, nil]
+        optional :sub_usecases, Telnyx::Internal::Type::ArrayOf[String], api_name: :subUsecases
 
-      # @!attribute usecase
-      #   Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase`
-      #   operation to retrieve usecases available for given brand.
-      #
-      #   @return [String, nil]
-      optional :usecase, String
+        # @!attribute tcr_brand_id
+        #   Unique identifier assigned to the brand by the registry.
+        #
+        #   @return [String, nil]
+        optional :tcr_brand_id, String, api_name: :tcrBrandId
 
-      # @!attribute vertical
-      #   @deprecated This field is deprecated and will be removed soon
-      #
-      #   Business/industry segment of this campaign (Deprecated). Must be of defined
-      #   valid types. Use `/registry/enum/vertical` operation to retrieve verticals
-      #   available for given brand, vertical combination.
-      #
-      #   This field is deprecated.
-      #
-      #   @return [String, nil]
-      optional :vertical, String
+        # @!attribute tcr_campaign_id
+        #   Unique identifier assigned to the campaign by the registry.
+        #
+        #   @return [String, nil]
+        optional :tcr_campaign_id, String, api_name: :tcrCampaignId
 
-      # @!attribute webhook_failover_url
-      #   Failover webhook to which campaign status updates are sent.
-      #
-      #   @return [String, nil]
-      optional :webhook_failover_url, String, api_name: :webhookFailoverURL
+        # @!attribute terms_and_conditions
+        #   Is terms & conditions accepted?
+        #
+        #   @return [Boolean, nil]
+        optional :terms_and_conditions, Telnyx::Internal::Type::Boolean, api_name: :termsAndConditions
 
-      # @!attribute webhook_url
-      #   Webhook to which campaign status updates are sent.
-      #
-      #   @return [String, nil]
-      optional :webhook_url, String, api_name: :webhookURL
+        # @!attribute terms_and_conditions_link
+        #   Link to the campaign's terms and conditions.
+        #
+        #   @return [String, nil]
+        optional :terms_and_conditions_link, String, api_name: :termsAndConditionsLink
 
-      # @!method initialize(age_gated: nil, assigned_phone_numbers_count: nil, auto_renewal: nil, billed_date: nil, brand_display_name: nil, brand_id: nil, campaign_id: nil, campaign_status: nil, create_date: nil, csp_id: nil, description: nil, direct_lending: nil, embedded_link: nil, embedded_link_sample: nil, embedded_phone: nil, failure_reasons: nil, help_keywords: nil, help_message: nil, is_t_mobile_number_pooling_enabled: nil, is_t_mobile_registered: nil, is_t_mobile_suspended: nil, message_flow: nil, mock: nil, next_renewal_or_expiration_date: nil, number_pool: nil, optin_keywords: nil, optin_message: nil, optout_keywords: nil, optout_message: nil, privacy_policy_link: nil, reference_id: nil, reseller_id: nil, sample1: nil, sample2: nil, sample3: nil, sample4: nil, sample5: nil, status: nil, submission_status: nil, subscriber_help: nil, subscriber_optin: nil, subscriber_optout: nil, sub_usecases: nil, tcr_brand_id: nil, tcr_campaign_id: nil, terms_and_conditions: nil, terms_and_conditions_link: nil, usecase: nil, vertical: nil, webhook_failover_url: nil, webhook_url: nil)
-      #   Some parameter documentations has been truncated, see
-      #   {Telnyx::Models::CampaignListResponse} for more details.
-      #
-      #   @param age_gated [Boolean] Age gated content in campaign.
-      #
-      #   @param assigned_phone_numbers_count [Float] Number of phone numbers associated with the campaign
-      #
-      #   @param auto_renewal [Boolean] Campaign subscription auto-renewal status.
-      #
-      #   @param billed_date [String] Campaign recent billed date.
-      #
-      #   @param brand_display_name [String] Display or marketing name of the brand.
-      #
-      #   @param brand_id [String] Unique identifier assigned to the brand.
-      #
-      #   @param campaign_id [String] Unique identifier for a campaign.
-      #
-      #   @param campaign_status [Symbol, Telnyx::Models::CampaignListResponse::CampaignStatus] Campaign status
-      #
-      #   @param create_date [String] Unix timestamp when campaign was created.
-      #
-      #   @param csp_id [String] Alphanumeric identifier of the CSP associated with this campaign.
-      #
-      #   @param description [String] Summary description of this campaign.
-      #
-      #   @param direct_lending [Boolean]
-      #
-      #   @param embedded_link [Boolean] Does message generated by the campaign include URL link in SMS?
-      #
-      #   @param embedded_link_sample [String] Sample of an embedded link that will be sent to subscribers.
-      #
-      #   @param embedded_phone [Boolean] Does message generated by the campaign include phone number in SMS?
-      #
-      #   @param failure_reasons [String] Failure reasons if campaign submission failed
-      #
-      #   @param help_keywords [String] Subscriber help keywords. Multiple keywords are comma separated without space.
-      #
-      #   @param help_message [String] Help message of the campaign.
-      #
-      #   @param is_t_mobile_number_pooling_enabled [Boolean] Indicates whether the campaign has a T-Mobile number pool ID associated with it.
-      #
-      #   @param is_t_mobile_registered [Boolean] Indicates whether the campaign is registered with T-Mobile.
-      #
-      #   @param is_t_mobile_suspended [Boolean] Indicates whether the campaign is suspended with T-Mobile.
-      #
-      #   @param message_flow [String] Message flow description.
-      #
-      #   @param mock [Boolean] Campaign created from mock brand. Mocked campaign cannot be shared with an upstr
-      #
-      #   @param next_renewal_or_expiration_date [String] When the campaign would be due for its next renew/bill date.
-      #
-      #   @param number_pool [Boolean] Does campaign utilize pool of phone numbers?
-      #
-      #   @param optin_keywords [String] Subscriber opt-in keywords. Multiple keywords are comma separated without space.
-      #
-      #   @param optin_message [String] Subscriber opt-in message.
-      #
-      #   @param optout_keywords [String] Subscriber opt-out keywords. Multiple keywords are comma separated without space
-      #
-      #   @param optout_message [String] Subscriber opt-out message.
-      #
-      #   @param privacy_policy_link [String] Link to the campaign's privacy policy.
-      #
-      #   @param reference_id [String] Caller supplied campaign reference ID. If supplied, the value must be unique acr
-      #
-      #   @param reseller_id [String] Alphanumeric identifier of the reseller that you want to associate with this cam
-      #
-      #   @param sample1 [String] Message sample. Some campaign tiers require 1 or more message samples.
-      #
-      #   @param sample2 [String] Message sample. Some campaign tiers require 2 or more message samples.
-      #
-      #   @param sample3 [String] Message sample. Some campaign tiers require 3 or more message samples.
-      #
-      #   @param sample4 [String] Message sample. Some campaign tiers require 4 or more message samples.
-      #
-      #   @param sample5 [String] Message sample. Some campaign tiers require 5 or more message samples.
-      #
-      #   @param status [String] Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created campa
-      #
-      #   @param submission_status [Symbol, Telnyx::Models::CampaignListResponse::SubmissionStatus] Campaign submission status
-      #
-      #   @param subscriber_help [Boolean] Does campaign responds to help keyword(s)?
-      #
-      #   @param subscriber_optin [Boolean] Does campaign require subscriber to opt-in before SMS is sent to subscriber?
-      #
-      #   @param subscriber_optout [Boolean] Does campaign support subscriber opt-out keyword(s)?
-      #
-      #   @param sub_usecases [Array<String>] Campaign sub-usecases. Must be of defined valid sub-usecase types. Use `/registr
-      #
-      #   @param tcr_brand_id [String] Unique identifier assigned to the brand by the registry.
-      #
-      #   @param tcr_campaign_id [String] Unique identifier assigned to the campaign by the registry.
-      #
-      #   @param terms_and_conditions [Boolean] Is terms & conditions accepted?
-      #
-      #   @param terms_and_conditions_link [String] Link to the campaign's terms and conditions.
-      #
-      #   @param usecase [String] Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase` o
-      #
-      #   @param vertical [String] Business/industry segment of this campaign (Deprecated). Must be of defined vali
-      #
-      #   @param webhook_failover_url [String] Failover webhook to which campaign status updates are sent.
-      #
-      #   @param webhook_url [String] Webhook to which campaign status updates are sent.
+        # @!attribute usecase
+        #   Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase`
+        #   operation to retrieve usecases available for given brand.
+        #
+        #   @return [String, nil]
+        optional :usecase, String
 
-      # Campaign status
-      #
-      # @see Telnyx::Models::CampaignListResponse#campaign_status
-      module CampaignStatus
-        extend Telnyx::Internal::Type::Enum
+        # @!attribute vertical
+        #   @deprecated
+        #
+        #   Business/industry segment of this campaign (Deprecated). Must be of defined
+        #   valid types. Use `/registry/enum/vertical` operation to retrieve verticals
+        #   available for given brand, vertical combination.
+        #
+        #   This field is deprecated.
+        #
+        #   @return [String, nil]
+        optional :vertical, String
 
-        TCR_PENDING = :TCR_PENDING
-        TCR_SUSPENDED = :TCR_SUSPENDED
-        TCR_EXPIRED = :TCR_EXPIRED
-        TCR_ACCEPTED = :TCR_ACCEPTED
-        TCR_FAILED = :TCR_FAILED
-        TELNYX_ACCEPTED = :TELNYX_ACCEPTED
-        TELNYX_FAILED = :TELNYX_FAILED
-        MNO_PENDING = :MNO_PENDING
-        MNO_ACCEPTED = :MNO_ACCEPTED
-        MNO_REJECTED = :MNO_REJECTED
-        MNO_PROVISIONED = :MNO_PROVISIONED
-        MNO_PROVISIONING_FAILED = :MNO_PROVISIONING_FAILED
+        # @!attribute webhook_failover_url
+        #   Failover webhook to which campaign status updates are sent.
+        #
+        #   @return [String, nil]
+        optional :webhook_failover_url, String, api_name: :webhookFailoverURL
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
+        # @!attribute webhook_url
+        #   Webhook to which campaign status updates are sent.
+        #
+        #   @return [String, nil]
+        optional :webhook_url, String, api_name: :webhookURL
 
-      # Campaign submission status
-      #
-      # @see Telnyx::Models::CampaignListResponse#submission_status
-      module SubmissionStatus
-        extend Telnyx::Internal::Type::Enum
+        # @!method initialize(age_gated: nil, assigned_phone_numbers_count: nil, auto_renewal: nil, billed_date: nil, brand_display_name: nil, brand_id: nil, campaign_id: nil, campaign_status: nil, create_date: nil, csp_id: nil, description: nil, direct_lending: nil, embedded_link: nil, embedded_link_sample: nil, embedded_phone: nil, failure_reasons: nil, help_keywords: nil, help_message: nil, is_t_mobile_number_pooling_enabled: nil, is_t_mobile_registered: nil, is_t_mobile_suspended: nil, message_flow: nil, mock: nil, next_renewal_or_expiration_date: nil, number_pool: nil, optin_keywords: nil, optin_message: nil, optout_keywords: nil, optout_message: nil, privacy_policy_link: nil, reference_id: nil, reseller_id: nil, sample1: nil, sample2: nil, sample3: nil, sample4: nil, sample5: nil, status: nil, submission_status: nil, subscriber_help: nil, subscriber_optin: nil, subscriber_optout: nil, sub_usecases: nil, tcr_brand_id: nil, tcr_campaign_id: nil, terms_and_conditions: nil, terms_and_conditions_link: nil, usecase: nil, vertical: nil, webhook_failover_url: nil, webhook_url: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::CampaignListResponse::Record} for more details.
+        #
+        #   @param age_gated [Boolean] Age gated content in campaign.
+        #
+        #   @param assigned_phone_numbers_count [Float] Number of phone numbers associated with the campaign
+        #
+        #   @param auto_renewal [Boolean] Campaign subscription auto-renewal status.
+        #
+        #   @param billed_date [String] Campaign recent billed date.
+        #
+        #   @param brand_display_name [String] Display or marketing name of the brand.
+        #
+        #   @param brand_id [String] Unique identifier assigned to the brand.
+        #
+        #   @param campaign_id [String] Unique identifier for a campaign.
+        #
+        #   @param campaign_status [Symbol, Telnyx::Models::CampaignListResponse::Record::CampaignStatus] Campaign status
+        #
+        #   @param create_date [String] Unix timestamp when campaign was created.
+        #
+        #   @param csp_id [String] Alphanumeric identifier of the CSP associated with this campaign.
+        #
+        #   @param description [String] Summary description of this campaign.
+        #
+        #   @param direct_lending [Boolean]
+        #
+        #   @param embedded_link [Boolean] Does message generated by the campaign include URL link in SMS?
+        #
+        #   @param embedded_link_sample [String] Sample of an embedded link that will be sent to subscribers.
+        #
+        #   @param embedded_phone [Boolean] Does message generated by the campaign include phone number in SMS?
+        #
+        #   @param failure_reasons [String] Failure reasons if campaign submission failed
+        #
+        #   @param help_keywords [String] Subscriber help keywords. Multiple keywords are comma separated without space.
+        #
+        #   @param help_message [String] Help message of the campaign.
+        #
+        #   @param is_t_mobile_number_pooling_enabled [Boolean] Indicates whether the campaign has a T-Mobile number pool ID associated with it.
+        #
+        #   @param is_t_mobile_registered [Boolean] Indicates whether the campaign is registered with T-Mobile.
+        #
+        #   @param is_t_mobile_suspended [Boolean] Indicates whether the campaign is suspended with T-Mobile.
+        #
+        #   @param message_flow [String] Message flow description.
+        #
+        #   @param mock [Boolean] Campaign created from mock brand. Mocked campaign cannot be shared with an upstr
+        #
+        #   @param next_renewal_or_expiration_date [String] When the campaign would be due for its next renew/bill date.
+        #
+        #   @param number_pool [Boolean] Does campaign utilize pool of phone numbers?
+        #
+        #   @param optin_keywords [String] Subscriber opt-in keywords. Multiple keywords are comma separated without space.
+        #
+        #   @param optin_message [String] Subscriber opt-in message.
+        #
+        #   @param optout_keywords [String] Subscriber opt-out keywords. Multiple keywords are comma separated without space
+        #
+        #   @param optout_message [String] Subscriber opt-out message.
+        #
+        #   @param privacy_policy_link [String] Link to the campaign's privacy policy.
+        #
+        #   @param reference_id [String] Caller supplied campaign reference ID. If supplied, the value must be unique acr
+        #
+        #   @param reseller_id [String] Alphanumeric identifier of the reseller that you want to associate with this cam
+        #
+        #   @param sample1 [String] Message sample. Some campaign tiers require 1 or more message samples.
+        #
+        #   @param sample2 [String] Message sample. Some campaign tiers require 2 or more message samples.
+        #
+        #   @param sample3 [String] Message sample. Some campaign tiers require 3 or more message samples.
+        #
+        #   @param sample4 [String] Message sample. Some campaign tiers require 4 or more message samples.
+        #
+        #   @param sample5 [String] Message sample. Some campaign tiers require 5 or more message samples.
+        #
+        #   @param status [String] Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created campa
+        #
+        #   @param submission_status [Symbol, Telnyx::Models::CampaignListResponse::Record::SubmissionStatus] Campaign submission status
+        #
+        #   @param subscriber_help [Boolean] Does campaign responds to help keyword(s)?
+        #
+        #   @param subscriber_optin [Boolean] Does campaign require subscriber to opt-in before SMS is sent to subscriber?
+        #
+        #   @param subscriber_optout [Boolean] Does campaign support subscriber opt-out keyword(s)?
+        #
+        #   @param sub_usecases [Array<String>] Campaign sub-usecases. Must be of defined valid sub-usecase types. Use `/registr
+        #
+        #   @param tcr_brand_id [String] Unique identifier assigned to the brand by the registry.
+        #
+        #   @param tcr_campaign_id [String] Unique identifier assigned to the campaign by the registry.
+        #
+        #   @param terms_and_conditions [Boolean] Is terms & conditions accepted?
+        #
+        #   @param terms_and_conditions_link [String] Link to the campaign's terms and conditions.
+        #
+        #   @param usecase [String] Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase` o
+        #
+        #   @param vertical [String] Business/industry segment of this campaign (Deprecated). Must be of defined vali
+        #
+        #   @param webhook_failover_url [String] Failover webhook to which campaign status updates are sent.
+        #
+        #   @param webhook_url [String] Webhook to which campaign status updates are sent.
 
-        CREATED = :CREATED
-        FAILED = :FAILED
-        PENDING = :PENDING
+        # Campaign status
+        #
+        # @see Telnyx::Models::CampaignListResponse::Record#campaign_status
+        module CampaignStatus
+          extend Telnyx::Internal::Type::Enum
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+          TCR_PENDING = :TCR_PENDING
+          TCR_SUSPENDED = :TCR_SUSPENDED
+          TCR_EXPIRED = :TCR_EXPIRED
+          TCR_ACCEPTED = :TCR_ACCEPTED
+          TCR_FAILED = :TCR_FAILED
+          TELNYX_ACCEPTED = :TELNYX_ACCEPTED
+          TELNYX_FAILED = :TELNYX_FAILED
+          MNO_PENDING = :MNO_PENDING
+          MNO_ACCEPTED = :MNO_ACCEPTED
+          MNO_REJECTED = :MNO_REJECTED
+          MNO_PROVISIONED = :MNO_PROVISIONED
+          MNO_PROVISIONING_FAILED = :MNO_PROVISIONING_FAILED
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Campaign submission status
+        #
+        # @see Telnyx::Models::CampaignListResponse::Record#submission_status
+        module SubmissionStatus
+          extend Telnyx::Internal::Type::Enum
+
+          CREATED = :CREATED
+          FAILED = :FAILED
+          PENDING = :PENDING
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
     end
   end

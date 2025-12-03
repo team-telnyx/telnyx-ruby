@@ -20,8 +20,18 @@ module Telnyx
         #   @return [String, nil]
         optional :name, String
 
-        # @!method initialize(name: nil)
+        response_only do
+          # @!attribute record_type
+          #   Identifies the type of the resource.
+          #
+          #   @return [String, nil]
+          optional :record_type, String
+        end
+
+        # @!method initialize(name: nil, record_type: nil)
         #   @param name [String] A user specified name for the network.
+        #
+        #   @param record_type [String] Identifies the type of the resource.
       end
     end
   end

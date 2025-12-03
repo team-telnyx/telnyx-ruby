@@ -10,7 +10,7 @@ module Telnyx
         ?filter: Telnyx::RoomParticipantListParams::Filter,
         ?page: Telnyx::RoomParticipantListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::RoomParticipant]
+      ) -> Telnyx::Models::RoomParticipantListResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

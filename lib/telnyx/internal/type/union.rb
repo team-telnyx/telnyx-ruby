@@ -6,28 +6,14 @@ module Telnyx
       # @api private
       #
       # @example
-      #   # `assistant_tool` is a `Telnyx::AI::AssistantTool`
-      #   case assistant_tool
-      #   when Telnyx::AI::WebhookTool
-      #     puts(assistant_tool.type)
-      #   when Telnyx::AI::RetrievalTool
-      #     puts(assistant_tool.retrieval)
-      #   when Telnyx::AI::AssistantTool::Handoff
-      #     puts(assistant_tool.handoff)
+      #   # `campaign_status_update_webhook_event` is a `Telnyx::CampaignStatusUpdateWebhookEvent`
+      #   case campaign_status_update_webhook_event
+      #   when Telnyx::CampaignStatusUpdateWebhookEvent::CampaignStatusUpdateEvent
+      #     puts(campaign_status_update_webhook_event.brand_id)
+      #   when Telnyx::CampaignStatusUpdateWebhookEvent::CampaignSuspendedEvent
+      #     puts(campaign_status_update_webhook_event.campaign_id)
       #   else
-      #     puts(assistant_tool)
-      #   end
-      #
-      # @example
-      #   case assistant_tool
-      #   in {type: :webhook, webhook: webhook}
-      #     puts(webhook)
-      #   in {type: :retrieval, retrieval: retrieval}
-      #     puts(retrieval)
-      #   in {type: :handoff, handoff: handoff}
-      #     puts(handoff)
-      #   else
-      #     puts(assistant_tool)
+      #     puts(campaign_status_update_webhook_event)
       #   end
       module Union
         include Telnyx::Internal::Type::Converter

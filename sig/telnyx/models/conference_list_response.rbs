@@ -1,0 +1,26 @@
+module Telnyx
+  module Models
+    type conference_list_response =
+      { data: ::Array[Telnyx::Conference], meta: Telnyx::PaginationMeta }
+
+    class ConferenceListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Conference]?
+
+      def data=: (::Array[Telnyx::Conference]) -> ::Array[Telnyx::Conference]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Conference],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Conference],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

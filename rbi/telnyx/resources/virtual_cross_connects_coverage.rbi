@@ -14,11 +14,7 @@ module Telnyx
             Telnyx::VirtualCrossConnectsCoverageListParams::Filters::OrHash,
           page: Telnyx::VirtualCrossConnectsCoverageListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[
-            Telnyx::Models::VirtualCrossConnectsCoverageListResponse
-          ]
-        )
+        ).returns(Telnyx::Models::VirtualCrossConnectsCoverageListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

@@ -25,24 +25,13 @@ class Telnyx::Test::Resources::InvoicesTest < Telnyx::Test::ResourceTest
     response = @telnyx.invoices.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Models::InvoiceListResponse
+      response => Telnyx::Models::InvoiceListResponse
     end
 
     assert_pattern do
-      row => {
-        file_id: String | nil,
-        invoice_id: String | nil,
-        paid: Telnyx::Internal::Type::Boolean | nil,
-        period_end: Date | nil,
-        period_start: Date | nil,
-        url: String | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::InvoiceListResponse::Data]) | nil,
+        meta: Telnyx::Models::InvoiceListResponse::Meta | nil
       }
     end
   end

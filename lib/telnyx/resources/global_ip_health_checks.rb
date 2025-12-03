@@ -60,7 +60,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::GlobalIPHealthCheckListResponse>]
+      # @return [Telnyx::Models::GlobalIPHealthCheckListResponse]
       #
       # @see Telnyx::Models::GlobalIPHealthCheckListParams
       def list(params = {})
@@ -69,7 +69,6 @@ module Telnyx
           method: :get,
           path: "global_ip_health_checks",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::GlobalIPHealthCheckListResponse,
           options: options
         )

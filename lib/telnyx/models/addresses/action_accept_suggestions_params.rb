@@ -8,14 +8,14 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
-        # @!attribute id
+        # @!attribute body_id
         #   The ID of the address.
         #
         #   @return [String, nil]
-        optional :id, String
+        optional :body_id, String, api_name: :id
 
-        # @!method initialize(id: nil, request_options: {})
-        #   @param id [String] The ID of the address.
+        # @!method initialize(body_id: nil, request_options: {})
+        #   @param body_id [String] The ID of the address.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end

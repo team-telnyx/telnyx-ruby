@@ -19,7 +19,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPaginationForInexplicitNumberOrders[Telnyx::InexplicitNumberOrderResponse]
+      ) -> Telnyx::Models::InexplicitNumberOrderListResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

@@ -3,8 +3,7 @@
 module Telnyx
   module Models
     module AI
-      # @see Telnyx::Resources::AI::McpServers#list
-      class McpServerListResponse < Telnyx::Internal::Type::BaseModel
+      class McpServerListResponseItem < Telnyx::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String]
@@ -49,6 +48,10 @@ module Telnyx
         #   @param allowed_tools [Array<String>, nil]
         #   @param api_key_ref [String, nil]
       end
+
+      # @type [Telnyx::Internal::Type::Converter]
+      McpServerListResponse =
+        Telnyx::Internal::Type::ArrayOf[-> { Telnyx::Models::AI::McpServerListResponseItem }]
     end
   end
 end

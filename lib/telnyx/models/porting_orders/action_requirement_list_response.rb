@@ -5,114 +5,131 @@ module Telnyx
     module PortingOrders
       # @see Telnyx::Resources::PortingOrders::ActionRequirements#list
       class ActionRequirementListResponse < Telnyx::Internal::Type::BaseModel
-        # @!attribute id
-        #   Identifies the action requirement
+        # @!attribute data
         #
-        #   @return [String, nil]
-        optional :id, String
+        #   @return [Array<Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data>, nil]
+        optional :data,
+                 -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data] }
 
-        # @!attribute action_type
-        #   The type of action required
+        # @!attribute meta
         #
-        #   @return [String, nil]
-        optional :action_type, String
+        #   @return [Telnyx::Models::PaginationMeta, nil]
+        optional :meta, -> { Telnyx::PaginationMeta }
 
-        # @!attribute action_url
-        #   Optional URL for the action
-        #
-        #   @return [String, nil]
-        optional :action_url, String, nil?: true
+        # @!method initialize(data: nil, meta: nil)
+        #   @param data [Array<Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data>]
+        #   @param meta [Telnyx::Models::PaginationMeta]
 
-        # @!attribute cancel_reason
-        #   Reason for cancellation if status is 'cancelled'
-        #
-        #   @return [String, nil]
-        optional :cancel_reason, String, nil?: true
+        class Data < Telnyx::Internal::Type::BaseModel
+          # @!attribute id
+          #   Identifies the action requirement
+          #
+          #   @return [String, nil]
+          optional :id, String
 
-        # @!attribute created_at
-        #   ISO 8601 formatted date-time indicating when the resource was created
-        #
-        #   @return [Time, nil]
-        optional :created_at, Time
+          # @!attribute action_type
+          #   The type of action required
+          #
+          #   @return [String, nil]
+          optional :action_type, String
 
-        # @!attribute porting_order_id
-        #   The ID of the porting order this action requirement belongs to
-        #
-        #   @return [String, nil]
-        optional :porting_order_id, String
+          # @!attribute action_url
+          #   Optional URL for the action
+          #
+          #   @return [String, nil]
+          optional :action_url, String, nil?: true
 
-        # @!attribute record_type
-        #   Identifies the type of the resource
-        #
-        #   @return [Symbol, Telnyx::Models::PortingOrders::ActionRequirementListResponse::RecordType, nil]
-        optional :record_type,
-                 enum: -> { Telnyx::Models::PortingOrders::ActionRequirementListResponse::RecordType }
+          # @!attribute cancel_reason
+          #   Reason for cancellation if status is 'cancelled'
+          #
+          #   @return [String, nil]
+          optional :cancel_reason, String, nil?: true
 
-        # @!attribute requirement_type_id
-        #   The ID of the requirement type
-        #
-        #   @return [String, nil]
-        optional :requirement_type_id, String
+          # @!attribute created_at
+          #   ISO 8601 formatted date-time indicating when the resource was created
+          #
+          #   @return [Time, nil]
+          optional :created_at, Time
 
-        # @!attribute status
-        #   Current status of the action requirement
-        #
-        #   @return [Symbol, Telnyx::Models::PortingOrders::ActionRequirementListResponse::Status, nil]
-        optional :status, enum: -> { Telnyx::Models::PortingOrders::ActionRequirementListResponse::Status }
+          # @!attribute porting_order_id
+          #   The ID of the porting order this action requirement belongs to
+          #
+          #   @return [String, nil]
+          optional :porting_order_id, String
 
-        # @!attribute updated_at
-        #   ISO 8601 formatted date-time indicating when the resource was updated
-        #
-        #   @return [Time, nil]
-        optional :updated_at, Time
+          # @!attribute record_type
+          #   Identifies the type of the resource
+          #
+          #   @return [Symbol, Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::RecordType, nil]
+          optional :record_type,
+                   enum: -> { Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::RecordType }
 
-        # @!method initialize(id: nil, action_type: nil, action_url: nil, cancel_reason: nil, created_at: nil, porting_order_id: nil, record_type: nil, requirement_type_id: nil, status: nil, updated_at: nil)
-        #   @param id [String] Identifies the action requirement
-        #
-        #   @param action_type [String] The type of action required
-        #
-        #   @param action_url [String, nil] Optional URL for the action
-        #
-        #   @param cancel_reason [String, nil] Reason for cancellation if status is 'cancelled'
-        #
-        #   @param created_at [Time] ISO 8601 formatted date-time indicating when the resource was created
-        #
-        #   @param porting_order_id [String] The ID of the porting order this action requirement belongs to
-        #
-        #   @param record_type [Symbol, Telnyx::Models::PortingOrders::ActionRequirementListResponse::RecordType] Identifies the type of the resource
-        #
-        #   @param requirement_type_id [String] The ID of the requirement type
-        #
-        #   @param status [Symbol, Telnyx::Models::PortingOrders::ActionRequirementListResponse::Status] Current status of the action requirement
-        #
-        #   @param updated_at [Time] ISO 8601 formatted date-time indicating when the resource was updated
+          # @!attribute requirement_type_id
+          #   The ID of the requirement type
+          #
+          #   @return [String, nil]
+          optional :requirement_type_id, String
 
-        # Identifies the type of the resource
-        #
-        # @see Telnyx::Models::PortingOrders::ActionRequirementListResponse#record_type
-        module RecordType
-          extend Telnyx::Internal::Type::Enum
+          # @!attribute status
+          #   Current status of the action requirement
+          #
+          #   @return [Symbol, Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::Status, nil]
+          optional :status, enum: -> { Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::Status }
 
-          PORTING_ACTION_REQUIREMENT = :porting_action_requirement
+          # @!attribute updated_at
+          #   ISO 8601 formatted date-time indicating when the resource was updated
+          #
+          #   @return [Time, nil]
+          optional :updated_at, Time
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
+          # @!method initialize(id: nil, action_type: nil, action_url: nil, cancel_reason: nil, created_at: nil, porting_order_id: nil, record_type: nil, requirement_type_id: nil, status: nil, updated_at: nil)
+          #   @param id [String] Identifies the action requirement
+          #
+          #   @param action_type [String] The type of action required
+          #
+          #   @param action_url [String, nil] Optional URL for the action
+          #
+          #   @param cancel_reason [String, nil] Reason for cancellation if status is 'cancelled'
+          #
+          #   @param created_at [Time] ISO 8601 formatted date-time indicating when the resource was created
+          #
+          #   @param porting_order_id [String] The ID of the porting order this action requirement belongs to
+          #
+          #   @param record_type [Symbol, Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::RecordType] Identifies the type of the resource
+          #
+          #   @param requirement_type_id [String] The ID of the requirement type
+          #
+          #   @param status [Symbol, Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::Status] Current status of the action requirement
+          #
+          #   @param updated_at [Time] ISO 8601 formatted date-time indicating when the resource was updated
 
-        # Current status of the action requirement
-        #
-        # @see Telnyx::Models::PortingOrders::ActionRequirementListResponse#status
-        module Status
-          extend Telnyx::Internal::Type::Enum
+          # Identifies the type of the resource
+          #
+          # @see Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data#record_type
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
 
-          CREATED = :created
-          PENDING = :pending
-          COMPLETED = :completed
-          CANCELLED = :cancelled
-          FAILED = :failed
+            PORTING_ACTION_REQUIREMENT = :porting_action_requirement
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Current status of the action requirement
+          #
+          # @see Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data#status
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED = :created
+            PENDING = :pending
+            COMPLETED = :completed
+            CANCELLED = :cancelled
+            FAILED = :failed
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
       end
     end

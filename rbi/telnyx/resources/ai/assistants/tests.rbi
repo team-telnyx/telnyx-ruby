@@ -115,22 +115,18 @@ module Telnyx
           sig do
             params(
               destination: String,
-              page_number: Integer,
-              page_size: Integer,
+              page: Telnyx::AI::Assistants::TestListParams::Page::OrHash,
               telnyx_conversation_channel: String,
               test_suite: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(
-              Telnyx::Internal::DefaultFlatPagination[
-                Telnyx::AI::Assistants::AssistantTest
-              ]
-            )
+            ).returns(Telnyx::Models::AI::Assistants::TestListResponse)
           end
           def list(
             # Filter tests by destination (phone number, webhook URL, etc.)
             destination: nil,
-            page_number: nil,
-            page_size: nil,
+            # Consolidated page parameter (deepObject style). Originally: page[size],
+            # page[number]
+            page: nil,
             # Filter tests by communication channel (e.g., 'web_chat', 'sms')
             telnyx_conversation_channel: nil,
             # Filter tests by test suite name

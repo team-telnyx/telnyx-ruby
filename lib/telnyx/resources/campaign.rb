@@ -93,7 +93,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::PerPagePaginationV2<Telnyx::Models::CampaignListResponse>]
+      # @return [Telnyx::Models::CampaignListResponse]
       #
       # @see Telnyx::Models::CampaignListParams
       def list(params)
@@ -102,7 +102,6 @@ module Telnyx
           method: :get,
           path: "campaign",
           query: parsed.transform_keys(brand_id: "brandId", records_per_page: "recordsPerPage"),
-          page: Telnyx::Internal::PerPagePaginationV2,
           model: Telnyx::Models::CampaignListResponse,
           options: options
         )

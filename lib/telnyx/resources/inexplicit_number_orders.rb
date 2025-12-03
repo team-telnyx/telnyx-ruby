@@ -67,7 +67,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPaginationForInexplicitNumberOrders<Telnyx::Models::InexplicitNumberOrderResponse>]
+      # @return [Telnyx::Models::InexplicitNumberOrderListResponse]
       #
       # @see Telnyx::Models::InexplicitNumberOrderListParams
       def list(params = {})
@@ -76,8 +76,7 @@ module Telnyx
           method: :get,
           path: "inexplicit_number_orders",
           query: parsed,
-          page: Telnyx::Internal::DefaultFlatPaginationForInexplicitNumberOrders,
-          model: Telnyx::InexplicitNumberOrderResponse,
+          model: Telnyx::Models::InexplicitNumberOrderListResponse,
           options: options
         )
       end

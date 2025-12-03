@@ -59,22 +59,21 @@ module Telnyx
               conversation_channel:
                 Telnyx::AI::Assistants::ConversationChannelType::OrSymbol,
               from_date: Time,
-              page_number: Integer,
-              page_size: Integer,
+              page:
+                Telnyx::AI::Assistants::ScheduledEventListParams::Page::OrHash,
               to_date: Time,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
-              Telnyx::Internal::DefaultFlatPagination[
-                Telnyx::Models::AI::Assistants::ScheduledEventListResponse::Variants
-              ]
+              Telnyx::Models::AI::Assistants::ScheduledEventListResponse
             )
           end
           def list(
             assistant_id,
             conversation_channel: nil,
             from_date: nil,
-            page_number: nil,
-            page_size: nil,
+            # Consolidated page parameter (deepObject style). Originally: page[size],
+            # page[number]
+            page: nil,
             to_date: nil,
             request_options: {}
           )

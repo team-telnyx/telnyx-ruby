@@ -38,9 +38,15 @@ module Telnyx
           #
           #   @return [String, nil]
           optional :ip_address, String
+
+          # @!attribute record_type
+          #   Identifies the type of the resource.
+          #
+          #   @return [String, nil]
+          optional :record_type, String
         end
 
-        # @!method initialize(description: nil, ip_address: nil, name: nil, ports: nil)
+        # @!method initialize(description: nil, ip_address: nil, name: nil, ports: nil, record_type: nil)
         #   @param description [String] A user specified description for the address.
         #
         #   @param ip_address [String] The Global IP address.
@@ -48,6 +54,8 @@ module Telnyx
         #   @param name [String] A user specified name for the address.
         #
         #   @param ports [Hash{Symbol=>Object}] A Global IP ports grouped by protocol code.
+        #
+        #   @param record_type [String] Identifies the type of the resource.
       end
     end
   end

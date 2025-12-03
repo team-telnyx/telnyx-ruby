@@ -5,7 +5,7 @@ module Telnyx
         ?filter: Telnyx::MobileNetworkOperatorListParams::Filter,
         ?page: Telnyx::MobileNetworkOperatorListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::MobileNetworkOperatorListResponse]
+      ) -> Telnyx::Models::MobileNetworkOperatorListResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

@@ -62,7 +62,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PhoneNumbers::CsvDownload>]
+        # @return [Telnyx::Models::PhoneNumbers::CsvDownloadListResponse]
         #
         # @see Telnyx::Models::PhoneNumbers::CsvDownloadListParams
         def list(params = {})
@@ -71,8 +71,7 @@ module Telnyx
             method: :get,
             path: "phone_numbers/csv_downloads",
             query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
-            model: Telnyx::PhoneNumbers::CsvDownload,
+            model: Telnyx::Models::PhoneNumbers::CsvDownloadListResponse,
             options: options
           )
         end

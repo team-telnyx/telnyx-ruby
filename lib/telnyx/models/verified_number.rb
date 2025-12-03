@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::VerifiedNumbers#list
     class VerifiedNumber < Telnyx::Internal::Type::BaseModel
       # @!attribute phone_number
       #

@@ -2,111 +2,139 @@ module Telnyx
   module Models
     type virtual_cross_connects_coverage_list_response =
       {
-        available_bandwidth: ::Array[Float],
-        cloud_provider: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::cloud_provider,
-        cloud_provider_region: String,
-        location: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Location,
-        record_type: String
+        data: ::Array[Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data],
+        meta: Telnyx::PaginationMeta
       }
 
     class VirtualCrossConnectsCoverageListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader available_bandwidth: ::Array[Float]?
+      attr_reader data: ::Array[Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data]?
 
-      def available_bandwidth=: (::Array[Float]) -> ::Array[Float]
+      def data=: (
+        ::Array[Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data]
+      ) -> ::Array[Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data]
 
-      attr_reader cloud_provider: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::cloud_provider?
+      attr_reader meta: Telnyx::PaginationMeta?
 
-      def cloud_provider=: (
-        Telnyx::Models::VirtualCrossConnectsCoverageListResponse::cloud_provider
-      ) -> Telnyx::Models::VirtualCrossConnectsCoverageListResponse::cloud_provider
-
-      attr_reader cloud_provider_region: String?
-
-      def cloud_provider_region=: (String) -> String
-
-      attr_reader location: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Location?
-
-      def location=: (
-        Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Location
-      ) -> Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Location
-
-      attr_reader record_type: String?
-
-      def record_type=: (String) -> String
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
 
       def initialize: (
-        ?available_bandwidth: ::Array[Float],
-        ?cloud_provider: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::cloud_provider,
-        ?cloud_provider_region: String,
-        ?location: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Location,
-        ?record_type: String
+        ?data: ::Array[Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data],
+        ?meta: Telnyx::PaginationMeta
       ) -> void
 
       def to_hash: -> {
-        available_bandwidth: ::Array[Float],
-        cloud_provider: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::cloud_provider,
-        cloud_provider_region: String,
-        location: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Location,
-        record_type: String
+        data: ::Array[Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data],
+        meta: Telnyx::PaginationMeta
       }
 
-      type cloud_provider = :aws | :azure | :gce
-
-      module CloudProvider
-        extend Telnyx::Internal::Type::Enum
-
-        AWS: :aws
-        AZURE: :azure
-        GCE: :gce
-
-        def self?.values: -> ::Array[Telnyx::Models::VirtualCrossConnectsCoverageListResponse::cloud_provider]
-      end
-
-      type location =
+      type data =
         {
-          code: String,
-          name: String,
-          pop: String,
-          region: String,
-          site: String
+          available_bandwidth: ::Array[Float],
+          cloud_provider: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data::cloud_provider,
+          cloud_provider_region: String,
+          location: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data::Location,
+          record_type: String
         }
 
-      class Location < Telnyx::Internal::Type::BaseModel
-        attr_reader code: String?
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader available_bandwidth: ::Array[Float]?
 
-        def code=: (String) -> String
+        def available_bandwidth=: (::Array[Float]) -> ::Array[Float]
 
-        attr_reader name: String?
+        attr_reader cloud_provider: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data::cloud_provider?
 
-        def name=: (String) -> String
+        def cloud_provider=: (
+          Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data::cloud_provider
+        ) -> Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data::cloud_provider
 
-        attr_reader pop: String?
+        attr_reader cloud_provider_region: String?
 
-        def pop=: (String) -> String
+        def cloud_provider_region=: (String) -> String
 
-        attr_reader region: String?
+        attr_reader location: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data::Location?
 
-        def region=: (String) -> String
+        def location=: (
+          Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data::Location
+        ) -> Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data::Location
 
-        attr_reader site: String?
+        attr_reader record_type: String?
 
-        def site=: (String) -> String
+        def record_type=: (String) -> String
 
         def initialize: (
-          ?code: String,
-          ?name: String,
-          ?pop: String,
-          ?region: String,
-          ?site: String
+          ?available_bandwidth: ::Array[Float],
+          ?cloud_provider: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data::cloud_provider,
+          ?cloud_provider_region: String,
+          ?location: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data::Location,
+          ?record_type: String
         ) -> void
 
         def to_hash: -> {
-          code: String,
-          name: String,
-          pop: String,
-          region: String,
-          site: String
+          available_bandwidth: ::Array[Float],
+          cloud_provider: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data::cloud_provider,
+          cloud_provider_region: String,
+          location: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data::Location,
+          record_type: String
         }
+
+        type cloud_provider = :aws | :azure | :gce
+
+        module CloudProvider
+          extend Telnyx::Internal::Type::Enum
+
+          AWS: :aws
+          AZURE: :azure
+          GCE: :gce
+
+          def self?.values: -> ::Array[Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Data::cloud_provider]
+        end
+
+        type location =
+          {
+            code: String,
+            name: String,
+            pop: String,
+            region: String,
+            site: String
+          }
+
+        class Location < Telnyx::Internal::Type::BaseModel
+          attr_reader code: String?
+
+          def code=: (String) -> String
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader pop: String?
+
+          def pop=: (String) -> String
+
+          attr_reader region: String?
+
+          def region=: (String) -> String
+
+          attr_reader site: String?
+
+          def site=: (String) -> String
+
+          def initialize: (
+            ?code: String,
+            ?name: String,
+            ?pop: String,
+            ?region: String,
+            ?site: String
+          ) -> void
+
+          def to_hash: -> {
+            code: String,
+            name: String,
+            pop: String,
+            region: String,
+            site: String
+          }
+        end
       end
     end
   end

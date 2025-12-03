@@ -33,18 +33,18 @@ module Telnyx
       # Create New Phone Number Campaign
       sig do
         params(
-          campaign_phone_number: String,
+          path_phone_number: String,
           campaign_id: String,
-          phone_number: String,
+          body_phone_number: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::PhoneNumberCampaign)
       end
       def update(
-        campaign_phone_number,
+        path_phone_number,
         # The ID of the campaign you want to link to the specified phone number.
         campaign_id:,
         # The phone number you want to link to a specified campaign.
-        phone_number:,
+        body_phone_number:,
         request_options: {}
       )
       end
@@ -57,9 +57,7 @@ module Telnyx
           records_per_page: Integer,
           sort: Telnyx::PhoneNumberCampaignListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::PerPagePaginationV2[Telnyx::PhoneNumberCampaign]
-        )
+        ).returns(Telnyx::Models::PhoneNumberCampaignListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

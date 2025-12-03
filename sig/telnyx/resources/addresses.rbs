@@ -32,7 +32,7 @@ module Telnyx
         ?page: Telnyx::AddressListParams::Page,
         ?sort: Telnyx::Models::AddressListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Address]
+      ) -> Telnyx::Models::AddressListResponse
 
       def delete: (
         String id,

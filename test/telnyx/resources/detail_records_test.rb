@@ -9,26 +9,14 @@ class Telnyx::Test::Resources::DetailRecordsTest < Telnyx::Test::ResourceTest
     response = @telnyx.detail_records.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Models::DetailRecordListResponse
+      response => Telnyx::Models::DetailRecordListResponse
     end
 
     assert_pattern do
-      case row
-      in Telnyx::Models::DetailRecordListResponse::MessageDetailRecord
-      in Telnyx::Models::DetailRecordListResponse::ConferenceDetailRecord
-      in Telnyx::Models::DetailRecordListResponse::ConferenceParticipantDetailRecord
-      in Telnyx::Models::DetailRecordListResponse::AmdDetailRecord
-      in Telnyx::Models::DetailRecordListResponse::VerifyDetailRecord
-      in Telnyx::Models::DetailRecordListResponse::SimCardUsageDetailRecord
-      in Telnyx::Models::DetailRecordListResponse::MediaStorageDetailRecord
-      end
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[union: Telnyx::Models::DetailRecordListResponse::Data]) | nil,
+        meta: Telnyx::Models::DetailRecordListResponse::Meta | nil
+      }
     end
   end
 end

@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::Addresses#list
     class Address < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Uniquely identifies the address.

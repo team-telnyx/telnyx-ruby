@@ -143,8 +143,8 @@ module Telnyx
         # - `call.bridged` for Leg B
         sig do
           params(
-            call_control_id_to_bridge: String,
-            call_control_id_to_bridge_with: String,
+            path_call_control_id: String,
+            body_call_control_id: String,
             client_state: String,
             command_id: String,
             mute_dtmf: Telnyx::Calls::ActionBridgeParams::MuteDtmf::OrSymbol,
@@ -171,10 +171,10 @@ module Telnyx
         end
         def bridge(
           # Unique identifier and token for controlling the call
-          call_control_id_to_bridge,
+          path_call_control_id,
           # The Call Control ID of the call you want to bridge with, can't be used together
           # with queue parameter or video_room_id parameter.
-          call_control_id_to_bridge_with:,
+          body_call_control_id:,
           # Use this field to add state to every subsequent webhook. It must be a valid
           # Base-64 encoded string.
           client_state: nil,
@@ -349,7 +349,7 @@ module Telnyx
         sig do
           params(
             call_control_id: String,
-            parameters: T::Hash[Symbol, T.anything],
+            parameters: T.anything,
             assistant: Telnyx::AI::Assistant::OrHash,
             client_state: String,
             command_id: String,
@@ -369,7 +369,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T::Hash[Symbol, T.anything]
+                T.anything
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingAIResponse)
@@ -568,7 +568,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T::Hash[Symbol, T.anything]
+                T.anything
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingSpeakResponse)
@@ -925,7 +925,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T::Hash[Symbol, T.anything]
+                T.anything
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionSpeakResponse)
@@ -1011,7 +1011,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T::Hash[Symbol, T.anything]
+                T.anything
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartAIAssistantResponse)
@@ -1439,12 +1439,12 @@ module Telnyx
               Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngine::OrSymbol,
             transcription_engine_config:
               T.any(
-                Telnyx::Calls::TranscriptionEngineGoogleConfig::OrHash,
-                Telnyx::Calls::TranscriptionEngineTelnyxConfig::OrHash,
-                Telnyx::Calls::TranscriptionEngineDeepgramConfig::OrHash,
-                Telnyx::Calls::TranscriptionEngineAzureConfig::OrHash,
-                Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
-                Telnyx::Calls::TranscriptionEngineBConfig::OrHash
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::OrHash,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::OrHash,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::OrHash,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::OrHash,
+                ::Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
+                ::Telnyx::Calls::TranscriptionEngineBConfig::OrHash
               ),
             transcription_tracks: String,
             request_options: Telnyx::RequestOptions::OrHash

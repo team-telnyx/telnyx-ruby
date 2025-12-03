@@ -44,11 +44,7 @@ module Telnyx
           records_per_page: Integer,
           sort: Telnyx::PartnerCampaignListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::PerPagePaginationV2[
-            Telnyx::TelnyxDownstreamCampaign
-          ]
-        )
+        ).returns(Telnyx::Models::PartnerCampaignListResponse)
       end
       def list(
         # The 1-indexed page number to get. The default value is `1`.
@@ -73,11 +69,7 @@ module Telnyx
           page: Integer,
           records_per_page: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::PerPagePaginationV2[
-            Telnyx::Models::PartnerCampaignListSharedByMeResponse
-          ]
-        )
+        ).returns(Telnyx::Models::PartnerCampaignListSharedByMeResponse)
       end
       def list_shared_by_me(
         # The 1-indexed page number to get. The default value is `1`.

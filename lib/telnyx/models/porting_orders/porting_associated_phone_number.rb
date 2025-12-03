@@ -3,7 +3,6 @@
 module Telnyx
   module Models
     module PortingOrders
-      # @see Telnyx::Resources::PortingOrders::AssociatedPhoneNumbers#list
       class PortingAssociatedPhoneNumber < Telnyx::Internal::Type::BaseModel
         # @!attribute action
         #   Specifies the action to take with this phone number during partial porting.

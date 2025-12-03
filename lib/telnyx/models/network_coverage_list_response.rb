@@ -4,74 +4,90 @@ module Telnyx
   module Models
     # @see Telnyx::Resources::NetworkCoverage#list
     class NetworkCoverageListResponse < Telnyx::Internal::Type::BaseModel
-      # @!attribute available_services
-      #   List of interface types supported in this region.
+      # @!attribute data
       #
-      #   @return [Array<Symbol, Telnyx::Models::AvailableService>, nil]
-      optional :available_services, -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AvailableService] }
+      #   @return [Array<Telnyx::Models::NetworkCoverageListResponse::Data>, nil]
+      optional :data, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::NetworkCoverageListResponse::Data] }
 
-      # @!attribute location
+      # @!attribute meta
       #
-      #   @return [Telnyx::Models::NetworkCoverageListResponse::Location, nil]
-      optional :location, -> { Telnyx::Models::NetworkCoverageListResponse::Location }
+      #   @return [Telnyx::Models::PaginationMeta, nil]
+      optional :meta, -> { Telnyx::PaginationMeta }
 
-      response_only do
-        # @!attribute record_type
-        #   Identifies the type of the resource.
-        #
-        #   @return [String, nil]
-        optional :record_type, String
-      end
+      # @!method initialize(data: nil, meta: nil)
+      #   @param data [Array<Telnyx::Models::NetworkCoverageListResponse::Data>]
+      #   @param meta [Telnyx::Models::PaginationMeta]
 
-      # @!method initialize(available_services: nil, location: nil, record_type: nil)
-      #   @param available_services [Array<Symbol, Telnyx::Models::AvailableService>] List of interface types supported in this region.
-      #
-      #   @param location [Telnyx::Models::NetworkCoverageListResponse::Location]
-      #
-      #   @param record_type [String] Identifies the type of the resource.
+      class Data < Telnyx::Internal::Type::BaseModel
+        # @!attribute available_services
+        #   List of interface types supported in this region.
+        #
+        #   @return [Array<Symbol, Telnyx::Models::AvailableService>, nil]
+        optional :available_services, -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AvailableService] }
 
-      # @see Telnyx::Models::NetworkCoverageListResponse#location
-      class Location < Telnyx::Internal::Type::BaseModel
-        # @!attribute code
-        #   Location code.
+        # @!attribute location
         #
-        #   @return [String, nil]
-        optional :code, String
+        #   @return [Telnyx::Models::NetworkCoverageListResponse::Data::Location, nil]
+        optional :location, -> { Telnyx::Models::NetworkCoverageListResponse::Data::Location }
 
-        # @!attribute name
-        #   Human readable name of location.
-        #
-        #   @return [String, nil]
-        optional :name, String
+        response_only do
+          # @!attribute record_type
+          #   Identifies the type of the resource.
+          #
+          #   @return [String, nil]
+          optional :record_type, String
+        end
 
-        # @!attribute pop
-        #   Point of presence of location.
+        # @!method initialize(available_services: nil, location: nil, record_type: nil)
+        #   @param available_services [Array<Symbol, Telnyx::Models::AvailableService>] List of interface types supported in this region.
         #
-        #   @return [String, nil]
-        optional :pop, String
+        #   @param location [Telnyx::Models::NetworkCoverageListResponse::Data::Location]
+        #
+        #   @param record_type [String] Identifies the type of the resource.
 
-        # @!attribute region
-        #   Identifies the geographical region of location.
-        #
-        #   @return [String, nil]
-        optional :region, String
+        # @see Telnyx::Models::NetworkCoverageListResponse::Data#location
+        class Location < Telnyx::Internal::Type::BaseModel
+          # @!attribute code
+          #   Location code.
+          #
+          #   @return [String, nil]
+          optional :code, String
 
-        # @!attribute site
-        #   Site of location.
-        #
-        #   @return [String, nil]
-        optional :site, String
+          # @!attribute name
+          #   Human readable name of location.
+          #
+          #   @return [String, nil]
+          optional :name, String
 
-        # @!method initialize(code: nil, name: nil, pop: nil, region: nil, site: nil)
-        #   @param code [String] Location code.
-        #
-        #   @param name [String] Human readable name of location.
-        #
-        #   @param pop [String] Point of presence of location.
-        #
-        #   @param region [String] Identifies the geographical region of location.
-        #
-        #   @param site [String] Site of location.
+          # @!attribute pop
+          #   Point of presence of location.
+          #
+          #   @return [String, nil]
+          optional :pop, String
+
+          # @!attribute region
+          #   Identifies the geographical region of location.
+          #
+          #   @return [String, nil]
+          optional :region, String
+
+          # @!attribute site
+          #   Site of location.
+          #
+          #   @return [String, nil]
+          optional :site, String
+
+          # @!method initialize(code: nil, name: nil, pop: nil, region: nil, site: nil)
+          #   @param code [String] Location code.
+          #
+          #   @param name [String] Human readable name of location.
+          #
+          #   @param pop [String] Point of presence of location.
+          #
+          #   @param region [String] Identifies the geographical region of location.
+          #
+          #   @param site [String] Site of location.
+        end
       end
     end
   end

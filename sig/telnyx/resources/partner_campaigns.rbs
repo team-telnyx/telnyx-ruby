@@ -18,13 +18,13 @@ module Telnyx
         ?records_per_page: Integer,
         ?sort: Telnyx::Models::PartnerCampaignListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::PerPagePaginationV2[Telnyx::TelnyxDownstreamCampaign]
+      ) -> Telnyx::Models::PartnerCampaignListResponse
 
       def list_shared_by_me: (
         ?page: Integer,
         ?records_per_page: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::PerPagePaginationV2[Telnyx::Models::PartnerCampaignListSharedByMeResponse]
+      ) -> Telnyx::Models::PartnerCampaignListSharedByMeResponse
 
       def retrieve_sharing_status: (
         String campaign_id,

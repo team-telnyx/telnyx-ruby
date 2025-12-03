@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::Recordings#list
     class RecordingResponseData < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Uniquely identifies the recording.

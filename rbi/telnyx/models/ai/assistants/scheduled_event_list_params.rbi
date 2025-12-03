@@ -39,17 +39,22 @@ module Telnyx
           sig { params(from_date: Time).void }
           attr_writer :from_date
 
-          sig { returns(T.nilable(Integer)) }
-          attr_reader :page_number
+          # Consolidated page parameter (deepObject style). Originally: page[size],
+          # page[number]
+          sig do
+            returns(
+              T.nilable(Telnyx::AI::Assistants::ScheduledEventListParams::Page)
+            )
+          end
+          attr_reader :page
 
-          sig { params(page_number: Integer).void }
-          attr_writer :page_number
-
-          sig { returns(T.nilable(Integer)) }
-          attr_reader :page_size
-
-          sig { params(page_size: Integer).void }
-          attr_writer :page_size
+          sig do
+            params(
+              page:
+                Telnyx::AI::Assistants::ScheduledEventListParams::Page::OrHash
+            ).void
+          end
+          attr_writer :page
 
           sig { returns(T.nilable(Time)) }
           attr_reader :to_date
@@ -62,8 +67,8 @@ module Telnyx
               conversation_channel:
                 Telnyx::AI::Assistants::ConversationChannelType::OrSymbol,
               from_date: Time,
-              page_number: Integer,
-              page_size: Integer,
+              page:
+                Telnyx::AI::Assistants::ScheduledEventListParams::Page::OrHash,
               to_date: Time,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
@@ -71,8 +76,9 @@ module Telnyx
           def self.new(
             conversation_channel: nil,
             from_date: nil,
-            page_number: nil,
-            page_size: nil,
+            # Consolidated page parameter (deepObject style). Originally: page[size],
+            # page[number]
+            page: nil,
             to_date: nil,
             request_options: {}
           )
@@ -84,14 +90,47 @@ module Telnyx
                 conversation_channel:
                   Telnyx::AI::Assistants::ConversationChannelType::OrSymbol,
                 from_date: Time,
-                page_number: Integer,
-                page_size: Integer,
+                page: Telnyx::AI::Assistants::ScheduledEventListParams::Page,
                 to_date: Time,
                 request_options: Telnyx::RequestOptions
               }
             )
           end
           def to_hash
+          end
+
+          class Page < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::AI::Assistants::ScheduledEventListParams::Page,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            sig { returns(T.nilable(Integer)) }
+            attr_reader :number
+
+            sig { params(number: Integer).void }
+            attr_writer :number
+
+            sig { returns(T.nilable(Integer)) }
+            attr_reader :size
+
+            sig { params(size: Integer).void }
+            attr_writer :size
+
+            # Consolidated page parameter (deepObject style). Originally: page[size],
+            # page[number]
+            sig do
+              params(number: Integer, size: Integer).returns(T.attached_class)
+            end
+            def self.new(number: nil, size: nil)
+            end
+
+            sig { override.returns({ number: Integer, size: Integer }) }
+            def to_hash
+            end
           end
         end
       end

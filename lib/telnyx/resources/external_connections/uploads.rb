@@ -83,7 +83,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ExternalConnections::Upload>]
+        # @return [Telnyx::Models::ExternalConnections::UploadListResponse]
         #
         # @see Telnyx::Models::ExternalConnections::UploadListParams
         def list(id, params = {})
@@ -92,8 +92,7 @@ module Telnyx
             method: :get,
             path: ["external_connections/%1$s/uploads", id],
             query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
-            model: Telnyx::ExternalConnections::Upload,
+            model: Telnyx::Models::ExternalConnections::UploadListResponse,
             options: options
           )
         end

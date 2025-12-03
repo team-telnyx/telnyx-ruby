@@ -31,10 +31,9 @@ module Telnyx
           ) -> Telnyx::AI::Conversations::InsightTemplateGroupDetail
 
           def retrieve_insight_groups: (
-            ?page_number: Integer,
-            ?page_size: Integer,
+            ?page: Telnyx::AI::Conversations::InsightGroupRetrieveInsightGroupsParams::Page,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AI::Conversations::InsightTemplateGroup]
+          ) -> Telnyx::Models::AI::Conversations::InsightGroupRetrieveInsightGroupsResponse
 
           def initialize: (client: Telnyx::Client) -> void
         end

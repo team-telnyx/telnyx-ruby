@@ -35,7 +35,7 @@ module Telnyx
           filter: Telnyx::PortoutListParams::Filter::OrHash,
           page: Telnyx::PortoutListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::PortoutDetails])
+        ).returns(Telnyx::Models::PortoutListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

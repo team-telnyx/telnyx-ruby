@@ -6,7 +6,7 @@ module Telnyx
         ?page: Telnyx::AuditEventListParams::Page,
         ?sort: Telnyx::Models::AuditEventListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::AuditEventListResponse]
+      ) -> Telnyx::Models::AuditEventListResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

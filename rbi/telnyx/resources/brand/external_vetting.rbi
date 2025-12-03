@@ -27,9 +27,9 @@ module Telnyx
             vetting_id: String,
             vetting_token: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Brand::ExternalVettingImportsResponse)
+          ).returns(Telnyx::Models::Brand::ExternalVettingImportResponse)
         end
-        def imports(
+        def import(
           brand_id,
           # External vetting provider ID for the brand.
           evp_id:,

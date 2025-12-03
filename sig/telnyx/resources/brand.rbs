@@ -77,7 +77,7 @@ module Telnyx
         ?state: String,
         ?tcr_brand_id: String,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::PerPagePaginationV2[Telnyx::Models::BrandListResponse]
+      ) -> Telnyx::Models::BrandListResponse
 
       def delete: (
         String brand_id,

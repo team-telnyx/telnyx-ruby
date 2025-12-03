@@ -39,7 +39,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PhoneNumberBlocks::Job>]
+        # @return [Telnyx::Models::PhoneNumberBlocks::JobListResponse]
         #
         # @see Telnyx::Models::PhoneNumberBlocks::JobListParams
         def list(params = {})
@@ -48,8 +48,7 @@ module Telnyx
             method: :get,
             path: "phone_number_blocks/jobs",
             query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
-            model: Telnyx::PhoneNumberBlocks::Job,
+            model: Telnyx::Models::PhoneNumberBlocks::JobListResponse,
             options: options
           )
         end

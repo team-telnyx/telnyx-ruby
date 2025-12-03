@@ -4,31 +4,48 @@ module Telnyx
   module Models
     # @see Telnyx::Resources::MessagingURLDomains#list
     class MessagingURLDomainListResponse < Telnyx::Internal::Type::BaseModel
-      # @!attribute id
+      # @!attribute data
       #
-      #   @return [String, nil]
-      optional :id, String
+      #   @return [Array<Telnyx::Models::MessagingURLDomainListResponse::Data>, nil]
+      optional :data,
+               -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::MessagingURLDomainListResponse::Data] }
 
-      # @!attribute record_type
+      # @!attribute meta
       #
-      #   @return [String, nil]
-      optional :record_type, String
+      #   @return [Telnyx::Models::PaginationMeta, nil]
+      optional :meta, -> { Telnyx::PaginationMeta }
 
-      # @!attribute url_domain
-      #
-      #   @return [String, nil]
-      optional :url_domain, String
+      # @!method initialize(data: nil, meta: nil)
+      #   @param data [Array<Telnyx::Models::MessagingURLDomainListResponse::Data>]
+      #   @param meta [Telnyx::Models::PaginationMeta]
 
-      # @!attribute use_case
-      #
-      #   @return [String, nil]
-      optional :use_case, String
+      class Data < Telnyx::Internal::Type::BaseModel
+        # @!attribute id
+        #
+        #   @return [String, nil]
+        optional :id, String
 
-      # @!method initialize(id: nil, record_type: nil, url_domain: nil, use_case: nil)
-      #   @param id [String]
-      #   @param record_type [String]
-      #   @param url_domain [String]
-      #   @param use_case [String]
+        # @!attribute record_type
+        #
+        #   @return [String, nil]
+        optional :record_type, String
+
+        # @!attribute url_domain
+        #
+        #   @return [String, nil]
+        optional :url_domain, String
+
+        # @!attribute use_case
+        #
+        #   @return [String, nil]
+        optional :use_case, String
+
+        # @!method initialize(id: nil, record_type: nil, url_domain: nil, use_case: nil)
+        #   @param id [String]
+        #   @param record_type [String]
+        #   @param url_domain [String]
+        #   @param use_case [String]
+      end
     end
   end
 end

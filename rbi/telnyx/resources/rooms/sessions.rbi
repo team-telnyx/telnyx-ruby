@@ -31,7 +31,7 @@ module Telnyx
             include_participants: T::Boolean,
             page: Telnyx::Rooms::SessionList0Params::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Internal::DefaultPagination[Telnyx::RoomSession])
+          ).returns(Telnyx::Models::Rooms::SessionList0Response)
         end
         def list_0(
           # Consolidated filter parameter (deepObject style). Originally:
@@ -58,7 +58,7 @@ module Telnyx
             include_participants: T::Boolean,
             page: Telnyx::Rooms::SessionList1Params::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Internal::DefaultPagination[Telnyx::RoomSession])
+          ).returns(Telnyx::Models::Rooms::SessionList1Response)
         end
         def list_1(
           # The unique identifier of a room.
@@ -88,9 +88,7 @@ module Telnyx
             page:
               Telnyx::Rooms::SessionRetrieveParticipantsParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(
-            Telnyx::Internal::DefaultPagination[Telnyx::RoomParticipant]
-          )
+          ).returns(Telnyx::Models::Rooms::SessionRetrieveParticipantsResponse)
         end
         def retrieve_participants(
           # The unique identifier of a room session.

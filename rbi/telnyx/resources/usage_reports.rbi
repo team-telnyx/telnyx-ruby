@@ -14,15 +14,12 @@ module Telnyx
           filter: String,
           format_: Telnyx::UsageReportListParams::Format::OrSymbol,
           managed_accounts: T::Boolean,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::UsageReportListParams::Page::OrHash,
           sort: T::Array[String],
           start_date: String,
           authorization_bearer: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultFlatPagination[T::Hash[Symbol, T.anything]]
-        )
+        ).returns(Telnyx::Models::UsageReportListResponse)
       end
       def list(
         # Query param: Breakout by specified product dimensions
@@ -45,10 +42,9 @@ module Telnyx
         # Query param: Return the aggregations for all Managed Accounts under the user
         # making the request.
         managed_accounts: nil,
-        # Query param:
-        page_number: nil,
-        # Query param:
-        page_size: nil,
+        # Query param: Consolidated page parameter (deepObject style). Originally:
+        # page[number], page[size]
+        page: nil,
         # Query param: Specifies the sort order for results
         sort: nil,
         # Query param: The start date for the time range you are interested in. The

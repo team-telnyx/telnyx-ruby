@@ -10,7 +10,7 @@ module Telnyx
       def list: (
         ?page: Telnyx::ChannelZoneListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::ChannelZoneListResponse]
+      ) -> Telnyx::Models::ChannelZoneListResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

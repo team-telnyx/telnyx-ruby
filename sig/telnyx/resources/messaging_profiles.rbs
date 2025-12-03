@@ -22,12 +22,12 @@ module Telnyx
       ) -> Telnyx::Models::MessagingProfileCreateResponse
 
       def retrieve: (
-        String messaging_profile_id,
+        String id,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::MessagingProfileRetrieveResponse
 
       def update: (
-        String messaging_profile_id,
+        String id,
         ?alpha_sender: String?,
         ?daily_spend_limit: String,
         ?daily_spend_limit_enabled: bool,
@@ -50,24 +50,24 @@ module Telnyx
         ?filter: Telnyx::MessagingProfileListParams::Filter,
         ?page: Telnyx::MessagingProfileListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::MessagingProfile]
+      ) -> Telnyx::Models::MessagingProfileListResponse
 
       def delete: (
-        String messaging_profile_id,
+        String id,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::MessagingProfileDeleteResponse
 
       def list_phone_numbers: (
-        String messaging_profile_id,
+        String id,
         ?page: Telnyx::MessagingProfileListPhoneNumbersParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::PhoneNumberWithMessagingSettings]
+      ) -> Telnyx::Models::MessagingProfileListPhoneNumbersResponse
 
       def list_short_codes: (
-        String messaging_profile_id,
+        String id,
         ?page: Telnyx::MessagingProfileListShortCodesParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::ShortCode]
+      ) -> Telnyx::Models::MessagingProfileListShortCodesResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end
