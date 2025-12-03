@@ -5,7 +5,7 @@ module Telnyx
         ?filter: Telnyx::NotificationEventConditionListParams::Filter,
         ?page: Telnyx::NotificationEventConditionListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::NotificationEventConditionListResponse]
+      ) -> Telnyx::Models::NotificationEventConditionListResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

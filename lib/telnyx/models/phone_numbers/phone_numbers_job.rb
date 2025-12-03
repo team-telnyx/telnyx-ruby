@@ -3,7 +3,6 @@
 module Telnyx
   module Models
     module PhoneNumbers
-      # @see Telnyx::Resources::PhoneNumbers::Jobs#list
       class PhoneNumbersJob < Telnyx::Internal::Type::BaseModel
         # @!attribute phone_numbers
         #

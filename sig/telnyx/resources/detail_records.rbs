@@ -3,11 +3,10 @@ module Telnyx
     class DetailRecords
       def list: (
         ?filter: Telnyx::DetailRecordListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::DetailRecordListParams::Page,
         ?sort: ::Array[String],
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::detail_record_list_response]
+      ) -> Telnyx::Models::DetailRecordListResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

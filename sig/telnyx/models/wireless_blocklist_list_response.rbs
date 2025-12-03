@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    type wireless_blocklist_list_response =
+      { data: ::Array[Telnyx::WirelessBlocklist], meta: Telnyx::PaginationMeta }
+
+    class WirelessBlocklistListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::WirelessBlocklist]?
+
+      def data=: (
+        ::Array[Telnyx::WirelessBlocklist]
+      ) -> ::Array[Telnyx::WirelessBlocklist]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::WirelessBlocklist],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::WirelessBlocklist],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

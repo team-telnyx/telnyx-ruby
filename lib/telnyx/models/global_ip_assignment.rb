@@ -2,20 +2,37 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::GlobalIPAssignments#list
-    class GlobalIPAssignment < Telnyx::Internal::Type::BaseModel
-      response_only do
-        # @!attribute id
-        #   Identifies the resource.
-        #
-        #   @return [String, nil]
-        optional :id, String
+    class GlobalIPAssignment < Telnyx::Models::Record
+      # @!attribute global_ip_id
+      #   Global IP ID.
+      #
+      #   @return [String, nil]
+      optional :global_ip_id, String
 
-        # @!attribute created_at
-        #   ISO 8601 formatted date-time indicating when the resource was created.
+      # @!attribute is_in_maintenance
+      #   Enable/disable BGP announcement.
+      #
+      #   @return [Boolean, nil]
+      optional :is_in_maintenance, Telnyx::Internal::Type::Boolean
+
+      # @!attribute wireguard_peer_id
+      #   Wireguard peer ID.
+      #
+      #   @return [String, nil]
+      optional :wireguard_peer_id, String
+
+      response_only do
+        # @!attribute is_announced
+        #   Status of BGP announcement.
         #
-        #   @return [String, nil]
-        optional :created_at, String
+        #   @return [Boolean, nil]
+        optional :is_announced, Telnyx::Internal::Type::Boolean
+
+        # @!attribute is_connected
+        #   Wireguard peer is connected.
+        #
+        #   @return [Boolean, nil]
+        optional :is_connected, Telnyx::Internal::Type::Boolean
 
         # @!attribute record_type
         #   Identifies the type of the resource.
@@ -23,21 +40,27 @@ module Telnyx
         #   @return [String, nil]
         optional :record_type, String
 
-        # @!attribute updated_at
-        #   ISO 8601 formatted date-time indicating when the resource was updated.
+        # @!attribute status
+        #   The current status of the interface deployment.
         #
-        #   @return [String, nil]
-        optional :updated_at, String
+        #   @return [Symbol, Telnyx::Models::InterfaceStatus, nil]
+        optional :status, enum: -> { Telnyx::InterfaceStatus }
       end
 
-      # @!method initialize(id: nil, created_at: nil, record_type: nil, updated_at: nil)
-      #   @param id [String] Identifies the resource.
+      # @!method initialize(global_ip_id: nil, is_announced: nil, is_connected: nil, is_in_maintenance: nil, record_type: nil, status: nil, wireguard_peer_id: nil)
+      #   @param global_ip_id [String] Global IP ID.
       #
-      #   @param created_at [String] ISO 8601 formatted date-time indicating when the resource was created.
+      #   @param is_announced [Boolean] Status of BGP announcement.
+      #
+      #   @param is_connected [Boolean] Wireguard peer is connected.
+      #
+      #   @param is_in_maintenance [Boolean] Enable/disable BGP announcement.
       #
       #   @param record_type [String] Identifies the type of the resource.
       #
-      #   @param updated_at [String] ISO 8601 formatted date-time indicating when the resource was updated.
+      #   @param status [Symbol, Telnyx::Models::InterfaceStatus] The current status of the interface deployment.
+      #
+      #   @param wireguard_peer_id [String] Wireguard peer ID.
     end
   end
 end

@@ -116,8 +116,8 @@ module Telnyx
           #   The result of the AI gather, its type depends of the `parameters` provided in
           #   the command
           #
-          #   @return [Hash{Symbol=>Object}, nil]
-          optional :result, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+          #   @return [Object, nil]
+          optional :result, Telnyx::Internal::Type::Unknown
 
           # @!attribute status
           #   Reflects how command ended.
@@ -149,7 +149,7 @@ module Telnyx
           #
           #   @param message_history [Array<Telnyx::Models::CallAIGatherEndedWebhookEvent::Data::Payload::MessageHistory>] The history of the messages exchanged during the AI gather
           #
-          #   @param result [Hash{Symbol=>Object}] The result of the AI gather, its type depends of the `parameters` provided in th
+          #   @param result [Object] The result of the AI gather, its type depends of the `parameters` provided in th
           #
           #   @param status [Symbol, Telnyx::Models::CallAIGatherEndedWebhookEvent::Data::Payload::Status] Reflects how command ended.
           #

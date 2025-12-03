@@ -59,8 +59,8 @@ module Telnyx
         #   Opens the RCS app's location chooser so the user can pick a location to send
         #   back to the agent.
         #
-        #   @return [Hash{Symbol=>Object}, nil]
-        optional :share_location_action, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+        #   @return [Object, nil]
+        optional :share_location_action, Telnyx::Internal::Type::Unknown
 
         # @!attribute text
         #   Text that is shown in the suggested action. Maximum 25 characters.
@@ -90,7 +90,7 @@ module Telnyx
         #
         #   @param postback_data [String] Payload (base64 encoded) that will be sent to the agent in the user event that r
         #
-        #   @param share_location_action [Hash{Symbol=>Object}] Opens the RCS app's location chooser so the user can pick a location to send bac
+        #   @param share_location_action [Object] Opens the RCS app's location chooser so the user can pick a location to send bac
         #
         #   @param text [String] Text that is shown in the suggested action. Maximum 25 characters.
         #

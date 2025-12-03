@@ -14,7 +14,7 @@ module Telnyx
       ) -> Telnyx::Models::NetworkRetrieveResponse
 
       def update: (
-        String network_id,
+        String id,
         name: String,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::NetworkUpdateResponse
@@ -23,7 +23,7 @@ module Telnyx
         ?filter: Telnyx::NetworkListParams::Filter,
         ?page: Telnyx::NetworkListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::NetworkListResponse]
+      ) -> Telnyx::Models::NetworkListResponse
 
       def delete: (
         String id,
@@ -35,7 +35,7 @@ module Telnyx
         ?filter: Telnyx::NetworkListInterfacesParams::Filter,
         ?page: Telnyx::NetworkListInterfacesParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::NetworkListInterfacesResponse]
+      ) -> Telnyx::Models::NetworkListInterfacesResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

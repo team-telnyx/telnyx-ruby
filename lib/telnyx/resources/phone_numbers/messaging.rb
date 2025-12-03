@@ -64,7 +64,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PhoneNumberWithMessagingSettings>]
+        # @return [Telnyx::Models::PhoneNumbers::MessagingListResponse]
         #
         # @see Telnyx::Models::PhoneNumbers::MessagingListParams
         def list(params = {})
@@ -73,8 +73,7 @@ module Telnyx
             method: :get,
             path: "phone_numbers/messaging",
             query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
-            model: Telnyx::PhoneNumberWithMessagingSettings,
+            model: Telnyx::Models::PhoneNumbers::MessagingListResponse,
             options: options
           )
         end

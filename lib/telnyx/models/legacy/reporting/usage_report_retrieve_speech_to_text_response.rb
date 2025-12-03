@@ -8,11 +8,11 @@ module Telnyx
         class UsageReportRetrieveSpeechToTextResponse < Telnyx::Internal::Type::BaseModel
           # @!attribute data
           #
-          #   @return [Hash{Symbol=>Object}, nil]
-          optional :data, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+          #   @return [Object, nil]
+          optional :data, Telnyx::Internal::Type::Unknown
 
           # @!method initialize(data: nil)
-          #   @param data [Hash{Symbol=>Object}]
+          #   @param data [Object]
         end
       end
     end

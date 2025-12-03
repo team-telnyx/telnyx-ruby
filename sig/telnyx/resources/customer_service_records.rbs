@@ -18,7 +18,7 @@ module Telnyx
         ?page: Telnyx::CustomerServiceRecordListParams::Page,
         ?sort: Telnyx::CustomerServiceRecordListParams::Sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::CustomerServiceRecord]
+      ) -> Telnyx::Models::CustomerServiceRecordListResponse
 
       def verify_phone_number_coverage: (
         phone_numbers: ::Array[String],

@@ -8,7 +8,7 @@ module Telnyx
         module UseCaseCategories
           extend Telnyx::Internal::Type::Enum
 
-          TWO_FA = :"2FA"
+          USE_CASE_CATEGORIES_2_FA = :"2FA"
           APP_NOTIFICATIONS = :"App Notifications"
           APPOINTMENTS = :Appointments
           AUCTIONS = :Auctions

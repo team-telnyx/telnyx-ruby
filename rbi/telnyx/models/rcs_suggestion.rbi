@@ -108,10 +108,10 @@ module Telnyx
 
         # Opens the RCS app's location chooser so the user can pick a location to send
         # back to the agent.
-        sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+        sig { returns(T.nilable(T.anything)) }
         attr_reader :share_location_action
 
-        sig { params(share_location_action: T::Hash[Symbol, T.anything]).void }
+        sig { params(share_location_action: T.anything).void }
         attr_writer :share_location_action
 
         # Text that is shown in the suggested action. Maximum 25 characters.
@@ -145,7 +145,7 @@ module Telnyx
             open_url_action:
               Telnyx::RcsSuggestion::Action::OpenURLAction::OrHash,
             postback_data: String,
-            share_location_action: T::Hash[Symbol, T.anything],
+            share_location_action: T.anything,
             text: String,
             view_location_action:
               Telnyx::RcsSuggestion::Action::ViewLocationAction::OrHash
@@ -185,7 +185,7 @@ module Telnyx
               fallback_url: String,
               open_url_action: Telnyx::RcsSuggestion::Action::OpenURLAction,
               postback_data: String,
-              share_location_action: T::Hash[Symbol, T.anything],
+              share_location_action: T.anything,
               text: String,
               view_location_action:
                 Telnyx::RcsSuggestion::Action::ViewLocationAction

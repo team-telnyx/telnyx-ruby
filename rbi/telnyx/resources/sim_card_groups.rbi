@@ -69,11 +69,7 @@ module Telnyx
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::SimCardGroupListResponse
-          ]
-        )
+        ).returns(Telnyx::Models::SimCardGroupListResponse)
       end
       def list(
         # A valid SIM card group name.

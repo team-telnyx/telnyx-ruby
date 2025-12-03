@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    type fax_application_list_response =
+      { data: ::Array[Telnyx::FaxApplication], meta: Telnyx::PaginationMeta }
+
+    class FaxApplicationListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::FaxApplication]?
+
+      def data=: (
+        ::Array[Telnyx::FaxApplication]
+      ) -> ::Array[Telnyx::FaxApplication]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::FaxApplication],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::FaxApplication],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

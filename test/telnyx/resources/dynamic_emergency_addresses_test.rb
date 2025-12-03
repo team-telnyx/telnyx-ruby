@@ -49,35 +49,13 @@ class Telnyx::Test::Resources::DynamicEmergencyAddressesTest < Telnyx::Test::Res
     response = @telnyx.dynamic_emergency_addresses.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::DynamicEmergencyAddress
+      response => Telnyx::Models::DynamicEmergencyAddressListResponse
     end
 
     assert_pattern do
-      row => {
-        administrative_area: String,
-        country_code: Telnyx::DynamicEmergencyAddress::CountryCode,
-        house_number: String,
-        locality: String,
-        postal_code: String,
-        street_name: String,
-        id: String | nil,
-        created_at: String | nil,
-        extended_address: String | nil,
-        house_suffix: String | nil,
-        record_type: String | nil,
-        sip_geolocation_id: String | nil,
-        status: Telnyx::DynamicEmergencyAddress::Status | nil,
-        street_post_directional: String | nil,
-        street_pre_directional: String | nil,
-        street_suffix: String | nil,
-        updated_at: String | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::DynamicEmergencyAddress]) | nil,
+        meta: Telnyx::Metadata | nil
       }
     end
   end

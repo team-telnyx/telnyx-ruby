@@ -2,261 +2,289 @@ module Telnyx
   module Models
     type phone_number_slim_list_response =
       {
-        id: String,
-        billing_group_id: String,
-        call_forwarding_enabled: bool,
-        call_recording_enabled: bool,
-        caller_id_name_enabled: bool,
-        cnam_listing_enabled: bool,
-        connection_id: String,
-        :country_iso_alpha2 => String,
-        created_at: String,
-        customer_reference: String,
-        emergency_address_id: String,
-        emergency_enabled: bool,
-        emergency_status: Telnyx::Models::PhoneNumberSlimListResponse::emergency_status,
-        external_pin: String,
-        inbound_call_screening: Telnyx::Models::PhoneNumberSlimListResponse::inbound_call_screening,
-        phone_number: String,
-        phone_number_type: Telnyx::Models::PhoneNumberSlimListResponse::phone_number_type,
-        purchased_at: String,
-        record_type: String,
-        status: Telnyx::Models::PhoneNumberSlimListResponse::status,
-        :t38_fax_gateway_enabled => bool
+        data: ::Array[Telnyx::Models::PhoneNumberSlimListResponse::Data],
+        meta: Telnyx::PaginationMeta
       }
 
     class PhoneNumberSlimListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader billing_group_id: String?
+      attr_reader data: ::Array[Telnyx::Models::PhoneNumberSlimListResponse::Data]?
 
-      def billing_group_id=: (String) -> String
+      def data=: (
+        ::Array[Telnyx::Models::PhoneNumberSlimListResponse::Data]
+      ) -> ::Array[Telnyx::Models::PhoneNumberSlimListResponse::Data]
 
-      attr_reader connection_id: String?
+      attr_reader meta: Telnyx::PaginationMeta?
 
-      def connection_id=: (String) -> String
-
-      attr_reader customer_reference: String?
-
-      def customer_reference=: (String) -> String
-
-      attr_reader emergency_status: Telnyx::Models::PhoneNumberSlimListResponse::emergency_status?
-
-      def emergency_status=: (
-        Telnyx::Models::PhoneNumberSlimListResponse::emergency_status
-      ) -> Telnyx::Models::PhoneNumberSlimListResponse::emergency_status
-
-      attr_reader external_pin: String?
-
-      def external_pin=: (String) -> String
-
-      attr_reader inbound_call_screening: Telnyx::Models::PhoneNumberSlimListResponse::inbound_call_screening?
-
-      def inbound_call_screening=: (
-        Telnyx::Models::PhoneNumberSlimListResponse::inbound_call_screening
-      ) -> Telnyx::Models::PhoneNumberSlimListResponse::inbound_call_screening
-
-      attr_reader id: String?
-
-      def id=: (String) -> String
-
-      attr_reader call_forwarding_enabled: bool?
-
-      def call_forwarding_enabled=: (bool) -> bool
-
-      attr_reader call_recording_enabled: bool?
-
-      def call_recording_enabled=: (bool) -> bool
-
-      attr_reader caller_id_name_enabled: bool?
-
-      def caller_id_name_enabled=: (bool) -> bool
-
-      attr_reader cnam_listing_enabled: bool?
-
-      def cnam_listing_enabled=: (bool) -> bool
-
-      attr_reader country_iso_alpha2: String?
-
-      def country_iso_alpha2=: (String) -> String
-
-      attr_reader created_at: String?
-
-      def created_at=: (String) -> String
-
-      attr_reader emergency_address_id: String?
-
-      def emergency_address_id=: (String) -> String
-
-      attr_reader emergency_enabled: bool?
-
-      def emergency_enabled=: (bool) -> bool
-
-      attr_reader phone_number: String?
-
-      def phone_number=: (String) -> String
-
-      attr_reader phone_number_type: Telnyx::Models::PhoneNumberSlimListResponse::phone_number_type?
-
-      def phone_number_type=: (
-        Telnyx::Models::PhoneNumberSlimListResponse::phone_number_type
-      ) -> Telnyx::Models::PhoneNumberSlimListResponse::phone_number_type
-
-      attr_reader purchased_at: String?
-
-      def purchased_at=: (String) -> String
-
-      attr_reader record_type: String?
-
-      def record_type=: (String) -> String
-
-      attr_reader status: Telnyx::Models::PhoneNumberSlimListResponse::status?
-
-      def status=: (
-        Telnyx::Models::PhoneNumberSlimListResponse::status
-      ) -> Telnyx::Models::PhoneNumberSlimListResponse::status
-
-      attr_reader t38_fax_gateway_enabled: bool?
-
-      def t38_fax_gateway_enabled=: (bool) -> bool
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
 
       def initialize: (
-        ?id: String,
-        ?billing_group_id: String,
-        ?call_forwarding_enabled: bool,
-        ?call_recording_enabled: bool,
-        ?caller_id_name_enabled: bool,
-        ?cnam_listing_enabled: bool,
-        ?connection_id: String,
-        ?country_iso_alpha2: String,
-        ?created_at: String,
-        ?customer_reference: String,
-        ?emergency_address_id: String,
-        ?emergency_enabled: bool,
-        ?emergency_status: Telnyx::Models::PhoneNumberSlimListResponse::emergency_status,
-        ?external_pin: String,
-        ?inbound_call_screening: Telnyx::Models::PhoneNumberSlimListResponse::inbound_call_screening,
-        ?phone_number: String,
-        ?phone_number_type: Telnyx::Models::PhoneNumberSlimListResponse::phone_number_type,
-        ?purchased_at: String,
-        ?record_type: String,
-        ?status: Telnyx::Models::PhoneNumberSlimListResponse::status,
-        ?t38_fax_gateway_enabled: bool
+        ?data: ::Array[Telnyx::Models::PhoneNumberSlimListResponse::Data],
+        ?meta: Telnyx::PaginationMeta
       ) -> void
 
       def to_hash: -> {
-        id: String,
-        billing_group_id: String,
-        call_forwarding_enabled: bool,
-        call_recording_enabled: bool,
-        caller_id_name_enabled: bool,
-        cnam_listing_enabled: bool,
-        connection_id: String,
-        :country_iso_alpha2 => String,
-        created_at: String,
-        customer_reference: String,
-        emergency_address_id: String,
-        emergency_enabled: bool,
-        emergency_status: Telnyx::Models::PhoneNumberSlimListResponse::emergency_status,
-        external_pin: String,
-        inbound_call_screening: Telnyx::Models::PhoneNumberSlimListResponse::inbound_call_screening,
-        phone_number: String,
-        phone_number_type: Telnyx::Models::PhoneNumberSlimListResponse::phone_number_type,
-        purchased_at: String,
-        record_type: String,
-        status: Telnyx::Models::PhoneNumberSlimListResponse::status,
-        :t38_fax_gateway_enabled => bool
+        data: ::Array[Telnyx::Models::PhoneNumberSlimListResponse::Data],
+        meta: Telnyx::PaginationMeta
       }
 
-      type emergency_status =
-        :active
-        | :deprovisioning
-        | :disabled
-        | :provisioning
-        | :"provisioning-failed"
+      type data =
+        {
+          id: String,
+          billing_group_id: String,
+          call_forwarding_enabled: bool,
+          call_recording_enabled: bool,
+          caller_id_name_enabled: bool,
+          cnam_listing_enabled: bool,
+          connection_id: String,
+          :country_iso_alpha2 => String,
+          created_at: String,
+          customer_reference: String,
+          emergency_address_id: String,
+          emergency_enabled: bool,
+          emergency_status: Telnyx::Models::PhoneNumberSlimListResponse::Data::emergency_status,
+          external_pin: String,
+          inbound_call_screening: Telnyx::Models::PhoneNumberSlimListResponse::Data::inbound_call_screening,
+          phone_number: String,
+          phone_number_type: Telnyx::Models::PhoneNumberSlimListResponse::Data::phone_number_type,
+          purchased_at: String,
+          record_type: String,
+          status: Telnyx::Models::PhoneNumberSlimListResponse::Data::status,
+          :t38_fax_gateway_enabled => bool
+        }
 
-      module EmergencyStatus
-        extend Telnyx::Internal::Type::Enum
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader billing_group_id: String?
 
-        ACTIVE: :active
-        DEPROVISIONING: :deprovisioning
-        DISABLED: :disabled
-        PROVISIONING: :provisioning
-        PROVISIONING_FAILED: :"provisioning-failed"
+        def billing_group_id=: (String) -> String
 
-        def self?.values: -> ::Array[Telnyx::Models::PhoneNumberSlimListResponse::emergency_status]
-      end
+        attr_reader connection_id: String?
 
-      type inbound_call_screening = :disabled | :reject_calls | :flag_calls
+        def connection_id=: (String) -> String
 
-      module InboundCallScreening
-        extend Telnyx::Internal::Type::Enum
+        attr_reader customer_reference: String?
 
-        DISABLED: :disabled
-        REJECT_CALLS: :reject_calls
-        FLAG_CALLS: :flag_calls
+        def customer_reference=: (String) -> String
 
-        def self?.values: -> ::Array[Telnyx::Models::PhoneNumberSlimListResponse::inbound_call_screening]
-      end
+        attr_reader emergency_status: Telnyx::Models::PhoneNumberSlimListResponse::Data::emergency_status?
 
-      type phone_number_type =
-        :local
-        | :toll_free
-        | :mobile
-        | :national
-        | :shared_cost
-        | :landline
-        | :tollfree
-        | :shortcode
-        | :longcode
+        def emergency_status=: (
+          Telnyx::Models::PhoneNumberSlimListResponse::Data::emergency_status
+        ) -> Telnyx::Models::PhoneNumberSlimListResponse::Data::emergency_status
 
-      module PhoneNumberType
-        extend Telnyx::Internal::Type::Enum
+        attr_reader external_pin: String?
 
-        LOCAL: :local
-        TOLL_FREE: :toll_free
-        MOBILE: :mobile
-        NATIONAL: :national
-        SHARED_COST: :shared_cost
-        LANDLINE: :landline
-        TOLLFREE: :tollfree
-        SHORTCODE: :shortcode
-        LONGCODE: :longcode
+        def external_pin=: (String) -> String
 
-        def self?.values: -> ::Array[Telnyx::Models::PhoneNumberSlimListResponse::phone_number_type]
-      end
+        attr_reader inbound_call_screening: Telnyx::Models::PhoneNumberSlimListResponse::Data::inbound_call_screening?
 
-      type status =
-        :"purchase-pending"
-        | :"purchase-failed"
-        | :"port-pending"
-        | :"port-failed"
-        | :active
-        | :deleted
-        | :"emergency-only"
-        | :"ported-out"
-        | :"port-out-pending"
-        | :"requirement-info-pending"
-        | :"requirement-info-under-review"
-        | :"requirement-info-exception"
-        | :"provision-pending"
+        def inbound_call_screening=: (
+          Telnyx::Models::PhoneNumberSlimListResponse::Data::inbound_call_screening
+        ) -> Telnyx::Models::PhoneNumberSlimListResponse::Data::inbound_call_screening
 
-      module Status
-        extend Telnyx::Internal::Type::Enum
+        attr_reader id: String?
 
-        PURCHASE_PENDING: :"purchase-pending"
-        PURCHASE_FAILED: :"purchase-failed"
-        PORT_PENDING: :"port-pending"
-        PORT_FAILED: :"port-failed"
-        ACTIVE: :active
-        DELETED: :deleted
-        EMERGENCY_ONLY: :"emergency-only"
-        PORTED_OUT: :"ported-out"
-        PORT_OUT_PENDING: :"port-out-pending"
-        REQUIREMENT_INFO_PENDING: :"requirement-info-pending"
-        REQUIREMENT_INFO_UNDER_REVIEW: :"requirement-info-under-review"
-        REQUIREMENT_INFO_EXCEPTION: :"requirement-info-exception"
-        PROVISION_PENDING: :"provision-pending"
+        def id=: (String) -> String
 
-        def self?.values: -> ::Array[Telnyx::Models::PhoneNumberSlimListResponse::status]
+        attr_reader call_forwarding_enabled: bool?
+
+        def call_forwarding_enabled=: (bool) -> bool
+
+        attr_reader call_recording_enabled: bool?
+
+        def call_recording_enabled=: (bool) -> bool
+
+        attr_reader caller_id_name_enabled: bool?
+
+        def caller_id_name_enabled=: (bool) -> bool
+
+        attr_reader cnam_listing_enabled: bool?
+
+        def cnam_listing_enabled=: (bool) -> bool
+
+        attr_reader country_iso_alpha2: String?
+
+        def country_iso_alpha2=: (String) -> String
+
+        attr_reader created_at: String?
+
+        def created_at=: (String) -> String
+
+        attr_reader emergency_address_id: String?
+
+        def emergency_address_id=: (String) -> String
+
+        attr_reader emergency_enabled: bool?
+
+        def emergency_enabled=: (bool) -> bool
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader phone_number_type: Telnyx::Models::PhoneNumberSlimListResponse::Data::phone_number_type?
+
+        def phone_number_type=: (
+          Telnyx::Models::PhoneNumberSlimListResponse::Data::phone_number_type
+        ) -> Telnyx::Models::PhoneNumberSlimListResponse::Data::phone_number_type
+
+        attr_reader purchased_at: String?
+
+        def purchased_at=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader status: Telnyx::Models::PhoneNumberSlimListResponse::Data::status?
+
+        def status=: (
+          Telnyx::Models::PhoneNumberSlimListResponse::Data::status
+        ) -> Telnyx::Models::PhoneNumberSlimListResponse::Data::status
+
+        attr_reader t38_fax_gateway_enabled: bool?
+
+        def t38_fax_gateway_enabled=: (bool) -> bool
+
+        def initialize: (
+          ?id: String,
+          ?billing_group_id: String,
+          ?call_forwarding_enabled: bool,
+          ?call_recording_enabled: bool,
+          ?caller_id_name_enabled: bool,
+          ?cnam_listing_enabled: bool,
+          ?connection_id: String,
+          ?country_iso_alpha2: String,
+          ?created_at: String,
+          ?customer_reference: String,
+          ?emergency_address_id: String,
+          ?emergency_enabled: bool,
+          ?emergency_status: Telnyx::Models::PhoneNumberSlimListResponse::Data::emergency_status,
+          ?external_pin: String,
+          ?inbound_call_screening: Telnyx::Models::PhoneNumberSlimListResponse::Data::inbound_call_screening,
+          ?phone_number: String,
+          ?phone_number_type: Telnyx::Models::PhoneNumberSlimListResponse::Data::phone_number_type,
+          ?purchased_at: String,
+          ?record_type: String,
+          ?status: Telnyx::Models::PhoneNumberSlimListResponse::Data::status,
+          ?t38_fax_gateway_enabled: bool
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          billing_group_id: String,
+          call_forwarding_enabled: bool,
+          call_recording_enabled: bool,
+          caller_id_name_enabled: bool,
+          cnam_listing_enabled: bool,
+          connection_id: String,
+          :country_iso_alpha2 => String,
+          created_at: String,
+          customer_reference: String,
+          emergency_address_id: String,
+          emergency_enabled: bool,
+          emergency_status: Telnyx::Models::PhoneNumberSlimListResponse::Data::emergency_status,
+          external_pin: String,
+          inbound_call_screening: Telnyx::Models::PhoneNumberSlimListResponse::Data::inbound_call_screening,
+          phone_number: String,
+          phone_number_type: Telnyx::Models::PhoneNumberSlimListResponse::Data::phone_number_type,
+          purchased_at: String,
+          record_type: String,
+          status: Telnyx::Models::PhoneNumberSlimListResponse::Data::status,
+          :t38_fax_gateway_enabled => bool
+        }
+
+        type emergency_status =
+          :active
+          | :deprovisioning
+          | :disabled
+          | :provisioning
+          | :"provisioning-failed"
+
+        module EmergencyStatus
+          extend Telnyx::Internal::Type::Enum
+
+          ACTIVE: :active
+          DEPROVISIONING: :deprovisioning
+          DISABLED: :disabled
+          PROVISIONING: :provisioning
+          PROVISIONING_FAILED: :"provisioning-failed"
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumberSlimListResponse::Data::emergency_status]
+        end
+
+        type inbound_call_screening = :disabled | :reject_calls | :flag_calls
+
+        module InboundCallScreening
+          extend Telnyx::Internal::Type::Enum
+
+          DISABLED: :disabled
+          REJECT_CALLS: :reject_calls
+          FLAG_CALLS: :flag_calls
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumberSlimListResponse::Data::inbound_call_screening]
+        end
+
+        type phone_number_type =
+          :local
+          | :toll_free
+          | :mobile
+          | :national
+          | :shared_cost
+          | :landline
+          | :tollfree
+          | :shortcode
+          | :longcode
+
+        module PhoneNumberType
+          extend Telnyx::Internal::Type::Enum
+
+          LOCAL: :local
+          TOLL_FREE: :toll_free
+          MOBILE: :mobile
+          NATIONAL: :national
+          SHARED_COST: :shared_cost
+          LANDLINE: :landline
+          TOLLFREE: :tollfree
+          SHORTCODE: :shortcode
+          LONGCODE: :longcode
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumberSlimListResponse::Data::phone_number_type]
+        end
+
+        type status =
+          :"purchase-pending"
+          | :"purchase-failed"
+          | :"port-pending"
+          | :"port-failed"
+          | :active
+          | :deleted
+          | :"emergency-only"
+          | :"ported-out"
+          | :"port-out-pending"
+          | :"requirement-info-pending"
+          | :"requirement-info-under-review"
+          | :"requirement-info-exception"
+          | :"provision-pending"
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PURCHASE_PENDING: :"purchase-pending"
+          PURCHASE_FAILED: :"purchase-failed"
+          PORT_PENDING: :"port-pending"
+          PORT_FAILED: :"port-failed"
+          ACTIVE: :active
+          DELETED: :deleted
+          EMERGENCY_ONLY: :"emergency-only"
+          PORTED_OUT: :"ported-out"
+          PORT_OUT_PENDING: :"port-out-pending"
+          REQUIREMENT_INFO_PENDING: :"requirement-info-pending"
+          REQUIREMENT_INFO_UNDER_REVIEW: :"requirement-info-under-review"
+          REQUIREMENT_INFO_EXCEPTION: :"requirement-info-exception"
+          PROVISION_PENDING: :"provision-pending"
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumberSlimListResponse::Data::status]
+        end
       end
     end
   end

@@ -1,0 +1,33 @@
+module Telnyx
+  module Models
+    module PhoneNumbers
+      type job_list_response =
+        {
+          data: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob],
+          meta: Telnyx::PaginationMeta
+        }
+
+      class JobListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob]?
+
+        def data=: (
+          ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob]
+        ) -> ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob]
+
+        attr_reader meta: Telnyx::PaginationMeta?
+
+        def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+        def initialize: (
+          ?data: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob],
+          ?meta: Telnyx::PaginationMeta
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob],
+          meta: Telnyx::PaginationMeta
+        }
+      end
+    end
+  end
+end

@@ -264,10 +264,10 @@ module Telnyx
 
           # The partial result of the AI gather, its type depends of the `parameters`
           # provided in the command
-          sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+          sig { returns(T.nilable(T.anything)) }
           attr_reader :partial_results
 
-          sig { params(partial_results: T::Hash[Symbol, T.anything]).void }
+          sig { params(partial_results: T.anything).void }
           attr_writer :partial_results
 
           # Destination number or SIP URI of the call.
@@ -289,7 +289,7 @@ module Telnyx
                 T::Array[
                   Telnyx::CallAIGatherPartialResultsWebhookEvent::Data::Payload::MessageHistory::OrHash
                 ],
-              partial_results: T::Hash[Symbol, T.anything],
+              partial_results: T.anything,
               to: String
             ).returns(T.attached_class)
           end
@@ -331,7 +331,7 @@ module Telnyx
                   T::Array[
                     Telnyx::CallAIGatherPartialResultsWebhookEvent::Data::Payload::MessageHistory
                   ],
-                partial_results: T::Hash[Symbol, T.anything],
+                partial_results: T.anything,
                 to: String
               }
             )

@@ -3,7 +3,6 @@
 module Telnyx
   module Models
     module Porting
-      # @see Telnyx::Resources::Porting::Reports#list
       class PortingReport < Telnyx::Internal::Type::BaseModel
         # @!attribute id
         #   Uniquely identifies the report.

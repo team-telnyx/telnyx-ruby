@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::Faxes#list
     class Fax < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Identifies the type of resource.

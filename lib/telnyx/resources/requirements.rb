@@ -38,7 +38,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::RequirementListResponse>]
+      # @return [Telnyx::Models::RequirementListResponse]
       #
       # @see Telnyx::Models::RequirementListParams
       def list(params = {})
@@ -47,7 +47,6 @@ module Telnyx
           method: :get,
           path: "requirements",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::RequirementListResponse,
           options: options
         )

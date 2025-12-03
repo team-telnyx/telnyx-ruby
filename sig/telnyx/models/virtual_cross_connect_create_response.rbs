@@ -28,12 +28,12 @@ module Telnyx
           network_id: String,
           status: Telnyx::Models::interface_status,
           region_code: String,
-          bandwidth_mbps: Float,
           bgp_asn: Float,
           cloud_provider: Telnyx::Models::VirtualCrossConnectCreateResponse::Data::cloud_provider,
           cloud_provider_region: String,
-          primary_bgp_key: String,
           primary_cloud_account_id: String,
+          bandwidth_mbps: Float,
+          primary_bgp_key: String,
           primary_cloud_ip: String,
           primary_enabled: bool,
           primary_routing_announcement: bool,
@@ -60,31 +60,21 @@ module Telnyx
 
         def region_code=: (String) -> String
 
+        attr_accessor bgp_asn: Float
+
+        attr_accessor cloud_provider: Telnyx::Models::VirtualCrossConnectCreateResponse::Data::cloud_provider
+
+        attr_accessor cloud_provider_region: String
+
+        attr_accessor primary_cloud_account_id: String
+
         attr_reader bandwidth_mbps: Float?
 
         def bandwidth_mbps=: (Float) -> Float
 
-        attr_reader bgp_asn: Float?
-
-        def bgp_asn=: (Float) -> Float
-
-        attr_reader cloud_provider: Telnyx::Models::VirtualCrossConnectCreateResponse::Data::cloud_provider?
-
-        def cloud_provider=: (
-          Telnyx::Models::VirtualCrossConnectCreateResponse::Data::cloud_provider
-        ) -> Telnyx::Models::VirtualCrossConnectCreateResponse::Data::cloud_provider
-
-        attr_reader cloud_provider_region: String?
-
-        def cloud_provider_region=: (String) -> String
-
         attr_reader primary_bgp_key: String?
 
         def primary_bgp_key=: (String) -> String
-
-        attr_reader primary_cloud_account_id: String?
-
-        def primary_cloud_account_id=: (String) -> String
 
         attr_reader primary_cloud_ip: String?
 
@@ -155,6 +145,10 @@ module Telnyx
         ) -> Telnyx::Models::interface_status
 
         def initialize: (
+          bgp_asn: Float,
+          cloud_provider: Telnyx::Models::VirtualCrossConnectCreateResponse::Data::cloud_provider,
+          cloud_provider_region: String,
+          primary_cloud_account_id: String,
           ?id: String,
           ?created_at: String,
           ?record_type: String,
@@ -164,11 +158,7 @@ module Telnyx
           ?status: Telnyx::Models::interface_status,
           ?region_code: String,
           ?bandwidth_mbps: Float,
-          ?bgp_asn: Float,
-          ?cloud_provider: Telnyx::Models::VirtualCrossConnectCreateResponse::Data::cloud_provider,
-          ?cloud_provider_region: String,
           ?primary_bgp_key: String,
-          ?primary_cloud_account_id: String,
           ?primary_cloud_ip: String,
           ?primary_enabled: bool,
           ?primary_routing_announcement: bool,
@@ -191,12 +181,12 @@ module Telnyx
           network_id: String,
           status: Telnyx::Models::interface_status,
           region_code: String,
-          bandwidth_mbps: Float,
           bgp_asn: Float,
           cloud_provider: Telnyx::Models::VirtualCrossConnectCreateResponse::Data::cloud_provider,
           cloud_provider_region: String,
-          primary_bgp_key: String,
           primary_cloud_account_id: String,
+          bandwidth_mbps: Float,
+          primary_bgp_key: String,
           primary_cloud_ip: String,
           primary_enabled: bool,
           primary_routing_announcement: bool,

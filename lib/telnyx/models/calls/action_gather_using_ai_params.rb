@@ -14,8 +14,8 @@ module Telnyx
         #   [JSON Schema reference](https://json-schema.org/understanding-json-schema) for
         #   documentation about the format
         #
-        #   @return [Hash{Symbol=>Object}]
-        required :parameters, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+        #   @return [Object]
+        required :parameters, Telnyx::Internal::Type::Unknown
 
         # @!attribute assistant
         #   Assistant configuration including choice of LLM, custom instructions, and tools.
@@ -129,14 +129,14 @@ module Telnyx
         # @!attribute voice_settings
         #   The settings associated with the voice selected
         #
-        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Hash{Symbol=>Object}, nil]
+        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Object, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings }
 
         # @!method initialize(parameters:, assistant: nil, client_state: nil, command_id: nil, greeting: nil, interruption_settings: nil, language: nil, message_history: nil, send_message_history_updates: nil, send_partial_results: nil, transcription: nil, user_response_timeout_ms: nil, voice: nil, voice_settings: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionGatherUsingAIParams} for more details.
         #
-        #   @param parameters [Hash{Symbol=>Object}] The parameters described as a JSON Schema object that needs to be gathered by th
+        #   @param parameters [Object] The parameters described as a JSON Schema object that needs to be gathered by th
         #
         #   @param assistant [Telnyx::Models::AI::Assistant] Assistant configuration including choice of LLM, custom instructions, and tools.
         #
@@ -162,7 +162,7 @@ module Telnyx
         #
         #   @param voice [String] The voice to be used by the voice assistant. Currently we support ElevenLabs, Te
         #
-        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Hash{Symbol=>Object}] The settings associated with the voice selected
+        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Object] The settings associated with the voice selected
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -209,7 +209,7 @@ module Telnyx
           variant -> { Telnyx::Calls::AwsVoiceSettings }
 
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Hash{Symbol=>Object})]
+          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Object)]
         end
       end
     end

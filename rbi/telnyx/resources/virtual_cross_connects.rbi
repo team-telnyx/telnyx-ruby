@@ -11,16 +11,16 @@ module Telnyx
       # created at the same time and they can not be independantly disabled.
       sig do
         params(
-          region_code: String,
-          bandwidth_mbps: Float,
           bgp_asn: Float,
           cloud_provider:
             Telnyx::VirtualCrossConnectCreateParams::CloudProvider::OrSymbol,
           cloud_provider_region: String,
-          name: String,
           network_id: String,
-          primary_bgp_key: String,
           primary_cloud_account_id: String,
+          region_code: String,
+          bandwidth_mbps: Float,
+          name: String,
+          primary_bgp_key: String,
           primary_cloud_ip: String,
           primary_telnyx_ip: String,
           secondary_bgp_key: String,
@@ -31,31 +31,31 @@ module Telnyx
         ).returns(Telnyx::Models::VirtualCrossConnectCreateResponse)
       end
       def create(
+        # The Border Gateway Protocol (BGP) Autonomous System Number (ASN). If null, value
+        # will be assigned by Telnyx.
+        bgp_asn:,
+        # The Virtual Private Cloud with which you would like to establish a cross
+        # connect.
+        cloud_provider:,
+        # The region where your Virtual Private Cloud hosts are located.<br /><br />The
+        # available regions can be found using the /virtual_cross_connect_regions
+        # endpoint.
+        cloud_provider_region:,
+        # The id of the network associated with the interface.
+        network_id:,
+        # The identifier for your Virtual Private Cloud. The number will be different
+        # based upon your Cloud provider.
+        primary_cloud_account_id:,
         # The region the interface should be deployed to.
         region_code:,
         # The desired throughput in Megabits per Second (Mbps) for your Virtual Cross
         # Connect.<br /><br />The available bandwidths can be found using the
         # /virtual_cross_connect_regions endpoint.
         bandwidth_mbps: nil,
-        # The Border Gateway Protocol (BGP) Autonomous System Number (ASN). If null, value
-        # will be assigned by Telnyx.
-        bgp_asn: nil,
-        # The Virtual Private Cloud with which you would like to establish a cross
-        # connect.
-        cloud_provider: nil,
-        # The region where your Virtual Private Cloud hosts are located.<br /><br />The
-        # available regions can be found using the /virtual_cross_connect_regions
-        # endpoint.
-        cloud_provider_region: nil,
         # A user specified name for the interface.
         name: nil,
-        # The id of the network associated with the interface.
-        network_id: nil,
         # The authentication key for BGP peer configuration.
         primary_bgp_key: nil,
-        # The identifier for your Virtual Private Cloud. The number will be different
-        # based upon your Cloud provider.
-        primary_cloud_account_id: nil,
         # The IP address assigned for your side of the Virtual Cross
         # Connect.<br /><br />If none is provided, one will be generated for
         # you.<br /><br />This value should be null for GCE as Google will only inform you
@@ -150,11 +150,7 @@ module Telnyx
           filter: Telnyx::VirtualCrossConnectListParams::Filter::OrHash,
           page: Telnyx::VirtualCrossConnectListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[
-            Telnyx::Models::VirtualCrossConnectListResponse
-          ]
-        )
+        ).returns(Telnyx::Models::VirtualCrossConnectListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[network_id]

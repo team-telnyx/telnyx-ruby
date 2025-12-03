@@ -5,56 +5,73 @@ module Telnyx
     module PortingOrders
       # @see Telnyx::Resources::PortingOrders::PhoneNumberConfigurations#list
       class PhoneNumberConfigurationListResponse < Telnyx::Internal::Type::BaseModel
-        # @!attribute id
-        #   Uniquely identifies this phone number configuration
+        # @!attribute data
         #
-        #   @return [String, nil]
-        optional :id, String
+        #   @return [Array<Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse::Data>, nil]
+        optional :data,
+                 -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse::Data] }
 
-        # @!attribute created_at
-        #   ISO 8601 formatted date indicating when the resource was created.
+        # @!attribute meta
         #
-        #   @return [Time, nil]
-        optional :created_at, Time
+        #   @return [Telnyx::Models::PaginationMeta, nil]
+        optional :meta, -> { Telnyx::PaginationMeta }
 
-        # @!attribute porting_phone_number_id
-        #   Identifies the associated porting phone number
-        #
-        #   @return [String, nil]
-        optional :porting_phone_number_id, String
+        # @!method initialize(data: nil, meta: nil)
+        #   @param data [Array<Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse::Data>]
+        #   @param meta [Telnyx::Models::PaginationMeta]
 
-        # @!attribute updated_at
-        #   ISO 8601 formatted date indicating when the resource was updated.
-        #
-        #   @return [Time, nil]
-        optional :updated_at, Time
-
-        # @!attribute user_bundle_id
-        #   Identifies the associated user bundle
-        #
-        #   @return [String, nil]
-        optional :user_bundle_id, String
-
-        response_only do
-          # @!attribute record_type
-          #   Identifies the type of the resource.
+        class Data < Telnyx::Internal::Type::BaseModel
+          # @!attribute id
+          #   Uniquely identifies this phone number configuration
           #
           #   @return [String, nil]
-          optional :record_type, String
-        end
+          optional :id, String
 
-        # @!method initialize(id: nil, created_at: nil, porting_phone_number_id: nil, record_type: nil, updated_at: nil, user_bundle_id: nil)
-        #   @param id [String] Uniquely identifies this phone number configuration
-        #
-        #   @param created_at [Time] ISO 8601 formatted date indicating when the resource was created.
-        #
-        #   @param porting_phone_number_id [String] Identifies the associated porting phone number
-        #
-        #   @param record_type [String] Identifies the type of the resource.
-        #
-        #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
-        #
-        #   @param user_bundle_id [String] Identifies the associated user bundle
+          # @!attribute created_at
+          #   ISO 8601 formatted date indicating when the resource was created.
+          #
+          #   @return [Time, nil]
+          optional :created_at, Time
+
+          # @!attribute porting_phone_number_id
+          #   Identifies the associated porting phone number
+          #
+          #   @return [String, nil]
+          optional :porting_phone_number_id, String
+
+          # @!attribute updated_at
+          #   ISO 8601 formatted date indicating when the resource was updated.
+          #
+          #   @return [Time, nil]
+          optional :updated_at, Time
+
+          # @!attribute user_bundle_id
+          #   Identifies the associated user bundle
+          #
+          #   @return [String, nil]
+          optional :user_bundle_id, String
+
+          response_only do
+            # @!attribute record_type
+            #   Identifies the type of the resource.
+            #
+            #   @return [String, nil]
+            optional :record_type, String
+          end
+
+          # @!method initialize(id: nil, created_at: nil, porting_phone_number_id: nil, record_type: nil, updated_at: nil, user_bundle_id: nil)
+          #   @param id [String] Uniquely identifies this phone number configuration
+          #
+          #   @param created_at [Time] ISO 8601 formatted date indicating when the resource was created.
+          #
+          #   @param porting_phone_number_id [String] Identifies the associated porting phone number
+          #
+          #   @param record_type [String] Identifies the type of the resource.
+          #
+          #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
+          #
+          #   @param user_bundle_id [String] Identifies the associated user bundle
+        end
       end
     end
   end

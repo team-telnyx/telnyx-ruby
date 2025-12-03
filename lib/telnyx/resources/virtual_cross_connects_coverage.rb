@@ -20,7 +20,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::VirtualCrossConnectsCoverageListResponse>]
+      # @return [Telnyx::Models::VirtualCrossConnectsCoverageListResponse]
       #
       # @see Telnyx::Models::VirtualCrossConnectsCoverageListParams
       def list(params = {})
@@ -29,7 +29,6 @@ module Telnyx
           method: :get,
           path: "virtual_cross_connects_coverage",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::VirtualCrossConnectsCoverageListResponse,
           options: options
         )

@@ -26,9 +26,7 @@ module Telnyx
           filter: Telnyx::RecordingListParams::Filter::OrHash,
           page: Telnyx::RecordingListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[Telnyx::RecordingResponseData]
-        )
+        ).returns(Telnyx::Models::RecordingListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

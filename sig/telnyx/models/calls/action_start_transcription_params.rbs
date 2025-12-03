@@ -2,15 +2,15 @@ module Telnyx
   module Models
     module Calls
       type action_start_transcription_params =
-        {  } & Telnyx::Internal::Type::request_parameters
+        {  } & ::Telnyx::Internal::Type::request_parameters
 
-      class ActionStartTranscriptionParams < Telnyx::Models::Calls::TranscriptionStartRequest
-        extend Telnyx::Internal::Type::RequestParameters::Converter
-        include Telnyx::Internal::Type::RequestParameters
+      class ActionStartTranscriptionParams < ::Telnyx::Models::Calls::TranscriptionStartRequest
+        extend ::Telnyx::Internal::Type::RequestParameters::Converter
+        include ::Telnyx::Internal::Type::RequestParameters
 
         def initialize: (?request_options: Telnyx::request_opts) -> void
 
-        def to_hash: -> { request_options: Telnyx::RequestOptions }
+        def to_hash: -> { request_options: ::Telnyx::RequestOptions }
       end
     end
   end

@@ -2,35 +2,70 @@ module Telnyx
   module Models
     type global_ip_health_check_list_response =
       {
-        global_ip_id: String,
-        health_check_params: ::Hash[Symbol, top],
-        health_check_type: String
+        data: ::Array[Telnyx::Models::GlobalIPHealthCheckListResponse::Data],
+        meta: Telnyx::PaginationMeta
       }
 
-    class GlobalIPHealthCheckListResponse < Telnyx::Models::Record
-      def global_ip_id: -> String?
+    class GlobalIPHealthCheckListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Models::GlobalIPHealthCheckListResponse::Data]?
 
-      def global_ip_id=: (String _) -> String
+      def data=: (
+        ::Array[Telnyx::Models::GlobalIPHealthCheckListResponse::Data]
+      ) -> ::Array[Telnyx::Models::GlobalIPHealthCheckListResponse::Data]
 
-      def health_check_params: -> ::Hash[Symbol, top]?
+      attr_reader meta: Telnyx::PaginationMeta?
 
-      def health_check_params=: (::Hash[Symbol, top] _) -> ::Hash[Symbol, top]
-
-      def health_check_type: -> String?
-
-      def health_check_type=: (String _) -> String
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
 
       def initialize: (
-        ?global_ip_id: String,
-        ?health_check_params: ::Hash[Symbol, top],
-        ?health_check_type: String
+        ?data: ::Array[Telnyx::Models::GlobalIPHealthCheckListResponse::Data],
+        ?meta: Telnyx::PaginationMeta
       ) -> void
 
       def to_hash: -> {
-        global_ip_id: String,
-        health_check_params: ::Hash[Symbol, top],
-        health_check_type: String
+        data: ::Array[Telnyx::Models::GlobalIPHealthCheckListResponse::Data],
+        meta: Telnyx::PaginationMeta
       }
+
+      type data =
+        {
+          global_ip_id: String,
+          health_check_params: ::Hash[Symbol, top],
+          health_check_type: String,
+          record_type: String
+        }
+
+      class Data < Telnyx::Models::Record
+        def global_ip_id: -> String?
+
+        def global_ip_id=: (String _) -> String
+
+        def health_check_params: -> ::Hash[Symbol, top]?
+
+        def health_check_params=: (::Hash[Symbol, top] _) -> ::Hash[Symbol, top]
+
+        def health_check_type: -> String?
+
+        def health_check_type=: (String _) -> String
+
+        def record_type: -> String?
+
+        def record_type=: (String _) -> String
+
+        def initialize: (
+          ?global_ip_id: String,
+          ?health_check_params: ::Hash[Symbol, top],
+          ?health_check_type: String,
+          ?record_type: String
+        ) -> void
+
+        def to_hash: -> {
+          global_ip_id: String,
+          health_check_params: ::Hash[Symbol, top],
+          health_check_type: String,
+          record_type: String
+        }
+      end
     end
   end
 end

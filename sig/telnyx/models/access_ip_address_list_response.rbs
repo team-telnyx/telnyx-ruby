@@ -1,0 +1,25 @@
+module Telnyx
+  module Models
+    type access_ip_address_list_response =
+      {
+        data: ::Array[Telnyx::AccessIPAddressResponse],
+        meta: Telnyx::PaginationMetaCloudflareIPListSync
+      }
+
+    class AccessIPAddressListResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::AccessIPAddressResponse]
+
+      attr_accessor meta: Telnyx::PaginationMetaCloudflareIPListSync
+
+      def initialize: (
+        data: ::Array[Telnyx::AccessIPAddressResponse],
+        meta: Telnyx::PaginationMetaCloudflareIPListSync
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::AccessIPAddressResponse],
+        meta: Telnyx::PaginationMetaCloudflareIPListSync
+      }
+    end
+  end
+end

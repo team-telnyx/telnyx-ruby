@@ -17,7 +17,7 @@ module Telnyx
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          TWO_FA =
+          USE_CASE_CATEGORIES_2_FA =
             T.let(
               :"2FA",
               Telnyx::MessagingTollfree::Verification::UseCaseCategories::TaggedSymbol

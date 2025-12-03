@@ -40,7 +40,7 @@ module Telnyx
           filter: Telnyx::SimCardOrderListParams::Filter::OrHash,
           page: Telnyx::SimCardOrderListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::SimCardOrder])
+        ).returns(Telnyx::Models::SimCardOrderListResponse)
       end
       def list(
         # Consolidated filter parameter for SIM card orders (deepObject style).

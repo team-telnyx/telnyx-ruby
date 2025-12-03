@@ -3,107 +3,135 @@ module Telnyx
     module PortingOrders
       type action_requirement_list_response =
         {
-          id: String,
-          action_type: String,
-          action_url: String?,
-          cancel_reason: String?,
-          created_at: Time,
-          porting_order_id: String,
-          record_type: Telnyx::Models::PortingOrders::ActionRequirementListResponse::record_type,
-          requirement_type_id: String,
-          status: Telnyx::Models::PortingOrders::ActionRequirementListResponse::status,
-          updated_at: Time
+          data: ::Array[Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data],
+          meta: Telnyx::PaginationMeta
         }
 
       class ActionRequirementListResponse < Telnyx::Internal::Type::BaseModel
-        attr_reader id: String?
+        attr_reader data: ::Array[Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data]?
 
-        def id=: (String) -> String
+        def data=: (
+          ::Array[Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data]
+        ) -> ::Array[Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data]
 
-        attr_reader action_type: String?
+        attr_reader meta: Telnyx::PaginationMeta?
 
-        def action_type=: (String) -> String
-
-        attr_accessor action_url: String?
-
-        attr_accessor cancel_reason: String?
-
-        attr_reader created_at: Time?
-
-        def created_at=: (Time) -> Time
-
-        attr_reader porting_order_id: String?
-
-        def porting_order_id=: (String) -> String
-
-        attr_reader record_type: Telnyx::Models::PortingOrders::ActionRequirementListResponse::record_type?
-
-        def record_type=: (
-          Telnyx::Models::PortingOrders::ActionRequirementListResponse::record_type
-        ) -> Telnyx::Models::PortingOrders::ActionRequirementListResponse::record_type
-
-        attr_reader requirement_type_id: String?
-
-        def requirement_type_id=: (String) -> String
-
-        attr_reader status: Telnyx::Models::PortingOrders::ActionRequirementListResponse::status?
-
-        def status=: (
-          Telnyx::Models::PortingOrders::ActionRequirementListResponse::status
-        ) -> Telnyx::Models::PortingOrders::ActionRequirementListResponse::status
-
-        attr_reader updated_at: Time?
-
-        def updated_at=: (Time) -> Time
+        def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
 
         def initialize: (
-          ?id: String,
-          ?action_type: String,
-          ?action_url: String?,
-          ?cancel_reason: String?,
-          ?created_at: Time,
-          ?porting_order_id: String,
-          ?record_type: Telnyx::Models::PortingOrders::ActionRequirementListResponse::record_type,
-          ?requirement_type_id: String,
-          ?status: Telnyx::Models::PortingOrders::ActionRequirementListResponse::status,
-          ?updated_at: Time
+          ?data: ::Array[Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data],
+          ?meta: Telnyx::PaginationMeta
         ) -> void
 
         def to_hash: -> {
-          id: String,
-          action_type: String,
-          action_url: String?,
-          cancel_reason: String?,
-          created_at: Time,
-          porting_order_id: String,
-          record_type: Telnyx::Models::PortingOrders::ActionRequirementListResponse::record_type,
-          requirement_type_id: String,
-          status: Telnyx::Models::PortingOrders::ActionRequirementListResponse::status,
-          updated_at: Time
+          data: ::Array[Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data],
+          meta: Telnyx::PaginationMeta
         }
 
-        type record_type = :porting_action_requirement
+        type data =
+          {
+            id: String,
+            action_type: String,
+            action_url: String?,
+            cancel_reason: String?,
+            created_at: Time,
+            porting_order_id: String,
+            record_type: Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::record_type,
+            requirement_type_id: String,
+            status: Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::status,
+            updated_at: Time
+          }
 
-        module RecordType
-          extend Telnyx::Internal::Type::Enum
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
 
-          PORTING_ACTION_REQUIREMENT: :porting_action_requirement
+          def id=: (String) -> String
 
-          def self?.values: -> ::Array[Telnyx::Models::PortingOrders::ActionRequirementListResponse::record_type]
-        end
+          attr_reader action_type: String?
 
-        type status = :created | :pending | :completed | :cancelled | :failed
+          def action_type=: (String) -> String
 
-        module Status
-          extend Telnyx::Internal::Type::Enum
+          attr_accessor action_url: String?
 
-          CREATED: :created
-          PENDING: :pending
-          COMPLETED: :completed
-          CANCELLED: :cancelled
-          FAILED: :failed
+          attr_accessor cancel_reason: String?
 
-          def self?.values: -> ::Array[Telnyx::Models::PortingOrders::ActionRequirementListResponse::status]
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader porting_order_id: String?
+
+          def porting_order_id=: (String) -> String
+
+          attr_reader record_type: Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::record_type?
+
+          def record_type=: (
+            Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::record_type
+          ) -> Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::record_type
+
+          attr_reader requirement_type_id: String?
+
+          def requirement_type_id=: (String) -> String
+
+          attr_reader status: Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::status?
+
+          def status=: (
+            Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::status
+          ) -> Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::status
+
+          attr_reader updated_at: Time?
+
+          def updated_at=: (Time) -> Time
+
+          def initialize: (
+            ?id: String,
+            ?action_type: String,
+            ?action_url: String?,
+            ?cancel_reason: String?,
+            ?created_at: Time,
+            ?porting_order_id: String,
+            ?record_type: Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::record_type,
+            ?requirement_type_id: String,
+            ?status: Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::status,
+            ?updated_at: Time
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            action_type: String,
+            action_url: String?,
+            cancel_reason: String?,
+            created_at: Time,
+            porting_order_id: String,
+            record_type: Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::record_type,
+            requirement_type_id: String,
+            status: Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::status,
+            updated_at: Time
+          }
+
+          type record_type = :porting_action_requirement
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            PORTING_ACTION_REQUIREMENT: :porting_action_requirement
+
+            def self?.values: -> ::Array[Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::record_type]
+          end
+
+          type status = :created | :pending | :completed | :cancelled | :failed
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED: :created
+            PENDING: :pending
+            COMPLETED: :completed
+            CANCELLED: :cancelled
+            FAILED: :failed
+
+            def self?.values: -> ::Array[Telnyx::Models::PortingOrders::ActionRequirementListResponse::Data::status]
+          end
         end
       end
     end

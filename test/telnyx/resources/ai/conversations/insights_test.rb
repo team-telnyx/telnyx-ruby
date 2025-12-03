@@ -57,25 +57,13 @@ class Telnyx::Test::Resources::AI::Conversations::InsightsTest < Telnyx::Test::R
     response = @telnyx.ai.conversations.insights.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::AI::Conversations::InsightTemplate
+      response => Telnyx::Models::AI::Conversations::InsightListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String,
-        created_at: Time,
-        instructions: String,
-        insight_type: Telnyx::AI::Conversations::InsightTemplate::InsightType | nil,
-        json_schema: Telnyx::AI::Conversations::InsightTemplate::JsonSchema | nil,
-        name: String | nil,
-        webhook: String | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Conversations::InsightTemplate]),
+        meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
       }
     end
   end

@@ -24,11 +24,7 @@ module Telnyx
           page: Telnyx::RequirementListParams::Page::OrHash,
           sort: T::Array[Telnyx::RequirementListParams::Sort::OrSymbol],
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[
-            Telnyx::Models::RequirementListResponse
-          ]
-        )
+        ).returns(Telnyx::Models::RequirementListResponse)
       end
       def list(
         # Consolidated filter parameter for requirements (deepObject style). Originally:

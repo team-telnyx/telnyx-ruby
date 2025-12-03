@@ -3,7 +3,6 @@
 module Telnyx
   module Models
     module Porting
-      # @see Telnyx::Resources::Porting::LoaConfigurations#list
       class PortingLoaConfiguration < Telnyx::Internal::Type::BaseModel
         # @!attribute id
         #   Uniquely identifies the LOA configuration.

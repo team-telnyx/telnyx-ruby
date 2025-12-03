@@ -41,37 +41,13 @@ class Telnyx::Test::Resources::FaxesTest < Telnyx::Test::ResourceTest
     response = @telnyx.faxes.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Fax
+      response => Telnyx::Models::FaxListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        client_state: String | nil,
-        connection_id: String | nil,
-        created_at: Time | nil,
-        direction: Telnyx::Fax::Direction | nil,
-        from: String | nil,
-        from_display_name: String | nil,
-        media_name: String | nil,
-        media_url: String | nil,
-        preview_url: String | nil,
-        quality: Telnyx::Fax::Quality | nil,
-        record_type: Telnyx::Fax::RecordType | nil,
-        status: Telnyx::Fax::Status | nil,
-        store_media: Telnyx::Internal::Type::Boolean | nil,
-        stored_media_url: String | nil,
-        to: String | nil,
-        updated_at: Time | nil,
-        webhook_failover_url: String | nil,
-        webhook_url: String | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Fax]) | nil,
+        meta: Telnyx::Internal::Type::Unknown | nil
       }
     end
   end

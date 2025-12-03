@@ -1,0 +1,35 @@
+module Telnyx
+  module Models
+    module Reports
+      type mdr_usage_report_list_response =
+        {
+          data: ::Array[Telnyx::Reports::MdrUsageReport],
+          meta: Telnyx::Reports::PaginationMetaReporting
+        }
+
+      class MdrUsageReportListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::Reports::MdrUsageReport]?
+
+        def data=: (
+          ::Array[Telnyx::Reports::MdrUsageReport]
+        ) -> ::Array[Telnyx::Reports::MdrUsageReport]
+
+        attr_reader meta: Telnyx::Reports::PaginationMetaReporting?
+
+        def meta=: (
+          Telnyx::Reports::PaginationMetaReporting
+        ) -> Telnyx::Reports::PaginationMetaReporting
+
+        def initialize: (
+          ?data: ::Array[Telnyx::Reports::MdrUsageReport],
+          ?meta: Telnyx::Reports::PaginationMetaReporting
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Reports::MdrUsageReport],
+          meta: Telnyx::Reports::PaginationMetaReporting
+        }
+      end
+    end
+  end
+end

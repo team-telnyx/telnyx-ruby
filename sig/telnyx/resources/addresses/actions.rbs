@@ -3,8 +3,8 @@ module Telnyx
     class Addresses
       class Actions
         def accept_suggestions: (
-          String address_uuid,
-          ?id: String,
+          String path_id,
+          ?body_id: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Addresses::ActionAcceptSuggestionsResponse
 

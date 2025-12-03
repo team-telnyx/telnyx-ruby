@@ -16,7 +16,7 @@ module Telnyx
         ?filter: Telnyx::ShortCodeListParams::Filter,
         ?page: Telnyx::ShortCodeListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::ShortCode]
+      ) -> Telnyx::Models::ShortCodeListResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

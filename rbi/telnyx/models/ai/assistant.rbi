@@ -40,8 +40,8 @@ module Telnyx
             T.nilable(
               T::Array[
                 T.any(
-                  Telnyx::AI::Assistant::Tool::BookAppointment,
-                  Telnyx::AI::Assistant::Tool::CheckAvailability,
+                  Telnyx::AI::Assistant::Tool::BookAppointmentTool,
+                  Telnyx::AI::Assistant::Tool::CheckAvailabilityTool,
                   Telnyx::AI::WebhookTool,
                   Telnyx::AI::HangupTool,
                   Telnyx::AI::TransferTool,
@@ -58,8 +58,8 @@ module Telnyx
             tools:
               T::Array[
                 T.any(
-                  Telnyx::AI::Assistant::Tool::BookAppointment::OrHash,
-                  Telnyx::AI::Assistant::Tool::CheckAvailability::OrHash,
+                  Telnyx::AI::Assistant::Tool::BookAppointmentTool::OrHash,
+                  Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::OrHash,
                   Telnyx::AI::WebhookTool::OrHash,
                   Telnyx::AI::HangupTool::OrHash,
                   Telnyx::AI::TransferTool::OrHash,
@@ -79,8 +79,8 @@ module Telnyx
             tools:
               T::Array[
                 T.any(
-                  Telnyx::AI::Assistant::Tool::BookAppointment::OrHash,
-                  Telnyx::AI::Assistant::Tool::CheckAvailability::OrHash,
+                  Telnyx::AI::Assistant::Tool::BookAppointmentTool::OrHash,
+                  Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::OrHash,
                   Telnyx::AI::WebhookTool::OrHash,
                   Telnyx::AI::HangupTool::OrHash,
                   Telnyx::AI::TransferTool::OrHash,
@@ -114,8 +114,8 @@ module Telnyx
               tools:
                 T::Array[
                   T.any(
-                    Telnyx::AI::Assistant::Tool::BookAppointment,
-                    Telnyx::AI::Assistant::Tool::CheckAvailability,
+                    Telnyx::AI::Assistant::Tool::BookAppointmentTool,
+                    Telnyx::AI::Assistant::Tool::CheckAvailabilityTool,
                     Telnyx::AI::WebhookTool,
                     Telnyx::AI::HangupTool,
                     Telnyx::AI::TransferTool,
@@ -134,8 +134,8 @@ module Telnyx
           Variants =
             T.type_alias do
               T.any(
-                Telnyx::AI::Assistant::Tool::BookAppointment,
-                Telnyx::AI::Assistant::Tool::CheckAvailability,
+                Telnyx::AI::Assistant::Tool::BookAppointmentTool,
+                Telnyx::AI::Assistant::Tool::CheckAvailabilityTool,
                 Telnyx::AI::WebhookTool,
                 Telnyx::AI::HangupTool,
                 Telnyx::AI::TransferTool,
@@ -143,18 +143,18 @@ module Telnyx
               )
             end
 
-          class BookAppointment < Telnyx::Internal::Type::BaseModel
+          class BookAppointmentTool < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::AI::Assistant::Tool::BookAppointment,
+                  Telnyx::AI::Assistant::Tool::BookAppointmentTool,
                   Telnyx::Internal::AnyHash
                 )
               end
 
             sig do
               returns(
-                Telnyx::AI::Assistant::Tool::BookAppointment::BookAppointment
+                Telnyx::AI::Assistant::Tool::BookAppointmentTool::BookAppointment
               )
             end
             attr_reader :book_appointment
@@ -162,30 +162,36 @@ module Telnyx
             sig do
               params(
                 book_appointment:
-                  Telnyx::AI::Assistant::Tool::BookAppointment::BookAppointment::OrHash
+                  Telnyx::AI::Assistant::Tool::BookAppointmentTool::BookAppointment::OrHash
               ).void
             end
             attr_writer :book_appointment
 
-            sig { returns(Symbol) }
+            sig do
+              returns(
+                Telnyx::AI::Assistant::Tool::BookAppointmentTool::Type::OrSymbol
+              )
+            end
             attr_accessor :type
 
             sig do
               params(
                 book_appointment:
-                  Telnyx::AI::Assistant::Tool::BookAppointment::BookAppointment::OrHash,
-                type: Symbol
+                  Telnyx::AI::Assistant::Tool::BookAppointmentTool::BookAppointment::OrHash,
+                type:
+                  Telnyx::AI::Assistant::Tool::BookAppointmentTool::Type::OrSymbol
               ).returns(T.attached_class)
             end
-            def self.new(book_appointment:, type: :book_appointment)
+            def self.new(book_appointment:, type:)
             end
 
             sig do
               override.returns(
                 {
                   book_appointment:
-                    Telnyx::AI::Assistant::Tool::BookAppointment::BookAppointment,
-                  type: Symbol
+                    Telnyx::AI::Assistant::Tool::BookAppointmentTool::BookAppointment,
+                  type:
+                    Telnyx::AI::Assistant::Tool::BookAppointmentTool::Type::OrSymbol
                 }
               )
             end
@@ -196,7 +202,7 @@ module Telnyx
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::AI::Assistant::Tool::BookAppointment::BookAppointment,
+                    Telnyx::AI::Assistant::Tool::BookAppointmentTool::BookAppointment,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -272,20 +278,49 @@ module Telnyx
               def to_hash
               end
             end
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Telnyx::AI::Assistant::Tool::BookAppointmentTool::Type
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              BOOK_APPOINTMENT =
+                T.let(
+                  :book_appointment,
+                  Telnyx::AI::Assistant::Tool::BookAppointmentTool::Type::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Telnyx::AI::Assistant::Tool::BookAppointmentTool::Type::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
 
-          class CheckAvailability < Telnyx::Internal::Type::BaseModel
+          class CheckAvailabilityTool < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::AI::Assistant::Tool::CheckAvailability,
+                  Telnyx::AI::Assistant::Tool::CheckAvailabilityTool,
                   Telnyx::Internal::AnyHash
                 )
               end
 
             sig do
               returns(
-                Telnyx::AI::Assistant::Tool::CheckAvailability::CheckAvailability
+                Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::CheckAvailability
               )
             end
             attr_reader :check_availability
@@ -293,30 +328,36 @@ module Telnyx
             sig do
               params(
                 check_availability:
-                  Telnyx::AI::Assistant::Tool::CheckAvailability::CheckAvailability::OrHash
+                  Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::CheckAvailability::OrHash
               ).void
             end
             attr_writer :check_availability
 
-            sig { returns(Symbol) }
+            sig do
+              returns(
+                Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::Type::OrSymbol
+              )
+            end
             attr_accessor :type
 
             sig do
               params(
                 check_availability:
-                  Telnyx::AI::Assistant::Tool::CheckAvailability::CheckAvailability::OrHash,
-                type: Symbol
+                  Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::CheckAvailability::OrHash,
+                type:
+                  Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::Type::OrSymbol
               ).returns(T.attached_class)
             end
-            def self.new(check_availability:, type: :check_availability)
+            def self.new(check_availability:, type:)
             end
 
             sig do
               override.returns(
                 {
                   check_availability:
-                    Telnyx::AI::Assistant::Tool::CheckAvailability::CheckAvailability,
-                  type: Symbol
+                    Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::CheckAvailability,
+                  type:
+                    Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::Type::OrSymbol
                 }
               )
             end
@@ -327,7 +368,7 @@ module Telnyx
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::AI::Assistant::Tool::CheckAvailability::CheckAvailability,
+                    Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::CheckAvailability,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -367,6 +408,35 @@ module Telnyx
                 )
               end
               def to_hash
+              end
+            end
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::Type
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              CHECK_AVAILABILITY =
+                T.let(
+                  :check_availability,
+                  Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::Type::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::Type::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
               end
             end
           end

@@ -5,7 +5,6 @@ module Telnyx
     module Legacy
       module Reporting
         module UsageReports
-          # @see Telnyx::Resources::Legacy::Reporting::UsageReports::Voice#list
           class CdrUsageReportResponseLegacy < Telnyx::Internal::Type::BaseModel
             # @!attribute id
             #   Identifies the resource
@@ -53,8 +52,8 @@ module Telnyx
 
             # @!attribute result
             #
-            #   @return [Hash{Symbol=>Object}, nil]
-            optional :result, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+            #   @return [Object, nil]
+            optional :result, Telnyx::Internal::Type::Unknown
 
             # @!attribute start_time
             #
@@ -95,7 +94,7 @@ module Telnyx
             #
             #   @param report_url [String]
             #
-            #   @param result [Hash{Symbol=>Object}]
+            #   @param result [Object]
             #
             #   @param start_time [Time]
             #

@@ -139,7 +139,7 @@ module Telnyx
         # @!attribute voice_settings
         #   The settings associated with the voice selected
         #
-        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Hash{Symbol=>Object}, nil]
+        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Object, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings }
 
         # @!method initialize(payload:, voice:, client_state: nil, command_id: nil, inter_digit_timeout_millis: nil, invalid_payload: nil, language: nil, maximum_digits: nil, maximum_tries: nil, minimum_digits: nil, payload_type: nil, service_level: nil, terminating_digit: nil, timeout_millis: nil, valid_digits: nil, voice_settings: nil, request_options: {})
@@ -177,7 +177,7 @@ module Telnyx
         #
         #   @param valid_digits [String] A list of all digits accepted as valid.
         #
-        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Hash{Symbol=>Object}] The settings associated with the voice selected
+        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Object] The settings associated with the voice selected
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -255,7 +255,7 @@ module Telnyx
           variant -> { Telnyx::Calls::AwsVoiceSettings }
 
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Hash{Symbol=>Object})]
+          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Object)]
         end
       end
     end

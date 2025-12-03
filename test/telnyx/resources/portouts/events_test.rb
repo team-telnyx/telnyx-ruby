@@ -25,27 +25,13 @@ class Telnyx::Test::Resources::Portouts::EventsTest < Telnyx::Test::ResourceTest
     response = @telnyx.portouts.events.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Models::Portouts::EventListResponse
+      response => Telnyx::Models::Portouts::EventListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        available_notification_methods: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::Portouts::EventListResponse::AvailableNotificationMethod]) | nil,
-        created_at: Time | nil,
-        event_type: Telnyx::Models::Portouts::EventListResponse::EventType | nil,
-        payload: Telnyx::Models::Portouts::EventListResponse::Payload | nil,
-        payload_status: Telnyx::Models::Portouts::EventListResponse::PayloadStatus | nil,
-        portout_id: String | nil,
-        record_type: String | nil,
-        updated_at: Time | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Portouts::EventListResponse::Data]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

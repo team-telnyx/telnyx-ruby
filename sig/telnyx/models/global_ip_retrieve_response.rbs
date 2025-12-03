@@ -21,7 +21,8 @@ module Telnyx
           description: String,
           ip_address: String,
           name: String,
-          ports: ::Hash[Symbol, top]
+          ports: ::Hash[Symbol, top],
+          record_type: String
         }
 
       class Data < Telnyx::Models::Record
@@ -41,18 +42,24 @@ module Telnyx
 
         def ip_address=: (String _) -> String
 
+        def record_type: -> String?
+
+        def record_type=: (String _) -> String
+
         def initialize: (
           ?description: String,
           ?ip_address: String,
           ?name: String,
-          ?ports: ::Hash[Symbol, top]
+          ?ports: ::Hash[Symbol, top],
+          ?record_type: String
         ) -> void
 
         def to_hash: -> {
           description: String,
           ip_address: String,
           name: String,
-          ports: ::Hash[Symbol, top]
+          ports: ::Hash[Symbol, top],
+          record_type: String
         }
       end
     end

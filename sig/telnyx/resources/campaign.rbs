@@ -32,7 +32,7 @@ module Telnyx
         ?records_per_page: Integer,
         ?sort: Telnyx::Models::CampaignListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::PerPagePaginationV2[Telnyx::Models::CampaignListResponse]
+      ) -> Telnyx::Models::CampaignListResponse
 
       def accept_sharing: (
         String campaign_id,

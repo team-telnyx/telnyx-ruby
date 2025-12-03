@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    type document_list_response =
+      {
+        data: ::Array[Telnyx::DocServiceDocument],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class DocumentListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::DocServiceDocument]?
+
+      def data=: (
+        ::Array[Telnyx::DocServiceDocument]
+      ) -> ::Array[Telnyx::DocServiceDocument]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::DocServiceDocument],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::DocServiceDocument],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

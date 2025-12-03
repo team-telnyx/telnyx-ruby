@@ -18,23 +18,18 @@ module Telnyx
       sig { params(filter: Telnyx::FaxListParams::Filter::OrHash).void }
       attr_writer :filter
 
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :page_number
+      # Consolidated pagination parameter (deepObject style). Originally: page[size],
+      # page[number]
+      sig { returns(T.nilable(Telnyx::FaxListParams::Page)) }
+      attr_reader :page
 
-      sig { params(page_number: Integer).void }
-      attr_writer :page_number
-
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :page_size
-
-      sig { params(page_size: Integer).void }
-      attr_writer :page_size
+      sig { params(page: Telnyx::FaxListParams::Page::OrHash).void }
+      attr_writer :page
 
       sig do
         params(
           filter: Telnyx::FaxListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::FaxListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -43,8 +38,9 @@ module Telnyx
         # filter[created_at][gte], filter[created_at][gt], filter[created_at][lte],
         # filter[created_at][lt], filter[direction][eq], filter[from][eq], filter[to][eq]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated pagination parameter (deepObject style). Originally: page[size],
+        # page[number]
+        page: nil,
         request_options: {}
       )
       end
@@ -53,8 +49,7 @@ module Telnyx
         override.returns(
           {
             filter: Telnyx::FaxListParams::Filter,
-            page_number: Integer,
-            page_size: Integer,
+            page: Telnyx::FaxListParams::Page,
             request_options: Telnyx::RequestOptions
           }
         )
@@ -285,6 +280,42 @@ module Telnyx
           sig { override.returns({ eq: String }) }
           def to_hash
           end
+        end
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Telnyx::FaxListParams::Page, Telnyx::Internal::AnyHash)
+          end
+
+        # Number of the page to be retrieved
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :number
+
+        sig { params(number: Integer).void }
+        attr_writer :number
+
+        # Number of fax resources for the single page returned
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :size
+
+        sig { params(size: Integer).void }
+        attr_writer :size
+
+        # Consolidated pagination parameter (deepObject style). Originally: page[size],
+        # page[number]
+        sig { params(number: Integer, size: Integer).returns(T.attached_class) }
+        def self.new(
+          # Number of the page to be retrieved
+          number: nil,
+          # Number of fax resources for the single page returned
+          size: nil
+        )
+        end
+
+        sig { override.returns({ number: Integer, size: Integer }) }
+        def to_hash
         end
       end
     end

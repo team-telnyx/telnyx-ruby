@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::RoomCompositions#list
     class RoomComposition < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   A unique identifier for the room composition.

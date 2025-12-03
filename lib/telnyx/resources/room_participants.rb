@@ -36,7 +36,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::RoomParticipant>]
+      # @return [Telnyx::Models::RoomParticipantListResponse]
       #
       # @see Telnyx::Models::RoomParticipantListParams
       def list(params = {})
@@ -45,8 +45,7 @@ module Telnyx
           method: :get,
           path: "room_participants",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
-          model: Telnyx::RoomParticipant,
+          model: Telnyx::Models::RoomParticipantListResponse,
           options: options
         )
       end

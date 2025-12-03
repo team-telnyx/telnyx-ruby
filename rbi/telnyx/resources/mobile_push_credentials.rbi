@@ -6,15 +6,27 @@ module Telnyx
       # Creates a new mobile push credential
       sig do
         params(
-          create_mobile_push_credential_request:
-            T.any(
-              Telnyx::MobilePushCredentialCreateParams::CreateMobilePushCredentialRequest::Ios::OrHash,
-              Telnyx::MobilePushCredentialCreateParams::CreateMobilePushCredentialRequest::Android::OrHash
-            ),
+          alias_: String,
+          certificate: String,
+          private_key: String,
+          type: Telnyx::MobilePushCredentialCreateParams::Type::OrSymbol,
+          project_account_json_file: T::Hash[Symbol, T.anything],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::PushCredentialResponse)
       end
-      def create(create_mobile_push_credential_request:, request_options: {})
+      def create(
+        # Alias to uniquely identify the credential
+        alias_:,
+        # Certificate as received from APNs
+        certificate:,
+        # Corresponding private key to the certificate as received from APNs
+        private_key:,
+        # Type of mobile push credential. Should be <code>android</code> here
+        type:,
+        # Private key file in JSON format
+        project_account_json_file:,
+        request_options: {}
+      )
       end
 
       # Retrieves mobile push credential based on the given `push_credential_id`
@@ -37,7 +49,7 @@ module Telnyx
           filter: Telnyx::MobilePushCredentialListParams::Filter::OrHash,
           page: Telnyx::MobilePushCredentialListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::PushCredential])
+        ).returns(Telnyx::Models::MobilePushCredentialListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[type],

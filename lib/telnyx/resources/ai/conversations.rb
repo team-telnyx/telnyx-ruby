@@ -180,7 +180,7 @@ module Telnyx
         #
         # @param tool_calls [Array<Hash{Symbol=>Object}>]
         #
-        # @param tool_choice [String, Hash{Symbol=>Object}]
+        # @param tool_choice [String, Object]
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

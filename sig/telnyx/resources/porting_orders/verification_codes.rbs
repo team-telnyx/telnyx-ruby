@@ -8,7 +8,7 @@ module Telnyx
           ?page: Telnyx::PortingOrders::VerificationCodeListParams::Page,
           ?sort: Telnyx::PortingOrders::VerificationCodeListParams::Sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::PortingOrders::VerificationCodeListResponse]
+        ) -> Telnyx::Models::PortingOrders::VerificationCodeListResponse
 
         def send_: (
           String id,

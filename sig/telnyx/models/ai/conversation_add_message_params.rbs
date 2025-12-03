@@ -100,14 +100,12 @@ module Telnyx
           UnionMember3Array: Telnyx::Internal::Type::Converter
         end
 
-        type tool_choice = String | ::Hash[Symbol, top]
+        type tool_choice = String | top
 
         module ToolChoice
           extend Telnyx::Internal::Type::Union
 
           def self?.variants: -> ::Array[Telnyx::Models::AI::ConversationAddMessageParams::tool_choice]
-
-          ToolChoiceObjectMap: Telnyx::Internal::Type::Converter
         end
       end
     end

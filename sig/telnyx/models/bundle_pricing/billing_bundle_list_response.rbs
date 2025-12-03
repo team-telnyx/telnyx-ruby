@@ -1,0 +1,27 @@
+module Telnyx
+  module Models
+    module BundlePricing
+      type billing_bundle_list_response =
+        {
+          data: ::Array[Telnyx::BundlePricing::BillingBundleSummary],
+          meta: Telnyx::BundlePricing::PaginationResponse
+        }
+
+      class BillingBundleListResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Telnyx::BundlePricing::BillingBundleSummary]
+
+        attr_accessor meta: Telnyx::BundlePricing::PaginationResponse
+
+        def initialize: (
+          data: ::Array[Telnyx::BundlePricing::BillingBundleSummary],
+          meta: Telnyx::BundlePricing::PaginationResponse
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::BundlePricing::BillingBundleSummary],
+          meta: Telnyx::BundlePricing::PaginationResponse
+        }
+      end
+    end
+  end
+end

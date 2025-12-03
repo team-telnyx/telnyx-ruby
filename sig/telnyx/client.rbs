@@ -8,13 +8,9 @@ module Telnyx
 
     DEFAULT_MAX_RETRY_DELAY: Float
 
-    attr_reader api_key: String?
+    attr_reader api_key: String
 
     attr_reader public_key: String?
-
-    attr_reader client_id: String?
-
-    attr_reader client_secret: String?
 
     attr_reader legacy: Telnyx::Resources::Legacy
 
@@ -98,7 +94,7 @@ module Telnyx
 
     attr_reader dynamic_emergency_endpoints: Telnyx::Resources::DynamicEmergencyEndpoints
 
-    attr_reader enumeration: Telnyx::Resources::Enumeration
+    attr_reader enum: Telnyx::Resources::Enum
 
     attr_reader external_connections: Telnyx::Resources::ExternalConnections
 
@@ -330,19 +326,10 @@ module Telnyx
 
     private def auth_headers: -> ::Hash[String, String]
 
-    private def bearer_auth: -> ::Hash[String, String]
-
-    # @api private
-    attr_reader oauth_client_auth_state: Telnyx::Internal::OAuth2ClientCredentials
-
-    private def oauth_client_auth: -> ::Hash[String, String]
-
     def base_url_overridden?: -> bool
 
     def initialize: (
       ?api_key: String?,
-      ?client_id: String?,
-      ?client_secret: String?,
       ?public_key: String?,
       ?base_url: String?,
       ?max_retries: Integer,

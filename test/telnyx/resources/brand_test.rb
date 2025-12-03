@@ -140,31 +140,14 @@ class Telnyx::Test::Resources::BrandTest < Telnyx::Test::ResourceTest
     response = @telnyx.brand.list
 
     assert_pattern do
-      response => Telnyx::Internal::PerPagePaginationV2
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Models::BrandListResponse
+      response => Telnyx::Models::BrandListResponse
     end
 
     assert_pattern do
-      row => {
-        assigned_campaings_count: Integer | nil,
-        brand_id: String | nil,
-        company_name: String | nil,
-        created_at: String | nil,
-        display_name: String | nil,
-        email: String | nil,
-        entity_type: Telnyx::EntityType | nil,
-        failure_reasons: String | nil,
-        identity_status: Telnyx::BrandIdentityStatus | nil,
-        status: Telnyx::Models::BrandListResponse::Status | nil,
-        tcr_brand_id: String | nil,
-        updated_at: String | nil,
-        website: String | nil
+      response => {
+        page: Integer | nil,
+        records: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::BrandListResponse::Record]) | nil,
+        total_records: Integer | nil
       }
     end
   end

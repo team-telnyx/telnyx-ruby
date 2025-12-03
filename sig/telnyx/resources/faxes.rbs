@@ -28,10 +28,9 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::FaxListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::FaxListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Fax]
+      ) -> Telnyx::Models::FaxListResponse
 
       def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 

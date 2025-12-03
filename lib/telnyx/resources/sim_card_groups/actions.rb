@@ -43,7 +43,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::SimCardGroups::SimCardGroupAction>]
+        # @return [Telnyx::Models::SimCardGroups::ActionListResponse]
         #
         # @see Telnyx::Models::SimCardGroups::ActionListParams
         def list(params = {})
@@ -58,8 +58,7 @@ module Telnyx
               page_number: "page[number]",
               page_size: "page[size]"
             ),
-            page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::SimCardGroups::SimCardGroupAction,
+            model: Telnyx::Models::SimCardGroups::ActionListResponse,
             options: options
           )
         end

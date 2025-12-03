@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::SimCardDataUsageNotifications#list
     class SimCardDataUsageNotification < Telnyx::Internal::Type::BaseModel
       # @!attribute sim_card_id
       #   The identification UUID of the related SIM card resource.

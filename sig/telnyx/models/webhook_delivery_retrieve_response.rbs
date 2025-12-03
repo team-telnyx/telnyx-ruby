@@ -251,7 +251,7 @@ module Telnyx
             id: String,
             event_type: String,
             occurred_at: Time,
-            payload: ::Hash[Symbol, top],
+            payload: top,
             record_type: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Webhook::record_type
           }
 
@@ -268,9 +268,9 @@ module Telnyx
 
           def occurred_at=: (Time) -> Time
 
-          attr_reader payload: ::Hash[Symbol, top]?
+          attr_reader payload: top?
 
-          def payload=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+          def payload=: (top) -> top
 
           attr_reader record_type: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Webhook::record_type?
 
@@ -282,7 +282,7 @@ module Telnyx
             ?id: String,
             ?event_type: String,
             ?occurred_at: Time,
-            ?payload: ::Hash[Symbol, top],
+            ?payload: top,
             ?record_type: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Webhook::record_type
           ) -> void
 
@@ -290,7 +290,7 @@ module Telnyx
             id: String,
             event_type: String,
             occurred_at: Time,
-            payload: ::Hash[Symbol, top],
+            payload: top,
             record_type: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Webhook::record_type
           }
 

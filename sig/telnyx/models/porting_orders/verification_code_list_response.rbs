@@ -3,63 +3,91 @@ module Telnyx
     module PortingOrders
       type verification_code_list_response =
         {
-          id: String,
-          created_at: Time,
-          phone_number: String,
-          porting_order_id: String,
-          record_type: String,
-          updated_at: Time,
-          verified: bool
+          data: ::Array[Telnyx::Models::PortingOrders::VerificationCodeListResponse::Data],
+          meta: Telnyx::PaginationMeta
         }
 
       class VerificationCodeListResponse < Telnyx::Internal::Type::BaseModel
-        attr_reader id: String?
+        attr_reader data: ::Array[Telnyx::Models::PortingOrders::VerificationCodeListResponse::Data]?
 
-        def id=: (String) -> String
+        def data=: (
+          ::Array[Telnyx::Models::PortingOrders::VerificationCodeListResponse::Data]
+        ) -> ::Array[Telnyx::Models::PortingOrders::VerificationCodeListResponse::Data]
 
-        attr_reader created_at: Time?
+        attr_reader meta: Telnyx::PaginationMeta?
 
-        def created_at=: (Time) -> Time
-
-        attr_reader phone_number: String?
-
-        def phone_number=: (String) -> String
-
-        attr_reader porting_order_id: String?
-
-        def porting_order_id=: (String) -> String
-
-        attr_reader updated_at: Time?
-
-        def updated_at=: (Time) -> Time
-
-        attr_reader verified: bool?
-
-        def verified=: (bool) -> bool
-
-        attr_reader record_type: String?
-
-        def record_type=: (String) -> String
+        def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
 
         def initialize: (
-          ?id: String,
-          ?created_at: Time,
-          ?phone_number: String,
-          ?porting_order_id: String,
-          ?record_type: String,
-          ?updated_at: Time,
-          ?verified: bool
+          ?data: ::Array[Telnyx::Models::PortingOrders::VerificationCodeListResponse::Data],
+          ?meta: Telnyx::PaginationMeta
         ) -> void
 
         def to_hash: -> {
-          id: String,
-          created_at: Time,
-          phone_number: String,
-          porting_order_id: String,
-          record_type: String,
-          updated_at: Time,
-          verified: bool
+          data: ::Array[Telnyx::Models::PortingOrders::VerificationCodeListResponse::Data],
+          meta: Telnyx::PaginationMeta
         }
+
+        type data =
+          {
+            id: String,
+            created_at: Time,
+            phone_number: String,
+            porting_order_id: String,
+            record_type: String,
+            updated_at: Time,
+            verified: bool
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          attr_reader porting_order_id: String?
+
+          def porting_order_id=: (String) -> String
+
+          attr_reader updated_at: Time?
+
+          def updated_at=: (Time) -> Time
+
+          attr_reader verified: bool?
+
+          def verified=: (bool) -> bool
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?created_at: Time,
+            ?phone_number: String,
+            ?porting_order_id: String,
+            ?record_type: String,
+            ?updated_at: Time,
+            ?verified: bool
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            created_at: Time,
+            phone_number: String,
+            porting_order_id: String,
+            record_type: String,
+            updated_at: Time,
+            verified: bool
+          }
+        end
       end
     end
   end

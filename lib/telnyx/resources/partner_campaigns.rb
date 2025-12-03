@@ -68,7 +68,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::PerPagePaginationV2<Telnyx::Models::TelnyxDownstreamCampaign>]
+      # @return [Telnyx::Models::PartnerCampaignListResponse]
       #
       # @see Telnyx::Models::PartnerCampaignListParams
       def list(params = {})
@@ -77,8 +77,7 @@ module Telnyx
           method: :get,
           path: "partner_campaigns",
           query: parsed.transform_keys(records_per_page: "recordsPerPage"),
-          page: Telnyx::Internal::PerPagePaginationV2,
-          model: Telnyx::TelnyxDownstreamCampaign,
+          model: Telnyx::Models::PartnerCampaignListResponse,
           options: options
         )
       end
@@ -100,7 +99,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::PerPagePaginationV2<Telnyx::Models::PartnerCampaignListSharedByMeResponse>]
+      # @return [Telnyx::Models::PartnerCampaignListSharedByMeResponse]
       #
       # @see Telnyx::Models::PartnerCampaignListSharedByMeParams
       def list_shared_by_me(params = {})
@@ -109,7 +108,6 @@ module Telnyx
           method: :get,
           path: "partnerCampaign/sharedByMe",
           query: parsed.transform_keys(records_per_page: "recordsPerPage"),
-          page: Telnyx::Internal::PerPagePaginationV2,
           model: Telnyx::Models::PartnerCampaignListSharedByMeResponse,
           options: options
         )

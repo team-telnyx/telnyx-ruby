@@ -46,17 +46,13 @@ module Telnyx
       sig { params(mnc: String).void }
       attr_writer :mnc
 
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :page_number
+      # Consolidated page parameter (deepObject style). Originally: page[number],
+      # page[size]
+      sig { returns(T.nilable(Telnyx::ReportListWdrsParams::Page)) }
+      attr_reader :page
 
-      sig { params(page_number: Integer).void }
-      attr_writer :page_number
-
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :page_size
-
-      sig { params(page_size: Integer).void }
-      attr_writer :page_size
+      sig { params(page: Telnyx::ReportListWdrsParams::Page::OrHash).void }
+      attr_writer :page
 
       # Phone number
       sig { returns(T.nilable(String)) }
@@ -108,8 +104,7 @@ module Telnyx
           imsi: String,
           mcc: String,
           mnc: String,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::ReportListWdrsParams::Page::OrHash,
           phone_number: String,
           sim_card_id: String,
           sim_group_id: String,
@@ -130,8 +125,9 @@ module Telnyx
         mcc: nil,
         # Mobile network code
         mnc: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[number],
+        # page[size]
+        page: nil,
         # Phone number
         phone_number: nil,
         # Sim card unique identifier
@@ -157,8 +153,7 @@ module Telnyx
             imsi: String,
             mcc: String,
             mnc: String,
-            page_number: Integer,
-            page_size: Integer,
+            page: Telnyx::ReportListWdrsParams::Page,
             phone_number: String,
             sim_card_id: String,
             sim_group_id: String,
@@ -170,6 +165,42 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Telnyx::ReportListWdrsParams::Page, Telnyx::Internal::AnyHash)
+          end
+
+        # Page number
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :number
+
+        sig { params(number: Integer).void }
+        attr_writer :number
+
+        # Size of the page
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :size
+
+        sig { params(size: Integer).void }
+        attr_writer :size
+
+        # Consolidated page parameter (deepObject style). Originally: page[number],
+        # page[size]
+        sig { params(number: Integer, size: Integer).returns(T.attached_class) }
+        def self.new(
+          # Page number
+          number: nil,
+          # Size of the page
+          size: nil
+        )
+        end
+
+        sig { override.returns({ number: Integer, size: Integer }) }
+        def to_hash
+        end
       end
     end
   end

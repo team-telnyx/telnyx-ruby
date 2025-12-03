@@ -45,25 +45,13 @@ class Telnyx::Test::Resources::ShortCodesTest < Telnyx::Test::ResourceTest
     response = @telnyx.short_codes.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::ShortCode
+      response => Telnyx::Models::ShortCodeListResponse
     end
 
     assert_pattern do
-      row => {
-        messaging_profile_id: String | nil,
-        id: String | nil,
-        country_code: String | nil,
-        created_at: Time | nil,
-        record_type: Telnyx::ShortCode::RecordType | nil,
-        short_code: String | nil,
-        updated_at: Time | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::ShortCode]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

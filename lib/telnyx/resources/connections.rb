@@ -40,7 +40,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ConnectionListResponse>]
+      # @return [Telnyx::Models::ConnectionListResponse]
       #
       # @see Telnyx::Models::ConnectionListParams
       def list(params = {})
@@ -49,7 +49,6 @@ module Telnyx
           method: :get,
           path: "connections",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::ConnectionListResponse,
           options: options
         )
@@ -70,7 +69,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ConnectionListActiveCallsResponse>]
+      # @return [Telnyx::Models::ConnectionListActiveCallsResponse]
       #
       # @see Telnyx::Models::ConnectionListActiveCallsParams
       def list_active_calls(connection_id, params = {})
@@ -79,7 +78,6 @@ module Telnyx
           method: :get,
           path: ["connections/%1$s/active_calls", connection_id],
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::ConnectionListActiveCallsResponse,
           options: options
         )

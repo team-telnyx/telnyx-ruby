@@ -86,7 +86,7 @@ module Telnyx
         # @param url [String]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPaginationTopLevelArray<Telnyx::Models::AI::McpServerListResponse>]
+        # @return [Array<Telnyx::Models::AI::McpServerListResponseItem>]
         #
         # @see Telnyx::Models::AI::McpServerListParams
         def list(params = {})
@@ -95,8 +95,7 @@ module Telnyx
             method: :get,
             path: "ai/mcp_servers",
             query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-            page: Telnyx::Internal::DefaultFlatPaginationTopLevelArray,
-            model: Telnyx::Models::AI::McpServerListResponse,
+            model: Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::McpServerListResponseItem],
             options: options
           )
         end

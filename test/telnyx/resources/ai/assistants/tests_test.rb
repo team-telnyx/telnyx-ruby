@@ -93,28 +93,13 @@ class Telnyx::Test::Resources::AI::Assistants::TestsTest < Telnyx::Test::Resourc
     response = @telnyx.ai.assistants.tests.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::AI::Assistants::AssistantTest
+      response => Telnyx::Models::AI::Assistants::TestListResponse
     end
 
     assert_pattern do
-      row => {
-        created_at: Time,
-        name: String,
-        rubric: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::AssistantTest::Rubric]),
-        telnyx_conversation_channel: Telnyx::AI::Assistants::TelnyxConversationChannel,
-        test_id: String,
-        description: String | nil,
-        destination: String | nil,
-        instructions: String | nil,
-        max_duration_seconds: Integer | nil,
-        test_suite: String | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::AssistantTest]),
+        meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
       }
     end
   end

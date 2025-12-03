@@ -12,7 +12,7 @@ module Telnyx
           String id,
           ?page: Telnyx::PortingOrders::CommentListParams::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::PortingOrders::CommentListResponse]
+        ) -> Telnyx::Models::PortingOrders::CommentListResponse
 
         def initialize: (client: Telnyx::Client) -> void
       end
