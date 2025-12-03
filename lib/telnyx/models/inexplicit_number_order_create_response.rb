@@ -116,6 +116,13 @@ module Telnyx
           #   @return [String, nil]
           optional :error_reason, String
 
+          # @!attribute exclude_held_numbers
+          #   Filter to exclude phone numbers that are currently on hold/reserved for your
+          #   account.
+          #
+          #   @return [Boolean, nil]
+          optional :exclude_held_numbers, Telnyx::Internal::Type::Boolean
+
           # @!attribute national_destination_code
           #   Filter by area code
           #
@@ -153,6 +160,13 @@ module Telnyx
           #   @return [String, nil]
           optional :phone_number_starts_with, String, api_name: :"phone_number[starts_with]"
 
+          # @!attribute quickship
+          #   Filter to exclude phone numbers that need additional time after to purchase to
+          #   activate. Only applicable for +1 toll_free numbers.
+          #
+          #   @return [Boolean, nil]
+          optional :quickship, Telnyx::Internal::Type::Boolean
+
           # @!attribute status
           #   Status of the ordering group
           #
@@ -173,7 +187,11 @@ module Telnyx
           #   @return [Time, nil]
           optional :updated_at, Time
 
-          # @!method initialize(administrative_area: nil, count_allocated: nil, count_requested: nil, country_iso: nil, created_at: nil, error_reason: nil, national_destination_code: nil, orders: nil, phone_number_type: nil, phone_number_contains: nil, phone_number_ends_with: nil, phone_number_starts_with: nil, status: nil, strategy: nil, updated_at: nil)
+          # @!method initialize(administrative_area: nil, count_allocated: nil, count_requested: nil, country_iso: nil, created_at: nil, error_reason: nil, exclude_held_numbers: nil, national_destination_code: nil, orders: nil, phone_number_type: nil, phone_number_contains: nil, phone_number_ends_with: nil, phone_number_starts_with: nil, quickship: nil, status: nil, strategy: nil, updated_at: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::InexplicitNumberOrderCreateResponse::Data::OrderingGroup} for
+          #   more details.
+          #
           #   @param administrative_area [String] Filter for phone numbers in a given state / province
           #
           #   @param count_allocated [Integer] Quantity of phone numbers allocated
@@ -186,6 +204,8 @@ module Telnyx
           #
           #   @param error_reason [String] Error reason if applicable
           #
+          #   @param exclude_held_numbers [Boolean] Filter to exclude phone numbers that are currently on hold/reserved for your acc
+          #
           #   @param national_destination_code [String] Filter by area code
           #
           #   @param orders [Array<Telnyx::Models::InexplicitNumberOrderCreateResponse::Data::OrderingGroup::Order>] Array of orders created to fulfill the inexplicit order
@@ -197,6 +217,8 @@ module Telnyx
           #   @param phone_number_ends_with [String] Filter by the ending digits of the phone number
           #
           #   @param phone_number_starts_with [String] Filter by the starting digits of the phone number
+          #
+          #   @param quickship [Boolean] Filter to exclude phone numbers that need additional time after to purchase to a
           #
           #   @param status [Symbol, Telnyx::Models::InexplicitNumberOrderCreateResponse::Data::OrderingGroup::Status] Status of the ordering group
           #

@@ -104,12 +104,14 @@ module Telnyx
             country_iso: String,
             created_at: Time,
             error_reason: String,
+            exclude_held_numbers: bool,
             national_destination_code: String,
             orders: ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::Order],
             phone_number_type: String,
             phone_number_contains: String,
             phone_number_ends_with: String,
             phone_number_starts_with: String,
+            quickship: bool,
             status: Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::status,
             strategy: Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::strategy,
             updated_at: Time
@@ -140,6 +142,10 @@ module Telnyx
 
           def error_reason=: (String) -> String
 
+          attr_reader exclude_held_numbers: bool?
+
+          def exclude_held_numbers=: (bool) -> bool
+
           attr_reader national_destination_code: String?
 
           def national_destination_code=: (String) -> String
@@ -166,6 +172,10 @@ module Telnyx
 
           def phone_number_starts_with=: (String) -> String
 
+          attr_reader quickship: bool?
+
+          def quickship=: (bool) -> bool
+
           attr_reader status: Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::status?
 
           def status=: (
@@ -189,12 +199,14 @@ module Telnyx
             ?country_iso: String,
             ?created_at: Time,
             ?error_reason: String,
+            ?exclude_held_numbers: bool,
             ?national_destination_code: String,
             ?orders: ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::Order],
             ?phone_number_type: String,
             ?phone_number_contains: String,
             ?phone_number_ends_with: String,
             ?phone_number_starts_with: String,
+            ?quickship: bool,
             ?status: Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::status,
             ?strategy: Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::strategy,
             ?updated_at: Time
@@ -207,12 +219,14 @@ module Telnyx
             country_iso: String,
             created_at: Time,
             error_reason: String,
+            exclude_held_numbers: bool,
             national_destination_code: String,
             orders: ::Array[Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::Order],
             phone_number_type: String,
             phone_number_contains: String,
             phone_number_ends_with: String,
             phone_number_starts_with: String,
+            quickship: bool,
             status: Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::status,
             strategy: Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::strategy,
             updated_at: Time

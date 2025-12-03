@@ -244,6 +244,14 @@ module Telnyx
           sig { params(error_reason: String).void }
           attr_writer :error_reason
 
+          # Filter to exclude phone numbers that are currently on hold/reserved for your
+          # account.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :exclude_held_numbers
+
+          sig { params(exclude_held_numbers: T::Boolean).void }
+          attr_writer :exclude_held_numbers
+
           # Filter by area code
           sig { returns(T.nilable(String)) }
           attr_reader :national_destination_code
@@ -301,6 +309,14 @@ module Telnyx
           sig { params(phone_number_starts_with: String).void }
           attr_writer :phone_number_starts_with
 
+          # Filter to exclude phone numbers that need additional time after to purchase to
+          # activate. Only applicable for +1 toll_free numbers.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :quickship
+
+          sig { params(quickship: T::Boolean).void }
+          attr_writer :quickship
+
           # Status of the ordering group
           sig do
             returns(
@@ -352,6 +368,7 @@ module Telnyx
               country_iso: String,
               created_at: Time,
               error_reason: String,
+              exclude_held_numbers: T::Boolean,
               national_destination_code: String,
               orders:
                 T::Array[
@@ -361,6 +378,7 @@ module Telnyx
               phone_number_contains: String,
               phone_number_ends_with: String,
               phone_number_starts_with: String,
+              quickship: T::Boolean,
               status:
                 Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::Status::OrSymbol,
               strategy:
@@ -381,6 +399,9 @@ module Telnyx
             created_at: nil,
             # Error reason if applicable
             error_reason: nil,
+            # Filter to exclude phone numbers that are currently on hold/reserved for your
+            # account.
+            exclude_held_numbers: nil,
             # Filter by area code
             national_destination_code: nil,
             # Array of orders created to fulfill the inexplicit order
@@ -393,6 +414,9 @@ module Telnyx
             phone_number_ends_with: nil,
             # Filter by the starting digits of the phone number
             phone_number_starts_with: nil,
+            # Filter to exclude phone numbers that need additional time after to purchase to
+            # activate. Only applicable for +1 toll_free numbers.
+            quickship: nil,
             # Status of the ordering group
             status: nil,
             # Ordering strategy used
@@ -411,6 +435,7 @@ module Telnyx
                 country_iso: String,
                 created_at: Time,
                 error_reason: String,
+                exclude_held_numbers: T::Boolean,
                 national_destination_code: String,
                 orders:
                   T::Array[
@@ -420,6 +445,7 @@ module Telnyx
                 phone_number_contains: String,
                 phone_number_ends_with: String,
                 phone_number_starts_with: String,
+                quickship: T::Boolean,
                 status:
                   Telnyx::Models::InexplicitNumberOrderListResponse::Data::OrderingGroup::Status::TaggedSymbol,
                 strategy:
