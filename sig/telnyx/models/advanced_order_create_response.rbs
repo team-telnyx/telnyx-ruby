@@ -1,5 +1,140 @@
 module Telnyx
   module Models
-    AdvancedOrderCreateResponse: Telnyx::Internal::Type::Converter
+    type advanced_order_create_response =
+      {
+        id: String,
+        area_code: String,
+        comments: String,
+        country_code: String,
+        customer_reference: String,
+        features: ::Array[Telnyx::Models::AdvancedOrderCreateResponse::feature],
+        orders: ::Array[String],
+        phone_number_type: ::Array[Telnyx::Models::AdvancedOrderCreateResponse::phone_number_type],
+        quantity: Integer,
+        requirement_group_id: String,
+        status: ::Array[Telnyx::Models::AdvancedOrderCreateResponse::status]
+      }
+
+    class AdvancedOrderCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader area_code: String?
+
+      def area_code=: (String) -> String
+
+      attr_reader comments: String?
+
+      def comments=: (String) -> String
+
+      attr_reader country_code: String?
+
+      def country_code=: (String) -> String
+
+      attr_reader customer_reference: String?
+
+      def customer_reference=: (String) -> String
+
+      attr_reader features: ::Array[Telnyx::Models::AdvancedOrderCreateResponse::feature]?
+
+      def features=: (
+        ::Array[Telnyx::Models::AdvancedOrderCreateResponse::feature]
+      ) -> ::Array[Telnyx::Models::AdvancedOrderCreateResponse::feature]
+
+      attr_reader orders: ::Array[String]?
+
+      def orders=: (::Array[String]) -> ::Array[String]
+
+      attr_reader phone_number_type: ::Array[Telnyx::Models::AdvancedOrderCreateResponse::phone_number_type]?
+
+      def phone_number_type=: (
+        ::Array[Telnyx::Models::AdvancedOrderCreateResponse::phone_number_type]
+      ) -> ::Array[Telnyx::Models::AdvancedOrderCreateResponse::phone_number_type]
+
+      attr_reader quantity: Integer?
+
+      def quantity=: (Integer) -> Integer
+
+      attr_reader requirement_group_id: String?
+
+      def requirement_group_id=: (String) -> String
+
+      attr_reader status: ::Array[Telnyx::Models::AdvancedOrderCreateResponse::status]?
+
+      def status=: (
+        ::Array[Telnyx::Models::AdvancedOrderCreateResponse::status]
+      ) -> ::Array[Telnyx::Models::AdvancedOrderCreateResponse::status]
+
+      def initialize: (
+        ?id: String,
+        ?area_code: String,
+        ?comments: String,
+        ?country_code: String,
+        ?customer_reference: String,
+        ?features: ::Array[Telnyx::Models::AdvancedOrderCreateResponse::feature],
+        ?orders: ::Array[String],
+        ?phone_number_type: ::Array[Telnyx::Models::AdvancedOrderCreateResponse::phone_number_type],
+        ?quantity: Integer,
+        ?requirement_group_id: String,
+        ?status: ::Array[Telnyx::Models::AdvancedOrderCreateResponse::status]
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        area_code: String,
+        comments: String,
+        country_code: String,
+        customer_reference: String,
+        features: ::Array[Telnyx::Models::AdvancedOrderCreateResponse::feature],
+        orders: ::Array[String],
+        phone_number_type: ::Array[Telnyx::Models::AdvancedOrderCreateResponse::phone_number_type],
+        quantity: Integer,
+        requirement_group_id: String,
+        status: ::Array[Telnyx::Models::AdvancedOrderCreateResponse::status]
+      }
+
+      type feature = :sms | :mms | :voice | :fax | :emergency
+
+      module Feature
+        extend Telnyx::Internal::Type::Enum
+
+        SMS: :sms
+        MMS: :mms
+        VOICE: :voice
+        FAX: :fax
+        EMERGENCY: :emergency
+
+        def self?.values: -> ::Array[Telnyx::Models::AdvancedOrderCreateResponse::feature]
+      end
+
+      type phone_number_type =
+        :local | :mobile | :toll_free | :shared_cost | :national | :landline
+
+      module PhoneNumberType
+        extend Telnyx::Internal::Type::Enum
+
+        LOCAL: :local
+        MOBILE: :mobile
+        TOLL_FREE: :toll_free
+        SHARED_COST: :shared_cost
+        NATIONAL: :national
+        LANDLINE: :landline
+
+        def self?.values: -> ::Array[Telnyx::Models::AdvancedOrderCreateResponse::phone_number_type]
+      end
+
+      type status = :pending | :processing | :ordered
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        PROCESSING: :processing
+        ORDERED: :ordered
+
+        def self?.values: -> ::Array[Telnyx::Models::AdvancedOrderCreateResponse::status]
+      end
+    end
   end
 end

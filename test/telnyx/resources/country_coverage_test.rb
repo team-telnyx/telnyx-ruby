@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::CountryCoverageTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::CountryCoverageRetrieveResponse::Data]) | nil
+        data: ^(Telnyx::Internal::Type::HashOf[Telnyx::Models::CountryCoverageRetrieveResponse::Data]) | nil
       }
     end
   end

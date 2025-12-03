@@ -25,7 +25,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Object]
+      # @return [Telnyx::Models::AdvancedOrderCreateResponse]
       #
       # @see Telnyx::Models::AdvancedOrderCreateParams
       def create(params = {})
@@ -34,7 +34,7 @@ module Telnyx
           method: :post,
           path: "advanced_orders",
           body: parsed,
-          model: Telnyx::Internal::Type::Unknown,
+          model: Telnyx::Models::AdvancedOrderCreateResponse,
           options: options
         )
       end
@@ -46,14 +46,14 @@ module Telnyx
       # @param order_id [String]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Object]
+      # @return [Telnyx::Models::AdvancedOrderRetrieveResponse]
       #
       # @see Telnyx::Models::AdvancedOrderRetrieveParams
       def retrieve(order_id, params = {})
         @client.request(
           method: :get,
           path: ["advanced_orders/%1$s", order_id],
-          model: Telnyx::Internal::Type::Unknown,
+          model: Telnyx::Models::AdvancedOrderRetrieveResponse,
           options: params[:request_options]
         )
       end
@@ -64,14 +64,14 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Object]
+      # @return [Telnyx::Models::AdvancedOrderListResponse]
       #
       # @see Telnyx::Models::AdvancedOrderListParams
       def list(params = {})
         @client.request(
           method: :get,
           path: "advanced_orders",
-          model: Telnyx::Internal::Type::Unknown,
+          model: Telnyx::Models::AdvancedOrderListResponse,
           options: params[:request_options]
         )
       end
@@ -100,7 +100,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Object]
+      # @return [Telnyx::Models::AdvancedOrderUpdateRequirementGroupResponse]
       #
       # @see Telnyx::Models::AdvancedOrderUpdateRequirementGroupParams
       def update_requirement_group(advanced_order_id, params = {})
@@ -109,7 +109,7 @@ module Telnyx
           method: :patch,
           path: ["advanced_orders/%1$s/requirement_group", advanced_order_id],
           body: parsed,
-          model: Telnyx::Internal::Type::Unknown,
+          model: Telnyx::Models::AdvancedOrderUpdateRequirementGroupResponse,
           options: options
         )
       end

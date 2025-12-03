@@ -1,21 +1,23 @@
 module Telnyx
   module Models
     type country_coverage_retrieve_response =
-      { data: ::Array[Telnyx::Models::CountryCoverageRetrieveResponse::Data] }
+      {
+        data: ::Hash[Symbol, Telnyx::Models::CountryCoverageRetrieveResponse::Data]
+      }
 
     class CountryCoverageRetrieveResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: ::Array[Telnyx::Models::CountryCoverageRetrieveResponse::Data]?
+      attr_reader data: ::Hash[Symbol, Telnyx::Models::CountryCoverageRetrieveResponse::Data]?
 
       def data=: (
-        ::Array[Telnyx::Models::CountryCoverageRetrieveResponse::Data]
-      ) -> ::Array[Telnyx::Models::CountryCoverageRetrieveResponse::Data]
+        ::Hash[Symbol, Telnyx::Models::CountryCoverageRetrieveResponse::Data]
+      ) -> ::Hash[Symbol, Telnyx::Models::CountryCoverageRetrieveResponse::Data]
 
       def initialize: (
-        ?data: ::Array[Telnyx::Models::CountryCoverageRetrieveResponse::Data]
+        ?data: ::Hash[Symbol, Telnyx::Models::CountryCoverageRetrieveResponse::Data]
       ) -> void
 
       def to_hash: -> {
-        data: ::Array[Telnyx::Models::CountryCoverageRetrieveResponse::Data]
+        data: ::Hash[Symbol, Telnyx::Models::CountryCoverageRetrieveResponse::Data]
       }
 
       type data =

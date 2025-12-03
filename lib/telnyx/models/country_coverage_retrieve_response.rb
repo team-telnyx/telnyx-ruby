@@ -6,12 +6,12 @@ module Telnyx
     class CountryCoverageRetrieveResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Array<Telnyx::Models::CountryCoverageRetrieveResponse::Data>, nil]
+      #   @return [Hash{Symbol=>Telnyx::Models::CountryCoverageRetrieveResponse::Data}, nil]
       optional :data,
-               -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::CountryCoverageRetrieveResponse::Data] }
+               -> { Telnyx::Internal::Type::HashOf[Telnyx::Models::CountryCoverageRetrieveResponse::Data] }
 
       # @!method initialize(data: nil)
-      #   @param data [Array<Telnyx::Models::CountryCoverageRetrieveResponse::Data>]
+      #   @param data [Hash{Symbol=>Telnyx::Models::CountryCoverageRetrieveResponse::Data}]
 
       class Data < Telnyx::Internal::Type::BaseModel
         # @!attribute code

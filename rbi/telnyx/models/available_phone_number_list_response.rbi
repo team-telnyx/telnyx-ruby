@@ -45,15 +45,32 @@ module Telnyx
       attr_writer :meta
 
       sig do
+        returns(
+          T.nilable(Telnyx::Models::AvailablePhoneNumberListResponse::Metadata)
+        )
+      end
+      attr_reader :metadata
+
+      sig do
+        params(
+          metadata:
+            Telnyx::Models::AvailablePhoneNumberListResponse::Metadata::OrHash
+        ).void
+      end
+      attr_writer :metadata
+
+      sig do
         params(
           data:
             T::Array[
               Telnyx::Models::AvailablePhoneNumberListResponse::Data::OrHash
             ],
-          meta: Telnyx::Models::AvailablePhoneNumberListResponse::Meta::OrHash
+          meta: Telnyx::Models::AvailablePhoneNumberListResponse::Meta::OrHash,
+          metadata:
+            Telnyx::Models::AvailablePhoneNumberListResponse::Metadata::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(data: nil, meta: nil)
+      def self.new(data: nil, meta: nil, metadata: nil)
       end
 
       sig do
@@ -61,7 +78,8 @@ module Telnyx
           {
             data:
               T::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data],
-            meta: Telnyx::Models::AvailablePhoneNumberListResponse::Meta
+            meta: Telnyx::Models::AvailablePhoneNumberListResponse::Meta,
+            metadata: Telnyx::Models::AvailablePhoneNumberListResponse::Metadata
           }
         )
       end
@@ -463,6 +481,44 @@ module Telnyx
           T.type_alias do
             T.any(
               Telnyx::Models::AvailablePhoneNumberListResponse::Meta,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :best_effort_results
+
+        sig { params(best_effort_results: Integer).void }
+        attr_writer :best_effort_results
+
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :total_results
+
+        sig { params(total_results: Integer).void }
+        attr_writer :total_results
+
+        sig do
+          params(best_effort_results: Integer, total_results: Integer).returns(
+            T.attached_class
+          )
+        end
+        def self.new(best_effort_results: nil, total_results: nil)
+        end
+
+        sig do
+          override.returns(
+            { best_effort_results: Integer, total_results: Integer }
+          )
+        end
+        def to_hash
+        end
+      end
+
+      class Metadata < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::Models::AvailablePhoneNumberListResponse::Metadata,
               Telnyx::Internal::AnyHash
             )
           end
