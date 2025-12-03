@@ -48,24 +48,24 @@ module Telnyx
 
       # Create New Phone Number Campaign
       #
-      # @overload update(path_phone_number, campaign_id:, body_phone_number:, request_options: {})
+      # @overload update(campaign_phone_number, campaign_id:, phone_number:, request_options: {})
       #
-      # @param path_phone_number [String]
+      # @param campaign_phone_number [String]
       #
       # @param campaign_id [String] The ID of the campaign you want to link to the specified phone number.
       #
-      # @param body_phone_number [String] The phone number you want to link to a specified campaign.
+      # @param phone_number [String] The phone number you want to link to a specified campaign.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::PhoneNumberCampaign]
       #
       # @see Telnyx::Models::PhoneNumberCampaignUpdateParams
-      def update(path_phone_number, params)
+      def update(campaign_phone_number, params)
         parsed, options = Telnyx::PhoneNumberCampaignUpdateParams.dump_request(params)
         @client.request(
           method: :put,
-          path: ["phone_number_campaigns/%1$s", path_phone_number],
+          path: ["phone_number_campaigns/%1$s", campaign_phone_number],
           body: parsed,
           model: Telnyx::PhoneNumberCampaign,
           options: options
@@ -89,7 +89,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::PhoneNumberCampaignListResponse]
+      # @return [Telnyx::Internal::PerPagePaginationV2<Telnyx::Models::PhoneNumberCampaign>]
       #
       # @see Telnyx::Models::PhoneNumberCampaignListParams
       def list(params = {})
@@ -98,7 +98,8 @@ module Telnyx
           method: :get,
           path: "phone_number_campaigns",
           query: parsed.transform_keys(records_per_page: "recordsPerPage"),
-          model: Telnyx::Models::PhoneNumberCampaignListResponse,
+          page: Telnyx::Internal::PerPagePaginationV2,
+          model: Telnyx::PhoneNumberCampaign,
           options: options
         )
       end

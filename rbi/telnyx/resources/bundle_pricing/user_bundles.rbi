@@ -52,7 +52,11 @@ module Telnyx
             page: Telnyx::BundlePricing::UserBundleListParams::Page::OrHash,
             authorization_bearer: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::BundlePricing::UserBundleListResponse)
+          ).returns(
+            Telnyx::Internal::DefaultPagination[
+              Telnyx::BundlePricing::UserBundle
+            ]
+          )
         end
         def list(
           # Query param: Consolidated filter parameter (deepObject style). Supports

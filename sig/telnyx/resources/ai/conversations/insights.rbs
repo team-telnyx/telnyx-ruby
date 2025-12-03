@@ -26,9 +26,10 @@ module Telnyx
           ) -> Telnyx::AI::Conversations::InsightTemplateDetail
 
           def list: (
-            ?page: Telnyx::AI::Conversations::InsightListParams::Page,
+            ?page_number: Integer,
+            ?page_size: Integer,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::AI::Conversations::InsightListResponse
+          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AI::Conversations::InsightTemplate]
 
           def delete: (
             String insight_id,

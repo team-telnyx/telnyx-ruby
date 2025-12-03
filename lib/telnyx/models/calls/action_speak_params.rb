@@ -94,7 +94,7 @@ module Telnyx
         # @!attribute voice_settings
         #   The settings associated with the voice selected
         #
-        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Object, nil]
+        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Hash{Symbol=>Object}, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionSpeakParams::VoiceSettings }
 
         # @!method initialize(payload:, voice:, client_state: nil, command_id: nil, language: nil, payload_type: nil, service_level: nil, stop: nil, voice_settings: nil, request_options: {})
@@ -117,7 +117,7 @@ module Telnyx
         #
         #   @param stop [String] When specified, it stops the current audio being played. Specify `current` to st
         #
-        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Object] The settings associated with the voice selected
+        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Hash{Symbol=>Object}] The settings associated with the voice selected
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -195,7 +195,7 @@ module Telnyx
           variant -> { Telnyx::Calls::AwsVoiceSettings }
 
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Object)]
+          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Hash{Symbol=>Object})]
         end
       end
     end

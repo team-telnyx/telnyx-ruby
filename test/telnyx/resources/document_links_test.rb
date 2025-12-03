@@ -9,13 +9,25 @@ class Telnyx::Test::Resources::DocumentLinksTest < Telnyx::Test::ResourceTest
     response = @telnyx.document_links.list
 
     assert_pattern do
-      response => Telnyx::Models::DocumentLinkListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::DocumentLinkListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::DocumentLinkListResponse::Data]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        created_at: String | nil,
+        document_id: String | nil,
+        linked_record_type: String | nil,
+        linked_resource_id: String | nil,
+        record_type: String | nil,
+        updated_at: String | nil
       }
     end
   end

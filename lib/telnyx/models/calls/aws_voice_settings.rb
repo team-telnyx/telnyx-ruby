@@ -4,7 +4,7 @@ module Telnyx
   module Models
     module Calls
       # @type [Telnyx::Internal::Type::Converter]
-      AwsVoiceSettings = Telnyx::Internal::Type::Unknown
+      AwsVoiceSettings = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
     end
   end
 end

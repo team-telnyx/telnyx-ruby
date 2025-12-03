@@ -127,7 +127,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings,
                 Telnyx::Calls::TelnyxVoiceSettings,
-                T.anything
+                T::Hash[Symbol, T.anything]
               )
             )
           )
@@ -140,7 +140,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T.anything
+                T::Hash[Symbol, T.anything]
               )
           ).void
         end
@@ -161,7 +161,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T.anything
+                T::Hash[Symbol, T.anything]
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -236,7 +236,7 @@ module Telnyx
                 T.any(
                   Telnyx::Calls::ElevenLabsVoiceSettings,
                   Telnyx::Calls::TelnyxVoiceSettings,
-                  T.anything
+                  T::Hash[Symbol, T.anything]
                 ),
               request_options: Telnyx::RequestOptions
             }
@@ -498,7 +498,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings,
                 Telnyx::Calls::TelnyxVoiceSettings,
-                T.anything
+                T::Hash[Symbol, T.anything]
               )
             end
 

@@ -14,36 +14,34 @@ module Telnyx
             T.any(
               Telnyx::AI::WebhookTool,
               Telnyx::AI::RetrievalTool,
-              Telnyx::AI::AssistantTool::HandoffTool,
+              Telnyx::AI::AssistantTool::Handoff,
               Telnyx::AI::HangupTool,
               Telnyx::AI::TransferTool,
-              Telnyx::AI::AssistantTool::SipReferTool,
-              Telnyx::AI::AssistantTool::DtmfTool
+              Telnyx::AI::AssistantTool::Refer,
+              Telnyx::AI::AssistantTool::SendDtmf
             )
           end
 
-        class HandoffTool < Telnyx::Internal::Type::BaseModel
+        class Handoff < Telnyx::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::AI::AssistantTool::HandoffTool,
+                Telnyx::AI::AssistantTool::Handoff,
                 Telnyx::Internal::AnyHash
               )
             end
 
-          sig { returns(Telnyx::AI::AssistantTool::HandoffTool::Handoff) }
+          sig { returns(Telnyx::AI::AssistantTool::Handoff::Handoff) }
           attr_reader :handoff
 
           sig do
             params(
-              handoff: Telnyx::AI::AssistantTool::HandoffTool::Handoff::OrHash
+              handoff: Telnyx::AI::AssistantTool::Handoff::Handoff::OrHash
             ).void
           end
           attr_writer :handoff
 
-          sig do
-            returns(Telnyx::AI::AssistantTool::HandoffTool::Type::OrSymbol)
-          end
+          sig { returns(Symbol) }
           attr_accessor :type
 
           # The handoff tool allows the assistant to hand off control of the conversation to
@@ -51,18 +49,18 @@ module Telnyx
           # user.
           sig do
             params(
-              handoff: Telnyx::AI::AssistantTool::HandoffTool::Handoff::OrHash,
-              type: Telnyx::AI::AssistantTool::HandoffTool::Type::OrSymbol
+              handoff: Telnyx::AI::AssistantTool::Handoff::Handoff::OrHash,
+              type: Symbol
             ).returns(T.attached_class)
           end
-          def self.new(handoff:, type:)
+          def self.new(handoff:, type: :handoff)
           end
 
           sig do
             override.returns(
               {
-                handoff: Telnyx::AI::AssistantTool::HandoffTool::Handoff,
-                type: Telnyx::AI::AssistantTool::HandoffTool::Type::OrSymbol
+                handoff: Telnyx::AI::AssistantTool::Handoff::Handoff,
+                type: Symbol
               }
             )
           end
@@ -73,7 +71,7 @@ module Telnyx
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::AI::AssistantTool::HandoffTool::Handoff,
+                  Telnyx::AI::AssistantTool::Handoff::Handoff,
                   Telnyx::Internal::AnyHash
                 )
               end
@@ -82,7 +80,7 @@ module Telnyx
             sig do
               returns(
                 T::Array[
-                  Telnyx::AI::AssistantTool::HandoffTool::Handoff::AIAssistant
+                  Telnyx::AI::AssistantTool::Handoff::Handoff::AIAssistant
                 ]
               )
             end
@@ -95,7 +93,7 @@ module Telnyx
             sig do
               returns(
                 T.nilable(
-                  Telnyx::AI::AssistantTool::HandoffTool::Handoff::VoiceMode::OrSymbol
+                  Telnyx::AI::AssistantTool::Handoff::Handoff::VoiceMode::OrSymbol
                 )
               )
             end
@@ -104,7 +102,7 @@ module Telnyx
             sig do
               params(
                 voice_mode:
-                  Telnyx::AI::AssistantTool::HandoffTool::Handoff::VoiceMode::OrSymbol
+                  Telnyx::AI::AssistantTool::Handoff::Handoff::VoiceMode::OrSymbol
               ).void
             end
             attr_writer :voice_mode
@@ -113,10 +111,10 @@ module Telnyx
               params(
                 ai_assistants:
                   T::Array[
-                    Telnyx::AI::AssistantTool::HandoffTool::Handoff::AIAssistant::OrHash
+                    Telnyx::AI::AssistantTool::Handoff::Handoff::AIAssistant::OrHash
                   ],
                 voice_mode:
-                  Telnyx::AI::AssistantTool::HandoffTool::Handoff::VoiceMode::OrSymbol
+                  Telnyx::AI::AssistantTool::Handoff::Handoff::VoiceMode::OrSymbol
               ).returns(T.attached_class)
             end
             def self.new(
@@ -135,10 +133,10 @@ module Telnyx
                 {
                   ai_assistants:
                     T::Array[
-                      Telnyx::AI::AssistantTool::HandoffTool::Handoff::AIAssistant
+                      Telnyx::AI::AssistantTool::Handoff::Handoff::AIAssistant
                     ],
                   voice_mode:
-                    Telnyx::AI::AssistantTool::HandoffTool::Handoff::VoiceMode::OrSymbol
+                    Telnyx::AI::AssistantTool::Handoff::Handoff::VoiceMode::OrSymbol
                 }
               )
             end
@@ -149,7 +147,7 @@ module Telnyx
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::AI::AssistantTool::HandoffTool::Handoff::AIAssistant,
+                    Telnyx::AI::AssistantTool::Handoff::Handoff::AIAssistant,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -187,7 +185,7 @@ module Telnyx
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Telnyx::AI::AssistantTool::HandoffTool::Handoff::VoiceMode
+                    Telnyx::AI::AssistantTool::Handoff::Handoff::VoiceMode
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -195,18 +193,18 @@ module Telnyx
               UNIFIED =
                 T.let(
                   :unified,
-                  Telnyx::AI::AssistantTool::HandoffTool::Handoff::VoiceMode::TaggedSymbol
+                  Telnyx::AI::AssistantTool::Handoff::Handoff::VoiceMode::TaggedSymbol
                 )
               DISTINCT =
                 T.let(
                   :distinct,
-                  Telnyx::AI::AssistantTool::HandoffTool::Handoff::VoiceMode::TaggedSymbol
+                  Telnyx::AI::AssistantTool::Handoff::Handoff::VoiceMode::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Telnyx::AI::AssistantTool::HandoffTool::Handoff::VoiceMode::TaggedSymbol
+                    Telnyx::AI::AssistantTool::Handoff::Handoff::VoiceMode::TaggedSymbol
                   ]
                 )
               end
@@ -214,73 +212,37 @@ module Telnyx
               end
             end
           end
-
-          module Type
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(Symbol, Telnyx::AI::AssistantTool::HandoffTool::Type)
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            HANDOFF =
-              T.let(
-                :handoff,
-                Telnyx::AI::AssistantTool::HandoffTool::Type::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::AI::AssistantTool::HandoffTool::Type::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
         end
 
-        class SipReferTool < Telnyx::Internal::Type::BaseModel
+        class Refer < Telnyx::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
-              T.any(
-                Telnyx::AI::AssistantTool::SipReferTool,
-                Telnyx::Internal::AnyHash
-              )
+              T.any(Telnyx::AI::AssistantTool::Refer, Telnyx::Internal::AnyHash)
             end
 
-          sig { returns(Telnyx::AI::AssistantTool::SipReferTool::Refer) }
+          sig { returns(Telnyx::AI::AssistantTool::Refer::Refer) }
           attr_reader :refer
 
           sig do
-            params(
-              refer: Telnyx::AI::AssistantTool::SipReferTool::Refer::OrHash
-            ).void
+            params(refer: Telnyx::AI::AssistantTool::Refer::Refer::OrHash).void
           end
           attr_writer :refer
 
-          sig do
-            returns(Telnyx::AI::AssistantTool::SipReferTool::Type::OrSymbol)
-          end
+          sig { returns(Symbol) }
           attr_accessor :type
 
           sig do
             params(
-              refer: Telnyx::AI::AssistantTool::SipReferTool::Refer::OrHash,
-              type: Telnyx::AI::AssistantTool::SipReferTool::Type::OrSymbol
+              refer: Telnyx::AI::AssistantTool::Refer::Refer::OrHash,
+              type: Symbol
             ).returns(T.attached_class)
           end
-          def self.new(refer:, type:)
+          def self.new(refer:, type: :refer)
           end
 
           sig do
             override.returns(
-              {
-                refer: Telnyx::AI::AssistantTool::SipReferTool::Refer,
-                type: Telnyx::AI::AssistantTool::SipReferTool::Type::OrSymbol
-              }
+              { refer: Telnyx::AI::AssistantTool::Refer::Refer, type: Symbol }
             )
           end
           def to_hash
@@ -290,7 +252,7 @@ module Telnyx
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::AI::AssistantTool::SipReferTool::Refer,
+                  Telnyx::AI::AssistantTool::Refer::Refer,
                   Telnyx::Internal::AnyHash
                 )
               end
@@ -298,9 +260,7 @@ module Telnyx
             # The different possible targets of the SIP refer. The assistant will be able to
             # choose one of the targets to refer the call to.
             sig do
-              returns(
-                T::Array[Telnyx::AI::AssistantTool::SipReferTool::Refer::Target]
-              )
+              returns(T::Array[Telnyx::AI::AssistantTool::Refer::Refer::Target])
             end
             attr_accessor :targets
 
@@ -309,7 +269,7 @@ module Telnyx
               returns(
                 T.nilable(
                   T::Array[
-                    Telnyx::AI::AssistantTool::SipReferTool::Refer::CustomHeader
+                    Telnyx::AI::AssistantTool::Refer::Refer::CustomHeader
                   ]
                 )
               )
@@ -320,7 +280,7 @@ module Telnyx
               params(
                 custom_headers:
                   T::Array[
-                    Telnyx::AI::AssistantTool::SipReferTool::Refer::CustomHeader::OrHash
+                    Telnyx::AI::AssistantTool::Refer::Refer::CustomHeader::OrHash
                   ]
               ).void
             end
@@ -331,9 +291,7 @@ module Telnyx
             sig do
               returns(
                 T.nilable(
-                  T::Array[
-                    Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader
-                  ]
+                  T::Array[Telnyx::AI::AssistantTool::Refer::Refer::SipHeader]
                 )
               )
             end
@@ -343,7 +301,7 @@ module Telnyx
               params(
                 sip_headers:
                   T::Array[
-                    Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader::OrHash
+                    Telnyx::AI::AssistantTool::Refer::Refer::SipHeader::OrHash
                   ]
               ).void
             end
@@ -353,15 +311,15 @@ module Telnyx
               params(
                 targets:
                   T::Array[
-                    Telnyx::AI::AssistantTool::SipReferTool::Refer::Target::OrHash
+                    Telnyx::AI::AssistantTool::Refer::Refer::Target::OrHash
                   ],
                 custom_headers:
                   T::Array[
-                    Telnyx::AI::AssistantTool::SipReferTool::Refer::CustomHeader::OrHash
+                    Telnyx::AI::AssistantTool::Refer::Refer::CustomHeader::OrHash
                   ],
                 sip_headers:
                   T::Array[
-                    Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader::OrHash
+                    Telnyx::AI::AssistantTool::Refer::Refer::SipHeader::OrHash
                   ]
               ).returns(T.attached_class)
             end
@@ -381,17 +339,13 @@ module Telnyx
               override.returns(
                 {
                   targets:
-                    T::Array[
-                      Telnyx::AI::AssistantTool::SipReferTool::Refer::Target
-                    ],
+                    T::Array[Telnyx::AI::AssistantTool::Refer::Refer::Target],
                   custom_headers:
                     T::Array[
-                      Telnyx::AI::AssistantTool::SipReferTool::Refer::CustomHeader
+                      Telnyx::AI::AssistantTool::Refer::Refer::CustomHeader
                     ],
                   sip_headers:
-                    T::Array[
-                      Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader
-                    ]
+                    T::Array[Telnyx::AI::AssistantTool::Refer::Refer::SipHeader]
                 }
               )
             end
@@ -402,7 +356,7 @@ module Telnyx
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::AI::AssistantTool::SipReferTool::Refer::Target,
+                    Telnyx::AI::AssistantTool::Refer::Refer::Target,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -467,7 +421,7 @@ module Telnyx
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::AI::AssistantTool::SipReferTool::Refer::CustomHeader,
+                    Telnyx::AI::AssistantTool::Refer::Refer::CustomHeader,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -510,7 +464,7 @@ module Telnyx
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader,
+                    Telnyx::AI::AssistantTool::Refer::Refer::SipHeader,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -518,7 +472,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader::Name::OrSymbol
+                    Telnyx::AI::AssistantTool::Refer::Refer::SipHeader::Name::OrSymbol
                   )
                 )
               end
@@ -527,7 +481,7 @@ module Telnyx
               sig do
                 params(
                   name:
-                    Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader::Name::OrSymbol
+                    Telnyx::AI::AssistantTool::Refer::Refer::SipHeader::Name::OrSymbol
                 ).void
               end
               attr_writer :name
@@ -545,7 +499,7 @@ module Telnyx
               sig do
                 params(
                   name:
-                    Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader::Name::OrSymbol,
+                    Telnyx::AI::AssistantTool::Refer::Refer::SipHeader::Name::OrSymbol,
                   value: String
                 ).returns(T.attached_class)
               end
@@ -563,7 +517,7 @@ module Telnyx
                 override.returns(
                   {
                     name:
-                      Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader::Name::OrSymbol,
+                      Telnyx::AI::AssistantTool::Refer::Refer::SipHeader::Name::OrSymbol,
                     value: String
                   }
                 )
@@ -578,7 +532,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader::Name
+                      Telnyx::AI::AssistantTool::Refer::Refer::SipHeader::Name
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -586,18 +540,18 @@ module Telnyx
                 USER_TO_USER =
                   T.let(
                     :"User-to-User",
-                    Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader::Name::TaggedSymbol
+                    Telnyx::AI::AssistantTool::Refer::Refer::SipHeader::Name::TaggedSymbol
                   )
                 DIVERSION =
                   T.let(
                     :Diversion,
-                    Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader::Name::TaggedSymbol
+                    Telnyx::AI::AssistantTool::Refer::Refer::SipHeader::Name::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader::Name::TaggedSymbol
+                      Telnyx::AI::AssistantTool::Refer::Refer::SipHeader::Name::TaggedSymbol
                     ]
                   )
                 end
@@ -606,39 +560,13 @@ module Telnyx
               end
             end
           end
-
-          module Type
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(Symbol, Telnyx::AI::AssistantTool::SipReferTool::Type)
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            REFER =
-              T.let(
-                :refer,
-                Telnyx::AI::AssistantTool::SipReferTool::Type::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::AI::AssistantTool::SipReferTool::Type::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
         end
 
-        class DtmfTool < Telnyx::Internal::Type::BaseModel
+        class SendDtmf < Telnyx::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::AI::AssistantTool::DtmfTool,
+                Telnyx::AI::AssistantTool::SendDtmf,
                 Telnyx::Internal::AnyHash
               )
             end
@@ -646,53 +574,24 @@ module Telnyx
           sig { returns(T::Hash[Symbol, T.anything]) }
           attr_accessor :send_dtmf
 
-          sig { returns(Telnyx::AI::AssistantTool::DtmfTool::Type::OrSymbol) }
+          sig { returns(Symbol) }
           attr_accessor :type
 
           sig do
             params(
               send_dtmf: T::Hash[Symbol, T.anything],
-              type: Telnyx::AI::AssistantTool::DtmfTool::Type::OrSymbol
+              type: Symbol
             ).returns(T.attached_class)
           end
-          def self.new(send_dtmf:, type:)
+          def self.new(send_dtmf:, type: :send_dtmf)
           end
 
           sig do
             override.returns(
-              {
-                send_dtmf: T::Hash[Symbol, T.anything],
-                type: Telnyx::AI::AssistantTool::DtmfTool::Type::OrSymbol
-              }
+              { send_dtmf: T::Hash[Symbol, T.anything], type: Symbol }
             )
           end
           def to_hash
-          end
-
-          module Type
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(Symbol, Telnyx::AI::AssistantTool::DtmfTool::Type)
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            SEND_DTMF =
-              T.let(
-                :send_dtmf,
-                Telnyx::AI::AssistantTool::DtmfTool::Type::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::AI::AssistantTool::DtmfTool::Type::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
           end
         end
 

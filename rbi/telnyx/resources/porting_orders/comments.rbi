@@ -26,7 +26,11 @@ module Telnyx
             id: String,
             page: Telnyx::PortingOrders::CommentListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::PortingOrders::CommentListResponse)
+          ).returns(
+            Telnyx::Internal::DefaultPagination[
+              Telnyx::Models::PortingOrders::CommentListResponse
+            ]
+          )
         end
         def list(
           # Porting Order id

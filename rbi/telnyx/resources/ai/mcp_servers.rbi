@@ -70,7 +70,11 @@ module Telnyx
             type: String,
             url: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(T::Array[Telnyx::Models::AI::McpServerListResponseItem])
+          ).returns(
+            Telnyx::Internal::DefaultFlatPaginationTopLevelArray[
+              Telnyx::Models::AI::McpServerListResponse
+            ]
+          )
         end
         def list(
           page_number: nil,

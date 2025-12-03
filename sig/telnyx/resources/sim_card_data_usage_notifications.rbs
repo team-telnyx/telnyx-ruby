@@ -13,7 +13,7 @@ module Telnyx
       ) -> Telnyx::Models::SimCardDataUsageNotificationRetrieveResponse
 
       def update: (
-        String id,
+        String sim_card_data_usage_notification_id,
         ?sim_card_id: String,
         ?threshold: Telnyx::SimCardDataUsageNotification::Threshold,
         ?request_options: Telnyx::request_opts
@@ -24,7 +24,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::SimCardDataUsageNotificationListResponse
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::SimCardDataUsageNotification]
 
       def delete: (
         String id,

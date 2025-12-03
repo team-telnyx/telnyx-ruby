@@ -29,7 +29,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::SimCardGroupListResponse
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::SimCardGroupListResponse]
 
       def delete: (
         String id,

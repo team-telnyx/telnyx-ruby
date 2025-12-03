@@ -7,18 +7,22 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::DetailRecordListParams::Filter::OrHash,
-          page: Telnyx::DetailRecordListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           sort: T::Array[String],
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::DetailRecordListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Models::DetailRecordListResponse::Variants
+          ]
+        )
       end
       def list(
         # Filter records on a given record attribute and value. <br/>Example:
         # filter[status]=delivered. <br/>Required: filter[record_type] must be specified.
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         # Specifies the sort order for results. <br/>Example: sort=-created_at
         sort: nil,
         request_options: {}

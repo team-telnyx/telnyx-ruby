@@ -17,7 +17,7 @@ module Telnyx
         ?filter: Telnyx::PublicInternetGatewayListParams::Filter,
         ?page: Telnyx::PublicInternetGatewayListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::PublicInternetGatewayListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::PublicInternetGatewayListResponse]
 
       def delete: (
         String id,

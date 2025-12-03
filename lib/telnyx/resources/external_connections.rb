@@ -137,7 +137,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::ExternalConnectionListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ExternalConnection>]
       #
       # @see Telnyx::Models::ExternalConnectionListParams
       def list(params = {})
@@ -146,7 +146,8 @@ module Telnyx
           method: :get,
           path: "external_connections",
           query: parsed,
-          model: Telnyx::Models::ExternalConnectionListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::ExternalConnection,
           options: options
         )
       end

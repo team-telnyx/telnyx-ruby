@@ -44,7 +44,7 @@ module Telnyx
         ?filter: Telnyx::ExternalConnectionListParams::Filter,
         ?page: Telnyx::ExternalConnectionListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::ExternalConnectionListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::ExternalConnection]
 
       def delete: (
         String id,

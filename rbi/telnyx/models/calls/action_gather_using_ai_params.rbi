@@ -19,7 +19,7 @@ module Telnyx
         # the voice assistant. See the
         # [JSON Schema reference](https://json-schema.org/understanding-json-schema) for
         # documentation about the format
-        sig { returns(T.anything) }
+        sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :parameters
 
         # Assistant configuration including choice of LLM, custom instructions, and tools.
@@ -176,7 +176,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings,
                 Telnyx::Calls::TelnyxVoiceSettings,
-                T.anything
+                T::Hash[Symbol, T.anything]
               )
             )
           )
@@ -189,7 +189,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T.anything
+                T::Hash[Symbol, T.anything]
               )
           ).void
         end
@@ -197,7 +197,7 @@ module Telnyx
 
         sig do
           params(
-            parameters: T.anything,
+            parameters: T::Hash[Symbol, T.anything],
             assistant: Telnyx::AI::Assistant::OrHash,
             client_state: String,
             command_id: String,
@@ -217,7 +217,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T.anything
+                T::Hash[Symbol, T.anything]
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -297,7 +297,7 @@ module Telnyx
         sig do
           override.returns(
             {
-              parameters: T.anything,
+              parameters: T::Hash[Symbol, T.anything],
               assistant: Telnyx::AI::Assistant,
               client_state: String,
               command_id: String,
@@ -317,7 +317,7 @@ module Telnyx
                 T.any(
                   Telnyx::Calls::ElevenLabsVoiceSettings,
                   Telnyx::Calls::TelnyxVoiceSettings,
-                  T.anything
+                  T::Hash[Symbol, T.anything]
                 ),
               request_options: Telnyx::RequestOptions
             }
@@ -432,7 +432,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings,
                 Telnyx::Calls::TelnyxVoiceSettings,
-                T.anything
+                T::Hash[Symbol, T.anything]
               )
             end
 

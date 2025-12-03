@@ -13,9 +13,9 @@ module Telnyx
       ) -> Telnyx::PhoneNumberCampaign
 
       def update: (
-        String path_phone_number,
+        String campaign_phone_number,
         campaign_id: String,
-        body_phone_number: String,
+        phone_number: String,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::PhoneNumberCampaign
 
@@ -25,7 +25,7 @@ module Telnyx
         ?records_per_page: Integer,
         ?sort: Telnyx::Models::PhoneNumberCampaignListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::PhoneNumberCampaignListResponse
+      ) -> Telnyx::Internal::PerPagePaginationV2[Telnyx::PhoneNumberCampaign]
 
       def delete: (
         String phone_number,

@@ -202,11 +202,14 @@ module Telnyx
       attr_writer :record_type
 
       # List of resources with actions in progress.
-      sig { returns(T.nilable(T::Array[T.anything])) }
+      sig { returns(T.nilable(T::Array[T::Hash[Symbol, T.anything]])) }
       attr_reader :resources_with_in_progress_actions
 
       sig do
-        params(resources_with_in_progress_actions: T::Array[T.anything]).void
+        params(
+          resources_with_in_progress_actions:
+            T::Array[T::Hash[Symbol, T.anything]]
+        ).void
       end
       attr_writer :resources_with_in_progress_actions
 
@@ -256,7 +259,8 @@ module Telnyx
           msisdn: String,
           pin_puk_codes: Telnyx::SimCard::PinPukCodes::OrHash,
           record_type: String,
-          resources_with_in_progress_actions: T::Array[T.anything],
+          resources_with_in_progress_actions:
+            T::Array[T::Hash[Symbol, T.anything]],
           sim_card_group_id: String,
           status: Telnyx::SimCardStatus::OrHash,
           tags: T::Array[String],
@@ -371,7 +375,8 @@ module Telnyx
             msisdn: String,
             pin_puk_codes: Telnyx::SimCard::PinPukCodes,
             record_type: String,
-            resources_with_in_progress_actions: T::Array[T.anything],
+            resources_with_in_progress_actions:
+              T::Array[T::Hash[Symbol, T.anything]],
             sim_card_group_id: String,
             status: Telnyx::SimCardStatus,
             tags: T::Array[String],

@@ -178,7 +178,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::CredentialConnectionListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::CredentialConnection>]
       #
       # @see Telnyx::Models::CredentialConnectionListParams
       def list(params = {})
@@ -187,7 +187,8 @@ module Telnyx
           method: :get,
           path: "credential_connections",
           query: parsed,
-          model: Telnyx::Models::CredentialConnectionListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::CredentialConnection,
           options: options
         )
       end

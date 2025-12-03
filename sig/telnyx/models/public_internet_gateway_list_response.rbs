@@ -2,139 +2,111 @@ module Telnyx
   module Models
     type public_internet_gateway_list_response =
       {
-        data: ::Array[Telnyx::Models::PublicInternetGatewayListResponse::Data],
-        meta: Telnyx::PaginationMeta
+        id: String,
+        created_at: String,
+        record_type: String,
+        updated_at: String,
+        name: String,
+        network_id: String,
+        status: Telnyx::Models::interface_status,
+        public_ip: String,
+        region: Telnyx::Models::PublicInternetGatewayListResponse::Region,
+        region_code: String
       }
 
     class PublicInternetGatewayListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: ::Array[Telnyx::Models::PublicInternetGatewayListResponse::Data]?
+      attr_reader name: String?
 
-      def data=: (
-        ::Array[Telnyx::Models::PublicInternetGatewayListResponse::Data]
-      ) -> ::Array[Telnyx::Models::PublicInternetGatewayListResponse::Data]
+      def name=: (String) -> String
 
-      attr_reader meta: Telnyx::PaginationMeta?
+      attr_reader network_id: String?
 
-      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+      def network_id=: (String) -> String
+
+      attr_reader region: Telnyx::Models::PublicInternetGatewayListResponse::Region?
+
+      def region=: (
+        Telnyx::Models::PublicInternetGatewayListResponse::Region
+      ) -> Telnyx::Models::PublicInternetGatewayListResponse::Region
+
+      attr_reader region_code: String?
+
+      def region_code=: (String) -> String
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      attr_reader status: Telnyx::Models::interface_status?
+
+      def status=: (
+        Telnyx::Models::interface_status
+      ) -> Telnyx::Models::interface_status
+
+      attr_reader public_ip: String?
+
+      def public_ip=: (String) -> String
 
       def initialize: (
-        ?data: ::Array[Telnyx::Models::PublicInternetGatewayListResponse::Data],
-        ?meta: Telnyx::PaginationMeta
+        ?id: String,
+        ?created_at: String,
+        ?record_type: String,
+        ?updated_at: String,
+        ?name: String,
+        ?network_id: String,
+        ?status: Telnyx::Models::interface_status,
+        ?public_ip: String,
+        ?region: Telnyx::Models::PublicInternetGatewayListResponse::Region,
+        ?region_code: String
       ) -> void
 
       def to_hash: -> {
-        data: ::Array[Telnyx::Models::PublicInternetGatewayListResponse::Data],
-        meta: Telnyx::PaginationMeta
+        id: String,
+        created_at: String,
+        record_type: String,
+        updated_at: String,
+        name: String,
+        network_id: String,
+        status: Telnyx::Models::interface_status,
+        public_ip: String,
+        region: Telnyx::Models::PublicInternetGatewayListResponse::Region,
+        region_code: String
       }
 
-      type data =
-        {
-          id: String,
-          created_at: String,
-          record_type: String,
-          updated_at: String,
-          name: String,
-          network_id: String,
-          status: Telnyx::Models::interface_status,
-          public_ip: String,
-          region: Telnyx::Models::PublicInternetGatewayListResponse::Data::Region,
-          region_code: String
-        }
+      type region = { code: String, name: String, record_type: String }
 
-      class Data < Telnyx::Internal::Type::BaseModel
+      class Region < Telnyx::Internal::Type::BaseModel
+        attr_reader code: String?
+
+        def code=: (String) -> String
+
         attr_reader name: String?
 
         def name=: (String) -> String
-
-        attr_reader network_id: String?
-
-        def network_id=: (String) -> String
-
-        attr_reader region: Telnyx::Models::PublicInternetGatewayListResponse::Data::Region?
-
-        def region=: (
-          Telnyx::Models::PublicInternetGatewayListResponse::Data::Region
-        ) -> Telnyx::Models::PublicInternetGatewayListResponse::Data::Region
-
-        attr_reader region_code: String?
-
-        def region_code=: (String) -> String
-
-        attr_reader id: String?
-
-        def id=: (String) -> String
-
-        attr_reader created_at: String?
-
-        def created_at=: (String) -> String
 
         attr_reader record_type: String?
 
         def record_type=: (String) -> String
 
-        attr_reader updated_at: String?
-
-        def updated_at=: (String) -> String
-
-        attr_reader status: Telnyx::Models::interface_status?
-
-        def status=: (
-          Telnyx::Models::interface_status
-        ) -> Telnyx::Models::interface_status
-
-        attr_reader public_ip: String?
-
-        def public_ip=: (String) -> String
-
         def initialize: (
-          ?id: String,
-          ?created_at: String,
-          ?record_type: String,
-          ?updated_at: String,
+          ?code: String,
           ?name: String,
-          ?network_id: String,
-          ?status: Telnyx::Models::interface_status,
-          ?public_ip: String,
-          ?region: Telnyx::Models::PublicInternetGatewayListResponse::Data::Region,
-          ?region_code: String
+          ?record_type: String
         ) -> void
 
-        def to_hash: -> {
-          id: String,
-          created_at: String,
-          record_type: String,
-          updated_at: String,
-          name: String,
-          network_id: String,
-          status: Telnyx::Models::interface_status,
-          public_ip: String,
-          region: Telnyx::Models::PublicInternetGatewayListResponse::Data::Region,
-          region_code: String
-        }
-
-        type region = { code: String, name: String, record_type: String }
-
-        class Region < Telnyx::Internal::Type::BaseModel
-          attr_reader code: String?
-
-          def code=: (String) -> String
-
-          attr_reader name: String?
-
-          def name=: (String) -> String
-
-          attr_reader record_type: String?
-
-          def record_type=: (String) -> String
-
-          def initialize: (
-            ?code: String,
-            ?name: String,
-            ?record_type: String
-          ) -> void
-
-          def to_hash: -> { code: String, name: String, record_type: String }
-        end
+        def to_hash: -> { code: String, name: String, record_type: String }
       end
     end
   end

@@ -6,7 +6,6 @@ module Telnyx
       module Assistants
         module Tests
           module TestSuites
-            # @see Telnyx::Resources::AI::Assistants::Tests::TestSuites::Runs#list
             class PaginatedTestRunList < Telnyx::Internal::Type::BaseModel
               # @!attribute data
               #   Array of test run objects for the current page.

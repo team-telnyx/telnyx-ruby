@@ -112,7 +112,7 @@ module Telnyx
             optional :billing_service, String
 
             # @!attribute country
-            #   @deprecated
+            #   @deprecated Use country_iso instead
             #
             #   Use country_iso instead
             #

@@ -80,13 +80,13 @@ module Telnyx
       # Retrieve a messaging profile
       sig do
         params(
-          id: String,
+          messaging_profile_id: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::MessagingProfileRetrieveResponse)
       end
       def retrieve(
         # The id of the messaging profile to retrieve
-        id,
+        messaging_profile_id,
         request_options: {}
       )
       end
@@ -94,7 +94,7 @@ module Telnyx
       # Update a messaging profile
       sig do
         params(
-          id: String,
+          messaging_profile_id: String,
           alpha_sender: T.nilable(String),
           daily_spend_limit: String,
           daily_spend_limit_enabled: T::Boolean,
@@ -117,7 +117,7 @@ module Telnyx
       end
       def update(
         # The id of the messaging profile to retrieve
-        id,
+        messaging_profile_id,
         # The alphanumeric sender ID to use when sending to destinations that require an
         # alphanumeric sender ID.
         alpha_sender: nil,
@@ -176,7 +176,7 @@ module Telnyx
           filter: Telnyx::MessagingProfileListParams::Filter::OrHash,
           page: Telnyx::MessagingProfileListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::MessagingProfileListResponse)
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::MessagingProfile])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[name]
@@ -191,13 +191,13 @@ module Telnyx
       # Delete a messaging profile
       sig do
         params(
-          id: String,
+          messaging_profile_id: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::MessagingProfileDeleteResponse)
       end
       def delete(
         # The id of the messaging profile to retrieve
-        id,
+        messaging_profile_id,
         request_options: {}
       )
       end
@@ -205,14 +205,18 @@ module Telnyx
       # List phone numbers associated with a messaging profile
       sig do
         params(
-          id: String,
+          messaging_profile_id: String,
           page: Telnyx::MessagingProfileListPhoneNumbersParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::MessagingProfileListPhoneNumbersResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[
+            Telnyx::PhoneNumberWithMessagingSettings
+          ]
+        )
       end
       def list_phone_numbers(
         # The id of the messaging profile to retrieve
-        id,
+        messaging_profile_id,
         # Consolidated page parameter (deepObject style). Originally: page[number],
         # page[size]
         page: nil,
@@ -223,14 +227,14 @@ module Telnyx
       # List short codes associated with a messaging profile
       sig do
         params(
-          id: String,
+          messaging_profile_id: String,
           page: Telnyx::MessagingProfileListShortCodesParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::MessagingProfileListShortCodesResponse)
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::ShortCode])
       end
       def list_short_codes(
         # The id of the messaging profile to retrieve
-        id,
+        messaging_profile_id,
         # Consolidated page parameter (deepObject style). Originally: page[number],
         # page[size]
         page: nil,

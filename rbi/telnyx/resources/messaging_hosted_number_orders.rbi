@@ -43,7 +43,11 @@ module Telnyx
         params(
           page: Telnyx::MessagingHostedNumberOrderListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::MessagingHostedNumberOrderListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[
+            Telnyx::MessagingHostedNumberOrder
+          ]
+        )
       end
       def list(
         # Consolidated page parameter (deepObject style). Originally: page[number],

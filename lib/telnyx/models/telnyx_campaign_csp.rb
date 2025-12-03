@@ -300,7 +300,7 @@ module Telnyx
       optional :terms_and_conditions_link, String, api_name: :termsAndConditionsLink
 
       # @!attribute vertical
-      #   @deprecated
+      #   @deprecated This field is deprecated and will be removed soon
       #
       #   Business/industry segment of this campaign (Deprecated). Must be of defined
       #   valid types. Use `/registry/enum/vertical` operation to retrieve verticals

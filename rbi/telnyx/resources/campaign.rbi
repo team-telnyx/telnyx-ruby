@@ -75,7 +75,11 @@ module Telnyx
           records_per_page: Integer,
           sort: Telnyx::CampaignListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::CampaignListResponse)
+        ).returns(
+          Telnyx::Internal::PerPagePaginationV2[
+            Telnyx::Models::CampaignListResponse
+          ]
+        )
       end
       def list(
         brand_id:,

@@ -11,7 +11,7 @@ module Telnyx
         ?page: Telnyx::RequirementListParams::Page,
         ?sort: ::Array[Telnyx::Models::RequirementListParams::sort],
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::RequirementListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::RequirementListResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

@@ -139,11 +139,11 @@ module Telnyx
                 T.any(
                   Telnyx::AI::WebhookTool,
                   Telnyx::AI::RetrievalTool,
-                  Telnyx::AI::AssistantTool::HandoffTool,
+                  Telnyx::AI::AssistantTool::Handoff,
                   Telnyx::AI::HangupTool,
                   Telnyx::AI::TransferTool,
-                  Telnyx::AI::AssistantTool::SipReferTool,
-                  Telnyx::AI::AssistantTool::DtmfTool
+                  Telnyx::AI::AssistantTool::Refer,
+                  Telnyx::AI::AssistantTool::SendDtmf
                 )
               ]
             )
@@ -158,11 +158,11 @@ module Telnyx
                 T.any(
                   Telnyx::AI::WebhookTool::OrHash,
                   Telnyx::AI::RetrievalTool::OrHash,
-                  Telnyx::AI::AssistantTool::HandoffTool::OrHash,
+                  Telnyx::AI::AssistantTool::Handoff::OrHash,
                   Telnyx::AI::HangupTool::OrHash,
                   Telnyx::AI::TransferTool::OrHash,
-                  Telnyx::AI::AssistantTool::SipReferTool::OrHash,
-                  Telnyx::AI::AssistantTool::DtmfTool::OrHash
+                  Telnyx::AI::AssistantTool::Refer::OrHash,
+                  Telnyx::AI::AssistantTool::SendDtmf::OrHash
                 )
               ]
           ).void
@@ -204,11 +204,11 @@ module Telnyx
                 T.any(
                   Telnyx::AI::WebhookTool::OrHash,
                   Telnyx::AI::RetrievalTool::OrHash,
-                  Telnyx::AI::AssistantTool::HandoffTool::OrHash,
+                  Telnyx::AI::AssistantTool::Handoff::OrHash,
                   Telnyx::AI::HangupTool::OrHash,
                   Telnyx::AI::TransferTool::OrHash,
-                  Telnyx::AI::AssistantTool::SipReferTool::OrHash,
-                  Telnyx::AI::AssistantTool::DtmfTool::OrHash
+                  Telnyx::AI::AssistantTool::Refer::OrHash,
+                  Telnyx::AI::AssistantTool::SendDtmf::OrHash
                 )
               ],
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
@@ -282,11 +282,11 @@ module Telnyx
                   T.any(
                     Telnyx::AI::WebhookTool,
                     Telnyx::AI::RetrievalTool,
-                    Telnyx::AI::AssistantTool::HandoffTool,
+                    Telnyx::AI::AssistantTool::Handoff,
                     Telnyx::AI::HangupTool,
                     Telnyx::AI::TransferTool,
-                    Telnyx::AI::AssistantTool::SipReferTool,
-                    Telnyx::AI::AssistantTool::DtmfTool
+                    Telnyx::AI::AssistantTool::Refer,
+                    Telnyx::AI::AssistantTool::SendDtmf
                   )
                 ],
               transcription: Telnyx::AI::TranscriptionSettings,

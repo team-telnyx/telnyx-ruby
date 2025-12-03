@@ -55,13 +55,26 @@ class Telnyx::Test::Resources::AccessIPAddressTest < Telnyx::Test::ResourceTest
     response = @telnyx.access_ip_address.list
 
     assert_pattern do
-      response => Telnyx::Models::AccessIPAddressListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::AccessIPAddressResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AccessIPAddressResponse]),
-        meta: Telnyx::PaginationMetaCloudflareIPListSync
+      row => {
+        id: String,
+        ip_address: String,
+        source: String,
+        status: Telnyx::CloudflareSyncStatus,
+        user_id: String,
+        created_at: Time | nil,
+        description: String | nil,
+        updated_at: Time | nil
       }
     end
   end

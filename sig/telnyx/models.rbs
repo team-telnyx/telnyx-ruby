@@ -203,9 +203,15 @@ module Telnyx
 
   class CallSpeakStartedWebhookEvent = Telnyx::Models::CallSpeakStartedWebhookEvent
 
+  class CallStreamingFailed = Telnyx::Models::CallStreamingFailed
+
   class CallStreamingFailedWebhookEvent = Telnyx::Models::CallStreamingFailedWebhookEvent
 
+  class CallStreamingStarted = Telnyx::Models::CallStreamingStarted
+
   class CallStreamingStartedWebhookEvent = Telnyx::Models::CallStreamingStartedWebhookEvent
+
+  class CallStreamingStopped = Telnyx::Models::CallStreamingStopped
 
   class CallStreamingStoppedWebhookEvent = Telnyx::Models::CallStreamingStoppedWebhookEvent
 
@@ -231,9 +237,13 @@ module Telnyx
 
   class CampaignSharingStatus = Telnyx::Models::CampaignSharingStatus
 
+  class CampaignStatusUpdateEvent = Telnyx::Models::CampaignStatusUpdateEvent
+
   module CampaignStatusUpdateWebhookEvent = Telnyx::Models::CampaignStatusUpdateWebhookEvent
 
   class CampaignSubmitAppealParams = Telnyx::Models::CampaignSubmitAppealParams
+
+  class CampaignSuspendedEvent = Telnyx::Models::CampaignSuspendedEvent
 
   class CampaignUpdateParams = Telnyx::Models::CampaignUpdateParams
 
@@ -417,7 +427,7 @@ module Telnyx
 
   module EntityType = Telnyx::Models::EntityType
 
-  class EnumRetrieveParams = Telnyx::Models::EnumRetrieveParams
+  class EnumerationRetrieveParams = Telnyx::Models::EnumerationRetrieveParams
 
   class ExternalConnection = Telnyx::Models::ExternalConnection
 
@@ -549,11 +559,15 @@ module Telnyx
 
   class InboundIP = Telnyx::Models::InboundIP
 
+  class InboundMessagePayload = Telnyx::Models::InboundMessagePayload
+
   class InboundMessageWebhookEvent = Telnyx::Models::InboundMessageWebhookEvent
 
   class InexplicitNumberOrderCreateParams = Telnyx::Models::InexplicitNumberOrderCreateParams
 
   class InexplicitNumberOrderListParams = Telnyx::Models::InexplicitNumberOrderListParams
+
+  class InexplicitNumberOrderResponse = Telnyx::Models::InexplicitNumberOrderResponse
 
   class InexplicitNumberOrderRetrieveParams = Telnyx::Models::InexplicitNumberOrderRetrieveParams
 
@@ -564,8 +578,6 @@ module Telnyx
   class IntegrationSecretDeleteParams = Telnyx::Models::IntegrationSecretDeleteParams
 
   class IntegrationSecretListParams = Telnyx::Models::IntegrationSecretListParams
-
-  class Interface = Telnyx::Models::Interface
 
   module InterfaceStatus = Telnyx::Models::InterfaceStatus
 
@@ -723,6 +735,8 @@ module Telnyx
 
   class MobileNetworkOperatorListParams = Telnyx::Models::MobileNetworkOperatorListParams
 
+  class MobilePhoneNumber = Telnyx::Models::MobilePhoneNumber
+
   class MobilePhoneNumberListParams = Telnyx::Models::MobilePhoneNumberListParams
 
   class MobilePhoneNumberRetrieveParams = Telnyx::Models::MobilePhoneNumberRetrieveParams
@@ -736,6 +750,8 @@ module Telnyx
   class MobilePushCredentialListParams = Telnyx::Models::MobilePushCredentialListParams
 
   class MobilePushCredentialRetrieveParams = Telnyx::Models::MobilePushCredentialRetrieveParams
+
+  class MobileVoiceConnection = Telnyx::Models::MobileVoiceConnection
 
   class MobileVoiceConnectionCreateParams = Telnyx::Models::MobileVoiceConnectionCreateParams
 
@@ -756,6 +772,10 @@ module Telnyx
   class NetworkCreateParams = Telnyx::Models::NetworkCreateParams
 
   class NetworkDeleteParams = Telnyx::Models::NetworkDeleteParams
+
+  class NetworkInterface = Telnyx::Models::NetworkInterface
+
+  class NetworkInterfaceRegion = Telnyx::Models::NetworkInterfaceRegion
 
   class NetworkListInterfacesParams = Telnyx::Models::NetworkListInterfacesParams
 
@@ -1106,8 +1126,6 @@ module Telnyx
   class RecordingTranscriptionListParams = Telnyx::Models::RecordingTranscriptionListParams
 
   class RecordingTranscriptionRetrieveParams = Telnyx::Models::RecordingTranscriptionRetrieveParams
-
-  class RegionIn = Telnyx::Models::RegionIn
 
   class RegionListParams = Telnyx::Models::RegionListParams
 

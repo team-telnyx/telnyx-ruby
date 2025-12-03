@@ -74,16 +74,18 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::VerifyProfileListParams::Filter::OrHash,
-          page: Telnyx::VerifyProfileListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::VerifyProfileListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::VerifyProfile]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[name]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[size],
-        # page[number]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end

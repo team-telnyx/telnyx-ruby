@@ -90,9 +90,9 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> String
 
-        def import: (
+        def imports: (
           api_key_ref: String,
-          provider: Telnyx::Models::AI::AssistantImportParams::provider,
+          provider: Telnyx::Models::AI::AssistantImportsParams::provider,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::AI::AssistantsList
 

@@ -16,7 +16,9 @@ module Telnyx
               Telnyx::PortingOrders::ActionRequirementListParams::Sort::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Models::PortingOrders::ActionRequirementListResponse
+            Telnyx::Internal::DefaultPagination[
+              Telnyx::Models::PortingOrders::ActionRequirementListResponse
+            ]
           )
         end
         def list(

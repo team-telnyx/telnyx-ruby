@@ -26,7 +26,7 @@ module Telnyx
               exclude: T::Array[String],
               participants:
                 T.any(
-                  Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::OrSymbol,
+                  Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::AllParticipants::OrSymbol,
                   T::Array[String]
                 ),
               request_options: Telnyx::RequestOptions::OrHash
@@ -51,7 +51,7 @@ module Telnyx
               exclude: T::Array[String],
               participants:
                 T.any(
-                  Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::OrSymbol,
+                  Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::AllParticipants::OrSymbol,
                   T::Array[String]
                 ),
               request_options: Telnyx::RequestOptions::OrHash
@@ -76,7 +76,7 @@ module Telnyx
               exclude: T::Array[String],
               participants:
                 T.any(
-                  Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::OrSymbol,
+                  Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::AllParticipants::OrSymbol,
                   T::Array[String]
                 ),
               request_options: Telnyx::RequestOptions::OrHash

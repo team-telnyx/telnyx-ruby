@@ -10,7 +10,7 @@ module Telnyx
         ?filter: Telnyx::OtaUpdateListParams::Filter,
         ?page: Telnyx::OtaUpdateListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::OtaUpdateListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::OtaUpdateListResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

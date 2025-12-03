@@ -62,7 +62,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::ShortCodeListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ShortCode>]
       #
       # @see Telnyx::Models::ShortCodeListParams
       def list(params = {})
@@ -71,7 +71,8 @@ module Telnyx
           method: :get,
           path: "short_codes",
           query: parsed,
-          model: Telnyx::Models::ShortCodeListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::ShortCode,
           options: options
         )
       end

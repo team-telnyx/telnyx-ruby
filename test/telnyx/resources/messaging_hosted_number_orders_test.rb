@@ -41,13 +41,23 @@ class Telnyx::Test::Resources::MessagingHostedNumberOrdersTest < Telnyx::Test::R
     response = @telnyx.messaging_hosted_number_orders.list
 
     assert_pattern do
-      response => Telnyx::Models::MessagingHostedNumberOrderListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::MessagingHostedNumberOrder
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingHostedNumberOrder]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        messaging_profile_id: String | nil,
+        phone_numbers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::HostedNumber]) | nil,
+        record_type: String | nil,
+        status: Telnyx::MessagingHostedNumberOrder::Status | nil
       }
     end
   end

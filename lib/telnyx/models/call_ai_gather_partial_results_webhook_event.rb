@@ -116,8 +116,8 @@ module Telnyx
           #   The partial result of the AI gather, its type depends of the `parameters`
           #   provided in the command
           #
-          #   @return [Object, nil]
-          optional :partial_results, Telnyx::Internal::Type::Unknown
+          #   @return [Hash{Symbol=>Object}, nil]
+          optional :partial_results, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
           # @!attribute to
           #   Destination number or SIP URI of the call.
@@ -144,7 +144,7 @@ module Telnyx
           #
           #   @param message_history [Array<Telnyx::Models::CallAIGatherPartialResultsWebhookEvent::Data::Payload::MessageHistory>] The history of the messages exchanged during the AI gather
           #
-          #   @param partial_results [Object] The partial result of the AI gather, its type depends of the `parameters` provid
+          #   @param partial_results [Hash{Symbol=>Object}] The partial result of the AI gather, its type depends of the `parameters` provid
           #
           #   @param to [String] Destination number or SIP URI of the call.
 

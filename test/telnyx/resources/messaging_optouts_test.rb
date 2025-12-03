@@ -9,13 +9,23 @@ class Telnyx::Test::Resources::MessagingOptoutsTest < Telnyx::Test::ResourceTest
     response = @telnyx.messaging_optouts.list
 
     assert_pattern do
-      response => Telnyx::Models::MessagingOptoutListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::MessagingOptoutListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::MessagingOptoutListResponse::Data]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        created_at: Time | nil,
+        from: String | nil,
+        keyword: String | nil,
+        messaging_profile_id: String | nil,
+        to: String | nil
       }
     end
   end

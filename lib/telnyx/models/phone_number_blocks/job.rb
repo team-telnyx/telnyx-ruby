@@ -3,6 +3,7 @@
 module Telnyx
   module Models
     module PhoneNumberBlocks
+      # @see Telnyx::Resources::PhoneNumberBlocks::Jobs#list
       class Job < Telnyx::Internal::Type::BaseModel
         response_only do
           # @!attribute id

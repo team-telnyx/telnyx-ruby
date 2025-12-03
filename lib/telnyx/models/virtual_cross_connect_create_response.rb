@@ -32,36 +32,6 @@ module Telnyx
         #   @return [String, nil]
         optional :region_code, String
 
-        # @!attribute bgp_asn
-        #   The Border Gateway Protocol (BGP) Autonomous System Number (ASN). If null, value
-        #   will be assigned by Telnyx.
-        #
-        #   @return [Float]
-        required :bgp_asn, Float
-
-        # @!attribute cloud_provider
-        #   The Virtual Private Cloud with which you would like to establish a cross
-        #   connect.
-        #
-        #   @return [Symbol, Telnyx::Models::VirtualCrossConnectCreateResponse::Data::CloudProvider]
-        required :cloud_provider,
-                 enum: -> { Telnyx::Models::VirtualCrossConnectCreateResponse::Data::CloudProvider }
-
-        # @!attribute cloud_provider_region
-        #   The region where your Virtual Private Cloud hosts are located.<br /><br />The
-        #   available regions can be found using the /virtual_cross_connect_regions
-        #   endpoint.
-        #
-        #   @return [String]
-        required :cloud_provider_region, String
-
-        # @!attribute primary_cloud_account_id
-        #   The identifier for your Virtual Private Cloud. The number will be different
-        #   based upon your Cloud provider.
-        #
-        #   @return [String]
-        required :primary_cloud_account_id, String
-
         # @!attribute bandwidth_mbps
         #   The desired throughput in Megabits per Second (Mbps) for your Virtual Cross
         #   Connect.<br /><br />The available bandwidths can be found using the
@@ -70,11 +40,41 @@ module Telnyx
         #   @return [Float, nil]
         optional :bandwidth_mbps, Float
 
+        # @!attribute bgp_asn
+        #   The Border Gateway Protocol (BGP) Autonomous System Number (ASN). If null, value
+        #   will be assigned by Telnyx.
+        #
+        #   @return [Float, nil]
+        optional :bgp_asn, Float
+
+        # @!attribute cloud_provider
+        #   The Virtual Private Cloud with which you would like to establish a cross
+        #   connect.
+        #
+        #   @return [Symbol, Telnyx::Models::VirtualCrossConnectCreateResponse::Data::CloudProvider, nil]
+        optional :cloud_provider,
+                 enum: -> { Telnyx::Models::VirtualCrossConnectCreateResponse::Data::CloudProvider }
+
+        # @!attribute cloud_provider_region
+        #   The region where your Virtual Private Cloud hosts are located.<br /><br />The
+        #   available regions can be found using the /virtual_cross_connect_regions
+        #   endpoint.
+        #
+        #   @return [String, nil]
+        optional :cloud_provider_region, String
+
         # @!attribute primary_bgp_key
         #   The authentication key for BGP peer configuration.
         #
         #   @return [String, nil]
         optional :primary_bgp_key, String
+
+        # @!attribute primary_cloud_account_id
+        #   The identifier for your Virtual Private Cloud. The number will be different
+        #   based upon your Cloud provider.
+        #
+        #   @return [String, nil]
+        optional :primary_cloud_account_id, String
 
         # @!attribute primary_cloud_ip
         #   The IP address assigned for your side of the Virtual Cross
@@ -187,17 +187,9 @@ module Telnyx
           optional :status, enum: -> { Telnyx::InterfaceStatus }
         end
 
-        # @!method initialize(bgp_asn:, cloud_provider:, cloud_provider_region:, primary_cloud_account_id:, id: nil, created_at: nil, record_type: nil, updated_at: nil, name: nil, network_id: nil, status: nil, region_code: nil, bandwidth_mbps: nil, primary_bgp_key: nil, primary_cloud_ip: nil, primary_enabled: nil, primary_routing_announcement: nil, primary_telnyx_ip: nil, region: nil, secondary_bgp_key: nil, secondary_cloud_account_id: nil, secondary_cloud_ip: nil, secondary_enabled: nil, secondary_routing_announcement: nil, secondary_telnyx_ip: nil)
+        # @!method initialize(id: nil, created_at: nil, record_type: nil, updated_at: nil, name: nil, network_id: nil, status: nil, region_code: nil, bandwidth_mbps: nil, bgp_asn: nil, cloud_provider: nil, cloud_provider_region: nil, primary_bgp_key: nil, primary_cloud_account_id: nil, primary_cloud_ip: nil, primary_enabled: nil, primary_routing_announcement: nil, primary_telnyx_ip: nil, region: nil, secondary_bgp_key: nil, secondary_cloud_account_id: nil, secondary_cloud_ip: nil, secondary_enabled: nil, secondary_routing_announcement: nil, secondary_telnyx_ip: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::VirtualCrossConnectCreateResponse::Data} for more details.
-        #
-        #   @param bgp_asn [Float] The Border Gateway Protocol (BGP) Autonomous System Number (ASN). If null, value
-        #
-        #   @param cloud_provider [Symbol, Telnyx::Models::VirtualCrossConnectCreateResponse::Data::CloudProvider] The Virtual Private Cloud with which you would like to establish a cross connect
-        #
-        #   @param cloud_provider_region [String] The region where your Virtual Private Cloud hosts are located.<br /><br />The av
-        #
-        #   @param primary_cloud_account_id [String] The identifier for your Virtual Private Cloud. The number will be different base
         #
         #   @param id [String] Identifies the resource.
         #
@@ -217,7 +209,15 @@ module Telnyx
         #
         #   @param bandwidth_mbps [Float] The desired throughput in Megabits per Second (Mbps) for your Virtual Cross Conn
         #
+        #   @param bgp_asn [Float] The Border Gateway Protocol (BGP) Autonomous System Number (ASN). If null, value
+        #
+        #   @param cloud_provider [Symbol, Telnyx::Models::VirtualCrossConnectCreateResponse::Data::CloudProvider] The Virtual Private Cloud with which you would like to establish a cross connect
+        #
+        #   @param cloud_provider_region [String] The region where your Virtual Private Cloud hosts are located.<br /><br />The av
+        #
         #   @param primary_bgp_key [String] The authentication key for BGP peer configuration.
+        #
+        #   @param primary_cloud_account_id [String] The identifier for your Virtual Private Cloud. The number will be different base
         #
         #   @param primary_cloud_ip [String] The IP address assigned for your side of the Virtual Cross Connect.<br /><br />I
         #

@@ -201,7 +201,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::BrandListResponse]
+      # @return [Telnyx::Internal::PerPagePaginationV2<Telnyx::Models::BrandListResponse>]
       #
       # @see Telnyx::Models::BrandListParams
       def list(params = {})
@@ -216,6 +216,7 @@ module Telnyx
             records_per_page: "recordsPerPage",
             tcr_brand_id: "tcrBrandId"
           ),
+          page: Telnyx::Internal::PerPagePaginationV2,
           model: Telnyx::Models::BrandListResponse,
           options: options
         )

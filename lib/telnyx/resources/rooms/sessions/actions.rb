@@ -36,7 +36,7 @@ module Telnyx
           #
           # @param exclude [Array<String>] List of participant id to exclude from the action.
           #
-          # @param participants [Symbol, Array<String>, Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::Participants] Either a list of participant id to perform the action on, or the keyword "all" t
+          # @param participants [Symbol, Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::Participants::AllParticipants, Array<String>] Either a list of participant id to perform the action on, or the keyword "all" t
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -65,7 +65,7 @@ module Telnyx
           #
           # @param exclude [Array<String>] List of participant id to exclude from the action.
           #
-          # @param participants [Symbol, Array<String>, Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::Participants] Either a list of participant id to perform the action on, or the keyword "all" t
+          # @param participants [Symbol, Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::Participants::AllParticipants, Array<String>] Either a list of participant id to perform the action on, or the keyword "all" t
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -94,7 +94,7 @@ module Telnyx
           #
           # @param exclude [Array<String>] List of participant id to exclude from the action.
           #
-          # @param participants [Symbol, Array<String>, Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::Participants] Either a list of participant id to perform the action on, or the keyword "all" t
+          # @param participants [Symbol, Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::Participants::AllParticipants, Array<String>] Either a list of participant id to perform the action on, or the keyword "all" t
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #

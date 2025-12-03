@@ -23,7 +23,11 @@ module Telnyx
           filter: Telnyx::RoomRecordingListParams::Filter::OrHash,
           page: Telnyx::RoomRecordingListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::RoomRecordingListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[
+            Telnyx::Models::RoomRecordingListResponse
+          ]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

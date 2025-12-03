@@ -10,11 +10,17 @@ module Telnyx
 
     DEFAULT_MAX_RETRY_DELAY = T.let(8.0, Float)
 
-    sig { returns(String) }
+    sig { returns(T.nilable(String)) }
     attr_reader :api_key
 
     sig { returns(T.nilable(String)) }
     attr_reader :public_key
+
+    sig { returns(T.nilable(String)) }
+    attr_reader :client_id
+
+    sig { returns(T.nilable(String)) }
+    attr_reader :client_secret
 
     sig { returns(Telnyx::Resources::Legacy) }
     attr_reader :legacy
@@ -139,8 +145,8 @@ module Telnyx
     sig { returns(Telnyx::Resources::DynamicEmergencyEndpoints) }
     attr_reader :dynamic_emergency_endpoints
 
-    sig { returns(Telnyx::Resources::Enum) }
-    attr_reader :enum
+    sig { returns(Telnyx::Resources::Enumeration) }
+    attr_reader :enumeration
 
     sig { returns(Telnyx::Resources::ExternalConnections) }
     attr_reader :external_connections
@@ -490,6 +496,20 @@ module Telnyx
     end
 
     # @api private
+    sig { returns(T::Hash[String, String]) }
+    private def bearer_auth
+    end
+
+    # @api private
+    sig { returns(Telnyx::Internal::OAuth2ClientCredentials) }
+    attr_reader :oauth_client_auth_state
+
+    # @api private
+    sig { returns(T::Hash[String, String]) }
+    private def oauth_client_auth
+    end
+
+    # @api private
     sig { returns(T::Boolean) }
     def base_url_overridden?
     end
@@ -498,6 +518,8 @@ module Telnyx
     sig do
       params(
         api_key: T.nilable(String),
+        client_id: T.nilable(String),
+        client_secret: T.nilable(String),
         public_key: T.nilable(String),
         base_url: T.nilable(String),
         max_retries: Integer,
@@ -509,6 +531,10 @@ module Telnyx
     def self.new(
       # Defaults to `ENV["TELNYX_API_KEY"]`
       api_key: ENV["TELNYX_API_KEY"],
+      # Defaults to `ENV["TELNYX_CLIENT_ID"]`
+      client_id: ENV["TELNYX_CLIENT_ID"],
+      # Defaults to `ENV["TELNYX_CLIENT_SECRET"]`
+      client_secret: ENV["TELNYX_CLIENT_SECRET"],
       # Defaults to `ENV["TELNYX_PUBLIC_KEY"]`
       public_key: ENV["TELNYX_PUBLIC_KEY"],
       # Override the default base URL for the API, e.g.,

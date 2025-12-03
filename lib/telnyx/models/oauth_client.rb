@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::OAuthClients#list
     class OAuthClient < Telnyx::Internal::Type::BaseModel
       # @!attribute client_id
       #   OAuth client identifier

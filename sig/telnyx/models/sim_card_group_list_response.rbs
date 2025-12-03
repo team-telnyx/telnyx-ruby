@@ -2,136 +2,108 @@ module Telnyx
   module Models
     type sim_card_group_list_response =
       {
-        data: ::Array[Telnyx::Models::SimCardGroupListResponse::Data],
-        meta: Telnyx::PaginationMeta
+        id: String,
+        consumed_data: Telnyx::ConsumedData,
+        created_at: String,
+        data_limit: Telnyx::Models::SimCardGroupListResponse::DataLimit,
+        default: bool,
+        name: String,
+        private_wireless_gateway_id: String,
+        record_type: String,
+        sim_card_count: Integer,
+        updated_at: String,
+        wireless_blocklist_id: String
       }
 
     class SimCardGroupListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: ::Array[Telnyx::Models::SimCardGroupListResponse::Data]?
+      attr_reader consumed_data: Telnyx::ConsumedData?
 
-      def data=: (
-        ::Array[Telnyx::Models::SimCardGroupListResponse::Data]
-      ) -> ::Array[Telnyx::Models::SimCardGroupListResponse::Data]
+      def consumed_data=: (Telnyx::ConsumedData) -> Telnyx::ConsumedData
 
-      attr_reader meta: Telnyx::PaginationMeta?
+      attr_reader data_limit: Telnyx::Models::SimCardGroupListResponse::DataLimit?
 
-      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+      def data_limit=: (
+        Telnyx::Models::SimCardGroupListResponse::DataLimit
+      ) -> Telnyx::Models::SimCardGroupListResponse::DataLimit
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader private_wireless_gateway_id: String?
+
+      def private_wireless_gateway_id=: (String) -> String
+
+      attr_reader sim_card_count: Integer?
+
+      def sim_card_count=: (Integer) -> Integer
+
+      attr_reader wireless_blocklist_id: String?
+
+      def wireless_blocklist_id=: (String) -> String
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader default: bool?
+
+      def default=: (bool) -> bool
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
 
       def initialize: (
-        ?data: ::Array[Telnyx::Models::SimCardGroupListResponse::Data],
-        ?meta: Telnyx::PaginationMeta
+        ?id: String,
+        ?consumed_data: Telnyx::ConsumedData,
+        ?created_at: String,
+        ?data_limit: Telnyx::Models::SimCardGroupListResponse::DataLimit,
+        ?default: bool,
+        ?name: String,
+        ?private_wireless_gateway_id: String,
+        ?record_type: String,
+        ?sim_card_count: Integer,
+        ?updated_at: String,
+        ?wireless_blocklist_id: String
       ) -> void
 
       def to_hash: -> {
-        data: ::Array[Telnyx::Models::SimCardGroupListResponse::Data],
-        meta: Telnyx::PaginationMeta
+        id: String,
+        consumed_data: Telnyx::ConsumedData,
+        created_at: String,
+        data_limit: Telnyx::Models::SimCardGroupListResponse::DataLimit,
+        default: bool,
+        name: String,
+        private_wireless_gateway_id: String,
+        record_type: String,
+        sim_card_count: Integer,
+        updated_at: String,
+        wireless_blocklist_id: String
       }
 
-      type data =
-        {
-          id: String,
-          consumed_data: Telnyx::ConsumedData,
-          created_at: String,
-          data_limit: Telnyx::Models::SimCardGroupListResponse::Data::DataLimit,
-          default: bool,
-          name: String,
-          private_wireless_gateway_id: String,
-          record_type: String,
-          sim_card_count: Integer,
-          updated_at: String,
-          wireless_blocklist_id: String
-        }
+      type data_limit = { amount: String, unit: String }
 
-      class Data < Telnyx::Internal::Type::BaseModel
-        attr_reader consumed_data: Telnyx::ConsumedData?
+      class DataLimit < Telnyx::Internal::Type::BaseModel
+        attr_reader amount: String?
 
-        def consumed_data=: (Telnyx::ConsumedData) -> Telnyx::ConsumedData
+        def amount=: (String) -> String
 
-        attr_reader data_limit: Telnyx::Models::SimCardGroupListResponse::Data::DataLimit?
+        attr_reader unit: String?
 
-        def data_limit=: (
-          Telnyx::Models::SimCardGroupListResponse::Data::DataLimit
-        ) -> Telnyx::Models::SimCardGroupListResponse::Data::DataLimit
+        def unit=: (String) -> String
 
-        attr_reader name: String?
+        def initialize: (?amount: String, ?unit: String) -> void
 
-        def name=: (String) -> String
-
-        attr_reader private_wireless_gateway_id: String?
-
-        def private_wireless_gateway_id=: (String) -> String
-
-        attr_reader sim_card_count: Integer?
-
-        def sim_card_count=: (Integer) -> Integer
-
-        attr_reader wireless_blocklist_id: String?
-
-        def wireless_blocklist_id=: (String) -> String
-
-        attr_reader id: String?
-
-        def id=: (String) -> String
-
-        attr_reader created_at: String?
-
-        def created_at=: (String) -> String
-
-        attr_reader default: bool?
-
-        def default=: (bool) -> bool
-
-        attr_reader record_type: String?
-
-        def record_type=: (String) -> String
-
-        attr_reader updated_at: String?
-
-        def updated_at=: (String) -> String
-
-        def initialize: (
-          ?id: String,
-          ?consumed_data: Telnyx::ConsumedData,
-          ?created_at: String,
-          ?data_limit: Telnyx::Models::SimCardGroupListResponse::Data::DataLimit,
-          ?default: bool,
-          ?name: String,
-          ?private_wireless_gateway_id: String,
-          ?record_type: String,
-          ?sim_card_count: Integer,
-          ?updated_at: String,
-          ?wireless_blocklist_id: String
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          consumed_data: Telnyx::ConsumedData,
-          created_at: String,
-          data_limit: Telnyx::Models::SimCardGroupListResponse::Data::DataLimit,
-          default: bool,
-          name: String,
-          private_wireless_gateway_id: String,
-          record_type: String,
-          sim_card_count: Integer,
-          updated_at: String,
-          wireless_blocklist_id: String
-        }
-
-        type data_limit = { amount: String, unit: String }
-
-        class DataLimit < Telnyx::Internal::Type::BaseModel
-          attr_reader amount: String?
-
-          def amount=: (String) -> String
-
-          attr_reader unit: String?
-
-          def unit=: (String) -> String
-
-          def initialize: (?amount: String, ?unit: String) -> void
-
-          def to_hash: -> { amount: String, unit: String }
-        end
+        def to_hash: -> { amount: String, unit: String }
       end
     end
   end

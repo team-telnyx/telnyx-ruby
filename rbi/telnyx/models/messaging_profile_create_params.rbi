@@ -239,17 +239,17 @@ module Telnyx
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        WEBHOOK_API_VERSION_1 =
+        V1 =
           T.let(
             :"1",
             Telnyx::MessagingProfileCreateParams::WebhookAPIVersion::TaggedSymbol
           )
-        WEBHOOK_API_VERSION_2 =
+        V2 =
           T.let(
             :"2",
             Telnyx::MessagingProfileCreateParams::WebhookAPIVersion::TaggedSymbol
           )
-        WEBHOOK_API_VERSION_2010_04_01 =
+        V2010_04_01 =
           T.let(
             :"2010-04-01",
             Telnyx::MessagingProfileCreateParams::WebhookAPIVersion::TaggedSymbol

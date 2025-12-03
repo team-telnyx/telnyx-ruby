@@ -30,15 +30,17 @@ module Telnyx
       #
       # List all Access IP Ranges
       #
-      # @overload list(filter: nil, page: nil, request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::AccessIPRangeListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[cidr_block]
       #
-      # @param page [Telnyx::Models::AccessIPRangeListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::AccessIPRangeListResponse]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AccessIPRange>]
       #
       # @see Telnyx::Models::AccessIPRangeListParams
       def list(params = {})
@@ -46,8 +48,9 @@ module Telnyx
         @client.request(
           method: :get,
           path: "access_ip_ranges",
-          query: parsed,
-          model: Telnyx::Models::AccessIPRangeListResponse,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
+          model: Telnyx::AccessIPRange,
           options: options
         )
       end

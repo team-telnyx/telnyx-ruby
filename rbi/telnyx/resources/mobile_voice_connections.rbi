@@ -88,7 +88,9 @@ module Telnyx
           page_size: Integer,
           sort: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::MobileVoiceConnectionListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::MobileVoiceConnection]
+        )
       end
       def list(
         # Filter by connection name containing the given string

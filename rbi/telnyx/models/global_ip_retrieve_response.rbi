@@ -74,20 +74,12 @@ module Telnyx
         sig { params(ip_address: String).void }
         attr_writer :ip_address
 
-        # Identifies the type of the resource.
-        sig { returns(T.nilable(String)) }
-        attr_reader :record_type
-
-        sig { params(record_type: String).void }
-        attr_writer :record_type
-
         sig do
           params(
             description: String,
             ip_address: String,
             name: String,
-            ports: T::Hash[Symbol, T.anything],
-            record_type: String
+            ports: T::Hash[Symbol, T.anything]
           ).returns(T.attached_class)
         end
         def self.new(
@@ -98,9 +90,7 @@ module Telnyx
           # A user specified name for the address.
           name: nil,
           # A Global IP ports grouped by protocol code.
-          ports: nil,
-          # Identifies the type of the resource.
-          record_type: nil
+          ports: nil
         )
         end
 
@@ -110,8 +100,7 @@ module Telnyx
               description: String,
               ip_address: String,
               name: String,
-              ports: T::Hash[Symbol, T.anything],
-              record_type: String
+              ports: T::Hash[Symbol, T.anything]
             }
           )
         end

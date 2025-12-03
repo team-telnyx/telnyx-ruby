@@ -146,9 +146,9 @@ module Telnyx
       module WebhookAPIVersion
         extend Telnyx::Internal::Type::Enum
 
-        WEBHOOK_API_VERSION_1 = :"1"
-        WEBHOOK_API_VERSION_2 = :"2"
-        WEBHOOK_API_VERSION_2010_04_01 = :"2010-04-01"
+        V1 = :"1"
+        V2 = :"2"
+        V2010_04_01 = :"2010-04-01"
 
         # @!method self.values
         #   @return [Array<Symbol>]
