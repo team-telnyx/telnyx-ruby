@@ -11,12 +11,12 @@ module Telnyx
 
       # @!attribute meta
       #
-      #   @return [Telnyx::Models::WebhookDeliveryListResponse::Meta, nil]
-      optional :meta, -> { Telnyx::Models::WebhookDeliveryListResponse::Meta }
+      #   @return [Telnyx::Models::Storage::Buckets::PaginationMetaSimple, nil]
+      optional :meta, -> { Telnyx::Storage::Buckets::PaginationMetaSimple }
 
       # @!method initialize(data: nil, meta: nil)
       #   @param data [Array<Telnyx::Models::WebhookDeliveryListResponse::Data>]
-      #   @param meta [Telnyx::Models::WebhookDeliveryListResponse::Meta]
+      #   @param meta [Telnyx::Models::Storage::Buckets::PaginationMetaSimple]
 
       class Data < Telnyx::Internal::Type::BaseModel
         # @!attribute id
@@ -290,35 +290,6 @@ module Telnyx
             #   @return [Array<Symbol>]
           end
         end
-      end
-
-      # @see Telnyx::Models::WebhookDeliveryListResponse#meta
-      class Meta < Telnyx::Internal::Type::BaseModel
-        # @!attribute page_number
-        #
-        #   @return [Integer, nil]
-        optional :page_number, Integer
-
-        # @!attribute page_size
-        #
-        #   @return [Integer, nil]
-        optional :page_size, Integer
-
-        # @!attribute total_pages
-        #
-        #   @return [Integer, nil]
-        optional :total_pages, Integer
-
-        # @!attribute total_results
-        #
-        #   @return [Integer, nil]
-        optional :total_results, Integer
-
-        # @!method initialize(page_number: nil, page_size: nil, total_pages: nil, total_results: nil)
-        #   @param page_number [Integer]
-        #   @param page_size [Integer]
-        #   @param total_pages [Integer]
-        #   @param total_results [Integer]
       end
     end
   end
