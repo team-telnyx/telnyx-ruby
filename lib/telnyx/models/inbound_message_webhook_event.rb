@@ -135,6 +135,12 @@ module Telnyx
           #   @return [String, nil]
           optional :messaging_profile_id, String
 
+          # @!attribute organization_id
+          #   Unique identifier for a messaging profile.
+          #
+          #   @return [String, nil]
+          optional :organization_id, String
+
           # @!attribute parts
           #   Number of parts into which the message's body must be split.
           #
@@ -158,6 +164,12 @@ module Telnyx
           #
           #   @return [Time, nil]
           optional :sent_at, Time, nil?: true
+
+          # @!attribute subject
+          #   Message subject.
+          #
+          #   @return [String, nil]
+          optional :subject, String, nil?: true
 
           # @!attribute tags
           #   Tags associated with the resource.
@@ -222,7 +234,7 @@ module Telnyx
           #   @return [String, nil]
           optional :webhook_url, String, nil?: true
 
-          # @!method initialize(id: nil, cc: nil, completed_at: nil, cost: nil, cost_breakdown: nil, direction: nil, encoding: nil, errors: nil, from: nil, media: nil, messaging_profile_id: nil, parts: nil, received_at: nil, record_type: nil, sent_at: nil, tags: nil, tcr_campaign_billable: nil, tcr_campaign_id: nil, tcr_campaign_registered: nil, text: nil, to: nil, type: nil, valid_until: nil, webhook_failover_url: nil, webhook_url: nil)
+          # @!method initialize(id: nil, cc: nil, completed_at: nil, cost: nil, cost_breakdown: nil, direction: nil, encoding: nil, errors: nil, from: nil, media: nil, messaging_profile_id: nil, organization_id: nil, parts: nil, received_at: nil, record_type: nil, sent_at: nil, subject: nil, tags: nil, tcr_campaign_billable: nil, tcr_campaign_id: nil, tcr_campaign_registered: nil, text: nil, to: nil, type: nil, valid_until: nil, webhook_failover_url: nil, webhook_url: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::InboundMessageWebhookEvent::Data::Payload} for more details.
           #
@@ -248,6 +260,8 @@ module Telnyx
           #
           #   @param messaging_profile_id [String] Unique identifier for a messaging profile.
           #
+          #   @param organization_id [String] Unique identifier for a messaging profile.
+          #
           #   @param parts [Integer] Number of parts into which the message's body must be split.
           #
           #   @param received_at [Time] ISO 8601 formatted date indicating when the message request was received.
@@ -255,6 +269,8 @@ module Telnyx
           #   @param record_type [Symbol, Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::RecordType] Identifies the type of the resource.
           #
           #   @param sent_at [Time, nil] Not used for inbound messages.
+          #
+          #   @param subject [String, nil] Message subject.
           #
           #   @param tags [Array<String>] Tags associated with the resource.
           #

@@ -10,6 +10,12 @@ module Telnyx
       sig { returns(T.nilable(String)) }
       attr_accessor :messaging_profile_id
 
+      sig { returns(T.nilable(T::Array[String])) }
+      attr_reader :tags
+
+      sig { params(tags: T::Array[String]).void }
+      attr_writer :tags
+
       # Identifies the type of resource.
       sig { returns(T.nilable(String)) }
       attr_reader :id
@@ -60,6 +66,7 @@ module Telnyx
           created_at: Time,
           record_type: Telnyx::ShortCode::RecordType::OrSymbol,
           short_code: String,
+          tags: T::Array[String],
           updated_at: Time
         ).returns(T.attached_class)
       end
@@ -76,6 +83,7 @@ module Telnyx
         record_type: nil,
         # Short digit sequence used to address messages.
         short_code: nil,
+        tags: nil,
         # ISO 8601 formatted date indicating when the resource was updated.
         updated_at: nil
       )
@@ -90,6 +98,7 @@ module Telnyx
             created_at: Time,
             record_type: Telnyx::ShortCode::RecordType::TaggedSymbol,
             short_code: String,
+            tags: T::Array[String],
             updated_at: Time
           }
         )

@@ -321,6 +321,13 @@ module Telnyx
           sig { params(messaging_profile_id: String).void }
           attr_writer :messaging_profile_id
 
+          # Unique identifier for a messaging profile.
+          sig { returns(T.nilable(String)) }
+          attr_reader :organization_id
+
+          sig { params(organization_id: String).void }
+          attr_writer :organization_id
+
           # Number of parts into which the message's body must be split.
           sig { returns(T.nilable(Integer)) }
           attr_reader :parts
@@ -356,6 +363,10 @@ module Telnyx
           # Not used for inbound messages.
           sig { returns(T.nilable(Time)) }
           attr_accessor :sent_at
+
+          # Message subject.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :subject
 
           # Tags associated with the resource.
           sig { returns(T.nilable(T::Array[String])) }
@@ -465,11 +476,13 @@ module Telnyx
                   Telnyx::InboundMessageWebhookEvent::Data::Payload::Media::OrHash
                 ],
               messaging_profile_id: String,
+              organization_id: String,
               parts: Integer,
               received_at: Time,
               record_type:
                 Telnyx::InboundMessageWebhookEvent::Data::Payload::RecordType::OrSymbol,
               sent_at: T.nilable(Time),
+              subject: T.nilable(String),
               tags: T::Array[String],
               tcr_campaign_billable: T::Boolean,
               tcr_campaign_id: T.nilable(String),
@@ -507,6 +520,8 @@ module Telnyx
             media: nil,
             # Unique identifier for a messaging profile.
             messaging_profile_id: nil,
+            # Unique identifier for a messaging profile.
+            organization_id: nil,
             # Number of parts into which the message's body must be split.
             parts: nil,
             # ISO 8601 formatted date indicating when the message request was received.
@@ -515,6 +530,8 @@ module Telnyx
             record_type: nil,
             # Not used for inbound messages.
             sent_at: nil,
+            # Message subject.
+            subject: nil,
             # Tags associated with the resource.
             tags: nil,
             # Indicates whether the TCR campaign is billable.
@@ -567,11 +584,13 @@ module Telnyx
                     Telnyx::InboundMessageWebhookEvent::Data::Payload::Media
                   ],
                 messaging_profile_id: String,
+                organization_id: String,
                 parts: Integer,
                 received_at: Time,
                 record_type:
                   Telnyx::InboundMessageWebhookEvent::Data::Payload::RecordType::TaggedSymbol,
                 sent_at: T.nilable(Time),
+                subject: T.nilable(String),
                 tags: T::Array[String],
                 tcr_campaign_billable: T::Boolean,
                 tcr_campaign_id: T.nilable(String),

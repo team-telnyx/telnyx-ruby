@@ -24,6 +24,7 @@ module Telnyx
         params(
           id: String,
           messaging_profile_id: String,
+          tags: T::Array[String],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::ShortCodeUpdateResponse)
       end
@@ -32,6 +33,7 @@ module Telnyx
         id,
         # Unique identifier for a messaging profile.
         messaging_profile_id:,
+        tags: nil,
         request_options: {}
       )
       end

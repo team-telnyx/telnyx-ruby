@@ -89,10 +89,12 @@ module Telnyx
             from: Telnyx::InboundMessageWebhookEvent::Data::Payload::From,
             media: ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::Media],
             messaging_profile_id: String,
+            organization_id: String,
             parts: Integer,
             received_at: Time,
             record_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::record_type,
             sent_at: Time?,
+            subject: String?,
             tags: ::Array[String],
             tcr_campaign_billable: bool,
             tcr_campaign_id: String?,
@@ -154,6 +156,10 @@ module Telnyx
 
           def messaging_profile_id=: (String) -> String
 
+          attr_reader organization_id: String?
+
+          def organization_id=: (String) -> String
+
           attr_reader parts: Integer?
 
           def parts=: (Integer) -> Integer
@@ -169,6 +175,8 @@ module Telnyx
           ) -> Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::record_type
 
           attr_accessor sent_at: Time?
+
+          attr_accessor subject: String?
 
           attr_reader tags: ::Array[String]?
 
@@ -216,10 +224,12 @@ module Telnyx
             ?from: Telnyx::InboundMessageWebhookEvent::Data::Payload::From,
             ?media: ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::Media],
             ?messaging_profile_id: String,
+            ?organization_id: String,
             ?parts: Integer,
             ?received_at: Time,
             ?record_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::record_type,
             ?sent_at: Time?,
+            ?subject: String?,
             ?tags: ::Array[String],
             ?tcr_campaign_billable: bool,
             ?tcr_campaign_id: String?,
@@ -244,10 +254,12 @@ module Telnyx
             from: Telnyx::InboundMessageWebhookEvent::Data::Payload::From,
             media: ::Array[Telnyx::InboundMessageWebhookEvent::Data::Payload::Media],
             messaging_profile_id: String,
+            organization_id: String,
             parts: Integer,
             received_at: Time,
             record_type: Telnyx::Models::InboundMessageWebhookEvent::Data::Payload::record_type,
             sent_at: Time?,
+            subject: String?,
             tags: ::Array[String],
             tcr_campaign_billable: bool,
             tcr_campaign_id: String?,

@@ -8,11 +8,16 @@ module Telnyx
         created_at: Time,
         record_type: Telnyx::Models::ShortCode::record_type,
         short_code: String,
+        tags: ::Array[String],
         updated_at: Time
       }
 
     class ShortCode < Telnyx::Internal::Type::BaseModel
       attr_accessor messaging_profile_id: String?
+
+      attr_reader tags: ::Array[String]?
+
+      def tags=: (::Array[String]) -> ::Array[String]
 
       attr_reader id: String?
 
@@ -47,6 +52,7 @@ module Telnyx
         ?created_at: Time,
         ?record_type: Telnyx::Models::ShortCode::record_type,
         ?short_code: String,
+        ?tags: ::Array[String],
         ?updated_at: Time
       ) -> void
 
@@ -57,6 +63,7 @@ module Telnyx
         created_at: Time,
         record_type: Telnyx::Models::ShortCode::record_type,
         short_code: String,
+        tags: ::Array[String],
         updated_at: Time
       }
 

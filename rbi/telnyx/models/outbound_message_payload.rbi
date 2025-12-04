@@ -15,12 +15,17 @@ module Telnyx
       sig { params(id: String).void }
       attr_writer :id
 
+      sig { returns(T.nilable(T::Array[Telnyx::OutboundMessagePayload::Cc])) }
+      attr_reader :cc
+
+      sig do
+        params(cc: T::Array[Telnyx::OutboundMessagePayload::Cc::OrHash]).void
+      end
+      attr_writer :cc
+
       # ISO 8601 formatted date indicating when the message was finalized.
       sig { returns(T.nilable(Time)) }
-      attr_reader :completed_at
-
-      sig { params(completed_at: Time).void }
-      attr_writer :completed_at
+      attr_accessor :completed_at
 
       sig { returns(T.nilable(Telnyx::OutboundMessagePayload::Cost)) }
       attr_reader :cost
@@ -138,10 +143,7 @@ module Telnyx
 
       # ISO 8601 formatted date indicating when the message was sent.
       sig { returns(T.nilable(Time)) }
-      attr_reader :sent_at
-
-      sig { params(sent_at: Time).void }
-      attr_writer :sent_at
+      attr_accessor :sent_at
 
       # Subject of multimedia message
       sig { returns(T.nilable(String)) }
@@ -213,7 +215,8 @@ module Telnyx
       sig do
         params(
           id: String,
-          completed_at: Time,
+          cc: T::Array[Telnyx::OutboundMessagePayload::Cc::OrHash],
+          completed_at: T.nilable(Time),
           cost: T.nilable(Telnyx::OutboundMessagePayload::Cost::OrHash),
           cost_breakdown:
             T.nilable(Telnyx::OutboundMessagePayload::CostBreakdown::OrHash),
@@ -227,7 +230,7 @@ module Telnyx
           parts: Integer,
           received_at: Time,
           record_type: Telnyx::OutboundMessagePayload::RecordType::OrSymbol,
-          sent_at: Time,
+          sent_at: T.nilable(Time),
           subject: T.nilable(String),
           tags: T::Array[String],
           tcr_campaign_billable: T::Boolean,
@@ -244,6 +247,7 @@ module Telnyx
       def self.new(
         # Identifies the type of resource.
         id: nil,
+        cc: nil,
         # ISO 8601 formatted date indicating when the message was finalized.
         completed_at: nil,
         cost: nil,
@@ -304,7 +308,8 @@ module Telnyx
         override.returns(
           {
             id: String,
-            completed_at: Time,
+            cc: T::Array[Telnyx::OutboundMessagePayload::Cc],
+            completed_at: T.nilable(Time),
             cost: T.nilable(Telnyx::OutboundMessagePayload::Cost),
             cost_breakdown:
               T.nilable(Telnyx::OutboundMessagePayload::CostBreakdown),
@@ -319,7 +324,7 @@ module Telnyx
             received_at: Time,
             record_type:
               Telnyx::OutboundMessagePayload::RecordType::TaggedSymbol,
-            sent_at: Time,
+            sent_at: T.nilable(Time),
             subject: T.nilable(String),
             tags: T::Array[String],
             tcr_campaign_billable: T::Boolean,
@@ -335,6 +340,197 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      class Cc < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Telnyx::OutboundMessagePayload::Cc, Telnyx::Internal::AnyHash)
+          end
+
+        # The carrier of the receiver.
+        sig { returns(T.nilable(String)) }
+        attr_reader :carrier
+
+        sig { params(carrier: String).void }
+        attr_writer :carrier
+
+        # The line-type of the receiver.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::OutboundMessagePayload::Cc::LineType::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :line_type
+
+        sig do
+          params(
+            line_type: Telnyx::OutboundMessagePayload::Cc::LineType::OrSymbol
+          ).void
+        end
+        attr_writer :line_type
+
+        # Receiving address (+E.164 formatted phone number or short code).
+        sig { returns(T.nilable(String)) }
+        attr_reader :phone_number
+
+        sig { params(phone_number: String).void }
+        attr_writer :phone_number
+
+        sig do
+          returns(
+            T.nilable(Telnyx::OutboundMessagePayload::Cc::Status::TaggedSymbol)
+          )
+        end
+        attr_reader :status
+
+        sig do
+          params(
+            status: Telnyx::OutboundMessagePayload::Cc::Status::OrSymbol
+          ).void
+        end
+        attr_writer :status
+
+        sig do
+          params(
+            carrier: String,
+            line_type: Telnyx::OutboundMessagePayload::Cc::LineType::OrSymbol,
+            phone_number: String,
+            status: Telnyx::OutboundMessagePayload::Cc::Status::OrSymbol
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The carrier of the receiver.
+          carrier: nil,
+          # The line-type of the receiver.
+          line_type: nil,
+          # Receiving address (+E.164 formatted phone number or short code).
+          phone_number: nil,
+          status: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              carrier: String,
+              line_type:
+                Telnyx::OutboundMessagePayload::Cc::LineType::TaggedSymbol,
+              phone_number: String,
+              status: Telnyx::OutboundMessagePayload::Cc::Status::TaggedSymbol
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # The line-type of the receiver.
+        module LineType
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::OutboundMessagePayload::Cc::LineType)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          WIRELINE =
+            T.let(
+              :Wireline,
+              Telnyx::OutboundMessagePayload::Cc::LineType::TaggedSymbol
+            )
+          WIRELESS =
+            T.let(
+              :Wireless,
+              Telnyx::OutboundMessagePayload::Cc::LineType::TaggedSymbol
+            )
+          VO_WI_FI =
+            T.let(
+              :VoWiFi,
+              Telnyx::OutboundMessagePayload::Cc::LineType::TaggedSymbol
+            )
+          VO_IP =
+            T.let(
+              :VoIP,
+              Telnyx::OutboundMessagePayload::Cc::LineType::TaggedSymbol
+            )
+          PRE_PAID_WIRELESS =
+            T.let(
+              :"Pre-Paid Wireless",
+              Telnyx::OutboundMessagePayload::Cc::LineType::TaggedSymbol
+            )
+          EMPTY =
+            T.let(
+              :"",
+              Telnyx::OutboundMessagePayload::Cc::LineType::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::OutboundMessagePayload::Cc::LineType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::OutboundMessagePayload::Cc::Status)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          QUEUED =
+            T.let(
+              :queued,
+              Telnyx::OutboundMessagePayload::Cc::Status::TaggedSymbol
+            )
+          SENDING =
+            T.let(
+              :sending,
+              Telnyx::OutboundMessagePayload::Cc::Status::TaggedSymbol
+            )
+          SENT =
+            T.let(
+              :sent,
+              Telnyx::OutboundMessagePayload::Cc::Status::TaggedSymbol
+            )
+          DELIVERED =
+            T.let(
+              :delivered,
+              Telnyx::OutboundMessagePayload::Cc::Status::TaggedSymbol
+            )
+          SENDING_FAILED =
+            T.let(
+              :sending_failed,
+              Telnyx::OutboundMessagePayload::Cc::Status::TaggedSymbol
+            )
+          DELIVERY_FAILED =
+            T.let(
+              :delivery_failed,
+              Telnyx::OutboundMessagePayload::Cc::Status::TaggedSymbol
+            )
+          DELIVERY_UNCONFIRMED =
+            T.let(
+              :delivery_unconfirmed,
+              Telnyx::OutboundMessagePayload::Cc::Status::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Telnyx::OutboundMessagePayload::Cc::Status::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
+        end
       end
 
       class Cost < Telnyx::Internal::Type::BaseModel

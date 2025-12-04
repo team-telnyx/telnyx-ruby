@@ -10,11 +10,16 @@ module Telnyx
       #   @return [String, nil]
       optional :id, String
 
+      # @!attribute cc
+      #
+      #   @return [Array<Telnyx::Models::MessageCancelScheduledResponse::Cc>, nil]
+      optional :cc, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::MessageCancelScheduledResponse::Cc] }
+
       # @!attribute completed_at
       #   ISO 8601 formatted date indicating when the message was finalized.
       #
       #   @return [Time, nil]
-      optional :completed_at, Time
+      optional :completed_at, Time, nil?: true
 
       # @!attribute cost
       #
@@ -92,7 +97,7 @@ module Telnyx
       #   ISO 8601 formatted date indicating when the message was sent.
       #
       #   @return [Time, nil]
-      optional :sent_at, Time
+      optional :sent_at, Time, nil?: true
 
       # @!attribute subject
       #   Subject of multimedia message
@@ -164,13 +169,15 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String, nil?: true
 
-      # @!method initialize(id: nil, completed_at: nil, cost: nil, cost_breakdown: nil, direction: nil, encoding: nil, errors: nil, from: nil, media: nil, messaging_profile_id: nil, organization_id: nil, parts: nil, received_at: nil, record_type: nil, sent_at: nil, subject: nil, tags: nil, tcr_campaign_billable: nil, tcr_campaign_id: nil, tcr_campaign_registered: nil, text: nil, to: nil, type: nil, valid_until: nil, webhook_failover_url: nil, webhook_url: nil)
+      # @!method initialize(id: nil, cc: nil, completed_at: nil, cost: nil, cost_breakdown: nil, direction: nil, encoding: nil, errors: nil, from: nil, media: nil, messaging_profile_id: nil, organization_id: nil, parts: nil, received_at: nil, record_type: nil, sent_at: nil, subject: nil, tags: nil, tcr_campaign_billable: nil, tcr_campaign_id: nil, tcr_campaign_registered: nil, text: nil, to: nil, type: nil, valid_until: nil, webhook_failover_url: nil, webhook_url: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessageCancelScheduledResponse} for more details.
       #
       #   @param id [String] Identifies the type of resource.
       #
-      #   @param completed_at [Time] ISO 8601 formatted date indicating when the message was finalized.
+      #   @param cc [Array<Telnyx::Models::MessageCancelScheduledResponse::Cc>]
+      #
+      #   @param completed_at [Time, nil] ISO 8601 formatted date indicating when the message was finalized.
       #
       #   @param cost [Telnyx::Models::MessageCancelScheduledResponse::Cost, nil]
       #
@@ -196,7 +203,7 @@ module Telnyx
       #
       #   @param record_type [Symbol, Telnyx::Models::MessageCancelScheduledResponse::RecordType] Identifies the type of the resource.
       #
-      #   @param sent_at [Time] ISO 8601 formatted date indicating when the message was sent.
+      #   @param sent_at [Time, nil] ISO 8601 formatted date indicating when the message was sent.
       #
       #   @param subject [String, nil] Subject of multimedia message
       #
@@ -219,6 +226,79 @@ module Telnyx
       #   @param webhook_failover_url [String, nil] The failover URL where webhooks related to this message will be sent if sending
       #
       #   @param webhook_url [String, nil] The URL where webhooks related to this message will be sent.
+
+      class Cc < Telnyx::Internal::Type::BaseModel
+        # @!attribute carrier
+        #   The carrier of the receiver.
+        #
+        #   @return [String, nil]
+        optional :carrier, String
+
+        # @!attribute line_type
+        #   The line-type of the receiver.
+        #
+        #   @return [Symbol, Telnyx::Models::MessageCancelScheduledResponse::Cc::LineType, nil]
+        optional :line_type, enum: -> { Telnyx::Models::MessageCancelScheduledResponse::Cc::LineType }
+
+        # @!attribute phone_number
+        #   Receiving address (+E.164 formatted phone number or short code).
+        #
+        #   @return [String, nil]
+        optional :phone_number, String
+
+        # @!attribute status
+        #   The delivery status of the message.
+        #
+        #   @return [Symbol, Telnyx::Models::MessageCancelScheduledResponse::Cc::Status, nil]
+        optional :status, enum: -> { Telnyx::Models::MessageCancelScheduledResponse::Cc::Status }
+
+        # @!method initialize(carrier: nil, line_type: nil, phone_number: nil, status: nil)
+        #   @param carrier [String] The carrier of the receiver.
+        #
+        #   @param line_type [Symbol, Telnyx::Models::MessageCancelScheduledResponse::Cc::LineType] The line-type of the receiver.
+        #
+        #   @param phone_number [String] Receiving address (+E.164 formatted phone number or short code).
+        #
+        #   @param status [Symbol, Telnyx::Models::MessageCancelScheduledResponse::Cc::Status] The delivery status of the message.
+
+        # The line-type of the receiver.
+        #
+        # @see Telnyx::Models::MessageCancelScheduledResponse::Cc#line_type
+        module LineType
+          extend Telnyx::Internal::Type::Enum
+
+          WIRELINE = :Wireline
+          WIRELESS = :Wireless
+          VO_WI_FI = :VoWiFi
+          VO_IP = :VoIP
+          PRE_PAID_WIRELESS = :"Pre-Paid Wireless"
+          EMPTY = :""
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # The delivery status of the message.
+        #
+        # @see Telnyx::Models::MessageCancelScheduledResponse::Cc#status
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          SCHEDULED = :scheduled
+          QUEUED = :queued
+          SENDING = :sending
+          SENT = :sent
+          CANCELLED = :cancelled
+          EXPIRED = :expired
+          SENDING_FAILED = :sending_failed
+          DELIVERY_UNCONFIRMED = :delivery_unconfirmed
+          DELIVERED = :delivered
+          DELIVERY_FAILED = :delivery_failed
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+      end
 
       # @see Telnyx::Models::MessageCancelScheduledResponse#cost
       class Cost < Telnyx::Internal::Type::BaseModel

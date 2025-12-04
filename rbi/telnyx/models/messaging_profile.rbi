@@ -35,6 +35,10 @@ module Telnyx
       sig { params(enabled: T::Boolean).void }
       attr_writer :enabled
 
+      # DEPRECATED: health check url service checking
+      sig { returns(T.nilable(String)) }
+      attr_accessor :health_webhook_url
+
       # enables SMS fallback for MMS messages.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :mms_fall_back_to_sms
@@ -77,6 +81,21 @@ module Telnyx
         ).void
       end
       attr_writer :number_pool_settings
+
+      # Indicates whether message content redaction is enabled for this profile.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :redaction_enabled
+
+      sig { params(redaction_enabled: T::Boolean).void }
+      attr_writer :redaction_enabled
+
+      # Determines how much information is redacted in messages for privacy or
+      # compliance purposes.
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :redaction_level
+
+      sig { params(redaction_level: Integer).void }
+      attr_writer :redaction_level
 
       # The URL shortener feature allows automatic replacement of URLs that were
       # generated using a public URL shortener service. Some examples include bit.do,
@@ -178,12 +197,15 @@ module Telnyx
           daily_spend_limit: String,
           daily_spend_limit_enabled: T::Boolean,
           enabled: T::Boolean,
+          health_webhook_url: T.nilable(String),
           mms_fall_back_to_sms: T::Boolean,
           mms_transcoding: T::Boolean,
           mobile_only: T::Boolean,
           name: String,
           number_pool_settings: T.nilable(Telnyx::NumberPoolSettings::OrHash),
           record_type: Telnyx::MessagingProfile::RecordType::OrSymbol,
+          redaction_enabled: T::Boolean,
+          redaction_level: Integer,
           updated_at: Time,
           url_shortener_settings:
             T.nilable(Telnyx::URLShortenerSettings::OrHash),
@@ -210,6 +232,8 @@ module Telnyx
         daily_spend_limit_enabled: nil,
         # Specifies whether the messaging profile is enabled or not.
         enabled: nil,
+        # DEPRECATED: health check url service checking
+        health_webhook_url: nil,
         # enables SMS fallback for MMS messages.
         mms_fall_back_to_sms: nil,
         # enables automated resizing of MMS media.
@@ -226,6 +250,11 @@ module Telnyx
         number_pool_settings: nil,
         # Identifies the type of the resource.
         record_type: nil,
+        # Indicates whether message content redaction is enabled for this profile.
+        redaction_enabled: nil,
+        # Determines how much information is redacted in messages for privacy or
+        # compliance purposes.
+        redaction_level: nil,
         # ISO 8601 formatted date indicating when the resource was updated.
         updated_at: nil,
         # The URL shortener feature allows automatic replacement of URLs that were
@@ -262,12 +291,15 @@ module Telnyx
             daily_spend_limit: String,
             daily_spend_limit_enabled: T::Boolean,
             enabled: T::Boolean,
+            health_webhook_url: T.nilable(String),
             mms_fall_back_to_sms: T::Boolean,
             mms_transcoding: T::Boolean,
             mobile_only: T::Boolean,
             name: String,
             number_pool_settings: T.nilable(Telnyx::NumberPoolSettings),
             record_type: Telnyx::MessagingProfile::RecordType::TaggedSymbol,
+            redaction_enabled: T::Boolean,
+            redaction_level: Integer,
             updated_at: Time,
             url_shortener_settings: T.nilable(Telnyx::URLShortenerSettings),
             v1_secret: String,
