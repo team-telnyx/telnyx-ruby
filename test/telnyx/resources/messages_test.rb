@@ -31,6 +31,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
     assert_pattern do
       response => {
         id: String | nil,
+        cc: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::MessageCancelScheduledResponse::Cc]) | nil,
         completed_at: Time | nil,
         cost: Telnyx::Models::MessageCancelScheduledResponse::Cost | nil,
         cost_breakdown: Telnyx::Models::MessageCancelScheduledResponse::CostBreakdown | nil,
@@ -130,7 +131,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
     response =
       @telnyx.messages.send_number_pool(
         messaging_profile_id: "abc85f64-5717-4562-b3fc-2c9600000000",
-        to: "to"
+        to: "+13125550002"
       )
 
     assert_pattern do

@@ -9,6 +9,11 @@ module Telnyx
       #   @return [String, nil]
       required :messaging_profile_id, String, nil?: true
 
+      # @!attribute tags
+      #
+      #   @return [Array<String>, nil]
+      optional :tags, Telnyx::Internal::Type::ArrayOf[String]
+
       response_only do
         # @!attribute id
         #   Identifies the type of resource.
@@ -47,7 +52,7 @@ module Telnyx
         optional :updated_at, Time
       end
 
-      # @!method initialize(messaging_profile_id:, id: nil, country_code: nil, created_at: nil, record_type: nil, short_code: nil, updated_at: nil)
+      # @!method initialize(messaging_profile_id:, id: nil, country_code: nil, created_at: nil, record_type: nil, short_code: nil, tags: nil, updated_at: nil)
       #   @param messaging_profile_id [String, nil] Unique identifier for a messaging profile.
       #
       #   @param id [String] Identifies the type of resource.
@@ -59,6 +64,8 @@ module Telnyx
       #   @param record_type [Symbol, Telnyx::Models::ShortCode::RecordType] Identifies the type of the resource.
       #
       #   @param short_code [String] Short digit sequence used to address messages.
+      #
+      #   @param tags [Array<String>]
       #
       #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
 

@@ -3,7 +3,8 @@ module Telnyx
     type outbound_message_payload =
       {
         id: String,
-        completed_at: Time,
+        cc: ::Array[Telnyx::OutboundMessagePayload::Cc],
+        completed_at: Time?,
         cost: Telnyx::OutboundMessagePayload::Cost?,
         cost_breakdown: Telnyx::OutboundMessagePayload::CostBreakdown?,
         direction: Telnyx::Models::OutboundMessagePayload::direction,
@@ -16,7 +17,7 @@ module Telnyx
         parts: Integer,
         received_at: Time,
         record_type: Telnyx::Models::OutboundMessagePayload::record_type,
-        sent_at: Time,
+        sent_at: Time?,
         subject: String?,
         tags: ::Array[String],
         tcr_campaign_billable: bool,
@@ -35,9 +36,13 @@ module Telnyx
 
       def id=: (String) -> String
 
-      attr_reader completed_at: Time?
+      attr_reader cc: ::Array[Telnyx::OutboundMessagePayload::Cc]?
 
-      def completed_at=: (Time) -> Time
+      def cc=: (
+        ::Array[Telnyx::OutboundMessagePayload::Cc]
+      ) -> ::Array[Telnyx::OutboundMessagePayload::Cc]
+
+      attr_accessor completed_at: Time?
 
       attr_accessor cost: Telnyx::OutboundMessagePayload::Cost?
 
@@ -93,9 +98,7 @@ module Telnyx
         Telnyx::Models::OutboundMessagePayload::record_type
       ) -> Telnyx::Models::OutboundMessagePayload::record_type
 
-      attr_reader sent_at: Time?
-
-      def sent_at=: (Time) -> Time
+      attr_accessor sent_at: Time?
 
       attr_accessor subject: String?
 
@@ -135,7 +138,8 @@ module Telnyx
 
       def initialize: (
         ?id: String,
-        ?completed_at: Time,
+        ?cc: ::Array[Telnyx::OutboundMessagePayload::Cc],
+        ?completed_at: Time?,
         ?cost: Telnyx::OutboundMessagePayload::Cost?,
         ?cost_breakdown: Telnyx::OutboundMessagePayload::CostBreakdown?,
         ?direction: Telnyx::Models::OutboundMessagePayload::direction,
@@ -148,7 +152,7 @@ module Telnyx
         ?parts: Integer,
         ?received_at: Time,
         ?record_type: Telnyx::Models::OutboundMessagePayload::record_type,
-        ?sent_at: Time,
+        ?sent_at: Time?,
         ?subject: String?,
         ?tags: ::Array[String],
         ?tcr_campaign_billable: bool,
@@ -164,7 +168,8 @@ module Telnyx
 
       def to_hash: -> {
         id: String,
-        completed_at: Time,
+        cc: ::Array[Telnyx::OutboundMessagePayload::Cc],
+        completed_at: Time?,
         cost: Telnyx::OutboundMessagePayload::Cost?,
         cost_breakdown: Telnyx::OutboundMessagePayload::CostBreakdown?,
         direction: Telnyx::Models::OutboundMessagePayload::direction,
@@ -177,7 +182,7 @@ module Telnyx
         parts: Integer,
         received_at: Time,
         record_type: Telnyx::Models::OutboundMessagePayload::record_type,
-        sent_at: Time,
+        sent_at: Time?,
         subject: String?,
         tags: ::Array[String],
         tcr_campaign_billable: bool,
@@ -190,6 +195,89 @@ module Telnyx
         webhook_failover_url: String?,
         webhook_url: String?
       }
+
+      type cc =
+        {
+          carrier: String,
+          line_type: Telnyx::Models::OutboundMessagePayload::Cc::line_type,
+          phone_number: String,
+          status: Telnyx::Models::OutboundMessagePayload::Cc::status
+        }
+
+      class Cc < Telnyx::Internal::Type::BaseModel
+        attr_reader carrier: String?
+
+        def carrier=: (String) -> String
+
+        attr_reader line_type: Telnyx::Models::OutboundMessagePayload::Cc::line_type?
+
+        def line_type=: (
+          Telnyx::Models::OutboundMessagePayload::Cc::line_type
+        ) -> Telnyx::Models::OutboundMessagePayload::Cc::line_type
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader status: Telnyx::Models::OutboundMessagePayload::Cc::status?
+
+        def status=: (
+          Telnyx::Models::OutboundMessagePayload::Cc::status
+        ) -> Telnyx::Models::OutboundMessagePayload::Cc::status
+
+        def initialize: (
+          ?carrier: String,
+          ?line_type: Telnyx::Models::OutboundMessagePayload::Cc::line_type,
+          ?phone_number: String,
+          ?status: Telnyx::Models::OutboundMessagePayload::Cc::status
+        ) -> void
+
+        def to_hash: -> {
+          carrier: String,
+          line_type: Telnyx::Models::OutboundMessagePayload::Cc::line_type,
+          phone_number: String,
+          status: Telnyx::Models::OutboundMessagePayload::Cc::status
+        }
+
+        type line_type =
+          :Wireline | :Wireless | :VoWiFi | :VoIP | :"Pre-Paid Wireless" | :""
+
+        module LineType
+          extend Telnyx::Internal::Type::Enum
+
+          WIRELINE: :Wireline
+          WIRELESS: :Wireless
+          VO_WI_FI: :VoWiFi
+          VO_IP: :VoIP
+          PRE_PAID_WIRELESS: :"Pre-Paid Wireless"
+          EMPTY: :""
+
+          def self?.values: -> ::Array[Telnyx::Models::OutboundMessagePayload::Cc::line_type]
+        end
+
+        type status =
+          :queued
+          | :sending
+          | :sent
+          | :delivered
+          | :sending_failed
+          | :delivery_failed
+          | :delivery_unconfirmed
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          QUEUED: :queued
+          SENDING: :sending
+          SENT: :sent
+          DELIVERED: :delivered
+          SENDING_FAILED: :sending_failed
+          DELIVERY_FAILED: :delivery_failed
+          DELIVERY_UNCONFIRMED: :delivery_unconfirmed
+
+          def self?.values: -> ::Array[Telnyx::Models::OutboundMessagePayload::Cc::status]
+        end
+      end
 
       type cost = { amount: String, currency: String }
 

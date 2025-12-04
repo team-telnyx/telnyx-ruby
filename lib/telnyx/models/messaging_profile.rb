@@ -29,6 +29,12 @@ module Telnyx
       #   @return [Boolean, nil]
       optional :enabled, Telnyx::Internal::Type::Boolean
 
+      # @!attribute health_webhook_url
+      #   DEPRECATED: health check url service checking
+      #
+      #   @return [String, nil]
+      optional :health_webhook_url, String, nil?: true
+
       # @!attribute mms_fall_back_to_sms
       #   enables SMS fallback for MMS messages.
       #
@@ -62,6 +68,19 @@ module Telnyx
       #
       #   @return [Telnyx::Models::NumberPoolSettings, nil]
       optional :number_pool_settings, -> { Telnyx::NumberPoolSettings }, nil?: true
+
+      # @!attribute redaction_enabled
+      #   Indicates whether message content redaction is enabled for this profile.
+      #
+      #   @return [Boolean, nil]
+      optional :redaction_enabled, Telnyx::Internal::Type::Boolean
+
+      # @!attribute redaction_level
+      #   Determines how much information is redacted in messages for privacy or
+      #   compliance purposes.
+      #
+      #   @return [Integer, nil]
+      optional :redaction_level, Integer
 
       # @!attribute url_shortener_settings
       #   The URL shortener feature allows automatic replacement of URLs that were
@@ -135,7 +154,7 @@ module Telnyx
         optional :updated_at, Time
       end
 
-      # @!method initialize(id: nil, alpha_sender: nil, created_at: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, record_type: nil, updated_at: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil)
+      # @!method initialize(id: nil, alpha_sender: nil, created_at: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, health_webhook_url: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, record_type: nil, redaction_enabled: nil, redaction_level: nil, updated_at: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessagingProfile} for more details.
       #
@@ -151,6 +170,8 @@ module Telnyx
       #
       #   @param enabled [Boolean] Specifies whether the messaging profile is enabled or not.
       #
+      #   @param health_webhook_url [String, nil] DEPRECATED: health check url service checking
+      #
       #   @param mms_fall_back_to_sms [Boolean] enables SMS fallback for MMS messages.
       #
       #   @param mms_transcoding [Boolean] enables automated resizing of MMS media.
@@ -162,6 +183,10 @@ module Telnyx
       #   @param number_pool_settings [Telnyx::Models::NumberPoolSettings, nil] Number Pool allows you to send messages from a pool of numbers of different type
       #
       #   @param record_type [Symbol, Telnyx::Models::MessagingProfile::RecordType] Identifies the type of the resource.
+      #
+      #   @param redaction_enabled [Boolean] Indicates whether message content redaction is enabled for this profile.
+      #
+      #   @param redaction_level [Integer] Determines how much information is redacted in messages for privacy or complianc
       #
       #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
       #
