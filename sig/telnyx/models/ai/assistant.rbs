@@ -43,8 +43,8 @@ module Telnyx
         }
 
         type tool =
-          Telnyx::AI::Assistant::Tool::BookAppointmentTool
-          | Telnyx::AI::Assistant::Tool::CheckAvailabilityTool
+          Telnyx::AI::Assistant::Tool::BookAppointment
+          | Telnyx::AI::Assistant::Tool::CheckAvailability
           | Telnyx::AI::WebhookTool
           | Telnyx::AI::HangupTool
           | Telnyx::AI::TransferTool
@@ -53,25 +53,25 @@ module Telnyx
         module Tool
           extend Telnyx::Internal::Type::Union
 
-          type book_appointment_tool =
+          type book_appointment =
             {
-              book_appointment: Telnyx::AI::Assistant::Tool::BookAppointmentTool::BookAppointment,
-              type: Telnyx::Models::AI::Assistant::Tool::BookAppointmentTool::type_
+              book_appointment: Telnyx::AI::Assistant::Tool::BookAppointment::BookAppointment,
+              type: :book_appointment
             }
 
-          class BookAppointmentTool < Telnyx::Internal::Type::BaseModel
-            attr_accessor book_appointment: Telnyx::AI::Assistant::Tool::BookAppointmentTool::BookAppointment
+          class BookAppointment < Telnyx::Internal::Type::BaseModel
+            attr_accessor book_appointment: Telnyx::AI::Assistant::Tool::BookAppointment::BookAppointment
 
-            attr_accessor type: Telnyx::Models::AI::Assistant::Tool::BookAppointmentTool::type_
+            attr_accessor type: :book_appointment
 
             def initialize: (
-              book_appointment: Telnyx::AI::Assistant::Tool::BookAppointmentTool::BookAppointment,
-              type: Telnyx::Models::AI::Assistant::Tool::BookAppointmentTool::type_
+              book_appointment: Telnyx::AI::Assistant::Tool::BookAppointment::BookAppointment,
+              ?type: :book_appointment
             ) -> void
 
             def to_hash: -> {
-              book_appointment: Telnyx::AI::Assistant::Tool::BookAppointmentTool::BookAppointment,
-              type: Telnyx::Models::AI::Assistant::Tool::BookAppointmentTool::type_
+              book_appointment: Telnyx::AI::Assistant::Tool::BookAppointment::BookAppointment,
+              type: :book_appointment
             }
 
             type book_appointment =
@@ -109,37 +109,27 @@ module Telnyx
                 attendee_timezone: String
               }
             end
-
-            type type_ = :book_appointment
-
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              BOOK_APPOINTMENT: :book_appointment
-
-              def self?.values: -> ::Array[Telnyx::Models::AI::Assistant::Tool::BookAppointmentTool::type_]
-            end
           end
 
-          type check_availability_tool =
+          type check_availability =
             {
-              check_availability: Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::CheckAvailability,
-              type: Telnyx::Models::AI::Assistant::Tool::CheckAvailabilityTool::type_
+              check_availability: Telnyx::AI::Assistant::Tool::CheckAvailability::CheckAvailability,
+              type: :check_availability
             }
 
-          class CheckAvailabilityTool < Telnyx::Internal::Type::BaseModel
-            attr_accessor check_availability: Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::CheckAvailability
+          class CheckAvailability < Telnyx::Internal::Type::BaseModel
+            attr_accessor check_availability: Telnyx::AI::Assistant::Tool::CheckAvailability::CheckAvailability
 
-            attr_accessor type: Telnyx::Models::AI::Assistant::Tool::CheckAvailabilityTool::type_
+            attr_accessor type: :check_availability
 
             def initialize: (
-              check_availability: Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::CheckAvailability,
-              type: Telnyx::Models::AI::Assistant::Tool::CheckAvailabilityTool::type_
+              check_availability: Telnyx::AI::Assistant::Tool::CheckAvailability::CheckAvailability,
+              ?type: :check_availability
             ) -> void
 
             def to_hash: -> {
-              check_availability: Telnyx::AI::Assistant::Tool::CheckAvailabilityTool::CheckAvailability,
-              type: Telnyx::Models::AI::Assistant::Tool::CheckAvailabilityTool::type_
+              check_availability: Telnyx::AI::Assistant::Tool::CheckAvailability::CheckAvailability,
+              type: :check_availability
             }
 
             type check_availability =
@@ -156,16 +146,6 @@ module Telnyx
               ) -> void
 
               def to_hash: -> { api_key_ref: String, event_type_id: Integer }
-            end
-
-            type type_ = :check_availability
-
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              CHECK_AVAILABILITY: :check_availability
-
-              def self?.values: -> ::Array[Telnyx::Models::AI::Assistant::Tool::CheckAvailabilityTool::type_]
             end
           end
 

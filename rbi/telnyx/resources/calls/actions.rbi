@@ -369,7 +369,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T.anything
+                Telnyx::Calls::AwsVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingAIResponse)
@@ -568,7 +568,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T.anything
+                Telnyx::Calls::AwsVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingSpeakResponse)
@@ -925,7 +925,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T.anything
+                Telnyx::Calls::AwsVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionSpeakResponse)
@@ -1011,7 +1011,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T.anything
+                Telnyx::Calls::AwsVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartAIAssistantResponse)

@@ -6,7 +6,12 @@ class Telnyx::Test::Resources::CustomStorageCredentialsTest < Telnyx::Test::Reso
   def test_create_required_params
     skip("Prism tests are disabled")
 
-    response = @telnyx.custom_storage_credentials.create("connection_id", backend: :gcs, configuration: {})
+    response =
+      @telnyx.custom_storage_credentials.create(
+        "connection_id",
+        backend: :gcs,
+        configuration: {backend: :gcs}
+      )
 
     assert_pattern do
       response => Telnyx::Models::CustomStorageCredentialCreateResponse
@@ -42,7 +47,12 @@ class Telnyx::Test::Resources::CustomStorageCredentialsTest < Telnyx::Test::Reso
   def test_update_required_params
     skip("Prism tests are disabled")
 
-    response = @telnyx.custom_storage_credentials.update("connection_id", backend: :gcs, configuration: {})
+    response =
+      @telnyx.custom_storage_credentials.update(
+        "connection_id",
+        backend: :gcs,
+        configuration: {backend: :gcs}
+      )
 
     assert_pattern do
       response => Telnyx::Models::CustomStorageCredentialUpdateResponse

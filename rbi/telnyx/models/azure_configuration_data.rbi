@@ -8,6 +8,10 @@ module Telnyx
           T.any(Telnyx::AzureConfigurationData, Telnyx::Internal::AnyHash)
         end
 
+      # Storage backend type
+      sig { returns(Telnyx::AzureConfigurationData::Backend::OrSymbol) }
+      attr_accessor :backend
+
       # Azure Blob Storage account key.
       sig { returns(T.nilable(String)) }
       attr_reader :account_key
@@ -31,12 +35,15 @@ module Telnyx
 
       sig do
         params(
+          backend: Telnyx::AzureConfigurationData::Backend::OrSymbol,
           account_key: String,
           account_name: String,
           bucket: String
         ).returns(T.attached_class)
       end
       def self.new(
+        # Storage backend type
+        backend:,
         # Azure Blob Storage account key.
         account_key: nil,
         # Azure Blob Storage account name.
@@ -48,10 +55,37 @@ module Telnyx
 
       sig do
         override.returns(
-          { account_key: String, account_name: String, bucket: String }
+          {
+            backend: Telnyx::AzureConfigurationData::Backend::OrSymbol,
+            account_key: String,
+            account_name: String,
+            bucket: String
+          }
         )
       end
       def to_hash
+      end
+
+      # Storage backend type
+      module Backend
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Telnyx::AzureConfigurationData::Backend)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        AZURE =
+          T.let(:azure, Telnyx::AzureConfigurationData::Backend::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::AzureConfigurationData::Backend::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end
