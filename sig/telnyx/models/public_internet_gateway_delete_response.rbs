@@ -28,7 +28,6 @@ module Telnyx
           network_id: String,
           status: Telnyx::Models::interface_status,
           public_ip: String,
-          region: Telnyx::Models::PublicInternetGatewayDeleteResponse::Data::Region,
           region_code: String
         }
 
@@ -40,12 +39,6 @@ module Telnyx
         attr_reader network_id: String?
 
         def network_id=: (String) -> String
-
-        attr_reader region: Telnyx::Models::PublicInternetGatewayDeleteResponse::Data::Region?
-
-        def region=: (
-          Telnyx::Models::PublicInternetGatewayDeleteResponse::Data::Region
-        ) -> Telnyx::Models::PublicInternetGatewayDeleteResponse::Data::Region
 
         attr_reader region_code: String?
 
@@ -86,7 +79,6 @@ module Telnyx
           ?network_id: String,
           ?status: Telnyx::Models::interface_status,
           ?public_ip: String,
-          ?region: Telnyx::Models::PublicInternetGatewayDeleteResponse::Data::Region,
           ?region_code: String
         ) -> void
 
@@ -99,33 +91,8 @@ module Telnyx
           network_id: String,
           status: Telnyx::Models::interface_status,
           public_ip: String,
-          region: Telnyx::Models::PublicInternetGatewayDeleteResponse::Data::Region,
           region_code: String
         }
-
-        type region = { code: String, name: String, record_type: String }
-
-        class Region < Telnyx::Internal::Type::BaseModel
-          attr_reader code: String?
-
-          def code=: (String) -> String
-
-          attr_reader name: String?
-
-          def name=: (String) -> String
-
-          attr_reader record_type: String?
-
-          def record_type=: (String) -> String
-
-          def initialize: (
-            ?code: String,
-            ?name: String,
-            ?record_type: String
-          ) -> void
-
-          def to_hash: -> { code: String, name: String, record_type: String }
-        end
       end
     end
   end

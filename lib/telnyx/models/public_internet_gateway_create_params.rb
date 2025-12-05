@@ -20,7 +20,7 @@ module Telnyx
       optional :network_id, String
 
       # @!attribute region_code
-      #   The region the interface should be deployed to.
+      #   The region interface is deployed to.
       #
       #   @return [String, nil]
       optional :region_code, String
@@ -30,7 +30,7 @@ module Telnyx
       #
       #   @param network_id [String] The id of the network associated with the interface.
       #
-      #   @param region_code [String] The region the interface should be deployed to.
+      #   @param region_code [String] The region interface is deployed to.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end
