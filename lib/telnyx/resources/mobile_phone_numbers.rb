@@ -3,6 +3,9 @@
 module Telnyx
   module Resources
     class MobilePhoneNumbers
+      # @return [Telnyx::Resources::MobilePhoneNumbers::Messaging]
+      attr_reader :messaging
+
       # Retrieve a Mobile Phone Number
       #
       # @overload retrieve(id, request_options: {})
@@ -96,6 +99,7 @@ module Telnyx
       # @param client [Telnyx::Client]
       def initialize(client:)
         @client = client
+        @messaging = Telnyx::Resources::MobilePhoneNumbers::Messaging.new(client: client)
       end
     end
   end

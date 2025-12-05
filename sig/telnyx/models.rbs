@@ -727,6 +727,8 @@ module Telnyx
 
   class MobilePhoneNumberRetrieveParams = Telnyx::Models::MobilePhoneNumberRetrieveParams
 
+  module MobilePhoneNumbers = Telnyx::Models::MobilePhoneNumbers
+
   class MobilePhoneNumberUpdateParams = Telnyx::Models::MobilePhoneNumberUpdateParams
 
   class MobilePushCredentialCreateParams = Telnyx::Models::MobilePushCredentialCreateParams

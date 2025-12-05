@@ -1,6 +1,8 @@
 module Telnyx
   module Resources
     class MobilePhoneNumbers
+      attr_reader messaging: Telnyx::Resources::MobilePhoneNumbers::Messaging
+
       def retrieve: (
         String id,
         ?request_options: Telnyx::request_opts
