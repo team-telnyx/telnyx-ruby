@@ -8,6 +8,10 @@ module Telnyx
           T.any(Telnyx::S3ConfigurationData, Telnyx::Internal::AnyHash)
         end
 
+      # Storage backend type
+      sig { returns(Telnyx::S3ConfigurationData::Backend::OrSymbol) }
+      attr_accessor :backend
+
       # AWS credentials access key id.
       sig { returns(T.nilable(String)) }
       attr_reader :aws_access_key_id
@@ -38,6 +42,7 @@ module Telnyx
 
       sig do
         params(
+          backend: Telnyx::S3ConfigurationData::Backend::OrSymbol,
           aws_access_key_id: String,
           aws_secret_access_key: String,
           bucket: String,
@@ -45,6 +50,8 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        # Storage backend type
+        backend:,
         # AWS credentials access key id.
         aws_access_key_id: nil,
         # AWS secret access key.
@@ -59,6 +66,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            backend: Telnyx::S3ConfigurationData::Backend::OrSymbol,
             aws_access_key_id: String,
             aws_secret_access_key: String,
             bucket: String,
@@ -67,6 +75,25 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      # Storage backend type
+      module Backend
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Telnyx::S3ConfigurationData::Backend) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        S3 = T.let(:s3, Telnyx::S3ConfigurationData::Backend::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::S3ConfigurationData::Backend::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

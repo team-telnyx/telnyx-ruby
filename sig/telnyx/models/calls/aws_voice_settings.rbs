@@ -1,7 +1,28 @@
 module Telnyx
   module Models
     module Calls
-      AwsVoiceSettings: Telnyx::Internal::Type::Converter
+      type aws_voice_settings =
+        { type: Telnyx::Models::Calls::AwsVoiceSettings::type_ }
+
+      class AwsVoiceSettings < Telnyx::Internal::Type::BaseModel
+        attr_accessor type: Telnyx::Models::Calls::AwsVoiceSettings::type_
+
+        def initialize: (
+          type: Telnyx::Models::Calls::AwsVoiceSettings::type_
+        ) -> void
+
+        def to_hash: -> { type: Telnyx::Models::Calls::AwsVoiceSettings::type_ }
+
+        type type_ = :aws
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          AWS: :aws
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::AwsVoiceSettings::type_]
+        end
+      end
     end
   end
 end

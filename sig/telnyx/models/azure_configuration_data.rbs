@@ -1,9 +1,16 @@
 module Telnyx
   module Models
     type azure_configuration_data =
-      { account_key: String, account_name: String, bucket: String }
+      {
+        backend: Telnyx::Models::AzureConfigurationData::backend,
+        account_key: String,
+        account_name: String,
+        bucket: String
+      }
 
     class AzureConfigurationData < Telnyx::Internal::Type::BaseModel
+      attr_accessor backend: Telnyx::Models::AzureConfigurationData::backend
+
       attr_reader account_key: String?
 
       def account_key=: (String) -> String
@@ -17,16 +24,28 @@ module Telnyx
       def bucket=: (String) -> String
 
       def initialize: (
+        backend: Telnyx::Models::AzureConfigurationData::backend,
         ?account_key: String,
         ?account_name: String,
         ?bucket: String
       ) -> void
 
       def to_hash: -> {
+        backend: Telnyx::Models::AzureConfigurationData::backend,
         account_key: String,
         account_name: String,
         bucket: String
       }
+
+      type backend = :azure
+
+      module Backend
+        extend Telnyx::Internal::Type::Enum
+
+        AZURE: :azure
+
+        def self?.values: -> ::Array[Telnyx::Models::AzureConfigurationData::backend]
+      end
     end
   end
 end

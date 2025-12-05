@@ -33,11 +33,13 @@ module Telnyx
       module Configuration
         extend Telnyx::Internal::Type::Union
 
-        variant -> { Telnyx::GcsConfigurationData }
+        discriminator :backend
 
-        variant -> { Telnyx::S3ConfigurationData }
+        variant :gcs, -> { Telnyx::GcsConfigurationData }
 
-        variant -> { Telnyx::AzureConfigurationData }
+        variant :s3, -> { Telnyx::S3ConfigurationData }
+
+        variant :azure, -> { Telnyx::AzureConfigurationData }
 
         # @!method self.variants
         #   @return [Array(Telnyx::Models::GcsConfigurationData, Telnyx::Models::S3ConfigurationData, Telnyx::Models::AzureConfigurationData)]

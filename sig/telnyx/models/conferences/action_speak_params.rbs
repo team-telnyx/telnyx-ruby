@@ -172,7 +172,7 @@ module Telnyx
         type voice_settings =
           Telnyx::Calls::ElevenLabsVoiceSettings
           | Telnyx::Calls::TelnyxVoiceSettings
-          | top
+          | Telnyx::Calls::AwsVoiceSettings
 
         module VoiceSettings
           extend Telnyx::Internal::Type::Union

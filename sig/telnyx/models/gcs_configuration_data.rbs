@@ -1,8 +1,15 @@
 module Telnyx
   module Models
-    type gcs_configuration_data = { bucket: String, credentials: String }
+    type gcs_configuration_data =
+      {
+        backend: Telnyx::Models::GcsConfigurationData::backend,
+        bucket: String,
+        credentials: String
+      }
 
     class GcsConfigurationData < Telnyx::Internal::Type::BaseModel
+      attr_accessor backend: Telnyx::Models::GcsConfigurationData::backend
+
       attr_reader bucket: String?
 
       def bucket=: (String) -> String
@@ -11,9 +18,27 @@ module Telnyx
 
       def credentials=: (String) -> String
 
-      def initialize: (?bucket: String, ?credentials: String) -> void
+      def initialize: (
+        backend: Telnyx::Models::GcsConfigurationData::backend,
+        ?bucket: String,
+        ?credentials: String
+      ) -> void
 
-      def to_hash: -> { bucket: String, credentials: String }
+      def to_hash: -> {
+        backend: Telnyx::Models::GcsConfigurationData::backend,
+        bucket: String,
+        credentials: String
+      }
+
+      type backend = :gcs
+
+      module Backend
+        extend Telnyx::Internal::Type::Enum
+
+        GCS: :gcs
+
+        def self?.values: -> ::Array[Telnyx::Models::GcsConfigurationData::backend]
+      end
     end
   end
 end

@@ -114,7 +114,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings,
                 Telnyx::Calls::TelnyxVoiceSettings,
-                T.anything
+                Telnyx::Calls::AwsVoiceSettings
               )
             )
           )
@@ -127,7 +127,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T.anything
+                Telnyx::Calls::AwsVoiceSettings::OrHash
               )
           ).void
         end
@@ -147,7 +147,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T.anything
+                Telnyx::Calls::AwsVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -215,7 +215,7 @@ module Telnyx
                 T.any(
                   Telnyx::Calls::ElevenLabsVoiceSettings,
                   Telnyx::Calls::TelnyxVoiceSettings,
-                  T.anything
+                  Telnyx::Calls::AwsVoiceSettings
                 ),
               request_options: Telnyx::RequestOptions
             }
@@ -294,7 +294,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings,
                 Telnyx::Calls::TelnyxVoiceSettings,
-                T.anything
+                Telnyx::Calls::AwsVoiceSettings
               )
             end
 
