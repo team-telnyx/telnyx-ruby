@@ -141,6 +141,9 @@ module Telnyx
       module Migrations
       end
 
+      module MobilePhoneNumbers
+      end
+
       module Networks
       end
 

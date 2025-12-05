@@ -1,0 +1,157 @@
+module Telnyx
+  module Models
+    module MobilePhoneNumbers
+      type messaging_list_response =
+        {
+          data: ::Array[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data],
+          meta: Telnyx::PaginationMeta
+        }
+
+      class MessagingListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data]?
+
+        def data=: (
+          ::Array[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data]
+        ) -> ::Array[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data]
+
+        attr_reader meta: Telnyx::PaginationMeta?
+
+        def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+        def initialize: (
+          ?data: ::Array[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data],
+          ?meta: Telnyx::PaginationMeta
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data],
+          meta: Telnyx::PaginationMeta
+        }
+
+        type data =
+          {
+            id: String,
+            country_code: String,
+            created_at: Time,
+            features: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::Features,
+            messaging_product: String,
+            messaging_profile_id: String?,
+            phone_number: String,
+            record_type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::record_type,
+            traffic_type: String,
+            type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::type_,
+            updated_at: Time
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader messaging_product: String?
+
+          def messaging_product=: (String) -> String
+
+          attr_accessor messaging_profile_id: String?
+
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader country_code: String?
+
+          def country_code=: (String) -> String
+
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader features: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::Features?
+
+          def features=: (
+            Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::Features
+          ) -> Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::Features
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          attr_reader record_type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::record_type?
+
+          def record_type=: (
+            Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::record_type
+          ) -> Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::record_type
+
+          attr_reader traffic_type: String?
+
+          def traffic_type=: (String) -> String
+
+          attr_reader type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::type_?
+
+          def type=: (
+            Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::type_
+          ) -> Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::type_
+
+          attr_reader updated_at: Time?
+
+          def updated_at=: (Time) -> Time
+
+          def initialize: (
+            ?id: String,
+            ?country_code: String,
+            ?created_at: Time,
+            ?features: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::Features,
+            ?messaging_product: String,
+            ?messaging_profile_id: String?,
+            ?phone_number: String,
+            ?record_type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::record_type,
+            ?traffic_type: String,
+            ?type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::type_,
+            ?updated_at: Time
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            country_code: String,
+            created_at: Time,
+            features: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::Features,
+            messaging_product: String,
+            messaging_profile_id: String?,
+            phone_number: String,
+            record_type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::record_type,
+            traffic_type: String,
+            type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::type_,
+            updated_at: Time
+          }
+
+          type features = { sms: Telnyx::MessagingFeatureSet? }
+
+          class Features < Telnyx::Internal::Type::BaseModel
+            attr_accessor sms: Telnyx::MessagingFeatureSet?
+
+            def initialize: (?sms: Telnyx::MessagingFeatureSet?) -> void
+
+            def to_hash: -> { sms: Telnyx::MessagingFeatureSet? }
+          end
+
+          type record_type = :messaging_phone_number | :messaging_settings
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            MESSAGING_PHONE_NUMBER: :messaging_phone_number
+            MESSAGING_SETTINGS: :messaging_settings
+
+            def self?.values: -> ::Array[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::record_type]
+          end
+
+          type type_ = :longcode
+
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            LONGCODE: :longcode
+
+            def self?.values: -> ::Array[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::type_]
+          end
+        end
+      end
+    end
+  end
+end

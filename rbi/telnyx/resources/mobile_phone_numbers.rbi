@@ -3,6 +3,9 @@
 module Telnyx
   module Resources
     class MobilePhoneNumbers
+      sig { returns(Telnyx::Resources::MobilePhoneNumbers::Messaging) }
+      attr_reader :messaging
+
       # Retrieve a Mobile Phone Number
       sig do
         params(

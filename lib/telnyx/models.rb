@@ -780,6 +780,8 @@ module Telnyx
 
   MobilePhoneNumberRetrieveParams = Telnyx::Models::MobilePhoneNumberRetrieveParams
 
+  MobilePhoneNumbers = Telnyx::Models::MobilePhoneNumbers
+
   MobilePhoneNumberUpdateParams = Telnyx::Models::MobilePhoneNumberUpdateParams
 
   MobilePushCredentialCreateParams = Telnyx::Models::MobilePushCredentialCreateParams
