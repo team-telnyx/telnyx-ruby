@@ -10,7 +10,7 @@ class Telnyx::Test::Resources::DynamicEmergencyAddressesTest < Telnyx::Test::Res
       @telnyx.dynamic_emergency_addresses.create(
         administrative_area: "TX",
         country_code: :US,
-        house_number: "house_number",
+        house_number: "600",
         locality: "Austin",
         postal_code: "78701",
         street_name: "Congress"
