@@ -17,7 +17,7 @@ module Telnyx
         def list(brand_id, params = {})
           @client.request(
             method: :get,
-            path: ["brand/%1$s/externalVetting", brand_id],
+            path: ["10dlc/brand/%1$s/externalVetting", brand_id],
             model: Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Brand::ExternalVettingListResponseItem],
             options: params[:request_options]
           )
@@ -50,7 +50,7 @@ module Telnyx
           parsed, options = Telnyx::Brand::ExternalVettingImportParams.dump_request(params)
           @client.request(
             method: :put,
-            path: ["brand/%1$s/externalVetting", brand_id],
+            path: ["10dlc/brand/%1$s/externalVetting", brand_id],
             body: parsed,
             model: Telnyx::Models::Brand::ExternalVettingImportResponse,
             options: options
@@ -76,7 +76,7 @@ module Telnyx
           parsed, options = Telnyx::Brand::ExternalVettingOrderParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["brand/%1$s/externalVetting", brand_id],
+            path: ["10dlc/brand/%1$s/externalVetting", brand_id],
             body: parsed,
             model: Telnyx::Models::Brand::ExternalVettingOrderResponse,
             options: options

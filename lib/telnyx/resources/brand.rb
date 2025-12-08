@@ -73,7 +73,7 @@ module Telnyx
         parsed, options = Telnyx::BrandCreateParams.dump_request(params)
         @client.request(
           method: :post,
-          path: "brand",
+          path: "10dlc/brand",
           body: parsed,
           model: Telnyx::TelnyxBrand,
           options: options
@@ -93,7 +93,7 @@ module Telnyx
       def retrieve(brand_id, params = {})
         @client.request(
           method: :get,
-          path: ["brand/%1$s", brand_id],
+          path: ["10dlc/brand/%1$s", brand_id],
           model: Telnyx::Models::BrandRetrieveResponse,
           options: params[:request_options]
         )
@@ -167,7 +167,7 @@ module Telnyx
         parsed, options = Telnyx::BrandUpdateParams.dump_request(params)
         @client.request(
           method: :put,
-          path: ["brand/%1$s", brand_id],
+          path: ["10dlc/brand/%1$s", brand_id],
           body: parsed,
           model: Telnyx::TelnyxBrand,
           options: options
@@ -208,7 +208,7 @@ module Telnyx
         parsed, options = Telnyx::BrandListParams.dump_request(params)
         @client.request(
           method: :get,
-          path: "brand",
+          path: "10dlc/brand",
           query: parsed.transform_keys(
             brand_id: "brandId",
             display_name: "displayName",
@@ -236,7 +236,7 @@ module Telnyx
       def delete(brand_id, params = {})
         @client.request(
           method: :delete,
-          path: ["brand/%1$s", brand_id],
+          path: ["10dlc/brand/%1$s", brand_id],
           model: NilClass,
           options: params[:request_options]
         )
@@ -267,7 +267,7 @@ module Telnyx
       def get_feedback(brand_id, params = {})
         @client.request(
           method: :get,
-          path: ["brand/feedback/%1$s", brand_id],
+          path: ["10dlc/brand/feedback/%1$s", brand_id],
           model: Telnyx::Models::BrandGetFeedbackResponse,
           options: params[:request_options]
         )
@@ -286,7 +286,7 @@ module Telnyx
       def resend_2fa_email(brand_id, params = {})
         @client.request(
           method: :post,
-          path: ["brand/%1$s/2faEmail", brand_id],
+          path: ["10dlc/brand/%1$s/2faEmail", brand_id],
           model: NilClass,
           options: params[:request_options]
         )
@@ -307,7 +307,7 @@ module Telnyx
       def revet(brand_id, params = {})
         @client.request(
           method: :put,
-          path: ["brand/%1$s/revet", brand_id],
+          path: ["10dlc/brand/%1$s/revet", brand_id],
           model: Telnyx::TelnyxBrand,
           options: params[:request_options]
         )

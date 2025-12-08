@@ -31,7 +31,7 @@ module Telnyx
         parsed, options = Telnyx::PhoneNumberAssignmentByProfileAssignParams.dump_request(params)
         @client.request(
           method: :post,
-          path: "phoneNumberAssignmentByProfile",
+          path: "10dlc/phoneNumberAssignmentByProfile",
           body: parsed,
           model: Telnyx::Models::PhoneNumberAssignmentByProfileAssignResponse,
           options: options
@@ -56,7 +56,7 @@ module Telnyx
           Telnyx::PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusParams.dump_request(params)
         @client.request(
           method: :get,
-          path: ["phoneNumberAssignmentByProfile/%1$s/phoneNumbers", task_id],
+          path: ["10dlc/phoneNumberAssignmentByProfile/%1$s/phoneNumbers", task_id],
           query: parsed.transform_keys(records_per_page: "recordsPerPage"),
           model: Telnyx::Models::PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusResponse,
           options: options
@@ -77,7 +77,7 @@ module Telnyx
       def retrieve_status(task_id, params = {})
         @client.request(
           method: :get,
-          path: ["phoneNumberAssignmentByProfile/%1$s", task_id],
+          path: ["10dlc/phoneNumberAssignmentByProfile/%1$s", task_id],
           model: Telnyx::Models::PhoneNumberAssignmentByProfileRetrieveStatusResponse,
           options: params[:request_options]
         )

@@ -99,7 +99,7 @@ module Telnyx
         parsed, options = Telnyx::CampaignBuilderCreateParams.dump_request(params)
         @client.request(
           method: :post,
-          path: "campaignBuilder",
+          path: "10dlc/campaignBuilder",
           body: parsed,
           model: Telnyx::TelnyxCampaignCsp,
           options: options
