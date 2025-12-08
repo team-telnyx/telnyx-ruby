@@ -17,7 +17,7 @@ module Telnyx
         def get_attributes(campaign_id, params = {})
           @client.request(
             method: :get,
-            path: ["campaign/%1$s/osr/attributes", campaign_id],
+            path: ["10dlc/campaign/%1$s/osr/attributes", campaign_id],
             model: Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
             options: params[:request_options]
           )

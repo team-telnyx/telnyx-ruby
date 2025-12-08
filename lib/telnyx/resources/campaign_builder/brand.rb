@@ -24,7 +24,7 @@ module Telnyx
             end
           @client.request(
             method: :get,
-            path: ["campaignBuilder/brand/%1$s/usecase/%2$s", brand_id, usecase],
+            path: ["10dlc/campaignBuilder/brand/%1$s/usecase/%2$s", brand_id, usecase],
             model: Telnyx::Models::CampaignBuilder::BrandQualifyByUsecaseResponse,
             options: options
           )

@@ -18,7 +18,7 @@ module Telnyx
           parsed, options = Telnyx::Campaign::UsecaseGetCostParams.dump_request(params)
           @client.request(
             method: :get,
-            path: "campaign/usecase/cost",
+            path: "10dlc/campaign/usecase/cost",
             query: parsed,
             model: Telnyx::Models::Campaign::UsecaseGetCostResponse,
             options: options

@@ -20,7 +20,7 @@ module Telnyx
         parsed, options = Telnyx::PhoneNumberCampaignCreateParams.dump_request(params)
         @client.request(
           method: :post,
-          path: "phone_number_campaigns",
+          path: "10dlc/phone_number_campaigns",
           body: parsed,
           model: Telnyx::PhoneNumberCampaign,
           options: options
@@ -40,7 +40,7 @@ module Telnyx
       def retrieve(phone_number, params = {})
         @client.request(
           method: :get,
-          path: ["phone_number_campaigns/%1$s", phone_number],
+          path: ["10dlc/phone_number_campaigns/%1$s", phone_number],
           model: Telnyx::PhoneNumberCampaign,
           options: params[:request_options]
         )
@@ -65,7 +65,7 @@ module Telnyx
         parsed, options = Telnyx::PhoneNumberCampaignUpdateParams.dump_request(params)
         @client.request(
           method: :put,
-          path: ["phone_number_campaigns/%1$s", path_phone_number],
+          path: ["10dlc/phone_number_campaigns/%1$s", path_phone_number],
           body: parsed,
           model: Telnyx::PhoneNumberCampaign,
           options: options
@@ -96,7 +96,7 @@ module Telnyx
         parsed, options = Telnyx::PhoneNumberCampaignListParams.dump_request(params)
         @client.request(
           method: :get,
-          path: "phone_number_campaigns",
+          path: "10dlc/phone_number_campaigns",
           query: parsed.transform_keys(records_per_page: "recordsPerPage"),
           model: Telnyx::Models::PhoneNumberCampaignListResponse,
           options: options
@@ -117,7 +117,7 @@ module Telnyx
       def delete(phone_number, params = {})
         @client.request(
           method: :delete,
-          path: ["phone_number_campaigns/%1$s", phone_number],
+          path: ["10dlc/phone_number_campaigns/%1$s", phone_number],
           model: Telnyx::PhoneNumberCampaign,
           options: params[:request_options]
         )

@@ -16,7 +16,7 @@ module Telnyx
       def retrieve(endpoint, params = {})
         @client.request(
           method: :get,
-          path: ["enum/%1$s", endpoint],
+          path: ["10dlc/enum/%1$s", endpoint],
           model: Telnyx::Models::EnumRetrieveResponse,
           options: params[:request_options]
         )

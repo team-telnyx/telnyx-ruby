@@ -16,7 +16,7 @@ module Telnyx
       def retrieve(campaign_id, params = {})
         @client.request(
           method: :get,
-          path: ["partner_campaigns/%1$s", campaign_id],
+          path: ["10dlc/partner_campaigns/%1$s", campaign_id],
           model: Telnyx::TelnyxDownstreamCampaign,
           options: params[:request_options]
         )
@@ -42,7 +42,7 @@ module Telnyx
         parsed, options = Telnyx::PartnerCampaignUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["partner_campaigns/%1$s", campaign_id],
+          path: ["10dlc/partner_campaigns/%1$s", campaign_id],
           body: parsed,
           model: Telnyx::TelnyxDownstreamCampaign,
           options: options
@@ -75,7 +75,7 @@ module Telnyx
         parsed, options = Telnyx::PartnerCampaignListParams.dump_request(params)
         @client.request(
           method: :get,
-          path: "partner_campaigns",
+          path: "10dlc/partner_campaigns",
           query: parsed.transform_keys(records_per_page: "recordsPerPage"),
           model: Telnyx::Models::PartnerCampaignListResponse,
           options: options
@@ -106,7 +106,7 @@ module Telnyx
         parsed, options = Telnyx::PartnerCampaignListSharedByMeParams.dump_request(params)
         @client.request(
           method: :get,
-          path: "partnerCampaign/sharedByMe",
+          path: "10dlc/partnerCampaign/sharedByMe",
           query: parsed.transform_keys(records_per_page: "recordsPerPage"),
           model: Telnyx::Models::PartnerCampaignListSharedByMeResponse,
           options: options
@@ -127,7 +127,7 @@ module Telnyx
       def retrieve_sharing_status(campaign_id, params = {})
         @client.request(
           method: :get,
-          path: ["partnerCampaign/%1$s/sharing", campaign_id],
+          path: ["10dlc/partnerCampaign/%1$s/sharing", campaign_id],
           model: Telnyx::Internal::Type::HashOf[Telnyx::CampaignSharingStatus],
           options: params[:request_options]
         )

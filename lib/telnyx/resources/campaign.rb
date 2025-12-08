@@ -22,7 +22,7 @@ module Telnyx
       def retrieve(campaign_id, params = {})
         @client.request(
           method: :get,
-          path: ["campaign/%1$s", campaign_id],
+          path: ["10dlc/campaign/%1$s", campaign_id],
           model: Telnyx::TelnyxCampaignCsp,
           options: params[:request_options]
         )
@@ -69,7 +69,7 @@ module Telnyx
         parsed, options = Telnyx::CampaignUpdateParams.dump_request(params)
         @client.request(
           method: :put,
-          path: ["campaign/%1$s", campaign_id],
+          path: ["10dlc/campaign/%1$s", campaign_id],
           body: parsed,
           model: Telnyx::TelnyxCampaignCsp,
           options: options
@@ -100,7 +100,7 @@ module Telnyx
         parsed, options = Telnyx::CampaignListParams.dump_request(params)
         @client.request(
           method: :get,
-          path: "campaign",
+          path: "10dlc/campaign",
           query: parsed.transform_keys(brand_id: "brandId", records_per_page: "recordsPerPage"),
           model: Telnyx::Models::CampaignListResponse,
           options: options
@@ -121,7 +121,7 @@ module Telnyx
       def accept_sharing(campaign_id, params = {})
         @client.request(
           method: :post,
-          path: ["campaign/acceptSharing/%1$s", campaign_id],
+          path: ["10dlc/campaign/acceptSharing/%1$s", campaign_id],
           model: Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
           options: params[:request_options]
         )
@@ -140,7 +140,7 @@ module Telnyx
       def deactivate(campaign_id, params = {})
         @client.request(
           method: :delete,
-          path: ["campaign/%1$s", campaign_id],
+          path: ["10dlc/campaign/%1$s", campaign_id],
           model: Telnyx::Models::CampaignDeactivateResponse,
           options: params[:request_options]
         )
@@ -160,7 +160,7 @@ module Telnyx
       def get_mno_metadata(campaign_id, params = {})
         @client.request(
           method: :get,
-          path: ["campaign/%1$s/mnoMetadata", campaign_id],
+          path: ["10dlc/campaign/%1$s/mnoMetadata", campaign_id],
           model: Telnyx::Models::CampaignGetMnoMetadataResponse,
           options: params[:request_options]
         )
@@ -179,7 +179,7 @@ module Telnyx
       def get_operation_status(campaign_id, params = {})
         @client.request(
           method: :get,
-          path: ["campaign/%1$s/operationStatus", campaign_id],
+          path: ["10dlc/campaign/%1$s/operationStatus", campaign_id],
           model: Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
           options: params[:request_options]
         )
@@ -199,7 +199,7 @@ module Telnyx
       def get_sharing_status(campaign_id, params = {})
         @client.request(
           method: :get,
-          path: ["campaign/%1$s/sharing", campaign_id],
+          path: ["10dlc/campaign/%1$s/sharing", campaign_id],
           model: Telnyx::Models::CampaignGetSharingStatusResponse,
           options: params[:request_options]
         )
@@ -228,7 +228,7 @@ module Telnyx
         parsed, options = Telnyx::CampaignSubmitAppealParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["campaign/%1$s/appeal", campaign_id],
+          path: ["10dlc/campaign/%1$s/appeal", campaign_id],
           body: parsed,
           model: Telnyx::Models::CampaignSubmitAppealResponse,
           options: options
