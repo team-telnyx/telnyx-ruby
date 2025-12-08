@@ -1441,10 +1441,11 @@ module Telnyx
               T.any(
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::OrHash,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::OrHash,
-                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::OrHash,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::OrHash,
                 ::Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
-                ::Telnyx::Calls::TranscriptionEngineBConfig::OrHash
+                ::Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::OrHash,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::OrHash
               ),
             transcription_tracks: String,
             request_options: Telnyx::RequestOptions::OrHash

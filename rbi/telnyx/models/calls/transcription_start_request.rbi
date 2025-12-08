@@ -53,10 +53,11 @@ module Telnyx
               T.any(
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx,
-                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure,
                 ::Telnyx::Calls::TranscriptionEngineAConfig,
-                ::Telnyx::Calls::TranscriptionEngineBConfig
+                ::Telnyx::Calls::TranscriptionEngineBConfig,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config
               )
             )
           )
@@ -69,10 +70,11 @@ module Telnyx
               T.any(
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::OrHash,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::OrHash,
-                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::OrHash,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::OrHash,
                 ::Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
-                ::Telnyx::Calls::TranscriptionEngineBConfig::OrHash
+                ::Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::OrHash,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::OrHash
               )
           ).void
         end
@@ -97,10 +99,11 @@ module Telnyx
               T.any(
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::OrHash,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::OrHash,
-                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::OrHash,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure::OrHash,
                 ::Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
-                ::Telnyx::Calls::TranscriptionEngineBConfig::OrHash
+                ::Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::OrHash,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::OrHash
               ),
             transcription_tracks: String
           ).returns(T.attached_class)
@@ -134,10 +137,11 @@ module Telnyx
                 T.any(
                   ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google,
                   ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram,
                   ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure,
                   ::Telnyx::Calls::TranscriptionEngineAConfig,
-                  ::Telnyx::Calls::TranscriptionEngineBConfig
+                  ::Telnyx::Calls::TranscriptionEngineBConfig,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config
                 ),
               transcription_tracks: String
             }
@@ -210,10 +214,11 @@ module Telnyx
               T.any(
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx,
-                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram,
                 ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure,
                 ::Telnyx::Calls::TranscriptionEngineAConfig,
-                ::Telnyx::Calls::TranscriptionEngineBConfig
+                ::Telnyx::Calls::TranscriptionEngineBConfig,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config,
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config
               )
             end
 
@@ -725,23 +730,21 @@ module Telnyx
             end
           end
 
-          class Deepgram < ::Telnyx::Internal::Type::BaseModel
+          class DeepgramNova2Config < ::Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config,
                   ::Telnyx::Internal::AnyHash
                 )
               end
 
-            # Engine identifier for Deepgram transcription service
             sig { returns(Symbol) }
             attr_accessor :transcription_engine
 
-            # The model to use for transcription.
             sig do
               returns(
-                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::TranscriptionModel::OrSymbol
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::TranscriptionModel::OrSymbol
               )
             end
             attr_accessor :transcription_model
@@ -755,12 +758,11 @@ module Telnyx
             sig { params(keywords_boosting: T::Hash[Symbol, Float]).void }
             attr_writer :keywords_boosting
 
-            # Language to use for speech recognition. Available languages depend on the
-            # selected model.
+            # Language to use for speech recognition with nova-2 model
             sig do
               returns(
                 T.nilable(
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::OrSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::OrSymbol
                 )
               )
             end
@@ -769,7 +771,7 @@ module Telnyx
             sig do
               params(
                 language:
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::OrSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::OrSymbol
               ).void
             end
             attr_writer :language
@@ -777,24 +779,21 @@ module Telnyx
             sig do
               params(
                 transcription_model:
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::TranscriptionModel::OrSymbol,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::TranscriptionModel::OrSymbol,
                 keywords_boosting: T::Hash[Symbol, Float],
                 language:
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::OrSymbol,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::OrSymbol,
                 transcription_engine: Symbol
               ).returns(T.attached_class)
             end
             def self.new(
-              # The model to use for transcription.
               transcription_model:,
               # Keywords and their respective intensifiers (boosting values) to improve
               # transcription accuracy for specific words or phrases. The intensifier should be
               # a numeric value. Example: `{"snuffleupagus": 5, "systrom": 2, "krieger": 1}`.
               keywords_boosting: nil,
-              # Language to use for speech recognition. Available languages depend on the
-              # selected model.
+              # Language to use for speech recognition with nova-2 model
               language: nil,
-              # Engine identifier for Deepgram transcription service
               transcription_engine: :Deepgram
             )
             end
@@ -804,17 +803,16 @@ module Telnyx
                 {
                   transcription_engine: Symbol,
                   transcription_model:
-                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::TranscriptionModel::OrSymbol,
+                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::TranscriptionModel::OrSymbol,
                   keywords_boosting: T::Hash[Symbol, Float],
                   language:
-                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::OrSymbol
+                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::OrSymbol
                 }
               )
             end
             def to_hash
             end
 
-            # The model to use for transcription.
             module TranscriptionModel
               extend ::Telnyx::Internal::Type::Enum
 
@@ -822,7 +820,7 @@ module Telnyx
                 T.type_alias do
                   T.all(
                     Symbol,
-                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::TranscriptionModel
+                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::TranscriptionModel
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -830,18 +828,13 @@ module Telnyx
               DEEPGRAM_NOVA_2 =
                 T.let(
                   :"deepgram/nova-2",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::TranscriptionModel::TaggedSymbol
-                )
-              DEEPGRAM_NOVA_3 =
-                T.let(
-                  :"deepgram/nova-3",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::TranscriptionModel::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::TranscriptionModel::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::TranscriptionModel::TaggedSymbol
+                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::TranscriptionModel::TaggedSymbol
                   ]
                 )
               end
@@ -849,8 +842,7 @@ module Telnyx
               end
             end
 
-            # Language to use for speech recognition. Available languages depend on the
-            # selected model.
+            # Language to use for speech recognition with nova-2 model
             module Language
               extend ::Telnyx::Internal::Type::Enum
 
@@ -858,7 +850,7 @@ module Telnyx
                 T.type_alias do
                   T.all(
                     Symbol,
-                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language
+                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -866,278 +858,516 @@ module Telnyx
               BG =
                 T.let(
                   :bg,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               CA =
                 T.let(
                   :ca,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               ZH =
                 T.let(
                   :zh,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               ZH_CN =
                 T.let(
                   :"zh-CN",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               ZH_HANS =
                 T.let(
                   :"zh-Hans",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               ZH_TW =
                 T.let(
                   :"zh-TW",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               ZH_HANT =
                 T.let(
                   :"zh-Hant",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               ZH_HK =
                 T.let(
                   :"zh-HK",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               CS =
                 T.let(
                   :cs,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               DA =
                 T.let(
                   :da,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               DA_DK =
                 T.let(
                   :"da-DK",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               NL =
                 T.let(
                   :nl,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               EN =
                 T.let(
                   :en,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               EN_US =
                 T.let(
                   :"en-US",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               EN_AU =
                 T.let(
                   :"en-AU",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               EN_GB =
                 T.let(
                   :"en-GB",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               EN_NZ =
                 T.let(
                   :"en-NZ",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               EN_IN =
                 T.let(
                   :"en-IN",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               ET =
                 T.let(
                   :et,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               FI =
                 T.let(
                   :fi,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               NL_BE =
                 T.let(
                   :"nl-BE",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               FR =
                 T.let(
                   :fr,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               FR_CA =
                 T.let(
                   :"fr-CA",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               DE =
                 T.let(
                   :de,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               DE_CH =
                 T.let(
                   :"de-CH",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               EL =
                 T.let(
                   :el,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               HI =
                 T.let(
                   :hi,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               HU =
                 T.let(
                   :hu,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               ID =
                 T.let(
                   :id,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               IT =
                 T.let(
                   :it,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               JA =
                 T.let(
                   :ja,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               KO =
                 T.let(
                   :ko,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               KO_KR =
                 T.let(
                   :"ko-KR",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               LV =
                 T.let(
                   :lv,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               LT =
                 T.let(
                   :lt,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               MS =
                 T.let(
                   :ms,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               NO =
                 T.let(
                   :no,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               PL =
                 T.let(
                   :pl,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               PT =
                 T.let(
                   :pt,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               PT_BR =
                 T.let(
                   :"pt-BR",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               PT_PT =
                 T.let(
                   :"pt-PT",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               RO =
                 T.let(
                   :ro,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               RU =
                 T.let(
                   :ru,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               SK =
                 T.let(
                   :sk,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               ES =
                 T.let(
                   :es,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               ES_419 =
                 T.let(
                   :"es-419",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               SV =
                 T.let(
                   :sv,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               SV_SE =
                 T.let(
                   :"sv-SE",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               TH =
                 T.let(
                   :th,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               TH_TH =
                 T.let(
                   :"th-TH",
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               TR =
                 T.let(
                   :tr,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               UK =
                 T.let(
                   :uk,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               VI =
                 T.let(
                   :vi,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
               AUTO_DETECT =
                 T.let(
                   :auto_detect,
-                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::TaggedSymbol
+                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+
+          class DeepgramNova3Config < ::Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config,
+                  ::Telnyx::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :transcription_engine
+
+            sig do
+              returns(
+                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::TranscriptionModel::OrSymbol
+              )
+            end
+            attr_accessor :transcription_model
+
+            # Keywords and their respective intensifiers (boosting values) to improve
+            # transcription accuracy for specific words or phrases. The intensifier should be
+            # a numeric value. Example: `{"snuffleupagus": 5, "systrom": 2, "krieger": 1}`.
+            sig { returns(T.nilable(T::Hash[Symbol, Float])) }
+            attr_reader :keywords_boosting
+
+            sig { params(keywords_boosting: T::Hash[Symbol, Float]).void }
+            attr_writer :keywords_boosting
+
+            # Language to use for speech recognition with nova-3 model
+            sig do
+              returns(
+                T.nilable(
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::OrSymbol
+                )
+              )
+            end
+            attr_reader :language
+
+            sig do
+              params(
+                language:
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::OrSymbol
+              ).void
+            end
+            attr_writer :language
+
+            sig do
+              params(
+                transcription_model:
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::TranscriptionModel::OrSymbol,
+                keywords_boosting: T::Hash[Symbol, Float],
+                language:
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::OrSymbol,
+                transcription_engine: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              transcription_model:,
+              # Keywords and their respective intensifiers (boosting values) to improve
+              # transcription accuracy for specific words or phrases. The intensifier should be
+              # a numeric value. Example: `{"snuffleupagus": 5, "systrom": 2, "krieger": 1}`.
+              keywords_boosting: nil,
+              # Language to use for speech recognition with nova-3 model
+              language: nil,
+              transcription_engine: :Deepgram
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  transcription_engine: Symbol,
+                  transcription_model:
+                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::TranscriptionModel::OrSymbol,
+                  keywords_boosting: T::Hash[Symbol, Float],
+                  language:
+                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::OrSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module TranscriptionModel
+              extend ::Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::TranscriptionModel
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DEEPGRAM_NOVA_3 =
+                T.let(
+                  :"deepgram/nova-3",
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::TranscriptionModel::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::TranscriptionModel::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            # Language to use for speech recognition with nova-3 model
+            module Language
+              extend ::Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              EN =
+                T.let(
+                  :en,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              EN_US =
+                T.let(
+                  :"en-US",
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              EN_AU =
+                T.let(
+                  :"en-AU",
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              EN_GB =
+                T.let(
+                  :"en-GB",
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              EN_IN =
+                T.let(
+                  :"en-IN",
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              EN_NZ =
+                T.let(
+                  :"en-NZ",
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              DE =
+                T.let(
+                  :de,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              NL =
+                T.let(
+                  :nl,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              SV =
+                T.let(
+                  :sv,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              SV_SE =
+                T.let(
+                  :"sv-SE",
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              DA =
+                T.let(
+                  :da,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              DA_DK =
+                T.let(
+                  :"da-DK",
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              ES =
+                T.let(
+                  :es,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              ES_419 =
+                T.let(
+                  :"es-419",
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              FR =
+                T.let(
+                  :fr,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              FR_CA =
+                T.let(
+                  :"fr-CA",
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              PT =
+                T.let(
+                  :pt,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              PT_BR =
+                T.let(
+                  :"pt-BR",
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              PT_PT =
+                T.let(
+                  :"pt-PT",
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+              AUTO_DETECT =
+                T.let(
+                  :auto_detect,
+                  ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
                   ]
                 )
               end
