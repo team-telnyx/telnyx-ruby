@@ -291,6 +291,7 @@ module Telnyx
             {
               transcription_engine: :Deepgram,
               transcription_model: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::transcription_model,
+              keywords_boosting: ::Hash[Symbol, Float],
               language: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language
             }
 
@@ -298,6 +299,12 @@ module Telnyx
             attr_accessor transcription_engine: :Deepgram
 
             attr_accessor transcription_model: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::transcription_model
+
+            attr_reader keywords_boosting: ::Hash[Symbol, Float]?
+
+            def keywords_boosting=: (
+              ::Hash[Symbol, Float]
+            ) -> ::Hash[Symbol, Float]
 
             attr_reader language: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language?
 
@@ -307,6 +314,7 @@ module Telnyx
 
             def initialize: (
               transcription_model: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::transcription_model,
+              ?keywords_boosting: ::Hash[Symbol, Float],
               ?language: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language,
               ?transcription_engine: :Deepgram
             ) -> void
@@ -314,6 +322,7 @@ module Telnyx
             def to_hash: -> {
               transcription_engine: :Deepgram,
               transcription_model: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::transcription_model,
+              keywords_boosting: ::Hash[Symbol, Float],
               language: ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::language
             }
 

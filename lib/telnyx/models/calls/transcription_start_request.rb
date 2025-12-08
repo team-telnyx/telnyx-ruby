@@ -305,6 +305,14 @@ module Telnyx
             required :transcription_model,
                      enum: -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::TranscriptionModel }
 
+            # @!attribute keywords_boosting
+            #   Keywords and their respective intensifiers (boosting values) to improve
+            #   transcription accuracy for specific words or phrases. The intensifier should be
+            #   a numeric value. Example: `{"snuffleupagus": 5, "systrom": 2, "krieger": 1}`.
+            #
+            #   @return [Hash{Symbol=>Float}, nil]
+            optional :keywords_boosting, ::Telnyx::Internal::Type::HashOf[Float]
+
             # @!attribute language
             #   Language to use for speech recognition. Available languages depend on the
             #   selected model.
@@ -313,12 +321,14 @@ module Telnyx
             optional :language,
                      enum: -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language }
 
-            # @!method initialize(transcription_model:, language: nil, transcription_engine: :Deepgram)
+            # @!method initialize(transcription_model:, keywords_boosting: nil, language: nil, transcription_engine: :Deepgram)
             #   Some parameter documentations has been truncated, see
             #   {::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram}
             #   for more details.
             #
             #   @param transcription_model [Symbol, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::TranscriptionModel] The model to use for transcription.
+            #
+            #   @param keywords_boosting [Hash{Symbol=>Float}] Keywords and their respective intensifiers (boosting values) to improve transcri
             #
             #   @param language [Symbol, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language] Language to use for speech recognition. Available languages depend on the select
             #
