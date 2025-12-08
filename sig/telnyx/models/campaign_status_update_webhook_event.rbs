@@ -1,124 +1,114 @@
 module Telnyx
   module Models
     type campaign_status_update_webhook_event =
-      Telnyx::CampaignStatusUpdateWebhookEvent::CampaignStatusUpdateEvent
-      | Telnyx::CampaignStatusUpdateWebhookEvent::CampaignSuspendedEvent
+      {
+        brand_id: String,
+        campaign_id: String,
+        create_date: String,
+        csp_id: String,
+        description: String,
+        is_t_mobile_registered: bool,
+        status: Telnyx::Models::CampaignStatusUpdateWebhookEvent::status,
+        type: Telnyx::Models::CampaignStatusUpdateWebhookEvent::type_
+      }
 
-    module CampaignStatusUpdateWebhookEvent
-      extend Telnyx::Internal::Type::Union
+    class CampaignStatusUpdateWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_reader brand_id: String?
 
-      type campaign_status_update_event =
-        {
-          brand_id: String,
-          campaign_id: String,
-          create_date: String,
-          csp_id: String,
-          is_t_mobile_registered: bool
-        }
+      def brand_id=: (String) -> String
 
-      class CampaignStatusUpdateEvent < Telnyx::Internal::Type::BaseModel
-        attr_reader brand_id: String?
+      attr_reader campaign_id: String?
 
-        def brand_id=: (String) -> String
+      def campaign_id=: (String) -> String
 
-        attr_reader campaign_id: String?
+      attr_reader create_date: String?
 
-        def campaign_id=: (String) -> String
+      def create_date=: (String) -> String
 
-        attr_reader create_date: String?
+      attr_reader csp_id: String?
 
-        def create_date=: (String) -> String
+      def csp_id=: (String) -> String
 
-        attr_reader csp_id: String?
+      attr_reader description: String?
 
-        def csp_id=: (String) -> String
+      def description=: (String) -> String
 
-        attr_reader is_t_mobile_registered: bool?
+      attr_reader is_t_mobile_registered: bool?
 
-        def is_t_mobile_registered=: (bool) -> bool
+      def is_t_mobile_registered=: (bool) -> bool
 
-        def initialize: (
-          ?brand_id: String,
-          ?campaign_id: String,
-          ?create_date: String,
-          ?csp_id: String,
-          ?is_t_mobile_registered: bool
-        ) -> void
+      attr_reader status: Telnyx::Models::CampaignStatusUpdateWebhookEvent::status?
 
-        def to_hash: -> {
-          brand_id: String,
-          campaign_id: String,
-          create_date: String,
-          csp_id: String,
-          is_t_mobile_registered: bool
-        }
+      def status=: (
+        Telnyx::Models::CampaignStatusUpdateWebhookEvent::status
+      ) -> Telnyx::Models::CampaignStatusUpdateWebhookEvent::status
+
+      attr_reader type: Telnyx::Models::CampaignStatusUpdateWebhookEvent::type_?
+
+      def type=: (
+        Telnyx::Models::CampaignStatusUpdateWebhookEvent::type_
+      ) -> Telnyx::Models::CampaignStatusUpdateWebhookEvent::type_
+
+      def initialize: (
+        ?brand_id: String,
+        ?campaign_id: String,
+        ?create_date: String,
+        ?csp_id: String,
+        ?description: String,
+        ?is_t_mobile_registered: bool,
+        ?status: Telnyx::Models::CampaignStatusUpdateWebhookEvent::status,
+        ?type: Telnyx::Models::CampaignStatusUpdateWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        brand_id: String,
+        campaign_id: String,
+        create_date: String,
+        csp_id: String,
+        description: String,
+        is_t_mobile_registered: bool,
+        status: Telnyx::Models::CampaignStatusUpdateWebhookEvent::status,
+        type: Telnyx::Models::CampaignStatusUpdateWebhookEvent::type_
+      }
+
+      type status = :ACCEPTED | :REJECTED | :DORMANT | :success | :failed
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        ACCEPTED: :ACCEPTED
+        REJECTED: :REJECTED
+        DORMANT: :DORMANT
+        SUCCESS: :success
+        FAILED: :failed
+
+        def self?.values: -> ::Array[Telnyx::Models::CampaignStatusUpdateWebhookEvent::status]
       end
 
-      type campaign_suspended_event =
-        {
-          campaign_id: String,
-          description: String,
-          status: Telnyx::Models::CampaignStatusUpdateWebhookEvent::CampaignSuspendedEvent::status,
-          type: Telnyx::Models::CampaignStatusUpdateWebhookEvent::CampaignSuspendedEvent::type_
-        }
+      type type_ =
+        :TELNYX_EVENT
+        | :REGISTRATION
+        | :MNO_REVIEW
+        | :TELNYX_REVIEW
+        | :NUMBER_POOL_PROVISIONED
+        | :NUMBER_POOL_DEPROVISIONED
+        | :TCR_EVENT
+        | :VERIFIED
 
-      class CampaignSuspendedEvent < Telnyx::Internal::Type::BaseModel
-        attr_reader campaign_id: String?
+      module Type
+        extend Telnyx::Internal::Type::Enum
 
-        def campaign_id=: (String) -> String
+        TELNYX_EVENT: :TELNYX_EVENT
+        REGISTRATION: :REGISTRATION
+        MNO_REVIEW: :MNO_REVIEW
+        TELNYX_REVIEW: :TELNYX_REVIEW
+        NUMBER_POOL_PROVISIONED: :NUMBER_POOL_PROVISIONED
+        NUMBER_POOL_DEPROVISIONED: :NUMBER_POOL_DEPROVISIONED
+        TCR_EVENT: :TCR_EVENT
+        VERIFIED: :VERIFIED
 
-        attr_reader description: String?
-
-        def description=: (String) -> String
-
-        attr_reader status: Telnyx::Models::CampaignStatusUpdateWebhookEvent::CampaignSuspendedEvent::status?
-
-        def status=: (
-          Telnyx::Models::CampaignStatusUpdateWebhookEvent::CampaignSuspendedEvent::status
-        ) -> Telnyx::Models::CampaignStatusUpdateWebhookEvent::CampaignSuspendedEvent::status
-
-        attr_reader type: Telnyx::Models::CampaignStatusUpdateWebhookEvent::CampaignSuspendedEvent::type_?
-
-        def type=: (
-          Telnyx::Models::CampaignStatusUpdateWebhookEvent::CampaignSuspendedEvent::type_
-        ) -> Telnyx::Models::CampaignStatusUpdateWebhookEvent::CampaignSuspendedEvent::type_
-
-        def initialize: (
-          ?campaign_id: String,
-          ?description: String,
-          ?status: Telnyx::Models::CampaignStatusUpdateWebhookEvent::CampaignSuspendedEvent::status,
-          ?type: Telnyx::Models::CampaignStatusUpdateWebhookEvent::CampaignSuspendedEvent::type_
-        ) -> void
-
-        def to_hash: -> {
-          campaign_id: String,
-          description: String,
-          status: Telnyx::Models::CampaignStatusUpdateWebhookEvent::CampaignSuspendedEvent::status,
-          type: Telnyx::Models::CampaignStatusUpdateWebhookEvent::CampaignSuspendedEvent::type_
-        }
-
-        type status = :DORMANT
-
-        module Status
-          extend Telnyx::Internal::Type::Enum
-
-          DORMANT: :DORMANT
-
-          def self?.values: -> ::Array[Telnyx::Models::CampaignStatusUpdateWebhookEvent::CampaignSuspendedEvent::status]
-        end
-
-        type type_ = :TELNYX_EVENT
-
-        module Type
-          extend Telnyx::Internal::Type::Enum
-
-          TELNYX_EVENT: :TELNYX_EVENT
-
-          def self?.values: -> ::Array[Telnyx::Models::CampaignStatusUpdateWebhookEvent::CampaignSuspendedEvent::type_]
-        end
+        def self?.values: -> ::Array[Telnyx::Models::CampaignStatusUpdateWebhookEvent::type_]
       end
-
-      def self?.variants: -> ::Array[Telnyx::Models::campaign_status_update_webhook_event]
     end
   end
 end
