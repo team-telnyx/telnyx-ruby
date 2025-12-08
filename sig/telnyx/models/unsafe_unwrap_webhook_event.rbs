@@ -37,8 +37,7 @@ module Telnyx
       | Telnyx::CallStreamingFailedWebhookEvent
       | Telnyx::CallStreamingStartedWebhookEvent
       | Telnyx::CallStreamingStoppedWebhookEvent
-      | Telnyx::UnsafeUnwrapWebhookEvent::CampaignStatusUpdateEvent
-      | Telnyx::UnsafeUnwrapWebhookEvent::CampaignSuspendedEvent
+      | Telnyx::CampaignStatusUpdateWebhookEvent
       | Telnyx::ConferenceCreatedWebhookEvent
       | Telnyx::ConferenceEndedWebhookEvent
       | Telnyx::ConferenceFloorChangedWebhookEvent
@@ -69,117 +68,6 @@ module Telnyx
 
     module UnsafeUnwrapWebhookEvent
       extend Telnyx::Internal::Type::Union
-
-      type campaign_status_update_event =
-        {
-          brand_id: String,
-          campaign_id: String,
-          create_date: String,
-          csp_id: String,
-          is_t_mobile_registered: bool
-        }
-
-      class CampaignStatusUpdateEvent < Telnyx::Internal::Type::BaseModel
-        attr_reader brand_id: String?
-
-        def brand_id=: (String) -> String
-
-        attr_reader campaign_id: String?
-
-        def campaign_id=: (String) -> String
-
-        attr_reader create_date: String?
-
-        def create_date=: (String) -> String
-
-        attr_reader csp_id: String?
-
-        def csp_id=: (String) -> String
-
-        attr_reader is_t_mobile_registered: bool?
-
-        def is_t_mobile_registered=: (bool) -> bool
-
-        def initialize: (
-          ?brand_id: String,
-          ?campaign_id: String,
-          ?create_date: String,
-          ?csp_id: String,
-          ?is_t_mobile_registered: bool
-        ) -> void
-
-        def to_hash: -> {
-          brand_id: String,
-          campaign_id: String,
-          create_date: String,
-          csp_id: String,
-          is_t_mobile_registered: bool
-        }
-      end
-
-      type campaign_suspended_event =
-        {
-          campaign_id: String,
-          description: String,
-          status: Telnyx::Models::UnsafeUnwrapWebhookEvent::CampaignSuspendedEvent::status,
-          type: Telnyx::Models::UnsafeUnwrapWebhookEvent::CampaignSuspendedEvent::type_
-        }
-
-      class CampaignSuspendedEvent < Telnyx::Internal::Type::BaseModel
-        attr_reader campaign_id: String?
-
-        def campaign_id=: (String) -> String
-
-        attr_reader description: String?
-
-        def description=: (String) -> String
-
-        attr_reader status: Telnyx::Models::UnsafeUnwrapWebhookEvent::CampaignSuspendedEvent::status?
-
-        def status=: (
-          Telnyx::Models::UnsafeUnwrapWebhookEvent::CampaignSuspendedEvent::status
-        ) -> Telnyx::Models::UnsafeUnwrapWebhookEvent::CampaignSuspendedEvent::status
-
-        attr_reader type: Telnyx::Models::UnsafeUnwrapWebhookEvent::CampaignSuspendedEvent::type_?
-
-        def type=: (
-          Telnyx::Models::UnsafeUnwrapWebhookEvent::CampaignSuspendedEvent::type_
-        ) -> Telnyx::Models::UnsafeUnwrapWebhookEvent::CampaignSuspendedEvent::type_
-
-        def initialize: (
-          ?campaign_id: String,
-          ?description: String,
-          ?status: Telnyx::Models::UnsafeUnwrapWebhookEvent::CampaignSuspendedEvent::status,
-          ?type: Telnyx::Models::UnsafeUnwrapWebhookEvent::CampaignSuspendedEvent::type_
-        ) -> void
-
-        def to_hash: -> {
-          campaign_id: String,
-          description: String,
-          status: Telnyx::Models::UnsafeUnwrapWebhookEvent::CampaignSuspendedEvent::status,
-          type: Telnyx::Models::UnsafeUnwrapWebhookEvent::CampaignSuspendedEvent::type_
-        }
-
-        type status = :DORMANT
-
-        module Status
-          extend Telnyx::Internal::Type::Enum
-
-          DORMANT: :DORMANT
-
-          def self?.values: -> ::Array[Telnyx::Models::UnsafeUnwrapWebhookEvent::CampaignSuspendedEvent::status]
-        end
-
-        type type_ = :TELNYX_EVENT
-
-        module Type
-          extend Telnyx::Internal::Type::Enum
-
-          TELNYX_EVENT: :TELNYX_EVENT
-
-          def self?.values: -> ::Array[Telnyx::Models::UnsafeUnwrapWebhookEvent::CampaignSuspendedEvent::type_]
-        end
-      end
 
       def self?.variants: -> ::Array[Telnyx::Models::unsafe_unwrap_webhook_event]
     end

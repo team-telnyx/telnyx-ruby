@@ -100,7 +100,7 @@ class Telnyx::Test::Resources::MessagingHostedNumberOrdersTest < Telnyx::Test::R
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[union: Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data])
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data])
       }
     end
   end

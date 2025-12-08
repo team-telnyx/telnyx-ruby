@@ -6,90 +6,63 @@ module Telnyx
     class MessagingHostedNumberOrderCreateVerificationCodesResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Array<Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeSuccess, Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeError>]
+      #   @return [Array<Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data>]
       required :data,
-               -> { Telnyx::Internal::Type::ArrayOf[union: Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data] }
+               -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data] }
 
       # @!method initialize(data:)
-      #   @param data [Array<Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeSuccess, Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeError>]
+      #   @param data [Array<Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data>]
 
-      # Successful verification code creation response
-      module Data
-        extend Telnyx::Internal::Type::Union
+      class Data < Telnyx::Internal::Type::BaseModel
+        # @!attribute phone_number
+        #   Phone number for which the verification code was created
+        #
+        #   @return [String]
+        required :phone_number, String
 
-        # Successful verification code creation response
-        variant -> { Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeSuccess }
+        # @!attribute error
+        #   Error message describing why the verification code creation failed
+        #
+        #   @return [String, nil]
+        optional :error, String
 
-        # Failed verification code creation response
-        variant -> { Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeError }
+        # @!attribute type
+        #   Type of verification method used
+        #
+        #   @return [Symbol, Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::Type, nil]
+        optional :type,
+                 enum: -> { Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::Type }
 
-        class VerificationCodeSuccess < Telnyx::Internal::Type::BaseModel
-          # @!attribute phone_number
-          #   Phone number for which the verification code was created
-          #
-          #   @return [String]
-          required :phone_number, String
+        # @!attribute verification_code_id
+        #   Unique identifier for the verification code
+        #
+        #   @return [String, nil]
+        optional :verification_code_id, String
 
-          # @!attribute type
-          #   Type of verification method used
-          #
-          #   @return [Symbol, Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeSuccess::Type]
-          required :type,
-                   enum: -> { Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeSuccess::Type }
+        # @!method initialize(phone_number:, error: nil, type: nil, verification_code_id: nil)
+        #   Verification code result response
+        #
+        #   @param phone_number [String] Phone number for which the verification code was created
+        #
+        #   @param error [String] Error message describing why the verification code creation failed
+        #
+        #   @param type [Symbol, Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::Type] Type of verification method used
+        #
+        #   @param verification_code_id [String] Unique identifier for the verification code
 
-          # @!attribute verification_code_id
-          #   Unique identifier for the verification code
-          #
-          #   @return [String]
-          required :verification_code_id, String
+        # Type of verification method used
+        #
+        # @see Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data#type
+        module Type
+          extend Telnyx::Internal::Type::Enum
 
-          # @!method initialize(phone_number:, type:, verification_code_id:)
-          #   Successful verification code creation response
-          #
-          #   @param phone_number [String] Phone number for which the verification code was created
-          #
-          #   @param type [Symbol, Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeSuccess::Type] Type of verification method used
-          #
-          #   @param verification_code_id [String] Unique identifier for the verification code
+          SMS = :sms
+          CALL = :call
+          FLASHCALL = :flashcall
 
-          # Type of verification method used
-          #
-          # @see Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeSuccess#type
-          module Type
-            extend Telnyx::Internal::Type::Enum
-
-            SMS = :sms
-            CALL = :call
-            FLASHCALL = :flashcall
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
-
-        class VerificationCodeError < Telnyx::Internal::Type::BaseModel
-          # @!attribute error
-          #   Error message describing why the verification code creation failed
-          #
-          #   @return [String]
-          required :error, String
-
-          # @!attribute phone_number
-          #   Phone number for which the verification code creation failed
-          #
-          #   @return [String]
-          required :phone_number, String
-
-          # @!method initialize(error:, phone_number:)
-          #   Failed verification code creation response
-          #
-          #   @param error [String] Error message describing why the verification code creation failed
-          #
-          #   @param phone_number [String] Phone number for which the verification code creation failed
-        end
-
-        # @!method self.variants
-        #   @return [Array(Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeSuccess, Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::VerificationCodeError)]
       end
     end
   end

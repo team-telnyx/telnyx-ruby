@@ -16,10 +16,12 @@ class Telnyx::Test::Resources::PhoneNumberAssignmentByProfileTest < Telnyx::Test
     end
 
     assert_pattern do
-      case response
-      in Telnyx::Models::PhoneNumberAssignmentByProfileAssignResponse::AssignProfileToCampaignResponse
-      in Telnyx::Models::PhoneNumberAssignmentByProfileAssignResponse::SettingsDataErrorMessage
-      end
+      response => {
+        messaging_profile_id: String,
+        task_id: String,
+        campaign_id: String | nil,
+        tcr_campaign_id: String | nil
+      }
     end
   end
 

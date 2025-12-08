@@ -24,7 +24,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::PhoneNumberAssignmentByProfileAssignResponse::AssignProfileToCampaignResponse, Telnyx::Models::PhoneNumberAssignmentByProfileAssignResponse::SettingsDataErrorMessage]
+      # @return [Telnyx::Models::PhoneNumberAssignmentByProfileAssignResponse]
       #
       # @see Telnyx::Models::PhoneNumberAssignmentByProfileAssignParams
       def assign(params)

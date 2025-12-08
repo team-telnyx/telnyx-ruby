@@ -16,9 +16,7 @@ module Telnyx
           campaign_id: String,
           tcr_campaign_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Models::PhoneNumberAssignmentByProfileAssignResponse::Variants
-        )
+        ).returns(Telnyx::Models::PhoneNumberAssignmentByProfileAssignResponse)
       end
       def assign(
         # The ID of the messaging profile that you want to link to the specified campaign.
