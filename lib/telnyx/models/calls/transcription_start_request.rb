@@ -27,7 +27,7 @@ module Telnyx
 
         # @!attribute transcription_engine_config
         #
-        #   @return [::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure, ::Telnyx::Models::Calls::TranscriptionEngineAConfig, ::Telnyx::Models::Calls::TranscriptionEngineBConfig, nil]
+        #   @return [::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure, ::Telnyx::Models::Calls::TranscriptionEngineAConfig, ::Telnyx::Models::Calls::TranscriptionEngineBConfig, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config, nil]
         optional :transcription_engine_config,
                  union: -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig }
 
@@ -49,7 +49,7 @@ module Telnyx
         #
         #   @param transcription_engine [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngine] Engine to use for speech recognition. Legacy values `A` - `Google`, `B` - `Telny
         #
-        #   @param transcription_engine_config [::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure, ::Telnyx::Models::Calls::TranscriptionEngineAConfig, ::Telnyx::Models::Calls::TranscriptionEngineBConfig]
+        #   @param transcription_engine_config [::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure, ::Telnyx::Models::Calls::TranscriptionEngineAConfig, ::Telnyx::Models::Calls::TranscriptionEngineBConfig, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config]
         #
         #   @param transcription_tracks [String] Indicates which leg of the call will be transcribed. Use `inbound` for the leg t
 
@@ -81,13 +81,15 @@ module Telnyx
 
           variant :Telnyx, -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx }
 
-          variant :Deepgram, -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram }
-
           variant :Azure, -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure }
 
           variant :A, -> { ::Telnyx::Calls::TranscriptionEngineAConfig }
 
           variant :B, -> { ::Telnyx::Calls::TranscriptionEngineBConfig }
+
+          variant -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config }
+
+          variant -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config }
 
           class Google < ::Telnyx::Internal::Type::BaseModel
             # @!attribute enable_speaker_diarization
@@ -291,19 +293,17 @@ module Telnyx
             end
           end
 
-          class Deepgram < ::Telnyx::Internal::Type::BaseModel
+          class DeepgramNova2Config < ::Telnyx::Internal::Type::BaseModel
             # @!attribute transcription_engine
-            #   Engine identifier for Deepgram transcription service
             #
             #   @return [Symbol, :Deepgram]
             required :transcription_engine, const: :Deepgram
 
             # @!attribute transcription_model
-            #   The model to use for transcription.
             #
-            #   @return [Symbol, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::TranscriptionModel]
+            #   @return [Symbol, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::TranscriptionModel]
             required :transcription_model,
-                     enum: -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::TranscriptionModel }
+                     enum: -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::TranscriptionModel }
 
             # @!attribute keywords_boosting
             #   Keywords and their respective intensifiers (boosting values) to improve
@@ -314,43 +314,38 @@ module Telnyx
             optional :keywords_boosting, ::Telnyx::Internal::Type::HashOf[Float]
 
             # @!attribute language
-            #   Language to use for speech recognition. Available languages depend on the
-            #   selected model.
+            #   Language to use for speech recognition with nova-2 model
             #
-            #   @return [Symbol, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language, nil]
+            #   @return [Symbol, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language, nil]
             optional :language,
-                     enum: -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language }
+                     enum: -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language }
 
             # @!method initialize(transcription_model:, keywords_boosting: nil, language: nil, transcription_engine: :Deepgram)
             #   Some parameter documentations has been truncated, see
-            #   {::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram}
+            #   {::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config}
             #   for more details.
             #
-            #   @param transcription_model [Symbol, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::TranscriptionModel] The model to use for transcription.
+            #   @param transcription_model [Symbol, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::TranscriptionModel]
             #
             #   @param keywords_boosting [Hash{Symbol=>Float}] Keywords and their respective intensifiers (boosting values) to improve transcri
             #
-            #   @param language [Symbol, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language] Language to use for speech recognition. Available languages depend on the select
+            #   @param language [Symbol, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language] Language to use for speech recognition with nova-2 model
             #
-            #   @param transcription_engine [Symbol, :Deepgram] Engine identifier for Deepgram transcription service
+            #   @param transcription_engine [Symbol, :Deepgram]
 
-            # The model to use for transcription.
-            #
-            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram#transcription_model
+            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config#transcription_model
             module TranscriptionModel
               extend ::Telnyx::Internal::Type::Enum
 
               DEEPGRAM_NOVA_2 = :"deepgram/nova-2"
-              DEEPGRAM_NOVA_3 = :"deepgram/nova-3"
 
               # @!method self.values
               #   @return [Array<Symbol>]
             end
 
-            # Language to use for speech recognition. Available languages depend on the
-            # selected model.
+            # Language to use for speech recognition with nova-2 model
             #
-            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram#language
+            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config#language
             module Language
               extend ::Telnyx::Internal::Type::Enum
 
@@ -407,6 +402,88 @@ module Telnyx
               TR = :tr
               UK = :uk
               VI = :vi
+              AUTO_DETECT = :auto_detect
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
+          class DeepgramNova3Config < ::Telnyx::Internal::Type::BaseModel
+            # @!attribute transcription_engine
+            #
+            #   @return [Symbol, :Deepgram]
+            required :transcription_engine, const: :Deepgram
+
+            # @!attribute transcription_model
+            #
+            #   @return [Symbol, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::TranscriptionModel]
+            required :transcription_model,
+                     enum: -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::TranscriptionModel }
+
+            # @!attribute keywords_boosting
+            #   Keywords and their respective intensifiers (boosting values) to improve
+            #   transcription accuracy for specific words or phrases. The intensifier should be
+            #   a numeric value. Example: `{"snuffleupagus": 5, "systrom": 2, "krieger": 1}`.
+            #
+            #   @return [Hash{Symbol=>Float}, nil]
+            optional :keywords_boosting, ::Telnyx::Internal::Type::HashOf[Float]
+
+            # @!attribute language
+            #   Language to use for speech recognition with nova-3 model
+            #
+            #   @return [Symbol, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language, nil]
+            optional :language,
+                     enum: -> { ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language }
+
+            # @!method initialize(transcription_model:, keywords_boosting: nil, language: nil, transcription_engine: :Deepgram)
+            #   Some parameter documentations has been truncated, see
+            #   {::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config}
+            #   for more details.
+            #
+            #   @param transcription_model [Symbol, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::TranscriptionModel]
+            #
+            #   @param keywords_boosting [Hash{Symbol=>Float}] Keywords and their respective intensifiers (boosting values) to improve transcri
+            #
+            #   @param language [Symbol, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language] Language to use for speech recognition with nova-3 model
+            #
+            #   @param transcription_engine [Symbol, :Deepgram]
+
+            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config#transcription_model
+            module TranscriptionModel
+              extend ::Telnyx::Internal::Type::Enum
+
+              DEEPGRAM_NOVA_3 = :"deepgram/nova-3"
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Language to use for speech recognition with nova-3 model
+            #
+            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config#language
+            module Language
+              extend ::Telnyx::Internal::Type::Enum
+
+              EN = :en
+              EN_US = :"en-US"
+              EN_AU = :"en-AU"
+              EN_GB = :"en-GB"
+              EN_IN = :"en-IN"
+              EN_NZ = :"en-NZ"
+              DE = :de
+              NL = :nl
+              SV = :sv
+              SV_SE = :"sv-SE"
+              DA = :da
+              DA_DK = :"da-DK"
+              ES = :es
+              ES_419 = :"es-419"
+              FR = :fr
+              FR_CA = :"fr-CA"
+              PT = :pt
+              PT_BR = :"pt-BR"
+              PT_PT = :"pt-PT"
               AUTO_DETECT = :auto_detect
 
               # @!method self.values
@@ -562,7 +639,7 @@ module Telnyx
           end
 
           # @!method self.variants
-          #   @return [Array(::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig)]
+          #   @return [Array(::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Azure, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config, ::Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config)]
         end
       end
     end
