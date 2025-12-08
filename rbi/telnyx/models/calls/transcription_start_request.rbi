@@ -746,6 +746,15 @@ module Telnyx
             end
             attr_accessor :transcription_model
 
+            # Keywords and their respective intensifiers (boosting values) to improve
+            # transcription accuracy for specific words or phrases. The intensifier should be
+            # a numeric value. Example: `{"snuffleupagus": 5, "systrom": 2, "krieger": 1}`.
+            sig { returns(T.nilable(T::Hash[Symbol, Float])) }
+            attr_reader :keywords_boosting
+
+            sig { params(keywords_boosting: T::Hash[Symbol, Float]).void }
+            attr_writer :keywords_boosting
+
             # Language to use for speech recognition. Available languages depend on the
             # selected model.
             sig do
@@ -769,6 +778,7 @@ module Telnyx
               params(
                 transcription_model:
                   ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::TranscriptionModel::OrSymbol,
+                keywords_boosting: T::Hash[Symbol, Float],
                 language:
                   ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::OrSymbol,
                 transcription_engine: Symbol
@@ -777,6 +787,10 @@ module Telnyx
             def self.new(
               # The model to use for transcription.
               transcription_model:,
+              # Keywords and their respective intensifiers (boosting values) to improve
+              # transcription accuracy for specific words or phrases. The intensifier should be
+              # a numeric value. Example: `{"snuffleupagus": 5, "systrom": 2, "krieger": 1}`.
+              keywords_boosting: nil,
               # Language to use for speech recognition. Available languages depend on the
               # selected model.
               language: nil,
@@ -791,6 +805,7 @@ module Telnyx
                   transcription_engine: Symbol,
                   transcription_model:
                     ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::TranscriptionModel::OrSymbol,
+                  keywords_boosting: T::Hash[Symbol, Float],
                   language:
                     ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::Language::OrSymbol
                 }
