@@ -27,7 +27,7 @@ module Telnyx
           ?top_p: Float,
           ?use_beam_search: bool,
           ?request_options: Telnyx::request_opts
-        ) -> top
+        ) -> Telnyx::Models::AI::chat_create_completion_response
 
         def initialize: (client: Telnyx::Client) -> void
       end

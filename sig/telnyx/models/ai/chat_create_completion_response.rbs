@@ -1,6 +1,8 @@
 module Telnyx
   module Models
     module AI
+      type chat_create_completion_response = ::Hash[Symbol, top]
+
       ChatCreateCompletionResponse: Telnyx::Internal::Type::Converter
     end
   end

@@ -42,7 +42,7 @@ module Telnyx
             top_p: Float,
             use_beam_search: T::Boolean,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(T.anything)
+          ).returns(T::Hash[Symbol, T.anything])
         end
         def create_completion(
           # A list of the previous chat messages for context.
