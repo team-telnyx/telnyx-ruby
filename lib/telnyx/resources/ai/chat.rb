@@ -61,7 +61,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Object]
+        # @return [Hash{Symbol=>Object}]
         #
         # @see Telnyx::Models::AI::ChatCreateCompletionParams
         def create_completion(params)
@@ -70,7 +70,7 @@ module Telnyx
             method: :post,
             path: "ai/chat/completions",
             body: parsed,
-            model: Telnyx::Internal::Type::Unknown,
+            model: Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
             options: options
           )
         end

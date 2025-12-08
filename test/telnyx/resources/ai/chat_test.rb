@@ -15,7 +15,7 @@ class Telnyx::Test::Resources::AI::ChatTest < Telnyx::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown])
     end
   end
 end
