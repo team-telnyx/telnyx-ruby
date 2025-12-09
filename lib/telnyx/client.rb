@@ -489,6 +489,9 @@ module Telnyx
     # @return [Telnyx::Resources::MobileVoiceConnections]
     attr_reader :mobile_voice_connections
 
+    # @return [Telnyx::Resources::PartnerCampaign]
+    attr_reader :partner_campaign
+
     # @return [Telnyx::Resources::Number10dlc]
     attr_reader :number_10dlc
 
@@ -707,6 +710,7 @@ module Telnyx
       @inexplicit_number_orders = Telnyx::Resources::InexplicitNumberOrders.new(client: self)
       @mobile_phone_numbers = Telnyx::Resources::MobilePhoneNumbers.new(client: self)
       @mobile_voice_connections = Telnyx::Resources::MobileVoiceConnections.new(client: self)
+      @partner_campaign = Telnyx::Resources::PartnerCampaign.new(client: self)
       @number_10dlc = Telnyx::Resources::Number10dlc.new(client: self)
     end
   end
