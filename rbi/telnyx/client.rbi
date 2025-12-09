@@ -484,6 +484,9 @@ module Telnyx
     sig { returns(Telnyx::Resources::MobileVoiceConnections) }
     attr_reader :mobile_voice_connections
 
+    sig { returns(Telnyx::Resources::PartnerCampaign) }
+    attr_reader :partner_campaign
+
     sig { returns(Telnyx::Resources::Number10dlc) }
     attr_reader :number_10dlc
 

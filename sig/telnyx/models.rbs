@@ -881,9 +881,25 @@ module Telnyx
 
   class PaginationMetaOAuth = Telnyx::Models::PaginationMetaOAuth
 
+  class PartnerCampaignListParams = Telnyx::Models::PartnerCampaignListParams
+
+  class PartnerCampaignListSharedByMeParams = Telnyx::Models::PartnerCampaignListSharedByMeParams
+
+  class PartnerCampaignRetrieveParams = Telnyx::Models::PartnerCampaignRetrieveParams
+
+  class PartnerCampaignRetrieveSharingStatusParams = Telnyx::Models::PartnerCampaignRetrieveSharingStatusParams
+
+  class PartnerCampaignUpdateParams = Telnyx::Models::PartnerCampaignUpdateParams
+
   module Payment = Telnyx::Models::Payment
 
   class PhoneNumber = Telnyx::Models::PhoneNumber
+
+  class PhoneNumberAssignmentByProfileAssignParams = Telnyx::Models::PhoneNumberAssignmentByProfileAssignParams
+
+  class PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusParams = Telnyx::Models::PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusParams
+
+  class PhoneNumberAssignmentByProfileRetrieveStatusParams = Telnyx::Models::PhoneNumberAssignmentByProfileRetrieveStatusParams
 
   module PhoneNumberBlocks = Telnyx::Models::PhoneNumberBlocks
 

@@ -1,0 +1,77 @@
+module Telnyx
+  module Models
+    type partner_campaign_list_params =
+      {
+        page: Integer,
+        records_per_page: Integer,
+        sort: Telnyx::Models::PartnerCampaignListParams::sort
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class PartnerCampaignListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader page: Integer?
+
+      def page=: (Integer) -> Integer
+
+      attr_reader records_per_page: Integer?
+
+      def records_per_page=: (Integer) -> Integer
+
+      attr_reader sort: Telnyx::Models::PartnerCampaignListParams::sort?
+
+      def sort=: (
+        Telnyx::Models::PartnerCampaignListParams::sort
+      ) -> Telnyx::Models::PartnerCampaignListParams::sort
+
+      def initialize: (
+        ?page: Integer,
+        ?records_per_page: Integer,
+        ?sort: Telnyx::Models::PartnerCampaignListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        page: Integer,
+        records_per_page: Integer,
+        sort: Telnyx::Models::PartnerCampaignListParams::sort,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type sort =
+        :assignedPhoneNumbersCount
+        | :"-assignedPhoneNumbersCount"
+        | :brandDisplayName
+        | :"-brandDisplayName"
+        | :tcrBrandId
+        | :"-tcrBranId"
+        | :tcrCampaignId
+        | :"-tcrCampaignId"
+        | :createdAt
+        | :"-createdAt"
+        | :campaignStatus
+        | :"-campaignStatus"
+
+      module Sort
+        extend Telnyx::Internal::Type::Enum
+
+        ASSIGNED_PHONE_NUMBERS_COUNT: :assignedPhoneNumbersCount
+        ASSIGNED_PHONE_NUMBERS_COUNT_DESC: :"-assignedPhoneNumbersCount"
+        BRAND_DISPLAY_NAME: :brandDisplayName
+        BRAND_DISPLAY_NAME_DESC: :"-brandDisplayName"
+        TCR_BRAND_ID: :tcrBrandId
+        TCR_BRAN_ID_DESC: :"-tcrBranId"
+        TCR_CAMPAIGN_ID: :tcrCampaignId
+        TCR_CAMPAIGN_ID_DESC: :"-tcrCampaignId"
+        CREATED_AT: :createdAt
+        CREATED_AT_DESC: :"-createdAt"
+        CAMPAIGN_STATUS: :campaignStatus
+        CAMPAIGN_STATUS_DESC: :"-campaignStatus"
+
+        def self?.values: -> ::Array[Telnyx::Models::PartnerCampaignListParams::sort]
+      end
+    end
+  end
+end

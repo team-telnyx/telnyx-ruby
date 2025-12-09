@@ -1,0 +1,42 @@
+module Telnyx
+  module Models
+    type phone_number_assignment_by_profile_retrieve_phone_number_status_response =
+      {
+        records: ::Array[Telnyx::Models::PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusResponse::Record]
+      }
+
+    class PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor records: ::Array[Telnyx::Models::PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusResponse::Record]
+
+      def initialize: (
+        records: ::Array[Telnyx::Models::PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusResponse::Record]
+      ) -> void
+
+      def to_hash: -> {
+        records: ::Array[Telnyx::Models::PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusResponse::Record]
+      }
+
+      type record = { phone_number: String, status: String, task_id: String }
+
+      class Record < Telnyx::Internal::Type::BaseModel
+        attr_accessor phone_number: String
+
+        attr_accessor status: String
+
+        attr_accessor task_id: String
+
+        def initialize: (
+          phone_number: String,
+          status: String,
+          task_id: String
+        ) -> void
+
+        def to_hash: -> {
+          phone_number: String,
+          status: String,
+          task_id: String
+        }
+      end
+    end
+  end
+end
