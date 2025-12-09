@@ -2,11 +2,6 @@ module Telnyx
   module Resources
     class Campaign
       class Usecase
-        def get_cost: (
-          usecase: String,
-          ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Campaign::UsecaseGetCostResponse
-
         def initialize: (client: Telnyx::Client) -> void
       end
     end

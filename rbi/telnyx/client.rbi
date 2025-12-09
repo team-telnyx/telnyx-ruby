@@ -484,6 +484,9 @@ module Telnyx
     sig { returns(Telnyx::Resources::MobileVoiceConnections) }
     attr_reader :mobile_voice_connections
 
+    sig { returns(Telnyx::Resources::Number10dlc) }
+    attr_reader :number_10dlc
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

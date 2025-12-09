@@ -324,6 +324,8 @@ module Telnyx
 
     attr_reader mobile_voice_connections: Telnyx::Resources::MobileVoiceConnections
 
+    attr_reader number_10dlc: Telnyx::Resources::Number10dlc
+
     private def auth_headers: -> ::Hash[String, String]
 
     def base_url_overridden?: -> bool

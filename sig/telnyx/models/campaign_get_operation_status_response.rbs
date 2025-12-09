@@ -1,7 +1,0 @@
-module Telnyx
-  module Models
-    type campaign_get_operation_status_response = ::Hash[Symbol, top]
-
-    CampaignGetOperationStatusResponse: Telnyx::Internal::Type::Converter
-  end
-end

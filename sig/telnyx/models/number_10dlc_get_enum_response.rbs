@@ -1,0 +1,50 @@
+module Telnyx
+  module Models
+    type number10dlc_get_enum_response =
+      ::Array[String]
+      | ::Array[::Hash[Symbol, top]]
+      | ::Hash[Symbol, top]
+      | Telnyx::Models::Number10dlcGetEnumResponse::EnumPaginatedResponse
+
+    module Number10dlcGetEnumResponse
+      extend Telnyx::Internal::Type::Union
+
+      type enum_paginated_response =
+        {
+          page: Integer,
+          records: ::Array[::Hash[Symbol, top]],
+          total_records: Integer
+        }
+
+      class EnumPaginatedResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor page: Integer
+
+        attr_accessor records: ::Array[::Hash[Symbol, top]]
+
+        attr_accessor total_records: Integer
+
+        def initialize: (
+          page: Integer,
+          records: ::Array[::Hash[Symbol, top]],
+          total_records: Integer
+        ) -> void
+
+        def to_hash: -> {
+          page: Integer,
+          records: ::Array[::Hash[Symbol, top]],
+          total_records: Integer
+        }
+      end
+
+      def self?.variants: -> ::Array[Telnyx::Models::number10dlc_get_enum_response]
+
+      StringArray: Telnyx::Internal::Type::Converter
+
+      EnumObjectListResponseArray: Telnyx::Internal::Type::Converter
+
+      EnumObjectToStringResponseMap: Telnyx::Internal::Type::Converter
+
+      EnumObjecToObjecttResponseMap: Telnyx::Internal::Type::Converter
+    end
+  end
+end
