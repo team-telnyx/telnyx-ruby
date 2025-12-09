@@ -47,7 +47,7 @@ class Telnyx::Test::Resources::Messaging::Rcs::AgentsTest < Telnyx::Test::Resour
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::RcsAgent]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+        meta: Telnyx::Models::Messaging::Rcs::AgentListResponse::Meta | nil
       }
     end
   end

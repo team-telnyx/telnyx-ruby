@@ -15,7 +15,7 @@ class Telnyx::Test::Resources::MessagingURLDomainsTest < Telnyx::Test::ResourceT
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::MessagingURLDomainListResponse::Data]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+        meta: Telnyx::Models::MessagingURLDomainListResponse::Meta | nil
       }
     end
   end

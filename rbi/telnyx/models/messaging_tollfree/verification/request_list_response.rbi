@@ -16,31 +16,16 @@ module Telnyx
           # The records yielded by this request
           sig do
             returns(
-              T.nilable(
-                T::Array[
-                  Telnyx::MessagingTollfree::Verification::VerificationRequestStatus
-                ]
-              )
+              T::Array[
+                Telnyx::MessagingTollfree::Verification::VerificationRequestStatus
+              ]
             )
           end
-          attr_reader :records
-
-          sig do
-            params(
-              records:
-                T::Array[
-                  Telnyx::MessagingTollfree::Verification::VerificationRequestStatus::OrHash
-                ]
-            ).void
-          end
-          attr_writer :records
+          attr_accessor :records
 
           # The total amount of records for these query parameters
-          sig { returns(T.nilable(Integer)) }
-          attr_reader :total_records
-
-          sig { params(total_records: Integer).void }
-          attr_writer :total_records
+          sig { returns(Integer) }
+          attr_accessor :total_records
 
           # A paginated response
           sig do
@@ -54,9 +39,9 @@ module Telnyx
           end
           def self.new(
             # The records yielded by this request
-            records: nil,
+            records:,
             # The total amount of records for these query parameters
-            total_records: nil
+            total_records:
           )
           end
 

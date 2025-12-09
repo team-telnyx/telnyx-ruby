@@ -63,7 +63,7 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingProfile]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+        meta: Telnyx::Models::MessagingProfileListResponse::Meta | nil
       }
     end
   end
@@ -96,7 +96,7 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumberWithMessagingSettings]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+        meta: Telnyx::Models::MessagingProfileListPhoneNumbersResponse::Meta | nil
       }
     end
   end
@@ -113,7 +113,7 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::ShortCode]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+        meta: Telnyx::Models::MessagingProfileListShortCodesResponse::Meta | nil
       }
     end
   end

@@ -4,7 +4,7 @@ module Telnyx
       type messaging_list_response =
         {
           data: ::Array[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data],
-          meta: Telnyx::PaginationMeta
+          meta: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Meta
         }
 
       class MessagingListResponse < Telnyx::Internal::Type::BaseModel
@@ -14,18 +14,20 @@ module Telnyx
           ::Array[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data]
         ) -> ::Array[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data]
 
-        attr_reader meta: Telnyx::PaginationMeta?
+        attr_reader meta: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Meta?
 
-        def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+        def meta=: (
+          Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Meta
+        ) -> Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Meta
 
         def initialize: (
           ?data: ::Array[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data],
-          ?meta: Telnyx::PaginationMeta
+          ?meta: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Meta
         ) -> void
 
         def to_hash: -> {
           data: ::Array[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data],
-          meta: Telnyx::PaginationMeta
+          meta: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Meta
         }
 
         type data =
@@ -150,6 +152,38 @@ module Telnyx
 
             def self?.values: -> ::Array[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::type_]
           end
+        end
+
+        type meta =
+          {
+            page_number: Integer,
+            page_size: Integer,
+            total_pages: Integer,
+            total_results: Integer
+          }
+
+        class Meta < Telnyx::Internal::Type::BaseModel
+          attr_accessor page_number: Integer
+
+          attr_accessor page_size: Integer
+
+          attr_accessor total_pages: Integer
+
+          attr_accessor total_results: Integer
+
+          def initialize: (
+            page_number: Integer,
+            page_size: Integer,
+            total_pages: Integer,
+            total_results: Integer
+          ) -> void
+
+          def to_hash: -> {
+            page_number: Integer,
+            page_size: Integer,
+            total_pages: Integer,
+            total_results: Integer
+          }
         end
       end
     end

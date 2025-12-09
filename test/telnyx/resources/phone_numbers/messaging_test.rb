@@ -47,7 +47,7 @@ class Telnyx::Test::Resources::PhoneNumbers::MessagingTest < Telnyx::Test::Resou
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumberWithMessagingSettings]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+        meta: Telnyx::Models::PhoneNumbers::MessagingListResponse::Meta | nil
       }
     end
   end

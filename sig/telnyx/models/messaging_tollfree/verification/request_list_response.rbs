@@ -9,19 +9,13 @@ module Telnyx
           }
 
         class RequestListResponse < Telnyx::Internal::Type::BaseModel
-          attr_reader records: ::Array[Telnyx::MessagingTollfree::Verification::VerificationRequestStatus]?
+          attr_accessor records: ::Array[Telnyx::MessagingTollfree::Verification::VerificationRequestStatus]
 
-          def records=: (
-            ::Array[Telnyx::MessagingTollfree::Verification::VerificationRequestStatus]
-          ) -> ::Array[Telnyx::MessagingTollfree::Verification::VerificationRequestStatus]
-
-          attr_reader total_records: Integer?
-
-          def total_records=: (Integer) -> Integer
+          attr_accessor total_records: Integer
 
           def initialize: (
-            ?records: ::Array[Telnyx::MessagingTollfree::Verification::VerificationRequestStatus],
-            ?total_records: Integer
+            records: ::Array[Telnyx::MessagingTollfree::Verification::VerificationRequestStatus],
+            total_records: Integer
           ) -> void
 
           def to_hash: -> {

@@ -15,7 +15,7 @@ class Telnyx::Test::Resources::MessagingOptoutsTest < Telnyx::Test::ResourceTest
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::MessagingOptoutListResponse::Data]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+        meta: Telnyx::Models::MessagingOptoutListResponse::Meta | nil
       }
     end
   end
