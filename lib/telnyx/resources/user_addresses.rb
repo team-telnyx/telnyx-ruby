@@ -36,7 +36,7 @@ module Telnyx
       #
       # @param postal_code [String] The postal code of the user address.
       #
-      # @param skip_address_verification [String] An optional boolean value specifying if verification of the address should be sk
+      # @param skip_address_verification [Boolean] An optional boolean value specifying if verification of the address should be sk
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
