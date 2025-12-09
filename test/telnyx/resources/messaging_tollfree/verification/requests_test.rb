@@ -210,8 +210,8 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
 
     assert_pattern do
       response => {
-        records: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingTollfree::Verification::VerificationRequestStatus]) | nil,
-        total_records: Integer | nil
+        records: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingTollfree::Verification::VerificationRequestStatus]),
+        total_records: Integer
       }
     end
   end

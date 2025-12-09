@@ -9,17 +9,17 @@ module Telnyx
           # @!attribute records
           #   The records yielded by this request
           #
-          #   @return [Array<Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus>, nil]
-          optional :records,
+          #   @return [Array<Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus>]
+          required :records,
                    -> { Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingTollfree::Verification::VerificationRequestStatus] }
 
           # @!attribute total_records
           #   The total amount of records for these query parameters
           #
-          #   @return [Integer, nil]
-          optional :total_records, Integer
+          #   @return [Integer]
+          required :total_records, Integer
 
-          # @!method initialize(records: nil, total_records: nil)
+          # @!method initialize(records:, total_records:)
           #   A paginated response
           #
           #   @param records [Array<Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus>] The records yielded by this request

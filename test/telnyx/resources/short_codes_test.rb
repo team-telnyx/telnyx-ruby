@@ -51,7 +51,7 @@ class Telnyx::Test::Resources::ShortCodesTest < Telnyx::Test::ResourceTest
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::ShortCode]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+        meta: Telnyx::Models::ShortCodeListResponse::Meta | nil
       }
     end
   end

@@ -3,7 +3,7 @@ module Telnyx
     type messaging_url_domain_list_response =
       {
         data: ::Array[Telnyx::Models::MessagingURLDomainListResponse::Data],
-        meta: Telnyx::PaginationMeta
+        meta: Telnyx::Models::MessagingURLDomainListResponse::Meta
       }
 
     class MessagingURLDomainListResponse < Telnyx::Internal::Type::BaseModel
@@ -13,18 +13,20 @@ module Telnyx
         ::Array[Telnyx::Models::MessagingURLDomainListResponse::Data]
       ) -> ::Array[Telnyx::Models::MessagingURLDomainListResponse::Data]
 
-      attr_reader meta: Telnyx::PaginationMeta?
+      attr_reader meta: Telnyx::Models::MessagingURLDomainListResponse::Meta?
 
-      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+      def meta=: (
+        Telnyx::Models::MessagingURLDomainListResponse::Meta
+      ) -> Telnyx::Models::MessagingURLDomainListResponse::Meta
 
       def initialize: (
         ?data: ::Array[Telnyx::Models::MessagingURLDomainListResponse::Data],
-        ?meta: Telnyx::PaginationMeta
+        ?meta: Telnyx::Models::MessagingURLDomainListResponse::Meta
       ) -> void
 
       def to_hash: -> {
         data: ::Array[Telnyx::Models::MessagingURLDomainListResponse::Data],
-        meta: Telnyx::PaginationMeta
+        meta: Telnyx::Models::MessagingURLDomainListResponse::Meta
       }
 
       type data =
@@ -64,6 +66,38 @@ module Telnyx
           record_type: String,
           url_domain: String,
           use_case: String
+        }
+      end
+
+      type meta =
+        {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor page_number: Integer
+
+        attr_accessor page_size: Integer
+
+        attr_accessor total_pages: Integer
+
+        attr_accessor total_results: Integer
+
+        def initialize: (
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        ) -> void
+
+        def to_hash: -> {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
         }
       end
     end

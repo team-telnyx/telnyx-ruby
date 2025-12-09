@@ -23,16 +23,28 @@ module Telnyx
       end
       attr_writer :data
 
-      sig { returns(T.nilable(Telnyx::PaginationMeta)) }
+      sig do
+        returns(
+          T.nilable(
+            Telnyx::Models::MessagingProfileListPhoneNumbersResponse::Meta
+          )
+        )
+      end
       attr_reader :meta
 
-      sig { params(meta: Telnyx::PaginationMeta::OrHash).void }
+      sig do
+        params(
+          meta:
+            Telnyx::Models::MessagingProfileListPhoneNumbersResponse::Meta::OrHash
+        ).void
+      end
       attr_writer :meta
 
       sig do
         params(
           data: T::Array[Telnyx::PhoneNumberWithMessagingSettings::OrHash],
-          meta: Telnyx::PaginationMeta::OrHash
+          meta:
+            Telnyx::Models::MessagingProfileListPhoneNumbersResponse::Meta::OrHash
         ).returns(T.attached_class)
       end
       def self.new(data: nil, meta: nil)
@@ -42,11 +54,57 @@ module Telnyx
         override.returns(
           {
             data: T::Array[Telnyx::PhoneNumberWithMessagingSettings],
-            meta: Telnyx::PaginationMeta
+            meta: Telnyx::Models::MessagingProfileListPhoneNumbersResponse::Meta
           }
         )
       end
       def to_hash
+      end
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::Models::MessagingProfileListPhoneNumbersResponse::Meta,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        sig { returns(Integer) }
+        attr_accessor :page_number
+
+        sig { returns(Integer) }
+        attr_accessor :page_size
+
+        sig { returns(Integer) }
+        attr_accessor :total_pages
+
+        sig { returns(Integer) }
+        attr_accessor :total_results
+
+        sig do
+          params(
+            page_number: Integer,
+            page_size: Integer,
+            total_pages: Integer,
+            total_results: Integer
+          ).returns(T.attached_class)
+        end
+        def self.new(page_number:, page_size:, total_pages:, total_results:)
+        end
+
+        sig do
+          override.returns(
+            {
+              page_number: Integer,
+              page_size: Integer,
+              total_pages: Integer,
+              total_results: Integer
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

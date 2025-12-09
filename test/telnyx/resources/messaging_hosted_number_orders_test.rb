@@ -47,7 +47,7 @@ class Telnyx::Test::Resources::MessagingHostedNumberOrdersTest < Telnyx::Test::R
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingHostedNumberOrder]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+        meta: Telnyx::Models::MessagingHostedNumberOrderListResponse::Meta | nil
       }
     end
   end
