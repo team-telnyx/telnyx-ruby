@@ -1,0 +1,107 @@
+module Telnyx
+  module Resources
+    class Number10dlc
+      class Brand
+        attr_reader external_vetting: Telnyx::Resources::Number10dlc::Brand::ExternalVetting
+
+        def create: (
+          country: String,
+          display_name: String,
+          email: String,
+          entity_type: Telnyx::Models::entity_type,
+          vertical: Telnyx::Models::vertical,
+          ?business_contact_email: String,
+          ?city: String,
+          ?company_name: String,
+          ?ein: String,
+          ?first_name: String,
+          ?ip_address: String,
+          ?is_reseller: bool,
+          ?last_name: String,
+          ?mobile_phone: String,
+          ?mock: bool,
+          ?phone: String,
+          ?postal_code: String,
+          ?state: String,
+          ?stock_exchange: Telnyx::Models::stock_exchange,
+          ?stock_symbol: String,
+          ?street: String,
+          ?webhook_failover_url: String,
+          ?webhook_url: String,
+          ?website: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::TelnyxBrand
+
+        def retrieve: (
+          String brand_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Number10dlc::BrandRetrieveResponse
+
+        def update: (
+          String brand_id,
+          country: String,
+          display_name: String,
+          email: String,
+          entity_type: Telnyx::Models::entity_type,
+          vertical: Telnyx::Models::vertical,
+          ?alt_business_id: String,
+          ?alt_business_id_type: Telnyx::Models::alt_business_id_type,
+          ?business_contact_email: String,
+          ?city: String,
+          ?company_name: String,
+          ?ein: String,
+          ?first_name: String,
+          ?identity_status: Telnyx::Models::brand_identity_status,
+          ?ip_address: String,
+          ?is_reseller: bool,
+          ?last_name: String,
+          ?phone: String,
+          ?postal_code: String,
+          ?state: String,
+          ?stock_exchange: Telnyx::Models::stock_exchange,
+          ?stock_symbol: String,
+          ?street: String,
+          ?webhook_failover_url: String,
+          ?webhook_url: String,
+          ?website: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::TelnyxBrand
+
+        def list: (
+          ?brand_id: String,
+          ?country: String,
+          ?display_name: String,
+          ?entity_type: String,
+          ?page: Integer,
+          ?records_per_page: Integer,
+          ?sort: Telnyx::Models::Number10dlc::BrandListParams::sort,
+          ?state: String,
+          ?tcr_brand_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Number10dlc::BrandListResponse
+
+        def delete: (
+          String brand_id,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def get_feedback: (
+          String brand_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Number10dlc::BrandGetFeedbackResponse
+
+        def resend_2fa_email: (
+          String brand_id,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def revet: (
+          String brand_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::TelnyxBrand
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

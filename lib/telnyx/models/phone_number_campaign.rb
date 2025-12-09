@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::PhoneNumberCampaigns#create
     class PhoneNumberCampaign < Telnyx::Internal::Type::BaseModel
       # @!attribute campaign_id
       #   For shared campaigns, this is the TCR campaign ID, otherwise it is the campaign

@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::Campaign#retrieve
     class TelnyxCampaignCsp < Telnyx::Internal::Type::BaseModel
       # @!attribute brand_id
       #   Unique identifier assigned to the brand.

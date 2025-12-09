@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::Brand#create
     class TelnyxBrand < Telnyx::Internal::Type::BaseModel
       # @!attribute brand_relationship
       #   Brand relationship to the CSP.

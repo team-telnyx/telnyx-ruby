@@ -99,25 +99,7 @@ module Telnyx
 
   BillingGroupUpdateParams = Telnyx::Models::BillingGroupUpdateParams
 
-  Brand = Telnyx::Models::Brand
-
-  BrandCreateParams = Telnyx::Models::BrandCreateParams
-
-  BrandDeleteParams = Telnyx::Models::BrandDeleteParams
-
-  BrandGetFeedbackParams = Telnyx::Models::BrandGetFeedbackParams
-
   BrandIdentityStatus = Telnyx::Models::BrandIdentityStatus
-
-  BrandListParams = Telnyx::Models::BrandListParams
-
-  BrandResend2faEmailParams = Telnyx::Models::BrandResend2faEmailParams
-
-  BrandRetrieveParams = Telnyx::Models::BrandRetrieveParams
-
-  BrandRevetParams = Telnyx::Models::BrandRevetParams
-
-  BrandUpdateParams = Telnyx::Models::BrandUpdateParams
 
   BulkSimCardActionListParams = Telnyx::Models::BulkSimCardActionListParams
 
@@ -242,36 +224,10 @@ module Telnyx
   CallStreamingStoppedWebhookEvent =
     Telnyx::Models::CallStreamingStoppedWebhookEvent
 
-  Campaign = Telnyx::Models::Campaign
-
-  CampaignAcceptSharingParams = Telnyx::Models::CampaignAcceptSharingParams
-
-  CampaignBuilder = Telnyx::Models::CampaignBuilder
-
-  CampaignBuilderCreateParams = Telnyx::Models::CampaignBuilderCreateParams
-
-  CampaignDeactivateParams = Telnyx::Models::CampaignDeactivateParams
-
-  CampaignGetMnoMetadataParams = Telnyx::Models::CampaignGetMnoMetadataParams
-
-  CampaignGetOperationStatusParams =
-    Telnyx::Models::CampaignGetOperationStatusParams
-
-  CampaignGetSharingStatusParams =
-    Telnyx::Models::CampaignGetSharingStatusParams
-
-  CampaignListParams = Telnyx::Models::CampaignListParams
-
-  CampaignRetrieveParams = Telnyx::Models::CampaignRetrieveParams
-
   CampaignSharingStatus = Telnyx::Models::CampaignSharingStatus
 
   CampaignStatusUpdateWebhookEvent =
     Telnyx::Models::CampaignStatusUpdateWebhookEvent
-
-  CampaignSubmitAppealParams = Telnyx::Models::CampaignSubmitAppealParams
-
-  CampaignUpdateParams = Telnyx::Models::CampaignUpdateParams
 
   ChannelZoneListParams = Telnyx::Models::ChannelZoneListParams
 
@@ -495,8 +451,6 @@ module Telnyx
   EncryptedMedia = Telnyx::Models::EncryptedMedia
 
   EntityType = Telnyx::Models::EntityType
-
-  EnumRetrieveParams = Telnyx::Models::EnumRetrieveParams
 
   ExternalConnection = Telnyx::Models::ExternalConnection
 
@@ -945,6 +899,10 @@ module Telnyx
   NotificationSettingRetrieveParams =
     Telnyx::Models::NotificationSettingRetrieveParams
 
+  Number10dlc = Telnyx::Models::Number10dlc
+
+  Number10dlcGetEnumParams = Telnyx::Models::Number10dlcGetEnumParams
+
   NumberBlockOrder = Telnyx::Models::NumberBlockOrder
 
   NumberBlockOrderCreateParams = Telnyx::Models::NumberBlockOrderCreateParams
@@ -1072,50 +1030,15 @@ module Telnyx
 
   PaginationMetaOAuth = Telnyx::Models::PaginationMetaOAuth
 
-  PartnerCampaignListParams = Telnyx::Models::PartnerCampaignListParams
-
-  PartnerCampaignListSharedByMeParams =
-    Telnyx::Models::PartnerCampaignListSharedByMeParams
-
-  PartnerCampaignRetrieveParams = Telnyx::Models::PartnerCampaignRetrieveParams
-
-  PartnerCampaignRetrieveSharingStatusParams =
-    Telnyx::Models::PartnerCampaignRetrieveSharingStatusParams
-
-  PartnerCampaignUpdateParams = Telnyx::Models::PartnerCampaignUpdateParams
-
   Payment = Telnyx::Models::Payment
 
   PhoneNumber = Telnyx::Models::PhoneNumber
-
-  PhoneNumberAssignmentByProfileAssignParams =
-    Telnyx::Models::PhoneNumberAssignmentByProfileAssignParams
-
-  PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusParams =
-    Telnyx::Models::PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusParams
-
-  PhoneNumberAssignmentByProfileRetrieveStatusParams =
-    Telnyx::Models::PhoneNumberAssignmentByProfileRetrieveStatusParams
 
   PhoneNumberBlocks = Telnyx::Models::PhoneNumberBlocks
 
   PhoneNumberCampaign = Telnyx::Models::PhoneNumberCampaign
 
   PhoneNumberCampaignCreate = Telnyx::Models::PhoneNumberCampaignCreate
-
-  PhoneNumberCampaignCreateParams =
-    Telnyx::Models::PhoneNumberCampaignCreateParams
-
-  PhoneNumberCampaignDeleteParams =
-    Telnyx::Models::PhoneNumberCampaignDeleteParams
-
-  PhoneNumberCampaignListParams = Telnyx::Models::PhoneNumberCampaignListParams
-
-  PhoneNumberCampaignRetrieveParams =
-    Telnyx::Models::PhoneNumberCampaignRetrieveParams
-
-  PhoneNumberCampaignUpdateParams =
-    Telnyx::Models::PhoneNumberCampaignUpdateParams
 
   PhoneNumberDeleteParams = Telnyx::Models::PhoneNumberDeleteParams
 

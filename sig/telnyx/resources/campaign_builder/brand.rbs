@@ -2,12 +2,6 @@ module Telnyx
   module Resources
     class CampaignBuilder
       class Brand
-        def qualify_by_usecase: (
-          String usecase,
-          brand_id: String,
-          ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::CampaignBuilder::BrandQualifyByUsecaseResponse
-
         def initialize: (client: Telnyx::Client) -> void
       end
     end

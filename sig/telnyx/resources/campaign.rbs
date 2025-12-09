@@ -5,66 +5,6 @@ module Telnyx
 
       attr_reader osr: Telnyx::Resources::Campaign::Osr
 
-      def retrieve: (
-        String campaign_id,
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::TelnyxCampaignCsp
-
-      def update: (
-        String campaign_id,
-        ?auto_renewal: bool,
-        ?help_message: String,
-        ?message_flow: String,
-        ?reseller_id: String,
-        ?sample1: String,
-        ?sample2: String,
-        ?sample3: String,
-        ?sample4: String,
-        ?sample5: String,
-        ?webhook_failover_url: String,
-        ?webhook_url: String,
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::TelnyxCampaignCsp
-
-      def list: (
-        brand_id: String,
-        ?page: Integer,
-        ?records_per_page: Integer,
-        ?sort: Telnyx::Models::CampaignListParams::sort,
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::CampaignListResponse
-
-      def accept_sharing: (
-        String campaign_id,
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::campaign_accept_sharing_response
-
-      def deactivate: (
-        String campaign_id,
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::CampaignDeactivateResponse
-
-      def get_mno_metadata: (
-        String campaign_id,
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::CampaignGetMnoMetadataResponse
-
-      def get_operation_status: (
-        String campaign_id,
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::campaign_get_operation_status_response
-
-      def get_sharing_status: (
-        String campaign_id,
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::CampaignGetSharingStatusResponse
-
-      def submit_appeal: (
-        String campaign_id,
-        appeal_reason: String,
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::CampaignSubmitAppealResponse
-
       def initialize: (client: Telnyx::Client) -> void
     end
   end

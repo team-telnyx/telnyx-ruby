@@ -147,6 +147,17 @@ module Telnyx
       module Networks
       end
 
+      module Number10dlc
+        module Brand
+        end
+
+        module Campaign
+        end
+
+        module CampaignBuilder
+        end
+      end
+
       module NumberReservations
       end
 
