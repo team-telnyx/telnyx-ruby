@@ -15,7 +15,7 @@ module Telnyx
         ?neighborhood: String,
         ?phone_number: String,
         ?postal_code: String,
-        ?skip_address_verification: String,
+        ?skip_address_verification: bool,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::UserAddressCreateResponse
 

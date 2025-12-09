@@ -19,7 +19,7 @@ module Telnyx
           neighborhood: String,
           phone_number: String,
           postal_code: String,
-          skip_address_verification: String,
+          skip_address_verification: T::Boolean,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::UserAddressCreateResponse)
       end
