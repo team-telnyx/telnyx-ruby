@@ -57,7 +57,7 @@ module Telnyx
         ?page: Telnyx::PortingOrderListParams::Page,
         ?sort: Telnyx::PortingOrderListParams::Sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::PortingOrderListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::PortingOrder]
 
       def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 
@@ -80,7 +80,7 @@ module Telnyx
         String id,
         ?page: Telnyx::PortingOrderRetrieveRequirementsParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::PortingOrderRetrieveRequirementsResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::PortingOrderRetrieveRequirementsResponse]
 
       def retrieve_sub_request: (
         String id,

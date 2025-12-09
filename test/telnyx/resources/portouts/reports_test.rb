@@ -41,13 +41,26 @@ class Telnyx::Test::Resources::Portouts::ReportsTest < Telnyx::Test::ResourceTes
     response = @telnyx.portouts.reports.list
 
     assert_pattern do
-      response => Telnyx::Models::Portouts::ReportListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Portouts::PortoutReport
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Portouts::PortoutReport]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        created_at: Time | nil,
+        document_id: String | nil,
+        params: Telnyx::Portouts::ExportPortoutsCsvReport | nil,
+        record_type: String | nil,
+        report_type: Telnyx::Portouts::PortoutReport::ReportType | nil,
+        status: Telnyx::Portouts::PortoutReport::Status | nil,
+        updated_at: Time | nil
       }
     end
   end

@@ -9,7 +9,11 @@ module Telnyx
           filter: Telnyx::NotificationEventConditionListParams::Filter::OrHash,
           page: Telnyx::NotificationEventConditionListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::NotificationEventConditionListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[
+            Telnyx::Models::NotificationEventConditionListResponse
+          ]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

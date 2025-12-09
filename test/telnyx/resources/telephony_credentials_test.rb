@@ -57,13 +57,28 @@ class Telnyx::Test::Resources::TelephonyCredentialsTest < Telnyx::Test::Resource
     response = @telnyx.telephony_credentials.list
 
     assert_pattern do
-      response => Telnyx::Models::TelephonyCredentialListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::TelephonyCredential
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::TelephonyCredential]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        created_at: String | nil,
+        expired: Telnyx::Internal::Type::Boolean | nil,
+        expires_at: String | nil,
+        name: String | nil,
+        record_type: String | nil,
+        resource_id: String | nil,
+        sip_password: String | nil,
+        sip_username: String | nil,
+        updated_at: String | nil
       }
     end
   end

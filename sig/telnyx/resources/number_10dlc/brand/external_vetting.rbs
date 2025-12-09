@@ -8,13 +8,13 @@ module Telnyx
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::Models::Number10dlc::Brand::external_vetting_list_response
 
-          def import: (
+          def imports: (
             String brand_id,
             evp_id: String,
             vetting_id: String,
             ?vetting_token: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Number10dlc::Brand::ExternalVettingImportResponse
+          ) -> Telnyx::Models::Number10dlc::Brand::ExternalVettingImportsResponse
 
           def order: (
             String brand_id,

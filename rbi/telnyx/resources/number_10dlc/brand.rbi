@@ -16,8 +16,8 @@ module Telnyx
             country: String,
             display_name: String,
             email: String,
-            entity_type: Telnyx::EntityType::OrSymbol,
-            vertical: Telnyx::Vertical::OrSymbol,
+            entity_type: Telnyx::Number10dlc::EntityType::OrSymbol,
+            vertical: Telnyx::Number10dlc::Vertical::OrSymbol,
             business_contact_email: String,
             city: String,
             company_name: String,
@@ -31,14 +31,14 @@ module Telnyx
             phone: String,
             postal_code: String,
             state: String,
-            stock_exchange: Telnyx::StockExchange::OrSymbol,
+            stock_exchange: Telnyx::Number10dlc::StockExchange::OrSymbol,
             stock_symbol: String,
             street: String,
             webhook_failover_url: String,
             webhook_url: String,
             website: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::TelnyxBrand)
+          ).returns(Telnyx::Number10dlc::TelnyxBrand)
         end
         def create(
           # ISO2 2 characters country code. Example: US - United States
@@ -113,30 +113,31 @@ module Telnyx
             country: String,
             display_name: String,
             email: String,
-            entity_type: Telnyx::EntityType::OrSymbol,
-            vertical: Telnyx::Vertical::OrSymbol,
+            entity_type: Telnyx::Number10dlc::EntityType::OrSymbol,
+            vertical: Telnyx::Number10dlc::Vertical::OrSymbol,
             alt_business_id: String,
-            alt_business_id_type: Telnyx::AltBusinessIDType::OrSymbol,
+            alt_business_id_type:
+              Telnyx::Number10dlc::AltBusinessIDType::OrSymbol,
             business_contact_email: String,
             city: String,
             company_name: String,
             ein: String,
             first_name: String,
-            identity_status: Telnyx::BrandIdentityStatus::OrSymbol,
+            identity_status: Telnyx::Number10dlc::BrandIdentityStatus::OrSymbol,
             ip_address: String,
             is_reseller: T::Boolean,
             last_name: String,
             phone: String,
             postal_code: String,
             state: String,
-            stock_exchange: Telnyx::StockExchange::OrSymbol,
+            stock_exchange: Telnyx::Number10dlc::StockExchange::OrSymbol,
             stock_symbol: String,
             street: String,
             webhook_failover_url: String,
             webhook_url: String,
             website: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::TelnyxBrand)
+          ).returns(Telnyx::Number10dlc::TelnyxBrand)
         end
         def update(
           brand_id,
@@ -210,7 +211,11 @@ module Telnyx
             state: String,
             tcr_brand_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Number10dlc::BrandListResponse)
+          ).returns(
+            Telnyx::Internal::PerPagePaginationV2[
+              Telnyx::Models::Number10dlc::BrandListResponse
+            ]
+          )
         end
         def list(
           # Filter results by the Telnyx Brand id
@@ -282,7 +287,7 @@ module Telnyx
           params(
             brand_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::TelnyxBrand)
+          ).returns(Telnyx::Number10dlc::TelnyxBrand)
         end
         def revet(brand_id, request_options: {})
         end

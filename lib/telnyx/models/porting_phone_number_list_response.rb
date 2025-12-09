@@ -4,195 +4,176 @@ module Telnyx
   module Models
     # @see Telnyx::Resources::PortingPhoneNumbers#list
     class PortingPhoneNumberListResponse < Telnyx::Internal::Type::BaseModel
-      # @!attribute data
+      # @!attribute activation_status
+      #   Activation status
       #
-      #   @return [Array<Telnyx::Models::PortingPhoneNumberListResponse::Data>, nil]
-      optional :data,
-               -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::PortingPhoneNumberListResponse::Data] }
+      #   @return [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::ActivationStatus, nil]
+      optional :activation_status, enum: -> { Telnyx::Models::PortingPhoneNumberListResponse::ActivationStatus }
 
-      # @!attribute meta
+      # @!attribute phone_number
+      #   E164 formatted phone number
       #
-      #   @return [Telnyx::Models::PaginationMeta, nil]
-      optional :meta, -> { Telnyx::PaginationMeta }
+      #   @return [String, nil]
+      optional :phone_number, String
 
-      # @!method initialize(data: nil, meta: nil)
-      #   @param data [Array<Telnyx::Models::PortingPhoneNumberListResponse::Data>]
-      #   @param meta [Telnyx::Models::PaginationMeta]
+      # @!attribute phone_number_type
+      #   The type of the phone number
+      #
+      #   @return [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::PhoneNumberType, nil]
+      optional :phone_number_type, enum: -> { Telnyx::Models::PortingPhoneNumberListResponse::PhoneNumberType }
 
-      class Data < Telnyx::Internal::Type::BaseModel
-        # @!attribute activation_status
-        #   Activation status
-        #
-        #   @return [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::Data::ActivationStatus, nil]
-        optional :activation_status,
-                 enum: -> { Telnyx::Models::PortingPhoneNumberListResponse::Data::ActivationStatus }
+      # @!attribute portability_status
+      #   Specifies whether Telnyx is able to confirm portability this number in the
+      #   United States & Canada. International phone numbers are provisional by default.
+      #
+      #   @return [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::PortabilityStatus, nil]
+      optional :portability_status,
+               enum: -> { Telnyx::Models::PortingPhoneNumberListResponse::PortabilityStatus }
 
-        # @!attribute phone_number
-        #   E164 formatted phone number
-        #
-        #   @return [String, nil]
-        optional :phone_number, String
+      # @!attribute porting_order_id
+      #   Identifies the associated port request
+      #
+      #   @return [String, nil]
+      optional :porting_order_id, String
 
-        # @!attribute phone_number_type
-        #   The type of the phone number
-        #
-        #   @return [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::Data::PhoneNumberType, nil]
-        optional :phone_number_type,
-                 enum: -> { Telnyx::Models::PortingPhoneNumberListResponse::Data::PhoneNumberType }
+      # @!attribute porting_order_status
+      #   The current status of the porting order
+      #
+      #   @return [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::PortingOrderStatus, nil]
+      optional :porting_order_status,
+               enum: -> { Telnyx::Models::PortingPhoneNumberListResponse::PortingOrderStatus }
 
-        # @!attribute portability_status
-        #   Specifies whether Telnyx is able to confirm portability this number in the
-        #   United States & Canada. International phone numbers are provisional by default.
-        #
-        #   @return [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::Data::PortabilityStatus, nil]
-        optional :portability_status,
-                 enum: -> { Telnyx::Models::PortingPhoneNumberListResponse::Data::PortabilityStatus }
+      # @!attribute requirements_status
+      #   The current status of the requirements in a INTL porting order
+      #
+      #   @return [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::RequirementsStatus, nil]
+      optional :requirements_status,
+               enum: -> { Telnyx::Models::PortingPhoneNumberListResponse::RequirementsStatus }
 
-        # @!attribute porting_order_id
-        #   Identifies the associated port request
-        #
-        #   @return [String, nil]
-        optional :porting_order_id, String
+      # @!attribute support_key
+      #   A key to reference this porting order when contacting Telnyx customer support
+      #
+      #   @return [String, nil]
+      optional :support_key, String
 
-        # @!attribute porting_order_status
-        #   The current status of the porting order
-        #
-        #   @return [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::Data::PortingOrderStatus, nil]
-        optional :porting_order_status,
-                 enum: -> { Telnyx::Models::PortingPhoneNumberListResponse::Data::PortingOrderStatus }
-
-        # @!attribute requirements_status
-        #   The current status of the requirements in a INTL porting order
-        #
-        #   @return [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::Data::RequirementsStatus, nil]
-        optional :requirements_status,
-                 enum: -> { Telnyx::Models::PortingPhoneNumberListResponse::Data::RequirementsStatus }
-
-        # @!attribute support_key
-        #   A key to reference this porting order when contacting Telnyx customer support
+      response_only do
+        # @!attribute record_type
+        #   Identifies the type of the resource.
         #
         #   @return [String, nil]
-        optional :support_key, String
+        optional :record_type, String
+      end
 
-        response_only do
-          # @!attribute record_type
-          #   Identifies the type of the resource.
-          #
-          #   @return [String, nil]
-          optional :record_type, String
-        end
+      # @!method initialize(activation_status: nil, phone_number: nil, phone_number_type: nil, portability_status: nil, porting_order_id: nil, porting_order_status: nil, record_type: nil, requirements_status: nil, support_key: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Telnyx::Models::PortingPhoneNumberListResponse} for more details.
+      #
+      #   @param activation_status [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::ActivationStatus] Activation status
+      #
+      #   @param phone_number [String] E164 formatted phone number
+      #
+      #   @param phone_number_type [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::PhoneNumberType] The type of the phone number
+      #
+      #   @param portability_status [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::PortabilityStatus] Specifies whether Telnyx is able to confirm portability this number in the Unite
+      #
+      #   @param porting_order_id [String] Identifies the associated port request
+      #
+      #   @param porting_order_status [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::PortingOrderStatus] The current status of the porting order
+      #
+      #   @param record_type [String] Identifies the type of the resource.
+      #
+      #   @param requirements_status [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::RequirementsStatus] The current status of the requirements in a INTL porting order
+      #
+      #   @param support_key [String] A key to reference this porting order when contacting Telnyx customer support
 
-        # @!method initialize(activation_status: nil, phone_number: nil, phone_number_type: nil, portability_status: nil, porting_order_id: nil, porting_order_status: nil, record_type: nil, requirements_status: nil, support_key: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::PortingPhoneNumberListResponse::Data} for more details.
-        #
-        #   @param activation_status [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::Data::ActivationStatus] Activation status
-        #
-        #   @param phone_number [String] E164 formatted phone number
-        #
-        #   @param phone_number_type [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::Data::PhoneNumberType] The type of the phone number
-        #
-        #   @param portability_status [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::Data::PortabilityStatus] Specifies whether Telnyx is able to confirm portability this number in the Unite
-        #
-        #   @param porting_order_id [String] Identifies the associated port request
-        #
-        #   @param porting_order_status [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::Data::PortingOrderStatus] The current status of the porting order
-        #
-        #   @param record_type [String] Identifies the type of the resource.
-        #
-        #   @param requirements_status [Symbol, Telnyx::Models::PortingPhoneNumberListResponse::Data::RequirementsStatus] The current status of the requirements in a INTL porting order
-        #
-        #   @param support_key [String] A key to reference this porting order when contacting Telnyx customer support
+      # Activation status
+      #
+      # @see Telnyx::Models::PortingPhoneNumberListResponse#activation_status
+      module ActivationStatus
+        extend Telnyx::Internal::Type::Enum
 
-        # Activation status
-        #
-        # @see Telnyx::Models::PortingPhoneNumberListResponse::Data#activation_status
-        module ActivationStatus
-          extend Telnyx::Internal::Type::Enum
+        NEW = :New
+        PENDING = :Pending
+        CONFLICT = :Conflict
+        CANCEL_PENDING = :"Cancel Pending"
+        FAILED = :Failed
+        CONCURRED = :Concurred
+        ACTIVATE_RDY = :"Activate RDY"
+        DISCONNECT_PENDING = :"Disconnect Pending"
+        CONCURRENCE_SENT = :"Concurrence Sent"
+        OLD = :Old
+        SENDING = :Sending
+        ACTIVE = :Active
+        CANCELLED = :Cancelled
 
-          NEW = :New
-          PENDING = :Pending
-          CONFLICT = :Conflict
-          CANCEL_PENDING = :"Cancel Pending"
-          FAILED = :Failed
-          CONCURRED = :Concurred
-          ACTIVATE_RDY = :"Activate RDY"
-          DISCONNECT_PENDING = :"Disconnect Pending"
-          CONCURRENCE_SENT = :"Concurrence Sent"
-          OLD = :Old
-          SENDING = :Sending
-          ACTIVE = :Active
-          CANCELLED = :Cancelled
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
+      # The type of the phone number
+      #
+      # @see Telnyx::Models::PortingPhoneNumberListResponse#phone_number_type
+      module PhoneNumberType
+        extend Telnyx::Internal::Type::Enum
 
-        # The type of the phone number
-        #
-        # @see Telnyx::Models::PortingPhoneNumberListResponse::Data#phone_number_type
-        module PhoneNumberType
-          extend Telnyx::Internal::Type::Enum
+        LANDLINE = :landline
+        LOCAL = :local
+        MOBILE = :mobile
+        NATIONAL = :national
+        SHARED_COST = :shared_cost
+        TOLL_FREE = :toll_free
 
-          LANDLINE = :landline
-          LOCAL = :local
-          MOBILE = :mobile
-          NATIONAL = :national
-          SHARED_COST = :shared_cost
-          TOLL_FREE = :toll_free
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
+      # Specifies whether Telnyx is able to confirm portability this number in the
+      # United States & Canada. International phone numbers are provisional by default.
+      #
+      # @see Telnyx::Models::PortingPhoneNumberListResponse#portability_status
+      module PortabilityStatus
+        extend Telnyx::Internal::Type::Enum
 
-        # Specifies whether Telnyx is able to confirm portability this number in the
-        # United States & Canada. International phone numbers are provisional by default.
-        #
-        # @see Telnyx::Models::PortingPhoneNumberListResponse::Data#portability_status
-        module PortabilityStatus
-          extend Telnyx::Internal::Type::Enum
+        PENDING = :pending
+        CONFIRMED = :confirmed
+        PROVISIONAL = :provisional
 
-          PENDING = :pending
-          CONFIRMED = :confirmed
-          PROVISIONAL = :provisional
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
+      # The current status of the porting order
+      #
+      # @see Telnyx::Models::PortingPhoneNumberListResponse#porting_order_status
+      module PortingOrderStatus
+        extend Telnyx::Internal::Type::Enum
 
-        # The current status of the porting order
-        #
-        # @see Telnyx::Models::PortingPhoneNumberListResponse::Data#porting_order_status
-        module PortingOrderStatus
-          extend Telnyx::Internal::Type::Enum
+        DRAFT = :draft
+        IN_PROCESS = :"in-process"
+        SUBMITTED = :submitted
+        EXCEPTION = :exception
+        FOC_DATE_CONFIRMED = :"foc-date-confirmed"
+        CANCEL_PENDING = :"cancel-pending"
+        PORTED = :ported
+        CANCELLED = :cancelled
 
-          DRAFT = :draft
-          IN_PROCESS = :"in-process"
-          SUBMITTED = :submitted
-          EXCEPTION = :exception
-          FOC_DATE_CONFIRMED = :"foc-date-confirmed"
-          CANCEL_PENDING = :"cancel-pending"
-          PORTED = :ported
-          CANCELLED = :cancelled
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
+      # The current status of the requirements in a INTL porting order
+      #
+      # @see Telnyx::Models::PortingPhoneNumberListResponse#requirements_status
+      module RequirementsStatus
+        extend Telnyx::Internal::Type::Enum
 
-        # The current status of the requirements in a INTL porting order
-        #
-        # @see Telnyx::Models::PortingPhoneNumberListResponse::Data#requirements_status
-        module RequirementsStatus
-          extend Telnyx::Internal::Type::Enum
+        REQUIREMENT_INFO_PENDING = :"requirement-info-pending"
+        REQUIREMENT_INFO_UNDER_REVIEW = :"requirement-info-under-review"
+        REQUIREMENT_INFO_EXCEPTION = :"requirement-info-exception"
+        APPROVED = :approved
 
-          REQUIREMENT_INFO_PENDING = :"requirement-info-pending"
-          REQUIREMENT_INFO_UNDER_REVIEW = :"requirement-info-under-review"
-          REQUIREMENT_INFO_EXCEPTION = :"requirement-info-exception"
-          APPROVED = :approved
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

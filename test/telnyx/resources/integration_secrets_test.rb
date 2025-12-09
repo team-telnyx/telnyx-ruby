@@ -25,13 +25,23 @@ class Telnyx::Test::Resources::IntegrationSecretsTest < Telnyx::Test::ResourceTe
     response = @telnyx.integration_secrets.list
 
     assert_pattern do
-      response => Telnyx::Models::IntegrationSecretListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::IntegrationSecret
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::IntegrationSecret]),
-        meta: Telnyx::Models::IntegrationSecretListResponse::Meta
+      row => {
+        id: String,
+        created_at: Time,
+        identifier: String,
+        record_type: String,
+        updated_at: Time | nil
       }
     end
   end

@@ -100,7 +100,7 @@ module Telnyx
           include_sessions: T::Boolean,
           page: Telnyx::RoomListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::RoomListResponse)
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::Room])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

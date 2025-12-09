@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::VerifyProfiles#list
     class VerifyProfile < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #

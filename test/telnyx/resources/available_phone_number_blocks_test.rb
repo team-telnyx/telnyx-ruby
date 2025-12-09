@@ -15,7 +15,7 @@ class Telnyx::Test::Resources::AvailablePhoneNumberBlocksTest < Telnyx::Test::Re
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data]) | nil,
-        meta: Telnyx::Models::AvailablePhoneNumberBlockListResponse::Meta | nil
+        meta: Telnyx::AvailablePhoneNumbersMetadata | nil
       }
     end
   end

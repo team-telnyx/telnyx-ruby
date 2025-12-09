@@ -64,7 +64,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::Messaging::Rcs::AgentListResponse]
+          # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::RcsAgent>]
           #
           # @see Telnyx::Models::Messaging::Rcs::AgentListParams
           def list(params = {})
@@ -73,7 +73,8 @@ module Telnyx
               method: :get,
               path: "messaging/rcs/agents",
               query: parsed,
-              model: Telnyx::Models::Messaging::Rcs::AgentListResponse,
+              page: Telnyx::Internal::DefaultPagination,
+              model: Telnyx::RcsAgent,
               options: options
             )
           end

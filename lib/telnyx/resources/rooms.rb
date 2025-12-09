@@ -120,7 +120,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::RoomListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::Room>]
       #
       # @see Telnyx::Models::RoomListParams
       def list(params = {})
@@ -129,7 +129,8 @@ module Telnyx
           method: :get,
           path: "rooms",
           query: parsed,
-          model: Telnyx::Models::RoomListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::Room,
           options: options
         )
       end

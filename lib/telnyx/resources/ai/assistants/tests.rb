@@ -108,17 +108,16 @@ module Telnyx
             )
           end
 
-          # Some parameter documentations has been truncated, see
-          # {Telnyx::Models::AI::Assistants::TestListParams} for more details.
-          #
           # Retrieves a paginated list of assistant tests with optional filtering
           # capabilities
           #
-          # @overload list(destination: nil, page: nil, telnyx_conversation_channel: nil, test_suite: nil, request_options: {})
+          # @overload list(destination: nil, page_number: nil, page_size: nil, telnyx_conversation_channel: nil, test_suite: nil, request_options: {})
           #
           # @param destination [String] Filter tests by destination (phone number, webhook URL, etc.)
           #
-          # @param page [Telnyx::Models::AI::Assistants::TestListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+          # @param page_number [Integer]
+          #
+          # @param page_size [Integer]
           #
           # @param telnyx_conversation_channel [String] Filter tests by communication channel (e.g., 'web_chat', 'sms')
           #
@@ -126,7 +125,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::AI::Assistants::TestListResponse]
+          # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::Assistants::AssistantTest>]
           #
           # @see Telnyx::Models::AI::Assistants::TestListParams
           def list(params = {})
@@ -134,8 +133,9 @@ module Telnyx
             @client.request(
               method: :get,
               path: "ai/assistants/tests",
-              query: parsed,
-              model: Telnyx::Models::AI::Assistants::TestListResponse,
+              query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+              page: Telnyx::Internal::DefaultFlatPagination,
+              model: Telnyx::AI::Assistants::AssistantTest,
               options: options
             )
           end

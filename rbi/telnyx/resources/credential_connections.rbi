@@ -218,7 +218,9 @@ module Telnyx
           page: Telnyx::CredentialConnectionListParams::Page::OrHash,
           sort: Telnyx::CredentialConnectionListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::CredentialConnectionListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[Telnyx::CredentialConnection]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

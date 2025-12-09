@@ -143,7 +143,7 @@ module Telnyx
         #   [embedded storage buckets](https://developers.telnyx.com/api/inference/inference-embedding/post-embedding)
         #   for retrieval-augmented generation.
         #
-        #   @return [Array<Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam, Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval>, nil]
+        #   @return [Array<Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Function, Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval>, nil]
         optional :tools,
                  -> { Telnyx::Internal::Type::ArrayOf[union: Telnyx::AI::ChatCreateCompletionParams::Tool] }
 
@@ -212,7 +212,7 @@ module Telnyx
         #
         #   @param tool_choice [Symbol, Telnyx::Models::AI::ChatCreateCompletionParams::ToolChoice]
         #
-        #   @param tools [Array<Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam, Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval>] The `function` tool type follows the same schema as the [OpenAI Chat Completions
+        #   @param tools [Array<Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Function, Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval>] The `function` tool type follows the same schema as the [OpenAI Chat Completions
         #
         #   @param top_logprobs [Integer] This is used with `logprobs`. An integer between 0 and 20 specifying the number
         #
@@ -341,26 +341,28 @@ module Telnyx
         module Tool
           extend Telnyx::Internal::Type::Union
 
-          variant -> { Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam }
+          discriminator :type
 
-          variant -> { Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval }
+          variant :function, -> { Telnyx::AI::ChatCreateCompletionParams::Tool::Function }
 
-          class ChatCompletionToolParam < Telnyx::Internal::Type::BaseModel
+          variant :retrieval, -> { Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval }
+
+          class Function < Telnyx::Internal::Type::BaseModel
             # @!attribute function
             #
-            #   @return [Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Function]
-            required :function, -> { Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Function }
+            #   @return [Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Function::Function]
+            required :function, -> { Telnyx::AI::ChatCreateCompletionParams::Tool::Function::Function }
 
             # @!attribute type
             #
-            #   @return [Symbol, Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Type]
-            required :type, enum: -> { Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Type }
+            #   @return [Symbol, :function]
+            required :type, const: :function
 
-            # @!method initialize(function:, type:)
-            #   @param function [Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Function]
-            #   @param type [Symbol, Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Type]
+            # @!method initialize(function:, type: :function)
+            #   @param function [Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Function::Function]
+            #   @param type [Symbol, :function]
 
-            # @see Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam#function
+            # @see Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Function#function
             class Function < Telnyx::Internal::Type::BaseModel
               # @!attribute name
               #
@@ -382,16 +384,6 @@ module Telnyx
               #   @param description [String]
               #   @param parameters [Hash{Symbol=>Object}]
             end
-
-            # @see Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam#type
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              FUNCTION = :function
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
           end
 
           class Retrieval < Telnyx::Internal::Type::BaseModel
@@ -402,26 +394,16 @@ module Telnyx
 
             # @!attribute type
             #
-            #   @return [Symbol, Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval::Type]
-            required :type, enum: -> { Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval::Type }
+            #   @return [Symbol, :retrieval]
+            required :type, const: :retrieval
 
-            # @!method initialize(retrieval:, type:)
+            # @!method initialize(retrieval:, type: :retrieval)
             #   @param retrieval [Telnyx::Models::AI::InferenceEmbeddingBucketIDs]
-            #   @param type [Symbol, Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval::Type]
-
-            # @see Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval#type
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              RETRIEVAL = :retrieval
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
+            #   @param type [Symbol, :retrieval]
           end
 
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam, Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval)]
+          #   @return [Array(Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Function, Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval)]
         end
       end
     end

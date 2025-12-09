@@ -72,7 +72,7 @@ module Telnyx
           #   Filter porting orders by status(es). Originally: filter[status],
           #   filter[status][in][]
           #
-          #   @return [Symbol, Array<Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionMember1>, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status, nil]
+          #   @return [Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus, Array<Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionMember1>, nil]
           optional :status, union: -> { Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status }
 
           # @!attribute support_key
@@ -99,7 +99,7 @@ module Telnyx
           #
           #   @param porting_order_id [Array<String>] Filter results by a list of porting order ids
           #
-          #   @param status [Symbol, Array<Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionMember1>, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status] Filter porting orders by status(es). Originally: filter[status], filter[status]
+          #   @param status [Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus, Array<Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionMember1>] Filter porting orders by status(es). Originally: filter[status], filter[status]
           #
           #   @param support_key [String, Array<String>] Filter results by support key(s). Originally: filter[support_key][eq], filter[su
 
@@ -148,24 +148,28 @@ module Telnyx
           module Status
             extend Telnyx::Internal::Type::Union
 
-            variant const: -> { Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::DRAFT }
-
-            variant const: -> { Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::IN_PROCESS }
-
-            variant const: -> { Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::SUBMITTED }
-
-            variant const: -> { Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::EXCEPTION }
-
-            variant const: -> { Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::FOC_DATE_CONFIRMED }
-
-            variant const: -> { Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::CANCEL_PENDING }
-
-            variant const: -> { Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PORTED }
-
-            variant const: -> { Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::CANCELLED }
+            # Filter by single status
+            variant enum: -> { Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus }
 
             # Filter by multiple statuses (in operation)
             variant -> { Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionMember1Array }
+
+            # Filter by single status
+            module PortingOrderSingleStatus
+              extend Telnyx::Internal::Type::Enum
+
+              DRAFT = :draft
+              IN_PROCESS = :"in-process"
+              SUBMITTED = :submitted
+              EXCEPTION = :exception
+              FOC_DATE_CONFIRMED = :"foc-date-confirmed"
+              CANCEL_PENDING = :"cancel-pending"
+              PORTED = :ported
+              CANCELLED = :cancelled
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
 
             module UnionMember1
               extend Telnyx::Internal::Type::Enum
@@ -184,29 +188,7 @@ module Telnyx
             end
 
             # @!method self.variants
-            #   @return [Array(Symbol, Array<Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionMember1>)]
-
-            define_sorbet_constant!(:Variants) do
-              T.type_alias do
-                T.any(
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::TaggedSymbol,
-                  T::Array[Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionMember1::TaggedSymbol]
-                )
-              end
-            end
-
-            # @!group
-
-            DRAFT = :draft
-            IN_PROCESS = :"in-process"
-            SUBMITTED = :submitted
-            EXCEPTION = :exception
-            FOC_DATE_CONFIRMED = :"foc-date-confirmed"
-            CANCEL_PENDING = :"cancel-pending"
-            PORTED = :ported
-            CANCELLED = :cancelled
-
-            # @!endgroup
+            #   @return [Array(Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus, Array<Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionMember1>)]
 
             # @type [Telnyx::Internal::Type::Converter]
             UnionMember1Array =

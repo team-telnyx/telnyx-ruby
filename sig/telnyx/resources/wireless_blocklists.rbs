@@ -27,7 +27,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::WirelessBlocklistListResponse
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::WirelessBlocklist]
 
       def delete: (
         String id,

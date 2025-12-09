@@ -8,9 +8,13 @@ module Telnyx
 
     DEFAULT_MAX_RETRY_DELAY: Float
 
-    attr_reader api_key: String
+    attr_reader api_key: String?
 
     attr_reader public_key: String?
+
+    attr_reader client_id: String?
+
+    attr_reader client_secret: String?
 
     attr_reader legacy: Telnyx::Resources::Legacy
 
@@ -46,8 +50,6 @@ module Telnyx
 
     attr_reader billing_groups: Telnyx::Resources::BillingGroups
 
-    attr_reader brand: Telnyx::Resources::Brand
-
     attr_reader bulk_sim_card_actions: Telnyx::Resources::BulkSimCardActions
 
     attr_reader bundle_pricing: Telnyx::Resources::BundlePricing
@@ -57,10 +59,6 @@ module Telnyx
     attr_reader call_events: Telnyx::Resources::CallEvents
 
     attr_reader calls: Telnyx::Resources::Calls
-
-    attr_reader campaign: Telnyx::Resources::Campaign
-
-    attr_reader campaign_builder: Telnyx::Resources::CampaignBuilder
 
     attr_reader channel_zones: Telnyx::Resources::ChannelZones
 
@@ -93,8 +91,6 @@ module Telnyx
     attr_reader dynamic_emergency_addresses: Telnyx::Resources::DynamicEmergencyAddresses
 
     attr_reader dynamic_emergency_endpoints: Telnyx::Resources::DynamicEmergencyEndpoints
-
-    attr_reader enum: Telnyx::Resources::Enum
 
     attr_reader external_connections: Telnyx::Resources::ExternalConnections
 
@@ -207,8 +203,6 @@ module Telnyx
     attr_reader phone_number_assignment_by_profile: Telnyx::Resources::PhoneNumberAssignmentByProfile
 
     attr_reader phone_number_blocks: Telnyx::Resources::PhoneNumberBlocks
-
-    attr_reader phone_number_campaigns: Telnyx::Resources::PhoneNumberCampaigns
 
     attr_reader phone_numbers: Telnyx::Resources::PhoneNumbers
 
@@ -324,16 +318,23 @@ module Telnyx
 
     attr_reader mobile_voice_connections: Telnyx::Resources::MobileVoiceConnections
 
-    attr_reader partner_campaign: Telnyx::Resources::PartnerCampaign
-
     attr_reader number_10dlc: Telnyx::Resources::Number10dlc
 
     private def auth_headers: -> ::Hash[String, String]
+
+    private def bearer_auth: -> ::Hash[String, String]
+
+    # @api private
+    attr_reader oauth_client_auth_state: Telnyx::Internal::OAuth2ClientCredentials
+
+    private def oauth_client_auth: -> ::Hash[String, String]
 
     def base_url_overridden?: -> bool
 
     def initialize: (
       ?api_key: String?,
+      ?client_id: String?,
+      ?client_secret: String?,
       ?public_key: String?,
       ?base_url: String?,
       ?max_retries: Integer,

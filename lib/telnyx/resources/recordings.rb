@@ -40,7 +40,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::RecordingListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::RecordingResponseData>]
       #
       # @see Telnyx::Models::RecordingListParams
       def list(params = {})
@@ -49,7 +49,8 @@ module Telnyx
           method: :get,
           path: "recordings",
           query: parsed,
-          model: Telnyx::Models::RecordingListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::RecordingResponseData,
           options: options
         )
       end

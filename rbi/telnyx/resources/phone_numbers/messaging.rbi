@@ -51,7 +51,11 @@ module Telnyx
           params(
             page: Telnyx::PhoneNumbers::MessagingListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::PhoneNumbers::MessagingListResponse)
+          ).returns(
+            Telnyx::Internal::DefaultPagination[
+              Telnyx::PhoneNumberWithMessagingSettings
+            ]
+          )
         end
         def list(
           # Consolidated page parameter (deepObject style). Originally: page[number],

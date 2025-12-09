@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::BillingGroups#list
     class BillingGroup < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Identifies the type of resource.

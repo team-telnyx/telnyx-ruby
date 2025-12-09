@@ -191,7 +191,7 @@ module Telnyx
           page: Telnyx::FqdnConnectionListParams::Page::OrHash,
           sort: Telnyx::FqdnConnectionListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::FqdnConnectionListResponse)
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::FqdnConnection])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

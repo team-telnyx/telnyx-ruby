@@ -74,7 +74,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::BundlePricing::UserBundleListResponse]
+        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::BundlePricing::UserBundle>]
         #
         # @see Telnyx::Models::BundlePricing::UserBundleListParams
         def list(params = {})
@@ -85,7 +85,8 @@ module Telnyx
             path: "bundle_pricing/user_bundles",
             query: parsed.slice(*query_params),
             headers: parsed.except(*query_params),
-            model: Telnyx::Models::BundlePricing::UserBundleListResponse,
+            page: Telnyx::Internal::DefaultPagination,
+            model: Telnyx::BundlePricing::UserBundle,
             options: options
           )
         end

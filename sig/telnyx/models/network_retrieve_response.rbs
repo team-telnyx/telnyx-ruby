@@ -16,20 +16,51 @@ module Telnyx
 
       def to_hash: -> { data: Telnyx::Models::NetworkRetrieveResponse::Data }
 
-      type data = { name: String, record_type: String }
+      type data =
+        {
+          id: String,
+          created_at: String,
+          record_type: String,
+          updated_at: String,
+          name: String
+        }
 
-      class Data < Telnyx::Models::Record
-        def name: -> String?
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader name: String?
 
-        def name=: (String _) -> String
+        def name=: (String) -> String
 
-        def record_type: -> String?
+        attr_reader id: String?
 
-        def record_type=: (String _) -> String
+        def id=: (String) -> String
 
-        def initialize: (?name: String, ?record_type: String) -> void
+        attr_reader created_at: String?
 
-        def to_hash: -> { name: String, record_type: String }
+        def created_at=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader updated_at: String?
+
+        def updated_at=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?created_at: String,
+          ?record_type: String,
+          ?updated_at: String,
+          ?name: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: String,
+          record_type: String,
+          updated_at: String,
+          name: String
+        }
       end
     end
   end

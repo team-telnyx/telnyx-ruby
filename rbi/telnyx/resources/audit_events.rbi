@@ -11,7 +11,11 @@ module Telnyx
           page: Telnyx::AuditEventListParams::Page::OrHash,
           sort: Telnyx::AuditEventListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::AuditEventListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[
+            Telnyx::Models::AuditEventListResponse
+          ]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

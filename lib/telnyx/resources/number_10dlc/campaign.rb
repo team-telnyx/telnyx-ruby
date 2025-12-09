@@ -17,14 +17,14 @@ module Telnyx
         # @param campaign_id [String]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::TelnyxCampaignCsp]
+        # @return [Telnyx::Models::Number10dlc::TelnyxCampaignCsp]
         #
         # @see Telnyx::Models::Number10dlc::CampaignRetrieveParams
         def retrieve(campaign_id, params = {})
           @client.request(
             method: :get,
             path: ["10dlc/campaign/%1$s", campaign_id],
-            model: Telnyx::TelnyxCampaignCsp,
+            model: Telnyx::Number10dlc::TelnyxCampaignCsp,
             options: params[:request_options]
           )
         end
@@ -63,7 +63,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::TelnyxCampaignCsp]
+        # @return [Telnyx::Models::Number10dlc::TelnyxCampaignCsp]
         #
         # @see Telnyx::Models::Number10dlc::CampaignUpdateParams
         def update(campaign_id, params = {})
@@ -72,7 +72,7 @@ module Telnyx
             method: :put,
             path: ["10dlc/campaign/%1$s", campaign_id],
             body: parsed,
-            model: Telnyx::TelnyxCampaignCsp,
+            model: Telnyx::Number10dlc::TelnyxCampaignCsp,
             options: options
           )
         end
@@ -94,7 +94,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Number10dlc::CampaignListResponse]
+        # @return [Telnyx::Internal::PerPagePaginationV2<Telnyx::Models::Number10dlc::CampaignListResponse>]
         #
         # @see Telnyx::Models::Number10dlc::CampaignListParams
         def list(params)
@@ -103,6 +103,7 @@ module Telnyx
             method: :get,
             path: "10dlc/campaign",
             query: parsed.transform_keys(brand_id: "brandId", records_per_page: "recordsPerPage"),
+            page: Telnyx::Internal::PerPagePaginationV2,
             model: Telnyx::Models::Number10dlc::CampaignListResponse,
             options: options
           )

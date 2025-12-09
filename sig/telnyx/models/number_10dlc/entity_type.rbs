@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    module Number10dlc
+      type entity_type =
+        :PRIVATE_PROFIT | :PUBLIC_PROFIT | :NON_PROFIT | :GOVERNMENT
+
+      module EntityType
+        extend Telnyx::Internal::Type::Enum
+
+        PRIVATE_PROFIT: :PRIVATE_PROFIT
+        PUBLIC_PROFIT: :PUBLIC_PROFIT
+        NON_PROFIT: :NON_PROFIT
+        GOVERNMENT: :GOVERNMENT
+
+        def self?.values: -> ::Array[Telnyx::Models::Number10dlc::entity_type]
+      end
+    end
+  end
+end

@@ -20,8 +20,8 @@ module Telnyx
 
       # @!attribute meta
       #
-      #   @return [Object, nil]
-      optional :meta, Telnyx::Internal::Type::Unknown
+      #   @return [Hash{Symbol=>Object}, nil]
+      optional :meta, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
       # @!attribute source
       #
@@ -32,7 +32,7 @@ module Telnyx
       #   @param code [String]
       #   @param title [String]
       #   @param detail [String]
-      #   @param meta [Object]
+      #   @param meta [Hash{Symbol=>Object}]
       #   @param source [Telnyx::Models::MessagingError::Source]
 
       # @see Telnyx::Models::MessagingError#source

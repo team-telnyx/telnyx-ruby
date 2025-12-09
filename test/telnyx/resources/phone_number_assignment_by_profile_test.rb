@@ -25,6 +25,22 @@ class Telnyx::Test::Resources::PhoneNumberAssignmentByProfileTest < Telnyx::Test
     end
   end
 
+  def test_list_phone_number_status
+    skip("Prism tests are disabled")
+
+    response = @telnyx.phone_number_assignment_by_profile.list_phone_number_status("taskId")
+
+    assert_pattern do
+      response => Telnyx::Models::PhoneNumberAssignmentByProfileListPhoneNumberStatusResponse
+    end
+
+    assert_pattern do
+      response => {
+        records: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::PhoneNumberAssignmentByProfileListPhoneNumberStatusResponse::Record])
+      }
+    end
+  end
+
   def test_retrieve_phone_number_status
     skip("Prism tests are disabled")
 

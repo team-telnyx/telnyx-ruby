@@ -4,6 +4,6 @@ module Telnyx
   module Models
     # @type [Telnyx::Internal::Type::Converter]
     PartnerCampaignRetrieveSharingStatusResponse =
-      Telnyx::Internal::Type::HashOf[-> { Telnyx::CampaignSharingStatus }]
+      Telnyx::Internal::Type::HashOf[-> { Telnyx::Number10dlc::CampaignSharingStatus }]
   end
 end

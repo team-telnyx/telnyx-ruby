@@ -42,7 +42,11 @@ module Telnyx
             sort:
               Telnyx::PortingOrders::PhoneNumberBlockListParams::Sort::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::PortingOrders::PhoneNumberBlockListResponse)
+          ).returns(
+            Telnyx::Internal::DefaultPagination[
+              Telnyx::PortingOrders::PortingPhoneNumberBlock
+            ]
+          )
         end
         def list(
           # Identifies the Porting Order associated with the phone number blocks

@@ -22,7 +22,7 @@ module Telnyx
         ?filter: Telnyx::WireguardPeerListParams::Filter,
         ?page: Telnyx::WireguardPeerListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::WireguardPeerListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::WireguardPeerListResponse]
 
       def delete: (
         String id,

@@ -11,161 +11,108 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
+      sig { returns(Integer) }
+      attr_accessor :channels
+
+      # List of countries (in ISO 3166-2, capitalized) members of the billing channel
+      # zone
+      sig { returns(T::Array[String]) }
+      attr_accessor :countries
+
+      sig { returns(String) }
+      attr_accessor :name
+
       sig do
         returns(
-          T.nilable(T::Array[Telnyx::Models::ChannelZoneListResponse::Data])
+          Telnyx::Models::ChannelZoneListResponse::RecordType::TaggedSymbol
         )
       end
-      attr_reader :data
+      attr_accessor :record_type
+
+      # ISO 8601 formatted date of when the channel zone was created
+      sig { returns(T.nilable(String)) }
+      attr_reader :created_at
+
+      sig { params(created_at: String).void }
+      attr_writer :created_at
+
+      # ISO 8601 formatted date of when the channel zone was updated
+      sig { returns(T.nilable(String)) }
+      attr_reader :updated_at
+
+      sig { params(updated_at: String).void }
+      attr_writer :updated_at
 
       sig do
         params(
-          data: T::Array[Telnyx::Models::ChannelZoneListResponse::Data::OrHash]
-        ).void
-      end
-      attr_writer :data
-
-      sig { returns(T.nilable(Telnyx::PaginationMeta)) }
-      attr_reader :meta
-
-      sig { params(meta: Telnyx::PaginationMeta::OrHash).void }
-      attr_writer :meta
-
-      sig do
-        params(
-          data: T::Array[Telnyx::Models::ChannelZoneListResponse::Data::OrHash],
-          meta: Telnyx::PaginationMeta::OrHash
+          id: String,
+          channels: Integer,
+          countries: T::Array[String],
+          name: String,
+          record_type:
+            Telnyx::Models::ChannelZoneListResponse::RecordType::OrSymbol,
+          created_at: String,
+          updated_at: String
         ).returns(T.attached_class)
       end
-      def self.new(data: nil, meta: nil)
+      def self.new(
+        id:,
+        channels:,
+        # List of countries (in ISO 3166-2, capitalized) members of the billing channel
+        # zone
+        countries:,
+        name:,
+        record_type:,
+        # ISO 8601 formatted date of when the channel zone was created
+        created_at: nil,
+        # ISO 8601 formatted date of when the channel zone was updated
+        updated_at: nil
+      )
       end
 
       sig do
         override.returns(
           {
-            data: T::Array[Telnyx::Models::ChannelZoneListResponse::Data],
-            meta: Telnyx::PaginationMeta
+            id: String,
+            channels: Integer,
+            countries: T::Array[String],
+            name: String,
+            record_type:
+              Telnyx::Models::ChannelZoneListResponse::RecordType::TaggedSymbol,
+            created_at: String,
+            updated_at: String
           }
         )
       end
       def to_hash
       end
 
-      class Data < Telnyx::Internal::Type::BaseModel
-        OrHash =
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
           T.type_alias do
-            T.any(
-              Telnyx::Models::ChannelZoneListResponse::Data,
-              Telnyx::Internal::AnyHash
-            )
+            T.all(Symbol, Telnyx::Models::ChannelZoneListResponse::RecordType)
           end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        sig { returns(String) }
-        attr_accessor :id
-
-        sig { returns(Integer) }
-        attr_accessor :channels
-
-        # List of countries (in ISO 3166-2, capitalized) members of the billing channel
-        # zone
-        sig { returns(T::Array[String]) }
-        attr_accessor :countries
-
-        sig { returns(String) }
-        attr_accessor :name
-
-        sig do
-          returns(
-            Telnyx::Models::ChannelZoneListResponse::Data::RecordType::TaggedSymbol
+        CHANNEL_ZONE =
+          T.let(
+            :channel_zone,
+            Telnyx::Models::ChannelZoneListResponse::RecordType::TaggedSymbol
           )
-        end
-        attr_accessor :record_type
-
-        # ISO 8601 formatted date of when the channel zone was created
-        sig { returns(T.nilable(String)) }
-        attr_reader :created_at
-
-        sig { params(created_at: String).void }
-        attr_writer :created_at
-
-        # ISO 8601 formatted date of when the channel zone was updated
-        sig { returns(T.nilable(String)) }
-        attr_reader :updated_at
-
-        sig { params(updated_at: String).void }
-        attr_writer :updated_at
-
-        sig do
-          params(
-            id: String,
-            channels: Integer,
-            countries: T::Array[String],
-            name: String,
-            record_type:
-              Telnyx::Models::ChannelZoneListResponse::Data::RecordType::OrSymbol,
-            created_at: String,
-            updated_at: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          id:,
-          channels:,
-          # List of countries (in ISO 3166-2, capitalized) members of the billing channel
-          # zone
-          countries:,
-          name:,
-          record_type:,
-          # ISO 8601 formatted date of when the channel zone was created
-          created_at: nil,
-          # ISO 8601 formatted date of when the channel zone was updated
-          updated_at: nil
-        )
-        end
 
         sig do
           override.returns(
-            {
-              id: String,
-              channels: Integer,
-              countries: T::Array[String],
-              name: String,
-              record_type:
-                Telnyx::Models::ChannelZoneListResponse::Data::RecordType::TaggedSymbol,
-              created_at: String,
-              updated_at: String
-            }
+            T::Array[
+              Telnyx::Models::ChannelZoneListResponse::RecordType::TaggedSymbol
+            ]
           )
         end
-        def to_hash
-        end
-
-        module RecordType
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::Models::ChannelZoneListResponse::Data::RecordType
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          CHANNEL_ZONE =
-            T.let(
-              :channel_zone,
-              Telnyx::Models::ChannelZoneListResponse::Data::RecordType::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Models::ChannelZoneListResponse::Data::RecordType::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
+        def self.values
         end
       end
     end

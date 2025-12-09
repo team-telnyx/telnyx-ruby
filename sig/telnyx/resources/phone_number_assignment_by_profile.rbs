@@ -8,6 +8,13 @@ module Telnyx
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::PhoneNumberAssignmentByProfileAssignResponse
 
+      def list_phone_number_status: (
+        String task_id,
+        ?page: Integer,
+        ?records_per_page: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PhoneNumberAssignmentByProfileListPhoneNumberStatusResponse
+
       def retrieve_phone_number_status: (
         String task_id,
         ?page: Integer,

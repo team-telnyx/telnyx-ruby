@@ -8,17 +8,19 @@ module Telnyx
       #
       # Search for any detail record across the Telnyx Platform
       #
-      # @overload list(filter: nil, page: nil, sort: nil, request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::DetailRecordListParams::Filter] Filter records on a given record attribute and value. <br/>Example: filter[statu
       #
-      # @param page [Telnyx::Models::DetailRecordListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param sort [Array<String>] Specifies the sort order for results. <br/>Example: sort=-created_at
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::DetailRecordListResponse]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::DetailRecordListResponse::MessageDetailRecord, Telnyx::Models::DetailRecordListResponse::ConferenceDetailRecord, Telnyx::Models::DetailRecordListResponse::ConferenceParticipantDetailRecord, Telnyx::Models::DetailRecordListResponse::AmdDetailRecord, Telnyx::Models::DetailRecordListResponse::VerifyDetailRecord, Telnyx::Models::DetailRecordListResponse::SimCardUsageDetailRecord, Telnyx::Models::DetailRecordListResponse::MediaStorageDetailRecord>]
       #
       # @see Telnyx::Models::DetailRecordListParams
       def list(params = {})
@@ -26,7 +28,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "detail_records",
-          query: parsed,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::DetailRecordListResponse,
           options: options
         )

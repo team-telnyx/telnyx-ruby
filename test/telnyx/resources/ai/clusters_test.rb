@@ -25,13 +25,25 @@ class Telnyx::Test::Resources::AI::ClustersTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.clusters.list
 
     assert_pattern do
-      response => Telnyx::Models::AI::ClusterListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::AI::ClusterListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::ClusterListResponse::Data]),
-        meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+      row => {
+        bucket: String,
+        created_at: Time,
+        finished_at: Time,
+        min_cluster_size: Integer,
+        min_subcluster_size: Integer,
+        status: Telnyx::TaskStatus,
+        task_id: String
       }
     end
   end

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::IPs#list
     class IP < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Identifies the type of resource.

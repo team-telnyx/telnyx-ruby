@@ -41,14 +41,14 @@ class Telnyx::Test::Resources::PublicInternetGatewaysTest < Telnyx::Test::Resour
     response = @telnyx.public_internet_gateways.list
 
     assert_pattern do
-      response => Telnyx::Models::PublicInternetGatewayListResponse
+      response => Telnyx::Internal::DefaultPagination
     end
 
+    row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::PublicInternetGatewayListResponse::Data]) | nil,
-        meta: Telnyx::PaginationMeta | nil
-      }
+      row => Telnyx::Models::PublicInternetGatewayListResponse
     end
   end
 

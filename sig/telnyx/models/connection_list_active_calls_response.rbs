@@ -2,141 +2,53 @@ module Telnyx
   module Models
     type connection_list_active_calls_response =
       {
-        data: ::Array[Telnyx::Models::ConnectionListActiveCallsResponse::Data],
-        meta: Telnyx::Models::ConnectionListActiveCallsResponse::Meta
+        call_control_id: String,
+        call_duration: Integer,
+        call_leg_id: String,
+        call_session_id: String,
+        client_state: String,
+        record_type: Telnyx::Models::ConnectionListActiveCallsResponse::record_type
       }
 
     class ConnectionListActiveCallsResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: ::Array[Telnyx::Models::ConnectionListActiveCallsResponse::Data]?
+      attr_accessor call_control_id: String
 
-      def data=: (
-        ::Array[Telnyx::Models::ConnectionListActiveCallsResponse::Data]
-      ) -> ::Array[Telnyx::Models::ConnectionListActiveCallsResponse::Data]
+      attr_accessor call_duration: Integer
 
-      attr_reader meta: Telnyx::Models::ConnectionListActiveCallsResponse::Meta?
+      attr_accessor call_leg_id: String
 
-      def meta=: (
-        Telnyx::Models::ConnectionListActiveCallsResponse::Meta
-      ) -> Telnyx::Models::ConnectionListActiveCallsResponse::Meta
+      attr_accessor call_session_id: String
+
+      attr_accessor client_state: String
+
+      attr_accessor record_type: Telnyx::Models::ConnectionListActiveCallsResponse::record_type
 
       def initialize: (
-        ?data: ::Array[Telnyx::Models::ConnectionListActiveCallsResponse::Data],
-        ?meta: Telnyx::Models::ConnectionListActiveCallsResponse::Meta
+        call_control_id: String,
+        call_duration: Integer,
+        call_leg_id: String,
+        call_session_id: String,
+        client_state: String,
+        record_type: Telnyx::Models::ConnectionListActiveCallsResponse::record_type
       ) -> void
 
       def to_hash: -> {
-        data: ::Array[Telnyx::Models::ConnectionListActiveCallsResponse::Data],
-        meta: Telnyx::Models::ConnectionListActiveCallsResponse::Meta
+        call_control_id: String,
+        call_duration: Integer,
+        call_leg_id: String,
+        call_session_id: String,
+        client_state: String,
+        record_type: Telnyx::Models::ConnectionListActiveCallsResponse::record_type
       }
 
-      type data =
-        {
-          call_control_id: String,
-          call_duration: Integer,
-          call_leg_id: String,
-          call_session_id: String,
-          client_state: String,
-          record_type: Telnyx::Models::ConnectionListActiveCallsResponse::Data::record_type
-        }
+      type record_type = :call
 
-      class Data < Telnyx::Internal::Type::BaseModel
-        attr_accessor call_control_id: String
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
 
-        attr_accessor call_duration: Integer
+        CALL: :call
 
-        attr_accessor call_leg_id: String
-
-        attr_accessor call_session_id: String
-
-        attr_accessor client_state: String
-
-        attr_accessor record_type: Telnyx::Models::ConnectionListActiveCallsResponse::Data::record_type
-
-        def initialize: (
-          call_control_id: String,
-          call_duration: Integer,
-          call_leg_id: String,
-          call_session_id: String,
-          client_state: String,
-          record_type: Telnyx::Models::ConnectionListActiveCallsResponse::Data::record_type
-        ) -> void
-
-        def to_hash: -> {
-          call_control_id: String,
-          call_duration: Integer,
-          call_leg_id: String,
-          call_session_id: String,
-          client_state: String,
-          record_type: Telnyx::Models::ConnectionListActiveCallsResponse::Data::record_type
-        }
-
-        type record_type = :call
-
-        module RecordType
-          extend Telnyx::Internal::Type::Enum
-
-          CALL: :call
-
-          def self?.values: -> ::Array[Telnyx::Models::ConnectionListActiveCallsResponse::Data::record_type]
-        end
-      end
-
-      type meta =
-        {
-          cursors: Telnyx::Models::ConnectionListActiveCallsResponse::Meta::Cursors,
-          next_: String,
-          previous: String,
-          total_items: Integer
-        }
-
-      class Meta < Telnyx::Internal::Type::BaseModel
-        attr_reader cursors: Telnyx::Models::ConnectionListActiveCallsResponse::Meta::Cursors?
-
-        def cursors=: (
-          Telnyx::Models::ConnectionListActiveCallsResponse::Meta::Cursors
-        ) -> Telnyx::Models::ConnectionListActiveCallsResponse::Meta::Cursors
-
-        attr_reader next_: String?
-
-        def next_=: (String) -> String
-
-        attr_reader previous: String?
-
-        def previous=: (String) -> String
-
-        attr_reader total_items: Integer?
-
-        def total_items=: (Integer) -> Integer
-
-        def initialize: (
-          ?cursors: Telnyx::Models::ConnectionListActiveCallsResponse::Meta::Cursors,
-          ?next_: String,
-          ?previous: String,
-          ?total_items: Integer
-        ) -> void
-
-        def to_hash: -> {
-          cursors: Telnyx::Models::ConnectionListActiveCallsResponse::Meta::Cursors,
-          next_: String,
-          previous: String,
-          total_items: Integer
-        }
-
-        type cursors = { after: String, before: String }
-
-        class Cursors < Telnyx::Internal::Type::BaseModel
-          attr_reader after: String?
-
-          def after=: (String) -> String
-
-          attr_reader before: String?
-
-          def before=: (String) -> String
-
-          def initialize: (?after: String, ?before: String) -> void
-
-          def to_hash: -> { after: String, before: String }
-        end
+        def self?.values: -> ::Array[Telnyx::Models::ConnectionListActiveCallsResponse::record_type]
       end
     end
   end

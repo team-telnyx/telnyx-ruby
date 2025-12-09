@@ -64,7 +64,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::CustomerServiceRecordListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::CustomerServiceRecord>]
       #
       # @see Telnyx::Models::CustomerServiceRecordListParams
       def list(params = {})
@@ -73,7 +73,8 @@ module Telnyx
           method: :get,
           path: "customer_service_records",
           query: parsed,
-          model: Telnyx::Models::CustomerServiceRecordListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::CustomerServiceRecord,
           options: options
         )
       end

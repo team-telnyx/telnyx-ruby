@@ -249,15 +249,15 @@ module Telnyx
               )
             )
           end
-          attr_reader :format_
+          attr_reader :file_format
 
           sig do
             params(
-              format_:
+              file_format:
                 Telnyx::ConferenceRecordingSavedWebhookEvent::Data::Payload::Format::OrSymbol
             ).void
           end
-          attr_writer :format_
+          attr_writer :file_format
 
           # Recording URLs in requested format. The URL is valid for as long as the file
           # exists. For security purposes, this feature is activated on a per request basis.
@@ -329,7 +329,7 @@ module Telnyx
               client_state: String,
               conference_id: String,
               connection_id: String,
-              format_:
+              file_format:
                 Telnyx::ConferenceRecordingSavedWebhookEvent::Data::Payload::Format::OrSymbol,
               public_recording_urls:
                 Telnyx::ConferenceRecordingSavedWebhookEvent::Data::Payload::PublicRecordingURLs::OrHash,
@@ -357,7 +357,7 @@ module Telnyx
             connection_id: nil,
             # The audio file format used when storing the call recording. Can be either `mp3`
             # or `wav`.
-            format_: nil,
+            file_format: nil,
             # Recording URLs in requested format. The URL is valid for as long as the file
             # exists. For security purposes, this feature is activated on a per request basis.
             # Please contact customer support with your Account ID to request activation.
@@ -385,7 +385,7 @@ module Telnyx
                 client_state: String,
                 conference_id: String,
                 connection_id: String,
-                format_:
+                file_format:
                   Telnyx::ConferenceRecordingSavedWebhookEvent::Data::Payload::Format::TaggedSymbol,
                 public_recording_urls:
                   Telnyx::ConferenceRecordingSavedWebhookEvent::Data::Payload::PublicRecordingURLs,

@@ -37,7 +37,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::WebhookDeliveryListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::WebhookDeliveryListResponse>]
       #
       # @see Telnyx::Models::WebhookDeliveryListParams
       def list(params = {})
@@ -46,6 +46,7 @@ module Telnyx
           method: :get,
           path: "webhook_deliveries",
           query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::WebhookDeliveryListResponse,
           options: options
         )

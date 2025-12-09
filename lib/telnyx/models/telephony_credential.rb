@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::TelephonyCredentials#list
     class TelephonyCredential < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Identifies the resource.
