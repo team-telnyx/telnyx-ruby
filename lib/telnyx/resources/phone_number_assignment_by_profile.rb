@@ -41,6 +41,30 @@ module Telnyx
       # Check the status of the individual phone number/campaign assignments associated
       # with the supplied `taskId`.
       #
+      # @overload list_phone_number_status(task_id, page: nil, records_per_page: nil, request_options: {})
+      #
+      # @param task_id [String]
+      # @param page [Integer]
+      # @param records_per_page [Integer]
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::PhoneNumberAssignmentByProfileListPhoneNumberStatusResponse]
+      #
+      # @see Telnyx::Models::PhoneNumberAssignmentByProfileListPhoneNumberStatusParams
+      def list_phone_number_status(task_id, params = {})
+        parsed, options = Telnyx::PhoneNumberAssignmentByProfileListPhoneNumberStatusParams.dump_request(params)
+        @client.request(
+          method: :get,
+          path: ["10dlc/phoneNumberAssignmentByProfile/%1$s/phoneNumbers", task_id],
+          query: parsed.transform_keys(records_per_page: "recordsPerPage"),
+          model: Telnyx::Models::PhoneNumberAssignmentByProfileListPhoneNumberStatusResponse,
+          options: options
+        )
+      end
+
+      # Check the status of the individual phone number/campaign assignments associated
+      # with the supplied `taskId`.
+      #
       # @overload retrieve_phone_number_status(task_id, page: nil, records_per_page: nil, request_options: {})
       #
       # @param task_id [String]

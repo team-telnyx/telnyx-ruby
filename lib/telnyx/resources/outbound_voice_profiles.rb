@@ -143,7 +143,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::OutboundVoiceProfileListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::OutboundVoiceProfile>]
       #
       # @see Telnyx::Models::OutboundVoiceProfileListParams
       def list(params = {})
@@ -152,7 +152,8 @@ module Telnyx
           method: :get,
           path: "outbound_voice_profiles",
           query: parsed,
-          model: Telnyx::Models::OutboundVoiceProfileListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::OutboundVoiceProfile,
           options: options
         )
       end

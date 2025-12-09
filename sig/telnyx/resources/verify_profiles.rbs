@@ -31,9 +31,10 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::VerifyProfileListParams::Filter,
-        ?page: Telnyx::VerifyProfileListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::VerifyProfileListResponse
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::VerifyProfile]
 
       def delete: (
         String verify_profile_id,

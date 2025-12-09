@@ -50,14 +50,21 @@ class Telnyx::Test::Resources::AI::Assistants::ScheduledEventsTest < Telnyx::Tes
     response = @telnyx.ai.assistants.scheduled_events.list("assistant_id")
 
     assert_pattern do
-      response => Telnyx::Models::AI::Assistants::ScheduledEventListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::AI::Assistants::ScheduledEventListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[union: Telnyx::Models::AI::Assistants::ScheduledEventListResponse::Data]),
-        meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
-      }
+      case row
+      in Telnyx::AI::Assistants::ScheduledPhoneCallEventResponse
+      in Telnyx::AI::Assistants::ScheduledSMSEventResponse
+      end
     end
   end
 

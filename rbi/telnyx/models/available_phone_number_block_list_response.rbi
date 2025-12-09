@@ -32,19 +32,10 @@ module Telnyx
       end
       attr_writer :data
 
-      sig do
-        returns(
-          T.nilable(Telnyx::Models::AvailablePhoneNumberBlockListResponse::Meta)
-        )
-      end
+      sig { returns(T.nilable(Telnyx::AvailablePhoneNumbersMetadata)) }
       attr_reader :meta
 
-      sig do
-        params(
-          meta:
-            Telnyx::Models::AvailablePhoneNumberBlockListResponse::Meta::OrHash
-        ).void
-      end
+      sig { params(meta: Telnyx::AvailablePhoneNumbersMetadata::OrHash).void }
       attr_writer :meta
 
       sig do
@@ -53,8 +44,7 @@ module Telnyx
             T::Array[
               Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::OrHash
             ],
-          meta:
-            Telnyx::Models::AvailablePhoneNumberBlockListResponse::Meta::OrHash
+          meta: Telnyx::AvailablePhoneNumbersMetadata::OrHash
         ).returns(T.attached_class)
       end
       def self.new(data: nil, meta: nil)
@@ -67,7 +57,7 @@ module Telnyx
               T::Array[
                 Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data
               ],
-            meta: Telnyx::Models::AvailablePhoneNumberBlockListResponse::Meta
+            meta: Telnyx::AvailablePhoneNumbersMetadata
           }
         )
       end
@@ -424,44 +414,6 @@ module Telnyx
             def self.values
             end
           end
-        end
-      end
-
-      class Meta < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::Models::AvailablePhoneNumberBlockListResponse::Meta,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :best_effort_results
-
-        sig { params(best_effort_results: Integer).void }
-        attr_writer :best_effort_results
-
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :total_results
-
-        sig { params(total_results: Integer).void }
-        attr_writer :total_results
-
-        sig do
-          params(best_effort_results: Integer, total_results: Integer).returns(
-            T.attached_class
-          )
-        end
-        def self.new(best_effort_results: nil, total_results: nil)
-        end
-
-        sig do
-          override.returns(
-            { best_effort_results: Integer, total_results: Integer }
-          )
-        end
-        def to_hash
         end
       end
     end

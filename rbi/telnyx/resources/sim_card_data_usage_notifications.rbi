@@ -38,7 +38,7 @@ module Telnyx
       # Updates information for a SIM Card Data Usage Notification.
       sig do
         params(
-          id: String,
+          sim_card_data_usage_notification_id: String,
           sim_card_id: String,
           threshold: Telnyx::SimCardDataUsageNotification::Threshold::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
@@ -46,7 +46,7 @@ module Telnyx
       end
       def update(
         # Identifies the resource.
-        id,
+        sim_card_data_usage_notification_id,
         # The identification UUID of the related SIM card resource.
         sim_card_id: nil,
         # Data usage threshold that will trigger the notification.
@@ -63,7 +63,11 @@ module Telnyx
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::SimCardDataUsageNotificationListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::SimCardDataUsageNotification
+          ]
+        )
       end
       def list(
         # A valid SIM card ID.

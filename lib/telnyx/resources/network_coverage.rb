@@ -18,7 +18,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::NetworkCoverageListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::NetworkCoverageListResponse>]
       #
       # @see Telnyx::Models::NetworkCoverageListParams
       def list(params = {})
@@ -27,6 +27,7 @@ module Telnyx
           method: :get,
           path: "network_coverage",
           query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::NetworkCoverageListResponse,
           options: options
         )

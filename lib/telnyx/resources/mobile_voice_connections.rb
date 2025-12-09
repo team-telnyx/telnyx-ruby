@@ -109,7 +109,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::MobileVoiceConnectionListResponse]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::MobileVoiceConnection>]
       #
       # @see Telnyx::Models::MobileVoiceConnectionListParams
       def list(params = {})
@@ -122,7 +122,8 @@ module Telnyx
             page_number: "page[number]",
             page_size: "page[size]"
           ),
-          model: Telnyx::Models::MobileVoiceConnectionListResponse,
+          page: Telnyx::Internal::DefaultFlatPagination,
+          model: Telnyx::MobileVoiceConnection,
           options: options
         )
       end

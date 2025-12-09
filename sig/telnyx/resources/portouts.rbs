@@ -18,7 +18,7 @@ module Telnyx
         ?filter: Telnyx::PortoutListParams::Filter,
         ?page: Telnyx::PortoutListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::PortoutListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::PortoutDetails]
 
       def list_rejection_codes: (
         String portout_id,

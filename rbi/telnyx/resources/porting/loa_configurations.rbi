@@ -82,7 +82,11 @@ module Telnyx
           params(
             page: Telnyx::Porting::LoaConfigurationListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Porting::LoaConfigurationListResponse)
+          ).returns(
+            Telnyx::Internal::DefaultPagination[
+              Telnyx::Porting::PortingLoaConfiguration
+            ]
+          )
         end
         def list(
           # Consolidated page parameter (deepObject style). Originally: page[size],

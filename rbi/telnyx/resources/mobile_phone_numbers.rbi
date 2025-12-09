@@ -66,7 +66,9 @@ module Telnyx
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::MobilePhoneNumberListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::MobilePhoneNumber]
+        )
       end
       def list(
         # The page number to load

@@ -2,107 +2,79 @@ module Telnyx
   module Models
     type managed_account_list_response =
       {
-        data: ::Array[Telnyx::Models::ManagedAccountListResponse::Data],
-        meta: Telnyx::PaginationMeta
+        id: String,
+        api_user: String,
+        created_at: String,
+        email: String,
+        manager_account_id: String,
+        record_type: Telnyx::Models::ManagedAccountListResponse::record_type,
+        updated_at: String,
+        managed_account_allow_custom_pricing: bool,
+        organization_name: String,
+        rollup_billing: bool
       }
 
     class ManagedAccountListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: ::Array[Telnyx::Models::ManagedAccountListResponse::Data]?
+      attr_accessor id: String
 
-      def data=: (
-        ::Array[Telnyx::Models::ManagedAccountListResponse::Data]
-      ) -> ::Array[Telnyx::Models::ManagedAccountListResponse::Data]
+      attr_accessor api_user: String
 
-      attr_reader meta: Telnyx::PaginationMeta?
+      attr_accessor created_at: String
 
-      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+      attr_accessor email: String
+
+      attr_accessor manager_account_id: String
+
+      attr_accessor record_type: Telnyx::Models::ManagedAccountListResponse::record_type
+
+      attr_accessor updated_at: String
+
+      attr_reader managed_account_allow_custom_pricing: bool?
+
+      def managed_account_allow_custom_pricing=: (bool) -> bool
+
+      attr_reader organization_name: String?
+
+      def organization_name=: (String) -> String
+
+      attr_reader rollup_billing: bool?
+
+      def rollup_billing=: (bool) -> bool
 
       def initialize: (
-        ?data: ::Array[Telnyx::Models::ManagedAccountListResponse::Data],
-        ?meta: Telnyx::PaginationMeta
+        id: String,
+        api_user: String,
+        created_at: String,
+        email: String,
+        manager_account_id: String,
+        record_type: Telnyx::Models::ManagedAccountListResponse::record_type,
+        updated_at: String,
+        ?managed_account_allow_custom_pricing: bool,
+        ?organization_name: String,
+        ?rollup_billing: bool
       ) -> void
 
       def to_hash: -> {
-        data: ::Array[Telnyx::Models::ManagedAccountListResponse::Data],
-        meta: Telnyx::PaginationMeta
+        id: String,
+        api_user: String,
+        created_at: String,
+        email: String,
+        manager_account_id: String,
+        record_type: Telnyx::Models::ManagedAccountListResponse::record_type,
+        updated_at: String,
+        managed_account_allow_custom_pricing: bool,
+        organization_name: String,
+        rollup_billing: bool
       }
 
-      type data =
-        {
-          id: String,
-          api_user: String,
-          created_at: String,
-          email: String,
-          manager_account_id: String,
-          record_type: Telnyx::Models::ManagedAccountListResponse::Data::record_type,
-          updated_at: String,
-          managed_account_allow_custom_pricing: bool,
-          organization_name: String,
-          rollup_billing: bool
-        }
+      type record_type = :managed_account
 
-      class Data < Telnyx::Internal::Type::BaseModel
-        attr_accessor id: String
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
 
-        attr_accessor api_user: String
+        MANAGED_ACCOUNT: :managed_account
 
-        attr_accessor created_at: String
-
-        attr_accessor email: String
-
-        attr_accessor manager_account_id: String
-
-        attr_accessor record_type: Telnyx::Models::ManagedAccountListResponse::Data::record_type
-
-        attr_accessor updated_at: String
-
-        attr_reader managed_account_allow_custom_pricing: bool?
-
-        def managed_account_allow_custom_pricing=: (bool) -> bool
-
-        attr_reader organization_name: String?
-
-        def organization_name=: (String) -> String
-
-        attr_reader rollup_billing: bool?
-
-        def rollup_billing=: (bool) -> bool
-
-        def initialize: (
-          id: String,
-          api_user: String,
-          created_at: String,
-          email: String,
-          manager_account_id: String,
-          record_type: Telnyx::Models::ManagedAccountListResponse::Data::record_type,
-          updated_at: String,
-          ?managed_account_allow_custom_pricing: bool,
-          ?organization_name: String,
-          ?rollup_billing: bool
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          api_user: String,
-          created_at: String,
-          email: String,
-          manager_account_id: String,
-          record_type: Telnyx::Models::ManagedAccountListResponse::Data::record_type,
-          updated_at: String,
-          managed_account_allow_custom_pricing: bool,
-          organization_name: String,
-          rollup_billing: bool
-        }
-
-        type record_type = :managed_account
-
-        module RecordType
-          extend Telnyx::Internal::Type::Enum
-
-          MANAGED_ACCOUNT: :managed_account
-
-          def self?.values: -> ::Array[Telnyx::Models::ManagedAccountListResponse::Data::record_type]
-        end
+        def self?.values: -> ::Array[Telnyx::Models::ManagedAccountListResponse::record_type]
       end
     end
   end

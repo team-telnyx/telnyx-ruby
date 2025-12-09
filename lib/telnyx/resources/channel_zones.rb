@@ -45,7 +45,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::ChannelZoneListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ChannelZoneListResponse>]
       #
       # @see Telnyx::Models::ChannelZoneListParams
       def list(params = {})
@@ -54,6 +54,7 @@ module Telnyx
           method: :get,
           path: "channel_zones",
           query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::ChannelZoneListResponse,
           options: options
         )

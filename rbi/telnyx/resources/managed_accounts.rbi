@@ -88,7 +88,11 @@ module Telnyx
           page: Telnyx::ManagedAccountListParams::Page::OrHash,
           sort: Telnyx::ManagedAccountListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::ManagedAccountListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[
+            Telnyx::Models::ManagedAccountListResponse
+          ]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

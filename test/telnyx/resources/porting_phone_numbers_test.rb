@@ -9,13 +9,27 @@ class Telnyx::Test::Resources::PortingPhoneNumbersTest < Telnyx::Test::ResourceT
     response = @telnyx.porting_phone_numbers.list
 
     assert_pattern do
-      response => Telnyx::Models::PortingPhoneNumberListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::PortingPhoneNumberListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::PortingPhoneNumberListResponse::Data]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        activation_status: Telnyx::Models::PortingPhoneNumberListResponse::ActivationStatus | nil,
+        phone_number: String | nil,
+        phone_number_type: Telnyx::Models::PortingPhoneNumberListResponse::PhoneNumberType | nil,
+        portability_status: Telnyx::Models::PortingPhoneNumberListResponse::PortabilityStatus | nil,
+        porting_order_id: String | nil,
+        porting_order_status: Telnyx::Models::PortingPhoneNumberListResponse::PortingOrderStatus | nil,
+        record_type: String | nil,
+        requirements_status: Telnyx::Models::PortingPhoneNumberListResponse::RequirementsStatus | nil,
+        support_key: String | nil
       }
     end
   end

@@ -15,7 +15,7 @@ module Telnyx
           params(
             campaign_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::TelnyxCampaignCsp)
+          ).returns(Telnyx::Number10dlc::TelnyxCampaignCsp)
         end
         def retrieve(campaign_id, request_options: {})
         end
@@ -37,7 +37,7 @@ module Telnyx
             webhook_failover_url: String,
             webhook_url: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::TelnyxCampaignCsp)
+          ).returns(Telnyx::Number10dlc::TelnyxCampaignCsp)
         end
         def update(
           campaign_id,
@@ -76,7 +76,11 @@ module Telnyx
             records_per_page: Integer,
             sort: Telnyx::Number10dlc::CampaignListParams::Sort::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Number10dlc::CampaignListResponse)
+          ).returns(
+            Telnyx::Internal::PerPagePaginationV2[
+              Telnyx::Models::Number10dlc::CampaignListResponse
+            ]
+          )
         end
         def list(
           brand_id:,

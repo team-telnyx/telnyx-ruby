@@ -68,7 +68,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::PartnerCampaignListResponse]
+      # @return [Telnyx::Internal::PerPagePaginationV2<Telnyx::Models::TelnyxDownstreamCampaign>]
       #
       # @see Telnyx::Models::PartnerCampaignListParams
       def list(params = {})
@@ -77,7 +77,8 @@ module Telnyx
           method: :get,
           path: "10dlc/partner_campaigns",
           query: parsed.transform_keys(records_per_page: "recordsPerPage"),
-          model: Telnyx::Models::PartnerCampaignListResponse,
+          page: Telnyx::Internal::PerPagePaginationV2,
+          model: Telnyx::TelnyxDownstreamCampaign,
           options: options
         )
       end
@@ -99,7 +100,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::PartnerCampaignListSharedByMeResponse]
+      # @return [Telnyx::Internal::PerPagePaginationV2<Telnyx::Models::PartnerCampaignListSharedByMeResponse>]
       #
       # @see Telnyx::Models::PartnerCampaignListSharedByMeParams
       def list_shared_by_me(params = {})
@@ -108,6 +109,7 @@ module Telnyx
           method: :get,
           path: "10dlc/partnerCampaign/sharedByMe",
           query: parsed.transform_keys(records_per_page: "recordsPerPage"),
+          page: Telnyx::Internal::PerPagePaginationV2,
           model: Telnyx::Models::PartnerCampaignListSharedByMeResponse,
           options: options
         )
@@ -121,14 +123,14 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Hash{Symbol=>Telnyx::Models::CampaignSharingStatus}]
+      # @return [Hash{Symbol=>Telnyx::Models::Number10dlc::CampaignSharingStatus}]
       #
       # @see Telnyx::Models::PartnerCampaignRetrieveSharingStatusParams
       def retrieve_sharing_status(campaign_id, params = {})
         @client.request(
           method: :get,
           path: ["10dlc/partnerCampaign/%1$s/sharing", campaign_id],
-          model: Telnyx::Internal::Type::HashOf[Telnyx::CampaignSharingStatus],
+          model: Telnyx::Internal::Type::HashOf[Telnyx::Number10dlc::CampaignSharingStatus],
           options: params[:request_options]
         )
       end

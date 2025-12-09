@@ -10,11 +10,17 @@ module Telnyx
 
     DEFAULT_MAX_RETRY_DELAY = T.let(8.0, Float)
 
-    sig { returns(String) }
+    sig { returns(T.nilable(String)) }
     attr_reader :api_key
 
     sig { returns(T.nilable(String)) }
     attr_reader :public_key
+
+    sig { returns(T.nilable(String)) }
+    attr_reader :client_id
+
+    sig { returns(T.nilable(String)) }
+    attr_reader :client_secret
 
     sig { returns(Telnyx::Resources::Legacy) }
     attr_reader :legacy
@@ -67,9 +73,6 @@ module Telnyx
     sig { returns(Telnyx::Resources::BillingGroups) }
     attr_reader :billing_groups
 
-    sig { returns(Telnyx::Resources::Brand) }
-    attr_reader :brand
-
     sig { returns(Telnyx::Resources::BulkSimCardActions) }
     attr_reader :bulk_sim_card_actions
 
@@ -84,12 +87,6 @@ module Telnyx
 
     sig { returns(Telnyx::Resources::Calls) }
     attr_reader :calls
-
-    sig { returns(Telnyx::Resources::Campaign) }
-    attr_reader :campaign
-
-    sig { returns(Telnyx::Resources::CampaignBuilder) }
-    attr_reader :campaign_builder
 
     sig { returns(Telnyx::Resources::ChannelZones) }
     attr_reader :channel_zones
@@ -138,9 +135,6 @@ module Telnyx
 
     sig { returns(Telnyx::Resources::DynamicEmergencyEndpoints) }
     attr_reader :dynamic_emergency_endpoints
-
-    sig { returns(Telnyx::Resources::Enum) }
-    attr_reader :enum
 
     sig { returns(Telnyx::Resources::ExternalConnections) }
     attr_reader :external_connections
@@ -309,9 +303,6 @@ module Telnyx
 
     sig { returns(Telnyx::Resources::PhoneNumberBlocks) }
     attr_reader :phone_number_blocks
-
-    sig { returns(Telnyx::Resources::PhoneNumberCampaigns) }
-    attr_reader :phone_number_campaigns
 
     sig { returns(Telnyx::Resources::PhoneNumbers) }
     attr_reader :phone_numbers
@@ -484,15 +475,26 @@ module Telnyx
     sig { returns(Telnyx::Resources::MobileVoiceConnections) }
     attr_reader :mobile_voice_connections
 
-    sig { returns(Telnyx::Resources::PartnerCampaign) }
-    attr_reader :partner_campaign
-
     sig { returns(Telnyx::Resources::Number10dlc) }
     attr_reader :number_10dlc
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers
+    end
+
+    # @api private
+    sig { returns(T::Hash[String, String]) }
+    private def bearer_auth
+    end
+
+    # @api private
+    sig { returns(Telnyx::Internal::OAuth2ClientCredentials) }
+    attr_reader :oauth_client_auth_state
+
+    # @api private
+    sig { returns(T::Hash[String, String]) }
+    private def oauth_client_auth
     end
 
     # @api private
@@ -504,6 +506,8 @@ module Telnyx
     sig do
       params(
         api_key: T.nilable(String),
+        client_id: T.nilable(String),
+        client_secret: T.nilable(String),
         public_key: T.nilable(String),
         base_url: T.nilable(String),
         max_retries: Integer,
@@ -515,6 +519,10 @@ module Telnyx
     def self.new(
       # Defaults to `ENV["TELNYX_API_KEY"]`
       api_key: ENV["TELNYX_API_KEY"],
+      # Defaults to `ENV["TELNYX_CLIENT_ID"]`
+      client_id: ENV["TELNYX_CLIENT_ID"],
+      # Defaults to `ENV["TELNYX_CLIENT_SECRET"]`
+      client_secret: ENV["TELNYX_CLIENT_SECRET"],
       # Defaults to `ENV["TELNYX_PUBLIC_KEY"]`
       public_key: ENV["TELNYX_PUBLIC_KEY"],
       # Override the default base URL for the API, e.g.,

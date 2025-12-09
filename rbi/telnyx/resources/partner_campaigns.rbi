@@ -44,7 +44,11 @@ module Telnyx
           records_per_page: Integer,
           sort: Telnyx::PartnerCampaignListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::PartnerCampaignListResponse)
+        ).returns(
+          Telnyx::Internal::PerPagePaginationV2[
+            Telnyx::TelnyxDownstreamCampaign
+          ]
+        )
       end
       def list(
         # The 1-indexed page number to get. The default value is `1`.
@@ -69,7 +73,11 @@ module Telnyx
           page: Integer,
           records_per_page: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::PartnerCampaignListSharedByMeResponse)
+        ).returns(
+          Telnyx::Internal::PerPagePaginationV2[
+            Telnyx::Models::PartnerCampaignListSharedByMeResponse
+          ]
+        )
       end
       def list_shared_by_me(
         # The 1-indexed page number to get. The default value is `1`.
@@ -86,7 +94,7 @@ module Telnyx
         params(
           campaign_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(T::Hash[Symbol, Telnyx::CampaignSharingStatus])
+        ).returns(T::Hash[Symbol, Telnyx::Number10dlc::CampaignSharingStatus])
       end
       def retrieve_sharing_status(
         # ID of the campaign in question

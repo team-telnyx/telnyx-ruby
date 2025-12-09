@@ -67,13 +67,24 @@ class Telnyx::Test::Resources::AI::Conversations::InsightGroupsTest < Telnyx::Te
     response = @telnyx.ai.conversations.insight_groups.retrieve_insight_groups
 
     assert_pattern do
-      response => Telnyx::Models::AI::Conversations::InsightGroupRetrieveInsightGroupsResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::AI::Conversations::InsightTemplateGroup
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Conversations::InsightTemplateGroup]),
-        meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+      row => {
+        id: String,
+        created_at: Time,
+        name: String,
+        description: String | nil,
+        insights: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Conversations::InsightTemplate]) | nil,
+        webhook: String | nil
       }
     end
   end

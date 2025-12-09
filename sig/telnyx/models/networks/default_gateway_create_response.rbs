@@ -30,41 +30,62 @@ module Telnyx
 
         type data =
           {
-            network_id: String,
+            id: String,
+            created_at: String,
             record_type: String,
+            updated_at: String,
+            network_id: String,
             status: Telnyx::Models::interface_status,
             wireguard_peer_id: String
           }
 
-        class Data < Telnyx::Models::Record
-          def wireguard_peer_id: -> String?
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader wireguard_peer_id: String?
 
-          def wireguard_peer_id=: (String _) -> String
+          def wireguard_peer_id=: (String) -> String
 
-          def network_id: -> String?
+          attr_reader id: String?
 
-          def network_id=: (String _) -> String
+          def id=: (String) -> String
 
-          def record_type: -> String?
+          attr_reader created_at: String?
 
-          def record_type=: (String _) -> String
+          def created_at=: (String) -> String
 
-          def status: -> Telnyx::Models::interface_status?
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_reader updated_at: String?
+
+          def updated_at=: (String) -> String
+
+          attr_reader network_id: String?
+
+          def network_id=: (String) -> String
+
+          attr_reader status: Telnyx::Models::interface_status?
 
           def status=: (
-            Telnyx::Models::interface_status _
+            Telnyx::Models::interface_status
           ) -> Telnyx::Models::interface_status
 
           def initialize: (
-            ?network_id: String,
+            ?id: String,
+            ?created_at: String,
             ?record_type: String,
+            ?updated_at: String,
+            ?network_id: String,
             ?status: Telnyx::Models::interface_status,
             ?wireguard_peer_id: String
           ) -> void
 
           def to_hash: -> {
-            network_id: String,
+            id: String,
+            created_at: String,
             record_type: String,
+            updated_at: String,
+            network_id: String,
             status: Telnyx::Models::interface_status,
             wireguard_peer_id: String
           }

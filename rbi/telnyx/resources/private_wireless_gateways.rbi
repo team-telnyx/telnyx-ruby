@@ -51,7 +51,11 @@ module Telnyx
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::PrivateWirelessGatewayListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::PrivateWirelessGateway
+          ]
+        )
       end
       def list(
         # Private Wireless Gateway resource creation date.

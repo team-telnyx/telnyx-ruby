@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::DynamicEmergencyEndpoints#list
     class DynamicEmergencyEndpoint < Telnyx::Internal::Type::BaseModel
       # @!attribute callback_number
       #

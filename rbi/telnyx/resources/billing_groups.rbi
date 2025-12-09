@@ -51,16 +51,12 @@ module Telnyx
       # List all billing groups
       sig do
         params(
-          page: Telnyx::BillingGroupListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::BillingGroupListResponse)
+        ).returns(Telnyx::Internal::DefaultFlatPagination[Telnyx::BillingGroup])
       end
-      def list(
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
-        request_options: {}
-      )
+      def list(page_number: nil, page_size: nil, request_options: {})
       end
 
       # Delete a billing group

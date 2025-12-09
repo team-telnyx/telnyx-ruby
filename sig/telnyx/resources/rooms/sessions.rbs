@@ -15,7 +15,7 @@ module Telnyx
           ?include_participants: bool,
           ?page: Telnyx::Rooms::SessionList0Params::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Rooms::SessionList0Response
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::RoomSession]
 
         def list_1: (
           String room_id,
@@ -23,14 +23,14 @@ module Telnyx
           ?include_participants: bool,
           ?page: Telnyx::Rooms::SessionList1Params::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Rooms::SessionList1Response
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::RoomSession]
 
         def retrieve_participants: (
           String room_session_id,
           ?filter: Telnyx::Rooms::SessionRetrieveParticipantsParams::Filter,
           ?page: Telnyx::Rooms::SessionRetrieveParticipantsParams::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Rooms::SessionRetrieveParticipantsResponse
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::RoomParticipant]
 
         def initialize: (client: Telnyx::Client) -> void
       end

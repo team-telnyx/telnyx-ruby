@@ -25,13 +25,34 @@ class Telnyx::Test::Resources::RoomRecordingsTest < Telnyx::Test::ResourceTest
     response = @telnyx.room_recordings.list
 
     assert_pattern do
-      response => Telnyx::Models::RoomRecordingListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::RoomRecordingListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::RoomRecordingListResponse::Data]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        codec: String | nil,
+        completed_at: Time | nil,
+        created_at: Time | nil,
+        download_url: String | nil,
+        duration_secs: Integer | nil,
+        ended_at: Time | nil,
+        participant_id: String | nil,
+        record_type: String | nil,
+        room_id: String | nil,
+        session_id: String | nil,
+        size_mb: Float | nil,
+        started_at: Time | nil,
+        status: Telnyx::Models::RoomRecordingListResponse::Status | nil,
+        type: Telnyx::Models::RoomRecordingListResponse::Type | nil,
+        updated_at: Time | nil
       }
     end
   end

@@ -43,7 +43,11 @@ module Telnyx
           filter: Telnyx::PublicInternetGatewayListParams::Filter::OrHash,
           page: Telnyx::PublicInternetGatewayListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::PublicInternetGatewayListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[
+            Telnyx::Models::PublicInternetGatewayListResponse
+          ]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[network_id]

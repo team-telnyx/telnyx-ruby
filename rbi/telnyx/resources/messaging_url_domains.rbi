@@ -8,7 +8,11 @@ module Telnyx
         params(
           page: Telnyx::MessagingURLDomainListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::MessagingURLDomainListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[
+            Telnyx::Models::MessagingURLDomainListResponse
+          ]
+        )
       end
       def list(
         # Consolidated page parameter (deepObject style). Originally: page[number],

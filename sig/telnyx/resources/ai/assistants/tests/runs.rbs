@@ -12,10 +12,11 @@ module Telnyx
 
             def list: (
               String test_id,
-              ?page: Telnyx::AI::Assistants::Tests::RunListParams::Page,
+              ?page_number: Integer,
+              ?page_size: Integer,
               ?status: String,
               ?request_options: Telnyx::request_opts
-            ) -> Telnyx::AI::Assistants::Tests::TestSuites::PaginatedTestRunList
+            ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AI::Assistants::Tests::TestRunResponse]
 
             def trigger: (
               String test_id,

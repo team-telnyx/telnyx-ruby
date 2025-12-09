@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::NumberBlockOrders#list
     class NumberBlockOrder < Telnyx::Internal::Type::BaseModel
       # @!attribute connection_id
       #   Identifies the connection associated to all numbers in the phone number block.

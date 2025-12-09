@@ -7,22 +7,22 @@ module Telnyx
         # Accepts this address suggestion as a new emergency address for Operator Connect
         # and finishes the uploads of the numbers associated with it to Microsoft.
         #
-        # @overload accept_suggestions(path_id, body_id: nil, request_options: {})
+        # @overload accept_suggestions(address_uuid, id: nil, request_options: {})
         #
-        # @param path_id [String] The UUID of the address that should be accepted.
+        # @param address_uuid [String] The UUID of the address that should be accepted.
         #
-        # @param body_id [String] The ID of the address.
+        # @param id [String] The ID of the address.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::Addresses::ActionAcceptSuggestionsResponse]
         #
         # @see Telnyx::Models::Addresses::ActionAcceptSuggestionsParams
-        def accept_suggestions(path_id, params = {})
+        def accept_suggestions(address_uuid, params = {})
           parsed, options = Telnyx::Addresses::ActionAcceptSuggestionsParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["addresses/%1$s/actions/accept_suggestions", path_id],
+            path: ["addresses/%1$s/actions/accept_suggestions", address_uuid],
             body: parsed,
             model: Telnyx::Models::Addresses::ActionAcceptSuggestionsResponse,
             options: options

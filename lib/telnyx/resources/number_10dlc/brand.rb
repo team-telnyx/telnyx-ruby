@@ -23,9 +23,9 @@ module Telnyx
         #
         # @param email [String] Valid email address of brand support contact.
         #
-        # @param entity_type [Symbol, Telnyx::Models::EntityType] Entity type behind the brand. This is the form of business establishment.
+        # @param entity_type [Symbol, Telnyx::Models::Number10dlc::EntityType] Entity type behind the brand. This is the form of business establishment.
         #
-        # @param vertical [Symbol, Telnyx::Models::Vertical] Vertical or industry segment of the brand or campaign.
+        # @param vertical [Symbol, Telnyx::Models::Number10dlc::Vertical] Vertical or industry segment of the brand or campaign.
         #
         # @param business_contact_email [String] Business contact email.
         #
@@ -53,7 +53,7 @@ module Telnyx
         #
         # @param state [String] State. Must be 2 letters code for United States.
         #
-        # @param stock_exchange [Symbol, Telnyx::Models::StockExchange] (Required for public company) stock exchange.
+        # @param stock_exchange [Symbol, Telnyx::Models::Number10dlc::StockExchange] (Required for public company) stock exchange.
         #
         # @param stock_symbol [String] (Required for public company) stock symbol.
         #
@@ -67,7 +67,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::TelnyxBrand]
+        # @return [Telnyx::Models::Number10dlc::TelnyxBrand]
         #
         # @see Telnyx::Models::Number10dlc::BrandCreateParams
         def create(params)
@@ -76,7 +76,7 @@ module Telnyx
             method: :post,
             path: "10dlc/brand",
             body: parsed,
-            model: Telnyx::TelnyxBrand,
+            model: Telnyx::Number10dlc::TelnyxBrand,
             options: options
           )
         end
@@ -115,13 +115,13 @@ module Telnyx
         #
         # @param email [String] Valid email address of brand support contact.
         #
-        # @param entity_type [Symbol, Telnyx::Models::EntityType] Entity type behind the brand. This is the form of business establishment.
+        # @param entity_type [Symbol, Telnyx::Models::Number10dlc::EntityType] Entity type behind the brand. This is the form of business establishment.
         #
-        # @param vertical [Symbol, Telnyx::Models::Vertical] Vertical or industry segment of the brand or campaign.
+        # @param vertical [Symbol, Telnyx::Models::Number10dlc::Vertical] Vertical or industry segment of the brand or campaign.
         #
         # @param alt_business_id [String] Alternate business identifier such as DUNS, LEI, or GIIN
         #
-        # @param alt_business_id_type [Symbol, Telnyx::Models::AltBusinessIDType] An enumeration.
+        # @param alt_business_id_type [Symbol, Telnyx::Models::Number10dlc::AltBusinessIDType] An enumeration.
         #
         # @param business_contact_email [String] Business contact email.
         #
@@ -133,7 +133,7 @@ module Telnyx
         #
         # @param first_name [String] First name of business contact.
         #
-        # @param identity_status [Symbol, Telnyx::Models::BrandIdentityStatus] The verification status of an active brand
+        # @param identity_status [Symbol, Telnyx::Models::Number10dlc::BrandIdentityStatus] The verification status of an active brand
         #
         # @param ip_address [String] IP address of the browser requesting to create brand identity.
         #
@@ -147,7 +147,7 @@ module Telnyx
         #
         # @param state [String] State. Must be 2 letters code for United States.
         #
-        # @param stock_exchange [Symbol, Telnyx::Models::StockExchange] (Required for public company) stock exchange.
+        # @param stock_exchange [Symbol, Telnyx::Models::Number10dlc::StockExchange] (Required for public company) stock exchange.
         #
         # @param stock_symbol [String] (Required for public company) stock symbol.
         #
@@ -161,7 +161,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::TelnyxBrand]
+        # @return [Telnyx::Models::Number10dlc::TelnyxBrand]
         #
         # @see Telnyx::Models::Number10dlc::BrandUpdateParams
         def update(brand_id, params)
@@ -170,7 +170,7 @@ module Telnyx
             method: :put,
             path: ["10dlc/brand/%1$s", brand_id],
             body: parsed,
-            model: Telnyx::TelnyxBrand,
+            model: Telnyx::Number10dlc::TelnyxBrand,
             options: options
           )
         end
@@ -202,7 +202,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Number10dlc::BrandListResponse]
+        # @return [Telnyx::Internal::PerPagePaginationV2<Telnyx::Models::Number10dlc::BrandListResponse>]
         #
         # @see Telnyx::Models::Number10dlc::BrandListParams
         def list(params = {})
@@ -217,6 +217,7 @@ module Telnyx
               records_per_page: "recordsPerPage",
               tcr_brand_id: "tcrBrandId"
             ),
+            page: Telnyx::Internal::PerPagePaginationV2,
             model: Telnyx::Models::Number10dlc::BrandListResponse,
             options: options
           )
@@ -302,14 +303,14 @@ module Telnyx
         # @param brand_id [String]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::TelnyxBrand]
+        # @return [Telnyx::Models::Number10dlc::TelnyxBrand]
         #
         # @see Telnyx::Models::Number10dlc::BrandRevetParams
         def revet(brand_id, params = {})
           @client.request(
             method: :put,
             path: ["10dlc/brand/%1$s/revet", brand_id],
-            model: Telnyx::TelnyxBrand,
+            model: Telnyx::Number10dlc::TelnyxBrand,
             options: params[:request_options]
           )
         end

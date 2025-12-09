@@ -55,7 +55,8 @@ module Telnyx
           imsi: String,
           mcc: String,
           mnc: String,
-          page: Telnyx::ReportListWdrsParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           phone_number: String,
           sim_card_id: String,
           sim_group_id: String,
@@ -63,7 +64,11 @@ module Telnyx
           sort: T::Array[String],
           start_date: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::ReportListWdrsResponse)
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Models::ReportListWdrsResponse
+          ]
+        )
       end
       def list_wdrs(
         # WDR uuid
@@ -76,9 +81,8 @@ module Telnyx
         mcc: nil,
         # Mobile network code
         mnc: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         # Phone number
         phone_number: nil,
         # Sim card unique identifier

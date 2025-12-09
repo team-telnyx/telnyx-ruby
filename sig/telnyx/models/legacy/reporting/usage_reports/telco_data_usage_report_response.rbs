@@ -1,0 +1,100 @@
+module Telnyx
+  module Models
+    module Legacy
+      module Reporting
+        module UsageReports
+          type telco_data_usage_report_response =
+            {
+              id: String,
+              aggregation_type: String,
+              created_at: Time,
+              end_date: Date,
+              managed_accounts: ::Array[String],
+              record_type: String,
+              report_url: String,
+              result: ::Array[Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageRecord],
+              start_date: Date,
+              status: String,
+              updated_at: Time
+            }
+
+          class TelcoDataUsageReportResponse < Telnyx::Internal::Type::BaseModel
+            attr_reader id: String?
+
+            def id=: (String) -> String
+
+            attr_reader aggregation_type: String?
+
+            def aggregation_type=: (String) -> String
+
+            attr_reader created_at: Time?
+
+            def created_at=: (Time) -> Time
+
+            attr_reader end_date: Date?
+
+            def end_date=: (Date) -> Date
+
+            attr_reader managed_accounts: ::Array[String]?
+
+            def managed_accounts=: (::Array[String]) -> ::Array[String]
+
+            attr_reader record_type: String?
+
+            def record_type=: (String) -> String
+
+            attr_reader report_url: String?
+
+            def report_url=: (String) -> String
+
+            attr_reader result: ::Array[Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageRecord]?
+
+            def result=: (
+              ::Array[Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageRecord]
+            ) -> ::Array[Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageRecord]
+
+            attr_reader start_date: Date?
+
+            def start_date=: (Date) -> Date
+
+            attr_reader status: String?
+
+            def status=: (String) -> String
+
+            attr_reader updated_at: Time?
+
+            def updated_at=: (Time) -> Time
+
+            def initialize: (
+              ?id: String,
+              ?aggregation_type: String,
+              ?created_at: Time,
+              ?end_date: Date,
+              ?managed_accounts: ::Array[String],
+              ?record_type: String,
+              ?report_url: String,
+              ?result: ::Array[Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageRecord],
+              ?start_date: Date,
+              ?status: String,
+              ?updated_at: Time
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              aggregation_type: String,
+              created_at: Time,
+              end_date: Date,
+              managed_accounts: ::Array[String],
+              record_type: String,
+              report_url: String,
+              result: ::Array[Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageRecord],
+              start_date: Date,
+              status: String,
+              updated_at: Time
+            }
+          end
+        end
+      end
+    end
+  end
+end

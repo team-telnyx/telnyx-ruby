@@ -17,7 +17,7 @@ module Telnyx
       def list: (
         ?page: Telnyx::MessagingHostedNumberOrderListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::MessagingHostedNumberOrderListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::MessagingHostedNumberOrder]
 
       def delete: (
         String id,

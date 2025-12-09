@@ -61,13 +61,24 @@ class Telnyx::Test::Resources::SimCardDataUsageNotificationsTest < Telnyx::Test:
     response = @telnyx.sim_card_data_usage_notifications.list
 
     assert_pattern do
-      response => Telnyx::Models::SimCardDataUsageNotificationListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::SimCardDataUsageNotification
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::SimCardDataUsageNotification]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        created_at: String | nil,
+        record_type: String | nil,
+        sim_card_id: String | nil,
+        threshold: Telnyx::SimCardDataUsageNotification::Threshold | nil,
+        updated_at: String | nil
       }
     end
   end

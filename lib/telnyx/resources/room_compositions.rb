@@ -73,7 +73,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::RoomCompositionListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::RoomComposition>]
       #
       # @see Telnyx::Models::RoomCompositionListParams
       def list(params = {})
@@ -82,7 +82,8 @@ module Telnyx
           method: :get,
           path: "room_compositions",
           query: parsed,
-          model: Telnyx::Models::RoomCompositionListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::RoomComposition,
           options: options
         )
       end

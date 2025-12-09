@@ -13,7 +13,7 @@ module Telnyx
               product_breakdown: Integer,
               record_type: String,
               report_url: String,
-              result: top,
+              result: ::Hash[Symbol, top],
               start_time: Time,
               status: Integer,
               updated_at: Time
@@ -52,9 +52,9 @@ module Telnyx
 
             def report_url=: (String) -> String
 
-            attr_reader result: top?
+            attr_reader result: ::Hash[Symbol, top]?
 
-            def result=: (top) -> top
+            def result=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
             attr_reader start_time: Time?
 
@@ -77,7 +77,7 @@ module Telnyx
               ?product_breakdown: Integer,
               ?record_type: String,
               ?report_url: String,
-              ?result: top,
+              ?result: ::Hash[Symbol, top],
               ?start_time: Time,
               ?status: Integer,
               ?updated_at: Time
@@ -92,7 +92,7 @@ module Telnyx
               product_breakdown: Integer,
               record_type: String,
               report_url: String,
-              result: top,
+              result: ::Hash[Symbol, top],
               start_time: Time,
               status: Integer,
               updated_at: Time

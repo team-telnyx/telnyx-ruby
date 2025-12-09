@@ -41,13 +41,30 @@ class Telnyx::Test::Resources::NumberBlockOrdersTest < Telnyx::Test::ResourceTes
     response = @telnyx.number_block_orders.list
 
     assert_pattern do
-      response => Telnyx::Models::NumberBlockOrderListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::NumberBlockOrder
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::NumberBlockOrder]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        connection_id: String | nil,
+        created_at: Time | nil,
+        customer_reference: String | nil,
+        messaging_profile_id: String | nil,
+        phone_numbers_count: Integer | nil,
+        range: Integer | nil,
+        record_type: String | nil,
+        requirements_met: Telnyx::Internal::Type::Boolean | nil,
+        starting_number: String | nil,
+        status: Telnyx::NumberBlockOrder::Status | nil,
+        updated_at: Time | nil
       }
     end
   end

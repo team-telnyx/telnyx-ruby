@@ -41,6 +41,26 @@ module Telnyx
           records_per_page: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
+          Telnyx::Models::PhoneNumberAssignmentByProfileListPhoneNumberStatusResponse
+        )
+      end
+      def list_phone_number_status(
+        task_id,
+        page: nil,
+        records_per_page: nil,
+        request_options: {}
+      )
+      end
+
+      # Check the status of the individual phone number/campaign assignments associated
+      # with the supplied `taskId`.
+      sig do
+        params(
+          task_id: String,
+          page: Integer,
+          records_per_page: Integer,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(
           Telnyx::Models::PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusResponse
         )
       end

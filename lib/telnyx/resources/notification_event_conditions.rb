@@ -17,7 +17,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::NotificationEventConditionListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::NotificationEventConditionListResponse>]
       #
       # @see Telnyx::Models::NotificationEventConditionListParams
       def list(params = {})
@@ -26,6 +26,7 @@ module Telnyx
           method: :get,
           path: "notification_event_conditions",
           query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::NotificationEventConditionListResponse,
           options: options
         )

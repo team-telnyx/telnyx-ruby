@@ -103,14 +103,14 @@ module Telnyx
 
         type customer_reference =
           String
-          | Telnyx::AddressListParams::Filter::CustomerReference::UnionMember1
+          | Telnyx::AddressListParams::Filter::CustomerReference::CustomerReferenceMatcher
 
         module CustomerReference
           extend Telnyx::Internal::Type::Union
 
-          type union_member1 = { contains: String, eq: String }
+          type customer_reference_matcher = { contains: String, eq: String }
 
-          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+          class CustomerReferenceMatcher < Telnyx::Internal::Type::BaseModel
             attr_reader contains: String?
 
             def contains=: (String) -> String

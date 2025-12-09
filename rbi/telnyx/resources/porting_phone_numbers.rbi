@@ -9,7 +9,11 @@ module Telnyx
           filter: Telnyx::PortingPhoneNumberListParams::Filter::OrHash,
           page: Telnyx::PortingPhoneNumberListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::PortingPhoneNumberListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[
+            Telnyx::Models::PortingPhoneNumberListResponse
+          ]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

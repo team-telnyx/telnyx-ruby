@@ -41,13 +41,25 @@ class Telnyx::Test::Resources::BundlePricing::UserBundlesTest < Telnyx::Test::Re
     response = @telnyx.bundle_pricing.user_bundles.list
 
     assert_pattern do
-      response => Telnyx::Models::BundlePricing::UserBundleListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::BundlePricing::UserBundle
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::BundlePricing::UserBundle]),
-        meta: Telnyx::BundlePricing::PaginationResponse
+      row => {
+        id: String,
+        active: Telnyx::Internal::Type::Boolean,
+        billing_bundle: Telnyx::BundlePricing::BillingBundleSummary,
+        created_at: Date,
+        resources: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::BundlePricing::UserBundleResource]),
+        user_id: String,
+        updated_at: Date | nil
       }
     end
   end

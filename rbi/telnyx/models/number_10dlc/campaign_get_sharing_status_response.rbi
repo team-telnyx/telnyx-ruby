@@ -12,24 +12,30 @@ module Telnyx
             )
           end
 
-        sig { returns(T.nilable(Telnyx::CampaignSharingStatus)) }
+        sig { returns(T.nilable(Telnyx::Number10dlc::CampaignSharingStatus)) }
         attr_reader :shared_by_me
 
-        sig { params(shared_by_me: Telnyx::CampaignSharingStatus::OrHash).void }
+        sig do
+          params(
+            shared_by_me: Telnyx::Number10dlc::CampaignSharingStatus::OrHash
+          ).void
+        end
         attr_writer :shared_by_me
 
-        sig { returns(T.nilable(Telnyx::CampaignSharingStatus)) }
+        sig { returns(T.nilable(Telnyx::Number10dlc::CampaignSharingStatus)) }
         attr_reader :shared_with_me
 
         sig do
-          params(shared_with_me: Telnyx::CampaignSharingStatus::OrHash).void
+          params(
+            shared_with_me: Telnyx::Number10dlc::CampaignSharingStatus::OrHash
+          ).void
         end
         attr_writer :shared_with_me
 
         sig do
           params(
-            shared_by_me: Telnyx::CampaignSharingStatus::OrHash,
-            shared_with_me: Telnyx::CampaignSharingStatus::OrHash
+            shared_by_me: Telnyx::Number10dlc::CampaignSharingStatus::OrHash,
+            shared_with_me: Telnyx::Number10dlc::CampaignSharingStatus::OrHash
           ).returns(T.attached_class)
         end
         def self.new(shared_by_me: nil, shared_with_me: nil)
@@ -38,8 +44,8 @@ module Telnyx
         sig do
           override.returns(
             {
-              shared_by_me: Telnyx::CampaignSharingStatus,
-              shared_with_me: Telnyx::CampaignSharingStatus
+              shared_by_me: Telnyx::Number10dlc::CampaignSharingStatus,
+              shared_with_me: Telnyx::Number10dlc::CampaignSharingStatus
             }
           )
         end

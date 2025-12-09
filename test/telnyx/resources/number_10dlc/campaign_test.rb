@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::Number10dlc::CampaignTest < Telnyx::Test::Resourc
     response = @telnyx.number_10dlc.campaign.retrieve("campaignId")
 
     assert_pattern do
-      response => Telnyx::TelnyxCampaignCsp
+      response => Telnyx::Number10dlc::TelnyxCampaignCsp
     end
 
     assert_pattern do
@@ -26,7 +26,7 @@ class Telnyx::Test::Resources::Number10dlc::CampaignTest < Telnyx::Test::Resourc
         auto_renewal: Telnyx::Internal::Type::Boolean | nil,
         billed_date: String | nil,
         brand_display_name: String | nil,
-        campaign_status: Telnyx::TelnyxCampaignCsp::CampaignStatus | nil,
+        campaign_status: Telnyx::Number10dlc::TelnyxCampaignCsp::CampaignStatus | nil,
         create_date: String | nil,
         direct_lending: Telnyx::Internal::Type::Boolean | nil,
         embedded_link: Telnyx::Internal::Type::Boolean | nil,
@@ -54,7 +54,7 @@ class Telnyx::Test::Resources::Number10dlc::CampaignTest < Telnyx::Test::Resourc
         sample4: String | nil,
         sample5: String | nil,
         status: String | nil,
-        submission_status: Telnyx::TelnyxCampaignCsp::SubmissionStatus | nil,
+        submission_status: Telnyx::Number10dlc::TelnyxCampaignCsp::SubmissionStatus | nil,
         subscriber_help: Telnyx::Internal::Type::Boolean | nil,
         subscriber_optin: Telnyx::Internal::Type::Boolean | nil,
         subscriber_optout: Telnyx::Internal::Type::Boolean | nil,
@@ -74,7 +74,7 @@ class Telnyx::Test::Resources::Number10dlc::CampaignTest < Telnyx::Test::Resourc
     response = @telnyx.number_10dlc.campaign.update("campaignId")
 
     assert_pattern do
-      response => Telnyx::TelnyxCampaignCsp
+      response => Telnyx::Number10dlc::TelnyxCampaignCsp
     end
 
     assert_pattern do
@@ -91,7 +91,7 @@ class Telnyx::Test::Resources::Number10dlc::CampaignTest < Telnyx::Test::Resourc
         auto_renewal: Telnyx::Internal::Type::Boolean | nil,
         billed_date: String | nil,
         brand_display_name: String | nil,
-        campaign_status: Telnyx::TelnyxCampaignCsp::CampaignStatus | nil,
+        campaign_status: Telnyx::Number10dlc::TelnyxCampaignCsp::CampaignStatus | nil,
         create_date: String | nil,
         direct_lending: Telnyx::Internal::Type::Boolean | nil,
         embedded_link: Telnyx::Internal::Type::Boolean | nil,
@@ -119,7 +119,7 @@ class Telnyx::Test::Resources::Number10dlc::CampaignTest < Telnyx::Test::Resourc
         sample4: String | nil,
         sample5: String | nil,
         status: String | nil,
-        submission_status: Telnyx::TelnyxCampaignCsp::SubmissionStatus | nil,
+        submission_status: Telnyx::Number10dlc::TelnyxCampaignCsp::SubmissionStatus | nil,
         subscriber_help: Telnyx::Internal::Type::Boolean | nil,
         subscriber_optin: Telnyx::Internal::Type::Boolean | nil,
         subscriber_optout: Telnyx::Internal::Type::Boolean | nil,
@@ -139,14 +139,69 @@ class Telnyx::Test::Resources::Number10dlc::CampaignTest < Telnyx::Test::Resourc
     response = @telnyx.number_10dlc.campaign.list(brand_id: "brandId")
 
     assert_pattern do
-      response => Telnyx::Models::Number10dlc::CampaignListResponse
+      response => Telnyx::Internal::PerPagePaginationV2
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::Number10dlc::CampaignListResponse
     end
 
     assert_pattern do
-      response => {
-        page: Integer | nil,
-        records: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Number10dlc::CampaignListResponse::Record]) | nil,
-        total_records: Integer | nil
+      row => {
+        age_gated: Telnyx::Internal::Type::Boolean | nil,
+        assigned_phone_numbers_count: Float | nil,
+        auto_renewal: Telnyx::Internal::Type::Boolean | nil,
+        billed_date: String | nil,
+        brand_display_name: String | nil,
+        brand_id: String | nil,
+        campaign_id: String | nil,
+        campaign_status: Telnyx::Models::Number10dlc::CampaignListResponse::CampaignStatus | nil,
+        create_date: String | nil,
+        csp_id: String | nil,
+        description: String | nil,
+        direct_lending: Telnyx::Internal::Type::Boolean | nil,
+        embedded_link: Telnyx::Internal::Type::Boolean | nil,
+        embedded_link_sample: String | nil,
+        embedded_phone: Telnyx::Internal::Type::Boolean | nil,
+        failure_reasons: String | nil,
+        help_keywords: String | nil,
+        help_message: String | nil,
+        is_t_mobile_number_pooling_enabled: Telnyx::Internal::Type::Boolean | nil,
+        is_t_mobile_registered: Telnyx::Internal::Type::Boolean | nil,
+        is_t_mobile_suspended: Telnyx::Internal::Type::Boolean | nil,
+        message_flow: String | nil,
+        mock: Telnyx::Internal::Type::Boolean | nil,
+        next_renewal_or_expiration_date: String | nil,
+        number_pool: Telnyx::Internal::Type::Boolean | nil,
+        optin_keywords: String | nil,
+        optin_message: String | nil,
+        optout_keywords: String | nil,
+        optout_message: String | nil,
+        privacy_policy_link: String | nil,
+        reference_id: String | nil,
+        reseller_id: String | nil,
+        sample1: String | nil,
+        sample2: String | nil,
+        sample3: String | nil,
+        sample4: String | nil,
+        sample5: String | nil,
+        status: String | nil,
+        submission_status: Telnyx::Models::Number10dlc::CampaignListResponse::SubmissionStatus | nil,
+        subscriber_help: Telnyx::Internal::Type::Boolean | nil,
+        subscriber_optin: Telnyx::Internal::Type::Boolean | nil,
+        subscriber_optout: Telnyx::Internal::Type::Boolean | nil,
+        sub_usecases: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
+        tcr_brand_id: String | nil,
+        tcr_campaign_id: String | nil,
+        terms_and_conditions: Telnyx::Internal::Type::Boolean | nil,
+        terms_and_conditions_link: String | nil,
+        usecase: String | nil,
+        vertical: String | nil,
+        webhook_failover_url: String | nil,
+        webhook_url: String | nil
       }
     end
   end
@@ -216,8 +271,8 @@ class Telnyx::Test::Resources::Number10dlc::CampaignTest < Telnyx::Test::Resourc
 
     assert_pattern do
       response => {
-        shared_by_me: Telnyx::CampaignSharingStatus | nil,
-        shared_with_me: Telnyx::CampaignSharingStatus | nil
+        shared_by_me: Telnyx::Number10dlc::CampaignSharingStatus | nil,
+        shared_with_me: Telnyx::Number10dlc::CampaignSharingStatus | nil
       }
     end
   end

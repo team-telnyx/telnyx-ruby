@@ -4,6 +4,7 @@ module Telnyx
   module Models
     module AI
       module Conversations
+        # @see Telnyx::Resources::AI::Conversations::Insights#list
         class InsightTemplate < Telnyx::Internal::Type::BaseModel
           # @!attribute id
           #
@@ -28,7 +29,7 @@ module Telnyx
           # @!attribute json_schema
           #   If specified, the output will follow the JSON schema.
           #
-          #   @return [String, Object, nil]
+          #   @return [String, Hash{Symbol=>Object}, nil]
           optional :json_schema, union: -> { Telnyx::AI::Conversations::InsightTemplate::JsonSchema }
 
           # @!attribute name
@@ -50,7 +51,7 @@ module Telnyx
           #
           #   @param insight_type [Symbol, Telnyx::Models::AI::Conversations::InsightTemplate::InsightType]
           #
-          #   @param json_schema [String, Object] If specified, the output will follow the JSON schema.
+          #   @param json_schema [String, Hash{Symbol=>Object}] If specified, the output will follow the JSON schema.
           #
           #   @param name [String]
           #
@@ -75,10 +76,13 @@ module Telnyx
 
             variant String
 
-            variant Telnyx::Internal::Type::Unknown
+            variant -> { Telnyx::Models::AI::Conversations::InsightTemplate::JsonSchema::JsonSchemaObjectMap }
 
             # @!method self.variants
-            #   @return [Array(String, Object)]
+            #   @return [Array(String, Hash{Symbol=>Object})]
+
+            # @type [Telnyx::Internal::Type::Converter]
+            JsonSchemaObjectMap = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
           end
         end
       end

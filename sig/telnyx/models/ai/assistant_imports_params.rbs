@@ -1,0 +1,45 @@
+module Telnyx
+  module Models
+    module AI
+      type assistant_imports_params =
+        {
+          api_key_ref: String,
+          provider: Telnyx::Models::AI::AssistantImportsParams::provider
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class AssistantImportsParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor api_key_ref: String
+
+        attr_accessor provider: Telnyx::Models::AI::AssistantImportsParams::provider
+
+        def initialize: (
+          api_key_ref: String,
+          provider: Telnyx::Models::AI::AssistantImportsParams::provider,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          api_key_ref: String,
+          provider: Telnyx::Models::AI::AssistantImportsParams::provider,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type provider = :elevenlabs | :vapi | :retell
+
+        module Provider
+          extend Telnyx::Internal::Type::Enum
+
+          ELEVENLABS: :elevenlabs
+          VAPI: :vapi
+          RETELL: :retell
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::AssistantImportsParams::provider]
+        end
+      end
+    end
+  end
+end

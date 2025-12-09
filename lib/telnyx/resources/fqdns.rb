@@ -101,7 +101,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::FqdnListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::Fqdn>]
       #
       # @see Telnyx::Models::FqdnListParams
       def list(params = {})
@@ -110,7 +110,8 @@ module Telnyx
           method: :get,
           path: "fqdns",
           query: parsed,
-          model: Telnyx::Models::FqdnListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::Fqdn,
           options: options
         )
       end

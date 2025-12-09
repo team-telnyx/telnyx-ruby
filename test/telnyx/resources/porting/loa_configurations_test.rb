@@ -84,13 +84,28 @@ class Telnyx::Test::Resources::Porting::LoaConfigurationsTest < Telnyx::Test::Re
     response = @telnyx.porting.loa_configurations.list
 
     assert_pattern do
-      response => Telnyx::Models::Porting::LoaConfigurationListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Porting::PortingLoaConfiguration
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Porting::PortingLoaConfiguration]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        address: Telnyx::Porting::PortingLoaConfiguration::Address | nil,
+        company_name: String | nil,
+        contact: Telnyx::Porting::PortingLoaConfiguration::Contact | nil,
+        created_at: Time | nil,
+        logo: Telnyx::Porting::PortingLoaConfiguration::Logo | nil,
+        name: String | nil,
+        organization_id: String | nil,
+        record_type: String | nil,
+        updated_at: Time | nil
       }
     end
   end

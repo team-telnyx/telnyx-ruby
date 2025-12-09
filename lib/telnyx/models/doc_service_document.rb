@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::Documents#list
     class DocServiceDocument < Telnyx::Internal::Type::BaseModel
       # @!attribute customer_reference
       #   Optional reference string for customer tracking.

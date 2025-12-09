@@ -58,13 +58,25 @@ class Telnyx::Test::Resources::WirelessBlocklistsTest < Telnyx::Test::ResourceTe
     response = @telnyx.wireless_blocklists.list
 
     assert_pattern do
-      response => Telnyx::Models::WirelessBlocklistListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::WirelessBlocklist
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::WirelessBlocklist]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        created_at: String | nil,
+        name: String | nil,
+        record_type: String | nil,
+        type: Telnyx::WirelessBlocklist::Type | nil,
+        updated_at: String | nil,
+        values: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end

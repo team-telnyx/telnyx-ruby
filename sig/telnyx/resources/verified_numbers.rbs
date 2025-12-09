@@ -16,9 +16,10 @@ module Telnyx
       ) -> Telnyx::VerifiedNumberDataWrapper
 
       def list: (
-        ?page: Telnyx::VerifiedNumberListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::VerifiedNumberListResponse
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::VerifiedNumber]
 
       def delete: (
         String phone_number,

@@ -25,13 +25,25 @@ class Telnyx::Test::Resources::BulkSimCardActionsTest < Telnyx::Test::ResourceTe
     response = @telnyx.bulk_sim_card_actions.list
 
     assert_pattern do
-      response => Telnyx::Models::BulkSimCardActionListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::BulkSimCardActionListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::BulkSimCardActionListResponse::Data]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        action_type: Telnyx::Models::BulkSimCardActionListResponse::ActionType | nil,
+        created_at: String | nil,
+        record_type: String | nil,
+        settings: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
+        sim_card_actions_summary: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::BulkSimCardActionListResponse::SimCardActionsSummary]) | nil,
+        updated_at: String | nil
       }
     end
   end

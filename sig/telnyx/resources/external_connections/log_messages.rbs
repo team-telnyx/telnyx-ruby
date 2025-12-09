@@ -11,7 +11,7 @@ module Telnyx
           ?filter: Telnyx::ExternalConnections::LogMessageListParams::Filter,
           ?page: Telnyx::ExternalConnections::LogMessageListParams::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::ExternalConnections::LogMessageListResponse
+        ) -> Telnyx::Internal::DefaultPaginationForLogMessages[Telnyx::Models::ExternalConnections::LogMessageListResponse]
 
         def dismiss: (
           String id,

@@ -49,12 +49,14 @@ module Telnyx
             request_options: Telnyx::RequestOptions
           }
 
-          type json_schema = String | top
+          type json_schema = String | ::Hash[Symbol, top]
 
           module JsonSchema
             extend Telnyx::Internal::Type::Union
 
             def self?.variants: -> ::Array[Telnyx::Models::AI::Conversations::InsightUpdateParams::json_schema]
+
+            JsonSchemaObjectMap: Telnyx::Internal::Type::Converter
           end
         end
       end
