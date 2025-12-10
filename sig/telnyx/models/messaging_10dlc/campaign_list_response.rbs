@@ -1,0 +1,423 @@
+module Telnyx
+  module Models
+    module Messaging10dlc
+      type campaign_list_response =
+        {
+          age_gated: bool,
+          assigned_phone_numbers_count: Float,
+          auto_renewal: bool,
+          billed_date: String,
+          brand_display_name: String,
+          brand_id: String,
+          campaign_id: String,
+          campaign_status: Telnyx::Models::Messaging10dlc::CampaignListResponse::campaign_status,
+          create_date: String,
+          csp_id: String,
+          description: String,
+          direct_lending: bool,
+          embedded_link: bool,
+          embedded_link_sample: String,
+          embedded_phone: bool,
+          failure_reasons: String,
+          help_keywords: String,
+          help_message: String,
+          is_t_mobile_number_pooling_enabled: bool,
+          is_t_mobile_registered: bool,
+          is_t_mobile_suspended: bool,
+          message_flow: String,
+          mock: bool,
+          next_renewal_or_expiration_date: String,
+          number_pool: bool,
+          optin_keywords: String,
+          optin_message: String,
+          optout_keywords: String,
+          optout_message: String,
+          privacy_policy_link: String,
+          reference_id: String,
+          reseller_id: String,
+          :sample1 => String,
+          :sample2 => String,
+          :sample3 => String,
+          :sample4 => String,
+          :sample5 => String,
+          status: String,
+          submission_status: Telnyx::Models::Messaging10dlc::CampaignListResponse::submission_status,
+          subscriber_help: bool,
+          subscriber_optin: bool,
+          subscriber_optout: bool,
+          sub_usecases: ::Array[String],
+          tcr_brand_id: String,
+          tcr_campaign_id: String,
+          terms_and_conditions: bool,
+          terms_and_conditions_link: String,
+          usecase: String,
+          vertical: String,
+          webhook_failover_url: String,
+          webhook_url: String
+        }
+
+      class CampaignListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader age_gated: bool?
+
+        def age_gated=: (bool) -> bool
+
+        attr_reader assigned_phone_numbers_count: Float?
+
+        def assigned_phone_numbers_count=: (Float) -> Float
+
+        attr_reader auto_renewal: bool?
+
+        def auto_renewal=: (bool) -> bool
+
+        attr_reader billed_date: String?
+
+        def billed_date=: (String) -> String
+
+        attr_reader brand_display_name: String?
+
+        def brand_display_name=: (String) -> String
+
+        attr_reader brand_id: String?
+
+        def brand_id=: (String) -> String
+
+        attr_reader campaign_id: String?
+
+        def campaign_id=: (String) -> String
+
+        attr_reader campaign_status: Telnyx::Models::Messaging10dlc::CampaignListResponse::campaign_status?
+
+        def campaign_status=: (
+          Telnyx::Models::Messaging10dlc::CampaignListResponse::campaign_status
+        ) -> Telnyx::Models::Messaging10dlc::CampaignListResponse::campaign_status
+
+        attr_reader create_date: String?
+
+        def create_date=: (String) -> String
+
+        attr_reader csp_id: String?
+
+        def csp_id=: (String) -> String
+
+        attr_reader description: String?
+
+        def description=: (String) -> String
+
+        attr_reader direct_lending: bool?
+
+        def direct_lending=: (bool) -> bool
+
+        attr_reader embedded_link: bool?
+
+        def embedded_link=: (bool) -> bool
+
+        attr_reader embedded_link_sample: String?
+
+        def embedded_link_sample=: (String) -> String
+
+        attr_reader embedded_phone: bool?
+
+        def embedded_phone=: (bool) -> bool
+
+        attr_reader failure_reasons: String?
+
+        def failure_reasons=: (String) -> String
+
+        attr_reader help_keywords: String?
+
+        def help_keywords=: (String) -> String
+
+        attr_reader help_message: String?
+
+        def help_message=: (String) -> String
+
+        attr_reader is_t_mobile_number_pooling_enabled: bool?
+
+        def is_t_mobile_number_pooling_enabled=: (bool) -> bool
+
+        attr_reader is_t_mobile_registered: bool?
+
+        def is_t_mobile_registered=: (bool) -> bool
+
+        attr_reader is_t_mobile_suspended: bool?
+
+        def is_t_mobile_suspended=: (bool) -> bool
+
+        attr_reader message_flow: String?
+
+        def message_flow=: (String) -> String
+
+        attr_reader mock: bool?
+
+        def mock=: (bool) -> bool
+
+        attr_reader next_renewal_or_expiration_date: String?
+
+        def next_renewal_or_expiration_date=: (String) -> String
+
+        attr_reader number_pool: bool?
+
+        def number_pool=: (bool) -> bool
+
+        attr_reader optin_keywords: String?
+
+        def optin_keywords=: (String) -> String
+
+        attr_reader optin_message: String?
+
+        def optin_message=: (String) -> String
+
+        attr_reader optout_keywords: String?
+
+        def optout_keywords=: (String) -> String
+
+        attr_reader optout_message: String?
+
+        def optout_message=: (String) -> String
+
+        attr_reader privacy_policy_link: String?
+
+        def privacy_policy_link=: (String) -> String
+
+        attr_reader reference_id: String?
+
+        def reference_id=: (String) -> String
+
+        attr_reader reseller_id: String?
+
+        def reseller_id=: (String) -> String
+
+        attr_reader sample1: String?
+
+        def sample1=: (String) -> String
+
+        attr_reader sample2: String?
+
+        def sample2=: (String) -> String
+
+        attr_reader sample3: String?
+
+        def sample3=: (String) -> String
+
+        attr_reader sample4: String?
+
+        def sample4=: (String) -> String
+
+        attr_reader sample5: String?
+
+        def sample5=: (String) -> String
+
+        attr_reader status: String?
+
+        def status=: (String) -> String
+
+        attr_reader submission_status: Telnyx::Models::Messaging10dlc::CampaignListResponse::submission_status?
+
+        def submission_status=: (
+          Telnyx::Models::Messaging10dlc::CampaignListResponse::submission_status
+        ) -> Telnyx::Models::Messaging10dlc::CampaignListResponse::submission_status
+
+        attr_reader subscriber_help: bool?
+
+        def subscriber_help=: (bool) -> bool
+
+        attr_reader subscriber_optin: bool?
+
+        def subscriber_optin=: (bool) -> bool
+
+        attr_reader subscriber_optout: bool?
+
+        def subscriber_optout=: (bool) -> bool
+
+        attr_reader sub_usecases: ::Array[String]?
+
+        def sub_usecases=: (::Array[String]) -> ::Array[String]
+
+        attr_reader tcr_brand_id: String?
+
+        def tcr_brand_id=: (String) -> String
+
+        attr_reader tcr_campaign_id: String?
+
+        def tcr_campaign_id=: (String) -> String
+
+        attr_reader terms_and_conditions: bool?
+
+        def terms_and_conditions=: (bool) -> bool
+
+        attr_reader terms_and_conditions_link: String?
+
+        def terms_and_conditions_link=: (String) -> String
+
+        attr_reader usecase: String?
+
+        def usecase=: (String) -> String
+
+        attr_reader vertical: String?
+
+        def vertical=: (String) -> String
+
+        attr_reader webhook_failover_url: String?
+
+        def webhook_failover_url=: (String) -> String
+
+        attr_reader webhook_url: String?
+
+        def webhook_url=: (String) -> String
+
+        def initialize: (
+          ?age_gated: bool,
+          ?assigned_phone_numbers_count: Float,
+          ?auto_renewal: bool,
+          ?billed_date: String,
+          ?brand_display_name: String,
+          ?brand_id: String,
+          ?campaign_id: String,
+          ?campaign_status: Telnyx::Models::Messaging10dlc::CampaignListResponse::campaign_status,
+          ?create_date: String,
+          ?csp_id: String,
+          ?description: String,
+          ?direct_lending: bool,
+          ?embedded_link: bool,
+          ?embedded_link_sample: String,
+          ?embedded_phone: bool,
+          ?failure_reasons: String,
+          ?help_keywords: String,
+          ?help_message: String,
+          ?is_t_mobile_number_pooling_enabled: bool,
+          ?is_t_mobile_registered: bool,
+          ?is_t_mobile_suspended: bool,
+          ?message_flow: String,
+          ?mock: bool,
+          ?next_renewal_or_expiration_date: String,
+          ?number_pool: bool,
+          ?optin_keywords: String,
+          ?optin_message: String,
+          ?optout_keywords: String,
+          ?optout_message: String,
+          ?privacy_policy_link: String,
+          ?reference_id: String,
+          ?reseller_id: String,
+          ?sample1: String,
+          ?sample2: String,
+          ?sample3: String,
+          ?sample4: String,
+          ?sample5: String,
+          ?status: String,
+          ?submission_status: Telnyx::Models::Messaging10dlc::CampaignListResponse::submission_status,
+          ?subscriber_help: bool,
+          ?subscriber_optin: bool,
+          ?subscriber_optout: bool,
+          ?sub_usecases: ::Array[String],
+          ?tcr_brand_id: String,
+          ?tcr_campaign_id: String,
+          ?terms_and_conditions: bool,
+          ?terms_and_conditions_link: String,
+          ?usecase: String,
+          ?vertical: String,
+          ?webhook_failover_url: String,
+          ?webhook_url: String
+        ) -> void
+
+        def to_hash: -> {
+          age_gated: bool,
+          assigned_phone_numbers_count: Float,
+          auto_renewal: bool,
+          billed_date: String,
+          brand_display_name: String,
+          brand_id: String,
+          campaign_id: String,
+          campaign_status: Telnyx::Models::Messaging10dlc::CampaignListResponse::campaign_status,
+          create_date: String,
+          csp_id: String,
+          description: String,
+          direct_lending: bool,
+          embedded_link: bool,
+          embedded_link_sample: String,
+          embedded_phone: bool,
+          failure_reasons: String,
+          help_keywords: String,
+          help_message: String,
+          is_t_mobile_number_pooling_enabled: bool,
+          is_t_mobile_registered: bool,
+          is_t_mobile_suspended: bool,
+          message_flow: String,
+          mock: bool,
+          next_renewal_or_expiration_date: String,
+          number_pool: bool,
+          optin_keywords: String,
+          optin_message: String,
+          optout_keywords: String,
+          optout_message: String,
+          privacy_policy_link: String,
+          reference_id: String,
+          reseller_id: String,
+          :sample1 => String,
+          :sample2 => String,
+          :sample3 => String,
+          :sample4 => String,
+          :sample5 => String,
+          status: String,
+          submission_status: Telnyx::Models::Messaging10dlc::CampaignListResponse::submission_status,
+          subscriber_help: bool,
+          subscriber_optin: bool,
+          subscriber_optout: bool,
+          sub_usecases: ::Array[String],
+          tcr_brand_id: String,
+          tcr_campaign_id: String,
+          terms_and_conditions: bool,
+          terms_and_conditions_link: String,
+          usecase: String,
+          vertical: String,
+          webhook_failover_url: String,
+          webhook_url: String
+        }
+
+        type campaign_status =
+          :TCR_PENDING
+          | :TCR_SUSPENDED
+          | :TCR_EXPIRED
+          | :TCR_ACCEPTED
+          | :TCR_FAILED
+          | :TELNYX_ACCEPTED
+          | :TELNYX_FAILED
+          | :MNO_PENDING
+          | :MNO_ACCEPTED
+          | :MNO_REJECTED
+          | :MNO_PROVISIONED
+          | :MNO_PROVISIONING_FAILED
+
+        module CampaignStatus
+          extend Telnyx::Internal::Type::Enum
+
+          TCR_PENDING: :TCR_PENDING
+          TCR_SUSPENDED: :TCR_SUSPENDED
+          TCR_EXPIRED: :TCR_EXPIRED
+          TCR_ACCEPTED: :TCR_ACCEPTED
+          TCR_FAILED: :TCR_FAILED
+          TELNYX_ACCEPTED: :TELNYX_ACCEPTED
+          TELNYX_FAILED: :TELNYX_FAILED
+          MNO_PENDING: :MNO_PENDING
+          MNO_ACCEPTED: :MNO_ACCEPTED
+          MNO_REJECTED: :MNO_REJECTED
+          MNO_PROVISIONED: :MNO_PROVISIONED
+          MNO_PROVISIONING_FAILED: :MNO_PROVISIONING_FAILED
+
+          def self?.values: -> ::Array[Telnyx::Models::Messaging10dlc::CampaignListResponse::campaign_status]
+        end
+
+        type submission_status = :CREATED | :FAILED | :PENDING
+
+        module SubmissionStatus
+          extend Telnyx::Internal::Type::Enum
+
+          CREATED: :CREATED
+          FAILED: :FAILED
+          PENDING: :PENDING
+
+          def self?.values: -> ::Array[Telnyx::Models::Messaging10dlc::CampaignListResponse::submission_status]
+        end
+      end
+    end
+  end
+end

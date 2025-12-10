@@ -10,8 +10,8 @@ module Telnyx
     #   end
     #
     # @example
-    #   per_page_pagination_v2.auto_paging_each do |partner_campaign|
-    #     puts(partner_campaign)
+    #   per_page_pagination_v2.auto_paging_each do |brand|
+    #     puts(brand)
     #   end
     class PerPagePaginationV2
       include Telnyx::Internal::Type::BasePage

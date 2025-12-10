@@ -1,0 +1,100 @@
+module Telnyx
+  module Models
+    module Messaging10dlc
+      type phone_number_campaign =
+        {
+          campaign_id: String,
+          created_at: String,
+          phone_number: String,
+          updated_at: String,
+          assignment_status: Telnyx::Models::Messaging10dlc::PhoneNumberCampaign::assignment_status,
+          brand_id: String,
+          failure_reasons: String,
+          tcr_brand_id: String,
+          tcr_campaign_id: String,
+          telnyx_campaign_id: String
+        }
+
+      class PhoneNumberCampaign < Telnyx::Internal::Type::BaseModel
+        attr_accessor campaign_id: String
+
+        attr_accessor created_at: String
+
+        attr_accessor phone_number: String
+
+        attr_accessor updated_at: String
+
+        attr_reader assignment_status: Telnyx::Models::Messaging10dlc::PhoneNumberCampaign::assignment_status?
+
+        def assignment_status=: (
+          Telnyx::Models::Messaging10dlc::PhoneNumberCampaign::assignment_status
+        ) -> Telnyx::Models::Messaging10dlc::PhoneNumberCampaign::assignment_status
+
+        attr_reader brand_id: String?
+
+        def brand_id=: (String) -> String
+
+        attr_reader failure_reasons: String?
+
+        def failure_reasons=: (String) -> String
+
+        attr_reader tcr_brand_id: String?
+
+        def tcr_brand_id=: (String) -> String
+
+        attr_reader tcr_campaign_id: String?
+
+        def tcr_campaign_id=: (String) -> String
+
+        attr_reader telnyx_campaign_id: String?
+
+        def telnyx_campaign_id=: (String) -> String
+
+        def initialize: (
+          campaign_id: String,
+          created_at: String,
+          phone_number: String,
+          updated_at: String,
+          ?assignment_status: Telnyx::Models::Messaging10dlc::PhoneNumberCampaign::assignment_status,
+          ?brand_id: String,
+          ?failure_reasons: String,
+          ?tcr_brand_id: String,
+          ?tcr_campaign_id: String,
+          ?telnyx_campaign_id: String
+        ) -> void
+
+        def to_hash: -> {
+          campaign_id: String,
+          created_at: String,
+          phone_number: String,
+          updated_at: String,
+          assignment_status: Telnyx::Models::Messaging10dlc::PhoneNumberCampaign::assignment_status,
+          brand_id: String,
+          failure_reasons: String,
+          tcr_brand_id: String,
+          tcr_campaign_id: String,
+          telnyx_campaign_id: String
+        }
+
+        type assignment_status =
+          :FAILED_ASSIGNMENT
+          | :PENDING_ASSIGNMENT
+          | :ASSIGNED
+          | :PENDING_UNASSIGNMENT
+          | :FAILED_UNASSIGNMENT
+
+        module AssignmentStatus
+          extend Telnyx::Internal::Type::Enum
+
+          FAILED_ASSIGNMENT: :FAILED_ASSIGNMENT
+          PENDING_ASSIGNMENT: :PENDING_ASSIGNMENT
+          ASSIGNED: :ASSIGNED
+          PENDING_UNASSIGNMENT: :PENDING_UNASSIGNMENT
+          FAILED_UNASSIGNMENT: :FAILED_UNASSIGNMENT
+
+          def self?.values: -> ::Array[Telnyx::Models::Messaging10dlc::PhoneNumberCampaign::assignment_status]
+        end
+      end
+    end
+  end
+end

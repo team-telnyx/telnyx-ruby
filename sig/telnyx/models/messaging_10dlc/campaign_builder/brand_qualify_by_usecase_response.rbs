@@ -1,0 +1,68 @@
+module Telnyx
+  module Models
+    module Messaging10dlc
+      module CampaignBuilder
+        type brand_qualify_by_usecase_response =
+          {
+            annual_fee: Float,
+            max_sub_usecases: Integer,
+            min_sub_usecases: Integer,
+            mno_metadata: ::Hash[Symbol, top],
+            monthly_fee: Float,
+            quarterly_fee: Float,
+            usecase: String
+          }
+
+        class BrandQualifyByUsecaseResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader annual_fee: Float?
+
+          def annual_fee=: (Float) -> Float
+
+          attr_reader max_sub_usecases: Integer?
+
+          def max_sub_usecases=: (Integer) -> Integer
+
+          attr_reader min_sub_usecases: Integer?
+
+          def min_sub_usecases=: (Integer) -> Integer
+
+          attr_reader mno_metadata: ::Hash[Symbol, top]?
+
+          def mno_metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader monthly_fee: Float?
+
+          def monthly_fee=: (Float) -> Float
+
+          attr_reader quarterly_fee: Float?
+
+          def quarterly_fee=: (Float) -> Float
+
+          attr_reader usecase: String?
+
+          def usecase=: (String) -> String
+
+          def initialize: (
+            ?annual_fee: Float,
+            ?max_sub_usecases: Integer,
+            ?min_sub_usecases: Integer,
+            ?mno_metadata: ::Hash[Symbol, top],
+            ?monthly_fee: Float,
+            ?quarterly_fee: Float,
+            ?usecase: String
+          ) -> void
+
+          def to_hash: -> {
+            annual_fee: Float,
+            max_sub_usecases: Integer,
+            min_sub_usecases: Integer,
+            mno_metadata: ::Hash[Symbol, top],
+            monthly_fee: Float,
+            quarterly_fee: Float,
+            usecase: String
+          }
+        end
+      end
+    end
+  end
+end

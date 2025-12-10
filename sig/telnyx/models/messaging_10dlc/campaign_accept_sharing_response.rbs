@@ -1,0 +1,9 @@
+module Telnyx
+  module Models
+    module Messaging10dlc
+      type campaign_accept_sharing_response = ::Hash[Symbol, top]
+
+      CampaignAcceptSharingResponse: Telnyx::Internal::Type::Converter
+    end
+  end
+end

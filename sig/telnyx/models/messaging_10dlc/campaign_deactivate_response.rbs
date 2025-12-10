@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    module Messaging10dlc
+      type campaign_deactivate_response =
+        { time: Float, message: String, record_type: String }
+
+      class CampaignDeactivateResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor time: Float
+
+        attr_reader message: String?
+
+        def message=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          time: Float,
+          ?message: String,
+          ?record_type: String
+        ) -> void
+
+        def to_hash: -> { time: Float, message: String, record_type: String }
+      end
+    end
+  end
+end

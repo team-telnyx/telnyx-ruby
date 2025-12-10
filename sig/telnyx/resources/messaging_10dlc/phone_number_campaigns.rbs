@@ -1,0 +1,40 @@
+module Telnyx
+  module Resources
+    class Messaging10dlc
+      class PhoneNumberCampaigns
+        def create: (
+          campaign_id: String,
+          phone_number: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Messaging10dlc::PhoneNumberCampaign
+
+        def retrieve: (
+          String phone_number,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Messaging10dlc::PhoneNumberCampaign
+
+        def update: (
+          String campaign_phone_number,
+          campaign_id: String,
+          phone_number: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Messaging10dlc::PhoneNumberCampaign
+
+        def list: (
+          ?filter: Telnyx::Messaging10dlc::PhoneNumberCampaignListParams::Filter,
+          ?page: Integer,
+          ?records_per_page: Integer,
+          ?sort: Telnyx::Models::Messaging10dlc::PhoneNumberCampaignListParams::sort,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::PerPagePaginationV2[Telnyx::Messaging10dlc::PhoneNumberCampaign]
+
+        def delete: (
+          String phone_number,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Messaging10dlc::PhoneNumberCampaign
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end
