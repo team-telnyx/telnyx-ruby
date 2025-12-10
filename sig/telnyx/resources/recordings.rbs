@@ -12,7 +12,7 @@ module Telnyx
         ?filter: Telnyx::RecordingListParams::Filter,
         ?page: Telnyx::RecordingListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::RecordingListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::RecordingResponseData]
 
       def delete: (
         String recording_id,

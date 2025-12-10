@@ -3,35 +3,13 @@ module Telnyx
     module AI
       module Assistants
         type scheduled_event_list_response =
-          {
-            data: ::Array[Telnyx::Models::AI::Assistants::ScheduledEventListResponse::data],
-            meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
-          }
+          Telnyx::AI::Assistants::ScheduledPhoneCallEventResponse
+          | Telnyx::AI::Assistants::ScheduledSMSEventResponse
 
-        class ScheduledEventListResponse < Telnyx::Internal::Type::BaseModel
-          attr_accessor data: ::Array[Telnyx::Models::AI::Assistants::ScheduledEventListResponse::data]
+        module ScheduledEventListResponse
+          extend Telnyx::Internal::Type::Union
 
-          attr_accessor meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
-
-          def initialize: (
-            data: ::Array[Telnyx::Models::AI::Assistants::ScheduledEventListResponse::data],
-            meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
-          ) -> void
-
-          def to_hash: -> {
-            data: ::Array[Telnyx::Models::AI::Assistants::ScheduledEventListResponse::data],
-            meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
-          }
-
-          type data =
-            Telnyx::AI::Assistants::ScheduledPhoneCallEventResponse
-            | Telnyx::AI::Assistants::ScheduledSMSEventResponse
-
-          module Data
-            extend Telnyx::Internal::Type::Union
-
-            def self?.variants: -> ::Array[Telnyx::Models::AI::Assistants::ScheduledEventListResponse::data]
-          end
+          def self?.variants: -> ::Array[Telnyx::Models::AI::Assistants::scheduled_event_list_response]
         end
       end
     end

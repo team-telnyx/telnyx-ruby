@@ -13,10 +13,10 @@ module Telnyx
               brand_id: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
-              Telnyx::Models::Number10dlc::CampaignBuilder::BrandRetrieveResponse
+              Telnyx::Models::Number10dlc::CampaignBuilder::BrandQualifyByUsecaseResponse
             )
           end
-          def retrieve(usecase, brand_id:, request_options: {})
+          def qualify_by_usecase(usecase, brand_id:, request_options: {})
           end
 
           # @api private

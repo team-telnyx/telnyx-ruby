@@ -10,7 +10,7 @@ module Telnyx
         ?filter: Telnyx::WebhookDeliveryListParams::Filter,
         ?page: Telnyx::WebhookDeliveryListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::WebhookDeliveryListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::WebhookDeliveryListResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

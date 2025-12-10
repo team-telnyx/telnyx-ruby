@@ -57,13 +57,24 @@ class Telnyx::Test::Resources::NotificationChannelsTest < Telnyx::Test::Resource
     response = @telnyx.notification_channels.list
 
     assert_pattern do
-      response => Telnyx::Models::NotificationChannelListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::NotificationChannel
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::NotificationChannel]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        channel_destination: String | nil,
+        channel_type_id: Telnyx::NotificationChannel::ChannelTypeID | nil,
+        created_at: Time | nil,
+        notification_profile_id: String | nil,
+        updated_at: Time | nil
       }
     end
   end

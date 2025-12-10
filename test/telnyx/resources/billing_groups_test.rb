@@ -57,13 +57,25 @@ class Telnyx::Test::Resources::BillingGroupsTest < Telnyx::Test::ResourceTest
     response = @telnyx.billing_groups.list
 
     assert_pattern do
-      response => Telnyx::Models::BillingGroupListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::BillingGroup
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::BillingGroup]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        created_at: Time | nil,
+        deleted_at: Time | nil,
+        name: String | nil,
+        organization_id: String | nil,
+        record_type: Telnyx::BillingGroup::RecordType | nil,
+        updated_at: Time | nil
       }
     end
   end

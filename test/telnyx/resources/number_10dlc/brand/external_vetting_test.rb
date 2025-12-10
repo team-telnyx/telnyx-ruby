@@ -3,18 +3,24 @@
 require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::Number10dlc::Brand::ExternalVettingTest < Telnyx::Test::ResourceTest
-  def test_external_vetting_required_params
+  def test_list
+    skip("Prism tests are disabled")
+
+    response = @telnyx.number_10dlc.brand.external_vetting.list("brandId")
+
+    assert_pattern do
+      response => ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Number10dlc::Brand::ExternalVettingListResponseItem])
+    end
+  end
+
+  def test_imports_required_params
     skip("Prism tests are disabled")
 
     response =
-      @telnyx.number_10dlc.brand.external_vetting.external_vetting(
-        "brandId",
-        evp_id: "evpId",
-        vetting_class: "vettingClass"
-      )
+      @telnyx.number_10dlc.brand.external_vetting.imports("brandId", evp_id: "evpId", vetting_id: "vettingId")
 
     assert_pattern do
-      response => Telnyx::Models::Number10dlc::Brand::ExternalVettingExternalVettingResponse
+      response => Telnyx::Models::Number10dlc::Brand::ExternalVettingImportsResponse
     end
 
     assert_pattern do
@@ -30,28 +36,18 @@ class Telnyx::Test::Resources::Number10dlc::Brand::ExternalVettingTest < Telnyx:
     end
   end
 
-  def test_retrieve_external_vetting
-    skip("Prism tests are disabled")
-
-    response = @telnyx.number_10dlc.brand.external_vetting.retrieve_external_vetting("brandId")
-
-    assert_pattern do
-      response => ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Number10dlc::Brand::ExternalVettingRetrieveExternalVettingResponseItem])
-    end
-  end
-
-  def test_update_external_vetting_required_params
+  def test_order_required_params
     skip("Prism tests are disabled")
 
     response =
-      @telnyx.number_10dlc.brand.external_vetting.update_external_vetting(
+      @telnyx.number_10dlc.brand.external_vetting.order(
         "brandId",
         evp_id: "evpId",
-        vetting_id: "vettingId"
+        vetting_class: "vettingClass"
       )
 
     assert_pattern do
-      response => Telnyx::Models::Number10dlc::Brand::ExternalVettingUpdateExternalVettingResponse
+      response => Telnyx::Models::Number10dlc::Brand::ExternalVettingOrderResponse
     end
 
     assert_pattern do

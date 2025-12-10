@@ -36,7 +36,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::OtaUpdateListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::OtaUpdateListResponse>]
       #
       # @see Telnyx::Models::OtaUpdateListParams
       def list(params = {})
@@ -45,6 +45,7 @@ module Telnyx
           method: :get,
           path: "ota_updates",
           query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::OtaUpdateListResponse,
           options: options
         )

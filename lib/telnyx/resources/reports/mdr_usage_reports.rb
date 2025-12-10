@@ -49,19 +49,16 @@ module Telnyx
           )
         end
 
-        # Some parameter documentations has been truncated, see
-        # {Telnyx::Models::Reports::MdrUsageReportListParams} for more details.
-        #
         # Fetch all messaging usage reports. Usage reports are aggregated messaging data
         # for specified time period and breakdown
         #
-        # @overload list(page: nil, request_options: {})
+        # @overload list(page_number: nil, page_size: nil, request_options: {})
         #
-        # @param page [Telnyx::Models::Reports::MdrUsageReportListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
-        #
+        # @param page_number [Integer]
+        # @param page_size [Integer]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Reports::MdrUsageReportListResponse]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Reports::MdrUsageReport>]
         #
         # @see Telnyx::Models::Reports::MdrUsageReportListParams
         def list(params = {})
@@ -69,8 +66,9 @@ module Telnyx
           @client.request(
             method: :get,
             path: "reports/mdr_usage_reports",
-            query: parsed,
-            model: Telnyx::Models::Reports::MdrUsageReportListResponse,
+            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            page: Telnyx::Internal::DefaultFlatPagination,
+            model: Telnyx::Reports::MdrUsageReport,
             options: options
           )
         end

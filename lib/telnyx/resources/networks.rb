@@ -50,9 +50,9 @@ module Telnyx
 
       # Update a Network.
       #
-      # @overload update(id, name:, request_options: {})
+      # @overload update(network_id, name:, request_options: {})
       #
-      # @param id [String] Identifies the resource.
+      # @param network_id [String] Identifies the resource.
       #
       # @param name [String] A user specified name for the network.
       #
@@ -61,11 +61,11 @@ module Telnyx
       # @return [Telnyx::Models::NetworkUpdateResponse]
       #
       # @see Telnyx::Models::NetworkUpdateParams
-      def update(id, params)
+      def update(network_id, params)
         parsed, options = Telnyx::NetworkUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["networks/%1$s", id],
+          path: ["networks/%1$s", network_id],
           body: parsed,
           model: Telnyx::Models::NetworkUpdateResponse,
           options: options
@@ -85,7 +85,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::NetworkListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::NetworkListResponse>]
       #
       # @see Telnyx::Models::NetworkListParams
       def list(params = {})
@@ -94,6 +94,7 @@ module Telnyx
           method: :get,
           path: "networks",
           query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::NetworkListResponse,
           options: options
         )
@@ -134,7 +135,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::NetworkListInterfacesResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::NetworkListInterfacesResponse>]
       #
       # @see Telnyx::Models::NetworkListInterfacesParams
       def list_interfaces(id, params = {})
@@ -143,6 +144,7 @@ module Telnyx
           method: :get,
           path: ["networks/%1$s/network_interfaces", id],
           query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::NetworkListInterfacesResponse,
           options: options
         )

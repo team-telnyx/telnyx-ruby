@@ -153,7 +153,7 @@ module Telnyx
           page: Telnyx::TexmlApplicationListParams::Page::OrHash,
           sort: Telnyx::TexmlApplicationListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::TexmlApplicationListResponse)
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::TexmlApplication])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

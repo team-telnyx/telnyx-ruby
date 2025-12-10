@@ -25,13 +25,26 @@ class Telnyx::Test::Resources::SimCards::ActionsTest < Telnyx::Test::ResourceTes
     response = @telnyx.sim_cards.actions.list
 
     assert_pattern do
-      response => Telnyx::Models::SimCards::ActionListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::SimCards::SimCardAction
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::SimCards::SimCardAction]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        action_type: Telnyx::SimCards::SimCardAction::ActionType | nil,
+        created_at: String | nil,
+        record_type: String | nil,
+        settings: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
+        sim_card_id: String | nil,
+        status: Telnyx::SimCards::SimCardAction::Status | nil,
+        updated_at: String | nil
       }
     end
   end

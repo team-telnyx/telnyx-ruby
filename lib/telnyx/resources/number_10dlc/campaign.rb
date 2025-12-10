@@ -17,14 +17,14 @@ module Telnyx
         # @param campaign_id [String]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::TelnyxCampaignCsp]
+        # @return [Telnyx::Models::Number10dlc::TelnyxCampaignCsp]
         #
         # @see Telnyx::Models::Number10dlc::CampaignRetrieveParams
         def retrieve(campaign_id, params = {})
           @client.request(
             method: :get,
             path: ["10dlc/campaign/%1$s", campaign_id],
-            model: Telnyx::TelnyxCampaignCsp,
+            model: Telnyx::Number10dlc::TelnyxCampaignCsp,
             options: params[:request_options]
           )
         end
@@ -63,7 +63,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::TelnyxCampaignCsp]
+        # @return [Telnyx::Models::Number10dlc::TelnyxCampaignCsp]
         #
         # @see Telnyx::Models::Number10dlc::CampaignUpdateParams
         def update(campaign_id, params = {})
@@ -72,7 +72,7 @@ module Telnyx
             method: :put,
             path: ["10dlc/campaign/%1$s", campaign_id],
             body: parsed,
-            model: Telnyx::TelnyxCampaignCsp,
+            model: Telnyx::Number10dlc::TelnyxCampaignCsp,
             options: options
           )
         end
@@ -94,7 +94,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Number10dlc::CampaignListResponse]
+        # @return [Telnyx::Internal::PerPagePaginationV2<Telnyx::Models::Number10dlc::CampaignListResponse>]
         #
         # @see Telnyx::Models::Number10dlc::CampaignListParams
         def list(params)
@@ -103,91 +103,82 @@ module Telnyx
             method: :get,
             path: "10dlc/campaign",
             query: parsed.transform_keys(brand_id: "brandId", records_per_page: "recordsPerPage"),
+            page: Telnyx::Internal::PerPagePaginationV2,
             model: Telnyx::Models::Number10dlc::CampaignListResponse,
             options: options
           )
         end
 
-        # Terminate a campaign. Note that once deactivated, a campaign cannot be restored.
+        # Manually accept a campaign shared with Telnyx
         #
-        # @overload delete(campaign_id, request_options: {})
+        # @overload accept_sharing(campaign_id, request_options: {})
         #
-        # @param campaign_id [String]
+        # @param campaign_id [String] TCR's ID for the campaign to import
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Number10dlc::CampaignDeleteResponse]
+        # @return [Hash{Symbol=>Object}]
         #
-        # @see Telnyx::Models::Number10dlc::CampaignDeleteParams
-        def delete(campaign_id, params = {})
+        # @see Telnyx::Models::Number10dlc::CampaignAcceptSharingParams
+        def accept_sharing(campaign_id, params = {})
           @client.request(
-            method: :delete,
-            path: ["10dlc/campaign/%1$s", campaign_id],
-            model: Telnyx::Models::Number10dlc::CampaignDeleteResponse,
+            method: :post,
+            path: ["10dlc/campaign/acceptSharing/%1$s", campaign_id],
+            model: Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
             options: params[:request_options]
           )
         end
 
-        # Some parameter documentations has been truncated, see
-        # {Telnyx::Models::Number10dlc::CampaignAppealParams} for more details.
+        # Terminate a campaign. Note that once deactivated, a campaign cannot be restored.
         #
-        # Submits an appeal for rejected native campaigns in TELNYX_FAILED or MNO_REJECTED
-        # status. The appeal is recorded for manual compliance team review and the
-        # campaign status is reset to TCR_ACCEPTED. Note: Appeal forwarding is handled
-        # manually to allow proper review before incurring upstream charges.
+        # @overload deactivate(campaign_id, request_options: {})
         #
-        # @overload appeal(campaign_id, appeal_reason:, request_options: {})
-        #
-        # @param campaign_id [String] The Telnyx campaign identifier
-        #
-        # @param appeal_reason [String] Detailed explanation of why the campaign should be reconsidered and what changes
-        #
+        # @param campaign_id [String]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Number10dlc::CampaignAppealResponse]
+        # @return [Telnyx::Models::Number10dlc::CampaignDeactivateResponse]
         #
-        # @see Telnyx::Models::Number10dlc::CampaignAppealParams
-        def appeal(campaign_id, params)
-          parsed, options = Telnyx::Number10dlc::CampaignAppealParams.dump_request(params)
+        # @see Telnyx::Models::Number10dlc::CampaignDeactivateParams
+        def deactivate(campaign_id, params = {})
           @client.request(
-            method: :post,
-            path: ["10dlc/campaign/%1$s/appeal", campaign_id],
-            body: parsed,
-            model: Telnyx::Models::Number10dlc::CampaignAppealResponse,
-            options: options
+            method: :delete,
+            path: ["10dlc/campaign/%1$s", campaign_id],
+            model: Telnyx::Models::Number10dlc::CampaignDeactivateResponse,
+            options: params[:request_options]
           )
         end
 
         # Get the campaign metadata for each MNO it was submitted to.
         #
-        # @overload retrieve_mno_metadata(campaign_id, request_options: {})
+        # @overload get_mno_metadata(campaign_id, request_options: {})
         #
         # @param campaign_id [String] ID of the campaign in question
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Number10dlc::CampaignRetrieveMnoMetadataResponse]
+        # @return [Telnyx::Models::Number10dlc::CampaignGetMnoMetadataResponse]
         #
-        # @see Telnyx::Models::Number10dlc::CampaignRetrieveMnoMetadataParams
-        def retrieve_mno_metadata(campaign_id, params = {})
+        # @see Telnyx::Models::Number10dlc::CampaignGetMnoMetadataParams
+        def get_mno_metadata(campaign_id, params = {})
           @client.request(
             method: :get,
             path: ["10dlc/campaign/%1$s/mnoMetadata", campaign_id],
-            model: Telnyx::Models::Number10dlc::CampaignRetrieveMnoMetadataResponse,
+            model: Telnyx::Models::Number10dlc::CampaignGetMnoMetadataResponse,
             options: params[:request_options]
           )
         end
 
         # Retrieve campaign's operation status at MNO level.
         #
-        # @overload retrieve_operation_status(campaign_id, request_options: {})
+        # @overload get_operation_status(campaign_id, request_options: {})
         #
         # @param campaign_id [String]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Hash{Symbol=>Object}]
         #
-        # @see Telnyx::Models::Number10dlc::CampaignRetrieveOperationStatusParams
-        def retrieve_operation_status(campaign_id, params = {})
+        # @see Telnyx::Models::Number10dlc::CampaignGetOperationStatusParams
+        def get_operation_status(campaign_id, params = {})
           @client.request(
             method: :get,
             path: ["10dlc/campaign/%1$s/operationStatus", campaign_id],
@@ -198,21 +189,51 @@ module Telnyx
 
         # Get Sharing Status
         #
-        # @overload retrieve_sharing(campaign_id, request_options: {})
+        # @overload get_sharing_status(campaign_id, request_options: {})
         #
         # @param campaign_id [String] ID of the campaign in question
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Number10dlc::CampaignRetrieveSharingResponse]
+        # @return [Telnyx::Models::Number10dlc::CampaignGetSharingStatusResponse]
         #
-        # @see Telnyx::Models::Number10dlc::CampaignRetrieveSharingParams
-        def retrieve_sharing(campaign_id, params = {})
+        # @see Telnyx::Models::Number10dlc::CampaignGetSharingStatusParams
+        def get_sharing_status(campaign_id, params = {})
           @client.request(
             method: :get,
             path: ["10dlc/campaign/%1$s/sharing", campaign_id],
-            model: Telnyx::Models::Number10dlc::CampaignRetrieveSharingResponse,
+            model: Telnyx::Models::Number10dlc::CampaignGetSharingStatusResponse,
             options: params[:request_options]
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Number10dlc::CampaignSubmitAppealParams} for more details.
+        #
+        # Submits an appeal for rejected native campaigns in TELNYX_FAILED or MNO_REJECTED
+        # status. The appeal is recorded for manual compliance team review and the
+        # campaign status is reset to TCR_ACCEPTED. Note: Appeal forwarding is handled
+        # manually to allow proper review before incurring upstream charges.
+        #
+        # @overload submit_appeal(campaign_id, appeal_reason:, request_options: {})
+        #
+        # @param campaign_id [String] The Telnyx campaign identifier
+        #
+        # @param appeal_reason [String] Detailed explanation of why the campaign should be reconsidered and what changes
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Number10dlc::CampaignSubmitAppealResponse]
+        #
+        # @see Telnyx::Models::Number10dlc::CampaignSubmitAppealParams
+        def submit_appeal(campaign_id, params)
+          parsed, options = Telnyx::Number10dlc::CampaignSubmitAppealParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: ["10dlc/campaign/%1$s/appeal", campaign_id],
+            body: parsed,
+            model: Telnyx::Models::Number10dlc::CampaignSubmitAppealResponse,
+            options: options
           )
         end
 

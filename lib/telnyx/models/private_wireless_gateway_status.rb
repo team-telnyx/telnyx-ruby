@@ -9,13 +9,13 @@ module Telnyx
         #   related to the failure reason.
         #
         #   @return [String, nil]
-        optional :error_code, String
+        optional :error_code, String, nil?: true
 
         # @!attribute error_description
         #   This attribute provides a human-readable explanation of why a failure happened.
         #
         #   @return [String, nil]
-        optional :error_description, String
+        optional :error_description, String, nil?: true
 
         # @!attribute value
         #   The current status or failure details of the Private Wireless Gateway. <ul>
@@ -37,9 +37,9 @@ module Telnyx
       #
       #   The current status or failure details of the Private Wireless Gateway.
       #
-      #   @param error_code [String] This attribute is an [error code](https://developers.telnyx.com/api/errors) rela
+      #   @param error_code [String, nil] This attribute is an [error code](https://developers.telnyx.com/api/errors) rela
       #
-      #   @param error_description [String] This attribute provides a human-readable explanation of why a failure happened.
+      #   @param error_description [String, nil] This attribute provides a human-readable explanation of why a failure happened.
       #
       #   @param value [Symbol, Telnyx::Models::PrivateWirelessGatewayStatus::Value] The current status or failure details of the Private Wireless Gateway. <ul>
 

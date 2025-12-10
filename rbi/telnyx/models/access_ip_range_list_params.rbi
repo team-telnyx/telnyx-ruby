@@ -23,18 +23,23 @@ module Telnyx
       end
       attr_writer :filter
 
-      # Consolidated page parameter (deepObject style). Originally: page[number],
-      # page[size]
-      sig { returns(T.nilable(Telnyx::AccessIPRangeListParams::Page)) }
-      attr_reader :page
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :page_number
 
-      sig { params(page: Telnyx::AccessIPRangeListParams::Page::OrHash).void }
-      attr_writer :page
+      sig { params(page_number: Integer).void }
+      attr_writer :page_number
+
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :page_size
+
+      sig { params(page_size: Integer).void }
+      attr_writer :page_size
 
       sig do
         params(
           filter: Telnyx::AccessIPRangeListParams::Filter::OrHash,
-          page: Telnyx::AccessIPRangeListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -44,9 +49,8 @@ module Telnyx
         # filter[cidr_block][endswith], filter[cidr_block][contains], filter[created_at].
         # Supports complex bracket operations for dynamic filtering.
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end
@@ -55,7 +59,8 @@ module Telnyx
         override.returns(
           {
             filter: Telnyx::AccessIPRangeListParams::Filter,
-            page: Telnyx::AccessIPRangeListParams::Page,
+            page_number: Integer,
+            page_size: Integer,
             request_options: Telnyx::RequestOptions
           }
         )
@@ -328,38 +333,6 @@ module Telnyx
           end
           def self.variants
           end
-        end
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::AccessIPRangeListParams::Page,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :number
-
-        sig { params(number: Integer).void }
-        attr_writer :number
-
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :size
-
-        sig { params(size: Integer).void }
-        attr_writer :size
-
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        sig { params(number: Integer, size: Integer).returns(T.attached_class) }
-        def self.new(number: nil, size: nil)
-        end
-
-        sig { override.returns({ number: Integer, size: Integer }) }
-        def to_hash
         end
       end
     end

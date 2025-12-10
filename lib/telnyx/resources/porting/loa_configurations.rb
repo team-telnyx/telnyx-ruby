@@ -97,7 +97,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Porting::LoaConfigurationListResponse]
+        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::Porting::PortingLoaConfiguration>]
         #
         # @see Telnyx::Models::Porting::LoaConfigurationListParams
         def list(params = {})
@@ -106,7 +106,8 @@ module Telnyx
             method: :get,
             path: "porting/loa_configurations",
             query: parsed,
-            model: Telnyx::Models::Porting::LoaConfigurationListResponse,
+            page: Telnyx::Internal::DefaultPagination,
+            model: Telnyx::Porting::PortingLoaConfiguration,
             options: options
           )
         end

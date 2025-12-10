@@ -63,13 +63,34 @@ class Telnyx::Test::Resources::OAuthClientsTest < Telnyx::Test::ResourceTest
     response = @telnyx.oauth_clients.list
 
     assert_pattern do
-      response => Telnyx::Models::OAuthClientListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::OAuthClient
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::OAuthClient]) | nil,
-        meta: Telnyx::PaginationMetaOAuth | nil
+      row => {
+        client_id: String,
+        client_type: Telnyx::OAuthClient::ClientType,
+        created_at: Time,
+        name: String,
+        org_id: String,
+        record_type: Telnyx::OAuthClient::RecordType,
+        require_pkce: Telnyx::Internal::Type::Boolean,
+        updated_at: Time,
+        user_id: String,
+        allowed_grant_types: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::OAuthClient::AllowedGrantType]) | nil,
+        allowed_scopes: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
+        client_secret: String | nil,
+        logo_uri: String | nil,
+        policy_uri: String | nil,
+        redirect_uris: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
+        tos_uri: String | nil
       }
     end
   end

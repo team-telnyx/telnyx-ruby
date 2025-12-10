@@ -128,12 +128,15 @@ module Telnyx
         def to_hash: -> { number: Integer, size: Integer }
       end
 
-      type sort = :"current_billing_period_consumed_data.amount"
+      type sort =
+        :"current_billing_period_consumed_data.amount"
+        | :"-current_billing_period_consumed_data.amount"
 
       module Sort
         extend Telnyx::Internal::Type::Enum
 
         CURRENT_BILLING_PERIOD_CONSUMED_DATA_AMOUNT: :"current_billing_period_consumed_data.amount"
+        MINUS_CURRENT_BILLING_PERIOD_CONSUMED_DATA_AMOUNT: :"-current_billing_period_consumed_data.amount"
 
         def self?.values: -> ::Array[Telnyx::Models::SimCardListParams::sort]
       end

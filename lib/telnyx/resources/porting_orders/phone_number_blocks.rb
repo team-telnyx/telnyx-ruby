@@ -50,7 +50,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::PortingOrders::PhoneNumberBlockListResponse]
+        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PortingOrders::PortingPhoneNumberBlock>]
         #
         # @see Telnyx::Models::PortingOrders::PhoneNumberBlockListParams
         def list(porting_order_id, params = {})
@@ -59,7 +59,8 @@ module Telnyx
             method: :get,
             path: ["porting_orders/%1$s/phone_number_blocks", porting_order_id],
             query: parsed,
-            model: Telnyx::Models::PortingOrders::PhoneNumberBlockListResponse,
+            page: Telnyx::Internal::DefaultPagination,
+            model: Telnyx::PortingOrders::PortingPhoneNumberBlock,
             options: options
           )
         end

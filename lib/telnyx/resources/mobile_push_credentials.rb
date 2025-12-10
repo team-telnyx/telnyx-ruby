@@ -5,18 +5,9 @@ module Telnyx
     class MobilePushCredentials
       # Creates a new mobile push credential
       #
-      # @overload create(alias_:, certificate:, private_key:, type:, project_account_json_file:, request_options: {})
+      # @overload create(create_mobile_push_credential_request:, request_options: {})
       #
-      # @param alias_ [String] Alias to uniquely identify the credential
-      #
-      # @param certificate [String] Certificate as received from APNs
-      #
-      # @param private_key [String] Corresponding private key to the certificate as received from APNs
-      #
-      # @param type [Symbol, Telnyx::Models::MobilePushCredentialCreateParams::Type] Type of mobile push credential. Should be <code>android</code> here
-      #
-      # @param project_account_json_file [Hash{Symbol=>Object}] Private key file in JSON format
-      #
+      # @param create_mobile_push_credential_request [Telnyx::Models::MobilePushCredentialCreateParams::CreateMobilePushCredentialRequest::Ios, Telnyx::Models::MobilePushCredentialCreateParams::CreateMobilePushCredentialRequest::Android]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::PushCredentialResponse]
@@ -27,7 +18,7 @@ module Telnyx
         @client.request(
           method: :post,
           path: "mobile_push_credentials",
-          body: parsed,
+          body: parsed[:create_mobile_push_credential_request],
           model: Telnyx::PushCredentialResponse,
           options: options
         )
@@ -66,7 +57,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::MobilePushCredentialListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PushCredential>]
       #
       # @see Telnyx::Models::MobilePushCredentialListParams
       def list(params = {})
@@ -75,7 +66,8 @@ module Telnyx
           method: :get,
           path: "mobile_push_credentials",
           query: parsed,
-          model: Telnyx::Models::MobilePushCredentialListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::PushCredential,
           options: options
         )
       end

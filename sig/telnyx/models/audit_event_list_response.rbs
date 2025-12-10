@@ -2,218 +2,158 @@ module Telnyx
   module Models
     type audit_event_list_response =
       {
-        data: ::Array[Telnyx::Models::AuditEventListResponse::Data],
-        meta: Telnyx::Models::AuditEventListResponse::Meta
+        id: String,
+        alternate_resource_id: String?,
+        change_made_by: Telnyx::Models::AuditEventListResponse::change_made_by,
+        change_type: String,
+        changes: ::Array[Telnyx::Models::AuditEventListResponse::Change]?,
+        created_at: Time,
+        organization_id: String,
+        record_type: String,
+        resource_id: String,
+        user_id: String
       }
 
     class AuditEventListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: ::Array[Telnyx::Models::AuditEventListResponse::Data]?
+      attr_reader id: String?
 
-      def data=: (
-        ::Array[Telnyx::Models::AuditEventListResponse::Data]
-      ) -> ::Array[Telnyx::Models::AuditEventListResponse::Data]
+      def id=: (String) -> String
 
-      attr_reader meta: Telnyx::Models::AuditEventListResponse::Meta?
+      attr_accessor alternate_resource_id: String?
 
-      def meta=: (
-        Telnyx::Models::AuditEventListResponse::Meta
-      ) -> Telnyx::Models::AuditEventListResponse::Meta
+      attr_reader change_made_by: Telnyx::Models::AuditEventListResponse::change_made_by?
+
+      def change_made_by=: (
+        Telnyx::Models::AuditEventListResponse::change_made_by
+      ) -> Telnyx::Models::AuditEventListResponse::change_made_by
+
+      attr_reader change_type: String?
+
+      def change_type=: (String) -> String
+
+      attr_accessor changes: ::Array[Telnyx::Models::AuditEventListResponse::Change]?
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader organization_id: String?
+
+      def organization_id=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader resource_id: String?
+
+      def resource_id=: (String) -> String
+
+      attr_reader user_id: String?
+
+      def user_id=: (String) -> String
 
       def initialize: (
-        ?data: ::Array[Telnyx::Models::AuditEventListResponse::Data],
-        ?meta: Telnyx::Models::AuditEventListResponse::Meta
+        ?id: String,
+        ?alternate_resource_id: String?,
+        ?change_made_by: Telnyx::Models::AuditEventListResponse::change_made_by,
+        ?change_type: String,
+        ?changes: ::Array[Telnyx::Models::AuditEventListResponse::Change]?,
+        ?created_at: Time,
+        ?organization_id: String,
+        ?record_type: String,
+        ?resource_id: String,
+        ?user_id: String
       ) -> void
 
       def to_hash: -> {
-        data: ::Array[Telnyx::Models::AuditEventListResponse::Data],
-        meta: Telnyx::Models::AuditEventListResponse::Meta
+        id: String,
+        alternate_resource_id: String?,
+        change_made_by: Telnyx::Models::AuditEventListResponse::change_made_by,
+        change_type: String,
+        changes: ::Array[Telnyx::Models::AuditEventListResponse::Change]?,
+        created_at: Time,
+        organization_id: String,
+        record_type: String,
+        resource_id: String,
+        user_id: String
       }
 
-      type data =
-        {
-          id: String,
-          alternate_resource_id: String?,
-          change_made_by: Telnyx::Models::AuditEventListResponse::Data::change_made_by,
-          change_type: String,
-          changes: ::Array[Telnyx::Models::AuditEventListResponse::Data::Change]?,
-          created_at: Time,
-          organization_id: String,
-          record_type: String,
-          resource_id: String,
-          user_id: String
-        }
+      type change_made_by =
+        :telnyx | :account_manager | :account_owner | :organization_member
 
-      class Data < Telnyx::Internal::Type::BaseModel
-        attr_reader id: String?
+      module ChangeMadeBy
+        extend Telnyx::Internal::Type::Enum
 
-        def id=: (String) -> String
+        TELNYX: :telnyx
+        ACCOUNT_MANAGER: :account_manager
+        ACCOUNT_OWNER: :account_owner
+        ORGANIZATION_MEMBER: :organization_member
 
-        attr_accessor alternate_resource_id: String?
-
-        attr_reader change_made_by: Telnyx::Models::AuditEventListResponse::Data::change_made_by?
-
-        def change_made_by=: (
-          Telnyx::Models::AuditEventListResponse::Data::change_made_by
-        ) -> Telnyx::Models::AuditEventListResponse::Data::change_made_by
-
-        attr_reader change_type: String?
-
-        def change_type=: (String) -> String
-
-        attr_accessor changes: ::Array[Telnyx::Models::AuditEventListResponse::Data::Change]?
-
-        attr_reader created_at: Time?
-
-        def created_at=: (Time) -> Time
-
-        attr_reader organization_id: String?
-
-        def organization_id=: (String) -> String
-
-        attr_reader record_type: String?
-
-        def record_type=: (String) -> String
-
-        attr_reader resource_id: String?
-
-        def resource_id=: (String) -> String
-
-        attr_reader user_id: String?
-
-        def user_id=: (String) -> String
-
-        def initialize: (
-          ?id: String,
-          ?alternate_resource_id: String?,
-          ?change_made_by: Telnyx::Models::AuditEventListResponse::Data::change_made_by,
-          ?change_type: String,
-          ?changes: ::Array[Telnyx::Models::AuditEventListResponse::Data::Change]?,
-          ?created_at: Time,
-          ?organization_id: String,
-          ?record_type: String,
-          ?resource_id: String,
-          ?user_id: String
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          alternate_resource_id: String?,
-          change_made_by: Telnyx::Models::AuditEventListResponse::Data::change_made_by,
-          change_type: String,
-          changes: ::Array[Telnyx::Models::AuditEventListResponse::Data::Change]?,
-          created_at: Time,
-          organization_id: String,
-          record_type: String,
-          resource_id: String,
-          user_id: String
-        }
-
-        type change_made_by =
-          :telnyx | :account_manager | :account_owner | :organization_member
-
-        module ChangeMadeBy
-          extend Telnyx::Internal::Type::Enum
-
-          TELNYX: :telnyx
-          ACCOUNT_MANAGER: :account_manager
-          ACCOUNT_OWNER: :account_owner
-          ORGANIZATION_MEMBER: :organization_member
-
-          def self?.values: -> ::Array[Telnyx::Models::AuditEventListResponse::Data::change_made_by]
-        end
-
-        type change =
-          {
-            field: String,
-            from: Telnyx::Models::AuditEventListResponse::Data::Change::from?,
-            to: Telnyx::Models::AuditEventListResponse::Data::Change::to?
-          }
-
-        class Change < Telnyx::Internal::Type::BaseModel
-          attr_reader field: String?
-
-          def field=: (String) -> String
-
-          attr_accessor from: Telnyx::Models::AuditEventListResponse::Data::Change::from?
-
-          attr_accessor to: Telnyx::Models::AuditEventListResponse::Data::Change::to?
-
-          def initialize: (
-            ?field: String,
-            ?from: Telnyx::Models::AuditEventListResponse::Data::Change::from?,
-            ?to: Telnyx::Models::AuditEventListResponse::Data::Change::to?
-          ) -> void
-
-          def to_hash: -> {
-            field: String,
-            from: Telnyx::Models::AuditEventListResponse::Data::Change::from?,
-            to: Telnyx::Models::AuditEventListResponse::Data::Change::to?
-          }
-
-          type from = String | Float | bool | ::Hash[Symbol, top] | ::Array[top]
-
-          module From
-            extend Telnyx::Internal::Type::Union
-
-            def self?.variants: -> ::Array[Telnyx::Models::AuditEventListResponse::Data::Change::from]
-
-            UnionMember3Map: Telnyx::Internal::Type::Converter
-
-            UnionMember4Array: Telnyx::Internal::Type::Converter
-          end
-
-          type to = String | Float | bool | ::Hash[Symbol, top] | ::Array[top]
-
-          module To
-            extend Telnyx::Internal::Type::Union
-
-            def self?.variants: -> ::Array[Telnyx::Models::AuditEventListResponse::Data::Change::to]
-
-            UnionMember3Map: Telnyx::Internal::Type::Converter
-
-            UnionMember4Array: Telnyx::Internal::Type::Converter
-          end
-        end
+        def self?.values: -> ::Array[Telnyx::Models::AuditEventListResponse::change_made_by]
       end
 
-      type meta =
+      type change =
         {
-          page_number: Integer,
-          page_size: Integer,
-          total_pages: Integer,
-          total_results: Integer
+          field: String,
+          from: Telnyx::Models::AuditEventListResponse::Change::from?,
+          to: Telnyx::Models::AuditEventListResponse::Change::to?
         }
 
-      class Meta < Telnyx::Internal::Type::BaseModel
-        attr_reader page_number: Integer?
+      class Change < Telnyx::Internal::Type::BaseModel
+        attr_reader field: String?
 
-        def page_number=: (Integer) -> Integer
+        def field=: (String) -> String
 
-        attr_reader page_size: Integer?
+        attr_accessor from: Telnyx::Models::AuditEventListResponse::Change::from?
 
-        def page_size=: (Integer) -> Integer
-
-        attr_reader total_pages: Integer?
-
-        def total_pages=: (Integer) -> Integer
-
-        attr_reader total_results: Integer?
-
-        def total_results=: (Integer) -> Integer
+        attr_accessor to: Telnyx::Models::AuditEventListResponse::Change::to?
 
         def initialize: (
-          ?page_number: Integer,
-          ?page_size: Integer,
-          ?total_pages: Integer,
-          ?total_results: Integer
+          ?field: String,
+          ?from: Telnyx::Models::AuditEventListResponse::Change::from?,
+          ?to: Telnyx::Models::AuditEventListResponse::Change::to?
         ) -> void
 
         def to_hash: -> {
-          page_number: Integer,
-          page_size: Integer,
-          total_pages: Integer,
-          total_results: Integer
+          field: String,
+          from: Telnyx::Models::AuditEventListResponse::Change::from?,
+          to: Telnyx::Models::AuditEventListResponse::Change::to?
         }
+
+        type from =
+          String
+          | Float
+          | bool
+          | ::Hash[Symbol, top]
+          | ::Array[::Hash[Symbol, top]]
+
+        module From
+          extend Telnyx::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Telnyx::Models::AuditEventListResponse::Change::from]
+
+          ChangesObjectMap: Telnyx::Internal::Type::Converter
+
+          UnionMember4Array: Telnyx::Internal::Type::Converter
+        end
+
+        type to =
+          String
+          | Float
+          | bool
+          | ::Hash[Symbol, top]
+          | ::Array[::Hash[Symbol, top]]
+
+        module To
+          extend Telnyx::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Telnyx::Models::AuditEventListResponse::Change::to]
+
+          ChangesObjectMap: Telnyx::Internal::Type::Converter
+
+          UnionMember4Array: Telnyx::Internal::Type::Converter
+        end
       end
     end
   end

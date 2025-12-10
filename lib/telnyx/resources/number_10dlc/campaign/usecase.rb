@@ -7,21 +7,21 @@ module Telnyx
         class Usecase
           # Get Campaign Cost
           #
-          # @overload retrieve_cost(usecase:, request_options: {})
+          # @overload get_cost(usecase:, request_options: {})
           #
           # @param usecase [String]
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::Number10dlc::Campaign::UsecaseRetrieveCostResponse]
+          # @return [Telnyx::Models::Number10dlc::Campaign::UsecaseGetCostResponse]
           #
-          # @see Telnyx::Models::Number10dlc::Campaign::UsecaseRetrieveCostParams
-          def retrieve_cost(params)
-            parsed, options = Telnyx::Number10dlc::Campaign::UsecaseRetrieveCostParams.dump_request(params)
+          # @see Telnyx::Models::Number10dlc::Campaign::UsecaseGetCostParams
+          def get_cost(params)
+            parsed, options = Telnyx::Number10dlc::Campaign::UsecaseGetCostParams.dump_request(params)
             @client.request(
               method: :get,
               path: "10dlc/campaign/usecase/cost",
               query: parsed,
-              model: Telnyx::Models::Number10dlc::Campaign::UsecaseRetrieveCostResponse,
+              model: Telnyx::Models::Number10dlc::Campaign::UsecaseGetCostResponse,
               options: options
             )
           end

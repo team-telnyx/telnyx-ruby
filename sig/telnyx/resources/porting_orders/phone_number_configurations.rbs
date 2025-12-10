@@ -12,7 +12,7 @@ module Telnyx
           ?page: Telnyx::PortingOrders::PhoneNumberConfigurationListParams::Page,
           ?sort: Telnyx::PortingOrders::PhoneNumberConfigurationListParams::Sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse]
 
         def initialize: (client: Telnyx::Client) -> void
       end

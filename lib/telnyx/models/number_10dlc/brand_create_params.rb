@@ -29,14 +29,14 @@ module Telnyx
         # @!attribute entity_type
         #   Entity type behind the brand. This is the form of business establishment.
         #
-        #   @return [Symbol, Telnyx::Models::EntityType]
-        required :entity_type, enum: -> { Telnyx::EntityType }, api_name: :entityType
+        #   @return [Symbol, Telnyx::Models::Number10dlc::EntityType]
+        required :entity_type, enum: -> { Telnyx::Number10dlc::EntityType }, api_name: :entityType
 
         # @!attribute vertical
         #   Vertical or industry segment of the brand or campaign.
         #
-        #   @return [Symbol, Telnyx::Models::Vertical]
-        required :vertical, enum: -> { Telnyx::Vertical }
+        #   @return [Symbol, Telnyx::Models::Number10dlc::Vertical]
+        required :vertical, enum: -> { Telnyx::Number10dlc::Vertical }
 
         # @!attribute business_contact_email
         #   Business contact email.
@@ -122,8 +122,8 @@ module Telnyx
         # @!attribute stock_exchange
         #   (Required for public company) stock exchange.
         #
-        #   @return [Symbol, Telnyx::Models::StockExchange, nil]
-        optional :stock_exchange, enum: -> { Telnyx::StockExchange }, api_name: :stockExchange
+        #   @return [Symbol, Telnyx::Models::Number10dlc::StockExchange, nil]
+        optional :stock_exchange, enum: -> { Telnyx::Number10dlc::StockExchange }, api_name: :stockExchange
 
         # @!attribute stock_symbol
         #   (Required for public company) stock symbol.
@@ -165,9 +165,9 @@ module Telnyx
         #
         #   @param email [String] Valid email address of brand support contact.
         #
-        #   @param entity_type [Symbol, Telnyx::Models::EntityType] Entity type behind the brand. This is the form of business establishment.
+        #   @param entity_type [Symbol, Telnyx::Models::Number10dlc::EntityType] Entity type behind the brand. This is the form of business establishment.
         #
-        #   @param vertical [Symbol, Telnyx::Models::Vertical] Vertical or industry segment of the brand or campaign.
+        #   @param vertical [Symbol, Telnyx::Models::Number10dlc::Vertical] Vertical or industry segment of the brand or campaign.
         #
         #   @param business_contact_email [String] Business contact email.
         #
@@ -195,7 +195,7 @@ module Telnyx
         #
         #   @param state [String] State. Must be 2 letters code for United States.
         #
-        #   @param stock_exchange [Symbol, Telnyx::Models::StockExchange] (Required for public company) stock exchange.
+        #   @param stock_exchange [Symbol, Telnyx::Models::Number10dlc::StockExchange] (Required for public company) stock exchange.
         #
         #   @param stock_symbol [String] (Required for public company) stock symbol.
         #

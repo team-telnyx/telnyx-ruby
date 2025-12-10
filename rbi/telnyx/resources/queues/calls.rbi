@@ -47,7 +47,11 @@ module Telnyx
             queue_name: String,
             page: Telnyx::Queues::CallListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Queues::CallListResponse)
+          ).returns(
+            Telnyx::Internal::DefaultPagination[
+              Telnyx::Models::Queues::CallListResponse
+            ]
+          )
         end
         def list(
           # Uniquely identifies the queue by name

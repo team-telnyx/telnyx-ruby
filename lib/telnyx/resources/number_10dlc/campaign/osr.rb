@@ -7,15 +7,15 @@ module Telnyx
         class Osr
           # Get My Osr Campaign Attributes
           #
-          # @overload retrieve_attributes(campaign_id, request_options: {})
+          # @overload get_attributes(campaign_id, request_options: {})
           #
           # @param campaign_id [String]
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Hash{Symbol=>Object}]
           #
-          # @see Telnyx::Models::Number10dlc::Campaign::OsrRetrieveAttributesParams
-          def retrieve_attributes(campaign_id, params = {})
+          # @see Telnyx::Models::Number10dlc::Campaign::OsrGetAttributesParams
+          def get_attributes(campaign_id, params = {})
             @client.request(
               method: :get,
               path: ["10dlc/campaign/%1$s/osr/attributes", campaign_id],

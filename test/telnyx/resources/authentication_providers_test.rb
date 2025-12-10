@@ -66,13 +66,27 @@ class Telnyx::Test::Resources::AuthenticationProvidersTest < Telnyx::Test::Resou
     response = @telnyx.authentication_providers.list
 
     assert_pattern do
-      response => Telnyx::Models::AuthenticationProviderListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::AuthenticationProvider
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AuthenticationProvider]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        active: Telnyx::Internal::Type::Boolean | nil,
+        created_at: Time | nil,
+        name: String | nil,
+        organization_id: String | nil,
+        record_type: String | nil,
+        settings: Telnyx::AuthenticationProvider::Settings | nil,
+        short_name: String | nil,
+        updated_at: Time | nil
       }
     end
   end

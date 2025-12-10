@@ -1,0 +1,59 @@
+module Telnyx
+  module Models
+    module Number10dlc
+      type brand_get_feedback_response =
+        {
+          brand_id: String,
+          category: ::Array[Telnyx::Models::Number10dlc::BrandGetFeedbackResponse::Category]
+        }
+
+      class BrandGetFeedbackResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor brand_id: String
+
+        attr_accessor category: ::Array[Telnyx::Models::Number10dlc::BrandGetFeedbackResponse::Category]
+
+        def initialize: (
+          brand_id: String,
+          category: ::Array[Telnyx::Models::Number10dlc::BrandGetFeedbackResponse::Category]
+        ) -> void
+
+        def to_hash: -> {
+          brand_id: String,
+          category: ::Array[Telnyx::Models::Number10dlc::BrandGetFeedbackResponse::Category]
+        }
+
+        type category =
+          {
+            id: String,
+            description: String,
+            display_name: String,
+            fields: ::Array[String]
+          }
+
+        class Category < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor description: String
+
+          attr_accessor display_name: String
+
+          attr_accessor fields: ::Array[String]
+
+          def initialize: (
+            id: String,
+            description: String,
+            display_name: String,
+            fields: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            description: String,
+            display_name: String,
+            fields: ::Array[String]
+          }
+        end
+      end
+    end
+  end
+end

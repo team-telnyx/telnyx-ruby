@@ -30,7 +30,7 @@ module Telnyx
         #   supply a looped MP3 URL. If a media URL is chosen in the portal, customers can
         #   preview it before saving.
         #
-        #   @return [Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember1, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember2, nil]
+        #   @return [Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaURL, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaName, nil]
         optional :background_audio, union: -> { Telnyx::AI::VoiceSettings::BackgroundAudio }
 
         # @!attribute voice_speed
@@ -49,7 +49,7 @@ module Telnyx
         #
         #   @param api_key_ref [String] The `identifier` for an integration secret [/v2/integration_secrets](https://dev
         #
-        #   @param background_audio [Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember1, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember2] Optional background audio to play on the call. Use a predefined media bed, or su
+        #   @param background_audio [Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaURL, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaName] Optional background audio to play on the call. Use a predefined media bed, or su
         #
         #   @param voice_speed [Float] The speed of the voice in the range [0.25, 2.0]. 1.0 is deafult speed. Larger nu
 
@@ -61,45 +61,35 @@ module Telnyx
         module BackgroundAudio
           extend Telnyx::Internal::Type::Union
 
-          variant -> { Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0 }
+          discriminator :type
 
-          variant -> { Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember1 }
+          variant :predefined_media, -> { Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia }
 
-          variant -> { Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember2 }
+          variant :media_url, -> { Telnyx::AI::VoiceSettings::BackgroundAudio::MediaURL }
 
-          class UnionMember0 < Telnyx::Internal::Type::BaseModel
+          variant :media_name, -> { Telnyx::AI::VoiceSettings::BackgroundAudio::MediaName }
+
+          class PredefinedMedia < Telnyx::Internal::Type::BaseModel
             # @!attribute type
             #   Select from predefined media options.
             #
-            #   @return [Symbol, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0::Type]
-            required :type, enum: -> { Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0::Type }
+            #   @return [Symbol, :predefined_media]
+            required :type, const: :predefined_media
 
             # @!attribute value
             #   The predefined media to use. `silence` disables background audio.
             #
-            #   @return [Symbol, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0::Value]
-            required :value, enum: -> { Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0::Value }
+            #   @return [Symbol, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::Value]
+            required :value, enum: -> { Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::Value }
 
-            # @!method initialize(type:, value:)
-            #   @param type [Symbol, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0::Type] Select from predefined media options.
+            # @!method initialize(value:, type: :predefined_media)
+            #   @param value [Symbol, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::Value] The predefined media to use. `silence` disables background audio.
             #
-            #   @param value [Symbol, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0::Value] The predefined media to use. `silence` disables background audio.
-
-            # Select from predefined media options.
-            #
-            # @see Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0#type
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              PREDEFINED_MEDIA = :predefined_media
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
+            #   @param type [Symbol, :predefined_media] Select from predefined media options.
 
             # The predefined media to use. `silence` disables background audio.
             #
-            # @see Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0#value
+            # @see Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia#value
             module Value
               extend Telnyx::Internal::Type::Enum
 
@@ -111,12 +101,12 @@ module Telnyx
             end
           end
 
-          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+          class MediaURL < Telnyx::Internal::Type::BaseModel
             # @!attribute type
             #   Provide a direct URL to an MP3 file. The audio will loop during the call.
             #
-            #   @return [Symbol, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember1::Type]
-            required :type, enum: -> { Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember1::Type }
+            #   @return [Symbol, :media_url]
+            required :type, const: :media_url
 
             # @!attribute value
             #   HTTPS URL to an MP3 file.
@@ -124,30 +114,18 @@ module Telnyx
             #   @return [String]
             required :value, String
 
-            # @!method initialize(type:, value:)
-            #   @param type [Symbol, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember1::Type] Provide a direct URL to an MP3 file. The audio will loop during the call.
-            #
+            # @!method initialize(value:, type: :media_url)
             #   @param value [String] HTTPS URL to an MP3 file.
-
-            # Provide a direct URL to an MP3 file. The audio will loop during the call.
             #
-            # @see Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember1#type
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              MEDIA_URL = :media_url
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
+            #   @param type [Symbol, :media_url] Provide a direct URL to an MP3 file. The audio will loop during the call.
           end
 
-          class UnionMember2 < Telnyx::Internal::Type::BaseModel
+          class MediaName < Telnyx::Internal::Type::BaseModel
             # @!attribute type
             #   Reference a previously uploaded media by its name from Telnyx Media Storage.
             #
-            #   @return [Symbol, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember2::Type]
-            required :type, enum: -> { Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember2::Type }
+            #   @return [Symbol, :media_name]
+            required :type, const: :media_name
 
             # @!attribute value
             #   The `name` of a media asset created via
@@ -157,30 +135,18 @@ module Telnyx
             #   @return [String]
             required :value, String
 
-            # @!method initialize(type:, value:)
+            # @!method initialize(value:, type: :media_name)
             #   Some parameter documentations has been truncated, see
-            #   {Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember2} for more
+            #   {Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaName} for more
             #   details.
             #
-            #   @param type [Symbol, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember2::Type] Reference a previously uploaded media by its name from Telnyx Media Storage.
-            #
             #   @param value [String] The `name` of a media asset created via [Media Storage API](https://developers.t
-
-            # Reference a previously uploaded media by its name from Telnyx Media Storage.
             #
-            # @see Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember2#type
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              MEDIA_NAME = :media_name
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
+            #   @param type [Symbol, :media_name] Reference a previously uploaded media by its name from Telnyx Media Storage.
           end
 
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember0, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember1, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::UnionMember2)]
+          #   @return [Array(Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaURL, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaName)]
         end
       end
     end

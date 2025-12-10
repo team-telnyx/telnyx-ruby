@@ -25,13 +25,27 @@ class Telnyx::Test::Resources::BundlePricing::BillingBundlesTest < Telnyx::Test:
     response = @telnyx.bundle_pricing.billing_bundles.list
 
     assert_pattern do
-      response => Telnyx::Models::BundlePricing::BillingBundleListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::BundlePricing::BillingBundleSummary
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::BundlePricing::BillingBundleSummary]),
-        meta: Telnyx::BundlePricing::PaginationResponse
+      row => {
+        id: String,
+        cost_code: String,
+        created_at: Date,
+        is_public: Telnyx::Internal::Type::Boolean,
+        name: String,
+        currency: String | nil,
+        mrc_price: Float | nil,
+        slug: String | nil,
+        specs: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end

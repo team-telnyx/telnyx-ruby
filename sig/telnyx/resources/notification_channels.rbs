@@ -14,7 +14,7 @@ module Telnyx
       ) -> Telnyx::Models::NotificationChannelRetrieveResponse
 
       def update: (
-        String id,
+        String notification_channel_id,
         ?channel_destination: String,
         ?channel_type_id: Telnyx::Models::NotificationChannel::channel_type_id,
         ?notification_profile_id: String,
@@ -25,7 +25,7 @@ module Telnyx
         ?filter: Telnyx::NotificationChannelListParams::Filter,
         ?page: Telnyx::NotificationChannelListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::NotificationChannelListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::NotificationChannel]
 
       def delete: (
         String id,

@@ -3,11 +3,11 @@ module Telnyx
     class Number10dlc
       class CampaignBuilder
         class Brand
-          def retrieve: (
+          def qualify_by_usecase: (
             String usecase,
             brand_id: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Number10dlc::CampaignBuilder::BrandRetrieveResponse
+          ) -> Telnyx::Models::Number10dlc::CampaignBuilder::BrandQualifyByUsecaseResponse
 
           def initialize: (client: Telnyx::Client) -> void
         end

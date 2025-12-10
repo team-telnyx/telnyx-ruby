@@ -41,7 +41,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::PortingOrders::CommentListResponse]
+        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PortingOrders::CommentListResponse>]
         #
         # @see Telnyx::Models::PortingOrders::CommentListParams
         def list(id, params = {})
@@ -50,6 +50,7 @@ module Telnyx
             method: :get,
             path: ["porting_orders/%1$s/comments", id],
             query: parsed,
+            page: Telnyx::Internal::DefaultPagination,
             model: Telnyx::Models::PortingOrders::CommentListResponse,
             options: options
           )
