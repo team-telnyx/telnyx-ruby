@@ -19,7 +19,7 @@ module Telnyx
           {
             bucket: String,
             clusters: ::Array[Telnyx::AI::RecursiveCluster],
-            status: Telnyx::Models::task_status
+            status: Telnyx::Models::Messaging10dlc::task_status
           }
 
         class Data < Telnyx::Internal::Type::BaseModel
@@ -27,18 +27,18 @@ module Telnyx
 
           attr_accessor clusters: ::Array[Telnyx::AI::RecursiveCluster]
 
-          attr_accessor status: Telnyx::Models::task_status
+          attr_accessor status: Telnyx::Models::Messaging10dlc::task_status
 
           def initialize: (
             bucket: String,
             clusters: ::Array[Telnyx::AI::RecursiveCluster],
-            status: Telnyx::Models::task_status
+            status: Telnyx::Models::Messaging10dlc::task_status
           ) -> void
 
           def to_hash: -> {
             bucket: String,
             clusters: ::Array[Telnyx::AI::RecursiveCluster],
-            status: Telnyx::Models::task_status
+            status: Telnyx::Models::Messaging10dlc::task_status
           }
         end
       end

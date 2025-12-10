@@ -1,0 +1,41 @@
+module Telnyx
+  module Models
+    module Messaging10dlc
+      type phone_number_assignment_by_profile_assign_response =
+        {
+          messaging_profile_id: String,
+          task_id: String,
+          campaign_id: String,
+          tcr_campaign_id: String
+        }
+
+      class PhoneNumberAssignmentByProfileAssignResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor messaging_profile_id: String
+
+        attr_accessor task_id: String
+
+        attr_reader campaign_id: String?
+
+        def campaign_id=: (String) -> String
+
+        attr_reader tcr_campaign_id: String?
+
+        def tcr_campaign_id=: (String) -> String
+
+        def initialize: (
+          messaging_profile_id: String,
+          task_id: String,
+          ?campaign_id: String,
+          ?tcr_campaign_id: String
+        ) -> void
+
+        def to_hash: -> {
+          messaging_profile_id: String,
+          task_id: String,
+          campaign_id: String,
+          tcr_campaign_id: String
+        }
+      end
+    end
+  end
+end
