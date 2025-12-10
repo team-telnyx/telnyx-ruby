@@ -1,0 +1,25 @@
+module Telnyx
+  module Models
+    module Number10dlc
+      type brand_verify_sms_otp_params =
+        { otp_pin: String } & Telnyx::Internal::Type::request_parameters
+
+      class BrandVerifySMSOtpParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor otp_pin: String
+
+        def initialize: (
+          otp_pin: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          otp_pin: String,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

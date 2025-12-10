@@ -4,16 +4,16 @@ module Telnyx
       type job_error =
         {
           code: String,
-          title: String,
           detail: String,
           meta: Telnyx::PhoneNumberBlocks::JobError::Meta,
-          source: Telnyx::PhoneNumberBlocks::JobError::Source
+          source: Telnyx::PhoneNumberBlocks::JobError::Source,
+          title: String
         }
 
       class JobError < Telnyx::Internal::Type::BaseModel
-        attr_accessor code: String
+        attr_reader code: String?
 
-        attr_accessor title: String
+        def code=: (String) -> String
 
         attr_reader detail: String?
 
@@ -31,20 +31,24 @@ module Telnyx
           Telnyx::PhoneNumberBlocks::JobError::Source
         ) -> Telnyx::PhoneNumberBlocks::JobError::Source
 
+        attr_reader title: String?
+
+        def title=: (String) -> String
+
         def initialize: (
-          code: String,
-          title: String,
+          ?code: String,
           ?detail: String,
           ?meta: Telnyx::PhoneNumberBlocks::JobError::Meta,
-          ?source: Telnyx::PhoneNumberBlocks::JobError::Source
+          ?source: Telnyx::PhoneNumberBlocks::JobError::Source,
+          ?title: String
         ) -> void
 
         def to_hash: -> {
           code: String,
-          title: String,
           detail: String,
           meta: Telnyx::PhoneNumberBlocks::JobError::Meta,
-          source: Telnyx::PhoneNumberBlocks::JobError::Source
+          source: Telnyx::PhoneNumberBlocks::JobError::Source,
+          title: String
         }
 
         type meta = { url: String }

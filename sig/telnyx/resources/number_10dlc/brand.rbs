@@ -106,6 +106,19 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Number10dlc::TelnyxBrand
 
+        def trigger_sms_otp: (
+          String brand_id,
+          pin_sms: String,
+          success_sms: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Number10dlc::BrandTriggerSMSOtpResponse
+
+        def verify_sms_otp: (
+          String brand_id,
+          otp_pin: String,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
         def initialize: (client: Telnyx::Client) -> void
       end
     end

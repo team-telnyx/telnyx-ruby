@@ -3,6 +3,7 @@ module Telnyx
     type phone_number_list_params =
       {
         filter: Telnyx::PhoneNumberListParams::Filter,
+        handle_messaging_profile_error: Telnyx::Models::PhoneNumberListParams::handle_messaging_profile_error,
         page: Telnyx::PhoneNumberListParams::Page,
         sort: Telnyx::Models::PhoneNumberListParams::sort
       }
@@ -18,6 +19,12 @@ module Telnyx
         Telnyx::PhoneNumberListParams::Filter
       ) -> Telnyx::PhoneNumberListParams::Filter
 
+      attr_reader handle_messaging_profile_error: Telnyx::Models::PhoneNumberListParams::handle_messaging_profile_error?
+
+      def handle_messaging_profile_error=: (
+        Telnyx::Models::PhoneNumberListParams::handle_messaging_profile_error
+      ) -> Telnyx::Models::PhoneNumberListParams::handle_messaging_profile_error
+
       attr_reader page: Telnyx::PhoneNumberListParams::Page?
 
       def page=: (
@@ -32,6 +39,7 @@ module Telnyx
 
       def initialize: (
         ?filter: Telnyx::PhoneNumberListParams::Filter,
+        ?handle_messaging_profile_error: Telnyx::Models::PhoneNumberListParams::handle_messaging_profile_error,
         ?page: Telnyx::PhoneNumberListParams::Page,
         ?sort: Telnyx::Models::PhoneNumberListParams::sort,
         ?request_options: Telnyx::request_opts
@@ -39,6 +47,7 @@ module Telnyx
 
       def to_hash: -> {
         filter: Telnyx::PhoneNumberListParams::Filter,
+        handle_messaging_profile_error: Telnyx::Models::PhoneNumberListParams::handle_messaging_profile_error,
         page: Telnyx::PhoneNumberListParams::Page,
         sort: Telnyx::Models::PhoneNumberListParams::sort,
         request_options: Telnyx::RequestOptions
@@ -302,6 +311,17 @@ module Telnyx
 
           def self?.values: -> ::Array[Telnyx::Models::PhoneNumberListParams::Filter::without_tags]
         end
+      end
+
+      type handle_messaging_profile_error = :true | :false
+
+      module HandleMessagingProfileError
+        extend Telnyx::Internal::Type::Enum
+
+        TRUE: :true
+        FALSE: :false
+
+        def self?.values: -> ::Array[Telnyx::Models::PhoneNumberListParams::handle_messaging_profile_error]
       end
 
       type page = { number: Integer, size: Integer }

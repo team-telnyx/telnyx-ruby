@@ -18,6 +18,18 @@ module Telnyx
       #   @return [Telnyx::Models::PhoneNumberListParams::Filter, nil]
       optional :filter, -> { Telnyx::PhoneNumberListParams::Filter }
 
+      # @!attribute handle_messaging_profile_error
+      #   Although it is an infrequent occurrence, due to the highly distributed nature of
+      #   the Telnyx platform, it is possible that there will be an issue when loading in
+      #   Messaging Profile information. As such, when this parameter is set to `true` and
+      #   an error in fetching this information occurs, messaging profile related fields
+      #   will be omitted in the response and an error message will be included instead of
+      #   returning a 503 error.
+      #
+      #   @return [Symbol, Telnyx::Models::PhoneNumberListParams::HandleMessagingProfileError, nil]
+      optional :handle_messaging_profile_error,
+               enum: -> { Telnyx::PhoneNumberListParams::HandleMessagingProfileError }
+
       # @!attribute page
       #   Consolidated page parameter (deepObject style). Originally: page[size],
       #   page[number]
@@ -32,11 +44,13 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::PhoneNumberListParams::Sort, nil]
       optional :sort, enum: -> { Telnyx::PhoneNumberListParams::Sort }
 
-      # @!method initialize(filter: nil, page: nil, sort: nil, request_options: {})
+      # @!method initialize(filter: nil, handle_messaging_profile_error: nil, page: nil, sort: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::PhoneNumberListParams} for more details.
       #
       #   @param filter [Telnyx::Models::PhoneNumberListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[tag], filte
+      #
+      #   @param handle_messaging_profile_error [Symbol, Telnyx::Models::PhoneNumberListParams::HandleMessagingProfileError] Although it is an infrequent occurrence, due to the highly distributed nature of
       #
       #   @param page [Telnyx::Models::PhoneNumberListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
       #
@@ -318,6 +332,22 @@ module Telnyx
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+      end
+
+      # Although it is an infrequent occurrence, due to the highly distributed nature of
+      # the Telnyx platform, it is possible that there will be an issue when loading in
+      # Messaging Profile information. As such, when this parameter is set to `true` and
+      # an error in fetching this information occurs, messaging profile related fields
+      # will be omitted in the response and an error message will be included instead of
+      # returning a 503 error.
+      module HandleMessagingProfileError
+        extend Telnyx::Internal::Type::Enum
+
+        TRUE = :true
+        FALSE = :false
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       class Page < Telnyx::Internal::Type::BaseModel

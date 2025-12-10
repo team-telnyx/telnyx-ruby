@@ -6,13 +6,8 @@ module Telnyx
       class JobError < Telnyx::Internal::Type::BaseModel
         # @!attribute code
         #
-        #   @return [String]
-        required :code, String
-
-        # @!attribute title
-        #
-        #   @return [String]
-        required :title, String
+        #   @return [String, nil]
+        optional :code, String
 
         # @!attribute detail
         #
@@ -29,12 +24,17 @@ module Telnyx
         #   @return [Telnyx::Models::PhoneNumberBlocks::JobError::Source, nil]
         optional :source, -> { Telnyx::PhoneNumberBlocks::JobError::Source }
 
-        # @!method initialize(code:, title:, detail: nil, meta: nil, source: nil)
+        # @!attribute title
+        #
+        #   @return [String, nil]
+        optional :title, String
+
+        # @!method initialize(code: nil, detail: nil, meta: nil, source: nil, title: nil)
         #   @param code [String]
-        #   @param title [String]
         #   @param detail [String]
         #   @param meta [Telnyx::Models::PhoneNumberBlocks::JobError::Meta]
         #   @param source [Telnyx::Models::PhoneNumberBlocks::JobError::Source]
+        #   @param title [String]
 
         # @see Telnyx::Models::PhoneNumberBlocks::JobError#meta
         class Meta < Telnyx::Internal::Type::BaseModel

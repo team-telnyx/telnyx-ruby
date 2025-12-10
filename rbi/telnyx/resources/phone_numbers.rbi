@@ -74,6 +74,8 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::PhoneNumberListParams::Filter::OrHash,
+          handle_messaging_profile_error:
+            Telnyx::PhoneNumberListParams::HandleMessagingProfileError::OrSymbol,
           page: Telnyx::PhoneNumberListParams::Page::OrHash,
           sort: Telnyx::PhoneNumberListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
@@ -89,6 +91,13 @@ module Telnyx
         # filter[emergency_address_id], filter[customer_reference], filter[number_type],
         # filter[source]
         filter: nil,
+        # Although it is an infrequent occurrence, due to the highly distributed nature of
+        # the Telnyx platform, it is possible that there will be an issue when loading in
+        # Messaging Profile information. As such, when this parameter is set to `true` and
+        # an error in fetching this information occurs, messaging profile related fields
+        # will be omitted in the response and an error message will be included instead of
+        # returning a 503 error.
+        handle_messaging_profile_error: nil,
         # Consolidated page parameter (deepObject style). Originally: page[size],
         # page[number]
         page: nil,

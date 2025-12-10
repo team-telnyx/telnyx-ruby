@@ -31,6 +31,7 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::PhoneNumberListParams::Filter,
+        ?handle_messaging_profile_error: Telnyx::Models::PhoneNumberListParams::handle_messaging_profile_error,
         ?page: Telnyx::PhoneNumberListParams::Page,
         ?sort: Telnyx::Models::PhoneNumberListParams::sort,
         ?request_options: Telnyx::request_opts

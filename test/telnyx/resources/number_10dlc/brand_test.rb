@@ -281,4 +281,37 @@ class Telnyx::Test::Resources::Number10dlc::BrandTest < Telnyx::Test::ResourceTe
       }
     end
   end
+
+  def test_trigger_sms_otp_required_params
+    skip("Prism tests are disabled")
+
+    response =
+      @telnyx.number_10dlc.brand.trigger_sms_otp(
+        "4b20019b-043a-78f8-0657-b3be3f4b4002",
+        pin_sms: "Your PIN is @OTP_PIN@",
+        success_sms: "Verification successful!"
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::Number10dlc::BrandTriggerSMSOtpResponse
+    end
+
+    assert_pattern do
+      response => {
+        brand_id: String,
+        reference_id: String
+      }
+    end
+  end
+
+  def test_verify_sms_otp_required_params
+    skip("Prism tests are disabled")
+
+    response =
+      @telnyx.number_10dlc.brand.verify_sms_otp("4b20019b-043a-78f8-0657-b3be3f4b4002", otp_pin: "123456")
+
+    assert_pattern do
+      response => nil
+    end
+  end
 end

@@ -83,9 +83,11 @@ module Telnyx
       #
       # List phone numbers
       #
-      # @overload list(filter: nil, page: nil, sort: nil, request_options: {})
+      # @overload list(filter: nil, handle_messaging_profile_error: nil, page: nil, sort: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::PhoneNumberListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[tag], filte
+      #
+      # @param handle_messaging_profile_error [Symbol, Telnyx::Models::PhoneNumberListParams::HandleMessagingProfileError] Although it is an infrequent occurrence, due to the highly distributed nature of
       #
       # @param page [Telnyx::Models::PhoneNumberListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
       #
