@@ -26,7 +26,7 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultPagination[
-              Telnyx::Models::Porting::EventListResponse
+              Telnyx::Models::Porting::EventListResponse::Variants
             ]
           )
         end

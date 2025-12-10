@@ -148,7 +148,7 @@ module Telnyx
       #
       # @overload upload(document:, request_options: {})
       #
-      # @param document [Telnyx::Models::DocumentUploadParams::Document::DocServiceDocumentUploadURL, Telnyx::Models::DocumentUploadParams::Document::DocServiceDocumentUploadInline]
+      # @param document [Telnyx::Models::DocumentUploadParams::Document]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::DocumentUploadResponse]
@@ -170,7 +170,7 @@ module Telnyx
       #
       # @overload upload_json(document:, request_options: {})
       #
-      # @param document [Telnyx::Models::DocumentUploadJsonParams::Document::DocServiceDocumentUploadURL, Telnyx::Models::DocumentUploadJsonParams::Document::DocServiceDocumentUploadInline]
+      # @param document [Telnyx::Models::DocumentUploadJsonParams::Document]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::DocumentUploadJsonResponse]

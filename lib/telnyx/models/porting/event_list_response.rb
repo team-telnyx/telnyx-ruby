@@ -4,139 +4,117 @@ module Telnyx
   module Models
     module Porting
       # @see Telnyx::Resources::Porting::Events#list
-      class EventListResponse < Telnyx::Internal::Type::BaseModel
-        # @!attribute id
-        #   Uniquely identifies the event.
-        #
-        #   @return [String, nil]
-        optional :id, String
+      module EventListResponse
+        extend Telnyx::Internal::Type::Union
 
-        # @!attribute available_notification_methods
-        #   Indicates the notification methods used.
-        #
-        #   @return [Array<Symbol, Telnyx::Models::Porting::EventListResponse::AvailableNotificationMethod>, nil]
-        optional :available_notification_methods,
-                 -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::Porting::EventListResponse::AvailableNotificationMethod] }
+        discriminator :event_type
 
-        # @!attribute created_at
-        #   ISO 8601 formatted date indicating when the resource was created.
-        #
-        #   @return [Time, nil]
-        optional :created_at, Time
+        variant -> { Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload }
 
-        # @!attribute event_type
-        #   Identifies the event type
-        #
-        #   @return [Symbol, Telnyx::Models::Porting::EventListResponse::EventType, nil]
-        optional :event_type, enum: -> { Telnyx::Models::Porting::EventListResponse::EventType }
+        variant -> { Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload }
 
-        # @!attribute payload
-        #   The webhook payload for the porting_order.deleted event
-        #
-        #   @return [Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderDeletedPayload, Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderMessagingChangedPayload, Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderStatusChangedPayload, Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderNewCommentPayload, Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderSplitPayload, nil]
-        optional :payload, union: -> { Telnyx::Models::Porting::EventListResponse::Payload }
+        variant -> { Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent }
 
-        # @!attribute payload_status
-        #   The status of the payload generation.
-        #
-        #   @return [Symbol, Telnyx::Models::Porting::EventListResponse::PayloadStatus, nil]
-        optional :payload_status, enum: -> { Telnyx::Models::Porting::EventListResponse::PayloadStatus }
+        variant -> { Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent }
 
-        # @!attribute porting_order_id
-        #   Identifies the porting order associated with the event.
-        #
-        #   @return [String, nil]
-        optional :porting_order_id, String
+        variant -> { Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent }
 
-        # @!attribute updated_at
-        #   ISO 8601 formatted date indicating when the resource was updated.
-        #
-        #   @return [Time, nil]
-        optional :updated_at, Time
+        variant -> { Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook }
 
-        response_only do
-          # @!attribute record_type
-          #   Identifies the type of the resource.
+        class PortingEventDeletedPayload < Telnyx::Internal::Type::BaseModel
+          # @!attribute id
+          #   Uniquely identifies the event.
           #
           #   @return [String, nil]
-          optional :record_type, String
-        end
+          optional :id, String
 
-        # @!method initialize(id: nil, available_notification_methods: nil, created_at: nil, event_type: nil, payload: nil, payload_status: nil, porting_order_id: nil, record_type: nil, updated_at: nil)
-        #   @param id [String] Uniquely identifies the event.
-        #
-        #   @param available_notification_methods [Array<Symbol, Telnyx::Models::Porting::EventListResponse::AvailableNotificationMethod>] Indicates the notification methods used.
-        #
-        #   @param created_at [Time] ISO 8601 formatted date indicating when the resource was created.
-        #
-        #   @param event_type [Symbol, Telnyx::Models::Porting::EventListResponse::EventType] Identifies the event type
-        #
-        #   @param payload [Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderDeletedPayload, Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderMessagingChangedPayload, Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderStatusChangedPayload, Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderNewCommentPayload, Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderSplitPayload] The webhook payload for the porting_order.deleted event
-        #
-        #   @param payload_status [Symbol, Telnyx::Models::Porting::EventListResponse::PayloadStatus] The status of the payload generation.
-        #
-        #   @param porting_order_id [String] Identifies the porting order associated with the event.
-        #
-        #   @param record_type [String] Identifies the type of the resource.
-        #
-        #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
+          # @!attribute available_notification_methods
+          #   Indicates the notification methods used.
+          #
+          #   @return [Array<Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload::AvailableNotificationMethod>, nil]
+          optional :available_notification_methods,
+                   -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload::AvailableNotificationMethod] }
 
-        module AvailableNotificationMethod
-          extend Telnyx::Internal::Type::Enum
+          # @!attribute event_type
+          #   Identifies the event type
+          #
+          #   @return [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload::EventType, nil]
+          optional :event_type,
+                   enum: -> { Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload::EventType }
 
-          EMAIL = :email
-          WEBHOOK = :webhook
-          WEBHOOK_V1 = :webhook_v1
+          # @!attribute payload
+          #
+          #   @return [Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload::Payload, nil]
+          optional :payload, -> { Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload::Payload }
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
+          # @!attribute payload_status
+          #   The status of the payload generation.
+          #
+          #   @return [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload::PayloadStatus, nil]
+          optional :payload_status,
+                   enum: -> { Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload::PayloadStatus }
 
-        # Identifies the event type
-        #
-        # @see Telnyx::Models::Porting::EventListResponse#event_type
-        module EventType
-          extend Telnyx::Internal::Type::Enum
+          # @!attribute porting_order_id
+          #   Identifies the porting order associated with the event.
+          #
+          #   @return [String, nil]
+          optional :porting_order_id, String
 
-          PORTING_ORDER_DELETED = :"porting_order.deleted"
-          PORTING_ORDER_LOA_UPDATED = :"porting_order.loa_updated"
-          PORTING_ORDER_MESSAGING_CHANGED = :"porting_order.messaging_changed"
-          PORTING_ORDER_STATUS_CHANGED = :"porting_order.status_changed"
-          PORTING_ORDER_SHARING_TOKEN_EXPIRED = :"porting_order.sharing_token_expired"
-          PORTING_ORDER_NEW_COMMENT = :"porting_order.new_comment"
-          PORTING_ORDER_SPLIT = :"porting_order.split"
+          # @!method initialize(id: nil, available_notification_methods: nil, event_type: nil, payload: nil, payload_status: nil, porting_order_id: nil)
+          #   @param id [String] Uniquely identifies the event.
+          #
+          #   @param available_notification_methods [Array<Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload::AvailableNotificationMethod>] Indicates the notification methods used.
+          #
+          #   @param event_type [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload::EventType] Identifies the event type
+          #
+          #   @param payload [Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload::Payload]
+          #
+          #   @param payload_status [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload::PayloadStatus] The status of the payload generation.
+          #
+          #   @param porting_order_id [String] Identifies the porting order associated with the event.
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
+          module AvailableNotificationMethod
+            extend Telnyx::Internal::Type::Enum
 
-        # The webhook payload for the porting_order.deleted event
-        #
-        # @see Telnyx::Models::Porting::EventListResponse#payload
-        module Payload
-          extend Telnyx::Internal::Type::Union
+            EMAIL = :email
+            WEBHOOK = :webhook
+            WEBHOOK_V1 = :webhook_v1
 
-          # The webhook payload for the porting_order.deleted event
-          variant -> { Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderDeletedPayload }
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
 
-          # The webhook payload for the porting_order.messaging_changed event
-          variant -> { Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderMessagingChangedPayload }
+          # Identifies the event type
+          #
+          # @see Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload#event_type
+          module EventType
+            extend Telnyx::Internal::Type::Enum
 
-          # The webhook payload for the porting_order.status_changed event
-          variant -> { Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderStatusChangedPayload }
+            PORTING_ORDER_DELETED = :"porting_order.deleted"
+            PORTING_ORDER_LOA_UPDATED = :"porting_order.loa_updated"
+            PORTING_ORDER_MESSAGING_CHANGED = :"porting_order.messaging_changed"
+            PORTING_ORDER_STATUS_CHANGED = :"porting_order.status_changed"
+            PORTING_ORDER_SHARING_TOKEN_EXPIRED = :"porting_order.sharing_token_expired"
+            PORTING_ORDER_NEW_COMMENT = :"porting_order.new_comment"
+            PORTING_ORDER_SPLIT = :"porting_order.split"
 
-          # The webhook payload for the porting_order.new_comment event
-          variant -> { Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderNewCommentPayload }
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
 
-          # The webhook payload for the porting_order.split event
-          variant -> { Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderSplitPayload }
-
-          class WebhookPortingOrderDeletedPayload < Telnyx::Internal::Type::BaseModel
+          # @see Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload#payload
+          class Payload < Telnyx::Internal::Type::BaseModel
             # @!attribute id
             #   Identifies the porting order that was deleted.
             #
             #   @return [String, nil]
             optional :id, String
+
+            # @!attribute created_at
+            #   ISO 8601 formatted date indicating when the resource was created.
+            #
+            #   @return [Time, nil]
+            optional :created_at, Time
 
             # @!attribute customer_reference
             #   Identifies the customer reference associated with the porting order.
@@ -150,17 +128,163 @@ module Telnyx
             #   @return [Time, nil]
             optional :deleted_at, Time
 
-            # @!method initialize(id: nil, customer_reference: nil, deleted_at: nil)
-            #   The webhook payload for the porting_order.deleted event
+            # @!attribute updated_at
+            #   ISO 8601 formatted date indicating when the resource was updated.
             #
+            #   @return [Time, nil]
+            optional :updated_at, Time
+
+            response_only do
+              # @!attribute record_type
+              #   Identifies the type of the resource.
+              #
+              #   @return [String, nil]
+              optional :record_type, String
+            end
+
+            # @!method initialize(id: nil, created_at: nil, customer_reference: nil, deleted_at: nil, record_type: nil, updated_at: nil)
             #   @param id [String] Identifies the porting order that was deleted.
+            #
+            #   @param created_at [Time] ISO 8601 formatted date indicating when the resource was created.
             #
             #   @param customer_reference [String] Identifies the customer reference associated with the porting order.
             #
             #   @param deleted_at [Time] ISO 8601 formatted date indicating when the porting order was deleted.
+            #
+            #   @param record_type [String] Identifies the type of the resource.
+            #
+            #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
           end
 
-          class WebhookPortingOrderMessagingChangedPayload < Telnyx::Internal::Type::BaseModel
+          # The status of the payload generation.
+          #
+          # @see Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload#payload_status
+          module PayloadStatus
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED = :created
+            COMPLETED = :completed
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
+        class PortingEventMessagingChangedPayload < Telnyx::Internal::Type::BaseModel
+          # @!attribute id
+          #   Uniquely identifies the event.
+          #
+          #   @return [String, nil]
+          optional :id, String
+
+          # @!attribute available_notification_methods
+          #   Indicates the notification methods used.
+          #
+          #   @return [Array<Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::AvailableNotificationMethod>, nil]
+          optional :available_notification_methods,
+                   -> do
+                     Telnyx::Internal::Type::ArrayOf[
+                       enum: Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::AvailableNotificationMethod
+                     ]
+                   end
+
+          # @!attribute created_at
+          #   ISO 8601 formatted date indicating when the resource was created.
+          #
+          #   @return [Time, nil]
+          optional :created_at, Time
+
+          # @!attribute event_type
+          #   Identifies the event type
+          #
+          #   @return [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::EventType, nil]
+          optional :event_type,
+                   enum: -> { Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::EventType }
+
+          # @!attribute payload
+          #   The webhook payload for the porting_order.messaging_changed event
+          #
+          #   @return [Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::Payload, nil]
+          optional :payload,
+                   -> { Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::Payload }
+
+          # @!attribute payload_status
+          #   The status of the payload generation.
+          #
+          #   @return [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::PayloadStatus, nil]
+          optional :payload_status,
+                   enum: -> { Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::PayloadStatus }
+
+          # @!attribute porting_order_id
+          #   Identifies the porting order associated with the event.
+          #
+          #   @return [String, nil]
+          optional :porting_order_id, String
+
+          # @!attribute updated_at
+          #   ISO 8601 formatted date indicating when the resource was updated.
+          #
+          #   @return [Time, nil]
+          optional :updated_at, Time
+
+          response_only do
+            # @!attribute record_type
+            #   Identifies the type of the resource.
+            #
+            #   @return [String, nil]
+            optional :record_type, String
+          end
+
+          # @!method initialize(id: nil, available_notification_methods: nil, created_at: nil, event_type: nil, payload: nil, payload_status: nil, porting_order_id: nil, record_type: nil, updated_at: nil)
+          #   @param id [String] Uniquely identifies the event.
+          #
+          #   @param available_notification_methods [Array<Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::AvailableNotificationMethod>] Indicates the notification methods used.
+          #
+          #   @param created_at [Time] ISO 8601 formatted date indicating when the resource was created.
+          #
+          #   @param event_type [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::EventType] Identifies the event type
+          #
+          #   @param payload [Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::Payload] The webhook payload for the porting_order.messaging_changed event
+          #
+          #   @param payload_status [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::PayloadStatus] The status of the payload generation.
+          #
+          #   @param porting_order_id [String] Identifies the porting order associated with the event.
+          #
+          #   @param record_type [String] Identifies the type of the resource.
+          #
+          #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
+
+          module AvailableNotificationMethod
+            extend Telnyx::Internal::Type::Enum
+
+            EMAIL = :email
+            WEBHOOK = :webhook
+            WEBHOOK_V1 = :webhook_v1
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Identifies the event type
+          #
+          # @see Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload#event_type
+          module EventType
+            extend Telnyx::Internal::Type::Enum
+
+            PORTING_ORDER_DELETED = :"porting_order.deleted"
+            PORTING_ORDER_LOA_UPDATED = :"porting_order.loa_updated"
+            PORTING_ORDER_MESSAGING_CHANGED = :"porting_order.messaging_changed"
+            PORTING_ORDER_STATUS_CHANGED = :"porting_order.status_changed"
+            PORTING_ORDER_SHARING_TOKEN_EXPIRED = :"porting_order.sharing_token_expired"
+            PORTING_ORDER_NEW_COMMENT = :"porting_order.new_comment"
+            PORTING_ORDER_SPLIT = :"porting_order.split"
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload#payload
+          class Payload < Telnyx::Internal::Type::BaseModel
             # @!attribute id
             #   Identifies the porting order that was moved.
             #
@@ -176,9 +300,9 @@ module Telnyx
             # @!attribute messaging
             #   The messaging portability status of the porting order.
             #
-            #   @return [Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging, nil]
+            #   @return [Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::Payload::Messaging, nil]
             optional :messaging,
-                     -> { Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging }
+                     -> { Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::Payload::Messaging }
 
             # @!attribute support_key
             #   Identifies the support key associated with the porting order.
@@ -193,11 +317,11 @@ module Telnyx
             #
             #   @param customer_reference [String] Identifies the customer reference associated with the porting order.
             #
-            #   @param messaging [Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging] The messaging portability status of the porting order.
+            #   @param messaging [Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::Payload::Messaging] The messaging portability status of the porting order.
             #
             #   @param support_key [String] Identifies the support key associated with the porting order.
 
-            # @see Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderMessagingChangedPayload#messaging
+            # @see Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::Payload#messaging
             class Messaging < Telnyx::Internal::Type::BaseModel
               # @!attribute enable_messaging
               #   Indicates whether Telnyx will port messaging capabilities from the losing
@@ -222,13 +346,13 @@ module Telnyx
               # @!attribute messaging_port_status
               #   Indicates the messaging port status of the porting order.
               #
-              #   @return [Symbol, Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging::MessagingPortStatus, nil]
+              #   @return [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::Payload::Messaging::MessagingPortStatus, nil]
               optional :messaging_port_status,
-                       enum: -> { Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging::MessagingPortStatus }
+                       enum: -> { Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::Payload::Messaging::MessagingPortStatus }
 
               # @!method initialize(enable_messaging: nil, messaging_capable: nil, messaging_port_completed: nil, messaging_port_status: nil)
               #   Some parameter documentations has been truncated, see
-              #   {Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging}
+              #   {Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::Payload::Messaging}
               #   for more details.
               #
               #   The messaging portability status of the porting order.
@@ -239,11 +363,11 @@ module Telnyx
               #
               #   @param messaging_port_completed [Boolean] Indicates whether the messaging port is completed.
               #
-              #   @param messaging_port_status [Symbol, Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging::MessagingPortStatus] Indicates the messaging port status of the porting order.
+              #   @param messaging_port_status [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::Payload::Messaging::MessagingPortStatus] Indicates the messaging port status of the porting order.
 
               # Indicates the messaging port status of the porting order.
               #
-              # @see Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderMessagingChangedPayload::Messaging#messaging_port_status
+              # @see Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload::Payload::Messaging#messaging_port_status
               module MessagingPortStatus
                 extend Telnyx::Internal::Type::Enum
 
@@ -261,7 +385,135 @@ module Telnyx
             end
           end
 
-          class WebhookPortingOrderStatusChangedPayload < Telnyx::Internal::Type::BaseModel
+          # The status of the payload generation.
+          #
+          # @see Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload#payload_status
+          module PayloadStatus
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED = :created
+            COMPLETED = :completed
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
+        class PortingEventStatusChangedEvent < Telnyx::Internal::Type::BaseModel
+          # @!attribute id
+          #   Uniquely identifies the event.
+          #
+          #   @return [String, nil]
+          optional :id, String
+
+          # @!attribute available_notification_methods
+          #   Indicates the notification methods used.
+          #
+          #   @return [Array<Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent::AvailableNotificationMethod>, nil]
+          optional :available_notification_methods,
+                   -> do
+                     Telnyx::Internal::Type::ArrayOf[
+                       enum: Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent::AvailableNotificationMethod
+                     ]
+                   end
+
+          # @!attribute created_at
+          #   ISO 8601 formatted date indicating when the resource was created.
+          #
+          #   @return [Time, nil]
+          optional :created_at, Time
+
+          # @!attribute event_type
+          #   Identifies the event type
+          #
+          #   @return [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent::EventType, nil]
+          optional :event_type,
+                   enum: -> { Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent::EventType }
+
+          # @!attribute payload
+          #   The webhook payload for the porting_order.status_changed event
+          #
+          #   @return [Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent::Payload, nil]
+          optional :payload,
+                   -> { Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent::Payload }
+
+          # @!attribute payload_status
+          #   The status of the payload generation.
+          #
+          #   @return [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent::PayloadStatus, nil]
+          optional :payload_status,
+                   enum: -> { Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent::PayloadStatus }
+
+          # @!attribute porting_order_id
+          #   Identifies the porting order associated with the event.
+          #
+          #   @return [String, nil]
+          optional :porting_order_id, String
+
+          # @!attribute updated_at
+          #   ISO 8601 formatted date indicating when the resource was updated.
+          #
+          #   @return [Time, nil]
+          optional :updated_at, Time
+
+          response_only do
+            # @!attribute record_type
+            #   Identifies the type of the resource.
+            #
+            #   @return [String, nil]
+            optional :record_type, String
+          end
+
+          # @!method initialize(id: nil, available_notification_methods: nil, created_at: nil, event_type: nil, payload: nil, payload_status: nil, porting_order_id: nil, record_type: nil, updated_at: nil)
+          #   @param id [String] Uniquely identifies the event.
+          #
+          #   @param available_notification_methods [Array<Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent::AvailableNotificationMethod>] Indicates the notification methods used.
+          #
+          #   @param created_at [Time] ISO 8601 formatted date indicating when the resource was created.
+          #
+          #   @param event_type [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent::EventType] Identifies the event type
+          #
+          #   @param payload [Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent::Payload] The webhook payload for the porting_order.status_changed event
+          #
+          #   @param payload_status [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent::PayloadStatus] The status of the payload generation.
+          #
+          #   @param porting_order_id [String] Identifies the porting order associated with the event.
+          #
+          #   @param record_type [String] Identifies the type of the resource.
+          #
+          #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
+
+          module AvailableNotificationMethod
+            extend Telnyx::Internal::Type::Enum
+
+            EMAIL = :email
+            WEBHOOK = :webhook
+            WEBHOOK_V1 = :webhook_v1
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Identifies the event type
+          #
+          # @see Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent#event_type
+          module EventType
+            extend Telnyx::Internal::Type::Enum
+
+            PORTING_ORDER_DELETED = :"porting_order.deleted"
+            PORTING_ORDER_LOA_UPDATED = :"porting_order.loa_updated"
+            PORTING_ORDER_MESSAGING_CHANGED = :"porting_order.messaging_changed"
+            PORTING_ORDER_STATUS_CHANGED = :"porting_order.status_changed"
+            PORTING_ORDER_SHARING_TOKEN_EXPIRED = :"porting_order.sharing_token_expired"
+            PORTING_ORDER_NEW_COMMENT = :"porting_order.new_comment"
+            PORTING_ORDER_SPLIT = :"porting_order.split"
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent#payload
+          class Payload < Telnyx::Internal::Type::BaseModel
             # @!attribute id
             #   Identifies the porting order that was moved.
             #
@@ -314,13 +566,136 @@ module Telnyx
             #   @param webhook_url [String] The URL to send the webhook to.
           end
 
-          class WebhookPortingOrderNewCommentPayload < Telnyx::Internal::Type::BaseModel
+          # The status of the payload generation.
+          #
+          # @see Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent#payload_status
+          module PayloadStatus
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED = :created
+            COMPLETED = :completed
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
+        class PortingEventNewCommentEvent < Telnyx::Internal::Type::BaseModel
+          # @!attribute id
+          #   Uniquely identifies the event.
+          #
+          #   @return [String, nil]
+          optional :id, String
+
+          # @!attribute available_notification_methods
+          #   Indicates the notification methods used.
+          #
+          #   @return [Array<Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::AvailableNotificationMethod>, nil]
+          optional :available_notification_methods,
+                   -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::AvailableNotificationMethod] }
+
+          # @!attribute created_at
+          #   ISO 8601 formatted date indicating when the resource was created.
+          #
+          #   @return [Time, nil]
+          optional :created_at, Time
+
+          # @!attribute event_type
+          #   Identifies the event type
+          #
+          #   @return [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::EventType, nil]
+          optional :event_type,
+                   enum: -> { Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::EventType }
+
+          # @!attribute payload
+          #   The webhook payload for the porting_order.new_comment event
+          #
+          #   @return [Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::Payload, nil]
+          optional :payload, -> { Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::Payload }
+
+          # @!attribute payload_status
+          #   The status of the payload generation.
+          #
+          #   @return [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::PayloadStatus, nil]
+          optional :payload_status,
+                   enum: -> { Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::PayloadStatus }
+
+          # @!attribute porting_order_id
+          #   Identifies the porting order associated with the event.
+          #
+          #   @return [String, nil]
+          optional :porting_order_id, String
+
+          # @!attribute updated_at
+          #   ISO 8601 formatted date indicating when the resource was updated.
+          #
+          #   @return [Time, nil]
+          optional :updated_at, Time
+
+          response_only do
+            # @!attribute record_type
+            #   Identifies the type of the resource.
+            #
+            #   @return [String, nil]
+            optional :record_type, String
+          end
+
+          # @!method initialize(id: nil, available_notification_methods: nil, created_at: nil, event_type: nil, payload: nil, payload_status: nil, porting_order_id: nil, record_type: nil, updated_at: nil)
+          #   @param id [String] Uniquely identifies the event.
+          #
+          #   @param available_notification_methods [Array<Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::AvailableNotificationMethod>] Indicates the notification methods used.
+          #
+          #   @param created_at [Time] ISO 8601 formatted date indicating when the resource was created.
+          #
+          #   @param event_type [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::EventType] Identifies the event type
+          #
+          #   @param payload [Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::Payload] The webhook payload for the porting_order.new_comment event
+          #
+          #   @param payload_status [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::PayloadStatus] The status of the payload generation.
+          #
+          #   @param porting_order_id [String] Identifies the porting order associated with the event.
+          #
+          #   @param record_type [String] Identifies the type of the resource.
+          #
+          #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
+
+          module AvailableNotificationMethod
+            extend Telnyx::Internal::Type::Enum
+
+            EMAIL = :email
+            WEBHOOK = :webhook
+            WEBHOOK_V1 = :webhook_v1
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Identifies the event type
+          #
+          # @see Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent#event_type
+          module EventType
+            extend Telnyx::Internal::Type::Enum
+
+            PORTING_ORDER_DELETED = :"porting_order.deleted"
+            PORTING_ORDER_LOA_UPDATED = :"porting_order.loa_updated"
+            PORTING_ORDER_MESSAGING_CHANGED = :"porting_order.messaging_changed"
+            PORTING_ORDER_STATUS_CHANGED = :"porting_order.status_changed"
+            PORTING_ORDER_SHARING_TOKEN_EXPIRED = :"porting_order.sharing_token_expired"
+            PORTING_ORDER_NEW_COMMENT = :"porting_order.new_comment"
+            PORTING_ORDER_SPLIT = :"porting_order.split"
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent#payload
+          class Payload < Telnyx::Internal::Type::BaseModel
             # @!attribute comment
             #   The comment that was added to the porting order.
             #
-            #   @return [Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderNewCommentPayload::Comment, nil]
+            #   @return [Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::Payload::Comment, nil]
             optional :comment,
-                     -> { Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderNewCommentPayload::Comment }
+                     -> { Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::Payload::Comment }
 
             # @!attribute porting_order_id
             #   Identifies the porting order that the comment was added to.
@@ -337,13 +712,13 @@ module Telnyx
             # @!method initialize(comment: nil, porting_order_id: nil, support_key: nil)
             #   The webhook payload for the porting_order.new_comment event
             #
-            #   @param comment [Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderNewCommentPayload::Comment] The comment that was added to the porting order.
+            #   @param comment [Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::Payload::Comment] The comment that was added to the porting order.
             #
             #   @param porting_order_id [String] Identifies the porting order that the comment was added to.
             #
             #   @param support_key [String] Identifies the support key associated with the porting order.
 
-            # @see Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderNewCommentPayload#comment
+            # @see Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::Payload#comment
             class Comment < Telnyx::Internal::Type::BaseModel
               # @!attribute id
               #   Identifies the comment.
@@ -372,9 +747,9 @@ module Telnyx
               # @!attribute user_type
               #   Identifies the type of the user that created the comment.
               #
-              #   @return [Symbol, Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderNewCommentPayload::Comment::UserType, nil]
+              #   @return [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::Payload::Comment::UserType, nil]
               optional :user_type,
-                       enum: -> { Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderNewCommentPayload::Comment::UserType }
+                       enum: -> { Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::Payload::Comment::UserType }
 
               # @!method initialize(id: nil, body: nil, inserted_at: nil, user_id: nil, user_type: nil)
               #   The comment that was added to the porting order.
@@ -387,11 +762,11 @@ module Telnyx
               #
               #   @param user_id [String] Identifies the user that create the comment.
               #
-              #   @param user_type [Symbol, Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderNewCommentPayload::Comment::UserType] Identifies the type of the user that created the comment.
+              #   @param user_type [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::Payload::Comment::UserType] Identifies the type of the user that created the comment.
 
               # Identifies the type of the user that created the comment.
               #
-              # @see Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderNewCommentPayload::Comment#user_type
+              # @see Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent::Payload::Comment#user_type
               module UserType
                 extend Telnyx::Internal::Type::Enum
 
@@ -405,38 +780,159 @@ module Telnyx
             end
           end
 
-          class WebhookPortingOrderSplitPayload < Telnyx::Internal::Type::BaseModel
+          # The status of the payload generation.
+          #
+          # @see Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent#payload_status
+          module PayloadStatus
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED = :created
+            COMPLETED = :completed
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
+        class PortingEventSplitEvent < Telnyx::Internal::Type::BaseModel
+          # @!attribute id
+          #   Uniquely identifies the event.
+          #
+          #   @return [String, nil]
+          optional :id, String
+
+          # @!attribute available_notification_methods
+          #   Indicates the notification methods used.
+          #
+          #   @return [Array<Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::AvailableNotificationMethod>, nil]
+          optional :available_notification_methods,
+                   -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::AvailableNotificationMethod] }
+
+          # @!attribute created_at
+          #   ISO 8601 formatted date indicating when the resource was created.
+          #
+          #   @return [Time, nil]
+          optional :created_at, Time
+
+          # @!attribute event_type
+          #   Identifies the event type
+          #
+          #   @return [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::EventType, nil]
+          optional :event_type,
+                   enum: -> { Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::EventType }
+
+          # @!attribute payload
+          #   The webhook payload for the porting_order.split event
+          #
+          #   @return [Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::Payload, nil]
+          optional :payload, -> { Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::Payload }
+
+          # @!attribute payload_status
+          #   The status of the payload generation.
+          #
+          #   @return [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::PayloadStatus, nil]
+          optional :payload_status,
+                   enum: -> { Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::PayloadStatus }
+
+          # @!attribute porting_order_id
+          #   Identifies the porting order associated with the event.
+          #
+          #   @return [String, nil]
+          optional :porting_order_id, String
+
+          # @!attribute updated_at
+          #   ISO 8601 formatted date indicating when the resource was updated.
+          #
+          #   @return [Time, nil]
+          optional :updated_at, Time
+
+          response_only do
+            # @!attribute record_type
+            #   Identifies the type of the resource.
+            #
+            #   @return [String, nil]
+            optional :record_type, String
+          end
+
+          # @!method initialize(id: nil, available_notification_methods: nil, created_at: nil, event_type: nil, payload: nil, payload_status: nil, porting_order_id: nil, record_type: nil, updated_at: nil)
+          #   @param id [String] Uniquely identifies the event.
+          #
+          #   @param available_notification_methods [Array<Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::AvailableNotificationMethod>] Indicates the notification methods used.
+          #
+          #   @param created_at [Time] ISO 8601 formatted date indicating when the resource was created.
+          #
+          #   @param event_type [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::EventType] Identifies the event type
+          #
+          #   @param payload [Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::Payload] The webhook payload for the porting_order.split event
+          #
+          #   @param payload_status [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::PayloadStatus] The status of the payload generation.
+          #
+          #   @param porting_order_id [String] Identifies the porting order associated with the event.
+          #
+          #   @param record_type [String] Identifies the type of the resource.
+          #
+          #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
+
+          module AvailableNotificationMethod
+            extend Telnyx::Internal::Type::Enum
+
+            EMAIL = :email
+            WEBHOOK = :webhook
+            WEBHOOK_V1 = :webhook_v1
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Identifies the event type
+          #
+          # @see Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent#event_type
+          module EventType
+            extend Telnyx::Internal::Type::Enum
+
+            PORTING_ORDER_DELETED = :"porting_order.deleted"
+            PORTING_ORDER_LOA_UPDATED = :"porting_order.loa_updated"
+            PORTING_ORDER_MESSAGING_CHANGED = :"porting_order.messaging_changed"
+            PORTING_ORDER_STATUS_CHANGED = :"porting_order.status_changed"
+            PORTING_ORDER_SHARING_TOKEN_EXPIRED = :"porting_order.sharing_token_expired"
+            PORTING_ORDER_NEW_COMMENT = :"porting_order.new_comment"
+            PORTING_ORDER_SPLIT = :"porting_order.split"
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent#payload
+          class Payload < Telnyx::Internal::Type::BaseModel
             # @!attribute from
             #   The porting order that was split.
             #
-            #   @return [Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderSplitPayload::From, nil]
-            optional :from,
-                     -> { Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderSplitPayload::From }
+            #   @return [Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::Payload::From, nil]
+            optional :from, -> { Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::Payload::From }
 
             # @!attribute porting_phone_numbers
             #   The list of porting phone numbers that were moved to the new porting order.
             #
-            #   @return [Array<Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderSplitPayload::PortingPhoneNumber>, nil]
+            #   @return [Array<Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::Payload::PortingPhoneNumber>, nil]
             optional :porting_phone_numbers,
-                     -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderSplitPayload::PortingPhoneNumber] }
+                     -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::Payload::PortingPhoneNumber] }
 
             # @!attribute to
             #   The new porting order that the phone numbers was moved to.
             #
-            #   @return [Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderSplitPayload::To, nil]
-            optional :to,
-                     -> { Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderSplitPayload::To }
+            #   @return [Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::Payload::To, nil]
+            optional :to, -> { Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::Payload::To }
 
             # @!method initialize(from: nil, porting_phone_numbers: nil, to: nil)
             #   The webhook payload for the porting_order.split event
             #
-            #   @param from [Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderSplitPayload::From] The porting order that was split.
+            #   @param from [Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::Payload::From] The porting order that was split.
             #
-            #   @param porting_phone_numbers [Array<Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderSplitPayload::PortingPhoneNumber>] The list of porting phone numbers that were moved to the new porting order.
+            #   @param porting_phone_numbers [Array<Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::Payload::PortingPhoneNumber>] The list of porting phone numbers that were moved to the new porting order.
             #
-            #   @param to [Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderSplitPayload::To] The new porting order that the phone numbers was moved to.
+            #   @param to [Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::Payload::To] The new porting order that the phone numbers was moved to.
 
-            # @see Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderSplitPayload#from
+            # @see Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::Payload#from
             class From < Telnyx::Internal::Type::BaseModel
               # @!attribute id
               #   Identifies the porting order that was split.
@@ -461,7 +957,7 @@ module Telnyx
               #   @param id [String] Identifies the porting phone number that was moved.
             end
 
-            # @see Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderSplitPayload#to
+            # @see Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent::Payload#to
             class To < Telnyx::Internal::Type::BaseModel
               # @!attribute id
               #   Identifies the porting order that was split.
@@ -476,22 +972,143 @@ module Telnyx
             end
           end
 
-          # @!method self.variants
-          #   @return [Array(Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderDeletedPayload, Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderMessagingChangedPayload, Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderStatusChangedPayload, Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderNewCommentPayload, Telnyx::Models::Porting::EventListResponse::Payload::WebhookPortingOrderSplitPayload)]
+          # The status of the payload generation.
+          #
+          # @see Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent#payload_status
+          module PayloadStatus
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED = :created
+            COMPLETED = :completed
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
-        # The status of the payload generation.
-        #
-        # @see Telnyx::Models::Porting::EventListResponse#payload_status
-        module PayloadStatus
-          extend Telnyx::Internal::Type::Enum
+        class PortingEventWithoutWebhook < Telnyx::Internal::Type::BaseModel
+          # @!attribute id
+          #   Uniquely identifies the event.
+          #
+          #   @return [String, nil]
+          optional :id, String
 
-          CREATED = :created
-          COMPLETED = :completed
+          # @!attribute available_notification_methods
+          #   Indicates the notification methods used.
+          #
+          #   @return [Array<Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook::AvailableNotificationMethod>, nil]
+          optional :available_notification_methods,
+                   -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook::AvailableNotificationMethod] }
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          # @!attribute created_at
+          #   ISO 8601 formatted date indicating when the resource was created.
+          #
+          #   @return [Time, nil]
+          optional :created_at, Time
+
+          # @!attribute event_type
+          #   Identifies the event type
+          #
+          #   @return [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook::EventType, nil]
+          optional :event_type,
+                   enum: -> { Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook::EventType }
+
+          # @!attribute payload
+          #
+          #   @return [nil]
+          optional :payload, NilClass
+
+          # @!attribute payload_status
+          #   The status of the payload generation.
+          #
+          #   @return [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook::PayloadStatus, nil]
+          optional :payload_status,
+                   enum: -> { Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook::PayloadStatus }
+
+          # @!attribute porting_order_id
+          #   Identifies the porting order associated with the event.
+          #
+          #   @return [String, nil]
+          optional :porting_order_id, String
+
+          # @!attribute updated_at
+          #   ISO 8601 formatted date indicating when the resource was updated.
+          #
+          #   @return [Time, nil]
+          optional :updated_at, Time
+
+          response_only do
+            # @!attribute record_type
+            #   Identifies the type of the resource.
+            #
+            #   @return [String, nil]
+            optional :record_type, String
+          end
+
+          # @!method initialize(id: nil, available_notification_methods: nil, created_at: nil, event_type: nil, payload: nil, payload_status: nil, porting_order_id: nil, record_type: nil, updated_at: nil)
+          #   @param id [String] Uniquely identifies the event.
+          #
+          #   @param available_notification_methods [Array<Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook::AvailableNotificationMethod>] Indicates the notification methods used.
+          #
+          #   @param created_at [Time] ISO 8601 formatted date indicating when the resource was created.
+          #
+          #   @param event_type [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook::EventType] Identifies the event type
+          #
+          #   @param payload [nil]
+          #
+          #   @param payload_status [Symbol, Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook::PayloadStatus] The status of the payload generation.
+          #
+          #   @param porting_order_id [String] Identifies the porting order associated with the event.
+          #
+          #   @param record_type [String] Identifies the type of the resource.
+          #
+          #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
+
+          module AvailableNotificationMethod
+            extend Telnyx::Internal::Type::Enum
+
+            EMAIL = :email
+            WEBHOOK = :webhook
+            WEBHOOK_V1 = :webhook_v1
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Identifies the event type
+          #
+          # @see Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook#event_type
+          module EventType
+            extend Telnyx::Internal::Type::Enum
+
+            PORTING_ORDER_DELETED = :"porting_order.deleted"
+            PORTING_ORDER_LOA_UPDATED = :"porting_order.loa_updated"
+            PORTING_ORDER_MESSAGING_CHANGED = :"porting_order.messaging_changed"
+            PORTING_ORDER_STATUS_CHANGED = :"porting_order.status_changed"
+            PORTING_ORDER_SHARING_TOKEN_EXPIRED = :"porting_order.sharing_token_expired"
+            PORTING_ORDER_NEW_COMMENT = :"porting_order.new_comment"
+            PORTING_ORDER_SPLIT = :"porting_order.split"
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # The status of the payload generation.
+          #
+          # @see Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook#payload_status
+          module PayloadStatus
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED = :created
+            COMPLETED = :completed
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
+
+        # @!method self.variants
+        #   @return [Array(Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload, Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload, Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent, Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent, Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent, Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook)]
       end
     end
   end

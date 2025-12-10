@@ -37,7 +37,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::Porting::EventListResponse>]
+        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload, Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload, Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent, Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent, Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent, Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook>]
         #
         # @see Telnyx::Models::Porting::EventListParams
         def list(params = {})

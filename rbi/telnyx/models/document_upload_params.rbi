@@ -11,23 +11,17 @@ module Telnyx
           T.any(Telnyx::DocumentUploadParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(Telnyx::DocumentUploadParams::Document) }
+      attr_reader :document
+
       sig do
-        returns(
-          T.any(
-            Telnyx::DocumentUploadParams::Document::DocServiceDocumentUploadURL,
-            Telnyx::DocumentUploadParams::Document::DocServiceDocumentUploadInline
-          )
-        )
+        params(document: Telnyx::DocumentUploadParams::Document::OrHash).void
       end
-      attr_accessor :document
+      attr_writer :document
 
       sig do
         params(
-          document:
-            T.any(
-              Telnyx::DocumentUploadParams::Document::DocServiceDocumentUploadURL::OrHash,
-              Telnyx::DocumentUploadParams::Document::DocServiceDocumentUploadInline::OrHash
-            ),
+          document: Telnyx::DocumentUploadParams::Document::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -37,11 +31,7 @@ module Telnyx
       sig do
         override.returns(
           {
-            document:
-              T.any(
-                Telnyx::DocumentUploadParams::Document::DocServiceDocumentUploadURL,
-                Telnyx::DocumentUploadParams::Document::DocServiceDocumentUploadInline
-              ),
+            document: Telnyx::DocumentUploadParams::Document,
             request_options: Telnyx::RequestOptions
           }
         )
@@ -49,131 +39,78 @@ module Telnyx
       def to_hash
       end
 
-      module Document
-        extend Telnyx::Internal::Type::Union
-
-        Variants =
+      class Document < Telnyx::Internal::Type::BaseModel
+        OrHash =
           T.type_alias do
             T.any(
-              Telnyx::DocumentUploadParams::Document::DocServiceDocumentUploadURL,
-              Telnyx::DocumentUploadParams::Document::DocServiceDocumentUploadInline
+              Telnyx::DocumentUploadParams::Document,
+              Telnyx::Internal::AnyHash
             )
           end
 
-        class DocServiceDocumentUploadURL < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::DocumentUploadParams::Document::DocServiceDocumentUploadURL,
-                Telnyx::Internal::AnyHash
-              )
-            end
+        # A customer reference string for customer look ups.
+        sig { returns(T.nilable(String)) }
+        attr_reader :customer_reference
 
+        sig { params(customer_reference: String).void }
+        attr_writer :customer_reference
+
+        # Alternatively, instead of the URL you can provide the Base64 encoded contents of
+        # the file you are uploading.
+        sig { returns(T.nilable(String)) }
+        attr_reader :file
+
+        sig { params(file: String).void }
+        attr_writer :file
+
+        # The filename of the document.
+        sig { returns(T.nilable(String)) }
+        attr_reader :filename
+
+        sig { params(filename: String).void }
+        attr_writer :filename
+
+        # If the file is already hosted publicly, you can provide a URL and have the
+        # documents service fetch it for you.
+        sig { returns(T.nilable(String)) }
+        attr_reader :url
+
+        sig { params(url: String).void }
+        attr_writer :url
+
+        sig do
+          params(
+            customer_reference: String,
+            file: String,
+            filename: String,
+            url: String
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # A customer reference string for customer look ups.
+          customer_reference: nil,
+          # Alternatively, instead of the URL you can provide the Base64 encoded contents of
+          # the file you are uploading.
+          file: nil,
+          # The filename of the document.
+          filename: nil,
           # If the file is already hosted publicly, you can provide a URL and have the
           # documents service fetch it for you.
-          sig { returns(String) }
-          attr_accessor :url
-
-          # Optional reference string for customer tracking.
-          sig { returns(T.nilable(String)) }
-          attr_reader :customer_reference
-
-          sig { params(customer_reference: String).void }
-          attr_writer :customer_reference
-
-          # The filename of the document.
-          sig { returns(T.nilable(String)) }
-          attr_reader :filename
-
-          sig { params(filename: String).void }
-          attr_writer :filename
-
-          sig do
-            params(
-              url: String,
-              customer_reference: String,
-              filename: String
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # If the file is already hosted publicly, you can provide a URL and have the
-            # documents service fetch it for you.
-            url:,
-            # Optional reference string for customer tracking.
-            customer_reference: nil,
-            # The filename of the document.
-            filename: nil
-          )
-          end
-
-          sig do
-            override.returns(
-              { url: String, customer_reference: String, filename: String }
-            )
-          end
-          def to_hash
-          end
-        end
-
-        class DocServiceDocumentUploadInline < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::DocumentUploadParams::Document::DocServiceDocumentUploadInline,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          # The Base64 encoded contents of the file you are uploading.
-          sig { returns(String) }
-          attr_accessor :file
-
-          # A customer reference string for customer look ups.
-          sig { returns(T.nilable(String)) }
-          attr_reader :customer_reference
-
-          sig { params(customer_reference: String).void }
-          attr_writer :customer_reference
-
-          # The filename of the document.
-          sig { returns(T.nilable(String)) }
-          attr_reader :filename
-
-          sig { params(filename: String).void }
-          attr_writer :filename
-
-          sig do
-            params(
-              file: String,
-              customer_reference: String,
-              filename: String
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # The Base64 encoded contents of the file you are uploading.
-            file:,
-            # A customer reference string for customer look ups.
-            customer_reference: nil,
-            # The filename of the document.
-            filename: nil
-          )
-          end
-
-          sig do
-            override.returns(
-              { file: String, customer_reference: String, filename: String }
-            )
-          end
-          def to_hash
-          end
+          url: nil
+        )
         end
 
         sig do
           override.returns(
-            T::Array[Telnyx::DocumentUploadParams::Document::Variants]
+            {
+              customer_reference: String,
+              file: String,
+              filename: String,
+              url: String
+            }
           )
         end
-        def self.variants
+        def to_hash
         end
       end
     end

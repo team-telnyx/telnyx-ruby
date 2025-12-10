@@ -113,10 +113,7 @@ class Telnyx::Test::Resources::DocumentsTest < Telnyx::Test::ResourceTest
   def test_upload_required_params
     skip("Prism tests are disabled")
 
-    response =
-      @telnyx.documents.upload(
-        document: {url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"}
-      )
+    response = @telnyx.documents.upload(document: {})
 
     assert_pattern do
       response => Telnyx::Models::DocumentUploadResponse
@@ -132,10 +129,7 @@ class Telnyx::Test::Resources::DocumentsTest < Telnyx::Test::ResourceTest
   def test_upload_json_required_params
     skip("Prism tests are disabled")
 
-    response =
-      @telnyx.documents.upload_json(
-        document: {url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"}
-      )
+    response = @telnyx.documents.upload_json(document: {})
 
     assert_pattern do
       response => Telnyx::Models::DocumentUploadJsonResponse

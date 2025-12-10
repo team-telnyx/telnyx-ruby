@@ -111,11 +111,7 @@ module Telnyx
       # 30 minutes or they will be automatically deleted.
       sig do
         params(
-          document:
-            T.any(
-              Telnyx::DocumentUploadParams::Document::DocServiceDocumentUploadURL::OrHash,
-              Telnyx::DocumentUploadParams::Document::DocServiceDocumentUploadInline::OrHash
-            ),
+          document: Telnyx::DocumentUploadParams::Document::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::DocumentUploadResponse)
       end
@@ -126,11 +122,7 @@ module Telnyx
       # 30 minutes or they will be automatically deleted.
       sig do
         params(
-          document:
-            T.any(
-              Telnyx::DocumentUploadJsonParams::Document::DocServiceDocumentUploadURL::OrHash,
-              Telnyx::DocumentUploadJsonParams::Document::DocServiceDocumentUploadInline::OrHash
-            ),
+          document: Telnyx::DocumentUploadJsonParams::Document::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::DocumentUploadJsonResponse)
       end
