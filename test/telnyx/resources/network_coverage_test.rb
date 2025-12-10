@@ -9,21 +9,13 @@ class Telnyx::Test::Resources::NetworkCoverageTest < Telnyx::Test::ResourceTest
     response = @telnyx.network_coverage.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Models::NetworkCoverageListResponse
+      response => Telnyx::Models::NetworkCoverageListResponse
     end
 
     assert_pattern do
-      row => {
-        available_services: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AvailableService]) | nil,
-        location: Telnyx::Models::NetworkCoverageListResponse::Location | nil,
-        record_type: String | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::NetworkCoverageListResponse::Data]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

@@ -1,32 +1,6 @@
 module Telnyx
   module Resources
     class PhoneNumberAssignmentByProfile
-      def assign: (
-        messaging_profile_id: String,
-        ?campaign_id: String,
-        ?tcr_campaign_id: String,
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::PhoneNumberAssignmentByProfileAssignResponse
-
-      def list_phone_number_status: (
-        String task_id,
-        ?page: Integer,
-        ?records_per_page: Integer,
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::PhoneNumberAssignmentByProfileListPhoneNumberStatusResponse
-
-      def retrieve_phone_number_status: (
-        String task_id,
-        ?page: Integer,
-        ?records_per_page: Integer,
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusResponse
-
-      def retrieve_status: (
-        String task_id,
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::PhoneNumberAssignmentByProfileRetrieveStatusResponse
-
       def initialize: (client: Telnyx::Client) -> void
     end
   end

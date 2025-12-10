@@ -64,7 +64,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::MessagingHostedNumberOrder>]
+      # @return [Telnyx::Models::MessagingHostedNumberOrderListResponse]
       #
       # @see Telnyx::Models::MessagingHostedNumberOrderListParams
       def list(params = {})
@@ -73,8 +73,7 @@ module Telnyx
           method: :get,
           path: "messaging_hosted_number_orders",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
-          model: Telnyx::MessagingHostedNumberOrder,
+          model: Telnyx::Models::MessagingHostedNumberOrderListResponse,
           options: options
         )
       end

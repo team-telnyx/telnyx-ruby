@@ -62,7 +62,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PublicInternetGatewayListResponse>]
+      # @return [Telnyx::Models::PublicInternetGatewayListResponse]
       #
       # @see Telnyx::Models::PublicInternetGatewayListParams
       def list(params = {})
@@ -71,7 +71,6 @@ module Telnyx
           method: :get,
           path: "public_internet_gateways",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::PublicInternetGatewayListResponse,
           options: options
         )

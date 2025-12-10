@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::DynamicEmergencyAddresses#list
     class DynamicEmergencyAddress < Telnyx::Internal::Type::BaseModel
       # @!attribute administrative_area
       #

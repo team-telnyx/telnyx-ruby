@@ -5,23 +5,189 @@ module Telnyx
         module UsageReports
           type number_lookup_retrieve_response =
             {
-              data: Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse
+              data: Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data
             }
 
           class NumberLookupRetrieveResponse < Telnyx::Internal::Type::BaseModel
-            attr_reader data: Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse?
+            attr_reader data: Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data?
 
             def data=: (
-              Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse
-            ) -> Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse
+              Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data
+            ) -> Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data
 
             def initialize: (
-              ?data: Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse
+              ?data: Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data
             ) -> void
 
             def to_hash: -> {
-              data: Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse
+              data: Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data
             }
+
+            type data =
+              {
+                id: String,
+                aggregation_type: String,
+                created_at: Time,
+                end_date: Date,
+                managed_accounts: ::Array[String],
+                record_type: String,
+                report_url: String,
+                result: ::Array[Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data::Result],
+                start_date: Date,
+                status: String,
+                updated_at: Time
+              }
+
+            class Data < Telnyx::Internal::Type::BaseModel
+              attr_reader id: String?
+
+              def id=: (String) -> String
+
+              attr_reader aggregation_type: String?
+
+              def aggregation_type=: (String) -> String
+
+              attr_reader created_at: Time?
+
+              def created_at=: (Time) -> Time
+
+              attr_reader end_date: Date?
+
+              def end_date=: (Date) -> Date
+
+              attr_reader managed_accounts: ::Array[String]?
+
+              def managed_accounts=: (::Array[String]) -> ::Array[String]
+
+              attr_reader record_type: String?
+
+              def record_type=: (String) -> String
+
+              attr_reader report_url: String?
+
+              def report_url=: (String) -> String
+
+              attr_reader result: ::Array[Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data::Result]?
+
+              def result=: (
+                ::Array[Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data::Result]
+              ) -> ::Array[Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data::Result]
+
+              attr_reader start_date: Date?
+
+              def start_date=: (Date) -> Date
+
+              attr_reader status: String?
+
+              def status=: (String) -> String
+
+              attr_reader updated_at: Time?
+
+              def updated_at=: (Time) -> Time
+
+              def initialize: (
+                ?id: String,
+                ?aggregation_type: String,
+                ?created_at: Time,
+                ?end_date: Date,
+                ?managed_accounts: ::Array[String],
+                ?record_type: String,
+                ?report_url: String,
+                ?result: ::Array[Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data::Result],
+                ?start_date: Date,
+                ?status: String,
+                ?updated_at: Time
+              ) -> void
+
+              def to_hash: -> {
+                id: String,
+                aggregation_type: String,
+                created_at: Time,
+                end_date: Date,
+                managed_accounts: ::Array[String],
+                record_type: String,
+                report_url: String,
+                result: ::Array[Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data::Result],
+                start_date: Date,
+                status: String,
+                updated_at: Time
+              }
+
+              type result =
+                {
+                  aggregations: ::Array[Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data::Result::Aggregation],
+                  record_type: String,
+                  user_id: String
+                }
+
+              class Result < Telnyx::Internal::Type::BaseModel
+                attr_reader aggregations: ::Array[Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data::Result::Aggregation]?
+
+                def aggregations=: (
+                  ::Array[Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data::Result::Aggregation]
+                ) -> ::Array[Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data::Result::Aggregation]
+
+                attr_reader record_type: String?
+
+                def record_type=: (String) -> String
+
+                attr_reader user_id: String?
+
+                def user_id=: (String) -> String
+
+                def initialize: (
+                  ?aggregations: ::Array[Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data::Result::Aggregation],
+                  ?record_type: String,
+                  ?user_id: String
+                ) -> void
+
+                def to_hash: -> {
+                  aggregations: ::Array[Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data::Result::Aggregation],
+                  record_type: String,
+                  user_id: String
+                }
+
+                type aggregation =
+                  {
+                    currency: String,
+                    total_cost: Float,
+                    total_dips: Integer,
+                    type: String
+                  }
+
+                class Aggregation < Telnyx::Internal::Type::BaseModel
+                  attr_reader currency: String?
+
+                  def currency=: (String) -> String
+
+                  attr_reader total_cost: Float?
+
+                  def total_cost=: (Float) -> Float
+
+                  attr_reader total_dips: Integer?
+
+                  def total_dips=: (Integer) -> Integer
+
+                  attr_reader type: String?
+
+                  def type=: (String) -> String
+
+                  def initialize: (
+                    ?currency: String,
+                    ?total_cost: Float,
+                    ?total_dips: Integer,
+                    ?type: String
+                  ) -> void
+
+                  def to_hash: -> {
+                    currency: String,
+                    total_cost: Float,
+                    total_dips: Integer,
+                    type: String
+                  }
+                end
+              end
+            end
           end
         end
       end

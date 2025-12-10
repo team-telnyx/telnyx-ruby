@@ -8,28 +8,28 @@ module Telnyx
           class StandardPaginationMeta < Telnyx::Internal::Type::BaseModel
             # @!attribute page_number
             #
-            #   @return [Integer]
-            required :page_number, Integer
-
-            # @!attribute total_pages
-            #
-            #   @return [Integer]
-            required :total_pages, Integer
+            #   @return [Integer, nil]
+            optional :page_number, Integer
 
             # @!attribute page_size
             #
             #   @return [Integer, nil]
             optional :page_size, Integer
 
+            # @!attribute total_pages
+            #
+            #   @return [Integer, nil]
+            optional :total_pages, Integer
+
             # @!attribute total_results
             #
             #   @return [Integer, nil]
             optional :total_results, Integer
 
-            # @!method initialize(page_number:, total_pages:, page_size: nil, total_results: nil)
+            # @!method initialize(page_number: nil, page_size: nil, total_pages: nil, total_results: nil)
             #   @param page_number [Integer]
-            #   @param total_pages [Integer]
             #   @param page_size [Integer]
+            #   @param total_pages [Integer]
             #   @param total_results [Integer]
           end
         end

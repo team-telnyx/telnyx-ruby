@@ -57,30 +57,13 @@ class Telnyx::Test::Resources::RoomsTest < Telnyx::Test::ResourceTest
     response = @telnyx.rooms.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Room
+      response => Telnyx::Models::RoomListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        active_session_id: String | nil,
-        created_at: Time | nil,
-        enable_recording: Telnyx::Internal::Type::Boolean | nil,
-        max_participants: Integer | nil,
-        record_type: String | nil,
-        sessions: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::RoomSession]) | nil,
-        unique_name: String | nil,
-        updated_at: Time | nil,
-        webhook_event_failover_url: String | nil,
-        webhook_event_url: String | nil,
-        webhook_timeout_secs: Integer | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Room]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

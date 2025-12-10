@@ -58,9 +58,7 @@ module Telnyx
               Telnyx::ExternalConnections::PhoneNumberListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultPagination[
-              Telnyx::ExternalConnections::ExternalConnectionPhoneNumber
-            ]
+            Telnyx::Models::ExternalConnections::PhoneNumberListResponse
           )
         end
         def list(

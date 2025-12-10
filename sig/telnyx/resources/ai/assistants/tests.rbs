@@ -39,12 +39,11 @@ module Telnyx
 
           def list: (
             ?destination: String,
-            ?page_number: Integer,
-            ?page_size: Integer,
+            ?page: Telnyx::AI::Assistants::TestListParams::Page,
             ?telnyx_conversation_channel: String,
             ?test_suite: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AI::Assistants::AssistantTest]
+          ) -> Telnyx::Models::AI::Assistants::TestListResponse
 
           def delete: (
             String test_id,

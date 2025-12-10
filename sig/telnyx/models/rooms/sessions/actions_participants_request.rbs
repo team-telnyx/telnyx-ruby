@@ -29,24 +29,14 @@ module Telnyx
             participants: Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::participants
           }
 
-          type participants =
-            Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::Participants::all_participants
-            | ::Array[String]
+          type participants = :all | ::Array[String]
 
           module Participants
             extend Telnyx::Internal::Type::Union
 
-            type all_participants = :all
-
-            module AllParticipants
-              extend Telnyx::Internal::Type::Enum
-
-              ALL: :all
-
-              def self?.values: -> ::Array[Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::Participants::all_participants]
-            end
-
             def self?.variants: -> ::Array[Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::participants]
+
+            ALL: :all
 
             StringArray: Telnyx::Internal::Type::Converter
           end

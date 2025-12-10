@@ -42,11 +42,7 @@ module Telnyx
         params(
           page: Telnyx::GlobalIPListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[
-            Telnyx::Models::GlobalIPListResponse
-          ]
-        )
+        ).returns(Telnyx::Models::GlobalIPListResponse)
       end
       def list(
         # Consolidated page parameter (deepObject style). Originally: page[number],

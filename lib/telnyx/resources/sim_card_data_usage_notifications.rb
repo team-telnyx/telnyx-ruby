@@ -49,9 +49,9 @@ module Telnyx
 
       # Updates information for a SIM Card Data Usage Notification.
       #
-      # @overload update(sim_card_data_usage_notification_id, sim_card_id: nil, threshold: nil, request_options: {})
+      # @overload update(id, sim_card_id: nil, threshold: nil, request_options: {})
       #
-      # @param sim_card_data_usage_notification_id [String] Identifies the resource.
+      # @param id [String] Identifies the resource.
       #
       # @param sim_card_id [String] The identification UUID of the related SIM card resource.
       #
@@ -62,11 +62,11 @@ module Telnyx
       # @return [Telnyx::Models::SimCardDataUsageNotificationUpdateResponse]
       #
       # @see Telnyx::Models::SimCardDataUsageNotificationUpdateParams
-      def update(sim_card_data_usage_notification_id, params = {})
+      def update(id, params = {})
         parsed, options = Telnyx::SimCardDataUsageNotificationUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["sim_card_data_usage_notifications/%1$s", sim_card_data_usage_notification_id],
+          path: ["sim_card_data_usage_notifications/%1$s", id],
           body: parsed,
           model: Telnyx::Models::SimCardDataUsageNotificationUpdateResponse,
           options: options
@@ -86,7 +86,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::SimCardDataUsageNotification>]
+      # @return [Telnyx::Models::SimCardDataUsageNotificationListResponse]
       #
       # @see Telnyx::Models::SimCardDataUsageNotificationListParams
       def list(params = {})
@@ -99,8 +99,7 @@ module Telnyx
             page_number: "page[number]",
             page_size: "page[size]"
           ),
-          page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::SimCardDataUsageNotification,
+          model: Telnyx::Models::SimCardDataUsageNotificationListResponse,
           options: options
         )
       end

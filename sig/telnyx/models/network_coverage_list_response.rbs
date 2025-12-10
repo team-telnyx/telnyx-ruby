@@ -2,85 +2,113 @@ module Telnyx
   module Models
     type network_coverage_list_response =
       {
-        available_services: ::Array[Telnyx::Models::available_service],
-        location: Telnyx::Models::NetworkCoverageListResponse::Location,
-        record_type: String
+        data: ::Array[Telnyx::Models::NetworkCoverageListResponse::Data],
+        meta: Telnyx::PaginationMeta
       }
 
     class NetworkCoverageListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader available_services: ::Array[Telnyx::Models::available_service]?
+      attr_reader data: ::Array[Telnyx::Models::NetworkCoverageListResponse::Data]?
 
-      def available_services=: (
-        ::Array[Telnyx::Models::available_service]
-      ) -> ::Array[Telnyx::Models::available_service]
+      def data=: (
+        ::Array[Telnyx::Models::NetworkCoverageListResponse::Data]
+      ) -> ::Array[Telnyx::Models::NetworkCoverageListResponse::Data]
 
-      attr_reader location: Telnyx::Models::NetworkCoverageListResponse::Location?
+      attr_reader meta: Telnyx::PaginationMeta?
 
-      def location=: (
-        Telnyx::Models::NetworkCoverageListResponse::Location
-      ) -> Telnyx::Models::NetworkCoverageListResponse::Location
-
-      attr_reader record_type: String?
-
-      def record_type=: (String) -> String
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
 
       def initialize: (
-        ?available_services: ::Array[Telnyx::Models::available_service],
-        ?location: Telnyx::Models::NetworkCoverageListResponse::Location,
-        ?record_type: String
+        ?data: ::Array[Telnyx::Models::NetworkCoverageListResponse::Data],
+        ?meta: Telnyx::PaginationMeta
       ) -> void
 
       def to_hash: -> {
-        available_services: ::Array[Telnyx::Models::available_service],
-        location: Telnyx::Models::NetworkCoverageListResponse::Location,
-        record_type: String
+        data: ::Array[Telnyx::Models::NetworkCoverageListResponse::Data],
+        meta: Telnyx::PaginationMeta
       }
 
-      type location =
+      type data =
         {
-          code: String,
-          name: String,
-          pop: String,
-          region: String,
-          site: String
+          available_services: ::Array[Telnyx::Models::available_service],
+          location: Telnyx::Models::NetworkCoverageListResponse::Data::Location,
+          record_type: String
         }
 
-      class Location < Telnyx::Internal::Type::BaseModel
-        attr_reader code: String?
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader available_services: ::Array[Telnyx::Models::available_service]?
 
-        def code=: (String) -> String
+        def available_services=: (
+          ::Array[Telnyx::Models::available_service]
+        ) -> ::Array[Telnyx::Models::available_service]
 
-        attr_reader name: String?
+        attr_reader location: Telnyx::Models::NetworkCoverageListResponse::Data::Location?
 
-        def name=: (String) -> String
+        def location=: (
+          Telnyx::Models::NetworkCoverageListResponse::Data::Location
+        ) -> Telnyx::Models::NetworkCoverageListResponse::Data::Location
 
-        attr_reader pop: String?
+        attr_reader record_type: String?
 
-        def pop=: (String) -> String
-
-        attr_reader region: String?
-
-        def region=: (String) -> String
-
-        attr_reader site: String?
-
-        def site=: (String) -> String
+        def record_type=: (String) -> String
 
         def initialize: (
-          ?code: String,
-          ?name: String,
-          ?pop: String,
-          ?region: String,
-          ?site: String
+          ?available_services: ::Array[Telnyx::Models::available_service],
+          ?location: Telnyx::Models::NetworkCoverageListResponse::Data::Location,
+          ?record_type: String
         ) -> void
 
         def to_hash: -> {
-          code: String,
-          name: String,
-          pop: String,
-          region: String,
-          site: String
+          available_services: ::Array[Telnyx::Models::available_service],
+          location: Telnyx::Models::NetworkCoverageListResponse::Data::Location,
+          record_type: String
         }
+
+        type location =
+          {
+            code: String,
+            name: String,
+            pop: String,
+            region: String,
+            site: String
+          }
+
+        class Location < Telnyx::Internal::Type::BaseModel
+          attr_reader code: String?
+
+          def code=: (String) -> String
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader pop: String?
+
+          def pop=: (String) -> String
+
+          attr_reader region: String?
+
+          def region=: (String) -> String
+
+          attr_reader site: String?
+
+          def site=: (String) -> String
+
+          def initialize: (
+            ?code: String,
+            ?name: String,
+            ?pop: String,
+            ?region: String,
+            ?site: String
+          ) -> void
+
+          def to_hash: -> {
+            code: String,
+            name: String,
+            pop: String,
+            region: String,
+            site: String
+          }
+        end
       end
     end
   end

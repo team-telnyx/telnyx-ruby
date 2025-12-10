@@ -3,8 +3,7 @@ module Telnyx
     type access_ip_address_list_params =
       {
         filter: Telnyx::AccessIPAddressListParams::Filter,
-        page_number: Integer,
-        page_size: Integer
+        page: Telnyx::AccessIPAddressListParams::Page
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -18,25 +17,21 @@ module Telnyx
         Telnyx::AccessIPAddressListParams::Filter
       ) -> Telnyx::AccessIPAddressListParams::Filter
 
-      attr_reader page_number: Integer?
+      attr_reader page: Telnyx::AccessIPAddressListParams::Page?
 
-      def page_number=: (Integer) -> Integer
-
-      attr_reader page_size: Integer?
-
-      def page_size=: (Integer) -> Integer
+      def page=: (
+        Telnyx::AccessIPAddressListParams::Page
+      ) -> Telnyx::AccessIPAddressListParams::Page
 
       def initialize: (
         ?filter: Telnyx::AccessIPAddressListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::AccessIPAddressListParams::Page,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         filter: Telnyx::AccessIPAddressListParams::Filter,
-        page_number: Integer,
-        page_size: Integer,
+        page: Telnyx::AccessIPAddressListParams::Page,
         request_options: Telnyx::RequestOptions
       }
 
@@ -112,6 +107,22 @@ module Telnyx
 
           def self?.variants: -> ::Array[Telnyx::Models::AccessIPAddressListParams::Filter::created_at]
         end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
       end
     end
   end

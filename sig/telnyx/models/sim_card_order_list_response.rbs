@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    type sim_card_order_list_response =
+      { data: ::Array[Telnyx::SimCardOrder], meta: Telnyx::PaginationMeta }
+
+    class SimCardOrderListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::SimCardOrder]?
+
+      def data=: (
+        ::Array[Telnyx::SimCardOrder]
+      ) -> ::Array[Telnyx::SimCardOrder]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::SimCardOrder],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::SimCardOrder],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

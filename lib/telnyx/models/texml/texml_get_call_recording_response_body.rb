@@ -119,8 +119,8 @@ module Telnyx
         module Channels
           extend Telnyx::Internal::Type::Enum
 
-          CHANNEL_1 = 1
-          CHANNEL_2 = 2
+          CHANNELS_1 = 1
+          CHANNELS_2 = 2
 
           # @!method self.values
           #   @return [Array<Integer>]

@@ -7,22 +7,22 @@ module Telnyx
       # can be created.
       sig do
         params(
+          network_id: String,
           region_code: String,
           enable_sip_trunking: T::Boolean,
           name: String,
-          network_id: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::WireguardInterfaceCreateResponse)
       end
       def create(
+        # The id of the network associated with the interface.
+        network_id:,
         # The region the interface should be deployed to.
         region_code:,
         # Enable SIP traffic forwarding over VPN interface.
         enable_sip_trunking: nil,
         # A user specified name for the interface.
         name: nil,
-        # The id of the network associated with the interface.
-        network_id: nil,
         request_options: {}
       )
       end
@@ -47,11 +47,7 @@ module Telnyx
           filter: Telnyx::WireguardInterfaceListParams::Filter::OrHash,
           page: Telnyx::WireguardInterfaceListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[
-            Telnyx::Models::WireguardInterfaceListResponse
-          ]
-        )
+        ).returns(Telnyx::Models::WireguardInterfaceListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[network_id]

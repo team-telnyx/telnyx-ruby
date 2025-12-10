@@ -19,7 +19,7 @@ module Telnyx
       ) -> Telnyx::Models::PhoneNumberRetrieveResponse
 
       def update: (
-        String phone_number_id,
+        String id,
         ?billing_group_id: String,
         ?connection_id: String,
         ?customer_reference: String,
@@ -34,7 +34,7 @@ module Telnyx
         ?page: Telnyx::PhoneNumberListParams::Page,
         ?sort: Telnyx::Models::PhoneNumberListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::PhoneNumberDetailed]
+      ) -> Telnyx::Models::PhoneNumberListResponse
 
       def delete: (
         String id,
@@ -48,7 +48,7 @@ module Telnyx
         ?page: Telnyx::PhoneNumberSlimListParams::Page,
         ?sort: Telnyx::Models::PhoneNumberSlimListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::PhoneNumberSlimListResponse]
+      ) -> Telnyx::Models::PhoneNumberSlimListResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

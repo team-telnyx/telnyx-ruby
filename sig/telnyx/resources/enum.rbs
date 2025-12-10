@@ -1,0 +1,7 @@
+module Telnyx
+  module Resources
+    class Enum
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

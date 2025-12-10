@@ -9,12 +9,11 @@ module Telnyx
         end
 
       # Current page number
-      sig { returns(Integer) }
-      attr_accessor :page_number
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :page_number
 
-      # Total number of pages
-      sig { returns(Integer) }
-      attr_accessor :total_pages
+      sig { params(page_number: Integer).void }
+      attr_writer :page_number
 
       # Number of items per page
       sig { returns(T.nilable(Integer)) }
@@ -22,6 +21,13 @@ module Telnyx
 
       sig { params(page_size: Integer).void }
       attr_writer :page_size
+
+      # Total number of pages
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :total_pages
+
+      sig { params(total_pages: Integer).void }
+      attr_writer :total_pages
 
       # Total number of results
       sig { returns(T.nilable(Integer)) }
@@ -33,18 +39,18 @@ module Telnyx
       sig do
         params(
           page_number: Integer,
-          total_pages: Integer,
           page_size: Integer,
+          total_pages: Integer,
           total_results: Integer
         ).returns(T.attached_class)
       end
       def self.new(
         # Current page number
-        page_number:,
-        # Total number of pages
-        total_pages:,
+        page_number: nil,
         # Number of items per page
         page_size: nil,
+        # Total number of pages
+        total_pages: nil,
         # Total number of results
         total_results: nil
       )
@@ -54,8 +60,8 @@ module Telnyx
         override.returns(
           {
             page_number: Integer,
-            total_pages: Integer,
             page_size: Integer,
+            total_pages: Integer,
             total_results: Integer
           }
         )

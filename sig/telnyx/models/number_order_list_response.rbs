@@ -2,136 +2,164 @@ module Telnyx
   module Models
     type number_order_list_response =
       {
-        id: String,
-        billing_group_id: String,
-        connection_id: String,
-        created_at: Time,
-        customer_reference: String,
-        messaging_profile_id: String,
-        phone_numbers: ::Array[Telnyx::Models::NumberOrderListResponse::PhoneNumber],
-        phone_numbers_count: Integer,
-        record_type: String,
-        requirements_met: bool,
-        status: Telnyx::Models::NumberOrderListResponse::status,
-        sub_number_orders_ids: ::Array[String],
-        updated_at: Time
+        data: ::Array[Telnyx::Models::NumberOrderListResponse::Data],
+        meta: Telnyx::PaginationMeta
       }
 
     class NumberOrderListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader billing_group_id: String?
+      attr_reader data: ::Array[Telnyx::Models::NumberOrderListResponse::Data]?
 
-      def billing_group_id=: (String) -> String
+      def data=: (
+        ::Array[Telnyx::Models::NumberOrderListResponse::Data]
+      ) -> ::Array[Telnyx::Models::NumberOrderListResponse::Data]
 
-      attr_reader connection_id: String?
+      attr_reader meta: Telnyx::PaginationMeta?
 
-      def connection_id=: (String) -> String
-
-      attr_reader customer_reference: String?
-
-      def customer_reference=: (String) -> String
-
-      attr_reader messaging_profile_id: String?
-
-      def messaging_profile_id=: (String) -> String
-
-      attr_reader phone_numbers: ::Array[Telnyx::Models::NumberOrderListResponse::PhoneNumber]?
-
-      def phone_numbers=: (
-        ::Array[Telnyx::Models::NumberOrderListResponse::PhoneNumber]
-      ) -> ::Array[Telnyx::Models::NumberOrderListResponse::PhoneNumber]
-
-      attr_reader sub_number_orders_ids: ::Array[String]?
-
-      def sub_number_orders_ids=: (::Array[String]) -> ::Array[String]
-
-      attr_reader id: String?
-
-      def id=: (String) -> String
-
-      attr_reader created_at: Time?
-
-      def created_at=: (Time) -> Time
-
-      attr_reader phone_numbers_count: Integer?
-
-      def phone_numbers_count=: (Integer) -> Integer
-
-      attr_reader record_type: String?
-
-      def record_type=: (String) -> String
-
-      attr_reader requirements_met: bool?
-
-      def requirements_met=: (bool) -> bool
-
-      attr_reader status: Telnyx::Models::NumberOrderListResponse::status?
-
-      def status=: (
-        Telnyx::Models::NumberOrderListResponse::status
-      ) -> Telnyx::Models::NumberOrderListResponse::status
-
-      attr_reader updated_at: Time?
-
-      def updated_at=: (Time) -> Time
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
 
       def initialize: (
-        ?id: String,
-        ?billing_group_id: String,
-        ?connection_id: String,
-        ?created_at: Time,
-        ?customer_reference: String,
-        ?messaging_profile_id: String,
-        ?phone_numbers: ::Array[Telnyx::Models::NumberOrderListResponse::PhoneNumber],
-        ?phone_numbers_count: Integer,
-        ?record_type: String,
-        ?requirements_met: bool,
-        ?status: Telnyx::Models::NumberOrderListResponse::status,
-        ?sub_number_orders_ids: ::Array[String],
-        ?updated_at: Time
+        ?data: ::Array[Telnyx::Models::NumberOrderListResponse::Data],
+        ?meta: Telnyx::PaginationMeta
       ) -> void
 
       def to_hash: -> {
-        id: String,
-        billing_group_id: String,
-        connection_id: String,
-        created_at: Time,
-        customer_reference: String,
-        messaging_profile_id: String,
-        phone_numbers: ::Array[Telnyx::Models::NumberOrderListResponse::PhoneNumber],
-        phone_numbers_count: Integer,
-        record_type: String,
-        requirements_met: bool,
-        status: Telnyx::Models::NumberOrderListResponse::status,
-        sub_number_orders_ids: ::Array[String],
-        updated_at: Time
+        data: ::Array[Telnyx::Models::NumberOrderListResponse::Data],
+        meta: Telnyx::PaginationMeta
       }
 
-      type phone_number = { id: String, phone_number: String }
+      type data =
+        {
+          id: String,
+          billing_group_id: String,
+          connection_id: String,
+          created_at: Time,
+          customer_reference: String,
+          messaging_profile_id: String,
+          phone_numbers: ::Array[Telnyx::Models::NumberOrderListResponse::Data::PhoneNumber],
+          phone_numbers_count: Integer,
+          record_type: String,
+          requirements_met: bool,
+          status: Telnyx::Models::NumberOrderListResponse::Data::status,
+          sub_number_orders_ids: ::Array[String],
+          updated_at: Time
+        }
 
-      class PhoneNumber < Telnyx::Internal::Type::BaseModel
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader billing_group_id: String?
+
+        def billing_group_id=: (String) -> String
+
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader customer_reference: String?
+
+        def customer_reference=: (String) -> String
+
+        attr_reader messaging_profile_id: String?
+
+        def messaging_profile_id=: (String) -> String
+
+        attr_reader phone_numbers: ::Array[Telnyx::Models::NumberOrderListResponse::Data::PhoneNumber]?
+
+        def phone_numbers=: (
+          ::Array[Telnyx::Models::NumberOrderListResponse::Data::PhoneNumber]
+        ) -> ::Array[Telnyx::Models::NumberOrderListResponse::Data::PhoneNumber]
+
+        attr_reader sub_number_orders_ids: ::Array[String]?
+
+        def sub_number_orders_ids=: (::Array[String]) -> ::Array[String]
+
         attr_reader id: String?
 
         def id=: (String) -> String
 
-        attr_reader phone_number: String?
+        attr_reader created_at: Time?
 
-        def phone_number=: (String) -> String
+        def created_at=: (Time) -> Time
 
-        def initialize: (?id: String, ?phone_number: String) -> void
+        attr_reader phone_numbers_count: Integer?
 
-        def to_hash: -> { id: String, phone_number: String }
-      end
+        def phone_numbers_count=: (Integer) -> Integer
 
-      type status = :pending | :success | :failure
+        attr_reader record_type: String?
 
-      module Status
-        extend Telnyx::Internal::Type::Enum
+        def record_type=: (String) -> String
 
-        PENDING: :pending
-        SUCCESS: :success
-        FAILURE: :failure
+        attr_reader requirements_met: bool?
 
-        def self?.values: -> ::Array[Telnyx::Models::NumberOrderListResponse::status]
+        def requirements_met=: (bool) -> bool
+
+        attr_reader status: Telnyx::Models::NumberOrderListResponse::Data::status?
+
+        def status=: (
+          Telnyx::Models::NumberOrderListResponse::Data::status
+        ) -> Telnyx::Models::NumberOrderListResponse::Data::status
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        def initialize: (
+          ?id: String,
+          ?billing_group_id: String,
+          ?connection_id: String,
+          ?created_at: Time,
+          ?customer_reference: String,
+          ?messaging_profile_id: String,
+          ?phone_numbers: ::Array[Telnyx::Models::NumberOrderListResponse::Data::PhoneNumber],
+          ?phone_numbers_count: Integer,
+          ?record_type: String,
+          ?requirements_met: bool,
+          ?status: Telnyx::Models::NumberOrderListResponse::Data::status,
+          ?sub_number_orders_ids: ::Array[String],
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          billing_group_id: String,
+          connection_id: String,
+          created_at: Time,
+          customer_reference: String,
+          messaging_profile_id: String,
+          phone_numbers: ::Array[Telnyx::Models::NumberOrderListResponse::Data::PhoneNumber],
+          phone_numbers_count: Integer,
+          record_type: String,
+          requirements_met: bool,
+          status: Telnyx::Models::NumberOrderListResponse::Data::status,
+          sub_number_orders_ids: ::Array[String],
+          updated_at: Time
+        }
+
+        type phone_number = { id: String, phone_number: String }
+
+        class PhoneNumber < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          def initialize: (?id: String, ?phone_number: String) -> void
+
+          def to_hash: -> { id: String, phone_number: String }
+        end
+
+        type status = :pending | :success | :failure
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          SUCCESS: :success
+          FAILURE: :failure
+
+          def self?.values: -> ::Array[Telnyx::Models::NumberOrderListResponse::Data::status]
+        end
       end
     end
   end

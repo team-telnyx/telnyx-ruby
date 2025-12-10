@@ -3,8 +3,7 @@ module Telnyx
     type detail_record_list_params =
       {
         filter: Telnyx::DetailRecordListParams::Filter,
-        page_number: Integer,
-        page_size: Integer,
+        page: Telnyx::DetailRecordListParams::Page,
         sort: ::Array[String]
       }
       & Telnyx::Internal::Type::request_parameters
@@ -19,13 +18,11 @@ module Telnyx
         Telnyx::DetailRecordListParams::Filter
       ) -> Telnyx::DetailRecordListParams::Filter
 
-      attr_reader page_number: Integer?
+      attr_reader page: Telnyx::DetailRecordListParams::Page?
 
-      def page_number=: (Integer) -> Integer
-
-      attr_reader page_size: Integer?
-
-      def page_size=: (Integer) -> Integer
+      def page=: (
+        Telnyx::DetailRecordListParams::Page
+      ) -> Telnyx::DetailRecordListParams::Page
 
       attr_reader sort: ::Array[String]?
 
@@ -33,16 +30,14 @@ module Telnyx
 
       def initialize: (
         ?filter: Telnyx::DetailRecordListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::DetailRecordListParams::Page,
         ?sort: ::Array[String],
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         filter: Telnyx::DetailRecordListParams::Filter,
-        page_number: Integer,
-        page_size: Integer,
+        page: Telnyx::DetailRecordListParams::Page,
         sort: ::Array[String],
         request_options: Telnyx::RequestOptions
       }
@@ -149,6 +144,22 @@ module Telnyx
 
           def self?.values: -> ::Array[Telnyx::Models::DetailRecordListParams::Filter::date_range]
         end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
       end
     end
   end

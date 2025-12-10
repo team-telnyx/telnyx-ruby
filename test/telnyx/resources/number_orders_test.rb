@@ -57,31 +57,13 @@ class Telnyx::Test::Resources::NumberOrdersTest < Telnyx::Test::ResourceTest
     response = @telnyx.number_orders.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Models::NumberOrderListResponse
+      response => Telnyx::Models::NumberOrderListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        billing_group_id: String | nil,
-        connection_id: String | nil,
-        created_at: Time | nil,
-        customer_reference: String | nil,
-        messaging_profile_id: String | nil,
-        phone_numbers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::NumberOrderListResponse::PhoneNumber]) | nil,
-        phone_numbers_count: Integer | nil,
-        record_type: String | nil,
-        requirements_met: Telnyx::Internal::Type::Boolean | nil,
-        status: Telnyx::Models::NumberOrderListResponse::Status | nil,
-        sub_number_orders_ids: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
-        updated_at: Time | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::NumberOrderListResponse::Data]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

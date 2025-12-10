@@ -23,17 +23,19 @@ module Telnyx
           sig { params(destination: String).void }
           attr_writer :destination
 
-          sig { returns(T.nilable(Integer)) }
-          attr_reader :page_number
+          # Consolidated page parameter (deepObject style). Originally: page[size],
+          # page[number]
+          sig do
+            returns(T.nilable(Telnyx::AI::Assistants::TestListParams::Page))
+          end
+          attr_reader :page
 
-          sig { params(page_number: Integer).void }
-          attr_writer :page_number
-
-          sig { returns(T.nilable(Integer)) }
-          attr_reader :page_size
-
-          sig { params(page_size: Integer).void }
-          attr_writer :page_size
+          sig do
+            params(
+              page: Telnyx::AI::Assistants::TestListParams::Page::OrHash
+            ).void
+          end
+          attr_writer :page
 
           # Filter tests by communication channel (e.g., 'web_chat', 'sms')
           sig { returns(T.nilable(String)) }
@@ -52,8 +54,7 @@ module Telnyx
           sig do
             params(
               destination: String,
-              page_number: Integer,
-              page_size: Integer,
+              page: Telnyx::AI::Assistants::TestListParams::Page::OrHash,
               telnyx_conversation_channel: String,
               test_suite: String,
               request_options: Telnyx::RequestOptions::OrHash
@@ -62,8 +63,9 @@ module Telnyx
           def self.new(
             # Filter tests by destination (phone number, webhook URL, etc.)
             destination: nil,
-            page_number: nil,
-            page_size: nil,
+            # Consolidated page parameter (deepObject style). Originally: page[size],
+            # page[number]
+            page: nil,
             # Filter tests by communication channel (e.g., 'web_chat', 'sms')
             telnyx_conversation_channel: nil,
             # Filter tests by test suite name
@@ -76,8 +78,7 @@ module Telnyx
             override.returns(
               {
                 destination: String,
-                page_number: Integer,
-                page_size: Integer,
+                page: Telnyx::AI::Assistants::TestListParams::Page,
                 telnyx_conversation_channel: String,
                 test_suite: String,
                 request_options: Telnyx::RequestOptions
@@ -85,6 +86,47 @@ module Telnyx
             )
           end
           def to_hash
+          end
+
+          class Page < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::AI::Assistants::TestListParams::Page,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # Page number to retrieve (1-based indexing)
+            sig { returns(T.nilable(Integer)) }
+            attr_reader :number
+
+            sig { params(number: Integer).void }
+            attr_writer :number
+
+            # Number of tests to return per page (1-100)
+            sig { returns(T.nilable(Integer)) }
+            attr_reader :size
+
+            sig { params(size: Integer).void }
+            attr_writer :size
+
+            # Consolidated page parameter (deepObject style). Originally: page[size],
+            # page[number]
+            sig do
+              params(number: Integer, size: Integer).returns(T.attached_class)
+            end
+            def self.new(
+              # Page number to retrieve (1-based indexing)
+              number: nil,
+              # Number of tests to return per page (1-100)
+              size: nil
+            )
+            end
+
+            sig { override.returns({ number: Integer, size: Integer }) }
+            def to_hash
+            end
           end
         end
       end

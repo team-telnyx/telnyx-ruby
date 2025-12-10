@@ -15,7 +15,7 @@ module Telnyx
           params(
             campaign_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Number10dlc::TelnyxCampaignCsp)
+          ).returns(Telnyx::TelnyxCampaignCsp)
         end
         def retrieve(campaign_id, request_options: {})
         end
@@ -37,7 +37,7 @@ module Telnyx
             webhook_failover_url: String,
             webhook_url: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Number10dlc::TelnyxCampaignCsp)
+          ).returns(Telnyx::TelnyxCampaignCsp)
         end
         def update(
           campaign_id,
@@ -76,11 +76,7 @@ module Telnyx
             records_per_page: Integer,
             sort: Telnyx::Number10dlc::CampaignListParams::Sort::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(
-            Telnyx::Internal::PerPagePaginationV2[
-              Telnyx::Models::Number10dlc::CampaignListResponse
-            ]
-          )
+          ).returns(Telnyx::Models::Number10dlc::CampaignListResponse)
         end
         def list(
           brand_id:,
@@ -96,6 +92,16 @@ module Telnyx
         )
         end
 
+        # Terminate a campaign. Note that once deactivated, a campaign cannot be restored.
+        sig do
+          params(
+            campaign_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::Number10dlc::CampaignDeleteResponse)
+        end
+        def delete(campaign_id, request_options: {})
+        end
+
         # Manually accept a campaign shared with Telnyx
         sig do
           params(
@@ -108,16 +114,6 @@ module Telnyx
           campaign_id,
           request_options: {}
         )
-        end
-
-        # Terminate a campaign. Note that once deactivated, a campaign cannot be restored.
-        sig do
-          params(
-            campaign_id: String,
-            request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Number10dlc::CampaignDeactivateResponse)
-        end
-        def deactivate(campaign_id, request_options: {})
         end
 
         # Get the campaign metadata for each MNO it was submitted to.

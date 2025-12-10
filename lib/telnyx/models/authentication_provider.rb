@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::AuthenticationProviders#list
     class AuthenticationProvider < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Uniquely identifies the authentication provider.

@@ -94,7 +94,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::Address>]
+      # @return [Telnyx::Models::AddressListResponse]
       #
       # @see Telnyx::Models::AddressListParams
       def list(params = {})
@@ -103,8 +103,7 @@ module Telnyx
           method: :get,
           path: "addresses",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
-          model: Telnyx::Address,
+          model: Telnyx::Models::AddressListResponse,
           options: options
         )
       end

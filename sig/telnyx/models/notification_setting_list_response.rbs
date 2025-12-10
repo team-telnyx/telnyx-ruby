@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    type notification_setting_list_response =
+      {
+        data: ::Array[Telnyx::NotificationSetting],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class NotificationSettingListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::NotificationSetting]?
+
+      def data=: (
+        ::Array[Telnyx::NotificationSetting]
+      ) -> ::Array[Telnyx::NotificationSetting]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::NotificationSetting],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::NotificationSetting],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

@@ -31,10 +31,10 @@ module Telnyx
               vetting_token: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
-              Telnyx::Models::Number10dlc::Brand::ExternalVettingImportsResponse
+              Telnyx::Models::Number10dlc::Brand::ExternalVettingImportResponse
             )
           end
-          def imports(
+          def import(
             brand_id,
             # External vetting provider ID for the brand.
             evp_id:,

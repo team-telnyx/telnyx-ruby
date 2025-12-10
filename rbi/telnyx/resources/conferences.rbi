@@ -109,7 +109,7 @@ module Telnyx
           page: Telnyx::ConferenceListParams::Page::OrHash,
           region: Telnyx::ConferenceListParams::Region::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::Conference])
+        ).returns(Telnyx::Models::ConferenceListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:
@@ -135,11 +135,7 @@ module Telnyx
           page: Telnyx::ConferenceListParticipantsParams::Page::OrHash,
           region: Telnyx::ConferenceListParticipantsParams::Region::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[
-            Telnyx::Models::ConferenceListParticipantsResponse
-          ]
-        )
+        ).returns(Telnyx::Models::ConferenceListParticipantsResponse)
       end
       def list_participants(
         # Uniquely identifies the conference by id

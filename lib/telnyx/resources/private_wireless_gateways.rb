@@ -74,7 +74,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PrivateWirelessGateway>]
+      # @return [Telnyx::Models::PrivateWirelessGatewayListResponse]
       #
       # @see Telnyx::Models::PrivateWirelessGatewayListParams
       def list(params = {})
@@ -91,8 +91,7 @@ module Telnyx
             page_number: "page[number]",
             page_size: "page[size]"
           ),
-          page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::PrivateWirelessGateway,
+          model: Telnyx::Models::PrivateWirelessGatewayListResponse,
           options: options
         )
       end

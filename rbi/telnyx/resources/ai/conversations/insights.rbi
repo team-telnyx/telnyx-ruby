@@ -66,16 +66,16 @@ module Telnyx
           # Get all insights
           sig do
             params(
-              page_number: Integer,
-              page_size: Integer,
+              page: Telnyx::AI::Conversations::InsightListParams::Page::OrHash,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(
-              Telnyx::Internal::DefaultFlatPagination[
-                Telnyx::AI::Conversations::InsightTemplate
-              ]
-            )
+            ).returns(Telnyx::Models::AI::Conversations::InsightListResponse)
           end
-          def list(page_number: nil, page_size: nil, request_options: {})
+          def list(
+            # Consolidated page parameter (deepObject style). Originally: page[number],
+            # page[size]
+            page: nil,
+            request_options: {}
+          )
           end
 
           # Delete insight by ID

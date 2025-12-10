@@ -73,7 +73,7 @@ module Telnyx
           #
           # @param telephony_settings [Telnyx::Models::AI::TelephonySettings] Body param:
           #
-          # @param tools [Array<Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf>] Body param: The tools that the assistant can use. These may be templated with [d
+          # @param tools [Array<Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::HandoffTool, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::AssistantTool::SipReferTool, Telnyx::Models::AI::AssistantTool::DtmfTool>] Body param: The tools that the assistant can use. These may be templated with [d
           #
           # @param transcription [Telnyx::Models::AI::TranscriptionSettings] Body param:
           #

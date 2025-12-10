@@ -6,7 +6,11 @@ class Telnyx::Test::Resources::WireguardInterfacesTest < Telnyx::Test::ResourceT
   def test_create_required_params
     skip("Prism tests are disabled")
 
-    response = @telnyx.wireguard_interfaces.create(region_code: "ashburn-va")
+    response =
+      @telnyx.wireguard_interfaces.create(
+        network_id: "6a09cdc3-8948-47f0-aa62-74ac943d6c58",
+        region_code: "ashburn-va"
+      )
 
     assert_pattern do
       response => Telnyx::Models::WireguardInterfaceCreateResponse
@@ -41,14 +45,14 @@ class Telnyx::Test::Resources::WireguardInterfacesTest < Telnyx::Test::ResourceT
     response = @telnyx.wireguard_interfaces.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Models::WireguardInterfaceListResponse
     end
 
-    row = response.to_enum.first
-    return if row.nil?
-
     assert_pattern do
-      row => Telnyx::Models::WireguardInterfaceListResponse
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::WireguardInterfaceListResponse::Data]) | nil,
+        meta: Telnyx::PaginationMeta | nil
+      }
     end
   end
 

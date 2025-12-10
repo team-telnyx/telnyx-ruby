@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    type authentication_provider_list_response =
+      {
+        data: ::Array[Telnyx::AuthenticationProvider],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class AuthenticationProviderListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::AuthenticationProvider]?
+
+      def data=: (
+        ::Array[Telnyx::AuthenticationProvider]
+      ) -> ::Array[Telnyx::AuthenticationProvider]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::AuthenticationProvider],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::AuthenticationProvider],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

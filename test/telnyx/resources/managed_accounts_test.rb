@@ -57,28 +57,13 @@ class Telnyx::Test::Resources::ManagedAccountsTest < Telnyx::Test::ResourceTest
     response = @telnyx.managed_accounts.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Models::ManagedAccountListResponse
+      response => Telnyx::Models::ManagedAccountListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String,
-        api_user: String,
-        created_at: String,
-        email: String,
-        manager_account_id: String,
-        record_type: Telnyx::Models::ManagedAccountListResponse::RecordType,
-        updated_at: String,
-        managed_account_allow_custom_pricing: Telnyx::Internal::Type::Boolean | nil,
-        organization_name: String | nil,
-        rollup_billing: Telnyx::Internal::Type::Boolean | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::ManagedAccountListResponse::Data]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

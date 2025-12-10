@@ -42,7 +42,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::OAuthClient]
+      ) -> Telnyx::Models::OAuthClientListResponse
 
       def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 

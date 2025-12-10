@@ -1,0 +1,73 @@
+module Telnyx
+  module Models
+    type texml_application_list_response =
+      {
+        data: ::Array[Telnyx::TexmlApplication],
+        meta: Telnyx::Models::TexmlApplicationListResponse::Meta
+      }
+
+    class TexmlApplicationListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::TexmlApplication]?
+
+      def data=: (
+        ::Array[Telnyx::TexmlApplication]
+      ) -> ::Array[Telnyx::TexmlApplication]
+
+      attr_reader meta: Telnyx::Models::TexmlApplicationListResponse::Meta?
+
+      def meta=: (
+        Telnyx::Models::TexmlApplicationListResponse::Meta
+      ) -> Telnyx::Models::TexmlApplicationListResponse::Meta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::TexmlApplication],
+        ?meta: Telnyx::Models::TexmlApplicationListResponse::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::TexmlApplication],
+        meta: Telnyx::Models::TexmlApplicationListResponse::Meta
+      }
+
+      type meta =
+        {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_reader page_number: Integer?
+
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        attr_reader total_pages: Integer?
+
+        def total_pages=: (Integer) -> Integer
+
+        attr_reader total_results: Integer?
+
+        def total_results=: (Integer) -> Integer
+
+        def initialize: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?total_pages: Integer,
+          ?total_results: Integer
+        ) -> void
+
+        def to_hash: -> {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+      end
+    end
+  end
+end

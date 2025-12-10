@@ -3,7 +3,7 @@ module Telnyx
     module Calls
       type action_bridge_params =
         {
-          call_control_id_to_bridge_with: String,
+          body_call_control_id: String,
           client_state: String,
           command_id: String,
           mute_dtmf: Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf,
@@ -28,7 +28,7 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
-        attr_accessor call_control_id_to_bridge_with: String
+        attr_accessor body_call_control_id: String
 
         attr_reader client_state: String?
 
@@ -113,7 +113,7 @@ module Telnyx
         def video_room_id=: (String) -> String
 
         def initialize: (
-          call_control_id_to_bridge_with: String,
+          body_call_control_id: String,
           ?client_state: String,
           ?command_id: String,
           ?mute_dtmf: Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf,
@@ -135,7 +135,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
-          call_control_id_to_bridge_with: String,
+          body_call_control_id: String,
           client_state: String,
           command_id: String,
           mute_dtmf: Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf,

@@ -3,93 +3,123 @@ module Telnyx
     module ExternalConnections
       type log_message_list_response =
         {
-          code: String,
-          title: String,
-          detail: String,
-          meta: Telnyx::Models::ExternalConnections::LogMessageListResponse::Meta,
-          source: Telnyx::Models::ExternalConnections::LogMessageListResponse::Source
+          log_messages: ::Array[Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage],
+          meta: Telnyx::ExternalVoiceIntegrationsPaginationMeta
         }
 
       class LogMessageListResponse < Telnyx::Internal::Type::BaseModel
-        attr_accessor code: String
+        attr_reader log_messages: ::Array[Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage]?
 
-        attr_accessor title: String
+        def log_messages=: (
+          ::Array[Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage]
+        ) -> ::Array[Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage]
 
-        attr_reader detail: String?
-
-        def detail=: (String) -> String
-
-        attr_reader meta: Telnyx::Models::ExternalConnections::LogMessageListResponse::Meta?
+        attr_reader meta: Telnyx::ExternalVoiceIntegrationsPaginationMeta?
 
         def meta=: (
-          Telnyx::Models::ExternalConnections::LogMessageListResponse::Meta
-        ) -> Telnyx::Models::ExternalConnections::LogMessageListResponse::Meta
-
-        attr_reader source: Telnyx::Models::ExternalConnections::LogMessageListResponse::Source?
-
-        def source=: (
-          Telnyx::Models::ExternalConnections::LogMessageListResponse::Source
-        ) -> Telnyx::Models::ExternalConnections::LogMessageListResponse::Source
+          Telnyx::ExternalVoiceIntegrationsPaginationMeta
+        ) -> Telnyx::ExternalVoiceIntegrationsPaginationMeta
 
         def initialize: (
-          code: String,
-          title: String,
-          ?detail: String,
-          ?meta: Telnyx::Models::ExternalConnections::LogMessageListResponse::Meta,
-          ?source: Telnyx::Models::ExternalConnections::LogMessageListResponse::Source
+          ?log_messages: ::Array[Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage],
+          ?meta: Telnyx::ExternalVoiceIntegrationsPaginationMeta
         ) -> void
 
         def to_hash: -> {
-          code: String,
-          title: String,
-          detail: String,
-          meta: Telnyx::Models::ExternalConnections::LogMessageListResponse::Meta,
-          source: Telnyx::Models::ExternalConnections::LogMessageListResponse::Source
+          log_messages: ::Array[Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage],
+          meta: Telnyx::ExternalVoiceIntegrationsPaginationMeta
         }
 
-        type meta =
+        type log_message =
           {
-            external_connection_id: String,
-            telephone_number: String,
-            ticket_id: String
+            code: String,
+            title: String,
+            detail: String,
+            meta: Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage::Meta,
+            source: Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage::Source
           }
 
-        class Meta < Telnyx::Internal::Type::BaseModel
-          attr_reader external_connection_id: String?
+        class LogMessage < Telnyx::Internal::Type::BaseModel
+          attr_accessor code: String
 
-          def external_connection_id=: (String) -> String
+          attr_accessor title: String
 
-          attr_reader telephone_number: String?
+          attr_reader detail: String?
 
-          def telephone_number=: (String) -> String
+          def detail=: (String) -> String
 
-          attr_reader ticket_id: String?
+          attr_reader meta: Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage::Meta?
 
-          def ticket_id=: (String) -> String
+          def meta=: (
+            Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage::Meta
+          ) -> Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage::Meta
+
+          attr_reader source: Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage::Source?
+
+          def source=: (
+            Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage::Source
+          ) -> Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage::Source
 
           def initialize: (
-            ?external_connection_id: String,
-            ?telephone_number: String,
-            ?ticket_id: String
+            code: String,
+            title: String,
+            ?detail: String,
+            ?meta: Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage::Meta,
+            ?source: Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage::Source
           ) -> void
 
           def to_hash: -> {
-            external_connection_id: String,
-            telephone_number: String,
-            ticket_id: String
+            code: String,
+            title: String,
+            detail: String,
+            meta: Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage::Meta,
+            source: Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage::Source
           }
-        end
 
-        type source = { pointer: String }
+          type meta =
+            {
+              external_connection_id: String,
+              telephone_number: String,
+              ticket_id: String
+            }
 
-        class Source < Telnyx::Internal::Type::BaseModel
-          attr_reader pointer: String?
+          class Meta < Telnyx::Internal::Type::BaseModel
+            attr_reader external_connection_id: String?
 
-          def pointer=: (String) -> String
+            def external_connection_id=: (String) -> String
 
-          def initialize: (?pointer: String) -> void
+            attr_reader telephone_number: String?
 
-          def to_hash: -> { pointer: String }
+            def telephone_number=: (String) -> String
+
+            attr_reader ticket_id: String?
+
+            def ticket_id=: (String) -> String
+
+            def initialize: (
+              ?external_connection_id: String,
+              ?telephone_number: String,
+              ?ticket_id: String
+            ) -> void
+
+            def to_hash: -> {
+              external_connection_id: String,
+              telephone_number: String,
+              ticket_id: String
+            }
+          end
+
+          type source = { pointer: String }
+
+          class Source < Telnyx::Internal::Type::BaseModel
+            attr_reader pointer: String?
+
+            def pointer=: (String) -> String
+
+            def initialize: (?pointer: String) -> void
+
+            def to_hash: -> { pointer: String }
+          end
         end
       end
     end

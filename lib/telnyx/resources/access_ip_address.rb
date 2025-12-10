@@ -49,17 +49,15 @@ module Telnyx
       #
       # List all Access IP Addresses
       #
-      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
+      # @overload list(filter: nil, page: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::AccessIPAddressListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[ip_source],
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::AccessIPAddressListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AccessIPAddressResponse>]
+      # @return [Telnyx::Models::AccessIPAddressListResponse]
       #
       # @see Telnyx::Models::AccessIPAddressListParams
       def list(params = {})
@@ -67,9 +65,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "access_ip_address",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::AccessIPAddressResponse,
+          query: parsed,
+          model: Telnyx::Models::AccessIPAddressListResponse,
           options: options
         )
       end

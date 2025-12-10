@@ -17,7 +17,7 @@ module Telnyx
           ?filter: Telnyx::Portouts::ReportListParams::Filter,
           ?page: Telnyx::Portouts::ReportListParams::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Portouts::PortoutReport]
+        ) -> Telnyx::Models::Portouts::ReportListResponse
 
         def initialize: (client: Telnyx::Client) -> void
       end

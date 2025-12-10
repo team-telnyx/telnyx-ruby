@@ -20,7 +20,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::MessagingOptoutListResponse>]
+      # @return [Telnyx::Models::MessagingOptoutListResponse]
       #
       # @see Telnyx::Models::MessagingOptoutListParams
       def list(params = {})
@@ -29,7 +29,6 @@ module Telnyx
           method: :get,
           path: "messaging_optouts",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::MessagingOptoutListResponse,
           options: options
         )

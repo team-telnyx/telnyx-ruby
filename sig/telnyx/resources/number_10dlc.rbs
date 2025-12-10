@@ -7,6 +7,12 @@ module Telnyx
 
       attr_reader campaign_builder: Telnyx::Resources::Number10dlc::CampaignBuilder
 
+      attr_reader partner_campaign: Telnyx::Resources::Number10dlc::PartnerCampaign
+
+      attr_reader partner_campaigns: Telnyx::Resources::Number10dlc::PartnerCampaigns
+
+      attr_reader phone_number_assignment_by_profile: Telnyx::Resources::Number10dlc::PhoneNumberAssignmentByProfile
+
       attr_reader phone_number_campaigns: Telnyx::Resources::Number10dlc::PhoneNumberCampaigns
 
       def get_enum: (

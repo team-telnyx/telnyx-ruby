@@ -80,7 +80,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::MobilePhoneNumber>]
+      # @return [Telnyx::Models::MobilePhoneNumberListResponse]
       #
       # @see Telnyx::Models::MobilePhoneNumberListParams
       def list(params = {})
@@ -89,8 +89,7 @@ module Telnyx
           method: :get,
           path: "v2/mobile_phone_numbers",
           query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::MobilePhoneNumber,
+          model: Telnyx::Models::MobilePhoneNumberListResponse,
           options: options
         )
       end

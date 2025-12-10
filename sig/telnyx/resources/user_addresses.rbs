@@ -29,7 +29,7 @@ module Telnyx
         ?page: Telnyx::UserAddressListParams::Page,
         ?sort: Telnyx::Models::UserAddressListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::UserAddress]
+      ) -> Telnyx::Models::UserAddressListResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

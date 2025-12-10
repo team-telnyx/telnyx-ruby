@@ -2,290 +2,360 @@ module Telnyx
   module Models
     type report_list_wdrs_response =
       {
-        id: String,
-        cost: Telnyx::Models::ReportListWdrsResponse::Cost,
-        created_at: Time,
-        downlink_data: Telnyx::Models::ReportListWdrsResponse::DownlinkData,
-        duration_seconds: Float,
-        imsi: String,
-        mcc: String,
-        mnc: String,
-        phone_number: String,
-        rate: Telnyx::Models::ReportListWdrsResponse::Rate,
-        record_type: String,
-        sim_card_id: String,
-        sim_group_id: String,
-        sim_group_name: String,
-        uplink_data: Telnyx::Models::ReportListWdrsResponse::UplinkData
+        data: ::Array[Telnyx::Models::ReportListWdrsResponse::Data],
+        meta: Telnyx::Models::ReportListWdrsResponse::Meta
       }
 
     class ReportListWdrsResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader id: String?
+      attr_reader data: ::Array[Telnyx::Models::ReportListWdrsResponse::Data]?
 
-      def id=: (String) -> String
+      def data=: (
+        ::Array[Telnyx::Models::ReportListWdrsResponse::Data]
+      ) -> ::Array[Telnyx::Models::ReportListWdrsResponse::Data]
 
-      attr_reader cost: Telnyx::Models::ReportListWdrsResponse::Cost?
+      attr_reader meta: Telnyx::Models::ReportListWdrsResponse::Meta?
 
-      def cost=: (
-        Telnyx::Models::ReportListWdrsResponse::Cost
-      ) -> Telnyx::Models::ReportListWdrsResponse::Cost
-
-      attr_reader created_at: Time?
-
-      def created_at=: (Time) -> Time
-
-      attr_reader downlink_data: Telnyx::Models::ReportListWdrsResponse::DownlinkData?
-
-      def downlink_data=: (
-        Telnyx::Models::ReportListWdrsResponse::DownlinkData
-      ) -> Telnyx::Models::ReportListWdrsResponse::DownlinkData
-
-      attr_reader duration_seconds: Float?
-
-      def duration_seconds=: (Float) -> Float
-
-      attr_reader imsi: String?
-
-      def imsi=: (String) -> String
-
-      attr_reader mcc: String?
-
-      def mcc=: (String) -> String
-
-      attr_reader mnc: String?
-
-      def mnc=: (String) -> String
-
-      attr_reader phone_number: String?
-
-      def phone_number=: (String) -> String
-
-      attr_reader rate: Telnyx::Models::ReportListWdrsResponse::Rate?
-
-      def rate=: (
-        Telnyx::Models::ReportListWdrsResponse::Rate
-      ) -> Telnyx::Models::ReportListWdrsResponse::Rate
-
-      attr_reader record_type: String?
-
-      def record_type=: (String) -> String
-
-      attr_reader sim_card_id: String?
-
-      def sim_card_id=: (String) -> String
-
-      attr_reader sim_group_id: String?
-
-      def sim_group_id=: (String) -> String
-
-      attr_reader sim_group_name: String?
-
-      def sim_group_name=: (String) -> String
-
-      attr_reader uplink_data: Telnyx::Models::ReportListWdrsResponse::UplinkData?
-
-      def uplink_data=: (
-        Telnyx::Models::ReportListWdrsResponse::UplinkData
-      ) -> Telnyx::Models::ReportListWdrsResponse::UplinkData
+      def meta=: (
+        Telnyx::Models::ReportListWdrsResponse::Meta
+      ) -> Telnyx::Models::ReportListWdrsResponse::Meta
 
       def initialize: (
-        ?id: String,
-        ?cost: Telnyx::Models::ReportListWdrsResponse::Cost,
-        ?created_at: Time,
-        ?downlink_data: Telnyx::Models::ReportListWdrsResponse::DownlinkData,
-        ?duration_seconds: Float,
-        ?imsi: String,
-        ?mcc: String,
-        ?mnc: String,
-        ?phone_number: String,
-        ?rate: Telnyx::Models::ReportListWdrsResponse::Rate,
-        ?record_type: String,
-        ?sim_card_id: String,
-        ?sim_group_id: String,
-        ?sim_group_name: String,
-        ?uplink_data: Telnyx::Models::ReportListWdrsResponse::UplinkData
+        ?data: ::Array[Telnyx::Models::ReportListWdrsResponse::Data],
+        ?meta: Telnyx::Models::ReportListWdrsResponse::Meta
       ) -> void
 
       def to_hash: -> {
-        id: String,
-        cost: Telnyx::Models::ReportListWdrsResponse::Cost,
-        created_at: Time,
-        downlink_data: Telnyx::Models::ReportListWdrsResponse::DownlinkData,
-        duration_seconds: Float,
-        imsi: String,
-        mcc: String,
-        mnc: String,
-        phone_number: String,
-        rate: Telnyx::Models::ReportListWdrsResponse::Rate,
-        record_type: String,
-        sim_card_id: String,
-        sim_group_id: String,
-        sim_group_name: String,
-        uplink_data: Telnyx::Models::ReportListWdrsResponse::UplinkData
+        data: ::Array[Telnyx::Models::ReportListWdrsResponse::Data],
+        meta: Telnyx::Models::ReportListWdrsResponse::Meta
       }
 
-      type cost =
+      type data =
         {
-          amount: String,
-          currency: Telnyx::Models::ReportListWdrsResponse::Cost::currency
+          id: String,
+          cost: Telnyx::Models::ReportListWdrsResponse::Data::Cost,
+          created_at: Time,
+          downlink_data: Telnyx::Models::ReportListWdrsResponse::Data::DownlinkData,
+          duration_seconds: Float,
+          imsi: String,
+          mcc: String,
+          mnc: String,
+          phone_number: String,
+          rate: Telnyx::Models::ReportListWdrsResponse::Data::Rate,
+          record_type: String,
+          sim_card_id: String,
+          sim_group_id: String,
+          sim_group_name: String,
+          uplink_data: Telnyx::Models::ReportListWdrsResponse::Data::UplinkData
         }
 
-      class Cost < Telnyx::Internal::Type::BaseModel
-        attr_reader amount: String?
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
 
-        def amount=: (String) -> String
+        def id=: (String) -> String
 
-        attr_reader currency: Telnyx::Models::ReportListWdrsResponse::Cost::currency?
+        attr_reader cost: Telnyx::Models::ReportListWdrsResponse::Data::Cost?
 
-        def currency=: (
-          Telnyx::Models::ReportListWdrsResponse::Cost::currency
-        ) -> Telnyx::Models::ReportListWdrsResponse::Cost::currency
+        def cost=: (
+          Telnyx::Models::ReportListWdrsResponse::Data::Cost
+        ) -> Telnyx::Models::ReportListWdrsResponse::Data::Cost
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader downlink_data: Telnyx::Models::ReportListWdrsResponse::Data::DownlinkData?
+
+        def downlink_data=: (
+          Telnyx::Models::ReportListWdrsResponse::Data::DownlinkData
+        ) -> Telnyx::Models::ReportListWdrsResponse::Data::DownlinkData
+
+        attr_reader duration_seconds: Float?
+
+        def duration_seconds=: (Float) -> Float
+
+        attr_reader imsi: String?
+
+        def imsi=: (String) -> String
+
+        attr_reader mcc: String?
+
+        def mcc=: (String) -> String
+
+        attr_reader mnc: String?
+
+        def mnc=: (String) -> String
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader rate: Telnyx::Models::ReportListWdrsResponse::Data::Rate?
+
+        def rate=: (
+          Telnyx::Models::ReportListWdrsResponse::Data::Rate
+        ) -> Telnyx::Models::ReportListWdrsResponse::Data::Rate
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader sim_card_id: String?
+
+        def sim_card_id=: (String) -> String
+
+        attr_reader sim_group_id: String?
+
+        def sim_group_id=: (String) -> String
+
+        attr_reader sim_group_name: String?
+
+        def sim_group_name=: (String) -> String
+
+        attr_reader uplink_data: Telnyx::Models::ReportListWdrsResponse::Data::UplinkData?
+
+        def uplink_data=: (
+          Telnyx::Models::ReportListWdrsResponse::Data::UplinkData
+        ) -> Telnyx::Models::ReportListWdrsResponse::Data::UplinkData
 
         def initialize: (
-          ?amount: String,
-          ?currency: Telnyx::Models::ReportListWdrsResponse::Cost::currency
+          ?id: String,
+          ?cost: Telnyx::Models::ReportListWdrsResponse::Data::Cost,
+          ?created_at: Time,
+          ?downlink_data: Telnyx::Models::ReportListWdrsResponse::Data::DownlinkData,
+          ?duration_seconds: Float,
+          ?imsi: String,
+          ?mcc: String,
+          ?mnc: String,
+          ?phone_number: String,
+          ?rate: Telnyx::Models::ReportListWdrsResponse::Data::Rate,
+          ?record_type: String,
+          ?sim_card_id: String,
+          ?sim_group_id: String,
+          ?sim_group_name: String,
+          ?uplink_data: Telnyx::Models::ReportListWdrsResponse::Data::UplinkData
         ) -> void
 
         def to_hash: -> {
-          amount: String,
-          currency: Telnyx::Models::ReportListWdrsResponse::Cost::currency
+          id: String,
+          cost: Telnyx::Models::ReportListWdrsResponse::Data::Cost,
+          created_at: Time,
+          downlink_data: Telnyx::Models::ReportListWdrsResponse::Data::DownlinkData,
+          duration_seconds: Float,
+          imsi: String,
+          mcc: String,
+          mnc: String,
+          phone_number: String,
+          rate: Telnyx::Models::ReportListWdrsResponse::Data::Rate,
+          record_type: String,
+          sim_card_id: String,
+          sim_group_id: String,
+          sim_group_name: String,
+          uplink_data: Telnyx::Models::ReportListWdrsResponse::Data::UplinkData
         }
 
-        type currency = :AUD | :CAD | :EUR | :GBP | :USD
+        type cost =
+          {
+            amount: String,
+            currency: Telnyx::Models::ReportListWdrsResponse::Data::Cost::currency
+          }
 
-        module Currency
-          extend Telnyx::Internal::Type::Enum
+        class Cost < Telnyx::Internal::Type::BaseModel
+          attr_reader amount: String?
 
-          AUD: :AUD
-          CAD: :CAD
-          EUR: :EUR
-          GBP: :GBP
-          USD: :USD
+          def amount=: (String) -> String
 
-          def self?.values: -> ::Array[Telnyx::Models::ReportListWdrsResponse::Cost::currency]
+          attr_reader currency: Telnyx::Models::ReportListWdrsResponse::Data::Cost::currency?
+
+          def currency=: (
+            Telnyx::Models::ReportListWdrsResponse::Data::Cost::currency
+          ) -> Telnyx::Models::ReportListWdrsResponse::Data::Cost::currency
+
+          def initialize: (
+            ?amount: String,
+            ?currency: Telnyx::Models::ReportListWdrsResponse::Data::Cost::currency
+          ) -> void
+
+          def to_hash: -> {
+            amount: String,
+            currency: Telnyx::Models::ReportListWdrsResponse::Data::Cost::currency
+          }
+
+          type currency = :AUD | :CAD | :EUR | :GBP | :USD
+
+          module Currency
+            extend Telnyx::Internal::Type::Enum
+
+            AUD: :AUD
+            CAD: :CAD
+            EUR: :EUR
+            GBP: :GBP
+            USD: :USD
+
+            def self?.values: -> ::Array[Telnyx::Models::ReportListWdrsResponse::Data::Cost::currency]
+          end
+        end
+
+        type downlink_data =
+          {
+            amount: Float,
+            unit: Telnyx::Models::ReportListWdrsResponse::Data::DownlinkData::unit
+          }
+
+        class DownlinkData < Telnyx::Internal::Type::BaseModel
+          attr_reader amount: Float?
+
+          def amount=: (Float) -> Float
+
+          attr_reader unit: Telnyx::Models::ReportListWdrsResponse::Data::DownlinkData::unit?
+
+          def unit=: (
+            Telnyx::Models::ReportListWdrsResponse::Data::DownlinkData::unit
+          ) -> Telnyx::Models::ReportListWdrsResponse::Data::DownlinkData::unit
+
+          def initialize: (
+            ?amount: Float,
+            ?unit: Telnyx::Models::ReportListWdrsResponse::Data::DownlinkData::unit
+          ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            unit: Telnyx::Models::ReportListWdrsResponse::Data::DownlinkData::unit
+          }
+
+          type unit = :B | :KB | :MB
+
+          module Unit
+            extend Telnyx::Internal::Type::Enum
+
+            B: :B
+            KB: :KB
+            MB: :MB
+
+            def self?.values: -> ::Array[Telnyx::Models::ReportListWdrsResponse::Data::DownlinkData::unit]
+          end
+        end
+
+        type rate =
+          {
+            amount: String,
+            currency: Telnyx::Models::ReportListWdrsResponse::Data::Rate::currency
+          }
+
+        class Rate < Telnyx::Internal::Type::BaseModel
+          attr_reader amount: String?
+
+          def amount=: (String) -> String
+
+          attr_reader currency: Telnyx::Models::ReportListWdrsResponse::Data::Rate::currency?
+
+          def currency=: (
+            Telnyx::Models::ReportListWdrsResponse::Data::Rate::currency
+          ) -> Telnyx::Models::ReportListWdrsResponse::Data::Rate::currency
+
+          def initialize: (
+            ?amount: String,
+            ?currency: Telnyx::Models::ReportListWdrsResponse::Data::Rate::currency
+          ) -> void
+
+          def to_hash: -> {
+            amount: String,
+            currency: Telnyx::Models::ReportListWdrsResponse::Data::Rate::currency
+          }
+
+          type currency = :AUD | :CAD | :EUR | :GBP | :USD
+
+          module Currency
+            extend Telnyx::Internal::Type::Enum
+
+            AUD: :AUD
+            CAD: :CAD
+            EUR: :EUR
+            GBP: :GBP
+            USD: :USD
+
+            def self?.values: -> ::Array[Telnyx::Models::ReportListWdrsResponse::Data::Rate::currency]
+          end
+        end
+
+        type uplink_data =
+          {
+            amount: Float,
+            unit: Telnyx::Models::ReportListWdrsResponse::Data::UplinkData::unit
+          }
+
+        class UplinkData < Telnyx::Internal::Type::BaseModel
+          attr_reader amount: Float?
+
+          def amount=: (Float) -> Float
+
+          attr_reader unit: Telnyx::Models::ReportListWdrsResponse::Data::UplinkData::unit?
+
+          def unit=: (
+            Telnyx::Models::ReportListWdrsResponse::Data::UplinkData::unit
+          ) -> Telnyx::Models::ReportListWdrsResponse::Data::UplinkData::unit
+
+          def initialize: (
+            ?amount: Float,
+            ?unit: Telnyx::Models::ReportListWdrsResponse::Data::UplinkData::unit
+          ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            unit: Telnyx::Models::ReportListWdrsResponse::Data::UplinkData::unit
+          }
+
+          type unit = :B | :KB | :MB
+
+          module Unit
+            extend Telnyx::Internal::Type::Enum
+
+            B: :B
+            KB: :KB
+            MB: :MB
+
+            def self?.values: -> ::Array[Telnyx::Models::ReportListWdrsResponse::Data::UplinkData::unit]
+          end
         end
       end
 
-      type downlink_data =
+      type meta =
         {
-          amount: Float,
-          unit: Telnyx::Models::ReportListWdrsResponse::DownlinkData::unit
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
         }
 
-      class DownlinkData < Telnyx::Internal::Type::BaseModel
-        attr_reader amount: Float?
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_reader page_number: Integer?
 
-        def amount=: (Float) -> Float
+        def page_number=: (Integer) -> Integer
 
-        attr_reader unit: Telnyx::Models::ReportListWdrsResponse::DownlinkData::unit?
+        attr_reader page_size: Integer?
 
-        def unit=: (
-          Telnyx::Models::ReportListWdrsResponse::DownlinkData::unit
-        ) -> Telnyx::Models::ReportListWdrsResponse::DownlinkData::unit
+        def page_size=: (Integer) -> Integer
+
+        attr_reader total_pages: Integer?
+
+        def total_pages=: (Integer) -> Integer
+
+        attr_reader total_results: Integer?
+
+        def total_results=: (Integer) -> Integer
 
         def initialize: (
-          ?amount: Float,
-          ?unit: Telnyx::Models::ReportListWdrsResponse::DownlinkData::unit
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?total_pages: Integer,
+          ?total_results: Integer
         ) -> void
 
         def to_hash: -> {
-          amount: Float,
-          unit: Telnyx::Models::ReportListWdrsResponse::DownlinkData::unit
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
         }
-
-        type unit = :B | :KB | :MB
-
-        module Unit
-          extend Telnyx::Internal::Type::Enum
-
-          B: :B
-          KB: :KB
-          MB: :MB
-
-          def self?.values: -> ::Array[Telnyx::Models::ReportListWdrsResponse::DownlinkData::unit]
-        end
-      end
-
-      type rate =
-        {
-          amount: String,
-          currency: Telnyx::Models::ReportListWdrsResponse::Rate::currency
-        }
-
-      class Rate < Telnyx::Internal::Type::BaseModel
-        attr_reader amount: String?
-
-        def amount=: (String) -> String
-
-        attr_reader currency: Telnyx::Models::ReportListWdrsResponse::Rate::currency?
-
-        def currency=: (
-          Telnyx::Models::ReportListWdrsResponse::Rate::currency
-        ) -> Telnyx::Models::ReportListWdrsResponse::Rate::currency
-
-        def initialize: (
-          ?amount: String,
-          ?currency: Telnyx::Models::ReportListWdrsResponse::Rate::currency
-        ) -> void
-
-        def to_hash: -> {
-          amount: String,
-          currency: Telnyx::Models::ReportListWdrsResponse::Rate::currency
-        }
-
-        type currency = :AUD | :CAD | :EUR | :GBP | :USD
-
-        module Currency
-          extend Telnyx::Internal::Type::Enum
-
-          AUD: :AUD
-          CAD: :CAD
-          EUR: :EUR
-          GBP: :GBP
-          USD: :USD
-
-          def self?.values: -> ::Array[Telnyx::Models::ReportListWdrsResponse::Rate::currency]
-        end
-      end
-
-      type uplink_data =
-        {
-          amount: Float,
-          unit: Telnyx::Models::ReportListWdrsResponse::UplinkData::unit
-        }
-
-      class UplinkData < Telnyx::Internal::Type::BaseModel
-        attr_reader amount: Float?
-
-        def amount=: (Float) -> Float
-
-        attr_reader unit: Telnyx::Models::ReportListWdrsResponse::UplinkData::unit?
-
-        def unit=: (
-          Telnyx::Models::ReportListWdrsResponse::UplinkData::unit
-        ) -> Telnyx::Models::ReportListWdrsResponse::UplinkData::unit
-
-        def initialize: (
-          ?amount: Float,
-          ?unit: Telnyx::Models::ReportListWdrsResponse::UplinkData::unit
-        ) -> void
-
-        def to_hash: -> {
-          amount: Float,
-          unit: Telnyx::Models::ReportListWdrsResponse::UplinkData::unit
-        }
-
-        type unit = :B | :KB | :MB
-
-        module Unit
-          extend Telnyx::Internal::Type::Enum
-
-          B: :B
-          KB: :KB
-          MB: :MB
-
-          def self?.values: -> ::Array[Telnyx::Models::ReportListWdrsResponse::UplinkData::unit]
-        end
       end
     end
   end

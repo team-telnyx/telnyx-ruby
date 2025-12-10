@@ -97,12 +97,12 @@ module Telnyx
           #   @return [String, nil]
           optional :connection_id, String
 
-          # @!attribute file_format
+          # @!attribute format_
           #   The audio file format used when storing the call recording. Can be either `mp3`
           #   or `wav`.
           #
           #   @return [Symbol, Telnyx::Models::ConferenceRecordingSavedWebhookEvent::Data::Payload::Format, nil]
-          optional :file_format,
+          optional :format_,
                    enum: -> { Telnyx::ConferenceRecordingSavedWebhookEvent::Data::Payload::Format },
                    api_name: :format
 
@@ -142,7 +142,7 @@ module Telnyx
           optional :recording_urls,
                    -> { Telnyx::ConferenceRecordingSavedWebhookEvent::Data::Payload::RecordingURLs }
 
-          # @!method initialize(call_control_id: nil, call_session_id: nil, channels: nil, client_state: nil, conference_id: nil, connection_id: nil, file_format: nil, public_recording_urls: nil, recording_ended_at: nil, recording_id: nil, recording_started_at: nil, recording_urls: nil)
+          # @!method initialize(call_control_id: nil, call_session_id: nil, channels: nil, client_state: nil, conference_id: nil, connection_id: nil, format_: nil, public_recording_urls: nil, recording_ended_at: nil, recording_id: nil, recording_started_at: nil, recording_urls: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::ConferenceRecordingSavedWebhookEvent::Data::Payload} for more
           #   details.
@@ -159,7 +159,7 @@ module Telnyx
           #
           #   @param connection_id [String] Call Control App ID (formerly Telnyx connection ID) used in the call.
           #
-          #   @param file_format [Symbol, Telnyx::Models::ConferenceRecordingSavedWebhookEvent::Data::Payload::Format] The audio file format used when storing the call recording. Can be either `mp3`
+          #   @param format_ [Symbol, Telnyx::Models::ConferenceRecordingSavedWebhookEvent::Data::Payload::Format] The audio file format used when storing the call recording. Can be either `mp3`
           #
           #   @param public_recording_urls [Telnyx::Models::ConferenceRecordingSavedWebhookEvent::Data::Payload::PublicRecordingURLs] Recording URLs in requested format. The URL is valid for as long as the file exi
           #
@@ -187,7 +187,7 @@ module Telnyx
           # The audio file format used when storing the call recording. Can be either `mp3`
           # or `wav`.
           #
-          # @see Telnyx::Models::ConferenceRecordingSavedWebhookEvent::Data::Payload#file_format
+          # @see Telnyx::Models::ConferenceRecordingSavedWebhookEvent::Data::Payload#format_
           module Format
             extend Telnyx::Internal::Type::Enum
 

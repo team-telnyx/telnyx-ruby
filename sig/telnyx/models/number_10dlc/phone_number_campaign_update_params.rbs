@@ -4,7 +4,7 @@ module Telnyx
       type phone_number_campaign_update_params =
         {  } & Telnyx::Internal::Type::request_parameters
 
-      class PhoneNumberCampaignUpdateParams < Telnyx::Models::Number10dlc::PhoneNumberCampaignCreate
+      class PhoneNumberCampaignUpdateParams < Telnyx::Models::PhoneNumberCampaignCreate
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 

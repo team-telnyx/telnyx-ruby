@@ -3,7 +3,6 @@
 module Telnyx
   module Models
     module BundlePricing
-      # @see Telnyx::Resources::BundlePricing::BillingBundles#list
       class BillingBundleSummary < Telnyx::Internal::Type::BaseModel
         # @!attribute id
         #   Bundle's ID, this is used to identify the bundle in the API.

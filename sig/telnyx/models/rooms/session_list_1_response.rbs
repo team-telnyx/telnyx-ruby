@@ -1,0 +1,30 @@
+module Telnyx
+  module Models
+    module Rooms
+      type session_list1_response =
+        { data: ::Array[Telnyx::RoomSession], meta: Telnyx::PaginationMeta }
+
+      class SessionList1Response < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::RoomSession]?
+
+        def data=: (
+          ::Array[Telnyx::RoomSession]
+        ) -> ::Array[Telnyx::RoomSession]
+
+        attr_reader meta: Telnyx::PaginationMeta?
+
+        def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+        def initialize: (
+          ?data: ::Array[Telnyx::RoomSession],
+          ?meta: Telnyx::PaginationMeta
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::RoomSession],
+          meta: Telnyx::PaginationMeta
+        }
+      end
+    end
+  end
+end

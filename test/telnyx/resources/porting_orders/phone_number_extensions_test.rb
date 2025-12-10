@@ -31,25 +31,13 @@ class Telnyx::Test::Resources::PortingOrders::PhoneNumberExtensionsTest < Telnyx
     response = @telnyx.porting_orders.phone_number_extensions.list("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::PortingOrders::PortingPhoneNumberExtension
+      response => Telnyx::Models::PortingOrders::PhoneNumberExtensionListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        activation_ranges: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PortingOrders::PortingPhoneNumberExtension::ActivationRange]) | nil,
-        created_at: Time | nil,
-        extension_range: Telnyx::PortingOrders::PortingPhoneNumberExtension::ExtensionRange | nil,
-        porting_phone_number_id: String | nil,
-        record_type: String | nil,
-        updated_at: Time | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PortingOrders::PortingPhoneNumberExtension]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

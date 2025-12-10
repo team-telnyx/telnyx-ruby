@@ -14,8 +14,8 @@ module Telnyx
         #   [JSON Schema reference](https://json-schema.org/understanding-json-schema) for
         #   documentation about the format
         #
-        #   @return [Hash{Symbol=>Object}]
-        required :parameters, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+        #   @return [Object]
+        required :parameters, Telnyx::Internal::Type::Unknown
 
         # @!attribute assistant
         #   Assistant configuration including choice of LLM, custom instructions, and tools.
@@ -136,7 +136,7 @@ module Telnyx
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionGatherUsingAIParams} for more details.
         #
-        #   @param parameters [Hash{Symbol=>Object}] The parameters described as a JSON Schema object that needs to be gathered by th
+        #   @param parameters [Object] The parameters described as a JSON Schema object that needs to be gathered by th
         #
         #   @param assistant [Telnyx::Models::AI::Assistant] Assistant configuration including choice of LLM, custom instructions, and tools.
         #

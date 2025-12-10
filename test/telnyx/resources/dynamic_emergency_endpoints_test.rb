@@ -46,27 +46,13 @@ class Telnyx::Test::Resources::DynamicEmergencyEndpointsTest < Telnyx::Test::Res
     response = @telnyx.dynamic_emergency_endpoints.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::DynamicEmergencyEndpoint
+      response => Telnyx::Models::DynamicEmergencyEndpointListResponse
     end
 
     assert_pattern do
-      row => {
-        callback_number: String,
-        caller_name: String,
-        dynamic_emergency_address_id: String,
-        id: String | nil,
-        created_at: String | nil,
-        record_type: String | nil,
-        sip_from_id: String | nil,
-        status: Telnyx::DynamicEmergencyEndpoint::Status | nil,
-        updated_at: String | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::DynamicEmergencyEndpoint]) | nil,
+        meta: Telnyx::Metadata | nil
       }
     end
   end

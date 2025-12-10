@@ -1,0 +1,11 @@
+module Telnyx
+  module Resources
+    class Public
+      class Brand
+        class SMSOtp
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

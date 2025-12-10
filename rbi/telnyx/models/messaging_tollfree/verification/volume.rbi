@@ -14,57 +14,57 @@ module Telnyx
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          V_10 =
+          VOLUME_10 =
             T.let(
               :"10",
               Telnyx::MessagingTollfree::Verification::Volume::TaggedSymbol
             )
-          V_100 =
+          VOLUME_100 =
             T.let(
               :"100",
               Telnyx::MessagingTollfree::Verification::Volume::TaggedSymbol
             )
-          V_1000 =
+          VOLUME_1_000 =
             T.let(
               :"1,000",
               Telnyx::MessagingTollfree::Verification::Volume::TaggedSymbol
             )
-          V_10000 =
+          VOLUME_10_000 =
             T.let(
               :"10,000",
               Telnyx::MessagingTollfree::Verification::Volume::TaggedSymbol
             )
-          V_100000 =
+          VOLUME_100_000 =
             T.let(
               :"100,000",
               Telnyx::MessagingTollfree::Verification::Volume::TaggedSymbol
             )
-          V_250000 =
+          VOLUME_250_000 =
             T.let(
               :"250,000",
               Telnyx::MessagingTollfree::Verification::Volume::TaggedSymbol
             )
-          V_500000 =
+          VOLUME_500_000 =
             T.let(
               :"500,000",
               Telnyx::MessagingTollfree::Verification::Volume::TaggedSymbol
             )
-          V_750000 =
+          VOLUME_750_000 =
             T.let(
               :"750,000",
               Telnyx::MessagingTollfree::Verification::Volume::TaggedSymbol
             )
-          V_1000000 =
+          VOLUME_1_000_000 =
             T.let(
               :"1,000,000",
               Telnyx::MessagingTollfree::Verification::Volume::TaggedSymbol
             )
-          V_5000000 =
+          VOLUME_5_000_000 =
             T.let(
               :"5,000,000",
               Telnyx::MessagingTollfree::Verification::Volume::TaggedSymbol
             )
-          V_10000000_PLUS =
+          VOLUME_10_000_000 =
             T.let(
               :"10,000,000+",
               Telnyx::MessagingTollfree::Verification::Volume::TaggedSymbol

@@ -41,14 +41,14 @@ class Telnyx::Test::Resources::GlobalIPHealthChecksTest < Telnyx::Test::Resource
     response = @telnyx.global_ip_health_checks.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Models::GlobalIPHealthCheckListResponse
     end
 
-    row = response.to_enum.first
-    return if row.nil?
-
     assert_pattern do
-      row => Telnyx::Models::GlobalIPHealthCheckListResponse
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::GlobalIPHealthCheckListResponse::Data]) | nil,
+        meta: Telnyx::PaginationMeta | nil
+      }
     end
   end
 

@@ -47,6 +47,8 @@ module Telnyx
 
   class AISummarizeParams = Telnyx::Models::AISummarizeParams
 
+  module AltBusinessIDType = Telnyx::Models::AltBusinessIDType
+
   module AnchorsiteOverride = Telnyx::Models::AnchorsiteOverride
 
   class APIError = Telnyx::Models::APIError
@@ -69,8 +71,6 @@ module Telnyx
 
   class AvailablePhoneNumberListParams = Telnyx::Models::AvailablePhoneNumberListParams
 
-  class AvailablePhoneNumbersMetadata = Telnyx::Models::AvailablePhoneNumbersMetadata
-
   module AvailableService = Telnyx::Models::AvailableService
 
   class AzureConfigurationData = Telnyx::Models::AzureConfigurationData
@@ -88,6 +88,8 @@ module Telnyx
   class BillingGroupRetrieveParams = Telnyx::Models::BillingGroupRetrieveParams
 
   class BillingGroupUpdateParams = Telnyx::Models::BillingGroupUpdateParams
+
+  module BrandIdentityStatus = Telnyx::Models::BrandIdentityStatus
 
   class BulkSimCardActionListParams = Telnyx::Models::BulkSimCardActionListParams
 
@@ -183,17 +185,13 @@ module Telnyx
 
   class CallSpeakStartedWebhookEvent = Telnyx::Models::CallSpeakStartedWebhookEvent
 
-  class CallStreamingFailed = Telnyx::Models::CallStreamingFailed
-
   class CallStreamingFailedWebhookEvent = Telnyx::Models::CallStreamingFailedWebhookEvent
-
-  class CallStreamingStarted = Telnyx::Models::CallStreamingStarted
 
   class CallStreamingStartedWebhookEvent = Telnyx::Models::CallStreamingStartedWebhookEvent
 
-  class CallStreamingStopped = Telnyx::Models::CallStreamingStopped
-
   class CallStreamingStoppedWebhookEvent = Telnyx::Models::CallStreamingStoppedWebhookEvent
+
+  class CampaignSharingStatus = Telnyx::Models::CampaignSharingStatus
 
   class CampaignStatusUpdateWebhookEvent = Telnyx::Models::CampaignStatusUpdateWebhookEvent
 
@@ -375,6 +373,8 @@ module Telnyx
 
   module EncryptedMedia = Telnyx::Models::EncryptedMedia
 
+  module EntityType = Telnyx::Models::EntityType
+
   class ExternalConnection = Telnyx::Models::ExternalConnection
 
   class ExternalConnectionCreateParams = Telnyx::Models::ExternalConnectionCreateParams
@@ -505,15 +505,11 @@ module Telnyx
 
   class InboundIP = Telnyx::Models::InboundIP
 
-  class InboundMessagePayload = Telnyx::Models::InboundMessagePayload
-
   class InboundMessageWebhookEvent = Telnyx::Models::InboundMessageWebhookEvent
 
   class InexplicitNumberOrderCreateParams = Telnyx::Models::InexplicitNumberOrderCreateParams
 
   class InexplicitNumberOrderListParams = Telnyx::Models::InexplicitNumberOrderListParams
-
-  class InexplicitNumberOrderResponse = Telnyx::Models::InexplicitNumberOrderResponse
 
   class InexplicitNumberOrderRetrieveParams = Telnyx::Models::InexplicitNumberOrderRetrieveParams
 
@@ -524,6 +520,8 @@ module Telnyx
   class IntegrationSecretDeleteParams = Telnyx::Models::IntegrationSecretDeleteParams
 
   class IntegrationSecretListParams = Telnyx::Models::IntegrationSecretListParams
+
+  class Interface = Telnyx::Models::Interface
 
   module InterfaceStatus = Telnyx::Models::InterfaceStatus
 
@@ -653,8 +651,6 @@ module Telnyx
 
   class MessagingOptoutListParams = Telnyx::Models::MessagingOptoutListParams
 
-  class MessagingPaginationMeta = Telnyx::Models::MessagingPaginationMeta
-
   class MessagingProfile = Telnyx::Models::MessagingProfile
 
   class MessagingProfileCreateParams = Telnyx::Models::MessagingProfileCreateParams
@@ -683,8 +679,6 @@ module Telnyx
 
   class MobileNetworkOperatorListParams = Telnyx::Models::MobileNetworkOperatorListParams
 
-  class MobilePhoneNumber = Telnyx::Models::MobilePhoneNumber
-
   class MobilePhoneNumberListParams = Telnyx::Models::MobilePhoneNumberListParams
 
   class MobilePhoneNumberRetrieveParams = Telnyx::Models::MobilePhoneNumberRetrieveParams
@@ -700,8 +694,6 @@ module Telnyx
   class MobilePushCredentialListParams = Telnyx::Models::MobilePushCredentialListParams
 
   class MobilePushCredentialRetrieveParams = Telnyx::Models::MobilePushCredentialRetrieveParams
-
-  class MobileVoiceConnection = Telnyx::Models::MobileVoiceConnection
 
   class MobileVoiceConnectionCreateParams = Telnyx::Models::MobileVoiceConnectionCreateParams
 
@@ -722,8 +714,6 @@ module Telnyx
   class NetworkCreateParams = Telnyx::Models::NetworkCreateParams
 
   class NetworkDeleteParams = Telnyx::Models::NetworkDeleteParams
-
-  class NetworkInterfaceRegion = Telnyx::Models::NetworkInterfaceRegion
 
   class NetworkListInterfacesParams = Telnyx::Models::NetworkListInterfacesParams
 
@@ -891,29 +881,15 @@ module Telnyx
 
   class PaginationMetaOAuth = Telnyx::Models::PaginationMetaOAuth
 
-  class PartnerCampaignListParams = Telnyx::Models::PartnerCampaignListParams
-
-  class PartnerCampaignListSharedByMeParams = Telnyx::Models::PartnerCampaignListSharedByMeParams
-
-  class PartnerCampaignRetrieveParams = Telnyx::Models::PartnerCampaignRetrieveParams
-
-  class PartnerCampaignRetrieveSharingStatusParams = Telnyx::Models::PartnerCampaignRetrieveSharingStatusParams
-
-  class PartnerCampaignUpdateParams = Telnyx::Models::PartnerCampaignUpdateParams
-
   module Payment = Telnyx::Models::Payment
 
   class PhoneNumber = Telnyx::Models::PhoneNumber
 
-  class PhoneNumberAssignmentByProfileAssignParams = Telnyx::Models::PhoneNumberAssignmentByProfileAssignParams
-
-  class PhoneNumberAssignmentByProfileListPhoneNumberStatusParams = Telnyx::Models::PhoneNumberAssignmentByProfileListPhoneNumberStatusParams
-
-  class PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusParams = Telnyx::Models::PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusParams
-
-  class PhoneNumberAssignmentByProfileRetrieveStatusParams = Telnyx::Models::PhoneNumberAssignmentByProfileRetrieveStatusParams
-
   module PhoneNumberBlocks = Telnyx::Models::PhoneNumberBlocks
+
+  class PhoneNumberCampaign = Telnyx::Models::PhoneNumberCampaign
+
+  class PhoneNumberCampaignCreate = Telnyx::Models::PhoneNumberCampaignCreate
 
   class PhoneNumberDeleteParams = Telnyx::Models::PhoneNumberDeleteParams
 
@@ -1047,6 +1023,8 @@ module Telnyx
 
   class RcsSuggestion = Telnyx::Models::RcsSuggestion
 
+  class Record = Telnyx::Models::Record
+
   class RecordingDeleteParams = Telnyx::Models::RecordingDeleteParams
 
   class RecordingListParams = Telnyx::Models::RecordingListParams
@@ -1064,6 +1042,8 @@ module Telnyx
   class RecordingTranscriptionListParams = Telnyx::Models::RecordingTranscriptionListParams
 
   class RecordingTranscriptionRetrieveParams = Telnyx::Models::RecordingTranscriptionRetrieveParams
+
+  class RegionIn = Telnyx::Models::RegionIn
 
   class RegionListParams = Telnyx::Models::RegionListParams
 
@@ -1229,6 +1209,8 @@ module Telnyx
 
   class SoundModifications = Telnyx::Models::SoundModifications
 
+  module StockExchange = Telnyx::Models::StockExchange
+
   module Storage = Telnyx::Models::Storage
 
   class StorageListMigrationSourceCoverageParams = Telnyx::Models::StorageListMigrationSourceCoverageParams
@@ -1286,6 +1268,10 @@ module Telnyx
   class TelephonyCredentialRetrieveParams = Telnyx::Models::TelephonyCredentialRetrieveParams
 
   class TelephonyCredentialUpdateParams = Telnyx::Models::TelephonyCredentialUpdateParams
+
+  class TelnyxBrand = Telnyx::Models::TelnyxBrand
+
+  class TelnyxCampaignCsp = Telnyx::Models::TelnyxCampaignCsp
 
   class TelnyxDownstreamCampaign = Telnyx::Models::TelnyxDownstreamCampaign
 
@@ -1386,6 +1372,8 @@ module Telnyx
   class VerifyProfileUpdateParams = Telnyx::Models::VerifyProfileUpdateParams
 
   class VerifyProfileUpdateTemplateParams = Telnyx::Models::VerifyProfileUpdateTemplateParams
+
+  module Vertical = Telnyx::Models::Vertical
 
   class VideoRegion = Telnyx::Models::VideoRegion
 

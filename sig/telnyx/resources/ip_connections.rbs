@@ -60,7 +60,7 @@ module Telnyx
         ?page: Telnyx::IPConnectionListParams::Page,
         ?sort: Telnyx::Models::IPConnectionListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::IPConnection]
+      ) -> Telnyx::Models::IPConnectionListResponse
 
       def delete: (
         String id,

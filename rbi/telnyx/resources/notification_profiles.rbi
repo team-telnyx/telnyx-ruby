@@ -34,14 +34,14 @@ module Telnyx
       # Update a notification profile.
       sig do
         params(
-          notification_profile_id: String,
+          id: String,
           name: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::NotificationProfileUpdateResponse)
       end
       def update(
         # The id of the resource.
-        notification_profile_id,
+        id,
         # A human readable name.
         name: nil,
         request_options: {}
@@ -53,9 +53,7 @@ module Telnyx
         params(
           page: Telnyx::NotificationProfileListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[Telnyx::NotificationProfile]
-        )
+        ).returns(Telnyx::Models::NotificationProfileListResponse)
       end
       def list(
         # Consolidated page parameter (deepObject style). Originally: page[number],

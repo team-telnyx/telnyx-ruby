@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module Number10dlc
+      module Brand
+        type sms_otp_trigger_response =
+          { brand_id: String, reference_id: String }
+
+        class SMSOtpTriggerResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor brand_id: String
+
+          attr_accessor reference_id: String
+
+          def initialize: (brand_id: String, reference_id: String) -> void
+
+          def to_hash: -> { brand_id: String, reference_id: String }
+        end
+      end
+    end
+  end
+end

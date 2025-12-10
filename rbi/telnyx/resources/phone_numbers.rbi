@@ -38,7 +38,7 @@ module Telnyx
       # Update a phone number
       sig do
         params(
-          phone_number_id: String,
+          id: String,
           billing_group_id: String,
           connection_id: String,
           customer_reference: String,
@@ -50,7 +50,7 @@ module Telnyx
       end
       def update(
         # Identifies the resource.
-        phone_number_id,
+        id,
         # Identifies the billing group associated with the phone number.
         billing_group_id: nil,
         # Identifies the connection associated with the phone number.
@@ -77,9 +77,7 @@ module Telnyx
           page: Telnyx::PhoneNumberListParams::Page::OrHash,
           sort: Telnyx::PhoneNumberListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[Telnyx::PhoneNumberDetailed]
-        )
+        ).returns(Telnyx::Models::PhoneNumberListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[tag],
@@ -123,11 +121,7 @@ module Telnyx
           page: Telnyx::PhoneNumberSlimListParams::Page::OrHash,
           sort: Telnyx::PhoneNumberSlimListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[
-            Telnyx::Models::PhoneNumberSlimListResponse
-          ]
-        )
+        ).returns(Telnyx::Models::PhoneNumberSlimListResponse)
       end
       def slim_list(
         # Consolidated filter parameter (deepObject style). Originally: filter[tag],

@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::OAuthGrants#list
     class OAuthGrant < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Unique identifier for the OAuth grant

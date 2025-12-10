@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::UsageReportsTest < Telnyx::Tes
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil
+        data: Telnyx::Internal::Type::Unknown | nil
       }
     end
   end

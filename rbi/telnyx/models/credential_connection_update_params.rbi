@@ -374,12 +374,12 @@ module Telnyx
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        V1 =
+        WEBHOOK_API_VERSION_1 =
           T.let(
             :"1",
             Telnyx::CredentialConnectionUpdateParams::WebhookAPIVersion::TaggedSymbol
           )
-        V2 =
+        WEBHOOK_API_VERSION_2 =
           T.let(
             :"2",
             Telnyx::CredentialConnectionUpdateParams::WebhookAPIVersion::TaggedSymbol

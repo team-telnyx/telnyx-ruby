@@ -49,35 +49,13 @@ class Telnyx::Test::Resources::UserAddressesTest < Telnyx::Test::ResourceTest
     response = @telnyx.user_addresses.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::UserAddress
+      response => Telnyx::Models::UserAddressListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        administrative_area: String | nil,
-        borough: String | nil,
-        business_name: String | nil,
-        country_code: String | nil,
-        created_at: String | nil,
-        customer_reference: String | nil,
-        extended_address: String | nil,
-        first_name: String | nil,
-        last_name: String | nil,
-        locality: String | nil,
-        neighborhood: String | nil,
-        phone_number: String | nil,
-        postal_code: String | nil,
-        record_type: String | nil,
-        street_address: String | nil,
-        updated_at: String | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::UserAddress]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

@@ -91,7 +91,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::WireguardPeerListResponse>]
+      # @return [Telnyx::Models::WireguardPeerListResponse]
       #
       # @see Telnyx::Models::WireguardPeerListParams
       def list(params = {})
@@ -100,7 +100,6 @@ module Telnyx
           method: :get,
           path: "wireguard_peers",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::WireguardPeerListResponse,
           options: options
         )

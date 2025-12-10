@@ -25,7 +25,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
     response =
       @telnyx.calls.actions.bridge(
         "call_control_id",
-        call_control_id_to_bridge_with: "v3:MdI91X4lWFEs7IgbBEOT9M4AigoY08M0WWZFISt1Yw2axZ_IiE4pqg"
+        body_call_control_id: "v3:MdI91X4lWFEs7IgbBEOT9M4AigoY08M0WWZFISt1Yw2axZ_IiE4pqg"
       )
 
     assert_pattern do
@@ -77,7 +77,14 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
     response =
       @telnyx.calls.actions.gather_using_ai(
         "call_control_id",
-        parameters: {properties: "bar", required: "bar", type: "bar"}
+        parameters: {
+          properties: {
+            age: {description: "The age of the customer.", type: "integer"},
+            location: {description: "The location of the customer.", type: "string"}
+          },
+          required: %w[age location],
+          type: "object"
+        }
       )
 
     assert_pattern do

@@ -35,29 +35,13 @@ class Telnyx::Test::Resources::Queues::CallsTest < Telnyx::Test::ResourceTest
     response = @telnyx.queues.calls.list("queue_name")
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Models::Queues::CallListResponse
+      response => Telnyx::Models::Queues::CallListResponse
     end
 
     assert_pattern do
-      row => {
-        call_control_id: String,
-        call_leg_id: String,
-        call_session_id: String,
-        connection_id: String,
-        enqueued_at: String,
-        from: String,
-        queue_id: String,
-        queue_position: Integer,
-        record_type: Telnyx::Models::Queues::CallListResponse::RecordType,
-        to: String,
-        wait_time_secs: Integer
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Queues::CallListResponse::Data]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

@@ -10,13 +10,12 @@ module Telnyx
         ?filter: String,
         ?format_: Telnyx::Models::UsageReportListParams::format_,
         ?managed_accounts: bool,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::UsageReportListParams::Page,
         ?sort: ::Array[String],
         ?start_date: String,
         ?authorization_bearer: String,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::usage_report_list_response]
+      ) -> Telnyx::Models::UsageReportListResponse
 
       def get_options: (
         ?product: String,

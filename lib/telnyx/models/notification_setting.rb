@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::NotificationSettings#list
     class NotificationSetting < Telnyx::Internal::Type::BaseModel
       # @!attribute notification_channel_id
       #   A UUID reference to the associated Notification Channel.

@@ -9,14 +9,14 @@ class Telnyx::Test::Resources::UsageReportsTest < Telnyx::Test::ResourceTest
     response = @telnyx.usage_reports.list(dimensions: ["string"], metrics: ["string"], product: "product")
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Models::UsageReportListResponse
     end
 
-    row = response.to_enum.first
-    return if row.nil?
-
     assert_pattern do
-      row => ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown])
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]) | nil,
+        meta: Telnyx::Models::UsageReportListResponse::Meta | nil
+      }
     end
   end
 

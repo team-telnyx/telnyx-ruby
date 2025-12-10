@@ -25,25 +25,13 @@ class Telnyx::Test::Resources::OtaUpdatesTest < Telnyx::Test::ResourceTest
     response = @telnyx.ota_updates.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Models::OtaUpdateListResponse
+      response => Telnyx::Models::OtaUpdateListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        created_at: String | nil,
-        record_type: String | nil,
-        sim_card_id: String | nil,
-        status: Telnyx::Models::OtaUpdateListResponse::Status | nil,
-        type: Telnyx::Models::OtaUpdateListResponse::Type | nil,
-        updated_at: String | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::OtaUpdateListResponse::Data]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

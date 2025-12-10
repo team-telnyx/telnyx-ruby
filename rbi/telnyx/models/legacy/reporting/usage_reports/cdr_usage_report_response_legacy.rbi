@@ -66,10 +66,10 @@ module Telnyx
             sig { params(report_url: String).void }
             attr_writer :report_url
 
-            sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+            sig { returns(T.nilable(T.anything)) }
             attr_reader :result
 
-            sig { params(result: T::Hash[Symbol, T.anything]).void }
+            sig { params(result: T.anything).void }
             attr_writer :result
 
             sig { returns(T.nilable(Time)) }
@@ -102,7 +102,7 @@ module Telnyx
                 product_breakdown: Integer,
                 record_type: String,
                 report_url: String,
-                result: T::Hash[Symbol, T.anything],
+                result: T.anything,
                 start_time: Time,
                 status: Integer,
                 updated_at: Time
@@ -140,7 +140,7 @@ module Telnyx
                   product_breakdown: Integer,
                   record_type: String,
                   report_url: String,
-                  result: T::Hash[Symbol, T.anything],
+                  result: T.anything,
                   start_time: Time,
                   status: Integer,
                   updated_at: Time

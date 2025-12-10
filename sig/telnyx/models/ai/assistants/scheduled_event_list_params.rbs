@@ -6,8 +6,7 @@ module Telnyx
           {
             conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
             from_date: Time,
-            page_number: Integer,
-            page_size: Integer,
+            page: Telnyx::AI::Assistants::ScheduledEventListParams::Page,
             to_date: Time
           }
           & Telnyx::Internal::Type::request_parameters
@@ -26,13 +25,11 @@ module Telnyx
 
           def from_date=: (Time) -> Time
 
-          attr_reader page_number: Integer?
+          attr_reader page: Telnyx::AI::Assistants::ScheduledEventListParams::Page?
 
-          def page_number=: (Integer) -> Integer
-
-          attr_reader page_size: Integer?
-
-          def page_size=: (Integer) -> Integer
+          def page=: (
+            Telnyx::AI::Assistants::ScheduledEventListParams::Page
+          ) -> Telnyx::AI::Assistants::ScheduledEventListParams::Page
 
           attr_reader to_date: Time?
 
@@ -41,8 +38,7 @@ module Telnyx
           def initialize: (
             ?conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
             ?from_date: Time,
-            ?page_number: Integer,
-            ?page_size: Integer,
+            ?page: Telnyx::AI::Assistants::ScheduledEventListParams::Page,
             ?to_date: Time,
             ?request_options: Telnyx::request_opts
           ) -> void
@@ -50,11 +46,26 @@ module Telnyx
           def to_hash: -> {
             conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
             from_date: Time,
-            page_number: Integer,
-            page_size: Integer,
+            page: Telnyx::AI::Assistants::ScheduledEventListParams::Page,
             to_date: Time,
             request_options: Telnyx::RequestOptions
           }
+
+          type page = { number: Integer, size: Integer }
+
+          class Page < Telnyx::Internal::Type::BaseModel
+            attr_reader number: Integer?
+
+            def number=: (Integer) -> Integer
+
+            attr_reader size: Integer?
+
+            def size=: (Integer) -> Integer
+
+            def initialize: (?number: Integer, ?size: Integer) -> void
+
+            def to_hash: -> { number: Integer, size: Integer }
+          end
         end
       end
     end

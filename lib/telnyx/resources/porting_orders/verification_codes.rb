@@ -21,7 +21,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PortingOrders::VerificationCodeListResponse>]
+        # @return [Telnyx::Models::PortingOrders::VerificationCodeListResponse]
         #
         # @see Telnyx::Models::PortingOrders::VerificationCodeListParams
         def list(id, params = {})
@@ -30,7 +30,6 @@ module Telnyx
             method: :get,
             path: ["porting_orders/%1$s/verification_codes", id],
             query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
             model: Telnyx::Models::PortingOrders::VerificationCodeListResponse,
             options: options
           )

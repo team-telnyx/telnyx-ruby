@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    type room_participant_list_response =
+      { data: ::Array[Telnyx::RoomParticipant], meta: Telnyx::PaginationMeta }
+
+    class RoomParticipantListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::RoomParticipant]?
+
+      def data=: (
+        ::Array[Telnyx::RoomParticipant]
+      ) -> ::Array[Telnyx::RoomParticipant]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::RoomParticipant],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::RoomParticipant],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

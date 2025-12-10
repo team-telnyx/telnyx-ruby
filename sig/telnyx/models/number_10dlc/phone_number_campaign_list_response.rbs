@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    module Number10dlc
+      type phone_number_campaign_list_response =
+        {
+          page: Integer,
+          records: ::Array[Telnyx::PhoneNumberCampaign],
+          total_records: Integer
+        }
+
+      class PhoneNumberCampaignListResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor page: Integer
+
+        attr_accessor records: ::Array[Telnyx::PhoneNumberCampaign]
+
+        attr_accessor total_records: Integer
+
+        def initialize: (
+          page: Integer,
+          records: ::Array[Telnyx::PhoneNumberCampaign],
+          total_records: Integer
+        ) -> void
+
+        def to_hash: -> {
+          page: Integer,
+          records: ::Array[Telnyx::PhoneNumberCampaign],
+          total_records: Integer
+        }
+      end
+    end
+  end
+end

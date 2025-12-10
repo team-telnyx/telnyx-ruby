@@ -13,7 +13,7 @@ class Telnyx::Test::Resources::Number10dlc::PhoneNumberCampaignsTest < Telnyx::T
       )
 
     assert_pattern do
-      response => Telnyx::Number10dlc::PhoneNumberCampaign
+      response => Telnyx::PhoneNumberCampaign
     end
 
     assert_pattern do
@@ -22,7 +22,7 @@ class Telnyx::Test::Resources::Number10dlc::PhoneNumberCampaignsTest < Telnyx::T
         created_at: String,
         phone_number: String,
         updated_at: String,
-        assignment_status: Telnyx::Number10dlc::PhoneNumberCampaign::AssignmentStatus | nil,
+        assignment_status: Telnyx::PhoneNumberCampaign::AssignmentStatus | nil,
         brand_id: String | nil,
         failure_reasons: String | nil,
         tcr_brand_id: String | nil,
@@ -38,7 +38,7 @@ class Telnyx::Test::Resources::Number10dlc::PhoneNumberCampaignsTest < Telnyx::T
     response = @telnyx.number_10dlc.phone_number_campaigns.retrieve("phoneNumber")
 
     assert_pattern do
-      response => Telnyx::Number10dlc::PhoneNumberCampaign
+      response => Telnyx::PhoneNumberCampaign
     end
 
     assert_pattern do
@@ -47,7 +47,7 @@ class Telnyx::Test::Resources::Number10dlc::PhoneNumberCampaignsTest < Telnyx::T
         created_at: String,
         phone_number: String,
         updated_at: String,
-        assignment_status: Telnyx::Number10dlc::PhoneNumberCampaign::AssignmentStatus | nil,
+        assignment_status: Telnyx::PhoneNumberCampaign::AssignmentStatus | nil,
         brand_id: String | nil,
         failure_reasons: String | nil,
         tcr_brand_id: String | nil,
@@ -64,11 +64,11 @@ class Telnyx::Test::Resources::Number10dlc::PhoneNumberCampaignsTest < Telnyx::T
       @telnyx.number_10dlc.phone_number_campaigns.update(
         "phoneNumber",
         campaign_id: "4b300178-131c-d902-d54e-72d90ba1620j",
-        phone_number: "+18005550199"
+        body_phone_number: "+18005550199"
       )
 
     assert_pattern do
-      response => Telnyx::Number10dlc::PhoneNumberCampaign
+      response => Telnyx::PhoneNumberCampaign
     end
 
     assert_pattern do
@@ -77,7 +77,7 @@ class Telnyx::Test::Resources::Number10dlc::PhoneNumberCampaignsTest < Telnyx::T
         created_at: String,
         phone_number: String,
         updated_at: String,
-        assignment_status: Telnyx::Number10dlc::PhoneNumberCampaign::AssignmentStatus | nil,
+        assignment_status: Telnyx::PhoneNumberCampaign::AssignmentStatus | nil,
         brand_id: String | nil,
         failure_reasons: String | nil,
         tcr_brand_id: String | nil,
@@ -93,28 +93,14 @@ class Telnyx::Test::Resources::Number10dlc::PhoneNumberCampaignsTest < Telnyx::T
     response = @telnyx.number_10dlc.phone_number_campaigns.list
 
     assert_pattern do
-      response => Telnyx::Internal::PerPagePaginationV2
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Number10dlc::PhoneNumberCampaign
+      response => Telnyx::Models::Number10dlc::PhoneNumberCampaignListResponse
     end
 
     assert_pattern do
-      row => {
-        campaign_id: String,
-        created_at: String,
-        phone_number: String,
-        updated_at: String,
-        assignment_status: Telnyx::Number10dlc::PhoneNumberCampaign::AssignmentStatus | nil,
-        brand_id: String | nil,
-        failure_reasons: String | nil,
-        tcr_brand_id: String | nil,
-        tcr_campaign_id: String | nil,
-        telnyx_campaign_id: String | nil
+      response => {
+        page: Integer,
+        records: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumberCampaign]),
+        total_records: Integer
       }
     end
   end
@@ -125,7 +111,7 @@ class Telnyx::Test::Resources::Number10dlc::PhoneNumberCampaignsTest < Telnyx::T
     response = @telnyx.number_10dlc.phone_number_campaigns.delete("phoneNumber")
 
     assert_pattern do
-      response => Telnyx::Number10dlc::PhoneNumberCampaign
+      response => Telnyx::PhoneNumberCampaign
     end
 
     assert_pattern do
@@ -134,7 +120,7 @@ class Telnyx::Test::Resources::Number10dlc::PhoneNumberCampaignsTest < Telnyx::T
         created_at: String,
         phone_number: String,
         updated_at: String,
-        assignment_status: Telnyx::Number10dlc::PhoneNumberCampaign::AssignmentStatus | nil,
+        assignment_status: Telnyx::PhoneNumberCampaign::AssignmentStatus | nil,
         brand_id: String | nil,
         failure_reasons: String | nil,
         tcr_brand_id: String | nil,

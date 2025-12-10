@@ -96,17 +96,15 @@ module Telnyx
       #
       # Returns a list of your SSO authentication providers.
       #
-      # @overload list(page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @overload list(page: nil, sort: nil, request_options: {})
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::AuthenticationProviderListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
       #
       # @param sort [Symbol, Telnyx::Models::AuthenticationProviderListParams::Sort] Specifies the sort order for results. By default sorting direction is ascending.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AuthenticationProvider>]
+      # @return [Telnyx::Models::AuthenticationProviderListResponse]
       #
       # @see Telnyx::Models::AuthenticationProviderListParams
       def list(params = {})
@@ -114,9 +112,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "authentication_providers",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::AuthenticationProvider,
+          query: parsed,
+          model: Telnyx::Models::AuthenticationProviderListResponse,
           options: options
         )
       end

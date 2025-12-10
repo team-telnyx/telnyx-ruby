@@ -97,7 +97,7 @@ module Telnyx
           page: Telnyx::AddressListParams::Page::OrHash,
           sort: Telnyx::AddressListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::Address])
+        ).returns(Telnyx::Models::AddressListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

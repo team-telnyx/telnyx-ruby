@@ -41,45 +41,13 @@ class Telnyx::Test::Resources::PhoneNumbersTest < Telnyx::Test::ResourceTest
     response = @telnyx.phone_numbers.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::PhoneNumberDetailed
+      response => Telnyx::Models::PhoneNumberListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        billing_group_id: String | nil,
-        call_forwarding_enabled: Telnyx::Internal::Type::Boolean | nil,
-        call_recording_enabled: Telnyx::Internal::Type::Boolean | nil,
-        caller_id_name_enabled: Telnyx::Internal::Type::Boolean | nil,
-        cnam_listing_enabled: Telnyx::Internal::Type::Boolean | nil,
-        connection_id: String | nil,
-        connection_name: String | nil,
-        country_iso_alpha2: String | nil,
-        created_at: String | nil,
-        customer_reference: String | nil,
-        deletion_lock_enabled: Telnyx::Internal::Type::Boolean | nil,
-        emergency_address_id: String | nil,
-        emergency_enabled: Telnyx::Internal::Type::Boolean | nil,
-        emergency_status: Telnyx::PhoneNumberDetailed::EmergencyStatus | nil,
-        external_pin: String | nil,
-        inbound_call_screening: Telnyx::PhoneNumberDetailed::InboundCallScreening | nil,
-        messaging_profile_id: String | nil,
-        messaging_profile_name: String | nil,
-        phone_number: String | nil,
-        phone_number_type: Telnyx::PhoneNumberDetailed::PhoneNumberType | nil,
-        purchased_at: String | nil,
-        record_type: String | nil,
-        source_type: Telnyx::PhoneNumberDetailed::SourceType | nil,
-        status: Telnyx::PhoneNumberDetailed::Status | nil,
-        t38_fax_gateway_enabled: Telnyx::Internal::Type::Boolean | nil,
-        tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumberDetailed]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end
@@ -106,39 +74,13 @@ class Telnyx::Test::Resources::PhoneNumbersTest < Telnyx::Test::ResourceTest
     response = @telnyx.phone_numbers.slim_list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Models::PhoneNumberSlimListResponse
+      response => Telnyx::Models::PhoneNumberSlimListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        billing_group_id: String | nil,
-        call_forwarding_enabled: Telnyx::Internal::Type::Boolean | nil,
-        call_recording_enabled: Telnyx::Internal::Type::Boolean | nil,
-        caller_id_name_enabled: Telnyx::Internal::Type::Boolean | nil,
-        cnam_listing_enabled: Telnyx::Internal::Type::Boolean | nil,
-        connection_id: String | nil,
-        country_iso_alpha2: String | nil,
-        created_at: String | nil,
-        customer_reference: String | nil,
-        emergency_address_id: String | nil,
-        emergency_enabled: Telnyx::Internal::Type::Boolean | nil,
-        emergency_status: Telnyx::Models::PhoneNumberSlimListResponse::EmergencyStatus | nil,
-        external_pin: String | nil,
-        inbound_call_screening: Telnyx::Models::PhoneNumberSlimListResponse::InboundCallScreening | nil,
-        phone_number: String | nil,
-        phone_number_type: Telnyx::Models::PhoneNumberSlimListResponse::PhoneNumberType | nil,
-        purchased_at: String | nil,
-        record_type: String | nil,
-        status: Telnyx::Models::PhoneNumberSlimListResponse::Status | nil,
-        t38_fax_gateway_enabled: Telnyx::Internal::Type::Boolean | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::PhoneNumberSlimListResponse::Data]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

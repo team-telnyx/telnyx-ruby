@@ -45,28 +45,13 @@ class Telnyx::Test::Resources::PrivateWirelessGatewaysTest < Telnyx::Test::Resou
     response = @telnyx.private_wireless_gateways.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::PrivateWirelessGateway
+      response => Telnyx::Models::PrivateWirelessGatewayListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        assigned_resources: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PwgAssignedResourcesSummary]) | nil,
-        created_at: String | nil,
-        ip_range: String | nil,
-        name: String | nil,
-        network_id: String | nil,
-        record_type: String | nil,
-        region_code: String | nil,
-        status: Telnyx::PrivateWirelessGatewayStatus | nil,
-        updated_at: String | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PrivateWirelessGateway]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end
