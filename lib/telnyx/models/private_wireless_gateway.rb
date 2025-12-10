@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::PrivateWirelessGateways#list
     class PrivateWirelessGateway < Telnyx::Internal::Type::BaseModel
       # @!attribute assigned_resources
       #   A list of the resources that have been assigned to the Private Wireless Gateway.

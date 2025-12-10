@@ -36,9 +36,9 @@ module Telnyx
           returns(
             T.nilable(
               T.any(
-                Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0,
-                Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember1,
-                Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember2
+                Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia,
+                Telnyx::AI::VoiceSettings::BackgroundAudio::MediaURL,
+                Telnyx::AI::VoiceSettings::BackgroundAudio::MediaName
               )
             )
           )
@@ -49,9 +49,9 @@ module Telnyx
           params(
             background_audio:
               T.any(
-                Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0::OrHash,
-                Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember1::OrHash,
-                Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember2::OrHash
+                Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::OrHash,
+                Telnyx::AI::VoiceSettings::BackgroundAudio::MediaURL::OrHash,
+                Telnyx::AI::VoiceSettings::BackgroundAudio::MediaName::OrHash
               )
           ).void
         end
@@ -72,9 +72,9 @@ module Telnyx
             api_key_ref: String,
             background_audio:
               T.any(
-                Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0::OrHash,
-                Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember1::OrHash,
-                Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember2::OrHash
+                Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::OrHash,
+                Telnyx::AI::VoiceSettings::BackgroundAudio::MediaURL::OrHash,
+                Telnyx::AI::VoiceSettings::BackgroundAudio::MediaName::OrHash
               ),
             voice_speed: Float
           ).returns(T.attached_class)
@@ -111,9 +111,9 @@ module Telnyx
               api_key_ref: String,
               background_audio:
                 T.any(
-                  Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0,
-                  Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember1,
-                  Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember2
+                  Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia,
+                  Telnyx::AI::VoiceSettings::BackgroundAudio::MediaURL,
+                  Telnyx::AI::VoiceSettings::BackgroundAudio::MediaName
                 ),
               voice_speed: Float
             }
@@ -131,94 +131,58 @@ module Telnyx
           Variants =
             T.type_alias do
               T.any(
-                Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0,
-                Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember1,
-                Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember2
+                Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia,
+                Telnyx::AI::VoiceSettings::BackgroundAudio::MediaURL,
+                Telnyx::AI::VoiceSettings::BackgroundAudio::MediaName
               )
             end
 
-          class UnionMember0 < Telnyx::Internal::Type::BaseModel
+          class PredefinedMedia < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0,
+                  Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia,
                   Telnyx::Internal::AnyHash
                 )
               end
 
             # Select from predefined media options.
-            sig do
-              returns(
-                Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0::Type::OrSymbol
-              )
-            end
+            sig { returns(Symbol) }
             attr_accessor :type
 
             # The predefined media to use. `silence` disables background audio.
             sig do
               returns(
-                Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0::Value::OrSymbol
+                Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::Value::OrSymbol
               )
             end
             attr_accessor :value
 
             sig do
               params(
-                type:
-                  Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0::Type::OrSymbol,
                 value:
-                  Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0::Value::OrSymbol
+                  Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::Value::OrSymbol,
+                type: Symbol
               ).returns(T.attached_class)
             end
             def self.new(
-              # Select from predefined media options.
-              type:,
               # The predefined media to use. `silence` disables background audio.
-              value:
+              value:,
+              # Select from predefined media options.
+              type: :predefined_media
             )
             end
 
             sig do
               override.returns(
                 {
-                  type:
-                    Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0::Type::OrSymbol,
+                  type: Symbol,
                   value:
-                    Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0::Value::OrSymbol
+                    Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::Value::OrSymbol
                 }
               )
             end
             def to_hash
-            end
-
-            # Select from predefined media options.
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0::Type
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              PREDEFINED_MEDIA =
-                T.let(
-                  :predefined_media,
-                  Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0::Type::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0::Type::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
             end
 
             # The predefined media to use. `silence` disables background audio.
@@ -229,7 +193,7 @@ module Telnyx
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0::Value
+                    Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::Value
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -237,18 +201,18 @@ module Telnyx
               SILENCE =
                 T.let(
                   :silence,
-                  Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0::Value::TaggedSymbol
+                  Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::Value::TaggedSymbol
                 )
               OFFICE =
                 T.let(
                   :office,
-                  Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0::Value::TaggedSymbol
+                  Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::Value::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember0::Value::TaggedSymbol
+                    Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::Value::TaggedSymbol
                   ]
                 )
               end
@@ -257,21 +221,17 @@ module Telnyx
             end
           end
 
-          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+          class MediaURL < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember1,
+                  Telnyx::AI::VoiceSettings::BackgroundAudio::MediaURL,
                   Telnyx::Internal::AnyHash
                 )
               end
 
             # Provide a direct URL to an MP3 file. The audio will loop during the call.
-            sig do
-              returns(
-                Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember1::Type::OrSymbol
-              )
-            end
+            sig { returns(Symbol) }
             attr_accessor :type
 
             # HTTPS URL to an MP3 file.
@@ -279,78 +239,32 @@ module Telnyx
             attr_accessor :value
 
             sig do
-              params(
-                type:
-                  Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember1::Type::OrSymbol,
-                value: String
-              ).returns(T.attached_class)
+              params(value: String, type: Symbol).returns(T.attached_class)
             end
             def self.new(
-              # Provide a direct URL to an MP3 file. The audio will loop during the call.
-              type:,
               # HTTPS URL to an MP3 file.
-              value:
+              value:,
+              # Provide a direct URL to an MP3 file. The audio will loop during the call.
+              type: :media_url
             )
             end
 
-            sig do
-              override.returns(
-                {
-                  type:
-                    Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember1::Type::OrSymbol,
-                  value: String
-                }
-              )
-            end
+            sig { override.returns({ type: Symbol, value: String }) }
             def to_hash
-            end
-
-            # Provide a direct URL to an MP3 file. The audio will loop during the call.
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember1::Type
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              MEDIA_URL =
-                T.let(
-                  :media_url,
-                  Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember1::Type::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember1::Type::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
             end
           end
 
-          class UnionMember2 < Telnyx::Internal::Type::BaseModel
+          class MediaName < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember2,
+                  Telnyx::AI::VoiceSettings::BackgroundAudio::MediaName,
                   Telnyx::Internal::AnyHash
                 )
               end
 
             # Reference a previously uploaded media by its name from Telnyx Media Storage.
-            sig do
-              returns(
-                Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember2::Type::OrSymbol
-              )
-            end
+            sig { returns(Symbol) }
             attr_accessor :type
 
             # The `name` of a media asset created via
@@ -360,62 +274,20 @@ module Telnyx
             attr_accessor :value
 
             sig do
-              params(
-                type:
-                  Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember2::Type::OrSymbol,
-                value: String
-              ).returns(T.attached_class)
+              params(value: String, type: Symbol).returns(T.attached_class)
             end
             def self.new(
-              # Reference a previously uploaded media by its name from Telnyx Media Storage.
-              type:,
               # The `name` of a media asset created via
               # [Media Storage API](https://developers.telnyx.com/api/media-storage/create-media-storage).
               # The audio will loop during the call.
-              value:
+              value:,
+              # Reference a previously uploaded media by its name from Telnyx Media Storage.
+              type: :media_name
             )
             end
 
-            sig do
-              override.returns(
-                {
-                  type:
-                    Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember2::Type::OrSymbol,
-                  value: String
-                }
-              )
-            end
+            sig { override.returns({ type: Symbol, value: String }) }
             def to_hash
-            end
-
-            # Reference a previously uploaded media by its name from Telnyx Media Storage.
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember2::Type
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              MEDIA_NAME =
-                T.let(
-                  :media_name,
-                  Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember2::Type::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::AI::VoiceSettings::BackgroundAudio::UnionMember2::Type::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
             end
           end
 

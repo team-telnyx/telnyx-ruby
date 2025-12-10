@@ -4,55 +4,23 @@ module Telnyx
       type autoresp_config_list_response =
         {
           data: ::Array[Telnyx::MessagingProfiles::AutoRespConfig],
-          meta: Telnyx::Models::MessagingProfiles::AutorespConfigListResponse::Meta
+          meta: Telnyx::MessagingPaginationMeta
         }
 
       class AutorespConfigListResponse < Telnyx::Internal::Type::BaseModel
         attr_accessor data: ::Array[Telnyx::MessagingProfiles::AutoRespConfig]
 
-        attr_accessor meta: Telnyx::Models::MessagingProfiles::AutorespConfigListResponse::Meta
+        attr_accessor meta: Telnyx::MessagingPaginationMeta
 
         def initialize: (
           data: ::Array[Telnyx::MessagingProfiles::AutoRespConfig],
-          meta: Telnyx::Models::MessagingProfiles::AutorespConfigListResponse::Meta
+          meta: Telnyx::MessagingPaginationMeta
         ) -> void
 
         def to_hash: -> {
           data: ::Array[Telnyx::MessagingProfiles::AutoRespConfig],
-          meta: Telnyx::Models::MessagingProfiles::AutorespConfigListResponse::Meta
+          meta: Telnyx::MessagingPaginationMeta
         }
-
-        type meta =
-          {
-            page_number: Integer,
-            page_size: Integer,
-            total_pages: Integer,
-            total_results: Integer
-          }
-
-        class Meta < Telnyx::Internal::Type::BaseModel
-          attr_accessor page_number: Integer
-
-          attr_accessor page_size: Integer
-
-          attr_accessor total_pages: Integer
-
-          attr_accessor total_results: Integer
-
-          def initialize: (
-            page_number: Integer,
-            page_size: Integer,
-            total_pages: Integer,
-            total_results: Integer
-          ) -> void
-
-          def to_hash: -> {
-            page_number: Integer,
-            page_size: Integer,
-            total_pages: Integer,
-            total_results: Integer
-          }
-        end
       end
     end
   end

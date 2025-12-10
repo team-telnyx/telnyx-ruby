@@ -52,13 +52,26 @@ class Telnyx::Test::Resources::ExternalConnections::UploadsTest < Telnyx::Test::
     response = @telnyx.external_connections.uploads.list("id")
 
     assert_pattern do
-      response => Telnyx::Models::ExternalConnections::UploadListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::ExternalConnections::Upload
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::ExternalConnections::Upload]) | nil,
-        meta: Telnyx::ExternalVoiceIntegrationsPaginationMeta | nil
+      row => {
+        available_usages: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::ExternalConnections::Upload::AvailableUsage]) | nil,
+        error_code: String | nil,
+        error_message: String | nil,
+        location_id: String | nil,
+        status: Telnyx::ExternalConnections::Upload::Status | nil,
+        tenant_id: String | nil,
+        ticket_id: String | nil,
+        tn_upload_entries: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::ExternalConnections::TnUploadEntry]) | nil
       }
     end
   end

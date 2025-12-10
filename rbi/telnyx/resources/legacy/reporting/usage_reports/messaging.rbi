@@ -53,7 +53,9 @@ module Telnyx
                 per_page: Integer,
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(
-                Telnyx::Models::Legacy::Reporting::UsageReports::MessagingListResponse
+                Telnyx::Internal::PerPagePagination[
+                  Telnyx::Legacy::Reporting::UsageReports::MdrUsageReportResponseLegacy
+                ]
               )
             end
             def list(

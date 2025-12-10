@@ -167,7 +167,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::IPConnectionListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::IPConnection>]
       #
       # @see Telnyx::Models::IPConnectionListParams
       def list(params = {})
@@ -176,7 +176,8 @@ module Telnyx
           method: :get,
           path: "ip_connections",
           query: parsed,
-          model: Telnyx::Models::IPConnectionListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::IPConnection,
           options: options
         )
       end

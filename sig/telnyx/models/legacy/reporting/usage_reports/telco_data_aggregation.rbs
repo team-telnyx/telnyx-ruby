@@ -1,0 +1,49 @@
+module Telnyx
+  module Models
+    module Legacy
+      module Reporting
+        module UsageReports
+          type telco_data_aggregation =
+            {
+              currency: String,
+              total_cost: Float,
+              total_dips: Integer,
+              type: String
+            }
+
+          class TelcoDataAggregation < Telnyx::Internal::Type::BaseModel
+            attr_reader currency: String?
+
+            def currency=: (String) -> String
+
+            attr_reader total_cost: Float?
+
+            def total_cost=: (Float) -> Float
+
+            attr_reader total_dips: Integer?
+
+            def total_dips=: (Integer) -> Integer
+
+            attr_reader type: String?
+
+            def type=: (String) -> String
+
+            def initialize: (
+              ?currency: String,
+              ?total_cost: Float,
+              ?total_dips: Integer,
+              ?type: String
+            ) -> void
+
+            def to_hash: -> {
+              currency: String,
+              total_cost: Float,
+              total_dips: Integer,
+              type: String
+            }
+          end
+        end
+      end
+    end
+  end
+end

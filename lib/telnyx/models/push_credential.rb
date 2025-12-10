@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::MobilePushCredentials#list
     class PushCredential < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Unique identifier of a push credential

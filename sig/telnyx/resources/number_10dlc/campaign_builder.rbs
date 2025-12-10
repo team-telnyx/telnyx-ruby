@@ -41,7 +41,7 @@ module Telnyx
           ?webhook_failover_url: String,
           ?webhook_url: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::TelnyxCampaignCsp
+        ) -> Telnyx::Number10dlc::TelnyxCampaignCsp
 
         def initialize: (client: Telnyx::Client) -> void
       end

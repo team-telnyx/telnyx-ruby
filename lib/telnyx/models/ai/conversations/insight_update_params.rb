@@ -16,7 +16,7 @@ module Telnyx
 
           # @!attribute json_schema
           #
-          #   @return [String, Object, nil]
+          #   @return [String, Hash{Symbol=>Object}, nil]
           optional :json_schema, union: -> { Telnyx::AI::Conversations::InsightUpdateParams::JsonSchema }
 
           # @!attribute name
@@ -31,7 +31,7 @@ module Telnyx
 
           # @!method initialize(instructions: nil, json_schema: nil, name: nil, webhook: nil, request_options: {})
           #   @param instructions [String]
-          #   @param json_schema [String, Object]
+          #   @param json_schema [String, Hash{Symbol=>Object}]
           #   @param name [String]
           #   @param webhook [String]
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
@@ -41,10 +41,13 @@ module Telnyx
 
             variant String
 
-            variant Telnyx::Internal::Type::Unknown
+            variant -> { Telnyx::Models::AI::Conversations::InsightUpdateParams::JsonSchema::JsonSchemaObjectMap }
 
             # @!method self.variants
-            #   @return [Array(String, Object)]
+            #   @return [Array(String, Hash{Symbol=>Object})]
+
+            # @type [Telnyx::Internal::Type::Converter]
+            JsonSchemaObjectMap = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
           end
         end
       end

@@ -8,7 +8,7 @@ module Telnyx
           url: String,
           body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::BodyParameters,
           headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Header],
-          method_: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_,
+          http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_,
           path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::PathParameters,
           query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters
         }
@@ -32,9 +32,9 @@ module Telnyx
           ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Header]
         ) -> ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Header]
 
-        attr_reader method_: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_?
+        attr_reader http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_?
 
-        def method_=: (
+        def http_method=: (
           Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_
         ) -> Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_
 
@@ -56,7 +56,7 @@ module Telnyx
           url: String,
           ?body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::BodyParameters,
           ?headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Header],
-          ?method_: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_,
+          ?http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_,
           ?path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::PathParameters,
           ?query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters
         ) -> void
@@ -67,7 +67,7 @@ module Telnyx
           url: String,
           body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::BodyParameters,
           headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Header],
-          method_: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_,
+          http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_,
           path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::PathParameters,
           query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters
         }

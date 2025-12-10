@@ -52,7 +52,7 @@ module Telnyx
       #
       # Fetch all Wdr records
       #
-      # @overload list_wdrs(id: nil, end_date: nil, imsi: nil, mcc: nil, mnc: nil, page: nil, phone_number: nil, sim_card_id: nil, sim_group_id: nil, sim_group_name: nil, sort: nil, start_date: nil, request_options: {})
+      # @overload list_wdrs(id: nil, end_date: nil, imsi: nil, mcc: nil, mnc: nil, page_number: nil, page_size: nil, phone_number: nil, sim_card_id: nil, sim_group_id: nil, sim_group_name: nil, sort: nil, start_date: nil, request_options: {})
       #
       # @param id [String] WDR uuid
       #
@@ -64,7 +64,9 @@ module Telnyx
       #
       # @param mnc [String] Mobile network code
       #
-      # @param page [Telnyx::Models::ReportListWdrsParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param phone_number [String] Phone number
       #
@@ -80,7 +82,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::ReportListWdrsResponse]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::ReportListWdrsResponse>]
       #
       # @see Telnyx::Models::ReportListWdrsParams
       def list_wdrs(params = {})
@@ -88,7 +90,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "reports/wdrs",
-          query: parsed,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::ReportListWdrsResponse,
           options: options
         )

@@ -44,7 +44,7 @@ module Telnyx
           filter: Telnyx::ShortCodeListParams::Filter::OrHash,
           page: Telnyx::ShortCodeListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::ShortCodeListResponse)
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::ShortCode])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

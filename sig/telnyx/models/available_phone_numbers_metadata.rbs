@@ -1,0 +1,23 @@
+module Telnyx
+  module Models
+    type available_phone_numbers_metadata =
+      { best_effort_results: Integer, total_results: Integer }
+
+    class AvailablePhoneNumbersMetadata < Telnyx::Internal::Type::BaseModel
+      attr_reader best_effort_results: Integer?
+
+      def best_effort_results=: (Integer) -> Integer
+
+      attr_reader total_results: Integer?
+
+      def total_results=: (Integer) -> Integer
+
+      def initialize: (
+        ?best_effort_results: Integer,
+        ?total_results: Integer
+      ) -> void
+
+      def to_hash: -> { best_effort_results: Integer, total_results: Integer }
+    end
+  end
+end

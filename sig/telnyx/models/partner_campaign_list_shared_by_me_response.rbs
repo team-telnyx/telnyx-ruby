@@ -1,0 +1,44 @@
+module Telnyx
+  module Models
+    type partner_campaign_list_shared_by_me_response =
+      {
+        brand_id: String,
+        campaign_id: String,
+        usecase: String,
+        create_date: String,
+        status: String
+      }
+
+    class PartnerCampaignListSharedByMeResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor brand_id: String
+
+      attr_accessor campaign_id: String
+
+      attr_accessor usecase: String
+
+      attr_reader create_date: String?
+
+      def create_date=: (String) -> String
+
+      attr_reader status: String?
+
+      def status=: (String) -> String
+
+      def initialize: (
+        brand_id: String,
+        campaign_id: String,
+        usecase: String,
+        ?create_date: String,
+        ?status: String
+      ) -> void
+
+      def to_hash: -> {
+        brand_id: String,
+        campaign_id: String,
+        usecase: String,
+        create_date: String,
+        status: String
+      }
+    end
+  end
+end

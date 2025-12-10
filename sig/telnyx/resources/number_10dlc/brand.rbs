@@ -2,16 +2,14 @@ module Telnyx
   module Resources
     class Number10dlc
       class Brand
-        attr_reader sms_otp: Telnyx::Resources::Number10dlc::Brand::SMSOtp
-
         attr_reader external_vetting: Telnyx::Resources::Number10dlc::Brand::ExternalVetting
 
         def create: (
           country: String,
           display_name: String,
           email: String,
-          entity_type: Telnyx::Models::entity_type,
-          vertical: Telnyx::Models::vertical,
+          entity_type: Telnyx::Models::Number10dlc::entity_type,
+          vertical: Telnyx::Models::Number10dlc::vertical,
           ?business_contact_email: String,
           ?city: String,
           ?company_name: String,
@@ -25,14 +23,14 @@ module Telnyx
           ?phone: String,
           ?postal_code: String,
           ?state: String,
-          ?stock_exchange: Telnyx::Models::stock_exchange,
+          ?stock_exchange: Telnyx::Models::Number10dlc::stock_exchange,
           ?stock_symbol: String,
           ?street: String,
           ?webhook_failover_url: String,
           ?webhook_url: String,
           ?website: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::TelnyxBrand
+        ) -> Telnyx::Number10dlc::TelnyxBrand
 
         def retrieve: (
           String brand_id,
@@ -44,30 +42,30 @@ module Telnyx
           country: String,
           display_name: String,
           email: String,
-          entity_type: Telnyx::Models::entity_type,
-          vertical: Telnyx::Models::vertical,
+          entity_type: Telnyx::Models::Number10dlc::entity_type,
+          vertical: Telnyx::Models::Number10dlc::vertical,
           ?alt_business_id: String,
-          ?alt_business_id_type: Telnyx::Models::alt_business_id_type,
+          ?alt_business_id_type: Telnyx::Models::Number10dlc::alt_business_id_type,
           ?business_contact_email: String,
           ?city: String,
           ?company_name: String,
           ?ein: String,
           ?first_name: String,
-          ?identity_status: Telnyx::Models::brand_identity_status,
+          ?identity_status: Telnyx::Models::Number10dlc::brand_identity_status,
           ?ip_address: String,
           ?is_reseller: bool,
           ?last_name: String,
           ?phone: String,
           ?postal_code: String,
           ?state: String,
-          ?stock_exchange: Telnyx::Models::stock_exchange,
+          ?stock_exchange: Telnyx::Models::Number10dlc::stock_exchange,
           ?stock_symbol: String,
           ?street: String,
           ?webhook_failover_url: String,
           ?webhook_url: String,
           ?website: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::TelnyxBrand
+        ) -> Telnyx::Number10dlc::TelnyxBrand
 
         def list: (
           ?brand_id: String,
@@ -80,7 +78,7 @@ module Telnyx
           ?state: String,
           ?tcr_brand_id: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Number10dlc::BrandListResponse
+        ) -> Telnyx::Internal::PerPagePaginationV2[Telnyx::Models::Number10dlc::BrandListResponse]
 
         def delete: (
           String brand_id,
@@ -97,10 +95,16 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> nil
 
+        def retrieve_sms_otp_status: (
+          String reference_id,
+          ?brand_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Number10dlc::BrandRetrieveSMSOtpStatusResponse
+
         def revet: (
           String brand_id,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::TelnyxBrand
+        ) -> Telnyx::Number10dlc::TelnyxBrand
 
         def initialize: (client: Telnyx::Client) -> void
       end

@@ -60,7 +60,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::GlobalIPListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::GlobalIPListResponse>]
       #
       # @see Telnyx::Models::GlobalIPListParams
       def list(params = {})
@@ -69,6 +69,7 @@ module Telnyx
           method: :get,
           path: "global_ips",
           query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::GlobalIPListResponse,
           options: options
         )

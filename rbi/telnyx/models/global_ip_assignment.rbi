@@ -2,46 +2,25 @@
 
 module Telnyx
   module Models
-    class GlobalIPAssignment < Telnyx::Models::Record
+    class GlobalIPAssignment < Telnyx::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
           T.any(Telnyx::GlobalIPAssignment, Telnyx::Internal::AnyHash)
         end
 
-      # Global IP ID.
+      # Identifies the resource.
       sig { returns(T.nilable(String)) }
-      attr_reader :global_ip_id
+      attr_reader :id
 
-      sig { params(global_ip_id: String).void }
-      attr_writer :global_ip_id
+      sig { params(id: String).void }
+      attr_writer :id
 
-      # Enable/disable BGP announcement.
-      sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :is_in_maintenance
-
-      sig { params(is_in_maintenance: T::Boolean).void }
-      attr_writer :is_in_maintenance
-
-      # Wireguard peer ID.
+      # ISO 8601 formatted date-time indicating when the resource was created.
       sig { returns(T.nilable(String)) }
-      attr_reader :wireguard_peer_id
+      attr_reader :created_at
 
-      sig { params(wireguard_peer_id: String).void }
-      attr_writer :wireguard_peer_id
-
-      # Status of BGP announcement.
-      sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :is_announced
-
-      sig { params(is_announced: T::Boolean).void }
-      attr_writer :is_announced
-
-      # Wireguard peer is connected.
-      sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :is_connected
-
-      sig { params(is_connected: T::Boolean).void }
-      attr_writer :is_connected
+      sig { params(created_at: String).void }
+      attr_writer :created_at
 
       # Identifies the type of the resource.
       sig { returns(T.nilable(String)) }
@@ -50,52 +29,40 @@ module Telnyx
       sig { params(record_type: String).void }
       attr_writer :record_type
 
-      # The current status of the interface deployment.
-      sig { returns(T.nilable(Telnyx::InterfaceStatus::OrSymbol)) }
-      attr_reader :status
+      # ISO 8601 formatted date-time indicating when the resource was updated.
+      sig { returns(T.nilable(String)) }
+      attr_reader :updated_at
 
-      sig { params(status: Telnyx::InterfaceStatus::OrSymbol).void }
-      attr_writer :status
+      sig { params(updated_at: String).void }
+      attr_writer :updated_at
 
       sig do
         params(
-          global_ip_id: String,
-          is_announced: T::Boolean,
-          is_connected: T::Boolean,
-          is_in_maintenance: T::Boolean,
+          id: String,
+          created_at: String,
           record_type: String,
-          status: Telnyx::InterfaceStatus::OrSymbol,
-          wireguard_peer_id: String
+          updated_at: String
         ).returns(T.attached_class)
       end
       def self.new(
-        # Global IP ID.
-        global_ip_id: nil,
-        # Status of BGP announcement.
-        is_announced: nil,
-        # Wireguard peer is connected.
-        is_connected: nil,
-        # Enable/disable BGP announcement.
-        is_in_maintenance: nil,
+        # Identifies the resource.
+        id: nil,
+        # ISO 8601 formatted date-time indicating when the resource was created.
+        created_at: nil,
         # Identifies the type of the resource.
         record_type: nil,
-        # The current status of the interface deployment.
-        status: nil,
-        # Wireguard peer ID.
-        wireguard_peer_id: nil
+        # ISO 8601 formatted date-time indicating when the resource was updated.
+        updated_at: nil
       )
       end
 
       sig do
         override.returns(
           {
-            global_ip_id: String,
-            is_announced: T::Boolean,
-            is_connected: T::Boolean,
-            is_in_maintenance: T::Boolean,
+            id: String,
+            created_at: String,
             record_type: String,
-            status: Telnyx::InterfaceStatus::OrSymbol,
-            wireguard_peer_id: String
+            updated_at: String
           }
         )
       end

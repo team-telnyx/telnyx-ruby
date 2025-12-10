@@ -20,7 +20,7 @@ module Telnyx
           ?filter: Telnyx::ExternalConnections::PhoneNumberListParams::Filter,
           ?page: Telnyx::ExternalConnections::PhoneNumberListParams::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::ExternalConnections::PhoneNumberListResponse
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::ExternalConnections::ExternalConnectionPhoneNumber]
 
         def initialize: (client: Telnyx::Client) -> void
       end

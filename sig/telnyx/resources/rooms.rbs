@@ -37,7 +37,7 @@ module Telnyx
         ?include_sessions: bool,
         ?page: Telnyx::RoomListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::RoomListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Room]
 
       def delete: (
         String room_id,

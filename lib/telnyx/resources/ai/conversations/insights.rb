@@ -13,7 +13,7 @@ module Telnyx
           #
           # @param name [String]
           #
-          # @param json_schema [String, Object] If specified, the output will follow the JSON schema.
+          # @param json_schema [String, Hash{Symbol=>Object}] If specified, the output will follow the JSON schema.
           #
           # @param webhook [String]
           #
@@ -61,7 +61,7 @@ module Telnyx
           #
           # @param instructions [String]
           #
-          # @param json_schema [String, Object]
+          # @param json_schema [String, Hash{Symbol=>Object}]
           #
           # @param name [String]
           #
@@ -83,18 +83,15 @@ module Telnyx
             )
           end
 
-          # Some parameter documentations has been truncated, see
-          # {Telnyx::Models::AI::Conversations::InsightListParams} for more details.
-          #
           # Get all insights
           #
-          # @overload list(page: nil, request_options: {})
+          # @overload list(page_number: nil, page_size: nil, request_options: {})
           #
-          # @param page [Telnyx::Models::AI::Conversations::InsightListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
-          #
+          # @param page_number [Integer]
+          # @param page_size [Integer]
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::AI::Conversations::InsightListResponse]
+          # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::Conversations::InsightTemplate>]
           #
           # @see Telnyx::Models::AI::Conversations::InsightListParams
           def list(params = {})
@@ -102,8 +99,9 @@ module Telnyx
             @client.request(
               method: :get,
               path: "ai/conversations/insights",
-              query: parsed,
-              model: Telnyx::Models::AI::Conversations::InsightListResponse,
+              query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+              page: Telnyx::Internal::DefaultFlatPagination,
+              model: Telnyx::AI::Conversations::InsightTemplate,
               options: options
             )
           end

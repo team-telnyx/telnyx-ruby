@@ -45,7 +45,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::PortingOrders::AdditionalDocumentListResponse]
+        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PortingOrders::AdditionalDocumentListResponse>]
         #
         # @see Telnyx::Models::PortingOrders::AdditionalDocumentListParams
         def list(id, params = {})
@@ -54,6 +54,7 @@ module Telnyx
             method: :get,
             path: ["porting_orders/%1$s/additional_documents", id],
             query: parsed,
+            page: Telnyx::Internal::DefaultPagination,
             model: Telnyx::Models::PortingOrders::AdditionalDocumentListResponse,
             options: options
           )

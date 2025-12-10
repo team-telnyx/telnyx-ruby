@@ -190,7 +190,7 @@ module Telnyx
             T.nilable(
               T::Array[
                 T.any(
-                  Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam,
+                  Telnyx::AI::ChatCreateCompletionParams::Tool::Function,
                   Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval
                 )
               ]
@@ -204,7 +204,7 @@ module Telnyx
             tools:
               T::Array[
                 T.any(
-                  Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::OrHash,
+                  Telnyx::AI::ChatCreateCompletionParams::Tool::Function::OrHash,
                   Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval::OrHash
                 )
               ]
@@ -265,7 +265,7 @@ module Telnyx
             tools:
               T::Array[
                 T.any(
-                  Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::OrHash,
+                  Telnyx::AI::ChatCreateCompletionParams::Tool::Function::OrHash,
                   Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval::OrHash
                 )
               ],
@@ -376,7 +376,7 @@ module Telnyx
               tools:
                 T::Array[
                   T.any(
-                    Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam,
+                    Telnyx::AI::ChatCreateCompletionParams::Tool::Function,
                     Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval
                   )
                 ],
@@ -716,23 +716,23 @@ module Telnyx
           Variants =
             T.type_alias do
               T.any(
-                Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam,
+                Telnyx::AI::ChatCreateCompletionParams::Tool::Function,
                 Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval
               )
             end
 
-          class ChatCompletionToolParam < Telnyx::Internal::Type::BaseModel
+          class Function < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam,
+                  Telnyx::AI::ChatCreateCompletionParams::Tool::Function,
                   Telnyx::Internal::AnyHash
                 )
               end
 
             sig do
               returns(
-                Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Function
+                Telnyx::AI::ChatCreateCompletionParams::Tool::Function::Function
               )
             end
             attr_reader :function
@@ -740,36 +740,30 @@ module Telnyx
             sig do
               params(
                 function:
-                  Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Function::OrHash
+                  Telnyx::AI::ChatCreateCompletionParams::Tool::Function::Function::OrHash
               ).void
             end
             attr_writer :function
 
-            sig do
-              returns(
-                Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Type::OrSymbol
-              )
-            end
+            sig { returns(Symbol) }
             attr_accessor :type
 
             sig do
               params(
                 function:
-                  Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Function::OrHash,
-                type:
-                  Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Type::OrSymbol
+                  Telnyx::AI::ChatCreateCompletionParams::Tool::Function::Function::OrHash,
+                type: Symbol
               ).returns(T.attached_class)
             end
-            def self.new(function:, type:)
+            def self.new(function:, type: :function)
             end
 
             sig do
               override.returns(
                 {
                   function:
-                    Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Function,
-                  type:
-                    Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Type::OrSymbol
+                    Telnyx::AI::ChatCreateCompletionParams::Tool::Function::Function,
+                  type: Symbol
                 }
               )
             end
@@ -780,7 +774,7 @@ module Telnyx
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Function,
+                    Telnyx::AI::ChatCreateCompletionParams::Tool::Function::Function,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -822,35 +816,6 @@ module Telnyx
               def to_hash
               end
             end
-
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Type
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              FUNCTION =
-                T.let(
-                  :function,
-                  Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Type::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Type::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
           end
 
           class Retrieval < Telnyx::Internal::Type::BaseModel
@@ -872,62 +837,27 @@ module Telnyx
             end
             attr_writer :retrieval
 
-            sig do
-              returns(
-                Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval::Type::OrSymbol
-              )
-            end
+            sig { returns(Symbol) }
             attr_accessor :type
 
             sig do
               params(
                 retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs::OrHash,
-                type:
-                  Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval::Type::OrSymbol
+                type: Symbol
               ).returns(T.attached_class)
             end
-            def self.new(retrieval:, type:)
+            def self.new(retrieval:, type: :retrieval)
             end
 
             sig do
               override.returns(
                 {
                   retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs,
-                  type:
-                    Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval::Type::OrSymbol
+                  type: Symbol
                 }
               )
             end
             def to_hash
-            end
-
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval::Type
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              RETRIEVAL =
-                T.let(
-                  :retrieval,
-                  Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval::Type::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval::Type::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
             end
           end
 

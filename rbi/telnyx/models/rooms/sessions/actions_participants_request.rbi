@@ -26,7 +26,7 @@ module Telnyx
             returns(
               T.nilable(
                 T.any(
-                  Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::OrSymbol,
+                  Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::AllParticipants::OrSymbol,
                   T::Array[String]
                 )
               )
@@ -38,7 +38,7 @@ module Telnyx
             params(
               participants:
                 T.any(
-                  Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::OrSymbol,
+                  Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::AllParticipants::OrSymbol,
                   T::Array[String]
                 )
             ).void
@@ -50,7 +50,7 @@ module Telnyx
               exclude: T::Array[String],
               participants:
                 T.any(
-                  Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::OrSymbol,
+                  Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::AllParticipants::OrSymbol,
                   T::Array[String]
                 )
             ).returns(T.attached_class)
@@ -70,7 +70,7 @@ module Telnyx
                 exclude: T::Array[String],
                 participants:
                   T.any(
-                    Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::OrSymbol,
+                    Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::AllParticipants::OrSymbol,
                     T::Array[String]
                   )
               }
@@ -87,10 +87,39 @@ module Telnyx
             Variants =
               T.type_alias do
                 T.any(
-                  Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::TaggedSymbol,
+                  Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::AllParticipants::TaggedSymbol,
                   T::Array[String]
                 )
               end
+
+            module AllParticipants
+              extend Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::AllParticipants
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              ALL =
+                T.let(
+                  :all,
+                  Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::AllParticipants::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::AllParticipants::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
 
             sig do
               override.returns(
@@ -101,21 +130,6 @@ module Telnyx
             end
             def self.variants
             end
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            ALL =
-              T.let(
-                :all,
-                Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::TaggedSymbol
-              )
 
             StringArray =
               T.let(

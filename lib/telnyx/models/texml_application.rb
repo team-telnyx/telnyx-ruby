@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::TexmlApplications#list
     class TexmlApplication < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Uniquely identifies the resource.

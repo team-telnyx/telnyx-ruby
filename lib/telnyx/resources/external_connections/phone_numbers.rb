@@ -79,7 +79,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::ExternalConnections::PhoneNumberListResponse]
+        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ExternalConnections::ExternalConnectionPhoneNumber>]
         #
         # @see Telnyx::Models::ExternalConnections::PhoneNumberListParams
         def list(id, params = {})
@@ -88,7 +88,8 @@ module Telnyx
             method: :get,
             path: ["external_connections/%1$s/phone_numbers", id],
             query: parsed,
-            model: Telnyx::Models::ExternalConnections::PhoneNumberListResponse,
+            page: Telnyx::Internal::DefaultPagination,
+            model: Telnyx::ExternalConnections::ExternalConnectionPhoneNumber,
             options: options
           )
         end

@@ -57,13 +57,25 @@ class Telnyx::Test::Resources::IPsTest < Telnyx::Test::ResourceTest
     response = @telnyx.ips.list
 
     assert_pattern do
-      response => Telnyx::Models::IPListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::IP
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::IP]) | nil,
-        meta: Telnyx::ConnectionsPaginationMeta | nil
+      row => {
+        id: String | nil,
+        connection_id: String | nil,
+        created_at: String | nil,
+        ip_address: String | nil,
+        port: Integer | nil,
+        record_type: String | nil,
+        updated_at: String | nil
       }
     end
   end

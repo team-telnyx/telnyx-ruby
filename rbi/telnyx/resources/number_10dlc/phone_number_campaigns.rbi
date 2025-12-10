@@ -10,7 +10,7 @@ module Telnyx
             campaign_id: String,
             phone_number: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::PhoneNumberCampaign)
+          ).returns(Telnyx::Number10dlc::PhoneNumberCampaign)
         end
         def create(
           # The ID of the campaign you want to link to the specified phone number.
@@ -26,7 +26,7 @@ module Telnyx
           params(
             phone_number: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::PhoneNumberCampaign)
+          ).returns(Telnyx::Number10dlc::PhoneNumberCampaign)
         end
         def retrieve(phone_number, request_options: {})
         end
@@ -34,18 +34,18 @@ module Telnyx
         # Create New Phone Number Campaign
         sig do
           params(
-            path_phone_number: String,
+            campaign_phone_number: String,
             campaign_id: String,
-            body_phone_number: String,
+            phone_number: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::PhoneNumberCampaign)
+          ).returns(Telnyx::Number10dlc::PhoneNumberCampaign)
         end
         def update(
-          path_phone_number,
+          campaign_phone_number,
           # The ID of the campaign you want to link to the specified phone number.
           campaign_id:,
           # The phone number you want to link to a specified campaign.
-          body_phone_number:,
+          phone_number:,
           request_options: {}
         )
         end
@@ -61,7 +61,9 @@ module Telnyx
               Telnyx::Number10dlc::PhoneNumberCampaignListParams::Sort::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Models::Number10dlc::PhoneNumberCampaignListResponse
+            Telnyx::Internal::PerPagePaginationV2[
+              Telnyx::Number10dlc::PhoneNumberCampaign
+            ]
           )
         end
         def list(
@@ -84,7 +86,7 @@ module Telnyx
           params(
             phone_number: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::PhoneNumberCampaign)
+          ).returns(Telnyx::Number10dlc::PhoneNumberCampaign)
         end
         def delete(phone_number, request_options: {})
         end

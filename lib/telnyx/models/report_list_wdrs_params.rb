@@ -37,12 +37,15 @@ module Telnyx
       #   @return [String, nil]
       optional :mnc, String
 
-      # @!attribute page
-      #   Consolidated page parameter (deepObject style). Originally: page[number],
-      #   page[size]
+      # @!attribute page_number
       #
-      #   @return [Telnyx::Models::ReportListWdrsParams::Page, nil]
-      optional :page, -> { Telnyx::ReportListWdrsParams::Page }
+      #   @return [Integer, nil]
+      optional :page_number, Integer
+
+      # @!attribute page_size
+      #
+      #   @return [Integer, nil]
+      optional :page_size, Integer
 
       # @!attribute phone_number
       #   Phone number
@@ -81,7 +84,7 @@ module Telnyx
       #   @return [String, nil]
       optional :start_date, String
 
-      # @!method initialize(id: nil, end_date: nil, imsi: nil, mcc: nil, mnc: nil, page: nil, phone_number: nil, sim_card_id: nil, sim_group_id: nil, sim_group_name: nil, sort: nil, start_date: nil, request_options: {})
+      # @!method initialize(id: nil, end_date: nil, imsi: nil, mcc: nil, mnc: nil, page_number: nil, page_size: nil, phone_number: nil, sim_card_id: nil, sim_group_id: nil, sim_group_name: nil, sort: nil, start_date: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::ReportListWdrsParams} for more details.
       #
@@ -95,7 +98,9 @@ module Telnyx
       #
       #   @param mnc [String] Mobile network code
       #
-      #   @param page [Telnyx::Models::ReportListWdrsParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      #   @param page_number [Integer]
+      #
+      #   @param page_size [Integer]
       #
       #   @param phone_number [String] Phone number
       #
@@ -110,28 +115,6 @@ module Telnyx
       #   @param start_date [String] Start date
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        # @!attribute number
-        #   Page number
-        #
-        #   @return [Integer, nil]
-        optional :number, Integer
-
-        # @!attribute size
-        #   Size of the page
-        #
-        #   @return [Integer, nil]
-        optional :size, Integer
-
-        # @!method initialize(number: nil, size: nil)
-        #   Consolidated page parameter (deepObject style). Originally: page[number],
-        #   page[size]
-        #
-        #   @param number [Integer] Page number
-        #
-        #   @param size [Integer] Size of the page
-      end
     end
   end
 end

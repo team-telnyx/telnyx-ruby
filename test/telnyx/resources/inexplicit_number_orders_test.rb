@@ -23,7 +23,7 @@ class Telnyx::Test::Resources::InexplicitNumberOrdersTest < Telnyx::Test::Resour
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::InexplicitNumberOrderCreateResponse::Data | nil
+        data: Telnyx::InexplicitNumberOrderResponse | nil
       }
     end
   end
@@ -39,7 +39,7 @@ class Telnyx::Test::Resources::InexplicitNumberOrdersTest < Telnyx::Test::Resour
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::InexplicitNumberOrderRetrieveResponse::Data | nil
+        data: Telnyx::InexplicitNumberOrderResponse | nil
       }
     end
   end
@@ -50,13 +50,26 @@ class Telnyx::Test::Resources::InexplicitNumberOrdersTest < Telnyx::Test::Resour
     response = @telnyx.inexplicit_number_orders.list
 
     assert_pattern do
-      response => Telnyx::Models::InexplicitNumberOrderListResponse
+      response => Telnyx::Internal::DefaultFlatPaginationForInexplicitNumberOrders
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::InexplicitNumberOrderResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::InexplicitNumberOrderListResponse::Data]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        billing_group_id: String | nil,
+        connection_id: String | nil,
+        created_at: Time | nil,
+        customer_reference: String | nil,
+        messaging_profile_id: String | nil,
+        ordering_groups: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::InexplicitNumberOrderResponse::OrderingGroup]) | nil,
+        updated_at: Time | nil
       }
     end
   end

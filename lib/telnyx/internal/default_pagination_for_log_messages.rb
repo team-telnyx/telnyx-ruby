@@ -1,0 +1,110 @@
+# frozen_string_literal: true
+
+module Telnyx
+  module Internal
+    # @generic Elem
+    #
+    # @example
+    #   if default_pagination_for_log_messages.has_next?
+    #     default_pagination_for_log_messages = default_pagination_for_log_messages.next_page
+    #   end
+    #
+    # @example
+    #   default_pagination_for_log_messages.auto_paging_each do |log_message|
+    #     puts(log_message)
+    #   end
+    class DefaultPaginationForLogMessages
+      include Telnyx::Internal::Type::BasePage
+
+      # @return [Array<generic<Elem>>, nil]
+      attr_accessor :log_messages
+
+      # @return [Meta]
+      attr_accessor :meta
+
+      # @return [Boolean]
+      def next_page?
+        !log_messages.to_a.empty? && (meta&.page_number.nil? || meta&.total_pages.nil? || (meta&.page_number&.< meta&.total_pages))
+      end
+
+      # @raise [Telnyx::HTTP::Error]
+      # @return [self]
+      def next_page
+        unless next_page?
+          message = "No more pages available. Please check #next_page? before calling ##{__method__}"
+          raise RuntimeError.new(message)
+        end
+
+        req = Telnyx::Internal::Util.deep_merge(@req, {query: {number: (meta&.page_number || 1).to_i.succ}})
+        @client.request(req)
+      end
+
+      # @param blk [Proc]
+      #
+      # @yieldparam [generic<Elem>]
+      def auto_paging_each(&blk)
+        unless block_given?
+          raise ArgumentError.new("A block must be given to ##{__method__}")
+        end
+
+        page = self
+        loop do
+          page.log_messages&.each(&blk)
+
+          break unless page.next_page?
+          page = page.next_page
+        end
+      end
+
+      # @api private
+      #
+      # @param client [Telnyx::Internal::Transport::BaseClient]
+      # @param req [Hash{Symbol=>Object}]
+      # @param headers [Hash{String=>String}]
+      # @param page_data [Hash{Symbol=>Object}]
+      def initialize(client:, req:, headers:, page_data:)
+        super
+
+        case page_data
+        in {log_messages: Array => log_messages}
+          @log_messages = log_messages.map { Telnyx::Internal::Type::Converter.coerce(@model, _1) }
+        else
+        end
+        case page_data
+        in {meta: Hash | nil => meta}
+          @meta =
+            Telnyx::Internal::Type::Converter.coerce(
+              Telnyx::Internal::DefaultPaginationForLogMessages::Meta,
+              meta
+            )
+        else
+        end
+      end
+
+      # @api private
+      #
+      # @return [String]
+      def inspect
+        model = Telnyx::Internal::Type::Converter.inspect(@model, depth: 1)
+
+        "#<#{self.class}[#{model}]:0x#{object_id.to_s(16)}>"
+      end
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        # @!attribute page_number
+        #
+        #   @return [Integer]
+        required :page_number, Integer
+
+        # @!attribute total_pages
+        #
+        #   @return [Integer]
+        required :total_pages, Integer
+
+        # @!method initialize(page_number:, total_pages:)
+        #   @param page_number [Integer]
+        #   @param total_pages [Integer]
+      end
+    end
+  end
+end

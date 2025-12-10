@@ -2,18 +2,16 @@ module Telnyx
   module Models
     type wireguard_interface_create_params =
       {
-        network_id: String,
         region_code: String,
         enable_sip_trunking: bool,
-        name: String
+        name: String,
+        network_id: String
       }
       & Telnyx::Internal::Type::request_parameters
 
     class WireguardInterfaceCreateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
-
-      attr_accessor network_id: String
 
       attr_accessor region_code: String
 
@@ -25,19 +23,23 @@ module Telnyx
 
       def name=: (String) -> String
 
+      attr_reader network_id: String?
+
+      def network_id=: (String) -> String
+
       def initialize: (
-        network_id: String,
         region_code: String,
         ?enable_sip_trunking: bool,
         ?name: String,
+        ?network_id: String,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
-        network_id: String,
         region_code: String,
         enable_sip_trunking: bool,
         name: String,
+        network_id: String,
         request_options: Telnyx::RequestOptions
       }
     end

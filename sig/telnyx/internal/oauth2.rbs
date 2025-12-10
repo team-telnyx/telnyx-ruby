@@ -1,0 +1,19 @@
+module Telnyx
+  module Internal
+    class OAuth2ClientCredentials
+      def initialize: (
+        token_url: String,
+        client_id: String,
+        client_secret: String,
+        timeout: Integer,
+        client: top
+      ) -> void
+
+      def auth_headers: -> ::Hash[String, String]
+
+      private def token_expired?: -> bool
+
+      private def fetch_token: -> top
+    end
+  end
+end

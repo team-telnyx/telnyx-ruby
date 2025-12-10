@@ -2,116 +2,88 @@ module Telnyx
   module Models
     type ota_update_list_response =
       {
-        data: ::Array[Telnyx::Models::OtaUpdateListResponse::Data],
-        meta: Telnyx::PaginationMeta
+        id: String,
+        created_at: String,
+        record_type: String,
+        sim_card_id: String,
+        status: Telnyx::Models::OtaUpdateListResponse::status,
+        type: Telnyx::Models::OtaUpdateListResponse::type_,
+        updated_at: String
       }
 
     class OtaUpdateListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: ::Array[Telnyx::Models::OtaUpdateListResponse::Data]?
+      attr_reader sim_card_id: String?
 
-      def data=: (
-        ::Array[Telnyx::Models::OtaUpdateListResponse::Data]
-      ) -> ::Array[Telnyx::Models::OtaUpdateListResponse::Data]
+      def sim_card_id=: (String) -> String
 
-      attr_reader meta: Telnyx::PaginationMeta?
+      attr_reader status: Telnyx::Models::OtaUpdateListResponse::status?
 
-      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+      def status=: (
+        Telnyx::Models::OtaUpdateListResponse::status
+      ) -> Telnyx::Models::OtaUpdateListResponse::status
+
+      attr_reader type: Telnyx::Models::OtaUpdateListResponse::type_?
+
+      def type=: (
+        Telnyx::Models::OtaUpdateListResponse::type_
+      ) -> Telnyx::Models::OtaUpdateListResponse::type_
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
 
       def initialize: (
-        ?data: ::Array[Telnyx::Models::OtaUpdateListResponse::Data],
-        ?meta: Telnyx::PaginationMeta
+        ?id: String,
+        ?created_at: String,
+        ?record_type: String,
+        ?sim_card_id: String,
+        ?status: Telnyx::Models::OtaUpdateListResponse::status,
+        ?type: Telnyx::Models::OtaUpdateListResponse::type_,
+        ?updated_at: String
       ) -> void
 
       def to_hash: -> {
-        data: ::Array[Telnyx::Models::OtaUpdateListResponse::Data],
-        meta: Telnyx::PaginationMeta
+        id: String,
+        created_at: String,
+        record_type: String,
+        sim_card_id: String,
+        status: Telnyx::Models::OtaUpdateListResponse::status,
+        type: Telnyx::Models::OtaUpdateListResponse::type_,
+        updated_at: String
       }
 
-      type data =
-        {
-          id: String,
-          created_at: String,
-          record_type: String,
-          sim_card_id: String,
-          status: Telnyx::Models::OtaUpdateListResponse::Data::status,
-          type: Telnyx::Models::OtaUpdateListResponse::Data::type_,
-          updated_at: String
-        }
+      type status = :"in-progress" | :completed | :failed
 
-      class Data < Telnyx::Internal::Type::BaseModel
-        attr_reader sim_card_id: String?
+      module Status
+        extend Telnyx::Internal::Type::Enum
 
-        def sim_card_id=: (String) -> String
+        IN_PROGRESS: :"in-progress"
+        COMPLETED: :completed
+        FAILED: :failed
 
-        attr_reader status: Telnyx::Models::OtaUpdateListResponse::Data::status?
+        def self?.values: -> ::Array[Telnyx::Models::OtaUpdateListResponse::status]
+      end
 
-        def status=: (
-          Telnyx::Models::OtaUpdateListResponse::Data::status
-        ) -> Telnyx::Models::OtaUpdateListResponse::Data::status
+      type type_ = :sim_card_network_preferences
 
-        attr_reader type: Telnyx::Models::OtaUpdateListResponse::Data::type_?
+      module Type
+        extend Telnyx::Internal::Type::Enum
 
-        def type=: (
-          Telnyx::Models::OtaUpdateListResponse::Data::type_
-        ) -> Telnyx::Models::OtaUpdateListResponse::Data::type_
+        SIM_CARD_NETWORK_PREFERENCES: :sim_card_network_preferences
 
-        attr_reader id: String?
-
-        def id=: (String) -> String
-
-        attr_reader created_at: String?
-
-        def created_at=: (String) -> String
-
-        attr_reader record_type: String?
-
-        def record_type=: (String) -> String
-
-        attr_reader updated_at: String?
-
-        def updated_at=: (String) -> String
-
-        def initialize: (
-          ?id: String,
-          ?created_at: String,
-          ?record_type: String,
-          ?sim_card_id: String,
-          ?status: Telnyx::Models::OtaUpdateListResponse::Data::status,
-          ?type: Telnyx::Models::OtaUpdateListResponse::Data::type_,
-          ?updated_at: String
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          created_at: String,
-          record_type: String,
-          sim_card_id: String,
-          status: Telnyx::Models::OtaUpdateListResponse::Data::status,
-          type: Telnyx::Models::OtaUpdateListResponse::Data::type_,
-          updated_at: String
-        }
-
-        type status = :"in-progress" | :completed | :failed
-
-        module Status
-          extend Telnyx::Internal::Type::Enum
-
-          IN_PROGRESS: :"in-progress"
-          COMPLETED: :completed
-          FAILED: :failed
-
-          def self?.values: -> ::Array[Telnyx::Models::OtaUpdateListResponse::Data::status]
-        end
-
-        type type_ = :sim_card_network_preferences
-
-        module Type
-          extend Telnyx::Internal::Type::Enum
-
-          SIM_CARD_NETWORK_PREFERENCES: :sim_card_network_preferences
-
-          def self?.values: -> ::Array[Telnyx::Models::OtaUpdateListResponse::Data::type_]
-        end
+        def self?.values: -> ::Array[Telnyx::Models::OtaUpdateListResponse::type_]
       end
     end
   end

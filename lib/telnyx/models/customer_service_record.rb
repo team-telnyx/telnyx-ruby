@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::CustomerServiceRecords#list
     class CustomerServiceRecord < Telnyx::Internal::Type::BaseModel
       # @!attribute error_message
       #   The error message in case status is `failed`. This field would be null in case

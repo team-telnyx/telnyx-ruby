@@ -66,7 +66,7 @@ module Telnyx
           filter: Telnyx::IPListParams::Filter::OrHash,
           page: Telnyx::IPListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::IPListResponse)
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::IP])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

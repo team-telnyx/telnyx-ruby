@@ -131,7 +131,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::FaxApplicationListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::FaxApplication>]
       #
       # @see Telnyx::Models::FaxApplicationListParams
       def list(params = {})
@@ -140,7 +140,8 @@ module Telnyx
           method: :get,
           path: "fax_applications",
           query: parsed,
-          model: Telnyx::Models::FaxApplicationListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::FaxApplication,
           options: options
         )
       end

@@ -30,7 +30,9 @@ module Telnyx
               Telnyx::PortingOrders::PhoneNumberConfigurationListParams::Sort::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse
+            Telnyx::Internal::DefaultPagination[
+              Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse
+            ]
           )
         end
         def list(

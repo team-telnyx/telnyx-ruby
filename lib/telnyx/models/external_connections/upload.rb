@@ -3,6 +3,7 @@
 module Telnyx
   module Models
     module ExternalConnections
+      # @see Telnyx::Resources::ExternalConnections::Uploads#list
       class Upload < Telnyx::Internal::Type::BaseModel
         # @!attribute available_usages
         #

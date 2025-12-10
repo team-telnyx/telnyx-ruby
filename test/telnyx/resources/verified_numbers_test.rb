@@ -42,13 +42,21 @@ class Telnyx::Test::Resources::VerifiedNumbersTest < Telnyx::Test::ResourceTest
     response = @telnyx.verified_numbers.list
 
     assert_pattern do
-      response => Telnyx::Models::VerifiedNumberListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::VerifiedNumber
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::VerifiedNumber]),
-        meta: Telnyx::Models::VerifiedNumberListResponse::Meta
+      row => {
+        phone_number: String | nil,
+        record_type: Telnyx::VerifiedNumber::RecordType | nil,
+        verified_at: String | nil
       }
     end
   end

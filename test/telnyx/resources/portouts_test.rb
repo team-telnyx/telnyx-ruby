@@ -25,13 +25,45 @@ class Telnyx::Test::Resources::PortoutsTest < Telnyx::Test::ResourceTest
     response = @telnyx.portouts.list
 
     assert_pattern do
-      response => Telnyx::Models::PortoutListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::PortoutDetails
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PortoutDetails]) | nil,
-        meta: Telnyx::Metadata | nil
+      row => {
+        id: String | nil,
+        already_ported: Telnyx::Internal::Type::Boolean | nil,
+        authorized_name: String | nil,
+        carrier_name: String | nil,
+        city: String | nil,
+        created_at: String | nil,
+        current_carrier: String | nil,
+        end_user_name: String | nil,
+        foc_date: String | nil,
+        host_messaging: Telnyx::Internal::Type::Boolean | nil,
+        inserted_at: String | nil,
+        lsr: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
+        phone_numbers: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
+        pon: String | nil,
+        reason: String | nil,
+        record_type: String | nil,
+        rejection_code: Integer | nil,
+        requested_foc_date: String | nil,
+        service_address: String | nil,
+        spid: String | nil,
+        state: String | nil,
+        status: Telnyx::PortoutDetails::Status | nil,
+        support_key: String | nil,
+        updated_at: String | nil,
+        user_id: String | nil,
+        vendor: String | nil,
+        zip: String | nil
       }
     end
   end

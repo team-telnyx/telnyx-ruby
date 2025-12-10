@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::RoomCompositions#list
     class RoomComposition < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   A unique identifier for the room composition.
@@ -39,11 +40,11 @@ module Telnyx
       #   @return [Time, nil]
       optional :ended_at, Time
 
-      # @!attribute format_
+      # @!attribute file_format
       #   Shows format of the room composition.
       #
       #   @return [Symbol, Telnyx::Models::RoomComposition::Format, nil]
-      optional :format_, enum: -> { Telnyx::RoomComposition::Format }, api_name: :format
+      optional :file_format, enum: -> { Telnyx::RoomComposition::Format }, api_name: :format
 
       # @!attribute room_id
       #   Identify the room associated with the room composition.
@@ -121,7 +122,7 @@ module Telnyx
         optional :record_type, String
       end
 
-      # @!method initialize(id: nil, completed_at: nil, created_at: nil, download_url: nil, duration_secs: nil, ended_at: nil, format_: nil, record_type: nil, room_id: nil, session_id: nil, size_mb: nil, started_at: nil, status: nil, updated_at: nil, user_id: nil, video_layout: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
+      # @!method initialize(id: nil, completed_at: nil, created_at: nil, download_url: nil, duration_secs: nil, ended_at: nil, file_format: nil, record_type: nil, room_id: nil, session_id: nil, size_mb: nil, started_at: nil, status: nil, updated_at: nil, user_id: nil, video_layout: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::RoomComposition} for more details.
       #
@@ -137,7 +138,7 @@ module Telnyx
       #
       #   @param ended_at [Time] ISO 8601 timestamp when the room composition has ended.
       #
-      #   @param format_ [Symbol, Telnyx::Models::RoomComposition::Format] Shows format of the room composition.
+      #   @param file_format [Symbol, Telnyx::Models::RoomComposition::Format] Shows format of the room composition.
       #
       #   @param record_type [String]
       #
@@ -165,7 +166,7 @@ module Telnyx
 
       # Shows format of the room composition.
       #
-      # @see Telnyx::Models::RoomComposition#format_
+      # @see Telnyx::Models::RoomComposition#file_format
       module Format
         extend Telnyx::Internal::Type::Enum
 

@@ -89,7 +89,7 @@ module Telnyx
             connection_id: String,
             from: String,
             message_history: ::Array[Telnyx::CallAIGatherPartialResultsWebhookEvent::Data::Payload::MessageHistory],
-            partial_results: top,
+            partial_results: ::Hash[Symbol, top],
             to: String
           }
 
@@ -124,9 +124,9 @@ module Telnyx
             ::Array[Telnyx::CallAIGatherPartialResultsWebhookEvent::Data::Payload::MessageHistory]
           ) -> ::Array[Telnyx::CallAIGatherPartialResultsWebhookEvent::Data::Payload::MessageHistory]
 
-          attr_reader partial_results: top?
+          attr_reader partial_results: ::Hash[Symbol, top]?
 
-          def partial_results=: (top) -> top
+          def partial_results=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
           attr_reader to: String?
 
@@ -140,7 +140,7 @@ module Telnyx
             ?connection_id: String,
             ?from: String,
             ?message_history: ::Array[Telnyx::CallAIGatherPartialResultsWebhookEvent::Data::Payload::MessageHistory],
-            ?partial_results: top,
+            ?partial_results: ::Hash[Symbol, top],
             ?to: String
           ) -> void
 
@@ -152,7 +152,7 @@ module Telnyx
             connection_id: String,
             from: String,
             message_history: ::Array[Telnyx::CallAIGatherPartialResultsWebhookEvent::Data::Payload::MessageHistory],
-            partial_results: top,
+            partial_results: ::Hash[Symbol, top],
             to: String
           }
 

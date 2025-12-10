@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::ExternalConnections#list
     class ExternalConnection < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Uniquely identifies the resource.
@@ -178,8 +179,8 @@ module Telnyx
       module WebhookAPIVersion
         extend Telnyx::Internal::Type::Enum
 
-        WEBHOOK_API_VERSION_1 = :"1"
-        WEBHOOK_API_VERSION_2 = :"2"
+        V1 = :"1"
+        V2 = :"2"
 
         # @!method self.values
         #   @return [Array<Symbol>]

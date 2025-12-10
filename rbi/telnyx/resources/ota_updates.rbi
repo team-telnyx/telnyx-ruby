@@ -23,7 +23,11 @@ module Telnyx
           filter: Telnyx::OtaUpdateListParams::Filter::OrHash,
           page: Telnyx::OtaUpdateListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::OtaUpdateListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[
+            Telnyx::Models::OtaUpdateListResponse
+          ]
+        )
       end
       def list(
         # Consolidated filter parameter for OTA updates (deepObject style). Originally:

@@ -91,7 +91,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::IPListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::IP>]
       #
       # @see Telnyx::Models::IPListParams
       def list(params = {})
@@ -100,7 +100,8 @@ module Telnyx
           method: :get,
           path: "ips",
           query: parsed,
-          model: Telnyx::Models::IPListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::IP,
           options: options
         )
       end

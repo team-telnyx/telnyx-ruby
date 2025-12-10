@@ -64,7 +64,7 @@ module Telnyx
         #   If present, addresses with <code>customer_reference</code> containing the given
         #   value will be returned. Matching is not case-sensitive.
         #
-        #   @return [String, Telnyx::Models::AddressListParams::Filter::CustomerReference::UnionMember1, nil]
+        #   @return [String, Telnyx::Models::AddressListParams::Filter::CustomerReference::CustomerReferenceMatcher, nil]
         optional :customer_reference, union: -> { Telnyx::AddressListParams::Filter::CustomerReference }
 
         # @!attribute street_address
@@ -92,7 +92,7 @@ module Telnyx
         #
         #   @param address_book [Telnyx::Models::AddressListParams::Filter::AddressBook]
         #
-        #   @param customer_reference [String, Telnyx::Models::AddressListParams::Filter::CustomerReference::UnionMember1] If present, addresses with <code>customer_reference</code> containing the given
+        #   @param customer_reference [String, Telnyx::Models::AddressListParams::Filter::CustomerReference::CustomerReferenceMatcher] If present, addresses with <code>customer_reference</code> containing the given
         #
         #   @param street_address [Telnyx::Models::AddressListParams::Filter::StreetAddress]
         #
@@ -124,9 +124,9 @@ module Telnyx
           # If present, addresses with <code>customer_reference</code> containing the given value will be returned. Matching is not case-sensitive.
           variant String
 
-          variant -> { Telnyx::AddressListParams::Filter::CustomerReference::UnionMember1 }
+          variant -> { Telnyx::AddressListParams::Filter::CustomerReference::CustomerReferenceMatcher }
 
-          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+          class CustomerReferenceMatcher < Telnyx::Internal::Type::BaseModel
             # @!attribute contains
             #   Partial match for customer_reference. Matching is not case-sensitive.
             #
@@ -146,7 +146,7 @@ module Telnyx
           end
 
           # @!method self.variants
-          #   @return [Array(String, Telnyx::Models::AddressListParams::Filter::CustomerReference::UnionMember1)]
+          #   @return [Array(String, Telnyx::Models::AddressListParams::Filter::CustomerReference::CustomerReferenceMatcher)]
         end
 
         # @see Telnyx::Models::AddressListParams::Filter#street_address

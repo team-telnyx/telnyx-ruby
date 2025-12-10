@@ -9,9 +9,10 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::AccessIPRangeListParams::Filter,
-        ?page: Telnyx::AccessIPRangeListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::AccessIPRangeListResponse
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AccessIPRange]
 
       def delete: (
         String access_ip_range_id,

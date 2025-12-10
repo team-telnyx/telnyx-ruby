@@ -53,7 +53,7 @@ module Telnyx
             webhook_failover_url: String,
             webhook_url: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::TelnyxCampaignCsp)
+          ).returns(Telnyx::Number10dlc::TelnyxCampaignCsp)
         end
         def submit(
           # Alphanumeric identifier of the brand associated with this campaign.

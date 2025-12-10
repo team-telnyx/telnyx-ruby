@@ -4,7 +4,7 @@ module Telnyx
       def list: (
         ?page: Telnyx::NotificationEventListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::NotificationEventListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::NotificationEventListResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

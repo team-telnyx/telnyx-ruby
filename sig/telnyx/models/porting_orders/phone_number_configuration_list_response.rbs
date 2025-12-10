@@ -3,84 +3,56 @@ module Telnyx
     module PortingOrders
       type phone_number_configuration_list_response =
         {
-          data: ::Array[Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse::Data],
-          meta: Telnyx::PaginationMeta
+          id: String,
+          created_at: Time,
+          porting_phone_number_id: String,
+          record_type: String,
+          updated_at: Time,
+          user_bundle_id: String
         }
 
       class PhoneNumberConfigurationListResponse < Telnyx::Internal::Type::BaseModel
-        attr_reader data: ::Array[Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse::Data]?
+        attr_reader id: String?
 
-        def data=: (
-          ::Array[Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse::Data]
-        ) -> ::Array[Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse::Data]
+        def id=: (String) -> String
 
-        attr_reader meta: Telnyx::PaginationMeta?
+        attr_reader created_at: Time?
 
-        def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+        def created_at=: (Time) -> Time
+
+        attr_reader porting_phone_number_id: String?
+
+        def porting_phone_number_id=: (String) -> String
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_reader user_bundle_id: String?
+
+        def user_bundle_id=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
 
         def initialize: (
-          ?data: ::Array[Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse::Data],
-          ?meta: Telnyx::PaginationMeta
+          ?id: String,
+          ?created_at: Time,
+          ?porting_phone_number_id: String,
+          ?record_type: String,
+          ?updated_at: Time,
+          ?user_bundle_id: String
         ) -> void
 
         def to_hash: -> {
-          data: ::Array[Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse::Data],
-          meta: Telnyx::PaginationMeta
+          id: String,
+          created_at: Time,
+          porting_phone_number_id: String,
+          record_type: String,
+          updated_at: Time,
+          user_bundle_id: String
         }
-
-        type data =
-          {
-            id: String,
-            created_at: Time,
-            porting_phone_number_id: String,
-            record_type: String,
-            updated_at: Time,
-            user_bundle_id: String
-          }
-
-        class Data < Telnyx::Internal::Type::BaseModel
-          attr_reader id: String?
-
-          def id=: (String) -> String
-
-          attr_reader created_at: Time?
-
-          def created_at=: (Time) -> Time
-
-          attr_reader porting_phone_number_id: String?
-
-          def porting_phone_number_id=: (String) -> String
-
-          attr_reader updated_at: Time?
-
-          def updated_at=: (Time) -> Time
-
-          attr_reader user_bundle_id: String?
-
-          def user_bundle_id=: (String) -> String
-
-          attr_reader record_type: String?
-
-          def record_type=: (String) -> String
-
-          def initialize: (
-            ?id: String,
-            ?created_at: Time,
-            ?porting_phone_number_id: String,
-            ?record_type: String,
-            ?updated_at: Time,
-            ?user_bundle_id: String
-          ) -> void
-
-          def to_hash: -> {
-            id: String,
-            created_at: Time,
-            porting_phone_number_id: String,
-            record_type: String,
-            updated_at: Time,
-            user_bundle_id: String
-          }
-        end
       end
     end
   end

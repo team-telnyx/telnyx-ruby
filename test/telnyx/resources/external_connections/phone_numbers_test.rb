@@ -41,13 +41,25 @@ class Telnyx::Test::Resources::ExternalConnections::PhoneNumbersTest < Telnyx::T
     response = @telnyx.external_connections.phone_numbers.list("id")
 
     assert_pattern do
-      response => Telnyx::Models::ExternalConnections::PhoneNumberListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::ExternalConnections::ExternalConnectionPhoneNumber
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::ExternalConnections::ExternalConnectionPhoneNumber]) | nil,
-        meta: Telnyx::ExternalVoiceIntegrationsPaginationMeta | nil
+      row => {
+        acquired_capabilities: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::ExternalConnections::ExternalConnectionPhoneNumber::AcquiredCapability]) | nil,
+        civic_address_id: String | nil,
+        displayed_country_code: String | nil,
+        location_id: String | nil,
+        number_id: String | nil,
+        telephone_number: String | nil,
+        ticket_id: String | nil
       }
     end
   end

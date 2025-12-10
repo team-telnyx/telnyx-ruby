@@ -17,7 +17,7 @@ module Telnyx
         def list: (
           ?page: Telnyx::PhoneNumbers::MessagingListParams::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::PhoneNumbers::MessagingListResponse
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::PhoneNumberWithMessagingSettings]
 
         def initialize: (client: Telnyx::Client) -> void
       end

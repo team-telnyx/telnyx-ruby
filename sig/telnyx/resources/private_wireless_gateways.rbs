@@ -22,7 +22,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::PrivateWirelessGatewayListResponse
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::PrivateWirelessGateway]
 
       def delete: (
         String id,

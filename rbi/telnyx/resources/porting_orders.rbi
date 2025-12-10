@@ -136,7 +136,7 @@ module Telnyx
           page: Telnyx::PortingOrderListParams::Page::OrHash,
           sort: Telnyx::PortingOrderListParams::Sort::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::PortingOrderListResponse)
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::PortingOrder])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:
@@ -220,7 +220,11 @@ module Telnyx
           id: String,
           page: Telnyx::PortingOrderRetrieveRequirementsParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::PortingOrderRetrieveRequirementsResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[
+            Telnyx::Models::PortingOrderRetrieveRequirementsResponse
+          ]
+        )
       end
       def retrieve_requirements(
         # Porting Order id

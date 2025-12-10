@@ -3,7 +3,7 @@
 module Telnyx
   module Models
     module Number10dlc
-      class BrandRetrieveResponse < Telnyx::Models::TelnyxBrand
+      class BrandRetrieveResponse < Telnyx::Models::Number10dlc::TelnyxBrand
         OrHash =
           T.type_alias do
             T.any(

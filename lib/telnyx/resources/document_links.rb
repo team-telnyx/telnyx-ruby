@@ -16,7 +16,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::DocumentLinkListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::DocumentLinkListResponse>]
       #
       # @see Telnyx::Models::DocumentLinkListParams
       def list(params = {})
@@ -25,6 +25,7 @@ module Telnyx
           method: :get,
           path: "document_links",
           query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::DocumentLinkListResponse,
           options: options
         )

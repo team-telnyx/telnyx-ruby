@@ -30,7 +30,7 @@ module Telnyx
         ?page: Telnyx::ConferenceListParams::Page,
         ?region: Telnyx::Models::ConferenceListParams::region,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::ConferenceListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Conference]
 
       def list_participants: (
         String conference_id,
@@ -38,7 +38,7 @@ module Telnyx
         ?page: Telnyx::ConferenceListParticipantsParams::Page,
         ?region: Telnyx::Models::ConferenceListParticipantsParams::region,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::ConferenceListParticipantsResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::ConferenceListParticipantsResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

@@ -25,13 +25,29 @@ class Telnyx::Test::Resources::PhoneNumbers::JobsTest < Telnyx::Test::ResourceTe
     response = @telnyx.phone_numbers.jobs.list
 
     assert_pattern do
-      response => Telnyx::Models::PhoneNumbers::JobListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::PhoneNumbers::PhoneNumbersJob
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJob]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        created_at: String | nil,
+        etc: Time | nil,
+        failed_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation]) | nil,
+        pending_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJob::PendingOperation]) | nil,
+        phone_numbers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber]) | nil,
+        record_type: String | nil,
+        status: Telnyx::PhoneNumbers::PhoneNumbersJob::Status | nil,
+        successful_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJob::SuccessfulOperation]) | nil,
+        type: Telnyx::PhoneNumbers::PhoneNumbersJob::Type | nil,
+        updated_at: String | nil
       }
     end
   end
