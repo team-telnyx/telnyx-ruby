@@ -105,7 +105,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::ManagedAccountListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ManagedAccountListResponse>]
       #
       # @see Telnyx::Models::ManagedAccountListParams
       def list(params = {})
@@ -114,6 +114,7 @@ module Telnyx
           method: :get,
           path: "managed_accounts",
           query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::ManagedAccountListResponse,
           options: options
         )

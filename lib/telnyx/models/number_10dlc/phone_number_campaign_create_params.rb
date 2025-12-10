@@ -4,7 +4,7 @@ module Telnyx
   module Models
     module Number10dlc
       # @see Telnyx::Resources::Number10dlc::PhoneNumberCampaigns#create
-      class PhoneNumberCampaignCreateParams < Telnyx::Models::PhoneNumberCampaignCreate
+      class PhoneNumberCampaignCreateParams < Telnyx::Models::Number10dlc::PhoneNumberCampaignCreate
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 

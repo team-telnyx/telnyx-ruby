@@ -6,23 +6,23 @@ module Telnyx
           country: String,
           display_name: String,
           email: String,
-          entity_type: Telnyx::Models::entity_type,
-          vertical: Telnyx::Models::vertical,
+          entity_type: Telnyx::Models::Number10dlc::entity_type,
+          vertical: Telnyx::Models::Number10dlc::vertical,
           alt_business_id: String,
-          alt_business_id_type: Telnyx::Models::alt_business_id_type,
+          alt_business_id_type: Telnyx::Models::Number10dlc::alt_business_id_type,
           business_contact_email: String,
           city: String,
           company_name: String,
           ein: String,
           first_name: String,
-          identity_status: Telnyx::Models::brand_identity_status,
+          identity_status: Telnyx::Models::Number10dlc::brand_identity_status,
           ip_address: String,
           is_reseller: bool,
           last_name: String,
           phone: String,
           postal_code: String,
           state: String,
-          stock_exchange: Telnyx::Models::stock_exchange,
+          stock_exchange: Telnyx::Models::Number10dlc::stock_exchange,
           stock_symbol: String,
           street: String,
           webhook_failover_url: String,
@@ -41,19 +41,19 @@ module Telnyx
 
         attr_accessor email: String
 
-        attr_accessor entity_type: Telnyx::Models::entity_type
+        attr_accessor entity_type: Telnyx::Models::Number10dlc::entity_type
 
-        attr_accessor vertical: Telnyx::Models::vertical
+        attr_accessor vertical: Telnyx::Models::Number10dlc::vertical
 
         attr_reader alt_business_id: String?
 
         def alt_business_id=: (String) -> String
 
-        attr_reader alt_business_id_type: Telnyx::Models::alt_business_id_type?
+        attr_reader alt_business_id_type: Telnyx::Models::Number10dlc::alt_business_id_type?
 
         def alt_business_id_type=: (
-          Telnyx::Models::alt_business_id_type
-        ) -> Telnyx::Models::alt_business_id_type
+          Telnyx::Models::Number10dlc::alt_business_id_type
+        ) -> Telnyx::Models::Number10dlc::alt_business_id_type
 
         attr_reader business_contact_email: String?
 
@@ -75,11 +75,11 @@ module Telnyx
 
         def first_name=: (String) -> String
 
-        attr_reader identity_status: Telnyx::Models::brand_identity_status?
+        attr_reader identity_status: Telnyx::Models::Number10dlc::brand_identity_status?
 
         def identity_status=: (
-          Telnyx::Models::brand_identity_status
-        ) -> Telnyx::Models::brand_identity_status
+          Telnyx::Models::Number10dlc::brand_identity_status
+        ) -> Telnyx::Models::Number10dlc::brand_identity_status
 
         attr_reader ip_address: String?
 
@@ -105,11 +105,11 @@ module Telnyx
 
         def state=: (String) -> String
 
-        attr_reader stock_exchange: Telnyx::Models::stock_exchange?
+        attr_reader stock_exchange: Telnyx::Models::Number10dlc::stock_exchange?
 
         def stock_exchange=: (
-          Telnyx::Models::stock_exchange
-        ) -> Telnyx::Models::stock_exchange
+          Telnyx::Models::Number10dlc::stock_exchange
+        ) -> Telnyx::Models::Number10dlc::stock_exchange
 
         attr_reader stock_symbol: String?
 
@@ -135,23 +135,23 @@ module Telnyx
           country: String,
           display_name: String,
           email: String,
-          entity_type: Telnyx::Models::entity_type,
-          vertical: Telnyx::Models::vertical,
+          entity_type: Telnyx::Models::Number10dlc::entity_type,
+          vertical: Telnyx::Models::Number10dlc::vertical,
           ?alt_business_id: String,
-          ?alt_business_id_type: Telnyx::Models::alt_business_id_type,
+          ?alt_business_id_type: Telnyx::Models::Number10dlc::alt_business_id_type,
           ?business_contact_email: String,
           ?city: String,
           ?company_name: String,
           ?ein: String,
           ?first_name: String,
-          ?identity_status: Telnyx::Models::brand_identity_status,
+          ?identity_status: Telnyx::Models::Number10dlc::brand_identity_status,
           ?ip_address: String,
           ?is_reseller: bool,
           ?last_name: String,
           ?phone: String,
           ?postal_code: String,
           ?state: String,
-          ?stock_exchange: Telnyx::Models::stock_exchange,
+          ?stock_exchange: Telnyx::Models::Number10dlc::stock_exchange,
           ?stock_symbol: String,
           ?street: String,
           ?webhook_failover_url: String,
@@ -164,23 +164,23 @@ module Telnyx
           country: String,
           display_name: String,
           email: String,
-          entity_type: Telnyx::Models::entity_type,
-          vertical: Telnyx::Models::vertical,
+          entity_type: Telnyx::Models::Number10dlc::entity_type,
+          vertical: Telnyx::Models::Number10dlc::vertical,
           alt_business_id: String,
-          alt_business_id_type: Telnyx::Models::alt_business_id_type,
+          alt_business_id_type: Telnyx::Models::Number10dlc::alt_business_id_type,
           business_contact_email: String,
           city: String,
           company_name: String,
           ein: String,
           first_name: String,
-          identity_status: Telnyx::Models::brand_identity_status,
+          identity_status: Telnyx::Models::Number10dlc::brand_identity_status,
           ip_address: String,
           is_reseller: bool,
           last_name: String,
           phone: String,
           postal_code: String,
           state: String,
-          stock_exchange: Telnyx::Models::stock_exchange,
+          stock_exchange: Telnyx::Models::Number10dlc::stock_exchange,
           stock_symbol: String,
           street: String,
           webhook_failover_url: String,

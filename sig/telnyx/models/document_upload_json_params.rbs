@@ -1,45 +1,88 @@
 module Telnyx
   module Models
     type document_upload_json_params =
-      {
-        url: String,
-        customer_reference: String,
-        filename: String,
-        file: String
-      }
+      { document: Telnyx::Models::DocumentUploadJsonParams::document }
       & Telnyx::Internal::Type::request_parameters
 
     class DocumentUploadJsonParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      attr_accessor url: String
-
-      attr_reader customer_reference: String?
-
-      def customer_reference=: (String) -> String
-
-      attr_reader filename: String?
-
-      def filename=: (String) -> String
-
-      attr_accessor file: String
+      attr_accessor document: Telnyx::Models::DocumentUploadJsonParams::document
 
       def initialize: (
-        url: String,
-        file: String,
-        ?customer_reference: String,
-        ?filename: String,
+        document: Telnyx::Models::DocumentUploadJsonParams::document,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
-        url: String,
-        customer_reference: String,
-        filename: String,
-        file: String,
+        document: Telnyx::Models::DocumentUploadJsonParams::document,
         request_options: Telnyx::RequestOptions
       }
+
+      type document =
+        Telnyx::DocumentUploadJsonParams::Document::DocServiceDocumentUploadURL
+        | Telnyx::DocumentUploadJsonParams::Document::DocServiceDocumentUploadInline
+
+      module Document
+        extend Telnyx::Internal::Type::Union
+
+        type doc_service_document_upload_url =
+          { url: String, customer_reference: String, filename: String }
+
+        class DocServiceDocumentUploadURL < Telnyx::Internal::Type::BaseModel
+          attr_accessor url: String
+
+          attr_reader customer_reference: String?
+
+          def customer_reference=: (String) -> String
+
+          attr_reader filename: String?
+
+          def filename=: (String) -> String
+
+          def initialize: (
+            url: String,
+            ?customer_reference: String,
+            ?filename: String
+          ) -> void
+
+          def to_hash: -> {
+            url: String,
+            customer_reference: String,
+            filename: String
+          }
+        end
+
+        type doc_service_document_upload_inline =
+          { file: String, customer_reference: String, filename: String }
+
+        class DocServiceDocumentUploadInline < Telnyx::Internal::Type::BaseModel
+          attr_accessor file: String
+
+          attr_reader customer_reference: String?
+
+          def customer_reference=: (String) -> String
+
+          attr_reader filename: String?
+
+          def filename=: (String) -> String
+
+          def initialize: (
+            file: String,
+            ?customer_reference: String,
+            ?filename: String
+          ) -> void
+
+          def to_hash: -> {
+            file: String,
+            customer_reference: String,
+            filename: String
+          }
+        end
+
+        def self?.variants: -> ::Array[Telnyx::Models::DocumentUploadJsonParams::document]
+      end
     end
   end
 end

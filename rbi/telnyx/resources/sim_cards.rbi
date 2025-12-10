@@ -31,7 +31,7 @@ module Telnyx
       # Updates SIM card data
       sig do
         params(
-          id: String,
+          sim_card_id: String,
           authorized_imeis: T.nilable(T::Array[String]),
           data_limit: Telnyx::SimCard::DataLimit::OrHash,
           sim_card_group_id: String,
@@ -42,7 +42,7 @@ module Telnyx
       end
       def update(
         # Identifies the SIM.
-        id,
+        sim_card_id,
         # List of IMEIs authorized to use a given SIM card.
         authorized_imeis: nil,
         # The SIM card individual data limit configuration.
@@ -66,7 +66,7 @@ module Telnyx
           page: Telnyx::SimCardListParams::Page::OrHash,
           sort: Telnyx::SimCardListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::SimCardListResponse)
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::SimpleSimCard])
       end
       def list(
         # Consolidated filter parameter for SIM cards (deepObject style). Originally:
@@ -162,7 +162,11 @@ module Telnyx
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::SimCardListWirelessConnectivityLogsResponse)
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Models::SimCardListWirelessConnectivityLogsResponse
+          ]
+        )
       end
       def list_wireless_connectivity_logs(
         # Identifies the SIM.

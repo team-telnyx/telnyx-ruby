@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::IntegrationSecrets#list
     class IntegrationSecret < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #

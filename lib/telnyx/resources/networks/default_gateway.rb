@@ -6,9 +6,9 @@ module Telnyx
       class DefaultGateway
         # Create Default Gateway.
         #
-        # @overload create(id, wireguard_peer_id: nil, request_options: {})
+        # @overload create(network_identifier, wireguard_peer_id: nil, request_options: {})
         #
-        # @param id [String] Identifies the resource.
+        # @param network_identifier [String] Identifies the resource.
         #
         # @param wireguard_peer_id [String] Wireguard peer ID.
         #
@@ -17,11 +17,11 @@ module Telnyx
         # @return [Telnyx::Models::Networks::DefaultGatewayCreateResponse]
         #
         # @see Telnyx::Models::Networks::DefaultGatewayCreateParams
-        def create(id, params = {})
+        def create(network_identifier, params = {})
           parsed, options = Telnyx::Networks::DefaultGatewayCreateParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["networks/%1$s/default_gateway", id],
+            path: ["networks/%1$s/default_gateway", network_identifier],
             body: parsed,
             model: Telnyx::Models::Networks::DefaultGatewayCreateResponse,
             options: options

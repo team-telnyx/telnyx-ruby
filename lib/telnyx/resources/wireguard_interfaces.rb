@@ -6,15 +6,15 @@ module Telnyx
       # Create a new WireGuard Interface. Current limitation of 10 interfaces per user
       # can be created.
       #
-      # @overload create(network_id:, region_code:, enable_sip_trunking: nil, name: nil, request_options: {})
-      #
-      # @param network_id [String] The id of the network associated with the interface.
+      # @overload create(region_code:, enable_sip_trunking: nil, name: nil, network_id: nil, request_options: {})
       #
       # @param region_code [String] The region the interface should be deployed to.
       #
       # @param enable_sip_trunking [Boolean] Enable SIP traffic forwarding over VPN interface.
       #
       # @param name [String] A user specified name for the interface.
+      #
+      # @param network_id [String] The id of the network associated with the interface.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -65,7 +65,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::WireguardInterfaceListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::WireguardInterfaceListResponse>]
       #
       # @see Telnyx::Models::WireguardInterfaceListParams
       def list(params = {})
@@ -74,6 +74,7 @@ module Telnyx
           method: :get,
           path: "wireguard_interfaces",
           query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::WireguardInterfaceListResponse,
           options: options
         )

@@ -14,9 +14,10 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::AccessIPAddressListParams::Filter,
-        ?page: Telnyx::AccessIPAddressListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::AccessIPAddressListResponse
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AccessIPAddressResponse]
 
       def delete: (
         String access_ip_address_id,

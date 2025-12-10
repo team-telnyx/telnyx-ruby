@@ -1,0 +1,40 @@
+module Telnyx
+  module Models
+    type phone_number_assignment_by_profile_assign_params =
+      {
+        messaging_profile_id: String,
+        campaign_id: String,
+        tcr_campaign_id: String
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class PhoneNumberAssignmentByProfileAssignParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor messaging_profile_id: String
+
+      attr_reader campaign_id: String?
+
+      def campaign_id=: (String) -> String
+
+      attr_reader tcr_campaign_id: String?
+
+      def tcr_campaign_id=: (String) -> String
+
+      def initialize: (
+        messaging_profile_id: String,
+        ?campaign_id: String,
+        ?tcr_campaign_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        messaging_profile_id: String,
+        campaign_id: String,
+        tcr_campaign_id: String,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

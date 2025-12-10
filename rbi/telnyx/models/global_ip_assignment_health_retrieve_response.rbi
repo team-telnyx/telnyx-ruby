@@ -319,10 +319,10 @@ module Telnyx
 
           # The number of failed health checks.
           sig { returns(T.nilable(Float)) }
-          attr_reader :fail_
+          attr_reader :failed_health_checks_count
 
-          sig { params(fail_: Float).void }
-          attr_writer :fail_
+          sig { params(failed_health_checks_count: Float).void }
+          attr_writer :failed_health_checks_count
 
           # The number of successful health checks.
           sig { returns(T.nilable(Float)) }
@@ -331,16 +331,22 @@ module Telnyx
           sig { params(pass: Float).void }
           attr_writer :pass
 
-          sig { params(fail_: Float, pass: Float).returns(T.attached_class) }
+          sig do
+            params(failed_health_checks_count: Float, pass: Float).returns(
+              T.attached_class
+            )
+          end
           def self.new(
             # The number of failed health checks.
-            fail_: nil,
+            failed_health_checks_count: nil,
             # The number of successful health checks.
             pass: nil
           )
           end
 
-          sig { override.returns({ fail_: Float, pass: Float }) }
+          sig do
+            override.returns({ failed_health_checks_count: Float, pass: Float })
+          end
           def to_hash
           end
         end

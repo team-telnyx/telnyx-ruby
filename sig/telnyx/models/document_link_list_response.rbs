@@ -2,91 +2,63 @@ module Telnyx
   module Models
     type document_link_list_response =
       {
-        data: ::Array[Telnyx::Models::DocumentLinkListResponse::Data],
-        meta: Telnyx::PaginationMeta
+        id: String,
+        created_at: String,
+        document_id: String,
+        linked_record_type: String,
+        linked_resource_id: String,
+        record_type: String,
+        updated_at: String
       }
 
     class DocumentLinkListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: ::Array[Telnyx::Models::DocumentLinkListResponse::Data]?
+      attr_reader id: String?
 
-      def data=: (
-        ::Array[Telnyx::Models::DocumentLinkListResponse::Data]
-      ) -> ::Array[Telnyx::Models::DocumentLinkListResponse::Data]
+      def id=: (String) -> String
 
-      attr_reader meta: Telnyx::PaginationMeta?
+      attr_reader created_at: String?
 
-      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+      def created_at=: (String) -> String
+
+      attr_reader document_id: String?
+
+      def document_id=: (String) -> String
+
+      attr_reader linked_record_type: String?
+
+      def linked_record_type=: (String) -> String
+
+      attr_reader linked_resource_id: String?
+
+      def linked_resource_id=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
 
       def initialize: (
-        ?data: ::Array[Telnyx::Models::DocumentLinkListResponse::Data],
-        ?meta: Telnyx::PaginationMeta
+        ?id: String,
+        ?created_at: String,
+        ?document_id: String,
+        ?linked_record_type: String,
+        ?linked_resource_id: String,
+        ?record_type: String,
+        ?updated_at: String
       ) -> void
 
       def to_hash: -> {
-        data: ::Array[Telnyx::Models::DocumentLinkListResponse::Data],
-        meta: Telnyx::PaginationMeta
+        id: String,
+        created_at: String,
+        document_id: String,
+        linked_record_type: String,
+        linked_resource_id: String,
+        record_type: String,
+        updated_at: String
       }
-
-      type data =
-        {
-          id: String,
-          created_at: String,
-          document_id: String,
-          linked_record_type: String,
-          linked_resource_id: String,
-          record_type: String,
-          updated_at: String
-        }
-
-      class Data < Telnyx::Internal::Type::BaseModel
-        attr_reader id: String?
-
-        def id=: (String) -> String
-
-        attr_reader created_at: String?
-
-        def created_at=: (String) -> String
-
-        attr_reader document_id: String?
-
-        def document_id=: (String) -> String
-
-        attr_reader linked_record_type: String?
-
-        def linked_record_type=: (String) -> String
-
-        attr_reader linked_resource_id: String?
-
-        def linked_resource_id=: (String) -> String
-
-        attr_reader record_type: String?
-
-        def record_type=: (String) -> String
-
-        attr_reader updated_at: String?
-
-        def updated_at=: (String) -> String
-
-        def initialize: (
-          ?id: String,
-          ?created_at: String,
-          ?document_id: String,
-          ?linked_record_type: String,
-          ?linked_resource_id: String,
-          ?record_type: String,
-          ?updated_at: String
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          created_at: String,
-          document_id: String,
-          linked_record_type: String,
-          linked_resource_id: String,
-          record_type: String,
-          updated_at: String
-        }
-      end
     end
   end
 end

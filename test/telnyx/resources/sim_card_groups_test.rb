@@ -57,13 +57,29 @@ class Telnyx::Test::Resources::SimCardGroupsTest < Telnyx::Test::ResourceTest
     response = @telnyx.sim_card_groups.list
 
     assert_pattern do
-      response => Telnyx::Models::SimCardGroupListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::SimCardGroupListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::SimCardGroupListResponse::Data]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        consumed_data: Telnyx::ConsumedData | nil,
+        created_at: String | nil,
+        data_limit: Telnyx::Models::SimCardGroupListResponse::DataLimit | nil,
+        default: Telnyx::Internal::Type::Boolean | nil,
+        name: String | nil,
+        private_wireless_gateway_id: String | nil,
+        record_type: String | nil,
+        sim_card_count: Integer | nil,
+        updated_at: String | nil,
+        wireless_blocklist_id: String | nil
       }
     end
   end

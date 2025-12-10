@@ -15,7 +15,7 @@ module Telnyx
           params(
             campaign_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::TelnyxCampaignCsp)
+          ).returns(Telnyx::Number10dlc::TelnyxCampaignCsp)
         end
         def retrieve(campaign_id, request_options: {})
         end
@@ -37,7 +37,7 @@ module Telnyx
             webhook_failover_url: String,
             webhook_url: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::TelnyxCampaignCsp)
+          ).returns(Telnyx::Number10dlc::TelnyxCampaignCsp)
         end
         def update(
           campaign_id,
@@ -76,7 +76,11 @@ module Telnyx
             records_per_page: Integer,
             sort: Telnyx::Number10dlc::CampaignListParams::Sort::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Number10dlc::CampaignListResponse)
+          ).returns(
+            Telnyx::Internal::PerPagePaginationV2[
+              Telnyx::Models::Number10dlc::CampaignListResponse
+            ]
+          )
         end
         def list(
           brand_id:,
@@ -92,35 +96,28 @@ module Telnyx
         )
         end
 
+        # Manually accept a campaign shared with Telnyx
+        sig do
+          params(
+            campaign_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(T::Hash[Symbol, T.anything])
+        end
+        def accept_sharing(
+          # TCR's ID for the campaign to import
+          campaign_id,
+          request_options: {}
+        )
+        end
+
         # Terminate a campaign. Note that once deactivated, a campaign cannot be restored.
         sig do
           params(
             campaign_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Number10dlc::CampaignDeleteResponse)
+          ).returns(Telnyx::Models::Number10dlc::CampaignDeactivateResponse)
         end
-        def delete(campaign_id, request_options: {})
-        end
-
-        # Submits an appeal for rejected native campaigns in TELNYX_FAILED or MNO_REJECTED
-        # status. The appeal is recorded for manual compliance team review and the
-        # campaign status is reset to TCR_ACCEPTED. Note: Appeal forwarding is handled
-        # manually to allow proper review before incurring upstream charges.
-        sig do
-          params(
-            campaign_id: String,
-            appeal_reason: String,
-            request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Number10dlc::CampaignAppealResponse)
-        end
-        def appeal(
-          # The Telnyx campaign identifier
-          campaign_id,
-          # Detailed explanation of why the campaign should be reconsidered and what changes
-          # have been made to address the rejection reason.
-          appeal_reason:,
-          request_options: {}
-        )
+        def deactivate(campaign_id, request_options: {})
         end
 
         # Get the campaign metadata for each MNO it was submitted to.
@@ -128,11 +125,9 @@ module Telnyx
           params(
             campaign_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(
-            Telnyx::Models::Number10dlc::CampaignRetrieveMnoMetadataResponse
-          )
+          ).returns(Telnyx::Models::Number10dlc::CampaignGetMnoMetadataResponse)
         end
-        def retrieve_mno_metadata(
+        def get_mno_metadata(
           # ID of the campaign in question
           campaign_id,
           request_options: {}
@@ -146,7 +141,7 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T::Hash[Symbol, T.anything])
         end
-        def retrieve_operation_status(campaign_id, request_options: {})
+        def get_operation_status(campaign_id, request_options: {})
         end
 
         # Get Sharing Status
@@ -155,12 +150,33 @@ module Telnyx
             campaign_id: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Models::Number10dlc::CampaignRetrieveSharingResponse
+            Telnyx::Models::Number10dlc::CampaignGetSharingStatusResponse
           )
         end
-        def retrieve_sharing(
+        def get_sharing_status(
           # ID of the campaign in question
           campaign_id,
+          request_options: {}
+        )
+        end
+
+        # Submits an appeal for rejected native campaigns in TELNYX_FAILED or MNO_REJECTED
+        # status. The appeal is recorded for manual compliance team review and the
+        # campaign status is reset to TCR_ACCEPTED. Note: Appeal forwarding is handled
+        # manually to allow proper review before incurring upstream charges.
+        sig do
+          params(
+            campaign_id: String,
+            appeal_reason: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::Number10dlc::CampaignSubmitAppealResponse)
+        end
+        def submit_appeal(
+          # The Telnyx campaign identifier
+          campaign_id,
+          # Detailed explanation of why the campaign should be reconsidered and what changes
+          # have been made to address the rejection reason.
+          appeal_reason:,
           request_options: {}
         )
         end

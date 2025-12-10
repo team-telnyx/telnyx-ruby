@@ -25,13 +25,27 @@ class Telnyx::Test::Resources::PortingOrders::AdditionalDocumentsTest < Telnyx::
     response = @telnyx.porting_orders.additional_documents.list("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Models::PortingOrders::AdditionalDocumentListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::PortingOrders::AdditionalDocumentListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::Data]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        content_type: String | nil,
+        created_at: Time | nil,
+        document_id: String | nil,
+        document_type: Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::DocumentType | nil,
+        filename: String | nil,
+        porting_order_id: String | nil,
+        record_type: String | nil,
+        updated_at: Time | nil
       }
     end
   end

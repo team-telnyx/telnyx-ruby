@@ -60,7 +60,11 @@ module Telnyx
           filter: Telnyx::WireguardPeerListParams::Filter::OrHash,
           page: Telnyx::WireguardPeerListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::WireguardPeerListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[
+            Telnyx::Models::WireguardPeerListResponse
+          ]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

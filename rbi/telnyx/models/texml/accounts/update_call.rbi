@@ -45,14 +45,14 @@ module Telnyx
               T.nilable(Telnyx::Texml::Accounts::UpdateCall::Method::OrSymbol)
             )
           end
-          attr_reader :method_
+          attr_reader :http_method
 
           sig do
             params(
-              method_: Telnyx::Texml::Accounts::UpdateCall::Method::OrSymbol
+              http_method: Telnyx::Texml::Accounts::UpdateCall::Method::OrSymbol
             ).void
           end
-          attr_writer :method_
+          attr_writer :http_method
 
           # The value to set the call status to. Setting the status to completed ends the
           # call.
@@ -107,7 +107,8 @@ module Telnyx
               fallback_method:
                 Telnyx::Texml::Accounts::UpdateCall::FallbackMethod::OrSymbol,
               fallback_url: String,
-              method_: Telnyx::Texml::Accounts::UpdateCall::Method::OrSymbol,
+              http_method:
+                Telnyx::Texml::Accounts::UpdateCall::Method::OrSymbol,
               status: String,
               status_callback: String,
               status_callback_method:
@@ -123,7 +124,7 @@ module Telnyx
             # Url is not responding.
             fallback_url: nil,
             # HTTP request type used for `Url`.
-            method_: nil,
+            http_method: nil,
             # The value to set the call status to. Setting the status to completed ends the
             # call.
             status: nil,
@@ -145,7 +146,8 @@ module Telnyx
                 fallback_method:
                   Telnyx::Texml::Accounts::UpdateCall::FallbackMethod::OrSymbol,
                 fallback_url: String,
-                method_: Telnyx::Texml::Accounts::UpdateCall::Method::OrSymbol,
+                http_method:
+                  Telnyx::Texml::Accounts::UpdateCall::Method::OrSymbol,
                 status: String,
                 status_callback: String,
                 status_callback_method:

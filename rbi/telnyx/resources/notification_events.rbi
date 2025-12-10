@@ -8,7 +8,11 @@ module Telnyx
         params(
           page: Telnyx::NotificationEventListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::NotificationEventListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[
+            Telnyx::Models::NotificationEventListResponse
+          ]
+        )
       end
       def list(
         # Consolidated page parameter (deepObject style). Originally: page[number],

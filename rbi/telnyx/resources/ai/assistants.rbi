@@ -40,11 +40,11 @@ module Telnyx
                 T.any(
                   Telnyx::AI::WebhookTool::OrHash,
                   Telnyx::AI::RetrievalTool::OrHash,
-                  Telnyx::AI::AssistantTool::HandoffTool::OrHash,
+                  Telnyx::AI::AssistantTool::Handoff::OrHash,
                   Telnyx::AI::HangupTool::OrHash,
                   Telnyx::AI::TransferTool::OrHash,
-                  Telnyx::AI::AssistantTool::SipReferTool::OrHash,
-                  Telnyx::AI::AssistantTool::DtmfTool::OrHash
+                  Telnyx::AI::AssistantTool::Refer::OrHash,
+                  Telnyx::AI::AssistantTool::SendDtmf::OrHash
                 )
               ],
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
@@ -137,11 +137,11 @@ module Telnyx
                 T.any(
                   Telnyx::AI::WebhookTool::OrHash,
                   Telnyx::AI::RetrievalTool::OrHash,
-                  Telnyx::AI::AssistantTool::HandoffTool::OrHash,
+                  Telnyx::AI::AssistantTool::Handoff::OrHash,
                   Telnyx::AI::HangupTool::OrHash,
                   Telnyx::AI::TransferTool::OrHash,
-                  Telnyx::AI::AssistantTool::SipReferTool::OrHash,
-                  Telnyx::AI::AssistantTool::DtmfTool::OrHash
+                  Telnyx::AI::AssistantTool::Refer::OrHash,
+                  Telnyx::AI::AssistantTool::SendDtmf::OrHash
                 )
               ],
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
@@ -268,11 +268,11 @@ module Telnyx
         sig do
           params(
             api_key_ref: String,
-            provider: Telnyx::AI::AssistantImportParams::Provider::OrSymbol,
+            provider: Telnyx::AI::AssistantImportsParams::Provider::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::AssistantsList)
         end
-        def import(
+        def imports(
           # Integration secret pointer that refers to the API key for the external provider.
           # This should be an identifier for an integration secret created via
           # /v2/integration_secrets.

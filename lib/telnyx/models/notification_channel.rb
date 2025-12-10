@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::NotificationChannels#list
     class NotificationChannel < Telnyx::Internal::Type::BaseModel
       # @!attribute channel_destination
       #   The destination associated with the channel type.

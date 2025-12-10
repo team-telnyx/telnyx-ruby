@@ -8,8 +8,7 @@ module Telnyx
         attr_reader :brand
 
         # Some parameter documentations has been truncated, see
-        # {Telnyx::Models::Number10dlc::CampaignBuilderCampaignBuilderParams} for more
-        # details.
+        # {Telnyx::Models::Number10dlc::CampaignBuilderSubmitParams} for more details.
         #
         # Before creating a campaign, use the
         # [Qualify By Usecase endpoint](https://developers.telnyx.com/api/messaging/10dlc/get-usecase-qualification)
@@ -20,7 +19,7 @@ module Telnyx
         # the campaign's use case
         # ([see 10DLC Costs section for details](https://developers.telnyx.com/docs/messaging/10dlc/concepts#10dlc-costs)).
         #
-        # @overload campaign_builder(brand_id:, description:, usecase:, age_gated: nil, auto_renewal: nil, direct_lending: nil, embedded_link: nil, embedded_link_sample: nil, embedded_phone: nil, help_keywords: nil, help_message: nil, message_flow: nil, mno_ids: nil, number_pool: nil, optin_keywords: nil, optin_message: nil, optout_keywords: nil, optout_message: nil, privacy_policy_link: nil, reference_id: nil, reseller_id: nil, sample1: nil, sample2: nil, sample3: nil, sample4: nil, sample5: nil, subscriber_help: nil, subscriber_optin: nil, subscriber_optout: nil, sub_usecases: nil, tag: nil, terms_and_conditions: nil, terms_and_conditions_link: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+        # @overload submit(brand_id:, description:, usecase:, age_gated: nil, auto_renewal: nil, direct_lending: nil, embedded_link: nil, embedded_link_sample: nil, embedded_phone: nil, help_keywords: nil, help_message: nil, message_flow: nil, mno_ids: nil, number_pool: nil, optin_keywords: nil, optin_message: nil, optout_keywords: nil, optout_message: nil, privacy_policy_link: nil, reference_id: nil, reseller_id: nil, sample1: nil, sample2: nil, sample3: nil, sample4: nil, sample5: nil, subscriber_help: nil, subscriber_optin: nil, subscriber_optout: nil, sub_usecases: nil, tag: nil, terms_and_conditions: nil, terms_and_conditions_link: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
         #
         # @param brand_id [String] Alphanumeric identifier of the brand associated with this campaign.
         #
@@ -94,16 +93,16 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::TelnyxCampaignCsp]
+        # @return [Telnyx::Models::Number10dlc::TelnyxCampaignCsp]
         #
-        # @see Telnyx::Models::Number10dlc::CampaignBuilderCampaignBuilderParams
-        def campaign_builder(params)
-          parsed, options = Telnyx::Number10dlc::CampaignBuilderCampaignBuilderParams.dump_request(params)
+        # @see Telnyx::Models::Number10dlc::CampaignBuilderSubmitParams
+        def submit(params)
+          parsed, options = Telnyx::Number10dlc::CampaignBuilderSubmitParams.dump_request(params)
           @client.request(
             method: :post,
             path: "10dlc/campaignBuilder",
             body: parsed,
-            model: Telnyx::TelnyxCampaignCsp,
+            model: Telnyx::Number10dlc::TelnyxCampaignCsp,
             options: options
           )
         end

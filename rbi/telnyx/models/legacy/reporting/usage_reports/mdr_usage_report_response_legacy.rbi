@@ -65,10 +65,10 @@ module Telnyx
             sig { params(report_url: String).void }
             attr_writer :report_url
 
-            sig { returns(T.nilable(T.anything)) }
+            sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
             attr_reader :result
 
-            sig { params(result: T.anything).void }
+            sig { params(result: T::Hash[Symbol, T.anything]).void }
             attr_writer :result
 
             sig { returns(T.nilable(Time)) }
@@ -101,7 +101,7 @@ module Telnyx
                 profiles: T::Array[String],
                 record_type: String,
                 report_url: String,
-                result: T.anything,
+                result: T::Hash[Symbol, T.anything],
                 start_time: Time,
                 status: Integer,
                 updated_at: Time
@@ -138,7 +138,7 @@ module Telnyx
                   profiles: T::Array[String],
                   record_type: String,
                   report_url: String,
-                  result: T.anything,
+                  result: T::Hash[Symbol, T.anything],
                   start_time: Time,
                   status: Integer,
                   updated_at: Time

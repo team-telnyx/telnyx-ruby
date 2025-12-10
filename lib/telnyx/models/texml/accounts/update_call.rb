@@ -20,11 +20,11 @@ module Telnyx
           #   @return [String, nil]
           optional :fallback_url, String, api_name: :FallbackUrl
 
-          # @!attribute method_
+          # @!attribute http_method
           #   HTTP request type used for `Url`.
           #
           #   @return [Symbol, Telnyx::Models::Texml::Accounts::UpdateCall::Method, nil]
-          optional :method_, enum: -> { Telnyx::Texml::Accounts::UpdateCall::Method }, api_name: :Method
+          optional :http_method, enum: -> { Telnyx::Texml::Accounts::UpdateCall::Method }, api_name: :Method
 
           # @!attribute status
           #   The value to set the call status to. Setting the status to completed ends the
@@ -60,7 +60,7 @@ module Telnyx
           #   @return [String, nil]
           optional :url, String, api_name: :Url
 
-          # @!method initialize(fallback_method: nil, fallback_url: nil, method_: nil, status: nil, status_callback: nil, status_callback_method: nil, texml: nil, url: nil)
+          # @!method initialize(fallback_method: nil, fallback_url: nil, http_method: nil, status: nil, status_callback: nil, status_callback_method: nil, texml: nil, url: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Texml::Accounts::UpdateCall} for more details.
           #
@@ -68,7 +68,7 @@ module Telnyx
           #
           #   @param fallback_url [String] A failover URL for which Telnyx will retrieve the TeXML call instructions if the
           #
-          #   @param method_ [Symbol, Telnyx::Models::Texml::Accounts::UpdateCall::Method] HTTP request type used for `Url`.
+          #   @param http_method [Symbol, Telnyx::Models::Texml::Accounts::UpdateCall::Method] HTTP request type used for `Url`.
           #
           #   @param status [String] The value to set the call status to. Setting the status to completed ends the ca
           #
@@ -95,7 +95,7 @@ module Telnyx
 
           # HTTP request type used for `Url`.
           #
-          # @see Telnyx::Models::Texml::Accounts::UpdateCall#method_
+          # @see Telnyx::Models::Texml::Accounts::UpdateCall#http_method
           module Method
             extend Telnyx::Internal::Type::Enum
 

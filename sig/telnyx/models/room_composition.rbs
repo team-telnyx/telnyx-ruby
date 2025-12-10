@@ -8,7 +8,7 @@ module Telnyx
         download_url: String,
         duration_secs: Integer,
         ended_at: Time,
-        format_: Telnyx::Models::RoomComposition::format_,
+        file_format: Telnyx::Models::RoomComposition::format_,
         record_type: String,
         room_id: String,
         session_id: String,
@@ -48,9 +48,9 @@ module Telnyx
 
       def ended_at=: (Time) -> Time
 
-      attr_reader format_: Telnyx::Models::RoomComposition::format_?
+      attr_reader file_format: Telnyx::Models::RoomComposition::format_?
 
-      def format_=: (
+      def file_format=: (
         Telnyx::Models::RoomComposition::format_
       ) -> Telnyx::Models::RoomComposition::format_
 
@@ -109,7 +109,7 @@ module Telnyx
         ?download_url: String,
         ?duration_secs: Integer,
         ?ended_at: Time,
-        ?format_: Telnyx::Models::RoomComposition::format_,
+        ?file_format: Telnyx::Models::RoomComposition::format_,
         ?record_type: String,
         ?room_id: String,
         ?session_id: String,
@@ -131,7 +131,7 @@ module Telnyx
         download_url: String,
         duration_secs: Integer,
         ended_at: Time,
-        format_: Telnyx::Models::RoomComposition::format_,
+        file_format: Telnyx::Models::RoomComposition::format_,
         record_type: String,
         room_id: String,
         session_id: String,

@@ -27,7 +27,11 @@ module Telnyx
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::BulkSimCardActionListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Models::BulkSimCardActionListResponse
+          ]
+        )
       end
       def list(
         # Filter by action type.

@@ -189,7 +189,7 @@ module Telnyx
           page: Telnyx::IPConnectionListParams::Page::OrHash,
           sort: Telnyx::IPConnectionListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::IPConnectionListResponse)
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::IPConnection])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

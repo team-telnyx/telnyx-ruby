@@ -3,13 +3,13 @@
 require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::Number10dlc::Campaign::UsecaseTest < Telnyx::Test::ResourceTest
-  def test_retrieve_cost_required_params
+  def test_get_cost_required_params
     skip("Prism tests are disabled")
 
-    response = @telnyx.number_10dlc.campaign.usecase.retrieve_cost(usecase: "usecase")
+    response = @telnyx.number_10dlc.campaign.usecase.get_cost(usecase: "usecase")
 
     assert_pattern do
-      response => Telnyx::Models::Number10dlc::Campaign::UsecaseRetrieveCostResponse
+      response => Telnyx::Models::Number10dlc::Campaign::UsecaseGetCostResponse
     end
 
     assert_pattern do

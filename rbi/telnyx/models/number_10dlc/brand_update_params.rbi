@@ -28,11 +28,11 @@ module Telnyx
         attr_accessor :email
 
         # Entity type behind the brand. This is the form of business establishment.
-        sig { returns(Telnyx::EntityType::OrSymbol) }
+        sig { returns(Telnyx::Number10dlc::EntityType::OrSymbol) }
         attr_accessor :entity_type
 
         # Vertical or industry segment of the brand or campaign.
-        sig { returns(Telnyx::Vertical::OrSymbol) }
+        sig { returns(Telnyx::Number10dlc::Vertical::OrSymbol) }
         attr_accessor :vertical
 
         # Alternate business identifier such as DUNS, LEI, or GIIN
@@ -43,11 +43,16 @@ module Telnyx
         attr_writer :alt_business_id
 
         # An enumeration.
-        sig { returns(T.nilable(Telnyx::AltBusinessIDType::OrSymbol)) }
+        sig do
+          returns(T.nilable(Telnyx::Number10dlc::AltBusinessIDType::OrSymbol))
+        end
         attr_reader :alt_business_id_type
 
         sig do
-          params(alt_business_id_type: Telnyx::AltBusinessIDType::OrSymbol).void
+          params(
+            alt_business_id_type:
+              Telnyx::Number10dlc::AltBusinessIDType::OrSymbol
+          ).void
         end
         attr_writer :alt_business_id_type
 
@@ -91,11 +96,15 @@ module Telnyx
         attr_writer :first_name
 
         # The verification status of an active brand
-        sig { returns(T.nilable(Telnyx::BrandIdentityStatus::OrSymbol)) }
+        sig do
+          returns(T.nilable(Telnyx::Number10dlc::BrandIdentityStatus::OrSymbol))
+        end
         attr_reader :identity_status
 
         sig do
-          params(identity_status: Telnyx::BrandIdentityStatus::OrSymbol).void
+          params(
+            identity_status: Telnyx::Number10dlc::BrandIdentityStatus::OrSymbol
+          ).void
         end
         attr_writer :identity_status
 
@@ -141,10 +150,14 @@ module Telnyx
         attr_writer :state
 
         # (Required for public company) stock exchange.
-        sig { returns(T.nilable(Telnyx::StockExchange::OrSymbol)) }
+        sig { returns(T.nilable(Telnyx::Number10dlc::StockExchange::OrSymbol)) }
         attr_reader :stock_exchange
 
-        sig { params(stock_exchange: Telnyx::StockExchange::OrSymbol).void }
+        sig do
+          params(
+            stock_exchange: Telnyx::Number10dlc::StockExchange::OrSymbol
+          ).void
+        end
         attr_writer :stock_exchange
 
         # (Required for public company) stock symbol.
@@ -187,23 +200,24 @@ module Telnyx
             country: String,
             display_name: String,
             email: String,
-            entity_type: Telnyx::EntityType::OrSymbol,
-            vertical: Telnyx::Vertical::OrSymbol,
+            entity_type: Telnyx::Number10dlc::EntityType::OrSymbol,
+            vertical: Telnyx::Number10dlc::Vertical::OrSymbol,
             alt_business_id: String,
-            alt_business_id_type: Telnyx::AltBusinessIDType::OrSymbol,
+            alt_business_id_type:
+              Telnyx::Number10dlc::AltBusinessIDType::OrSymbol,
             business_contact_email: String,
             city: String,
             company_name: String,
             ein: String,
             first_name: String,
-            identity_status: Telnyx::BrandIdentityStatus::OrSymbol,
+            identity_status: Telnyx::Number10dlc::BrandIdentityStatus::OrSymbol,
             ip_address: String,
             is_reseller: T::Boolean,
             last_name: String,
             phone: String,
             postal_code: String,
             state: String,
-            stock_exchange: Telnyx::StockExchange::OrSymbol,
+            stock_exchange: Telnyx::Number10dlc::StockExchange::OrSymbol,
             stock_symbol: String,
             street: String,
             webhook_failover_url: String,
@@ -276,23 +290,25 @@ module Telnyx
               country: String,
               display_name: String,
               email: String,
-              entity_type: Telnyx::EntityType::OrSymbol,
-              vertical: Telnyx::Vertical::OrSymbol,
+              entity_type: Telnyx::Number10dlc::EntityType::OrSymbol,
+              vertical: Telnyx::Number10dlc::Vertical::OrSymbol,
               alt_business_id: String,
-              alt_business_id_type: Telnyx::AltBusinessIDType::OrSymbol,
+              alt_business_id_type:
+                Telnyx::Number10dlc::AltBusinessIDType::OrSymbol,
               business_contact_email: String,
               city: String,
               company_name: String,
               ein: String,
               first_name: String,
-              identity_status: Telnyx::BrandIdentityStatus::OrSymbol,
+              identity_status:
+                Telnyx::Number10dlc::BrandIdentityStatus::OrSymbol,
               ip_address: String,
               is_reseller: T::Boolean,
               last_name: String,
               phone: String,
               postal_code: String,
               state: String,
-              stock_exchange: Telnyx::StockExchange::OrSymbol,
+              stock_exchange: Telnyx::Number10dlc::StockExchange::OrSymbol,
               stock_symbol: String,
               street: String,
               webhook_failover_url: String,

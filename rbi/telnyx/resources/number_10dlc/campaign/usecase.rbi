@@ -11,10 +11,10 @@ module Telnyx
               usecase: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
-              Telnyx::Models::Number10dlc::Campaign::UsecaseRetrieveCostResponse
+              Telnyx::Models::Number10dlc::Campaign::UsecaseGetCostResponse
             )
           end
-          def retrieve_cost(usecase:, request_options: {})
+          def get_cost(usecase:, request_options: {})
           end
 
           # @api private

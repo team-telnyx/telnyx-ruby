@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::PartnerCampaigns#retrieve
     class TelnyxDownstreamCampaign < Telnyx::Internal::Type::BaseModel
       # @!attribute tcr_brand_id
       #   Unique identifier assigned to the brand by the registry.

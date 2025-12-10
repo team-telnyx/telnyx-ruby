@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::Rooms#list
     class Room < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   A unique identifier for the room.

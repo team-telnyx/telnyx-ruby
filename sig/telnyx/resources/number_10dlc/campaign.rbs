@@ -9,7 +9,7 @@ module Telnyx
         def retrieve: (
           String campaign_id,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::TelnyxCampaignCsp
+        ) -> Telnyx::Number10dlc::TelnyxCampaignCsp
 
         def update: (
           String campaign_id,
@@ -25,7 +25,7 @@ module Telnyx
           ?webhook_failover_url: String,
           ?webhook_url: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::TelnyxCampaignCsp
+        ) -> Telnyx::Number10dlc::TelnyxCampaignCsp
 
         def list: (
           brand_id: String,
@@ -33,33 +33,38 @@ module Telnyx
           ?records_per_page: Integer,
           ?sort: Telnyx::Models::Number10dlc::CampaignListParams::sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Number10dlc::CampaignListResponse
+        ) -> Telnyx::Internal::PerPagePaginationV2[Telnyx::Models::Number10dlc::CampaignListResponse]
 
-        def delete: (
+        def accept_sharing: (
           String campaign_id,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Number10dlc::CampaignDeleteResponse
+        ) -> Telnyx::Models::Number10dlc::campaign_accept_sharing_response
 
-        def appeal: (
+        def deactivate: (
+          String campaign_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Number10dlc::CampaignDeactivateResponse
+
+        def get_mno_metadata: (
+          String campaign_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Number10dlc::CampaignGetMnoMetadataResponse
+
+        def get_operation_status: (
+          String campaign_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Number10dlc::campaign_get_operation_status_response
+
+        def get_sharing_status: (
+          String campaign_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Number10dlc::CampaignGetSharingStatusResponse
+
+        def submit_appeal: (
           String campaign_id,
           appeal_reason: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Number10dlc::CampaignAppealResponse
-
-        def retrieve_mno_metadata: (
-          String campaign_id,
-          ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Number10dlc::CampaignRetrieveMnoMetadataResponse
-
-        def retrieve_operation_status: (
-          String campaign_id,
-          ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Number10dlc::campaign_retrieve_operation_status_response
-
-        def retrieve_sharing: (
-          String campaign_id,
-          ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Number10dlc::CampaignRetrieveSharingResponse
+        ) -> Telnyx::Models::Number10dlc::CampaignSubmitAppealResponse
 
         def initialize: (client: Telnyx::Client) -> void
       end

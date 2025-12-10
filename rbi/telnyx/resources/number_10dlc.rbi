@@ -12,28 +12,17 @@ module Telnyx
       sig { returns(Telnyx::Resources::Number10dlc::CampaignBuilder) }
       attr_reader :campaign_builder
 
-      sig { returns(Telnyx::Resources::Number10dlc::PartnerCampaign) }
-      attr_reader :partner_campaign
-
-      sig { returns(Telnyx::Resources::Number10dlc::PartnerCampaigns) }
-      attr_reader :partner_campaigns
-
-      sig do
-        returns(Telnyx::Resources::Number10dlc::PhoneNumberAssignmentByProfile)
-      end
-      attr_reader :phone_number_assignment_by_profile
-
       sig { returns(Telnyx::Resources::Number10dlc::PhoneNumberCampaigns) }
       attr_reader :phone_number_campaigns
 
       # Get Enum
       sig do
         params(
-          endpoint: Telnyx::Number10dlcRetrieveParams::Endpoint::OrSymbol,
+          endpoint: Telnyx::Number10dlcGetEnumParams::Endpoint::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::Number10dlcRetrieveResponse::Variants)
+        ).returns(Telnyx::Models::Number10dlcGetEnumResponse::Variants)
       end
-      def retrieve(endpoint, request_options: {})
+      def get_enum(endpoint, request_options: {})
       end
 
       # @api private

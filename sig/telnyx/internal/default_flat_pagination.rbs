@@ -1,0 +1,24 @@
+module Telnyx
+  module Internal
+    class DefaultFlatPagination[Elem]
+      include Telnyx::Internal::Type::BasePage[Elem]
+
+      attr_accessor data: ::Array[Elem]?
+
+      attr_accessor meta: Meta
+
+      def inspect: -> String
+
+      type meta = { page_number: Integer, total_pages: Integer }
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor page_number: Integer
+
+        attr_accessor total_pages: Integer
+
+        def initialize: (page_number: Integer, total_pages: Integer) -> void
+
+        def to_hash: -> { page_number: Integer, total_pages: Integer }
+      end
+    end
+  end
+end

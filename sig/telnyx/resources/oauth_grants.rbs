@@ -10,7 +10,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::OAuthGrantListResponse
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::OAuthGrant]
 
       def delete: (
         String id,

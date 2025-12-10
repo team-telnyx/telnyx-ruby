@@ -65,7 +65,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::NotificationSettingListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::NotificationSetting>]
       #
       # @see Telnyx::Models::NotificationSettingListParams
       def list(params = {})
@@ -74,7 +74,8 @@ module Telnyx
           method: :get,
           path: "notification_settings",
           query: parsed,
-          model: Telnyx::Models::NotificationSettingListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::NotificationSetting,
           options: options
         )
       end

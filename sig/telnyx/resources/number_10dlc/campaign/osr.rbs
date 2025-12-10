@@ -3,10 +3,10 @@ module Telnyx
     class Number10dlc
       class Campaign
         class Osr
-          def retrieve_attributes: (
+          def get_attributes: (
             String campaign_id,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Number10dlc::Campaign::osr_retrieve_attributes_response
+          ) -> Telnyx::Models::Number10dlc::Campaign::osr_get_attributes_response
 
           def initialize: (client: Telnyx::Client) -> void
         end

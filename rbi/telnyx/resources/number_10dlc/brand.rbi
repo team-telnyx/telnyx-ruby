@@ -16,8 +16,8 @@ module Telnyx
             country: String,
             display_name: String,
             email: String,
-            entity_type: Telnyx::EntityType::OrSymbol,
-            vertical: Telnyx::Vertical::OrSymbol,
+            entity_type: Telnyx::Number10dlc::EntityType::OrSymbol,
+            vertical: Telnyx::Number10dlc::Vertical::OrSymbol,
             business_contact_email: String,
             city: String,
             company_name: String,
@@ -31,14 +31,14 @@ module Telnyx
             phone: String,
             postal_code: String,
             state: String,
-            stock_exchange: Telnyx::StockExchange::OrSymbol,
+            stock_exchange: Telnyx::Number10dlc::StockExchange::OrSymbol,
             stock_symbol: String,
             street: String,
             webhook_failover_url: String,
             webhook_url: String,
             website: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::TelnyxBrand)
+          ).returns(Telnyx::Number10dlc::TelnyxBrand)
         end
         def create(
           # ISO2 2 characters country code. Example: US - United States
@@ -113,30 +113,31 @@ module Telnyx
             country: String,
             display_name: String,
             email: String,
-            entity_type: Telnyx::EntityType::OrSymbol,
-            vertical: Telnyx::Vertical::OrSymbol,
+            entity_type: Telnyx::Number10dlc::EntityType::OrSymbol,
+            vertical: Telnyx::Number10dlc::Vertical::OrSymbol,
             alt_business_id: String,
-            alt_business_id_type: Telnyx::AltBusinessIDType::OrSymbol,
+            alt_business_id_type:
+              Telnyx::Number10dlc::AltBusinessIDType::OrSymbol,
             business_contact_email: String,
             city: String,
             company_name: String,
             ein: String,
             first_name: String,
-            identity_status: Telnyx::BrandIdentityStatus::OrSymbol,
+            identity_status: Telnyx::Number10dlc::BrandIdentityStatus::OrSymbol,
             ip_address: String,
             is_reseller: T::Boolean,
             last_name: String,
             phone: String,
             postal_code: String,
             state: String,
-            stock_exchange: Telnyx::StockExchange::OrSymbol,
+            stock_exchange: Telnyx::Number10dlc::StockExchange::OrSymbol,
             stock_symbol: String,
             street: String,
             webhook_failover_url: String,
             webhook_url: String,
             website: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::TelnyxBrand)
+          ).returns(Telnyx::Number10dlc::TelnyxBrand)
         end
         def update(
           brand_id,
@@ -210,7 +211,11 @@ module Telnyx
             state: String,
             tcr_brand_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Number10dlc::BrandListResponse)
+          ).returns(
+            Telnyx::Internal::PerPagePaginationV2[
+              Telnyx::Models::Number10dlc::BrandListResponse
+            ]
+          )
         end
         def list(
           # Filter results by the Telnyx Brand id
@@ -243,6 +248,28 @@ module Telnyx
         def delete(brand_id, request_options: {})
         end
 
+        # Get feedback about a brand by ID. This endpoint can be used after creating or
+        # revetting a brand.
+        #
+        # Possible values for `.category[].id`:
+        #
+        # - `TAX_ID` - Data mismatch related to tax id and its associated properties.
+        # - `STOCK_SYMBOL` - Non public entity registered as a public for profit entity or
+        #   the stock information mismatch.
+        # - `GOVERNMENT_ENTITY` - Non government entity registered as a government entity.
+        #   Must be a U.S. government entity.
+        # - `NONPROFIT` - Not a recognized non-profit entity. No IRS tax-exempt status
+        #   found.
+        # - `OTHERS` - Details of the data misrepresentation if any.
+        sig do
+          params(
+            brand_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::Number10dlc::BrandGetFeedbackResponse)
+        end
+        def get_feedback(brand_id, request_options: {})
+        end
+
         # Resend brand 2FA email
         sig do
           params(
@@ -250,7 +277,37 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).void
         end
-        def number_2fa_email(brand_id, request_options: {})
+        def resend_2fa_email(brand_id, request_options: {})
+        end
+
+        # Query the status of an SMS OTP (One-Time Password) for Sole Proprietor brand
+        # verification.
+        #
+        # This endpoint allows you to check the delivery and verification status of an OTP
+        # sent during the Sole Proprietor brand verification process. You can query by
+        # either:
+        #
+        # - `referenceId` - The reference ID returned when the OTP was initially triggered
+        # - `brandId` - Query parameter for portal users to look up OTP status by Brand ID
+        #
+        # The response includes delivery status, verification dates, and detailed delivery
+        # information.
+        sig do
+          params(
+            reference_id: String,
+            brand_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(
+            Telnyx::Models::Number10dlc::BrandRetrieveSMSOtpStatusResponse
+          )
+        end
+        def retrieve_sms_otp_status(
+          # The reference ID returned when the OTP was initially triggered
+          reference_id,
+          # Filter by Brand ID for easier lookup in portal applications
+          brand_id: nil,
+          request_options: {}
+        )
         end
 
         # This operation allows you to revet the brand. However, revetting is allowed once
@@ -260,9 +317,9 @@ module Telnyx
           params(
             brand_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::TelnyxBrand)
+          ).returns(Telnyx::Number10dlc::TelnyxBrand)
         end
-        def update_revet(brand_id, request_options: {})
+        def revet(brand_id, request_options: {})
         end
 
         # @api private

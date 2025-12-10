@@ -22,19 +22,20 @@ module Telnyx
             sig do
               params(
                 test_id: String,
-                page:
-                  Telnyx::AI::Assistants::Tests::RunListParams::Page::OrHash,
+                page_number: Integer,
+                page_size: Integer,
                 status: String,
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(
-                Telnyx::AI::Assistants::Tests::TestSuites::PaginatedTestRunList
+                Telnyx::Internal::DefaultFlatPagination[
+                  Telnyx::AI::Assistants::Tests::TestRunResponse
+                ]
               )
             end
             def list(
               test_id,
-              # Consolidated page parameter (deepObject style). Originally: page[size],
-              # page[number]
-              page: nil,
+              page_number: nil,
+              page_size: nil,
               # Filter runs by execution status (pending, running, completed, failed, timeout)
               status: nil,
               request_options: {}

@@ -61,7 +61,7 @@ module Telnyx
         ?page: Telnyx::FqdnConnectionListParams::Page,
         ?sort: Telnyx::Models::FqdnConnectionListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::FqdnConnectionListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::FqdnConnection]
 
       def delete: (
         String id,

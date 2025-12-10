@@ -7,18 +7,12 @@ module Telnyx
 
       attr_reader campaign_builder: Telnyx::Resources::Number10dlc::CampaignBuilder
 
-      attr_reader partner_campaign: Telnyx::Resources::Number10dlc::PartnerCampaign
-
-      attr_reader partner_campaigns: Telnyx::Resources::Number10dlc::PartnerCampaigns
-
-      attr_reader phone_number_assignment_by_profile: Telnyx::Resources::Number10dlc::PhoneNumberAssignmentByProfile
-
       attr_reader phone_number_campaigns: Telnyx::Resources::Number10dlc::PhoneNumberCampaigns
 
-      def retrieve: (
-        Telnyx::Models::Number10dlcRetrieveParams::endpoint endpoint,
+      def get_enum: (
+        Telnyx::Models::Number10dlcGetEnumParams::endpoint endpoint,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::number10dlc_retrieve_response
+      ) -> Telnyx::Models::number10dlc_get_enum_response
 
       def initialize: (client: Telnyx::Client) -> void
     end

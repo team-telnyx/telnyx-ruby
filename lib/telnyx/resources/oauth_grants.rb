@@ -33,7 +33,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::OAuthGrantListResponse]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::OAuthGrant>]
       #
       # @see Telnyx::Models::OAuthGrantListParams
       def list(params = {})
@@ -42,7 +42,8 @@ module Telnyx
           method: :get,
           path: "oauth_grants",
           query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          model: Telnyx::Models::OAuthGrantListResponse,
+          page: Telnyx::Internal::DefaultFlatPagination,
+          model: Telnyx::OAuthGrant,
           options: options
         )
       end

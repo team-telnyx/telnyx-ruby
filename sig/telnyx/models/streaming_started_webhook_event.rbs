@@ -1,147 +1,16 @@
 module Telnyx
   module Models
     type streaming_started_webhook_event =
-      { data: Telnyx::StreamingStartedWebhookEvent::Data }
+      { data: Telnyx::CallStreamingStarted }
 
     class StreamingStartedWebhookEvent < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::StreamingStartedWebhookEvent::Data?
+      attr_reader data: Telnyx::CallStreamingStarted?
 
-      def data=: (
-        Telnyx::StreamingStartedWebhookEvent::Data
-      ) -> Telnyx::StreamingStartedWebhookEvent::Data
+      def data=: (Telnyx::CallStreamingStarted) -> Telnyx::CallStreamingStarted
 
-      def initialize: (
-        ?data: Telnyx::StreamingStartedWebhookEvent::Data
-      ) -> void
+      def initialize: (?data: Telnyx::CallStreamingStarted) -> void
 
-      def to_hash: -> { data: Telnyx::StreamingStartedWebhookEvent::Data }
-
-      type data =
-        {
-          id: String,
-          event_type: Telnyx::Models::StreamingStartedWebhookEvent::Data::event_type,
-          occurred_at: Time,
-          payload: Telnyx::StreamingStartedWebhookEvent::Data::Payload,
-          record_type: Telnyx::Models::StreamingStartedWebhookEvent::Data::record_type
-        }
-
-      class Data < Telnyx::Internal::Type::BaseModel
-        attr_reader id: String?
-
-        def id=: (String) -> String
-
-        attr_reader event_type: Telnyx::Models::StreamingStartedWebhookEvent::Data::event_type?
-
-        def event_type=: (
-          Telnyx::Models::StreamingStartedWebhookEvent::Data::event_type
-        ) -> Telnyx::Models::StreamingStartedWebhookEvent::Data::event_type
-
-        attr_reader occurred_at: Time?
-
-        def occurred_at=: (Time) -> Time
-
-        attr_reader payload: Telnyx::StreamingStartedWebhookEvent::Data::Payload?
-
-        def payload=: (
-          Telnyx::StreamingStartedWebhookEvent::Data::Payload
-        ) -> Telnyx::StreamingStartedWebhookEvent::Data::Payload
-
-        attr_reader record_type: Telnyx::Models::StreamingStartedWebhookEvent::Data::record_type?
-
-        def record_type=: (
-          Telnyx::Models::StreamingStartedWebhookEvent::Data::record_type
-        ) -> Telnyx::Models::StreamingStartedWebhookEvent::Data::record_type
-
-        def initialize: (
-          ?id: String,
-          ?event_type: Telnyx::Models::StreamingStartedWebhookEvent::Data::event_type,
-          ?occurred_at: Time,
-          ?payload: Telnyx::StreamingStartedWebhookEvent::Data::Payload,
-          ?record_type: Telnyx::Models::StreamingStartedWebhookEvent::Data::record_type
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          event_type: Telnyx::Models::StreamingStartedWebhookEvent::Data::event_type,
-          occurred_at: Time,
-          payload: Telnyx::StreamingStartedWebhookEvent::Data::Payload,
-          record_type: Telnyx::Models::StreamingStartedWebhookEvent::Data::record_type
-        }
-
-        type event_type = :"streaming.started"
-
-        module EventType
-          extend Telnyx::Internal::Type::Enum
-
-          STREAMING_STARTED: :"streaming.started"
-
-          def self?.values: -> ::Array[Telnyx::Models::StreamingStartedWebhookEvent::Data::event_type]
-        end
-
-        type payload =
-          {
-            call_control_id: String,
-            call_leg_id: String,
-            call_session_id: String,
-            client_state: String,
-            connection_id: String,
-            stream_url: String
-          }
-
-        class Payload < Telnyx::Internal::Type::BaseModel
-          attr_reader call_control_id: String?
-
-          def call_control_id=: (String) -> String
-
-          attr_reader call_leg_id: String?
-
-          def call_leg_id=: (String) -> String
-
-          attr_reader call_session_id: String?
-
-          def call_session_id=: (String) -> String
-
-          attr_reader client_state: String?
-
-          def client_state=: (String) -> String
-
-          attr_reader connection_id: String?
-
-          def connection_id=: (String) -> String
-
-          attr_reader stream_url: String?
-
-          def stream_url=: (String) -> String
-
-          def initialize: (
-            ?call_control_id: String,
-            ?call_leg_id: String,
-            ?call_session_id: String,
-            ?client_state: String,
-            ?connection_id: String,
-            ?stream_url: String
-          ) -> void
-
-          def to_hash: -> {
-            call_control_id: String,
-            call_leg_id: String,
-            call_session_id: String,
-            client_state: String,
-            connection_id: String,
-            stream_url: String
-          }
-        end
-
-        type record_type = :event
-
-        module RecordType
-          extend Telnyx::Internal::Type::Enum
-
-          EVENT: :event
-
-          def self?.values: -> ::Array[Telnyx::Models::StreamingStartedWebhookEvent::Data::record_type]
-        end
-      end
+      def to_hash: -> { data: Telnyx::CallStreamingStarted }
     end
   end
 end

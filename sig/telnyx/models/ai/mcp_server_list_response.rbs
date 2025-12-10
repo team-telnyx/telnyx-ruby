@@ -1,7 +1,7 @@
 module Telnyx
   module Models
     module AI
-      type mcp_server_list_response_item =
+      type mcp_server_list_response =
         {
           id: String,
           created_at: Time,
@@ -12,7 +12,7 @@ module Telnyx
           api_key_ref: String?
         }
 
-      class McpServerListResponseItem < Telnyx::Internal::Type::BaseModel
+      class McpServerListResponse < Telnyx::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor created_at: Time
@@ -47,11 +47,6 @@ module Telnyx
           api_key_ref: String?
         }
       end
-
-      type mcp_server_list_response =
-        ::Array[Telnyx::Models::AI::McpServerListResponseItem]
-
-      McpServerListResponse: Telnyx::Internal::Type::Converter
     end
   end
 end

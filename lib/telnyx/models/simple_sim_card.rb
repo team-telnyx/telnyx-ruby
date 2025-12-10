@@ -113,9 +113,9 @@ module Telnyx
         # @!attribute resources_with_in_progress_actions
         #   List of resources with actions in progress.
         #
-        #   @return [Array<Object>, nil]
+        #   @return [Array<Hash{Symbol=>Object}>, nil]
         optional :resources_with_in_progress_actions,
-                 Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]
+                 Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]
 
         # @!attribute type
         #   The type of SIM card
@@ -164,7 +164,7 @@ module Telnyx
       #
       #   @param record_type [String]
       #
-      #   @param resources_with_in_progress_actions [Array<Object>] List of resources with actions in progress.
+      #   @param resources_with_in_progress_actions [Array<Hash{Symbol=>Object}>] List of resources with actions in progress.
       #
       #   @param sim_card_group_id [String] The group SIMCardGroup identification. This attribute can be <code>null</code> w
       #

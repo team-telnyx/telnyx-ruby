@@ -14,12 +14,15 @@ module Telnyx
       #   @return [Telnyx::Models::DetailRecordListParams::Filter, nil]
       optional :filter, -> { Telnyx::DetailRecordListParams::Filter }
 
-      # @!attribute page
-      #   Consolidated page parameter (deepObject style). Originally: page[number],
-      #   page[size]
+      # @!attribute page_number
       #
-      #   @return [Telnyx::Models::DetailRecordListParams::Page, nil]
-      optional :page, -> { Telnyx::DetailRecordListParams::Page }
+      #   @return [Integer, nil]
+      optional :page_number, Integer
+
+      # @!attribute page_size
+      #
+      #   @return [Integer, nil]
+      optional :page_size, Integer
 
       # @!attribute sort
       #   Specifies the sort order for results. <br/>Example: sort=-created_at
@@ -27,13 +30,15 @@ module Telnyx
       #   @return [Array<String>, nil]
       optional :sort, Telnyx::Internal::Type::ArrayOf[String]
 
-      # @!method initialize(filter: nil, page: nil, sort: nil, request_options: {})
+      # @!method initialize(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::DetailRecordListParams} for more details.
       #
       #   @param filter [Telnyx::Models::DetailRecordListParams::Filter] Filter records on a given record attribute and value. <br/>Example: filter[statu
       #
-      #   @param page [Telnyx::Models::DetailRecordListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      #   @param page_number [Integer]
+      #
+      #   @param page_size [Integer]
       #
       #   @param sort [Array<String>] Specifies the sort order for results. <br/>Example: sort=-created_at
       #
@@ -116,28 +121,6 @@ module Telnyx
           # @!method self.values
           #   @return [Array<Symbol>]
         end
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        # @!attribute number
-        #   Page number
-        #
-        #   @return [Integer, nil]
-        optional :number, Integer
-
-        # @!attribute size
-        #   Page size
-        #
-        #   @return [Integer, nil]
-        optional :size, Integer
-
-        # @!method initialize(number: nil, size: nil)
-        #   Consolidated page parameter (deepObject style). Originally: page[number],
-        #   page[size]
-        #
-        #   @param number [Integer] Page number
-        #
-        #   @param size [Integer] Page size
       end
     end
   end

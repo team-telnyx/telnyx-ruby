@@ -5,27 +5,6 @@ module Telnyx
     class Number10dlc
       class Brand
         class ExternalVetting
-          # Order new external vetting for a brand
-          sig do
-            params(
-              brand_id: String,
-              evp_id: String,
-              vetting_class: String,
-              request_options: Telnyx::RequestOptions::OrHash
-            ).returns(
-              Telnyx::Models::Number10dlc::Brand::ExternalVettingExternalVettingResponse
-            )
-          end
-          def external_vetting(
-            brand_id,
-            # External vetting provider ID for the brand.
-            evp_id:,
-            # Identifies the vetting classification.
-            vetting_class:,
-            request_options: {}
-          )
-          end
-
           # Get list of valid external vetting record for a given brand
           sig do
             params(
@@ -33,11 +12,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
               T::Array[
-                Telnyx::Models::Number10dlc::Brand::ExternalVettingRetrieveExternalVettingResponseItem
+                Telnyx::Models::Number10dlc::Brand::ExternalVettingListResponseItem
               ]
             )
           end
-          def retrieve_external_vetting(brand_id, request_options: {})
+          def list(brand_id, request_options: {})
           end
 
           # This operation can be used to import an external vetting record from a
@@ -52,10 +31,10 @@ module Telnyx
               vetting_token: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
-              Telnyx::Models::Number10dlc::Brand::ExternalVettingUpdateExternalVettingResponse
+              Telnyx::Models::Number10dlc::Brand::ExternalVettingImportsResponse
             )
           end
-          def update_external_vetting(
+          def imports(
             brand_id,
             # External vetting provider ID for the brand.
             evp_id:,
@@ -64,6 +43,27 @@ module Telnyx
             vetting_id:,
             # Required by some providers for vetting record confirmation.
             vetting_token: nil,
+            request_options: {}
+          )
+          end
+
+          # Order new external vetting for a brand
+          sig do
+            params(
+              brand_id: String,
+              evp_id: String,
+              vetting_class: String,
+              request_options: Telnyx::RequestOptions::OrHash
+            ).returns(
+              Telnyx::Models::Number10dlc::Brand::ExternalVettingOrderResponse
+            )
+          end
+          def order(
+            brand_id,
+            # External vetting provider ID for the brand.
+            evp_id:,
+            # Identifies the vetting classification.
+            vetting_class:,
             request_options: {}
           )
           end
