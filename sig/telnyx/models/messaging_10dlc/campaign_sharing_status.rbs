@@ -1,0 +1,52 @@
+module Telnyx
+  module Models
+    module Messaging10dlc
+      type campaign_sharing_status =
+        {
+          downstream_cnp_id: String,
+          shared_date: String,
+          sharing_status: String,
+          status_date: String,
+          upstream_cnp_id: String
+        }
+
+      class CampaignSharingStatus < Telnyx::Internal::Type::BaseModel
+        attr_reader downstream_cnp_id: String?
+
+        def downstream_cnp_id=: (String) -> String
+
+        attr_reader shared_date: String?
+
+        def shared_date=: (String) -> String
+
+        attr_reader sharing_status: String?
+
+        def sharing_status=: (String) -> String
+
+        attr_reader status_date: String?
+
+        def status_date=: (String) -> String
+
+        attr_reader upstream_cnp_id: String?
+
+        def upstream_cnp_id=: (String) -> String
+
+        def initialize: (
+          ?downstream_cnp_id: String,
+          ?shared_date: String,
+          ?sharing_status: String,
+          ?status_date: String,
+          ?upstream_cnp_id: String
+        ) -> void
+
+        def to_hash: -> {
+          downstream_cnp_id: String,
+          shared_date: String,
+          sharing_status: String,
+          status_date: String,
+          upstream_cnp_id: String
+        }
+      end
+    end
+  end
+end

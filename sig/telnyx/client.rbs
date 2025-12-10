@@ -200,8 +200,6 @@ module Telnyx
 
     attr_reader payment: Telnyx::Resources::Payment
 
-    attr_reader phone_number_assignment_by_profile: Telnyx::Resources::PhoneNumberAssignmentByProfile
-
     attr_reader phone_number_blocks: Telnyx::Resources::PhoneNumberBlocks
 
     attr_reader phone_numbers: Telnyx::Resources::PhoneNumbers
@@ -308,8 +306,6 @@ module Telnyx
 
     attr_reader wireless_blocklists: Telnyx::Resources::WirelessBlocklists
 
-    attr_reader partner_campaigns: Telnyx::Resources::PartnerCampaigns
-
     attr_reader well_known: Telnyx::Resources::WellKnown
 
     attr_reader inexplicit_number_orders: Telnyx::Resources::InexplicitNumberOrders
@@ -318,7 +314,7 @@ module Telnyx
 
     attr_reader mobile_voice_connections: Telnyx::Resources::MobileVoiceConnections
 
-    attr_reader number_10dlc: Telnyx::Resources::Number10dlc
+    attr_reader messaging_10dlc: Telnyx::Resources::Messaging10dlc
 
     private def auth_headers: -> ::Hash[String, String]
 

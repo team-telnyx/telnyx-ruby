@@ -1,0 +1,16 @@
+module Telnyx
+  module Resources
+    class Messaging10dlc
+      class Campaign
+        class Osr
+          def get_attributes: (
+            String campaign_id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Messaging10dlc::Campaign::osr_get_attributes_response
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end
