@@ -18,10 +18,9 @@ module Telnyx
       ) -> Telnyx::Models::BillingGroupUpdateResponse
 
       def list: (
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::BillingGroupListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::BillingGroup]
+      ) -> Telnyx::Models::BillingGroupListResponse
 
       def delete: (
         String id,

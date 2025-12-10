@@ -288,9 +288,7 @@ module Telnyx
                 Telnyx::MessagingTollfree::Verification::TfVerificationStatus::OrSymbol,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
-              Telnyx::Internal::DefaultPaginationForMessagingTollfree[
-                Telnyx::MessagingTollfree::Verification::VerificationRequestStatus
-              ]
+              Telnyx::Models::MessagingTollfree::Verification::RequestListResponse
             )
           end
           def list(

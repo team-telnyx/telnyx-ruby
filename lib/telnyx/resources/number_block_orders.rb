@@ -66,7 +66,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::NumberBlockOrder>]
+      # @return [Telnyx::Models::NumberBlockOrderListResponse]
       #
       # @see Telnyx::Models::NumberBlockOrderListParams
       def list(params = {})
@@ -75,8 +75,7 @@ module Telnyx
           method: :get,
           path: "number_block_orders",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
-          model: Telnyx::NumberBlockOrder,
+          model: Telnyx::Models::NumberBlockOrderListResponse,
           options: options
         )
       end

@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::UsageReports::NumberLookupTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse | nil
+        data: Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupCreateResponse::Data | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::UsageReports::NumberLookupTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse | nil
+        data: Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse::Data | nil
       }
     end
   end
@@ -46,7 +46,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::UsageReports::NumberLookupTest
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse]) | nil,
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupListResponse::Data]) | nil,
         meta: Telnyx::Legacy::Reporting::UsageReports::StandardPaginationMeta | nil
       }
     end

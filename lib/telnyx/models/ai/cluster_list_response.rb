@@ -5,49 +5,65 @@ module Telnyx
     module AI
       # @see Telnyx::Resources::AI::Clusters#list
       class ClusterListResponse < Telnyx::Internal::Type::BaseModel
-        # @!attribute bucket
+        # @!attribute data
         #
-        #   @return [String]
-        required :bucket, String
+        #   @return [Array<Telnyx::Models::AI::ClusterListResponse::Data>]
+        required :data, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::ClusterListResponse::Data] }
 
-        # @!attribute created_at
+        # @!attribute meta
         #
-        #   @return [Time]
-        required :created_at, Time
+        #   @return [Telnyx::Models::AI::Assistants::Tests::TestSuites::Meta]
+        required :meta, -> { Telnyx::AI::Assistants::Tests::TestSuites::Meta }
 
-        # @!attribute finished_at
-        #
-        #   @return [Time]
-        required :finished_at, Time
+        # @!method initialize(data:, meta:)
+        #   @param data [Array<Telnyx::Models::AI::ClusterListResponse::Data>]
+        #   @param meta [Telnyx::Models::AI::Assistants::Tests::TestSuites::Meta]
 
-        # @!attribute min_cluster_size
-        #
-        #   @return [Integer]
-        required :min_cluster_size, Integer
+        class Data < Telnyx::Internal::Type::BaseModel
+          # @!attribute bucket
+          #
+          #   @return [String]
+          required :bucket, String
 
-        # @!attribute min_subcluster_size
-        #
-        #   @return [Integer]
-        required :min_subcluster_size, Integer
+          # @!attribute created_at
+          #
+          #   @return [Time]
+          required :created_at, Time
 
-        # @!attribute status
-        #
-        #   @return [Symbol, Telnyx::Models::Messaging10dlc::TaskStatus]
-        required :status, enum: -> { Telnyx::Messaging10dlc::TaskStatus }
+          # @!attribute finished_at
+          #
+          #   @return [Time]
+          required :finished_at, Time
 
-        # @!attribute task_id
-        #
-        #   @return [String]
-        required :task_id, String
+          # @!attribute min_cluster_size
+          #
+          #   @return [Integer]
+          required :min_cluster_size, Integer
 
-        # @!method initialize(bucket:, created_at:, finished_at:, min_cluster_size:, min_subcluster_size:, status:, task_id:)
-        #   @param bucket [String]
-        #   @param created_at [Time]
-        #   @param finished_at [Time]
-        #   @param min_cluster_size [Integer]
-        #   @param min_subcluster_size [Integer]
-        #   @param status [Symbol, Telnyx::Models::Messaging10dlc::TaskStatus]
-        #   @param task_id [String]
+          # @!attribute min_subcluster_size
+          #
+          #   @return [Integer]
+          required :min_subcluster_size, Integer
+
+          # @!attribute status
+          #
+          #   @return [Symbol, Telnyx::Models::TaskStatus]
+          required :status, enum: -> { Telnyx::TaskStatus }
+
+          # @!attribute task_id
+          #
+          #   @return [String]
+          required :task_id, String
+
+          # @!method initialize(bucket:, created_at:, finished_at:, min_cluster_size:, min_subcluster_size:, status:, task_id:)
+          #   @param bucket [String]
+          #   @param created_at [Time]
+          #   @param finished_at [Time]
+          #   @param min_cluster_size [Integer]
+          #   @param min_subcluster_size [Integer]
+          #   @param status [Symbol, Telnyx::Models::TaskStatus]
+          #   @param task_id [String]
+        end
       end
     end
   end

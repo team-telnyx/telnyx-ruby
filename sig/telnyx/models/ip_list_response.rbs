@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    type ip_list_response =
+      { data: ::Array[Telnyx::IP], meta: Telnyx::ConnectionsPaginationMeta }
+
+    class IPListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::IP]?
+
+      def data=: (::Array[Telnyx::IP]) -> ::Array[Telnyx::IP]
+
+      attr_reader meta: Telnyx::ConnectionsPaginationMeta?
+
+      def meta=: (
+        Telnyx::ConnectionsPaginationMeta
+      ) -> Telnyx::ConnectionsPaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::IP],
+        ?meta: Telnyx::ConnectionsPaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::IP],
+        meta: Telnyx::ConnectionsPaginationMeta
+      }
+    end
+  end
+end

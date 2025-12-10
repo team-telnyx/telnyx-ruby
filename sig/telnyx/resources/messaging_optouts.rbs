@@ -7,7 +7,7 @@ module Telnyx
         ?page: Telnyx::MessagingOptoutListParams::Page,
         ?redaction_enabled: String,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::MessagingOptoutListResponse]
+      ) -> Telnyx::Models::MessagingOptoutListResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

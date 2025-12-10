@@ -42,9 +42,7 @@ module Telnyx
           filter: Telnyx::NumberReservationListParams::Filter::OrHash,
           page: Telnyx::NumberReservationListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[Telnyx::NumberReservation]
-        )
+        ).returns(Telnyx::Models::NumberReservationListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[status],

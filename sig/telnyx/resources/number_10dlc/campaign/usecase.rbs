@@ -1,0 +1,16 @@
+module Telnyx
+  module Resources
+    class Number10dlc
+      class Campaign
+        class Usecase
+          def retrieve_cost: (
+            usecase: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Number10dlc::Campaign::UsecaseRetrieveCostResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

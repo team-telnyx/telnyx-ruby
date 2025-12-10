@@ -20,10 +20,10 @@ module Telnyx
       sig { params(detail: String).void }
       attr_writer :detail
 
-      sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+      sig { returns(T.nilable(T.anything)) }
       attr_reader :meta
 
-      sig { params(meta: T::Hash[Symbol, T.anything]).void }
+      sig { params(meta: T.anything).void }
       attr_writer :meta
 
       sig { returns(T.nilable(Telnyx::MessagingError::Source)) }
@@ -37,7 +37,7 @@ module Telnyx
           code: String,
           title: String,
           detail: String,
-          meta: T::Hash[Symbol, T.anything],
+          meta: T.anything,
           source: Telnyx::MessagingError::Source::OrHash
         ).returns(T.attached_class)
       end
@@ -50,7 +50,7 @@ module Telnyx
             code: String,
             title: String,
             detail: String,
-            meta: T::Hash[Symbol, T.anything],
+            meta: T.anything,
             source: Telnyx::MessagingError::Source
           }
         )

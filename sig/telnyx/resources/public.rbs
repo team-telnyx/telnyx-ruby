@@ -1,0 +1,9 @@
+module Telnyx
+  module Resources
+    class Public
+      attr_reader brand: Telnyx::Resources::Public::Brand
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

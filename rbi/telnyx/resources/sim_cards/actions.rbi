@@ -26,9 +26,7 @@ module Telnyx
             filter: Telnyx::SimCards::ActionListParams::Filter::OrHash,
             page: Telnyx::SimCards::ActionListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(
-            Telnyx::Internal::DefaultPagination[Telnyx::SimCards::SimCardAction]
-          )
+          ).returns(Telnyx::Models::SimCards::ActionListResponse)
         end
         def list(
           # Consolidated filter parameter for SIM card actions (deepObject style).

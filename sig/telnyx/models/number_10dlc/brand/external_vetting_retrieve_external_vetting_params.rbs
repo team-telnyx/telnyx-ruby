@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    module Number10dlc
+      module Brand
+        type external_vetting_retrieve_external_vetting_params =
+          {  } & Telnyx::Internal::Type::request_parameters
+
+        class ExternalVettingRetrieveExternalVettingParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          def initialize: (?request_options: Telnyx::request_opts) -> void
+
+          def to_hash: -> { request_options: Telnyx::RequestOptions }
+        end
+      end
+    end
+  end
+end

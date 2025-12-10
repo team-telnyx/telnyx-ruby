@@ -17,27 +17,27 @@ module Telnyx
 
         # The ID of the address.
         sig { returns(T.nilable(String)) }
-        attr_reader :id
+        attr_reader :body_id
 
-        sig { params(id: String).void }
-        attr_writer :id
+        sig { params(body_id: String).void }
+        attr_writer :body_id
 
         sig do
           params(
-            id: String,
+            body_id: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
           # The ID of the address.
-          id: nil,
+          body_id: nil,
           request_options: {}
         )
         end
 
         sig do
           override.returns(
-            { id: String, request_options: Telnyx::RequestOptions }
+            { body_id: String, request_options: Telnyx::RequestOptions }
           )
         end
         def to_hash

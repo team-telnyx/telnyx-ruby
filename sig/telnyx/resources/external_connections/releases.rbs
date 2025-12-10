@@ -13,7 +13,7 @@ module Telnyx
           ?filter: Telnyx::ExternalConnections::ReleaseListParams::Filter,
           ?page: Telnyx::ExternalConnections::ReleaseListParams::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::ExternalConnections::ReleaseListResponse]
+        ) -> Telnyx::Models::ExternalConnections::ReleaseListResponse
 
         def initialize: (client: Telnyx::Client) -> void
       end

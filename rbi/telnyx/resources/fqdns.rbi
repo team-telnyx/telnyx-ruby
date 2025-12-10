@@ -78,7 +78,7 @@ module Telnyx
           filter: Telnyx::FqdnListParams::Filter::OrHash,
           page: Telnyx::FqdnListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::Fqdn])
+        ).returns(Telnyx::Models::FqdnListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

@@ -20,7 +20,7 @@ module Telnyx
       # Update a document.
       sig do
         params(
-          document_id: String,
+          id: String,
           customer_reference: String,
           filename: String,
           request_options: Telnyx::RequestOptions::OrHash
@@ -28,7 +28,7 @@ module Telnyx
       end
       def update(
         # Identifies the resource.
-        document_id,
+        id,
         # Optional reference string for customer tracking.
         customer_reference: nil,
         # The filename of the document.
@@ -44,9 +44,7 @@ module Telnyx
           page: Telnyx::DocumentListParams::Page::OrHash,
           sort: T::Array[Telnyx::DocumentListParams::Sort::OrSymbol],
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[Telnyx::DocServiceDocument]
-        )
+        ).returns(Telnyx::Models::DocumentListResponse)
       end
       def list(
         # Consolidated filter parameter for documents (deepObject style). Originally:
@@ -111,30 +109,50 @@ module Telnyx
       # 30 minutes or they will be automatically deleted.
       sig do
         params(
-          document:
-            T.any(
-              Telnyx::DocumentUploadParams::Document::DocServiceDocumentUploadURL::OrHash,
-              Telnyx::DocumentUploadParams::Document::DocServiceDocumentUploadInline::OrHash
-            ),
+          url: String,
+          file: String,
+          customer_reference: String,
+          filename: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::DocumentUploadResponse)
       end
-      def upload(document:, request_options: {})
+      def upload(
+        # If the file is already hosted publicly, you can provide a URL and have the
+        # documents service fetch it for you.
+        url:,
+        # The Base64 encoded contents of the file you are uploading.
+        file:,
+        # A customer reference string for customer look ups.
+        customer_reference: nil,
+        # The filename of the document.
+        filename: nil,
+        request_options: {}
+      )
       end
 
       # Upload a document.<br /><br />Uploaded files must be linked to a service within
       # 30 minutes or they will be automatically deleted.
       sig do
         params(
-          document:
-            T.any(
-              Telnyx::DocumentUploadJsonParams::Document::DocServiceDocumentUploadURL::OrHash,
-              Telnyx::DocumentUploadJsonParams::Document::DocServiceDocumentUploadInline::OrHash
-            ),
+          url: String,
+          file: String,
+          customer_reference: String,
+          filename: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::DocumentUploadJsonResponse)
       end
-      def upload_json(document:, request_options: {})
+      def upload_json(
+        # If the file is already hosted publicly, you can provide a URL and have the
+        # documents service fetch it for you.
+        url:,
+        # The Base64 encoded contents of the file you are uploading.
+        file:,
+        # A customer reference string for customer look ups.
+        customer_reference: nil,
+        # The filename of the document.
+        filename: nil,
+        request_options: {}
+      )
       end
 
       # @api private

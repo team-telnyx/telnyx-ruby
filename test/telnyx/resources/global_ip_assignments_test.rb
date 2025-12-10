@@ -38,11 +38,7 @@ class Telnyx::Test::Resources::GlobalIPAssignmentsTest < Telnyx::Test::ResourceT
   def test_update_required_params
     skip("Prism tests are disabled")
 
-    response =
-      @telnyx.global_ip_assignments.update(
-        "6a09cdc3-8948-47f0-aa62-74ac943d6c58",
-        global_ip_assignment_update_request: {}
-      )
+    response = @telnyx.global_ip_assignments.update("6a09cdc3-8948-47f0-aa62-74ac943d6c58", body: {})
 
     assert_pattern do
       response => Telnyx::Models::GlobalIPAssignmentUpdateResponse
@@ -61,22 +57,13 @@ class Telnyx::Test::Resources::GlobalIPAssignmentsTest < Telnyx::Test::ResourceT
     response = @telnyx.global_ip_assignments.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::GlobalIPAssignment
+      response => Telnyx::Models::GlobalIPAssignmentListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        created_at: String | nil,
-        record_type: String | nil,
-        updated_at: String | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::GlobalIPAssignment]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

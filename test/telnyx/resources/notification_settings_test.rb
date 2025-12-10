@@ -41,28 +41,13 @@ class Telnyx::Test::Resources::NotificationSettingsTest < Telnyx::Test::Resource
     response = @telnyx.notification_settings.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::NotificationSetting
+      response => Telnyx::Models::NotificationSettingListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        associated_record_type: String | nil,
-        associated_record_type_value: String | nil,
-        created_at: Time | nil,
-        notification_channel_id: String | nil,
-        notification_event_condition_id: String | nil,
-        notification_profile_id: String | nil,
-        parameters: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::NotificationSetting::Parameter]) | nil,
-        status: Telnyx::NotificationSetting::Status | nil,
-        updated_at: Time | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::NotificationSetting]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

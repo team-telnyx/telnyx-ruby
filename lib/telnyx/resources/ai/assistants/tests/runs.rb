@@ -31,22 +31,23 @@ module Telnyx
               )
             end
 
+            # Some parameter documentations has been truncated, see
+            # {Telnyx::Models::AI::Assistants::Tests::RunListParams} for more details.
+            #
             # Retrieves paginated execution history for a specific assistant test with
             # filtering options
             #
-            # @overload list(test_id, page_number: nil, page_size: nil, status: nil, request_options: {})
+            # @overload list(test_id, page: nil, status: nil, request_options: {})
             #
             # @param test_id [String]
             #
-            # @param page_number [Integer]
-            #
-            # @param page_size [Integer]
+            # @param page [Telnyx::Models::AI::Assistants::Tests::RunListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
             #
             # @param status [String] Filter runs by execution status (pending, running, completed, failed, timeout)
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::Assistants::Tests::TestRunResponse>]
+            # @return [Telnyx::Models::AI::Assistants::Tests::TestSuites::PaginatedTestRunList]
             #
             # @see Telnyx::Models::AI::Assistants::Tests::RunListParams
             def list(test_id, params = {})
@@ -54,9 +55,8 @@ module Telnyx
               @client.request(
                 method: :get,
                 path: ["ai/assistants/tests/%1$s/runs", test_id],
-                query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-                page: Telnyx::Internal::DefaultFlatPagination,
-                model: Telnyx::AI::Assistants::Tests::TestRunResponse,
+                query: parsed,
+                model: Telnyx::AI::Assistants::Tests::TestSuites::PaginatedTestRunList,
                 options: options
               )
             end

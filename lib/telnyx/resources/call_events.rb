@@ -20,7 +20,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::CallEventListResponse>]
+      # @return [Telnyx::Models::CallEventListResponse]
       #
       # @see Telnyx::Models::CallEventListParams
       def list(params = {})
@@ -29,7 +29,6 @@ module Telnyx
           method: :get,
           path: "call_events",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::CallEventListResponse,
           options: options
         )

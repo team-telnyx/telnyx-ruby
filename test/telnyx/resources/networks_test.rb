@@ -57,14 +57,14 @@ class Telnyx::Test::Resources::NetworksTest < Telnyx::Test::ResourceTest
     response = @telnyx.networks.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Models::NetworkListResponse
     end
 
-    row = response.to_enum.first
-    return if row.nil?
-
     assert_pattern do
-      row => Telnyx::Models::NetworkListResponse
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::NetworkListResponse::Data]) | nil,
+        meta: Telnyx::PaginationMeta | nil
+      }
     end
   end
 
@@ -90,14 +90,14 @@ class Telnyx::Test::Resources::NetworksTest < Telnyx::Test::ResourceTest
     response = @telnyx.networks.list_interfaces("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Models::NetworkListInterfacesResponse
     end
 
-    row = response.to_enum.first
-    return if row.nil?
-
     assert_pattern do
-      row => Telnyx::Models::NetworkListInterfacesResponse
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::NetworkListInterfacesResponse::Data]) | nil,
+        meta: Telnyx::PaginationMeta | nil
+      }
     end
   end
 end

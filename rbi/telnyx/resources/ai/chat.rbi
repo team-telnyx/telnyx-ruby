@@ -34,7 +34,7 @@ module Telnyx
             tools:
               T::Array[
                 T.any(
-                  Telnyx::AI::ChatCreateCompletionParams::Tool::Function::OrHash,
+                  Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::OrHash,
                   Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval::OrHash
                 )
               ],

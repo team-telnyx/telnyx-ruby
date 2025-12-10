@@ -14,7 +14,7 @@ module Telnyx
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::SimCardGroups::SimCardGroupAction]
+        ) -> Telnyx::Models::SimCardGroups::ActionListResponse
 
         def remove_private_wireless_gateway: (
           String id,

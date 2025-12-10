@@ -26,11 +26,10 @@ module Telnyx
       ) -> Telnyx::Models::AuthenticationProviderUpdateResponse
 
       def list: (
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::AuthenticationProviderListParams::Page,
         ?sort: Telnyx::Models::AuthenticationProviderListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AuthenticationProvider]
+      ) -> Telnyx::Models::AuthenticationProviderListResponse
 
       def delete: (
         String id,

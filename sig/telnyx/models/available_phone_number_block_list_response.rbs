@@ -3,7 +3,7 @@ module Telnyx
     type available_phone_number_block_list_response =
       {
         data: ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data],
-        meta: Telnyx::AvailablePhoneNumbersMetadata
+        meta: Telnyx::Models::AvailablePhoneNumberBlockListResponse::Meta
       }
 
     class AvailablePhoneNumberBlockListResponse < Telnyx::Internal::Type::BaseModel
@@ -13,20 +13,20 @@ module Telnyx
         ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data]
       ) -> ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data]
 
-      attr_reader meta: Telnyx::AvailablePhoneNumbersMetadata?
+      attr_reader meta: Telnyx::Models::AvailablePhoneNumberBlockListResponse::Meta?
 
       def meta=: (
-        Telnyx::AvailablePhoneNumbersMetadata
-      ) -> Telnyx::AvailablePhoneNumbersMetadata
+        Telnyx::Models::AvailablePhoneNumberBlockListResponse::Meta
+      ) -> Telnyx::Models::AvailablePhoneNumberBlockListResponse::Meta
 
       def initialize: (
         ?data: ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data],
-        ?meta: Telnyx::AvailablePhoneNumbersMetadata
+        ?meta: Telnyx::Models::AvailablePhoneNumberBlockListResponse::Meta
       ) -> void
 
       def to_hash: -> {
         data: ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data],
-        meta: Telnyx::AvailablePhoneNumbersMetadata
+        meta: Telnyx::Models::AvailablePhoneNumberBlockListResponse::Meta
       }
 
       type data =
@@ -181,6 +181,25 @@ module Telnyx
             def self?.values: -> ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation::region_type]
           end
         end
+      end
+
+      type meta = { best_effort_results: Integer, total_results: Integer }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_reader best_effort_results: Integer?
+
+        def best_effort_results=: (Integer) -> Integer
+
+        attr_reader total_results: Integer?
+
+        def total_results=: (Integer) -> Integer
+
+        def initialize: (
+          ?best_effort_results: Integer,
+          ?total_results: Integer
+        ) -> void
+
+        def to_hash: -> { best_effort_results: Integer, total_results: Integer }
       end
     end
   end

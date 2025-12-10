@@ -63,31 +63,13 @@ class Telnyx::Test::Resources::FaxApplicationsTest < Telnyx::Test::ResourceTest
     response = @telnyx.fax_applications.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::FaxApplication
+      response => Telnyx::Models::FaxApplicationListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        active: Telnyx::Internal::Type::Boolean | nil,
-        anchorsite_override: Telnyx::AnchorsiteOverride | nil,
-        application_name: String | nil,
-        created_at: String | nil,
-        inbound: Telnyx::FaxApplication::Inbound | nil,
-        outbound: Telnyx::FaxApplication::Outbound | nil,
-        record_type: String | nil,
-        tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
-        updated_at: String | nil,
-        webhook_event_failover_url: String | nil,
-        webhook_event_url: String | nil,
-        webhook_timeout_secs: Integer | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::FaxApplication]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

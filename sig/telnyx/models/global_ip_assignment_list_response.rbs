@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    type global_ip_assignment_list_response =
+      {
+        data: ::Array[Telnyx::GlobalIPAssignment],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class GlobalIPAssignmentListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::GlobalIPAssignment]?
+
+      def data=: (
+        ::Array[Telnyx::GlobalIPAssignment]
+      ) -> ::Array[Telnyx::GlobalIPAssignment]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::GlobalIPAssignment],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::GlobalIPAssignment],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

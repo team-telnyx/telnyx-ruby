@@ -6,7 +6,15 @@ class Telnyx::Test::Resources::VirtualCrossConnectsTest < Telnyx::Test::Resource
   def test_create_required_params
     skip("Prism tests are disabled")
 
-    response = @telnyx.virtual_cross_connects.create(region_code: "ashburn-va")
+    response =
+      @telnyx.virtual_cross_connects.create(
+        bgp_asn: 1234,
+        cloud_provider: :aws,
+        cloud_provider_region: "us-east-1",
+        network_id: "6a09cdc3-8948-47f0-aa62-74ac943d6c58",
+        primary_cloud_account_id: "123456789012",
+        region_code: "ashburn-va"
+      )
 
     assert_pattern do
       response => Telnyx::Models::VirtualCrossConnectCreateResponse
@@ -57,14 +65,14 @@ class Telnyx::Test::Resources::VirtualCrossConnectsTest < Telnyx::Test::Resource
     response = @telnyx.virtual_cross_connects.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Models::VirtualCrossConnectListResponse
     end
 
-    row = response.to_enum.first
-    return if row.nil?
-
     assert_pattern do
-      row => Telnyx::Models::VirtualCrossConnectListResponse
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::VirtualCrossConnectListResponse::Data]) | nil,
+        meta: Telnyx::PaginationMeta | nil
+      }
     end
   end
 

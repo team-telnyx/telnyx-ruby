@@ -5,7 +5,7 @@ module Telnyx
         code: String,
         title: String,
         detail: String,
-        meta: ::Hash[Symbol, top],
+        meta: top,
         source: Telnyx::MessagingError::Source
       }
 
@@ -18,9 +18,9 @@ module Telnyx
 
       def detail=: (String) -> String
 
-      attr_reader meta: ::Hash[Symbol, top]?
+      attr_reader meta: top?
 
-      def meta=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+      def meta=: (top) -> top
 
       attr_reader source: Telnyx::MessagingError::Source?
 
@@ -32,7 +32,7 @@ module Telnyx
         code: String,
         title: String,
         ?detail: String,
-        ?meta: ::Hash[Symbol, top],
+        ?meta: top,
         ?source: Telnyx::MessagingError::Source
       ) -> void
 
@@ -40,7 +40,7 @@ module Telnyx
         code: String,
         title: String,
         detail: String,
-        meta: ::Hash[Symbol, top],
+        meta: top,
         source: Telnyx::MessagingError::Source
       }
 

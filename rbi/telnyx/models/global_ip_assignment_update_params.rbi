@@ -14,36 +14,27 @@ module Telnyx
           )
         end
 
+      sig { returns(Telnyx::GlobalIPAssignmentUpdateParams::Body) }
+      attr_reader :body
+
       sig do
-        returns(
-          Telnyx::GlobalIPAssignmentUpdateParams::GlobalIPAssignmentUpdateRequest
-        )
+        params(body: Telnyx::GlobalIPAssignmentUpdateParams::Body::OrHash).void
       end
-      attr_reader :global_ip_assignment_update_request
+      attr_writer :body
 
       sig do
         params(
-          global_ip_assignment_update_request:
-            Telnyx::GlobalIPAssignmentUpdateParams::GlobalIPAssignmentUpdateRequest::OrHash
-        ).void
-      end
-      attr_writer :global_ip_assignment_update_request
-
-      sig do
-        params(
-          global_ip_assignment_update_request:
-            Telnyx::GlobalIPAssignmentUpdateParams::GlobalIPAssignmentUpdateRequest::OrHash,
+          body: Telnyx::GlobalIPAssignmentUpdateParams::Body::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(global_ip_assignment_update_request:, request_options: {})
+      def self.new(body:, request_options: {})
       end
 
       sig do
         override.returns(
           {
-            global_ip_assignment_update_request:
-              Telnyx::GlobalIPAssignmentUpdateParams::GlobalIPAssignmentUpdateRequest,
+            body: Telnyx::GlobalIPAssignmentUpdateParams::Body,
             request_options: Telnyx::RequestOptions
           }
         )
@@ -51,11 +42,11 @@ module Telnyx
       def to_hash
       end
 
-      class GlobalIPAssignmentUpdateRequest < Telnyx::Internal::Type::BaseModel
+      class Body < Telnyx::Models::GlobalIPAssignment
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::GlobalIPAssignmentUpdateParams::GlobalIPAssignmentUpdateRequest,
+              Telnyx::GlobalIPAssignmentUpdateParams::Body,
               Telnyx::Internal::AnyHash
             )
           end
@@ -65,16 +56,7 @@ module Telnyx
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              created_at: String,
-              record_type: String,
-              updated_at: String,
-              global_ip_id: String,
-              wireguard_peer_id: String
-            }
-          )
+          override.returns({ global_ip_id: String, wireguard_peer_id: String })
         end
         def to_hash
         end

@@ -168,8 +168,8 @@ module Telnyx
       module WebhookAPIVersion
         extend Telnyx::Internal::Type::Enum
 
-        V1: :"1"
-        V2: :"2"
+        WEBHOOK_API_VERSION_1: :"1"
+        WEBHOOK_API_VERSION_2: :"2"
 
         def self?.values: -> ::Array[Telnyx::Models::CallControlApplicationUpdateParams::webhook_api_version]
       end

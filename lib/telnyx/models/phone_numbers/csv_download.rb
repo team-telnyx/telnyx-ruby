@@ -3,7 +3,6 @@
 module Telnyx
   module Models
     module PhoneNumbers
-      # @see Telnyx::Resources::PhoneNumbers::CsvDownloads#list
       class CsvDownload < Telnyx::Internal::Type::BaseModel
         # @!attribute status
         #   Indicates the completion level of the CSV report. Only complete CSV download

@@ -25,11 +25,7 @@ module Telnyx
           page: Telnyx::ConnectionListParams::Page::OrHash,
           sort: Telnyx::ConnectionListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[
-            Telnyx::Models::ConnectionListResponse
-          ]
-        )
+        ).returns(Telnyx::Models::ConnectionListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:
@@ -66,11 +62,7 @@ module Telnyx
           connection_id: String,
           page: Telnyx::ConnectionListActiveCallsParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[
-            Telnyx::Models::ConnectionListActiveCallsResponse
-          ]
-        )
+        ).returns(Telnyx::Models::ConnectionListActiveCallsResponse)
       end
       def list_active_calls(
         # Telnyx connection id

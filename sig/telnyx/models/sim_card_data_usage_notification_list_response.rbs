@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    type sim_card_data_usage_notification_list_response =
+      {
+        data: ::Array[Telnyx::SimCardDataUsageNotification],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class SimCardDataUsageNotificationListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::SimCardDataUsageNotification]?
+
+      def data=: (
+        ::Array[Telnyx::SimCardDataUsageNotification]
+      ) -> ::Array[Telnyx::SimCardDataUsageNotification]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::SimCardDataUsageNotification],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::SimCardDataUsageNotification],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

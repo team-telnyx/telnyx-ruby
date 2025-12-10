@@ -29,7 +29,7 @@ module Telnyx
         def list: (
           ?page: Telnyx::Porting::LoaConfigurationListParams::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Porting::PortingLoaConfiguration]
+        ) -> Telnyx::Models::Porting::LoaConfigurationListResponse
 
         def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 

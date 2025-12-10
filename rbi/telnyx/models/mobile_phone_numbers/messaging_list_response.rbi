@@ -12,280 +12,402 @@ module Telnyx
             )
           end
 
-        # The messaging product that the number is registered to use
-        sig { returns(T.nilable(String)) }
-        attr_reader :messaging_product
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data
+              ]
+            )
+          )
+        end
+        attr_reader :data
 
-        sig { params(messaging_product: String).void }
-        attr_writer :messaging_product
-
-        # Unique identifier for a messaging profile.
-        sig { returns(T.nilable(String)) }
-        attr_accessor :messaging_profile_id
-
-        # Identifies the type of resource.
-        sig { returns(T.nilable(String)) }
-        attr_reader :id
-
-        sig { params(id: String).void }
-        attr_writer :id
-
-        # ISO 3166-1 alpha-2 country code.
-        sig { returns(T.nilable(String)) }
-        attr_reader :country_code
-
-        sig { params(country_code: String).void }
-        attr_writer :country_code
-
-        # ISO 8601 formatted date indicating when the resource was created.
-        sig { returns(T.nilable(Time)) }
-        attr_reader :created_at
-
-        sig { params(created_at: Time).void }
-        attr_writer :created_at
+        sig do
+          params(
+            data:
+              T::Array[
+                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::OrHash
+              ]
+          ).void
+        end
+        attr_writer :data
 
         sig do
           returns(
             T.nilable(
-              Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Features
+              Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Meta
             )
           )
         end
-        attr_reader :features
+        attr_reader :meta
 
         sig do
           params(
-            features:
-              Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Features::OrHash
+            meta:
+              Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Meta::OrHash
           ).void
         end
-        attr_writer :features
-
-        # +E.164 formatted phone number.
-        sig { returns(T.nilable(String)) }
-        attr_reader :phone_number
-
-        sig { params(phone_number: String).void }
-        attr_writer :phone_number
-
-        # Identifies the type of the resource.
-        sig do
-          returns(
-            T.nilable(
-              Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::RecordType::TaggedSymbol
-            )
-          )
-        end
-        attr_reader :record_type
+        attr_writer :meta
 
         sig do
           params(
-            record_type:
-              Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::RecordType::OrSymbol
-          ).void
-        end
-        attr_writer :record_type
-
-        # The messaging traffic or use case for which the number is currently configured.
-        sig { returns(T.nilable(String)) }
-        attr_reader :traffic_type
-
-        sig { params(traffic_type: String).void }
-        attr_writer :traffic_type
-
-        # The type of the phone number
-        sig do
-          returns(
-            T.nilable(
-              Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Type::TaggedSymbol
-            )
-          )
-        end
-        attr_reader :type
-
-        sig do
-          params(
-            type:
-              Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Type::OrSymbol
-          ).void
-        end
-        attr_writer :type
-
-        # ISO 8601 formatted date indicating when the resource was updated.
-        sig { returns(T.nilable(Time)) }
-        attr_reader :updated_at
-
-        sig { params(updated_at: Time).void }
-        attr_writer :updated_at
-
-        sig do
-          params(
-            id: String,
-            country_code: String,
-            created_at: Time,
-            features:
-              Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Features::OrHash,
-            messaging_product: String,
-            messaging_profile_id: T.nilable(String),
-            phone_number: String,
-            record_type:
-              Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::RecordType::OrSymbol,
-            traffic_type: String,
-            type:
-              Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Type::OrSymbol,
-            updated_at: Time
+            data:
+              T::Array[
+                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::OrHash
+              ],
+            meta:
+              Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Meta::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(
-          # Identifies the type of resource.
-          id: nil,
-          # ISO 3166-1 alpha-2 country code.
-          country_code: nil,
-          # ISO 8601 formatted date indicating when the resource was created.
-          created_at: nil,
-          features: nil,
-          # The messaging product that the number is registered to use
-          messaging_product: nil,
-          # Unique identifier for a messaging profile.
-          messaging_profile_id: nil,
-          # +E.164 formatted phone number.
-          phone_number: nil,
-          # Identifies the type of the resource.
-          record_type: nil,
-          # The messaging traffic or use case for which the number is currently configured.
-          traffic_type: nil,
-          # The type of the phone number
-          type: nil,
-          # ISO 8601 formatted date indicating when the resource was updated.
-          updated_at: nil
-        )
+        def self.new(data: nil, meta: nil)
         end
 
         sig do
           override.returns(
             {
-              id: String,
-              country_code: String,
-              created_at: Time,
-              features:
-                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Features,
-              messaging_product: String,
-              messaging_profile_id: T.nilable(String),
-              phone_number: String,
-              record_type:
-                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::RecordType::TaggedSymbol,
-              traffic_type: String,
-              type:
-                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Type::TaggedSymbol,
-              updated_at: Time
+              data:
+                T::Array[
+                  Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data
+                ],
+              meta:
+                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Meta
             }
           )
         end
         def to_hash
         end
 
-        class Features < Telnyx::Internal::Type::BaseModel
+        class Data < Telnyx::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Features,
+                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data,
                 Telnyx::Internal::AnyHash
               )
             end
 
-          # The set of features available for a specific messaging use case (SMS or MMS).
-          # Features can vary depending on the characteristics the phone number, as well as
-          # its current product configuration.
-          sig { returns(T.nilable(Telnyx::MessagingFeatureSet)) }
-          attr_reader :sms
+          # The messaging product that the number is registered to use
+          sig { returns(T.nilable(String)) }
+          attr_reader :messaging_product
+
+          sig { params(messaging_product: String).void }
+          attr_writer :messaging_product
+
+          # Unique identifier for a messaging profile.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :messaging_profile_id
+
+          # Identifies the type of resource.
+          sig { returns(T.nilable(String)) }
+          attr_reader :id
+
+          sig { params(id: String).void }
+          attr_writer :id
+
+          # ISO 3166-1 alpha-2 country code.
+          sig { returns(T.nilable(String)) }
+          attr_reader :country_code
+
+          sig { params(country_code: String).void }
+          attr_writer :country_code
+
+          # ISO 8601 formatted date indicating when the resource was created.
+          sig { returns(T.nilable(Time)) }
+          attr_reader :created_at
+
+          sig { params(created_at: Time).void }
+          attr_writer :created_at
 
           sig do
-            params(sms: T.nilable(Telnyx::MessagingFeatureSet::OrHash)).void
-          end
-          attr_writer :sms
-
-          sig do
-            params(sms: T.nilable(Telnyx::MessagingFeatureSet::OrHash)).returns(
-              T.attached_class
+            returns(
+              T.nilable(
+                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::Features
+              )
             )
           end
+          attr_reader :features
+
+          sig do
+            params(
+              features:
+                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::Features::OrHash
+            ).void
+          end
+          attr_writer :features
+
+          # +E.164 formatted phone number.
+          sig { returns(T.nilable(String)) }
+          attr_reader :phone_number
+
+          sig { params(phone_number: String).void }
+          attr_writer :phone_number
+
+          # Identifies the type of the resource.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::RecordType::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :record_type
+
+          sig do
+            params(
+              record_type:
+                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::RecordType::OrSymbol
+            ).void
+          end
+          attr_writer :record_type
+
+          # The messaging traffic or use case for which the number is currently configured.
+          sig { returns(T.nilable(String)) }
+          attr_reader :traffic_type
+
+          sig { params(traffic_type: String).void }
+          attr_writer :traffic_type
+
+          # The type of the phone number
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::Type::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :type
+
+          sig do
+            params(
+              type:
+                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::Type::OrSymbol
+            ).void
+          end
+          attr_writer :type
+
+          # ISO 8601 formatted date indicating when the resource was updated.
+          sig { returns(T.nilable(Time)) }
+          attr_reader :updated_at
+
+          sig { params(updated_at: Time).void }
+          attr_writer :updated_at
+
+          sig do
+            params(
+              id: String,
+              country_code: String,
+              created_at: Time,
+              features:
+                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::Features::OrHash,
+              messaging_product: String,
+              messaging_profile_id: T.nilable(String),
+              phone_number: String,
+              record_type:
+                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::RecordType::OrSymbol,
+              traffic_type: String,
+              type:
+                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::Type::OrSymbol,
+              updated_at: Time
+            ).returns(T.attached_class)
+          end
           def self.new(
-            # The set of features available for a specific messaging use case (SMS or MMS).
-            # Features can vary depending on the characteristics the phone number, as well as
-            # its current product configuration.
-            sms: nil
+            # Identifies the type of resource.
+            id: nil,
+            # ISO 3166-1 alpha-2 country code.
+            country_code: nil,
+            # ISO 8601 formatted date indicating when the resource was created.
+            created_at: nil,
+            features: nil,
+            # The messaging product that the number is registered to use
+            messaging_product: nil,
+            # Unique identifier for a messaging profile.
+            messaging_profile_id: nil,
+            # +E.164 formatted phone number.
+            phone_number: nil,
+            # Identifies the type of the resource.
+            record_type: nil,
+            # The messaging traffic or use case for which the number is currently configured.
+            traffic_type: nil,
+            # The type of the phone number
+            type: nil,
+            # ISO 8601 formatted date indicating when the resource was updated.
+            updated_at: nil
           )
           end
 
           sig do
-            override.returns({ sms: T.nilable(Telnyx::MessagingFeatureSet) })
+            override.returns(
+              {
+                id: String,
+                country_code: String,
+                created_at: Time,
+                features:
+                  Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::Features,
+                messaging_product: String,
+                messaging_profile_id: T.nilable(String),
+                phone_number: String,
+                record_type:
+                  Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::RecordType::TaggedSymbol,
+                traffic_type: String,
+                type:
+                  Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::Type::TaggedSymbol,
+                updated_at: Time
+              }
+            )
           end
           def to_hash
           end
-        end
 
-        # Identifies the type of the resource.
-        module RecordType
-          extend Telnyx::Internal::Type::Enum
+          class Features < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::Features,
+                  Telnyx::Internal::AnyHash
+                )
+              end
 
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::RecordType
+            # The set of features available for a specific messaging use case (SMS or MMS).
+            # Features can vary depending on the characteristics the phone number, as well as
+            # its current product configuration.
+            sig { returns(T.nilable(Telnyx::MessagingFeatureSet)) }
+            attr_reader :sms
+
+            sig do
+              params(sms: T.nilable(Telnyx::MessagingFeatureSet::OrHash)).void
+            end
+            attr_writer :sms
+
+            sig do
+              params(
+                sms: T.nilable(Telnyx::MessagingFeatureSet::OrHash)
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The set of features available for a specific messaging use case (SMS or MMS).
+              # Features can vary depending on the characteristics the phone number, as well as
+              # its current product configuration.
+              sms: nil
+            )
+            end
+
+            sig do
+              override.returns({ sms: T.nilable(Telnyx::MessagingFeatureSet) })
+            end
+            def to_hash
+            end
+          end
+
+          # Identifies the type of the resource.
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::RecordType
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            MESSAGING_PHONE_NUMBER =
+              T.let(
+                :messaging_phone_number,
+                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::RecordType::TaggedSymbol
+              )
+            MESSAGING_SETTINGS =
+              T.let(
+                :messaging_settings,
+                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::RecordType::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::RecordType::TaggedSymbol
+                ]
               )
             end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+            def self.values
+            end
+          end
 
-          MESSAGING_PHONE_NUMBER =
-            T.let(
-              :messaging_phone_number,
-              Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::RecordType::TaggedSymbol
-            )
-          MESSAGING_SETTINGS =
-            T.let(
-              :messaging_settings,
-              Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::RecordType::TaggedSymbol
-            )
+          # The type of the phone number
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::Type
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            LONGCODE =
+              T.let(
+                :longcode,
+                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::Type::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data::Type::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        class Meta < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Meta,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          sig { returns(Integer) }
+          attr_accessor :page_number
+
+          sig { returns(Integer) }
+          attr_accessor :page_size
+
+          sig { returns(Integer) }
+          attr_accessor :total_pages
+
+          sig { returns(Integer) }
+          attr_accessor :total_results
+
+          sig do
+            params(
+              page_number: Integer,
+              page_size: Integer,
+              total_pages: Integer,
+              total_results: Integer
+            ).returns(T.attached_class)
+          end
+          def self.new(page_number:, page_size:, total_pages:, total_results:)
+          end
 
           sig do
             override.returns(
-              T::Array[
-                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::RecordType::TaggedSymbol
-              ]
+              {
+                page_number: Integer,
+                page_size: Integer,
+                total_pages: Integer,
+                total_results: Integer
+              }
             )
           end
-          def self.values
-          end
-        end
-
-        # The type of the phone number
-        module Type
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Type
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          LONGCODE =
-            T.let(
-              :longcode,
-              Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Type::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Type::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
+          def to_hash
           end
         end
       end

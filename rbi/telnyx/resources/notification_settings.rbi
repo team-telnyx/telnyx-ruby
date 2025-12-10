@@ -45,9 +45,7 @@ module Telnyx
           filter: Telnyx::NotificationSettingListParams::Filter::OrHash,
           page: Telnyx::NotificationSettingListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[Telnyx::NotificationSetting]
-        )
+        ).returns(Telnyx::Models::NotificationSettingListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

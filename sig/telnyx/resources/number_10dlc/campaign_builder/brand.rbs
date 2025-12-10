@@ -1,0 +1,17 @@
+module Telnyx
+  module Resources
+    class Number10dlc
+      class CampaignBuilder
+        class Brand
+          def retrieve: (
+            String usecase,
+            brand_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Number10dlc::CampaignBuilder::BrandRetrieveResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

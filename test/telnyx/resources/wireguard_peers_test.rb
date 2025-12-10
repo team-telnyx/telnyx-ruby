@@ -57,14 +57,14 @@ class Telnyx::Test::Resources::WireguardPeersTest < Telnyx::Test::ResourceTest
     response = @telnyx.wireguard_peers.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Models::WireguardPeerListResponse
     end
 
-    row = response.to_enum.first
-    return if row.nil?
-
     assert_pattern do
-      row => Telnyx::Models::WireguardPeerListResponse
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::WireguardPeerListResponse::Data]) | nil,
+        meta: Telnyx::PaginationMeta | nil
+      }
     end
   end
 

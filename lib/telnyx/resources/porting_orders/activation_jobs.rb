@@ -77,7 +77,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PortingOrdersActivationJob>]
+        # @return [Telnyx::Models::PortingOrders::ActivationJobListResponse]
         #
         # @see Telnyx::Models::PortingOrders::ActivationJobListParams
         def list(id, params = {})
@@ -86,8 +86,7 @@ module Telnyx
             method: :get,
             path: ["porting_orders/%1$s/activation_jobs", id],
             query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
-            model: Telnyx::PortingOrdersActivationJob,
+            model: Telnyx::Models::PortingOrders::ActivationJobListResponse,
             options: options
           )
         end

@@ -23,7 +23,7 @@ module Telnyx
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultFlatPagination[Telnyx::OAuthGrant])
+        ).returns(Telnyx::Models::OAuthGrantListResponse)
       end
       def list(
         # Page number

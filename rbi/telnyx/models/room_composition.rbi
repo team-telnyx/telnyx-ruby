@@ -52,12 +52,10 @@ module Telnyx
 
       # Shows format of the room composition.
       sig { returns(T.nilable(Telnyx::RoomComposition::Format::TaggedSymbol)) }
-      attr_reader :file_format
+      attr_reader :format_
 
-      sig do
-        params(file_format: Telnyx::RoomComposition::Format::OrSymbol).void
-      end
-      attr_writer :file_format
+      sig { params(format_: Telnyx::RoomComposition::Format::OrSymbol).void }
+      attr_writer :format_
 
       # Identify the room associated with the room composition.
       sig { returns(T.nilable(String)) }
@@ -149,7 +147,7 @@ module Telnyx
           download_url: String,
           duration_secs: Integer,
           ended_at: Time,
-          file_format: Telnyx::RoomComposition::Format::OrSymbol,
+          format_: Telnyx::RoomComposition::Format::OrSymbol,
           record_type: String,
           room_id: String,
           session_id: String,
@@ -178,7 +176,7 @@ module Telnyx
         # ISO 8601 timestamp when the room composition has ended.
         ended_at: nil,
         # Shows format of the room composition.
-        file_format: nil,
+        format_: nil,
         record_type: nil,
         # Identify the room associated with the room composition.
         room_id: nil,
@@ -217,7 +215,7 @@ module Telnyx
             download_url: String,
             duration_secs: Integer,
             ended_at: Time,
-            file_format: Telnyx::RoomComposition::Format::TaggedSymbol,
+            format_: Telnyx::RoomComposition::Format::TaggedSymbol,
             record_type: String,
             room_id: String,
             session_id: String,

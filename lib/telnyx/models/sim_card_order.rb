@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::SimCardOrders#list
     class SimCardOrder < Telnyx::Internal::Type::BaseModel
       # @!attribute cost
       #   An object representing the total cost of the order.

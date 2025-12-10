@@ -156,9 +156,7 @@ module Telnyx
           page: Telnyx::CallControlApplicationListParams::Page::OrHash,
           sort: Telnyx::CallControlApplicationListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[Telnyx::CallControlApplication]
-        )
+        ).returns(Telnyx::Models::CallControlApplicationListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

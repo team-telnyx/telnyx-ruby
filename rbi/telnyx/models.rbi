@@ -50,6 +50,8 @@ module Telnyx
 
   AISummarizeParams = Telnyx::Models::AISummarizeParams
 
+  AltBusinessIDType = Telnyx::Models::AltBusinessIDType
+
   AnchorsiteOverride = Telnyx::Models::AnchorsiteOverride
 
   APIError = Telnyx::Models::APIError
@@ -79,8 +81,6 @@ module Telnyx
   AvailablePhoneNumberListParams =
     Telnyx::Models::AvailablePhoneNumberListParams
 
-  AvailablePhoneNumbersMetadata = Telnyx::Models::AvailablePhoneNumbersMetadata
-
   AvailableService = Telnyx::Models::AvailableService
 
   AzureConfigurationData = Telnyx::Models::AzureConfigurationData
@@ -98,6 +98,8 @@ module Telnyx
   BillingGroupRetrieveParams = Telnyx::Models::BillingGroupRetrieveParams
 
   BillingGroupUpdateParams = Telnyx::Models::BillingGroupUpdateParams
+
+  BrandIdentityStatus = Telnyx::Models::BrandIdentityStatus
 
   BulkSimCardActionListParams = Telnyx::Models::BulkSimCardActionListParams
 
@@ -213,20 +215,16 @@ module Telnyx
 
   CallSpeakStartedWebhookEvent = Telnyx::Models::CallSpeakStartedWebhookEvent
 
-  CallStreamingFailed = Telnyx::Models::CallStreamingFailed
-
   CallStreamingFailedWebhookEvent =
     Telnyx::Models::CallStreamingFailedWebhookEvent
-
-  CallStreamingStarted = Telnyx::Models::CallStreamingStarted
 
   CallStreamingStartedWebhookEvent =
     Telnyx::Models::CallStreamingStartedWebhookEvent
 
-  CallStreamingStopped = Telnyx::Models::CallStreamingStopped
-
   CallStreamingStoppedWebhookEvent =
     Telnyx::Models::CallStreamingStoppedWebhookEvent
+
+  CampaignSharingStatus = Telnyx::Models::CampaignSharingStatus
 
   CampaignStatusUpdateWebhookEvent =
     Telnyx::Models::CampaignStatusUpdateWebhookEvent
@@ -452,6 +450,8 @@ module Telnyx
 
   EncryptedMedia = Telnyx::Models::EncryptedMedia
 
+  EntityType = Telnyx::Models::EntityType
+
   ExternalConnection = Telnyx::Models::ExternalConnection
 
   ExternalConnectionCreateParams =
@@ -598,8 +598,6 @@ module Telnyx
 
   InboundIP = Telnyx::Models::InboundIP
 
-  InboundMessagePayload = Telnyx::Models::InboundMessagePayload
-
   InboundMessageWebhookEvent = Telnyx::Models::InboundMessageWebhookEvent
 
   InexplicitNumberOrderCreateParams =
@@ -607,8 +605,6 @@ module Telnyx
 
   InexplicitNumberOrderListParams =
     Telnyx::Models::InexplicitNumberOrderListParams
-
-  InexplicitNumberOrderResponse = Telnyx::Models::InexplicitNumberOrderResponse
 
   InexplicitNumberOrderRetrieveParams =
     Telnyx::Models::InexplicitNumberOrderRetrieveParams
@@ -620,6 +616,8 @@ module Telnyx
   IntegrationSecretDeleteParams = Telnyx::Models::IntegrationSecretDeleteParams
 
   IntegrationSecretListParams = Telnyx::Models::IntegrationSecretListParams
+
+  Interface = Telnyx::Models::Interface
 
   InterfaceStatus = Telnyx::Models::InterfaceStatus
 
@@ -723,10 +721,6 @@ module Telnyx
 
   Messaging = Telnyx::Models::Messaging
 
-  Messaging10dlc = Telnyx::Models::Messaging10dlc
-
-  Messaging10dlcGetEnumParams = Telnyx::Models::Messaging10dlcGetEnumParams
-
   MessagingError = Telnyx::Models::MessagingError
 
   MessagingFeatureSet = Telnyx::Models::MessagingFeatureSet
@@ -767,8 +761,6 @@ module Telnyx
 
   MessagingOptoutListParams = Telnyx::Models::MessagingOptoutListParams
 
-  MessagingPaginationMeta = Telnyx::Models::MessagingPaginationMeta
-
   MessagingProfile = Telnyx::Models::MessagingProfile
 
   MessagingProfileCreateParams = Telnyx::Models::MessagingProfileCreateParams
@@ -801,8 +793,6 @@ module Telnyx
   MobileNetworkOperatorListParams =
     Telnyx::Models::MobileNetworkOperatorListParams
 
-  MobilePhoneNumber = Telnyx::Models::MobilePhoneNumber
-
   MobilePhoneNumberListParams = Telnyx::Models::MobilePhoneNumberListParams
 
   MobilePhoneNumberRetrieveParams =
@@ -823,8 +813,6 @@ module Telnyx
 
   MobilePushCredentialRetrieveParams =
     Telnyx::Models::MobilePushCredentialRetrieveParams
-
-  MobileVoiceConnection = Telnyx::Models::MobileVoiceConnection
 
   MobileVoiceConnectionCreateParams =
     Telnyx::Models::MobileVoiceConnectionCreateParams
@@ -850,8 +838,6 @@ module Telnyx
   NetworkCreateParams = Telnyx::Models::NetworkCreateParams
 
   NetworkDeleteParams = Telnyx::Models::NetworkDeleteParams
-
-  NetworkInterfaceRegion = Telnyx::Models::NetworkInterfaceRegion
 
   NetworkListInterfacesParams = Telnyx::Models::NetworkListInterfacesParams
 
@@ -912,6 +898,10 @@ module Telnyx
 
   NotificationSettingRetrieveParams =
     Telnyx::Models::NotificationSettingRetrieveParams
+
+  Number10dlc = Telnyx::Models::Number10dlc
+
+  Number10dlcRetrieveParams = Telnyx::Models::Number10dlcRetrieveParams
 
   NumberBlockOrder = Telnyx::Models::NumberBlockOrder
 
@@ -1045,6 +1035,10 @@ module Telnyx
   PhoneNumber = Telnyx::Models::PhoneNumber
 
   PhoneNumberBlocks = Telnyx::Models::PhoneNumberBlocks
+
+  PhoneNumberCampaign = Telnyx::Models::PhoneNumberCampaign
+
+  PhoneNumberCampaignCreate = Telnyx::Models::PhoneNumberCampaignCreate
 
   PhoneNumberDeleteParams = Telnyx::Models::PhoneNumberDeleteParams
 
@@ -1196,6 +1190,8 @@ module Telnyx
 
   RcsSuggestion = Telnyx::Models::RcsSuggestion
 
+  Record = Telnyx::Models::Record
+
   RecordingDeleteParams = Telnyx::Models::RecordingDeleteParams
 
   RecordingListParams = Telnyx::Models::RecordingListParams
@@ -1216,6 +1212,8 @@ module Telnyx
 
   RecordingTranscriptionRetrieveParams =
     Telnyx::Models::RecordingTranscriptionRetrieveParams
+
+  RegionIn = Telnyx::Models::RegionIn
 
   RegionListParams = Telnyx::Models::RegionListParams
 
@@ -1393,6 +1391,8 @@ module Telnyx
 
   SoundModifications = Telnyx::Models::SoundModifications
 
+  StockExchange = Telnyx::Models::StockExchange
+
   Storage = Telnyx::Models::Storage
 
   StorageListMigrationSourceCoverageParams =
@@ -1443,6 +1443,8 @@ module Telnyx
   SubNumberOrderUpdateRequirementGroupParams =
     Telnyx::Models::SubNumberOrderUpdateRequirementGroupParams
 
+  TaskStatus = Telnyx::Models::TaskStatus
+
   TelephonyCredential = Telnyx::Models::TelephonyCredential
 
   TelephonyCredentialCreateParams =
@@ -1461,6 +1463,12 @@ module Telnyx
 
   TelephonyCredentialUpdateParams =
     Telnyx::Models::TelephonyCredentialUpdateParams
+
+  TelnyxBrand = Telnyx::Models::TelnyxBrand
+
+  TelnyxCampaignCsp = Telnyx::Models::TelnyxCampaignCsp
+
+  TelnyxDownstreamCampaign = Telnyx::Models::TelnyxDownstreamCampaign
 
   Texml = Telnyx::Models::Texml
 
@@ -1566,6 +1574,8 @@ module Telnyx
 
   VerifyProfileUpdateTemplateParams =
     Telnyx::Models::VerifyProfileUpdateTemplateParams
+
+  Vertical = Telnyx::Models::Vertical
 
   VideoRegion = Telnyx::Models::VideoRegion
 
