@@ -5,13 +5,7 @@ module Telnyx
     class GlobalIPAssignments
       # Create a Global IP assignment.
       #
-      # @overload create(global_ip_id: nil, is_in_maintenance: nil, wireguard_peer_id: nil, request_options: {})
-      #
-      # @param global_ip_id [String] Global IP ID.
-      #
-      # @param is_in_maintenance [Boolean] Enable/disable BGP announcement.
-      #
-      # @param wireguard_peer_id [String] Wireguard peer ID.
+      # @overload create(request_options: {})
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -19,13 +13,11 @@ module Telnyx
       #
       # @see Telnyx::Models::GlobalIPAssignmentCreateParams
       def create(params = {})
-        parsed, options = Telnyx::GlobalIPAssignmentCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "global_ip_assignments",
-          body: parsed,
           model: Telnyx::Models::GlobalIPAssignmentCreateResponse,
-          options: options
+          options: params[:request_options]
         )
       end
 
@@ -51,23 +43,23 @@ module Telnyx
 
       # Update a Global IP assignment.
       #
-      # @overload update(id, body:, request_options: {})
+      # @overload update(global_ip_assignment_id, global_ip_assignment_update_request:, request_options: {})
       #
-      # @param id [String] Identifies the resource.
+      # @param global_ip_assignment_id [String] Identifies the resource.
       #
-      # @param body [Telnyx::Models::GlobalIPAssignmentUpdateParams::Body]
+      # @param global_ip_assignment_update_request [Telnyx::Models::GlobalIPAssignmentUpdateParams::GlobalIPAssignmentUpdateRequest]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::GlobalIPAssignmentUpdateResponse]
       #
       # @see Telnyx::Models::GlobalIPAssignmentUpdateParams
-      def update(id, params)
+      def update(global_ip_assignment_id, params)
         parsed, options = Telnyx::GlobalIPAssignmentUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["global_ip_assignments/%1$s", id],
-          body: parsed[:body],
+          path: ["global_ip_assignments/%1$s", global_ip_assignment_id],
+          body: parsed[:global_ip_assignment_update_request],
           model: Telnyx::Models::GlobalIPAssignmentUpdateResponse,
           options: options
         )
@@ -84,7 +76,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::GlobalIPAssignmentListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<GlobalIPAssignment>]
       #
       # @see Telnyx::Models::GlobalIPAssignmentListParams
       def list(params = {})
@@ -93,7 +85,8 @@ module Telnyx
           method: :get,
           path: "global_ip_assignments",
           query: parsed,
-          model: Telnyx::Models::GlobalIPAssignmentListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::GlobalIPAssignment,
           options: options
         )
       end

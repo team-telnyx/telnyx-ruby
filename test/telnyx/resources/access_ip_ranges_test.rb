@@ -31,13 +31,25 @@ class Telnyx::Test::Resources::AccessIPRangesTest < Telnyx::Test::ResourceTest
     response = @telnyx.access_ip_ranges.list
 
     assert_pattern do
-      response => Telnyx::Models::AccessIPRangeListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::AccessIPRange
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AccessIPRange]),
-        meta: Telnyx::PaginationMetaCloudflareIPListSync
+      row => {
+        id: String,
+        cidr_block: String,
+        status: Telnyx::CloudflareSyncStatus,
+        user_id: String,
+        created_at: Time | nil,
+        description: String | nil,
+        updated_at: Time | nil
       }
     end
   end

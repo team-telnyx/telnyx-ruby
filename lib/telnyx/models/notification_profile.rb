@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::NotificationProfiles#list
     class NotificationProfile < Telnyx::Internal::Type::BaseModel
       # @!attribute name
       #   A human readable name.

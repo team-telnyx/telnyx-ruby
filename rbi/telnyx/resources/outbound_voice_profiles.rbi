@@ -146,7 +146,9 @@ module Telnyx
           page: Telnyx::OutboundVoiceProfileListParams::Page::OrHash,
           sort: Telnyx::OutboundVoiceProfileListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::OutboundVoiceProfileListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[Telnyx::OutboundVoiceProfile]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

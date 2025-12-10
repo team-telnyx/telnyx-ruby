@@ -41,13 +41,26 @@ class Telnyx::Test::Resources::CustomerServiceRecordsTest < Telnyx::Test::Resour
     response = @telnyx.customer_service_records.list
 
     assert_pattern do
-      response => Telnyx::Models::CustomerServiceRecordListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::CustomerServiceRecord
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::CustomerServiceRecord]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        created_at: Time | nil,
+        error_message: String | nil,
+        phone_number: String | nil,
+        record_type: String | nil,
+        result: Telnyx::CustomerServiceRecord::Result | nil,
+        status: Telnyx::CustomerServiceRecord::Status | nil,
+        updated_at: Time | nil
       }
     end
   end

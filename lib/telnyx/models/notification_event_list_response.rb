@@ -4,73 +4,56 @@ module Telnyx
   module Models
     # @see Telnyx::Resources::NotificationEvents#list
     class NotificationEventListResponse < Telnyx::Internal::Type::BaseModel
-      # @!attribute data
+      # @!attribute created_at
+      #   ISO 8601 formatted date indicating when the resource was created.
       #
-      #   @return [Array<Telnyx::Models::NotificationEventListResponse::Data>, nil]
-      optional :data,
-               -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::NotificationEventListResponse::Data] }
+      #   @return [Time, nil]
+      optional :created_at, Time
 
-      # @!attribute meta
+      # @!attribute enabled
       #
-      #   @return [Telnyx::Models::PaginationMeta, nil]
-      optional :meta, -> { Telnyx::PaginationMeta }
+      #   @return [Boolean, nil]
+      optional :enabled, Telnyx::Internal::Type::Boolean
 
-      # @!method initialize(data: nil, meta: nil)
-      #   @param data [Array<Telnyx::Models::NotificationEventListResponse::Data>]
-      #   @param meta [Telnyx::Models::PaginationMeta]
+      # @!attribute name
+      #   A human readable name.
+      #
+      #   @return [String, nil]
+      optional :name, String
 
-      class Data < Telnyx::Internal::Type::BaseModel
-        # @!attribute created_at
-        #   ISO 8601 formatted date indicating when the resource was created.
-        #
-        #   @return [Time, nil]
-        optional :created_at, Time
+      # @!attribute notification_category
+      #
+      #   @return [String, nil]
+      optional :notification_category, String
 
-        # @!attribute enabled
-        #
-        #   @return [Boolean, nil]
-        optional :enabled, Telnyx::Internal::Type::Boolean
+      # @!attribute updated_at
+      #   ISO 8601 formatted date indicating when the resource was updated.
+      #
+      #   @return [Time, nil]
+      optional :updated_at, Time
 
-        # @!attribute name
-        #   A human readable name.
+      response_only do
+        # @!attribute id
+        #   A UUID.
         #
         #   @return [String, nil]
-        optional :name, String
-
-        # @!attribute notification_category
-        #
-        #   @return [String, nil]
-        optional :notification_category, String
-
-        # @!attribute updated_at
-        #   ISO 8601 formatted date indicating when the resource was updated.
-        #
-        #   @return [Time, nil]
-        optional :updated_at, Time
-
-        response_only do
-          # @!attribute id
-          #   A UUID.
-          #
-          #   @return [String, nil]
-          optional :id, String
-        end
-
-        # @!method initialize(id: nil, created_at: nil, enabled: nil, name: nil, notification_category: nil, updated_at: nil)
-        #   An object representing the available notifications.
-        #
-        #   @param id [String] A UUID.
-        #
-        #   @param created_at [Time] ISO 8601 formatted date indicating when the resource was created.
-        #
-        #   @param enabled [Boolean]
-        #
-        #   @param name [String] A human readable name.
-        #
-        #   @param notification_category [String]
-        #
-        #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
+        optional :id, String
       end
+
+      # @!method initialize(id: nil, created_at: nil, enabled: nil, name: nil, notification_category: nil, updated_at: nil)
+      #   An object representing the available notifications.
+      #
+      #   @param id [String] A UUID.
+      #
+      #   @param created_at [Time] ISO 8601 formatted date indicating when the resource was created.
+      #
+      #   @param enabled [Boolean]
+      #
+      #   @param name [String] A human readable name.
+      #
+      #   @param notification_category [String]
+      #
+      #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
     end
   end
 end

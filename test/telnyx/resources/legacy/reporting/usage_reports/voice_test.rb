@@ -45,13 +45,30 @@ class Telnyx::Test::Resources::Legacy::Reporting::UsageReports::VoiceTest < Teln
     response = @telnyx.legacy.reporting.usage_reports.voice.list
 
     assert_pattern do
-      response => Telnyx::Models::Legacy::Reporting::UsageReports::VoiceListResponse
+      response => Telnyx::Internal::PerPagePagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Legacy::Reporting::UsageReports::CdrUsageReportResponseLegacy
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Legacy::Reporting::UsageReports::CdrUsageReportResponseLegacy]) | nil,
-        meta: Telnyx::Legacy::Reporting::UsageReports::StandardPaginationMeta | nil
+      row => {
+        id: String | nil,
+        aggregation_type: Integer | nil,
+        connections: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
+        created_at: Time | nil,
+        end_time: Time | nil,
+        product_breakdown: Integer | nil,
+        record_type: String | nil,
+        report_url: String | nil,
+        result: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
+        start_time: Time | nil,
+        status: Integer | nil,
+        updated_at: Time | nil
       }
     end
   end

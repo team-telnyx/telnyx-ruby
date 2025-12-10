@@ -25,13 +25,29 @@ class Telnyx::Test::Resources::MobilePhoneNumbers::MessagingTest < Telnyx::Test:
     response = @telnyx.mobile_phone_numbers.messaging.list
 
     assert_pattern do
-      response => Telnyx::Models::MobilePhoneNumbers::MessagingListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::MobilePhoneNumbers::MessagingListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Data]) | nil,
-        meta: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Meta | nil
+      row => {
+        id: String | nil,
+        country_code: String | nil,
+        created_at: Time | nil,
+        features: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Features | nil,
+        messaging_product: String | nil,
+        messaging_profile_id: String | nil,
+        phone_number: String | nil,
+        record_type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::RecordType | nil,
+        traffic_type: String | nil,
+        type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Type | nil,
+        updated_at: Time | nil
       }
     end
   end

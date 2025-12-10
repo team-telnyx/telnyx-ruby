@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::PhoneNumbers#list
     class PhoneNumberDetailed < Telnyx::Internal::Type::BaseModel
       # @!attribute billing_group_id
       #   Identifies the billing group associated with the phone number.

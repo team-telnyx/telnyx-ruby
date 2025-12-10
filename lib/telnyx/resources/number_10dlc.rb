@@ -12,15 +12,6 @@ module Telnyx
       # @return [Telnyx::Resources::Number10dlc::CampaignBuilder]
       attr_reader :campaign_builder
 
-      # @return [Telnyx::Resources::Number10dlc::PartnerCampaign]
-      attr_reader :partner_campaign
-
-      # @return [Telnyx::Resources::Number10dlc::PartnerCampaigns]
-      attr_reader :partner_campaigns
-
-      # @return [Telnyx::Resources::Number10dlc::PhoneNumberAssignmentByProfile]
-      attr_reader :phone_number_assignment_by_profile
-
       # @return [Telnyx::Resources::Number10dlc::PhoneNumberCampaigns]
       attr_reader :phone_number_campaigns
 
@@ -51,10 +42,6 @@ module Telnyx
         @brand = Telnyx::Resources::Number10dlc::Brand.new(client: client)
         @campaign = Telnyx::Resources::Number10dlc::Campaign.new(client: client)
         @campaign_builder = Telnyx::Resources::Number10dlc::CampaignBuilder.new(client: client)
-        @partner_campaign = Telnyx::Resources::Number10dlc::PartnerCampaign.new(client: client)
-        @partner_campaigns = Telnyx::Resources::Number10dlc::PartnerCampaigns.new(client: client)
-        @phone_number_assignment_by_profile =
-          Telnyx::Resources::Number10dlc::PhoneNumberAssignmentByProfile.new(client: client)
         @phone_number_campaigns = Telnyx::Resources::Number10dlc::PhoneNumberCampaigns.new(client: client)
       end
     end

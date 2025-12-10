@@ -182,11 +182,6 @@ module Telnyx
       module Portouts
       end
 
-      module Public
-        module Brand
-        end
-      end
-
       module Queues
       end
 

@@ -255,10 +255,10 @@ module Telnyx
 
           # The result of the AI gather, its type depends of the `parameters` provided in
           # the command
-          sig { returns(T.nilable(T.anything)) }
+          sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
           attr_reader :result
 
-          sig { params(result: T.anything).void }
+          sig { params(result: T::Hash[Symbol, T.anything]).void }
           attr_writer :result
 
           # Reflects how command ended.
@@ -298,7 +298,7 @@ module Telnyx
                 T::Array[
                   Telnyx::CallAIGatherEndedWebhookEvent::Data::Payload::MessageHistory::OrHash
                 ],
-              result: T.anything,
+              result: T::Hash[Symbol, T.anything],
               status:
                 Telnyx::CallAIGatherEndedWebhookEvent::Data::Payload::Status::OrSymbol,
               to: String
@@ -344,7 +344,7 @@ module Telnyx
                   T::Array[
                     Telnyx::CallAIGatherEndedWebhookEvent::Data::Payload::MessageHistory
                   ],
-                result: T.anything,
+                result: T::Hash[Symbol, T.anything],
                 status:
                   Telnyx::CallAIGatherEndedWebhookEvent::Data::Payload::Status::TaggedSymbol,
                 to: String

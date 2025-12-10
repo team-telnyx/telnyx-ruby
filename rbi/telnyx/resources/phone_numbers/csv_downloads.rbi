@@ -47,7 +47,11 @@ module Telnyx
           params(
             page: Telnyx::PhoneNumbers::CsvDownloadListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::PhoneNumbers::CsvDownloadListResponse)
+          ).returns(
+            Telnyx::Internal::DefaultPagination[
+              Telnyx::PhoneNumbers::CsvDownload
+            ]
+          )
         end
         def list(
           # Consolidated page parameter (deepObject style). Originally: page[size],

@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::MobileVoiceConnectionsTest < Telnyx::Test::Resour
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::MobileVoiceConnectionCreateResponse::Data | nil
+        data: Telnyx::MobileVoiceConnection | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::MobileVoiceConnectionsTest < Telnyx::Test::Resour
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::MobileVoiceConnectionRetrieveResponse::Data | nil
+        data: Telnyx::MobileVoiceConnection | nil
       }
     end
   end
@@ -46,7 +46,7 @@ class Telnyx::Test::Resources::MobileVoiceConnectionsTest < Telnyx::Test::Resour
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::MobileVoiceConnectionUpdateResponse::Data | nil
+        data: Telnyx::MobileVoiceConnection | nil
       }
     end
   end
@@ -57,13 +57,31 @@ class Telnyx::Test::Resources::MobileVoiceConnectionsTest < Telnyx::Test::Resour
     response = @telnyx.mobile_voice_connections.list
 
     assert_pattern do
-      response => Telnyx::Models::MobileVoiceConnectionListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::MobileVoiceConnection
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::MobileVoiceConnectionListResponse::Data]) | nil,
-        meta: Telnyx::Models::MobileVoiceConnectionListResponse::Meta | nil
+      row => {
+        id: String | nil,
+        active: Telnyx::Internal::Type::Boolean | nil,
+        connection_name: String | nil,
+        created_at: Time | nil,
+        inbound: Telnyx::MobileVoiceConnection::Inbound | nil,
+        outbound: Telnyx::MobileVoiceConnection::Outbound | nil,
+        record_type: Telnyx::MobileVoiceConnection::RecordType | nil,
+        tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
+        updated_at: Time | nil,
+        webhook_api_version: Telnyx::MobileVoiceConnection::WebhookAPIVersion | nil,
+        webhook_event_failover_url: String | nil,
+        webhook_event_url: String | nil,
+        webhook_timeout_secs: Integer | nil
       }
     end
   end
@@ -79,7 +97,7 @@ class Telnyx::Test::Resources::MobileVoiceConnectionsTest < Telnyx::Test::Resour
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::MobileVoiceConnectionDeleteResponse::Data | nil
+        data: Telnyx::MobileVoiceConnection | nil
       }
     end
   end

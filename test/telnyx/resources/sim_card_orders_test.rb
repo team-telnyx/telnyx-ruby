@@ -41,13 +41,27 @@ class Telnyx::Test::Resources::SimCardOrdersTest < Telnyx::Test::ResourceTest
     response = @telnyx.sim_card_orders.list
 
     assert_pattern do
-      response => Telnyx::Models::SimCardOrderListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::SimCardOrder
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::SimCardOrder]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        cost: Telnyx::SimCardOrder::Cost | nil,
+        created_at: String | nil,
+        order_address: Telnyx::SimCardOrder::OrderAddress | nil,
+        quantity: Integer | nil,
+        record_type: String | nil,
+        status: Telnyx::SimCardOrder::Status | nil,
+        tracking_url: String | nil,
+        updated_at: String | nil
       }
     end
   end

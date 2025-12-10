@@ -21,13 +21,17 @@ module Telnyx
       end
       attr_writer :filter
 
-      # Consolidated page parameter (deepObject style). Originally: page[number],
-      # page[size]
-      sig { returns(T.nilable(Telnyx::DetailRecordListParams::Page)) }
-      attr_reader :page
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :page_number
 
-      sig { params(page: Telnyx::DetailRecordListParams::Page::OrHash).void }
-      attr_writer :page
+      sig { params(page_number: Integer).void }
+      attr_writer :page_number
+
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :page_size
+
+      sig { params(page_size: Integer).void }
+      attr_writer :page_size
 
       # Specifies the sort order for results. <br/>Example: sort=-created_at
       sig { returns(T.nilable(T::Array[String])) }
@@ -39,7 +43,8 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::DetailRecordListParams::Filter::OrHash,
-          page: Telnyx::DetailRecordListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           sort: T::Array[String],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -48,9 +53,8 @@ module Telnyx
         # Filter records on a given record attribute and value. <br/>Example:
         # filter[status]=delivered. <br/>Required: filter[record_type] must be specified.
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         # Specifies the sort order for results. <br/>Example: sort=-created_at
         sort: nil,
         request_options: {}
@@ -61,7 +65,8 @@ module Telnyx
         override.returns(
           {
             filter: Telnyx::DetailRecordListParams::Filter,
-            page: Telnyx::DetailRecordListParams::Page,
+            page_number: Integer,
+            page_size: Integer,
             sort: T::Array[String],
             request_options: Telnyx::RequestOptions
           }
@@ -329,45 +334,6 @@ module Telnyx
           end
           def self.values
           end
-        end
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::DetailRecordListParams::Page,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        # Page number
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :number
-
-        sig { params(number: Integer).void }
-        attr_writer :number
-
-        # Page size
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :size
-
-        sig { params(size: Integer).void }
-        attr_writer :size
-
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        sig { params(number: Integer, size: Integer).returns(T.attached_class) }
-        def self.new(
-          # Page number
-          number: nil,
-          # Page size
-          size: nil
-        )
-        end
-
-        sig { override.returns({ number: Integer, size: Integer }) }
-        def to_hash
         end
       end
     end

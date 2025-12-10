@@ -9,13 +9,22 @@ class Telnyx::Test::Resources::MessagingURLDomainsTest < Telnyx::Test::ResourceT
     response = @telnyx.messaging_url_domains.list
 
     assert_pattern do
-      response => Telnyx::Models::MessagingURLDomainListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::MessagingURLDomainListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::MessagingURLDomainListResponse::Data]) | nil,
-        meta: Telnyx::Models::MessagingURLDomainListResponse::Meta | nil
+      row => {
+        id: String | nil,
+        record_type: String | nil,
+        url_domain: String | nil,
+        use_case: String | nil
       }
     end
   end

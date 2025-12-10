@@ -216,12 +216,12 @@ module Telnyx
                 end
               OrInteger = T.type_alias { Integer }
 
-              CHANNELS_1 =
+              CHANNEL_1 =
                 T.let(
                   1,
                   Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::Channels::TaggedInteger
                 )
-              CHANNELS_2 =
+              CHANNEL_2 =
                 T.let(
                   2,
                   Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::Channels::TaggedInteger

@@ -73,7 +73,11 @@ module Telnyx
             page: Telnyx::PhoneNumbers::VoiceListParams::Page::OrHash,
             sort: Telnyx::PhoneNumbers::VoiceListParams::Sort::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::PhoneNumbers::VoiceListResponse)
+          ).returns(
+            Telnyx::Internal::DefaultPagination[
+              Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings
+            ]
+          )
         end
         def list(
           # Consolidated filter parameter (deepObject style). Originally:

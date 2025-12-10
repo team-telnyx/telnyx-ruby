@@ -1,0 +1,45 @@
+module Telnyx
+  module Models
+    module AI
+      type transcription_settings_config =
+        {
+          eot_threshold: Float,
+          eot_timeout_ms: Integer,
+          numerals: bool,
+          smart_format: bool
+        }
+
+      class TranscriptionSettingsConfig < Telnyx::Internal::Type::BaseModel
+        attr_reader eot_threshold: Float?
+
+        def eot_threshold=: (Float) -> Float
+
+        attr_reader eot_timeout_ms: Integer?
+
+        def eot_timeout_ms=: (Integer) -> Integer
+
+        attr_reader numerals: bool?
+
+        def numerals=: (bool) -> bool
+
+        attr_reader smart_format: bool?
+
+        def smart_format=: (bool) -> bool
+
+        def initialize: (
+          ?eot_threshold: Float,
+          ?eot_timeout_ms: Integer,
+          ?numerals: bool,
+          ?smart_format: bool
+        ) -> void
+
+        def to_hash: -> {
+          eot_threshold: Float,
+          eot_timeout_ms: Integer,
+          numerals: bool,
+          smart_format: bool
+        }
+      end
+    end
+  end
+end

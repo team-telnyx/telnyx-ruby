@@ -25,13 +25,24 @@ class Telnyx::Test::Resources::OAuthGrantsTest < Telnyx::Test::ResourceTest
     response = @telnyx.oauth_grants.list
 
     assert_pattern do
-      response => Telnyx::Models::OAuthGrantListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::OAuthGrant
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::OAuthGrant]) | nil,
-        meta: Telnyx::PaginationMetaOAuth | nil
+      row => {
+        id: String,
+        client_id: String,
+        created_at: Time,
+        record_type: Telnyx::OAuthGrant::RecordType,
+        scopes: ^(Telnyx::Internal::Type::ArrayOf[String]),
+        last_used_at: Time | nil
       }
     end
   end

@@ -41,13 +41,25 @@ class Telnyx::Test::Resources::NumberReservationsTest < Telnyx::Test::ResourceTe
     response = @telnyx.number_reservations.list
 
     assert_pattern do
-      response => Telnyx::Models::NumberReservationListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::NumberReservation
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::NumberReservation]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        created_at: Time | nil,
+        customer_reference: String | nil,
+        phone_numbers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::ReservedPhoneNumber]) | nil,
+        record_type: String | nil,
+        status: Telnyx::NumberReservation::Status | nil,
+        updated_at: Time | nil
       }
     end
   end

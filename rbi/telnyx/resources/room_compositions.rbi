@@ -59,7 +59,7 @@ module Telnyx
           filter: Telnyx::RoomCompositionListParams::Filter::OrHash,
           page: Telnyx::RoomCompositionListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::RoomCompositionListResponse)
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::RoomComposition])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

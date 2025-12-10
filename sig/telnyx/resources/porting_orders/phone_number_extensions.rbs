@@ -16,7 +16,7 @@ module Telnyx
           ?page: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Page,
           ?sort: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::PortingOrders::PhoneNumberExtensionListResponse
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::PortingOrders::PortingPhoneNumberExtension]
 
         def delete: (
           String id,

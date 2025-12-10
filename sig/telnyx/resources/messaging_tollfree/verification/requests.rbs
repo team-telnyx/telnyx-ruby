@@ -89,7 +89,7 @@ module Telnyx
             ?phone_number: String,
             ?status: Telnyx::Models::MessagingTollfree::Verification::tf_verification_status,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::MessagingTollfree::Verification::RequestListResponse
+          ) -> Telnyx::Internal::DefaultPaginationForMessagingTollfree[Telnyx::MessagingTollfree::Verification::VerificationRequestStatus]
 
           def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 

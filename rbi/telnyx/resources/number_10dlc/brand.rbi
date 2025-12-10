@@ -4,9 +4,6 @@ module Telnyx
   module Resources
     class Number10dlc
       class Brand
-        sig { returns(Telnyx::Resources::Number10dlc::Brand::SMSOtp) }
-        attr_reader :sms_otp
-
         sig { returns(Telnyx::Resources::Number10dlc::Brand::ExternalVetting) }
         attr_reader :external_vetting
 
@@ -19,8 +16,8 @@ module Telnyx
             country: String,
             display_name: String,
             email: String,
-            entity_type: Telnyx::EntityType::OrSymbol,
-            vertical: Telnyx::Vertical::OrSymbol,
+            entity_type: Telnyx::Number10dlc::EntityType::OrSymbol,
+            vertical: Telnyx::Number10dlc::Vertical::OrSymbol,
             business_contact_email: String,
             city: String,
             company_name: String,
@@ -34,14 +31,14 @@ module Telnyx
             phone: String,
             postal_code: String,
             state: String,
-            stock_exchange: Telnyx::StockExchange::OrSymbol,
+            stock_exchange: Telnyx::Number10dlc::StockExchange::OrSymbol,
             stock_symbol: String,
             street: String,
             webhook_failover_url: String,
             webhook_url: String,
             website: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::TelnyxBrand)
+          ).returns(Telnyx::Number10dlc::TelnyxBrand)
         end
         def create(
           # ISO2 2 characters country code. Example: US - United States
@@ -116,30 +113,31 @@ module Telnyx
             country: String,
             display_name: String,
             email: String,
-            entity_type: Telnyx::EntityType::OrSymbol,
-            vertical: Telnyx::Vertical::OrSymbol,
+            entity_type: Telnyx::Number10dlc::EntityType::OrSymbol,
+            vertical: Telnyx::Number10dlc::Vertical::OrSymbol,
             alt_business_id: String,
-            alt_business_id_type: Telnyx::AltBusinessIDType::OrSymbol,
+            alt_business_id_type:
+              Telnyx::Number10dlc::AltBusinessIDType::OrSymbol,
             business_contact_email: String,
             city: String,
             company_name: String,
             ein: String,
             first_name: String,
-            identity_status: Telnyx::BrandIdentityStatus::OrSymbol,
+            identity_status: Telnyx::Number10dlc::BrandIdentityStatus::OrSymbol,
             ip_address: String,
             is_reseller: T::Boolean,
             last_name: String,
             phone: String,
             postal_code: String,
             state: String,
-            stock_exchange: Telnyx::StockExchange::OrSymbol,
+            stock_exchange: Telnyx::Number10dlc::StockExchange::OrSymbol,
             stock_symbol: String,
             street: String,
             webhook_failover_url: String,
             webhook_url: String,
             website: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::TelnyxBrand)
+          ).returns(Telnyx::Number10dlc::TelnyxBrand)
         end
         def update(
           brand_id,
@@ -213,7 +211,11 @@ module Telnyx
             state: String,
             tcr_brand_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Number10dlc::BrandListResponse)
+          ).returns(
+            Telnyx::Internal::PerPagePaginationV2[
+              Telnyx::Models::Number10dlc::BrandListResponse
+            ]
+          )
         end
         def list(
           # Filter results by the Telnyx Brand id
@@ -278,6 +280,36 @@ module Telnyx
         def resend_2fa_email(brand_id, request_options: {})
         end
 
+        # Query the status of an SMS OTP (One-Time Password) for Sole Proprietor brand
+        # verification.
+        #
+        # This endpoint allows you to check the delivery and verification status of an OTP
+        # sent during the Sole Proprietor brand verification process. You can query by
+        # either:
+        #
+        # - `referenceId` - The reference ID returned when the OTP was initially triggered
+        # - `brandId` - Query parameter for portal users to look up OTP status by Brand ID
+        #
+        # The response includes delivery status, verification dates, and detailed delivery
+        # information.
+        sig do
+          params(
+            reference_id: String,
+            brand_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(
+            Telnyx::Models::Number10dlc::BrandRetrieveSMSOtpStatusResponse
+          )
+        end
+        def retrieve_sms_otp_status(
+          # The reference ID returned when the OTP was initially triggered
+          reference_id,
+          # Filter by Brand ID for easier lookup in portal applications
+          brand_id: nil,
+          request_options: {}
+        )
+        end
+
         # This operation allows you to revet the brand. However, revetting is allowed once
         # after the successful brand registration and thereafter limited to once every 3
         # months.
@@ -285,7 +317,7 @@ module Telnyx
           params(
             brand_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::TelnyxBrand)
+          ).returns(Telnyx::Number10dlc::TelnyxBrand)
         end
         def revet(brand_id, request_options: {})
         end

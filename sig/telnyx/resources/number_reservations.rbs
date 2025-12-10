@@ -18,7 +18,7 @@ module Telnyx
         ?filter: Telnyx::NumberReservationListParams::Filter,
         ?page: Telnyx::NumberReservationListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::NumberReservationListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::NumberReservation]
 
       def initialize: (client: Telnyx::Client) -> void
     end

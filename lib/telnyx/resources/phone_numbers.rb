@@ -46,9 +46,9 @@ module Telnyx
       #
       # Update a phone number
       #
-      # @overload update(id, billing_group_id: nil, connection_id: nil, customer_reference: nil, external_pin: nil, hd_voice_enabled: nil, tags: nil, request_options: {})
+      # @overload update(phone_number_id, billing_group_id: nil, connection_id: nil, customer_reference: nil, external_pin: nil, hd_voice_enabled: nil, tags: nil, request_options: {})
       #
-      # @param id [String] Identifies the resource.
+      # @param phone_number_id [String] Identifies the resource.
       #
       # @param billing_group_id [String] Identifies the billing group associated with the phone number.
       #
@@ -67,11 +67,11 @@ module Telnyx
       # @return [Telnyx::Models::PhoneNumberUpdateResponse]
       #
       # @see Telnyx::Models::PhoneNumberUpdateParams
-      def update(id, params = {})
+      def update(phone_number_id, params = {})
         parsed, options = Telnyx::PhoneNumberUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["phone_numbers/%1$s", id],
+          path: ["phone_numbers/%1$s", phone_number_id],
           body: parsed,
           model: Telnyx::Models::PhoneNumberUpdateResponse,
           options: options
@@ -93,7 +93,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::PhoneNumberListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PhoneNumberDetailed>]
       #
       # @see Telnyx::Models::PhoneNumberListParams
       def list(params = {})
@@ -102,7 +102,8 @@ module Telnyx
           method: :get,
           path: "phone_numbers",
           query: parsed,
-          model: Telnyx::Models::PhoneNumberListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::PhoneNumberDetailed,
           options: options
         )
       end
@@ -147,7 +148,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::PhoneNumberSlimListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PhoneNumberSlimListResponse>]
       #
       # @see Telnyx::Models::PhoneNumberSlimListParams
       def slim_list(params = {})
@@ -156,6 +157,7 @@ module Telnyx
           method: :get,
           path: "phone_numbers/slim",
           query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::PhoneNumberSlimListResponse,
           options: options
         )

@@ -93,7 +93,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::TelnyxCampaignCsp]
+        # @return [Telnyx::Models::Number10dlc::TelnyxCampaignCsp]
         #
         # @see Telnyx::Models::Number10dlc::CampaignBuilderSubmitParams
         def submit(params)
@@ -102,7 +102,7 @@ module Telnyx
             method: :post,
             path: "10dlc/campaignBuilder",
             body: parsed,
-            model: Telnyx::TelnyxCampaignCsp,
+            model: Telnyx::Number10dlc::TelnyxCampaignCsp,
             options: options
           )
         end

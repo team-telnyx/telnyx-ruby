@@ -10,6 +10,8 @@ module Telnyx
         module ScheduledEventResponse
           extend Telnyx::Internal::Type::Union
 
+          discriminator :telnyx_conversation_channel
+
           variant -> { Telnyx::AI::Assistants::ScheduledPhoneCallEventResponse }
 
           variant -> { Telnyx::AI::Assistants::ScheduledSMSEventResponse }

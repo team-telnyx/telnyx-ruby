@@ -6,7 +6,7 @@ module Telnyx
           {
             fallback_method: Telnyx::Models::Texml::Accounts::UpdateCall::fallback_method,
             fallback_url: String,
-            method_: Telnyx::Models::Texml::Accounts::UpdateCall::method_,
+            http_method: Telnyx::Models::Texml::Accounts::UpdateCall::method_,
             status: String,
             status_callback: String,
             status_callback_method: Telnyx::Models::Texml::Accounts::UpdateCall::status_callback_method,
@@ -25,9 +25,9 @@ module Telnyx
 
           def fallback_url=: (String) -> String
 
-          attr_reader method_: Telnyx::Models::Texml::Accounts::UpdateCall::method_?
+          attr_reader http_method: Telnyx::Models::Texml::Accounts::UpdateCall::method_?
 
-          def method_=: (
+          def http_method=: (
             Telnyx::Models::Texml::Accounts::UpdateCall::method_
           ) -> Telnyx::Models::Texml::Accounts::UpdateCall::method_
 
@@ -56,7 +56,7 @@ module Telnyx
           def initialize: (
             ?fallback_method: Telnyx::Models::Texml::Accounts::UpdateCall::fallback_method,
             ?fallback_url: String,
-            ?method_: Telnyx::Models::Texml::Accounts::UpdateCall::method_,
+            ?http_method: Telnyx::Models::Texml::Accounts::UpdateCall::method_,
             ?status: String,
             ?status_callback: String,
             ?status_callback_method: Telnyx::Models::Texml::Accounts::UpdateCall::status_callback_method,
@@ -67,7 +67,7 @@ module Telnyx
           def to_hash: -> {
             fallback_method: Telnyx::Models::Texml::Accounts::UpdateCall::fallback_method,
             fallback_url: String,
-            method_: Telnyx::Models::Texml::Accounts::UpdateCall::method_,
+            http_method: Telnyx::Models::Texml::Accounts::UpdateCall::method_,
             status: String,
             status_callback: String,
             status_callback_method: Telnyx::Models::Texml::Accounts::UpdateCall::status_callback_method,

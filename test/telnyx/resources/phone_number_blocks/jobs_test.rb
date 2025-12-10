@@ -25,13 +25,27 @@ class Telnyx::Test::Resources::PhoneNumberBlocks::JobsTest < Telnyx::Test::Resou
     response = @telnyx.phone_number_blocks.jobs.list
 
     assert_pattern do
-      response => Telnyx::Models::PhoneNumberBlocks::JobListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::PhoneNumberBlocks::Job
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumberBlocks::Job]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        created_at: String | nil,
+        etc: Time | nil,
+        failed_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumberBlocks::Job::FailedOperation]) | nil,
+        record_type: String | nil,
+        status: Telnyx::PhoneNumberBlocks::Job::Status | nil,
+        successful_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumberBlocks::Job::SuccessfulOperation]) | nil,
+        type: Telnyx::PhoneNumberBlocks::Job::Type | nil,
+        updated_at: String | nil
       }
     end
   end
