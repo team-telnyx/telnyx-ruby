@@ -53,14 +53,14 @@ module Telnyx
           sig { returns(T::Array[Telnyx::AI::RecursiveCluster]) }
           attr_accessor :clusters
 
-          sig { returns(Telnyx::TaskStatus::TaggedSymbol) }
+          sig { returns(Telnyx::Messaging10dlc::TaskStatus::TaggedSymbol) }
           attr_accessor :status
 
           sig do
             params(
               bucket: String,
               clusters: T::Array[Telnyx::AI::RecursiveCluster::OrHash],
-              status: Telnyx::TaskStatus::OrSymbol
+              status: Telnyx::Messaging10dlc::TaskStatus::OrSymbol
             ).returns(T.attached_class)
           end
           def self.new(bucket:, clusters:, status:)
@@ -71,7 +71,7 @@ module Telnyx
               {
                 bucket: String,
                 clusters: T::Array[Telnyx::AI::RecursiveCluster],
-                status: Telnyx::TaskStatus::TaggedSymbol
+                status: Telnyx::Messaging10dlc::TaskStatus::TaggedSymbol
               }
             )
           end

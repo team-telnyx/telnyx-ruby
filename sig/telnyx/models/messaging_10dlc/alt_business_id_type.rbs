@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    module Messaging10dlc
+      type alt_business_id_type = :NONE | :DUNS | :GIIN | :LEI
+
+      module AltBusinessIDType
+        extend Telnyx::Internal::Type::Enum
+
+        NONE: :NONE
+        DUNS: :DUNS
+        GIIN: :GIIN
+        LEI: :LEI
+
+        def self?.values: -> ::Array[Telnyx::Models::Messaging10dlc::alt_business_id_type]
+      end
+    end
+  end
+end

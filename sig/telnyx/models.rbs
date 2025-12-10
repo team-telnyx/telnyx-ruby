@@ -623,6 +623,10 @@ module Telnyx
 
   module Messaging = Telnyx::Models::Messaging
 
+  module Messaging10dlc = Telnyx::Models::Messaging10dlc
+
+  class Messaging10dlcGetEnumParams = Telnyx::Models::Messaging10dlcGetEnumParams
+
   class MessagingError = Telnyx::Models::MessagingError
 
   class MessagingFeatureSet = Telnyx::Models::MessagingFeatureSet
@@ -773,10 +777,6 @@ module Telnyx
 
   class NotificationSettingRetrieveParams = Telnyx::Models::NotificationSettingRetrieveParams
 
-  module Number10dlc = Telnyx::Models::Number10dlc
-
-  class Number10dlcGetEnumParams = Telnyx::Models::Number10dlcGetEnumParams
-
   class NumberBlockOrder = Telnyx::Models::NumberBlockOrder
 
   class NumberBlockOrderCreateParams = Telnyx::Models::NumberBlockOrderCreateParams
@@ -891,27 +891,9 @@ module Telnyx
 
   class PaginationMetaOAuth = Telnyx::Models::PaginationMetaOAuth
 
-  class PartnerCampaignListParams = Telnyx::Models::PartnerCampaignListParams
-
-  class PartnerCampaignListSharedByMeParams = Telnyx::Models::PartnerCampaignListSharedByMeParams
-
-  class PartnerCampaignRetrieveParams = Telnyx::Models::PartnerCampaignRetrieveParams
-
-  class PartnerCampaignRetrieveSharingStatusParams = Telnyx::Models::PartnerCampaignRetrieveSharingStatusParams
-
-  class PartnerCampaignUpdateParams = Telnyx::Models::PartnerCampaignUpdateParams
-
   module Payment = Telnyx::Models::Payment
 
   class PhoneNumber = Telnyx::Models::PhoneNumber
-
-  class PhoneNumberAssignmentByProfileAssignParams = Telnyx::Models::PhoneNumberAssignmentByProfileAssignParams
-
-  class PhoneNumberAssignmentByProfileListPhoneNumberStatusParams = Telnyx::Models::PhoneNumberAssignmentByProfileListPhoneNumberStatusParams
-
-  class PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusParams = Telnyx::Models::PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusParams
-
-  class PhoneNumberAssignmentByProfileRetrieveStatusParams = Telnyx::Models::PhoneNumberAssignmentByProfileRetrieveStatusParams
 
   module PhoneNumberBlocks = Telnyx::Models::PhoneNumberBlocks
 
@@ -1271,8 +1253,6 @@ module Telnyx
 
   class SubNumberOrderUpdateRequirementGroupParams = Telnyx::Models::SubNumberOrderUpdateRequirementGroupParams
 
-  module TaskStatus = Telnyx::Models::TaskStatus
-
   class TelephonyCredential = Telnyx::Models::TelephonyCredential
 
   class TelephonyCredentialCreateParams = Telnyx::Models::TelephonyCredentialCreateParams
@@ -1286,8 +1266,6 @@ module Telnyx
   class TelephonyCredentialRetrieveParams = Telnyx::Models::TelephonyCredentialRetrieveParams
 
   class TelephonyCredentialUpdateParams = Telnyx::Models::TelephonyCredentialUpdateParams
-
-  class TelnyxDownstreamCampaign = Telnyx::Models::TelnyxDownstreamCampaign
 
   module Texml = Telnyx::Models::Texml
 
