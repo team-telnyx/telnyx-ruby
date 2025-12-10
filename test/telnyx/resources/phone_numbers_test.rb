@@ -53,7 +53,17 @@ class Telnyx::Test::Resources::PhoneNumbersTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       row => {
-        id: String | nil,
+        id: String,
+        country_iso_alpha2: String,
+        created_at: Time,
+        deletion_lock_enabled: Telnyx::Internal::Type::Boolean,
+        external_pin: String | nil,
+        phone_number: String,
+        phone_number_type: Telnyx::PhoneNumberDetailed::PhoneNumberType,
+        purchased_at: String,
+        record_type: String,
+        status: Telnyx::PhoneNumberDetailed::Status,
+        tags: ^(Telnyx::Internal::Type::ArrayOf[String]),
         billing_group_id: String | nil,
         call_forwarding_enabled: Telnyx::Internal::Type::Boolean | nil,
         call_recording_enabled: Telnyx::Internal::Type::Boolean | nil,
@@ -61,25 +71,15 @@ class Telnyx::Test::Resources::PhoneNumbersTest < Telnyx::Test::ResourceTest
         cnam_listing_enabled: Telnyx::Internal::Type::Boolean | nil,
         connection_id: String | nil,
         connection_name: String | nil,
-        country_iso_alpha2: String | nil,
-        created_at: String | nil,
         customer_reference: String | nil,
-        deletion_lock_enabled: Telnyx::Internal::Type::Boolean | nil,
         emergency_address_id: String | nil,
         emergency_enabled: Telnyx::Internal::Type::Boolean | nil,
         emergency_status: Telnyx::PhoneNumberDetailed::EmergencyStatus | nil,
-        external_pin: String | nil,
         inbound_call_screening: Telnyx::PhoneNumberDetailed::InboundCallScreening | nil,
         messaging_profile_id: String | nil,
         messaging_profile_name: String | nil,
-        phone_number: String | nil,
-        phone_number_type: Telnyx::PhoneNumberDetailed::PhoneNumberType | nil,
-        purchased_at: String | nil,
-        record_type: String | nil,
         source_type: Telnyx::PhoneNumberDetailed::SourceType | nil,
-        status: Telnyx::PhoneNumberDetailed::Status | nil,
-        t38_fax_gateway_enabled: Telnyx::Internal::Type::Boolean | nil,
-        tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil
+        t38_fax_gateway_enabled: Telnyx::Internal::Type::Boolean | nil
       }
     end
   end

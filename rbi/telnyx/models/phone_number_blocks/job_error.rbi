@@ -12,11 +12,11 @@ module Telnyx
             )
           end
 
-        sig { returns(String) }
-        attr_accessor :code
+        sig { returns(T.nilable(String)) }
+        attr_reader :code
 
-        sig { returns(String) }
-        attr_accessor :title
+        sig { params(code: String).void }
+        attr_writer :code
 
         sig { returns(T.nilable(String)) }
         attr_reader :detail
@@ -42,26 +42,32 @@ module Telnyx
         end
         attr_writer :source
 
+        sig { returns(T.nilable(String)) }
+        attr_reader :title
+
+        sig { params(title: String).void }
+        attr_writer :title
+
         sig do
           params(
             code: String,
-            title: String,
             detail: String,
             meta: Telnyx::PhoneNumberBlocks::JobError::Meta::OrHash,
-            source: Telnyx::PhoneNumberBlocks::JobError::Source::OrHash
+            source: Telnyx::PhoneNumberBlocks::JobError::Source::OrHash,
+            title: String
           ).returns(T.attached_class)
         end
-        def self.new(code:, title:, detail: nil, meta: nil, source: nil)
+        def self.new(code: nil, detail: nil, meta: nil, source: nil, title: nil)
         end
 
         sig do
           override.returns(
             {
               code: String,
-              title: String,
               detail: String,
               meta: Telnyx::PhoneNumberBlocks::JobError::Meta,
-              source: Telnyx::PhoneNumberBlocks::JobError::Source
+              source: Telnyx::PhoneNumberBlocks::JobError::Source,
+              title: String
             }
           )
         end
