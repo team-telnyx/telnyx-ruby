@@ -36,17 +36,14 @@ class Telnyx::Test::Resources::Porting::EventsTest < Telnyx::Test::ResourceTest
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        available_notification_methods: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::Porting::EventListResponse::AvailableNotificationMethod]) | nil,
-        created_at: Time | nil,
-        event_type: Telnyx::Models::Porting::EventListResponse::EventType | nil,
-        payload: Telnyx::Models::Porting::EventListResponse::Payload | nil,
-        payload_status: Telnyx::Models::Porting::EventListResponse::PayloadStatus | nil,
-        porting_order_id: String | nil,
-        record_type: String | nil,
-        updated_at: Time | nil
-      }
+      case row
+      in Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload
+      in Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload
+      in Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent
+      in Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent
+      in Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent
+      in Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook
+      end
     end
   end
 

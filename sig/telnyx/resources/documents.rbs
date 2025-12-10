@@ -36,12 +36,12 @@ module Telnyx
       ) -> Telnyx::Models::DocumentGenerateDownloadLinkResponse
 
       def upload: (
-        document: Telnyx::Models::DocumentUploadParams::document,
+        document: Telnyx::DocumentUploadParams::Document,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::DocumentUploadResponse
 
       def upload_json: (
-        document: Telnyx::Models::DocumentUploadJsonParams::document,
+        document: Telnyx::DocumentUploadJsonParams::Document,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::DocumentUploadJsonResponse
 
