@@ -37,7 +37,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::Portouts::EventListResponse>]
+        # @return [Telnyx::Models::Portouts::EventListResponse]
         #
         # @see Telnyx::Models::Portouts::EventListParams
         def list(params = {})
@@ -46,7 +46,6 @@ module Telnyx
             method: :get,
             path: "portouts/events",
             query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
             model: Telnyx::Models::Portouts::EventListResponse,
             options: options
           )

@@ -25,26 +25,13 @@ class Telnyx::Test::Resources::WebhookDeliveriesTest < Telnyx::Test::ResourceTes
     response = @telnyx.webhook_deliveries.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Models::WebhookDeliveryListResponse
+      response => Telnyx::Models::WebhookDeliveryListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        attempts: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::WebhookDeliveryListResponse::Attempt]) | nil,
-        finished_at: Time | nil,
-        record_type: String | nil,
-        started_at: Time | nil,
-        status: Telnyx::Models::WebhookDeliveryListResponse::Status | nil,
-        user_id: String | nil,
-        webhook: Telnyx::Models::WebhookDeliveryListResponse::Webhook | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::WebhookDeliveryListResponse::Data]) | nil,
+        meta: Telnyx::Storage::Buckets::PaginationMetaSimple | nil
       }
     end
   end

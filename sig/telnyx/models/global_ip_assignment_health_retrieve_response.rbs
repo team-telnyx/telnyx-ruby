@@ -132,23 +132,20 @@ module Telnyx
           end
         end
 
-        type health = { failed_health_checks_count: Float, pass: Float }
+        type health = { fail_: Float, pass: Float }
 
         class Health < Telnyx::Internal::Type::BaseModel
-          attr_reader failed_health_checks_count: Float?
+          attr_reader fail_: Float?
 
-          def failed_health_checks_count=: (Float) -> Float
+          def fail_=: (Float) -> Float
 
           attr_reader pass: Float?
 
           def pass=: (Float) -> Float
 
-          def initialize: (
-            ?failed_health_checks_count: Float,
-            ?pass: Float
-          ) -> void
+          def initialize: (?fail_: Float, ?pass: Float) -> void
 
-          def to_hash: -> { failed_health_checks_count: Float, pass: Float }
+          def to_hash: -> { fail_: Float, pass: Float }
         end
       end
     end

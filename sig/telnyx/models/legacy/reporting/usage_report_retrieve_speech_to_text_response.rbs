@@ -2,17 +2,16 @@ module Telnyx
   module Models
     module Legacy
       module Reporting
-        type usage_report_retrieve_speech_to_text_response =
-          { data: ::Hash[Symbol, top] }
+        type usage_report_retrieve_speech_to_text_response = { data: top }
 
         class UsageReportRetrieveSpeechToTextResponse < Telnyx::Internal::Type::BaseModel
-          attr_reader data: ::Hash[Symbol, top]?
+          attr_reader data: top?
 
-          def data=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+          def data=: (top) -> top
 
-          def initialize: (?data: ::Hash[Symbol, top]) -> void
+          def initialize: (?data: top) -> void
 
-          def to_hash: -> { data: ::Hash[Symbol, top] }
+          def to_hash: -> { data: top }
         end
       end
     end

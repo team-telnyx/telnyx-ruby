@@ -157,7 +157,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PortingOrder>]
+      # @return [Telnyx::Models::PortingOrderListResponse]
       #
       # @see Telnyx::Models::PortingOrderListParams
       def list(params = {})
@@ -166,8 +166,7 @@ module Telnyx
           method: :get,
           path: "porting_orders",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
-          model: Telnyx::PortingOrder,
+          model: Telnyx::Models::PortingOrderListResponse,
           options: options
         )
       end
@@ -273,7 +272,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PortingOrderRetrieveRequirementsResponse>]
+      # @return [Telnyx::Models::PortingOrderRetrieveRequirementsResponse]
       #
       # @see Telnyx::Models::PortingOrderRetrieveRequirementsParams
       def retrieve_requirements(id, params = {})
@@ -282,7 +281,6 @@ module Telnyx
           method: :get,
           path: ["porting_orders/%1$s/requirements", id],
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::PortingOrderRetrieveRequirementsResponse,
           options: options
         )

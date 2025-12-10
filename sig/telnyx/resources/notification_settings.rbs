@@ -18,7 +18,7 @@ module Telnyx
         ?filter: Telnyx::NotificationSettingListParams::Filter,
         ?page: Telnyx::NotificationSettingListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::NotificationSetting]
+      ) -> Telnyx::Models::NotificationSettingListResponse
 
       def delete: (
         String id,

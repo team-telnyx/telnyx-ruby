@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::NumberReservations#list
     class NumberReservation < Telnyx::Internal::Type::BaseModel
       # @!attribute customer_reference
       #   A customer reference string for customer look ups.

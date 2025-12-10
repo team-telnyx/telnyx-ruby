@@ -117,11 +117,11 @@ module Telnyx
 
         # @see Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse::Data#health
         class Health < Telnyx::Internal::Type::BaseModel
-          # @!attribute failed_health_checks_count
+          # @!attribute fail_
           #   The number of failed health checks.
           #
           #   @return [Float, nil]
-          optional :failed_health_checks_count, Float, api_name: :fail
+          optional :fail_, Float, api_name: :fail
 
           # @!attribute pass
           #   The number of successful health checks.
@@ -129,8 +129,8 @@ module Telnyx
           #   @return [Float, nil]
           optional :pass, Float
 
-          # @!method initialize(failed_health_checks_count: nil, pass: nil)
-          #   @param failed_health_checks_count [Float] The number of failed health checks.
+          # @!method initialize(fail_: nil, pass: nil)
+          #   @param fail_ [Float] The number of failed health checks.
           #
           #   @param pass [Float] The number of successful health checks.
         end

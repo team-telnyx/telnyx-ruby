@@ -6,7 +6,7 @@ module Telnyx
         ?filters: Telnyx::NetworkCoverageListParams::Filters,
         ?page: Telnyx::NetworkCoverageListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::NetworkCoverageListResponse]
+      ) -> Telnyx::Models::NetworkCoverageListResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

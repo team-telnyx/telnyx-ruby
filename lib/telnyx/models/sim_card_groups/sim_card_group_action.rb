@@ -3,7 +3,6 @@
 module Telnyx
   module Models
     module SimCardGroups
-      # @see Telnyx::Resources::SimCardGroups::Actions#list
       class SimCardGroupAction < Telnyx::Internal::Type::BaseModel
         # @!attribute settings
         #   A JSON object representation of the action params.

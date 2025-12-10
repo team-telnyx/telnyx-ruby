@@ -19,28 +19,50 @@ module Telnyx
           #   @return [Time, nil]
           optional :from_date, Time
 
-          # @!attribute page_number
+          # @!attribute page
+          #   Consolidated page parameter (deepObject style). Originally: page[size],
+          #   page[number]
           #
-          #   @return [Integer, nil]
-          optional :page_number, Integer
-
-          # @!attribute page_size
-          #
-          #   @return [Integer, nil]
-          optional :page_size, Integer
+          #   @return [Telnyx::Models::AI::Assistants::ScheduledEventListParams::Page, nil]
+          optional :page, -> { Telnyx::AI::Assistants::ScheduledEventListParams::Page }
 
           # @!attribute to_date
           #
           #   @return [Time, nil]
           optional :to_date, Time
 
-          # @!method initialize(conversation_channel: nil, from_date: nil, page_number: nil, page_size: nil, to_date: nil, request_options: {})
+          # @!method initialize(conversation_channel: nil, from_date: nil, page: nil, to_date: nil, request_options: {})
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::Assistants::ScheduledEventListParams} for more details.
+          #
           #   @param conversation_channel [Symbol, Telnyx::Models::AI::Assistants::ConversationChannelType]
+          #
           #   @param from_date [Time]
-          #   @param page_number [Integer]
-          #   @param page_size [Integer]
+          #
+          #   @param page [Telnyx::Models::AI::Assistants::ScheduledEventListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+          #
           #   @param to_date [Time]
+          #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
+
+          class Page < Telnyx::Internal::Type::BaseModel
+            # @!attribute number
+            #
+            #   @return [Integer, nil]
+            optional :number, Integer
+
+            # @!attribute size
+            #
+            #   @return [Integer, nil]
+            optional :size, Integer
+
+            # @!method initialize(number: nil, size: nil)
+            #   Consolidated page parameter (deepObject style). Originally: page[size],
+            #   page[number]
+            #
+            #   @param number [Integer]
+            #   @param size [Integer]
+          end
         end
       end
     end

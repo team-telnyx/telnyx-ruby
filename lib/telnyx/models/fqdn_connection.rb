@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::FqdnConnections#list
     class FqdnConnection < Telnyx::Internal::Type::BaseModel
       # @!attribute connection_name
       #   A user-assigned name to help manage the connection.

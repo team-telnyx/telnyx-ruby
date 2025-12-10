@@ -225,7 +225,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Internal::DefaultPaginationForMessagingTollfree<Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus>]
+          # @return [Telnyx::Models::MessagingTollfree::Verification::RequestListResponse]
           #
           # @see Telnyx::Models::MessagingTollfree::Verification::RequestListParams
           def list(params)
@@ -234,8 +234,7 @@ module Telnyx
               method: :get,
               path: "messaging_tollfree/verification/requests",
               query: parsed,
-              page: Telnyx::Internal::DefaultPaginationForMessagingTollfree,
-              model: Telnyx::MessagingTollfree::Verification::VerificationRequestStatus,
+              model: Telnyx::Models::MessagingTollfree::Verification::RequestListResponse,
               options: options
             )
           end

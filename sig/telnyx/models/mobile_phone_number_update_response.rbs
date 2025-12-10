@@ -1,16 +1,373 @@
 module Telnyx
   module Models
     type mobile_phone_number_update_response =
-      { data: Telnyx::MobilePhoneNumber }
+      { data: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data }
 
     class MobilePhoneNumberUpdateResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::MobilePhoneNumber?
+      attr_reader data: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data?
 
-      def data=: (Telnyx::MobilePhoneNumber) -> Telnyx::MobilePhoneNumber
+      def data=: (
+        Telnyx::Models::MobilePhoneNumberUpdateResponse::Data
+      ) -> Telnyx::Models::MobilePhoneNumberUpdateResponse::Data
 
-      def initialize: (?data: Telnyx::MobilePhoneNumber) -> void
+      def initialize: (
+        ?data: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data
+      ) -> void
 
-      def to_hash: -> { data: Telnyx::MobilePhoneNumber }
+      def to_hash: -> {
+        data: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data
+      }
+
+      type data =
+        {
+          id: String,
+          call_forwarding: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallForwarding,
+          call_recording: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording,
+          caller_id_name_enabled: bool,
+          cnam_listing: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CnamListing,
+          connection_id: String?,
+          connection_name: String?,
+          connection_type: String?,
+          :country_iso_alpha2 => String,
+          created_at: Time,
+          customer_reference: String?,
+          inbound: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::Inbound,
+          inbound_call_screening: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::inbound_call_screening?,
+          mobile_voice_enabled: bool,
+          noise_suppression: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::noise_suppression,
+          outbound: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::Outbound,
+          phone_number: String,
+          record_type: String,
+          sim_card_id: String,
+          status: String,
+          tags: ::Array[String],
+          updated_at: Time
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader call_forwarding: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallForwarding?
+
+        def call_forwarding=: (
+          Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallForwarding
+        ) -> Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallForwarding
+
+        attr_reader call_recording: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording?
+
+        def call_recording=: (
+          Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording
+        ) -> Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording
+
+        attr_reader caller_id_name_enabled: bool?
+
+        def caller_id_name_enabled=: (bool) -> bool
+
+        attr_reader cnam_listing: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CnamListing?
+
+        def cnam_listing=: (
+          Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CnamListing
+        ) -> Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CnamListing
+
+        attr_accessor connection_id: String?
+
+        attr_accessor customer_reference: String?
+
+        attr_reader inbound: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::Inbound?
+
+        def inbound=: (
+          Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::Inbound
+        ) -> Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::Inbound
+
+        attr_accessor inbound_call_screening: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::inbound_call_screening?
+
+        attr_reader noise_suppression: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::noise_suppression?
+
+        def noise_suppression=: (
+          Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::noise_suppression
+        ) -> Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::noise_suppression
+
+        attr_reader outbound: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::Outbound?
+
+        def outbound=: (
+          Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::Outbound
+        ) -> Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::Outbound
+
+        attr_reader tags: ::Array[String]?
+
+        def tags=: (::Array[String]) -> ::Array[String]
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_accessor connection_name: String?
+
+        attr_accessor connection_type: String?
+
+        attr_reader country_iso_alpha2: String?
+
+        def country_iso_alpha2=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader mobile_voice_enabled: bool?
+
+        def mobile_voice_enabled=: (bool) -> bool
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader sim_card_id: String?
+
+        def sim_card_id=: (String) -> String
+
+        attr_reader status: String?
+
+        def status=: (String) -> String
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        def initialize: (
+          ?id: String,
+          ?call_forwarding: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallForwarding,
+          ?call_recording: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording,
+          ?caller_id_name_enabled: bool,
+          ?cnam_listing: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CnamListing,
+          ?connection_id: String?,
+          ?connection_name: String?,
+          ?connection_type: String?,
+          ?country_iso_alpha2: String,
+          ?created_at: Time,
+          ?customer_reference: String?,
+          ?inbound: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::Inbound,
+          ?inbound_call_screening: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::inbound_call_screening?,
+          ?mobile_voice_enabled: bool,
+          ?noise_suppression: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::noise_suppression,
+          ?outbound: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::Outbound,
+          ?phone_number: String,
+          ?record_type: String,
+          ?sim_card_id: String,
+          ?status: String,
+          ?tags: ::Array[String],
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          call_forwarding: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallForwarding,
+          call_recording: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording,
+          caller_id_name_enabled: bool,
+          cnam_listing: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CnamListing,
+          connection_id: String?,
+          connection_name: String?,
+          connection_type: String?,
+          :country_iso_alpha2 => String,
+          created_at: Time,
+          customer_reference: String?,
+          inbound: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::Inbound,
+          inbound_call_screening: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::inbound_call_screening?,
+          mobile_voice_enabled: bool,
+          noise_suppression: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::noise_suppression,
+          outbound: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::Outbound,
+          phone_number: String,
+          record_type: String,
+          sim_card_id: String,
+          status: String,
+          tags: ::Array[String],
+          updated_at: Time
+        }
+
+        type call_forwarding =
+          {
+            call_forwarding_enabled: bool,
+            forwarding_type: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallForwarding::forwarding_type?,
+            forwards_to: String?
+          }
+
+        class CallForwarding < Telnyx::Internal::Type::BaseModel
+          attr_reader call_forwarding_enabled: bool?
+
+          def call_forwarding_enabled=: (bool) -> bool
+
+          attr_accessor forwarding_type: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallForwarding::forwarding_type?
+
+          attr_accessor forwards_to: String?
+
+          def initialize: (
+            ?call_forwarding_enabled: bool,
+            ?forwarding_type: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallForwarding::forwarding_type?,
+            ?forwards_to: String?
+          ) -> void
+
+          def to_hash: -> {
+            call_forwarding_enabled: bool,
+            forwarding_type: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallForwarding::forwarding_type?,
+            forwards_to: String?
+          }
+
+          type forwarding_type = :always | :"on-failure"
+
+          module ForwardingType
+            extend Telnyx::Internal::Type::Enum
+
+            ALWAYS: :always
+            ON_FAILURE: :"on-failure"
+
+            def self?.values: -> ::Array[Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallForwarding::forwarding_type]
+          end
+        end
+
+        type call_recording =
+          {
+            inbound_call_recording_channels: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording::inbound_call_recording_channels,
+            inbound_call_recording_enabled: bool,
+            inbound_call_recording_format: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording::inbound_call_recording_format
+          }
+
+        class CallRecording < Telnyx::Internal::Type::BaseModel
+          attr_reader inbound_call_recording_channels: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording::inbound_call_recording_channels?
+
+          def inbound_call_recording_channels=: (
+            Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording::inbound_call_recording_channels
+          ) -> Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording::inbound_call_recording_channels
+
+          attr_reader inbound_call_recording_enabled: bool?
+
+          def inbound_call_recording_enabled=: (bool) -> bool
+
+          attr_reader inbound_call_recording_format: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording::inbound_call_recording_format?
+
+          def inbound_call_recording_format=: (
+            Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording::inbound_call_recording_format
+          ) -> Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording::inbound_call_recording_format
+
+          def initialize: (
+            ?inbound_call_recording_channels: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording::inbound_call_recording_channels,
+            ?inbound_call_recording_enabled: bool,
+            ?inbound_call_recording_format: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording::inbound_call_recording_format
+          ) -> void
+
+          def to_hash: -> {
+            inbound_call_recording_channels: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording::inbound_call_recording_channels,
+            inbound_call_recording_enabled: bool,
+            inbound_call_recording_format: Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording::inbound_call_recording_format
+          }
+
+          type inbound_call_recording_channels = :single | :dual
+
+          module InboundCallRecordingChannels
+            extend Telnyx::Internal::Type::Enum
+
+            SINGLE: :single
+            DUAL: :dual
+
+            def self?.values: -> ::Array[Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording::inbound_call_recording_channels]
+          end
+
+          type inbound_call_recording_format = :wav | :mp3
+
+          module InboundCallRecordingFormat
+            extend Telnyx::Internal::Type::Enum
+
+            WAV: :wav
+            MP3: :mp3
+
+            def self?.values: -> ::Array[Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::CallRecording::inbound_call_recording_format]
+          end
+        end
+
+        type cnam_listing =
+          { cnam_listing_details: String?, cnam_listing_enabled: bool }
+
+        class CnamListing < Telnyx::Internal::Type::BaseModel
+          attr_accessor cnam_listing_details: String?
+
+          attr_reader cnam_listing_enabled: bool?
+
+          def cnam_listing_enabled=: (bool) -> bool
+
+          def initialize: (
+            ?cnam_listing_details: String?,
+            ?cnam_listing_enabled: bool
+          ) -> void
+
+          def to_hash: -> {
+            cnam_listing_details: String?,
+            cnam_listing_enabled: bool
+          }
+        end
+
+        type inbound =
+          { interception_app_id: String?, interception_app_name: String? }
+
+        class Inbound < Telnyx::Internal::Type::BaseModel
+          attr_accessor interception_app_id: String?
+
+          attr_accessor interception_app_name: String?
+
+          def initialize: (
+            ?interception_app_id: String?,
+            ?interception_app_name: String?
+          ) -> void
+
+          def to_hash: -> {
+            interception_app_id: String?,
+            interception_app_name: String?
+          }
+        end
+
+        type inbound_call_screening = :disabled | :reject_calls | :flag_calls
+
+        module InboundCallScreening
+          extend Telnyx::Internal::Type::Enum
+
+          DISABLED: :disabled
+          REJECT_CALLS: :reject_calls
+          FLAG_CALLS: :flag_calls
+
+          def self?.values: -> ::Array[Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::inbound_call_screening]
+        end
+
+        type noise_suppression = :inbound | :outbound | :both | :disabled
+
+        module NoiseSuppression
+          extend Telnyx::Internal::Type::Enum
+
+          INBOUND: :inbound
+          OUTBOUND: :outbound
+          BOTH: :both
+          DISABLED: :disabled
+
+          def self?.values: -> ::Array[Telnyx::Models::MobilePhoneNumberUpdateResponse::Data::noise_suppression]
+        end
+
+        type outbound =
+          { interception_app_id: String?, interception_app_name: String? }
+
+        class Outbound < Telnyx::Internal::Type::BaseModel
+          attr_accessor interception_app_id: String?
+
+          attr_accessor interception_app_name: String?
+
+          def initialize: (
+            ?interception_app_id: String?,
+            ?interception_app_name: String?
+          ) -> void
+
+          def to_hash: -> {
+            interception_app_id: String?,
+            interception_app_name: String?
+          }
+        end
+      end
     end
   end
 end

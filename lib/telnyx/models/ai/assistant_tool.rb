@@ -9,50 +9,48 @@ module Telnyx
       module AssistantTool
         extend Telnyx::Internal::Type::Union
 
-        discriminator :type
+        variant -> { Telnyx::AI::WebhookTool }
 
-        variant :webhook, -> { Telnyx::AI::WebhookTool }
-
-        variant :retrieval, -> { Telnyx::AI::RetrievalTool }
+        variant -> { Telnyx::AI::RetrievalTool }
 
         # The handoff tool allows the assistant to hand off control of the conversation to another AI assistant. By default, this will happen transparently to the end user.
-        variant :handoff, -> { Telnyx::AI::AssistantTool::Handoff }
+        variant -> { Telnyx::AI::AssistantTool::HandoffTool }
 
-        variant :hangup, -> { Telnyx::AI::HangupTool }
+        variant -> { Telnyx::AI::HangupTool }
 
-        variant :transfer, -> { Telnyx::AI::TransferTool }
+        variant -> { Telnyx::AI::TransferTool }
 
-        variant :refer, -> { Telnyx::AI::AssistantTool::Refer }
+        variant -> { Telnyx::AI::AssistantTool::SipReferTool }
 
-        variant :send_dtmf, -> { Telnyx::AI::AssistantTool::SendDtmf }
+        variant -> { Telnyx::AI::AssistantTool::DtmfTool }
 
-        class Handoff < Telnyx::Internal::Type::BaseModel
+        class HandoffTool < Telnyx::Internal::Type::BaseModel
           # @!attribute handoff
           #
-          #   @return [Telnyx::Models::AI::AssistantTool::Handoff::Handoff]
-          required :handoff, -> { Telnyx::AI::AssistantTool::Handoff::Handoff }
+          #   @return [Telnyx::Models::AI::AssistantTool::HandoffTool::Handoff]
+          required :handoff, -> { Telnyx::AI::AssistantTool::HandoffTool::Handoff }
 
           # @!attribute type
           #
-          #   @return [Symbol, :handoff]
-          required :type, const: :handoff
+          #   @return [Symbol, Telnyx::Models::AI::AssistantTool::HandoffTool::Type]
+          required :type, enum: -> { Telnyx::AI::AssistantTool::HandoffTool::Type }
 
-          # @!method initialize(handoff:, type: :handoff)
+          # @!method initialize(handoff:, type:)
           #   The handoff tool allows the assistant to hand off control of the conversation to
           #   another AI assistant. By default, this will happen transparently to the end
           #   user.
           #
-          #   @param handoff [Telnyx::Models::AI::AssistantTool::Handoff::Handoff]
-          #   @param type [Symbol, :handoff]
+          #   @param handoff [Telnyx::Models::AI::AssistantTool::HandoffTool::Handoff]
+          #   @param type [Symbol, Telnyx::Models::AI::AssistantTool::HandoffTool::Type]
 
-          # @see Telnyx::Models::AI::AssistantTool::Handoff#handoff
+          # @see Telnyx::Models::AI::AssistantTool::HandoffTool#handoff
           class Handoff < Telnyx::Internal::Type::BaseModel
             # @!attribute ai_assistants
             #   List of possible assistants that can receive a handoff.
             #
-            #   @return [Array<Telnyx::Models::AI::AssistantTool::Handoff::Handoff::AIAssistant>]
+            #   @return [Array<Telnyx::Models::AI::AssistantTool::HandoffTool::Handoff::AIAssistant>]
             required :ai_assistants,
-                     -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantTool::Handoff::Handoff::AIAssistant] }
+                     -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantTool::HandoffTool::Handoff::AIAssistant] }
 
             # @!attribute voice_mode
             #   With the unified voice mode all assistants share the same voice, making the
@@ -60,16 +58,16 @@ module Telnyx
             #   retain their voice configuration, providing the experience of a conference call
             #   with a team of assistants.
             #
-            #   @return [Symbol, Telnyx::Models::AI::AssistantTool::Handoff::Handoff::VoiceMode, nil]
-            optional :voice_mode, enum: -> { Telnyx::AI::AssistantTool::Handoff::Handoff::VoiceMode }
+            #   @return [Symbol, Telnyx::Models::AI::AssistantTool::HandoffTool::Handoff::VoiceMode, nil]
+            optional :voice_mode, enum: -> { Telnyx::AI::AssistantTool::HandoffTool::Handoff::VoiceMode }
 
             # @!method initialize(ai_assistants:, voice_mode: nil)
             #   Some parameter documentations has been truncated, see
-            #   {Telnyx::Models::AI::AssistantTool::Handoff::Handoff} for more details.
+            #   {Telnyx::Models::AI::AssistantTool::HandoffTool::Handoff} for more details.
             #
-            #   @param ai_assistants [Array<Telnyx::Models::AI::AssistantTool::Handoff::Handoff::AIAssistant>] List of possible assistants that can receive a handoff.
+            #   @param ai_assistants [Array<Telnyx::Models::AI::AssistantTool::HandoffTool::Handoff::AIAssistant>] List of possible assistants that can receive a handoff.
             #
-            #   @param voice_mode [Symbol, Telnyx::Models::AI::AssistantTool::Handoff::Handoff::VoiceMode] With the unified voice mode all assistants share the same voice, making the hand
+            #   @param voice_mode [Symbol, Telnyx::Models::AI::AssistantTool::HandoffTool::Handoff::VoiceMode] With the unified voice mode all assistants share the same voice, making the hand
 
             class AIAssistant < Telnyx::Internal::Type::BaseModel
               # @!attribute id
@@ -95,7 +93,7 @@ module Telnyx
             # retain their voice configuration, providing the experience of a conference call
             # with a team of assistants.
             #
-            # @see Telnyx::Models::AI::AssistantTool::Handoff::Handoff#voice_mode
+            # @see Telnyx::Models::AI::AssistantTool::HandoffTool::Handoff#voice_mode
             module VoiceMode
               extend Telnyx::Internal::Type::Enum
 
@@ -106,56 +104,67 @@ module Telnyx
               #   @return [Array<Symbol>]
             end
           end
+
+          # @see Telnyx::Models::AI::AssistantTool::HandoffTool#type
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            HANDOFF = :handoff
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
-        class Refer < Telnyx::Internal::Type::BaseModel
+        class SipReferTool < Telnyx::Internal::Type::BaseModel
           # @!attribute refer
           #
-          #   @return [Telnyx::Models::AI::AssistantTool::Refer::Refer]
-          required :refer, -> { Telnyx::AI::AssistantTool::Refer::Refer }
+          #   @return [Telnyx::Models::AI::AssistantTool::SipReferTool::Refer]
+          required :refer, -> { Telnyx::AI::AssistantTool::SipReferTool::Refer }
 
           # @!attribute type
           #
-          #   @return [Symbol, :refer]
-          required :type, const: :refer
+          #   @return [Symbol, Telnyx::Models::AI::AssistantTool::SipReferTool::Type]
+          required :type, enum: -> { Telnyx::AI::AssistantTool::SipReferTool::Type }
 
-          # @!method initialize(refer:, type: :refer)
-          #   @param refer [Telnyx::Models::AI::AssistantTool::Refer::Refer]
-          #   @param type [Symbol, :refer]
+          # @!method initialize(refer:, type:)
+          #   @param refer [Telnyx::Models::AI::AssistantTool::SipReferTool::Refer]
+          #   @param type [Symbol, Telnyx::Models::AI::AssistantTool::SipReferTool::Type]
 
-          # @see Telnyx::Models::AI::AssistantTool::Refer#refer
+          # @see Telnyx::Models::AI::AssistantTool::SipReferTool#refer
           class Refer < Telnyx::Internal::Type::BaseModel
             # @!attribute targets
             #   The different possible targets of the SIP refer. The assistant will be able to
             #   choose one of the targets to refer the call to.
             #
-            #   @return [Array<Telnyx::Models::AI::AssistantTool::Refer::Refer::Target>]
-            required :targets, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantTool::Refer::Refer::Target] }
+            #   @return [Array<Telnyx::Models::AI::AssistantTool::SipReferTool::Refer::Target>]
+            required :targets,
+                     -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantTool::SipReferTool::Refer::Target] }
 
             # @!attribute custom_headers
             #   Custom headers to be added to the SIP REFER.
             #
-            #   @return [Array<Telnyx::Models::AI::AssistantTool::Refer::Refer::CustomHeader>, nil]
+            #   @return [Array<Telnyx::Models::AI::AssistantTool::SipReferTool::Refer::CustomHeader>, nil]
             optional :custom_headers,
-                     -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantTool::Refer::Refer::CustomHeader] }
+                     -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantTool::SipReferTool::Refer::CustomHeader] }
 
             # @!attribute sip_headers
             #   SIP headers to be added to the SIP REFER. Currently only User-to-User and
             #   Diversion headers are supported.
             #
-            #   @return [Array<Telnyx::Models::AI::AssistantTool::Refer::Refer::SipHeader>, nil]
+            #   @return [Array<Telnyx::Models::AI::AssistantTool::SipReferTool::Refer::SipHeader>, nil]
             optional :sip_headers,
-                     -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantTool::Refer::Refer::SipHeader] }
+                     -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader] }
 
             # @!method initialize(targets:, custom_headers: nil, sip_headers: nil)
             #   Some parameter documentations has been truncated, see
-            #   {Telnyx::Models::AI::AssistantTool::Refer::Refer} for more details.
+            #   {Telnyx::Models::AI::AssistantTool::SipReferTool::Refer} for more details.
             #
-            #   @param targets [Array<Telnyx::Models::AI::AssistantTool::Refer::Refer::Target>] The different possible targets of the SIP refer. The assistant will be able to c
+            #   @param targets [Array<Telnyx::Models::AI::AssistantTool::SipReferTool::Refer::Target>] The different possible targets of the SIP refer. The assistant will be able to c
             #
-            #   @param custom_headers [Array<Telnyx::Models::AI::AssistantTool::Refer::Refer::CustomHeader>] Custom headers to be added to the SIP REFER.
+            #   @param custom_headers [Array<Telnyx::Models::AI::AssistantTool::SipReferTool::Refer::CustomHeader>] Custom headers to be added to the SIP REFER.
             #
-            #   @param sip_headers [Array<Telnyx::Models::AI::AssistantTool::Refer::Refer::SipHeader>] SIP headers to be added to the SIP REFER. Currently only User-to-User and Divers
+            #   @param sip_headers [Array<Telnyx::Models::AI::AssistantTool::SipReferTool::Refer::SipHeader>] SIP headers to be added to the SIP REFER. Currently only User-to-User and Divers
 
             class Target < Telnyx::Internal::Type::BaseModel
               # @!attribute name
@@ -209,7 +218,7 @@ module Telnyx
 
               # @!method initialize(name: nil, value: nil)
               #   Some parameter documentations has been truncated, see
-              #   {Telnyx::Models::AI::AssistantTool::Refer::Refer::CustomHeader} for more
+              #   {Telnyx::Models::AI::AssistantTool::SipReferTool::Refer::CustomHeader} for more
               #   details.
               #
               #   @param name [String]
@@ -220,8 +229,8 @@ module Telnyx
             class SipHeader < Telnyx::Internal::Type::BaseModel
               # @!attribute name
               #
-              #   @return [Symbol, Telnyx::Models::AI::AssistantTool::Refer::Refer::SipHeader::Name, nil]
-              optional :name, enum: -> { Telnyx::AI::AssistantTool::Refer::Refer::SipHeader::Name }
+              #   @return [Symbol, Telnyx::Models::AI::AssistantTool::SipReferTool::Refer::SipHeader::Name, nil]
+              optional :name, enum: -> { Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader::Name }
 
               # @!attribute value
               #   The value of the header. Note that we support mustache templating for the value.
@@ -234,13 +243,14 @@ module Telnyx
 
               # @!method initialize(name: nil, value: nil)
               #   Some parameter documentations has been truncated, see
-              #   {Telnyx::Models::AI::AssistantTool::Refer::Refer::SipHeader} for more details.
+              #   {Telnyx::Models::AI::AssistantTool::SipReferTool::Refer::SipHeader} for more
+              #   details.
               #
-              #   @param name [Symbol, Telnyx::Models::AI::AssistantTool::Refer::Refer::SipHeader::Name]
+              #   @param name [Symbol, Telnyx::Models::AI::AssistantTool::SipReferTool::Refer::SipHeader::Name]
               #
               #   @param value [String] The value of the header. Note that we support mustache templating for the value.
 
-              # @see Telnyx::Models::AI::AssistantTool::Refer::Refer::SipHeader#name
+              # @see Telnyx::Models::AI::AssistantTool::SipReferTool::Refer::SipHeader#name
               module Name
                 extend Telnyx::Internal::Type::Enum
 
@@ -252,9 +262,19 @@ module Telnyx
               end
             end
           end
+
+          # @see Telnyx::Models::AI::AssistantTool::SipReferTool#type
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            REFER = :refer
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
-        class SendDtmf < Telnyx::Internal::Type::BaseModel
+        class DtmfTool < Telnyx::Internal::Type::BaseModel
           # @!attribute send_dtmf
           #
           #   @return [Hash{Symbol=>Object}]
@@ -262,16 +282,26 @@ module Telnyx
 
           # @!attribute type
           #
-          #   @return [Symbol, :send_dtmf]
-          required :type, const: :send_dtmf
+          #   @return [Symbol, Telnyx::Models::AI::AssistantTool::DtmfTool::Type]
+          required :type, enum: -> { Telnyx::AI::AssistantTool::DtmfTool::Type }
 
-          # @!method initialize(send_dtmf:, type: :send_dtmf)
+          # @!method initialize(send_dtmf:, type:)
           #   @param send_dtmf [Hash{Symbol=>Object}]
-          #   @param type [Symbol, :send_dtmf]
+          #   @param type [Symbol, Telnyx::Models::AI::AssistantTool::DtmfTool::Type]
+
+          # @see Telnyx::Models::AI::AssistantTool::DtmfTool#type
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            SEND_DTMF = :send_dtmf
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @!method self.variants
-        #   @return [Array(Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf)]
+        #   @return [Array(Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::HandoffTool, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::AssistantTool::SipReferTool, Telnyx::Models::AI::AssistantTool::DtmfTool)]
       end
     end
   end

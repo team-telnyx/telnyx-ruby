@@ -52,7 +52,7 @@ module Telnyx
         #
         # @param telephony_settings [Telnyx::Models::AI::TelephonySettings]
         #
-        # @param tools [Array<Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf>] The tools that the assistant can use. These may be templated with [dynamic varia
+        # @param tools [Array<Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::HandoffTool, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::AssistantTool::SipReferTool, Telnyx::Models::AI::AssistantTool::DtmfTool>] The tools that the assistant can use. These may be templated with [dynamic varia
         #
         # @param transcription [Telnyx::Models::AI::TranscriptionSettings]
         #
@@ -136,7 +136,7 @@ module Telnyx
         #
         # @param telephony_settings [Telnyx::Models::AI::TelephonySettings]
         #
-        # @param tools [Array<Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf>] The tools that the assistant can use. These may be templated with [dynamic varia
+        # @param tools [Array<Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::HandoffTool, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::AssistantTool::SipReferTool, Telnyx::Models::AI::AssistantTool::DtmfTool>] The tools that the assistant can use. These may be templated with [dynamic varia
         #
         # @param transcription [Telnyx::Models::AI::TranscriptionSettings]
         #
@@ -269,25 +269,25 @@ module Telnyx
         end
 
         # Some parameter documentations has been truncated, see
-        # {Telnyx::Models::AI::AssistantImportsParams} for more details.
+        # {Telnyx::Models::AI::AssistantImportParams} for more details.
         #
         # Import assistants from external providers. Any assistant that has already been
         # imported will be overwritten with its latest version from the importing
         # provider.
         #
-        # @overload imports(api_key_ref:, provider:, request_options: {})
+        # @overload import(api_key_ref:, provider:, request_options: {})
         #
         # @param api_key_ref [String] Integration secret pointer that refers to the API key for the external provider.
         #
-        # @param provider [Symbol, Telnyx::Models::AI::AssistantImportsParams::Provider] The external provider to import assistants from.
+        # @param provider [Symbol, Telnyx::Models::AI::AssistantImportParams::Provider] The external provider to import assistants from.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::AssistantsList]
         #
-        # @see Telnyx::Models::AI::AssistantImportsParams
-        def imports(params)
-          parsed, options = Telnyx::AI::AssistantImportsParams.dump_request(params)
+        # @see Telnyx::Models::AI::AssistantImportParams
+        def import(params)
+          parsed, options = Telnyx::AI::AssistantImportParams.dump_request(params)
           @client.request(
             method: :post,
             path: "ai/assistants/import",

@@ -1,0 +1,63 @@
+module Telnyx
+  module Models
+    type short_code_list_response =
+      {
+        data: ::Array[Telnyx::ShortCode],
+        meta: Telnyx::Models::ShortCodeListResponse::Meta
+      }
+
+    class ShortCodeListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::ShortCode]?
+
+      def data=: (::Array[Telnyx::ShortCode]) -> ::Array[Telnyx::ShortCode]
+
+      attr_reader meta: Telnyx::Models::ShortCodeListResponse::Meta?
+
+      def meta=: (
+        Telnyx::Models::ShortCodeListResponse::Meta
+      ) -> Telnyx::Models::ShortCodeListResponse::Meta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::ShortCode],
+        ?meta: Telnyx::Models::ShortCodeListResponse::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::ShortCode],
+        meta: Telnyx::Models::ShortCodeListResponse::Meta
+      }
+
+      type meta =
+        {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor page_number: Integer
+
+        attr_accessor page_size: Integer
+
+        attr_accessor total_pages: Integer
+
+        attr_accessor total_results: Integer
+
+        def initialize: (
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        ) -> void
+
+        def to_hash: -> {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+      end
+    end
+  end
+end

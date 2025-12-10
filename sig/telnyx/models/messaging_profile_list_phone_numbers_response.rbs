@@ -1,0 +1,65 @@
+module Telnyx
+  module Models
+    type messaging_profile_list_phone_numbers_response =
+      {
+        data: ::Array[Telnyx::PhoneNumberWithMessagingSettings],
+        meta: Telnyx::Models::MessagingProfileListPhoneNumbersResponse::Meta
+      }
+
+    class MessagingProfileListPhoneNumbersResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::PhoneNumberWithMessagingSettings]?
+
+      def data=: (
+        ::Array[Telnyx::PhoneNumberWithMessagingSettings]
+      ) -> ::Array[Telnyx::PhoneNumberWithMessagingSettings]
+
+      attr_reader meta: Telnyx::Models::MessagingProfileListPhoneNumbersResponse::Meta?
+
+      def meta=: (
+        Telnyx::Models::MessagingProfileListPhoneNumbersResponse::Meta
+      ) -> Telnyx::Models::MessagingProfileListPhoneNumbersResponse::Meta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::PhoneNumberWithMessagingSettings],
+        ?meta: Telnyx::Models::MessagingProfileListPhoneNumbersResponse::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::PhoneNumberWithMessagingSettings],
+        meta: Telnyx::Models::MessagingProfileListPhoneNumbersResponse::Meta
+      }
+
+      type meta =
+        {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor page_number: Integer
+
+        attr_accessor page_size: Integer
+
+        attr_accessor total_pages: Integer
+
+        attr_accessor total_results: Integer
+
+        def initialize: (
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        ) -> void
+
+        def to_hash: -> {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+      end
+    end
+  end
+end

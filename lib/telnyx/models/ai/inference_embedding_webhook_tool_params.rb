@@ -41,12 +41,14 @@ module Telnyx
         optional :headers,
                  -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Header] }
 
-        # @!attribute http_method
+        # @!attribute method_
         #   The HTTP method to be used when calling the external tool.
         #
         #   @return [Symbol, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Method, nil]
-        optional :http_method,
-                 enum: -> { Telnyx::AI::InferenceEmbeddingWebhookToolParams::Method },
+        optional :method_,
+                 enum: -> {
+                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::Method
+                 },
                  api_name: :method
 
         # @!attribute path_parameters
@@ -69,7 +71,7 @@ module Telnyx
         #   @return [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::QueryParameters, nil]
         optional :query_parameters, -> { Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters }
 
-        # @!method initialize(description:, name:, url:, body_parameters: nil, headers: nil, http_method: nil, path_parameters: nil, query_parameters: nil)
+        # @!method initialize(description:, name:, url:, body_parameters: nil, headers: nil, method_: nil, path_parameters: nil, query_parameters: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams} for more details.
         #
@@ -83,7 +85,7 @@ module Telnyx
         #
         #   @param headers [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Header>] The headers to be sent to the external tool.
         #
-        #   @param http_method [Symbol, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Method] The HTTP method to be used when calling the external tool.
+        #   @param method_ [Symbol, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Method] The HTTP method to be used when calling the external tool.
         #
         #   @param path_parameters [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::PathParameters] The path parameters the webhook tool accepts, described as a JSON Schema object.
         #
@@ -160,7 +162,7 @@ module Telnyx
 
         # The HTTP method to be used when calling the external tool.
         #
-        # @see Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams#http_method
+        # @see Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams#method_
         module Method
           extend Telnyx::Internal::Type::Enum
 

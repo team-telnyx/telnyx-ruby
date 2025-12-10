@@ -91,7 +91,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::WirelessBlocklist>]
+      # @return [Telnyx::Models::WirelessBlocklistListResponse]
       #
       # @see Telnyx::Models::WirelessBlocklistListParams
       def list(params = {})
@@ -106,8 +106,7 @@ module Telnyx
             page_number: "page[number]",
             page_size: "page[size]"
           ),
-          page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::WirelessBlocklist,
+          model: Telnyx::Models::WirelessBlocklistListResponse,
           options: options
         )
       end

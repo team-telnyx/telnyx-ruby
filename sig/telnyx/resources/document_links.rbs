@@ -5,7 +5,7 @@ module Telnyx
         ?filter: Telnyx::DocumentLinkListParams::Filter,
         ?page: Telnyx::DocumentLinkListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::DocumentLinkListResponse]
+      ) -> Telnyx::Models::DocumentLinkListResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

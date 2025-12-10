@@ -1,0 +1,39 @@
+module Telnyx
+  module Models
+    module Number10dlc
+      module Campaign
+        type usecase_retrieve_cost_response =
+          {
+            campaign_usecase: String,
+            description: String,
+            monthly_cost: String,
+            up_front_cost: String
+          }
+
+        class UsecaseRetrieveCostResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor campaign_usecase: String
+
+          attr_accessor description: String
+
+          attr_accessor monthly_cost: String
+
+          attr_accessor up_front_cost: String
+
+          def initialize: (
+            campaign_usecase: String,
+            description: String,
+            monthly_cost: String,
+            up_front_cost: String
+          ) -> void
+
+          def to_hash: -> {
+            campaign_usecase: String,
+            description: String,
+            monthly_cost: String,
+            up_front_cost: String
+          }
+        end
+      end
+    end
+  end
+end

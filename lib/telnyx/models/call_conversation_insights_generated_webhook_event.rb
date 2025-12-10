@@ -164,14 +164,14 @@ module Telnyx
             # @!attribute result
             #   The result of the insight.
             #
-            #   @return [Hash{Symbol=>Object}, String, nil]
+            #   @return [Object, String, nil]
             optional :result,
                      union: -> { Telnyx::CallConversationInsightsGeneratedWebhookEvent::Data::Payload::Result::Result }
 
             # @!method initialize(insight_id: nil, result: nil)
             #   @param insight_id [String] ID that is unique to the insight result being generated for the call.
             #
-            #   @param result [Hash{Symbol=>Object}, String] The result of the insight.
+            #   @param result [Object, String] The result of the insight.
 
             # The result of the insight.
             #
@@ -180,16 +180,13 @@ module Telnyx
               extend Telnyx::Internal::Type::Union
 
               # The result of the insight.
-              variant -> { Telnyx::Models::CallConversationInsightsGeneratedWebhookEvent::Data::Payload::Result::Result::InsightObjectResultMap }
+              variant Telnyx::Internal::Type::Unknown
 
               # The result of the insight.
               variant String
 
               # @!method self.variants
-              #   @return [Array(Hash{Symbol=>Object}, String)]
-
-              # @type [Telnyx::Internal::Type::Converter]
-              InsightObjectResultMap = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+              #   @return [Array(Object, String)]
             end
           end
         end

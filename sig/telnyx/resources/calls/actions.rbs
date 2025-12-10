@@ -34,8 +34,8 @@ module Telnyx
         ) -> Telnyx::Models::Calls::ActionAnswerResponse
 
         def bridge: (
-          String call_control_id_to_bridge,
-          call_control_id_to_bridge_with: String,
+          String path_call_control_id,
+          body_call_control_id: String,
           ?client_state: String,
           ?command_id: String,
           ?mute_dtmf: Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf,
@@ -84,7 +84,7 @@ module Telnyx
 
         def gather_using_ai: (
           String call_control_id,
-          parameters: ::Hash[Symbol, top],
+          parameters: top,
           ?assistant: Telnyx::AI::Assistant,
           ?client_state: String,
           ?command_id: String,
@@ -326,7 +326,7 @@ module Telnyx
           ?client_state: String,
           ?command_id: String,
           ?transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine,
-          ?transcription_engine_config: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config,
+          ?transcription_engine_config: ::Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config,
           ?transcription_tracks: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionStartTranscriptionResponse

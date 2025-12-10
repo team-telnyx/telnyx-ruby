@@ -15,17 +15,11 @@ module Telnyx
     # Default max retry delay in seconds.
     DEFAULT_MAX_RETRY_DELAY = 8.0
 
-    # @return [String, nil]
+    # @return [String]
     attr_reader :api_key
 
     # @return [String, nil]
     attr_reader :public_key
-
-    # @return [String, nil]
-    attr_reader :client_id
-
-    # @return [String, nil]
-    attr_reader :client_secret
 
     # @return [Telnyx::Resources::Legacy]
     attr_reader :legacy
@@ -78,6 +72,9 @@ module Telnyx
     # @return [Telnyx::Resources::BillingGroups]
     attr_reader :billing_groups
 
+    # @return [Telnyx::Resources::Brand]
+    attr_reader :brand
+
     # @return [Telnyx::Resources::BulkSimCardActions]
     attr_reader :bulk_sim_card_actions
 
@@ -92,6 +89,12 @@ module Telnyx
 
     # @return [Telnyx::Resources::Calls]
     attr_reader :calls
+
+    # @return [Telnyx::Resources::Campaign]
+    attr_reader :campaign
+
+    # @return [Telnyx::Resources::CampaignBuilder]
+    attr_reader :campaign_builder
 
     # @return [Telnyx::Resources::ChannelZones]
     attr_reader :channel_zones
@@ -140,6 +143,9 @@ module Telnyx
 
     # @return [Telnyx::Resources::DynamicEmergencyEndpoints]
     attr_reader :dynamic_emergency_endpoints
+
+    # @return [Telnyx::Resources::Enum]
+    attr_reader :enum
 
     # @return [Telnyx::Resources::ExternalConnections]
     attr_reader :external_connections
@@ -303,8 +309,14 @@ module Telnyx
     # @return [Telnyx::Resources::Payment]
     attr_reader :payment
 
+    # @return [Telnyx::Resources::PhoneNumberAssignmentByProfile]
+    attr_reader :phone_number_assignment_by_profile
+
     # @return [Telnyx::Resources::PhoneNumberBlocks]
     attr_reader :phone_number_blocks
+
+    # @return [Telnyx::Resources::PhoneNumberCampaigns]
+    attr_reader :phone_number_campaigns
 
     # @return [Telnyx::Resources::PhoneNumbers]
     attr_reader :phone_numbers
@@ -462,6 +474,9 @@ module Telnyx
     # @return [Telnyx::Resources::WirelessBlocklists]
     attr_reader :wireless_blocklists
 
+    # @return [Telnyx::Resources::PartnerCampaigns]
+    attr_reader :partner_campaigns
+
     # @return [Telnyx::Resources::WellKnown]
     attr_reader :well_known
 
@@ -474,54 +489,19 @@ module Telnyx
     # @return [Telnyx::Resources::MobileVoiceConnections]
     attr_reader :mobile_voice_connections
 
-    # @return [Telnyx::Resources::Messaging10dlc]
-    attr_reader :messaging_10dlc
+    # @return [Telnyx::Resources::Public]
+    attr_reader :public
+
+    # @return [Telnyx::Resources::Number10dlc]
+    attr_reader :number_10dlc
 
     # @api private
     #
     # @return [Hash{String=>String}]
     private def auth_headers
-      {**bearer_auth, **oauth_client_auth}
-    end
-
-    # @api private
-    #
-    # @return [Hash{String=>String}]
-    private def bearer_auth
       return {} if @api_key.nil?
 
       {"authorization" => "Bearer #{@api_key}"}
-    end
-
-    # @api private
-    # @return [Telnyx::Internal::OAuth2ClientCredentials]
-    attr_reader :oauth_client_auth_state
-
-    # @api private
-    #
-    # @return [Hash{String=>String}]
-    private def oauth_client_auth
-      return @oauth_client_auth_state.auth_headers if @oauth_client_auth_state
-
-      return {} unless @client_id && @client_secret
-
-      path = Telnyx::Internal::Util.interpolate_path("https://api.telnyx.com/v2/oauth/token")
-      token_url = Telnyx::Internal::Util.join_parsed_uri(
-        @base_url_components,
-        {
-          path: path,
-          query: {grant_type: "client_credentials"}
-        }
-      )
-
-      @oauth_client_auth_state = Telnyx::Internal::OAuth2ClientCredentials.new(
-        token_url: token_url.to_s,
-        client_id: @client_id,
-        client_secret: @client_secret,
-        timeout: @timeout,
-        client: self
-      )
-      @oauth_client_auth_state.auth_headers
     end
 
     # @api private
@@ -532,10 +512,6 @@ module Telnyx
     # Creates and returns a new client for interacting with the API.
     #
     # @param api_key [String, nil] Defaults to `ENV["TELNYX_API_KEY"]`
-    #
-    # @param client_id [String, nil] Defaults to `ENV["TELNYX_CLIENT_ID"]`
-    #
-    # @param client_secret [String, nil] Defaults to `ENV["TELNYX_CLIENT_SECRET"]`
     #
     # @param public_key [String, nil] Defaults to `ENV["TELNYX_PUBLIC_KEY"]`
     #
@@ -551,8 +527,6 @@ module Telnyx
     # @param max_retry_delay [Float]
     def initialize(
       api_key: ENV["TELNYX_API_KEY"],
-      client_id: ENV["TELNYX_CLIENT_ID"],
-      client_secret: ENV["TELNYX_CLIENT_SECRET"],
       public_key: ENV["TELNYX_PUBLIC_KEY"],
       base_url: ENV["TELNYX_BASE_URL"],
       max_retries: self.class::DEFAULT_MAX_RETRIES,
@@ -564,9 +538,11 @@ module Telnyx
 
       base_url ||= "https://api.telnyx.com/v2"
 
-      @api_key = api_key&.to_s
-      @client_id = client_id&.to_s
-      @client_secret = client_secret&.to_s
+      if api_key.nil?
+        raise ArgumentError.new("api_key is required, and can be set via environ: \"TELNYX_API_KEY\"")
+      end
+
+      @api_key = api_key.to_s
       @public_key = public_key&.to_s
 
       super(
@@ -594,11 +570,14 @@ module Telnyx
       @available_phone_numbers = Telnyx::Resources::AvailablePhoneNumbers.new(client: self)
       @balance = Telnyx::Resources::Balance.new(client: self)
       @billing_groups = Telnyx::Resources::BillingGroups.new(client: self)
+      @brand = Telnyx::Resources::Brand.new(client: self)
       @bulk_sim_card_actions = Telnyx::Resources::BulkSimCardActions.new(client: self)
       @bundle_pricing = Telnyx::Resources::BundlePricing.new(client: self)
       @call_control_applications = Telnyx::Resources::CallControlApplications.new(client: self)
       @call_events = Telnyx::Resources::CallEvents.new(client: self)
       @calls = Telnyx::Resources::Calls.new(client: self)
+      @campaign = Telnyx::Resources::Campaign.new(client: self)
+      @campaign_builder = Telnyx::Resources::CampaignBuilder.new(client: self)
       @channel_zones = Telnyx::Resources::ChannelZones.new(client: self)
       @charges_breakdown = Telnyx::Resources::ChargesBreakdown.new(client: self)
       @charges_summary = Telnyx::Resources::ChargesSummary.new(client: self)
@@ -615,6 +594,7 @@ module Telnyx
       @documents = Telnyx::Resources::Documents.new(client: self)
       @dynamic_emergency_addresses = Telnyx::Resources::DynamicEmergencyAddresses.new(client: self)
       @dynamic_emergency_endpoints = Telnyx::Resources::DynamicEmergencyEndpoints.new(client: self)
+      @enum = Telnyx::Resources::Enum.new(client: self)
       @external_connections = Telnyx::Resources::ExternalConnections.new(client: self)
       @fax_applications = Telnyx::Resources::FaxApplications.new(client: self)
       @faxes = Telnyx::Resources::Faxes.new(client: self)
@@ -669,7 +649,9 @@ module Telnyx
       @ota_updates = Telnyx::Resources::OtaUpdates.new(client: self)
       @outbound_voice_profiles = Telnyx::Resources::OutboundVoiceProfiles.new(client: self)
       @payment = Telnyx::Resources::Payment.new(client: self)
+      @phone_number_assignment_by_profile = Telnyx::Resources::PhoneNumberAssignmentByProfile.new(client: self)
       @phone_number_blocks = Telnyx::Resources::PhoneNumberBlocks.new(client: self)
+      @phone_number_campaigns = Telnyx::Resources::PhoneNumberCampaigns.new(client: self)
       @phone_numbers = Telnyx::Resources::PhoneNumbers.new(client: self)
       @phone_numbers_regulatory_requirements =
         Telnyx::Resources::PhoneNumbersRegulatoryRequirements.new(client: self)
@@ -723,11 +705,13 @@ module Telnyx
       @wireless = Telnyx::Resources::Wireless.new(client: self)
       @wireless_blocklist_values = Telnyx::Resources::WirelessBlocklistValues.new(client: self)
       @wireless_blocklists = Telnyx::Resources::WirelessBlocklists.new(client: self)
+      @partner_campaigns = Telnyx::Resources::PartnerCampaigns.new(client: self)
       @well_known = Telnyx::Resources::WellKnown.new(client: self)
       @inexplicit_number_orders = Telnyx::Resources::InexplicitNumberOrders.new(client: self)
       @mobile_phone_numbers = Telnyx::Resources::MobilePhoneNumbers.new(client: self)
       @mobile_voice_connections = Telnyx::Resources::MobileVoiceConnections.new(client: self)
-      @messaging_10dlc = Telnyx::Resources::Messaging10dlc.new(client: self)
+      @public = Telnyx::Resources::Public.new(client: self)
+      @number_10dlc = Telnyx::Resources::Number10dlc.new(client: self)
     end
   end
 end

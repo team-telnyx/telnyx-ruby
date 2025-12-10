@@ -20,7 +20,7 @@ module Telnyx
           ?page: Telnyx::BundlePricing::UserBundleListParams::Page,
           ?authorization_bearer: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPagination[Telnyx::BundlePricing::UserBundle]
+        ) -> Telnyx::Models::BundlePricing::UserBundleListResponse
 
         def deactivate: (
           String user_bundle_id,

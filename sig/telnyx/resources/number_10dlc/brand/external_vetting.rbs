@@ -1,0 +1,31 @@
+module Telnyx
+  module Resources
+    class Number10dlc
+      class Brand
+        class ExternalVetting
+          def external_vetting: (
+            String brand_id,
+            evp_id: String,
+            vetting_class: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Number10dlc::Brand::ExternalVettingExternalVettingResponse
+
+          def retrieve_external_vetting: (
+            String brand_id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Number10dlc::Brand::external_vetting_retrieve_external_vetting_response
+
+          def update_external_vetting: (
+            String brand_id,
+            evp_id: String,
+            vetting_id: String,
+            ?vetting_token: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Number10dlc::Brand::ExternalVettingUpdateExternalVettingResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

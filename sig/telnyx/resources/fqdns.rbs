@@ -27,7 +27,7 @@ module Telnyx
         ?filter: Telnyx::FqdnListParams::Filter,
         ?page: Telnyx::FqdnListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Fqdn]
+      ) -> Telnyx::Models::FqdnListResponse
 
       def delete: (
         String id,

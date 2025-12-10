@@ -15,7 +15,7 @@ module Telnyx
           ?page: Telnyx::PortingOrders::PhoneNumberBlockListParams::Page,
           ?sort: Telnyx::PortingOrders::PhoneNumberBlockListParams::Sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPagination[Telnyx::PortingOrders::PortingPhoneNumberBlock]
+        ) -> Telnyx::Models::PortingOrders::PhoneNumberBlockListResponse
 
         def delete: (
           String id,

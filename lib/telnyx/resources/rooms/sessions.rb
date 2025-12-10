@@ -46,7 +46,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::RoomSession>]
+        # @return [Telnyx::Models::Rooms::SessionList0Response]
         #
         # @see Telnyx::Models::Rooms::SessionList0Params
         def list_0(params = {})
@@ -55,8 +55,7 @@ module Telnyx
             method: :get,
             path: "room_sessions",
             query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
-            model: Telnyx::RoomSession,
+            model: Telnyx::Models::Rooms::SessionList0Response,
             options: options
           )
         end
@@ -78,7 +77,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::RoomSession>]
+        # @return [Telnyx::Models::Rooms::SessionList1Response]
         #
         # @see Telnyx::Models::Rooms::SessionList1Params
         def list_1(room_id, params = {})
@@ -87,8 +86,7 @@ module Telnyx
             method: :get,
             path: ["rooms/%1$s/sessions", room_id],
             query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
-            model: Telnyx::RoomSession,
+            model: Telnyx::Models::Rooms::SessionList1Response,
             options: options
           )
         end
@@ -108,7 +106,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::RoomParticipant>]
+        # @return [Telnyx::Models::Rooms::SessionRetrieveParticipantsResponse]
         #
         # @see Telnyx::Models::Rooms::SessionRetrieveParticipantsParams
         def retrieve_participants(room_session_id, params = {})
@@ -117,8 +115,7 @@ module Telnyx
             method: :get,
             path: ["room_sessions/%1$s/participants", room_session_id],
             query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
-            model: Telnyx::RoomParticipant,
+            model: Telnyx::Models::Rooms::SessionRetrieveParticipantsResponse,
             options: options
           )
         end

@@ -21,7 +21,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PortingOrders::ActionRequirementListResponse>]
+        # @return [Telnyx::Models::PortingOrders::ActionRequirementListResponse]
         #
         # @see Telnyx::Models::PortingOrders::ActionRequirementListParams
         def list(porting_order_id, params = {})
@@ -30,7 +30,6 @@ module Telnyx
             method: :get,
             path: ["porting_orders/%1$s/action_requirements", porting_order_id],
             query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
             model: Telnyx::Models::PortingOrders::ActionRequirementListResponse,
             options: options
           )

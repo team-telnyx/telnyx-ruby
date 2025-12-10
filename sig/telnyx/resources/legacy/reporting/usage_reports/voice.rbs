@@ -24,7 +24,7 @@ module Telnyx
               ?page: Integer,
               ?per_page: Integer,
               ?request_options: Telnyx::request_opts
-            ) -> Telnyx::Internal::PerPagePagination[Telnyx::Legacy::Reporting::UsageReports::CdrUsageReportResponseLegacy]
+            ) -> Telnyx::Models::Legacy::Reporting::UsageReports::VoiceListResponse
 
             def delete: (
               String id,

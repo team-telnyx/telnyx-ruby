@@ -127,17 +127,6 @@ module Telnyx
         end
       end
 
-      module Messaging10dlc
-        module Brand
-        end
-
-        module Campaign
-        end
-
-        module CampaignBuilder
-        end
-      end
-
       module MessagingHostedNumberOrders
       end
 
@@ -156,6 +145,17 @@ module Telnyx
       end
 
       module Networks
+      end
+
+      module Number10dlc
+        module Brand
+        end
+
+        module Campaign
+        end
+
+        module CampaignBuilder
+        end
       end
 
       module NumberReservations
@@ -180,6 +180,9 @@ module Telnyx
       end
 
       module Portouts
+      end
+
+      module Public
       end
 
       module Queues

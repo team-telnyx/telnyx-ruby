@@ -12,18 +12,18 @@ module Telnyx
 
       # @!attribute meta
       #
-      #   @return [Telnyx::Models::AvailablePhoneNumbersMetadata, nil]
-      optional :meta, -> { Telnyx::AvailablePhoneNumbersMetadata }
+      #   @return [Telnyx::Models::AvailablePhoneNumberListResponse::Meta, nil]
+      optional :meta, -> { Telnyx::Models::AvailablePhoneNumberListResponse::Meta }
 
       # @!attribute metadata
       #
-      #   @return [Telnyx::Models::AvailablePhoneNumbersMetadata, nil]
-      optional :metadata, -> { Telnyx::AvailablePhoneNumbersMetadata }
+      #   @return [Telnyx::Models::AvailablePhoneNumberListResponse::Metadata, nil]
+      optional :metadata, -> { Telnyx::Models::AvailablePhoneNumberListResponse::Metadata }
 
       # @!method initialize(data: nil, meta: nil, metadata: nil)
       #   @param data [Array<Telnyx::Models::AvailablePhoneNumberListResponse::Data>]
-      #   @param meta [Telnyx::Models::AvailablePhoneNumbersMetadata]
-      #   @param metadata [Telnyx::Models::AvailablePhoneNumbersMetadata]
+      #   @param meta [Telnyx::Models::AvailablePhoneNumberListResponse::Meta]
+      #   @param metadata [Telnyx::Models::AvailablePhoneNumberListResponse::Metadata]
 
       class Data < Telnyx::Internal::Type::BaseModel
         # @!attribute best_effort
@@ -175,6 +175,40 @@ module Telnyx
             #   @return [Array<Symbol>]
           end
         end
+      end
+
+      # @see Telnyx::Models::AvailablePhoneNumberListResponse#meta
+      class Meta < Telnyx::Internal::Type::BaseModel
+        # @!attribute best_effort_results
+        #
+        #   @return [Integer, nil]
+        optional :best_effort_results, Integer
+
+        # @!attribute total_results
+        #
+        #   @return [Integer, nil]
+        optional :total_results, Integer
+
+        # @!method initialize(best_effort_results: nil, total_results: nil)
+        #   @param best_effort_results [Integer]
+        #   @param total_results [Integer]
+      end
+
+      # @see Telnyx::Models::AvailablePhoneNumberListResponse#metadata
+      class Metadata < Telnyx::Internal::Type::BaseModel
+        # @!attribute best_effort_results
+        #
+        #   @return [Integer, nil]
+        optional :best_effort_results, Integer
+
+        # @!attribute total_results
+        #
+        #   @return [Integer, nil]
+        optional :total_results, Integer
+
+        # @!method initialize(best_effort_results: nil, total_results: nil)
+        #   @param best_effort_results [Integer]
+        #   @param total_results [Integer]
       end
     end
   end

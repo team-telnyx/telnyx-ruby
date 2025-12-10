@@ -2,116 +2,144 @@ module Telnyx
   module Models
     type conference_list_participants_response =
       {
-        id: String,
-        call_control_id: String,
-        call_leg_id: String,
-        conference: Telnyx::Models::ConferenceListParticipantsResponse::Conference,
-        created_at: String,
-        end_conference_on_exit: bool,
-        muted: bool,
-        on_hold: bool,
-        record_type: Telnyx::Models::ConferenceListParticipantsResponse::record_type,
-        soft_end_conference_on_exit: bool,
-        status: Telnyx::Models::ConferenceListParticipantsResponse::status,
-        updated_at: String,
-        whisper_call_control_ids: ::Array[String]
+        data: ::Array[Telnyx::Models::ConferenceListParticipantsResponse::Data],
+        meta: Telnyx::PaginationMeta
       }
 
     class ConferenceListParticipantsResponse < Telnyx::Internal::Type::BaseModel
-      attr_accessor id: String
+      attr_reader data: ::Array[Telnyx::Models::ConferenceListParticipantsResponse::Data]?
 
-      attr_accessor call_control_id: String
+      def data=: (
+        ::Array[Telnyx::Models::ConferenceListParticipantsResponse::Data]
+      ) -> ::Array[Telnyx::Models::ConferenceListParticipantsResponse::Data]
 
-      attr_accessor call_leg_id: String
+      attr_reader meta: Telnyx::PaginationMeta?
 
-      attr_accessor conference: Telnyx::Models::ConferenceListParticipantsResponse::Conference
-
-      attr_accessor created_at: String
-
-      attr_accessor end_conference_on_exit: bool
-
-      attr_accessor muted: bool
-
-      attr_accessor on_hold: bool
-
-      attr_accessor record_type: Telnyx::Models::ConferenceListParticipantsResponse::record_type
-
-      attr_accessor soft_end_conference_on_exit: bool
-
-      attr_accessor status: Telnyx::Models::ConferenceListParticipantsResponse::status
-
-      attr_accessor updated_at: String
-
-      attr_accessor whisper_call_control_ids: ::Array[String]
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
 
       def initialize: (
-        id: String,
-        call_control_id: String,
-        call_leg_id: String,
-        conference: Telnyx::Models::ConferenceListParticipantsResponse::Conference,
-        created_at: String,
-        end_conference_on_exit: bool,
-        muted: bool,
-        on_hold: bool,
-        record_type: Telnyx::Models::ConferenceListParticipantsResponse::record_type,
-        soft_end_conference_on_exit: bool,
-        status: Telnyx::Models::ConferenceListParticipantsResponse::status,
-        updated_at: String,
-        whisper_call_control_ids: ::Array[String]
+        ?data: ::Array[Telnyx::Models::ConferenceListParticipantsResponse::Data],
+        ?meta: Telnyx::PaginationMeta
       ) -> void
 
       def to_hash: -> {
-        id: String,
-        call_control_id: String,
-        call_leg_id: String,
-        conference: Telnyx::Models::ConferenceListParticipantsResponse::Conference,
-        created_at: String,
-        end_conference_on_exit: bool,
-        muted: bool,
-        on_hold: bool,
-        record_type: Telnyx::Models::ConferenceListParticipantsResponse::record_type,
-        soft_end_conference_on_exit: bool,
-        status: Telnyx::Models::ConferenceListParticipantsResponse::status,
-        updated_at: String,
-        whisper_call_control_ids: ::Array[String]
+        data: ::Array[Telnyx::Models::ConferenceListParticipantsResponse::Data],
+        meta: Telnyx::PaginationMeta
       }
 
-      type conference = { id: String, name: String }
+      type data =
+        {
+          id: String,
+          call_control_id: String,
+          call_leg_id: String,
+          conference: Telnyx::Models::ConferenceListParticipantsResponse::Data::Conference,
+          created_at: String,
+          end_conference_on_exit: bool,
+          muted: bool,
+          on_hold: bool,
+          record_type: Telnyx::Models::ConferenceListParticipantsResponse::Data::record_type,
+          soft_end_conference_on_exit: bool,
+          status: Telnyx::Models::ConferenceListParticipantsResponse::Data::status,
+          updated_at: String,
+          whisper_call_control_ids: ::Array[String]
+        }
 
-      class Conference < Telnyx::Internal::Type::BaseModel
-        attr_reader id: String?
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
 
-        def id=: (String) -> String
+        attr_accessor call_control_id: String
 
-        attr_reader name: String?
+        attr_accessor call_leg_id: String
 
-        def name=: (String) -> String
+        attr_accessor conference: Telnyx::Models::ConferenceListParticipantsResponse::Data::Conference
 
-        def initialize: (?id: String, ?name: String) -> void
+        attr_accessor created_at: String
 
-        def to_hash: -> { id: String, name: String }
-      end
+        attr_accessor end_conference_on_exit: bool
 
-      type record_type = :participant
+        attr_accessor muted: bool
 
-      module RecordType
-        extend Telnyx::Internal::Type::Enum
+        attr_accessor on_hold: bool
 
-        PARTICIPANT: :participant
+        attr_accessor record_type: Telnyx::Models::ConferenceListParticipantsResponse::Data::record_type
 
-        def self?.values: -> ::Array[Telnyx::Models::ConferenceListParticipantsResponse::record_type]
-      end
+        attr_accessor soft_end_conference_on_exit: bool
 
-      type status = :joining | :joined | :left
+        attr_accessor status: Telnyx::Models::ConferenceListParticipantsResponse::Data::status
 
-      module Status
-        extend Telnyx::Internal::Type::Enum
+        attr_accessor updated_at: String
 
-        JOINING: :joining
-        JOINED: :joined
-        LEFT: :left
+        attr_accessor whisper_call_control_ids: ::Array[String]
 
-        def self?.values: -> ::Array[Telnyx::Models::ConferenceListParticipantsResponse::status]
+        def initialize: (
+          id: String,
+          call_control_id: String,
+          call_leg_id: String,
+          conference: Telnyx::Models::ConferenceListParticipantsResponse::Data::Conference,
+          created_at: String,
+          end_conference_on_exit: bool,
+          muted: bool,
+          on_hold: bool,
+          record_type: Telnyx::Models::ConferenceListParticipantsResponse::Data::record_type,
+          soft_end_conference_on_exit: bool,
+          status: Telnyx::Models::ConferenceListParticipantsResponse::Data::status,
+          updated_at: String,
+          whisper_call_control_ids: ::Array[String]
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          call_control_id: String,
+          call_leg_id: String,
+          conference: Telnyx::Models::ConferenceListParticipantsResponse::Data::Conference,
+          created_at: String,
+          end_conference_on_exit: bool,
+          muted: bool,
+          on_hold: bool,
+          record_type: Telnyx::Models::ConferenceListParticipantsResponse::Data::record_type,
+          soft_end_conference_on_exit: bool,
+          status: Telnyx::Models::ConferenceListParticipantsResponse::Data::status,
+          updated_at: String,
+          whisper_call_control_ids: ::Array[String]
+        }
+
+        type conference = { id: String, name: String }
+
+        class Conference < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (?id: String, ?name: String) -> void
+
+          def to_hash: -> { id: String, name: String }
+        end
+
+        type record_type = :participant
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          PARTICIPANT: :participant
+
+          def self?.values: -> ::Array[Telnyx::Models::ConferenceListParticipantsResponse::Data::record_type]
+        end
+
+        type status = :joining | :joined | :left
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          JOINING: :joining
+          JOINED: :joined
+          LEFT: :left
+
+          def self?.values: -> ::Array[Telnyx::Models::ConferenceListParticipantsResponse::Data::status]
+        end
       end
     end
   end

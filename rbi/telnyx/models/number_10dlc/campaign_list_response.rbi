@@ -1,0 +1,839 @@
+# typed: strong
+
+module Telnyx
+  module Models
+    module Number10dlc
+      class CampaignListResponse < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::Models::Number10dlc::CampaignListResponse,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :page
+
+        sig { params(page: Integer).void }
+        attr_writer :page
+
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record
+              ]
+            )
+          )
+        end
+        attr_reader :records
+
+        sig do
+          params(
+            records:
+              T::Array[
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::OrHash
+              ]
+          ).void
+        end
+        attr_writer :records
+
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :total_records
+
+        sig { params(total_records: Integer).void }
+        attr_writer :total_records
+
+        sig do
+          params(
+            page: Integer,
+            records:
+              T::Array[
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::OrHash
+              ],
+            total_records: Integer
+          ).returns(T.attached_class)
+        end
+        def self.new(page: nil, records: nil, total_records: nil)
+        end
+
+        sig do
+          override.returns(
+            {
+              page: Integer,
+              records:
+                T::Array[
+                  Telnyx::Models::Number10dlc::CampaignListResponse::Record
+                ],
+              total_records: Integer
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class Record < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # Age gated content in campaign.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :age_gated
+
+          sig { params(age_gated: T::Boolean).void }
+          attr_writer :age_gated
+
+          # Number of phone numbers associated with the campaign
+          sig { returns(T.nilable(Float)) }
+          attr_reader :assigned_phone_numbers_count
+
+          sig { params(assigned_phone_numbers_count: Float).void }
+          attr_writer :assigned_phone_numbers_count
+
+          # Campaign subscription auto-renewal status.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :auto_renewal
+
+          sig { params(auto_renewal: T::Boolean).void }
+          attr_writer :auto_renewal
+
+          # Campaign recent billed date.
+          sig { returns(T.nilable(String)) }
+          attr_reader :billed_date
+
+          sig { params(billed_date: String).void }
+          attr_writer :billed_date
+
+          # Display or marketing name of the brand.
+          sig { returns(T.nilable(String)) }
+          attr_reader :brand_display_name
+
+          sig { params(brand_display_name: String).void }
+          attr_writer :brand_display_name
+
+          # Unique identifier assigned to the brand.
+          sig { returns(T.nilable(String)) }
+          attr_reader :brand_id
+
+          sig { params(brand_id: String).void }
+          attr_writer :brand_id
+
+          # Unique identifier for a campaign.
+          sig { returns(T.nilable(String)) }
+          attr_reader :campaign_id
+
+          sig { params(campaign_id: String).void }
+          attr_writer :campaign_id
+
+          # Campaign status
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::CampaignStatus::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :campaign_status
+
+          sig do
+            params(
+              campaign_status:
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::CampaignStatus::OrSymbol
+            ).void
+          end
+          attr_writer :campaign_status
+
+          # Unix timestamp when campaign was created.
+          sig { returns(T.nilable(String)) }
+          attr_reader :create_date
+
+          sig { params(create_date: String).void }
+          attr_writer :create_date
+
+          # Alphanumeric identifier of the CSP associated with this campaign.
+          sig { returns(T.nilable(String)) }
+          attr_reader :csp_id
+
+          sig { params(csp_id: String).void }
+          attr_writer :csp_id
+
+          # Summary description of this campaign.
+          sig { returns(T.nilable(String)) }
+          attr_reader :description
+
+          sig { params(description: String).void }
+          attr_writer :description
+
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :direct_lending
+
+          sig { params(direct_lending: T::Boolean).void }
+          attr_writer :direct_lending
+
+          # Does message generated by the campaign include URL link in SMS?
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :embedded_link
+
+          sig { params(embedded_link: T::Boolean).void }
+          attr_writer :embedded_link
+
+          # Sample of an embedded link that will be sent to subscribers.
+          sig { returns(T.nilable(String)) }
+          attr_reader :embedded_link_sample
+
+          sig { params(embedded_link_sample: String).void }
+          attr_writer :embedded_link_sample
+
+          # Does message generated by the campaign include phone number in SMS?
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :embedded_phone
+
+          sig { params(embedded_phone: T::Boolean).void }
+          attr_writer :embedded_phone
+
+          # Failure reasons if campaign submission failed
+          sig { returns(T.nilable(String)) }
+          attr_reader :failure_reasons
+
+          sig { params(failure_reasons: String).void }
+          attr_writer :failure_reasons
+
+          # Subscriber help keywords. Multiple keywords are comma separated without space.
+          sig { returns(T.nilable(String)) }
+          attr_reader :help_keywords
+
+          sig { params(help_keywords: String).void }
+          attr_writer :help_keywords
+
+          # Help message of the campaign.
+          sig { returns(T.nilable(String)) }
+          attr_reader :help_message
+
+          sig { params(help_message: String).void }
+          attr_writer :help_message
+
+          # Indicates whether the campaign has a T-Mobile number pool ID associated with it.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :is_t_mobile_number_pooling_enabled
+
+          sig { params(is_t_mobile_number_pooling_enabled: T::Boolean).void }
+          attr_writer :is_t_mobile_number_pooling_enabled
+
+          # Indicates whether the campaign is registered with T-Mobile.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :is_t_mobile_registered
+
+          sig { params(is_t_mobile_registered: T::Boolean).void }
+          attr_writer :is_t_mobile_registered
+
+          # Indicates whether the campaign is suspended with T-Mobile.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :is_t_mobile_suspended
+
+          sig { params(is_t_mobile_suspended: T::Boolean).void }
+          attr_writer :is_t_mobile_suspended
+
+          # Message flow description.
+          sig { returns(T.nilable(String)) }
+          attr_reader :message_flow
+
+          sig { params(message_flow: String).void }
+          attr_writer :message_flow
+
+          # Campaign created from mock brand. Mocked campaign cannot be shared with an
+          # upstream CNP.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :mock
+
+          sig { params(mock: T::Boolean).void }
+          attr_writer :mock
+
+          # When the campaign would be due for its next renew/bill date.
+          sig { returns(T.nilable(String)) }
+          attr_reader :next_renewal_or_expiration_date
+
+          sig { params(next_renewal_or_expiration_date: String).void }
+          attr_writer :next_renewal_or_expiration_date
+
+          # Does campaign utilize pool of phone numbers?
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :number_pool
+
+          sig { params(number_pool: T::Boolean).void }
+          attr_writer :number_pool
+
+          # Subscriber opt-in keywords. Multiple keywords are comma separated without space.
+          sig { returns(T.nilable(String)) }
+          attr_reader :optin_keywords
+
+          sig { params(optin_keywords: String).void }
+          attr_writer :optin_keywords
+
+          # Subscriber opt-in message.
+          sig { returns(T.nilable(String)) }
+          attr_reader :optin_message
+
+          sig { params(optin_message: String).void }
+          attr_writer :optin_message
+
+          # Subscriber opt-out keywords. Multiple keywords are comma separated without
+          # space.
+          sig { returns(T.nilable(String)) }
+          attr_reader :optout_keywords
+
+          sig { params(optout_keywords: String).void }
+          attr_writer :optout_keywords
+
+          # Subscriber opt-out message.
+          sig { returns(T.nilable(String)) }
+          attr_reader :optout_message
+
+          sig { params(optout_message: String).void }
+          attr_writer :optout_message
+
+          # Link to the campaign's privacy policy.
+          sig { returns(T.nilable(String)) }
+          attr_reader :privacy_policy_link
+
+          sig { params(privacy_policy_link: String).void }
+          attr_writer :privacy_policy_link
+
+          # Caller supplied campaign reference ID. If supplied, the value must be unique
+          # across all submitted campaigns. Can be used to prevent duplicate campaign
+          # registrations.
+          sig { returns(T.nilable(String)) }
+          attr_reader :reference_id
+
+          sig { params(reference_id: String).void }
+          attr_writer :reference_id
+
+          # Alphanumeric identifier of the reseller that you want to associate with this
+          # campaign.
+          sig { returns(T.nilable(String)) }
+          attr_reader :reseller_id
+
+          sig { params(reseller_id: String).void }
+          attr_writer :reseller_id
+
+          # Message sample. Some campaign tiers require 1 or more message samples.
+          sig { returns(T.nilable(String)) }
+          attr_reader :sample1
+
+          sig { params(sample1: String).void }
+          attr_writer :sample1
+
+          # Message sample. Some campaign tiers require 2 or more message samples.
+          sig { returns(T.nilable(String)) }
+          attr_reader :sample2
+
+          sig { params(sample2: String).void }
+          attr_writer :sample2
+
+          # Message sample. Some campaign tiers require 3 or more message samples.
+          sig { returns(T.nilable(String)) }
+          attr_reader :sample3
+
+          sig { params(sample3: String).void }
+          attr_writer :sample3
+
+          # Message sample. Some campaign tiers require 4 or more message samples.
+          sig { returns(T.nilable(String)) }
+          attr_reader :sample4
+
+          sig { params(sample4: String).void }
+          attr_writer :sample4
+
+          # Message sample. Some campaign tiers require 5 or more message samples.
+          sig { returns(T.nilable(String)) }
+          attr_reader :sample5
+
+          sig { params(sample5: String).void }
+          attr_writer :sample5
+
+          # Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created
+          # campaign defaults to ACTIVE status.
+          sig { returns(T.nilable(String)) }
+          attr_reader :status
+
+          sig { params(status: String).void }
+          attr_writer :status
+
+          # Campaign submission status
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::SubmissionStatus::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :submission_status
+
+          sig do
+            params(
+              submission_status:
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::SubmissionStatus::OrSymbol
+            ).void
+          end
+          attr_writer :submission_status
+
+          # Does campaign responds to help keyword(s)?
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :subscriber_help
+
+          sig { params(subscriber_help: T::Boolean).void }
+          attr_writer :subscriber_help
+
+          # Does campaign require subscriber to opt-in before SMS is sent to subscriber?
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :subscriber_optin
+
+          sig { params(subscriber_optin: T::Boolean).void }
+          attr_writer :subscriber_optin
+
+          # Does campaign support subscriber opt-out keyword(s)?
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :subscriber_optout
+
+          sig { params(subscriber_optout: T::Boolean).void }
+          attr_writer :subscriber_optout
+
+          # Campaign sub-usecases. Must be of defined valid sub-usecase types. Use
+          # `/registry/enum/usecase` operation to retrieve list of valid sub-usecases
+          sig { returns(T.nilable(T::Array[String])) }
+          attr_reader :sub_usecases
+
+          sig { params(sub_usecases: T::Array[String]).void }
+          attr_writer :sub_usecases
+
+          # Unique identifier assigned to the brand by the registry.
+          sig { returns(T.nilable(String)) }
+          attr_reader :tcr_brand_id
+
+          sig { params(tcr_brand_id: String).void }
+          attr_writer :tcr_brand_id
+
+          # Unique identifier assigned to the campaign by the registry.
+          sig { returns(T.nilable(String)) }
+          attr_reader :tcr_campaign_id
+
+          sig { params(tcr_campaign_id: String).void }
+          attr_writer :tcr_campaign_id
+
+          # Is terms & conditions accepted?
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :terms_and_conditions
+
+          sig { params(terms_and_conditions: T::Boolean).void }
+          attr_writer :terms_and_conditions
+
+          # Link to the campaign's terms and conditions.
+          sig { returns(T.nilable(String)) }
+          attr_reader :terms_and_conditions_link
+
+          sig { params(terms_and_conditions_link: String).void }
+          attr_writer :terms_and_conditions_link
+
+          # Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase`
+          # operation to retrieve usecases available for given brand.
+          sig { returns(T.nilable(String)) }
+          attr_reader :usecase
+
+          sig { params(usecase: String).void }
+          attr_writer :usecase
+
+          # Business/industry segment of this campaign (Deprecated). Must be of defined
+          # valid types. Use `/registry/enum/vertical` operation to retrieve verticals
+          # available for given brand, vertical combination.
+          #
+          # This field is deprecated.
+          sig { returns(T.nilable(String)) }
+          attr_reader :vertical
+
+          sig { params(vertical: String).void }
+          attr_writer :vertical
+
+          # Failover webhook to which campaign status updates are sent.
+          sig { returns(T.nilable(String)) }
+          attr_reader :webhook_failover_url
+
+          sig { params(webhook_failover_url: String).void }
+          attr_writer :webhook_failover_url
+
+          # Webhook to which campaign status updates are sent.
+          sig { returns(T.nilable(String)) }
+          attr_reader :webhook_url
+
+          sig { params(webhook_url: String).void }
+          attr_writer :webhook_url
+
+          sig do
+            params(
+              age_gated: T::Boolean,
+              assigned_phone_numbers_count: Float,
+              auto_renewal: T::Boolean,
+              billed_date: String,
+              brand_display_name: String,
+              brand_id: String,
+              campaign_id: String,
+              campaign_status:
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::CampaignStatus::OrSymbol,
+              create_date: String,
+              csp_id: String,
+              description: String,
+              direct_lending: T::Boolean,
+              embedded_link: T::Boolean,
+              embedded_link_sample: String,
+              embedded_phone: T::Boolean,
+              failure_reasons: String,
+              help_keywords: String,
+              help_message: String,
+              is_t_mobile_number_pooling_enabled: T::Boolean,
+              is_t_mobile_registered: T::Boolean,
+              is_t_mobile_suspended: T::Boolean,
+              message_flow: String,
+              mock: T::Boolean,
+              next_renewal_or_expiration_date: String,
+              number_pool: T::Boolean,
+              optin_keywords: String,
+              optin_message: String,
+              optout_keywords: String,
+              optout_message: String,
+              privacy_policy_link: String,
+              reference_id: String,
+              reseller_id: String,
+              sample1: String,
+              sample2: String,
+              sample3: String,
+              sample4: String,
+              sample5: String,
+              status: String,
+              submission_status:
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::SubmissionStatus::OrSymbol,
+              subscriber_help: T::Boolean,
+              subscriber_optin: T::Boolean,
+              subscriber_optout: T::Boolean,
+              sub_usecases: T::Array[String],
+              tcr_brand_id: String,
+              tcr_campaign_id: String,
+              terms_and_conditions: T::Boolean,
+              terms_and_conditions_link: String,
+              usecase: String,
+              vertical: String,
+              webhook_failover_url: String,
+              webhook_url: String
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Age gated content in campaign.
+            age_gated: nil,
+            # Number of phone numbers associated with the campaign
+            assigned_phone_numbers_count: nil,
+            # Campaign subscription auto-renewal status.
+            auto_renewal: nil,
+            # Campaign recent billed date.
+            billed_date: nil,
+            # Display or marketing name of the brand.
+            brand_display_name: nil,
+            # Unique identifier assigned to the brand.
+            brand_id: nil,
+            # Unique identifier for a campaign.
+            campaign_id: nil,
+            # Campaign status
+            campaign_status: nil,
+            # Unix timestamp when campaign was created.
+            create_date: nil,
+            # Alphanumeric identifier of the CSP associated with this campaign.
+            csp_id: nil,
+            # Summary description of this campaign.
+            description: nil,
+            direct_lending: nil,
+            # Does message generated by the campaign include URL link in SMS?
+            embedded_link: nil,
+            # Sample of an embedded link that will be sent to subscribers.
+            embedded_link_sample: nil,
+            # Does message generated by the campaign include phone number in SMS?
+            embedded_phone: nil,
+            # Failure reasons if campaign submission failed
+            failure_reasons: nil,
+            # Subscriber help keywords. Multiple keywords are comma separated without space.
+            help_keywords: nil,
+            # Help message of the campaign.
+            help_message: nil,
+            # Indicates whether the campaign has a T-Mobile number pool ID associated with it.
+            is_t_mobile_number_pooling_enabled: nil,
+            # Indicates whether the campaign is registered with T-Mobile.
+            is_t_mobile_registered: nil,
+            # Indicates whether the campaign is suspended with T-Mobile.
+            is_t_mobile_suspended: nil,
+            # Message flow description.
+            message_flow: nil,
+            # Campaign created from mock brand. Mocked campaign cannot be shared with an
+            # upstream CNP.
+            mock: nil,
+            # When the campaign would be due for its next renew/bill date.
+            next_renewal_or_expiration_date: nil,
+            # Does campaign utilize pool of phone numbers?
+            number_pool: nil,
+            # Subscriber opt-in keywords. Multiple keywords are comma separated without space.
+            optin_keywords: nil,
+            # Subscriber opt-in message.
+            optin_message: nil,
+            # Subscriber opt-out keywords. Multiple keywords are comma separated without
+            # space.
+            optout_keywords: nil,
+            # Subscriber opt-out message.
+            optout_message: nil,
+            # Link to the campaign's privacy policy.
+            privacy_policy_link: nil,
+            # Caller supplied campaign reference ID. If supplied, the value must be unique
+            # across all submitted campaigns. Can be used to prevent duplicate campaign
+            # registrations.
+            reference_id: nil,
+            # Alphanumeric identifier of the reseller that you want to associate with this
+            # campaign.
+            reseller_id: nil,
+            # Message sample. Some campaign tiers require 1 or more message samples.
+            sample1: nil,
+            # Message sample. Some campaign tiers require 2 or more message samples.
+            sample2: nil,
+            # Message sample. Some campaign tiers require 3 or more message samples.
+            sample3: nil,
+            # Message sample. Some campaign tiers require 4 or more message samples.
+            sample4: nil,
+            # Message sample. Some campaign tiers require 5 or more message samples.
+            sample5: nil,
+            # Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created
+            # campaign defaults to ACTIVE status.
+            status: nil,
+            # Campaign submission status
+            submission_status: nil,
+            # Does campaign responds to help keyword(s)?
+            subscriber_help: nil,
+            # Does campaign require subscriber to opt-in before SMS is sent to subscriber?
+            subscriber_optin: nil,
+            # Does campaign support subscriber opt-out keyword(s)?
+            subscriber_optout: nil,
+            # Campaign sub-usecases. Must be of defined valid sub-usecase types. Use
+            # `/registry/enum/usecase` operation to retrieve list of valid sub-usecases
+            sub_usecases: nil,
+            # Unique identifier assigned to the brand by the registry.
+            tcr_brand_id: nil,
+            # Unique identifier assigned to the campaign by the registry.
+            tcr_campaign_id: nil,
+            # Is terms & conditions accepted?
+            terms_and_conditions: nil,
+            # Link to the campaign's terms and conditions.
+            terms_and_conditions_link: nil,
+            # Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase`
+            # operation to retrieve usecases available for given brand.
+            usecase: nil,
+            # Business/industry segment of this campaign (Deprecated). Must be of defined
+            # valid types. Use `/registry/enum/vertical` operation to retrieve verticals
+            # available for given brand, vertical combination.
+            #
+            # This field is deprecated.
+            vertical: nil,
+            # Failover webhook to which campaign status updates are sent.
+            webhook_failover_url: nil,
+            # Webhook to which campaign status updates are sent.
+            webhook_url: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                age_gated: T::Boolean,
+                assigned_phone_numbers_count: Float,
+                auto_renewal: T::Boolean,
+                billed_date: String,
+                brand_display_name: String,
+                brand_id: String,
+                campaign_id: String,
+                campaign_status:
+                  Telnyx::Models::Number10dlc::CampaignListResponse::Record::CampaignStatus::TaggedSymbol,
+                create_date: String,
+                csp_id: String,
+                description: String,
+                direct_lending: T::Boolean,
+                embedded_link: T::Boolean,
+                embedded_link_sample: String,
+                embedded_phone: T::Boolean,
+                failure_reasons: String,
+                help_keywords: String,
+                help_message: String,
+                is_t_mobile_number_pooling_enabled: T::Boolean,
+                is_t_mobile_registered: T::Boolean,
+                is_t_mobile_suspended: T::Boolean,
+                message_flow: String,
+                mock: T::Boolean,
+                next_renewal_or_expiration_date: String,
+                number_pool: T::Boolean,
+                optin_keywords: String,
+                optin_message: String,
+                optout_keywords: String,
+                optout_message: String,
+                privacy_policy_link: String,
+                reference_id: String,
+                reseller_id: String,
+                sample1: String,
+                sample2: String,
+                sample3: String,
+                sample4: String,
+                sample5: String,
+                status: String,
+                submission_status:
+                  Telnyx::Models::Number10dlc::CampaignListResponse::Record::SubmissionStatus::TaggedSymbol,
+                subscriber_help: T::Boolean,
+                subscriber_optin: T::Boolean,
+                subscriber_optout: T::Boolean,
+                sub_usecases: T::Array[String],
+                tcr_brand_id: String,
+                tcr_campaign_id: String,
+                terms_and_conditions: T::Boolean,
+                terms_and_conditions_link: String,
+                usecase: String,
+                vertical: String,
+                webhook_failover_url: String,
+                webhook_url: String
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # Campaign status
+          module CampaignStatus
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Models::Number10dlc::CampaignListResponse::Record::CampaignStatus
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            TCR_PENDING =
+              T.let(
+                :TCR_PENDING,
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::CampaignStatus::TaggedSymbol
+              )
+            TCR_SUSPENDED =
+              T.let(
+                :TCR_SUSPENDED,
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::CampaignStatus::TaggedSymbol
+              )
+            TCR_EXPIRED =
+              T.let(
+                :TCR_EXPIRED,
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::CampaignStatus::TaggedSymbol
+              )
+            TCR_ACCEPTED =
+              T.let(
+                :TCR_ACCEPTED,
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::CampaignStatus::TaggedSymbol
+              )
+            TCR_FAILED =
+              T.let(
+                :TCR_FAILED,
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::CampaignStatus::TaggedSymbol
+              )
+            TELNYX_ACCEPTED =
+              T.let(
+                :TELNYX_ACCEPTED,
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::CampaignStatus::TaggedSymbol
+              )
+            TELNYX_FAILED =
+              T.let(
+                :TELNYX_FAILED,
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::CampaignStatus::TaggedSymbol
+              )
+            MNO_PENDING =
+              T.let(
+                :MNO_PENDING,
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::CampaignStatus::TaggedSymbol
+              )
+            MNO_ACCEPTED =
+              T.let(
+                :MNO_ACCEPTED,
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::CampaignStatus::TaggedSymbol
+              )
+            MNO_REJECTED =
+              T.let(
+                :MNO_REJECTED,
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::CampaignStatus::TaggedSymbol
+              )
+            MNO_PROVISIONED =
+              T.let(
+                :MNO_PROVISIONED,
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::CampaignStatus::TaggedSymbol
+              )
+            MNO_PROVISIONING_FAILED =
+              T.let(
+                :MNO_PROVISIONING_FAILED,
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::CampaignStatus::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Models::Number10dlc::CampaignListResponse::Record::CampaignStatus::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Campaign submission status
+          module SubmissionStatus
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Models::Number10dlc::CampaignListResponse::Record::SubmissionStatus
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            CREATED =
+              T.let(
+                :CREATED,
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::SubmissionStatus::TaggedSymbol
+              )
+            FAILED =
+              T.let(
+                :FAILED,
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::SubmissionStatus::TaggedSymbol
+              )
+            PENDING =
+              T.let(
+                :PENDING,
+                Telnyx::Models::Number10dlc::CampaignListResponse::Record::SubmissionStatus::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Models::Number10dlc::CampaignListResponse::Record::SubmissionStatus::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+      end
+    end
+  end
+end

@@ -6,11 +6,11 @@ module Telnyx
     class GlobalIPAssignmentRetrieveResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [GlobalIPAssignment, nil]
+      #   @return [Telnyx::Models::GlobalIPAssignment, nil]
       optional :data, -> { Telnyx::GlobalIPAssignment }
 
       # @!method initialize(data: nil)
-      #   @param data [GlobalIPAssignment]
+      #   @param data [Telnyx::Models::GlobalIPAssignment]
     end
   end
 end

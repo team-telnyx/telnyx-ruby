@@ -60,9 +60,7 @@ module Telnyx
                 per_page: Integer,
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(
-                Telnyx::Internal::PerPagePagination[
-                  Telnyx::Legacy::Reporting::UsageReports::CdrUsageReportResponseLegacy
-                ]
+                Telnyx::Models::Legacy::Reporting::UsageReports::VoiceListResponse
               )
             end
             def list(

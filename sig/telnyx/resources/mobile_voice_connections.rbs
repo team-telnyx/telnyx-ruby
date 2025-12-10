@@ -39,7 +39,7 @@ module Telnyx
         ?page_size: Integer,
         ?sort: String,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::MobileVoiceConnection]
+      ) -> Telnyx::Models::MobileVoiceConnectionListResponse
 
       def delete: (
         String id,

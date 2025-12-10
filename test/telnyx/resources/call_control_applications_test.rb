@@ -66,37 +66,13 @@ class Telnyx::Test::Resources::CallControlApplicationsTest < Telnyx::Test::Resou
     response = @telnyx.call_control_applications.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::CallControlApplication
+      response => Telnyx::Models::CallControlApplicationListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        active: Telnyx::Internal::Type::Boolean | nil,
-        anchorsite_override: Telnyx::CallControlApplication::AnchorsiteOverride | nil,
-        application_name: String | nil,
-        call_cost_in_webhooks: Telnyx::Internal::Type::Boolean | nil,
-        created_at: String | nil,
-        dtmf_type: Telnyx::CallControlApplication::DtmfType | nil,
-        first_command_timeout: Telnyx::Internal::Type::Boolean | nil,
-        first_command_timeout_secs: Integer | nil,
-        inbound: Telnyx::CallControlApplicationInbound | nil,
-        outbound: Telnyx::CallControlApplicationOutbound | nil,
-        record_type: Telnyx::CallControlApplication::RecordType | nil,
-        redact_dtmf_debug_logging: Telnyx::Internal::Type::Boolean | nil,
-        tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
-        updated_at: String | nil,
-        webhook_api_version: Telnyx::CallControlApplication::WebhookAPIVersion | nil,
-        webhook_event_failover_url: String | nil,
-        webhook_event_url: String | nil,
-        webhook_timeout_secs: Integer | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::CallControlApplication]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

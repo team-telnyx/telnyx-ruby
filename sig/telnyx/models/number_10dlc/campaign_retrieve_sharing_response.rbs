@@ -1,0 +1,35 @@
+module Telnyx
+  module Models
+    module Number10dlc
+      type campaign_retrieve_sharing_response =
+        {
+          shared_by_me: Telnyx::CampaignSharingStatus,
+          shared_with_me: Telnyx::CampaignSharingStatus
+        }
+
+      class CampaignRetrieveSharingResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader shared_by_me: Telnyx::CampaignSharingStatus?
+
+        def shared_by_me=: (
+          Telnyx::CampaignSharingStatus
+        ) -> Telnyx::CampaignSharingStatus
+
+        attr_reader shared_with_me: Telnyx::CampaignSharingStatus?
+
+        def shared_with_me=: (
+          Telnyx::CampaignSharingStatus
+        ) -> Telnyx::CampaignSharingStatus
+
+        def initialize: (
+          ?shared_by_me: Telnyx::CampaignSharingStatus,
+          ?shared_with_me: Telnyx::CampaignSharingStatus
+        ) -> void
+
+        def to_hash: -> {
+          shared_by_me: Telnyx::CampaignSharingStatus,
+          shared_with_me: Telnyx::CampaignSharingStatus
+        }
+      end
+    end
+  end
+end

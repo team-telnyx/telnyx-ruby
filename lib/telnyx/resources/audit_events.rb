@@ -19,7 +19,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::AuditEventListResponse>]
+      # @return [Telnyx::Models::AuditEventListResponse]
       #
       # @see Telnyx::Models::AuditEventListParams
       def list(params = {})
@@ -28,7 +28,6 @@ module Telnyx
           method: :get,
           path: "audit_events",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::AuditEventListResponse,
           options: options
         )

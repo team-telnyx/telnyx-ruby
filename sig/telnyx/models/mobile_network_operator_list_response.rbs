@@ -2,70 +2,98 @@ module Telnyx
   module Models
     type mobile_network_operator_list_response =
       {
-        id: String,
-        country_code: String,
-        mcc: String,
-        mnc: String,
-        name: String,
-        network_preferences_enabled: bool,
-        record_type: String,
-        tadig: String
+        data: ::Array[Telnyx::Models::MobileNetworkOperatorListResponse::Data],
+        meta: Telnyx::PaginationMeta
       }
 
     class MobileNetworkOperatorListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader country_code: String?
+      attr_reader data: ::Array[Telnyx::Models::MobileNetworkOperatorListResponse::Data]?
 
-      def country_code=: (String) -> String
+      def data=: (
+        ::Array[Telnyx::Models::MobileNetworkOperatorListResponse::Data]
+      ) -> ::Array[Telnyx::Models::MobileNetworkOperatorListResponse::Data]
 
-      attr_reader mcc: String?
+      attr_reader meta: Telnyx::PaginationMeta?
 
-      def mcc=: (String) -> String
-
-      attr_reader mnc: String?
-
-      def mnc=: (String) -> String
-
-      attr_reader name: String?
-
-      def name=: (String) -> String
-
-      attr_reader tadig: String?
-
-      def tadig=: (String) -> String
-
-      attr_reader id: String?
-
-      def id=: (String) -> String
-
-      attr_reader network_preferences_enabled: bool?
-
-      def network_preferences_enabled=: (bool) -> bool
-
-      attr_reader record_type: String?
-
-      def record_type=: (String) -> String
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
 
       def initialize: (
-        ?id: String,
-        ?country_code: String,
-        ?mcc: String,
-        ?mnc: String,
-        ?name: String,
-        ?network_preferences_enabled: bool,
-        ?record_type: String,
-        ?tadig: String
+        ?data: ::Array[Telnyx::Models::MobileNetworkOperatorListResponse::Data],
+        ?meta: Telnyx::PaginationMeta
       ) -> void
 
       def to_hash: -> {
-        id: String,
-        country_code: String,
-        mcc: String,
-        mnc: String,
-        name: String,
-        network_preferences_enabled: bool,
-        record_type: String,
-        tadig: String
+        data: ::Array[Telnyx::Models::MobileNetworkOperatorListResponse::Data],
+        meta: Telnyx::PaginationMeta
       }
+
+      type data =
+        {
+          id: String,
+          country_code: String,
+          mcc: String,
+          mnc: String,
+          name: String,
+          network_preferences_enabled: bool,
+          record_type: String,
+          tadig: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader mcc: String?
+
+        def mcc=: (String) -> String
+
+        attr_reader mnc: String?
+
+        def mnc=: (String) -> String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader tadig: String?
+
+        def tadig=: (String) -> String
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader network_preferences_enabled: bool?
+
+        def network_preferences_enabled=: (bool) -> bool
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?country_code: String,
+          ?mcc: String,
+          ?mnc: String,
+          ?name: String,
+          ?network_preferences_enabled: bool,
+          ?record_type: String,
+          ?tadig: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          country_code: String,
+          mcc: String,
+          mnc: String,
+          name: String,
+          network_preferences_enabled: bool,
+          record_type: String,
+          tadig: String
+        }
+      end
     end
   end
 end

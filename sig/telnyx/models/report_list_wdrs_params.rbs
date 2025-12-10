@@ -7,8 +7,7 @@ module Telnyx
         imsi: String,
         mcc: String,
         mnc: String,
-        page_number: Integer,
-        page_size: Integer,
+        page: Telnyx::ReportListWdrsParams::Page,
         phone_number: String,
         sim_card_id: String,
         sim_group_id: String,
@@ -42,13 +41,11 @@ module Telnyx
 
       def mnc=: (String) -> String
 
-      attr_reader page_number: Integer?
+      attr_reader page: Telnyx::ReportListWdrsParams::Page?
 
-      def page_number=: (Integer) -> Integer
-
-      attr_reader page_size: Integer?
-
-      def page_size=: (Integer) -> Integer
+      def page=: (
+        Telnyx::ReportListWdrsParams::Page
+      ) -> Telnyx::ReportListWdrsParams::Page
 
       attr_reader phone_number: String?
 
@@ -80,8 +77,7 @@ module Telnyx
         ?imsi: String,
         ?mcc: String,
         ?mnc: String,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::ReportListWdrsParams::Page,
         ?phone_number: String,
         ?sim_card_id: String,
         ?sim_group_id: String,
@@ -97,8 +93,7 @@ module Telnyx
         imsi: String,
         mcc: String,
         mnc: String,
-        page_number: Integer,
-        page_size: Integer,
+        page: Telnyx::ReportListWdrsParams::Page,
         phone_number: String,
         sim_card_id: String,
         sim_group_id: String,
@@ -107,6 +102,22 @@ module Telnyx
         start_date: String,
         request_options: Telnyx::RequestOptions
       }
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
     end
   end
 end

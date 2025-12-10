@@ -79,19 +79,15 @@ module Telnyx
       # Returns a list of your SSO authentication providers.
       sig do
         params(
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::AuthenticationProviderListParams::Page::OrHash,
           sort: Telnyx::AuthenticationProviderListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::AuthenticationProvider
-          ]
-        )
+        ).returns(Telnyx::Models::AuthenticationProviderListResponse)
       end
       def list(
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[number],
+        # page[size]
+        page: nil,
         # Specifies the sort order for results. By default sorting direction is ascending.
         # To have the results sorted in descending order add the <code>-</code>
         # prefix.<br/><br/> That is: <ul>

@@ -63,37 +63,13 @@ class Telnyx::Test::Resources::TexmlApplicationsTest < Telnyx::Test::ResourceTes
     response = @telnyx.texml_applications.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::TexmlApplication
+      response => Telnyx::Models::TexmlApplicationListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        active: Telnyx::Internal::Type::Boolean | nil,
-        anchorsite_override: Telnyx::AnchorsiteOverride | nil,
-        call_cost_in_webhooks: Telnyx::Internal::Type::Boolean | nil,
-        created_at: String | nil,
-        dtmf_type: Telnyx::DtmfType | nil,
-        first_command_timeout: Telnyx::Internal::Type::Boolean | nil,
-        first_command_timeout_secs: Integer | nil,
-        friendly_name: String | nil,
-        inbound: Telnyx::TexmlApplication::Inbound | nil,
-        outbound: Telnyx::TexmlApplication::Outbound | nil,
-        record_type: String | nil,
-        status_callback: String | nil,
-        status_callback_method: Telnyx::TexmlApplication::StatusCallbackMethod | nil,
-        tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
-        updated_at: String | nil,
-        voice_fallback_url: String | nil,
-        voice_method: Telnyx::TexmlApplication::VoiceMethod | nil,
-        voice_url: String | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::TexmlApplication]) | nil,
+        meta: Telnyx::Models::TexmlApplicationListResponse::Meta | nil
       }
     end
   end

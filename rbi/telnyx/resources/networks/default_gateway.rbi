@@ -7,14 +7,14 @@ module Telnyx
         # Create Default Gateway.
         sig do
           params(
-            network_identifier: String,
+            id: String,
             wireguard_peer_id: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Networks::DefaultGatewayCreateResponse)
         end
         def create(
           # Identifies the resource.
-          network_identifier,
+          id,
           # Wireguard peer ID.
           wireguard_peer_id: nil,
           request_options: {}

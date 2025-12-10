@@ -41,32 +41,13 @@ class Telnyx::Test::Resources::PhoneNumbers::VoiceTest < Telnyx::Test::ResourceT
     response = @telnyx.phone_numbers.voice.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings
+      response => Telnyx::Models::PhoneNumbers::VoiceListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        call_forwarding: Telnyx::PhoneNumbers::CallForwarding | nil,
-        call_recording: Telnyx::PhoneNumbers::CallRecording | nil,
-        cnam_listing: Telnyx::PhoneNumbers::CnamListing | nil,
-        connection_id: String | nil,
-        customer_reference: String | nil,
-        emergency: Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings::Emergency | nil,
-        inbound_call_screening: Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings::InboundCallScreening | nil,
-        media_features: Telnyx::PhoneNumbers::MediaFeatures | nil,
-        phone_number: String | nil,
-        record_type: String | nil,
-        tech_prefix_enabled: Telnyx::Internal::Type::Boolean | nil,
-        translated_number: String | nil,
-        usage_payment_method: Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings::UsagePaymentMethod | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

@@ -3,7 +3,6 @@
 module Telnyx
   module Models
     module PortingOrders
-      # @see Telnyx::Resources::PortingOrders::PhoneNumberExtensions#list
       class PortingPhoneNumberExtension < Telnyx::Internal::Type::BaseModel
         # @!attribute activation_ranges
         #   Specifies the activation ranges for this porting phone number extension. The

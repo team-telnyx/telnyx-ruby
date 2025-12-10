@@ -60,7 +60,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::SimCardOrder>]
+      # @return [Telnyx::Models::SimCardOrderListResponse]
       #
       # @see Telnyx::Models::SimCardOrderListParams
       def list(params = {})
@@ -69,8 +69,7 @@ module Telnyx
           method: :get,
           path: "sim_card_orders",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
-          model: Telnyx::SimCardOrder,
+          model: Telnyx::Models::SimCardOrderListResponse,
           options: options
         )
       end

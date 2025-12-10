@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::Portouts#list
     class PortoutDetails < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #

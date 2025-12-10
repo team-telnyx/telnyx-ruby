@@ -1,0 +1,10 @@
+module Telnyx
+  module Models
+    module Number10dlc
+      type partner_campaign_retrieve_sharing_response =
+        ::Hash[Symbol, Telnyx::CampaignSharingStatus]
+
+      PartnerCampaignRetrieveSharingResponse: Telnyx::Internal::Type::Converter
+    end
+  end
+end

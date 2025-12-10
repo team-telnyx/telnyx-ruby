@@ -1,0 +1,28 @@
+module Telnyx
+  module Resources
+    class Number10dlc
+      class PhoneNumberAssignmentByProfile
+        def retrieve: (
+          String task_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Number10dlc::PhoneNumberAssignmentByProfileRetrieveResponse
+
+        def phone_number_assignment_by_profile: (
+          messaging_profile_id: String,
+          ?campaign_id: String,
+          ?tcr_campaign_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Number10dlc::PhoneNumberAssignmentByProfilePhoneNumberAssignmentByProfileResponse
+
+        def retrieve_phone_numbers: (
+          String task_id,
+          ?page: Integer,
+          ?records_per_page: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Number10dlc::PhoneNumberAssignmentByProfileRetrievePhoneNumbersResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

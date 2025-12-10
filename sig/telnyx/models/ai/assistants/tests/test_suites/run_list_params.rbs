@@ -6,8 +6,7 @@ module Telnyx
           module TestSuites
             type run_list_params =
               {
-                page_number: Integer,
-                page_size: Integer,
+                page: Telnyx::AI::Assistants::Tests::TestSuites::RunListParams::Page,
                 status: String,
                 test_suite_run_id: String
               }
@@ -17,13 +16,11 @@ module Telnyx
               extend Telnyx::Internal::Type::RequestParameters::Converter
               include Telnyx::Internal::Type::RequestParameters
 
-              attr_reader page_number: Integer?
+              attr_reader page: Telnyx::AI::Assistants::Tests::TestSuites::RunListParams::Page?
 
-              def page_number=: (Integer) -> Integer
-
-              attr_reader page_size: Integer?
-
-              def page_size=: (Integer) -> Integer
+              def page=: (
+                Telnyx::AI::Assistants::Tests::TestSuites::RunListParams::Page
+              ) -> Telnyx::AI::Assistants::Tests::TestSuites::RunListParams::Page
 
               attr_reader status: String?
 
@@ -34,20 +31,34 @@ module Telnyx
               def test_suite_run_id=: (String) -> String
 
               def initialize: (
-                ?page_number: Integer,
-                ?page_size: Integer,
+                ?page: Telnyx::AI::Assistants::Tests::TestSuites::RunListParams::Page,
                 ?status: String,
                 ?test_suite_run_id: String,
                 ?request_options: Telnyx::request_opts
               ) -> void
 
               def to_hash: -> {
-                page_number: Integer,
-                page_size: Integer,
+                page: Telnyx::AI::Assistants::Tests::TestSuites::RunListParams::Page,
                 status: String,
                 test_suite_run_id: String,
                 request_options: Telnyx::RequestOptions
               }
+
+              type page = { number: Integer, size: Integer }
+
+              class Page < Telnyx::Internal::Type::BaseModel
+                attr_reader number: Integer?
+
+                def number=: (Integer) -> Integer
+
+                attr_reader size: Integer?
+
+                def size=: (Integer) -> Integer
+
+                def initialize: (?number: Integer, ?size: Integer) -> void
+
+                def to_hash: -> { number: Integer, size: Integer }
+              end
             end
           end
         end

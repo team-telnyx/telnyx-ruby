@@ -25,23 +25,13 @@ class Telnyx::Test::Resources::ExternalConnections::LogMessagesTest < Telnyx::Te
     response = @telnyx.external_connections.log_messages.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPaginationForLogMessages
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Models::ExternalConnections::LogMessageListResponse
+      response => Telnyx::Models::ExternalConnections::LogMessageListResponse
     end
 
     assert_pattern do
-      row => {
-        code: String,
-        title: String,
-        detail: String | nil,
-        meta: Telnyx::Models::ExternalConnections::LogMessageListResponse::Meta | nil,
-        source: Telnyx::Models::ExternalConnections::LogMessageListResponse::Source | nil
+      response => {
+        log_messages: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::ExternalConnections::LogMessageListResponse::LogMessage]) | nil,
+        meta: Telnyx::ExternalVoiceIntegrationsPaginationMeta | nil
       }
     end
   end

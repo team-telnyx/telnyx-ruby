@@ -24,8 +24,7 @@ module Telnyx
         ?imsi: String,
         ?mcc: String,
         ?mnc: String,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::ReportListWdrsParams::Page,
         ?phone_number: String,
         ?sim_card_id: String,
         ?sim_group_id: String,
@@ -33,7 +32,7 @@ module Telnyx
         ?sort: ::Array[String],
         ?start_date: String,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::ReportListWdrsResponse]
+      ) -> Telnyx::Models::ReportListWdrsResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

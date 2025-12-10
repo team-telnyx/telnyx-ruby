@@ -1,0 +1,9 @@
+module Telnyx
+  module Resources
+    class Public
+      class Brand
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    type dynamic_emergency_endpoint_list_response =
+      {
+        data: ::Array[Telnyx::DynamicEmergencyEndpoint],
+        meta: Telnyx::Metadata
+      }
+
+    class DynamicEmergencyEndpointListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::DynamicEmergencyEndpoint]?
+
+      def data=: (
+        ::Array[Telnyx::DynamicEmergencyEndpoint]
+      ) -> ::Array[Telnyx::DynamicEmergencyEndpoint]
+
+      attr_reader meta: Telnyx::Metadata?
+
+      def meta=: (Telnyx::Metadata) -> Telnyx::Metadata
+
+      def initialize: (
+        ?data: ::Array[Telnyx::DynamicEmergencyEndpoint],
+        ?meta: Telnyx::Metadata
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::DynamicEmergencyEndpoint],
+        meta: Telnyx::Metadata
+      }
+    end
+  end
+end

@@ -123,7 +123,7 @@ module Telnyx
             T.nilable(
               T.any(
                 String,
-                Telnyx::AddressListParams::Filter::CustomerReference::CustomerReferenceMatcher
+                Telnyx::AddressListParams::Filter::CustomerReference::UnionMember1
               )
             )
           )
@@ -135,7 +135,7 @@ module Telnyx
             customer_reference:
               T.any(
                 String,
-                Telnyx::AddressListParams::Filter::CustomerReference::CustomerReferenceMatcher::OrHash
+                Telnyx::AddressListParams::Filter::CustomerReference::UnionMember1::OrHash
               )
           ).void
         end
@@ -175,7 +175,7 @@ module Telnyx
             customer_reference:
               T.any(
                 String,
-                Telnyx::AddressListParams::Filter::CustomerReference::CustomerReferenceMatcher::OrHash
+                Telnyx::AddressListParams::Filter::CustomerReference::UnionMember1::OrHash
               ),
             street_address:
               Telnyx::AddressListParams::Filter::StreetAddress::OrHash,
@@ -203,7 +203,7 @@ module Telnyx
               customer_reference:
                 T.any(
                   String,
-                  Telnyx::AddressListParams::Filter::CustomerReference::CustomerReferenceMatcher
+                  Telnyx::AddressListParams::Filter::CustomerReference::UnionMember1
                 ),
               street_address: Telnyx::AddressListParams::Filter::StreetAddress,
               used_as_emergency: String
@@ -252,15 +252,15 @@ module Telnyx
             T.type_alias do
               T.any(
                 String,
-                Telnyx::AddressListParams::Filter::CustomerReference::CustomerReferenceMatcher
+                Telnyx::AddressListParams::Filter::CustomerReference::UnionMember1
               )
             end
 
-          class CustomerReferenceMatcher < Telnyx::Internal::Type::BaseModel
+          class UnionMember1 < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::AddressListParams::Filter::CustomerReference::CustomerReferenceMatcher,
+                  Telnyx::AddressListParams::Filter::CustomerReference::UnionMember1,
                   Telnyx::Internal::AnyHash
                 )
               end

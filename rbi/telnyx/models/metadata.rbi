@@ -7,12 +7,11 @@ module Telnyx
         T.type_alias { T.any(Telnyx::Metadata, Telnyx::Internal::AnyHash) }
 
       # Current Page based on pagination settings (included when defaults are used.)
-      sig { returns(Float) }
-      attr_accessor :page_number
+      sig { returns(T.nilable(Float)) }
+      attr_reader :page_number
 
-      # Total number of pages based on pagination settings
-      sig { returns(Float) }
-      attr_accessor :total_pages
+      sig { params(page_number: Float).void }
+      attr_writer :page_number
 
       # Number of results to return per page based on pagination settings (included when
       # defaults are used.)
@@ -21,6 +20,13 @@ module Telnyx
 
       sig { params(page_size: Float).void }
       attr_writer :page_size
+
+      # Total number of pages based on pagination settings
+      sig { returns(T.nilable(Float)) }
+      attr_reader :total_pages
+
+      sig { params(total_pages: Float).void }
+      attr_writer :total_pages
 
       # Total number of results
       sig { returns(T.nilable(Float)) }
@@ -32,19 +38,19 @@ module Telnyx
       sig do
         params(
           page_number: Float,
-          total_pages: Float,
           page_size: Float,
+          total_pages: Float,
           total_results: Float
         ).returns(T.attached_class)
       end
       def self.new(
         # Current Page based on pagination settings (included when defaults are used.)
-        page_number:,
-        # Total number of pages based on pagination settings
-        total_pages:,
+        page_number: nil,
         # Number of results to return per page based on pagination settings (included when
         # defaults are used.)
         page_size: nil,
+        # Total number of pages based on pagination settings
+        total_pages: nil,
         # Total number of results
         total_results: nil
       )
@@ -54,8 +60,8 @@ module Telnyx
         override.returns(
           {
             page_number: Float,
-            total_pages: Float,
             page_size: Float,
+            total_pages: Float,
             total_results: Float
           }
         )
