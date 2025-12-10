@@ -37,14 +37,14 @@ module Telnyx
       # Update a Network.
       sig do
         params(
-          network_id: String,
+          id: String,
           name: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::NetworkUpdateResponse)
       end
       def update(
         # Identifies the resource.
-        network_id,
+        id,
         # A user specified name for the network.
         name:,
         request_options: {}
@@ -57,11 +57,7 @@ module Telnyx
           filter: Telnyx::NetworkListParams::Filter::OrHash,
           page: Telnyx::NetworkListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[
-            Telnyx::Models::NetworkListResponse
-          ]
-        )
+        ).returns(Telnyx::Models::NetworkListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[name]
@@ -94,11 +90,7 @@ module Telnyx
           filter: Telnyx::NetworkListInterfacesParams::Filter::OrHash,
           page: Telnyx::NetworkListInterfacesParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultPagination[
-            Telnyx::Models::NetworkListInterfacesResponse
-          ]
-        )
+        ).returns(Telnyx::Models::NetworkListInterfacesResponse)
       end
       def list_interfaces(
         # Identifies the resource.

@@ -3,31 +3,31 @@ module Telnyx
     module Number10dlc
       type campaign_get_sharing_status_response =
         {
-          shared_by_me: Telnyx::Number10dlc::CampaignSharingStatus,
-          shared_with_me: Telnyx::Number10dlc::CampaignSharingStatus
+          shared_by_me: Telnyx::CampaignSharingStatus,
+          shared_with_me: Telnyx::CampaignSharingStatus
         }
 
       class CampaignGetSharingStatusResponse < Telnyx::Internal::Type::BaseModel
-        attr_reader shared_by_me: Telnyx::Number10dlc::CampaignSharingStatus?
+        attr_reader shared_by_me: Telnyx::CampaignSharingStatus?
 
         def shared_by_me=: (
-          Telnyx::Number10dlc::CampaignSharingStatus
-        ) -> Telnyx::Number10dlc::CampaignSharingStatus
+          Telnyx::CampaignSharingStatus
+        ) -> Telnyx::CampaignSharingStatus
 
-        attr_reader shared_with_me: Telnyx::Number10dlc::CampaignSharingStatus?
+        attr_reader shared_with_me: Telnyx::CampaignSharingStatus?
 
         def shared_with_me=: (
-          Telnyx::Number10dlc::CampaignSharingStatus
-        ) -> Telnyx::Number10dlc::CampaignSharingStatus
+          Telnyx::CampaignSharingStatus
+        ) -> Telnyx::CampaignSharingStatus
 
         def initialize: (
-          ?shared_by_me: Telnyx::Number10dlc::CampaignSharingStatus,
-          ?shared_with_me: Telnyx::Number10dlc::CampaignSharingStatus
+          ?shared_by_me: Telnyx::CampaignSharingStatus,
+          ?shared_with_me: Telnyx::CampaignSharingStatus
         ) -> void
 
         def to_hash: -> {
-          shared_by_me: Telnyx::Number10dlc::CampaignSharingStatus,
-          shared_with_me: Telnyx::Number10dlc::CampaignSharingStatus
+          shared_by_me: Telnyx::CampaignSharingStatus,
+          shared_with_me: Telnyx::CampaignSharingStatus
         }
       end
     end

@@ -7,16 +7,18 @@ module Telnyx
         class Tests
           class TestSuites
             class Runs
+              # Some parameter documentations has been truncated, see
+              # {Telnyx::Models::AI::Assistants::Tests::TestSuites::RunListParams} for more
+              # details.
+              #
               # Retrieves paginated history of test runs for a specific test suite with
               # filtering options
               #
-              # @overload list(suite_name, page_number: nil, page_size: nil, status: nil, test_suite_run_id: nil, request_options: {})
+              # @overload list(suite_name, page: nil, status: nil, test_suite_run_id: nil, request_options: {})
               #
               # @param suite_name [String]
               #
-              # @param page_number [Integer]
-              #
-              # @param page_size [Integer]
+              # @param page [Telnyx::Models::AI::Assistants::Tests::TestSuites::RunListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
               #
               # @param status [String] Filter runs by execution status (pending, running, completed, failed, timeout)
               #
@@ -24,7 +26,7 @@ module Telnyx
               #
               # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
               #
-              # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::Assistants::Tests::TestRunResponse>]
+              # @return [Telnyx::Models::AI::Assistants::Tests::TestSuites::PaginatedTestRunList]
               #
               # @see Telnyx::Models::AI::Assistants::Tests::TestSuites::RunListParams
               def list(suite_name, params = {})
@@ -32,9 +34,8 @@ module Telnyx
                 @client.request(
                   method: :get,
                   path: ["ai/assistants/tests/test-suites/%1$s/runs", suite_name],
-                  query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-                  page: Telnyx::Internal::DefaultFlatPagination,
-                  model: Telnyx::AI::Assistants::Tests::TestRunResponse,
+                  query: parsed,
+                  model: Telnyx::AI::Assistants::Tests::TestSuites::PaginatedTestRunList,
                   options: options
                 )
               end

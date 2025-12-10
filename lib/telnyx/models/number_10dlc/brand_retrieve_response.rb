@@ -4,7 +4,7 @@ module Telnyx
   module Models
     module Number10dlc
       # @see Telnyx::Resources::Number10dlc::Brand#retrieve
-      class BrandRetrieveResponse < Telnyx::Models::Number10dlc::TelnyxBrand
+      class BrandRetrieveResponse < Telnyx::Models::TelnyxBrand
         # @!attribute assigned_campaigns_count
         #   Number of campaigns associated with the brand
         #

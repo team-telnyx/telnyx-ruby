@@ -1,0 +1,29 @@
+module Telnyx
+  module Models
+    module AI
+      module Conversations
+        type insight_list_response =
+          {
+            data: ::Array[Telnyx::AI::Conversations::InsightTemplate],
+            meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+          }
+
+        class InsightListResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: ::Array[Telnyx::AI::Conversations::InsightTemplate]
+
+          attr_accessor meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+
+          def initialize: (
+            data: ::Array[Telnyx::AI::Conversations::InsightTemplate],
+            meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[Telnyx::AI::Conversations::InsightTemplate],
+            meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+          }
+        end
+      end
+    end
+  end
+end

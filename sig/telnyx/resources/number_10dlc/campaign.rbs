@@ -9,7 +9,7 @@ module Telnyx
         def retrieve: (
           String campaign_id,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Number10dlc::TelnyxCampaignCsp
+        ) -> Telnyx::TelnyxCampaignCsp
 
         def update: (
           String campaign_id,
@@ -25,7 +25,7 @@ module Telnyx
           ?webhook_failover_url: String,
           ?webhook_url: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Number10dlc::TelnyxCampaignCsp
+        ) -> Telnyx::TelnyxCampaignCsp
 
         def list: (
           brand_id: String,
@@ -33,17 +33,17 @@ module Telnyx
           ?records_per_page: Integer,
           ?sort: Telnyx::Models::Number10dlc::CampaignListParams::sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::PerPagePaginationV2[Telnyx::Models::Number10dlc::CampaignListResponse]
+        ) -> Telnyx::Models::Number10dlc::CampaignListResponse
+
+        def delete: (
+          String campaign_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Number10dlc::CampaignDeleteResponse
 
         def accept_sharing: (
           String campaign_id,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Number10dlc::campaign_accept_sharing_response
-
-        def deactivate: (
-          String campaign_id,
-          ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Number10dlc::CampaignDeactivateResponse
 
         def get_mno_metadata: (
           String campaign_id,

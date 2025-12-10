@@ -25,7 +25,7 @@ module Telnyx
           end
 
           # Some parameter documentations has been truncated, see
-          # {Telnyx::Models::Number10dlc::Brand::ExternalVettingImportsParams} for more
+          # {Telnyx::Models::Number10dlc::Brand::ExternalVettingImportParams} for more
           # details.
           #
           # This operation can be used to import an external vetting record from a
@@ -33,7 +33,7 @@ module Telnyx
           # record, it will be saved with the brand and will be considered for future
           # campaign qualification.
           #
-          # @overload imports(brand_id, evp_id:, vetting_id:, vetting_token: nil, request_options: {})
+          # @overload import(brand_id, evp_id:, vetting_id:, vetting_token: nil, request_options: {})
           #
           # @param brand_id [String]
           #
@@ -45,16 +45,16 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::Number10dlc::Brand::ExternalVettingImportsResponse]
+          # @return [Telnyx::Models::Number10dlc::Brand::ExternalVettingImportResponse]
           #
-          # @see Telnyx::Models::Number10dlc::Brand::ExternalVettingImportsParams
-          def imports(brand_id, params)
-            parsed, options = Telnyx::Number10dlc::Brand::ExternalVettingImportsParams.dump_request(params)
+          # @see Telnyx::Models::Number10dlc::Brand::ExternalVettingImportParams
+          def import(brand_id, params)
+            parsed, options = Telnyx::Number10dlc::Brand::ExternalVettingImportParams.dump_request(params)
             @client.request(
               method: :put,
               path: ["10dlc/brand/%1$s/externalVetting", brand_id],
               body: parsed,
-              model: Telnyx::Models::Number10dlc::Brand::ExternalVettingImportsResponse,
+              model: Telnyx::Models::Number10dlc::Brand::ExternalVettingImportResponse,
               options: options
             )
           end

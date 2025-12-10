@@ -71,14 +71,12 @@ module Telnyx
             def self?.values: -> ::Array[Telnyx::Models::AI::Conversations::InsightTemplate::insight_type]
           end
 
-          type json_schema = String | ::Hash[Symbol, top]
+          type json_schema = String | top
 
           module JsonSchema
             extend Telnyx::Internal::Type::Union
 
             def self?.variants: -> ::Array[Telnyx::Models::AI::Conversations::InsightTemplate::json_schema]
-
-            JsonSchemaObjectMap: Telnyx::Internal::Type::Converter
           end
         end
       end

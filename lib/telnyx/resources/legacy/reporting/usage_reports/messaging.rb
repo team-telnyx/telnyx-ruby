@@ -68,7 +68,7 @@ module Telnyx
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Telnyx::Internal::PerPagePagination<Telnyx::Models::Legacy::Reporting::UsageReports::MdrUsageReportResponseLegacy>]
+            # @return [Telnyx::Models::Legacy::Reporting::UsageReports::MessagingListResponse]
             #
             # @see Telnyx::Models::Legacy::Reporting::UsageReports::MessagingListParams
             def list(params = {})
@@ -77,8 +77,7 @@ module Telnyx
                 method: :get,
                 path: "legacy/reporting/usage_reports/messaging",
                 query: parsed,
-                page: Telnyx::Internal::PerPagePagination,
-                model: Telnyx::Legacy::Reporting::UsageReports::MdrUsageReportResponseLegacy,
+                model: Telnyx::Models::Legacy::Reporting::UsageReports::MessagingListResponse,
                 options: options
               )
             end

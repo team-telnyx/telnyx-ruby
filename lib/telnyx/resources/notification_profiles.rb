@@ -47,9 +47,9 @@ module Telnyx
 
       # Update a notification profile.
       #
-      # @overload update(notification_profile_id, name: nil, request_options: {})
+      # @overload update(id, name: nil, request_options: {})
       #
-      # @param notification_profile_id [String] The id of the resource.
+      # @param id [String] The id of the resource.
       #
       # @param name [String] A human readable name.
       #
@@ -58,11 +58,11 @@ module Telnyx
       # @return [Telnyx::Models::NotificationProfileUpdateResponse]
       #
       # @see Telnyx::Models::NotificationProfileUpdateParams
-      def update(notification_profile_id, params = {})
+      def update(id, params = {})
         parsed, options = Telnyx::NotificationProfileUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["notification_profiles/%1$s", notification_profile_id],
+          path: ["notification_profiles/%1$s", id],
           body: parsed,
           model: Telnyx::Models::NotificationProfileUpdateResponse,
           options: options
@@ -80,7 +80,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::NotificationProfile>]
+      # @return [Telnyx::Models::NotificationProfileListResponse]
       #
       # @see Telnyx::Models::NotificationProfileListParams
       def list(params = {})
@@ -89,8 +89,7 @@ module Telnyx
           method: :get,
           path: "notification_profiles",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
-          model: Telnyx::NotificationProfile,
+          model: Telnyx::Models::NotificationProfileListResponse,
           options: options
         )
       end

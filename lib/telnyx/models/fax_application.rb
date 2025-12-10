@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::FaxApplications#list
     class FaxApplication < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Uniquely identifies the resource.

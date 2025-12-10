@@ -5,7 +5,7 @@ module Telnyx
         ?filter: Telnyx::PortingPhoneNumberListParams::Filter,
         ?page: Telnyx::PortingPhoneNumberListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::PortingPhoneNumberListResponse]
+      ) -> Telnyx::Models::PortingPhoneNumberListResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

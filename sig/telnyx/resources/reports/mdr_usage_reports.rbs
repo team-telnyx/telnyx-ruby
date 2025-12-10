@@ -16,10 +16,9 @@ module Telnyx
         ) -> Telnyx::Models::Reports::MdrUsageReportRetrieveResponse
 
         def list: (
-          ?page_number: Integer,
-          ?page_size: Integer,
+          ?page: Telnyx::Reports::MdrUsageReportListParams::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Reports::MdrUsageReport]
+        ) -> Telnyx::Models::Reports::MdrUsageReportListResponse
 
         def delete: (
           String id,

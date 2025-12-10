@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    module Number10dlc
+      module Brand
+        type sms_otp_trigger_params =
+          { pin_sms: String, success_sms: String }
+          & Telnyx::Internal::Type::request_parameters
+
+        class SMSOtpTriggerParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor pin_sms: String
+
+          attr_accessor success_sms: String
+
+          def initialize: (
+            pin_sms: String,
+            success_sms: String,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            pin_sms: String,
+            success_sms: String,
+            request_options: Telnyx::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

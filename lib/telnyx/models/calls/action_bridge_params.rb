@@ -8,12 +8,12 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
-        # @!attribute call_control_id_to_bridge_with
+        # @!attribute body_call_control_id
         #   The Call Control ID of the call you want to bridge with, can't be used together
         #   with queue parameter or video_room_id parameter.
         #
         #   @return [String]
-        required :call_control_id_to_bridge_with, String, api_name: :call_control_id
+        required :body_call_control_id, String, api_name: :call_control_id
 
         # @!attribute client_state
         #   Use this field to add state to every subsequent webhook. It must be a valid
@@ -143,11 +143,11 @@ module Telnyx
         #   @return [String, nil]
         optional :video_room_id, String
 
-        # @!method initialize(call_control_id_to_bridge_with:, client_state: nil, command_id: nil, mute_dtmf: nil, park_after_unbridge: nil, play_ringtone: nil, queue: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, ringtone: nil, video_room_context: nil, video_room_id: nil, request_options: {})
+        # @!method initialize(body_call_control_id:, client_state: nil, command_id: nil, mute_dtmf: nil, park_after_unbridge: nil, play_ringtone: nil, queue: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, ringtone: nil, video_room_context: nil, video_room_id: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionBridgeParams} for more details.
         #
-        #   @param call_control_id_to_bridge_with [String] The Call Control ID of the call you want to bridge with, can't be used together
+        #   @param body_call_control_id [String] The Call Control ID of the call you want to bridge with, can't be used together
         #
         #   @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #

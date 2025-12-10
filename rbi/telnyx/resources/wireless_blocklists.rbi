@@ -66,9 +66,7 @@ module Telnyx
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultFlatPagination[Telnyx::WirelessBlocklist]
-        )
+        ).returns(Telnyx::Models::WirelessBlocklistListResponse)
       end
       def list(
         # The name of the Wireless Blocklist.

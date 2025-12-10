@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::Conferences#list
     class Conference < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Uniquely identifies the conference

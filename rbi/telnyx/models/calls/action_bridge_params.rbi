@@ -15,7 +15,7 @@ module Telnyx
         # The Call Control ID of the call you want to bridge with, can't be used together
         # with queue parameter or video_room_id parameter.
         sig { returns(String) }
-        attr_accessor :call_control_id_to_bridge_with
+        attr_accessor :body_call_control_id
 
         # Use this field to add state to every subsequent webhook. It must be a valid
         # Base-64 encoded string.
@@ -225,7 +225,7 @@ module Telnyx
 
         sig do
           params(
-            call_control_id_to_bridge_with: String,
+            body_call_control_id: String,
             client_state: String,
             command_id: String,
             mute_dtmf: Telnyx::Calls::ActionBridgeParams::MuteDtmf::OrSymbol,
@@ -253,7 +253,7 @@ module Telnyx
         def self.new(
           # The Call Control ID of the call you want to bridge with, can't be used together
           # with queue parameter or video_room_id parameter.
-          call_control_id_to_bridge_with:,
+          body_call_control_id:,
           # Use this field to add state to every subsequent webhook. It must be a valid
           # Base-64 encoded string.
           client_state: nil,
@@ -321,7 +321,7 @@ module Telnyx
         sig do
           override.returns(
             {
-              call_control_id_to_bridge_with: String,
+              body_call_control_id: String,
               client_state: String,
               command_id: String,
               mute_dtmf: Telnyx::Calls::ActionBridgeParams::MuteDtmf::OrSymbol,

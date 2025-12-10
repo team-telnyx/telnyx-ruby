@@ -47,7 +47,7 @@ module Telnyx
             params(
               page: Telnyx::Messaging::Rcs::AgentListParams::Page::OrHash,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Internal::DefaultPagination[Telnyx::RcsAgent])
+            ).returns(Telnyx::Models::Messaging::Rcs::AgentListResponse)
           end
           def list(
             # Consolidated page parameter (deepObject style). Originally: page[number],

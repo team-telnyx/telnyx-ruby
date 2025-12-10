@@ -144,7 +144,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::CallControlApplication>]
+      # @return [Telnyx::Models::CallControlApplicationListResponse]
       #
       # @see Telnyx::Models::CallControlApplicationListParams
       def list(params = {})
@@ -153,8 +153,7 @@ module Telnyx
           method: :get,
           path: "call_control_applications",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
-          model: Telnyx::CallControlApplication,
+          model: Telnyx::Models::CallControlApplicationListResponse,
           options: options
         )
       end

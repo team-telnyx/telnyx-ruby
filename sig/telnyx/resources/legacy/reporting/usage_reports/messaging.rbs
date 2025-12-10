@@ -23,7 +23,7 @@ module Telnyx
               ?page: Integer,
               ?per_page: Integer,
               ?request_options: Telnyx::request_opts
-            ) -> Telnyx::Internal::PerPagePagination[Telnyx::Legacy::Reporting::UsageReports::MdrUsageReportResponseLegacy]
+            ) -> Telnyx::Models::Legacy::Reporting::UsageReports::MessagingListResponse
 
             def delete: (
               String id,

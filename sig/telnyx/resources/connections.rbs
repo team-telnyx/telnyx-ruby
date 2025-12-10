@@ -11,13 +11,13 @@ module Telnyx
         ?page: Telnyx::ConnectionListParams::Page,
         ?sort: Telnyx::Models::ConnectionListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::ConnectionListResponse]
+      ) -> Telnyx::Models::ConnectionListResponse
 
       def list_active_calls: (
         String connection_id,
         ?page: Telnyx::ConnectionListActiveCallsParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::ConnectionListActiveCallsResponse]
+      ) -> Telnyx::Models::ConnectionListActiveCallsResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

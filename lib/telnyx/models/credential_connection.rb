@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::CredentialConnections#list
     class CredentialConnection < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Identifies the type of resource.
@@ -238,8 +237,8 @@ module Telnyx
       module WebhookAPIVersion
         extend Telnyx::Internal::Type::Enum
 
-        V1 = :"1"
-        V2 = :"2"
+        WEBHOOK_API_VERSION_1 = :"1"
+        WEBHOOK_API_VERSION_2 = :"2"
 
         # @!method self.values
         #   @return [Array<Symbol>]

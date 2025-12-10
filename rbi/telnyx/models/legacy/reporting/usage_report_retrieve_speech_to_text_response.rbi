@@ -13,19 +13,17 @@ module Telnyx
               )
             end
 
-          sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+          sig { returns(T.nilable(T.anything)) }
           attr_reader :data
 
-          sig { params(data: T::Hash[Symbol, T.anything]).void }
+          sig { params(data: T.anything).void }
           attr_writer :data
 
-          sig do
-            params(data: T::Hash[Symbol, T.anything]).returns(T.attached_class)
-          end
+          sig { params(data: T.anything).returns(T.attached_class) }
           def self.new(data: nil)
           end
 
-          sig { override.returns({ data: T::Hash[Symbol, T.anything] }) }
+          sig { override.returns({ data: T.anything }) }
           def to_hash
           end
         end

@@ -5,7 +5,7 @@ module Telnyx
         ?filter: Telnyx::CallEventListParams::Filter,
         ?page: Telnyx::CallEventListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::CallEventListResponse]
+      ) -> Telnyx::Models::CallEventListResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

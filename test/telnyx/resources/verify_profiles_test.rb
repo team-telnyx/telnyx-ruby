@@ -57,29 +57,13 @@ class Telnyx::Test::Resources::VerifyProfilesTest < Telnyx::Test::ResourceTest
     response = @telnyx.verify_profiles.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::VerifyProfile
+      response => Telnyx::Models::VerifyProfileListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        call: Telnyx::VerifyProfile::Call | nil,
-        created_at: String | nil,
-        flashcall: Telnyx::VerifyProfile::Flashcall | nil,
-        language: String | nil,
-        name: String | nil,
-        record_type: Telnyx::VerifyProfile::RecordType | nil,
-        sms: Telnyx::VerifyProfile::SMS | nil,
-        updated_at: String | nil,
-        webhook_failover_url: String | nil,
-        webhook_url: String | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::VerifyProfile]),
+        meta: Telnyx::Verifications::VerifyMeta
       }
     end
   end

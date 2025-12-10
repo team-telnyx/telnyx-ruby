@@ -3,7 +3,6 @@
 module Telnyx
   module Models
     module Reports
-      # @see Telnyx::Resources::Reports::MdrUsageReports#list
       class MdrUsageReport < Telnyx::Internal::Type::BaseModel
         # @!attribute id
         #   Identifies the resource

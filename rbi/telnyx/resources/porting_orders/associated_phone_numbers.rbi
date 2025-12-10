@@ -43,9 +43,7 @@ module Telnyx
               Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Sort::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultPagination[
-              Telnyx::PortingOrders::PortingAssociatedPhoneNumber
-            ]
+            Telnyx::Models::PortingOrders::AssociatedPhoneNumberListResponse
           )
         end
         def list(

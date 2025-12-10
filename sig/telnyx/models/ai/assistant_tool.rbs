@@ -4,59 +4,59 @@ module Telnyx
       type assistant_tool =
         Telnyx::AI::WebhookTool
         | Telnyx::AI::RetrievalTool
-        | Telnyx::AI::AssistantTool::Handoff
+        | Telnyx::AI::AssistantTool::HandoffTool
         | Telnyx::AI::HangupTool
         | Telnyx::AI::TransferTool
-        | Telnyx::AI::AssistantTool::Refer
-        | Telnyx::AI::AssistantTool::SendDtmf
+        | Telnyx::AI::AssistantTool::SipReferTool
+        | Telnyx::AI::AssistantTool::DtmfTool
 
       module AssistantTool
         extend Telnyx::Internal::Type::Union
 
-        type handoff =
+        type handoff_tool =
           {
-            handoff: Telnyx::AI::AssistantTool::Handoff::Handoff,
-            type: :handoff
+            handoff: Telnyx::AI::AssistantTool::HandoffTool::Handoff,
+            type: Telnyx::Models::AI::AssistantTool::HandoffTool::type_
           }
 
-        class Handoff < Telnyx::Internal::Type::BaseModel
-          attr_accessor handoff: Telnyx::AI::AssistantTool::Handoff::Handoff
+        class HandoffTool < Telnyx::Internal::Type::BaseModel
+          attr_accessor handoff: Telnyx::AI::AssistantTool::HandoffTool::Handoff
 
-          attr_accessor type: :handoff
+          attr_accessor type: Telnyx::Models::AI::AssistantTool::HandoffTool::type_
 
           def initialize: (
-            handoff: Telnyx::AI::AssistantTool::Handoff::Handoff,
-            ?type: :handoff
+            handoff: Telnyx::AI::AssistantTool::HandoffTool::Handoff,
+            type: Telnyx::Models::AI::AssistantTool::HandoffTool::type_
           ) -> void
 
           def to_hash: -> {
-            handoff: Telnyx::AI::AssistantTool::Handoff::Handoff,
-            type: :handoff
+            handoff: Telnyx::AI::AssistantTool::HandoffTool::Handoff,
+            type: Telnyx::Models::AI::AssistantTool::HandoffTool::type_
           }
 
           type handoff =
             {
-              ai_assistants: ::Array[Telnyx::AI::AssistantTool::Handoff::Handoff::AIAssistant],
-              voice_mode: Telnyx::Models::AI::AssistantTool::Handoff::Handoff::voice_mode
+              ai_assistants: ::Array[Telnyx::AI::AssistantTool::HandoffTool::Handoff::AIAssistant],
+              voice_mode: Telnyx::Models::AI::AssistantTool::HandoffTool::Handoff::voice_mode
             }
 
           class Handoff < Telnyx::Internal::Type::BaseModel
-            attr_accessor ai_assistants: ::Array[Telnyx::AI::AssistantTool::Handoff::Handoff::AIAssistant]
+            attr_accessor ai_assistants: ::Array[Telnyx::AI::AssistantTool::HandoffTool::Handoff::AIAssistant]
 
-            attr_reader voice_mode: Telnyx::Models::AI::AssistantTool::Handoff::Handoff::voice_mode?
+            attr_reader voice_mode: Telnyx::Models::AI::AssistantTool::HandoffTool::Handoff::voice_mode?
 
             def voice_mode=: (
-              Telnyx::Models::AI::AssistantTool::Handoff::Handoff::voice_mode
-            ) -> Telnyx::Models::AI::AssistantTool::Handoff::Handoff::voice_mode
+              Telnyx::Models::AI::AssistantTool::HandoffTool::Handoff::voice_mode
+            ) -> Telnyx::Models::AI::AssistantTool::HandoffTool::Handoff::voice_mode
 
             def initialize: (
-              ai_assistants: ::Array[Telnyx::AI::AssistantTool::Handoff::Handoff::AIAssistant],
-              ?voice_mode: Telnyx::Models::AI::AssistantTool::Handoff::Handoff::voice_mode
+              ai_assistants: ::Array[Telnyx::AI::AssistantTool::HandoffTool::Handoff::AIAssistant],
+              ?voice_mode: Telnyx::Models::AI::AssistantTool::HandoffTool::Handoff::voice_mode
             ) -> void
 
             def to_hash: -> {
-              ai_assistants: ::Array[Telnyx::AI::AssistantTool::Handoff::Handoff::AIAssistant],
-              voice_mode: Telnyx::Models::AI::AssistantTool::Handoff::Handoff::voice_mode
+              ai_assistants: ::Array[Telnyx::AI::AssistantTool::HandoffTool::Handoff::AIAssistant],
+              voice_mode: Telnyx::Models::AI::AssistantTool::HandoffTool::Handoff::voice_mode
             }
 
             type ai_assistant = { id: String, name: String }
@@ -79,61 +79,74 @@ module Telnyx
               UNIFIED: :unified
               DISTINCT: :distinct
 
-              def self?.values: -> ::Array[Telnyx::Models::AI::AssistantTool::Handoff::Handoff::voice_mode]
+              def self?.values: -> ::Array[Telnyx::Models::AI::AssistantTool::HandoffTool::Handoff::voice_mode]
             end
+          end
+
+          type type_ = :handoff
+
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            HANDOFF: :handoff
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::AssistantTool::HandoffTool::type_]
           end
         end
 
-        type refer =
-          { refer: Telnyx::AI::AssistantTool::Refer::Refer, type: :refer }
+        type sip_refer_tool =
+          {
+            refer: Telnyx::AI::AssistantTool::SipReferTool::Refer,
+            type: Telnyx::Models::AI::AssistantTool::SipReferTool::type_
+          }
 
-        class Refer < Telnyx::Internal::Type::BaseModel
-          attr_accessor refer: Telnyx::AI::AssistantTool::Refer::Refer
+        class SipReferTool < Telnyx::Internal::Type::BaseModel
+          attr_accessor refer: Telnyx::AI::AssistantTool::SipReferTool::Refer
 
-          attr_accessor type: :refer
+          attr_accessor type: Telnyx::Models::AI::AssistantTool::SipReferTool::type_
 
           def initialize: (
-            refer: Telnyx::AI::AssistantTool::Refer::Refer,
-            ?type: :refer
+            refer: Telnyx::AI::AssistantTool::SipReferTool::Refer,
+            type: Telnyx::Models::AI::AssistantTool::SipReferTool::type_
           ) -> void
 
           def to_hash: -> {
-            refer: Telnyx::AI::AssistantTool::Refer::Refer,
-            type: :refer
+            refer: Telnyx::AI::AssistantTool::SipReferTool::Refer,
+            type: Telnyx::Models::AI::AssistantTool::SipReferTool::type_
           }
 
           type refer =
             {
-              targets: ::Array[Telnyx::AI::AssistantTool::Refer::Refer::Target],
-              custom_headers: ::Array[Telnyx::AI::AssistantTool::Refer::Refer::CustomHeader],
-              sip_headers: ::Array[Telnyx::AI::AssistantTool::Refer::Refer::SipHeader]
+              targets: ::Array[Telnyx::AI::AssistantTool::SipReferTool::Refer::Target],
+              custom_headers: ::Array[Telnyx::AI::AssistantTool::SipReferTool::Refer::CustomHeader],
+              sip_headers: ::Array[Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader]
             }
 
           class Refer < Telnyx::Internal::Type::BaseModel
-            attr_accessor targets: ::Array[Telnyx::AI::AssistantTool::Refer::Refer::Target]
+            attr_accessor targets: ::Array[Telnyx::AI::AssistantTool::SipReferTool::Refer::Target]
 
-            attr_reader custom_headers: ::Array[Telnyx::AI::AssistantTool::Refer::Refer::CustomHeader]?
+            attr_reader custom_headers: ::Array[Telnyx::AI::AssistantTool::SipReferTool::Refer::CustomHeader]?
 
             def custom_headers=: (
-              ::Array[Telnyx::AI::AssistantTool::Refer::Refer::CustomHeader]
-            ) -> ::Array[Telnyx::AI::AssistantTool::Refer::Refer::CustomHeader]
+              ::Array[Telnyx::AI::AssistantTool::SipReferTool::Refer::CustomHeader]
+            ) -> ::Array[Telnyx::AI::AssistantTool::SipReferTool::Refer::CustomHeader]
 
-            attr_reader sip_headers: ::Array[Telnyx::AI::AssistantTool::Refer::Refer::SipHeader]?
+            attr_reader sip_headers: ::Array[Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader]?
 
             def sip_headers=: (
-              ::Array[Telnyx::AI::AssistantTool::Refer::Refer::SipHeader]
-            ) -> ::Array[Telnyx::AI::AssistantTool::Refer::Refer::SipHeader]
+              ::Array[Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader]
+            ) -> ::Array[Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader]
 
             def initialize: (
-              targets: ::Array[Telnyx::AI::AssistantTool::Refer::Refer::Target],
-              ?custom_headers: ::Array[Telnyx::AI::AssistantTool::Refer::Refer::CustomHeader],
-              ?sip_headers: ::Array[Telnyx::AI::AssistantTool::Refer::Refer::SipHeader]
+              targets: ::Array[Telnyx::AI::AssistantTool::SipReferTool::Refer::Target],
+              ?custom_headers: ::Array[Telnyx::AI::AssistantTool::SipReferTool::Refer::CustomHeader],
+              ?sip_headers: ::Array[Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader]
             ) -> void
 
             def to_hash: -> {
-              targets: ::Array[Telnyx::AI::AssistantTool::Refer::Refer::Target],
-              custom_headers: ::Array[Telnyx::AI::AssistantTool::Refer::Refer::CustomHeader],
-              sip_headers: ::Array[Telnyx::AI::AssistantTool::Refer::Refer::SipHeader]
+              targets: ::Array[Telnyx::AI::AssistantTool::SipReferTool::Refer::Target],
+              custom_headers: ::Array[Telnyx::AI::AssistantTool::SipReferTool::Refer::CustomHeader],
+              sip_headers: ::Array[Telnyx::AI::AssistantTool::SipReferTool::Refer::SipHeader]
             }
 
             type target =
@@ -190,28 +203,28 @@ module Telnyx
 
             type sip_header =
               {
-                name: Telnyx::Models::AI::AssistantTool::Refer::Refer::SipHeader::name_,
+                name: Telnyx::Models::AI::AssistantTool::SipReferTool::Refer::SipHeader::name_,
                 value: String
               }
 
             class SipHeader < Telnyx::Internal::Type::BaseModel
-              attr_reader name: Telnyx::Models::AI::AssistantTool::Refer::Refer::SipHeader::name_?
+              attr_reader name: Telnyx::Models::AI::AssistantTool::SipReferTool::Refer::SipHeader::name_?
 
               def name=: (
-                Telnyx::Models::AI::AssistantTool::Refer::Refer::SipHeader::name_
-              ) -> Telnyx::Models::AI::AssistantTool::Refer::Refer::SipHeader::name_
+                Telnyx::Models::AI::AssistantTool::SipReferTool::Refer::SipHeader::name_
+              ) -> Telnyx::Models::AI::AssistantTool::SipReferTool::Refer::SipHeader::name_
 
               attr_reader value: String?
 
               def value=: (String) -> String
 
               def initialize: (
-                ?name: Telnyx::Models::AI::AssistantTool::Refer::Refer::SipHeader::name_,
+                ?name: Telnyx::Models::AI::AssistantTool::SipReferTool::Refer::SipHeader::name_,
                 ?value: String
               ) -> void
 
               def to_hash: -> {
-                name: Telnyx::Models::AI::AssistantTool::Refer::Refer::SipHeader::name_,
+                name: Telnyx::Models::AI::AssistantTool::SipReferTool::Refer::SipHeader::name_,
                 value: String
               }
 
@@ -223,25 +236,52 @@ module Telnyx
                 USER_TO_USER: :"User-to-User"
                 DIVERSION: :Diversion
 
-                def self?.values: -> ::Array[Telnyx::Models::AI::AssistantTool::Refer::Refer::SipHeader::name_]
+                def self?.values: -> ::Array[Telnyx::Models::AI::AssistantTool::SipReferTool::Refer::SipHeader::name_]
               end
             end
           end
+
+          type type_ = :refer
+
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            REFER: :refer
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::AssistantTool::SipReferTool::type_]
+          end
         end
 
-        type send_dtmf = { send_dtmf: ::Hash[Symbol, top], type: :send_dtmf }
+        type dtmf_tool =
+          {
+            send_dtmf: ::Hash[Symbol, top],
+            type: Telnyx::Models::AI::AssistantTool::DtmfTool::type_
+          }
 
-        class SendDtmf < Telnyx::Internal::Type::BaseModel
+        class DtmfTool < Telnyx::Internal::Type::BaseModel
           attr_accessor send_dtmf: ::Hash[Symbol, top]
 
-          attr_accessor type: :send_dtmf
+          attr_accessor type: Telnyx::Models::AI::AssistantTool::DtmfTool::type_
 
           def initialize: (
             send_dtmf: ::Hash[Symbol, top],
-            ?type: :send_dtmf
+            type: Telnyx::Models::AI::AssistantTool::DtmfTool::type_
           ) -> void
 
-          def to_hash: -> { send_dtmf: ::Hash[Symbol, top], type: :send_dtmf }
+          def to_hash: -> {
+            send_dtmf: ::Hash[Symbol, top],
+            type: Telnyx::Models::AI::AssistantTool::DtmfTool::type_
+          }
+
+          type type_ = :send_dtmf
+
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            SEND_DTMF: :send_dtmf
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::AssistantTool::DtmfTool::type_]
+          end
         end
 
         def self?.variants: -> ::Array[Telnyx::Models::AI::assistant_tool]

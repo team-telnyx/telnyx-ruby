@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::PortingOrders#list
     class PortingOrder < Telnyx::Internal::Type::BaseModel
       # @!attribute activation_settings
       #

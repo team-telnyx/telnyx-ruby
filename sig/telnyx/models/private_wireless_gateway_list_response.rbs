@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    type private_wireless_gateway_list_response =
+      {
+        data: ::Array[Telnyx::PrivateWirelessGateway],
+        meta: Telnyx::PaginationMeta
+      }
+
+    class PrivateWirelessGatewayListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::PrivateWirelessGateway]?
+
+      def data=: (
+        ::Array[Telnyx::PrivateWirelessGateway]
+      ) -> ::Array[Telnyx::PrivateWirelessGateway]
+
+      attr_reader meta: Telnyx::PaginationMeta?
+
+      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::PrivateWirelessGateway],
+        ?meta: Telnyx::PaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::PrivateWirelessGateway],
+        meta: Telnyx::PaginationMeta
+      }
+    end
+  end
+end

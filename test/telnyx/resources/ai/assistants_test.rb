@@ -204,10 +204,10 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
     end
   end
 
-  def test_imports_required_params
+  def test_import_required_params
     skip("Prism tests are disabled")
 
-    response = @telnyx.ai.assistants.imports(api_key_ref: "api_key_ref", provider: :elevenlabs)
+    response = @telnyx.ai.assistants.import(api_key_ref: "api_key_ref", provider: :elevenlabs)
 
     assert_pattern do
       response => Telnyx::AI::AssistantsList

@@ -49,7 +49,7 @@ module Telnyx
           filter: Telnyx::NumberBlockOrderListParams::Filter::OrHash,
           page: Telnyx::NumberBlockOrderListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::NumberBlockOrder])
+        ).returns(Telnyx::Models::NumberBlockOrderListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[status],

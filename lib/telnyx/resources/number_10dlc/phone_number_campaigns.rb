@@ -14,7 +14,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Number10dlc::PhoneNumberCampaign]
+        # @return [Telnyx::Models::PhoneNumberCampaign]
         #
         # @see Telnyx::Models::Number10dlc::PhoneNumberCampaignCreateParams
         def create(params)
@@ -23,7 +23,7 @@ module Telnyx
             method: :post,
             path: "10dlc/phone_number_campaigns",
             body: parsed,
-            model: Telnyx::Number10dlc::PhoneNumberCampaign,
+            model: Telnyx::PhoneNumberCampaign,
             options: options
           )
         end
@@ -35,40 +35,40 @@ module Telnyx
         # @param phone_number [String]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Number10dlc::PhoneNumberCampaign]
+        # @return [Telnyx::Models::PhoneNumberCampaign]
         #
         # @see Telnyx::Models::Number10dlc::PhoneNumberCampaignRetrieveParams
         def retrieve(phone_number, params = {})
           @client.request(
             method: :get,
             path: ["10dlc/phone_number_campaigns/%1$s", phone_number],
-            model: Telnyx::Number10dlc::PhoneNumberCampaign,
+            model: Telnyx::PhoneNumberCampaign,
             options: params[:request_options]
           )
         end
 
         # Create New Phone Number Campaign
         #
-        # @overload update(campaign_phone_number, campaign_id:, phone_number:, request_options: {})
+        # @overload update(path_phone_number, campaign_id:, body_phone_number:, request_options: {})
         #
-        # @param campaign_phone_number [String]
+        # @param path_phone_number [String]
         #
         # @param campaign_id [String] The ID of the campaign you want to link to the specified phone number.
         #
-        # @param phone_number [String] The phone number you want to link to a specified campaign.
+        # @param body_phone_number [String] The phone number you want to link to a specified campaign.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Number10dlc::PhoneNumberCampaign]
+        # @return [Telnyx::Models::PhoneNumberCampaign]
         #
         # @see Telnyx::Models::Number10dlc::PhoneNumberCampaignUpdateParams
-        def update(campaign_phone_number, params)
+        def update(path_phone_number, params)
           parsed, options = Telnyx::Number10dlc::PhoneNumberCampaignUpdateParams.dump_request(params)
           @client.request(
             method: :put,
-            path: ["10dlc/phone_number_campaigns/%1$s", campaign_phone_number],
+            path: ["10dlc/phone_number_campaigns/%1$s", path_phone_number],
             body: parsed,
-            model: Telnyx::Number10dlc::PhoneNumberCampaign,
+            model: Telnyx::PhoneNumberCampaign,
             options: options
           )
         end
@@ -90,7 +90,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::PerPagePaginationV2<Telnyx::Models::Number10dlc::PhoneNumberCampaign>]
+        # @return [Telnyx::Models::Number10dlc::PhoneNumberCampaignListResponse]
         #
         # @see Telnyx::Models::Number10dlc::PhoneNumberCampaignListParams
         def list(params = {})
@@ -99,8 +99,7 @@ module Telnyx
             method: :get,
             path: "10dlc/phone_number_campaigns",
             query: parsed.transform_keys(records_per_page: "recordsPerPage"),
-            page: Telnyx::Internal::PerPagePaginationV2,
-            model: Telnyx::Number10dlc::PhoneNumberCampaign,
+            model: Telnyx::Models::Number10dlc::PhoneNumberCampaignListResponse,
             options: options
           )
         end
@@ -113,14 +112,14 @@ module Telnyx
         # @param phone_number [String]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Number10dlc::PhoneNumberCampaign]
+        # @return [Telnyx::Models::PhoneNumberCampaign]
         #
         # @see Telnyx::Models::Number10dlc::PhoneNumberCampaignDeleteParams
         def delete(phone_number, params = {})
           @client.request(
             method: :delete,
             path: ["10dlc/phone_number_campaigns/%1$s", phone_number],
-            model: Telnyx::Number10dlc::PhoneNumberCampaign,
+            model: Telnyx::PhoneNumberCampaign,
             options: params[:request_options]
           )
         end

@@ -58,26 +58,13 @@ class Telnyx::Test::Resources::FqdnsTest < Telnyx::Test::ResourceTest
     response = @telnyx.fqdns.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Fqdn
+      response => Telnyx::Models::FqdnListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        connection_id: String | nil,
-        created_at: String | nil,
-        dns_record_type: String | nil,
-        fqdn: String | nil,
-        port: Integer | nil,
-        record_type: String | nil,
-        updated_at: String | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Fqdn]) | nil,
+        meta: Telnyx::ConnectionsPaginationMeta | nil
       }
     end
   end

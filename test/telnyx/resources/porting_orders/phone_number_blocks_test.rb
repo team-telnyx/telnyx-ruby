@@ -30,26 +30,13 @@ class Telnyx::Test::Resources::PortingOrders::PhoneNumberBlocksTest < Telnyx::Te
     response = @telnyx.porting_orders.phone_number_blocks.list("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::PortingOrders::PortingPhoneNumberBlock
+      response => Telnyx::Models::PortingOrders::PhoneNumberBlockListResponse
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        activation_ranges: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PortingOrders::PortingPhoneNumberBlock::ActivationRange]) | nil,
-        country_code: String | nil,
-        created_at: Time | nil,
-        phone_number_range: Telnyx::PortingOrders::PortingPhoneNumberBlock::PhoneNumberRange | nil,
-        phone_number_type: Telnyx::PortingOrders::PortingPhoneNumberBlock::PhoneNumberType | nil,
-        record_type: String | nil,
-        updated_at: Time | nil
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PortingOrders::PortingPhoneNumberBlock]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

@@ -3,7 +3,7 @@ module Telnyx
     module Number10dlc
       type brand_retrieve_response = { assigned_campaigns_count: Float }
 
-      class BrandRetrieveResponse < Telnyx::Models::Number10dlc::TelnyxBrand
+      class BrandRetrieveResponse < Telnyx::Models::TelnyxBrand
         def assigned_campaigns_count: -> Float?
 
         def assigned_campaigns_count=: (Float _) -> Float

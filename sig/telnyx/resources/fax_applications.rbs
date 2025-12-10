@@ -39,7 +39,7 @@ module Telnyx
         ?page: Telnyx::FaxApplicationListParams::Page,
         ?sort: Telnyx::Models::FaxApplicationListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::FaxApplication]
+      ) -> Telnyx::Models::FaxApplicationListResponse
 
       def delete: (
         String id,

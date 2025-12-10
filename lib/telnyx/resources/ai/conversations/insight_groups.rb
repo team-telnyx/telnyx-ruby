@@ -99,15 +99,19 @@ module Telnyx
             )
           end
 
+          # Some parameter documentations has been truncated, see
+          # {Telnyx::Models::AI::Conversations::InsightGroupRetrieveInsightGroupsParams} for
+          # more details.
+          #
           # Get all insight groups
           #
-          # @overload retrieve_insight_groups(page_number: nil, page_size: nil, request_options: {})
+          # @overload retrieve_insight_groups(page: nil, request_options: {})
           #
-          # @param page_number [Integer]
-          # @param page_size [Integer]
+          # @param page [Telnyx::Models::AI::Conversations::InsightGroupRetrieveInsightGroupsParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::Conversations::InsightTemplateGroup>]
+          # @return [Telnyx::Models::AI::Conversations::InsightGroupRetrieveInsightGroupsResponse]
           #
           # @see Telnyx::Models::AI::Conversations::InsightGroupRetrieveInsightGroupsParams
           def retrieve_insight_groups(params = {})
@@ -115,9 +119,8 @@ module Telnyx
             @client.request(
               method: :get,
               path: "ai/conversations/insight-groups",
-              query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-              page: Telnyx::Internal::DefaultFlatPagination,
-              model: Telnyx::AI::Conversations::InsightTemplateGroup,
+              query: parsed,
+              model: Telnyx::Models::AI::Conversations::InsightGroupRetrieveInsightGroupsResponse,
               options: options
             )
           end

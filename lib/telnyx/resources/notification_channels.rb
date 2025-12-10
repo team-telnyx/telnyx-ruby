@@ -51,9 +51,9 @@ module Telnyx
 
       # Update a notification channel.
       #
-      # @overload update(notification_channel_id, channel_destination: nil, channel_type_id: nil, notification_profile_id: nil, request_options: {})
+      # @overload update(id, channel_destination: nil, channel_type_id: nil, notification_profile_id: nil, request_options: {})
       #
-      # @param notification_channel_id [String] The id of the resource.
+      # @param id [String] The id of the resource.
       #
       # @param channel_destination [String] The destination associated with the channel type.
       #
@@ -66,11 +66,11 @@ module Telnyx
       # @return [Telnyx::Models::NotificationChannelUpdateResponse]
       #
       # @see Telnyx::Models::NotificationChannelUpdateParams
-      def update(notification_channel_id, params = {})
+      def update(id, params = {})
         parsed, options = Telnyx::NotificationChannelUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["notification_channels/%1$s", notification_channel_id],
+          path: ["notification_channels/%1$s", id],
           body: parsed,
           model: Telnyx::Models::NotificationChannelUpdateResponse,
           options: options
@@ -91,7 +91,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::NotificationChannel>]
+      # @return [Telnyx::Models::NotificationChannelListResponse]
       #
       # @see Telnyx::Models::NotificationChannelListParams
       def list(params = {})
@@ -100,8 +100,7 @@ module Telnyx
           method: :get,
           path: "notification_channels",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
-          model: Telnyx::NotificationChannel,
+          model: Telnyx::Models::NotificationChannelListResponse,
           options: options
         )
       end

@@ -3,11 +3,11 @@
 module Telnyx
   module Models
     module AI
-      class McpServerListResponse < Telnyx::Internal::Type::BaseModel
+      class McpServerListResponseItem < Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Models::AI::McpServerListResponse,
+              Telnyx::Models::AI::McpServerListResponseItem,
               Telnyx::Internal::AnyHash
             )
           end
@@ -71,6 +71,14 @@ module Telnyx
         def to_hash
         end
       end
+
+      McpServerListResponse =
+        T.let(
+          Telnyx::Internal::Type::ArrayOf[
+            Telnyx::Models::AI::McpServerListResponseItem
+          ],
+          Telnyx::Internal::Type::Converter
+        )
     end
   end
 end

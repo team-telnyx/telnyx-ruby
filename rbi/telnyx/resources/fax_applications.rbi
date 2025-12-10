@@ -118,7 +118,7 @@ module Telnyx
           page: Telnyx::FaxApplicationListParams::Page::OrHash,
           sort: Telnyx::FaxApplicationListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::FaxApplication])
+        ).returns(Telnyx::Models::FaxApplicationListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

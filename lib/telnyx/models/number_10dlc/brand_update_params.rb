@@ -29,14 +29,14 @@ module Telnyx
         # @!attribute entity_type
         #   Entity type behind the brand. This is the form of business establishment.
         #
-        #   @return [Symbol, Telnyx::Models::Number10dlc::EntityType]
-        required :entity_type, enum: -> { Telnyx::Number10dlc::EntityType }, api_name: :entityType
+        #   @return [Symbol, Telnyx::Models::EntityType]
+        required :entity_type, enum: -> { Telnyx::EntityType }, api_name: :entityType
 
         # @!attribute vertical
         #   Vertical or industry segment of the brand or campaign.
         #
-        #   @return [Symbol, Telnyx::Models::Number10dlc::Vertical]
-        required :vertical, enum: -> { Telnyx::Number10dlc::Vertical }
+        #   @return [Symbol, Telnyx::Models::Vertical]
+        required :vertical, enum: -> { Telnyx::Vertical }
 
         # @!attribute alt_business_id
         #   Alternate business identifier such as DUNS, LEI, or GIIN
@@ -47,10 +47,8 @@ module Telnyx
         # @!attribute alt_business_id_type
         #   An enumeration.
         #
-        #   @return [Symbol, Telnyx::Models::Number10dlc::AltBusinessIDType, nil]
-        optional :alt_business_id_type,
-                 enum: -> { Telnyx::Number10dlc::AltBusinessIDType },
-                 api_name: :altBusinessIdType
+        #   @return [Symbol, Telnyx::Models::AltBusinessIDType, nil]
+        optional :alt_business_id_type, enum: -> { Telnyx::AltBusinessIDType }, api_name: :altBusinessIdType
 
         # @!attribute business_contact_email
         #   Business contact email.
@@ -89,10 +87,8 @@ module Telnyx
         # @!attribute identity_status
         #   The verification status of an active brand
         #
-        #   @return [Symbol, Telnyx::Models::Number10dlc::BrandIdentityStatus, nil]
-        optional :identity_status,
-                 enum: -> { Telnyx::Number10dlc::BrandIdentityStatus },
-                 api_name: :identityStatus
+        #   @return [Symbol, Telnyx::Models::BrandIdentityStatus, nil]
+        optional :identity_status, enum: -> { Telnyx::BrandIdentityStatus }, api_name: :identityStatus
 
         # @!attribute ip_address
         #   IP address of the browser requesting to create brand identity.
@@ -132,8 +128,8 @@ module Telnyx
         # @!attribute stock_exchange
         #   (Required for public company) stock exchange.
         #
-        #   @return [Symbol, Telnyx::Models::Number10dlc::StockExchange, nil]
-        optional :stock_exchange, enum: -> { Telnyx::Number10dlc::StockExchange }, api_name: :stockExchange
+        #   @return [Symbol, Telnyx::Models::StockExchange, nil]
+        optional :stock_exchange, enum: -> { Telnyx::StockExchange }, api_name: :stockExchange
 
         # @!attribute stock_symbol
         #   (Required for public company) stock symbol.
@@ -175,13 +171,13 @@ module Telnyx
         #
         #   @param email [String] Valid email address of brand support contact.
         #
-        #   @param entity_type [Symbol, Telnyx::Models::Number10dlc::EntityType] Entity type behind the brand. This is the form of business establishment.
+        #   @param entity_type [Symbol, Telnyx::Models::EntityType] Entity type behind the brand. This is the form of business establishment.
         #
-        #   @param vertical [Symbol, Telnyx::Models::Number10dlc::Vertical] Vertical or industry segment of the brand or campaign.
+        #   @param vertical [Symbol, Telnyx::Models::Vertical] Vertical or industry segment of the brand or campaign.
         #
         #   @param alt_business_id [String] Alternate business identifier such as DUNS, LEI, or GIIN
         #
-        #   @param alt_business_id_type [Symbol, Telnyx::Models::Number10dlc::AltBusinessIDType] An enumeration.
+        #   @param alt_business_id_type [Symbol, Telnyx::Models::AltBusinessIDType] An enumeration.
         #
         #   @param business_contact_email [String] Business contact email.
         #
@@ -193,7 +189,7 @@ module Telnyx
         #
         #   @param first_name [String] First name of business contact.
         #
-        #   @param identity_status [Symbol, Telnyx::Models::Number10dlc::BrandIdentityStatus] The verification status of an active brand
+        #   @param identity_status [Symbol, Telnyx::Models::BrandIdentityStatus] The verification status of an active brand
         #
         #   @param ip_address [String] IP address of the browser requesting to create brand identity.
         #
@@ -207,7 +203,7 @@ module Telnyx
         #
         #   @param state [String] State. Must be 2 letters code for United States.
         #
-        #   @param stock_exchange [Symbol, Telnyx::Models::Number10dlc::StockExchange] (Required for public company) stock exchange.
+        #   @param stock_exchange [Symbol, Telnyx::Models::StockExchange] (Required for public company) stock exchange.
         #
         #   @param stock_symbol [String] (Required for public company) stock symbol.
         #

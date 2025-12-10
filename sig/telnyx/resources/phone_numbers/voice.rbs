@@ -26,7 +26,7 @@ module Telnyx
           ?page: Telnyx::PhoneNumbers::VoiceListParams::Page,
           ?sort: Telnyx::Models::PhoneNumbers::VoiceListParams::sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPagination[Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings]
+        ) -> Telnyx::Models::PhoneNumbers::VoiceListResponse
 
         def initialize: (client: Telnyx::Client) -> void
       end

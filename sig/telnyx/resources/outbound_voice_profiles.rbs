@@ -48,7 +48,7 @@ module Telnyx
         ?page: Telnyx::OutboundVoiceProfileListParams::Page,
         ?sort: Telnyx::Models::OutboundVoiceProfileListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::OutboundVoiceProfile]
+      ) -> Telnyx::Models::OutboundVoiceProfileListResponse
 
       def delete: (
         String id,

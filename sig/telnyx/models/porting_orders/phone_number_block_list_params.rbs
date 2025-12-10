@@ -154,36 +154,18 @@ module Telnyx
           end
 
           type status =
-            Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::porting_order_single_status
+            :draft
+            | :"in-process"
+            | :submitted
+            | :exception
+            | :"foc-date-confirmed"
+            | :"cancel-pending"
+            | :ported
+            | :cancelled
             | ::Array[Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::union_member1]
 
           module Status
             extend Telnyx::Internal::Type::Union
-
-            type porting_order_single_status =
-              :draft
-              | :"in-process"
-              | :submitted
-              | :exception
-              | :"foc-date-confirmed"
-              | :"cancel-pending"
-              | :ported
-              | :cancelled
-
-            module PortingOrderSingleStatus
-              extend Telnyx::Internal::Type::Enum
-
-              DRAFT: :draft
-              IN_PROCESS: :"in-process"
-              SUBMITTED: :submitted
-              EXCEPTION: :exception
-              FOC_DATE_CONFIRMED: :"foc-date-confirmed"
-              CANCEL_PENDING: :"cancel-pending"
-              PORTED: :ported
-              CANCELLED: :cancelled
-
-              def self?.values: -> ::Array[Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::porting_order_single_status]
-            end
 
             type union_member1 =
               :draft
@@ -211,6 +193,15 @@ module Telnyx
             end
 
             def self?.variants: -> ::Array[Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::status]
+
+            DRAFT: :draft
+            IN_PROCESS: :"in-process"
+            SUBMITTED: :submitted
+            EXCEPTION: :exception
+            FOC_DATE_CONFIRMED: :"foc-date-confirmed"
+            CANCEL_PENDING: :"cancel-pending"
+            PORTED: :ported
+            CANCELLED: :cancelled
 
             UnionMember1Array: Telnyx::Internal::Type::Converter
           end

@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Number10dlc::CampaignBuilderTest < Telnyx::Test::
       )
 
     assert_pattern do
-      response => Telnyx::Number10dlc::TelnyxCampaignCsp
+      response => Telnyx::TelnyxCampaignCsp
     end
 
     assert_pattern do
@@ -31,7 +31,7 @@ class Telnyx::Test::Resources::Number10dlc::CampaignBuilderTest < Telnyx::Test::
         auto_renewal: Telnyx::Internal::Type::Boolean | nil,
         billed_date: String | nil,
         brand_display_name: String | nil,
-        campaign_status: Telnyx::Number10dlc::TelnyxCampaignCsp::CampaignStatus | nil,
+        campaign_status: Telnyx::TelnyxCampaignCsp::CampaignStatus | nil,
         create_date: String | nil,
         direct_lending: Telnyx::Internal::Type::Boolean | nil,
         embedded_link: Telnyx::Internal::Type::Boolean | nil,
@@ -59,7 +59,7 @@ class Telnyx::Test::Resources::Number10dlc::CampaignBuilderTest < Telnyx::Test::
         sample4: String | nil,
         sample5: String | nil,
         status: String | nil,
-        submission_status: Telnyx::Number10dlc::TelnyxCampaignCsp::SubmissionStatus | nil,
+        submission_status: Telnyx::TelnyxCampaignCsp::SubmissionStatus | nil,
         subscriber_help: Telnyx::Internal::Type::Boolean | nil,
         subscriber_optin: Telnyx::Internal::Type::Boolean | nil,
         subscriber_optout: Telnyx::Internal::Type::Boolean | nil,

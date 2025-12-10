@@ -48,14 +48,16 @@ module Telnyx
       # Gets a paginated list of Verified Numbers.
       sig do
         params(
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::VerifiedNumberListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultFlatPagination[Telnyx::VerifiedNumber]
-        )
+        ).returns(Telnyx::Models::VerifiedNumberListResponse)
       end
-      def list(page_number: nil, page_size: nil, request_options: {})
+      def list(
+        # Consolidated page parameter (deepObject style). Use page[size] and page[number]
+        # in the query string. Originally: page[size], page[number]
+        page: nil,
+        request_options: {}
+      )
       end
 
       # Delete a verified number

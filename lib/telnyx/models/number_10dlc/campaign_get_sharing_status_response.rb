@@ -7,17 +7,17 @@ module Telnyx
       class CampaignGetSharingStatusResponse < Telnyx::Internal::Type::BaseModel
         # @!attribute shared_by_me
         #
-        #   @return [Telnyx::Models::Number10dlc::CampaignSharingStatus, nil]
-        optional :shared_by_me, -> { Telnyx::Number10dlc::CampaignSharingStatus }, api_name: :sharedByMe
+        #   @return [Telnyx::Models::CampaignSharingStatus, nil]
+        optional :shared_by_me, -> { Telnyx::CampaignSharingStatus }, api_name: :sharedByMe
 
         # @!attribute shared_with_me
         #
-        #   @return [Telnyx::Models::Number10dlc::CampaignSharingStatus, nil]
-        optional :shared_with_me, -> { Telnyx::Number10dlc::CampaignSharingStatus }, api_name: :sharedWithMe
+        #   @return [Telnyx::Models::CampaignSharingStatus, nil]
+        optional :shared_with_me, -> { Telnyx::CampaignSharingStatus }, api_name: :sharedWithMe
 
         # @!method initialize(shared_by_me: nil, shared_with_me: nil)
-        #   @param shared_by_me [Telnyx::Models::Number10dlc::CampaignSharingStatus]
-        #   @param shared_with_me [Telnyx::Models::Number10dlc::CampaignSharingStatus]
+        #   @param shared_by_me [Telnyx::Models::CampaignSharingStatus]
+        #   @param shared_with_me [Telnyx::Models::CampaignSharingStatus]
       end
     end
   end

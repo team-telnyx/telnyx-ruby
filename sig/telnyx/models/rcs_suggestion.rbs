@@ -34,7 +34,7 @@ module Telnyx
           fallback_url: String,
           open_url_action: Telnyx::RcsSuggestion::Action::OpenURLAction,
           postback_data: String,
-          share_location_action: ::Hash[Symbol, top],
+          share_location_action: top,
           text: String,
           view_location_action: Telnyx::RcsSuggestion::Action::ViewLocationAction
         }
@@ -66,9 +66,9 @@ module Telnyx
 
         def postback_data=: (String) -> String
 
-        attr_reader share_location_action: ::Hash[Symbol, top]?
+        attr_reader share_location_action: top?
 
-        def share_location_action=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+        def share_location_action=: (top) -> top
 
         attr_reader text: String?
 
@@ -86,7 +86,7 @@ module Telnyx
           ?fallback_url: String,
           ?open_url_action: Telnyx::RcsSuggestion::Action::OpenURLAction,
           ?postback_data: String,
-          ?share_location_action: ::Hash[Symbol, top],
+          ?share_location_action: top,
           ?text: String,
           ?view_location_action: Telnyx::RcsSuggestion::Action::ViewLocationAction
         ) -> void
@@ -97,7 +97,7 @@ module Telnyx
           fallback_url: String,
           open_url_action: Telnyx::RcsSuggestion::Action::OpenURLAction,
           postback_data: String,
-          share_location_action: ::Hash[Symbol, top],
+          share_location_action: top,
           text: String,
           view_location_action: Telnyx::RcsSuggestion::Action::ViewLocationAction
         }

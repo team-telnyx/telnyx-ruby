@@ -28,11 +28,11 @@ module Telnyx
         attr_accessor :email
 
         # Entity type behind the brand. This is the form of business establishment.
-        sig { returns(Telnyx::Number10dlc::EntityType::OrSymbol) }
+        sig { returns(Telnyx::EntityType::OrSymbol) }
         attr_accessor :entity_type
 
         # Vertical or industry segment of the brand or campaign.
-        sig { returns(Telnyx::Number10dlc::Vertical::OrSymbol) }
+        sig { returns(Telnyx::Vertical::OrSymbol) }
         attr_accessor :vertical
 
         # Business contact email.
@@ -130,14 +130,10 @@ module Telnyx
         attr_writer :state
 
         # (Required for public company) stock exchange.
-        sig { returns(T.nilable(Telnyx::Number10dlc::StockExchange::OrSymbol)) }
+        sig { returns(T.nilable(Telnyx::StockExchange::OrSymbol)) }
         attr_reader :stock_exchange
 
-        sig do
-          params(
-            stock_exchange: Telnyx::Number10dlc::StockExchange::OrSymbol
-          ).void
-        end
+        sig { params(stock_exchange: Telnyx::StockExchange::OrSymbol).void }
         attr_writer :stock_exchange
 
         # (Required for public company) stock symbol.
@@ -180,8 +176,8 @@ module Telnyx
             country: String,
             display_name: String,
             email: String,
-            entity_type: Telnyx::Number10dlc::EntityType::OrSymbol,
-            vertical: Telnyx::Number10dlc::Vertical::OrSymbol,
+            entity_type: Telnyx::EntityType::OrSymbol,
+            vertical: Telnyx::Vertical::OrSymbol,
             business_contact_email: String,
             city: String,
             company_name: String,
@@ -195,7 +191,7 @@ module Telnyx
             phone: String,
             postal_code: String,
             state: String,
-            stock_exchange: Telnyx::Number10dlc::StockExchange::OrSymbol,
+            stock_exchange: Telnyx::StockExchange::OrSymbol,
             stock_symbol: String,
             street: String,
             webhook_failover_url: String,
@@ -266,8 +262,8 @@ module Telnyx
               country: String,
               display_name: String,
               email: String,
-              entity_type: Telnyx::Number10dlc::EntityType::OrSymbol,
-              vertical: Telnyx::Number10dlc::Vertical::OrSymbol,
+              entity_type: Telnyx::EntityType::OrSymbol,
+              vertical: Telnyx::Vertical::OrSymbol,
               business_contact_email: String,
               city: String,
               company_name: String,
@@ -281,7 +277,7 @@ module Telnyx
               phone: String,
               postal_code: String,
               state: String,
-              stock_exchange: Telnyx::Number10dlc::StockExchange::OrSymbol,
+              stock_exchange: Telnyx::StockExchange::OrSymbol,
               stock_symbol: String,
               street: String,
               webhook_failover_url: String,

@@ -80,7 +80,7 @@ class Telnyx::Test::Resources::MessagingProfiles::AutorespConfigsTest < Telnyx::
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingProfiles::AutoRespConfig]),
-        meta: Telnyx::MessagingPaginationMeta
+        meta: Telnyx::Models::MessagingProfiles::AutorespConfigListResponse::Meta
       }
     end
   end

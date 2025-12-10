@@ -25,11 +25,7 @@ module Telnyx
             page: Telnyx::PhoneNumbers::JobListParams::Page::OrHash,
             sort: Telnyx::PhoneNumbers::JobListParams::Sort::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(
-            Telnyx::Internal::DefaultPagination[
-              Telnyx::PhoneNumbers::PhoneNumbersJob
-            ]
-          )
+          ).returns(Telnyx::Models::PhoneNumbers::JobListResponse)
         end
         def list(
           # Consolidated filter parameter (deepObject style). Originally: filter[type]

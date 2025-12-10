@@ -4,7 +4,6 @@ module Telnyx
   module Models
     module AI
       module Conversations
-        # @see Telnyx::Resources::AI::Conversations::InsightGroups#retrieve_insight_groups
         class InsightTemplateGroup < Telnyx::Internal::Type::BaseModel
           # @!attribute id
           #

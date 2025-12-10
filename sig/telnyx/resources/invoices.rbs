@@ -8,11 +8,10 @@ module Telnyx
       ) -> Telnyx::Models::InvoiceRetrieveResponse
 
       def list: (
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::InvoiceListParams::Page,
         ?sort: Telnyx::Models::InvoiceListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::InvoiceListResponse]
+      ) -> Telnyx::Models::InvoiceListResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

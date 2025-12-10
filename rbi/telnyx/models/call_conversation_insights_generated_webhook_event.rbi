@@ -443,8 +443,7 @@ module Telnyx
             module Result
               extend Telnyx::Internal::Type::Union
 
-              Variants =
-                T.type_alias { T.any(T::Hash[Symbol, T.anything], String) }
+              Variants = T.type_alias { T.any(T.anything, String) }
 
               sig do
                 override.returns(
@@ -455,14 +454,6 @@ module Telnyx
               end
               def self.variants
               end
-
-              InsightObjectResultMap =
-                T.let(
-                  Telnyx::Internal::Type::HashOf[
-                    Telnyx::Internal::Type::Unknown
-                  ],
-                  Telnyx::Internal::Type::Converter
-                )
             end
           end
         end

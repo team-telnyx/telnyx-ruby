@@ -67,7 +67,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::DynamicEmergencyAddress>]
+      # @return [Telnyx::Models::DynamicEmergencyAddressListResponse]
       #
       # @see Telnyx::Models::DynamicEmergencyAddressListParams
       def list(params = {})
@@ -76,8 +76,7 @@ module Telnyx
           method: :get,
           path: "dynamic_emergency_addresses",
           query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
-          model: Telnyx::DynamicEmergencyAddress,
+          model: Telnyx::Models::DynamicEmergencyAddressListResponse,
           options: options
         )
       end

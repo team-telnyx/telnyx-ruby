@@ -99,18 +99,18 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::FaxListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::FaxListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultFlatPagination[Telnyx::Fax])
+        ).returns(Telnyx::Models::FaxListResponse)
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[created_at][gte], filter[created_at][gt], filter[created_at][lte],
         # filter[created_at][lt], filter[direction][eq], filter[from][eq], filter[to][eq]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated pagination parameter (deepObject style). Originally: page[size],
+        # page[number]
+        page: nil,
         request_options: {}
       )
       end

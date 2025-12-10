@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::Fqdns#list
     class Fqdn < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Identifies the resource.

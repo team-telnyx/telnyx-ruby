@@ -9,25 +9,13 @@ class Telnyx::Test::Resources::CallEventsTest < Telnyx::Test::ResourceTest
     response = @telnyx.call_events.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Models::CallEventListResponse
+      response => Telnyx::Models::CallEventListResponse
     end
 
     assert_pattern do
-      row => {
-        call_leg_id: String,
-        call_session_id: String,
-        event_timestamp: String,
-        metadata: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]),
-        name: String,
-        record_type: Telnyx::Models::CallEventListResponse::RecordType,
-        type: Telnyx::Models::CallEventListResponse::Type
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::CallEventListResponse::Data]) | nil,
+        meta: Telnyx::PaginationMeta | nil
       }
     end
   end

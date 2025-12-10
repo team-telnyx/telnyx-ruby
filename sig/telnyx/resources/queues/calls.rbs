@@ -19,7 +19,7 @@ module Telnyx
           String queue_name,
           ?page: Telnyx::Queues::CallListParams::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::Queues::CallListResponse]
+        ) -> Telnyx::Models::Queues::CallListResponse
 
         def remove: (
           String call_control_id,

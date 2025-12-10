@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type region_in = { region_code: String }
+
+    class RegionIn < Telnyx::Internal::Type::BaseModel
+      attr_reader region_code: String?
+
+      def region_code=: (String) -> String
+
+      def initialize: (?region_code: String) -> void
+
+      def to_hash: -> { region_code: String }
+    end
+  end
+end

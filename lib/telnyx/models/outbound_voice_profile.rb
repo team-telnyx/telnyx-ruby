@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::OutboundVoiceProfiles#list
     class OutboundVoiceProfile < Telnyx::Internal::Type::BaseModel
       # @!attribute name
       #   A user-supplied name to help with organization.
