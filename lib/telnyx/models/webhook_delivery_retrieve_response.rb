@@ -142,16 +142,14 @@ module Telnyx
             #   Response details, optional.
             #
             #   @return [Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response, nil]
-            optional :response,
-                     -> { Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response },
-                     nil?: true
+            optional :response, -> { Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response }
 
             # @!method initialize(request: nil, response: nil)
             #   HTTP request and response information.
             #
             #   @param request [Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Request] Request details.
             #
-            #   @param response [Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response, nil] Response details, optional.
+            #   @param response [Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response] Response details, optional.
 
             # @see Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP#request
             class Request < Telnyx::Internal::Type::BaseModel
