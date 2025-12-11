@@ -126,7 +126,7 @@ module Telnyx
         type http =
           {
             request: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Request,
-            response: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response?
+            response: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response
           }
 
         class HTTP < Telnyx::Internal::Type::BaseModel
@@ -136,16 +136,20 @@ module Telnyx
             Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Request
           ) -> Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Request
 
-          attr_accessor response: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response?
+          attr_reader response: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response?
+
+          def response=: (
+            Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response
+          ) -> Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response
 
           def initialize: (
             ?request: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Request,
-            ?response: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response?
+            ?response: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response
           ) -> void
 
           def to_hash: -> {
             request: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Request,
-            response: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response?
+            response: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response
           }
 
           type request = { headers: ::Array[::Array[String]], url: String }

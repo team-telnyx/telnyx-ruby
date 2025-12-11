@@ -298,9 +298,7 @@ module Telnyx
           sig do
             params(
               response:
-                T.nilable(
-                  Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response::OrHash
-                )
+                Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response::OrHash
             ).void
           end
           attr_writer :response
@@ -311,9 +309,7 @@ module Telnyx
               request:
                 Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Request::OrHash,
               response:
-                T.nilable(
-                  Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response::OrHash
-                )
+                Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
@@ -330,9 +326,7 @@ module Telnyx
                 request:
                   Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Request,
                 response:
-                  T.nilable(
-                    Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response
-                  )
+                  Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response
               }
             )
           end
