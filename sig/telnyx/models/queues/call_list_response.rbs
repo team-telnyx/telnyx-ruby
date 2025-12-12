@@ -13,7 +13,8 @@ module Telnyx
           queue_position: Integer,
           record_type: Telnyx::Models::Queues::CallListResponse::record_type,
           to: String,
-          wait_time_secs: Integer
+          wait_time_secs: Integer,
+          is_alive: bool
         }
 
       class CallListResponse < Telnyx::Internal::Type::BaseModel
@@ -39,6 +40,10 @@ module Telnyx
 
         attr_accessor wait_time_secs: Integer
 
+        attr_reader is_alive: bool?
+
+        def is_alive=: (bool) -> bool
+
         def initialize: (
           call_control_id: String,
           call_leg_id: String,
@@ -50,7 +55,8 @@ module Telnyx
           queue_position: Integer,
           record_type: Telnyx::Models::Queues::CallListResponse::record_type,
           to: String,
-          wait_time_secs: Integer
+          wait_time_secs: Integer,
+          ?is_alive: bool
         ) -> void
 
         def to_hash: -> {
@@ -64,7 +70,8 @@ module Telnyx
           queue_position: Integer,
           record_type: Telnyx::Models::Queues::CallListResponse::record_type,
           to: String,
-          wait_time_secs: Integer
+          wait_time_secs: Integer,
+          is_alive: bool
         }
 
         type record_type = :queue_call

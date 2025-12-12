@@ -251,8 +251,8 @@ module Telnyx
           attr_writer :from
 
           # The reason the call was ended (`call_rejected`, `normal_clearing`,
-          # `originator_cancel`, `timeout`, `time_limit`, `user_busy`, `not_found` or
-          # `unspecified`).
+          # `originator_cancel`, `timeout`, `time_limit`, `user_busy`, `not_found`,
+          # `no_answer` or `unspecified`).
           sig do
             returns(
               T.nilable(
@@ -390,8 +390,8 @@ module Telnyx
             # Number or SIP URI placing the call.
             from: nil,
             # The reason the call was ended (`call_rejected`, `normal_clearing`,
-            # `originator_cancel`, `timeout`, `time_limit`, `user_busy`, `not_found` or
-            # `unspecified`).
+            # `originator_cancel`, `timeout`, `time_limit`, `user_busy`, `not_found`,
+            # `no_answer` or `unspecified`).
             hangup_cause: nil,
             # The party who ended the call (`callee`, `caller`, `unknown`).
             hangup_source: nil,
@@ -650,8 +650,8 @@ module Telnyx
           end
 
           # The reason the call was ended (`call_rejected`, `normal_clearing`,
-          # `originator_cancel`, `timeout`, `time_limit`, `user_busy`, `not_found` or
-          # `unspecified`).
+          # `originator_cancel`, `timeout`, `time_limit`, `user_busy`, `not_found`,
+          # `no_answer` or `unspecified`).
           module HangupCause
             extend Telnyx::Internal::Type::Enum
 
@@ -697,6 +697,11 @@ module Telnyx
             NOT_FOUND =
               T.let(
                 :not_found,
+                Telnyx::CallHangupWebhookEvent::Data::Payload::HangupCause::TaggedSymbol
+              )
+            NO_ANSWER =
+              T.let(
+                :no_answer,
                 Telnyx::CallHangupWebhookEvent::Data::Payload::HangupCause::TaggedSymbol
               )
             UNSPECIFIED =

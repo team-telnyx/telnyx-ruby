@@ -75,7 +75,7 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
     response =
       @telnyx.texml.accounts.calls.calls(
         "account_sid",
-        application_sid: "ApplicationSid",
+        application_sid: "example-app-sid",
         from: "+13120001234",
         to: "+13121230000"
       )
