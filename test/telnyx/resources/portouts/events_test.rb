@@ -36,17 +36,11 @@ class Telnyx::Test::Resources::Portouts::EventsTest < Telnyx::Test::ResourceTest
     end
 
     assert_pattern do
-      row => {
-        id: String | nil,
-        available_notification_methods: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::Portouts::EventListResponse::AvailableNotificationMethod]) | nil,
-        created_at: Time | nil,
-        event_type: Telnyx::Models::Portouts::EventListResponse::EventType | nil,
-        payload: Telnyx::Models::Portouts::EventListResponse::Payload | nil,
-        payload_status: Telnyx::Models::Portouts::EventListResponse::PayloadStatus | nil,
-        portout_id: String | nil,
-        record_type: String | nil,
-        updated_at: Time | nil
-      }
+      case row
+      in Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged
+      in Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment
+      in Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged
+      end
     end
   end
 

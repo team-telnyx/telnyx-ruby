@@ -4,123 +4,127 @@ module Telnyx
   module Models
     module Portouts
       # @see Telnyx::Resources::Portouts::Events#list
-      class EventListResponse < Telnyx::Internal::Type::BaseModel
-        # @!attribute id
-        #   Uniquely identifies the event.
-        #
-        #   @return [String, nil]
-        optional :id, String
+      module EventListResponse
+        extend Telnyx::Internal::Type::Union
 
-        # @!attribute available_notification_methods
-        #   Indicates the notification methods used.
-        #
-        #   @return [Array<Symbol, Telnyx::Models::Portouts::EventListResponse::AvailableNotificationMethod>, nil]
-        optional :available_notification_methods,
-                 -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::Portouts::EventListResponse::AvailableNotificationMethod] }
+        discriminator :event_type
 
-        # @!attribute created_at
-        #   ISO 8601 formatted date indicating when the resource was created.
-        #
-        #   @return [Time, nil]
-        optional :created_at, Time
+        variant -> { Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged }
 
-        # @!attribute event_type
-        #   Identifies the event type
-        #
-        #   @return [Symbol, Telnyx::Models::Portouts::EventListResponse::EventType, nil]
-        optional :event_type, enum: -> { Telnyx::Models::Portouts::EventListResponse::EventType }
+        variant -> { Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment }
 
-        # @!attribute payload
-        #   The webhook payload for the portout.status_changed event
-        #
-        #   @return [Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload, Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutNewCommentPayload, Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutFocDateChangedPayload, nil]
-        optional :payload, union: -> { Telnyx::Models::Portouts::EventListResponse::Payload }
+        variant -> { Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged }
 
-        # @!attribute payload_status
-        #   The status of the payload generation.
-        #
-        #   @return [Symbol, Telnyx::Models::Portouts::EventListResponse::PayloadStatus, nil]
-        optional :payload_status, enum: -> { Telnyx::Models::Portouts::EventListResponse::PayloadStatus }
-
-        # @!attribute portout_id
-        #   Identifies the port-out order associated with the event.
-        #
-        #   @return [String, nil]
-        optional :portout_id, String
-
-        # @!attribute updated_at
-        #   ISO 8601 formatted date indicating when the resource was updated.
-        #
-        #   @return [Time, nil]
-        optional :updated_at, Time
-
-        response_only do
-          # @!attribute record_type
-          #   Identifies the type of the resource.
+        class WebhookPortoutStatusChanged < Telnyx::Internal::Type::BaseModel
+          # @!attribute id
+          #   Uniquely identifies the event.
           #
           #   @return [String, nil]
-          optional :record_type, String
-        end
+          optional :id, String
 
-        # @!method initialize(id: nil, available_notification_methods: nil, created_at: nil, event_type: nil, payload: nil, payload_status: nil, portout_id: nil, record_type: nil, updated_at: nil)
-        #   @param id [String] Uniquely identifies the event.
-        #
-        #   @param available_notification_methods [Array<Symbol, Telnyx::Models::Portouts::EventListResponse::AvailableNotificationMethod>] Indicates the notification methods used.
-        #
-        #   @param created_at [Time] ISO 8601 formatted date indicating when the resource was created.
-        #
-        #   @param event_type [Symbol, Telnyx::Models::Portouts::EventListResponse::EventType] Identifies the event type
-        #
-        #   @param payload [Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload, Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutNewCommentPayload, Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutFocDateChangedPayload] The webhook payload for the portout.status_changed event
-        #
-        #   @param payload_status [Symbol, Telnyx::Models::Portouts::EventListResponse::PayloadStatus] The status of the payload generation.
-        #
-        #   @param portout_id [String] Identifies the port-out order associated with the event.
-        #
-        #   @param record_type [String] Identifies the type of the resource.
-        #
-        #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
+          # @!attribute available_notification_methods
+          #   Indicates the notification methods used.
+          #
+          #   @return [Array<Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::AvailableNotificationMethod>, nil]
+          optional :available_notification_methods,
+                   -> do
+                     Telnyx::Internal::Type::ArrayOf[
+                       enum: Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::AvailableNotificationMethod
+                     ]
+                   end
 
-        module AvailableNotificationMethod
-          extend Telnyx::Internal::Type::Enum
+          # @!attribute created_at
+          #   ISO 8601 formatted date indicating when the resource was created.
+          #
+          #   @return [Time, nil]
+          optional :created_at, Time
 
-          EMAIL = :email
-          WEBHOOK = :webhook
+          # @!attribute event_type
+          #   Identifies the event type
+          #
+          #   @return [Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::EventType, nil]
+          optional :event_type,
+                   enum: -> { Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::EventType }
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
+          # @!attribute payload
+          #   The webhook payload for the portout.status_changed event
+          #
+          #   @return [Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload, nil]
+          optional :payload,
+                   -> { Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload }
 
-        # Identifies the event type
-        #
-        # @see Telnyx::Models::Portouts::EventListResponse#event_type
-        module EventType
-          extend Telnyx::Internal::Type::Enum
+          # @!attribute payload_status
+          #   The status of the payload generation.
+          #
+          #   @return [Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::PayloadStatus, nil]
+          optional :payload_status,
+                   enum: -> { Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::PayloadStatus }
 
-          PORTOUT_STATUS_CHANGED = :"portout.status_changed"
-          PORTOUT_FOC_DATE_CHANGED = :"portout.foc_date_changed"
-          PORTOUT_NEW_COMMENT = :"portout.new_comment"
+          # @!attribute portout_id
+          #   Identifies the port-out order associated with the event.
+          #
+          #   @return [String, nil]
+          optional :portout_id, String
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
+          # @!attribute updated_at
+          #   ISO 8601 formatted date indicating when the resource was updated.
+          #
+          #   @return [Time, nil]
+          optional :updated_at, Time
 
-        # The webhook payload for the portout.status_changed event
-        #
-        # @see Telnyx::Models::Portouts::EventListResponse#payload
-        module Payload
-          extend Telnyx::Internal::Type::Union
+          response_only do
+            # @!attribute record_type
+            #   Identifies the type of the resource.
+            #
+            #   @return [String, nil]
+            optional :record_type, String
+          end
 
-          # The webhook payload for the portout.status_changed event
-          variant -> { Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload }
+          # @!method initialize(id: nil, available_notification_methods: nil, created_at: nil, event_type: nil, payload: nil, payload_status: nil, portout_id: nil, record_type: nil, updated_at: nil)
+          #   @param id [String] Uniquely identifies the event.
+          #
+          #   @param available_notification_methods [Array<Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::AvailableNotificationMethod>] Indicates the notification methods used.
+          #
+          #   @param created_at [Time] ISO 8601 formatted date indicating when the resource was created.
+          #
+          #   @param event_type [Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::EventType] Identifies the event type
+          #
+          #   @param payload [Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload] The webhook payload for the portout.status_changed event
+          #
+          #   @param payload_status [Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::PayloadStatus] The status of the payload generation.
+          #
+          #   @param portout_id [String] Identifies the port-out order associated with the event.
+          #
+          #   @param record_type [String] Identifies the type of the resource.
+          #
+          #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
 
-          # The webhook payload for the portout.new_comment event
-          variant -> { Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutNewCommentPayload }
+          module AvailableNotificationMethod
+            extend Telnyx::Internal::Type::Enum
 
-          # The webhook payload for the portout.foc_date_changed event
-          variant -> { Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutFocDateChangedPayload }
+            EMAIL = :email
+            WEBHOOK = :webhook
 
-          class WebhookPortoutStatusChangedPayload < Telnyx::Internal::Type::BaseModel
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Identifies the event type
+          #
+          # @see Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged#event_type
+          module EventType
+            extend Telnyx::Internal::Type::Enum
+
+            PORTOUT_STATUS_CHANGED = :"portout.status_changed"
+            PORTOUT_FOC_DATE_CHANGED = :"portout.foc_date_changed"
+            PORTOUT_NEW_COMMENT = :"portout.new_comment"
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged#payload
+          class Payload < Telnyx::Internal::Type::BaseModel
             # @!attribute id
             #   Identifies the port out that was moved.
             #
@@ -161,9 +165,9 @@ module Telnyx
             # @!attribute status
             #   The new status of the port out.
             #
-            #   @return [Symbol, Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload::Status, nil]
+            #   @return [Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload::Status, nil]
             optional :status,
-                     enum: -> { Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload::Status }
+                     enum: -> { Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload::Status }
 
             # @!attribute subscriber_name
             #   The name of the port-out's end user.
@@ -179,7 +183,7 @@ module Telnyx
 
             # @!method initialize(id: nil, attempted_pin: nil, carrier_name: nil, phone_numbers: nil, rejection_reason: nil, spid: nil, status: nil, subscriber_name: nil, user_id: nil)
             #   Some parameter documentations has been truncated, see
-            #   {Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload}
+            #   {Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload}
             #   for more details.
             #
             #   The webhook payload for the portout.status_changed event
@@ -196,7 +200,7 @@ module Telnyx
             #
             #   @param spid [String] The new carrier SPID.
             #
-            #   @param status [Symbol, Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload::Status] The new status of the port out.
+            #   @param status [Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload::Status] The new status of the port out.
             #
             #   @param subscriber_name [String] The name of the port-out's end user.
             #
@@ -204,7 +208,7 @@ module Telnyx
 
             # The new status of the port out.
             #
-            # @see Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload#status
+            # @see Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload#status
             module Status
               extend Telnyx::Internal::Type::Enum
 
@@ -220,7 +224,125 @@ module Telnyx
             end
           end
 
-          class WebhookPortoutNewCommentPayload < Telnyx::Internal::Type::BaseModel
+          # The status of the payload generation.
+          #
+          # @see Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged#payload_status
+          module PayloadStatus
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED = :created
+            COMPLETED = :completed
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
+        class WebhookPortoutNewComment < Telnyx::Internal::Type::BaseModel
+          # @!attribute id
+          #   Uniquely identifies the event.
+          #
+          #   @return [String, nil]
+          optional :id, String
+
+          # @!attribute available_notification_methods
+          #   Indicates the notification methods used.
+          #
+          #   @return [Array<Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::AvailableNotificationMethod>, nil]
+          optional :available_notification_methods,
+                   -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::AvailableNotificationMethod] }
+
+          # @!attribute created_at
+          #   ISO 8601 formatted date indicating when the resource was created.
+          #
+          #   @return [Time, nil]
+          optional :created_at, Time
+
+          # @!attribute event_type
+          #   Identifies the event type
+          #
+          #   @return [Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::EventType, nil]
+          optional :event_type,
+                   enum: -> { Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::EventType }
+
+          # @!attribute payload
+          #   The webhook payload for the portout.new_comment event
+          #
+          #   @return [Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::Payload, nil]
+          optional :payload, -> { Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::Payload }
+
+          # @!attribute payload_status
+          #   The status of the payload generation.
+          #
+          #   @return [Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::PayloadStatus, nil]
+          optional :payload_status,
+                   enum: -> { Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::PayloadStatus }
+
+          # @!attribute portout_id
+          #   Identifies the port-out order associated with the event.
+          #
+          #   @return [String, nil]
+          optional :portout_id, String
+
+          # @!attribute updated_at
+          #   ISO 8601 formatted date indicating when the resource was updated.
+          #
+          #   @return [Time, nil]
+          optional :updated_at, Time
+
+          response_only do
+            # @!attribute record_type
+            #   Identifies the type of the resource.
+            #
+            #   @return [String, nil]
+            optional :record_type, String
+          end
+
+          # @!method initialize(id: nil, available_notification_methods: nil, created_at: nil, event_type: nil, payload: nil, payload_status: nil, portout_id: nil, record_type: nil, updated_at: nil)
+          #   @param id [String] Uniquely identifies the event.
+          #
+          #   @param available_notification_methods [Array<Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::AvailableNotificationMethod>] Indicates the notification methods used.
+          #
+          #   @param created_at [Time] ISO 8601 formatted date indicating when the resource was created.
+          #
+          #   @param event_type [Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::EventType] Identifies the event type
+          #
+          #   @param payload [Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::Payload] The webhook payload for the portout.new_comment event
+          #
+          #   @param payload_status [Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::PayloadStatus] The status of the payload generation.
+          #
+          #   @param portout_id [String] Identifies the port-out order associated with the event.
+          #
+          #   @param record_type [String] Identifies the type of the resource.
+          #
+          #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
+
+          module AvailableNotificationMethod
+            extend Telnyx::Internal::Type::Enum
+
+            EMAIL = :email
+            WEBHOOK = :webhook
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Identifies the event type
+          #
+          # @see Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment#event_type
+          module EventType
+            extend Telnyx::Internal::Type::Enum
+
+            PORTOUT_STATUS_CHANGED = :"portout.status_changed"
+            PORTOUT_FOC_DATE_CHANGED = :"portout.foc_date_changed"
+            PORTOUT_NEW_COMMENT = :"portout.new_comment"
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment#payload
+          class Payload < Telnyx::Internal::Type::BaseModel
             # @!attribute id
             #   Identifies the comment that was added to the port-out order.
             #
@@ -257,7 +379,130 @@ module Telnyx
             #   @param user_id [String] Identifies the user that added the comment.
           end
 
-          class WebhookPortoutFocDateChangedPayload < Telnyx::Internal::Type::BaseModel
+          # The status of the payload generation.
+          #
+          # @see Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment#payload_status
+          module PayloadStatus
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED = :created
+            COMPLETED = :completed
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
+        class WebhookPortoutFocDateChanged < Telnyx::Internal::Type::BaseModel
+          # @!attribute id
+          #   Uniquely identifies the event.
+          #
+          #   @return [String, nil]
+          optional :id, String
+
+          # @!attribute available_notification_methods
+          #   Indicates the notification methods used.
+          #
+          #   @return [Array<Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::AvailableNotificationMethod>, nil]
+          optional :available_notification_methods,
+                   -> do
+                     Telnyx::Internal::Type::ArrayOf[
+                       enum: Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::AvailableNotificationMethod
+                     ]
+                   end
+
+          # @!attribute created_at
+          #   ISO 8601 formatted date indicating when the resource was created.
+          #
+          #   @return [Time, nil]
+          optional :created_at, Time
+
+          # @!attribute event_type
+          #   Identifies the event type
+          #
+          #   @return [Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::EventType, nil]
+          optional :event_type,
+                   enum: -> { Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::EventType }
+
+          # @!attribute payload
+          #   The webhook payload for the portout.foc_date_changed event
+          #
+          #   @return [Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::Payload, nil]
+          optional :payload,
+                   -> { Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::Payload }
+
+          # @!attribute payload_status
+          #   The status of the payload generation.
+          #
+          #   @return [Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::PayloadStatus, nil]
+          optional :payload_status,
+                   enum: -> { Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::PayloadStatus }
+
+          # @!attribute portout_id
+          #   Identifies the port-out order associated with the event.
+          #
+          #   @return [String, nil]
+          optional :portout_id, String
+
+          # @!attribute updated_at
+          #   ISO 8601 formatted date indicating when the resource was updated.
+          #
+          #   @return [Time, nil]
+          optional :updated_at, Time
+
+          response_only do
+            # @!attribute record_type
+            #   Identifies the type of the resource.
+            #
+            #   @return [String, nil]
+            optional :record_type, String
+          end
+
+          # @!method initialize(id: nil, available_notification_methods: nil, created_at: nil, event_type: nil, payload: nil, payload_status: nil, portout_id: nil, record_type: nil, updated_at: nil)
+          #   @param id [String] Uniquely identifies the event.
+          #
+          #   @param available_notification_methods [Array<Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::AvailableNotificationMethod>] Indicates the notification methods used.
+          #
+          #   @param created_at [Time] ISO 8601 formatted date indicating when the resource was created.
+          #
+          #   @param event_type [Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::EventType] Identifies the event type
+          #
+          #   @param payload [Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::Payload] The webhook payload for the portout.foc_date_changed event
+          #
+          #   @param payload_status [Symbol, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::PayloadStatus] The status of the payload generation.
+          #
+          #   @param portout_id [String] Identifies the port-out order associated with the event.
+          #
+          #   @param record_type [String] Identifies the type of the resource.
+          #
+          #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
+
+          module AvailableNotificationMethod
+            extend Telnyx::Internal::Type::Enum
+
+            EMAIL = :email
+            WEBHOOK = :webhook
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Identifies the event type
+          #
+          # @see Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged#event_type
+          module EventType
+            extend Telnyx::Internal::Type::Enum
+
+            PORTOUT_STATUS_CHANGED = :"portout.status_changed"
+            PORTOUT_FOC_DATE_CHANGED = :"portout.foc_date_changed"
+            PORTOUT_NEW_COMMENT = :"portout.new_comment"
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged#payload
+          class Payload < Telnyx::Internal::Type::BaseModel
             # @!attribute id
             #   Identifies the port-out order that have the FOC date changed.
             #
@@ -286,22 +531,22 @@ module Telnyx
             #   @param user_id [String] Identifies the organization that port-out order belongs to.
           end
 
-          # @!method self.variants
-          #   @return [Array(Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload, Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutNewCommentPayload, Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutFocDateChangedPayload)]
+          # The status of the payload generation.
+          #
+          # @see Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged#payload_status
+          module PayloadStatus
+            extend Telnyx::Internal::Type::Enum
+
+            CREATED = :created
+            COMPLETED = :completed
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
-        # The status of the payload generation.
-        #
-        # @see Telnyx::Models::Portouts::EventListResponse#payload_status
-        module PayloadStatus
-          extend Telnyx::Internal::Type::Enum
-
-          CREATED = :created
-          COMPLETED = :completed
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
+        # @!method self.variants
+        #   @return [Array(Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged)]
       end
     end
   end
