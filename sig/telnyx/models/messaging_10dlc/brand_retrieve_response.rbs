@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module Messaging10dlc
+      type brand_retrieve_response = { assigned_campaigns_count: Float }
+
+      class BrandRetrieveResponse < Telnyx::Models::Messaging10dlc::TelnyxBrand
+        def assigned_campaigns_count: -> Float?
+
+        def assigned_campaigns_count=: (Float _) -> Float
+
+        def initialize: (?assigned_campaigns_count: Float) -> void
+
+        def to_hash: -> { assigned_campaigns_count: Float }
+      end
+    end
+  end
+end

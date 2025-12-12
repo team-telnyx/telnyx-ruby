@@ -1,0 +1,54 @@
+module Telnyx
+  module Models
+    module Messaging10dlc
+      type phone_number_assignment_by_profile_retrieve_status_response =
+        {
+          status: Telnyx::Models::Messaging10dlc::PhoneNumberAssignmentByProfileRetrieveStatusResponse::status,
+          task_id: String,
+          created_at: Time,
+          updated_at: Time
+        }
+
+      class PhoneNumberAssignmentByProfileRetrieveStatusResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor status: Telnyx::Models::Messaging10dlc::PhoneNumberAssignmentByProfileRetrieveStatusResponse::status
+
+        attr_accessor task_id: String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        def initialize: (
+          status: Telnyx::Models::Messaging10dlc::PhoneNumberAssignmentByProfileRetrieveStatusResponse::status,
+          task_id: String,
+          ?created_at: Time,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          status: Telnyx::Models::Messaging10dlc::PhoneNumberAssignmentByProfileRetrieveStatusResponse::status,
+          task_id: String,
+          created_at: Time,
+          updated_at: Time
+        }
+
+        type status = :pending | :processing | :completed | :failed
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          PROCESSING: :processing
+          COMPLETED: :completed
+          FAILED: :failed
+
+          def self?.values: -> ::Array[Telnyx::Models::Messaging10dlc::PhoneNumberAssignmentByProfileRetrieveStatusResponse::status]
+        end
+      end
+    end
+  end
+end

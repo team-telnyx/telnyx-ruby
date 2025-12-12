@@ -1,0 +1,34 @@
+module Telnyx
+  module Models
+    module Messaging10dlc
+      type partner_campaign_update_params =
+        { webhook_failover_url: String, webhook_url: String }
+        & Telnyx::Internal::Type::request_parameters
+
+      class PartnerCampaignUpdateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader webhook_failover_url: String?
+
+        def webhook_failover_url=: (String) -> String
+
+        attr_reader webhook_url: String?
+
+        def webhook_url=: (String) -> String
+
+        def initialize: (
+          ?webhook_failover_url: String,
+          ?webhook_url: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          webhook_failover_url: String,
+          webhook_url: String,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

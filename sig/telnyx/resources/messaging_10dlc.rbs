@@ -1,0 +1,24 @@
+module Telnyx
+  module Resources
+    class Messaging10dlc
+      attr_reader brand: Telnyx::Resources::Messaging10dlc::Brand
+
+      attr_reader campaign: Telnyx::Resources::Messaging10dlc::Campaign
+
+      attr_reader campaign_builder: Telnyx::Resources::Messaging10dlc::CampaignBuilder
+
+      attr_reader partner_campaigns: Telnyx::Resources::Messaging10dlc::PartnerCampaigns
+
+      attr_reader phone_number_campaigns: Telnyx::Resources::Messaging10dlc::PhoneNumberCampaigns
+
+      attr_reader phone_number_assignment_by_profile: Telnyx::Resources::Messaging10dlc::PhoneNumberAssignmentByProfile
+
+      def get_enum: (
+        Telnyx::Models::Messaging10dlcGetEnumParams::endpoint endpoint,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::messaging10dlc_get_enum_response
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

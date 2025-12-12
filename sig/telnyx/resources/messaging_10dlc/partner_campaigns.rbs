@@ -1,0 +1,39 @@
+module Telnyx
+  module Resources
+    class Messaging10dlc
+      class PartnerCampaigns
+        def retrieve: (
+          String campaign_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Messaging10dlc::TelnyxDownstreamCampaign
+
+        def update: (
+          String campaign_id,
+          ?webhook_failover_url: String,
+          ?webhook_url: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Messaging10dlc::TelnyxDownstreamCampaign
+
+        def list: (
+          ?page: Integer,
+          ?records_per_page: Integer,
+          ?sort: Telnyx::Models::Messaging10dlc::PartnerCampaignListParams::sort,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::PerPagePaginationV2[Telnyx::Messaging10dlc::TelnyxDownstreamCampaign]
+
+        def list_shared_by_me: (
+          ?page: Integer,
+          ?records_per_page: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::PerPagePaginationV2[Telnyx::Models::Messaging10dlc::PartnerCampaignListSharedByMeResponse]
+
+        def retrieve_sharing_status: (
+          String campaign_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Messaging10dlc::partner_campaign_retrieve_sharing_status_response
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end
