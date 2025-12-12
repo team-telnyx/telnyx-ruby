@@ -123,8 +123,8 @@ module Telnyx
 
           # @!attribute hangup_cause
           #   The reason the call was ended (`call_rejected`, `normal_clearing`,
-          #   `originator_cancel`, `timeout`, `time_limit`, `user_busy`, `not_found` or
-          #   `unspecified`).
+          #   `originator_cancel`, `timeout`, `time_limit`, `user_busy`, `not_found`,
+          #   `no_answer` or `unspecified`).
           #
           #   @return [Symbol, Telnyx::Models::CallHangupWebhookEvent::Data::Payload::HangupCause, nil]
           optional :hangup_cause, enum: -> { Telnyx::CallHangupWebhookEvent::Data::Payload::HangupCause }
@@ -301,8 +301,8 @@ module Telnyx
           end
 
           # The reason the call was ended (`call_rejected`, `normal_clearing`,
-          # `originator_cancel`, `timeout`, `time_limit`, `user_busy`, `not_found` or
-          # `unspecified`).
+          # `originator_cancel`, `timeout`, `time_limit`, `user_busy`, `not_found`,
+          # `no_answer` or `unspecified`).
           #
           # @see Telnyx::Models::CallHangupWebhookEvent::Data::Payload#hangup_cause
           module HangupCause
@@ -315,6 +315,7 @@ module Telnyx
             TIME_LIMIT = :time_limit
             USER_BUSY = :user_busy
             NOT_FOUND = :not_found
+            NO_ANSWER = :no_answer
             UNSPECIFIED = :unspecified
 
             # @!method self.values

@@ -61,6 +61,13 @@ module Telnyx
         sig { returns(Integer) }
         attr_accessor :wait_time_secs
 
+        # Indicates whether the call is still active in the queue.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :is_alive
+
+        sig { params(is_alive: T::Boolean).void }
+        attr_writer :is_alive
+
         sig do
           params(
             call_control_id: String,
@@ -74,7 +81,8 @@ module Telnyx
             record_type:
               Telnyx::Models::Queues::CallListResponse::RecordType::OrSymbol,
             to: String,
-            wait_time_secs: Integer
+            wait_time_secs: Integer,
+            is_alive: T::Boolean
           ).returns(T.attached_class)
         end
         def self.new(
@@ -100,7 +108,9 @@ module Telnyx
           # Destination number or SIP URI of the call.
           to:,
           # The time the call has been waiting in the queue, given in seconds
-          wait_time_secs:
+          wait_time_secs:,
+          # Indicates whether the call is still active in the queue.
+          is_alive: nil
         )
         end
 
@@ -118,7 +128,8 @@ module Telnyx
               record_type:
                 Telnyx::Models::Queues::CallListResponse::RecordType::TaggedSymbol,
               to: String,
-              wait_time_secs: Integer
+              wait_time_secs: Integer,
+              is_alive: T::Boolean
             }
           )
         end

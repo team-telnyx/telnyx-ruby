@@ -57,7 +57,8 @@ class Telnyx::Test::Resources::Queues::CallsTest < Telnyx::Test::ResourceTest
         queue_position: Integer,
         record_type: Telnyx::Models::Queues::CallListResponse::RecordType,
         to: String,
-        wait_time_secs: Integer
+        wait_time_secs: Integer,
+        is_alive: Telnyx::Internal::Type::Boolean | nil
       }
     end
   end
