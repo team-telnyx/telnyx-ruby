@@ -42,7 +42,7 @@ class Telnyx::Test::Resources::AI::ClustersTest < Telnyx::Test::ResourceTest
         finished_at: Time,
         min_cluster_size: Integer,
         min_subcluster_size: Integer,
-        status: Telnyx::Messaging10dlc::TaskStatus,
+        status: Telnyx::TaskStatus,
         task_id: String
       }
     end

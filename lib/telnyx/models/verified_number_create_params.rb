@@ -26,7 +26,7 @@ module Telnyx
       #   Only works with 'call' verification method.
       #
       #   @return [String, nil]
-      optional :extension, String, nil?: true
+      optional :extension, String
 
       # @!method initialize(phone_number:, verification_method:, extension: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -36,7 +36,7 @@ module Telnyx
       #
       #   @param verification_method [Symbol, Telnyx::Models::VerifiedNumberCreateParams::VerificationMethod] Verification method.
       #
-      #   @param extension [String, nil] Optional DTMF extension sequence to dial after the call is answered. This parame
+      #   @param extension [String] Optional DTMF extension sequence to dial after the call is answered. This parame
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

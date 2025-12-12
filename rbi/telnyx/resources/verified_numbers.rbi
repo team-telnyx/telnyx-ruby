@@ -13,7 +13,7 @@ module Telnyx
           phone_number: String,
           verification_method:
             Telnyx::VerifiedNumberCreateParams::VerificationMethod::OrSymbol,
-          extension: T.nilable(String),
+          extension: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::VerifiedNumberCreateResponse)
       end

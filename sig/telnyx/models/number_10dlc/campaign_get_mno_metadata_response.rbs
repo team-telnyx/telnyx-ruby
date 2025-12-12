@@ -1,0 +1,88 @@
+module Telnyx
+  module Models
+    module Number10dlc
+      type campaign_get_mno_metadata_response =
+        {
+          :mno_10999 => Telnyx::Models::Number10dlc::CampaignGetMnoMetadataResponse::Mno10999
+        }
+
+      class CampaignGetMnoMetadataResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader mno_10999: Telnyx::Models::Number10dlc::CampaignGetMnoMetadataResponse::Mno10999?
+
+        def mno_10999=: (
+          Telnyx::Models::Number10dlc::CampaignGetMnoMetadataResponse::Mno10999
+        ) -> Telnyx::Models::Number10dlc::CampaignGetMnoMetadataResponse::Mno10999
+
+        def initialize: (
+          ?mno_10999: Telnyx::Models::Number10dlc::CampaignGetMnoMetadataResponse::Mno10999
+        ) -> void
+
+        def to_hash: -> {
+          :mno_10999 => Telnyx::Models::Number10dlc::CampaignGetMnoMetadataResponse::Mno10999
+        }
+
+        type mno10999 =
+          {
+            min_msg_samples: Integer,
+            mno: String,
+            mno_review: bool,
+            mno_support: bool,
+            no_embedded_link: bool,
+            no_embedded_phone: bool,
+            qualify: bool,
+            req_subscriber_help: bool,
+            req_subscriber_optin: bool,
+            req_subscriber_optout: bool
+          }
+
+        class Mno10999 < Telnyx::Internal::Type::BaseModel
+          attr_accessor min_msg_samples: Integer
+
+          attr_accessor mno: String
+
+          attr_accessor mno_review: bool
+
+          attr_accessor mno_support: bool
+
+          attr_accessor no_embedded_link: bool
+
+          attr_accessor no_embedded_phone: bool
+
+          attr_accessor qualify: bool
+
+          attr_accessor req_subscriber_help: bool
+
+          attr_accessor req_subscriber_optin: bool
+
+          attr_accessor req_subscriber_optout: bool
+
+          def initialize: (
+            min_msg_samples: Integer,
+            mno: String,
+            mno_review: bool,
+            mno_support: bool,
+            no_embedded_link: bool,
+            no_embedded_phone: bool,
+            qualify: bool,
+            req_subscriber_help: bool,
+            req_subscriber_optin: bool,
+            req_subscriber_optout: bool
+          ) -> void
+
+          def to_hash: -> {
+            min_msg_samples: Integer,
+            mno: String,
+            mno_review: bool,
+            mno_support: bool,
+            no_embedded_link: bool,
+            no_embedded_phone: bool,
+            qualify: bool,
+            req_subscriber_help: bool,
+            req_subscriber_optin: bool,
+            req_subscriber_optout: bool
+          }
+        end
+      end
+    end
+  end
+end

@@ -32,8 +32,8 @@ module Telnyx
 
         # @!attribute status
         #
-        #   @return [Symbol, Telnyx::Models::Messaging10dlc::TaskStatus]
-        required :status, enum: -> { Telnyx::Messaging10dlc::TaskStatus }
+        #   @return [Symbol, Telnyx::Models::TaskStatus]
+        required :status, enum: -> { Telnyx::TaskStatus }
 
         # @!attribute task_id
         #
@@ -46,7 +46,7 @@ module Telnyx
         #   @param finished_at [Time]
         #   @param min_cluster_size [Integer]
         #   @param min_subcluster_size [Integer]
-        #   @param status [Symbol, Telnyx::Models::Messaging10dlc::TaskStatus]
+        #   @param status [Symbol, Telnyx::Models::TaskStatus]
         #   @param task_id [String]
       end
     end

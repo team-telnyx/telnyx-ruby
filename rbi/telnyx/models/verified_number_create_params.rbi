@@ -28,14 +28,17 @@ module Telnyx
       # Pauses: w = 0.5 second pause, W = 1 second pause. Maximum length: 50 characters.
       # Only works with 'call' verification method.
       sig { returns(T.nilable(String)) }
-      attr_accessor :extension
+      attr_reader :extension
+
+      sig { params(extension: String).void }
+      attr_writer :extension
 
       sig do
         params(
           phone_number: String,
           verification_method:
             Telnyx::VerifiedNumberCreateParams::VerificationMethod::OrSymbol,
-          extension: T.nilable(String),
+          extension: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -59,7 +62,7 @@ module Telnyx
             phone_number: String,
             verification_method:
               Telnyx::VerifiedNumberCreateParams::VerificationMethod::OrSymbol,
-            extension: T.nilable(String),
+            extension: String,
             request_options: Telnyx::RequestOptions
           }
         )

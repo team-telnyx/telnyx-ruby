@@ -18,7 +18,7 @@ module Telnyx
       #
       # @param verification_method [Symbol, Telnyx::Models::VerifiedNumberCreateParams::VerificationMethod] Verification method.
       #
-      # @param extension [String, nil] Optional DTMF extension sequence to dial after the call is answered. This parame
+      # @param extension [String] Optional DTMF extension sequence to dial after the call is answered. This parame
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

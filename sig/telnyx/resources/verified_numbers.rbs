@@ -6,7 +6,7 @@ module Telnyx
       def create: (
         phone_number: String,
         verification_method: Telnyx::Models::VerifiedNumberCreateParams::verification_method,
-        ?extension: String?,
+        ?extension: String,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::VerifiedNumberCreateResponse
 

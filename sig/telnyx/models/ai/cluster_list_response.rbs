@@ -8,7 +8,7 @@ module Telnyx
           finished_at: Time,
           min_cluster_size: Integer,
           min_subcluster_size: Integer,
-          status: Telnyx::Models::Messaging10dlc::task_status,
+          status: Telnyx::Models::task_status,
           task_id: String
         }
 
@@ -23,7 +23,7 @@ module Telnyx
 
         attr_accessor min_subcluster_size: Integer
 
-        attr_accessor status: Telnyx::Models::Messaging10dlc::task_status
+        attr_accessor status: Telnyx::Models::task_status
 
         attr_accessor task_id: String
 
@@ -33,7 +33,7 @@ module Telnyx
           finished_at: Time,
           min_cluster_size: Integer,
           min_subcluster_size: Integer,
-          status: Telnyx::Models::Messaging10dlc::task_status,
+          status: Telnyx::Models::task_status,
           task_id: String
         ) -> void
 
@@ -43,7 +43,7 @@ module Telnyx
           finished_at: Time,
           min_cluster_size: Integer,
           min_subcluster_size: Integer,
-          status: Telnyx::Models::Messaging10dlc::task_status,
+          status: Telnyx::Models::task_status,
           task_id: String
         }
       end
