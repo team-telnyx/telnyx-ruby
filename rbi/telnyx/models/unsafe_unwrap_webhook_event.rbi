@@ -11,7 +11,6 @@ module Telnyx
             Telnyx::CallAIGatherEndedWebhookEvent,
             Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent,
             Telnyx::CallAIGatherPartialResultsWebhookEvent,
-            Telnyx::CustomerServiceRecordStatusChangedWebhookEvent,
             Telnyx::CallAnsweredWebhookEvent,
             Telnyx::CallBridgedWebhookEvent,
             Telnyx::CallConversationEndedWebhookEvent,

@@ -299,8 +299,6 @@ module Telnyx
 
   class CustomerServiceRecordRetrieveParams = Telnyx::Models::CustomerServiceRecordRetrieveParams
 
-  class CustomerServiceRecordStatusChangedWebhookEvent = Telnyx::Models::CustomerServiceRecordStatusChangedWebhookEvent
-
   class CustomerServiceRecordVerifyPhoneNumberCoverageParams = Telnyx::Models::CustomerServiceRecordVerifyPhoneNumberCoverageParams
 
   class CustomSipHeader = Telnyx::Models::CustomSipHeader
