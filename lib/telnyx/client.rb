@@ -303,9 +303,6 @@ module Telnyx
     # @return [Telnyx::Resources::Payment]
     attr_reader :payment
 
-    # @return [Telnyx::Resources::PhoneNumberAssignmentByProfile]
-    attr_reader :phone_number_assignment_by_profile
-
     # @return [Telnyx::Resources::PhoneNumberBlocks]
     attr_reader :phone_number_blocks
 
@@ -465,9 +462,6 @@ module Telnyx
     # @return [Telnyx::Resources::WirelessBlocklists]
     attr_reader :wireless_blocklists
 
-    # @return [Telnyx::Resources::PartnerCampaigns]
-    attr_reader :partner_campaigns
-
     # @return [Telnyx::Resources::WellKnown]
     attr_reader :well_known
 
@@ -480,26 +474,8 @@ module Telnyx
     # @return [Telnyx::Resources::MobileVoiceConnections]
     attr_reader :mobile_voice_connections
 
-    # @return [Telnyx::Resources::Number10dlc]
-    attr_reader :number_10dlc
-
-    # @return [Telnyx::Resources::Brand]
-    attr_reader :brand
-
-    # @return [Telnyx::Resources::Campaign]
-    attr_reader :campaign
-
-    # @return [Telnyx::Resources::CampaignBuilder]
-    attr_reader :campaign_builder
-
-    # @return [Telnyx::Resources::Enum]
-    attr_reader :enum
-
-    # @return [Telnyx::Resources::PartnerCampaign]
-    attr_reader :partner_campaign
-
-    # @return [Telnyx::Resources::PhoneNumberCampaigns]
-    attr_reader :phone_number_campaigns
+    # @return [Telnyx::Resources::Messaging10dlc]
+    attr_reader :messaging_10dlc
 
     # @api private
     #
@@ -693,7 +669,6 @@ module Telnyx
       @ota_updates = Telnyx::Resources::OtaUpdates.new(client: self)
       @outbound_voice_profiles = Telnyx::Resources::OutboundVoiceProfiles.new(client: self)
       @payment = Telnyx::Resources::Payment.new(client: self)
-      @phone_number_assignment_by_profile = Telnyx::Resources::PhoneNumberAssignmentByProfile.new(client: self)
       @phone_number_blocks = Telnyx::Resources::PhoneNumberBlocks.new(client: self)
       @phone_numbers = Telnyx::Resources::PhoneNumbers.new(client: self)
       @phone_numbers_regulatory_requirements =
@@ -748,18 +723,11 @@ module Telnyx
       @wireless = Telnyx::Resources::Wireless.new(client: self)
       @wireless_blocklist_values = Telnyx::Resources::WirelessBlocklistValues.new(client: self)
       @wireless_blocklists = Telnyx::Resources::WirelessBlocklists.new(client: self)
-      @partner_campaigns = Telnyx::Resources::PartnerCampaigns.new(client: self)
       @well_known = Telnyx::Resources::WellKnown.new(client: self)
       @inexplicit_number_orders = Telnyx::Resources::InexplicitNumberOrders.new(client: self)
       @mobile_phone_numbers = Telnyx::Resources::MobilePhoneNumbers.new(client: self)
       @mobile_voice_connections = Telnyx::Resources::MobileVoiceConnections.new(client: self)
-      @number_10dlc = Telnyx::Resources::Number10dlc.new(client: self)
-      @brand = Telnyx::Resources::Brand.new(client: self)
-      @campaign = Telnyx::Resources::Campaign.new(client: self)
-      @campaign_builder = Telnyx::Resources::CampaignBuilder.new(client: self)
-      @enum = Telnyx::Resources::Enum.new(client: self)
-      @partner_campaign = Telnyx::Resources::PartnerCampaign.new(client: self)
-      @phone_number_campaigns = Telnyx::Resources::PhoneNumberCampaigns.new(client: self)
+      @messaging_10dlc = Telnyx::Resources::Messaging10dlc.new(client: self)
     end
   end
 end

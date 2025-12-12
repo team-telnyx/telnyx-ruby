@@ -673,6 +673,10 @@ module Telnyx
 
   Messaging = Telnyx::Models::Messaging
 
+  Messaging10dlc = Telnyx::Models::Messaging10dlc
+
+  Messaging10dlcGetEnumParams = Telnyx::Models::Messaging10dlcGetEnumParams
+
   MessagingError = Telnyx::Models::MessagingError
 
   MessagingFeatureSet = Telnyx::Models::MessagingFeatureSet
@@ -826,10 +830,6 @@ module Telnyx
 
   NotificationSettingRetrieveParams = Telnyx::Models::NotificationSettingRetrieveParams
 
-  Number10dlc = Telnyx::Models::Number10dlc
-
-  Number10dlcGetEnumParams = Telnyx::Models::Number10dlcGetEnumParams
-
   NumberBlockOrder = Telnyx::Models::NumberBlockOrder
 
   NumberBlockOrderCreateParams = Telnyx::Models::NumberBlockOrderCreateParams
@@ -946,27 +946,9 @@ module Telnyx
 
   PaginationMetaOAuth = Telnyx::Models::PaginationMetaOAuth
 
-  PartnerCampaignListParams = Telnyx::Models::PartnerCampaignListParams
-
-  PartnerCampaignListSharedByMeParams = Telnyx::Models::PartnerCampaignListSharedByMeParams
-
-  PartnerCampaignRetrieveParams = Telnyx::Models::PartnerCampaignRetrieveParams
-
-  PartnerCampaignRetrieveSharingStatusParams = Telnyx::Models::PartnerCampaignRetrieveSharingStatusParams
-
-  PartnerCampaignUpdateParams = Telnyx::Models::PartnerCampaignUpdateParams
-
   Payment = Telnyx::Models::Payment
 
   PhoneNumber = Telnyx::Models::PhoneNumber
-
-  PhoneNumberAssignmentByProfileAssignParams = Telnyx::Models::PhoneNumberAssignmentByProfileAssignParams
-
-  PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusParams =
-    Telnyx::Models::PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusParams
-
-  PhoneNumberAssignmentByProfileRetrieveStatusParams =
-    Telnyx::Models::PhoneNumberAssignmentByProfileRetrieveStatusParams
 
   PhoneNumberBlocks = Telnyx::Models::PhoneNumberBlocks
 
@@ -1328,8 +1310,6 @@ module Telnyx
 
   SubNumberOrderUpdateRequirementGroupParams = Telnyx::Models::SubNumberOrderUpdateRequirementGroupParams
 
-  TaskStatus = Telnyx::Models::TaskStatus
-
   TelephonyCredential = Telnyx::Models::TelephonyCredential
 
   TelephonyCredentialCreateParams = Telnyx::Models::TelephonyCredentialCreateParams
@@ -1343,8 +1323,6 @@ module Telnyx
   TelephonyCredentialRetrieveParams = Telnyx::Models::TelephonyCredentialRetrieveParams
 
   TelephonyCredentialUpdateParams = Telnyx::Models::TelephonyCredentialUpdateParams
-
-  TelnyxDownstreamCampaign = Telnyx::Models::TelnyxDownstreamCampaign
 
   Texml = Telnyx::Models::Texml
 
