@@ -357,9 +357,6 @@ module Telnyx
   CustomerServiceRecordRetrieveParams =
     Telnyx::Models::CustomerServiceRecordRetrieveParams
 
-  CustomerServiceRecordStatusChangedWebhookEvent =
-    Telnyx::Models::CustomerServiceRecordStatusChangedWebhookEvent
-
   CustomerServiceRecordVerifyPhoneNumberCoverageParams =
     Telnyx::Models::CustomerServiceRecordVerifyPhoneNumberCoverageParams
 
