@@ -298,6 +298,9 @@ module Telnyx
     sig { returns(Telnyx::Resources::Payment) }
     attr_reader :payment
 
+    sig { returns(Telnyx::Resources::PhoneNumberAssignmentByProfile) }
+    attr_reader :phone_number_assignment_by_profile
+
     sig { returns(Telnyx::Resources::PhoneNumberBlocks) }
     attr_reader :phone_number_blocks
 
@@ -457,6 +460,9 @@ module Telnyx
     sig { returns(Telnyx::Resources::WirelessBlocklists) }
     attr_reader :wireless_blocklists
 
+    sig { returns(Telnyx::Resources::PartnerCampaigns) }
+    attr_reader :partner_campaigns
+
     sig { returns(Telnyx::Resources::WellKnown) }
     attr_reader :well_known
 
@@ -469,8 +475,26 @@ module Telnyx
     sig { returns(Telnyx::Resources::MobileVoiceConnections) }
     attr_reader :mobile_voice_connections
 
-    sig { returns(Telnyx::Resources::Messaging10dlc) }
-    attr_reader :messaging_10dlc
+    sig { returns(Telnyx::Resources::Number10dlc) }
+    attr_reader :number_10dlc
+
+    sig { returns(Telnyx::Resources::Brand) }
+    attr_reader :brand
+
+    sig { returns(Telnyx::Resources::Campaign) }
+    attr_reader :campaign
+
+    sig { returns(Telnyx::Resources::CampaignBuilder) }
+    attr_reader :campaign_builder
+
+    sig { returns(Telnyx::Resources::Enum) }
+    attr_reader :enum
+
+    sig { returns(Telnyx::Resources::PartnerCampaign) }
+    attr_reader :partner_campaign
+
+    sig { returns(Telnyx::Resources::PhoneNumberCampaigns) }
+    attr_reader :phone_number_campaigns
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }

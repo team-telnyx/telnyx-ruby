@@ -27,7 +27,7 @@ module Telnyx
         sig { returns(Integer) }
         attr_accessor :min_subcluster_size
 
-        sig { returns(Telnyx::Messaging10dlc::TaskStatus::TaggedSymbol) }
+        sig { returns(Telnyx::TaskStatus::TaggedSymbol) }
         attr_accessor :status
 
         sig { returns(String) }
@@ -40,7 +40,7 @@ module Telnyx
             finished_at: Time,
             min_cluster_size: Integer,
             min_subcluster_size: Integer,
-            status: Telnyx::Messaging10dlc::TaskStatus::OrSymbol,
+            status: Telnyx::TaskStatus::OrSymbol,
             task_id: String
           ).returns(T.attached_class)
         end
@@ -63,7 +63,7 @@ module Telnyx
               finished_at: Time,
               min_cluster_size: Integer,
               min_subcluster_size: Integer,
-              status: Telnyx::Messaging10dlc::TaskStatus::TaggedSymbol,
+              status: Telnyx::TaskStatus::TaggedSymbol,
               task_id: String
             }
           )

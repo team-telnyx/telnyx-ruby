@@ -1,0 +1,9 @@
+module Telnyx
+  module Resources
+    class CampaignBuilder
+      attr_reader brand: Telnyx::Resources::CampaignBuilder::Brand
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

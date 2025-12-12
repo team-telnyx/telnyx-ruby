@@ -1,0 +1,116 @@
+module Telnyx
+  module Models
+    module Number10dlc
+      type phone_number_campaign_list_params =
+        {
+          filter: Telnyx::Number10dlc::PhoneNumberCampaignListParams::Filter,
+          page: Integer,
+          records_per_page: Integer,
+          sort: Telnyx::Models::Number10dlc::PhoneNumberCampaignListParams::sort
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class PhoneNumberCampaignListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter: Telnyx::Number10dlc::PhoneNumberCampaignListParams::Filter?
+
+        def filter=: (
+          Telnyx::Number10dlc::PhoneNumberCampaignListParams::Filter
+        ) -> Telnyx::Number10dlc::PhoneNumberCampaignListParams::Filter
+
+        attr_reader page: Integer?
+
+        def page=: (Integer) -> Integer
+
+        attr_reader records_per_page: Integer?
+
+        def records_per_page=: (Integer) -> Integer
+
+        attr_reader sort: Telnyx::Models::Number10dlc::PhoneNumberCampaignListParams::sort?
+
+        def sort=: (
+          Telnyx::Models::Number10dlc::PhoneNumberCampaignListParams::sort
+        ) -> Telnyx::Models::Number10dlc::PhoneNumberCampaignListParams::sort
+
+        def initialize: (
+          ?filter: Telnyx::Number10dlc::PhoneNumberCampaignListParams::Filter,
+          ?page: Integer,
+          ?records_per_page: Integer,
+          ?sort: Telnyx::Models::Number10dlc::PhoneNumberCampaignListParams::sort,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter: Telnyx::Number10dlc::PhoneNumberCampaignListParams::Filter,
+          page: Integer,
+          records_per_page: Integer,
+          sort: Telnyx::Models::Number10dlc::PhoneNumberCampaignListParams::sort,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter =
+          {
+            tcr_brand_id: String,
+            tcr_campaign_id: String,
+            telnyx_brand_id: String,
+            telnyx_campaign_id: String
+          }
+
+        class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader tcr_brand_id: String?
+
+          def tcr_brand_id=: (String) -> String
+
+          attr_reader tcr_campaign_id: String?
+
+          def tcr_campaign_id=: (String) -> String
+
+          attr_reader telnyx_brand_id: String?
+
+          def telnyx_brand_id=: (String) -> String
+
+          attr_reader telnyx_campaign_id: String?
+
+          def telnyx_campaign_id=: (String) -> String
+
+          def initialize: (
+            ?tcr_brand_id: String,
+            ?tcr_campaign_id: String,
+            ?telnyx_brand_id: String,
+            ?telnyx_campaign_id: String
+          ) -> void
+
+          def to_hash: -> {
+            tcr_brand_id: String,
+            tcr_campaign_id: String,
+            telnyx_brand_id: String,
+            telnyx_campaign_id: String
+          }
+        end
+
+        type sort =
+          :assignmentStatus
+          | :"-assignmentStatus"
+          | :createdAt
+          | :"-createdAt"
+          | :phoneNumber
+          | :"-phoneNumber"
+
+        module Sort
+          extend Telnyx::Internal::Type::Enum
+
+          ASSIGNMENT_STATUS: :assignmentStatus
+          ASSIGNMENT_STATUS_DESC: :"-assignmentStatus"
+          CREATED_AT: :createdAt
+          CREATED_AT_DESC: :"-createdAt"
+          PHONE_NUMBER: :phoneNumber
+          PHONE_NUMBER_DESC: :"-phoneNumber"
+
+          def self?.values: -> ::Array[Telnyx::Models::Number10dlc::PhoneNumberCampaignListParams::sort]
+        end
+      end
+    end
+  end
+end

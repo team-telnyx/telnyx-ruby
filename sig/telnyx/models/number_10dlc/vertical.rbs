@@ -1,0 +1,48 @@
+module Telnyx
+  module Models
+    module Number10dlc
+      type vertical =
+        :REAL_ESTATE
+        | :HEALTHCARE
+        | :ENERGY
+        | :ENTERTAINMENT
+        | :RETAIL
+        | :AGRICULTURE
+        | :INSURANCE
+        | :EDUCATION
+        | :HOSPITALITY
+        | :FINANCIAL
+        | :GAMBLING
+        | :CONSTRUCTION
+        | :NGO
+        | :MANUFACTURING
+        | :GOVERNMENT
+        | :TECHNOLOGY
+        | :COMMUNICATION
+
+      module Vertical
+        extend Telnyx::Internal::Type::Enum
+
+        REAL_ESTATE: :REAL_ESTATE
+        HEALTHCARE: :HEALTHCARE
+        ENERGY: :ENERGY
+        ENTERTAINMENT: :ENTERTAINMENT
+        RETAIL: :RETAIL
+        AGRICULTURE: :AGRICULTURE
+        INSURANCE: :INSURANCE
+        EDUCATION: :EDUCATION
+        HOSPITALITY: :HOSPITALITY
+        FINANCIAL: :FINANCIAL
+        GAMBLING: :GAMBLING
+        CONSTRUCTION: :CONSTRUCTION
+        NGO: :NGO
+        MANUFACTURING: :MANUFACTURING
+        GOVERNMENT: :GOVERNMENT
+        TECHNOLOGY: :TECHNOLOGY
+        COMMUNICATION: :COMMUNICATION
+
+        def self?.values: -> ::Array[Telnyx::Models::Number10dlc::vertical]
+      end
+    end
+  end
+end

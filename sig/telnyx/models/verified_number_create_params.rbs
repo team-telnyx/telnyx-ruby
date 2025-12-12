@@ -4,7 +4,7 @@ module Telnyx
       {
         phone_number: String,
         verification_method: Telnyx::Models::VerifiedNumberCreateParams::verification_method,
-        extension: String?
+        extension: String
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -16,19 +16,21 @@ module Telnyx
 
       attr_accessor verification_method: Telnyx::Models::VerifiedNumberCreateParams::verification_method
 
-      attr_accessor extension: String?
+      attr_reader extension: String?
+
+      def extension=: (String) -> String
 
       def initialize: (
         phone_number: String,
         verification_method: Telnyx::Models::VerifiedNumberCreateParams::verification_method,
-        ?extension: String?,
+        ?extension: String,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         phone_number: String,
         verification_method: Telnyx::Models::VerifiedNumberCreateParams::verification_method,
-        extension: String?,
+        extension: String,
         request_options: Telnyx::RequestOptions
       }
 
