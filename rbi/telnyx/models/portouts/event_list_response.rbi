@@ -3,291 +3,282 @@
 module Telnyx
   module Models
     module Portouts
-      class EventListResponse < Telnyx::Internal::Type::BaseModel
-        OrHash =
+      module EventListResponse
+        extend Telnyx::Internal::Type::Union
+
+        Variants =
           T.type_alias do
             T.any(
-              Telnyx::Models::Portouts::EventListResponse,
-              Telnyx::Internal::AnyHash
+              Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged,
+              Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment,
+              Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged
             )
           end
 
-        # Uniquely identifies the event.
-        sig { returns(T.nilable(String)) }
-        attr_reader :id
-
-        sig { params(id: String).void }
-        attr_writer :id
-
-        # Indicates the notification methods used.
-        sig do
-          returns(
-            T.nilable(
-              T::Array[
-                Telnyx::Models::Portouts::EventListResponse::AvailableNotificationMethod::TaggedSymbol
-              ]
-            )
-          )
-        end
-        attr_reader :available_notification_methods
-
-        sig do
-          params(
-            available_notification_methods:
-              T::Array[
-                Telnyx::Models::Portouts::EventListResponse::AvailableNotificationMethod::OrSymbol
-              ]
-          ).void
-        end
-        attr_writer :available_notification_methods
-
-        # ISO 8601 formatted date indicating when the resource was created.
-        sig { returns(T.nilable(Time)) }
-        attr_reader :created_at
-
-        sig { params(created_at: Time).void }
-        attr_writer :created_at
-
-        # Identifies the event type
-        sig do
-          returns(
-            T.nilable(
-              Telnyx::Models::Portouts::EventListResponse::EventType::TaggedSymbol
-            )
-          )
-        end
-        attr_reader :event_type
-
-        sig do
-          params(
-            event_type:
-              Telnyx::Models::Portouts::EventListResponse::EventType::OrSymbol
-          ).void
-        end
-        attr_writer :event_type
-
-        # The webhook payload for the portout.status_changed event
-        sig do
-          returns(
-            T.nilable(
-              Telnyx::Models::Portouts::EventListResponse::Payload::Variants
-            )
-          )
-        end
-        attr_reader :payload
-
-        sig do
-          params(
-            payload:
+        class WebhookPortoutStatusChanged < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
               T.any(
-                Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload::OrHash,
-                Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutNewCommentPayload::OrHash,
-                Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutFocDateChangedPayload::OrHash
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged,
+                Telnyx::Internal::AnyHash
               )
-          ).void
-        end
-        attr_writer :payload
+            end
 
-        # The status of the payload generation.
-        sig do
-          returns(
-            T.nilable(
-              Telnyx::Models::Portouts::EventListResponse::PayloadStatus::TaggedSymbol
-            )
-          )
-        end
-        attr_reader :payload_status
-
-        sig do
-          params(
-            payload_status:
-              Telnyx::Models::Portouts::EventListResponse::PayloadStatus::OrSymbol
-          ).void
-        end
-        attr_writer :payload_status
-
-        # Identifies the port-out order associated with the event.
-        sig { returns(T.nilable(String)) }
-        attr_reader :portout_id
-
-        sig { params(portout_id: String).void }
-        attr_writer :portout_id
-
-        # ISO 8601 formatted date indicating when the resource was updated.
-        sig { returns(T.nilable(Time)) }
-        attr_reader :updated_at
-
-        sig { params(updated_at: Time).void }
-        attr_writer :updated_at
-
-        # Identifies the type of the resource.
-        sig { returns(T.nilable(String)) }
-        attr_reader :record_type
-
-        sig { params(record_type: String).void }
-        attr_writer :record_type
-
-        sig do
-          params(
-            id: String,
-            available_notification_methods:
-              T::Array[
-                Telnyx::Models::Portouts::EventListResponse::AvailableNotificationMethod::OrSymbol
-              ],
-            created_at: Time,
-            event_type:
-              Telnyx::Models::Portouts::EventListResponse::EventType::OrSymbol,
-            payload:
-              T.any(
-                Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload::OrHash,
-                Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutNewCommentPayload::OrHash,
-                Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutFocDateChangedPayload::OrHash
-              ),
-            payload_status:
-              Telnyx::Models::Portouts::EventListResponse::PayloadStatus::OrSymbol,
-            portout_id: String,
-            record_type: String,
-            updated_at: Time
-          ).returns(T.attached_class)
-        end
-        def self.new(
           # Uniquely identifies the event.
-          id: nil,
-          # Indicates the notification methods used.
-          available_notification_methods: nil,
-          # ISO 8601 formatted date indicating when the resource was created.
-          created_at: nil,
-          # Identifies the event type
-          event_type: nil,
-          # The webhook payload for the portout.status_changed event
-          payload: nil,
-          # The status of the payload generation.
-          payload_status: nil,
-          # Identifies the port-out order associated with the event.
-          portout_id: nil,
-          # Identifies the type of the resource.
-          record_type: nil,
-          # ISO 8601 formatted date indicating when the resource was updated.
-          updated_at: nil
-        )
-        end
+          sig { returns(T.nilable(String)) }
+          attr_reader :id
 
-        sig do
-          override.returns(
-            {
+          sig { params(id: String).void }
+          attr_writer :id
+
+          # Indicates the notification methods used.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::AvailableNotificationMethod::TaggedSymbol
+                ]
+              )
+            )
+          end
+          attr_reader :available_notification_methods
+
+          sig do
+            params(
+              available_notification_methods:
+                T::Array[
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::AvailableNotificationMethod::OrSymbol
+                ]
+            ).void
+          end
+          attr_writer :available_notification_methods
+
+          # ISO 8601 formatted date indicating when the resource was created.
+          sig { returns(T.nilable(Time)) }
+          attr_reader :created_at
+
+          sig { params(created_at: Time).void }
+          attr_writer :created_at
+
+          # Identifies the event type
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::EventType::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :event_type
+
+          sig do
+            params(
+              event_type:
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::EventType::OrSymbol
+            ).void
+          end
+          attr_writer :event_type
+
+          # The webhook payload for the portout.status_changed event
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload
+              )
+            )
+          end
+          attr_reader :payload
+
+          sig do
+            params(
+              payload:
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload::OrHash
+            ).void
+          end
+          attr_writer :payload
+
+          # The status of the payload generation.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::PayloadStatus::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :payload_status
+
+          sig do
+            params(
+              payload_status:
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::PayloadStatus::OrSymbol
+            ).void
+          end
+          attr_writer :payload_status
+
+          # Identifies the port-out order associated with the event.
+          sig { returns(T.nilable(String)) }
+          attr_reader :portout_id
+
+          sig { params(portout_id: String).void }
+          attr_writer :portout_id
+
+          # ISO 8601 formatted date indicating when the resource was updated.
+          sig { returns(T.nilable(Time)) }
+          attr_reader :updated_at
+
+          sig { params(updated_at: Time).void }
+          attr_writer :updated_at
+
+          # Identifies the type of the resource.
+          sig { returns(T.nilable(String)) }
+          attr_reader :record_type
+
+          sig { params(record_type: String).void }
+          attr_writer :record_type
+
+          sig do
+            params(
               id: String,
               available_notification_methods:
                 T::Array[
-                  Telnyx::Models::Portouts::EventListResponse::AvailableNotificationMethod::TaggedSymbol
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::AvailableNotificationMethod::OrSymbol
                 ],
               created_at: Time,
               event_type:
-                Telnyx::Models::Portouts::EventListResponse::EventType::TaggedSymbol,
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::EventType::OrSymbol,
               payload:
-                Telnyx::Models::Portouts::EventListResponse::Payload::Variants,
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload::OrHash,
               payload_status:
-                Telnyx::Models::Portouts::EventListResponse::PayloadStatus::TaggedSymbol,
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::PayloadStatus::OrSymbol,
               portout_id: String,
               record_type: String,
               updated_at: Time
-            }
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Uniquely identifies the event.
+            id: nil,
+            # Indicates the notification methods used.
+            available_notification_methods: nil,
+            # ISO 8601 formatted date indicating when the resource was created.
+            created_at: nil,
+            # Identifies the event type
+            event_type: nil,
+            # The webhook payload for the portout.status_changed event
+            payload: nil,
+            # The status of the payload generation.
+            payload_status: nil,
+            # Identifies the port-out order associated with the event.
+            portout_id: nil,
+            # Identifies the type of the resource.
+            record_type: nil,
+            # ISO 8601 formatted date indicating when the resource was updated.
+            updated_at: nil
           )
-        end
-        def to_hash
-        end
-
-        module AvailableNotificationMethod
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::Models::Portouts::EventListResponse::AvailableNotificationMethod
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          EMAIL =
-            T.let(
-              :email,
-              Telnyx::Models::Portouts::EventListResponse::AvailableNotificationMethod::TaggedSymbol
-            )
-          WEBHOOK =
-            T.let(
-              :webhook,
-              Telnyx::Models::Portouts::EventListResponse::AvailableNotificationMethod::TaggedSymbol
-            )
+          end
 
           sig do
             override.returns(
-              T::Array[
-                Telnyx::Models::Portouts::EventListResponse::AvailableNotificationMethod::TaggedSymbol
-              ]
+              {
+                id: String,
+                available_notification_methods:
+                  T::Array[
+                    Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::AvailableNotificationMethod::TaggedSymbol
+                  ],
+                created_at: Time,
+                event_type:
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::EventType::TaggedSymbol,
+                payload:
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload,
+                payload_status:
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::PayloadStatus::TaggedSymbol,
+                portout_id: String,
+                record_type: String,
+                updated_at: Time
+              }
             )
           end
-          def self.values
+          def to_hash
           end
-        end
 
-        # Identifies the event type
-        module EventType
-          extend Telnyx::Internal::Type::Enum
+          module AvailableNotificationMethod
+            extend Telnyx::Internal::Type::Enum
 
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::Models::Portouts::EventListResponse::EventType
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::AvailableNotificationMethod
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            EMAIL =
+              T.let(
+                :email,
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::AvailableNotificationMethod::TaggedSymbol
+              )
+            WEBHOOK =
+              T.let(
+                :webhook,
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::AvailableNotificationMethod::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::AvailableNotificationMethod::TaggedSymbol
+                ]
               )
             end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          PORTOUT_STATUS_CHANGED =
-            T.let(
-              :"portout.status_changed",
-              Telnyx::Models::Portouts::EventListResponse::EventType::TaggedSymbol
-            )
-          PORTOUT_FOC_DATE_CHANGED =
-            T.let(
-              :"portout.foc_date_changed",
-              Telnyx::Models::Portouts::EventListResponse::EventType::TaggedSymbol
-            )
-          PORTOUT_NEW_COMMENT =
-            T.let(
-              :"portout.new_comment",
-              Telnyx::Models::Portouts::EventListResponse::EventType::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Models::Portouts::EventListResponse::EventType::TaggedSymbol
-              ]
-            )
+            def self.values
+            end
           end
-          def self.values
-          end
-        end
 
-        # The webhook payload for the portout.status_changed event
-        module Payload
-          extend Telnyx::Internal::Type::Union
+          # Identifies the event type
+          module EventType
+            extend Telnyx::Internal::Type::Enum
 
-          Variants =
-            T.type_alias do
-              T.any(
-                Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload,
-                Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutNewCommentPayload,
-                Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutFocDateChangedPayload
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::EventType
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PORTOUT_STATUS_CHANGED =
+              T.let(
+                :"portout.status_changed",
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::EventType::TaggedSymbol
+              )
+            PORTOUT_FOC_DATE_CHANGED =
+              T.let(
+                :"portout.foc_date_changed",
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::EventType::TaggedSymbol
+              )
+            PORTOUT_NEW_COMMENT =
+              T.let(
+                :"portout.new_comment",
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::EventType::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::EventType::TaggedSymbol
+                ]
               )
             end
+            def self.values
+            end
+          end
 
-          class WebhookPortoutStatusChangedPayload < Telnyx::Internal::Type::BaseModel
+          class Payload < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload,
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload,
                   Telnyx::Internal::AnyHash
                 )
               end
@@ -336,7 +327,7 @@ module Telnyx
             sig do
               returns(
                 T.nilable(
-                  Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload::Status::TaggedSymbol
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload::Status::TaggedSymbol
                 )
               )
             end
@@ -345,7 +336,7 @@ module Telnyx
             sig do
               params(
                 status:
-                  Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload::Status::OrSymbol
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload::Status::OrSymbol
               ).void
             end
             attr_writer :status
@@ -374,7 +365,7 @@ module Telnyx
                 rejection_reason: T.nilable(String),
                 spid: String,
                 status:
-                  Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload::Status::OrSymbol,
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload::Status::OrSymbol,
                 subscriber_name: String,
                 user_id: String
               ).returns(T.attached_class)
@@ -412,7 +403,7 @@ module Telnyx
                   rejection_reason: T.nilable(String),
                   spid: String,
                   status:
-                    Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload::Status::TaggedSymbol,
+                    Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload::Status::TaggedSymbol,
                   subscriber_name: String,
                   user_id: String
                 }
@@ -429,7 +420,7 @@ module Telnyx
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload::Status
+                    Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload::Status
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -437,38 +428,38 @@ module Telnyx
               PENDING =
                 T.let(
                   :pending,
-                  Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload::Status::TaggedSymbol
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload::Status::TaggedSymbol
                 )
               AUTHORIZED =
                 T.let(
                   :authorized,
-                  Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload::Status::TaggedSymbol
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload::Status::TaggedSymbol
                 )
               PORTED =
                 T.let(
                   :ported,
-                  Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload::Status::TaggedSymbol
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload::Status::TaggedSymbol
                 )
               REJECTED =
                 T.let(
                   :rejected,
-                  Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload::Status::TaggedSymbol
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload::Status::TaggedSymbol
                 )
               REJECTED_PENDING =
                 T.let(
                   :"rejected-pending",
-                  Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload::Status::TaggedSymbol
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload::Status::TaggedSymbol
                 )
               CANCELED =
                 T.let(
                   :canceled,
-                  Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload::Status::TaggedSymbol
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload::Status::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutStatusChangedPayload::Status::TaggedSymbol
+                    Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::Payload::Status::TaggedSymbol
                   ]
                 )
               end
@@ -477,11 +468,306 @@ module Telnyx
             end
           end
 
-          class WebhookPortoutNewCommentPayload < Telnyx::Internal::Type::BaseModel
+          # The status of the payload generation.
+          module PayloadStatus
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::PayloadStatus
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            CREATED =
+              T.let(
+                :created,
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::PayloadStatus::TaggedSymbol
+              )
+            COMPLETED =
+              T.let(
+                :completed,
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::PayloadStatus::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged::PayloadStatus::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        class WebhookPortoutNewComment < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # Uniquely identifies the event.
+          sig { returns(T.nilable(String)) }
+          attr_reader :id
+
+          sig { params(id: String).void }
+          attr_writer :id
+
+          # Indicates the notification methods used.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::AvailableNotificationMethod::TaggedSymbol
+                ]
+              )
+            )
+          end
+          attr_reader :available_notification_methods
+
+          sig do
+            params(
+              available_notification_methods:
+                T::Array[
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::AvailableNotificationMethod::OrSymbol
+                ]
+            ).void
+          end
+          attr_writer :available_notification_methods
+
+          # ISO 8601 formatted date indicating when the resource was created.
+          sig { returns(T.nilable(Time)) }
+          attr_reader :created_at
+
+          sig { params(created_at: Time).void }
+          attr_writer :created_at
+
+          # Identifies the event type
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::EventType::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :event_type
+
+          sig do
+            params(
+              event_type:
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::EventType::OrSymbol
+            ).void
+          end
+          attr_writer :event_type
+
+          # The webhook payload for the portout.new_comment event
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::Payload
+              )
+            )
+          end
+          attr_reader :payload
+
+          sig do
+            params(
+              payload:
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::Payload::OrHash
+            ).void
+          end
+          attr_writer :payload
+
+          # The status of the payload generation.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::PayloadStatus::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :payload_status
+
+          sig do
+            params(
+              payload_status:
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::PayloadStatus::OrSymbol
+            ).void
+          end
+          attr_writer :payload_status
+
+          # Identifies the port-out order associated with the event.
+          sig { returns(T.nilable(String)) }
+          attr_reader :portout_id
+
+          sig { params(portout_id: String).void }
+          attr_writer :portout_id
+
+          # ISO 8601 formatted date indicating when the resource was updated.
+          sig { returns(T.nilable(Time)) }
+          attr_reader :updated_at
+
+          sig { params(updated_at: Time).void }
+          attr_writer :updated_at
+
+          # Identifies the type of the resource.
+          sig { returns(T.nilable(String)) }
+          attr_reader :record_type
+
+          sig { params(record_type: String).void }
+          attr_writer :record_type
+
+          sig do
+            params(
+              id: String,
+              available_notification_methods:
+                T::Array[
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::AvailableNotificationMethod::OrSymbol
+                ],
+              created_at: Time,
+              event_type:
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::EventType::OrSymbol,
+              payload:
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::Payload::OrHash,
+              payload_status:
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::PayloadStatus::OrSymbol,
+              portout_id: String,
+              record_type: String,
+              updated_at: Time
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Uniquely identifies the event.
+            id: nil,
+            # Indicates the notification methods used.
+            available_notification_methods: nil,
+            # ISO 8601 formatted date indicating when the resource was created.
+            created_at: nil,
+            # Identifies the event type
+            event_type: nil,
+            # The webhook payload for the portout.new_comment event
+            payload: nil,
+            # The status of the payload generation.
+            payload_status: nil,
+            # Identifies the port-out order associated with the event.
+            portout_id: nil,
+            # Identifies the type of the resource.
+            record_type: nil,
+            # ISO 8601 formatted date indicating when the resource was updated.
+            updated_at: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                available_notification_methods:
+                  T::Array[
+                    Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::AvailableNotificationMethod::TaggedSymbol
+                  ],
+                created_at: Time,
+                event_type:
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::EventType::TaggedSymbol,
+                payload:
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::Payload,
+                payload_status:
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::PayloadStatus::TaggedSymbol,
+                portout_id: String,
+                record_type: String,
+                updated_at: Time
+              }
+            )
+          end
+          def to_hash
+          end
+
+          module AvailableNotificationMethod
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::AvailableNotificationMethod
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            EMAIL =
+              T.let(
+                :email,
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::AvailableNotificationMethod::TaggedSymbol
+              )
+            WEBHOOK =
+              T.let(
+                :webhook,
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::AvailableNotificationMethod::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::AvailableNotificationMethod::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Identifies the event type
+          module EventType
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::EventType
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PORTOUT_STATUS_CHANGED =
+              T.let(
+                :"portout.status_changed",
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::EventType::TaggedSymbol
+              )
+            PORTOUT_FOC_DATE_CHANGED =
+              T.let(
+                :"portout.foc_date_changed",
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::EventType::TaggedSymbol
+              )
+            PORTOUT_NEW_COMMENT =
+              T.let(
+                :"portout.new_comment",
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::EventType::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::EventType::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          class Payload < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutNewCommentPayload,
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::Payload,
                   Telnyx::Internal::AnyHash
                 )
               end
@@ -549,11 +835,306 @@ module Telnyx
             end
           end
 
-          class WebhookPortoutFocDateChangedPayload < Telnyx::Internal::Type::BaseModel
+          # The status of the payload generation.
+          module PayloadStatus
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::PayloadStatus
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            CREATED =
+              T.let(
+                :created,
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::PayloadStatus::TaggedSymbol
+              )
+            COMPLETED =
+              T.let(
+                :completed,
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::PayloadStatus::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment::PayloadStatus::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        class WebhookPortoutFocDateChanged < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # Uniquely identifies the event.
+          sig { returns(T.nilable(String)) }
+          attr_reader :id
+
+          sig { params(id: String).void }
+          attr_writer :id
+
+          # Indicates the notification methods used.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::AvailableNotificationMethod::TaggedSymbol
+                ]
+              )
+            )
+          end
+          attr_reader :available_notification_methods
+
+          sig do
+            params(
+              available_notification_methods:
+                T::Array[
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::AvailableNotificationMethod::OrSymbol
+                ]
+            ).void
+          end
+          attr_writer :available_notification_methods
+
+          # ISO 8601 formatted date indicating when the resource was created.
+          sig { returns(T.nilable(Time)) }
+          attr_reader :created_at
+
+          sig { params(created_at: Time).void }
+          attr_writer :created_at
+
+          # Identifies the event type
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::EventType::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :event_type
+
+          sig do
+            params(
+              event_type:
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::EventType::OrSymbol
+            ).void
+          end
+          attr_writer :event_type
+
+          # The webhook payload for the portout.foc_date_changed event
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::Payload
+              )
+            )
+          end
+          attr_reader :payload
+
+          sig do
+            params(
+              payload:
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::Payload::OrHash
+            ).void
+          end
+          attr_writer :payload
+
+          # The status of the payload generation.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::PayloadStatus::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :payload_status
+
+          sig do
+            params(
+              payload_status:
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::PayloadStatus::OrSymbol
+            ).void
+          end
+          attr_writer :payload_status
+
+          # Identifies the port-out order associated with the event.
+          sig { returns(T.nilable(String)) }
+          attr_reader :portout_id
+
+          sig { params(portout_id: String).void }
+          attr_writer :portout_id
+
+          # ISO 8601 formatted date indicating when the resource was updated.
+          sig { returns(T.nilable(Time)) }
+          attr_reader :updated_at
+
+          sig { params(updated_at: Time).void }
+          attr_writer :updated_at
+
+          # Identifies the type of the resource.
+          sig { returns(T.nilable(String)) }
+          attr_reader :record_type
+
+          sig { params(record_type: String).void }
+          attr_writer :record_type
+
+          sig do
+            params(
+              id: String,
+              available_notification_methods:
+                T::Array[
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::AvailableNotificationMethod::OrSymbol
+                ],
+              created_at: Time,
+              event_type:
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::EventType::OrSymbol,
+              payload:
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::Payload::OrHash,
+              payload_status:
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::PayloadStatus::OrSymbol,
+              portout_id: String,
+              record_type: String,
+              updated_at: Time
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Uniquely identifies the event.
+            id: nil,
+            # Indicates the notification methods used.
+            available_notification_methods: nil,
+            # ISO 8601 formatted date indicating when the resource was created.
+            created_at: nil,
+            # Identifies the event type
+            event_type: nil,
+            # The webhook payload for the portout.foc_date_changed event
+            payload: nil,
+            # The status of the payload generation.
+            payload_status: nil,
+            # Identifies the port-out order associated with the event.
+            portout_id: nil,
+            # Identifies the type of the resource.
+            record_type: nil,
+            # ISO 8601 formatted date indicating when the resource was updated.
+            updated_at: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                available_notification_methods:
+                  T::Array[
+                    Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::AvailableNotificationMethod::TaggedSymbol
+                  ],
+                created_at: Time,
+                event_type:
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::EventType::TaggedSymbol,
+                payload:
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::Payload,
+                payload_status:
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::PayloadStatus::TaggedSymbol,
+                portout_id: String,
+                record_type: String,
+                updated_at: Time
+              }
+            )
+          end
+          def to_hash
+          end
+
+          module AvailableNotificationMethod
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::AvailableNotificationMethod
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            EMAIL =
+              T.let(
+                :email,
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::AvailableNotificationMethod::TaggedSymbol
+              )
+            WEBHOOK =
+              T.let(
+                :webhook,
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::AvailableNotificationMethod::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::AvailableNotificationMethod::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Identifies the event type
+          module EventType
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::EventType
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PORTOUT_STATUS_CHANGED =
+              T.let(
+                :"portout.status_changed",
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::EventType::TaggedSymbol
+              )
+            PORTOUT_FOC_DATE_CHANGED =
+              T.let(
+                :"portout.foc_date_changed",
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::EventType::TaggedSymbol
+              )
+            PORTOUT_NEW_COMMENT =
+              T.let(
+                :"portout.new_comment",
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::EventType::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::EventType::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          class Payload < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::Models::Portouts::EventListResponse::Payload::WebhookPortoutFocDateChangedPayload,
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::Payload,
                   Telnyx::Internal::AnyHash
                 )
               end
@@ -602,50 +1183,48 @@ module Telnyx
             end
           end
 
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Models::Portouts::EventListResponse::Payload::Variants
-              ]
-            )
-          end
-          def self.variants
+          # The status of the payload generation.
+          module PayloadStatus
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::PayloadStatus
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            CREATED =
+              T.let(
+                :created,
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::PayloadStatus::TaggedSymbol
+              )
+            COMPLETED =
+              T.let(
+                :completed,
+                Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::PayloadStatus::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged::PayloadStatus::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
-        # The status of the payload generation.
-        module PayloadStatus
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::Models::Portouts::EventListResponse::PayloadStatus
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          CREATED =
-            T.let(
-              :created,
-              Telnyx::Models::Portouts::EventListResponse::PayloadStatus::TaggedSymbol
-            )
-          COMPLETED =
-            T.let(
-              :completed,
-              Telnyx::Models::Portouts::EventListResponse::PayloadStatus::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Models::Portouts::EventListResponse::PayloadStatus::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
+        sig do
+          override.returns(
+            T::Array[Telnyx::Models::Portouts::EventListResponse::Variants]
+          )
+        end
+        def self.variants
         end
       end
     end

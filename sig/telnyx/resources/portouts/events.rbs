@@ -11,7 +11,7 @@ module Telnyx
           ?filter: Telnyx::Portouts::EventListParams::Filter,
           ?page: Telnyx::Portouts::EventListParams::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::Portouts::EventListResponse]
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::Portouts::event_list_response]
 
         def republish: (
           String id,
