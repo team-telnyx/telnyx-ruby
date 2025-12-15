@@ -793,6 +793,8 @@ module Telnyx
 
   MesssageRcsParams = Telnyx::Models::MesssageRcsParams
 
+  MesssageWhatsappParams = Telnyx::Models::MesssageWhatsappParams
+
   Metadata = Telnyx::Models::Metadata
 
   MobileNetworkOperatorListParams =

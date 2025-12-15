@@ -35,6 +35,32 @@ module Telnyx
       )
       end
 
+      # Send a Whatsapp message
+      sig do
+        params(
+          from: String,
+          to: String,
+          whatsapp_message:
+            Telnyx::MesssageWhatsappParams::WhatsappMessage::OrHash,
+          type: Telnyx::MesssageWhatsappParams::Type::OrSymbol,
+          webhook_url: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::Models::MesssageWhatsappResponse)
+      end
+      def whatsapp(
+        # Phone number in +E.164 format associated with Whatsapp account
+        from:,
+        # Phone number in +E.164 format
+        to:,
+        whatsapp_message:,
+        # Message type - must be set to "WHATSAPP"
+        type: nil,
+        # The URL where webhooks related to this message will be sent.
+        webhook_url: nil,
+        request_options: {}
+      )
+      end
+
       # @api private
       sig { params(client: Telnyx::Client).returns(T.attached_class) }
       def self.new(client:)

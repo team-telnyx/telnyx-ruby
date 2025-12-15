@@ -24,4 +24,20 @@ class Telnyx::Test::Resources::MesssagesTest < Telnyx::Test::ResourceTest
       }
     end
   end
+
+  def test_whatsapp_required_params
+    skip("Prism tests are disabled")
+
+    response = @telnyx.messsages.whatsapp(from: "+13125551234", to: "+13125551234", whatsapp_message: {})
+
+    assert_pattern do
+      response => Telnyx::Models::MesssageWhatsappResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::MesssageWhatsappResponse::Data | nil
+      }
+    end
+  end
 end
