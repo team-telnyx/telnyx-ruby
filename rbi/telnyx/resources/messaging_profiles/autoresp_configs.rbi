@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     class MessagingProfiles
       class AutorespConfigs
-        # Create auto-response setting
+        # Create Auto-Reponse Setting
         sig do
           params(
             profile_id: String,

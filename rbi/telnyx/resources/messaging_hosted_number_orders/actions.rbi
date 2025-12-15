@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     class MessagingHostedNumberOrders
       class Actions
-        # Upload hosted number document
+        # Upload file required for a messaging hosted number order
         sig do
           params(
             id: String,

@@ -65,8 +65,6 @@ module Telnyx
             ?status_callback: String,
             ?status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_event,
             ?status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method,
-            ?supervise_call_sid: String,
-            ?supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::supervising_role,
             ?trim: Telnyx::Models::Texml::Accounts::CallCallsParams::trim,
             ?url: String,
             ?url_method: Telnyx::Models::Texml::Accounts::CallCallsParams::url_method,

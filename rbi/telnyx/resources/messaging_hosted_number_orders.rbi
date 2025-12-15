@@ -71,7 +71,7 @@ module Telnyx
       )
       end
 
-      # Check hosted messaging eligibility
+      # Check eligibility of phone numbers for hosted messaging
       sig do
         params(
           phone_numbers: T::Array[String],

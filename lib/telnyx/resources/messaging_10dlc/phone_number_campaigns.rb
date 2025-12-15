@@ -77,7 +77,7 @@ module Telnyx
         # {Telnyx::Models::Messaging10dlc::PhoneNumberCampaignListParams} for more
         # details.
         #
-        # List phone number campaigns
+        # Retrieve All Phone Number Campaigns
         #
         # @overload list(filter: nil, page: nil, records_per_page: nil, sort: nil, request_options: {})
         #

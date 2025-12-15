@@ -24,7 +24,7 @@ module Telnyx
         )
         end
 
-        # Check RCS capabilities (batch)
+        # List RCS capabilities of a given batch of phone numbers
         sig do
           params(
             agent_id: String,
@@ -41,7 +41,7 @@ module Telnyx
         )
         end
 
-        # Check RCS capabilities
+        # List RCS capabilities of a phone number
         sig do
           params(
             phone_number: String,

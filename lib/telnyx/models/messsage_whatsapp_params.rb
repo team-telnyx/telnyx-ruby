@@ -52,8 +52,8 @@ module Telnyx
       class WhatsappMessage < Telnyx::Internal::Type::BaseModel
         # @!attribute audio
         #
-        #   @return [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Audio, nil]
-        optional :audio, -> { Telnyx::MesssageWhatsappParams::WhatsappMessage::Audio }
+        #   @return [Telnyx::Models::WhatsappMedia, nil]
+        optional :audio, -> { Telnyx::WhatsappMedia }
 
         # @!attribute biz_opaque_callback_data
         #   custom data to return with status update
@@ -69,13 +69,13 @@ module Telnyx
 
         # @!attribute document
         #
-        #   @return [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Document, nil]
-        optional :document, -> { Telnyx::MesssageWhatsappParams::WhatsappMessage::Document }
+        #   @return [Telnyx::Models::WhatsappMedia, nil]
+        optional :document, -> { Telnyx::WhatsappMedia }
 
         # @!attribute image
         #
-        #   @return [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Image, nil]
-        optional :image, -> { Telnyx::MesssageWhatsappParams::WhatsappMessage::Image }
+        #   @return [Telnyx::Models::WhatsappMedia, nil]
+        optional :image, -> { Telnyx::WhatsappMedia }
 
         # @!attribute interactive
         #
@@ -94,8 +94,8 @@ module Telnyx
 
         # @!attribute sticker
         #
-        #   @return [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Sticker, nil]
-        optional :sticker, -> { Telnyx::MesssageWhatsappParams::WhatsappMessage::Sticker }
+        #   @return [Telnyx::Models::WhatsappMedia, nil]
+        optional :sticker, -> { Telnyx::WhatsappMedia }
 
         # @!attribute type
         #
@@ -104,19 +104,19 @@ module Telnyx
 
         # @!attribute video
         #
-        #   @return [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Video, nil]
-        optional :video, -> { Telnyx::MesssageWhatsappParams::WhatsappMessage::Video }
+        #   @return [Telnyx::Models::WhatsappMedia, nil]
+        optional :video, -> { Telnyx::WhatsappMedia }
 
         # @!method initialize(audio: nil, biz_opaque_callback_data: nil, contacts: nil, document: nil, image: nil, interactive: nil, location: nil, reaction: nil, sticker: nil, type: nil, video: nil)
-        #   @param audio [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Audio]
+        #   @param audio [Telnyx::Models::WhatsappMedia]
         #
         #   @param biz_opaque_callback_data [String] custom data to return with status update
         #
         #   @param contacts [Array<Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Contact>]
         #
-        #   @param document [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Document]
+        #   @param document [Telnyx::Models::WhatsappMedia]
         #
-        #   @param image [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Image]
+        #   @param image [Telnyx::Models::WhatsappMedia]
         #
         #   @param interactive [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive]
         #
@@ -124,47 +124,11 @@ module Telnyx
         #
         #   @param reaction [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Reaction]
         #
-        #   @param sticker [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Sticker]
+        #   @param sticker [Telnyx::Models::WhatsappMedia]
         #
         #   @param type [Symbol, Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Type]
         #
-        #   @param video [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Video]
-
-        # @see Telnyx::Models::MesssageWhatsappParams::WhatsappMessage#audio
-        class Audio < Telnyx::Internal::Type::BaseModel
-          # @!attribute caption
-          #   media caption
-          #
-          #   @return [String, nil]
-          optional :caption, String
-
-          # @!attribute filename
-          #   file name with extension
-          #
-          #   @return [String, nil]
-          optional :filename, String
-
-          # @!attribute link
-          #   media URL
-          #
-          #   @return [String, nil]
-          optional :link, String
-
-          # @!attribute voice
-          #   true if voice message
-          #
-          #   @return [Boolean, nil]
-          optional :voice, Telnyx::Internal::Type::Boolean
-
-          # @!method initialize(caption: nil, filename: nil, link: nil, voice: nil)
-          #   @param caption [String] media caption
-          #
-          #   @param filename [String] file name with extension
-          #
-          #   @param link [String] media URL
-          #
-          #   @param voice [Boolean] true if voice message
-        end
+        #   @param video [Telnyx::Models::WhatsappMedia]
 
         class Contact < Telnyx::Internal::Type::BaseModel
           # @!attribute addresses
@@ -337,78 +301,6 @@ module Telnyx
             #   @param type [String]
             #   @param url [String]
           end
-        end
-
-        # @see Telnyx::Models::MesssageWhatsappParams::WhatsappMessage#document
-        class Document < Telnyx::Internal::Type::BaseModel
-          # @!attribute caption
-          #   media caption
-          #
-          #   @return [String, nil]
-          optional :caption, String
-
-          # @!attribute filename
-          #   file name with extension
-          #
-          #   @return [String, nil]
-          optional :filename, String
-
-          # @!attribute link
-          #   media URL
-          #
-          #   @return [String, nil]
-          optional :link, String
-
-          # @!attribute voice
-          #   true if voice message
-          #
-          #   @return [Boolean, nil]
-          optional :voice, Telnyx::Internal::Type::Boolean
-
-          # @!method initialize(caption: nil, filename: nil, link: nil, voice: nil)
-          #   @param caption [String] media caption
-          #
-          #   @param filename [String] file name with extension
-          #
-          #   @param link [String] media URL
-          #
-          #   @param voice [Boolean] true if voice message
-        end
-
-        # @see Telnyx::Models::MesssageWhatsappParams::WhatsappMessage#image
-        class Image < Telnyx::Internal::Type::BaseModel
-          # @!attribute caption
-          #   media caption
-          #
-          #   @return [String, nil]
-          optional :caption, String
-
-          # @!attribute filename
-          #   file name with extension
-          #
-          #   @return [String, nil]
-          optional :filename, String
-
-          # @!attribute link
-          #   media URL
-          #
-          #   @return [String, nil]
-          optional :link, String
-
-          # @!attribute voice
-          #   true if voice message
-          #
-          #   @return [Boolean, nil]
-          optional :voice, Telnyx::Internal::Type::Boolean
-
-          # @!method initialize(caption: nil, filename: nil, link: nil, voice: nil)
-          #   @param caption [String] media caption
-          #
-          #   @param filename [String] file name with extension
-          #
-          #   @param link [String] media URL
-          #
-          #   @param voice [Boolean] true if voice message
         end
 
         # @see Telnyx::Models::MesssageWhatsappParams::WhatsappMessage#interactive
@@ -632,9 +524,8 @@ module Telnyx
               class Header < Telnyx::Internal::Type::BaseModel
                 # @!attribute image
                 #
-                #   @return [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Image, nil]
-                optional :image,
-                         -> { Telnyx::MesssageWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Image }
+                #   @return [Telnyx::Models::WhatsappMedia, nil]
+                optional :image, -> { Telnyx::WhatsappMedia }
 
                 # @!attribute type
                 #
@@ -644,50 +535,13 @@ module Telnyx
 
                 # @!attribute video
                 #
-                #   @return [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Video, nil]
-                optional :video,
-                         -> { Telnyx::MesssageWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Video }
+                #   @return [Telnyx::Models::WhatsappMedia, nil]
+                optional :video, -> { Telnyx::WhatsappMedia }
 
                 # @!method initialize(image: nil, type: nil, video: nil)
-                #   @param image [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Image]
+                #   @param image [Telnyx::Models::WhatsappMedia]
                 #   @param type [Symbol, Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Type]
-                #   @param video [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Video]
-
-                # @see Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header#image
-                class Image < Telnyx::Internal::Type::BaseModel
-                  # @!attribute caption
-                  #   media caption
-                  #
-                  #   @return [String, nil]
-                  optional :caption, String
-
-                  # @!attribute filename
-                  #   file name with extension
-                  #
-                  #   @return [String, nil]
-                  optional :filename, String
-
-                  # @!attribute link
-                  #   media URL
-                  #
-                  #   @return [String, nil]
-                  optional :link, String
-
-                  # @!attribute voice
-                  #   true if voice message
-                  #
-                  #   @return [Boolean, nil]
-                  optional :voice, Telnyx::Internal::Type::Boolean
-
-                  # @!method initialize(caption: nil, filename: nil, link: nil, voice: nil)
-                  #   @param caption [String] media caption
-                  #
-                  #   @param filename [String] file name with extension
-                  #
-                  #   @param link [String] media URL
-                  #
-                  #   @param voice [Boolean] true if voice message
-                end
+                #   @param video [Telnyx::Models::WhatsappMedia]
 
                 # @see Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header#type
                 module Type
@@ -698,42 +552,6 @@ module Telnyx
 
                   # @!method self.values
                   #   @return [Array<Symbol>]
-                end
-
-                # @see Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header#video
-                class Video < Telnyx::Internal::Type::BaseModel
-                  # @!attribute caption
-                  #   media caption
-                  #
-                  #   @return [String, nil]
-                  optional :caption, String
-
-                  # @!attribute filename
-                  #   file name with extension
-                  #
-                  #   @return [String, nil]
-                  optional :filename, String
-
-                  # @!attribute link
-                  #   media URL
-                  #
-                  #   @return [String, nil]
-                  optional :link, String
-
-                  # @!attribute voice
-                  #   true if voice message
-                  #
-                  #   @return [Boolean, nil]
-                  optional :voice, Telnyx::Internal::Type::Boolean
-
-                  # @!method initialize(caption: nil, filename: nil, link: nil, voice: nil)
-                  #   @param caption [String] media caption
-                  #
-                  #   @param filename [String] file name with extension
-                  #
-                  #   @param link [String] media URL
-                  #
-                  #   @param voice [Boolean] true if voice message
                 end
               end
 
@@ -861,13 +679,13 @@ module Telnyx
           class Header < Telnyx::Internal::Type::BaseModel
             # @!attribute document
             #
-            #   @return [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive::Header::Document, nil]
-            optional :document, -> { Telnyx::MesssageWhatsappParams::WhatsappMessage::Interactive::Header::Document }
+            #   @return [Telnyx::Models::WhatsappMedia, nil]
+            optional :document, -> { Telnyx::WhatsappMedia }
 
             # @!attribute image
             #
-            #   @return [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive::Header::Image, nil]
-            optional :image, -> { Telnyx::MesssageWhatsappParams::WhatsappMessage::Interactive::Header::Image }
+            #   @return [Telnyx::Models::WhatsappMedia, nil]
+            optional :image, -> { Telnyx::WhatsappMedia }
 
             # @!attribute sub_text
             #
@@ -882,127 +700,19 @@ module Telnyx
 
             # @!attribute video
             #
-            #   @return [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive::Header::Video, nil]
-            optional :video, -> { Telnyx::MesssageWhatsappParams::WhatsappMessage::Interactive::Header::Video }
+            #   @return [Telnyx::Models::WhatsappMedia, nil]
+            optional :video, -> { Telnyx::WhatsappMedia }
 
             # @!method initialize(document: nil, image: nil, sub_text: nil, text: nil, video: nil)
-            #   @param document [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive::Header::Document]
+            #   @param document [Telnyx::Models::WhatsappMedia]
             #
-            #   @param image [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive::Header::Image]
+            #   @param image [Telnyx::Models::WhatsappMedia]
             #
             #   @param sub_text [String]
             #
             #   @param text [String] header text, 60 character maximum
             #
-            #   @param video [Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive::Header::Video]
-
-            # @see Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive::Header#document
-            class Document < Telnyx::Internal::Type::BaseModel
-              # @!attribute caption
-              #   media caption
-              #
-              #   @return [String, nil]
-              optional :caption, String
-
-              # @!attribute filename
-              #   file name with extension
-              #
-              #   @return [String, nil]
-              optional :filename, String
-
-              # @!attribute link
-              #   media URL
-              #
-              #   @return [String, nil]
-              optional :link, String
-
-              # @!attribute voice
-              #   true if voice message
-              #
-              #   @return [Boolean, nil]
-              optional :voice, Telnyx::Internal::Type::Boolean
-
-              # @!method initialize(caption: nil, filename: nil, link: nil, voice: nil)
-              #   @param caption [String] media caption
-              #
-              #   @param filename [String] file name with extension
-              #
-              #   @param link [String] media URL
-              #
-              #   @param voice [Boolean] true if voice message
-            end
-
-            # @see Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive::Header#image
-            class Image < Telnyx::Internal::Type::BaseModel
-              # @!attribute caption
-              #   media caption
-              #
-              #   @return [String, nil]
-              optional :caption, String
-
-              # @!attribute filename
-              #   file name with extension
-              #
-              #   @return [String, nil]
-              optional :filename, String
-
-              # @!attribute link
-              #   media URL
-              #
-              #   @return [String, nil]
-              optional :link, String
-
-              # @!attribute voice
-              #   true if voice message
-              #
-              #   @return [Boolean, nil]
-              optional :voice, Telnyx::Internal::Type::Boolean
-
-              # @!method initialize(caption: nil, filename: nil, link: nil, voice: nil)
-              #   @param caption [String] media caption
-              #
-              #   @param filename [String] file name with extension
-              #
-              #   @param link [String] media URL
-              #
-              #   @param voice [Boolean] true if voice message
-            end
-
-            # @see Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive::Header#video
-            class Video < Telnyx::Internal::Type::BaseModel
-              # @!attribute caption
-              #   media caption
-              #
-              #   @return [String, nil]
-              optional :caption, String
-
-              # @!attribute filename
-              #   file name with extension
-              #
-              #   @return [String, nil]
-              optional :filename, String
-
-              # @!attribute link
-              #   media URL
-              #
-              #   @return [String, nil]
-              optional :link, String
-
-              # @!attribute voice
-              #   true if voice message
-              #
-              #   @return [Boolean, nil]
-              optional :voice, Telnyx::Internal::Type::Boolean
-
-              # @!method initialize(caption: nil, filename: nil, link: nil, voice: nil)
-              #   @param caption [String] media caption
-              #
-              #   @param filename [String] file name with extension
-              #
-              #   @param link [String] media URL
-              #
-              #   @param voice [Boolean] true if voice message
-            end
+            #   @param video [Telnyx::Models::WhatsappMedia]
           end
 
           # @see Telnyx::Models::MesssageWhatsappParams::WhatsappMessage::Interactive#type
@@ -1066,42 +776,6 @@ module Telnyx
           #   @param message_id [String]
         end
 
-        # @see Telnyx::Models::MesssageWhatsappParams::WhatsappMessage#sticker
-        class Sticker < Telnyx::Internal::Type::BaseModel
-          # @!attribute caption
-          #   media caption
-          #
-          #   @return [String, nil]
-          optional :caption, String
-
-          # @!attribute filename
-          #   file name with extension
-          #
-          #   @return [String, nil]
-          optional :filename, String
-
-          # @!attribute link
-          #   media URL
-          #
-          #   @return [String, nil]
-          optional :link, String
-
-          # @!attribute voice
-          #   true if voice message
-          #
-          #   @return [Boolean, nil]
-          optional :voice, Telnyx::Internal::Type::Boolean
-
-          # @!method initialize(caption: nil, filename: nil, link: nil, voice: nil)
-          #   @param caption [String] media caption
-          #
-          #   @param filename [String] file name with extension
-          #
-          #   @param link [String] media URL
-          #
-          #   @param voice [Boolean] true if voice message
-        end
-
         # @see Telnyx::Models::MesssageWhatsappParams::WhatsappMessage#type
         module Type
           extend Telnyx::Internal::Type::Enum
@@ -1119,42 +793,6 @@ module Telnyx
 
           # @!method self.values
           #   @return [Array<Symbol>]
-        end
-
-        # @see Telnyx::Models::MesssageWhatsappParams::WhatsappMessage#video
-        class Video < Telnyx::Internal::Type::BaseModel
-          # @!attribute caption
-          #   media caption
-          #
-          #   @return [String, nil]
-          optional :caption, String
-
-          # @!attribute filename
-          #   file name with extension
-          #
-          #   @return [String, nil]
-          optional :filename, String
-
-          # @!attribute link
-          #   media URL
-          #
-          #   @return [String, nil]
-          optional :link, String
-
-          # @!attribute voice
-          #   true if voice message
-          #
-          #   @return [Boolean, nil]
-          optional :voice, Telnyx::Internal::Type::Boolean
-
-          # @!method initialize(caption: nil, filename: nil, link: nil, voice: nil)
-          #   @param caption [String] media caption
-          #
-          #   @param filename [String] file name with extension
-          #
-          #   @param link [String] media URL
-          #
-          #   @param voice [Boolean] true if voice message
         end
       end
 
