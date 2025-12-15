@@ -1451,6 +1451,8 @@ module Telnyx
   WellKnownRetrieveProtectedResourceMetadataParams =
     Telnyx::Models::WellKnownRetrieveProtectedResourceMetadataParams
 
+  WhatsappMedia = Telnyx::Models::WhatsappMedia
+
   WireguardInterfaceCreateParams = Telnyx::Models::WireguardInterfaceCreateParams
 
   WireguardInterfaceDeleteParams = Telnyx::Models::WireguardInterfaceDeleteParams

@@ -50,7 +50,7 @@ module Telnyx
         )
         end
 
-        # List phone number campaigns
+        # Retrieve All Phone Number Campaigns
         sig do
           params(
             filter:

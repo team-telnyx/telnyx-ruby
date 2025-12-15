@@ -36,8 +36,6 @@ module Telnyx
             status_callback: String,
             status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_event,
             status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method,
-            supervise_call_sid: String,
-            supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::supervising_role,
             trim: Telnyx::Models::Texml::Accounts::CallCallsParams::trim,
             url: String,
             url_method: Telnyx::Models::Texml::Accounts::CallCallsParams::url_method
@@ -190,16 +188,6 @@ module Telnyx
             Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method
           ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method
 
-          attr_reader supervise_call_sid: String?
-
-          def supervise_call_sid=: (String) -> String
-
-          attr_reader supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::supervising_role?
-
-          def supervising_role=: (
-            Telnyx::Models::Texml::Accounts::CallCallsParams::supervising_role
-          ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::supervising_role
-
           attr_reader trim: Telnyx::Models::Texml::Accounts::CallCallsParams::trim?
 
           def trim=: (
@@ -249,8 +237,6 @@ module Telnyx
             ?status_callback: String,
             ?status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_event,
             ?status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method,
-            ?supervise_call_sid: String,
-            ?supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::supervising_role,
             ?trim: Telnyx::Models::Texml::Accounts::CallCallsParams::trim,
             ?url: String,
             ?url_method: Telnyx::Models::Texml::Accounts::CallCallsParams::url_method,
@@ -290,8 +276,6 @@ module Telnyx
             status_callback: String,
             status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_event,
             status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method,
-            supervise_call_sid: String,
-            supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::supervising_role,
             trim: Telnyx::Models::Texml::Accounts::CallCallsParams::trim,
             url: String,
             url_method: Telnyx::Models::Texml::Accounts::CallCallsParams::url_method,
@@ -416,18 +400,6 @@ module Telnyx
             POST: :POST
 
             def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method]
-          end
-
-          type supervising_role = :barge | :whisper | :monitor
-
-          module SupervisingRole
-            extend Telnyx::Internal::Type::Enum
-
-            BARGE: :barge
-            WHISPER: :whisper
-            MONITOR: :monitor
-
-            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::supervising_role]
           end
 
           type trim = :"trim-silence" | :"do-not-trim"

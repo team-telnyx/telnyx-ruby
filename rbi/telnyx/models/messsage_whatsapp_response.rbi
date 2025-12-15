@@ -205,21 +205,10 @@ module Telnyx
               )
             end
 
-          sig do
-            returns(
-              T.nilable(
-                Telnyx::Models::MesssageWhatsappResponse::Data::Body::Audio
-              )
-            )
-          end
+          sig { returns(T.nilable(Telnyx::WhatsappMedia)) }
           attr_reader :audio
 
-          sig do
-            params(
-              audio:
-                Telnyx::Models::MesssageWhatsappResponse::Data::Body::Audio::OrHash
-            ).void
-          end
+          sig { params(audio: Telnyx::WhatsappMedia::OrHash).void }
           attr_writer :audio
 
           # custom data to return with status update
@@ -250,38 +239,16 @@ module Telnyx
           end
           attr_writer :contacts
 
-          sig do
-            returns(
-              T.nilable(
-                Telnyx::Models::MesssageWhatsappResponse::Data::Body::Document
-              )
-            )
-          end
+          sig { returns(T.nilable(Telnyx::WhatsappMedia)) }
           attr_reader :document
 
-          sig do
-            params(
-              document:
-                Telnyx::Models::MesssageWhatsappResponse::Data::Body::Document::OrHash
-            ).void
-          end
+          sig { params(document: Telnyx::WhatsappMedia::OrHash).void }
           attr_writer :document
 
-          sig do
-            returns(
-              T.nilable(
-                Telnyx::Models::MesssageWhatsappResponse::Data::Body::Image
-              )
-            )
-          end
+          sig { returns(T.nilable(Telnyx::WhatsappMedia)) }
           attr_reader :image
 
-          sig do
-            params(
-              image:
-                Telnyx::Models::MesssageWhatsappResponse::Data::Body::Image::OrHash
-            ).void
-          end
+          sig { params(image: Telnyx::WhatsappMedia::OrHash).void }
           attr_writer :image
 
           sig do
@@ -335,21 +302,10 @@ module Telnyx
           end
           attr_writer :reaction
 
-          sig do
-            returns(
-              T.nilable(
-                Telnyx::Models::MesssageWhatsappResponse::Data::Body::Sticker
-              )
-            )
-          end
+          sig { returns(T.nilable(Telnyx::WhatsappMedia)) }
           attr_reader :sticker
 
-          sig do
-            params(
-              sticker:
-                Telnyx::Models::MesssageWhatsappResponse::Data::Body::Sticker::OrHash
-            ).void
-          end
+          sig { params(sticker: Telnyx::WhatsappMedia::OrHash).void }
           attr_writer :sticker
 
           sig do
@@ -369,48 +325,32 @@ module Telnyx
           end
           attr_writer :type
 
-          sig do
-            returns(
-              T.nilable(
-                Telnyx::Models::MesssageWhatsappResponse::Data::Body::Video
-              )
-            )
-          end
+          sig { returns(T.nilable(Telnyx::WhatsappMedia)) }
           attr_reader :video
 
-          sig do
-            params(
-              video:
-                Telnyx::Models::MesssageWhatsappResponse::Data::Body::Video::OrHash
-            ).void
-          end
+          sig { params(video: Telnyx::WhatsappMedia::OrHash).void }
           attr_writer :video
 
           sig do
             params(
-              audio:
-                Telnyx::Models::MesssageWhatsappResponse::Data::Body::Audio::OrHash,
+              audio: Telnyx::WhatsappMedia::OrHash,
               biz_opaque_callback_data: String,
               contacts:
                 T::Array[
                   Telnyx::Models::MesssageWhatsappResponse::Data::Body::Contact::OrHash
                 ],
-              document:
-                Telnyx::Models::MesssageWhatsappResponse::Data::Body::Document::OrHash,
-              image:
-                Telnyx::Models::MesssageWhatsappResponse::Data::Body::Image::OrHash,
+              document: Telnyx::WhatsappMedia::OrHash,
+              image: Telnyx::WhatsappMedia::OrHash,
               interactive:
                 Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::OrHash,
               location:
                 Telnyx::Models::MesssageWhatsappResponse::Data::Body::Location::OrHash,
               reaction:
                 Telnyx::Models::MesssageWhatsappResponse::Data::Body::Reaction::OrHash,
-              sticker:
-                Telnyx::Models::MesssageWhatsappResponse::Data::Body::Sticker::OrHash,
+              sticker: Telnyx::WhatsappMedia::OrHash,
               type:
                 Telnyx::Models::MesssageWhatsappResponse::Data::Body::Type::OrSymbol,
-              video:
-                Telnyx::Models::MesssageWhatsappResponse::Data::Body::Video::OrHash
+              video: Telnyx::WhatsappMedia::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
@@ -432,104 +372,28 @@ module Telnyx
           sig do
             override.returns(
               {
-                audio:
-                  Telnyx::Models::MesssageWhatsappResponse::Data::Body::Audio,
+                audio: Telnyx::WhatsappMedia,
                 biz_opaque_callback_data: String,
                 contacts:
                   T::Array[
                     Telnyx::Models::MesssageWhatsappResponse::Data::Body::Contact
                   ],
-                document:
-                  Telnyx::Models::MesssageWhatsappResponse::Data::Body::Document,
-                image:
-                  Telnyx::Models::MesssageWhatsappResponse::Data::Body::Image,
+                document: Telnyx::WhatsappMedia,
+                image: Telnyx::WhatsappMedia,
                 interactive:
                   Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive,
                 location:
                   Telnyx::Models::MesssageWhatsappResponse::Data::Body::Location,
                 reaction:
                   Telnyx::Models::MesssageWhatsappResponse::Data::Body::Reaction,
-                sticker:
-                  Telnyx::Models::MesssageWhatsappResponse::Data::Body::Sticker,
+                sticker: Telnyx::WhatsappMedia,
                 type:
                   Telnyx::Models::MesssageWhatsappResponse::Data::Body::Type::TaggedSymbol,
-                video:
-                  Telnyx::Models::MesssageWhatsappResponse::Data::Body::Video
+                video: Telnyx::WhatsappMedia
               }
             )
           end
           def to_hash
-          end
-
-          class Audio < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Models::MesssageWhatsappResponse::Data::Body::Audio,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # media caption
-            sig { returns(T.nilable(String)) }
-            attr_reader :caption
-
-            sig { params(caption: String).void }
-            attr_writer :caption
-
-            # file name with extension
-            sig { returns(T.nilable(String)) }
-            attr_reader :filename
-
-            sig { params(filename: String).void }
-            attr_writer :filename
-
-            # media URL
-            sig { returns(T.nilable(String)) }
-            attr_reader :link
-
-            sig { params(link: String).void }
-            attr_writer :link
-
-            # true if voice message
-            sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :voice
-
-            sig { params(voice: T::Boolean).void }
-            attr_writer :voice
-
-            sig do
-              params(
-                caption: String,
-                filename: String,
-                link: String,
-                voice: T::Boolean
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # media caption
-              caption: nil,
-              # file name with extension
-              filename: nil,
-              # media URL
-              link: nil,
-              # true if voice message
-              voice: nil
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  caption: String,
-                  filename: String,
-                  link: String,
-                  voice: T::Boolean
-                }
-              )
-            end
-            def to_hash
-            end
           end
 
           class Contact < Telnyx::Internal::Type::BaseModel
@@ -958,148 +822,6 @@ module Telnyx
               sig { override.returns({ type: String, url: String }) }
               def to_hash
               end
-            end
-          end
-
-          class Document < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Models::MesssageWhatsappResponse::Data::Body::Document,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # media caption
-            sig { returns(T.nilable(String)) }
-            attr_reader :caption
-
-            sig { params(caption: String).void }
-            attr_writer :caption
-
-            # file name with extension
-            sig { returns(T.nilable(String)) }
-            attr_reader :filename
-
-            sig { params(filename: String).void }
-            attr_writer :filename
-
-            # media URL
-            sig { returns(T.nilable(String)) }
-            attr_reader :link
-
-            sig { params(link: String).void }
-            attr_writer :link
-
-            # true if voice message
-            sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :voice
-
-            sig { params(voice: T::Boolean).void }
-            attr_writer :voice
-
-            sig do
-              params(
-                caption: String,
-                filename: String,
-                link: String,
-                voice: T::Boolean
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # media caption
-              caption: nil,
-              # file name with extension
-              filename: nil,
-              # media URL
-              link: nil,
-              # true if voice message
-              voice: nil
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  caption: String,
-                  filename: String,
-                  link: String,
-                  voice: T::Boolean
-                }
-              )
-            end
-            def to_hash
-            end
-          end
-
-          class Image < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Models::MesssageWhatsappResponse::Data::Body::Image,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # media caption
-            sig { returns(T.nilable(String)) }
-            attr_reader :caption
-
-            sig { params(caption: String).void }
-            attr_writer :caption
-
-            # file name with extension
-            sig { returns(T.nilable(String)) }
-            attr_reader :filename
-
-            sig { params(filename: String).void }
-            attr_writer :filename
-
-            # media URL
-            sig { returns(T.nilable(String)) }
-            attr_reader :link
-
-            sig { params(link: String).void }
-            attr_writer :link
-
-            # true if voice message
-            sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :voice
-
-            sig { params(voice: T::Boolean).void }
-            attr_writer :voice
-
-            sig do
-              params(
-                caption: String,
-                filename: String,
-                link: String,
-                voice: T::Boolean
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # media caption
-              caption: nil,
-              # file name with extension
-              filename: nil,
-              # media URL
-              link: nil,
-              # true if voice message
-              voice: nil
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  caption: String,
-                  filename: String,
-                  link: String,
-                  voice: T::Boolean
-                }
-              )
-            end
-            def to_hash
             end
           end
 
@@ -1766,21 +1488,10 @@ module Telnyx
                       )
                     end
 
-                  sig do
-                    returns(
-                      T.nilable(
-                        Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Action::Card::Header::Image
-                      )
-                    )
-                  end
+                  sig { returns(T.nilable(Telnyx::WhatsappMedia)) }
                   attr_reader :image
 
-                  sig do
-                    params(
-                      image:
-                        Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Action::Card::Header::Image::OrHash
-                    ).void
-                  end
+                  sig { params(image: Telnyx::WhatsappMedia::OrHash).void }
                   attr_writer :image
 
                   sig do
@@ -1800,31 +1511,18 @@ module Telnyx
                   end
                   attr_writer :type
 
-                  sig do
-                    returns(
-                      T.nilable(
-                        Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Action::Card::Header::Video
-                      )
-                    )
-                  end
+                  sig { returns(T.nilable(Telnyx::WhatsappMedia)) }
                   attr_reader :video
 
-                  sig do
-                    params(
-                      video:
-                        Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Action::Card::Header::Video::OrHash
-                    ).void
-                  end
+                  sig { params(video: Telnyx::WhatsappMedia::OrHash).void }
                   attr_writer :video
 
                   sig do
                     params(
-                      image:
-                        Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Action::Card::Header::Image::OrHash,
+                      image: Telnyx::WhatsappMedia::OrHash,
                       type:
                         Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Action::Card::Header::Type::OrSymbol,
-                      video:
-                        Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Action::Card::Header::Video::OrHash
+                      video: Telnyx::WhatsappMedia::OrHash
                     ).returns(T.attached_class)
                   end
                   def self.new(image: nil, type: nil, video: nil)
@@ -1833,87 +1531,14 @@ module Telnyx
                   sig do
                     override.returns(
                       {
-                        image:
-                          Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Action::Card::Header::Image,
+                        image: Telnyx::WhatsappMedia,
                         type:
                           Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Action::Card::Header::Type::TaggedSymbol,
-                        video:
-                          Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Action::Card::Header::Video
+                        video: Telnyx::WhatsappMedia
                       }
                     )
                   end
                   def to_hash
-                  end
-
-                  class Image < Telnyx::Internal::Type::BaseModel
-                    OrHash =
-                      T.type_alias do
-                        T.any(
-                          Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Action::Card::Header::Image,
-                          Telnyx::Internal::AnyHash
-                        )
-                      end
-
-                    # media caption
-                    sig { returns(T.nilable(String)) }
-                    attr_reader :caption
-
-                    sig { params(caption: String).void }
-                    attr_writer :caption
-
-                    # file name with extension
-                    sig { returns(T.nilable(String)) }
-                    attr_reader :filename
-
-                    sig { params(filename: String).void }
-                    attr_writer :filename
-
-                    # media URL
-                    sig { returns(T.nilable(String)) }
-                    attr_reader :link
-
-                    sig { params(link: String).void }
-                    attr_writer :link
-
-                    # true if voice message
-                    sig { returns(T.nilable(T::Boolean)) }
-                    attr_reader :voice
-
-                    sig { params(voice: T::Boolean).void }
-                    attr_writer :voice
-
-                    sig do
-                      params(
-                        caption: String,
-                        filename: String,
-                        link: String,
-                        voice: T::Boolean
-                      ).returns(T.attached_class)
-                    end
-                    def self.new(
-                      # media caption
-                      caption: nil,
-                      # file name with extension
-                      filename: nil,
-                      # media URL
-                      link: nil,
-                      # true if voice message
-                      voice: nil
-                    )
-                    end
-
-                    sig do
-                      override.returns(
-                        {
-                          caption: String,
-                          filename: String,
-                          link: String,
-                          voice: T::Boolean
-                        }
-                      )
-                    end
-                    def to_hash
-                    end
                   end
 
                   module Type
@@ -1947,77 +1572,6 @@ module Telnyx
                       )
                     end
                     def self.values
-                    end
-                  end
-
-                  class Video < Telnyx::Internal::Type::BaseModel
-                    OrHash =
-                      T.type_alias do
-                        T.any(
-                          Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Action::Card::Header::Video,
-                          Telnyx::Internal::AnyHash
-                        )
-                      end
-
-                    # media caption
-                    sig { returns(T.nilable(String)) }
-                    attr_reader :caption
-
-                    sig { params(caption: String).void }
-                    attr_writer :caption
-
-                    # file name with extension
-                    sig { returns(T.nilable(String)) }
-                    attr_reader :filename
-
-                    sig { params(filename: String).void }
-                    attr_writer :filename
-
-                    # media URL
-                    sig { returns(T.nilable(String)) }
-                    attr_reader :link
-
-                    sig { params(link: String).void }
-                    attr_writer :link
-
-                    # true if voice message
-                    sig { returns(T.nilable(T::Boolean)) }
-                    attr_reader :voice
-
-                    sig { params(voice: T::Boolean).void }
-                    attr_writer :voice
-
-                    sig do
-                      params(
-                        caption: String,
-                        filename: String,
-                        link: String,
-                        voice: T::Boolean
-                      ).returns(T.attached_class)
-                    end
-                    def self.new(
-                      # media caption
-                      caption: nil,
-                      # file name with extension
-                      filename: nil,
-                      # media URL
-                      link: nil,
-                      # true if voice message
-                      voice: nil
-                    )
-                    end
-
-                    sig do
-                      override.returns(
-                        {
-                          caption: String,
-                          filename: String,
-                          link: String,
-                          voice: T::Boolean
-                        }
-                      )
-                    end
-                    def to_hash
                     end
                   end
                 end
@@ -2341,38 +1895,16 @@ module Telnyx
                   )
                 end
 
-              sig do
-                returns(
-                  T.nilable(
-                    Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Header::Document
-                  )
-                )
-              end
+              sig { returns(T.nilable(Telnyx::WhatsappMedia)) }
               attr_reader :document
 
-              sig do
-                params(
-                  document:
-                    Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Header::Document::OrHash
-                ).void
-              end
+              sig { params(document: Telnyx::WhatsappMedia::OrHash).void }
               attr_writer :document
 
-              sig do
-                returns(
-                  T.nilable(
-                    Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Header::Image
-                  )
-                )
-              end
+              sig { returns(T.nilable(Telnyx::WhatsappMedia)) }
               attr_reader :image
 
-              sig do
-                params(
-                  image:
-                    Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Header::Image::OrHash
-                ).void
-              end
+              sig { params(image: Telnyx::WhatsappMedia::OrHash).void }
               attr_writer :image
 
               sig { returns(T.nilable(String)) }
@@ -2388,33 +1920,19 @@ module Telnyx
               sig { params(text: String).void }
               attr_writer :text
 
-              sig do
-                returns(
-                  T.nilable(
-                    Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Header::Video
-                  )
-                )
-              end
+              sig { returns(T.nilable(Telnyx::WhatsappMedia)) }
               attr_reader :video
 
-              sig do
-                params(
-                  video:
-                    Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Header::Video::OrHash
-                ).void
-              end
+              sig { params(video: Telnyx::WhatsappMedia::OrHash).void }
               attr_writer :video
 
               sig do
                 params(
-                  document:
-                    Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Header::Document::OrHash,
-                  image:
-                    Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Header::Image::OrHash,
+                  document: Telnyx::WhatsappMedia::OrHash,
+                  image: Telnyx::WhatsappMedia::OrHash,
                   sub_text: String,
                   text: String,
-                  video:
-                    Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Header::Video::OrHash
+                  video: Telnyx::WhatsappMedia::OrHash
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -2430,231 +1948,15 @@ module Telnyx
               sig do
                 override.returns(
                   {
-                    document:
-                      Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Header::Document,
-                    image:
-                      Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Header::Image,
+                    document: Telnyx::WhatsappMedia,
+                    image: Telnyx::WhatsappMedia,
                     sub_text: String,
                     text: String,
-                    video:
-                      Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Header::Video
+                    video: Telnyx::WhatsappMedia
                   }
                 )
               end
               def to_hash
-              end
-
-              class Document < Telnyx::Internal::Type::BaseModel
-                OrHash =
-                  T.type_alias do
-                    T.any(
-                      Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Header::Document,
-                      Telnyx::Internal::AnyHash
-                    )
-                  end
-
-                # media caption
-                sig { returns(T.nilable(String)) }
-                attr_reader :caption
-
-                sig { params(caption: String).void }
-                attr_writer :caption
-
-                # file name with extension
-                sig { returns(T.nilable(String)) }
-                attr_reader :filename
-
-                sig { params(filename: String).void }
-                attr_writer :filename
-
-                # media URL
-                sig { returns(T.nilable(String)) }
-                attr_reader :link
-
-                sig { params(link: String).void }
-                attr_writer :link
-
-                # true if voice message
-                sig { returns(T.nilable(T::Boolean)) }
-                attr_reader :voice
-
-                sig { params(voice: T::Boolean).void }
-                attr_writer :voice
-
-                sig do
-                  params(
-                    caption: String,
-                    filename: String,
-                    link: String,
-                    voice: T::Boolean
-                  ).returns(T.attached_class)
-                end
-                def self.new(
-                  # media caption
-                  caption: nil,
-                  # file name with extension
-                  filename: nil,
-                  # media URL
-                  link: nil,
-                  # true if voice message
-                  voice: nil
-                )
-                end
-
-                sig do
-                  override.returns(
-                    {
-                      caption: String,
-                      filename: String,
-                      link: String,
-                      voice: T::Boolean
-                    }
-                  )
-                end
-                def to_hash
-                end
-              end
-
-              class Image < Telnyx::Internal::Type::BaseModel
-                OrHash =
-                  T.type_alias do
-                    T.any(
-                      Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Header::Image,
-                      Telnyx::Internal::AnyHash
-                    )
-                  end
-
-                # media caption
-                sig { returns(T.nilable(String)) }
-                attr_reader :caption
-
-                sig { params(caption: String).void }
-                attr_writer :caption
-
-                # file name with extension
-                sig { returns(T.nilable(String)) }
-                attr_reader :filename
-
-                sig { params(filename: String).void }
-                attr_writer :filename
-
-                # media URL
-                sig { returns(T.nilable(String)) }
-                attr_reader :link
-
-                sig { params(link: String).void }
-                attr_writer :link
-
-                # true if voice message
-                sig { returns(T.nilable(T::Boolean)) }
-                attr_reader :voice
-
-                sig { params(voice: T::Boolean).void }
-                attr_writer :voice
-
-                sig do
-                  params(
-                    caption: String,
-                    filename: String,
-                    link: String,
-                    voice: T::Boolean
-                  ).returns(T.attached_class)
-                end
-                def self.new(
-                  # media caption
-                  caption: nil,
-                  # file name with extension
-                  filename: nil,
-                  # media URL
-                  link: nil,
-                  # true if voice message
-                  voice: nil
-                )
-                end
-
-                sig do
-                  override.returns(
-                    {
-                      caption: String,
-                      filename: String,
-                      link: String,
-                      voice: T::Boolean
-                    }
-                  )
-                end
-                def to_hash
-                end
-              end
-
-              class Video < Telnyx::Internal::Type::BaseModel
-                OrHash =
-                  T.type_alias do
-                    T.any(
-                      Telnyx::Models::MesssageWhatsappResponse::Data::Body::Interactive::Header::Video,
-                      Telnyx::Internal::AnyHash
-                    )
-                  end
-
-                # media caption
-                sig { returns(T.nilable(String)) }
-                attr_reader :caption
-
-                sig { params(caption: String).void }
-                attr_writer :caption
-
-                # file name with extension
-                sig { returns(T.nilable(String)) }
-                attr_reader :filename
-
-                sig { params(filename: String).void }
-                attr_writer :filename
-
-                # media URL
-                sig { returns(T.nilable(String)) }
-                attr_reader :link
-
-                sig { params(link: String).void }
-                attr_writer :link
-
-                # true if voice message
-                sig { returns(T.nilable(T::Boolean)) }
-                attr_reader :voice
-
-                sig { params(voice: T::Boolean).void }
-                attr_writer :voice
-
-                sig do
-                  params(
-                    caption: String,
-                    filename: String,
-                    link: String,
-                    voice: T::Boolean
-                  ).returns(T.attached_class)
-                end
-                def self.new(
-                  # media caption
-                  caption: nil,
-                  # file name with extension
-                  filename: nil,
-                  # media URL
-                  link: nil,
-                  # true if voice message
-                  voice: nil
-                )
-                end
-
-                sig do
-                  override.returns(
-                    {
-                      caption: String,
-                      filename: String,
-                      link: String,
-                      voice: T::Boolean
-                    }
-                  )
-                end
-                def to_hash
-                end
               end
             end
 
@@ -2800,77 +2102,6 @@ module Telnyx
             end
           end
 
-          class Sticker < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Models::MesssageWhatsappResponse::Data::Body::Sticker,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # media caption
-            sig { returns(T.nilable(String)) }
-            attr_reader :caption
-
-            sig { params(caption: String).void }
-            attr_writer :caption
-
-            # file name with extension
-            sig { returns(T.nilable(String)) }
-            attr_reader :filename
-
-            sig { params(filename: String).void }
-            attr_writer :filename
-
-            # media URL
-            sig { returns(T.nilable(String)) }
-            attr_reader :link
-
-            sig { params(link: String).void }
-            attr_writer :link
-
-            # true if voice message
-            sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :voice
-
-            sig { params(voice: T::Boolean).void }
-            attr_writer :voice
-
-            sig do
-              params(
-                caption: String,
-                filename: String,
-                link: String,
-                voice: T::Boolean
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # media caption
-              caption: nil,
-              # file name with extension
-              filename: nil,
-              # media URL
-              link: nil,
-              # true if voice message
-              voice: nil
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  caption: String,
-                  filename: String,
-                  link: String,
-                  voice: T::Boolean
-                }
-              )
-            end
-            def to_hash
-            end
-          end
-
           module Type
             extend Telnyx::Internal::Type::Enum
 
@@ -2942,77 +2173,6 @@ module Telnyx
               )
             end
             def self.values
-            end
-          end
-
-          class Video < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Models::MesssageWhatsappResponse::Data::Body::Video,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # media caption
-            sig { returns(T.nilable(String)) }
-            attr_reader :caption
-
-            sig { params(caption: String).void }
-            attr_writer :caption
-
-            # file name with extension
-            sig { returns(T.nilable(String)) }
-            attr_reader :filename
-
-            sig { params(filename: String).void }
-            attr_writer :filename
-
-            # media URL
-            sig { returns(T.nilable(String)) }
-            attr_reader :link
-
-            sig { params(link: String).void }
-            attr_writer :link
-
-            # true if voice message
-            sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :voice
-
-            sig { params(voice: T::Boolean).void }
-            attr_writer :voice
-
-            sig do
-              params(
-                caption: String,
-                filename: String,
-                link: String,
-                voice: T::Boolean
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # media caption
-              caption: nil,
-              # file name with extension
-              filename: nil,
-              # media URL
-              link: nil,
-              # true if voice message
-              voice: nil
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  caption: String,
-                  filename: String,
-                  link: String,
-                  voice: T::Boolean
-                }
-              )
-            end
-            def to_hash
             end
           end
         end

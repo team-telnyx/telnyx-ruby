@@ -8,7 +8,7 @@ module Telnyx
         # {Telnyx::Models::MessagingHostedNumberOrders::ActionUploadFileParams} for more
         # details.
         #
-        # Upload hosted number document
+        # Upload file required for a messaging hosted number order
         #
         # @overload upload_file(id, bill: nil, loa: nil, request_options: {})
         #

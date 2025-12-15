@@ -1979,6 +1979,7 @@ require_relative "telnyx/models/well_known_retrieve_authorization_server_metadat
 require_relative "telnyx/models/well_known_retrieve_authorization_server_metadata_response"
 require_relative "telnyx/models/well_known_retrieve_protected_resource_metadata_params"
 require_relative "telnyx/models/well_known_retrieve_protected_resource_metadata_response"
+require_relative "telnyx/models/whatsapp_media"
 require_relative "telnyx/models/wireguard_interface_create_params"
 require_relative "telnyx/models/wireguard_interface_create_response"
 require_relative "telnyx/models/wireguard_interface_delete_params"

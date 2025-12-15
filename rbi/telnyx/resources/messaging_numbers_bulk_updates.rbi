@@ -3,7 +3,7 @@
 module Telnyx
   module Resources
     class MessagingNumbersBulkUpdates
-      # Bulk update phone number profiles
+      # Update the messaging profile of multiple phone numbers
       sig do
         params(
           messaging_profile_id: String,

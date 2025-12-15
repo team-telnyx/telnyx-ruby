@@ -5,7 +5,7 @@ module Telnyx
     class Messaging10dlc
       class Campaign
         class Osr
-          # Get OSR campaign attributes
+          # Get My Osr Campaign Attributes
           sig do
             params(
               campaign_id: String,

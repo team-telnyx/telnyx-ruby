@@ -2,24 +2,24 @@ module Telnyx
   module Models
     module Calls
       type transcription_engine_deepgram_config =
-        Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2Config
-        | Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Config
+        Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2
+        | Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3
 
       module TranscriptionEngineDeepgramConfig
         extend Telnyx::Internal::Type::Union
 
-        type deepgram_nova2_config =
+        type deepgram_nova2 =
           {
-            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2Config::transcription_engine,
-            transcription_model: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2Config::transcription_model,
+            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::transcription_engine,
+            transcription_model: :"deepgram/nova-2",
             keywords_boosting: ::Hash[Symbol, Float],
-            language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2Config::language
+            language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::language
           }
 
-        class DeepgramNova2Config < Telnyx::Internal::Type::BaseModel
-          attr_accessor transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2Config::transcription_engine
+        class DeepgramNova2 < Telnyx::Internal::Type::BaseModel
+          attr_accessor transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::transcription_engine
 
-          attr_accessor transcription_model: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2Config::transcription_model
+          attr_accessor transcription_model: :"deepgram/nova-2"
 
           attr_reader keywords_boosting: ::Hash[Symbol, Float]?
 
@@ -27,24 +27,24 @@ module Telnyx
             ::Hash[Symbol, Float]
           ) -> ::Hash[Symbol, Float]
 
-          attr_reader language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2Config::language?
+          attr_reader language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::language?
 
           def language=: (
-            Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2Config::language
-          ) -> Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2Config::language
+            Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::language
+          ) -> Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::language
 
           def initialize: (
-            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2Config::transcription_engine,
-            transcription_model: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2Config::transcription_model,
+            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::transcription_engine,
             ?keywords_boosting: ::Hash[Symbol, Float],
-            ?language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2Config::language
+            ?language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::language,
+            ?transcription_model: :"deepgram/nova-2"
           ) -> void
 
           def to_hash: -> {
-            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2Config::transcription_engine,
-            transcription_model: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2Config::transcription_model,
+            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::transcription_engine,
+            transcription_model: :"deepgram/nova-2",
             keywords_boosting: ::Hash[Symbol, Float],
-            language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2Config::language
+            language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::language
           }
 
           type transcription_engine = :Deepgram
@@ -54,17 +54,7 @@ module Telnyx
 
             DEEPGRAM: :Deepgram
 
-            def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2Config::transcription_engine]
-          end
-
-          type transcription_model = :"deepgram/nova-2"
-
-          module TranscriptionModel
-            extend Telnyx::Internal::Type::Enum
-
-            DEEPGRAM_NOVA_2: :"deepgram/nova-2"
-
-            def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2Config::transcription_model]
+            def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::transcription_engine]
           end
 
           type language =
@@ -181,22 +171,22 @@ module Telnyx
             VI: :vi
             AUTO_DETECT: :auto_detect
 
-            def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2Config::language]
+            def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::language]
           end
         end
 
-        type deepgram_nova3_config =
+        type deepgram_nova3 =
           {
-            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Config::transcription_engine,
-            transcription_model: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Config::transcription_model,
+            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3::transcription_engine,
+            transcription_model: :"deepgram/nova-3",
             keywords_boosting: ::Hash[Symbol, Float],
-            language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Config::language
+            language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3::language
           }
 
-        class DeepgramNova3Config < Telnyx::Internal::Type::BaseModel
-          attr_accessor transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Config::transcription_engine
+        class DeepgramNova3 < Telnyx::Internal::Type::BaseModel
+          attr_accessor transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3::transcription_engine
 
-          attr_accessor transcription_model: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Config::transcription_model
+          attr_accessor transcription_model: :"deepgram/nova-3"
 
           attr_reader keywords_boosting: ::Hash[Symbol, Float]?
 
@@ -204,24 +194,24 @@ module Telnyx
             ::Hash[Symbol, Float]
           ) -> ::Hash[Symbol, Float]
 
-          attr_reader language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Config::language?
+          attr_reader language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3::language?
 
           def language=: (
-            Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Config::language
-          ) -> Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Config::language
+            Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3::language
+          ) -> Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3::language
 
           def initialize: (
-            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Config::transcription_engine,
-            transcription_model: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Config::transcription_model,
+            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3::transcription_engine,
             ?keywords_boosting: ::Hash[Symbol, Float],
-            ?language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Config::language
+            ?language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3::language,
+            ?transcription_model: :"deepgram/nova-3"
           ) -> void
 
           def to_hash: -> {
-            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Config::transcription_engine,
-            transcription_model: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Config::transcription_model,
+            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3::transcription_engine,
+            transcription_model: :"deepgram/nova-3",
             keywords_boosting: ::Hash[Symbol, Float],
-            language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Config::language
+            language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3::language
           }
 
           type transcription_engine = :Deepgram
@@ -231,17 +221,7 @@ module Telnyx
 
             DEEPGRAM: :Deepgram
 
-            def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Config::transcription_engine]
-          end
-
-          type transcription_model = :"deepgram/nova-3"
-
-          module TranscriptionModel
-            extend Telnyx::Internal::Type::Enum
-
-            DEEPGRAM_NOVA_3: :"deepgram/nova-3"
-
-            def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Config::transcription_model]
+            def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3::transcription_engine]
           end
 
           type language =
@@ -290,7 +270,7 @@ module Telnyx
             PT_PT: :"pt-PT"
             AUTO_DETECT: :auto_detect
 
-            def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Config::language]
+            def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3::language]
           end
         end
 

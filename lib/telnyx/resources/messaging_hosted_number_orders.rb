@@ -99,7 +99,7 @@ module Telnyx
         )
       end
 
-      # Check hosted messaging eligibility
+      # Check eligibility of phone numbers for hosted messaging
       #
       # @overload check_eligibility(phone_numbers:, request_options: {})
       #

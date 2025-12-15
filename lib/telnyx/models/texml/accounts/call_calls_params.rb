@@ -248,24 +248,6 @@ module Telnyx
                    enum: -> { Telnyx::Texml::Accounts::CallCallsParams::StatusCallbackMethod },
                    api_name: :StatusCallbackMethod
 
-          # @!attribute supervise_call_sid
-          #   The call control ID of the existing call to supervise. When provided, the
-          #   created leg will be added to the specified call in supervising mode. Status
-          #   callbacks and action callbacks will NOT be sent for the supervising leg.
-          #
-          #   @return [String, nil]
-          optional :supervise_call_sid, String, api_name: :SuperviseCallSid
-
-          # @!attribute supervising_role
-          #   The supervising role for the new leg. Determines the audio behavior: barge (hear
-          #   both sides), whisper (only hear supervisor), monitor (hear both sides but
-          #   supervisor muted). Default: barge
-          #
-          #   @return [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::SupervisingRole, nil]
-          optional :supervising_role,
-                   enum: -> { Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole },
-                   api_name: :SupervisingRole
-
           # @!attribute trim
           #   Whether to trim any leading and trailing silence from the recording. Defaults to
           #   `trim-silence`.
@@ -288,7 +270,7 @@ module Telnyx
                    enum: -> { Telnyx::Texml::Accounts::CallCallsParams::URLMethod },
                    api_name: :UrlMethod
 
-          # @!method initialize(application_sid:, from:, to:, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, detection_mode: nil, fallback_url: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, supervise_call_sid: nil, supervising_role: nil, trim: nil, url: nil, url_method: nil, request_options: {})
+          # @!method initialize(application_sid:, from:, to:, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, detection_mode: nil, fallback_url: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, trim: nil, url: nil, url_method: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Texml::Accounts::CallCallsParams} for more details.
           #
@@ -355,10 +337,6 @@ module Telnyx
           #   @param status_callback_event [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::StatusCallbackEvent] The call events for which Telnyx should send a webhook. Multiple events can be d
           #
           #   @param status_callback_method [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::StatusCallbackMethod] HTTP request type used for `StatusCallback`.
-          #
-          #   @param supervise_call_sid [String] The call control ID of the existing call to supervise. When provided, the create
-          #
-          #   @param supervising_role [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::SupervisingRole] The supervising role for the new leg. Determines the audio behavior: barge (hear
           #
           #   @param trim [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Trim] Whether to trim any leading and trailing silence from the recording. Defaults to
           #
@@ -490,20 +468,6 @@ module Telnyx
 
             GET = :GET
             POST = :POST
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
-
-          # The supervising role for the new leg. Determines the audio behavior: barge (hear
-          # both sides), whisper (only hear supervisor), monitor (hear both sides but
-          # supervisor muted). Default: barge
-          module SupervisingRole
-            extend Telnyx::Internal::Type::Enum
-
-            BARGE = :barge
-            WHISPER = :whisper
-            MONITOR = :monitor
 
             # @!method self.values
             #   @return [Array<Symbol>]

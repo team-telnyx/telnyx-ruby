@@ -5,7 +5,7 @@ module Telnyx
     class Messaging10dlc
       class Campaign
         class Osr
-          # Get OSR campaign attributes
+          # Get My Osr Campaign Attributes
           #
           # @overload get_attributes(campaign_id, request_options: {})
           #
