@@ -679,10 +679,6 @@ module Telnyx
 
   class MessagingURLDomainListParams = Telnyx::Models::MessagingURLDomainListParams
 
-  class MesssageRcsParams = Telnyx::Models::MesssageRcsParams
-
-  class MesssageWhatsappParams = Telnyx::Models::MesssageWhatsappParams
-
   class Metadata = Telnyx::Models::Metadata
 
   class MobileNetworkOperatorListParams = Telnyx::Models::MobileNetworkOperatorListParams

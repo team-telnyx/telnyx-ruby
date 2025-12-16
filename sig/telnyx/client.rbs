@@ -160,8 +160,6 @@ module Telnyx
 
     attr_reader messaging_url_domains: Telnyx::Resources::MessagingURLDomains
 
-    attr_reader messsages: Telnyx::Resources::Messsages
-
     attr_reader mobile_network_operators: Telnyx::Resources::MobileNetworkOperators
 
     attr_reader mobile_push_credentials: Telnyx::Resources::MobilePushCredentials
