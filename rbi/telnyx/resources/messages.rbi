@@ -6,6 +6,9 @@ module Telnyx
       sig { returns(Telnyx::Resources::Messages::Rcs) }
       attr_reader :rcs
 
+      sig { returns(Telnyx::Resources::Messages::Whatsapp) }
+      attr_reader :whatsapp
+
       # Note: This API endpoint can only retrieve messages that are no older than 10
       # days since their creation. If you require messages older than this, please
       # generate an
