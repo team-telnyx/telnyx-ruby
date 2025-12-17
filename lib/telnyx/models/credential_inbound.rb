@@ -58,6 +58,12 @@ module Telnyx
       #   @return [Boolean, nil]
       optional :shaken_stir_enabled, Telnyx::Internal::Type::Boolean
 
+      # @!attribute simultaneous_ringing
+      #   When enabled, allows multiple devices to ring simultaneously on incoming calls.
+      #
+      #   @return [Symbol, Telnyx::Models::CredentialInbound::SimultaneousRinging, nil]
+      optional :simultaneous_ringing, enum: -> { Telnyx::CredentialInbound::SimultaneousRinging }
+
       # @!attribute sip_compact_headers_enabled
       #   Defaults to true.
       #
@@ -76,7 +82,7 @@ module Telnyx
       #   @return [Integer, nil]
       optional :timeout_2xx_secs, Integer
 
-      # @!method initialize(ani_number_format: nil, channel_limit: nil, codecs: nil, dnis_number_format: nil, generate_ringback_tone: nil, isup_headers_enabled: nil, prack_enabled: nil, shaken_stir_enabled: nil, sip_compact_headers_enabled: nil, timeout_1xx_secs: nil, timeout_2xx_secs: nil)
+      # @!method initialize(ani_number_format: nil, channel_limit: nil, codecs: nil, dnis_number_format: nil, generate_ringback_tone: nil, isup_headers_enabled: nil, prack_enabled: nil, shaken_stir_enabled: nil, simultaneous_ringing: nil, sip_compact_headers_enabled: nil, timeout_1xx_secs: nil, timeout_2xx_secs: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CredentialInbound} for more details.
       #
@@ -95,6 +101,8 @@ module Telnyx
       #   @param prack_enabled [Boolean] Enable PRACK messages as defined in RFC3262.
       #
       #   @param shaken_stir_enabled [Boolean] When enabled the SIP Connection will receive the Identity header with Shaken/Sti
+      #
+      #   @param simultaneous_ringing [Symbol, Telnyx::Models::CredentialInbound::SimultaneousRinging] When enabled, allows multiple devices to ring simultaneously on incoming calls.
       #
       #   @param sip_compact_headers_enabled [Boolean] Defaults to true.
       #
@@ -126,6 +134,19 @@ module Telnyx
         E164 = :e164
         NATIONAL = :national
         SIP_USERNAME = :sip_username
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # When enabled, allows multiple devices to ring simultaneously on incoming calls.
+      #
+      # @see Telnyx::Models::CredentialInbound#simultaneous_ringing
+      module SimultaneousRinging
+        extend Telnyx::Internal::Type::Enum
+
+        DISABLED = :disabled
+        ENABLED = :enabled
 
         # @!method self.values
         #   @return [Array<Symbol>]

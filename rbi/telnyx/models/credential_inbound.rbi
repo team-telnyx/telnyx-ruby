@@ -87,6 +87,22 @@ module Telnyx
       sig { params(shaken_stir_enabled: T::Boolean).void }
       attr_writer :shaken_stir_enabled
 
+      # When enabled, allows multiple devices to ring simultaneously on incoming calls.
+      sig do
+        returns(
+          T.nilable(Telnyx::CredentialInbound::SimultaneousRinging::OrSymbol)
+        )
+      end
+      attr_reader :simultaneous_ringing
+
+      sig do
+        params(
+          simultaneous_ringing:
+            Telnyx::CredentialInbound::SimultaneousRinging::OrSymbol
+        ).void
+      end
+      attr_writer :simultaneous_ringing
+
       # Defaults to true.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :sip_compact_headers_enabled
@@ -120,6 +136,8 @@ module Telnyx
           isup_headers_enabled: T::Boolean,
           prack_enabled: T::Boolean,
           shaken_stir_enabled: T::Boolean,
+          simultaneous_ringing:
+            Telnyx::CredentialInbound::SimultaneousRinging::OrSymbol,
           sip_compact_headers_enabled: T::Boolean,
           timeout_1xx_secs: Integer,
           timeout_2xx_secs: Integer
@@ -149,6 +167,8 @@ module Telnyx
         # Shaken/Stir data in the SIP INVITE message of inbound calls, even when using UDP
         # transport.
         shaken_stir_enabled: nil,
+        # When enabled, allows multiple devices to ring simultaneously on incoming calls.
+        simultaneous_ringing: nil,
         # Defaults to true.
         sip_compact_headers_enabled: nil,
         # Time(sec) before aborting if connection is not made.
@@ -171,6 +191,8 @@ module Telnyx
             isup_headers_enabled: T::Boolean,
             prack_enabled: T::Boolean,
             shaken_stir_enabled: T::Boolean,
+            simultaneous_ringing:
+              Telnyx::CredentialInbound::SimultaneousRinging::OrSymbol,
             sip_compact_headers_enabled: T::Boolean,
             timeout_1xx_secs: Integer,
             timeout_2xx_secs: Integer
@@ -254,6 +276,38 @@ module Telnyx
         sig do
           override.returns(
             T::Array[Telnyx::CredentialInbound::DnisNumberFormat::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+
+      # When enabled, allows multiple devices to ring simultaneously on incoming calls.
+      module SimultaneousRinging
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Telnyx::CredentialInbound::SimultaneousRinging)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        DISABLED =
+          T.let(
+            :disabled,
+            Telnyx::CredentialInbound::SimultaneousRinging::TaggedSymbol
+          )
+        ENABLED =
+          T.let(
+            :enabled,
+            Telnyx::CredentialInbound::SimultaneousRinging::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Telnyx::CredentialInbound::SimultaneousRinging::TaggedSymbol
+            ]
           )
         end
         def self.values
