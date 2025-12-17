@@ -1,0 +1,143 @@
+module Telnyx
+  module Models
+    module Messages
+      type rc_send_params =
+        {
+          agent_id: String,
+          agent_message: Telnyx::RcsAgentMessage,
+          messaging_profile_id: String,
+          to: String,
+          mms_fallback: Telnyx::Messages::RcSendParams::MmsFallback,
+          sms_fallback: Telnyx::Messages::RcSendParams::SMSFallback,
+          type: Telnyx::Models::Messages::RcSendParams::type_,
+          webhook_url: String
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class RcSendParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor agent_id: String
+
+        attr_accessor agent_message: Telnyx::RcsAgentMessage
+
+        attr_accessor messaging_profile_id: String
+
+        attr_accessor to: String
+
+        attr_reader mms_fallback: Telnyx::Messages::RcSendParams::MmsFallback?
+
+        def mms_fallback=: (
+          Telnyx::Messages::RcSendParams::MmsFallback
+        ) -> Telnyx::Messages::RcSendParams::MmsFallback
+
+        attr_reader sms_fallback: Telnyx::Messages::RcSendParams::SMSFallback?
+
+        def sms_fallback=: (
+          Telnyx::Messages::RcSendParams::SMSFallback
+        ) -> Telnyx::Messages::RcSendParams::SMSFallback
+
+        attr_reader type: Telnyx::Models::Messages::RcSendParams::type_?
+
+        def type=: (
+          Telnyx::Models::Messages::RcSendParams::type_
+        ) -> Telnyx::Models::Messages::RcSendParams::type_
+
+        attr_reader webhook_url: String?
+
+        def webhook_url=: (String) -> String
+
+        def initialize: (
+          agent_id: String,
+          agent_message: Telnyx::RcsAgentMessage,
+          messaging_profile_id: String,
+          to: String,
+          ?mms_fallback: Telnyx::Messages::RcSendParams::MmsFallback,
+          ?sms_fallback: Telnyx::Messages::RcSendParams::SMSFallback,
+          ?type: Telnyx::Models::Messages::RcSendParams::type_,
+          ?webhook_url: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          agent_id: String,
+          agent_message: Telnyx::RcsAgentMessage,
+          messaging_profile_id: String,
+          to: String,
+          mms_fallback: Telnyx::Messages::RcSendParams::MmsFallback,
+          sms_fallback: Telnyx::Messages::RcSendParams::SMSFallback,
+          type: Telnyx::Models::Messages::RcSendParams::type_,
+          webhook_url: String,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type mms_fallback =
+          {
+            from: String,
+            media_urls: ::Array[String],
+            subject: String,
+            text: String
+          }
+
+        class MmsFallback < Telnyx::Internal::Type::BaseModel
+          attr_reader from: String?
+
+          def from=: (String) -> String
+
+          attr_reader media_urls: ::Array[String]?
+
+          def media_urls=: (::Array[String]) -> ::Array[String]
+
+          attr_reader subject: String?
+
+          def subject=: (String) -> String
+
+          attr_reader text: String?
+
+          def text=: (String) -> String
+
+          def initialize: (
+            ?from: String,
+            ?media_urls: ::Array[String],
+            ?subject: String,
+            ?text: String
+          ) -> void
+
+          def to_hash: -> {
+            from: String,
+            media_urls: ::Array[String],
+            subject: String,
+            text: String
+          }
+        end
+
+        type sms_fallback = { from: String, text: String }
+
+        class SMSFallback < Telnyx::Internal::Type::BaseModel
+          attr_reader from: String?
+
+          def from=: (String) -> String
+
+          attr_reader text: String?
+
+          def text=: (String) -> String
+
+          def initialize: (?from: String, ?text: String) -> void
+
+          def to_hash: -> { from: String, text: String }
+        end
+
+        type type_ = :RCS
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          RCS: :RCS
+
+          def self?.values: -> ::Array[Telnyx::Models::Messages::RcSendParams::type_]
+        end
+      end
+    end
+  end
+end

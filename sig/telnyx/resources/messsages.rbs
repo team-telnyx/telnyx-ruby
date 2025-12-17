@@ -1,0 +1,7 @@
+module Telnyx
+  module Resources
+    class Messsages
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

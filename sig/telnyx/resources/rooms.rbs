@@ -9,9 +9,9 @@ module Telnyx
         ?enable_recording: bool,
         ?max_participants: Integer,
         ?unique_name: String,
-        ?webhook_event_failover_url: String?,
+        ?webhook_event_failover_url: String,
         ?webhook_event_url: String,
-        ?webhook_timeout_secs: Integer?,
+        ?webhook_timeout_secs: Integer,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::RoomCreateResponse
 
@@ -26,9 +26,9 @@ module Telnyx
         ?enable_recording: bool,
         ?max_participants: Integer,
         ?unique_name: String,
-        ?webhook_event_failover_url: String?,
+        ?webhook_event_failover_url: String,
         ?webhook_event_url: String,
-        ?webhook_timeout_secs: Integer?,
+        ?webhook_timeout_secs: Integer,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::RoomUpdateResponse
 

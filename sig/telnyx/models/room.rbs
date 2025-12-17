@@ -11,9 +11,9 @@ module Telnyx
         sessions: ::Array[Telnyx::RoomSession],
         unique_name: String,
         updated_at: Time,
-        webhook_event_failover_url: String?,
+        webhook_event_failover_url: String,
         webhook_event_url: String,
-        webhook_timeout_secs: Integer?
+        webhook_timeout_secs: Integer
       }
 
     class Room < Telnyx::Internal::Type::BaseModel
@@ -51,13 +51,17 @@ module Telnyx
 
       def updated_at=: (Time) -> Time
 
-      attr_accessor webhook_event_failover_url: String?
+      attr_reader webhook_event_failover_url: String?
+
+      def webhook_event_failover_url=: (String) -> String
 
       attr_reader webhook_event_url: String?
 
       def webhook_event_url=: (String) -> String
 
-      attr_accessor webhook_timeout_secs: Integer?
+      attr_reader webhook_timeout_secs: Integer?
+
+      def webhook_timeout_secs=: (Integer) -> Integer
 
       attr_reader record_type: String?
 
@@ -73,9 +77,9 @@ module Telnyx
         ?sessions: ::Array[Telnyx::RoomSession],
         ?unique_name: String,
         ?updated_at: Time,
-        ?webhook_event_failover_url: String?,
+        ?webhook_event_failover_url: String,
         ?webhook_event_url: String,
-        ?webhook_timeout_secs: Integer?
+        ?webhook_timeout_secs: Integer
       ) -> void
 
       def to_hash: -> {
@@ -88,9 +92,9 @@ module Telnyx
         sessions: ::Array[Telnyx::RoomSession],
         unique_name: String,
         updated_at: Time,
-        webhook_event_failover_url: String?,
+        webhook_event_failover_url: String,
         webhook_event_url: String,
-        webhook_timeout_secs: Integer?
+        webhook_timeout_secs: Integer
       }
     end
   end

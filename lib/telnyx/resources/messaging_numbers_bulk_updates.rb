@@ -6,7 +6,7 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MessagingNumbersBulkUpdateCreateParams} for more details.
       #
-      # Update the messaging profile of multiple phone numbers
+      # Bulk update phone number profiles
       #
       # @overload create(messaging_profile_id:, numbers:, request_options: {})
       #

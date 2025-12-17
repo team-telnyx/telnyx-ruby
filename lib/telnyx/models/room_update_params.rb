@@ -31,7 +31,7 @@ module Telnyx
       #   the primary URL fails. Must include a scheme, such as 'https'.
       #
       #   @return [String, nil]
-      optional :webhook_event_failover_url, String, nil?: true
+      optional :webhook_event_failover_url, String
 
       # @!attribute webhook_event_url
       #   The URL where webhooks related to this room will be sent. Must include a scheme,
@@ -44,7 +44,7 @@ module Telnyx
       #   Specifies how many seconds to wait before timing out a webhook.
       #
       #   @return [Integer, nil]
-      optional :webhook_timeout_secs, Integer, nil?: true
+      optional :webhook_timeout_secs, Integer
 
       # @!method initialize(enable_recording: nil, max_participants: nil, unique_name: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -56,11 +56,11 @@ module Telnyx
       #
       #   @param unique_name [String] The unique (within the Telnyx account scope) name of the room.
       #
-      #   @param webhook_event_failover_url [String, nil] The failover URL where webhooks related to this room will be sent if sending to
+      #   @param webhook_event_failover_url [String] The failover URL where webhooks related to this room will be sent if sending to
       #
       #   @param webhook_event_url [String] The URL where webhooks related to this room will be sent. Must include a scheme,
       #
-      #   @param webhook_timeout_secs [Integer, nil] Specifies how many seconds to wait before timing out a webhook.
+      #   @param webhook_timeout_secs [Integer] Specifies how many seconds to wait before timing out a webhook.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end

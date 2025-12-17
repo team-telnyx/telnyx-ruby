@@ -238,6 +238,9 @@ module Telnyx
     sig { returns(Telnyx::Resources::MessagingURLDomains) }
     attr_reader :messaging_url_domains
 
+    sig { returns(Telnyx::Resources::Messsages) }
+    attr_reader :messsages
+
     sig { returns(Telnyx::Resources::MobileNetworkOperators) }
     attr_reader :mobile_network_operators
 

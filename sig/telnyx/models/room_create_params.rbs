@@ -5,9 +5,9 @@ module Telnyx
         enable_recording: bool,
         max_participants: Integer,
         unique_name: String,
-        webhook_event_failover_url: String?,
+        webhook_event_failover_url: String,
         webhook_event_url: String,
-        webhook_timeout_secs: Integer?
+        webhook_timeout_secs: Integer
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -27,21 +27,25 @@ module Telnyx
 
       def unique_name=: (String) -> String
 
-      attr_accessor webhook_event_failover_url: String?
+      attr_reader webhook_event_failover_url: String?
+
+      def webhook_event_failover_url=: (String) -> String
 
       attr_reader webhook_event_url: String?
 
       def webhook_event_url=: (String) -> String
 
-      attr_accessor webhook_timeout_secs: Integer?
+      attr_reader webhook_timeout_secs: Integer?
+
+      def webhook_timeout_secs=: (Integer) -> Integer
 
       def initialize: (
         ?enable_recording: bool,
         ?max_participants: Integer,
         ?unique_name: String,
-        ?webhook_event_failover_url: String?,
+        ?webhook_event_failover_url: String,
         ?webhook_event_url: String,
-        ?webhook_timeout_secs: Integer?,
+        ?webhook_timeout_secs: Integer,
         ?request_options: Telnyx::request_opts
       ) -> void
 
@@ -49,9 +53,9 @@ module Telnyx
         enable_recording: bool,
         max_participants: Integer,
         unique_name: String,
-        webhook_event_failover_url: String?,
+        webhook_event_failover_url: String,
         webhook_event_url: String,
-        webhook_timeout_secs: Integer?,
+        webhook_timeout_secs: Integer,
         request_options: Telnyx::RequestOptions
       }
     end

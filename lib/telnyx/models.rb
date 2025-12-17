@@ -666,6 +666,8 @@ module Telnyx
 
   MessageSendShortCodeParams = Telnyx::Models::MessageSendShortCodeParams
 
+  MessageSendWhatsappParams = Telnyx::Models::MessageSendWhatsappParams
+
   MessageTemplate = Telnyx::Models::MessageTemplate
 
   Messaging = Telnyx::Models::Messaging
@@ -1446,8 +1448,6 @@ module Telnyx
 
   WellKnownRetrieveProtectedResourceMetadataParams =
     Telnyx::Models::WellKnownRetrieveProtectedResourceMetadataParams
-
-  WhatsappMedia = Telnyx::Models::WhatsappMedia
 
   WireguardInterfaceCreateParams = Telnyx::Models::WireguardInterfaceCreateParams
 

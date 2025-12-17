@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     class MessagingProfiles
       class AutorespConfigs
-        # Create Auto-Reponse Setting
+        # Create auto-response setting
         #
         # @overload create(profile_id, country_code:, keywords:, op:, resp_text: nil, request_options: {})
         #
