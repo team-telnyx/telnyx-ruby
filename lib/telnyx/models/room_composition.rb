@@ -100,7 +100,7 @@ module Telnyx
       #   sending to the primary URL fails. Must include a scheme, such as 'https'.
       #
       #   @return [String, nil]
-      optional :webhook_event_failover_url, String, nil?: true
+      optional :webhook_event_failover_url, String
 
       # @!attribute webhook_event_url
       #   The URL where webhooks related to this room composition will be sent. Must
@@ -113,7 +113,7 @@ module Telnyx
       #   Specifies how many seconds to wait before timing out a webhook.
       #
       #   @return [Integer, nil]
-      optional :webhook_timeout_secs, Integer, nil?: true
+      optional :webhook_timeout_secs, Integer
 
       response_only do
         # @!attribute record_type
@@ -158,11 +158,11 @@ module Telnyx
       #
       #   @param video_layout [Hash{Symbol=>Telnyx::Models::VideoRegion}] Describes the video layout of the room composition in terms of regions. Limited
       #
-      #   @param webhook_event_failover_url [String, nil] The failover URL where webhooks related to this room composition will be sent if
+      #   @param webhook_event_failover_url [String] The failover URL where webhooks related to this room composition will be sent if
       #
       #   @param webhook_event_url [String] The URL where webhooks related to this room composition will be sent. Must inclu
       #
-      #   @param webhook_timeout_secs [Integer, nil] Specifies how many seconds to wait before timing out a webhook.
+      #   @param webhook_timeout_secs [Integer] Specifies how many seconds to wait before timing out a webhook.
 
       # Shows format of the room composition.
       #

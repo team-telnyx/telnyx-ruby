@@ -243,6 +243,9 @@ module Telnyx
     # @return [Telnyx::Resources::MessagingURLDomains]
     attr_reader :messaging_url_domains
 
+    # @return [Telnyx::Resources::Messsages]
+    attr_reader :messsages
+
     # @return [Telnyx::Resources::MobileNetworkOperators]
     attr_reader :mobile_network_operators
 
@@ -646,6 +649,7 @@ module Telnyx
       @messaging_profiles = Telnyx::Resources::MessagingProfiles.new(client: self)
       @messaging_tollfree = Telnyx::Resources::MessagingTollfree.new(client: self)
       @messaging_url_domains = Telnyx::Resources::MessagingURLDomains.new(client: self)
+      @messsages = Telnyx::Resources::Messsages.new(client: self)
       @mobile_network_operators = Telnyx::Resources::MobileNetworkOperators.new(client: self)
       @mobile_push_credentials = Telnyx::Resources::MobilePushCredentials.new(client: self)
       @network_coverage = Telnyx::Resources::NetworkCoverage.new(client: self)

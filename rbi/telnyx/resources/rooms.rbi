@@ -15,9 +15,9 @@ module Telnyx
           enable_recording: T::Boolean,
           max_participants: Integer,
           unique_name: String,
-          webhook_event_failover_url: T.nilable(String),
+          webhook_event_failover_url: String,
           webhook_event_url: String,
-          webhook_timeout_secs: T.nilable(Integer),
+          webhook_timeout_secs: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::RoomCreateResponse)
       end
@@ -65,9 +65,9 @@ module Telnyx
           enable_recording: T::Boolean,
           max_participants: Integer,
           unique_name: String,
-          webhook_event_failover_url: T.nilable(String),
+          webhook_event_failover_url: String,
           webhook_event_url: String,
-          webhook_timeout_secs: T.nilable(Integer),
+          webhook_timeout_secs: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::RoomUpdateResponse)
       end

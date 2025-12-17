@@ -2,13 +2,13 @@ module Telnyx
   module Models
     type room_composition_create_params =
       {
-        format_: String?,
-        resolution: String?,
-        session_id: String?,
+        format_: String,
+        resolution: String,
+        session_id: String,
         video_layout: ::Hash[Symbol, Telnyx::VideoRegion],
-        webhook_event_failover_url: String?,
+        webhook_event_failover_url: String,
         webhook_event_url: String,
-        webhook_timeout_secs: Integer?
+        webhook_timeout_secs: Integer
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -16,11 +16,17 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      attr_accessor format_: String?
+      attr_reader format_: String?
 
-      attr_accessor resolution: String?
+      def format_=: (String) -> String
 
-      attr_accessor session_id: String?
+      attr_reader resolution: String?
+
+      def resolution=: (String) -> String
+
+      attr_reader session_id: String?
+
+      def session_id=: (String) -> String
 
       attr_reader video_layout: ::Hash[Symbol, Telnyx::VideoRegion]?
 
@@ -28,33 +34,37 @@ module Telnyx
         ::Hash[Symbol, Telnyx::VideoRegion]
       ) -> ::Hash[Symbol, Telnyx::VideoRegion]
 
-      attr_accessor webhook_event_failover_url: String?
+      attr_reader webhook_event_failover_url: String?
+
+      def webhook_event_failover_url=: (String) -> String
 
       attr_reader webhook_event_url: String?
 
       def webhook_event_url=: (String) -> String
 
-      attr_accessor webhook_timeout_secs: Integer?
+      attr_reader webhook_timeout_secs: Integer?
+
+      def webhook_timeout_secs=: (Integer) -> Integer
 
       def initialize: (
-        ?format_: String?,
-        ?resolution: String?,
-        ?session_id: String?,
+        ?format_: String,
+        ?resolution: String,
+        ?session_id: String,
         ?video_layout: ::Hash[Symbol, Telnyx::VideoRegion],
-        ?webhook_event_failover_url: String?,
+        ?webhook_event_failover_url: String,
         ?webhook_event_url: String,
-        ?webhook_timeout_secs: Integer?,
+        ?webhook_timeout_secs: Integer,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
-        format_: String?,
-        resolution: String?,
-        session_id: String?,
+        format_: String,
+        resolution: String,
+        session_id: String,
         video_layout: ::Hash[Symbol, Telnyx::VideoRegion],
-        webhook_event_failover_url: String?,
+        webhook_event_failover_url: String,
         webhook_event_url: String,
-        webhook_timeout_secs: Integer?,
+        webhook_timeout_secs: Integer,
         request_options: Telnyx::RequestOptions
       }
     end

@@ -362,6 +362,35 @@ module Telnyx
           end
           attr_writer :status_callback_method
 
+          # The call control ID of the existing call to supervise. When provided, the
+          # created leg will be added to the specified call in supervising mode. Status
+          # callbacks and action callbacks will NOT be sent for the supervising leg.
+          sig { returns(T.nilable(String)) }
+          attr_reader :supervise_call_sid
+
+          sig { params(supervise_call_sid: String).void }
+          attr_writer :supervise_call_sid
+
+          # The supervising role for the new leg. Determines the audio behavior: barge (hear
+          # both sides), whisper (only hear supervisor), monitor (hear both sides but
+          # supervisor muted). Default: barge
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::OrSymbol
+              )
+            )
+          end
+          attr_reader :supervising_role
+
+          sig do
+            params(
+              supervising_role:
+                Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::OrSymbol
+            ).void
+          end
+          attr_writer :supervising_role
+
           # Whether to trim any leading and trailing silence from the recording. Defaults to
           # `trim-silence`.
           sig do
@@ -452,6 +481,9 @@ module Telnyx
                 Telnyx::Texml::Accounts::CallCallsParams::StatusCallbackEvent::OrSymbol,
               status_callback_method:
                 Telnyx::Texml::Accounts::CallCallsParams::StatusCallbackMethod::OrSymbol,
+              supervise_call_sid: String,
+              supervising_role:
+                Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::OrSymbol,
               trim: Telnyx::Texml::Accounts::CallCallsParams::Trim::OrSymbol,
               url: String,
               url_method:
@@ -543,6 +575,14 @@ module Telnyx
             status_callback_event: nil,
             # HTTP request type used for `StatusCallback`.
             status_callback_method: nil,
+            # The call control ID of the existing call to supervise. When provided, the
+            # created leg will be added to the specified call in supervising mode. Status
+            # callbacks and action callbacks will NOT be sent for the supervising leg.
+            supervise_call_sid: nil,
+            # The supervising role for the new leg. Determines the audio behavior: barge (hear
+            # both sides), whisper (only hear supervisor), monitor (hear both sides but
+            # supervisor muted). Default: barge
+            supervising_role: nil,
             # Whether to trim any leading and trailing silence from the recording. Defaults to
             # `trim-silence`.
             trim: nil,
@@ -602,6 +642,9 @@ module Telnyx
                   Telnyx::Texml::Accounts::CallCallsParams::StatusCallbackEvent::OrSymbol,
                 status_callback_method:
                   Telnyx::Texml::Accounts::CallCallsParams::StatusCallbackMethod::OrSymbol,
+                supervise_call_sid: String,
+                supervising_role:
+                  Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::OrSymbol,
                 trim: Telnyx::Texml::Accounts::CallCallsParams::Trim::OrSymbol,
                 url: String,
                 url_method:
@@ -991,6 +1034,48 @@ module Telnyx
               override.returns(
                 T::Array[
                   Telnyx::Texml::Accounts::CallCallsParams::StatusCallbackMethod::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # The supervising role for the new leg. Determines the audio behavior: barge (hear
+          # both sides), whisper (only hear supervisor), monitor (hear both sides but
+          # supervisor muted). Default: barge
+          module SupervisingRole
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            BARGE =
+              T.let(
+                :barge,
+                Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::TaggedSymbol
+              )
+            WHISPER =
+              T.let(
+                :whisper,
+                Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::TaggedSymbol
+              )
+            MONITOR =
+              T.let(
+                :monitor,
+                Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::TaggedSymbol
                 ]
               )
             end

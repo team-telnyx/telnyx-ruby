@@ -121,7 +121,10 @@ module Telnyx
       # The failover URL where webhooks related to this room composition will be sent if
       # sending to the primary URL fails. Must include a scheme, such as 'https'.
       sig { returns(T.nilable(String)) }
-      attr_accessor :webhook_event_failover_url
+      attr_reader :webhook_event_failover_url
+
+      sig { params(webhook_event_failover_url: String).void }
+      attr_writer :webhook_event_failover_url
 
       # The URL where webhooks related to this room composition will be sent. Must
       # include a scheme, such as 'https'.
@@ -133,7 +136,10 @@ module Telnyx
 
       # Specifies how many seconds to wait before timing out a webhook.
       sig { returns(T.nilable(Integer)) }
-      attr_accessor :webhook_timeout_secs
+      attr_reader :webhook_timeout_secs
+
+      sig { params(webhook_timeout_secs: Integer).void }
+      attr_writer :webhook_timeout_secs
 
       sig { returns(T.nilable(String)) }
       attr_reader :record_type
@@ -159,9 +165,9 @@ module Telnyx
           updated_at: Time,
           user_id: String,
           video_layout: T::Hash[Symbol, Telnyx::VideoRegion::OrHash],
-          webhook_event_failover_url: T.nilable(String),
+          webhook_event_failover_url: String,
           webhook_event_url: String,
-          webhook_timeout_secs: T.nilable(Integer)
+          webhook_timeout_secs: Integer
         ).returns(T.attached_class)
       end
       def self.new(
@@ -227,9 +233,9 @@ module Telnyx
             updated_at: Time,
             user_id: String,
             video_layout: T::Hash[Symbol, Telnyx::VideoRegion],
-            webhook_event_failover_url: T.nilable(String),
+            webhook_event_failover_url: String,
             webhook_event_url: String,
-            webhook_timeout_secs: T.nilable(Integer)
+            webhook_timeout_secs: Integer
           }
         )
       end

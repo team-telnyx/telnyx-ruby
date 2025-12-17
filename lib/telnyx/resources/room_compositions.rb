@@ -10,19 +10,19 @@ module Telnyx
       #
       # @overload create(format_: nil, resolution: nil, session_id: nil, video_layout: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #
-      # @param format_ [String, nil] The desired format of the room composition.
+      # @param format_ [String] The desired format of the room composition.
       #
-      # @param resolution [String, nil] The desired resolution (width/height in pixels) of the resulting video of the ro
+      # @param resolution [String] The desired resolution (width/height in pixels) of the resulting video of the ro
       #
-      # @param session_id [String, nil] id of the room session associated with the room composition.
+      # @param session_id [String] id of the room session associated with the room composition.
       #
       # @param video_layout [Hash{Symbol=>Telnyx::Models::VideoRegion}] Describes the video layout of the room composition in terms of regions.
       #
-      # @param webhook_event_failover_url [String, nil] The failover URL where webhooks related to this room composition will be sent if
+      # @param webhook_event_failover_url [String] The failover URL where webhooks related to this room composition will be sent if
       #
       # @param webhook_event_url [String] The URL where webhooks related to this room composition will be sent. Must inclu
       #
-      # @param webhook_timeout_secs [Integer, nil] Specifies how many seconds to wait before timing out a webhook.
+      # @param webhook_timeout_secs [Integer] Specifies how many seconds to wait before timing out a webhook.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

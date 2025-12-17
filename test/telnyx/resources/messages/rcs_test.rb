@@ -18,4 +18,26 @@ class Telnyx::Test::Resources::Messages::RcsTest < Telnyx::Test::ResourceTest
       }
     end
   end
+
+  def test_send__required_params
+    skip("Prism tests are disabled")
+
+    response =
+      @telnyx.messages.rcs.send_(
+        agent_id: "Agent007",
+        agent_message: {},
+        messaging_profile_id: "messaging_profile_id",
+        to: "+13125551234"
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::Messages::RcSendResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::Messages::RcSendResponse::Data | nil
+      }
+    end
+  end
 end
