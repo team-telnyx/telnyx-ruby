@@ -3,6 +3,8 @@ module Telnyx
     class Messages
       attr_reader rcs: Telnyx::Resources::Messages::Rcs
 
+      attr_reader whatsapp: Telnyx::Resources::Messages::Whatsapp
+
       def retrieve: (
         String id,
         ?request_options: Telnyx::request_opts
