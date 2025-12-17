@@ -50,25 +50,23 @@ module Telnyx
 
       type whatsapp_message =
         {
-          audio: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Audio,
+          audio: Telnyx::WhatsappMedia,
           biz_opaque_callback_data: String,
           contacts: ::Array[Telnyx::MessageSendWhatsappParams::WhatsappMessage::Contact],
-          document: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Document,
-          image: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Image,
+          document: Telnyx::WhatsappMedia,
+          image: Telnyx::WhatsappMedia,
           interactive: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive,
           location: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Location,
           reaction: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Reaction,
-          sticker: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Sticker,
+          sticker: Telnyx::WhatsappMedia,
           type: Telnyx::Models::MessageSendWhatsappParams::WhatsappMessage::type_,
-          video: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Video
+          video: Telnyx::WhatsappMedia
         }
 
       class WhatsappMessage < Telnyx::Internal::Type::BaseModel
-        attr_reader audio: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Audio?
+        attr_reader audio: Telnyx::WhatsappMedia?
 
-        def audio=: (
-          Telnyx::MessageSendWhatsappParams::WhatsappMessage::Audio
-        ) -> Telnyx::MessageSendWhatsappParams::WhatsappMessage::Audio
+        def audio=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
 
         attr_reader biz_opaque_callback_data: String?
 
@@ -80,17 +78,13 @@ module Telnyx
           ::Array[Telnyx::MessageSendWhatsappParams::WhatsappMessage::Contact]
         ) -> ::Array[Telnyx::MessageSendWhatsappParams::WhatsappMessage::Contact]
 
-        attr_reader document: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Document?
+        attr_reader document: Telnyx::WhatsappMedia?
 
-        def document=: (
-          Telnyx::MessageSendWhatsappParams::WhatsappMessage::Document
-        ) -> Telnyx::MessageSendWhatsappParams::WhatsappMessage::Document
+        def document=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
 
-        attr_reader image: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Image?
+        attr_reader image: Telnyx::WhatsappMedia?
 
-        def image=: (
-          Telnyx::MessageSendWhatsappParams::WhatsappMessage::Image
-        ) -> Telnyx::MessageSendWhatsappParams::WhatsappMessage::Image
+        def image=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
 
         attr_reader interactive: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive?
 
@@ -110,11 +104,9 @@ module Telnyx
           Telnyx::MessageSendWhatsappParams::WhatsappMessage::Reaction
         ) -> Telnyx::MessageSendWhatsappParams::WhatsappMessage::Reaction
 
-        attr_reader sticker: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Sticker?
+        attr_reader sticker: Telnyx::WhatsappMedia?
 
-        def sticker=: (
-          Telnyx::MessageSendWhatsappParams::WhatsappMessage::Sticker
-        ) -> Telnyx::MessageSendWhatsappParams::WhatsappMessage::Sticker
+        def sticker=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
 
         attr_reader type: Telnyx::Models::MessageSendWhatsappParams::WhatsappMessage::type_?
 
@@ -122,74 +114,37 @@ module Telnyx
           Telnyx::Models::MessageSendWhatsappParams::WhatsappMessage::type_
         ) -> Telnyx::Models::MessageSendWhatsappParams::WhatsappMessage::type_
 
-        attr_reader video: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Video?
+        attr_reader video: Telnyx::WhatsappMedia?
 
-        def video=: (
-          Telnyx::MessageSendWhatsappParams::WhatsappMessage::Video
-        ) -> Telnyx::MessageSendWhatsappParams::WhatsappMessage::Video
+        def video=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
 
         def initialize: (
-          ?audio: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Audio,
+          ?audio: Telnyx::WhatsappMedia,
           ?biz_opaque_callback_data: String,
           ?contacts: ::Array[Telnyx::MessageSendWhatsappParams::WhatsappMessage::Contact],
-          ?document: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Document,
-          ?image: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Image,
+          ?document: Telnyx::WhatsappMedia,
+          ?image: Telnyx::WhatsappMedia,
           ?interactive: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive,
           ?location: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Location,
           ?reaction: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Reaction,
-          ?sticker: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Sticker,
+          ?sticker: Telnyx::WhatsappMedia,
           ?type: Telnyx::Models::MessageSendWhatsappParams::WhatsappMessage::type_,
-          ?video: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Video
+          ?video: Telnyx::WhatsappMedia
         ) -> void
 
         def to_hash: -> {
-          audio: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Audio,
+          audio: Telnyx::WhatsappMedia,
           biz_opaque_callback_data: String,
           contacts: ::Array[Telnyx::MessageSendWhatsappParams::WhatsappMessage::Contact],
-          document: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Document,
-          image: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Image,
+          document: Telnyx::WhatsappMedia,
+          image: Telnyx::WhatsappMedia,
           interactive: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive,
           location: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Location,
           reaction: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Reaction,
-          sticker: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Sticker,
+          sticker: Telnyx::WhatsappMedia,
           type: Telnyx::Models::MessageSendWhatsappParams::WhatsappMessage::type_,
-          video: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Video
+          video: Telnyx::WhatsappMedia
         }
-
-        type audio =
-          { caption: String, filename: String, link: String, voice: bool }
-
-        class Audio < Telnyx::Internal::Type::BaseModel
-          attr_reader caption: String?
-
-          def caption=: (String) -> String
-
-          attr_reader filename: String?
-
-          def filename=: (String) -> String
-
-          attr_reader link: String?
-
-          def link=: (String) -> String
-
-          attr_reader voice: bool?
-
-          def voice=: (bool) -> bool
-
-          def initialize: (
-            ?caption: String,
-            ?filename: String,
-            ?link: String,
-            ?voice: bool
-          ) -> void
-
-          def to_hash: -> {
-            caption: String,
-            filename: String,
-            link: String,
-            voice: bool
-          }
-        end
 
         type contact =
           {
@@ -405,76 +360,6 @@ module Telnyx
 
             def to_hash: -> { type: String, url: String }
           end
-        end
-
-        type document =
-          { caption: String, filename: String, link: String, voice: bool }
-
-        class Document < Telnyx::Internal::Type::BaseModel
-          attr_reader caption: String?
-
-          def caption=: (String) -> String
-
-          attr_reader filename: String?
-
-          def filename=: (String) -> String
-
-          attr_reader link: String?
-
-          def link=: (String) -> String
-
-          attr_reader voice: bool?
-
-          def voice=: (bool) -> bool
-
-          def initialize: (
-            ?caption: String,
-            ?filename: String,
-            ?link: String,
-            ?voice: bool
-          ) -> void
-
-          def to_hash: -> {
-            caption: String,
-            filename: String,
-            link: String,
-            voice: bool
-          }
-        end
-
-        type image =
-          { caption: String, filename: String, link: String, voice: bool }
-
-        class Image < Telnyx::Internal::Type::BaseModel
-          attr_reader caption: String?
-
-          def caption=: (String) -> String
-
-          attr_reader filename: String?
-
-          def filename=: (String) -> String
-
-          attr_reader link: String?
-
-          def link=: (String) -> String
-
-          attr_reader voice: bool?
-
-          def voice=: (bool) -> bool
-
-          def initialize: (
-            ?caption: String,
-            ?filename: String,
-            ?link: String,
-            ?voice: bool
-          ) -> void
-
-          def to_hash: -> {
-            caption: String,
-            filename: String,
-            link: String,
-            voice: bool
-          }
         end
 
         type interactive =
@@ -761,17 +646,15 @@ module Telnyx
 
               type header =
                 {
-                  image: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Image,
+                  image: Telnyx::WhatsappMedia,
                   type: Telnyx::Models::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::type_,
-                  video: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Video
+                  video: Telnyx::WhatsappMedia
                 }
 
               class Header < Telnyx::Internal::Type::BaseModel
-                attr_reader image: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Image?
+                attr_reader image: Telnyx::WhatsappMedia?
 
-                def image=: (
-                  Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Image
-                ) -> Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Image
+                def image=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
 
                 attr_reader type: Telnyx::Models::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::type_?
 
@@ -779,63 +662,21 @@ module Telnyx
                   Telnyx::Models::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::type_
                 ) -> Telnyx::Models::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::type_
 
-                attr_reader video: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Video?
+                attr_reader video: Telnyx::WhatsappMedia?
 
-                def video=: (
-                  Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Video
-                ) -> Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Video
+                def video=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
 
                 def initialize: (
-                  ?image: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Image,
+                  ?image: Telnyx::WhatsappMedia,
                   ?type: Telnyx::Models::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::type_,
-                  ?video: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Video
+                  ?video: Telnyx::WhatsappMedia
                 ) -> void
 
                 def to_hash: -> {
-                  image: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Image,
+                  image: Telnyx::WhatsappMedia,
                   type: Telnyx::Models::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::type_,
-                  video: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::Video
+                  video: Telnyx::WhatsappMedia
                 }
-
-                type image =
-                  {
-                    caption: String,
-                    filename: String,
-                    link: String,
-                    voice: bool
-                  }
-
-                class Image < Telnyx::Internal::Type::BaseModel
-                  attr_reader caption: String?
-
-                  def caption=: (String) -> String
-
-                  attr_reader filename: String?
-
-                  def filename=: (String) -> String
-
-                  attr_reader link: String?
-
-                  def link=: (String) -> String
-
-                  attr_reader voice: bool?
-
-                  def voice=: (bool) -> bool
-
-                  def initialize: (
-                    ?caption: String,
-                    ?filename: String,
-                    ?link: String,
-                    ?voice: bool
-                  ) -> void
-
-                  def to_hash: -> {
-                    caption: String,
-                    filename: String,
-                    link: String,
-                    voice: bool
-                  }
-                end
 
                 type type_ = :image | :video
 
@@ -846,46 +687,6 @@ module Telnyx
                   VIDEO: :video
 
                   def self?.values: -> ::Array[Telnyx::Models::MessageSendWhatsappParams::WhatsappMessage::Interactive::Action::Card::Header::type_]
-                end
-
-                type video =
-                  {
-                    caption: String,
-                    filename: String,
-                    link: String,
-                    voice: bool
-                  }
-
-                class Video < Telnyx::Internal::Type::BaseModel
-                  attr_reader caption: String?
-
-                  def caption=: (String) -> String
-
-                  attr_reader filename: String?
-
-                  def filename=: (String) -> String
-
-                  attr_reader link: String?
-
-                  def link=: (String) -> String
-
-                  attr_reader voice: bool?
-
-                  def voice=: (bool) -> bool
-
-                  def initialize: (
-                    ?caption: String,
-                    ?filename: String,
-                    ?link: String,
-                    ?voice: bool
-                  ) -> void
-
-                  def to_hash: -> {
-                    caption: String,
-                    filename: String,
-                    link: String,
-                    voice: bool
-                  }
                 end
               end
 
@@ -1020,25 +821,21 @@ module Telnyx
 
           type header =
             {
-              document: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Header::Document,
-              image: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Header::Image,
+              document: Telnyx::WhatsappMedia,
+              image: Telnyx::WhatsappMedia,
               sub_text: String,
               text: String,
-              video: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Header::Video
+              video: Telnyx::WhatsappMedia
             }
 
           class Header < Telnyx::Internal::Type::BaseModel
-            attr_reader document: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Header::Document?
+            attr_reader document: Telnyx::WhatsappMedia?
 
-            def document=: (
-              Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Header::Document
-            ) -> Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Header::Document
+            def document=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
 
-            attr_reader image: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Header::Image?
+            attr_reader image: Telnyx::WhatsappMedia?
 
-            def image=: (
-              Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Header::Image
-            ) -> Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Header::Image
+            def image=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
 
             attr_reader sub_text: String?
 
@@ -1048,132 +845,25 @@ module Telnyx
 
             def text=: (String) -> String
 
-            attr_reader video: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Header::Video?
+            attr_reader video: Telnyx::WhatsappMedia?
 
-            def video=: (
-              Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Header::Video
-            ) -> Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Header::Video
+            def video=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
 
             def initialize: (
-              ?document: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Header::Document,
-              ?image: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Header::Image,
+              ?document: Telnyx::WhatsappMedia,
+              ?image: Telnyx::WhatsappMedia,
               ?sub_text: String,
               ?text: String,
-              ?video: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Header::Video
+              ?video: Telnyx::WhatsappMedia
             ) -> void
 
             def to_hash: -> {
-              document: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Header::Document,
-              image: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Header::Image,
+              document: Telnyx::WhatsappMedia,
+              image: Telnyx::WhatsappMedia,
               sub_text: String,
               text: String,
-              video: Telnyx::MessageSendWhatsappParams::WhatsappMessage::Interactive::Header::Video
+              video: Telnyx::WhatsappMedia
             }
-
-            type document =
-              { caption: String, filename: String, link: String, voice: bool }
-
-            class Document < Telnyx::Internal::Type::BaseModel
-              attr_reader caption: String?
-
-              def caption=: (String) -> String
-
-              attr_reader filename: String?
-
-              def filename=: (String) -> String
-
-              attr_reader link: String?
-
-              def link=: (String) -> String
-
-              attr_reader voice: bool?
-
-              def voice=: (bool) -> bool
-
-              def initialize: (
-                ?caption: String,
-                ?filename: String,
-                ?link: String,
-                ?voice: bool
-              ) -> void
-
-              def to_hash: -> {
-                caption: String,
-                filename: String,
-                link: String,
-                voice: bool
-              }
-            end
-
-            type image =
-              { caption: String, filename: String, link: String, voice: bool }
-
-            class Image < Telnyx::Internal::Type::BaseModel
-              attr_reader caption: String?
-
-              def caption=: (String) -> String
-
-              attr_reader filename: String?
-
-              def filename=: (String) -> String
-
-              attr_reader link: String?
-
-              def link=: (String) -> String
-
-              attr_reader voice: bool?
-
-              def voice=: (bool) -> bool
-
-              def initialize: (
-                ?caption: String,
-                ?filename: String,
-                ?link: String,
-                ?voice: bool
-              ) -> void
-
-              def to_hash: -> {
-                caption: String,
-                filename: String,
-                link: String,
-                voice: bool
-              }
-            end
-
-            type video =
-              { caption: String, filename: String, link: String, voice: bool }
-
-            class Video < Telnyx::Internal::Type::BaseModel
-              attr_reader caption: String?
-
-              def caption=: (String) -> String
-
-              attr_reader filename: String?
-
-              def filename=: (String) -> String
-
-              attr_reader link: String?
-
-              def link=: (String) -> String
-
-              attr_reader voice: bool?
-
-              def voice=: (bool) -> bool
-
-              def initialize: (
-                ?caption: String,
-                ?filename: String,
-                ?link: String,
-                ?voice: bool
-              ) -> void
-
-              def to_hash: -> {
-                caption: String,
-                filename: String,
-                link: String,
-                voice: bool
-              }
-            end
           end
 
           type type_ =
@@ -1243,41 +933,6 @@ module Telnyx
           def to_hash: -> { emoji: String, message_id: String }
         end
 
-        type sticker =
-          { caption: String, filename: String, link: String, voice: bool }
-
-        class Sticker < Telnyx::Internal::Type::BaseModel
-          attr_reader caption: String?
-
-          def caption=: (String) -> String
-
-          attr_reader filename: String?
-
-          def filename=: (String) -> String
-
-          attr_reader link: String?
-
-          def link=: (String) -> String
-
-          attr_reader voice: bool?
-
-          def voice=: (bool) -> bool
-
-          def initialize: (
-            ?caption: String,
-            ?filename: String,
-            ?link: String,
-            ?voice: bool
-          ) -> void
-
-          def to_hash: -> {
-            caption: String,
-            filename: String,
-            link: String,
-            voice: bool
-          }
-        end
-
         type type_ =
           :audio
           | :document
@@ -1305,41 +960,6 @@ module Telnyx
           CONTACTS: :contacts
 
           def self?.values: -> ::Array[Telnyx::Models::MessageSendWhatsappParams::WhatsappMessage::type_]
-        end
-
-        type video =
-          { caption: String, filename: String, link: String, voice: bool }
-
-        class Video < Telnyx::Internal::Type::BaseModel
-          attr_reader caption: String?
-
-          def caption=: (String) -> String
-
-          attr_reader filename: String?
-
-          def filename=: (String) -> String
-
-          attr_reader link: String?
-
-          def link=: (String) -> String
-
-          attr_reader voice: bool?
-
-          def voice=: (bool) -> bool
-
-          def initialize: (
-            ?caption: String,
-            ?filename: String,
-            ?link: String,
-            ?voice: bool
-          ) -> void
-
-          def to_hash: -> {
-            caption: String,
-            filename: String,
-            link: String,
-            voice: bool
-          }
         end
       end
 
