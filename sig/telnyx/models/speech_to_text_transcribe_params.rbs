@@ -1,0 +1,113 @@
+module Telnyx
+  module Models
+    type speech_to_text_transcribe_params =
+      {
+        input_format: Telnyx::Models::SpeechToTextTranscribeParams::input_format,
+        transcription_engine: Telnyx::Models::SpeechToTextTranscribeParams::transcription_engine,
+        interim_results: bool,
+        language: String,
+        model: Telnyx::Models::SpeechToTextTranscribeParams::model
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class SpeechToTextTranscribeParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor input_format: Telnyx::Models::SpeechToTextTranscribeParams::input_format
+
+      attr_accessor transcription_engine: Telnyx::Models::SpeechToTextTranscribeParams::transcription_engine
+
+      attr_reader interim_results: bool?
+
+      def interim_results=: (bool) -> bool
+
+      attr_reader language: String?
+
+      def language=: (String) -> String
+
+      attr_reader model: Telnyx::Models::SpeechToTextTranscribeParams::model?
+
+      def model=: (
+        Telnyx::Models::SpeechToTextTranscribeParams::model
+      ) -> Telnyx::Models::SpeechToTextTranscribeParams::model
+
+      def initialize: (
+        input_format: Telnyx::Models::SpeechToTextTranscribeParams::input_format,
+        transcription_engine: Telnyx::Models::SpeechToTextTranscribeParams::transcription_engine,
+        ?interim_results: bool,
+        ?language: String,
+        ?model: Telnyx::Models::SpeechToTextTranscribeParams::model,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        input_format: Telnyx::Models::SpeechToTextTranscribeParams::input_format,
+        transcription_engine: Telnyx::Models::SpeechToTextTranscribeParams::transcription_engine,
+        interim_results: bool,
+        language: String,
+        model: Telnyx::Models::SpeechToTextTranscribeParams::model,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type input_format = :mp3 | :wav
+
+      module InputFormat
+        extend Telnyx::Internal::Type::Enum
+
+        MP3: :mp3
+        WAV: :wav
+
+        def self?.values: -> ::Array[Telnyx::Models::SpeechToTextTranscribeParams::input_format]
+      end
+
+      type transcription_engine = :Azure | :Deepgram | :Google | :Telnyx
+
+      module TranscriptionEngine
+        extend Telnyx::Internal::Type::Enum
+
+        AZURE: :Azure
+        DEEPGRAM: :Deepgram
+        GOOGLE: :Google
+        TELNYX: :Telnyx
+
+        def self?.values: -> ::Array[Telnyx::Models::SpeechToTextTranscribeParams::transcription_engine]
+      end
+
+      type model =
+        :fast
+        | :"deepgram/nova-2"
+        | :"deepgram/nova-3"
+        | :latest_long
+        | :latest_short
+        | :command_and_search
+        | :phone_call
+        | :video
+        | :default
+        | :medical_conversation
+        | :medical_dictation
+        | :"openai/whisper-tiny"
+        | :"openai/whisper-large-v3-turbo"
+
+      module Model
+        extend Telnyx::Internal::Type::Enum
+
+        FAST: :fast
+        DEEPGRAM_NOVA_2: :"deepgram/nova-2"
+        DEEPGRAM_NOVA_3: :"deepgram/nova-3"
+        LATEST_LONG: :latest_long
+        LATEST_SHORT: :latest_short
+        COMMAND_AND_SEARCH: :command_and_search
+        PHONE_CALL: :phone_call
+        VIDEO: :video
+        DEFAULT: :default
+        MEDICAL_CONVERSATION: :medical_conversation
+        MEDICAL_DICTATION: :medical_dictation
+        OPENAI_WHISPER_TINY: :"openai/whisper-tiny"
+        OPENAI_WHISPER_LARGE_V3_TURBO: :"openai/whisper-large-v3-turbo"
+
+        def self?.values: -> ::Array[Telnyx::Models::SpeechToTextTranscribeParams::model]
+      end
+    end
+  end
+end

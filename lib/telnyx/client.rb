@@ -474,6 +474,9 @@ module Telnyx
     # @return [Telnyx::Resources::Messaging10dlc]
     attr_reader :messaging_10dlc
 
+    # @return [Telnyx::Resources::SpeechToText]
+    attr_reader :speech_to_text
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -724,6 +727,7 @@ module Telnyx
       @mobile_phone_numbers = Telnyx::Resources::MobilePhoneNumbers.new(client: self)
       @mobile_voice_connections = Telnyx::Resources::MobileVoiceConnections.new(client: self)
       @messaging_10dlc = Telnyx::Resources::Messaging10dlc.new(client: self)
+      @speech_to_text = Telnyx::Resources::SpeechToText.new(client: self)
     end
   end
 end
