@@ -1264,6 +1264,8 @@ module Telnyx
 
   SoundModifications = Telnyx::Models::SoundModifications
 
+  SpeechToTextTranscribeParams = Telnyx::Models::SpeechToTextTranscribeParams
+
   Storage = Telnyx::Models::Storage
 
   StorageListMigrationSourceCoverageParams = Telnyx::Models::StorageListMigrationSourceCoverageParams
