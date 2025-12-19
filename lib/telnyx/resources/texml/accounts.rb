@@ -16,6 +16,9 @@ module Telnyx
         # @return [Telnyx::Resources::Texml::Accounts::Transcriptions]
         attr_reader :transcriptions
 
+        # @return [Telnyx::Resources::Texml::Accounts::Queues]
+        attr_reader :queues
+
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Texml::AccountRetrieveRecordingsJsonParams} for more details.
         #
@@ -82,6 +85,7 @@ module Telnyx
           @conferences = Telnyx::Resources::Texml::Accounts::Conferences.new(client: client)
           @recordings = Telnyx::Resources::Texml::Accounts::Recordings.new(client: client)
           @transcriptions = Telnyx::Resources::Texml::Accounts::Transcriptions.new(client: client)
+          @queues = Telnyx::Resources::Texml::Accounts::Queues.new(client: client)
         end
       end
     end

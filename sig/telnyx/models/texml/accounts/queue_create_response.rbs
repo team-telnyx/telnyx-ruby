@@ -1,0 +1,82 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        type queue_create_response =
+          {
+            account_sid: String,
+            average_wait_time: Integer,
+            current_size: Integer,
+            date_created: String,
+            date_updated: String,
+            max_size: Integer,
+            sid: String,
+            subresource_uris: ::Hash[Symbol, top],
+            uri: String
+          }
+
+        class QueueCreateResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader account_sid: String?
+
+          def account_sid=: (String) -> String
+
+          attr_reader average_wait_time: Integer?
+
+          def average_wait_time=: (Integer) -> Integer
+
+          attr_reader current_size: Integer?
+
+          def current_size=: (Integer) -> Integer
+
+          attr_reader date_created: String?
+
+          def date_created=: (String) -> String
+
+          attr_reader date_updated: String?
+
+          def date_updated=: (String) -> String
+
+          attr_reader max_size: Integer?
+
+          def max_size=: (Integer) -> Integer
+
+          attr_reader sid: String?
+
+          def sid=: (String) -> String
+
+          attr_reader subresource_uris: ::Hash[Symbol, top]?
+
+          def subresource_uris=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader uri: String?
+
+          def uri=: (String) -> String
+
+          def initialize: (
+            ?account_sid: String,
+            ?average_wait_time: Integer,
+            ?current_size: Integer,
+            ?date_created: String,
+            ?date_updated: String,
+            ?max_size: Integer,
+            ?sid: String,
+            ?subresource_uris: ::Hash[Symbol, top],
+            ?uri: String
+          ) -> void
+
+          def to_hash: -> {
+            account_sid: String,
+            average_wait_time: Integer,
+            current_size: Integer,
+            date_created: String,
+            date_updated: String,
+            max_size: Integer,
+            sid: String,
+            subresource_uris: ::Hash[Symbol, top],
+            uri: String
+          }
+        end
+      end
+    end
+  end
+end
