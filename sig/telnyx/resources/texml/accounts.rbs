@@ -10,6 +10,8 @@ module Telnyx
 
         attr_reader transcriptions: Telnyx::Resources::Texml::Accounts::Transcriptions
 
+        attr_reader queues: Telnyx::Resources::Texml::Accounts::Queues
+
         def retrieve_recordings_json: (
           String account_sid,
           ?date_created: Time,
