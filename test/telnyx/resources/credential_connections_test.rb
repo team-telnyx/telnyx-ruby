@@ -85,6 +85,8 @@ class Telnyx::Test::Resources::CredentialConnectionsTest < Telnyx::Test::Resourc
         encode_contact_header_enabled: Telnyx::Internal::Type::Boolean | nil,
         encrypted_media: Telnyx::EncryptedMedia | nil,
         inbound: Telnyx::CredentialInbound | nil,
+        noise_suppression: Telnyx::CredentialConnection::NoiseSuppression | nil,
+        noise_suppression_details: Telnyx::CredentialConnection::NoiseSuppressionDetails | nil,
         onnet_t38_passthrough_enabled: Telnyx::Internal::Type::Boolean | nil,
         outbound: Telnyx::CredentialOutbound | nil,
         password: String | nil,

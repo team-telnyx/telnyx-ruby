@@ -18,7 +18,8 @@ module Telnyx
         ignore_mark_bit: bool,
         inbound: Telnyx::InboundFqdn,
         microsoft_teams_sbc: bool,
-        noise_suppression: bool,
+        noise_suppression: Telnyx::Models::FqdnConnection::noise_suppression,
+        noise_suppression_details: Telnyx::FqdnConnection::NoiseSuppressionDetails,
         :onnet_t38_passthrough_enabled => bool,
         outbound: Telnyx::OutboundFqdn,
         password: String,
@@ -103,9 +104,17 @@ module Telnyx
 
       def microsoft_teams_sbc=: (bool) -> bool
 
-      attr_reader noise_suppression: bool?
+      attr_reader noise_suppression: Telnyx::Models::FqdnConnection::noise_suppression?
 
-      def noise_suppression=: (bool) -> bool
+      def noise_suppression=: (
+        Telnyx::Models::FqdnConnection::noise_suppression
+      ) -> Telnyx::Models::FqdnConnection::noise_suppression
+
+      attr_reader noise_suppression_details: Telnyx::FqdnConnection::NoiseSuppressionDetails?
+
+      def noise_suppression_details=: (
+        Telnyx::FqdnConnection::NoiseSuppressionDetails
+      ) -> Telnyx::FqdnConnection::NoiseSuppressionDetails
 
       attr_reader onnet_t38_passthrough_enabled: bool?
 
@@ -202,7 +211,8 @@ module Telnyx
         ?ignore_mark_bit: bool,
         ?inbound: Telnyx::InboundFqdn,
         ?microsoft_teams_sbc: bool,
-        ?noise_suppression: bool,
+        ?noise_suppression: Telnyx::Models::FqdnConnection::noise_suppression,
+        ?noise_suppression_details: Telnyx::FqdnConnection::NoiseSuppressionDetails,
         ?onnet_t38_passthrough_enabled: bool,
         ?outbound: Telnyx::OutboundFqdn,
         ?password: String,
@@ -241,7 +251,8 @@ module Telnyx
         ignore_mark_bit: bool,
         inbound: Telnyx::InboundFqdn,
         microsoft_teams_sbc: bool,
-        noise_suppression: bool,
+        noise_suppression: Telnyx::Models::FqdnConnection::noise_suppression,
+        noise_suppression_details: Telnyx::FqdnConnection::NoiseSuppressionDetails,
         :onnet_t38_passthrough_enabled => bool,
         outbound: Telnyx::OutboundFqdn,
         password: String,
@@ -262,6 +273,70 @@ module Telnyx
         webhook_event_url: String,
         webhook_timeout_secs: Integer?
       }
+
+      type noise_suppression = :inbound | :outbound | :both | :disabled
+
+      module NoiseSuppression
+        extend Telnyx::Internal::Type::Enum
+
+        INBOUND: :inbound
+        OUTBOUND: :outbound
+        BOTH: :both
+        DISABLED: :disabled
+
+        def self?.values: -> ::Array[Telnyx::Models::FqdnConnection::noise_suppression]
+      end
+
+      type noise_suppression_details =
+        {
+          attenuation_limit: Integer,
+          engine: Telnyx::Models::FqdnConnection::NoiseSuppressionDetails::engine
+        }
+
+      class NoiseSuppressionDetails < Telnyx::Internal::Type::BaseModel
+        attr_reader attenuation_limit: Integer?
+
+        def attenuation_limit=: (Integer) -> Integer
+
+        attr_reader engine: Telnyx::Models::FqdnConnection::NoiseSuppressionDetails::engine?
+
+        def engine=: (
+          Telnyx::Models::FqdnConnection::NoiseSuppressionDetails::engine
+        ) -> Telnyx::Models::FqdnConnection::NoiseSuppressionDetails::engine
+
+        def initialize: (
+          ?attenuation_limit: Integer,
+          ?engine: Telnyx::Models::FqdnConnection::NoiseSuppressionDetails::engine
+        ) -> void
+
+        def to_hash: -> {
+          attenuation_limit: Integer,
+          engine: Telnyx::Models::FqdnConnection::NoiseSuppressionDetails::engine
+        }
+
+        type engine =
+          :denoiser
+          | :deep_filter_net
+          | :deep_filter_net_large
+          | :krisp_viva_tel
+          | :krisp_viva_tel_lite
+          | :krisp_viva_promodel
+          | :krisp_viva_ss
+
+        module Engine
+          extend Telnyx::Internal::Type::Enum
+
+          DENOISER: :denoiser
+          DEEP_FILTER_NET: :deep_filter_net
+          DEEP_FILTER_NET_LARGE: :deep_filter_net_large
+          KRISP_VIVA_TEL: :krisp_viva_tel
+          KRISP_VIVA_TEL_LITE: :krisp_viva_tel_lite
+          KRISP_VIVA_PROMODEL: :krisp_viva_promodel
+          KRISP_VIVA_SS: :krisp_viva_ss
+
+          def self?.values: -> ::Array[Telnyx::Models::FqdnConnection::NoiseSuppressionDetails::engine]
+        end
+      end
     end
   end
 end
