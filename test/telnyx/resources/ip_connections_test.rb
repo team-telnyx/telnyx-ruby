@@ -80,6 +80,8 @@ class Telnyx::Test::Resources::IPConnectionsTest < Telnyx::Test::ResourceTest
         encode_contact_header_enabled: Telnyx::Internal::Type::Boolean | nil,
         encrypted_media: Telnyx::EncryptedMedia | nil,
         inbound: Telnyx::InboundIP | nil,
+        noise_suppression: Telnyx::IPConnection::NoiseSuppression | nil,
+        noise_suppression_details: Telnyx::IPConnection::NoiseSuppressionDetails | nil,
         onnet_t38_passthrough_enabled: Telnyx::Internal::Type::Boolean | nil,
         outbound: Telnyx::OutboundIP | nil,
         record_type: String | nil,

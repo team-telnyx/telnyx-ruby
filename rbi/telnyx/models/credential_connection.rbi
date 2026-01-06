@@ -89,6 +89,46 @@ module Telnyx
       sig { params(inbound: Telnyx::CredentialInbound::OrHash).void }
       attr_writer :inbound
 
+      # Controls when noise suppression is applied to calls. When set to 'inbound',
+      # noise suppression is applied to incoming audio. When set to 'outbound', it's
+      # applied to outgoing audio. When set to 'both', it's applied in both directions.
+      # When set to 'disabled', noise suppression is turned off.
+      sig do
+        returns(
+          T.nilable(
+            Telnyx::CredentialConnection::NoiseSuppression::TaggedSymbol
+          )
+        )
+      end
+      attr_reader :noise_suppression
+
+      sig do
+        params(
+          noise_suppression:
+            Telnyx::CredentialConnection::NoiseSuppression::OrSymbol
+        ).void
+      end
+      attr_writer :noise_suppression
+
+      # Configuration options for noise suppression. These settings are stored
+      # regardless of the noise_suppression value, but only take effect when
+      # noise_suppression is not 'disabled'. If you disable noise suppression and later
+      # re-enable it, the previously configured settings will be used.
+      sig do
+        returns(
+          T.nilable(Telnyx::CredentialConnection::NoiseSuppressionDetails)
+        )
+      end
+      attr_reader :noise_suppression_details
+
+      sig do
+        params(
+          noise_suppression_details:
+            Telnyx::CredentialConnection::NoiseSuppressionDetails::OrHash
+        ).void
+      end
+      attr_writer :noise_suppression_details
+
       # Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
       # if both are on the Telnyx network. If this is disabled, Telnyx will be able to
       # use T38 on just one leg of the call depending on each leg's settings.
@@ -218,6 +258,10 @@ module Telnyx
           encode_contact_header_enabled: T::Boolean,
           encrypted_media: T.nilable(Telnyx::EncryptedMedia::OrSymbol),
           inbound: Telnyx::CredentialInbound::OrHash,
+          noise_suppression:
+            Telnyx::CredentialConnection::NoiseSuppression::OrSymbol,
+          noise_suppression_details:
+            Telnyx::CredentialConnection::NoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,
           outbound: Telnyx::CredentialOutbound::OrHash,
           password: String,
@@ -263,6 +307,16 @@ module Telnyx
         # TLS.
         encrypted_media: nil,
         inbound: nil,
+        # Controls when noise suppression is applied to calls. When set to 'inbound',
+        # noise suppression is applied to incoming audio. When set to 'outbound', it's
+        # applied to outgoing audio. When set to 'both', it's applied in both directions.
+        # When set to 'disabled', noise suppression is turned off.
+        noise_suppression: nil,
+        # Configuration options for noise suppression. These settings are stored
+        # regardless of the noise_suppression value, but only take effect when
+        # noise_suppression is not 'disabled'. If you disable noise suppression and later
+        # re-enable it, the previously configured settings will be used.
+        noise_suppression_details: nil,
         # Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
         # if both are on the Telnyx network. If this is disabled, Telnyx will be able to
         # use T38 on just one leg of the call depending on each leg's settings.
@@ -315,6 +369,10 @@ module Telnyx
             encode_contact_header_enabled: T::Boolean,
             encrypted_media: T.nilable(Telnyx::EncryptedMedia::TaggedSymbol),
             inbound: Telnyx::CredentialInbound,
+            noise_suppression:
+              Telnyx::CredentialConnection::NoiseSuppression::TaggedSymbol,
+            noise_suppression_details:
+              Telnyx::CredentialConnection::NoiseSuppressionDetails,
             onnet_t38_passthrough_enabled: T::Boolean,
             outbound: Telnyx::CredentialOutbound,
             password: String,
@@ -334,6 +392,195 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      # Controls when noise suppression is applied to calls. When set to 'inbound',
+      # noise suppression is applied to incoming audio. When set to 'outbound', it's
+      # applied to outgoing audio. When set to 'both', it's applied in both directions.
+      # When set to 'disabled', noise suppression is turned off.
+      module NoiseSuppression
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Telnyx::CredentialConnection::NoiseSuppression)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        INBOUND =
+          T.let(
+            :inbound,
+            Telnyx::CredentialConnection::NoiseSuppression::TaggedSymbol
+          )
+        OUTBOUND =
+          T.let(
+            :outbound,
+            Telnyx::CredentialConnection::NoiseSuppression::TaggedSymbol
+          )
+        BOTH =
+          T.let(
+            :both,
+            Telnyx::CredentialConnection::NoiseSuppression::TaggedSymbol
+          )
+        DISABLED =
+          T.let(
+            :disabled,
+            Telnyx::CredentialConnection::NoiseSuppression::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Telnyx::CredentialConnection::NoiseSuppression::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
+      end
+
+      class NoiseSuppressionDetails < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::CredentialConnection::NoiseSuppressionDetails,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        # The attenuation limit value for the selected engine. Default values vary by
+        # engine: 0 for 'denoiser', 80 for 'deep_filter_net', 'deep_filter_net_large', and
+        # all Krisp engines ('krisp_viva_tel', 'krisp_viva_tel_lite',
+        # 'krisp_viva_promodel', 'krisp_viva_ss').
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :attenuation_limit
+
+        sig { params(attenuation_limit: Integer).void }
+        attr_writer :attenuation_limit
+
+        # The noise suppression engine to use. 'denoiser' is the default engine.
+        # 'deep_filter_net' and 'deep_filter_net_large' are alternative engines with
+        # different performance characteristics. Krisp engines ('krisp_viva_tel',
+        # 'krisp_viva_tel_lite', 'krisp_viva_promodel', 'krisp_viva_ss') provide advanced
+        # noise suppression capabilities.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::CredentialConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :engine
+
+        sig do
+          params(
+            engine:
+              Telnyx::CredentialConnection::NoiseSuppressionDetails::Engine::OrSymbol
+          ).void
+        end
+        attr_writer :engine
+
+        # Configuration options for noise suppression. These settings are stored
+        # regardless of the noise_suppression value, but only take effect when
+        # noise_suppression is not 'disabled'. If you disable noise suppression and later
+        # re-enable it, the previously configured settings will be used.
+        sig do
+          params(
+            attenuation_limit: Integer,
+            engine:
+              Telnyx::CredentialConnection::NoiseSuppressionDetails::Engine::OrSymbol
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The attenuation limit value for the selected engine. Default values vary by
+          # engine: 0 for 'denoiser', 80 for 'deep_filter_net', 'deep_filter_net_large', and
+          # all Krisp engines ('krisp_viva_tel', 'krisp_viva_tel_lite',
+          # 'krisp_viva_promodel', 'krisp_viva_ss').
+          attenuation_limit: nil,
+          # The noise suppression engine to use. 'denoiser' is the default engine.
+          # 'deep_filter_net' and 'deep_filter_net_large' are alternative engines with
+          # different performance characteristics. Krisp engines ('krisp_viva_tel',
+          # 'krisp_viva_tel_lite', 'krisp_viva_promodel', 'krisp_viva_ss') provide advanced
+          # noise suppression capabilities.
+          engine: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              attenuation_limit: Integer,
+              engine:
+                Telnyx::CredentialConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # The noise suppression engine to use. 'denoiser' is the default engine.
+        # 'deep_filter_net' and 'deep_filter_net_large' are alternative engines with
+        # different performance characteristics. Krisp engines ('krisp_viva_tel',
+        # 'krisp_viva_tel_lite', 'krisp_viva_promodel', 'krisp_viva_ss') provide advanced
+        # noise suppression capabilities.
+        module Engine
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::CredentialConnection::NoiseSuppressionDetails::Engine
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          DENOISER =
+            T.let(
+              :denoiser,
+              Telnyx::CredentialConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+            )
+          DEEP_FILTER_NET =
+            T.let(
+              :deep_filter_net,
+              Telnyx::CredentialConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+            )
+          DEEP_FILTER_NET_LARGE =
+            T.let(
+              :deep_filter_net_large,
+              Telnyx::CredentialConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+            )
+          KRISP_VIVA_TEL =
+            T.let(
+              :krisp_viva_tel,
+              Telnyx::CredentialConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+            )
+          KRISP_VIVA_TEL_LITE =
+            T.let(
+              :krisp_viva_tel_lite,
+              Telnyx::CredentialConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+            )
+          KRISP_VIVA_PROMODEL =
+            T.let(
+              :krisp_viva_promodel,
+              Telnyx::CredentialConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+            )
+          KRISP_VIVA_SS =
+            T.let(
+              :krisp_viva_ss,
+              Telnyx::CredentialConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::CredentialConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
       end
 
       # This feature enables inbound SIP URI calls to your Credential Auth Connection.

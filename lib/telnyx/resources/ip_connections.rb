@@ -8,7 +8,7 @@ module Telnyx
       #
       # Creates an IP connection.
       #
-      # @overload create(active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, connection_name: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @overload create(active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, connection_name: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #
       # @param active [Boolean] Defaults to true
       #
@@ -31,6 +31,10 @@ module Telnyx
       # @param inbound [Telnyx::Models::IPConnectionCreateParams::Inbound]
       #
       # @param ios_push_credential_id [String, nil] The uuid of the push credential for Ios
+      #
+      # @param noise_suppression [Symbol, Telnyx::Models::IPConnectionCreateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
+      #
+      # @param noise_suppression_details [Telnyx::Models::IPConnectionCreateParams::NoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #
       # @param onnet_t38_passthrough_enabled [Boolean] Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
       #
@@ -91,7 +95,7 @@ module Telnyx
       #
       # Updates settings of an existing IP connection.
       #
-      # @overload update(id, active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, connection_name: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @overload update(id, active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, connection_name: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #
       # @param id [String] Identifies the type of resource.
       #
@@ -116,6 +120,10 @@ module Telnyx
       # @param inbound [Telnyx::Models::InboundIP]
       #
       # @param ios_push_credential_id [String, nil] The uuid of the push credential for Ios
+      #
+      # @param noise_suppression [Symbol, Telnyx::Models::IPConnectionUpdateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
+      #
+      # @param noise_suppression_details [Telnyx::Models::IPConnectionUpdateParams::NoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #
       # @param onnet_t38_passthrough_enabled [Boolean] Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
       #

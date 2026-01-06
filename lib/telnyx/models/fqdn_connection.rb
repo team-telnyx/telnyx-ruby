@@ -107,10 +107,22 @@ module Telnyx
       optional :microsoft_teams_sbc, Telnyx::Internal::Type::Boolean
 
       # @!attribute noise_suppression
-      #   Indicates whether noise suppression is enabled.
+      #   Controls when noise suppression is applied to calls. When set to 'inbound',
+      #   noise suppression is applied to incoming audio. When set to 'outbound', it's
+      #   applied to outgoing audio. When set to 'both', it's applied in both directions.
+      #   When set to 'disabled', noise suppression is turned off.
       #
-      #   @return [Boolean, nil]
-      optional :noise_suppression, Telnyx::Internal::Type::Boolean
+      #   @return [Symbol, Telnyx::Models::FqdnConnection::NoiseSuppression, nil]
+      optional :noise_suppression, enum: -> { Telnyx::FqdnConnection::NoiseSuppression }
+
+      # @!attribute noise_suppression_details
+      #   Configuration options for noise suppression. These settings are stored
+      #   regardless of the noise_suppression value, but only take effect when
+      #   noise_suppression is not 'disabled'. If you disable noise suppression and later
+      #   re-enable it, the previously configured settings will be used.
+      #
+      #   @return [Telnyx::Models::FqdnConnection::NoiseSuppressionDetails, nil]
+      optional :noise_suppression_details, -> { Telnyx::FqdnConnection::NoiseSuppressionDetails }
 
       # @!attribute onnet_t38_passthrough_enabled
       #   Enable on-net T38 if you prefer that the sender and receiver negotiate T38
@@ -229,7 +241,7 @@ module Telnyx
       #   @return [Integer, nil]
       optional :webhook_timeout_secs, Integer, nil?: true
 
-      # @!method initialize(connection_name:, id: nil, active: nil, adjust_dtmf_timestamp: nil, anchorsite_override: nil, call_cost_enabled: nil, call_cost_in_webhooks: nil, created_at: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, ignore_dtmf_duration: nil, ignore_mark_bit: nil, inbound: nil, microsoft_teams_sbc: nil, noise_suppression: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, password: nil, record_type: nil, rtcp_settings: nil, rtp_pass_codecs_on_stream_change: nil, send_normalized_timestamps: nil, tags: nil, third_party_control_enabled: nil, transport_protocol: nil, txt_name: nil, txt_ttl: nil, txt_value: nil, updated_at: nil, user_name: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
+      # @!method initialize(connection_name:, id: nil, active: nil, adjust_dtmf_timestamp: nil, anchorsite_override: nil, call_cost_enabled: nil, call_cost_in_webhooks: nil, created_at: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, ignore_dtmf_duration: nil, ignore_mark_bit: nil, inbound: nil, microsoft_teams_sbc: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, password: nil, record_type: nil, rtcp_settings: nil, rtp_pass_codecs_on_stream_change: nil, send_normalized_timestamps: nil, tags: nil, third_party_control_enabled: nil, transport_protocol: nil, txt_name: nil, txt_ttl: nil, txt_value: nil, updated_at: nil, user_name: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::FqdnConnection} for more details.
       #
@@ -265,7 +277,9 @@ module Telnyx
       #
       #   @param microsoft_teams_sbc [Boolean] The connection is enabled for Microsoft Teams Direct Routing.
       #
-      #   @param noise_suppression [Boolean] Indicates whether noise suppression is enabled.
+      #   @param noise_suppression [Symbol, Telnyx::Models::FqdnConnection::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
+      #
+      #   @param noise_suppression_details [Telnyx::Models::FqdnConnection::NoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #
       #   @param onnet_t38_passthrough_enabled [Boolean] Enable on-net T38 if you prefer that the sender and receiver negotiate T38 direc
       #
@@ -304,6 +318,81 @@ module Telnyx
       #   @param webhook_event_url [String] The URL where webhooks related to this connection will be sent. Must include a s
       #
       #   @param webhook_timeout_secs [Integer, nil] Specifies how many seconds to wait before timing out a webhook.
+
+      # Controls when noise suppression is applied to calls. When set to 'inbound',
+      # noise suppression is applied to incoming audio. When set to 'outbound', it's
+      # applied to outgoing audio. When set to 'both', it's applied in both directions.
+      # When set to 'disabled', noise suppression is turned off.
+      #
+      # @see Telnyx::Models::FqdnConnection#noise_suppression
+      module NoiseSuppression
+        extend Telnyx::Internal::Type::Enum
+
+        INBOUND = :inbound
+        OUTBOUND = :outbound
+        BOTH = :both
+        DISABLED = :disabled
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # @see Telnyx::Models::FqdnConnection#noise_suppression_details
+      class NoiseSuppressionDetails < Telnyx::Internal::Type::BaseModel
+        # @!attribute attenuation_limit
+        #   The attenuation limit value for the selected engine. Default values vary by
+        #   engine: 0 for 'denoiser', 80 for 'deep_filter_net', 'deep_filter_net_large', and
+        #   all Krisp engines ('krisp_viva_tel', 'krisp_viva_tel_lite',
+        #   'krisp_viva_promodel', 'krisp_viva_ss').
+        #
+        #   @return [Integer, nil]
+        optional :attenuation_limit, Integer
+
+        # @!attribute engine
+        #   The noise suppression engine to use. 'denoiser' is the default engine.
+        #   'deep_filter_net' and 'deep_filter_net_large' are alternative engines with
+        #   different performance characteristics. Krisp engines ('krisp_viva_tel',
+        #   'krisp_viva_tel_lite', 'krisp_viva_promodel', 'krisp_viva_ss') provide advanced
+        #   noise suppression capabilities.
+        #
+        #   @return [Symbol, Telnyx::Models::FqdnConnection::NoiseSuppressionDetails::Engine, nil]
+        optional :engine, enum: -> { Telnyx::FqdnConnection::NoiseSuppressionDetails::Engine }
+
+        # @!method initialize(attenuation_limit: nil, engine: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::FqdnConnection::NoiseSuppressionDetails} for more details.
+        #
+        #   Configuration options for noise suppression. These settings are stored
+        #   regardless of the noise_suppression value, but only take effect when
+        #   noise_suppression is not 'disabled'. If you disable noise suppression and later
+        #   re-enable it, the previously configured settings will be used.
+        #
+        #   @param attenuation_limit [Integer] The attenuation limit value for the selected engine. Default values vary by engi
+        #
+        #   @param engine [Symbol, Telnyx::Models::FqdnConnection::NoiseSuppressionDetails::Engine] The noise suppression engine to use. 'denoiser' is the default engine. 'deep_fil
+
+        # The noise suppression engine to use. 'denoiser' is the default engine.
+        # 'deep_filter_net' and 'deep_filter_net_large' are alternative engines with
+        # different performance characteristics. Krisp engines ('krisp_viva_tel',
+        # 'krisp_viva_tel_lite', 'krisp_viva_promodel', 'krisp_viva_ss') provide advanced
+        # noise suppression capabilities.
+        #
+        # @see Telnyx::Models::FqdnConnection::NoiseSuppressionDetails#engine
+        module Engine
+          extend Telnyx::Internal::Type::Enum
+
+          DENOISER = :denoiser
+          DEEP_FILTER_NET = :deep_filter_net
+          DEEP_FILTER_NET_LARGE = :deep_filter_net_large
+          KRISP_VIVA_TEL = :krisp_viva_tel
+          KRISP_VIVA_TEL_LITE = :krisp_viva_tel_lite
+          KRISP_VIVA_PROMODEL = :krisp_viva_promodel
+          KRISP_VIVA_SS = :krisp_viva_ss
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+      end
     end
   end
 end
