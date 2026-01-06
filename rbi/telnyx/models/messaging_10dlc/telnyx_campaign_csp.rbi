@@ -34,7 +34,7 @@ module Telnyx
         attr_accessor :mock
 
         # Campaign sub-usecases. Must be of defined valid sub-usecase types. Use
-        # `/registry/enum/usecase` operation to retrieve list of valid sub-usecases
+        # `/10dlc/enum/usecase` operation to retrieve list of valid sub-usecases
         sig { returns(T::Array[String]) }
         attr_accessor :sub_usecases
 
@@ -42,7 +42,7 @@ module Telnyx
         sig { returns(T::Boolean) }
         attr_accessor :terms_and_conditions
 
-        # Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase`
+        # Campaign usecase. Must be of defined valid types. Use `/10dlc/enum/usecase`
         # operation to retrieve usecases available for given brand.
         sig { returns(String) }
         attr_accessor :usecase
@@ -447,11 +447,11 @@ module Telnyx
           # upstream CNP.
           mock:,
           # Campaign sub-usecases. Must be of defined valid sub-usecase types. Use
-          # `/registry/enum/usecase` operation to retrieve list of valid sub-usecases
+          # `/10dlc/enum/usecase` operation to retrieve list of valid sub-usecases
           sub_usecases:,
           # Is terms & conditions accepted?
           terms_and_conditions:,
-          # Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase`
+          # Campaign usecase. Must be of defined valid types. Use `/10dlc/enum/usecase`
           # operation to retrieve usecases available for given brand.
           usecase:,
           # Age gated content in campaign.

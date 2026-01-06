@@ -334,7 +334,7 @@ module Telnyx
         attr_writer :subscriber_optout
 
         # Campaign sub-usecases. Must be of defined valid sub-usecase types. Use
-        # `/registry/enum/usecase` operation to retrieve list of valid sub-usecases
+        # `/10dlc/enum/usecase` operation to retrieve list of valid sub-usecases
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :sub_usecases
 
@@ -369,7 +369,7 @@ module Telnyx
         sig { params(terms_and_conditions_link: String).void }
         attr_writer :terms_and_conditions_link
 
-        # Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase`
+        # Campaign usecase. Must be of defined valid types. Use `/10dlc/enum/usecase`
         # operation to retrieve usecases available for given brand.
         sig { returns(T.nilable(String)) }
         attr_reader :usecase
@@ -550,7 +550,7 @@ module Telnyx
           # Does campaign support subscriber opt-out keyword(s)?
           subscriber_optout: nil,
           # Campaign sub-usecases. Must be of defined valid sub-usecase types. Use
-          # `/registry/enum/usecase` operation to retrieve list of valid sub-usecases
+          # `/10dlc/enum/usecase` operation to retrieve list of valid sub-usecases
           sub_usecases: nil,
           # Unique identifier assigned to the brand by the registry.
           tcr_brand_id: nil,
@@ -560,7 +560,7 @@ module Telnyx
           terms_and_conditions: nil,
           # Link to the campaign's terms and conditions.
           terms_and_conditions_link: nil,
-          # Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase`
+          # Campaign usecase. Must be of defined valid types. Use `/10dlc/enum/usecase`
           # operation to retrieve usecases available for given brand.
           usecase: nil,
           # Business/industry segment of this campaign (Deprecated). Must be of defined

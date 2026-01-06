@@ -229,7 +229,7 @@ module Telnyx
         attr_writer :subscriber_optout
 
         # Campaign sub-usecases. Must be of defined valid sub-usecase types. Use
-        # `/registry/enum/usecase` operation to retrieve list of valid sub-usecases
+        # `/10dlc/enum/usecase` operation to retrieve list of valid sub-usecases
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :sub_usecases
 
@@ -257,7 +257,7 @@ module Telnyx
         sig { params(updated_at: String).void }
         attr_writer :updated_at
 
-        # Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase`
+        # Campaign usecase. Must be of defined valid types. Use `/10dlc/enum/usecase`
         # operation to retrieve usecases available for given brand.
         sig { returns(T.nilable(String)) }
         attr_reader :usecase
@@ -390,7 +390,7 @@ module Telnyx
           # Does campaign support subscriber opt-out keyword(s)?
           subscriber_optout: nil,
           # Campaign sub-usecases. Must be of defined valid sub-usecase types. Use
-          # `/registry/enum/usecase` operation to retrieve list of valid sub-usecases
+          # `/10dlc/enum/usecase` operation to retrieve list of valid sub-usecases
           sub_usecases: nil,
           # Is terms & conditions accepted?
           terms_and_conditions: nil,
@@ -398,7 +398,7 @@ module Telnyx
           terms_and_conditions_link: nil,
           # Date and time that the brand was last updated at.
           updated_at: nil,
-          # Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase`
+          # Campaign usecase. Must be of defined valid types. Use `/10dlc/enum/usecase`
           # operation to retrieve usecases available for given brand.
           usecase: nil,
           # Failover webhook to which campaign status updates are sent.

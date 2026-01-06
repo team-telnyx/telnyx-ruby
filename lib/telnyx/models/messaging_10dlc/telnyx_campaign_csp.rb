@@ -38,7 +38,7 @@ module Telnyx
 
         # @!attribute sub_usecases
         #   Campaign sub-usecases. Must be of defined valid sub-usecase types. Use
-        #   `/registry/enum/usecase` operation to retrieve list of valid sub-usecases
+        #   `/10dlc/enum/usecase` operation to retrieve list of valid sub-usecases
         #
         #   @return [Array<String>]
         required :sub_usecases, Telnyx::Internal::Type::ArrayOf[String], api_name: :subUsecases
@@ -50,7 +50,7 @@ module Telnyx
         required :terms_and_conditions, Telnyx::Internal::Type::Boolean, api_name: :termsAndConditions
 
         # @!attribute usecase
-        #   Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase`
+        #   Campaign usecase. Must be of defined valid types. Use `/10dlc/enum/usecase`
         #   operation to retrieve usecases available for given brand.
         #
         #   @return [String]
@@ -346,11 +346,11 @@ module Telnyx
         #
         #   @param mock [Boolean] Campaign created from mock brand. Mocked campaign cannot be shared with an upstr
         #
-        #   @param sub_usecases [Array<String>] Campaign sub-usecases. Must be of defined valid sub-usecase types. Use `/registr
+        #   @param sub_usecases [Array<String>] Campaign sub-usecases. Must be of defined valid sub-usecase types. Use `/10dlc/e
         #
         #   @param terms_and_conditions [Boolean] Is terms & conditions accepted?
         #
-        #   @param usecase [String] Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase` o
+        #   @param usecase [String] Campaign usecase. Must be of defined valid types. Use `/10dlc/enum/usecase` oper
         #
         #   @param age_gated [Boolean] Age gated content in campaign.
         #
