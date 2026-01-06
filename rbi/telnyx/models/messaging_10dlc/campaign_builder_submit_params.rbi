@@ -23,7 +23,7 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :description
 
-        # Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase`
+        # Campaign usecase. Must be of defined valid types. Use `/10dlc/enum/usecase`
         # operation to retrieve usecases available for given brand.
         sig { returns(String) }
         attr_accessor :usecase
@@ -217,7 +217,7 @@ module Telnyx
         attr_writer :subscriber_optout
 
         # Campaign sub-usecases. Must be of defined valid sub-usecase types. Use
-        # `/registry/enum/usecase` operation to retrieve list of valid sub-usecases
+        # `/10dlc/enum/usecase` operation to retrieve list of valid sub-usecases
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :sub_usecases
 
@@ -304,7 +304,7 @@ module Telnyx
           brand_id:,
           # Summary description of this campaign.
           description:,
-          # Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase`
+          # Campaign usecase. Must be of defined valid types. Use `/10dlc/enum/usecase`
           # operation to retrieve usecases available for given brand.
           usecase:,
           # Age gated message content in campaign.
@@ -366,7 +366,7 @@ module Telnyx
           # Does campaign support subscriber opt-out keyword(s)?
           subscriber_optout: nil,
           # Campaign sub-usecases. Must be of defined valid sub-usecase types. Use
-          # `/registry/enum/usecase` operation to retrieve list of valid sub-usecases
+          # `/10dlc/enum/usecase` operation to retrieve list of valid sub-usecases
           sub_usecases: nil,
           # Tags to be set on the Campaign.
           tag: nil,

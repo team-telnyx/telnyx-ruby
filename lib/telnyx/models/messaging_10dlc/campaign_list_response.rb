@@ -270,7 +270,7 @@ module Telnyx
 
         # @!attribute sub_usecases
         #   Campaign sub-usecases. Must be of defined valid sub-usecase types. Use
-        #   `/registry/enum/usecase` operation to retrieve list of valid sub-usecases
+        #   `/10dlc/enum/usecase` operation to retrieve list of valid sub-usecases
         #
         #   @return [Array<String>, nil]
         optional :sub_usecases, Telnyx::Internal::Type::ArrayOf[String], api_name: :subUsecases
@@ -300,7 +300,7 @@ module Telnyx
         optional :terms_and_conditions_link, String, api_name: :termsAndConditionsLink
 
         # @!attribute usecase
-        #   Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase`
+        #   Campaign usecase. Must be of defined valid types. Use `/10dlc/enum/usecase`
         #   operation to retrieve usecases available for given brand.
         #
         #   @return [String, nil]
@@ -418,7 +418,7 @@ module Telnyx
         #
         #   @param subscriber_optout [Boolean] Does campaign support subscriber opt-out keyword(s)?
         #
-        #   @param sub_usecases [Array<String>] Campaign sub-usecases. Must be of defined valid sub-usecase types. Use `/registr
+        #   @param sub_usecases [Array<String>] Campaign sub-usecases. Must be of defined valid sub-usecase types. Use `/10dlc/e
         #
         #   @param tcr_brand_id [String] Unique identifier assigned to the brand by the registry.
         #
@@ -428,7 +428,7 @@ module Telnyx
         #
         #   @param terms_and_conditions_link [String] Link to the campaign's terms and conditions.
         #
-        #   @param usecase [String] Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase` o
+        #   @param usecase [String] Campaign usecase. Must be of defined valid types. Use `/10dlc/enum/usecase` oper
         #
         #   @param vertical [String] Business/industry segment of this campaign (Deprecated). Must be of defined vali
         #

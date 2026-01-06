@@ -19,7 +19,7 @@ module Telnyx
         required :campaign_id, String, api_name: :campaignId
 
         # @!attribute usecase
-        #   Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase`
+        #   Campaign usecase. Must be of defined valid types. Use `/10dlc/enum/usecase`
         #   operation to retrieve usecases available for given brand.
         #
         #   @return [String]
@@ -55,7 +55,7 @@ module Telnyx
         #
         #   @param campaign_id [String] Alphanumeric identifier assigned by the registry for a campaign. This identifier
         #
-        #   @param usecase [String] Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase` o
+        #   @param usecase [String] Campaign usecase. Must be of defined valid types. Use `/10dlc/enum/usecase` oper
         #
         #   @param create_date [String] Unix timestamp when campaign was created.
         #

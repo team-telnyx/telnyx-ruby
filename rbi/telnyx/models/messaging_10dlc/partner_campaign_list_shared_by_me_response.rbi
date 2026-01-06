@@ -21,7 +21,7 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :campaign_id
 
-        # Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase`
+        # Campaign usecase. Must be of defined valid types. Use `/10dlc/enum/usecase`
         # operation to retrieve usecases available for given brand.
         sig { returns(String) }
         attr_accessor :usecase
@@ -63,7 +63,7 @@ module Telnyx
           # Alphanumeric identifier assigned by the registry for a campaign. This identifier
           # is required by the NetNumber OSR SMS enabling process of 10DLC.
           campaign_id:,
-          # Campaign usecase. Must be of defined valid types. Use `/registry/enum/usecase`
+          # Campaign usecase. Must be of defined valid types. Use `/10dlc/enum/usecase`
           # operation to retrieve usecases available for given brand.
           usecase:,
           # Unix timestamp when campaign was created.
