@@ -11,13 +11,13 @@ module Telnyx
         # {Telnyx::Models::Messaging10dlc::CampaignBuilderSubmitParams} for more details.
         #
         # Before creating a campaign, use the
-        # [Qualify By Usecase endpoint](https://developers.telnyx.com/api/messaging/10dlc/get-usecase-qualification)
+        # [Qualify By Usecase endpoint](https://developers.telnyx.com/api-reference/campaign/qualify-by-usecase)
         # to ensure that the brand you want to assign a new campaign to is qualified for
         # the desired use case of that campaign. **Please note:** After campaign creation,
         # you'll only be able to edit the campaign's sample messages. Creating a campaign
         # will entail an upfront, non-refundable three month's cost that will depend on
         # the campaign's use case
-        # ([see 10DLC Costs section for details](https://developers.telnyx.com/docs/messaging/10dlc/concepts#10dlc-costs)).
+        # ([see 10DLC Costs section for details](https://developers.telnyx.com/api-reference/campaign/get-campaign-cost)).
         #
         # @overload submit(brand_id:, description:, usecase:, age_gated: nil, auto_renewal: nil, direct_lending: nil, embedded_link: nil, embedded_link_sample: nil, embedded_phone: nil, help_keywords: nil, help_message: nil, message_flow: nil, mno_ids: nil, number_pool: nil, optin_keywords: nil, optin_message: nil, optout_keywords: nil, optout_message: nil, privacy_policy_link: nil, reference_id: nil, reseller_id: nil, sample1: nil, sample2: nil, sample3: nil, sample4: nil, sample5: nil, subscriber_help: nil, subscriber_optin: nil, subscriber_optout: nil, sub_usecases: nil, tag: nil, terms_and_conditions: nil, terms_and_conditions_link: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
         #
