@@ -126,7 +126,8 @@ module Telnyx
                   Telnyx::AI::HangupTool,
                   Telnyx::AI::TransferTool,
                   Telnyx::AI::AssistantTool::Refer,
-                  Telnyx::AI::AssistantTool::SendDtmf
+                  Telnyx::AI::AssistantTool::SendDtmf,
+                  Telnyx::AI::AssistantTool::SendMessage
                 )
               ]
             )
@@ -145,7 +146,8 @@ module Telnyx
                   Telnyx::AI::HangupTool::OrHash,
                   Telnyx::AI::TransferTool::OrHash,
                   Telnyx::AI::AssistantTool::Refer::OrHash,
-                  Telnyx::AI::AssistantTool::SendDtmf::OrHash
+                  Telnyx::AI::AssistantTool::SendDtmf::OrHash,
+                  Telnyx::AI::AssistantTool::SendMessage::OrHash
                 )
               ]
           ).void
@@ -190,7 +192,8 @@ module Telnyx
                   Telnyx::AI::HangupTool::OrHash,
                   Telnyx::AI::TransferTool::OrHash,
                   Telnyx::AI::AssistantTool::Refer::OrHash,
-                  Telnyx::AI::AssistantTool::SendDtmf::OrHash
+                  Telnyx::AI::AssistantTool::SendDtmf::OrHash,
+                  Telnyx::AI::AssistantTool::SendMessage::OrHash
                 )
               ],
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
@@ -264,7 +267,8 @@ module Telnyx
                     Telnyx::AI::HangupTool,
                     Telnyx::AI::TransferTool,
                     Telnyx::AI::AssistantTool::Refer,
-                    Telnyx::AI::AssistantTool::SendDtmf
+                    Telnyx::AI::AssistantTool::SendDtmf,
+                    Telnyx::AI::AssistantTool::SendMessage
                   )
                 ],
               transcription: Telnyx::AI::TranscriptionSettings,

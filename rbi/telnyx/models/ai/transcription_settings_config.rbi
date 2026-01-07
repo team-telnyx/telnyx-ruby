@@ -12,6 +12,15 @@ module Telnyx
             )
           end
 
+        # Available only for deepgram/flux. Confidence threshold for eager end of turn
+        # detection. Must be lower than or equal to eot_threshold. Setting this equal to
+        # eot_threshold effectively disables eager end of turn.
+        sig { returns(T.nilable(Float)) }
+        attr_reader :eager_eot_threshold
+
+        sig { params(eager_eot_threshold: Float).void }
+        attr_writer :eager_eot_threshold
+
         # Available only for deepgram/flux. Confidence required to trigger an end of turn.
         # Higher values = more reliable turn detection but slightly increased latency.
         sig { returns(T.nilable(Float)) }
@@ -42,6 +51,7 @@ module Telnyx
 
         sig do
           params(
+            eager_eot_threshold: Float,
             eot_threshold: Float,
             eot_timeout_ms: Integer,
             numerals: T::Boolean,
@@ -49,6 +59,10 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          # Available only for deepgram/flux. Confidence threshold for eager end of turn
+          # detection. Must be lower than or equal to eot_threshold. Setting this equal to
+          # eot_threshold effectively disables eager end of turn.
+          eager_eot_threshold: nil,
           # Available only for deepgram/flux. Confidence required to trigger an end of turn.
           # Higher values = more reliable turn detection but slightly increased latency.
           eot_threshold: nil,
@@ -63,6 +77,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              eager_eot_threshold: Float,
               eot_threshold: Float,
               eot_timeout_ms: Integer,
               numerals: T::Boolean,
