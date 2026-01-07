@@ -57,6 +57,48 @@ module Telnyx
         end
         attr_writer :background_audio
 
+        # Determines how closely the AI should adhere to the original voice when
+        # attempting to replicate it. Only applicable when using ElevenLabs.
+        sig { returns(T.nilable(Float)) }
+        attr_reader :similarity_boost
+
+        sig { params(similarity_boost: Float).void }
+        attr_writer :similarity_boost
+
+        # Adjusts speech velocity. 1.0 is default speed; values less than 1.0 slow speech;
+        # values greater than 1.0 accelerate it. Only applicable when using ElevenLabs.
+        sig { returns(T.nilable(Float)) }
+        attr_reader :speed
+
+        sig { params(speed: Float).void }
+        attr_writer :speed
+
+        # Determines the style exaggeration of the voice. Amplifies speaker style but
+        # consumes additional resources when set above 0. Only applicable when using
+        # ElevenLabs.
+        sig { returns(T.nilable(Float)) }
+        attr_reader :style
+
+        sig { params(style: Float).void }
+        attr_writer :style
+
+        # Determines how stable the voice is and the randomness between each generation.
+        # Lower values create a broader emotional range; higher values produce more
+        # consistent, monotonous output. Only applicable when using ElevenLabs.
+        sig { returns(T.nilable(Float)) }
+        attr_reader :temperature
+
+        sig { params(temperature: Float).void }
+        attr_writer :temperature
+
+        # Amplifies similarity to the original speaker voice. Increases computational load
+        # and latency slightly. Only applicable when using ElevenLabs.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :use_speaker_boost
+
+        sig { params(use_speaker_boost: T::Boolean).void }
+        attr_writer :use_speaker_boost
+
         # The speed of the voice in the range [0.25, 2.0]. 1.0 is deafult speed. Larger
         # numbers make the voice faster, smaller numbers make it slower. This is only
         # applicable for Telnyx Natural voices.
@@ -76,6 +118,11 @@ module Telnyx
                 Telnyx::AI::VoiceSettings::BackgroundAudio::MediaURL::OrHash,
                 Telnyx::AI::VoiceSettings::BackgroundAudio::MediaName::OrHash
               ),
+            similarity_boost: Float,
+            speed: Float,
+            style: Float,
+            temperature: Float,
+            use_speaker_boost: T::Boolean,
             voice_speed: Float
           ).returns(T.attached_class)
         end
@@ -97,6 +144,23 @@ module Telnyx
           # supply a looped MP3 URL. If a media URL is chosen in the portal, customers can
           # preview it before saving.
           background_audio: nil,
+          # Determines how closely the AI should adhere to the original voice when
+          # attempting to replicate it. Only applicable when using ElevenLabs.
+          similarity_boost: nil,
+          # Adjusts speech velocity. 1.0 is default speed; values less than 1.0 slow speech;
+          # values greater than 1.0 accelerate it. Only applicable when using ElevenLabs.
+          speed: nil,
+          # Determines the style exaggeration of the voice. Amplifies speaker style but
+          # consumes additional resources when set above 0. Only applicable when using
+          # ElevenLabs.
+          style: nil,
+          # Determines how stable the voice is and the randomness between each generation.
+          # Lower values create a broader emotional range; higher values produce more
+          # consistent, monotonous output. Only applicable when using ElevenLabs.
+          temperature: nil,
+          # Amplifies similarity to the original speaker voice. Increases computational load
+          # and latency slightly. Only applicable when using ElevenLabs.
+          use_speaker_boost: nil,
           # The speed of the voice in the range [0.25, 2.0]. 1.0 is deafult speed. Larger
           # numbers make the voice faster, smaller numbers make it slower. This is only
           # applicable for Telnyx Natural voices.
@@ -115,6 +179,11 @@ module Telnyx
                   Telnyx::AI::VoiceSettings::BackgroundAudio::MediaURL,
                   Telnyx::AI::VoiceSettings::BackgroundAudio::MediaName
                 ),
+              similarity_boost: Float,
+              speed: Float,
+              style: Float,
+              temperature: Float,
+              use_speaker_boost: T::Boolean,
               voice_speed: Float
             }
           )

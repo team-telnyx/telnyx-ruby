@@ -33,6 +33,43 @@ module Telnyx
         #   @return [Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaURL, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaName, nil]
         optional :background_audio, union: -> { Telnyx::AI::VoiceSettings::BackgroundAudio }
 
+        # @!attribute similarity_boost
+        #   Determines how closely the AI should adhere to the original voice when
+        #   attempting to replicate it. Only applicable when using ElevenLabs.
+        #
+        #   @return [Float, nil]
+        optional :similarity_boost, Float
+
+        # @!attribute speed
+        #   Adjusts speech velocity. 1.0 is default speed; values less than 1.0 slow speech;
+        #   values greater than 1.0 accelerate it. Only applicable when using ElevenLabs.
+        #
+        #   @return [Float, nil]
+        optional :speed, Float
+
+        # @!attribute style
+        #   Determines the style exaggeration of the voice. Amplifies speaker style but
+        #   consumes additional resources when set above 0. Only applicable when using
+        #   ElevenLabs.
+        #
+        #   @return [Float, nil]
+        optional :style, Float
+
+        # @!attribute temperature
+        #   Determines how stable the voice is and the randomness between each generation.
+        #   Lower values create a broader emotional range; higher values produce more
+        #   consistent, monotonous output. Only applicable when using ElevenLabs.
+        #
+        #   @return [Float, nil]
+        optional :temperature, Float
+
+        # @!attribute use_speaker_boost
+        #   Amplifies similarity to the original speaker voice. Increases computational load
+        #   and latency slightly. Only applicable when using ElevenLabs.
+        #
+        #   @return [Boolean, nil]
+        optional :use_speaker_boost, Telnyx::Internal::Type::Boolean
+
         # @!attribute voice_speed
         #   The speed of the voice in the range [0.25, 2.0]. 1.0 is deafult speed. Larger
         #   numbers make the voice faster, smaller numbers make it slower. This is only
@@ -41,7 +78,7 @@ module Telnyx
         #   @return [Float, nil]
         optional :voice_speed, Float
 
-        # @!method initialize(voice:, api_key_ref: nil, background_audio: nil, voice_speed: nil)
+        # @!method initialize(voice:, api_key_ref: nil, background_audio: nil, similarity_boost: nil, speed: nil, style: nil, temperature: nil, use_speaker_boost: nil, voice_speed: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::VoiceSettings} for more details.
         #
@@ -50,6 +87,16 @@ module Telnyx
         #   @param api_key_ref [String] The `identifier` for an integration secret [/v2/integration_secrets](https://dev
         #
         #   @param background_audio [Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaURL, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaName] Optional background audio to play on the call. Use a predefined media bed, or su
+        #
+        #   @param similarity_boost [Float] Determines how closely the AI should adhere to the original voice when attemptin
+        #
+        #   @param speed [Float] Adjusts speech velocity. 1.0 is default speed; values less than 1.0 slow speech;
+        #
+        #   @param style [Float] Determines the style exaggeration of the voice. Amplifies speaker style but cons
+        #
+        #   @param temperature [Float] Determines how stable the voice is and the randomness between each generation. L
+        #
+        #   @param use_speaker_boost [Boolean] Amplifies similarity to the original speaker voice. Increases computational load
         #
         #   @param voice_speed [Float] The speed of the voice in the range [0.25, 2.0]. 1.0 is deafult speed. Larger nu
 

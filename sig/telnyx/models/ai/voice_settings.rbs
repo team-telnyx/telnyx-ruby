@@ -6,6 +6,11 @@ module Telnyx
           voice: String,
           api_key_ref: String,
           background_audio: Telnyx::Models::AI::VoiceSettings::background_audio,
+          similarity_boost: Float,
+          speed: Float,
+          style: Float,
+          temperature: Float,
+          use_speaker_boost: bool,
           voice_speed: Float
         }
 
@@ -22,6 +27,26 @@ module Telnyx
           Telnyx::Models::AI::VoiceSettings::background_audio
         ) -> Telnyx::Models::AI::VoiceSettings::background_audio
 
+        attr_reader similarity_boost: Float?
+
+        def similarity_boost=: (Float) -> Float
+
+        attr_reader speed: Float?
+
+        def speed=: (Float) -> Float
+
+        attr_reader style: Float?
+
+        def style=: (Float) -> Float
+
+        attr_reader temperature: Float?
+
+        def temperature=: (Float) -> Float
+
+        attr_reader use_speaker_boost: bool?
+
+        def use_speaker_boost=: (bool) -> bool
+
         attr_reader voice_speed: Float?
 
         def voice_speed=: (Float) -> Float
@@ -30,6 +55,11 @@ module Telnyx
           voice: String,
           ?api_key_ref: String,
           ?background_audio: Telnyx::Models::AI::VoiceSettings::background_audio,
+          ?similarity_boost: Float,
+          ?speed: Float,
+          ?style: Float,
+          ?temperature: Float,
+          ?use_speaker_boost: bool,
           ?voice_speed: Float
         ) -> void
 
@@ -37,6 +67,11 @@ module Telnyx
           voice: String,
           api_key_ref: String,
           background_audio: Telnyx::Models::AI::VoiceSettings::background_audio,
+          similarity_boost: Float,
+          speed: Float,
+          style: Float,
+          temperature: Float,
+          use_speaker_boost: bool,
           voice_speed: Float
         }
 

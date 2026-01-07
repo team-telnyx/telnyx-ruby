@@ -9,6 +9,7 @@ module Telnyx
         | Telnyx::AI::TransferTool
         | Telnyx::AI::AssistantTool::Refer
         | Telnyx::AI::AssistantTool::SendDtmf
+        | Telnyx::AI::AssistantTool::SendMessage
 
       module AssistantTool
         extend Telnyx::Internal::Type::Union
@@ -242,6 +243,25 @@ module Telnyx
           ) -> void
 
           def to_hash: -> { send_dtmf: ::Hash[Symbol, top], type: :send_dtmf }
+        end
+
+        type send_message =
+          { send_message: ::Hash[Symbol, top], type: :send_message }
+
+        class SendMessage < Telnyx::Internal::Type::BaseModel
+          attr_accessor send_message: ::Hash[Symbol, top]
+
+          attr_accessor type: :send_message
+
+          def initialize: (
+            send_message: ::Hash[Symbol, top],
+            ?type: :send_message
+          ) -> void
+
+          def to_hash: -> {
+            send_message: ::Hash[Symbol, top],
+            type: :send_message
+          }
         end
 
         def self?.variants: -> ::Array[Telnyx::Models::AI::assistant_tool]
