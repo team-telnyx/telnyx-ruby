@@ -13,11 +13,6 @@ module Telnyx
         #   @return [String]
         required :from, String
 
-        # @!attribute text
-        #
-        #   @return [String]
-        required :text, String
-
         # @!attribute to
         #
         #   @return [String]
@@ -34,12 +29,17 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :should_create_conversation, Telnyx::Internal::Type::Boolean
 
-        # @!method initialize(from:, text:, to:, conversation_metadata: nil, should_create_conversation: nil, request_options: {})
+        # @!attribute text
+        #
+        #   @return [String, nil]
+        optional :text, String
+
+        # @!method initialize(from:, to:, conversation_metadata: nil, should_create_conversation: nil, text: nil, request_options: {})
         #   @param from [String]
-        #   @param text [String]
         #   @param to [String]
         #   @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}]
         #   @param should_create_conversation [Boolean]
+        #   @param text [String]
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
         module ConversationMetadata
