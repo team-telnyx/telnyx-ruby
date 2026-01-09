@@ -1,5 +1,115 @@
 # Changelog
 
+## 5.0.0 (2026-01-09)
+
+Full Changelog: [v4.4.0...v5.0.0](https://github.com/team-telnyx/telnyx-ruby/compare/v4.4.0...v5.0.0)
+
+### ⚠ BREAKING CHANGES
+
+* Resolved all codegen errors
+
+### Features
+
+* (draft/don't review) ENGDESK-38070-c: add deepgram keyword documentation ([55b4452](https://github.com/team-telnyx/telnyx-ruby/commit/55b4452c02fdaf28877c9da7666fa42ae65cd69b))
+* [PORT-4538] Fix ambiguous oneOf instances on porting service and documents ([d0a6f9f](https://github.com/team-telnyx/telnyx-ruby/commit/d0a6f9f885c1a870b56db27a6e37942446345565))
+* Add AI assistant voice settings, telephony config, and tools updates ([9a35f05](https://github.com/team-telnyx/telnyx-ruby/commit/9a35f050fe5bbde7f2996977bc783aef818f98c2))
+* Add response schemas for telco data usage report endpoints ([9b629c8](https://github.com/team-telnyx/telnyx-ruby/commit/9b629c851587135fd6d7363e957c6d01e1e7b19f))
+* Ai 1967 part 2 ([73527eb](https://github.com/team-telnyx/telnyx-ruby/commit/73527eb3d1860cfd5ee8e3d2ba0709460eeff1d6))
+* AI-1842: Add MCP Servers and Integrations sections ([5f53a7a](https://github.com/team-telnyx/telnyx-ruby/commit/5f53a7ab61c0943cb80c0e25991e2c7a4d1ae41b))
+* alright, shut up redocly ([2655c07](https://github.com/team-telnyx/telnyx-ruby/commit/2655c070fc9873106c861e0ba4ba8dcab2feef19))
+* **api:** join all 10dlc operations into messaging_10dlc group ([6b2cc86](https://github.com/team-telnyx/telnyx-ruby/commit/6b2cc86cd095192f2563637d3dc97183400d6499))
+* **api:** manual updates ([7cb16f1](https://github.com/team-telnyx/telnyx-ruby/commit/7cb16f12b41ef9963d9c5cd431c49407d5be86d2))
+* **api:** manual updates ([d0fdabd](https://github.com/team-telnyx/telnyx-ruby/commit/d0fdabd4d1884566695c710c3845359f1e05b7b0))
+* **api:** manual updates ([9076e2d](https://github.com/team-telnyx/telnyx-ruby/commit/9076e2dd65ab5c35377227437d7ad0533dd06314))
+* **api:** manual updates ([9131b52](https://github.com/team-telnyx/telnyx-ruby/commit/9131b5275d437cdfd167d30314c1df04a19d21ec))
+* **api:** manual updates ([1f369cf](https://github.com/team-telnyx/telnyx-ruby/commit/1f369cf6cffa5940232509199f3dc07974105911))
+* **api:** manual updates ([730403f](https://github.com/team-telnyx/telnyx-ruby/commit/730403fb4ce72316329a95d3fe728e680f688ab6))
+* **api:** manual updates ([08612d0](https://github.com/team-telnyx/telnyx-ruby/commit/08612d00dd8c55478ec10a0f6a38f3c83ffcd26d))
+* **api:** messaging_10dlc group with all their endpoints ([1ac815a](https://github.com/team-telnyx/telnyx-ruby/commit/1ac815a02defcfc337cd0dd2e8956ca0fdbb55e7))
+* **api:** reverted previous commit ([8b6dc2a](https://github.com/team-telnyx/telnyx-ruby/commit/8b6dc2acf03ec9270f111ba1f2cc4ea55cdb7281))
+* Chat completions response schema update ([e5f29cf](https://github.com/team-telnyx/telnyx-ruby/commit/e5f29cf10cbdcb4352ceda8b70b0a861ae39488f))
+* **client:** add separate models for 2 events ([07eafa3](https://github.com/team-telnyx/telnyx-ruby/commit/07eafa34f85d36114b53202a55ff4118e068fe4b))
+* Document supervising leg of call ([f15e977](https://github.com/team-telnyx/telnyx-ruby/commit/f15e977d5c5d42b28c952d17403359c06e1825b9))
+* DOTCOM-5145. Update redocly lint to block new lint errors or warning being introduced ([46b471b](https://github.com/team-telnyx/telnyx-ruby/commit/46b471bcbdf3aecdacb627fe2d60e278b885a374))
+* Draft. DOTCOM-5184. Fix 44 errors in the spec as reported by Redocly on video ([df73e3f](https://github.com/team-telnyx/telnyx-ruby/commit/df73e3f8b50b578aa508843188e8ce6a4ab6b81a))
+* Engdesk 47920/wireless cleanup ([ca7ff64](https://github.com/team-telnyx/telnyx-ruby/commit/ca7ff64d10d4e758656ca5834d3adcbdf9e7d97a))
+* ENGDESK-44767 - Document force remove calls from queue ([a9abed5](https://github.com/team-telnyx/telnyx-ruby/commit/a9abed5b202d5d61d43edc2639756fc5e8eecb86))
+* ENGDESK-45429 - Add sip_region documentation for dial and transfer command ([6a9e20d](https://github.com/team-telnyx/telnyx-ruby/commit/6a9e20dade3787715bf06a6f1bd10d87ff00c791))
+* ENGDESK-46399 - Add sip_call_id filter for retreiving recordings ([4a75607](https://github.com/team-telnyx/telnyx-ruby/commit/4a75607b1a780e8f9fe579e8768b364af623ddb8))
+* ENGDESK-47508 - part 2 shared schema fixes ([f784b28](https://github.com/team-telnyx/telnyx-ruby/commit/f784b28035fb7cd8e522d692a26dc88e74c133b2))
+* ENGDESK-47518 document mobile number and mobile voice connection endpoints ([ef54079](https://github.com/team-telnyx/telnyx-ruby/commit/ef54079fd0eeebe6178c05f2dddba95fdf1f6bad))
+* ENGDESK-47580: Add quickship and exclude_held_numbers filters to inexplicit number order API ([5a678d2](https://github.com/team-telnyx/telnyx-ruby/commit/5a678d2f9d1d15d9a49d0e4922345e747bc0d3c2))
+* ENGDESK-47580: Add quickship and exclude_held_numbers to InexplicitNumberOrderResponse ([476b46d](https://github.com/team-telnyx/telnyx-ruby/commit/476b46d8aff889490e9298b72b48a1d1e2dc3d54))
+* ENGDESK-47706: Update TranscriptionEngineDeepgramConfig Schema ([a966fb0](https://github.com/team-telnyx/telnyx-ruby/commit/a966fb0a9860b6cfb2fd39366827a6fef509fa47))
+* ENGDESK-47736: added discriminator fields to oneOffs that were missing them ([f319a90](https://github.com/team-telnyx/telnyx-ruby/commit/f319a90ffb8d8e41e4a0c1b5124ac91f17822857))
+* ENGDESK-47759 - fix missing meta definition in authorized ips spec ([0f95578](https://github.com/team-telnyx/telnyx-ruby/commit/0f955781451fdedae082d0613a7ff71b20e83a50))
+* ENGDESK-47883: Fix all lint errors in telapps owned APIs ([195073b](https://github.com/team-telnyx/telnyx-ruby/commit/195073b9c42720084a4a4effd76735388151afed))
+* ENGDESK-47886: Fix API spec for emergency.json ([17b46a7](https://github.com/team-telnyx/telnyx-ruby/commit/17b46a7c4799f3d47d8f101614beb57fb4980427))
+* ENGDESK-47914 - fix warnings in numbers.json file ([0dc746a](https://github.com/team-telnyx/telnyx-ruby/commit/0dc746ad1404efdcf86fb94e86e764464ac0515f))
+* ENGDESK-47947 - fix wrong type on user-addresses request object ([0b06d78](https://github.com/team-telnyx/telnyx-ruby/commit/0b06d783b6adef4b103992ccdf68109a8d4b9e40))
+* ENGDESK-48016 - document simultaneous ringing for CredentialConnections ([250b0fc](https://github.com/team-telnyx/telnyx-ruby/commit/250b0fc5a6a96f1716e33c88ebe03caa19c52e85))
+* ENGDESK-48254: Release noise suppression details docs to prod ([756fd50](https://github.com/team-telnyx/telnyx-ruby/commit/756fd501c4c89d80a0d4a0d855939c45f390acf2))
+* FILE-1066: presigned url doc strings ([043dbc6](https://github.com/team-telnyx/telnyx-ruby/commit/043dbc66b75fd1ccd2081581b4380e2a85150d51))
+* Fix campaign usecase endpoint: /registry/enum/usecase → /10dlc/enum/usecase ([3c409e2](https://github.com/team-telnyx/telnyx-ruby/commit/3c409e21e556a04a6564be73c6fab115f0ec778b))
+* Fix invalid responses ([bfae57d](https://github.com/team-telnyx/telnyx-ruby/commit/bfae57daa44e3d76660c55178da13faded1a13a5))
+* Fix Redocly linting errors and warnings in TDA reporting specs ([966b476](https://github.com/team-telnyx/telnyx-ruby/commit/966b4768f162269b85014eb5b60d44157dc79622))
+* Fix Redocly linting warnings in Number Lookup spec ([ff8160a](https://github.com/team-telnyx/telnyx-ruby/commit/ff8160ac843c2c9a0a381d4c5a019a0cde7c6430))
+* Fix Redocly linting warnings in OAuth and Integration Secrets specs ([d6161d4](https://github.com/team-telnyx/telnyx-ruby/commit/d6161d44b09b1bf2f5ba6506cddedc95142827d9))
+* hotfix: restore 10dlc prefixes ([0b9c2bf](https://github.com/team-telnyx/telnyx-ruby/commit/0b9c2bf4028898a4173f6debcdc975f59cad73ff))
+* Improve messaging API naming and navigation ([5572940](https://github.com/team-telnyx/telnyx-ruby/commit/557294015c4349e6cfc13a4db0dc6182af8f16e7))
+* messaging meta object with required fields ([33fa608](https://github.com/team-telnyx/telnyx-ruby/commit/33fa6087a83601e563fc1ba3bb04e52624cfbfe3))
+* Msg 6152 ([f762350](https://github.com/team-telnyx/telnyx-ruby/commit/f762350d1041376e0eeef15c512070ee36ec1bec))
+* MSG-6076: webhook event for 10DLC campaign suspended status ([61513a0](https://github.com/team-telnyx/telnyx-ruby/commit/61513a03ef701fff94e7a86e7a615afbb6c562d4))
+* MSG-6140: Add SMS OTP endpoints for Sole Prop brands ([f5f3a47](https://github.com/team-telnyx/telnyx-ruby/commit/f5f3a478ebdd8989cfd7d42b9ebffb23fdfc7bf6))
+* MSG-6145: OTP status endpoint ([6c2f349](https://github.com/team-telnyx/telnyx-ruby/commit/6c2f349770e869703f0af25fea77940ac72fd42e))
+* MSG-6160 fix messaging lint issues ([d6fee60](https://github.com/team-telnyx/telnyx-ruby/commit/d6fee600893fbbdfdb58c340c654b3d5dcb0ea5c))
+* MSG-6166 fix empty schema responses ([172d623](https://github.com/team-telnyx/telnyx-ruby/commit/172d623566286db5ef53a29a9b6fcb9d946e2f04))
+* MSG-6179: Add discriminator fields to Messaging API schemas for improved SDK performance ([bd511e8](https://github.com/team-telnyx/telnyx-ruby/commit/bd511e8747a267de6c5ea2b97d671aba28a9e7c9))
+* MSG-6181: Reorganize mobile phone number messaging endpoints and fix … ([f7f537d](https://github.com/team-telnyx/telnyx-ruby/commit/f7f537d053970b4b4f1ff307bab4c9217240aa9c))
+* NETAPPS_687: Fixed IGW spec to match current API. ([83ba128](https://github.com/team-telnyx/telnyx-ruby/commit/83ba1286075b5962b82558ac752412b3aa3e9cc4))
+* NUM-6334/NUM-6335 - fix redocly lint errors ([d025cee](https://github.com/team-telnyx/telnyx-ruby/commit/d025ceea9359a82c427025f8686048d167e4ca63))
+* PORT-4528: Fix lint errors for porting ([ac28820](https://github.com/team-telnyx/telnyx-ruby/commit/ac2882089ff2f32fd6a95caf40c186f137dd1e99))
+* port-4551: remove CustomerServiceRecordStatusChanged webhook doc ([765510c](https://github.com/team-telnyx/telnyx-ruby/commit/765510cc99263a3f0fb253681d9f042526074447))
+* PORT-4553: Add a discriminator to portout webhook ([d4484f8](https://github.com/team-telnyx/telnyx-ruby/commit/d4484f8f89f7dd9792007b959d6fb9b401de9b1b))
+* PORTAL-5787 - document query parameter to handle messaging service error ([1620bda](https://github.com/team-telnyx/telnyx-ruby/commit/1620bdad0912f674d854848a30ef69bb81c1a641))
+* Refactored README to only contain useful information and reflect accu… ([f1ff106](https://github.com/team-telnyx/telnyx-ruby/commit/f1ff10665c91bc7db09bb8ccd45b65dd02469121))
+* TBS-3422: Fix redocly errors ([e1f8ff3](https://github.com/team-telnyx/telnyx-ruby/commit/e1f8ff35096a734f4e35d894e744463660356ff7))
+* TBS-3422: Fix TBS redocly errors ([49e339d](https://github.com/team-telnyx/telnyx-ruby/commit/49e339d0493a68ce4979266585fdc4d98a70657e))
+* TELAPPS-47889 Add texml queue endpoint ([170c3af](https://github.com/team-telnyx/telnyx-ruby/commit/170c3af9c53a422262737b76a480da9e0ca68af7))
+* TELAPPS-5399 Add region to conference commands ([d07f3dd](https://github.com/team-telnyx/telnyx-ruby/commit/d07f3dd7b2534dc8b26813310ea7a27b51a39133))
+* TELAPPS-5428 Add speech-to-text WS endpoint ([f837656](https://github.com/team-telnyx/telnyx-ruby/commit/f83765613f160d800fd5bf887120f3724c88f716))
+* TELAPPS-5459: Add Azure to transcription start ([cca8694](https://github.com/team-telnyx/telnyx-ruby/commit/cca8694c97b0de562dd79b89a9add3620b2e00f0))
+* TELAPPS-ENGDESK-46395 Add keep_after_hangup to enqueue command ([3d54ab9](https://github.com/team-telnyx/telnyx-ruby/commit/3d54ab9752c4da1184c618507dbb9cad26f7dd00))
+* TELAPPS-ENGDESK-46395 Add PATCH /queues/{queue_name}/calls/{call_control_id} endpoint ([4f16724](https://github.com/team-telnyx/telnyx-ruby/commit/4f16724b5446edeb695a7c42798022d7b33c7541))
+* Updated README to include the step for make buildcontainer bundle to … ([e0b3883](https://github.com/team-telnyx/telnyx-ruby/commit/e0b38835bce90d81a79dff2e21c0b87cdabdeef0))
+
+
+### Bug Fixes
+
+* **api:** 10dlc prefixes ([37ef109](https://github.com/team-telnyx/telnyx-ruby/commit/37ef1093eccfad7531e10a77d10ce81a2fb57b7f))
+* better thread safety via early initializing SSL store during HTTP client creation ([cd8bee9](https://github.com/team-telnyx/telnyx-ruby/commit/cd8bee9b121154a0f39481ba827b248c5396473a))
+* calling `break` out of streams should be instantaneous ([b61f100](https://github.com/team-telnyx/telnyx-ruby/commit/b61f1009ba0b1e2e7fd2c4b6391ea960519a5708))
+* correct broken hyperlinks in Submit Campaign endpoint description ([5728466](https://github.com/team-telnyx/telnyx-ruby/commit/5728466acbb68f940c6449c188c4e2bc6134fcef))
+* issue where json.parse errors when receiving HTTP 204 with nobody ([5b8a416](https://github.com/team-telnyx/telnyx-ruby/commit/5b8a416d81d263eda8d1bb353a1d0cee2db54de5))
+* make text field optional in AssistantSmsChatReq schema ([d0ee8b6](https://github.com/team-telnyx/telnyx-ruby/commit/d0ee8b6822e0f6146b25320402a18601ab509b42))
+* **stainless:** fixes the messsages typo ([8075003](https://github.com/team-telnyx/telnyx-ruby/commit/80750035b2fd482f2675ba8dc4123f8372582ae7))
+
+
+### Chores
+
+* bump dependency version and update sorbet types ([f600282](https://github.com/team-telnyx/telnyx-ruby/commit/f6002821c98354d53f787be45c2ac608480867f4))
+* **client:** send user-agent header ([52f0f81](https://github.com/team-telnyx/telnyx-ruby/commit/52f0f8186138fea98e320020c5c2823ea1087117))
+* explicitly require "base64" gem ([f1e0809](https://github.com/team-telnyx/telnyx-ruby/commit/f1e0809eef83d19830af3e75263e35f408dbefc8))
+* **internal:** codegen related update ([27299b5](https://github.com/team-telnyx/telnyx-ruby/commit/27299b5405f8d3773ab4fa076dbb0bf82be22e74))
+* **internal:** codegen related update ([fcc9de5](https://github.com/team-telnyx/telnyx-ruby/commit/fcc9de5646cce4162d05ed2e297897925eb23c37))
+* move `cgi` into dependencies for ruby 4 ([433ceb5](https://github.com/team-telnyx/telnyx-ruby/commit/433ceb5f26e6d0358c3e90cb31643f2f5e1ad365))
+* Resolved all codegen errors ([cdc4f99](https://github.com/team-telnyx/telnyx-ruby/commit/cdc4f9937f9d3963bf36d32b4d47f9520b1fbbc8))
+
+
+### Documentation
+
+* prominently feature MCP server setup in root SDK readmes ([4478b46](https://github.com/team-telnyx/telnyx-ruby/commit/4478b4673962785b14f764f3fc14d2e6b0be5318))
+
 ## 4.4.0 (2025-10-27)
 
 Full Changelog: [v4.3.0...v4.4.0](https://github.com/team-telnyx/telnyx-ruby/compare/v4.3.0...v4.4.0)
