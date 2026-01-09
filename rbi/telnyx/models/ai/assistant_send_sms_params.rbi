@@ -16,9 +16,6 @@ module Telnyx
         attr_accessor :from
 
         sig { returns(String) }
-        attr_accessor :text
-
-        sig { returns(String) }
         attr_accessor :to
 
         sig do
@@ -50,10 +47,15 @@ module Telnyx
         sig { params(should_create_conversation: T::Boolean).void }
         attr_writer :should_create_conversation
 
+        sig { returns(T.nilable(String)) }
+        attr_reader :text
+
+        sig { params(text: String).void }
+        attr_writer :text
+
         sig do
           params(
             from: String,
-            text: String,
             to: String,
             conversation_metadata:
               T::Hash[
@@ -61,15 +63,16 @@ module Telnyx
                 Telnyx::AI::AssistantSendSMSParams::ConversationMetadata::Variants
               ],
             should_create_conversation: T::Boolean,
+            text: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
           from:,
-          text:,
           to:,
           conversation_metadata: nil,
           should_create_conversation: nil,
+          text: nil,
           request_options: {}
         )
         end
@@ -78,7 +81,6 @@ module Telnyx
           override.returns(
             {
               from: String,
-              text: String,
               to: String,
               conversation_metadata:
                 T::Hash[
@@ -86,6 +88,7 @@ module Telnyx
                   Telnyx::AI::AssistantSendSMSParams::ConversationMetadata::Variants
                 ],
               should_create_conversation: T::Boolean,
+              text: String,
               request_options: Telnyx::RequestOptions
             }
           )

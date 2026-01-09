@@ -300,7 +300,6 @@ module Telnyx
           params(
             assistant_id: String,
             from: String,
-            text: String,
             to: String,
             conversation_metadata:
               T::Hash[
@@ -308,16 +307,17 @@ module Telnyx
                 Telnyx::AI::AssistantSendSMSParams::ConversationMetadata::Variants
               ],
             should_create_conversation: T::Boolean,
+            text: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::AI::AssistantSendSMSResponse)
         end
         def send_sms(
           assistant_id,
           from:,
-          text:,
           to:,
           conversation_metadata: nil,
           should_create_conversation: nil,
+          text: nil,
           request_options: {}
         )
         end

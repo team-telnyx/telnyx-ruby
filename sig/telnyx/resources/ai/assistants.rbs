@@ -99,10 +99,10 @@ module Telnyx
         def send_sms: (
           String assistant_id,
           from: String,
-          text: String,
           to: String,
           ?conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::AssistantSendSMSParams::conversation_metadata],
           ?should_create_conversation: bool,
+          ?text: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::AI::AssistantSendSMSResponse
 

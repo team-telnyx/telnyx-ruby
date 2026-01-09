@@ -4,10 +4,10 @@ module Telnyx
       type assistant_send_sms_params =
         {
           from: String,
-          text: String,
           to: String,
           conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::AssistantSendSMSParams::conversation_metadata],
-          should_create_conversation: bool
+          should_create_conversation: bool,
+          text: String
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -16,8 +16,6 @@ module Telnyx
         include Telnyx::Internal::Type::RequestParameters
 
         attr_accessor from: String
-
-        attr_accessor text: String
 
         attr_accessor to: String
 
@@ -31,21 +29,25 @@ module Telnyx
 
         def should_create_conversation=: (bool) -> bool
 
+        attr_reader text: String?
+
+        def text=: (String) -> String
+
         def initialize: (
           from: String,
-          text: String,
           to: String,
           ?conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::AssistantSendSMSParams::conversation_metadata],
           ?should_create_conversation: bool,
+          ?text: String,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           from: String,
-          text: String,
           to: String,
           conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::AssistantSendSMSParams::conversation_metadata],
           should_create_conversation: bool,
+          text: String,
           request_options: Telnyx::RequestOptions
         }
 

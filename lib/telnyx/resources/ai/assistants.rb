@@ -309,14 +309,14 @@ module Telnyx
         # 4. Updates conversation metadata if provided
         # 5. Returns the conversation ID
         #
-        # @overload send_sms(assistant_id, from:, text:, to:, conversation_metadata: nil, should_create_conversation: nil, request_options: {})
+        # @overload send_sms(assistant_id, from:, to:, conversation_metadata: nil, should_create_conversation: nil, text: nil, request_options: {})
         #
         # @param assistant_id [String]
         # @param from [String]
-        # @param text [String]
         # @param to [String]
         # @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}]
         # @param should_create_conversation [Boolean]
+        # @param text [String]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::AssistantSendSMSResponse]
