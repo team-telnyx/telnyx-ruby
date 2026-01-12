@@ -40,10 +40,26 @@ module Telnyx
       end
       attr_writer :page
 
+      # Region where the conference data is located
+      sig do
+        returns(
+          T.nilable(Telnyx::ConferenceListParticipantsParams::Region::OrSymbol)
+        )
+      end
+      attr_reader :region
+
+      sig do
+        params(
+          region: Telnyx::ConferenceListParticipantsParams::Region::OrSymbol
+        ).void
+      end
+      attr_writer :region
+
       sig do
         params(
           filter: Telnyx::ConferenceListParticipantsParams::Filter::OrHash,
           page: Telnyx::ConferenceListParticipantsParams::Page::OrHash,
+          region: Telnyx::ConferenceListParticipantsParams::Region::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -54,6 +70,8 @@ module Telnyx
         # Consolidated page parameter (deepObject style). Originally: page[after],
         # page[before], page[limit], page[size], page[number]
         page: nil,
+        # Region where the conference data is located
+        region: nil,
         request_options: {}
       )
       end
@@ -63,6 +81,7 @@ module Telnyx
           {
             filter: Telnyx::ConferenceListParticipantsParams::Filter,
             page: Telnyx::ConferenceListParticipantsParams::Page,
+            region: Telnyx::ConferenceListParticipantsParams::Region::OrSymbol,
             request_options: Telnyx::RequestOptions
           }
         )
@@ -209,6 +228,48 @@ module Telnyx
           )
         end
         def to_hash
+        end
+      end
+
+      # Region where the conference data is located
+      module Region
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Telnyx::ConferenceListParticipantsParams::Region)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        AUSTRALIA =
+          T.let(
+            :Australia,
+            Telnyx::ConferenceListParticipantsParams::Region::TaggedSymbol
+          )
+        EUROPE =
+          T.let(
+            :Europe,
+            Telnyx::ConferenceListParticipantsParams::Region::TaggedSymbol
+          )
+        MIDDLE_EAST =
+          T.let(
+            :"Middle East",
+            Telnyx::ConferenceListParticipantsParams::Region::TaggedSymbol
+          )
+        US =
+          T.let(
+            :US,
+            Telnyx::ConferenceListParticipantsParams::Region::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Telnyx::ConferenceListParticipantsParams::Region::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
         end
       end
     end

@@ -15,7 +15,7 @@ module Telnyx
           #   Either a list of participant id to perform the action on, or the keyword "all"
           #   to perform the action on all participant.
           #
-          #   @return [Symbol, Array<String>, Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::Participants, nil]
+          #   @return [Symbol, Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::Participants::AllParticipants, Array<String>, nil]
           optional :participants, union: -> { Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants }
 
           # @!method initialize(exclude: nil, participants: nil)
@@ -24,7 +24,7 @@ module Telnyx
           #
           #   @param exclude [Array<String>] List of participant id to exclude from the action.
           #
-          #   @param participants [Symbol, Array<String>, Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::Participants] Either a list of participant id to perform the action on, or the keyword "all" t
+          #   @param participants [Symbol, Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::Participants::AllParticipants, Array<String>] Either a list of participant id to perform the action on, or the keyword "all" t
 
           # Either a list of participant id to perform the action on, or the keyword "all"
           # to perform the action on all participant.
@@ -33,24 +33,21 @@ module Telnyx
           module Participants
             extend Telnyx::Internal::Type::Union
 
-            variant const: -> { Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::Participants::ALL }
+            variant enum: -> { Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::AllParticipants }
 
             variant -> { Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::Participants::StringArray }
 
-            # @!method self.variants
-            #   @return [Array(Symbol, Array<String>)]
+            module AllParticipants
+              extend Telnyx::Internal::Type::Enum
 
-            define_sorbet_constant!(:Variants) do
-              T.type_alias do
-                T.any(Telnyx::Rooms::Sessions::ActionsParticipantsRequest::Participants::TaggedSymbol, T::Array[String])
-              end
+              ALL = :all
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
-            # @!group
-
-            ALL = :all
-
-            # @!endgroup
+            # @!method self.variants
+            #   @return [Array(Symbol, Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest::Participants::AllParticipants, Array<String>)]
 
             # @type [Telnyx::Internal::Type::Converter]
             StringArray = Telnyx::Internal::Type::ArrayOf[String]

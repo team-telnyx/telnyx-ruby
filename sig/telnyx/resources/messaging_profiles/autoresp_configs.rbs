@@ -39,7 +39,7 @@ module Telnyx
           String autoresp_cfg_id,
           profile_id: String,
           ?request_options: Telnyx::request_opts
-        ) -> top
+        ) -> String
 
         def initialize: (client: Telnyx::Client) -> void
       end

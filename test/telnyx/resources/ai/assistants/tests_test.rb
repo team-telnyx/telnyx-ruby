@@ -8,10 +8,13 @@ class Telnyx::Test::Resources::AI::Assistants::TestsTest < Telnyx::Test::Resourc
 
     response =
       @telnyx.ai.assistants.tests.create(
-        destination: "x",
-        instructions: "x",
-        name: "x",
-        rubric: [{criteria: "criteria", name: "name"}]
+        destination: "+15551234567",
+        instructions: "Act as a frustrated customer who received a damaged product. Ask for a refund and escalate if not satisfied with the initial response.",
+        name: "Customer Support Bot Test",
+        rubric: [
+          {criteria: "Assistant responds within 30 seconds", name: "Response Time"},
+          {criteria: "Provides correct product information", name: "Accuracy"}
+        ]
       )
 
     assert_pattern do
@@ -90,13 +93,28 @@ class Telnyx::Test::Resources::AI::Assistants::TestsTest < Telnyx::Test::Resourc
     response = @telnyx.ai.assistants.tests.list
 
     assert_pattern do
-      response => Telnyx::Models::AI::Assistants::TestListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::AI::Assistants::AssistantTest
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::AssistantTest]),
-        meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+      row => {
+        created_at: Time,
+        name: String,
+        rubric: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::AssistantTest::Rubric]),
+        telnyx_conversation_channel: Telnyx::AI::Assistants::TelnyxConversationChannel,
+        test_id: String,
+        description: String | nil,
+        destination: String | nil,
+        instructions: String | nil,
+        max_duration_seconds: Integer | nil,
+        test_suite: String | nil
       }
     end
   end
@@ -107,7 +125,7 @@ class Telnyx::Test::Resources::AI::Assistants::TestsTest < Telnyx::Test::Resourc
     response = @telnyx.ai.assistants.tests.delete("test_id")
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => nil
     end
   end
 end

@@ -39,6 +39,13 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :play_beep, Telnyx::Internal::Type::Boolean
 
+        # @!attribute region
+        #   Region where the conference data is located. Defaults to the region defined in
+        #   user's data locality settings (Europe or US).
+        #
+        #   @return [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Region, nil]
+        optional :region, enum: -> { Telnyx::Conferences::ActionRecordStartParams::Region }
+
         # @!attribute trim
         #   When set to `trim-silence`, silence will be removed from the beginning and end
         #   of the recording.
@@ -46,7 +53,7 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Trim, nil]
         optional :trim, enum: -> { Telnyx::Conferences::ActionRecordStartParams::Trim }
 
-        # @!method initialize(format_:, command_id: nil, custom_file_name: nil, play_beep: nil, trim: nil, request_options: {})
+        # @!method initialize(format_:, command_id: nil, custom_file_name: nil, play_beep: nil, region: nil, trim: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::ActionRecordStartParams} for more details.
         #
@@ -57,6 +64,8 @@ module Telnyx
         #   @param custom_file_name [String] The custom recording file name to be used instead of the default `call_leg_id`.
         #
         #   @param play_beep [Boolean] If enabled, a beep sound will be played at the start of a recording.
+        #
+        #   @param region [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Region] Region where the conference data is located. Defaults to the region defined in u
         #
         #   @param trim [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Trim] When set to `trim-silence`, silence will be removed from the beginning and end o
         #
@@ -69,6 +78,20 @@ module Telnyx
 
           WAV = :wav
           MP3 = :mp3
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Region where the conference data is located. Defaults to the region defined in
+        # user's data locality settings (Europe or US).
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          AUSTRALIA = :Australia
+          EUROPE = :Europe
+          MIDDLE_EAST = :"Middle East"
+          US = :US
 
           # @!method self.values
           #   @return [Array<Symbol>]

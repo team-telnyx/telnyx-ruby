@@ -144,7 +144,7 @@ module Telnyx
           type http =
             {
               request: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Request,
-              response: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response?
+              response: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response
             }
 
           class HTTP < Telnyx::Internal::Type::BaseModel
@@ -154,16 +154,20 @@ module Telnyx
               Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Request
             ) -> Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Request
 
-            attr_accessor response: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response?
+            attr_reader response: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response?
+
+            def response=: (
+              Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response
+            ) -> Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response
 
             def initialize: (
               ?request: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Request,
-              ?response: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response?
+              ?response: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response
             ) -> void
 
             def to_hash: -> {
               request: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Request,
-              response: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response?
+              response: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response
             }
 
             type request = { headers: ::Array[::Array[String]], url: String }
@@ -251,7 +255,7 @@ module Telnyx
             id: String,
             event_type: String,
             occurred_at: Time,
-            payload: top,
+            payload: ::Hash[Symbol, top],
             record_type: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Webhook::record_type
           }
 
@@ -268,9 +272,9 @@ module Telnyx
 
           def occurred_at=: (Time) -> Time
 
-          attr_reader payload: top?
+          attr_reader payload: ::Hash[Symbol, top]?
 
-          def payload=: (top) -> top
+          def payload=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
           attr_reader record_type: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Webhook::record_type?
 
@@ -282,7 +286,7 @@ module Telnyx
             ?id: String,
             ?event_type: String,
             ?occurred_at: Time,
-            ?payload: top,
+            ?payload: ::Hash[Symbol, top],
             ?record_type: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Webhook::record_type
           ) -> void
 
@@ -290,7 +294,7 @@ module Telnyx
             id: String,
             event_type: String,
             occurred_at: Time,
-            payload: top,
+            payload: ::Hash[Symbol, top],
             record_type: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Webhook::record_type
           }
 

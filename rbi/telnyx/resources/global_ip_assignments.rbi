@@ -5,22 +5,11 @@ module Telnyx
     class GlobalIPAssignments
       # Create a Global IP assignment.
       sig do
-        params(
-          global_ip_id: String,
-          is_in_maintenance: T::Boolean,
-          wireguard_peer_id: String,
-          request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::GlobalIPAssignmentCreateResponse)
+        params(request_options: Telnyx::RequestOptions::OrHash).returns(
+          Telnyx::Models::GlobalIPAssignmentCreateResponse
+        )
       end
-      def create(
-        # Global IP ID.
-        global_ip_id: nil,
-        # Enable/disable BGP announcement.
-        is_in_maintenance: nil,
-        # Wireguard peer ID.
-        wireguard_peer_id: nil,
-        request_options: {}
-      )
+      def create(request_options: {})
       end
 
       # Retrieve a Global IP assignment.
@@ -40,15 +29,16 @@ module Telnyx
       # Update a Global IP assignment.
       sig do
         params(
-          id: String,
-          body: Telnyx::GlobalIPAssignmentUpdateParams::Body::OrHash,
+          global_ip_assignment_id: String,
+          global_ip_assignment_update_request:
+            Telnyx::GlobalIPAssignmentUpdateParams::GlobalIPAssignmentUpdateRequest::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::GlobalIPAssignmentUpdateResponse)
       end
       def update(
         # Identifies the resource.
-        id,
-        body:,
+        global_ip_assignment_id,
+        global_ip_assignment_update_request:,
         request_options: {}
       )
       end
@@ -58,7 +48,9 @@ module Telnyx
         params(
           page: Telnyx::GlobalIPAssignmentListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::GlobalIPAssignmentListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[Telnyx::GlobalIPAssignment]
+        )
       end
       def list(
         # Consolidated page parameter (deepObject style). Originally: page[number],

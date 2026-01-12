@@ -14,7 +14,7 @@ module Telnyx
       # Consolidated filter parameter (deepObject style). Originally:
       # filter[conference_id], filter[created_at][gte], filter[created_at][lte],
       # filter[call_leg_id], filter[call_session_id], filter[from], filter[to],
-      # filter[connection_id]
+      # filter[connection_id], filter[sip_call_id]
       sig { returns(T.nilable(Telnyx::RecordingListParams::Filter)) }
       attr_reader :filter
 
@@ -40,7 +40,7 @@ module Telnyx
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[conference_id], filter[created_at][gte], filter[created_at][lte],
         # filter[call_leg_id], filter[call_session_id], filter[from], filter[to],
-        # filter[connection_id]
+        # filter[connection_id], filter[sip_call_id]
         filter: nil,
         # Consolidated page parameter (deepObject style). Originally: page[size],
         # page[number]
@@ -120,6 +120,14 @@ module Telnyx
         sig { params(from: String).void }
         attr_writer :from
 
+        # If present, recordings will be filtered to those with a matching `sip_call_id`
+        # attribute. Matching is case-sensitive
+        sig { returns(T.nilable(String)) }
+        attr_reader :sip_call_id
+
+        sig { params(sip_call_id: String).void }
+        attr_writer :sip_call_id
+
         # If present, recordings will be filtered to those with a matching `to` attribute
         # (case-sensitive).
         sig { returns(T.nilable(String)) }
@@ -131,7 +139,7 @@ module Telnyx
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[conference_id], filter[created_at][gte], filter[created_at][lte],
         # filter[call_leg_id], filter[call_session_id], filter[from], filter[to],
-        # filter[connection_id]
+        # filter[connection_id], filter[sip_call_id]
         sig do
           params(
             call_leg_id: String,
@@ -140,6 +148,7 @@ module Telnyx
             connection_id: String,
             created_at: Telnyx::RecordingListParams::Filter::CreatedAt::OrHash,
             from: String,
+            sip_call_id: String,
             to: String
           ).returns(T.attached_class)
         end
@@ -158,6 +167,9 @@ module Telnyx
           # If present, recordings will be filtered to those with a matching `from`
           # attribute (case-sensitive).
           from: nil,
+          # If present, recordings will be filtered to those with a matching `sip_call_id`
+          # attribute. Matching is case-sensitive
+          sip_call_id: nil,
           # If present, recordings will be filtered to those with a matching `to` attribute
           # (case-sensitive).
           to: nil
@@ -173,6 +185,7 @@ module Telnyx
               connection_id: String,
               created_at: Telnyx::RecordingListParams::Filter::CreatedAt,
               from: String,
+              sip_call_id: String,
               to: String
             }
           )

@@ -18,9 +18,12 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::AccessIPRangeListParams::Filter::OrHash,
-          page: Telnyx::AccessIPRangeListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::AccessIPRangeListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::AccessIPRange]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:
@@ -28,9 +31,8 @@ module Telnyx
         # filter[cidr_block][endswith], filter[cidr_block][contains], filter[created_at].
         # Supports complex bracket operations for dynamic filtering.
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end

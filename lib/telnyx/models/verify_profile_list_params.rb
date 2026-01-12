@@ -13,20 +13,22 @@ module Telnyx
       #   @return [Telnyx::Models::VerifyProfileListParams::Filter, nil]
       optional :filter, -> { Telnyx::VerifyProfileListParams::Filter }
 
-      # @!attribute page
-      #   Consolidated page parameter (deepObject style). Originally: page[size],
-      #   page[number]
+      # @!attribute page_number
       #
-      #   @return [Telnyx::Models::VerifyProfileListParams::Page, nil]
-      optional :page, -> { Telnyx::VerifyProfileListParams::Page }
+      #   @return [Integer, nil]
+      optional :page_number, Integer
 
-      # @!method initialize(filter: nil, page: nil, request_options: {})
-      #   Some parameter documentations has been truncated, see
-      #   {Telnyx::Models::VerifyProfileListParams} for more details.
+      # @!attribute page_size
       #
+      #   @return [Integer, nil]
+      optional :page_size, Integer
+
+      # @!method initialize(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #   @param filter [Telnyx::Models::VerifyProfileListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[name]
       #
-      #   @param page [Telnyx::Models::VerifyProfileListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+      #   @param page_number [Integer]
+      #
+      #   @param page_size [Integer]
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -41,25 +43,6 @@ module Telnyx
         #   Consolidated filter parameter (deepObject style). Originally: filter[name]
         #
         #   @param name [String] Optional filter for profile names.
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        # @!attribute number
-        #
-        #   @return [Integer, nil]
-        optional :number, Integer
-
-        # @!attribute size
-        #
-        #   @return [Integer, nil]
-        optional :size, Integer
-
-        # @!method initialize(number: nil, size: nil)
-        #   Consolidated page parameter (deepObject style). Originally: page[size],
-        #   page[number]
-        #
-        #   @param number [Integer]
-        #   @param size [Integer]
       end
     end
   end

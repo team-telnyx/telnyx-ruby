@@ -2,55 +2,69 @@ module Telnyx
   module Models
     type video_region =
       {
-        height: Integer?,
-        max_columns: Integer?,
-        max_rows: Integer?,
+        height: Integer,
+        max_columns: Integer,
+        max_rows: Integer,
         video_sources: ::Array[String],
-        width: Integer?,
-        x_pos: Integer?,
-        y_pos: Integer?,
-        z_pos: Integer?
+        width: Integer,
+        x_pos: Integer,
+        y_pos: Integer,
+        z_pos: Integer
       }
 
     class VideoRegion < Telnyx::Internal::Type::BaseModel
-      attr_accessor height: Integer?
+      attr_reader height: Integer?
 
-      attr_accessor max_columns: Integer?
+      def height=: (Integer) -> Integer
 
-      attr_accessor max_rows: Integer?
+      attr_reader max_columns: Integer?
+
+      def max_columns=: (Integer) -> Integer
+
+      attr_reader max_rows: Integer?
+
+      def max_rows=: (Integer) -> Integer
 
       attr_reader video_sources: ::Array[String]?
 
       def video_sources=: (::Array[String]) -> ::Array[String]
 
-      attr_accessor width: Integer?
+      attr_reader width: Integer?
 
-      attr_accessor x_pos: Integer?
+      def width=: (Integer) -> Integer
 
-      attr_accessor y_pos: Integer?
+      attr_reader x_pos: Integer?
 
-      attr_accessor z_pos: Integer?
+      def x_pos=: (Integer) -> Integer
+
+      attr_reader y_pos: Integer?
+
+      def y_pos=: (Integer) -> Integer
+
+      attr_reader z_pos: Integer?
+
+      def z_pos=: (Integer) -> Integer
 
       def initialize: (
-        ?height: Integer?,
-        ?max_columns: Integer?,
-        ?max_rows: Integer?,
+        ?height: Integer,
+        ?max_columns: Integer,
+        ?max_rows: Integer,
         ?video_sources: ::Array[String],
-        ?width: Integer?,
-        ?x_pos: Integer?,
-        ?y_pos: Integer?,
-        ?z_pos: Integer?
+        ?width: Integer,
+        ?x_pos: Integer,
+        ?y_pos: Integer,
+        ?z_pos: Integer
       ) -> void
 
       def to_hash: -> {
-        height: Integer?,
-        max_columns: Integer?,
-        max_rows: Integer?,
+        height: Integer,
+        max_columns: Integer,
+        max_rows: Integer,
         video_sources: ::Array[String],
-        width: Integer?,
-        x_pos: Integer?,
-        y_pos: Integer?,
-        z_pos: Integer?
+        width: Integer,
+        x_pos: Integer,
+        y_pos: Integer,
+        z_pos: Integer
       }
     end
   end

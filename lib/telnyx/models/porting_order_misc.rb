@@ -10,7 +10,7 @@ module Telnyx
       #   that account.
       #
       #   @return [String, nil]
-      optional :new_billing_phone_number, String
+      optional :new_billing_phone_number, String, nil?: true
 
       # @!attribute remaining_numbers_action
       #   Remaining numbers can be either kept with their current service provider or
@@ -18,7 +18,9 @@ module Telnyx
       #   'remaining_numbers_action' is 'keep'.
       #
       #   @return [Symbol, Telnyx::Models::PortingOrderMisc::RemainingNumbersAction, nil]
-      optional :remaining_numbers_action, enum: -> { Telnyx::PortingOrderMisc::RemainingNumbersAction }
+      optional :remaining_numbers_action,
+               enum: -> { Telnyx::PortingOrderMisc::RemainingNumbersAction },
+               nil?: true
 
       # @!attribute type
       #   A port can be either 'full' or 'partial'. When type is 'full' the other
@@ -31,9 +33,9 @@ module Telnyx
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::PortingOrderMisc} for more details.
       #
-      #   @param new_billing_phone_number [String] New billing phone number for the remaining numbers. Used in case the current bil
+      #   @param new_billing_phone_number [String, nil] New billing phone number for the remaining numbers. Used in case the current bil
       #
-      #   @param remaining_numbers_action [Symbol, Telnyx::Models::PortingOrderMisc::RemainingNumbersAction] Remaining numbers can be either kept with their current service provider or disc
+      #   @param remaining_numbers_action [Symbol, Telnyx::Models::PortingOrderMisc::RemainingNumbersAction, nil] Remaining numbers can be either kept with their current service provider or disc
       #
       #   @param type [Symbol, Telnyx::Models::PortingOrderType] A port can be either 'full' or 'partial'. When type is 'full' the other attribut
 

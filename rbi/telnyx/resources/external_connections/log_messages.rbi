@@ -29,7 +29,11 @@ module Telnyx
             page:
               Telnyx::ExternalConnections::LogMessageListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::ExternalConnections::LogMessageListResponse)
+          ).returns(
+            Telnyx::Internal::DefaultPaginationForLogMessages[
+              Telnyx::Models::ExternalConnections::LogMessageListResponse
+            ]
+          )
         end
         def list(
           # Filter parameter for log messages (deepObject style). Supports filtering by

@@ -14,7 +14,7 @@ module Telnyx
         imsi: String,
         msisdn: String,
         record_type: String,
-        resources_with_in_progress_actions: ::Array[top],
+        resources_with_in_progress_actions: ::Array[::Hash[Symbol, top]],
         sim_card_group_id: String,
         status: Telnyx::SimCardStatus,
         tags: ::Array[String],
@@ -82,9 +82,11 @@ module Telnyx
 
       def record_type=: (String) -> String
 
-      attr_reader resources_with_in_progress_actions: ::Array[top]?
+      attr_reader resources_with_in_progress_actions: ::Array[::Hash[Symbol, top]]?
 
-      def resources_with_in_progress_actions=: (::Array[top]) -> ::Array[top]
+      def resources_with_in_progress_actions=: (
+        ::Array[::Hash[Symbol, top]]
+      ) -> ::Array[::Hash[Symbol, top]]
 
       attr_reader type: Telnyx::Models::SimpleSimCard::type_?
 
@@ -113,7 +115,7 @@ module Telnyx
         ?imsi: String,
         ?msisdn: String,
         ?record_type: String,
-        ?resources_with_in_progress_actions: ::Array[top],
+        ?resources_with_in_progress_actions: ::Array[::Hash[Symbol, top]],
         ?sim_card_group_id: String,
         ?status: Telnyx::SimCardStatus,
         ?tags: ::Array[String],
@@ -135,7 +137,7 @@ module Telnyx
         imsi: String,
         msisdn: String,
         record_type: String,
-        resources_with_in_progress_actions: ::Array[top],
+        resources_with_in_progress_actions: ::Array[::Hash[Symbol, top]],
         sim_card_group_id: String,
         status: Telnyx::SimCardStatus,
         tags: ::Array[String],

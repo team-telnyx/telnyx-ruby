@@ -12,7 +12,7 @@ module Telnyx
           ?page: Telnyx::PhoneNumberBlocks::JobListParams::Page,
           ?sort: Telnyx::Models::PhoneNumberBlocks::JobListParams::sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::PhoneNumberBlocks::JobListResponse
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::PhoneNumberBlocks::Job]
 
         def delete_phone_number_block: (
           phone_number_block_id: String,

@@ -15,7 +15,9 @@ module Telnyx
                 managed_accounts: T::Array[String],
                 start_date: Date,
                 request_options: Telnyx::RequestOptions::OrHash
-              ).void
+              ).returns(
+                Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupCreateResponse
+              )
             end
             def create(
               # Type of aggregation for the report
@@ -35,20 +37,20 @@ module Telnyx
               params(
                 id: String,
                 request_options: Telnyx::RequestOptions::OrHash
-              ).void
+              ).returns(
+                Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse
+              )
             end
             def retrieve(id, request_options: {})
             end
 
             # Retrieve a paginated list of telco data usage reports
             sig do
-              params(
-                page: Integer,
-                per_page: Integer,
-                request_options: Telnyx::RequestOptions::OrHash
-              ).void
+              params(request_options: Telnyx::RequestOptions::OrHash).returns(
+                Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupListResponse
+              )
             end
-            def list(page: nil, per_page: nil, request_options: {})
+            def list(request_options: {})
             end
 
             # Delete a specific telco data usage report by its ID

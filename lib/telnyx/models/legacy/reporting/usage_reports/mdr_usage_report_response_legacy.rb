@@ -5,6 +5,7 @@ module Telnyx
     module Legacy
       module Reporting
         module UsageReports
+          # @see Telnyx::Resources::Legacy::Reporting::UsageReports::Messaging#list
           class MdrUsageReportResponseLegacy < Telnyx::Internal::Type::BaseModel
             # @!attribute id
             #   Identifies the resource
@@ -20,8 +21,8 @@ module Telnyx
 
             # @!attribute connections
             #
-            #   @return [Array<Integer>, nil]
-            optional :connections, Telnyx::Internal::Type::ArrayOf[Integer]
+            #   @return [Array<String>, nil]
+            optional :connections, Telnyx::Internal::Type::ArrayOf[String]
 
             # @!attribute created_at
             #
@@ -51,8 +52,8 @@ module Telnyx
 
             # @!attribute result
             #
-            #   @return [Object, nil]
-            optional :result, Telnyx::Internal::Type::Unknown
+            #   @return [Hash{Symbol=>Object}, nil]
+            optional :result, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
             # @!attribute start_time
             #
@@ -77,7 +78,7 @@ module Telnyx
             #
             #   @param aggregation_type [Integer] Aggregation type: No aggregation = 0, By Messaging Profile = 1, By Tags = 2
             #
-            #   @param connections [Array<Integer>]
+            #   @param connections [Array<String>]
             #
             #   @param created_at [Time]
             #
@@ -89,7 +90,7 @@ module Telnyx
             #
             #   @param report_url [String]
             #
-            #   @param result [Object]
+            #   @param result [Hash{Symbol=>Object}]
             #
             #   @param start_time [Time]
             #

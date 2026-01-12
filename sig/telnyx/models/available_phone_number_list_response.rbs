@@ -3,7 +3,8 @@ module Telnyx
     type available_phone_number_list_response =
       {
         data: ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data],
-        meta: Telnyx::Models::AvailablePhoneNumberListResponse::Meta
+        meta: Telnyx::AvailablePhoneNumbersMetadata,
+        metadata: Telnyx::AvailablePhoneNumbersMetadata
       }
 
     class AvailablePhoneNumberListResponse < Telnyx::Internal::Type::BaseModel
@@ -13,20 +14,28 @@ module Telnyx
         ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data]
       ) -> ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data]
 
-      attr_reader meta: Telnyx::Models::AvailablePhoneNumberListResponse::Meta?
+      attr_reader meta: Telnyx::AvailablePhoneNumbersMetadata?
 
       def meta=: (
-        Telnyx::Models::AvailablePhoneNumberListResponse::Meta
-      ) -> Telnyx::Models::AvailablePhoneNumberListResponse::Meta
+        Telnyx::AvailablePhoneNumbersMetadata
+      ) -> Telnyx::AvailablePhoneNumbersMetadata
+
+      attr_reader metadata: Telnyx::AvailablePhoneNumbersMetadata?
+
+      def metadata=: (
+        Telnyx::AvailablePhoneNumbersMetadata
+      ) -> Telnyx::AvailablePhoneNumbersMetadata
 
       def initialize: (
         ?data: ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data],
-        ?meta: Telnyx::Models::AvailablePhoneNumberListResponse::Meta
+        ?meta: Telnyx::AvailablePhoneNumbersMetadata,
+        ?metadata: Telnyx::AvailablePhoneNumbersMetadata
       ) -> void
 
       def to_hash: -> {
         data: ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data],
-        meta: Telnyx::Models::AvailablePhoneNumberListResponse::Meta
+        meta: Telnyx::AvailablePhoneNumbersMetadata,
+        metadata: Telnyx::AvailablePhoneNumbersMetadata
       }
 
       type data =
@@ -202,25 +211,6 @@ module Telnyx
             def self?.values: -> ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data::RegionInformation::region_type]
           end
         end
-      end
-
-      type meta = { best_effort_results: Integer, total_results: Integer }
-
-      class Meta < Telnyx::Internal::Type::BaseModel
-        attr_reader best_effort_results: Integer?
-
-        def best_effort_results=: (Integer) -> Integer
-
-        attr_reader total_results: Integer?
-
-        def total_results=: (Integer) -> Integer
-
-        def initialize: (
-          ?best_effort_results: Integer,
-          ?total_results: Integer
-        ) -> void
-
-        def to_hash: -> { best_effort_results: Integer, total_results: Integer }
       end
     end
   end

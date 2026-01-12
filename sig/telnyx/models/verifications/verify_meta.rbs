@@ -10,27 +10,19 @@ module Telnyx
         }
 
       class VerifyMeta < Telnyx::Internal::Type::BaseModel
-        attr_reader page_number: Integer?
+        attr_accessor page_number: Integer
 
-        def page_number=: (Integer) -> Integer
+        attr_accessor page_size: Integer
 
-        attr_reader page_size: Integer?
+        attr_accessor total_pages: Integer
 
-        def page_size=: (Integer) -> Integer
-
-        attr_reader total_pages: Integer?
-
-        def total_pages=: (Integer) -> Integer
-
-        attr_reader total_results: Integer?
-
-        def total_results=: (Integer) -> Integer
+        attr_accessor total_results: Integer
 
         def initialize: (
-          ?page_number: Integer,
-          ?page_size: Integer,
-          ?total_pages: Integer,
-          ?total_results: Integer
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
         ) -> void
 
         def to_hash: -> {

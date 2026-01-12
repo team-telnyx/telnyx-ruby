@@ -2,77 +2,70 @@ module Telnyx
   module Models
     type global_ip_list_response =
       {
-        data: ::Array[Telnyx::Models::GlobalIPListResponse::Data],
-        meta: Telnyx::PaginationMeta
+        id: String,
+        created_at: String,
+        record_type: String,
+        updated_at: String,
+        description: String,
+        ip_address: String,
+        name: String,
+        ports: ::Hash[Symbol, top]
       }
 
     class GlobalIPListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: ::Array[Telnyx::Models::GlobalIPListResponse::Data]?
+      attr_reader description: String?
 
-      def data=: (
-        ::Array[Telnyx::Models::GlobalIPListResponse::Data]
-      ) -> ::Array[Telnyx::Models::GlobalIPListResponse::Data]
+      def description=: (String) -> String
 
-      attr_reader meta: Telnyx::PaginationMeta?
+      attr_reader name: String?
 
-      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+      def name=: (String) -> String
+
+      attr_reader ports: ::Hash[Symbol, top]?
+
+      def ports=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      attr_reader ip_address: String?
+
+      def ip_address=: (String) -> String
 
       def initialize: (
-        ?data: ::Array[Telnyx::Models::GlobalIPListResponse::Data],
-        ?meta: Telnyx::PaginationMeta
+        ?id: String,
+        ?created_at: String,
+        ?record_type: String,
+        ?updated_at: String,
+        ?description: String,
+        ?ip_address: String,
+        ?name: String,
+        ?ports: ::Hash[Symbol, top]
       ) -> void
 
       def to_hash: -> {
-        data: ::Array[Telnyx::Models::GlobalIPListResponse::Data],
-        meta: Telnyx::PaginationMeta
+        id: String,
+        created_at: String,
+        record_type: String,
+        updated_at: String,
+        description: String,
+        ip_address: String,
+        name: String,
+        ports: ::Hash[Symbol, top]
       }
-
-      type data =
-        {
-          description: String,
-          ip_address: String,
-          name: String,
-          ports: ::Hash[Symbol, top],
-          record_type: String
-        }
-
-      class Data < Telnyx::Models::Record
-        def description: -> String?
-
-        def description=: (String _) -> String
-
-        def name: -> String?
-
-        def name=: (String _) -> String
-
-        def ports: -> ::Hash[Symbol, top]?
-
-        def ports=: (::Hash[Symbol, top] _) -> ::Hash[Symbol, top]
-
-        def ip_address: -> String?
-
-        def ip_address=: (String _) -> String
-
-        def record_type: -> String?
-
-        def record_type=: (String _) -> String
-
-        def initialize: (
-          ?description: String,
-          ?ip_address: String,
-          ?name: String,
-          ?ports: ::Hash[Symbol, top],
-          ?record_type: String
-        ) -> void
-
-        def to_hash: -> {
-          description: String,
-          ip_address: String,
-          name: String,
-          ports: ::Hash[Symbol, top],
-          record_type: String
-        }
-      end
     end
   end
 end

@@ -225,7 +225,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::MessagingTollfree::Verification::RequestListResponse]
+          # @return [Telnyx::Internal::DefaultPaginationForMessagingTollfree<Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus>]
           #
           # @see Telnyx::Models::MessagingTollfree::Verification::RequestListParams
           def list(params)
@@ -234,7 +234,8 @@ module Telnyx
               method: :get,
               path: "messaging_tollfree/verification/requests",
               query: parsed,
-              model: Telnyx::Models::MessagingTollfree::Verification::RequestListResponse,
+              page: Telnyx::Internal::DefaultPaginationForMessagingTollfree,
+              model: Telnyx::MessagingTollfree::Verification::VerificationRequestStatus,
               options: options
             )
           end
@@ -252,14 +253,14 @@ module Telnyx
           # @param id [String]
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Object]
+          # @return [nil]
           #
           # @see Telnyx::Models::MessagingTollfree::Verification::RequestDeleteParams
           def delete(id, params = {})
             @client.request(
               method: :delete,
               path: ["messaging_tollfree/verification/requests/%1$s", id],
-              model: Telnyx::Internal::Type::Unknown,
+              model: NilClass,
               options: params[:request_options]
             )
           end

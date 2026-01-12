@@ -10,9 +10,10 @@ module Telnyx
         ) -> Telnyx::Models::AI::ClusterRetrieveResponse
 
         def list: (
-          ?page: Telnyx::AI::ClusterListParams::Page,
+          ?page_number: Integer,
+          ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::AI::ClusterListResponse
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AI::ClusterListResponse]
 
         def delete: (
           String task_id,
@@ -32,7 +33,7 @@ module Telnyx
           String task_id,
           ?cluster_id: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> top
+        ) -> StringIO
 
         def initialize: (client: Telnyx::Client) -> void
       end

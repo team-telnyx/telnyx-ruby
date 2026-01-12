@@ -28,7 +28,7 @@ module Telnyx
       sig { params(network_id: String).void }
       attr_writer :network_id
 
-      # The region the interface should be deployed to.
+      # The region interface is deployed to.
       sig { returns(T.nilable(String)) }
       attr_reader :region_code
 
@@ -48,7 +48,7 @@ module Telnyx
         name: nil,
         # The id of the network associated with the interface.
         network_id: nil,
-        # The region the interface should be deployed to.
+        # The region interface is deployed to.
         region_code: nil,
         request_options: {}
       )

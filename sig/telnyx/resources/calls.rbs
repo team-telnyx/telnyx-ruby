@@ -37,6 +37,7 @@ module Telnyx
         ?sip_auth_password: String,
         ?sip_auth_username: String,
         ?sip_headers: ::Array[Telnyx::SipHeader],
+        ?sip_region: Telnyx::Models::CallDialParams::sip_region,
         ?sip_transport_protocol: Telnyx::Models::CallDialParams::sip_transport_protocol,
         ?sound_modifications: Telnyx::SoundModifications,
         ?stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,

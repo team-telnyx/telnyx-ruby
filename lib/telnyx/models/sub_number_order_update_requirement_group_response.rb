@@ -111,7 +111,7 @@ module Telnyx
           # @!attribute bundle_id
           #
           #   @return [String, nil]
-          optional :bundle_id, String
+          optional :bundle_id, String, nil?: true
 
           # @!attribute country_code
           #
@@ -156,7 +156,7 @@ module Telnyx
 
           # @!method initialize(id: nil, bundle_id: nil, country_code: nil, phone_number: nil, phone_number_type: nil, record_type: nil, regulatory_requirements: nil, requirements_met: nil, requirements_status: nil, status: nil)
           #   @param id [String]
-          #   @param bundle_id [String]
+          #   @param bundle_id [String, nil]
           #   @param country_code [String]
           #   @param phone_number [String]
           #   @param phone_number_type [String]

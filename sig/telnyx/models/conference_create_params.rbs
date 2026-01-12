@@ -12,6 +12,7 @@ module Telnyx
         hold_audio_url: String,
         hold_media_name: String,
         max_participants: Integer,
+        region: Telnyx::Models::ConferenceCreateParams::region,
         start_conference_on_create: bool
       }
       & Telnyx::Internal::Type::request_parameters
@@ -58,6 +59,12 @@ module Telnyx
 
       def max_participants=: (Integer) -> Integer
 
+      attr_reader region: Telnyx::Models::ConferenceCreateParams::region?
+
+      def region=: (
+        Telnyx::Models::ConferenceCreateParams::region
+      ) -> Telnyx::Models::ConferenceCreateParams::region
+
       attr_reader start_conference_on_create: bool?
 
       def start_conference_on_create=: (bool) -> bool
@@ -73,6 +80,7 @@ module Telnyx
         ?hold_audio_url: String,
         ?hold_media_name: String,
         ?max_participants: Integer,
+        ?region: Telnyx::Models::ConferenceCreateParams::region,
         ?start_conference_on_create: bool,
         ?request_options: Telnyx::request_opts
       ) -> void
@@ -88,6 +96,7 @@ module Telnyx
         hold_audio_url: String,
         hold_media_name: String,
         max_participants: Integer,
+        region: Telnyx::Models::ConferenceCreateParams::region,
         start_conference_on_create: bool,
         request_options: Telnyx::RequestOptions
       }
@@ -103,6 +112,19 @@ module Telnyx
         ON_EXIT: :on_exit
 
         def self?.values: -> ::Array[Telnyx::Models::ConferenceCreateParams::beep_enabled]
+      end
+
+      type region = :Australia | :Europe | :"Middle East" | :US
+
+      module Region
+        extend Telnyx::Internal::Type::Enum
+
+        AUSTRALIA: :Australia
+        EUROPE: :Europe
+        MIDDLE_EAST: :"Middle East"
+        US: :US
+
+        def self?.values: -> ::Array[Telnyx::Models::ConferenceCreateParams::region]
       end
     end
   end

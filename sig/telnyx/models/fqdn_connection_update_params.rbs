@@ -5,6 +5,7 @@ module Telnyx
         active: bool,
         anchorsite_override: Telnyx::Models::anchorsite_override,
         android_push_credential_id: String?,
+        call_cost_in_webhooks: bool,
         connection_name: String,
         default_on_hold_comfort_noise_enabled: bool,
         dtmf_type: Telnyx::Models::dtmf_type,
@@ -12,6 +13,8 @@ module Telnyx
         encrypted_media: Telnyx::Models::encrypted_media?,
         inbound: Telnyx::InboundFqdn,
         ios_push_credential_id: String?,
+        noise_suppression: Telnyx::Models::FqdnConnectionUpdateParams::noise_suppression,
+        noise_suppression_details: Telnyx::FqdnConnectionUpdateParams::NoiseSuppressionDetails,
         :onnet_t38_passthrough_enabled => bool,
         outbound: Telnyx::OutboundFqdn,
         rtcp_settings: Telnyx::ConnectionRtcpSettings,
@@ -40,6 +43,10 @@ module Telnyx
 
       attr_accessor android_push_credential_id: String?
 
+      attr_reader call_cost_in_webhooks: bool?
+
+      def call_cost_in_webhooks=: (bool) -> bool
+
       attr_reader connection_name: String?
 
       def connection_name=: (String) -> String
@@ -63,6 +70,18 @@ module Telnyx
       def inbound=: (Telnyx::InboundFqdn) -> Telnyx::InboundFqdn
 
       attr_accessor ios_push_credential_id: String?
+
+      attr_reader noise_suppression: Telnyx::Models::FqdnConnectionUpdateParams::noise_suppression?
+
+      def noise_suppression=: (
+        Telnyx::Models::FqdnConnectionUpdateParams::noise_suppression
+      ) -> Telnyx::Models::FqdnConnectionUpdateParams::noise_suppression
+
+      attr_reader noise_suppression_details: Telnyx::FqdnConnectionUpdateParams::NoiseSuppressionDetails?
+
+      def noise_suppression_details=: (
+        Telnyx::FqdnConnectionUpdateParams::NoiseSuppressionDetails
+      ) -> Telnyx::FqdnConnectionUpdateParams::NoiseSuppressionDetails
 
       attr_reader onnet_t38_passthrough_enabled: bool?
 
@@ -106,6 +125,7 @@ module Telnyx
         ?active: bool,
         ?anchorsite_override: Telnyx::Models::anchorsite_override,
         ?android_push_credential_id: String?,
+        ?call_cost_in_webhooks: bool,
         ?connection_name: String,
         ?default_on_hold_comfort_noise_enabled: bool,
         ?dtmf_type: Telnyx::Models::dtmf_type,
@@ -113,6 +133,8 @@ module Telnyx
         ?encrypted_media: Telnyx::Models::encrypted_media?,
         ?inbound: Telnyx::InboundFqdn,
         ?ios_push_credential_id: String?,
+        ?noise_suppression: Telnyx::Models::FqdnConnectionUpdateParams::noise_suppression,
+        ?noise_suppression_details: Telnyx::FqdnConnectionUpdateParams::NoiseSuppressionDetails,
         ?onnet_t38_passthrough_enabled: bool,
         ?outbound: Telnyx::OutboundFqdn,
         ?rtcp_settings: Telnyx::ConnectionRtcpSettings,
@@ -129,6 +151,7 @@ module Telnyx
         active: bool,
         anchorsite_override: Telnyx::Models::anchorsite_override,
         android_push_credential_id: String?,
+        call_cost_in_webhooks: bool,
         connection_name: String,
         default_on_hold_comfort_noise_enabled: bool,
         dtmf_type: Telnyx::Models::dtmf_type,
@@ -136,6 +159,8 @@ module Telnyx
         encrypted_media: Telnyx::Models::encrypted_media?,
         inbound: Telnyx::InboundFqdn,
         ios_push_credential_id: String?,
+        noise_suppression: Telnyx::Models::FqdnConnectionUpdateParams::noise_suppression,
+        noise_suppression_details: Telnyx::FqdnConnectionUpdateParams::NoiseSuppressionDetails,
         :onnet_t38_passthrough_enabled => bool,
         outbound: Telnyx::OutboundFqdn,
         rtcp_settings: Telnyx::ConnectionRtcpSettings,
@@ -147,6 +172,70 @@ module Telnyx
         webhook_timeout_secs: Integer?,
         request_options: Telnyx::RequestOptions
       }
+
+      type noise_suppression = :inbound | :outbound | :both | :disabled
+
+      module NoiseSuppression
+        extend Telnyx::Internal::Type::Enum
+
+        INBOUND: :inbound
+        OUTBOUND: :outbound
+        BOTH: :both
+        DISABLED: :disabled
+
+        def self?.values: -> ::Array[Telnyx::Models::FqdnConnectionUpdateParams::noise_suppression]
+      end
+
+      type noise_suppression_details =
+        {
+          attenuation_limit: Integer,
+          engine: Telnyx::Models::FqdnConnectionUpdateParams::NoiseSuppressionDetails::engine
+        }
+
+      class NoiseSuppressionDetails < Telnyx::Internal::Type::BaseModel
+        attr_reader attenuation_limit: Integer?
+
+        def attenuation_limit=: (Integer) -> Integer
+
+        attr_reader engine: Telnyx::Models::FqdnConnectionUpdateParams::NoiseSuppressionDetails::engine?
+
+        def engine=: (
+          Telnyx::Models::FqdnConnectionUpdateParams::NoiseSuppressionDetails::engine
+        ) -> Telnyx::Models::FqdnConnectionUpdateParams::NoiseSuppressionDetails::engine
+
+        def initialize: (
+          ?attenuation_limit: Integer,
+          ?engine: Telnyx::Models::FqdnConnectionUpdateParams::NoiseSuppressionDetails::engine
+        ) -> void
+
+        def to_hash: -> {
+          attenuation_limit: Integer,
+          engine: Telnyx::Models::FqdnConnectionUpdateParams::NoiseSuppressionDetails::engine
+        }
+
+        type engine =
+          :denoiser
+          | :deep_filter_net
+          | :deep_filter_net_large
+          | :krisp_viva_tel
+          | :krisp_viva_tel_lite
+          | :krisp_viva_promodel
+          | :krisp_viva_ss
+
+        module Engine
+          extend Telnyx::Internal::Type::Enum
+
+          DENOISER: :denoiser
+          DEEP_FILTER_NET: :deep_filter_net
+          DEEP_FILTER_NET_LARGE: :deep_filter_net_large
+          KRISP_VIVA_TEL: :krisp_viva_tel
+          KRISP_VIVA_TEL_LITE: :krisp_viva_tel_lite
+          KRISP_VIVA_PROMODEL: :krisp_viva_promodel
+          KRISP_VIVA_SS: :krisp_viva_ss
+
+          def self?.values: -> ::Array[Telnyx::Models::FqdnConnectionUpdateParams::NoiseSuppressionDetails::engine]
+        end
+      end
     end
   end
 end

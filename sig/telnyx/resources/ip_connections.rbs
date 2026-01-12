@@ -5,6 +5,7 @@ module Telnyx
         ?active: bool,
         ?anchorsite_override: Telnyx::Models::anchorsite_override,
         ?android_push_credential_id: String?,
+        ?call_cost_in_webhooks: bool,
         ?connection_name: String,
         ?default_on_hold_comfort_noise_enabled: bool,
         ?dtmf_type: Telnyx::Models::dtmf_type,
@@ -12,6 +13,8 @@ module Telnyx
         ?encrypted_media: Telnyx::Models::encrypted_media?,
         ?inbound: Telnyx::IPConnectionCreateParams::Inbound,
         ?ios_push_credential_id: String?,
+        ?noise_suppression: Telnyx::Models::IPConnectionCreateParams::noise_suppression,
+        ?noise_suppression_details: Telnyx::IPConnectionCreateParams::NoiseSuppressionDetails,
         ?onnet_t38_passthrough_enabled: bool,
         ?outbound: Telnyx::OutboundIP,
         ?rtcp_settings: Telnyx::ConnectionRtcpSettings,
@@ -34,6 +37,7 @@ module Telnyx
         ?active: bool,
         ?anchorsite_override: Telnyx::Models::anchorsite_override,
         ?android_push_credential_id: String?,
+        ?call_cost_in_webhooks: bool,
         ?connection_name: String,
         ?default_on_hold_comfort_noise_enabled: bool,
         ?dtmf_type: Telnyx::Models::dtmf_type,
@@ -41,6 +45,8 @@ module Telnyx
         ?encrypted_media: Telnyx::Models::encrypted_media?,
         ?inbound: Telnyx::InboundIP,
         ?ios_push_credential_id: String?,
+        ?noise_suppression: Telnyx::Models::IPConnectionUpdateParams::noise_suppression,
+        ?noise_suppression_details: Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails,
         ?onnet_t38_passthrough_enabled: bool,
         ?outbound: Telnyx::OutboundIP,
         ?rtcp_settings: Telnyx::ConnectionRtcpSettings,
@@ -58,7 +64,7 @@ module Telnyx
         ?page: Telnyx::IPConnectionListParams::Page,
         ?sort: Telnyx::Models::IPConnectionListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::IPConnectionListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::IPConnection]
 
       def delete: (
         String id,

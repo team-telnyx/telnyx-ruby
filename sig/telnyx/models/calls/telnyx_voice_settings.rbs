@@ -1,16 +1,38 @@
 module Telnyx
   module Models
     module Calls
-      type telnyx_voice_settings = { voice_speed: Float }
+      type telnyx_voice_settings =
+        {
+          type: Telnyx::Models::Calls::TelnyxVoiceSettings::type_,
+          voice_speed: Float
+        }
 
       class TelnyxVoiceSettings < Telnyx::Internal::Type::BaseModel
+        attr_accessor type: Telnyx::Models::Calls::TelnyxVoiceSettings::type_
+
         attr_reader voice_speed: Float?
 
         def voice_speed=: (Float) -> Float
 
-        def initialize: (?voice_speed: Float) -> void
+        def initialize: (
+          type: Telnyx::Models::Calls::TelnyxVoiceSettings::type_,
+          ?voice_speed: Float
+        ) -> void
 
-        def to_hash: -> { voice_speed: Float }
+        def to_hash: -> {
+          type: Telnyx::Models::Calls::TelnyxVoiceSettings::type_,
+          voice_speed: Float
+        }
+
+        type type_ = :telnyx
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          TELNYX: :telnyx
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::TelnyxVoiceSettings::type_]
+        end
       end
     end
   end

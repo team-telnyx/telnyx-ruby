@@ -36,15 +36,61 @@ module Telnyx
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
       class Filter < Telnyx::Internal::Type::BaseModel
-        # @!attribute address
+        # @!attribute address_administrative_area
+        #   Filter by state or province where the address is located.
         #
-        #   @return [Telnyx::Models::SimCardOrderListParams::Filter::Address, nil]
-        optional :address, -> { Telnyx::SimCardOrderListParams::Filter::Address }
+        #   @return [String, nil]
+        optional :address_administrative_area, String, api_name: :"address.administrative_area"
 
-        # @!attribute cost
+        # @!attribute address_country_code
+        #   Filter by the mobile operator two-character (ISO 3166-1 alpha-2) origin country
+        #   code.
         #
-        #   @return [Telnyx::Models::SimCardOrderListParams::Filter::Cost, nil]
-        optional :cost, -> { Telnyx::SimCardOrderListParams::Filter::Cost }
+        #   @return [String, nil]
+        optional :address_country_code, String, api_name: :"address.country_code"
+
+        # @!attribute address_extended_address
+        #   Returns entries with matching name of the supplemental field for address
+        #   information.
+        #
+        #   @return [String, nil]
+        optional :address_extended_address, String, api_name: :"address.extended_address"
+
+        # @!attribute address_id
+        #   Uniquely identifies the address for the order.
+        #
+        #   @return [String, nil]
+        optional :address_id, String, api_name: :"address.id"
+
+        # @!attribute address_locality
+        #   Filter by the name of the city where the address is located.
+        #
+        #   @return [String, nil]
+        optional :address_locality, String, api_name: :"address.locality"
+
+        # @!attribute address_postal_code
+        #   Filter by postal code for the address.
+        #
+        #   @return [String, nil]
+        optional :address_postal_code, String, api_name: :"address.postal_code"
+
+        # @!attribute address_street_address
+        #   Returns entries with matching name of the street where the address is located.
+        #
+        #   @return [String, nil]
+        optional :address_street_address, String, api_name: :"address.street_address"
+
+        # @!attribute cost_amount
+        #   The total monetary amount of the order.
+        #
+        #   @return [String, nil]
+        optional :cost_amount, String, api_name: :"cost.amount"
+
+        # @!attribute cost_currency
+        #   Filter by ISO 4217 currency string.
+        #
+        #   @return [String, nil]
+        optional :cost_currency, String, api_name: :"cost.currency"
 
         # @!attribute created_at
         #   Filter by ISO 8601 formatted date-time string matching resource creation
@@ -66,7 +112,7 @@ module Telnyx
         #   @return [Time, nil]
         optional :updated_at, Time
 
-        # @!method initialize(address: nil, cost: nil, created_at: nil, quantity: nil, updated_at: nil)
+        # @!method initialize(address_administrative_area: nil, address_country_code: nil, address_extended_address: nil, address_id: nil, address_locality: nil, address_postal_code: nil, address_street_address: nil, cost_amount: nil, cost_currency: nil, created_at: nil, quantity: nil, updated_at: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::SimCardOrderListParams::Filter} for more details.
         #
@@ -77,100 +123,29 @@ module Telnyx
         #   filter[address.locality], filter[address.administrative_area],
         #   filter[address.country_code], filter[address.postal_code]
         #
-        #   @param address [Telnyx::Models::SimCardOrderListParams::Filter::Address]
+        #   @param address_administrative_area [String] Filter by state or province where the address is located.
         #
-        #   @param cost [Telnyx::Models::SimCardOrderListParams::Filter::Cost]
+        #   @param address_country_code [String] Filter by the mobile operator two-character (ISO 3166-1 alpha-2) origin country
+        #
+        #   @param address_extended_address [String] Returns entries with matching name of the supplemental field for address informa
+        #
+        #   @param address_id [String] Uniquely identifies the address for the order.
+        #
+        #   @param address_locality [String] Filter by the name of the city where the address is located.
+        #
+        #   @param address_postal_code [String] Filter by postal code for the address.
+        #
+        #   @param address_street_address [String] Returns entries with matching name of the street where the address is located.
+        #
+        #   @param cost_amount [String] The total monetary amount of the order.
+        #
+        #   @param cost_currency [String] Filter by ISO 4217 currency string.
         #
         #   @param created_at [Time] Filter by ISO 8601 formatted date-time string matching resource creation date-ti
         #
         #   @param quantity [Integer] Filter orders by how many SIM cards were ordered.
         #
         #   @param updated_at [Time] Filter by ISO 8601 formatted date-time string matching resource last update date
-
-        # @see Telnyx::Models::SimCardOrderListParams::Filter#address
-        class Address < Telnyx::Internal::Type::BaseModel
-          # @!attribute id
-          #   Uniquely identifies the address for the order.
-          #
-          #   @return [String, nil]
-          optional :id, String
-
-          # @!attribute administrative_area
-          #   Filter by state or province where the address is located.
-          #
-          #   @return [String, nil]
-          optional :administrative_area, String
-
-          # @!attribute country_code
-          #   Filter by the mobile operator two-character (ISO 3166-1 alpha-2) origin country
-          #   code.
-          #
-          #   @return [String, nil]
-          optional :country_code, String
-
-          # @!attribute extended_address
-          #   Returns entries with matching name of the supplemental field for address
-          #   information.
-          #
-          #   @return [String, nil]
-          optional :extended_address, String
-
-          # @!attribute locality
-          #   Filter by the name of the city where the address is located.
-          #
-          #   @return [String, nil]
-          optional :locality, String
-
-          # @!attribute postal_code
-          #   Filter by postal code for the address.
-          #
-          #   @return [String, nil]
-          optional :postal_code, String
-
-          # @!attribute street_address
-          #   Returns entries with matching name of the street where the address is located.
-          #
-          #   @return [String, nil]
-          optional :street_address, String
-
-          # @!method initialize(id: nil, administrative_area: nil, country_code: nil, extended_address: nil, locality: nil, postal_code: nil, street_address: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::SimCardOrderListParams::Filter::Address} for more details.
-          #
-          #   @param id [String] Uniquely identifies the address for the order.
-          #
-          #   @param administrative_area [String] Filter by state or province where the address is located.
-          #
-          #   @param country_code [String] Filter by the mobile operator two-character (ISO 3166-1 alpha-2) origin country
-          #
-          #   @param extended_address [String] Returns entries with matching name of the supplemental field for address informa
-          #
-          #   @param locality [String] Filter by the name of the city where the address is located.
-          #
-          #   @param postal_code [String] Filter by postal code for the address.
-          #
-          #   @param street_address [String] Returns entries with matching name of the street where the address is located.
-        end
-
-        # @see Telnyx::Models::SimCardOrderListParams::Filter#cost
-        class Cost < Telnyx::Internal::Type::BaseModel
-          # @!attribute amount
-          #   The total monetary amount of the order.
-          #
-          #   @return [String, nil]
-          optional :amount, String
-
-          # @!attribute currency
-          #   Filter by ISO 4217 currency string.
-          #
-          #   @return [String, nil]
-          optional :currency, String
-
-          # @!method initialize(amount: nil, currency: nil)
-          #   @param amount [String] The total monetary amount of the order.
-          #
-          #   @param currency [String] Filter by ISO 4217 currency string.
-        end
       end
 
       class Page < Telnyx::Internal::Type::BaseModel

@@ -3,8 +3,7 @@
 module Telnyx
   module Models
     module MessagingProfiles
-      AutorespConfigDeleteResponse =
-        T.let(T.anything, Telnyx::Internal::Type::Converter)
+      AutorespConfigDeleteResponse = String
     end
   end
 end

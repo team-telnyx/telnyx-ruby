@@ -1,0 +1,30 @@
+module Telnyx
+  module Models
+    module Legacy
+      module Reporting
+        module UsageReports
+          type number_lookup_create_response =
+            {
+              data: Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse
+            }
+
+          class NumberLookupCreateResponse < Telnyx::Internal::Type::BaseModel
+            attr_reader data: Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse?
+
+            def data=: (
+              Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse
+            ) -> Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse
+
+            def initialize: (
+              ?data: Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse
+            ) -> void
+
+            def to_hash: -> {
+              data: Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse
+            }
+          end
+        end
+      end
+    end
+  end
+end

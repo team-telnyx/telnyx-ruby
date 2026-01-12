@@ -41,13 +41,22 @@ class Telnyx::Test::Resources::PhoneNumbers::CsvDownloadsTest < Telnyx::Test::Re
     response = @telnyx.phone_numbers.csv_downloads.list
 
     assert_pattern do
-      response => Telnyx::Models::PhoneNumbers::CsvDownloadListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::PhoneNumbers::CsvDownload
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::CsvDownload]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        record_type: String | nil,
+        status: Telnyx::PhoneNumbers::CsvDownload::Status | nil,
+        url: String | nil
       }
     end
   end

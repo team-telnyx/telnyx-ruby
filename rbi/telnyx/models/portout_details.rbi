@@ -109,10 +109,7 @@ module Telnyx
       # The reason why the order is being rejected by the user. If the order is
       # authorized, this field can be left null
       sig { returns(T.nilable(String)) }
-      attr_reader :reason
-
-      sig { params(reason: String).void }
-      attr_writer :reason
+      attr_accessor :reason
 
       # The rejection code for one of the valid rejections to reject a port out order
       sig { returns(T.nilable(Integer)) }
@@ -214,7 +211,7 @@ module Telnyx
           lsr: T::Array[String],
           phone_numbers: T::Array[String],
           pon: String,
-          reason: String,
+          reason: T.nilable(String),
           record_type: String,
           rejection_code: Integer,
           requested_foc_date: String,
@@ -305,7 +302,7 @@ module Telnyx
             lsr: T::Array[String],
             phone_numbers: T::Array[String],
             pon: String,
-            reason: String,
+            reason: T.nilable(String),
             record_type: String,
             rejection_code: Integer,
             requested_foc_date: String,

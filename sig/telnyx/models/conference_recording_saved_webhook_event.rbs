@@ -81,7 +81,7 @@ module Telnyx
             client_state: String,
             conference_id: String,
             connection_id: String,
-            format_: Telnyx::Models::ConferenceRecordingSavedWebhookEvent::Data::Payload::format_,
+            file_format: Telnyx::Models::ConferenceRecordingSavedWebhookEvent::Data::Payload::format_,
             public_recording_urls: Telnyx::ConferenceRecordingSavedWebhookEvent::Data::Payload::PublicRecordingURLs,
             recording_ended_at: Time,
             recording_id: String,
@@ -116,9 +116,9 @@ module Telnyx
 
           def connection_id=: (String) -> String
 
-          attr_reader format_: Telnyx::Models::ConferenceRecordingSavedWebhookEvent::Data::Payload::format_?
+          attr_reader file_format: Telnyx::Models::ConferenceRecordingSavedWebhookEvent::Data::Payload::format_?
 
-          def format_=: (
+          def file_format=: (
             Telnyx::Models::ConferenceRecordingSavedWebhookEvent::Data::Payload::format_
           ) -> Telnyx::Models::ConferenceRecordingSavedWebhookEvent::Data::Payload::format_
 
@@ -153,7 +153,7 @@ module Telnyx
             ?client_state: String,
             ?conference_id: String,
             ?connection_id: String,
-            ?format_: Telnyx::Models::ConferenceRecordingSavedWebhookEvent::Data::Payload::format_,
+            ?file_format: Telnyx::Models::ConferenceRecordingSavedWebhookEvent::Data::Payload::format_,
             ?public_recording_urls: Telnyx::ConferenceRecordingSavedWebhookEvent::Data::Payload::PublicRecordingURLs,
             ?recording_ended_at: Time,
             ?recording_id: String,
@@ -168,7 +168,7 @@ module Telnyx
             client_state: String,
             conference_id: String,
             connection_id: String,
-            format_: Telnyx::Models::ConferenceRecordingSavedWebhookEvent::Data::Payload::format_,
+            file_format: Telnyx::Models::ConferenceRecordingSavedWebhookEvent::Data::Payload::format_,
             public_recording_urls: Telnyx::ConferenceRecordingSavedWebhookEvent::Data::Payload::PublicRecordingURLs,
             recording_ended_at: Time,
             recording_id: String,

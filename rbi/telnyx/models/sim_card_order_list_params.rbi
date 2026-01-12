@@ -76,27 +76,70 @@ module Telnyx
             )
           end
 
-        sig do
-          returns(T.nilable(Telnyx::SimCardOrderListParams::Filter::Address))
-        end
-        attr_reader :address
+        # Filter by state or province where the address is located.
+        sig { returns(T.nilable(String)) }
+        attr_reader :address_administrative_area
 
-        sig do
-          params(
-            address: Telnyx::SimCardOrderListParams::Filter::Address::OrHash
-          ).void
-        end
-        attr_writer :address
+        sig { params(address_administrative_area: String).void }
+        attr_writer :address_administrative_area
 
-        sig { returns(T.nilable(Telnyx::SimCardOrderListParams::Filter::Cost)) }
-        attr_reader :cost
+        # Filter by the mobile operator two-character (ISO 3166-1 alpha-2) origin country
+        # code.
+        sig { returns(T.nilable(String)) }
+        attr_reader :address_country_code
 
-        sig do
-          params(
-            cost: Telnyx::SimCardOrderListParams::Filter::Cost::OrHash
-          ).void
-        end
-        attr_writer :cost
+        sig { params(address_country_code: String).void }
+        attr_writer :address_country_code
+
+        # Returns entries with matching name of the supplemental field for address
+        # information.
+        sig { returns(T.nilable(String)) }
+        attr_reader :address_extended_address
+
+        sig { params(address_extended_address: String).void }
+        attr_writer :address_extended_address
+
+        # Uniquely identifies the address for the order.
+        sig { returns(T.nilable(String)) }
+        attr_reader :address_id
+
+        sig { params(address_id: String).void }
+        attr_writer :address_id
+
+        # Filter by the name of the city where the address is located.
+        sig { returns(T.nilable(String)) }
+        attr_reader :address_locality
+
+        sig { params(address_locality: String).void }
+        attr_writer :address_locality
+
+        # Filter by postal code for the address.
+        sig { returns(T.nilable(String)) }
+        attr_reader :address_postal_code
+
+        sig { params(address_postal_code: String).void }
+        attr_writer :address_postal_code
+
+        # Returns entries with matching name of the street where the address is located.
+        sig { returns(T.nilable(String)) }
+        attr_reader :address_street_address
+
+        sig { params(address_street_address: String).void }
+        attr_writer :address_street_address
+
+        # The total monetary amount of the order.
+        sig { returns(T.nilable(String)) }
+        attr_reader :cost_amount
+
+        sig { params(cost_amount: String).void }
+        attr_writer :cost_amount
+
+        # Filter by ISO 4217 currency string.
+        sig { returns(T.nilable(String)) }
+        attr_reader :cost_currency
+
+        sig { params(cost_currency: String).void }
+        attr_writer :cost_currency
 
         # Filter by ISO 8601 formatted date-time string matching resource creation
         # date-time.
@@ -129,16 +172,41 @@ module Telnyx
         # filter[address.country_code], filter[address.postal_code]
         sig do
           params(
-            address: Telnyx::SimCardOrderListParams::Filter::Address::OrHash,
-            cost: Telnyx::SimCardOrderListParams::Filter::Cost::OrHash,
+            address_administrative_area: String,
+            address_country_code: String,
+            address_extended_address: String,
+            address_id: String,
+            address_locality: String,
+            address_postal_code: String,
+            address_street_address: String,
+            cost_amount: String,
+            cost_currency: String,
             created_at: Time,
             quantity: Integer,
             updated_at: Time
           ).returns(T.attached_class)
         end
         def self.new(
-          address: nil,
-          cost: nil,
+          # Filter by state or province where the address is located.
+          address_administrative_area: nil,
+          # Filter by the mobile operator two-character (ISO 3166-1 alpha-2) origin country
+          # code.
+          address_country_code: nil,
+          # Returns entries with matching name of the supplemental field for address
+          # information.
+          address_extended_address: nil,
+          # Uniquely identifies the address for the order.
+          address_id: nil,
+          # Filter by the name of the city where the address is located.
+          address_locality: nil,
+          # Filter by postal code for the address.
+          address_postal_code: nil,
+          # Returns entries with matching name of the street where the address is located.
+          address_street_address: nil,
+          # The total monetary amount of the order.
+          cost_amount: nil,
+          # Filter by ISO 4217 currency string.
+          cost_currency: nil,
           # Filter by ISO 8601 formatted date-time string matching resource creation
           # date-time.
           created_at: nil,
@@ -153,8 +221,15 @@ module Telnyx
         sig do
           override.returns(
             {
-              address: Telnyx::SimCardOrderListParams::Filter::Address,
-              cost: Telnyx::SimCardOrderListParams::Filter::Cost,
+              address_administrative_area: String,
+              address_country_code: String,
+              address_extended_address: String,
+              address_id: String,
+              address_locality: String,
+              address_postal_code: String,
+              address_street_address: String,
+              cost_amount: String,
+              cost_currency: String,
               created_at: Time,
               quantity: Integer,
               updated_at: Time
@@ -162,153 +237,6 @@ module Telnyx
           )
         end
         def to_hash
-        end
-
-        class Address < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::SimCardOrderListParams::Filter::Address,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          # Uniquely identifies the address for the order.
-          sig { returns(T.nilable(String)) }
-          attr_reader :id
-
-          sig { params(id: String).void }
-          attr_writer :id
-
-          # Filter by state or province where the address is located.
-          sig { returns(T.nilable(String)) }
-          attr_reader :administrative_area
-
-          sig { params(administrative_area: String).void }
-          attr_writer :administrative_area
-
-          # Filter by the mobile operator two-character (ISO 3166-1 alpha-2) origin country
-          # code.
-          sig { returns(T.nilable(String)) }
-          attr_reader :country_code
-
-          sig { params(country_code: String).void }
-          attr_writer :country_code
-
-          # Returns entries with matching name of the supplemental field for address
-          # information.
-          sig { returns(T.nilable(String)) }
-          attr_reader :extended_address
-
-          sig { params(extended_address: String).void }
-          attr_writer :extended_address
-
-          # Filter by the name of the city where the address is located.
-          sig { returns(T.nilable(String)) }
-          attr_reader :locality
-
-          sig { params(locality: String).void }
-          attr_writer :locality
-
-          # Filter by postal code for the address.
-          sig { returns(T.nilable(String)) }
-          attr_reader :postal_code
-
-          sig { params(postal_code: String).void }
-          attr_writer :postal_code
-
-          # Returns entries with matching name of the street where the address is located.
-          sig { returns(T.nilable(String)) }
-          attr_reader :street_address
-
-          sig { params(street_address: String).void }
-          attr_writer :street_address
-
-          sig do
-            params(
-              id: String,
-              administrative_area: String,
-              country_code: String,
-              extended_address: String,
-              locality: String,
-              postal_code: String,
-              street_address: String
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # Uniquely identifies the address for the order.
-            id: nil,
-            # Filter by state or province where the address is located.
-            administrative_area: nil,
-            # Filter by the mobile operator two-character (ISO 3166-1 alpha-2) origin country
-            # code.
-            country_code: nil,
-            # Returns entries with matching name of the supplemental field for address
-            # information.
-            extended_address: nil,
-            # Filter by the name of the city where the address is located.
-            locality: nil,
-            # Filter by postal code for the address.
-            postal_code: nil,
-            # Returns entries with matching name of the street where the address is located.
-            street_address: nil
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                id: String,
-                administrative_area: String,
-                country_code: String,
-                extended_address: String,
-                locality: String,
-                postal_code: String,
-                street_address: String
-              }
-            )
-          end
-          def to_hash
-          end
-        end
-
-        class Cost < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::SimCardOrderListParams::Filter::Cost,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          # The total monetary amount of the order.
-          sig { returns(T.nilable(String)) }
-          attr_reader :amount
-
-          sig { params(amount: String).void }
-          attr_writer :amount
-
-          # Filter by ISO 4217 currency string.
-          sig { returns(T.nilable(String)) }
-          attr_reader :currency
-
-          sig { params(currency: String).void }
-          attr_writer :currency
-
-          sig do
-            params(amount: String, currency: String).returns(T.attached_class)
-          end
-          def self.new(
-            # The total monetary amount of the order.
-            amount: nil,
-            # Filter by ISO 4217 currency string.
-            currency: nil
-          )
-          end
-
-          sig { override.returns({ amount: String, currency: String }) }
-          def to_hash
-          end
         end
       end
 

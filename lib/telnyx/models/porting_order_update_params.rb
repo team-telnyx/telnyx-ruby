@@ -41,7 +41,7 @@ module Telnyx
       # @!attribute misc
       #
       #   @return [Telnyx::Models::PortingOrderMisc, nil]
-      optional :misc, -> { Telnyx::PortingOrderMisc }
+      optional :misc, -> { Telnyx::PortingOrderMisc }, nil?: true
 
       # @!attribute phone_number_configuration
       #
@@ -91,7 +91,7 @@ module Telnyx
       #
       #   @param messaging [Telnyx::Models::PortingOrderUpdateParams::Messaging]
       #
-      #   @param misc [Telnyx::Models::PortingOrderMisc]
+      #   @param misc [Telnyx::Models::PortingOrderMisc, nil]
       #
       #   @param phone_number_configuration [Telnyx::Models::PortingOrderPhoneNumberConfiguration]
       #

@@ -16,20 +16,25 @@ module Telnyx
       #   @return [Telnyx::Models::AccessIPRangeListParams::Filter, nil]
       optional :filter, -> { Telnyx::AccessIPRangeListParams::Filter }
 
-      # @!attribute page
-      #   Consolidated page parameter (deepObject style). Originally: page[number],
-      #   page[size]
+      # @!attribute page_number
       #
-      #   @return [Telnyx::Models::AccessIPRangeListParams::Page, nil]
-      optional :page, -> { Telnyx::AccessIPRangeListParams::Page }
+      #   @return [Integer, nil]
+      optional :page_number, Integer
 
-      # @!method initialize(filter: nil, page: nil, request_options: {})
+      # @!attribute page_size
+      #
+      #   @return [Integer, nil]
+      optional :page_size, Integer
+
+      # @!method initialize(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::AccessIPRangeListParams} for more details.
       #
       #   @param filter [Telnyx::Models::AccessIPRangeListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[cidr_block]
       #
-      #   @param page [Telnyx::Models::AccessIPRangeListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      #   @param page_number [Integer]
+      #
+      #   @param page_size [Integer]
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -153,25 +158,6 @@ module Telnyx
           # @!method self.variants
           #   @return [Array(Time, Telnyx::Models::AccessIPRangeListParams::Filter::CreatedAt::DateRangeFilter)]
         end
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        # @!attribute number
-        #
-        #   @return [Integer, nil]
-        optional :number, Integer
-
-        # @!attribute size
-        #
-        #   @return [Integer, nil]
-        optional :size, Integer
-
-        # @!method initialize(number: nil, size: nil)
-        #   Consolidated page parameter (deepObject style). Originally: page[number],
-        #   page[size]
-        #
-        #   @param number [Integer]
-        #   @param size [Integer]
       end
     end
   end

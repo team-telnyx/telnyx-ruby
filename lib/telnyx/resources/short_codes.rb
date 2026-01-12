@@ -24,13 +24,16 @@ module Telnyx
       end
 
       # Update the settings for a specific short code. To unbind a short code from a
-      # profile, set the `messaging_profile_id` to `null` or an empty string.
+      # profile, set the `messaging_profile_id` to `null` or an empty string. To add or
+      # update tags, include the tags field as an array of strings.
       #
-      # @overload update(id, messaging_profile_id:, request_options: {})
+      # @overload update(id, messaging_profile_id:, tags: nil, request_options: {})
       #
       # @param id [String] The id of the short code
       #
       # @param messaging_profile_id [String] Unique identifier for a messaging profile.
+      #
+      # @param tags [Array<String>]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -61,7 +64,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::ShortCodeListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ShortCode>]
       #
       # @see Telnyx::Models::ShortCodeListParams
       def list(params = {})
@@ -70,7 +73,8 @@ module Telnyx
           method: :get,
           path: "short_codes",
           query: parsed,
-          model: Telnyx::Models::ShortCodeListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::ShortCode,
           options: options
         )
       end

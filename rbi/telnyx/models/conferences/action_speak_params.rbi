@@ -104,6 +104,22 @@ module Telnyx
         end
         attr_writer :payload_type
 
+        # Region where the conference data is located. Defaults to the region defined in
+        # user's data locality settings (Europe or US).
+        sig do
+          returns(
+            T.nilable(Telnyx::Conferences::ActionSpeakParams::Region::OrSymbol)
+          )
+        end
+        attr_reader :region
+
+        sig do
+          params(
+            region: Telnyx::Conferences::ActionSpeakParams::Region::OrSymbol
+          ).void
+        end
+        attr_writer :region
+
         # The settings associated with the voice selected
         sig do
           returns(
@@ -111,7 +127,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings,
                 Telnyx::Calls::TelnyxVoiceSettings,
-                T.anything
+                Telnyx::Calls::AwsVoiceSettings
               )
             )
           )
@@ -124,7 +140,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T.anything
+                Telnyx::Calls::AwsVoiceSettings::OrHash
               )
           ).void
         end
@@ -140,11 +156,12 @@ module Telnyx
               Telnyx::Conferences::ActionSpeakParams::Language::OrSymbol,
             payload_type:
               Telnyx::Conferences::ActionSpeakParams::PayloadType::OrSymbol,
+            region: Telnyx::Conferences::ActionSpeakParams::Region::OrSymbol,
             voice_settings:
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T.anything
+                Telnyx::Calls::AwsVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -194,6 +211,9 @@ module Telnyx
           # The type of the provided payload. The payload can either be plain text, or
           # Speech Synthesis Markup Language (SSML).
           payload_type: nil,
+          # Region where the conference data is located. Defaults to the region defined in
+          # user's data locality settings (Europe or US).
+          region: nil,
           # The settings associated with the voice selected
           voice_settings: nil,
           request_options: {}
@@ -211,11 +231,12 @@ module Telnyx
                 Telnyx::Conferences::ActionSpeakParams::Language::OrSymbol,
               payload_type:
                 Telnyx::Conferences::ActionSpeakParams::PayloadType::OrSymbol,
+              region: Telnyx::Conferences::ActionSpeakParams::Region::OrSymbol,
               voice_settings:
                 T.any(
                   Telnyx::Calls::ElevenLabsVoiceSettings,
                   Telnyx::Calls::TelnyxVoiceSettings,
-                  T.anything
+                  Telnyx::Calls::AwsVoiceSettings
                 ),
               request_options: Telnyx::RequestOptions
             }
@@ -425,6 +446,49 @@ module Telnyx
           end
         end
 
+        # Region where the conference data is located. Defaults to the region defined in
+        # user's data locality settings (Europe or US).
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::Conferences::ActionSpeakParams::Region)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          AUSTRALIA =
+            T.let(
+              :Australia,
+              Telnyx::Conferences::ActionSpeakParams::Region::TaggedSymbol
+            )
+          EUROPE =
+            T.let(
+              :Europe,
+              Telnyx::Conferences::ActionSpeakParams::Region::TaggedSymbol
+            )
+          MIDDLE_EAST =
+            T.let(
+              :"Middle East",
+              Telnyx::Conferences::ActionSpeakParams::Region::TaggedSymbol
+            )
+          US =
+            T.let(
+              :US,
+              Telnyx::Conferences::ActionSpeakParams::Region::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Conferences::ActionSpeakParams::Region::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
         # The settings associated with the voice selected
         module VoiceSettings
           extend Telnyx::Internal::Type::Union
@@ -434,7 +498,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings,
                 Telnyx::Calls::TelnyxVoiceSettings,
-                T.anything
+                Telnyx::Calls::AwsVoiceSettings
               )
             end
 

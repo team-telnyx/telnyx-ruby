@@ -51,7 +51,7 @@ module Telnyx
             params(
               group_id: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(T.anything)
+            ).void
           end
           def delete(
             # The ID of the insight group
@@ -80,17 +80,18 @@ module Telnyx
           # Get all insight groups
           sig do
             params(
-              page:
-                Telnyx::AI::Conversations::InsightGroupRetrieveInsightGroupsParams::Page::OrHash,
+              page_number: Integer,
+              page_size: Integer,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
-              Telnyx::Models::AI::Conversations::InsightGroupRetrieveInsightGroupsResponse
+              Telnyx::Internal::DefaultFlatPagination[
+                Telnyx::AI::Conversations::InsightTemplateGroup
+              ]
             )
           end
           def retrieve_insight_groups(
-            # Consolidated page parameter (deepObject style). Originally: page[number],
-            # page[size]
-            page: nil,
+            page_number: nil,
+            page_size: nil,
             request_options: {}
           )
           end

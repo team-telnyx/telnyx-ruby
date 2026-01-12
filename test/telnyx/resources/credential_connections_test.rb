@@ -62,13 +62,44 @@ class Telnyx::Test::Resources::CredentialConnectionsTest < Telnyx::Test::Resourc
     response = @telnyx.credential_connections.list
 
     assert_pattern do
-      response => Telnyx::Models::CredentialConnectionListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::CredentialConnection
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::CredentialConnection]) | nil,
-        meta: Telnyx::ConnectionsPaginationMeta | nil
+      row => {
+        id: String | nil,
+        active: Telnyx::Internal::Type::Boolean | nil,
+        anchorsite_override: Telnyx::AnchorsiteOverride | nil,
+        call_cost_in_webhooks: Telnyx::Internal::Type::Boolean | nil,
+        connection_name: String | nil,
+        created_at: String | nil,
+        default_on_hold_comfort_noise_enabled: Telnyx::Internal::Type::Boolean | nil,
+        dtmf_type: Telnyx::DtmfType | nil,
+        encode_contact_header_enabled: Telnyx::Internal::Type::Boolean | nil,
+        encrypted_media: Telnyx::EncryptedMedia | nil,
+        inbound: Telnyx::CredentialInbound | nil,
+        noise_suppression: Telnyx::CredentialConnection::NoiseSuppression | nil,
+        noise_suppression_details: Telnyx::CredentialConnection::NoiseSuppressionDetails | nil,
+        onnet_t38_passthrough_enabled: Telnyx::Internal::Type::Boolean | nil,
+        outbound: Telnyx::CredentialOutbound | nil,
+        password: String | nil,
+        record_type: String | nil,
+        rtcp_settings: Telnyx::ConnectionRtcpSettings | nil,
+        sip_uri_calling_preference: Telnyx::CredentialConnection::SipUriCallingPreference | nil,
+        tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
+        updated_at: String | nil,
+        user_name: String | nil,
+        webhook_api_version: Telnyx::CredentialConnection::WebhookAPIVersion | nil,
+        webhook_event_failover_url: String | nil,
+        webhook_event_url: String | nil,
+        webhook_timeout_secs: Integer | nil
       }
     end
   end

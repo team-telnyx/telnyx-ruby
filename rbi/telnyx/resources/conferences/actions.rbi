@@ -12,6 +12,7 @@ module Telnyx
             supervisor_role:
               Telnyx::Conferences::UpdateConference::SupervisorRole::OrSymbol,
             command_id: String,
+            region: Telnyx::Conferences::UpdateConference::Region::OrSymbol,
             whisper_call_control_ids: T::Array[String],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionUpdateResponse)
@@ -31,6 +32,9 @@ module Telnyx
           # subsequent commands with the same `command_id` as one that has already been
           # executed.
           command_id: nil,
+          # Region where the conference data is located. Defaults to the region defined in
+          # user's data locality settings (Europe or US).
+          region: nil,
           # Array of unique call_control_ids the supervisor can whisper to. If none
           # provided, the supervisor will join the conference as a monitoring participant
           # only.
@@ -46,6 +50,7 @@ module Telnyx
             audio_url: String,
             call_control_ids: T::Array[String],
             media_name: String,
+            region: Telnyx::Conferences::ActionHoldParams::Region::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionHoldResponse)
         end
@@ -63,6 +68,9 @@ module Telnyx
           # api.telnyx.com/v2/media by the same user/organization. The file must either be a
           # WAV or MP3 file.
           media_name: nil,
+          # Region where the conference data is located. Defaults to the region defined in
+          # user's data locality settings (Europe or US).
+          region: nil,
           request_options: {}
         )
         end
@@ -90,6 +98,7 @@ module Telnyx
             hold_audio_url: String,
             hold_media_name: String,
             mute: T::Boolean,
+            region: Telnyx::Conferences::ActionJoinParams::Region::OrSymbol,
             soft_end_conference_on_exit: T::Boolean,
             start_conference_on_enter: T::Boolean,
             supervisor_role:
@@ -136,6 +145,9 @@ module Telnyx
           # Whether the participant should be muted immediately after joining the
           # conference. Defaults to "false".
           mute: nil,
+          # Region where the conference data is located. Defaults to the region defined in
+          # user's data locality settings (Europe or US).
+          region: nil,
           # Whether the conference should end after the participant leaves the conference.
           # NOTE this doesn't hang up the other participants. Defaults to "false".
           soft_end_conference_on_exit: nil,
@@ -169,6 +181,7 @@ module Telnyx
             beep_enabled:
               Telnyx::Conferences::ActionLeaveParams::BeepEnabled::OrSymbol,
             command_id: String,
+            region: Telnyx::Conferences::ActionLeaveParams::Region::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionLeaveResponse)
         end
@@ -184,6 +197,9 @@ module Telnyx
           # subsequent commands with the same `command_id` as one that has already been
           # executed.
           command_id: nil,
+          # Region where the conference data is located. Defaults to the region defined in
+          # user's data locality settings (Europe or US).
+          region: nil,
           request_options: {}
         )
         end
@@ -193,6 +209,7 @@ module Telnyx
           params(
             id: String,
             call_control_ids: T::Array[String],
+            region: Telnyx::Conferences::ActionMuteParams::Region::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionMuteResponse)
         end
@@ -202,6 +219,9 @@ module Telnyx
           # Array of unique identifiers and tokens for controlling the call. When empty all
           # participants will be muted.
           call_control_ids: nil,
+          # Region where the conference data is located. Defaults to the region defined in
+          # user's data locality settings (Europe or US).
+          region: nil,
           request_options: {}
         )
         end
@@ -214,6 +234,7 @@ module Telnyx
             call_control_ids: T::Array[String],
             loop_: Telnyx::Calls::Loopcount::Variants,
             media_name: String,
+            region: Telnyx::Conferences::ActionPlayParams::Region::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionPlayResponse)
         end
@@ -234,6 +255,9 @@ module Telnyx
           # must point to a file previously uploaded to api.telnyx.com/v2/media by the same
           # user/organization. The file must either be a WAV or MP3 file.
           media_name: nil,
+          # Region where the conference data is located. Defaults to the region defined in
+          # user's data locality settings (Europe or US).
+          region: nil,
           request_options: {}
         )
         end
@@ -244,6 +268,8 @@ module Telnyx
             id: String,
             command_id: String,
             recording_id: String,
+            region:
+              Telnyx::Conferences::ActionRecordPauseParams::Region::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionRecordPauseResponse)
         end
@@ -255,6 +281,9 @@ module Telnyx
           command_id: nil,
           # Use this field to pause specific recording.
           recording_id: nil,
+          # Region where the conference data is located. Defaults to the region defined in
+          # user's data locality settings (Europe or US).
+          region: nil,
           request_options: {}
         )
         end
@@ -265,6 +294,8 @@ module Telnyx
             id: String,
             command_id: String,
             recording_id: String,
+            region:
+              Telnyx::Conferences::ActionRecordResumeParams::Region::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionRecordResumeResponse)
         end
@@ -276,6 +307,9 @@ module Telnyx
           command_id: nil,
           # Use this field to resume specific recording.
           recording_id: nil,
+          # Region where the conference data is located. Defaults to the region defined in
+          # user's data locality settings (Europe or US).
+          region: nil,
           request_options: {}
         )
         end
@@ -294,6 +328,8 @@ module Telnyx
             command_id: String,
             custom_file_name: String,
             play_beep: T::Boolean,
+            region:
+              Telnyx::Conferences::ActionRecordStartParams::Region::OrSymbol,
             trim: Telnyx::Conferences::ActionRecordStartParams::Trim::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionRecordStartResponse)
@@ -312,6 +348,9 @@ module Telnyx
           custom_file_name: nil,
           # If enabled, a beep sound will be played at the start of a recording.
           play_beep: nil,
+          # Region where the conference data is located. Defaults to the region defined in
+          # user's data locality settings (Europe or US).
+          region: nil,
           # When set to `trim-silence`, silence will be removed from the beginning and end
           # of the recording.
           trim: nil,
@@ -330,6 +369,8 @@ module Telnyx
             client_state: String,
             command_id: String,
             recording_id: String,
+            region:
+              Telnyx::Conferences::ActionRecordStopParams::Region::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionRecordStopResponse)
         end
@@ -344,6 +385,9 @@ module Telnyx
           command_id: nil,
           # Uniquely identifies the resource.
           recording_id: nil,
+          # Region where the conference data is located. Defaults to the region defined in
+          # user's data locality settings (Europe or US).
+          region: nil,
           request_options: {}
         )
         end
@@ -360,11 +404,12 @@ module Telnyx
               Telnyx::Conferences::ActionSpeakParams::Language::OrSymbol,
             payload_type:
               Telnyx::Conferences::ActionSpeakParams::PayloadType::OrSymbol,
+            region: Telnyx::Conferences::ActionSpeakParams::Region::OrSymbol,
             voice_settings:
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T.anything
+                Telnyx::Calls::AwsVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionSpeakResponse)
@@ -416,6 +461,9 @@ module Telnyx
           # The type of the provided payload. The payload can either be plain text, or
           # Speech Synthesis Markup Language (SSML).
           payload_type: nil,
+          # Region where the conference data is located. Defaults to the region defined in
+          # user's data locality settings (Europe or US).
+          region: nil,
           # The settings associated with the voice selected
           voice_settings: nil,
           request_options: {}
@@ -427,6 +475,7 @@ module Telnyx
           params(
             id: String,
             call_control_ids: T::Array[String],
+            region: Telnyx::Conferences::ActionStopParams::Region::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionStopResponse)
         end
@@ -436,6 +485,9 @@ module Telnyx
           # List of call control ids identifying participants the audio file should stop be
           # played to. If not given, the audio will be stoped to the entire conference.
           call_control_ids: nil,
+          # Region where the conference data is located. Defaults to the region defined in
+          # user's data locality settings (Europe or US).
+          region: nil,
           request_options: {}
         )
         end
@@ -445,6 +497,7 @@ module Telnyx
           params(
             id: String,
             call_control_ids: T::Array[String],
+            region: Telnyx::Conferences::ActionUnholdParams::Region::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionUnholdResponse)
         end
@@ -454,6 +507,9 @@ module Telnyx
           # List of unique identifiers and tokens for controlling the call. Enter each call
           # control ID to be unheld.
           call_control_ids:,
+          # Region where the conference data is located. Defaults to the region defined in
+          # user's data locality settings (Europe or US).
+          region: nil,
           request_options: {}
         )
         end
@@ -463,6 +519,7 @@ module Telnyx
           params(
             id: String,
             call_control_ids: T::Array[String],
+            region: Telnyx::Conferences::ActionUnmuteParams::Region::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionUnmuteResponse)
         end
@@ -472,6 +529,9 @@ module Telnyx
           # List of unique identifiers and tokens for controlling the call. Enter each call
           # control ID to be unmuted. When empty all participants will be unmuted.
           call_control_ids: nil,
+          # Region where the conference data is located. Defaults to the region defined in
+          # user's data locality settings (Europe or US).
+          region: nil,
           request_options: {}
         )
         end

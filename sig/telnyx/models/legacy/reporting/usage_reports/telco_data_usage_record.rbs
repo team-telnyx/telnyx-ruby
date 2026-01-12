@@ -1,0 +1,44 @@
+module Telnyx
+  module Models
+    module Legacy
+      module Reporting
+        module UsageReports
+          type telco_data_usage_record =
+            {
+              aggregations: ::Array[Telnyx::Legacy::Reporting::UsageReports::TelcoDataAggregation],
+              record_type: String,
+              user_id: String
+            }
+
+          class TelcoDataUsageRecord < Telnyx::Internal::Type::BaseModel
+            attr_reader aggregations: ::Array[Telnyx::Legacy::Reporting::UsageReports::TelcoDataAggregation]?
+
+            def aggregations=: (
+              ::Array[Telnyx::Legacy::Reporting::UsageReports::TelcoDataAggregation]
+            ) -> ::Array[Telnyx::Legacy::Reporting::UsageReports::TelcoDataAggregation]
+
+            attr_reader record_type: String?
+
+            def record_type=: (String) -> String
+
+            attr_reader user_id: String?
+
+            def user_id=: (String) -> String
+
+            def initialize: (
+              ?aggregations: ::Array[Telnyx::Legacy::Reporting::UsageReports::TelcoDataAggregation],
+              ?record_type: String,
+              ?user_id: String
+            ) -> void
+
+            def to_hash: -> {
+              aggregations: ::Array[Telnyx::Legacy::Reporting::UsageReports::TelcoDataAggregation],
+              record_type: String,
+              user_id: String
+            }
+          end
+        end
+      end
+    end
+  end
+end

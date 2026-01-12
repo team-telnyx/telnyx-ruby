@@ -13,7 +13,7 @@ module Telnyx
           phone_number: String,
           verification_method:
             Telnyx::VerifiedNumberCreateParams::VerificationMethod::OrSymbol,
-          extension: T.nilable(String),
+          extension: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::VerifiedNumberCreateResponse)
       end
@@ -48,16 +48,14 @@ module Telnyx
       # Gets a paginated list of Verified Numbers.
       sig do
         params(
-          page: Telnyx::VerifiedNumberListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::VerifiedNumberListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::VerifiedNumber]
+        )
       end
-      def list(
-        # Consolidated page parameter (deepObject style). Use page[size] and page[number]
-        # in the query string. Originally: page[size], page[number]
-        page: nil,
-        request_options: {}
-      )
+      def list(page_number: nil, page_size: nil, request_options: {})
       end
 
       # Delete a verified number

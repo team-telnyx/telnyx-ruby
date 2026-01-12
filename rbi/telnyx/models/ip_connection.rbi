@@ -31,6 +31,13 @@ module Telnyx
       end
       attr_writer :anchorsite_override
 
+      # Specifies if call cost webhooks should be sent for this connection.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :call_cost_in_webhooks
+
+      sig { params(call_cost_in_webhooks: T::Boolean).void }
+      attr_writer :call_cost_in_webhooks
+
       sig { returns(T.nilable(String)) }
       attr_reader :connection_name
 
@@ -79,6 +86,37 @@ module Telnyx
 
       sig { params(inbound: Telnyx::InboundIP::OrHash).void }
       attr_writer :inbound
+
+      # Controls when noise suppression is applied to calls. When set to 'inbound',
+      # noise suppression is applied to incoming audio. When set to 'outbound', it's
+      # applied to outgoing audio. When set to 'both', it's applied in both directions.
+      # When set to 'disabled', noise suppression is turned off.
+      sig do
+        returns(T.nilable(Telnyx::IPConnection::NoiseSuppression::TaggedSymbol))
+      end
+      attr_reader :noise_suppression
+
+      sig do
+        params(
+          noise_suppression: Telnyx::IPConnection::NoiseSuppression::OrSymbol
+        ).void
+      end
+      attr_writer :noise_suppression
+
+      # Configuration options for noise suppression. These settings are stored
+      # regardless of the noise_suppression value, but only take effect when
+      # noise_suppression is not 'disabled'. If you disable noise suppression and later
+      # re-enable it, the previously configured settings will be used.
+      sig { returns(T.nilable(Telnyx::IPConnection::NoiseSuppressionDetails)) }
+      attr_reader :noise_suppression_details
+
+      sig do
+        params(
+          noise_suppression_details:
+            Telnyx::IPConnection::NoiseSuppressionDetails::OrHash
+        ).void
+      end
+      attr_writer :noise_suppression_details
 
       # Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
       # if both are on the Telnyx network. If this is disabled, Telnyx will be able to
@@ -175,6 +213,7 @@ module Telnyx
           id: String,
           active: T::Boolean,
           anchorsite_override: Telnyx::AnchorsiteOverride::OrSymbol,
+          call_cost_in_webhooks: T::Boolean,
           connection_name: String,
           created_at: String,
           default_on_hold_comfort_noise_enabled: T::Boolean,
@@ -182,6 +221,9 @@ module Telnyx
           encode_contact_header_enabled: T::Boolean,
           encrypted_media: T.nilable(Telnyx::EncryptedMedia::OrSymbol),
           inbound: Telnyx::InboundIP::OrHash,
+          noise_suppression: Telnyx::IPConnection::NoiseSuppression::OrSymbol,
+          noise_suppression_details:
+            Telnyx::IPConnection::NoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,
           outbound: Telnyx::OutboundIP::OrHash,
           record_type: String,
@@ -205,6 +247,8 @@ module Telnyx
         # round-trip time to the user's connection. Telnyx calculates this time using ICMP
         # ping messages. This can be disabled by specifying a site to handle all media.
         anchorsite_override: nil,
+        # Specifies if call cost webhooks should be sent for this connection.
+        call_cost_in_webhooks: nil,
         connection_name: nil,
         # ISO 8601 formatted date indicating when the resource was created.
         created_at: nil,
@@ -222,6 +266,16 @@ module Telnyx
         # TLS.
         encrypted_media: nil,
         inbound: nil,
+        # Controls when noise suppression is applied to calls. When set to 'inbound',
+        # noise suppression is applied to incoming audio. When set to 'outbound', it's
+        # applied to outgoing audio. When set to 'both', it's applied in both directions.
+        # When set to 'disabled', noise suppression is turned off.
+        noise_suppression: nil,
+        # Configuration options for noise suppression. These settings are stored
+        # regardless of the noise_suppression value, but only take effect when
+        # noise_suppression is not 'disabled'. If you disable noise suppression and later
+        # re-enable it, the previously configured settings will be used.
+        noise_suppression_details: nil,
         # Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
         # if both are on the Telnyx network. If this is disabled, Telnyx will be able to
         # use T38 on just one leg of the call depending on each leg's settings.
@@ -256,6 +310,7 @@ module Telnyx
             id: String,
             active: T::Boolean,
             anchorsite_override: Telnyx::AnchorsiteOverride::TaggedSymbol,
+            call_cost_in_webhooks: T::Boolean,
             connection_name: String,
             created_at: String,
             default_on_hold_comfort_noise_enabled: T::Boolean,
@@ -263,6 +318,10 @@ module Telnyx
             encode_contact_header_enabled: T::Boolean,
             encrypted_media: T.nilable(Telnyx::EncryptedMedia::TaggedSymbol),
             inbound: Telnyx::InboundIP,
+            noise_suppression:
+              Telnyx::IPConnection::NoiseSuppression::TaggedSymbol,
+            noise_suppression_details:
+              Telnyx::IPConnection::NoiseSuppressionDetails,
             onnet_t38_passthrough_enabled: T::Boolean,
             outbound: Telnyx::OutboundIP,
             record_type: String,
@@ -280,6 +339,179 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      # Controls when noise suppression is applied to calls. When set to 'inbound',
+      # noise suppression is applied to incoming audio. When set to 'outbound', it's
+      # applied to outgoing audio. When set to 'both', it's applied in both directions.
+      # When set to 'disabled', noise suppression is turned off.
+      module NoiseSuppression
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Telnyx::IPConnection::NoiseSuppression) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        INBOUND =
+          T.let(:inbound, Telnyx::IPConnection::NoiseSuppression::TaggedSymbol)
+        OUTBOUND =
+          T.let(:outbound, Telnyx::IPConnection::NoiseSuppression::TaggedSymbol)
+        BOTH =
+          T.let(:both, Telnyx::IPConnection::NoiseSuppression::TaggedSymbol)
+        DISABLED =
+          T.let(:disabled, Telnyx::IPConnection::NoiseSuppression::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::IPConnection::NoiseSuppression::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+
+      class NoiseSuppressionDetails < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::IPConnection::NoiseSuppressionDetails,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        # The attenuation limit value for the selected engine. Default values vary by
+        # engine: 0 for 'denoiser', 80 for 'deep_filter_net', 'deep_filter_net_large', and
+        # all Krisp engines ('krisp_viva_tel', 'krisp_viva_tel_lite',
+        # 'krisp_viva_promodel', 'krisp_viva_ss').
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :attenuation_limit
+
+        sig { params(attenuation_limit: Integer).void }
+        attr_writer :attenuation_limit
+
+        # The noise suppression engine to use. 'denoiser' is the default engine.
+        # 'deep_filter_net' and 'deep_filter_net_large' are alternative engines with
+        # different performance characteristics. Krisp engines ('krisp_viva_tel',
+        # 'krisp_viva_tel_lite', 'krisp_viva_promodel', 'krisp_viva_ss') provide advanced
+        # noise suppression capabilities.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::IPConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :engine
+
+        sig do
+          params(
+            engine:
+              Telnyx::IPConnection::NoiseSuppressionDetails::Engine::OrSymbol
+          ).void
+        end
+        attr_writer :engine
+
+        # Configuration options for noise suppression. These settings are stored
+        # regardless of the noise_suppression value, but only take effect when
+        # noise_suppression is not 'disabled'. If you disable noise suppression and later
+        # re-enable it, the previously configured settings will be used.
+        sig do
+          params(
+            attenuation_limit: Integer,
+            engine:
+              Telnyx::IPConnection::NoiseSuppressionDetails::Engine::OrSymbol
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The attenuation limit value for the selected engine. Default values vary by
+          # engine: 0 for 'denoiser', 80 for 'deep_filter_net', 'deep_filter_net_large', and
+          # all Krisp engines ('krisp_viva_tel', 'krisp_viva_tel_lite',
+          # 'krisp_viva_promodel', 'krisp_viva_ss').
+          attenuation_limit: nil,
+          # The noise suppression engine to use. 'denoiser' is the default engine.
+          # 'deep_filter_net' and 'deep_filter_net_large' are alternative engines with
+          # different performance characteristics. Krisp engines ('krisp_viva_tel',
+          # 'krisp_viva_tel_lite', 'krisp_viva_promodel', 'krisp_viva_ss') provide advanced
+          # noise suppression capabilities.
+          engine: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              attenuation_limit: Integer,
+              engine:
+                Telnyx::IPConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # The noise suppression engine to use. 'denoiser' is the default engine.
+        # 'deep_filter_net' and 'deep_filter_net_large' are alternative engines with
+        # different performance characteristics. Krisp engines ('krisp_viva_tel',
+        # 'krisp_viva_tel_lite', 'krisp_viva_promodel', 'krisp_viva_ss') provide advanced
+        # noise suppression capabilities.
+        module Engine
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::IPConnection::NoiseSuppressionDetails::Engine
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          DENOISER =
+            T.let(
+              :denoiser,
+              Telnyx::IPConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+            )
+          DEEP_FILTER_NET =
+            T.let(
+              :deep_filter_net,
+              Telnyx::IPConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+            )
+          DEEP_FILTER_NET_LARGE =
+            T.let(
+              :deep_filter_net_large,
+              Telnyx::IPConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+            )
+          KRISP_VIVA_TEL =
+            T.let(
+              :krisp_viva_tel,
+              Telnyx::IPConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+            )
+          KRISP_VIVA_TEL_LITE =
+            T.let(
+              :krisp_viva_tel_lite,
+              Telnyx::IPConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+            )
+          KRISP_VIVA_PROMODEL =
+            T.let(
+              :krisp_viva_promodel,
+              Telnyx::IPConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+            )
+          KRISP_VIVA_SS =
+            T.let(
+              :krisp_viva_ss,
+              Telnyx::IPConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::IPConnection::NoiseSuppressionDetails::Engine::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
       end
 
       # One of UDP, TLS, or TCP. Applies only to connections with IP authentication or
@@ -316,10 +548,8 @@ module Telnyx
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        WEBHOOK_API_VERSION_1 =
-          T.let(:"1", Telnyx::IPConnection::WebhookAPIVersion::TaggedSymbol)
-        WEBHOOK_API_VERSION_2 =
-          T.let(:"2", Telnyx::IPConnection::WebhookAPIVersion::TaggedSymbol)
+        V1 = T.let(:"1", Telnyx::IPConnection::WebhookAPIVersion::TaggedSymbol)
+        V2 = T.let(:"2", Telnyx::IPConnection::WebhookAPIVersion::TaggedSymbol)
 
         sig do
           override.returns(

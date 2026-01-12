@@ -300,6 +300,24 @@ module Telnyx
           sig { params(sip_auth_username: String).void }
           attr_writer :sip_auth_username
 
+          # Defines the SIP region to be used for the call.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Texml::Accounts::CallCallsParams::SipRegion::OrSymbol
+              )
+            )
+          end
+          attr_reader :sip_region
+
+          sig do
+            params(
+              sip_region:
+                Telnyx::Texml::Accounts::CallCallsParams::SipRegion::OrSymbol
+            ).void
+          end
+          attr_writer :sip_region
+
           # URL destination for Telnyx to send status callback events to for the call.
           sig { returns(T.nilable(String)) }
           attr_reader :status_callback
@@ -343,6 +361,35 @@ module Telnyx
             ).void
           end
           attr_writer :status_callback_method
+
+          # The call control ID of the existing call to supervise. When provided, the
+          # created leg will be added to the specified call in supervising mode. Status
+          # callbacks and action callbacks will NOT be sent for the supervising leg.
+          sig { returns(T.nilable(String)) }
+          attr_reader :supervise_call_sid
+
+          sig { params(supervise_call_sid: String).void }
+          attr_writer :supervise_call_sid
+
+          # The supervising role for the new leg. Determines the audio behavior: barge (hear
+          # both sides), whisper (only hear supervisor), monitor (hear both sides but
+          # supervisor muted). Default: barge
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::OrSymbol
+              )
+            )
+          end
+          attr_reader :supervising_role
+
+          sig do
+            params(
+              supervising_role:
+                Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::OrSymbol
+            ).void
+          end
+          attr_writer :supervising_role
 
           # Whether to trim any leading and trailing silence from the recording. Defaults to
           # `trim-silence`.
@@ -427,11 +474,16 @@ module Telnyx
               send_recording_url: T::Boolean,
               sip_auth_password: String,
               sip_auth_username: String,
+              sip_region:
+                Telnyx::Texml::Accounts::CallCallsParams::SipRegion::OrSymbol,
               status_callback: String,
               status_callback_event:
                 Telnyx::Texml::Accounts::CallCallsParams::StatusCallbackEvent::OrSymbol,
               status_callback_method:
                 Telnyx::Texml::Accounts::CallCallsParams::StatusCallbackMethod::OrSymbol,
+              supervise_call_sid: String,
+              supervising_role:
+                Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::OrSymbol,
               trim: Telnyx::Texml::Accounts::CallCallsParams::Trim::OrSymbol,
               url: String,
               url_method:
@@ -514,6 +566,8 @@ module Telnyx
             sip_auth_password: nil,
             # The username to use for SIP authentication.
             sip_auth_username: nil,
+            # Defines the SIP region to be used for the call.
+            sip_region: nil,
             # URL destination for Telnyx to send status callback events to for the call.
             status_callback: nil,
             # The call events for which Telnyx should send a webhook. Multiple events can be
@@ -521,6 +575,14 @@ module Telnyx
             status_callback_event: nil,
             # HTTP request type used for `StatusCallback`.
             status_callback_method: nil,
+            # The call control ID of the existing call to supervise. When provided, the
+            # created leg will be added to the specified call in supervising mode. Status
+            # callbacks and action callbacks will NOT be sent for the supervising leg.
+            supervise_call_sid: nil,
+            # The supervising role for the new leg. Determines the audio behavior: barge (hear
+            # both sides), whisper (only hear supervisor), monitor (hear both sides but
+            # supervisor muted). Default: barge
+            supervising_role: nil,
             # Whether to trim any leading and trailing silence from the recording. Defaults to
             # `trim-silence`.
             trim: nil,
@@ -573,11 +635,16 @@ module Telnyx
                 send_recording_url: T::Boolean,
                 sip_auth_password: String,
                 sip_auth_username: String,
+                sip_region:
+                  Telnyx::Texml::Accounts::CallCallsParams::SipRegion::OrSymbol,
                 status_callback: String,
                 status_callback_event:
                   Telnyx::Texml::Accounts::CallCallsParams::StatusCallbackEvent::OrSymbol,
                 status_callback_method:
                   Telnyx::Texml::Accounts::CallCallsParams::StatusCallbackMethod::OrSymbol,
+                supervise_call_sid: String,
+                supervising_role:
+                  Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::OrSymbol,
                 trim: Telnyx::Texml::Accounts::CallCallsParams::Trim::OrSymbol,
                 url: String,
                 url_method:
@@ -843,6 +910,56 @@ module Telnyx
             end
           end
 
+          # Defines the SIP region to be used for the call.
+          module SipRegion
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Texml::Accounts::CallCallsParams::SipRegion
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            US =
+              T.let(
+                :US,
+                Telnyx::Texml::Accounts::CallCallsParams::SipRegion::TaggedSymbol
+              )
+            EUROPE =
+              T.let(
+                :Europe,
+                Telnyx::Texml::Accounts::CallCallsParams::SipRegion::TaggedSymbol
+              )
+            CANADA =
+              T.let(
+                :Canada,
+                Telnyx::Texml::Accounts::CallCallsParams::SipRegion::TaggedSymbol
+              )
+            AUSTRALIA =
+              T.let(
+                :Australia,
+                Telnyx::Texml::Accounts::CallCallsParams::SipRegion::TaggedSymbol
+              )
+            MIDDLE_EAST =
+              T.let(
+                :"Middle East",
+                Telnyx::Texml::Accounts::CallCallsParams::SipRegion::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Texml::Accounts::CallCallsParams::SipRegion::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
           # The call events for which Telnyx should send a webhook. Multiple events can be
           # defined when separated by a space.
           module StatusCallbackEvent
@@ -917,6 +1034,48 @@ module Telnyx
               override.returns(
                 T::Array[
                   Telnyx::Texml::Accounts::CallCallsParams::StatusCallbackMethod::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # The supervising role for the new leg. Determines the audio behavior: barge (hear
+          # both sides), whisper (only hear supervisor), monitor (hear both sides but
+          # supervisor muted). Default: barge
+          module SupervisingRole
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            BARGE =
+              T.let(
+                :barge,
+                Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::TaggedSymbol
+              )
+            WHISPER =
+              T.let(
+                :whisper,
+                Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::TaggedSymbol
+              )
+            MONITOR =
+              T.let(
+                :monitor,
+                Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::TaggedSymbol
                 ]
               )
             end

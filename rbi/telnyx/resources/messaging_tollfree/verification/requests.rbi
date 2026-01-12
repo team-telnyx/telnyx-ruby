@@ -288,7 +288,9 @@ module Telnyx
                 Telnyx::MessagingTollfree::Verification::TfVerificationStatus::OrSymbol,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
-              Telnyx::Models::MessagingTollfree::Verification::RequestListResponse
+              Telnyx::Internal::DefaultPaginationForMessagingTollfree[
+                Telnyx::MessagingTollfree::Verification::VerificationRequestStatus
+              ]
             )
           end
           def list(
@@ -317,7 +319,7 @@ module Telnyx
             params(
               id: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(T.anything)
+            ).void
           end
           def delete(id, request_options: {})
           end

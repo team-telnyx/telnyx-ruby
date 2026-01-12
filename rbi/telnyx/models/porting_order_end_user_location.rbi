@@ -10,54 +10,36 @@ module Telnyx
 
       # State, province, or similar of billing address
       sig { returns(T.nilable(String)) }
-      attr_reader :administrative_area
-
-      sig { params(administrative_area: String).void }
-      attr_writer :administrative_area
+      attr_accessor :administrative_area
 
       # ISO3166-1 alpha-2 country code of billing address
       sig { returns(T.nilable(String)) }
-      attr_reader :country_code
-
-      sig { params(country_code: String).void }
-      attr_writer :country_code
+      attr_accessor :country_code
 
       # Second line of billing address
       sig { returns(T.nilable(String)) }
-      attr_reader :extended_address
-
-      sig { params(extended_address: String).void }
-      attr_writer :extended_address
+      attr_accessor :extended_address
 
       # City or municipality of billing address
       sig { returns(T.nilable(String)) }
-      attr_reader :locality
-
-      sig { params(locality: String).void }
-      attr_writer :locality
+      attr_accessor :locality
 
       # Postal Code of billing address
       sig { returns(T.nilable(String)) }
-      attr_reader :postal_code
-
-      sig { params(postal_code: String).void }
-      attr_writer :postal_code
+      attr_accessor :postal_code
 
       # First line of billing address
       sig { returns(T.nilable(String)) }
-      attr_reader :street_address
-
-      sig { params(street_address: String).void }
-      attr_writer :street_address
+      attr_accessor :street_address
 
       sig do
         params(
-          administrative_area: String,
-          country_code: String,
-          extended_address: String,
-          locality: String,
-          postal_code: String,
-          street_address: String
+          administrative_area: T.nilable(String),
+          country_code: T.nilable(String),
+          extended_address: T.nilable(String),
+          locality: T.nilable(String),
+          postal_code: T.nilable(String),
+          street_address: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -79,12 +61,12 @@ module Telnyx
       sig do
         override.returns(
           {
-            administrative_area: String,
-            country_code: String,
-            extended_address: String,
-            locality: String,
-            postal_code: String,
-            street_address: String
+            administrative_area: T.nilable(String),
+            country_code: T.nilable(String),
+            extended_address: T.nilable(String),
+            locality: T.nilable(String),
+            postal_code: T.nilable(String),
+            street_address: T.nilable(String)
           }
         )
       end

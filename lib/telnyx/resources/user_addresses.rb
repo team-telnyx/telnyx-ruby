@@ -36,7 +36,7 @@ module Telnyx
       #
       # @param postal_code [String] The postal code of the user address.
       #
-      # @param skip_address_verification [String] An optional boolean value specifying if verification of the address should be sk
+      # @param skip_address_verification [Boolean] An optional boolean value specifying if verification of the address should be sk
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -89,7 +89,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::UserAddressListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::UserAddress>]
       #
       # @see Telnyx::Models::UserAddressListParams
       def list(params = {})
@@ -98,7 +98,8 @@ module Telnyx
           method: :get,
           path: "user_addresses",
           query: parsed,
-          model: Telnyx::Models::UserAddressListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::UserAddress,
           options: options
         )
       end

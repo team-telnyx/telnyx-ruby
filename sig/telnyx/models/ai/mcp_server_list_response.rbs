@@ -1,0 +1,52 @@
+module Telnyx
+  module Models
+    module AI
+      type mcp_server_list_response =
+        {
+          id: String,
+          created_at: Time,
+          name: String,
+          type: String,
+          url: String,
+          allowed_tools: ::Array[String]?,
+          api_key_ref: String?
+        }
+
+      class McpServerListResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor name: String
+
+        attr_accessor type: String
+
+        attr_accessor url: String
+
+        attr_accessor allowed_tools: ::Array[String]?
+
+        attr_accessor api_key_ref: String?
+
+        def initialize: (
+          id: String,
+          created_at: Time,
+          name: String,
+          type: String,
+          url: String,
+          ?allowed_tools: ::Array[String]?,
+          ?api_key_ref: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          name: String,
+          type: String,
+          url: String,
+          allowed_tools: ::Array[String]?,
+          api_key_ref: String?
+        }
+      end
+    end
+  end
+end

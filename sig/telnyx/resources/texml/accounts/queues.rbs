@@ -1,0 +1,37 @@
+module Telnyx
+  module Resources
+    class Texml
+      class Accounts
+        class Queues
+          def create: (
+            String account_sid,
+            ?friendly_name: String,
+            ?max_size: Integer,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Texml::Accounts::QueueCreateResponse
+
+          def retrieve: (
+            String queue_sid,
+            account_sid: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Texml::Accounts::QueueRetrieveResponse
+
+          def update: (
+            String queue_sid,
+            account_sid: String,
+            ?max_size: Integer,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Texml::Accounts::QueueUpdateResponse
+
+          def delete: (
+            String queue_sid,
+            account_sid: String,
+            ?request_options: Telnyx::request_opts
+          ) -> nil
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

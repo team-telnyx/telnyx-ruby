@@ -12,12 +12,18 @@ module Telnyx
 
       # @!attribute meta
       #
-      #   @return [Telnyx::Models::AvailablePhoneNumberListResponse::Meta, nil]
-      optional :meta, -> { Telnyx::Models::AvailablePhoneNumberListResponse::Meta }
+      #   @return [Telnyx::Models::AvailablePhoneNumbersMetadata, nil]
+      optional :meta, -> { Telnyx::AvailablePhoneNumbersMetadata }
 
-      # @!method initialize(data: nil, meta: nil)
+      # @!attribute metadata
+      #
+      #   @return [Telnyx::Models::AvailablePhoneNumbersMetadata, nil]
+      optional :metadata, -> { Telnyx::AvailablePhoneNumbersMetadata }
+
+      # @!method initialize(data: nil, meta: nil, metadata: nil)
       #   @param data [Array<Telnyx::Models::AvailablePhoneNumberListResponse::Data>]
-      #   @param meta [Telnyx::Models::AvailablePhoneNumberListResponse::Meta]
+      #   @param meta [Telnyx::Models::AvailablePhoneNumbersMetadata]
+      #   @param metadata [Telnyx::Models::AvailablePhoneNumbersMetadata]
 
       class Data < Telnyx::Internal::Type::BaseModel
         # @!attribute best_effort
@@ -169,23 +175,6 @@ module Telnyx
             #   @return [Array<Symbol>]
           end
         end
-      end
-
-      # @see Telnyx::Models::AvailablePhoneNumberListResponse#meta
-      class Meta < Telnyx::Internal::Type::BaseModel
-        # @!attribute best_effort_results
-        #
-        #   @return [Integer, nil]
-        optional :best_effort_results, Integer
-
-        # @!attribute total_results
-        #
-        #   @return [Integer, nil]
-        optional :total_results, Integer
-
-        # @!method initialize(best_effort_results: nil, total_results: nil)
-        #   @param best_effort_results [Integer]
-        #   @param total_results [Integer]
       end
     end
   end

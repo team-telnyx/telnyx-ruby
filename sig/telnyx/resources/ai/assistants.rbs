@@ -61,7 +61,7 @@ module Telnyx
           ?transcription: Telnyx::AI::TranscriptionSettings,
           ?voice_settings: Telnyx::AI::VoiceSettings,
           ?request_options: Telnyx::request_opts
-        ) -> top
+        ) -> Telnyx::AI::InferenceEmbedding
 
         def list: (
           ?request_options: Telnyx::request_opts
@@ -90,11 +90,21 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> String
 
-        def import: (
+        def imports: (
           api_key_ref: String,
-          provider: Telnyx::Models::AI::AssistantImportParams::provider,
+          provider: Telnyx::Models::AI::AssistantImportsParams::provider,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::AI::AssistantsList
+
+        def send_sms: (
+          String assistant_id,
+          from: String,
+          to: String,
+          ?conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::AssistantSendSMSParams::conversation_metadata],
+          ?should_create_conversation: bool,
+          ?text: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::AssistantSendSMSResponse
 
         def initialize: (client: Telnyx::Client) -> void
       end

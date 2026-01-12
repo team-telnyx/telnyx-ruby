@@ -1,0 +1,56 @@
+module Telnyx
+  module Models
+    type messaging10dlc_get_enum_params =
+      {  } & Telnyx::Internal::Type::request_parameters
+
+    class Messaging10dlcGetEnumParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      def initialize: (?request_options: Telnyx::request_opts) -> void
+
+      def to_hash: -> { request_options: Telnyx::RequestOptions }
+
+      type endpoint =
+        :mno
+        | :optionalAttributes
+        | :usecase
+        | :vertical
+        | :altBusinessIdType
+        | :brandIdentityStatus
+        | :brandRelationship
+        | :campaignStatus
+        | :entityType
+        | :extVettingProvider
+        | :vettingStatus
+        | :brandStatus
+        | :operationStatus
+        | :approvedPublicCompany
+        | :stockExchange
+        | :vettingClass
+
+      module Endpoint
+        extend Telnyx::Internal::Type::Enum
+
+        MNO: :mno
+        OPTIONAL_ATTRIBUTES: :optionalAttributes
+        USECASE: :usecase
+        VERTICAL: :vertical
+        ALT_BUSINESS_ID_TYPE: :altBusinessIdType
+        BRAND_IDENTITY_STATUS: :brandIdentityStatus
+        BRAND_RELATIONSHIP: :brandRelationship
+        CAMPAIGN_STATUS: :campaignStatus
+        ENTITY_TYPE: :entityType
+        EXT_VETTING_PROVIDER: :extVettingProvider
+        VETTING_STATUS: :vettingStatus
+        BRAND_STATUS: :brandStatus
+        OPERATION_STATUS: :operationStatus
+        APPROVED_PUBLIC_COMPANY: :approvedPublicCompany
+        STOCK_EXCHANGE: :stockExchange
+        VETTING_CLASS: :vettingClass
+
+        def self?.values: -> ::Array[Telnyx::Models::Messaging10dlcGetEnumParams::endpoint]
+      end
+    end
+  end
+end

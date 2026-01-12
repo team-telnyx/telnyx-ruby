@@ -149,7 +149,7 @@ module Telnyx
             tool_choice:
               Telnyx::AI::ConversationAddMessageParams::ToolChoice::Variants,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(T.anything)
+          ).void
         end
         def add_message(
           # The ID of the conversation

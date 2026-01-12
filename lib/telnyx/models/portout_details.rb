@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::Portouts#list
     class PortoutDetails < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #
@@ -92,7 +93,7 @@ module Telnyx
       #   authorized, this field can be left null
       #
       #   @return [String, nil]
-      optional :reason, String
+      optional :reason, String, nil?: true
 
       # @!attribute rejection_code
       #   The rejection code for one of the valid rejections to reject a port out order
@@ -200,7 +201,7 @@ module Telnyx
       #
       #   @param pon [String] Port order number assigned by the carrier the number will be ported out to
       #
-      #   @param reason [String] The reason why the order is being rejected by the user. If the order is authoriz
+      #   @param reason [String, nil] The reason why the order is being rejected by the user. If the order is authoriz
       #
       #   @param record_type [String] Identifies the type of the resource.
       #

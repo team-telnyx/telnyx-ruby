@@ -15,15 +15,23 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :messaging_profile_id
 
+      sig { returns(T.nilable(T::Array[String])) }
+      attr_reader :tags
+
+      sig { params(tags: T::Array[String]).void }
+      attr_writer :tags
+
       sig do
         params(
           messaging_profile_id: String,
+          tags: T::Array[String],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
         # Unique identifier for a messaging profile.
         messaging_profile_id:,
+        tags: nil,
         request_options: {}
       )
       end
@@ -32,6 +40,7 @@ module Telnyx
         override.returns(
           {
             messaging_profile_id: String,
+            tags: T::Array[String],
             request_options: Telnyx::RequestOptions
           }
         )

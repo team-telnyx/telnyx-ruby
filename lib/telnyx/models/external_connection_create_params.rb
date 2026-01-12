@@ -112,6 +112,12 @@ module Telnyx
       end
 
       class Inbound < Telnyx::Internal::Type::BaseModel
+        # @!attribute outbound_voice_profile_id
+        #   The ID of the outbound voice profile to use for inbound calls.
+        #
+        #   @return [String]
+        required :outbound_voice_profile_id, String
+
         # @!attribute channel_limit
         #   When set, this will limit the number of concurrent inbound calls to phone
         #   numbers associated with this connection.
@@ -119,9 +125,11 @@ module Telnyx
         #   @return [Integer, nil]
         optional :channel_limit, Integer
 
-        # @!method initialize(channel_limit: nil)
+        # @!method initialize(outbound_voice_profile_id:, channel_limit: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::ExternalConnectionCreateParams::Inbound} for more details.
+        #
+        #   @param outbound_voice_profile_id [String] The ID of the outbound voice profile to use for inbound calls.
         #
         #   @param channel_limit [Integer] When set, this will limit the number of concurrent inbound calls to phone number
       end

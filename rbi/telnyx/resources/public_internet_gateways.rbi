@@ -17,7 +17,7 @@ module Telnyx
         name: nil,
         # The id of the network associated with the interface.
         network_id: nil,
-        # The region the interface should be deployed to.
+        # The region interface is deployed to.
         region_code: nil,
         request_options: {}
       )
@@ -43,7 +43,11 @@ module Telnyx
           filter: Telnyx::PublicInternetGatewayListParams::Filter::OrHash,
           page: Telnyx::PublicInternetGatewayListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::PublicInternetGatewayListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[
+            Telnyx::Models::PublicInternetGatewayListResponse
+          ]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[network_id]

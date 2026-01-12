@@ -3,7 +3,7 @@ module Telnyx
     type number_order_phone_number =
       {
         id: String,
-        bundle_id: String,
+        bundle_id: String?,
         country_code: String,
         deadline: Time,
         is_block_number: bool,
@@ -64,9 +64,7 @@ module Telnyx
 
       def id=: (String) -> String
 
-      attr_reader bundle_id: String?
-
-      def bundle_id=: (String) -> String
+      attr_accessor bundle_id: String?
 
       attr_reader record_type: String?
 
@@ -90,7 +88,7 @@ module Telnyx
 
       def initialize: (
         ?id: String,
-        ?bundle_id: String,
+        ?bundle_id: String?,
         ?country_code: String,
         ?deadline: Time,
         ?is_block_number: bool,
@@ -108,7 +106,7 @@ module Telnyx
 
       def to_hash: -> {
         id: String,
-        bundle_id: String,
+        bundle_id: String?,
         country_code: String,
         deadline: Time,
         is_block_number: bool,

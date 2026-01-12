@@ -79,6 +79,13 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :mute, Telnyx::Internal::Type::Boolean
 
+        # @!attribute region
+        #   Region where the conference data is located. Defaults to the region defined in
+        #   user's data locality settings (Europe or US).
+        #
+        #   @return [Symbol, Telnyx::Models::Conferences::ActionJoinParams::Region, nil]
+        optional :region, enum: -> { Telnyx::Conferences::ActionJoinParams::Region }
+
         # @!attribute soft_end_conference_on_exit
         #   Whether the conference should end after the participant leaves the conference.
         #   NOTE this doesn't hang up the other participants. Defaults to "false".
@@ -112,7 +119,7 @@ module Telnyx
         #   @return [Array<String>, nil]
         optional :whisper_call_control_ids, Telnyx::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(call_control_id:, beep_enabled: nil, client_state: nil, command_id: nil, end_conference_on_exit: nil, hold: nil, hold_audio_url: nil, hold_media_name: nil, mute: nil, soft_end_conference_on_exit: nil, start_conference_on_enter: nil, supervisor_role: nil, whisper_call_control_ids: nil, request_options: {})
+        # @!method initialize(call_control_id:, beep_enabled: nil, client_state: nil, command_id: nil, end_conference_on_exit: nil, hold: nil, hold_audio_url: nil, hold_media_name: nil, mute: nil, region: nil, soft_end_conference_on_exit: nil, start_conference_on_enter: nil, supervisor_role: nil, whisper_call_control_ids: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::ActionJoinParams} for more details.
         #
@@ -134,6 +141,8 @@ module Telnyx
         #
         #   @param mute [Boolean] Whether the participant should be muted immediately after joining the conference
         #
+        #   @param region [Symbol, Telnyx::Models::Conferences::ActionJoinParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        #
         #   @param soft_end_conference_on_exit [Boolean] Whether the conference should end after the participant leaves the conference. N
         #
         #   @param start_conference_on_enter [Boolean] Whether the conference should be started after the participant joins the confere
@@ -153,6 +162,20 @@ module Telnyx
           NEVER = :never
           ON_ENTER = :on_enter
           ON_EXIT = :on_exit
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Region where the conference data is located. Defaults to the region defined in
+        # user's data locality settings (Europe or US).
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          AUSTRALIA = :Australia
+          EUROPE = :Europe
+          MIDDLE_EAST = :"Middle East"
+          US = :US
 
           # @!method self.values
           #   @return [Array<Symbol>]

@@ -61,7 +61,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Porting::ReportListResponse]
+        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::Porting::PortingReport>]
         #
         # @see Telnyx::Models::Porting::ReportListParams
         def list(params = {})
@@ -70,7 +70,8 @@ module Telnyx
             method: :get,
             path: "porting/reports",
             query: parsed,
-            model: Telnyx::Models::Porting::ReportListResponse,
+            page: Telnyx::Internal::DefaultPagination,
+            model: Telnyx::Porting::PortingReport,
             options: options
           )
         end

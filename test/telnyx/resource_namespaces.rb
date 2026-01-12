@@ -41,6 +41,9 @@ module Telnyx
 
         module FineTuning
         end
+
+        module Integrations
+        end
       end
 
       module Assistants
@@ -100,6 +103,9 @@ module Telnyx
       module InsightGroups
       end
 
+      module Integrations
+      end
+
       module Legacy
         module Reporting
           module BatchDetailRecords
@@ -121,6 +127,17 @@ module Telnyx
         end
       end
 
+      module Messaging10dlc
+        module Brand
+        end
+
+        module Campaign
+        end
+
+        module CampaignBuilder
+        end
+      end
+
       module MessagingHostedNumberOrders
       end
 
@@ -133,6 +150,9 @@ module Telnyx
       end
 
       module Migrations
+      end
+
+      module MobilePhoneNumbers
       end
 
       module Networks

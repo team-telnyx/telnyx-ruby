@@ -15,12 +15,17 @@ module Telnyx
           active: T::Boolean,
           anchorsite_override: Telnyx::AnchorsiteOverride::OrSymbol,
           android_push_credential_id: T.nilable(String),
+          call_cost_in_webhooks: T::Boolean,
           default_on_hold_comfort_noise_enabled: T::Boolean,
           dtmf_type: Telnyx::DtmfType::OrSymbol,
           encode_contact_header_enabled: T::Boolean,
           encrypted_media: T.nilable(Telnyx::EncryptedMedia::OrSymbol),
           inbound: Telnyx::CredentialInbound::OrHash,
           ios_push_credential_id: T.nilable(String),
+          noise_suppression:
+            Telnyx::CredentialConnectionCreateParams::NoiseSuppression::OrSymbol,
+          noise_suppression_details:
+            Telnyx::CredentialConnectionCreateParams::NoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,
           outbound: Telnyx::CredentialOutbound::OrHash,
           rtcp_settings: Telnyx::ConnectionRtcpSettings::OrHash,
@@ -52,6 +57,8 @@ module Telnyx
         anchorsite_override: nil,
         # The uuid of the push credential for Android
         android_push_credential_id: nil,
+        # Specifies if call cost webhooks should be sent for this connection.
+        call_cost_in_webhooks: nil,
         # When enabled, Telnyx will generate comfort noise when you place the call on
         # hold. If disabled, you will need to generate comfort noise or on hold music to
         # avoid RTP timeout.
@@ -68,6 +75,16 @@ module Telnyx
         inbound: nil,
         # The uuid of the push credential for Ios
         ios_push_credential_id: nil,
+        # Controls when noise suppression is applied to calls. When set to 'inbound',
+        # noise suppression is applied to incoming audio. When set to 'outbound', it's
+        # applied to outgoing audio. When set to 'both', it's applied in both directions.
+        # When set to 'disabled', noise suppression is turned off.
+        noise_suppression: nil,
+        # Configuration options for noise suppression. These settings are stored
+        # regardless of the noise_suppression value, but only take effect when
+        # noise_suppression is not 'disabled'. If you disable noise suppression and later
+        # re-enable it, the previously configured settings will be used.
+        noise_suppression_details: nil,
         # Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
         # if both are on the Telnyx network. If this is disabled, Telnyx will be able to
         # use T38 on just one leg of the call depending on each leg's settings.
@@ -119,6 +136,7 @@ module Telnyx
           active: T::Boolean,
           anchorsite_override: Telnyx::AnchorsiteOverride::OrSymbol,
           android_push_credential_id: T.nilable(String),
+          call_cost_in_webhooks: T::Boolean,
           connection_name: String,
           default_on_hold_comfort_noise_enabled: T::Boolean,
           dtmf_type: Telnyx::DtmfType::OrSymbol,
@@ -126,6 +144,10 @@ module Telnyx
           encrypted_media: T.nilable(Telnyx::EncryptedMedia::OrSymbol),
           inbound: Telnyx::CredentialInbound::OrHash,
           ios_push_credential_id: T.nilable(String),
+          noise_suppression:
+            Telnyx::CredentialConnectionUpdateParams::NoiseSuppression::OrSymbol,
+          noise_suppression_details:
+            Telnyx::CredentialConnectionUpdateParams::NoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,
           outbound: Telnyx::CredentialOutbound::OrHash,
           password: String,
@@ -153,6 +175,8 @@ module Telnyx
         anchorsite_override: nil,
         # The uuid of the push credential for Android
         android_push_credential_id: nil,
+        # Specifies if call cost webhooks should be sent for this connection.
+        call_cost_in_webhooks: nil,
         # A user-assigned name to help manage the connection.
         connection_name: nil,
         # When enabled, Telnyx will generate comfort noise when you place the call on
@@ -171,6 +195,16 @@ module Telnyx
         inbound: nil,
         # The uuid of the push credential for Ios
         ios_push_credential_id: nil,
+        # Controls when noise suppression is applied to calls. When set to 'inbound',
+        # noise suppression is applied to incoming audio. When set to 'outbound', it's
+        # applied to outgoing audio. When set to 'both', it's applied in both directions.
+        # When set to 'disabled', noise suppression is turned off.
+        noise_suppression: nil,
+        # Configuration options for noise suppression. These settings are stored
+        # regardless of the noise_suppression value, but only take effect when
+        # noise_suppression is not 'disabled'. If you disable noise suppression and later
+        # re-enable it, the previously configured settings will be used.
+        noise_suppression_details: nil,
         # Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
         # if both are on the Telnyx network. If this is disabled, Telnyx will be able to
         # use T38 on just one leg of the call depending on each leg's settings.
@@ -212,7 +246,9 @@ module Telnyx
           page: Telnyx::CredentialConnectionListParams::Page::OrHash,
           sort: Telnyx::CredentialConnectionListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::CredentialConnectionListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[Telnyx::CredentialConnection]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

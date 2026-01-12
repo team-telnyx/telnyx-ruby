@@ -42,7 +42,11 @@ module Telnyx
         params(
           page: Telnyx::GlobalIPHealthCheckListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::GlobalIPHealthCheckListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[
+            Telnyx::Models::GlobalIPHealthCheckListResponse
+          ]
+        )
       end
       def list(
         # Consolidated page parameter (deepObject style). Originally: page[number],

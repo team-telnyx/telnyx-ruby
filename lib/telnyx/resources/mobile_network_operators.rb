@@ -20,7 +20,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::MobileNetworkOperatorListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::MobileNetworkOperatorListResponse>]
       #
       # @see Telnyx::Models::MobileNetworkOperatorListParams
       def list(params = {})
@@ -29,6 +29,7 @@ module Telnyx
           method: :get,
           path: "mobile_network_operators",
           query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::MobileNetworkOperatorListResponse,
           options: options
         )

@@ -25,14 +25,22 @@ class Telnyx::Test::Resources::Portouts::EventsTest < Telnyx::Test::ResourceTest
     response = @telnyx.portouts.events.list
 
     assert_pattern do
-      response => Telnyx::Models::Portouts::EventListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::Portouts::EventListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Portouts::EventListResponse::Data]) | nil,
-        meta: Telnyx::PaginationMeta | nil
-      }
+      case row
+      in Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged
+      in Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment
+      in Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged
+      end
     end
   end
 

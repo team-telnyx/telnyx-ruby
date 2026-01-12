@@ -16,6 +16,9 @@ module Telnyx
         sig { returns(Telnyx::Resources::Texml::Accounts::Transcriptions) }
         attr_reader :transcriptions
 
+        sig { returns(Telnyx::Resources::Texml::Accounts::Queues) }
+        attr_reader :queues
+
         # Returns multiple recording resources for an account.
         sig do
           params(

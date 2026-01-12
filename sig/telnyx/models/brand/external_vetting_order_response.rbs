@@ -1,7 +1,0 @@
-module Telnyx
-  module Models
-    module Brand
-      ExternalVettingOrderResponse: Telnyx::Internal::Type::Converter
-    end
-  end
-end

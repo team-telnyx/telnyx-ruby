@@ -142,16 +142,14 @@ module Telnyx
             #   Response details, optional.
             #
             #   @return [Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response, nil]
-            optional :response,
-                     -> { Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response },
-                     nil?: true
+            optional :response, -> { Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response }
 
             # @!method initialize(request: nil, response: nil)
             #   HTTP request and response information.
             #
             #   @param request [Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Request] Request details.
             #
-            #   @param response [Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response, nil] Response details, optional.
+            #   @param response [Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP::Response] Response details, optional.
 
             # @see Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Attempt::HTTP#request
             class Request < Telnyx::Internal::Type::BaseModel
@@ -252,8 +250,8 @@ module Telnyx
 
           # @!attribute payload
           #
-          #   @return [Object, nil]
-          optional :payload, Telnyx::Internal::Type::Unknown
+          #   @return [Hash{Symbol=>Object}, nil]
+          optional :payload, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
           # @!attribute record_type
           #   Identifies the type of the resource.
@@ -271,7 +269,7 @@ module Telnyx
           #
           #   @param occurred_at [Time] ISO 8601 datetime of when the event occurred.
           #
-          #   @param payload [Object]
+          #   @param payload [Hash{Symbol=>Object}]
           #
           #   @param record_type [Symbol, Telnyx::Models::WebhookDeliveryRetrieveResponse::Data::Webhook::RecordType] Identifies the type of the resource.
 

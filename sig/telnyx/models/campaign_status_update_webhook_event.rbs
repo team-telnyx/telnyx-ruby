@@ -6,7 +6,10 @@ module Telnyx
         campaign_id: String,
         create_date: String,
         csp_id: String,
-        is_t_mobile_registered: bool
+        description: String,
+        is_t_mobile_registered: bool,
+        status: Telnyx::Models::CampaignStatusUpdateWebhookEvent::status,
+        type: Telnyx::Models::CampaignStatusUpdateWebhookEvent::type_
       }
 
     class CampaignStatusUpdateWebhookEvent < Telnyx::Internal::Type::BaseModel
@@ -26,16 +29,35 @@ module Telnyx
 
       def csp_id=: (String) -> String
 
+      attr_reader description: String?
+
+      def description=: (String) -> String
+
       attr_reader is_t_mobile_registered: bool?
 
       def is_t_mobile_registered=: (bool) -> bool
+
+      attr_reader status: Telnyx::Models::CampaignStatusUpdateWebhookEvent::status?
+
+      def status=: (
+        Telnyx::Models::CampaignStatusUpdateWebhookEvent::status
+      ) -> Telnyx::Models::CampaignStatusUpdateWebhookEvent::status
+
+      attr_reader type: Telnyx::Models::CampaignStatusUpdateWebhookEvent::type_?
+
+      def type=: (
+        Telnyx::Models::CampaignStatusUpdateWebhookEvent::type_
+      ) -> Telnyx::Models::CampaignStatusUpdateWebhookEvent::type_
 
       def initialize: (
         ?brand_id: String,
         ?campaign_id: String,
         ?create_date: String,
         ?csp_id: String,
-        ?is_t_mobile_registered: bool
+        ?description: String,
+        ?is_t_mobile_registered: bool,
+        ?status: Telnyx::Models::CampaignStatusUpdateWebhookEvent::status,
+        ?type: Telnyx::Models::CampaignStatusUpdateWebhookEvent::type_
       ) -> void
 
       def to_hash: -> {
@@ -43,8 +65,50 @@ module Telnyx
         campaign_id: String,
         create_date: String,
         csp_id: String,
-        is_t_mobile_registered: bool
+        description: String,
+        is_t_mobile_registered: bool,
+        status: Telnyx::Models::CampaignStatusUpdateWebhookEvent::status,
+        type: Telnyx::Models::CampaignStatusUpdateWebhookEvent::type_
       }
+
+      type status = :ACCEPTED | :REJECTED | :DORMANT | :success | :failed
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        ACCEPTED: :ACCEPTED
+        REJECTED: :REJECTED
+        DORMANT: :DORMANT
+        SUCCESS: :success
+        FAILED: :failed
+
+        def self?.values: -> ::Array[Telnyx::Models::CampaignStatusUpdateWebhookEvent::status]
+      end
+
+      type type_ =
+        :TELNYX_EVENT
+        | :REGISTRATION
+        | :MNO_REVIEW
+        | :TELNYX_REVIEW
+        | :NUMBER_POOL_PROVISIONED
+        | :NUMBER_POOL_DEPROVISIONED
+        | :TCR_EVENT
+        | :VERIFIED
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        TELNYX_EVENT: :TELNYX_EVENT
+        REGISTRATION: :REGISTRATION
+        MNO_REVIEW: :MNO_REVIEW
+        TELNYX_REVIEW: :TELNYX_REVIEW
+        NUMBER_POOL_PROVISIONED: :NUMBER_POOL_PROVISIONED
+        NUMBER_POOL_DEPROVISIONED: :NUMBER_POOL_DEPROVISIONED
+        TCR_EVENT: :TCR_EVENT
+        VERIFIED: :VERIFIED
+
+        def self?.values: -> ::Array[Telnyx::Models::CampaignStatusUpdateWebhookEvent::type_]
+      end
     end
   end
 end

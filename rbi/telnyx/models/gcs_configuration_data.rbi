@@ -8,6 +8,10 @@ module Telnyx
           T.any(Telnyx::GcsConfigurationData, Telnyx::Internal::AnyHash)
         end
 
+      # Storage backend type
+      sig { returns(Telnyx::GcsConfigurationData::Backend::OrSymbol) }
+      attr_accessor :backend
+
       # Name of the bucket to be used to store recording files.
       sig { returns(T.nilable(String)) }
       attr_reader :bucket
@@ -24,9 +28,15 @@ module Telnyx
       attr_writer :credentials
 
       sig do
-        params(bucket: String, credentials: String).returns(T.attached_class)
+        params(
+          backend: Telnyx::GcsConfigurationData::Backend::OrSymbol,
+          bucket: String,
+          credentials: String
+        ).returns(T.attached_class)
       end
       def self.new(
+        # Storage backend type
+        backend:,
         # Name of the bucket to be used to store recording files.
         bucket: nil,
         # Opaque credential token used to authenticate and authorize with storage
@@ -35,8 +45,35 @@ module Telnyx
       )
       end
 
-      sig { override.returns({ bucket: String, credentials: String }) }
+      sig do
+        override.returns(
+          {
+            backend: Telnyx::GcsConfigurationData::Backend::OrSymbol,
+            bucket: String,
+            credentials: String
+          }
+        )
+      end
       def to_hash
+      end
+
+      # Storage backend type
+      module Backend
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Telnyx::GcsConfigurationData::Backend) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        GCS = T.let(:gcs, Telnyx::GcsConfigurationData::Backend::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::GcsConfigurationData::Backend::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

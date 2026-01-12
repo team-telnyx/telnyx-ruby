@@ -5,6 +5,7 @@ module Telnyx
         id: String,
         active: bool,
         anchorsite_override: Telnyx::Models::anchorsite_override,
+        call_cost_in_webhooks: bool,
         created_at: String,
         dtmf_type: Telnyx::Models::dtmf_type,
         first_command_timeout: bool,
@@ -36,6 +37,10 @@ module Telnyx
       def anchorsite_override=: (
         Telnyx::Models::anchorsite_override
       ) -> Telnyx::Models::anchorsite_override
+
+      attr_reader call_cost_in_webhooks: bool?
+
+      def call_cost_in_webhooks=: (bool) -> bool
 
       attr_reader created_at: String?
 
@@ -109,6 +114,7 @@ module Telnyx
         ?id: String,
         ?active: bool,
         ?anchorsite_override: Telnyx::Models::anchorsite_override,
+        ?call_cost_in_webhooks: bool,
         ?created_at: String,
         ?dtmf_type: Telnyx::Models::dtmf_type,
         ?first_command_timeout: bool,
@@ -130,6 +136,7 @@ module Telnyx
         id: String,
         active: bool,
         anchorsite_override: Telnyx::Models::anchorsite_override,
+        call_cost_in_webhooks: bool,
         created_at: String,
         dtmf_type: Telnyx::Models::dtmf_type,
         first_command_timeout: bool,

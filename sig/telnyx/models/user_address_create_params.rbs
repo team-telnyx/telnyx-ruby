@@ -15,7 +15,7 @@ module Telnyx
         neighborhood: String,
         phone_number: String,
         postal_code: String,
-        skip_address_verification: String
+        skip_address_verification: bool
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -63,9 +63,9 @@ module Telnyx
 
       def postal_code=: (String) -> String
 
-      attr_reader skip_address_verification: String?
+      attr_reader skip_address_verification: bool?
 
-      def skip_address_verification=: (String) -> String
+      def skip_address_verification=: (bool) -> bool
 
       def initialize: (
         business_name: String,
@@ -81,7 +81,7 @@ module Telnyx
         ?neighborhood: String,
         ?phone_number: String,
         ?postal_code: String,
-        ?skip_address_verification: String,
+        ?skip_address_verification: bool,
         ?request_options: Telnyx::request_opts
       ) -> void
 
@@ -99,7 +99,7 @@ module Telnyx
         neighborhood: String,
         phone_number: String,
         postal_code: String,
-        skip_address_verification: String,
+        skip_address_verification: bool,
         request_options: Telnyx::RequestOptions
       }
     end

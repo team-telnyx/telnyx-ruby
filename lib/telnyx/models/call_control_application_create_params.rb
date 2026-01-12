@@ -35,6 +35,13 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::CallControlApplicationCreateParams::AnchorsiteOverride, nil]
       optional :anchorsite_override, enum: -> { Telnyx::CallControlApplicationCreateParams::AnchorsiteOverride }
 
+      # @!attribute call_cost_in_webhooks
+      #   Specifies if call cost webhooks should be sent for this Call Control
+      #   Application.
+      #
+      #   @return [Boolean, nil]
+      optional :call_cost_in_webhooks, Telnyx::Internal::Type::Boolean
+
       # @!attribute dtmf_type
       #   Sets the type of DTMF digits sent from Telnyx to this Connection. Note that DTMF
       #   digits sent to Telnyx will be accepted in all formats.
@@ -91,7 +98,7 @@ module Telnyx
       #   @return [Integer, nil]
       optional :webhook_timeout_secs, Integer, nil?: true
 
-      # @!method initialize(application_name:, webhook_event_url:, active: nil, anchorsite_override: nil, dtmf_type: nil, first_command_timeout: nil, first_command_timeout_secs: nil, inbound: nil, outbound: nil, redact_dtmf_debug_logging: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @!method initialize(application_name:, webhook_event_url:, active: nil, anchorsite_override: nil, call_cost_in_webhooks: nil, dtmf_type: nil, first_command_timeout: nil, first_command_timeout_secs: nil, inbound: nil, outbound: nil, redact_dtmf_debug_logging: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_timeout_secs: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CallControlApplicationCreateParams} for more details.
       #
@@ -102,6 +109,8 @@ module Telnyx
       #   @param active [Boolean] Specifies whether the connection can be used.
       #
       #   @param anchorsite_override [Symbol, Telnyx::Models::CallControlApplicationCreateParams::AnchorsiteOverride] <code>Latency</code> directs Telnyx to route media through the site with the low
+      #
+      #   @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this Call Control Application
       #
       #   @param dtmf_type [Symbol, Telnyx::Models::CallControlApplicationCreateParams::DtmfType] Sets the type of DTMF digits sent from Telnyx to this Connection. Note that DTMF
       #
@@ -130,10 +139,15 @@ module Telnyx
       module AnchorsiteOverride
         extend Telnyx::Internal::Type::Enum
 
-        LATENCY = :"\"Latency\""
-        CHICAGO_IL = :"\"Chicago, IL\""
-        ASHBURN_VA = :"\"Ashburn, VA\""
-        SAN_JOSE_CA = :"\"San Jose, CA\""
+        LATENCY = :Latency
+        CHICAGO_IL = :"Chicago, IL"
+        ASHBURN_VA = :"Ashburn, VA"
+        SAN_JOSE_CA = :"San Jose, CA"
+        LONDON_UK = :"London, UK"
+        CHENNAI_IN = :"Chennai, IN"
+        AMSTERDAM_NETHERLANDS = :"Amsterdam, Netherlands"
+        TORONTO_CANADA = :"Toronto, Canada"
+        SYDNEY_AUSTRALIA = :"Sydney, Australia"
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -156,8 +170,8 @@ module Telnyx
       module WebhookAPIVersion
         extend Telnyx::Internal::Type::Enum
 
-        WEBHOOK_API_VERSION_1 = :"1"
-        WEBHOOK_API_VERSION_2 = :"2"
+        V1 = :"1"
+        V2 = :"2"
 
         # @!method self.values
         #   @return [Array<Symbol>]

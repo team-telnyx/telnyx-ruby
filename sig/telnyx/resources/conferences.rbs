@@ -14,27 +14,31 @@ module Telnyx
         ?hold_audio_url: String,
         ?hold_media_name: String,
         ?max_participants: Integer,
+        ?region: Telnyx::Models::ConferenceCreateParams::region,
         ?start_conference_on_create: bool,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::ConferenceCreateResponse
 
       def retrieve: (
         String id,
+        ?region: Telnyx::Models::ConferenceRetrieveParams::region,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::ConferenceRetrieveResponse
 
       def list: (
         ?filter: Telnyx::ConferenceListParams::Filter,
         ?page: Telnyx::ConferenceListParams::Page,
+        ?region: Telnyx::Models::ConferenceListParams::region,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::ConferenceListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Conference]
 
       def list_participants: (
         String conference_id,
         ?filter: Telnyx::ConferenceListParticipantsParams::Filter,
         ?page: Telnyx::ConferenceListParticipantsParams::Page,
+        ?region: Telnyx::Models::ConferenceListParticipantsParams::region,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::ConferenceListParticipantsResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::ConferenceListParticipantsResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

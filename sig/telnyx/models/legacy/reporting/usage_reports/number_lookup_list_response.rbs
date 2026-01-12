@@ -1,0 +1,39 @@
+module Telnyx
+  module Models
+    module Legacy
+      module Reporting
+        module UsageReports
+          type number_lookup_list_response =
+            {
+              data: ::Array[Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse],
+              meta: Telnyx::Legacy::Reporting::UsageReports::StandardPaginationMeta
+            }
+
+          class NumberLookupListResponse < Telnyx::Internal::Type::BaseModel
+            attr_reader data: ::Array[Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse]?
+
+            def data=: (
+              ::Array[Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse]
+            ) -> ::Array[Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse]
+
+            attr_reader meta: Telnyx::Legacy::Reporting::UsageReports::StandardPaginationMeta?
+
+            def meta=: (
+              Telnyx::Legacy::Reporting::UsageReports::StandardPaginationMeta
+            ) -> Telnyx::Legacy::Reporting::UsageReports::StandardPaginationMeta
+
+            def initialize: (
+              ?data: ::Array[Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse],
+              ?meta: Telnyx::Legacy::Reporting::UsageReports::StandardPaginationMeta
+            ) -> void
+
+            def to_hash: -> {
+              data: ::Array[Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse],
+              meta: Telnyx::Legacy::Reporting::UsageReports::StandardPaginationMeta
+            }
+          end
+        end
+      end
+    end
+  end
+end

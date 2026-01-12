@@ -12,7 +12,7 @@ module Telnyx
           ?page: Telnyx::PhoneNumbers::JobListParams::Page,
           ?sort: Telnyx::Models::PhoneNumbers::JobListParams::sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::PhoneNumbers::JobListResponse
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::PhoneNumbers::PhoneNumbersJob]
 
         def delete_batch: (
           phone_numbers: ::Array[String],

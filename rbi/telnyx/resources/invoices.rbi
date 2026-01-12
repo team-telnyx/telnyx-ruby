@@ -23,15 +23,19 @@ module Telnyx
       # Retrieve a paginated list of invoices.
       sig do
         params(
-          page: Telnyx::InvoiceListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           sort: Telnyx::InvoiceListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::InvoiceListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Models::InvoiceListResponse
+          ]
+        )
       end
       def list(
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         # Specifies the sort order for results.
         sort: nil,
         request_options: {}

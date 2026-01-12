@@ -9,6 +9,18 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Messages::RcGenerateDeeplinkResponse
 
+        def send_: (
+          agent_id: String,
+          agent_message: Telnyx::RcsAgentMessage,
+          messaging_profile_id: String,
+          to: String,
+          ?mms_fallback: Telnyx::Messages::RcSendParams::MmsFallback,
+          ?sms_fallback: Telnyx::Messages::RcSendParams::SMSFallback,
+          ?type: Telnyx::Models::Messages::RcSendParams::type_,
+          ?webhook_url: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Messages::RcSendResponse
+
         def initialize: (client: Telnyx::Client) -> void
       end
     end

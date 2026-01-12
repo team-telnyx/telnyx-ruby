@@ -25,14 +25,25 @@ class Telnyx::Test::Resources::Porting::EventsTest < Telnyx::Test::ResourceTest
     response = @telnyx.porting.events.list
 
     assert_pattern do
-      response => Telnyx::Models::Porting::EventListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::Porting::EventListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Porting::EventListResponse::Data]) | nil,
-        meta: Telnyx::PaginationMeta | nil
-      }
+      case row
+      in Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload
+      in Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload
+      in Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent
+      in Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent
+      in Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent
+      in Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook
+      end
     end
   end
 

@@ -2,6 +2,7 @@ module Telnyx
   module Models
     type s3_configuration_data =
       {
+        backend: Telnyx::Models::S3ConfigurationData::backend,
         aws_access_key_id: String,
         aws_secret_access_key: String,
         bucket: String,
@@ -9,6 +10,8 @@ module Telnyx
       }
 
     class S3ConfigurationData < Telnyx::Internal::Type::BaseModel
+      attr_accessor backend: Telnyx::Models::S3ConfigurationData::backend
+
       attr_reader aws_access_key_id: String?
 
       def aws_access_key_id=: (String) -> String
@@ -26,6 +29,7 @@ module Telnyx
       def region=: (String) -> String
 
       def initialize: (
+        backend: Telnyx::Models::S3ConfigurationData::backend,
         ?aws_access_key_id: String,
         ?aws_secret_access_key: String,
         ?bucket: String,
@@ -33,11 +37,22 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
+        backend: Telnyx::Models::S3ConfigurationData::backend,
         aws_access_key_id: String,
         aws_secret_access_key: String,
         bucket: String,
         region: String
       }
+
+      type backend = :s3
+
+      module Backend
+        extend Telnyx::Internal::Type::Enum
+
+        S3: :s3
+
+        def self?.values: -> ::Array[Telnyx::Models::S3ConfigurationData::backend]
+      end
     end
   end
 end

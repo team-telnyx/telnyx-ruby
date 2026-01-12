@@ -67,26 +67,19 @@ module Telnyx
             )
           end
 
-          # Some parameter documentations has been truncated, see
-          # {Telnyx::Models::AI::Assistants::ScheduledEventListParams} for more details.
-          #
           # Get scheduled events for an assistant with pagination and filtering
           #
-          # @overload list(assistant_id, conversation_channel: nil, from_date: nil, page: nil, to_date: nil, request_options: {})
+          # @overload list(assistant_id, conversation_channel: nil, from_date: nil, page_number: nil, page_size: nil, to_date: nil, request_options: {})
           #
           # @param assistant_id [String]
-          #
           # @param conversation_channel [Symbol, Telnyx::Models::AI::Assistants::ConversationChannelType]
-          #
           # @param from_date [Time]
-          #
-          # @param page [Telnyx::Models::AI::Assistants::ScheduledEventListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
-          #
+          # @param page_number [Integer]
+          # @param page_size [Integer]
           # @param to_date [Time]
-          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::AI::Assistants::ScheduledEventListResponse]
+          # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse, Telnyx::Models::AI::Assistants::ScheduledSMSEventResponse>]
           #
           # @see Telnyx::Models::AI::Assistants::ScheduledEventListParams
           def list(assistant_id, params = {})
@@ -94,7 +87,8 @@ module Telnyx
             @client.request(
               method: :get,
               path: ["ai/assistants/%1$s/scheduled_events", assistant_id],
-              query: parsed,
+              query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+              page: Telnyx::Internal::DefaultFlatPagination,
               model: Telnyx::Models::AI::Assistants::ScheduledEventListResponse,
               options: options
             )
@@ -109,7 +103,7 @@ module Telnyx
           # @param assistant_id [String]
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Object]
+          # @return [nil]
           #
           # @see Telnyx::Models::AI::Assistants::ScheduledEventDeleteParams
           def delete(event_id, params)
@@ -121,7 +115,7 @@ module Telnyx
             @client.request(
               method: :delete,
               path: ["ai/assistants/%1$s/scheduled_events/%2$s", assistant_id, event_id],
-              model: Telnyx::Internal::Type::Unknown,
+              model: NilClass,
               options: options
             )
           end

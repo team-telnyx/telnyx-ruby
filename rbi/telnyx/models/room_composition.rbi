@@ -52,10 +52,12 @@ module Telnyx
 
       # Shows format of the room composition.
       sig { returns(T.nilable(Telnyx::RoomComposition::Format::TaggedSymbol)) }
-      attr_reader :format_
+      attr_reader :file_format
 
-      sig { params(format_: Telnyx::RoomComposition::Format::OrSymbol).void }
-      attr_writer :format_
+      sig do
+        params(file_format: Telnyx::RoomComposition::Format::OrSymbol).void
+      end
+      attr_writer :file_format
 
       # Identify the room associated with the room composition.
       sig { returns(T.nilable(String)) }
@@ -119,7 +121,10 @@ module Telnyx
       # The failover URL where webhooks related to this room composition will be sent if
       # sending to the primary URL fails. Must include a scheme, such as 'https'.
       sig { returns(T.nilable(String)) }
-      attr_accessor :webhook_event_failover_url
+      attr_reader :webhook_event_failover_url
+
+      sig { params(webhook_event_failover_url: String).void }
+      attr_writer :webhook_event_failover_url
 
       # The URL where webhooks related to this room composition will be sent. Must
       # include a scheme, such as 'https'.
@@ -131,7 +136,10 @@ module Telnyx
 
       # Specifies how many seconds to wait before timing out a webhook.
       sig { returns(T.nilable(Integer)) }
-      attr_accessor :webhook_timeout_secs
+      attr_reader :webhook_timeout_secs
+
+      sig { params(webhook_timeout_secs: Integer).void }
+      attr_writer :webhook_timeout_secs
 
       sig { returns(T.nilable(String)) }
       attr_reader :record_type
@@ -147,7 +155,7 @@ module Telnyx
           download_url: String,
           duration_secs: Integer,
           ended_at: Time,
-          format_: Telnyx::RoomComposition::Format::OrSymbol,
+          file_format: Telnyx::RoomComposition::Format::OrSymbol,
           record_type: String,
           room_id: String,
           session_id: String,
@@ -157,9 +165,9 @@ module Telnyx
           updated_at: Time,
           user_id: String,
           video_layout: T::Hash[Symbol, Telnyx::VideoRegion::OrHash],
-          webhook_event_failover_url: T.nilable(String),
+          webhook_event_failover_url: String,
           webhook_event_url: String,
-          webhook_timeout_secs: T.nilable(Integer)
+          webhook_timeout_secs: Integer
         ).returns(T.attached_class)
       end
       def self.new(
@@ -176,7 +184,7 @@ module Telnyx
         # ISO 8601 timestamp when the room composition has ended.
         ended_at: nil,
         # Shows format of the room composition.
-        format_: nil,
+        file_format: nil,
         record_type: nil,
         # Identify the room associated with the room composition.
         room_id: nil,
@@ -215,7 +223,7 @@ module Telnyx
             download_url: String,
             duration_secs: Integer,
             ended_at: Time,
-            format_: Telnyx::RoomComposition::Format::TaggedSymbol,
+            file_format: Telnyx::RoomComposition::Format::TaggedSymbol,
             record_type: String,
             room_id: String,
             session_id: String,
@@ -225,9 +233,9 @@ module Telnyx
             updated_at: Time,
             user_id: String,
             video_layout: T::Hash[Symbol, Telnyx::VideoRegion],
-            webhook_event_failover_url: T.nilable(String),
+            webhook_event_failover_url: String,
             webhook_event_url: String,
-            webhook_timeout_secs: T.nilable(Integer)
+            webhook_timeout_secs: Integer
           }
         )
       end

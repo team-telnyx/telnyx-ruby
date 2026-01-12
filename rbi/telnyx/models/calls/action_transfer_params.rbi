@@ -315,6 +315,21 @@ module Telnyx
         sig { params(sip_headers: T::Array[Telnyx::SipHeader::OrHash]).void }
         attr_writer :sip_headers
 
+        # Defines the SIP region to be used for the call.
+        sig do
+          returns(
+            T.nilable(Telnyx::Calls::ActionTransferParams::SipRegion::OrSymbol)
+          )
+        end
+        attr_reader :sip_region
+
+        sig do
+          params(
+            sip_region: Telnyx::Calls::ActionTransferParams::SipRegion::OrSymbol
+          ).void
+        end
+        attr_writer :sip_region
+
         # Defines SIP transport protocol to be used on the call.
         sig do
           returns(
@@ -433,6 +448,8 @@ module Telnyx
             sip_auth_password: String,
             sip_auth_username: String,
             sip_headers: T::Array[Telnyx::SipHeader::OrHash],
+            sip_region:
+              Telnyx::Calls::ActionTransferParams::SipRegion::OrSymbol,
             sip_transport_protocol:
               Telnyx::Calls::ActionTransferParams::SipTransportProtocol::OrSymbol,
             sound_modifications: Telnyx::SoundModifications::OrHash,
@@ -531,6 +548,8 @@ module Telnyx
           # SIP headers to be added to the SIP INVITE. Currently only User-to-User header is
           # supported.
           sip_headers: nil,
+          # Defines the SIP region to be used for the call.
+          sip_region: nil,
           # Defines SIP transport protocol to be used on the call.
           sip_transport_protocol: nil,
           # Use this field to modify sound effects, for example adjust the pitch.
@@ -596,6 +615,8 @@ module Telnyx
               sip_auth_password: String,
               sip_auth_username: String,
               sip_headers: T::Array[Telnyx::SipHeader],
+              sip_region:
+                Telnyx::Calls::ActionTransferParams::SipRegion::OrSymbol,
               sip_transport_protocol:
                 Telnyx::Calls::ActionTransferParams::SipTransportProtocol::OrSymbol,
               sound_modifications: Telnyx::SoundModifications,
@@ -1055,6 +1076,53 @@ module Telnyx
             override.returns(
               T::Array[
                 Telnyx::Calls::ActionTransferParams::RecordTrim::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Defines the SIP region to be used for the call.
+        module SipRegion
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::Calls::ActionTransferParams::SipRegion)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          US =
+            T.let(
+              :US,
+              Telnyx::Calls::ActionTransferParams::SipRegion::TaggedSymbol
+            )
+          EUROPE =
+            T.let(
+              :Europe,
+              Telnyx::Calls::ActionTransferParams::SipRegion::TaggedSymbol
+            )
+          CANADA =
+            T.let(
+              :Canada,
+              Telnyx::Calls::ActionTransferParams::SipRegion::TaggedSymbol
+            )
+          AUSTRALIA =
+            T.let(
+              :Australia,
+              Telnyx::Calls::ActionTransferParams::SipRegion::TaggedSymbol
+            )
+          MIDDLE_EAST =
+            T.let(
+              :"Middle East",
+              Telnyx::Calls::ActionTransferParams::SipRegion::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Calls::ActionTransferParams::SipRegion::TaggedSymbol
               ]
             )
           end

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::CallControlApplications#list
     class CallControlApplication < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #
@@ -15,9 +16,10 @@ module Telnyx
       optional :active, Telnyx::Internal::Type::Boolean
 
       # @!attribute anchorsite_override
-      #   `Latency` directs Telnyx to route media through the site with the lowest
-      #   round-trip time to the user's connection. Telnyx calculates this time using ICMP
-      #   ping messages. This can be disabled by specifying a site to handle all media.
+      #   <code>Latency</code> directs Telnyx to route media through the site with the
+      #   lowest round-trip time to the user's connection. Telnyx calculates this time
+      #   using ICMP ping messages. This can be disabled by specifying a site to handle
+      #   all media.
       #
       #   @return [Symbol, Telnyx::Models::CallControlApplication::AnchorsiteOverride, nil]
       optional :anchorsite_override, enum: -> { Telnyx::CallControlApplication::AnchorsiteOverride }
@@ -27,6 +29,13 @@ module Telnyx
       #
       #   @return [String, nil]
       optional :application_name, String
+
+      # @!attribute call_cost_in_webhooks
+      #   Specifies if call cost webhooks should be sent for this Call Control
+      #   Application.
+      #
+      #   @return [Boolean, nil]
+      optional :call_cost_in_webhooks, Telnyx::Internal::Type::Boolean
 
       # @!attribute created_at
       #   ISO 8601 formatted date of when the resource was created
@@ -113,7 +122,7 @@ module Telnyx
       #   @return [Integer, nil]
       optional :webhook_timeout_secs, Integer, nil?: true
 
-      # @!method initialize(id: nil, active: nil, anchorsite_override: nil, application_name: nil, created_at: nil, dtmf_type: nil, first_command_timeout: nil, first_command_timeout_secs: nil, inbound: nil, outbound: nil, record_type: nil, redact_dtmf_debug_logging: nil, tags: nil, updated_at: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
+      # @!method initialize(id: nil, active: nil, anchorsite_override: nil, application_name: nil, call_cost_in_webhooks: nil, created_at: nil, dtmf_type: nil, first_command_timeout: nil, first_command_timeout_secs: nil, inbound: nil, outbound: nil, record_type: nil, redact_dtmf_debug_logging: nil, tags: nil, updated_at: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CallControlApplication} for more details.
       #
@@ -121,9 +130,11 @@ module Telnyx
       #
       #   @param active [Boolean] Specifies whether the connection can be used.
       #
-      #   @param anchorsite_override [Symbol, Telnyx::Models::CallControlApplication::AnchorsiteOverride] `Latency` directs Telnyx to route media through the site with the lowest round-t
+      #   @param anchorsite_override [Symbol, Telnyx::Models::CallControlApplication::AnchorsiteOverride] <code>Latency</code> directs Telnyx to route media through the site with the low
       #
       #   @param application_name [String] A user-assigned name to help manage the application.
+      #
+      #   @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this Call Control Application
       #
       #   @param created_at [String] ISO 8601 formatted date of when the resource was created
       #
@@ -153,18 +164,24 @@ module Telnyx
       #
       #   @param webhook_timeout_secs [Integer, nil]
 
-      # `Latency` directs Telnyx to route media through the site with the lowest
-      # round-trip time to the user's connection. Telnyx calculates this time using ICMP
-      # ping messages. This can be disabled by specifying a site to handle all media.
+      # <code>Latency</code> directs Telnyx to route media through the site with the
+      # lowest round-trip time to the user's connection. Telnyx calculates this time
+      # using ICMP ping messages. This can be disabled by specifying a site to handle
+      # all media.
       #
       # @see Telnyx::Models::CallControlApplication#anchorsite_override
       module AnchorsiteOverride
         extend Telnyx::Internal::Type::Enum
 
-        LATENCY = :"\"Latency\""
-        CHICAGO_IL = :"\"Chicago, IL\""
-        ASHBURN_VA = :"\"Ashburn, VA\""
-        SAN_JOSE_CA = :"\"San Jose, CA\""
+        LATENCY = :Latency
+        CHICAGO_IL = :"Chicago, IL"
+        ASHBURN_VA = :"Ashburn, VA"
+        SAN_JOSE_CA = :"San Jose, CA"
+        LONDON_UK = :"London, UK"
+        CHENNAI_IN = :"Chennai, IN"
+        AMSTERDAM_NETHERLANDS = :"Amsterdam, Netherlands"
+        TORONTO_CANADA = :"Toronto, Canada"
+        SYDNEY_AUSTRALIA = :"Sydney, Australia"
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -201,8 +218,8 @@ module Telnyx
       module WebhookAPIVersion
         extend Telnyx::Internal::Type::Enum
 
-        WEBHOOK_API_VERSION_1 = :"1"
-        WEBHOOK_API_VERSION_2 = :"2"
+        V1 = :"1"
+        V2 = :"2"
 
         # @!method self.values
         #   @return [Array<Symbol>]

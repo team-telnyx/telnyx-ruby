@@ -9,7 +9,13 @@ class Telnyx::Test::Resources::Legacy::Reporting::UsageReports::NumberLookupTest
     response = @telnyx.legacy.reporting.usage_reports.number_lookup.create
 
     assert_pattern do
-      response => nil
+      response => Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupCreateResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse | nil
+      }
     end
   end
 
@@ -19,7 +25,13 @@ class Telnyx::Test::Resources::Legacy::Reporting::UsageReports::NumberLookupTest
     response = @telnyx.legacy.reporting.usage_reports.number_lookup.retrieve("id")
 
     assert_pattern do
-      response => nil
+      response => Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse | nil
+      }
     end
   end
 
@@ -29,7 +41,14 @@ class Telnyx::Test::Resources::Legacy::Reporting::UsageReports::NumberLookupTest
     response = @telnyx.legacy.reporting.usage_reports.number_lookup.list
 
     assert_pattern do
-      response => nil
+      response => Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupListResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse]) | nil,
+        meta: Telnyx::Legacy::Reporting::UsageReports::StandardPaginationMeta | nil
+      }
     end
   end
 

@@ -127,11 +127,16 @@ module Telnyx
               send_recording_url: T::Boolean,
               sip_auth_password: String,
               sip_auth_username: String,
+              sip_region:
+                Telnyx::Texml::Accounts::CallCallsParams::SipRegion::OrSymbol,
               status_callback: String,
               status_callback_event:
                 Telnyx::Texml::Accounts::CallCallsParams::StatusCallbackEvent::OrSymbol,
               status_callback_method:
                 Telnyx::Texml::Accounts::CallCallsParams::StatusCallbackMethod::OrSymbol,
+              supervise_call_sid: String,
+              supervising_role:
+                Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::OrSymbol,
               trim: Telnyx::Texml::Accounts::CallCallsParams::Trim::OrSymbol,
               url: String,
               url_method:
@@ -216,6 +221,8 @@ module Telnyx
             sip_auth_password: nil,
             # The username to use for SIP authentication.
             sip_auth_username: nil,
+            # Defines the SIP region to be used for the call.
+            sip_region: nil,
             # URL destination for Telnyx to send status callback events to for the call.
             status_callback: nil,
             # The call events for which Telnyx should send a webhook. Multiple events can be
@@ -223,6 +230,14 @@ module Telnyx
             status_callback_event: nil,
             # HTTP request type used for `StatusCallback`.
             status_callback_method: nil,
+            # The call control ID of the existing call to supervise. When provided, the
+            # created leg will be added to the specified call in supervising mode. Status
+            # callbacks and action callbacks will NOT be sent for the supervising leg.
+            supervise_call_sid: nil,
+            # The supervising role for the new leg. Determines the audio behavior: barge (hear
+            # both sides), whisper (only hear supervisor), monitor (hear both sides but
+            # supervisor muted). Default: barge
+            supervising_role: nil,
             # Whether to trim any leading and trailing silence from the recording. Defaults to
             # `trim-silence`.
             trim: nil,

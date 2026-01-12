@@ -9,13 +9,24 @@ class Telnyx::Test::Resources::NotificationEventsTest < Telnyx::Test::ResourceTe
     response = @telnyx.notification_events.list
 
     assert_pattern do
-      response => Telnyx::Models::NotificationEventListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::NotificationEventListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::NotificationEventListResponse::Data]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        created_at: Time | nil,
+        enabled: Telnyx::Internal::Type::Boolean | nil,
+        name: String | nil,
+        notification_category: String | nil,
+        updated_at: Time | nil
       }
     end
   end

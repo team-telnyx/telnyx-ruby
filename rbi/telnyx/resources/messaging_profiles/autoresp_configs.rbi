@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     class MessagingProfiles
       class AutorespConfigs
-        # Create Auto-Reponse Setting
+        # Create auto-response setting
         sig do
           params(
             profile_id: String,
@@ -98,7 +98,7 @@ module Telnyx
             autoresp_cfg_id: String,
             profile_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(T.anything)
+          ).returns(String)
         end
         def delete(autoresp_cfg_id, profile_id:, request_options: {})
         end

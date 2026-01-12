@@ -2,247 +2,202 @@ module Telnyx
   module Models
     type webhook_delivery_list_response =
       {
-        data: ::Array[Telnyx::Models::WebhookDeliveryListResponse::Data],
-        meta: Telnyx::Models::WebhookDeliveryListResponse::Meta
+        id: String,
+        attempts: ::Array[Telnyx::Models::WebhookDeliveryListResponse::Attempt],
+        finished_at: Time,
+        record_type: String,
+        started_at: Time,
+        status: Telnyx::Models::WebhookDeliveryListResponse::status,
+        user_id: String,
+        webhook: Telnyx::Models::WebhookDeliveryListResponse::Webhook
       }
 
     class WebhookDeliveryListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: ::Array[Telnyx::Models::WebhookDeliveryListResponse::Data]?
+      attr_reader id: String?
 
-      def data=: (
-        ::Array[Telnyx::Models::WebhookDeliveryListResponse::Data]
-      ) -> ::Array[Telnyx::Models::WebhookDeliveryListResponse::Data]
+      def id=: (String) -> String
 
-      attr_reader meta: Telnyx::Models::WebhookDeliveryListResponse::Meta?
+      attr_reader attempts: ::Array[Telnyx::Models::WebhookDeliveryListResponse::Attempt]?
 
-      def meta=: (
-        Telnyx::Models::WebhookDeliveryListResponse::Meta
-      ) -> Telnyx::Models::WebhookDeliveryListResponse::Meta
+      def attempts=: (
+        ::Array[Telnyx::Models::WebhookDeliveryListResponse::Attempt]
+      ) -> ::Array[Telnyx::Models::WebhookDeliveryListResponse::Attempt]
+
+      attr_reader finished_at: Time?
+
+      def finished_at=: (Time) -> Time
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader started_at: Time?
+
+      def started_at=: (Time) -> Time
+
+      attr_reader status: Telnyx::Models::WebhookDeliveryListResponse::status?
+
+      def status=: (
+        Telnyx::Models::WebhookDeliveryListResponse::status
+      ) -> Telnyx::Models::WebhookDeliveryListResponse::status
+
+      attr_reader user_id: String?
+
+      def user_id=: (String) -> String
+
+      attr_reader webhook: Telnyx::Models::WebhookDeliveryListResponse::Webhook?
+
+      def webhook=: (
+        Telnyx::Models::WebhookDeliveryListResponse::Webhook
+      ) -> Telnyx::Models::WebhookDeliveryListResponse::Webhook
 
       def initialize: (
-        ?data: ::Array[Telnyx::Models::WebhookDeliveryListResponse::Data],
-        ?meta: Telnyx::Models::WebhookDeliveryListResponse::Meta
+        ?id: String,
+        ?attempts: ::Array[Telnyx::Models::WebhookDeliveryListResponse::Attempt],
+        ?finished_at: Time,
+        ?record_type: String,
+        ?started_at: Time,
+        ?status: Telnyx::Models::WebhookDeliveryListResponse::status,
+        ?user_id: String,
+        ?webhook: Telnyx::Models::WebhookDeliveryListResponse::Webhook
       ) -> void
 
       def to_hash: -> {
-        data: ::Array[Telnyx::Models::WebhookDeliveryListResponse::Data],
-        meta: Telnyx::Models::WebhookDeliveryListResponse::Meta
+        id: String,
+        attempts: ::Array[Telnyx::Models::WebhookDeliveryListResponse::Attempt],
+        finished_at: Time,
+        record_type: String,
+        started_at: Time,
+        status: Telnyx::Models::WebhookDeliveryListResponse::status,
+        user_id: String,
+        webhook: Telnyx::Models::WebhookDeliveryListResponse::Webhook
       }
 
-      type data =
+      type attempt =
         {
-          id: String,
-          attempts: ::Array[Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt],
+          errors: ::Array[Integer],
           finished_at: Time,
-          record_type: String,
+          http: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP,
           started_at: Time,
-          status: Telnyx::Models::WebhookDeliveryListResponse::Data::status,
-          user_id: String,
-          webhook: Telnyx::Models::WebhookDeliveryListResponse::Data::Webhook
+          status: Telnyx::Models::WebhookDeliveryListResponse::Attempt::status
         }
 
-      class Data < Telnyx::Internal::Type::BaseModel
-        attr_reader id: String?
+      class Attempt < Telnyx::Internal::Type::BaseModel
+        attr_reader errors: ::Array[Integer]?
 
-        def id=: (String) -> String
-
-        attr_reader attempts: ::Array[Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt]?
-
-        def attempts=: (
-          ::Array[Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt]
-        ) -> ::Array[Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt]
+        def errors=: (::Array[Integer]) -> ::Array[Integer]
 
         attr_reader finished_at: Time?
 
         def finished_at=: (Time) -> Time
 
-        attr_reader record_type: String?
+        attr_reader http: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP?
 
-        def record_type=: (String) -> String
+        def http=: (
+          Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP
+        ) -> Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP
 
         attr_reader started_at: Time?
 
         def started_at=: (Time) -> Time
 
-        attr_reader status: Telnyx::Models::WebhookDeliveryListResponse::Data::status?
+        attr_reader status: Telnyx::Models::WebhookDeliveryListResponse::Attempt::status?
 
         def status=: (
-          Telnyx::Models::WebhookDeliveryListResponse::Data::status
-        ) -> Telnyx::Models::WebhookDeliveryListResponse::Data::status
-
-        attr_reader user_id: String?
-
-        def user_id=: (String) -> String
-
-        attr_reader webhook: Telnyx::Models::WebhookDeliveryListResponse::Data::Webhook?
-
-        def webhook=: (
-          Telnyx::Models::WebhookDeliveryListResponse::Data::Webhook
-        ) -> Telnyx::Models::WebhookDeliveryListResponse::Data::Webhook
+          Telnyx::Models::WebhookDeliveryListResponse::Attempt::status
+        ) -> Telnyx::Models::WebhookDeliveryListResponse::Attempt::status
 
         def initialize: (
-          ?id: String,
-          ?attempts: ::Array[Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt],
+          ?errors: ::Array[Integer],
           ?finished_at: Time,
-          ?record_type: String,
+          ?http: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP,
           ?started_at: Time,
-          ?status: Telnyx::Models::WebhookDeliveryListResponse::Data::status,
-          ?user_id: String,
-          ?webhook: Telnyx::Models::WebhookDeliveryListResponse::Data::Webhook
+          ?status: Telnyx::Models::WebhookDeliveryListResponse::Attempt::status
         ) -> void
 
         def to_hash: -> {
-          id: String,
-          attempts: ::Array[Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt],
+          errors: ::Array[Integer],
           finished_at: Time,
-          record_type: String,
+          http: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP,
           started_at: Time,
-          status: Telnyx::Models::WebhookDeliveryListResponse::Data::status,
-          user_id: String,
-          webhook: Telnyx::Models::WebhookDeliveryListResponse::Data::Webhook
+          status: Telnyx::Models::WebhookDeliveryListResponse::Attempt::status
         }
 
-        type attempt =
+        type http =
           {
-            errors: ::Array[Integer],
-            finished_at: Time,
-            http: Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::HTTP,
-            started_at: Time,
-            status: Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::status
+            request: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Request,
+            response: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response
           }
 
-        class Attempt < Telnyx::Internal::Type::BaseModel
-          attr_reader errors: ::Array[Integer]?
+        class HTTP < Telnyx::Internal::Type::BaseModel
+          attr_reader request: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Request?
 
-          def errors=: (::Array[Integer]) -> ::Array[Integer]
+          def request=: (
+            Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Request
+          ) -> Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Request
 
-          attr_reader finished_at: Time?
+          attr_reader response: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response?
 
-          def finished_at=: (Time) -> Time
-
-          attr_reader http: Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::HTTP?
-
-          def http=: (
-            Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::HTTP
-          ) -> Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::HTTP
-
-          attr_reader started_at: Time?
-
-          def started_at=: (Time) -> Time
-
-          attr_reader status: Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::status?
-
-          def status=: (
-            Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::status
-          ) -> Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::status
+          def response=: (
+            Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response
+          ) -> Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response
 
           def initialize: (
-            ?errors: ::Array[Integer],
-            ?finished_at: Time,
-            ?http: Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::HTTP,
-            ?started_at: Time,
-            ?status: Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::status
+            ?request: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Request,
+            ?response: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response
           ) -> void
 
           def to_hash: -> {
-            errors: ::Array[Integer],
-            finished_at: Time,
-            http: Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::HTTP,
-            started_at: Time,
-            status: Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::status
+            request: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Request,
+            response: Telnyx::Models::WebhookDeliveryListResponse::Attempt::HTTP::Response
           }
 
-          type http =
-            {
-              request: Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::HTTP::Request,
-              response: Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::HTTP::Response?
-            }
+          type request = { headers: ::Array[::Array[String]], url: String }
 
-          class HTTP < Telnyx::Internal::Type::BaseModel
-            attr_reader request: Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::HTTP::Request?
+          class Request < Telnyx::Internal::Type::BaseModel
+            attr_reader headers: ::Array[::Array[String]]?
 
-            def request=: (
-              Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::HTTP::Request
-            ) -> Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::HTTP::Request
+            def headers=: (::Array[::Array[String]]) -> ::Array[::Array[String]]
 
-            attr_accessor response: Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::HTTP::Response?
+            attr_reader url: String?
+
+            def url=: (String) -> String
 
             def initialize: (
-              ?request: Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::HTTP::Request,
-              ?response: Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::HTTP::Response?
+              ?headers: ::Array[::Array[String]],
+              ?url: String
+            ) -> void
+
+            def to_hash: -> { headers: ::Array[::Array[String]], url: String }
+          end
+
+          type response =
+            { body: String, headers: ::Array[::Array[String]], status: Integer }
+
+          class Response < Telnyx::Internal::Type::BaseModel
+            attr_reader body: String?
+
+            def body=: (String) -> String
+
+            attr_reader headers: ::Array[::Array[String]]?
+
+            def headers=: (::Array[::Array[String]]) -> ::Array[::Array[String]]
+
+            attr_reader status: Integer?
+
+            def status=: (Integer) -> Integer
+
+            def initialize: (
+              ?body: String,
+              ?headers: ::Array[::Array[String]],
+              ?status: Integer
             ) -> void
 
             def to_hash: -> {
-              request: Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::HTTP::Request,
-              response: Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::HTTP::Response?
+              body: String,
+              headers: ::Array[::Array[String]],
+              status: Integer
             }
-
-            type request = { headers: ::Array[::Array[String]], url: String }
-
-            class Request < Telnyx::Internal::Type::BaseModel
-              attr_reader headers: ::Array[::Array[String]]?
-
-              def headers=: (
-                ::Array[::Array[String]]
-              ) -> ::Array[::Array[String]]
-
-              attr_reader url: String?
-
-              def url=: (String) -> String
-
-              def initialize: (
-                ?headers: ::Array[::Array[String]],
-                ?url: String
-              ) -> void
-
-              def to_hash: -> { headers: ::Array[::Array[String]], url: String }
-            end
-
-            type response =
-              {
-                body: String,
-                headers: ::Array[::Array[String]],
-                status: Integer
-              }
-
-            class Response < Telnyx::Internal::Type::BaseModel
-              attr_reader body: String?
-
-              def body=: (String) -> String
-
-              attr_reader headers: ::Array[::Array[String]]?
-
-              def headers=: (
-                ::Array[::Array[String]]
-              ) -> ::Array[::Array[String]]
-
-              attr_reader status: Integer?
-
-              def status=: (Integer) -> Integer
-
-              def initialize: (
-                ?body: String,
-                ?headers: ::Array[::Array[String]],
-                ?status: Integer
-              ) -> void
-
-              def to_hash: -> {
-                body: String,
-                headers: ::Array[::Array[String]],
-                status: Integer
-              }
-            end
-          end
-
-          type status = :delivered | :failed
-
-          module Status
-            extend Telnyx::Internal::Type::Enum
-
-            DELIVERED: :delivered
-            FAILED: :failed
-
-            def self?.values: -> ::Array[Telnyx::Models::WebhookDeliveryListResponse::Data::Attempt::status]
           end
         end
 
@@ -254,107 +209,78 @@ module Telnyx
           DELIVERED: :delivered
           FAILED: :failed
 
-          def self?.values: -> ::Array[Telnyx::Models::WebhookDeliveryListResponse::Data::status]
-        end
-
-        type webhook =
-          {
-            id: String,
-            event_type: String,
-            occurred_at: Time,
-            payload: top,
-            record_type: Telnyx::Models::WebhookDeliveryListResponse::Data::Webhook::record_type
-          }
-
-        class Webhook < Telnyx::Internal::Type::BaseModel
-          attr_reader id: String?
-
-          def id=: (String) -> String
-
-          attr_reader event_type: String?
-
-          def event_type=: (String) -> String
-
-          attr_reader occurred_at: Time?
-
-          def occurred_at=: (Time) -> Time
-
-          attr_reader payload: top?
-
-          def payload=: (top) -> top
-
-          attr_reader record_type: Telnyx::Models::WebhookDeliveryListResponse::Data::Webhook::record_type?
-
-          def record_type=: (
-            Telnyx::Models::WebhookDeliveryListResponse::Data::Webhook::record_type
-          ) -> Telnyx::Models::WebhookDeliveryListResponse::Data::Webhook::record_type
-
-          def initialize: (
-            ?id: String,
-            ?event_type: String,
-            ?occurred_at: Time,
-            ?payload: top,
-            ?record_type: Telnyx::Models::WebhookDeliveryListResponse::Data::Webhook::record_type
-          ) -> void
-
-          def to_hash: -> {
-            id: String,
-            event_type: String,
-            occurred_at: Time,
-            payload: top,
-            record_type: Telnyx::Models::WebhookDeliveryListResponse::Data::Webhook::record_type
-          }
-
-          type record_type = :event
-
-          module RecordType
-            extend Telnyx::Internal::Type::Enum
-
-            EVENT: :event
-
-            def self?.values: -> ::Array[Telnyx::Models::WebhookDeliveryListResponse::Data::Webhook::record_type]
-          end
+          def self?.values: -> ::Array[Telnyx::Models::WebhookDeliveryListResponse::Attempt::status]
         end
       end
 
-      type meta =
+      type status = :delivered | :failed
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        DELIVERED: :delivered
+        FAILED: :failed
+
+        def self?.values: -> ::Array[Telnyx::Models::WebhookDeliveryListResponse::status]
+      end
+
+      type webhook =
         {
-          page_number: Integer,
-          page_size: Integer,
-          total_pages: Integer,
-          total_results: Integer
+          id: String,
+          event_type: String,
+          occurred_at: Time,
+          payload: ::Hash[Symbol, top],
+          record_type: Telnyx::Models::WebhookDeliveryListResponse::Webhook::record_type
         }
 
-      class Meta < Telnyx::Internal::Type::BaseModel
-        attr_reader page_number: Integer?
+      class Webhook < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
 
-        def page_number=: (Integer) -> Integer
+        def id=: (String) -> String
 
-        attr_reader page_size: Integer?
+        attr_reader event_type: String?
 
-        def page_size=: (Integer) -> Integer
+        def event_type=: (String) -> String
 
-        attr_reader total_pages: Integer?
+        attr_reader occurred_at: Time?
 
-        def total_pages=: (Integer) -> Integer
+        def occurred_at=: (Time) -> Time
 
-        attr_reader total_results: Integer?
+        attr_reader payload: ::Hash[Symbol, top]?
 
-        def total_results=: (Integer) -> Integer
+        def payload=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        attr_reader record_type: Telnyx::Models::WebhookDeliveryListResponse::Webhook::record_type?
+
+        def record_type=: (
+          Telnyx::Models::WebhookDeliveryListResponse::Webhook::record_type
+        ) -> Telnyx::Models::WebhookDeliveryListResponse::Webhook::record_type
 
         def initialize: (
-          ?page_number: Integer,
-          ?page_size: Integer,
-          ?total_pages: Integer,
-          ?total_results: Integer
+          ?id: String,
+          ?event_type: String,
+          ?occurred_at: Time,
+          ?payload: ::Hash[Symbol, top],
+          ?record_type: Telnyx::Models::WebhookDeliveryListResponse::Webhook::record_type
         ) -> void
 
         def to_hash: -> {
-          page_number: Integer,
-          page_size: Integer,
-          total_pages: Integer,
-          total_results: Integer
+          id: String,
+          event_type: String,
+          occurred_at: Time,
+          payload: ::Hash[Symbol, top],
+          record_type: Telnyx::Models::WebhookDeliveryListResponse::Webhook::record_type
         }
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::WebhookDeliveryListResponse::Webhook::record_type]
+        end
       end
     end
   end

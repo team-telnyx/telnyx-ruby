@@ -3,106 +3,85 @@ module Telnyx
     module Queues
       type call_list_response =
         {
-          data: ::Array[Telnyx::Models::Queues::CallListResponse::Data],
-          meta: Telnyx::PaginationMeta
+          call_control_id: String,
+          call_leg_id: String,
+          call_session_id: String,
+          connection_id: String,
+          enqueued_at: String,
+          from: String,
+          queue_id: String,
+          queue_position: Integer,
+          record_type: Telnyx::Models::Queues::CallListResponse::record_type,
+          to: String,
+          wait_time_secs: Integer,
+          is_alive: bool
         }
 
       class CallListResponse < Telnyx::Internal::Type::BaseModel
-        attr_reader data: ::Array[Telnyx::Models::Queues::CallListResponse::Data]?
+        attr_accessor call_control_id: String
 
-        def data=: (
-          ::Array[Telnyx::Models::Queues::CallListResponse::Data]
-        ) -> ::Array[Telnyx::Models::Queues::CallListResponse::Data]
+        attr_accessor call_leg_id: String
 
-        attr_reader meta: Telnyx::PaginationMeta?
+        attr_accessor call_session_id: String
 
-        def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+        attr_accessor connection_id: String
+
+        attr_accessor enqueued_at: String
+
+        attr_accessor from: String
+
+        attr_accessor queue_id: String
+
+        attr_accessor queue_position: Integer
+
+        attr_accessor record_type: Telnyx::Models::Queues::CallListResponse::record_type
+
+        attr_accessor to: String
+
+        attr_accessor wait_time_secs: Integer
+
+        attr_reader is_alive: bool?
+
+        def is_alive=: (bool) -> bool
 
         def initialize: (
-          ?data: ::Array[Telnyx::Models::Queues::CallListResponse::Data],
-          ?meta: Telnyx::PaginationMeta
+          call_control_id: String,
+          call_leg_id: String,
+          call_session_id: String,
+          connection_id: String,
+          enqueued_at: String,
+          from: String,
+          queue_id: String,
+          queue_position: Integer,
+          record_type: Telnyx::Models::Queues::CallListResponse::record_type,
+          to: String,
+          wait_time_secs: Integer,
+          ?is_alive: bool
         ) -> void
 
         def to_hash: -> {
-          data: ::Array[Telnyx::Models::Queues::CallListResponse::Data],
-          meta: Telnyx::PaginationMeta
+          call_control_id: String,
+          call_leg_id: String,
+          call_session_id: String,
+          connection_id: String,
+          enqueued_at: String,
+          from: String,
+          queue_id: String,
+          queue_position: Integer,
+          record_type: Telnyx::Models::Queues::CallListResponse::record_type,
+          to: String,
+          wait_time_secs: Integer,
+          is_alive: bool
         }
 
-        type data =
-          {
-            call_control_id: String,
-            call_leg_id: String,
-            call_session_id: String,
-            connection_id: String,
-            enqueued_at: String,
-            from: String,
-            queue_id: String,
-            queue_position: Integer,
-            record_type: Telnyx::Models::Queues::CallListResponse::Data::record_type,
-            to: String,
-            wait_time_secs: Integer
-          }
+        type record_type = :queue_call
 
-        class Data < Telnyx::Internal::Type::BaseModel
-          attr_accessor call_control_id: String
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
 
-          attr_accessor call_leg_id: String
+          QUEUE_CALL: :queue_call
 
-          attr_accessor call_session_id: String
-
-          attr_accessor connection_id: String
-
-          attr_accessor enqueued_at: String
-
-          attr_accessor from: String
-
-          attr_accessor queue_id: String
-
-          attr_accessor queue_position: Integer
-
-          attr_accessor record_type: Telnyx::Models::Queues::CallListResponse::Data::record_type
-
-          attr_accessor to: String
-
-          attr_accessor wait_time_secs: Integer
-
-          def initialize: (
-            call_control_id: String,
-            call_leg_id: String,
-            call_session_id: String,
-            connection_id: String,
-            enqueued_at: String,
-            from: String,
-            queue_id: String,
-            queue_position: Integer,
-            record_type: Telnyx::Models::Queues::CallListResponse::Data::record_type,
-            to: String,
-            wait_time_secs: Integer
-          ) -> void
-
-          def to_hash: -> {
-            call_control_id: String,
-            call_leg_id: String,
-            call_session_id: String,
-            connection_id: String,
-            enqueued_at: String,
-            from: String,
-            queue_id: String,
-            queue_position: Integer,
-            record_type: Telnyx::Models::Queues::CallListResponse::Data::record_type,
-            to: String,
-            wait_time_secs: Integer
-          }
-
-          type record_type = :queue_call
-
-          module RecordType
-            extend Telnyx::Internal::Type::Enum
-
-            QUEUE_CALL: :queue_call
-
-            def self?.values: -> ::Array[Telnyx::Models::Queues::CallListResponse::Data::record_type]
-          end
+          def self?.values: -> ::Array[Telnyx::Models::Queues::CallListResponse::record_type]
         end
       end
     end

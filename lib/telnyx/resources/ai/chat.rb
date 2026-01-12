@@ -37,7 +37,7 @@ module Telnyx
         #
         # @param min_p [Float] This is an alternative to `top_p` that [many prefer](https://github.com/huggingf
         #
-        # @param model [String] The language model to chat with. If you are optimizing for speed + price, try `m
+        # @param model [String] The language model to chat with.
         #
         # @param n [Float] This will return multiple choices for you instead of a single chat completion.
         #
@@ -51,7 +51,7 @@ module Telnyx
         #
         # @param tool_choice [Symbol, Telnyx::Models::AI::ChatCreateCompletionParams::ToolChoice]
         #
-        # @param tools [Array<Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam, Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval>] The `function` tool type follows the same schema as the [OpenAI Chat Completions
+        # @param tools [Array<Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Function, Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval>] The `function` tool type follows the same schema as the [OpenAI Chat Completions
         #
         # @param top_logprobs [Integer] This is used with `logprobs`. An integer between 0 and 20 specifying the number
         #
@@ -61,7 +61,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Object]
+        # @return [Hash{Symbol=>Object}]
         #
         # @see Telnyx::Models::AI::ChatCreateCompletionParams
         def create_completion(params)
@@ -70,7 +70,7 @@ module Telnyx
             method: :post,
             path: "ai/chat/completions",
             body: parsed,
-            model: Telnyx::Internal::Type::Unknown,
+            model: Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
             options: options
           )
         end

@@ -1,16 +1,38 @@
 module Telnyx
   module Models
     module Calls
-      type eleven_labs_voice_settings = { api_key_ref: String }
+      type eleven_labs_voice_settings =
+        {
+          type: Telnyx::Models::Calls::ElevenLabsVoiceSettings::type_,
+          api_key_ref: String
+        }
 
       class ElevenLabsVoiceSettings < Telnyx::Internal::Type::BaseModel
+        attr_accessor type: Telnyx::Models::Calls::ElevenLabsVoiceSettings::type_
+
         attr_reader api_key_ref: String?
 
         def api_key_ref=: (String) -> String
 
-        def initialize: (?api_key_ref: String) -> void
+        def initialize: (
+          type: Telnyx::Models::Calls::ElevenLabsVoiceSettings::type_,
+          ?api_key_ref: String
+        ) -> void
 
-        def to_hash: -> { api_key_ref: String }
+        def to_hash: -> {
+          type: Telnyx::Models::Calls::ElevenLabsVoiceSettings::type_,
+          api_key_ref: String
+        }
+
+        type type_ = :elevenlabs
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          ELEVENLABS: :elevenlabs
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ElevenLabsVoiceSettings::type_]
+        end
       end
     end
   end

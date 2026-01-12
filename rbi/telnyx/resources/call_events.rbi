@@ -13,7 +13,11 @@ module Telnyx
           filter: Telnyx::CallEventListParams::Filter::OrHash,
           page: Telnyx::CallEventListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::CallEventListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[
+            Telnyx::Models::CallEventListResponse
+          ]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

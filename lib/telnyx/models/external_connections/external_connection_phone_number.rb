@@ -3,6 +3,7 @@
 module Telnyx
   module Models
     module ExternalConnections
+      # @see Telnyx::Resources::ExternalConnections::PhoneNumbers#list
       class ExternalConnectionPhoneNumber < Telnyx::Internal::Type::BaseModel
         # @!attribute acquired_capabilities
         #

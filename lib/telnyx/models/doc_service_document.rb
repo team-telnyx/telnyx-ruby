@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::Documents#list
     class DocServiceDocument < Telnyx::Internal::Type::BaseModel
       # @!attribute customer_reference
       #   Optional reference string for customer tracking.
@@ -21,6 +22,12 @@ module Telnyx
         #
         #   @return [String, nil]
         optional :id, String
+
+        # @!attribute av_scan_status
+        #   The antivirus scan status of the document.
+        #
+        #   @return [Symbol, Telnyx::Models::DocServiceDocument::AvScanStatus, nil]
+        optional :av_scan_status, enum: -> { Telnyx::DocServiceDocument::AvScanStatus }
 
         # @!attribute content_type
         #   The document's content_type.
@@ -65,8 +72,10 @@ module Telnyx
         optional :updated_at, String
       end
 
-      # @!method initialize(id: nil, content_type: nil, created_at: nil, customer_reference: nil, filename: nil, record_type: nil, sha256: nil, size: nil, status: nil, updated_at: nil)
+      # @!method initialize(id: nil, av_scan_status: nil, content_type: nil, created_at: nil, customer_reference: nil, filename: nil, record_type: nil, sha256: nil, size: nil, status: nil, updated_at: nil)
       #   @param id [String] Identifies the resource.
+      #
+      #   @param av_scan_status [Symbol, Telnyx::Models::DocServiceDocument::AvScanStatus] The antivirus scan status of the document.
       #
       #   @param content_type [String] The document's content_type.
       #
@@ -85,6 +94,21 @@ module Telnyx
       #   @param status [Symbol, Telnyx::Models::DocServiceDocument::Status] Indicates the current document reviewing status
       #
       #   @param updated_at [String] ISO 8601 formatted date-time indicating when the resource was updated.
+
+      # The antivirus scan status of the document.
+      #
+      # @see Telnyx::Models::DocServiceDocument#av_scan_status
+      module AvScanStatus
+        extend Telnyx::Internal::Type::Enum
+
+        SCANNED = :scanned
+        INFECTED = :infected
+        PENDING_SCAN = :pending_scan
+        NOT_SCANNED = :not_scanned
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
       # @see Telnyx::Models::DocServiceDocument#size
       class Size < Telnyx::Internal::Type::BaseModel

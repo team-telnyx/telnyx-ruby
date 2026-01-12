@@ -1,0 +1,48 @@
+module Telnyx
+  module Resources
+    class AI
+      class McpServers
+        def create: (
+          name: String,
+          type: String,
+          url: String,
+          ?allowed_tools: ::Array[String]?,
+          ?api_key_ref: String?,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::McpServerCreateResponse
+
+        def retrieve: (
+          String mcp_server_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::McpServerRetrieveResponse
+
+        def update: (
+          String mcp_server_id,
+          ?id: String,
+          ?allowed_tools: ::Array[String]?,
+          ?api_key_ref: String?,
+          ?created_at: Time,
+          ?name: String,
+          ?type: String,
+          ?url: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::McpServerUpdateResponse
+
+        def list: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?type: String,
+          ?url: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPaginationTopLevelArray[Telnyx::Models::AI::McpServerListResponse]
+
+        def delete: (
+          String mcp_server_id,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

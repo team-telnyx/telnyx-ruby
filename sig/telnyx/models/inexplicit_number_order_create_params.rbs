@@ -1,0 +1,192 @@
+module Telnyx
+  module Models
+    type inexplicit_number_order_create_params =
+      {
+        ordering_groups: ::Array[Telnyx::InexplicitNumberOrderCreateParams::OrderingGroup],
+        billing_group_id: String,
+        connection_id: String,
+        customer_reference: String,
+        messaging_profile_id: String
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class InexplicitNumberOrderCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor ordering_groups: ::Array[Telnyx::InexplicitNumberOrderCreateParams::OrderingGroup]
+
+      attr_reader billing_group_id: String?
+
+      def billing_group_id=: (String) -> String
+
+      attr_reader connection_id: String?
+
+      def connection_id=: (String) -> String
+
+      attr_reader customer_reference: String?
+
+      def customer_reference=: (String) -> String
+
+      attr_reader messaging_profile_id: String?
+
+      def messaging_profile_id=: (String) -> String
+
+      def initialize: (
+        ordering_groups: ::Array[Telnyx::InexplicitNumberOrderCreateParams::OrderingGroup],
+        ?billing_group_id: String,
+        ?connection_id: String,
+        ?customer_reference: String,
+        ?messaging_profile_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        ordering_groups: ::Array[Telnyx::InexplicitNumberOrderCreateParams::OrderingGroup],
+        billing_group_id: String,
+        connection_id: String,
+        customer_reference: String,
+        messaging_profile_id: String,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type ordering_group =
+        {
+          count_requested: String,
+          country_iso: Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::country_iso,
+          phone_number_type: String,
+          administrative_area: String,
+          exclude_held_numbers: bool,
+          features: ::Array[String],
+          locality: String,
+          national_destination_code: String,
+          phone_number: Telnyx::InexplicitNumberOrderCreateParams::OrderingGroup::PhoneNumber,
+          quickship: bool,
+          strategy: Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::strategy
+        }
+
+      class OrderingGroup < Telnyx::Internal::Type::BaseModel
+        attr_accessor count_requested: String
+
+        attr_accessor country_iso: Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::country_iso
+
+        attr_accessor phone_number_type: String
+
+        attr_reader administrative_area: String?
+
+        def administrative_area=: (String) -> String
+
+        attr_reader exclude_held_numbers: bool?
+
+        def exclude_held_numbers=: (bool) -> bool
+
+        attr_reader features: ::Array[String]?
+
+        def features=: (::Array[String]) -> ::Array[String]
+
+        attr_reader locality: String?
+
+        def locality=: (String) -> String
+
+        attr_reader national_destination_code: String?
+
+        def national_destination_code=: (String) -> String
+
+        attr_reader phone_number: Telnyx::InexplicitNumberOrderCreateParams::OrderingGroup::PhoneNumber?
+
+        def phone_number=: (
+          Telnyx::InexplicitNumberOrderCreateParams::OrderingGroup::PhoneNumber
+        ) -> Telnyx::InexplicitNumberOrderCreateParams::OrderingGroup::PhoneNumber
+
+        attr_reader quickship: bool?
+
+        def quickship=: (bool) -> bool
+
+        attr_reader strategy: Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::strategy?
+
+        def strategy=: (
+          Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::strategy
+        ) -> Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::strategy
+
+        def initialize: (
+          count_requested: String,
+          country_iso: Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::country_iso,
+          phone_number_type: String,
+          ?administrative_area: String,
+          ?exclude_held_numbers: bool,
+          ?features: ::Array[String],
+          ?locality: String,
+          ?national_destination_code: String,
+          ?phone_number: Telnyx::InexplicitNumberOrderCreateParams::OrderingGroup::PhoneNumber,
+          ?quickship: bool,
+          ?strategy: Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::strategy
+        ) -> void
+
+        def to_hash: -> {
+          count_requested: String,
+          country_iso: Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::country_iso,
+          phone_number_type: String,
+          administrative_area: String,
+          exclude_held_numbers: bool,
+          features: ::Array[String],
+          locality: String,
+          national_destination_code: String,
+          phone_number: Telnyx::InexplicitNumberOrderCreateParams::OrderingGroup::PhoneNumber,
+          quickship: bool,
+          strategy: Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::strategy
+        }
+
+        type country_iso = :US | :CA
+
+        module CountryISO
+          extend Telnyx::Internal::Type::Enum
+
+          US: :US
+          CA: :CA
+
+          def self?.values: -> ::Array[Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::country_iso]
+        end
+
+        type phone_number =
+          { contains: String, ends_with: String, starts_with: String }
+
+        class PhoneNumber < Telnyx::Internal::Type::BaseModel
+          attr_reader contains: String?
+
+          def contains=: (String) -> String
+
+          attr_reader ends_with: String?
+
+          def ends_with=: (String) -> String
+
+          attr_reader starts_with: String?
+
+          def starts_with=: (String) -> String
+
+          def initialize: (
+            ?contains: String,
+            ?ends_with: String,
+            ?starts_with: String
+          ) -> void
+
+          def to_hash: -> {
+            contains: String,
+            ends_with: String,
+            starts_with: String
+          }
+        end
+
+        type strategy = :always | :never
+
+        module Strategy
+          extend Telnyx::Internal::Type::Enum
+
+          ALWAYS: :always
+          NEVER: :never
+
+          def self?.values: -> ::Array[Telnyx::Models::InexplicitNumberOrderCreateParams::OrderingGroup::strategy]
+        end
+      end
+    end
+  end
+end

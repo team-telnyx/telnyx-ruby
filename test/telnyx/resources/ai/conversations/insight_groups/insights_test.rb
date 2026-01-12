@@ -13,7 +13,7 @@ class Telnyx::Test::Resources::AI::Conversations::InsightGroups::InsightsTest < 
       )
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => nil
     end
   end
 
@@ -27,7 +27,7 @@ class Telnyx::Test::Resources::AI::Conversations::InsightGroups::InsightsTest < 
       )
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => nil
     end
   end
 end

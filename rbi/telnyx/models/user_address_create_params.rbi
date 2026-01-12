@@ -100,10 +100,10 @@ module Telnyx
       # that might make the address correct, they will be present in the response as
       # well. If this value is set to true, then the verification will not be attempted.
       # Defaults to false (verification will be performed).
-      sig { returns(T.nilable(String)) }
+      sig { returns(T.nilable(T::Boolean)) }
       attr_reader :skip_address_verification
 
-      sig { params(skip_address_verification: String).void }
+      sig { params(skip_address_verification: T::Boolean).void }
       attr_writer :skip_address_verification
 
       sig do
@@ -121,7 +121,7 @@ module Telnyx
           neighborhood: String,
           phone_number: String,
           postal_code: String,
-          skip_address_verification: String,
+          skip_address_verification: T::Boolean,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -189,7 +189,7 @@ module Telnyx
             neighborhood: String,
             phone_number: String,
             postal_code: String,
-            skip_address_verification: String,
+            skip_address_verification: T::Boolean,
             request_options: Telnyx::RequestOptions
           }
         )

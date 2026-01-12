@@ -6,6 +6,7 @@ module Telnyx
         webhook_event_url: String,
         active: bool,
         anchorsite_override: Telnyx::Models::CallControlApplicationUpdateParams::anchorsite_override,
+        call_cost_in_webhooks: bool,
         dtmf_type: Telnyx::Models::CallControlApplicationUpdateParams::dtmf_type,
         first_command_timeout: bool,
         first_command_timeout_secs: Integer,
@@ -36,6 +37,10 @@ module Telnyx
       def anchorsite_override=: (
         Telnyx::Models::CallControlApplicationUpdateParams::anchorsite_override
       ) -> Telnyx::Models::CallControlApplicationUpdateParams::anchorsite_override
+
+      attr_reader call_cost_in_webhooks: bool?
+
+      def call_cost_in_webhooks=: (bool) -> bool
 
       attr_reader dtmf_type: Telnyx::Models::CallControlApplicationUpdateParams::dtmf_type?
 
@@ -86,6 +91,7 @@ module Telnyx
         webhook_event_url: String,
         ?active: bool,
         ?anchorsite_override: Telnyx::Models::CallControlApplicationUpdateParams::anchorsite_override,
+        ?call_cost_in_webhooks: bool,
         ?dtmf_type: Telnyx::Models::CallControlApplicationUpdateParams::dtmf_type,
         ?first_command_timeout: bool,
         ?first_command_timeout_secs: Integer,
@@ -104,6 +110,7 @@ module Telnyx
         webhook_event_url: String,
         active: bool,
         anchorsite_override: Telnyx::Models::CallControlApplicationUpdateParams::anchorsite_override,
+        call_cost_in_webhooks: bool,
         dtmf_type: Telnyx::Models::CallControlApplicationUpdateParams::dtmf_type,
         first_command_timeout: bool,
         first_command_timeout_secs: Integer,
@@ -118,18 +125,28 @@ module Telnyx
       }
 
       type anchorsite_override =
-        :"\"Latency\""
-        | :"\"Chicago, IL\""
-        | :"\"Ashburn, VA\""
-        | :"\"San Jose, CA\""
+        :Latency
+        | :"Chicago, IL"
+        | :"Ashburn, VA"
+        | :"San Jose, CA"
+        | :"London, UK"
+        | :"Chennai, IN"
+        | :"Amsterdam, Netherlands"
+        | :"Toronto, Canada"
+        | :"Sydney, Australia"
 
       module AnchorsiteOverride
         extend Telnyx::Internal::Type::Enum
 
-        LATENCY: :"\"Latency\""
-        CHICAGO_IL: :"\"Chicago, IL\""
-        ASHBURN_VA: :"\"Ashburn, VA\""
-        SAN_JOSE_CA: :"\"San Jose, CA\""
+        LATENCY: :Latency
+        CHICAGO_IL: :"Chicago, IL"
+        ASHBURN_VA: :"Ashburn, VA"
+        SAN_JOSE_CA: :"San Jose, CA"
+        LONDON_UK: :"London, UK"
+        CHENNAI_IN: :"Chennai, IN"
+        AMSTERDAM_NETHERLANDS: :"Amsterdam, Netherlands"
+        TORONTO_CANADA: :"Toronto, Canada"
+        SYDNEY_AUSTRALIA: :"Sydney, Australia"
 
         def self?.values: -> ::Array[Telnyx::Models::CallControlApplicationUpdateParams::anchorsite_override]
       end
@@ -151,8 +168,8 @@ module Telnyx
       module WebhookAPIVersion
         extend Telnyx::Internal::Type::Enum
 
-        WEBHOOK_API_VERSION_1: :"1"
-        WEBHOOK_API_VERSION_2: :"2"
+        V1: :"1"
+        V2: :"2"
 
         def self?.values: -> ::Array[Telnyx::Models::CallControlApplicationUpdateParams::webhook_api_version]
       end

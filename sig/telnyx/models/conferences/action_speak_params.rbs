@@ -9,6 +9,7 @@ module Telnyx
           command_id: String,
           language: Telnyx::Models::Conferences::ActionSpeakParams::language,
           payload_type: Telnyx::Models::Conferences::ActionSpeakParams::payload_type,
+          region: Telnyx::Models::Conferences::ActionSpeakParams::region,
           voice_settings: Telnyx::Models::Conferences::ActionSpeakParams::voice_settings
         }
         & Telnyx::Internal::Type::request_parameters
@@ -41,6 +42,12 @@ module Telnyx
           Telnyx::Models::Conferences::ActionSpeakParams::payload_type
         ) -> Telnyx::Models::Conferences::ActionSpeakParams::payload_type
 
+        attr_reader region: Telnyx::Models::Conferences::ActionSpeakParams::region?
+
+        def region=: (
+          Telnyx::Models::Conferences::ActionSpeakParams::region
+        ) -> Telnyx::Models::Conferences::ActionSpeakParams::region
+
         attr_reader voice_settings: Telnyx::Models::Conferences::ActionSpeakParams::voice_settings?
 
         def voice_settings=: (
@@ -54,6 +61,7 @@ module Telnyx
           ?command_id: String,
           ?language: Telnyx::Models::Conferences::ActionSpeakParams::language,
           ?payload_type: Telnyx::Models::Conferences::ActionSpeakParams::payload_type,
+          ?region: Telnyx::Models::Conferences::ActionSpeakParams::region,
           ?voice_settings: Telnyx::Models::Conferences::ActionSpeakParams::voice_settings,
           ?request_options: Telnyx::request_opts
         ) -> void
@@ -65,6 +73,7 @@ module Telnyx
           command_id: String,
           language: Telnyx::Models::Conferences::ActionSpeakParams::language,
           payload_type: Telnyx::Models::Conferences::ActionSpeakParams::payload_type,
+          region: Telnyx::Models::Conferences::ActionSpeakParams::region,
           voice_settings: Telnyx::Models::Conferences::ActionSpeakParams::voice_settings,
           request_options: Telnyx::RequestOptions
         }
@@ -147,10 +156,23 @@ module Telnyx
           def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionSpeakParams::payload_type]
         end
 
+        type region = :Australia | :Europe | :"Middle East" | :US
+
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          AUSTRALIA: :Australia
+          EUROPE: :Europe
+          MIDDLE_EAST: :"Middle East"
+          US: :US
+
+          def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionSpeakParams::region]
+        end
+
         type voice_settings =
           Telnyx::Calls::ElevenLabsVoiceSettings
           | Telnyx::Calls::TelnyxVoiceSettings
-          | top
+          | Telnyx::Calls::AwsVoiceSettings
 
         module VoiceSettings
           extend Telnyx::Internal::Type::Union

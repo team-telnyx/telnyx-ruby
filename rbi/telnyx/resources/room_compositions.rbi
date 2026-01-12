@@ -6,13 +6,13 @@ module Telnyx
       # Asynchronously create a room composition.
       sig do
         params(
-          format_: T.nilable(String),
-          resolution: T.nilable(String),
-          session_id: T.nilable(String),
+          format_: String,
+          resolution: String,
+          session_id: String,
           video_layout: T::Hash[Symbol, Telnyx::VideoRegion::OrHash],
-          webhook_event_failover_url: T.nilable(String),
+          webhook_event_failover_url: String,
           webhook_event_url: String,
-          webhook_timeout_secs: T.nilable(Integer),
+          webhook_timeout_secs: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::RoomCompositionCreateResponse)
       end
@@ -59,7 +59,7 @@ module Telnyx
           filter: Telnyx::RoomCompositionListParams::Filter::OrHash,
           page: Telnyx::RoomCompositionListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::RoomCompositionListResponse)
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::RoomComposition])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

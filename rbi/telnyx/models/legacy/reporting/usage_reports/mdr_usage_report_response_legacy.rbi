@@ -28,10 +28,10 @@ module Telnyx
             sig { params(aggregation_type: Integer).void }
             attr_writer :aggregation_type
 
-            sig { returns(T.nilable(T::Array[Integer])) }
+            sig { returns(T.nilable(T::Array[String])) }
             attr_reader :connections
 
-            sig { params(connections: T::Array[Integer]).void }
+            sig { params(connections: T::Array[String]).void }
             attr_writer :connections
 
             sig { returns(T.nilable(Time)) }
@@ -65,10 +65,10 @@ module Telnyx
             sig { params(report_url: String).void }
             attr_writer :report_url
 
-            sig { returns(T.nilable(T.anything)) }
+            sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
             attr_reader :result
 
-            sig { params(result: T.anything).void }
+            sig { params(result: T::Hash[Symbol, T.anything]).void }
             attr_writer :result
 
             sig { returns(T.nilable(Time)) }
@@ -95,13 +95,13 @@ module Telnyx
               params(
                 id: String,
                 aggregation_type: Integer,
-                connections: T::Array[Integer],
+                connections: T::Array[String],
                 created_at: Time,
                 end_time: Time,
                 profiles: T::Array[String],
                 record_type: String,
                 report_url: String,
-                result: T.anything,
+                result: T::Hash[Symbol, T.anything],
                 start_time: Time,
                 status: Integer,
                 updated_at: Time
@@ -132,13 +132,13 @@ module Telnyx
                 {
                   id: String,
                   aggregation_type: Integer,
-                  connections: T::Array[Integer],
+                  connections: T::Array[String],
                   created_at: Time,
                   end_time: Time,
                   profiles: T::Array[String],
                   record_type: String,
                   report_url: String,
-                  result: T.anything,
+                  result: T::Hash[Symbol, T.anything],
                   start_time: Time,
                   status: Integer,
                   updated_at: Time

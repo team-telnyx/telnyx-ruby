@@ -23,6 +23,29 @@ module Telnyx
       sig { params(filter: Telnyx::PhoneNumberListParams::Filter::OrHash).void }
       attr_writer :filter
 
+      # Although it is an infrequent occurrence, due to the highly distributed nature of
+      # the Telnyx platform, it is possible that there will be an issue when loading in
+      # Messaging Profile information. As such, when this parameter is set to `true` and
+      # an error in fetching this information occurs, messaging profile related fields
+      # will be omitted in the response and an error message will be included instead of
+      # returning a 503 error.
+      sig do
+        returns(
+          T.nilable(
+            Telnyx::PhoneNumberListParams::HandleMessagingProfileError::OrSymbol
+          )
+        )
+      end
+      attr_reader :handle_messaging_profile_error
+
+      sig do
+        params(
+          handle_messaging_profile_error:
+            Telnyx::PhoneNumberListParams::HandleMessagingProfileError::OrSymbol
+        ).void
+      end
+      attr_writer :handle_messaging_profile_error
+
       # Consolidated page parameter (deepObject style). Originally: page[size],
       # page[number]
       sig { returns(T.nilable(Telnyx::PhoneNumberListParams::Page)) }
@@ -42,6 +65,8 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::PhoneNumberListParams::Filter::OrHash,
+          handle_messaging_profile_error:
+            Telnyx::PhoneNumberListParams::HandleMessagingProfileError::OrSymbol,
           page: Telnyx::PhoneNumberListParams::Page::OrHash,
           sort: Telnyx::PhoneNumberListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
@@ -55,6 +80,13 @@ module Telnyx
         # filter[emergency_address_id], filter[customer_reference], filter[number_type],
         # filter[source]
         filter: nil,
+        # Although it is an infrequent occurrence, due to the highly distributed nature of
+        # the Telnyx platform, it is possible that there will be an issue when loading in
+        # Messaging Profile information. As such, when this parameter is set to `true` and
+        # an error in fetching this information occurs, messaging profile related fields
+        # will be omitted in the response and an error message will be included instead of
+        # returning a 503 error.
+        handle_messaging_profile_error: nil,
         # Consolidated page parameter (deepObject style). Originally: page[size],
         # page[number]
         page: nil,
@@ -69,6 +101,8 @@ module Telnyx
         override.returns(
           {
             filter: Telnyx::PhoneNumberListParams::Filter,
+            handle_messaging_profile_error:
+              Telnyx::PhoneNumberListParams::HandleMessagingProfileError::OrSymbol,
             page: Telnyx::PhoneNumberListParams::Page,
             sort: Telnyx::PhoneNumberListParams::Sort::OrSymbol,
             request_options: Telnyx::RequestOptions
@@ -709,6 +743,46 @@ module Telnyx
           end
           def self.values
           end
+        end
+      end
+
+      # Although it is an infrequent occurrence, due to the highly distributed nature of
+      # the Telnyx platform, it is possible that there will be an issue when loading in
+      # Messaging Profile information. As such, when this parameter is set to `true` and
+      # an error in fetching this information occurs, messaging profile related fields
+      # will be omitted in the response and an error message will be included instead of
+      # returning a 503 error.
+      module HandleMessagingProfileError
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Telnyx::PhoneNumberListParams::HandleMessagingProfileError
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        TRUE =
+          T.let(
+            :true,
+            Telnyx::PhoneNumberListParams::HandleMessagingProfileError::TaggedSymbol
+          )
+        FALSE =
+          T.let(
+            :false,
+            Telnyx::PhoneNumberListParams::HandleMessagingProfileError::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Telnyx::PhoneNumberListParams::HandleMessagingProfileError::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
         end
       end
 

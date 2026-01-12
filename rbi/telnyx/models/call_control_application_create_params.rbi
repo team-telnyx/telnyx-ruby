@@ -51,6 +51,14 @@ module Telnyx
       end
       attr_writer :anchorsite_override
 
+      # Specifies if call cost webhooks should be sent for this Call Control
+      # Application.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :call_cost_in_webhooks
+
+      sig { params(call_cost_in_webhooks: T::Boolean).void }
+      attr_writer :call_cost_in_webhooks
+
       # Sets the type of DTMF digits sent from Telnyx to this Connection. Note that DTMF
       # digits sent to Telnyx will be accepted in all formats.
       sig do
@@ -143,6 +151,7 @@ module Telnyx
           active: T::Boolean,
           anchorsite_override:
             Telnyx::CallControlApplicationCreateParams::AnchorsiteOverride::OrSymbol,
+          call_cost_in_webhooks: T::Boolean,
           dtmf_type:
             Telnyx::CallControlApplicationCreateParams::DtmfType::OrSymbol,
           first_command_timeout: T::Boolean,
@@ -170,6 +179,9 @@ module Telnyx
         # using ICMP ping messages. This can be disabled by specifying a site to handle
         # all media.
         anchorsite_override: nil,
+        # Specifies if call cost webhooks should be sent for this Call Control
+        # Application.
+        call_cost_in_webhooks: nil,
         # Sets the type of DTMF digits sent from Telnyx to this Connection. Note that DTMF
         # digits sent to Telnyx will be accepted in all formats.
         dtmf_type: nil,
@@ -202,6 +214,7 @@ module Telnyx
             active: T::Boolean,
             anchorsite_override:
               Telnyx::CallControlApplicationCreateParams::AnchorsiteOverride::OrSymbol,
+            call_cost_in_webhooks: T::Boolean,
             dtmf_type:
               Telnyx::CallControlApplicationCreateParams::DtmfType::OrSymbol,
             first_command_timeout: T::Boolean,
@@ -238,22 +251,47 @@ module Telnyx
 
         LATENCY =
           T.let(
-            :"\"Latency\"",
+            :Latency,
             Telnyx::CallControlApplicationCreateParams::AnchorsiteOverride::TaggedSymbol
           )
         CHICAGO_IL =
           T.let(
-            :"\"Chicago, IL\"",
+            :"Chicago, IL",
             Telnyx::CallControlApplicationCreateParams::AnchorsiteOverride::TaggedSymbol
           )
         ASHBURN_VA =
           T.let(
-            :"\"Ashburn, VA\"",
+            :"Ashburn, VA",
             Telnyx::CallControlApplicationCreateParams::AnchorsiteOverride::TaggedSymbol
           )
         SAN_JOSE_CA =
           T.let(
-            :"\"San Jose, CA\"",
+            :"San Jose, CA",
+            Telnyx::CallControlApplicationCreateParams::AnchorsiteOverride::TaggedSymbol
+          )
+        LONDON_UK =
+          T.let(
+            :"London, UK",
+            Telnyx::CallControlApplicationCreateParams::AnchorsiteOverride::TaggedSymbol
+          )
+        CHENNAI_IN =
+          T.let(
+            :"Chennai, IN",
+            Telnyx::CallControlApplicationCreateParams::AnchorsiteOverride::TaggedSymbol
+          )
+        AMSTERDAM_NETHERLANDS =
+          T.let(
+            :"Amsterdam, Netherlands",
+            Telnyx::CallControlApplicationCreateParams::AnchorsiteOverride::TaggedSymbol
+          )
+        TORONTO_CANADA =
+          T.let(
+            :"Toronto, Canada",
+            Telnyx::CallControlApplicationCreateParams::AnchorsiteOverride::TaggedSymbol
+          )
+        SYDNEY_AUSTRALIA =
+          T.let(
+            :"Sydney, Australia",
             Telnyx::CallControlApplicationCreateParams::AnchorsiteOverride::TaggedSymbol
           )
 
@@ -319,12 +357,12 @@ module Telnyx
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        WEBHOOK_API_VERSION_1 =
+        V1 =
           T.let(
             :"1",
             Telnyx::CallControlApplicationCreateParams::WebhookAPIVersion::TaggedSymbol
           )
-        WEBHOOK_API_VERSION_2 =
+        V2 =
           T.let(
             :"2",
             Telnyx::CallControlApplicationCreateParams::WebhookAPIVersion::TaggedSymbol

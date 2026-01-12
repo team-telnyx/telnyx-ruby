@@ -27,13 +27,13 @@ module Telnyx
 
           # @!attribute status
           #
-          #   @return [Symbol, Telnyx::Models::TaskStatus]
-          required :status, enum: -> { Telnyx::TaskStatus }
+          #   @return [Symbol, Telnyx::Models::Messaging10dlc::TaskStatus]
+          required :status, enum: -> { Telnyx::Messaging10dlc::TaskStatus }
 
           # @!method initialize(bucket:, clusters:, status:)
           #   @param bucket [String]
           #   @param clusters [Array<Telnyx::Models::AI::RecursiveCluster>]
-          #   @param status [Symbol, Telnyx::Models::TaskStatus]
+          #   @param status [Symbol, Telnyx::Models::Messaging10dlc::TaskStatus]
         end
       end
     end

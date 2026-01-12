@@ -11,7 +11,11 @@ module Telnyx
           page: Telnyx::MessagingOptoutListParams::Page::OrHash,
           redaction_enabled: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::MessagingOptoutListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[
+            Telnyx::Models::MessagingOptoutListResponse
+          ]
+        )
       end
       def list(
         # Consolidated created_at parameter (deepObject style). Originally:

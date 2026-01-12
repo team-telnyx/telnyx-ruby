@@ -121,7 +121,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::OAuthClientListResponse]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::OAuthClient>]
       #
       # @see Telnyx::Models::OAuthClientListParams
       def list(params = {})
@@ -139,7 +139,8 @@ module Telnyx
             page_number: "page[number]",
             page_size: "page[size]"
           ),
-          model: Telnyx::Models::OAuthClientListResponse,
+          page: Telnyx::Internal::DefaultFlatPagination,
+          model: Telnyx::OAuthClient,
           options: options
         )
       end

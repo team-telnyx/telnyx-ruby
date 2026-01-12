@@ -41,13 +41,37 @@ class Telnyx::Test::Resources::SimCardsTest < Telnyx::Test::ResourceTest
     response = @telnyx.sim_cards.list
 
     assert_pattern do
-      response => Telnyx::Models::SimCardListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::SimpleSimCard
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::SimpleSimCard]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        actions_in_progress: Telnyx::Internal::Type::Boolean | nil,
+        authorized_imeis: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
+        created_at: String | nil,
+        current_billing_period_consumed_data: Telnyx::SimpleSimCard::CurrentBillingPeriodConsumedData | nil,
+        data_limit: Telnyx::SimpleSimCard::DataLimit | nil,
+        eid: String | nil,
+        esim_installation_status: Telnyx::SimpleSimCard::EsimInstallationStatus | nil,
+        iccid: String | nil,
+        imsi: String | nil,
+        msisdn: String | nil,
+        record_type: String | nil,
+        resources_with_in_progress_actions: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]) | nil,
+        sim_card_group_id: String | nil,
+        status: Telnyx::SimCardStatus | nil,
+        tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
+        type: Telnyx::SimpleSimCard::Type | nil,
+        updated_at: String | nil,
+        version: String | nil
       }
     end
   end
@@ -122,13 +146,36 @@ class Telnyx::Test::Resources::SimCardsTest < Telnyx::Test::ResourceTest
     response = @telnyx.sim_cards.list_wireless_connectivity_logs("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 
     assert_pattern do
-      response => Telnyx::Models::SimCardListWirelessConnectivityLogsResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::SimCardListWirelessConnectivityLogsResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::Data]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: Integer | nil,
+        apn: String | nil,
+        cell_id: String | nil,
+        created_at: String | nil,
+        imei: String | nil,
+        imsi: String | nil,
+        ipv4: String | nil,
+        ipv6: String | nil,
+        last_seen: String | nil,
+        log_type: Telnyx::Models::SimCardListWirelessConnectivityLogsResponse::LogType | nil,
+        mobile_country_code: String | nil,
+        mobile_network_code: String | nil,
+        radio_access_technology: String | nil,
+        record_type: String | nil,
+        sim_card_id: String | nil,
+        start_time: String | nil,
+        state: String | nil,
+        stop_time: String | nil
       }
     end
   end

@@ -1,0 +1,36 @@
+module Telnyx
+  module Resources
+    class MobilePhoneNumbers
+      attr_reader messaging: Telnyx::Resources::MobilePhoneNumbers::Messaging
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MobilePhoneNumberRetrieveResponse
+
+      def update: (
+        String id,
+        ?call_forwarding: Telnyx::MobilePhoneNumberUpdateParams::CallForwarding,
+        ?call_recording: Telnyx::MobilePhoneNumberUpdateParams::CallRecording,
+        ?caller_id_name_enabled: bool,
+        ?cnam_listing: Telnyx::MobilePhoneNumberUpdateParams::CnamListing,
+        ?connection_id: String?,
+        ?customer_reference: String?,
+        ?inbound: Telnyx::MobilePhoneNumberUpdateParams::Inbound,
+        ?inbound_call_screening: Telnyx::Models::MobilePhoneNumberUpdateParams::inbound_call_screening,
+        ?noise_suppression: bool,
+        ?outbound: Telnyx::MobilePhoneNumberUpdateParams::Outbound,
+        ?tags: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MobilePhoneNumberUpdateResponse
+
+      def list: (
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::MobilePhoneNumber]
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

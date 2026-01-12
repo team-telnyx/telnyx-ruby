@@ -2,13 +2,13 @@ module Telnyx
   module Resources
     class RoomCompositions
       def create: (
-        ?format_: String?,
-        ?resolution: String?,
-        ?session_id: String?,
+        ?format_: String,
+        ?resolution: String,
+        ?session_id: String,
         ?video_layout: ::Hash[Symbol, Telnyx::VideoRegion],
-        ?webhook_event_failover_url: String?,
+        ?webhook_event_failover_url: String,
         ?webhook_event_url: String,
-        ?webhook_timeout_secs: Integer?,
+        ?webhook_timeout_secs: Integer,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::RoomCompositionCreateResponse
 
@@ -21,7 +21,7 @@ module Telnyx
         ?filter: Telnyx::RoomCompositionListParams::Filter,
         ?page: Telnyx::RoomCompositionListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::RoomCompositionListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::RoomComposition]
 
       def delete: (
         String room_composition_id,

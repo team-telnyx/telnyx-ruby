@@ -1,0 +1,63 @@
+module Telnyx
+  module Models
+    module AI
+      type integration_retrieve_response =
+        {
+          id: String,
+          available_tools: ::Array[String],
+          description: String,
+          display_name: String,
+          logo_url: String,
+          name: String,
+          status: Telnyx::Models::AI::IntegrationRetrieveResponse::status
+        }
+
+      class IntegrationRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor available_tools: ::Array[String]
+
+        attr_accessor description: String
+
+        attr_accessor display_name: String
+
+        attr_accessor logo_url: String
+
+        attr_accessor name: String
+
+        attr_accessor status: Telnyx::Models::AI::IntegrationRetrieveResponse::status
+
+        def initialize: (
+          id: String,
+          available_tools: ::Array[String],
+          description: String,
+          display_name: String,
+          logo_url: String,
+          name: String,
+          status: Telnyx::Models::AI::IntegrationRetrieveResponse::status
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          available_tools: ::Array[String],
+          description: String,
+          display_name: String,
+          logo_url: String,
+          name: String,
+          status: Telnyx::Models::AI::IntegrationRetrieveResponse::status
+        }
+
+        type status = :disconnected | :connected
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          DISCONNECTED: :disconnected
+          CONNECTED: :connected
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::IntegrationRetrieveResponse::status]
+        end
+      end
+    end
+  end
+end

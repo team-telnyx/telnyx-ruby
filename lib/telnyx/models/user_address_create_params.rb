@@ -103,8 +103,8 @@ module Telnyx
       #   well. If this value is set to true, then the verification will not be attempted.
       #   Defaults to false (verification will be performed).
       #
-      #   @return [String, nil]
-      optional :skip_address_verification, String
+      #   @return [Boolean, nil]
+      optional :skip_address_verification, Telnyx::Internal::Type::Boolean
 
       # @!method initialize(business_name:, country_code:, first_name:, last_name:, locality:, street_address:, administrative_area: nil, borough: nil, customer_reference: nil, extended_address: nil, neighborhood: nil, phone_number: nil, postal_code: nil, skip_address_verification: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -136,7 +136,7 @@ module Telnyx
       #
       #   @param postal_code [String] The postal code of the user address.
       #
-      #   @param skip_address_verification [String] An optional boolean value specifying if verification of the address should be sk
+      #   @param skip_address_verification [Boolean] An optional boolean value specifying if verification of the address should be sk
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end

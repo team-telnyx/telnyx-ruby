@@ -11,17 +11,11 @@ module Telnyx
       # This attribute is an [error code](https://developers.telnyx.com/api/errors)
       # related to the failure reason.
       sig { returns(T.nilable(String)) }
-      attr_reader :error_code
-
-      sig { params(error_code: String).void }
-      attr_writer :error_code
+      attr_accessor :error_code
 
       # This attribute provides a human-readable explanation of why a failure happened.
       sig { returns(T.nilable(String)) }
-      attr_reader :error_description
-
-      sig { params(error_description: String).void }
-      attr_writer :error_description
+      attr_accessor :error_description
 
       # The current status or failure details of the Private Wireless Gateway. <ul>
       #
@@ -48,8 +42,8 @@ module Telnyx
       # The current status or failure details of the Private Wireless Gateway.
       sig do
         params(
-          error_code: String,
-          error_description: String,
+          error_code: T.nilable(String),
+          error_description: T.nilable(String),
           value: Telnyx::PrivateWirelessGatewayStatus::Value::OrSymbol
         ).returns(T.attached_class)
       end
@@ -74,8 +68,8 @@ module Telnyx
       sig do
         override.returns(
           {
-            error_code: String,
-            error_description: String,
+            error_code: T.nilable(String),
+            error_description: T.nilable(String),
             value: Telnyx::PrivateWirelessGatewayStatus::Value::TaggedSymbol
           }
         )

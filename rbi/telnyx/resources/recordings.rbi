@@ -26,13 +26,15 @@ module Telnyx
           filter: Telnyx::RecordingListParams::Filter::OrHash,
           page: Telnyx::RecordingListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::RecordingListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[Telnyx::RecordingResponseData]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[conference_id], filter[created_at][gte], filter[created_at][lte],
         # filter[call_leg_id], filter[call_session_id], filter[from], filter[to],
-        # filter[connection_id]
+        # filter[connection_id], filter[sip_call_id]
         filter: nil,
         # Consolidated page parameter (deepObject style). Originally: page[size],
         # page[number]

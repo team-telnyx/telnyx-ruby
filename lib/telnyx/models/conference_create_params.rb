@@ -80,6 +80,13 @@ module Telnyx
       #   @return [Integer, nil]
       optional :max_participants, Integer
 
+      # @!attribute region
+      #   Sets the region where the conference data will be hosted. Defaults to the region
+      #   defined in user's data locality settings (Europe or US).
+      #
+      #   @return [Symbol, Telnyx::Models::ConferenceCreateParams::Region, nil]
+      optional :region, enum: -> { Telnyx::ConferenceCreateParams::Region }
+
       # @!attribute start_conference_on_create
       #   Whether the conference should be started on creation. If the conference isn't
       #   started all participants that join are automatically put on hold. Defaults to
@@ -88,7 +95,7 @@ module Telnyx
       #   @return [Boolean, nil]
       optional :start_conference_on_create, Telnyx::Internal::Type::Boolean
 
-      # @!method initialize(call_control_id:, name:, beep_enabled: nil, client_state: nil, comfort_noise: nil, command_id: nil, duration_minutes: nil, hold_audio_url: nil, hold_media_name: nil, max_participants: nil, start_conference_on_create: nil, request_options: {})
+      # @!method initialize(call_control_id:, name:, beep_enabled: nil, client_state: nil, comfort_noise: nil, command_id: nil, duration_minutes: nil, hold_audio_url: nil, hold_media_name: nil, max_participants: nil, region: nil, start_conference_on_create: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::ConferenceCreateParams} for more details.
       #
@@ -112,6 +119,8 @@ module Telnyx
       #
       #   @param max_participants [Integer] The maximum number of active conference participants to allow. Must be between 2
       #
+      #   @param region [Symbol, Telnyx::Models::ConferenceCreateParams::Region] Sets the region where the conference data will be hosted. Defaults to the region
+      #
       #   @param start_conference_on_create [Boolean] Whether the conference should be started on creation. If the conference isn't st
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
@@ -125,6 +134,20 @@ module Telnyx
         NEVER = :never
         ON_ENTER = :on_enter
         ON_EXIT = :on_exit
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # Sets the region where the conference data will be hosted. Defaults to the region
+      # defined in user's data locality settings (Europe or US).
+      module Region
+        extend Telnyx::Internal::Type::Enum
+
+        AUSTRALIA = :Australia
+        EUROPE = :Europe
+        MIDDLE_EAST = :"Middle East"
+        US = :US
 
         # @!method self.values
         #   @return [Array<Symbol>]

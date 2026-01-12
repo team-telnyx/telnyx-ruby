@@ -2,21 +2,15 @@ module Telnyx
   module Models
     type porting_order_misc =
       {
-        new_billing_phone_number: String,
-        remaining_numbers_action: Telnyx::Models::PortingOrderMisc::remaining_numbers_action,
+        new_billing_phone_number: String?,
+        remaining_numbers_action: Telnyx::Models::PortingOrderMisc::remaining_numbers_action?,
         type: Telnyx::Models::porting_order_type
       }
 
     class PortingOrderMisc < Telnyx::Internal::Type::BaseModel
-      attr_reader new_billing_phone_number: String?
+      attr_accessor new_billing_phone_number: String?
 
-      def new_billing_phone_number=: (String) -> String
-
-      attr_reader remaining_numbers_action: Telnyx::Models::PortingOrderMisc::remaining_numbers_action?
-
-      def remaining_numbers_action=: (
-        Telnyx::Models::PortingOrderMisc::remaining_numbers_action
-      ) -> Telnyx::Models::PortingOrderMisc::remaining_numbers_action
+      attr_accessor remaining_numbers_action: Telnyx::Models::PortingOrderMisc::remaining_numbers_action?
 
       attr_reader type: Telnyx::Models::porting_order_type?
 
@@ -25,14 +19,14 @@ module Telnyx
       ) -> Telnyx::Models::porting_order_type
 
       def initialize: (
-        ?new_billing_phone_number: String,
-        ?remaining_numbers_action: Telnyx::Models::PortingOrderMisc::remaining_numbers_action,
+        ?new_billing_phone_number: String?,
+        ?remaining_numbers_action: Telnyx::Models::PortingOrderMisc::remaining_numbers_action?,
         ?type: Telnyx::Models::porting_order_type
       ) -> void
 
       def to_hash: -> {
-        new_billing_phone_number: String,
-        remaining_numbers_action: Telnyx::Models::PortingOrderMisc::remaining_numbers_action,
+        new_billing_phone_number: String?,
+        remaining_numbers_action: Telnyx::Models::PortingOrderMisc::remaining_numbers_action?,
         type: Telnyx::Models::porting_order_type
       }
 

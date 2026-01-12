@@ -143,8 +143,8 @@ module Telnyx
         # - `call.bridged` for Leg B
         sig do
           params(
-            path_call_control_id: String,
-            body_call_control_id: String,
+            call_control_id_to_bridge: String,
+            call_control_id_to_bridge_with: String,
             client_state: String,
             command_id: String,
             mute_dtmf: Telnyx::Calls::ActionBridgeParams::MuteDtmf::OrSymbol,
@@ -171,10 +171,10 @@ module Telnyx
         end
         def bridge(
           # Unique identifier and token for controlling the call
-          path_call_control_id,
+          call_control_id_to_bridge,
           # The Call Control ID of the call you want to bridge with, can't be used together
           # with queue parameter or video_room_id parameter.
-          body_call_control_id:,
+          call_control_id_to_bridge_with:,
           # Use this field to add state to every subsequent webhook. It must be a valid
           # Base-64 encoded string.
           client_state: nil,
@@ -246,6 +246,7 @@ module Telnyx
             queue_name: String,
             client_state: String,
             command_id: String,
+            keep_after_hangup: T::Boolean,
             max_size: Integer,
             max_wait_time_secs: Integer,
             request_options: Telnyx::RequestOptions::OrHash
@@ -263,6 +264,10 @@ module Telnyx
           # Use this field to avoid duplicate commands. Telnyx will ignore any command with
           # the same `command_id` for the same `call_control_id`.
           command_id: nil,
+          # If set to true, the call will remain in the queue after hangup. In this case
+          # bridging to such call will fail with necessary information needed to
+          # re-establish the call.
+          keep_after_hangup: nil,
           # The maximum number of calls allowed in the queue at a given time. Can't be
           # modified for an existing queue.
           max_size: nil,
@@ -344,7 +349,7 @@ module Telnyx
         sig do
           params(
             call_control_id: String,
-            parameters: T.anything,
+            parameters: T::Hash[Symbol, T.anything],
             assistant: Telnyx::AI::Assistant::OrHash,
             client_state: String,
             command_id: String,
@@ -364,7 +369,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T.anything
+                Telnyx::Calls::AwsVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingAIResponse)
@@ -563,7 +568,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T.anything
+                Telnyx::Calls::AwsVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingSpeakResponse)
@@ -920,7 +925,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T.anything
+                Telnyx::Calls::AwsVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionSpeakResponse)
@@ -1006,7 +1011,7 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                T.anything
+                Telnyx::Calls::AwsVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartAIAssistantResponse)
@@ -1117,6 +1122,8 @@ module Telnyx
               Telnyx::Calls::ActionStartNoiseSuppressionParams::Direction::OrSymbol,
             noise_suppression_engine:
               Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine::OrSymbol,
+            noise_suppression_engine_config:
+              Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartNoiseSuppressionResponse)
         end
@@ -1131,9 +1138,11 @@ module Telnyx
           command_id: nil,
           # The direction of the audio stream to be noise suppressed.
           direction: nil,
-          # The engine to use for noise suppression. A - rnnoise engine B - deepfilter
-          # engine.
+          # The engine to use for noise suppression. For backward compatibility, engines A
+          # and B are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
           noise_suppression_engine: nil,
+          # Configuration parameters for noise suppression engines.
+          noise_suppression_engine_config: nil,
           request_options: {}
         )
         end
@@ -1430,11 +1439,13 @@ module Telnyx
               Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngine::OrSymbol,
             transcription_engine_config:
               T.any(
-                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Google::OrHash,
-                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Telnyx::OrHash,
-                ::Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Deepgram::OrHash,
-                ::Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
-                ::Telnyx::Calls::TranscriptionEngineBConfig::OrHash
+                Telnyx::Calls::TranscriptionEngineGoogleConfig::OrHash,
+                Telnyx::Calls::TranscriptionEngineTelnyxConfig::OrHash,
+                Telnyx::Calls::TranscriptionEngineAzureConfig::OrHash,
+                Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
+                Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::OrHash,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::OrHash
               ),
             transcription_tracks: String,
             request_options: Telnyx::RequestOptions::OrHash
@@ -1775,6 +1786,8 @@ module Telnyx
             sip_auth_password: String,
             sip_auth_username: String,
             sip_headers: T::Array[Telnyx::SipHeader::OrHash],
+            sip_region:
+              Telnyx::Calls::ActionTransferParams::SipRegion::OrSymbol,
             sip_transport_protocol:
               Telnyx::Calls::ActionTransferParams::SipTransportProtocol::OrSymbol,
             sound_modifications: Telnyx::SoundModifications::OrHash,
@@ -1875,6 +1888,8 @@ module Telnyx
           # SIP headers to be added to the SIP INVITE. Currently only User-to-User header is
           # supported.
           sip_headers: nil,
+          # Defines the SIP region to be used for the call.
+          sip_region: nil,
           # Defines SIP transport protocol to be used on the call.
           sip_transport_protocol: nil,
           # Use this field to modify sound effects, for example adjust the pitch.

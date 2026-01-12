@@ -25,13 +25,25 @@ class Telnyx::Test::Resources::AI::ClustersTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.clusters.list
 
     assert_pattern do
-      response => Telnyx::Models::AI::ClusterListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::AI::ClusterListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::ClusterListResponse::Data]),
-        meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+      row => {
+        bucket: String,
+        created_at: Time,
+        finished_at: Time,
+        min_cluster_size: Integer,
+        min_subcluster_size: Integer,
+        status: Telnyx::Messaging10dlc::TaskStatus,
+        task_id: String
       }
     end
   end
@@ -63,12 +75,12 @@ class Telnyx::Test::Resources::AI::ClustersTest < Telnyx::Test::ResourceTest
   end
 
   def test_fetch_graph
-    skip("Prism tests are disabled")
+    skip("Prism doesn't support image/png responses")
 
     response = @telnyx.ai.clusters.fetch_graph("task_id")
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => StringIO
     end
   end
 end

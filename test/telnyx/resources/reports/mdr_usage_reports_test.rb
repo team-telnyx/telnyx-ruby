@@ -46,13 +46,30 @@ class Telnyx::Test::Resources::Reports::MdrUsageReportsTest < Telnyx::Test::Reso
     response = @telnyx.reports.mdr_usage_reports.list
 
     assert_pattern do
-      response => Telnyx::Models::Reports::MdrUsageReportListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Reports::MdrUsageReport
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Reports::MdrUsageReport]) | nil,
-        meta: Telnyx::Reports::PaginationMetaReporting | nil
+      row => {
+        id: String | nil,
+        aggregation_type: Telnyx::Reports::MdrUsageReport::AggregationType | nil,
+        connections: ^(Telnyx::Internal::Type::ArrayOf[Integer]) | nil,
+        created_at: Time | nil,
+        end_date: Time | nil,
+        profiles: String | nil,
+        record_type: String | nil,
+        report_url: String | nil,
+        result: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Reports::MdrUsageReport::Result]) | nil,
+        start_date: Time | nil,
+        status: Telnyx::Reports::MdrUsageReport::Status | nil,
+        updated_at: Time | nil
       }
     end
   end
@@ -76,7 +93,7 @@ class Telnyx::Test::Resources::Reports::MdrUsageReportsTest < Telnyx::Test::Reso
   def test_fetch_sync_required_params
     skip("Prism tests are disabled")
 
-    response = @telnyx.reports.mdr_usage_reports.fetch_sync(aggregation_type: :NO_AGGREGATION)
+    response = @telnyx.reports.mdr_usage_reports.fetch_sync(aggregation_type: :PROFILE)
 
     assert_pattern do
       response => Telnyx::Models::Reports::MdrUsageReportFetchSyncResponse

@@ -18,12 +18,26 @@ module Telnyx
       sig { params(id: String).void }
       attr_writer :id
 
+      sig do
+        returns(
+          T.nilable(
+            T::Array[Telnyx::Models::MessageCancelScheduledResponse::Cc]
+          )
+        )
+      end
+      attr_reader :cc
+
+      sig do
+        params(
+          cc:
+            T::Array[Telnyx::Models::MessageCancelScheduledResponse::Cc::OrHash]
+        ).void
+      end
+      attr_writer :cc
+
       # ISO 8601 formatted date indicating when the message was finalized.
       sig { returns(T.nilable(Time)) }
-      attr_reader :completed_at
-
-      sig { params(completed_at: Time).void }
-      attr_writer :completed_at
+      attr_accessor :completed_at
 
       sig do
         returns(T.nilable(Telnyx::Models::MessageCancelScheduledResponse::Cost))
@@ -173,10 +187,7 @@ module Telnyx
 
       # ISO 8601 formatted date indicating when the message was sent.
       sig { returns(T.nilable(Time)) }
-      attr_reader :sent_at
-
-      sig { params(sent_at: Time).void }
-      attr_writer :sent_at
+      attr_accessor :sent_at
 
       # Subject of multimedia message
       sig { returns(T.nilable(String)) }
@@ -265,7 +276,11 @@ module Telnyx
       sig do
         params(
           id: String,
-          completed_at: Time,
+          cc:
+            T::Array[
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::OrHash
+            ],
+          completed_at: T.nilable(Time),
           cost:
             T.nilable(
               Telnyx::Models::MessageCancelScheduledResponse::Cost::OrHash
@@ -289,7 +304,7 @@ module Telnyx
           received_at: Time,
           record_type:
             Telnyx::Models::MessageCancelScheduledResponse::RecordType::OrSymbol,
-          sent_at: Time,
+          sent_at: T.nilable(Time),
           subject: T.nilable(String),
           tags: T::Array[String],
           tcr_campaign_billable: T::Boolean,
@@ -309,6 +324,7 @@ module Telnyx
       def self.new(
         # Identifies the type of resource.
         id: nil,
+        cc: nil,
         # ISO 8601 formatted date indicating when the message was finalized.
         completed_at: nil,
         cost: nil,
@@ -369,7 +385,8 @@ module Telnyx
         override.returns(
           {
             id: String,
-            completed_at: Time,
+            cc: T::Array[Telnyx::Models::MessageCancelScheduledResponse::Cc],
+            completed_at: T.nilable(Time),
             cost:
               T.nilable(Telnyx::Models::MessageCancelScheduledResponse::Cost),
             cost_breakdown:
@@ -389,7 +406,7 @@ module Telnyx
             received_at: Time,
             record_type:
               Telnyx::Models::MessageCancelScheduledResponse::RecordType::TaggedSymbol,
-            sent_at: Time,
+            sent_at: T.nilable(Time),
             subject: T.nilable(String),
             tags: T::Array[String],
             tcr_campaign_billable: T::Boolean,
@@ -406,6 +423,233 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      class Cc < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::Models::MessageCancelScheduledResponse::Cc,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        # The carrier of the receiver.
+        sig { returns(T.nilable(String)) }
+        attr_reader :carrier
+
+        sig { params(carrier: String).void }
+        attr_writer :carrier
+
+        # The line-type of the receiver.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::LineType::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :line_type
+
+        sig do
+          params(
+            line_type:
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::LineType::OrSymbol
+          ).void
+        end
+        attr_writer :line_type
+
+        # Receiving address (+E.164 formatted phone number or short code).
+        sig { returns(T.nilable(String)) }
+        attr_reader :phone_number
+
+        sig { params(phone_number: String).void }
+        attr_writer :phone_number
+
+        # The delivery status of the message.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::Status::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :status
+
+        sig do
+          params(
+            status:
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::Status::OrSymbol
+          ).void
+        end
+        attr_writer :status
+
+        sig do
+          params(
+            carrier: String,
+            line_type:
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::LineType::OrSymbol,
+            phone_number: String,
+            status:
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::Status::OrSymbol
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The carrier of the receiver.
+          carrier: nil,
+          # The line-type of the receiver.
+          line_type: nil,
+          # Receiving address (+E.164 formatted phone number or short code).
+          phone_number: nil,
+          # The delivery status of the message.
+          status: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              carrier: String,
+              line_type:
+                Telnyx::Models::MessageCancelScheduledResponse::Cc::LineType::TaggedSymbol,
+              phone_number: String,
+              status:
+                Telnyx::Models::MessageCancelScheduledResponse::Cc::Status::TaggedSymbol
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # The line-type of the receiver.
+        module LineType
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::Models::MessageCancelScheduledResponse::Cc::LineType
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          WIRELINE =
+            T.let(
+              :Wireline,
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::LineType::TaggedSymbol
+            )
+          WIRELESS =
+            T.let(
+              :Wireless,
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::LineType::TaggedSymbol
+            )
+          VO_WI_FI =
+            T.let(
+              :VoWiFi,
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::LineType::TaggedSymbol
+            )
+          VO_IP =
+            T.let(
+              :VoIP,
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::LineType::TaggedSymbol
+            )
+          PRE_PAID_WIRELESS =
+            T.let(
+              :"Pre-Paid Wireless",
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::LineType::TaggedSymbol
+            )
+          EMPTY =
+            T.let(
+              :"",
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::LineType::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Models::MessageCancelScheduledResponse::Cc::LineType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # The delivery status of the message.
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::Models::MessageCancelScheduledResponse::Cc::Status
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          SCHEDULED =
+            T.let(
+              :scheduled,
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::Status::TaggedSymbol
+            )
+          QUEUED =
+            T.let(
+              :queued,
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::Status::TaggedSymbol
+            )
+          SENDING =
+            T.let(
+              :sending,
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::Status::TaggedSymbol
+            )
+          SENT =
+            T.let(
+              :sent,
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::Status::TaggedSymbol
+            )
+          CANCELLED =
+            T.let(
+              :cancelled,
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::Status::TaggedSymbol
+            )
+          EXPIRED =
+            T.let(
+              :expired,
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::Status::TaggedSymbol
+            )
+          SENDING_FAILED =
+            T.let(
+              :sending_failed,
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::Status::TaggedSymbol
+            )
+          DELIVERY_UNCONFIRMED =
+            T.let(
+              :delivery_unconfirmed,
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::Status::TaggedSymbol
+            )
+          DELIVERED =
+            T.let(
+              :delivered,
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::Status::TaggedSymbol
+            )
+          DELIVERY_FAILED =
+            T.let(
+              :delivery_failed,
+              Telnyx::Models::MessageCancelScheduledResponse::Cc::Status::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Models::MessageCancelScheduledResponse::Cc::Status::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
       end
 
       class Cost < Telnyx::Internal::Type::BaseModel

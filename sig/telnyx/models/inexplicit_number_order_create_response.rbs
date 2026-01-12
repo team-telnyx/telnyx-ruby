@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type inexplicit_number_order_create_response =
+      { data: Telnyx::InexplicitNumberOrderResponse }
+
+    class InexplicitNumberOrderCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::InexplicitNumberOrderResponse?
+
+      def data=: (
+        Telnyx::InexplicitNumberOrderResponse
+      ) -> Telnyx::InexplicitNumberOrderResponse
+
+      def initialize: (?data: Telnyx::InexplicitNumberOrderResponse) -> void
+
+      def to_hash: -> { data: Telnyx::InexplicitNumberOrderResponse }
+    end
+  end
+end

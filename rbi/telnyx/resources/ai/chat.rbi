@@ -34,7 +34,7 @@ module Telnyx
             tools:
               T::Array[
                 T.any(
-                  Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::OrHash,
+                  Telnyx::AI::ChatCreateCompletionParams::Tool::Function::OrHash,
                   Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval::OrHash
                 )
               ],
@@ -42,7 +42,7 @@ module Telnyx
             top_p: Float,
             use_beam_search: T::Boolean,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(T.anything)
+          ).returns(T::Hash[Symbol, T.anything])
         end
         def create_completion(
           # A list of the previous chat messages for context.
@@ -80,10 +80,7 @@ module Telnyx
           # [many prefer](https://github.com/huggingface/transformers/issues/27670). Must be
           # in [0, 1].
           min_p: nil,
-          # The language model to chat with. If you are optimizing for speed + price, try
-          # `meta-llama/Meta-Llama-3.1-8B-Instruct`. For quality, try
-          # `meta-llama/Meta-Llama-3.1-70B-Instruct`. Or explore our
-          # [LLM Library](https://telnyx.com/products/llm-library).
+          # The language model to chat with.
           model: nil,
           # This will return multiple choices for you instead of a single chat completion.
           n: nil,

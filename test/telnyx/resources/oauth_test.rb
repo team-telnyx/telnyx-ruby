@@ -85,7 +85,7 @@ class Telnyx::Test::Resources::OAuthTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve_authorize_required_params
-    skip("Prism doesn't properly handle redirects")
+    skip("Prism tests are disabled")
 
     response =
       @telnyx.oauth.retrieve_authorize(

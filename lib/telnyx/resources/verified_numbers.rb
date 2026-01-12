@@ -18,7 +18,7 @@ module Telnyx
       #
       # @param verification_method [Symbol, Telnyx::Models::VerifiedNumberCreateParams::VerificationMethod] Verification method.
       #
-      # @param extension [String, nil] Optional DTMF extension sequence to dial after the call is answered. This parame
+      # @param extension [String] Optional DTMF extension sequence to dial after the call is answered. This parame
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -56,18 +56,15 @@ module Telnyx
         )
       end
 
-      # Some parameter documentations has been truncated, see
-      # {Telnyx::Models::VerifiedNumberListParams} for more details.
-      #
       # Gets a paginated list of Verified Numbers.
       #
-      # @overload list(page: nil, request_options: {})
+      # @overload list(page_number: nil, page_size: nil, request_options: {})
       #
-      # @param page [Telnyx::Models::VerifiedNumberListParams::Page] Consolidated page parameter (deepObject style). Use page[size] and page[number]
-      #
+      # @param page_number [Integer]
+      # @param page_size [Integer]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::VerifiedNumberListResponse]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::VerifiedNumber>]
       #
       # @see Telnyx::Models::VerifiedNumberListParams
       def list(params = {})
@@ -75,8 +72,9 @@ module Telnyx
         @client.request(
           method: :get,
           path: "verified_numbers",
-          query: parsed,
-          model: Telnyx::Models::VerifiedNumberListResponse,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
+          model: Telnyx::VerifiedNumber,
           options: options
         )
       end

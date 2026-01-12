@@ -3,7 +3,8 @@ module Telnyx
     type conference_list_params =
       {
         filter: Telnyx::ConferenceListParams::Filter,
-        page: Telnyx::ConferenceListParams::Page
+        page: Telnyx::ConferenceListParams::Page,
+        region: Telnyx::Models::ConferenceListParams::region
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -23,15 +24,23 @@ module Telnyx
         Telnyx::ConferenceListParams::Page
       ) -> Telnyx::ConferenceListParams::Page
 
+      attr_reader region: Telnyx::Models::ConferenceListParams::region?
+
+      def region=: (
+        Telnyx::Models::ConferenceListParams::region
+      ) -> Telnyx::Models::ConferenceListParams::region
+
       def initialize: (
         ?filter: Telnyx::ConferenceListParams::Filter,
         ?page: Telnyx::ConferenceListParams::Page,
+        ?region: Telnyx::Models::ConferenceListParams::region,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         filter: Telnyx::ConferenceListParams::Filter,
         page: Telnyx::ConferenceListParams::Page,
+        region: Telnyx::Models::ConferenceListParams::region,
         request_options: Telnyx::RequestOptions
       }
 
@@ -281,6 +290,19 @@ module Telnyx
           number: Integer,
           size: Integer
         }
+      end
+
+      type region = :Australia | :Europe | :"Middle East" | :US
+
+      module Region
+        extend Telnyx::Internal::Type::Enum
+
+        AUSTRALIA: :Australia
+        EUROPE: :Europe
+        MIDDLE_EAST: :"Middle East"
+        US: :US
+
+        def self?.values: -> ::Array[Telnyx::Models::ConferenceListParams::region]
       end
     end
   end

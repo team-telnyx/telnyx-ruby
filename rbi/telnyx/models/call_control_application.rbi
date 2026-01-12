@@ -21,9 +21,10 @@ module Telnyx
       sig { params(active: T::Boolean).void }
       attr_writer :active
 
-      # `Latency` directs Telnyx to route media through the site with the lowest
-      # round-trip time to the user's connection. Telnyx calculates this time using ICMP
-      # ping messages. This can be disabled by specifying a site to handle all media.
+      # <code>Latency</code> directs Telnyx to route media through the site with the
+      # lowest round-trip time to the user's connection. Telnyx calculates this time
+      # using ICMP ping messages. This can be disabled by specifying a site to handle
+      # all media.
       sig do
         returns(
           T.nilable(
@@ -47,6 +48,14 @@ module Telnyx
 
       sig { params(application_name: String).void }
       attr_writer :application_name
+
+      # Specifies if call cost webhooks should be sent for this Call Control
+      # Application.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :call_cost_in_webhooks
+
+      sig { params(call_cost_in_webhooks: T::Boolean).void }
+      attr_writer :call_cost_in_webhooks
 
       # ISO 8601 formatted date of when the resource was created
       sig { returns(T.nilable(String)) }
@@ -179,6 +188,7 @@ module Telnyx
           anchorsite_override:
             Telnyx::CallControlApplication::AnchorsiteOverride::OrSymbol,
           application_name: String,
+          call_cost_in_webhooks: T::Boolean,
           created_at: String,
           dtmf_type: Telnyx::CallControlApplication::DtmfType::OrSymbol,
           first_command_timeout: T::Boolean,
@@ -200,12 +210,16 @@ module Telnyx
         id: nil,
         # Specifies whether the connection can be used.
         active: nil,
-        # `Latency` directs Telnyx to route media through the site with the lowest
-        # round-trip time to the user's connection. Telnyx calculates this time using ICMP
-        # ping messages. This can be disabled by specifying a site to handle all media.
+        # <code>Latency</code> directs Telnyx to route media through the site with the
+        # lowest round-trip time to the user's connection. Telnyx calculates this time
+        # using ICMP ping messages. This can be disabled by specifying a site to handle
+        # all media.
         anchorsite_override: nil,
         # A user-assigned name to help manage the application.
         application_name: nil,
+        # Specifies if call cost webhooks should be sent for this Call Control
+        # Application.
+        call_cost_in_webhooks: nil,
         # ISO 8601 formatted date of when the resource was created
         created_at: nil,
         # Sets the type of DTMF digits sent from Telnyx to this Connection. Note that DTMF
@@ -246,6 +260,7 @@ module Telnyx
             anchorsite_override:
               Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol,
             application_name: String,
+            call_cost_in_webhooks: T::Boolean,
             created_at: String,
             dtmf_type: Telnyx::CallControlApplication::DtmfType::TaggedSymbol,
             first_command_timeout: T::Boolean,
@@ -268,9 +283,10 @@ module Telnyx
       def to_hash
       end
 
-      # `Latency` directs Telnyx to route media through the site with the lowest
-      # round-trip time to the user's connection. Telnyx calculates this time using ICMP
-      # ping messages. This can be disabled by specifying a site to handle all media.
+      # <code>Latency</code> directs Telnyx to route media through the site with the
+      # lowest round-trip time to the user's connection. Telnyx calculates this time
+      # using ICMP ping messages. This can be disabled by specifying a site to handle
+      # all media.
       module AnchorsiteOverride
         extend Telnyx::Internal::Type::Enum
 
@@ -282,22 +298,47 @@ module Telnyx
 
         LATENCY =
           T.let(
-            :"\"Latency\"",
+            :Latency,
             Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol
           )
         CHICAGO_IL =
           T.let(
-            :"\"Chicago, IL\"",
+            :"Chicago, IL",
             Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol
           )
         ASHBURN_VA =
           T.let(
-            :"\"Ashburn, VA\"",
+            :"Ashburn, VA",
             Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol
           )
         SAN_JOSE_CA =
           T.let(
-            :"\"San Jose, CA\"",
+            :"San Jose, CA",
+            Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol
+          )
+        LONDON_UK =
+          T.let(
+            :"London, UK",
+            Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol
+          )
+        CHENNAI_IN =
+          T.let(
+            :"Chennai, IN",
+            Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol
+          )
+        AMSTERDAM_NETHERLANDS =
+          T.let(
+            :"Amsterdam, Netherlands",
+            Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol
+          )
+        TORONTO_CANADA =
+          T.let(
+            :"Toronto, Canada",
+            Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol
+          )
+        SYDNEY_AUSTRALIA =
+          T.let(
+            :"Sydney, Australia",
             Telnyx::CallControlApplication::AnchorsiteOverride::TaggedSymbol
           )
 
@@ -379,12 +420,12 @@ module Telnyx
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        WEBHOOK_API_VERSION_1 =
+        V1 =
           T.let(
             :"1",
             Telnyx::CallControlApplication::WebhookAPIVersion::TaggedSymbol
           )
-        WEBHOOK_API_VERSION_2 =
+        V2 =
           T.let(
             :"2",
             Telnyx::CallControlApplication::WebhookAPIVersion::TaggedSymbol

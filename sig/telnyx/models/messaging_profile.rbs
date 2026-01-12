@@ -8,12 +8,15 @@ module Telnyx
         daily_spend_limit: String,
         daily_spend_limit_enabled: bool,
         enabled: bool,
+        health_webhook_url: String?,
         mms_fall_back_to_sms: bool,
         mms_transcoding: bool,
         mobile_only: bool,
         name: String,
         number_pool_settings: Telnyx::NumberPoolSettings?,
         record_type: Telnyx::Models::MessagingProfile::record_type,
+        redaction_enabled: bool,
+        redaction_level: Integer,
         updated_at: Time,
         url_shortener_settings: Telnyx::URLShortenerSettings?,
         :v1_secret => String,
@@ -38,6 +41,8 @@ module Telnyx
 
       def enabled=: (bool) -> bool
 
+      attr_accessor health_webhook_url: String?
+
       attr_reader mms_fall_back_to_sms: bool?
 
       def mms_fall_back_to_sms=: (bool) -> bool
@@ -55,6 +60,14 @@ module Telnyx
       def name=: (String) -> String
 
       attr_accessor number_pool_settings: Telnyx::NumberPoolSettings?
+
+      attr_reader redaction_enabled: bool?
+
+      def redaction_enabled=: (bool) -> bool
+
+      attr_reader redaction_level: Integer?
+
+      def redaction_level=: (Integer) -> Integer
 
       attr_accessor url_shortener_settings: Telnyx::URLShortenerSettings?
 
@@ -101,12 +114,15 @@ module Telnyx
         ?daily_spend_limit: String,
         ?daily_spend_limit_enabled: bool,
         ?enabled: bool,
+        ?health_webhook_url: String?,
         ?mms_fall_back_to_sms: bool,
         ?mms_transcoding: bool,
         ?mobile_only: bool,
         ?name: String,
         ?number_pool_settings: Telnyx::NumberPoolSettings?,
         ?record_type: Telnyx::Models::MessagingProfile::record_type,
+        ?redaction_enabled: bool,
+        ?redaction_level: Integer,
         ?updated_at: Time,
         ?url_shortener_settings: Telnyx::URLShortenerSettings?,
         ?v1_secret: String,
@@ -123,12 +139,15 @@ module Telnyx
         daily_spend_limit: String,
         daily_spend_limit_enabled: bool,
         enabled: bool,
+        health_webhook_url: String?,
         mms_fall_back_to_sms: bool,
         mms_transcoding: bool,
         mobile_only: bool,
         name: String,
         number_pool_settings: Telnyx::NumberPoolSettings?,
         record_type: Telnyx::Models::MessagingProfile::record_type,
+        redaction_enabled: bool,
+        redaction_level: Integer,
         updated_at: Time,
         url_shortener_settings: Telnyx::URLShortenerSettings?,
         :v1_secret => String,
@@ -153,9 +172,9 @@ module Telnyx
       module WebhookAPIVersion
         extend Telnyx::Internal::Type::Enum
 
-        WEBHOOK_API_VERSION_1: :"1"
-        WEBHOOK_API_VERSION_2: :"2"
-        WEBHOOK_API_VERSION_2010_04_01: :"2010-04-01"
+        V1: :"1"
+        V2: :"2"
+        V2010_04_01: :"2010-04-01"
 
         def self?.values: -> ::Array[Telnyx::Models::MessagingProfile::webhook_api_version]
       end

@@ -11,7 +11,7 @@ module Telnyx
       #
       # @param network_id [String] The id of the network associated with the interface.
       #
-      # @param region_code [String] The region the interface should be deployed to.
+      # @param region_code [String] The region interface is deployed to.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -62,7 +62,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::PublicInternetGatewayListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PublicInternetGatewayListResponse>]
       #
       # @see Telnyx::Models::PublicInternetGatewayListParams
       def list(params = {})
@@ -71,6 +71,7 @@ module Telnyx
           method: :get,
           path: "public_internet_gateways",
           query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::PublicInternetGatewayListResponse,
           options: options
         )

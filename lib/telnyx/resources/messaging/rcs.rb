@@ -34,7 +34,7 @@ module Telnyx
           )
         end
 
-        # List RCS capabilities of a given batch of phone numbers
+        # Check RCS capabilities (batch)
         #
         # @overload list_bulk_capabilities(agent_id:, phone_numbers:, request_options: {})
         #
@@ -58,7 +58,7 @@ module Telnyx
           )
         end
 
-        # List RCS capabilities of a phone number
+        # Check RCS capabilities
         #
         # @overload retrieve_capabilities(phone_number, agent_id:, request_options: {})
         #

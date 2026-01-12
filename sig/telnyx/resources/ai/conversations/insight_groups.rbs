@@ -21,7 +21,7 @@ module Telnyx
           def delete: (
             String group_id,
             ?request_options: Telnyx::request_opts
-          ) -> top
+          ) -> nil
 
           def insight_groups: (
             name: String,
@@ -31,9 +31,10 @@ module Telnyx
           ) -> Telnyx::AI::Conversations::InsightTemplateGroupDetail
 
           def retrieve_insight_groups: (
-            ?page: Telnyx::AI::Conversations::InsightGroupRetrieveInsightGroupsParams::Page,
+            ?page_number: Integer,
+            ?page_size: Integer,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::AI::Conversations::InsightGroupRetrieveInsightGroupsResponse
+          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AI::Conversations::InsightTemplateGroup]
 
           def initialize: (client: Telnyx::Client) -> void
         end

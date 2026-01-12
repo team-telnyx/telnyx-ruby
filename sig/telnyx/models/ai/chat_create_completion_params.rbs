@@ -313,31 +313,31 @@ module Telnyx
         end
 
         type tool =
-          Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam
+          Telnyx::AI::ChatCreateCompletionParams::Tool::Function
           | Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval
 
         module Tool
           extend Telnyx::Internal::Type::Union
 
-          type chat_completion_tool_param =
+          type function =
             {
-              function: Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Function,
-              type: Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::type_
+              function: Telnyx::AI::ChatCreateCompletionParams::Tool::Function::Function,
+              type: :function
             }
 
-          class ChatCompletionToolParam < Telnyx::Internal::Type::BaseModel
-            attr_accessor function: Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Function
+          class Function < Telnyx::Internal::Type::BaseModel
+            attr_accessor function: Telnyx::AI::ChatCreateCompletionParams::Tool::Function::Function
 
-            attr_accessor type: Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::type_
+            attr_accessor type: :function
 
             def initialize: (
-              function: Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Function,
-              type: Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::type_
+              function: Telnyx::AI::ChatCreateCompletionParams::Tool::Function::Function,
+              ?type: :function
             ) -> void
 
             def to_hash: -> {
-              function: Telnyx::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::Function,
-              type: Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::type_
+              function: Telnyx::AI::ChatCreateCompletionParams::Tool::Function::Function,
+              type: :function
             }
 
             type function =
@@ -370,48 +370,28 @@ module Telnyx
                 parameters: ::Hash[Symbol, top]
               }
             end
-
-            type type_ = :function
-
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              FUNCTION: :function
-
-              def self?.values: -> ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::Tool::ChatCompletionToolParam::type_]
-            end
           end
 
           type retrieval =
             {
               retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs,
-              type: Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval::type_
+              type: :retrieval
             }
 
           class Retrieval < Telnyx::Internal::Type::BaseModel
             attr_accessor retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs
 
-            attr_accessor type: Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval::type_
+            attr_accessor type: :retrieval
 
             def initialize: (
               retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs,
-              type: Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval::type_
+              ?type: :retrieval
             ) -> void
 
             def to_hash: -> {
               retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs,
-              type: Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval::type_
+              type: :retrieval
             }
-
-            type type_ = :retrieval
-
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              RETRIEVAL: :retrieval
-
-              def self?.values: -> ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval::type_]
-            end
           end
 
           def self?.variants: -> ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::tool]

@@ -6,15 +6,15 @@ module Telnyx
         activation_settings: Telnyx::PortingOrderActivationSettings,
         additional_steps: ::Array[Telnyx::Models::PortingOrder::additional_step],
         created_at: Time,
-        customer_group_reference: String,
-        customer_reference: String,
+        customer_group_reference: String?,
+        customer_reference: String?,
         description: String,
         documents: Telnyx::PortingOrderDocuments,
         end_user: Telnyx::PortingOrderEndUser,
         messaging: Telnyx::PortingOrderMessaging,
-        misc: Telnyx::PortingOrderMisc,
+        misc: Telnyx::PortingOrderMisc?,
         old_service_provider_ocn: String,
-        parent_support_key: String,
+        parent_support_key: String?,
         phone_number_configuration: Telnyx::PortingOrderPhoneNumberConfiguration,
         phone_number_type: Telnyx::Models::PortingOrder::phone_number_type,
         porting_phone_numbers_count: Integer,
@@ -22,11 +22,11 @@ module Telnyx
         requirements: ::Array[Telnyx::PortingOrderRequirement],
         requirements_met: bool,
         status: Telnyx::PortingOrderStatus,
-        support_key: String,
+        support_key: String?,
         updated_at: Time,
         user_feedback: Telnyx::PortingOrderUserFeedback,
         user_id: String,
-        webhook_url: String
+        webhook_url: String?
       }
 
     class PortingOrder < Telnyx::Internal::Type::BaseModel
@@ -42,13 +42,9 @@ module Telnyx
         ::Array[Telnyx::Models::PortingOrder::additional_step]
       ) -> ::Array[Telnyx::Models::PortingOrder::additional_step]
 
-      attr_reader customer_group_reference: String?
+      attr_accessor customer_group_reference: String?
 
-      def customer_group_reference=: (String) -> String
-
-      attr_reader customer_reference: String?
-
-      def customer_reference=: (String) -> String
+      attr_accessor customer_reference: String?
 
       attr_reader documents: Telnyx::PortingOrderDocuments?
 
@@ -68,9 +64,7 @@ module Telnyx
         Telnyx::PortingOrderMessaging
       ) -> Telnyx::PortingOrderMessaging
 
-      attr_reader misc: Telnyx::PortingOrderMisc?
-
-      def misc=: (Telnyx::PortingOrderMisc) -> Telnyx::PortingOrderMisc
+      attr_accessor misc: Telnyx::PortingOrderMisc?
 
       attr_reader phone_number_configuration: Telnyx::PortingOrderPhoneNumberConfiguration?
 
@@ -108,9 +102,7 @@ module Telnyx
 
       def user_id=: (String) -> String
 
-      attr_reader webhook_url: String?
-
-      def webhook_url=: (String) -> String
+      attr_accessor webhook_url: String?
 
       attr_reader id: String?
 
@@ -128,9 +120,7 @@ module Telnyx
 
       def old_service_provider_ocn=: (String) -> String
 
-      attr_reader parent_support_key: String?
-
-      def parent_support_key=: (String) -> String
+      attr_accessor parent_support_key: String?
 
       attr_reader porting_phone_numbers_count: Integer?
 
@@ -140,9 +130,7 @@ module Telnyx
 
       def record_type=: (String) -> String
 
-      attr_reader support_key: String?
-
-      def support_key=: (String) -> String
+      attr_accessor support_key: String?
 
       attr_reader updated_at: Time?
 
@@ -153,15 +141,15 @@ module Telnyx
         ?activation_settings: Telnyx::PortingOrderActivationSettings,
         ?additional_steps: ::Array[Telnyx::Models::PortingOrder::additional_step],
         ?created_at: Time,
-        ?customer_group_reference: String,
-        ?customer_reference: String,
+        ?customer_group_reference: String?,
+        ?customer_reference: String?,
         ?description: String,
         ?documents: Telnyx::PortingOrderDocuments,
         ?end_user: Telnyx::PortingOrderEndUser,
         ?messaging: Telnyx::PortingOrderMessaging,
-        ?misc: Telnyx::PortingOrderMisc,
+        ?misc: Telnyx::PortingOrderMisc?,
         ?old_service_provider_ocn: String,
-        ?parent_support_key: String,
+        ?parent_support_key: String?,
         ?phone_number_configuration: Telnyx::PortingOrderPhoneNumberConfiguration,
         ?phone_number_type: Telnyx::Models::PortingOrder::phone_number_type,
         ?porting_phone_numbers_count: Integer,
@@ -169,11 +157,11 @@ module Telnyx
         ?requirements: ::Array[Telnyx::PortingOrderRequirement],
         ?requirements_met: bool,
         ?status: Telnyx::PortingOrderStatus,
-        ?support_key: String,
+        ?support_key: String?,
         ?updated_at: Time,
         ?user_feedback: Telnyx::PortingOrderUserFeedback,
         ?user_id: String,
-        ?webhook_url: String
+        ?webhook_url: String?
       ) -> void
 
       def to_hash: -> {
@@ -181,15 +169,15 @@ module Telnyx
         activation_settings: Telnyx::PortingOrderActivationSettings,
         additional_steps: ::Array[Telnyx::Models::PortingOrder::additional_step],
         created_at: Time,
-        customer_group_reference: String,
-        customer_reference: String,
+        customer_group_reference: String?,
+        customer_reference: String?,
         description: String,
         documents: Telnyx::PortingOrderDocuments,
         end_user: Telnyx::PortingOrderEndUser,
         messaging: Telnyx::PortingOrderMessaging,
-        misc: Telnyx::PortingOrderMisc,
+        misc: Telnyx::PortingOrderMisc?,
         old_service_provider_ocn: String,
-        parent_support_key: String,
+        parent_support_key: String?,
         phone_number_configuration: Telnyx::PortingOrderPhoneNumberConfiguration,
         phone_number_type: Telnyx::Models::PortingOrder::phone_number_type,
         porting_phone_numbers_count: Integer,
@@ -197,11 +185,11 @@ module Telnyx
         requirements: ::Array[Telnyx::PortingOrderRequirement],
         requirements_met: bool,
         status: Telnyx::PortingOrderStatus,
-        support_key: String,
+        support_key: String?,
         updated_at: Time,
         user_feedback: Telnyx::PortingOrderUserFeedback,
         user_id: String,
-        webhook_url: String
+        webhook_url: String?
       }
 
       type additional_step =

@@ -138,11 +138,12 @@ module Telnyx
                 T.any(
                   Telnyx::AI::WebhookTool::OrHash,
                   Telnyx::AI::RetrievalTool::OrHash,
-                  Telnyx::AI::AssistantTool::HandoffTool::OrHash,
+                  Telnyx::AI::AssistantTool::Handoff::OrHash,
                   Telnyx::AI::HangupTool::OrHash,
                   Telnyx::AI::TransferTool::OrHash,
-                  Telnyx::AI::AssistantTool::SipReferTool::OrHash,
-                  Telnyx::AI::AssistantTool::DtmfTool::OrHash
+                  Telnyx::AI::AssistantTool::Refer::OrHash,
+                  Telnyx::AI::AssistantTool::SendDtmf::OrHash,
+                  Telnyx::AI::AssistantTool::SendMessage::OrHash
                 )
               ]
           ).void
@@ -186,11 +187,12 @@ module Telnyx
                 T.any(
                   Telnyx::AI::WebhookTool::OrHash,
                   Telnyx::AI::RetrievalTool::OrHash,
-                  Telnyx::AI::AssistantTool::HandoffTool::OrHash,
+                  Telnyx::AI::AssistantTool::Handoff::OrHash,
                   Telnyx::AI::HangupTool::OrHash,
                   Telnyx::AI::TransferTool::OrHash,
-                  Telnyx::AI::AssistantTool::SipReferTool::OrHash,
-                  Telnyx::AI::AssistantTool::DtmfTool::OrHash
+                  Telnyx::AI::AssistantTool::Refer::OrHash,
+                  Telnyx::AI::AssistantTool::SendDtmf::OrHash,
+                  Telnyx::AI::AssistantTool::SendMessage::OrHash
                 )
               ],
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,

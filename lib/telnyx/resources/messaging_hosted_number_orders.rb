@@ -64,7 +64,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::MessagingHostedNumberOrderListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::MessagingHostedNumberOrder>]
       #
       # @see Telnyx::Models::MessagingHostedNumberOrderListParams
       def list(params = {})
@@ -73,7 +73,8 @@ module Telnyx
           method: :get,
           path: "messaging_hosted_number_orders",
           query: parsed,
-          model: Telnyx::Models::MessagingHostedNumberOrderListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::MessagingHostedNumberOrder,
           options: options
         )
       end
@@ -98,7 +99,7 @@ module Telnyx
         )
       end
 
-      # Check eligibility of phone numbers for hosted messaging
+      # Check hosted messaging eligibility
       #
       # @overload check_eligibility(phone_numbers:, request_options: {})
       #

@@ -59,12 +59,15 @@ module Telnyx
       #   @return [Boolean, nil]
       optional :managed_accounts, Telnyx::Internal::Type::Boolean
 
-      # @!attribute page
-      #   Consolidated page parameter (deepObject style). Originally: page[number],
-      #   page[size]
+      # @!attribute page_number
       #
-      #   @return [Telnyx::Models::UsageReportListParams::Page, nil]
-      optional :page, -> { Telnyx::UsageReportListParams::Page }
+      #   @return [Integer, nil]
+      optional :page_number, Integer
+
+      # @!attribute page_size
+      #
+      #   @return [Integer, nil]
+      optional :page_size, Integer
 
       # @!attribute sort
       #   Specifies the sort order for results
@@ -85,7 +88,7 @@ module Telnyx
       #   @return [String, nil]
       optional :authorization_bearer, String
 
-      # @!method initialize(dimensions:, metrics:, product:, date_range: nil, end_date: nil, filter: nil, format_: nil, managed_accounts: nil, page: nil, sort: nil, start_date: nil, authorization_bearer: nil, request_options: {})
+      # @!method initialize(dimensions:, metrics:, product:, date_range: nil, end_date: nil, filter: nil, format_: nil, managed_accounts: nil, page_number: nil, page_size: nil, sort: nil, start_date: nil, authorization_bearer: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::UsageReportListParams} for more details.
       #
@@ -105,7 +108,9 @@ module Telnyx
       #
       #   @param managed_accounts [Boolean] Return the aggregations for all Managed Accounts under the user making the reque
       #
-      #   @param page [Telnyx::Models::UsageReportListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      #   @param page_number [Integer]
+      #
+      #   @param page_size [Integer]
       #
       #   @param sort [Array<String>] Specifies the sort order for results
       #
@@ -125,25 +130,6 @@ module Telnyx
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        # @!attribute number
-        #
-        #   @return [Integer, nil]
-        optional :number, Integer
-
-        # @!attribute size
-        #
-        #   @return [Integer, nil]
-        optional :size, Integer
-
-        # @!method initialize(number: nil, size: nil)
-        #   Consolidated page parameter (deepObject style). Originally: page[number],
-        #   page[size]
-        #
-        #   @param number [Integer]
-        #   @param size [Integer]
       end
     end
   end

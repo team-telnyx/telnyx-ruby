@@ -31,6 +31,42 @@ module Telnyx
           )
         end
 
+        # Send an RCS message
+        #
+        # @overload send_(agent_id:, agent_message:, messaging_profile_id:, to:, mms_fallback: nil, sms_fallback: nil, type: nil, webhook_url: nil, request_options: {})
+        #
+        # @param agent_id [String] RCS Agent ID
+        #
+        # @param agent_message [Telnyx::Models::RcsAgentMessage]
+        #
+        # @param messaging_profile_id [String] A valid messaging profile ID
+        #
+        # @param to [String] Phone number in +E.164 format
+        #
+        # @param mms_fallback [Telnyx::Models::Messages::RcSendParams::MmsFallback]
+        #
+        # @param sms_fallback [Telnyx::Models::Messages::RcSendParams::SMSFallback]
+        #
+        # @param type [Symbol, Telnyx::Models::Messages::RcSendParams::Type] Message type - must be set to "RCS"
+        #
+        # @param webhook_url [String] The URL where webhooks related to this message will be sent.
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Messages::RcSendResponse]
+        #
+        # @see Telnyx::Models::Messages::RcSendParams
+        def send_(params)
+          parsed, options = Telnyx::Messages::RcSendParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: "messages/rcs",
+            body: parsed,
+            model: Telnyx::Models::Messages::RcSendResponse,
+            options: options
+          )
+        end
+
         # @api private
         #
         # @param client [Telnyx::Client]

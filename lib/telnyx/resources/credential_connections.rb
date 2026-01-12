@@ -11,7 +11,7 @@ module Telnyx
       #
       # Creates a credential connection.
       #
-      # @overload create(connection_name:, password:, user_name:, active: nil, anchorsite_override: nil, android_push_credential_id: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, sip_uri_calling_preference: nil, tags: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @overload create(connection_name:, password:, user_name:, active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, sip_uri_calling_preference: nil, tags: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #
       # @param connection_name [String] A user-assigned name to help manage the connection.
       #
@@ -25,6 +25,8 @@ module Telnyx
       #
       # @param android_push_credential_id [String, nil] The uuid of the push credential for Android
       #
+      # @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this connection.
+      #
       # @param default_on_hold_comfort_noise_enabled [Boolean] When enabled, Telnyx will generate comfort noise when you place the call on hold
       #
       # @param dtmf_type [Symbol, Telnyx::Models::DtmfType] Sets the type of DTMF digits sent from Telnyx to this Connection. Note that DTMF
@@ -36,6 +38,10 @@ module Telnyx
       # @param inbound [Telnyx::Models::CredentialInbound]
       #
       # @param ios_push_credential_id [String, nil] The uuid of the push credential for Ios
+      #
+      # @param noise_suppression [Symbol, Telnyx::Models::CredentialConnectionCreateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
+      #
+      # @param noise_suppression_details [Telnyx::Models::CredentialConnectionCreateParams::NoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #
       # @param onnet_t38_passthrough_enabled [Boolean] Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
       #
@@ -96,7 +102,7 @@ module Telnyx
       #
       # Updates settings of an existing credential connection.
       #
-      # @overload update(id, active: nil, anchorsite_override: nil, android_push_credential_id: nil, connection_name: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, password: nil, rtcp_settings: nil, sip_uri_calling_preference: nil, tags: nil, user_name: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @overload update(id, active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, connection_name: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, password: nil, rtcp_settings: nil, sip_uri_calling_preference: nil, tags: nil, user_name: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #
       # @param id [String] Identifies the resource.
       #
@@ -105,6 +111,8 @@ module Telnyx
       # @param anchorsite_override [Symbol, Telnyx::Models::AnchorsiteOverride] `Latency` directs Telnyx to route media through the site with the lowest round-t
       #
       # @param android_push_credential_id [String, nil] The uuid of the push credential for Android
+      #
+      # @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this connection.
       #
       # @param connection_name [String] A user-assigned name to help manage the connection.
       #
@@ -119,6 +127,10 @@ module Telnyx
       # @param inbound [Telnyx::Models::CredentialInbound]
       #
       # @param ios_push_credential_id [String, nil] The uuid of the push credential for Ios
+      #
+      # @param noise_suppression [Symbol, Telnyx::Models::CredentialConnectionUpdateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
+      #
+      # @param noise_suppression_details [Telnyx::Models::CredentialConnectionUpdateParams::NoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #
       # @param onnet_t38_passthrough_enabled [Boolean] Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
       #
@@ -174,7 +186,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::CredentialConnectionListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::CredentialConnection>]
       #
       # @see Telnyx::Models::CredentialConnectionListParams
       def list(params = {})
@@ -183,7 +195,8 @@ module Telnyx
           method: :get,
           path: "credential_connections",
           query: parsed,
-          model: Telnyx::Models::CredentialConnectionListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::CredentialConnection,
           options: options
         )
       end

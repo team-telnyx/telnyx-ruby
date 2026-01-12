@@ -1,0 +1,52 @@
+module Telnyx
+  module Resources
+    class MobileVoiceConnections
+      def create: (
+        ?active: bool,
+        ?connection_name: String,
+        ?inbound: Telnyx::MobileVoiceConnectionCreateParams::Inbound,
+        ?outbound: Telnyx::MobileVoiceConnectionCreateParams::Outbound,
+        ?tags: ::Array[String],
+        ?webhook_api_version: Telnyx::Models::MobileVoiceConnectionCreateParams::webhook_api_version,
+        ?webhook_event_failover_url: String?,
+        ?webhook_event_url: String?,
+        ?webhook_timeout_secs: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MobileVoiceConnectionCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MobileVoiceConnectionRetrieveResponse
+
+      def update: (
+        String id,
+        ?active: bool,
+        ?connection_name: String,
+        ?inbound: Telnyx::MobileVoiceConnectionUpdateParams::Inbound,
+        ?outbound: Telnyx::MobileVoiceConnectionUpdateParams::Outbound,
+        ?tags: ::Array[String],
+        ?webhook_api_version: Telnyx::Models::MobileVoiceConnectionUpdateParams::webhook_api_version,
+        ?webhook_event_failover_url: String?,
+        ?webhook_event_url: String?,
+        ?webhook_timeout_secs: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MobileVoiceConnectionUpdateResponse
+
+      def list: (
+        ?filter_connection_name_contains: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?sort: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::MobileVoiceConnection]
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MobileVoiceConnectionDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

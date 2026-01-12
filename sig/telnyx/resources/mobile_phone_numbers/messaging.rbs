@@ -1,0 +1,19 @@
+module Telnyx
+  module Resources
+    class MobilePhoneNumbers
+      class Messaging
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::MobilePhoneNumbers::MessagingRetrieveResponse
+
+        def list: (
+          ?page: Telnyx::MobilePhoneNumbers::MessagingListParams::Page,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse]
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

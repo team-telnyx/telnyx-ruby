@@ -70,7 +70,9 @@ module Telnyx
           filter: Telnyx::TelephonyCredentialListParams::Filter::OrHash,
           page: Telnyx::TelephonyCredentialListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::TelephonyCredentialListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[Telnyx::TelephonyCredential]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[tag],

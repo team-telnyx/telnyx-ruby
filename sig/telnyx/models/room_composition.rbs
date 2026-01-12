@@ -8,7 +8,7 @@ module Telnyx
         download_url: String,
         duration_secs: Integer,
         ended_at: Time,
-        format_: Telnyx::Models::RoomComposition::format_,
+        file_format: Telnyx::Models::RoomComposition::format_,
         record_type: String,
         room_id: String,
         session_id: String,
@@ -18,9 +18,9 @@ module Telnyx
         updated_at: Time,
         user_id: String,
         video_layout: ::Hash[Symbol, Telnyx::VideoRegion],
-        webhook_event_failover_url: String?,
+        webhook_event_failover_url: String,
         webhook_event_url: String,
-        webhook_timeout_secs: Integer?
+        webhook_timeout_secs: Integer
       }
 
     class RoomComposition < Telnyx::Internal::Type::BaseModel
@@ -48,9 +48,9 @@ module Telnyx
 
       def ended_at=: (Time) -> Time
 
-      attr_reader format_: Telnyx::Models::RoomComposition::format_?
+      attr_reader file_format: Telnyx::Models::RoomComposition::format_?
 
-      def format_=: (
+      def file_format=: (
         Telnyx::Models::RoomComposition::format_
       ) -> Telnyx::Models::RoomComposition::format_
 
@@ -90,13 +90,17 @@ module Telnyx
         ::Hash[Symbol, Telnyx::VideoRegion]
       ) -> ::Hash[Symbol, Telnyx::VideoRegion]
 
-      attr_accessor webhook_event_failover_url: String?
+      attr_reader webhook_event_failover_url: String?
+
+      def webhook_event_failover_url=: (String) -> String
 
       attr_reader webhook_event_url: String?
 
       def webhook_event_url=: (String) -> String
 
-      attr_accessor webhook_timeout_secs: Integer?
+      attr_reader webhook_timeout_secs: Integer?
+
+      def webhook_timeout_secs=: (Integer) -> Integer
 
       attr_reader record_type: String?
 
@@ -109,7 +113,7 @@ module Telnyx
         ?download_url: String,
         ?duration_secs: Integer,
         ?ended_at: Time,
-        ?format_: Telnyx::Models::RoomComposition::format_,
+        ?file_format: Telnyx::Models::RoomComposition::format_,
         ?record_type: String,
         ?room_id: String,
         ?session_id: String,
@@ -119,9 +123,9 @@ module Telnyx
         ?updated_at: Time,
         ?user_id: String,
         ?video_layout: ::Hash[Symbol, Telnyx::VideoRegion],
-        ?webhook_event_failover_url: String?,
+        ?webhook_event_failover_url: String,
         ?webhook_event_url: String,
-        ?webhook_timeout_secs: Integer?
+        ?webhook_timeout_secs: Integer
       ) -> void
 
       def to_hash: -> {
@@ -131,7 +135,7 @@ module Telnyx
         download_url: String,
         duration_secs: Integer,
         ended_at: Time,
-        format_: Telnyx::Models::RoomComposition::format_,
+        file_format: Telnyx::Models::RoomComposition::format_,
         record_type: String,
         room_id: String,
         session_id: String,
@@ -141,9 +145,9 @@ module Telnyx
         updated_at: Time,
         user_id: String,
         video_layout: ::Hash[Symbol, Telnyx::VideoRegion],
-        webhook_event_failover_url: String?,
+        webhook_event_failover_url: String,
         webhook_event_url: String,
-        webhook_timeout_secs: Integer?
+        webhook_timeout_secs: Integer
       }
 
       type format_ = :mp4

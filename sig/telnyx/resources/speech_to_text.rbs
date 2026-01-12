@@ -1,0 +1,16 @@
+module Telnyx
+  module Resources
+    class SpeechToText
+      def transcribe: (
+        input_format: Telnyx::Models::SpeechToTextTranscribeParams::input_format,
+        transcription_engine: Telnyx::Models::SpeechToTextTranscribeParams::transcription_engine,
+        ?interim_results: bool,
+        ?language: String,
+        ?model: Telnyx::Models::SpeechToTextTranscribeParams::model,
+        ?request_options: Telnyx::request_opts
+      ) -> nil
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

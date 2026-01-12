@@ -4,7 +4,10 @@ module Telnyx
       type telephony_settings =
         {
           default_texml_app_id: String,
-          supports_unauthenticated_web_calls: bool
+          noise_suppression: Telnyx::Models::AI::TelephonySettings::noise_suppression,
+          noise_suppression_config: Telnyx::AI::TelephonySettings::NoiseSuppressionConfig,
+          supports_unauthenticated_web_calls: bool,
+          time_limit_secs: Integer
         }
 
       class TelephonySettings < Telnyx::Internal::Type::BaseModel
@@ -12,19 +15,90 @@ module Telnyx
 
         def default_texml_app_id=: (String) -> String
 
+        attr_reader noise_suppression: Telnyx::Models::AI::TelephonySettings::noise_suppression?
+
+        def noise_suppression=: (
+          Telnyx::Models::AI::TelephonySettings::noise_suppression
+        ) -> Telnyx::Models::AI::TelephonySettings::noise_suppression
+
+        attr_reader noise_suppression_config: Telnyx::AI::TelephonySettings::NoiseSuppressionConfig?
+
+        def noise_suppression_config=: (
+          Telnyx::AI::TelephonySettings::NoiseSuppressionConfig
+        ) -> Telnyx::AI::TelephonySettings::NoiseSuppressionConfig
+
         attr_reader supports_unauthenticated_web_calls: bool?
 
         def supports_unauthenticated_web_calls=: (bool) -> bool
 
+        attr_reader time_limit_secs: Integer?
+
+        def time_limit_secs=: (Integer) -> Integer
+
         def initialize: (
           ?default_texml_app_id: String,
-          ?supports_unauthenticated_web_calls: bool
+          ?noise_suppression: Telnyx::Models::AI::TelephonySettings::noise_suppression,
+          ?noise_suppression_config: Telnyx::AI::TelephonySettings::NoiseSuppressionConfig,
+          ?supports_unauthenticated_web_calls: bool,
+          ?time_limit_secs: Integer
         ) -> void
 
         def to_hash: -> {
           default_texml_app_id: String,
-          supports_unauthenticated_web_calls: bool
+          noise_suppression: Telnyx::Models::AI::TelephonySettings::noise_suppression,
+          noise_suppression_config: Telnyx::AI::TelephonySettings::NoiseSuppressionConfig,
+          supports_unauthenticated_web_calls: bool,
+          time_limit_secs: Integer
         }
+
+        type noise_suppression = :deepfilternet | :disabled
+
+        module NoiseSuppression
+          extend Telnyx::Internal::Type::Enum
+
+          DEEPFILTERNET: :deepfilternet
+          DISABLED: :disabled
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::TelephonySettings::noise_suppression]
+        end
+
+        type noise_suppression_config =
+          {
+            attenuation_limit: Integer,
+            mode: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode
+          }
+
+        class NoiseSuppressionConfig < Telnyx::Internal::Type::BaseModel
+          attr_reader attenuation_limit: Integer?
+
+          def attenuation_limit=: (Integer) -> Integer
+
+          attr_reader mode: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode?
+
+          def mode=: (
+            Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode
+          ) -> Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode
+
+          def initialize: (
+            ?attenuation_limit: Integer,
+            ?mode: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode
+          ) -> void
+
+          def to_hash: -> {
+            attenuation_limit: Integer,
+            mode: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode
+          }
+
+          type mode = :advanced
+
+          module Mode
+            extend Telnyx::Internal::Type::Enum
+
+            ADVANCED: :advanced
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode]
+          end
+        end
       end
     end
   end

@@ -41,13 +41,37 @@ class Telnyx::Test::Resources::RoomCompositionsTest < Telnyx::Test::ResourceTest
     response = @telnyx.room_compositions.list
 
     assert_pattern do
-      response => Telnyx::Models::RoomCompositionListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::RoomComposition
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::RoomComposition]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        completed_at: Time | nil,
+        created_at: Time | nil,
+        download_url: String | nil,
+        duration_secs: Integer | nil,
+        ended_at: Time | nil,
+        file_format: Telnyx::RoomComposition::Format | nil,
+        record_type: String | nil,
+        room_id: String | nil,
+        session_id: String | nil,
+        size_mb: Float | nil,
+        started_at: Time | nil,
+        status: Telnyx::RoomComposition::Status | nil,
+        updated_at: Time | nil,
+        user_id: String | nil,
+        video_layout: ^(Telnyx::Internal::Type::HashOf[Telnyx::VideoRegion]) | nil,
+        webhook_event_failover_url: String | nil,
+        webhook_event_url: String | nil,
+        webhook_timeout_secs: Integer | nil
       }
     end
   end

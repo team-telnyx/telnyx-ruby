@@ -18,11 +18,13 @@ module Telnyx
       end
 
       # Update the settings for a specific short code. To unbind a short code from a
-      # profile, set the `messaging_profile_id` to `null` or an empty string.
+      # profile, set the `messaging_profile_id` to `null` or an empty string. To add or
+      # update tags, include the tags field as an array of strings.
       sig do
         params(
           id: String,
           messaging_profile_id: String,
+          tags: T::Array[String],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::ShortCodeUpdateResponse)
       end
@@ -31,6 +33,7 @@ module Telnyx
         id,
         # Unique identifier for a messaging profile.
         messaging_profile_id:,
+        tags: nil,
         request_options: {}
       )
       end
@@ -41,7 +44,7 @@ module Telnyx
           filter: Telnyx::ShortCodeListParams::Filter::OrHash,
           page: Telnyx::ShortCodeListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::ShortCodeListResponse)
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::ShortCode])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

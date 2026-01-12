@@ -10,18 +10,16 @@ module Telnyx
               ?managed_accounts: ::Array[String],
               ?start_date: Date,
               ?request_options: Telnyx::request_opts
-            ) -> nil
+            ) -> Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupCreateResponse
 
             def retrieve: (
               String id,
               ?request_options: Telnyx::request_opts
-            ) -> nil
+            ) -> Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse
 
             def list: (
-              ?page: Integer,
-              ?per_page: Integer,
               ?request_options: Telnyx::request_opts
-            ) -> nil
+            ) -> Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupListResponse
 
             def delete: (
               String id,

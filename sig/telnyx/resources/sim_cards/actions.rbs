@@ -11,7 +11,7 @@ module Telnyx
           ?filter: Telnyx::SimCards::ActionListParams::Filter,
           ?page: Telnyx::SimCards::ActionListParams::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::SimCards::ActionListResponse
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::SimCards::SimCardAction]
 
         def bulk_set_public_ips: (
           sim_card_ids: ::Array[String],

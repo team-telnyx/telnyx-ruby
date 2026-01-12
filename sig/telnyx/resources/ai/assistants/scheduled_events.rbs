@@ -24,16 +24,17 @@ module Telnyx
             String assistant_id,
             ?conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
             ?from_date: Time,
-            ?page: Telnyx::AI::Assistants::ScheduledEventListParams::Page,
+            ?page_number: Integer,
+            ?page_size: Integer,
             ?to_date: Time,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::AI::Assistants::ScheduledEventListResponse
+          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AI::Assistants::scheduled_event_list_response]
 
           def delete: (
             String event_id,
             assistant_id: String,
             ?request_options: Telnyx::request_opts
-          ) -> top
+          ) -> nil
 
           def initialize: (client: Telnyx::Client) -> void
         end

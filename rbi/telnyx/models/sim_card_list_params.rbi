@@ -274,6 +274,11 @@ module Telnyx
             :"current_billing_period_consumed_data.amount",
             Telnyx::SimCardListParams::Sort::TaggedSymbol
           )
+        MINUS_CURRENT_BILLING_PERIOD_CONSUMED_DATA_AMOUNT =
+          T.let(
+            :"-current_billing_period_consumed_data.amount",
+            Telnyx::SimCardListParams::Sort::TaggedSymbol
+          )
 
         sig do
           override.returns(

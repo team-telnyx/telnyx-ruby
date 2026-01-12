@@ -12,6 +12,7 @@ module Telnyx
           hold_audio_url: String,
           hold_media_name: String,
           mute: bool,
+          region: Telnyx::Models::Conferences::ActionJoinParams::region,
           soft_end_conference_on_exit: bool,
           start_conference_on_enter: bool,
           supervisor_role: Telnyx::Models::Conferences::ActionJoinParams::supervisor_role,
@@ -59,6 +60,12 @@ module Telnyx
 
         def mute=: (bool) -> bool
 
+        attr_reader region: Telnyx::Models::Conferences::ActionJoinParams::region?
+
+        def region=: (
+          Telnyx::Models::Conferences::ActionJoinParams::region
+        ) -> Telnyx::Models::Conferences::ActionJoinParams::region
+
         attr_reader soft_end_conference_on_exit: bool?
 
         def soft_end_conference_on_exit=: (bool) -> bool
@@ -87,6 +94,7 @@ module Telnyx
           ?hold_audio_url: String,
           ?hold_media_name: String,
           ?mute: bool,
+          ?region: Telnyx::Models::Conferences::ActionJoinParams::region,
           ?soft_end_conference_on_exit: bool,
           ?start_conference_on_enter: bool,
           ?supervisor_role: Telnyx::Models::Conferences::ActionJoinParams::supervisor_role,
@@ -104,6 +112,7 @@ module Telnyx
           hold_audio_url: String,
           hold_media_name: String,
           mute: bool,
+          region: Telnyx::Models::Conferences::ActionJoinParams::region,
           soft_end_conference_on_exit: bool,
           start_conference_on_enter: bool,
           supervisor_role: Telnyx::Models::Conferences::ActionJoinParams::supervisor_role,
@@ -122,6 +131,19 @@ module Telnyx
           ON_EXIT: :on_exit
 
           def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionJoinParams::beep_enabled]
+        end
+
+        type region = :Australia | :Europe | :"Middle East" | :US
+
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          AUSTRALIA: :Australia
+          EUROPE: :Europe
+          MIDDLE_EAST: :"Middle East"
+          US: :US
+
+          def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionJoinParams::region]
         end
 
         type supervisor_role = :barge | :monitor | :none | :whisper

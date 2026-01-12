@@ -40,11 +40,12 @@ module Telnyx
                 T.any(
                   Telnyx::AI::WebhookTool::OrHash,
                   Telnyx::AI::RetrievalTool::OrHash,
-                  Telnyx::AI::AssistantTool::HandoffTool::OrHash,
+                  Telnyx::AI::AssistantTool::Handoff::OrHash,
                   Telnyx::AI::HangupTool::OrHash,
                   Telnyx::AI::TransferTool::OrHash,
-                  Telnyx::AI::AssistantTool::SipReferTool::OrHash,
-                  Telnyx::AI::AssistantTool::DtmfTool::OrHash
+                  Telnyx::AI::AssistantTool::Refer::OrHash,
+                  Telnyx::AI::AssistantTool::SendDtmf::OrHash,
+                  Telnyx::AI::AssistantTool::SendMessage::OrHash
                 )
               ],
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
@@ -137,17 +138,18 @@ module Telnyx
                 T.any(
                   Telnyx::AI::WebhookTool::OrHash,
                   Telnyx::AI::RetrievalTool::OrHash,
-                  Telnyx::AI::AssistantTool::HandoffTool::OrHash,
+                  Telnyx::AI::AssistantTool::Handoff::OrHash,
                   Telnyx::AI::HangupTool::OrHash,
                   Telnyx::AI::TransferTool::OrHash,
-                  Telnyx::AI::AssistantTool::SipReferTool::OrHash,
-                  Telnyx::AI::AssistantTool::DtmfTool::OrHash
+                  Telnyx::AI::AssistantTool::Refer::OrHash,
+                  Telnyx::AI::AssistantTool::SendDtmf::OrHash,
+                  Telnyx::AI::AssistantTool::SendMessage::OrHash
                 )
               ],
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
             voice_settings: Telnyx::AI::VoiceSettings::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(T.anything)
+          ).returns(Telnyx::AI::InferenceEmbedding)
         end
         def update(
           assistant_id,
@@ -268,17 +270,54 @@ module Telnyx
         sig do
           params(
             api_key_ref: String,
-            provider: Telnyx::AI::AssistantImportParams::Provider::OrSymbol,
+            provider: Telnyx::AI::AssistantImportsParams::Provider::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::AssistantsList)
         end
-        def import(
+        def imports(
           # Integration secret pointer that refers to the API key for the external provider.
           # This should be an identifier for an integration secret created via
           # /v2/integration_secrets.
           api_key_ref:,
           # The external provider to import assistants from.
           provider:,
+          request_options: {}
+        )
+        end
+
+        # Send an SMS message for an assistant. This endpoint:
+        #
+        # 1. Validates the assistant exists and has messaging profile configured
+        # 2. If should_create_conversation is true, creates a new conversation with
+        #    metadata
+        # 3. Sends the SMS message (If `text` is set, this will be sent. Otherwise, if
+        #    this is the first message in the conversation and the assistant has a
+        #    `greeting` configured, this will be sent. Otherwise the assistant will
+        #    generate the text to send.)
+        # 4. Updates conversation metadata if provided
+        # 5. Returns the conversation ID
+        sig do
+          params(
+            assistant_id: String,
+            from: String,
+            to: String,
+            conversation_metadata:
+              T::Hash[
+                Symbol,
+                Telnyx::AI::AssistantSendSMSParams::ConversationMetadata::Variants
+              ],
+            should_create_conversation: T::Boolean,
+            text: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::AI::AssistantSendSMSResponse)
+        end
+        def send_sms(
+          assistant_id,
+          from:,
+          to:,
+          conversation_metadata: nil,
+          should_create_conversation: nil,
+          text: nil,
           request_options: {}
         )
         end

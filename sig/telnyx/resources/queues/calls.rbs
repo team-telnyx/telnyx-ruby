@@ -8,11 +8,24 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Queues::CallRetrieveResponse
 
+        def update: (
+          String call_control_id,
+          queue_name: String,
+          ?keep_after_hangup: bool,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
         def list: (
           String queue_name,
           ?page: Telnyx::Queues::CallListParams::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Queues::CallListResponse
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::Queues::CallListResponse]
+
+        def remove: (
+          String call_control_id,
+          queue_name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
 
         def initialize: (client: Telnyx::Client) -> void
       end

@@ -3,8 +3,7 @@
 module Telnyx
   module Models
     module MessagingProfiles
-      # @type [Telnyx::Internal::Type::Converter]
-      AutorespConfigDeleteResponse = Telnyx::Internal::Type::Unknown
+      AutorespConfigDeleteResponse = String
     end
   end
 end

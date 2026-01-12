@@ -37,17 +37,11 @@ module Telnyx
 
       # A customer-specified group reference for customer bookkeeping purposes
       sig { returns(T.nilable(String)) }
-      attr_reader :customer_group_reference
-
-      sig { params(customer_group_reference: String).void }
-      attr_writer :customer_group_reference
+      attr_accessor :customer_group_reference
 
       # A customer-specified reference number for customer bookkeeping purposes
       sig { returns(T.nilable(String)) }
-      attr_reader :customer_reference
-
-      sig { params(customer_reference: String).void }
-      attr_writer :customer_reference
+      attr_accessor :customer_reference
 
       # Can be specified directly or via the `requirement_group_id` parameter.
       sig { returns(T.nilable(Telnyx::PortingOrderDocuments)) }
@@ -72,7 +66,7 @@ module Telnyx
       sig { returns(T.nilable(Telnyx::PortingOrderMisc)) }
       attr_reader :misc
 
-      sig { params(misc: Telnyx::PortingOrderMisc::OrHash).void }
+      sig { params(misc: T.nilable(Telnyx::PortingOrderMisc::OrHash)).void }
       attr_writer :misc
 
       sig { returns(T.nilable(Telnyx::PortingOrderPhoneNumberConfiguration)) }
@@ -141,10 +135,7 @@ module Telnyx
       attr_writer :user_id
 
       sig { returns(T.nilable(String)) }
-      attr_reader :webhook_url
-
-      sig { params(webhook_url: String).void }
-      attr_writer :webhook_url
+      attr_accessor :webhook_url
 
       # Uniquely identifies this porting order
       sig { returns(T.nilable(String)) }
@@ -177,10 +168,7 @@ module Telnyx
       # A key to reference for the porting order group when contacting Telnyx customer
       # support. This information is not available for porting orders in `draft` state
       sig { returns(T.nilable(String)) }
-      attr_reader :parent_support_key
-
-      sig { params(parent_support_key: String).void }
-      attr_writer :parent_support_key
+      attr_accessor :parent_support_key
 
       # Count of phone numbers associated with this porting order
       sig { returns(T.nilable(Integer)) }
@@ -199,10 +187,7 @@ module Telnyx
       # A key to reference this porting order when contacting Telnyx customer support.
       # This information is not available in draft porting orders.
       sig { returns(T.nilable(String)) }
-      attr_reader :support_key
-
-      sig { params(support_key: String).void }
-      attr_writer :support_key
+      attr_accessor :support_key
 
       # ISO 8601 formatted date indicating when the resource was created.
       sig { returns(T.nilable(Time)) }
@@ -218,15 +203,15 @@ module Telnyx
           additional_steps:
             T::Array[Telnyx::PortingOrder::AdditionalStep::OrSymbol],
           created_at: Time,
-          customer_group_reference: String,
-          customer_reference: String,
+          customer_group_reference: T.nilable(String),
+          customer_reference: T.nilable(String),
           description: String,
           documents: Telnyx::PortingOrderDocuments::OrHash,
           end_user: Telnyx::PortingOrderEndUser::OrHash,
           messaging: Telnyx::PortingOrderMessaging::OrHash,
-          misc: Telnyx::PortingOrderMisc::OrHash,
+          misc: T.nilable(Telnyx::PortingOrderMisc::OrHash),
           old_service_provider_ocn: String,
-          parent_support_key: String,
+          parent_support_key: T.nilable(String),
           phone_number_configuration:
             Telnyx::PortingOrderPhoneNumberConfiguration::OrHash,
           phone_number_type: Telnyx::PortingOrder::PhoneNumberType::OrSymbol,
@@ -235,11 +220,11 @@ module Telnyx
           requirements: T::Array[Telnyx::PortingOrderRequirement::OrHash],
           requirements_met: T::Boolean,
           status: Telnyx::PortingOrderStatus::OrHash,
-          support_key: String,
+          support_key: T.nilable(String),
           updated_at: Time,
           user_feedback: Telnyx::PortingOrderUserFeedback::OrHash,
           user_id: String,
-          webhook_url: String
+          webhook_url: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -302,15 +287,15 @@ module Telnyx
             additional_steps:
               T::Array[Telnyx::PortingOrder::AdditionalStep::TaggedSymbol],
             created_at: Time,
-            customer_group_reference: String,
-            customer_reference: String,
+            customer_group_reference: T.nilable(String),
+            customer_reference: T.nilable(String),
             description: String,
             documents: Telnyx::PortingOrderDocuments,
             end_user: Telnyx::PortingOrderEndUser,
             messaging: Telnyx::PortingOrderMessaging,
-            misc: Telnyx::PortingOrderMisc,
+            misc: T.nilable(Telnyx::PortingOrderMisc),
             old_service_provider_ocn: String,
-            parent_support_key: String,
+            parent_support_key: T.nilable(String),
             phone_number_configuration:
               Telnyx::PortingOrderPhoneNumberConfiguration,
             phone_number_type:
@@ -320,11 +305,11 @@ module Telnyx
             requirements: T::Array[Telnyx::PortingOrderRequirement],
             requirements_met: T::Boolean,
             status: Telnyx::PortingOrderStatus,
-            support_key: String,
+            support_key: T.nilable(String),
             updated_at: Time,
             user_feedback: Telnyx::PortingOrderUserFeedback,
             user_id: String,
-            webhook_url: String
+            webhook_url: T.nilable(String)
           }
         )
       end

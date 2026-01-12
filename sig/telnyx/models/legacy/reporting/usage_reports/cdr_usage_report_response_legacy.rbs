@@ -7,13 +7,13 @@ module Telnyx
             {
               id: String,
               aggregation_type: Integer,
-              connections: ::Array[Integer],
+              connections: ::Array[String],
               created_at: Time,
               end_time: Time,
               product_breakdown: Integer,
               record_type: String,
               report_url: String,
-              result: top,
+              result: ::Hash[Symbol, top],
               start_time: Time,
               status: Integer,
               updated_at: Time
@@ -28,9 +28,9 @@ module Telnyx
 
             def aggregation_type=: (Integer) -> Integer
 
-            attr_reader connections: ::Array[Integer]?
+            attr_reader connections: ::Array[String]?
 
-            def connections=: (::Array[Integer]) -> ::Array[Integer]
+            def connections=: (::Array[String]) -> ::Array[String]
 
             attr_reader created_at: Time?
 
@@ -52,9 +52,9 @@ module Telnyx
 
             def report_url=: (String) -> String
 
-            attr_reader result: top?
+            attr_reader result: ::Hash[Symbol, top]?
 
-            def result=: (top) -> top
+            def result=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
             attr_reader start_time: Time?
 
@@ -71,13 +71,13 @@ module Telnyx
             def initialize: (
               ?id: String,
               ?aggregation_type: Integer,
-              ?connections: ::Array[Integer],
+              ?connections: ::Array[String],
               ?created_at: Time,
               ?end_time: Time,
               ?product_breakdown: Integer,
               ?record_type: String,
               ?report_url: String,
-              ?result: top,
+              ?result: ::Hash[Symbol, top],
               ?start_time: Time,
               ?status: Integer,
               ?updated_at: Time
@@ -86,13 +86,13 @@ module Telnyx
             def to_hash: -> {
               id: String,
               aggregation_type: Integer,
-              connections: ::Array[Integer],
+              connections: ::Array[String],
               created_at: Time,
               end_time: Time,
               product_breakdown: Integer,
               record_type: String,
               report_url: String,
-              result: top,
+              result: ::Hash[Symbol, top],
               start_time: Time,
               status: Integer,
               updated_at: Time

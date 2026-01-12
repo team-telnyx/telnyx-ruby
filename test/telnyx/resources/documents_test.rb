@@ -41,13 +41,29 @@ class Telnyx::Test::Resources::DocumentsTest < Telnyx::Test::ResourceTest
     response = @telnyx.documents.list
 
     assert_pattern do
-      response => Telnyx::Models::DocumentListResponse
+      response => Telnyx::Internal::DefaultPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::DocServiceDocument
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::DocServiceDocument]) | nil,
-        meta: Telnyx::PaginationMeta | nil
+      row => {
+        id: String | nil,
+        av_scan_status: Telnyx::DocServiceDocument::AvScanStatus | nil,
+        content_type: String | nil,
+        created_at: String | nil,
+        customer_reference: String | nil,
+        filename: String | nil,
+        record_type: String | nil,
+        sha256: String | nil,
+        size: Telnyx::DocServiceDocument::Size | nil,
+        status: Telnyx::DocServiceDocument::Status | nil,
+        updated_at: String | nil
       }
     end
   end
@@ -69,7 +85,7 @@ class Telnyx::Test::Resources::DocumentsTest < Telnyx::Test::ResourceTest
   end
 
   def test_download
-    skip("Prism doesn't support * responses")
+    skip("Prism doesn't support application/octet-stream responses")
 
     response = @telnyx.documents.download("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 
@@ -97,8 +113,7 @@ class Telnyx::Test::Resources::DocumentsTest < Telnyx::Test::ResourceTest
   def test_upload_required_params
     skip("Prism tests are disabled")
 
-    response =
-      @telnyx.documents.upload(url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf")
+    response = @telnyx.documents.upload(document: {})
 
     assert_pattern do
       response => Telnyx::Models::DocumentUploadResponse
@@ -114,10 +129,7 @@ class Telnyx::Test::Resources::DocumentsTest < Telnyx::Test::ResourceTest
   def test_upload_json_required_params
     skip("Prism tests are disabled")
 
-    response =
-      @telnyx.documents.upload_json(
-        url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-      )
+    response = @telnyx.documents.upload_json(document: {})
 
     assert_pattern do
       response => Telnyx::Models::DocumentUploadJsonResponse

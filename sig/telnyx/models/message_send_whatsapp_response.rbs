@@ -1,0 +1,1149 @@
+module Telnyx
+  module Models
+    type message_send_whatsapp_response =
+      { data: Telnyx::Models::MessageSendWhatsappResponse::Data }
+
+    class MessageSendWhatsappResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::MessageSendWhatsappResponse::Data?
+
+      def data=: (
+        Telnyx::Models::MessageSendWhatsappResponse::Data
+      ) -> Telnyx::Models::MessageSendWhatsappResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::MessageSendWhatsappResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::MessageSendWhatsappResponse::Data
+      }
+
+      type data =
+        {
+          id: String,
+          body: Telnyx::Models::MessageSendWhatsappResponse::Data::Body,
+          direction: String,
+          encoding: String,
+          from: Telnyx::Models::MessageSendWhatsappResponse::Data::From,
+          messaging_profile_id: String,
+          organization_id: String,
+          received_at: Time,
+          record_type: String,
+          to: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::To],
+          type: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader body: Telnyx::Models::MessageSendWhatsappResponse::Data::Body?
+
+        def body=: (
+          Telnyx::Models::MessageSendWhatsappResponse::Data::Body
+        ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body
+
+        attr_reader direction: String?
+
+        def direction=: (String) -> String
+
+        attr_reader encoding: String?
+
+        def encoding=: (String) -> String
+
+        attr_reader from: Telnyx::Models::MessageSendWhatsappResponse::Data::From?
+
+        def from=: (
+          Telnyx::Models::MessageSendWhatsappResponse::Data::From
+        ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::From
+
+        attr_reader messaging_profile_id: String?
+
+        def messaging_profile_id=: (String) -> String
+
+        attr_reader organization_id: String?
+
+        def organization_id=: (String) -> String
+
+        attr_reader received_at: Time?
+
+        def received_at=: (Time) -> Time
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader to: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::To]?
+
+        def to=: (
+          ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::To]
+        ) -> ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::To]
+
+        attr_reader type: String?
+
+        def type=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?body: Telnyx::Models::MessageSendWhatsappResponse::Data::Body,
+          ?direction: String,
+          ?encoding: String,
+          ?from: Telnyx::Models::MessageSendWhatsappResponse::Data::From,
+          ?messaging_profile_id: String,
+          ?organization_id: String,
+          ?received_at: Time,
+          ?record_type: String,
+          ?to: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::To],
+          ?type: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          body: Telnyx::Models::MessageSendWhatsappResponse::Data::Body,
+          direction: String,
+          encoding: String,
+          from: Telnyx::Models::MessageSendWhatsappResponse::Data::From,
+          messaging_profile_id: String,
+          organization_id: String,
+          received_at: Time,
+          record_type: String,
+          to: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::To],
+          type: String
+        }
+
+        type body =
+          {
+            audio: Telnyx::WhatsappMedia,
+            biz_opaque_callback_data: String,
+            contacts: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact],
+            document: Telnyx::WhatsappMedia,
+            image: Telnyx::WhatsappMedia,
+            interactive: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive,
+            location: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Location,
+            reaction: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Reaction,
+            sticker: Telnyx::WhatsappMedia,
+            type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::type_,
+            video: Telnyx::WhatsappMedia
+          }
+
+        class Body < Telnyx::Internal::Type::BaseModel
+          attr_reader audio: Telnyx::WhatsappMedia?
+
+          def audio=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
+
+          attr_reader biz_opaque_callback_data: String?
+
+          def biz_opaque_callback_data=: (String) -> String
+
+          attr_reader contacts: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact]?
+
+          def contacts=: (
+            ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact]
+          ) -> ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact]
+
+          attr_reader document: Telnyx::WhatsappMedia?
+
+          def document=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
+
+          attr_reader image: Telnyx::WhatsappMedia?
+
+          def image=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
+
+          attr_reader interactive: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive?
+
+          def interactive=: (
+            Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive
+          ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive
+
+          attr_reader location: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Location?
+
+          def location=: (
+            Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Location
+          ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Location
+
+          attr_reader reaction: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Reaction?
+
+          def reaction=: (
+            Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Reaction
+          ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Reaction
+
+          attr_reader sticker: Telnyx::WhatsappMedia?
+
+          def sticker=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
+
+          attr_reader type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::type_?
+
+          def type=: (
+            Telnyx::Models::MessageSendWhatsappResponse::Data::Body::type_
+          ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body::type_
+
+          attr_reader video: Telnyx::WhatsappMedia?
+
+          def video=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
+
+          def initialize: (
+            ?audio: Telnyx::WhatsappMedia,
+            ?biz_opaque_callback_data: String,
+            ?contacts: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact],
+            ?document: Telnyx::WhatsappMedia,
+            ?image: Telnyx::WhatsappMedia,
+            ?interactive: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive,
+            ?location: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Location,
+            ?reaction: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Reaction,
+            ?sticker: Telnyx::WhatsappMedia,
+            ?type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::type_,
+            ?video: Telnyx::WhatsappMedia
+          ) -> void
+
+          def to_hash: -> {
+            audio: Telnyx::WhatsappMedia,
+            biz_opaque_callback_data: String,
+            contacts: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact],
+            document: Telnyx::WhatsappMedia,
+            image: Telnyx::WhatsappMedia,
+            interactive: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive,
+            location: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Location,
+            reaction: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Reaction,
+            sticker: Telnyx::WhatsappMedia,
+            type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::type_,
+            video: Telnyx::WhatsappMedia
+          }
+
+          type contact =
+            {
+              addresses: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Address],
+              birthday: String,
+              emails: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Email],
+              name: String,
+              org: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Org,
+              phones: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Phone],
+              urls: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::URL]
+            }
+
+          class Contact < Telnyx::Internal::Type::BaseModel
+            attr_reader addresses: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Address]?
+
+            def addresses=: (
+              ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Address]
+            ) -> ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Address]
+
+            attr_reader birthday: String?
+
+            def birthday=: (String) -> String
+
+            attr_reader emails: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Email]?
+
+            def emails=: (
+              ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Email]
+            ) -> ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Email]
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader org: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Org?
+
+            def org=: (
+              Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Org
+            ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Org
+
+            attr_reader phones: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Phone]?
+
+            def phones=: (
+              ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Phone]
+            ) -> ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Phone]
+
+            attr_reader urls: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::URL]?
+
+            def urls=: (
+              ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::URL]
+            ) -> ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::URL]
+
+            def initialize: (
+              ?addresses: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Address],
+              ?birthday: String,
+              ?emails: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Email],
+              ?name: String,
+              ?org: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Org,
+              ?phones: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Phone],
+              ?urls: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::URL]
+            ) -> void
+
+            def to_hash: -> {
+              addresses: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Address],
+              birthday: String,
+              emails: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Email],
+              name: String,
+              org: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Org,
+              phones: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::Phone],
+              urls: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Contact::URL]
+            }
+
+            type address =
+              {
+                city: String,
+                country: String,
+                country_code: String,
+                state: String,
+                street: String,
+                type: String,
+                zip: String
+              }
+
+            class Address < Telnyx::Internal::Type::BaseModel
+              attr_reader city: String?
+
+              def city=: (String) -> String
+
+              attr_reader country: String?
+
+              def country=: (String) -> String
+
+              attr_reader country_code: String?
+
+              def country_code=: (String) -> String
+
+              attr_reader state: String?
+
+              def state=: (String) -> String
+
+              attr_reader street: String?
+
+              def street=: (String) -> String
+
+              attr_reader type: String?
+
+              def type=: (String) -> String
+
+              attr_reader zip: String?
+
+              def zip=: (String) -> String
+
+              def initialize: (
+                ?city: String,
+                ?country: String,
+                ?country_code: String,
+                ?state: String,
+                ?street: String,
+                ?type: String,
+                ?zip: String
+              ) -> void
+
+              def to_hash: -> {
+                city: String,
+                country: String,
+                country_code: String,
+                state: String,
+                street: String,
+                type: String,
+                zip: String
+              }
+            end
+
+            type email = { email: String, type: String }
+
+            class Email < Telnyx::Internal::Type::BaseModel
+              attr_reader email: String?
+
+              def email=: (String) -> String
+
+              attr_reader type: String?
+
+              def type=: (String) -> String
+
+              def initialize: (?email: String, ?type: String) -> void
+
+              def to_hash: -> { email: String, type: String }
+            end
+
+            type org = { company: String, department: String, title: String }
+
+            class Org < Telnyx::Internal::Type::BaseModel
+              attr_reader company: String?
+
+              def company=: (String) -> String
+
+              attr_reader department: String?
+
+              def department=: (String) -> String
+
+              attr_reader title: String?
+
+              def title=: (String) -> String
+
+              def initialize: (
+                ?company: String,
+                ?department: String,
+                ?title: String
+              ) -> void
+
+              def to_hash: -> {
+                company: String,
+                department: String,
+                title: String
+              }
+            end
+
+            type phone = { phone: String, type: String, wa_id: String }
+
+            class Phone < Telnyx::Internal::Type::BaseModel
+              attr_reader phone: String?
+
+              def phone=: (String) -> String
+
+              attr_reader type: String?
+
+              def type=: (String) -> String
+
+              attr_reader wa_id: String?
+
+              def wa_id=: (String) -> String
+
+              def initialize: (
+                ?phone: String,
+                ?type: String,
+                ?wa_id: String
+              ) -> void
+
+              def to_hash: -> { phone: String, type: String, wa_id: String }
+            end
+
+            type url = { type: String, url: String }
+
+            class URL < Telnyx::Internal::Type::BaseModel
+              attr_reader type: String?
+
+              def type=: (String) -> String
+
+              attr_reader url: String?
+
+              def url=: (String) -> String
+
+              def initialize: (?type: String, ?url: String) -> void
+
+              def to_hash: -> { type: String, url: String }
+            end
+          end
+
+          type interactive =
+            {
+              action: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action,
+              body: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Body,
+              footer: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Footer,
+              header: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Header,
+              type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::type_
+            }
+
+          class Interactive < Telnyx::Internal::Type::BaseModel
+            attr_reader action: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action?
+
+            def action=: (
+              Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action
+            ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action
+
+            attr_reader body: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Body?
+
+            def body=: (
+              Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Body
+            ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Body
+
+            attr_reader footer: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Footer?
+
+            def footer=: (
+              Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Footer
+            ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Footer
+
+            attr_reader header: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Header?
+
+            def header=: (
+              Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Header
+            ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Header
+
+            attr_reader type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::type_?
+
+            def type=: (
+              Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::type_
+            ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::type_
+
+            def initialize: (
+              ?action: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action,
+              ?body: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Body,
+              ?footer: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Footer,
+              ?header: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Header,
+              ?type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::type_
+            ) -> void
+
+            def to_hash: -> {
+              action: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action,
+              body: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Body,
+              footer: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Footer,
+              header: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Header,
+              type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::type_
+            }
+
+            type action =
+              {
+                button: String,
+                buttons: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button],
+                cards: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card],
+                catalog_id: String,
+                mode: String,
+                name: String,
+                parameters: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Parameters,
+                product_retailer_id: String,
+                sections: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Section]
+              }
+
+            class Action < Telnyx::Internal::Type::BaseModel
+              attr_reader button: String?
+
+              def button=: (String) -> String
+
+              attr_reader buttons: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button]?
+
+              def buttons=: (
+                ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button]
+              ) -> ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button]
+
+              attr_reader cards: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card]?
+
+              def cards=: (
+                ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card]
+              ) -> ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card]
+
+              attr_reader catalog_id: String?
+
+              def catalog_id=: (String) -> String
+
+              attr_reader mode: String?
+
+              def mode=: (String) -> String
+
+              attr_reader name: String?
+
+              def name=: (String) -> String
+
+              attr_reader parameters: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Parameters?
+
+              def parameters=: (
+                Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Parameters
+              ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Parameters
+
+              attr_reader product_retailer_id: String?
+
+              def product_retailer_id=: (String) -> String
+
+              attr_reader sections: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Section]?
+
+              def sections=: (
+                ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Section]
+              ) -> ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Section]
+
+              def initialize: (
+                ?button: String,
+                ?buttons: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button],
+                ?cards: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card],
+                ?catalog_id: String,
+                ?mode: String,
+                ?name: String,
+                ?parameters: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Parameters,
+                ?product_retailer_id: String,
+                ?sections: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Section]
+              ) -> void
+
+              def to_hash: -> {
+                button: String,
+                buttons: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button],
+                cards: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card],
+                catalog_id: String,
+                mode: String,
+                name: String,
+                parameters: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Parameters,
+                product_retailer_id: String,
+                sections: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Section]
+              }
+
+              type button =
+                {
+                  reply: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button::Reply,
+                  type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button::type_
+                }
+
+              class Button < Telnyx::Internal::Type::BaseModel
+                attr_reader reply: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button::Reply?
+
+                def reply=: (
+                  Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button::Reply
+                ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button::Reply
+
+                attr_reader type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button::type_?
+
+                def type=: (
+                  Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button::type_
+                ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button::type_
+
+                def initialize: (
+                  ?reply: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button::Reply,
+                  ?type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button::type_
+                ) -> void
+
+                def to_hash: -> {
+                  reply: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button::Reply,
+                  type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button::type_
+                }
+
+                type reply = { id: String, title: String }
+
+                class Reply < Telnyx::Internal::Type::BaseModel
+                  attr_reader id: String?
+
+                  def id=: (String) -> String
+
+                  attr_reader title: String?
+
+                  def title=: (String) -> String
+
+                  def initialize: (?id: String, ?title: String) -> void
+
+                  def to_hash: -> { id: String, title: String }
+                end
+
+                type type_ = :reply
+
+                module Type
+                  extend Telnyx::Internal::Type::Enum
+
+                  REPLY: :reply
+
+                  def self?.values: -> ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Button::type_]
+                end
+              end
+
+              type card =
+                {
+                  action: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Action,
+                  body: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Body,
+                  card_index: Integer,
+                  header: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Header,
+                  type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::type_
+                }
+
+              class Card < Telnyx::Internal::Type::BaseModel
+                attr_reader action: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Action?
+
+                def action=: (
+                  Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Action
+                ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Action
+
+                attr_reader body: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Body?
+
+                def body=: (
+                  Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Body
+                ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Body
+
+                attr_reader card_index: Integer?
+
+                def card_index=: (Integer) -> Integer
+
+                attr_reader header: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Header?
+
+                def header=: (
+                  Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Header
+                ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Header
+
+                attr_reader type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::type_?
+
+                def type=: (
+                  Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::type_
+                ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::type_
+
+                def initialize: (
+                  ?action: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Action,
+                  ?body: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Body,
+                  ?card_index: Integer,
+                  ?header: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Header,
+                  ?type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::type_
+                ) -> void
+
+                def to_hash: -> {
+                  action: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Action,
+                  body: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Body,
+                  card_index: Integer,
+                  header: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Header,
+                  type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::type_
+                }
+
+                type action =
+                  { catalog_id: String, product_retailer_id: String }
+
+                class Action < Telnyx::Internal::Type::BaseModel
+                  attr_reader catalog_id: String?
+
+                  def catalog_id=: (String) -> String
+
+                  attr_reader product_retailer_id: String?
+
+                  def product_retailer_id=: (String) -> String
+
+                  def initialize: (
+                    ?catalog_id: String,
+                    ?product_retailer_id: String
+                  ) -> void
+
+                  def to_hash: -> {
+                    catalog_id: String,
+                    product_retailer_id: String
+                  }
+                end
+
+                type body = { text: String }
+
+                class Body < Telnyx::Internal::Type::BaseModel
+                  attr_reader text: String?
+
+                  def text=: (String) -> String
+
+                  def initialize: (?text: String) -> void
+
+                  def to_hash: -> { text: String }
+                end
+
+                type header =
+                  {
+                    image: Telnyx::WhatsappMedia,
+                    type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Header::type_,
+                    video: Telnyx::WhatsappMedia
+                  }
+
+                class Header < Telnyx::Internal::Type::BaseModel
+                  attr_reader image: Telnyx::WhatsappMedia?
+
+                  def image=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
+
+                  attr_reader type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Header::type_?
+
+                  def type=: (
+                    Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Header::type_
+                  ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Header::type_
+
+                  attr_reader video: Telnyx::WhatsappMedia?
+
+                  def video=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
+
+                  def initialize: (
+                    ?image: Telnyx::WhatsappMedia,
+                    ?type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Header::type_,
+                    ?video: Telnyx::WhatsappMedia
+                  ) -> void
+
+                  def to_hash: -> {
+                    image: Telnyx::WhatsappMedia,
+                    type: Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Header::type_,
+                    video: Telnyx::WhatsappMedia
+                  }
+
+                  type type_ = :image | :video
+
+                  module Type
+                    extend Telnyx::Internal::Type::Enum
+
+                    IMAGE: :image
+                    VIDEO: :video
+
+                    def self?.values: -> ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::Header::type_]
+                  end
+                end
+
+                type type_ = :cta_url
+
+                module Type
+                  extend Telnyx::Internal::Type::Enum
+
+                  CTA_URL: :cta_url
+
+                  def self?.values: -> ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Card::type_]
+                end
+              end
+
+              type parameters = { display_text: String, url: String }
+
+              class Parameters < Telnyx::Internal::Type::BaseModel
+                attr_reader display_text: String?
+
+                def display_text=: (String) -> String
+
+                attr_reader url: String?
+
+                def url=: (String) -> String
+
+                def initialize: (?display_text: String, ?url: String) -> void
+
+                def to_hash: -> { display_text: String, url: String }
+              end
+
+              type section =
+                {
+                  product_items: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Section::ProductItem],
+                  rows: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Section::Row],
+                  title: String
+                }
+
+              class Section < Telnyx::Internal::Type::BaseModel
+                attr_reader product_items: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Section::ProductItem]?
+
+                def product_items=: (
+                  ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Section::ProductItem]
+                ) -> ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Section::ProductItem]
+
+                attr_reader rows: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Section::Row]?
+
+                def rows=: (
+                  ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Section::Row]
+                ) -> ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Section::Row]
+
+                attr_reader title: String?
+
+                def title=: (String) -> String
+
+                def initialize: (
+                  ?product_items: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Section::ProductItem],
+                  ?rows: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Section::Row],
+                  ?title: String
+                ) -> void
+
+                def to_hash: -> {
+                  product_items: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Section::ProductItem],
+                  rows: ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::Action::Section::Row],
+                  title: String
+                }
+
+                type product_item = { product_retailer_id: String }
+
+                class ProductItem < Telnyx::Internal::Type::BaseModel
+                  attr_reader product_retailer_id: String?
+
+                  def product_retailer_id=: (String) -> String
+
+                  def initialize: (?product_retailer_id: String) -> void
+
+                  def to_hash: -> { product_retailer_id: String }
+                end
+
+                type row = { id: String, description: String, title: String }
+
+                class Row < Telnyx::Internal::Type::BaseModel
+                  attr_reader id: String?
+
+                  def id=: (String) -> String
+
+                  attr_reader description: String?
+
+                  def description=: (String) -> String
+
+                  attr_reader title: String?
+
+                  def title=: (String) -> String
+
+                  def initialize: (
+                    ?id: String,
+                    ?description: String,
+                    ?title: String
+                  ) -> void
+
+                  def to_hash: -> {
+                    id: String,
+                    description: String,
+                    title: String
+                  }
+                end
+              end
+            end
+
+            type body = { text: String }
+
+            class Body < Telnyx::Internal::Type::BaseModel
+              attr_reader text: String?
+
+              def text=: (String) -> String
+
+              def initialize: (?text: String) -> void
+
+              def to_hash: -> { text: String }
+            end
+
+            type footer = { text: String }
+
+            class Footer < Telnyx::Internal::Type::BaseModel
+              attr_reader text: String?
+
+              def text=: (String) -> String
+
+              def initialize: (?text: String) -> void
+
+              def to_hash: -> { text: String }
+            end
+
+            type header =
+              {
+                document: Telnyx::WhatsappMedia,
+                image: Telnyx::WhatsappMedia,
+                sub_text: String,
+                text: String,
+                video: Telnyx::WhatsappMedia
+              }
+
+            class Header < Telnyx::Internal::Type::BaseModel
+              attr_reader document: Telnyx::WhatsappMedia?
+
+              def document=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
+
+              attr_reader image: Telnyx::WhatsappMedia?
+
+              def image=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
+
+              attr_reader sub_text: String?
+
+              def sub_text=: (String) -> String
+
+              attr_reader text: String?
+
+              def text=: (String) -> String
+
+              attr_reader video: Telnyx::WhatsappMedia?
+
+              def video=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
+
+              def initialize: (
+                ?document: Telnyx::WhatsappMedia,
+                ?image: Telnyx::WhatsappMedia,
+                ?sub_text: String,
+                ?text: String,
+                ?video: Telnyx::WhatsappMedia
+              ) -> void
+
+              def to_hash: -> {
+                document: Telnyx::WhatsappMedia,
+                image: Telnyx::WhatsappMedia,
+                sub_text: String,
+                text: String,
+                video: Telnyx::WhatsappMedia
+              }
+            end
+
+            type type_ =
+              :cta_url | :list | :carousel | :button | :location_request_message
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              CTA_URL: :cta_url
+              LIST: :list
+              CAROUSEL: :carousel
+              BUTTON: :button
+              LOCATION_REQUEST_MESSAGE: :location_request_message
+
+              def self?.values: -> ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::Interactive::type_]
+            end
+          end
+
+          type location =
+            {
+              address: String,
+              latitude: String,
+              longitude: String,
+              name: String
+            }
+
+          class Location < Telnyx::Internal::Type::BaseModel
+            attr_reader address: String?
+
+            def address=: (String) -> String
+
+            attr_reader latitude: String?
+
+            def latitude=: (String) -> String
+
+            attr_reader longitude: String?
+
+            def longitude=: (String) -> String
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            def initialize: (
+              ?address: String,
+              ?latitude: String,
+              ?longitude: String,
+              ?name: String
+            ) -> void
+
+            def to_hash: -> {
+              address: String,
+              latitude: String,
+              longitude: String,
+              name: String
+            }
+          end
+
+          type reaction = { emoji: String, message_id: String }
+
+          class Reaction < Telnyx::Internal::Type::BaseModel
+            attr_reader emoji: String?
+
+            def emoji=: (String) -> String
+
+            attr_reader message_id: String?
+
+            def message_id=: (String) -> String
+
+            def initialize: (?emoji: String, ?message_id: String) -> void
+
+            def to_hash: -> { emoji: String, message_id: String }
+          end
+
+          type type_ =
+            :audio
+            | :document
+            | :image
+            | :sticker
+            | :video
+            | :interactive
+            | :location
+            | :template
+            | :reaction
+            | :contacts
+
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            AUDIO: :audio
+            DOCUMENT: :document
+            IMAGE: :image
+            STICKER: :sticker
+            VIDEO: :video
+            INTERACTIVE: :interactive
+            LOCATION: :location
+            TEMPLATE: :template
+            REACTION: :reaction
+            CONTACTS: :contacts
+
+            def self?.values: -> ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::Body::type_]
+          end
+        end
+
+        type from =
+          {
+            carrier: String,
+            line_type: Telnyx::Models::MessageSendWhatsappResponse::Data::From::line_type,
+            phone_number: String,
+            status: Telnyx::Models::MessageSendWhatsappResponse::Data::From::status
+          }
+
+        class From < Telnyx::Internal::Type::BaseModel
+          attr_reader carrier: String?
+
+          def carrier=: (String) -> String
+
+          attr_reader line_type: Telnyx::Models::MessageSendWhatsappResponse::Data::From::line_type?
+
+          def line_type=: (
+            Telnyx::Models::MessageSendWhatsappResponse::Data::From::line_type
+          ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::From::line_type
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          attr_reader status: Telnyx::Models::MessageSendWhatsappResponse::Data::From::status?
+
+          def status=: (
+            Telnyx::Models::MessageSendWhatsappResponse::Data::From::status
+          ) -> Telnyx::Models::MessageSendWhatsappResponse::Data::From::status
+
+          def initialize: (
+            ?carrier: String,
+            ?line_type: Telnyx::Models::MessageSendWhatsappResponse::Data::From::line_type,
+            ?phone_number: String,
+            ?status: Telnyx::Models::MessageSendWhatsappResponse::Data::From::status
+          ) -> void
+
+          def to_hash: -> {
+            carrier: String,
+            line_type: Telnyx::Models::MessageSendWhatsappResponse::Data::From::line_type,
+            phone_number: String,
+            status: Telnyx::Models::MessageSendWhatsappResponse::Data::From::status
+          }
+
+          type line_type =
+            :Wireline | :Wireless | :VoWiFi | :VoIP | :"Pre-Paid Wireless" | :""
+
+          module LineType
+            extend Telnyx::Internal::Type::Enum
+
+            WIRELINE: :Wireline
+            WIRELESS: :Wireless
+            VO_WI_FI: :VoWiFi
+            VO_IP: :VoIP
+            PRE_PAID_WIRELESS: :"Pre-Paid Wireless"
+            EMPTY: :""
+
+            def self?.values: -> ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::From::line_type]
+          end
+
+          type status = :received | :delivered
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            RECEIVED: :received
+            DELIVERED: :delivered
+
+            def self?.values: -> ::Array[Telnyx::Models::MessageSendWhatsappResponse::Data::From::status]
+          end
+        end
+
+        type to =
+          {
+            carrier: String,
+            line_type: String,
+            phone_number: String,
+            status: String
+          }
+
+        class To < Telnyx::Internal::Type::BaseModel
+          attr_reader carrier: String?
+
+          def carrier=: (String) -> String
+
+          attr_reader line_type: String?
+
+          def line_type=: (String) -> String
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          attr_reader status: String?
+
+          def status=: (String) -> String
+
+          def initialize: (
+            ?carrier: String,
+            ?line_type: String,
+            ?phone_number: String,
+            ?status: String
+          ) -> void
+
+          def to_hash: -> {
+            carrier: String,
+            line_type: String,
+            phone_number: String,
+            status: String
+          }
+        end
+      end
+    end
+  end
+end

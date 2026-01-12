@@ -1,0 +1,20 @@
+module Telnyx
+  module Resources
+    class AI
+      class Integrations
+        attr_reader connections: Telnyx::Resources::AI::Integrations::Connections
+
+        def retrieve: (
+          String integration_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::IntegrationRetrieveResponse
+
+        def list: (
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::IntegrationListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

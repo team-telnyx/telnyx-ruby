@@ -38,7 +38,7 @@ module Telnyx
       # Update a phone number
       sig do
         params(
-          id: String,
+          phone_number_id: String,
           billing_group_id: String,
           connection_id: String,
           customer_reference: String,
@@ -50,7 +50,7 @@ module Telnyx
       end
       def update(
         # Identifies the resource.
-        id,
+        phone_number_id,
         # Identifies the billing group associated with the phone number.
         billing_group_id: nil,
         # Identifies the connection associated with the phone number.
@@ -74,10 +74,14 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::PhoneNumberListParams::Filter::OrHash,
+          handle_messaging_profile_error:
+            Telnyx::PhoneNumberListParams::HandleMessagingProfileError::OrSymbol,
           page: Telnyx::PhoneNumberListParams::Page::OrHash,
           sort: Telnyx::PhoneNumberListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::PhoneNumberListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[Telnyx::PhoneNumberDetailed]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[tag],
@@ -87,6 +91,13 @@ module Telnyx
         # filter[emergency_address_id], filter[customer_reference], filter[number_type],
         # filter[source]
         filter: nil,
+        # Although it is an infrequent occurrence, due to the highly distributed nature of
+        # the Telnyx platform, it is possible that there will be an issue when loading in
+        # Messaging Profile information. As such, when this parameter is set to `true` and
+        # an error in fetching this information occurs, messaging profile related fields
+        # will be omitted in the response and an error message will be included instead of
+        # returning a 503 error.
+        handle_messaging_profile_error: nil,
         # Consolidated page parameter (deepObject style). Originally: page[size],
         # page[number]
         page: nil,
@@ -121,7 +132,11 @@ module Telnyx
           page: Telnyx::PhoneNumberSlimListParams::Page::OrHash,
           sort: Telnyx::PhoneNumberSlimListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::PhoneNumberSlimListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[
+            Telnyx::Models::PhoneNumberSlimListResponse
+          ]
+        )
       end
       def slim_list(
         # Consolidated filter parameter (deepObject style). Originally: filter[tag],

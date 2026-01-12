@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     class MessagingProfiles
       class AutorespConfigs
-        # Create Auto-Reponse Setting
+        # Create auto-response setting
         #
         # @overload create(profile_id, country_code:, keywords:, op:, resp_text: nil, request_options: {})
         #
@@ -129,7 +129,7 @@ module Telnyx
         # @param profile_id [String]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Object]
+        # @return [String]
         #
         # @see Telnyx::Models::MessagingProfiles::AutorespConfigDeleteParams
         def delete(autoresp_cfg_id, params)
@@ -141,7 +141,7 @@ module Telnyx
           @client.request(
             method: :delete,
             path: ["messaging_profiles/%1$s/autoresp_configs/%2$s", profile_id, autoresp_cfg_id],
-            model: Telnyx::Internal::Type::Unknown,
+            model: String,
             options: options
           )
         end

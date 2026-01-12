@@ -138,6 +138,7 @@ module Telnyx
         extend Telnyx::Internal::Type::Enum
 
         CURRENT_BILLING_PERIOD_CONSUMED_DATA_AMOUNT = :"current_billing_period_consumed_data.amount"
+        MINUS_CURRENT_BILLING_PERIOD_CONSUMED_DATA_AMOUNT = :"-current_billing_period_consumed_data.amount"
 
         # @!method self.values
         #   @return [Array<Symbol>]

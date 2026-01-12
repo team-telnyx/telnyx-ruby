@@ -43,6 +43,7 @@ module Telnyx
           connection_id: String,
           created_at: Telnyx::RecordingListParams::Filter::CreatedAt,
           from: String,
+          sip_call_id: String,
           to: String
         }
 
@@ -73,6 +74,10 @@ module Telnyx
 
         def from=: (String) -> String
 
+        attr_reader sip_call_id: String?
+
+        def sip_call_id=: (String) -> String
+
         attr_reader to: String?
 
         def to=: (String) -> String
@@ -84,6 +89,7 @@ module Telnyx
           ?connection_id: String,
           ?created_at: Telnyx::RecordingListParams::Filter::CreatedAt,
           ?from: String,
+          ?sip_call_id: String,
           ?to: String
         ) -> void
 
@@ -94,6 +100,7 @@ module Telnyx
           connection_id: String,
           created_at: Telnyx::RecordingListParams::Filter::CreatedAt,
           from: String,
+          sip_call_id: String,
           to: String
         }
 

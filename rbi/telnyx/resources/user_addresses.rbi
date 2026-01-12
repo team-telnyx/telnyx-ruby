@@ -19,7 +19,7 @@ module Telnyx
           neighborhood: String,
           phone_number: String,
           postal_code: String,
-          skip_address_verification: String,
+          skip_address_verification: T::Boolean,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::UserAddressCreateResponse)
       end
@@ -92,7 +92,7 @@ module Telnyx
           page: Telnyx::UserAddressListParams::Page::OrHash,
           sort: Telnyx::UserAddressListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::UserAddressListResponse)
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::UserAddress])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

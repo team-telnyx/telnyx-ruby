@@ -44,7 +44,9 @@ module Telnyx
           page: Telnyx::CustomerServiceRecordListParams::Page::OrHash,
           sort: Telnyx::CustomerServiceRecordListParams::Sort::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::CustomerServiceRecordListResponse)
+        ).returns(
+          Telnyx::Internal::DefaultPagination[Telnyx::CustomerServiceRecord]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

@@ -258,10 +258,7 @@ module Telnyx
           attr_writer :id
 
           sig { returns(T.nilable(String)) }
-          attr_reader :bundle_id
-
-          sig { params(bundle_id: String).void }
-          attr_writer :bundle_id
+          attr_accessor :bundle_id
 
           sig { returns(T.nilable(String)) }
           attr_reader :country_code
@@ -329,7 +326,7 @@ module Telnyx
           sig do
             params(
               id: String,
-              bundle_id: String,
+              bundle_id: T.nilable(String),
               country_code: String,
               phone_number: String,
               phone_number_type: String,
@@ -361,7 +358,7 @@ module Telnyx
             override.returns(
               {
                 id: String,
-                bundle_id: String,
+                bundle_id: T.nilable(String),
                 country_code: String,
                 phone_number: String,
                 phone_number_type: String,

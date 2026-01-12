@@ -82,7 +82,13 @@ module Telnyx
           #   @return [Integer]
           required :wait_time_secs, Integer
 
-          # @!method initialize(call_control_id:, call_leg_id:, call_session_id:, connection_id:, enqueued_at:, from:, queue_id:, queue_position:, record_type:, to:, wait_time_secs:)
+          # @!attribute is_alive
+          #   Indicates whether the call is still active in the queue.
+          #
+          #   @return [Boolean, nil]
+          optional :is_alive, Telnyx::Internal::Type::Boolean
+
+          # @!method initialize(call_control_id:, call_leg_id:, call_session_id:, connection_id:, enqueued_at:, from:, queue_id:, queue_position:, record_type:, to:, wait_time_secs:, is_alive: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Queues::CallRetrieveResponse::Data} for more details.
           #
@@ -107,6 +113,8 @@ module Telnyx
           #   @param to [String] Destination number or SIP URI of the call.
           #
           #   @param wait_time_secs [Integer] The time the call has been waiting in the queue, given in seconds
+          #
+          #   @param is_alive [Boolean] Indicates whether the call is still active in the queue.
 
           # @see Telnyx::Models::Queues::CallRetrieveResponse::Data#record_type
           module RecordType

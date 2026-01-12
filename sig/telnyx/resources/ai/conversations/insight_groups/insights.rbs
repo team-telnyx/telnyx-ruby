@@ -8,13 +8,13 @@ module Telnyx
               String insight_id,
               group_id: String,
               ?request_options: Telnyx::request_opts
-            ) -> top
+            ) -> nil
 
             def delete_unassign: (
               String insight_id,
               group_id: String,
               ?request_options: Telnyx::request_opts
-            ) -> top
+            ) -> nil
 
             def initialize: (client: Telnyx::Client) -> void
           end

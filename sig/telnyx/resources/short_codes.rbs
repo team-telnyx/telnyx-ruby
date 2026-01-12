@@ -9,6 +9,7 @@ module Telnyx
       def update: (
         String id,
         messaging_profile_id: String,
+        ?tags: ::Array[String],
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::ShortCodeUpdateResponse
 
@@ -16,7 +17,7 @@ module Telnyx
         ?filter: Telnyx::ShortCodeListParams::Filter,
         ?page: Telnyx::ShortCodeListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::ShortCodeListResponse
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::ShortCode]
 
       def initialize: (client: Telnyx::Client) -> void
     end

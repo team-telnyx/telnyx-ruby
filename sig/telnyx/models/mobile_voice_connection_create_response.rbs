@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type mobile_voice_connection_create_response =
+      { data: Telnyx::MobileVoiceConnection }
+
+    class MobileVoiceConnectionCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::MobileVoiceConnection?
+
+      def data=: (
+        Telnyx::MobileVoiceConnection
+      ) -> Telnyx::MobileVoiceConnection
+
+      def initialize: (?data: Telnyx::MobileVoiceConnection) -> void
+
+      def to_hash: -> { data: Telnyx::MobileVoiceConnection }
+    end
+  end
+end

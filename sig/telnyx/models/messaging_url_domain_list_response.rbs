@@ -1,71 +1,38 @@
 module Telnyx
   module Models
     type messaging_url_domain_list_response =
-      {
-        data: ::Array[Telnyx::Models::MessagingURLDomainListResponse::Data],
-        meta: Telnyx::PaginationMeta
-      }
+      { id: String, record_type: String, url_domain: String, use_case: String }
 
     class MessagingURLDomainListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: ::Array[Telnyx::Models::MessagingURLDomainListResponse::Data]?
+      attr_reader id: String?
 
-      def data=: (
-        ::Array[Telnyx::Models::MessagingURLDomainListResponse::Data]
-      ) -> ::Array[Telnyx::Models::MessagingURLDomainListResponse::Data]
+      def id=: (String) -> String
 
-      attr_reader meta: Telnyx::PaginationMeta?
+      attr_reader record_type: String?
 
-      def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
+      def record_type=: (String) -> String
+
+      attr_reader url_domain: String?
+
+      def url_domain=: (String) -> String
+
+      attr_reader use_case: String?
+
+      def use_case=: (String) -> String
 
       def initialize: (
-        ?data: ::Array[Telnyx::Models::MessagingURLDomainListResponse::Data],
-        ?meta: Telnyx::PaginationMeta
+        ?id: String,
+        ?record_type: String,
+        ?url_domain: String,
+        ?use_case: String
       ) -> void
 
       def to_hash: -> {
-        data: ::Array[Telnyx::Models::MessagingURLDomainListResponse::Data],
-        meta: Telnyx::PaginationMeta
+        id: String,
+        record_type: String,
+        url_domain: String,
+        use_case: String
       }
-
-      type data =
-        {
-          id: String,
-          record_type: String,
-          url_domain: String,
-          use_case: String
-        }
-
-      class Data < Telnyx::Internal::Type::BaseModel
-        attr_reader id: String?
-
-        def id=: (String) -> String
-
-        attr_reader record_type: String?
-
-        def record_type=: (String) -> String
-
-        attr_reader url_domain: String?
-
-        def url_domain=: (String) -> String
-
-        attr_reader use_case: String?
-
-        def use_case=: (String) -> String
-
-        def initialize: (
-          ?id: String,
-          ?record_type: String,
-          ?url_domain: String,
-          ?use_case: String
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          record_type: String,
-          url_domain: String,
-          use_case: String
-        }
-      end
     end
   end
 end

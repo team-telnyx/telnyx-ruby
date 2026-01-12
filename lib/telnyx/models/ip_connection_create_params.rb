@@ -27,6 +27,12 @@ module Telnyx
       #   @return [String, nil]
       optional :android_push_credential_id, String, nil?: true
 
+      # @!attribute call_cost_in_webhooks
+      #   Specifies if call cost webhooks should be sent for this connection.
+      #
+      #   @return [Boolean, nil]
+      optional :call_cost_in_webhooks, Telnyx::Internal::Type::Boolean
+
       # @!attribute connection_name
       #
       #   @return [String, nil]
@@ -71,6 +77,24 @@ module Telnyx
       #
       #   @return [String, nil]
       optional :ios_push_credential_id, String, nil?: true
+
+      # @!attribute noise_suppression
+      #   Controls when noise suppression is applied to calls. When set to 'inbound',
+      #   noise suppression is applied to incoming audio. When set to 'outbound', it's
+      #   applied to outgoing audio. When set to 'both', it's applied in both directions.
+      #   When set to 'disabled', noise suppression is turned off.
+      #
+      #   @return [Symbol, Telnyx::Models::IPConnectionCreateParams::NoiseSuppression, nil]
+      optional :noise_suppression, enum: -> { Telnyx::IPConnectionCreateParams::NoiseSuppression }
+
+      # @!attribute noise_suppression_details
+      #   Configuration options for noise suppression. These settings are stored
+      #   regardless of the noise_suppression value, but only take effect when
+      #   noise_suppression is not 'disabled'. If you disable noise suppression and later
+      #   re-enable it, the previously configured settings will be used.
+      #
+      #   @return [Telnyx::Models::IPConnectionCreateParams::NoiseSuppressionDetails, nil]
+      optional :noise_suppression_details, -> { Telnyx::IPConnectionCreateParams::NoiseSuppressionDetails }
 
       # @!attribute onnet_t38_passthrough_enabled
       #   Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
@@ -129,7 +153,7 @@ module Telnyx
       #   @return [Integer, nil]
       optional :webhook_timeout_secs, Integer, nil?: true
 
-      # @!method initialize(active: nil, anchorsite_override: nil, android_push_credential_id: nil, connection_name: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @!method initialize(active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, connection_name: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::IPConnectionCreateParams} for more details.
       #
@@ -138,6 +162,8 @@ module Telnyx
       #   @param anchorsite_override [Symbol, Telnyx::Models::AnchorsiteOverride] `Latency` directs Telnyx to route media through the site with the lowest round-t
       #
       #   @param android_push_credential_id [String, nil] The uuid of the push credential for Android
+      #
+      #   @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this connection.
       #
       #   @param connection_name [String]
       #
@@ -152,6 +178,10 @@ module Telnyx
       #   @param inbound [Telnyx::Models::IPConnectionCreateParams::Inbound]
       #
       #   @param ios_push_credential_id [String, nil] The uuid of the push credential for Ios
+      #
+      #   @param noise_suppression [Symbol, Telnyx::Models::IPConnectionCreateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
+      #
+      #   @param noise_suppression_details [Telnyx::Models::IPConnectionCreateParams::NoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #
       #   @param onnet_t38_passthrough_enabled [Boolean] Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
       #
@@ -392,6 +422,79 @@ module Telnyx
         end
       end
 
+      # Controls when noise suppression is applied to calls. When set to 'inbound',
+      # noise suppression is applied to incoming audio. When set to 'outbound', it's
+      # applied to outgoing audio. When set to 'both', it's applied in both directions.
+      # When set to 'disabled', noise suppression is turned off.
+      module NoiseSuppression
+        extend Telnyx::Internal::Type::Enum
+
+        INBOUND = :inbound
+        OUTBOUND = :outbound
+        BOTH = :both
+        DISABLED = :disabled
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      class NoiseSuppressionDetails < Telnyx::Internal::Type::BaseModel
+        # @!attribute attenuation_limit
+        #   The attenuation limit value for the selected engine. Default values vary by
+        #   engine: 0 for 'denoiser', 80 for 'deep_filter_net', 'deep_filter_net_large', and
+        #   all Krisp engines ('krisp_viva_tel', 'krisp_viva_tel_lite',
+        #   'krisp_viva_promodel', 'krisp_viva_ss').
+        #
+        #   @return [Integer, nil]
+        optional :attenuation_limit, Integer
+
+        # @!attribute engine
+        #   The noise suppression engine to use. 'denoiser' is the default engine.
+        #   'deep_filter_net' and 'deep_filter_net_large' are alternative engines with
+        #   different performance characteristics. Krisp engines ('krisp_viva_tel',
+        #   'krisp_viva_tel_lite', 'krisp_viva_promodel', 'krisp_viva_ss') provide advanced
+        #   noise suppression capabilities.
+        #
+        #   @return [Symbol, Telnyx::Models::IPConnectionCreateParams::NoiseSuppressionDetails::Engine, nil]
+        optional :engine, enum: -> { Telnyx::IPConnectionCreateParams::NoiseSuppressionDetails::Engine }
+
+        # @!method initialize(attenuation_limit: nil, engine: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::IPConnectionCreateParams::NoiseSuppressionDetails} for more
+        #   details.
+        #
+        #   Configuration options for noise suppression. These settings are stored
+        #   regardless of the noise_suppression value, but only take effect when
+        #   noise_suppression is not 'disabled'. If you disable noise suppression and later
+        #   re-enable it, the previously configured settings will be used.
+        #
+        #   @param attenuation_limit [Integer] The attenuation limit value for the selected engine. Default values vary by engi
+        #
+        #   @param engine [Symbol, Telnyx::Models::IPConnectionCreateParams::NoiseSuppressionDetails::Engine] The noise suppression engine to use. 'denoiser' is the default engine. 'deep_fil
+
+        # The noise suppression engine to use. 'denoiser' is the default engine.
+        # 'deep_filter_net' and 'deep_filter_net_large' are alternative engines with
+        # different performance characteristics. Krisp engines ('krisp_viva_tel',
+        # 'krisp_viva_tel_lite', 'krisp_viva_promodel', 'krisp_viva_ss') provide advanced
+        # noise suppression capabilities.
+        #
+        # @see Telnyx::Models::IPConnectionCreateParams::NoiseSuppressionDetails#engine
+        module Engine
+          extend Telnyx::Internal::Type::Enum
+
+          DENOISER = :denoiser
+          DEEP_FILTER_NET = :deep_filter_net
+          DEEP_FILTER_NET_LARGE = :deep_filter_net_large
+          KRISP_VIVA_TEL = :krisp_viva_tel
+          KRISP_VIVA_TEL_LITE = :krisp_viva_tel_lite
+          KRISP_VIVA_PROMODEL = :krisp_viva_promodel
+          KRISP_VIVA_SS = :krisp_viva_ss
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+      end
+
       # One of UDP, TLS, or TCP. Applies only to connections with IP authentication or
       # FQDN authentication.
       module TransportProtocol
@@ -409,8 +512,8 @@ module Telnyx
       module WebhookAPIVersion
         extend Telnyx::Internal::Type::Enum
 
-        WEBHOOK_API_VERSION_1 = :"1"
-        WEBHOOK_API_VERSION_2 = :"2"
+        V1 = :"1"
+        V2 = :"2"
 
         # @!method self.values
         #   @return [Array<Symbol>]

@@ -136,7 +136,7 @@ module Telnyx
         type phone_number =
           {
             id: String,
-            bundle_id: String,
+            bundle_id: String?,
             country_code: String,
             phone_number: String,
             phone_number_type: String,
@@ -152,9 +152,7 @@ module Telnyx
 
           def id=: (String) -> String
 
-          attr_reader bundle_id: String?
-
-          def bundle_id=: (String) -> String
+          attr_accessor bundle_id: String?
 
           attr_reader country_code: String?
 
@@ -192,7 +190,7 @@ module Telnyx
 
           def initialize: (
             ?id: String,
-            ?bundle_id: String,
+            ?bundle_id: String?,
             ?country_code: String,
             ?phone_number: String,
             ?phone_number_type: String,
@@ -205,7 +203,7 @@ module Telnyx
 
           def to_hash: -> {
             id: String,
-            bundle_id: String,
+            bundle_id: String?,
             country_code: String,
             phone_number: String,
             phone_number_type: String,

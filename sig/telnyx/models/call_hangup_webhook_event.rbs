@@ -314,6 +314,7 @@ module Telnyx
             | :time_limit
             | :user_busy
             | :not_found
+            | :no_answer
             | :unspecified
 
           module HangupCause
@@ -326,6 +327,7 @@ module Telnyx
             TIME_LIMIT: :time_limit
             USER_BUSY: :user_busy
             NOT_FOUND: :not_found
+            NO_ANSWER: :no_answer
             UNSPECIFIED: :unspecified
 
             def self?.values: -> ::Array[Telnyx::Models::CallHangupWebhookEvent::Data::Payload::hangup_cause]

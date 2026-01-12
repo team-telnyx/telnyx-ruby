@@ -34,8 +34,8 @@ module Telnyx
         ) -> Telnyx::Models::Calls::ActionAnswerResponse
 
         def bridge: (
-          String path_call_control_id,
-          body_call_control_id: String,
+          String call_control_id_to_bridge,
+          call_control_id_to_bridge_with: String,
           ?client_state: String,
           ?command_id: String,
           ?mute_dtmf: Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf,
@@ -61,6 +61,7 @@ module Telnyx
           queue_name: String,
           ?client_state: String,
           ?command_id: String,
+          ?keep_after_hangup: bool,
           ?max_size: Integer,
           ?max_wait_time_secs: Integer,
           ?request_options: Telnyx::request_opts
@@ -83,7 +84,7 @@ module Telnyx
 
         def gather_using_ai: (
           String call_control_id,
-          parameters: top,
+          parameters: ::Hash[Symbol, top],
           ?assistant: Telnyx::AI::Assistant,
           ?client_state: String,
           ?command_id: String,
@@ -250,6 +251,7 @@ module Telnyx
           ?command_id: String,
           ?direction: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction,
           ?noise_suppression_engine: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine,
+          ?noise_suppression_engine_config: Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionStartNoiseSuppressionResponse
 
@@ -324,7 +326,7 @@ module Telnyx
           ?client_state: String,
           ?command_id: String,
           ?transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine,
-          ?transcription_engine_config: ::Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config,
+          ?transcription_engine_config: Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config,
           ?transcription_tracks: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionStartTranscriptionResponse
@@ -430,6 +432,7 @@ module Telnyx
           ?sip_auth_password: String,
           ?sip_auth_username: String,
           ?sip_headers: ::Array[Telnyx::SipHeader],
+          ?sip_region: Telnyx::Models::Calls::ActionTransferParams::sip_region,
           ?sip_transport_protocol: Telnyx::Models::Calls::ActionTransferParams::sip_transport_protocol,
           ?sound_modifications: Telnyx::SoundModifications,
           ?target_leg_client_state: String,

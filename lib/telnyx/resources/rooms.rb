@@ -22,11 +22,11 @@ module Telnyx
       #
       # @param unique_name [String] The unique (within the Telnyx account scope) name of the room.
       #
-      # @param webhook_event_failover_url [String, nil] The failover URL where webhooks related to this room will be sent if sending to
+      # @param webhook_event_failover_url [String] The failover URL where webhooks related to this room will be sent if sending to
       #
       # @param webhook_event_url [String] The URL where webhooks related to this room will be sent. Must include a scheme,
       #
-      # @param webhook_timeout_secs [Integer, nil] Specifies how many seconds to wait before timing out a webhook.
+      # @param webhook_timeout_secs [Integer] Specifies how many seconds to wait before timing out a webhook.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -83,11 +83,11 @@ module Telnyx
       #
       # @param unique_name [String] The unique (within the Telnyx account scope) name of the room.
       #
-      # @param webhook_event_failover_url [String, nil] The failover URL where webhooks related to this room will be sent if sending to
+      # @param webhook_event_failover_url [String] The failover URL where webhooks related to this room will be sent if sending to
       #
       # @param webhook_event_url [String] The URL where webhooks related to this room will be sent. Must include a scheme,
       #
-      # @param webhook_timeout_secs [Integer, nil] Specifies how many seconds to wait before timing out a webhook.
+      # @param webhook_timeout_secs [Integer] Specifies how many seconds to wait before timing out a webhook.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -120,7 +120,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::RoomListResponse]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::Room>]
       #
       # @see Telnyx::Models::RoomListParams
       def list(params = {})
@@ -129,7 +129,8 @@ module Telnyx
           method: :get,
           path: "rooms",
           query: parsed,
-          model: Telnyx::Models::RoomListResponse,
+          page: Telnyx::Internal::DefaultPagination,
+          model: Telnyx::Room,
           options: options
         )
       end
