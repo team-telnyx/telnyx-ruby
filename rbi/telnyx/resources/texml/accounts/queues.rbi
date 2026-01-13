@@ -62,6 +62,38 @@ module Telnyx
           )
           end
 
+          # Lists queue resources.
+          sig do
+            params(
+              account_sid: String,
+              date_created: String,
+              date_updated: String,
+              page: Integer,
+              page_size: Integer,
+              page_token: String,
+              request_options: Telnyx::RequestOptions::OrHash
+            ).returns(Telnyx::Models::Texml::Accounts::QueueListResponse)
+          end
+          def list(
+            # The id of the account the resource belongs to.
+            account_sid,
+            # Filters conferences by the creation date. Expected format is YYYY-MM-DD. Also
+            # accepts inequality operators, e.g. DateCreated>=2023-05-22.
+            date_created: nil,
+            # Filters conferences by the time they were last updated. Expected format is
+            # YYYY-MM-DD. Also accepts inequality operators, e.g. DateUpdated>=2023-05-22.
+            date_updated: nil,
+            # The number of the page to be displayed, zero-indexed, should be used in
+            # conjuction with PageToken.
+            page: nil,
+            # The number of records to be displayed on a page
+            page_size: nil,
+            # Used to request the next page of results.
+            page_token: nil,
+            request_options: {}
+          )
+          end
+
           # Delete a queue resource.
           sig do
             params(
