@@ -22,6 +22,7 @@ module Telnyx
           connection_id: String,
           from: String,
           to: String,
+          black_threshold: Integer,
           client_state: String,
           from_display_name: String,
           media_name: String,
@@ -43,6 +44,9 @@ module Telnyx
         from:,
         # The phone number, in E.164 format, the fax will be sent to or SIP URI
         to:,
+        # The black threshold percentage for monochrome faxes. Only applicable if
+        # `monochrome` is set to `true`.
+        black_threshold: nil,
         # Use this field to add state to every subsequent webhook. It must be a valid
         # Base-64 encoded string.
         client_state: nil,
