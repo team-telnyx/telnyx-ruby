@@ -58,17 +58,17 @@ module Telnyx
         #
         # @overload update(autoresp_cfg_id, profile_id:, country_code:, keywords:, op:, resp_text: nil, request_options: {})
         #
-        # @param autoresp_cfg_id [String] Path param:
+        # @param autoresp_cfg_id [String] Path param
         #
-        # @param profile_id [String] Path param:
+        # @param profile_id [String] Path param
         #
-        # @param country_code [String] Body param:
+        # @param country_code [String] Body param
         #
-        # @param keywords [Array<String>] Body param:
+        # @param keywords [Array<String>] Body param
         #
-        # @param op [Symbol, Telnyx::Models::MessagingProfiles::AutoRespConfigCreate::Op] Body param:
+        # @param op [Symbol, Telnyx::Models::MessagingProfiles::AutoRespConfigCreate::Op] Body param
         #
-        # @param resp_text [String] Body param:
+        # @param resp_text [String] Body param
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

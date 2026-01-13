@@ -13,7 +13,7 @@ module Telnyx
         #
         # @param idempotency_key [String] Body param: Idempotency key for the request. Can be any UUID, but should always
         #
-        # @param items [Array<Telnyx::Models::BundlePricing::UserBundleCreateParams::Item>] Body param:
+        # @param items [Array<Telnyx::Models::BundlePricing::UserBundleCreateParams::Item>] Body param
         #
         # @param authorization_bearer [String] Header param: Authenticates the request with your Telnyx API V2 KEY
         #

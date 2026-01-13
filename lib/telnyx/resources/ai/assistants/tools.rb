@@ -9,9 +9,9 @@ module Telnyx
           #
           # @overload test_(tool_id, assistant_id:, arguments: nil, dynamic_variables: nil, request_options: {})
           #
-          # @param tool_id [String] Path param:
+          # @param tool_id [String] Path param
           #
-          # @param assistant_id [String] Path param:
+          # @param assistant_id [String] Path param
           #
           # @param arguments [Hash{Symbol=>Object}] Body param: Key-value arguments to use for the webhook test
           #

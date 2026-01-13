@@ -15,11 +15,11 @@ module Telnyx
             ).returns(Telnyx::AI::InferenceEmbedding)
           end
           def retrieve(
-            # Path param:
+            # Path param
             version_id,
-            # Path param:
+            # Path param
             assistant_id:,
-            # Query param:
+            # Query param
             include_mcp_servers: nil,
             request_options: {}
           )
@@ -63,11 +63,11 @@ module Telnyx
             ).returns(Telnyx::AI::InferenceEmbedding)
           end
           def update(
-            # Path param:
+            # Path param
             version_id,
-            # Path param:
+            # Path param
             assistant_id:,
-            # Body param:
+            # Body param
             description: nil,
             # Body param: Map of dynamic variables and their default values
             dynamic_variables: nil,
@@ -76,13 +76,13 @@ module Telnyx
             # [guide](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
             # for more information.
             dynamic_variables_webhook_url: nil,
-            # Body param:
+            # Body param
             enabled_features: nil,
             # Body param: Text that the assistant will use to start the conversation. This may
             # be templated with
             # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
             greeting: nil,
-            # Body param:
+            # Body param
             insight_settings: nil,
             # Body param: System instructions for the assistant. These may be templated with
             # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
@@ -93,24 +93,24 @@ module Telnyx
             # that refers to your LLM provider's API key. Warning: Free plans are unlikely to
             # work with this integration.
             llm_api_key_ref: nil,
-            # Body param:
+            # Body param
             messaging_settings: nil,
             # Body param: ID of the model to use. You can use the
             # [Get models API](https://developers.telnyx.com/api/inference/inference-embedding/get-models-public-models-get)
             # to see all of your available models,
             model: nil,
-            # Body param:
+            # Body param
             name: nil,
-            # Body param:
+            # Body param
             privacy_settings: nil,
-            # Body param:
+            # Body param
             telephony_settings: nil,
             # Body param: The tools that the assistant can use. These may be templated with
             # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
             tools: nil,
-            # Body param:
+            # Body param
             transcription: nil,
-            # Body param:
+            # Body param
             voice_settings: nil,
             request_options: {}
           )

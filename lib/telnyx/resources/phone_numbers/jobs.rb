@@ -109,7 +109,7 @@ module Telnyx
         #
         # @param tags [Array<String>] Body param: A list of user-assigned tags to help organize phone numbers.
         #
-        # @param voice [Telnyx::Models::PhoneNumbers::UpdateVoiceSettings] Body param:
+        # @param voice [Telnyx::Models::PhoneNumbers::UpdateVoiceSettings] Body param
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
