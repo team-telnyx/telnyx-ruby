@@ -22,13 +22,22 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::AI::AssistantImportsParams::Provider]
         required :provider, enum: -> { Telnyx::AI::AssistantImportsParams::Provider }
 
-        # @!method initialize(api_key_ref:, provider:, request_options: {})
+        # @!attribute import_ids
+        #   Optional list of assistant IDs to import from the external provider. If not
+        #   provided, all assistants will be imported.
+        #
+        #   @return [Array<String>, nil]
+        optional :import_ids, Telnyx::Internal::Type::ArrayOf[String]
+
+        # @!method initialize(api_key_ref:, provider:, import_ids: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::AssistantImportsParams} for more details.
         #
         #   @param api_key_ref [String] Integration secret pointer that refers to the API key for the external provider.
         #
         #   @param provider [Symbol, Telnyx::Models::AI::AssistantImportsParams::Provider] The external provider to import assistants from.
+        #
+        #   @param import_ids [Array<String>] Optional list of assistant IDs to import from the external provider. If not prov
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

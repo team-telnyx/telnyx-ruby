@@ -22,10 +22,19 @@ module Telnyx
         sig { returns(Telnyx::AI::AssistantImportsParams::Provider::OrSymbol) }
         attr_accessor :provider
 
+        # Optional list of assistant IDs to import from the external provider. If not
+        # provided, all assistants will be imported.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :import_ids
+
+        sig { params(import_ids: T::Array[String]).void }
+        attr_writer :import_ids
+
         sig do
           params(
             api_key_ref: String,
             provider: Telnyx::AI::AssistantImportsParams::Provider::OrSymbol,
+            import_ids: T::Array[String],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -36,6 +45,9 @@ module Telnyx
           api_key_ref:,
           # The external provider to import assistants from.
           provider:,
+          # Optional list of assistant IDs to import from the external provider. If not
+          # provided, all assistants will be imported.
+          import_ids: nil,
           request_options: {}
         )
         end
@@ -45,6 +57,7 @@ module Telnyx
             {
               api_key_ref: String,
               provider: Telnyx::AI::AssistantImportsParams::Provider::OrSymbol,
+              import_ids: T::Array[String],
               request_options: Telnyx::RequestOptions
             }
           )

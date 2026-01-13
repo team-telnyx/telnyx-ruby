@@ -120,7 +120,13 @@ module Telnyx
         #   @return [Telnyx::Models::AI::VoiceSettings, nil]
         optional :voice_settings, -> { Telnyx::AI::VoiceSettings }
 
-        # @!method initialize(id:, created_at:, instructions:, model:, name:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, import_metadata: nil, insight_settings: nil, llm_api_key_ref: nil, messaging_settings: nil, privacy_settings: nil, telephony_settings: nil, tools: nil, transcription: nil, voice_settings: nil)
+        # @!attribute widget_settings
+        #   Configuration settings for the assistant's web widget.
+        #
+        #   @return [Telnyx::Models::AI::InferenceEmbedding::WidgetSettings, nil]
+        optional :widget_settings, -> { Telnyx::AI::InferenceEmbedding::WidgetSettings }
+
+        # @!method initialize(id:, created_at:, instructions:, model:, name:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, import_metadata: nil, insight_settings: nil, llm_api_key_ref: nil, messaging_settings: nil, privacy_settings: nil, telephony_settings: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::InferenceEmbedding} for more details.
         #
@@ -161,6 +167,178 @@ module Telnyx
         #   @param transcription [Telnyx::Models::AI::TranscriptionSettings]
         #
         #   @param voice_settings [Telnyx::Models::AI::VoiceSettings]
+        #
+        #   @param widget_settings [Telnyx::Models::AI::InferenceEmbedding::WidgetSettings] Configuration settings for the assistant's web widget.
+
+        # @see Telnyx::Models::AI::InferenceEmbedding#widget_settings
+        class WidgetSettings < Telnyx::Internal::Type::BaseModel
+          # @!attribute agent_thinking_text
+          #   Text displayed while the agent is processing.
+          #
+          #   @return [String, nil]
+          optional :agent_thinking_text, String
+
+          # @!attribute audio_visualizer_config
+          #
+          #   @return [Telnyx::Models::AI::InferenceEmbedding::WidgetSettings::AudioVisualizerConfig, nil]
+          optional :audio_visualizer_config,
+                   -> { Telnyx::AI::InferenceEmbedding::WidgetSettings::AudioVisualizerConfig }
+
+          # @!attribute default_state
+          #   The default state of the widget.
+          #
+          #   @return [Symbol, Telnyx::Models::AI::InferenceEmbedding::WidgetSettings::DefaultState, nil]
+          optional :default_state, enum: -> { Telnyx::AI::InferenceEmbedding::WidgetSettings::DefaultState }
+
+          # @!attribute give_feedback_url
+          #   URL for users to give feedback.
+          #
+          #   @return [String, nil]
+          optional :give_feedback_url, String, nil?: true
+
+          # @!attribute logo_icon_url
+          #   URL to a custom logo icon for the widget.
+          #
+          #   @return [String, nil]
+          optional :logo_icon_url, String, nil?: true
+
+          # @!attribute position
+          #   The positioning style for the widget.
+          #
+          #   @return [Symbol, Telnyx::Models::AI::InferenceEmbedding::WidgetSettings::Position, nil]
+          optional :position, enum: -> { Telnyx::AI::InferenceEmbedding::WidgetSettings::Position }
+
+          # @!attribute report_issue_url
+          #   URL for users to report issues.
+          #
+          #   @return [String, nil]
+          optional :report_issue_url, String, nil?: true
+
+          # @!attribute speak_to_interrupt_text
+          #   Text prompting users to speak to interrupt.
+          #
+          #   @return [String, nil]
+          optional :speak_to_interrupt_text, String
+
+          # @!attribute start_call_text
+          #   Custom text displayed on the start call button.
+          #
+          #   @return [String, nil]
+          optional :start_call_text, String
+
+          # @!attribute theme
+          #   The visual theme for the widget.
+          #
+          #   @return [Symbol, Telnyx::Models::AI::InferenceEmbedding::WidgetSettings::Theme, nil]
+          optional :theme, enum: -> { Telnyx::AI::InferenceEmbedding::WidgetSettings::Theme }
+
+          # @!attribute view_history_url
+          #   URL to view conversation history.
+          #
+          #   @return [String, nil]
+          optional :view_history_url, String, nil?: true
+
+          # @!method initialize(agent_thinking_text: nil, audio_visualizer_config: nil, default_state: nil, give_feedback_url: nil, logo_icon_url: nil, position: nil, report_issue_url: nil, speak_to_interrupt_text: nil, start_call_text: nil, theme: nil, view_history_url: nil)
+          #   Configuration settings for the assistant's web widget.
+          #
+          #   @param agent_thinking_text [String] Text displayed while the agent is processing.
+          #
+          #   @param audio_visualizer_config [Telnyx::Models::AI::InferenceEmbedding::WidgetSettings::AudioVisualizerConfig]
+          #
+          #   @param default_state [Symbol, Telnyx::Models::AI::InferenceEmbedding::WidgetSettings::DefaultState] The default state of the widget.
+          #
+          #   @param give_feedback_url [String, nil] URL for users to give feedback.
+          #
+          #   @param logo_icon_url [String, nil] URL to a custom logo icon for the widget.
+          #
+          #   @param position [Symbol, Telnyx::Models::AI::InferenceEmbedding::WidgetSettings::Position] The positioning style for the widget.
+          #
+          #   @param report_issue_url [String, nil] URL for users to report issues.
+          #
+          #   @param speak_to_interrupt_text [String] Text prompting users to speak to interrupt.
+          #
+          #   @param start_call_text [String] Custom text displayed on the start call button.
+          #
+          #   @param theme [Symbol, Telnyx::Models::AI::InferenceEmbedding::WidgetSettings::Theme] The visual theme for the widget.
+          #
+          #   @param view_history_url [String, nil] URL to view conversation history.
+
+          # @see Telnyx::Models::AI::InferenceEmbedding::WidgetSettings#audio_visualizer_config
+          class AudioVisualizerConfig < Telnyx::Internal::Type::BaseModel
+            # @!attribute color
+            #   The color theme for the audio visualizer.
+            #
+            #   @return [Symbol, Telnyx::Models::AI::InferenceEmbedding::WidgetSettings::AudioVisualizerConfig::Color, nil]
+            optional :color, enum: -> { Telnyx::AI::InferenceEmbedding::WidgetSettings::AudioVisualizerConfig::Color }
+
+            # @!attribute preset
+            #   The preset style for the audio visualizer.
+            #
+            #   @return [String, nil]
+            optional :preset, String
+
+            # @!method initialize(color: nil, preset: nil)
+            #   @param color [Symbol, Telnyx::Models::AI::InferenceEmbedding::WidgetSettings::AudioVisualizerConfig::Color] The color theme for the audio visualizer.
+            #
+            #   @param preset [String] The preset style for the audio visualizer.
+
+            # The color theme for the audio visualizer.
+            #
+            # @see Telnyx::Models::AI::InferenceEmbedding::WidgetSettings::AudioVisualizerConfig#color
+            module Color
+              extend Telnyx::Internal::Type::Enum
+
+              VERDANT = :verdant
+              TWILIGHT = :twilight
+              BLOOM = :bloom
+              MYSTIC = :mystic
+              FLARE = :flare
+              GLACIER = :glacier
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
+          # The default state of the widget.
+          #
+          # @see Telnyx::Models::AI::InferenceEmbedding::WidgetSettings#default_state
+          module DefaultState
+            extend Telnyx::Internal::Type::Enum
+
+            EXPANDED = :expanded
+            COLLAPSED = :collapsed
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # The positioning style for the widget.
+          #
+          # @see Telnyx::Models::AI::InferenceEmbedding::WidgetSettings#position
+          module Position
+            extend Telnyx::Internal::Type::Enum
+
+            FIXED = :fixed
+            STATIC = :static
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # The visual theme for the widget.
+          #
+          # @see Telnyx::Models::AI::InferenceEmbedding::WidgetSettings#theme
+          module Theme
+            extend Telnyx::Internal::Type::Enum
+
+            LIGHT = :light
+            DARK = :dark
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
       end
     end
   end

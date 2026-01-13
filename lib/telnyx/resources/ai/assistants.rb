@@ -24,7 +24,7 @@ module Telnyx
         #
         # Create a new AI Assistant.
         #
-        # @overload create(instructions:, model:, name:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, llm_api_key_ref: nil, messaging_settings: nil, privacy_settings: nil, telephony_settings: nil, tools: nil, transcription: nil, voice_settings: nil, request_options: {})
+        # @overload create(instructions:, model:, name:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, llm_api_key_ref: nil, messaging_settings: nil, privacy_settings: nil, telephony_settings: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
         #
         # @param instructions [String] System instructions for the assistant. These may be templated with [dynamic vari
         #
@@ -57,6 +57,8 @@ module Telnyx
         # @param transcription [Telnyx::Models::AI::TranscriptionSettings]
         #
         # @param voice_settings [Telnyx::Models::AI::VoiceSettings]
+        #
+        # @param widget_settings [Telnyx::Models::AI::AssistantCreateParams::WidgetSettings] Configuration settings for the assistant's web widget.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -104,7 +106,7 @@ module Telnyx
         #
         # Update an AI Assistant's attributes.
         #
-        # @overload update(assistant_id, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, privacy_settings: nil, promote_to_main: nil, telephony_settings: nil, tools: nil, transcription: nil, voice_settings: nil, request_options: {})
+        # @overload update(assistant_id, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, privacy_settings: nil, promote_to_main: nil, telephony_settings: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
         #
         # @param assistant_id [String]
         #
@@ -141,6 +143,8 @@ module Telnyx
         # @param transcription [Telnyx::Models::AI::TranscriptionSettings]
         #
         # @param voice_settings [Telnyx::Models::AI::VoiceSettings]
+        #
+        # @param widget_settings [Telnyx::Models::AI::AssistantUpdateParams::WidgetSettings] Configuration settings for the assistant's web widget.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -275,11 +279,13 @@ module Telnyx
         # imported will be overwritten with its latest version from the importing
         # provider.
         #
-        # @overload imports(api_key_ref:, provider:, request_options: {})
+        # @overload imports(api_key_ref:, provider:, import_ids: nil, request_options: {})
         #
         # @param api_key_ref [String] Integration secret pointer that refers to the API key for the external provider.
         #
         # @param provider [Symbol, Telnyx::Models::AI::AssistantImportsParams::Provider] The external provider to import assistants from.
+        #
+        # @param import_ids [Array<String>] Optional list of assistant IDs to import from the external provider. If not prov
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

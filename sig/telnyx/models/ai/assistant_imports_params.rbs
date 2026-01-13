@@ -4,7 +4,8 @@ module Telnyx
       type assistant_imports_params =
         {
           api_key_ref: String,
-          provider: Telnyx::Models::AI::AssistantImportsParams::provider
+          provider: Telnyx::Models::AI::AssistantImportsParams::provider,
+          import_ids: ::Array[String]
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -16,15 +17,21 @@ module Telnyx
 
         attr_accessor provider: Telnyx::Models::AI::AssistantImportsParams::provider
 
+        attr_reader import_ids: ::Array[String]?
+
+        def import_ids=: (::Array[String]) -> ::Array[String]
+
         def initialize: (
           api_key_ref: String,
           provider: Telnyx::Models::AI::AssistantImportsParams::provider,
+          ?import_ids: ::Array[String],
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           api_key_ref: String,
           provider: Telnyx::Models::AI::AssistantImportsParams::provider,
+          import_ids: ::Array[String],
           request_options: Telnyx::RequestOptions
         }
 

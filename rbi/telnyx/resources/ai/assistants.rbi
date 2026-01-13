@@ -50,6 +50,8 @@ module Telnyx
               ],
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
             voice_settings: Telnyx::AI::VoiceSettings::OrHash,
+            widget_settings:
+              Telnyx::AI::AssistantCreateParams::WidgetSettings::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::InferenceEmbedding)
         end
@@ -90,6 +92,8 @@ module Telnyx
           tools: nil,
           transcription: nil,
           voice_settings: nil,
+          # Configuration settings for the assistant's web widget.
+          widget_settings: nil,
           request_options: {}
         )
         end
@@ -148,6 +152,8 @@ module Telnyx
               ],
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
             voice_settings: Telnyx::AI::VoiceSettings::OrHash,
+            widget_settings:
+              Telnyx::AI::AssistantUpdateParams::WidgetSettings::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::InferenceEmbedding)
         end
@@ -192,6 +198,8 @@ module Telnyx
           tools: nil,
           transcription: nil,
           voice_settings: nil,
+          # Configuration settings for the assistant's web widget.
+          widget_settings: nil,
           request_options: {}
         )
         end
@@ -271,6 +279,7 @@ module Telnyx
           params(
             api_key_ref: String,
             provider: Telnyx::AI::AssistantImportsParams::Provider::OrSymbol,
+            import_ids: T::Array[String],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::AssistantsList)
         end
@@ -281,6 +290,9 @@ module Telnyx
           api_key_ref:,
           # The external provider to import assistants from.
           provider:,
+          # Optional list of assistant IDs to import from the external provider. If not
+          # provided, all assistants will be imported.
+          import_ids: nil,
           request_options: {}
         )
         end
