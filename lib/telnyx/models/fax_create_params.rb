@@ -25,6 +25,13 @@ module Telnyx
       #   @return [String]
       required :to, String
 
+      # @!attribute black_threshold
+      #   The black threshold percentage for monochrome faxes. Only applicable if
+      #   `monochrome` is set to `true`.
+      #
+      #   @return [Integer, nil]
+      optional :black_threshold, Integer
+
       # @!attribute client_state
       #   Use this field to add state to every subsequent webhook. It must be a valid
       #   Base-64 encoded string.
@@ -103,7 +110,7 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String
 
-      # @!method initialize(connection_id:, from:, to:, client_state: nil, from_display_name: nil, media_name: nil, media_url: nil, monochrome: nil, preview_format: nil, quality: nil, store_media: nil, store_preview: nil, t38_enabled: nil, webhook_url: nil, request_options: {})
+      # @!method initialize(connection_id:, from:, to:, black_threshold: nil, client_state: nil, from_display_name: nil, media_name: nil, media_url: nil, monochrome: nil, preview_format: nil, quality: nil, store_media: nil, store_preview: nil, t38_enabled: nil, webhook_url: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::FaxCreateParams} for more details.
       #
@@ -112,6 +119,8 @@ module Telnyx
       #   @param from [String] The phone number, in E.164 format, the fax will be sent from.
       #
       #   @param to [String] The phone number, in E.164 format, the fax will be sent to or SIP URI
+      #
+      #   @param black_threshold [Integer] The black threshold percentage for monochrome faxes. Only applicable if `monochr
       #
       #   @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
       #

@@ -5,6 +5,7 @@ module Telnyx
         connection_id: String,
         from: String,
         to: String,
+        black_threshold: Integer,
         client_state: String,
         from_display_name: String,
         media_name: String,
@@ -28,6 +29,10 @@ module Telnyx
       attr_accessor from: String
 
       attr_accessor to: String
+
+      attr_reader black_threshold: Integer?
+
+      def black_threshold=: (Integer) -> Integer
 
       attr_reader client_state: String?
 
@@ -81,6 +86,7 @@ module Telnyx
         connection_id: String,
         from: String,
         to: String,
+        ?black_threshold: Integer,
         ?client_state: String,
         ?from_display_name: String,
         ?media_name: String,
@@ -99,6 +105,7 @@ module Telnyx
         connection_id: String,
         from: String,
         to: String,
+        black_threshold: Integer,
         client_state: String,
         from_display_name: String,
         media_name: String,
