@@ -16,7 +16,7 @@ module Telnyx
             #
             # @param call_sid [String] Path param: The CallSid that identifies the call to update.
             #
-            # @param status [Symbol, Telnyx::Models::Texml::Accounts::Calls::RecordingRecordingSidJsonParams::Status] Body param:
+            # @param status [Symbol, Telnyx::Models::Texml::Accounts::Calls::RecordingRecordingSidJsonParams::Status] Body param
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #

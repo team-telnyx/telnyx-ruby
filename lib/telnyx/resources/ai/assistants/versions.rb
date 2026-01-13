@@ -9,11 +9,11 @@ module Telnyx
           #
           # @overload retrieve(version_id, assistant_id:, include_mcp_servers: nil, request_options: {})
           #
-          # @param version_id [String] Path param:
+          # @param version_id [String] Path param
           #
-          # @param assistant_id [String] Path param:
+          # @param assistant_id [String] Path param
           #
-          # @param include_mcp_servers [Boolean] Query param:
+          # @param include_mcp_servers [Boolean] Query param
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -43,41 +43,41 @@ module Telnyx
           #
           # @overload update(version_id, assistant_id:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, privacy_settings: nil, telephony_settings: nil, tools: nil, transcription: nil, voice_settings: nil, request_options: {})
           #
-          # @param version_id [String] Path param:
+          # @param version_id [String] Path param
           #
-          # @param assistant_id [String] Path param:
+          # @param assistant_id [String] Path param
           #
-          # @param description [String] Body param:
+          # @param description [String] Body param
           #
           # @param dynamic_variables [Hash{Symbol=>Object}] Body param: Map of dynamic variables and their default values
           #
           # @param dynamic_variables_webhook_url [String] Body param: If the dynamic_variables_webhook_url is set for the assistant, we wi
           #
-          # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>] Body param:
+          # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>] Body param
           #
           # @param greeting [String] Body param: Text that the assistant will use to start the conversation. This may
           #
-          # @param insight_settings [Telnyx::Models::AI::InsightSettings] Body param:
+          # @param insight_settings [Telnyx::Models::AI::InsightSettings] Body param
           #
           # @param instructions [String] Body param: System instructions for the assistant. These may be templated with [
           #
           # @param llm_api_key_ref [String] Body param: This is only needed when using third-party inference providers. The
           #
-          # @param messaging_settings [Telnyx::Models::AI::MessagingSettings] Body param:
+          # @param messaging_settings [Telnyx::Models::AI::MessagingSettings] Body param
           #
           # @param model [String] Body param: ID of the model to use. You can use the [Get models API](https://dev
           #
-          # @param name [String] Body param:
+          # @param name [String] Body param
           #
-          # @param privacy_settings [Telnyx::Models::AI::PrivacySettings] Body param:
+          # @param privacy_settings [Telnyx::Models::AI::PrivacySettings] Body param
           #
-          # @param telephony_settings [Telnyx::Models::AI::TelephonySettings] Body param:
+          # @param telephony_settings [Telnyx::Models::AI::TelephonySettings] Body param
           #
           # @param tools [Array<Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage>] Body param: The tools that the assistant can use. These may be templated with [d
           #
-          # @param transcription [Telnyx::Models::AI::TranscriptionSettings] Body param:
+          # @param transcription [Telnyx::Models::AI::TranscriptionSettings] Body param
           #
-          # @param voice_settings [Telnyx::Models::AI::VoiceSettings] Body param:
+          # @param voice_settings [Telnyx::Models::AI::VoiceSettings] Body param
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #

@@ -45,9 +45,9 @@ module Telnyx
         # Query param: Return the aggregations for all Managed Accounts under the user
         # making the request.
         managed_accounts: nil,
-        # Query param:
+        # Query param
         page_number: nil,
-        # Query param:
+        # Query param
         page_size: nil,
         # Query param: Specifies the sort order for results
         sort: nil,

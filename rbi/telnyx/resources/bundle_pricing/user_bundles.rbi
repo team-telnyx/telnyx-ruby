@@ -20,7 +20,7 @@ module Telnyx
           # Body param: Idempotency key for the request. Can be any UUID, but should always
           # be unique for each request.
           idempotency_key: nil,
-          # Body param:
+          # Body param
           items: nil,
           # Header param: Authenticates the request with your Telnyx API V2 KEY
           authorization_bearer: nil,
