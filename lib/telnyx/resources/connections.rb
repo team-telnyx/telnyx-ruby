@@ -62,15 +62,19 @@ module Telnyx
       # SIP connections with webhook_url or xml_request_url, call control or texml.
       # Returned results are cursor paginated.
       #
-      # @overload list_active_calls(connection_id, page: nil, request_options: {})
+      # @overload list_active_calls(connection_id, page: nil, page_number: nil, page_size: nil, request_options: {})
       #
       # @param connection_id [String] Telnyx connection id
       #
       # @param page [Telnyx::Models::ConnectionListActiveCallsParams::Page] Consolidated page parameter (deepObject style). Originally: page[after], page[be
       #
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
+      #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ConnectionListActiveCallsResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::ConnectionListActiveCallsResponse>]
       #
       # @see Telnyx::Models::ConnectionListActiveCallsParams
       def list_active_calls(connection_id, params = {})
@@ -78,8 +82,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: ["connections/%1$s/active_calls", connection_id],
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::ConnectionListActiveCallsResponse,
           options: options
         )

@@ -59,7 +59,7 @@ class Telnyx::Test::Resources::ConnectionsTest < Telnyx::Test::ResourceTest
     response = @telnyx.connections.list_active_calls("1293384261075731461")
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Internal::DefaultFlatPagination
     end
 
     row = response.to_enum.first

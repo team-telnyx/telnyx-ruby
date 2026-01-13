@@ -24,6 +24,16 @@ module Telnyx
       #   @return [Telnyx::Models::CallControlApplicationListParams::Page, nil]
       optional :page, -> { Telnyx::CallControlApplicationListParams::Page }
 
+      # @!attribute page_number
+      #
+      #   @return [Integer, nil]
+      optional :page_number, Integer
+
+      # @!attribute page_size
+      #
+      #   @return [Integer, nil]
+      optional :page_size, Integer
+
       # @!attribute sort
       #   Specifies the sort order for results. By default sorting direction is ascending.
       #   To have the results sorted in descending order add the <code> -</code>
@@ -43,13 +53,17 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::CallControlApplicationListParams::Sort, nil]
       optional :sort, enum: -> { Telnyx::CallControlApplicationListParams::Sort }
 
-      # @!method initialize(filter: nil, page: nil, sort: nil, request_options: {})
+      # @!method initialize(filter: nil, page: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CallControlApplicationListParams} for more details.
       #
       #   @param filter [Telnyx::Models::CallControlApplicationListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[application
       #
       #   @param page [Telnyx::Models::CallControlApplicationListParams::Page] Consolidated page parameter (deepObject style). Originally: page[after], page[be
+      #
+      #   @param page_number [Integer]
+      #
+      #   @param page_size [Integer]
       #
       #   @param sort [Symbol, Telnyx::Models::CallControlApplicationListParams::Sort] Specifies the sort order for results. By default sorting direction is ascending.
       #
@@ -299,19 +313,7 @@ module Telnyx
         #   @return [Integer, nil]
         optional :limit, Integer
 
-        # @!attribute number
-        #   The page number to load
-        #
-        #   @return [Integer, nil]
-        optional :number, Integer
-
-        # @!attribute size
-        #   The size of the page
-        #
-        #   @return [Integer, nil]
-        optional :size, Integer
-
-        # @!method initialize(after: nil, before: nil, limit: nil, number: nil, size: nil)
+        # @!method initialize(after: nil, before: nil, limit: nil)
         #   Consolidated page parameter (deepObject style). Originally: page[after],
         #   page[before], page[limit], page[size], page[number]
         #
@@ -320,10 +322,6 @@ module Telnyx
         #   @param before [String] Opaque identifier of previous page
         #
         #   @param limit [Integer] Limit of records per single page
-        #
-        #   @param number [Integer] The page number to load
-        #
-        #   @param size [Integer] The size of the page
       end
 
       # Specifies the sort order for results. By default sorting direction is ascending.

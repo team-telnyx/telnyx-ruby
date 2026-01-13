@@ -107,9 +107,11 @@ module Telnyx
         params(
           filter: Telnyx::ConferenceListParams::Filter::OrHash,
           page: Telnyx::ConferenceListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           region: Telnyx::ConferenceListParams::Region::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::Conference])
+        ).returns(Telnyx::Internal::DefaultFlatPagination[Telnyx::Conference])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:
@@ -121,6 +123,8 @@ module Telnyx
         # Consolidated page parameter (deepObject style). Originally: page[after],
         # page[before], page[limit], page[size], page[number]
         page: nil,
+        page_number: nil,
+        page_size: nil,
         # Region where the conference data is located
         region: nil,
         request_options: {}
@@ -133,10 +137,12 @@ module Telnyx
           conference_id: String,
           filter: Telnyx::ConferenceListParticipantsParams::Filter::OrHash,
           page: Telnyx::ConferenceListParticipantsParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           region: Telnyx::ConferenceListParticipantsParams::Region::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[
+          Telnyx::Internal::DefaultFlatPagination[
             Telnyx::Models::ConferenceListParticipantsResponse
           ]
         )
@@ -150,6 +156,8 @@ module Telnyx
         # Consolidated page parameter (deepObject style). Originally: page[after],
         # page[before], page[limit], page[size], page[number]
         page: nil,
+        page_number: nil,
+        page_size: nil,
         # Region where the conference data is located
         region: nil,
         request_options: {}

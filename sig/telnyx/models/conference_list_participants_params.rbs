@@ -4,6 +4,8 @@ module Telnyx
       {
         filter: Telnyx::ConferenceListParticipantsParams::Filter,
         page: Telnyx::ConferenceListParticipantsParams::Page,
+        page_number: Integer,
+        page_size: Integer,
         region: Telnyx::Models::ConferenceListParticipantsParams::region
       }
       & Telnyx::Internal::Type::request_parameters
@@ -24,6 +26,14 @@ module Telnyx
         Telnyx::ConferenceListParticipantsParams::Page
       ) -> Telnyx::ConferenceListParticipantsParams::Page
 
+      attr_reader page_number: Integer?
+
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
       attr_reader region: Telnyx::Models::ConferenceListParticipantsParams::region?
 
       def region=: (
@@ -33,6 +43,8 @@ module Telnyx
       def initialize: (
         ?filter: Telnyx::ConferenceListParticipantsParams::Filter,
         ?page: Telnyx::ConferenceListParticipantsParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?region: Telnyx::Models::ConferenceListParticipantsParams::region,
         ?request_options: Telnyx::request_opts
       ) -> void
@@ -40,6 +52,8 @@ module Telnyx
       def to_hash: -> {
         filter: Telnyx::ConferenceListParticipantsParams::Filter,
         page: Telnyx::ConferenceListParticipantsParams::Page,
+        page_number: Integer,
+        page_size: Integer,
         region: Telnyx::Models::ConferenceListParticipantsParams::region,
         request_options: Telnyx::RequestOptions
       }
@@ -68,14 +82,7 @@ module Telnyx
         def to_hash: -> { muted: bool, on_hold: bool, whispering: bool }
       end
 
-      type page =
-        {
-          after: String,
-          before: String,
-          limit: Integer,
-          number: Integer,
-          size: Integer
-        }
+      type page = { after: String, before: String, limit: Integer }
 
       class Page < Telnyx::Internal::Type::BaseModel
         attr_reader after: String?
@@ -90,29 +97,13 @@ module Telnyx
 
         def limit=: (Integer) -> Integer
 
-        attr_reader number: Integer?
-
-        def number=: (Integer) -> Integer
-
-        attr_reader size: Integer?
-
-        def size=: (Integer) -> Integer
-
         def initialize: (
           ?after: String,
           ?before: String,
-          ?limit: Integer,
-          ?number: Integer,
-          ?size: Integer
+          ?limit: Integer
         ) -> void
 
-        def to_hash: -> {
-          after: String,
-          before: String,
-          limit: Integer,
-          number: Integer,
-          size: Integer
-        }
+        def to_hash: -> { after: String, before: String, limit: Integer }
       end
 
       type region = :Australia | :Europe | :"Middle East" | :US

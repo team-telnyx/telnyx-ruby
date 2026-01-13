@@ -98,17 +98,21 @@ module Telnyx
       # of active participants. Conferences are listed in descending order by
       # `expires_at`.
       #
-      # @overload list(filter: nil, page: nil, region: nil, request_options: {})
+      # @overload list(filter: nil, page: nil, page_number: nil, page_size: nil, region: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::ConferenceListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[application
       #
       # @param page [Telnyx::Models::ConferenceListParams::Page] Consolidated page parameter (deepObject style). Originally: page[after], page[be
       #
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
+      #
       # @param region [Symbol, Telnyx::Models::ConferenceListParams::Region] Region where the conference data is located
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::Conference>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Conference>]
       #
       # @see Telnyx::Models::ConferenceListParams
       def list(params = {})
@@ -116,8 +120,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "conferences",
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Conference,
           options: options
         )
@@ -128,7 +132,7 @@ module Telnyx
       #
       # Lists conference participants
       #
-      # @overload list_participants(conference_id, filter: nil, page: nil, region: nil, request_options: {})
+      # @overload list_participants(conference_id, filter: nil, page: nil, page_number: nil, page_size: nil, region: nil, request_options: {})
       #
       # @param conference_id [String] Uniquely identifies the conference by id
       #
@@ -136,11 +140,15 @@ module Telnyx
       #
       # @param page [Telnyx::Models::ConferenceListParticipantsParams::Page] Consolidated page parameter (deepObject style). Originally: page[after], page[be
       #
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
+      #
       # @param region [Symbol, Telnyx::Models::ConferenceListParticipantsParams::Region] Region where the conference data is located
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ConferenceListParticipantsResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::ConferenceListParticipantsResponse>]
       #
       # @see Telnyx::Models::ConferenceListParticipantsParams
       def list_participants(conference_id, params = {})
@@ -148,8 +156,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: ["conferences/%1$s/participants", conference_id],
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::ConferenceListParticipantsResponse,
           options: options
         )
