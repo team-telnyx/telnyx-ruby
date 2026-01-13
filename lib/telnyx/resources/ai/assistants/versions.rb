@@ -41,7 +41,7 @@ module Telnyx
           # Updates the configuration of a specific assistant version. Can not update main
           # version
           #
-          # @overload update(version_id, assistant_id:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, privacy_settings: nil, telephony_settings: nil, tools: nil, transcription: nil, voice_settings: nil, request_options: {})
+          # @overload update(version_id, assistant_id:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, privacy_settings: nil, telephony_settings: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
           #
           # @param version_id [String] Path param
           #
@@ -78,6 +78,8 @@ module Telnyx
           # @param transcription [Telnyx::Models::AI::TranscriptionSettings] Body param
           #
           # @param voice_settings [Telnyx::Models::AI::VoiceSettings] Body param
+          #
+          # @param widget_settings [Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings] Body param: Configuration settings for the assistant's web widget.
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #

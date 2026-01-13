@@ -59,6 +59,8 @@ module Telnyx
                 ],
               transcription: Telnyx::AI::TranscriptionSettings::OrHash,
               voice_settings: Telnyx::AI::VoiceSettings::OrHash,
+              widget_settings:
+                Telnyx::AI::Assistants::UpdateAssistant::WidgetSettings::OrHash,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::InferenceEmbedding)
           end
@@ -112,6 +114,8 @@ module Telnyx
             transcription: nil,
             # Body param
             voice_settings: nil,
+            # Body param: Configuration settings for the assistant's web widget.
+            widget_settings: nil,
             request_options: {}
           )
           end

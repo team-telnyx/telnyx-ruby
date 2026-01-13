@@ -29,6 +29,7 @@ module Telnyx
           ?tools: ::Array[Telnyx::Models::AI::assistant_tool],
           ?transcription: Telnyx::AI::TranscriptionSettings,
           ?voice_settings: Telnyx::AI::VoiceSettings,
+          ?widget_settings: Telnyx::AI::AssistantCreateParams::WidgetSettings,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::AI::InferenceEmbedding
 
@@ -60,6 +61,7 @@ module Telnyx
           ?tools: ::Array[Telnyx::Models::AI::assistant_tool],
           ?transcription: Telnyx::AI::TranscriptionSettings,
           ?voice_settings: Telnyx::AI::VoiceSettings,
+          ?widget_settings: Telnyx::AI::AssistantUpdateParams::WidgetSettings,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::AI::InferenceEmbedding
 
@@ -93,6 +95,7 @@ module Telnyx
         def imports: (
           api_key_ref: String,
           provider: Telnyx::Models::AI::AssistantImportsParams::provider,
+          ?import_ids: ::Array[String],
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::AI::AssistantsList
 
