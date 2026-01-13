@@ -28,17 +28,21 @@ module Telnyx
       def list: (
         ?filter: Telnyx::ConferenceListParams::Filter,
         ?page: Telnyx::ConferenceListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?region: Telnyx::Models::ConferenceListParams::region,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Conference]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Conference]
 
       def list_participants: (
         String conference_id,
         ?filter: Telnyx::ConferenceListParticipantsParams::Filter,
         ?page: Telnyx::ConferenceListParticipantsParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?region: Telnyx::Models::ConferenceListParticipantsParams::region,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::ConferenceListParticipantsResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::ConferenceListParticipantsResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

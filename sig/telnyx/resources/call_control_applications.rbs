@@ -47,9 +47,11 @@ module Telnyx
       def list: (
         ?filter: Telnyx::CallControlApplicationListParams::Filter,
         ?page: Telnyx::CallControlApplicationListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?sort: Telnyx::Models::CallControlApplicationListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::CallControlApplication]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::CallControlApplication]
 
       def delete: (
         String id,
