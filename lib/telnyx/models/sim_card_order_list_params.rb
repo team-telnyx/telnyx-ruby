@@ -18,20 +18,25 @@ module Telnyx
       #   @return [Telnyx::Models::SimCardOrderListParams::Filter, nil]
       optional :filter, -> { Telnyx::SimCardOrderListParams::Filter }
 
-      # @!attribute page
-      #   Consolidated pagination parameter (deepObject style). Originally: page[number],
-      #   page[size]
+      # @!attribute page_number
       #
-      #   @return [Telnyx::Models::SimCardOrderListParams::Page, nil]
-      optional :page, -> { Telnyx::SimCardOrderListParams::Page }
+      #   @return [Integer, nil]
+      optional :page_number, Integer
 
-      # @!method initialize(filter: nil, page: nil, request_options: {})
+      # @!attribute page_size
+      #
+      #   @return [Integer, nil]
+      optional :page_size, Integer
+
+      # @!method initialize(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::SimCardOrderListParams} for more details.
       #
       #   @param filter [Telnyx::Models::SimCardOrderListParams::Filter] Consolidated filter parameter for SIM card orders (deepObject style). Originally
       #
-      #   @param page [Telnyx::Models::SimCardOrderListParams::Page] Consolidated pagination parameter (deepObject style). Originally: page[number],
+      #   @param page_number [Integer]
+      #
+      #   @param page_size [Integer]
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -146,28 +151,6 @@ module Telnyx
         #   @param quantity [Integer] Filter orders by how many SIM cards were ordered.
         #
         #   @param updated_at [Time] Filter by ISO 8601 formatted date-time string matching resource last update date
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        # @!attribute number
-        #   The page number to load.
-        #
-        #   @return [Integer, nil]
-        optional :number, Integer
-
-        # @!attribute size
-        #   The size of the page.
-        #
-        #   @return [Integer, nil]
-        optional :size, Integer
-
-        # @!method initialize(number: nil, size: nil)
-        #   Consolidated pagination parameter (deepObject style). Originally: page[number],
-        #   page[size]
-        #
-        #   @param number [Integer] The page number to load.
-        #
-        #   @param size [Integer] The size of the page.
       end
     end
   end

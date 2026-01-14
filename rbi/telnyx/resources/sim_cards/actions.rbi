@@ -24,10 +24,13 @@ module Telnyx
         sig do
           params(
             filter: Telnyx::SimCards::ActionListParams::Filter::OrHash,
-            page: Telnyx::SimCards::ActionListParams::Page::OrHash,
+            page_number: Integer,
+            page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultPagination[Telnyx::SimCards::SimCardAction]
+            Telnyx::Internal::DefaultFlatPagination[
+              Telnyx::SimCards::SimCardAction
+            ]
           )
         end
         def list(
@@ -35,9 +38,8 @@ module Telnyx
           # Originally: filter[sim_card_id], filter[status],
           # filter[bulk_sim_card_action_id], filter[action_type]
           filter: nil,
-          # Consolidated pagination parameter (deepObject style). Originally: page[number],
-          # page[size]
-          page: nil,
+          page_number: nil,
+          page_size: nil,
           request_options: {}
         )
         end

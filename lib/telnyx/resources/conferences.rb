@@ -98,11 +98,9 @@ module Telnyx
       # of active participants. Conferences are listed in descending order by
       # `expires_at`.
       #
-      # @overload list(filter: nil, page: nil, page_number: nil, page_size: nil, region: nil, request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, region: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::ConferenceListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[application
-      #
-      # @param page [Telnyx::Models::ConferenceListParams::Page] Consolidated page parameter (deepObject style). Originally: page[after], page[be
       #
       # @param page_number [Integer]
       #
@@ -132,13 +130,11 @@ module Telnyx
       #
       # Lists conference participants
       #
-      # @overload list_participants(conference_id, filter: nil, page: nil, page_number: nil, page_size: nil, region: nil, request_options: {})
+      # @overload list_participants(conference_id, filter: nil, page_number: nil, page_size: nil, region: nil, request_options: {})
       #
       # @param conference_id [String] Uniquely identifies the conference by id
       #
       # @param filter [Telnyx::Models::ConferenceListParticipantsParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[muted], fil
-      #
-      # @param page [Telnyx::Models::ConferenceListParticipantsParams::Page] Consolidated page parameter (deepObject style). Originally: page[after], page[be
       #
       # @param page_number [Integer]
       #

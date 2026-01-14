@@ -5,7 +5,8 @@ module Telnyx
         filter: Telnyx::PhoneNumberSlimListParams::Filter,
         include_connection: bool,
         include_tags: bool,
-        page: Telnyx::PhoneNumberSlimListParams::Page,
+        page_number: Integer,
+        page_size: Integer,
         sort: Telnyx::Models::PhoneNumberSlimListParams::sort
       }
       & Telnyx::Internal::Type::request_parameters
@@ -28,11 +29,13 @@ module Telnyx
 
       def include_tags=: (bool) -> bool
 
-      attr_reader page: Telnyx::PhoneNumberSlimListParams::Page?
+      attr_reader page_number: Integer?
 
-      def page=: (
-        Telnyx::PhoneNumberSlimListParams::Page
-      ) -> Telnyx::PhoneNumberSlimListParams::Page
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
 
       attr_reader sort: Telnyx::Models::PhoneNumberSlimListParams::sort?
 
@@ -44,7 +47,8 @@ module Telnyx
         ?filter: Telnyx::PhoneNumberSlimListParams::Filter,
         ?include_connection: bool,
         ?include_tags: bool,
-        ?page: Telnyx::PhoneNumberSlimListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?sort: Telnyx::Models::PhoneNumberSlimListParams::sort,
         ?request_options: Telnyx::request_opts
       ) -> void
@@ -53,7 +57,8 @@ module Telnyx
         filter: Telnyx::PhoneNumberSlimListParams::Filter,
         include_connection: bool,
         include_tags: bool,
-        page: Telnyx::PhoneNumberSlimListParams::Page,
+        page_number: Integer,
+        page_size: Integer,
         sort: Telnyx::Models::PhoneNumberSlimListParams::sort,
         request_options: Telnyx::RequestOptions
       }
@@ -298,22 +303,6 @@ module Telnyx
 
           def self?.values: -> ::Array[Telnyx::Models::PhoneNumberSlimListParams::Filter::voice_usage_payment_method]
         end
-      end
-
-      type page = { number: Integer, size: Integer }
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        attr_reader number: Integer?
-
-        def number=: (Integer) -> Integer
-
-        attr_reader size: Integer?
-
-        def size=: (Integer) -> Integer
-
-        def initialize: (?number: Integer, ?size: Integer) -> void
-
-        def to_hash: -> { number: Integer, size: Integer }
       end
 
       type sort =

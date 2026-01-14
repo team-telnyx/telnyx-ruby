@@ -129,15 +129,17 @@ module Telnyx
       # seamless configure SIP trunking integrations with Telnyx Partners, through
       # External Voice Integrations in Mission Control Portal.
       #
-      # @overload list(filter: nil, page: nil, request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::ExternalConnectionListParams::Filter] Filter parameter for external connections (deepObject style). Supports filtering
       #
-      # @param page [Telnyx::Models::ExternalConnectionListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ExternalConnection>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::ExternalConnection>]
       #
       # @see Telnyx::Models::ExternalConnectionListParams
       def list(params = {})
@@ -145,8 +147,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "external_connections",
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::ExternalConnection,
           options: options
         )

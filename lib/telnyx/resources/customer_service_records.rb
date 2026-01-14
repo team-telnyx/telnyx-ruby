@@ -54,17 +54,19 @@ module Telnyx
       #
       # List customer service records.
       #
-      # @overload list(filter: nil, page: nil, sort: nil, request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::CustomerServiceRecordListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[phone_numbe
       #
-      # @param page [Telnyx::Models::CustomerServiceRecordListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param sort [Telnyx::Models::CustomerServiceRecordListParams::Sort] Consolidated sort parameter (deepObject style). Originally: sort[value]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::CustomerServiceRecord>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::CustomerServiceRecord>]
       #
       # @see Telnyx::Models::CustomerServiceRecordListParams
       def list(params = {})
@@ -72,8 +74,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "customer_service_records",
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::CustomerServiceRecord,
           options: options
         )

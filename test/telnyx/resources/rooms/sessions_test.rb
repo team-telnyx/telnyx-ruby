@@ -25,7 +25,7 @@ class Telnyx::Test::Resources::Rooms::SessionsTest < Telnyx::Test::ResourceTest
     response = @telnyx.rooms.sessions.list_0
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Internal::DefaultFlatPagination
     end
 
     row = response.to_enum.first
@@ -55,7 +55,7 @@ class Telnyx::Test::Resources::Rooms::SessionsTest < Telnyx::Test::ResourceTest
     response = @telnyx.rooms.sessions.list_1("0ccc7b54-4df3-4bca-a65a-3da1ecc777f0")
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Internal::DefaultFlatPagination
     end
 
     row = response.to_enum.first
@@ -85,7 +85,7 @@ class Telnyx::Test::Resources::Rooms::SessionsTest < Telnyx::Test::ResourceTest
     response = @telnyx.rooms.sessions.retrieve_participants("0ccc7b54-4df3-4bca-a65a-3da1ecc777f0")
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Internal::DefaultFlatPagination
     end
 
     row = response.to_enum.first

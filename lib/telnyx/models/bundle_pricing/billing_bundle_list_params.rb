@@ -16,12 +16,15 @@ module Telnyx
         #   @return [Telnyx::Models::BundlePricing::BillingBundleListParams::Filter, nil]
         optional :filter, -> { Telnyx::BundlePricing::BillingBundleListParams::Filter }
 
-        # @!attribute page
-        #   Consolidated page parameter (deepObject style). Originally: page[size],
-        #   page[number]
+        # @!attribute page_number
         #
-        #   @return [Telnyx::Models::BundlePricing::BillingBundleListParams::Page, nil]
-        optional :page, -> { Telnyx::BundlePricing::BillingBundleListParams::Page }
+        #   @return [Integer, nil]
+        optional :page_number, Integer
+
+        # @!attribute page_size
+        #
+        #   @return [Integer, nil]
+        optional :page_size, Integer
 
         # @!attribute authorization_bearer
         #   Authenticates the request with your Telnyx API V2 KEY
@@ -29,14 +32,16 @@ module Telnyx
         #   @return [String, nil]
         optional :authorization_bearer, String
 
-        # @!method initialize(filter: nil, page: nil, authorization_bearer: nil, request_options: {})
+        # @!method initialize(filter: nil, page_number: nil, page_size: nil, authorization_bearer: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::BundlePricing::BillingBundleListParams} for more details.
         #
         #   @param filter [Telnyx::Models::BundlePricing::BillingBundleListParams::Filter] Consolidated filter parameter (deepObject style). Supports filtering by
         #   country\_
         #
-        #   @param page [Telnyx::Models::BundlePricing::BillingBundleListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+        #   @param page_number [Integer]
+        #
+        #   @param page_size [Integer]
         #
         #   @param authorization_bearer [String] Authenticates the request with your Telnyx API V2 KEY
         #
@@ -63,28 +68,6 @@ module Telnyx
           #   @param country_iso [Array<String>] Filter by country code.
           #
           #   @param resource [Array<String>] Filter by resource.
-        end
-
-        class Page < Telnyx::Internal::Type::BaseModel
-          # @!attribute number
-          #   The page number to load.
-          #
-          #   @return [Integer, nil]
-          optional :number, Integer
-
-          # @!attribute size
-          #   The size of the page.
-          #
-          #   @return [Integer, nil]
-          optional :size, Integer
-
-          # @!method initialize(number: nil, size: nil)
-          #   Consolidated page parameter (deepObject style). Originally: page[size],
-          #   page[number]
-          #
-          #   @param number [Integer] The page number to load.
-          #
-          #   @param size [Integer] The size of the page.
         end
       end
     end

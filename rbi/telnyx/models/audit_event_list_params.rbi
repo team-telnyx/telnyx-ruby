@@ -19,13 +19,17 @@ module Telnyx
       sig { params(filter: Telnyx::AuditEventListParams::Filter::OrHash).void }
       attr_writer :filter
 
-      # Consolidated page parameter (deepObject style). Originally: page[number],
-      # page[size]
-      sig { returns(T.nilable(Telnyx::AuditEventListParams::Page)) }
-      attr_reader :page
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :page_number
 
-      sig { params(page: Telnyx::AuditEventListParams::Page::OrHash).void }
-      attr_writer :page
+      sig { params(page_number: Integer).void }
+      attr_writer :page_number
+
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :page_size
+
+      sig { params(page_size: Integer).void }
+      attr_writer :page_size
 
       # Set the order of the results by the creation date.
       sig { returns(T.nilable(Telnyx::AuditEventListParams::Sort::OrSymbol)) }
@@ -37,7 +41,8 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::AuditEventListParams::Filter::OrHash,
-          page: Telnyx::AuditEventListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           sort: Telnyx::AuditEventListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -46,9 +51,8 @@ module Telnyx
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[created_before], filter[created_after]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         # Set the order of the results by the creation date.
         sort: nil,
         request_options: {}
@@ -59,7 +63,8 @@ module Telnyx
         override.returns(
           {
             filter: Telnyx::AuditEventListParams::Filter,
-            page: Telnyx::AuditEventListParams::Page,
+            page_number: Integer,
+            page_size: Integer,
             sort: Telnyx::AuditEventListParams::Sort::OrSymbol,
             request_options: Telnyx::RequestOptions
           }
@@ -107,42 +112,6 @@ module Telnyx
         end
 
         sig { override.returns({ created_after: Time, created_before: Time }) }
-        def to_hash
-        end
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Telnyx::AuditEventListParams::Page, Telnyx::Internal::AnyHash)
-          end
-
-        # Page number to load.
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :number
-
-        sig { params(number: Integer).void }
-        attr_writer :number
-
-        # Number of items per page.
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :size
-
-        sig { params(size: Integer).void }
-        attr_writer :size
-
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        sig { params(number: Integer, size: Integer).returns(T.attached_class) }
-        def self.new(
-          # Page number to load.
-          number: nil,
-          # Number of items per page.
-          size: nil
-        )
-        end
-
-        sig { override.returns({ number: Integer, size: Integer }) }
         def to_hash
         end
       end

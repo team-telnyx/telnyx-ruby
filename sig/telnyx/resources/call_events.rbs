@@ -3,7 +3,6 @@ module Telnyx
     class CallEvents
       def list: (
         ?filter: Telnyx::CallEventListParams::Filter,
-        ?page: Telnyx::CallEventListParams::Page,
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts

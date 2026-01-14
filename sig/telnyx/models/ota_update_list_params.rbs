@@ -3,7 +3,8 @@ module Telnyx
     type ota_update_list_params =
       {
         filter: Telnyx::OtaUpdateListParams::Filter,
-        page: Telnyx::OtaUpdateListParams::Page
+        page_number: Integer,
+        page_size: Integer
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -17,21 +18,25 @@ module Telnyx
         Telnyx::OtaUpdateListParams::Filter
       ) -> Telnyx::OtaUpdateListParams::Filter
 
-      attr_reader page: Telnyx::OtaUpdateListParams::Page?
+      attr_reader page_number: Integer?
 
-      def page=: (
-        Telnyx::OtaUpdateListParams::Page
-      ) -> Telnyx::OtaUpdateListParams::Page
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
 
       def initialize: (
         ?filter: Telnyx::OtaUpdateListParams::Filter,
-        ?page: Telnyx::OtaUpdateListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         filter: Telnyx::OtaUpdateListParams::Filter,
-        page: Telnyx::OtaUpdateListParams::Page,
+        page_number: Integer,
+        page_size: Integer,
         request_options: Telnyx::RequestOptions
       }
 
@@ -92,22 +97,6 @@ module Telnyx
 
           def self?.values: -> ::Array[Telnyx::Models::OtaUpdateListParams::Filter::type_]
         end
-      end
-
-      type page = { number: Integer, size: Integer }
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        attr_reader number: Integer?
-
-        def number=: (Integer) -> Integer
-
-        attr_reader size: Integer?
-
-        def size=: (Integer) -> Integer
-
-        def initialize: (?number: Integer, ?size: Integer) -> void
-
-        def to_hash: -> { number: Integer, size: Integer }
       end
     end
   end

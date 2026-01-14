@@ -14,20 +14,25 @@ module Telnyx
       #   @return [Telnyx::Models::OtaUpdateListParams::Filter, nil]
       optional :filter, -> { Telnyx::OtaUpdateListParams::Filter }
 
-      # @!attribute page
-      #   Consolidated pagination parameter (deepObject style). Originally: page[number],
-      #   page[size]
+      # @!attribute page_number
       #
-      #   @return [Telnyx::Models::OtaUpdateListParams::Page, nil]
-      optional :page, -> { Telnyx::OtaUpdateListParams::Page }
+      #   @return [Integer, nil]
+      optional :page_number, Integer
 
-      # @!method initialize(filter: nil, page: nil, request_options: {})
+      # @!attribute page_size
+      #
+      #   @return [Integer, nil]
+      optional :page_size, Integer
+
+      # @!method initialize(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::OtaUpdateListParams} for more details.
       #
       #   @param filter [Telnyx::Models::OtaUpdateListParams::Filter] Consolidated filter parameter for OTA updates (deepObject style). Originally: fi
       #
-      #   @param page [Telnyx::Models::OtaUpdateListParams::Page] Consolidated pagination parameter (deepObject style). Originally: page[number],
+      #   @param page_number [Integer]
+      #
+      #   @param page_size [Integer]
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -85,28 +90,6 @@ module Telnyx
           # @!method self.values
           #   @return [Array<Symbol>]
         end
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        # @!attribute number
-        #   The page number to load.
-        #
-        #   @return [Integer, nil]
-        optional :number, Integer
-
-        # @!attribute size
-        #   The size of the page.
-        #
-        #   @return [Integer, nil]
-        optional :size, Integer
-
-        # @!method initialize(number: nil, size: nil)
-        #   Consolidated pagination parameter (deepObject style). Originally: page[number],
-        #   page[size]
-        #
-        #   @param number [Integer] The page number to load.
-        #
-        #   @param size [Integer] The size of the page.
       end
     end
   end

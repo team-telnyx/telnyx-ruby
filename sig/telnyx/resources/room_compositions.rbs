@@ -19,9 +19,10 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::RoomCompositionListParams::Filter,
-        ?page: Telnyx::RoomCompositionListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::RoomComposition]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::RoomComposition]
 
       def delete: (
         String room_composition_id,

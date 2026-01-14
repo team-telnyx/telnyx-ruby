@@ -132,20 +132,19 @@ module Telnyx
         )
       end
 
-      # Some parameter documentations has been truncated, see
-      # {Telnyx::Models::MessagingProfileListParams} for more details.
-      #
       # List messaging profiles
       #
-      # @overload list(filter: nil, page: nil, request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::MessagingProfileListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[name]
       #
-      # @param page [Telnyx::Models::MessagingProfileListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::MessagingProfile>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::MessagingProfile>]
       #
       # @see Telnyx::Models::MessagingProfileListParams
       def list(params = {})
@@ -153,8 +152,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "messaging_profiles",
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::MessagingProfile,
           options: options
         )
@@ -180,20 +179,19 @@ module Telnyx
         )
       end
 
-      # Some parameter documentations has been truncated, see
-      # {Telnyx::Models::MessagingProfileListPhoneNumbersParams} for more details.
-      #
       # List phone numbers associated with a messaging profile
       #
-      # @overload list_phone_numbers(messaging_profile_id, page: nil, request_options: {})
+      # @overload list_phone_numbers(messaging_profile_id, page_number: nil, page_size: nil, request_options: {})
       #
       # @param messaging_profile_id [String] The id of the messaging profile to retrieve
       #
-      # @param page [Telnyx::Models::MessagingProfileListPhoneNumbersParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PhoneNumberWithMessagingSettings>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PhoneNumberWithMessagingSettings>]
       #
       # @see Telnyx::Models::MessagingProfileListPhoneNumbersParams
       def list_phone_numbers(messaging_profile_id, params = {})
@@ -201,27 +199,26 @@ module Telnyx
         @client.request(
           method: :get,
           path: ["messaging_profiles/%1$s/phone_numbers", messaging_profile_id],
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::PhoneNumberWithMessagingSettings,
           options: options
         )
       end
 
-      # Some parameter documentations has been truncated, see
-      # {Telnyx::Models::MessagingProfileListShortCodesParams} for more details.
-      #
       # List short codes associated with a messaging profile
       #
-      # @overload list_short_codes(messaging_profile_id, page: nil, request_options: {})
+      # @overload list_short_codes(messaging_profile_id, page_number: nil, page_size: nil, request_options: {})
       #
       # @param messaging_profile_id [String] The id of the messaging profile to retrieve
       #
-      # @param page [Telnyx::Models::MessagingProfileListShortCodesParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ShortCode>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::ShortCode>]
       #
       # @see Telnyx::Models::MessagingProfileListShortCodesParams
       def list_short_codes(messaging_profile_id, params = {})
@@ -229,8 +226,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: ["messaging_profiles/%1$s/short_codes", messaging_profile_id],
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::ShortCode,
           options: options
         )

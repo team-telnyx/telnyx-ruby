@@ -49,18 +49,15 @@ module Telnyx
         )
       end
 
-      # Some parameter documentations has been truncated, see
-      # {Telnyx::Models::GlobalIPListParams} for more details.
-      #
       # List all Global IPs.
       #
-      # @overload list(page: nil, request_options: {})
+      # @overload list(page_number: nil, page_size: nil, request_options: {})
       #
-      # @param page [Telnyx::Models::GlobalIPListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
-      #
+      # @param page_number [Integer]
+      # @param page_size [Integer]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::GlobalIPListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::GlobalIPListResponse>]
       #
       # @see Telnyx::Models::GlobalIPListParams
       def list(params = {})
@@ -68,8 +65,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "global_ips",
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::GlobalIPListResponse,
           options: options
         )

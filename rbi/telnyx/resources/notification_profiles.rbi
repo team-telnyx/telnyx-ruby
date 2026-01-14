@@ -51,18 +51,14 @@ module Telnyx
       # Returns a list of your notifications profiles.
       sig do
         params(
-          page: Telnyx::NotificationProfileListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[Telnyx::NotificationProfile]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::NotificationProfile]
         )
       end
-      def list(
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
-        request_options: {}
-      )
+      def list(page_number: nil, page_size: nil, request_options: {})
       end
 
       # Delete a notification profile.

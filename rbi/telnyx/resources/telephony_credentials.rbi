@@ -68,19 +68,19 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::TelephonyCredentialListParams::Filter::OrHash,
-          page: Telnyx::TelephonyCredentialListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[Telnyx::TelephonyCredential]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::TelephonyCredential]
         )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[tag],
         # filter[name], filter[status], filter[resource_id], filter[sip_username]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end

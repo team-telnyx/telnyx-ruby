@@ -28,20 +28,19 @@ module Telnyx
           )
         end
 
-        # Some parameter documentations has been truncated, see
-        # {Telnyx::Models::PortingOrders::CommentListParams} for more details.
-        #
         # Returns a list of all comments of a porting order.
         #
-        # @overload list(id, page: nil, request_options: {})
+        # @overload list(id, page_number: nil, page_size: nil, request_options: {})
         #
         # @param id [String] Porting Order id
         #
-        # @param page [Telnyx::Models::PortingOrders::CommentListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+        # @param page_number [Integer]
+        #
+        # @param page_size [Integer]
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PortingOrders::CommentListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PortingOrders::CommentListResponse>]
         #
         # @see Telnyx::Models::PortingOrders::CommentListParams
         def list(id, params = {})
@@ -49,8 +48,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: ["porting_orders/%1$s/comments", id],
-            query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
+            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::Models::PortingOrders::CommentListResponse,
             options: options
           )

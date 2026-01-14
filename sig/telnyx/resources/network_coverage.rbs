@@ -4,9 +4,10 @@ module Telnyx
       def list: (
         ?filter: Telnyx::NetworkCoverageListParams::Filter,
         ?filters: Telnyx::NetworkCoverageListParams::Filters,
-        ?page: Telnyx::NetworkCoverageListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::NetworkCoverageListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::NetworkCoverageListResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end
