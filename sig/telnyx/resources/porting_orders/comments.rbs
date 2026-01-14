@@ -10,9 +10,10 @@ module Telnyx
 
         def list: (
           String id,
-          ?page: Telnyx::PortingOrders::CommentListParams::Page,
+          ?page_number: Integer,
+          ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::PortingOrders::CommentListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::PortingOrders::CommentListResponse]
 
         def initialize: (client: Telnyx::Client) -> void
       end

@@ -48,9 +48,10 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::MessagingProfileListParams::Filter,
-        ?page: Telnyx::MessagingProfileListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::MessagingProfile]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::MessagingProfile]
 
       def delete: (
         String messaging_profile_id,
@@ -59,15 +60,17 @@ module Telnyx
 
       def list_phone_numbers: (
         String messaging_profile_id,
-        ?page: Telnyx::MessagingProfileListPhoneNumbersParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::PhoneNumberWithMessagingSettings]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::PhoneNumberWithMessagingSettings]
 
       def list_short_codes: (
         String messaging_profile_id,
-        ?page: Telnyx::MessagingProfileListShortCodesParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::ShortCode]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::ShortCode]
 
       def initialize: (client: Telnyx::Client) -> void
     end

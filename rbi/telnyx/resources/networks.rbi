@@ -55,10 +55,11 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::NetworkListParams::Filter::OrHash,
-          page: Telnyx::NetworkListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[
+          Telnyx::Internal::DefaultFlatPagination[
             Telnyx::Models::NetworkListResponse
           ]
         )
@@ -66,9 +67,8 @@ module Telnyx
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[name]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end
@@ -92,10 +92,11 @@ module Telnyx
         params(
           id: String,
           filter: Telnyx::NetworkListInterfacesParams::Filter::OrHash,
-          page: Telnyx::NetworkListInterfacesParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[
+          Telnyx::Internal::DefaultFlatPagination[
             Telnyx::Models::NetworkListInterfacesResponse
           ]
         )
@@ -106,9 +107,8 @@ module Telnyx
         # Consolidated filter parameter (deepObject style). Originally: filter[name],
         # filter[type], filter[status]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end

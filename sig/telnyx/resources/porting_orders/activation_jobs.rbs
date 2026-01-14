@@ -17,9 +17,10 @@ module Telnyx
 
         def list: (
           String id,
-          ?page: Telnyx::PortingOrders::ActivationJobListParams::Page,
+          ?page_number: Integer,
+          ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPagination[Telnyx::PortingOrdersActivationJob]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::PortingOrdersActivationJob]
 
         def initialize: (client: Telnyx::Client) -> void
       end

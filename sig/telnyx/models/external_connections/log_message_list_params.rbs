@@ -4,7 +4,8 @@ module Telnyx
       type log_message_list_params =
         {
           filter: Telnyx::ExternalConnections::LogMessageListParams::Filter,
-          page: Telnyx::ExternalConnections::LogMessageListParams::Page
+          page_number: Integer,
+          page_size: Integer
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -18,21 +19,25 @@ module Telnyx
           Telnyx::ExternalConnections::LogMessageListParams::Filter
         ) -> Telnyx::ExternalConnections::LogMessageListParams::Filter
 
-        attr_reader page: Telnyx::ExternalConnections::LogMessageListParams::Page?
+        attr_reader page_number: Integer?
 
-        def page=: (
-          Telnyx::ExternalConnections::LogMessageListParams::Page
-        ) -> Telnyx::ExternalConnections::LogMessageListParams::Page
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
 
         def initialize: (
           ?filter: Telnyx::ExternalConnections::LogMessageListParams::Filter,
-          ?page: Telnyx::ExternalConnections::LogMessageListParams::Page,
+          ?page_number: Integer,
+          ?page_size: Integer,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           filter: Telnyx::ExternalConnections::LogMessageListParams::Filter,
-          page: Telnyx::ExternalConnections::LogMessageListParams::Page,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions
         }
 
@@ -78,22 +83,6 @@ module Telnyx
 
             def to_hash: -> { contains: String, eq: String }
           end
-        end
-
-        type page = { number: Integer, size: Integer }
-
-        class Page < Telnyx::Internal::Type::BaseModel
-          attr_reader number: Integer?
-
-          def number=: (Integer) -> Integer
-
-          attr_reader size: Integer?
-
-          def size=: (Integer) -> Integer
-
-          def initialize: (?number: Integer, ?size: Integer) -> void
-
-          def to_hash: -> { number: Integer, size: Integer }
         end
       end
     end

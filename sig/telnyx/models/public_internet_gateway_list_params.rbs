@@ -3,7 +3,8 @@ module Telnyx
     type public_internet_gateway_list_params =
       {
         filter: Telnyx::PublicInternetGatewayListParams::Filter,
-        page: Telnyx::PublicInternetGatewayListParams::Page
+        page_number: Integer,
+        page_size: Integer
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -17,21 +18,25 @@ module Telnyx
         Telnyx::PublicInternetGatewayListParams::Filter
       ) -> Telnyx::PublicInternetGatewayListParams::Filter
 
-      attr_reader page: Telnyx::PublicInternetGatewayListParams::Page?
+      attr_reader page_number: Integer?
 
-      def page=: (
-        Telnyx::PublicInternetGatewayListParams::Page
-      ) -> Telnyx::PublicInternetGatewayListParams::Page
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
 
       def initialize: (
         ?filter: Telnyx::PublicInternetGatewayListParams::Filter,
-        ?page: Telnyx::PublicInternetGatewayListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         filter: Telnyx::PublicInternetGatewayListParams::Filter,
-        page: Telnyx::PublicInternetGatewayListParams::Page,
+        page_number: Integer,
+        page_size: Integer,
         request_options: Telnyx::RequestOptions
       }
 
@@ -45,22 +50,6 @@ module Telnyx
         def initialize: (?network_id: String) -> void
 
         def to_hash: -> { network_id: String }
-      end
-
-      type page = { number: Integer, size: Integer }
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        attr_reader number: Integer?
-
-        def number=: (Integer) -> Integer
-
-        attr_reader size: Integer?
-
-        def size=: (Integer) -> Integer
-
-        def initialize: (?number: Integer, ?size: Integer) -> void
-
-        def to_hash: -> { number: Integer, size: Integer }
       end
     end
   end

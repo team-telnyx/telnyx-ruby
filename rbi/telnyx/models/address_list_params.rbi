@@ -21,13 +21,17 @@ module Telnyx
       sig { params(filter: Telnyx::AddressListParams::Filter::OrHash).void }
       attr_writer :filter
 
-      # Consolidated page parameter (deepObject style). Originally: page[number],
-      # page[size]
-      sig { returns(T.nilable(Telnyx::AddressListParams::Page)) }
-      attr_reader :page
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :page_number
 
-      sig { params(page: Telnyx::AddressListParams::Page::OrHash).void }
-      attr_writer :page
+      sig { params(page_number: Integer).void }
+      attr_writer :page_number
+
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :page_size
+
+      sig { params(page_size: Integer).void }
+      attr_writer :page_size
 
       # Specifies the sort order for results. By default sorting direction is ascending.
       # To have the results sorted in descending order add the <code> -</code>
@@ -52,7 +56,8 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::AddressListParams::Filter::OrHash,
-          page: Telnyx::AddressListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           sort: Telnyx::AddressListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -63,9 +68,8 @@ module Telnyx
         # filter[used_as_emergency], filter[street_address][contains],
         # filter[address_book][eq]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         # Specifies the sort order for results. By default sorting direction is ascending.
         # To have the results sorted in descending order add the <code> -</code>
         # prefix.<br/><br/> That is: <ul>
@@ -89,7 +93,8 @@ module Telnyx
         override.returns(
           {
             filter: Telnyx::AddressListParams::Filter,
-            page: Telnyx::AddressListParams::Page,
+            page_number: Integer,
+            page_size: Integer,
             sort: Telnyx::AddressListParams::Sort::OrSymbol,
             request_options: Telnyx::RequestOptions
           }
@@ -336,42 +341,6 @@ module Telnyx
           sig { override.returns({ contains: String }) }
           def to_hash
           end
-        end
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Telnyx::AddressListParams::Page, Telnyx::Internal::AnyHash)
-          end
-
-        # The page number to load
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :number
-
-        sig { params(number: Integer).void }
-        attr_writer :number
-
-        # The size of the page
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :size
-
-        sig { params(size: Integer).void }
-        attr_writer :size
-
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        sig { params(number: Integer, size: Integer).returns(T.attached_class) }
-        def self.new(
-          # The page number to load
-          number: nil,
-          # The size of the page
-          size: nil
-        )
-        end
-
-        sig { override.returns({ number: Integer, size: Integer }) }
-        def to_hash
         end
       end
 

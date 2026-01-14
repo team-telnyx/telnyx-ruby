@@ -4,9 +4,10 @@ module Telnyx
       def list: (
         ?filter: Telnyx::VirtualCrossConnectsCoverageListParams::Filter,
         ?filters: Telnyx::VirtualCrossConnectsCoverageListParams::Filters,
-        ?page: Telnyx::VirtualCrossConnectsCoverageListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::VirtualCrossConnectsCoverageListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::VirtualCrossConnectsCoverageListResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

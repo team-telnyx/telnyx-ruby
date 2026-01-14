@@ -41,7 +41,7 @@ class Telnyx::Test::Resources::BundlePricing::UserBundlesTest < Telnyx::Test::Re
     response = @telnyx.bundle_pricing.user_bundles.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Internal::DefaultFlatPagination
     end
 
     row = response.to_enum.first

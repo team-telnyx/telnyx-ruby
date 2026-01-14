@@ -29,9 +29,12 @@ module Telnyx
           params(
             filter: Telnyx::Rooms::SessionList0Params::Filter::OrHash,
             include_participants: T::Boolean,
-            page: Telnyx::Rooms::SessionList0Params::Page::OrHash,
+            page_number: Integer,
+            page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Internal::DefaultPagination[Telnyx::RoomSession])
+          ).returns(
+            Telnyx::Internal::DefaultFlatPagination[Telnyx::RoomSession]
+          )
         end
         def list_0(
           # Consolidated filter parameter (deepObject style). Originally:
@@ -43,9 +46,8 @@ module Telnyx
           filter: nil,
           # To decide if room participants should be included in the response.
           include_participants: nil,
-          # Consolidated page parameter (deepObject style). Originally: page[size],
-          # page[number]
-          page: nil,
+          page_number: nil,
+          page_size: nil,
           request_options: {}
         )
         end
@@ -56,9 +58,12 @@ module Telnyx
             room_id: String,
             filter: Telnyx::Rooms::SessionList1Params::Filter::OrHash,
             include_participants: T::Boolean,
-            page: Telnyx::Rooms::SessionList1Params::Page::OrHash,
+            page_number: Integer,
+            page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Internal::DefaultPagination[Telnyx::RoomSession])
+          ).returns(
+            Telnyx::Internal::DefaultFlatPagination[Telnyx::RoomSession]
+          )
         end
         def list_1(
           # The unique identifier of a room.
@@ -72,9 +77,8 @@ module Telnyx
           filter: nil,
           # To decide if room participants should be included in the response.
           include_participants: nil,
-          # Consolidated page parameter (deepObject style). Originally: page[size],
-          # page[number]
-          page: nil,
+          page_number: nil,
+          page_size: nil,
           request_options: {}
         )
         end
@@ -85,11 +89,11 @@ module Telnyx
             room_session_id: String,
             filter:
               Telnyx::Rooms::SessionRetrieveParticipantsParams::Filter::OrHash,
-            page:
-              Telnyx::Rooms::SessionRetrieveParticipantsParams::Page::OrHash,
+            page_number: Integer,
+            page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultPagination[Telnyx::RoomParticipant]
+            Telnyx::Internal::DefaultFlatPagination[Telnyx::RoomParticipant]
           )
         end
         def retrieve_participants(
@@ -102,9 +106,8 @@ module Telnyx
           # filter[date_left_at][eq], filter[date_left_at][gte], filter[date_left_at][lte],
           # filter[context]
           filter: nil,
-          # Consolidated page parameter (deepObject style). Originally: page[size],
-          # page[number]
-          page: nil,
+          page_number: nil,
+          page_size: nil,
           request_options: {}
         )
         end

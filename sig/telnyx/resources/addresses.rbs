@@ -29,10 +29,11 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::AddressListParams::Filter,
-        ?page: Telnyx::AddressListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?sort: Telnyx::Models::AddressListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Address]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Address]
 
       def delete: (
         String id,

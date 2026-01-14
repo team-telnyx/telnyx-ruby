@@ -57,7 +57,7 @@ class Telnyx::Test::Resources::ManagedAccountsTest < Telnyx::Test::ResourceTest
     response = @telnyx.managed_accounts.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Internal::DefaultFlatPagination
     end
 
     row = response.to_enum.first

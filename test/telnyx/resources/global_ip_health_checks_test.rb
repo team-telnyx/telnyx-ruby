@@ -41,7 +41,7 @@ class Telnyx::Test::Resources::GlobalIPHealthChecksTest < Telnyx::Test::Resource
     response = @telnyx.global_ip_health_checks.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Internal::DefaultFlatPagination
     end
 
     row = response.to_enum.first

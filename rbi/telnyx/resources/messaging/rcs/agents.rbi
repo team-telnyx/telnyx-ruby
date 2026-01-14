@@ -45,16 +45,12 @@ module Telnyx
           # List all RCS agents
           sig do
             params(
-              page: Telnyx::Messaging::Rcs::AgentListParams::Page::OrHash,
+              page_number: Integer,
+              page_size: Integer,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Internal::DefaultPagination[Telnyx::RcsAgent])
+            ).returns(Telnyx::Internal::DefaultFlatPagination[Telnyx::RcsAgent])
           end
-          def list(
-            # Consolidated page parameter (deepObject style). Originally: page[number],
-            # page[size]
-            page: nil,
-            request_options: {}
-          )
+          def list(page_number: nil, page_size: nil, request_options: {})
           end
 
           # @api private

@@ -2,9 +2,10 @@ module Telnyx
   module Resources
     class MessagingURLDomains
       def list: (
-        ?page: Telnyx::MessagingURLDomainListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::MessagingURLDomainListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::MessagingURLDomainListResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

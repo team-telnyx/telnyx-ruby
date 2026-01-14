@@ -134,11 +134,9 @@ module Telnyx
       #
       # Return a list of call control applications.
       #
-      # @overload list(filter: nil, page: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::CallControlApplicationListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[application
-      #
-      # @param page [Telnyx::Models::CallControlApplicationListParams::Page] Consolidated page parameter (deepObject style). Originally: page[after], page[be
       #
       # @param page_number [Integer]
       #
