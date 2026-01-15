@@ -472,6 +472,9 @@ module Telnyx
     sig { returns(Telnyx::Resources::SpeechToText) }
     attr_reader :speech_to_text
 
+    sig { returns(Telnyx::Resources::Organizations) }
+    attr_reader :organizations
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

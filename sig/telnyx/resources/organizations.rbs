@@ -1,0 +1,9 @@
+module Telnyx
+  module Resources
+    class Organizations
+      attr_reader users: Telnyx::Resources::Organizations::Users
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

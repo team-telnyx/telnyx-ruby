@@ -1,0 +1,31 @@
+module Telnyx
+  module Resources
+    class Organizations
+      class Users
+        attr_reader actions: Telnyx::Resources::Organizations::Users::Actions
+
+        def retrieve: (
+          String id,
+          ?include_groups: bool,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Organizations::UserRetrieveResponse
+
+        def list: (
+          ?filter_email: String,
+          ?filter_user_status: Telnyx::Models::Organizations::UserListParams::filter_user_status,
+          ?include_groups: bool,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Organizations::UserListResponse]
+
+        def get_groups_report: (
+          ?accept: Telnyx::Models::Organizations::UserGetGroupsReportParams::accept,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Organizations::UserGetGroupsReportResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

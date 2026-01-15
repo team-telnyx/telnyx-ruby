@@ -316,6 +316,8 @@ module Telnyx
 
     attr_reader speech_to_text: Telnyx::Resources::SpeechToText
 
+    attr_reader organizations: Telnyx::Resources::Organizations
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]
