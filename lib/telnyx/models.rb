@@ -1280,12 +1280,6 @@ module Telnyx
 
   StreamCodec = Telnyx::Models::StreamCodec
 
-  StreamingFailedWebhookEvent = Telnyx::Models::StreamingFailedWebhookEvent
-
-  StreamingStartedWebhookEvent = Telnyx::Models::StreamingStartedWebhookEvent
-
-  StreamingStoppedWebhookEvent = Telnyx::Models::StreamingStoppedWebhookEvent
-
   SubNumberOrder = Telnyx::Models::SubNumberOrder
 
   SubNumberOrderCancelParams = Telnyx::Models::SubNumberOrderCancelParams

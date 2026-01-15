@@ -67,9 +67,6 @@ module Telnyx
             Telnyx::InboundMessageWebhookEvent,
             Telnyx::NumberOrderStatusUpdateWebhookEvent,
             Telnyx::ReplacedLinkClickWebhookEvent,
-            Telnyx::StreamingFailedWebhookEvent,
-            Telnyx::StreamingStartedWebhookEvent,
-            Telnyx::StreamingStoppedWebhookEvent,
             Telnyx::TranscriptionWebhookEvent
           )
         end
