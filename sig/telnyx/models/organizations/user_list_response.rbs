@@ -1,0 +1,99 @@
+module Telnyx
+  module Models
+    module Organizations
+      type user_list_response =
+        {
+          id: String,
+          created_at: String,
+          email: String,
+          groups: ::Array[Telnyx::Models::Organizations::UserListResponse::Group],
+          last_sign_in_at: String?,
+          organization_user_bypasses_sso: bool,
+          record_type: String,
+          user_status: Telnyx::Models::Organizations::UserListResponse::user_status
+        }
+
+      class UserListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: String?
+
+        def created_at=: (String) -> String
+
+        attr_reader email: String?
+
+        def email=: (String) -> String
+
+        attr_reader groups: ::Array[Telnyx::Models::Organizations::UserListResponse::Group]?
+
+        def groups=: (
+          ::Array[Telnyx::Models::Organizations::UserListResponse::Group]
+        ) -> ::Array[Telnyx::Models::Organizations::UserListResponse::Group]
+
+        attr_accessor last_sign_in_at: String?
+
+        attr_reader organization_user_bypasses_sso: bool?
+
+        def organization_user_bypasses_sso=: (bool) -> bool
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader user_status: Telnyx::Models::Organizations::UserListResponse::user_status?
+
+        def user_status=: (
+          Telnyx::Models::Organizations::UserListResponse::user_status
+        ) -> Telnyx::Models::Organizations::UserListResponse::user_status
+
+        def initialize: (
+          ?id: String,
+          ?created_at: String,
+          ?email: String,
+          ?groups: ::Array[Telnyx::Models::Organizations::UserListResponse::Group],
+          ?last_sign_in_at: String?,
+          ?organization_user_bypasses_sso: bool,
+          ?record_type: String,
+          ?user_status: Telnyx::Models::Organizations::UserListResponse::user_status
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: String,
+          email: String,
+          groups: ::Array[Telnyx::Models::Organizations::UserListResponse::Group],
+          last_sign_in_at: String?,
+          organization_user_bypasses_sso: bool,
+          record_type: String,
+          user_status: Telnyx::Models::Organizations::UserListResponse::user_status
+        }
+
+        type group = { id: String, name: String }
+
+        class Group < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor name: String
+
+          def initialize: (id: String, name: String) -> void
+
+          def to_hash: -> { id: String, name: String }
+        end
+
+        type user_status = :enabled | :disabled | :blocked
+
+        module UserStatus
+          extend Telnyx::Internal::Type::Enum
+
+          ENABLED: :enabled
+          DISABLED: :disabled
+          BLOCKED: :blocked
+
+          def self?.values: -> ::Array[Telnyx::Models::Organizations::UserListResponse::user_status]
+        end
+      end
+    end
+  end
+end

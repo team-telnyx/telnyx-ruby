@@ -859,6 +859,8 @@ module Telnyx
 
   module OperatorConnect = Telnyx::Models::OperatorConnect
 
+  module Organizations = Telnyx::Models::Organizations
+
   class OtaUpdateListParams = Telnyx::Models::OtaUpdateListParams
 
   class OtaUpdateRetrieveParams = Telnyx::Models::OtaUpdateRetrieveParams
