@@ -295,37 +295,33 @@ module Telnyx
         end
 
         # Query the status of an SMS OTP (One-Time Password) for Sole Proprietor brand
-        # verification.
+        # verification using the Brand ID.
         #
         # This endpoint allows you to check the delivery and verification status of an OTP
-        # sent during the Sole Proprietor brand verification process. You can query by
-        # either:
-        #
-        # - `referenceId` - The reference ID returned when the OTP was initially triggered
-        # - `brandId` - Query parameter for portal users to look up OTP status by Brand ID
+        # sent during the Sole Proprietor brand verification process by looking it up with
+        # the brand ID.
         #
         # The response includes delivery status, verification dates, and detailed delivery
         # information.
         #
-        # @overload retrieve_sms_otp_status(reference_id, brand_id: nil, request_options: {})
+        # **Note:** This is an alternative to the `/10dlc/brand/smsOtp/{referenceId}`
+        # endpoint when you have the Brand ID but not the reference ID.
         #
-        # @param reference_id [String] The reference ID returned when the OTP was initially triggered
+        # @overload retrieve_sms_otp_status(brand_id, request_options: {})
         #
-        # @param brand_id [String] Filter by Brand ID for easier lookup in portal applications
+        # @param brand_id [String] The Brand ID for which to query OTP status
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::Messaging10dlc::BrandRetrieveSMSOtpStatusResponse]
         #
         # @see Telnyx::Models::Messaging10dlc::BrandRetrieveSMSOtpStatusParams
-        def retrieve_sms_otp_status(reference_id, params = {})
-          parsed, options = Telnyx::Messaging10dlc::BrandRetrieveSMSOtpStatusParams.dump_request(params)
+        def retrieve_sms_otp_status(brand_id, params = {})
           @client.request(
             method: :get,
-            path: ["10dlc/brand/smsOtp/%1$s", reference_id],
-            query: parsed.transform_keys(brand_id: "brandId"),
+            path: ["10dlc/brand/%1$s/smsOtp", brand_id],
             model: Telnyx::Models::Messaging10dlc::BrandRetrieveSMSOtpStatusResponse,
-            options: options
+            options: params[:request_options]
           )
         end
 

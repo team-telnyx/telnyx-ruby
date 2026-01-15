@@ -209,7 +209,7 @@ class Telnyx::Test::Resources::Messaging10dlc::BrandTest < Telnyx::Test::Resourc
   def test_retrieve_sms_otp_status
     skip("Prism tests are disabled")
 
-    response = @telnyx.messaging_10dlc.brand.retrieve_sms_otp_status("OTP4B2001")
+    response = @telnyx.messaging_10dlc.brand.retrieve_sms_otp_status("4b20019b-043a-78f8-0657-b3be3f4b4002")
 
     assert_pattern do
       response => Telnyx::Models::Messaging10dlc::BrandRetrieveSMSOtpStatusResponse

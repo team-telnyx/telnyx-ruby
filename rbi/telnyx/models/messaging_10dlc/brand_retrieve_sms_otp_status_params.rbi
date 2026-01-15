@@ -15,31 +15,15 @@ module Telnyx
             )
           end
 
-        # Filter by Brand ID for easier lookup in portal applications
-        sig { returns(T.nilable(String)) }
-        attr_reader :brand_id
-
-        sig { params(brand_id: String).void }
-        attr_writer :brand_id
-
         sig do
-          params(
-            brand_id: String,
-            request_options: Telnyx::RequestOptions::OrHash
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Filter by Brand ID for easier lookup in portal applications
-          brand_id: nil,
-          request_options: {}
-        )
-        end
-
-        sig do
-          override.returns(
-            { brand_id: String, request_options: Telnyx::RequestOptions }
+          params(request_options: Telnyx::RequestOptions::OrHash).returns(
+            T.attached_class
           )
         end
+        def self.new(request_options: {})
+        end
+
+        sig { override.returns({ request_options: Telnyx::RequestOptions }) }
         def to_hash
         end
       end

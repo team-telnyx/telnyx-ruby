@@ -124,6 +124,11 @@ module Telnyx
           sig { params(business_registration_type: String).void }
           attr_writer :business_registration_type
 
+          # Campaign Verify Authorization Token required for Political use case submissions
+          # starting February 17, 2026
+          sig { returns(T.nilable(String)) }
+          attr_accessor :campaign_verify_authorization_token
+
           sig { returns(T.nilable(String)) }
           attr_reader :doing_business_as
 
@@ -237,6 +242,7 @@ module Telnyx
               business_registration_country: String,
               business_registration_number: String,
               business_registration_type: String,
+              campaign_verify_authorization_token: T.nilable(String),
               doing_business_as: String,
               entity_type:
                 Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::OrSymbol,
@@ -279,6 +285,9 @@ module Telnyx
             business_registration_country: nil,
             business_registration_number: nil,
             business_registration_type: nil,
+            # Campaign Verify Authorization Token required for Political use case submissions
+            # starting February 17, 2026
+            campaign_verify_authorization_token: nil,
             doing_business_as: nil,
             # Business entity classification
             entity_type: nil,
@@ -328,6 +337,7 @@ module Telnyx
                 business_registration_country: String,
                 business_registration_number: String,
                 business_registration_type: String,
+                campaign_verify_authorization_token: T.nilable(String),
                 doing_business_as: String,
                 entity_type:
                   Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::TaggedSymbol,

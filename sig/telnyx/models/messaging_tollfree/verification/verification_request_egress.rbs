@@ -32,6 +32,7 @@ module Telnyx
             business_registration_country: String,
             business_registration_number: String,
             business_registration_type: String,
+            campaign_verify_authorization_token: String?,
             doing_business_as: String,
             entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type,
             help_message_response: String,
@@ -106,6 +107,8 @@ module Telnyx
 
           def business_registration_type=: (String) -> String
 
+          attr_accessor campaign_verify_authorization_token: String?
+
           attr_reader doing_business_as: String?
 
           def doing_business_as=: (String) -> String
@@ -173,6 +176,7 @@ module Telnyx
             ?business_registration_country: String,
             ?business_registration_number: String,
             ?business_registration_type: String,
+            ?campaign_verify_authorization_token: String?,
             ?doing_business_as: String,
             ?entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type,
             ?help_message_response: String,
@@ -211,6 +215,7 @@ module Telnyx
             business_registration_country: String,
             business_registration_number: String,
             business_registration_type: String,
+            campaign_verify_authorization_token: String?,
             doing_business_as: String,
             entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type,
             help_message_response: String,

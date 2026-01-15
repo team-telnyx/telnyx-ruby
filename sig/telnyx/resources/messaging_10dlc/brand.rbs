@@ -96,8 +96,7 @@ module Telnyx
         ) -> nil
 
         def retrieve_sms_otp_status: (
-          String reference_id,
-          ?brand_id: String,
+          String brand_id,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Messaging10dlc::BrandRetrieveSMSOtpStatusResponse
 
