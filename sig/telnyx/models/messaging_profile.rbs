@@ -17,6 +17,7 @@ module Telnyx
         record_type: Telnyx::Models::MessagingProfile::record_type,
         redaction_enabled: bool,
         redaction_level: Integer,
+        smart_encoding: bool,
         updated_at: Time,
         url_shortener_settings: Telnyx::URLShortenerSettings?,
         :v1_secret => String,
@@ -68,6 +69,10 @@ module Telnyx
       attr_reader redaction_level: Integer?
 
       def redaction_level=: (Integer) -> Integer
+
+      attr_reader smart_encoding: bool?
+
+      def smart_encoding=: (bool) -> bool
 
       attr_accessor url_shortener_settings: Telnyx::URLShortenerSettings?
 
@@ -123,6 +128,7 @@ module Telnyx
         ?record_type: Telnyx::Models::MessagingProfile::record_type,
         ?redaction_enabled: bool,
         ?redaction_level: Integer,
+        ?smart_encoding: bool,
         ?updated_at: Time,
         ?url_shortener_settings: Telnyx::URLShortenerSettings?,
         ?v1_secret: String,
@@ -148,6 +154,7 @@ module Telnyx
         record_type: Telnyx::Models::MessagingProfile::record_type,
         redaction_enabled: bool,
         redaction_level: Integer,
+        smart_encoding: bool,
         updated_at: Time,
         url_shortener_settings: Telnyx::URLShortenerSettings?,
         :v1_secret => String,

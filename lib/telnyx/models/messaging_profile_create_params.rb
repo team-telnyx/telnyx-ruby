@@ -75,6 +75,14 @@ module Telnyx
       #   @return [Telnyx::Models::NumberPoolSettings, nil]
       optional :number_pool_settings, -> { Telnyx::NumberPoolSettings }, nil?: true
 
+      # @!attribute smart_encoding
+      #   Enables automatic character encoding optimization for SMS messages. When
+      #   enabled, the system automatically selects the most efficient encoding (GSM-7 or
+      #   UCS-2) based on message content to maximize character limits and minimize costs.
+      #
+      #   @return [Boolean, nil]
+      optional :smart_encoding, Telnyx::Internal::Type::Boolean
+
       # @!attribute url_shortener_settings
       #   The URL shortener feature allows automatic replacement of URLs that were
       #   generated using a public URL shortener service. Some examples include bit.do,
@@ -107,7 +115,7 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String, nil?: true
 
-      # @!method initialize(name:, whitelisted_destinations:, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, number_pool_settings: nil, url_shortener_settings: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @!method initialize(name:, whitelisted_destinations:, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, number_pool_settings: nil, smart_encoding: nil, url_shortener_settings: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessagingProfileCreateParams} for more details.
       #
@@ -130,6 +138,8 @@ module Telnyx
       #   @param mobile_only [Boolean] Send messages only to mobile phone numbers.
       #
       #   @param number_pool_settings [Telnyx::Models::NumberPoolSettings, nil] Number Pool allows you to send messages from a pool of numbers of different type
+      #
+      #   @param smart_encoding [Boolean] Enables automatic character encoding optimization for SMS messages. When enabled
       #
       #   @param url_shortener_settings [Telnyx::Models::URLShortenerSettings, nil] The URL shortener feature allows automatic replacement of URLs that were generat
       #

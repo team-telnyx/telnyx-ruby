@@ -97,6 +97,15 @@ module Telnyx
       sig { params(redaction_level: Integer).void }
       attr_writer :redaction_level
 
+      # Enables automatic character encoding optimization for SMS messages. When
+      # enabled, the system automatically selects the most efficient encoding (GSM-7 or
+      # UCS-2) based on message content to maximize character limits and minimize costs.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :smart_encoding
+
+      sig { params(smart_encoding: T::Boolean).void }
+      attr_writer :smart_encoding
+
       # The URL shortener feature allows automatic replacement of URLs that were
       # generated using a public URL shortener service. Some examples include bit.do,
       # bit.ly, goo.gl, ht.ly, is.gd, ow.ly, rebrand.ly, t.co, tiny.cc, and tinyurl.com.
@@ -206,6 +215,7 @@ module Telnyx
           record_type: Telnyx::MessagingProfile::RecordType::OrSymbol,
           redaction_enabled: T::Boolean,
           redaction_level: Integer,
+          smart_encoding: T::Boolean,
           updated_at: Time,
           url_shortener_settings:
             T.nilable(Telnyx::URLShortenerSettings::OrHash),
@@ -255,6 +265,10 @@ module Telnyx
         # Determines how much information is redacted in messages for privacy or
         # compliance purposes.
         redaction_level: nil,
+        # Enables automatic character encoding optimization for SMS messages. When
+        # enabled, the system automatically selects the most efficient encoding (GSM-7 or
+        # UCS-2) based on message content to maximize character limits and minimize costs.
+        smart_encoding: nil,
         # ISO 8601 formatted date indicating when the resource was updated.
         updated_at: nil,
         # The URL shortener feature allows automatic replacement of URLs that were
@@ -300,6 +314,7 @@ module Telnyx
             record_type: Telnyx::MessagingProfile::RecordType::TaggedSymbol,
             redaction_enabled: T::Boolean,
             redaction_level: Integer,
+            smart_encoding: T::Boolean,
             updated_at: Time,
             url_shortener_settings: T.nilable(Telnyx::URLShortenerSettings),
             v1_secret: String,
