@@ -11,6 +11,7 @@ module Telnyx
         mobile_only: bool,
         name: String,
         number_pool_settings: Telnyx::NumberPoolSettings?,
+        smart_encoding: bool,
         url_shortener_settings: Telnyx::URLShortenerSettings?,
         :v1_secret => String,
         webhook_api_version: Telnyx::Models::MessagingProfileUpdateParams::webhook_api_version,
@@ -56,6 +57,10 @@ module Telnyx
 
       attr_accessor number_pool_settings: Telnyx::NumberPoolSettings?
 
+      attr_reader smart_encoding: bool?
+
+      def smart_encoding=: (bool) -> bool
+
       attr_accessor url_shortener_settings: Telnyx::URLShortenerSettings?
 
       attr_reader v1_secret: String?
@@ -86,6 +91,7 @@ module Telnyx
         ?mobile_only: bool,
         ?name: String,
         ?number_pool_settings: Telnyx::NumberPoolSettings?,
+        ?smart_encoding: bool,
         ?url_shortener_settings: Telnyx::URLShortenerSettings?,
         ?v1_secret: String,
         ?webhook_api_version: Telnyx::Models::MessagingProfileUpdateParams::webhook_api_version,
@@ -105,6 +111,7 @@ module Telnyx
         mobile_only: bool,
         name: String,
         number_pool_settings: Telnyx::NumberPoolSettings?,
+        smart_encoding: bool,
         url_shortener_settings: Telnyx::URLShortenerSettings?,
         :v1_secret => String,
         webhook_api_version: Telnyx::Models::MessagingProfileUpdateParams::webhook_api_version,

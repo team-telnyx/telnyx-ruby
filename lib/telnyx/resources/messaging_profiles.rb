@@ -11,7 +11,7 @@ module Telnyx
       #
       # Create a messaging profile
       #
-      # @overload create(name:, whitelisted_destinations:, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, number_pool_settings: nil, url_shortener_settings: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @overload create(name:, whitelisted_destinations:, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, number_pool_settings: nil, smart_encoding: nil, url_shortener_settings: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #
       # @param name [String] A user friendly name for the messaging profile.
       #
@@ -32,6 +32,8 @@ module Telnyx
       # @param mobile_only [Boolean] Send messages only to mobile phone numbers.
       #
       # @param number_pool_settings [Telnyx::Models::NumberPoolSettings, nil] Number Pool allows you to send messages from a pool of numbers of different type
+      #
+      # @param smart_encoding [Boolean] Enables automatic character encoding optimization for SMS messages. When enabled
       #
       # @param url_shortener_settings [Telnyx::Models::URLShortenerSettings, nil] The URL shortener feature allows automatic replacement of URLs that were generat
       #
@@ -82,7 +84,7 @@ module Telnyx
       #
       # Update a messaging profile
       #
-      # @overload update(messaging_profile_id, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil, request_options: {})
+      # @overload update(messaging_profile_id, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, smart_encoding: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil, request_options: {})
       #
       # @param messaging_profile_id [String] The id of the messaging profile to retrieve
       #
@@ -103,6 +105,8 @@ module Telnyx
       # @param name [String] A user friendly name for the messaging profile.
       #
       # @param number_pool_settings [Telnyx::Models::NumberPoolSettings, nil] Number Pool allows you to send messages from a pool of numbers of different type
+      #
+      # @param smart_encoding [Boolean] Enables automatic character encoding optimization for SMS messages. When enabled
       #
       # @param url_shortener_settings [Telnyx::Models::URLShortenerSettings, nil] The URL shortener feature allows automatic replacement of URLs that were generat
       #

@@ -84,6 +84,7 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
         record_type: Telnyx::MessagingProfile::RecordType | nil,
         redaction_enabled: Telnyx::Internal::Type::Boolean | nil,
         redaction_level: Integer | nil,
+        smart_encoding: Telnyx::Internal::Type::Boolean | nil,
         updated_at: Time | nil,
         url_shortener_settings: Telnyx::URLShortenerSettings | nil,
         v1_secret: String | nil,

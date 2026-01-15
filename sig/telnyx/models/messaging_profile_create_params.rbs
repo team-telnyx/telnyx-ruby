@@ -12,6 +12,7 @@ module Telnyx
         mms_transcoding: bool,
         mobile_only: bool,
         number_pool_settings: Telnyx::NumberPoolSettings?,
+        smart_encoding: bool,
         url_shortener_settings: Telnyx::URLShortenerSettings?,
         webhook_api_version: Telnyx::Models::MessagingProfileCreateParams::webhook_api_version,
         webhook_failover_url: String?,
@@ -55,6 +56,10 @@ module Telnyx
 
       attr_accessor number_pool_settings: Telnyx::NumberPoolSettings?
 
+      attr_reader smart_encoding: bool?
+
+      def smart_encoding=: (bool) -> bool
+
       attr_accessor url_shortener_settings: Telnyx::URLShortenerSettings?
 
       attr_reader webhook_api_version: Telnyx::Models::MessagingProfileCreateParams::webhook_api_version?
@@ -78,6 +83,7 @@ module Telnyx
         ?mms_transcoding: bool,
         ?mobile_only: bool,
         ?number_pool_settings: Telnyx::NumberPoolSettings?,
+        ?smart_encoding: bool,
         ?url_shortener_settings: Telnyx::URLShortenerSettings?,
         ?webhook_api_version: Telnyx::Models::MessagingProfileCreateParams::webhook_api_version,
         ?webhook_failover_url: String?,
@@ -96,6 +102,7 @@ module Telnyx
         mms_transcoding: bool,
         mobile_only: bool,
         number_pool_settings: Telnyx::NumberPoolSettings?,
+        smart_encoding: bool,
         url_shortener_settings: Telnyx::URLShortenerSettings?,
         webhook_api_version: Telnyx::Models::MessagingProfileCreateParams::webhook_api_version,
         webhook_failover_url: String?,
