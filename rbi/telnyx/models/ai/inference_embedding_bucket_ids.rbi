@@ -13,7 +13,7 @@ module Telnyx
           end
 
         # List of
-        # [embedded storage buckets](https://developers.telnyx.com/api/inference/inference-embedding/post-embedding)
+        # [embedded storage buckets](https://developers.telnyx.com/api-reference/embeddings/embed-documents)
         # to use for retrieval-augmented generation.
         sig { returns(T::Array[String]) }
         attr_accessor :bucket_ids
@@ -33,7 +33,7 @@ module Telnyx
         end
         def self.new(
           # List of
-          # [embedded storage buckets](https://developers.telnyx.com/api/inference/inference-embedding/post-embedding)
+          # [embedded storage buckets](https://developers.telnyx.com/api-reference/embeddings/embed-documents)
           # to use for retrieval-augmented generation.
           bucket_ids:,
           # The maximum number of results to retrieve as context for the language model.

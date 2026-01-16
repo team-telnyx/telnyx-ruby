@@ -6,7 +6,7 @@ module Telnyx
       class InferenceEmbeddingBucketIDs < Telnyx::Internal::Type::BaseModel
         # @!attribute bucket_ids
         #   List of
-        #   [embedded storage buckets](https://developers.telnyx.com/api/inference/inference-embedding/post-embedding)
+        #   [embedded storage buckets](https://developers.telnyx.com/api-reference/embeddings/embed-documents)
         #   to use for retrieval-augmented generation.
         #
         #   @return [Array<String>]
@@ -22,7 +22,7 @@ module Telnyx
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::InferenceEmbeddingBucketIDs} for more details.
         #
-        #   @param bucket_ids [Array<String>] List of [embedded storage buckets](https://developers.telnyx.com/api/inference/i
+        #   @param bucket_ids [Array<String>] List of [embedded storage buckets](https://developers.telnyx.com/api-reference/e
         #
         #   @param max_num_results [Integer] The maximum number of results to retrieve as context for the language model.
       end

@@ -79,7 +79,7 @@ module Telnyx
         # {Telnyx::Models::AI::ClusterComputeParams} for more details.
         #
         # Starts a background task to compute how the data in an
-        # [embedded storage bucket](https://developers.telnyx.com/api/inference/inference-embedding/post-embedding)
+        # [embedded storage bucket](https://developers.telnyx.com/api-reference/embeddings/embed-documents)
         # is clustered. This helps identify common themes and patterns in the data.
         #
         # @overload compute(bucket:, files: nil, min_cluster_size: nil, min_subcluster_size: nil, prefix: nil, request_options: {})

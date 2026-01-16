@@ -202,11 +202,11 @@ module Telnyx
         # This endpoint allows a client to send a chat message to a specific AI Assistant.
         # The assistant processes the message and returns a relevant reply based on the
         # current conversation context. Refer to the Conversation API to
-        # [create a conversation](https://developers.telnyx.com/api/inference/inference-embedding/create-new-conversation-public-conversations-post),
-        # [filter existing conversations](https://developers.telnyx.com/api/inference/inference-embedding/get-conversations-public-conversations-get),
-        # [fetch messages for a conversation](https://developers.telnyx.com/api/inference/inference-embedding/get-conversations-public-conversation-id-messages-get),
+        # [create a conversation](https://developers.telnyx.com/api-reference/conversations/create-a-conversation),
+        # [filter existing conversations](https://developers.telnyx.com/api-reference/conversations/list-conversations),
+        # [fetch messages for a conversation](https://developers.telnyx.com/api-reference/conversations/get-conversation-messages),
         # and
-        # [manually add messages to a conversation](https://developers.telnyx.com/api/inference/inference-embedding/add-new-message).
+        # [manually add messages to a conversation](https://developers.telnyx.com/api-reference/conversations/create-message).
         #
         # @overload chat(assistant_id, content:, conversation_id:, name: nil, request_options: {})
         #
