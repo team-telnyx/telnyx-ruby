@@ -17,7 +17,7 @@ module Telnyx
 
         # @!attribute model
         #   ID of the model to use. You can use the
-        #   [Get models API](https://developers.telnyx.com/api/inference/inference-embedding/get-models-public-models-get)
+        #   [Get models API](https://developers.telnyx.com/api-reference/chat/get-available-models)
         #   to see all of your available models,
         #
         #   @return [String]
@@ -69,7 +69,7 @@ module Telnyx
         # @!attribute llm_api_key_ref
         #   This is only needed when using third-party inference providers. The `identifier`
         #   for an integration secret
-        #   [/v2/integration_secrets](https://developers.telnyx.com/api/secrets-manager/integration-secrets/create-integration-secret)
+        #   [/v2/integration_secrets](https://developers.telnyx.com/api-reference/integration-secrets/create-a-secret)
         #   that refers to your LLM provider's API key. Warning: Free plans are unlikely to
         #   work with this integration.
         #
