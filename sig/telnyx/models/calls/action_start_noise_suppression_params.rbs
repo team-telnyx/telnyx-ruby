@@ -71,13 +71,14 @@ module Telnyx
           def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction]
         end
 
-        type noise_suppression_engine = :Denoiser | :DeepFilterNet
+        type noise_suppression_engine = :Denoiser | :DeepFilterNet | :Krisp
 
         module NoiseSuppressionEngine
           extend Telnyx::Internal::Type::Enum
 
           DENOISER: :Denoiser
           DEEP_FILTER_NET: :DeepFilterNet
+          KRISP: :Krisp
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine]
         end

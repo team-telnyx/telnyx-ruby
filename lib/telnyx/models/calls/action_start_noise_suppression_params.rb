@@ -29,8 +29,9 @@ module Telnyx
         optional :direction, enum: -> { Telnyx::Calls::ActionStartNoiseSuppressionParams::Direction }
 
         # @!attribute noise_suppression_engine
-        #   The engine to use for noise suppression. For backward compatibility, engines A
-        #   and B are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
+        #   The engine to use for noise suppression. For backward compatibility, engines A,
+        #   B, and C are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
+        #   C - Krisp
         #
         #   @return [Symbol, Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine, nil]
         optional :noise_suppression_engine,
@@ -71,13 +72,15 @@ module Telnyx
           #   @return [Array<Symbol>]
         end
 
-        # The engine to use for noise suppression. For backward compatibility, engines A
-        # and B are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
+        # The engine to use for noise suppression. For backward compatibility, engines A,
+        # B, and C are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
+        # C - Krisp
         module NoiseSuppressionEngine
           extend Telnyx::Internal::Type::Enum
 
           DENOISER = :Denoiser
           DEEP_FILTER_NET = :DeepFilterNet
+          KRISP = :Krisp
 
           # @!method self.values
           #   @return [Array<Symbol>]
