@@ -49,8 +49,9 @@ module Telnyx
         end
         attr_writer :direction
 
-        # The engine to use for noise suppression. For backward compatibility, engines A
-        # and B are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
+        # The engine to use for noise suppression. For backward compatibility, engines A,
+        # B, and C are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
+        # C - Krisp
         sig do
           returns(
             T.nilable(
@@ -108,8 +109,9 @@ module Telnyx
           command_id: nil,
           # The direction of the audio stream to be noise suppressed.
           direction: nil,
-          # The engine to use for noise suppression. For backward compatibility, engines A
-          # and B are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
+          # The engine to use for noise suppression. For backward compatibility, engines A,
+          # B, and C are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
+          # C - Krisp
           noise_suppression_engine: nil,
           # Configuration parameters for noise suppression engines.
           noise_suppression_engine_config: nil,
@@ -175,8 +177,9 @@ module Telnyx
           end
         end
 
-        # The engine to use for noise suppression. For backward compatibility, engines A
-        # and B are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
+        # The engine to use for noise suppression. For backward compatibility, engines A,
+        # B, and C are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
+        # C - Krisp
         module NoiseSuppressionEngine
           extend Telnyx::Internal::Type::Enum
 
@@ -197,6 +200,11 @@ module Telnyx
           DEEP_FILTER_NET =
             T.let(
               :DeepFilterNet,
+              Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine::TaggedSymbol
+            )
+          KRISP =
+            T.let(
+              :Krisp,
               Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine::TaggedSymbol
             )
 
