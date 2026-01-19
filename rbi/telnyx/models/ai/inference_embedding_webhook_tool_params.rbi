@@ -27,6 +27,14 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :url
 
+        # If async, the assistant will move forward without waiting for your server to
+        # respond.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :async
+
+        sig { params(async: T::Boolean).void }
+        attr_writer :async
+
         # The body parameters the webhook tool accepts, described as a JSON Schema object.
         # These parameters will be passed to the webhook as the body of the request. See
         # the [JSON Schema reference](https://json-schema.org/understanding-json-schema)
@@ -130,11 +138,20 @@ module Telnyx
         end
         attr_writer :query_parameters
 
+        # The maximum number of milliseconds to wait for the webhook to respond. Only
+        # applicable when async is false.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :timeout_ms
+
+        sig { params(timeout_ms: Integer).void }
+        attr_writer :timeout_ms
+
         sig do
           params(
             description: String,
             name: String,
             url: String,
+            async: T::Boolean,
             body_parameters:
               Telnyx::AI::InferenceEmbeddingWebhookToolParams::BodyParameters::OrHash,
             headers:
@@ -146,7 +163,8 @@ module Telnyx
             path_parameters:
               Telnyx::AI::InferenceEmbeddingWebhookToolParams::PathParameters::OrHash,
             query_parameters:
-              Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters::OrHash
+              Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters::OrHash,
+            timeout_ms: Integer
           ).returns(T.attached_class)
         end
         def self.new(
@@ -159,6 +177,9 @@ module Telnyx
           # where `{id}` is a placeholder for a value that will be provided by the assistant
           # if `path_parameters` are provided with the `id` attribute.
           url:,
+          # If async, the assistant will move forward without waiting for your server to
+          # respond.
+          async: nil,
           # The body parameters the webhook tool accepts, described as a JSON Schema object.
           # These parameters will be passed to the webhook as the body of the request. See
           # the [JSON Schema reference](https://json-schema.org/understanding-json-schema)
@@ -179,7 +200,10 @@ module Telnyx
           # request. See the
           # [JSON Schema reference](https://json-schema.org/understanding-json-schema) for
           # documentation about the format
-          query_parameters: nil
+          query_parameters: nil,
+          # The maximum number of milliseconds to wait for the webhook to respond. Only
+          # applicable when async is false.
+          timeout_ms: nil
         )
         end
 
@@ -189,6 +213,7 @@ module Telnyx
               description: String,
               name: String,
               url: String,
+              async: T::Boolean,
               body_parameters:
                 Telnyx::AI::InferenceEmbeddingWebhookToolParams::BodyParameters,
               headers:
@@ -200,7 +225,8 @@ module Telnyx
               path_parameters:
                 Telnyx::AI::InferenceEmbeddingWebhookToolParams::PathParameters,
               query_parameters:
-                Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters
+                Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters,
+              timeout_ms: Integer
             }
           )
         end

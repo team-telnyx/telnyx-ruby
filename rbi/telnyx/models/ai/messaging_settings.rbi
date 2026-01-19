@@ -9,6 +9,14 @@ module Telnyx
             T.any(Telnyx::AI::MessagingSettings, Telnyx::Internal::AnyHash)
           end
 
+        # If more than this many minutes have passed since the last message, the assistant
+        # will start a new conversation instead of continuing the existing one.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :conversation_inactivity_minutes
+
+        sig { params(conversation_inactivity_minutes: Integer).void }
+        attr_writer :conversation_inactivity_minutes
+
         # Default Messaging Profile used for messaging exchanges with your assistant. This
         # will be created automatically on assistant creation.
         sig { returns(T.nilable(String)) }
@@ -27,11 +35,15 @@ module Telnyx
 
         sig do
           params(
+            conversation_inactivity_minutes: Integer,
             default_messaging_profile_id: String,
             delivery_status_webhook_url: String
           ).returns(T.attached_class)
         end
         def self.new(
+          # If more than this many minutes have passed since the last message, the assistant
+          # will start a new conversation instead of continuing the existing one.
+          conversation_inactivity_minutes: nil,
           # Default Messaging Profile used for messaging exchanges with your assistant. This
           # will be created automatically on assistant creation.
           default_messaging_profile_id: nil,
@@ -44,6 +56,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              conversation_inactivity_minutes: Integer,
               default_messaging_profile_id: String,
               delivery_status_webhook_url: String
             }
