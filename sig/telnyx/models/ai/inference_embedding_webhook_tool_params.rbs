@@ -6,11 +6,13 @@ module Telnyx
           description: String,
           name: String,
           url: String,
+          async: bool,
           body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::BodyParameters,
           headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Header],
           http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_,
           path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::PathParameters,
-          query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters
+          query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters,
+          timeout_ms: Integer
         }
 
       class InferenceEmbeddingWebhookToolParams < Telnyx::Internal::Type::BaseModel
@@ -19,6 +21,10 @@ module Telnyx
         attr_accessor name: String
 
         attr_accessor url: String
+
+        attr_reader async: bool?
+
+        def async=: (bool) -> bool
 
         attr_reader body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::BodyParameters?
 
@@ -50,26 +56,34 @@ module Telnyx
           Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters
         ) -> Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters
 
+        attr_reader timeout_ms: Integer?
+
+        def timeout_ms=: (Integer) -> Integer
+
         def initialize: (
           description: String,
           name: String,
           url: String,
+          ?async: bool,
           ?body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::BodyParameters,
           ?headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Header],
           ?http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_,
           ?path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::PathParameters,
-          ?query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters
+          ?query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters,
+          ?timeout_ms: Integer
         ) -> void
 
         def to_hash: -> {
           description: String,
           name: String,
           url: String,
+          async: bool,
           body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::BodyParameters,
           headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Header],
           http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_,
           path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::PathParameters,
-          query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters
+          query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters,
+          timeout_ms: Integer
         }
 
         type body_parameters =

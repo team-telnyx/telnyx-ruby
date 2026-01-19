@@ -7,7 +7,9 @@ module Telnyx
           noise_suppression: Telnyx::Models::AI::TelephonySettings::noise_suppression,
           noise_suppression_config: Telnyx::AI::TelephonySettings::NoiseSuppressionConfig,
           supports_unauthenticated_web_calls: bool,
-          time_limit_secs: Integer
+          time_limit_secs: Integer,
+          user_idle_timeout_secs: Integer,
+          voicemail_detection: Telnyx::AI::TelephonySettings::VoicemailDetection
         }
 
       class TelephonySettings < Telnyx::Internal::Type::BaseModel
@@ -35,12 +37,24 @@ module Telnyx
 
         def time_limit_secs=: (Integer) -> Integer
 
+        attr_reader user_idle_timeout_secs: Integer?
+
+        def user_idle_timeout_secs=: (Integer) -> Integer
+
+        attr_reader voicemail_detection: Telnyx::AI::TelephonySettings::VoicemailDetection?
+
+        def voicemail_detection=: (
+          Telnyx::AI::TelephonySettings::VoicemailDetection
+        ) -> Telnyx::AI::TelephonySettings::VoicemailDetection
+
         def initialize: (
           ?default_texml_app_id: String,
           ?noise_suppression: Telnyx::Models::AI::TelephonySettings::noise_suppression,
           ?noise_suppression_config: Telnyx::AI::TelephonySettings::NoiseSuppressionConfig,
           ?supports_unauthenticated_web_calls: bool,
-          ?time_limit_secs: Integer
+          ?time_limit_secs: Integer,
+          ?user_idle_timeout_secs: Integer,
+          ?voicemail_detection: Telnyx::AI::TelephonySettings::VoicemailDetection
         ) -> void
 
         def to_hash: -> {
@@ -48,14 +62,17 @@ module Telnyx
           noise_suppression: Telnyx::Models::AI::TelephonySettings::noise_suppression,
           noise_suppression_config: Telnyx::AI::TelephonySettings::NoiseSuppressionConfig,
           supports_unauthenticated_web_calls: bool,
-          time_limit_secs: Integer
+          time_limit_secs: Integer,
+          user_idle_timeout_secs: Integer,
+          voicemail_detection: Telnyx::AI::TelephonySettings::VoicemailDetection
         }
 
-        type noise_suppression = :deepfilternet | :disabled
+        type noise_suppression = :krisp | :deepfilternet | :disabled
 
         module NoiseSuppression
           extend Telnyx::Internal::Type::Enum
 
+          KRISP: :krisp
           DEEPFILTERNET: :deepfilternet
           DISABLED: :disabled
 
@@ -97,6 +114,118 @@ module Telnyx
             ADVANCED: :advanced
 
             def self?.values: -> ::Array[Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode]
+          end
+        end
+
+        type voicemail_detection =
+          {
+            on_voicemail_detected: Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected
+          }
+
+        class VoicemailDetection < Telnyx::Internal::Type::BaseModel
+          attr_reader on_voicemail_detected: Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected?
+
+          def on_voicemail_detected=: (
+            Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected
+          ) -> Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected
+
+          def initialize: (
+            ?on_voicemail_detected: Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected
+          ) -> void
+
+          def to_hash: -> {
+            on_voicemail_detected: Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected
+          }
+
+          type on_voicemail_detected =
+            {
+              action: Telnyx::Models::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::action,
+              voicemail_message: Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage
+            }
+
+          class OnVoicemailDetected < Telnyx::Internal::Type::BaseModel
+            attr_reader action: Telnyx::Models::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::action?
+
+            def action=: (
+              Telnyx::Models::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::action
+            ) -> Telnyx::Models::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::action
+
+            attr_reader voicemail_message: Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage?
+
+            def voicemail_message=: (
+              Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage
+            ) -> Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage
+
+            def initialize: (
+              ?action: Telnyx::Models::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::action,
+              ?voicemail_message: Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage
+            ) -> void
+
+            def to_hash: -> {
+              action: Telnyx::Models::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::action,
+              voicemail_message: Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage
+            }
+
+            type action =
+              :stop_assistant
+              | :leave_message_and_stop_assistant
+              | :continue_assistant
+
+            module Action
+              extend Telnyx::Internal::Type::Enum
+
+              STOP_ASSISTANT: :stop_assistant
+              LEAVE_MESSAGE_AND_STOP_ASSISTANT: :leave_message_and_stop_assistant
+              CONTINUE_ASSISTANT: :continue_assistant
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::action]
+            end
+
+            type voicemail_message =
+              {
+                message: String,
+                prompt: String,
+                type: Telnyx::Models::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::type_
+              }
+
+            class VoicemailMessage < Telnyx::Internal::Type::BaseModel
+              attr_reader message: String?
+
+              def message=: (String) -> String
+
+              attr_reader prompt: String?
+
+              def prompt=: (String) -> String
+
+              attr_reader type: Telnyx::Models::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::type_?
+
+              def type=: (
+                Telnyx::Models::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::type_
+              ) -> Telnyx::Models::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::type_
+
+              def initialize: (
+                ?message: String,
+                ?prompt: String,
+                ?type: Telnyx::Models::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::type_
+              ) -> void
+
+              def to_hash: -> {
+                message: String,
+                prompt: String,
+                type: Telnyx::Models::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::type_
+              }
+
+              type type_ = :prompt | :message
+
+              module Type
+                extend Telnyx::Internal::Type::Enum
+
+                PROMPT: :prompt
+                MESSAGE: :message
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::type_]
+              end
+            end
           end
         end
       end

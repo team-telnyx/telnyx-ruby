@@ -70,6 +70,31 @@ module Telnyx
         sig { params(time_limit_secs: Integer).void }
         attr_writer :time_limit_secs
 
+        # Maximum duration in seconds of end user silence on the call. When this limit is
+        # reached the assistant will be stopped. This limit does not apply to portions of
+        # a call without an active assistant (for instance, a call transferred to a human
+        # representative).
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :user_idle_timeout_secs
+
+        sig { params(user_idle_timeout_secs: Integer).void }
+        attr_writer :user_idle_timeout_secs
+
+        # Configuration for voicemail detection (AMD - Answering Machine Detection) on
+        # outgoing calls.
+        sig do
+          returns(T.nilable(Telnyx::AI::TelephonySettings::VoicemailDetection))
+        end
+        attr_reader :voicemail_detection
+
+        sig do
+          params(
+            voicemail_detection:
+              Telnyx::AI::TelephonySettings::VoicemailDetection::OrHash
+          ).void
+        end
+        attr_writer :voicemail_detection
+
         sig do
           params(
             default_texml_app_id: String,
@@ -78,7 +103,10 @@ module Telnyx
             noise_suppression_config:
               Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::OrHash,
             supports_unauthenticated_web_calls: T::Boolean,
-            time_limit_secs: Integer
+            time_limit_secs: Integer,
+            user_idle_timeout_secs: Integer,
+            voicemail_detection:
+              Telnyx::AI::TelephonySettings::VoicemailDetection::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
@@ -99,7 +127,15 @@ module Telnyx
           # When this limit is reached the assistant will be stopped. This limit does not
           # apply to portions of a call without an active assistant (for instance, a call
           # transferred to a human representative).
-          time_limit_secs: nil
+          time_limit_secs: nil,
+          # Maximum duration in seconds of end user silence on the call. When this limit is
+          # reached the assistant will be stopped. This limit does not apply to portions of
+          # a call without an active assistant (for instance, a call transferred to a human
+          # representative).
+          user_idle_timeout_secs: nil,
+          # Configuration for voicemail detection (AMD - Answering Machine Detection) on
+          # outgoing calls.
+          voicemail_detection: nil
         )
         end
 
@@ -112,7 +148,10 @@ module Telnyx
               noise_suppression_config:
                 Telnyx::AI::TelephonySettings::NoiseSuppressionConfig,
               supports_unauthenticated_web_calls: T::Boolean,
-              time_limit_secs: Integer
+              time_limit_secs: Integer,
+              user_idle_timeout_secs: Integer,
+              voicemail_detection:
+                Telnyx::AI::TelephonySettings::VoicemailDetection
             }
           )
         end
@@ -130,6 +169,11 @@ module Telnyx
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+          KRISP =
+            T.let(
+              :krisp,
+              Telnyx::AI::TelephonySettings::NoiseSuppression::TaggedSymbol
+            )
           DEEPFILTERNET =
             T.let(
               :deepfilternet,
@@ -242,6 +286,294 @@ module Telnyx
               )
             end
             def self.values
+            end
+          end
+        end
+
+        class VoicemailDetection < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::TelephonySettings::VoicemailDetection,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # Action to take when voicemail is detected.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected
+              )
+            )
+          end
+          attr_reader :on_voicemail_detected
+
+          sig do
+            params(
+              on_voicemail_detected:
+                Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::OrHash
+            ).void
+          end
+          attr_writer :on_voicemail_detected
+
+          # Configuration for voicemail detection (AMD - Answering Machine Detection) on
+          # outgoing calls.
+          sig do
+            params(
+              on_voicemail_detected:
+                Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::OrHash
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Action to take when voicemail is detected.
+            on_voicemail_detected: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                on_voicemail_detected:
+                  Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class OnVoicemailDetected < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # The action to take when voicemail is detected.
+            sig do
+              returns(
+                T.nilable(
+                  Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::Action::OrSymbol
+                )
+              )
+            end
+            attr_reader :action
+
+            sig do
+              params(
+                action:
+                  Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::Action::OrSymbol
+              ).void
+            end
+            attr_writer :action
+
+            # Configuration for the voicemail message to leave. Only applicable when action is
+            # 'leave_message_and_stop_assistant'.
+            sig do
+              returns(
+                T.nilable(
+                  Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage
+                )
+              )
+            end
+            attr_reader :voicemail_message
+
+            sig do
+              params(
+                voicemail_message:
+                  Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::OrHash
+              ).void
+            end
+            attr_writer :voicemail_message
+
+            # Action to take when voicemail is detected.
+            sig do
+              params(
+                action:
+                  Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::Action::OrSymbol,
+                voicemail_message:
+                  Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::OrHash
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The action to take when voicemail is detected.
+              action: nil,
+              # Configuration for the voicemail message to leave. Only applicable when action is
+              # 'leave_message_and_stop_assistant'.
+              voicemail_message: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  action:
+                    Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::Action::OrSymbol,
+                  voicemail_message:
+                    Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # The action to take when voicemail is detected.
+            module Action
+              extend Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::Action
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              STOP_ASSISTANT =
+                T.let(
+                  :stop_assistant,
+                  Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::Action::TaggedSymbol
+                )
+              LEAVE_MESSAGE_AND_STOP_ASSISTANT =
+                T.let(
+                  :leave_message_and_stop_assistant,
+                  Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::Action::TaggedSymbol
+                )
+              CONTINUE_ASSISTANT =
+                T.let(
+                  :continue_assistant,
+                  Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::Action::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::Action::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            class VoicemailMessage < Telnyx::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage,
+                    Telnyx::Internal::AnyHash
+                  )
+                end
+
+              # The specific message to leave as voicemail. Only applicable when type is
+              # 'message'.
+              sig { returns(T.nilable(String)) }
+              attr_reader :message
+
+              sig { params(message: String).void }
+              attr_writer :message
+
+              # The prompt to use for generating the voicemail message. Only applicable when
+              # type is 'prompt'.
+              sig { returns(T.nilable(String)) }
+              attr_reader :prompt
+
+              sig { params(prompt: String).void }
+              attr_writer :prompt
+
+              # The type of voicemail message. Use 'prompt' to have the assistant generate a
+              # message based on a prompt, or 'message' to leave a specific message.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::Type::OrSymbol
+                  )
+                )
+              end
+              attr_reader :type
+
+              sig do
+                params(
+                  type:
+                    Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::Type::OrSymbol
+                ).void
+              end
+              attr_writer :type
+
+              # Configuration for the voicemail message to leave. Only applicable when action is
+              # 'leave_message_and_stop_assistant'.
+              sig do
+                params(
+                  message: String,
+                  prompt: String,
+                  type:
+                    Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::Type::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The specific message to leave as voicemail. Only applicable when type is
+                # 'message'.
+                message: nil,
+                # The prompt to use for generating the voicemail message. Only applicable when
+                # type is 'prompt'.
+                prompt: nil,
+                # The type of voicemail message. Use 'prompt' to have the assistant generate a
+                # message based on a prompt, or 'message' to leave a specific message.
+                type: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    message: String,
+                    prompt: String,
+                    type:
+                      Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::Type::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The type of voicemail message. Use 'prompt' to have the assistant generate a
+              # message based on a prompt, or 'message' to leave a specific message.
+              module Type
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::Type
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PROMPT =
+                  T.let(
+                    :prompt,
+                    Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::Type::TaggedSymbol
+                  )
+                MESSAGE =
+                  T.let(
+                    :message,
+                    Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::Type::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::Type::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
             end
           end
         end

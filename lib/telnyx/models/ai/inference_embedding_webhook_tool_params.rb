@@ -25,6 +25,13 @@ module Telnyx
         #   @return [String]
         required :url, String
 
+        # @!attribute async
+        #   If async, the assistant will move forward without waiting for your server to
+        #   respond.
+        #
+        #   @return [Boolean, nil]
+        optional :async, Telnyx::Internal::Type::Boolean
+
         # @!attribute body_parameters
         #   The body parameters the webhook tool accepts, described as a JSON Schema object.
         #   These parameters will be passed to the webhook as the body of the request. See
@@ -69,7 +76,14 @@ module Telnyx
         #   @return [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::QueryParameters, nil]
         optional :query_parameters, -> { Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters }
 
-        # @!method initialize(description:, name:, url:, body_parameters: nil, headers: nil, http_method: nil, path_parameters: nil, query_parameters: nil)
+        # @!attribute timeout_ms
+        #   The maximum number of milliseconds to wait for the webhook to respond. Only
+        #   applicable when async is false.
+        #
+        #   @return [Integer, nil]
+        optional :timeout_ms, Integer
+
+        # @!method initialize(description:, name:, url:, async: nil, body_parameters: nil, headers: nil, http_method: nil, path_parameters: nil, query_parameters: nil, timeout_ms: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams} for more details.
         #
@@ -78,6 +92,8 @@ module Telnyx
         #   @param name [String] The name of the tool.
         #
         #   @param url [String] The URL of the external tool to be called. This URL is going to be used by the a
+        #
+        #   @param async [Boolean] If async, the assistant will move forward without waiting for your server to res
         #
         #   @param body_parameters [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::BodyParameters] The body parameters the webhook tool accepts, described as a JSON Schema object.
         #
@@ -88,6 +104,8 @@ module Telnyx
         #   @param path_parameters [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::PathParameters] The path parameters the webhook tool accepts, described as a JSON Schema object.
         #
         #   @param query_parameters [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::QueryParameters] The query parameters the webhook tool accepts, described as a JSON Schema object
+        #
+        #   @param timeout_ms [Integer] The maximum number of milliseconds to wait for the webhook to respond. Only appl
 
         # @see Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams#body_parameters
         class BodyParameters < Telnyx::Internal::Type::BaseModel

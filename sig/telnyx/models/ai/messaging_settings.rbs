@@ -3,11 +3,16 @@ module Telnyx
     module AI
       type messaging_settings =
         {
+          conversation_inactivity_minutes: Integer,
           default_messaging_profile_id: String,
           delivery_status_webhook_url: String
         }
 
       class MessagingSettings < Telnyx::Internal::Type::BaseModel
+        attr_reader conversation_inactivity_minutes: Integer?
+
+        def conversation_inactivity_minutes=: (Integer) -> Integer
+
         attr_reader default_messaging_profile_id: String?
 
         def default_messaging_profile_id=: (String) -> String
@@ -17,11 +22,13 @@ module Telnyx
         def delivery_status_webhook_url=: (String) -> String
 
         def initialize: (
+          ?conversation_inactivity_minutes: Integer,
           ?default_messaging_profile_id: String,
           ?delivery_status_webhook_url: String
         ) -> void
 
         def to_hash: -> {
+          conversation_inactivity_minutes: Integer,
           default_messaging_profile_id: String,
           delivery_status_webhook_url: String
         }
