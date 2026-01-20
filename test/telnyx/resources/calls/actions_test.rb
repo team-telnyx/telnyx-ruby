@@ -3,6 +3,22 @@
 require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
+  def test_add_ai_assistant_messages
+    skip("Prism tests are disabled")
+
+    response = @telnyx.calls.actions.add_ai_assistant_messages("call_control_id")
+
+    assert_pattern do
+      response => Telnyx::Models::Calls::ActionAddAIAssistantMessagesResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Calls::CallControlCommandResult | nil
+      }
+    end
+  end
+
   def test_answer
     skip("Prism tests are disabled")
 

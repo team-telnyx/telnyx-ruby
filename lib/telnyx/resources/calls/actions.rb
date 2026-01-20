@@ -5,6 +5,37 @@ module Telnyx
     class Calls
       class Actions
         # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams} for more details.
+        #
+        # Add messages to the conversation started by an AI assistant on the call.
+        #
+        # @overload add_ai_assistant_messages(call_control_id, client_state: nil, command_id: nil, messages: nil, request_options: {})
+        #
+        # @param call_control_id [String] Unique identifier and token for controlling the call
+        #
+        # @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
+        #
+        # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
+        #
+        # @param messages [Array<Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::Message::User, Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::Message::Assistant, Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::Message::Tool, Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::Message::System, Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::Message::Developer>] The messages to add to the conversation.
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Calls::ActionAddAIAssistantMessagesResponse]
+        #
+        # @see Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams
+        def add_ai_assistant_messages(call_control_id, params = {})
+          parsed, options = Telnyx::Calls::ActionAddAIAssistantMessagesParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: ["calls/%1$s/actions/ai_assistant_add_messages", call_control_id],
+            body: parsed,
+            model: Telnyx::Models::Calls::ActionAddAIAssistantMessagesResponse,
+            options: options
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Calls::ActionAnswerParams} for more details.
         #
         # Answer an incoming call. You must issue this command before executing subsequent

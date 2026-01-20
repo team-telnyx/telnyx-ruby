@@ -2,6 +2,14 @@ module Telnyx
   module Resources
     class Calls
       class Actions
+        def add_ai_assistant_messages: (
+          String call_control_id,
+          ?client_state: String,
+          ?command_id: String,
+          ?messages: ::Array[Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::message],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionAddAIAssistantMessagesResponse
+
         def answer: (
           String call_control_id,
           ?billing_group_id: String,
