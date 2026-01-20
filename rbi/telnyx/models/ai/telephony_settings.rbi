@@ -81,7 +81,11 @@ module Telnyx
         attr_writer :user_idle_timeout_secs
 
         # Configuration for voicemail detection (AMD - Answering Machine Detection) on
-        # outgoing calls.
+        # outgoing calls. These settings only apply if AMD is enabled on the Dial command.
+        # See
+        # [TeXML Dial documentation](https://developers.telnyx.com/api-reference/texml-rest-commands/initiate-an-outbound-call)
+        # for enabling AMD. Recommended settings: MachineDetection=Enable, AsyncAmd=true,
+        # DetectionMode=Premium.
         sig do
           returns(T.nilable(Telnyx::AI::TelephonySettings::VoicemailDetection))
         end
@@ -134,7 +138,11 @@ module Telnyx
           # representative).
           user_idle_timeout_secs: nil,
           # Configuration for voicemail detection (AMD - Answering Machine Detection) on
-          # outgoing calls.
+          # outgoing calls. These settings only apply if AMD is enabled on the Dial command.
+          # See
+          # [TeXML Dial documentation](https://developers.telnyx.com/api-reference/texml-rest-commands/initiate-an-outbound-call)
+          # for enabling AMD. Recommended settings: MachineDetection=Enable, AsyncAmd=true,
+          # DetectionMode=Premium.
           voicemail_detection: nil
         )
         end
@@ -318,7 +326,11 @@ module Telnyx
           attr_writer :on_voicemail_detected
 
           # Configuration for voicemail detection (AMD - Answering Machine Detection) on
-          # outgoing calls.
+          # outgoing calls. These settings only apply if AMD is enabled on the Dial command.
+          # See
+          # [TeXML Dial documentation](https://developers.telnyx.com/api-reference/texml-rest-commands/initiate-an-outbound-call)
+          # for enabling AMD. Recommended settings: MachineDetection=Enable, AsyncAmd=true,
+          # DetectionMode=Premium.
           sig do
             params(
               on_voicemail_detected:
