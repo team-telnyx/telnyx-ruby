@@ -53,7 +53,11 @@ module Telnyx
 
         # @!attribute voicemail_detection
         #   Configuration for voicemail detection (AMD - Answering Machine Detection) on
-        #   outgoing calls.
+        #   outgoing calls. These settings only apply if AMD is enabled on the Dial command.
+        #   See
+        #   [TeXML Dial documentation](https://developers.telnyx.com/api-reference/texml-rest-commands/initiate-an-outbound-call)
+        #   for enabling AMD. Recommended settings: MachineDetection=Enable, AsyncAmd=true,
+        #   DetectionMode=Premium.
         #
         #   @return [Telnyx::Models::AI::TelephonySettings::VoicemailDetection, nil]
         optional :voicemail_detection, -> { Telnyx::AI::TelephonySettings::VoicemailDetection }
@@ -137,7 +141,11 @@ module Telnyx
 
           # @!method initialize(on_voicemail_detected: nil)
           #   Configuration for voicemail detection (AMD - Answering Machine Detection) on
-          #   outgoing calls.
+          #   outgoing calls. These settings only apply if AMD is enabled on the Dial command.
+          #   See
+          #   [TeXML Dial documentation](https://developers.telnyx.com/api-reference/texml-rest-commands/initiate-an-outbound-call)
+          #   for enabling AMD. Recommended settings: MachineDetection=Enable, AsyncAmd=true,
+          #   DetectionMode=Premium.
           #
           #   @param on_voicemail_detected [Telnyx::Models::AI::TelephonySettings::VoicemailDetection::OnVoicemailDetected] Action to take when voicemail is detected.
 
