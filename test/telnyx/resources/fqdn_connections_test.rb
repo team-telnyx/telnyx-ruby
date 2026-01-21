@@ -86,7 +86,7 @@ class Telnyx::Test::Resources::FqdnConnectionsTest < Telnyx::Test::ResourceTest
         inbound: Telnyx::InboundFqdn | nil,
         microsoft_teams_sbc: Telnyx::Internal::Type::Boolean | nil,
         noise_suppression: Telnyx::FqdnConnection::NoiseSuppression | nil,
-        noise_suppression_details: Telnyx::FqdnConnection::NoiseSuppressionDetails | nil,
+        noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails | nil,
         onnet_t38_passthrough_enabled: Telnyx::Internal::Type::Boolean | nil,
         outbound: Telnyx::OutboundFqdn | nil,
         password: String | nil,

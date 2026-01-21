@@ -11,7 +11,7 @@ module Telnyx
 
         discriminator :type
 
-        variant :webhook, -> { Telnyx::AI::WebhookTool }
+        variant :webhook, -> { Telnyx::AI::InferenceEmbeddingWebhookToolParams }
 
         variant :retrieval, -> { Telnyx::AI::RetrievalTool }
 
@@ -20,7 +20,7 @@ module Telnyx
 
         variant :hangup, -> { Telnyx::AI::HangupTool }
 
-        variant :transfer, -> { Telnyx::AI::TransferTool }
+        variant :transfer, -> { Telnyx::AI::AssistantTool::Transfer }
 
         variant :refer, -> { Telnyx::AI::AssistantTool::Refer }
 
@@ -107,6 +107,109 @@ module Telnyx
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+          end
+        end
+
+        class Transfer < Telnyx::Internal::Type::BaseModel
+          # @!attribute transfer
+          #
+          #   @return [Telnyx::Models::AI::AssistantTool::Transfer::Transfer]
+          required :transfer, -> { Telnyx::AI::AssistantTool::Transfer::Transfer }
+
+          # @!attribute type
+          #
+          #   @return [Symbol, :transfer]
+          required :type, const: :transfer
+
+          # @!method initialize(transfer:, type: :transfer)
+          #   @param transfer [Telnyx::Models::AI::AssistantTool::Transfer::Transfer]
+          #   @param type [Symbol, :transfer]
+
+          # @see Telnyx::Models::AI::AssistantTool::Transfer#transfer
+          class Transfer < Telnyx::Internal::Type::BaseModel
+            # @!attribute from
+            #   Number or SIP URI placing the call.
+            #
+            #   @return [String]
+            required :from, String
+
+            # @!attribute targets
+            #   The different possible targets of the transfer. The assistant will be able to
+            #   choose one of the targets to transfer the call to.
+            #
+            #   @return [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::Target>]
+            required :targets,
+                     -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantTool::Transfer::Transfer::Target] }
+
+            # @!attribute custom_headers
+            #   Custom headers to be added to the SIP INVITE for the transfer command.
+            #
+            #   @return [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::CustomHeader>, nil]
+            optional :custom_headers,
+                     -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader] }
+
+            # @!attribute warm_transfer_instructions
+            #   Natural language instructions for your agent for how to provide context for the
+            #   transfer recipient.
+            #
+            #   @return [String, nil]
+            optional :warm_transfer_instructions, String
+
+            # @!method initialize(from:, targets:, custom_headers: nil, warm_transfer_instructions: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {Telnyx::Models::AI::AssistantTool::Transfer::Transfer} for more details.
+            #
+            #   @param from [String] Number or SIP URI placing the call.
+            #
+            #   @param targets [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::Target>] The different possible targets of the transfer. The assistant will be able to ch
+            #
+            #   @param custom_headers [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::CustomHeader>] Custom headers to be added to the SIP INVITE for the transfer command.
+            #
+            #   @param warm_transfer_instructions [String] Natural language instructions for your agent for how to provide context for the
+
+            class Target < Telnyx::Internal::Type::BaseModel
+              # @!attribute name
+              #   The name of the target.
+              #
+              #   @return [String, nil]
+              optional :name, String
+
+              # @!attribute to
+              #   The destination number or SIP URI of the call.
+              #
+              #   @return [String, nil]
+              optional :to, String
+
+              # @!method initialize(name: nil, to: nil)
+              #   @param name [String] The name of the target.
+              #
+              #   @param to [String] The destination number or SIP URI of the call.
+            end
+
+            class CustomHeader < Telnyx::Internal::Type::BaseModel
+              # @!attribute name
+              #
+              #   @return [String, nil]
+              optional :name, String
+
+              # @!attribute value
+              #   The value of the header. Note that we support mustache templating for the value.
+              #   For example you can use
+              #   `{{#integration_secret}}test-secret{{/integration_secret}}` to pass the value of
+              #   the integration secret.
+              #
+              #   @return [String, nil]
+              optional :value, String
+
+              # @!method initialize(name: nil, value: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Telnyx::Models::AI::AssistantTool::Transfer::Transfer::CustomHeader} for more
+              #   details.
+              #
+              #   @param name [String]
+              #
+              #   @param value [String] The value of the header. Note that we support mustache templating for the value.
             end
           end
         end
@@ -294,7 +397,7 @@ module Telnyx
         end
 
         # @!method self.variants
-        #   @return [Array(Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage)]
+        #   @return [Array(Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage)]
       end
     end
   end

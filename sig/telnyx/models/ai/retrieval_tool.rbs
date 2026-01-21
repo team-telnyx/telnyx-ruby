@@ -3,22 +3,22 @@ module Telnyx
     module AI
       type retrieval_tool =
         {
-          retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs,
+          retrieval: Telnyx::AI::BucketIDs,
           type: Telnyx::Models::AI::RetrievalTool::type_
         }
 
       class RetrievalTool < Telnyx::Internal::Type::BaseModel
-        attr_accessor retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs
+        attr_accessor retrieval: Telnyx::AI::BucketIDs
 
         attr_accessor type: Telnyx::Models::AI::RetrievalTool::type_
 
         def initialize: (
-          retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs,
+          retrieval: Telnyx::AI::BucketIDs,
           type: Telnyx::Models::AI::RetrievalTool::type_
         ) -> void
 
         def to_hash: -> {
-          retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs,
+          retrieval: Telnyx::AI::BucketIDs,
           type: Telnyx::Models::AI::RetrievalTool::type_
         }
 

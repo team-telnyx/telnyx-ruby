@@ -45,7 +45,7 @@ module Telnyx
                   Telnyx::AI::WebhookTool,
                   Telnyx::AI::HangupTool,
                   Telnyx::AI::TransferTool,
-                  Telnyx::AI::RetrievalTool
+                  Telnyx::AI::Assistant::Tool::Retrieval
                 )
               ]
             )
@@ -63,7 +63,7 @@ module Telnyx
                   Telnyx::AI::WebhookTool::OrHash,
                   Telnyx::AI::HangupTool::OrHash,
                   Telnyx::AI::TransferTool::OrHash,
-                  Telnyx::AI::RetrievalTool::OrHash
+                  Telnyx::AI::Assistant::Tool::Retrieval::OrHash
                 )
               ]
           ).void
@@ -84,7 +84,7 @@ module Telnyx
                   Telnyx::AI::WebhookTool::OrHash,
                   Telnyx::AI::HangupTool::OrHash,
                   Telnyx::AI::TransferTool::OrHash,
-                  Telnyx::AI::RetrievalTool::OrHash
+                  Telnyx::AI::Assistant::Tool::Retrieval::OrHash
                 )
               ]
           ).returns(T.attached_class)
@@ -119,7 +119,7 @@ module Telnyx
                     Telnyx::AI::WebhookTool,
                     Telnyx::AI::HangupTool,
                     Telnyx::AI::TransferTool,
-                    Telnyx::AI::RetrievalTool
+                    Telnyx::AI::Assistant::Tool::Retrieval
                   )
                 ]
             }
@@ -139,7 +139,7 @@ module Telnyx
                 Telnyx::AI::WebhookTool,
                 Telnyx::AI::HangupTool,
                 Telnyx::AI::TransferTool,
-                Telnyx::AI::RetrievalTool
+                Telnyx::AI::Assistant::Tool::Retrieval
               )
             end
 
@@ -364,6 +364,92 @@ module Telnyx
               sig do
                 override.returns(
                   { api_key_ref: String, event_type_id: Integer }
+                )
+              end
+              def to_hash
+              end
+            end
+          end
+
+          class Retrieval < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::AI::Assistant::Tool::Retrieval,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Telnyx::AI::Assistant::Tool::Retrieval::Retrieval) }
+            attr_reader :retrieval
+
+            sig do
+              params(
+                retrieval:
+                  Telnyx::AI::Assistant::Tool::Retrieval::Retrieval::OrHash
+              ).void
+            end
+            attr_writer :retrieval
+
+            sig { returns(Symbol) }
+            attr_accessor :type
+
+            sig do
+              params(
+                retrieval:
+                  Telnyx::AI::Assistant::Tool::Retrieval::Retrieval::OrHash,
+                type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(retrieval:, type: :retrieval)
+            end
+
+            sig do
+              override.returns(
+                {
+                  retrieval: Telnyx::AI::Assistant::Tool::Retrieval::Retrieval,
+                  type: Symbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class Retrieval < Telnyx::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Telnyx::AI::Assistant::Tool::Retrieval::Retrieval,
+                    Telnyx::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T::Array[String]) }
+              attr_accessor :bucket_ids
+
+              # The maximum number of results to retrieve as context for the language model.
+              sig { returns(T.nilable(Integer)) }
+              attr_reader :max_num_results
+
+              sig { params(max_num_results: Integer).void }
+              attr_writer :max_num_results
+
+              sig do
+                params(
+                  bucket_ids: T::Array[String],
+                  max_num_results: Integer
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                bucket_ids:,
+                # The maximum number of results to retrieve as context for the language model.
+                max_num_results: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  { bucket_ids: T::Array[String], max_num_results: Integer }
                 )
               end
               def to_hash

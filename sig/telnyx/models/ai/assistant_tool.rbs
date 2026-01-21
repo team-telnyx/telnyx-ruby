@@ -2,11 +2,11 @@ module Telnyx
   module Models
     module AI
       type assistant_tool =
-        Telnyx::AI::WebhookTool
+        Telnyx::AI::InferenceEmbeddingWebhookToolParams
         | Telnyx::AI::RetrievalTool
         | Telnyx::AI::AssistantTool::Handoff
         | Telnyx::AI::HangupTool
-        | Telnyx::AI::TransferTool
+        | Telnyx::AI::AssistantTool::Transfer
         | Telnyx::AI::AssistantTool::Refer
         | Telnyx::AI::AssistantTool::SendDtmf
         | Telnyx::AI::AssistantTool::SendMessage
@@ -81,6 +81,98 @@ module Telnyx
               DISTINCT: :distinct
 
               def self?.values: -> ::Array[Telnyx::Models::AI::AssistantTool::Handoff::Handoff::voice_mode]
+            end
+          end
+        end
+
+        type transfer =
+          {
+            transfer: Telnyx::AI::AssistantTool::Transfer::Transfer,
+            type: :transfer
+          }
+
+        class Transfer < Telnyx::Internal::Type::BaseModel
+          attr_accessor transfer: Telnyx::AI::AssistantTool::Transfer::Transfer
+
+          attr_accessor type: :transfer
+
+          def initialize: (
+            transfer: Telnyx::AI::AssistantTool::Transfer::Transfer,
+            ?type: :transfer
+          ) -> void
+
+          def to_hash: -> {
+            transfer: Telnyx::AI::AssistantTool::Transfer::Transfer,
+            type: :transfer
+          }
+
+          type transfer =
+            {
+              from: String,
+              targets: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::Target],
+              custom_headers: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader],
+              warm_transfer_instructions: String
+            }
+
+          class Transfer < Telnyx::Internal::Type::BaseModel
+            attr_accessor from: String
+
+            attr_accessor targets: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::Target]
+
+            attr_reader custom_headers: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader]?
+
+            def custom_headers=: (
+              ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader]
+            ) -> ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader]
+
+            attr_reader warm_transfer_instructions: String?
+
+            def warm_transfer_instructions=: (String) -> String
+
+            def initialize: (
+              from: String,
+              targets: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::Target],
+              ?custom_headers: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader],
+              ?warm_transfer_instructions: String
+            ) -> void
+
+            def to_hash: -> {
+              from: String,
+              targets: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::Target],
+              custom_headers: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader],
+              warm_transfer_instructions: String
+            }
+
+            type target = { name: String, to: String }
+
+            class Target < Telnyx::Internal::Type::BaseModel
+              attr_reader name: String?
+
+              def name=: (String) -> String
+
+              attr_reader to: String?
+
+              def to=: (String) -> String
+
+              def initialize: (?name: String, ?to: String) -> void
+
+              def to_hash: -> { name: String, to: String }
+            end
+
+            type custom_header = { name: String, value: String }
+
+            class CustomHeader < Telnyx::Internal::Type::BaseModel
+              attr_reader name: String?
+
+              def name=: (String) -> String
+
+              attr_reader value: String?
+
+              def value=: (String) -> String
+
+              def initialize: (?name: String, ?value: String) -> void
+
+              def to_hash: -> { name: String, value: String }
             end
           end
         end

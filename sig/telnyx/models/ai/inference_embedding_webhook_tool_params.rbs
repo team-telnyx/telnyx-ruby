@@ -3,251 +3,283 @@ module Telnyx
     module AI
       type inference_embedding_webhook_tool_params =
         {
-          description: String,
-          name: String,
-          url: String,
-          async: bool,
-          body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::BodyParameters,
-          headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Header],
-          http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_,
-          path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::PathParameters,
-          query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters,
-          timeout_ms: Integer
+          type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::type_,
+          webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook
         }
 
       class InferenceEmbeddingWebhookToolParams < Telnyx::Internal::Type::BaseModel
-        attr_accessor description: String
+        attr_accessor type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::type_
 
-        attr_accessor name: String
-
-        attr_accessor url: String
-
-        attr_reader async: bool?
-
-        def async=: (bool) -> bool
-
-        attr_reader body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::BodyParameters?
-
-        def body_parameters=: (
-          Telnyx::AI::InferenceEmbeddingWebhookToolParams::BodyParameters
-        ) -> Telnyx::AI::InferenceEmbeddingWebhookToolParams::BodyParameters
-
-        attr_reader headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Header]?
-
-        def headers=: (
-          ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Header]
-        ) -> ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Header]
-
-        attr_reader http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_?
-
-        def http_method=: (
-          Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_
-        ) -> Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_
-
-        attr_reader path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::PathParameters?
-
-        def path_parameters=: (
-          Telnyx::AI::InferenceEmbeddingWebhookToolParams::PathParameters
-        ) -> Telnyx::AI::InferenceEmbeddingWebhookToolParams::PathParameters
-
-        attr_reader query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters?
-
-        def query_parameters=: (
-          Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters
-        ) -> Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters
-
-        attr_reader timeout_ms: Integer?
-
-        def timeout_ms=: (Integer) -> Integer
+        attr_accessor webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook
 
         def initialize: (
-          description: String,
-          name: String,
-          url: String,
-          ?async: bool,
-          ?body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::BodyParameters,
-          ?headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Header],
-          ?http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_,
-          ?path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::PathParameters,
-          ?query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters,
-          ?timeout_ms: Integer
+          type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::type_,
+          webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook
         ) -> void
 
         def to_hash: -> {
-          description: String,
-          name: String,
-          url: String,
-          async: bool,
-          body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::BodyParameters,
-          headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Header],
-          http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_,
-          path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::PathParameters,
-          query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::QueryParameters,
-          timeout_ms: Integer
+          type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::type_,
+          webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook
         }
 
-        type body_parameters =
-          {
-            properties: ::Hash[Symbol, top],
-            required: ::Array[String],
-            type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::BodyParameters::type_
-          }
+        type type_ = :webhook
 
-        class BodyParameters < Telnyx::Internal::Type::BaseModel
-          attr_reader properties: ::Hash[Symbol, top]?
-
-          def properties=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
-
-          attr_reader required: ::Array[String]?
-
-          def required=: (::Array[String]) -> ::Array[String]
-
-          attr_reader type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::BodyParameters::type_?
-
-          def type=: (
-            Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::BodyParameters::type_
-          ) -> Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::BodyParameters::type_
-
-          def initialize: (
-            ?properties: ::Hash[Symbol, top],
-            ?required: ::Array[String],
-            ?type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::BodyParameters::type_
-          ) -> void
-
-          def to_hash: -> {
-            properties: ::Hash[Symbol, top],
-            required: ::Array[String],
-            type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::BodyParameters::type_
-          }
-
-          type type_ = :object
-
-          module Type
-            extend Telnyx::Internal::Type::Enum
-
-            OBJECT: :object
-
-            def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::BodyParameters::type_]
-          end
-        end
-
-        type header = { name: String, value: String }
-
-        class Header < Telnyx::Internal::Type::BaseModel
-          attr_reader name: String?
-
-          def name=: (String) -> String
-
-          attr_reader value: String?
-
-          def value=: (String) -> String
-
-          def initialize: (?name: String, ?value: String) -> void
-
-          def to_hash: -> { name: String, value: String }
-        end
-
-        type method_ = :GET | :POST | :PUT | :DELETE | :PATCH
-
-        module Method
+        module Type
           extend Telnyx::Internal::Type::Enum
 
-          GET: :GET
-          POST: :POST
-          PUT: :PUT
-          DELETE: :DELETE
-          PATCH: :PATCH
+          WEBHOOK: :webhook
 
-          def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::method_]
+          def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::type_]
         end
 
-        type path_parameters =
+        type webhook =
           {
-            properties: ::Hash[Symbol, top],
-            required: ::Array[String],
-            type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::PathParameters::type_
+            description: String,
+            name: String,
+            url: String,
+            async: bool,
+            body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters,
+            headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header],
+            method_: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_,
+            path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters,
+            query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters,
+            timeout_ms: Integer
           }
 
-        class PathParameters < Telnyx::Internal::Type::BaseModel
-          attr_reader properties: ::Hash[Symbol, top]?
+        class Webhook < Telnyx::Internal::Type::BaseModel
+          attr_accessor description: String
 
-          def properties=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+          attr_accessor name: String
 
-          attr_reader required: ::Array[String]?
+          attr_accessor url: String
 
-          def required=: (::Array[String]) -> ::Array[String]
+          attr_reader async: bool?
 
-          attr_reader type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::PathParameters::type_?
+          def async=: (bool) -> bool
 
-          def type=: (
-            Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::PathParameters::type_
-          ) -> Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::PathParameters::type_
+          attr_reader body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters?
+
+          def body_parameters=: (
+            Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters
+          ) -> Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters
+
+          attr_reader headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header]?
+
+          def headers=: (
+            ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header]
+          ) -> ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header]
+
+          attr_reader method_: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_?
+
+          def method_=: (
+            Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_
+          ) -> Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_
+
+          attr_reader path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters?
+
+          def path_parameters=: (
+            Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters
+          ) -> Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters
+
+          attr_reader query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters?
+
+          def query_parameters=: (
+            Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters
+          ) -> Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters
+
+          attr_reader timeout_ms: Integer?
+
+          def timeout_ms=: (Integer) -> Integer
 
           def initialize: (
-            ?properties: ::Hash[Symbol, top],
-            ?required: ::Array[String],
-            ?type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::PathParameters::type_
+            description: String,
+            name: String,
+            url: String,
+            ?async: bool,
+            ?body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters,
+            ?headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header],
+            ?method_: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_,
+            ?path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters,
+            ?query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters,
+            ?timeout_ms: Integer
           ) -> void
 
           def to_hash: -> {
-            properties: ::Hash[Symbol, top],
-            required: ::Array[String],
-            type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::PathParameters::type_
+            description: String,
+            name: String,
+            url: String,
+            async: bool,
+            body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters,
+            headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header],
+            method_: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_,
+            path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters,
+            query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters,
+            timeout_ms: Integer
           }
 
-          type type_ = :object
+          type body_parameters =
+            {
+              properties: ::Hash[Symbol, top],
+              required: ::Array[String],
+              type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters::type_
+            }
 
-          module Type
-            extend Telnyx::Internal::Type::Enum
+          class BodyParameters < Telnyx::Internal::Type::BaseModel
+            attr_reader properties: ::Hash[Symbol, top]?
 
-            OBJECT: :object
+            def properties=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
-            def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::PathParameters::type_]
+            attr_reader required: ::Array[String]?
+
+            def required=: (::Array[String]) -> ::Array[String]
+
+            attr_reader type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters::type_?
+
+            def type=: (
+              Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters::type_
+            ) -> Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters::type_
+
+            def initialize: (
+              ?properties: ::Hash[Symbol, top],
+              ?required: ::Array[String],
+              ?type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters::type_
+            ) -> void
+
+            def to_hash: -> {
+              properties: ::Hash[Symbol, top],
+              required: ::Array[String],
+              type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters::type_
+            }
+
+            type type_ = :object
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              OBJECT: :object
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters::type_]
+            end
           end
-        end
 
-        type query_parameters =
-          {
-            properties: ::Hash[Symbol, top],
-            required: ::Array[String],
-            type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::QueryParameters::type_
-          }
+          type header = { name: String, value: String }
 
-        class QueryParameters < Telnyx::Internal::Type::BaseModel
-          attr_reader properties: ::Hash[Symbol, top]?
+          class Header < Telnyx::Internal::Type::BaseModel
+            attr_reader name: String?
 
-          def properties=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+            def name=: (String) -> String
 
-          attr_reader required: ::Array[String]?
+            attr_reader value: String?
 
-          def required=: (::Array[String]) -> ::Array[String]
+            def value=: (String) -> String
 
-          attr_reader type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::QueryParameters::type_?
+            def initialize: (?name: String, ?value: String) -> void
 
-          def type=: (
-            Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::QueryParameters::type_
-          ) -> Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::QueryParameters::type_
+            def to_hash: -> { name: String, value: String }
+          end
 
-          def initialize: (
-            ?properties: ::Hash[Symbol, top],
-            ?required: ::Array[String],
-            ?type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::QueryParameters::type_
-          ) -> void
+          type method_ = :GET | :POST | :PUT | :DELETE | :PATCH
 
-          def to_hash: -> {
-            properties: ::Hash[Symbol, top],
-            required: ::Array[String],
-            type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::QueryParameters::type_
-          }
-
-          type type_ = :object
-
-          module Type
+          module Method
             extend Telnyx::Internal::Type::Enum
 
-            OBJECT: :object
+            GET: :GET
+            POST: :POST
+            PUT: :PUT
+            DELETE: :DELETE
+            PATCH: :PATCH
 
-            def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::QueryParameters::type_]
+            def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_]
+          end
+
+          type path_parameters =
+            {
+              properties: ::Hash[Symbol, top],
+              required: ::Array[String],
+              type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters::type_
+            }
+
+          class PathParameters < Telnyx::Internal::Type::BaseModel
+            attr_reader properties: ::Hash[Symbol, top]?
+
+            def properties=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+            attr_reader required: ::Array[String]?
+
+            def required=: (::Array[String]) -> ::Array[String]
+
+            attr_reader type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters::type_?
+
+            def type=: (
+              Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters::type_
+            ) -> Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters::type_
+
+            def initialize: (
+              ?properties: ::Hash[Symbol, top],
+              ?required: ::Array[String],
+              ?type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters::type_
+            ) -> void
+
+            def to_hash: -> {
+              properties: ::Hash[Symbol, top],
+              required: ::Array[String],
+              type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters::type_
+            }
+
+            type type_ = :object
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              OBJECT: :object
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters::type_]
+            end
+          end
+
+          type query_parameters =
+            {
+              properties: ::Hash[Symbol, top],
+              required: ::Array[String],
+              type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters::type_
+            }
+
+          class QueryParameters < Telnyx::Internal::Type::BaseModel
+            attr_reader properties: ::Hash[Symbol, top]?
+
+            def properties=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+            attr_reader required: ::Array[String]?
+
+            def required=: (::Array[String]) -> ::Array[String]
+
+            attr_reader type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters::type_?
+
+            def type=: (
+              Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters::type_
+            ) -> Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters::type_
+
+            def initialize: (
+              ?properties: ::Hash[Symbol, top],
+              ?required: ::Array[String],
+              ?type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters::type_
+            ) -> void
+
+            def to_hash: -> {
+              properties: ::Hash[Symbol, top],
+              required: ::Array[String],
+              type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters::type_
+            }
+
+            type type_ = :object
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              OBJECT: :object
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters::type_]
+            end
           end
         end
       end

@@ -111,17 +111,13 @@ module Telnyx
       # regardless of the noise_suppression value, but only take effect when
       # noise_suppression is not 'disabled'. If you disable noise suppression and later
       # re-enable it, the previously configured settings will be used.
-      sig do
-        returns(
-          T.nilable(Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails)
-        )
-      end
+      sig { returns(T.nilable(Telnyx::ConnectionNoiseSuppressionDetails)) }
       attr_reader :noise_suppression_details
 
       sig do
         params(
           noise_suppression_details:
-            Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails::OrHash
+            Telnyx::ConnectionNoiseSuppressionDetails::OrHash
         ).void
       end
       attr_writer :noise_suppression_details
@@ -224,7 +220,7 @@ module Telnyx
           noise_suppression:
             Telnyx::IPConnectionUpdateParams::NoiseSuppression::OrSymbol,
           noise_suppression_details:
-            Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails::OrHash,
+            Telnyx::ConnectionNoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,
           outbound: Telnyx::OutboundIP::OrHash,
           rtcp_settings: Telnyx::ConnectionRtcpSettings::OrHash,
@@ -319,7 +315,7 @@ module Telnyx
             noise_suppression:
               Telnyx::IPConnectionUpdateParams::NoiseSuppression::OrSymbol,
             noise_suppression_details:
-              Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails,
+              Telnyx::ConnectionNoiseSuppressionDetails,
             onnet_t38_passthrough_enabled: T::Boolean,
             outbound: Telnyx::OutboundIP,
             rtcp_settings: Telnyx::ConnectionRtcpSettings,
@@ -380,150 +376,6 @@ module Telnyx
           )
         end
         def self.values
-        end
-      end
-
-      class NoiseSuppressionDetails < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        # The attenuation limit value for the selected engine. Default values vary by
-        # engine: 0 for 'denoiser', 80 for 'deep_filter_net', 'deep_filter_net_large', and
-        # all Krisp engines ('krisp_viva_tel', 'krisp_viva_tel_lite',
-        # 'krisp_viva_promodel', 'krisp_viva_ss').
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :attenuation_limit
-
-        sig { params(attenuation_limit: Integer).void }
-        attr_writer :attenuation_limit
-
-        # The noise suppression engine to use. 'denoiser' is the default engine.
-        # 'deep_filter_net' and 'deep_filter_net_large' are alternative engines with
-        # different performance characteristics. Krisp engines ('krisp_viva_tel',
-        # 'krisp_viva_tel_lite', 'krisp_viva_promodel', 'krisp_viva_ss') provide advanced
-        # noise suppression capabilities.
-        sig do
-          returns(
-            T.nilable(
-              Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails::Engine::OrSymbol
-            )
-          )
-        end
-        attr_reader :engine
-
-        sig do
-          params(
-            engine:
-              Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails::Engine::OrSymbol
-          ).void
-        end
-        attr_writer :engine
-
-        # Configuration options for noise suppression. These settings are stored
-        # regardless of the noise_suppression value, but only take effect when
-        # noise_suppression is not 'disabled'. If you disable noise suppression and later
-        # re-enable it, the previously configured settings will be used.
-        sig do
-          params(
-            attenuation_limit: Integer,
-            engine:
-              Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails::Engine::OrSymbol
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # The attenuation limit value for the selected engine. Default values vary by
-          # engine: 0 for 'denoiser', 80 for 'deep_filter_net', 'deep_filter_net_large', and
-          # all Krisp engines ('krisp_viva_tel', 'krisp_viva_tel_lite',
-          # 'krisp_viva_promodel', 'krisp_viva_ss').
-          attenuation_limit: nil,
-          # The noise suppression engine to use. 'denoiser' is the default engine.
-          # 'deep_filter_net' and 'deep_filter_net_large' are alternative engines with
-          # different performance characteristics. Krisp engines ('krisp_viva_tel',
-          # 'krisp_viva_tel_lite', 'krisp_viva_promodel', 'krisp_viva_ss') provide advanced
-          # noise suppression capabilities.
-          engine: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              attenuation_limit: Integer,
-              engine:
-                Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails::Engine::OrSymbol
-            }
-          )
-        end
-        def to_hash
-        end
-
-        # The noise suppression engine to use. 'denoiser' is the default engine.
-        # 'deep_filter_net' and 'deep_filter_net_large' are alternative engines with
-        # different performance characteristics. Krisp engines ('krisp_viva_tel',
-        # 'krisp_viva_tel_lite', 'krisp_viva_promodel', 'krisp_viva_ss') provide advanced
-        # noise suppression capabilities.
-        module Engine
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails::Engine
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          DENOISER =
-            T.let(
-              :denoiser,
-              Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails::Engine::TaggedSymbol
-            )
-          DEEP_FILTER_NET =
-            T.let(
-              :deep_filter_net,
-              Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails::Engine::TaggedSymbol
-            )
-          DEEP_FILTER_NET_LARGE =
-            T.let(
-              :deep_filter_net_large,
-              Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails::Engine::TaggedSymbol
-            )
-          KRISP_VIVA_TEL =
-            T.let(
-              :krisp_viva_tel,
-              Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails::Engine::TaggedSymbol
-            )
-          KRISP_VIVA_TEL_LITE =
-            T.let(
-              :krisp_viva_tel_lite,
-              Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails::Engine::TaggedSymbol
-            )
-          KRISP_VIVA_PROMODEL =
-            T.let(
-              :krisp_viva_promodel,
-              Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails::Engine::TaggedSymbol
-            )
-          KRISP_VIVA_SS =
-            T.let(
-              :krisp_viva_ss,
-              Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails::Engine::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails::Engine::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
       end
 

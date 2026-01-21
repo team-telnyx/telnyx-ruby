@@ -73,13 +73,13 @@ module Telnyx
           #
           # @param telephony_settings [Telnyx::Models::AI::TelephonySettings] Body param
           #
-          # @param tools [Array<Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage>] Body param: The tools that the assistant can use. These may be templated with [d
+          # @param tools [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage>] Body param: The tools that the assistant can use. These may be templated with [d
           #
           # @param transcription [Telnyx::Models::AI::TranscriptionSettings] Body param
           #
           # @param voice_settings [Telnyx::Models::AI::VoiceSettings] Body param
           #
-          # @param widget_settings [Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings] Body param: Configuration settings for the assistant's web widget.
+          # @param widget_settings [Telnyx::Models::AI::WidgetSettings] Body param: Configuration settings for the assistant's web widget.
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #

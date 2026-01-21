@@ -373,23 +373,20 @@ module Telnyx
           end
 
           type retrieval =
-            {
-              retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs,
-              type: :retrieval
-            }
+            { retrieval: Telnyx::AI::BucketIDs, type: :retrieval }
 
           class Retrieval < Telnyx::Internal::Type::BaseModel
-            attr_accessor retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs
+            attr_accessor retrieval: Telnyx::AI::BucketIDs
 
             attr_accessor type: :retrieval
 
             def initialize: (
-              retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs,
+              retrieval: Telnyx::AI::BucketIDs,
               ?type: :retrieval
             ) -> void
 
             def to_hash: -> {
-              retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs,
+              retrieval: Telnyx::AI::BucketIDs,
               type: :retrieval
             }
           end

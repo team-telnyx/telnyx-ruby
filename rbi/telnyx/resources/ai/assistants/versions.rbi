@@ -47,11 +47,11 @@ module Telnyx
               tools:
                 T::Array[
                   T.any(
-                    Telnyx::AI::WebhookTool::OrHash,
+                    Telnyx::AI::InferenceEmbeddingWebhookToolParams::OrHash,
                     Telnyx::AI::RetrievalTool::OrHash,
                     Telnyx::AI::AssistantTool::Handoff::OrHash,
                     Telnyx::AI::HangupTool::OrHash,
-                    Telnyx::AI::TransferTool::OrHash,
+                    Telnyx::AI::AssistantTool::Transfer::OrHash,
                     Telnyx::AI::AssistantTool::Refer::OrHash,
                     Telnyx::AI::AssistantTool::SendDtmf::OrHash,
                     Telnyx::AI::AssistantTool::SendMessage::OrHash
@@ -59,8 +59,7 @@ module Telnyx
                 ],
               transcription: Telnyx::AI::TranscriptionSettings::OrHash,
               voice_settings: Telnyx::AI::VoiceSettings::OrHash,
-              widget_settings:
-                Telnyx::AI::Assistants::UpdateAssistant::WidgetSettings::OrHash,
+              widget_settings: Telnyx::AI::WidgetSettings::OrHash,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::InferenceEmbedding)
           end
