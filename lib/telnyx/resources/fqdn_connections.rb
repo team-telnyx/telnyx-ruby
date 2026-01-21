@@ -36,7 +36,7 @@ module Telnyx
       #
       # @param noise_suppression [Symbol, Telnyx::Models::FqdnConnectionCreateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #
-      # @param noise_suppression_details [Telnyx::Models::FqdnConnectionCreateParams::NoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
+      # @param noise_suppression_details [Telnyx::Models::ConnectionNoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #
       # @param onnet_t38_passthrough_enabled [Boolean] Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
       #
@@ -125,7 +125,7 @@ module Telnyx
       #
       # @param noise_suppression [Symbol, Telnyx::Models::FqdnConnectionUpdateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #
-      # @param noise_suppression_details [Telnyx::Models::FqdnConnectionUpdateParams::NoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
+      # @param noise_suppression_details [Telnyx::Models::ConnectionNoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #
       # @param onnet_t38_passthrough_enabled [Boolean] Enable on-net T38 if you prefer that the sender and receiver negotiate T38 direc
       #

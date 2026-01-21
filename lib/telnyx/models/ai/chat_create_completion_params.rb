@@ -389,8 +389,8 @@ module Telnyx
           class Retrieval < Telnyx::Internal::Type::BaseModel
             # @!attribute retrieval
             #
-            #   @return [Telnyx::Models::AI::InferenceEmbeddingBucketIDs]
-            required :retrieval, -> { Telnyx::AI::InferenceEmbeddingBucketIDs }
+            #   @return [Telnyx::Models::AI::BucketIDs]
+            required :retrieval, -> { Telnyx::AI::BucketIDs }
 
             # @!attribute type
             #
@@ -398,7 +398,7 @@ module Telnyx
             required :type, const: :retrieval
 
             # @!method initialize(retrieval:, type: :retrieval)
-            #   @param retrieval [Telnyx::Models::AI::InferenceEmbeddingBucketIDs]
+            #   @param retrieval [Telnyx::Models::AI::BucketIDs]
             #   @param type [Symbol, :retrieval]
           end
 

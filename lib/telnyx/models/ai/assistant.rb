@@ -29,7 +29,7 @@ module Telnyx
         # @!attribute tools
         #   The tools that the voice assistant can use.
         #
-        #   @return [Array<Telnyx::Models::AI::Assistant::Tool::BookAppointment, Telnyx::Models::AI::Assistant::Tool::CheckAvailability, Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::RetrievalTool>, nil]
+        #   @return [Array<Telnyx::Models::AI::Assistant::Tool::BookAppointment, Telnyx::Models::AI::Assistant::Tool::CheckAvailability, Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::Assistant::Tool::Retrieval>, nil]
         optional :tools, -> { Telnyx::Internal::Type::ArrayOf[union: Telnyx::AI::Assistant::Tool] }
 
         # @!method initialize(instructions: nil, model: nil, openai_api_key_ref: nil, tools: nil)
@@ -44,7 +44,7 @@ module Telnyx
         #
         #   @param openai_api_key_ref [String] This is necessary only if the model selected is from OpenAI. You would pass the
         #
-        #   @param tools [Array<Telnyx::Models::AI::Assistant::Tool::BookAppointment, Telnyx::Models::AI::Assistant::Tool::CheckAvailability, Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::RetrievalTool>] The tools that the voice assistant can use.
+        #   @param tools [Array<Telnyx::Models::AI::Assistant::Tool::BookAppointment, Telnyx::Models::AI::Assistant::Tool::CheckAvailability, Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::Assistant::Tool::Retrieval>] The tools that the voice assistant can use.
 
         module Tool
           extend Telnyx::Internal::Type::Union
@@ -61,7 +61,7 @@ module Telnyx
 
           variant :transfer, -> { Telnyx::AI::TransferTool }
 
-          variant :retrieval, -> { Telnyx::AI::RetrievalTool }
+          variant :retrieval, -> { Telnyx::AI::Assistant::Tool::Retrieval }
 
           class BookAppointment < Telnyx::Internal::Type::BaseModel
             # @!attribute book_appointment
@@ -171,8 +171,43 @@ module Telnyx
             end
           end
 
+          class Retrieval < Telnyx::Internal::Type::BaseModel
+            # @!attribute retrieval
+            #
+            #   @return [Telnyx::Models::AI::Assistant::Tool::Retrieval::Retrieval]
+            required :retrieval, -> { Telnyx::AI::Assistant::Tool::Retrieval::Retrieval }
+
+            # @!attribute type
+            #
+            #   @return [Symbol, :retrieval]
+            required :type, const: :retrieval
+
+            # @!method initialize(retrieval:, type: :retrieval)
+            #   @param retrieval [Telnyx::Models::AI::Assistant::Tool::Retrieval::Retrieval]
+            #   @param type [Symbol, :retrieval]
+
+            # @see Telnyx::Models::AI::Assistant::Tool::Retrieval#retrieval
+            class Retrieval < Telnyx::Internal::Type::BaseModel
+              # @!attribute bucket_ids
+              #
+              #   @return [Array<String>]
+              required :bucket_ids, Telnyx::Internal::Type::ArrayOf[String]
+
+              # @!attribute max_num_results
+              #   The maximum number of results to retrieve as context for the language model.
+              #
+              #   @return [Integer, nil]
+              optional :max_num_results, Integer
+
+              # @!method initialize(bucket_ids:, max_num_results: nil)
+              #   @param bucket_ids [Array<String>]
+              #
+              #   @param max_num_results [Integer] The maximum number of results to retrieve as context for the language model.
+            end
+          end
+
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::AI::Assistant::Tool::BookAppointment, Telnyx::Models::AI::Assistant::Tool::CheckAvailability, Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::RetrievalTool)]
+          #   @return [Array(Telnyx::Models::AI::Assistant::Tool::BookAppointment, Telnyx::Models::AI::Assistant::Tool::CheckAvailability, Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::Assistant::Tool::Retrieval)]
         end
       end
     end
