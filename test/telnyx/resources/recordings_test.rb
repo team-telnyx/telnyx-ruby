@@ -25,7 +25,7 @@ class Telnyx::Test::Resources::RecordingsTest < Telnyx::Test::ResourceTest
     response = @telnyx.recordings.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

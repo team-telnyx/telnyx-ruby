@@ -25,7 +25,7 @@ class Telnyx::Test::Resources::PortingOrders::PhoneNumberConfigurationsTest < Te
     response = @telnyx.porting_orders.phone_number_configurations.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

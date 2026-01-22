@@ -54,11 +54,11 @@ module Telnyx
             id: String,
             filter:
               Telnyx::ExternalConnections::PhoneNumberListParams::Filter::OrHash,
-            page_number: Integer,
-            page_size: Integer,
+            page:
+              Telnyx::ExternalConnections::PhoneNumberListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Internal::DefaultPagination[
               Telnyx::ExternalConnections::ExternalConnectionPhoneNumber
             ]
           )
@@ -69,8 +69,9 @@ module Telnyx
           # Filter parameter for phone numbers (deepObject style). Supports filtering by
           # phone_number, civic_address_id, and location_id with eq/contains operations.
           filter: nil,
-          page_number: nil,
-          page_size: nil,
+          # Consolidated page parameter (deepObject style). Originally: page[size],
+          # page[number]
+          page: nil,
           request_options: {}
         )
         end

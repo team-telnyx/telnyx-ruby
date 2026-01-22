@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::PortingOrders::ActionRequirementsTest < Telnyx::T
     response = @telnyx.porting_orders.action_requirements.list("porting_order_id")
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

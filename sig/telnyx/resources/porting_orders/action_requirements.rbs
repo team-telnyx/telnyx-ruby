@@ -5,11 +5,10 @@ module Telnyx
         def list: (
           String porting_order_id,
           ?filter: Telnyx::PortingOrders::ActionRequirementListParams::Filter,
-          ?page_number: Integer,
-          ?page_size: Integer,
+          ?page: Telnyx::PortingOrders::ActionRequirementListParams::Page,
           ?sort: Telnyx::PortingOrders::ActionRequirementListParams::Sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::PortingOrders::ActionRequirementListResponse]
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::PortingOrders::ActionRequirementListResponse]
 
         def initiate: (
           String id,

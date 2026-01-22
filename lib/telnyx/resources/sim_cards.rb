@@ -75,7 +75,7 @@ module Telnyx
       #
       # Get all SIM cards belonging to the user that match the given filters.
       #
-      # @overload list(filter: nil, filter_sim_card_group_id: nil, include_sim_card_group: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @overload list(filter: nil, filter_sim_card_group_id: nil, include_sim_card_group: nil, page: nil, sort: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::SimCardListParams::Filter] Consolidated filter parameter for SIM cards (deepObject style). Originally: filt
       #
@@ -83,15 +83,13 @@ module Telnyx
       #
       # @param include_sim_card_group [Boolean] It includes the associated SIM card group object in the response when present.
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::SimCardListParams::Page] Consolidated pagination parameter (deepObject style). Originally: page[number],
       #
       # @param sort [Symbol, Telnyx::Models::SimCardListParams::Sort] Sorts SIM cards by the given field. Defaults to ascending order unless field is
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::SimpleSimCard>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::SimpleSimCard>]
       #
       # @see Telnyx::Models::SimCardListParams
       def list(params = {})
@@ -99,12 +97,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "sim_cards",
-          query: parsed.transform_keys(
-            filter_sim_card_group_id: "filter[sim_card_group_id]",
-            page_number: "page[number]",
-            page_size: "page[size]"
-          ),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed.transform_keys(filter_sim_card_group_id: "filter[sim_card_group_id]"),
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::SimpleSimCard,
           options: options
         )

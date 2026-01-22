@@ -11,11 +11,10 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::MobileNetworkOperatorListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::MobileNetworkOperatorListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
+          Telnyx::Internal::DefaultPagination[
             Telnyx::Models::MobileNetworkOperatorListResponse
           ]
         )
@@ -26,8 +25,9 @@ module Telnyx
         # filter[name][ends_with], filter[country_code], filter[mcc], filter[mnc],
         # filter[tadig], filter[network_preferences_enabled]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated pagination parameter (deepObject style). Originally: page[number],
+        # page[size]
+        page: nil,
         request_options: {}
       )
       end

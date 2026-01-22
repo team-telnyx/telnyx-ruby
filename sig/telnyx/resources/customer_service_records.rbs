@@ -15,11 +15,10 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::CustomerServiceRecordListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::CustomerServiceRecordListParams::Page,
         ?sort: Telnyx::CustomerServiceRecordListParams::Sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::CustomerServiceRecord]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::CustomerServiceRecord]
 
       def verify_phone_number_coverage: (
         phone_numbers: ::Array[String],

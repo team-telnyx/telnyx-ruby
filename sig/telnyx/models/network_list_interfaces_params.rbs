@@ -3,8 +3,7 @@ module Telnyx
     type network_list_interfaces_params =
       {
         filter: Telnyx::NetworkListInterfacesParams::Filter,
-        page_number: Integer,
-        page_size: Integer
+        page: Telnyx::NetworkListInterfacesParams::Page
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -18,25 +17,21 @@ module Telnyx
         Telnyx::NetworkListInterfacesParams::Filter
       ) -> Telnyx::NetworkListInterfacesParams::Filter
 
-      attr_reader page_number: Integer?
+      attr_reader page: Telnyx::NetworkListInterfacesParams::Page?
 
-      def page_number=: (Integer) -> Integer
-
-      attr_reader page_size: Integer?
-
-      def page_size=: (Integer) -> Integer
+      def page=: (
+        Telnyx::NetworkListInterfacesParams::Page
+      ) -> Telnyx::NetworkListInterfacesParams::Page
 
       def initialize: (
         ?filter: Telnyx::NetworkListInterfacesParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::NetworkListInterfacesParams::Page,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         filter: Telnyx::NetworkListInterfacesParams::Filter,
-        page_number: Integer,
-        page_size: Integer,
+        page: Telnyx::NetworkListInterfacesParams::Page,
         request_options: Telnyx::RequestOptions
       }
 
@@ -59,6 +54,22 @@ module Telnyx
           status: Telnyx::Models::interface_status,
           type: String
         }
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
       end
     end
   end

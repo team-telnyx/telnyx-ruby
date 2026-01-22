@@ -3,8 +3,7 @@ module Telnyx
     type notification_channel_list_params =
       {
         filter: Telnyx::NotificationChannelListParams::Filter,
-        page_number: Integer,
-        page_size: Integer
+        page: Telnyx::NotificationChannelListParams::Page
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -18,25 +17,21 @@ module Telnyx
         Telnyx::NotificationChannelListParams::Filter
       ) -> Telnyx::NotificationChannelListParams::Filter
 
-      attr_reader page_number: Integer?
+      attr_reader page: Telnyx::NotificationChannelListParams::Page?
 
-      def page_number=: (Integer) -> Integer
-
-      attr_reader page_size: Integer?
-
-      def page_size=: (Integer) -> Integer
+      def page=: (
+        Telnyx::NotificationChannelListParams::Page
+      ) -> Telnyx::NotificationChannelListParams::Page
 
       def initialize: (
         ?filter: Telnyx::NotificationChannelListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::NotificationChannelListParams::Page,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         filter: Telnyx::NotificationChannelListParams::Filter,
-        page_number: Integer,
-        page_size: Integer,
+        page: Telnyx::NotificationChannelListParams::Page,
         request_options: Telnyx::RequestOptions
       }
 
@@ -252,6 +247,22 @@ module Telnyx
             def self?.values: -> ::Array[Telnyx::Models::NotificationChannelListParams::Filter::Status::eq]
           end
         end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
       end
     end
   end

@@ -28,17 +28,15 @@ module Telnyx
       #
       # List OTA updates
       #
-      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
+      # @overload list(filter: nil, page: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::OtaUpdateListParams::Filter] Consolidated filter parameter for OTA updates (deepObject style). Originally: fi
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::OtaUpdateListParams::Page] Consolidated pagination parameter (deepObject style). Originally: page[number],
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::OtaUpdateListResponse>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::OtaUpdateListResponse>]
       #
       # @see Telnyx::Models::OtaUpdateListParams
       def list(params = {})
@@ -46,8 +44,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "ota_updates",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::OtaUpdateListResponse,
           options: options
         )

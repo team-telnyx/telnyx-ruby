@@ -8,12 +8,11 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::AuditEventListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::AuditEventListParams::Page::OrHash,
           sort: Telnyx::AuditEventListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
+          Telnyx::Internal::DefaultPagination[
             Telnyx::Models::AuditEventListResponse
           ]
         )
@@ -22,8 +21,9 @@ module Telnyx
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[created_before], filter[created_after]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[number],
+        # page[size]
+        page: nil,
         # Set the order of the results by the creation date.
         sort: nil,
         request_options: {}

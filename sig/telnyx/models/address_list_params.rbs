@@ -3,8 +3,7 @@ module Telnyx
     type address_list_params =
       {
         filter: Telnyx::AddressListParams::Filter,
-        page_number: Integer,
-        page_size: Integer,
+        page: Telnyx::AddressListParams::Page,
         sort: Telnyx::Models::AddressListParams::sort
       }
       & Telnyx::Internal::Type::request_parameters
@@ -19,13 +18,11 @@ module Telnyx
         Telnyx::AddressListParams::Filter
       ) -> Telnyx::AddressListParams::Filter
 
-      attr_reader page_number: Integer?
+      attr_reader page: Telnyx::AddressListParams::Page?
 
-      def page_number=: (Integer) -> Integer
-
-      attr_reader page_size: Integer?
-
-      def page_size=: (Integer) -> Integer
+      def page=: (
+        Telnyx::AddressListParams::Page
+      ) -> Telnyx::AddressListParams::Page
 
       attr_reader sort: Telnyx::Models::AddressListParams::sort?
 
@@ -35,16 +32,14 @@ module Telnyx
 
       def initialize: (
         ?filter: Telnyx::AddressListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::AddressListParams::Page,
         ?sort: Telnyx::Models::AddressListParams::sort,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         filter: Telnyx::AddressListParams::Filter,
-        page_number: Integer,
-        page_size: Integer,
+        page: Telnyx::AddressListParams::Page,
         sort: Telnyx::Models::AddressListParams::sort,
         request_options: Telnyx::RequestOptions
       }
@@ -143,6 +138,22 @@ module Telnyx
 
           def to_hash: -> { contains: String }
         end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
       end
 
       type sort =

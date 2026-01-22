@@ -15,7 +15,7 @@ module Telnyx
         ?ios_push_credential_id: String?,
         ?microsoft_teams_sbc: bool,
         ?noise_suppression: Telnyx::Models::FqdnConnectionCreateParams::noise_suppression,
-        ?noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
+        ?noise_suppression_details: Telnyx::FqdnConnectionCreateParams::NoiseSuppressionDetails,
         ?onnet_t38_passthrough_enabled: bool,
         ?outbound: Telnyx::OutboundFqdn,
         ?rtcp_settings: Telnyx::ConnectionRtcpSettings,
@@ -47,7 +47,7 @@ module Telnyx
         ?inbound: Telnyx::InboundFqdn,
         ?ios_push_credential_id: String?,
         ?noise_suppression: Telnyx::Models::FqdnConnectionUpdateParams::noise_suppression,
-        ?noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
+        ?noise_suppression_details: Telnyx::FqdnConnectionUpdateParams::NoiseSuppressionDetails,
         ?onnet_t38_passthrough_enabled: bool,
         ?outbound: Telnyx::OutboundFqdn,
         ?rtcp_settings: Telnyx::ConnectionRtcpSettings,
@@ -62,11 +62,10 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::FqdnConnectionListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::FqdnConnectionListParams::Page,
         ?sort: Telnyx::Models::FqdnConnectionListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::FqdnConnection]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::FqdnConnection]
 
       def delete: (
         String id,

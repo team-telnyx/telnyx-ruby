@@ -14,7 +14,7 @@ module Telnyx
         ?inbound: Telnyx::IPConnectionCreateParams::Inbound,
         ?ios_push_credential_id: String?,
         ?noise_suppression: Telnyx::Models::IPConnectionCreateParams::noise_suppression,
-        ?noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
+        ?noise_suppression_details: Telnyx::IPConnectionCreateParams::NoiseSuppressionDetails,
         ?onnet_t38_passthrough_enabled: bool,
         ?outbound: Telnyx::OutboundIP,
         ?rtcp_settings: Telnyx::ConnectionRtcpSettings,
@@ -46,7 +46,7 @@ module Telnyx
         ?inbound: Telnyx::InboundIP,
         ?ios_push_credential_id: String?,
         ?noise_suppression: Telnyx::Models::IPConnectionUpdateParams::noise_suppression,
-        ?noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
+        ?noise_suppression_details: Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails,
         ?onnet_t38_passthrough_enabled: bool,
         ?outbound: Telnyx::OutboundIP,
         ?rtcp_settings: Telnyx::ConnectionRtcpSettings,
@@ -61,11 +61,10 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::IPConnectionListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::IPConnectionListParams::Page,
         ?sort: Telnyx::Models::IPConnectionListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::IPConnection]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::IPConnection]
 
       def delete: (
         String id,

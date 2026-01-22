@@ -14,7 +14,7 @@ module Telnyx
         inbound: Telnyx::InboundIP,
         ios_push_credential_id: String?,
         noise_suppression: Telnyx::Models::IPConnectionUpdateParams::noise_suppression,
-        noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
+        noise_suppression_details: Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails,
         :onnet_t38_passthrough_enabled => bool,
         outbound: Telnyx::OutboundIP,
         rtcp_settings: Telnyx::ConnectionRtcpSettings,
@@ -77,11 +77,11 @@ module Telnyx
         Telnyx::Models::IPConnectionUpdateParams::noise_suppression
       ) -> Telnyx::Models::IPConnectionUpdateParams::noise_suppression
 
-      attr_reader noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails?
+      attr_reader noise_suppression_details: Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails?
 
       def noise_suppression_details=: (
-        Telnyx::ConnectionNoiseSuppressionDetails
-      ) -> Telnyx::ConnectionNoiseSuppressionDetails
+        Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails
+      ) -> Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails
 
       attr_reader onnet_t38_passthrough_enabled: bool?
 
@@ -134,7 +134,7 @@ module Telnyx
         ?inbound: Telnyx::InboundIP,
         ?ios_push_credential_id: String?,
         ?noise_suppression: Telnyx::Models::IPConnectionUpdateParams::noise_suppression,
-        ?noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
+        ?noise_suppression_details: Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails,
         ?onnet_t38_passthrough_enabled: bool,
         ?outbound: Telnyx::OutboundIP,
         ?rtcp_settings: Telnyx::ConnectionRtcpSettings,
@@ -160,7 +160,7 @@ module Telnyx
         inbound: Telnyx::InboundIP,
         ios_push_credential_id: String?,
         noise_suppression: Telnyx::Models::IPConnectionUpdateParams::noise_suppression,
-        noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
+        noise_suppression_details: Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails,
         :onnet_t38_passthrough_enabled => bool,
         outbound: Telnyx::OutboundIP,
         rtcp_settings: Telnyx::ConnectionRtcpSettings,
@@ -184,6 +184,57 @@ module Telnyx
         DISABLED: :disabled
 
         def self?.values: -> ::Array[Telnyx::Models::IPConnectionUpdateParams::noise_suppression]
+      end
+
+      type noise_suppression_details =
+        {
+          attenuation_limit: Integer,
+          engine: Telnyx::Models::IPConnectionUpdateParams::NoiseSuppressionDetails::engine
+        }
+
+      class NoiseSuppressionDetails < Telnyx::Internal::Type::BaseModel
+        attr_reader attenuation_limit: Integer?
+
+        def attenuation_limit=: (Integer) -> Integer
+
+        attr_reader engine: Telnyx::Models::IPConnectionUpdateParams::NoiseSuppressionDetails::engine?
+
+        def engine=: (
+          Telnyx::Models::IPConnectionUpdateParams::NoiseSuppressionDetails::engine
+        ) -> Telnyx::Models::IPConnectionUpdateParams::NoiseSuppressionDetails::engine
+
+        def initialize: (
+          ?attenuation_limit: Integer,
+          ?engine: Telnyx::Models::IPConnectionUpdateParams::NoiseSuppressionDetails::engine
+        ) -> void
+
+        def to_hash: -> {
+          attenuation_limit: Integer,
+          engine: Telnyx::Models::IPConnectionUpdateParams::NoiseSuppressionDetails::engine
+        }
+
+        type engine =
+          :denoiser
+          | :deep_filter_net
+          | :deep_filter_net_large
+          | :krisp_viva_tel
+          | :krisp_viva_tel_lite
+          | :krisp_viva_promodel
+          | :krisp_viva_ss
+
+        module Engine
+          extend Telnyx::Internal::Type::Enum
+
+          DENOISER: :denoiser
+          DEEP_FILTER_NET: :deep_filter_net
+          DEEP_FILTER_NET_LARGE: :deep_filter_net_large
+          KRISP_VIVA_TEL: :krisp_viva_tel
+          KRISP_VIVA_TEL_LITE: :krisp_viva_tel_lite
+          KRISP_VIVA_PROMODEL: :krisp_viva_promodel
+          KRISP_VIVA_SS: :krisp_viva_ss
+
+          def self?.values: -> ::Array[Telnyx::Models::IPConnectionUpdateParams::NoiseSuppressionDetails::engine]
+        end
       end
 
       type transport_protocol = :UDP | :TCP | :TLS

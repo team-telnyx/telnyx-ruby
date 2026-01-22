@@ -33,7 +33,7 @@ class Telnyx::Test::Resources::AI::Assistants::VersionsTest < Telnyx::Test::Reso
         tools: ^(Telnyx::Internal::Type::ArrayOf[union: Telnyx::AI::AssistantTool]) | nil,
         transcription: Telnyx::AI::TranscriptionSettings | nil,
         voice_settings: Telnyx::AI::VoiceSettings | nil,
-        widget_settings: Telnyx::AI::WidgetSettings | nil
+        widget_settings: Telnyx::AI::InferenceEmbedding::WidgetSettings | nil
       }
     end
   end
@@ -68,7 +68,7 @@ class Telnyx::Test::Resources::AI::Assistants::VersionsTest < Telnyx::Test::Reso
         tools: ^(Telnyx::Internal::Type::ArrayOf[union: Telnyx::AI::AssistantTool]) | nil,
         transcription: Telnyx::AI::TranscriptionSettings | nil,
         voice_settings: Telnyx::AI::VoiceSettings | nil,
-        widget_settings: Telnyx::AI::WidgetSettings | nil
+        widget_settings: Telnyx::AI::InferenceEmbedding::WidgetSettings | nil
       }
     end
   end
@@ -129,7 +129,7 @@ class Telnyx::Test::Resources::AI::Assistants::VersionsTest < Telnyx::Test::Reso
         tools: ^(Telnyx::Internal::Type::ArrayOf[union: Telnyx::AI::AssistantTool]) | nil,
         transcription: Telnyx::AI::TranscriptionSettings | nil,
         voice_settings: Telnyx::AI::VoiceSettings | nil,
-        widget_settings: Telnyx::AI::WidgetSettings | nil
+        widget_settings: Telnyx::AI::InferenceEmbedding::WidgetSettings | nil
       }
     end
   end

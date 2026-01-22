@@ -33,24 +33,21 @@ module Telnyx
         sig { params(include_participants: T::Boolean).void }
         attr_writer :include_participants
 
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :page_number
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        sig { returns(T.nilable(Telnyx::Rooms::SessionList1Params::Page)) }
+        attr_reader :page
 
-        sig { params(page_number: Integer).void }
-        attr_writer :page_number
-
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :page_size
-
-        sig { params(page_size: Integer).void }
-        attr_writer :page_size
+        sig do
+          params(page: Telnyx::Rooms::SessionList1Params::Page::OrHash).void
+        end
+        attr_writer :page
 
         sig do
           params(
             filter: Telnyx::Rooms::SessionList1Params::Filter::OrHash,
             include_participants: T::Boolean,
-            page_number: Integer,
-            page_size: Integer,
+            page: Telnyx::Rooms::SessionList1Params::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -64,8 +61,9 @@ module Telnyx
           filter: nil,
           # To decide if room participants should be included in the response.
           include_participants: nil,
-          page_number: nil,
-          page_size: nil,
+          # Consolidated page parameter (deepObject style). Originally: page[size],
+          # page[number]
+          page: nil,
           request_options: {}
         )
         end
@@ -75,8 +73,7 @@ module Telnyx
             {
               filter: Telnyx::Rooms::SessionList1Params::Filter,
               include_participants: T::Boolean,
-              page_number: Integer,
-              page_size: Integer,
+              page: Telnyx::Rooms::SessionList1Params::Page,
               request_options: Telnyx::RequestOptions
             }
           )
@@ -333,6 +330,47 @@ module Telnyx
             sig { override.returns({ eq: Date, gte: Date, lte: Date }) }
             def to_hash
             end
+          end
+        end
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::Rooms::SessionList1Params::Page,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # The page number to load.
+          sig { returns(T.nilable(Integer)) }
+          attr_reader :number
+
+          sig { params(number: Integer).void }
+          attr_writer :number
+
+          # The size of the page.
+          sig { returns(T.nilable(Integer)) }
+          attr_reader :size
+
+          sig { params(size: Integer).void }
+          attr_writer :size
+
+          # Consolidated page parameter (deepObject style). Originally: page[size],
+          # page[number]
+          sig do
+            params(number: Integer, size: Integer).returns(T.attached_class)
+          end
+          def self.new(
+            # The page number to load.
+            number: nil,
+            # The size of the page.
+            size: nil
+          )
+          end
+
+          sig { override.returns({ number: Integer, size: Integer }) }
+          def to_hash
           end
         end
       end

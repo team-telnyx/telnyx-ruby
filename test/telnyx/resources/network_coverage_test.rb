@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::NetworkCoverageTest < Telnyx::Test::ResourceTest
     response = @telnyx.network_coverage.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

@@ -61,7 +61,7 @@ class Telnyx::Test::Resources::GlobalIPAssignmentsTest < Telnyx::Test::ResourceT
     response = @telnyx.global_ip_assignments.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

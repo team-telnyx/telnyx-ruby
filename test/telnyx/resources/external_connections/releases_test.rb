@@ -26,7 +26,7 @@ class Telnyx::Test::Resources::ExternalConnections::ReleasesTest < Telnyx::Test:
     response = @telnyx.external_connections.releases.list("id")
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

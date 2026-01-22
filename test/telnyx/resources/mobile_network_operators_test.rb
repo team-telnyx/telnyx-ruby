@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::MobileNetworkOperatorsTest < Telnyx::Test::Resour
     response = @telnyx.mobile_network_operators.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

@@ -3,10 +3,9 @@ module Telnyx
     class DocumentLinks
       def list: (
         ?filter: Telnyx::DocumentLinkListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::DocumentLinkListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::DocumentLinkListResponse]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::DocumentLinkListResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::PortingPhoneNumbersTest < Telnyx::Test::ResourceT
     response = @telnyx.porting_phone_numbers.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

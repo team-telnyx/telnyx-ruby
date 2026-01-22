@@ -34,24 +34,29 @@ module Telnyx
         end
         attr_writer :filter
 
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :page_number
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        sig do
+          returns(
+            T.nilable(Telnyx::ExternalConnections::PhoneNumberListParams::Page)
+          )
+        end
+        attr_reader :page
 
-        sig { params(page_number: Integer).void }
-        attr_writer :page_number
-
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :page_size
-
-        sig { params(page_size: Integer).void }
-        attr_writer :page_size
+        sig do
+          params(
+            page:
+              Telnyx::ExternalConnections::PhoneNumberListParams::Page::OrHash
+          ).void
+        end
+        attr_writer :page
 
         sig do
           params(
             filter:
               Telnyx::ExternalConnections::PhoneNumberListParams::Filter::OrHash,
-            page_number: Integer,
-            page_size: Integer,
+            page:
+              Telnyx::ExternalConnections::PhoneNumberListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -59,8 +64,9 @@ module Telnyx
           # Filter parameter for phone numbers (deepObject style). Supports filtering by
           # phone_number, civic_address_id, and location_id with eq/contains operations.
           filter: nil,
-          page_number: nil,
-          page_size: nil,
+          # Consolidated page parameter (deepObject style). Originally: page[size],
+          # page[number]
+          page: nil,
           request_options: {}
         )
         end
@@ -70,8 +76,7 @@ module Telnyx
             {
               filter:
                 Telnyx::ExternalConnections::PhoneNumberListParams::Filter,
-              page_number: Integer,
-              page_size: Integer,
+              page: Telnyx::ExternalConnections::PhoneNumberListParams::Page,
               request_options: Telnyx::RequestOptions
             }
           )
@@ -266,6 +271,47 @@ module Telnyx
             sig { override.returns({ contains: String, eq: String }) }
             def to_hash
             end
+          end
+        end
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::ExternalConnections::PhoneNumberListParams::Page,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # The page number to load
+          sig { returns(T.nilable(Integer)) }
+          attr_reader :number
+
+          sig { params(number: Integer).void }
+          attr_writer :number
+
+          # The size of the page
+          sig { returns(T.nilable(Integer)) }
+          attr_reader :size
+
+          sig { params(size: Integer).void }
+          attr_writer :size
+
+          # Consolidated page parameter (deepObject style). Originally: page[size],
+          # page[number]
+          sig do
+            params(number: Integer, size: Integer).returns(T.attached_class)
+          end
+          def self.new(
+            # The page number to load
+            number: nil,
+            # The size of the page
+            size: nil
+          )
+          end
+
+          sig { override.returns({ number: Integer, size: Integer }) }
+          def to_hash
           end
         end
       end

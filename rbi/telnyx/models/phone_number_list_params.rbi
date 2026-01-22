@@ -46,17 +46,13 @@ module Telnyx
       end
       attr_writer :handle_messaging_profile_error
 
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :page_number
+      # Consolidated page parameter (deepObject style). Originally: page[size],
+      # page[number]
+      sig { returns(T.nilable(Telnyx::PhoneNumberListParams::Page)) }
+      attr_reader :page
 
-      sig { params(page_number: Integer).void }
-      attr_writer :page_number
-
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :page_size
-
-      sig { params(page_size: Integer).void }
-      attr_writer :page_size
+      sig { params(page: Telnyx::PhoneNumberListParams::Page::OrHash).void }
+      attr_writer :page
 
       # Specifies the sort order for results. If not given, results are sorted by
       # created_at in descending order.
@@ -71,8 +67,7 @@ module Telnyx
           filter: Telnyx::PhoneNumberListParams::Filter::OrHash,
           handle_messaging_profile_error:
             Telnyx::PhoneNumberListParams::HandleMessagingProfileError::OrSymbol,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::PhoneNumberListParams::Page::OrHash,
           sort: Telnyx::PhoneNumberListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -92,8 +87,9 @@ module Telnyx
         # will be omitted in the response and an error message will be included instead of
         # returning a 503 error.
         handle_messaging_profile_error: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        page: nil,
         # Specifies the sort order for results. If not given, results are sorted by
         # created_at in descending order.
         sort: nil,
@@ -107,8 +103,7 @@ module Telnyx
             filter: Telnyx::PhoneNumberListParams::Filter,
             handle_messaging_profile_error:
               Telnyx::PhoneNumberListParams::HandleMessagingProfileError::OrSymbol,
-            page_number: Integer,
-            page_size: Integer,
+            page: Telnyx::PhoneNumberListParams::Page,
             sort: Telnyx::PhoneNumberListParams::Sort::OrSymbol,
             request_options: Telnyx::RequestOptions
           }
@@ -788,6 +783,45 @@ module Telnyx
           )
         end
         def self.values
+        end
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::PhoneNumberListParams::Page,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        # The page number to load
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :number
+
+        sig { params(number: Integer).void }
+        attr_writer :number
+
+        # The size of the page
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :size
+
+        sig { params(size: Integer).void }
+        attr_writer :size
+
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        sig { params(number: Integer, size: Integer).returns(T.attached_class) }
+        def self.new(
+          # The page number to load
+          number: nil,
+          # The size of the page
+          size: nil
+        )
+        end
+
+        sig { override.returns({ number: Integer, size: Integer }) }
+        def to_hash
         end
       end
 

@@ -38,8 +38,9 @@ module Telnyx
             #   The groups the user belongs to. Only included when include_groups parameter is
             #   true.
             #
-            #   @return [Array<Telnyx::Models::Organizations::UserGroupReference>, nil]
-            optional :groups, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Organizations::UserGroupReference] }
+            #   @return [Array<Telnyx::Models::Organizations::Users::ActionRemoveResponse::Data::Group>, nil]
+            optional :groups,
+                     -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Organizations::Users::ActionRemoveResponse::Data::Group] }
 
             # @!attribute last_sign_in_at
             #   ISO 8601 formatted date indicating when the resource last signed into the
@@ -80,7 +81,7 @@ module Telnyx
             #
             #   @param email [String] The email address of the user.
             #
-            #   @param groups [Array<Telnyx::Models::Organizations::UserGroupReference>] The groups the user belongs to. Only included when include_groups parameter is t
+            #   @param groups [Array<Telnyx::Models::Organizations::Users::ActionRemoveResponse::Data::Group>] The groups the user belongs to. Only included when include_groups parameter is t
             #
             #   @param last_sign_in_at [String, nil] ISO 8601 formatted date indicating when the resource last signed into the portal
             #
@@ -89,6 +90,27 @@ module Telnyx
             #   @param record_type [String] Identifies the type of the resource. Can be 'organization_owner' or 'organizatio
             #
             #   @param user_status [Symbol, Telnyx::Models::Organizations::Users::ActionRemoveResponse::Data::UserStatus] The status of the account.
+
+            class Group < Telnyx::Internal::Type::BaseModel
+              # @!attribute id
+              #   The unique identifier of the group.
+              #
+              #   @return [String]
+              required :id, String
+
+              # @!attribute name
+              #   The name of the group.
+              #
+              #   @return [String]
+              required :name, String
+
+              # @!method initialize(id:, name:)
+              #   A reference to a group that a user belongs to.
+              #
+              #   @param id [String] The unique identifier of the group.
+              #
+              #   @param name [String] The name of the group.
+            end
 
             # The status of the account.
             #

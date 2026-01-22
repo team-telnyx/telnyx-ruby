@@ -14,7 +14,7 @@ module Telnyx
         encrypted_media: Telnyx::Models::encrypted_media?,
         inbound: Telnyx::InboundIP,
         noise_suppression: Telnyx::Models::IPConnection::noise_suppression,
-        noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
+        noise_suppression_details: Telnyx::IPConnection::NoiseSuppressionDetails,
         :onnet_t38_passthrough_enabled => bool,
         outbound: Telnyx::OutboundIP,
         record_type: String,
@@ -79,11 +79,11 @@ module Telnyx
         Telnyx::Models::IPConnection::noise_suppression
       ) -> Telnyx::Models::IPConnection::noise_suppression
 
-      attr_reader noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails?
+      attr_reader noise_suppression_details: Telnyx::IPConnection::NoiseSuppressionDetails?
 
       def noise_suppression_details=: (
-        Telnyx::ConnectionNoiseSuppressionDetails
-      ) -> Telnyx::ConnectionNoiseSuppressionDetails
+        Telnyx::IPConnection::NoiseSuppressionDetails
+      ) -> Telnyx::IPConnection::NoiseSuppressionDetails
 
       attr_reader onnet_t38_passthrough_enabled: bool?
 
@@ -144,7 +144,7 @@ module Telnyx
         ?encrypted_media: Telnyx::Models::encrypted_media?,
         ?inbound: Telnyx::InboundIP,
         ?noise_suppression: Telnyx::Models::IPConnection::noise_suppression,
-        ?noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
+        ?noise_suppression_details: Telnyx::IPConnection::NoiseSuppressionDetails,
         ?onnet_t38_passthrough_enabled: bool,
         ?outbound: Telnyx::OutboundIP,
         ?record_type: String,
@@ -171,7 +171,7 @@ module Telnyx
         encrypted_media: Telnyx::Models::encrypted_media?,
         inbound: Telnyx::InboundIP,
         noise_suppression: Telnyx::Models::IPConnection::noise_suppression,
-        noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
+        noise_suppression_details: Telnyx::IPConnection::NoiseSuppressionDetails,
         :onnet_t38_passthrough_enabled => bool,
         outbound: Telnyx::OutboundIP,
         record_type: String,
@@ -196,6 +196,57 @@ module Telnyx
         DISABLED: :disabled
 
         def self?.values: -> ::Array[Telnyx::Models::IPConnection::noise_suppression]
+      end
+
+      type noise_suppression_details =
+        {
+          attenuation_limit: Integer,
+          engine: Telnyx::Models::IPConnection::NoiseSuppressionDetails::engine
+        }
+
+      class NoiseSuppressionDetails < Telnyx::Internal::Type::BaseModel
+        attr_reader attenuation_limit: Integer?
+
+        def attenuation_limit=: (Integer) -> Integer
+
+        attr_reader engine: Telnyx::Models::IPConnection::NoiseSuppressionDetails::engine?
+
+        def engine=: (
+          Telnyx::Models::IPConnection::NoiseSuppressionDetails::engine
+        ) -> Telnyx::Models::IPConnection::NoiseSuppressionDetails::engine
+
+        def initialize: (
+          ?attenuation_limit: Integer,
+          ?engine: Telnyx::Models::IPConnection::NoiseSuppressionDetails::engine
+        ) -> void
+
+        def to_hash: -> {
+          attenuation_limit: Integer,
+          engine: Telnyx::Models::IPConnection::NoiseSuppressionDetails::engine
+        }
+
+        type engine =
+          :denoiser
+          | :deep_filter_net
+          | :deep_filter_net_large
+          | :krisp_viva_tel
+          | :krisp_viva_tel_lite
+          | :krisp_viva_promodel
+          | :krisp_viva_ss
+
+        module Engine
+          extend Telnyx::Internal::Type::Enum
+
+          DENOISER: :denoiser
+          DEEP_FILTER_NET: :deep_filter_net
+          DEEP_FILTER_NET_LARGE: :deep_filter_net_large
+          KRISP_VIVA_TEL: :krisp_viva_tel
+          KRISP_VIVA_TEL_LITE: :krisp_viva_tel_lite
+          KRISP_VIVA_PROMODEL: :krisp_viva_promodel
+          KRISP_VIVA_SS: :krisp_viva_ss
+
+          def self?.values: -> ::Array[Telnyx::Models::IPConnection::NoiseSuppressionDetails::engine]
+        end
       end
 
       type transport_protocol = :UDP | :TCP | :TLS

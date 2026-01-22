@@ -24,10 +24,9 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::NumberOrderListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::NumberOrderListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::NumberOrderListResponse]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::NumberOrderListResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

@@ -3,10 +3,9 @@ module Telnyx
     class PortingPhoneNumbers
       def list: (
         ?filter: Telnyx::PortingPhoneNumberListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::PortingPhoneNumberListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::PortingPhoneNumberListResponse]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::PortingPhoneNumberListResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

@@ -27,6 +27,7 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::ConferenceListParams::Filter,
+        ?page: Telnyx::ConferenceListParams::Page,
         ?page_number: Integer,
         ?page_size: Integer,
         ?region: Telnyx::Models::ConferenceListParams::region,
@@ -36,6 +37,7 @@ module Telnyx
       def list_participants: (
         String conference_id,
         ?filter: Telnyx::ConferenceListParticipantsParams::Filter,
+        ?page: Telnyx::ConferenceListParticipantsParams::Page,
         ?page_number: Integer,
         ?page_size: Integer,
         ?region: Telnyx::Models::ConferenceListParticipantsParams::region,

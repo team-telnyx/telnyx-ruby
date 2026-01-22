@@ -3,15 +3,18 @@
 module Telnyx
   module Resources
     class NotificationEvents
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::NotificationEventListParams} for more details.
+      #
       # Returns a list of your notifications events.
       #
-      # @overload list(page_number: nil, page_size: nil, request_options: {})
+      # @overload list(page: nil, request_options: {})
       #
-      # @param page_number [Integer]
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::NotificationEventListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::NotificationEventListResponse>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::NotificationEventListResponse>]
       #
       # @see Telnyx::Models::NotificationEventListParams
       def list(params = {})
@@ -19,8 +22,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "notification_events",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::NotificationEventListResponse,
           options: options
         )

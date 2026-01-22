@@ -64,11 +64,10 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::NotificationChannelListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::NotificationChannelListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[Telnyx::NotificationChannel]
+          Telnyx::Internal::DefaultPagination[Telnyx::NotificationChannel]
         )
       end
       def list(
@@ -77,8 +76,9 @@ module Telnyx
         # filter[notification_profile_id][eq], filter[notification_channel][eq],
         # filter[notification_event_condition_id][eq], filter[status][eq]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[number],
+        # page[size]
+        page: nil,
         request_options: {}
       )
       end

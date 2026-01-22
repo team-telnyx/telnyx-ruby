@@ -25,10 +25,9 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::FqdnListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::FqdnListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Fqdn]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Fqdn]
 
       def delete: (
         String id,

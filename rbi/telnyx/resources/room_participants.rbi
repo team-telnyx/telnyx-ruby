@@ -21,12 +21,9 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::RoomParticipantListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::RoomParticipantListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultFlatPagination[Telnyx::RoomParticipant]
-        )
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::RoomParticipant])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:
@@ -36,8 +33,9 @@ module Telnyx
         # filter[date_left_at][eq], filter[date_left_at][gte], filter[date_left_at][lte],
         # filter[context], filter[session_id]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        page: nil,
         request_options: {}
       )
       end

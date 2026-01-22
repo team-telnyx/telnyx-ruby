@@ -34,7 +34,7 @@ module Telnyx
       #
       # @param noise_suppression [Symbol, Telnyx::Models::IPConnectionCreateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #
-      # @param noise_suppression_details [Telnyx::Models::ConnectionNoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
+      # @param noise_suppression_details [Telnyx::Models::IPConnectionCreateParams::NoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #
       # @param onnet_t38_passthrough_enabled [Boolean] Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
       #
@@ -123,7 +123,7 @@ module Telnyx
       #
       # @param noise_suppression [Symbol, Telnyx::Models::IPConnectionUpdateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #
-      # @param noise_suppression_details [Telnyx::Models::ConnectionNoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
+      # @param noise_suppression_details [Telnyx::Models::IPConnectionUpdateParams::NoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #
       # @param onnet_t38_passthrough_enabled [Boolean] Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
       #
@@ -164,20 +164,18 @@ module Telnyx
       #
       # Returns a list of your IP connections.
       #
-      # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @overload list(filter: nil, page: nil, sort: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::IPConnectionListParams::Filter] Consolidated filter parameter (deepObject style). Originally:
       # filter[connection\_
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::IPConnectionListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
       #
       # @param sort [Symbol, Telnyx::Models::IPConnectionListParams::Sort] Specifies the sort order for results. By default sorting direction is ascending.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::IPConnection>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::IPConnection>]
       #
       # @see Telnyx::Models::IPConnectionListParams
       def list(params = {})
@@ -185,8 +183,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "ip_connections",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::IPConnection,
           options: options
         )

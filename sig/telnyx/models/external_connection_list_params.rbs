@@ -3,8 +3,7 @@ module Telnyx
     type external_connection_list_params =
       {
         filter: Telnyx::ExternalConnectionListParams::Filter,
-        page_number: Integer,
-        page_size: Integer
+        page: Telnyx::ExternalConnectionListParams::Page
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -18,25 +17,21 @@ module Telnyx
         Telnyx::ExternalConnectionListParams::Filter
       ) -> Telnyx::ExternalConnectionListParams::Filter
 
-      attr_reader page_number: Integer?
+      attr_reader page: Telnyx::ExternalConnectionListParams::Page?
 
-      def page_number=: (Integer) -> Integer
-
-      attr_reader page_size: Integer?
-
-      def page_size=: (Integer) -> Integer
+      def page=: (
+        Telnyx::ExternalConnectionListParams::Page
+      ) -> Telnyx::ExternalConnectionListParams::Page
 
       def initialize: (
         ?filter: Telnyx::ExternalConnectionListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::ExternalConnectionListParams::Page,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         filter: Telnyx::ExternalConnectionListParams::Filter,
-        page_number: Integer,
-        page_size: Integer,
+        page: Telnyx::ExternalConnectionListParams::Page,
         request_options: Telnyx::RequestOptions
       }
 
@@ -126,6 +121,22 @@ module Telnyx
 
           def to_hash: -> { contains: String }
         end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
       end
     end
   end

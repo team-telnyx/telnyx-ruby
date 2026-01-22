@@ -9,10 +9,9 @@ module Telnyx
 
         def list: (
           ?filter: Telnyx::SimCards::ActionListParams::Filter,
-          ?page_number: Integer,
-          ?page_size: Integer,
+          ?page: Telnyx::SimCards::ActionListParams::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::SimCards::SimCardAction]
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::SimCards::SimCardAction]
 
         def bulk_set_public_ips: (
           sim_card_ids: ::Array[String],

@@ -40,7 +40,7 @@ class Telnyx::Test::Resources::Organizations::UsersTest < Telnyx::Test::Resource
         id: String | nil,
         created_at: String | nil,
         email: String | nil,
-        groups: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Organizations::UserGroupReference]) | nil,
+        groups: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Organizations::UserListResponse::Group]) | nil,
         last_sign_in_at: String | nil,
         organization_user_bypasses_sso: Telnyx::Internal::Type::Boolean | nil,
         record_type: String | nil,

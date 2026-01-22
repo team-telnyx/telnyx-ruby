@@ -4,77 +4,147 @@ module Telnyx
       module Accounts
         type queue_list_response =
           {
-            account_sid: String,
-            average_wait_time: Integer,
-            current_size: Integer,
-            date_created: String,
-            date_updated: String,
-            max_size: Integer,
-            sid: String,
-            subresource_uris: ::Hash[Symbol, top],
+            end_: Integer,
+            first_page_uri: String,
+            next_page_uri: String,
+            page: Integer,
+            page_size: Integer,
+            queues: ::Array[Telnyx::Models::Texml::Accounts::QueueListResponse::Queue],
+            start: Integer,
             uri: String
           }
 
         class QueueListResponse < Telnyx::Internal::Type::BaseModel
-          attr_reader account_sid: String?
+          attr_reader end_: Integer?
 
-          def account_sid=: (String) -> String
+          def end_=: (Integer) -> Integer
 
-          attr_reader average_wait_time: Integer?
+          attr_reader first_page_uri: String?
 
-          def average_wait_time=: (Integer) -> Integer
+          def first_page_uri=: (String) -> String
 
-          attr_reader current_size: Integer?
+          attr_reader next_page_uri: String?
 
-          def current_size=: (Integer) -> Integer
+          def next_page_uri=: (String) -> String
 
-          attr_reader date_created: String?
+          attr_reader page: Integer?
 
-          def date_created=: (String) -> String
+          def page=: (Integer) -> Integer
 
-          attr_reader date_updated: String?
+          attr_reader page_size: Integer?
 
-          def date_updated=: (String) -> String
+          def page_size=: (Integer) -> Integer
 
-          attr_reader max_size: Integer?
+          attr_reader queues: ::Array[Telnyx::Models::Texml::Accounts::QueueListResponse::Queue]?
 
-          def max_size=: (Integer) -> Integer
+          def queues=: (
+            ::Array[Telnyx::Models::Texml::Accounts::QueueListResponse::Queue]
+          ) -> ::Array[Telnyx::Models::Texml::Accounts::QueueListResponse::Queue]
 
-          attr_reader sid: String?
+          attr_reader start: Integer?
 
-          def sid=: (String) -> String
-
-          attr_reader subresource_uris: ::Hash[Symbol, top]?
-
-          def subresource_uris=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+          def start=: (Integer) -> Integer
 
           attr_reader uri: String?
 
           def uri=: (String) -> String
 
           def initialize: (
-            ?account_sid: String,
-            ?average_wait_time: Integer,
-            ?current_size: Integer,
-            ?date_created: String,
-            ?date_updated: String,
-            ?max_size: Integer,
-            ?sid: String,
-            ?subresource_uris: ::Hash[Symbol, top],
+            ?end_: Integer,
+            ?first_page_uri: String,
+            ?next_page_uri: String,
+            ?page: Integer,
+            ?page_size: Integer,
+            ?queues: ::Array[Telnyx::Models::Texml::Accounts::QueueListResponse::Queue],
+            ?start: Integer,
             ?uri: String
           ) -> void
 
           def to_hash: -> {
-            account_sid: String,
-            average_wait_time: Integer,
-            current_size: Integer,
-            date_created: String,
-            date_updated: String,
-            max_size: Integer,
-            sid: String,
-            subresource_uris: ::Hash[Symbol, top],
+            end_: Integer,
+            first_page_uri: String,
+            next_page_uri: String,
+            page: Integer,
+            page_size: Integer,
+            queues: ::Array[Telnyx::Models::Texml::Accounts::QueueListResponse::Queue],
+            start: Integer,
             uri: String
           }
+
+          type queue =
+            {
+              account_sid: String,
+              average_wait_time: Integer,
+              current_size: Integer,
+              date_created: String,
+              date_updated: String,
+              max_size: Integer,
+              sid: String,
+              subresource_uris: ::Hash[Symbol, top],
+              uri: String
+            }
+
+          class Queue < Telnyx::Internal::Type::BaseModel
+            attr_reader account_sid: String?
+
+            def account_sid=: (String) -> String
+
+            attr_reader average_wait_time: Integer?
+
+            def average_wait_time=: (Integer) -> Integer
+
+            attr_reader current_size: Integer?
+
+            def current_size=: (Integer) -> Integer
+
+            attr_reader date_created: String?
+
+            def date_created=: (String) -> String
+
+            attr_reader date_updated: String?
+
+            def date_updated=: (String) -> String
+
+            attr_reader max_size: Integer?
+
+            def max_size=: (Integer) -> Integer
+
+            attr_reader sid: String?
+
+            def sid=: (String) -> String
+
+            attr_reader subresource_uris: ::Hash[Symbol, top]?
+
+            def subresource_uris=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+            attr_reader uri: String?
+
+            def uri=: (String) -> String
+
+            def initialize: (
+              ?account_sid: String,
+              ?average_wait_time: Integer,
+              ?current_size: Integer,
+              ?date_created: String,
+              ?date_updated: String,
+              ?max_size: Integer,
+              ?sid: String,
+              ?subresource_uris: ::Hash[Symbol, top],
+              ?uri: String
+            ) -> void
+
+            def to_hash: -> {
+              account_sid: String,
+              average_wait_time: Integer,
+              current_size: Integer,
+              date_created: String,
+              date_updated: String,
+              max_size: Integer,
+              sid: String,
+              subresource_uris: ::Hash[Symbol, top],
+              uri: String
+            }
+          end
         end
       end
     end
