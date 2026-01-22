@@ -21,11 +21,10 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::RoomRecordingListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::RoomRecordingListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
+          Telnyx::Internal::DefaultPagination[
             Telnyx::Models::RoomRecordingListResponse
           ]
         )
@@ -38,8 +37,9 @@ module Telnyx
         # filter[participant_id], filter[session_id], filter[status], filter[type],
         # filter[duration_secs]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        page: nil,
         request_options: {}
       )
       end
@@ -62,8 +62,7 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::RoomRecordingDeleteBulkParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::RoomRecordingDeleteBulkParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::RoomRecordingDeleteBulkResponse)
       end
@@ -75,8 +74,9 @@ module Telnyx
         # filter[participant_id], filter[session_id], filter[status], filter[type],
         # filter[duration_secs]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        page: nil,
         request_options: {}
       )
       end

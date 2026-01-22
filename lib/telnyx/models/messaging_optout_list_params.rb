@@ -21,15 +21,12 @@ module Telnyx
       #   @return [Telnyx::Models::MessagingOptoutListParams::Filter, nil]
       optional :filter, -> { Telnyx::MessagingOptoutListParams::Filter }
 
-      # @!attribute page_number
+      # @!attribute page
+      #   Consolidated page parameter (deepObject style). Originally: page[number],
+      #   page[size]
       #
-      #   @return [Integer, nil]
-      optional :page_number, Integer
-
-      # @!attribute page_size
-      #
-      #   @return [Integer, nil]
-      optional :page_size, Integer
+      #   @return [Telnyx::Models::MessagingOptoutListParams::Page, nil]
+      optional :page, -> { Telnyx::MessagingOptoutListParams::Page }
 
       # @!attribute redaction_enabled
       #   If receiving address (+E.164 formatted phone number) should be redacted
@@ -37,7 +34,7 @@ module Telnyx
       #   @return [String, nil]
       optional :redaction_enabled, String
 
-      # @!method initialize(created_at: nil, filter: nil, page_number: nil, page_size: nil, redaction_enabled: nil, request_options: {})
+      # @!method initialize(created_at: nil, filter: nil, page: nil, redaction_enabled: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessagingOptoutListParams} for more details.
       #
@@ -45,9 +42,7 @@ module Telnyx
       #
       #   @param filter [Telnyx::Models::MessagingOptoutListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[messaging_p
       #
-      #   @param page_number [Integer]
-      #
-      #   @param page_size [Integer]
+      #   @param page [Telnyx::Models::MessagingOptoutListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
       #
       #   @param redaction_enabled [String] If receiving address (+E.164 formatted phone number) should be redacted
       #
@@ -99,6 +94,28 @@ module Telnyx
         #   @param from [String] The sending address (+E.164 formatted phone number, alphanumeric sender ID, or s
         #
         #   @param messaging_profile_id [String] The ID of the messaging profile to retrieve opt-outs for
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        # @!attribute number
+        #   The page number to load
+        #
+        #   @return [Integer, nil]
+        optional :number, Integer
+
+        # @!attribute size
+        #   The size of the page
+        #
+        #   @return [Integer, nil]
+        optional :size, Integer
+
+        # @!method initialize(number: nil, size: nil)
+        #   Consolidated page parameter (deepObject style). Originally: page[number],
+        #   page[size]
+        #
+        #   @param number [Integer] The page number to load
+        #
+        #   @param size [Integer] The size of the page
       end
     end
   end

@@ -4,8 +4,7 @@ module Telnyx
       {
         filter: Telnyx::VirtualCrossConnectsCoverageListParams::Filter,
         filters: Telnyx::VirtualCrossConnectsCoverageListParams::Filters,
-        page_number: Integer,
-        page_size: Integer
+        page: Telnyx::VirtualCrossConnectsCoverageListParams::Page
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -25,27 +24,23 @@ module Telnyx
         Telnyx::VirtualCrossConnectsCoverageListParams::Filters
       ) -> Telnyx::VirtualCrossConnectsCoverageListParams::Filters
 
-      attr_reader page_number: Integer?
+      attr_reader page: Telnyx::VirtualCrossConnectsCoverageListParams::Page?
 
-      def page_number=: (Integer) -> Integer
-
-      attr_reader page_size: Integer?
-
-      def page_size=: (Integer) -> Integer
+      def page=: (
+        Telnyx::VirtualCrossConnectsCoverageListParams::Page
+      ) -> Telnyx::VirtualCrossConnectsCoverageListParams::Page
 
       def initialize: (
         ?filter: Telnyx::VirtualCrossConnectsCoverageListParams::Filter,
         ?filters: Telnyx::VirtualCrossConnectsCoverageListParams::Filters,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::VirtualCrossConnectsCoverageListParams::Page,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         filter: Telnyx::VirtualCrossConnectsCoverageListParams::Filter,
         filters: Telnyx::VirtualCrossConnectsCoverageListParams::Filters,
-        page_number: Integer,
-        page_size: Integer,
+        page: Telnyx::VirtualCrossConnectsCoverageListParams::Page,
         request_options: Telnyx::RequestOptions
       }
 
@@ -158,6 +153,22 @@ module Telnyx
 
           def self?.variants: -> ::Array[Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filters::available_bandwidth]
         end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
       end
     end
   end

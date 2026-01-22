@@ -57,7 +57,7 @@ class Telnyx::Test::Resources::VirtualCrossConnectsTest < Telnyx::Test::Resource
     response = @telnyx.virtual_cross_connects.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

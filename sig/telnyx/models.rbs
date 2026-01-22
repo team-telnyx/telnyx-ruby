@@ -259,8 +259,6 @@ module Telnyx
 
   class ConnectionListParams = Telnyx::Models::ConnectionListParams
 
-  class ConnectionNoiseSuppressionDetails = Telnyx::Models::ConnectionNoiseSuppressionDetails
-
   class ConnectionRetrieveParams = Telnyx::Models::ConnectionRetrieveParams
 
   class ConnectionRtcpSettings = Telnyx::Models::ConnectionRtcpSettings

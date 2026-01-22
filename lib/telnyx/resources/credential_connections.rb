@@ -41,7 +41,7 @@ module Telnyx
       #
       # @param noise_suppression [Symbol, Telnyx::Models::CredentialConnectionCreateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #
-      # @param noise_suppression_details [Telnyx::Models::ConnectionNoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
+      # @param noise_suppression_details [Telnyx::Models::CredentialConnectionCreateParams::NoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #
       # @param onnet_t38_passthrough_enabled [Boolean] Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
       #
@@ -130,7 +130,7 @@ module Telnyx
       #
       # @param noise_suppression [Symbol, Telnyx::Models::CredentialConnectionUpdateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #
-      # @param noise_suppression_details [Telnyx::Models::ConnectionNoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
+      # @param noise_suppression_details [Telnyx::Models::CredentialConnectionUpdateParams::NoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #
       # @param onnet_t38_passthrough_enabled [Boolean] Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
       #
@@ -175,20 +175,18 @@ module Telnyx
       #
       # Returns a list of your credential connections.
       #
-      # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @overload list(filter: nil, page: nil, sort: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::CredentialConnectionListParams::Filter] Consolidated filter parameter (deepObject style). Originally:
       # filter[connection\_
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::CredentialConnectionListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
       #
       # @param sort [Symbol, Telnyx::Models::CredentialConnectionListParams::Sort] Specifies the sort order for results. By default sorting direction is ascending.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::CredentialConnection>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::CredentialConnection>]
       #
       # @see Telnyx::Models::CredentialConnectionListParams
       def list(params = {})
@@ -196,8 +194,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "credential_connections",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::CredentialConnection,
           options: options
         )

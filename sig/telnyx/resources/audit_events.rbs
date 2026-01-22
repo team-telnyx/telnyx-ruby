@@ -3,11 +3,10 @@ module Telnyx
     class AuditEvents
       def list: (
         ?filter: Telnyx::AuditEventListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::AuditEventListParams::Page,
         ?sort: Telnyx::Models::AuditEventListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AuditEventListResponse]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::AuditEventListResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

@@ -148,11 +148,10 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::VirtualCrossConnectListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::VirtualCrossConnectListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
+          Telnyx::Internal::DefaultPagination[
             Telnyx::Models::VirtualCrossConnectListResponse
           ]
         )
@@ -160,8 +159,9 @@ module Telnyx
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[network_id]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[number],
+        # page[size]
+        page: nil,
         request_options: {}
       )
       end

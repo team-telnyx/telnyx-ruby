@@ -41,7 +41,7 @@ class Telnyx::Test::Resources::PhoneNumbers::CsvDownloadsTest < Telnyx::Test::Re
     response = @telnyx.phone_numbers.csv_downloads.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

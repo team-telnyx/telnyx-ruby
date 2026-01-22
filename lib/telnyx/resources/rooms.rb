@@ -110,19 +110,17 @@ module Telnyx
       #
       # View a list of rooms.
       #
-      # @overload list(filter: nil, include_sessions: nil, page_number: nil, page_size: nil, request_options: {})
+      # @overload list(filter: nil, include_sessions: nil, page: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::RoomListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[date_create
       #
       # @param include_sessions [Boolean] To decide if room sessions should be included in the response.
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::RoomListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Room>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::Room>]
       #
       # @see Telnyx::Models::RoomListParams
       def list(params = {})
@@ -130,8 +128,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "rooms",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Room,
           options: options
         )

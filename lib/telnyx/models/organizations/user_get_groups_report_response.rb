@@ -36,8 +36,9 @@ module Telnyx
           # @!attribute groups
           #   The groups the user belongs to.
           #
-          #   @return [Array<Telnyx::Models::Organizations::UserGroupReference>]
-          required :groups, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Organizations::UserGroupReference] }
+          #   @return [Array<Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::Group>]
+          required :groups,
+                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::Group] }
 
           # @!attribute record_type
           #   Identifies the type of the resource. Can be 'organization_owner' or
@@ -80,7 +81,7 @@ module Telnyx
           #
           #   @param email [String] The email address of the user.
           #
-          #   @param groups [Array<Telnyx::Models::Organizations::UserGroupReference>] The groups the user belongs to.
+          #   @param groups [Array<Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::Group>] The groups the user belongs to.
           #
           #   @param record_type [String] Identifies the type of the resource. Can be 'organization_owner' or 'organizatio
           #
@@ -89,6 +90,27 @@ module Telnyx
           #   @param last_sign_in_at [String, nil] ISO 8601 formatted date indicating when the resource last signed into the portal
           #
           #   @param organization_user_bypasses_sso [Boolean] Indicates whether this user is allowed to bypass SSO and use password authentica
+
+          class Group < Telnyx::Internal::Type::BaseModel
+            # @!attribute id
+            #   The unique identifier of the group.
+            #
+            #   @return [String]
+            required :id, String
+
+            # @!attribute name
+            #   The name of the group.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!method initialize(id:, name:)
+            #   A reference to a group that a user belongs to.
+            #
+            #   @param id [String] The unique identifier of the group.
+            #
+            #   @param name [String] The name of the group.
+          end
 
           # The status of the account.
           #

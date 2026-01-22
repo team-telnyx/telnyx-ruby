@@ -16,15 +16,12 @@ module Telnyx
         #   @return [Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter, nil]
         optional :filter, -> { Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter }
 
-        # @!attribute page_number
+        # @!attribute page
+        #   Consolidated page parameter (deepObject style). Originally: page[size],
+        #   page[number]
         #
-        #   @return [Integer, nil]
-        optional :page_number, Integer
-
-        # @!attribute page_size
-        #
-        #   @return [Integer, nil]
-        optional :page_size, Integer
+        #   @return [Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Page, nil]
+        optional :page, -> { Telnyx::PortingOrders::PhoneNumberBlockListParams::Page }
 
         # @!attribute sort
         #   Consolidated sort parameter (deepObject style). Originally: sort[value]
@@ -32,15 +29,13 @@ module Telnyx
         #   @return [Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Sort, nil]
         optional :sort, -> { Telnyx::PortingOrders::PhoneNumberBlockListParams::Sort }
 
-        # @!method initialize(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+        # @!method initialize(filter: nil, page: nil, sort: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::PortingOrders::PhoneNumberBlockListParams} for more details.
         #
         #   @param filter [Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[porting_ord
         #
-        #   @param page_number [Integer]
-        #
-        #   @param page_size [Integer]
+        #   @param page [Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
         #
         #   @param sort [Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Sort] Consolidated sort parameter (deepObject style). Originally: sort[value]
         #
@@ -221,6 +216,28 @@ module Telnyx
             # @type [Telnyx::Internal::Type::Converter]
             StringArray = Telnyx::Internal::Type::ArrayOf[String]
           end
+        end
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          # @!attribute number
+          #   The page number to load
+          #
+          #   @return [Integer, nil]
+          optional :number, Integer
+
+          # @!attribute size
+          #   The size of the page
+          #
+          #   @return [Integer, nil]
+          optional :size, Integer
+
+          # @!method initialize(number: nil, size: nil)
+          #   Consolidated page parameter (deepObject style). Originally: page[size],
+          #   page[number]
+          #
+          #   @param number [Integer] The page number to load
+          #
+          #   @param size [Integer] The size of the page
         end
 
         class Sort < Telnyx::Internal::Type::BaseModel

@@ -4,8 +4,7 @@ module Telnyx
       type job_list_params =
         {
           filter: Telnyx::PhoneNumberBlocks::JobListParams::Filter,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::PhoneNumberBlocks::JobListParams::Page,
           sort: Telnyx::Models::PhoneNumberBlocks::JobListParams::sort
         }
         & Telnyx::Internal::Type::request_parameters
@@ -20,13 +19,11 @@ module Telnyx
           Telnyx::PhoneNumberBlocks::JobListParams::Filter
         ) -> Telnyx::PhoneNumberBlocks::JobListParams::Filter
 
-        attr_reader page_number: Integer?
+        attr_reader page: Telnyx::PhoneNumberBlocks::JobListParams::Page?
 
-        def page_number=: (Integer) -> Integer
-
-        attr_reader page_size: Integer?
-
-        def page_size=: (Integer) -> Integer
+        def page=: (
+          Telnyx::PhoneNumberBlocks::JobListParams::Page
+        ) -> Telnyx::PhoneNumberBlocks::JobListParams::Page
 
         attr_reader sort: Telnyx::Models::PhoneNumberBlocks::JobListParams::sort?
 
@@ -36,16 +33,14 @@ module Telnyx
 
         def initialize: (
           ?filter: Telnyx::PhoneNumberBlocks::JobListParams::Filter,
-          ?page_number: Integer,
-          ?page_size: Integer,
+          ?page: Telnyx::PhoneNumberBlocks::JobListParams::Page,
           ?sort: Telnyx::Models::PhoneNumberBlocks::JobListParams::sort,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           filter: Telnyx::PhoneNumberBlocks::JobListParams::Filter,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::PhoneNumberBlocks::JobListParams::Page,
           sort: Telnyx::Models::PhoneNumberBlocks::JobListParams::sort,
           request_options: Telnyx::RequestOptions
         }
@@ -101,6 +96,22 @@ module Telnyx
 
             def self?.values: -> ::Array[Telnyx::Models::PhoneNumberBlocks::JobListParams::Filter::type_]
           end
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
         end
 
         type sort = :created_at

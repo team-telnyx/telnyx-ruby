@@ -29,17 +29,15 @@ module Telnyx
         #
         # Returns a list of all port-out events.
         #
-        # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
+        # @overload list(filter: nil, page: nil, request_options: {})
         #
         # @param filter [Telnyx::Models::Portouts::EventListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[event_type]
         #
-        # @param page_number [Integer]
-        #
-        # @param page_size [Integer]
+        # @param page [Telnyx::Models::Portouts::EventListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged>]
+        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged>]
         #
         # @see Telnyx::Models::Portouts::EventListParams
         def list(params = {})
@@ -47,8 +45,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: "portouts/events",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-            page: Telnyx::Internal::DefaultFlatPagination,
+            query: parsed,
+            page: Telnyx::Internal::DefaultPagination,
             model: Telnyx::Models::Portouts::EventListResponse,
             options: options
           )

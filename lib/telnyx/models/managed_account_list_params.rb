@@ -21,15 +21,12 @@ module Telnyx
       #   @return [Boolean, nil]
       optional :include_cancelled_accounts, Telnyx::Internal::Type::Boolean
 
-      # @!attribute page_number
+      # @!attribute page
+      #   Consolidated page parameter (deepObject style). Originally: page[number],
+      #   page[size]
       #
-      #   @return [Integer, nil]
-      optional :page_number, Integer
-
-      # @!attribute page_size
-      #
-      #   @return [Integer, nil]
-      optional :page_size, Integer
+      #   @return [Telnyx::Models::ManagedAccountListParams::Page, nil]
+      optional :page, -> { Telnyx::ManagedAccountListParams::Page }
 
       # @!attribute sort
       #   Specifies the sort order for results. By default sorting direction is ascending.
@@ -50,7 +47,7 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::ManagedAccountListParams::Sort, nil]
       optional :sort, enum: -> { Telnyx::ManagedAccountListParams::Sort }
 
-      # @!method initialize(filter: nil, include_cancelled_accounts: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @!method initialize(filter: nil, include_cancelled_accounts: nil, page: nil, sort: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::ManagedAccountListParams} for more details.
       #
@@ -58,9 +55,7 @@ module Telnyx
       #
       #   @param include_cancelled_accounts [Boolean] Specifies if cancelled accounts should be included in the results.
       #
-      #   @param page_number [Integer]
-      #
-      #   @param page_size [Integer]
+      #   @param page [Telnyx::Models::ManagedAccountListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
       #
       #   @param sort [Symbol, Telnyx::Models::ManagedAccountListParams::Sort] Specifies the sort order for results. By default sorting direction is ascending.
       #
@@ -136,6 +131,28 @@ module Telnyx
           #
           #   @param eq [String] If present, only returns results with the <code>organization_name</code> matchin
         end
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        # @!attribute number
+        #   The page number to load
+        #
+        #   @return [Integer, nil]
+        optional :number, Integer
+
+        # @!attribute size
+        #   The size of the page
+        #
+        #   @return [Integer, nil]
+        optional :size, Integer
+
+        # @!method initialize(number: nil, size: nil)
+        #   Consolidated page parameter (deepObject style). Originally: page[number],
+        #   page[size]
+        #
+        #   @param number [Integer] The page number to load
+        #
+        #   @param size [Integer] The size of the page
       end
 
       # Specifies the sort order for results. By default sorting direction is ascending.

@@ -46,14 +46,18 @@ module Telnyx
       # List all Global IP assignments.
       sig do
         params(
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::GlobalIPAssignmentListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[Telnyx::GlobalIPAssignment]
+          Telnyx::Internal::DefaultPagination[Telnyx::GlobalIPAssignment]
         )
       end
-      def list(page_number: nil, page_size: nil, request_options: {})
+      def list(
+        # Consolidated page parameter (deepObject style). Originally: page[number],
+        # page[size]
+        page: nil,
+        request_options: {}
+      )
       end
 
       # Delete a Global IP assignment.

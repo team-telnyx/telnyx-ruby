@@ -57,7 +57,7 @@ class Telnyx::Test::Resources::IPConnectionsTest < Telnyx::Test::ResourceTest
     response = @telnyx.ip_connections.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first
@@ -81,7 +81,7 @@ class Telnyx::Test::Resources::IPConnectionsTest < Telnyx::Test::ResourceTest
         encrypted_media: Telnyx::EncryptedMedia | nil,
         inbound: Telnyx::InboundIP | nil,
         noise_suppression: Telnyx::IPConnection::NoiseSuppression | nil,
-        noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails | nil,
+        noise_suppression_details: Telnyx::IPConnection::NoiseSuppressionDetails | nil,
         onnet_t38_passthrough_enabled: Telnyx::Internal::Type::Boolean | nil,
         outbound: Telnyx::OutboundIP | nil,
         record_type: String | nil,

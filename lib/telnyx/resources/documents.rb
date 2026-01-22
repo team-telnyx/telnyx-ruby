@@ -54,19 +54,17 @@ module Telnyx
       #
       # List all documents ordered by created_at descending.
       #
-      # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @overload list(filter: nil, page: nil, sort: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::DocumentListParams::Filter] Consolidated filter parameter for documents (deepObject style). Originally: filt
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::DocumentListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
       #
       # @param sort [Array<Symbol, Telnyx::Models::DocumentListParams::Sort>] Consolidated sort parameter for documents (deepObject style). Originally: sort[]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::DocServiceDocument>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::DocServiceDocument>]
       #
       # @see Telnyx::Models::DocumentListParams
       def list(params = {})
@@ -74,8 +72,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "documents",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::DocServiceDocument,
           options: options
         )

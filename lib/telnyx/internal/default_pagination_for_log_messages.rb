@@ -35,10 +35,7 @@ module Telnyx
           raise RuntimeError.new(message)
         end
 
-        req = Telnyx::Internal::Util.deep_merge(
-          @req,
-          {query: {page_number: (meta&.page_number || 1).to_i.succ}}
-        )
+        req = Telnyx::Internal::Util.deep_merge(@req, {query: {number: (meta&.page_number || 1).to_i.succ}})
         @client.request(req)
       end
 

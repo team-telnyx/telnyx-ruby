@@ -25,7 +25,7 @@ class Telnyx::Test::Resources::MobilePhoneNumbers::MessagingTest < Telnyx::Test:
     response = @telnyx.mobile_phone_numbers.messaging.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

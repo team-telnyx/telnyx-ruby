@@ -25,7 +25,7 @@ module Telnyx
           noise_suppression:
             Telnyx::CredentialConnectionCreateParams::NoiseSuppression::OrSymbol,
           noise_suppression_details:
-            Telnyx::ConnectionNoiseSuppressionDetails::OrHash,
+            Telnyx::CredentialConnectionCreateParams::NoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,
           outbound: Telnyx::CredentialOutbound::OrHash,
           rtcp_settings: Telnyx::ConnectionRtcpSettings::OrHash,
@@ -147,7 +147,7 @@ module Telnyx
           noise_suppression:
             Telnyx::CredentialConnectionUpdateParams::NoiseSuppression::OrSymbol,
           noise_suppression_details:
-            Telnyx::ConnectionNoiseSuppressionDetails::OrHash,
+            Telnyx::CredentialConnectionUpdateParams::NoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,
           outbound: Telnyx::CredentialOutbound::OrHash,
           password: String,
@@ -243,12 +243,11 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::CredentialConnectionListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::CredentialConnectionListParams::Page::OrHash,
           sort: Telnyx::CredentialConnectionListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[Telnyx::CredentialConnection]
+          Telnyx::Internal::DefaultPagination[Telnyx::CredentialConnection]
         )
       end
       def list(
@@ -256,8 +255,9 @@ module Telnyx
         # filter[connection_name], filter[fqdn], filter[outbound_voice_profile_id],
         # filter[outbound.outbound_voice_profile_id]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        page: nil,
         # Specifies the sort order for results. By default sorting direction is ascending.
         # To have the results sorted in descending order add the <code> -</code>
         # prefix.<br/><br/> That is: <ul>

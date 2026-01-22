@@ -121,19 +121,17 @@ module Telnyx
       # filters. Fax Applications are used to configure how you send and receive faxes
       # using the Programmable Fax API with Telnyx.
       #
-      # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @overload list(filter: nil, page: nil, sort: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::FaxApplicationListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[application
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::FaxApplicationListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
       #
       # @param sort [Symbol, Telnyx::Models::FaxApplicationListParams::Sort] Specifies the sort order for results. By default sorting direction is ascending.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::FaxApplication>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::FaxApplication>]
       #
       # @see Telnyx::Models::FaxApplicationListParams
       def list(params = {})
@@ -141,8 +139,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "fax_applications",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::FaxApplication,
           options: options
         )

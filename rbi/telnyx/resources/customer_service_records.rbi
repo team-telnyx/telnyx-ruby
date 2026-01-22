@@ -41,12 +41,11 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::CustomerServiceRecordListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::CustomerServiceRecordListParams::Page::OrHash,
           sort: Telnyx::CustomerServiceRecordListParams::Sort::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[Telnyx::CustomerServiceRecord]
+          Telnyx::Internal::DefaultPagination[Telnyx::CustomerServiceRecord]
         )
       end
       def list(
@@ -54,8 +53,9 @@ module Telnyx
         # filter[phone_number][eq], filter[phone_number][in][], filter[status][eq],
         # filter[status][in][], filter[created_at][lt], filter[created_at][gt]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        page: nil,
         # Consolidated sort parameter (deepObject style). Originally: sort[value]
         sort: nil,
         request_options: {}

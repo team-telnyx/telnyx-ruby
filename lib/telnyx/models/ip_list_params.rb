@@ -14,26 +14,21 @@ module Telnyx
       #   @return [Telnyx::Models::IPListParams::Filter, nil]
       optional :filter, -> { Telnyx::IPListParams::Filter }
 
-      # @!attribute page_number
+      # @!attribute page
+      #   Consolidated page parameter (deepObject style). Originally: page[size],
+      #   page[number]
       #
-      #   @return [Integer, nil]
-      optional :page_number, Integer
+      #   @return [Telnyx::Models::IPListParams::Page, nil]
+      optional :page, -> { Telnyx::IPListParams::Page }
 
-      # @!attribute page_size
-      #
-      #   @return [Integer, nil]
-      optional :page_size, Integer
-
-      # @!method initialize(filter: nil, page_number: nil, page_size: nil, request_options: {})
+      # @!method initialize(filter: nil, page: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::IPListParams} for more details.
       #
       #   @param filter [Telnyx::Models::IPListParams::Filter] Consolidated filter parameter (deepObject style). Originally:
       #   filter[connection\_
       #
-      #   @param page_number [Integer]
-      #
-      #   @param page_size [Integer]
+      #   @param page [Telnyx::Models::IPListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -65,6 +60,28 @@ module Telnyx
         #   @param ip_address [String] IP adddress represented by this resource.
         #
         #   @param port [Integer] Port to use when connecting to this IP.
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        # @!attribute number
+        #   The page number to load
+        #
+        #   @return [Integer, nil]
+        optional :number, Integer
+
+        # @!attribute size
+        #   The size of the page
+        #
+        #   @return [Integer, nil]
+        optional :size, Integer
+
+        # @!method initialize(number: nil, size: nil)
+        #   Consolidated page parameter (deepObject style). Originally: page[size],
+        #   page[number]
+        #
+        #   @param number [Integer] The page number to load
+        #
+        #   @param size [Integer] The size of the page
       end
     end
   end

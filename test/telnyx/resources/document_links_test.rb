@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::DocumentLinksTest < Telnyx::Test::ResourceTest
     response = @telnyx.document_links.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

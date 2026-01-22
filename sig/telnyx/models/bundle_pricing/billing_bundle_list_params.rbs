@@ -4,8 +4,7 @@ module Telnyx
       type billing_bundle_list_params =
         {
           filter: Telnyx::BundlePricing::BillingBundleListParams::Filter,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::BundlePricing::BillingBundleListParams::Page,
           authorization_bearer: String
         }
         & Telnyx::Internal::Type::request_parameters
@@ -20,13 +19,11 @@ module Telnyx
           Telnyx::BundlePricing::BillingBundleListParams::Filter
         ) -> Telnyx::BundlePricing::BillingBundleListParams::Filter
 
-        attr_reader page_number: Integer?
+        attr_reader page: Telnyx::BundlePricing::BillingBundleListParams::Page?
 
-        def page_number=: (Integer) -> Integer
-
-        attr_reader page_size: Integer?
-
-        def page_size=: (Integer) -> Integer
+        def page=: (
+          Telnyx::BundlePricing::BillingBundleListParams::Page
+        ) -> Telnyx::BundlePricing::BillingBundleListParams::Page
 
         attr_reader authorization_bearer: String?
 
@@ -34,16 +31,14 @@ module Telnyx
 
         def initialize: (
           ?filter: Telnyx::BundlePricing::BillingBundleListParams::Filter,
-          ?page_number: Integer,
-          ?page_size: Integer,
+          ?page: Telnyx::BundlePricing::BillingBundleListParams::Page,
           ?authorization_bearer: String,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           filter: Telnyx::BundlePricing::BillingBundleListParams::Filter,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::BundlePricing::BillingBundleListParams::Page,
           authorization_bearer: String,
           request_options: Telnyx::RequestOptions
         }
@@ -69,6 +64,22 @@ module Telnyx
             country_iso: ::Array[String],
             resource: ::Array[String]
           }
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
         end
       end
     end

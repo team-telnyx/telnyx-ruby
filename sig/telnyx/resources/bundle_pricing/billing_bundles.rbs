@@ -10,11 +10,10 @@ module Telnyx
 
         def list: (
           ?filter: Telnyx::BundlePricing::BillingBundleListParams::Filter,
-          ?page_number: Integer,
-          ?page_size: Integer,
+          ?page: Telnyx::BundlePricing::BillingBundleListParams::Page,
           ?authorization_bearer: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::BundlePricing::BillingBundleSummary]
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::BundlePricing::BillingBundleSummary]
 
         def initialize: (client: Telnyx::Client) -> void
       end

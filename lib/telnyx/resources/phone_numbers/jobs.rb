@@ -29,19 +29,17 @@ module Telnyx
         #
         # Lists the phone numbers jobs
         #
-        # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+        # @overload list(filter: nil, page: nil, sort: nil, request_options: {})
         #
         # @param filter [Telnyx::Models::PhoneNumbers::JobListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[type]
         #
-        # @param page_number [Integer]
-        #
-        # @param page_size [Integer]
+        # @param page [Telnyx::Models::PhoneNumbers::JobListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
         #
         # @param sort [Symbol, Telnyx::Models::PhoneNumbers::JobListParams::Sort] Specifies the sort order for results. If not given, results are sorted by create
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PhoneNumbers::PhoneNumbersJob>]
+        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PhoneNumbers::PhoneNumbersJob>]
         #
         # @see Telnyx::Models::PhoneNumbers::JobListParams
         def list(params = {})
@@ -49,8 +47,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: "phone_numbers/jobs",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-            page: Telnyx::Internal::DefaultFlatPagination,
+            query: parsed,
+            page: Telnyx::Internal::DefaultPagination,
             model: Telnyx::PhoneNumbers::PhoneNumbersJob,
             options: options
           )

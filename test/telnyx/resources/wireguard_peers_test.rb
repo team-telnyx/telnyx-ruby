@@ -57,7 +57,7 @@ class Telnyx::Test::Resources::WireguardPeersTest < Telnyx::Test::ResourceTest
     response = @telnyx.wireguard_peers.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

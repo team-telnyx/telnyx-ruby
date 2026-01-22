@@ -40,21 +40,19 @@ module Telnyx
         sig do
           params(
             filter: Telnyx::Portouts::ReportListParams::Filter::OrHash,
-            page_number: Integer,
-            page_size: Integer,
+            page: Telnyx::Portouts::ReportListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultFlatPagination[
-              Telnyx::Portouts::PortoutReport
-            ]
+            Telnyx::Internal::DefaultPagination[Telnyx::Portouts::PortoutReport]
           )
         end
         def list(
           # Consolidated filter parameter (deepObject style). Originally:
           # filter[report_type], filter[status]
           filter: nil,
-          page_number: nil,
-          page_size: nil,
+          # Consolidated page parameter (deepObject style). Originally: page[number],
+          # page[size]
+          page: nil,
           request_options: {}
         )
         end

@@ -81,26 +81,18 @@ class Telnyx::Test::Resources::Texml::Accounts::QueuesTest < Telnyx::Test::Resou
     response = @telnyx.texml.accounts.queues.list("account_sid")
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPaginationForQueues
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => Telnyx::Models::Texml::Accounts::QueueListResponse
+      response => Telnyx::Models::Texml::Accounts::QueueListResponse
     end
 
     assert_pattern do
-      row => {
-        account_sid: String | nil,
-        average_wait_time: Integer | nil,
-        current_size: Integer | nil,
-        date_created: String | nil,
-        date_updated: String | nil,
-        max_size: Integer | nil,
-        sid: String | nil,
-        subresource_uris: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
+      response => {
+        end_: Integer | nil,
+        first_page_uri: String | nil,
+        next_page_uri: String | nil,
+        page: Integer | nil,
+        page_size: Integer | nil,
+        queues: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Texml::Accounts::QueueListResponse::Queue]) | nil,
+        start: Integer | nil,
         uri: String | nil
       }
     end

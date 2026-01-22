@@ -72,19 +72,20 @@ module Telnyx
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::NetworkListParams} for more details.
+      #
       # List all Networks.
       #
-      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
+      # @overload list(filter: nil, page: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::NetworkListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[name]
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::NetworkListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::NetworkListResponse>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::NetworkListResponse>]
       #
       # @see Telnyx::Models::NetworkListParams
       def list(params = {})
@@ -92,8 +93,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "networks",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::NetworkListResponse,
           options: options
         )
@@ -124,19 +125,17 @@ module Telnyx
       #
       # List all Interfaces for a Network.
       #
-      # @overload list_interfaces(id, filter: nil, page_number: nil, page_size: nil, request_options: {})
+      # @overload list_interfaces(id, filter: nil, page: nil, request_options: {})
       #
       # @param id [String] Identifies the resource.
       #
       # @param filter [Telnyx::Models::NetworkListInterfacesParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[name], filt
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::NetworkListInterfacesParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::NetworkListInterfacesResponse>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::NetworkListInterfacesResponse>]
       #
       # @see Telnyx::Models::NetworkListInterfacesParams
       def list_interfaces(id, params = {})
@@ -144,8 +143,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: ["networks/%1$s/network_interfaces", id],
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::NetworkListInterfacesResponse,
           options: options
         )

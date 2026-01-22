@@ -70,12 +70,11 @@ module Telnyx
         sig do
           params(
             filter: Telnyx::PhoneNumbers::VoiceListParams::Filter::OrHash,
-            page_number: Integer,
-            page_size: Integer,
+            page: Telnyx::PhoneNumbers::VoiceListParams::Page::OrHash,
             sort: Telnyx::PhoneNumbers::VoiceListParams::Sort::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Internal::DefaultPagination[
               Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings
             ]
           )
@@ -85,8 +84,9 @@ module Telnyx
           # filter[phone_number], filter[connection_name], filter[customer_reference],
           # filter[voice.usage_payment_method]
           filter: nil,
-          page_number: nil,
-          page_size: nil,
+          # Consolidated page parameter (deepObject style). Originally: page[size],
+          # page[number]
+          page: nil,
           # Specifies the sort order for results. If not given, results are sorted by
           # created_at in descending order.
           sort: nil,

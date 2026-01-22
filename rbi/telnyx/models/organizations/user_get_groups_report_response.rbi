@@ -79,7 +79,13 @@ module Telnyx
           attr_accessor :email
 
           # The groups the user belongs to.
-          sig { returns(T::Array[Telnyx::Organizations::UserGroupReference]) }
+          sig do
+            returns(
+              T::Array[
+                Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::Group
+              ]
+            )
+          end
           attr_accessor :groups
 
           # Identifies the type of the resource. Can be 'organization_owner' or
@@ -115,7 +121,9 @@ module Telnyx
               created_at: String,
               email: String,
               groups:
-                T::Array[Telnyx::Organizations::UserGroupReference::OrHash],
+                T::Array[
+                  Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::Group::OrHash
+                ],
               record_type: String,
               user_status:
                 Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::UserStatus::OrSymbol,
@@ -152,7 +160,10 @@ module Telnyx
                 id: String,
                 created_at: String,
                 email: String,
-                groups: T::Array[Telnyx::Organizations::UserGroupReference],
+                groups:
+                  T::Array[
+                    Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::Group
+                  ],
                 record_type: String,
                 user_status:
                   Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::UserStatus::TaggedSymbol,
@@ -162,6 +173,38 @@ module Telnyx
             )
           end
           def to_hash
+          end
+
+          class Group < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::Group,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # The unique identifier of the group.
+            sig { returns(String) }
+            attr_accessor :id
+
+            # The name of the group.
+            sig { returns(String) }
+            attr_accessor :name
+
+            # A reference to a group that a user belongs to.
+            sig { params(id: String, name: String).returns(T.attached_class) }
+            def self.new(
+              # The unique identifier of the group.
+              id:,
+              # The name of the group.
+              name:
+            )
+            end
+
+            sig { override.returns({ id: String, name: String }) }
+            def to_hash
+            end
           end
 
           # The status of the account.

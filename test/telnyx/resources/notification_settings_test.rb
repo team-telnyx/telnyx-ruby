@@ -41,7 +41,7 @@ class Telnyx::Test::Resources::NotificationSettingsTest < Telnyx::Test::Resource
     response = @telnyx.notification_settings.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

@@ -36,19 +36,17 @@ module Telnyx
         #
         # View a list of room sessions.
         #
-        # @overload list_0(filter: nil, include_participants: nil, page_number: nil, page_size: nil, request_options: {})
+        # @overload list_0(filter: nil, include_participants: nil, page: nil, request_options: {})
         #
         # @param filter [Telnyx::Models::Rooms::SessionList0Params::Filter] Consolidated filter parameter (deepObject style). Originally: filter[date_create
         #
         # @param include_participants [Boolean] To decide if room participants should be included in the response.
         #
-        # @param page_number [Integer]
-        #
-        # @param page_size [Integer]
+        # @param page [Telnyx::Models::Rooms::SessionList0Params::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::RoomSession>]
+        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::RoomSession>]
         #
         # @see Telnyx::Models::Rooms::SessionList0Params
         def list_0(params = {})
@@ -56,8 +54,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: "room_sessions",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-            page: Telnyx::Internal::DefaultFlatPagination,
+            query: parsed,
+            page: Telnyx::Internal::DefaultPagination,
             model: Telnyx::RoomSession,
             options: options
           )
@@ -68,7 +66,7 @@ module Telnyx
         #
         # View a list of room sessions.
         #
-        # @overload list_1(room_id, filter: nil, include_participants: nil, page_number: nil, page_size: nil, request_options: {})
+        # @overload list_1(room_id, filter: nil, include_participants: nil, page: nil, request_options: {})
         #
         # @param room_id [String] The unique identifier of a room.
         #
@@ -76,13 +74,11 @@ module Telnyx
         #
         # @param include_participants [Boolean] To decide if room participants should be included in the response.
         #
-        # @param page_number [Integer]
-        #
-        # @param page_size [Integer]
+        # @param page [Telnyx::Models::Rooms::SessionList1Params::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::RoomSession>]
+        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::RoomSession>]
         #
         # @see Telnyx::Models::Rooms::SessionList1Params
         def list_1(room_id, params = {})
@@ -90,8 +86,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: ["rooms/%1$s/sessions", room_id],
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-            page: Telnyx::Internal::DefaultFlatPagination,
+            query: parsed,
+            page: Telnyx::Internal::DefaultPagination,
             model: Telnyx::RoomSession,
             options: options
           )
@@ -102,19 +98,17 @@ module Telnyx
         #
         # View a list of room participants.
         #
-        # @overload retrieve_participants(room_session_id, filter: nil, page_number: nil, page_size: nil, request_options: {})
+        # @overload retrieve_participants(room_session_id, filter: nil, page: nil, request_options: {})
         #
         # @param room_session_id [String] The unique identifier of a room session.
         #
         # @param filter [Telnyx::Models::Rooms::SessionRetrieveParticipantsParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[date_joined
         #
-        # @param page_number [Integer]
-        #
-        # @param page_size [Integer]
+        # @param page [Telnyx::Models::Rooms::SessionRetrieveParticipantsParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::RoomParticipant>]
+        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::RoomParticipant>]
         #
         # @see Telnyx::Models::Rooms::SessionRetrieveParticipantsParams
         def retrieve_participants(room_session_id, params = {})
@@ -122,8 +116,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: ["room_sessions/%1$s/participants", room_session_id],
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-            page: Telnyx::Internal::DefaultFlatPagination,
+            query: parsed,
+            page: Telnyx::Internal::DefaultPagination,
             model: Telnyx::RoomParticipant,
             options: options
           )

@@ -72,11 +72,7 @@ module Telnyx
               page_size: Integer,
               page_token: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(
-              Telnyx::Internal::DefaultPaginationForQueues[
-                Telnyx::Models::Texml::Accounts::QueueListResponse
-              ]
-            )
+            ).returns(Telnyx::Models::Texml::Accounts::QueueListResponse)
           end
           def list(
             # The id of the account the resource belongs to.

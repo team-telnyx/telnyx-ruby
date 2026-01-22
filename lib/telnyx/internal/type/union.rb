@@ -8,7 +8,7 @@ module Telnyx
       # @example
       #   # `assistant_tool` is a `Telnyx::AI::AssistantTool`
       #   case assistant_tool
-      #   when Telnyx::AI::InferenceEmbeddingWebhookToolParams
+      #   when Telnyx::AI::AssistantTool::Webhook
       #     puts(assistant_tool.type)
       #   when Telnyx::AI::RetrievalTool
       #     puts(assistant_tool.retrieval)

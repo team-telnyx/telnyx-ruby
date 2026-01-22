@@ -61,7 +61,7 @@ class Telnyx::Test::Resources::ExternalConnectionsTest < Telnyx::Test::ResourceT
     response = @telnyx.external_connections.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first
