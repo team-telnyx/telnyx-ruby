@@ -58,7 +58,7 @@ module Telnyx
         #
         # @param voice_settings [Telnyx::Models::AI::VoiceSettings]
         #
-        # @param widget_settings [Telnyx::Models::AI::AssistantCreateParams::WidgetSettings] Configuration settings for the assistant's web widget.
+        # @param widget_settings [Telnyx::Models::AI::WidgetSettings] Configuration settings for the assistant's web widget.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -144,7 +144,7 @@ module Telnyx
         #
         # @param voice_settings [Telnyx::Models::AI::VoiceSettings]
         #
-        # @param widget_settings [Telnyx::Models::AI::AssistantUpdateParams::WidgetSettings] Configuration settings for the assistant's web widget.
+        # @param widget_settings [Telnyx::Models::AI::WidgetSettings] Configuration settings for the assistant's web widget.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

@@ -29,7 +29,7 @@ module Telnyx
             ?tools: ::Array[Telnyx::Models::AI::assistant_tool],
             ?transcription: Telnyx::AI::TranscriptionSettings,
             ?voice_settings: Telnyx::AI::VoiceSettings,
-            ?widget_settings: Telnyx::AI::Assistants::UpdateAssistant::WidgetSettings,
+            ?widget_settings: Telnyx::AI::WidgetSettings,
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::AI::InferenceEmbedding
 

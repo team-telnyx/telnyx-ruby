@@ -25,7 +25,7 @@ module Telnyx
           noise_suppression:
             Telnyx::CredentialConnectionCreateParams::NoiseSuppression::OrSymbol,
           noise_suppression_details:
-            Telnyx::CredentialConnectionCreateParams::NoiseSuppressionDetails::OrHash,
+            Telnyx::ConnectionNoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,
           outbound: Telnyx::CredentialOutbound::OrHash,
           rtcp_settings: Telnyx::ConnectionRtcpSettings::OrHash,
@@ -147,7 +147,7 @@ module Telnyx
           noise_suppression:
             Telnyx::CredentialConnectionUpdateParams::NoiseSuppression::OrSymbol,
           noise_suppression_details:
-            Telnyx::CredentialConnectionUpdateParams::NoiseSuppressionDetails::OrHash,
+            Telnyx::ConnectionNoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,
           outbound: Telnyx::CredentialOutbound::OrHash,
           password: String,

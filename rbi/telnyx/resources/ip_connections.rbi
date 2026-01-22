@@ -20,7 +20,7 @@ module Telnyx
           noise_suppression:
             Telnyx::IPConnectionCreateParams::NoiseSuppression::OrSymbol,
           noise_suppression_details:
-            Telnyx::IPConnectionCreateParams::NoiseSuppressionDetails::OrHash,
+            Telnyx::ConnectionNoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,
           outbound: Telnyx::OutboundIP::OrHash,
           rtcp_settings: Telnyx::ConnectionRtcpSettings::OrHash,
@@ -130,7 +130,7 @@ module Telnyx
           noise_suppression:
             Telnyx::IPConnectionUpdateParams::NoiseSuppression::OrSymbol,
           noise_suppression_details:
-            Telnyx::IPConnectionUpdateParams::NoiseSuppressionDetails::OrHash,
+            Telnyx::ConnectionNoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,
           outbound: Telnyx::OutboundIP::OrHash,
           rtcp_settings: Telnyx::ConnectionRtcpSettings::OrHash,
