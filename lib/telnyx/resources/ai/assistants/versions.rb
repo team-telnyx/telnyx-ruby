@@ -79,7 +79,7 @@ module Telnyx
           #
           # @param voice_settings [Telnyx::Models::AI::VoiceSettings] Body param
           #
-          # @param widget_settings [Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings] Body param: Configuration settings for the assistant's web widget.
+          # @param widget_settings [Telnyx::Models::AI::WidgetSettings] Body param: Configuration settings for the assistant's web widget.
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #

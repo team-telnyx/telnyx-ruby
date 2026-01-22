@@ -26,7 +26,7 @@ module Telnyx
             id: String,
             created_at: String,
             email: String,
-            groups: ::Array[Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::Group],
+            groups: ::Array[Telnyx::Organizations::UserGroupReference],
             record_type: String,
             user_status: Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::user_status,
             last_sign_in_at: String?,
@@ -40,7 +40,7 @@ module Telnyx
 
           attr_accessor email: String
 
-          attr_accessor groups: ::Array[Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::Group]
+          attr_accessor groups: ::Array[Telnyx::Organizations::UserGroupReference]
 
           attr_accessor record_type: String
 
@@ -56,7 +56,7 @@ module Telnyx
             id: String,
             created_at: String,
             email: String,
-            groups: ::Array[Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::Group],
+            groups: ::Array[Telnyx::Organizations::UserGroupReference],
             record_type: String,
             user_status: Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::user_status,
             ?last_sign_in_at: String?,
@@ -67,24 +67,12 @@ module Telnyx
             id: String,
             created_at: String,
             email: String,
-            groups: ::Array[Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::Group],
+            groups: ::Array[Telnyx::Organizations::UserGroupReference],
             record_type: String,
             user_status: Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::user_status,
             last_sign_in_at: String?,
             organization_user_bypasses_sso: bool
           }
-
-          type group = { id: String, name: String }
-
-          class Group < Telnyx::Internal::Type::BaseModel
-            attr_accessor id: String
-
-            attr_accessor name: String
-
-            def initialize: (id: String, name: String) -> void
-
-            def to_hash: -> { id: String, name: String }
-          end
 
           type user_status = :enabled | :disabled | :blocked
 

@@ -22,7 +22,7 @@ module Telnyx
             tools: ::Array[Telnyx::Models::AI::assistant_tool],
             transcription: Telnyx::AI::TranscriptionSettings,
             voice_settings: Telnyx::AI::VoiceSettings,
-            widget_settings: Telnyx::AI::Assistants::UpdateAssistant::WidgetSettings
+            widget_settings: Telnyx::AI::WidgetSettings
           }
 
         class UpdateAssistant < Telnyx::Internal::Type::BaseModel
@@ -106,11 +106,11 @@ module Telnyx
             Telnyx::AI::VoiceSettings
           ) -> Telnyx::AI::VoiceSettings
 
-          attr_reader widget_settings: Telnyx::AI::Assistants::UpdateAssistant::WidgetSettings?
+          attr_reader widget_settings: Telnyx::AI::WidgetSettings?
 
           def widget_settings=: (
-            Telnyx::AI::Assistants::UpdateAssistant::WidgetSettings
-          ) -> Telnyx::AI::Assistants::UpdateAssistant::WidgetSettings
+            Telnyx::AI::WidgetSettings
+          ) -> Telnyx::AI::WidgetSettings
 
           def initialize: (
             ?description: String,
@@ -129,7 +129,7 @@ module Telnyx
             ?tools: ::Array[Telnyx::Models::AI::assistant_tool],
             ?transcription: Telnyx::AI::TranscriptionSettings,
             ?voice_settings: Telnyx::AI::VoiceSettings,
-            ?widget_settings: Telnyx::AI::Assistants::UpdateAssistant::WidgetSettings
+            ?widget_settings: Telnyx::AI::WidgetSettings
           ) -> void
 
           def to_hash: -> {
@@ -149,174 +149,8 @@ module Telnyx
             tools: ::Array[Telnyx::Models::AI::assistant_tool],
             transcription: Telnyx::AI::TranscriptionSettings,
             voice_settings: Telnyx::AI::VoiceSettings,
-            widget_settings: Telnyx::AI::Assistants::UpdateAssistant::WidgetSettings
+            widget_settings: Telnyx::AI::WidgetSettings
           }
-
-          type widget_settings =
-            {
-              agent_thinking_text: String,
-              audio_visualizer_config: Telnyx::AI::Assistants::UpdateAssistant::WidgetSettings::AudioVisualizerConfig,
-              default_state: Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::default_state,
-              give_feedback_url: String?,
-              logo_icon_url: String?,
-              position: Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::position,
-              report_issue_url: String?,
-              speak_to_interrupt_text: String,
-              start_call_text: String,
-              theme: Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::theme,
-              view_history_url: String?
-            }
-
-          class WidgetSettings < Telnyx::Internal::Type::BaseModel
-            attr_reader agent_thinking_text: String?
-
-            def agent_thinking_text=: (String) -> String
-
-            attr_reader audio_visualizer_config: Telnyx::AI::Assistants::UpdateAssistant::WidgetSettings::AudioVisualizerConfig?
-
-            def audio_visualizer_config=: (
-              Telnyx::AI::Assistants::UpdateAssistant::WidgetSettings::AudioVisualizerConfig
-            ) -> Telnyx::AI::Assistants::UpdateAssistant::WidgetSettings::AudioVisualizerConfig
-
-            attr_reader default_state: Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::default_state?
-
-            def default_state=: (
-              Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::default_state
-            ) -> Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::default_state
-
-            attr_accessor give_feedback_url: String?
-
-            attr_accessor logo_icon_url: String?
-
-            attr_reader position: Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::position?
-
-            def position=: (
-              Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::position
-            ) -> Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::position
-
-            attr_accessor report_issue_url: String?
-
-            attr_reader speak_to_interrupt_text: String?
-
-            def speak_to_interrupt_text=: (String) -> String
-
-            attr_reader start_call_text: String?
-
-            def start_call_text=: (String) -> String
-
-            attr_reader theme: Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::theme?
-
-            def theme=: (
-              Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::theme
-            ) -> Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::theme
-
-            attr_accessor view_history_url: String?
-
-            def initialize: (
-              ?agent_thinking_text: String,
-              ?audio_visualizer_config: Telnyx::AI::Assistants::UpdateAssistant::WidgetSettings::AudioVisualizerConfig,
-              ?default_state: Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::default_state,
-              ?give_feedback_url: String?,
-              ?logo_icon_url: String?,
-              ?position: Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::position,
-              ?report_issue_url: String?,
-              ?speak_to_interrupt_text: String,
-              ?start_call_text: String,
-              ?theme: Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::theme,
-              ?view_history_url: String?
-            ) -> void
-
-            def to_hash: -> {
-              agent_thinking_text: String,
-              audio_visualizer_config: Telnyx::AI::Assistants::UpdateAssistant::WidgetSettings::AudioVisualizerConfig,
-              default_state: Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::default_state,
-              give_feedback_url: String?,
-              logo_icon_url: String?,
-              position: Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::position,
-              report_issue_url: String?,
-              speak_to_interrupt_text: String,
-              start_call_text: String,
-              theme: Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::theme,
-              view_history_url: String?
-            }
-
-            type audio_visualizer_config =
-              {
-                color: Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::AudioVisualizerConfig::color,
-                preset: String
-              }
-
-            class AudioVisualizerConfig < Telnyx::Internal::Type::BaseModel
-              attr_reader color: Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::AudioVisualizerConfig::color?
-
-              def color=: (
-                Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::AudioVisualizerConfig::color
-              ) -> Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::AudioVisualizerConfig::color
-
-              attr_reader preset: String?
-
-              def preset=: (String) -> String
-
-              def initialize: (
-                ?color: Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::AudioVisualizerConfig::color,
-                ?preset: String
-              ) -> void
-
-              def to_hash: -> {
-                color: Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::AudioVisualizerConfig::color,
-                preset: String
-              }
-
-              type color =
-                :verdant | :twilight | :bloom | :mystic | :flare | :glacier
-
-              module Color
-                extend Telnyx::Internal::Type::Enum
-
-                VERDANT: :verdant
-                TWILIGHT: :twilight
-                BLOOM: :bloom
-                MYSTIC: :mystic
-                FLARE: :flare
-                GLACIER: :glacier
-
-                def self?.values: -> ::Array[Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::AudioVisualizerConfig::color]
-              end
-            end
-
-            type default_state = :expanded | :collapsed
-
-            module DefaultState
-              extend Telnyx::Internal::Type::Enum
-
-              EXPANDED: :expanded
-              COLLAPSED: :collapsed
-
-              def self?.values: -> ::Array[Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::default_state]
-            end
-
-            type position = :fixed | :static
-
-            module Position
-              extend Telnyx::Internal::Type::Enum
-
-              FIXED: :fixed
-              STATIC: :static
-
-              def self?.values: -> ::Array[Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::position]
-            end
-
-            type theme = :light | :dark
-
-            module Theme
-              extend Telnyx::Internal::Type::Enum
-
-              LIGHT: :light
-              DARK: :dark
-
-              def self?.values: -> ::Array[Telnyx::Models::AI::Assistants::UpdateAssistant::WidgetSettings::theme]
-            end
-          end
         end
       end
     end
