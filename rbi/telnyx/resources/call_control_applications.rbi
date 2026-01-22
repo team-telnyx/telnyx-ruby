@@ -154,10 +154,14 @@ module Telnyx
         params(
           filter: Telnyx::CallControlApplicationListParams::Filter::OrHash,
           page: Telnyx::CallControlApplicationListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           sort: Telnyx::CallControlApplicationListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[Telnyx::CallControlApplication]
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::CallControlApplication
+          ]
         )
       end
       def list(
@@ -170,6 +174,8 @@ module Telnyx
         # Consolidated page parameter (deepObject style). Originally: page[after],
         # page[before], page[limit], page[size], page[number]
         page: nil,
+        page_number: nil,
+        page_size: nil,
         # Specifies the sort order for results. By default sorting direction is ascending.
         # To have the results sorted in descending order add the <code> -</code>
         # prefix.<br/><br/> That is: <ul>

@@ -40,6 +40,18 @@ module Telnyx
       end
       attr_writer :page
 
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :page_number
+
+      sig { params(page_number: Integer).void }
+      attr_writer :page_number
+
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :page_size
+
+      sig { params(page_size: Integer).void }
+      attr_writer :page_size
+
       # Region where the conference data is located
       sig do
         returns(
@@ -59,6 +71,8 @@ module Telnyx
         params(
           filter: Telnyx::ConferenceListParticipantsParams::Filter::OrHash,
           page: Telnyx::ConferenceListParticipantsParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           region: Telnyx::ConferenceListParticipantsParams::Region::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -70,6 +84,8 @@ module Telnyx
         # Consolidated page parameter (deepObject style). Originally: page[after],
         # page[before], page[limit], page[size], page[number]
         page: nil,
+        page_number: nil,
+        page_size: nil,
         # Region where the conference data is located
         region: nil,
         request_options: {}
@@ -81,6 +97,8 @@ module Telnyx
           {
             filter: Telnyx::ConferenceListParticipantsParams::Filter,
             page: Telnyx::ConferenceListParticipantsParams::Page,
+            page_number: Integer,
+            page_size: Integer,
             region: Telnyx::ConferenceListParticipantsParams::Region::OrSymbol,
             request_options: Telnyx::RequestOptions
           }
@@ -177,30 +195,12 @@ module Telnyx
         sig { params(limit: Integer).void }
         attr_writer :limit
 
-        # The page number to load
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :number
-
-        sig { params(number: Integer).void }
-        attr_writer :number
-
-        # The size of the page
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :size
-
-        sig { params(size: Integer).void }
-        attr_writer :size
-
         # Consolidated page parameter (deepObject style). Originally: page[after],
         # page[before], page[limit], page[size], page[number]
         sig do
-          params(
-            after: String,
-            before: String,
-            limit: Integer,
-            number: Integer,
-            size: Integer
-          ).returns(T.attached_class)
+          params(after: String, before: String, limit: Integer).returns(
+            T.attached_class
+          )
         end
         def self.new(
           # Opaque identifier of next page
@@ -208,24 +208,12 @@ module Telnyx
           # Opaque identifier of previous page
           before: nil,
           # Limit of records per single page
-          limit: nil,
-          # The page number to load
-          number: nil,
-          # The size of the page
-          size: nil
+          limit: nil
         )
         end
 
         sig do
-          override.returns(
-            {
-              after: String,
-              before: String,
-              limit: Integer,
-              number: Integer,
-              size: Integer
-            }
-          )
+          override.returns({ after: String, before: String, limit: Integer })
         end
         def to_hash
         end

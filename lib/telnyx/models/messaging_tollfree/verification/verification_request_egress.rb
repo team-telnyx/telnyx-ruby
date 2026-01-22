@@ -148,6 +148,16 @@ module Telnyx
           #   @return [String, nil]
           optional :business_registration_type, String, api_name: :businessRegistrationType
 
+          # @!attribute campaign_verify_authorization_token
+          #   Campaign Verify Authorization Token required for Political use case submissions
+          #   starting February 17, 2026
+          #
+          #   @return [String, nil]
+          optional :campaign_verify_authorization_token,
+                   String,
+                   api_name: :campaignVerifyAuthorizationToken,
+                   nil?: true
+
           # @!attribute doing_business_as
           #
           #   @return [String, nil]
@@ -199,7 +209,11 @@ module Telnyx
           #   @return [String, nil]
           optional :webhook_url, String, api_name: :webhookUrl
 
-          # @!method initialize(id:, additional_information:, business_addr1:, business_city:, business_contact_email:, business_contact_first_name:, business_contact_last_name:, business_contact_phone:, business_name:, business_state:, business_zip:, corporate_website:, isv_reseller:, message_volume:, opt_in_workflow:, opt_in_workflow_image_urls:, phone_numbers:, production_message_content:, use_case:, use_case_summary:, verification_request_id:, age_gated_content: nil, business_addr2: nil, business_registration_country: nil, business_registration_number: nil, business_registration_type: nil, doing_business_as: nil, entity_type: nil, help_message_response: nil, opt_in_confirmation_response: nil, opt_in_keywords: nil, privacy_policy_url: nil, terms_and_condition_url: nil, verification_status: nil, webhook_url: nil)
+          # @!method initialize(id:, additional_information:, business_addr1:, business_city:, business_contact_email:, business_contact_first_name:, business_contact_last_name:, business_contact_phone:, business_name:, business_state:, business_zip:, corporate_website:, isv_reseller:, message_volume:, opt_in_workflow:, opt_in_workflow_image_urls:, phone_numbers:, production_message_content:, use_case:, use_case_summary:, verification_request_id:, age_gated_content: nil, business_addr2: nil, business_registration_country: nil, business_registration_number: nil, business_registration_type: nil, campaign_verify_authorization_token: nil, doing_business_as: nil, entity_type: nil, help_message_response: nil, opt_in_confirmation_response: nil, opt_in_keywords: nil, privacy_policy_url: nil, terms_and_condition_url: nil, verification_status: nil, webhook_url: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::MessagingTollfree::Verification::VerificationRequestEgress} for
+          #   more details.
+          #
           #   A verification request as it comes out of the database
           #
           #   @param id [String]
@@ -253,6 +267,8 @@ module Telnyx
           #   @param business_registration_number [String]
           #
           #   @param business_registration_type [String]
+          #
+          #   @param campaign_verify_authorization_token [String, nil] Campaign Verify Authorization Token required for Political use case submissions
           #
           #   @param doing_business_as [String]
           #

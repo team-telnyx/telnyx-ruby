@@ -164,6 +164,11 @@ module Telnyx
       module OperatorConnect
       end
 
+      module Organizations
+        module Users
+        end
+      end
+
       module Payment
       end
 
@@ -252,6 +257,9 @@ module Telnyx
       end
 
       module UsageReports
+      end
+
+      module Users
       end
 
       module Verification

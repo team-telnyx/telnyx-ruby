@@ -16,9 +16,9 @@ module Telnyx
             ).returns(Telnyx::Models::AI::Assistants::ToolTestResponse)
           end
           def test_(
-            # Path param:
+            # Path param
             tool_id,
-            # Path param:
+            # Path param
             assistant_id:,
             # Body param: Key-value arguments to use for the webhook test
             arguments: nil,

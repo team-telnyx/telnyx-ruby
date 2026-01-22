@@ -38,11 +38,11 @@ module Telnyx
             tools:
               T::Array[
                 T.any(
-                  Telnyx::AI::WebhookTool::OrHash,
+                  Telnyx::AI::AssistantTool::Webhook::OrHash,
                   Telnyx::AI::RetrievalTool::OrHash,
                   Telnyx::AI::AssistantTool::Handoff::OrHash,
                   Telnyx::AI::HangupTool::OrHash,
-                  Telnyx::AI::TransferTool::OrHash,
+                  Telnyx::AI::AssistantTool::Transfer::OrHash,
                   Telnyx::AI::AssistantTool::Refer::OrHash,
                   Telnyx::AI::AssistantTool::SendDtmf::OrHash,
                   Telnyx::AI::AssistantTool::SendMessage::OrHash
@@ -50,6 +50,8 @@ module Telnyx
               ],
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
             voice_settings: Telnyx::AI::VoiceSettings::OrHash,
+            widget_settings:
+              Telnyx::AI::AssistantCreateParams::WidgetSettings::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::InferenceEmbedding)
         end
@@ -58,7 +60,7 @@ module Telnyx
           # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
           instructions:,
           # ID of the model to use. You can use the
-          # [Get models API](https://developers.telnyx.com/api/inference/inference-embedding/get-models-public-models-get)
+          # [Get models API](https://developers.telnyx.com/api-reference/chat/get-available-models)
           # to see all of your available models,
           model:,
           name:,
@@ -73,12 +75,15 @@ module Telnyx
           enabled_features: nil,
           # Text that the assistant will use to start the conversation. This may be
           # templated with
-          # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
+          # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables).
+          # Use an empty string to have the assistant wait for the user to speak first. Use
+          # the special value `<assistant-speaks-first-with-model-generated-message>` to
+          # have the assistant generate the greeting based on the system instructions.
           greeting: nil,
           insight_settings: nil,
           # This is only needed when using third-party inference providers. The `identifier`
           # for an integration secret
-          # [/v2/integration_secrets](https://developers.telnyx.com/api/secrets-manager/integration-secrets/create-integration-secret)
+          # [/v2/integration_secrets](https://developers.telnyx.com/api-reference/integration-secrets/create-a-secret)
           # that refers to your LLM provider's API key. Warning: Free plans are unlikely to
           # work with this integration.
           llm_api_key_ref: nil,
@@ -90,6 +95,8 @@ module Telnyx
           tools: nil,
           transcription: nil,
           voice_settings: nil,
+          # Configuration settings for the assistant's web widget.
+          widget_settings: nil,
           request_options: {}
         )
         end
@@ -136,11 +143,11 @@ module Telnyx
             tools:
               T::Array[
                 T.any(
-                  Telnyx::AI::WebhookTool::OrHash,
+                  Telnyx::AI::AssistantTool::Webhook::OrHash,
                   Telnyx::AI::RetrievalTool::OrHash,
                   Telnyx::AI::AssistantTool::Handoff::OrHash,
                   Telnyx::AI::HangupTool::OrHash,
-                  Telnyx::AI::TransferTool::OrHash,
+                  Telnyx::AI::AssistantTool::Transfer::OrHash,
                   Telnyx::AI::AssistantTool::Refer::OrHash,
                   Telnyx::AI::AssistantTool::SendDtmf::OrHash,
                   Telnyx::AI::AssistantTool::SendMessage::OrHash
@@ -148,6 +155,8 @@ module Telnyx
               ],
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
             voice_settings: Telnyx::AI::VoiceSettings::OrHash,
+            widget_settings:
+              Telnyx::AI::AssistantUpdateParams::WidgetSettings::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::InferenceEmbedding)
         end
@@ -164,7 +173,10 @@ module Telnyx
           enabled_features: nil,
           # Text that the assistant will use to start the conversation. This may be
           # templated with
-          # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
+          # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables).
+          # Use an empty string to have the assistant wait for the user to speak first. Use
+          # the special value `<assistant-speaks-first-with-model-generated-message>` to
+          # have the assistant generate the greeting based on the system instructions.
           greeting: nil,
           insight_settings: nil,
           # System instructions for the assistant. These may be templated with
@@ -172,13 +184,13 @@ module Telnyx
           instructions: nil,
           # This is only needed when using third-party inference providers. The `identifier`
           # for an integration secret
-          # [/v2/integration_secrets](https://developers.telnyx.com/api/secrets-manager/integration-secrets/create-integration-secret)
+          # [/v2/integration_secrets](https://developers.telnyx.com/api-reference/integration-secrets/create-a-secret)
           # that refers to your LLM provider's API key. Warning: Free plans are unlikely to
           # work with this integration.
           llm_api_key_ref: nil,
           messaging_settings: nil,
           # ID of the model to use. You can use the
-          # [Get models API](https://developers.telnyx.com/api/inference/inference-embedding/get-models-public-models-get)
+          # [Get models API](https://developers.telnyx.com/api-reference/chat/get-available-models)
           # to see all of your available models,
           model: nil,
           name: nil,
@@ -192,6 +204,8 @@ module Telnyx
           tools: nil,
           transcription: nil,
           voice_settings: nil,
+          # Configuration settings for the assistant's web widget.
+          widget_settings: nil,
           request_options: {}
         )
         end
@@ -218,11 +232,11 @@ module Telnyx
         # This endpoint allows a client to send a chat message to a specific AI Assistant.
         # The assistant processes the message and returns a relevant reply based on the
         # current conversation context. Refer to the Conversation API to
-        # [create a conversation](https://developers.telnyx.com/api/inference/inference-embedding/create-new-conversation-public-conversations-post),
-        # [filter existing conversations](https://developers.telnyx.com/api/inference/inference-embedding/get-conversations-public-conversations-get),
-        # [fetch messages for a conversation](https://developers.telnyx.com/api/inference/inference-embedding/get-conversations-public-conversation-id-messages-get),
+        # [create a conversation](https://developers.telnyx.com/api-reference/conversations/create-a-conversation),
+        # [filter existing conversations](https://developers.telnyx.com/api-reference/conversations/list-conversations),
+        # [fetch messages for a conversation](https://developers.telnyx.com/api-reference/conversations/get-conversation-messages),
         # and
-        # [manually add messages to a conversation](https://developers.telnyx.com/api/inference/inference-embedding/add-new-message).
+        # [manually add messages to a conversation](https://developers.telnyx.com/api-reference/conversations/create-message).
         sig do
           params(
             assistant_id: String,
@@ -271,6 +285,7 @@ module Telnyx
           params(
             api_key_ref: String,
             provider: Telnyx::AI::AssistantImportsParams::Provider::OrSymbol,
+            import_ids: T::Array[String],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::AssistantsList)
         end
@@ -281,6 +296,9 @@ module Telnyx
           api_key_ref:,
           # The external provider to import assistants from.
           provider:,
+          # Optional list of assistant IDs to import from the external provider. If not
+          # provided, all assistants will be imported.
+          import_ids: nil,
           request_options: {}
         )
         end

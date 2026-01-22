@@ -26,9 +26,9 @@ module Telnyx
       #
       # @param managed_accounts [Boolean] Query param: Return the aggregations for all Managed Accounts under the user mak
       #
-      # @param page_number [Integer] Query param:
+      # @param page_number [Integer] Query param
       #
-      # @param page_size [Integer] Query param:
+      # @param page_size [Integer] Query param
       #
       # @param sort [Array<String>] Query param: Specifies the sort order for results
       #

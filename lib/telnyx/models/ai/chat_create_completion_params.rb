@@ -140,7 +140,7 @@ module Telnyx
         #   The `function` tool type follows the same schema as the
         #   [OpenAI Chat Completions API](https://platform.openai.com/docs/api-reference/chat).
         #   The `retrieval` tool type is unique to Telnyx. You may pass a list of
-        #   [embedded storage buckets](https://developers.telnyx.com/api/inference/inference-embedding/post-embedding)
+        #   [embedded storage buckets](https://developers.telnyx.com/api-reference/embeddings/embed-documents)
         #   for retrieval-augmented generation.
         #
         #   @return [Array<Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Function, Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval>, nil]
@@ -389,8 +389,8 @@ module Telnyx
           class Retrieval < Telnyx::Internal::Type::BaseModel
             # @!attribute retrieval
             #
-            #   @return [Telnyx::Models::AI::InferenceEmbeddingBucketIDs]
-            required :retrieval, -> { Telnyx::AI::InferenceEmbeddingBucketIDs }
+            #   @return [Telnyx::Models::AI::BucketIDs]
+            required :retrieval, -> { Telnyx::AI::BucketIDs }
 
             # @!attribute type
             #
@@ -398,7 +398,7 @@ module Telnyx
             required :type, const: :retrieval
 
             # @!method initialize(retrieval:, type: :retrieval)
-            #   @param retrieval [Telnyx::Models::AI::InferenceEmbeddingBucketIDs]
+            #   @param retrieval [Telnyx::Models::AI::BucketIDs]
             #   @param type [Symbol, :retrieval]
           end
 

@@ -16,8 +16,10 @@ module Telnyx
       def list_active_calls: (
         String connection_id,
         ?page: Telnyx::ConnectionListActiveCallsParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::ConnectionListActiveCallsResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::ConnectionListActiveCallsResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

@@ -113,7 +113,7 @@ module Telnyx
           hd_voice_enabled: nil,
           # Body param: A list of user-assigned tags to help organize phone numbers.
           tags: nil,
-          # Body param:
+          # Body param
           voice: nil,
           request_options: {}
         )

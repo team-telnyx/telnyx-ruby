@@ -32,6 +32,7 @@ module Telnyx
             business_registration_country: String,
             business_registration_number: String,
             business_registration_type: String,
+            campaign_verify_authorization_token: String?,
             created_at: Time,
             doing_business_as: String,
             entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type,
@@ -108,6 +109,8 @@ module Telnyx
 
           def business_registration_type=: (String) -> String
 
+          attr_accessor campaign_verify_authorization_token: String?
+
           attr_reader created_at: Time?
 
           def created_at=: (Time) -> Time
@@ -181,6 +184,7 @@ module Telnyx
             ?business_registration_country: String,
             ?business_registration_number: String,
             ?business_registration_type: String,
+            ?campaign_verify_authorization_token: String?,
             ?created_at: Time,
             ?doing_business_as: String,
             ?entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type,
@@ -221,6 +225,7 @@ module Telnyx
             business_registration_country: String,
             business_registration_number: String,
             business_registration_type: String,
+            campaign_verify_authorization_token: String?,
             created_at: Time,
             doing_business_as: String,
             entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type,

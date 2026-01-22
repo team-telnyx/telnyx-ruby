@@ -24,13 +24,27 @@ module Telnyx
       #   @return [Telnyx::Models::CallEventListParams::Page, nil]
       optional :page, -> { Telnyx::CallEventListParams::Page }
 
-      # @!method initialize(filter: nil, page: nil, request_options: {})
+      # @!attribute page_number
+      #
+      #   @return [Integer, nil]
+      optional :page_number, Integer
+
+      # @!attribute page_size
+      #
+      #   @return [Integer, nil]
+      optional :page_size, Integer
+
+      # @!method initialize(filter: nil, page: nil, page_number: nil, page_size: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CallEventListParams} for more details.
       #
       #   @param filter [Telnyx::Models::CallEventListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[application
       #
       #   @param page [Telnyx::Models::CallEventListParams::Page] Consolidated page parameter (deepObject style). Originally: page[after], page[be
+      #
+      #   @param page_number [Integer]
+      #
+      #   @param page_size [Integer]
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -277,19 +291,7 @@ module Telnyx
         #   @return [Integer, nil]
         optional :limit, Integer
 
-        # @!attribute number
-        #   The page number to load
-        #
-        #   @return [Integer, nil]
-        optional :number, Integer
-
-        # @!attribute size
-        #   The size of the page
-        #
-        #   @return [Integer, nil]
-        optional :size, Integer
-
-        # @!method initialize(after: nil, before: nil, limit: nil, number: nil, size: nil)
+        # @!method initialize(after: nil, before: nil, limit: nil)
         #   Consolidated page parameter (deepObject style). Originally: page[after],
         #   page[before], page[limit], page[size], page[number]
         #
@@ -298,10 +300,6 @@ module Telnyx
         #   @param before [String] Opaque identifier of previous page
         #
         #   @param limit [Integer] Limit of records per single page
-        #
-        #   @param number [Integer] The page number to load
-        #
-        #   @param size [Integer] The size of the page
       end
     end
   end

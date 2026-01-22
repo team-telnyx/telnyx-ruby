@@ -83,6 +83,14 @@ module Telnyx
       #   @return [Integer, nil]
       optional :redaction_level, Integer
 
+      # @!attribute smart_encoding
+      #   Enables automatic character encoding optimization for SMS messages. When
+      #   enabled, the system automatically selects the most efficient encoding (GSM-7 or
+      #   UCS-2) based on message content to maximize character limits and minimize costs.
+      #
+      #   @return [Boolean, nil]
+      optional :smart_encoding, Telnyx::Internal::Type::Boolean
+
       # @!attribute url_shortener_settings
       #   The URL shortener feature allows automatic replacement of URLs that were
       #   generated using a public URL shortener service. Some examples include bit.do,
@@ -155,7 +163,7 @@ module Telnyx
         optional :updated_at, Time
       end
 
-      # @!method initialize(id: nil, alpha_sender: nil, created_at: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, health_webhook_url: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, record_type: nil, redaction_enabled: nil, redaction_level: nil, updated_at: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil)
+      # @!method initialize(id: nil, alpha_sender: nil, created_at: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, health_webhook_url: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, record_type: nil, redaction_enabled: nil, redaction_level: nil, smart_encoding: nil, updated_at: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessagingProfile} for more details.
       #
@@ -188,6 +196,8 @@ module Telnyx
       #   @param redaction_enabled [Boolean] Indicates whether message content redaction is enabled for this profile.
       #
       #   @param redaction_level [Integer] Determines how much information is redacted in messages for privacy or complianc
+      #
+      #   @param smart_encoding [Boolean] Enables automatic character encoding optimization for SMS messages. When enabled
       #
       #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
       #

@@ -35,7 +35,7 @@ class Telnyx::Test::Resources::Queues::CallsTest < Telnyx::Test::ResourceTest
     response = @telnyx.queues.calls.list("queue_name")
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Internal::DefaultFlatPagination
     end
 
     row = response.to_enum.first

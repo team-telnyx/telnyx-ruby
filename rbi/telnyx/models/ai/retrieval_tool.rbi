@@ -9,14 +9,10 @@ module Telnyx
             T.any(Telnyx::AI::RetrievalTool, Telnyx::Internal::AnyHash)
           end
 
-        sig { returns(Telnyx::AI::InferenceEmbeddingBucketIDs) }
+        sig { returns(Telnyx::AI::BucketIDs) }
         attr_reader :retrieval
 
-        sig do
-          params(
-            retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs::OrHash
-          ).void
-        end
+        sig { params(retrieval: Telnyx::AI::BucketIDs::OrHash).void }
         attr_writer :retrieval
 
         sig { returns(Telnyx::AI::RetrievalTool::Type::OrSymbol) }
@@ -24,7 +20,7 @@ module Telnyx
 
         sig do
           params(
-            retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs::OrHash,
+            retrieval: Telnyx::AI::BucketIDs::OrHash,
             type: Telnyx::AI::RetrievalTool::Type::OrSymbol
           ).returns(T.attached_class)
         end
@@ -34,7 +30,7 @@ module Telnyx
         sig do
           override.returns(
             {
-              retrieval: Telnyx::AI::InferenceEmbeddingBucketIDs,
+              retrieval: Telnyx::AI::BucketIDs,
               type: Telnyx::AI::RetrievalTool::Type::OrSymbol
             }
           )

@@ -49,17 +49,17 @@ module Telnyx
           ).returns(Telnyx::MessagingProfiles::AutoRespConfigResponse)
         end
         def update(
-          # Path param:
+          # Path param
           autoresp_cfg_id,
-          # Path param:
+          # Path param
           profile_id:,
-          # Body param:
+          # Body param
           country_code:,
-          # Body param:
+          # Body param
           keywords:,
-          # Body param:
+          # Body param
           op:,
-          # Body param:
+          # Body param
           resp_text: nil,
           request_options: {}
         )

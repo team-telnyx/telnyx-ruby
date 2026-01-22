@@ -913,6 +913,8 @@ module Telnyx
 
   OperatorConnect = Telnyx::Models::OperatorConnect
 
+  Organizations = Telnyx::Models::Organizations
+
   OtaUpdateListParams = Telnyx::Models::OtaUpdateListParams
 
   OtaUpdateRetrieveParams = Telnyx::Models::OtaUpdateRetrieveParams
@@ -1279,12 +1281,6 @@ module Telnyx
   StreamBidirectionalTargetLegs = Telnyx::Models::StreamBidirectionalTargetLegs
 
   StreamCodec = Telnyx::Models::StreamCodec
-
-  StreamingFailedWebhookEvent = Telnyx::Models::StreamingFailedWebhookEvent
-
-  StreamingStartedWebhookEvent = Telnyx::Models::StreamingStartedWebhookEvent
-
-  StreamingStoppedWebhookEvent = Telnyx::Models::StreamingStoppedWebhookEvent
 
   SubNumberOrder = Telnyx::Models::SubNumberOrder
 

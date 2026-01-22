@@ -19,6 +19,7 @@ module Telnyx
           mms_transcoding: T::Boolean,
           mobile_only: T::Boolean,
           number_pool_settings: T.nilable(Telnyx::NumberPoolSettings::OrHash),
+          smart_encoding: T::Boolean,
           url_shortener_settings:
             T.nilable(Telnyx::URLShortenerSettings::OrHash),
           webhook_api_version:
@@ -57,6 +58,10 @@ module Telnyx
         #
         # To disable this feature, set the object field to `null`.
         number_pool_settings: nil,
+        # Enables automatic character encoding optimization for SMS messages. When
+        # enabled, the system automatically selects the most efficient encoding (GSM-7 or
+        # UCS-2) based on message content to maximize character limits and minimize costs.
+        smart_encoding: nil,
         # The URL shortener feature allows automatic replacement of URLs that were
         # generated using a public URL shortener service. Some examples include bit.do,
         # bit.ly, goo.gl, ht.ly, is.gd, ow.ly, rebrand.ly, t.co, tiny.cc, and tinyurl.com.
@@ -104,6 +109,7 @@ module Telnyx
           mobile_only: T::Boolean,
           name: String,
           number_pool_settings: T.nilable(Telnyx::NumberPoolSettings::OrHash),
+          smart_encoding: T::Boolean,
           url_shortener_settings:
             T.nilable(Telnyx::URLShortenerSettings::OrHash),
           v1_secret: String,
@@ -142,6 +148,10 @@ module Telnyx
         #
         # To disable this feature, set the object field to `null`.
         number_pool_settings: nil,
+        # Enables automatic character encoding optimization for SMS messages. When
+        # enabled, the system automatically selects the most efficient encoding (GSM-7 or
+        # UCS-2) based on message content to maximize character limits and minimize costs.
+        smart_encoding: nil,
         # The URL shortener feature allows automatic replacement of URLs that were
         # generated using a public URL shortener service. Some examples include bit.do,
         # bit.ly, goo.gl, ht.ly, is.gd, ow.ly, rebrand.ly, t.co, tiny.cc, and tinyurl.com.

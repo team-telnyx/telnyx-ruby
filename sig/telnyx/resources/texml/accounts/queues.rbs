@@ -23,6 +23,16 @@ module Telnyx
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::Models::Texml::Accounts::QueueUpdateResponse
 
+          def list: (
+            String account_sid,
+            ?date_created: String,
+            ?date_updated: String,
+            ?page: Integer,
+            ?page_size: Integer,
+            ?page_token: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Texml::Accounts::QueueListResponse
+
           def delete: (
             String queue_sid,
             account_sid: String,

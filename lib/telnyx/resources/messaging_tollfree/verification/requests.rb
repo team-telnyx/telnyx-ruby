@@ -11,7 +11,7 @@ module Telnyx
           #
           # Submit a new tollfree verification request
           #
-          # @overload create(additional_information:, business_addr1:, business_city:, business_contact_email:, business_contact_first_name:, business_contact_last_name:, business_contact_phone:, business_name:, business_state:, business_zip:, corporate_website:, isv_reseller:, message_volume:, opt_in_workflow:, opt_in_workflow_image_urls:, phone_numbers:, production_message_content:, use_case:, use_case_summary:, age_gated_content: nil, business_addr2: nil, business_registration_country: nil, business_registration_number: nil, business_registration_type: nil, doing_business_as: nil, entity_type: nil, help_message_response: nil, opt_in_confirmation_response: nil, opt_in_keywords: nil, privacy_policy_url: nil, terms_and_condition_url: nil, webhook_url: nil, request_options: {})
+          # @overload create(additional_information:, business_addr1:, business_city:, business_contact_email:, business_contact_first_name:, business_contact_last_name:, business_contact_phone:, business_name:, business_state:, business_zip:, corporate_website:, isv_reseller:, message_volume:, opt_in_workflow:, opt_in_workflow_image_urls:, phone_numbers:, production_message_content:, use_case:, use_case_summary:, age_gated_content: nil, business_addr2: nil, business_registration_country: nil, business_registration_number: nil, business_registration_type: nil, campaign_verify_authorization_token: nil, doing_business_as: nil, entity_type: nil, help_message_response: nil, opt_in_confirmation_response: nil, opt_in_keywords: nil, privacy_policy_url: nil, terms_and_condition_url: nil, webhook_url: nil, request_options: {})
           #
           # @param additional_information [String] Any additional information
           #
@@ -60,6 +60,8 @@ module Telnyx
           # @param business_registration_number [String, nil] Official business registration number (e.g., Employer Identification Number (EIN
           #
           # @param business_registration_type [String, nil] Type of business registration being provided. Required from January 2026.
+          #
+          # @param campaign_verify_authorization_token [String, nil] Campaign Verify Authorization Token required for Political use case submissions
           #
           # @param doing_business_as [String, nil] Doing Business As (DBA) name if different from legal name
           #
@@ -119,7 +121,7 @@ module Telnyx
           # Update an existing tollfree verification request. This is particularly useful
           # when there are pending customer actions to be taken.
           #
-          # @overload update(id, additional_information:, business_addr1:, business_city:, business_contact_email:, business_contact_first_name:, business_contact_last_name:, business_contact_phone:, business_name:, business_state:, business_zip:, corporate_website:, isv_reseller:, message_volume:, opt_in_workflow:, opt_in_workflow_image_urls:, phone_numbers:, production_message_content:, use_case:, use_case_summary:, age_gated_content: nil, business_addr2: nil, business_registration_country: nil, business_registration_number: nil, business_registration_type: nil, doing_business_as: nil, entity_type: nil, help_message_response: nil, opt_in_confirmation_response: nil, opt_in_keywords: nil, privacy_policy_url: nil, terms_and_condition_url: nil, webhook_url: nil, request_options: {})
+          # @overload update(id, additional_information:, business_addr1:, business_city:, business_contact_email:, business_contact_first_name:, business_contact_last_name:, business_contact_phone:, business_name:, business_state:, business_zip:, corporate_website:, isv_reseller:, message_volume:, opt_in_workflow:, opt_in_workflow_image_urls:, phone_numbers:, production_message_content:, use_case:, use_case_summary:, age_gated_content: nil, business_addr2: nil, business_registration_country: nil, business_registration_number: nil, business_registration_type: nil, campaign_verify_authorization_token: nil, doing_business_as: nil, entity_type: nil, help_message_response: nil, opt_in_confirmation_response: nil, opt_in_keywords: nil, privacy_policy_url: nil, terms_and_condition_url: nil, webhook_url: nil, request_options: {})
           #
           # @param id [String]
           #
@@ -170,6 +172,8 @@ module Telnyx
           # @param business_registration_number [String, nil] Official business registration number (e.g., Employer Identification Number (EIN
           #
           # @param business_registration_type [String, nil] Type of business registration being provided. Required from January 2026.
+          #
+          # @param campaign_verify_authorization_token [String, nil] Campaign Verify Authorization Token required for Political use case submissions
           #
           # @param doing_business_as [String, nil] Doing Business As (DBA) name if different from legal name
           #

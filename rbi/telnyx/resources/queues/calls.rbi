@@ -46,9 +46,11 @@ module Telnyx
           params(
             queue_name: String,
             page: Telnyx::Queues::CallListParams::Page::OrHash,
+            page_number: Integer,
+            page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultPagination[
+            Telnyx::Internal::DefaultFlatPagination[
               Telnyx::Models::Queues::CallListResponse
             ]
           )
@@ -59,6 +61,8 @@ module Telnyx
           # Consolidated page parameter (deepObject style). Originally: page[after],
           # page[before], page[limit], page[size], page[number]
           page: nil,
+          page_number: nil,
+          page_size: nil,
           request_options: {}
         )
         end

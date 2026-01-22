@@ -2,7 +2,11 @@ module Telnyx
   module Models
     module Queues
       type call_list_params =
-        { page: Telnyx::Queues::CallListParams::Page }
+        {
+          page: Telnyx::Queues::CallListParams::Page,
+          page_number: Integer,
+          page_size: Integer
+        }
         & Telnyx::Internal::Type::request_parameters
 
       class CallListParams < Telnyx::Internal::Type::BaseModel
@@ -15,24 +19,29 @@ module Telnyx
           Telnyx::Queues::CallListParams::Page
         ) -> Telnyx::Queues::CallListParams::Page
 
+        attr_reader page_number: Integer?
+
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
         def initialize: (
           ?page: Telnyx::Queues::CallListParams::Page,
+          ?page_number: Integer,
+          ?page_size: Integer,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           page: Telnyx::Queues::CallListParams::Page,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions
         }
 
-        type page =
-          {
-            after: String,
-            before: String,
-            limit: Integer,
-            number: Integer,
-            size: Integer
-          }
+        type page = { after: String, before: String, limit: Integer }
 
         class Page < Telnyx::Internal::Type::BaseModel
           attr_reader after: String?
@@ -47,29 +56,13 @@ module Telnyx
 
           def limit=: (Integer) -> Integer
 
-          attr_reader number: Integer?
-
-          def number=: (Integer) -> Integer
-
-          attr_reader size: Integer?
-
-          def size=: (Integer) -> Integer
-
           def initialize: (
             ?after: String,
             ?before: String,
-            ?limit: Integer,
-            ?number: Integer,
-            ?size: Integer
+            ?limit: Integer
           ) -> void
 
-          def to_hash: -> {
-            after: String,
-            before: String,
-            limit: Integer,
-            number: Integer,
-            size: Integer
-          }
+          def to_hash: -> { after: String, before: String, limit: Integer }
         end
       end
     end

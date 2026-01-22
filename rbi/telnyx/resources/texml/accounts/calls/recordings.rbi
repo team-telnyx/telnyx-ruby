@@ -26,7 +26,7 @@ module Telnyx
               account_sid:,
               # Path param: The CallSid that identifies the call to update.
               call_sid:,
-              # Body param:
+              # Body param
               status: nil,
               request_options: {}
             )

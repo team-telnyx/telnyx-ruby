@@ -21,13 +21,15 @@ module Telnyx
       # - `fax.delivered`
       # - `fax.failed`
       #
-      # @overload create(connection_id:, from:, to:, client_state: nil, from_display_name: nil, media_name: nil, media_url: nil, monochrome: nil, preview_format: nil, quality: nil, store_media: nil, store_preview: nil, t38_enabled: nil, webhook_url: nil, request_options: {})
+      # @overload create(connection_id:, from:, to:, black_threshold: nil, client_state: nil, from_display_name: nil, media_name: nil, media_url: nil, monochrome: nil, preview_format: nil, quality: nil, store_media: nil, store_preview: nil, t38_enabled: nil, webhook_url: nil, request_options: {})
       #
       # @param connection_id [String] The connection ID to send the fax with.
       #
       # @param from [String] The phone number, in E.164 format, the fax will be sent from.
       #
       # @param to [String] The phone number, in E.164 format, the fax will be sent to or SIP URI
+      #
+      # @param black_threshold [Integer] The black threshold percentage for monochrome faxes. Only applicable if `monochr
       #
       # @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
       #

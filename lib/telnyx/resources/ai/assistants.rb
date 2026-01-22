@@ -24,7 +24,7 @@ module Telnyx
         #
         # Create a new AI Assistant.
         #
-        # @overload create(instructions:, model:, name:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, llm_api_key_ref: nil, messaging_settings: nil, privacy_settings: nil, telephony_settings: nil, tools: nil, transcription: nil, voice_settings: nil, request_options: {})
+        # @overload create(instructions:, model:, name:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, llm_api_key_ref: nil, messaging_settings: nil, privacy_settings: nil, telephony_settings: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
         #
         # @param instructions [String] System instructions for the assistant. These may be templated with [dynamic vari
         #
@@ -52,11 +52,13 @@ module Telnyx
         #
         # @param telephony_settings [Telnyx::Models::AI::TelephonySettings]
         #
-        # @param tools [Array<Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage>] The tools that the assistant can use. These may be templated with [dynamic varia
+        # @param tools [Array<Telnyx::Models::AI::AssistantTool::Webhook, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage>] The tools that the assistant can use. These may be templated with [dynamic varia
         #
         # @param transcription [Telnyx::Models::AI::TranscriptionSettings]
         #
         # @param voice_settings [Telnyx::Models::AI::VoiceSettings]
+        #
+        # @param widget_settings [Telnyx::Models::AI::AssistantCreateParams::WidgetSettings] Configuration settings for the assistant's web widget.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -104,7 +106,7 @@ module Telnyx
         #
         # Update an AI Assistant's attributes.
         #
-        # @overload update(assistant_id, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, privacy_settings: nil, promote_to_main: nil, telephony_settings: nil, tools: nil, transcription: nil, voice_settings: nil, request_options: {})
+        # @overload update(assistant_id, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, privacy_settings: nil, promote_to_main: nil, telephony_settings: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
         #
         # @param assistant_id [String]
         #
@@ -136,11 +138,13 @@ module Telnyx
         #
         # @param telephony_settings [Telnyx::Models::AI::TelephonySettings]
         #
-        # @param tools [Array<Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage>] The tools that the assistant can use. These may be templated with [dynamic varia
+        # @param tools [Array<Telnyx::Models::AI::AssistantTool::Webhook, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage>] The tools that the assistant can use. These may be templated with [dynamic varia
         #
         # @param transcription [Telnyx::Models::AI::TranscriptionSettings]
         #
         # @param voice_settings [Telnyx::Models::AI::VoiceSettings]
+        #
+        # @param widget_settings [Telnyx::Models::AI::AssistantUpdateParams::WidgetSettings] Configuration settings for the assistant's web widget.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -198,11 +202,11 @@ module Telnyx
         # This endpoint allows a client to send a chat message to a specific AI Assistant.
         # The assistant processes the message and returns a relevant reply based on the
         # current conversation context. Refer to the Conversation API to
-        # [create a conversation](https://developers.telnyx.com/api/inference/inference-embedding/create-new-conversation-public-conversations-post),
-        # [filter existing conversations](https://developers.telnyx.com/api/inference/inference-embedding/get-conversations-public-conversations-get),
-        # [fetch messages for a conversation](https://developers.telnyx.com/api/inference/inference-embedding/get-conversations-public-conversation-id-messages-get),
+        # [create a conversation](https://developers.telnyx.com/api-reference/conversations/create-a-conversation),
+        # [filter existing conversations](https://developers.telnyx.com/api-reference/conversations/list-conversations),
+        # [fetch messages for a conversation](https://developers.telnyx.com/api-reference/conversations/get-conversation-messages),
         # and
-        # [manually add messages to a conversation](https://developers.telnyx.com/api/inference/inference-embedding/add-new-message).
+        # [manually add messages to a conversation](https://developers.telnyx.com/api-reference/conversations/create-message).
         #
         # @overload chat(assistant_id, content:, conversation_id:, name: nil, request_options: {})
         #
@@ -275,11 +279,13 @@ module Telnyx
         # imported will be overwritten with its latest version from the importing
         # provider.
         #
-        # @overload imports(api_key_ref:, provider:, request_options: {})
+        # @overload imports(api_key_ref:, provider:, import_ids: nil, request_options: {})
         #
         # @param api_key_ref [String] Integration secret pointer that refers to the API key for the external provider.
         #
         # @param provider [Symbol, Telnyx::Models::AI::AssistantImportsParams::Provider] The external provider to import assistants from.
+        #
+        # @param import_ids [Array<String>] Optional list of assistant IDs to import from the external provider. If not prov
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

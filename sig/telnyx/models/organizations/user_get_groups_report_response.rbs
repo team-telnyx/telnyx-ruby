@@ -1,0 +1,104 @@
+module Telnyx
+  module Models
+    module Organizations
+      type user_get_groups_report_response =
+        {
+          data: ::Array[Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data]
+        }
+
+      class UserGetGroupsReportResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data]?
+
+        def data=: (
+          ::Array[Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data]
+        ) -> ::Array[Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data]
+
+        def initialize: (
+          ?data: ::Array[Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data]
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data]
+        }
+
+        type data =
+          {
+            id: String,
+            created_at: String,
+            email: String,
+            groups: ::Array[Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::Group],
+            record_type: String,
+            user_status: Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::user_status,
+            last_sign_in_at: String?,
+            organization_user_bypasses_sso: bool
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor created_at: String
+
+          attr_accessor email: String
+
+          attr_accessor groups: ::Array[Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::Group]
+
+          attr_accessor record_type: String
+
+          attr_accessor user_status: Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::user_status
+
+          attr_accessor last_sign_in_at: String?
+
+          attr_reader organization_user_bypasses_sso: bool?
+
+          def organization_user_bypasses_sso=: (bool) -> bool
+
+          def initialize: (
+            id: String,
+            created_at: String,
+            email: String,
+            groups: ::Array[Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::Group],
+            record_type: String,
+            user_status: Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::user_status,
+            ?last_sign_in_at: String?,
+            ?organization_user_bypasses_sso: bool
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            created_at: String,
+            email: String,
+            groups: ::Array[Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::Group],
+            record_type: String,
+            user_status: Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::user_status,
+            last_sign_in_at: String?,
+            organization_user_bypasses_sso: bool
+          }
+
+          type group = { id: String, name: String }
+
+          class Group < Telnyx::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor name: String
+
+            def initialize: (id: String, name: String) -> void
+
+            def to_hash: -> { id: String, name: String }
+          end
+
+          type user_status = :enabled | :disabled | :blocked
+
+          module UserStatus
+            extend Telnyx::Internal::Type::Enum
+
+            ENABLED: :enabled
+            DISABLED: :disabled
+            BLOCKED: :blocked
+
+            def self?.values: -> ::Array[Telnyx::Models::Organizations::UserGetGroupsReportResponse::Data::user_status]
+          end
+        end
+      end
+    end
+  end
+end

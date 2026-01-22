@@ -3,24 +3,62 @@ module Telnyx
     module AI
       type transfer_tool =
         {
-          transfer: Telnyx::AI::InferenceEmbeddingTransferToolParams,
+          transfer: Telnyx::AI::TransferTool::Transfer,
           type: Telnyx::Models::AI::TransferTool::type_
         }
 
       class TransferTool < Telnyx::Internal::Type::BaseModel
-        attr_accessor transfer: Telnyx::AI::InferenceEmbeddingTransferToolParams
+        attr_accessor transfer: Telnyx::AI::TransferTool::Transfer
 
         attr_accessor type: Telnyx::Models::AI::TransferTool::type_
 
         def initialize: (
-          transfer: Telnyx::AI::InferenceEmbeddingTransferToolParams,
+          transfer: Telnyx::AI::TransferTool::Transfer,
           type: Telnyx::Models::AI::TransferTool::type_
         ) -> void
 
         def to_hash: -> {
-          transfer: Telnyx::AI::InferenceEmbeddingTransferToolParams,
+          transfer: Telnyx::AI::TransferTool::Transfer,
           type: Telnyx::Models::AI::TransferTool::type_
         }
+
+        type transfer =
+          {
+            from: String,
+            targets: ::Array[Telnyx::AI::TransferTool::Transfer::Target]
+          }
+
+        class Transfer < Telnyx::Internal::Type::BaseModel
+          attr_accessor from: String
+
+          attr_accessor targets: ::Array[Telnyx::AI::TransferTool::Transfer::Target]
+
+          def initialize: (
+            from: String,
+            targets: ::Array[Telnyx::AI::TransferTool::Transfer::Target]
+          ) -> void
+
+          def to_hash: -> {
+            from: String,
+            targets: ::Array[Telnyx::AI::TransferTool::Transfer::Target]
+          }
+
+          type target = { name: String, to: String }
+
+          class Target < Telnyx::Internal::Type::BaseModel
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader to: String?
+
+            def to=: (String) -> String
+
+            def initialize: (?name: String, ?to: String) -> void
+
+            def to_hash: -> { name: String, to: String }
+          end
+        end
 
         type type_ = :transfer
 

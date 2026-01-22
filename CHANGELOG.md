@@ -1,5 +1,43 @@
 # Changelog
 
+## 5.1.0 (2026-01-22)
+
+Full Changelog: [v5.0.0...v5.1.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.0.0...v5.1.0)
+
+### Features
+
+* Add AI Assistant spec updates for FE tickets ([80b0583](https://github.com/team-telnyx/telnyx-ruby/commit/80b05831a12d362f5a84164f50814158d5d7c925))
+* Add Post /v2/calls/:call_control_id/actions/ai_assistant_add_messages ([8acb311](https://github.com/team-telnyx/telnyx-ruby/commit/8acb311d61248c2c30c4217fd0849e0fa9942b4c))
+* Add widget_settings to AI Assistant and import_ids to ImportAssistant… ([e929796](https://github.com/team-telnyx/telnyx-ruby/commit/e929796431b12a5903b6bfee564dcbe2ac6d3870))
+* **api:** fix default pagination by correctly using nested params ([3dda244](https://github.com/team-telnyx/telnyx-ruby/commit/3dda2443cc36885712872db57d1162d9496014ab))
+* **api:** manual updates ([c92c83a](https://github.com/team-telnyx/telnyx-ruby/commit/c92c83ad09b5ff5baccd02523eec7580acf5fa39))
+* Deploy dev/mc vady wip ([e1a1d64](https://github.com/team-telnyx/telnyx-ruby/commit/e1a1d64640c80c78817f973b9d9296d3c557b9ee))
+* fix links ([a15ee78](https://github.com/team-telnyx/telnyx-ruby/commit/a15ee783cd9eecb3f0b6bbe2508179430f8860ea))
+* fix-external-connection-link ([9a8b302](https://github.com/team-telnyx/telnyx-ruby/commit/9a8b30277f6bf0b4da26c6f2f31e433574a3a0f4))
+* fix-redocly-lint-issues ([9dc1212](https://github.com/team-telnyx/telnyx-ruby/commit/9dc1212679047dcedb14fe14dd4ec541e50002e4))
+* jira-engdesk-48800 add organizations-related docs to the external api… ([099ca64](https://github.com/team-telnyx/telnyx-ruby/commit/099ca6447d362d9a0441370262b8f930ac02fb8b))
+* MSG-6148: adding the new campaignVerifyAuthorizationToken field and missing GET OTP endpoint ([17f13ce](https://github.com/team-telnyx/telnyx-ruby/commit/17f13ce8be76bd68d2bf834f221c082a04bd29b5))
+* MSG-6228: MSG-6228: Add smart_encoding option for SMS character encoding optimization ([efa6530](https://github.com/team-telnyx/telnyx-ruby/commit/efa6530165d00916ba68643ba30a2ff48bf83465))
+* TELAPPS Add GET /texml/Accounts/{account_sid}/Queues endpoint ([2f7d693](https://github.com/team-telnyx/telnyx-ruby/commit/2f7d6930b98d44cc3b02c8168a5585c502e1cc7e))
+* TELAPPS-5507: Add Krisp engine description for noise suppression ([3fe5e71](https://github.com/team-telnyx/telnyx-ruby/commit/3fe5e71c68a8f43e55f966e5df691ad015892be6))
+* TELAPPS-ENGDESK-47967 Add black_threshold parameter to send_fax request ([e6152a2](https://github.com/team-telnyx/telnyx-ruby/commit/e6152a25c31010e0b6b9af02d98228e3d1d79c30))
+* TELAPPS-ENGDESK-48790 Remove duplicated webhooks ([11dbee7](https://github.com/team-telnyx/telnyx-ruby/commit/11dbee7731fab28f02d2375da256a78cb1db39b3))
+* Update voicemail_detection description with AMD enablement info ([0d8eef6](https://github.com/team-telnyx/telnyx-ruby/commit/0d8eef61fd3debe1a578fa81db5bd1fb2fe8c784))
+
+
+### Bug Fixes
+
+* **client:** remove duplicate -require_relative imports ([fd31509](https://github.com/team-telnyx/telnyx-ruby/commit/fd31509ee0064f599cf90c47508fb73a847b34c7))
+* correct broken link to List SIM Card Actions endpoint in SIM car… ([11e98c5](https://github.com/team-telnyx/telnyx-ruby/commit/11e98c566659d431c2e667b02698c0f325b46fce))
+* **internal:** increase timeout for linting in ci ([b33ad1f](https://github.com/team-telnyx/telnyx-ruby/commit/b33ad1f0272f15b84f99221f85e00f2225c512d2))
+* update broken MDR report link in GetMessage endpoint ([9f3c6df](https://github.com/team-telnyx/telnyx-ruby/commit/9f3c6df9d02eff35967f5a22eb43e4b1195b0c50))
+
+
+### Chores
+
+* fix typo in descriptions ([5cd205d](https://github.com/team-telnyx/telnyx-ruby/commit/5cd205d01f84ca4429e5ddd20ef09a5c3c7708e5))
+* **internal:** update `actions/checkout` version ([1825922](https://github.com/team-telnyx/telnyx-ruby/commit/1825922bb5de09c2f47df83d1ff47ba94cd4dc16))
+
 ## 5.0.0 (2026-01-09)
 
 Full Changelog: [v4.4.0...v5.0.0](https://github.com/team-telnyx/telnyx-ruby/compare/v4.4.0...v5.0.0)

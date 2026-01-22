@@ -70,7 +70,7 @@ module Telnyx
       end
       def list(
         # Consolidated filter parameter for SIM cards (deepObject style). Originally:
-        # filter[tags], filter[iccid], filter[status]
+        # filter[iccid], filter[msisdn], filter[status], filter[tags]
         filter: nil,
         # A valid SIM card group ID.
         filter_sim_card_group_id: nil,

@@ -135,6 +135,12 @@ module Telnyx
           sig { returns(T.nilable(String)) }
           attr_accessor :business_registration_type
 
+          # Campaign Verify Authorization Token required for Political use case submissions
+          # starting February 17, 2026. This token is validated by Zipwhip and must be
+          # provided for all Political use case verifications after the deadline.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :campaign_verify_authorization_token
+
           # Doing Business As (DBA) name if different from legal name
           sig { returns(T.nilable(String)) }
           attr_accessor :doing_business_as
@@ -211,6 +217,7 @@ module Telnyx
               business_registration_country: T.nilable(String),
               business_registration_number: T.nilable(String),
               business_registration_type: T.nilable(String),
+              campaign_verify_authorization_token: T.nilable(String),
               doing_business_as: T.nilable(String),
               entity_type:
                 T.nilable(
@@ -281,6 +288,10 @@ module Telnyx
             business_registration_number: nil,
             # Type of business registration being provided. Required from January 2026.
             business_registration_type: nil,
+            # Campaign Verify Authorization Token required for Political use case submissions
+            # starting February 17, 2026. This token is validated by Zipwhip and must be
+            # provided for all Political use case verifications after the deadline.
+            campaign_verify_authorization_token: nil,
             # Doing Business As (DBA) name if different from legal name
             doing_business_as: nil,
             # Business entity classification
@@ -335,6 +346,7 @@ module Telnyx
                 business_registration_country: T.nilable(String),
                 business_registration_number: T.nilable(String),
                 business_registration_type: T.nilable(String),
+                campaign_verify_authorization_token: T.nilable(String),
                 doing_business_as: T.nilable(String),
                 entity_type:
                   T.nilable(

@@ -4,6 +4,40 @@ module Telnyx
   module Resources
     class Calls
       class Actions
+        # Add messages to the conversation started by an AI assistant on the call.
+        sig do
+          params(
+            call_control_id: String,
+            client_state: String,
+            command_id: String,
+            messages:
+              T::Array[
+                T.any(
+                  Telnyx::Calls::ActionAddAIAssistantMessagesParams::Message::User::OrHash,
+                  Telnyx::Calls::ActionAddAIAssistantMessagesParams::Message::Assistant::OrHash,
+                  Telnyx::Calls::ActionAddAIAssistantMessagesParams::Message::Tool::OrHash,
+                  Telnyx::Calls::ActionAddAIAssistantMessagesParams::Message::System::OrHash,
+                  Telnyx::Calls::ActionAddAIAssistantMessagesParams::Message::Developer::OrHash
+                )
+              ],
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::Calls::ActionAddAIAssistantMessagesResponse)
+        end
+        def add_ai_assistant_messages(
+          # Unique identifier and token for controlling the call
+          call_control_id,
+          # Use this field to add state to every subsequent webhook. It must be a valid
+          # Base-64 encoded string.
+          client_state: nil,
+          # Use this field to avoid duplicate commands. Telnyx will ignore any command with
+          # the same `command_id` for the same `call_control_id`.
+          command_id: nil,
+          # The messages to add to the conversation.
+          messages: nil,
+          request_options: {}
+        )
+        end
+
         # Answer an incoming call. You must issue this command before executing subsequent
         # commands on an incoming call.
         #
@@ -1138,8 +1172,9 @@ module Telnyx
           command_id: nil,
           # The direction of the audio stream to be noise suppressed.
           direction: nil,
-          # The engine to use for noise suppression. For backward compatibility, engines A
-          # and B are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
+          # The engine to use for noise suppression. For backward compatibility, engines A,
+          # B, and C are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
+          # C - Krisp
           noise_suppression_engine: nil,
           # Configuration parameters for noise suppression engines.
           noise_suppression_engine_config: nil,

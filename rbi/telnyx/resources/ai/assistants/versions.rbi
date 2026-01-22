@@ -15,11 +15,11 @@ module Telnyx
             ).returns(Telnyx::AI::InferenceEmbedding)
           end
           def retrieve(
-            # Path param:
+            # Path param
             version_id,
-            # Path param:
+            # Path param
             assistant_id:,
-            # Query param:
+            # Query param
             include_mcp_servers: nil,
             request_options: {}
           )
@@ -47,11 +47,11 @@ module Telnyx
               tools:
                 T::Array[
                   T.any(
-                    Telnyx::AI::WebhookTool::OrHash,
+                    Telnyx::AI::AssistantTool::Webhook::OrHash,
                     Telnyx::AI::RetrievalTool::OrHash,
                     Telnyx::AI::AssistantTool::Handoff::OrHash,
                     Telnyx::AI::HangupTool::OrHash,
-                    Telnyx::AI::TransferTool::OrHash,
+                    Telnyx::AI::AssistantTool::Transfer::OrHash,
                     Telnyx::AI::AssistantTool::Refer::OrHash,
                     Telnyx::AI::AssistantTool::SendDtmf::OrHash,
                     Telnyx::AI::AssistantTool::SendMessage::OrHash
@@ -59,15 +59,17 @@ module Telnyx
                 ],
               transcription: Telnyx::AI::TranscriptionSettings::OrHash,
               voice_settings: Telnyx::AI::VoiceSettings::OrHash,
+              widget_settings:
+                Telnyx::AI::Assistants::UpdateAssistant::WidgetSettings::OrHash,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::InferenceEmbedding)
           end
           def update(
-            # Path param:
+            # Path param
             version_id,
-            # Path param:
+            # Path param
             assistant_id:,
-            # Body param:
+            # Body param
             description: nil,
             # Body param: Map of dynamic variables and their default values
             dynamic_variables: nil,
@@ -76,42 +78,47 @@ module Telnyx
             # [guide](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
             # for more information.
             dynamic_variables_webhook_url: nil,
-            # Body param:
+            # Body param
             enabled_features: nil,
             # Body param: Text that the assistant will use to start the conversation. This may
             # be templated with
-            # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
+            # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables).
+            # Use an empty string to have the assistant wait for the user to speak first. Use
+            # the special value `<assistant-speaks-first-with-model-generated-message>` to
+            # have the assistant generate the greeting based on the system instructions.
             greeting: nil,
-            # Body param:
+            # Body param
             insight_settings: nil,
             # Body param: System instructions for the assistant. These may be templated with
             # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
             instructions: nil,
             # Body param: This is only needed when using third-party inference providers. The
             # `identifier` for an integration secret
-            # [/v2/integration_secrets](https://developers.telnyx.com/api/secrets-manager/integration-secrets/create-integration-secret)
+            # [/v2/integration_secrets](https://developers.telnyx.com/api-reference/integration-secrets/create-a-secret)
             # that refers to your LLM provider's API key. Warning: Free plans are unlikely to
             # work with this integration.
             llm_api_key_ref: nil,
-            # Body param:
+            # Body param
             messaging_settings: nil,
             # Body param: ID of the model to use. You can use the
-            # [Get models API](https://developers.telnyx.com/api/inference/inference-embedding/get-models-public-models-get)
+            # [Get models API](https://developers.telnyx.com/api-reference/chat/get-available-models)
             # to see all of your available models,
             model: nil,
-            # Body param:
+            # Body param
             name: nil,
-            # Body param:
+            # Body param
             privacy_settings: nil,
-            # Body param:
+            # Body param
             telephony_settings: nil,
             # Body param: The tools that the assistant can use. These may be templated with
             # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
             tools: nil,
-            # Body param:
+            # Body param
             transcription: nil,
-            # Body param:
+            # Body param
             voice_settings: nil,
+            # Body param: Configuration settings for the assistant's web widget.
+            widget_settings: nil,
             request_options: {}
           )
           end

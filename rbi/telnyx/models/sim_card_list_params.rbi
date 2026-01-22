@@ -12,7 +12,7 @@ module Telnyx
         end
 
       # Consolidated filter parameter for SIM cards (deepObject style). Originally:
-      # filter[tags], filter[iccid], filter[status]
+      # filter[iccid], filter[msisdn], filter[status], filter[tags]
       sig { returns(T.nilable(Telnyx::SimCardListParams::Filter)) }
       attr_reader :filter
 
@@ -61,7 +61,7 @@ module Telnyx
       end
       def self.new(
         # Consolidated filter parameter for SIM cards (deepObject style). Originally:
-        # filter[tags], filter[iccid], filter[status]
+        # filter[iccid], filter[msisdn], filter[status], filter[tags]
         filter: nil,
         # A valid SIM card group ID.
         filter_sim_card_group_id: nil,
@@ -105,6 +105,13 @@ module Telnyx
         sig { params(iccid: String).void }
         attr_writer :iccid
 
+        # A search string to match for the SIM card's MSISDN.
+        sig { returns(T.nilable(String)) }
+        attr_reader :msisdn
+
+        sig { params(msisdn: String).void }
+        attr_writer :msisdn
+
         # Filter by a SIM card's status.
         sig do
           returns(
@@ -139,10 +146,11 @@ module Telnyx
         attr_writer :tags
 
         # Consolidated filter parameter for SIM cards (deepObject style). Originally:
-        # filter[tags], filter[iccid], filter[status]
+        # filter[iccid], filter[msisdn], filter[status], filter[tags]
         sig do
           params(
             iccid: String,
+            msisdn: String,
             status:
               T::Array[Telnyx::SimCardListParams::Filter::Status::OrSymbol],
             tags: T::Array[String]
@@ -151,6 +159,8 @@ module Telnyx
         def self.new(
           # A search string to partially match for the SIM card's ICCID.
           iccid: nil,
+          # A search string to match for the SIM card's MSISDN.
+          msisdn: nil,
           # Filter by a SIM card's status.
           status: nil,
           # A list of SIM card tags to filter on.<br/><br/> If the SIM card contains
@@ -170,6 +180,7 @@ module Telnyx
           override.returns(
             {
               iccid: String,
+              msisdn: String,
               status:
                 T::Array[Telnyx::SimCardListParams::Filter::Status::OrSymbol],
               tags: T::Array[String]

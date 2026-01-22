@@ -75,6 +75,29 @@ class Telnyx::Test::Resources::Texml::Accounts::QueuesTest < Telnyx::Test::Resou
     end
   end
 
+  def test_list
+    skip("Prism tests are disabled")
+
+    response = @telnyx.texml.accounts.queues.list("account_sid")
+
+    assert_pattern do
+      response => Telnyx::Models::Texml::Accounts::QueueListResponse
+    end
+
+    assert_pattern do
+      response => {
+        end_: Integer | nil,
+        first_page_uri: String | nil,
+        next_page_uri: String | nil,
+        page: Integer | nil,
+        page_size: Integer | nil,
+        queues: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Texml::Accounts::QueueListResponse::Queue]) | nil,
+        start: Integer | nil,
+        uri: String | nil
+      }
+    end
+  end
+
   def test_delete_required_params
     skip("Prism tests are disabled")
 

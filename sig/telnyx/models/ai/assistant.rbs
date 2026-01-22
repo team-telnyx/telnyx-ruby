@@ -48,7 +48,7 @@ module Telnyx
           | Telnyx::AI::WebhookTool
           | Telnyx::AI::HangupTool
           | Telnyx::AI::TransferTool
-          | Telnyx::AI::RetrievalTool
+          | Telnyx::AI::Assistant::Tool::Retrieval
 
         module Tool
           extend Telnyx::Internal::Type::Union
@@ -146,6 +146,49 @@ module Telnyx
               ) -> void
 
               def to_hash: -> { api_key_ref: String, event_type_id: Integer }
+            end
+          end
+
+          type retrieval =
+            {
+              retrieval: Telnyx::AI::Assistant::Tool::Retrieval::Retrieval,
+              type: :retrieval
+            }
+
+          class Retrieval < Telnyx::Internal::Type::BaseModel
+            attr_accessor retrieval: Telnyx::AI::Assistant::Tool::Retrieval::Retrieval
+
+            attr_accessor type: :retrieval
+
+            def initialize: (
+              retrieval: Telnyx::AI::Assistant::Tool::Retrieval::Retrieval,
+              ?type: :retrieval
+            ) -> void
+
+            def to_hash: -> {
+              retrieval: Telnyx::AI::Assistant::Tool::Retrieval::Retrieval,
+              type: :retrieval
+            }
+
+            type retrieval =
+              { bucket_ids: ::Array[String], max_num_results: Integer }
+
+            class Retrieval < Telnyx::Internal::Type::BaseModel
+              attr_accessor bucket_ids: ::Array[String]
+
+              attr_reader max_num_results: Integer?
+
+              def max_num_results=: (Integer) -> Integer
+
+              def initialize: (
+                bucket_ids: ::Array[String],
+                ?max_num_results: Integer
+              ) -> void
+
+              def to_hash: -> {
+                bucket_ids: ::Array[String],
+                max_num_results: Integer
+              }
             end
           end
 
