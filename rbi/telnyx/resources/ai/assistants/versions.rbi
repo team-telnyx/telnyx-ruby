@@ -59,8 +59,7 @@ module Telnyx
                 ],
               transcription: Telnyx::AI::TranscriptionSettings::OrHash,
               voice_settings: Telnyx::AI::VoiceSettings::OrHash,
-              widget_settings:
-                Telnyx::AI::Assistants::UpdateAssistant::WidgetSettings::OrHash,
+              widget_settings: Telnyx::AI::WidgetSettings::OrHash,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::InferenceEmbedding)
           end

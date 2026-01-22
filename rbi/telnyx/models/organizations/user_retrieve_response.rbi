@@ -78,11 +78,7 @@ module Telnyx
           # true.
           sig do
             returns(
-              T.nilable(
-                T::Array[
-                  Telnyx::Models::Organizations::UserRetrieveResponse::Data::Group
-                ]
-              )
+              T.nilable(T::Array[Telnyx::Organizations::UserGroupReference])
             )
           end
           attr_reader :groups
@@ -90,9 +86,7 @@ module Telnyx
           sig do
             params(
               groups:
-                T::Array[
-                  Telnyx::Models::Organizations::UserRetrieveResponse::Data::Group::OrHash
-                ]
+                T::Array[Telnyx::Organizations::UserGroupReference::OrHash]
             ).void
           end
           attr_writer :groups
@@ -142,9 +136,7 @@ module Telnyx
               created_at: String,
               email: String,
               groups:
-                T::Array[
-                  Telnyx::Models::Organizations::UserRetrieveResponse::Data::Group::OrHash
-                ],
+                T::Array[Telnyx::Organizations::UserGroupReference::OrHash],
               last_sign_in_at: T.nilable(String),
               organization_user_bypasses_sso: T::Boolean,
               record_type: String,
@@ -182,10 +174,7 @@ module Telnyx
                 id: String,
                 created_at: String,
                 email: String,
-                groups:
-                  T::Array[
-                    Telnyx::Models::Organizations::UserRetrieveResponse::Data::Group
-                  ],
+                groups: T::Array[Telnyx::Organizations::UserGroupReference],
                 last_sign_in_at: T.nilable(String),
                 organization_user_bypasses_sso: T::Boolean,
                 record_type: String,
@@ -195,38 +184,6 @@ module Telnyx
             )
           end
           def to_hash
-          end
-
-          class Group < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Models::Organizations::UserRetrieveResponse::Data::Group,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # The unique identifier of the group.
-            sig { returns(String) }
-            attr_accessor :id
-
-            # The name of the group.
-            sig { returns(String) }
-            attr_accessor :name
-
-            # A reference to a group that a user belongs to.
-            sig { params(id: String, name: String).returns(T.attached_class) }
-            def self.new(
-              # The unique identifier of the group.
-              id:,
-              # The name of the group.
-              name:
-            )
-            end
-
-            sig { override.returns({ id: String, name: String }) }
-            def to_hash
-            end
           end
 
           # The status of the account.

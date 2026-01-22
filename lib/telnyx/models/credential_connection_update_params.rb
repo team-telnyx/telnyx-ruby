@@ -94,9 +94,8 @@ module Telnyx
       #   noise_suppression is not 'disabled'. If you disable noise suppression and later
       #   re-enable it, the previously configured settings will be used.
       #
-      #   @return [Telnyx::Models::CredentialConnectionUpdateParams::NoiseSuppressionDetails, nil]
-      optional :noise_suppression_details,
-               -> { Telnyx::CredentialConnectionUpdateParams::NoiseSuppressionDetails }
+      #   @return [Telnyx::Models::ConnectionNoiseSuppressionDetails, nil]
+      optional :noise_suppression_details, -> { Telnyx::ConnectionNoiseSuppressionDetails }
 
       # @!attribute onnet_t38_passthrough_enabled
       #   Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
@@ -201,7 +200,7 @@ module Telnyx
       #
       #   @param noise_suppression [Symbol, Telnyx::Models::CredentialConnectionUpdateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #
-      #   @param noise_suppression_details [Telnyx::Models::CredentialConnectionUpdateParams::NoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
+      #   @param noise_suppression_details [Telnyx::Models::ConnectionNoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #
       #   @param onnet_t38_passthrough_enabled [Boolean] Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
       #
@@ -241,63 +240,6 @@ module Telnyx
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      class NoiseSuppressionDetails < Telnyx::Internal::Type::BaseModel
-        # @!attribute attenuation_limit
-        #   The attenuation limit value for the selected engine. Default values vary by
-        #   engine: 0 for 'denoiser', 80 for 'deep_filter_net', 'deep_filter_net_large', and
-        #   all Krisp engines ('krisp_viva_tel', 'krisp_viva_tel_lite',
-        #   'krisp_viva_promodel', 'krisp_viva_ss').
-        #
-        #   @return [Integer, nil]
-        optional :attenuation_limit, Integer
-
-        # @!attribute engine
-        #   The noise suppression engine to use. 'denoiser' is the default engine.
-        #   'deep_filter_net' and 'deep_filter_net_large' are alternative engines with
-        #   different performance characteristics. Krisp engines ('krisp_viva_tel',
-        #   'krisp_viva_tel_lite', 'krisp_viva_promodel', 'krisp_viva_ss') provide advanced
-        #   noise suppression capabilities.
-        #
-        #   @return [Symbol, Telnyx::Models::CredentialConnectionUpdateParams::NoiseSuppressionDetails::Engine, nil]
-        optional :engine, enum: -> { Telnyx::CredentialConnectionUpdateParams::NoiseSuppressionDetails::Engine }
-
-        # @!method initialize(attenuation_limit: nil, engine: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::CredentialConnectionUpdateParams::NoiseSuppressionDetails} for
-        #   more details.
-        #
-        #   Configuration options for noise suppression. These settings are stored
-        #   regardless of the noise_suppression value, but only take effect when
-        #   noise_suppression is not 'disabled'. If you disable noise suppression and later
-        #   re-enable it, the previously configured settings will be used.
-        #
-        #   @param attenuation_limit [Integer] The attenuation limit value for the selected engine. Default values vary by engi
-        #
-        #   @param engine [Symbol, Telnyx::Models::CredentialConnectionUpdateParams::NoiseSuppressionDetails::Engine] The noise suppression engine to use. 'denoiser' is the default engine. 'deep_fil
-
-        # The noise suppression engine to use. 'denoiser' is the default engine.
-        # 'deep_filter_net' and 'deep_filter_net_large' are alternative engines with
-        # different performance characteristics. Krisp engines ('krisp_viva_tel',
-        # 'krisp_viva_tel_lite', 'krisp_viva_promodel', 'krisp_viva_ss') provide advanced
-        # noise suppression capabilities.
-        #
-        # @see Telnyx::Models::CredentialConnectionUpdateParams::NoiseSuppressionDetails#engine
-        module Engine
-          extend Telnyx::Internal::Type::Enum
-
-          DENOISER = :denoiser
-          DEEP_FILTER_NET = :deep_filter_net
-          DEEP_FILTER_NET_LARGE = :deep_filter_net_large
-          KRISP_VIVA_TEL = :krisp_viva_tel
-          KRISP_VIVA_TEL_LITE = :krisp_viva_tel_lite
-          KRISP_VIVA_PROMODEL = :krisp_viva_promodel
-          KRISP_VIVA_SS = :krisp_viva_ss
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
       end
 
       # This feature enables inbound SIP URI calls to your Credential Auth Connection.
