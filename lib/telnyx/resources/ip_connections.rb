@@ -8,7 +8,7 @@ module Telnyx
       #
       # Creates an IP connection.
       #
-      # @overload create(active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, connection_name: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @overload create(active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, connection_name: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, jitter_buffer: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #
       # @param active [Boolean] Defaults to true
       #
@@ -31,6 +31,8 @@ module Telnyx
       # @param inbound [Telnyx::Models::IPConnectionCreateParams::Inbound]
       #
       # @param ios_push_credential_id [String, nil] The uuid of the push credential for Ios
+      #
+      # @param jitter_buffer [Telnyx::Models::IPConnectionCreateParams::JitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
       #
       # @param noise_suppression [Symbol, Telnyx::Models::IPConnectionCreateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #
@@ -95,7 +97,7 @@ module Telnyx
       #
       # Updates settings of an existing IP connection.
       #
-      # @overload update(id, active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, connection_name: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @overload update(id, active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, connection_name: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, jitter_buffer: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #
       # @param id [String] Identifies the type of resource.
       #
@@ -120,6 +122,8 @@ module Telnyx
       # @param inbound [Telnyx::Models::InboundIP]
       #
       # @param ios_push_credential_id [String, nil] The uuid of the push credential for Ios
+      #
+      # @param jitter_buffer [Telnyx::Models::IPConnectionUpdateParams::JitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
       #
       # @param noise_suppression [Symbol, Telnyx::Models::IPConnectionUpdateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #

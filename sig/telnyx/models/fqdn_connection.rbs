@@ -7,6 +7,7 @@ module Telnyx
         active: bool,
         adjust_dtmf_timestamp: bool,
         anchorsite_override: Telnyx::Models::anchorsite_override,
+        android_push_credential_id: String?,
         call_cost_enabled: bool,
         call_cost_in_webhooks: bool,
         created_at: String,
@@ -17,6 +18,8 @@ module Telnyx
         ignore_dtmf_duration: bool,
         ignore_mark_bit: bool,
         inbound: Telnyx::InboundFqdn,
+        ios_push_credential_id: String?,
+        jitter_buffer: Telnyx::FqdnConnection::JitterBuffer,
         microsoft_teams_sbc: bool,
         noise_suppression: Telnyx::Models::FqdnConnection::noise_suppression,
         noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
@@ -62,6 +65,8 @@ module Telnyx
         Telnyx::Models::anchorsite_override
       ) -> Telnyx::Models::anchorsite_override
 
+      attr_accessor android_push_credential_id: String?
+
       attr_reader call_cost_enabled: bool?
 
       def call_cost_enabled=: (bool) -> bool
@@ -99,6 +104,14 @@ module Telnyx
       attr_reader inbound: Telnyx::InboundFqdn?
 
       def inbound=: (Telnyx::InboundFqdn) -> Telnyx::InboundFqdn
+
+      attr_accessor ios_push_credential_id: String?
+
+      attr_reader jitter_buffer: Telnyx::FqdnConnection::JitterBuffer?
+
+      def jitter_buffer=: (
+        Telnyx::FqdnConnection::JitterBuffer
+      ) -> Telnyx::FqdnConnection::JitterBuffer
 
       attr_reader microsoft_teams_sbc: bool?
 
@@ -200,6 +213,7 @@ module Telnyx
         ?active: bool,
         ?adjust_dtmf_timestamp: bool,
         ?anchorsite_override: Telnyx::Models::anchorsite_override,
+        ?android_push_credential_id: String?,
         ?call_cost_enabled: bool,
         ?call_cost_in_webhooks: bool,
         ?created_at: String,
@@ -210,6 +224,8 @@ module Telnyx
         ?ignore_dtmf_duration: bool,
         ?ignore_mark_bit: bool,
         ?inbound: Telnyx::InboundFqdn,
+        ?ios_push_credential_id: String?,
+        ?jitter_buffer: Telnyx::FqdnConnection::JitterBuffer,
         ?microsoft_teams_sbc: bool,
         ?noise_suppression: Telnyx::Models::FqdnConnection::noise_suppression,
         ?noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
@@ -240,6 +256,7 @@ module Telnyx
         active: bool,
         adjust_dtmf_timestamp: bool,
         anchorsite_override: Telnyx::Models::anchorsite_override,
+        android_push_credential_id: String?,
         call_cost_enabled: bool,
         call_cost_in_webhooks: bool,
         created_at: String,
@@ -250,6 +267,8 @@ module Telnyx
         ignore_dtmf_duration: bool,
         ignore_mark_bit: bool,
         inbound: Telnyx::InboundFqdn,
+        ios_push_credential_id: String?,
+        jitter_buffer: Telnyx::FqdnConnection::JitterBuffer,
         microsoft_teams_sbc: bool,
         noise_suppression: Telnyx::Models::FqdnConnection::noise_suppression,
         noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
@@ -273,6 +292,39 @@ module Telnyx
         webhook_event_url: String,
         webhook_timeout_secs: Integer?
       }
+
+      type jitter_buffer =
+        {
+          enable_jitter_buffer: bool,
+          jitterbuffer_msec_max: Integer,
+          jitterbuffer_msec_min: Integer
+        }
+
+      class JitterBuffer < Telnyx::Internal::Type::BaseModel
+        attr_reader enable_jitter_buffer: bool?
+
+        def enable_jitter_buffer=: (bool) -> bool
+
+        attr_reader jitterbuffer_msec_max: Integer?
+
+        def jitterbuffer_msec_max=: (Integer) -> Integer
+
+        attr_reader jitterbuffer_msec_min: Integer?
+
+        def jitterbuffer_msec_min=: (Integer) -> Integer
+
+        def initialize: (
+          ?enable_jitter_buffer: bool,
+          ?jitterbuffer_msec_max: Integer,
+          ?jitterbuffer_msec_min: Integer
+        ) -> void
+
+        def to_hash: -> {
+          enable_jitter_buffer: bool,
+          jitterbuffer_msec_max: Integer,
+          jitterbuffer_msec_min: Integer
+        }
+      end
 
       type noise_suppression = :inbound | :outbound | :both | :disabled
 

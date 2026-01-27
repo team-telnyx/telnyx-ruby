@@ -5,6 +5,7 @@ module Telnyx
         id: String,
         active: bool,
         anchorsite_override: Telnyx::Models::anchorsite_override,
+        android_push_credential_id: String?,
         call_cost_in_webhooks: bool,
         connection_name: String,
         created_at: String,
@@ -13,6 +14,8 @@ module Telnyx
         encode_contact_header_enabled: bool,
         encrypted_media: Telnyx::Models::encrypted_media?,
         inbound: Telnyx::InboundIP,
+        ios_push_credential_id: String?,
+        jitter_buffer: Telnyx::IPConnection::JitterBuffer,
         noise_suppression: Telnyx::Models::IPConnection::noise_suppression,
         noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
         :onnet_t38_passthrough_enabled => bool,
@@ -43,6 +46,8 @@ module Telnyx
         Telnyx::Models::anchorsite_override
       ) -> Telnyx::Models::anchorsite_override
 
+      attr_accessor android_push_credential_id: String?
+
       attr_reader call_cost_in_webhooks: bool?
 
       def call_cost_in_webhooks=: (bool) -> bool
@@ -72,6 +77,14 @@ module Telnyx
       attr_reader inbound: Telnyx::InboundIP?
 
       def inbound=: (Telnyx::InboundIP) -> Telnyx::InboundIP
+
+      attr_accessor ios_push_credential_id: String?
+
+      attr_reader jitter_buffer: Telnyx::IPConnection::JitterBuffer?
+
+      def jitter_buffer=: (
+        Telnyx::IPConnection::JitterBuffer
+      ) -> Telnyx::IPConnection::JitterBuffer
 
       attr_reader noise_suppression: Telnyx::Models::IPConnection::noise_suppression?
 
@@ -135,6 +148,7 @@ module Telnyx
         ?id: String,
         ?active: bool,
         ?anchorsite_override: Telnyx::Models::anchorsite_override,
+        ?android_push_credential_id: String?,
         ?call_cost_in_webhooks: bool,
         ?connection_name: String,
         ?created_at: String,
@@ -143,6 +157,8 @@ module Telnyx
         ?encode_contact_header_enabled: bool,
         ?encrypted_media: Telnyx::Models::encrypted_media?,
         ?inbound: Telnyx::InboundIP,
+        ?ios_push_credential_id: String?,
+        ?jitter_buffer: Telnyx::IPConnection::JitterBuffer,
         ?noise_suppression: Telnyx::Models::IPConnection::noise_suppression,
         ?noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
         ?onnet_t38_passthrough_enabled: bool,
@@ -162,6 +178,7 @@ module Telnyx
         id: String,
         active: bool,
         anchorsite_override: Telnyx::Models::anchorsite_override,
+        android_push_credential_id: String?,
         call_cost_in_webhooks: bool,
         connection_name: String,
         created_at: String,
@@ -170,6 +187,8 @@ module Telnyx
         encode_contact_header_enabled: bool,
         encrypted_media: Telnyx::Models::encrypted_media?,
         inbound: Telnyx::InboundIP,
+        ios_push_credential_id: String?,
+        jitter_buffer: Telnyx::IPConnection::JitterBuffer,
         noise_suppression: Telnyx::Models::IPConnection::noise_suppression,
         noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
         :onnet_t38_passthrough_enabled => bool,
@@ -184,6 +203,39 @@ module Telnyx
         webhook_event_url: String,
         webhook_timeout_secs: Integer?
       }
+
+      type jitter_buffer =
+        {
+          enable_jitter_buffer: bool,
+          jitterbuffer_msec_max: Integer,
+          jitterbuffer_msec_min: Integer
+        }
+
+      class JitterBuffer < Telnyx::Internal::Type::BaseModel
+        attr_reader enable_jitter_buffer: bool?
+
+        def enable_jitter_buffer=: (bool) -> bool
+
+        attr_reader jitterbuffer_msec_max: Integer?
+
+        def jitterbuffer_msec_max=: (Integer) -> Integer
+
+        attr_reader jitterbuffer_msec_min: Integer?
+
+        def jitterbuffer_msec_min=: (Integer) -> Integer
+
+        def initialize: (
+          ?enable_jitter_buffer: bool,
+          ?jitterbuffer_msec_max: Integer,
+          ?jitterbuffer_msec_min: Integer
+        ) -> void
+
+        def to_hash: -> {
+          enable_jitter_buffer: bool,
+          jitterbuffer_msec_max: Integer,
+          jitterbuffer_msec_min: Integer
+        }
+      end
 
       type noise_suppression = :inbound | :outbound | :both | :disabled
 
