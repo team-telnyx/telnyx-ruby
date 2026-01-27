@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.3.0 (2026-01-27)
+
+Full Changelog: [v5.2.0...v5.3.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.2.0...v5.3.0)
+
+### Features
+
+* jira-engdesk-49089 add new connection jitter buffer related fields ([2cdf3ef](https://github.com/team-telnyx/telnyx-ruby/commit/2cdf3efe3611ae9075eccf4e240b50978b765db9))
+
 ## 5.2.0 (2026-01-22)
 
 Full Changelog: [v5.1.0...v5.2.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.1.0...v5.2.0)
