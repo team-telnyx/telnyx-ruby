@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.4.0 (2026-01-27)
+
+Full Changelog: [v5.3.0...v5.4.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.3.0...v5.4.0)
+
+### Features
+
+* Deploy dev/mc vady wip ([3582de3](https://github.com/team-telnyx/telnyx-ruby/commit/3582de3b95261ed164c56d4e7d5b286b2f9da7ab))
+
 ## 5.3.0 (2026-01-27)
 
 Full Changelog: [v5.2.0...v5.3.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.2.0...v5.3.0)
