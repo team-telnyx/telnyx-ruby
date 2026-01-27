@@ -36,6 +36,12 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::AnchorsiteOverride, nil]
       optional :anchorsite_override, enum: -> { Telnyx::AnchorsiteOverride }
 
+      # @!attribute android_push_credential_id
+      #   The uuid of the push credential for Android
+      #
+      #   @return [String, nil]
+      optional :android_push_credential_id, String, nil?: true
+
       # @!attribute call_cost_enabled
       #   Indicates whether call cost calculation is enabled.
       #
@@ -99,6 +105,22 @@ module Telnyx
       #
       #   @return [Telnyx::Models::InboundFqdn, nil]
       optional :inbound, -> { Telnyx::InboundFqdn }
+
+      # @!attribute ios_push_credential_id
+      #   The uuid of the push credential for Ios
+      #
+      #   @return [String, nil]
+      optional :ios_push_credential_id, String, nil?: true
+
+      # @!attribute jitter_buffer
+      #   Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams
+      #   of SIP Trunking calls. The feature is off unless enabled. You may define min and
+      #   max values in msec for customized buffering behaviors. Larger values add latency
+      #   but tolerate more jitter, while smaller values reduce latency but are more
+      #   sensitive to jitter and reordering.
+      #
+      #   @return [Telnyx::Models::FqdnConnection::JitterBuffer, nil]
+      optional :jitter_buffer, -> { Telnyx::FqdnConnection::JitterBuffer }
 
       # @!attribute microsoft_teams_sbc
       #   The connection is enabled for Microsoft Teams Direct Routing.
@@ -241,7 +263,7 @@ module Telnyx
       #   @return [Integer, nil]
       optional :webhook_timeout_secs, Integer, nil?: true
 
-      # @!method initialize(connection_name:, id: nil, active: nil, adjust_dtmf_timestamp: nil, anchorsite_override: nil, call_cost_enabled: nil, call_cost_in_webhooks: nil, created_at: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, ignore_dtmf_duration: nil, ignore_mark_bit: nil, inbound: nil, microsoft_teams_sbc: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, password: nil, record_type: nil, rtcp_settings: nil, rtp_pass_codecs_on_stream_change: nil, send_normalized_timestamps: nil, tags: nil, third_party_control_enabled: nil, transport_protocol: nil, txt_name: nil, txt_ttl: nil, txt_value: nil, updated_at: nil, user_name: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
+      # @!method initialize(connection_name:, id: nil, active: nil, adjust_dtmf_timestamp: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_enabled: nil, call_cost_in_webhooks: nil, created_at: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, ignore_dtmf_duration: nil, ignore_mark_bit: nil, inbound: nil, ios_push_credential_id: nil, jitter_buffer: nil, microsoft_teams_sbc: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, password: nil, record_type: nil, rtcp_settings: nil, rtp_pass_codecs_on_stream_change: nil, send_normalized_timestamps: nil, tags: nil, third_party_control_enabled: nil, transport_protocol: nil, txt_name: nil, txt_ttl: nil, txt_value: nil, updated_at: nil, user_name: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::FqdnConnection} for more details.
       #
@@ -254,6 +276,8 @@ module Telnyx
       #   @param adjust_dtmf_timestamp [Boolean] Indicates whether DTMF timestamp adjustment is enabled.
       #
       #   @param anchorsite_override [Symbol, Telnyx::Models::AnchorsiteOverride] `Latency` directs Telnyx to route media through the site with the lowest round-t
+      #
+      #   @param android_push_credential_id [String, nil] The uuid of the push credential for Android
       #
       #   @param call_cost_enabled [Boolean] Indicates whether call cost calculation is enabled.
       #
@@ -274,6 +298,10 @@ module Telnyx
       #   @param ignore_mark_bit [Boolean] Indicates whether the mark bit should be ignored.
       #
       #   @param inbound [Telnyx::Models::InboundFqdn]
+      #
+      #   @param ios_push_credential_id [String, nil] The uuid of the push credential for Ios
+      #
+      #   @param jitter_buffer [Telnyx::Models::FqdnConnection::JitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
       #
       #   @param microsoft_teams_sbc [Boolean] The connection is enabled for Microsoft Teams Direct Routing.
       #
@@ -318,6 +346,46 @@ module Telnyx
       #   @param webhook_event_url [String] The URL where webhooks related to this connection will be sent. Must include a s
       #
       #   @param webhook_timeout_secs [Integer, nil] Specifies how many seconds to wait before timing out a webhook.
+
+      # @see Telnyx::Models::FqdnConnection#jitter_buffer
+      class JitterBuffer < Telnyx::Internal::Type::BaseModel
+        # @!attribute enable_jitter_buffer
+        #   Enables Jitter Buffer for RTP streams of SIP Trunking calls. The feature is off
+        #   unless enabled.
+        #
+        #   @return [Boolean, nil]
+        optional :enable_jitter_buffer, Telnyx::Internal::Type::Boolean
+
+        # @!attribute jitterbuffer_msec_max
+        #   The maximum jitter buffer size in milliseconds. Must be between 40 and 400. Has
+        #   no effect if enable_jitter_buffer is not true.
+        #
+        #   @return [Integer, nil]
+        optional :jitterbuffer_msec_max, Integer
+
+        # @!attribute jitterbuffer_msec_min
+        #   The minimum jitter buffer size in milliseconds. Must be between 40 and 400. Has
+        #   no effect if enable_jitter_buffer is not true.
+        #
+        #   @return [Integer, nil]
+        optional :jitterbuffer_msec_min, Integer
+
+        # @!method initialize(enable_jitter_buffer: nil, jitterbuffer_msec_max: nil, jitterbuffer_msec_min: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::FqdnConnection::JitterBuffer} for more details.
+        #
+        #   Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams
+        #   of SIP Trunking calls. The feature is off unless enabled. You may define min and
+        #   max values in msec for customized buffering behaviors. Larger values add latency
+        #   but tolerate more jitter, while smaller values reduce latency but are more
+        #   sensitive to jitter and reordering.
+        #
+        #   @param enable_jitter_buffer [Boolean] Enables Jitter Buffer for RTP streams of SIP Trunking calls. The feature is off
+        #
+        #   @param jitterbuffer_msec_max [Integer] The maximum jitter buffer size in milliseconds. Must be between 40 and 400. Has
+        #
+        #   @param jitterbuffer_msec_min [Integer] The minimum jitter buffer size in milliseconds. Must be between 40 and 400. Has
+      end
 
       # Controls when noise suppression is applied to calls. When set to 'inbound',
       # noise suppression is applied to incoming audio. When set to 'outbound', it's

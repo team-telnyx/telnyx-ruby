@@ -24,6 +24,12 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::AnchorsiteOverride, nil]
       optional :anchorsite_override, enum: -> { Telnyx::AnchorsiteOverride }
 
+      # @!attribute android_push_credential_id
+      #   The uuid of the push credential for Android
+      #
+      #   @return [String, nil]
+      optional :android_push_credential_id, String, nil?: true
+
       # @!attribute call_cost_in_webhooks
       #   Specifies if call cost webhooks should be sent for this connection.
       #
@@ -74,6 +80,22 @@ module Telnyx
       #
       #   @return [Telnyx::Models::CredentialInbound, nil]
       optional :inbound, -> { Telnyx::CredentialInbound }
+
+      # @!attribute ios_push_credential_id
+      #   The uuid of the push credential for Ios
+      #
+      #   @return [String, nil]
+      optional :ios_push_credential_id, String, nil?: true
+
+      # @!attribute jitter_buffer
+      #   Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams
+      #   of SIP Trunking calls. The feature is off unless enabled. You may define min and
+      #   max values in msec for customized buffering behaviors. Larger values add latency
+      #   but tolerate more jitter, while smaller values reduce latency but are more
+      #   sensitive to jitter and reordering.
+      #
+      #   @return [Telnyx::Models::CredentialConnection::JitterBuffer, nil]
+      optional :jitter_buffer, -> { Telnyx::CredentialConnection::JitterBuffer }
 
       # @!attribute noise_suppression
       #   Controls when noise suppression is applied to calls. When set to 'inbound',
@@ -180,7 +202,7 @@ module Telnyx
       #   @return [Integer, nil]
       optional :webhook_timeout_secs, Integer, nil?: true
 
-      # @!method initialize(id: nil, active: nil, anchorsite_override: nil, call_cost_in_webhooks: nil, connection_name: nil, created_at: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, password: nil, record_type: nil, rtcp_settings: nil, sip_uri_calling_preference: nil, tags: nil, updated_at: nil, user_name: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
+      # @!method initialize(id: nil, active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, connection_name: nil, created_at: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, jitter_buffer: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, password: nil, record_type: nil, rtcp_settings: nil, sip_uri_calling_preference: nil, tags: nil, updated_at: nil, user_name: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CredentialConnection} for more details.
       #
@@ -189,6 +211,8 @@ module Telnyx
       #   @param active [Boolean] Defaults to true
       #
       #   @param anchorsite_override [Symbol, Telnyx::Models::AnchorsiteOverride] `Latency` directs Telnyx to route media through the site with the lowest round-t
+      #
+      #   @param android_push_credential_id [String, nil] The uuid of the push credential for Android
       #
       #   @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this connection.
       #
@@ -205,6 +229,10 @@ module Telnyx
       #   @param encrypted_media [Symbol, Telnyx::Models::EncryptedMedia, nil] Enable use of SRTP for encryption. Cannot be set if the transport_portocol is TL
       #
       #   @param inbound [Telnyx::Models::CredentialInbound]
+      #
+      #   @param ios_push_credential_id [String, nil] The uuid of the push credential for Ios
+      #
+      #   @param jitter_buffer [Telnyx::Models::CredentialConnection::JitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
       #
       #   @param noise_suppression [Symbol, Telnyx::Models::CredentialConnection::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #
@@ -235,6 +263,46 @@ module Telnyx
       #   @param webhook_event_url [String] The URL where webhooks related to this connection will be sent. Must include a s
       #
       #   @param webhook_timeout_secs [Integer, nil] Specifies how many seconds to wait before timing out a webhook.
+
+      # @see Telnyx::Models::CredentialConnection#jitter_buffer
+      class JitterBuffer < Telnyx::Internal::Type::BaseModel
+        # @!attribute enable_jitter_buffer
+        #   Enables Jitter Buffer for RTP streams of SIP Trunking calls. The feature is off
+        #   unless enabled.
+        #
+        #   @return [Boolean, nil]
+        optional :enable_jitter_buffer, Telnyx::Internal::Type::Boolean
+
+        # @!attribute jitterbuffer_msec_max
+        #   The maximum jitter buffer size in milliseconds. Must be between 40 and 400. Has
+        #   no effect if enable_jitter_buffer is not true.
+        #
+        #   @return [Integer, nil]
+        optional :jitterbuffer_msec_max, Integer
+
+        # @!attribute jitterbuffer_msec_min
+        #   The minimum jitter buffer size in milliseconds. Must be between 40 and 400. Has
+        #   no effect if enable_jitter_buffer is not true.
+        #
+        #   @return [Integer, nil]
+        optional :jitterbuffer_msec_min, Integer
+
+        # @!method initialize(enable_jitter_buffer: nil, jitterbuffer_msec_max: nil, jitterbuffer_msec_min: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::CredentialConnection::JitterBuffer} for more details.
+        #
+        #   Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams
+        #   of SIP Trunking calls. The feature is off unless enabled. You may define min and
+        #   max values in msec for customized buffering behaviors. Larger values add latency
+        #   but tolerate more jitter, while smaller values reduce latency but are more
+        #   sensitive to jitter and reordering.
+        #
+        #   @param enable_jitter_buffer [Boolean] Enables Jitter Buffer for RTP streams of SIP Trunking calls. The feature is off
+        #
+        #   @param jitterbuffer_msec_max [Integer] The maximum jitter buffer size in milliseconds. Must be between 40 and 400. Has
+        #
+        #   @param jitterbuffer_msec_min [Integer] The minimum jitter buffer size in milliseconds. Must be between 40 and 400. Has
+      end
 
       # Controls when noise suppression is applied to calls. When set to 'inbound',
       # noise suppression is applied to incoming audio. When set to 'outbound', it's

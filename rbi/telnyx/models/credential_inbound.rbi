@@ -41,6 +41,24 @@ module Telnyx
       sig { params(codecs: T::Array[String]).void }
       attr_writer :codecs
 
+      # Default routing method to be used when a number is associated with the
+      # connection. Must be one of the routing method types or left blank, other values
+      # are not allowed.
+      sig do
+        returns(
+          T.nilable(Telnyx::CredentialInbound::DefaultRoutingMethod::OrSymbol)
+        )
+      end
+      attr_reader :default_routing_method
+
+      sig do
+        params(
+          default_routing_method:
+            Telnyx::CredentialInbound::DefaultRoutingMethod::OrSymbol
+        ).void
+      end
+      attr_writer :default_routing_method
+
       sig do
         returns(
           T.nilable(Telnyx::CredentialInbound::DnisNumberFormat::OrSymbol)
@@ -130,6 +148,8 @@ module Telnyx
             Telnyx::CredentialInbound::AniNumberFormat::OrSymbol,
           channel_limit: Integer,
           codecs: T::Array[String],
+          default_routing_method:
+            Telnyx::CredentialInbound::DefaultRoutingMethod::OrSymbol,
           dnis_number_format:
             Telnyx::CredentialInbound::DnisNumberFormat::OrSymbol,
           generate_ringback_tone: T::Boolean,
@@ -155,6 +175,10 @@ module Telnyx
         # Connection the number is assigned to uses Media Handling mode: default. OPUS and
         # H.264 codecs are available only when using TCP or TLS transport for SIP.
         codecs: nil,
+        # Default routing method to be used when a number is associated with the
+        # connection. Must be one of the routing method types or left blank, other values
+        # are not allowed.
+        default_routing_method: nil,
         dnis_number_format: nil,
         # Generate ringback tone through 183 session progress message with early media.
         generate_ringback_tone: nil,
@@ -185,6 +209,8 @@ module Telnyx
               Telnyx::CredentialInbound::AniNumberFormat::OrSymbol,
             channel_limit: Integer,
             codecs: T::Array[String],
+            default_routing_method:
+              Telnyx::CredentialInbound::DefaultRoutingMethod::OrSymbol,
             dnis_number_format:
               Telnyx::CredentialInbound::DnisNumberFormat::OrSymbol,
             generate_ringback_tone: T::Boolean,
@@ -237,6 +263,40 @@ module Telnyx
         sig do
           override.returns(
             T::Array[Telnyx::CredentialInbound::AniNumberFormat::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+
+      # Default routing method to be used when a number is associated with the
+      # connection. Must be one of the routing method types or left blank, other values
+      # are not allowed.
+      module DefaultRoutingMethod
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Telnyx::CredentialInbound::DefaultRoutingMethod)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        SEQUENTIAL =
+          T.let(
+            :sequential,
+            Telnyx::CredentialInbound::DefaultRoutingMethod::TaggedSymbol
+          )
+        ROUND_ROBIN =
+          T.let(
+            :"round-robin",
+            Telnyx::CredentialInbound::DefaultRoutingMethod::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Telnyx::CredentialInbound::DefaultRoutingMethod::TaggedSymbol
+            ]
           )
         end
         def self.values

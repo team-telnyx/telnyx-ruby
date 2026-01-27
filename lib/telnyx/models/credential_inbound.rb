@@ -26,6 +26,14 @@ module Telnyx
       #   @return [Array<String>, nil]
       optional :codecs, Telnyx::Internal::Type::ArrayOf[String]
 
+      # @!attribute default_routing_method
+      #   Default routing method to be used when a number is associated with the
+      #   connection. Must be one of the routing method types or left blank, other values
+      #   are not allowed.
+      #
+      #   @return [Symbol, Telnyx::Models::CredentialInbound::DefaultRoutingMethod, nil]
+      optional :default_routing_method, enum: -> { Telnyx::CredentialInbound::DefaultRoutingMethod }
+
       # @!attribute dnis_number_format
       #
       #   @return [Symbol, Telnyx::Models::CredentialInbound::DnisNumberFormat, nil]
@@ -82,7 +90,7 @@ module Telnyx
       #   @return [Integer, nil]
       optional :timeout_2xx_secs, Integer
 
-      # @!method initialize(ani_number_format: nil, channel_limit: nil, codecs: nil, dnis_number_format: nil, generate_ringback_tone: nil, isup_headers_enabled: nil, prack_enabled: nil, shaken_stir_enabled: nil, simultaneous_ringing: nil, sip_compact_headers_enabled: nil, timeout_1xx_secs: nil, timeout_2xx_secs: nil)
+      # @!method initialize(ani_number_format: nil, channel_limit: nil, codecs: nil, default_routing_method: nil, dnis_number_format: nil, generate_ringback_tone: nil, isup_headers_enabled: nil, prack_enabled: nil, shaken_stir_enabled: nil, simultaneous_ringing: nil, sip_compact_headers_enabled: nil, timeout_1xx_secs: nil, timeout_2xx_secs: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CredentialInbound} for more details.
       #
@@ -91,6 +99,8 @@ module Telnyx
       #   @param channel_limit [Integer] When set, this will limit the total number of inbound calls to phone numbers ass
       #
       #   @param codecs [Array<String>] Defines the list of codecs that Telnyx will send for inbound calls to a specific
+      #
+      #   @param default_routing_method [Symbol, Telnyx::Models::CredentialInbound::DefaultRoutingMethod] Default routing method to be used when a number is associated with the connectio
       #
       #   @param dnis_number_format [Symbol, Telnyx::Models::CredentialInbound::DnisNumberFormat]
       #
@@ -121,6 +131,21 @@ module Telnyx
         E_164 = :"E.164"
         PLUS_E_164_NATIONAL = :"+E.164-national"
         E_164_NATIONAL = :"E.164-national"
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # Default routing method to be used when a number is associated with the
+      # connection. Must be one of the routing method types or left blank, other values
+      # are not allowed.
+      #
+      # @see Telnyx::Models::CredentialInbound#default_routing_method
+      module DefaultRoutingMethod
+        extend Telnyx::Internal::Type::Enum
+
+        SEQUENTIAL = :sequential
+        ROUND_ROBIN = :"round-robin"
 
         # @!method self.values
         #   @return [Array<Symbol>]

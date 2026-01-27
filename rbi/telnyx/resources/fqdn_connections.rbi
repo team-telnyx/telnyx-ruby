@@ -17,6 +17,8 @@ module Telnyx
           encrypted_media: T.nilable(Telnyx::EncryptedMedia::OrSymbol),
           inbound: Telnyx::InboundFqdn::OrHash,
           ios_push_credential_id: T.nilable(String),
+          jitter_buffer:
+            Telnyx::FqdnConnectionCreateParams::JitterBuffer::OrHash,
           microsoft_teams_sbc: T::Boolean,
           noise_suppression:
             Telnyx::FqdnConnectionCreateParams::NoiseSuppression::OrSymbol,
@@ -63,6 +65,12 @@ module Telnyx
         inbound: nil,
         # The uuid of the push credential for Ios
         ios_push_credential_id: nil,
+        # Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams
+        # of SIP Trunking calls. The feature is off unless enabled. You may define min and
+        # max values in msec for customized buffering behaviors. Larger values add latency
+        # but tolerate more jitter, while smaller values reduce latency but are more
+        # sensitive to jitter and reordering.
+        jitter_buffer: nil,
         # When enabled, the connection will be created for Microsoft Teams Direct Routing.
         # A \*.mstsbc.telnyx.tech FQDN will be created for the connection automatically.
         microsoft_teams_sbc: nil,
@@ -130,6 +138,8 @@ module Telnyx
           encrypted_media: T.nilable(Telnyx::EncryptedMedia::OrSymbol),
           inbound: Telnyx::InboundFqdn::OrHash,
           ios_push_credential_id: T.nilable(String),
+          jitter_buffer:
+            Telnyx::FqdnConnectionUpdateParams::JitterBuffer::OrHash,
           noise_suppression:
             Telnyx::FqdnConnectionUpdateParams::NoiseSuppression::OrSymbol,
           noise_suppression_details:
@@ -177,6 +187,12 @@ module Telnyx
         inbound: nil,
         # The uuid of the push credential for Ios
         ios_push_credential_id: nil,
+        # Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams
+        # of SIP Trunking calls. The feature is off unless enabled. You may define min and
+        # max values in msec for customized buffering behaviors. Larger values add latency
+        # but tolerate more jitter, while smaller values reduce latency but are more
+        # sensitive to jitter and reordering.
+        jitter_buffer: nil,
         # Controls when noise suppression is applied to calls. When set to 'inbound',
         # noise suppression is applied to incoming audio. When set to 'outbound', it's
         # applied to outgoing audio. When set to 'both', it's applied in both directions.
