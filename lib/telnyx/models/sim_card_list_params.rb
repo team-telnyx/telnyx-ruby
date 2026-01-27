@@ -9,7 +9,7 @@ module Telnyx
 
       # @!attribute filter
       #   Consolidated filter parameter for SIM cards (deepObject style). Originally:
-      #   filter[iccid], filter[msisdn], filter[status], filter[tags]
+      #   filter[tags], filter[iccid], filter[status]
       #
       #   @return [Telnyx::Models::SimCardListParams::Filter, nil]
       optional :filter, -> { Telnyx::SimCardListParams::Filter }
@@ -63,12 +63,6 @@ module Telnyx
         #   @return [String, nil]
         optional :iccid, String
 
-        # @!attribute msisdn
-        #   A search string to match for the SIM card's MSISDN.
-        #
-        #   @return [String, nil]
-        optional :msisdn, String
-
         # @!attribute status
         #   Filter by a SIM card's status.
         #
@@ -89,16 +83,14 @@ module Telnyx
         #   @return [Array<String>, nil]
         optional :tags, Telnyx::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(iccid: nil, msisdn: nil, status: nil, tags: nil)
+        # @!method initialize(iccid: nil, status: nil, tags: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::SimCardListParams::Filter} for more details.
         #
         #   Consolidated filter parameter for SIM cards (deepObject style). Originally:
-        #   filter[iccid], filter[msisdn], filter[status], filter[tags]
+        #   filter[tags], filter[iccid], filter[status]
         #
         #   @param iccid [String] A search string to partially match for the SIM card's ICCID.
-        #
-        #   @param msisdn [String] A search string to match for the SIM card's MSISDN.
         #
         #   @param status [Array<Symbol, Telnyx::Models::SimCardListParams::Filter::Status>] Filter by a SIM card's status.
         #
