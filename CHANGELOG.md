@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.5.0 (2026-01-28)
+
+Full Changelog: [v5.4.1...v5.5.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.4.1...v5.5.0)
+
+### Features
+
+* Fix broken documentation links ([3eb58e6](https://github.com/team-telnyx/telnyx-ruby/commit/3eb58e6dd37cbedf4710ac78f72feb7d8cefe76a))
+
 ## 5.4.1 (2026-01-28)
 
 Full Changelog: [v5.4.0...v5.4.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.4.0...v5.4.1)
