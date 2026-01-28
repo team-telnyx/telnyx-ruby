@@ -65,7 +65,7 @@ module Telnyx
         def compute(
           # The embedded storage bucket to compute the clusters from. The bucket must
           # already be
-          # [embedded](https://developers.telnyx.com/api/inference/inference-embedding/post-embedding).
+          # [embedded](https://developers.telnyx.com/api-reference/embeddings/embed-documents).
           bucket:,
           # Array of files to filter which are included.
           files: nil,
