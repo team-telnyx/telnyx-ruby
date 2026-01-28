@@ -259,11 +259,12 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::CredentialConnectionListParams::Filter::OrHash,
-          page: Telnyx::CredentialConnectionListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           sort: Telnyx::CredentialConnectionListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[Telnyx::CredentialConnection]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::CredentialConnection]
         )
       end
       def list(
@@ -271,9 +272,8 @@ module Telnyx
         # filter[connection_name], filter[fqdn], filter[outbound_voice_profile_id],
         # filter[outbound.outbound_voice_profile_id]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[size],
-        # page[number]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         # Specifies the sort order for results. By default sorting direction is ascending.
         # To have the results sorted in descending order add the <code> -</code>
         # prefix.<br/><br/> That is: <ul>

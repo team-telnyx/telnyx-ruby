@@ -6,39 +6,39 @@ module Telnyx
       # @!attribute page_number
       #   Current Page based on pagination settings (included when defaults are used.)
       #
-      #   @return [Float]
-      required :page_number, Float
+      #   @return [Integer]
+      required :page_number, Integer
 
       # @!attribute total_pages
       #   Total number of pages based on pagination settings
       #
-      #   @return [Float]
-      required :total_pages, Float
+      #   @return [Integer]
+      required :total_pages, Integer
 
       # @!attribute page_size
       #   Number of results to return per page based on pagination settings (included when
       #   defaults are used.)
       #
-      #   @return [Float, nil]
-      optional :page_size, Float
+      #   @return [Integer, nil]
+      optional :page_size, Integer
 
       # @!attribute total_results
       #   Total number of results
       #
-      #   @return [Float, nil]
-      optional :total_results, Float
+      #   @return [Integer, nil]
+      optional :total_results, Integer
 
       # @!method initialize(page_number:, total_pages:, page_size: nil, total_results: nil)
       #   Some parameter documentations has been truncated, see {Telnyx::Models::Metadata}
       #   for more details.
       #
-      #   @param page_number [Float] Current Page based on pagination settings (included when defaults are used.)
+      #   @param page_number [Integer] Current Page based on pagination settings (included when defaults are used.)
       #
-      #   @param total_pages [Float] Total number of pages based on pagination settings
+      #   @param total_pages [Integer] Total number of pages based on pagination settings
       #
-      #   @param page_size [Float] Number of results to return per page based on pagination settings (included when
+      #   @param page_size [Integer] Number of results to return per page based on pagination settings (included when
       #
-      #   @param total_results [Float] Total number of results
+      #   @param total_results [Integer] Total number of results
     end
   end
 end

@@ -8,42 +8,20 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
-        # @!attribute page
-        #   Consolidated page parameter (deepObject style). Originally: page[size],
-        #   page[number]
+        # @!attribute page_number
         #
-        #   @return [Telnyx::Models::PhoneNumbers::CsvDownloadListParams::Page, nil]
-        optional :page, -> { Telnyx::PhoneNumbers::CsvDownloadListParams::Page }
+        #   @return [Integer, nil]
+        optional :page_number, Integer
 
-        # @!method initialize(page: nil, request_options: {})
-        #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::PhoneNumbers::CsvDownloadListParams} for more details.
+        # @!attribute page_size
         #
-        #   @param page [Telnyx::Models::PhoneNumbers::CsvDownloadListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
-        #
+        #   @return [Integer, nil]
+        optional :page_size, Integer
+
+        # @!method initialize(page_number: nil, page_size: nil, request_options: {})
+        #   @param page_number [Integer]
+        #   @param page_size [Integer]
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-        class Page < Telnyx::Internal::Type::BaseModel
-          # @!attribute number
-          #   The page number to load
-          #
-          #   @return [Integer, nil]
-          optional :number, Integer
-
-          # @!attribute size
-          #   The size of the page
-          #
-          #   @return [Integer, nil]
-          optional :size, Integer
-
-          # @!method initialize(number: nil, size: nil)
-          #   Consolidated page parameter (deepObject style). Originally: page[size],
-          #   page[number]
-          #
-          #   @param number [Integer] The page number to load
-          #
-          #   @param size [Integer] The size of the page
-        end
       end
     end
   end

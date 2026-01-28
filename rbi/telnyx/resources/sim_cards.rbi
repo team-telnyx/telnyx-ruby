@@ -63,10 +63,13 @@ module Telnyx
           filter: Telnyx::SimCardListParams::Filter::OrHash,
           filter_sim_card_group_id: String,
           include_sim_card_group: T::Boolean,
-          page: Telnyx::SimCardListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           sort: Telnyx::SimCardListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::SimpleSimCard])
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::SimpleSimCard]
+        )
       end
       def list(
         # Consolidated filter parameter for SIM cards (deepObject style). Originally:
@@ -76,9 +79,8 @@ module Telnyx
         filter_sim_card_group_id: nil,
         # It includes the associated SIM card group object in the response when present.
         include_sim_card_group: nil,
-        # Consolidated pagination parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         # Sorts SIM cards by the given field. Defaults to ascending order unless field is
         # prefixed with a minus sign.
         sort: nil,

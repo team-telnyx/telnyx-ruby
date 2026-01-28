@@ -24,13 +24,13 @@ module Telnyx
           params(
             filter:
               Telnyx::PortingOrders::PhoneNumberConfigurationListParams::Filter::OrHash,
-            page:
-              Telnyx::PortingOrders::PhoneNumberConfigurationListParams::Page::OrHash,
+            page_number: Integer,
+            page_size: Integer,
             sort:
               Telnyx::PortingOrders::PhoneNumberConfigurationListParams::Sort::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultPagination[
+            Telnyx::Internal::DefaultFlatPagination[
               Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse
             ]
           )
@@ -40,9 +40,8 @@ module Telnyx
           # filter[porting_order.status][in][], filter[porting_phone_number][in][],
           # filter[user_bundle_id][in][]
           filter: nil,
-          # Consolidated page parameter (deepObject style). Originally: page[size],
-          # page[number]
-          page: nil,
+          page_number: nil,
+          page_size: nil,
           # Consolidated sort parameter (deepObject style). Originally: sort[value]
           sort: nil,
           request_options: {}

@@ -45,7 +45,6 @@ module Telnyx
         sig do
           params(
             queue_name: String,
-            page: Telnyx::Queues::CallListParams::Page::OrHash,
             page_number: Integer,
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
@@ -58,9 +57,6 @@ module Telnyx
         def list(
           # Uniquely identifies the queue by name
           queue_name,
-          # Consolidated page parameter (deepObject style). Originally: page[after],
-          # page[before], page[limit], page[size], page[number]
-          page: nil,
           page_number: nil,
           page_size: nil,
           request_options: {}

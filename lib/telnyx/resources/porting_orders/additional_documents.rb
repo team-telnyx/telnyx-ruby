@@ -33,19 +33,21 @@ module Telnyx
         #
         # Returns a list of additional documents for a porting order.
         #
-        # @overload list(id, filter: nil, page: nil, sort: nil, request_options: {})
+        # @overload list(id, filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
         #
         # @param id [String] Porting Order id
         #
         # @param filter [Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[document_ty
         #
-        # @param page [Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+        # @param page_number [Integer]
+        #
+        # @param page_size [Integer]
         #
         # @param sort [Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Sort] Consolidated sort parameter (deepObject style). Originally: sort[value]
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PortingOrders::AdditionalDocumentListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PortingOrders::AdditionalDocumentListResponse>]
         #
         # @see Telnyx::Models::PortingOrders::AdditionalDocumentListParams
         def list(id, params = {})
@@ -53,8 +55,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: ["porting_orders/%1$s/additional_documents", id],
-            query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
+            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::Models::PortingOrders::AdditionalDocumentListResponse,
             options: options
           )

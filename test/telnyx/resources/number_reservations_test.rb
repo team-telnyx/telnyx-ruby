@@ -41,7 +41,7 @@ class Telnyx::Test::Resources::NumberReservationsTest < Telnyx::Test::ResourceTe
     response = @telnyx.number_reservations.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Internal::DefaultFlatPagination
     end
 
     row = response.to_enum.first

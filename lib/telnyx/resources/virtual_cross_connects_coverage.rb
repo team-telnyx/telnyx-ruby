@@ -10,17 +10,19 @@ module Telnyx
       # cloud regions are available for the `location_code` your Virtual Cross Connect
       # will be provisioned in.
       #
-      # @overload list(filter: nil, filters: nil, page: nil, request_options: {})
+      # @overload list(filter: nil, filters: nil, page_number: nil, page_size: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[cloud_provi
       #
       # @param filters [Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filters] Consolidated filters parameter (deepObject style). Originally: filters[available
       #
-      # @param page [Telnyx::Models::VirtualCrossConnectsCoverageListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::VirtualCrossConnectsCoverageListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::VirtualCrossConnectsCoverageListResponse>]
       #
       # @see Telnyx::Models::VirtualCrossConnectsCoverageListParams
       def list(params = {})
@@ -28,8 +30,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "virtual_cross_connects_coverage",
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::VirtualCrossConnectsCoverageListResponse,
           options: options
         )

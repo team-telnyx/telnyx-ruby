@@ -21,11 +21,12 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::RequirementListParams::Filter::OrHash,
-          page: Telnyx::RequirementListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           sort: T::Array[Telnyx::RequirementListParams::Sort::OrSymbol],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[
+          Telnyx::Internal::DefaultFlatPagination[
             Telnyx::Models::RequirementListResponse
           ]
         )
@@ -34,9 +35,8 @@ module Telnyx
         # Consolidated filter parameter for requirements (deepObject style). Originally:
         # filter[country_code], filter[phone_number_type], filter[action]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[size],
-        # page[number]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         # Consolidated sort parameter for requirements (deepObject style). Originally:
         # sort[]
         sort: nil,

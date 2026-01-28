@@ -45,10 +45,11 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::OutboundVoiceProfileListParams::Filter,
-        ?page: Telnyx::OutboundVoiceProfileListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?sort: Telnyx::Models::OutboundVoiceProfileListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::OutboundVoiceProfile]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::OutboundVoiceProfile]
 
       def delete: (
         String id,

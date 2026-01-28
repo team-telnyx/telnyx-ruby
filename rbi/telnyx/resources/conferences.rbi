@@ -106,7 +106,6 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::ConferenceListParams::Filter::OrHash,
-          page: Telnyx::ConferenceListParams::Page::OrHash,
           page_number: Integer,
           page_size: Integer,
           region: Telnyx::ConferenceListParams::Region::OrSymbol,
@@ -120,9 +119,6 @@ module Telnyx
         # filter[product], filter[failed], filter[from], filter[to], filter[name],
         # filter[type], filter[occurred_at][eq/gt/gte/lt/lte], filter[status]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[after],
-        # page[before], page[limit], page[size], page[number]
-        page: nil,
         page_number: nil,
         page_size: nil,
         # Region where the conference data is located
@@ -136,7 +132,6 @@ module Telnyx
         params(
           conference_id: String,
           filter: Telnyx::ConferenceListParticipantsParams::Filter::OrHash,
-          page: Telnyx::ConferenceListParticipantsParams::Page::OrHash,
           page_number: Integer,
           page_size: Integer,
           region: Telnyx::ConferenceListParticipantsParams::Region::OrSymbol,
@@ -153,9 +148,6 @@ module Telnyx
         # Consolidated filter parameter (deepObject style). Originally: filter[muted],
         # filter[on_hold], filter[whispering]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[after],
-        # page[before], page[limit], page[size], page[number]
-        page: nil,
         page_number: nil,
         page_size: nil,
         # Region where the conference data is located

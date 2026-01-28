@@ -61,16 +61,11 @@ module Telnyx
           )
         end
 
-        # Some parameter documentations has been truncated, see
-        # {Telnyx::Models::Queues::CallListParams} for more details.
-        #
         # Retrieve the list of calls in an existing queue
         #
-        # @overload list(queue_name, page: nil, page_number: nil, page_size: nil, request_options: {})
+        # @overload list(queue_name, page_number: nil, page_size: nil, request_options: {})
         #
         # @param queue_name [String] Uniquely identifies the queue by name
-        #
-        # @param page [Telnyx::Models::Queues::CallListParams::Page] Consolidated page parameter (deepObject style). Originally: page[after], page[be
         #
         # @param page_number [Integer]
         #

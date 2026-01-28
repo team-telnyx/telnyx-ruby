@@ -8,10 +8,11 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::RequirementListParams::Filter,
-        ?page: Telnyx::RequirementListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?sort: ::Array[Telnyx::Models::RequirementListParams::sort],
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::RequirementListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::RequirementListResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

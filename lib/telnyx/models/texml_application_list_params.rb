@@ -14,12 +14,15 @@ module Telnyx
       #   @return [Telnyx::Models::TexmlApplicationListParams::Filter, nil]
       optional :filter, -> { Telnyx::TexmlApplicationListParams::Filter }
 
-      # @!attribute page
-      #   Consolidated page parameter (deepObject style). Originally: page[size],
-      #   page[number]
+      # @!attribute page_number
       #
-      #   @return [Telnyx::Models::TexmlApplicationListParams::Page, nil]
-      optional :page, -> { Telnyx::TexmlApplicationListParams::Page }
+      #   @return [Integer, nil]
+      optional :page_number, Integer
+
+      # @!attribute page_size
+      #
+      #   @return [Integer, nil]
+      optional :page_size, Integer
 
       # @!attribute sort
       #   Specifies the sort order for results. By default sorting direction is ascending.
@@ -40,13 +43,15 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::TexmlApplicationListParams::Sort, nil]
       optional :sort, enum: -> { Telnyx::TexmlApplicationListParams::Sort }
 
-      # @!method initialize(filter: nil, page: nil, sort: nil, request_options: {})
+      # @!method initialize(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::TexmlApplicationListParams} for more details.
       #
       #   @param filter [Telnyx::Models::TexmlApplicationListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[outbound_vo
       #
-      #   @param page [Telnyx::Models::TexmlApplicationListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+      #   @param page_number [Integer]
+      #
+      #   @param page_size [Integer]
       #
       #   @param sort [Symbol, Telnyx::Models::TexmlApplicationListParams::Sort] Specifies the sort order for results. By default sorting direction is ascending.
       #
@@ -77,28 +82,6 @@ module Telnyx
         #   @param friendly_name [String] If present, applications with <code>friendly_name</code> containing the given va
         #
         #   @param outbound_voice_profile_id [String] Identifies the associated outbound voice profile.
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        # @!attribute number
-        #   The page number to load
-        #
-        #   @return [Integer, nil]
-        optional :number, Integer
-
-        # @!attribute size
-        #   The size of the page
-        #
-        #   @return [Integer, nil]
-        optional :size, Integer
-
-        # @!method initialize(number: nil, size: nil)
-        #   Consolidated page parameter (deepObject style). Originally: page[size],
-        #   page[number]
-        #
-        #   @param number [Integer] The page number to load
-        #
-        #   @param size [Integer] The size of the page
       end
 
       # Specifies the sort order for results. By default sorting direction is ascending.

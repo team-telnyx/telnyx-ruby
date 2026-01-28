@@ -9,7 +9,8 @@ module Telnyx
 
         def list: (
           ?filter: Telnyx::ExternalConnections::LogMessageListParams::Filter,
-          ?page: Telnyx::ExternalConnections::LogMessageListParams::Page,
+          ?page_number: Integer,
+          ?page_size: Integer,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Internal::DefaultPaginationForLogMessages[Telnyx::Models::ExternalConnections::LogMessageListResponse]
 

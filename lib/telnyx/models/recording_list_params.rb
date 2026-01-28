@@ -16,21 +16,26 @@ module Telnyx
       #   @return [Telnyx::Models::RecordingListParams::Filter, nil]
       optional :filter, -> { Telnyx::RecordingListParams::Filter }
 
-      # @!attribute page
-      #   Consolidated page parameter (deepObject style). Originally: page[size],
-      #   page[number]
+      # @!attribute page_number
       #
-      #   @return [Telnyx::Models::RecordingListParams::Page, nil]
-      optional :page, -> { Telnyx::RecordingListParams::Page }
+      #   @return [Integer, nil]
+      optional :page_number, Integer
 
-      # @!method initialize(filter: nil, page: nil, request_options: {})
+      # @!attribute page_size
+      #
+      #   @return [Integer, nil]
+      optional :page_size, Integer
+
+      # @!method initialize(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::RecordingListParams} for more details.
       #
       #   @param filter [Telnyx::Models::RecordingListParams::Filter] Consolidated filter parameter (deepObject style). Originally:
       #   filter[conference\_
       #
-      #   @param page [Telnyx::Models::RecordingListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+      #   @param page_number [Integer]
+      #
+      #   @param page_size [Integer]
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -131,28 +136,6 @@ module Telnyx
           #
           #   @param lte [String] Returns only recordings created earlier than or at given ISO 8601 datetime.
         end
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        # @!attribute number
-        #   The page number to load.
-        #
-        #   @return [Integer, nil]
-        optional :number, Integer
-
-        # @!attribute size
-        #   The size of the page.
-        #
-        #   @return [Integer, nil]
-        optional :size, Integer
-
-        # @!method initialize(number: nil, size: nil)
-        #   Consolidated page parameter (deepObject style). Originally: page[size],
-        #   page[number]
-        #
-        #   @param number [Integer] The page number to load.
-        #
-        #   @param size [Integer] The size of the page.
       end
     end
   end
