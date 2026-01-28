@@ -12,8 +12,8 @@ module Telnyx
 
         # @!attribute audio_visualizer_config
         #
-        #   @return [Telnyx::Models::AI::AudioVisualizerConfig, nil]
-        optional :audio_visualizer_config, -> { Telnyx::AI::AudioVisualizerConfig }
+        #   @return [Telnyx::Models::AI::WidgetSettings::AudioVisualizerConfig, nil]
+        optional :audio_visualizer_config, -> { Telnyx::AI::WidgetSettings::AudioVisualizerConfig }
 
         # @!attribute default_state
         #   The default state of the widget.
@@ -74,7 +74,7 @@ module Telnyx
         #
         #   @param agent_thinking_text [String] Text displayed while the agent is processing.
         #
-        #   @param audio_visualizer_config [Telnyx::Models::AI::AudioVisualizerConfig]
+        #   @param audio_visualizer_config [Telnyx::Models::AI::WidgetSettings::AudioVisualizerConfig]
         #
         #   @param default_state [Symbol, Telnyx::Models::AI::WidgetSettings::DefaultState] The default state of the widget.
         #
@@ -93,6 +93,43 @@ module Telnyx
         #   @param theme [Symbol, Telnyx::Models::AI::WidgetSettings::Theme] The visual theme for the widget.
         #
         #   @param view_history_url [String, nil] URL to view conversation history.
+
+        # @see Telnyx::Models::AI::WidgetSettings#audio_visualizer_config
+        class AudioVisualizerConfig < Telnyx::Internal::Type::BaseModel
+          # @!attribute color
+          #   The color theme for the audio visualizer.
+          #
+          #   @return [Symbol, Telnyx::Models::AI::WidgetSettings::AudioVisualizerConfig::Color, nil]
+          optional :color, enum: -> { Telnyx::AI::WidgetSettings::AudioVisualizerConfig::Color }
+
+          # @!attribute preset
+          #   The preset style for the audio visualizer.
+          #
+          #   @return [String, nil]
+          optional :preset, String
+
+          # @!method initialize(color: nil, preset: nil)
+          #   @param color [Symbol, Telnyx::Models::AI::WidgetSettings::AudioVisualizerConfig::Color] The color theme for the audio visualizer.
+          #
+          #   @param preset [String] The preset style for the audio visualizer.
+
+          # The color theme for the audio visualizer.
+          #
+          # @see Telnyx::Models::AI::WidgetSettings::AudioVisualizerConfig#color
+          module Color
+            extend Telnyx::Internal::Type::Enum
+
+            VERDANT = :verdant
+            TWILIGHT = :twilight
+            BLOOM = :bloom
+            MYSTIC = :mystic
+            FLARE = :flare
+            GLACIER = :glacier
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
 
         # The default state of the widget.
         #

@@ -2,9 +2,10 @@ module Telnyx
   module Resources
     class NotificationEvents
       def list: (
-        ?page: Telnyx::NotificationEventListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::NotificationEventListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::NotificationEventListResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

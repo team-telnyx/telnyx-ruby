@@ -133,10 +133,11 @@ module Telnyx
         params(
           filter: Telnyx::PortingOrderListParams::Filter::OrHash,
           include_phone_numbers: T::Boolean,
-          page: Telnyx::PortingOrderListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           sort: Telnyx::PortingOrderListParams::Sort::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::PortingOrder])
+        ).returns(Telnyx::Internal::DefaultFlatPagination[Telnyx::PortingOrder])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:
@@ -151,9 +152,8 @@ module Telnyx
         filter: nil,
         # Include the first 50 phone number objects in the results
         include_phone_numbers: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[size],
-        # page[number]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         # Consolidated sort parameter (deepObject style). Originally: sort[value]
         sort: nil,
         request_options: {}
@@ -218,10 +218,11 @@ module Telnyx
       sig do
         params(
           id: String,
-          page: Telnyx::PortingOrderRetrieveRequirementsParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[
+          Telnyx::Internal::DefaultFlatPagination[
             Telnyx::Models::PortingOrderRetrieveRequirementsResponse
           ]
         )
@@ -229,9 +230,8 @@ module Telnyx
       def retrieve_requirements(
         # Porting Order id
         id,
-        # Consolidated page parameter (deepObject style). Originally: page[size],
-        # page[number]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end

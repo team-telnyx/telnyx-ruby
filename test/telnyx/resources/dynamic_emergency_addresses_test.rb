@@ -49,7 +49,7 @@ class Telnyx::Test::Resources::DynamicEmergencyAddressesTest < Telnyx::Test::Res
     response = @telnyx.dynamic_emergency_addresses.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Internal::DefaultFlatPagination
     end
 
     row = response.to_enum.first

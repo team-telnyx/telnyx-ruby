@@ -23,9 +23,10 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::DynamicEmergencyAddressListParams::Filter,
-        ?page: Telnyx::DynamicEmergencyAddressListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::DynamicEmergencyAddress]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::DynamicEmergencyAddress]
 
       def delete: (
         String id,

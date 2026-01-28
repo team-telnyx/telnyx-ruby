@@ -73,17 +73,19 @@ module Telnyx
         #
         # Returns a list of your Upload requests for the given external connection.
         #
-        # @overload list(id, filter: nil, page: nil, request_options: {})
+        # @overload list(id, filter: nil, page_number: nil, page_size: nil, request_options: {})
         #
         # @param id [String] Identifies the resource.
         #
         # @param filter [Telnyx::Models::ExternalConnections::UploadListParams::Filter] Filter parameter for uploads (deepObject style). Supports filtering by status, c
         #
-        # @param page [Telnyx::Models::ExternalConnections::UploadListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+        # @param page_number [Integer]
+        #
+        # @param page_size [Integer]
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ExternalConnections::Upload>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::ExternalConnections::Upload>]
         #
         # @see Telnyx::Models::ExternalConnections::UploadListParams
         def list(id, params = {})
@@ -91,8 +93,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: ["external_connections/%1$s/uploads", id],
-            query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
+            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::ExternalConnections::Upload,
             options: options
           )

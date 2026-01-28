@@ -86,18 +86,15 @@ module Telnyx
           )
         end
 
-        # Some parameter documentations has been truncated, see
-        # {Telnyx::Models::Porting::LoaConfigurationListParams} for more details.
-        #
         # List the LOA configurations.
         #
-        # @overload list(page: nil, request_options: {})
+        # @overload list(page_number: nil, page_size: nil, request_options: {})
         #
-        # @param page [Telnyx::Models::Porting::LoaConfigurationListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
-        #
+        # @param page_number [Integer]
+        # @param page_size [Integer]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::Porting::PortingLoaConfiguration>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Porting::PortingLoaConfiguration>]
         #
         # @see Telnyx::Models::Porting::LoaConfigurationListParams
         def list(params = {})
@@ -105,8 +102,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: "porting/loa_configurations",
-            query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
+            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::Porting::PortingLoaConfiguration,
             options: options
           )

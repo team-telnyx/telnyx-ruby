@@ -7,34 +7,34 @@ module Telnyx
         T.type_alias { T.any(Telnyx::Metadata, Telnyx::Internal::AnyHash) }
 
       # Current Page based on pagination settings (included when defaults are used.)
-      sig { returns(Float) }
+      sig { returns(Integer) }
       attr_accessor :page_number
 
       # Total number of pages based on pagination settings
-      sig { returns(Float) }
+      sig { returns(Integer) }
       attr_accessor :total_pages
 
       # Number of results to return per page based on pagination settings (included when
       # defaults are used.)
-      sig { returns(T.nilable(Float)) }
+      sig { returns(T.nilable(Integer)) }
       attr_reader :page_size
 
-      sig { params(page_size: Float).void }
+      sig { params(page_size: Integer).void }
       attr_writer :page_size
 
       # Total number of results
-      sig { returns(T.nilable(Float)) }
+      sig { returns(T.nilable(Integer)) }
       attr_reader :total_results
 
-      sig { params(total_results: Float).void }
+      sig { params(total_results: Integer).void }
       attr_writer :total_results
 
       sig do
         params(
-          page_number: Float,
-          total_pages: Float,
-          page_size: Float,
-          total_results: Float
+          page_number: Integer,
+          total_pages: Integer,
+          page_size: Integer,
+          total_results: Integer
         ).returns(T.attached_class)
       end
       def self.new(
@@ -53,10 +53,10 @@ module Telnyx
       sig do
         override.returns(
           {
-            page_number: Float,
-            total_pages: Float,
-            page_size: Float,
-            total_results: Float
+            page_number: Integer,
+            total_pages: Integer,
+            page_size: Integer,
+            total_results: Integer
           }
         )
       end

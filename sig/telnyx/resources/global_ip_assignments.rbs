@@ -17,9 +17,10 @@ module Telnyx
       ) -> Telnyx::Models::GlobalIPAssignmentUpdateResponse
 
       def list: (
-        ?page: Telnyx::GlobalIPAssignmentListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::GlobalIPAssignment]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::GlobalIPAssignment]
 
       def delete: (
         String id,

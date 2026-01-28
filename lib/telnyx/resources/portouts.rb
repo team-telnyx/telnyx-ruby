@@ -40,15 +40,17 @@ module Telnyx
       #
       # Returns the portout requests according to filters
       #
-      # @overload list(filter: nil, page: nil, request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::PortoutListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[carrier_nam
       #
-      # @param page [Telnyx::Models::PortoutListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PortoutDetails>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PortoutDetails>]
       #
       # @see Telnyx::Models::PortoutListParams
       def list(params = {})
@@ -56,8 +58,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "portouts",
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::PortoutDetails,
           options: options
         )

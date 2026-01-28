@@ -26,8 +26,8 @@ module Telnyx
           params(
             filter:
               Telnyx::ExternalConnections::LogMessageListParams::Filter::OrHash,
-            page:
-              Telnyx::ExternalConnections::LogMessageListParams::Page::OrHash,
+            page_number: Integer,
+            page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultPaginationForLogMessages[
@@ -39,9 +39,8 @@ module Telnyx
           # Filter parameter for log messages (deepObject style). Supports filtering by
           # external_connection_id and telephone_number with eq/contains operations.
           filter: nil,
-          # Consolidated page parameter (deepObject style). Originally: page[size],
-          # page[number]
-          page: nil,
+          page_number: nil,
+          page_size: nil,
           request_options: {}
         )
         end

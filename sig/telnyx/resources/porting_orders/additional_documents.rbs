@@ -11,10 +11,11 @@ module Telnyx
         def list: (
           String id,
           ?filter: Telnyx::PortingOrders::AdditionalDocumentListParams::Filter,
-          ?page: Telnyx::PortingOrders::AdditionalDocumentListParams::Page,
+          ?page_number: Integer,
+          ?page_size: Integer,
           ?sort: Telnyx::PortingOrders::AdditionalDocumentListParams::Sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::PortingOrders::AdditionalDocumentListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::PortingOrders::AdditionalDocumentListResponse]
 
         def delete: (
           String additional_document_id,

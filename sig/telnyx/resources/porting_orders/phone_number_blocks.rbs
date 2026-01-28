@@ -12,10 +12,11 @@ module Telnyx
         def list: (
           String porting_order_id,
           ?filter: Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter,
-          ?page: Telnyx::PortingOrders::PhoneNumberBlockListParams::Page,
+          ?page_number: Integer,
+          ?page_size: Integer,
           ?sort: Telnyx::PortingOrders::PhoneNumberBlockListParams::Sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPagination[Telnyx::PortingOrders::PortingPhoneNumberBlock]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::PortingOrders::PortingPhoneNumberBlock]
 
         def delete: (
           String id,

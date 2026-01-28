@@ -4,7 +4,8 @@ module Telnyx
       type report_list_params =
         {
           filter: Telnyx::Porting::ReportListParams::Filter,
-          page: Telnyx::Porting::ReportListParams::Page
+          page_number: Integer,
+          page_size: Integer
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -18,21 +19,25 @@ module Telnyx
           Telnyx::Porting::ReportListParams::Filter
         ) -> Telnyx::Porting::ReportListParams::Filter
 
-        attr_reader page: Telnyx::Porting::ReportListParams::Page?
+        attr_reader page_number: Integer?
 
-        def page=: (
-          Telnyx::Porting::ReportListParams::Page
-        ) -> Telnyx::Porting::ReportListParams::Page
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
 
         def initialize: (
           ?filter: Telnyx::Porting::ReportListParams::Filter,
-          ?page: Telnyx::Porting::ReportListParams::Page,
+          ?page_number: Integer,
+          ?page_size: Integer,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           filter: Telnyx::Porting::ReportListParams::Filter,
-          page: Telnyx::Porting::ReportListParams::Page,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions
         }
 
@@ -85,22 +90,6 @@ module Telnyx
 
             def self?.values: -> ::Array[Telnyx::Models::Porting::ReportListParams::Filter::status]
           end
-        end
-
-        type page = { number: Integer, size: Integer }
-
-        class Page < Telnyx::Internal::Type::BaseModel
-          attr_reader number: Integer?
-
-          def number=: (Integer) -> Integer
-
-          attr_reader size: Integer?
-
-          def size=: (Integer) -> Integer
-
-          def initialize: (?number: Integer, ?size: Integer) -> void
-
-          def to_hash: -> { number: Integer, size: Integer }
         end
       end
     end

@@ -55,15 +55,17 @@ module Telnyx
       #
       # Gets a paginated list of phone number reservations.
       #
-      # @overload list(filter: nil, page: nil, request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::NumberReservationListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[status], fi
       #
-      # @param page [Telnyx::Models::NumberReservationListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::NumberReservation>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::NumberReservation>]
       #
       # @see Telnyx::Models::NumberReservationListParams
       def list(params = {})
@@ -71,8 +73,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "number_reservations",
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::NumberReservation,
           options: options
         )

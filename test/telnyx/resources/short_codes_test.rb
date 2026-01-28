@@ -45,7 +45,7 @@ class Telnyx::Test::Resources::ShortCodesTest < Telnyx::Test::ResourceTest
     response = @telnyx.short_codes.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Internal::DefaultFlatPagination
     end
 
     row = response.to_enum.first

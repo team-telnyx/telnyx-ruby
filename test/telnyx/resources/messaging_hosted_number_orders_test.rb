@@ -41,7 +41,7 @@ class Telnyx::Test::Resources::MessagingHostedNumberOrdersTest < Telnyx::Test::R
     response = @telnyx.messaging_hosted_number_orders.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Internal::DefaultFlatPagination
     end
 
     row = response.to_enum.first

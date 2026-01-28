@@ -12,10 +12,11 @@ module Telnyx
             Telnyx::VirtualCrossConnectsCoverageListParams::Filter::OrHash,
           filters:
             Telnyx::VirtualCrossConnectsCoverageListParams::Filters::OrHash,
-          page: Telnyx::VirtualCrossConnectsCoverageListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[
+          Telnyx::Internal::DefaultFlatPagination[
             Telnyx::Models::VirtualCrossConnectsCoverageListResponse
           ]
         )
@@ -28,9 +29,8 @@ module Telnyx
         # Consolidated filters parameter (deepObject style). Originally:
         # filters[available_bandwidth][contains]
         filters: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end
