@@ -17,9 +17,10 @@ module Telnyx
           ) -> Telnyx::RcsAgentResponse
 
           def list: (
-            ?page: Telnyx::Messaging::Rcs::AgentListParams::Page,
+            ?page_number: Integer,
+            ?page_size: Integer,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Internal::DefaultPagination[Telnyx::RcsAgent]
+          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::RcsAgent]
 
           def initialize: (client: Telnyx::Client) -> void
         end

@@ -28,20 +28,23 @@ module Telnyx
       end
       attr_writer :filter
 
-      # Consolidated page parameter (deepObject style). Originally: page[number],
-      # page[size]
-      sig { returns(T.nilable(Telnyx::NotificationSettingListParams::Page)) }
-      attr_reader :page
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :page_number
 
-      sig do
-        params(page: Telnyx::NotificationSettingListParams::Page::OrHash).void
-      end
-      attr_writer :page
+      sig { params(page_number: Integer).void }
+      attr_writer :page_number
+
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :page_size
+
+      sig { params(page_size: Integer).void }
+      attr_writer :page_size
 
       sig do
         params(
           filter: Telnyx::NotificationSettingListParams::Filter::OrHash,
-          page: Telnyx::NotificationSettingListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -51,9 +54,8 @@ module Telnyx
         # filter[notification_profile_id][eq], filter[notification_channel][eq],
         # filter[notification_event_condition_id][eq], filter[status][eq]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end
@@ -62,7 +64,8 @@ module Telnyx
         override.returns(
           {
             filter: Telnyx::NotificationSettingListParams::Filter,
-            page: Telnyx::NotificationSettingListParams::Page,
+            page_number: Integer,
+            page_size: Integer,
             request_options: Telnyx::RequestOptions
           }
         )
@@ -609,45 +612,6 @@ module Telnyx
             def self.values
             end
           end
-        end
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::NotificationSettingListParams::Page,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        # The page number to load
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :number
-
-        sig { params(number: Integer).void }
-        attr_writer :number
-
-        # The size of the page
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :size
-
-        sig { params(size: Integer).void }
-        attr_writer :size
-
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        sig { params(number: Integer, size: Integer).returns(T.attached_class) }
-        def self.new(
-          # The page number to load
-          number: nil,
-          # The size of the page
-          size: nil
-        )
-        end
-
-        sig { override.returns({ number: Integer, size: Integer }) }
-        def to_hash
         end
       end
     end

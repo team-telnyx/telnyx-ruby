@@ -35,9 +35,10 @@ module Telnyx
       def list: (
         ?filter: Telnyx::RoomListParams::Filter,
         ?include_sessions: bool,
-        ?page: Telnyx::RoomListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Room]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Room]
 
       def delete: (
         String room_id,

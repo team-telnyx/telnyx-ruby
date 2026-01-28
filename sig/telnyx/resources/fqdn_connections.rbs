@@ -64,10 +64,11 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::FqdnConnectionListParams::Filter,
-        ?page: Telnyx::FqdnConnectionListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?sort: Telnyx::Models::FqdnConnectionListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::FqdnConnection]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::FqdnConnection]
 
       def delete: (
         String id,

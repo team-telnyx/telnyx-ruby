@@ -15,20 +15,25 @@ module Telnyx
         #   @return [Telnyx::Models::ExternalConnections::PhoneNumberListParams::Filter, nil]
         optional :filter, -> { Telnyx::ExternalConnections::PhoneNumberListParams::Filter }
 
-        # @!attribute page
-        #   Consolidated page parameter (deepObject style). Originally: page[size],
-        #   page[number]
+        # @!attribute page_number
         #
-        #   @return [Telnyx::Models::ExternalConnections::PhoneNumberListParams::Page, nil]
-        optional :page, -> { Telnyx::ExternalConnections::PhoneNumberListParams::Page }
+        #   @return [Integer, nil]
+        optional :page_number, Integer
 
-        # @!method initialize(filter: nil, page: nil, request_options: {})
+        # @!attribute page_size
+        #
+        #   @return [Integer, nil]
+        optional :page_size, Integer
+
+        # @!method initialize(filter: nil, page_number: nil, page_size: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::ExternalConnections::PhoneNumberListParams} for more details.
         #
         #   @param filter [Telnyx::Models::ExternalConnections::PhoneNumberListParams::Filter] Filter parameter for phone numbers (deepObject style). Supports filtering by pho
         #
-        #   @param page [Telnyx::Models::ExternalConnections::PhoneNumberListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+        #   @param page_number [Integer]
+        #
+        #   @param page_size [Integer]
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -100,28 +105,6 @@ module Telnyx
             #
             #   @param eq [String] The phone number to filter by (exact match)
           end
-        end
-
-        class Page < Telnyx::Internal::Type::BaseModel
-          # @!attribute number
-          #   The page number to load
-          #
-          #   @return [Integer, nil]
-          optional :number, Integer
-
-          # @!attribute size
-          #   The size of the page
-          #
-          #   @return [Integer, nil]
-          optional :size, Integer
-
-          # @!method initialize(number: nil, size: nil)
-          #   Consolidated page parameter (deepObject style). Originally: page[size],
-          #   page[number]
-          #
-          #   @param number [Integer] The page number to load
-          #
-          #   @param size [Integer] The size of the page
         end
       end
     end

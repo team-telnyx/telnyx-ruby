@@ -56,16 +56,18 @@ module Telnyx
       #
       # List notification settings.
       #
-      # @overload list(filter: nil, page: nil, request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::NotificationSettingListParams::Filter] Consolidated filter parameter (deepObject style). Originally:
       # filter[associated\_
       #
-      # @param page [Telnyx::Models::NotificationSettingListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::NotificationSetting>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::NotificationSetting>]
       #
       # @see Telnyx::Models::NotificationSettingListParams
       def list(params = {})
@@ -73,8 +75,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "notification_settings",
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::NotificationSetting,
           options: options
         )

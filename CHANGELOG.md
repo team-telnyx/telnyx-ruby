@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.4.1 (2026-01-28)
+
+Full Changelog: [v5.4.0...v5.4.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.4.0...v5.4.1)
+
+### Bug Fixes
+
+* **docs:** fix mcp installation instructions for remote servers ([6077934](https://github.com/team-telnyx/telnyx-ruby/commit/6077934165b03f3d422d6dadc1730917d97e426e))
+
 ## 5.4.0 (2026-01-27)
 
 Full Changelog: [v5.3.0...v5.4.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.3.0...v5.4.0)

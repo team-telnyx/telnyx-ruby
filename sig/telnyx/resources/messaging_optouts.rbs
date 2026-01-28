@@ -4,10 +4,11 @@ module Telnyx
       def list: (
         ?created_at: Telnyx::MessagingOptoutListParams::CreatedAt,
         ?filter: Telnyx::MessagingOptoutListParams::Filter,
-        ?page: Telnyx::MessagingOptoutListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?redaction_enabled: String,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::MessagingOptoutListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::MessagingOptoutListResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

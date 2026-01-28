@@ -21,9 +21,10 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::NetworkListParams::Filter,
-        ?page: Telnyx::NetworkListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::NetworkListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::NetworkListResponse]
 
       def delete: (
         String id,
@@ -33,9 +34,10 @@ module Telnyx
       def list_interfaces: (
         String id,
         ?filter: Telnyx::NetworkListInterfacesParams::Filter,
-        ?page: Telnyx::NetworkListInterfacesParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::NetworkListInterfacesResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::NetworkListInterfacesResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

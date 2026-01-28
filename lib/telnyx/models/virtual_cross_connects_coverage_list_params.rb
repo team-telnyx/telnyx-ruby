@@ -22,14 +22,17 @@ module Telnyx
       #   @return [Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filters, nil]
       optional :filters, -> { Telnyx::VirtualCrossConnectsCoverageListParams::Filters }
 
-      # @!attribute page
-      #   Consolidated page parameter (deepObject style). Originally: page[number],
-      #   page[size]
+      # @!attribute page_number
       #
-      #   @return [Telnyx::Models::VirtualCrossConnectsCoverageListParams::Page, nil]
-      optional :page, -> { Telnyx::VirtualCrossConnectsCoverageListParams::Page }
+      #   @return [Integer, nil]
+      optional :page_number, Integer
 
-      # @!method initialize(filter: nil, filters: nil, page: nil, request_options: {})
+      # @!attribute page_size
+      #
+      #   @return [Integer, nil]
+      optional :page_size, Integer
+
+      # @!method initialize(filter: nil, filters: nil, page_number: nil, page_size: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::VirtualCrossConnectsCoverageListParams} for more details.
       #
@@ -37,7 +40,9 @@ module Telnyx
       #
       #   @param filters [Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filters] Consolidated filters parameter (deepObject style). Originally: filters[available
       #
-      #   @param page [Telnyx::Models::VirtualCrossConnectsCoverageListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      #   @param page_number [Integer]
+      #
+      #   @param page_size [Integer]
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -153,28 +158,6 @@ module Telnyx
           # @!method self.variants
           #   @return [Array(Integer, Telnyx::Models::VirtualCrossConnectsCoverageListParams::Filters::AvailableBandwidth::Contains)]
         end
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        # @!attribute number
-        #   The page number to load
-        #
-        #   @return [Integer, nil]
-        optional :number, Integer
-
-        # @!attribute size
-        #   The size of the page
-        #
-        #   @return [Integer, nil]
-        optional :size, Integer
-
-        # @!method initialize(number: nil, size: nil)
-        #   Consolidated page parameter (deepObject style). Originally: page[number],
-        #   page[size]
-        #
-        #   @param number [Integer] The page number to load
-        #
-        #   @param size [Integer] The size of the page
       end
     end
   end

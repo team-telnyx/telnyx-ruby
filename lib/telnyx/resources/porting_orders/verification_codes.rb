@@ -4,24 +4,23 @@ module Telnyx
   module Resources
     class PortingOrders
       class VerificationCodes
-        # Some parameter documentations has been truncated, see
-        # {Telnyx::Models::PortingOrders::VerificationCodeListParams} for more details.
-        #
         # Returns a list of verification codes for a porting order.
         #
-        # @overload list(id, filter: nil, page: nil, sort: nil, request_options: {})
+        # @overload list(id, filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
         #
         # @param id [String] Porting Order id
         #
         # @param filter [Telnyx::Models::PortingOrders::VerificationCodeListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[verified]
         #
-        # @param page [Telnyx::Models::PortingOrders::VerificationCodeListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+        # @param page_number [Integer]
+        #
+        # @param page_size [Integer]
         #
         # @param sort [Telnyx::Models::PortingOrders::VerificationCodeListParams::Sort] Consolidated sort parameter (deepObject style). Originally: sort[value]
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PortingOrders::VerificationCodeListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PortingOrders::VerificationCodeListResponse>]
         #
         # @see Telnyx::Models::PortingOrders::VerificationCodeListParams
         def list(id, params = {})
@@ -29,8 +28,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: ["porting_orders/%1$s/verification_codes", id],
-            query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
+            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::Models::PortingOrders::VerificationCodeListResponse,
             options: options
           )

@@ -14,9 +14,10 @@ module Telnyx
       ) -> Telnyx::Models::GlobalIPHealthCheckRetrieveResponse
 
       def list: (
-        ?page: Telnyx::GlobalIPHealthCheckListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::GlobalIPHealthCheckListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::GlobalIPHealthCheckListResponse]
 
       def delete: (
         String id,

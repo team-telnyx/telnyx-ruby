@@ -11,7 +11,6 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::CallEventListParams::Filter::OrHash,
-          page: Telnyx::CallEventListParams::Page::OrHash,
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
@@ -28,9 +27,6 @@ module Telnyx
         # filter[product], filter[failed], filter[from], filter[to], filter[name],
         # filter[type], filter[occurred_at][eq/gt/gte/lt/lte], filter[status]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[after],
-        # page[before], page[limit], page[size], page[number]
-        page: nil,
         page_number: nil,
         page_size: nil,
         request_options: {}

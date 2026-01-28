@@ -14,12 +14,15 @@ module Telnyx
       #   @return [Telnyx::Models::FaxApplicationListParams::Filter, nil]
       optional :filter, -> { Telnyx::FaxApplicationListParams::Filter }
 
-      # @!attribute page
-      #   Consolidated page parameter (deepObject style). Originally: page[number],
-      #   page[size]
+      # @!attribute page_number
       #
-      #   @return [Telnyx::Models::FaxApplicationListParams::Page, nil]
-      optional :page, -> { Telnyx::FaxApplicationListParams::Page }
+      #   @return [Integer, nil]
+      optional :page_number, Integer
+
+      # @!attribute page_size
+      #
+      #   @return [Integer, nil]
+      optional :page_size, Integer
 
       # @!attribute sort
       #   Specifies the sort order for results. By default sorting direction is ascending.
@@ -40,13 +43,15 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::FaxApplicationListParams::Sort, nil]
       optional :sort, enum: -> { Telnyx::FaxApplicationListParams::Sort }
 
-      # @!method initialize(filter: nil, page: nil, sort: nil, request_options: {})
+      # @!method initialize(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::FaxApplicationListParams} for more details.
       #
       #   @param filter [Telnyx::Models::FaxApplicationListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[application
       #
-      #   @param page [Telnyx::Models::FaxApplicationListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      #   @param page_number [Integer]
+      #
+      #   @param page_size [Integer]
       #
       #   @param sort [Symbol, Telnyx::Models::FaxApplicationListParams::Sort] Specifies the sort order for results. By default sorting direction is ascending.
       #
@@ -92,28 +97,6 @@ module Telnyx
           #
           #   @param contains [String] If present, applications with <code>application_name</code> containing the given
         end
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        # @!attribute number
-        #   The page number to load
-        #
-        #   @return [Integer, nil]
-        optional :number, Integer
-
-        # @!attribute size
-        #   The size of the page
-        #
-        #   @return [Integer, nil]
-        optional :size, Integer
-
-        # @!method initialize(number: nil, size: nil)
-        #   Consolidated page parameter (deepObject style). Originally: page[number],
-        #   page[size]
-        #
-        #   @param number [Integer] The page number to load
-        #
-        #   @param size [Integer] The size of the page
       end
 
       # Specifies the sort order for results. By default sorting direction is ascending.

@@ -14,20 +14,25 @@ module Telnyx
       #   @return [Telnyx::Models::ShortCodeListParams::Filter, nil]
       optional :filter, -> { Telnyx::ShortCodeListParams::Filter }
 
-      # @!attribute page
-      #   Consolidated page parameter (deepObject style). Originally: page[number],
-      #   page[size]
+      # @!attribute page_number
       #
-      #   @return [Telnyx::Models::ShortCodeListParams::Page, nil]
-      optional :page, -> { Telnyx::ShortCodeListParams::Page }
+      #   @return [Integer, nil]
+      optional :page_number, Integer
 
-      # @!method initialize(filter: nil, page: nil, request_options: {})
+      # @!attribute page_size
+      #
+      #   @return [Integer, nil]
+      optional :page_size, Integer
+
+      # @!method initialize(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::ShortCodeListParams} for more details.
       #
       #   @param filter [Telnyx::Models::ShortCodeListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[messaging_p
       #
-      #   @param page [Telnyx::Models::ShortCodeListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      #   @param page_number [Integer]
+      #
+      #   @param page_size [Integer]
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -48,28 +53,6 @@ module Telnyx
         #   filter[messaging_profile_id]
         #
         #   @param messaging_profile_id [String] Filter by Messaging Profile ID. Use the string `null` for phone numbers without
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        # @!attribute number
-        #   The page number to load
-        #
-        #   @return [Integer, nil]
-        optional :number, Integer
-
-        # @!attribute size
-        #   The size of the page
-        #
-        #   @return [Integer, nil]
-        optional :size, Integer
-
-        # @!method initialize(number: nil, size: nil)
-        #   Consolidated page parameter (deepObject style). Originally: page[number],
-        #   page[size]
-        #
-        #   @param number [Integer] The page number to load
-        #
-        #   @param size [Integer] The size of the page
       end
     end
   end

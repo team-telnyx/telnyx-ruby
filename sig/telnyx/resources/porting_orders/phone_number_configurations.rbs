@@ -9,10 +9,11 @@ module Telnyx
 
         def list: (
           ?filter: Telnyx::PortingOrders::PhoneNumberConfigurationListParams::Filter,
-          ?page: Telnyx::PortingOrders::PhoneNumberConfigurationListParams::Page,
+          ?page_number: Integer,
+          ?page_size: Integer,
           ?sort: Telnyx::PortingOrders::PhoneNumberConfigurationListParams::Sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse]
 
         def initialize: (client: Telnyx::Client) -> void
       end

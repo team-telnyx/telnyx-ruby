@@ -2,37 +2,37 @@ module Telnyx
   module Models
     type metadata =
       {
-        page_number: Float,
-        total_pages: Float,
-        page_size: Float,
-        total_results: Float
+        page_number: Integer,
+        total_pages: Integer,
+        page_size: Integer,
+        total_results: Integer
       }
 
     class Metadata < Telnyx::Internal::Type::BaseModel
-      attr_accessor page_number: Float
+      attr_accessor page_number: Integer
 
-      attr_accessor total_pages: Float
+      attr_accessor total_pages: Integer
 
-      attr_reader page_size: Float?
+      attr_reader page_size: Integer?
 
-      def page_size=: (Float) -> Float
+      def page_size=: (Integer) -> Integer
 
-      attr_reader total_results: Float?
+      attr_reader total_results: Integer?
 
-      def total_results=: (Float) -> Float
+      def total_results=: (Integer) -> Integer
 
       def initialize: (
-        page_number: Float,
-        total_pages: Float,
-        ?page_size: Float,
-        ?total_results: Float
+        page_number: Integer,
+        total_pages: Integer,
+        ?page_size: Integer,
+        ?total_results: Integer
       ) -> void
 
       def to_hash: -> {
-        page_number: Float,
-        total_pages: Float,
-        page_size: Float,
-        total_results: Float
+        page_number: Integer,
+        total_pages: Integer,
+        page_size: Integer,
+        total_results: Integer
       }
     end
   end

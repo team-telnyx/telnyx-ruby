@@ -3,7 +3,8 @@ module Telnyx
     type room_recording_list_params =
       {
         filter: Telnyx::RoomRecordingListParams::Filter,
-        page: Telnyx::RoomRecordingListParams::Page
+        page_number: Integer,
+        page_size: Integer
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -17,21 +18,25 @@ module Telnyx
         Telnyx::RoomRecordingListParams::Filter
       ) -> Telnyx::RoomRecordingListParams::Filter
 
-      attr_reader page: Telnyx::RoomRecordingListParams::Page?
+      attr_reader page_number: Integer?
 
-      def page=: (
-        Telnyx::RoomRecordingListParams::Page
-      ) -> Telnyx::RoomRecordingListParams::Page
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
 
       def initialize: (
         ?filter: Telnyx::RoomRecordingListParams::Filter,
-        ?page: Telnyx::RoomRecordingListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         filter: Telnyx::RoomRecordingListParams::Filter,
-        page: Telnyx::RoomRecordingListParams::Page,
+        page_number: Integer,
+        page_size: Integer,
         request_options: Telnyx::RequestOptions
       }
 
@@ -145,22 +150,6 @@ module Telnyx
 
           def to_hash: -> { eq: Date, gte: Date, lte: Date }
         end
-      end
-
-      type page = { number: Integer, size: Integer }
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        attr_reader number: Integer?
-
-        def number=: (Integer) -> Integer
-
-        attr_reader size: Integer?
-
-        def size=: (Integer) -> Integer
-
-        def initialize: (?number: Integer, ?size: Integer) -> void
-
-        def to_hash: -> { number: Integer, size: Integer }
       end
     end
   end

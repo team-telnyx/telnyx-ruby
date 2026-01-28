@@ -9,17 +9,19 @@ module Telnyx
       # Retrieve a list of audit log entries. Audit logs are a best-effort, eventually
       # consistent record of significant account-related changes.
       #
-      # @overload list(filter: nil, page: nil, sort: nil, request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::AuditEventListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[created_bef
       #
-      # @param page [Telnyx::Models::AuditEventListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param sort [Symbol, Telnyx::Models::AuditEventListParams::Sort] Set the order of the results by the creation date.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::AuditEventListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AuditEventListResponse>]
       #
       # @see Telnyx::Models::AuditEventListParams
       def list(params = {})
@@ -27,8 +29,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "audit_events",
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::AuditEventListResponse,
           options: options
         )
