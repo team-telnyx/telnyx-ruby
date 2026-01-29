@@ -3,8 +3,7 @@ module Telnyx
     type porting_phone_number_list_params =
       {
         filter: Telnyx::PortingPhoneNumberListParams::Filter,
-        page_number: Integer,
-        page_size: Integer
+        page: Telnyx::PortingPhoneNumberListParams::Page
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -18,25 +17,21 @@ module Telnyx
         Telnyx::PortingPhoneNumberListParams::Filter
       ) -> Telnyx::PortingPhoneNumberListParams::Filter
 
-      attr_reader page_number: Integer?
+      attr_reader page: Telnyx::PortingPhoneNumberListParams::Page?
 
-      def page_number=: (Integer) -> Integer
-
-      attr_reader page_size: Integer?
-
-      def page_size=: (Integer) -> Integer
+      def page=: (
+        Telnyx::PortingPhoneNumberListParams::Page
+      ) -> Telnyx::PortingPhoneNumberListParams::Page
 
       def initialize: (
         ?filter: Telnyx::PortingPhoneNumberListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::PortingPhoneNumberListParams::Page,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         filter: Telnyx::PortingPhoneNumberListParams::Filter,
-        page_number: Integer,
-        page_size: Integer,
+        page: Telnyx::PortingPhoneNumberListParams::Page,
         request_options: Telnyx::RequestOptions
       }
 
@@ -84,6 +79,22 @@ module Telnyx
 
           def self?.values: -> ::Array[Telnyx::Models::PortingPhoneNumberListParams::Filter::porting_order_status]
         end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
       end
     end
   end

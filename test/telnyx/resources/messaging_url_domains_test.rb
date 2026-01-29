@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::MessagingURLDomainsTest < Telnyx::Test::ResourceT
     response = @telnyx.messaging_url_domains.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

@@ -57,7 +57,7 @@ class Telnyx::Test::Resources::IPConnectionsTest < Telnyx::Test::ResourceTest
     response = @telnyx.ip_connections.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

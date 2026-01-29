@@ -3,8 +3,7 @@ module Telnyx
     type virtual_cross_connect_list_params =
       {
         filter: Telnyx::VirtualCrossConnectListParams::Filter,
-        page_number: Integer,
-        page_size: Integer
+        page: Telnyx::VirtualCrossConnectListParams::Page
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -18,25 +17,21 @@ module Telnyx
         Telnyx::VirtualCrossConnectListParams::Filter
       ) -> Telnyx::VirtualCrossConnectListParams::Filter
 
-      attr_reader page_number: Integer?
+      attr_reader page: Telnyx::VirtualCrossConnectListParams::Page?
 
-      def page_number=: (Integer) -> Integer
-
-      attr_reader page_size: Integer?
-
-      def page_size=: (Integer) -> Integer
+      def page=: (
+        Telnyx::VirtualCrossConnectListParams::Page
+      ) -> Telnyx::VirtualCrossConnectListParams::Page
 
       def initialize: (
         ?filter: Telnyx::VirtualCrossConnectListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::VirtualCrossConnectListParams::Page,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         filter: Telnyx::VirtualCrossConnectListParams::Filter,
-        page_number: Integer,
-        page_size: Integer,
+        page: Telnyx::VirtualCrossConnectListParams::Page,
         request_options: Telnyx::RequestOptions
       }
 
@@ -50,6 +45,22 @@ module Telnyx
         def initialize: (?network_id: String) -> void
 
         def to_hash: -> { network_id: String }
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
       end
     end
   end

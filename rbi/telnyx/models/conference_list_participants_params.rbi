@@ -28,6 +28,18 @@ module Telnyx
       end
       attr_writer :filter
 
+      # Consolidated page parameter (deepObject style). Originally: page[after],
+      # page[before], page[limit], page[size], page[number]
+      sig { returns(T.nilable(Telnyx::ConferenceListParticipantsParams::Page)) }
+      attr_reader :page
+
+      sig do
+        params(
+          page: Telnyx::ConferenceListParticipantsParams::Page::OrHash
+        ).void
+      end
+      attr_writer :page
+
       sig { returns(T.nilable(Integer)) }
       attr_reader :page_number
 
@@ -58,6 +70,7 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::ConferenceListParticipantsParams::Filter::OrHash,
+          page: Telnyx::ConferenceListParticipantsParams::Page::OrHash,
           page_number: Integer,
           page_size: Integer,
           region: Telnyx::ConferenceListParticipantsParams::Region::OrSymbol,
@@ -68,6 +81,9 @@ module Telnyx
         # Consolidated filter parameter (deepObject style). Originally: filter[muted],
         # filter[on_hold], filter[whispering]
         filter: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[after],
+        # page[before], page[limit], page[size], page[number]
+        page: nil,
         page_number: nil,
         page_size: nil,
         # Region where the conference data is located
@@ -80,6 +96,7 @@ module Telnyx
         override.returns(
           {
             filter: Telnyx::ConferenceListParticipantsParams::Filter,
+            page: Telnyx::ConferenceListParticipantsParams::Page,
             page_number: Integer,
             page_size: Integer,
             region: Telnyx::ConferenceListParticipantsParams::Region::OrSymbol,
@@ -143,6 +160,60 @@ module Telnyx
           override.returns(
             { muted: T::Boolean, on_hold: T::Boolean, whispering: T::Boolean }
           )
+        end
+        def to_hash
+        end
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::ConferenceListParticipantsParams::Page,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        # Opaque identifier of next page
+        sig { returns(T.nilable(String)) }
+        attr_reader :after
+
+        sig { params(after: String).void }
+        attr_writer :after
+
+        # Opaque identifier of previous page
+        sig { returns(T.nilable(String)) }
+        attr_reader :before
+
+        sig { params(before: String).void }
+        attr_writer :before
+
+        # Limit of records per single page
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :limit
+
+        sig { params(limit: Integer).void }
+        attr_writer :limit
+
+        # Consolidated page parameter (deepObject style). Originally: page[after],
+        # page[before], page[limit], page[size], page[number]
+        sig do
+          params(after: String, before: String, limit: Integer).returns(
+            T.attached_class
+          )
+        end
+        def self.new(
+          # Opaque identifier of next page
+          after: nil,
+          # Opaque identifier of previous page
+          before: nil,
+          # Limit of records per single page
+          limit: nil
+        )
+        end
+
+        sig do
+          override.returns({ after: String, before: String, limit: Integer })
         end
         def to_hash
         end

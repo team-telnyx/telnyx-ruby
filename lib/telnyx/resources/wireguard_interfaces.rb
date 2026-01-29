@@ -57,17 +57,15 @@ module Telnyx
       #
       # List all WireGuard Interfaces.
       #
-      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
+      # @overload list(filter: nil, page: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::WireguardInterfaceListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[network_id]
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::WireguardInterfaceListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::WireguardInterfaceListResponse>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::WireguardInterfaceListResponse>]
       #
       # @see Telnyx::Models::WireguardInterfaceListParams
       def list(params = {})
@@ -75,8 +73,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "wireguard_interfaces",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::WireguardInterfaceListResponse,
           options: options
         )

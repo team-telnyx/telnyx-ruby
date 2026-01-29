@@ -5,11 +5,10 @@ module Telnyx
         def list: (
           String id,
           ?filter: Telnyx::PortingOrders::VerificationCodeListParams::Filter,
-          ?page_number: Integer,
-          ?page_size: Integer,
+          ?page: Telnyx::PortingOrders::VerificationCodeListParams::Page,
           ?sort: Telnyx::PortingOrders::VerificationCodeListParams::Sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::PortingOrders::VerificationCodeListResponse]
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::PortingOrders::VerificationCodeListResponse]
 
         def send_: (
           String id,

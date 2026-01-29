@@ -17,6 +17,7 @@ module Telnyx
 
         def list: (
           String queue_name,
+          ?page: Telnyx::Queues::CallListParams::Page,
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts

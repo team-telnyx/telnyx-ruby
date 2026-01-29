@@ -67,11 +67,10 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::NumberOrderListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::NumberOrderListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
+          Telnyx::Internal::DefaultPagination[
             Telnyx::Models::NumberOrderListResponse
           ]
         )
@@ -81,8 +80,9 @@ module Telnyx
         # filter[created_at], filter[phone_numbers_count], filter[customer_reference],
         # filter[requirements_met]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        page: nil,
         request_options: {}
       )
       end

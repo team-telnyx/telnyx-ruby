@@ -8,10 +8,9 @@ module Telnyx
         ) -> Telnyx::Models::MobilePhoneNumbers::MessagingRetrieveResponse
 
         def list: (
-          ?page_number: Integer,
-          ?page_size: Integer,
+          ?page: Telnyx::MobilePhoneNumbers::MessagingListParams::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse]
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse]
 
         def initialize: (client: Telnyx::Client) -> void
       end

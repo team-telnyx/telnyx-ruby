@@ -150,20 +150,18 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::TexmlApplicationListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::TexmlApplicationListParams::Page::OrHash,
           sort: Telnyx::TexmlApplicationListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultFlatPagination[Telnyx::TexmlApplication]
-        )
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::TexmlApplication])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[outbound_voice_profile_id], filter[friendly_name]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        page: nil,
         # Specifies the sort order for results. By default sorting direction is ascending.
         # To have the results sorted in descending order add the <code> -</code>
         # prefix.<br/><br/> That is: <ul>

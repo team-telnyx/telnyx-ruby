@@ -48,11 +48,10 @@ module Telnyx
         sig do
           params(
             id: String,
-            page_number: Integer,
-            page_size: Integer,
+            page: Telnyx::PortingOrders::ActivationJobListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Internal::DefaultPagination[
               Telnyx::PortingOrdersActivationJob
             ]
           )
@@ -60,8 +59,9 @@ module Telnyx
         def list(
           # Porting Order id
           id,
-          page_number: nil,
-          page_size: nil,
+          # Consolidated page parameter (deepObject style). Originally: page[size],
+          # page[number]
+          page: nil,
           request_options: {}
         )
         end

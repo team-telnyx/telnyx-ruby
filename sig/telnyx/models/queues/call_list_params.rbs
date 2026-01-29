@@ -2,12 +2,22 @@ module Telnyx
   module Models
     module Queues
       type call_list_params =
-        { page_number: Integer, page_size: Integer }
+        {
+          page: Telnyx::Queues::CallListParams::Page,
+          page_number: Integer,
+          page_size: Integer
+        }
         & Telnyx::Internal::Type::request_parameters
 
       class CallListParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader page: Telnyx::Queues::CallListParams::Page?
+
+        def page=: (
+          Telnyx::Queues::CallListParams::Page
+        ) -> Telnyx::Queues::CallListParams::Page
 
         attr_reader page_number: Integer?
 
@@ -18,16 +28,42 @@ module Telnyx
         def page_size=: (Integer) -> Integer
 
         def initialize: (
+          ?page: Telnyx::Queues::CallListParams::Page,
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
+          page: Telnyx::Queues::CallListParams::Page,
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions
         }
+
+        type page = { after: String, before: String, limit: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader after: String?
+
+          def after=: (String) -> String
+
+          attr_reader before: String?
+
+          def before=: (String) -> String
+
+          attr_reader limit: Integer?
+
+          def limit=: (Integer) -> Integer
+
+          def initialize: (
+            ?after: String,
+            ?before: String,
+            ?limit: Integer
+          ) -> void
+
+          def to_hash: -> { after: String, before: String, limit: Integer }
+        end
       end
     end
   end

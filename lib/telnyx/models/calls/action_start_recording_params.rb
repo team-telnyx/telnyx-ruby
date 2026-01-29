@@ -80,13 +80,15 @@ module Telnyx
         optional :transcription, Telnyx::Internal::Type::Boolean
 
         # @!attribute transcription_engine
-        #   Engine to use for speech recognition. `A` - `Google`
+        #   Engine to use for speech recognition. `A` - `Google`, `B` - `Telnyx`,
+        #   `deepgram/nova-3` - `Deepgram Nova-3`. Note: `deepgram/nova-3` supports only
+        #   `en` and `en-{Region}` languages.
         #
-        #   @return [String, nil]
-        optional :transcription_engine, String
+        #   @return [Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::TranscriptionEngine, nil]
+        optional :transcription_engine,
+                 enum: -> { Telnyx::Calls::ActionStartRecordingParams::TranscriptionEngine }
 
         # @!attribute transcription_language
-        #   Language to use for speech recognition
         #
         #   @return [Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::TranscriptionLanguage, nil]
         optional :transcription_language,
@@ -149,9 +151,9 @@ module Telnyx
         #
         #   @param transcription [Boolean] Enable post recording transcription. The default value is false.
         #
-        #   @param transcription_engine [String] Engine to use for speech recognition. `A` - `Google`
+        #   @param transcription_engine [Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::TranscriptionEngine] Engine to use for speech recognition. `A` - `Google`, `B` - `Telnyx`, `deepgram/
         #
-        #   @param transcription_language [Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::TranscriptionLanguage] Language to use for speech recognition
+        #   @param transcription_language [Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::TranscriptionLanguage]
         #
         #   @param transcription_max_speaker_count [Integer] Defines maximum number of speakers in the conversation. Applies to `google` engi
         #
@@ -203,7 +205,20 @@ module Telnyx
           #   @return [Array<Symbol>]
         end
 
-        # Language to use for speech recognition
+        # Engine to use for speech recognition. `A` - `Google`, `B` - `Telnyx`,
+        # `deepgram/nova-3` - `Deepgram Nova-3`. Note: `deepgram/nova-3` supports only
+        # `en` and `en-{Region}` languages.
+        module TranscriptionEngine
+          extend Telnyx::Internal::Type::Enum
+
+          A = :A
+          B = :B
+          DEEPGRAM_NOVA_3 = :"deepgram/nova-3"
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
         module TranscriptionLanguage
           extend Telnyx::Internal::Type::Enum
 
@@ -352,6 +367,106 @@ module Telnyx
           ZH = :zh
           ZH_TW = :"zh-TW"
           ZU_ZA = :"zu-ZA"
+          EN = :en
+          DE = :de
+          ES = :es
+          RU = :ru
+          KO = :ko
+          FR = :fr
+          JA = :ja
+          PT = :pt
+          TR = :tr
+          PL = :pl
+          CA = :ca
+          NL = :nl
+          AR = :ar
+          SV = :sv
+          IT = :it
+          ID = :id
+          HI = :hi
+          FI = :fi
+          VI = :vi
+          HE = :he
+          UK = :uk
+          EL = :el
+          MS = :ms
+          CS = :cs
+          RO = :ro
+          DA = :da
+          HU = :hu
+          TA = :ta
+          NO = :no
+          TH = :th
+          UR = :ur
+          HR = :hr
+          BG = :bg
+          LT = :lt
+          LA = :la
+          MI = :mi
+          ML = :ml
+          CY = :cy
+          SK = :sk
+          TE = :te
+          FA = :fa
+          LV = :lv
+          BN = :bn
+          SR = :sr
+          AZ = :az
+          SL = :sl
+          KN = :kn
+          ET = :et
+          MK = :mk
+          BR = :br
+          EU = :eu
+          IS = :is
+          HY = :hy
+          NE = :ne
+          MN = :mn
+          BS = :bs
+          KK = :kk
+          SQ = :sq
+          SW = :sw
+          GL = :gl
+          MR = :mr
+          PA = :pa
+          SI = :si
+          KM = :km
+          SN = :sn
+          YO = :yo
+          SO = :so
+          AF = :af
+          OC = :oc
+          KA = :ka
+          BE = :be
+          TG = :tg
+          SD = :sd
+          GU = :gu
+          AM = :am
+          YI = :yi
+          LO = :lo
+          UZ = :uz
+          FO = :fo
+          HT = :ht
+          PS = :ps
+          TK = :tk
+          NN = :nn
+          MT = :mt
+          SA = :sa
+          LB = :lb
+          MY = :my
+          BO = :bo
+          TL = :tl
+          MG = :mg
+          AS = :as
+          TT = :tt
+          HAW = :haw
+          LN = :ln
+          HA = :ha
+          BA = :ba
+          JW = :jw
+          SU = :su
+          AUTO_DETECT = :auto_detect
+          ES_419 = :"es-419"
 
           # @!method self.values
           #   @return [Array<Symbol>]

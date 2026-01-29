@@ -8,10 +8,9 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::RoomParticipantListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::RoomParticipantListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::RoomParticipant]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::RoomParticipant]
 
       def initialize: (client: Telnyx::Client) -> void
     end

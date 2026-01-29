@@ -8,10 +8,9 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::RoomRecordingListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::RoomRecordingListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::RoomRecordingListResponse]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::RoomRecordingListResponse]
 
       def delete: (
         String room_recording_id,
@@ -20,8 +19,7 @@ module Telnyx
 
       def delete_bulk: (
         ?filter: Telnyx::RoomRecordingDeleteBulkParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::RoomRecordingDeleteBulkParams::Page,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::RoomRecordingDeleteBulkResponse
 

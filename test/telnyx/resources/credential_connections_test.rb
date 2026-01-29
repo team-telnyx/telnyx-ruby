@@ -62,7 +62,7 @@ class Telnyx::Test::Resources::CredentialConnectionsTest < Telnyx::Test::Resourc
     response = @telnyx.credential_connections.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

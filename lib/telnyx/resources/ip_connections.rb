@@ -168,20 +168,18 @@ module Telnyx
       #
       # Returns a list of your IP connections.
       #
-      # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @overload list(filter: nil, page: nil, sort: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::IPConnectionListParams::Filter] Consolidated filter parameter (deepObject style). Originally:
       # filter[connection\_
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::IPConnectionListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
       #
       # @param sort [Symbol, Telnyx::Models::IPConnectionListParams::Sort] Specifies the sort order for results. By default sorting direction is ascending.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::IPConnection>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::IPConnection>]
       #
       # @see Telnyx::Models::IPConnectionListParams
       def list(params = {})
@@ -189,8 +187,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "ip_connections",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::IPConnection,
           options: options
         )

@@ -2,32 +2,44 @@ module Telnyx
   module Models
     module Porting
       type loa_configuration_list_params =
-        { page_number: Integer, page_size: Integer }
+        { page: Telnyx::Porting::LoaConfigurationListParams::Page }
         & Telnyx::Internal::Type::request_parameters
 
       class LoaConfigurationListParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
-        attr_reader page_number: Integer?
+        attr_reader page: Telnyx::Porting::LoaConfigurationListParams::Page?
 
-        def page_number=: (Integer) -> Integer
-
-        attr_reader page_size: Integer?
-
-        def page_size=: (Integer) -> Integer
+        def page=: (
+          Telnyx::Porting::LoaConfigurationListParams::Page
+        ) -> Telnyx::Porting::LoaConfigurationListParams::Page
 
         def initialize: (
-          ?page_number: Integer,
-          ?page_size: Integer,
+          ?page: Telnyx::Porting::LoaConfigurationListParams::Page,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::Porting::LoaConfigurationListParams::Page,
           request_options: Telnyx::RequestOptions
         }
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
+        end
       end
     end
   end

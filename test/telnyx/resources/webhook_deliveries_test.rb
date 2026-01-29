@@ -25,7 +25,7 @@ class Telnyx::Test::Resources::WebhookDeliveriesTest < Telnyx::Test::ResourceTes
     response = @telnyx.webhook_deliveries.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

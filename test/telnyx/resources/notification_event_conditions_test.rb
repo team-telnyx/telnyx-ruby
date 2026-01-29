@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::NotificationEventConditionsTest < Telnyx::Test::R
     response = @telnyx.notification_event_conditions.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

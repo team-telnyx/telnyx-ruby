@@ -38,10 +38,9 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::VirtualCrossConnectListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::VirtualCrossConnectListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::VirtualCrossConnectListResponse]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::VirtualCrossConnectListResponse]
 
       def delete: (
         String id,

@@ -33,12 +33,9 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::PortoutListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::PortoutListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultFlatPagination[Telnyx::PortoutDetails]
-        )
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::PortoutDetails])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:
@@ -47,8 +44,9 @@ module Telnyx
         # filter[ported_out_at], filter[spid], filter[status], filter[status_in],
         # filter[support_key]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[number],
+        # page[size]
+        page: nil,
         request_options: {}
       )
       end

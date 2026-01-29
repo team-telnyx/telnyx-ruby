@@ -12,9 +12,11 @@ module Telnyx
       #
       # **Note**: Only one `filter[occurred_at]` can be passed.
       #
-      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
+      # @overload list(filter: nil, page: nil, page_number: nil, page_size: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::CallEventListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[application
+      #
+      # @param page [Telnyx::Models::CallEventListParams::Page] Consolidated page parameter (deepObject style). Originally: page[after], page[be
       #
       # @param page_number [Integer]
       #

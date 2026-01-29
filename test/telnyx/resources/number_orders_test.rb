@@ -57,7 +57,7 @@ class Telnyx::Test::Resources::NumberOrdersTest < Telnyx::Test::ResourceTest
     response = @telnyx.number_orders.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

@@ -42,10 +42,9 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::ExternalConnectionListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::ExternalConnectionListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::ExternalConnection]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::ExternalConnection]
 
       def delete: (
         String id,

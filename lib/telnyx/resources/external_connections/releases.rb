@@ -38,19 +38,17 @@ module Telnyx
         # automatically created when you change the `connection_id` of a phone number that
         # is currently on Microsoft Teams.
         #
-        # @overload list(id, filter: nil, page_number: nil, page_size: nil, request_options: {})
+        # @overload list(id, filter: nil, page: nil, request_options: {})
         #
         # @param id [String] Identifies the resource.
         #
         # @param filter [Telnyx::Models::ExternalConnections::ReleaseListParams::Filter] Filter parameter for releases (deepObject style). Supports filtering by status,
         #
-        # @param page_number [Integer]
-        #
-        # @param page_size [Integer]
+        # @param page [Telnyx::Models::ExternalConnections::ReleaseListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::ExternalConnections::ReleaseListResponse>]
+        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ExternalConnections::ReleaseListResponse>]
         #
         # @see Telnyx::Models::ExternalConnections::ReleaseListParams
         def list(id, params = {})
@@ -58,8 +56,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: ["external_connections/%1$s/releases", id],
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-            page: Telnyx::Internal::DefaultFlatPagination,
+            query: parsed,
+            page: Telnyx::Internal::DefaultPagination,
             model: Telnyx::Models::ExternalConnections::ReleaseListResponse,
             options: options
           )

@@ -76,17 +76,17 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::FqdnListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::FqdnListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultFlatPagination[Telnyx::Fqdn])
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::Fqdn])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[connection_id], filter[fqdn], filter[port], filter[dns_record_type]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        page: nil,
         request_options: {}
       )
       end

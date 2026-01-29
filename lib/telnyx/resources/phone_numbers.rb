@@ -83,21 +83,19 @@ module Telnyx
       #
       # List phone numbers
       #
-      # @overload list(filter: nil, handle_messaging_profile_error: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @overload list(filter: nil, handle_messaging_profile_error: nil, page: nil, sort: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::PhoneNumberListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[tag], filte
       #
       # @param handle_messaging_profile_error [Symbol, Telnyx::Models::PhoneNumberListParams::HandleMessagingProfileError] Although it is an infrequent occurrence, due to the highly distributed nature of
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::PhoneNumberListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
       #
       # @param sort [Symbol, Telnyx::Models::PhoneNumberListParams::Sort] Specifies the sort order for results. If not given, results are sorted by create
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PhoneNumberDetailed>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PhoneNumberDetailed>]
       #
       # @see Telnyx::Models::PhoneNumberListParams
       def list(params = {})
@@ -105,8 +103,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "phone_numbers",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::PhoneNumberDetailed,
           options: options
         )
@@ -138,7 +136,7 @@ module Telnyx
       # List phone numbers, This endpoint is a lighter version of the /phone_numbers
       # endpoint having higher performance and rate limit.
       #
-      # @overload slim_list(filter: nil, include_connection: nil, include_tags: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @overload slim_list(filter: nil, include_connection: nil, include_tags: nil, page: nil, sort: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::PhoneNumberSlimListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[tag], filte
       #
@@ -146,15 +144,13 @@ module Telnyx
       #
       # @param include_tags [Boolean] Include the tags associated with the phone number.
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::PhoneNumberSlimListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
       #
       # @param sort [Symbol, Telnyx::Models::PhoneNumberSlimListParams::Sort] Specifies the sort order for results. If not given, results are sorted by create
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PhoneNumberSlimListResponse>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PhoneNumberSlimListResponse>]
       #
       # @see Telnyx::Models::PhoneNumberSlimListParams
       def slim_list(params = {})
@@ -162,8 +158,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "phone_numbers/slim",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::PhoneNumberSlimListResponse,
           options: options
         )

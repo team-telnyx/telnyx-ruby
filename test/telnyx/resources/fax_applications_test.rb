@@ -63,7 +63,7 @@ class Telnyx::Test::Resources::FaxApplicationsTest < Telnyx::Test::ResourceTest
     response = @telnyx.fax_applications.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

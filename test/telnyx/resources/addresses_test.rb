@@ -49,7 +49,7 @@ class Telnyx::Test::Resources::AddressesTest < Telnyx::Test::ResourceTest
     response = @telnyx.addresses.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

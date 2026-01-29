@@ -35,17 +35,13 @@ module Telnyx
       sig { params(include_phone_numbers: T::Boolean).void }
       attr_writer :include_phone_numbers
 
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :page_number
+      # Consolidated page parameter (deepObject style). Originally: page[size],
+      # page[number]
+      sig { returns(T.nilable(Telnyx::PortingOrderListParams::Page)) }
+      attr_reader :page
 
-      sig { params(page_number: Integer).void }
-      attr_writer :page_number
-
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :page_size
-
-      sig { params(page_size: Integer).void }
-      attr_writer :page_size
+      sig { params(page: Telnyx::PortingOrderListParams::Page::OrHash).void }
+      attr_writer :page
 
       # Consolidated sort parameter (deepObject style). Originally: sort[value]
       sig { returns(T.nilable(Telnyx::PortingOrderListParams::Sort)) }
@@ -58,8 +54,7 @@ module Telnyx
         params(
           filter: Telnyx::PortingOrderListParams::Filter::OrHash,
           include_phone_numbers: T::Boolean,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::PortingOrderListParams::Page::OrHash,
           sort: Telnyx::PortingOrderListParams::Sort::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -77,8 +72,9 @@ module Telnyx
         filter: nil,
         # Include the first 50 phone number objects in the results
         include_phone_numbers: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        page: nil,
         # Consolidated sort parameter (deepObject style). Originally: sort[value]
         sort: nil,
         request_options: {}
@@ -90,8 +86,7 @@ module Telnyx
           {
             filter: Telnyx::PortingOrderListParams::Filter,
             include_phone_numbers: T::Boolean,
-            page_number: Integer,
-            page_size: Integer,
+            page: Telnyx::PortingOrderListParams::Page,
             sort: Telnyx::PortingOrderListParams::Sort,
             request_options: Telnyx::RequestOptions
           }
@@ -557,6 +552,45 @@ module Telnyx
             def to_hash
             end
           end
+        end
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::PortingOrderListParams::Page,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        # The page number to load
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :number
+
+        sig { params(number: Integer).void }
+        attr_writer :number
+
+        # The size of the page
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :size
+
+        sig { params(size: Integer).void }
+        attr_writer :size
+
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        sig { params(number: Integer, size: Integer).returns(T.attached_class) }
+        def self.new(
+          # The page number to load
+          number: nil,
+          # The size of the page
+          size: nil
+        )
+        end
+
+        sig { override.returns({ number: Integer, size: Integer }) }
+        def to_hash
         end
       end
 

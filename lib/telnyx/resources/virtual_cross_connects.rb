@@ -129,17 +129,15 @@ module Telnyx
       #
       # List all Virtual Cross Connects.
       #
-      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
+      # @overload list(filter: nil, page: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::VirtualCrossConnectListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[network_id]
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::VirtualCrossConnectListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::VirtualCrossConnectListResponse>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::VirtualCrossConnectListResponse>]
       #
       # @see Telnyx::Models::VirtualCrossConnectListParams
       def list(params = {})
@@ -147,8 +145,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "virtual_cross_connects",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::VirtualCrossConnectListResponse,
           options: options
         )

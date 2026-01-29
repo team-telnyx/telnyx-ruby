@@ -16,15 +16,12 @@ module Telnyx
         sig { params(agent_thinking_text: String).void }
         attr_writer :agent_thinking_text
 
-        sig do
-          returns(T.nilable(Telnyx::AI::WidgetSettings::AudioVisualizerConfig))
-        end
+        sig { returns(T.nilable(Telnyx::AI::AudioVisualizerConfig)) }
         attr_reader :audio_visualizer_config
 
         sig do
           params(
-            audio_visualizer_config:
-              Telnyx::AI::WidgetSettings::AudioVisualizerConfig::OrHash
+            audio_visualizer_config: Telnyx::AI::AudioVisualizerConfig::OrHash
           ).void
         end
         attr_writer :audio_visualizer_config
@@ -94,8 +91,7 @@ module Telnyx
         sig do
           params(
             agent_thinking_text: String,
-            audio_visualizer_config:
-              Telnyx::AI::WidgetSettings::AudioVisualizerConfig::OrHash,
+            audio_visualizer_config: Telnyx::AI::AudioVisualizerConfig::OrHash,
             default_state: Telnyx::AI::WidgetSettings::DefaultState::OrSymbol,
             give_feedback_url: T.nilable(String),
             logo_icon_url: T.nilable(String),
@@ -136,8 +132,7 @@ module Telnyx
           override.returns(
             {
               agent_thinking_text: String,
-              audio_visualizer_config:
-                Telnyx::AI::WidgetSettings::AudioVisualizerConfig,
+              audio_visualizer_config: Telnyx::AI::AudioVisualizerConfig,
               default_state: Telnyx::AI::WidgetSettings::DefaultState::OrSymbol,
               give_feedback_url: T.nilable(String),
               logo_icon_url: T.nilable(String),
@@ -151,123 +146,6 @@ module Telnyx
           )
         end
         def to_hash
-        end
-
-        class AudioVisualizerConfig < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::AI::WidgetSettings::AudioVisualizerConfig,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          # The color theme for the audio visualizer.
-          sig do
-            returns(
-              T.nilable(
-                Telnyx::AI::WidgetSettings::AudioVisualizerConfig::Color::OrSymbol
-              )
-            )
-          end
-          attr_reader :color
-
-          sig do
-            params(
-              color:
-                Telnyx::AI::WidgetSettings::AudioVisualizerConfig::Color::OrSymbol
-            ).void
-          end
-          attr_writer :color
-
-          # The preset style for the audio visualizer.
-          sig { returns(T.nilable(String)) }
-          attr_reader :preset
-
-          sig { params(preset: String).void }
-          attr_writer :preset
-
-          sig do
-            params(
-              color:
-                Telnyx::AI::WidgetSettings::AudioVisualizerConfig::Color::OrSymbol,
-              preset: String
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # The color theme for the audio visualizer.
-            color: nil,
-            # The preset style for the audio visualizer.
-            preset: nil
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                color:
-                  Telnyx::AI::WidgetSettings::AudioVisualizerConfig::Color::OrSymbol,
-                preset: String
-              }
-            )
-          end
-          def to_hash
-          end
-
-          # The color theme for the audio visualizer.
-          module Color
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::AI::WidgetSettings::AudioVisualizerConfig::Color
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            VERDANT =
-              T.let(
-                :verdant,
-                Telnyx::AI::WidgetSettings::AudioVisualizerConfig::Color::TaggedSymbol
-              )
-            TWILIGHT =
-              T.let(
-                :twilight,
-                Telnyx::AI::WidgetSettings::AudioVisualizerConfig::Color::TaggedSymbol
-              )
-            BLOOM =
-              T.let(
-                :bloom,
-                Telnyx::AI::WidgetSettings::AudioVisualizerConfig::Color::TaggedSymbol
-              )
-            MYSTIC =
-              T.let(
-                :mystic,
-                Telnyx::AI::WidgetSettings::AudioVisualizerConfig::Color::TaggedSymbol
-              )
-            FLARE =
-              T.let(
-                :flare,
-                Telnyx::AI::WidgetSettings::AudioVisualizerConfig::Color::TaggedSymbol
-              )
-            GLACIER =
-              T.let(
-                :glacier,
-                Telnyx::AI::WidgetSettings::AudioVisualizerConfig::Color::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::AI::WidgetSettings::AudioVisualizerConfig::Color::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
         end
 
         # The default state of the widget.

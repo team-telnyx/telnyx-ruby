@@ -30,13 +30,11 @@ module Telnyx
         # Retrieve a list of log messages for all external connections associated with
         # your account.
         #
-        # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
+        # @overload list(filter: nil, page: nil, request_options: {})
         #
         # @param filter [Telnyx::Models::ExternalConnections::LogMessageListParams::Filter] Filter parameter for log messages (deepObject style). Supports filtering by exte
         #
-        # @param page_number [Integer]
-        #
-        # @param page_size [Integer]
+        # @param page [Telnyx::Models::ExternalConnections::LogMessageListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -48,7 +46,7 @@ module Telnyx
           @client.request(
             method: :get,
             path: "external_connections/log_messages",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: parsed,
             page: Telnyx::Internal::DefaultPaginationForLogMessages,
             model: Telnyx::Models::ExternalConnections::LogMessageListResponse,
             options: options

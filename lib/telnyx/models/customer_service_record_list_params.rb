@@ -15,15 +15,12 @@ module Telnyx
       #   @return [Telnyx::Models::CustomerServiceRecordListParams::Filter, nil]
       optional :filter, -> { Telnyx::CustomerServiceRecordListParams::Filter }
 
-      # @!attribute page_number
+      # @!attribute page
+      #   Consolidated page parameter (deepObject style). Originally: page[size],
+      #   page[number]
       #
-      #   @return [Integer, nil]
-      optional :page_number, Integer
-
-      # @!attribute page_size
-      #
-      #   @return [Integer, nil]
-      optional :page_size, Integer
+      #   @return [Telnyx::Models::CustomerServiceRecordListParams::Page, nil]
+      optional :page, -> { Telnyx::CustomerServiceRecordListParams::Page }
 
       # @!attribute sort
       #   Consolidated sort parameter (deepObject style). Originally: sort[value]
@@ -31,15 +28,13 @@ module Telnyx
       #   @return [Telnyx::Models::CustomerServiceRecordListParams::Sort, nil]
       optional :sort, -> { Telnyx::CustomerServiceRecordListParams::Sort }
 
-      # @!method initialize(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @!method initialize(filter: nil, page: nil, sort: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CustomerServiceRecordListParams} for more details.
       #
       #   @param filter [Telnyx::Models::CustomerServiceRecordListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[phone_numbe
       #
-      #   @param page_number [Integer]
-      #
-      #   @param page_size [Integer]
+      #   @param page [Telnyx::Models::CustomerServiceRecordListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
       #
       #   @param sort [Telnyx::Models::CustomerServiceRecordListParams::Sort] Consolidated sort parameter (deepObject style). Originally: sort[value]
       #
@@ -158,6 +153,28 @@ module Telnyx
             #   @return [Array<Symbol>]
           end
         end
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        # @!attribute number
+        #   The page number to load
+        #
+        #   @return [Integer, nil]
+        optional :number, Integer
+
+        # @!attribute size
+        #   The size of the page
+        #
+        #   @return [Integer, nil]
+        optional :size, Integer
+
+        # @!method initialize(number: nil, size: nil)
+        #   Consolidated page parameter (deepObject style). Originally: page[size],
+        #   page[number]
+        #
+        #   @param number [Integer] The page number to load
+        #
+        #   @param size [Integer] The size of the page
       end
 
       class Sort < Telnyx::Internal::Type::BaseModel

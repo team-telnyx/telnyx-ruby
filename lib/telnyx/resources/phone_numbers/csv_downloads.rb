@@ -51,15 +51,18 @@ module Telnyx
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::PhoneNumbers::CsvDownloadListParams} for more details.
+        #
         # List CSV downloads
         #
-        # @overload list(page_number: nil, page_size: nil, request_options: {})
+        # @overload list(page: nil, request_options: {})
         #
-        # @param page_number [Integer]
-        # @param page_size [Integer]
+        # @param page [Telnyx::Models::PhoneNumbers::CsvDownloadListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PhoneNumbers::CsvDownload>]
+        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PhoneNumbers::CsvDownload>]
         #
         # @see Telnyx::Models::PhoneNumbers::CsvDownloadListParams
         def list(params = {})
@@ -67,8 +70,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: "phone_numbers/csv_downloads",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-            page: Telnyx::Internal::DefaultFlatPagination,
+            query: parsed,
+            page: Telnyx::Internal::DefaultPagination,
             model: Telnyx::PhoneNumbers::CsvDownload,
             options: options
           )
