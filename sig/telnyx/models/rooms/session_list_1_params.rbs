@@ -5,8 +5,7 @@ module Telnyx
         {
           filter: Telnyx::Rooms::SessionList1Params::Filter,
           include_participants: bool,
-          page_number: Integer,
-          page_size: Integer
+          page: Telnyx::Rooms::SessionList1Params::Page
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -24,27 +23,23 @@ module Telnyx
 
         def include_participants=: (bool) -> bool
 
-        attr_reader page_number: Integer?
+        attr_reader page: Telnyx::Rooms::SessionList1Params::Page?
 
-        def page_number=: (Integer) -> Integer
-
-        attr_reader page_size: Integer?
-
-        def page_size=: (Integer) -> Integer
+        def page=: (
+          Telnyx::Rooms::SessionList1Params::Page
+        ) -> Telnyx::Rooms::SessionList1Params::Page
 
         def initialize: (
           ?filter: Telnyx::Rooms::SessionList1Params::Filter,
           ?include_participants: bool,
-          ?page_number: Integer,
-          ?page_size: Integer,
+          ?page: Telnyx::Rooms::SessionList1Params::Page,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           filter: Telnyx::Rooms::SessionList1Params::Filter,
           include_participants: bool,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::Rooms::SessionList1Params::Page,
           request_options: Telnyx::RequestOptions
         }
 
@@ -152,6 +147,22 @@ module Telnyx
 
             def to_hash: -> { eq: Date, gte: Date, lte: Date }
           end
+        end
+
+        type page = { number: Integer, size: Integer }
+
+        class Page < Telnyx::Internal::Type::BaseModel
+          attr_reader number: Integer?
+
+          def number=: (Integer) -> Integer
+
+          attr_reader size: Integer?
+
+          def size=: (Integer) -> Integer
+
+          def initialize: (?number: Integer, ?size: Integer) -> void
+
+          def to_hash: -> { number: Integer, size: Integer }
         end
       end
     end

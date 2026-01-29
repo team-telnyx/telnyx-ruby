@@ -94,11 +94,10 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::AddressListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::AddressListParams::Page::OrHash,
           sort: Telnyx::AddressListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultFlatPagination[Telnyx::Address])
+        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::Address])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:
@@ -106,8 +105,9 @@ module Telnyx
         # filter[used_as_emergency], filter[street_address][contains],
         # filter[address_book][eq]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[number],
+        # page[size]
+        page: nil,
         # Specifies the sort order for results. By default sorting direction is ascending.
         # To have the results sorted in descending order add the <code> -</code>
         # prefix.<br/><br/> That is: <ul>

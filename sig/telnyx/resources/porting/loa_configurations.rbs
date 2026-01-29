@@ -27,10 +27,9 @@ module Telnyx
         ) -> Telnyx::Models::Porting::LoaConfigurationUpdateResponse
 
         def list: (
-          ?page_number: Integer,
-          ?page_size: Integer,
+          ?page: Telnyx::Porting::LoaConfigurationListParams::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Porting::PortingLoaConfiguration]
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Porting::PortingLoaConfiguration]
 
         def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 

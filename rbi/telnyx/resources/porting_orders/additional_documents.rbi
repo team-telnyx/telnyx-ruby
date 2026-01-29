@@ -31,13 +31,13 @@ module Telnyx
             id: String,
             filter:
               Telnyx::PortingOrders::AdditionalDocumentListParams::Filter::OrHash,
-            page_number: Integer,
-            page_size: Integer,
+            page:
+              Telnyx::PortingOrders::AdditionalDocumentListParams::Page::OrHash,
             sort:
               Telnyx::PortingOrders::AdditionalDocumentListParams::Sort::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Internal::DefaultPagination[
               Telnyx::Models::PortingOrders::AdditionalDocumentListResponse
             ]
           )
@@ -48,8 +48,9 @@ module Telnyx
           # Consolidated filter parameter (deepObject style). Originally:
           # filter[document_type]
           filter: nil,
-          page_number: nil,
-          page_size: nil,
+          # Consolidated page parameter (deepObject style). Originally: page[size],
+          # page[number]
+          page: nil,
           # Consolidated sort parameter (deepObject style). Originally: sort[value]
           sort: nil,
           request_options: {}

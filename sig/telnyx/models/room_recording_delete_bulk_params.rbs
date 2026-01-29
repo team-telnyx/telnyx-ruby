@@ -3,8 +3,7 @@ module Telnyx
     type room_recording_delete_bulk_params =
       {
         filter: Telnyx::RoomRecordingDeleteBulkParams::Filter,
-        page_number: Integer,
-        page_size: Integer
+        page: Telnyx::RoomRecordingDeleteBulkParams::Page
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -18,25 +17,21 @@ module Telnyx
         Telnyx::RoomRecordingDeleteBulkParams::Filter
       ) -> Telnyx::RoomRecordingDeleteBulkParams::Filter
 
-      attr_reader page_number: Integer?
+      attr_reader page: Telnyx::RoomRecordingDeleteBulkParams::Page?
 
-      def page_number=: (Integer) -> Integer
-
-      attr_reader page_size: Integer?
-
-      def page_size=: (Integer) -> Integer
+      def page=: (
+        Telnyx::RoomRecordingDeleteBulkParams::Page
+      ) -> Telnyx::RoomRecordingDeleteBulkParams::Page
 
       def initialize: (
         ?filter: Telnyx::RoomRecordingDeleteBulkParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::RoomRecordingDeleteBulkParams::Page,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         filter: Telnyx::RoomRecordingDeleteBulkParams::Filter,
-        page_number: Integer,
-        page_size: Integer,
+        page: Telnyx::RoomRecordingDeleteBulkParams::Page,
         request_options: Telnyx::RequestOptions
       }
 
@@ -150,6 +145,22 @@ module Telnyx
 
           def to_hash: -> { eq: Date, gte: Date, lte: Date }
         end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
       end
     end
   end

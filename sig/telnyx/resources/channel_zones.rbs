@@ -8,10 +8,9 @@ module Telnyx
       ) -> Telnyx::Models::ChannelZoneUpdateResponse
 
       def list: (
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::ChannelZoneListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::ChannelZoneListResponse]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::ChannelZoneListResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

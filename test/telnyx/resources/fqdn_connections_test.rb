@@ -57,7 +57,7 @@ class Telnyx::Test::Resources::FqdnConnectionsTest < Telnyx::Test::ResourceTest
     response = @telnyx.fqdn_connections.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

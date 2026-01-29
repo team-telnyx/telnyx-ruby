@@ -3,15 +3,18 @@
 module Telnyx
   module Resources
     class MessagingURLDomains
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::MessagingURLDomainListParams} for more details.
+      #
       # List messaging URL domains
       #
-      # @overload list(page_number: nil, page_size: nil, request_options: {})
+      # @overload list(page: nil, request_options: {})
       #
-      # @param page_number [Integer]
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::MessagingURLDomainListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::MessagingURLDomainListResponse>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::MessagingURLDomainListResponse>]
       #
       # @see Telnyx::Models::MessagingURLDomainListParams
       def list(params = {})
@@ -19,8 +22,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "messaging_url_domains",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::MessagingURLDomainListResponse,
           options: options
         )

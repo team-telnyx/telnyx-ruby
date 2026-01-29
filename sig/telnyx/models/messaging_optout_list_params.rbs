@@ -4,8 +4,7 @@ module Telnyx
       {
         created_at: Telnyx::MessagingOptoutListParams::CreatedAt,
         filter: Telnyx::MessagingOptoutListParams::Filter,
-        page_number: Integer,
-        page_size: Integer,
+        page: Telnyx::MessagingOptoutListParams::Page,
         redaction_enabled: String
       }
       & Telnyx::Internal::Type::request_parameters
@@ -26,13 +25,11 @@ module Telnyx
         Telnyx::MessagingOptoutListParams::Filter
       ) -> Telnyx::MessagingOptoutListParams::Filter
 
-      attr_reader page_number: Integer?
+      attr_reader page: Telnyx::MessagingOptoutListParams::Page?
 
-      def page_number=: (Integer) -> Integer
-
-      attr_reader page_size: Integer?
-
-      def page_size=: (Integer) -> Integer
+      def page=: (
+        Telnyx::MessagingOptoutListParams::Page
+      ) -> Telnyx::MessagingOptoutListParams::Page
 
       attr_reader redaction_enabled: String?
 
@@ -41,8 +38,7 @@ module Telnyx
       def initialize: (
         ?created_at: Telnyx::MessagingOptoutListParams::CreatedAt,
         ?filter: Telnyx::MessagingOptoutListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::MessagingOptoutListParams::Page,
         ?redaction_enabled: String,
         ?request_options: Telnyx::request_opts
       ) -> void
@@ -50,8 +46,7 @@ module Telnyx
       def to_hash: -> {
         created_at: Telnyx::MessagingOptoutListParams::CreatedAt,
         filter: Telnyx::MessagingOptoutListParams::Filter,
-        page_number: Integer,
-        page_size: Integer,
+        page: Telnyx::MessagingOptoutListParams::Page,
         redaction_enabled: String,
         request_options: Telnyx::RequestOptions
       }
@@ -86,6 +81,22 @@ module Telnyx
         def initialize: (?from: String, ?messaging_profile_id: String) -> void
 
         def to_hash: -> { from: String, messaging_profile_id: String }
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
       end
     end
   end

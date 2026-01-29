@@ -8,14 +8,14 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::ConnectionListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::ConnectionListParams::Page,
         ?sort: Telnyx::Models::ConnectionListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::ConnectionListResponse]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::ConnectionListResponse]
 
       def list_active_calls: (
         String connection_id,
+        ?page: Telnyx::ConnectionListActiveCallsParams::Page,
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts

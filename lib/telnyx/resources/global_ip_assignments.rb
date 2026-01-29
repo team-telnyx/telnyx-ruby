@@ -65,15 +65,18 @@ module Telnyx
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::GlobalIPAssignmentListParams} for more details.
+      #
       # List all Global IP assignments.
       #
-      # @overload list(page_number: nil, page_size: nil, request_options: {})
+      # @overload list(page: nil, request_options: {})
       #
-      # @param page_number [Integer]
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::GlobalIPAssignmentListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<GlobalIPAssignment>]
+      # @return [Telnyx::Internal::DefaultPagination<GlobalIPAssignment>]
       #
       # @see Telnyx::Models::GlobalIPAssignmentListParams
       def list(params = {})
@@ -81,8 +84,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "global_ip_assignments",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::GlobalIPAssignment,
           options: options
         )

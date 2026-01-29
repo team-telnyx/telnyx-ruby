@@ -30,15 +30,12 @@ module Telnyx
       optional :handle_messaging_profile_error,
                enum: -> { Telnyx::PhoneNumberListParams::HandleMessagingProfileError }
 
-      # @!attribute page_number
+      # @!attribute page
+      #   Consolidated page parameter (deepObject style). Originally: page[size],
+      #   page[number]
       #
-      #   @return [Integer, nil]
-      optional :page_number, Integer
-
-      # @!attribute page_size
-      #
-      #   @return [Integer, nil]
-      optional :page_size, Integer
+      #   @return [Telnyx::Models::PhoneNumberListParams::Page, nil]
+      optional :page, -> { Telnyx::PhoneNumberListParams::Page }
 
       # @!attribute sort
       #   Specifies the sort order for results. If not given, results are sorted by
@@ -47,7 +44,7 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::PhoneNumberListParams::Sort, nil]
       optional :sort, enum: -> { Telnyx::PhoneNumberListParams::Sort }
 
-      # @!method initialize(filter: nil, handle_messaging_profile_error: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @!method initialize(filter: nil, handle_messaging_profile_error: nil, page: nil, sort: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::PhoneNumberListParams} for more details.
       #
@@ -55,9 +52,7 @@ module Telnyx
       #
       #   @param handle_messaging_profile_error [Symbol, Telnyx::Models::PhoneNumberListParams::HandleMessagingProfileError] Although it is an infrequent occurrence, due to the highly distributed nature of
       #
-      #   @param page_number [Integer]
-      #
-      #   @param page_size [Integer]
+      #   @param page [Telnyx::Models::PhoneNumberListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
       #
       #   @param sort [Symbol, Telnyx::Models::PhoneNumberListParams::Sort] Specifies the sort order for results. If not given, results are sorted by create
       #
@@ -353,6 +348,28 @@ module Telnyx
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        # @!attribute number
+        #   The page number to load
+        #
+        #   @return [Integer, nil]
+        optional :number, Integer
+
+        # @!attribute size
+        #   The size of the page
+        #
+        #   @return [Integer, nil]
+        optional :size, Integer
+
+        # @!method initialize(number: nil, size: nil)
+        #   Consolidated page parameter (deepObject style). Originally: page[size],
+        #   page[number]
+        #
+        #   @param number [Integer] The page number to load
+        #
+        #   @param size [Integer] The size of the page
       end
 
       # Specifies the sort order for results. If not given, results are sorted by

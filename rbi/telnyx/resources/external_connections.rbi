@@ -115,19 +115,19 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::ExternalConnectionListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::ExternalConnectionListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[Telnyx::ExternalConnection]
+          Telnyx::Internal::DefaultPagination[Telnyx::ExternalConnection]
         )
       end
       def list(
         # Filter parameter for external connections (deepObject style). Supports filtering
         # by connection_name, external_sip_connection, id, created_at, and phone_number.
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        page: nil,
         request_options: {}
       )
       end

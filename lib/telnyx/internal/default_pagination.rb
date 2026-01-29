@@ -5,23 +5,26 @@ module Telnyx
     # @generic Elem
     #
     # @example
-    #   if default_pagination_for_queues.has_next?
-    #     default_pagination_for_queues = default_pagination_for_queues.next_page
+    #   if default_pagination.has_next?
+    #     default_pagination = default_pagination.next_page
     #   end
     #
     # @example
-    #   default_pagination_for_queues.auto_paging_each do |queue|
-    #     puts(queue)
+    #   default_pagination.auto_paging_each do |address|
+    #     puts(address)
     #   end
-    class DefaultPaginationForQueues
+    class DefaultPagination
       include Telnyx::Internal::Type::BasePage
 
       # @return [Array<generic<Elem>>, nil]
-      attr_accessor :queues
+      attr_accessor :data
+
+      # @return [Meta]
+      attr_accessor :meta
 
       # @return [Boolean]
       def next_page?
-        !queues.to_a.empty?
+        !data.to_a.empty? && (meta&.page_number.nil? || meta&.total_pages.nil? || (meta&.page_number&.< meta&.total_pages))
       end
 
       # @raise [Telnyx::HTTP::Error]
@@ -32,10 +35,7 @@ module Telnyx
           raise RuntimeError.new(message)
         end
 
-        req = Telnyx::Internal::Util.deep_merge(
-          @req,
-          {query: {page: @req.fetch(:query).fetch(:page, 1).to_i.succ}}
-        )
+        req = Telnyx::Internal::Util.deep_merge(@req, {query: {number: (meta&.page_number || 1).to_i.succ}})
         @client.request(req)
       end
 
@@ -49,7 +49,7 @@ module Telnyx
 
         page = self
         loop do
-          page.queues&.each(&blk)
+          page.data&.each(&blk)
 
           break unless page.next_page?
           page = page.next_page
@@ -66,8 +66,13 @@ module Telnyx
         super
 
         case page_data
-        in {queues: Array => queues}
-          @queues = queues.map { Telnyx::Internal::Type::Converter.coerce(@model, _1) }
+        in {data: Array => data}
+          @data = data.map { Telnyx::Internal::Type::Converter.coerce(@model, _1) }
+        else
+        end
+        case page_data
+        in {meta: Hash | nil => meta}
+          @meta = Telnyx::Internal::Type::Converter.coerce(Telnyx::Internal::DefaultPagination::Meta, meta)
         else
         end
       end
@@ -79,6 +84,22 @@ module Telnyx
         model = Telnyx::Internal::Type::Converter.inspect(@model, depth: 1)
 
         "#<#{self.class}[#{model}]:0x#{object_id.to_s(16)}>"
+      end
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        # @!attribute page_number
+        #
+        #   @return [Integer]
+        required :page_number, Integer
+
+        # @!attribute total_pages
+        #
+        #   @return [Integer]
+        required :total_pages, Integer
+
+        # @!method initialize(page_number:, total_pages:)
+        #   @param page_number [Integer]
+        #   @param total_pages [Integer]
       end
     end
   end

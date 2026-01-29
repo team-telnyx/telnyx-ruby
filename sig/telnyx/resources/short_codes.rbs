@@ -15,10 +15,9 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::ShortCodeListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::ShortCodeListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::ShortCode]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::ShortCode]
 
       def initialize: (client: Telnyx::Client) -> void
     end

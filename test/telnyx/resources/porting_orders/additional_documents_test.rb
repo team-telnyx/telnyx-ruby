@@ -25,7 +25,7 @@ class Telnyx::Test::Resources::PortingOrders::AdditionalDocumentsTest < Telnyx::
     response = @telnyx.porting_orders.additional_documents.list("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

@@ -64,19 +64,20 @@ module Telnyx
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::PortingOrders::ActivationJobListParams} for more details.
+        #
         # Returns a list of your porting activation jobs.
         #
-        # @overload list(id, page_number: nil, page_size: nil, request_options: {})
+        # @overload list(id, page: nil, request_options: {})
         #
         # @param id [String] Porting Order id
         #
-        # @param page_number [Integer]
-        #
-        # @param page_size [Integer]
+        # @param page [Telnyx::Models::PortingOrders::ActivationJobListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PortingOrdersActivationJob>]
+        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PortingOrdersActivationJob>]
         #
         # @see Telnyx::Models::PortingOrders::ActivationJobListParams
         def list(id, params = {})
@@ -84,8 +85,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: ["porting_orders/%1$s/activation_jobs", id],
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-            page: Telnyx::Internal::DefaultFlatPagination,
+            query: parsed,
+            page: Telnyx::Internal::DefaultPagination,
             model: Telnyx::PortingOrdersActivationJob,
             options: options
           )

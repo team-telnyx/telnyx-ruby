@@ -18,10 +18,9 @@ module Telnyx
       ) -> Telnyx::Models::NotificationProfileUpdateResponse
 
       def list: (
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::NotificationProfileListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::NotificationProfile]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::NotificationProfile]
 
       def delete: (
         String id,

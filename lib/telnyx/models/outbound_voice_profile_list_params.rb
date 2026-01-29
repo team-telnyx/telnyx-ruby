@@ -14,15 +14,12 @@ module Telnyx
       #   @return [Telnyx::Models::OutboundVoiceProfileListParams::Filter, nil]
       optional :filter, -> { Telnyx::OutboundVoiceProfileListParams::Filter }
 
-      # @!attribute page_number
+      # @!attribute page
+      #   Consolidated page parameter (deepObject style). Originally: page[size],
+      #   page[number]
       #
-      #   @return [Integer, nil]
-      optional :page_number, Integer
-
-      # @!attribute page_size
-      #
-      #   @return [Integer, nil]
-      optional :page_size, Integer
+      #   @return [Telnyx::Models::OutboundVoiceProfileListParams::Page, nil]
+      optional :page, -> { Telnyx::OutboundVoiceProfileListParams::Page }
 
       # @!attribute sort
       #   Specifies the sort order for results. By default sorting direction is ascending.
@@ -43,15 +40,13 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::OutboundVoiceProfileListParams::Sort, nil]
       optional :sort, enum: -> { Telnyx::OutboundVoiceProfileListParams::Sort }
 
-      # @!method initialize(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @!method initialize(filter: nil, page: nil, sort: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::OutboundVoiceProfileListParams} for more details.
       #
       #   @param filter [Telnyx::Models::OutboundVoiceProfileListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[name]conta
       #
-      #   @param page_number [Integer]
-      #
-      #   @param page_size [Integer]
+      #   @param page [Telnyx::Models::OutboundVoiceProfileListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
       #
       #   @param sort [Symbol, Telnyx::Models::OutboundVoiceProfileListParams::Sort] Specifies the sort order for results. By default sorting direction is ascending.
       #
@@ -83,6 +78,28 @@ module Telnyx
           #
           #   @param contains [String] Optional filter on outbound voice profile name.
         end
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        # @!attribute number
+        #   The page number to load.
+        #
+        #   @return [Integer, nil]
+        optional :number, Integer
+
+        # @!attribute size
+        #   The size of the page.
+        #
+        #   @return [Integer, nil]
+        optional :size, Integer
+
+        # @!method initialize(number: nil, size: nil)
+        #   Consolidated page parameter (deepObject style). Originally: page[size],
+        #   page[number]
+        #
+        #   @param number [Integer] The page number to load.
+        #
+        #   @param size [Integer] The size of the page.
       end
 
       # Specifies the sort order for results. By default sorting direction is ascending.

@@ -41,7 +41,7 @@ class Telnyx::Test::Resources::Messaging::Rcs::AgentsTest < Telnyx::Test::Resour
     response = @telnyx.messaging.rcs.agents.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

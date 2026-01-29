@@ -12,7 +12,7 @@ module Telnyx
         end
 
       # Consolidated filter parameter for SIM cards (deepObject style). Originally:
-      # filter[tags], filter[iccid], filter[status]
+      # filter[iccid], filter[msisdn], filter[status], filter[tags]
       sig { returns(T.nilable(Telnyx::SimCardListParams::Filter)) }
       attr_reader :filter
 
@@ -33,17 +33,13 @@ module Telnyx
       sig { params(include_sim_card_group: T::Boolean).void }
       attr_writer :include_sim_card_group
 
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :page_number
+      # Consolidated pagination parameter (deepObject style). Originally: page[number],
+      # page[size]
+      sig { returns(T.nilable(Telnyx::SimCardListParams::Page)) }
+      attr_reader :page
 
-      sig { params(page_number: Integer).void }
-      attr_writer :page_number
-
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :page_size
-
-      sig { params(page_size: Integer).void }
-      attr_writer :page_size
+      sig { params(page: Telnyx::SimCardListParams::Page::OrHash).void }
+      attr_writer :page
 
       # Sorts SIM cards by the given field. Defaults to ascending order unless field is
       # prefixed with a minus sign.
@@ -58,22 +54,22 @@ module Telnyx
           filter: Telnyx::SimCardListParams::Filter::OrHash,
           filter_sim_card_group_id: String,
           include_sim_card_group: T::Boolean,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::SimCardListParams::Page::OrHash,
           sort: Telnyx::SimCardListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
         # Consolidated filter parameter for SIM cards (deepObject style). Originally:
-        # filter[tags], filter[iccid], filter[status]
+        # filter[iccid], filter[msisdn], filter[status], filter[tags]
         filter: nil,
         # A valid SIM card group ID.
         filter_sim_card_group_id: nil,
         # It includes the associated SIM card group object in the response when present.
         include_sim_card_group: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated pagination parameter (deepObject style). Originally: page[number],
+        # page[size]
+        page: nil,
         # Sorts SIM cards by the given field. Defaults to ascending order unless field is
         # prefixed with a minus sign.
         sort: nil,
@@ -87,8 +83,7 @@ module Telnyx
             filter: Telnyx::SimCardListParams::Filter,
             filter_sim_card_group_id: String,
             include_sim_card_group: T::Boolean,
-            page_number: Integer,
-            page_size: Integer,
+            page: Telnyx::SimCardListParams::Page,
             sort: Telnyx::SimCardListParams::Sort::OrSymbol,
             request_options: Telnyx::RequestOptions
           }
@@ -109,6 +104,13 @@ module Telnyx
 
         sig { params(iccid: String).void }
         attr_writer :iccid
+
+        # A search string to match for the SIM card's MSISDN.
+        sig { returns(T.nilable(String)) }
+        attr_reader :msisdn
+
+        sig { params(msisdn: String).void }
+        attr_writer :msisdn
 
         # Filter by a SIM card's status.
         sig do
@@ -144,10 +146,11 @@ module Telnyx
         attr_writer :tags
 
         # Consolidated filter parameter for SIM cards (deepObject style). Originally:
-        # filter[tags], filter[iccid], filter[status]
+        # filter[iccid], filter[msisdn], filter[status], filter[tags]
         sig do
           params(
             iccid: String,
+            msisdn: String,
             status:
               T::Array[Telnyx::SimCardListParams::Filter::Status::OrSymbol],
             tags: T::Array[String]
@@ -156,6 +159,8 @@ module Telnyx
         def self.new(
           # A search string to partially match for the SIM card's ICCID.
           iccid: nil,
+          # A search string to match for the SIM card's MSISDN.
+          msisdn: nil,
           # Filter by a SIM card's status.
           status: nil,
           # A list of SIM card tags to filter on.<br/><br/> If the SIM card contains
@@ -175,6 +180,7 @@ module Telnyx
           override.returns(
             {
               iccid: String,
+              msisdn: String,
               status:
                 T::Array[Telnyx::SimCardListParams::Filter::Status::OrSymbol],
               tags: T::Array[String]
@@ -226,6 +232,42 @@ module Telnyx
           end
           def self.values
           end
+        end
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Telnyx::SimCardListParams::Page, Telnyx::Internal::AnyHash)
+          end
+
+        # The page number to load.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :number
+
+        sig { params(number: Integer).void }
+        attr_writer :number
+
+        # The size of the page.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :size
+
+        sig { params(size: Integer).void }
+        attr_writer :size
+
+        # Consolidated pagination parameter (deepObject style). Originally: page[number],
+        # page[size]
+        sig { params(number: Integer, size: Integer).returns(T.attached_class) }
+        def self.new(
+          # The page number to load.
+          number: nil,
+          # The size of the page.
+          size: nil
+        )
+        end
+
+        sig { override.returns({ number: Integer, size: Integer }) }
+        def to_hash
         end
       end
 

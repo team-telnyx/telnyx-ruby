@@ -49,7 +49,7 @@ class Telnyx::Test::Resources::MobilePushCredentialsTest < Telnyx::Test::Resourc
     response = @telnyx.mobile_push_credentials.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

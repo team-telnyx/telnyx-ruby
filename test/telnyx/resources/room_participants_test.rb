@@ -25,7 +25,7 @@ class Telnyx::Test::Resources::RoomParticipantsTest < Telnyx::Test::ResourceTest
     response = @telnyx.room_participants.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

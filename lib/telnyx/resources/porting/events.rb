@@ -29,17 +29,15 @@ module Telnyx
         #
         # Returns a list of all porting events.
         #
-        # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
+        # @overload list(filter: nil, page: nil, request_options: {})
         #
         # @param filter [Telnyx::Models::Porting::EventListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[type], filt
         #
-        # @param page_number [Integer]
-        #
-        # @param page_size [Integer]
+        # @param page [Telnyx::Models::Porting::EventListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload, Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload, Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent, Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent, Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent, Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook>]
+        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload, Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload, Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent, Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent, Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent, Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook>]
         #
         # @see Telnyx::Models::Porting::EventListParams
         def list(params = {})
@@ -47,8 +45,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: "porting/events",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-            page: Telnyx::Internal::DefaultFlatPagination,
+            query: parsed,
+            page: Telnyx::Internal::DefaultPagination,
             model: Telnyx::Models::Porting::EventListResponse,
             options: options
           )

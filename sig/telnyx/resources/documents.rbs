@@ -15,11 +15,10 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::DocumentListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::DocumentListParams::Page,
         ?sort: ::Array[Telnyx::Models::DocumentListParams::sort],
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::DocServiceDocument]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::DocServiceDocument]
 
       def delete: (
         String id,

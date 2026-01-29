@@ -22,11 +22,10 @@ module Telnyx
         sig do
           params(
             filter: Telnyx::Porting::EventListParams::Filter::OrHash,
-            page_number: Integer,
-            page_size: Integer,
+            page: Telnyx::Porting::EventListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Internal::DefaultPagination[
               Telnyx::Models::Porting::EventListResponse::Variants
             ]
           )
@@ -35,8 +34,9 @@ module Telnyx
           # Consolidated filter parameter (deepObject style). Originally: filter[type],
           # filter[porting_order_id], filter[created_at][gte], filter[created_at][lte]
           filter: nil,
-          page_number: nil,
-          page_size: nil,
+          # Consolidated page parameter (deepObject style). Originally: page[size],
+          # page[number]
+          page: nil,
           request_options: {}
         )
         end

@@ -9,7 +9,7 @@ module Telnyx
 
       # @!attribute filter
       #   Consolidated filter parameter for SIM cards (deepObject style). Originally:
-      #   filter[tags], filter[iccid], filter[status]
+      #   filter[iccid], filter[msisdn], filter[status], filter[tags]
       #
       #   @return [Telnyx::Models::SimCardListParams::Filter, nil]
       optional :filter, -> { Telnyx::SimCardListParams::Filter }
@@ -26,15 +26,12 @@ module Telnyx
       #   @return [Boolean, nil]
       optional :include_sim_card_group, Telnyx::Internal::Type::Boolean
 
-      # @!attribute page_number
+      # @!attribute page
+      #   Consolidated pagination parameter (deepObject style). Originally: page[number],
+      #   page[size]
       #
-      #   @return [Integer, nil]
-      optional :page_number, Integer
-
-      # @!attribute page_size
-      #
-      #   @return [Integer, nil]
-      optional :page_size, Integer
+      #   @return [Telnyx::Models::SimCardListParams::Page, nil]
+      optional :page, -> { Telnyx::SimCardListParams::Page }
 
       # @!attribute sort
       #   Sorts SIM cards by the given field. Defaults to ascending order unless field is
@@ -43,7 +40,7 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::SimCardListParams::Sort, nil]
       optional :sort, enum: -> { Telnyx::SimCardListParams::Sort }
 
-      # @!method initialize(filter: nil, filter_sim_card_group_id: nil, include_sim_card_group: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @!method initialize(filter: nil, filter_sim_card_group_id: nil, include_sim_card_group: nil, page: nil, sort: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::SimCardListParams} for more details.
       #
@@ -53,9 +50,7 @@ module Telnyx
       #
       #   @param include_sim_card_group [Boolean] It includes the associated SIM card group object in the response when present.
       #
-      #   @param page_number [Integer]
-      #
-      #   @param page_size [Integer]
+      #   @param page [Telnyx::Models::SimCardListParams::Page] Consolidated pagination parameter (deepObject style). Originally: page[number],
       #
       #   @param sort [Symbol, Telnyx::Models::SimCardListParams::Sort] Sorts SIM cards by the given field. Defaults to ascending order unless field is
       #
@@ -67,6 +62,12 @@ module Telnyx
         #
         #   @return [String, nil]
         optional :iccid, String
+
+        # @!attribute msisdn
+        #   A search string to match for the SIM card's MSISDN.
+        #
+        #   @return [String, nil]
+        optional :msisdn, String
 
         # @!attribute status
         #   Filter by a SIM card's status.
@@ -88,14 +89,16 @@ module Telnyx
         #   @return [Array<String>, nil]
         optional :tags, Telnyx::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(iccid: nil, status: nil, tags: nil)
+        # @!method initialize(iccid: nil, msisdn: nil, status: nil, tags: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::SimCardListParams::Filter} for more details.
         #
         #   Consolidated filter parameter for SIM cards (deepObject style). Originally:
-        #   filter[tags], filter[iccid], filter[status]
+        #   filter[iccid], filter[msisdn], filter[status], filter[tags]
         #
         #   @param iccid [String] A search string to partially match for the SIM card's ICCID.
+        #
+        #   @param msisdn [String] A search string to match for the SIM card's MSISDN.
         #
         #   @param status [Array<Symbol, Telnyx::Models::SimCardListParams::Filter::Status>] Filter by a SIM card's status.
         #
@@ -113,6 +116,28 @@ module Telnyx
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        # @!attribute number
+        #   The page number to load.
+        #
+        #   @return [Integer, nil]
+        optional :number, Integer
+
+        # @!attribute size
+        #   The size of the page.
+        #
+        #   @return [Integer, nil]
+        optional :size, Integer
+
+        # @!method initialize(number: nil, size: nil)
+        #   Consolidated pagination parameter (deepObject style). Originally: page[number],
+        #   page[size]
+        #
+        #   @param number [Integer] The page number to load.
+        #
+        #   @param size [Integer] The size of the page.
       end
 
       # Sorts SIM cards by the given field. Defaults to ascending order unless field is

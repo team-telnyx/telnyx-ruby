@@ -54,21 +54,19 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::DynamicEmergencyAddressListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::DynamicEmergencyAddressListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::DynamicEmergencyAddress
-          ]
+          Telnyx::Internal::DefaultPagination[Telnyx::DynamicEmergencyAddress]
         )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[status],
         # filter[country_code]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        page: nil,
         request_options: {}
       )
       end

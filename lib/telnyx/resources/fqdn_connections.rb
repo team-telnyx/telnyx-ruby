@@ -170,20 +170,18 @@ module Telnyx
       #
       # Returns a list of your FQDN connections.
       #
-      # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @overload list(filter: nil, page: nil, sort: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::FqdnConnectionListParams::Filter] Consolidated filter parameter (deepObject style). Originally:
       # filter[connection\_
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::FqdnConnectionListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
       #
       # @param sort [Symbol, Telnyx::Models::FqdnConnectionListParams::Sort] Specifies the sort order for results. By default sorting direction is ascending.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::FqdnConnection>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::FqdnConnection>]
       #
       # @see Telnyx::Models::FqdnConnectionListParams
       def list(params = {})
@@ -191,8 +189,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "fqdn_connections",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::FqdnConnection,
           options: options
         )

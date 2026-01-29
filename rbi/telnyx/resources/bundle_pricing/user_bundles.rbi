@@ -49,12 +49,11 @@ module Telnyx
         sig do
           params(
             filter: Telnyx::BundlePricing::UserBundleListParams::Filter::OrHash,
-            page_number: Integer,
-            page_size: Integer,
+            page: Telnyx::BundlePricing::UserBundleListParams::Page::OrHash,
             authorization_bearer: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Internal::DefaultPagination[
               Telnyx::BundlePricing::UserBundle
             ]
           )
@@ -64,10 +63,9 @@ module Telnyx
           # filtering by country_iso and resource. Examples: filter[country_iso]=US or
           # filter[resource]=+15617819942
           filter: nil,
-          # Query param
-          page_number: nil,
-          # Query param
-          page_size: nil,
+          # Query param: Consolidated page parameter (deepObject style). Originally:
+          # page[size], page[number]
+          page: nil,
           # Header param: Authenticates the request with your Telnyx API V2 KEY
           authorization_bearer: nil,
           request_options: {}

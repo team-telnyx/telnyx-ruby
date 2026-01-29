@@ -3,8 +3,7 @@ module Telnyx
     type short_code_list_params =
       {
         filter: Telnyx::ShortCodeListParams::Filter,
-        page_number: Integer,
-        page_size: Integer
+        page: Telnyx::ShortCodeListParams::Page
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -18,25 +17,21 @@ module Telnyx
         Telnyx::ShortCodeListParams::Filter
       ) -> Telnyx::ShortCodeListParams::Filter
 
-      attr_reader page_number: Integer?
+      attr_reader page: Telnyx::ShortCodeListParams::Page?
 
-      def page_number=: (Integer) -> Integer
-
-      attr_reader page_size: Integer?
-
-      def page_size=: (Integer) -> Integer
+      def page=: (
+        Telnyx::ShortCodeListParams::Page
+      ) -> Telnyx::ShortCodeListParams::Page
 
       def initialize: (
         ?filter: Telnyx::ShortCodeListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::ShortCodeListParams::Page,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         filter: Telnyx::ShortCodeListParams::Filter,
-        page_number: Integer,
-        page_size: Integer,
+        page: Telnyx::ShortCodeListParams::Page,
         request_options: Telnyx::RequestOptions
       }
 
@@ -50,6 +45,22 @@ module Telnyx
         def initialize: (?messaging_profile_id: String) -> void
 
         def to_hash: -> { messaging_profile_id: String }
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
       end
     end
   end

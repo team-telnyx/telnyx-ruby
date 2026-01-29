@@ -26,11 +26,10 @@ module Telnyx
       def list: (
         ?filter: Telnyx::ManagedAccountListParams::Filter,
         ?include_cancelled_accounts: bool,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::ManagedAccountListParams::Page,
         ?sort: Telnyx::Models::ManagedAccountListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::ManagedAccountListResponse]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::ManagedAccountListResponse]
 
       def get_allocatable_global_outbound_channels: (
         ?request_options: Telnyx::request_opts

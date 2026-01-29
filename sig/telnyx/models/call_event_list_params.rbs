@@ -3,6 +3,7 @@ module Telnyx
     type call_event_list_params =
       {
         filter: Telnyx::CallEventListParams::Filter,
+        page: Telnyx::CallEventListParams::Page,
         page_number: Integer,
         page_size: Integer
       }
@@ -18,6 +19,12 @@ module Telnyx
         Telnyx::CallEventListParams::Filter
       ) -> Telnyx::CallEventListParams::Filter
 
+      attr_reader page: Telnyx::CallEventListParams::Page?
+
+      def page=: (
+        Telnyx::CallEventListParams::Page
+      ) -> Telnyx::CallEventListParams::Page
+
       attr_reader page_number: Integer?
 
       def page_number=: (Integer) -> Integer
@@ -28,6 +35,7 @@ module Telnyx
 
       def initialize: (
         ?filter: Telnyx::CallEventListParams::Filter,
+        ?page: Telnyx::CallEventListParams::Page,
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
@@ -35,6 +43,7 @@ module Telnyx
 
       def to_hash: -> {
         filter: Telnyx::CallEventListParams::Filter,
+        page: Telnyx::CallEventListParams::Page,
         page_number: Integer,
         page_size: Integer,
         request_options: Telnyx::RequestOptions
@@ -239,6 +248,30 @@ module Telnyx
 
           def self?.values: -> ::Array[Telnyx::Models::CallEventListParams::Filter::type_]
         end
+      end
+
+      type page = { after: String, before: String, limit: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader after: String?
+
+        def after=: (String) -> String
+
+        attr_reader before: String?
+
+        def before=: (String) -> String
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        def initialize: (
+          ?after: String,
+          ?before: String,
+          ?limit: Integer
+        ) -> void
+
+        def to_hash: -> { after: String, before: String, limit: Integer }
       end
     end
   end

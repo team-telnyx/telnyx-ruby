@@ -8,17 +8,15 @@ module Telnyx
       #
       # Returns a list of your porting phone numbers.
       #
-      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
+      # @overload list(filter: nil, page: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::PortingPhoneNumberListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[porting_ord
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::PortingPhoneNumberListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PortingPhoneNumberListResponse>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PortingPhoneNumberListResponse>]
       #
       # @see Telnyx::Models::PortingPhoneNumberListParams
       def list(params = {})
@@ -26,8 +24,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "porting_phone_numbers",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::PortingPhoneNumberListResponse,
           options: options
         )

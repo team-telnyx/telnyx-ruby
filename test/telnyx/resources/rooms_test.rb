@@ -57,7 +57,7 @@ class Telnyx::Test::Resources::RoomsTest < Telnyx::Test::ResourceTest
     response = @telnyx.rooms.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

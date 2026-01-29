@@ -41,16 +41,20 @@ module Telnyx
       # List messaging hosted number orders
       sig do
         params(
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::MessagingHostedNumberOrderListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
+          Telnyx::Internal::DefaultPagination[
             Telnyx::MessagingHostedNumberOrder
           ]
         )
       end
-      def list(page_number: nil, page_size: nil, request_options: {})
+      def list(
+        # Consolidated page parameter (deepObject style). Originally: page[number],
+        # page[size]
+        page: nil,
+        request_options: {}
+      )
       end
 
       # Delete a messaging hosted number order and all associated phone numbers.
