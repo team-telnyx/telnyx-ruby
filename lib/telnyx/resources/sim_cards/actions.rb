@@ -31,17 +31,15 @@ module Telnyx
         # This API lists a paginated collection of SIM card actions. It enables exploring
         # a collection of existing asynchronous operations using specific filters.
         #
-        # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
+        # @overload list(filter: nil, page: nil, request_options: {})
         #
         # @param filter [Telnyx::Models::SimCards::ActionListParams::Filter] Consolidated filter parameter for SIM card actions (deepObject style). Originall
         #
-        # @param page_number [Integer]
-        #
-        # @param page_size [Integer]
+        # @param page [Telnyx::Models::SimCards::ActionListParams::Page] Consolidated pagination parameter (deepObject style). Originally: page[number],
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::SimCards::SimCardAction>]
+        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::SimCards::SimCardAction>]
         #
         # @see Telnyx::Models::SimCards::ActionListParams
         def list(params = {})
@@ -49,8 +47,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: "sim_card_actions",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-            page: Telnyx::Internal::DefaultFlatPagination,
+            query: parsed,
+            page: Telnyx::Internal::DefaultPagination,
             model: Telnyx::SimCards::SimCardAction,
             options: options
           )

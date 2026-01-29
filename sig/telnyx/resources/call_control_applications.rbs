@@ -46,6 +46,7 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::CallControlApplicationListParams::Filter,
+        ?page: Telnyx::CallControlApplicationListParams::Page,
         ?page_number: Integer,
         ?page_size: Integer,
         ?sort: Telnyx::Models::CallControlApplicationListParams::sort,

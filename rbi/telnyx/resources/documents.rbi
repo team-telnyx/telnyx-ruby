@@ -41,12 +41,11 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::DocumentListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::DocumentListParams::Page::OrHash,
           sort: T::Array[Telnyx::DocumentListParams::Sort::OrSymbol],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[Telnyx::DocServiceDocument]
+          Telnyx::Internal::DefaultPagination[Telnyx::DocServiceDocument]
         )
       end
       def list(
@@ -54,8 +53,9 @@ module Telnyx
         # filter[filename][contains], filter[customer_reference][eq],
         # filter[customer_reference][in][], filter[created_at][gt], filter[created_at][lt]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        page: nil,
         # Consolidated sort parameter for documents (deepObject style). Originally: sort[]
         sort: nil,
         request_options: {}

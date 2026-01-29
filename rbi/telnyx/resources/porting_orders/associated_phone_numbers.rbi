@@ -37,13 +37,13 @@ module Telnyx
             porting_order_id: String,
             filter:
               Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Filter::OrHash,
-            page_number: Integer,
-            page_size: Integer,
+            page:
+              Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Page::OrHash,
             sort:
               Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Sort::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Internal::DefaultPagination[
               Telnyx::PortingOrders::PortingAssociatedPhoneNumber
             ]
           )
@@ -54,8 +54,9 @@ module Telnyx
           # Consolidated filter parameter (deepObject style). Originally:
           # filter[phone_number], filter[action]
           filter: nil,
-          page_number: nil,
-          page_size: nil,
+          # Consolidated page parameter (deepObject style). Originally: page[size],
+          # page[number]
+          page: nil,
           # Consolidated sort parameter (deepObject style). Originally: sort[value]
           sort: nil,
           request_options: {}

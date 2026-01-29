@@ -3,8 +3,7 @@ module Telnyx
     type number_reservation_list_params =
       {
         filter: Telnyx::NumberReservationListParams::Filter,
-        page_number: Integer,
-        page_size: Integer
+        page: Telnyx::NumberReservationListParams::Page
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -18,25 +17,21 @@ module Telnyx
         Telnyx::NumberReservationListParams::Filter
       ) -> Telnyx::NumberReservationListParams::Filter
 
-      attr_reader page_number: Integer?
+      attr_reader page: Telnyx::NumberReservationListParams::Page?
 
-      def page_number=: (Integer) -> Integer
-
-      attr_reader page_size: Integer?
-
-      def page_size=: (Integer) -> Integer
+      def page=: (
+        Telnyx::NumberReservationListParams::Page
+      ) -> Telnyx::NumberReservationListParams::Page
 
       def initialize: (
         ?filter: Telnyx::NumberReservationListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::NumberReservationListParams::Page,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         filter: Telnyx::NumberReservationListParams::Filter,
-        page_number: Integer,
-        page_size: Integer,
+        page: Telnyx::NumberReservationListParams::Page,
         request_options: Telnyx::RequestOptions
       }
 
@@ -96,6 +91,22 @@ module Telnyx
 
           def to_hash: -> { gt: String, lt: String }
         end
+      end
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
       end
     end
   end

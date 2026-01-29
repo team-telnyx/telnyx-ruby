@@ -20,17 +20,13 @@ module Telnyx
       sig { params(filter: Telnyx::DocumentListParams::Filter::OrHash).void }
       attr_writer :filter
 
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :page_number
+      # Consolidated page parameter (deepObject style). Originally: page[size],
+      # page[number]
+      sig { returns(T.nilable(Telnyx::DocumentListParams::Page)) }
+      attr_reader :page
 
-      sig { params(page_number: Integer).void }
-      attr_writer :page_number
-
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :page_size
-
-      sig { params(page_size: Integer).void }
-      attr_writer :page_size
+      sig { params(page: Telnyx::DocumentListParams::Page::OrHash).void }
+      attr_writer :page
 
       # Consolidated sort parameter for documents (deepObject style). Originally: sort[]
       sig do
@@ -46,8 +42,7 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::DocumentListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::DocumentListParams::Page::OrHash,
           sort: T::Array[Telnyx::DocumentListParams::Sort::OrSymbol],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -57,8 +52,9 @@ module Telnyx
         # filter[filename][contains], filter[customer_reference][eq],
         # filter[customer_reference][in][], filter[created_at][gt], filter[created_at][lt]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        page: nil,
         # Consolidated sort parameter for documents (deepObject style). Originally: sort[]
         sort: nil,
         request_options: {}
@@ -69,8 +65,7 @@ module Telnyx
         override.returns(
           {
             filter: Telnyx::DocumentListParams::Filter,
-            page_number: Integer,
-            page_size: Integer,
+            page: Telnyx::DocumentListParams::Page,
             sort: T::Array[Telnyx::DocumentListParams::Sort::OrSymbol],
             request_options: Telnyx::RequestOptions
           }
@@ -251,6 +246,42 @@ module Telnyx
           sig { override.returns({ contains: String }) }
           def to_hash
           end
+        end
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Telnyx::DocumentListParams::Page, Telnyx::Internal::AnyHash)
+          end
+
+        # The page number to load
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :number
+
+        sig { params(number: Integer).void }
+        attr_writer :number
+
+        # The size of the page
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :size
+
+        sig { params(size: Integer).void }
+        attr_writer :size
+
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        sig { params(number: Integer, size: Integer).returns(T.attached_class) }
+        def self.new(
+          # The page number to load
+          number: nil,
+          # The size of the page
+          size: nil
+        )
+        end
+
+        sig { override.returns({ number: Integer, size: Integer }) }
+        def to_hash
         end
       end
 

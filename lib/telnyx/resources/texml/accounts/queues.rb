@@ -111,7 +111,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Internal::DefaultPaginationForQueues<Telnyx::Models::Texml::Accounts::QueueListResponse>]
+          # @return [Telnyx::Models::Texml::Accounts::QueueListResponse]
           #
           # @see Telnyx::Models::Texml::Accounts::QueueListParams
           def list(account_sid, params = {})
@@ -126,7 +126,6 @@ module Telnyx
                 page_size: "PageSize",
                 page_token: "PageToken"
               ),
-              page: Telnyx::Internal::DefaultPaginationForQueues,
               model: Telnyx::Models::Texml::Accounts::QueueListResponse,
               options: options
             )

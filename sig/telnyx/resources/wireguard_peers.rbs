@@ -20,10 +20,9 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::WireguardPeerListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::WireguardPeerListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::WireguardPeerListResponse]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::WireguardPeerListResponse]
 
       def delete: (
         String id,

@@ -16,26 +16,21 @@ module Telnyx
       #   @return [Telnyx::Models::NotificationSettingListParams::Filter, nil]
       optional :filter, -> { Telnyx::NotificationSettingListParams::Filter }
 
-      # @!attribute page_number
+      # @!attribute page
+      #   Consolidated page parameter (deepObject style). Originally: page[number],
+      #   page[size]
       #
-      #   @return [Integer, nil]
-      optional :page_number, Integer
+      #   @return [Telnyx::Models::NotificationSettingListParams::Page, nil]
+      optional :page, -> { Telnyx::NotificationSettingListParams::Page }
 
-      # @!attribute page_size
-      #
-      #   @return [Integer, nil]
-      optional :page_size, Integer
-
-      # @!method initialize(filter: nil, page_number: nil, page_size: nil, request_options: {})
+      # @!method initialize(filter: nil, page: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::NotificationSettingListParams} for more details.
       #
       #   @param filter [Telnyx::Models::NotificationSettingListParams::Filter] Consolidated filter parameter (deepObject style). Originally:
       #   filter[associated\_
       #
-      #   @param page_number [Integer]
-      #
-      #   @param page_size [Integer]
+      #   @param page [Telnyx::Models::NotificationSettingListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -204,6 +199,28 @@ module Telnyx
             #   @return [Array<Symbol>]
           end
         end
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        # @!attribute number
+        #   The page number to load
+        #
+        #   @return [Integer, nil]
+        optional :number, Integer
+
+        # @!attribute size
+        #   The size of the page
+        #
+        #   @return [Integer, nil]
+        optional :size, Integer
+
+        # @!method initialize(number: nil, size: nil)
+        #   Consolidated page parameter (deepObject style). Originally: page[number],
+        #   page[size]
+        #
+        #   @param number [Integer] The page number to load
+        #
+        #   @param size [Integer] The size of the page
       end
     end
   end

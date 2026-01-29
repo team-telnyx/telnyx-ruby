@@ -14,10 +14,9 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::SimCardOrderListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::SimCardOrderListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::SimCardOrder]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::SimCardOrder]
 
       def initialize: (client: Telnyx::Client) -> void
     end

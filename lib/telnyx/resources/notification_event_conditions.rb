@@ -8,18 +8,16 @@ module Telnyx
       #
       # Returns a list of your notifications events conditions.
       #
-      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
+      # @overload list(filter: nil, page: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::NotificationEventConditionListParams::Filter] Consolidated filter parameter (deepObject style). Originally:
       # filter[associated\_
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::NotificationEventConditionListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::NotificationEventConditionListResponse>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::NotificationEventConditionListResponse>]
       #
       # @see Telnyx::Models::NotificationEventConditionListParams
       def list(params = {})
@@ -27,8 +25,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "notification_event_conditions",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::NotificationEventConditionListResponse,
           options: options
         )

@@ -25,7 +25,7 @@ class Telnyx::Test::Resources::OtaUpdatesTest < Telnyx::Test::ResourceTest
     response = @telnyx.ota_updates.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

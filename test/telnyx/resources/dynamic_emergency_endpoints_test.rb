@@ -46,7 +46,7 @@ class Telnyx::Test::Resources::DynamicEmergencyEndpointsTest < Telnyx::Test::Res
     response = @telnyx.dynamic_emergency_endpoints.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

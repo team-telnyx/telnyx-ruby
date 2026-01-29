@@ -31,11 +31,10 @@ module Telnyx
             id: String,
             filter:
               Telnyx::ExternalConnections::ReleaseListParams::Filter::OrHash,
-            page_number: Integer,
-            page_size: Integer,
+            page: Telnyx::ExternalConnections::ReleaseListParams::Page::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Internal::DefaultPagination[
               Telnyx::Models::ExternalConnections::ReleaseListResponse
             ]
           )
@@ -46,8 +45,9 @@ module Telnyx
           # Filter parameter for releases (deepObject style). Supports filtering by status,
           # civic_address_id, location_id, and phone_number with eq/contains operations.
           filter: nil,
-          page_number: nil,
-          page_size: nil,
+          # Consolidated page parameter (deepObject style). Originally: page[size],
+          # page[number]
+          page: nil,
           request_options: {}
         )
         end

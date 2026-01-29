@@ -22,22 +22,20 @@ module Telnyx
         sig do
           params(
             filter: Telnyx::PhoneNumberBlocks::JobListParams::Filter::OrHash,
-            page_number: Integer,
-            page_size: Integer,
+            page: Telnyx::PhoneNumberBlocks::JobListParams::Page::OrHash,
             sort: Telnyx::PhoneNumberBlocks::JobListParams::Sort::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultFlatPagination[
-              Telnyx::PhoneNumberBlocks::Job
-            ]
+            Telnyx::Internal::DefaultPagination[Telnyx::PhoneNumberBlocks::Job]
           )
         end
         def list(
           # Consolidated filter parameter (deepObject style). Originally: filter[type],
           # filter[status]
           filter: nil,
-          page_number: nil,
-          page_size: nil,
+          # Consolidated page parameter (deepObject style). Originally: page[size],
+          # page[number]
+          page: nil,
           # Specifies the sort order for results. If not given, results are sorted by
           # created_at in descending order.
           sort: nil,

@@ -9,10 +9,9 @@ module Telnyx
 
         def list: (
           ?filter: Telnyx::Portouts::EventListParams::Filter,
-          ?page_number: Integer,
-          ?page_size: Integer,
+          ?page: Telnyx::Portouts::EventListParams::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Portouts::event_list_response]
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::Portouts::event_list_response]
 
         def republish: (
           String id,

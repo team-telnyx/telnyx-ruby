@@ -33,17 +33,13 @@ module Telnyx
       end
       attr_writer :filter
 
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :page_number
+      # Consolidated page parameter (deepObject style). Originally: page[number],
+      # page[size]
+      sig { returns(T.nilable(Telnyx::MessagingOptoutListParams::Page)) }
+      attr_reader :page
 
-      sig { params(page_number: Integer).void }
-      attr_writer :page_number
-
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :page_size
-
-      sig { params(page_size: Integer).void }
-      attr_writer :page_size
+      sig { params(page: Telnyx::MessagingOptoutListParams::Page::OrHash).void }
+      attr_writer :page
 
       # If receiving address (+E.164 formatted phone number) should be redacted
       sig { returns(T.nilable(String)) }
@@ -56,8 +52,7 @@ module Telnyx
         params(
           created_at: Telnyx::MessagingOptoutListParams::CreatedAt::OrHash,
           filter: Telnyx::MessagingOptoutListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::MessagingOptoutListParams::Page::OrHash,
           redaction_enabled: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -69,8 +64,9 @@ module Telnyx
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[messaging_profile_id], filter[from]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[number],
+        # page[size]
+        page: nil,
         # If receiving address (+E.164 formatted phone number) should be redacted
         redaction_enabled: nil,
         request_options: {}
@@ -82,8 +78,7 @@ module Telnyx
           {
             created_at: Telnyx::MessagingOptoutListParams::CreatedAt,
             filter: Telnyx::MessagingOptoutListParams::Filter,
-            page_number: Integer,
-            page_size: Integer,
+            page: Telnyx::MessagingOptoutListParams::Page,
             redaction_enabled: String,
             request_options: Telnyx::RequestOptions
           }
@@ -172,6 +167,45 @@ module Telnyx
         end
 
         sig { override.returns({ from: String, messaging_profile_id: String }) }
+        def to_hash
+        end
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::MessagingOptoutListParams::Page,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        # The page number to load
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :number
+
+        sig { params(number: Integer).void }
+        attr_writer :number
+
+        # The size of the page
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :size
+
+        sig { params(size: Integer).void }
+        attr_writer :size
+
+        # Consolidated page parameter (deepObject style). Originally: page[number],
+        # page[size]
+        sig { params(number: Integer, size: Integer).returns(T.attached_class) }
+        def self.new(
+          # The page number to load
+          number: nil,
+          # The size of the page
+          size: nil
+        )
+        end
+
+        sig { override.returns({ number: Integer, size: Integer }) }
         def to_hash
         end
       end

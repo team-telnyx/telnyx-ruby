@@ -41,7 +41,7 @@ class Telnyx::Test::Resources::ExternalConnections::PhoneNumbersTest < Telnyx::T
     response = @telnyx.external_connections.phone_numbers.list("id")
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

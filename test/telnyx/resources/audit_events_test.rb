@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::AuditEventsTest < Telnyx::Test::ResourceTest
     response = @telnyx.audit_events.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

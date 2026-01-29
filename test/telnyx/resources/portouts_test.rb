@@ -25,7 +25,7 @@ class Telnyx::Test::Resources::PortoutsTest < Telnyx::Test::ResourceTest
     response = @telnyx.portouts.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPagination
+      response => Telnyx::Internal::DefaultPagination
     end
 
     row = response.to_enum.first

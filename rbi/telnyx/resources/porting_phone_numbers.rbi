@@ -7,11 +7,10 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::PortingPhoneNumberListParams::Filter::OrHash,
-          page_number: Integer,
-          page_size: Integer,
+          page: Telnyx::PortingPhoneNumberListParams::Page::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
+          Telnyx::Internal::DefaultPagination[
             Telnyx::Models::PortingPhoneNumberListResponse
           ]
         )
@@ -20,8 +19,9 @@ module Telnyx
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[porting_order_status]
         filter: nil,
-        page_number: nil,
-        page_size: nil,
+        # Consolidated page parameter (deepObject style). Originally: page[size],
+        # page[number]
+        page: nil,
         request_options: {}
       )
       end

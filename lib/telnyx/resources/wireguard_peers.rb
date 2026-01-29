@@ -83,17 +83,15 @@ module Telnyx
       #
       # List all WireGuard peers.
       #
-      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
+      # @overload list(filter: nil, page: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::WireguardPeerListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[wireguard_i
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::WireguardPeerListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::WireguardPeerListResponse>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::WireguardPeerListResponse>]
       #
       # @see Telnyx::Models::WireguardPeerListParams
       def list(params = {})
@@ -101,8 +99,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "wireguard_peers",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::WireguardPeerListResponse,
           options: options
         )

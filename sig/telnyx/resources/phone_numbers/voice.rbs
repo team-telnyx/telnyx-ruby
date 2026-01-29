@@ -23,11 +23,10 @@ module Telnyx
 
         def list: (
           ?filter: Telnyx::PhoneNumbers::VoiceListParams::Filter,
-          ?page_number: Integer,
-          ?page_size: Integer,
+          ?page: Telnyx::PhoneNumbers::VoiceListParams::Page,
           ?sort: Telnyx::Models::PhoneNumbers::VoiceListParams::sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings]
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings]
 
         def initialize: (client: Telnyx::Client) -> void
       end

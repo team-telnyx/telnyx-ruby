@@ -69,15 +69,18 @@ module Telnyx
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::NotificationProfileListParams} for more details.
+      #
       # Returns a list of your notifications profiles.
       #
-      # @overload list(page_number: nil, page_size: nil, request_options: {})
+      # @overload list(page: nil, request_options: {})
       #
-      # @param page_number [Integer]
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::NotificationProfileListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::NotificationProfile>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::NotificationProfile>]
       #
       # @see Telnyx::Models::NotificationProfileListParams
       def list(params = {})
@@ -85,8 +88,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "notification_profiles",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::NotificationProfile,
           options: options
         )

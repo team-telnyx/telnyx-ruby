@@ -93,21 +93,19 @@ module Telnyx
       # Lists the accounts managed by the current user. Users need to be explictly
       # approved by Telnyx in order to become manager accounts.
       #
-      # @overload list(filter: nil, include_cancelled_accounts: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @overload list(filter: nil, include_cancelled_accounts: nil, page: nil, sort: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::ManagedAccountListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[email]cont
       #
       # @param include_cancelled_accounts [Boolean] Specifies if cancelled accounts should be included in the results.
       #
-      # @param page_number [Integer]
-      #
-      # @param page_size [Integer]
+      # @param page [Telnyx::Models::ManagedAccountListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
       #
       # @param sort [Symbol, Telnyx::Models::ManagedAccountListParams::Sort] Specifies the sort order for results. By default sorting direction is ascending.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::ManagedAccountListResponse>]
+      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::ManagedAccountListResponse>]
       #
       # @see Telnyx::Models::ManagedAccountListParams
       def list(params = {})
@@ -115,8 +113,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "managed_accounts",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
-          page: Telnyx::Internal::DefaultFlatPagination,
+          query: parsed,
+          page: Telnyx::Internal::DefaultPagination,
           model: Telnyx::Models::ManagedAccountListResponse,
           options: options
         )

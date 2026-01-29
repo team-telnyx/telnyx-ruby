@@ -17,6 +17,13 @@ module Telnyx
       #   @return [Telnyx::Models::CallControlApplicationListParams::Filter, nil]
       optional :filter, -> { Telnyx::CallControlApplicationListParams::Filter }
 
+      # @!attribute page
+      #   Consolidated page parameter (deepObject style). Originally: page[after],
+      #   page[before], page[limit], page[size], page[number]
+      #
+      #   @return [Telnyx::Models::CallControlApplicationListParams::Page, nil]
+      optional :page, -> { Telnyx::CallControlApplicationListParams::Page }
+
       # @!attribute page_number
       #
       #   @return [Integer, nil]
@@ -46,11 +53,13 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::CallControlApplicationListParams::Sort, nil]
       optional :sort, enum: -> { Telnyx::CallControlApplicationListParams::Sort }
 
-      # @!method initialize(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @!method initialize(filter: nil, page: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CallControlApplicationListParams} for more details.
       #
       #   @param filter [Telnyx::Models::CallControlApplicationListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[application
+      #
+      #   @param page [Telnyx::Models::CallControlApplicationListParams::Page] Consolidated page parameter (deepObject style). Originally: page[after], page[be
       #
       #   @param page_number [Integer]
       #
@@ -283,6 +292,36 @@ module Telnyx
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+      end
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        # @!attribute after
+        #   Opaque identifier of next page
+        #
+        #   @return [String, nil]
+        optional :after, String
+
+        # @!attribute before
+        #   Opaque identifier of previous page
+        #
+        #   @return [String, nil]
+        optional :before, String
+
+        # @!attribute limit
+        #   Limit of records per single page
+        #
+        #   @return [Integer, nil]
+        optional :limit, Integer
+
+        # @!method initialize(after: nil, before: nil, limit: nil)
+        #   Consolidated page parameter (deepObject style). Originally: page[after],
+        #   page[before], page[limit], page[size], page[number]
+        #
+        #   @param after [String] Opaque identifier of next page
+        #
+        #   @param before [String] Opaque identifier of previous page
+        #
+        #   @param limit [Integer] Limit of records per single page
       end
 
       # Specifies the sort order for results. By default sorting direction is ascending.

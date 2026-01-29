@@ -9,11 +9,10 @@ module Telnyx
 
         def list: (
           ?filter: Telnyx::PhoneNumbers::JobListParams::Filter,
-          ?page_number: Integer,
-          ?page_size: Integer,
+          ?page: Telnyx::PhoneNumbers::JobListParams::Page,
           ?sort: Telnyx::Models::PhoneNumbers::JobListParams::sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::PhoneNumbers::PhoneNumbersJob]
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::PhoneNumbers::PhoneNumbersJob]
 
         def delete_batch: (
           phone_numbers: ::Array[String],

@@ -14,10 +14,9 @@ module Telnyx
       ) -> Telnyx::Models::GlobalIPRetrieveResponse
 
       def list: (
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::GlobalIPListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::GlobalIPListResponse]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::GlobalIPListResponse]
 
       def delete: (
         String id,

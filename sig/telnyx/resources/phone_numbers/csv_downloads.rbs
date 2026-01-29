@@ -14,10 +14,9 @@ module Telnyx
         ) -> Telnyx::Models::PhoneNumbers::CsvDownloadRetrieveResponse
 
         def list: (
-          ?page_number: Integer,
-          ?page_size: Integer,
+          ?page: Telnyx::PhoneNumbers::CsvDownloadListParams::Page,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::PhoneNumbers::CsvDownload]
+        ) -> Telnyx::Internal::DefaultPagination[Telnyx::PhoneNumbers::CsvDownload]
 
         def initialize: (client: Telnyx::Client) -> void
       end

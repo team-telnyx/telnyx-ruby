@@ -17,10 +17,9 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::NumberBlockOrderListParams::Filter,
-        ?page_number: Integer,
-        ?page_size: Integer,
+        ?page: Telnyx::NumberBlockOrderListParams::Page,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::NumberBlockOrder]
+      ) -> Telnyx::Internal::DefaultPagination[Telnyx::NumberBlockOrder]
 
       def initialize: (client: Telnyx::Client) -> void
     end
