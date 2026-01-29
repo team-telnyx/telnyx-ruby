@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.7.0 (2026-01-29)
+
+Full Changelog: [v5.6.0...v5.7.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.6.0...v5.7.0)
+
+### Features
+
+* **api:** revert bad update to spec ([be87134](https://github.com/team-telnyx/telnyx-ruby/commit/be871344d62be81a0ec48320b95b5cc41980b6f2))
+
 ## 5.6.0 (2026-01-29)
 
 Full Changelog: [v5.5.0...v5.6.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.5.0...v5.6.0)
