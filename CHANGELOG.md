@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.6.0 (2026-01-29)
+
+Full Changelog: [v5.5.0...v5.6.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.5.0...v5.6.0)
+
+### Features
+
+* Add deepgram/nova-3 transcription engine option to record_start ([401b938](https://github.com/team-telnyx/telnyx-ruby/commit/401b938bb1f6c461b86a6a7f8f1b289cb0dc4ad7))
+
 ## 5.5.0 (2026-01-28)
 
 Full Changelog: [v5.4.1...v5.5.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.4.1...v5.5.0)
