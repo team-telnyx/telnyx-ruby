@@ -53,15 +53,17 @@ module Telnyx
         #
         # List the reports generated about port-out operations.
         #
-        # @overload list(filter: nil, page: nil, request_options: {})
+        # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
         #
         # @param filter [Telnyx::Models::Portouts::ReportListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[report_type
         #
-        # @param page [Telnyx::Models::Portouts::ReportListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+        # @param page_number [Integer]
+        #
+        # @param page_size [Integer]
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::Portouts::PortoutReport>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Portouts::PortoutReport>]
         #
         # @see Telnyx::Models::Portouts::ReportListParams
         def list(params = {})
@@ -69,8 +71,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: "portouts/reports",
-            query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
+            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::Portouts::PortoutReport,
             options: options
           )

@@ -35,17 +35,19 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::MobilePushCredentialListParams::Filter::OrHash,
-          page: Telnyx::MobilePushCredentialListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::PushCredential])
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::PushCredential]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[type],
         # filter[alias]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[size],
-        # page[number]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end

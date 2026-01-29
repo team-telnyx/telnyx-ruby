@@ -53,18 +53,15 @@ module Telnyx
           )
         end
 
-        # Some parameter documentations has been truncated, see
-        # {Telnyx::Models::PhoneNumbers::MessagingListParams} for more details.
-        #
         # List phone numbers with messaging settings
         #
-        # @overload list(page: nil, request_options: {})
+        # @overload list(page_number: nil, page_size: nil, request_options: {})
         #
-        # @param page [Telnyx::Models::PhoneNumbers::MessagingListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
-        #
+        # @param page_number [Integer]
+        # @param page_size [Integer]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PhoneNumberWithMessagingSettings>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PhoneNumberWithMessagingSettings>]
         #
         # @see Telnyx::Models::PhoneNumbers::MessagingListParams
         def list(params = {})
@@ -72,8 +69,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: "phone_numbers/messaging",
-            query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
+            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::PhoneNumberWithMessagingSettings,
             options: options
           )

@@ -21,9 +21,10 @@ module Telnyx
         def list: (
           String id,
           ?filter: Telnyx::ExternalConnections::UploadListParams::Filter,
-          ?page: Telnyx::ExternalConnections::UploadListParams::Page,
+          ?page_number: Integer,
+          ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPagination[Telnyx::ExternalConnections::Upload]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::ExternalConnections::Upload]
 
         def pending_count: (
           String id,

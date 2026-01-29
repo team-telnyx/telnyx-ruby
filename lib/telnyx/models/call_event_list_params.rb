@@ -17,13 +17,6 @@ module Telnyx
       #   @return [Telnyx::Models::CallEventListParams::Filter, nil]
       optional :filter, -> { Telnyx::CallEventListParams::Filter }
 
-      # @!attribute page
-      #   Consolidated page parameter (deepObject style). Originally: page[after],
-      #   page[before], page[limit], page[size], page[number]
-      #
-      #   @return [Telnyx::Models::CallEventListParams::Page, nil]
-      optional :page, -> { Telnyx::CallEventListParams::Page }
-
       # @!attribute page_number
       #
       #   @return [Integer, nil]
@@ -34,13 +27,11 @@ module Telnyx
       #   @return [Integer, nil]
       optional :page_size, Integer
 
-      # @!method initialize(filter: nil, page: nil, page_number: nil, page_size: nil, request_options: {})
+      # @!method initialize(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CallEventListParams} for more details.
       #
       #   @param filter [Telnyx::Models::CallEventListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[application
-      #
-      #   @param page [Telnyx::Models::CallEventListParams::Page] Consolidated page parameter (deepObject style). Originally: page[after], page[be
       #
       #   @param page_number [Integer]
       #
@@ -270,36 +261,6 @@ module Telnyx
           # @!method self.values
           #   @return [Array<Symbol>]
         end
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        # @!attribute after
-        #   Opaque identifier of next page
-        #
-        #   @return [String, nil]
-        optional :after, String
-
-        # @!attribute before
-        #   Opaque identifier of previous page
-        #
-        #   @return [String, nil]
-        optional :before, String
-
-        # @!attribute limit
-        #   Limit of records per single page
-        #
-        #   @return [Integer, nil]
-        optional :limit, Integer
-
-        # @!method initialize(after: nil, before: nil, limit: nil)
-        #   Consolidated page parameter (deepObject style). Originally: page[after],
-        #   page[before], page[limit], page[size], page[number]
-        #
-        #   @param after [String] Opaque identifier of next page
-        #
-        #   @param before [String] Opaque identifier of previous page
-        #
-        #   @param limit [Integer] Limit of records per single page
       end
     end
   end

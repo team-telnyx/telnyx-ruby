@@ -3,7 +3,8 @@ module Telnyx
     type document_list_params =
       {
         filter: Telnyx::DocumentListParams::Filter,
-        page: Telnyx::DocumentListParams::Page,
+        page_number: Integer,
+        page_size: Integer,
         sort: ::Array[Telnyx::Models::DocumentListParams::sort]
       }
       & Telnyx::Internal::Type::request_parameters
@@ -18,11 +19,13 @@ module Telnyx
         Telnyx::DocumentListParams::Filter
       ) -> Telnyx::DocumentListParams::Filter
 
-      attr_reader page: Telnyx::DocumentListParams::Page?
+      attr_reader page_number: Integer?
 
-      def page=: (
-        Telnyx::DocumentListParams::Page
-      ) -> Telnyx::DocumentListParams::Page
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
 
       attr_reader sort: ::Array[Telnyx::Models::DocumentListParams::sort]?
 
@@ -32,14 +35,16 @@ module Telnyx
 
       def initialize: (
         ?filter: Telnyx::DocumentListParams::Filter,
-        ?page: Telnyx::DocumentListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?sort: ::Array[Telnyx::Models::DocumentListParams::sort],
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         filter: Telnyx::DocumentListParams::Filter,
-        page: Telnyx::DocumentListParams::Page,
+        page_number: Integer,
+        page_size: Integer,
         sort: ::Array[Telnyx::Models::DocumentListParams::sort],
         request_options: Telnyx::RequestOptions
       }
@@ -125,22 +130,6 @@ module Telnyx
 
           def to_hash: -> { contains: String }
         end
-      end
-
-      type page = { number: Integer, size: Integer }
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        attr_reader number: Integer?
-
-        def number=: (Integer) -> Integer
-
-        attr_reader size: Integer?
-
-        def size=: (Integer) -> Integer
-
-        def initialize: (?number: Integer, ?size: Integer) -> void
-
-        def to_hash: -> { number: Integer, size: Integer }
       end
 
       type sort =

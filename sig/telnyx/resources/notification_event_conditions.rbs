@@ -3,9 +3,10 @@ module Telnyx
     class NotificationEventConditions
       def list: (
         ?filter: Telnyx::NotificationEventConditionListParams::Filter,
-        ?page: Telnyx::NotificationEventConditionListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::NotificationEventConditionListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::NotificationEventConditionListResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

@@ -54,10 +54,11 @@ module Telnyx
       def list: (
         ?filter: Telnyx::PortingOrderListParams::Filter,
         ?include_phone_numbers: bool,
-        ?page: Telnyx::PortingOrderListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?sort: Telnyx::PortingOrderListParams::Sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::PortingOrder]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::PortingOrder]
 
       def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 
@@ -78,9 +79,10 @@ module Telnyx
 
       def retrieve_requirements: (
         String id,
-        ?page: Telnyx::PortingOrderRetrieveRequirementsParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::PortingOrderRetrieveRequirementsResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::PortingOrderRetrieveRequirementsResponse]
 
       def retrieve_sub_request: (
         String id,

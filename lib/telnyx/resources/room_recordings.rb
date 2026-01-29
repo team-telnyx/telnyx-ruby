@@ -28,15 +28,17 @@ module Telnyx
       #
       # View a list of room recordings.
       #
-      # @overload list(filter: nil, page: nil, request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::RoomRecordingListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[date*ended*
       #
-      # @param page [Telnyx::Models::RoomRecordingListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::RoomRecordingListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::RoomRecordingListResponse>]
       #
       # @see Telnyx::Models::RoomRecordingListParams
       def list(params = {})
@@ -44,8 +46,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "room_recordings",
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::RoomRecordingListResponse,
           options: options
         )
@@ -76,11 +78,13 @@ module Telnyx
       #
       # Delete several room recordings in a bulk.
       #
-      # @overload delete_bulk(filter: nil, page: nil, request_options: {})
+      # @overload delete_bulk(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::RoomRecordingDeleteBulkParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[date*ended*
       #
-      # @param page [Telnyx::Models::RoomRecordingDeleteBulkParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -92,7 +96,7 @@ module Telnyx
         @client.request(
           method: :delete,
           path: "room_recordings",
-          query: parsed,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           model: Telnyx::Models::RoomRecordingDeleteBulkResponse,
           options: options
         )

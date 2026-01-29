@@ -291,7 +291,7 @@ module Telnyx
           ?recording_track: Telnyx::Models::Calls::ActionStartRecordingParams::recording_track,
           ?timeout_secs: Integer,
           ?transcription: bool,
-          ?transcription_engine: Telnyx::Models::Calls::ActionStartRecordingParams::transcription_engine,
+          ?transcription_engine: String,
           ?transcription_language: Telnyx::Models::Calls::ActionStartRecordingParams::transcription_language,
           ?transcription_max_speaker_count: Integer,
           ?transcription_min_speaker_count: Integer,

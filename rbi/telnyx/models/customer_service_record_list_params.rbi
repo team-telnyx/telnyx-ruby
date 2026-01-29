@@ -29,15 +29,17 @@ module Telnyx
       end
       attr_writer :filter
 
-      # Consolidated page parameter (deepObject style). Originally: page[size],
-      # page[number]
-      sig { returns(T.nilable(Telnyx::CustomerServiceRecordListParams::Page)) }
-      attr_reader :page
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :page_number
 
-      sig do
-        params(page: Telnyx::CustomerServiceRecordListParams::Page::OrHash).void
-      end
-      attr_writer :page
+      sig { params(page_number: Integer).void }
+      attr_writer :page_number
+
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :page_size
+
+      sig { params(page_size: Integer).void }
+      attr_writer :page_size
 
       # Consolidated sort parameter (deepObject style). Originally: sort[value]
       sig { returns(T.nilable(Telnyx::CustomerServiceRecordListParams::Sort)) }
@@ -51,7 +53,8 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::CustomerServiceRecordListParams::Filter::OrHash,
-          page: Telnyx::CustomerServiceRecordListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           sort: Telnyx::CustomerServiceRecordListParams::Sort::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -61,9 +64,8 @@ module Telnyx
         # filter[phone_number][eq], filter[phone_number][in][], filter[status][eq],
         # filter[status][in][], filter[created_at][lt], filter[created_at][gt]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[size],
-        # page[number]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         # Consolidated sort parameter (deepObject style). Originally: sort[value]
         sort: nil,
         request_options: {}
@@ -74,7 +76,8 @@ module Telnyx
         override.returns(
           {
             filter: Telnyx::CustomerServiceRecordListParams::Filter,
-            page: Telnyx::CustomerServiceRecordListParams::Page,
+            page_number: Integer,
+            page_size: Integer,
             sort: Telnyx::CustomerServiceRecordListParams::Sort,
             request_options: Telnyx::RequestOptions
           }
@@ -407,45 +410,6 @@ module Telnyx
             def self.values
             end
           end
-        end
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::CustomerServiceRecordListParams::Page,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        # The page number to load
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :number
-
-        sig { params(number: Integer).void }
-        attr_writer :number
-
-        # The size of the page
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :size
-
-        sig { params(size: Integer).void }
-        attr_writer :size
-
-        # Consolidated page parameter (deepObject style). Originally: page[size],
-        # page[number]
-        sig { params(number: Integer, size: Integer).returns(T.attached_class) }
-        def self.new(
-          # The page number to load
-          number: nil,
-          # The size of the page
-          size: nil
-        )
-        end
-
-        sig { override.returns({ number: Integer, size: Integer }) }
-        def to_hash
         end
       end
 
