@@ -59,7 +59,7 @@ class Telnyx::Test::Resources::PortingOrdersTest < Telnyx::Test::ResourceTest
     response = @telnyx.porting_orders.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Internal::DefaultFlatPagination
     end
 
     row = response.to_enum.first
@@ -159,7 +159,7 @@ class Telnyx::Test::Resources::PortingOrdersTest < Telnyx::Test::ResourceTest
     response = @telnyx.porting_orders.retrieve_requirements("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Internal::DefaultFlatPagination
     end
 
     row = response.to_enum.first

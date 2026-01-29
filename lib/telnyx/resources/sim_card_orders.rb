@@ -52,15 +52,17 @@ module Telnyx
       #
       # Get all SIM card orders according to filters.
       #
-      # @overload list(filter: nil, page: nil, request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::SimCardOrderListParams::Filter] Consolidated filter parameter for SIM card orders (deepObject style). Originally
       #
-      # @param page [Telnyx::Models::SimCardOrderListParams::Page] Consolidated pagination parameter (deepObject style). Originally: page[number],
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::SimCardOrder>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::SimCardOrder>]
       #
       # @see Telnyx::Models::SimCardOrderListParams
       def list(params = {})
@@ -68,8 +70,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "sim_card_orders",
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::SimCardOrder,
           options: options
         )

@@ -13,7 +13,7 @@ module Telnyx
           recording_track: Telnyx::Models::Calls::ActionStartRecordingParams::recording_track,
           timeout_secs: Integer,
           transcription: bool,
-          transcription_engine: Telnyx::Models::Calls::ActionStartRecordingParams::transcription_engine,
+          transcription_engine: String,
           transcription_language: Telnyx::Models::Calls::ActionStartRecordingParams::transcription_language,
           transcription_max_speaker_count: Integer,
           transcription_min_speaker_count: Integer,
@@ -65,11 +65,9 @@ module Telnyx
 
         def transcription=: (bool) -> bool
 
-        attr_reader transcription_engine: Telnyx::Models::Calls::ActionStartRecordingParams::transcription_engine?
+        attr_reader transcription_engine: String?
 
-        def transcription_engine=: (
-          Telnyx::Models::Calls::ActionStartRecordingParams::transcription_engine
-        ) -> Telnyx::Models::Calls::ActionStartRecordingParams::transcription_engine
+        def transcription_engine=: (String) -> String
 
         attr_reader transcription_language: Telnyx::Models::Calls::ActionStartRecordingParams::transcription_language?
 
@@ -110,7 +108,7 @@ module Telnyx
           ?recording_track: Telnyx::Models::Calls::ActionStartRecordingParams::recording_track,
           ?timeout_secs: Integer,
           ?transcription: bool,
-          ?transcription_engine: Telnyx::Models::Calls::ActionStartRecordingParams::transcription_engine,
+          ?transcription_engine: String,
           ?transcription_language: Telnyx::Models::Calls::ActionStartRecordingParams::transcription_language,
           ?transcription_max_speaker_count: Integer,
           ?transcription_min_speaker_count: Integer,
@@ -131,7 +129,7 @@ module Telnyx
           recording_track: Telnyx::Models::Calls::ActionStartRecordingParams::recording_track,
           timeout_secs: Integer,
           transcription: bool,
-          transcription_engine: Telnyx::Models::Calls::ActionStartRecordingParams::transcription_engine,
+          transcription_engine: String,
           transcription_language: Telnyx::Models::Calls::ActionStartRecordingParams::transcription_language,
           transcription_max_speaker_count: Integer,
           transcription_min_speaker_count: Integer,
@@ -173,18 +171,6 @@ module Telnyx
           OUTBOUND: :outbound
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartRecordingParams::recording_track]
-        end
-
-        type transcription_engine = :A | :B | :"deepgram/nova-3"
-
-        module TranscriptionEngine
-          extend Telnyx::Internal::Type::Enum
-
-          A: :A
-          B: :B
-          DEEPGRAM_NOVA_3: :"deepgram/nova-3"
-
-          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartRecordingParams::transcription_engine]
         end
 
         type transcription_language =
@@ -333,106 +319,6 @@ module Telnyx
           | :zh
           | :"zh-TW"
           | :"zu-ZA"
-          | :en
-          | :de
-          | :es
-          | :ru
-          | :ko
-          | :fr
-          | :ja
-          | :pt
-          | :tr
-          | :pl
-          | :ca
-          | :nl
-          | :ar
-          | :sv
-          | :it
-          | :id
-          | :hi
-          | :fi
-          | :vi
-          | :he
-          | :uk
-          | :el
-          | :ms
-          | :cs
-          | :ro
-          | :da
-          | :hu
-          | :ta
-          | :no
-          | :th
-          | :ur
-          | :hr
-          | :bg
-          | :lt
-          | :la
-          | :mi
-          | :ml
-          | :cy
-          | :sk
-          | :te
-          | :fa
-          | :lv
-          | :bn
-          | :sr
-          | :az
-          | :sl
-          | :kn
-          | :et
-          | :mk
-          | :br
-          | :eu
-          | :is
-          | :hy
-          | :ne
-          | :mn
-          | :bs
-          | :kk
-          | :sq
-          | :sw
-          | :gl
-          | :mr
-          | :pa
-          | :si
-          | :km
-          | :sn
-          | :yo
-          | :so
-          | :af
-          | :oc
-          | :ka
-          | :be
-          | :tg
-          | :sd
-          | :gu
-          | :am
-          | :yi
-          | :lo
-          | :uz
-          | :fo
-          | :ht
-          | :ps
-          | :tk
-          | :nn
-          | :mt
-          | :sa
-          | :lb
-          | :my
-          | :bo
-          | :tl
-          | :mg
-          | :as
-          | :tt
-          | :haw
-          | :ln
-          | :ha
-          | :ba
-          | :jw
-          | :su
-          | :auto_detect
-          | :"es-419"
 
         module TranscriptionLanguage
           extend Telnyx::Internal::Type::Enum
@@ -582,106 +468,6 @@ module Telnyx
           ZH: :zh
           ZH_TW: :"zh-TW"
           ZU_ZA: :"zu-ZA"
-          EN: :en
-          DE: :de
-          ES: :es
-          RU: :ru
-          KO: :ko
-          FR: :fr
-          JA: :ja
-          PT: :pt
-          TR: :tr
-          PL: :pl
-          CA: :ca
-          NL: :nl
-          AR: :ar
-          SV: :sv
-          IT: :it
-          ID: :id
-          HI: :hi
-          FI: :fi
-          VI: :vi
-          HE: :he
-          UK: :uk
-          EL: :el
-          MS: :ms
-          CS: :cs
-          RO: :ro
-          DA: :da
-          HU: :hu
-          TA: :ta
-          NO: :no
-          TH: :th
-          UR: :ur
-          HR: :hr
-          BG: :bg
-          LT: :lt
-          LA: :la
-          MI: :mi
-          ML: :ml
-          CY: :cy
-          SK: :sk
-          TE: :te
-          FA: :fa
-          LV: :lv
-          BN: :bn
-          SR: :sr
-          AZ: :az
-          SL: :sl
-          KN: :kn
-          ET: :et
-          MK: :mk
-          BR: :br
-          EU: :eu
-          IS: :is
-          HY: :hy
-          NE: :ne
-          MN: :mn
-          BS: :bs
-          KK: :kk
-          SQ: :sq
-          SW: :sw
-          GL: :gl
-          MR: :mr
-          PA: :pa
-          SI: :si
-          KM: :km
-          SN: :sn
-          YO: :yo
-          SO: :so
-          AF: :af
-          OC: :oc
-          KA: :ka
-          BE: :be
-          TG: :tg
-          SD: :sd
-          GU: :gu
-          AM: :am
-          YI: :yi
-          LO: :lo
-          UZ: :uz
-          FO: :fo
-          HT: :ht
-          PS: :ps
-          TK: :tk
-          NN: :nn
-          MT: :mt
-          SA: :sa
-          LB: :lb
-          MY: :my
-          BO: :bo
-          TL: :tl
-          MG: :mg
-          AS: :as
-          TT: :tt
-          HAW: :haw
-          LN: :ln
-          HA: :ha
-          BA: :ba
-          JW: :jw
-          SU: :su
-          AUTO_DETECT: :auto_detect
-          ES_419: :"es-419"
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartRecordingParams::transcription_language]
         end

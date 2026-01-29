@@ -41,7 +41,7 @@ class Telnyx::Test::Resources::PhoneNumbersTest < Telnyx::Test::ResourceTest
     response = @telnyx.phone_numbers.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Internal::DefaultFlatPagination
     end
 
     row = response.to_enum.first
@@ -106,7 +106,7 @@ class Telnyx::Test::Resources::PhoneNumbersTest < Telnyx::Test::ResourceTest
     response = @telnyx.phone_numbers.slim_list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultPagination
+      response => Telnyx::Internal::DefaultFlatPagination
     end
 
     row = response.to_enum.first

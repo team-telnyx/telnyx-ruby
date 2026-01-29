@@ -63,10 +63,11 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::IPConnectionListParams::Filter,
-        ?page: Telnyx::IPConnectionListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?sort: Telnyx::Models::IPConnectionListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::IPConnection]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::IPConnection]
 
       def delete: (
         String id,

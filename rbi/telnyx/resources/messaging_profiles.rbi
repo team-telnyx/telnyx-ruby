@@ -184,16 +184,18 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::MessagingProfileListParams::Filter::OrHash,
-          page: Telnyx::MessagingProfileListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::MessagingProfile])
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::MessagingProfile]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[name]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end
@@ -216,10 +218,11 @@ module Telnyx
       sig do
         params(
           messaging_profile_id: String,
-          page: Telnyx::MessagingProfileListPhoneNumbersParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[
+          Telnyx::Internal::DefaultFlatPagination[
             Telnyx::PhoneNumberWithMessagingSettings
           ]
         )
@@ -227,9 +230,8 @@ module Telnyx
       def list_phone_numbers(
         # The id of the messaging profile to retrieve
         messaging_profile_id,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end
@@ -238,16 +240,16 @@ module Telnyx
       sig do
         params(
           messaging_profile_id: String,
-          page: Telnyx::MessagingProfileListShortCodesParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::ShortCode])
+        ).returns(Telnyx::Internal::DefaultFlatPagination[Telnyx::ShortCode])
       end
       def list_short_codes(
         # The id of the messaging profile to retrieve
         messaging_profile_id,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end

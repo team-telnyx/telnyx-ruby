@@ -3,7 +3,6 @@ module Telnyx
     type conference_list_participants_params =
       {
         filter: Telnyx::ConferenceListParticipantsParams::Filter,
-        page: Telnyx::ConferenceListParticipantsParams::Page,
         page_number: Integer,
         page_size: Integer,
         region: Telnyx::Models::ConferenceListParticipantsParams::region
@@ -19,12 +18,6 @@ module Telnyx
       def filter=: (
         Telnyx::ConferenceListParticipantsParams::Filter
       ) -> Telnyx::ConferenceListParticipantsParams::Filter
-
-      attr_reader page: Telnyx::ConferenceListParticipantsParams::Page?
-
-      def page=: (
-        Telnyx::ConferenceListParticipantsParams::Page
-      ) -> Telnyx::ConferenceListParticipantsParams::Page
 
       attr_reader page_number: Integer?
 
@@ -42,7 +35,6 @@ module Telnyx
 
       def initialize: (
         ?filter: Telnyx::ConferenceListParticipantsParams::Filter,
-        ?page: Telnyx::ConferenceListParticipantsParams::Page,
         ?page_number: Integer,
         ?page_size: Integer,
         ?region: Telnyx::Models::ConferenceListParticipantsParams::region,
@@ -51,7 +43,6 @@ module Telnyx
 
       def to_hash: -> {
         filter: Telnyx::ConferenceListParticipantsParams::Filter,
-        page: Telnyx::ConferenceListParticipantsParams::Page,
         page_number: Integer,
         page_size: Integer,
         region: Telnyx::Models::ConferenceListParticipantsParams::region,
@@ -80,30 +71,6 @@ module Telnyx
         ) -> void
 
         def to_hash: -> { muted: bool, on_hold: bool, whispering: bool }
-      end
-
-      type page = { after: String, before: String, limit: Integer }
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        attr_reader after: String?
-
-        def after=: (String) -> String
-
-        attr_reader before: String?
-
-        def before=: (String) -> String
-
-        attr_reader limit: Integer?
-
-        def limit=: (Integer) -> Integer
-
-        def initialize: (
-          ?after: String,
-          ?before: String,
-          ?limit: Integer
-        ) -> void
-
-        def to_hash: -> { after: String, before: String, limit: Integer }
       end
 
       type region = :Australia | :Europe | :"Middle East" | :US

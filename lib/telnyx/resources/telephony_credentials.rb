@@ -86,15 +86,17 @@ module Telnyx
       #
       # List all On-demand Credentials.
       #
-      # @overload list(filter: nil, page: nil, request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::TelephonyCredentialListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[tag], filte
       #
-      # @param page [Telnyx::Models::TelephonyCredentialListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::TelephonyCredential>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::TelephonyCredential>]
       #
       # @see Telnyx::Models::TelephonyCredentialListParams
       def list(params = {})
@@ -102,8 +104,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "telephony_credentials",
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::TelephonyCredential,
           options: options
         )

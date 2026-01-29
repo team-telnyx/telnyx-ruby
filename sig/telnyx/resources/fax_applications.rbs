@@ -36,10 +36,11 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::FaxApplicationListParams::Filter,
-        ?page: Telnyx::FaxApplicationListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?sort: Telnyx::Models::FaxApplicationListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::FaxApplication]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::FaxApplication]
 
       def delete: (
         String id,

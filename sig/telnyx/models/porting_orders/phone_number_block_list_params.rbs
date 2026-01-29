@@ -4,7 +4,8 @@ module Telnyx
       type phone_number_block_list_params =
         {
           filter: Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter,
-          page: Telnyx::PortingOrders::PhoneNumberBlockListParams::Page,
+          page_number: Integer,
+          page_size: Integer,
           sort: Telnyx::PortingOrders::PhoneNumberBlockListParams::Sort
         }
         & Telnyx::Internal::Type::request_parameters
@@ -19,11 +20,13 @@ module Telnyx
           Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter
         ) -> Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter
 
-        attr_reader page: Telnyx::PortingOrders::PhoneNumberBlockListParams::Page?
+        attr_reader page_number: Integer?
 
-        def page=: (
-          Telnyx::PortingOrders::PhoneNumberBlockListParams::Page
-        ) -> Telnyx::PortingOrders::PhoneNumberBlockListParams::Page
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
 
         attr_reader sort: Telnyx::PortingOrders::PhoneNumberBlockListParams::Sort?
 
@@ -33,14 +36,16 @@ module Telnyx
 
         def initialize: (
           ?filter: Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter,
-          ?page: Telnyx::PortingOrders::PhoneNumberBlockListParams::Page,
+          ?page_number: Integer,
+          ?page_size: Integer,
           ?sort: Telnyx::PortingOrders::PhoneNumberBlockListParams::Sort,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           filter: Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter,
-          page: Telnyx::PortingOrders::PhoneNumberBlockListParams::Page,
+          page_number: Integer,
+          page_size: Integer,
           sort: Telnyx::PortingOrders::PhoneNumberBlockListParams::Sort,
           request_options: Telnyx::RequestOptions
         }
@@ -224,22 +229,6 @@ module Telnyx
 
             StringArray: Telnyx::Internal::Type::Converter
           end
-        end
-
-        type page = { number: Integer, size: Integer }
-
-        class Page < Telnyx::Internal::Type::BaseModel
-          attr_reader number: Integer?
-
-          def number=: (Integer) -> Integer
-
-          attr_reader size: Integer?
-
-          def size=: (Integer) -> Integer
-
-          def initialize: (?number: Integer, ?size: Integer) -> void
-
-          def to_hash: -> { number: Integer, size: Integer }
         end
 
         type sort =

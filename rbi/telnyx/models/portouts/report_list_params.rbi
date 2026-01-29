@@ -24,20 +24,23 @@ module Telnyx
         end
         attr_writer :filter
 
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        sig { returns(T.nilable(Telnyx::Portouts::ReportListParams::Page)) }
-        attr_reader :page
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :page_number
 
-        sig do
-          params(page: Telnyx::Portouts::ReportListParams::Page::OrHash).void
-        end
-        attr_writer :page
+        sig { params(page_number: Integer).void }
+        attr_writer :page_number
+
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :page_size
+
+        sig { params(page_size: Integer).void }
+        attr_writer :page_size
 
         sig do
           params(
             filter: Telnyx::Portouts::ReportListParams::Filter::OrHash,
-            page: Telnyx::Portouts::ReportListParams::Page::OrHash,
+            page_number: Integer,
+            page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -45,9 +48,8 @@ module Telnyx
           # Consolidated filter parameter (deepObject style). Originally:
           # filter[report_type], filter[status]
           filter: nil,
-          # Consolidated page parameter (deepObject style). Originally: page[number],
-          # page[size]
-          page: nil,
+          page_number: nil,
+          page_size: nil,
           request_options: {}
         )
         end
@@ -56,7 +58,8 @@ module Telnyx
           override.returns(
             {
               filter: Telnyx::Portouts::ReportListParams::Filter,
-              page: Telnyx::Portouts::ReportListParams::Page,
+              page_number: Integer,
+              page_size: Integer,
               request_options: Telnyx::RequestOptions
             }
           )
@@ -203,47 +206,6 @@ module Telnyx
             end
             def self.values
             end
-          end
-        end
-
-        class Page < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::Portouts::ReportListParams::Page,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          # The page number to load
-          sig { returns(T.nilable(Integer)) }
-          attr_reader :number
-
-          sig { params(number: Integer).void }
-          attr_writer :number
-
-          # The size of the page
-          sig { returns(T.nilable(Integer)) }
-          attr_reader :size
-
-          sig { params(size: Integer).void }
-          attr_writer :size
-
-          # Consolidated page parameter (deepObject style). Originally: page[number],
-          # page[size]
-          sig do
-            params(number: Integer, size: Integer).returns(T.attached_class)
-          end
-          def self.new(
-            # The page number to load
-            number: nil,
-            # The size of the page
-            size: nil
-          )
-          end
-
-          sig { override.returns({ number: Integer, size: Integer }) }
-          def to_hash
           end
         end
       end

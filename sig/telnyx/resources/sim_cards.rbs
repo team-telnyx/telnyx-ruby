@@ -24,10 +24,11 @@ module Telnyx
         ?filter: Telnyx::SimCardListParams::Filter,
         ?filter_sim_card_group_id: String,
         ?include_sim_card_group: bool,
-        ?page: Telnyx::SimCardListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?sort: Telnyx::Models::SimCardListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::SimpleSimCard]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::SimpleSimCard]
 
       def delete: (
         String id,

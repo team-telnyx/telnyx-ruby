@@ -18,9 +18,10 @@ module Telnyx
         def list: (
           String id,
           ?filter: Telnyx::ExternalConnections::PhoneNumberListParams::Filter,
-          ?page: Telnyx::ExternalConnections::PhoneNumberListParams::Page,
+          ?page_number: Integer,
+          ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPagination[Telnyx::ExternalConnections::ExternalConnectionPhoneNumber]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::ExternalConnections::ExternalConnectionPhoneNumber]
 
         def initialize: (client: Telnyx::Client) -> void
       end

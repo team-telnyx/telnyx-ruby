@@ -1,0 +1,11 @@
+module Telnyx
+  module Internal
+    class DefaultPaginationForQueues[Elem]
+      include Telnyx::Internal::Type::BasePage[Elem]
+
+      attr_accessor queues: ::Array[Elem]?
+
+      def inspect: -> String
+    end
+  end
+end

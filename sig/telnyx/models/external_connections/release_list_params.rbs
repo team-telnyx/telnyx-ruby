@@ -4,7 +4,8 @@ module Telnyx
       type release_list_params =
         {
           filter: Telnyx::ExternalConnections::ReleaseListParams::Filter,
-          page: Telnyx::ExternalConnections::ReleaseListParams::Page
+          page_number: Integer,
+          page_size: Integer
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -18,21 +19,25 @@ module Telnyx
           Telnyx::ExternalConnections::ReleaseListParams::Filter
         ) -> Telnyx::ExternalConnections::ReleaseListParams::Filter
 
-        attr_reader page: Telnyx::ExternalConnections::ReleaseListParams::Page?
+        attr_reader page_number: Integer?
 
-        def page=: (
-          Telnyx::ExternalConnections::ReleaseListParams::Page
-        ) -> Telnyx::ExternalConnections::ReleaseListParams::Page
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
 
         def initialize: (
           ?filter: Telnyx::ExternalConnections::ReleaseListParams::Filter,
-          ?page: Telnyx::ExternalConnections::ReleaseListParams::Page,
+          ?page_number: Integer,
+          ?page_size: Integer,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           filter: Telnyx::ExternalConnections::ReleaseListParams::Filter,
-          page: Telnyx::ExternalConnections::ReleaseListParams::Page,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions
         }
 
@@ -166,22 +171,6 @@ module Telnyx
               def self?.values: -> ::Array[Telnyx::Models::ExternalConnections::ReleaseListParams::Filter::Status::eq]
             end
           end
-        end
-
-        type page = { number: Integer, size: Integer }
-
-        class Page < Telnyx::Internal::Type::BaseModel
-          attr_reader number: Integer?
-
-          def number=: (Integer) -> Integer
-
-          attr_reader size: Integer?
-
-          def size=: (Integer) -> Integer
-
-          def initialize: (?number: Integer, ?size: Integer) -> void
-
-          def to_hash: -> { number: Integer, size: Integer }
         end
       end
     end

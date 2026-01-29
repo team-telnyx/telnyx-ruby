@@ -58,15 +58,17 @@ module Telnyx
       #
       # Get a paginated list of number block orders.
       #
-      # @overload list(filter: nil, page: nil, request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::NumberBlockOrderListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[status], fi
       #
-      # @param page [Telnyx::Models::NumberBlockOrderListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::NumberBlockOrder>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::NumberBlockOrder>]
       #
       # @see Telnyx::Models::NumberBlockOrderListParams
       def list(params = {})
@@ -74,8 +76,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "number_block_orders",
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::NumberBlockOrder,
           options: options
         )

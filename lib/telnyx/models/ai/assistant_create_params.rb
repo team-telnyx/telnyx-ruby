@@ -98,7 +98,7 @@ module Telnyx
         #   The tools that the assistant can use. These may be templated with
         #   [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
         #
-        #   @return [Array<Telnyx::Models::AI::AssistantTool::Webhook, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage>, nil]
+        #   @return [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage>, nil]
         optional :tools, -> { Telnyx::Internal::Type::ArrayOf[union: Telnyx::AI::AssistantTool] }
 
         # @!attribute transcription
@@ -147,7 +147,7 @@ module Telnyx
         #
         #   @param telephony_settings [Telnyx::Models::AI::TelephonySettings]
         #
-        #   @param tools [Array<Telnyx::Models::AI::AssistantTool::Webhook, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage>] The tools that the assistant can use. These may be templated with [dynamic varia
+        #   @param tools [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage>] The tools that the assistant can use. These may be templated with [dynamic varia
         #
         #   @param transcription [Telnyx::Models::AI::TranscriptionSettings]
         #

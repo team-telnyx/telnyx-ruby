@@ -14,12 +14,15 @@ module Telnyx
       #   @return [Telnyx::Models::AuditEventListParams::Filter, nil]
       optional :filter, -> { Telnyx::AuditEventListParams::Filter }
 
-      # @!attribute page
-      #   Consolidated page parameter (deepObject style). Originally: page[number],
-      #   page[size]
+      # @!attribute page_number
       #
-      #   @return [Telnyx::Models::AuditEventListParams::Page, nil]
-      optional :page, -> { Telnyx::AuditEventListParams::Page }
+      #   @return [Integer, nil]
+      optional :page_number, Integer
+
+      # @!attribute page_size
+      #
+      #   @return [Integer, nil]
+      optional :page_size, Integer
 
       # @!attribute sort
       #   Set the order of the results by the creation date.
@@ -27,13 +30,15 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::AuditEventListParams::Sort, nil]
       optional :sort, enum: -> { Telnyx::AuditEventListParams::Sort }
 
-      # @!method initialize(filter: nil, page: nil, sort: nil, request_options: {})
+      # @!method initialize(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::AuditEventListParams} for more details.
       #
       #   @param filter [Telnyx::Models::AuditEventListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[created_bef
       #
-      #   @param page [Telnyx::Models::AuditEventListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      #   @param page_number [Integer]
+      #
+      #   @param page_size [Integer]
       #
       #   @param sort [Symbol, Telnyx::Models::AuditEventListParams::Sort] Set the order of the results by the creation date.
       #
@@ -59,28 +64,6 @@ module Telnyx
         #   @param created_after [Time] Filter for audit events created after a specific date.
         #
         #   @param created_before [Time] Filter for audit events created before a specific date.
-      end
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        # @!attribute number
-        #   Page number to load.
-        #
-        #   @return [Integer, nil]
-        optional :number, Integer
-
-        # @!attribute size
-        #   Number of items per page.
-        #
-        #   @return [Integer, nil]
-        optional :size, Integer
-
-        # @!method initialize(number: nil, size: nil)
-        #   Consolidated page parameter (deepObject style). Originally: page[number],
-        #   page[size]
-        #
-        #   @param number [Integer] Page number to load.
-        #
-        #   @param size [Integer] Number of items per page.
       end
 
       # Set the order of the results by the creation date.

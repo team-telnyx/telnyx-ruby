@@ -29,15 +29,17 @@ module Telnyx
       #
       # Lists webhook_deliveries for the authenticated user
       #
-      # @overload list(filter: nil, page: nil, request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::WebhookDeliveryListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[status][eq]
       #
-      # @param page [Telnyx::Models::WebhookDeliveryListParams::Page] Consolidated page parameter (deepObject style). Originally: page[number], page[s
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::WebhookDeliveryListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::WebhookDeliveryListResponse>]
       #
       # @see Telnyx::Models::WebhookDeliveryListParams
       def list(params = {})
@@ -45,8 +47,8 @@ module Telnyx
         @client.request(
           method: :get,
           path: "webhook_deliveries",
-          query: parsed,
-          page: Telnyx::Internal::DefaultPagination,
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::WebhookDeliveryListResponse,
           options: options
         )

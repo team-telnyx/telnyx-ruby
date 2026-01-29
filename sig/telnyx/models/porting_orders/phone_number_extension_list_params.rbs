@@ -4,7 +4,8 @@ module Telnyx
       type phone_number_extension_list_params =
         {
           filter: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Filter,
-          page: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Page,
+          page_number: Integer,
+          page_size: Integer,
           sort: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Sort
         }
         & Telnyx::Internal::Type::request_parameters
@@ -19,11 +20,13 @@ module Telnyx
           Telnyx::PortingOrders::PhoneNumberExtensionListParams::Filter
         ) -> Telnyx::PortingOrders::PhoneNumberExtensionListParams::Filter
 
-        attr_reader page: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Page?
+        attr_reader page_number: Integer?
 
-        def page=: (
-          Telnyx::PortingOrders::PhoneNumberExtensionListParams::Page
-        ) -> Telnyx::PortingOrders::PhoneNumberExtensionListParams::Page
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
 
         attr_reader sort: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Sort?
 
@@ -33,14 +36,16 @@ module Telnyx
 
         def initialize: (
           ?filter: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Filter,
-          ?page: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Page,
+          ?page_number: Integer,
+          ?page_size: Integer,
           ?sort: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Sort,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           filter: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Filter,
-          page: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Page,
+          page_number: Integer,
+          page_size: Integer,
           sort: Telnyx::PortingOrders::PhoneNumberExtensionListParams::Sort,
           request_options: Telnyx::RequestOptions
         }
@@ -55,22 +60,6 @@ module Telnyx
           def initialize: (?porting_phone_number_id: String) -> void
 
           def to_hash: -> { porting_phone_number_id: String }
-        end
-
-        type page = { number: Integer, size: Integer }
-
-        class Page < Telnyx::Internal::Type::BaseModel
-          attr_reader number: Integer?
-
-          def number=: (Integer) -> Integer
-
-          attr_reader size: Integer?
-
-          def size=: (Integer) -> Integer
-
-          def initialize: (?number: Integer, ?size: Integer) -> void
-
-          def to_hash: -> { number: Integer, size: Integer }
         end
 
         type sort =
