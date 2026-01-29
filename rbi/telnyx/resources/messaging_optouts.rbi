@@ -8,11 +8,12 @@ module Telnyx
         params(
           created_at: Telnyx::MessagingOptoutListParams::CreatedAt::OrHash,
           filter: Telnyx::MessagingOptoutListParams::Filter::OrHash,
-          page: Telnyx::MessagingOptoutListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           redaction_enabled: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[
+          Telnyx::Internal::DefaultFlatPagination[
             Telnyx::Models::MessagingOptoutListResponse
           ]
         )
@@ -24,9 +25,8 @@ module Telnyx
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[messaging_profile_id], filter[from]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         # If receiving address (+E.164 formatted phone number) should be redacted
         redaction_enabled: nil,
         request_options: {}

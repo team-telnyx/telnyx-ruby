@@ -31,7 +31,7 @@ module Telnyx
             ?page_size: Integer,
             ?page_token: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Texml::Accounts::QueueListResponse
+          ) -> Telnyx::Internal::DefaultPaginationForQueues[Telnyx::Models::Texml::Accounts::QueueListResponse]
 
           def delete: (
             String queue_sid,

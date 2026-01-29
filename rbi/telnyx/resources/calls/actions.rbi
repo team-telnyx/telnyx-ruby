@@ -1283,8 +1283,7 @@ module Telnyx
               Telnyx::Calls::ActionStartRecordingParams::RecordingTrack::OrSymbol,
             timeout_secs: Integer,
             transcription: T::Boolean,
-            transcription_engine:
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionEngine::OrSymbol,
+            transcription_engine: String,
             transcription_language:
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::OrSymbol,
             transcription_max_speaker_count: Integer,
@@ -1329,10 +1328,9 @@ module Telnyx
           timeout_secs: nil,
           # Enable post recording transcription. The default value is false.
           transcription: nil,
-          # Engine to use for speech recognition. `A` - `Google`, `B` - `Telnyx`,
-          # `deepgram/nova-3` - `Deepgram Nova-3`. Note: `deepgram/nova-3` supports only
-          # `en` and `en-{Region}` languages.
+          # Engine to use for speech recognition. `A` - `Google`
           transcription_engine: nil,
+          # Language to use for speech recognition
           transcription_language: nil,
           # Defines maximum number of speakers in the conversation. Applies to `google`
           # engine only.

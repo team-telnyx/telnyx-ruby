@@ -10,9 +10,10 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::RecordingListParams::Filter,
-        ?page: Telnyx::RecordingListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::RecordingResponseData]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::RecordingResponseData]
 
       def delete: (
         String recording_id,

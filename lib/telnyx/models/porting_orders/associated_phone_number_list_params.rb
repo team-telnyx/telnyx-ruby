@@ -15,12 +15,15 @@ module Telnyx
         #   @return [Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Filter, nil]
         optional :filter, -> { Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Filter }
 
-        # @!attribute page
-        #   Consolidated page parameter (deepObject style). Originally: page[size],
-        #   page[number]
+        # @!attribute page_number
         #
-        #   @return [Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Page, nil]
-        optional :page, -> { Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Page }
+        #   @return [Integer, nil]
+        optional :page_number, Integer
+
+        # @!attribute page_size
+        #
+        #   @return [Integer, nil]
+        optional :page_size, Integer
 
         # @!attribute sort
         #   Consolidated sort parameter (deepObject style). Originally: sort[value]
@@ -28,14 +31,16 @@ module Telnyx
         #   @return [Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Sort, nil]
         optional :sort, -> { Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Sort }
 
-        # @!method initialize(filter: nil, page: nil, sort: nil, request_options: {})
+        # @!method initialize(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams} for more
         #   details.
         #
         #   @param filter [Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[phone_numbe
         #
-        #   @param page [Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+        #   @param page_number [Integer]
+        #
+        #   @param page_size [Integer]
         #
         #   @param sort [Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams::Sort] Consolidated sort parameter (deepObject style). Originally: sort[value]
         #
@@ -74,28 +79,6 @@ module Telnyx
             # @!method self.values
             #   @return [Array<Symbol>]
           end
-        end
-
-        class Page < Telnyx::Internal::Type::BaseModel
-          # @!attribute number
-          #   The page number to load
-          #
-          #   @return [Integer, nil]
-          optional :number, Integer
-
-          # @!attribute size
-          #   The size of the page
-          #
-          #   @return [Integer, nil]
-          optional :size, Integer
-
-          # @!method initialize(number: nil, size: nil)
-          #   Consolidated page parameter (deepObject style). Originally: page[size],
-          #   page[number]
-          #
-          #   @param number [Integer] The page number to load
-          #
-          #   @param size [Integer] The size of the page
         end
 
         class Sort < Telnyx::Internal::Type::BaseModel

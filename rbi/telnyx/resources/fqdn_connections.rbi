@@ -232,19 +232,21 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::FqdnConnectionListParams::Filter::OrHash,
-          page: Telnyx::FqdnConnectionListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           sort: Telnyx::FqdnConnectionListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::FqdnConnection])
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::FqdnConnection]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[connection_name], filter[fqdn], filter[outbound_voice_profile_id],
         # filter[outbound.outbound_voice_profile_id]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[size],
-        # page[number]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         # Specifies the sort order for results. By default sorting direction is ascending.
         # To have the results sorted in descending order add the <code> -</code>
         # prefix.<br/><br/> That is: <ul>

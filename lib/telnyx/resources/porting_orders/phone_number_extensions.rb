@@ -42,19 +42,21 @@ module Telnyx
         #
         # Returns a list of all phone number extensions of a porting order.
         #
-        # @overload list(porting_order_id, filter: nil, page: nil, sort: nil, request_options: {})
+        # @overload list(porting_order_id, filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
         #
         # @param porting_order_id [String] Identifies the Porting Order associated with the phone number extensions
         #
         # @param filter [Telnyx::Models::PortingOrders::PhoneNumberExtensionListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[porting_pho
         #
-        # @param page [Telnyx::Models::PortingOrders::PhoneNumberExtensionListParams::Page] Consolidated page parameter (deepObject style). Originally: page[size], page[num
+        # @param page_number [Integer]
+        #
+        # @param page_size [Integer]
         #
         # @param sort [Telnyx::Models::PortingOrders::PhoneNumberExtensionListParams::Sort] Consolidated sort parameter (deepObject style). Originally: sort[value]
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::PortingOrders::PortingPhoneNumberExtension>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PortingOrders::PortingPhoneNumberExtension>]
         #
         # @see Telnyx::Models::PortingOrders::PhoneNumberExtensionListParams
         def list(porting_order_id, params = {})
@@ -62,8 +64,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: ["porting_orders/%1$s/phone_number_extensions", porting_order_id],
-            query: parsed,
-            page: Telnyx::Internal::DefaultPagination,
+            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::PortingOrders::PortingPhoneNumberExtension,
             options: options
           )

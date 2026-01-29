@@ -40,10 +40,11 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::NumberReservationListParams::Filter::OrHash,
-          page: Telnyx::NumberReservationListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[Telnyx::NumberReservation]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::NumberReservation]
         )
       end
       def list(
@@ -51,9 +52,8 @@ module Telnyx
         # filter[created_at], filter[phone_numbers.phone_number],
         # filter[customer_reference]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[size],
-        # page[number]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end

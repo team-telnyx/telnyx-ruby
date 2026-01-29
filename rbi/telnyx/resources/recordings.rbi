@@ -24,10 +24,11 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::RecordingListParams::Filter::OrHash,
-          page: Telnyx::RecordingListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[Telnyx::RecordingResponseData]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::RecordingResponseData]
         )
       end
       def list(
@@ -36,9 +37,8 @@ module Telnyx
         # filter[call_leg_id], filter[call_session_id], filter[from], filter[to],
         # filter[connection_id], filter[sip_call_id]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[size],
-        # page[number]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end

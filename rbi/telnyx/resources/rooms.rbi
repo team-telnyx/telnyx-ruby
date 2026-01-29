@@ -98,9 +98,10 @@ module Telnyx
         params(
           filter: Telnyx::RoomListParams::Filter::OrHash,
           include_sessions: T::Boolean,
-          page: Telnyx::RoomListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::Room])
+        ).returns(Telnyx::Internal::DefaultFlatPagination[Telnyx::Room])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:
@@ -110,9 +111,8 @@ module Telnyx
         filter: nil,
         # To decide if room sessions should be included in the response.
         include_sessions: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[size],
-        # page[number]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end

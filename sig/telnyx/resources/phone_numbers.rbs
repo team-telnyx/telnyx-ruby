@@ -32,10 +32,11 @@ module Telnyx
       def list: (
         ?filter: Telnyx::PhoneNumberListParams::Filter,
         ?handle_messaging_profile_error: Telnyx::Models::PhoneNumberListParams::handle_messaging_profile_error,
-        ?page: Telnyx::PhoneNumberListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?sort: Telnyx::Models::PhoneNumberListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::PhoneNumberDetailed]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::PhoneNumberDetailed]
 
       def delete: (
         String id,
@@ -46,10 +47,11 @@ module Telnyx
         ?filter: Telnyx::PhoneNumberSlimListParams::Filter,
         ?include_connection: bool,
         ?include_tags: bool,
-        ?page: Telnyx::PhoneNumberSlimListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?sort: Telnyx::Models::PhoneNumberSlimListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::Models::PhoneNumberSlimListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::PhoneNumberSlimListResponse]
 
       def initialize: (client: Telnyx::Client) -> void
     end

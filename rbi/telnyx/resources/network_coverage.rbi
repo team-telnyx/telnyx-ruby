@@ -8,10 +8,11 @@ module Telnyx
         params(
           filter: Telnyx::NetworkCoverageListParams::Filter::OrHash,
           filters: Telnyx::NetworkCoverageListParams::Filters::OrHash,
-          page: Telnyx::NetworkCoverageListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[
+          Telnyx::Internal::DefaultFlatPagination[
             Telnyx::Models::NetworkCoverageListResponse
           ]
         )
@@ -24,9 +25,8 @@ module Telnyx
         # Consolidated filters parameter (deepObject style). Originally:
         # filters[available_services][contains]
         filters: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end

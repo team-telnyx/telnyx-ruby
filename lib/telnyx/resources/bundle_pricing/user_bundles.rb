@@ -64,28 +64,33 @@ module Telnyx
         #
         # Get a paginated list of user bundles.
         #
-        # @overload list(filter: nil, page: nil, authorization_bearer: nil, request_options: {})
+        # @overload list(filter: nil, page_number: nil, page_size: nil, authorization_bearer: nil, request_options: {})
         #
         # @param filter [Telnyx::Models::BundlePricing::UserBundleListParams::Filter] Query param: Consolidated filter parameter (deepObject style). Supports filterin
         #
-        # @param page [Telnyx::Models::BundlePricing::UserBundleListParams::Page] Query param: Consolidated page parameter (deepObject style). Originally: page[si
+        # @param page_number [Integer] Query param
+        #
+        # @param page_size [Integer] Query param
         #
         # @param authorization_bearer [String] Header param: Authenticates the request with your Telnyx API V2 KEY
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPagination<Telnyx::Models::BundlePricing::UserBundle>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::BundlePricing::UserBundle>]
         #
         # @see Telnyx::Models::BundlePricing::UserBundleListParams
         def list(params = {})
           parsed, options = Telnyx::BundlePricing::UserBundleListParams.dump_request(params)
-          query_params = [:filter, :page]
+          query_params = [:filter, :page_number, :page_size]
           @client.request(
             method: :get,
             path: "bundle_pricing/user_bundles",
-            query: parsed.slice(*query_params),
+            query: parsed.slice(*query_params).transform_keys(
+              page_number: "page[number]",
+              page_size: "page[size]"
+            ),
             headers: parsed.except(*query_params),
-            page: Telnyx::Internal::DefaultPagination,
+            page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::BundlePricing::UserBundle,
             options: options
           )

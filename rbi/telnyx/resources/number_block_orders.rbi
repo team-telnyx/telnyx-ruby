@@ -47,17 +47,19 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::NumberBlockOrderListParams::Filter::OrHash,
-          page: Telnyx::NumberBlockOrderListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultPagination[Telnyx::NumberBlockOrder])
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::NumberBlockOrder]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[status],
         # filter[created_at], filter[phone_numbers.starting_number]
         filter: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[size],
-        # page[number]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end

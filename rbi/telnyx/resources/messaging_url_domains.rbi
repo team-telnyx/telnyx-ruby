@@ -6,20 +6,16 @@ module Telnyx
       # List messaging URL domains
       sig do
         params(
-          page: Telnyx::MessagingURLDomainListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[
+          Telnyx::Internal::DefaultFlatPagination[
             Telnyx::Models::MessagingURLDomainListResponse
           ]
         )
       end
-      def list(
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
-        request_options: {}
-      )
+      def list(page_number: nil, page_size: nil, request_options: {})
       end
 
       # @api private

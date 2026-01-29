@@ -21,10 +21,11 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::OtaUpdateListParams::Filter::OrHash,
-          page: Telnyx::OtaUpdateListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[
+          Telnyx::Internal::DefaultFlatPagination[
             Telnyx::Models::OtaUpdateListResponse
           ]
         )
@@ -33,9 +34,8 @@ module Telnyx
         # Consolidated filter parameter for OTA updates (deepObject style). Originally:
         # filter[status], filter[sim_card_id], filter[type]
         filter: nil,
-        # Consolidated pagination parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end

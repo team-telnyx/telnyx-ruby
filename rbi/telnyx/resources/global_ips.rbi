@@ -40,20 +40,16 @@ module Telnyx
       # List all Global IPs.
       sig do
         params(
-          page: Telnyx::GlobalIPListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[
+          Telnyx::Internal::DefaultFlatPagination[
             Telnyx::Models::GlobalIPListResponse
           ]
         )
       end
-      def list(
-        # Consolidated page parameter (deepObject style). Originally: page[number],
-        # page[size]
-        page: nil,
-        request_options: {}
-      )
+      def list(page_number: nil, page_size: nil, request_options: {})
       end
 
       # Delete a Global IP.

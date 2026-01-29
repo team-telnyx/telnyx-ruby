@@ -76,11 +76,12 @@ module Telnyx
           filter: Telnyx::PhoneNumberListParams::Filter::OrHash,
           handle_messaging_profile_error:
             Telnyx::PhoneNumberListParams::HandleMessagingProfileError::OrSymbol,
-          page: Telnyx::PhoneNumberListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           sort: Telnyx::PhoneNumberListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[Telnyx::PhoneNumberDetailed]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::PhoneNumberDetailed]
         )
       end
       def list(
@@ -98,9 +99,8 @@ module Telnyx
         # will be omitted in the response and an error message will be included instead of
         # returning a 503 error.
         handle_messaging_profile_error: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[size],
-        # page[number]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         # Specifies the sort order for results. If not given, results are sorted by
         # created_at in descending order.
         sort: nil,
@@ -129,11 +129,12 @@ module Telnyx
           filter: Telnyx::PhoneNumberSlimListParams::Filter::OrHash,
           include_connection: T::Boolean,
           include_tags: T::Boolean,
-          page: Telnyx::PhoneNumberSlimListParams::Page::OrHash,
+          page_number: Integer,
+          page_size: Integer,
           sort: Telnyx::PhoneNumberSlimListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultPagination[
+          Telnyx::Internal::DefaultFlatPagination[
             Telnyx::Models::PhoneNumberSlimListResponse
           ]
         )
@@ -150,9 +151,8 @@ module Telnyx
         include_connection: nil,
         # Include the tags associated with the phone number.
         include_tags: nil,
-        # Consolidated page parameter (deepObject style). Originally: page[size],
-        # page[number]
-        page: nil,
+        page_number: nil,
+        page_size: nil,
         # Specifies the sort order for results. If not given, results are sorted by
         # created_at in descending order.
         sort: nil,

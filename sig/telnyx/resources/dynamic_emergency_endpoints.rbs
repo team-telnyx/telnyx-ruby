@@ -15,9 +15,10 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::DynamicEmergencyEndpointListParams::Filter,
-        ?page: Telnyx::DynamicEmergencyEndpointListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultPagination[Telnyx::DynamicEmergencyEndpoint]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::DynamicEmergencyEndpoint]
 
       def delete: (
         String id,

@@ -3,7 +3,8 @@ module Telnyx
     type connection_list_params =
       {
         filter: Telnyx::ConnectionListParams::Filter,
-        page: Telnyx::ConnectionListParams::Page,
+        page_number: Integer,
+        page_size: Integer,
         sort: Telnyx::Models::ConnectionListParams::sort
       }
       & Telnyx::Internal::Type::request_parameters
@@ -18,11 +19,13 @@ module Telnyx
         Telnyx::ConnectionListParams::Filter
       ) -> Telnyx::ConnectionListParams::Filter
 
-      attr_reader page: Telnyx::ConnectionListParams::Page?
+      attr_reader page_number: Integer?
 
-      def page=: (
-        Telnyx::ConnectionListParams::Page
-      ) -> Telnyx::ConnectionListParams::Page
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
 
       attr_reader sort: Telnyx::Models::ConnectionListParams::sort?
 
@@ -32,14 +35,16 @@ module Telnyx
 
       def initialize: (
         ?filter: Telnyx::ConnectionListParams::Filter,
-        ?page: Telnyx::ConnectionListParams::Page,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?sort: Telnyx::Models::ConnectionListParams::sort,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         filter: Telnyx::ConnectionListParams::Filter,
-        page: Telnyx::ConnectionListParams::Page,
+        page_number: Integer,
+        page_size: Integer,
         sort: Telnyx::Models::ConnectionListParams::sort,
         request_options: Telnyx::RequestOptions
       }
@@ -89,22 +94,6 @@ module Telnyx
 
           def to_hash: -> { contains: String }
         end
-      end
-
-      type page = { number: Integer, size: Integer }
-
-      class Page < Telnyx::Internal::Type::BaseModel
-        attr_reader number: Integer?
-
-        def number=: (Integer) -> Integer
-
-        attr_reader size: Integer?
-
-        def size=: (Integer) -> Integer
-
-        def initialize: (?number: Integer, ?size: Integer) -> void
-
-        def to_hash: -> { number: Integer, size: Integer }
       end
 
       type sort = :created_at | :connection_name | :active
