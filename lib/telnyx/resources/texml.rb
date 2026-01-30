@@ -6,9 +6,6 @@ module Telnyx
       # @return [Telnyx::Resources::Texml::Accounts]
       attr_reader :accounts
 
-      # @return [Telnyx::Resources::Texml::Calls]
-      attr_reader :calls
-
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::TexmlSecretsParams} for more details.
       #
@@ -46,7 +43,6 @@ module Telnyx
       def initialize(client:)
         @client = client
         @accounts = Telnyx::Resources::Texml::Accounts.new(client: client)
-        @calls = Telnyx::Resources::Texml::Calls.new(client: client)
       end
     end
   end

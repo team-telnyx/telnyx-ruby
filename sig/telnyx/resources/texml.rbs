@@ -3,8 +3,6 @@ module Telnyx
     class Texml
       attr_reader accounts: Telnyx::Resources::Texml::Accounts
 
-      attr_reader calls: Telnyx::Resources::Texml::Calls
-
       def secrets: (
         name: String,
         value: String,

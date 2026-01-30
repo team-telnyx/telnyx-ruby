@@ -6,9 +6,6 @@ module Telnyx
       sig { returns(Telnyx::Resources::Texml::Accounts) }
       attr_reader :accounts
 
-      sig { returns(Telnyx::Resources::Texml::Calls) }
-      attr_reader :calls
-
       # Create a TeXML secret which can be later used as a Dynamic Parameter for TeXML
       # when using Mustache Templates in your TeXML. In your TeXML you will be able to
       # use your secret name, and this name will be replaced by the actual secret value
