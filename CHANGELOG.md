@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.7.2 (2026-01-30)
+
+Full Changelog: [v5.7.1...v5.7.2](https://github.com/team-telnyx/telnyx-ruby/compare/v5.7.1...v5.7.2)
+
+### Bug Fixes
+
+* use PaginationMeta schema for ListFaxesResponse.meta ([584eea3](https://github.com/team-telnyx/telnyx-ruby/commit/584eea35132ca54d84b21159bd28b30faf9d5655))
+
 ## 5.7.1 (2026-01-30)
 
 Full Changelog: [v5.7.0...v5.7.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.7.0...v5.7.1)
