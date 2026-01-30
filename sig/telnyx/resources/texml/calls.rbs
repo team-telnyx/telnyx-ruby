@@ -2,55 +2,6 @@ module Telnyx
   module Resources
     class Texml
       class Calls
-        def update: (
-          String call_sid,
-          ?fallback_method: Telnyx::Models::Texml::Accounts::UpdateCall::fallback_method,
-          ?fallback_url: String,
-          ?method_: Telnyx::Models::Texml::Accounts::UpdateCall::method_,
-          ?status: String,
-          ?status_callback: String,
-          ?status_callback_method: Telnyx::Models::Texml::Accounts::UpdateCall::status_callback_method,
-          ?texml: String,
-          ?url: String,
-          ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Texml::CallUpdateResponse
-
-        def initiate: (
-          String application_id,
-          from: String,
-          to: String,
-          ?async_amd: bool,
-          ?async_amd_status_callback: String,
-          ?async_amd_status_callback_method: Telnyx::Models::Texml::CallInitiateParams::async_amd_status_callback_method,
-          ?caller_id: String,
-          ?cancel_playback_on_detect_message_end: bool,
-          ?cancel_playback_on_machine_detection: bool,
-          ?detection_mode: Telnyx::Models::Texml::CallInitiateParams::detection_mode,
-          ?fallback_url: String,
-          ?machine_detection: Telnyx::Models::Texml::CallInitiateParams::machine_detection,
-          ?machine_detection_silence_timeout: Integer,
-          ?machine_detection_speech_end_threshold: Integer,
-          ?machine_detection_speech_threshold: Integer,
-          ?machine_detection_timeout: Integer,
-          ?preferred_codecs: String,
-          ?record: bool,
-          ?recording_channels: Telnyx::Models::Texml::CallInitiateParams::recording_channels,
-          ?recording_status_callback: String,
-          ?recording_status_callback_event: String,
-          ?recording_status_callback_method: Telnyx::Models::Texml::CallInitiateParams::recording_status_callback_method,
-          ?recording_timeout: Integer,
-          ?recording_track: Telnyx::Models::Texml::CallInitiateParams::recording_track,
-          ?sip_auth_password: String,
-          ?sip_auth_username: String,
-          ?status_callback: String,
-          ?status_callback_event: Telnyx::Models::Texml::CallInitiateParams::status_callback_event,
-          ?status_callback_method: Telnyx::Models::Texml::CallInitiateParams::status_callback_method,
-          ?trim: Telnyx::Models::Texml::CallInitiateParams::trim,
-          ?url: String,
-          ?url_method: Telnyx::Models::Texml::CallInitiateParams::url_method,
-          ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Texml::CallInitiateResponse
-
         def initialize: (client: Telnyx::Client) -> void
       end
     end

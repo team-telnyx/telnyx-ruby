@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.7.1 (2026-01-30)
+
+Full Changelog: [v5.7.0...v5.7.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.7.0...v5.7.1)
+
+### Bug Fixes
+
+* remove deprecated TeXML API endpoints from OpenAPI spec ([53481a2](https://github.com/team-telnyx/telnyx-ruby/commit/53481a2b89a0dc63ca5877421d13d62855478e9b))
+
 ## 5.7.0 (2026-01-29)
 
 Full Changelog: [v5.6.0...v5.7.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.6.0...v5.7.0)

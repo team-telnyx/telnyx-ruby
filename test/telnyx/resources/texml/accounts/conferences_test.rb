@@ -97,6 +97,7 @@ class Telnyx::Test::Resources::Texml::Accounts::ConferencesTest < Telnyx::Test::
         next_page_uri: String | nil,
         page: Integer | nil,
         page_size: Integer | nil,
+        participants: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]) | nil,
         recordings: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording]) | nil,
         start: Integer | nil,
         uri: String | nil

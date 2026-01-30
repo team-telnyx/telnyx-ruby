@@ -5,7 +5,8 @@ module Telnyx
     class PrivateWirelessGatewayStatus < Telnyx::Internal::Type::BaseModel
       response_only do
         # @!attribute error_code
-        #   This attribute is an [error code](https://developers.telnyx.com/api/errors)
+        #   This attribute is an
+        #   [error code](https://developers.telnyx.com/development/api-fundamentals/api-errors)
         #   related to the failure reason.
         #
         #   @return [String, nil]
@@ -37,7 +38,7 @@ module Telnyx
       #
       #   The current status or failure details of the Private Wireless Gateway.
       #
-      #   @param error_code [String, nil] This attribute is an [error code](https://developers.telnyx.com/api/errors) rela
+      #   @param error_code [String, nil] This attribute is an [error code](https://developers.telnyx.com/development/api-
       #
       #   @param error_description [String, nil] This attribute provides a human-readable explanation of why a failure happened.
       #
