@@ -2,174 +2,227 @@ module Telnyx
   module Models
     type fax_sending_started_webhook_event =
       {
-        id: String,
-        event_type: Telnyx::Models::FaxSendingStartedWebhookEvent::event_type,
-        payload: Telnyx::FaxSendingStartedWebhookEvent::Payload,
-        record_type: Telnyx::Models::FaxSendingStartedWebhookEvent::record_type
+        data: Telnyx::FaxSendingStartedWebhookEvent::Data,
+        meta: Telnyx::FaxSendingStartedWebhookEvent::Meta
       }
 
     class FaxSendingStartedWebhookEvent < Telnyx::Internal::Type::BaseModel
-      attr_reader id: String?
+      attr_reader data: Telnyx::FaxSendingStartedWebhookEvent::Data?
 
-      def id=: (String) -> String
+      def data=: (
+        Telnyx::FaxSendingStartedWebhookEvent::Data
+      ) -> Telnyx::FaxSendingStartedWebhookEvent::Data
 
-      attr_reader event_type: Telnyx::Models::FaxSendingStartedWebhookEvent::event_type?
+      attr_reader meta: Telnyx::FaxSendingStartedWebhookEvent::Meta?
 
-      def event_type=: (
-        Telnyx::Models::FaxSendingStartedWebhookEvent::event_type
-      ) -> Telnyx::Models::FaxSendingStartedWebhookEvent::event_type
-
-      attr_reader payload: Telnyx::FaxSendingStartedWebhookEvent::Payload?
-
-      def payload=: (
-        Telnyx::FaxSendingStartedWebhookEvent::Payload
-      ) -> Telnyx::FaxSendingStartedWebhookEvent::Payload
-
-      attr_reader record_type: Telnyx::Models::FaxSendingStartedWebhookEvent::record_type?
-
-      def record_type=: (
-        Telnyx::Models::FaxSendingStartedWebhookEvent::record_type
-      ) -> Telnyx::Models::FaxSendingStartedWebhookEvent::record_type
+      def meta=: (
+        Telnyx::FaxSendingStartedWebhookEvent::Meta
+      ) -> Telnyx::FaxSendingStartedWebhookEvent::Meta
 
       def initialize: (
-        ?id: String,
-        ?event_type: Telnyx::Models::FaxSendingStartedWebhookEvent::event_type,
-        ?payload: Telnyx::FaxSendingStartedWebhookEvent::Payload,
-        ?record_type: Telnyx::Models::FaxSendingStartedWebhookEvent::record_type
+        ?data: Telnyx::FaxSendingStartedWebhookEvent::Data,
+        ?meta: Telnyx::FaxSendingStartedWebhookEvent::Meta
       ) -> void
 
       def to_hash: -> {
-        id: String,
-        event_type: Telnyx::Models::FaxSendingStartedWebhookEvent::event_type,
-        payload: Telnyx::FaxSendingStartedWebhookEvent::Payload,
-        record_type: Telnyx::Models::FaxSendingStartedWebhookEvent::record_type
+        data: Telnyx::FaxSendingStartedWebhookEvent::Data,
+        meta: Telnyx::FaxSendingStartedWebhookEvent::Meta
       }
 
-      type event_type = :"fax.sending.started"
-
-      module EventType
-        extend Telnyx::Internal::Type::Enum
-
-        FAX_SENDING_STARTED: :"fax.sending.started"
-
-        def self?.values: -> ::Array[Telnyx::Models::FaxSendingStartedWebhookEvent::event_type]
-      end
-
-      type payload =
+      type data =
         {
-          client_state: String,
-          connection_id: String,
-          direction: Telnyx::Models::FaxSendingStartedWebhookEvent::Payload::direction,
-          fax_id: String,
-          from: String,
-          media_name: String,
-          original_media_url: String,
-          status: Telnyx::Models::FaxSendingStartedWebhookEvent::Payload::status,
-          to: String,
-          user_id: String
+          id: String,
+          event_type: Telnyx::Models::FaxSendingStartedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::FaxSendingStartedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::FaxSendingStartedWebhookEvent::Data::record_type
         }
 
-      class Payload < Telnyx::Internal::Type::BaseModel
-        attr_reader client_state: String?
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
 
-        def client_state=: (String) -> String
+        def id=: (String) -> String
 
-        attr_reader connection_id: String?
+        attr_reader event_type: Telnyx::Models::FaxSendingStartedWebhookEvent::Data::event_type?
 
-        def connection_id=: (String) -> String
+        def event_type=: (
+          Telnyx::Models::FaxSendingStartedWebhookEvent::Data::event_type
+        ) -> Telnyx::Models::FaxSendingStartedWebhookEvent::Data::event_type
 
-        attr_reader direction: Telnyx::Models::FaxSendingStartedWebhookEvent::Payload::direction?
+        attr_reader occurred_at: Time?
 
-        def direction=: (
-          Telnyx::Models::FaxSendingStartedWebhookEvent::Payload::direction
-        ) -> Telnyx::Models::FaxSendingStartedWebhookEvent::Payload::direction
+        def occurred_at=: (Time) -> Time
 
-        attr_reader fax_id: String?
+        attr_reader payload: Telnyx::FaxSendingStartedWebhookEvent::Data::Payload?
 
-        def fax_id=: (String) -> String
+        def payload=: (
+          Telnyx::FaxSendingStartedWebhookEvent::Data::Payload
+        ) -> Telnyx::FaxSendingStartedWebhookEvent::Data::Payload
 
-        attr_reader from: String?
+        attr_reader record_type: Telnyx::Models::FaxSendingStartedWebhookEvent::Data::record_type?
 
-        def from=: (String) -> String
-
-        attr_reader media_name: String?
-
-        def media_name=: (String) -> String
-
-        attr_reader original_media_url: String?
-
-        def original_media_url=: (String) -> String
-
-        attr_reader status: Telnyx::Models::FaxSendingStartedWebhookEvent::Payload::status?
-
-        def status=: (
-          Telnyx::Models::FaxSendingStartedWebhookEvent::Payload::status
-        ) -> Telnyx::Models::FaxSendingStartedWebhookEvent::Payload::status
-
-        attr_reader to: String?
-
-        def to=: (String) -> String
-
-        attr_reader user_id: String?
-
-        def user_id=: (String) -> String
+        def record_type=: (
+          Telnyx::Models::FaxSendingStartedWebhookEvent::Data::record_type
+        ) -> Telnyx::Models::FaxSendingStartedWebhookEvent::Data::record_type
 
         def initialize: (
-          ?client_state: String,
-          ?connection_id: String,
-          ?direction: Telnyx::Models::FaxSendingStartedWebhookEvent::Payload::direction,
-          ?fax_id: String,
-          ?from: String,
-          ?media_name: String,
-          ?original_media_url: String,
-          ?status: Telnyx::Models::FaxSendingStartedWebhookEvent::Payload::status,
-          ?to: String,
-          ?user_id: String
+          ?id: String,
+          ?event_type: Telnyx::Models::FaxSendingStartedWebhookEvent::Data::event_type,
+          ?occurred_at: Time,
+          ?payload: Telnyx::FaxSendingStartedWebhookEvent::Data::Payload,
+          ?record_type: Telnyx::Models::FaxSendingStartedWebhookEvent::Data::record_type
         ) -> void
 
         def to_hash: -> {
-          client_state: String,
-          connection_id: String,
-          direction: Telnyx::Models::FaxSendingStartedWebhookEvent::Payload::direction,
-          fax_id: String,
-          from: String,
-          media_name: String,
-          original_media_url: String,
-          status: Telnyx::Models::FaxSendingStartedWebhookEvent::Payload::status,
-          to: String,
-          user_id: String
+          id: String,
+          event_type: Telnyx::Models::FaxSendingStartedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::FaxSendingStartedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::FaxSendingStartedWebhookEvent::Data::record_type
         }
 
-        type direction = :inbound | :outbound
+        type event_type = :"fax.sending.started"
 
-        module Direction
+        module EventType
           extend Telnyx::Internal::Type::Enum
 
-          INBOUND: :inbound
-          OUTBOUND: :outbound
+          FAX_SENDING_STARTED: :"fax.sending.started"
 
-          def self?.values: -> ::Array[Telnyx::Models::FaxSendingStartedWebhookEvent::Payload::direction]
+          def self?.values: -> ::Array[Telnyx::Models::FaxSendingStartedWebhookEvent::Data::event_type]
         end
 
-        type status = :sending
+        type payload =
+          {
+            client_state: String,
+            connection_id: String,
+            direction: Telnyx::Models::FaxSendingStartedWebhookEvent::Data::Payload::direction,
+            fax_id: String,
+            from: String,
+            media_name: String,
+            original_media_url: String,
+            status: Telnyx::Models::FaxSendingStartedWebhookEvent::Data::Payload::status,
+            to: String,
+            user_id: String
+          }
 
-        module Status
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_reader client_state: String?
+
+          def client_state=: (String) -> String
+
+          attr_reader connection_id: String?
+
+          def connection_id=: (String) -> String
+
+          attr_reader direction: Telnyx::Models::FaxSendingStartedWebhookEvent::Data::Payload::direction?
+
+          def direction=: (
+            Telnyx::Models::FaxSendingStartedWebhookEvent::Data::Payload::direction
+          ) -> Telnyx::Models::FaxSendingStartedWebhookEvent::Data::Payload::direction
+
+          attr_reader fax_id: String?
+
+          def fax_id=: (String) -> String
+
+          attr_reader from: String?
+
+          def from=: (String) -> String
+
+          attr_reader media_name: String?
+
+          def media_name=: (String) -> String
+
+          attr_reader original_media_url: String?
+
+          def original_media_url=: (String) -> String
+
+          attr_reader status: Telnyx::Models::FaxSendingStartedWebhookEvent::Data::Payload::status?
+
+          def status=: (
+            Telnyx::Models::FaxSendingStartedWebhookEvent::Data::Payload::status
+          ) -> Telnyx::Models::FaxSendingStartedWebhookEvent::Data::Payload::status
+
+          attr_reader to: String?
+
+          def to=: (String) -> String
+
+          attr_reader user_id: String?
+
+          def user_id=: (String) -> String
+
+          def initialize: (
+            ?client_state: String,
+            ?connection_id: String,
+            ?direction: Telnyx::Models::FaxSendingStartedWebhookEvent::Data::Payload::direction,
+            ?fax_id: String,
+            ?from: String,
+            ?media_name: String,
+            ?original_media_url: String,
+            ?status: Telnyx::Models::FaxSendingStartedWebhookEvent::Data::Payload::status,
+            ?to: String,
+            ?user_id: String
+          ) -> void
+
+          def to_hash: -> {
+            client_state: String,
+            connection_id: String,
+            direction: Telnyx::Models::FaxSendingStartedWebhookEvent::Data::Payload::direction,
+            fax_id: String,
+            from: String,
+            media_name: String,
+            original_media_url: String,
+            status: Telnyx::Models::FaxSendingStartedWebhookEvent::Data::Payload::status,
+            to: String,
+            user_id: String
+          }
+
+          type direction = :inbound | :outbound
+
+          module Direction
+            extend Telnyx::Internal::Type::Enum
+
+            INBOUND: :inbound
+            OUTBOUND: :outbound
+
+            def self?.values: -> ::Array[Telnyx::Models::FaxSendingStartedWebhookEvent::Data::Payload::direction]
+          end
+
+          type status = :sending
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            SENDING: :sending
+
+            def self?.values: -> ::Array[Telnyx::Models::FaxSendingStartedWebhookEvent::Data::Payload::status]
+          end
+        end
+
+        type record_type = :event
+
+        module RecordType
           extend Telnyx::Internal::Type::Enum
 
-          SENDING: :sending
+          EVENT: :event
 
-          def self?.values: -> ::Array[Telnyx::Models::FaxSendingStartedWebhookEvent::Payload::status]
+          def self?.values: -> ::Array[Telnyx::Models::FaxSendingStartedWebhookEvent::Data::record_type]
         end
       end
 
-      type record_type = :event
+      type meta = { attempt: Integer, delivered_to: String }
 
-      module RecordType
-        extend Telnyx::Internal::Type::Enum
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_reader attempt: Integer?
 
-        EVENT: :event
+        def attempt=: (Integer) -> Integer
 
-        def self?.values: -> ::Array[Telnyx::Models::FaxSendingStartedWebhookEvent::record_type]
+        attr_reader delivered_to: String?
+
+        def delivered_to=: (String) -> String
+
+        def initialize: (?attempt: Integer, ?delivered_to: String) -> void
+
+        def to_hash: -> { attempt: Integer, delivered_to: String }
       end
     end
   end

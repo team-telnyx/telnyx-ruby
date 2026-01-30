@@ -1,16 +1,35 @@
 module Telnyx
   module Models
     module Faxes
-      type action_refresh_response = { result: String }
+      type action_refresh_response =
+        { data: Telnyx::Models::Faxes::ActionRefreshResponse::Data }
 
       class ActionRefreshResponse < Telnyx::Internal::Type::BaseModel
-        attr_reader result: String?
+        attr_reader data: Telnyx::Models::Faxes::ActionRefreshResponse::Data?
 
-        def result=: (String) -> String
+        def data=: (
+          Telnyx::Models::Faxes::ActionRefreshResponse::Data
+        ) -> Telnyx::Models::Faxes::ActionRefreshResponse::Data
 
-        def initialize: (?result: String) -> void
+        def initialize: (
+          ?data: Telnyx::Models::Faxes::ActionRefreshResponse::Data
+        ) -> void
 
-        def to_hash: -> { result: String }
+        def to_hash: -> {
+          data: Telnyx::Models::Faxes::ActionRefreshResponse::Data
+        }
+
+        type data = { result: String }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader result: String?
+
+          def result=: (String) -> String
+
+          def initialize: (?result: String) -> void
+
+          def to_hash: -> { result: String }
+        end
       end
     end
   end

@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Faxes::ActionsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        result: String | nil
+        data: Telnyx::Models::Faxes::ActionCancelResponse::Data | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::Faxes::ActionsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        result: String | nil
+        data: Telnyx::Models::Faxes::ActionRefreshResponse::Data | nil
       }
     end
   end
