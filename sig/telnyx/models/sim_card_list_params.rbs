@@ -66,6 +66,7 @@ module Telnyx
       type filter =
         {
           iccid: String,
+          msisdn: String,
           status: ::Array[Telnyx::Models::SimCardListParams::Filter::status],
           tags: ::Array[String]
         }
@@ -74,6 +75,10 @@ module Telnyx
         attr_reader iccid: String?
 
         def iccid=: (String) -> String
+
+        attr_reader msisdn: String?
+
+        def msisdn=: (String) -> String
 
         attr_reader status: ::Array[Telnyx::Models::SimCardListParams::Filter::status]?
 
@@ -87,12 +92,14 @@ module Telnyx
 
         def initialize: (
           ?iccid: String,
+          ?msisdn: String,
           ?status: ::Array[Telnyx::Models::SimCardListParams::Filter::status],
           ?tags: ::Array[String]
         ) -> void
 
         def to_hash: -> {
           iccid: String,
+          msisdn: String,
           status: ::Array[Telnyx::Models::SimCardListParams::Filter::status],
           tags: ::Array[String]
         }

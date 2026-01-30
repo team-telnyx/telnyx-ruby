@@ -196,6 +196,13 @@ module Telnyx
               sig { params(coaching_call_sid_legacy: String).void }
               attr_writer :coaching_call_sid_legacy
 
+              # The unique identifier for the conference.
+              sig { returns(T.nilable(String)) }
+              attr_reader :conference_sid
+
+              sig { params(conference_sid: String).void }
+              attr_writer :conference_sid
+
               # The timestamp of when the resource was created.
               sig { returns(T.nilable(String)) }
               attr_reader :date_created
@@ -265,6 +272,7 @@ module Telnyx
                   coaching: T::Boolean,
                   coaching_call_sid: String,
                   coaching_call_sid_legacy: String,
+                  conference_sid: String,
                   date_created: String,
                   date_updated: String,
                   end_conference_on_exit: T::Boolean,
@@ -290,6 +298,8 @@ module Telnyx
                 coaching_call_sid: nil,
                 # The identifier of the coached participant's call.
                 coaching_call_sid_legacy: nil,
+                # The unique identifier for the conference.
+                conference_sid: nil,
                 # The timestamp of when the resource was created.
                 date_created: nil,
                 # The timestamp of when the resource was last updated.
@@ -317,6 +327,7 @@ module Telnyx
                     coaching: T::Boolean,
                     coaching_call_sid: String,
                     coaching_call_sid_legacy: String,
+                    conference_sid: String,
                     date_created: String,
                     date_updated: String,
                     end_conference_on_exit: T::Boolean,

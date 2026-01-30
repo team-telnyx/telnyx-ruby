@@ -31,6 +31,12 @@ module Telnyx
             #   @return [String, nil]
             optional :coaching_call_sid, String
 
+            # @!attribute conference_sid
+            #   The unique identifier for the conference.
+            #
+            #   @return [String, nil]
+            optional :conference_sid, String
+
             # @!attribute end_conference_on_exit
             #   Whether the conference ends when the participant leaves.
             #
@@ -62,7 +68,7 @@ module Telnyx
             #   @return [String, nil]
             optional :uri, String
 
-            # @!method initialize(account_sid: nil, call_sid: nil, coaching: nil, coaching_call_sid: nil, end_conference_on_exit: nil, hold: nil, muted: nil, status: nil, uri: nil)
+            # @!method initialize(account_sid: nil, call_sid: nil, coaching: nil, coaching_call_sid: nil, conference_sid: nil, end_conference_on_exit: nil, hold: nil, muted: nil, status: nil, uri: nil)
             #   @param account_sid [String] The id of the account the resource belongs to.
             #
             #   @param call_sid [String] The identifier of this participant's call.
@@ -70,6 +76,8 @@ module Telnyx
             #   @param coaching [Boolean] Whether the participant is coaching another call.
             #
             #   @param coaching_call_sid [String] The identifier of the coached participant's call.
+            #
+            #   @param conference_sid [String] The unique identifier for the conference.
             #
             #   @param end_conference_on_exit [Boolean] Whether the conference ends when the participant leaves.
             #

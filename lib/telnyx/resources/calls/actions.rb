@@ -1037,9 +1037,9 @@ module Telnyx
         #
         # @param transcription [Boolean] Enable post recording transcription. The default value is false.
         #
-        # @param transcription_engine [String] Engine to use for speech recognition. `A` - `Google`
+        # @param transcription_engine [Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::TranscriptionEngine] Engine to use for speech recognition. `A` - `Google`, `B` - `Telnyx`, `deepgram/
         #
-        # @param transcription_language [Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::TranscriptionLanguage] Language to use for speech recognition
+        # @param transcription_language [Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::TranscriptionLanguage]
         #
         # @param transcription_max_speaker_count [Integer] Defines maximum number of speakers in the conversation. Applies to `google` engi
         #

@@ -48,6 +48,13 @@ module Telnyx
           sig { params(page_size: Integer).void }
           attr_writer :page_size
 
+          # List of participant resources.
+          sig { returns(T.nilable(T::Array[T.anything])) }
+          attr_reader :participants
+
+          sig { params(participants: T::Array[T.anything]).void }
+          attr_writer :participants
+
           sig do
             returns(
               T.nilable(
@@ -90,6 +97,7 @@ module Telnyx
               next_page_uri: String,
               page: Integer,
               page_size: Integer,
+              participants: T::Array[T.anything],
               recordings:
                 T::Array[
                   Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording::OrHash
@@ -109,6 +117,8 @@ module Telnyx
             page: nil,
             # The number of items on the page
             page_size: nil,
+            # List of participant resources.
+            participants: nil,
             recordings: nil,
             # The number of the first element on the page, zero-indexed.
             start: nil,
@@ -125,6 +135,7 @@ module Telnyx
                 next_page_uri: String,
                 page: Integer,
                 page_size: Integer,
+                participants: T::Array[T.anything],
                 recordings:
                   T::Array[
                     Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording

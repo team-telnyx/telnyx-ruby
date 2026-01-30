@@ -9,6 +9,7 @@ module Telnyx
               call_sid: String,
               coaching: bool,
               coaching_call_sid: String,
+              conference_sid: String,
               end_conference_on_exit: bool,
               hold: bool,
               muted: bool,
@@ -32,6 +33,10 @@ module Telnyx
             attr_reader coaching_call_sid: String?
 
             def coaching_call_sid=: (String) -> String
+
+            attr_reader conference_sid: String?
+
+            def conference_sid=: (String) -> String
 
             attr_reader end_conference_on_exit: bool?
 
@@ -60,6 +65,7 @@ module Telnyx
               ?call_sid: String,
               ?coaching: bool,
               ?coaching_call_sid: String,
+              ?conference_sid: String,
               ?end_conference_on_exit: bool,
               ?hold: bool,
               ?muted: bool,
@@ -72,6 +78,7 @@ module Telnyx
               call_sid: String,
               coaching: bool,
               coaching_call_sid: String,
+              conference_sid: String,
               end_conference_on_exit: bool,
               hold: bool,
               muted: bool,

@@ -42,6 +42,13 @@ module Telnyx
             sig { params(coaching_call_sid: String).void }
             attr_writer :coaching_call_sid
 
+            # The unique identifier for the conference.
+            sig { returns(T.nilable(String)) }
+            attr_reader :conference_sid
+
+            sig { params(conference_sid: String).void }
+            attr_writer :conference_sid
+
             # Whether the conference ends when the participant leaves.
             sig { returns(T.nilable(T::Boolean)) }
             attr_reader :end_conference_on_exit
@@ -94,6 +101,7 @@ module Telnyx
                 call_sid: String,
                 coaching: T::Boolean,
                 coaching_call_sid: String,
+                conference_sid: String,
                 end_conference_on_exit: T::Boolean,
                 hold: T::Boolean,
                 muted: T::Boolean,
@@ -111,6 +119,8 @@ module Telnyx
               coaching: nil,
               # The identifier of the coached participant's call.
               coaching_call_sid: nil,
+              # The unique identifier for the conference.
+              conference_sid: nil,
               # Whether the conference ends when the participant leaves.
               end_conference_on_exit: nil,
               # Whether the participant is on hold.
@@ -131,6 +141,7 @@ module Telnyx
                   call_sid: String,
                   coaching: T::Boolean,
                   coaching_call_sid: String,
+                  conference_sid: String,
                   end_conference_on_exit: T::Boolean,
                   hold: T::Boolean,
                   muted: T::Boolean,

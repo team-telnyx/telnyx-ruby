@@ -6,6 +6,8 @@ module Telnyx
           model: Telnyx::Models::AI::AudioTranscribeParams::model,
           file: Telnyx::Internal::file_input,
           file_url: String,
+          language: String,
+          model_config: ::Hash[Symbol, top],
           response_format: Telnyx::Models::AI::AudioTranscribeParams::response_format,
           timestamp_granularities: Telnyx::Models::AI::AudioTranscribeParams::timestamp_granularities
         }
@@ -27,6 +29,14 @@ module Telnyx
 
         def file_url=: (String) -> String
 
+        attr_reader language: String?
+
+        def language=: (String) -> String
+
+        attr_reader model_config: ::Hash[Symbol, top]?
+
+        def model_config=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
         attr_reader response_format: Telnyx::Models::AI::AudioTranscribeParams::response_format?
 
         def response_format=: (
@@ -43,6 +53,8 @@ module Telnyx
           model: Telnyx::Models::AI::AudioTranscribeParams::model,
           ?file: Telnyx::Internal::file_input,
           ?file_url: String,
+          ?language: String,
+          ?model_config: ::Hash[Symbol, top],
           ?response_format: Telnyx::Models::AI::AudioTranscribeParams::response_format,
           ?timestamp_granularities: Telnyx::Models::AI::AudioTranscribeParams::timestamp_granularities,
           ?request_options: Telnyx::request_opts
@@ -52,19 +64,24 @@ module Telnyx
           model: Telnyx::Models::AI::AudioTranscribeParams::model,
           file: Telnyx::Internal::file_input,
           file_url: String,
+          language: String,
+          model_config: ::Hash[Symbol, top],
           response_format: Telnyx::Models::AI::AudioTranscribeParams::response_format,
           timestamp_granularities: Telnyx::Models::AI::AudioTranscribeParams::timestamp_granularities,
           request_options: Telnyx::RequestOptions
         }
 
         type model =
-          :"distil-whisper/distil-large-v2" | :"openai/whisper-large-v3-turbo"
+          :"distil-whisper/distil-large-v2"
+          | :"openai/whisper-large-v3-turbo"
+          | :"deepgram/nova-3"
 
         module Model
           extend Telnyx::Internal::Type::Enum
 
           DISTIL_WHISPER_DISTIL_LARGE_V2: :"distil-whisper/distil-large-v2"
           OPENAI_WHISPER_LARGE_V3_TURBO: :"openai/whisper-large-v3-turbo"
+          DEEPGRAM_NOVA_3: :"deepgram/nova-3"
 
           def self?.values: -> ::Array[Telnyx::Models::AI::AudioTranscribeParams::model]
         end

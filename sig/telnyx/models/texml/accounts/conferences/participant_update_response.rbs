@@ -12,6 +12,7 @@ module Telnyx
               coaching: bool,
               coaching_call_sid: String,
               coaching_call_sid_legacy: String,
+              conference_sid: String,
               date_created: String,
               date_updated: String,
               end_conference_on_exit: bool,
@@ -49,6 +50,10 @@ module Telnyx
             attr_reader coaching_call_sid_legacy: String?
 
             def coaching_call_sid_legacy=: (String) -> String
+
+            attr_reader conference_sid: String?
+
+            def conference_sid=: (String) -> String
 
             attr_reader date_created: String?
 
@@ -88,6 +93,7 @@ module Telnyx
               ?coaching: bool,
               ?coaching_call_sid: String,
               ?coaching_call_sid_legacy: String,
+              ?conference_sid: String,
               ?date_created: String,
               ?date_updated: String,
               ?end_conference_on_exit: bool,
@@ -105,6 +111,7 @@ module Telnyx
               coaching: bool,
               coaching_call_sid: String,
               coaching_call_sid_legacy: String,
+              conference_sid: String,
               date_created: String,
               date_updated: String,
               end_conference_on_exit: bool,
