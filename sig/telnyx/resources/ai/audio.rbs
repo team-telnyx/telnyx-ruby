@@ -6,6 +6,8 @@ module Telnyx
           model: Telnyx::Models::AI::AudioTranscribeParams::model,
           ?file: Telnyx::Internal::file_input,
           ?file_url: String,
+          ?language: String,
+          ?model_config: ::Hash[Symbol, top],
           ?response_format: Telnyx::Models::AI::AudioTranscribeParams::response_format,
           ?timestamp_granularities: Telnyx::Models::AI::AudioTranscribeParams::timestamp_granularities,
           ?request_options: Telnyx::request_opts

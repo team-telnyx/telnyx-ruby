@@ -14,13 +14,15 @@ module Telnyx
 
         # ID of the model to use. `distil-whisper/distil-large-v2` is lower latency but
         # English-only. `openai/whisper-large-v3-turbo` is multi-lingual but slightly
-        # higher latency.
+        # higher latency. `deepgram/nova-3` supports English variants (en, en-US, en-GB,
+        # en-AU, en-NZ, en-IN) and only accepts mp3/wav files.
         sig { returns(Telnyx::AI::AudioTranscribeParams::Model::OrSymbol) }
         attr_accessor :model
 
         # The audio file object to transcribe, in one of these formats: flac, mp3, mp4,
         # mpeg, mpga, m4a, ogg, wav, or webm. File uploads are limited to 100 MB. Cannot
-        # be used together with `file_url`
+        # be used together with `file_url`. Note: `deepgram/nova-3` only supports mp3 and
+        # wav formats.
         sig { returns(T.nilable(Telnyx::Internal::FileInput)) }
         attr_reader :file
 
@@ -29,12 +31,33 @@ module Telnyx
 
         # Link to audio file in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a,
         # ogg, wav, or webm. Support for hosted files is limited to 100MB. Cannot be used
-        # together with `file`
+        # together with `file`. Note: `deepgram/nova-3` only supports mp3 and wav formats.
         sig { returns(T.nilable(String)) }
         attr_reader :file_url
 
         sig { params(file_url: String).void }
         attr_writer :file_url
+
+        # The language of the audio to be transcribed. For `deepgram/nova-3`, only English
+        # variants are supported: `en`, `en-US`, `en-GB`, `en-AU`, `en-NZ`, `en-IN`. For
+        # `openai/whisper-large-v3-turbo`, supports multiple languages.
+        # `distil-whisper/distil-large-v2` does not support language parameter.
+        sig { returns(T.nilable(String)) }
+        attr_reader :language
+
+        sig { params(language: String).void }
+        attr_writer :language
+
+        # Additional model-specific configuration parameters. Only allowed with
+        # `deepgram/nova-3` model. Can include Deepgram-specific options such as
+        # `smart_format`, `punctuate`, `diarize`, `utterance`, `numerals`, and `language`.
+        # If `language` is provided both as a top-level parameter and in `model_config`,
+        # the top-level parameter takes precedence.
+        sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+        attr_reader :model_config
+
+        sig { params(model_config: T::Hash[Symbol, T.anything]).void }
+        attr_writer :model_config
 
         # The format of the transcript output. Use `verbose_json` to take advantage of
         # timestamps.
@@ -80,6 +103,8 @@ module Telnyx
             model: Telnyx::AI::AudioTranscribeParams::Model::OrSymbol,
             file: Telnyx::Internal::FileInput,
             file_url: String,
+            language: String,
+            model_config: T::Hash[Symbol, T.anything],
             response_format:
               Telnyx::AI::AudioTranscribeParams::ResponseFormat::OrSymbol,
             timestamp_granularities:
@@ -90,16 +115,29 @@ module Telnyx
         def self.new(
           # ID of the model to use. `distil-whisper/distil-large-v2` is lower latency but
           # English-only. `openai/whisper-large-v3-turbo` is multi-lingual but slightly
-          # higher latency.
+          # higher latency. `deepgram/nova-3` supports English variants (en, en-US, en-GB,
+          # en-AU, en-NZ, en-IN) and only accepts mp3/wav files.
           model:,
           # The audio file object to transcribe, in one of these formats: flac, mp3, mp4,
           # mpeg, mpga, m4a, ogg, wav, or webm. File uploads are limited to 100 MB. Cannot
-          # be used together with `file_url`
+          # be used together with `file_url`. Note: `deepgram/nova-3` only supports mp3 and
+          # wav formats.
           file: nil,
           # Link to audio file in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a,
           # ogg, wav, or webm. Support for hosted files is limited to 100MB. Cannot be used
-          # together with `file`
+          # together with `file`. Note: `deepgram/nova-3` only supports mp3 and wav formats.
           file_url: nil,
+          # The language of the audio to be transcribed. For `deepgram/nova-3`, only English
+          # variants are supported: `en`, `en-US`, `en-GB`, `en-AU`, `en-NZ`, `en-IN`. For
+          # `openai/whisper-large-v3-turbo`, supports multiple languages.
+          # `distil-whisper/distil-large-v2` does not support language parameter.
+          language: nil,
+          # Additional model-specific configuration parameters. Only allowed with
+          # `deepgram/nova-3` model. Can include Deepgram-specific options such as
+          # `smart_format`, `punctuate`, `diarize`, `utterance`, `numerals`, and `language`.
+          # If `language` is provided both as a top-level parameter and in `model_config`,
+          # the top-level parameter takes precedence.
+          model_config: nil,
           # The format of the transcript output. Use `verbose_json` to take advantage of
           # timestamps.
           response_format: nil,
@@ -117,6 +155,8 @@ module Telnyx
               model: Telnyx::AI::AudioTranscribeParams::Model::OrSymbol,
               file: Telnyx::Internal::FileInput,
               file_url: String,
+              language: String,
+              model_config: T::Hash[Symbol, T.anything],
               response_format:
                 Telnyx::AI::AudioTranscribeParams::ResponseFormat::OrSymbol,
               timestamp_granularities:
@@ -130,7 +170,8 @@ module Telnyx
 
         # ID of the model to use. `distil-whisper/distil-large-v2` is lower latency but
         # English-only. `openai/whisper-large-v3-turbo` is multi-lingual but slightly
-        # higher latency.
+        # higher latency. `deepgram/nova-3` supports English variants (en, en-US, en-GB,
+        # en-AU, en-NZ, en-IN) and only accepts mp3/wav files.
         module Model
           extend Telnyx::Internal::Type::Enum
 
@@ -148,6 +189,11 @@ module Telnyx
           OPENAI_WHISPER_LARGE_V3_TURBO =
             T.let(
               :"openai/whisper-large-v3-turbo",
+              Telnyx::AI::AudioTranscribeParams::Model::TaggedSymbol
+            )
+          DEEPGRAM_NOVA_3 =
+            T.let(
+              :"deepgram/nova-3",
               Telnyx::AI::AudioTranscribeParams::Model::TaggedSymbol
             )
 

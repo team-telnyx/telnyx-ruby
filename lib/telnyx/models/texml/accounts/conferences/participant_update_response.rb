@@ -49,6 +49,12 @@ module Telnyx
             #   @return [String, nil]
             optional :coaching_call_sid_legacy, String
 
+            # @!attribute conference_sid
+            #   The unique identifier for the conference.
+            #
+            #   @return [String, nil]
+            optional :conference_sid, String
+
             # @!attribute date_created
             #   The timestamp of when the resource was created.
             #
@@ -92,7 +98,7 @@ module Telnyx
             #   @return [String, nil]
             optional :uri, String
 
-            # @!method initialize(account_sid: nil, api_version: nil, call_sid: nil, call_sid_legacy: nil, coaching: nil, coaching_call_sid: nil, coaching_call_sid_legacy: nil, date_created: nil, date_updated: nil, end_conference_on_exit: nil, hold: nil, muted: nil, status: nil, uri: nil)
+            # @!method initialize(account_sid: nil, api_version: nil, call_sid: nil, call_sid_legacy: nil, coaching: nil, coaching_call_sid: nil, coaching_call_sid_legacy: nil, conference_sid: nil, date_created: nil, date_updated: nil, end_conference_on_exit: nil, hold: nil, muted: nil, status: nil, uri: nil)
             #   @param account_sid [String] The id of the account the resource belongs to.
             #
             #   @param api_version [String] The version of the API that was used to make the request.
@@ -106,6 +112,8 @@ module Telnyx
             #   @param coaching_call_sid [String] The identifier of the coached participant's call.
             #
             #   @param coaching_call_sid_legacy [String] The identifier of the coached participant's call.
+            #
+            #   @param conference_sid [String] The unique identifier for the conference.
             #
             #   @param date_created [String] The timestamp of when the resource was created.
             #

@@ -36,6 +36,12 @@ module Telnyx
           #   @return [Integer, nil]
           optional :page_size, Integer
 
+          # @!attribute participants
+          #   List of participant resources.
+          #
+          #   @return [Array<Object>, nil]
+          optional :participants, Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]
+
           # @!attribute recordings
           #
           #   @return [Array<Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording>, nil]
@@ -54,7 +60,7 @@ module Telnyx
           #   @return [String, nil]
           optional :uri, String
 
-          # @!method initialize(end_: nil, first_page_uri: nil, next_page_uri: nil, page: nil, page_size: nil, recordings: nil, start: nil, uri: nil)
+          # @!method initialize(end_: nil, first_page_uri: nil, next_page_uri: nil, page: nil, page_size: nil, participants: nil, recordings: nil, start: nil, uri: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse} for more
           #   details.
@@ -68,6 +74,8 @@ module Telnyx
           #   @param page [Integer] Current page number, zero-indexed.
           #
           #   @param page_size [Integer] The number of items on the page
+          #
+          #   @param participants [Array<Object>] List of participant resources.
           #
           #   @param recordings [Array<Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording>]
           #
