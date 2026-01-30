@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.8.0 (2026-01-30)
+
+Full Changelog: [v5.7.2...v5.8.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.7.2...v5.8.0)
+
+### Features
+
+* **api:** manual updates ([1111796](https://github.com/team-telnyx/telnyx-ruby/commit/111179622c206624dc7c215d3010d8cb403e5149))
+
 ## 5.7.2 (2026-01-30)
 
 Full Changelog: [v5.7.1...v5.7.2](https://github.com/team-telnyx/telnyx-ruby/compare/v5.7.1...v5.7.2)
