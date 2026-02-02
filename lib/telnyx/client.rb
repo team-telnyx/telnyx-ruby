@@ -509,13 +509,7 @@ module Telnyx
       return {} unless @client_id && @client_secret
 
       path = Telnyx::Internal::Util.interpolate_path("https://api.telnyx.com/v2/oauth/token")
-      token_url = Telnyx::Internal::Util.join_parsed_uri(
-        @base_url_components,
-        {
-          path: path,
-          query: {grant_type: "client_credentials"}
-        }
-      )
+      token_url = Telnyx::Internal::Util.join_parsed_uri(@base_url_components, {path: path})
 
       @oauth_client_auth_state = Telnyx::Internal::OAuth2ClientCredentials.new(
         token_url: token_url.to_s,
