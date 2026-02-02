@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.8.1 (2026-02-02)
+
+Full Changelog: [v5.8.0...v5.8.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.8.0...v5.8.1)
+
+### Bug Fixes
+
+* **client:** always add content-length to post body, even when empty ([6290783](https://github.com/team-telnyx/telnyx-ruby/commit/6290783a2b1ed09d5f7bc239da897f58a9c136e2))
+
 ## 5.8.0 (2026-01-30)
 
 Full Changelog: [v5.7.2...v5.8.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.7.2...v5.8.0)
