@@ -61,9 +61,10 @@ module Telnyx
           method: :post,
           url: URI(@token_url),
           headers: {
-            "Authorization" => "Basic #{Base64.strict_encode64("#{@client_id}:#{@client_secret}")}"
+            "Authorization" => "Basic #{Base64.strict_encode64("#{@client_id}:#{@client_secret}")}",
+            "Content-Type" => "application/x-www-form-urlencoded"
           },
-          body: nil,
+          body: "grant_type=client_credentials",
           max_retries: @client.max_retries,
           timeout: @timeout
         }

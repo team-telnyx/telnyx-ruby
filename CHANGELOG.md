@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.8.2 (2026-02-02)
+
+Full Changelog: [v5.8.1...v5.8.2](https://github.com/team-telnyx/telnyx-ruby/compare/v5.8.1...v5.8.2)
+
+### Bug Fixes
+
+* **client/oauth:** send grant_type in the right location ([9c80812](https://github.com/team-telnyx/telnyx-ruby/commit/9c80812de3e8cb0a1e0c22edf105e42a824669e6))
+
 ## 5.8.1 (2026-02-02)
 
 Full Changelog: [v5.8.0...v5.8.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.8.0...v5.8.1)
