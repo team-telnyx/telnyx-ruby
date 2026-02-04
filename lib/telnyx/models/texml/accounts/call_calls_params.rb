@@ -266,6 +266,13 @@ module Telnyx
                    enum: -> { Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole },
                    api_name: :SupervisingRole
 
+          # @!attribute texml
+          #   TeXML to be used as instructions for the call. If provided, the call will
+          #   execute these instructions instead of fetching from the Url.
+          #
+          #   @return [String, nil]
+          optional :texml, String, api_name: :Texml
+
           # @!attribute trim
           #   Whether to trim any leading and trailing silence from the recording. Defaults to
           #   `trim-silence`.
@@ -288,7 +295,7 @@ module Telnyx
                    enum: -> { Telnyx::Texml::Accounts::CallCallsParams::URLMethod },
                    api_name: :UrlMethod
 
-          # @!method initialize(application_sid:, from:, to:, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, detection_mode: nil, fallback_url: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, supervise_call_sid: nil, supervising_role: nil, trim: nil, url: nil, url_method: nil, request_options: {})
+          # @!method initialize(application_sid:, from:, to:, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, detection_mode: nil, fallback_url: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, supervise_call_sid: nil, supervising_role: nil, texml: nil, trim: nil, url: nil, url_method: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Texml::Accounts::CallCallsParams} for more details.
           #
@@ -359,6 +366,8 @@ module Telnyx
           #   @param supervise_call_sid [String] The call control ID of the existing call to supervise. When provided, the create
           #
           #   @param supervising_role [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::SupervisingRole] The supervising role for the new leg. Determines the audio behavior: barge (hear
+          #
+          #   @param texml [String] TeXML to be used as instructions for the call. If provided, the call will execut
           #
           #   @param trim [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Trim] Whether to trim any leading and trailing silence from the recording. Defaults to
           #
