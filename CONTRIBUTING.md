@@ -43,13 +43,13 @@ If you’d like to use the repository from source, you can either install from g
 To install via git in your `Gemfile`:
 
 ```ruby
-gem "telnyx", git: "https://www.github.com/team-telnyx/telnyx-ruby"
+gem "telnyx", git: "https://github.com/team-telnyx/telnyx-ruby"
 ```
 
 Alternatively, reference local copy of the repo:
 
 ```bash
-$ git clone -- 'https://www.github.com/team-telnyx/telnyx-ruby' '<path-to-repo>'
+$ git clone -- 'https://github.com/team-telnyx/telnyx-ruby' '<path-to-repo>'
 ```
 
 ```ruby

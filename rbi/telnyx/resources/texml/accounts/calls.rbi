@@ -137,6 +137,7 @@ module Telnyx
               supervise_call_sid: String,
               supervising_role:
                 Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::OrSymbol,
+              texml: String,
               trim: Telnyx::Texml::Accounts::CallCallsParams::Trim::OrSymbol,
               url: String,
               url_method:
@@ -238,6 +239,9 @@ module Telnyx
             # both sides), whisper (only hear supervisor), monitor (hear both sides but
             # supervisor muted). Default: barge
             supervising_role: nil,
+            # TeXML to be used as instructions for the call. If provided, the call will
+            # execute these instructions instead of fetching from the Url.
+            texml: nil,
             # Whether to trim any leading and trailing silence from the recording. Defaults to
             # `trim-silence`.
             trim: nil,

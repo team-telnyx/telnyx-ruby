@@ -38,6 +38,7 @@ module Telnyx
             status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method,
             supervise_call_sid: String,
             supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::supervising_role,
+            texml: String,
             trim: Telnyx::Models::Texml::Accounts::CallCallsParams::trim,
             url: String,
             url_method: Telnyx::Models::Texml::Accounts::CallCallsParams::url_method
@@ -200,6 +201,10 @@ module Telnyx
             Telnyx::Models::Texml::Accounts::CallCallsParams::supervising_role
           ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::supervising_role
 
+          attr_reader texml: String?
+
+          def texml=: (String) -> String
+
           attr_reader trim: Telnyx::Models::Texml::Accounts::CallCallsParams::trim?
 
           def trim=: (
@@ -251,6 +256,7 @@ module Telnyx
             ?status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method,
             ?supervise_call_sid: String,
             ?supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::supervising_role,
+            ?texml: String,
             ?trim: Telnyx::Models::Texml::Accounts::CallCallsParams::trim,
             ?url: String,
             ?url_method: Telnyx::Models::Texml::Accounts::CallCallsParams::url_method,
@@ -292,6 +298,7 @@ module Telnyx
             status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::status_callback_method,
             supervise_call_sid: String,
             supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::supervising_role,
+            texml: String,
             trim: Telnyx::Models::Texml::Accounts::CallCallsParams::trim,
             url: String,
             url_method: Telnyx::Models::Texml::Accounts::CallCallsParams::url_method,

@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.9.0 (2026-02-04)
+
+Full Changelog: [v5.8.2...v5.9.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.8.2...v5.9.0)
+
+### Features
+
+* Add Texml parameter to create call endpoint [ENGDESK-49187] ([0f74f4e](https://github.com/team-telnyx/telnyx-ruby/commit/0f74f4e6deac3f2ae02bfba2bb594ea6c8516c8c))
+
+
+### Chores
+
+* **docs:** remove www prefix ([3198f7b](https://github.com/team-telnyx/telnyx-ruby/commit/3198f7b01a6c016b179eeb6bc1c527e52fc9845e))
+
 ## 5.8.2 (2026-02-02)
 
 Full Changelog: [v5.8.1...v5.8.2](https://github.com/team-telnyx/telnyx-ruby/compare/v5.8.1...v5.8.2)
