@@ -182,7 +182,6 @@ module Telnyx
           module Language
             extend Telnyx::Internal::Type::Enum
 
-            EN = :en
             EN_US = :"en-US"
             EN_AU = :"en-AU"
             EN_GB = :"en-GB"
@@ -190,15 +189,12 @@ module Telnyx
             EN_NZ = :"en-NZ"
             DE = :de
             NL = :nl
-            SV = :sv
             SV_SE = :"sv-SE"
-            DA = :da
             DA_DK = :"da-DK"
             ES = :es
             ES_419 = :"es-419"
             FR = :fr
             FR_CA = :"fr-CA"
-            PT = :pt
             PT_BR = :"pt-BR"
             PT_PT = :"pt-PT"
             AUTO_DETECT = :auto_detect
