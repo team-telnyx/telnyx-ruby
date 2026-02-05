@@ -86,7 +86,7 @@ class Telnyx::Test::Resources::FqdnConnectionsTest < Telnyx::Test::ResourceTest
         ignore_mark_bit: Telnyx::Internal::Type::Boolean | nil,
         inbound: Telnyx::InboundFqdn | nil,
         ios_push_credential_id: String | nil,
-        jitter_buffer: Telnyx::FqdnConnection::JitterBuffer | nil,
+        jitter_buffer: Telnyx::ConnectionJitterBuffer | nil,
         microsoft_teams_sbc: Telnyx::Internal::Type::Boolean | nil,
         noise_suppression: Telnyx::FqdnConnection::NoiseSuppression | nil,
         noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails | nil,

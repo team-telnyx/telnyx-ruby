@@ -22,8 +22,7 @@ module Telnyx
           encrypted_media: T.nilable(Telnyx::EncryptedMedia::OrSymbol),
           inbound: Telnyx::CredentialInbound::OrHash,
           ios_push_credential_id: T.nilable(String),
-          jitter_buffer:
-            Telnyx::CredentialConnectionCreateParams::JitterBuffer::OrHash,
+          jitter_buffer: Telnyx::ConnectionJitterBuffer::OrHash,
           noise_suppression:
             Telnyx::CredentialConnectionCreateParams::NoiseSuppression::OrSymbol,
           noise_suppression_details:
@@ -152,8 +151,7 @@ module Telnyx
           encrypted_media: T.nilable(Telnyx::EncryptedMedia::OrSymbol),
           inbound: Telnyx::CredentialInbound::OrHash,
           ios_push_credential_id: T.nilable(String),
-          jitter_buffer:
-            Telnyx::CredentialConnectionUpdateParams::JitterBuffer::OrHash,
+          jitter_buffer: Telnyx::ConnectionJitterBuffer::OrHash,
           noise_suppression:
             Telnyx::CredentialConnectionUpdateParams::NoiseSuppression::OrSymbol,
           noise_suppression_details:
