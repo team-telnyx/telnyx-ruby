@@ -1,0 +1,50 @@
+module Telnyx
+  module Models
+    type replaced_link_click =
+      {
+        message_id: String,
+        record_type: String,
+        time_clicked: Time,
+        to: String,
+        url: String
+      }
+
+    class ReplacedLinkClick < Telnyx::Internal::Type::BaseModel
+      attr_reader message_id: String?
+
+      def message_id=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader time_clicked: Time?
+
+      def time_clicked=: (Time) -> Time
+
+      attr_reader to: String?
+
+      def to=: (String) -> String
+
+      attr_reader url: String?
+
+      def url=: (String) -> String
+
+      def initialize: (
+        ?message_id: String,
+        ?record_type: String,
+        ?time_clicked: Time,
+        ?to: String,
+        ?url: String
+      ) -> void
+
+      def to_hash: -> {
+        message_id: String,
+        record_type: String,
+        time_clicked: Time,
+        to: String,
+        url: String
+      }
+    end
+  end
+end

@@ -1,0 +1,192 @@
+module Telnyx
+  module Models
+    type call_ai_gather_partial_results =
+      {
+        id: String,
+        event_type: Telnyx::Models::CallAIGatherPartialResults::event_type,
+        occurred_at: Time,
+        payload: Telnyx::CallAIGatherPartialResults::Payload,
+        record_type: Telnyx::Models::CallAIGatherPartialResults::record_type
+      }
+
+    class CallAIGatherPartialResults < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader event_type: Telnyx::Models::CallAIGatherPartialResults::event_type?
+
+      def event_type=: (
+        Telnyx::Models::CallAIGatherPartialResults::event_type
+      ) -> Telnyx::Models::CallAIGatherPartialResults::event_type
+
+      attr_reader occurred_at: Time?
+
+      def occurred_at=: (Time) -> Time
+
+      attr_reader payload: Telnyx::CallAIGatherPartialResults::Payload?
+
+      def payload=: (
+        Telnyx::CallAIGatherPartialResults::Payload
+      ) -> Telnyx::CallAIGatherPartialResults::Payload
+
+      attr_reader record_type: Telnyx::Models::CallAIGatherPartialResults::record_type?
+
+      def record_type=: (
+        Telnyx::Models::CallAIGatherPartialResults::record_type
+      ) -> Telnyx::Models::CallAIGatherPartialResults::record_type
+
+      def initialize: (
+        ?id: String,
+        ?event_type: Telnyx::Models::CallAIGatherPartialResults::event_type,
+        ?occurred_at: Time,
+        ?payload: Telnyx::CallAIGatherPartialResults::Payload,
+        ?record_type: Telnyx::Models::CallAIGatherPartialResults::record_type
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        event_type: Telnyx::Models::CallAIGatherPartialResults::event_type,
+        occurred_at: Time,
+        payload: Telnyx::CallAIGatherPartialResults::Payload,
+        record_type: Telnyx::Models::CallAIGatherPartialResults::record_type
+      }
+
+      type event_type = :"call.ai_gather.partial_results"
+
+      module EventType
+        extend Telnyx::Internal::Type::Enum
+
+        CALL_AI_GATHER_PARTIAL_RESULTS: :"call.ai_gather.partial_results"
+
+        def self?.values: -> ::Array[Telnyx::Models::CallAIGatherPartialResults::event_type]
+      end
+
+      type payload =
+        {
+          call_control_id: String,
+          call_leg_id: String,
+          call_session_id: String,
+          client_state: String,
+          connection_id: String,
+          from: String,
+          message_history: ::Array[Telnyx::CallAIGatherPartialResults::Payload::MessageHistory],
+          partial_results: ::Hash[Symbol, top],
+          to: String
+        }
+
+      class Payload < Telnyx::Internal::Type::BaseModel
+        attr_reader call_control_id: String?
+
+        def call_control_id=: (String) -> String
+
+        attr_reader call_leg_id: String?
+
+        def call_leg_id=: (String) -> String
+
+        attr_reader call_session_id: String?
+
+        def call_session_id=: (String) -> String
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader from: String?
+
+        def from=: (String) -> String
+
+        attr_reader message_history: ::Array[Telnyx::CallAIGatherPartialResults::Payload::MessageHistory]?
+
+        def message_history=: (
+          ::Array[Telnyx::CallAIGatherPartialResults::Payload::MessageHistory]
+        ) -> ::Array[Telnyx::CallAIGatherPartialResults::Payload::MessageHistory]
+
+        attr_reader partial_results: ::Hash[Symbol, top]?
+
+        def partial_results=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        attr_reader to: String?
+
+        def to=: (String) -> String
+
+        def initialize: (
+          ?call_control_id: String,
+          ?call_leg_id: String,
+          ?call_session_id: String,
+          ?client_state: String,
+          ?connection_id: String,
+          ?from: String,
+          ?message_history: ::Array[Telnyx::CallAIGatherPartialResults::Payload::MessageHistory],
+          ?partial_results: ::Hash[Symbol, top],
+          ?to: String
+        ) -> void
+
+        def to_hash: -> {
+          call_control_id: String,
+          call_leg_id: String,
+          call_session_id: String,
+          client_state: String,
+          connection_id: String,
+          from: String,
+          message_history: ::Array[Telnyx::CallAIGatherPartialResults::Payload::MessageHistory],
+          partial_results: ::Hash[Symbol, top],
+          to: String
+        }
+
+        type message_history =
+          {
+            content: String,
+            role: Telnyx::Models::CallAIGatherPartialResults::Payload::MessageHistory::role
+          }
+
+        class MessageHistory < Telnyx::Internal::Type::BaseModel
+          attr_reader content: String?
+
+          def content=: (String) -> String
+
+          attr_reader role: Telnyx::Models::CallAIGatherPartialResults::Payload::MessageHistory::role?
+
+          def role=: (
+            Telnyx::Models::CallAIGatherPartialResults::Payload::MessageHistory::role
+          ) -> Telnyx::Models::CallAIGatherPartialResults::Payload::MessageHistory::role
+
+          def initialize: (
+            ?content: String,
+            ?role: Telnyx::Models::CallAIGatherPartialResults::Payload::MessageHistory::role
+          ) -> void
+
+          def to_hash: -> {
+            content: String,
+            role: Telnyx::Models::CallAIGatherPartialResults::Payload::MessageHistory::role
+          }
+
+          type role = :assistant | :user
+
+          module Role
+            extend Telnyx::Internal::Type::Enum
+
+            ASSISTANT: :assistant
+            USER: :user
+
+            def self?.values: -> ::Array[Telnyx::Models::CallAIGatherPartialResults::Payload::MessageHistory::role]
+          end
+        end
+      end
+
+      type record_type = :event
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        EVENT: :event
+
+        def self?.values: -> ::Array[Telnyx::Models::CallAIGatherPartialResults::record_type]
+      end
+    end
+  end
+end

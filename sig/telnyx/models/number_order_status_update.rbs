@@ -1,0 +1,74 @@
+module Telnyx
+  module Models
+    type number_order_status_update =
+      {
+        data: Telnyx::NumberOrderStatusUpdate::Data,
+        meta: Telnyx::NumberOrderStatusUpdate::Meta
+      }
+
+    class NumberOrderStatusUpdate < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::NumberOrderStatusUpdate::Data
+
+      attr_accessor meta: Telnyx::NumberOrderStatusUpdate::Meta
+
+      def initialize: (
+        data: Telnyx::NumberOrderStatusUpdate::Data,
+        meta: Telnyx::NumberOrderStatusUpdate::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::NumberOrderStatusUpdate::Data,
+        meta: Telnyx::NumberOrderStatusUpdate::Meta
+      }
+
+      type data =
+        {
+          id: String,
+          event_type: String,
+          occurred_at: Time,
+          payload: Telnyx::NumberOrderWithPhoneNumbers,
+          record_type: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor event_type: String
+
+        attr_accessor occurred_at: Time
+
+        attr_accessor payload: Telnyx::NumberOrderWithPhoneNumbers
+
+        attr_accessor record_type: String
+
+        def initialize: (
+          id: String,
+          event_type: String,
+          occurred_at: Time,
+          payload: Telnyx::NumberOrderWithPhoneNumbers,
+          record_type: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: String,
+          occurred_at: Time,
+          payload: Telnyx::NumberOrderWithPhoneNumbers,
+          record_type: String
+        }
+      end
+
+      type meta = { attempt: Integer, delivered_to: String }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor attempt: Integer
+
+        attr_accessor delivered_to: String
+
+        def initialize: (attempt: Integer, delivered_to: String) -> void
+
+        def to_hash: -> { attempt: Integer, delivered_to: String }
+      end
+    end
+  end
+end

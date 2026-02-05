@@ -2,16 +2,14 @@ module Telnyx
   module Models
     type delivery_update_webhook_event =
       {
-        data: Telnyx::DeliveryUpdateWebhookEvent::Data,
+        data: Telnyx::OutboundMessage,
         meta: Telnyx::DeliveryUpdateWebhookEvent::Meta
       }
 
     class DeliveryUpdateWebhookEvent < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::DeliveryUpdateWebhookEvent::Data?
+      attr_reader data: Telnyx::OutboundMessage?
 
-      def data=: (
-        Telnyx::DeliveryUpdateWebhookEvent::Data
-      ) -> Telnyx::DeliveryUpdateWebhookEvent::Data
+      def data=: (Telnyx::OutboundMessage) -> Telnyx::OutboundMessage
 
       attr_reader meta: Telnyx::DeliveryUpdateWebhookEvent::Meta?
 
@@ -20,88 +18,14 @@ module Telnyx
       ) -> Telnyx::DeliveryUpdateWebhookEvent::Meta
 
       def initialize: (
-        ?data: Telnyx::DeliveryUpdateWebhookEvent::Data,
+        ?data: Telnyx::OutboundMessage,
         ?meta: Telnyx::DeliveryUpdateWebhookEvent::Meta
       ) -> void
 
       def to_hash: -> {
-        data: Telnyx::DeliveryUpdateWebhookEvent::Data,
+        data: Telnyx::OutboundMessage,
         meta: Telnyx::DeliveryUpdateWebhookEvent::Meta
       }
-
-      type data =
-        {
-          id: String,
-          event_type: Telnyx::Models::DeliveryUpdateWebhookEvent::Data::event_type,
-          occurred_at: Time,
-          payload: Telnyx::OutboundMessagePayload,
-          record_type: Telnyx::Models::DeliveryUpdateWebhookEvent::Data::record_type
-        }
-
-      class Data < Telnyx::Internal::Type::BaseModel
-        attr_reader id: String?
-
-        def id=: (String) -> String
-
-        attr_reader event_type: Telnyx::Models::DeliveryUpdateWebhookEvent::Data::event_type?
-
-        def event_type=: (
-          Telnyx::Models::DeliveryUpdateWebhookEvent::Data::event_type
-        ) -> Telnyx::Models::DeliveryUpdateWebhookEvent::Data::event_type
-
-        attr_reader occurred_at: Time?
-
-        def occurred_at=: (Time) -> Time
-
-        attr_reader payload: Telnyx::OutboundMessagePayload?
-
-        def payload=: (
-          Telnyx::OutboundMessagePayload
-        ) -> Telnyx::OutboundMessagePayload
-
-        attr_reader record_type: Telnyx::Models::DeliveryUpdateWebhookEvent::Data::record_type?
-
-        def record_type=: (
-          Telnyx::Models::DeliveryUpdateWebhookEvent::Data::record_type
-        ) -> Telnyx::Models::DeliveryUpdateWebhookEvent::Data::record_type
-
-        def initialize: (
-          ?id: String,
-          ?event_type: Telnyx::Models::DeliveryUpdateWebhookEvent::Data::event_type,
-          ?occurred_at: Time,
-          ?payload: Telnyx::OutboundMessagePayload,
-          ?record_type: Telnyx::Models::DeliveryUpdateWebhookEvent::Data::record_type
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          event_type: Telnyx::Models::DeliveryUpdateWebhookEvent::Data::event_type,
-          occurred_at: Time,
-          payload: Telnyx::OutboundMessagePayload,
-          record_type: Telnyx::Models::DeliveryUpdateWebhookEvent::Data::record_type
-        }
-
-        type event_type = :"message.sent" | :"message.finalized"
-
-        module EventType
-          extend Telnyx::Internal::Type::Enum
-
-          MESSAGE_SENT: :"message.sent"
-          MESSAGE_FINALIZED: :"message.finalized"
-
-          def self?.values: -> ::Array[Telnyx::Models::DeliveryUpdateWebhookEvent::Data::event_type]
-        end
-
-        type record_type = :event
-
-        module RecordType
-          extend Telnyx::Internal::Type::Enum
-
-          EVENT: :event
-
-          def self?.values: -> ::Array[Telnyx::Models::DeliveryUpdateWebhookEvent::Data::record_type]
-        end
-      end
 
       type meta = { attempt: Integer, delivered_to: String }
 
