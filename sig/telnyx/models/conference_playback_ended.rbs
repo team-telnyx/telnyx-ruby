@@ -1,0 +1,123 @@
+module Telnyx
+  module Models
+    type conference_playback_ended =
+      {
+        id: String,
+        event_type: Telnyx::Models::ConferencePlaybackEnded::event_type,
+        payload: Telnyx::ConferencePlaybackEnded::Payload,
+        record_type: Telnyx::Models::ConferencePlaybackEnded::record_type
+      }
+
+    class ConferencePlaybackEnded < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader event_type: Telnyx::Models::ConferencePlaybackEnded::event_type?
+
+      def event_type=: (
+        Telnyx::Models::ConferencePlaybackEnded::event_type
+      ) -> Telnyx::Models::ConferencePlaybackEnded::event_type
+
+      attr_reader payload: Telnyx::ConferencePlaybackEnded::Payload?
+
+      def payload=: (
+        Telnyx::ConferencePlaybackEnded::Payload
+      ) -> Telnyx::ConferencePlaybackEnded::Payload
+
+      attr_reader record_type: Telnyx::Models::ConferencePlaybackEnded::record_type?
+
+      def record_type=: (
+        Telnyx::Models::ConferencePlaybackEnded::record_type
+      ) -> Telnyx::Models::ConferencePlaybackEnded::record_type
+
+      def initialize: (
+        ?id: String,
+        ?event_type: Telnyx::Models::ConferencePlaybackEnded::event_type,
+        ?payload: Telnyx::ConferencePlaybackEnded::Payload,
+        ?record_type: Telnyx::Models::ConferencePlaybackEnded::record_type
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        event_type: Telnyx::Models::ConferencePlaybackEnded::event_type,
+        payload: Telnyx::ConferencePlaybackEnded::Payload,
+        record_type: Telnyx::Models::ConferencePlaybackEnded::record_type
+      }
+
+      type event_type = :"conference.playback.ended"
+
+      module EventType
+        extend Telnyx::Internal::Type::Enum
+
+        CONFERENCE_PLAYBACK_ENDED: :"conference.playback.ended"
+
+        def self?.values: -> ::Array[Telnyx::Models::ConferencePlaybackEnded::event_type]
+      end
+
+      type payload =
+        {
+          conference_id: String,
+          connection_id: String,
+          creator_call_session_id: String,
+          media_name: String,
+          media_url: String,
+          occurred_at: Time
+        }
+
+      class Payload < Telnyx::Internal::Type::BaseModel
+        attr_reader conference_id: String?
+
+        def conference_id=: (String) -> String
+
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader creator_call_session_id: String?
+
+        def creator_call_session_id=: (String) -> String
+
+        attr_reader media_name: String?
+
+        def media_name=: (String) -> String
+
+        attr_reader media_url: String?
+
+        def media_url=: (String) -> String
+
+        attr_reader occurred_at: Time?
+
+        def occurred_at=: (Time) -> Time
+
+        def initialize: (
+          ?conference_id: String,
+          ?connection_id: String,
+          ?creator_call_session_id: String,
+          ?media_name: String,
+          ?media_url: String,
+          ?occurred_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          conference_id: String,
+          connection_id: String,
+          creator_call_session_id: String,
+          media_name: String,
+          media_url: String,
+          occurred_at: Time
+        }
+      end
+
+      type record_type = :event
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        EVENT: :event
+
+        def self?.values: -> ::Array[Telnyx::Models::ConferencePlaybackEnded::record_type]
+      end
+    end
+  end
+end

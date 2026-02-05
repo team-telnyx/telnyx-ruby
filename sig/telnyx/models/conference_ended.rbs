@@ -1,0 +1,151 @@
+module Telnyx
+  module Models
+    type conference_ended =
+      {
+        id: String,
+        event_type: Telnyx::Models::ConferenceEnded::event_type,
+        payload: Telnyx::ConferenceEnded::Payload,
+        record_type: Telnyx::Models::ConferenceEnded::record_type
+      }
+
+    class ConferenceEnded < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader event_type: Telnyx::Models::ConferenceEnded::event_type?
+
+      def event_type=: (
+        Telnyx::Models::ConferenceEnded::event_type
+      ) -> Telnyx::Models::ConferenceEnded::event_type
+
+      attr_reader payload: Telnyx::ConferenceEnded::Payload?
+
+      def payload=: (
+        Telnyx::ConferenceEnded::Payload
+      ) -> Telnyx::ConferenceEnded::Payload
+
+      attr_reader record_type: Telnyx::Models::ConferenceEnded::record_type?
+
+      def record_type=: (
+        Telnyx::Models::ConferenceEnded::record_type
+      ) -> Telnyx::Models::ConferenceEnded::record_type
+
+      def initialize: (
+        ?id: String,
+        ?event_type: Telnyx::Models::ConferenceEnded::event_type,
+        ?payload: Telnyx::ConferenceEnded::Payload,
+        ?record_type: Telnyx::Models::ConferenceEnded::record_type
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        event_type: Telnyx::Models::ConferenceEnded::event_type,
+        payload: Telnyx::ConferenceEnded::Payload,
+        record_type: Telnyx::Models::ConferenceEnded::record_type
+      }
+
+      type event_type = :"conference.ended"
+
+      module EventType
+        extend Telnyx::Internal::Type::Enum
+
+        CONFERENCE_ENDED: :"conference.ended"
+
+        def self?.values: -> ::Array[Telnyx::Models::ConferenceEnded::event_type]
+      end
+
+      type payload =
+        {
+          call_control_id: String,
+          call_leg_id: String,
+          call_session_id: String,
+          client_state: String,
+          conference_id: String,
+          connection_id: String,
+          occurred_at: Time,
+          reason: Telnyx::Models::ConferenceEnded::Payload::reason
+        }
+
+      class Payload < Telnyx::Internal::Type::BaseModel
+        attr_reader call_control_id: String?
+
+        def call_control_id=: (String) -> String
+
+        attr_reader call_leg_id: String?
+
+        def call_leg_id=: (String) -> String
+
+        attr_reader call_session_id: String?
+
+        def call_session_id=: (String) -> String
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader conference_id: String?
+
+        def conference_id=: (String) -> String
+
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader occurred_at: Time?
+
+        def occurred_at=: (Time) -> Time
+
+        attr_reader reason: Telnyx::Models::ConferenceEnded::Payload::reason?
+
+        def reason=: (
+          Telnyx::Models::ConferenceEnded::Payload::reason
+        ) -> Telnyx::Models::ConferenceEnded::Payload::reason
+
+        def initialize: (
+          ?call_control_id: String,
+          ?call_leg_id: String,
+          ?call_session_id: String,
+          ?client_state: String,
+          ?conference_id: String,
+          ?connection_id: String,
+          ?occurred_at: Time,
+          ?reason: Telnyx::Models::ConferenceEnded::Payload::reason
+        ) -> void
+
+        def to_hash: -> {
+          call_control_id: String,
+          call_leg_id: String,
+          call_session_id: String,
+          client_state: String,
+          conference_id: String,
+          connection_id: String,
+          occurred_at: Time,
+          reason: Telnyx::Models::ConferenceEnded::Payload::reason
+        }
+
+        type reason = :all_left | :host_left | :time_exceeded
+
+        module Reason
+          extend Telnyx::Internal::Type::Enum
+
+          ALL_LEFT: :all_left
+          HOST_LEFT: :host_left
+          TIME_EXCEEDED: :time_exceeded
+
+          def self?.values: -> ::Array[Telnyx::Models::ConferenceEnded::Payload::reason]
+        end
+      end
+
+      type record_type = :event
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        EVENT: :event
+
+        def self?.values: -> ::Array[Telnyx::Models::ConferenceEnded::record_type]
+      end
+    end
+  end
+end

@@ -1,0 +1,197 @@
+module Telnyx
+  module Models
+    type call_conversation_insights_generated =
+      {
+        id: String,
+        event_type: Telnyx::Models::CallConversationInsightsGenerated::event_type,
+        occurred_at: Time,
+        payload: Telnyx::CallConversationInsightsGenerated::Payload,
+        record_type: Telnyx::Models::CallConversationInsightsGenerated::record_type
+      }
+
+    class CallConversationInsightsGenerated < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader event_type: Telnyx::Models::CallConversationInsightsGenerated::event_type?
+
+      def event_type=: (
+        Telnyx::Models::CallConversationInsightsGenerated::event_type
+      ) -> Telnyx::Models::CallConversationInsightsGenerated::event_type
+
+      attr_reader occurred_at: Time?
+
+      def occurred_at=: (Time) -> Time
+
+      attr_reader payload: Telnyx::CallConversationInsightsGenerated::Payload?
+
+      def payload=: (
+        Telnyx::CallConversationInsightsGenerated::Payload
+      ) -> Telnyx::CallConversationInsightsGenerated::Payload
+
+      attr_reader record_type: Telnyx::Models::CallConversationInsightsGenerated::record_type?
+
+      def record_type=: (
+        Telnyx::Models::CallConversationInsightsGenerated::record_type
+      ) -> Telnyx::Models::CallConversationInsightsGenerated::record_type
+
+      def initialize: (
+        ?id: String,
+        ?event_type: Telnyx::Models::CallConversationInsightsGenerated::event_type,
+        ?occurred_at: Time,
+        ?payload: Telnyx::CallConversationInsightsGenerated::Payload,
+        ?record_type: Telnyx::Models::CallConversationInsightsGenerated::record_type
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        event_type: Telnyx::Models::CallConversationInsightsGenerated::event_type,
+        occurred_at: Time,
+        payload: Telnyx::CallConversationInsightsGenerated::Payload,
+        record_type: Telnyx::Models::CallConversationInsightsGenerated::record_type
+      }
+
+      type event_type = :"call.conversation_insights.generated"
+
+      module EventType
+        extend Telnyx::Internal::Type::Enum
+
+        CALL_CONVERSATION_INSIGHTS_GENERATED: :"call.conversation_insights.generated"
+
+        def self?.values: -> ::Array[Telnyx::Models::CallConversationInsightsGenerated::event_type]
+      end
+
+      type payload =
+        {
+          call_control_id: String,
+          call_leg_id: String,
+          call_session_id: String,
+          calling_party_type: Telnyx::Models::CallConversationInsightsGenerated::Payload::calling_party_type,
+          client_state: String,
+          connection_id: String,
+          insight_group_id: String,
+          results: ::Array[Telnyx::CallConversationInsightsGenerated::Payload::Result]
+        }
+
+      class Payload < Telnyx::Internal::Type::BaseModel
+        attr_reader call_control_id: String?
+
+        def call_control_id=: (String) -> String
+
+        attr_reader call_leg_id: String?
+
+        def call_leg_id=: (String) -> String
+
+        attr_reader call_session_id: String?
+
+        def call_session_id=: (String) -> String
+
+        attr_reader calling_party_type: Telnyx::Models::CallConversationInsightsGenerated::Payload::calling_party_type?
+
+        def calling_party_type=: (
+          Telnyx::Models::CallConversationInsightsGenerated::Payload::calling_party_type
+        ) -> Telnyx::Models::CallConversationInsightsGenerated::Payload::calling_party_type
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader insight_group_id: String?
+
+        def insight_group_id=: (String) -> String
+
+        attr_reader results: ::Array[Telnyx::CallConversationInsightsGenerated::Payload::Result]?
+
+        def results=: (
+          ::Array[Telnyx::CallConversationInsightsGenerated::Payload::Result]
+        ) -> ::Array[Telnyx::CallConversationInsightsGenerated::Payload::Result]
+
+        def initialize: (
+          ?call_control_id: String,
+          ?call_leg_id: String,
+          ?call_session_id: String,
+          ?calling_party_type: Telnyx::Models::CallConversationInsightsGenerated::Payload::calling_party_type,
+          ?client_state: String,
+          ?connection_id: String,
+          ?insight_group_id: String,
+          ?results: ::Array[Telnyx::CallConversationInsightsGenerated::Payload::Result]
+        ) -> void
+
+        def to_hash: -> {
+          call_control_id: String,
+          call_leg_id: String,
+          call_session_id: String,
+          calling_party_type: Telnyx::Models::CallConversationInsightsGenerated::Payload::calling_party_type,
+          client_state: String,
+          connection_id: String,
+          insight_group_id: String,
+          results: ::Array[Telnyx::CallConversationInsightsGenerated::Payload::Result]
+        }
+
+        type calling_party_type = :pstn | :sip
+
+        module CallingPartyType
+          extend Telnyx::Internal::Type::Enum
+
+          PSTN: :pstn
+          SIP: :sip
+
+          def self?.values: -> ::Array[Telnyx::Models::CallConversationInsightsGenerated::Payload::calling_party_type]
+        end
+
+        type result =
+          {
+            insight_id: String,
+            result: Telnyx::Models::CallConversationInsightsGenerated::Payload::Result::result
+          }
+
+        class Result < Telnyx::Internal::Type::BaseModel
+          attr_reader insight_id: String?
+
+          def insight_id=: (String) -> String
+
+          attr_reader result: Telnyx::Models::CallConversationInsightsGenerated::Payload::Result::result?
+
+          def result=: (
+            Telnyx::Models::CallConversationInsightsGenerated::Payload::Result::result
+          ) -> Telnyx::Models::CallConversationInsightsGenerated::Payload::Result::result
+
+          def initialize: (
+            ?insight_id: String,
+            ?result: Telnyx::Models::CallConversationInsightsGenerated::Payload::Result::result
+          ) -> void
+
+          def to_hash: -> {
+            insight_id: String,
+            result: Telnyx::Models::CallConversationInsightsGenerated::Payload::Result::result
+          }
+
+          type result = ::Hash[Symbol, top] | String
+
+          module Result
+            extend Telnyx::Internal::Type::Union
+
+            def self?.variants: -> ::Array[Telnyx::Models::CallConversationInsightsGenerated::Payload::Result::result]
+
+            InsightObjectResultMap: Telnyx::Internal::Type::Converter
+          end
+        end
+      end
+
+      type record_type = :event
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        EVENT: :event
+
+        def self?.values: -> ::Array[Telnyx::Models::CallConversationInsightsGenerated::record_type]
+      end
+    end
+  end
+end

@@ -95,13 +95,23 @@ module Telnyx
 
   module BundlePricing = Telnyx::Models::BundlePricing
 
+  class CallAIGatherEnded = Telnyx::Models::CallAIGatherEnded
+
   class CallAIGatherEndedWebhookEvent = Telnyx::Models::CallAIGatherEndedWebhookEvent
+
+  class CallAIGatherMessageHistoryUpdated = Telnyx::Models::CallAIGatherMessageHistoryUpdated
 
   class CallAIGatherMessageHistoryUpdatedWebhookEvent = Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent
 
+  class CallAIGatherPartialResults = Telnyx::Models::CallAIGatherPartialResults
+
   class CallAIGatherPartialResultsWebhookEvent = Telnyx::Models::CallAIGatherPartialResultsWebhookEvent
 
+  class CallAnswered = Telnyx::Models::CallAnswered
+
   class CallAnsweredWebhookEvent = Telnyx::Models::CallAnsweredWebhookEvent
+
+  class CallBridged = Telnyx::Models::CallBridged
 
   class CallBridgedWebhookEvent = Telnyx::Models::CallBridgedWebhookEvent
 
@@ -121,51 +131,95 @@ module Telnyx
 
   class CallControlApplicationUpdateParams = Telnyx::Models::CallControlApplicationUpdateParams
 
+  class CallConversationEnded = Telnyx::Models::CallConversationEnded
+
   class CallConversationEndedWebhookEvent = Telnyx::Models::CallConversationEndedWebhookEvent
+
+  class CallConversationInsightsGenerated = Telnyx::Models::CallConversationInsightsGenerated
 
   class CallConversationInsightsGeneratedWebhookEvent = Telnyx::Models::CallConversationInsightsGeneratedWebhookEvent
 
   class CallDialParams = Telnyx::Models::CallDialParams
 
+  class CallDtmfReceived = Telnyx::Models::CallDtmfReceived
+
   class CallDtmfReceivedWebhookEvent = Telnyx::Models::CallDtmfReceivedWebhookEvent
+
+  class CallEnqueued = Telnyx::Models::CallEnqueued
 
   class CallEnqueuedWebhookEvent = Telnyx::Models::CallEnqueuedWebhookEvent
 
   class CallEventListParams = Telnyx::Models::CallEventListParams
 
+  class CallForkStarted = Telnyx::Models::CallForkStarted
+
   class CallForkStartedWebhookEvent = Telnyx::Models::CallForkStartedWebhookEvent
+
+  class CallForkStopped = Telnyx::Models::CallForkStopped
 
   class CallForkStoppedWebhookEvent = Telnyx::Models::CallForkStoppedWebhookEvent
 
+  class CallGatherEnded = Telnyx::Models::CallGatherEnded
+
   class CallGatherEndedWebhookEvent = Telnyx::Models::CallGatherEndedWebhookEvent
+
+  class CallHangup = Telnyx::Models::CallHangup
 
   class CallHangupWebhookEvent = Telnyx::Models::CallHangupWebhookEvent
 
+  class CallInitiated = Telnyx::Models::CallInitiated
+
   class CallInitiatedWebhookEvent = Telnyx::Models::CallInitiatedWebhookEvent
+
+  class CallLeftQueue = Telnyx::Models::CallLeftQueue
 
   class CallLeftQueueWebhookEvent = Telnyx::Models::CallLeftQueueWebhookEvent
 
+  class CallMachineDetectionEnded = Telnyx::Models::CallMachineDetectionEnded
+
   class CallMachineDetectionEndedWebhookEvent = Telnyx::Models::CallMachineDetectionEndedWebhookEvent
+
+  class CallMachineGreetingEnded = Telnyx::Models::CallMachineGreetingEnded
 
   class CallMachineGreetingEndedWebhookEvent = Telnyx::Models::CallMachineGreetingEndedWebhookEvent
 
+  class CallMachinePremiumDetectionEnded = Telnyx::Models::CallMachinePremiumDetectionEnded
+
   class CallMachinePremiumDetectionEndedWebhookEvent = Telnyx::Models::CallMachinePremiumDetectionEndedWebhookEvent
+
+  class CallMachinePremiumGreetingEnded = Telnyx::Models::CallMachinePremiumGreetingEnded
 
   class CallMachinePremiumGreetingEndedWebhookEvent = Telnyx::Models::CallMachinePremiumGreetingEndedWebhookEvent
 
+  class CallPlaybackEnded = Telnyx::Models::CallPlaybackEnded
+
   class CallPlaybackEndedWebhookEvent = Telnyx::Models::CallPlaybackEndedWebhookEvent
+
+  class CallPlaybackStarted = Telnyx::Models::CallPlaybackStarted
 
   class CallPlaybackStartedWebhookEvent = Telnyx::Models::CallPlaybackStartedWebhookEvent
 
+  class CallRecordingError = Telnyx::Models::CallRecordingError
+
   class CallRecordingErrorWebhookEvent = Telnyx::Models::CallRecordingErrorWebhookEvent
+
+  class CallRecordingSaved = Telnyx::Models::CallRecordingSaved
 
   class CallRecordingSavedWebhookEvent = Telnyx::Models::CallRecordingSavedWebhookEvent
 
+  class CallRecordingTranscriptionSaved = Telnyx::Models::CallRecordingTranscriptionSaved
+
   class CallRecordingTranscriptionSavedWebhookEvent = Telnyx::Models::CallRecordingTranscriptionSavedWebhookEvent
+
+  class CallReferCompleted = Telnyx::Models::CallReferCompleted
 
   class CallReferCompletedWebhookEvent = Telnyx::Models::CallReferCompletedWebhookEvent
 
+  class CallReferFailed = Telnyx::Models::CallReferFailed
+
   class CallReferFailedWebhookEvent = Telnyx::Models::CallReferFailedWebhookEvent
+
+  class CallReferStarted = Telnyx::Models::CallReferStarted
 
   class CallReferStartedWebhookEvent = Telnyx::Models::CallReferStartedWebhookEvent
 
@@ -173,13 +227,23 @@ module Telnyx
 
   module Calls = Telnyx::Models::Calls
 
+  class CallSiprecFailed = Telnyx::Models::CallSiprecFailed
+
   class CallSiprecFailedWebhookEvent = Telnyx::Models::CallSiprecFailedWebhookEvent
+
+  class CallSiprecStarted = Telnyx::Models::CallSiprecStarted
 
   class CallSiprecStartedWebhookEvent = Telnyx::Models::CallSiprecStartedWebhookEvent
 
+  class CallSiprecStopped = Telnyx::Models::CallSiprecStopped
+
   class CallSiprecStoppedWebhookEvent = Telnyx::Models::CallSiprecStoppedWebhookEvent
 
+  class CallSpeakEnded = Telnyx::Models::CallSpeakEnded
+
   class CallSpeakEndedWebhookEvent = Telnyx::Models::CallSpeakEndedWebhookEvent
+
+  class CallSpeakStarted = Telnyx::Models::CallSpeakStarted
 
   class CallSpeakStartedWebhookEvent = Telnyx::Models::CallSpeakStartedWebhookEvent
 
@@ -195,7 +259,7 @@ module Telnyx
 
   class CallStreamingStoppedWebhookEvent = Telnyx::Models::CallStreamingStoppedWebhookEvent
 
-  class CampaignStatusUpdateWebhookEvent = Telnyx::Models::CampaignStatusUpdateWebhookEvent
+  class CampaignStatusUpdate = Telnyx::Models::CampaignStatusUpdate
 
   class ChannelZoneListParams = Telnyx::Models::ChannelZoneListParams
 
@@ -217,33 +281,55 @@ module Telnyx
 
   class Conference = Telnyx::Models::Conference
 
+  class ConferenceCreated = Telnyx::Models::ConferenceCreated
+
   class ConferenceCreatedWebhookEvent = Telnyx::Models::ConferenceCreatedWebhookEvent
 
   class ConferenceCreateParams = Telnyx::Models::ConferenceCreateParams
 
+  class ConferenceEnded = Telnyx::Models::ConferenceEnded
+
   class ConferenceEndedWebhookEvent = Telnyx::Models::ConferenceEndedWebhookEvent
 
-  class ConferenceFloorChangedWebhookEvent = Telnyx::Models::ConferenceFloorChangedWebhookEvent
+  class ConferenceFloorChanged = Telnyx::Models::ConferenceFloorChanged
 
   class ConferenceListParams = Telnyx::Models::ConferenceListParams
 
   class ConferenceListParticipantsParams = Telnyx::Models::ConferenceListParticipantsParams
 
+  class ConferenceParticipantJoined = Telnyx::Models::ConferenceParticipantJoined
+
   class ConferenceParticipantJoinedWebhookEvent = Telnyx::Models::ConferenceParticipantJoinedWebhookEvent
+
+  class ConferenceParticipantLeft = Telnyx::Models::ConferenceParticipantLeft
 
   class ConferenceParticipantLeftWebhookEvent = Telnyx::Models::ConferenceParticipantLeftWebhookEvent
 
+  class ConferenceParticipantPlaybackEnded = Telnyx::Models::ConferenceParticipantPlaybackEnded
+
   class ConferenceParticipantPlaybackEndedWebhookEvent = Telnyx::Models::ConferenceParticipantPlaybackEndedWebhookEvent
+
+  class ConferenceParticipantPlaybackStarted = Telnyx::Models::ConferenceParticipantPlaybackStarted
 
   class ConferenceParticipantPlaybackStartedWebhookEvent = Telnyx::Models::ConferenceParticipantPlaybackStartedWebhookEvent
 
+  class ConferenceParticipantSpeakEnded = Telnyx::Models::ConferenceParticipantSpeakEnded
+
   class ConferenceParticipantSpeakEndedWebhookEvent = Telnyx::Models::ConferenceParticipantSpeakEndedWebhookEvent
+
+  class ConferenceParticipantSpeakStarted = Telnyx::Models::ConferenceParticipantSpeakStarted
 
   class ConferenceParticipantSpeakStartedWebhookEvent = Telnyx::Models::ConferenceParticipantSpeakStartedWebhookEvent
 
+  class ConferencePlaybackEnded = Telnyx::Models::ConferencePlaybackEnded
+
   class ConferencePlaybackEndedWebhookEvent = Telnyx::Models::ConferencePlaybackEndedWebhookEvent
 
+  class ConferencePlaybackStarted = Telnyx::Models::ConferencePlaybackStarted
+
   class ConferencePlaybackStartedWebhookEvent = Telnyx::Models::ConferencePlaybackStartedWebhookEvent
+
+  class ConferenceRecordingSaved = Telnyx::Models::ConferenceRecordingSaved
 
   class ConferenceRecordingSavedWebhookEvent = Telnyx::Models::ConferenceRecordingSavedWebhookEvent
 
@@ -251,7 +337,11 @@ module Telnyx
 
   module Conferences = Telnyx::Models::Conferences
 
+  class ConferenceSpeakEnded = Telnyx::Models::ConferenceSpeakEnded
+
   class ConferenceSpeakEndedWebhookEvent = Telnyx::Models::ConferenceSpeakEndedWebhookEvent
+
+  class ConferenceSpeakStarted = Telnyx::Models::ConferenceSpeakStarted
 
   class ConferenceSpeakStartedWebhookEvent = Telnyx::Models::ConferenceSpeakStartedWebhookEvent
 
@@ -411,21 +501,21 @@ module Telnyx
 
   class FaxDeleteParams = Telnyx::Models::FaxDeleteParams
 
-  class FaxDeliveredWebhookEvent = Telnyx::Models::FaxDeliveredWebhookEvent
+  class FaxDelivered = Telnyx::Models::FaxDelivered
 
   module Faxes = Telnyx::Models::Faxes
 
-  class FaxFailedWebhookEvent = Telnyx::Models::FaxFailedWebhookEvent
+  class FaxFailed = Telnyx::Models::FaxFailed
 
   class FaxListParams = Telnyx::Models::FaxListParams
 
-  class FaxMediaProcessedWebhookEvent = Telnyx::Models::FaxMediaProcessedWebhookEvent
+  class FaxMediaProcessed = Telnyx::Models::FaxMediaProcessed
 
-  class FaxQueuedWebhookEvent = Telnyx::Models::FaxQueuedWebhookEvent
+  class FaxQueued = Telnyx::Models::FaxQueued
 
   class FaxRetrieveParams = Telnyx::Models::FaxRetrieveParams
 
-  class FaxSendingStartedWebhookEvent = Telnyx::Models::FaxSendingStartedWebhookEvent
+  class FaxSendingStarted = Telnyx::Models::FaxSendingStarted
 
   class Fqdn = Telnyx::Models::Fqdn
 
@@ -504,6 +594,8 @@ module Telnyx
   class InboundFqdn = Telnyx::Models::InboundFqdn
 
   class InboundIP = Telnyx::Models::InboundIP
+
+  class InboundMessage = Telnyx::Models::InboundMessage
 
   class InboundMessagePayload = Telnyx::Models::InboundMessagePayload
 
@@ -805,7 +897,7 @@ module Telnyx
 
   class NumberOrderRetrieveParams = Telnyx::Models::NumberOrderRetrieveParams
 
-  class NumberOrderStatusUpdateWebhookEvent = Telnyx::Models::NumberOrderStatusUpdateWebhookEvent
+  class NumberOrderStatusUpdate = Telnyx::Models::NumberOrderStatusUpdate
 
   class NumberOrderUpdateParams = Telnyx::Models::NumberOrderUpdateParams
 
@@ -872,6 +964,8 @@ module Telnyx
   class OutboundFqdn = Telnyx::Models::OutboundFqdn
 
   class OutboundIP = Telnyx::Models::OutboundIP
+
+  class OutboundMessage = Telnyx::Models::OutboundMessage
 
   class OutboundMessagePayload = Telnyx::Models::OutboundMessagePayload
 
@@ -1052,6 +1146,8 @@ module Telnyx
   class RegionListParams = Telnyx::Models::RegionListParams
 
   class RegulatoryRequirementRetrieveParams = Telnyx::Models::RegulatoryRequirementRetrieveParams
+
+  class ReplacedLinkClick = Telnyx::Models::ReplacedLinkClick
 
   class ReplacedLinkClickWebhookEvent = Telnyx::Models::ReplacedLinkClickWebhookEvent
 
@@ -1286,6 +1382,8 @@ module Telnyx
   class TextToSpeechListVoicesParams = Telnyx::Models::TextToSpeechListVoicesParams
 
   module TrafficType = Telnyx::Models::TrafficType
+
+  class Transcription = Telnyx::Models::Transcription
 
   class TranscriptionWebhookEvent = Telnyx::Models::TranscriptionWebhookEvent
 

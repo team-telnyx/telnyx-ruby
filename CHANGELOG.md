@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.10.0 (2026-02-05)
+
+Full Changelog: [v5.9.0...v5.10.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.9.0...v5.10.0)
+
+### Features
+
+* **api:** Merge pull request [#22](https://github.com/team-telnyx/telnyx-ruby/issues/22) from stainless-sdks/add-all-webhook-models ([e32f68e](https://github.com/team-telnyx/telnyx-ruby/commit/e32f68ef2ff1818ccb01ea38b8760096d18658e9))
+
 ## 5.9.0 (2026-02-04)
 
 Full Changelog: [v5.8.2...v5.9.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.8.2...v5.9.0)
