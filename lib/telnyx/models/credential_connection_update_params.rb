@@ -86,8 +86,8 @@ module Telnyx
       #   but tolerate more jitter, while smaller values reduce latency but are more
       #   sensitive to jitter and reordering.
       #
-      #   @return [Telnyx::Models::CredentialConnectionUpdateParams::JitterBuffer, nil]
-      optional :jitter_buffer, -> { Telnyx::CredentialConnectionUpdateParams::JitterBuffer }
+      #   @return [Telnyx::Models::ConnectionJitterBuffer, nil]
+      optional :jitter_buffer, -> { Telnyx::ConnectionJitterBuffer }
 
       # @!attribute noise_suppression
       #   Controls when noise suppression is applied to calls. When set to 'inbound',
@@ -208,7 +208,7 @@ module Telnyx
       #
       #   @param ios_push_credential_id [String, nil] The uuid of the push credential for Ios
       #
-      #   @param jitter_buffer [Telnyx::Models::CredentialConnectionUpdateParams::JitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
+      #   @param jitter_buffer [Telnyx::Models::ConnectionJitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
       #
       #   @param noise_suppression [Symbol, Telnyx::Models::CredentialConnectionUpdateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #
@@ -237,46 +237,6 @@ module Telnyx
       #   @param webhook_timeout_secs [Integer, nil] Specifies how many seconds to wait before timing out a webhook.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-      class JitterBuffer < Telnyx::Internal::Type::BaseModel
-        # @!attribute enable_jitter_buffer
-        #   Enables Jitter Buffer for RTP streams of SIP Trunking calls. The feature is off
-        #   unless enabled.
-        #
-        #   @return [Boolean, nil]
-        optional :enable_jitter_buffer, Telnyx::Internal::Type::Boolean
-
-        # @!attribute jitterbuffer_msec_max
-        #   The maximum jitter buffer size in milliseconds. Must be between 40 and 400. Has
-        #   no effect if enable_jitter_buffer is not true.
-        #
-        #   @return [Integer, nil]
-        optional :jitterbuffer_msec_max, Integer
-
-        # @!attribute jitterbuffer_msec_min
-        #   The minimum jitter buffer size in milliseconds. Must be between 40 and 400. Has
-        #   no effect if enable_jitter_buffer is not true.
-        #
-        #   @return [Integer, nil]
-        optional :jitterbuffer_msec_min, Integer
-
-        # @!method initialize(enable_jitter_buffer: nil, jitterbuffer_msec_max: nil, jitterbuffer_msec_min: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::CredentialConnectionUpdateParams::JitterBuffer} for more
-        #   details.
-        #
-        #   Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams
-        #   of SIP Trunking calls. The feature is off unless enabled. You may define min and
-        #   max values in msec for customized buffering behaviors. Larger values add latency
-        #   but tolerate more jitter, while smaller values reduce latency but are more
-        #   sensitive to jitter and reordering.
-        #
-        #   @param enable_jitter_buffer [Boolean] Enables Jitter Buffer for RTP streams of SIP Trunking calls. The feature is off
-        #
-        #   @param jitterbuffer_msec_max [Integer] The maximum jitter buffer size in milliseconds. Must be between 40 and 400. Has
-        #
-        #   @param jitterbuffer_msec_min [Integer] The minimum jitter buffer size in milliseconds. Must be between 40 and 400. Has
-      end
 
       # Controls when noise suppression is applied to calls. When set to 'inbound',
       # noise suppression is applied to incoming audio. When set to 'outbound', it's

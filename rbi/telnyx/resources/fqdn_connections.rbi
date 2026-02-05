@@ -17,8 +17,7 @@ module Telnyx
           encrypted_media: T.nilable(Telnyx::EncryptedMedia::OrSymbol),
           inbound: Telnyx::InboundFqdn::OrHash,
           ios_push_credential_id: T.nilable(String),
-          jitter_buffer:
-            Telnyx::FqdnConnectionCreateParams::JitterBuffer::OrHash,
+          jitter_buffer: Telnyx::ConnectionJitterBuffer::OrHash,
           microsoft_teams_sbc: T::Boolean,
           noise_suppression:
             Telnyx::FqdnConnectionCreateParams::NoiseSuppression::OrSymbol,
@@ -138,8 +137,7 @@ module Telnyx
           encrypted_media: T.nilable(Telnyx::EncryptedMedia::OrSymbol),
           inbound: Telnyx::InboundFqdn::OrHash,
           ios_push_credential_id: T.nilable(String),
-          jitter_buffer:
-            Telnyx::FqdnConnectionUpdateParams::JitterBuffer::OrHash,
+          jitter_buffer: Telnyx::ConnectionJitterBuffer::OrHash,
           noise_suppression:
             Telnyx::FqdnConnectionUpdateParams::NoiseSuppression::OrSymbol,
           noise_suppression_details:

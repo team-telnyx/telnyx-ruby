@@ -32,7 +32,7 @@ module Telnyx
       #
       # @param ios_push_credential_id [String, nil] The uuid of the push credential for Ios
       #
-      # @param jitter_buffer [Telnyx::Models::FqdnConnectionCreateParams::JitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
+      # @param jitter_buffer [Telnyx::Models::ConnectionJitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
       #
       # @param microsoft_teams_sbc [Boolean] When enabled, the connection will be created for Microsoft Teams Direct Routing.
       #
@@ -125,7 +125,7 @@ module Telnyx
       #
       # @param ios_push_credential_id [String, nil] The uuid of the push credential for Ios
       #
-      # @param jitter_buffer [Telnyx::Models::FqdnConnectionUpdateParams::JitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
+      # @param jitter_buffer [Telnyx::Models::ConnectionJitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
       #
       # @param noise_suppression [Symbol, Telnyx::Models::FqdnConnectionUpdateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #

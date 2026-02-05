@@ -391,6 +391,8 @@ module Telnyx
 
   ConferenceSpeakStartedWebhookEvent = Telnyx::Models::ConferenceSpeakStartedWebhookEvent
 
+  ConnectionJitterBuffer = Telnyx::Models::ConnectionJitterBuffer
+
   ConnectionListActiveCallsParams = Telnyx::Models::ConnectionListActiveCallsParams
 
   ConnectionListParams = Telnyx::Models::ConnectionListParams
