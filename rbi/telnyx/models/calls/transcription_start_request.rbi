@@ -755,11 +755,6 @@ module Telnyx
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              EN =
-                T.let(
-                  :en,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
-                )
               EN_US =
                 T.let(
                   :"en-US",
@@ -795,19 +790,9 @@ module Telnyx
                   :nl,
                   Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
                 )
-              SV =
-                T.let(
-                  :sv,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
-                )
               SV_SE =
                 T.let(
                   :"sv-SE",
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
-                )
-              DA =
-                T.let(
-                  :da,
                   Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
                 )
               DA_DK =
@@ -833,11 +818,6 @@ module Telnyx
               FR_CA =
                 T.let(
                   :"fr-CA",
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
-                )
-              PT =
-                T.let(
-                  :pt,
                   Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language::TaggedSymbol
                 )
               PT_BR =
