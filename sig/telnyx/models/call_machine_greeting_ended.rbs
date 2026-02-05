@@ -1,0 +1,158 @@
+module Telnyx
+  module Models
+    type call_machine_greeting_ended =
+      {
+        id: String,
+        event_type: Telnyx::Models::CallMachineGreetingEnded::event_type,
+        occurred_at: Time,
+        payload: Telnyx::CallMachineGreetingEnded::Payload,
+        record_type: Telnyx::Models::CallMachineGreetingEnded::record_type
+      }
+
+    class CallMachineGreetingEnded < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader event_type: Telnyx::Models::CallMachineGreetingEnded::event_type?
+
+      def event_type=: (
+        Telnyx::Models::CallMachineGreetingEnded::event_type
+      ) -> Telnyx::Models::CallMachineGreetingEnded::event_type
+
+      attr_reader occurred_at: Time?
+
+      def occurred_at=: (Time) -> Time
+
+      attr_reader payload: Telnyx::CallMachineGreetingEnded::Payload?
+
+      def payload=: (
+        Telnyx::CallMachineGreetingEnded::Payload
+      ) -> Telnyx::CallMachineGreetingEnded::Payload
+
+      attr_reader record_type: Telnyx::Models::CallMachineGreetingEnded::record_type?
+
+      def record_type=: (
+        Telnyx::Models::CallMachineGreetingEnded::record_type
+      ) -> Telnyx::Models::CallMachineGreetingEnded::record_type
+
+      def initialize: (
+        ?id: String,
+        ?event_type: Telnyx::Models::CallMachineGreetingEnded::event_type,
+        ?occurred_at: Time,
+        ?payload: Telnyx::CallMachineGreetingEnded::Payload,
+        ?record_type: Telnyx::Models::CallMachineGreetingEnded::record_type
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        event_type: Telnyx::Models::CallMachineGreetingEnded::event_type,
+        occurred_at: Time,
+        payload: Telnyx::CallMachineGreetingEnded::Payload,
+        record_type: Telnyx::Models::CallMachineGreetingEnded::record_type
+      }
+
+      type event_type = :"call.machine.greeting.ended"
+
+      module EventType
+        extend Telnyx::Internal::Type::Enum
+
+        CALL_MACHINE_GREETING_ENDED: :"call.machine.greeting.ended"
+
+        def self?.values: -> ::Array[Telnyx::Models::CallMachineGreetingEnded::event_type]
+      end
+
+      type payload =
+        {
+          call_control_id: String,
+          call_leg_id: String,
+          call_session_id: String,
+          client_state: String,
+          connection_id: String,
+          from: String,
+          result: Telnyx::Models::CallMachineGreetingEnded::Payload::result,
+          to: String
+        }
+
+      class Payload < Telnyx::Internal::Type::BaseModel
+        attr_reader call_control_id: String?
+
+        def call_control_id=: (String) -> String
+
+        attr_reader call_leg_id: String?
+
+        def call_leg_id=: (String) -> String
+
+        attr_reader call_session_id: String?
+
+        def call_session_id=: (String) -> String
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader from: String?
+
+        def from=: (String) -> String
+
+        attr_reader result: Telnyx::Models::CallMachineGreetingEnded::Payload::result?
+
+        def result=: (
+          Telnyx::Models::CallMachineGreetingEnded::Payload::result
+        ) -> Telnyx::Models::CallMachineGreetingEnded::Payload::result
+
+        attr_reader to: String?
+
+        def to=: (String) -> String
+
+        def initialize: (
+          ?call_control_id: String,
+          ?call_leg_id: String,
+          ?call_session_id: String,
+          ?client_state: String,
+          ?connection_id: String,
+          ?from: String,
+          ?result: Telnyx::Models::CallMachineGreetingEnded::Payload::result,
+          ?to: String
+        ) -> void
+
+        def to_hash: -> {
+          call_control_id: String,
+          call_leg_id: String,
+          call_session_id: String,
+          client_state: String,
+          connection_id: String,
+          from: String,
+          result: Telnyx::Models::CallMachineGreetingEnded::Payload::result,
+          to: String
+        }
+
+        type result = :beep_detected | :ended | :not_sure
+
+        module Result
+          extend Telnyx::Internal::Type::Enum
+
+          BEEP_DETECTED: :beep_detected
+          ENDED: :ended
+          NOT_SURE: :not_sure
+
+          def self?.values: -> ::Array[Telnyx::Models::CallMachineGreetingEnded::Payload::result]
+        end
+      end
+
+      type record_type = :event
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        EVENT: :event
+
+        def self?.values: -> ::Array[Telnyx::Models::CallMachineGreetingEnded::record_type]
+      end
+    end
+  end
+end

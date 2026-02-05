@@ -1,147 +1,15 @@
 module Telnyx
   module Models
-    type call_siprec_stopped_webhook_event =
-      { data: Telnyx::CallSiprecStoppedWebhookEvent::Data }
+    type call_siprec_stopped_webhook_event = { data: Telnyx::CallSiprecStopped }
 
     class CallSiprecStoppedWebhookEvent < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::CallSiprecStoppedWebhookEvent::Data?
+      attr_reader data: Telnyx::CallSiprecStopped?
 
-      def data=: (
-        Telnyx::CallSiprecStoppedWebhookEvent::Data
-      ) -> Telnyx::CallSiprecStoppedWebhookEvent::Data
+      def data=: (Telnyx::CallSiprecStopped) -> Telnyx::CallSiprecStopped
 
-      def initialize: (
-        ?data: Telnyx::CallSiprecStoppedWebhookEvent::Data
-      ) -> void
+      def initialize: (?data: Telnyx::CallSiprecStopped) -> void
 
-      def to_hash: -> { data: Telnyx::CallSiprecStoppedWebhookEvent::Data }
-
-      type data =
-        {
-          id: String,
-          event_type: Telnyx::Models::CallSiprecStoppedWebhookEvent::Data::event_type,
-          occurred_at: Time,
-          payload: Telnyx::CallSiprecStoppedWebhookEvent::Data::Payload,
-          record_type: Telnyx::Models::CallSiprecStoppedWebhookEvent::Data::record_type
-        }
-
-      class Data < Telnyx::Internal::Type::BaseModel
-        attr_reader id: String?
-
-        def id=: (String) -> String
-
-        attr_reader event_type: Telnyx::Models::CallSiprecStoppedWebhookEvent::Data::event_type?
-
-        def event_type=: (
-          Telnyx::Models::CallSiprecStoppedWebhookEvent::Data::event_type
-        ) -> Telnyx::Models::CallSiprecStoppedWebhookEvent::Data::event_type
-
-        attr_reader occurred_at: Time?
-
-        def occurred_at=: (Time) -> Time
-
-        attr_reader payload: Telnyx::CallSiprecStoppedWebhookEvent::Data::Payload?
-
-        def payload=: (
-          Telnyx::CallSiprecStoppedWebhookEvent::Data::Payload
-        ) -> Telnyx::CallSiprecStoppedWebhookEvent::Data::Payload
-
-        attr_reader record_type: Telnyx::Models::CallSiprecStoppedWebhookEvent::Data::record_type?
-
-        def record_type=: (
-          Telnyx::Models::CallSiprecStoppedWebhookEvent::Data::record_type
-        ) -> Telnyx::Models::CallSiprecStoppedWebhookEvent::Data::record_type
-
-        def initialize: (
-          ?id: String,
-          ?event_type: Telnyx::Models::CallSiprecStoppedWebhookEvent::Data::event_type,
-          ?occurred_at: Time,
-          ?payload: Telnyx::CallSiprecStoppedWebhookEvent::Data::Payload,
-          ?record_type: Telnyx::Models::CallSiprecStoppedWebhookEvent::Data::record_type
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          event_type: Telnyx::Models::CallSiprecStoppedWebhookEvent::Data::event_type,
-          occurred_at: Time,
-          payload: Telnyx::CallSiprecStoppedWebhookEvent::Data::Payload,
-          record_type: Telnyx::Models::CallSiprecStoppedWebhookEvent::Data::record_type
-        }
-
-        type event_type = :"siprec.stopped"
-
-        module EventType
-          extend Telnyx::Internal::Type::Enum
-
-          SIPREC_STOPPED: :"siprec.stopped"
-
-          def self?.values: -> ::Array[Telnyx::Models::CallSiprecStoppedWebhookEvent::Data::event_type]
-        end
-
-        type payload =
-          {
-            call_control_id: String,
-            call_leg_id: String,
-            call_session_id: String,
-            client_state: String,
-            connection_id: String,
-            hangup_cause: String
-          }
-
-        class Payload < Telnyx::Internal::Type::BaseModel
-          attr_reader call_control_id: String?
-
-          def call_control_id=: (String) -> String
-
-          attr_reader call_leg_id: String?
-
-          def call_leg_id=: (String) -> String
-
-          attr_reader call_session_id: String?
-
-          def call_session_id=: (String) -> String
-
-          attr_reader client_state: String?
-
-          def client_state=: (String) -> String
-
-          attr_reader connection_id: String?
-
-          def connection_id=: (String) -> String
-
-          attr_reader hangup_cause: String?
-
-          def hangup_cause=: (String) -> String
-
-          def initialize: (
-            ?call_control_id: String,
-            ?call_leg_id: String,
-            ?call_session_id: String,
-            ?client_state: String,
-            ?connection_id: String,
-            ?hangup_cause: String
-          ) -> void
-
-          def to_hash: -> {
-            call_control_id: String,
-            call_leg_id: String,
-            call_session_id: String,
-            client_state: String,
-            connection_id: String,
-            hangup_cause: String
-          }
-        end
-
-        type record_type = :event
-
-        module RecordType
-          extend Telnyx::Internal::Type::Enum
-
-          EVENT: :event
-
-          def self?.values: -> ::Array[Telnyx::Models::CallSiprecStoppedWebhookEvent::Data::record_type]
-        end
-      end
+      def to_hash: -> { data: Telnyx::CallSiprecStopped }
     end
   end
 end

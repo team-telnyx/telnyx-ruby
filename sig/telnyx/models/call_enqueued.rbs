@@ -1,0 +1,144 @@
+module Telnyx
+  module Models
+    type call_enqueued =
+      {
+        id: String,
+        event_type: Telnyx::Models::CallEnqueued::event_type,
+        occurred_at: Time,
+        payload: Telnyx::CallEnqueued::Payload,
+        record_type: Telnyx::Models::CallEnqueued::record_type
+      }
+
+    class CallEnqueued < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader event_type: Telnyx::Models::CallEnqueued::event_type?
+
+      def event_type=: (
+        Telnyx::Models::CallEnqueued::event_type
+      ) -> Telnyx::Models::CallEnqueued::event_type
+
+      attr_reader occurred_at: Time?
+
+      def occurred_at=: (Time) -> Time
+
+      attr_reader payload: Telnyx::CallEnqueued::Payload?
+
+      def payload=: (
+        Telnyx::CallEnqueued::Payload
+      ) -> Telnyx::CallEnqueued::Payload
+
+      attr_reader record_type: Telnyx::Models::CallEnqueued::record_type?
+
+      def record_type=: (
+        Telnyx::Models::CallEnqueued::record_type
+      ) -> Telnyx::Models::CallEnqueued::record_type
+
+      def initialize: (
+        ?id: String,
+        ?event_type: Telnyx::Models::CallEnqueued::event_type,
+        ?occurred_at: Time,
+        ?payload: Telnyx::CallEnqueued::Payload,
+        ?record_type: Telnyx::Models::CallEnqueued::record_type
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        event_type: Telnyx::Models::CallEnqueued::event_type,
+        occurred_at: Time,
+        payload: Telnyx::CallEnqueued::Payload,
+        record_type: Telnyx::Models::CallEnqueued::record_type
+      }
+
+      type event_type = :"call.enqueued"
+
+      module EventType
+        extend Telnyx::Internal::Type::Enum
+
+        CALL_ENQUEUED: :"call.enqueued"
+
+        def self?.values: -> ::Array[Telnyx::Models::CallEnqueued::event_type]
+      end
+
+      type payload =
+        {
+          call_control_id: String,
+          call_leg_id: String,
+          call_session_id: String,
+          client_state: String,
+          connection_id: String,
+          current_position: Integer,
+          queue: String,
+          queue_avg_wait_time_secs: Integer
+        }
+
+      class Payload < Telnyx::Internal::Type::BaseModel
+        attr_reader call_control_id: String?
+
+        def call_control_id=: (String) -> String
+
+        attr_reader call_leg_id: String?
+
+        def call_leg_id=: (String) -> String
+
+        attr_reader call_session_id: String?
+
+        def call_session_id=: (String) -> String
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader current_position: Integer?
+
+        def current_position=: (Integer) -> Integer
+
+        attr_reader queue: String?
+
+        def queue=: (String) -> String
+
+        attr_reader queue_avg_wait_time_secs: Integer?
+
+        def queue_avg_wait_time_secs=: (Integer) -> Integer
+
+        def initialize: (
+          ?call_control_id: String,
+          ?call_leg_id: String,
+          ?call_session_id: String,
+          ?client_state: String,
+          ?connection_id: String,
+          ?current_position: Integer,
+          ?queue: String,
+          ?queue_avg_wait_time_secs: Integer
+        ) -> void
+
+        def to_hash: -> {
+          call_control_id: String,
+          call_leg_id: String,
+          call_session_id: String,
+          client_state: String,
+          connection_id: String,
+          current_position: Integer,
+          queue: String,
+          queue_avg_wait_time_secs: Integer
+        }
+      end
+
+      type record_type = :event
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        EVENT: :event
+
+        def self?.values: -> ::Array[Telnyx::Models::CallEnqueued::record_type]
+      end
+    end
+  end
+end
