@@ -32,7 +32,7 @@ module Telnyx
       #
       # @param ios_push_credential_id [String, nil] The uuid of the push credential for Ios
       #
-      # @param jitter_buffer [Telnyx::Models::IPConnectionCreateParams::JitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
+      # @param jitter_buffer [Telnyx::Models::ConnectionJitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
       #
       # @param noise_suppression [Symbol, Telnyx::Models::IPConnectionCreateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #
@@ -123,7 +123,7 @@ module Telnyx
       #
       # @param ios_push_credential_id [String, nil] The uuid of the push credential for Ios
       #
-      # @param jitter_buffer [Telnyx::Models::IPConnectionUpdateParams::JitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
+      # @param jitter_buffer [Telnyx::Models::ConnectionJitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
       #
       # @param noise_suppression [Symbol, Telnyx::Models::IPConnectionUpdateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #

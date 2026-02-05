@@ -89,17 +89,10 @@ module Telnyx
       # max values in msec for customized buffering behaviors. Larger values add latency
       # but tolerate more jitter, while smaller values reduce latency but are more
       # sensitive to jitter and reordering.
-      sig do
-        returns(T.nilable(Telnyx::FqdnConnectionCreateParams::JitterBuffer))
-      end
+      sig { returns(T.nilable(Telnyx::ConnectionJitterBuffer)) }
       attr_reader :jitter_buffer
 
-      sig do
-        params(
-          jitter_buffer:
-            Telnyx::FqdnConnectionCreateParams::JitterBuffer::OrHash
-        ).void
-      end
+      sig { params(jitter_buffer: Telnyx::ConnectionJitterBuffer::OrHash).void }
       attr_writer :jitter_buffer
 
       # When enabled, the connection will be created for Microsoft Teams Direct Routing.
@@ -223,8 +216,7 @@ module Telnyx
           encrypted_media: T.nilable(Telnyx::EncryptedMedia::OrSymbol),
           inbound: Telnyx::InboundFqdn::OrHash,
           ios_push_credential_id: T.nilable(String),
-          jitter_buffer:
-            Telnyx::FqdnConnectionCreateParams::JitterBuffer::OrHash,
+          jitter_buffer: Telnyx::ConnectionJitterBuffer::OrHash,
           microsoft_teams_sbc: T::Boolean,
           noise_suppression:
             Telnyx::FqdnConnectionCreateParams::NoiseSuppression::OrSymbol,
@@ -329,7 +321,7 @@ module Telnyx
             encrypted_media: T.nilable(Telnyx::EncryptedMedia::OrSymbol),
             inbound: Telnyx::InboundFqdn,
             ios_push_credential_id: T.nilable(String),
-            jitter_buffer: Telnyx::FqdnConnectionCreateParams::JitterBuffer,
+            jitter_buffer: Telnyx::ConnectionJitterBuffer,
             microsoft_teams_sbc: T::Boolean,
             noise_suppression:
               Telnyx::FqdnConnectionCreateParams::NoiseSuppression::OrSymbol,
@@ -349,77 +341,6 @@ module Telnyx
         )
       end
       def to_hash
-      end
-
-      class JitterBuffer < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::FqdnConnectionCreateParams::JitterBuffer,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        # Enables Jitter Buffer for RTP streams of SIP Trunking calls. The feature is off
-        # unless enabled.
-        sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :enable_jitter_buffer
-
-        sig { params(enable_jitter_buffer: T::Boolean).void }
-        attr_writer :enable_jitter_buffer
-
-        # The maximum jitter buffer size in milliseconds. Must be between 40 and 400. Has
-        # no effect if enable_jitter_buffer is not true.
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :jitterbuffer_msec_max
-
-        sig { params(jitterbuffer_msec_max: Integer).void }
-        attr_writer :jitterbuffer_msec_max
-
-        # The minimum jitter buffer size in milliseconds. Must be between 40 and 400. Has
-        # no effect if enable_jitter_buffer is not true.
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :jitterbuffer_msec_min
-
-        sig { params(jitterbuffer_msec_min: Integer).void }
-        attr_writer :jitterbuffer_msec_min
-
-        # Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams
-        # of SIP Trunking calls. The feature is off unless enabled. You may define min and
-        # max values in msec for customized buffering behaviors. Larger values add latency
-        # but tolerate more jitter, while smaller values reduce latency but are more
-        # sensitive to jitter and reordering.
-        sig do
-          params(
-            enable_jitter_buffer: T::Boolean,
-            jitterbuffer_msec_max: Integer,
-            jitterbuffer_msec_min: Integer
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Enables Jitter Buffer for RTP streams of SIP Trunking calls. The feature is off
-          # unless enabled.
-          enable_jitter_buffer: nil,
-          # The maximum jitter buffer size in milliseconds. Must be between 40 and 400. Has
-          # no effect if enable_jitter_buffer is not true.
-          jitterbuffer_msec_max: nil,
-          # The minimum jitter buffer size in milliseconds. Must be between 40 and 400. Has
-          # no effect if enable_jitter_buffer is not true.
-          jitterbuffer_msec_min: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              enable_jitter_buffer: T::Boolean,
-              jitterbuffer_msec_max: Integer,
-              jitterbuffer_msec_min: Integer
-            }
-          )
-        end
-        def to_hash
-        end
       end
 
       # Controls when noise suppression is applied to calls. When set to 'inbound',
