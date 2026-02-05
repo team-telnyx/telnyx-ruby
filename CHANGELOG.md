@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.12.0 (2026-02-05)
+
+Full Changelog: [v5.11.0...v5.12.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.11.0...v5.12.0)
+
+### Features
+
+* **api:** Merge pull request [#23](https://github.com/team-telnyx/telnyx-ruby/issues/23) from stainless-sdks/fix/deepgram-nova3-enum-duplicates ([fa9f929](https://github.com/team-telnyx/telnyx-ruby/commit/fa9f929bf7fb27d3a819cba83b7124b8efe7c606))
+
 ## 5.11.0 (2026-02-05)
 
 Full Changelog: [v5.10.0...v5.11.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.10.0...v5.11.0)
