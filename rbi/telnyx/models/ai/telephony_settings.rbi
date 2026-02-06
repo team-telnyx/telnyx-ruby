@@ -51,6 +51,20 @@ module Telnyx
         end
         attr_writer :noise_suppression_config
 
+        # Configuration for call recording format and channel settings.
+        sig do
+          returns(T.nilable(Telnyx::AI::TelephonySettings::RecordingSettings))
+        end
+        attr_reader :recording_settings
+
+        sig do
+          params(
+            recording_settings:
+              Telnyx::AI::TelephonySettings::RecordingSettings::OrHash
+          ).void
+        end
+        attr_writer :recording_settings
+
         # When enabled, allows users to interact with your AI assistant directly from your
         # website without requiring authentication. This is required for FE widgets that
         # work with assistants that have telephony enabled.
@@ -106,6 +120,8 @@ module Telnyx
               Telnyx::AI::TelephonySettings::NoiseSuppression::OrSymbol,
             noise_suppression_config:
               Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::OrHash,
+            recording_settings:
+              Telnyx::AI::TelephonySettings::RecordingSettings::OrHash,
             supports_unauthenticated_web_calls: T::Boolean,
             time_limit_secs: Integer,
             user_idle_timeout_secs: Integer,
@@ -123,6 +139,8 @@ module Telnyx
           # Configuration for noise suppression. Only applicable when noise_suppression is
           # 'deepfilternet'.
           noise_suppression_config: nil,
+          # Configuration for call recording format and channel settings.
+          recording_settings: nil,
           # When enabled, allows users to interact with your AI assistant directly from your
           # website without requiring authentication. This is required for FE widgets that
           # work with assistants that have telephony enabled.
@@ -155,6 +173,8 @@ module Telnyx
                 Telnyx::AI::TelephonySettings::NoiseSuppression::OrSymbol,
               noise_suppression_config:
                 Telnyx::AI::TelephonySettings::NoiseSuppressionConfig,
+              recording_settings:
+                Telnyx::AI::TelephonySettings::RecordingSettings,
               supports_unauthenticated_web_calls: T::Boolean,
               time_limit_secs: Integer,
               user_idle_timeout_secs: Integer,
@@ -290,6 +310,152 @@ module Telnyx
               override.returns(
                 T::Array[
                   Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Mode::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        class RecordingSettings < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::TelephonySettings::RecordingSettings,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # The number of channels for the recording. 'single' for mono, 'dual' for stereo.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::AI::TelephonySettings::RecordingSettings::Channels::OrSymbol
+              )
+            )
+          end
+          attr_reader :channels
+
+          sig do
+            params(
+              channels:
+                Telnyx::AI::TelephonySettings::RecordingSettings::Channels::OrSymbol
+            ).void
+          end
+          attr_writer :channels
+
+          # The format of the recording file.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::AI::TelephonySettings::RecordingSettings::Format::OrSymbol
+              )
+            )
+          end
+          attr_reader :format_
+
+          sig do
+            params(
+              format_:
+                Telnyx::AI::TelephonySettings::RecordingSettings::Format::OrSymbol
+            ).void
+          end
+          attr_writer :format_
+
+          # Configuration for call recording format and channel settings.
+          sig do
+            params(
+              channels:
+                Telnyx::AI::TelephonySettings::RecordingSettings::Channels::OrSymbol,
+              format_:
+                Telnyx::AI::TelephonySettings::RecordingSettings::Format::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The number of channels for the recording. 'single' for mono, 'dual' for stereo.
+            channels: nil,
+            # The format of the recording file.
+            format_: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                channels:
+                  Telnyx::AI::TelephonySettings::RecordingSettings::Channels::OrSymbol,
+                format_:
+                  Telnyx::AI::TelephonySettings::RecordingSettings::Format::OrSymbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The number of channels for the recording. 'single' for mono, 'dual' for stereo.
+          module Channels
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::AI::TelephonySettings::RecordingSettings::Channels
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            SINGLE =
+              T.let(
+                :single,
+                Telnyx::AI::TelephonySettings::RecordingSettings::Channels::TaggedSymbol
+              )
+            DUAL =
+              T.let(
+                :dual,
+                Telnyx::AI::TelephonySettings::RecordingSettings::Channels::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::AI::TelephonySettings::RecordingSettings::Channels::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # The format of the recording file.
+          module Format
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::AI::TelephonySettings::RecordingSettings::Format
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            WAV =
+              T.let(
+                :wav,
+                Telnyx::AI::TelephonySettings::RecordingSettings::Format::TaggedSymbol
+              )
+            MP3 =
+              T.let(
+                :mp3,
+                Telnyx::AI::TelephonySettings::RecordingSettings::Format::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::AI::TelephonySettings::RecordingSettings::Format::TaggedSymbol
                 ]
               )
             end

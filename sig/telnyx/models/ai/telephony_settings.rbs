@@ -6,6 +6,7 @@ module Telnyx
           default_texml_app_id: String,
           noise_suppression: Telnyx::Models::AI::TelephonySettings::noise_suppression,
           noise_suppression_config: Telnyx::AI::TelephonySettings::NoiseSuppressionConfig,
+          recording_settings: Telnyx::AI::TelephonySettings::RecordingSettings,
           supports_unauthenticated_web_calls: bool,
           time_limit_secs: Integer,
           user_idle_timeout_secs: Integer,
@@ -29,6 +30,12 @@ module Telnyx
           Telnyx::AI::TelephonySettings::NoiseSuppressionConfig
         ) -> Telnyx::AI::TelephonySettings::NoiseSuppressionConfig
 
+        attr_reader recording_settings: Telnyx::AI::TelephonySettings::RecordingSettings?
+
+        def recording_settings=: (
+          Telnyx::AI::TelephonySettings::RecordingSettings
+        ) -> Telnyx::AI::TelephonySettings::RecordingSettings
+
         attr_reader supports_unauthenticated_web_calls: bool?
 
         def supports_unauthenticated_web_calls=: (bool) -> bool
@@ -51,6 +58,7 @@ module Telnyx
           ?default_texml_app_id: String,
           ?noise_suppression: Telnyx::Models::AI::TelephonySettings::noise_suppression,
           ?noise_suppression_config: Telnyx::AI::TelephonySettings::NoiseSuppressionConfig,
+          ?recording_settings: Telnyx::AI::TelephonySettings::RecordingSettings,
           ?supports_unauthenticated_web_calls: bool,
           ?time_limit_secs: Integer,
           ?user_idle_timeout_secs: Integer,
@@ -61,6 +69,7 @@ module Telnyx
           default_texml_app_id: String,
           noise_suppression: Telnyx::Models::AI::TelephonySettings::noise_suppression,
           noise_suppression_config: Telnyx::AI::TelephonySettings::NoiseSuppressionConfig,
+          recording_settings: Telnyx::AI::TelephonySettings::RecordingSettings,
           supports_unauthenticated_web_calls: bool,
           time_limit_secs: Integer,
           user_idle_timeout_secs: Integer,
@@ -114,6 +123,58 @@ module Telnyx
             ADVANCED: :advanced
 
             def self?.values: -> ::Array[Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode]
+          end
+        end
+
+        type recording_settings =
+          {
+            channels: Telnyx::Models::AI::TelephonySettings::RecordingSettings::channels,
+            format_: Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_
+          }
+
+        class RecordingSettings < Telnyx::Internal::Type::BaseModel
+          attr_reader channels: Telnyx::Models::AI::TelephonySettings::RecordingSettings::channels?
+
+          def channels=: (
+            Telnyx::Models::AI::TelephonySettings::RecordingSettings::channels
+          ) -> Telnyx::Models::AI::TelephonySettings::RecordingSettings::channels
+
+          attr_reader format_: Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_?
+
+          def format_=: (
+            Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_
+          ) -> Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_
+
+          def initialize: (
+            ?channels: Telnyx::Models::AI::TelephonySettings::RecordingSettings::channels,
+            ?format_: Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_
+          ) -> void
+
+          def to_hash: -> {
+            channels: Telnyx::Models::AI::TelephonySettings::RecordingSettings::channels,
+            format_: Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_
+          }
+
+          type channels = :single | :dual
+
+          module Channels
+            extend Telnyx::Internal::Type::Enum
+
+            SINGLE: :single
+            DUAL: :dual
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::TelephonySettings::RecordingSettings::channels]
+          end
+
+          type format_ = :wav | :mp3
+
+          module Format
+            extend Telnyx::Internal::Type::Enum
+
+            WAV: :wav
+            MP3: :mp3
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_]
           end
         end
 
