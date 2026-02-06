@@ -149,11 +149,6 @@ module Telnyx
                 :ca,
                 Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
               )
-            ZH =
-              T.let(
-                :zh,
-                Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
-              )
             ZH_CN =
               T.let(
                 :"zh-CN",
@@ -184,24 +179,14 @@ module Telnyx
                 :cs,
                 Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
               )
-            DA =
-              T.let(
-                :da,
-                Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
-              )
             DA_DK =
               T.let(
                 :"da-DK",
                 Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
               )
-            NL =
+            NL_BE =
               T.let(
-                :nl,
-                Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
-              )
-            EN =
-              T.let(
-                :en,
+                :"nl-BE",
                 Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
               )
             EN_US =
@@ -239,11 +224,6 @@ module Telnyx
                 :fi,
                 Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
               )
-            NL_BE =
-              T.let(
-                :"nl-BE",
-                Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
-              )
             FR =
               T.let(
                 :fr,
@@ -252,11 +232,6 @@ module Telnyx
             FR_CA =
               T.let(
                 :"fr-CA",
-                Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
-              )
-            DE =
-              T.let(
-                :de,
                 Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
               )
             DE_CH =
@@ -294,11 +269,6 @@ module Telnyx
                 :ja,
                 Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
               )
-            KO =
-              T.let(
-                :ko,
-                Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
-              )
             KO_KR =
               T.let(
                 :"ko-KR",
@@ -329,11 +299,6 @@ module Telnyx
                 :pl,
                 Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
               )
-            PT =
-              T.let(
-                :pt,
-                Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
-              )
             PT_BR =
               T.let(
                 :"pt-BR",
@@ -359,29 +324,14 @@ module Telnyx
                 :sk,
                 Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
               )
-            ES =
-              T.let(
-                :es,
-                Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
-              )
             ES_419 =
               T.let(
                 :"es-419",
                 Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
               )
-            SV =
-              T.let(
-                :sv,
-                Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
-              )
             SV_SE =
               T.let(
                 :"sv-SE",
-                Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
-              )
-            TH =
-              T.let(
-                :th,
                 Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2::Language::TaggedSymbol
               )
             TH_TH =
