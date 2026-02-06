@@ -25,6 +25,12 @@ module Telnyx
         #   @return [Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig, nil]
         optional :noise_suppression_config, -> { Telnyx::AI::TelephonySettings::NoiseSuppressionConfig }
 
+        # @!attribute recording_settings
+        #   Configuration for call recording format and channel settings.
+        #
+        #   @return [Telnyx::Models::AI::TelephonySettings::RecordingSettings, nil]
+        optional :recording_settings, -> { Telnyx::AI::TelephonySettings::RecordingSettings }
+
         # @!attribute supports_unauthenticated_web_calls
         #   When enabled, allows users to interact with your AI assistant directly from your
         #   website without requiring authentication. This is required for FE widgets that
@@ -62,7 +68,7 @@ module Telnyx
         #   @return [Telnyx::Models::AI::TelephonySettings::VoicemailDetection, nil]
         optional :voicemail_detection, -> { Telnyx::AI::TelephonySettings::VoicemailDetection }
 
-        # @!method initialize(default_texml_app_id: nil, noise_suppression: nil, noise_suppression_config: nil, supports_unauthenticated_web_calls: nil, time_limit_secs: nil, user_idle_timeout_secs: nil, voicemail_detection: nil)
+        # @!method initialize(default_texml_app_id: nil, noise_suppression: nil, noise_suppression_config: nil, recording_settings: nil, supports_unauthenticated_web_calls: nil, time_limit_secs: nil, user_idle_timeout_secs: nil, voicemail_detection: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::TelephonySettings} for more details.
         #
@@ -71,6 +77,8 @@ module Telnyx
         #   @param noise_suppression [Symbol, Telnyx::Models::AI::TelephonySettings::NoiseSuppression] The noise suppression engine to use. Use 'disabled' to turn off noise suppressio
         #
         #   @param noise_suppression_config [Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig] Configuration for noise suppression. Only applicable when noise_suppression is '
+        #
+        #   @param recording_settings [Telnyx::Models::AI::TelephonySettings::RecordingSettings] Configuration for call recording format and channel settings.
         #
         #   @param supports_unauthenticated_web_calls [Boolean] When enabled, allows users to interact with your AI assistant directly from your
         #
@@ -124,6 +132,56 @@ module Telnyx
             extend Telnyx::Internal::Type::Enum
 
             ADVANCED = :advanced
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
+        # @see Telnyx::Models::AI::TelephonySettings#recording_settings
+        class RecordingSettings < Telnyx::Internal::Type::BaseModel
+          # @!attribute channels
+          #   The number of channels for the recording. 'single' for mono, 'dual' for stereo.
+          #
+          #   @return [Symbol, Telnyx::Models::AI::TelephonySettings::RecordingSettings::Channels, nil]
+          optional :channels, enum: -> { Telnyx::AI::TelephonySettings::RecordingSettings::Channels }
+
+          # @!attribute format_
+          #   The format of the recording file.
+          #
+          #   @return [Symbol, Telnyx::Models::AI::TelephonySettings::RecordingSettings::Format, nil]
+          optional :format_,
+                   enum: -> { Telnyx::AI::TelephonySettings::RecordingSettings::Format },
+                   api_name: :format
+
+          # @!method initialize(channels: nil, format_: nil)
+          #   Configuration for call recording format and channel settings.
+          #
+          #   @param channels [Symbol, Telnyx::Models::AI::TelephonySettings::RecordingSettings::Channels] The number of channels for the recording. 'single' for mono, 'dual' for stereo.
+          #
+          #   @param format_ [Symbol, Telnyx::Models::AI::TelephonySettings::RecordingSettings::Format] The format of the recording file.
+
+          # The number of channels for the recording. 'single' for mono, 'dual' for stereo.
+          #
+          # @see Telnyx::Models::AI::TelephonySettings::RecordingSettings#channels
+          module Channels
+            extend Telnyx::Internal::Type::Enum
+
+            SINGLE = :single
+            DUAL = :dual
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # The format of the recording file.
+          #
+          # @see Telnyx::Models::AI::TelephonySettings::RecordingSettings#format_
+          module Format
+            extend Telnyx::Internal::Type::Enum
+
+            WAV = :wav
+            MP3 = :mp3
 
             # @!method self.values
             #   @return [Array<Symbol>]
