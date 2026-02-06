@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.13.0 (2026-02-06)
+
+Full Changelog: [v5.12.0...v5.13.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.12.0...v5.13.0)
+
+### Features
+
+* Revert "fix emergency settings -schema" ([dbe9344](https://github.com/team-telnyx/telnyx-ruby/commit/dbe934471675fe8fdb848beff8eb678ef07f6ca3))
+
+
+### Bug Fixes
+
+* **client:** loosen json header parsing ([982edaa](https://github.com/team-telnyx/telnyx-ruby/commit/982edaa3df5f21bdeab25da7c7b329bce6129f78))
+
 ## 5.12.0 (2026-02-05)
 
 Full Changelog: [v5.11.0...v5.12.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.11.0...v5.12.0)
