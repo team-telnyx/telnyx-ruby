@@ -15,7 +15,8 @@ module Telnyx
             )
           end
 
-        # Metadata associated with the conversation.
+        # Metadata associated with the conversation. Set `ai_disabled` to `true` to create
+        # the conversation with AI message responses disabled.
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
         attr_reader :metadata
 
@@ -36,7 +37,8 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
-          # Metadata associated with the conversation.
+          # Metadata associated with the conversation. Set `ai_disabled` to `true` to create
+          # the conversation with AI message responses disabled.
           metadata: nil,
           name: nil,
           request_options: {}

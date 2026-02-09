@@ -9,7 +9,8 @@ module Telnyx
         include Telnyx::Internal::Type::RequestParameters
 
         # @!attribute metadata
-        #   Metadata associated with the conversation.
+        #   Metadata associated with the conversation. Set `ai_disabled` to `true` to create
+        #   the conversation with AI message responses disabled.
         #
         #   @return [Hash{Symbol=>String}, nil]
         optional :metadata, Telnyx::Internal::Type::HashOf[String]
@@ -20,7 +21,10 @@ module Telnyx
         optional :name, String
 
         # @!method initialize(metadata: nil, name: nil, request_options: {})
-        #   @param metadata [Hash{Symbol=>String}] Metadata associated with the conversation.
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::AI::ConversationCreateParams} for more details.
+        #
+        #   @param metadata [Hash{Symbol=>String}] Metadata associated with the conversation. Set `ai_disabled` to `true` to create
         #
         #   @param name [String]
         #
