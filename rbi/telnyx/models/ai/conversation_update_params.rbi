@@ -15,7 +15,9 @@ module Telnyx
             )
           end
 
-        # Metadata associated with the conversation.
+        # Metadata associated with the conversation. Set `ai_disabled` to `true` to stop
+        # AI from responding to messages (e.g., when a human agent takes over). Set to
+        # `false` to re-enable AI responses.
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
         attr_reader :metadata
 
@@ -29,7 +31,9 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
-          # Metadata associated with the conversation.
+          # Metadata associated with the conversation. Set `ai_disabled` to `true` to stop
+          # AI from responding to messages (e.g., when a human agent takes over). Set to
+          # `false` to re-enable AI responses.
           metadata: nil,
           request_options: {}
         )

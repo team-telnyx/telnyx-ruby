@@ -22,7 +22,8 @@ module Telnyx
           ).returns(Telnyx::AI::Conversation)
         end
         def create(
-          # Metadata associated with the conversation.
+          # Metadata associated with the conversation. Set `ai_disabled` to `true` to create
+          # the conversation with AI message responses disabled.
           metadata: nil,
           name: nil,
           request_options: {}
@@ -54,7 +55,9 @@ module Telnyx
         def update(
           # The ID of the conversation to update
           conversation_id,
-          # Metadata associated with the conversation.
+          # Metadata associated with the conversation. Set `ai_disabled` to `true` to stop
+          # AI from responding to messages (e.g., when a human agent takes over). Set to
+          # `false` to re-enable AI responses.
           metadata: nil,
           request_options: {}
         )
