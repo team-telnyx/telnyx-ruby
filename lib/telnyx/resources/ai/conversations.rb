@@ -13,11 +13,14 @@ module Telnyx
         # @return [Telnyx::Resources::AI::Conversations::Messages]
         attr_reader :messages
 
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::AI::ConversationCreateParams} for more details.
+        #
         # Create a new AI Conversation.
         #
         # @overload create(metadata: nil, name: nil, request_options: {})
         #
-        # @param metadata [Hash{Symbol=>String}] Metadata associated with the conversation.
+        # @param metadata [Hash{Symbol=>String}] Metadata associated with the conversation. Set `ai_disabled` to `true` to create
         #
         # @param name [String]
         #
@@ -57,13 +60,16 @@ module Telnyx
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::AI::ConversationUpdateParams} for more details.
+        #
         # Update metadata for a specific conversation.
         #
         # @overload update(conversation_id, metadata: nil, request_options: {})
         #
         # @param conversation_id [String] The ID of the conversation to update
         #
-        # @param metadata [Hash{Symbol=>String}] Metadata associated with the conversation.
+        # @param metadata [Hash{Symbol=>String}] Metadata associated with the conversation. Set `ai_disabled` to `true` to stop A
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

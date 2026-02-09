@@ -149,6 +149,14 @@ module Telnyx
             optional :custom_headers,
                      -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader] }
 
+            # @!attribute voicemail_detection
+            #   Configuration for voicemail detection (AMD - Answering Machine Detection) on the
+            #   transferred call. Allows the assistant to detect when a voicemail system answers
+            #   the transferred call and take appropriate action.
+            #
+            #   @return [Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection, nil]
+            optional :voicemail_detection, -> { Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection }
+
             # @!attribute warm_transfer_instructions
             #   Natural language instructions for your agent for how to provide context for the
             #   transfer recipient.
@@ -156,7 +164,7 @@ module Telnyx
             #   @return [String, nil]
             optional :warm_transfer_instructions, String
 
-            # @!method initialize(from:, targets:, custom_headers: nil, warm_transfer_instructions: nil)
+            # @!method initialize(from:, targets:, custom_headers: nil, voicemail_detection: nil, warm_transfer_instructions: nil)
             #   Some parameter documentations has been truncated, see
             #   {Telnyx::Models::AI::AssistantTool::Transfer::Transfer} for more details.
             #
@@ -165,6 +173,8 @@ module Telnyx
             #   @param targets [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::Target>] The different possible targets of the transfer. The assistant will be able to ch
             #
             #   @param custom_headers [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::CustomHeader>] Custom headers to be added to the SIP INVITE for the transfer command.
+            #
+            #   @param voicemail_detection [Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection] Configuration for voicemail detection (AMD - Answering Machine Detection) on the
             #
             #   @param warm_transfer_instructions [String] Natural language instructions for your agent for how to provide context for the
 
@@ -210,6 +220,256 @@ module Telnyx
               #   @param name [String]
               #
               #   @param value [String] The value of the header. Note that we support mustache templating for the value.
+            end
+
+            # @see Telnyx::Models::AI::AssistantTool::Transfer::Transfer#voicemail_detection
+            class VoicemailDetection < Telnyx::Internal::Type::BaseModel
+              # @!attribute detection_config
+              #   Advanced AMD detection configuration parameters. All values are optional -
+              #   Telnyx will use defaults if not specified.
+              #
+              #   @return [Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionConfig, nil]
+              optional :detection_config,
+                       -> { Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionConfig }
+
+              # @!attribute detection_mode
+              #   The AMD detection mode to use. 'premium' provides the highest accuracy.
+              #   'disabled' turns off AMD detection.
+              #
+              #   @return [Symbol, Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionMode, nil]
+              optional :detection_mode,
+                       enum: -> { Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionMode }
+
+              # @!attribute on_voicemail_detected
+              #   Action to take when voicemail is detected on the transferred call.
+              #
+              #   @return [Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected, nil]
+              optional :on_voicemail_detected,
+                       -> { Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected }
+
+              # @!method initialize(detection_config: nil, detection_mode: nil, on_voicemail_detected: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection} for
+              #   more details.
+              #
+              #   Configuration for voicemail detection (AMD - Answering Machine Detection) on the
+              #   transferred call. Allows the assistant to detect when a voicemail system answers
+              #   the transferred call and take appropriate action.
+              #
+              #   @param detection_config [Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionConfig] Advanced AMD detection configuration parameters. All values are optional - Telny
+              #
+              #   @param detection_mode [Symbol, Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionMode] The AMD detection mode to use. 'premium' provides the highest accuracy. 'disable
+              #
+              #   @param on_voicemail_detected [Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected] Action to take when voicemail is detected on the transferred call.
+
+              # @see Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection#detection_config
+              class DetectionConfig < Telnyx::Internal::Type::BaseModel
+                # @!attribute after_greeting_silence_millis
+                #   Duration of silence after greeting detection before finalizing the result.
+                #
+                #   @return [Integer, nil]
+                optional :after_greeting_silence_millis, Integer
+
+                # @!attribute between_words_silence_millis
+                #   Maximum silence duration between words during greeting.
+                #
+                #   @return [Integer, nil]
+                optional :between_words_silence_millis, Integer
+
+                # @!attribute greeting_duration_millis
+                #   Expected duration of greeting speech.
+                #
+                #   @return [Integer, nil]
+                optional :greeting_duration_millis, Integer
+
+                # @!attribute greeting_silence_duration_millis
+                #   Duration of silence after the greeting to wait before considering the greeting
+                #   complete.
+                #
+                #   @return [Integer, nil]
+                optional :greeting_silence_duration_millis, Integer
+
+                # @!attribute greeting_total_analysis_time_millis
+                #   Maximum time to spend analyzing the greeting.
+                #
+                #   @return [Integer, nil]
+                optional :greeting_total_analysis_time_millis, Integer
+
+                # @!attribute initial_silence_millis
+                #   Maximum silence duration at the start of the call before speech.
+                #
+                #   @return [Integer, nil]
+                optional :initial_silence_millis, Integer
+
+                # @!attribute maximum_number_of_words
+                #   Maximum number of words expected in a human greeting.
+                #
+                #   @return [Integer, nil]
+                optional :maximum_number_of_words, Integer
+
+                # @!attribute maximum_word_length_millis
+                #   Maximum duration of a single word.
+                #
+                #   @return [Integer, nil]
+                optional :maximum_word_length_millis, Integer
+
+                # @!attribute min_word_length_millis
+                #   Minimum duration for audio to be considered a word.
+                #
+                #   @return [Integer, nil]
+                optional :min_word_length_millis, Integer
+
+                # @!attribute silence_threshold
+                #   Audio level threshold for silence detection.
+                #
+                #   @return [Integer, nil]
+                optional :silence_threshold, Integer
+
+                # @!attribute total_analysis_time_millis
+                #   Total time allowed for AMD analysis.
+                #
+                #   @return [Integer, nil]
+                optional :total_analysis_time_millis, Integer
+
+                # @!method initialize(after_greeting_silence_millis: nil, between_words_silence_millis: nil, greeting_duration_millis: nil, greeting_silence_duration_millis: nil, greeting_total_analysis_time_millis: nil, initial_silence_millis: nil, maximum_number_of_words: nil, maximum_word_length_millis: nil, min_word_length_millis: nil, silence_threshold: nil, total_analysis_time_millis: nil)
+                #   Some parameter documentations has been truncated, see
+                #   {Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionConfig}
+                #   for more details.
+                #
+                #   Advanced AMD detection configuration parameters. All values are optional -
+                #   Telnyx will use defaults if not specified.
+                #
+                #   @param after_greeting_silence_millis [Integer] Duration of silence after greeting detection before finalizing the result.
+                #
+                #   @param between_words_silence_millis [Integer] Maximum silence duration between words during greeting.
+                #
+                #   @param greeting_duration_millis [Integer] Expected duration of greeting speech.
+                #
+                #   @param greeting_silence_duration_millis [Integer] Duration of silence after the greeting to wait before considering the greeting c
+                #
+                #   @param greeting_total_analysis_time_millis [Integer] Maximum time to spend analyzing the greeting.
+                #
+                #   @param initial_silence_millis [Integer] Maximum silence duration at the start of the call before speech.
+                #
+                #   @param maximum_number_of_words [Integer] Maximum number of words expected in a human greeting.
+                #
+                #   @param maximum_word_length_millis [Integer] Maximum duration of a single word.
+                #
+                #   @param min_word_length_millis [Integer] Minimum duration for audio to be considered a word.
+                #
+                #   @param silence_threshold [Integer] Audio level threshold for silence detection.
+                #
+                #   @param total_analysis_time_millis [Integer] Total time allowed for AMD analysis.
+              end
+
+              # The AMD detection mode to use. 'premium' provides the highest accuracy.
+              # 'disabled' turns off AMD detection.
+              #
+              # @see Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection#detection_mode
+              module DetectionMode
+                extend Telnyx::Internal::Type::Enum
+
+                PREMIUM = :premium
+                DETECT = :detect
+                DETECT_BEEP = :detect_beep
+                DETECT_WORDS = :detect_words
+                GREETING_END = :greeting_end
+                DISABLED = :disabled
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # @see Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection#on_voicemail_detected
+              class OnVoicemailDetected < Telnyx::Internal::Type::BaseModel
+                # @!attribute action
+                #   The action to take when voicemail is detected. 'stop_transfer' hangs up
+                #   immediately. 'leave_message_and_stop_transfer' leaves a message then hangs up.
+                #   'continue_transfer' bridges the call despite voicemail detection.
+                #
+                #   @return [Symbol, Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected::Action, nil]
+                optional :action,
+                         enum: -> { Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected::Action }
+
+                # @!attribute voicemail_message
+                #   Configuration for the voicemail message to leave. Only applicable when action is
+                #   'leave_message_and_stop_transfer'.
+                #
+                #   @return [Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected::VoicemailMessage, nil]
+                optional :voicemail_message,
+                         -> { Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected::VoicemailMessage }
+
+                # @!method initialize(action: nil, voicemail_message: nil)
+                #   Some parameter documentations has been truncated, see
+                #   {Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected}
+                #   for more details.
+                #
+                #   Action to take when voicemail is detected on the transferred call.
+                #
+                #   @param action [Symbol, Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected::Action] The action to take when voicemail is detected. 'stop_transfer' hangs up immediat
+                #
+                #   @param voicemail_message [Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected::VoicemailMessage] Configuration for the voicemail message to leave. Only applicable when action is
+
+                # The action to take when voicemail is detected. 'stop_transfer' hangs up
+                # immediately. 'leave_message_and_stop_transfer' leaves a message then hangs up.
+                # 'continue_transfer' bridges the call despite voicemail detection.
+                #
+                # @see Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected#action
+                module Action
+                  extend Telnyx::Internal::Type::Enum
+
+                  STOP_TRANSFER = :stop_transfer
+                  LEAVE_MESSAGE_AND_STOP_TRANSFER = :leave_message_and_stop_transfer
+                  CONTINUE_TRANSFER = :continue_transfer
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+
+                # @see Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected#voicemail_message
+                class VoicemailMessage < Telnyx::Internal::Type::BaseModel
+                  # @!attribute message
+                  #   The specific message to leave as voicemail (converted to speech). Only
+                  #   applicable when type is 'message'.
+                  #
+                  #   @return [String, nil]
+                  optional :message, String
+
+                  # @!attribute type
+                  #   The type of voicemail message. Use 'message' to leave a specific TTS message, or
+                  #   'warm_transfer_instructions' to play the warm transfer audio.
+                  #
+                  #   @return [Symbol, Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::Type, nil]
+                  optional :type,
+                           enum: -> { Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::Type }
+
+                  # @!method initialize(message: nil, type: nil)
+                  #   Some parameter documentations has been truncated, see
+                  #   {Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected::VoicemailMessage}
+                  #   for more details.
+                  #
+                  #   Configuration for the voicemail message to leave. Only applicable when action is
+                  #   'leave_message_and_stop_transfer'.
+                  #
+                  #   @param message [String] The specific message to leave as voicemail (converted to speech). Only applicabl
+                  #
+                  #   @param type [Symbol, Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected::VoicemailMessage::Type] The type of voicemail message. Use 'message' to leave a specific TTS message, or
+
+                  # The type of voicemail message. Use 'message' to leave a specific TTS message, or
+                  # 'warm_transfer_instructions' to play the warm transfer audio.
+                  #
+                  # @see Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected::VoicemailMessage#type
+                  module Type
+                    extend Telnyx::Internal::Type::Enum
+
+                    MESSAGE = :message
+                    WARM_TRANSFER_INSTRUCTIONS = :warm_transfer_instructions
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+              end
             end
           end
         end
