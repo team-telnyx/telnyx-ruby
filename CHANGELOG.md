@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.14.0 (2026-02-09)
+
+Full Changelog: [v5.13.0...v5.14.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.13.0...v5.14.0)
+
+### Features
+
+* AI-2078 Feature: API endpoint to disable AI assistant mid-conversation ([50628ff](https://github.com/team-telnyx/telnyx-ruby/commit/50628ff4e1a9d3b3ffef761e05673aeae1db3c57))
+
 ## 5.13.0 (2026-02-06)
 
 Full Changelog: [v5.12.0...v5.13.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.12.0...v5.13.0)
