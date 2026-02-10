@@ -8,14 +8,16 @@ class Telnyx::Test::Resources::WebhooksTest < Telnyx::Test::ResourceTest
   def setup
     # Generate a test ED25519 keypair
     @private_key = OpenSSL::PKey.generate_key("ED25519")
-    
+
     # Extract the raw 32-byte public key from the DER encoding
     # ED25519 public keys in X.509 SPKI format have a 12-byte header
-    public_key_der = @private_key.public_key.public_to_der
+    public_key_der = @private_key.public_to_der
     @public_key_bytes = public_key_der[-32, 32]
     @public_key_b64 = Base64.strict_encode64(@public_key_bytes)
-    
-    @payload = '{"data":{"id":"test-123","event_type":"message.received","occurred_at":"2026-02-10T17:30:00Z","payload":{"text":"Hello"},"record_type":"event"}}'
+
+    @payload = '{"data":{"id":"test-123","event_type":"message.received",' \
+               '"occurred_at":"2026-02-10T17:30:00Z","payload":{"text":"Hello"},' \
+               '"record_type":"event"}}'
   end
 
   def sign_payload(timestamp, payload)
@@ -31,7 +33,8 @@ class Telnyx::Test::Resources::WebhooksTest < Telnyx::Test::ResourceTest
     )
 
     event = client.webhooks.unsafe_unwrap(@payload)
-    assert_kind_of Telnyx::Models::UnsafeUnwrapWebhookEvent, event
+    # UnsafeUnwrapWebhookEvent is a Union, so check that result is one of its variants
+    assert(Telnyx::Models::UnsafeUnwrapWebhookEvent.variants.any? { |v| event.is_a?(v) })
   end
 
   def test_unwrap_without_headers
@@ -42,7 +45,8 @@ class Telnyx::Test::Resources::WebhooksTest < Telnyx::Test::ResourceTest
 
     # Without headers, unwrap should just parse the payload
     event = client.webhooks.unwrap(@payload)
-    assert_kind_of Telnyx::Models::UnwrapWebhookEvent, event
+    # UnwrapWebhookEvent is a Union, so check that result is one of its variants
+    assert(Telnyx::Models::UnwrapWebhookEvent.variants.any? { |v| event.is_a?(v) })
   end
 
   def test_unwrap_with_valid_signature
@@ -61,7 +65,8 @@ class Telnyx::Test::Resources::WebhooksTest < Telnyx::Test::ResourceTest
     }
 
     event = client.webhooks.unwrap(@payload, headers)
-    assert_kind_of Telnyx::Models::UnwrapWebhookEvent, event
+    # UnwrapWebhookEvent is a Union, so check that result is one of its variants
+    assert(Telnyx::Models::UnwrapWebhookEvent.variants.any? { |v| event.is_a?(v) })
   end
 
   def test_unwrap_with_case_insensitive_headers
@@ -81,13 +86,14 @@ class Telnyx::Test::Resources::WebhooksTest < Telnyx::Test::ResourceTest
     }
 
     event = client.webhooks.unwrap(@payload, headers)
-    assert_kind_of Telnyx::Models::UnwrapWebhookEvent, event
+    # UnwrapWebhookEvent is a Union, so check that result is one of its variants
+    assert(Telnyx::Models::UnwrapWebhookEvent.variants.any? { |v| event.is_a?(v) })
   end
 
   def test_unwrap_with_wrong_public_key
     # Generate a different keypair
     wrong_private_key = OpenSSL::PKey.generate_key("ED25519")
-    wrong_public_key_der = wrong_private_key.public_key.public_to_der
+    wrong_public_key_der = wrong_private_key.public_to_der
     wrong_public_key_b64 = Base64.strict_encode64(wrong_public_key_der[-32, 32])
 
     client = Telnyx::Client.new(
@@ -205,6 +211,7 @@ class Telnyx::Test::Resources::WebhooksTest < Telnyx::Test::ResourceTest
 
     # Pass key as argument
     event = client.webhooks.unwrap(@payload, headers, key: @public_key_b64)
-    assert_kind_of Telnyx::Models::UnwrapWebhookEvent, event
+    # UnwrapWebhookEvent is a Union, so check that result is one of its variants
+    assert(Telnyx::Models::UnwrapWebhookEvent.variants.any? { |v| event.is_a?(v) })
   end
 end
