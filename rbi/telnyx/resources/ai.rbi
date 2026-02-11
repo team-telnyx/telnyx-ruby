@@ -30,6 +30,9 @@ module Telnyx
       sig { returns(Telnyx::Resources::AI::McpServers) }
       attr_reader :mcp_servers
 
+      sig { returns(Telnyx::Resources::AI::OpenAI) }
+      attr_reader :openai
+
       # This endpoint returns a list of Open Source and OpenAI models that are available
       # for use. <br /><br /> **Note**: Model `id`'s will be in the form
       # `{source}/{model_name}`. For example `openai/gpt-4` or
