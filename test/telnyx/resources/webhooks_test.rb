@@ -232,8 +232,8 @@ class Telnyx::Test::Resources::WebhooksTest < Telnyx::Test::ResourceTest
       "telnyx-timestamp" => timestamp.to_s
     }
 
-    # Should not raise - if it does, test fails
-    client.webhooks.verify!(@payload, headers)
+    # verify! returns nil on success, raises on failure
+    assert_nil(client.webhooks.verify!(@payload, headers))
   end
 
   def test_verify_with_invalid_signature
@@ -271,8 +271,8 @@ class Telnyx::Test::Resources::WebhooksTest < Telnyx::Test::ResourceTest
       "telnyx-timestamp" => timestamp.to_s
     }
 
-    # Pass key as argument - should not raise
-    client.webhooks.verify!(@payload, headers, key: @public_key_b64)
+    # verify! returns nil on success, raises on failure
+    assert_nil(client.webhooks.verify!(@payload, headers, key: @public_key_b64))
   end
 
   def test_verify_without_public_key
