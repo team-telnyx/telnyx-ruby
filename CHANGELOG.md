@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.18.0 (2026-02-11)
+
+Full Changelog: [v5.17.0...v5.18.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.17.0...v5.18.0)
+
+### Features
+
+* Add OpenAI-compatible embeddings API spec ([e7aea5f](https://github.com/team-telnyx/telnyx-ruby/commit/e7aea5feb3c2277889875352e58e1e59ee9be532))
+
 ## 5.17.0 (2026-02-11)
 
 Full Changelog: [v5.16.0...v5.17.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.16.0...v5.17.0)
