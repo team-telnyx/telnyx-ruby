@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.16.0 (2026-02-11)
+
+Full Changelog: [v5.15.0...v5.16.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.15.0...v5.16.0)
+
+### Features
+
+* fix schema in emergency address schema ([e7bcca6](https://github.com/team-telnyx/telnyx-ruby/commit/e7bcca6d088ebb8c1a30dce6936de6644adc7ff3))
+
 ## 5.15.0 (2026-02-11)
 
 Full Changelog: [v5.14.0...v5.15.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.14.0...v5.15.0)
