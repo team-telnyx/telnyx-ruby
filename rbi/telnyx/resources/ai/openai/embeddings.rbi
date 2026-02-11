@@ -12,16 +12,19 @@ module Telnyx
           # `https://api.telnyx.com/v2/ai/openai`.
           sig do
             params(
-              input: Telnyx::AI::OpenAI::EmbeddingCreateParams::Input::Variants,
+              input:
+                Telnyx::AI::OpenAI::EmbeddingCreateEmbeddingsParams::Input::Variants,
               model: String,
               dimensions: Integer,
               encoding_format:
-                Telnyx::AI::OpenAI::EmbeddingCreateParams::EncodingFormat::OrSymbol,
+                Telnyx::AI::OpenAI::EmbeddingCreateEmbeddingsParams::EncodingFormat::OrSymbol,
               user: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::AI::OpenAI::EmbeddingCreateResponse)
+            ).returns(
+              Telnyx::Models::AI::OpenAI::EmbeddingCreateEmbeddingsResponse
+            )
           end
-          def create(
+          def create_embeddings(
             # Input text to embed. Can be a string or array of strings.
             input:,
             # ID of the model to use. Use the List embedding models endpoint to see available
@@ -43,10 +46,10 @@ module Telnyx
           # the OpenAI Models API format.
           sig do
             params(request_options: Telnyx::RequestOptions::OrHash).returns(
-              Telnyx::Models::AI::OpenAI::EmbeddingListModelsResponse
+              Telnyx::Models::AI::OpenAI::EmbeddingListEmbeddingModelsResponse
             )
           end
-          def list_models(request_options: {})
+          def list_embedding_models(request_options: {})
           end
 
           # @api private

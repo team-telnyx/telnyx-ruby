@@ -45,6 +45,11 @@ module Telnyx
         module Integrations
         end
 
+        module Missions
+          module Runs
+          end
+        end
+
         module OpenAI
         end
       end
@@ -155,6 +160,11 @@ module Telnyx
       module Migrations
       end
 
+      module Missions
+        module Runs
+        end
+      end
+
       module MobilePhoneNumbers
       end
 
@@ -216,6 +226,9 @@ module Telnyx
       module Rooms
         module Sessions
         end
+      end
+
+      module Runs
       end
 
       module Sessions

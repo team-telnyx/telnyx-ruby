@@ -1,0 +1,74 @@
+module Telnyx
+  module Resources
+    class AI
+      class Missions
+        class Runs
+          attr_reader events: Telnyx::Resources::AI::Missions::Runs::Events
+
+          attr_reader plan: Telnyx::Resources::AI::Missions::Runs::Plan
+
+          attr_reader telnyx_agents: Telnyx::Resources::AI::Missions::Runs::TelnyxAgents
+
+          def create: (
+            String mission_id,
+            ?input: ::Hash[Symbol, top],
+            ?metadata: ::Hash[Symbol, top],
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Missions::RunCreateResponse
+
+          def retrieve: (
+            String run_id,
+            mission_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Missions::RunRetrieveResponse
+
+          def update: (
+            String run_id,
+            mission_id: String,
+            ?error: String,
+            ?metadata: ::Hash[Symbol, top],
+            ?result_payload: ::Hash[Symbol, top],
+            ?result_summary: String,
+            ?status: Telnyx::Models::AI::Missions::RunUpdateParams::status,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Missions::RunUpdateResponse
+
+          def list: (
+            String mission_id,
+            ?page_number: Integer,
+            ?page_size: Integer,
+            ?status: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AI::Missions::RunListResponse]
+
+          def cancel_run: (
+            String run_id,
+            mission_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Missions::RunCancelRunResponse
+
+          def list_runs: (
+            ?page_number: Integer,
+            ?page_size: Integer,
+            ?status: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AI::Missions::RunListRunsResponse]
+
+          def pause_run: (
+            String run_id,
+            mission_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Missions::RunPauseRunResponse
+
+          def resume_run: (
+            String run_id,
+            mission_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Missions::RunResumeRunResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

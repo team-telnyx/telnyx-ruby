@@ -30,6 +30,9 @@ module Telnyx
       # @return [Telnyx::Resources::AI::McpServers]
       attr_reader :mcp_servers
 
+      # @return [Telnyx::Resources::AI::Missions]
+      attr_reader :missions
+
       # @return [Telnyx::Resources::AI::OpenAI]
       attr_reader :openai
 
@@ -105,6 +108,7 @@ module Telnyx
         @fine_tuning = Telnyx::Resources::AI::FineTuning.new(client: client)
         @integrations = Telnyx::Resources::AI::Integrations.new(client: client)
         @mcp_servers = Telnyx::Resources::AI::McpServers.new(client: client)
+        @missions = Telnyx::Resources::AI::Missions.new(client: client)
         @openai = Telnyx::Resources::AI::OpenAI.new(client: client)
       end
     end

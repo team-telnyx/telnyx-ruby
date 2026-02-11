@@ -1,0 +1,68 @@
+module Telnyx
+  module Models
+    module AI
+      module Missions
+        module Runs
+          type plan_update_step_params =
+            {
+              mission_id: String,
+              run_id: String,
+              metadata: ::Hash[Symbol, top],
+              status: Telnyx::Models::AI::Missions::Runs::PlanUpdateStepParams::status
+            }
+            & Telnyx::Internal::Type::request_parameters
+
+          class PlanUpdateStepParams < Telnyx::Internal::Type::BaseModel
+            extend Telnyx::Internal::Type::RequestParameters::Converter
+            include Telnyx::Internal::Type::RequestParameters
+
+            attr_accessor mission_id: String
+
+            attr_accessor run_id: String
+
+            attr_reader metadata: ::Hash[Symbol, top]?
+
+            def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+            attr_reader status: Telnyx::Models::AI::Missions::Runs::PlanUpdateStepParams::status?
+
+            def status=: (
+              Telnyx::Models::AI::Missions::Runs::PlanUpdateStepParams::status
+            ) -> Telnyx::Models::AI::Missions::Runs::PlanUpdateStepParams::status
+
+            def initialize: (
+              mission_id: String,
+              run_id: String,
+              ?metadata: ::Hash[Symbol, top],
+              ?status: Telnyx::Models::AI::Missions::Runs::PlanUpdateStepParams::status,
+              ?request_options: Telnyx::request_opts
+            ) -> void
+
+            def to_hash: -> {
+              mission_id: String,
+              run_id: String,
+              metadata: ::Hash[Symbol, top],
+              status: Telnyx::Models::AI::Missions::Runs::PlanUpdateStepParams::status,
+              request_options: Telnyx::RequestOptions
+            }
+
+            type status =
+              :pending | :in_progress | :completed | :skipped | :failed
+
+            module Status
+              extend Telnyx::Internal::Type::Enum
+
+              PENDING: :pending
+              IN_PROGRESS: :in_progress
+              COMPLETED: :completed
+              SKIPPED: :skipped
+              FAILED: :failed
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::Missions::Runs::PlanUpdateStepParams::status]
+            end
+          end
+        end
+      end
+    end
+  end
+end
