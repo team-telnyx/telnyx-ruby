@@ -9,6 +9,7 @@ module Telnyx
             telnyx_conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
             telnyx_end_user_target: String,
             conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata],
+            dynamic_variables: ::Hash[Symbol, String],
             text: String
           }
           & Telnyx::Internal::Type::request_parameters
@@ -31,6 +32,12 @@ module Telnyx
             ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata]
           ) -> ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata]
 
+          attr_reader dynamic_variables: ::Hash[Symbol, String]?
+
+          def dynamic_variables=: (
+            ::Hash[Symbol, String]
+          ) -> ::Hash[Symbol, String]
+
           attr_reader text: String?
 
           def text=: (String) -> String
@@ -41,6 +48,7 @@ module Telnyx
             telnyx_conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
             telnyx_end_user_target: String,
             ?conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata],
+            ?dynamic_variables: ::Hash[Symbol, String],
             ?text: String,
             ?request_options: Telnyx::request_opts
           ) -> void
@@ -51,6 +59,7 @@ module Telnyx
             telnyx_conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
             telnyx_end_user_target: String,
             conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata],
+            dynamic_variables: ::Hash[Symbol, String],
             text: String,
             request_options: Telnyx::RequestOptions
           }

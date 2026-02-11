@@ -70,6 +70,14 @@ module Telnyx
           sig { params(created_at: Time).void }
           attr_writer :created_at
 
+          # A map of dynamic variable names to values. These variables can be referenced in
+          # the assistant's instructions and messages using {{variable_name}} syntax.
+          sig { returns(T.nilable(T::Hash[Symbol, String])) }
+          attr_reader :dynamic_variables
+
+          sig { params(dynamic_variables: T::Hash[Symbol, String]).void }
+          attr_writer :dynamic_variables
+
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :errors
 
@@ -116,6 +124,7 @@ module Telnyx
                   Telnyx::AI::Assistants::ScheduledSMSEventResponse::ConversationMetadata::Variants
                 ],
               created_at: Time,
+              dynamic_variables: T::Hash[Symbol, String],
               errors: T::Array[String],
               retry_count: Integer,
               scheduled_event_id: String,
@@ -132,6 +141,9 @@ module Telnyx
             conversation_id: nil,
             conversation_metadata: nil,
             created_at: nil,
+            # A map of dynamic variable names to values. These variables can be referenced in
+            # the assistant's instructions and messages using {{variable_name}} syntax.
+            dynamic_variables: nil,
             errors: nil,
             retry_count: nil,
             scheduled_event_id: nil,
@@ -156,6 +168,7 @@ module Telnyx
                     Telnyx::AI::Assistants::ScheduledSMSEventResponse::ConversationMetadata::Variants
                   ],
                 created_at: Time,
+                dynamic_variables: T::Hash[Symbol, String],
                 errors: T::Array[String],
                 retry_count: Integer,
                 scheduled_event_id: String,

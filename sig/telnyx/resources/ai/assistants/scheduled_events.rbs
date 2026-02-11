@@ -10,6 +10,7 @@ module Telnyx
             telnyx_conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
             telnyx_end_user_target: String,
             ?conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata],
+            ?dynamic_variables: ::Hash[Symbol, String],
             ?text: String,
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::Models::AI::Assistants::scheduled_event_response
