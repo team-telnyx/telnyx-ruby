@@ -1,0 +1,49 @@
+module Telnyx
+  module Models
+    module AI
+      module Missions
+        module Runs
+          type telnyx_agent_list_response =
+            {
+              data: ::Array[Telnyx::Models::AI::Missions::Runs::TelnyxAgentListResponse::Data]
+            }
+
+          class TelnyxAgentListResponse < Telnyx::Internal::Type::BaseModel
+            attr_accessor data: ::Array[Telnyx::Models::AI::Missions::Runs::TelnyxAgentListResponse::Data]
+
+            def initialize: (
+              data: ::Array[Telnyx::Models::AI::Missions::Runs::TelnyxAgentListResponse::Data]
+            ) -> void
+
+            def to_hash: -> {
+              data: ::Array[Telnyx::Models::AI::Missions::Runs::TelnyxAgentListResponse::Data]
+            }
+
+            type data =
+              { created_at: Time, run_id: String, telnyx_agent_id: String }
+
+            class Data < Telnyx::Internal::Type::BaseModel
+              attr_accessor created_at: Time
+
+              attr_accessor run_id: String
+
+              attr_accessor telnyx_agent_id: String
+
+              def initialize: (
+                created_at: Time,
+                run_id: String,
+                telnyx_agent_id: String
+              ) -> void
+
+              def to_hash: -> {
+                created_at: Time,
+                run_id: String,
+                telnyx_agent_id: String
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

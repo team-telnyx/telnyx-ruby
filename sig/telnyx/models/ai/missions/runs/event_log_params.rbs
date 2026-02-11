@@ -1,0 +1,97 @@
+module Telnyx
+  module Models
+    module AI
+      module Missions
+        module Runs
+          type event_log_params =
+            {
+              mission_id: String,
+              summary: String,
+              type: Telnyx::Models::AI::Missions::Runs::EventLogParams::type_,
+              agent_id: String,
+              idempotency_key: String,
+              payload: ::Hash[Symbol, top],
+              step_id: String
+            }
+            & Telnyx::Internal::Type::request_parameters
+
+          class EventLogParams < Telnyx::Internal::Type::BaseModel
+            extend Telnyx::Internal::Type::RequestParameters::Converter
+            include Telnyx::Internal::Type::RequestParameters
+
+            attr_accessor mission_id: String
+
+            attr_accessor summary: String
+
+            attr_accessor type: Telnyx::Models::AI::Missions::Runs::EventLogParams::type_
+
+            attr_reader agent_id: String?
+
+            def agent_id=: (String) -> String
+
+            attr_reader idempotency_key: String?
+
+            def idempotency_key=: (String) -> String
+
+            attr_reader payload: ::Hash[Symbol, top]?
+
+            def payload=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+            attr_reader step_id: String?
+
+            def step_id=: (String) -> String
+
+            def initialize: (
+              mission_id: String,
+              summary: String,
+              type: Telnyx::Models::AI::Missions::Runs::EventLogParams::type_,
+              ?agent_id: String,
+              ?idempotency_key: String,
+              ?payload: ::Hash[Symbol, top],
+              ?step_id: String,
+              ?request_options: Telnyx::request_opts
+            ) -> void
+
+            def to_hash: -> {
+              mission_id: String,
+              summary: String,
+              type: Telnyx::Models::AI::Missions::Runs::EventLogParams::type_,
+              agent_id: String,
+              idempotency_key: String,
+              payload: ::Hash[Symbol, top],
+              step_id: String,
+              request_options: Telnyx::RequestOptions
+            }
+
+            type type_ =
+              :status_change
+              | :step_started
+              | :step_completed
+              | :step_failed
+              | :tool_call
+              | :tool_result
+              | :message
+              | :error
+              | :custom
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              STATUS_CHANGE: :status_change
+              STEP_STARTED: :step_started
+              STEP_COMPLETED: :step_completed
+              STEP_FAILED: :step_failed
+              TOOL_CALL: :tool_call
+              TOOL_RESULT: :tool_result
+              MESSAGE: :message
+              ERROR: :error
+              CUSTOM: :custom
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::Missions::Runs::EventLogParams::type_]
+            end
+          end
+        end
+      end
+    end
+  end
+end

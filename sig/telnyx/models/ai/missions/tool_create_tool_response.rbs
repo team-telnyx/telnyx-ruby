@@ -1,0 +1,9 @@
+module Telnyx
+  module Models
+    module AI
+      module Missions
+        ToolCreateToolResponse: Telnyx::Internal::Type::Converter
+      end
+    end
+  end
+end

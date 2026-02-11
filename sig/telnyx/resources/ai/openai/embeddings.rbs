@@ -3,18 +3,18 @@ module Telnyx
     class AI
       class OpenAI
         class Embeddings
-          def create: (
-            input: Telnyx::Models::AI::OpenAI::EmbeddingCreateParams::input,
+          def create_embeddings: (
+            input: Telnyx::Models::AI::OpenAI::EmbeddingCreateEmbeddingsParams::input,
             model: String,
             ?dimensions: Integer,
-            ?encoding_format: Telnyx::Models::AI::OpenAI::EmbeddingCreateParams::encoding_format,
+            ?encoding_format: Telnyx::Models::AI::OpenAI::EmbeddingCreateEmbeddingsParams::encoding_format,
             ?user: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::AI::OpenAI::EmbeddingCreateResponse
+          ) -> Telnyx::Models::AI::OpenAI::EmbeddingCreateEmbeddingsResponse
 
-          def list_models: (
+          def list_embedding_models: (
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::AI::OpenAI::EmbeddingListModelsResponse
+          ) -> Telnyx::Models::AI::OpenAI::EmbeddingListEmbeddingModelsResponse
 
           def initialize: (client: Telnyx::Client) -> void
         end

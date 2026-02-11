@@ -1,0 +1,33 @@
+module Telnyx
+  module Resources
+    class AI
+      class Missions
+        class Runs
+          class TelnyxAgents
+            def list: (
+              String run_id,
+              mission_id: String,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::AI::Missions::Runs::TelnyxAgentListResponse
+
+            def link: (
+              String run_id,
+              mission_id: String,
+              telnyx_agent_id: String,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::AI::Missions::Runs::TelnyxAgentLinkResponse
+
+            def unlink: (
+              String telnyx_agent_id,
+              mission_id: String,
+              run_id: String,
+              ?request_options: Telnyx::request_opts
+            ) -> nil
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

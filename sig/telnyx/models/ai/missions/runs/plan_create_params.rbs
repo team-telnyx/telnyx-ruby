@@ -1,0 +1,78 @@
+module Telnyx
+  module Models
+    module AI
+      module Missions
+        module Runs
+          type plan_create_params =
+            {
+              mission_id: String,
+              steps: ::Array[Telnyx::AI::Missions::Runs::PlanCreateParams::Step]
+            }
+            & Telnyx::Internal::Type::request_parameters
+
+          class PlanCreateParams < Telnyx::Internal::Type::BaseModel
+            extend Telnyx::Internal::Type::RequestParameters::Converter
+            include Telnyx::Internal::Type::RequestParameters
+
+            attr_accessor mission_id: String
+
+            attr_accessor steps: ::Array[Telnyx::AI::Missions::Runs::PlanCreateParams::Step]
+
+            def initialize: (
+              mission_id: String,
+              steps: ::Array[Telnyx::AI::Missions::Runs::PlanCreateParams::Step],
+              ?request_options: Telnyx::request_opts
+            ) -> void
+
+            def to_hash: -> {
+              mission_id: String,
+              steps: ::Array[Telnyx::AI::Missions::Runs::PlanCreateParams::Step],
+              request_options: Telnyx::RequestOptions
+            }
+
+            type step =
+              {
+                description: String,
+                sequence: Integer,
+                step_id: String,
+                metadata: ::Hash[Symbol, top],
+                parent_step_id: String
+              }
+
+            class Step < Telnyx::Internal::Type::BaseModel
+              attr_accessor description: String
+
+              attr_accessor sequence: Integer
+
+              attr_accessor step_id: String
+
+              attr_reader metadata: ::Hash[Symbol, top]?
+
+              def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+              attr_reader parent_step_id: String?
+
+              def parent_step_id=: (String) -> String
+
+              def initialize: (
+                description: String,
+                sequence: Integer,
+                step_id: String,
+                ?metadata: ::Hash[Symbol, top],
+                ?parent_step_id: String
+              ) -> void
+
+              def to_hash: -> {
+                description: String,
+                sequence: Integer,
+                step_id: String,
+                metadata: ::Hash[Symbol, top],
+                parent_step_id: String
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

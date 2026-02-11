@@ -1,0 +1,83 @@
+module Telnyx
+  module Models
+    module AI
+      module Missions
+        type run_update_params =
+          {
+            mission_id: String,
+            error: String,
+            metadata: ::Hash[Symbol, top],
+            result_payload: ::Hash[Symbol, top],
+            result_summary: String,
+            status: Telnyx::Models::AI::Missions::RunUpdateParams::status
+          }
+          & Telnyx::Internal::Type::request_parameters
+
+        class RunUpdateParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor mission_id: String
+
+          attr_reader error: String?
+
+          def error=: (String) -> String
+
+          attr_reader metadata: ::Hash[Symbol, top]?
+
+          def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader result_payload: ::Hash[Symbol, top]?
+
+          def result_payload=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader result_summary: String?
+
+          def result_summary=: (String) -> String
+
+          attr_reader status: Telnyx::Models::AI::Missions::RunUpdateParams::status?
+
+          def status=: (
+            Telnyx::Models::AI::Missions::RunUpdateParams::status
+          ) -> Telnyx::Models::AI::Missions::RunUpdateParams::status
+
+          def initialize: (
+            mission_id: String,
+            ?error: String,
+            ?metadata: ::Hash[Symbol, top],
+            ?result_payload: ::Hash[Symbol, top],
+            ?result_summary: String,
+            ?status: Telnyx::Models::AI::Missions::RunUpdateParams::status,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            mission_id: String,
+            error: String,
+            metadata: ::Hash[Symbol, top],
+            result_payload: ::Hash[Symbol, top],
+            result_summary: String,
+            status: Telnyx::Models::AI::Missions::RunUpdateParams::status,
+            request_options: Telnyx::RequestOptions
+          }
+
+          type status =
+            :pending | :running | :paused | :succeeded | :failed | :cancelled
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :pending
+            RUNNING: :running
+            PAUSED: :paused
+            SUCCEEDED: :succeeded
+            FAILED: :failed
+            CANCELLED: :cancelled
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::Missions::RunUpdateParams::status]
+          end
+        end
+      end
+    end
+  end
+end

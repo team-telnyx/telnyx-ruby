@@ -1,0 +1,36 @@
+module Telnyx
+  module Models
+    module AI
+      module Missions
+        type run_create_params =
+          { input: ::Hash[Symbol, top], metadata: ::Hash[Symbol, top] }
+          & Telnyx::Internal::Type::request_parameters
+
+        class RunCreateParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_reader input: ::Hash[Symbol, top]?
+
+          def input=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader metadata: ::Hash[Symbol, top]?
+
+          def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          def initialize: (
+            ?input: ::Hash[Symbol, top],
+            ?metadata: ::Hash[Symbol, top],
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            input: ::Hash[Symbol, top],
+            metadata: ::Hash[Symbol, top],
+            request_options: Telnyx::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

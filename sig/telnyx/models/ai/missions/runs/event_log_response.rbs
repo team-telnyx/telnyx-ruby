@@ -1,0 +1,116 @@
+module Telnyx
+  module Models
+    module AI
+      module Missions
+        module Runs
+          type event_log_response =
+            { data: Telnyx::Models::AI::Missions::Runs::EventLogResponse::Data }
+
+          class EventLogResponse < Telnyx::Internal::Type::BaseModel
+            attr_accessor data: Telnyx::Models::AI::Missions::Runs::EventLogResponse::Data
+
+            def initialize: (
+              data: Telnyx::Models::AI::Missions::Runs::EventLogResponse::Data
+            ) -> void
+
+            def to_hash: -> {
+              data: Telnyx::Models::AI::Missions::Runs::EventLogResponse::Data
+            }
+
+            type data =
+              {
+                event_id: String,
+                run_id: String,
+                summary: String,
+                timestamp: Time,
+                type: Telnyx::Models::AI::Missions::Runs::EventLogResponse::Data::type_,
+                agent_id: String,
+                idempotency_key: String,
+                payload: ::Hash[Symbol, top],
+                step_id: String
+              }
+
+            class Data < Telnyx::Internal::Type::BaseModel
+              attr_accessor event_id: String
+
+              attr_accessor run_id: String
+
+              attr_accessor summary: String
+
+              attr_accessor timestamp: Time
+
+              attr_accessor type: Telnyx::Models::AI::Missions::Runs::EventLogResponse::Data::type_
+
+              attr_reader agent_id: String?
+
+              def agent_id=: (String) -> String
+
+              attr_reader idempotency_key: String?
+
+              def idempotency_key=: (String) -> String
+
+              attr_reader payload: ::Hash[Symbol, top]?
+
+              def payload=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+              attr_reader step_id: String?
+
+              def step_id=: (String) -> String
+
+              def initialize: (
+                event_id: String,
+                run_id: String,
+                summary: String,
+                timestamp: Time,
+                type: Telnyx::Models::AI::Missions::Runs::EventLogResponse::Data::type_,
+                ?agent_id: String,
+                ?idempotency_key: String,
+                ?payload: ::Hash[Symbol, top],
+                ?step_id: String
+              ) -> void
+
+              def to_hash: -> {
+                event_id: String,
+                run_id: String,
+                summary: String,
+                timestamp: Time,
+                type: Telnyx::Models::AI::Missions::Runs::EventLogResponse::Data::type_,
+                agent_id: String,
+                idempotency_key: String,
+                payload: ::Hash[Symbol, top],
+                step_id: String
+              }
+
+              type type_ =
+                :status_change
+                | :step_started
+                | :step_completed
+                | :step_failed
+                | :tool_call
+                | :tool_result
+                | :message
+                | :error
+                | :custom
+
+              module Type
+                extend Telnyx::Internal::Type::Enum
+
+                STATUS_CHANGE: :status_change
+                STEP_STARTED: :step_started
+                STEP_COMPLETED: :step_completed
+                STEP_FAILED: :step_failed
+                TOOL_CALL: :tool_call
+                TOOL_RESULT: :tool_result
+                MESSAGE: :message
+                ERROR: :error
+                CUSTOM: :custom
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::Missions::Runs::EventLogResponse::Data::type_]
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

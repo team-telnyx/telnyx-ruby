@@ -30,6 +30,9 @@ module Telnyx
       sig { returns(Telnyx::Resources::AI::McpServers) }
       attr_reader :mcp_servers
 
+      sig { returns(Telnyx::Resources::AI::Missions) }
+      attr_reader :missions
+
       sig { returns(Telnyx::Resources::AI::OpenAI) }
       attr_reader :openai
 

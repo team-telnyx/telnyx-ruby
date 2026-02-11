@@ -1,0 +1,56 @@
+module Telnyx
+  module Models
+    module AI
+      module OpenAI
+        type embedding_list_embedding_models_response =
+          {
+            data: ::Array[Telnyx::Models::AI::OpenAI::EmbeddingListEmbeddingModelsResponse::Data],
+            object: String
+          }
+
+        class EmbeddingListEmbeddingModelsResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: ::Array[Telnyx::Models::AI::OpenAI::EmbeddingListEmbeddingModelsResponse::Data]
+
+          attr_accessor object: String
+
+          def initialize: (
+            data: ::Array[Telnyx::Models::AI::OpenAI::EmbeddingListEmbeddingModelsResponse::Data],
+            object: String
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[Telnyx::Models::AI::OpenAI::EmbeddingListEmbeddingModelsResponse::Data],
+            object: String
+          }
+
+          type data =
+            { id: String, created: Integer, object: String, owned_by: String }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor created: Integer
+
+            attr_accessor object: String
+
+            attr_accessor owned_by: String
+
+            def initialize: (
+              id: String,
+              created: Integer,
+              object: String,
+              owned_by: String
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              created: Integer,
+              object: String,
+              owned_by: String
+            }
+          end
+        end
+      end
+    end
+  end
+end
