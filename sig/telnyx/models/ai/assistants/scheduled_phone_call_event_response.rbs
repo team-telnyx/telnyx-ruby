@@ -12,6 +12,7 @@ module Telnyx
             conversation_id: String,
             conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::conversation_metadata],
             created_at: Time,
+            dynamic_variables: ::Hash[Symbol, String],
             errors: ::Array[String],
             retry_attempts: Integer,
             retry_count: Integer,
@@ -44,6 +45,12 @@ module Telnyx
 
           def created_at=: (Time) -> Time
 
+          attr_reader dynamic_variables: ::Hash[Symbol, String]?
+
+          def dynamic_variables=: (
+            ::Hash[Symbol, String]
+          ) -> ::Hash[Symbol, String]
+
           attr_reader errors: ::Array[String]?
 
           def errors=: (::Array[String]) -> ::Array[String]
@@ -75,6 +82,7 @@ module Telnyx
             ?conversation_id: String,
             ?conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::conversation_metadata],
             ?created_at: Time,
+            ?dynamic_variables: ::Hash[Symbol, String],
             ?errors: ::Array[String],
             ?retry_attempts: Integer,
             ?retry_count: Integer,
@@ -91,6 +99,7 @@ module Telnyx
             conversation_id: String,
             conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::conversation_metadata],
             created_at: Time,
+            dynamic_variables: ::Hash[Symbol, String],
             errors: ::Array[String],
             retry_attempts: Integer,
             retry_count: Integer,

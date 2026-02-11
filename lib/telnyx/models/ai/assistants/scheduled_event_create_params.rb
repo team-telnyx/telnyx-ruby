@@ -40,13 +40,20 @@ module Telnyx
           optional :conversation_metadata,
                    -> { Telnyx::Internal::Type::HashOf[union: Telnyx::AI::Assistants::ScheduledEventCreateParams::ConversationMetadata] }
 
+          # @!attribute dynamic_variables
+          #   A map of dynamic variable names to values. These variables can be referenced in
+          #   the assistant's instructions and messages using {{variable_name}} syntax.
+          #
+          #   @return [Hash{Symbol=>String}, nil]
+          optional :dynamic_variables, Telnyx::Internal::Type::HashOf[String]
+
           # @!attribute text
           #   Required for sms scheduled events. The text to be sent to the end user.
           #
           #   @return [String, nil]
           optional :text, String
 
-          # @!method initialize(scheduled_at_fixed_datetime:, telnyx_agent_target:, telnyx_conversation_channel:, telnyx_end_user_target:, conversation_metadata: nil, text: nil, request_options: {})
+          # @!method initialize(scheduled_at_fixed_datetime:, telnyx_agent_target:, telnyx_conversation_channel:, telnyx_end_user_target:, conversation_metadata: nil, dynamic_variables: nil, text: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::Assistants::ScheduledEventCreateParams} for more details.
           #
@@ -59,6 +66,8 @@ module Telnyx
           #   @param telnyx_end_user_target [String] The phone number, SIP URI, to schedule the call or text to.
           #
           #   @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}] Metadata associated with the conversation. Telnyx provides several pieces of met
+          #
+          #   @param dynamic_variables [Hash{Symbol=>String}] A map of dynamic variable names to values. These variables can be referenced in
           #
           #   @param text [String] Required for sms scheduled events. The text to be sent to the end user.
           #
