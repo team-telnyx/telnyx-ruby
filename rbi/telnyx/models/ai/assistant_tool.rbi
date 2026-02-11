@@ -492,8 +492,9 @@ module Telnyx
               end
               attr_writer :detection_config
 
-              # The AMD detection mode to use. 'premium' provides the highest accuracy.
-              # 'disabled' turns off AMD detection.
+              # The AMD detection mode to use. 'detect' enables answering machine detection
+              # (works best when warm transfer instructions are also set). 'disabled' turns off
+              # AMD detection.
               sig do
                 returns(
                   T.nilable(
@@ -546,8 +547,9 @@ module Telnyx
                 # Advanced AMD detection configuration parameters. All values are optional -
                 # Telnyx will use defaults if not specified.
                 detection_config: nil,
-                # The AMD detection mode to use. 'premium' provides the highest accuracy.
-                # 'disabled' turns off AMD detection.
+                # The AMD detection mode to use. 'detect' enables answering machine detection
+                # (works best when warm transfer instructions are also set). 'disabled' turns off
+                # AMD detection.
                 detection_mode: nil,
                 # Action to take when voicemail is detected on the transferred call.
                 on_voicemail_detected: nil
@@ -723,8 +725,9 @@ module Telnyx
                 end
               end
 
-              # The AMD detection mode to use. 'premium' provides the highest accuracy.
-              # 'disabled' turns off AMD detection.
+              # The AMD detection mode to use. 'detect' enables answering machine detection
+              # (works best when warm transfer instructions are also set). 'disabled' turns off
+              # AMD detection.
               module DetectionMode
                 extend Telnyx::Internal::Type::Enum
 
@@ -737,34 +740,14 @@ module Telnyx
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-                PREMIUM =
+                DISABLED =
                   T.let(
-                    :premium,
+                    :disabled,
                     Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionMode::TaggedSymbol
                   )
                 DETECT =
                   T.let(
                     :detect,
-                    Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionMode::TaggedSymbol
-                  )
-                DETECT_BEEP =
-                  T.let(
-                    :detect_beep,
-                    Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionMode::TaggedSymbol
-                  )
-                DETECT_WORDS =
-                  T.let(
-                    :detect_words,
-                    Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionMode::TaggedSymbol
-                  )
-                GREETING_END =
-                  T.let(
-                    :greeting_end,
-                    Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionMode::TaggedSymbol
-                  )
-                DISABLED =
-                  T.let(
-                    :disabled,
                     Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionMode::TaggedSymbol
                   )
 
