@@ -58,6 +58,14 @@ module Telnyx
           end
           attr_writer :conversation_metadata
 
+          # A map of dynamic variable names to values. These variables can be referenced in
+          # the assistant's instructions and messages using {{variable_name}} syntax.
+          sig { returns(T.nilable(T::Hash[Symbol, String])) }
+          attr_reader :dynamic_variables
+
+          sig { params(dynamic_variables: T::Hash[Symbol, String]).void }
+          attr_writer :dynamic_variables
+
           # Required for sms scheduled events. The text to be sent to the end user.
           sig { returns(T.nilable(String)) }
           attr_reader :text
@@ -77,6 +85,7 @@ module Telnyx
                   Symbol,
                   Telnyx::AI::Assistants::ScheduledEventCreateParams::ConversationMetadata::Variants
                 ],
+              dynamic_variables: T::Hash[Symbol, String],
               text: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
@@ -92,6 +101,9 @@ module Telnyx
             # Metadata associated with the conversation. Telnyx provides several pieces of
             # metadata, but customers can also add their own.
             conversation_metadata: nil,
+            # A map of dynamic variable names to values. These variables can be referenced in
+            # the assistant's instructions and messages using {{variable_name}} syntax.
+            dynamic_variables: nil,
             # Required for sms scheduled events. The text to be sent to the end user.
             text: nil,
             request_options: {}
@@ -111,6 +123,7 @@ module Telnyx
                     Symbol,
                     Telnyx::AI::Assistants::ScheduledEventCreateParams::ConversationMetadata::Variants
                   ],
+                dynamic_variables: T::Hash[Symbol, String],
                 text: String,
                 request_options: Telnyx::RequestOptions
               }

@@ -10,7 +10,7 @@ module Telnyx
           #
           # Create a scheduled event for an assistant
           #
-          # @overload create(assistant_id, scheduled_at_fixed_datetime:, telnyx_agent_target:, telnyx_conversation_channel:, telnyx_end_user_target:, conversation_metadata: nil, text: nil, request_options: {})
+          # @overload create(assistant_id, scheduled_at_fixed_datetime:, telnyx_agent_target:, telnyx_conversation_channel:, telnyx_end_user_target:, conversation_metadata: nil, dynamic_variables: nil, text: nil, request_options: {})
           #
           # @param assistant_id [String]
           #
@@ -23,6 +23,8 @@ module Telnyx
           # @param telnyx_end_user_target [String] The phone number, SIP URI, to schedule the call or text to.
           #
           # @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}] Metadata associated with the conversation. Telnyx provides several pieces of met
+          #
+          # @param dynamic_variables [Hash{Symbol=>String}] A map of dynamic variable names to values. These variables can be referenced in
           #
           # @param text [String] Required for sms scheduled events. The text to be sent to the end user.
           #
