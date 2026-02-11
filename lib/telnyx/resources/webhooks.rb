@@ -64,6 +64,31 @@ module Telnyx
         Telnyx::Internal::Type::Converter.coerce(Telnyx::Models::UnwrapWebhookEvent, parsed)
       end
 
+      # Verify webhook signature without parsing the payload.
+      #
+      # This method is consistent with the Node SDK's verify() method, allowing
+      # signature verification without parsing the webhook payload.
+      #
+      # @param payload [String] The raw webhook payload
+      # @param headers [Hash] The webhook headers
+      # @param key [String, nil] Optional public key override (base64-encoded)
+      #
+      # @return [Boolean] true if signature is valid
+      #
+      # @raise [Telnyx::Errors::WebhookVerificationError] If verification fails or no public key available
+      def verify(payload, headers, key: nil)
+        public_key = key || @client.public_key
+
+        unless public_key && !public_key.empty?
+          raise Telnyx::Errors::WebhookVerificationError.new(
+            message: "No public key configured. Provide key parameter or configure client with public_key."
+          )
+        end
+
+        verify_signature(payload, headers, public_key)
+        true
+      end
+
       # @api private
       #
       # @param client [Telnyx::Client]

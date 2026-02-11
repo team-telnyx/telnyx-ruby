@@ -214,4 +214,85 @@ class Telnyx::Test::Resources::WebhooksTest < Telnyx::Test::ResourceTest
     # UnwrapWebhookEvent is a Union, so check that result is one of its variants
     assert(Telnyx::Models::UnwrapWebhookEvent.variants.any? { |v| event.is_a?(v) })
   end
+
+  # Tests for the standalone verify() method (Node SDK consistency)
+
+  def test_verify_with_valid_signature
+    client = Telnyx::Client.new(
+      base_url: Telnyx::Test::SingletonClient::TEST_API_BASE_URL,
+      api_key: "My API Key",
+      public_key: @public_key_b64
+    )
+
+    timestamp = Time.now.to_i
+    signature = sign_payload(timestamp, @payload)
+
+    headers = {
+      "telnyx-signature-ed25519" => signature,
+      "telnyx-timestamp" => timestamp.to_s
+    }
+
+    result = client.webhooks.verify(@payload, headers)
+    assert_equal(true, result)
+  end
+
+  def test_verify_with_invalid_signature
+    client = Telnyx::Client.new(
+      base_url: Telnyx::Test::SingletonClient::TEST_API_BASE_URL,
+      api_key: "My API Key",
+      public_key: @public_key_b64
+    )
+
+    timestamp = Time.now.to_i
+    bad_signature = sign_payload(timestamp, "different payload")
+
+    headers = {
+      "telnyx-signature-ed25519" => bad_signature,
+      "telnyx-timestamp" => timestamp.to_s
+    }
+
+    assert_raises(Telnyx::Errors::WebhookVerificationError) do
+      client.webhooks.verify(@payload, headers)
+    end
+  end
+
+  def test_verify_with_key_override
+    # Client has no public key
+    client = Telnyx::Client.new(
+      base_url: Telnyx::Test::SingletonClient::TEST_API_BASE_URL,
+      api_key: "My API Key"
+    )
+
+    timestamp = Time.now.to_i
+    signature = sign_payload(timestamp, @payload)
+
+    headers = {
+      "telnyx-signature-ed25519" => signature,
+      "telnyx-timestamp" => timestamp.to_s
+    }
+
+    # Pass key as argument
+    result = client.webhooks.verify(@payload, headers, key: @public_key_b64)
+    assert_equal(true, result)
+  end
+
+  def test_verify_without_public_key
+    # Client has no public key and no key provided
+    client = Telnyx::Client.new(
+      base_url: Telnyx::Test::SingletonClient::TEST_API_BASE_URL,
+      api_key: "My API Key"
+    )
+
+    timestamp = Time.now.to_i
+    signature = sign_payload(timestamp, @payload)
+
+    headers = {
+      "telnyx-signature-ed25519" => signature,
+      "telnyx-timestamp" => timestamp.to_s
+    }
+
+    assert_raises(Telnyx::Errors::WebhookVerificationError) do
+      client.webhooks.verify(@payload, headers)
+    end
+  end
 end
