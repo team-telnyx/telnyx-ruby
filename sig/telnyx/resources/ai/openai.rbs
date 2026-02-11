@@ -1,0 +1,11 @@
+module Telnyx
+  module Resources
+    class AI
+      class OpenAI
+        attr_reader embeddings: Telnyx::Resources::AI::OpenAI::Embeddings
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end
