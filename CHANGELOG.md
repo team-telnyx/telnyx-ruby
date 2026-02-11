@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.17.0 (2026-02-11)
+
+Full Changelog: [v5.16.0...v5.17.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.16.0...v5.17.0)
+
+### Features
+
+* Add dynamic_variables field to scheduled event schemas ([63ec440](https://github.com/team-telnyx/telnyx-ruby/commit/63ec440947f4fc9d884fa09c43573eaf4b4ed6e1))
+
 ## 5.16.0 (2026-02-11)
 
 Full Changelog: [v5.15.0...v5.16.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.15.0...v5.16.0)
