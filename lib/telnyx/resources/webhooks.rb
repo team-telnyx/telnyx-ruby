@@ -67,16 +67,17 @@ module Telnyx
       # Verify webhook signature without parsing the payload.
       #
       # This method is consistent with the Node SDK's verify() method, allowing
-      # signature verification without parsing the webhook payload.
+      # signature verification without parsing the webhook payload. The bang (!)
+      # indicates this method raises an exception on failure (Ruby convention).
       #
       # @param payload [String] The raw webhook payload
       # @param headers [Hash] The webhook headers
       # @param key [String, nil] Optional public key override (base64-encoded)
       #
-      # @return [Boolean] true if signature is valid
+      # @return [void]
       #
       # @raise [Telnyx::Errors::WebhookVerificationError] If verification fails or no public key available
-      def verify(payload, headers, key: nil)
+      def verify!(payload, headers, key: nil)
         public_key = key || @client.public_key
 
         unless public_key && !public_key.empty?
@@ -86,7 +87,6 @@ module Telnyx
         end
 
         verify_signature(payload, headers, public_key)
-        true
       end
 
       # @api private

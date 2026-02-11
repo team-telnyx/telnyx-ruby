@@ -215,7 +215,7 @@ class Telnyx::Test::Resources::WebhooksTest < Telnyx::Test::ResourceTest
     assert(Telnyx::Models::UnwrapWebhookEvent.variants.any? { |v| event.is_a?(v) })
   end
 
-  # Tests for the standalone verify() method (Node SDK consistency)
+  # Tests for the standalone verify!() method (Node SDK consistency)
 
   def test_verify_with_valid_signature
     client = Telnyx::Client.new(
@@ -232,8 +232,8 @@ class Telnyx::Test::Resources::WebhooksTest < Telnyx::Test::ResourceTest
       "telnyx-timestamp" => timestamp.to_s
     }
 
-    result = client.webhooks.verify(@payload, headers)
-    assert_equal(true, result)
+    # Should not raise - if it does, test fails
+    client.webhooks.verify!(@payload, headers)
   end
 
   def test_verify_with_invalid_signature
@@ -252,7 +252,7 @@ class Telnyx::Test::Resources::WebhooksTest < Telnyx::Test::ResourceTest
     }
 
     assert_raises(Telnyx::Errors::WebhookVerificationError) do
-      client.webhooks.verify(@payload, headers)
+      client.webhooks.verify!(@payload, headers)
     end
   end
 
@@ -271,9 +271,8 @@ class Telnyx::Test::Resources::WebhooksTest < Telnyx::Test::ResourceTest
       "telnyx-timestamp" => timestamp.to_s
     }
 
-    # Pass key as argument
-    result = client.webhooks.verify(@payload, headers, key: @public_key_b64)
-    assert_equal(true, result)
+    # Pass key as argument - should not raise
+    client.webhooks.verify!(@payload, headers, key: @public_key_b64)
   end
 
   def test_verify_without_public_key
@@ -292,7 +291,7 @@ class Telnyx::Test::Resources::WebhooksTest < Telnyx::Test::ResourceTest
     }
 
     assert_raises(Telnyx::Errors::WebhookVerificationError) do
-      client.webhooks.verify(@payload, headers)
+      client.webhooks.verify!(@payload, headers)
     end
   end
 end
