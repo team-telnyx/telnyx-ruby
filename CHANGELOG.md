@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.19.0 (2026-02-11)
+
+Full Changelog: [v5.18.0...v5.19.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.18.0...v5.19.0)
+
+### Features
+
+* AI-2086: Add AI Missions endpoints to inference spec ([cf5be0f](https://github.com/team-telnyx/telnyx-ruby/commit/cf5be0ffab1e20d5a1a0ea78cf47aaa0468e0642))
+
+
+### Bug Fixes
+
+* **client:** revert change to certain pagination metadata types ([4b1d673](https://github.com/team-telnyx/telnyx-ruby/commit/4b1d67399bb9b7c9f28e767f5ee8d92b77be2864))
+
 ## 5.18.0 (2026-02-11)
 
 Full Changelog: [v5.17.0...v5.18.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.17.0...v5.18.0)
