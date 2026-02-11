@@ -19,6 +19,8 @@ module Telnyx
 
       attr_reader mcp_servers: Telnyx::Resources::AI::McpServers
 
+      attr_reader openai: Telnyx::Resources::AI::OpenAI
+
       def retrieve_models: (
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::AIRetrieveModelsResponse

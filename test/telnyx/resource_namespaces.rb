@@ -44,6 +44,9 @@ module Telnyx
 
         module Integrations
         end
+
+        module OpenAI
+        end
       end
 
       module Assistants
@@ -159,6 +162,9 @@ module Telnyx
       end
 
       module NumberReservations
+      end
+
+      module OpenAI
       end
 
       module OperatorConnect
