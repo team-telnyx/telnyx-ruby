@@ -1,0 +1,49 @@
+module Telnyx
+  module Resources
+    class AI
+      class Missions
+        class Runs
+          class Plan
+            def create: (
+              String run_id,
+              mission_id: String,
+              steps: ::Array[Telnyx::AI::Missions::Runs::PlanCreateParams::Step],
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::AI::Missions::Runs::PlanCreateResponse
+
+            def retrieve: (
+              String run_id,
+              mission_id: String,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::AI::Missions::Runs::PlanRetrieveResponse
+
+            def add_steps_to_plan: (
+              String run_id,
+              mission_id: String,
+              steps: ::Array[Telnyx::AI::Missions::Runs::PlanAddStepsToPlanParams::Step],
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::AI::Missions::Runs::PlanAddStepsToPlanResponse
+
+            def get_step_details: (
+              String step_id,
+              mission_id: String,
+              run_id: String,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::AI::Missions::Runs::PlanGetStepDetailsResponse
+
+            def update_step: (
+              String step_id,
+              mission_id: String,
+              run_id: String,
+              ?metadata: ::Hash[Symbol, top],
+              ?status: Telnyx::Models::AI::Missions::Runs::PlanUpdateStepParams::status,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::AI::Missions::Runs::PlanUpdateStepResponse
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

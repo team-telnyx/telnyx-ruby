@@ -1,0 +1,77 @@
+module Telnyx
+  module Models
+    module AI
+      module OpenAI
+        type embedding_create_embeddings_response =
+          {
+            data: ::Array[Telnyx::Models::AI::OpenAI::EmbeddingCreateEmbeddingsResponse::Data],
+            model: String,
+            object: String,
+            usage: Telnyx::Models::AI::OpenAI::EmbeddingCreateEmbeddingsResponse::Usage
+          }
+
+        class EmbeddingCreateEmbeddingsResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: ::Array[Telnyx::Models::AI::OpenAI::EmbeddingCreateEmbeddingsResponse::Data]
+
+          attr_accessor model: String
+
+          attr_accessor object: String
+
+          attr_accessor usage: Telnyx::Models::AI::OpenAI::EmbeddingCreateEmbeddingsResponse::Usage
+
+          def initialize: (
+            data: ::Array[Telnyx::Models::AI::OpenAI::EmbeddingCreateEmbeddingsResponse::Data],
+            model: String,
+            object: String,
+            usage: Telnyx::Models::AI::OpenAI::EmbeddingCreateEmbeddingsResponse::Usage
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[Telnyx::Models::AI::OpenAI::EmbeddingCreateEmbeddingsResponse::Data],
+            model: String,
+            object: String,
+            usage: Telnyx::Models::AI::OpenAI::EmbeddingCreateEmbeddingsResponse::Usage
+          }
+
+          type data =
+            { embedding: ::Array[Float], index: Integer, object: String }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_accessor embedding: ::Array[Float]
+
+            attr_accessor index: Integer
+
+            attr_accessor object: String
+
+            def initialize: (
+              embedding: ::Array[Float],
+              index: Integer,
+              object: String
+            ) -> void
+
+            def to_hash: -> {
+              embedding: ::Array[Float],
+              index: Integer,
+              object: String
+            }
+          end
+
+          type usage = { prompt_tokens: Integer, total_tokens: Integer }
+
+          class Usage < Telnyx::Internal::Type::BaseModel
+            attr_accessor prompt_tokens: Integer
+
+            attr_accessor total_tokens: Integer
+
+            def initialize: (
+              prompt_tokens: Integer,
+              total_tokens: Integer
+            ) -> void
+
+            def to_hash: -> { prompt_tokens: Integer, total_tokens: Integer }
+          end
+        end
+      end
+    end
+  end
+end

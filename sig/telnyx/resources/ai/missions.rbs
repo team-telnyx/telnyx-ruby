@@ -1,0 +1,66 @@
+module Telnyx
+  module Resources
+    class AI
+      class Missions
+        attr_reader runs: Telnyx::Resources::AI::Missions::Runs
+
+        attr_reader knowledge_bases: Telnyx::Resources::AI::Missions::KnowledgeBases
+
+        attr_reader mcp_servers: Telnyx::Resources::AI::Missions::McpServers
+
+        attr_reader tools: Telnyx::Resources::AI::Missions::Tools
+
+        def create: (
+          name: String,
+          ?description: String,
+          ?execution_mode: Telnyx::Models::AI::MissionCreateParams::execution_mode,
+          ?instructions: String,
+          ?metadata: ::Hash[Symbol, top],
+          ?model: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::MissionCreateResponse
+
+        def retrieve: (
+          String mission_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::MissionRetrieveResponse
+
+        def list: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AI::MissionListResponse]
+
+        def clone_mission: (
+          String mission_id,
+          ?request_options: Telnyx::request_opts
+        ) -> top
+
+        def delete_mission: (
+          String mission_id,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def list_events: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?type: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AI::MissionListEventsResponse]
+
+        def update_mission: (
+          String mission_id,
+          ?description: String,
+          ?execution_mode: Telnyx::Models::AI::MissionUpdateMissionParams::execution_mode,
+          ?instructions: String,
+          ?metadata: ::Hash[Symbol, top],
+          ?model: String,
+          ?name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::MissionUpdateMissionResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

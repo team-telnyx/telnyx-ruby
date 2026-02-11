@@ -1,0 +1,43 @@
+module Telnyx
+  module Resources
+    class AI
+      class Missions
+        class Runs
+          class Events
+            def list: (
+              String run_id,
+              mission_id: String,
+              ?agent_id: String,
+              ?page_number: Integer,
+              ?page_size: Integer,
+              ?step_id: String,
+              ?type: String,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AI::Missions::Runs::EventListResponse]
+
+            def get_event_details: (
+              String event_id,
+              mission_id: String,
+              run_id: String,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::AI::Missions::Runs::EventGetEventDetailsResponse
+
+            def log: (
+              String run_id,
+              mission_id: String,
+              summary: String,
+              type: Telnyx::Models::AI::Missions::Runs::EventLogParams::type_,
+              ?agent_id: String,
+              ?idempotency_key: String,
+              ?payload: ::Hash[Symbol, top],
+              ?step_id: String,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::AI::Missions::Runs::EventLogResponse
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end
