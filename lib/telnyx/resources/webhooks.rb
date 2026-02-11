@@ -122,7 +122,7 @@ module Telnyx
               message: "Webhook timestamp is too old or too new (#{time_diff}s difference)"
             )
           end
-        rescue ArgumentError => e
+        rescue ArgumentError
           raise Telnyx::Errors::WebhookVerificationError.new(
             message: "Invalid timestamp format: #{timestamp_header}"
           )
