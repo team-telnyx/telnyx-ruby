@@ -233,8 +233,9 @@ module Telnyx
                        -> { Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionConfig }
 
               # @!attribute detection_mode
-              #   The AMD detection mode to use. 'premium' provides the highest accuracy.
-              #   'disabled' turns off AMD detection.
+              #   The AMD detection mode to use. 'detect' enables answering machine detection
+              #   (works best when warm transfer instructions are also set). 'disabled' turns off
+              #   AMD detection.
               #
               #   @return [Symbol, Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionMode, nil]
               optional :detection_mode,
@@ -258,7 +259,7 @@ module Telnyx
               #
               #   @param detection_config [Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionConfig] Advanced AMD detection configuration parameters. All values are optional - Telny
               #
-              #   @param detection_mode [Symbol, Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionMode] The AMD detection mode to use. 'premium' provides the highest accuracy. 'disable
+              #   @param detection_mode [Symbol, Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionMode] The AMD detection mode to use. 'detect' enables answering machine detection (wor
               #
               #   @param on_voicemail_detected [Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected] Action to take when voicemail is detected on the transferred call.
 
@@ -362,19 +363,16 @@ module Telnyx
                 #   @param total_analysis_time_millis [Integer] Total time allowed for AMD analysis.
               end
 
-              # The AMD detection mode to use. 'premium' provides the highest accuracy.
-              # 'disabled' turns off AMD detection.
+              # The AMD detection mode to use. 'detect' enables answering machine detection
+              # (works best when warm transfer instructions are also set). 'disabled' turns off
+              # AMD detection.
               #
               # @see Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection#detection_mode
               module DetectionMode
                 extend Telnyx::Internal::Type::Enum
 
-                PREMIUM = :premium
-                DETECT = :detect
-                DETECT_BEEP = :detect_beep
-                DETECT_WORDS = :detect_words
-                GREETING_END = :greeting_end
                 DISABLED = :disabled
+                DETECT = :detect
 
                 # @!method self.values
                 #   @return [Array<Symbol>]

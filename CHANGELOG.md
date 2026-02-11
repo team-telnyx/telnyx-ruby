@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.15.0 (2026-02-11)
+
+Full Changelog: [v5.14.0...v5.15.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.14.0...v5.15.0)
+
+### Features
+
+* Limit detection_mode enum to disabled and detect only ([a1095ec](https://github.com/team-telnyx/telnyx-ruby/commit/a1095ecb570f54320530b9223ea6bed3f38a2125))
+
 ## 5.14.0 (2026-02-09)
 
 Full Changelog: [v5.13.0...v5.14.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.13.0...v5.14.0)
