@@ -311,23 +311,13 @@ module Telnyx
                 }
               end
 
-              type detection_mode =
-                :premium
-                | :detect
-                | :detect_beep
-                | :detect_words
-                | :greeting_end
-                | :disabled
+              type detection_mode = :disabled | :detect
 
               module DetectionMode
                 extend Telnyx::Internal::Type::Enum
 
-                PREMIUM: :premium
-                DETECT: :detect
-                DETECT_BEEP: :detect_beep
-                DETECT_WORDS: :detect_words
-                GREETING_END: :greeting_end
                 DISABLED: :disabled
+                DETECT: :detect
 
                 def self?.values: -> ::Array[Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::detection_mode]
               end
