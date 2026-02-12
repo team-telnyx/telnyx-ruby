@@ -4,100 +4,16 @@ module Telnyx
       module Missions
         module Runs
           type plan_update_step_response =
-            {
-              data: Telnyx::Models::AI::Missions::Runs::PlanUpdateStepResponse::Data
-            }
+            { data: Telnyx::AI::Missions::Runs::PlanStepData }
 
           class PlanUpdateStepResponse < Telnyx::Internal::Type::BaseModel
-            attr_accessor data: Telnyx::Models::AI::Missions::Runs::PlanUpdateStepResponse::Data
+            attr_accessor data: Telnyx::AI::Missions::Runs::PlanStepData
 
             def initialize: (
-              data: Telnyx::Models::AI::Missions::Runs::PlanUpdateStepResponse::Data
+              data: Telnyx::AI::Missions::Runs::PlanStepData
             ) -> void
 
-            def to_hash: -> {
-              data: Telnyx::Models::AI::Missions::Runs::PlanUpdateStepResponse::Data
-            }
-
-            type data =
-              {
-                description: String,
-                run_id: String,
-                sequence: Integer,
-                status: Telnyx::Models::AI::Missions::Runs::PlanUpdateStepResponse::Data::status,
-                step_id: String,
-                completed_at: Time,
-                metadata: ::Hash[Symbol, top],
-                parent_step_id: String,
-                started_at: Time
-              }
-
-            class Data < Telnyx::Internal::Type::BaseModel
-              attr_accessor description: String
-
-              attr_accessor run_id: String
-
-              attr_accessor sequence: Integer
-
-              attr_accessor status: Telnyx::Models::AI::Missions::Runs::PlanUpdateStepResponse::Data::status
-
-              attr_accessor step_id: String
-
-              attr_reader completed_at: Time?
-
-              def completed_at=: (Time) -> Time
-
-              attr_reader metadata: ::Hash[Symbol, top]?
-
-              def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
-
-              attr_reader parent_step_id: String?
-
-              def parent_step_id=: (String) -> String
-
-              attr_reader started_at: Time?
-
-              def started_at=: (Time) -> Time
-
-              def initialize: (
-                description: String,
-                run_id: String,
-                sequence: Integer,
-                status: Telnyx::Models::AI::Missions::Runs::PlanUpdateStepResponse::Data::status,
-                step_id: String,
-                ?completed_at: Time,
-                ?metadata: ::Hash[Symbol, top],
-                ?parent_step_id: String,
-                ?started_at: Time
-              ) -> void
-
-              def to_hash: -> {
-                description: String,
-                run_id: String,
-                sequence: Integer,
-                status: Telnyx::Models::AI::Missions::Runs::PlanUpdateStepResponse::Data::status,
-                step_id: String,
-                completed_at: Time,
-                metadata: ::Hash[Symbol, top],
-                parent_step_id: String,
-                started_at: Time
-              }
-
-              type status =
-                :pending | :in_progress | :completed | :skipped | :failed
-
-              module Status
-                extend Telnyx::Internal::Type::Enum
-
-                PENDING: :pending
-                IN_PROGRESS: :in_progress
-                COMPLETED: :completed
-                SKIPPED: :skipped
-                FAILED: :failed
-
-                def self?.values: -> ::Array[Telnyx::Models::AI::Missions::Runs::PlanUpdateStepResponse::Data::status]
-              end
-            end
+            def to_hash: -> { data: Telnyx::AI::Missions::Runs::PlanStepData }
           end
         end
       end
