@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.20.0 (2026-02-12)
+
+Full Changelog: [v5.19.0...v5.20.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.19.0...v5.20.0)
+
+### Features
+
+* **api:** manual updates to include models ([d717cb0](https://github.com/team-telnyx/telnyx-ruby/commit/d717cb06afdf908d8365204e659c6278ce3e1817))
+
 ## 5.19.0 (2026-02-11)
 
 Full Changelog: [v5.18.0...v5.19.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.18.0...v5.19.0)

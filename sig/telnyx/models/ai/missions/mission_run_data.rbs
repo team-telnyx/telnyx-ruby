@@ -1,13 +1,15 @@
 module Telnyx
   module Models
     module AI
+      class MissionRunData = Missions::MissionRunData
+
       module Missions
-        type run_list_runs_response =
+        type mission_run_data =
           {
             mission_id: String,
             run_id: String,
             started_at: Time,
-            status: Telnyx::Models::AI::Missions::RunListRunsResponse::status,
+            status: Telnyx::Models::AI::Missions::MissionRunData::status,
             updated_at: Time,
             error: String,
             finished_at: Time,
@@ -17,14 +19,14 @@ module Telnyx
             result_summary: String
           }
 
-        class RunListRunsResponse < Telnyx::Internal::Type::BaseModel
+        class MissionRunData < Telnyx::Internal::Type::BaseModel
           attr_accessor mission_id: String
 
           attr_accessor run_id: String
 
           attr_accessor started_at: Time
 
-          attr_accessor status: Telnyx::Models::AI::Missions::RunListRunsResponse::status
+          attr_accessor status: Telnyx::Models::AI::Missions::MissionRunData::status
 
           attr_accessor updated_at: Time
 
@@ -56,7 +58,7 @@ module Telnyx
             mission_id: String,
             run_id: String,
             started_at: Time,
-            status: Telnyx::Models::AI::Missions::RunListRunsResponse::status,
+            status: Telnyx::Models::AI::Missions::MissionRunData::status,
             updated_at: Time,
             ?error: String,
             ?finished_at: Time,
@@ -70,7 +72,7 @@ module Telnyx
             mission_id: String,
             run_id: String,
             started_at: Time,
-            status: Telnyx::Models::AI::Missions::RunListRunsResponse::status,
+            status: Telnyx::Models::AI::Missions::MissionRunData::status,
             updated_at: Time,
             error: String,
             finished_at: Time,
@@ -93,7 +95,7 @@ module Telnyx
             FAILED: :failed
             CANCELLED: :cancelled
 
-            def self?.values: -> ::Array[Telnyx::Models::AI::Missions::RunListRunsResponse::status]
+            def self?.values: -> ::Array[Telnyx::Models::AI::Missions::MissionRunData::status]
           end
         end
       end

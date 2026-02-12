@@ -57,9 +57,7 @@ module Telnyx
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultFlatPagination[
-              Telnyx::Models::AI::MissionListResponse
-            ]
+            Telnyx::Internal::DefaultFlatPagination[Telnyx::AI::MissionData]
           )
         end
         def list(
