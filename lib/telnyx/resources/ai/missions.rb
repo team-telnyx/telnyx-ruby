@@ -71,7 +71,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::MissionListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::MissionData>]
         #
         # @see Telnyx::Models::AI::MissionListParams
         def list(params = {})
@@ -81,7 +81,7 @@ module Telnyx
             path: "ai/missions",
             query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::AI::MissionListResponse,
+            model: Telnyx::AI::MissionData,
             options: options
           )
         end
