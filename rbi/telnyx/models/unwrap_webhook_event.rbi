@@ -12,7 +12,7 @@ module Telnyx
             Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent,
             Telnyx::CallAIGatherPartialResultsWebhookEvent,
             Telnyx::CallAnsweredWebhookEvent,
-            Telnyx::CallBridged,
+            Telnyx::CallBridgedWebhookEvent,
             Telnyx::CallConversationEndedWebhookEvent,
             Telnyx::CallConversationInsightsGeneratedWebhookEvent,
             Telnyx::CallDtmfReceivedWebhookEvent,

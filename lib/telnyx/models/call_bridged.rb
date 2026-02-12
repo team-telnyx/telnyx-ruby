@@ -3,144 +3,133 @@
 module Telnyx
   module Models
     class CallBridged < Telnyx::Internal::Type::BaseModel
-      # @!attribute data
+      # @!attribute id
+      #   Identifies the type of resource.
       #
-      #   @return [Telnyx::Models::CallBridged::Data, nil]
-      optional :data, -> { Telnyx::CallBridged::Data }
+      #   @return [String, nil]
+      optional :id, String
 
-      # @!method initialize(data: nil)
-      #   @param data [Telnyx::Models::CallBridged::Data]
+      # @!attribute event_type
+      #   The type of event being delivered.
+      #
+      #   @return [Symbol, Telnyx::Models::CallBridged::EventType, nil]
+      optional :event_type, enum: -> { Telnyx::CallBridged::EventType }
 
-      # @see Telnyx::Models::CallBridged#data
-      class Data < Telnyx::Internal::Type::BaseModel
-        # @!attribute id
-        #   Identifies the type of resource.
+      # @!attribute occurred_at
+      #   ISO 8601 datetime of when the event occurred.
+      #
+      #   @return [Time, nil]
+      optional :occurred_at, Time
+
+      # @!attribute payload
+      #
+      #   @return [Telnyx::Models::CallBridged::Payload, nil]
+      optional :payload, -> { Telnyx::CallBridged::Payload }
+
+      # @!attribute record_type
+      #   Identifies the type of the resource.
+      #
+      #   @return [Symbol, Telnyx::Models::CallBridged::RecordType, nil]
+      optional :record_type, enum: -> { Telnyx::CallBridged::RecordType }
+
+      # @!method initialize(id: nil, event_type: nil, occurred_at: nil, payload: nil, record_type: nil)
+      #   @param id [String] Identifies the type of resource.
+      #
+      #   @param event_type [Symbol, Telnyx::Models::CallBridged::EventType] The type of event being delivered.
+      #
+      #   @param occurred_at [Time] ISO 8601 datetime of when the event occurred.
+      #
+      #   @param payload [Telnyx::Models::CallBridged::Payload]
+      #
+      #   @param record_type [Symbol, Telnyx::Models::CallBridged::RecordType] Identifies the type of the resource.
+
+      # The type of event being delivered.
+      #
+      # @see Telnyx::Models::CallBridged#event_type
+      module EventType
+        extend Telnyx::Internal::Type::Enum
+
+        CALL_BRIDGED = :"call.bridged"
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # @see Telnyx::Models::CallBridged#payload
+      class Payload < Telnyx::Internal::Type::BaseModel
+        # @!attribute call_control_id
+        #   Call ID used to issue commands via Call Control API.
         #
         #   @return [String, nil]
-        optional :id, String
+        optional :call_control_id, String
 
-        # @!attribute event_type
-        #   The type of event being delivered.
+        # @!attribute call_leg_id
+        #   ID that is unique to the call and can be used to correlate webhook events.
         #
-        #   @return [Symbol, Telnyx::Models::CallBridged::Data::EventType, nil]
-        optional :event_type, enum: -> { Telnyx::CallBridged::Data::EventType }
+        #   @return [String, nil]
+        optional :call_leg_id, String
 
-        # @!attribute occurred_at
-        #   ISO 8601 datetime of when the event occurred.
+        # @!attribute call_session_id
+        #   ID that is unique to the call session and can be used to correlate webhook
+        #   events. Call session is a group of related call legs that logically belong to
+        #   the same phone call, e.g. an inbound and outbound leg of a transferred call.
         #
-        #   @return [Time, nil]
-        optional :occurred_at, Time
+        #   @return [String, nil]
+        optional :call_session_id, String
 
-        # @!attribute payload
+        # @!attribute client_state
+        #   State received from a command.
         #
-        #   @return [Telnyx::Models::CallBridged::Data::Payload, nil]
-        optional :payload, -> { Telnyx::CallBridged::Data::Payload }
+        #   @return [String, nil]
+        optional :client_state, String
 
-        # @!attribute record_type
-        #   Identifies the type of the resource.
+        # @!attribute connection_id
+        #   Call Control App ID (formerly Telnyx connection ID) used in the call.
         #
-        #   @return [Symbol, Telnyx::Models::CallBridged::Data::RecordType, nil]
-        optional :record_type, enum: -> { Telnyx::CallBridged::Data::RecordType }
+        #   @return [String, nil]
+        optional :connection_id, String
 
-        # @!method initialize(id: nil, event_type: nil, occurred_at: nil, payload: nil, record_type: nil)
-        #   @param id [String] Identifies the type of resource.
+        # @!attribute from
+        #   Number or SIP URI placing the call.
         #
-        #   @param event_type [Symbol, Telnyx::Models::CallBridged::Data::EventType] The type of event being delivered.
+        #   @return [String, nil]
+        optional :from, String
+
+        # @!attribute to
+        #   Destination number or SIP URI of the call.
         #
-        #   @param occurred_at [Time] ISO 8601 datetime of when the event occurred.
+        #   @return [String, nil]
+        optional :to, String
+
+        # @!method initialize(call_control_id: nil, call_leg_id: nil, call_session_id: nil, client_state: nil, connection_id: nil, from: nil, to: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::CallBridged::Payload} for more details.
         #
-        #   @param payload [Telnyx::Models::CallBridged::Data::Payload]
+        #   @param call_control_id [String] Call ID used to issue commands via Call Control API.
         #
-        #   @param record_type [Symbol, Telnyx::Models::CallBridged::Data::RecordType] Identifies the type of the resource.
-
-        # The type of event being delivered.
+        #   @param call_leg_id [String] ID that is unique to the call and can be used to correlate webhook events.
         #
-        # @see Telnyx::Models::CallBridged::Data#event_type
-        module EventType
-          extend Telnyx::Internal::Type::Enum
-
-          CALL_BRIDGED = :"call.bridged"
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # @see Telnyx::Models::CallBridged::Data#payload
-        class Payload < Telnyx::Internal::Type::BaseModel
-          # @!attribute call_control_id
-          #   Call ID used to issue commands via Call Control API.
-          #
-          #   @return [String, nil]
-          optional :call_control_id, String
-
-          # @!attribute call_leg_id
-          #   ID that is unique to the call and can be used to correlate webhook events.
-          #
-          #   @return [String, nil]
-          optional :call_leg_id, String
-
-          # @!attribute call_session_id
-          #   ID that is unique to the call session and can be used to correlate webhook
-          #   events. Call session is a group of related call legs that logically belong to
-          #   the same phone call, e.g. an inbound and outbound leg of a transferred call.
-          #
-          #   @return [String, nil]
-          optional :call_session_id, String
-
-          # @!attribute client_state
-          #   State received from a command.
-          #
-          #   @return [String, nil]
-          optional :client_state, String
-
-          # @!attribute connection_id
-          #   Call Control App ID (formerly Telnyx connection ID) used in the call.
-          #
-          #   @return [String, nil]
-          optional :connection_id, String
-
-          # @!attribute from
-          #   Number or SIP URI placing the call.
-          #
-          #   @return [String, nil]
-          optional :from, String
-
-          # @!attribute to
-          #   Destination number or SIP URI of the call.
-          #
-          #   @return [String, nil]
-          optional :to, String
-
-          # @!method initialize(call_control_id: nil, call_leg_id: nil, call_session_id: nil, client_state: nil, connection_id: nil, from: nil, to: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::CallBridged::Data::Payload} for more details.
-          #
-          #   @param call_control_id [String] Call ID used to issue commands via Call Control API.
-          #
-          #   @param call_leg_id [String] ID that is unique to the call and can be used to correlate webhook events.
-          #
-          #   @param call_session_id [String] ID that is unique to the call session and can be used to correlate webhook event
-          #
-          #   @param client_state [String] State received from a command.
-          #
-          #   @param connection_id [String] Call Control App ID (formerly Telnyx connection ID) used in the call.
-          #
-          #   @param from [String] Number or SIP URI placing the call.
-          #
-          #   @param to [String] Destination number or SIP URI of the call.
-        end
-
-        # Identifies the type of the resource.
+        #   @param call_session_id [String] ID that is unique to the call session and can be used to correlate webhook event
         #
-        # @see Telnyx::Models::CallBridged::Data#record_type
-        module RecordType
-          extend Telnyx::Internal::Type::Enum
+        #   @param client_state [String] State received from a command.
+        #
+        #   @param connection_id [String] Call Control App ID (formerly Telnyx connection ID) used in the call.
+        #
+        #   @param from [String] Number or SIP URI placing the call.
+        #
+        #   @param to [String] Destination number or SIP URI of the call.
+      end
 
-          EVENT = :event
+      # Identifies the type of the resource.
+      #
+      # @see Telnyx::Models::CallBridged#record_type
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
+        EVENT = :event
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end
