@@ -1,136 +1,148 @@
 module Telnyx
   module Models
-    type call_bridged =
-      {
-        id: String,
-        event_type: Telnyx::Models::CallBridged::event_type,
-        occurred_at: Time,
-        payload: Telnyx::CallBridged::Payload,
-        record_type: Telnyx::Models::CallBridged::record_type
-      }
+    type call_bridged = { data: Telnyx::CallBridged::Data }
 
     class CallBridged < Telnyx::Internal::Type::BaseModel
-      attr_reader id: String?
+      attr_reader data: Telnyx::CallBridged::Data?
 
-      def id=: (String) -> String
+      def data=: (Telnyx::CallBridged::Data) -> Telnyx::CallBridged::Data
 
-      attr_reader event_type: Telnyx::Models::CallBridged::event_type?
+      def initialize: (?data: Telnyx::CallBridged::Data) -> void
 
-      def event_type=: (
-        Telnyx::Models::CallBridged::event_type
-      ) -> Telnyx::Models::CallBridged::event_type
+      def to_hash: -> { data: Telnyx::CallBridged::Data }
 
-      attr_reader occurred_at: Time?
-
-      def occurred_at=: (Time) -> Time
-
-      attr_reader payload: Telnyx::CallBridged::Payload?
-
-      def payload=: (
-        Telnyx::CallBridged::Payload
-      ) -> Telnyx::CallBridged::Payload
-
-      attr_reader record_type: Telnyx::Models::CallBridged::record_type?
-
-      def record_type=: (
-        Telnyx::Models::CallBridged::record_type
-      ) -> Telnyx::Models::CallBridged::record_type
-
-      def initialize: (
-        ?id: String,
-        ?event_type: Telnyx::Models::CallBridged::event_type,
-        ?occurred_at: Time,
-        ?payload: Telnyx::CallBridged::Payload,
-        ?record_type: Telnyx::Models::CallBridged::record_type
-      ) -> void
-
-      def to_hash: -> {
-        id: String,
-        event_type: Telnyx::Models::CallBridged::event_type,
-        occurred_at: Time,
-        payload: Telnyx::CallBridged::Payload,
-        record_type: Telnyx::Models::CallBridged::record_type
-      }
-
-      type event_type = :"call.bridged"
-
-      module EventType
-        extend Telnyx::Internal::Type::Enum
-
-        CALL_BRIDGED: :"call.bridged"
-
-        def self?.values: -> ::Array[Telnyx::Models::CallBridged::event_type]
-      end
-
-      type payload =
+      type data =
         {
-          call_control_id: String,
-          call_leg_id: String,
-          call_session_id: String,
-          client_state: String,
-          connection_id: String,
-          from: String,
-          to: String
+          id: String,
+          event_type: Telnyx::Models::CallBridged::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::CallBridged::Data::Payload,
+          record_type: Telnyx::Models::CallBridged::Data::record_type
         }
 
-      class Payload < Telnyx::Internal::Type::BaseModel
-        attr_reader call_control_id: String?
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
 
-        def call_control_id=: (String) -> String
+        def id=: (String) -> String
 
-        attr_reader call_leg_id: String?
+        attr_reader event_type: Telnyx::Models::CallBridged::Data::event_type?
 
-        def call_leg_id=: (String) -> String
+        def event_type=: (
+          Telnyx::Models::CallBridged::Data::event_type
+        ) -> Telnyx::Models::CallBridged::Data::event_type
 
-        attr_reader call_session_id: String?
+        attr_reader occurred_at: Time?
 
-        def call_session_id=: (String) -> String
+        def occurred_at=: (Time) -> Time
 
-        attr_reader client_state: String?
+        attr_reader payload: Telnyx::CallBridged::Data::Payload?
 
-        def client_state=: (String) -> String
+        def payload=: (
+          Telnyx::CallBridged::Data::Payload
+        ) -> Telnyx::CallBridged::Data::Payload
 
-        attr_reader connection_id: String?
+        attr_reader record_type: Telnyx::Models::CallBridged::Data::record_type?
 
-        def connection_id=: (String) -> String
-
-        attr_reader from: String?
-
-        def from=: (String) -> String
-
-        attr_reader to: String?
-
-        def to=: (String) -> String
+        def record_type=: (
+          Telnyx::Models::CallBridged::Data::record_type
+        ) -> Telnyx::Models::CallBridged::Data::record_type
 
         def initialize: (
-          ?call_control_id: String,
-          ?call_leg_id: String,
-          ?call_session_id: String,
-          ?client_state: String,
-          ?connection_id: String,
-          ?from: String,
-          ?to: String
+          ?id: String,
+          ?event_type: Telnyx::Models::CallBridged::Data::event_type,
+          ?occurred_at: Time,
+          ?payload: Telnyx::CallBridged::Data::Payload,
+          ?record_type: Telnyx::Models::CallBridged::Data::record_type
         ) -> void
 
         def to_hash: -> {
-          call_control_id: String,
-          call_leg_id: String,
-          call_session_id: String,
-          client_state: String,
-          connection_id: String,
-          from: String,
-          to: String
+          id: String,
+          event_type: Telnyx::Models::CallBridged::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::CallBridged::Data::Payload,
+          record_type: Telnyx::Models::CallBridged::Data::record_type
         }
-      end
 
-      type record_type = :event
+        type event_type = :"call.bridged"
 
-      module RecordType
-        extend Telnyx::Internal::Type::Enum
+        module EventType
+          extend Telnyx::Internal::Type::Enum
 
-        EVENT: :event
+          CALL_BRIDGED: :"call.bridged"
 
-        def self?.values: -> ::Array[Telnyx::Models::CallBridged::record_type]
+          def self?.values: -> ::Array[Telnyx::Models::CallBridged::Data::event_type]
+        end
+
+        type payload =
+          {
+            call_control_id: String,
+            call_leg_id: String,
+            call_session_id: String,
+            client_state: String,
+            connection_id: String,
+            from: String,
+            to: String
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_reader call_control_id: String?
+
+          def call_control_id=: (String) -> String
+
+          attr_reader call_leg_id: String?
+
+          def call_leg_id=: (String) -> String
+
+          attr_reader call_session_id: String?
+
+          def call_session_id=: (String) -> String
+
+          attr_reader client_state: String?
+
+          def client_state=: (String) -> String
+
+          attr_reader connection_id: String?
+
+          def connection_id=: (String) -> String
+
+          attr_reader from: String?
+
+          def from=: (String) -> String
+
+          attr_reader to: String?
+
+          def to=: (String) -> String
+
+          def initialize: (
+            ?call_control_id: String,
+            ?call_leg_id: String,
+            ?call_session_id: String,
+            ?client_state: String,
+            ?connection_id: String,
+            ?from: String,
+            ?to: String
+          ) -> void
+
+          def to_hash: -> {
+            call_control_id: String,
+            call_leg_id: String,
+            call_session_id: String,
+            client_state: String,
+            connection_id: String,
+            from: String,
+            to: String
+          }
+        end
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::CallBridged::Data::record_type]
+        end
       end
     end
   end
