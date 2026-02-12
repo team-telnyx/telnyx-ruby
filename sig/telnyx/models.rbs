@@ -113,8 +113,6 @@ module Telnyx
 
   class CallBridged = Telnyx::Models::CallBridged
 
-  class CallBridgedWebhookEvent = Telnyx::Models::CallBridgedWebhookEvent
-
   class CallControlApplication = Telnyx::Models::CallControlApplication
 
   class CallControlApplicationCreateParams = Telnyx::Models::CallControlApplicationCreateParams
