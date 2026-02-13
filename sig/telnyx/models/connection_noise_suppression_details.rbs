@@ -35,6 +35,7 @@ module Telnyx
         | :krisp_viva_tel_lite
         | :krisp_viva_promodel
         | :krisp_viva_ss
+        | :quail_voice_focus
 
       module Engine
         extend Telnyx::Internal::Type::Enum
@@ -46,6 +47,7 @@ module Telnyx
         KRISP_VIVA_TEL_LITE: :krisp_viva_tel_lite
         KRISP_VIVA_PROMODEL: :krisp_viva_promodel
         KRISP_VIVA_SS: :krisp_viva_ss
+        QUAIL_VOICE_FOCUS: :quail_voice_focus
 
         def self?.values: -> ::Array[Telnyx::Models::ConnectionNoiseSuppressionDetails::engine]
       end
