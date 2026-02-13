@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::AI::MissionsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::AI::MissionData
+        data: Telnyx::Models::AI::MissionCreateResponse::Data
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::AI::MissionsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::AI::MissionData
+        data: Telnyx::Models::AI::MissionRetrieveResponse::Data
       }
     end
   end
@@ -48,13 +48,13 @@ class Telnyx::Test::Resources::AI::MissionsTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::AI::MissionData
+      row => Telnyx::Models::AI::MissionListResponse
     end
 
     assert_pattern do
       row => {
         created_at: Time,
-        execution_mode: Telnyx::AI::MissionData::ExecutionMode,
+        execution_mode: Telnyx::Models::AI::MissionListResponse::ExecutionMode,
         mission_id: String,
         name: String,
         updated_at: Time,
@@ -128,7 +128,7 @@ class Telnyx::Test::Resources::AI::MissionsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::AI::MissionData
+        data: Telnyx::Models::AI::MissionUpdateMissionResponse::Data
       }
     end
   end

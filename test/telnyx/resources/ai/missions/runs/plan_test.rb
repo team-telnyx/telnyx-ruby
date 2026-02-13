@@ -19,7 +19,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::PlanTest < Telnyx::Test::Reso
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Missions::Runs::PlanStepData])
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::Missions::Runs::PlanCreateResponse::Data])
       }
     end
   end
@@ -39,7 +39,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::PlanTest < Telnyx::Test::Reso
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Missions::Runs::PlanStepData])
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::Missions::Runs::PlanRetrieveResponse::Data])
       }
     end
   end
@@ -60,7 +60,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::PlanTest < Telnyx::Test::Reso
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Missions::Runs::PlanStepData])
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::Missions::Runs::PlanAddStepsToPlanResponse::Data])
       }
     end
   end
@@ -81,7 +81,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::PlanTest < Telnyx::Test::Reso
 
     assert_pattern do
       response => {
-        data: Telnyx::AI::Missions::Runs::PlanStepData
+        data: Telnyx::Models::AI::Missions::Runs::PlanGetStepDetailsResponse::Data
       }
     end
   end
@@ -102,7 +102,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::PlanTest < Telnyx::Test::Reso
 
     assert_pattern do
       response => {
-        data: Telnyx::AI::Missions::Runs::PlanStepData
+        data: Telnyx::Models::AI::Missions::Runs::PlanUpdateStepResponse::Data
       }
     end
   end

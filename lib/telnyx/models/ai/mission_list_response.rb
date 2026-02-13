@@ -4,7 +4,7 @@ module Telnyx
   module Models
     module AI
       # @see Telnyx::Resources::AI::Missions#list
-      class MissionData < Telnyx::Internal::Type::BaseModel
+      class MissionListResponse < Telnyx::Internal::Type::BaseModel
         # @!attribute created_at
         #
         #   @return [Time]
@@ -12,8 +12,8 @@ module Telnyx
 
         # @!attribute execution_mode
         #
-        #   @return [Symbol, Telnyx::Models::AI::MissionData::ExecutionMode]
-        required :execution_mode, enum: -> { Telnyx::AI::MissionData::ExecutionMode }
+        #   @return [Symbol, Telnyx::Models::AI::MissionListResponse::ExecutionMode]
+        required :execution_mode, enum: -> { Telnyx::Models::AI::MissionListResponse::ExecutionMode }
 
         # @!attribute mission_id
         #
@@ -52,7 +52,7 @@ module Telnyx
 
         # @!method initialize(created_at:, execution_mode:, mission_id:, name:, updated_at:, description: nil, instructions: nil, metadata: nil, model: nil)
         #   @param created_at [Time]
-        #   @param execution_mode [Symbol, Telnyx::Models::AI::MissionData::ExecutionMode]
+        #   @param execution_mode [Symbol, Telnyx::Models::AI::MissionListResponse::ExecutionMode]
         #   @param mission_id [String]
         #   @param name [String]
         #   @param updated_at [Time]
@@ -61,7 +61,7 @@ module Telnyx
         #   @param metadata [Hash{Symbol=>Object}]
         #   @param model [String]
 
-        # @see Telnyx::Models::AI::MissionData#execution_mode
+        # @see Telnyx::Models::AI::MissionListResponse#execution_mode
         module ExecutionMode
           extend Telnyx::Internal::Type::Enum
 

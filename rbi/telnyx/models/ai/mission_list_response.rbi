@@ -3,16 +3,23 @@
 module Telnyx
   module Models
     module AI
-      class MissionData < Telnyx::Internal::Type::BaseModel
+      class MissionListResponse < Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
-            T.any(Telnyx::AI::MissionData, Telnyx::Internal::AnyHash)
+            T.any(
+              Telnyx::Models::AI::MissionListResponse,
+              Telnyx::Internal::AnyHash
+            )
           end
 
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(Telnyx::AI::MissionData::ExecutionMode::TaggedSymbol) }
+        sig do
+          returns(
+            Telnyx::Models::AI::MissionListResponse::ExecutionMode::TaggedSymbol
+          )
+        end
         attr_accessor :execution_mode
 
         sig { returns(String) }
@@ -51,7 +58,8 @@ module Telnyx
         sig do
           params(
             created_at: Time,
-            execution_mode: Telnyx::AI::MissionData::ExecutionMode::OrSymbol,
+            execution_mode:
+              Telnyx::Models::AI::MissionListResponse::ExecutionMode::OrSymbol,
             mission_id: String,
             name: String,
             updated_at: Time,
@@ -79,7 +87,7 @@ module Telnyx
             {
               created_at: Time,
               execution_mode:
-                Telnyx::AI::MissionData::ExecutionMode::TaggedSymbol,
+                Telnyx::Models::AI::MissionListResponse::ExecutionMode::TaggedSymbol,
               mission_id: String,
               name: String,
               updated_at: Time,
@@ -98,24 +106,29 @@ module Telnyx
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Telnyx::AI::MissionData::ExecutionMode)
+              T.all(
+                Symbol,
+                Telnyx::Models::AI::MissionListResponse::ExecutionMode
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           EXTERNAL =
             T.let(
               :external,
-              Telnyx::AI::MissionData::ExecutionMode::TaggedSymbol
+              Telnyx::Models::AI::MissionListResponse::ExecutionMode::TaggedSymbol
             )
           MANAGED =
             T.let(
               :managed,
-              Telnyx::AI::MissionData::ExecutionMode::TaggedSymbol
+              Telnyx::Models::AI::MissionListResponse::ExecutionMode::TaggedSymbol
             )
 
           sig do
             override.returns(
-              T::Array[Telnyx::AI::MissionData::ExecutionMode::TaggedSymbol]
+              T::Array[
+                Telnyx::Models::AI::MissionListResponse::ExecutionMode::TaggedSymbol
+              ]
             )
           end
           def self.values
