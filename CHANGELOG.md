@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.24.0 (2026-02-13)
+
+Full Changelog: [v5.23.0...v5.24.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.23.0...v5.24.0)
+
+### Features
+
+* AI-2090: Add skip_turn tool type to assistant config schema ([5f0cf22](https://github.com/team-telnyx/telnyx-ruby/commit/5f0cf22e42d36454d43fcbd21543f12dc3f59884))
+
 ## 5.23.0 (2026-02-13)
 
 Full Changelog: [v5.22.0...v5.23.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.22.0...v5.23.0)
