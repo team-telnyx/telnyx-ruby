@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::AI::Missions::RunsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::AI::Missions::MissionRunData
+        data: Telnyx::Models::AI::Missions::RunCreateResponse::Data
       }
     end
   end
@@ -34,7 +34,7 @@ class Telnyx::Test::Resources::AI::Missions::RunsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::AI::Missions::MissionRunData
+        data: Telnyx::Models::AI::Missions::RunRetrieveResponse::Data
       }
     end
   end
@@ -54,7 +54,7 @@ class Telnyx::Test::Resources::AI::Missions::RunsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::AI::Missions::MissionRunData
+        data: Telnyx::Models::AI::Missions::RunUpdateResponse::Data
       }
     end
   end
@@ -72,7 +72,7 @@ class Telnyx::Test::Resources::AI::Missions::RunsTest < Telnyx::Test::ResourceTe
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::AI::Missions::MissionRunData
+      row => Telnyx::Models::AI::Missions::RunListResponse
     end
 
     assert_pattern do
@@ -80,7 +80,7 @@ class Telnyx::Test::Resources::AI::Missions::RunsTest < Telnyx::Test::ResourceTe
         mission_id: String,
         run_id: String,
         started_at: Time,
-        status: Telnyx::AI::Missions::MissionRunData::Status,
+        status: Telnyx::Models::AI::Missions::RunListResponse::Status,
         updated_at: Time,
         error: String | nil,
         finished_at: Time | nil,
@@ -107,7 +107,7 @@ class Telnyx::Test::Resources::AI::Missions::RunsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::AI::Missions::MissionRunData
+        data: Telnyx::Models::AI::Missions::RunCancelRunResponse::Data
       }
     end
   end
@@ -125,7 +125,7 @@ class Telnyx::Test::Resources::AI::Missions::RunsTest < Telnyx::Test::ResourceTe
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::AI::Missions::MissionRunData
+      row => Telnyx::Models::AI::Missions::RunListRunsResponse
     end
 
     assert_pattern do
@@ -133,7 +133,7 @@ class Telnyx::Test::Resources::AI::Missions::RunsTest < Telnyx::Test::ResourceTe
         mission_id: String,
         run_id: String,
         started_at: Time,
-        status: Telnyx::AI::Missions::MissionRunData::Status,
+        status: Telnyx::Models::AI::Missions::RunListRunsResponse::Status,
         updated_at: Time,
         error: String | nil,
         finished_at: Time | nil,
@@ -160,7 +160,7 @@ class Telnyx::Test::Resources::AI::Missions::RunsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::AI::Missions::MissionRunData
+        data: Telnyx::Models::AI::Missions::RunPauseRunResponse::Data
       }
     end
   end
@@ -180,7 +180,7 @@ class Telnyx::Test::Resources::AI::Missions::RunsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::AI::Missions::MissionRunData
+        data: Telnyx::Models::AI::Missions::RunResumeRunResponse::Data
       }
     end
   end

@@ -150,6 +150,7 @@ module Telnyx
                 early_media: T::Boolean,
                 end_conference_on_exit: T::Boolean,
                 from: String,
+                label: String,
                 machine_detection:
                   Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::MachineDetection::OrSymbol,
                 machine_detection_silence_timeout: Integer,
@@ -261,6 +262,10 @@ module Telnyx
               # Body param: The phone number of the party that initiated the call. Phone numbers
               # are formatted with a `+` and country code.
               from: nil,
+              # Body param: A unique label for the participant that will be added to the
+              # conference. The label can be used to reference the participant for updates via
+              # the TeXML REST API.
+              label: nil,
               # Body param: Whether to detect if a human or an answering machine picked up the
               # call. Use `Enable` if you would like to ne notified as soon as the called party
               # is identified. Use `DetectMessageEnd`, if you would like to leave a message on

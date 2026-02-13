@@ -27,6 +27,7 @@ module Telnyx
               early_media: bool,
               end_conference_on_exit: bool,
               from: String,
+              label: String,
               machine_detection: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection,
               machine_detection_silence_timeout: Integer,
               machine_detection_speech_end_threshold: Integer,
@@ -158,6 +159,10 @@ module Telnyx
             attr_reader from: String?
 
             def from=: (String) -> String
+
+            attr_reader label: String?
+
+            def label=: (String) -> String
 
             attr_reader machine_detection: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection?
 
@@ -294,6 +299,7 @@ module Telnyx
               ?early_media: bool,
               ?end_conference_on_exit: bool,
               ?from: String,
+              ?label: String,
               ?machine_detection: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection,
               ?machine_detection_silence_timeout: Integer,
               ?machine_detection_speech_end_threshold: Integer,
@@ -345,6 +351,7 @@ module Telnyx
               early_media: bool,
               end_conference_on_exit: bool,
               from: String,
+              label: String,
               machine_detection: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection,
               machine_detection_silence_timeout: Integer,
               machine_detection_speech_end_threshold: Integer,
