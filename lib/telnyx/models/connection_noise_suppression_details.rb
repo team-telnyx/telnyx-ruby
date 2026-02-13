@@ -7,7 +7,7 @@ module Telnyx
       #   The attenuation limit value for the selected engine. Default values vary by
       #   engine: 0 for 'denoiser', 80 for 'deep_filter_net', 'deep_filter_net_large', and
       #   all Krisp engines ('krisp_viva_tel', 'krisp_viva_tel_lite',
-      #   'krisp_viva_promodel', 'krisp_viva_ss').
+      #   'krisp_viva_promodel', 'krisp_viva_ss'), 100 for 'quail_voice_focus'.
       #
       #   @return [Integer, nil]
       optional :attenuation_limit, Integer
@@ -17,7 +17,8 @@ module Telnyx
       #   'deep_filter_net' and 'deep_filter_net_large' are alternative engines with
       #   different performance characteristics. Krisp engines ('krisp_viva_tel',
       #   'krisp_viva_tel_lite', 'krisp_viva_promodel', 'krisp_viva_ss') provide advanced
-      #   noise suppression capabilities.
+      #   noise suppression capabilities. 'quail_voice_focus' provides Quail-based voice
+      #   focus noise suppression.
       #
       #   @return [Symbol, Telnyx::Models::ConnectionNoiseSuppressionDetails::Engine, nil]
       optional :engine, enum: -> { Telnyx::ConnectionNoiseSuppressionDetails::Engine }
@@ -39,7 +40,8 @@ module Telnyx
       # 'deep_filter_net' and 'deep_filter_net_large' are alternative engines with
       # different performance characteristics. Krisp engines ('krisp_viva_tel',
       # 'krisp_viva_tel_lite', 'krisp_viva_promodel', 'krisp_viva_ss') provide advanced
-      # noise suppression capabilities.
+      # noise suppression capabilities. 'quail_voice_focus' provides Quail-based voice
+      # focus noise suppression.
       #
       # @see Telnyx::Models::ConnectionNoiseSuppressionDetails#engine
       module Engine
@@ -52,6 +54,7 @@ module Telnyx
         KRISP_VIVA_TEL_LITE = :krisp_viva_tel_lite
         KRISP_VIVA_PROMODEL = :krisp_viva_promodel
         KRISP_VIVA_SS = :krisp_viva_ss
+        QUAIL_VOICE_FOCUS = :quail_voice_focus
 
         # @!method self.values
         #   @return [Array<Symbol>]
