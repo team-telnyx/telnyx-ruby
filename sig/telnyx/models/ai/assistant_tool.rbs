@@ -10,6 +10,7 @@ module Telnyx
         | Telnyx::AI::AssistantTool::Refer
         | Telnyx::AI::AssistantTool::SendDtmf
         | Telnyx::AI::AssistantTool::SendMessage
+        | Telnyx::AI::AssistantTool::SkipTurn
 
       module AssistantTool
         extend Telnyx::Internal::Type::Union
@@ -586,6 +587,40 @@ module Telnyx
             send_message: ::Hash[Symbol, top],
             type: :send_message
           }
+        end
+
+        type skip_turn =
+          {
+            skip_turn: Telnyx::AI::AssistantTool::SkipTurn::SkipTurn,
+            type: :skip_turn
+          }
+
+        class SkipTurn < Telnyx::Internal::Type::BaseModel
+          attr_accessor skip_turn: Telnyx::AI::AssistantTool::SkipTurn::SkipTurn
+
+          attr_accessor type: :skip_turn
+
+          def initialize: (
+            skip_turn: Telnyx::AI::AssistantTool::SkipTurn::SkipTurn,
+            ?type: :skip_turn
+          ) -> void
+
+          def to_hash: -> {
+            skip_turn: Telnyx::AI::AssistantTool::SkipTurn::SkipTurn,
+            type: :skip_turn
+          }
+
+          type skip_turn = { description: String }
+
+          class SkipTurn < Telnyx::Internal::Type::BaseModel
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            def initialize: (?description: String) -> void
+
+            def to_hash: -> { description: String }
+          end
         end
 
         def self?.variants: -> ::Array[Telnyx::Models::AI::assistant_tool]

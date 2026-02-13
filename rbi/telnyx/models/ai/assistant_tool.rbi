@@ -19,7 +19,8 @@ module Telnyx
               Telnyx::AI::AssistantTool::Transfer,
               Telnyx::AI::AssistantTool::Refer,
               Telnyx::AI::AssistantTool::SendDtmf,
-              Telnyx::AI::AssistantTool::SendMessage
+              Telnyx::AI::AssistantTool::SendMessage,
+              Telnyx::AI::AssistantTool::SkipTurn
             )
           end
 
@@ -1407,6 +1408,77 @@ module Telnyx
             )
           end
           def to_hash
+          end
+        end
+
+        class SkipTurn < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::AssistantTool::SkipTurn,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          sig { returns(Telnyx::AI::AssistantTool::SkipTurn::SkipTurn) }
+          attr_reader :skip_turn
+
+          sig do
+            params(
+              skip_turn: Telnyx::AI::AssistantTool::SkipTurn::SkipTurn::OrHash
+            ).void
+          end
+          attr_writer :skip_turn
+
+          sig { returns(Symbol) }
+          attr_accessor :type
+
+          sig do
+            params(
+              skip_turn: Telnyx::AI::AssistantTool::SkipTurn::SkipTurn::OrHash,
+              type: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(skip_turn:, type: :skip_turn)
+          end
+
+          sig do
+            override.returns(
+              {
+                skip_turn: Telnyx::AI::AssistantTool::SkipTurn::SkipTurn,
+                type: Symbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class SkipTurn < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::AI::AssistantTool::SkipTurn::SkipTurn,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # The description of the function that will be passed to the assistant.
+            sig { returns(T.nilable(String)) }
+            attr_reader :description
+
+            sig { params(description: String).void }
+            attr_writer :description
+
+            sig { params(description: String).returns(T.attached_class) }
+            def self.new(
+              # The description of the function that will be passed to the assistant.
+              description: nil
+            )
+            end
+
+            sig { override.returns({ description: String }) }
+            def to_hash
+            end
           end
         end
 
