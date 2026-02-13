@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.22.0 (2026-02-13)
+
+Full Changelog: [v5.21.0...v5.22.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.21.0...v5.22.0)
+
+### Features
+
+* ENGDESK-49554: Add quail_voice_focus to noise suppression engine enums ([4b8fb1c](https://github.com/team-telnyx/telnyx-ruby/commit/4b8fb1c5a1d6cc00133641a96942add5da7f8399))
+
 ## 5.21.0 (2026-02-12)
 
 Full Changelog: [v5.20.0...v5.21.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.20.0...v5.21.0)
