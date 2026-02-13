@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.23.0 (2026-02-13)
+
+Full Changelog: [v5.22.0...v5.23.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.22.0...v5.23.0)
+
+### Features
+
+* Add Label parameter to Dial Conference Participant endpoint ([6b8363a](https://github.com/team-telnyx/telnyx-ruby/commit/6b8363a098033af01853cc5799b1a66e6573148a))
+
 ## 5.22.0 (2026-02-13)
 
 Full Changelog: [v5.21.0...v5.22.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.21.0...v5.22.0)

@@ -60,6 +60,7 @@ module Telnyx
               ?early_media: bool,
               ?end_conference_on_exit: bool,
               ?from: String,
+              ?label: String,
               ?machine_detection: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection,
               ?machine_detection_silence_timeout: Integer,
               ?machine_detection_speech_end_threshold: Integer,
