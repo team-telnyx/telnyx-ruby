@@ -39,14 +39,17 @@ module Telnyx
         #   `ElevenLabs.eleven_multilingual_v2.21m00Tcm4TlvDq8ikWAM`). The `ModelId` part
         #   is optional. To use ElevenLabs, you must provide your ElevenLabs API key as an
         #   integration identifier secret in
-        #   `"voice_settings": {"api_key_ref": "<secret_identifier>"}`. See
-        #   [integration secrets documentation](https://developers.telnyx.com/api/secrets-manager/integration-secrets/create-integration-secret)
-        #   for details. Check
+        #   `"voice_settings": {"api_key_ref": "<secret_identifier>"}`. Check
         #   [available voices](https://elevenlabs.io/docs/api-reference/get-voices).
         # - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>`
-        #
-        # For service_level basic, you may define the gender of the speaker (male or
-        # female).
+        # - **Minimax:** Use `Minimax.<ModelId>.<VoiceId>` (e.g.,
+        #   `Minimax.speech-02-hd.Wise_Woman`). Supported models: `speech-02-turbo`,
+        #   `speech-02-hd`, `speech-2.6-turbo`, `speech-2.8-turbo`. Optional parameters:
+        #   `speed` (float, default 1.0), `vol` (float, default 1.0), `pitch` (integer,
+        #   default 0).
+        # - **Resemble:** Use `Resemble.<ModelId>.<VoiceId>` (e.g.,
+        #   `Resemble.Pro.my_voice`). Supported models: `Pro` (multilingual) and `Turbo`
+        #   (English only).
         sig { returns(String) }
         attr_accessor :voice
 
@@ -192,7 +195,8 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings,
                 Telnyx::Calls::TelnyxVoiceSettings,
-                Telnyx::Calls::AwsVoiceSettings
+                Telnyx::Calls::AwsVoiceSettings,
+                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax
               )
             )
           )
@@ -205,7 +209,8 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                Telnyx::Calls::AwsVoiceSettings::OrHash
+                Telnyx::Calls::AwsVoiceSettings::OrHash,
+                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax::OrHash
               )
           ).void
         end
@@ -235,7 +240,8 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                Telnyx::Calls::AwsVoiceSettings::OrHash
+                Telnyx::Calls::AwsVoiceSettings::OrHash,
+                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -263,14 +269,17 @@ module Telnyx
           #   `ElevenLabs.eleven_multilingual_v2.21m00Tcm4TlvDq8ikWAM`). The `ModelId` part
           #   is optional. To use ElevenLabs, you must provide your ElevenLabs API key as an
           #   integration identifier secret in
-          #   `"voice_settings": {"api_key_ref": "<secret_identifier>"}`. See
-          #   [integration secrets documentation](https://developers.telnyx.com/api/secrets-manager/integration-secrets/create-integration-secret)
-          #   for details. Check
+          #   `"voice_settings": {"api_key_ref": "<secret_identifier>"}`. Check
           #   [available voices](https://elevenlabs.io/docs/api-reference/get-voices).
           # - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>`
-          #
-          # For service_level basic, you may define the gender of the speaker (male or
-          # female).
+          # - **Minimax:** Use `Minimax.<ModelId>.<VoiceId>` (e.g.,
+          #   `Minimax.speech-02-hd.Wise_Woman`). Supported models: `speech-02-turbo`,
+          #   `speech-02-hd`, `speech-2.6-turbo`, `speech-2.8-turbo`. Optional parameters:
+          #   `speed` (float, default 1.0), `vol` (float, default 1.0), `pitch` (integer,
+          #   default 0).
+          # - **Resemble:** Use `Resemble.<ModelId>.<VoiceId>` (e.g.,
+          #   `Resemble.Pro.my_voice`). Supported models: `Pro` (multilingual) and `Turbo`
+          #   (English only).
           voice:,
           # Use this field to add state to every subsequent webhook. It must be a valid
           # Base-64 encoded string.
@@ -340,7 +349,8 @@ module Telnyx
                 T.any(
                   Telnyx::Calls::ElevenLabsVoiceSettings,
                   Telnyx::Calls::TelnyxVoiceSettings,
-                  Telnyx::Calls::AwsVoiceSettings
+                  Telnyx::Calls::AwsVoiceSettings,
+                  Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax
                 ),
               request_options: Telnyx::RequestOptions
             }
@@ -601,9 +611,73 @@ module Telnyx
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings,
                 Telnyx::Calls::TelnyxVoiceSettings,
-                Telnyx::Calls::AwsVoiceSettings
+                Telnyx::Calls::AwsVoiceSettings,
+                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax
               )
             end
+
+          class Minimax < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # Voice settings provider type
+            sig { returns(Symbol) }
+            attr_accessor :type
+
+            # Voice pitch adjustment. Default is 0.
+            sig { returns(T.nilable(Integer)) }
+            attr_reader :pitch
+
+            sig { params(pitch: Integer).void }
+            attr_writer :pitch
+
+            # Speech speed multiplier. Default is 1.0.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :speed
+
+            sig { params(speed: Float).void }
+            attr_writer :speed
+
+            # Speech volume multiplier. Default is 1.0.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :vol
+
+            sig { params(vol: Float).void }
+            attr_writer :vol
+
+            sig do
+              params(
+                pitch: Integer,
+                speed: Float,
+                vol: Float,
+                type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Voice pitch adjustment. Default is 0.
+              pitch: nil,
+              # Speech speed multiplier. Default is 1.0.
+              speed: nil,
+              # Speech volume multiplier. Default is 1.0.
+              vol: nil,
+              # Voice settings provider type
+              type: :minimax
+            )
+            end
+
+            sig do
+              override.returns(
+                { type: Symbol, pitch: Integer, speed: Float, vol: Float }
+              )
+            end
+            def to_hash
+            end
+          end
 
           sig do
             override.returns(

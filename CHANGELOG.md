@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.25.0 (2026-02-17)
+
+Full Changelog: [v5.24.0...v5.25.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.24.0...v5.25.0)
+
+### Features
+
+* Add Minimax and Resemble voice providers for speak commands ([1d62d0c](https://github.com/team-telnyx/telnyx-ruby/commit/1d62d0cf59a2640267647cd0a843e1c1c0a0bf91))
+
 ## 5.24.0 (2026-02-13)
 
 Full Changelog: [v5.23.0...v5.24.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.23.0...v5.24.0)
