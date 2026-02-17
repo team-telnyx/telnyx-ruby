@@ -312,13 +312,13 @@ module Telnyx
                 }
               end
 
-              type detection_mode = :disabled | :detect
+              type detection_mode = :disabled | :premium
 
               module DetectionMode
                 extend Telnyx::Internal::Type::Enum
 
                 DISABLED: :disabled
-                DETECT: :detect
+                PREMIUM: :premium
 
                 def self?.values: -> ::Array[Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::detection_mode]
               end
@@ -352,17 +352,13 @@ module Telnyx
                   voicemail_message: Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected::VoicemailMessage
                 }
 
-                type action =
-                  :stop_transfer
-                  | :leave_message_and_stop_transfer
-                  | :continue_transfer
+                type action = :stop_transfer | :leave_message_and_stop_transfer
 
                 module Action
                   extend Telnyx::Internal::Type::Enum
 
                   STOP_TRANSFER: :stop_transfer
                   LEAVE_MESSAGE_AND_STOP_TRANSFER: :leave_message_and_stop_transfer
-                  CONTINUE_TRANSFER: :continue_transfer
 
                   def self?.values: -> ::Array[Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected::action]
                 end
