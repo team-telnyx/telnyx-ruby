@@ -493,9 +493,8 @@ module Telnyx
               end
               attr_writer :detection_config
 
-              # The AMD detection mode to use. 'detect' enables answering machine detection
-              # (works best when warm transfer instructions are also set). 'disabled' turns off
-              # AMD detection.
+              # The AMD detection mode to use. 'premium' enables premium answering machine
+              # detection. 'disabled' turns off AMD detection.
               sig do
                 returns(
                   T.nilable(
@@ -548,9 +547,8 @@ module Telnyx
                 # Advanced AMD detection configuration parameters. All values are optional -
                 # Telnyx will use defaults if not specified.
                 detection_config: nil,
-                # The AMD detection mode to use. 'detect' enables answering machine detection
-                # (works best when warm transfer instructions are also set). 'disabled' turns off
-                # AMD detection.
+                # The AMD detection mode to use. 'premium' enables premium answering machine
+                # detection. 'disabled' turns off AMD detection.
                 detection_mode: nil,
                 # Action to take when voicemail is detected on the transferred call.
                 on_voicemail_detected: nil
@@ -726,9 +724,8 @@ module Telnyx
                 end
               end
 
-              # The AMD detection mode to use. 'detect' enables answering machine detection
-              # (works best when warm transfer instructions are also set). 'disabled' turns off
-              # AMD detection.
+              # The AMD detection mode to use. 'premium' enables premium answering machine
+              # detection. 'disabled' turns off AMD detection.
               module DetectionMode
                 extend Telnyx::Internal::Type::Enum
 
@@ -746,9 +743,9 @@ module Telnyx
                     :disabled,
                     Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionMode::TaggedSymbol
                   )
-                DETECT =
+                PREMIUM =
                   T.let(
-                    :detect,
+                    :premium,
                     Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::DetectionMode::TaggedSymbol
                   )
 
@@ -774,7 +771,6 @@ module Telnyx
 
                 # The action to take when voicemail is detected. 'stop_transfer' hangs up
                 # immediately. 'leave_message_and_stop_transfer' leaves a message then hangs up.
-                # 'continue_transfer' bridges the call despite voicemail detection.
                 sig do
                   returns(
                     T.nilable(
@@ -823,7 +819,6 @@ module Telnyx
                 def self.new(
                   # The action to take when voicemail is detected. 'stop_transfer' hangs up
                   # immediately. 'leave_message_and_stop_transfer' leaves a message then hangs up.
-                  # 'continue_transfer' bridges the call despite voicemail detection.
                   action: nil,
                   # Configuration for the voicemail message to leave. Only applicable when action is
                   # 'leave_message_and_stop_transfer'.
@@ -846,7 +841,6 @@ module Telnyx
 
                 # The action to take when voicemail is detected. 'stop_transfer' hangs up
                 # immediately. 'leave_message_and_stop_transfer' leaves a message then hangs up.
-                # 'continue_transfer' bridges the call despite voicemail detection.
                 module Action
                   extend Telnyx::Internal::Type::Enum
 
@@ -867,11 +861,6 @@ module Telnyx
                   LEAVE_MESSAGE_AND_STOP_TRANSFER =
                     T.let(
                       :leave_message_and_stop_transfer,
-                      Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected::Action::TaggedSymbol
-                    )
-                  CONTINUE_TRANSFER =
-                    T.let(
-                      :continue_transfer,
                       Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OnVoicemailDetected::Action::TaggedSymbol
                     )
 

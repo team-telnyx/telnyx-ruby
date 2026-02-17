@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.26.0 (2026-02-17)
+
+Full Changelog: [v5.25.0...v5.26.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.25.0...v5.26.0)
+
+### Features
+
+* Align transfer tool AMD spec with portal: premium mode, drop continue actions ([f1e3291](https://github.com/team-telnyx/telnyx-ruby/commit/f1e3291582767280a76f44e0b06f699bf79413be))
+
 ## 5.25.0 (2026-02-17)
 
 Full Changelog: [v5.24.0...v5.25.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.24.0...v5.25.0)
