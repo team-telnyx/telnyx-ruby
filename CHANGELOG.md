@@ -1,5 +1,17 @@
 # Changelog
 
+## 5.30.0 (2026-02-18)
+
+Full Changelog: [v5.29.0...v5.30.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.29.0...v5.30.0)
+
+### Features
+
+* Add smart encoding fields to messaging API spec ([3926c57](https://github.com/team-telnyx/telnyx-ruby/commit/3926c578c24284ddee43ea3f48c6ec6785f08921))
+* **api:** manual updates ([b632006](https://github.com/team-telnyx/telnyx-ruby/commit/b6320068496f42cfe1b57c61c0364902a0aea836))
+* **api:** manual updates ([9dc2dbb](https://github.com/team-telnyx/telnyx-ruby/commit/9dc2dbb38f108cfcfc52f88d814d40216305f024))
+* **api:** manual updates ([ebd29fc](https://github.com/team-telnyx/telnyx-ruby/commit/ebd29fce6693961abc9c2d2ba66497c7f0c2ba66))
+* **api:** manual updates ([49e81d8](https://github.com/team-telnyx/telnyx-ruby/commit/49e81d811bd71f68ec0e226c6ee9f2dc881d9f11))
+
 ## 5.29.0 (2026-02-18)
 
 Full Changelog: [v5.28.0...v5.29.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.28.0...v5.29.0)
