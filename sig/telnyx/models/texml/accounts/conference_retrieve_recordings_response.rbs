@@ -9,7 +9,7 @@ module Telnyx
             next_page_uri: String,
             page: Integer,
             page_size: Integer,
-            participants: ::Array[top],
+            participants: ::Array[::Hash[Symbol, top]],
             recordings: ::Array[Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording],
             start: Integer,
             uri: String
@@ -36,9 +36,11 @@ module Telnyx
 
           def page_size=: (Integer) -> Integer
 
-          attr_reader participants: ::Array[top]?
+          attr_reader participants: ::Array[::Hash[Symbol, top]]?
 
-          def participants=: (::Array[top]) -> ::Array[top]
+          def participants=: (
+            ::Array[::Hash[Symbol, top]]
+          ) -> ::Array[::Hash[Symbol, top]]
 
           attr_reader recordings: ::Array[Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording]?
 
@@ -60,7 +62,7 @@ module Telnyx
             ?next_page_uri: String,
             ?page: Integer,
             ?page_size: Integer,
-            ?participants: ::Array[top],
+            ?participants: ::Array[::Hash[Symbol, top]],
             ?recordings: ::Array[Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording],
             ?start: Integer,
             ?uri: String
@@ -72,7 +74,7 @@ module Telnyx
             next_page_uri: String,
             page: Integer,
             page_size: Integer,
-            participants: ::Array[top],
+            participants: ::Array[::Hash[Symbol, top]],
             recordings: ::Array[Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording],
             start: Integer,
             uri: String
