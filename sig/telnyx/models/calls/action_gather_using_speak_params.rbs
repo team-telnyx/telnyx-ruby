@@ -227,43 +227,10 @@ module Telnyx
           Telnyx::Calls::ElevenLabsVoiceSettings
           | Telnyx::Calls::TelnyxVoiceSettings
           | Telnyx::Calls::AwsVoiceSettings
-          | Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax
+          | Telnyx::MinimaxVoiceSettings
 
         module VoiceSettings
           extend Telnyx::Internal::Type::Union
-
-          type minimax =
-            { type: :minimax, pitch: Integer, speed: Float, vol: Float }
-
-          class Minimax < Telnyx::Internal::Type::BaseModel
-            attr_accessor type: :minimax
-
-            attr_reader pitch: Integer?
-
-            def pitch=: (Integer) -> Integer
-
-            attr_reader speed: Float?
-
-            def speed=: (Float) -> Float
-
-            attr_reader vol: Float?
-
-            def vol=: (Float) -> Float
-
-            def initialize: (
-              ?pitch: Integer,
-              ?speed: Float,
-              ?vol: Float,
-              ?type: :minimax
-            ) -> void
-
-            def to_hash: -> {
-              type: :minimax,
-              pitch: Integer,
-              speed: Float,
-              vol: Float
-            }
-          end
 
           def self?.variants: -> ::Array[Telnyx::Models::Calls::ActionGatherUsingSpeakParams::voice_settings]
         end

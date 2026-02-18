@@ -79,7 +79,7 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
               Telnyx::Internal::DefaultFlatPagination[
-                Telnyx::Models::AI::Missions::RunListResponse
+                Telnyx::AI::Missions::MissionRunData
               ]
             )
           end
@@ -114,7 +114,7 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
               Telnyx::Internal::DefaultFlatPagination[
-                Telnyx::Models::AI::Missions::RunListRunsResponse
+                Telnyx::AI::Missions::MissionRunData
               ]
             )
           end

@@ -3,113 +3,14 @@ module Telnyx
     module AI
       module Missions
         type run_update_response =
-          { data: Telnyx::Models::AI::Missions::RunUpdateResponse::Data }
+          { data: Telnyx::AI::Missions::MissionRunData }
 
         class RunUpdateResponse < Telnyx::Internal::Type::BaseModel
-          attr_accessor data: Telnyx::Models::AI::Missions::RunUpdateResponse::Data
+          attr_accessor data: Telnyx::AI::Missions::MissionRunData
 
-          def initialize: (
-            data: Telnyx::Models::AI::Missions::RunUpdateResponse::Data
-          ) -> void
+          def initialize: (data: Telnyx::AI::Missions::MissionRunData) -> void
 
-          def to_hash: -> {
-            data: Telnyx::Models::AI::Missions::RunUpdateResponse::Data
-          }
-
-          type data =
-            {
-              mission_id: String,
-              run_id: String,
-              started_at: Time,
-              status: Telnyx::Models::AI::Missions::RunUpdateResponse::Data::status,
-              updated_at: Time,
-              error: String,
-              finished_at: Time,
-              input: ::Hash[Symbol, top],
-              metadata: ::Hash[Symbol, top],
-              result_payload: ::Hash[Symbol, top],
-              result_summary: String
-            }
-
-          class Data < Telnyx::Internal::Type::BaseModel
-            attr_accessor mission_id: String
-
-            attr_accessor run_id: String
-
-            attr_accessor started_at: Time
-
-            attr_accessor status: Telnyx::Models::AI::Missions::RunUpdateResponse::Data::status
-
-            attr_accessor updated_at: Time
-
-            attr_reader error: String?
-
-            def error=: (String) -> String
-
-            attr_reader finished_at: Time?
-
-            def finished_at=: (Time) -> Time
-
-            attr_reader input: ::Hash[Symbol, top]?
-
-            def input=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
-
-            attr_reader metadata: ::Hash[Symbol, top]?
-
-            def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
-
-            attr_reader result_payload: ::Hash[Symbol, top]?
-
-            def result_payload=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
-
-            attr_reader result_summary: String?
-
-            def result_summary=: (String) -> String
-
-            def initialize: (
-              mission_id: String,
-              run_id: String,
-              started_at: Time,
-              status: Telnyx::Models::AI::Missions::RunUpdateResponse::Data::status,
-              updated_at: Time,
-              ?error: String,
-              ?finished_at: Time,
-              ?input: ::Hash[Symbol, top],
-              ?metadata: ::Hash[Symbol, top],
-              ?result_payload: ::Hash[Symbol, top],
-              ?result_summary: String
-            ) -> void
-
-            def to_hash: -> {
-              mission_id: String,
-              run_id: String,
-              started_at: Time,
-              status: Telnyx::Models::AI::Missions::RunUpdateResponse::Data::status,
-              updated_at: Time,
-              error: String,
-              finished_at: Time,
-              input: ::Hash[Symbol, top],
-              metadata: ::Hash[Symbol, top],
-              result_payload: ::Hash[Symbol, top],
-              result_summary: String
-            }
-
-            type status =
-              :pending | :running | :paused | :succeeded | :failed | :cancelled
-
-            module Status
-              extend Telnyx::Internal::Type::Enum
-
-              PENDING: :pending
-              RUNNING: :running
-              PAUSED: :paused
-              SUCCEEDED: :succeeded
-              FAILED: :failed
-              CANCELLED: :cancelled
-
-              def self?.values: -> ::Array[Telnyx::Models::AI::Missions::RunUpdateResponse::Data::status]
-            end
-          end
+          def to_hash: -> { data: Telnyx::AI::Missions::MissionRunData }
         end
       end
     end
