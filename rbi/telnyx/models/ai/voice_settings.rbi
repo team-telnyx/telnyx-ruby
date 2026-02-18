@@ -57,6 +57,14 @@ module Telnyx
         end
         attr_writer :background_audio
 
+        # Enhances recognition for specific languages and dialects during MiniMax TTS
+        # synthesis. Default is null (no boost). Set to 'auto' for automatic language
+        # detection. Only applicable when using MiniMax voices.
+        sig do
+          returns(T.nilable(Telnyx::AI::VoiceSettings::LanguageBoost::OrSymbol))
+        end
+        attr_accessor :language_boost
+
         # Determines how closely the AI should adhere to the original voice when
         # attempting to replicate it. Only applicable when using ElevenLabs.
         sig { returns(T.nilable(Float)) }
@@ -118,6 +126,8 @@ module Telnyx
                 Telnyx::AI::VoiceSettings::BackgroundAudio::MediaURL::OrHash,
                 Telnyx::AI::VoiceSettings::BackgroundAudio::MediaName::OrHash
               ),
+            language_boost:
+              T.nilable(Telnyx::AI::VoiceSettings::LanguageBoost::OrSymbol),
             similarity_boost: Float,
             speed: Float,
             style: Float,
@@ -144,6 +154,10 @@ module Telnyx
           # supply a looped MP3 URL. If a media URL is chosen in the portal, customers can
           # preview it before saving.
           background_audio: nil,
+          # Enhances recognition for specific languages and dialects during MiniMax TTS
+          # synthesis. Default is null (no boost). Set to 'auto' for automatic language
+          # detection. Only applicable when using MiniMax voices.
+          language_boost: nil,
           # Determines how closely the AI should adhere to the original voice when
           # attempting to replicate it. Only applicable when using ElevenLabs.
           similarity_boost: nil,
@@ -179,6 +193,8 @@ module Telnyx
                   Telnyx::AI::VoiceSettings::BackgroundAudio::MediaURL,
                   Telnyx::AI::VoiceSettings::BackgroundAudio::MediaName
                 ),
+              language_boost:
+                T.nilable(Telnyx::AI::VoiceSettings::LanguageBoost::OrSymbol),
               similarity_boost: Float,
               speed: Float,
               style: Float,
@@ -366,6 +382,227 @@ module Telnyx
             )
           end
           def self.variants
+          end
+        end
+
+        # Enhances recognition for specific languages and dialects during MiniMax TTS
+        # synthesis. Default is null (no boost). Set to 'auto' for automatic language
+        # detection. Only applicable when using MiniMax voices.
+        module LanguageBoost
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::AI::VoiceSettings::LanguageBoost)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          AUTO =
+            T.let(:auto, Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol)
+          CHINESE =
+            T.let(
+              :Chinese,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          CHINESE_YUE =
+            T.let(
+              :"Chinese,Yue",
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          ENGLISH =
+            T.let(
+              :English,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          ARABIC =
+            T.let(
+              :Arabic,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          RUSSIAN =
+            T.let(
+              :Russian,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          SPANISH =
+            T.let(
+              :Spanish,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          FRENCH =
+            T.let(
+              :French,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          PORTUGUESE =
+            T.let(
+              :Portuguese,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          GERMAN =
+            T.let(
+              :German,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          TURKISH =
+            T.let(
+              :Turkish,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          DUTCH =
+            T.let(
+              :Dutch,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          UKRAINIAN =
+            T.let(
+              :Ukrainian,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          VIETNAMESE =
+            T.let(
+              :Vietnamese,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          INDONESIAN =
+            T.let(
+              :Indonesian,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          JAPANESE =
+            T.let(
+              :Japanese,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          ITALIAN =
+            T.let(
+              :Italian,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          KOREAN =
+            T.let(
+              :Korean,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          THAI =
+            T.let(:Thai, Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol)
+          POLISH =
+            T.let(
+              :Polish,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          ROMANIAN =
+            T.let(
+              :Romanian,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          GREEK =
+            T.let(
+              :Greek,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          CZECH =
+            T.let(
+              :Czech,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          FINNISH =
+            T.let(
+              :Finnish,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          HINDI =
+            T.let(
+              :Hindi,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          BULGARIAN =
+            T.let(
+              :Bulgarian,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          DANISH =
+            T.let(
+              :Danish,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          HEBREW =
+            T.let(
+              :Hebrew,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          MALAY =
+            T.let(
+              :Malay,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          PERSIAN =
+            T.let(
+              :Persian,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          SLOVAK =
+            T.let(
+              :Slovak,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          SWEDISH =
+            T.let(
+              :Swedish,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          CROATIAN =
+            T.let(
+              :Croatian,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          FILIPINO =
+            T.let(
+              :Filipino,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          HUNGARIAN =
+            T.let(
+              :Hungarian,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          NORWEGIAN =
+            T.let(
+              :Norwegian,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          SLOVENIAN =
+            T.let(
+              :Slovenian,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          CATALAN =
+            T.let(
+              :Catalan,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          NYNORSK =
+            T.let(
+              :Nynorsk,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          TAMIL =
+            T.let(
+              :Tamil,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+          AFRIKAANS =
+            T.let(
+              :Afrikaans,
+              Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Telnyx::AI::VoiceSettings::LanguageBoost::TaggedSymbol]
+            )
+          end
+          def self.values
           end
         end
       end

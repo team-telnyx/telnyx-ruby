@@ -6,6 +6,7 @@ module Telnyx
           voice: String,
           api_key_ref: String,
           background_audio: Telnyx::Models::AI::VoiceSettings::background_audio,
+          language_boost: Telnyx::Models::AI::VoiceSettings::language_boost?,
           similarity_boost: Float,
           speed: Float,
           style: Float,
@@ -26,6 +27,8 @@ module Telnyx
         def background_audio=: (
           Telnyx::Models::AI::VoiceSettings::background_audio
         ) -> Telnyx::Models::AI::VoiceSettings::background_audio
+
+        attr_accessor language_boost: Telnyx::Models::AI::VoiceSettings::language_boost?
 
         attr_reader similarity_boost: Float?
 
@@ -55,6 +58,7 @@ module Telnyx
           voice: String,
           ?api_key_ref: String,
           ?background_audio: Telnyx::Models::AI::VoiceSettings::background_audio,
+          ?language_boost: Telnyx::Models::AI::VoiceSettings::language_boost?,
           ?similarity_boost: Float,
           ?speed: Float,
           ?style: Float,
@@ -67,6 +71,7 @@ module Telnyx
           voice: String,
           api_key_ref: String,
           background_audio: Telnyx::Models::AI::VoiceSettings::background_audio,
+          language_boost: Telnyx::Models::AI::VoiceSettings::language_boost?,
           similarity_boost: Float,
           speed: Float,
           style: Float,
@@ -141,6 +146,97 @@ module Telnyx
           end
 
           def self?.variants: -> ::Array[Telnyx::Models::AI::VoiceSettings::background_audio]
+        end
+
+        type language_boost =
+          :auto
+          | :Chinese
+          | :"Chinese,Yue"
+          | :English
+          | :Arabic
+          | :Russian
+          | :Spanish
+          | :French
+          | :Portuguese
+          | :German
+          | :Turkish
+          | :Dutch
+          | :Ukrainian
+          | :Vietnamese
+          | :Indonesian
+          | :Japanese
+          | :Italian
+          | :Korean
+          | :Thai
+          | :Polish
+          | :Romanian
+          | :Greek
+          | :Czech
+          | :Finnish
+          | :Hindi
+          | :Bulgarian
+          | :Danish
+          | :Hebrew
+          | :Malay
+          | :Persian
+          | :Slovak
+          | :Swedish
+          | :Croatian
+          | :Filipino
+          | :Hungarian
+          | :Norwegian
+          | :Slovenian
+          | :Catalan
+          | :Nynorsk
+          | :Tamil
+          | :Afrikaans
+
+        module LanguageBoost
+          extend Telnyx::Internal::Type::Enum
+
+          AUTO: :auto
+          CHINESE: :Chinese
+          CHINESE_YUE: :"Chinese,Yue"
+          ENGLISH: :English
+          ARABIC: :Arabic
+          RUSSIAN: :Russian
+          SPANISH: :Spanish
+          FRENCH: :French
+          PORTUGUESE: :Portuguese
+          GERMAN: :German
+          TURKISH: :Turkish
+          DUTCH: :Dutch
+          UKRAINIAN: :Ukrainian
+          VIETNAMESE: :Vietnamese
+          INDONESIAN: :Indonesian
+          JAPANESE: :Japanese
+          ITALIAN: :Italian
+          KOREAN: :Korean
+          THAI: :Thai
+          POLISH: :Polish
+          ROMANIAN: :Romanian
+          GREEK: :Greek
+          CZECH: :Czech
+          FINNISH: :Finnish
+          HINDI: :Hindi
+          BULGARIAN: :Bulgarian
+          DANISH: :Danish
+          HEBREW: :Hebrew
+          MALAY: :Malay
+          PERSIAN: :Persian
+          SLOVAK: :Slovak
+          SWEDISH: :Swedish
+          CROATIAN: :Croatian
+          FILIPINO: :Filipino
+          HUNGARIAN: :Hungarian
+          NORWEGIAN: :Norwegian
+          SLOVENIAN: :Slovenian
+          CATALAN: :Catalan
+          NYNORSK: :Nynorsk
+          TAMIL: :Tamil
+          AFRIKAANS: :Afrikaans
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::VoiceSettings::language_boost]
         end
       end
     end

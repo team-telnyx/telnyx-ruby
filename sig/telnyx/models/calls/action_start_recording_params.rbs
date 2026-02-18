@@ -188,8 +188,11 @@ module Telnyx
         end
 
         type transcription_language =
-          :"af-ZA"
+          :af
+          | :"af-ZA"
+          | :am
           | :"am-ET"
+          | :ar
           | :"ar-AE"
           | :"ar-BH"
           | :"ar-DZ"
@@ -207,18 +210,35 @@ module Telnyx
           | :"ar-SA"
           | :"ar-TN"
           | :"ar-YE"
+          | :as
+          | :auto_detect
+          | :az
           | :"az-AZ"
+          | :ba
+          | :be
+          | :bg
           | :"bg-BG"
+          | :bn
           | :"bn-BD"
           | :"bn-IN"
+          | :bo
+          | :br
+          | :bs
           | :"bs-BA"
+          | :ca
           | :"ca-ES"
+          | :cs
           | :"cs-CZ"
+          | :cy
+          | :da
           | :"da-DK"
+          | :de
           | :"de-AT"
           | :"de-CH"
           | :"de-DE"
+          | :el
           | :"el-GR"
+          | :en
           | :"en-AU"
           | :"en-CA"
           | :"en-GB"
@@ -235,6 +255,8 @@ module Telnyx
           | :"en-TZ"
           | :"en-US"
           | :"en-ZA"
+          | :es
+          | :"es-419"
           | :"es-AR"
           | :"es-BO"
           | :"es-CL"
@@ -255,190 +277,171 @@ module Telnyx
           | :"es-US"
           | :"es-UY"
           | :"es-VE"
+          | :et
           | :"et-EE"
+          | :eu
           | :"eu-ES"
+          | :fa
           | :"fa-IR"
+          | :fi
           | :"fi-FI"
           | :"fil-PH"
+          | :fo
+          | :fr
           | :"fr-BE"
           | :"fr-CA"
           | :"fr-CH"
           | :"fr-FR"
+          | :gl
           | :"gl-ES"
+          | :gu
           | :"gu-IN"
+          | :ha
+          | :haw
+          | :he
+          | :hi
           | :"hi-IN"
+          | :hr
           | :"hr-HR"
+          | :ht
+          | :hu
           | :"hu-HU"
+          | :hy
           | :"hy-AM"
+          | :id
           | :"id-ID"
+          | :is
           | :"is-IS"
+          | :it
           | :"it-CH"
           | :"it-IT"
           | :"iw-IL"
+          | :ja
           | :"ja-JP"
           | :"jv-ID"
+          | :jw
+          | :ka
           | :"ka-GE"
+          | :kk
           | :"kk-KZ"
+          | :km
           | :"km-KH"
+          | :kn
           | :"kn-IN"
+          | :ko
           | :"ko-KR"
+          | :la
+          | :lb
+          | :ln
+          | :lo
           | :"lo-LA"
+          | :lt
           | :"lt-LT"
+          | :lv
           | :"lv-LV"
+          | :mg
+          | :mi
+          | :mk
           | :"mk-MK"
+          | :ml
           | :"ml-IN"
+          | :mn
           | :"mn-MN"
+          | :mr
           | :"mr-IN"
+          | :ms
           | :"ms-MY"
+          | :mt
+          | :my
           | :"my-MM"
+          | :ne
           | :"ne-NP"
+          | :nl
           | :"nl-BE"
           | :"nl-NL"
+          | :nn
+          | :no
           | :"no-NO"
+          | :oc
+          | :pa
           | :"pa-Guru-IN"
+          | :pl
           | :"pl-PL"
+          | :ps
+          | :pt
           | :"pt-BR"
           | :"pt-PT"
+          | :ro
           | :"ro-RO"
+          | :ru
           | :"ru-RU"
           | :"rw-RW"
+          | :sa
+          | :sd
+          | :si
           | :"si-LK"
+          | :sk
           | :"sk-SK"
+          | :sl
           | :"sl-SI"
+          | :sn
+          | :so
+          | :sq
           | :"sq-AL"
+          | :sr
           | :"sr-RS"
           | :"ss-latn-za"
           | :"st-ZA"
+          | :su
           | :"su-ID"
+          | :sv
           | :"sv-SE"
+          | :sw
           | :"sw-KE"
           | :"sw-TZ"
+          | :ta
           | :"ta-IN"
           | :"ta-LK"
           | :"ta-MY"
           | :"ta-SG"
+          | :te
           | :"te-IN"
+          | :tg
+          | :th
           | :"th-TH"
+          | :tk
+          | :tl
           | :"tn-latn-za"
+          | :tr
           | :"tr-TR"
           | :"ts-ZA"
+          | :tt
+          | :uk
           | :"uk-UA"
+          | :ur
           | :"ur-IN"
           | :"ur-PK"
+          | :uz
           | :"uz-UZ"
           | :"ve-ZA"
+          | :vi
           | :"vi-VN"
           | :"xh-ZA"
+          | :yi
+          | :yo
           | :"yue-Hant-HK"
           | :zh
           | :"zh-TW"
           | :"zu-ZA"
-          | :en
-          | :de
-          | :es
-          | :ru
-          | :ko
-          | :fr
-          | :ja
-          | :pt
-          | :tr
-          | :pl
-          | :ca
-          | :nl
-          | :ar
-          | :sv
-          | :it
-          | :id
-          | :hi
-          | :fi
-          | :vi
-          | :he
-          | :uk
-          | :el
-          | :ms
-          | :cs
-          | :ro
-          | :da
-          | :hu
-          | :ta
-          | :no
-          | :th
-          | :ur
-          | :hr
-          | :bg
-          | :lt
-          | :la
-          | :mi
-          | :ml
-          | :cy
-          | :sk
-          | :te
-          | :fa
-          | :lv
-          | :bn
-          | :sr
-          | :az
-          | :sl
-          | :kn
-          | :et
-          | :mk
-          | :br
-          | :eu
-          | :is
-          | :hy
-          | :ne
-          | :mn
-          | :bs
-          | :kk
-          | :sq
-          | :sw
-          | :gl
-          | :mr
-          | :pa
-          | :si
-          | :km
-          | :sn
-          | :yo
-          | :so
-          | :af
-          | :oc
-          | :ka
-          | :be
-          | :tg
-          | :sd
-          | :gu
-          | :am
-          | :yi
-          | :lo
-          | :uz
-          | :fo
-          | :ht
-          | :ps
-          | :tk
-          | :nn
-          | :mt
-          | :sa
-          | :lb
-          | :my
-          | :bo
-          | :tl
-          | :mg
-          | :as
-          | :tt
-          | :haw
-          | :ln
-          | :ha
-          | :ba
-          | :jw
-          | :su
-          | :auto_detect
-          | :"es-419"
 
         module TranscriptionLanguage
           extend Telnyx::Internal::Type::Enum
 
+          AF: :af
           AF_ZA: :"af-ZA"
+          AM: :am
           AM_ET: :"am-ET"
+          AR: :ar
           AR_AE: :"ar-AE"
           AR_BH: :"ar-BH"
           AR_DZ: :"ar-DZ"
@@ -456,18 +459,35 @@ module Telnyx
           AR_SA: :"ar-SA"
           AR_TN: :"ar-TN"
           AR_YE: :"ar-YE"
+          AS: :as
+          AUTO_DETECT: :auto_detect
+          AZ: :az
           AZ_AZ: :"az-AZ"
+          BA: :ba
+          BE: :be
+          BG: :bg
           BG_BG: :"bg-BG"
+          BN: :bn
           BN_BD: :"bn-BD"
           BN_IN: :"bn-IN"
+          BO: :bo
+          BR: :br
+          BS: :bs
           BS_BA: :"bs-BA"
+          CA: :ca
           CA_ES: :"ca-ES"
+          CS: :cs
           CS_CZ: :"cs-CZ"
+          CY: :cy
+          DA: :da
           DA_DK: :"da-DK"
+          DE: :de
           DE_AT: :"de-AT"
           DE_CH: :"de-CH"
           DE_DE: :"de-DE"
+          EL: :el
           EL_GR: :"el-GR"
+          EN: :en
           EN_AU: :"en-AU"
           EN_CA: :"en-CA"
           EN_GB: :"en-GB"
@@ -484,6 +504,8 @@ module Telnyx
           EN_TZ: :"en-TZ"
           EN_US: :"en-US"
           EN_ZA: :"en-ZA"
+          ES: :es
+          ES_419: :"es-419"
           ES_AR: :"es-AR"
           ES_BO: :"es-BO"
           ES_CL: :"es-CL"
@@ -504,184 +526,162 @@ module Telnyx
           ES_US: :"es-US"
           ES_UY: :"es-UY"
           ES_VE: :"es-VE"
+          ET: :et
           ET_EE: :"et-EE"
+          EU: :eu
           EU_ES: :"eu-ES"
+          FA: :fa
           FA_IR: :"fa-IR"
+          FI: :fi
           FI_FI: :"fi-FI"
           FIL_PH: :"fil-PH"
+          FO: :fo
+          FR: :fr
           FR_BE: :"fr-BE"
           FR_CA: :"fr-CA"
           FR_CH: :"fr-CH"
           FR_FR: :"fr-FR"
+          GL: :gl
           GL_ES: :"gl-ES"
+          GU: :gu
           GU_IN: :"gu-IN"
+          HA: :ha
+          HAW: :haw
+          HE: :he
+          HI: :hi
           HI_IN: :"hi-IN"
+          HR: :hr
           HR_HR: :"hr-HR"
+          HT: :ht
+          HU: :hu
           HU_HU: :"hu-HU"
+          HY: :hy
           HY_AM: :"hy-AM"
+          ID: :id
           ID_ID: :"id-ID"
+          IS: :is
           IS_IS: :"is-IS"
+          IT: :it
           IT_CH: :"it-CH"
           IT_IT: :"it-IT"
           IW_IL: :"iw-IL"
+          JA: :ja
           JA_JP: :"ja-JP"
           JV_ID: :"jv-ID"
+          JW: :jw
+          KA: :ka
           KA_GE: :"ka-GE"
+          KK: :kk
           KK_KZ: :"kk-KZ"
+          KM: :km
           KM_KH: :"km-KH"
+          KN: :kn
           KN_IN: :"kn-IN"
+          KO: :ko
           KO_KR: :"ko-KR"
+          LA: :la
+          LB: :lb
+          LN: :ln
+          LO: :lo
           LO_LA: :"lo-LA"
+          LT: :lt
           LT_LT: :"lt-LT"
+          LV: :lv
           LV_LV: :"lv-LV"
+          MG: :mg
+          MI: :mi
+          MK: :mk
           MK_MK: :"mk-MK"
+          ML: :ml
           ML_IN: :"ml-IN"
+          MN: :mn
           MN_MN: :"mn-MN"
+          MR: :mr
           MR_IN: :"mr-IN"
+          MS: :ms
           MS_MY: :"ms-MY"
+          MT: :mt
+          MY: :my
           MY_MM: :"my-MM"
+          NE: :ne
           NE_NP: :"ne-NP"
+          NL: :nl
           NL_BE: :"nl-BE"
           NL_NL: :"nl-NL"
+          NN: :nn
+          NO: :no
           NO_NO: :"no-NO"
+          OC: :oc
+          PA: :pa
           PA_GURU_IN: :"pa-Guru-IN"
+          PL: :pl
           PL_PL: :"pl-PL"
+          PS: :ps
+          PT: :pt
           PT_BR: :"pt-BR"
           PT_PT: :"pt-PT"
+          RO: :ro
           RO_RO: :"ro-RO"
+          RU: :ru
           RU_RU: :"ru-RU"
           RW_RW: :"rw-RW"
+          SA: :sa
+          SD: :sd
+          SI: :si
           SI_LK: :"si-LK"
+          SK: :sk
           SK_SK: :"sk-SK"
+          SL: :sl
           SL_SI: :"sl-SI"
+          SN: :sn
+          SO: :so
+          SQ: :sq
           SQ_AL: :"sq-AL"
+          SR: :sr
           SR_RS: :"sr-RS"
           SS_LATN_ZA: :"ss-latn-za"
           ST_ZA: :"st-ZA"
+          SU: :su
           SU_ID: :"su-ID"
+          SV: :sv
           SV_SE: :"sv-SE"
+          SW: :sw
           SW_KE: :"sw-KE"
           SW_TZ: :"sw-TZ"
+          TA: :ta
           TA_IN: :"ta-IN"
           TA_LK: :"ta-LK"
           TA_MY: :"ta-MY"
           TA_SG: :"ta-SG"
+          TE: :te
           TE_IN: :"te-IN"
+          TG: :tg
+          TH: :th
           TH_TH: :"th-TH"
+          TK: :tk
+          TL: :tl
           TN_LATN_ZA: :"tn-latn-za"
+          TR: :tr
           TR_TR: :"tr-TR"
           TS_ZA: :"ts-ZA"
+          TT: :tt
+          UK: :uk
           UK_UA: :"uk-UA"
+          UR: :ur
           UR_IN: :"ur-IN"
           UR_PK: :"ur-PK"
+          UZ: :uz
           UZ_UZ: :"uz-UZ"
           VE_ZA: :"ve-ZA"
+          VI: :vi
           VI_VN: :"vi-VN"
           XH_ZA: :"xh-ZA"
+          YI: :yi
+          YO: :yo
           YUE_HANT_HK: :"yue-Hant-HK"
           ZH: :zh
           ZH_TW: :"zh-TW"
           ZU_ZA: :"zu-ZA"
-          EN: :en
-          DE: :de
-          ES: :es
-          RU: :ru
-          KO: :ko
-          FR: :fr
-          JA: :ja
-          PT: :pt
-          TR: :tr
-          PL: :pl
-          CA: :ca
-          NL: :nl
-          AR: :ar
-          SV: :sv
-          IT: :it
-          ID: :id
-          HI: :hi
-          FI: :fi
-          VI: :vi
-          HE: :he
-          UK: :uk
-          EL: :el
-          MS: :ms
-          CS: :cs
-          RO: :ro
-          DA: :da
-          HU: :hu
-          TA: :ta
-          NO: :no
-          TH: :th
-          UR: :ur
-          HR: :hr
-          BG: :bg
-          LT: :lt
-          LA: :la
-          MI: :mi
-          ML: :ml
-          CY: :cy
-          SK: :sk
-          TE: :te
-          FA: :fa
-          LV: :lv
-          BN: :bn
-          SR: :sr
-          AZ: :az
-          SL: :sl
-          KN: :kn
-          ET: :et
-          MK: :mk
-          BR: :br
-          EU: :eu
-          IS: :is
-          HY: :hy
-          NE: :ne
-          MN: :mn
-          BS: :bs
-          KK: :kk
-          SQ: :sq
-          SW: :sw
-          GL: :gl
-          MR: :mr
-          PA: :pa
-          SI: :si
-          KM: :km
-          SN: :sn
-          YO: :yo
-          SO: :so
-          AF: :af
-          OC: :oc
-          KA: :ka
-          BE: :be
-          TG: :tg
-          SD: :sd
-          GU: :gu
-          AM: :am
-          YI: :yi
-          LO: :lo
-          UZ: :uz
-          FO: :fo
-          HT: :ht
-          PS: :ps
-          TK: :tk
-          NN: :nn
-          MT: :mt
-          SA: :sa
-          LB: :lb
-          MY: :my
-          BO: :bo
-          TL: :tl
-          MG: :mg
-          AS: :as
-          TT: :tt
-          HAW: :haw
-          LN: :ln
-          HA: :ha
-          BA: :ba
-          JW: :jw
-          SU: :su
-          AUTO_DETECT: :auto_detect
-          ES_419: :"es-419"
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartRecordingParams::transcription_language]
         end
