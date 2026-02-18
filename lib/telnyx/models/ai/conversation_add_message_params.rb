@@ -70,9 +70,9 @@ module Telnyx
 
           variant Telnyx::Internal::Type::Boolean
 
-          variant -> { Telnyx::Models::AI::ConversationAddMessageParams::Metadata::UnionMember3Array }
+          variant -> { Telnyx::Models::AI::ConversationAddMessageParams::Metadata::UnionArrayVariant3Array }
 
-          module UnionMember3
+          module UnionArrayVariant3
             extend Telnyx::Internal::Type::Union
 
             variant String
@@ -89,9 +89,9 @@ module Telnyx
           #   @return [Array(String, Integer, Boolean, Array<String, Integer, Boolean>)]
 
           # @type [Telnyx::Internal::Type::Converter]
-          UnionMember3Array =
+          UnionArrayVariant3Array =
             Telnyx::Internal::Type::ArrayOf[union: -> {
-              Telnyx::AI::ConversationAddMessageParams::Metadata::UnionMember3
+              Telnyx::AI::ConversationAddMessageParams::Metadata::UnionArrayVariant3
             }]
         end
 
