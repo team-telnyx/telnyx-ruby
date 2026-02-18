@@ -410,7 +410,7 @@ module Telnyx
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
-                Telnyx::Conferences::ActionSpeakParams::VoiceSettings::Minimax::OrHash
+                Telnyx::MinimaxVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionSpeakResponse)
