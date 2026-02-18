@@ -29,7 +29,7 @@ module Telnyx
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AI::MissionData]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AI::MissionListResponse]
 
         def clone_mission: (
           String mission_id,

@@ -115,6 +115,7 @@ module Telnyx
         params(
           to: String,
           auto_detect: T::Boolean,
+          encoding: Telnyx::MessageSendParams::Encoding::OrSymbol,
           from: String,
           media_urls: T::Array[String],
           messaging_profile_id: String,
@@ -134,6 +135,12 @@ module Telnyx
         # Automatically detect if an SMS message is unusually long and exceeds a
         # recommended limit of message parts.
         auto_detect: nil,
+        # Encoding to use for the message. `auto` (default) uses smart encoding to
+        # automatically select the most efficient encoding. `gsm7` forces GSM-7 encoding
+        # (returns 400 if message contains characters that cannot be encoded). `ucs2`
+        # forces UCS-2 encoding and disables smart encoding. When set, this overrides the
+        # messaging profile's `smart_encoding` setting.
+        encoding: nil,
         # Sending address (+E.164 formatted phone number, alphanumeric sender ID, or short
         # code).
         #
@@ -216,6 +223,7 @@ module Telnyx
           from: String,
           to: String,
           auto_detect: T::Boolean,
+          encoding: Telnyx::MessageSendLongCodeParams::Encoding::OrSymbol,
           media_urls: T::Array[String],
           subject: String,
           text: String,
@@ -234,6 +242,12 @@ module Telnyx
         # Automatically detect if an SMS message is unusually long and exceeds a
         # recommended limit of message parts.
         auto_detect: nil,
+        # Encoding to use for the message. `auto` (default) uses smart encoding to
+        # automatically select the most efficient encoding. `gsm7` forces GSM-7 encoding
+        # (returns 400 if message contains characters that cannot be encoded). `ucs2`
+        # forces UCS-2 encoding and disables smart encoding. When set, this overrides the
+        # messaging profile's `smart_encoding` setting.
+        encoding: nil,
         # A list of media URLs. The total media size must be less than 1 MB.
         #
         # **Required for MMS**
@@ -265,6 +279,7 @@ module Telnyx
           messaging_profile_id: String,
           to: String,
           auto_detect: T::Boolean,
+          encoding: Telnyx::MessageSendNumberPoolParams::Encoding::OrSymbol,
           media_urls: T::Array[String],
           subject: String,
           text: String,
@@ -283,6 +298,12 @@ module Telnyx
         # Automatically detect if an SMS message is unusually long and exceeds a
         # recommended limit of message parts.
         auto_detect: nil,
+        # Encoding to use for the message. `auto` (default) uses smart encoding to
+        # automatically select the most efficient encoding. `gsm7` forces GSM-7 encoding
+        # (returns 400 if message contains characters that cannot be encoded). `ucs2`
+        # forces UCS-2 encoding and disables smart encoding. When set, this overrides the
+        # messaging profile's `smart_encoding` setting.
+        encoding: nil,
         # A list of media URLs. The total media size must be less than 1 MB.
         #
         # **Required for MMS**
@@ -314,6 +335,7 @@ module Telnyx
           from: String,
           to: String,
           auto_detect: T::Boolean,
+          encoding: Telnyx::MessageSendShortCodeParams::Encoding::OrSymbol,
           media_urls: T::Array[String],
           subject: String,
           text: String,
@@ -332,6 +354,12 @@ module Telnyx
         # Automatically detect if an SMS message is unusually long and exceeds a
         # recommended limit of message parts.
         auto_detect: nil,
+        # Encoding to use for the message. `auto` (default) uses smart encoding to
+        # automatically select the most efficient encoding. `gsm7` forces GSM-7 encoding
+        # (returns 400 if message contains characters that cannot be encoded). `ucs2`
+        # forces UCS-2 encoding and disables smart encoding. When set, this overrides the
+        # messaging profile's `smart_encoding` setting.
+        encoding: nil,
         # A list of media URLs. The total media size must be less than 1 MB.
         #
         # **Required for MMS**

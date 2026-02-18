@@ -3,14 +3,12 @@
 module Telnyx
   module Models
     module AI
-      MissionRunData = Missions::MissionRunData
-
       module Missions
-        class MissionRunData < Telnyx::Internal::Type::BaseModel
+        class RunListRunsResponse < Telnyx::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::AI::Missions::MissionRunData,
+                Telnyx::Models::AI::Missions::RunListRunsResponse,
                 Telnyx::Internal::AnyHash
               )
             end
@@ -25,7 +23,9 @@ module Telnyx
           attr_accessor :started_at
 
           sig do
-            returns(Telnyx::AI::Missions::MissionRunData::Status::TaggedSymbol)
+            returns(
+              Telnyx::Models::AI::Missions::RunListRunsResponse::Status::TaggedSymbol
+            )
           end
           attr_accessor :status
 
@@ -73,7 +73,8 @@ module Telnyx
               mission_id: String,
               run_id: String,
               started_at: Time,
-              status: Telnyx::AI::Missions::MissionRunData::Status::OrSymbol,
+              status:
+                Telnyx::Models::AI::Missions::RunListRunsResponse::Status::OrSymbol,
               updated_at: Time,
               error: String,
               finished_at: Time,
@@ -105,7 +106,7 @@ module Telnyx
                 run_id: String,
                 started_at: Time,
                 status:
-                  Telnyx::AI::Missions::MissionRunData::Status::TaggedSymbol,
+                  Telnyx::Models::AI::Missions::RunListRunsResponse::Status::TaggedSymbol,
                 updated_at: Time,
                 error: String,
                 finished_at: Time,
@@ -124,45 +125,48 @@ module Telnyx
 
             TaggedSymbol =
               T.type_alias do
-                T.all(Symbol, Telnyx::AI::Missions::MissionRunData::Status)
+                T.all(
+                  Symbol,
+                  Telnyx::Models::AI::Missions::RunListRunsResponse::Status
+                )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             PENDING =
               T.let(
                 :pending,
-                Telnyx::AI::Missions::MissionRunData::Status::TaggedSymbol
+                Telnyx::Models::AI::Missions::RunListRunsResponse::Status::TaggedSymbol
               )
             RUNNING =
               T.let(
                 :running,
-                Telnyx::AI::Missions::MissionRunData::Status::TaggedSymbol
+                Telnyx::Models::AI::Missions::RunListRunsResponse::Status::TaggedSymbol
               )
             PAUSED =
               T.let(
                 :paused,
-                Telnyx::AI::Missions::MissionRunData::Status::TaggedSymbol
+                Telnyx::Models::AI::Missions::RunListRunsResponse::Status::TaggedSymbol
               )
             SUCCEEDED =
               T.let(
                 :succeeded,
-                Telnyx::AI::Missions::MissionRunData::Status::TaggedSymbol
+                Telnyx::Models::AI::Missions::RunListRunsResponse::Status::TaggedSymbol
               )
             FAILED =
               T.let(
                 :failed,
-                Telnyx::AI::Missions::MissionRunData::Status::TaggedSymbol
+                Telnyx::Models::AI::Missions::RunListRunsResponse::Status::TaggedSymbol
               )
             CANCELLED =
               T.let(
                 :cancelled,
-                Telnyx::AI::Missions::MissionRunData::Status::TaggedSymbol
+                Telnyx::Models::AI::Missions::RunListRunsResponse::Status::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::AI::Missions::MissionRunData::Status::TaggedSymbol
+                  Telnyx::Models::AI::Missions::RunListRunsResponse::Status::TaggedSymbol
                 ]
               )
             end

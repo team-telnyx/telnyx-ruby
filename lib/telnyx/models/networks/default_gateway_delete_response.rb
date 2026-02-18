@@ -20,7 +20,7 @@ module Telnyx
         #   @param data [Array<Telnyx::Models::Networks::DefaultGatewayDeleteResponse::Data>]
         #   @param meta [Telnyx::Models::PaginationMeta]
 
-        class Data < Telnyx::Models::Record
+        class Data < Telnyx::Internal::Type::BaseModel
           # @!attribute wireguard_peer_id
           #   Wireguard peer ID.
           #
@@ -28,6 +28,30 @@ module Telnyx
           optional :wireguard_peer_id, String
 
           response_only do
+            # @!attribute id
+            #   Identifies the resource.
+            #
+            #   @return [String, nil]
+            optional :id, String
+
+            # @!attribute created_at
+            #   ISO 8601 formatted date-time indicating when the resource was created.
+            #
+            #   @return [String, nil]
+            optional :created_at, String
+
+            # @!attribute record_type
+            #   Identifies the type of the resource.
+            #
+            #   @return [String, nil]
+            optional :record_type, String
+
+            # @!attribute updated_at
+            #   ISO 8601 formatted date-time indicating when the resource was updated.
+            #
+            #   @return [String, nil]
+            optional :updated_at, String
+
             # @!attribute network_id
             #   Network ID.
             #
@@ -41,7 +65,15 @@ module Telnyx
             optional :status, enum: -> { Telnyx::InterfaceStatus }
           end
 
-          # @!method initialize(network_id: nil, status: nil, wireguard_peer_id: nil)
+          # @!method initialize(id: nil, created_at: nil, record_type: nil, updated_at: nil, network_id: nil, status: nil, wireguard_peer_id: nil)
+          #   @param id [String] Identifies the resource.
+          #
+          #   @param created_at [String] ISO 8601 formatted date-time indicating when the resource was created.
+          #
+          #   @param record_type [String] Identifies the type of the resource.
+          #
+          #   @param updated_at [String] ISO 8601 formatted date-time indicating when the resource was updated.
+          #
           #   @param network_id [String] Network ID.
           #
           #   @param status [Symbol, Telnyx::Models::InterfaceStatus] The current status of the interface deployment.

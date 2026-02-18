@@ -41,7 +41,7 @@ module Telnyx
       def to_hash
       end
 
-      class Data < Telnyx::Models::Record
+      class Data < Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
@@ -71,14 +71,54 @@ module Telnyx
         sig { params(health_check_type: String).void }
         attr_writer :health_check_type
 
+        # Identifies the resource.
+        sig { returns(T.nilable(String)) }
+        attr_reader :id
+
+        sig { params(id: String).void }
+        attr_writer :id
+
+        # ISO 8601 formatted date-time indicating when the resource was created.
+        sig { returns(T.nilable(String)) }
+        attr_reader :created_at
+
+        sig { params(created_at: String).void }
+        attr_writer :created_at
+
+        # Identifies the type of the resource.
+        sig { returns(T.nilable(String)) }
+        attr_reader :record_type
+
+        sig { params(record_type: String).void }
+        attr_writer :record_type
+
+        # ISO 8601 formatted date-time indicating when the resource was updated.
+        sig { returns(T.nilable(String)) }
+        attr_reader :updated_at
+
+        sig { params(updated_at: String).void }
+        attr_writer :updated_at
+
         sig do
           params(
+            id: String,
+            created_at: String,
+            record_type: String,
+            updated_at: String,
             global_ip_id: String,
             health_check_params: T::Hash[Symbol, T.anything],
             health_check_type: String
           ).returns(T.attached_class)
         end
         def self.new(
+          # Identifies the resource.
+          id: nil,
+          # ISO 8601 formatted date-time indicating when the resource was created.
+          created_at: nil,
+          # Identifies the type of the resource.
+          record_type: nil,
+          # ISO 8601 formatted date-time indicating when the resource was updated.
+          updated_at: nil,
           # Global IP ID.
           global_ip_id: nil,
           # A Global IP health check params.
@@ -91,6 +131,10 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
+              created_at: String,
+              record_type: String,
+              updated_at: String,
               global_ip_id: String,
               health_check_params: T::Hash[Symbol, T.anything],
               health_check_type: String

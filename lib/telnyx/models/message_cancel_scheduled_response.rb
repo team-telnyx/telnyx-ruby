@@ -99,6 +99,15 @@ module Telnyx
       #   @return [Time, nil]
       optional :sent_at, Time, nil?: true
 
+      # @!attribute smart_encoding_applied
+      #   Indicates whether smart encoding was applied to this message. When `true`, one
+      #   or more Unicode characters were automatically replaced with GSM-7 equivalents to
+      #   reduce segment count and cost. The original message text is preserved in
+      #   webhooks.
+      #
+      #   @return [Boolean, nil]
+      optional :smart_encoding_applied, Telnyx::Internal::Type::Boolean
+
       # @!attribute subject
       #   Subject of multimedia message
       #
@@ -169,7 +178,7 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String, nil?: true
 
-      # @!method initialize(id: nil, cc: nil, completed_at: nil, cost: nil, cost_breakdown: nil, direction: nil, encoding: nil, errors: nil, from: nil, media: nil, messaging_profile_id: nil, organization_id: nil, parts: nil, received_at: nil, record_type: nil, sent_at: nil, subject: nil, tags: nil, tcr_campaign_billable: nil, tcr_campaign_id: nil, tcr_campaign_registered: nil, text: nil, to: nil, type: nil, valid_until: nil, webhook_failover_url: nil, webhook_url: nil)
+      # @!method initialize(id: nil, cc: nil, completed_at: nil, cost: nil, cost_breakdown: nil, direction: nil, encoding: nil, errors: nil, from: nil, media: nil, messaging_profile_id: nil, organization_id: nil, parts: nil, received_at: nil, record_type: nil, sent_at: nil, smart_encoding_applied: nil, subject: nil, tags: nil, tcr_campaign_billable: nil, tcr_campaign_id: nil, tcr_campaign_registered: nil, text: nil, to: nil, type: nil, valid_until: nil, webhook_failover_url: nil, webhook_url: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessageCancelScheduledResponse} for more details.
       #
@@ -204,6 +213,8 @@ module Telnyx
       #   @param record_type [Symbol, Telnyx::Models::MessageCancelScheduledResponse::RecordType] Identifies the type of the resource.
       #
       #   @param sent_at [Time, nil] ISO 8601 formatted date indicating when the message was sent.
+      #
+      #   @param smart_encoding_applied [Boolean] Indicates whether smart encoding was applied to this message. When `true`, one o
       #
       #   @param subject [String, nil] Subject of multimedia message
       #

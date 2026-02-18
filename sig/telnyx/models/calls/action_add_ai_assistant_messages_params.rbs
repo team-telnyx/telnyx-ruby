@@ -51,36 +51,31 @@ module Telnyx
         module Message
           extend Telnyx::Internal::Type::Union
 
-          type user =
-            { content: String, role: :user, metadata: ::Hash[Symbol, top] }
+          type user = { content: String, role: :user, metadata: top }
 
           class User < Telnyx::Internal::Type::BaseModel
             attr_accessor content: String
 
             attr_accessor role: :user
 
-            attr_reader metadata: ::Hash[Symbol, top]?
+            attr_reader metadata: top?
 
-            def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+            def metadata=: (top) -> top
 
             def initialize: (
               content: String,
-              ?metadata: ::Hash[Symbol, top],
+              ?metadata: top,
               ?role: :user
             ) -> void
 
-            def to_hash: -> {
-              content: String,
-              role: :user,
-              metadata: ::Hash[Symbol, top]
-            }
+            def to_hash: -> { content: String, role: :user, metadata: top }
           end
 
           type assistant =
             {
               role: :assistant,
               content: String,
-              metadata: ::Hash[Symbol, top],
+              metadata: top,
               tool_calls: ::Array[Telnyx::Calls::ActionAddAIAssistantMessagesParams::Message::Assistant::ToolCall]
             }
 
@@ -91,9 +86,9 @@ module Telnyx
 
             def content=: (String) -> String
 
-            attr_reader metadata: ::Hash[Symbol, top]?
+            attr_reader metadata: top?
 
-            def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+            def metadata=: (top) -> top
 
             attr_reader tool_calls: ::Array[Telnyx::Calls::ActionAddAIAssistantMessagesParams::Message::Assistant::ToolCall]?
 
@@ -103,7 +98,7 @@ module Telnyx
 
             def initialize: (
               ?content: String,
-              ?metadata: ::Hash[Symbol, top],
+              ?metadata: top,
               ?tool_calls: ::Array[Telnyx::Calls::ActionAddAIAssistantMessagesParams::Message::Assistant::ToolCall],
               ?role: :assistant
             ) -> void
@@ -111,7 +106,7 @@ module Telnyx
             def to_hash: -> {
               role: :assistant,
               content: String,
-              metadata: ::Hash[Symbol, top],
+              metadata: top,
               tool_calls: ::Array[Telnyx::Calls::ActionAddAIAssistantMessagesParams::Message::Assistant::ToolCall]
             }
 
@@ -168,7 +163,7 @@ module Telnyx
               content: String,
               role: :tool,
               tool_call_id: String,
-              metadata: ::Hash[Symbol, top]
+              metadata: top
             }
 
           class Tool < Telnyx::Internal::Type::BaseModel
@@ -178,14 +173,14 @@ module Telnyx
 
             attr_accessor tool_call_id: String
 
-            attr_reader metadata: ::Hash[Symbol, top]?
+            attr_reader metadata: top?
 
-            def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+            def metadata=: (top) -> top
 
             def initialize: (
               content: String,
               tool_call_id: String,
-              ?metadata: ::Hash[Symbol, top],
+              ?metadata: top,
               ?role: :tool
             ) -> void
 
@@ -193,58 +188,48 @@ module Telnyx
               content: String,
               role: :tool,
               tool_call_id: String,
-              metadata: ::Hash[Symbol, top]
+              metadata: top
             }
           end
 
-          type system_ =
-            { content: String, role: :system, metadata: ::Hash[Symbol, top] }
+          type system_ = { content: String, role: :system, metadata: top }
 
           class System < Telnyx::Internal::Type::BaseModel
             attr_accessor content: String
 
             attr_accessor role: :system
 
-            attr_reader metadata: ::Hash[Symbol, top]?
+            attr_reader metadata: top?
 
-            def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+            def metadata=: (top) -> top
 
             def initialize: (
               content: String,
-              ?metadata: ::Hash[Symbol, top],
+              ?metadata: top,
               ?role: :system
             ) -> void
 
-            def to_hash: -> {
-              content: String,
-              role: :system,
-              metadata: ::Hash[Symbol, top]
-            }
+            def to_hash: -> { content: String, role: :system, metadata: top }
           end
 
-          type developer =
-            { content: String, role: :developer, metadata: ::Hash[Symbol, top] }
+          type developer = { content: String, role: :developer, metadata: top }
 
           class Developer < Telnyx::Internal::Type::BaseModel
             attr_accessor content: String
 
             attr_accessor role: :developer
 
-            attr_reader metadata: ::Hash[Symbol, top]?
+            attr_reader metadata: top?
 
-            def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+            def metadata=: (top) -> top
 
             def initialize: (
               content: String,
-              ?metadata: ::Hash[Symbol, top],
+              ?metadata: top,
               ?role: :developer
             ) -> void
 
-            def to_hash: -> {
-              content: String,
-              role: :developer,
-              metadata: ::Hash[Symbol, top]
-            }
+            def to_hash: -> { content: String, role: :developer, metadata: top }
           end
 
           def self?.variants: -> ::Array[Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::message]

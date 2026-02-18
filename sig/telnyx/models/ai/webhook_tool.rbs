@@ -105,15 +105,15 @@ module Telnyx
 
           type body_parameters =
             {
-              properties: ::Hash[Symbol, top],
+              properties: top,
               required: ::Array[String],
               type: Telnyx::Models::AI::WebhookTool::Webhook::BodyParameters::type_
             }
 
           class BodyParameters < Telnyx::Internal::Type::BaseModel
-            attr_reader properties: ::Hash[Symbol, top]?
+            attr_reader properties: top?
 
-            def properties=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+            def properties=: (top) -> top
 
             attr_reader required: ::Array[String]?
 
@@ -126,13 +126,13 @@ module Telnyx
             ) -> Telnyx::Models::AI::WebhookTool::Webhook::BodyParameters::type_
 
             def initialize: (
-              ?properties: ::Hash[Symbol, top],
+              ?properties: top,
               ?required: ::Array[String],
               ?type: Telnyx::Models::AI::WebhookTool::Webhook::BodyParameters::type_
             ) -> void
 
             def to_hash: -> {
-              properties: ::Hash[Symbol, top],
+              properties: top,
               required: ::Array[String],
               type: Telnyx::Models::AI::WebhookTool::Webhook::BodyParameters::type_
             }
@@ -180,15 +180,15 @@ module Telnyx
 
           type path_parameters =
             {
-              properties: ::Hash[Symbol, top],
+              properties: top,
               required: ::Array[String],
               type: Telnyx::Models::AI::WebhookTool::Webhook::PathParameters::type_
             }
 
           class PathParameters < Telnyx::Internal::Type::BaseModel
-            attr_reader properties: ::Hash[Symbol, top]?
+            attr_reader properties: top?
 
-            def properties=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+            def properties=: (top) -> top
 
             attr_reader required: ::Array[String]?
 
@@ -201,13 +201,13 @@ module Telnyx
             ) -> Telnyx::Models::AI::WebhookTool::Webhook::PathParameters::type_
 
             def initialize: (
-              ?properties: ::Hash[Symbol, top],
+              ?properties: top,
               ?required: ::Array[String],
               ?type: Telnyx::Models::AI::WebhookTool::Webhook::PathParameters::type_
             ) -> void
 
             def to_hash: -> {
-              properties: ::Hash[Symbol, top],
+              properties: top,
               required: ::Array[String],
               type: Telnyx::Models::AI::WebhookTool::Webhook::PathParameters::type_
             }
@@ -225,15 +225,15 @@ module Telnyx
 
           type query_parameters =
             {
-              properties: ::Hash[Symbol, top],
+              properties: top,
               required: ::Array[String],
               type: Telnyx::Models::AI::WebhookTool::Webhook::QueryParameters::type_
             }
 
           class QueryParameters < Telnyx::Internal::Type::BaseModel
-            attr_reader properties: ::Hash[Symbol, top]?
+            attr_reader properties: top?
 
-            def properties=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+            def properties=: (top) -> top
 
             attr_reader required: ::Array[String]?
 
@@ -246,13 +246,13 @@ module Telnyx
             ) -> Telnyx::Models::AI::WebhookTool::Webhook::QueryParameters::type_
 
             def initialize: (
-              ?properties: ::Hash[Symbol, top],
+              ?properties: top,
               ?required: ::Array[String],
               ?type: Telnyx::Models::AI::WebhookTool::Webhook::QueryParameters::type_
             ) -> void
 
             def to_hash: -> {
-              properties: ::Hash[Symbol, top],
+              properties: top,
               required: ::Array[String],
               type: Telnyx::Models::AI::WebhookTool::Webhook::QueryParameters::type_
             }
