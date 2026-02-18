@@ -1,5 +1,15 @@
 # Changelog
 
+## 5.31.0 (2026-02-18)
+
+Full Changelog: [v5.30.0...v5.31.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.30.0...v5.31.0)
+
+### Features
+
+* AI-2093: Add language_boost to MiniMax voice settings ([545b1be](https://github.com/team-telnyx/telnyx-ruby/commit/545b1be1f95502b11e56738ad1ef3e43d1eb0832))
+* **api:** manual updates ([8cd9650](https://github.com/team-telnyx/telnyx-ruby/commit/8cd965096779b13b721acaad234dcfcd72c03e48))
+* **api:** manual updates ([6224d2c](https://github.com/team-telnyx/telnyx-ruby/commit/6224d2c8cb5c0da313fa5c75def877fe96409c8c))
+
 ## 5.30.0 (2026-02-18)
 
 Full Changelog: [v5.29.0...v5.30.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.29.0...v5.30.0)
