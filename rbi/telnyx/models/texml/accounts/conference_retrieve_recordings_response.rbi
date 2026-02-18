@@ -49,10 +49,12 @@ module Telnyx
           attr_writer :page_size
 
           # List of participant resources.
-          sig { returns(T.nilable(T::Array[T.anything])) }
+          sig { returns(T.nilable(T::Array[T::Hash[Symbol, T.anything]])) }
           attr_reader :participants
 
-          sig { params(participants: T::Array[T.anything]).void }
+          sig do
+            params(participants: T::Array[T::Hash[Symbol, T.anything]]).void
+          end
           attr_writer :participants
 
           sig do
@@ -97,7 +99,7 @@ module Telnyx
               next_page_uri: String,
               page: Integer,
               page_size: Integer,
-              participants: T::Array[T.anything],
+              participants: T::Array[T::Hash[Symbol, T.anything]],
               recordings:
                 T::Array[
                   Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording::OrHash
@@ -135,7 +137,7 @@ module Telnyx
                 next_page_uri: String,
                 page: Integer,
                 page_size: Integer,
-                participants: T::Array[T.anything],
+                participants: T::Array[T::Hash[Symbol, T.anything]],
                 recordings:
                   T::Array[
                     Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording
