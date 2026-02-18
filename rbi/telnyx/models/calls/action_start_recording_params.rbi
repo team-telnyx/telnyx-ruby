@@ -125,6 +125,9 @@ module Telnyx
         end
         attr_writer :transcription_engine
 
+        # Language code for transcription. Note: Not all languages are supported by all
+        # transcription engines (google, telnyx, deepgram). See engine-specific
+        # documentation for supported values.
         sig do
           returns(
             T.nilable(
@@ -251,6 +254,9 @@ module Telnyx
           # `deepgram/nova-3` - `Deepgram Nova-3`. Note: `deepgram/nova-3` supports only
           # `en` and `en-{Region}` languages.
           transcription_engine: nil,
+          # Language code for transcription. Note: Not all languages are supported by all
+          # transcription engines (google, telnyx, deepgram). See engine-specific
+          # documentation for supported values.
           transcription_language: nil,
           # Defines maximum number of speakers in the conversation. Applies to `google`
           # engine only.
@@ -451,6 +457,9 @@ module Telnyx
           end
         end
 
+        # Language code for transcription. Note: Not all languages are supported by all
+        # transcription engines (google, telnyx, deepgram). See engine-specific
+        # documentation for supported values.
         module TranscriptionLanguage
           extend Telnyx::Internal::Type::Enum
 
@@ -463,14 +472,29 @@ module Telnyx
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+          AF =
+            T.let(
+              :af,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           AF_ZA =
             T.let(
               :"af-ZA",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          AM =
+            T.let(
+              :am,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           AM_ET =
             T.let(
               :"am-ET",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          AR =
+            T.let(
+              :ar,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           AR_AE =
@@ -558,14 +582,49 @@ module Telnyx
               :"ar-YE",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          AS =
+            T.let(
+              :as,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          AUTO_DETECT =
+            T.let(
+              :auto_detect,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          AZ =
+            T.let(
+              :az,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           AZ_AZ =
             T.let(
               :"az-AZ",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          BA =
+            T.let(
+              :ba,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          BE =
+            T.let(
+              :be,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          BG =
+            T.let(
+              :bg,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           BG_BG =
             T.let(
               :"bg-BG",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          BN =
+            T.let(
+              :bn,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           BN_BD =
@@ -578,9 +637,29 @@ module Telnyx
               :"bn-IN",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          BO =
+            T.let(
+              :bo,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          BR =
+            T.let(
+              :br,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          BS =
+            T.let(
+              :bs,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           BS_BA =
             T.let(
               :"bs-BA",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          CA =
+            T.let(
+              :ca,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           CA_ES =
@@ -588,14 +667,34 @@ module Telnyx
               :"ca-ES",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          CS =
+            T.let(
+              :cs,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           CS_CZ =
             T.let(
               :"cs-CZ",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          CY =
+            T.let(
+              :cy,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          DA =
+            T.let(
+              :da,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           DA_DK =
             T.let(
               :"da-DK",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          DE =
+            T.let(
+              :de,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           DE_AT =
@@ -613,9 +712,19 @@ module Telnyx
               :"de-DE",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          EL =
+            T.let(
+              :el,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           EL_GR =
             T.let(
               :"el-GR",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          EN =
+            T.let(
+              :en,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           EN_AU =
@@ -696,6 +805,16 @@ module Telnyx
           EN_ZA =
             T.let(
               :"en-ZA",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          ES =
+            T.let(
+              :es,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          ES_419 =
+            T.let(
+              :"es-419",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           ES_AR =
@@ -798,9 +917,19 @@ module Telnyx
               :"es-VE",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          ET =
+            T.let(
+              :et,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           ET_EE =
             T.let(
               :"et-EE",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          EU =
+            T.let(
+              :eu,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           EU_ES =
@@ -808,9 +937,19 @@ module Telnyx
               :"eu-ES",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          FA =
+            T.let(
+              :fa,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           FA_IR =
             T.let(
               :"fa-IR",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          FI =
+            T.let(
+              :fi,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           FI_FI =
@@ -821,6 +960,16 @@ module Telnyx
           FIL_PH =
             T.let(
               :"fil-PH",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          FO =
+            T.let(
+              :fo,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          FR =
+            T.let(
+              :fr,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           FR_BE =
@@ -843,9 +992,19 @@ module Telnyx
               :"fr-FR",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          GL =
+            T.let(
+              :gl,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           GL_ES =
             T.let(
               :"gl-ES",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          GU =
+            T.let(
+              :gu,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           GU_IN =
@@ -853,9 +1012,34 @@ module Telnyx
               :"gu-IN",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          HA =
+            T.let(
+              :ha,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          HAW =
+            T.let(
+              :haw,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          HE =
+            T.let(
+              :he,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          HI =
+            T.let(
+              :hi,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           HI_IN =
             T.let(
               :"hi-IN",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          HR =
+            T.let(
+              :hr,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           HR_HR =
@@ -863,9 +1047,24 @@ module Telnyx
               :"hr-HR",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          HT =
+            T.let(
+              :ht,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          HU =
+            T.let(
+              :hu,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           HU_HU =
             T.let(
               :"hu-HU",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          HY =
+            T.let(
+              :hy,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           HY_AM =
@@ -873,14 +1072,29 @@ module Telnyx
               :"hy-AM",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          ID =
+            T.let(
+              :id,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           ID_ID =
             T.let(
               :"id-ID",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          IS =
+            T.let(
+              :is,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           IS_IS =
             T.let(
               :"is-IS",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          IT =
+            T.let(
+              :it,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           IT_CH =
@@ -898,6 +1112,11 @@ module Telnyx
               :"iw-IL",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          JA =
+            T.let(
+              :ja,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           JA_JP =
             T.let(
               :"ja-JP",
@@ -908,9 +1127,24 @@ module Telnyx
               :"jv-ID",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          JW =
+            T.let(
+              :jw,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          KA =
+            T.let(
+              :ka,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           KA_GE =
             T.let(
               :"ka-GE",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          KK =
+            T.let(
+              :kk,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           KK_KZ =
@@ -918,9 +1152,19 @@ module Telnyx
               :"kk-KZ",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          KM =
+            T.let(
+              :km,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           KM_KH =
             T.let(
               :"km-KH",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          KN =
+            T.let(
+              :kn,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           KN_IN =
@@ -928,9 +1172,34 @@ module Telnyx
               :"kn-IN",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          KO =
+            T.let(
+              :ko,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           KO_KR =
             T.let(
               :"ko-KR",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          LA =
+            T.let(
+              :la,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          LB =
+            T.let(
+              :lb,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          LN =
+            T.let(
+              :ln,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          LO =
+            T.let(
+              :lo,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           LO_LA =
@@ -938,9 +1207,19 @@ module Telnyx
               :"lo-LA",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          LT =
+            T.let(
+              :lt,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           LT_LT =
             T.let(
               :"lt-LT",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          LV =
+            T.let(
+              :lv,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           LV_LV =
@@ -948,9 +1227,29 @@ module Telnyx
               :"lv-LV",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          MG =
+            T.let(
+              :mg,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          MI =
+            T.let(
+              :mi,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          MK =
+            T.let(
+              :mk,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           MK_MK =
             T.let(
               :"mk-MK",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          ML =
+            T.let(
+              :ml,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           ML_IN =
@@ -958,9 +1257,19 @@ module Telnyx
               :"ml-IN",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          MN =
+            T.let(
+              :mn,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           MN_MN =
             T.let(
               :"mn-MN",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          MR =
+            T.let(
+              :mr,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           MR_IN =
@@ -968,9 +1277,24 @@ module Telnyx
               :"mr-IN",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          MS =
+            T.let(
+              :ms,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           MS_MY =
             T.let(
               :"ms-MY",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          MT =
+            T.let(
+              :mt,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          MY =
+            T.let(
+              :my,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           MY_MM =
@@ -978,9 +1302,19 @@ module Telnyx
               :"my-MM",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          NE =
+            T.let(
+              :ne,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           NE_NP =
             T.let(
               :"ne-NP",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          NL =
+            T.let(
+              :nl,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           NL_BE =
@@ -993,9 +1327,29 @@ module Telnyx
               :"nl-NL",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          NN =
+            T.let(
+              :nn,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          NO =
+            T.let(
+              :no,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           NO_NO =
             T.let(
               :"no-NO",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          OC =
+            T.let(
+              :oc,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          PA =
+            T.let(
+              :pa,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           PA_GURU_IN =
@@ -1003,9 +1357,24 @@ module Telnyx
               :"pa-Guru-IN",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          PL =
+            T.let(
+              :pl,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           PL_PL =
             T.let(
               :"pl-PL",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          PS =
+            T.let(
+              :ps,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          PT =
+            T.let(
+              :pt,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           PT_BR =
@@ -1018,9 +1387,19 @@ module Telnyx
               :"pt-PT",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          RO =
+            T.let(
+              :ro,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           RO_RO =
             T.let(
               :"ro-RO",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          RU =
+            T.let(
+              :ru,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           RU_RU =
@@ -1033,9 +1412,29 @@ module Telnyx
               :"rw-RW",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          SA =
+            T.let(
+              :sa,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          SD =
+            T.let(
+              :sd,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          SI =
+            T.let(
+              :si,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           SI_LK =
             T.let(
               :"si-LK",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          SK =
+            T.let(
+              :sk,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           SK_SK =
@@ -1043,14 +1442,39 @@ module Telnyx
               :"sk-SK",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          SL =
+            T.let(
+              :sl,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           SL_SI =
             T.let(
               :"sl-SI",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          SN =
+            T.let(
+              :sn,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          SO =
+            T.let(
+              :so,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          SQ =
+            T.let(
+              :sq,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           SQ_AL =
             T.let(
               :"sq-AL",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          SR =
+            T.let(
+              :sr,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           SR_RS =
@@ -1068,14 +1492,29 @@ module Telnyx
               :"st-ZA",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          SU =
+            T.let(
+              :su,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           SU_ID =
             T.let(
               :"su-ID",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          SV =
+            T.let(
+              :sv,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           SV_SE =
             T.let(
               :"sv-SE",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          SW =
+            T.let(
+              :sw,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           SW_KE =
@@ -1086,6 +1525,11 @@ module Telnyx
           SW_TZ =
             T.let(
               :"sw-TZ",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          TA =
+            T.let(
+              :ta,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           TA_IN =
@@ -1108,9 +1552,24 @@ module Telnyx
               :"ta-SG",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          TE =
+            T.let(
+              :te,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           TE_IN =
             T.let(
               :"te-IN",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          TG =
+            T.let(
+              :tg,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          TH =
+            T.let(
+              :th,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           TH_TH =
@@ -1118,9 +1577,24 @@ module Telnyx
               :"th-TH",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          TK =
+            T.let(
+              :tk,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          TL =
+            T.let(
+              :tl,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           TN_LATN_ZA =
             T.let(
               :"tn-latn-za",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          TR =
+            T.let(
+              :tr,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           TR_TR =
@@ -1133,9 +1607,24 @@ module Telnyx
               :"ts-ZA",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          TT =
+            T.let(
+              :tt,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          UK =
+            T.let(
+              :uk,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           UK_UA =
             T.let(
               :"uk-UA",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          UR =
+            T.let(
+              :ur,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           UR_IN =
@@ -1148,6 +1637,11 @@ module Telnyx
               :"ur-PK",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          UZ =
+            T.let(
+              :uz,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           UZ_UZ =
             T.let(
               :"uz-UZ",
@@ -1158,6 +1652,11 @@ module Telnyx
               :"ve-ZA",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
+          VI =
+            T.let(
+              :vi,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
           VI_VN =
             T.let(
               :"vi-VN",
@@ -1166,6 +1665,16 @@ module Telnyx
           XH_ZA =
             T.let(
               :"xh-ZA",
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          YI =
+            T.let(
+              :yi,
+              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
+            )
+          YO =
+            T.let(
+              :yo,
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
           YUE_HANT_HK =
@@ -1186,506 +1695,6 @@ module Telnyx
           ZU_ZA =
             T.let(
               :"zu-ZA",
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          EN =
-            T.let(
-              :en,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          DE =
-            T.let(
-              :de,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          ES =
-            T.let(
-              :es,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          RU =
-            T.let(
-              :ru,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          KO =
-            T.let(
-              :ko,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          FR =
-            T.let(
-              :fr,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          JA =
-            T.let(
-              :ja,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          PT =
-            T.let(
-              :pt,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          TR =
-            T.let(
-              :tr,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          PL =
-            T.let(
-              :pl,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          CA =
-            T.let(
-              :ca,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          NL =
-            T.let(
-              :nl,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          AR =
-            T.let(
-              :ar,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          SV =
-            T.let(
-              :sv,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          IT =
-            T.let(
-              :it,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          ID =
-            T.let(
-              :id,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          HI =
-            T.let(
-              :hi,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          FI =
-            T.let(
-              :fi,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          VI =
-            T.let(
-              :vi,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          HE =
-            T.let(
-              :he,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          UK =
-            T.let(
-              :uk,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          EL =
-            T.let(
-              :el,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          MS =
-            T.let(
-              :ms,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          CS =
-            T.let(
-              :cs,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          RO =
-            T.let(
-              :ro,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          DA =
-            T.let(
-              :da,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          HU =
-            T.let(
-              :hu,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          TA =
-            T.let(
-              :ta,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          NO =
-            T.let(
-              :no,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          TH =
-            T.let(
-              :th,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          UR =
-            T.let(
-              :ur,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          HR =
-            T.let(
-              :hr,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          BG =
-            T.let(
-              :bg,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          LT =
-            T.let(
-              :lt,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          LA =
-            T.let(
-              :la,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          MI =
-            T.let(
-              :mi,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          ML =
-            T.let(
-              :ml,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          CY =
-            T.let(
-              :cy,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          SK =
-            T.let(
-              :sk,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          TE =
-            T.let(
-              :te,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          FA =
-            T.let(
-              :fa,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          LV =
-            T.let(
-              :lv,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          BN =
-            T.let(
-              :bn,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          SR =
-            T.let(
-              :sr,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          AZ =
-            T.let(
-              :az,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          SL =
-            T.let(
-              :sl,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          KN =
-            T.let(
-              :kn,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          ET =
-            T.let(
-              :et,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          MK =
-            T.let(
-              :mk,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          BR =
-            T.let(
-              :br,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          EU =
-            T.let(
-              :eu,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          IS =
-            T.let(
-              :is,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          HY =
-            T.let(
-              :hy,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          NE =
-            T.let(
-              :ne,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          MN =
-            T.let(
-              :mn,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          BS =
-            T.let(
-              :bs,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          KK =
-            T.let(
-              :kk,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          SQ =
-            T.let(
-              :sq,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          SW =
-            T.let(
-              :sw,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          GL =
-            T.let(
-              :gl,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          MR =
-            T.let(
-              :mr,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          PA =
-            T.let(
-              :pa,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          SI =
-            T.let(
-              :si,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          KM =
-            T.let(
-              :km,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          SN =
-            T.let(
-              :sn,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          YO =
-            T.let(
-              :yo,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          SO =
-            T.let(
-              :so,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          AF =
-            T.let(
-              :af,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          OC =
-            T.let(
-              :oc,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          KA =
-            T.let(
-              :ka,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          BE =
-            T.let(
-              :be,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          TG =
-            T.let(
-              :tg,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          SD =
-            T.let(
-              :sd,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          GU =
-            T.let(
-              :gu,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          AM =
-            T.let(
-              :am,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          YI =
-            T.let(
-              :yi,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          LO =
-            T.let(
-              :lo,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          UZ =
-            T.let(
-              :uz,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          FO =
-            T.let(
-              :fo,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          HT =
-            T.let(
-              :ht,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          PS =
-            T.let(
-              :ps,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          TK =
-            T.let(
-              :tk,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          NN =
-            T.let(
-              :nn,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          MT =
-            T.let(
-              :mt,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          SA =
-            T.let(
-              :sa,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          LB =
-            T.let(
-              :lb,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          MY =
-            T.let(
-              :my,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          BO =
-            T.let(
-              :bo,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          TL =
-            T.let(
-              :tl,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          MG =
-            T.let(
-              :mg,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          AS =
-            T.let(
-              :as,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          TT =
-            T.let(
-              :tt,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          HAW =
-            T.let(
-              :haw,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          LN =
-            T.let(
-              :ln,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          HA =
-            T.let(
-              :ha,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          BA =
-            T.let(
-              :ba,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          JW =
-            T.let(
-              :jw,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          SU =
-            T.let(
-              :su,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          AUTO_DETECT =
-            T.let(
-              :auto_detect,
-              Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
-            )
-          ES_419 =
-            T.let(
-              :"es-419",
               Telnyx::Calls::ActionStartRecordingParams::TranscriptionLanguage::TaggedSymbol
             )
 

@@ -1039,7 +1039,7 @@ module Telnyx
         #
         # @param transcription_engine [Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::TranscriptionEngine] Engine to use for speech recognition. `A` - `Google`, `B` - `Telnyx`, `deepgram/
         #
-        # @param transcription_language [Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::TranscriptionLanguage]
+        # @param transcription_language [Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::TranscriptionLanguage] Language code for transcription. Note: Not all languages are supported by all tr
         #
         # @param transcription_max_speaker_count [Integer] Defines maximum number of speakers in the conversation. Applies to `google` engi
         #
