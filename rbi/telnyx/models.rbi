@@ -899,6 +899,8 @@ module Telnyx
 
   Metadata = Telnyx::Models::Metadata
 
+  MinimaxVoiceSettings = Telnyx::Models::MinimaxVoiceSettings
+
   MobileNetworkOperatorListParams =
     Telnyx::Models::MobileNetworkOperatorListParams
 
@@ -1299,6 +1301,8 @@ module Telnyx
   RcsContentInfo = Telnyx::Models::RcsContentInfo
 
   RcsSuggestion = Telnyx::Models::RcsSuggestion
+
+  Record = Telnyx::Models::Record
 
   RecordingDeleteParams = Telnyx::Models::RecordingDeleteParams
 

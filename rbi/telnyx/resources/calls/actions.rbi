@@ -603,7 +603,7 @@ module Telnyx
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
-                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax::OrHash
+                Telnyx::MinimaxVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingSpeakResponse)
@@ -964,7 +964,7 @@ module Telnyx
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
-                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::OrHash
+                Telnyx::MinimaxVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionSpeakResponse)

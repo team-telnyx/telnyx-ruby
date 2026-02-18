@@ -39,7 +39,7 @@ module Telnyx
             ?page_size: Integer,
             ?status: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AI::Missions::RunListResponse]
+          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AI::Missions::MissionRunData]
 
           def cancel_run: (
             String run_id,
@@ -52,7 +52,7 @@ module Telnyx
             ?page_size: Integer,
             ?status: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AI::Missions::RunListRunsResponse]
+          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AI::Missions::MissionRunData]
 
           def pause_run: (
             String run_id,

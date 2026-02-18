@@ -2,59 +2,31 @@ module Telnyx
   module Models
     type global_ip_health_check_list_response =
       {
-        id: String,
-        created_at: String,
-        record_type: String,
-        updated_at: String,
         global_ip_id: String,
         health_check_params: ::Hash[Symbol, top],
         health_check_type: String
       }
 
-    class GlobalIPHealthCheckListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader global_ip_id: String?
+    class GlobalIPHealthCheckListResponse < Telnyx::Models::Record
+      def global_ip_id: -> String?
 
-      def global_ip_id=: (String) -> String
+      def global_ip_id=: (String _) -> String
 
-      attr_reader health_check_params: ::Hash[Symbol, top]?
+      def health_check_params: -> ::Hash[Symbol, top]?
 
-      def health_check_params=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+      def health_check_params=: (::Hash[Symbol, top] _) -> ::Hash[Symbol, top]
 
-      attr_reader health_check_type: String?
+      def health_check_type: -> String?
 
-      def health_check_type=: (String) -> String
-
-      attr_reader id: String?
-
-      def id=: (String) -> String
-
-      attr_reader created_at: String?
-
-      def created_at=: (String) -> String
-
-      attr_reader record_type: String?
-
-      def record_type=: (String) -> String
-
-      attr_reader updated_at: String?
-
-      def updated_at=: (String) -> String
+      def health_check_type=: (String _) -> String
 
       def initialize: (
-        ?id: String,
-        ?created_at: String,
-        ?record_type: String,
-        ?updated_at: String,
         ?global_ip_id: String,
         ?health_check_params: ::Hash[Symbol, top],
         ?health_check_type: String
       ) -> void
 
       def to_hash: -> {
-        id: String,
-        created_at: String,
-        record_type: String,
-        updated_at: String,
         global_ip_id: String,
         health_check_params: ::Hash[Symbol, top],
         health_check_type: String
