@@ -1,95 +1,14 @@
 module Telnyx
   module Models
     module AI
-      type mission_retrieve_response =
-        { data: Telnyx::Models::AI::MissionRetrieveResponse::Data }
+      type mission_retrieve_response = { data: Telnyx::AI::MissionData }
 
       class MissionRetrieveResponse < Telnyx::Internal::Type::BaseModel
-        attr_accessor data: Telnyx::Models::AI::MissionRetrieveResponse::Data
+        attr_accessor data: Telnyx::AI::MissionData
 
-        def initialize: (
-          data: Telnyx::Models::AI::MissionRetrieveResponse::Data
-        ) -> void
+        def initialize: (data: Telnyx::AI::MissionData) -> void
 
-        def to_hash: -> {
-          data: Telnyx::Models::AI::MissionRetrieveResponse::Data
-        }
-
-        type data =
-          {
-            created_at: Time,
-            execution_mode: Telnyx::Models::AI::MissionRetrieveResponse::Data::execution_mode,
-            mission_id: String,
-            name: String,
-            updated_at: Time,
-            description: String,
-            instructions: String,
-            metadata: ::Hash[Symbol, top],
-            model: String
-          }
-
-        class Data < Telnyx::Internal::Type::BaseModel
-          attr_accessor created_at: Time
-
-          attr_accessor execution_mode: Telnyx::Models::AI::MissionRetrieveResponse::Data::execution_mode
-
-          attr_accessor mission_id: String
-
-          attr_accessor name: String
-
-          attr_accessor updated_at: Time
-
-          attr_reader description: String?
-
-          def description=: (String) -> String
-
-          attr_reader instructions: String?
-
-          def instructions=: (String) -> String
-
-          attr_reader metadata: ::Hash[Symbol, top]?
-
-          def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
-
-          attr_reader model: String?
-
-          def model=: (String) -> String
-
-          def initialize: (
-            created_at: Time,
-            execution_mode: Telnyx::Models::AI::MissionRetrieveResponse::Data::execution_mode,
-            mission_id: String,
-            name: String,
-            updated_at: Time,
-            ?description: String,
-            ?instructions: String,
-            ?metadata: ::Hash[Symbol, top],
-            ?model: String
-          ) -> void
-
-          def to_hash: -> {
-            created_at: Time,
-            execution_mode: Telnyx::Models::AI::MissionRetrieveResponse::Data::execution_mode,
-            mission_id: String,
-            name: String,
-            updated_at: Time,
-            description: String,
-            instructions: String,
-            metadata: ::Hash[Symbol, top],
-            model: String
-          }
-
-          type execution_mode = :external | :managed
-
-          module ExecutionMode
-            extend Telnyx::Internal::Type::Enum
-
-            EXTERNAL: :external
-            MANAGED: :managed
-
-            def self?.values: -> ::Array[Telnyx::Models::AI::MissionRetrieveResponse::Data::execution_mode]
-          end
-        end
+        def to_hash: -> { data: Telnyx::AI::MissionData }
       end
     end
   end
