@@ -33,6 +33,14 @@ module Telnyx
         #   @return [Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaURL, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaName, nil]
         optional :background_audio, union: -> { Telnyx::AI::VoiceSettings::BackgroundAudio }
 
+        # @!attribute language_boost
+        #   Enhances recognition for specific languages and dialects during MiniMax TTS
+        #   synthesis. Default is null (no boost). Set to 'auto' for automatic language
+        #   detection. Only applicable when using MiniMax voices.
+        #
+        #   @return [Symbol, Telnyx::Models::AI::VoiceSettings::LanguageBoost, nil]
+        optional :language_boost, enum: -> { Telnyx::AI::VoiceSettings::LanguageBoost }, nil?: true
+
         # @!attribute similarity_boost
         #   Determines how closely the AI should adhere to the original voice when
         #   attempting to replicate it. Only applicable when using ElevenLabs.
@@ -78,7 +86,7 @@ module Telnyx
         #   @return [Float, nil]
         optional :voice_speed, Float
 
-        # @!method initialize(voice:, api_key_ref: nil, background_audio: nil, similarity_boost: nil, speed: nil, style: nil, temperature: nil, use_speaker_boost: nil, voice_speed: nil)
+        # @!method initialize(voice:, api_key_ref: nil, background_audio: nil, language_boost: nil, similarity_boost: nil, speed: nil, style: nil, temperature: nil, use_speaker_boost: nil, voice_speed: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::VoiceSettings} for more details.
         #
@@ -87,6 +95,8 @@ module Telnyx
         #   @param api_key_ref [String] The `identifier` for an integration secret [/v2/integration_secrets](https://dev
         #
         #   @param background_audio [Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaURL, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaName] Optional background audio to play on the call. Use a predefined media bed, or su
+        #
+        #   @param language_boost [Symbol, Telnyx::Models::AI::VoiceSettings::LanguageBoost, nil] Enhances recognition for specific languages and dialects during MiniMax TTS synt
         #
         #   @param similarity_boost [Float] Determines how closely the AI should adhere to the original voice when attemptin
         #
@@ -194,6 +204,60 @@ module Telnyx
 
           # @!method self.variants
           #   @return [Array(Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaURL, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaName)]
+        end
+
+        # Enhances recognition for specific languages and dialects during MiniMax TTS
+        # synthesis. Default is null (no boost). Set to 'auto' for automatic language
+        # detection. Only applicable when using MiniMax voices.
+        #
+        # @see Telnyx::Models::AI::VoiceSettings#language_boost
+        module LanguageBoost
+          extend Telnyx::Internal::Type::Enum
+
+          AUTO = :auto
+          CHINESE = :Chinese
+          CHINESE_YUE = :"Chinese,Yue"
+          ENGLISH = :English
+          ARABIC = :Arabic
+          RUSSIAN = :Russian
+          SPANISH = :Spanish
+          FRENCH = :French
+          PORTUGUESE = :Portuguese
+          GERMAN = :German
+          TURKISH = :Turkish
+          DUTCH = :Dutch
+          UKRAINIAN = :Ukrainian
+          VIETNAMESE = :Vietnamese
+          INDONESIAN = :Indonesian
+          JAPANESE = :Japanese
+          ITALIAN = :Italian
+          KOREAN = :Korean
+          THAI = :Thai
+          POLISH = :Polish
+          ROMANIAN = :Romanian
+          GREEK = :Greek
+          CZECH = :Czech
+          FINNISH = :Finnish
+          HINDI = :Hindi
+          BULGARIAN = :Bulgarian
+          DANISH = :Danish
+          HEBREW = :Hebrew
+          MALAY = :Malay
+          PERSIAN = :Persian
+          SLOVAK = :Slovak
+          SWEDISH = :Swedish
+          CROATIAN = :Croatian
+          FILIPINO = :Filipino
+          HUNGARIAN = :Hungarian
+          NORWEGIAN = :Norwegian
+          SLOVENIAN = :Slovenian
+          CATALAN = :Catalan
+          NYNORSK = :Nynorsk
+          TAMIL = :Tamil
+          AFRIKAANS = :Afrikaans
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

@@ -1341,6 +1341,9 @@ module Telnyx
           # `deepgram/nova-3` - `Deepgram Nova-3`. Note: `deepgram/nova-3` supports only
           # `en` and `en-{Region}` languages.
           transcription_engine: nil,
+          # Language code for transcription. Note: Not all languages are supported by all
+          # transcription engines (google, telnyx, deepgram). See engine-specific
+          # documentation for supported values.
           transcription_language: nil,
           # Defines maximum number of speakers in the conversation. Applies to `google`
           # engine only.
