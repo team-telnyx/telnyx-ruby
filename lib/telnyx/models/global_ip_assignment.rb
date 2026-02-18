@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::GlobalIPAssignments#list
     class GlobalIPAssignment < Telnyx::Internal::Type::BaseModel
       response_only do
         # @!attribute id

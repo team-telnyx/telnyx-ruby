@@ -114,7 +114,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::Missions::RunListResponse>]
+          # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::Missions::MissionRunData>]
           #
           # @see Telnyx::Models::AI::Missions::RunListParams
           def list(mission_id, params = {})
@@ -124,7 +124,7 @@ module Telnyx
               path: ["ai/missions/%1$s/runs", mission_id],
               query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
               page: Telnyx::Internal::DefaultFlatPagination,
-              model: Telnyx::Models::AI::Missions::RunListResponse,
+              model: Telnyx::AI::Missions::MissionRunData,
               options: options
             )
           end
@@ -166,7 +166,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::Missions::RunListRunsResponse>]
+          # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::Missions::MissionRunData>]
           #
           # @see Telnyx::Models::AI::Missions::RunListRunsParams
           def list_runs(params = {})
@@ -176,7 +176,7 @@ module Telnyx
               path: "ai/missions/runs",
               query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
               page: Telnyx::Internal::DefaultFlatPagination,
-              model: Telnyx::Models::AI::Missions::RunListRunsResponse,
+              model: Telnyx::AI::Missions::MissionRunData,
               options: options
             )
           end

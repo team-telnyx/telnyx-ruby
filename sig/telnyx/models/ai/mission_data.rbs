@@ -1,10 +1,10 @@
 module Telnyx
   module Models
     module AI
-      type mission_list_response =
+      type mission_data =
         {
           created_at: Time,
-          execution_mode: Telnyx::Models::AI::MissionListResponse::execution_mode,
+          execution_mode: Telnyx::Models::AI::MissionData::execution_mode,
           mission_id: String,
           name: String,
           updated_at: Time,
@@ -14,10 +14,10 @@ module Telnyx
           model: String
         }
 
-      class MissionListResponse < Telnyx::Internal::Type::BaseModel
+      class MissionData < Telnyx::Internal::Type::BaseModel
         attr_accessor created_at: Time
 
-        attr_accessor execution_mode: Telnyx::Models::AI::MissionListResponse::execution_mode
+        attr_accessor execution_mode: Telnyx::Models::AI::MissionData::execution_mode
 
         attr_accessor mission_id: String
 
@@ -43,7 +43,7 @@ module Telnyx
 
         def initialize: (
           created_at: Time,
-          execution_mode: Telnyx::Models::AI::MissionListResponse::execution_mode,
+          execution_mode: Telnyx::Models::AI::MissionData::execution_mode,
           mission_id: String,
           name: String,
           updated_at: Time,
@@ -55,7 +55,7 @@ module Telnyx
 
         def to_hash: -> {
           created_at: Time,
-          execution_mode: Telnyx::Models::AI::MissionListResponse::execution_mode,
+          execution_mode: Telnyx::Models::AI::MissionData::execution_mode,
           mission_id: String,
           name: String,
           updated_at: Time,
@@ -73,7 +73,7 @@ module Telnyx
           EXTERNAL: :external
           MANAGED: :managed
 
-          def self?.values: -> ::Array[Telnyx::Models::AI::MissionListResponse::execution_mode]
+          def self?.values: -> ::Array[Telnyx::Models::AI::MissionData::execution_mode]
         end
       end
     end

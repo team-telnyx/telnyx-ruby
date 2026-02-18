@@ -97,7 +97,7 @@ module Telnyx
         # @!attribute voice_settings
         #   The settings associated with the voice selected
         #
-        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Minimax, nil]
+        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionSpeakParams::VoiceSettings }
 
         # @!method initialize(payload:, voice:, client_state: nil, command_id: nil, language: nil, payload_type: nil, service_level: nil, stop: nil, voice_settings: nil, request_options: {})
@@ -120,7 +120,7 @@ module Telnyx
         #
         #   @param stop [String] When specified, it stops the current audio being played. Specify `current` to st
         #
-        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Minimax] The settings associated with the voice selected
+        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings] The settings associated with the voice selected
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -199,45 +199,10 @@ module Telnyx
 
           variant :aws, -> { Telnyx::Calls::AwsVoiceSettings }
 
-          variant :minimax, -> { Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax }
-
-          class Minimax < Telnyx::Internal::Type::BaseModel
-            # @!attribute type
-            #   Voice settings provider type
-            #
-            #   @return [Symbol, :minimax]
-            required :type, const: :minimax
-
-            # @!attribute pitch
-            #   Voice pitch adjustment. Default is 0.
-            #
-            #   @return [Integer, nil]
-            optional :pitch, Integer
-
-            # @!attribute speed
-            #   Speech speed multiplier. Default is 1.0.
-            #
-            #   @return [Float, nil]
-            optional :speed, Float
-
-            # @!attribute vol
-            #   Speech volume multiplier. Default is 1.0.
-            #
-            #   @return [Float, nil]
-            optional :vol, Float
-
-            # @!method initialize(pitch: nil, speed: nil, vol: nil, type: :minimax)
-            #   @param pitch [Integer] Voice pitch adjustment. Default is 0.
-            #
-            #   @param speed [Float] Speech speed multiplier. Default is 1.0.
-            #
-            #   @param vol [Float] Speech volume multiplier. Default is 1.0.
-            #
-            #   @param type [Symbol, :minimax] Voice settings provider type
-          end
+          variant :minimax, -> { Telnyx::MinimaxVoiceSettings }
 
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Minimax)]
+          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings)]
         end
       end
     end
