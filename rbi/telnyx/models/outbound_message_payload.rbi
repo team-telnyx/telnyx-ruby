@@ -145,6 +145,16 @@ module Telnyx
       sig { returns(T.nilable(Time)) }
       attr_accessor :sent_at
 
+      # Indicates whether smart encoding was applied to this message. When `true`, one
+      # or more Unicode characters were automatically replaced with GSM-7 equivalents to
+      # reduce segment count and cost. The original message text is preserved in
+      # webhooks.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :smart_encoding_applied
+
+      sig { params(smart_encoding_applied: T::Boolean).void }
+      attr_writer :smart_encoding_applied
+
       # Subject of multimedia message
       sig { returns(T.nilable(String)) }
       attr_accessor :subject
@@ -231,6 +241,7 @@ module Telnyx
           received_at: Time,
           record_type: Telnyx::OutboundMessagePayload::RecordType::OrSymbol,
           sent_at: T.nilable(Time),
+          smart_encoding_applied: T::Boolean,
           subject: T.nilable(String),
           tags: T::Array[String],
           tcr_campaign_billable: T::Boolean,
@@ -275,6 +286,11 @@ module Telnyx
         record_type: nil,
         # ISO 8601 formatted date indicating when the message was sent.
         sent_at: nil,
+        # Indicates whether smart encoding was applied to this message. When `true`, one
+        # or more Unicode characters were automatically replaced with GSM-7 equivalents to
+        # reduce segment count and cost. The original message text is preserved in
+        # webhooks.
+        smart_encoding_applied: nil,
         # Subject of multimedia message
         subject: nil,
         # Tags associated with the resource.
@@ -325,6 +341,7 @@ module Telnyx
             record_type:
               Telnyx::OutboundMessagePayload::RecordType::TaggedSymbol,
             sent_at: T.nilable(Time),
+            smart_encoding_applied: T::Boolean,
             subject: T.nilable(String),
             tags: T::Array[String],
             tcr_campaign_billable: T::Boolean,

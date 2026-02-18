@@ -196,7 +196,7 @@ module Telnyx
                 Telnyx::Calls::ElevenLabsVoiceSettings,
                 Telnyx::Calls::TelnyxVoiceSettings,
                 Telnyx::Calls::AwsVoiceSettings,
-                Telnyx::MinimaxVoiceSettings
+                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax
               )
             )
           )
@@ -210,7 +210,7 @@ module Telnyx
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
-                Telnyx::MinimaxVoiceSettings::OrHash
+                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax::OrHash
               )
           ).void
         end
@@ -241,7 +241,7 @@ module Telnyx
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
-                Telnyx::MinimaxVoiceSettings::OrHash
+                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -350,7 +350,7 @@ module Telnyx
                   Telnyx::Calls::ElevenLabsVoiceSettings,
                   Telnyx::Calls::TelnyxVoiceSettings,
                   Telnyx::Calls::AwsVoiceSettings,
-                  Telnyx::MinimaxVoiceSettings
+                  Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax
                 ),
               request_options: Telnyx::RequestOptions
             }
@@ -612,9 +612,72 @@ module Telnyx
                 Telnyx::Calls::ElevenLabsVoiceSettings,
                 Telnyx::Calls::TelnyxVoiceSettings,
                 Telnyx::Calls::AwsVoiceSettings,
-                Telnyx::MinimaxVoiceSettings
+                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax
               )
             end
+
+          class Minimax < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # Voice settings provider type
+            sig { returns(Symbol) }
+            attr_accessor :type
+
+            # Voice pitch adjustment. Default is 0.
+            sig { returns(T.nilable(Integer)) }
+            attr_reader :pitch
+
+            sig { params(pitch: Integer).void }
+            attr_writer :pitch
+
+            # Speech speed multiplier. Default is 1.0.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :speed
+
+            sig { params(speed: Float).void }
+            attr_writer :speed
+
+            # Speech volume multiplier. Default is 1.0.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :vol
+
+            sig { params(vol: Float).void }
+            attr_writer :vol
+
+            sig do
+              params(
+                pitch: Integer,
+                speed: Float,
+                vol: Float,
+                type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Voice pitch adjustment. Default is 0.
+              pitch: nil,
+              # Speech speed multiplier. Default is 1.0.
+              speed: nil,
+              # Speech volume multiplier. Default is 1.0.
+              vol: nil,
+              # Voice settings provider type
+              type: :minimax
+            )
+            end
+
+            sig do
+              override.returns(
+                { type: Symbol, pitch: Integer, speed: Float, vol: Float }
+              )
+            end
+            def to_hash
+            end
+          end
 
           sig do
             override.returns(

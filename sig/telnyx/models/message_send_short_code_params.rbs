@@ -5,6 +5,7 @@ module Telnyx
         from: String,
         to: String,
         auto_detect: bool,
+        encoding: Telnyx::Models::MessageSendShortCodeParams::encoding,
         media_urls: ::Array[String],
         subject: String,
         text: String,
@@ -26,6 +27,12 @@ module Telnyx
       attr_reader auto_detect: bool?
 
       def auto_detect=: (bool) -> bool
+
+      attr_reader encoding: Telnyx::Models::MessageSendShortCodeParams::encoding?
+
+      def encoding=: (
+        Telnyx::Models::MessageSendShortCodeParams::encoding
+      ) -> Telnyx::Models::MessageSendShortCodeParams::encoding
 
       attr_reader media_urls: ::Array[String]?
 
@@ -61,6 +68,7 @@ module Telnyx
         from: String,
         to: String,
         ?auto_detect: bool,
+        ?encoding: Telnyx::Models::MessageSendShortCodeParams::encoding,
         ?media_urls: ::Array[String],
         ?subject: String,
         ?text: String,
@@ -75,6 +83,7 @@ module Telnyx
         from: String,
         to: String,
         auto_detect: bool,
+        encoding: Telnyx::Models::MessageSendShortCodeParams::encoding,
         media_urls: ::Array[String],
         subject: String,
         text: String,
@@ -84,6 +93,18 @@ module Telnyx
         webhook_url: String,
         request_options: Telnyx::RequestOptions
       }
+
+      type encoding = :auto | :gsm7 | :ucs2
+
+      module Encoding
+        extend Telnyx::Internal::Type::Enum
+
+        AUTO: :auto
+        GSM7: :gsm7
+        UCS2: :ucs2
+
+        def self?.values: -> ::Array[Telnyx::Models::MessageSendShortCodeParams::encoding]
+      end
 
       type type_ = :SMS | :MMS
 

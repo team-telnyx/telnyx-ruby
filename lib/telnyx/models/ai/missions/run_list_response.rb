@@ -5,7 +5,7 @@ module Telnyx
     module AI
       module Missions
         # @see Telnyx::Resources::AI::Missions::Runs#list
-        class MissionRunData < Telnyx::Internal::Type::BaseModel
+        class RunListResponse < Telnyx::Internal::Type::BaseModel
           # @!attribute mission_id
           #
           #   @return [String]
@@ -23,8 +23,8 @@ module Telnyx
 
           # @!attribute status
           #
-          #   @return [Symbol, Telnyx::Models::AI::Missions::MissionRunData::Status]
-          required :status, enum: -> { Telnyx::AI::Missions::MissionRunData::Status }
+          #   @return [Symbol, Telnyx::Models::AI::Missions::RunListResponse::Status]
+          required :status, enum: -> { Telnyx::Models::AI::Missions::RunListResponse::Status }
 
           # @!attribute updated_at
           #
@@ -65,7 +65,7 @@ module Telnyx
           #   @param mission_id [String]
           #   @param run_id [String]
           #   @param started_at [Time]
-          #   @param status [Symbol, Telnyx::Models::AI::Missions::MissionRunData::Status]
+          #   @param status [Symbol, Telnyx::Models::AI::Missions::RunListResponse::Status]
           #   @param updated_at [Time]
           #   @param error [String]
           #   @param finished_at [Time]
@@ -74,7 +74,7 @@ module Telnyx
           #   @param result_payload [Hash{Symbol=>Object}]
           #   @param result_summary [String]
 
-          # @see Telnyx::Models::AI::Missions::MissionRunData#status
+          # @see Telnyx::Models::AI::Missions::RunListResponse#status
           module Status
             extend Telnyx::Internal::Type::Enum
 
@@ -90,8 +90,6 @@ module Telnyx
           end
         end
       end
-
-      MissionRunData = Missions::MissionRunData
     end
   end
 end

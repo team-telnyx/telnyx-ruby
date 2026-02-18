@@ -243,10 +243,10 @@ module Telnyx
               end
 
             # The properties of the body parameters.
-            sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+            sig { returns(T.nilable(T.anything)) }
             attr_reader :properties
 
-            sig { params(properties: T::Hash[Symbol, T.anything]).void }
+            sig { params(properties: T.anything).void }
             attr_writer :properties
 
             # The required properties of the body parameters.
@@ -279,7 +279,7 @@ module Telnyx
             # for documentation about the format
             sig do
               params(
-                properties: T::Hash[Symbol, T.anything],
+                properties: T.anything,
                 required: T::Array[String],
                 type:
                   Telnyx::AI::WebhookTool::Webhook::BodyParameters::Type::OrSymbol
@@ -297,7 +297,7 @@ module Telnyx
             sig do
               override.returns(
                 {
-                  properties: T::Hash[Symbol, T.anything],
+                  properties: T.anything,
                   required: T::Array[String],
                   type:
                     Telnyx::AI::WebhookTool::Webhook::BodyParameters::Type::OrSymbol
@@ -435,10 +435,10 @@ module Telnyx
               end
 
             # The properties of the path parameters.
-            sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+            sig { returns(T.nilable(T.anything)) }
             attr_reader :properties
 
-            sig { params(properties: T::Hash[Symbol, T.anything]).void }
+            sig { params(properties: T.anything).void }
             attr_writer :properties
 
             # The required properties of the path parameters.
@@ -472,7 +472,7 @@ module Telnyx
             # documentation about the format
             sig do
               params(
-                properties: T::Hash[Symbol, T.anything],
+                properties: T.anything,
                 required: T::Array[String],
                 type:
                   Telnyx::AI::WebhookTool::Webhook::PathParameters::Type::OrSymbol
@@ -490,7 +490,7 @@ module Telnyx
             sig do
               override.returns(
                 {
-                  properties: T::Hash[Symbol, T.anything],
+                  properties: T.anything,
                   required: T::Array[String],
                   type:
                     Telnyx::AI::WebhookTool::Webhook::PathParameters::Type::OrSymbol
@@ -540,10 +540,10 @@ module Telnyx
               end
 
             # The properties of the query parameters.
-            sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+            sig { returns(T.nilable(T.anything)) }
             attr_reader :properties
 
-            sig { params(properties: T::Hash[Symbol, T.anything]).void }
+            sig { params(properties: T.anything).void }
             attr_writer :properties
 
             # The required properties of the query parameters.
@@ -577,7 +577,7 @@ module Telnyx
             # documentation about the format
             sig do
               params(
-                properties: T::Hash[Symbol, T.anything],
+                properties: T.anything,
                 required: T::Array[String],
                 type:
                   Telnyx::AI::WebhookTool::Webhook::QueryParameters::Type::OrSymbol
@@ -595,7 +595,7 @@ module Telnyx
             sig do
               override.returns(
                 {
-                  properties: T::Hash[Symbol, T.anything],
+                  properties: T.anything,
                   required: T::Array[String],
                   type:
                     Telnyx::AI::WebhookTool::Webhook::QueryParameters::Type::OrSymbol

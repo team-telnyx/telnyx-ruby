@@ -39,9 +39,8 @@ module Telnyx
           # @!attribute participants
           #   List of participant resources.
           #
-          #   @return [Array<Hash{Symbol=>Object}>, nil]
-          optional :participants,
-                   Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]
+          #   @return [Array<Object>, nil]
+          optional :participants, Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]
 
           # @!attribute recordings
           #
@@ -76,7 +75,7 @@ module Telnyx
           #
           #   @param page_size [Integer] The number of items on the page
           #
-          #   @param participants [Array<Hash{Symbol=>Object}>] List of participant resources.
+          #   @param participants [Array<Object>] List of participant resources.
           #
           #   @param recordings [Array<Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse::Recording>]
           #
