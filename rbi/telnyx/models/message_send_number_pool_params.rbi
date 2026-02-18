@@ -27,6 +27,25 @@ module Telnyx
       sig { params(auto_detect: T::Boolean).void }
       attr_writer :auto_detect
 
+      # Encoding to use for the message. `auto` (default) uses smart encoding to
+      # automatically select the most efficient encoding. `gsm7` forces GSM-7 encoding
+      # (returns 400 if message contains characters that cannot be encoded). `ucs2`
+      # forces UCS-2 encoding and disables smart encoding. When set, this overrides the
+      # messaging profile's `smart_encoding` setting.
+      sig do
+        returns(
+          T.nilable(Telnyx::MessageSendNumberPoolParams::Encoding::OrSymbol)
+        )
+      end
+      attr_reader :encoding
+
+      sig do
+        params(
+          encoding: Telnyx::MessageSendNumberPoolParams::Encoding::OrSymbol
+        ).void
+      end
+      attr_writer :encoding
+
       # A list of media URLs. The total media size must be less than 1 MB.
       #
       # **Required for MMS**
@@ -92,6 +111,7 @@ module Telnyx
           messaging_profile_id: String,
           to: String,
           auto_detect: T::Boolean,
+          encoding: Telnyx::MessageSendNumberPoolParams::Encoding::OrSymbol,
           media_urls: T::Array[String],
           subject: String,
           text: String,
@@ -110,6 +130,12 @@ module Telnyx
         # Automatically detect if an SMS message is unusually long and exceeds a
         # recommended limit of message parts.
         auto_detect: nil,
+        # Encoding to use for the message. `auto` (default) uses smart encoding to
+        # automatically select the most efficient encoding. `gsm7` forces GSM-7 encoding
+        # (returns 400 if message contains characters that cannot be encoded). `ucs2`
+        # forces UCS-2 encoding and disables smart encoding. When set, this overrides the
+        # messaging profile's `smart_encoding` setting.
+        encoding: nil,
         # A list of media URLs. The total media size must be less than 1 MB.
         #
         # **Required for MMS**
@@ -141,6 +167,7 @@ module Telnyx
             messaging_profile_id: String,
             to: String,
             auto_detect: T::Boolean,
+            encoding: Telnyx::MessageSendNumberPoolParams::Encoding::OrSymbol,
             media_urls: T::Array[String],
             subject: String,
             text: String,
@@ -153,6 +180,47 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      # Encoding to use for the message. `auto` (default) uses smart encoding to
+      # automatically select the most efficient encoding. `gsm7` forces GSM-7 encoding
+      # (returns 400 if message contains characters that cannot be encoded). `ucs2`
+      # forces UCS-2 encoding and disables smart encoding. When set, this overrides the
+      # messaging profile's `smart_encoding` setting.
+      module Encoding
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Telnyx::MessageSendNumberPoolParams::Encoding)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        AUTO =
+          T.let(
+            :auto,
+            Telnyx::MessageSendNumberPoolParams::Encoding::TaggedSymbol
+          )
+        GSM7 =
+          T.let(
+            :gsm7,
+            Telnyx::MessageSendNumberPoolParams::Encoding::TaggedSymbol
+          )
+        UCS2 =
+          T.let(
+            :ucs2,
+            Telnyx::MessageSendNumberPoolParams::Encoding::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Telnyx::MessageSendNumberPoolParams::Encoding::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       # The protocol for sending the message, either SMS or MMS.

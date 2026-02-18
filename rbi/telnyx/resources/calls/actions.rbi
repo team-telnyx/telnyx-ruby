@@ -1489,8 +1489,8 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineAzureConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::OrHash
+                Telnyx::Calls::DeepgramNova2Config::OrHash,
+                Telnyx::Calls::DeepgramNova3Config::OrHash
               ),
             transcription_tracks: String,
             request_options: Telnyx::RequestOptions::OrHash

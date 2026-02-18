@@ -112,11 +112,13 @@ module Telnyx
       # messaging resources include: long-code, short-code, number-pool, and
       # alphanumeric-sender-id.
       #
-      # @overload send_(to:, auto_detect: nil, from: nil, media_urls: nil, messaging_profile_id: nil, send_at: nil, subject: nil, text: nil, type: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @overload send_(to:, auto_detect: nil, encoding: nil, from: nil, media_urls: nil, messaging_profile_id: nil, send_at: nil, subject: nil, text: nil, type: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #
       # @param to [String] Receiving address (+E.164 formatted phone number or short code).
       #
       # @param auto_detect [Boolean] Automatically detect if an SMS message is unusually long and exceeds a recommend
+      #
+      # @param encoding [Symbol, Telnyx::Models::MessageSendParams::Encoding] Encoding to use for the message. `auto` (default) uses smart encoding to automat
       #
       # @param from [String] Sending address (+E.164 formatted phone number, alphanumeric sender ID, or short
       #
@@ -198,13 +200,15 @@ module Telnyx
       #
       # Send a long code message
       #
-      # @overload send_long_code(from:, to:, auto_detect: nil, media_urls: nil, subject: nil, text: nil, type: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @overload send_long_code(from:, to:, auto_detect: nil, encoding: nil, media_urls: nil, subject: nil, text: nil, type: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #
       # @param from [String] Phone number, in +E.164 format, used to send the message.
       #
       # @param to [String] Receiving address (+E.164 formatted phone number or short code).
       #
       # @param auto_detect [Boolean] Automatically detect if an SMS message is unusually long and exceeds a recommend
+      #
+      # @param encoding [Symbol, Telnyx::Models::MessageSendLongCodeParams::Encoding] Encoding to use for the message. `auto` (default) uses smart encoding to automat
       #
       # @param media_urls [Array<String>] A list of media URLs. The total media size must be less than 1 MB.
       #
@@ -241,13 +245,15 @@ module Telnyx
       #
       # Send a message using number pool
       #
-      # @overload send_number_pool(messaging_profile_id:, to:, auto_detect: nil, media_urls: nil, subject: nil, text: nil, type: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @overload send_number_pool(messaging_profile_id:, to:, auto_detect: nil, encoding: nil, media_urls: nil, subject: nil, text: nil, type: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #
       # @param messaging_profile_id [String] Unique identifier for a messaging profile.
       #
       # @param to [String] Receiving address (+E.164 formatted phone number or short code).
       #
       # @param auto_detect [Boolean] Automatically detect if an SMS message is unusually long and exceeds a recommend
+      #
+      # @param encoding [Symbol, Telnyx::Models::MessageSendNumberPoolParams::Encoding] Encoding to use for the message. `auto` (default) uses smart encoding to automat
       #
       # @param media_urls [Array<String>] A list of media URLs. The total media size must be less than 1 MB.
       #
@@ -284,13 +290,15 @@ module Telnyx
       #
       # Send a short code message
       #
-      # @overload send_short_code(from:, to:, auto_detect: nil, media_urls: nil, subject: nil, text: nil, type: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @overload send_short_code(from:, to:, auto_detect: nil, encoding: nil, media_urls: nil, subject: nil, text: nil, type: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #
       # @param from [String] Phone number, in +E.164 format, used to send the message.
       #
       # @param to [String] Receiving address (+E.164 formatted phone number or short code).
       #
       # @param auto_detect [Boolean] Automatically detect if an SMS message is unusually long and exceeds a recommend
+      #
+      # @param encoding [Symbol, Telnyx::Models::MessageSendShortCodeParams::Encoding] Encoding to use for the message. `auto` (default) uses smart encoding to automat
       #
       # @param media_urls [Array<String>] A list of media URLs. The total media size must be less than 1 MB.
       #

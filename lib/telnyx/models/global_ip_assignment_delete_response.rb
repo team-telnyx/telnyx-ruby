@@ -6,11 +6,11 @@ module Telnyx
     class GlobalIPAssignmentDeleteResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Telnyx::Models::GlobalIPAssignment, nil]
+      #   @return [GlobalIPAssignment, nil]
       optional :data, -> { Telnyx::GlobalIPAssignment }
 
       # @!method initialize(data: nil)
-      #   @param data [Telnyx::Models::GlobalIPAssignment]
+      #   @param data [GlobalIPAssignment]
     end
   end
 end

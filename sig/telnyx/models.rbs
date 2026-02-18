@@ -1129,8 +1129,6 @@ module Telnyx
 
   class RcsSuggestion = Telnyx::Models::RcsSuggestion
 
-  class Record = Telnyx::Models::Record
-
   class RecordingDeleteParams = Telnyx::Models::RecordingDeleteParams
 
   class RecordingListParams = Telnyx::Models::RecordingListParams

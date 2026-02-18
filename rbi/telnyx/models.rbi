@@ -1302,8 +1302,6 @@ module Telnyx
 
   RcsSuggestion = Telnyx::Models::RcsSuggestion
 
-  Record = Telnyx::Models::Record
-
   RecordingDeleteParams = Telnyx::Models::RecordingDeleteParams
 
   RecordingListParams = Telnyx::Models::RecordingListParams

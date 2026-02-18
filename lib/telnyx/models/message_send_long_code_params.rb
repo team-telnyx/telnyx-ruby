@@ -26,6 +26,16 @@ module Telnyx
       #   @return [Boolean, nil]
       optional :auto_detect, Telnyx::Internal::Type::Boolean
 
+      # @!attribute encoding
+      #   Encoding to use for the message. `auto` (default) uses smart encoding to
+      #   automatically select the most efficient encoding. `gsm7` forces GSM-7 encoding
+      #   (returns 400 if message contains characters that cannot be encoded). `ucs2`
+      #   forces UCS-2 encoding and disables smart encoding. When set, this overrides the
+      #   messaging profile's `smart_encoding` setting.
+      #
+      #   @return [Symbol, Telnyx::Models::MessageSendLongCodeParams::Encoding, nil]
+      optional :encoding, enum: -> { Telnyx::MessageSendLongCodeParams::Encoding }
+
       # @!attribute media_urls
       #   A list of media URLs. The total media size must be less than 1 MB.
       #
@@ -75,7 +85,7 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String
 
-      # @!method initialize(from:, to:, auto_detect: nil, media_urls: nil, subject: nil, text: nil, type: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @!method initialize(from:, to:, auto_detect: nil, encoding: nil, media_urls: nil, subject: nil, text: nil, type: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessageSendLongCodeParams} for more details.
       #
@@ -84,6 +94,8 @@ module Telnyx
       #   @param to [String] Receiving address (+E.164 formatted phone number or short code).
       #
       #   @param auto_detect [Boolean] Automatically detect if an SMS message is unusually long and exceeds a recommend
+      #
+      #   @param encoding [Symbol, Telnyx::Models::MessageSendLongCodeParams::Encoding] Encoding to use for the message. `auto` (default) uses smart encoding to automat
       #
       #   @param media_urls [Array<String>] A list of media URLs. The total media size must be less than 1 MB.
       #
@@ -100,6 +112,22 @@ module Telnyx
       #   @param webhook_url [String] The URL where webhooks related to this message will be sent.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
+
+      # Encoding to use for the message. `auto` (default) uses smart encoding to
+      # automatically select the most efficient encoding. `gsm7` forces GSM-7 encoding
+      # (returns 400 if message contains characters that cannot be encoded). `ucs2`
+      # forces UCS-2 encoding and disables smart encoding. When set, this overrides the
+      # messaging profile's `smart_encoding` setting.
+      module Encoding
+        extend Telnyx::Internal::Type::Enum
+
+        AUTO = :auto
+        GSM7 = :gsm7
+        UCS2 = :ucs2
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
       # The protocol for sending the message, either SMS or MMS.
       module Type

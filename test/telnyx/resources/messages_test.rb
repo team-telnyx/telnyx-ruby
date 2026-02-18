@@ -46,6 +46,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
         received_at: Time | nil,
         record_type: Telnyx::Models::MessageCancelScheduledResponse::RecordType | nil,
         sent_at: Time | nil,
+        smart_encoding_applied: Telnyx::Internal::Type::Boolean | nil,
         subject: String | nil,
         tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
         tcr_campaign_billable: Telnyx::Internal::Type::Boolean | nil,
