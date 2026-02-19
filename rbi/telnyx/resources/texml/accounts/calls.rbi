@@ -138,6 +138,8 @@ module Telnyx
               supervising_role:
                 Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::OrSymbol,
               texml: String,
+              time_limit: Integer,
+              timeout: Integer,
               trim: Telnyx::Texml::Accounts::CallCallsParams::Trim::OrSymbol,
               url: String,
               url_method:
@@ -242,6 +244,13 @@ module Telnyx
             # TeXML to be used as instructions for the call. If provided, the call will
             # execute these instructions instead of fetching from the Url.
             texml: nil,
+            # The maximum duration of the call in seconds. The minimum value is 30 and the
+            # maximum value is 14400 (4 hours). Default is 14400 seconds.
+            time_limit: nil,
+            # The number of seconds to wait for the called party to answer the call before the
+            # call is canceled. The minimum value is 5 and the maximum value is 120. Default
+            # is 30 seconds.
+            timeout: nil,
             # Whether to trim any leading and trailing silence from the recording. Defaults to
             # `trim-silence`.
             trim: nil,

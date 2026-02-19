@@ -68,6 +68,8 @@ module Telnyx
             ?supervise_call_sid: String,
             ?supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::supervising_role,
             ?texml: String,
+            ?time_limit: Integer,
+            ?timeout: Integer,
             ?trim: Telnyx::Models::Texml::Accounts::CallCallsParams::trim,
             ?url: String,
             ?url_method: Telnyx::Models::Texml::Accounts::CallCallsParams::url_method,
