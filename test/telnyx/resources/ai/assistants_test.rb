@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.assistants.create(instructions: "instructions", model: "model", name: "name")
 
@@ -39,7 +39,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.assistants.retrieve("assistant_id")
 
@@ -74,7 +74,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.assistants.update("assistant_id")
 
@@ -109,7 +109,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.assistants.list
 
@@ -125,7 +125,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.assistants.delete("assistant_id")
 
@@ -143,7 +143,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
   end
 
   def test_chat_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.ai.assistants.chat(
@@ -164,7 +164,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
   end
 
   def test_clone_
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.assistants.clone_("assistant_id")
 
@@ -199,7 +199,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
   end
 
   def test_get_texml
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.assistants.get_texml("assistant_id")
 
@@ -209,7 +209,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
   end
 
   def test_imports_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.assistants.imports(api_key_ref: "api_key_ref", provider: :elevenlabs)
 
@@ -225,7 +225,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
   end
 
   def test_send_sms_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.assistants.send_sms("assistant_id", from: "from", to: "to")
 

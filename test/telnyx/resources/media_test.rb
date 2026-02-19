@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::MediaTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.media.retrieve("media_name")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::MediaTest < Telnyx::Test::ResourceTest
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.media.update("media_name")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::MediaTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.media.list
 
@@ -53,7 +53,7 @@ class Telnyx::Test::Resources::MediaTest < Telnyx::Test::ResourceTest
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.media.delete("media_name")
 
@@ -63,7 +63,7 @@ class Telnyx::Test::Resources::MediaTest < Telnyx::Test::ResourceTest
   end
 
   def test_download
-    skip("Prism doesn't support application/octet-stream responses")
+    skip("Mock server doesn't support application/octet-stream responses")
 
     response = @telnyx.media.download("media_name")
 
@@ -73,7 +73,7 @@ class Telnyx::Test::Resources::MediaTest < Telnyx::Test::ResourceTest
   end
 
   def test_upload_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.media.upload(media_url: "http://www.example.com/audio.mp3")
 

@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Storage::BucketsTest < Telnyx::Test::ResourceTest
   def test_create_presigned_url_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.storage.buckets.create_presigned_url("", bucket_name: "")
 

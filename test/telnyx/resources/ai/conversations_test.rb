@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::AI::ConversationsTest < Telnyx::Test::ResourceTest
   def test_create
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.conversations.create
 
@@ -24,7 +24,7 @@ class Telnyx::Test::Resources::AI::ConversationsTest < Telnyx::Test::ResourceTes
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.conversations.retrieve("conversation_id")
 
@@ -40,7 +40,7 @@ class Telnyx::Test::Resources::AI::ConversationsTest < Telnyx::Test::ResourceTes
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.conversations.update("conversation_id")
 
@@ -56,7 +56,7 @@ class Telnyx::Test::Resources::AI::ConversationsTest < Telnyx::Test::ResourceTes
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.conversations.list
 
@@ -72,7 +72,7 @@ class Telnyx::Test::Resources::AI::ConversationsTest < Telnyx::Test::ResourceTes
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.conversations.delete("conversation_id")
 
@@ -82,7 +82,7 @@ class Telnyx::Test::Resources::AI::ConversationsTest < Telnyx::Test::ResourceTes
   end
 
   def test_add_message_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.conversations.add_message("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", role: "role")
 
@@ -92,7 +92,7 @@ class Telnyx::Test::Resources::AI::ConversationsTest < Telnyx::Test::ResourceTes
   end
 
   def test_retrieve_conversations_insights
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.conversations.retrieve_conversations_insights("conversation_id")
 

@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::GlobalIPAllowedPortsTest < Telnyx::Test::ResourceTest
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.global_ip_allowed_ports.list
 

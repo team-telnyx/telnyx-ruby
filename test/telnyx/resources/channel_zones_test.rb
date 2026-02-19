@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::ChannelZonesTest < Telnyx::Test::ResourceTest
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.channel_zones.update("channel_zone_id", channels: 0)
 
@@ -26,7 +26,7 @@ class Telnyx::Test::Resources::ChannelZonesTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.channel_zones.list
 

@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Reports::CdrUsageReportsTest < Telnyx::Test::ResourceTest
   def test_fetch_sync_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.reports.cdr_usage_reports.fetch_sync(

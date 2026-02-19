@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::ExternalConnectionsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.external_connections.create(external_sip_connection: :zoom, outbound: {})
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::ExternalConnectionsTest < Telnyx::Test::ResourceT
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.external_connections.retrieve("id")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::ExternalConnectionsTest < Telnyx::Test::ResourceT
   end
 
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.external_connections.update(
@@ -56,7 +56,7 @@ class Telnyx::Test::Resources::ExternalConnectionsTest < Telnyx::Test::ResourceT
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.external_connections.list
 
@@ -92,7 +92,7 @@ class Telnyx::Test::Resources::ExternalConnectionsTest < Telnyx::Test::ResourceT
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.external_connections.delete("id")
 
@@ -108,7 +108,7 @@ class Telnyx::Test::Resources::ExternalConnectionsTest < Telnyx::Test::ResourceT
   end
 
   def test_update_location_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.external_connections.update_location(

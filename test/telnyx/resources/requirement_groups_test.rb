@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::RequirementGroupsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.requirement_groups.create(action: :ordering, country_code: "US", phone_number_type: :local)
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::RequirementGroupsTest < Telnyx::Test::ResourceTes
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.requirement_groups.retrieve("id")
 
@@ -55,7 +55,7 @@ class Telnyx::Test::Resources::RequirementGroupsTest < Telnyx::Test::ResourceTes
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.requirement_groups.update("id")
 
@@ -80,7 +80,7 @@ class Telnyx::Test::Resources::RequirementGroupsTest < Telnyx::Test::ResourceTes
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.requirement_groups.list
 
@@ -90,7 +90,7 @@ class Telnyx::Test::Resources::RequirementGroupsTest < Telnyx::Test::ResourceTes
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.requirement_groups.delete("id")
 
@@ -115,7 +115,7 @@ class Telnyx::Test::Resources::RequirementGroupsTest < Telnyx::Test::ResourceTes
   end
 
   def test_submit_for_approval
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.requirement_groups.submit_for_approval("id")
 

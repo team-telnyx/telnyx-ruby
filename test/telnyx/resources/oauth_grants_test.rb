@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::OAuthGrantsTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.oauth_grants.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::OAuthGrantsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.oauth_grants.list
 
@@ -48,7 +48,7 @@ class Telnyx::Test::Resources::OAuthGrantsTest < Telnyx::Test::ResourceTest
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.oauth_grants.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

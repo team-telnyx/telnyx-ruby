@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::TelephonyCredentialsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.telephony_credentials.create(connection_id: "1234567890")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::TelephonyCredentialsTest < Telnyx::Test::Resource
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.telephony_credentials.retrieve("id")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::TelephonyCredentialsTest < Telnyx::Test::Resource
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.telephony_credentials.update("id")
 
@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::TelephonyCredentialsTest < Telnyx::Test::Resource
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.telephony_credentials.list
 
@@ -84,7 +84,7 @@ class Telnyx::Test::Resources::TelephonyCredentialsTest < Telnyx::Test::Resource
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.telephony_credentials.delete("id")
 
@@ -100,7 +100,7 @@ class Telnyx::Test::Resources::TelephonyCredentialsTest < Telnyx::Test::Resource
   end
 
   def test_create_token
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.telephony_credentials.create_token("id")
 

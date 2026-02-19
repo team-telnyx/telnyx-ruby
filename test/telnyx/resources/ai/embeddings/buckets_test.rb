@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::AI::Embeddings::BucketsTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.embeddings.buckets.retrieve("bucket_name")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::AI::Embeddings::BucketsTest < Telnyx::Test::Resou
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.embeddings.buckets.list
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::AI::Embeddings::BucketsTest < Telnyx::Test::Resou
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.embeddings.buckets.delete("bucket_name")
 

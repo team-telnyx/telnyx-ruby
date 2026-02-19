@@ -4,7 +4,7 @@ require_relative "../../../../test_helper"
 
 class Telnyx::Test::Resources::Texml::Accounts::Transcriptions::JsonTest < Telnyx::Test::ResourceTest
   def test_delete_recording_transcription_sid_json_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.texml.accounts.transcriptions.json.delete_recording_transcription_sid_json(
@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Transcriptions::JsonTest < Telny
   end
 
   def test_retrieve_recording_transcription_sid_json_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.texml.accounts.transcriptions.json.retrieve_recording_transcription_sid_json(

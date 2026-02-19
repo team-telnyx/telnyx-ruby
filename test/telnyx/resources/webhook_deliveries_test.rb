@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::WebhookDeliveriesTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.webhook_deliveries.retrieve("C9C0797E-901D-4349-A33C-C2C8F31A92C2")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::WebhookDeliveriesTest < Telnyx::Test::ResourceTes
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.webhook_deliveries.list
 

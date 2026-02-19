@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::VerifiedNumbersTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.verified_numbers.create(phone_number: "+15551234567", verification_method: :sms)
 
@@ -21,7 +21,7 @@ class Telnyx::Test::Resources::VerifiedNumbersTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.verified_numbers.retrieve("+15551234567")
 
@@ -37,7 +37,7 @@ class Telnyx::Test::Resources::VerifiedNumbersTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.verified_numbers.list
 
@@ -62,7 +62,7 @@ class Telnyx::Test::Resources::VerifiedNumbersTest < Telnyx::Test::ResourceTest
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.verified_numbers.delete("+15551234567")
 

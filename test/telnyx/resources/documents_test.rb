@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::DocumentsTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.documents.retrieve("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::DocumentsTest < Telnyx::Test::ResourceTest
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.documents.update("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::DocumentsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.documents.list
 
@@ -69,7 +69,7 @@ class Telnyx::Test::Resources::DocumentsTest < Telnyx::Test::ResourceTest
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.documents.delete("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 
@@ -85,7 +85,7 @@ class Telnyx::Test::Resources::DocumentsTest < Telnyx::Test::ResourceTest
   end
 
   def test_download
-    skip("Prism doesn't support application/octet-stream responses")
+    skip("Mock server doesn't support application/octet-stream responses")
 
     response = @telnyx.documents.download("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 
@@ -95,7 +95,7 @@ class Telnyx::Test::Resources::DocumentsTest < Telnyx::Test::ResourceTest
   end
 
   def test_generate_download_link
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.documents.generate_download_link("550e8400-e29b-41d4-a716-446655440000")
 
@@ -111,7 +111,7 @@ class Telnyx::Test::Resources::DocumentsTest < Telnyx::Test::ResourceTest
   end
 
   def test_upload_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.documents.upload(document: {})
 
@@ -127,7 +127,7 @@ class Telnyx::Test::Resources::DocumentsTest < Telnyx::Test::ResourceTest
   end
 
   def test_upload_json_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.documents.upload_json(document: {})
 

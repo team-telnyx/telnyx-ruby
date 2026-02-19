@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Networks::DefaultGatewayTest < Telnyx::Test::ResourceTest
   def test_create
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.networks.default_gateway.create("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 
@@ -21,7 +21,7 @@ class Telnyx::Test::Resources::Networks::DefaultGatewayTest < Telnyx::Test::Reso
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.networks.default_gateway.retrieve("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 
@@ -38,7 +38,7 @@ class Telnyx::Test::Resources::Networks::DefaultGatewayTest < Telnyx::Test::Reso
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.networks.default_gateway.delete("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 

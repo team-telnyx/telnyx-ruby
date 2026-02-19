@@ -4,7 +4,7 @@ require_relative "../../../../test_helper"
 
 class Telnyx::Test::Resources::Texml::Accounts::Conferences::ParticipantsTest < Telnyx::Test::ResourceTest
   def test_retrieve_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.texml.accounts.conferences.participants.retrieve(
@@ -39,7 +39,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Conferences::ParticipantsTest < 
   end
 
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.texml.accounts.conferences.participants.update(
@@ -74,7 +74,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Conferences::ParticipantsTest < 
   end
 
   def test_delete_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.texml.accounts.conferences.participants.delete(
@@ -89,7 +89,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Conferences::ParticipantsTest < 
   end
 
   def test_participants_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.texml.accounts.conferences.participants.participants(
@@ -118,7 +118,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Conferences::ParticipantsTest < 
   end
 
   def test_retrieve_participants_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.texml.accounts.conferences.participants.retrieve_participants(

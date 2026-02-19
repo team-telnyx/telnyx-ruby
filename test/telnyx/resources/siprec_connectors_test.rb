@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::SiprecConnectorsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.siprec_connectors.create(host: "siprec.telnyx.com", name: "my-siprec-connector", port: 5060)
@@ -21,7 +21,7 @@ class Telnyx::Test::Resources::SiprecConnectorsTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.siprec_connectors.retrieve("connector_name")
 
@@ -37,7 +37,7 @@ class Telnyx::Test::Resources::SiprecConnectorsTest < Telnyx::Test::ResourceTest
   end
 
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.siprec_connectors.update(
@@ -59,7 +59,7 @@ class Telnyx::Test::Resources::SiprecConnectorsTest < Telnyx::Test::ResourceTest
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.siprec_connectors.delete("connector_name")
 

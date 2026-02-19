@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::AccessIPAddressTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.access_ip_address.create(ip_address: "ip_address")
 
@@ -27,7 +27,7 @@ class Telnyx::Test::Resources::AccessIPAddressTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.access_ip_address.retrieve("access_ip_address_id")
 
@@ -50,7 +50,7 @@ class Telnyx::Test::Resources::AccessIPAddressTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.access_ip_address.list
 
@@ -80,7 +80,7 @@ class Telnyx::Test::Resources::AccessIPAddressTest < Telnyx::Test::ResourceTest
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.access_ip_address.delete("access_ip_address_id")
 

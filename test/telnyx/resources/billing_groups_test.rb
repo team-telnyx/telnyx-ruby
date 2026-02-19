@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::BillingGroupsTest < Telnyx::Test::ResourceTest
   def test_create
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.billing_groups.create
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::BillingGroupsTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.billing_groups.retrieve("f5586561-8ff0-4291-a0ac-84fe544797bd")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::BillingGroupsTest < Telnyx::Test::ResourceTest
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.billing_groups.update("f5586561-8ff0-4291-a0ac-84fe544797bd")
 
@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::BillingGroupsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.billing_groups.list
 
@@ -81,7 +81,7 @@ class Telnyx::Test::Resources::BillingGroupsTest < Telnyx::Test::ResourceTest
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.billing_groups.delete("f5586561-8ff0-4291-a0ac-84fe544797bd")
 

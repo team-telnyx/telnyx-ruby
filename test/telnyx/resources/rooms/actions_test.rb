@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Rooms::ActionsTest < Telnyx::Test::ResourceTest
   def test_generate_join_client_token
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.rooms.actions.generate_join_client_token("0ccc7b54-4df3-4bca-a65a-3da1ecc777f0")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::Rooms::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_refresh_client_token_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.rooms.actions.refresh_client_token(

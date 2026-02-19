@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::OAuthTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.oauth.retrieve("consent_token")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::OAuthTest < Telnyx::Test::ResourceTest
   end
 
   def test_grants_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.oauth.grants(allowed: true, consent_token: "consent_token")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::OAuthTest < Telnyx::Test::ResourceTest
   end
 
   def test_introspect_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.oauth.introspect(token: "token")
 
@@ -58,7 +58,7 @@ class Telnyx::Test::Resources::OAuthTest < Telnyx::Test::ResourceTest
   end
 
   def test_register
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.oauth.register
 
@@ -85,7 +85,7 @@ class Telnyx::Test::Resources::OAuthTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve_authorize_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.oauth.retrieve_authorize(
@@ -100,7 +100,7 @@ class Telnyx::Test::Resources::OAuthTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve_jwks
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.oauth.retrieve_jwks
 
@@ -116,7 +116,7 @@ class Telnyx::Test::Resources::OAuthTest < Telnyx::Test::ResourceTest
   end
 
   def test_token_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.oauth.token(grant_type: :client_credentials)
 

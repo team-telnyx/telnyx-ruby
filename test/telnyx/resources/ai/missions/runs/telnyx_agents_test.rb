@@ -4,7 +4,7 @@ require_relative "../../../../test_helper"
 
 class Telnyx::Test::Resources::AI::Missions::Runs::TelnyxAgentsTest < Telnyx::Test::ResourceTest
   def test_list_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.ai.missions.runs.telnyx_agents.list(
@@ -24,7 +24,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::TelnyxAgentsTest < Telnyx::Te
   end
 
   def test_link_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.ai.missions.runs.telnyx_agents.link(
@@ -45,7 +45,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::TelnyxAgentsTest < Telnyx::Te
   end
 
   def test_unlink_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.ai.missions.runs.telnyx_agents.unlink(

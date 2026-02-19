@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::CredentialConnections::ActionsTest < Telnyx::Test::ResourceTest
   def test_check_registration_status
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.credential_connections.actions.check_registration_status("id")
 

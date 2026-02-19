@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::Messaging10dlcTest < Telnyx::Test::ResourceTest
   def test_get_enum
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.get_enum(:mno)
 

@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::ExternalConnections::LogMessagesTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.external_connections.log_messages.retrieve("id")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::ExternalConnections::LogMessagesTest < Telnyx::Te
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.external_connections.log_messages.list
 
@@ -47,7 +47,7 @@ class Telnyx::Test::Resources::ExternalConnections::LogMessagesTest < Telnyx::Te
   end
 
   def test_dismiss
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.external_connections.log_messages.dismiss("id")
 

@@ -4,7 +4,7 @@ require_relative "../../../../test_helper"
 
 class Telnyx::Test::Resources::Texml::Accounts::Calls::SiprecTest < Telnyx::Test::ResourceTest
   def test_siprec_sid_json_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.texml.accounts.calls.siprec.siprec_sid_json(

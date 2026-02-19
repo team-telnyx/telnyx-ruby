@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::FqdnConnectionsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.fqdn_connections.create(connection_name: "string")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::FqdnConnectionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.fqdn_connections.retrieve("id")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::FqdnConnectionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.fqdn_connections.update("id")
 
@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::FqdnConnectionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.fqdn_connections.list
 
@@ -114,7 +114,7 @@ class Telnyx::Test::Resources::FqdnConnectionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.fqdn_connections.delete("id")
 

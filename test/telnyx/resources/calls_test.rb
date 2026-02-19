@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::CallsTest < Telnyx::Test::ResourceTest
   def test_dial_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.calls.dial(
@@ -25,7 +25,7 @@ class Telnyx::Test::Resources::CallsTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve_status
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.retrieve_status("call_control_id")
 

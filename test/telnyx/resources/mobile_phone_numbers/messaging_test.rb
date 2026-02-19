@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::MobilePhoneNumbers::MessagingTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.mobile_phone_numbers.messaging.retrieve("id")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::MobilePhoneNumbers::MessagingTest < Telnyx::Test:
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.mobile_phone_numbers.messaging.list
 

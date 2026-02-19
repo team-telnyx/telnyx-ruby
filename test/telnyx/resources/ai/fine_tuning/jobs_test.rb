@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::AI::FineTuning::JobsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.fine_tuning.jobs.create(model: "model", training_file: "training_file")
 
@@ -28,7 +28,7 @@ class Telnyx::Test::Resources::AI::FineTuning::JobsTest < Telnyx::Test::Resource
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.fine_tuning.jobs.retrieve("job_id")
 
@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::AI::FineTuning::JobsTest < Telnyx::Test::Resource
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.fine_tuning.jobs.list
 
@@ -68,7 +68,7 @@ class Telnyx::Test::Resources::AI::FineTuning::JobsTest < Telnyx::Test::Resource
   end
 
   def test_cancel
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.fine_tuning.jobs.cancel("job_id")
 

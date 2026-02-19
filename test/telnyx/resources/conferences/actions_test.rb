@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::ResourceTest
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.conferences.actions.update(
@@ -25,7 +25,7 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
   end
 
   def test_end_conference
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.conferences.actions.end_conference("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -41,7 +41,7 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
   end
 
   def test_gather_dtmf_audio_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.conferences.actions.gather_dtmf_audio(
@@ -61,7 +61,7 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
   end
 
   def test_hold
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.conferences.actions.hold("id")
 
@@ -77,7 +77,7 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
   end
 
   def test_join_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.conferences.actions.join(
@@ -97,7 +97,7 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
   end
 
   def test_leave_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.conferences.actions.leave("id", call_control_id: "c46e06d7-b78f-4b13-96b6-c576af9640ff")
@@ -114,7 +114,7 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
   end
 
   def test_mute
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.conferences.actions.mute("id")
 
@@ -130,7 +130,7 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
   end
 
   def test_play
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.conferences.actions.play("id")
 
@@ -146,7 +146,7 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
   end
 
   def test_record_pause
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.conferences.actions.record_pause("id")
 
@@ -162,7 +162,7 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
   end
 
   def test_record_resume
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.conferences.actions.record_resume("id")
 
@@ -178,7 +178,7 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
   end
 
   def test_record_start_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.conferences.actions.record_start("id", format_: :wav)
 
@@ -194,7 +194,7 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
   end
 
   def test_record_stop
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.conferences.actions.record_stop("id")
 
@@ -210,7 +210,7 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
   end
 
   def test_send_dtmf_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.conferences.actions.send_dtmf("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", digits: "1234#")
 
@@ -226,7 +226,7 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
   end
 
   def test_speak_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.conferences.actions.speak("id", payload: "Say this to participants", voice: "female")
 
@@ -242,7 +242,7 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
   end
 
   def test_stop
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.conferences.actions.stop("id")
 
@@ -258,7 +258,7 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
   end
 
   def test_unhold_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.conferences.actions.unhold(
@@ -278,7 +278,7 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
   end
 
   def test_unmute
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.conferences.actions.unmute("id")
 

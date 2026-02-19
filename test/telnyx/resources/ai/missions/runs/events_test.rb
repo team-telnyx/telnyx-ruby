@@ -4,7 +4,7 @@ require_relative "../../../../test_helper"
 
 class Telnyx::Test::Resources::AI::Missions::Runs::EventsTest < Telnyx::Test::ResourceTest
   def test_list_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.ai.missions.runs.events.list(
@@ -39,7 +39,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::EventsTest < Telnyx::Test::Re
   end
 
   def test_get_event_details_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.ai.missions.runs.events.get_event_details(
@@ -60,7 +60,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::EventsTest < Telnyx::Test::Re
   end
 
   def test_log_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.ai.missions.runs.events.log(

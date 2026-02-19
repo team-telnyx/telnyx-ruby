@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Organizations::UsersTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.organizations.users.retrieve("id")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::Organizations::UsersTest < Telnyx::Test::Resource
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.organizations.users.list
 
@@ -50,7 +50,7 @@ class Telnyx::Test::Resources::Organizations::UsersTest < Telnyx::Test::Resource
   end
 
   def test_get_groups_report
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.organizations.users.get_groups_report
 

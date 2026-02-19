@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::NumberReservations::ActionsTest < Telnyx::Test::ResourceTest
   def test_extend_
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.number_reservations.actions.extend_("number_reservation_id")
 

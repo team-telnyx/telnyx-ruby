@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::BundlePricing::UserBundlesTest < Telnyx::Test::ResourceTest
   def test_create
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.bundle_pricing.user_bundles.create
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::BundlePricing::UserBundlesTest < Telnyx::Test::Re
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.bundle_pricing.user_bundles.retrieve("ca1d2263-d1f1-43ac-ba53-248e7a4bb26a")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::BundlePricing::UserBundlesTest < Telnyx::Test::Re
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.bundle_pricing.user_bundles.list
 
@@ -65,7 +65,7 @@ class Telnyx::Test::Resources::BundlePricing::UserBundlesTest < Telnyx::Test::Re
   end
 
   def test_deactivate
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.bundle_pricing.user_bundles.deactivate("ca1d2263-d1f1-43ac-ba53-248e7a4bb26a")
 
@@ -81,7 +81,7 @@ class Telnyx::Test::Resources::BundlePricing::UserBundlesTest < Telnyx::Test::Re
   end
 
   def test_list_resources
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.bundle_pricing.user_bundles.list_resources("ca1d2263-d1f1-43ac-ba53-248e7a4bb26a")
 
@@ -97,7 +97,7 @@ class Telnyx::Test::Resources::BundlePricing::UserBundlesTest < Telnyx::Test::Re
   end
 
   def test_list_unused
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.bundle_pricing.user_bundles.list_unused
 

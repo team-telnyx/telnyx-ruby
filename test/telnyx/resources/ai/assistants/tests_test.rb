@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::AI::Assistants::TestsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.ai.assistants.tests.create(
@@ -38,7 +38,7 @@ class Telnyx::Test::Resources::AI::Assistants::TestsTest < Telnyx::Test::Resourc
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.assistants.tests.retrieve("test_id")
 
@@ -63,7 +63,7 @@ class Telnyx::Test::Resources::AI::Assistants::TestsTest < Telnyx::Test::Resourc
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.assistants.tests.update("test_id")
 
@@ -88,7 +88,7 @@ class Telnyx::Test::Resources::AI::Assistants::TestsTest < Telnyx::Test::Resourc
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.assistants.tests.list
 
@@ -120,7 +120,7 @@ class Telnyx::Test::Resources::AI::Assistants::TestsTest < Telnyx::Test::Resourc
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.assistants.tests.delete("test_id")
 

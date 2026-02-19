@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Payment::AutoRechargePrefsTest < Telnyx::Test::ResourceTest
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.payment.auto_recharge_prefs.update
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::Payment::AutoRechargePrefsTest < Telnyx::Test::Re
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.payment.auto_recharge_prefs.list
 

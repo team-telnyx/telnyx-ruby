@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::Verifications::ByPhoneNumber::ActionsTest < Telnyx::Test::ResourceTest
   def test_verify_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.verifications.by_phone_number.actions.verify(
