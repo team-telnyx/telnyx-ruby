@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::ExternalConnections::PhoneNumbersTest < Telnyx::Test::ResourceTest
   def test_retrieve_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.external_connections.phone_numbers.retrieve("1234567889", id: "id")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::ExternalConnections::PhoneNumbersTest < Telnyx::T
   end
 
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.external_connections.phone_numbers.update("1234567889", id: "id")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::ExternalConnections::PhoneNumbersTest < Telnyx::T
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.external_connections.phone_numbers.list("id")
 

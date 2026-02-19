@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::Messaging::Rcs::AgentsTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging.rcs.agents.retrieve("id")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::Messaging::Rcs::AgentsTest < Telnyx::Test::Resour
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging.rcs.agents.update("id")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::Messaging::Rcs::AgentsTest < Telnyx::Test::Resour
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging.rcs.agents.list
 

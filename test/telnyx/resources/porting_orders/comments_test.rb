@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::PortingOrders::CommentsTest < Telnyx::Test::ResourceTest
   def test_create
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting_orders.comments.create("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::PortingOrders::CommentsTest < Telnyx::Test::Resou
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting_orders.comments.list("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

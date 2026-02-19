@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_tollfree.verification.requests.create(
@@ -76,7 +76,7 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_tollfree.verification.requests.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
@@ -130,7 +130,7 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
   end
 
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_tollfree.verification.requests.update(
@@ -203,7 +203,7 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
   end
 
   def test_list_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_tollfree.verification.requests.list(page: 1, page_size: 1)
 
@@ -263,7 +263,7 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_tollfree.verification.requests.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")

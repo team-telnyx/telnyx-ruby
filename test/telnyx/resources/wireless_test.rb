@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::WirelessTest < Telnyx::Test::ResourceTest
   def test_retrieve_regions_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.wireless.retrieve_regions(product: "public_ips")
 

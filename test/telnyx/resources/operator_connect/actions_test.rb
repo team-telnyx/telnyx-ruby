@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::OperatorConnect::ActionsTest < Telnyx::Test::ResourceTest
   def test_refresh
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.operator_connect.actions.refresh
 

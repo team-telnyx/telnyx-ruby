@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::AI::OpenAI::EmbeddingsTest < Telnyx::Test::ResourceTest
   def test_create_embeddings_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.ai.openai.embeddings.create_embeddings(
@@ -27,7 +27,7 @@ class Telnyx::Test::Resources::AI::OpenAI::EmbeddingsTest < Telnyx::Test::Resour
   end
 
   def test_list_embedding_models
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.openai.embeddings.list_embedding_models
 

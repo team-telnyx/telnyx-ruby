@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Rooms::SessionsTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.rooms.sessions.retrieve("0ccc7b54-4df3-4bca-a65a-3da1ecc777f0")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::Rooms::SessionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list_0
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.rooms.sessions.list_0
 
@@ -50,7 +50,7 @@ class Telnyx::Test::Resources::Rooms::SessionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list_1
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.rooms.sessions.list_1("0ccc7b54-4df3-4bca-a65a-3da1ecc777f0")
 
@@ -80,7 +80,7 @@ class Telnyx::Test::Resources::Rooms::SessionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve_participants
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.rooms.sessions.retrieve_participants("0ccc7b54-4df3-4bca-a65a-3da1ecc777f0")
 

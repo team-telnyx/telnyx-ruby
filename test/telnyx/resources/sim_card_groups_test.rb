@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::SimCardGroupsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.sim_card_groups.create(name: "My Test Group")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::SimCardGroupsTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.sim_card_groups.retrieve("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::SimCardGroupsTest < Telnyx::Test::ResourceTest
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.sim_card_groups.update("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 
@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::SimCardGroupsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.sim_card_groups.list
 
@@ -85,7 +85,7 @@ class Telnyx::Test::Resources::SimCardGroupsTest < Telnyx::Test::ResourceTest
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.sim_card_groups.delete("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 

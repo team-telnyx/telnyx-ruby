@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::VerificationsTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.verifications.retrieve("12ade33a-21c0-473b-b055-b3c836e1c292")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::VerificationsTest < Telnyx::Test::ResourceTest
   end
 
   def test_trigger_call_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.verifications.trigger_call(
@@ -40,7 +40,7 @@ class Telnyx::Test::Resources::VerificationsTest < Telnyx::Test::ResourceTest
   end
 
   def test_trigger_flashcall_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.verifications.trigger_flashcall(
@@ -60,7 +60,7 @@ class Telnyx::Test::Resources::VerificationsTest < Telnyx::Test::ResourceTest
   end
 
   def test_trigger_sms_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.verifications.trigger_sms(

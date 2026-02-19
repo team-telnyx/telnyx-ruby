@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::SimCardDataUsageNotificationsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.sim_card_data_usage_notifications.create(
@@ -24,7 +24,7 @@ class Telnyx::Test::Resources::SimCardDataUsageNotificationsTest < Telnyx::Test:
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.sim_card_data_usage_notifications.retrieve("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 
@@ -40,7 +40,7 @@ class Telnyx::Test::Resources::SimCardDataUsageNotificationsTest < Telnyx::Test:
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.sim_card_data_usage_notifications.update("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 
@@ -56,7 +56,7 @@ class Telnyx::Test::Resources::SimCardDataUsageNotificationsTest < Telnyx::Test:
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.sim_card_data_usage_notifications.list
 
@@ -84,7 +84,7 @@ class Telnyx::Test::Resources::SimCardDataUsageNotificationsTest < Telnyx::Test:
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.sim_card_data_usage_notifications.delete("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 

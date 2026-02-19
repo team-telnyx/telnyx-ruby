@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Messaging10dlc::PhoneNumberCampaignsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_10dlc.phone_number_campaigns.create(
@@ -33,7 +33,7 @@ class Telnyx::Test::Resources::Messaging10dlc::PhoneNumberCampaignsTest < Telnyx
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.phone_number_campaigns.retrieve("phoneNumber")
 
@@ -58,7 +58,7 @@ class Telnyx::Test::Resources::Messaging10dlc::PhoneNumberCampaignsTest < Telnyx
   end
 
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_10dlc.phone_number_campaigns.update(
@@ -88,7 +88,7 @@ class Telnyx::Test::Resources::Messaging10dlc::PhoneNumberCampaignsTest < Telnyx
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.phone_number_campaigns.list
 
@@ -120,7 +120,7 @@ class Telnyx::Test::Resources::Messaging10dlc::PhoneNumberCampaignsTest < Telnyx
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.phone_number_campaigns.delete("phoneNumber")
 

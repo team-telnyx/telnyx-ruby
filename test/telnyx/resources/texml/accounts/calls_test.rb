@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::ResourceTest
   def test_retrieve_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.texml.accounts.calls.retrieve("call_sid", account_sid: "account_sid")
 
@@ -37,7 +37,7 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
   end
 
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.texml.accounts.calls.update("call_sid", account_sid: "account_sid")
 
@@ -70,7 +70,7 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
   end
 
   def test_calls_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.texml.accounts.calls.calls(
@@ -94,7 +94,7 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
   end
 
   def test_retrieve_calls
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.texml.accounts.calls.retrieve_calls("account_sid")
 
@@ -117,7 +117,7 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
   end
 
   def test_siprec_json_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.texml.accounts.calls.siprec_json("call_sid", account_sid: "account_sid")
 
@@ -142,7 +142,7 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
   end
 
   def test_streams_json_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.texml.accounts.calls.streams_json("call_sid", account_sid: "account_sid")
 

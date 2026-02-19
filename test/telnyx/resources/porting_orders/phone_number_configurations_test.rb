@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::PortingOrders::PhoneNumberConfigurationsTest < Telnyx::Test::ResourceTest
   def test_create
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting_orders.phone_number_configurations.create
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::PortingOrders::PhoneNumberConfigurationsTest < Te
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting_orders.phone_number_configurations.list
 

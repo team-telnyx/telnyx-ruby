@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::ManagedAccounts::ActionsTest < Telnyx::Test::ResourceTest
   def test_disable
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.managed_accounts.actions.disable("id")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::ManagedAccounts::ActionsTest < Telnyx::Test::Reso
   end
 
   def test_enable
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.managed_accounts.actions.enable("id")
 

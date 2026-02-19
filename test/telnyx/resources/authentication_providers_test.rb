@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::AuthenticationProvidersTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.authentication_providers.create(
@@ -29,7 +29,7 @@ class Telnyx::Test::Resources::AuthenticationProvidersTest < Telnyx::Test::Resou
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.authentication_providers.retrieve("id")
 
@@ -45,7 +45,7 @@ class Telnyx::Test::Resources::AuthenticationProvidersTest < Telnyx::Test::Resou
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.authentication_providers.update("id")
 
@@ -61,7 +61,7 @@ class Telnyx::Test::Resources::AuthenticationProvidersTest < Telnyx::Test::Resou
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.authentication_providers.list
 
@@ -92,7 +92,7 @@ class Telnyx::Test::Resources::AuthenticationProvidersTest < Telnyx::Test::Resou
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.authentication_providers.delete("id")
 

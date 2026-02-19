@@ -4,7 +4,7 @@ require_relative "../../../../test_helper"
 
 class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::VoiceTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.legacy.reporting.batch_detail_records.voice.create(
@@ -24,7 +24,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::VoiceTest 
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.legacy.reporting.batch_detail_records.voice.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
@@ -41,7 +41,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::VoiceTest 
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.legacy.reporting.batch_detail_records.voice.list
 
@@ -58,7 +58,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::VoiceTest 
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.legacy.reporting.batch_detail_records.voice.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
@@ -75,7 +75,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::VoiceTest 
   end
 
   def test_retrieve_fields
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.legacy.reporting.batch_detail_records.voice.retrieve_fields
 

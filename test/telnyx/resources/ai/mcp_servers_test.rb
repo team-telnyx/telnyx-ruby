@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::AI::McpServersTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.mcp_servers.create(name: "name", type: "type", url: "url")
 
@@ -26,7 +26,7 @@ class Telnyx::Test::Resources::AI::McpServersTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.mcp_servers.retrieve("mcp_server_id")
 
@@ -48,7 +48,7 @@ class Telnyx::Test::Resources::AI::McpServersTest < Telnyx::Test::ResourceTest
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.mcp_servers.update("mcp_server_id")
 
@@ -70,7 +70,7 @@ class Telnyx::Test::Resources::AI::McpServersTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.mcp_servers.list
 
@@ -99,7 +99,7 @@ class Telnyx::Test::Resources::AI::McpServersTest < Telnyx::Test::ResourceTest
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.mcp_servers.delete("mcp_server_id")
 

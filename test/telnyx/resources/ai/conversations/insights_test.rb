@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::AI::Conversations::InsightsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.conversations.insights.create(instructions: "instructions", name: "name")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::AI::Conversations::InsightsTest < Telnyx::Test::R
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.conversations.insights.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::AI::Conversations::InsightsTest < Telnyx::Test::R
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.conversations.insights.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::AI::Conversations::InsightsTest < Telnyx::Test::R
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.conversations.insights.list
 
@@ -81,7 +81,7 @@ class Telnyx::Test::Resources::AI::Conversations::InsightsTest < Telnyx::Test::R
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.conversations.insights.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

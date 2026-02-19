@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::Storage::Buckets::SslCertificateTest < Telnyx::Test::ResourceTest
   def test_create
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.storage.buckets.ssl_certificate.create("")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::Storage::Buckets::SslCertificateTest < Telnyx::Te
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.storage.buckets.ssl_certificate.retrieve("")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::Storage::Buckets::SslCertificateTest < Telnyx::Te
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.storage.buckets.ssl_certificate.delete("")
 

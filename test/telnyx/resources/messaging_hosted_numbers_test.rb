@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::MessagingHostedNumbersTest < Telnyx::Test::ResourceTest
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_hosted_numbers.delete("id")
 

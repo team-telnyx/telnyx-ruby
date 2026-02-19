@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::PortingTest < Telnyx::Test::ResourceTest
   def test_list_uk_carriers
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting.list_uk_carriers
 

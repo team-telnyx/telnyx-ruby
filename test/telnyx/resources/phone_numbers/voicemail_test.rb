@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::PhoneNumbers::VoicemailTest < Telnyx::Test::ResourceTest
   def test_create
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.phone_numbers.voicemail.create("123455678900")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::PhoneNumbers::VoicemailTest < Telnyx::Test::Resou
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.phone_numbers.voicemail.retrieve("123455678900")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::PhoneNumbers::VoicemailTest < Telnyx::Test::Resou
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.phone_numbers.voicemail.update("123455678900")
 

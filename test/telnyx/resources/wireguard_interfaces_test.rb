@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::WireguardInterfacesTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.wireguard_interfaces.create(region_code: "ashburn-va")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::WireguardInterfacesTest < Telnyx::Test::ResourceT
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.wireguard_interfaces.retrieve("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::WireguardInterfacesTest < Telnyx::Test::ResourceT
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.wireguard_interfaces.list
 
@@ -53,7 +53,7 @@ class Telnyx::Test::Resources::WireguardInterfacesTest < Telnyx::Test::ResourceT
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.wireguard_interfaces.delete("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 

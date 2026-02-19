@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::AI::Assistants::ScheduledEventsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.ai.assistants.scheduled_events.create(
@@ -28,7 +28,7 @@ class Telnyx::Test::Resources::AI::Assistants::ScheduledEventsTest < Telnyx::Tes
   end
 
   def test_retrieve_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.assistants.scheduled_events.retrieve("event_id", assistant_id: "assistant_id")
 
@@ -45,7 +45,7 @@ class Telnyx::Test::Resources::AI::Assistants::ScheduledEventsTest < Telnyx::Tes
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.assistants.scheduled_events.list("assistant_id")
 
@@ -69,7 +69,7 @@ class Telnyx::Test::Resources::AI::Assistants::ScheduledEventsTest < Telnyx::Tes
   end
 
   def test_delete_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.assistants.scheduled_events.delete("event_id", assistant_id: "assistant_id")
 

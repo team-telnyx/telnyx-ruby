@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::ConnectionsTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.connections.retrieve("id")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::ConnectionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.connections.list
 
@@ -54,7 +54,7 @@ class Telnyx::Test::Resources::ConnectionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list_active_calls
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.connections.list_active_calls("1293384261075731461")
 

@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::AITest < Telnyx::Test::ResourceTest
   def test_retrieve_models
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.retrieve_models
 
@@ -21,7 +21,7 @@ class Telnyx::Test::Resources::AITest < Telnyx::Test::ResourceTest
   end
 
   def test_summarize_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.summarize(bucket: "bucket", filename: "filename")
 

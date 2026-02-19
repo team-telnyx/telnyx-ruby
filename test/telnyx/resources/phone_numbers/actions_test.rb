@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::PhoneNumbers::ActionsTest < Telnyx::Test::ResourceTest
   def test_change_bundle_status_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.phone_numbers.actions.change_bundle_status(
@@ -24,7 +24,7 @@ class Telnyx::Test::Resources::PhoneNumbers::ActionsTest < Telnyx::Test::Resourc
   end
 
   def test_enable_emergency_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.phone_numbers.actions.enable_emergency(
@@ -45,7 +45,7 @@ class Telnyx::Test::Resources::PhoneNumbers::ActionsTest < Telnyx::Test::Resourc
   end
 
   def test_verify_ownership_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.phone_numbers.actions.verify_ownership(phone_numbers: ["+15551234567"])
 

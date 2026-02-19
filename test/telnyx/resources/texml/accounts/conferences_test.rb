@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::Texml::Accounts::ConferencesTest < Telnyx::Test::ResourceTest
   def test_retrieve_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.texml.accounts.conferences.retrieve("conference_sid", account_sid: "account_sid")
 
@@ -31,7 +31,7 @@ class Telnyx::Test::Resources::Texml::Accounts::ConferencesTest < Telnyx::Test::
   end
 
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.texml.accounts.conferences.update("conference_sid", account_sid: "account_sid")
 
@@ -58,7 +58,7 @@ class Telnyx::Test::Resources::Texml::Accounts::ConferencesTest < Telnyx::Test::
   end
 
   def test_retrieve_conferences
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.texml.accounts.conferences.retrieve_conferences("account_sid")
 
@@ -81,7 +81,7 @@ class Telnyx::Test::Resources::Texml::Accounts::ConferencesTest < Telnyx::Test::
   end
 
   def test_retrieve_recordings_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.texml.accounts.conferences.retrieve_recordings("conference_sid", account_sid: "account_sid")
@@ -106,7 +106,7 @@ class Telnyx::Test::Resources::Texml::Accounts::ConferencesTest < Telnyx::Test::
   end
 
   def test_retrieve_recordings_json_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.texml.accounts.conferences.retrieve_recordings_json(

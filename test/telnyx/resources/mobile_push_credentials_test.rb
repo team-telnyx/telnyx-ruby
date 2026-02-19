@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::MobilePushCredentialsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.mobile_push_credentials.create(
@@ -28,7 +28,7 @@ class Telnyx::Test::Resources::MobilePushCredentialsTest < Telnyx::Test::Resourc
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.mobile_push_credentials.retrieve("0ccc7b76-4df3-4bca-a05a-3da1ecc389f0")
 
@@ -44,7 +44,7 @@ class Telnyx::Test::Resources::MobilePushCredentialsTest < Telnyx::Test::Resourc
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.mobile_push_credentials.list
 
@@ -75,7 +75,7 @@ class Telnyx::Test::Resources::MobilePushCredentialsTest < Telnyx::Test::Resourc
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.mobile_push_credentials.delete("0ccc7b76-4df3-4bca-a05a-3da1ecc389f0")
 

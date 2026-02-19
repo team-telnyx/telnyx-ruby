@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::ManagedAccountsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.managed_accounts.create(business_name: "Larry's Cat Food Inc")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::ManagedAccountsTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.managed_accounts.retrieve("id")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::ManagedAccountsTest < Telnyx::Test::ResourceTest
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.managed_accounts.update("id")
 
@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::ManagedAccountsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.managed_accounts.list
 
@@ -84,7 +84,7 @@ class Telnyx::Test::Resources::ManagedAccountsTest < Telnyx::Test::ResourceTest
   end
 
   def test_get_allocatable_global_outbound_channels
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.managed_accounts.get_allocatable_global_outbound_channels
 
@@ -100,7 +100,7 @@ class Telnyx::Test::Resources::ManagedAccountsTest < Telnyx::Test::ResourceTest
   end
 
   def test_update_global_channel_limit
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.managed_accounts.update_global_channel_limit("id")
 

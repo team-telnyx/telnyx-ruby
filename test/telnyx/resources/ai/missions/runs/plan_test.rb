@@ -4,7 +4,7 @@ require_relative "../../../../test_helper"
 
 class Telnyx::Test::Resources::AI::Missions::Runs::PlanTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.ai.missions.runs.plan.create(
@@ -25,7 +25,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::PlanTest < Telnyx::Test::Reso
   end
 
   def test_retrieve_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.ai.missions.runs.plan.retrieve(
@@ -45,7 +45,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::PlanTest < Telnyx::Test::Reso
   end
 
   def test_add_steps_to_plan_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.ai.missions.runs.plan.add_steps_to_plan(
@@ -66,7 +66,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::PlanTest < Telnyx::Test::Reso
   end
 
   def test_get_step_details_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.ai.missions.runs.plan.get_step_details(
@@ -87,7 +87,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::PlanTest < Telnyx::Test::Reso
   end
 
   def test_update_step_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.ai.missions.runs.plan.update_step(

@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Porting::LoaConfigurationsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.porting.loa_configurations.create(
@@ -33,7 +33,7 @@ class Telnyx::Test::Resources::Porting::LoaConfigurationsTest < Telnyx::Test::Re
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting.loa_configurations.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -49,7 +49,7 @@ class Telnyx::Test::Resources::Porting::LoaConfigurationsTest < Telnyx::Test::Re
   end
 
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.porting.loa_configurations.update(
@@ -79,7 +79,7 @@ class Telnyx::Test::Resources::Porting::LoaConfigurationsTest < Telnyx::Test::Re
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting.loa_configurations.list
 
@@ -111,7 +111,7 @@ class Telnyx::Test::Resources::Porting::LoaConfigurationsTest < Telnyx::Test::Re
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting.loa_configurations.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -121,7 +121,7 @@ class Telnyx::Test::Resources::Porting::LoaConfigurationsTest < Telnyx::Test::Re
   end
 
   def test_preview_0_required_params
-    skip("Prism doesn't support application/pdf responses")
+    skip("Mock server doesn't support application/pdf responses")
 
     response =
       @telnyx.porting.loa_configurations.preview_0(
@@ -144,7 +144,7 @@ class Telnyx::Test::Resources::Porting::LoaConfigurationsTest < Telnyx::Test::Re
   end
 
   def test_preview_1
-    skip("Prism doesn't support application/pdf responses")
+    skip("Mock server doesn't support application/pdf responses")
 
     response = @telnyx.porting.loa_configurations.preview_1("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

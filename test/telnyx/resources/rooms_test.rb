@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::RoomsTest < Telnyx::Test::ResourceTest
   def test_create
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.rooms.create
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::RoomsTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.rooms.retrieve("0ccc7b54-4df3-4bca-a65a-3da1ecc777f0")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::RoomsTest < Telnyx::Test::ResourceTest
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.rooms.update("0ccc7b54-4df3-4bca-a65a-3da1ecc777f0")
 
@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::RoomsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.rooms.list
 
@@ -86,7 +86,7 @@ class Telnyx::Test::Resources::RoomsTest < Telnyx::Test::ResourceTest
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.rooms.delete("0ccc7b54-4df3-4bca-a65a-3da1ecc777f0")
 

@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::UsageReportsTest < Telnyx::Test::ResourceTest
   def test_list_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.usage_reports.list(dimensions: ["string"], metrics: ["string"], product: "product")
 
@@ -21,7 +21,7 @@ class Telnyx::Test::Resources::UsageReportsTest < Telnyx::Test::ResourceTest
   end
 
   def test_get_options
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.usage_reports.get_options
 

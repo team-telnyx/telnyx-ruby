@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::WellKnownTest < Telnyx::Test::ResourceTest
   def test_retrieve_authorization_server_metadata
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.well_known.retrieve_authorization_server_metadata
 
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::WellKnownTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve_protected_resource_metadata
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.well_known.retrieve_protected_resource_metadata
 

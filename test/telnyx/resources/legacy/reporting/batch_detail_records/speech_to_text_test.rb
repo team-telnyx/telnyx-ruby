@@ -4,7 +4,7 @@ require_relative "../../../../test_helper"
 
 class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::SpeechToTextTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.legacy.reporting.batch_detail_records.speech_to_text.create(
@@ -24,7 +24,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::SpeechToTe
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.legacy.reporting.batch_detail_records.speech_to_text.retrieve(
@@ -43,7 +43,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::SpeechToTe
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.legacy.reporting.batch_detail_records.speech_to_text.list
 
@@ -59,7 +59,7 @@ class Telnyx::Test::Resources::Legacy::Reporting::BatchDetailRecords::SpeechToTe
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.legacy.reporting.batch_detail_records.speech_to_text.delete(

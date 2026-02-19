@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::OtaUpdatesTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ota_updates.retrieve("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::OtaUpdatesTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ota_updates.list
 

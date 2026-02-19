@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::AI::Conversations::InsightGroupsTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.conversations.insight_groups.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::AI::Conversations::InsightGroupsTest < Telnyx::Te
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.conversations.insight_groups.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::AI::Conversations::InsightGroupsTest < Telnyx::Te
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.conversations.insight_groups.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -46,7 +46,7 @@ class Telnyx::Test::Resources::AI::Conversations::InsightGroupsTest < Telnyx::Te
   end
 
   def test_insight_groups_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.conversations.insight_groups.insight_groups(name: "name")
 
@@ -62,7 +62,7 @@ class Telnyx::Test::Resources::AI::Conversations::InsightGroupsTest < Telnyx::Te
   end
 
   def test_retrieve_insight_groups
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.conversations.insight_groups.retrieve_insight_groups
 

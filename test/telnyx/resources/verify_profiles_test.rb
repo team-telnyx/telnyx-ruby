@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::VerifyProfilesTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.verify_profiles.create(name: "Test Profile")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::VerifyProfilesTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.verify_profiles.retrieve("12ade33a-21c0-473b-b055-b3c836e1c292")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::VerifyProfilesTest < Telnyx::Test::ResourceTest
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.verify_profiles.update("12ade33a-21c0-473b-b055-b3c836e1c292")
 
@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::VerifyProfilesTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.verify_profiles.list
 
@@ -85,7 +85,7 @@ class Telnyx::Test::Resources::VerifyProfilesTest < Telnyx::Test::ResourceTest
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.verify_profiles.delete("12ade33a-21c0-473b-b055-b3c836e1c292")
 
@@ -101,7 +101,7 @@ class Telnyx::Test::Resources::VerifyProfilesTest < Telnyx::Test::ResourceTest
   end
 
   def test_create_template_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.verify_profiles.create_template(text: "Your {{app_name}} verification code is: {{code}}.")
@@ -118,7 +118,7 @@ class Telnyx::Test::Resources::VerifyProfilesTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve_templates
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.verify_profiles.retrieve_templates
 
@@ -134,7 +134,7 @@ class Telnyx::Test::Resources::VerifyProfilesTest < Telnyx::Test::ResourceTest
   end
 
   def test_update_template_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.verify_profiles.update_template(

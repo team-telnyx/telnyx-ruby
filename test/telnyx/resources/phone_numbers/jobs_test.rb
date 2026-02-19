@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::PhoneNumbers::JobsTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.phone_numbers.jobs.retrieve("id")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::PhoneNumbers::JobsTest < Telnyx::Test::ResourceTe
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.phone_numbers.jobs.list
 
@@ -53,7 +53,7 @@ class Telnyx::Test::Resources::PhoneNumbers::JobsTest < Telnyx::Test::ResourceTe
   end
 
   def test_delete_batch_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.phone_numbers.jobs.delete_batch(phone_numbers: ["+19705555098", "+19715555098", "32873127836"])
@@ -70,7 +70,7 @@ class Telnyx::Test::Resources::PhoneNumbers::JobsTest < Telnyx::Test::ResourceTe
   end
 
   def test_update_batch_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.phone_numbers.jobs.update_batch(phone_numbers: ["1583466971586889004", "+13127367254"])
@@ -87,7 +87,7 @@ class Telnyx::Test::Resources::PhoneNumbers::JobsTest < Telnyx::Test::ResourceTe
   end
 
   def test_update_emergency_settings_batch_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.phone_numbers.jobs.update_emergency_settings_batch(

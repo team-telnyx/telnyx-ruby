@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Messaging10dlc::CampaignBuilderTest < Telnyx::Test::ResourceTest
   def test_submit_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_10dlc.campaign_builder.submit(

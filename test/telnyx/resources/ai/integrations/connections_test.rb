@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::AI::Integrations::ConnectionsTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.integrations.connections.retrieve("user_connection_id")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::AI::Integrations::ConnectionsTest < Telnyx::Test:
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.integrations.connections.list
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::AI::Integrations::ConnectionsTest < Telnyx::Test:
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.integrations.connections.delete("user_connection_id")
 

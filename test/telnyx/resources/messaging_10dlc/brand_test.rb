@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Messaging10dlc::BrandTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_10dlc.brand.create(
@@ -64,7 +64,7 @@ class Telnyx::Test::Resources::Messaging10dlc::BrandTest < Telnyx::Test::Resourc
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.brand.retrieve("brandId")
 
@@ -74,7 +74,7 @@ class Telnyx::Test::Resources::Messaging10dlc::BrandTest < Telnyx::Test::Resourc
   end
 
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_10dlc.brand.update(
@@ -135,7 +135,7 @@ class Telnyx::Test::Resources::Messaging10dlc::BrandTest < Telnyx::Test::Resourc
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.brand.list
 
@@ -170,7 +170,7 @@ class Telnyx::Test::Resources::Messaging10dlc::BrandTest < Telnyx::Test::Resourc
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.brand.delete("brandId")
 
@@ -180,7 +180,7 @@ class Telnyx::Test::Resources::Messaging10dlc::BrandTest < Telnyx::Test::Resourc
   end
 
   def test_get_feedback
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.brand.get_feedback("brandId")
 
@@ -197,7 +197,7 @@ class Telnyx::Test::Resources::Messaging10dlc::BrandTest < Telnyx::Test::Resourc
   end
 
   def test_get_sms_otp_by_reference
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.brand.get_sms_otp_by_reference("OTP4B2001")
 
@@ -220,7 +220,7 @@ class Telnyx::Test::Resources::Messaging10dlc::BrandTest < Telnyx::Test::Resourc
   end
 
   def test_resend_2fa_email
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.brand.resend_2fa_email("brandId")
 
@@ -230,7 +230,7 @@ class Telnyx::Test::Resources::Messaging10dlc::BrandTest < Telnyx::Test::Resourc
   end
 
   def test_retrieve_sms_otp_status
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.brand.retrieve_sms_otp_status("4b20019b-043a-78f8-0657-b3be3f4b4002")
 
@@ -253,7 +253,7 @@ class Telnyx::Test::Resources::Messaging10dlc::BrandTest < Telnyx::Test::Resourc
   end
 
   def test_revet
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.brand.revet("brandId")
 
@@ -306,7 +306,7 @@ class Telnyx::Test::Resources::Messaging10dlc::BrandTest < Telnyx::Test::Resourc
   end
 
   def test_trigger_sms_otp_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_10dlc.brand.trigger_sms_otp(
@@ -328,7 +328,7 @@ class Telnyx::Test::Resources::Messaging10dlc::BrandTest < Telnyx::Test::Resourc
   end
 
   def test_verify_sms_otp_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_10dlc.brand.verify_sms_otp("4b20019b-043a-78f8-0657-b3be3f4b4002", otp_pin: "123456")

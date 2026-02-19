@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::ReportsTest < Telnyx::Test::ResourceTest
   def test_list_mdrs
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.reports.list_mdrs
 
@@ -21,7 +21,7 @@ class Telnyx::Test::Resources::ReportsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list_wdrs
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.reports.list_wdrs
 
