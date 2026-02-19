@@ -117,8 +117,8 @@ module Telnyx
             # @!attribute properties
             #   The properties of the body parameters.
             #
-            #   @return [Hash{Symbol=>Object}, nil]
-            optional :properties, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+            #   @return [Object, nil]
+            optional :properties, Telnyx::Internal::Type::Unknown
 
             # @!attribute required
             #   The required properties of the body parameters.
@@ -137,7 +137,7 @@ module Telnyx
             #   the [JSON Schema reference](https://json-schema.org/understanding-json-schema)
             #   for documentation about the format
             #
-            #   @param properties [Hash{Symbol=>Object}] The properties of the body parameters.
+            #   @param properties [Object] The properties of the body parameters.
             #
             #   @param required [Array<String>] The required properties of the body parameters.
             #
@@ -199,8 +199,8 @@ module Telnyx
             # @!attribute properties
             #   The properties of the path parameters.
             #
-            #   @return [Hash{Symbol=>Object}, nil]
-            optional :properties, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+            #   @return [Object, nil]
+            optional :properties, Telnyx::Internal::Type::Unknown
 
             # @!attribute required
             #   The required properties of the path parameters.
@@ -220,7 +220,7 @@ module Telnyx
             #   [JSON Schema reference](https://json-schema.org/understanding-json-schema) for
             #   documentation about the format
             #
-            #   @param properties [Hash{Symbol=>Object}] The properties of the path parameters.
+            #   @param properties [Object] The properties of the path parameters.
             #
             #   @param required [Array<String>] The required properties of the path parameters.
             #
@@ -242,8 +242,8 @@ module Telnyx
             # @!attribute properties
             #   The properties of the query parameters.
             #
-            #   @return [Hash{Symbol=>Object}, nil]
-            optional :properties, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+            #   @return [Object, nil]
+            optional :properties, Telnyx::Internal::Type::Unknown
 
             # @!attribute required
             #   The required properties of the query parameters.
@@ -263,7 +263,7 @@ module Telnyx
             #   [JSON Schema reference](https://json-schema.org/understanding-json-schema) for
             #   documentation about the format
             #
-            #   @param properties [Hash{Symbol=>Object}] The properties of the query parameters.
+            #   @param properties [Object] The properties of the query parameters.
             #
             #   @param required [Array<String>] The required properties of the query parameters.
             #

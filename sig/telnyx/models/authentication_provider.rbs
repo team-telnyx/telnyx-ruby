@@ -3,6 +3,7 @@ module Telnyx
     type authentication_provider =
       {
         id: String,
+        activated_at: Time,
         active: bool,
         created_at: Time,
         name: String,
@@ -17,6 +18,10 @@ module Telnyx
       attr_reader id: String?
 
       def id=: (String) -> String
+
+      attr_reader activated_at: Time?
+
+      def activated_at=: (Time) -> Time
 
       attr_reader active: bool?
 
@@ -54,6 +59,7 @@ module Telnyx
 
       def initialize: (
         ?id: String,
+        ?activated_at: Time,
         ?active: bool,
         ?created_at: Time,
         ?name: String,
@@ -66,6 +72,7 @@ module Telnyx
 
       def to_hash: -> {
         id: String,
+        activated_at: Time,
         active: bool,
         created_at: Time,
         name: String,
@@ -79,18 +86,27 @@ module Telnyx
       type settings =
         {
           assertion_consumer_service_url: String,
+          idp_attribute_names: top,
           idp_cert_fingerprint: String,
           idp_cert_fingerprint_algorithm: Telnyx::Models::AuthenticationProvider::Settings::idp_cert_fingerprint_algorithm,
+          idp_certificate: String,
           idp_entity_id: String,
+          idp_slo_target_url: String,
           idp_sso_target_url: String,
           name_identifier_format: String,
-          service_provider_entity_id: String
+          provision_groups: bool,
+          service_provider_entity_id: String,
+          service_provider_login_url: String
         }
 
       class Settings < Telnyx::Internal::Type::BaseModel
         attr_reader assertion_consumer_service_url: String?
 
         def assertion_consumer_service_url=: (String) -> String
+
+        attr_reader idp_attribute_names: top?
+
+        def idp_attribute_names=: (top) -> top
 
         attr_reader idp_cert_fingerprint: String?
 
@@ -102,9 +118,17 @@ module Telnyx
           Telnyx::Models::AuthenticationProvider::Settings::idp_cert_fingerprint_algorithm
         ) -> Telnyx::Models::AuthenticationProvider::Settings::idp_cert_fingerprint_algorithm
 
+        attr_reader idp_certificate: String?
+
+        def idp_certificate=: (String) -> String
+
         attr_reader idp_entity_id: String?
 
         def idp_entity_id=: (String) -> String
+
+        attr_reader idp_slo_target_url: String?
+
+        def idp_slo_target_url=: (String) -> String
 
         attr_reader idp_sso_target_url: String?
 
@@ -114,28 +138,46 @@ module Telnyx
 
         def name_identifier_format=: (String) -> String
 
+        attr_reader provision_groups: bool?
+
+        def provision_groups=: (bool) -> bool
+
         attr_reader service_provider_entity_id: String?
 
         def service_provider_entity_id=: (String) -> String
 
+        attr_reader service_provider_login_url: String?
+
+        def service_provider_login_url=: (String) -> String
+
         def initialize: (
           ?assertion_consumer_service_url: String,
+          ?idp_attribute_names: top,
           ?idp_cert_fingerprint: String,
           ?idp_cert_fingerprint_algorithm: Telnyx::Models::AuthenticationProvider::Settings::idp_cert_fingerprint_algorithm,
+          ?idp_certificate: String,
           ?idp_entity_id: String,
+          ?idp_slo_target_url: String,
           ?idp_sso_target_url: String,
           ?name_identifier_format: String,
-          ?service_provider_entity_id: String
+          ?provision_groups: bool,
+          ?service_provider_entity_id: String,
+          ?service_provider_login_url: String
         ) -> void
 
         def to_hash: -> {
           assertion_consumer_service_url: String,
+          idp_attribute_names: top,
           idp_cert_fingerprint: String,
           idp_cert_fingerprint_algorithm: Telnyx::Models::AuthenticationProvider::Settings::idp_cert_fingerprint_algorithm,
+          idp_certificate: String,
           idp_entity_id: String,
+          idp_slo_target_url: String,
           idp_sso_target_url: String,
           name_identifier_format: String,
-          service_provider_entity_id: String
+          provision_groups: bool,
+          service_provider_entity_id: String,
+          service_provider_login_url: String
         }
 
         type idp_cert_fingerprint_algorithm =

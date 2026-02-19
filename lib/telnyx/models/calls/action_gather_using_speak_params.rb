@@ -142,7 +142,7 @@ module Telnyx
         # @!attribute voice_settings
         #   The settings associated with the voice selected
         #
-        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, nil]
+        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings }
 
         # @!method initialize(payload:, voice:, client_state: nil, command_id: nil, inter_digit_timeout_millis: nil, invalid_payload: nil, language: nil, maximum_digits: nil, maximum_tries: nil, minimum_digits: nil, payload_type: nil, service_level: nil, terminating_digit: nil, timeout_millis: nil, valid_digits: nil, voice_settings: nil, request_options: {})
@@ -180,7 +180,7 @@ module Telnyx
         #
         #   @param valid_digits [String] A list of all digits accepted as valid.
         #
-        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings] The settings associated with the voice selected
+        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax] The settings associated with the voice selected
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -259,10 +259,117 @@ module Telnyx
 
           variant :aws, -> { Telnyx::Calls::AwsVoiceSettings }
 
-          variant :minimax, -> { Telnyx::MinimaxVoiceSettings }
+          variant :minimax, -> { Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax }
+
+          class Minimax < Telnyx::Internal::Type::BaseModel
+            # @!attribute type
+            #   Voice settings provider type
+            #
+            #   @return [Symbol, :minimax]
+            required :type, const: :minimax
+
+            # @!attribute language_boost
+            #   Enhances recognition for specific languages and dialects during MiniMax TTS
+            #   synthesis. Default is null (no boost). Set to 'auto' for automatic language
+            #   detection.
+            #
+            #   @return [Symbol, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax::LanguageBoost, nil]
+            optional :language_boost,
+                     enum: -> {
+                       Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax::LanguageBoost
+                     },
+                     nil?: true
+
+            # @!attribute pitch
+            #   Voice pitch adjustment. Default is 0.
+            #
+            #   @return [Integer, nil]
+            optional :pitch, Integer
+
+            # @!attribute speed
+            #   Speech speed multiplier. Default is 1.0.
+            #
+            #   @return [Float, nil]
+            optional :speed, Float
+
+            # @!attribute vol
+            #   Speech volume multiplier. Default is 1.0.
+            #
+            #   @return [Float, nil]
+            optional :vol, Float
+
+            # @!method initialize(language_boost: nil, pitch: nil, speed: nil, vol: nil, type: :minimax)
+            #   Some parameter documentations has been truncated, see
+            #   {Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax}
+            #   for more details.
+            #
+            #   @param language_boost [Symbol, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax::LanguageBoost, nil] Enhances recognition for specific languages and dialects during MiniMax TTS synt
+            #
+            #   @param pitch [Integer] Voice pitch adjustment. Default is 0.
+            #
+            #   @param speed [Float] Speech speed multiplier. Default is 1.0.
+            #
+            #   @param vol [Float] Speech volume multiplier. Default is 1.0.
+            #
+            #   @param type [Symbol, :minimax] Voice settings provider type
+
+            # Enhances recognition for specific languages and dialects during MiniMax TTS
+            # synthesis. Default is null (no boost). Set to 'auto' for automatic language
+            # detection.
+            #
+            # @see Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax#language_boost
+            module LanguageBoost
+              extend Telnyx::Internal::Type::Enum
+
+              AUTO = :auto
+              CHINESE = :Chinese
+              CHINESE_YUE = :"Chinese,Yue"
+              ENGLISH = :English
+              ARABIC = :Arabic
+              RUSSIAN = :Russian
+              SPANISH = :Spanish
+              FRENCH = :French
+              PORTUGUESE = :Portuguese
+              GERMAN = :German
+              TURKISH = :Turkish
+              DUTCH = :Dutch
+              UKRAINIAN = :Ukrainian
+              VIETNAMESE = :Vietnamese
+              INDONESIAN = :Indonesian
+              JAPANESE = :Japanese
+              ITALIAN = :Italian
+              KOREAN = :Korean
+              THAI = :Thai
+              POLISH = :Polish
+              ROMANIAN = :Romanian
+              GREEK = :Greek
+              CZECH = :Czech
+              FINNISH = :Finnish
+              HINDI = :Hindi
+              BULGARIAN = :Bulgarian
+              DANISH = :Danish
+              HEBREW = :Hebrew
+              MALAY = :Malay
+              PERSIAN = :Persian
+              SLOVAK = :Slovak
+              SWEDISH = :Swedish
+              CROATIAN = :Croatian
+              FILIPINO = :Filipino
+              HUNGARIAN = :Hungarian
+              NORWEGIAN = :Norwegian
+              SLOVENIAN = :Slovenian
+              CATALAN = :Catalan
+              NYNORSK = :Nynorsk
+              TAMIL = :Tamil
+              AFRIKAANS = :Afrikaans
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
 
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings)]
+          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Minimax)]
         end
       end
     end

@@ -196,29 +196,6 @@ class Telnyx::Test::Resources::Messaging10dlc::BrandTest < Telnyx::Test::Resourc
     end
   end
 
-  def test_get_sms_otp_by_reference
-    skip("Mock server tests are disabled")
-
-    response = @telnyx.messaging_10dlc.brand.get_sms_otp_by_reference("OTP4B2001")
-
-    assert_pattern do
-      response => Telnyx::Models::Messaging10dlc::BrandGetSMSOtpByReferenceResponse
-    end
-
-    assert_pattern do
-      response => {
-        brand_id: String,
-        delivery_status: String,
-        mobile_phone: String,
-        reference_id: String,
-        request_date: Time,
-        delivery_status_date: Time | nil,
-        delivery_status_details: String | nil,
-        verify_date: Time | nil
-      }
-    end
-  end
-
   def test_resend_2fa_email
     skip("Mock server tests are disabled")
 
