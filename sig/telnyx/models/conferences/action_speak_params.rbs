@@ -173,10 +173,144 @@ module Telnyx
           Telnyx::Calls::ElevenLabsVoiceSettings
           | Telnyx::Calls::TelnyxVoiceSettings
           | Telnyx::Calls::AwsVoiceSettings
-          | Telnyx::MinimaxVoiceSettings
+          | Telnyx::Conferences::ActionSpeakParams::VoiceSettings::Minimax
 
         module VoiceSettings
           extend Telnyx::Internal::Type::Union
+
+          type minimax =
+            {
+              type: :minimax,
+              language_boost: Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Minimax::language_boost?,
+              pitch: Integer,
+              speed: Float,
+              vol: Float
+            }
+
+          class Minimax < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: :minimax
+
+            attr_accessor language_boost: Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Minimax::language_boost?
+
+            attr_reader pitch: Integer?
+
+            def pitch=: (Integer) -> Integer
+
+            attr_reader speed: Float?
+
+            def speed=: (Float) -> Float
+
+            attr_reader vol: Float?
+
+            def vol=: (Float) -> Float
+
+            def initialize: (
+              ?language_boost: Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Minimax::language_boost?,
+              ?pitch: Integer,
+              ?speed: Float,
+              ?vol: Float,
+              ?type: :minimax
+            ) -> void
+
+            def to_hash: -> {
+              type: :minimax,
+              language_boost: Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Minimax::language_boost?,
+              pitch: Integer,
+              speed: Float,
+              vol: Float
+            }
+
+            type language_boost =
+              :auto
+              | :Chinese
+              | :"Chinese,Yue"
+              | :English
+              | :Arabic
+              | :Russian
+              | :Spanish
+              | :French
+              | :Portuguese
+              | :German
+              | :Turkish
+              | :Dutch
+              | :Ukrainian
+              | :Vietnamese
+              | :Indonesian
+              | :Japanese
+              | :Italian
+              | :Korean
+              | :Thai
+              | :Polish
+              | :Romanian
+              | :Greek
+              | :Czech
+              | :Finnish
+              | :Hindi
+              | :Bulgarian
+              | :Danish
+              | :Hebrew
+              | :Malay
+              | :Persian
+              | :Slovak
+              | :Swedish
+              | :Croatian
+              | :Filipino
+              | :Hungarian
+              | :Norwegian
+              | :Slovenian
+              | :Catalan
+              | :Nynorsk
+              | :Tamil
+              | :Afrikaans
+
+            module LanguageBoost
+              extend Telnyx::Internal::Type::Enum
+
+              AUTO: :auto
+              CHINESE: :Chinese
+              CHINESE_YUE: :"Chinese,Yue"
+              ENGLISH: :English
+              ARABIC: :Arabic
+              RUSSIAN: :Russian
+              SPANISH: :Spanish
+              FRENCH: :French
+              PORTUGUESE: :Portuguese
+              GERMAN: :German
+              TURKISH: :Turkish
+              DUTCH: :Dutch
+              UKRAINIAN: :Ukrainian
+              VIETNAMESE: :Vietnamese
+              INDONESIAN: :Indonesian
+              JAPANESE: :Japanese
+              ITALIAN: :Italian
+              KOREAN: :Korean
+              THAI: :Thai
+              POLISH: :Polish
+              ROMANIAN: :Romanian
+              GREEK: :Greek
+              CZECH: :Czech
+              FINNISH: :Finnish
+              HINDI: :Hindi
+              BULGARIAN: :Bulgarian
+              DANISH: :Danish
+              HEBREW: :Hebrew
+              MALAY: :Malay
+              PERSIAN: :Persian
+              SLOVAK: :Slovak
+              SWEDISH: :Swedish
+              CROATIAN: :Croatian
+              FILIPINO: :Filipino
+              HUNGARIAN: :Hungarian
+              NORWEGIAN: :Norwegian
+              SLOVENIAN: :Slovenian
+              CATALAN: :Catalan
+              NYNORSK: :Nynorsk
+              TAMIL: :Tamil
+              AFRIKAANS: :Afrikaans
+
+              def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Minimax::language_boost]
+            end
+          end
 
           def self?.variants: -> ::Array[Telnyx::Models::Conferences::ActionSpeakParams::voice_settings]
         end

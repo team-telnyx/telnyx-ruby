@@ -90,12 +90,6 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Messaging10dlc::BrandGetFeedbackResponse
 
-        def get_sms_otp_by_reference: (
-          String reference_id,
-          ?brand_id: String,
-          ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Messaging10dlc::BrandGetSMSOtpByReferenceResponse
-
         def resend_2fa_email: (
           String brand_id,
           ?request_options: Telnyx::request_opts

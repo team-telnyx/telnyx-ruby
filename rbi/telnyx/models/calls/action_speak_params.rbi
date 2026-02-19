@@ -157,7 +157,7 @@ module Telnyx
                 Telnyx::Calls::ElevenLabsVoiceSettings,
                 Telnyx::Calls::TelnyxVoiceSettings,
                 Telnyx::Calls::AwsVoiceSettings,
-                Telnyx::MinimaxVoiceSettings
+                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax
               )
             )
           )
@@ -171,7 +171,7 @@ module Telnyx
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
-                Telnyx::MinimaxVoiceSettings::OrHash
+                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::OrHash
               )
           ).void
         end
@@ -196,7 +196,7 @@ module Telnyx
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
-                Telnyx::MinimaxVoiceSettings::OrHash
+                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -288,7 +288,7 @@ module Telnyx
                   Telnyx::Calls::ElevenLabsVoiceSettings,
                   Telnyx::Calls::TelnyxVoiceSettings,
                   Telnyx::Calls::AwsVoiceSettings,
-                  Telnyx::MinimaxVoiceSettings
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax
                 ),
               request_options: Telnyx::RequestOptions
             }
@@ -576,9 +576,333 @@ module Telnyx
                 Telnyx::Calls::ElevenLabsVoiceSettings,
                 Telnyx::Calls::TelnyxVoiceSettings,
                 Telnyx::Calls::AwsVoiceSettings,
-                Telnyx::MinimaxVoiceSettings
+                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax
               )
             end
+
+          class Minimax < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # Voice settings provider type
+            sig { returns(Symbol) }
+            attr_accessor :type
+
+            # Enhances recognition for specific languages and dialects during MiniMax TTS
+            # synthesis. Default is null (no boost). Set to 'auto' for automatic language
+            # detection.
+            sig do
+              returns(
+                T.nilable(
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::OrSymbol
+                )
+              )
+            end
+            attr_accessor :language_boost
+
+            # Voice pitch adjustment. Default is 0.
+            sig { returns(T.nilable(Integer)) }
+            attr_reader :pitch
+
+            sig { params(pitch: Integer).void }
+            attr_writer :pitch
+
+            # Speech speed multiplier. Default is 1.0.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :speed
+
+            sig { params(speed: Float).void }
+            attr_writer :speed
+
+            # Speech volume multiplier. Default is 1.0.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :vol
+
+            sig { params(vol: Float).void }
+            attr_writer :vol
+
+            sig do
+              params(
+                language_boost:
+                  T.nilable(
+                    Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::OrSymbol
+                  ),
+                pitch: Integer,
+                speed: Float,
+                vol: Float,
+                type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Enhances recognition for specific languages and dialects during MiniMax TTS
+              # synthesis. Default is null (no boost). Set to 'auto' for automatic language
+              # detection.
+              language_boost: nil,
+              # Voice pitch adjustment. Default is 0.
+              pitch: nil,
+              # Speech speed multiplier. Default is 1.0.
+              speed: nil,
+              # Speech volume multiplier. Default is 1.0.
+              vol: nil,
+              # Voice settings provider type
+              type: :minimax
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  type: Symbol,
+                  language_boost:
+                    T.nilable(
+                      Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::OrSymbol
+                    ),
+                  pitch: Integer,
+                  speed: Float,
+                  vol: Float
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # Enhances recognition for specific languages and dialects during MiniMax TTS
+            # synthesis. Default is null (no boost). Set to 'auto' for automatic language
+            # detection.
+            module LanguageBoost
+              extend Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              AUTO =
+                T.let(
+                  :auto,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              CHINESE =
+                T.let(
+                  :Chinese,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              CHINESE_YUE =
+                T.let(
+                  :"Chinese,Yue",
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              ENGLISH =
+                T.let(
+                  :English,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              ARABIC =
+                T.let(
+                  :Arabic,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              RUSSIAN =
+                T.let(
+                  :Russian,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              SPANISH =
+                T.let(
+                  :Spanish,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              FRENCH =
+                T.let(
+                  :French,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              PORTUGUESE =
+                T.let(
+                  :Portuguese,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              GERMAN =
+                T.let(
+                  :German,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              TURKISH =
+                T.let(
+                  :Turkish,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              DUTCH =
+                T.let(
+                  :Dutch,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              UKRAINIAN =
+                T.let(
+                  :Ukrainian,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              VIETNAMESE =
+                T.let(
+                  :Vietnamese,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              INDONESIAN =
+                T.let(
+                  :Indonesian,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              JAPANESE =
+                T.let(
+                  :Japanese,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              ITALIAN =
+                T.let(
+                  :Italian,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              KOREAN =
+                T.let(
+                  :Korean,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              THAI =
+                T.let(
+                  :Thai,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              POLISH =
+                T.let(
+                  :Polish,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              ROMANIAN =
+                T.let(
+                  :Romanian,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              GREEK =
+                T.let(
+                  :Greek,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              CZECH =
+                T.let(
+                  :Czech,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              FINNISH =
+                T.let(
+                  :Finnish,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              HINDI =
+                T.let(
+                  :Hindi,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              BULGARIAN =
+                T.let(
+                  :Bulgarian,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              DANISH =
+                T.let(
+                  :Danish,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              HEBREW =
+                T.let(
+                  :Hebrew,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              MALAY =
+                T.let(
+                  :Malay,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              PERSIAN =
+                T.let(
+                  :Persian,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              SLOVAK =
+                T.let(
+                  :Slovak,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              SWEDISH =
+                T.let(
+                  :Swedish,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              CROATIAN =
+                T.let(
+                  :Croatian,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              FILIPINO =
+                T.let(
+                  :Filipino,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              HUNGARIAN =
+                T.let(
+                  :Hungarian,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              NORWEGIAN =
+                T.let(
+                  :Norwegian,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              SLOVENIAN =
+                T.let(
+                  :Slovenian,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              CATALAN =
+                T.let(
+                  :Catalan,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              NYNORSK =
+                T.let(
+                  :Nynorsk,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              TAMIL =
+                T.let(
+                  :Tamil,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+              AFRIKAANS =
+                T.let(
+                  :Afrikaans,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Telnyx::Calls::ActionSpeakParams::VoiceSettings::Minimax::LanguageBoost::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
 
           sig do
             override.returns(

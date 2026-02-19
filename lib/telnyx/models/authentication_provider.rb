@@ -10,6 +10,13 @@ module Telnyx
       #   @return [String, nil]
       optional :id, String
 
+      # @!attribute activated_at
+      #   ISO 8601 formatted date indicating when the authentication provider was
+      #   activated.
+      #
+      #   @return [Time, nil]
+      optional :activated_at, Time
+
       # @!attribute active
       #   The active status of the authentication provider
       #
@@ -59,11 +66,13 @@ module Telnyx
       #   @return [Time, nil]
       optional :updated_at, Time
 
-      # @!method initialize(id: nil, active: nil, created_at: nil, name: nil, organization_id: nil, record_type: nil, settings: nil, short_name: nil, updated_at: nil)
+      # @!method initialize(id: nil, activated_at: nil, active: nil, created_at: nil, name: nil, organization_id: nil, record_type: nil, settings: nil, short_name: nil, updated_at: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::AuthenticationProvider} for more details.
       #
       #   @param id [String] Uniquely identifies the authentication provider.
+      #
+      #   @param activated_at [Time] ISO 8601 formatted date indicating when the authentication provider was activate
       #
       #   @param active [Boolean] The active status of the authentication provider
       #
@@ -89,6 +98,12 @@ module Telnyx
         #   @return [String, nil]
         optional :assertion_consumer_service_url, String
 
+        # @!attribute idp_attribute_names
+        #   Mapping of SAML attribute names used by the identity provider (IdP).
+        #
+        #   @return [Object, nil]
+        optional :idp_attribute_names, Telnyx::Internal::Type::Unknown
+
         # @!attribute idp_cert_fingerprint
         #   The certificate fingerprint for the identity provider (IdP)
         #
@@ -103,11 +118,23 @@ module Telnyx
         optional :idp_cert_fingerprint_algorithm,
                  enum: -> { Telnyx::AuthenticationProvider::Settings::IdpCertFingerprintAlgorithm }
 
+        # @!attribute idp_certificate
+        #   The full X.509 certificate for the identity provider (IdP).
+        #
+        #   @return [String, nil]
+        optional :idp_certificate, String
+
         # @!attribute idp_entity_id
         #   The Entity ID for the identity provider (IdP).
         #
         #   @return [String, nil]
         optional :idp_entity_id, String
+
+        # @!attribute idp_slo_target_url
+        #   The Single Logout (SLO) target URL for the identity provider (IdP).
+        #
+        #   @return [String, nil]
+        optional :idp_slo_target_url, String
 
         # @!attribute idp_sso_target_url
         #   The SSO target url for the identity provider (IdP).
@@ -123,13 +150,26 @@ module Telnyx
         #   @return [String, nil]
         optional :name_identifier_format, String
 
+        # @!attribute provision_groups
+        #   Whether group provisioning is enabled for this authentication provider.
+        #
+        #   @return [Boolean, nil]
+        optional :provision_groups, Telnyx::Internal::Type::Boolean
+
         # @!attribute service_provider_entity_id
         #   The Entity ID for the service provider (Telnyx).
         #
         #   @return [String, nil]
         optional :service_provider_entity_id, String
 
-        # @!method initialize(assertion_consumer_service_url: nil, idp_cert_fingerprint: nil, idp_cert_fingerprint_algorithm: nil, idp_entity_id: nil, idp_sso_target_url: nil, name_identifier_format: nil, service_provider_entity_id: nil)
+        # @!attribute service_provider_login_url
+        #   The login URL for the service provider (Telnyx). Users navigate to this URL to
+        #   initiate SSO login.
+        #
+        #   @return [String, nil]
+        optional :service_provider_login_url, String
+
+        # @!method initialize(assertion_consumer_service_url: nil, idp_attribute_names: nil, idp_cert_fingerprint: nil, idp_cert_fingerprint_algorithm: nil, idp_certificate: nil, idp_entity_id: nil, idp_slo_target_url: nil, idp_sso_target_url: nil, name_identifier_format: nil, provision_groups: nil, service_provider_entity_id: nil, service_provider_login_url: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AuthenticationProvider::Settings} for more details.
         #
@@ -137,17 +177,27 @@ module Telnyx
         #
         #   @param assertion_consumer_service_url [String] The Assertion Consumer Service URL for the service provider (Telnyx).
         #
+        #   @param idp_attribute_names [Object] Mapping of SAML attribute names used by the identity provider (IdP).
+        #
         #   @param idp_cert_fingerprint [String] The certificate fingerprint for the identity provider (IdP)
         #
         #   @param idp_cert_fingerprint_algorithm [Symbol, Telnyx::Models::AuthenticationProvider::Settings::IdpCertFingerprintAlgorithm] The algorithm used to generate the identity provider's (IdP) certificate fingerp
         #
+        #   @param idp_certificate [String] The full X.509 certificate for the identity provider (IdP).
+        #
         #   @param idp_entity_id [String] The Entity ID for the identity provider (IdP).
+        #
+        #   @param idp_slo_target_url [String] The Single Logout (SLO) target URL for the identity provider (IdP).
         #
         #   @param idp_sso_target_url [String] The SSO target url for the identity provider (IdP).
         #
         #   @param name_identifier_format [String] The name identifier format associated with the authentication provider. This mus
         #
+        #   @param provision_groups [Boolean] Whether group provisioning is enabled for this authentication provider.
+        #
         #   @param service_provider_entity_id [String] The Entity ID for the service provider (Telnyx).
+        #
+        #   @param service_provider_login_url [String] The login URL for the service provider (Telnyx). Users navigate to this URL to i
 
         # The algorithm used to generate the identity provider's (IdP) certificate
         # fingerprint
