@@ -75,7 +75,7 @@ class Telnyx::Test::Resources::AI::ClustersTest < Telnyx::Test::ResourceTest
   end
 
   def test_fetch_graph
-    skip("Mock server doesn't support image/png responses")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.clusters.fetch_graph("task_id")
 

@@ -144,7 +144,7 @@ class Telnyx::Test::Resources::PortingOrdersTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve_loa_template
-    skip("Mock server doesn't support application/pdf responses")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting_orders.retrieve_loa_template("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
