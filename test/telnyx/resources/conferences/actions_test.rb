@@ -24,13 +24,13 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
     end
   end
 
-  def test_end_conference
+  def test_end_
     skip("Mock server tests are disabled")
 
-    response = @telnyx.conferences.actions.end_conference("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+    response = @telnyx.conferences.actions.end_("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Models::Conferences::ActionEndConferenceResponse
+      response => Telnyx::Models::Conferences::ActionEndResponse
     end
 
     assert_pattern do
@@ -40,17 +40,17 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
     end
   end
 
-  def test_gather_dtmf_audio_required_params
+  def test_gather_using_audio_required_params
     skip("Mock server tests are disabled")
 
     response =
-      @telnyx.conferences.actions.gather_dtmf_audio(
+      @telnyx.conferences.actions.gather_using_audio(
         "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         call_control_id: "v3:MdI91X4lWFEs7IgbBEOT9M4AigoY08M0WWZFISt1Yw2axZ_IiE4pqg"
       )
 
     assert_pattern do
-      response => Telnyx::Models::Conferences::ActionGatherDtmfAudioResponse
+      response => Telnyx::Models::Conferences::ActionGatherUsingAudioResponse
     end
 
     assert_pattern do

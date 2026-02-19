@@ -3,14 +3,14 @@
 module Telnyx
   module Models
     module Conferences
-      class ActionEndConferenceParams < Telnyx::Internal::Type::BaseModel
+      class ActionEndParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Conferences::ActionEndConferenceParams,
+              Telnyx::Conferences::ActionEndParams,
               Telnyx::Internal::AnyHash
             )
           end

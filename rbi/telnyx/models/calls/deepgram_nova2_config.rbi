@@ -23,6 +23,14 @@ module Telnyx
         end
         attr_accessor :transcription_model
 
+        # Whether to send also interim results. If set to false, only final results will
+        # be sent.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :interim_results
+
+        sig { params(interim_results: T::Boolean).void }
+        attr_writer :interim_results
+
         # Keywords and their respective intensifiers (boosting values) to improve
         # transcription accuracy for specific words or phrases. The intensifier should be
         # a numeric value. Example: `{"snuffleupagus": 5, "systrom": 2, "krieger": 1}`.
@@ -47,25 +55,41 @@ module Telnyx
         end
         attr_writer :language
 
+        # Number of milliseconds of silence to consider an utterance ended. Ranges from 0
+        # to 5000 ms.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :utterance_end_ms
+
+        sig { params(utterance_end_ms: Integer).void }
+        attr_writer :utterance_end_ms
+
         sig do
           params(
             transcription_engine:
               Telnyx::Calls::DeepgramNova2Config::TranscriptionEngine::OrSymbol,
             transcription_model:
               Telnyx::Calls::DeepgramNova2Config::TranscriptionModel::OrSymbol,
+            interim_results: T::Boolean,
             keywords_boosting: T::Hash[Symbol, Float],
-            language: Telnyx::Calls::DeepgramNova2Config::Language::OrSymbol
+            language: Telnyx::Calls::DeepgramNova2Config::Language::OrSymbol,
+            utterance_end_ms: Integer
           ).returns(T.attached_class)
         end
         def self.new(
           transcription_engine:,
           transcription_model:,
+          # Whether to send also interim results. If set to false, only final results will
+          # be sent.
+          interim_results: nil,
           # Keywords and their respective intensifiers (boosting values) to improve
           # transcription accuracy for specific words or phrases. The intensifier should be
           # a numeric value. Example: `{"snuffleupagus": 5, "systrom": 2, "krieger": 1}`.
           keywords_boosting: nil,
           # Language to use for speech recognition with nova-2 model
-          language: nil
+          language: nil,
+          # Number of milliseconds of silence to consider an utterance ended. Ranges from 0
+          # to 5000 ms.
+          utterance_end_ms: nil
         )
         end
 
@@ -76,8 +100,10 @@ module Telnyx
                 Telnyx::Calls::DeepgramNova2Config::TranscriptionEngine::OrSymbol,
               transcription_model:
                 Telnyx::Calls::DeepgramNova2Config::TranscriptionModel::OrSymbol,
+              interim_results: T::Boolean,
               keywords_boosting: T::Hash[Symbol, Float],
-              language: Telnyx::Calls::DeepgramNova2Config::Language::OrSymbol
+              language: Telnyx::Calls::DeepgramNova2Config::Language::OrSymbol,
+              utterance_end_ms: Integer
             }
           )
         end
