@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::TexmlTest < Telnyx::Test::ResourceTest
   def test_secrets_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.texml.secrets(name: "My Secret Name", value: "My Secret Value")
 

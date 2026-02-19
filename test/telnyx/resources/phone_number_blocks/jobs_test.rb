@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::PhoneNumberBlocks::JobsTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.phone_number_blocks.jobs.retrieve("id")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::PhoneNumberBlocks::JobsTest < Telnyx::Test::Resou
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.phone_number_blocks.jobs.list
 
@@ -51,7 +51,7 @@ class Telnyx::Test::Resources::PhoneNumberBlocks::JobsTest < Telnyx::Test::Resou
   end
 
   def test_delete_phone_number_block_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.phone_number_blocks.jobs.delete_phone_number_block(

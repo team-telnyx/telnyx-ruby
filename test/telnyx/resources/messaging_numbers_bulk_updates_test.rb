@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::MessagingNumbersBulkUpdatesTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_numbers_bulk_updates.create(
@@ -24,7 +24,7 @@ class Telnyx::Test::Resources::MessagingNumbersBulkUpdatesTest < Telnyx::Test::R
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_numbers_bulk_updates.retrieve("order_id")
 

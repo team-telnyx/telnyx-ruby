@@ -4,7 +4,7 @@ require_relative "../../../../test_helper"
 
 class Telnyx::Test::Resources::Texml::Accounts::Calls::StreamsTest < Telnyx::Test::ResourceTest
   def test_streaming_sid_json_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.texml.accounts.calls.streams.streaming_sid_json(

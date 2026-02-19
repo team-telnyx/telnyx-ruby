@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::Storage::Migrations::ActionsTest < Telnyx::Test::ResourceTest
   def test_stop
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.storage.migrations.actions.stop("")
 

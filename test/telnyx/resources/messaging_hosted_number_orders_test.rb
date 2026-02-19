@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::MessagingHostedNumberOrdersTest < Telnyx::Test::ResourceTest
   def test_create
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_hosted_number_orders.create
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::MessagingHostedNumberOrdersTest < Telnyx::Test::R
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_hosted_number_orders.retrieve("id")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::MessagingHostedNumberOrdersTest < Telnyx::Test::R
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_hosted_number_orders.list
 
@@ -63,7 +63,7 @@ class Telnyx::Test::Resources::MessagingHostedNumberOrdersTest < Telnyx::Test::R
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_hosted_number_orders.delete("id")
 
@@ -79,7 +79,7 @@ class Telnyx::Test::Resources::MessagingHostedNumberOrdersTest < Telnyx::Test::R
   end
 
   def test_check_eligibility_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_hosted_number_orders.check_eligibility(phone_numbers: ["string"])
 
@@ -95,7 +95,7 @@ class Telnyx::Test::Resources::MessagingHostedNumberOrdersTest < Telnyx::Test::R
   end
 
   def test_create_verification_codes_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_hosted_number_orders.create_verification_codes(
@@ -116,7 +116,7 @@ class Telnyx::Test::Resources::MessagingHostedNumberOrdersTest < Telnyx::Test::R
   end
 
   def test_validate_codes_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_hosted_number_orders.validate_codes(

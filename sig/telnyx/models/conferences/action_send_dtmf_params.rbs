@@ -1,0 +1,49 @@
+module Telnyx
+  module Models
+    module Conferences
+      type action_send_dtmf_params =
+        {
+          digits: String,
+          call_control_ids: ::Array[String],
+          client_state: String,
+          duration_millis: Integer
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionSendDtmfParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor digits: String
+
+        attr_reader call_control_ids: ::Array[String]?
+
+        def call_control_ids=: (::Array[String]) -> ::Array[String]
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader duration_millis: Integer?
+
+        def duration_millis=: (Integer) -> Integer
+
+        def initialize: (
+          digits: String,
+          ?call_control_ids: ::Array[String],
+          ?client_state: String,
+          ?duration_millis: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          digits: String,
+          call_control_ids: ::Array[String],
+          client_state: String,
+          duration_millis: Integer,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

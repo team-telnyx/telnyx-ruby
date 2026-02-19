@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::MessagingHostedNumberOrders::ActionsTest < Telnyx::Test::ResourceTest
   def test_upload_file
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_hosted_number_orders.actions.upload_file("id")
 

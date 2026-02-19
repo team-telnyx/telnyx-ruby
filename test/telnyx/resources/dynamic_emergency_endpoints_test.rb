@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::DynamicEmergencyEndpointsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.dynamic_emergency_endpoints.create(
@@ -25,7 +25,7 @@ class Telnyx::Test::Resources::DynamicEmergencyEndpointsTest < Telnyx::Test::Res
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.dynamic_emergency_endpoints.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -41,7 +41,7 @@ class Telnyx::Test::Resources::DynamicEmergencyEndpointsTest < Telnyx::Test::Res
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.dynamic_emergency_endpoints.list
 
@@ -72,7 +72,7 @@ class Telnyx::Test::Resources::DynamicEmergencyEndpointsTest < Telnyx::Test::Res
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.dynamic_emergency_endpoints.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

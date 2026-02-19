@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::MessagingProfiles::AutorespConfigsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_profiles.autoresp_configs.create(
@@ -26,7 +26,7 @@ class Telnyx::Test::Resources::MessagingProfiles::AutorespConfigsTest < Telnyx::
   end
 
   def test_retrieve_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_profiles.autoresp_configs.retrieve(
@@ -46,7 +46,7 @@ class Telnyx::Test::Resources::MessagingProfiles::AutorespConfigsTest < Telnyx::
   end
 
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_profiles.autoresp_configs.update(
@@ -69,7 +69,7 @@ class Telnyx::Test::Resources::MessagingProfiles::AutorespConfigsTest < Telnyx::
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_profiles.autoresp_configs.list("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -86,7 +86,7 @@ class Telnyx::Test::Resources::MessagingProfiles::AutorespConfigsTest < Telnyx::
   end
 
   def test_delete_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_profiles.autoresp_configs.delete(

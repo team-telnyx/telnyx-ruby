@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Messaging::RcsTest < Telnyx::Test::ResourceTest
   def test_invite_test_number_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging.rcs.invite_test_number("phone_number", id: "id")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::Messaging::RcsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list_bulk_capabilities_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging.rcs.list_bulk_capabilities(agent_id: "TestAgent", phone_numbers: ["+13125551234"])
@@ -37,7 +37,7 @@ class Telnyx::Test::Resources::Messaging::RcsTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve_capabilities_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging.rcs.retrieve_capabilities("phone_number", agent_id: "agent_id")
 

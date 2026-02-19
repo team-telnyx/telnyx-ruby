@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::IntegrationSecretsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.integration_secrets.create(identifier: "my_secret", type: :bearer)
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::IntegrationSecretsTest < Telnyx::Test::ResourceTe
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.integration_secrets.list
 
@@ -47,7 +47,7 @@ class Telnyx::Test::Resources::IntegrationSecretsTest < Telnyx::Test::ResourceTe
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.integration_secrets.delete("id")
 

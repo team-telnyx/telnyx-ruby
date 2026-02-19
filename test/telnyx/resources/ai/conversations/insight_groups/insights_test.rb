@@ -4,7 +4,7 @@ require_relative "../../../../test_helper"
 
 class Telnyx::Test::Resources::AI::Conversations::InsightGroups::InsightsTest < Telnyx::Test::ResourceTest
   def test_assign_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.ai.conversations.insight_groups.insights.assign(
@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::AI::Conversations::InsightGroups::InsightsTest < 
   end
 
   def test_delete_unassign_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.ai.conversations.insight_groups.insights.delete_unassign(

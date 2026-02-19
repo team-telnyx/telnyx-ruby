@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::Messaging10dlc::CampaignBuilder::BrandTest < Telnyx::Test::ResourceTest
   def test_qualify_by_usecase_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_10dlc.campaign_builder.brand.qualify_by_usecase("usecase", brand_id: "brandId")

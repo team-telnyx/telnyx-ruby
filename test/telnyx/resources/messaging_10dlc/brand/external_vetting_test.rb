@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::Messaging10dlc::Brand::ExternalVettingTest < Telnyx::Test::ResourceTest
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.brand.external_vetting.list("brandId")
 
@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Messaging10dlc::Brand::ExternalVettingTest < Teln
   end
 
   def test_imports_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_10dlc.brand.external_vetting.imports(
@@ -41,7 +41,7 @@ class Telnyx::Test::Resources::Messaging10dlc::Brand::ExternalVettingTest < Teln
   end
 
   def test_order_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_10dlc.brand.external_vetting.order(

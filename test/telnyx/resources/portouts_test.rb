@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::PortoutsTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.portouts.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::PortoutsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.portouts.list
 
@@ -69,7 +69,7 @@ class Telnyx::Test::Resources::PortoutsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list_rejection_codes
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.portouts.list_rejection_codes("329d6658-8f93-405d-862f-648776e8afd7")
 
@@ -85,7 +85,7 @@ class Telnyx::Test::Resources::PortoutsTest < Telnyx::Test::ResourceTest
   end
 
   def test_update_status_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.portouts.update_status(

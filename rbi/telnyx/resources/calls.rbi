@@ -67,6 +67,7 @@ module Telnyx
           sip_transport_protocol:
             Telnyx::CallDialParams::SipTransportProtocol::OrSymbol,
           sound_modifications: Telnyx::SoundModifications::OrHash,
+          stream_auth_token: String,
           stream_bidirectional_codec:
             Telnyx::StreamBidirectionalCodec::OrSymbol,
           stream_bidirectional_mode: Telnyx::StreamBidirectionalMode::OrSymbol,
@@ -213,6 +214,9 @@ module Telnyx
         sip_transport_protocol: nil,
         # Use this field to modify sound effects, for example adjust the pitch.
         sound_modifications: nil,
+        # An authentication token to be sent as part of the WebSocket connection when
+        # using streaming. Maximum length is 4000 characters.
+        stream_auth_token: nil,
         # Indicates codec for bidirectional streaming RTP payloads. Used only with
         # stream_bidirectional_mode=rtp. Case sensitive.
         stream_bidirectional_codec: nil,

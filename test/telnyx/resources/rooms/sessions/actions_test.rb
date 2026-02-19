@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::Rooms::Sessions::ActionsTest < Telnyx::Test::ResourceTest
   def test_end_
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.rooms.sessions.actions.end_("0ccc7b54-4df3-4bca-a65a-3da1ecc777f0")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::Rooms::Sessions::ActionsTest < Telnyx::Test::Reso
   end
 
   def test_kick
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.rooms.sessions.actions.kick("0ccc7b54-4df3-4bca-a65a-3da1ecc777f0")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::Rooms::Sessions::ActionsTest < Telnyx::Test::Reso
   end
 
   def test_mute
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.rooms.sessions.actions.mute("0ccc7b54-4df3-4bca-a65a-3da1ecc777f0")
 
@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::Rooms::Sessions::ActionsTest < Telnyx::Test::Reso
   end
 
   def test_unmute
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.rooms.sessions.actions.unmute("0ccc7b54-4df3-4bca-a65a-3da1ecc777f0")
 

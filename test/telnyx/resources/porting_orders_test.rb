@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::PortingOrdersTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting_orders.create(phone_numbers: ["+13035550000", "+13035550001", "+13035550002"])
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::PortingOrdersTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting_orders.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -37,7 +37,7 @@ class Telnyx::Test::Resources::PortingOrdersTest < Telnyx::Test::ResourceTest
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting_orders.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -54,7 +54,7 @@ class Telnyx::Test::Resources::PortingOrdersTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting_orders.list
 
@@ -101,7 +101,7 @@ class Telnyx::Test::Resources::PortingOrdersTest < Telnyx::Test::ResourceTest
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting_orders.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -111,7 +111,7 @@ class Telnyx::Test::Resources::PortingOrdersTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve_allowed_foc_windows
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting_orders.retrieve_allowed_foc_windows("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -128,7 +128,7 @@ class Telnyx::Test::Resources::PortingOrdersTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve_exception_types
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting_orders.retrieve_exception_types
 
@@ -144,7 +144,7 @@ class Telnyx::Test::Resources::PortingOrdersTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve_loa_template
-    skip("Prism doesn't support application/pdf responses")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting_orders.retrieve_loa_template("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -154,7 +154,7 @@ class Telnyx::Test::Resources::PortingOrdersTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve_requirements
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting_orders.retrieve_requirements("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -181,7 +181,7 @@ class Telnyx::Test::Resources::PortingOrdersTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve_sub_request
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting_orders.retrieve_sub_request("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

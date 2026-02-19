@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Queues::CallsTest < Telnyx::Test::ResourceTest
   def test_retrieve_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.queues.calls.retrieve("call_control_id", queue_name: "queue_name")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::Queues::CallsTest < Telnyx::Test::ResourceTest
   end
 
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.queues.calls.update("call_control_id", queue_name: "queue_name")
 
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::Queues::CallsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.queues.calls.list("queue_name")
 
@@ -64,7 +64,7 @@ class Telnyx::Test::Resources::Queues::CallsTest < Telnyx::Test::ResourceTest
   end
 
   def test_remove_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.queues.calls.remove("call_control_id", queue_name: "queue_name")
 

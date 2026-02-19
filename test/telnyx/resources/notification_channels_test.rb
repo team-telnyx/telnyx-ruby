@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::NotificationChannelsTest < Telnyx::Test::ResourceTest
   def test_create
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.notification_channels.create
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::NotificationChannelsTest < Telnyx::Test::Resource
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.notification_channels.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::NotificationChannelsTest < Telnyx::Test::Resource
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.notification_channels.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::NotificationChannelsTest < Telnyx::Test::Resource
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.notification_channels.list
 
@@ -80,7 +80,7 @@ class Telnyx::Test::Resources::NotificationChannelsTest < Telnyx::Test::Resource
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.notification_channels.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::CustomerServiceRecordsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.customer_service_records.create(phone_number: "+13035553000")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::CustomerServiceRecordsTest < Telnyx::Test::Resour
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.customer_service_records.retrieve("customer_service_record_id")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::CustomerServiceRecordsTest < Telnyx::Test::Resour
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.customer_service_records.list
 
@@ -66,7 +66,7 @@ class Telnyx::Test::Resources::CustomerServiceRecordsTest < Telnyx::Test::Resour
   end
 
   def test_verify_phone_number_coverage_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.customer_service_records.verify_phone_number_coverage(phone_numbers: ["+13035553000"])
 

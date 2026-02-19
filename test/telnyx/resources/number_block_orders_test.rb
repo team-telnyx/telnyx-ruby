@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::NumberBlockOrdersTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.number_block_orders.create(range: 10, starting_number: "+19705555000")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::NumberBlockOrdersTest < Telnyx::Test::ResourceTes
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.number_block_orders.retrieve("number_block_order_id")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::NumberBlockOrdersTest < Telnyx::Test::ResourceTes
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.number_block_orders.list
 

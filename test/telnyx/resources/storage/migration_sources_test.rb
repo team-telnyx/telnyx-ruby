@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Storage::MigrationSourcesTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.storage.migration_sources.create(bucket_name: "bucket_name", provider: :aws, provider_auth: {})
@@ -21,7 +21,7 @@ class Telnyx::Test::Resources::Storage::MigrationSourcesTest < Telnyx::Test::Res
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.storage.migration_sources.retrieve("")
 
@@ -37,7 +37,7 @@ class Telnyx::Test::Resources::Storage::MigrationSourcesTest < Telnyx::Test::Res
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.storage.migration_sources.list
 
@@ -54,7 +54,7 @@ class Telnyx::Test::Resources::Storage::MigrationSourcesTest < Telnyx::Test::Res
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.storage.migration_sources.delete("")
 

@@ -176,6 +176,15 @@ module Telnyx
         sig { params(park_after_unbridge: String).void }
         attr_writer :park_after_unbridge
 
+        # The list of comma-separated codecs in order of preference to be used during the
+        # call. The codecs supported are `G722`, `PCMU`, `PCMA`, `G729`, `OPUS`, `VP8`,
+        # `H264`, `AMR-WB`.
+        sig { returns(T.nilable(String)) }
+        attr_reader :preferred_codecs
+
+        sig { params(preferred_codecs: String).void }
+        attr_writer :preferred_codecs
+
         # Start recording automatically after an event. Disabled by default.
         sig do
           returns(
@@ -388,6 +397,32 @@ module Telnyx
         sig { params(timeout_secs: Integer).void }
         attr_writer :timeout_secs
 
+        # A map of event types to retry policies. Each retry policy contains an array of
+        # `retries_ms` specifying the delays between retry attempts in milliseconds.
+        # Maximum 5 retries, total delay cannot exceed 60 seconds.
+        sig do
+          returns(
+            T.nilable(
+              T::Hash[
+                Symbol,
+                Telnyx::Calls::ActionTransferParams::WebhookRetriesPolicy
+              ]
+            )
+          )
+        end
+        attr_reader :webhook_retries_policies
+
+        sig do
+          params(
+            webhook_retries_policies:
+              T::Hash[
+                Symbol,
+                Telnyx::Calls::ActionTransferParams::WebhookRetriesPolicy::OrHash
+              ]
+          ).void
+        end
+        attr_writer :webhook_retries_policies
+
         # Use this field to override the URL for which Telnyx will send subsequent
         # webhooks to for this call.
         sig { returns(T.nilable(String)) }
@@ -414,6 +449,33 @@ module Telnyx
         end
         attr_writer :webhook_url_method
 
+        # A map of event types to webhook URLs. When an event of the specified type
+        # occurs, the webhook URL associated with that event type will be called instead
+        # of `webhook_url`. Events not mapped here will use the default `webhook_url`.
+        sig { returns(T.nilable(T::Hash[Symbol, String])) }
+        attr_reader :webhook_urls
+
+        sig { params(webhook_urls: T::Hash[Symbol, String]).void }
+        attr_writer :webhook_urls
+
+        # HTTP request method to invoke `webhook_urls`.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::Calls::ActionTransferParams::WebhookURLsMethod::OrSymbol
+            )
+          )
+        end
+        attr_reader :webhook_urls_method
+
+        sig do
+          params(
+            webhook_urls_method:
+              Telnyx::Calls::ActionTransferParams::WebhookURLsMethod::OrSymbol
+          ).void
+        end
+        attr_writer :webhook_urls_method
+
         sig do
           params(
             to: String,
@@ -433,6 +495,7 @@ module Telnyx
             media_name: String,
             mute_dtmf: Telnyx::Calls::ActionTransferParams::MuteDtmf::OrSymbol,
             park_after_unbridge: String,
+            preferred_codecs: String,
             record: Telnyx::Calls::ActionTransferParams::Record::OrSymbol,
             record_channels:
               Telnyx::Calls::ActionTransferParams::RecordChannels::OrSymbol,
@@ -456,9 +519,17 @@ module Telnyx
             target_leg_client_state: String,
             time_limit_secs: Integer,
             timeout_secs: Integer,
+            webhook_retries_policies:
+              T::Hash[
+                Symbol,
+                Telnyx::Calls::ActionTransferParams::WebhookRetriesPolicy::OrHash
+              ],
             webhook_url: String,
             webhook_url_method:
               Telnyx::Calls::ActionTransferParams::WebhookURLMethod::OrSymbol,
+            webhook_urls: T::Hash[Symbol, String],
+            webhook_urls_method:
+              Telnyx::Calls::ActionTransferParams::WebhookURLsMethod::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -514,6 +585,10 @@ module Telnyx
           # or is transferred). If supplied with the value `self`, the current leg will be
           # parked after unbridge. If not set, the default behavior is to hang up the leg.
           park_after_unbridge: nil,
+          # The list of comma-separated codecs in order of preference to be used during the
+          # call. The codecs supported are `G722`, `PCMU`, `PCMA`, `G729`, `OPUS`, `VP8`,
+          # `H264`, `AMR-WB`.
+          preferred_codecs: nil,
           # Start recording automatically after an event. Disabled by default.
           record: nil,
           # Defines which channel should be recorded ('single' or 'dual') when `record` is
@@ -570,11 +645,21 @@ module Telnyx
           # `hangup_cause` of `timeout` will be sent. Minimum value is 5 seconds. Maximum
           # value is 600 seconds.
           timeout_secs: nil,
+          # A map of event types to retry policies. Each retry policy contains an array of
+          # `retries_ms` specifying the delays between retry attempts in milliseconds.
+          # Maximum 5 retries, total delay cannot exceed 60 seconds.
+          webhook_retries_policies: nil,
           # Use this field to override the URL for which Telnyx will send subsequent
           # webhooks to for this call.
           webhook_url: nil,
           # HTTP request type used for `webhook_url`.
           webhook_url_method: nil,
+          # A map of event types to webhook URLs. When an event of the specified type
+          # occurs, the webhook URL associated with that event type will be called instead
+          # of `webhook_url`. Events not mapped here will use the default `webhook_url`.
+          webhook_urls: nil,
+          # HTTP request method to invoke `webhook_urls`.
+          webhook_urls_method: nil,
           request_options: {}
         )
         end
@@ -600,6 +685,7 @@ module Telnyx
               mute_dtmf:
                 Telnyx::Calls::ActionTransferParams::MuteDtmf::OrSymbol,
               park_after_unbridge: String,
+              preferred_codecs: String,
               record: Telnyx::Calls::ActionTransferParams::Record::OrSymbol,
               record_channels:
                 Telnyx::Calls::ActionTransferParams::RecordChannels::OrSymbol,
@@ -623,9 +709,17 @@ module Telnyx
               target_leg_client_state: String,
               time_limit_secs: Integer,
               timeout_secs: Integer,
+              webhook_retries_policies:
+                T::Hash[
+                  Symbol,
+                  Telnyx::Calls::ActionTransferParams::WebhookRetriesPolicy
+                ],
               webhook_url: String,
               webhook_url_method:
                 Telnyx::Calls::ActionTransferParams::WebhookURLMethod::OrSymbol,
+              webhook_urls: T::Hash[Symbol, String],
+              webhook_urls_method:
+                Telnyx::Calls::ActionTransferParams::WebhookURLsMethod::OrSymbol,
               request_options: Telnyx::RequestOptions
             }
           )
@@ -1170,6 +1264,38 @@ module Telnyx
           end
         end
 
+        class WebhookRetriesPolicy < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::Calls::ActionTransferParams::WebhookRetriesPolicy,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # Array of delays in milliseconds between retry attempts. Total sum cannot exceed
+          # 60000ms.
+          sig { returns(T.nilable(T::Array[Integer])) }
+          attr_reader :retries_ms
+
+          sig { params(retries_ms: T::Array[Integer]).void }
+          attr_writer :retries_ms
+
+          sig do
+            params(retries_ms: T::Array[Integer]).returns(T.attached_class)
+          end
+          def self.new(
+            # Array of delays in milliseconds between retry attempts. Total sum cannot exceed
+            # 60000ms.
+            retries_ms: nil
+          )
+          end
+
+          sig { override.returns({ retries_ms: T::Array[Integer] }) }
+          def to_hash
+          end
+        end
+
         # HTTP request type used for `webhook_url`.
         module WebhookURLMethod
           extend Telnyx::Internal::Type::Enum
@@ -1198,6 +1324,41 @@ module Telnyx
             override.returns(
               T::Array[
                 Telnyx::Calls::ActionTransferParams::WebhookURLMethod::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # HTTP request method to invoke `webhook_urls`.
+        module WebhookURLsMethod
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::Calls::ActionTransferParams::WebhookURLsMethod
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          POST =
+            T.let(
+              :POST,
+              Telnyx::Calls::ActionTransferParams::WebhookURLsMethod::TaggedSymbol
+            )
+          GET =
+            T.let(
+              :GET,
+              Telnyx::Calls::ActionTransferParams::WebhookURLsMethod::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Calls::ActionTransferParams::WebhookURLsMethod::TaggedSymbol
               ]
             )
           end

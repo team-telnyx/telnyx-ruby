@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::NumberOrdersTest < Telnyx::Test::ResourceTest
   def test_create
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.number_orders.create
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::NumberOrdersTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.number_orders.retrieve("number_order_id")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::NumberOrdersTest < Telnyx::Test::ResourceTest
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.number_orders.update("number_order_id")
 
@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::NumberOrdersTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.number_orders.list
 

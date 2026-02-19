@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Faxes::ActionsTest < Telnyx::Test::ResourceTest
   def test_cancel
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.faxes.actions.cancel("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::Faxes::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_refresh
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.faxes.actions.refresh("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

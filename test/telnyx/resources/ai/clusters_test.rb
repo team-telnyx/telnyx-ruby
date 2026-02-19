@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::AI::ClustersTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.clusters.retrieve("task_id")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::AI::ClustersTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.clusters.list
 
@@ -49,7 +49,7 @@ class Telnyx::Test::Resources::AI::ClustersTest < Telnyx::Test::ResourceTest
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.clusters.delete("task_id")
 
@@ -59,7 +59,7 @@ class Telnyx::Test::Resources::AI::ClustersTest < Telnyx::Test::ResourceTest
   end
 
   def test_compute_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.clusters.compute(bucket: "bucket")
 
@@ -75,7 +75,7 @@ class Telnyx::Test::Resources::AI::ClustersTest < Telnyx::Test::ResourceTest
   end
 
   def test_fetch_graph
-    skip("Prism doesn't support image/png responses")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.clusters.fetch_graph("task_id")
 

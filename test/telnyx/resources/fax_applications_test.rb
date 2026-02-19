@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::FaxApplicationsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.fax_applications.create(application_name: "fax-router", webhook_event_url: "https://example.com")
@@ -21,7 +21,7 @@ class Telnyx::Test::Resources::FaxApplicationsTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.fax_applications.retrieve("1293384261075731499")
 
@@ -37,7 +37,7 @@ class Telnyx::Test::Resources::FaxApplicationsTest < Telnyx::Test::ResourceTest
   end
 
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.fax_applications.update(
@@ -58,7 +58,7 @@ class Telnyx::Test::Resources::FaxApplicationsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.fax_applications.list
 
@@ -93,7 +93,7 @@ class Telnyx::Test::Resources::FaxApplicationsTest < Telnyx::Test::ResourceTest
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.fax_applications.delete("1293384261075731499")
 

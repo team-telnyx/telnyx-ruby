@@ -159,6 +159,70 @@ module Telnyx
         )
       end
 
+      # Retrieve details of a specific conference participant by their ID or label.
+      #
+      # @overload retrieve_participant(participant_id, id:, request_options: {})
+      #
+      # @param participant_id [String] Uniquely identifies the participant by their ID or label.
+      #
+      # @param id [String] Uniquely identifies the conference.
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::ConferenceRetrieveParticipantResponse]
+      #
+      # @see Telnyx::Models::ConferenceRetrieveParticipantParams
+      def retrieve_participant(participant_id, params)
+        parsed, options = Telnyx::ConferenceRetrieveParticipantParams.dump_request(params)
+        id =
+          parsed.delete(:id) do
+            raise ArgumentError.new("missing required path argument #{_1}")
+          end
+        @client.request(
+          method: :get,
+          path: ["conferences/%1$s/participants/%2$s", id, participant_id],
+          model: Telnyx::Models::ConferenceRetrieveParticipantResponse,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::ConferenceUpdateParticipantParams} for more details.
+      #
+      # Update properties of a conference participant.
+      #
+      # @overload update_participant(participant_id, id:, beep_enabled: nil, end_conference_on_exit: nil, soft_end_conference_on_exit: nil, request_options: {})
+      #
+      # @param participant_id [String] Path param: Uniquely identifies the participant.
+      #
+      # @param id [String] Path param: Uniquely identifies the conference.
+      #
+      # @param beep_enabled [Symbol, Telnyx::Models::ConferenceUpdateParticipantParams::BeepEnabled] Body param: Whether entry/exit beeps are enabled for this participant.
+      #
+      # @param end_conference_on_exit [Boolean] Body param: Whether the conference should end when this participant exits.
+      #
+      # @param soft_end_conference_on_exit [Boolean] Body param: Whether the conference should soft-end when this participant exits.
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::ConferenceUpdateParticipantResponse]
+      #
+      # @see Telnyx::Models::ConferenceUpdateParticipantParams
+      def update_participant(participant_id, params)
+        parsed, options = Telnyx::ConferenceUpdateParticipantParams.dump_request(params)
+        id =
+          parsed.delete(:id) do
+            raise ArgumentError.new("missing required path argument #{_1}")
+          end
+        @client.request(
+          method: :patch,
+          path: ["conferences/%1$s/participants/%2$s", id, participant_id],
+          body: parsed,
+          model: Telnyx::Models::ConferenceUpdateParticipantResponse,
+          options: options
+        )
+      end
+
       # @api private
       #
       # @param client [Telnyx::Client]

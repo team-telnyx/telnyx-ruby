@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::MobileVoiceConnectionsTest < Telnyx::Test::ResourceTest
   def test_create
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.mobile_voice_connections.create
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::MobileVoiceConnectionsTest < Telnyx::Test::Resour
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.mobile_voice_connections.retrieve("id")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::MobileVoiceConnectionsTest < Telnyx::Test::Resour
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.mobile_voice_connections.update("id")
 
@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::MobileVoiceConnectionsTest < Telnyx::Test::Resour
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.mobile_voice_connections.list
 
@@ -87,7 +87,7 @@ class Telnyx::Test::Resources::MobileVoiceConnectionsTest < Telnyx::Test::Resour
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.mobile_voice_connections.delete("id")
 

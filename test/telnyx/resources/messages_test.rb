@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messages.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
   end
 
   def test_cancel_scheduled
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messages.cancel_scheduled("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -63,7 +63,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
   end
 
   def test_schedule_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messages.schedule(to: "+18445550001")
 
@@ -79,7 +79,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
   end
 
   def test_send__required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messages.send_(to: "+18445550001")
 
@@ -95,7 +95,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
   end
 
   def test_send_group_mms_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messages.send_group_mms(from: "+13125551234", to: ["+18655551234", "+14155551234"])
 
@@ -111,7 +111,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
   end
 
   def test_send_long_code_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messages.send_long_code(from: "+18445550001", to: "+13125550002")
 
@@ -127,7 +127,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
   end
 
   def test_send_number_pool_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messages.send_number_pool(
@@ -147,7 +147,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
   end
 
   def test_send_short_code_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messages.send_short_code(from: "+18445550001", to: "+18445550001")
 
@@ -163,7 +163,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
   end
 
   def test_send_whatsapp_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messages.send_whatsapp(from: "+13125551234", to: "+13125551234", whatsapp_message: {})
 

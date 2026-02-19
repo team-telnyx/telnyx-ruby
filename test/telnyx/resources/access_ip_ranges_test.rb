@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::AccessIPRangesTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.access_ip_ranges.create(cidr_block: "cidr_block")
 
@@ -26,7 +26,7 @@ class Telnyx::Test::Resources::AccessIPRangesTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.access_ip_ranges.list
 
@@ -55,7 +55,7 @@ class Telnyx::Test::Resources::AccessIPRangesTest < Telnyx::Test::ResourceTest
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.access_ip_ranges.delete("access_ip_range_id")
 

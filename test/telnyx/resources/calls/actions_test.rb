@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   def test_add_ai_assistant_messages
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.add_ai_assistant_messages("call_control_id")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_answer
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.answer("call_control_id")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_bridge_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.calls.actions.bridge(
@@ -56,7 +56,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_enqueue_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.enqueue("call_control_id", queue_name: "support")
 
@@ -72,7 +72,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_gather
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.gather("call_control_id")
 
@@ -88,7 +88,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_gather_using_ai_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.calls.actions.gather_using_ai(
@@ -108,7 +108,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_gather_using_audio
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.gather_using_audio("call_control_id")
 
@@ -124,7 +124,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_gather_using_speak_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.calls.actions.gather_using_speak("call_control_id", payload: "say this on call", voice: "male")
@@ -141,7 +141,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_hangup
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.hangup("call_control_id")
 
@@ -157,7 +157,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_leave_queue
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.leave_queue("call_control_id")
 
@@ -173,7 +173,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_pause_recording
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.pause_recording("call_control_id")
 
@@ -189,7 +189,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_refer_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.calls.actions.refer("call_control_id", sip_address: "sip:username@sip.non-telnyx-address.com")
@@ -206,7 +206,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_reject_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.reject("call_control_id", cause: :USER_BUSY)
 
@@ -222,7 +222,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_resume_recording
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.resume_recording("call_control_id")
 
@@ -238,7 +238,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_send_dtmf_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.send_dtmf("call_control_id", digits: "1www2WABCDw9")
 
@@ -254,7 +254,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_send_sip_info_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.calls.actions.send_sip_info(
@@ -275,7 +275,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_speak_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.calls.actions.speak("call_control_id", payload: "Say this on the call", voice: "female")
@@ -292,7 +292,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_start_ai_assistant
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.start_ai_assistant("call_control_id")
 
@@ -308,7 +308,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_start_forking
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.start_forking("call_control_id")
 
@@ -324,7 +324,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_start_noise_suppression
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.start_noise_suppression("call_control_id")
 
@@ -340,7 +340,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_start_playback
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.start_playback("call_control_id")
 
@@ -356,7 +356,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_start_recording_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.start_recording("call_control_id", channels: :single, format_: :wav)
 
@@ -372,7 +372,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_start_siprec
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.start_siprec("call_control_id")
 
@@ -388,7 +388,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_start_streaming
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.start_streaming("call_control_id")
 
@@ -404,7 +404,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_start_transcription
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.start_transcription("call_control_id")
 
@@ -420,7 +420,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_stop_ai_assistant
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.stop_ai_assistant("call_control_id")
 
@@ -436,7 +436,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_stop_forking
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.stop_forking("call_control_id")
 
@@ -452,7 +452,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_stop_gather
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.stop_gather("call_control_id")
 
@@ -468,7 +468,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_stop_noise_suppression
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.stop_noise_suppression("call_control_id")
 
@@ -484,7 +484,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_stop_playback
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.stop_playback("call_control_id")
 
@@ -500,7 +500,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_stop_recording
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.stop_recording("call_control_id")
 
@@ -516,7 +516,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_stop_siprec
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.stop_siprec("call_control_id")
 
@@ -532,7 +532,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_stop_streaming
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.stop_streaming("call_control_id")
 
@@ -548,7 +548,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_stop_transcription
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.stop_transcription("call_control_id")
 
@@ -564,7 +564,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_switch_supervisor_role_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.calls.actions.switch_supervisor_role("call_control_id", role: :barge)
 
@@ -580,7 +580,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_transfer_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.calls.actions.transfer("call_control_id", to: "+18005550100 or sip:username@sip.telnyx.com")
@@ -597,7 +597,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
   end
 
   def test_update_client_state_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.calls.actions.update_client_state("call_control_id", client_state: "aGF2ZSBhIG5pY2UgZGF5ID1d")

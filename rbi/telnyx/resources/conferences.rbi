@@ -156,6 +156,52 @@ module Telnyx
       )
       end
 
+      # Retrieve details of a specific conference participant by their ID or label.
+      sig do
+        params(
+          participant_id: String,
+          id: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::Models::ConferenceRetrieveParticipantResponse)
+      end
+      def retrieve_participant(
+        # Uniquely identifies the participant by their ID or label.
+        participant_id,
+        # Uniquely identifies the conference.
+        id:,
+        request_options: {}
+      )
+      end
+
+      # Update properties of a conference participant.
+      sig do
+        params(
+          participant_id: String,
+          id: String,
+          beep_enabled:
+            Telnyx::ConferenceUpdateParticipantParams::BeepEnabled::OrSymbol,
+          end_conference_on_exit: T::Boolean,
+          soft_end_conference_on_exit: T::Boolean,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::Models::ConferenceUpdateParticipantResponse)
+      end
+      def update_participant(
+        # Path param: Uniquely identifies the participant.
+        participant_id,
+        # Path param: Uniquely identifies the conference.
+        id:,
+        # Body param: Whether entry/exit beeps are enabled for this participant.
+        beep_enabled: nil,
+        # Body param: Whether the conference should end when this participant exits.
+        end_conference_on_exit: nil,
+        # Body param: Whether the conference should soft-end when this participant exits.
+        # A soft end will stop new participants from joining but allow existing
+        # participants to remain.
+        soft_end_conference_on_exit: nil,
+        request_options: {}
+      )
+      end
+
       # @api private
       sig { params(client: Telnyx::Client).returns(T.attached_class) }
       def self.new(client:)

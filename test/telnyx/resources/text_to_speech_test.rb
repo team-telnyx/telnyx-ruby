@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::TextToSpeechTest < Telnyx::Test::ResourceTest
   def test_generate_speech_required_params
-    skip("Prism doesn't support audio/mpeg responses")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.text_to_speech.generate_speech(text: "text", voice: "voice")
 
@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::TextToSpeechTest < Telnyx::Test::ResourceTest
   end
 
   def test_list_voices
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.text_to_speech.list_voices
 

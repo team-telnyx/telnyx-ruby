@@ -1,5 +1,27 @@
 # Changelog
 
+## 5.32.0 (2026-02-19)
+
+Full Changelog: [v5.31.0...v5.32.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.31.0...v5.32.0)
+
+### Features
+
+* TELAPPS Add interim_results to deepgram config ([8956bf3](https://github.com/team-telnyx/telnyx-ruby/commit/8956bf35b3bbd377d8bd77d2f0331dcb7a09307b))
+
+
+### Chores
+
+* **internal:** remove mock server code ([966d641](https://github.com/team-telnyx/telnyx-ruby/commit/966d641e11a6ad4a930c2b102831386c0a3de52e))
+* **test:** update skip reason message ([8054691](https://github.com/team-telnyx/telnyx-ruby/commit/8054691cd25e858d070517c7427131d6e6fa498c))
+* update mock server docs ([4695e7d](https://github.com/team-telnyx/telnyx-ruby/commit/4695e7d2a103ef6c80450ca1d38e1f04241f5067))
+
+
+### Documentation
+
+* **call-control:** Add missing conference endpoints ([b54f876](https://github.com/team-telnyx/telnyx-ruby/commit/b54f87674679c06e809fc569a091cdc6930e1800))
+* **call-control:** Add missing parameters to call control endpoints ([1cf2a4e](https://github.com/team-telnyx/telnyx-ruby/commit/1cf2a4e33051e01cb3124e20aa06975eeb63df33))
+* **call-scripting:** add Timeout and TimeLimit to InitiateTexmlCall ([e2127cb](https://github.com/team-telnyx/telnyx-ruby/commit/e2127cb13f63a02074aba414b397ba64ece86081))
+
 ## 5.31.0 (2026-02-18)
 
 Full Changelog: [v5.30.0...v5.31.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.30.0...v5.31.0)

@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::GlobalIPHealthChecksTest < Telnyx::Test::ResourceTest
   def test_create
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.global_ip_health_checks.create
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::GlobalIPHealthChecksTest < Telnyx::Test::Resource
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.global_ip_health_checks.retrieve("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::GlobalIPHealthChecksTest < Telnyx::Test::Resource
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.global_ip_health_checks.list
 
@@ -53,7 +53,7 @@ class Telnyx::Test::Resources::GlobalIPHealthChecksTest < Telnyx::Test::Resource
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.global_ip_health_checks.delete("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 

@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::ListTest < Telnyx::Test::ResourceTest
   def test_retrieve_all
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.list.retrieve_all
 
@@ -21,7 +21,7 @@ class Telnyx::Test::Resources::ListTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve_by_zone
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.list.retrieve_by_zone("channel_zone_id")
 

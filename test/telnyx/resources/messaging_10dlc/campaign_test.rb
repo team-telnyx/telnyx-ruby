@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Messaging10dlc::CampaignTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.campaign.retrieve("campaignId")
 
@@ -69,7 +69,7 @@ class Telnyx::Test::Resources::Messaging10dlc::CampaignTest < Telnyx::Test::Reso
   end
 
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.campaign.update("campaignId")
 
@@ -134,7 +134,7 @@ class Telnyx::Test::Resources::Messaging10dlc::CampaignTest < Telnyx::Test::Reso
   end
 
   def test_list_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.campaign.list(brand_id: "brandId")
 
@@ -207,7 +207,7 @@ class Telnyx::Test::Resources::Messaging10dlc::CampaignTest < Telnyx::Test::Reso
   end
 
   def test_accept_sharing
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.campaign.accept_sharing("C26F1KLZN")
 
@@ -217,7 +217,7 @@ class Telnyx::Test::Resources::Messaging10dlc::CampaignTest < Telnyx::Test::Reso
   end
 
   def test_deactivate
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.campaign.deactivate("campaignId")
 
@@ -235,7 +235,7 @@ class Telnyx::Test::Resources::Messaging10dlc::CampaignTest < Telnyx::Test::Reso
   end
 
   def test_get_mno_metadata
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.campaign.get_mno_metadata("campaignId")
 
@@ -251,7 +251,7 @@ class Telnyx::Test::Resources::Messaging10dlc::CampaignTest < Telnyx::Test::Reso
   end
 
   def test_get_operation_status
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.campaign.get_operation_status("campaignId")
 
@@ -261,7 +261,7 @@ class Telnyx::Test::Resources::Messaging10dlc::CampaignTest < Telnyx::Test::Reso
   end
 
   def test_get_sharing_status
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.campaign.get_sharing_status("campaignId")
 
@@ -278,7 +278,7 @@ class Telnyx::Test::Resources::Messaging10dlc::CampaignTest < Telnyx::Test::Reso
   end
 
   def test_submit_appeal_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_10dlc.campaign.submit_appeal(

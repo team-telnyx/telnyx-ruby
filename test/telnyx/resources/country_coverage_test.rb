@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::CountryCoverageTest < Telnyx::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.country_coverage.retrieve
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::CountryCoverageTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve_country
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.country_coverage.retrieve_country("US")
 

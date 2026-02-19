@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Messaging10dlc::PhoneNumberAssignmentByProfileTest < Telnyx::Test::ResourceTest
   def test_assign_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_10dlc.phone_number_assignment_by_profile.assign(
@@ -26,7 +26,7 @@ class Telnyx::Test::Resources::Messaging10dlc::PhoneNumberAssignmentByProfileTes
   end
 
   def test_list_phone_number_status
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.phone_number_assignment_by_profile.list_phone_number_status("taskId")
 
@@ -42,7 +42,7 @@ class Telnyx::Test::Resources::Messaging10dlc::PhoneNumberAssignmentByProfileTes
   end
 
   def test_retrieve_phone_number_status
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messaging_10dlc.phone_number_assignment_by_profile.retrieve_phone_number_status("taskId")
@@ -59,7 +59,7 @@ class Telnyx::Test::Resources::Messaging10dlc::PhoneNumberAssignmentByProfileTes
   end
 
   def test_retrieve_status
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messaging_10dlc.phone_number_assignment_by_profile.retrieve_status("taskId")
 

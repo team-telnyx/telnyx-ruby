@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::ExternalConnections::UploadsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.external_connections.uploads.create(
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::ExternalConnections::UploadsTest < Telnyx::Test::
   end
 
   def test_retrieve_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.external_connections.uploads.retrieve("7b6a6449-b055-45a6-81f6-f6f0dffa4cc6", id: "id")
@@ -47,7 +47,7 @@ class Telnyx::Test::Resources::ExternalConnections::UploadsTest < Telnyx::Test::
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.external_connections.uploads.list("id")
 
@@ -77,7 +77,7 @@ class Telnyx::Test::Resources::ExternalConnections::UploadsTest < Telnyx::Test::
   end
 
   def test_pending_count
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.external_connections.uploads.pending_count("id")
 
@@ -93,7 +93,7 @@ class Telnyx::Test::Resources::ExternalConnections::UploadsTest < Telnyx::Test::
   end
 
   def test_refresh_status
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.external_connections.uploads.refresh_status("id")
 
@@ -109,7 +109,7 @@ class Telnyx::Test::Resources::ExternalConnections::UploadsTest < Telnyx::Test::
   end
 
   def test_retry__required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.external_connections.uploads.retry_("7b6a6449-b055-45a6-81f6-f6f0dffa4cc6", id: "id")
 

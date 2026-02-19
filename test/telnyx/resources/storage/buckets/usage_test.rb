@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::Storage::Buckets::UsageTest < Telnyx::Test::ResourceTest
   def test_get_api_usage_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.storage.buckets.usage.get_api_usage(
@@ -24,7 +24,7 @@ class Telnyx::Test::Resources::Storage::Buckets::UsageTest < Telnyx::Test::Resou
   end
 
   def test_get_bucket_usage
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.storage.buckets.usage.get_bucket_usage("")
 

@@ -45,6 +45,14 @@ module Telnyx
         sig { params(command_id: String).void }
         attr_writer :command_id
 
+        # Text that will be played when the gathering has finished. There is a 3,000
+        # character limit.
+        sig { returns(T.nilable(String)) }
+        attr_reader :gather_ended_speech
+
+        sig { params(gather_ended_speech: String).void }
+        attr_writer :gather_ended_speech
+
         # Text that will be played when the gathering starts, if none then nothing will be
         # played when the gathering starts. The greeting can be text for any voice or SSML
         # for `AWS.Polly.<voice_id>` voices. There is a 3,000 character limit.
@@ -133,8 +141,7 @@ module Telnyx
         end
         attr_writer :transcription
 
-        # The number of milliseconds to wait for a user response before the voice
-        # assistant times out and check if the user is still there.
+        # The maximum time in milliseconds to wait for user response before timing out.
         sig { returns(T.nilable(Integer)) }
         attr_reader :user_response_timeout_ms
 
@@ -201,6 +208,7 @@ module Telnyx
             assistant: Telnyx::AI::Assistant::OrHash,
             client_state: String,
             command_id: String,
+            gather_ended_speech: String,
             greeting: String,
             interruption_settings: Telnyx::Calls::InterruptionSettings::OrHash,
             language: Telnyx::Calls::GoogleTranscriptionLanguage::OrSymbol,
@@ -236,6 +244,9 @@ module Telnyx
           # Use this field to avoid duplicate commands. Telnyx will ignore any command with
           # the same `command_id` for the same `call_control_id`.
           command_id: nil,
+          # Text that will be played when the gathering has finished. There is a 3,000
+          # character limit.
+          gather_ended_speech: nil,
           # Text that will be played when the gathering starts, if none then nothing will be
           # played when the gathering starts. The greeting can be text for any voice or SSML
           # for `AWS.Polly.<voice_id>` voices. There is a 3,000 character limit.
@@ -262,8 +273,7 @@ module Telnyx
           # using a model with native audio support (e.g. `fixie-ai/ultravox-v0_4`) will
           # ignore this field.
           transcription: nil,
-          # The number of milliseconds to wait for a user response before the voice
-          # assistant times out and check if the user is still there.
+          # The maximum time in milliseconds to wait for user response before timing out.
           user_response_timeout_ms: nil,
           # The voice to be used by the voice assistant. Currently we support ElevenLabs,
           # Telnyx and AWS voices.
@@ -301,6 +311,7 @@ module Telnyx
               assistant: Telnyx::AI::Assistant,
               client_state: String,
               command_id: String,
+              gather_ended_speech: String,
               greeting: String,
               interruption_settings: Telnyx::Calls::InterruptionSettings,
               language: Telnyx::Calls::GoogleTranscriptionLanguage::OrSymbol,

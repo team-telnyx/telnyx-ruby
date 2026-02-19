@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::CommentsTest < Telnyx::Test::ResourceTest
   def test_create
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.comments.create
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::CommentsTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.comments.retrieve("id")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::CommentsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.comments.list
 
@@ -53,7 +53,7 @@ class Telnyx::Test::Resources::CommentsTest < Telnyx::Test::ResourceTest
   end
 
   def test_mark_as_read
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.comments.mark_as_read("id")
 

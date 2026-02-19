@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::Legacy::Reporting::UsageReportsTest < Telnyx::Test::ResourceTest
   def test_retrieve_speech_to_text
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.legacy.reporting.usage_reports.retrieve_speech_to_text
 

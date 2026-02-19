@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::PortingOrders::ActionRequirementsTest < Telnyx::Test::ResourceTest
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting_orders.action_requirements.list("porting_order_id")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::PortingOrders::ActionRequirementsTest < Telnyx::T
   end
 
   def test_initiate_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.porting_orders.action_requirements.initiate(

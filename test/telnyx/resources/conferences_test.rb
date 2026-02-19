@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::ConferencesTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.conferences.create(
@@ -24,7 +24,7 @@ class Telnyx::Test::Resources::ConferencesTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.conferences.retrieve("id")
 
@@ -40,7 +40,7 @@ class Telnyx::Test::Resources::ConferencesTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.conferences.list
 
@@ -73,7 +73,7 @@ class Telnyx::Test::Resources::ConferencesTest < Telnyx::Test::ResourceTest
   end
 
   def test_list_participants
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.conferences.list_participants("conference_id")
 
@@ -103,6 +103,40 @@ class Telnyx::Test::Resources::ConferencesTest < Telnyx::Test::ResourceTest
         status: Telnyx::Models::ConferenceListParticipantsResponse::Status,
         updated_at: String,
         whisper_call_control_ids: ^(Telnyx::Internal::Type::ArrayOf[String])
+      }
+    end
+  end
+
+  def test_retrieve_participant_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.conferences.retrieve_participant("participant_id", id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Telnyx::Models::ConferenceRetrieveParticipantResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::ConferenceRetrieveParticipantResponse::Data | nil
+      }
+    end
+  end
+
+  def test_update_participant_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.conferences.update_participant("participant_id", id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Telnyx::Models::ConferenceUpdateParticipantResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::ConferenceUpdateParticipantResponse::Data | nil
       }
     end
   end

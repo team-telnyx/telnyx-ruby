@@ -42,6 +42,21 @@ module Telnyx
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::ConferenceListParticipantsResponse]
 
+      def retrieve_participant: (
+        String participant_id,
+        id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ConferenceRetrieveParticipantResponse
+
+      def update_participant: (
+        String participant_id,
+        id: String,
+        ?beep_enabled: Telnyx::Models::ConferenceUpdateParticipantParams::beep_enabled,
+        ?end_conference_on_exit: bool,
+        ?soft_end_conference_on_exit: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ConferenceUpdateParticipantResponse
+
       def initialize: (client: Telnyx::Client) -> void
     end
   end

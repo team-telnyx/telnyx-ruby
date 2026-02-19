@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::AI::EmbeddingsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.embeddings.create(bucket_name: "bucket_name")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::AI::EmbeddingsTest < Telnyx::Test::ResourceTest
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.embeddings.retrieve("task_id")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::AI::EmbeddingsTest < Telnyx::Test::ResourceTest
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.embeddings.list
 
@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::AI::EmbeddingsTest < Telnyx::Test::ResourceTest
   end
 
   def test_similarity_search_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.embeddings.similarity_search(bucket_name: "bucket_name", query: "query")
 
@@ -68,7 +68,7 @@ class Telnyx::Test::Resources::AI::EmbeddingsTest < Telnyx::Test::ResourceTest
   end
 
   def test_url_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.embeddings.url(bucket_name: "bucket_name", url: "url")
 

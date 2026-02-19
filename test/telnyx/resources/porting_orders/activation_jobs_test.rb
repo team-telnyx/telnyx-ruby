@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::PortingOrders::ActivationJobsTest < Telnyx::Test::ResourceTest
   def test_retrieve_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.porting_orders.activation_jobs.retrieve(
@@ -24,7 +24,7 @@ class Telnyx::Test::Resources::PortingOrders::ActivationJobsTest < Telnyx::Test:
   end
 
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.porting_orders.activation_jobs.update(
@@ -44,7 +44,7 @@ class Telnyx::Test::Resources::PortingOrders::ActivationJobsTest < Telnyx::Test:
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting_orders.activation_jobs.list("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

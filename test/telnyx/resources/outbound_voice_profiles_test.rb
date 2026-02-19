@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Telnyx::Test::Resources::OutboundVoiceProfilesTest < Telnyx::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.outbound_voice_profiles.create(name: "office")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::OutboundVoiceProfilesTest < Telnyx::Test::Resourc
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.outbound_voice_profiles.retrieve("1293384261075731499")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::OutboundVoiceProfilesTest < Telnyx::Test::Resourc
   end
 
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.outbound_voice_profiles.update("1293384261075731499", name: "office")
 
@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::OutboundVoiceProfilesTest < Telnyx::Test::Resourc
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.outbound_voice_profiles.list
 
@@ -93,7 +93,7 @@ class Telnyx::Test::Resources::OutboundVoiceProfilesTest < Telnyx::Test::Resourc
   end
 
   def test_delete
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.outbound_voice_profiles.delete("1293384261075731499")
 

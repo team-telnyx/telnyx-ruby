@@ -1,0 +1,133 @@
+module Telnyx
+  module Models
+    module Conferences
+      type action_gather_using_audio_params =
+        {
+          call_control_id: String,
+          audio_url: String,
+          client_state: String,
+          gather_id: String,
+          initial_timeout_millis: Integer,
+          inter_digit_timeout_millis: Integer,
+          invalid_audio_url: String,
+          invalid_media_name: String,
+          maximum_digits: Integer,
+          maximum_tries: Integer,
+          media_name: String,
+          minimum_digits: Integer,
+          stop_playback_on_dtmf: bool,
+          terminating_digit: String,
+          timeout_millis: Integer,
+          valid_digits: String
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionGatherUsingAudioParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
+
+        attr_reader audio_url: String?
+
+        def audio_url=: (String) -> String
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader gather_id: String?
+
+        def gather_id=: (String) -> String
+
+        attr_reader initial_timeout_millis: Integer?
+
+        def initial_timeout_millis=: (Integer) -> Integer
+
+        attr_reader inter_digit_timeout_millis: Integer?
+
+        def inter_digit_timeout_millis=: (Integer) -> Integer
+
+        attr_reader invalid_audio_url: String?
+
+        def invalid_audio_url=: (String) -> String
+
+        attr_reader invalid_media_name: String?
+
+        def invalid_media_name=: (String) -> String
+
+        attr_reader maximum_digits: Integer?
+
+        def maximum_digits=: (Integer) -> Integer
+
+        attr_reader maximum_tries: Integer?
+
+        def maximum_tries=: (Integer) -> Integer
+
+        attr_reader media_name: String?
+
+        def media_name=: (String) -> String
+
+        attr_reader minimum_digits: Integer?
+
+        def minimum_digits=: (Integer) -> Integer
+
+        attr_reader stop_playback_on_dtmf: bool?
+
+        def stop_playback_on_dtmf=: (bool) -> bool
+
+        attr_reader terminating_digit: String?
+
+        def terminating_digit=: (String) -> String
+
+        attr_reader timeout_millis: Integer?
+
+        def timeout_millis=: (Integer) -> Integer
+
+        attr_reader valid_digits: String?
+
+        def valid_digits=: (String) -> String
+
+        def initialize: (
+          call_control_id: String,
+          ?audio_url: String,
+          ?client_state: String,
+          ?gather_id: String,
+          ?initial_timeout_millis: Integer,
+          ?inter_digit_timeout_millis: Integer,
+          ?invalid_audio_url: String,
+          ?invalid_media_name: String,
+          ?maximum_digits: Integer,
+          ?maximum_tries: Integer,
+          ?media_name: String,
+          ?minimum_digits: Integer,
+          ?stop_playback_on_dtmf: bool,
+          ?terminating_digit: String,
+          ?timeout_millis: Integer,
+          ?valid_digits: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          call_control_id: String,
+          audio_url: String,
+          client_state: String,
+          gather_id: String,
+          initial_timeout_millis: Integer,
+          inter_digit_timeout_millis: Integer,
+          invalid_audio_url: String,
+          invalid_media_name: String,
+          maximum_digits: Integer,
+          maximum_tries: Integer,
+          media_name: String,
+          minimum_digits: Integer,
+          stop_playback_on_dtmf: bool,
+          terminating_digit: String,
+          timeout_millis: Integer,
+          valid_digits: String,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

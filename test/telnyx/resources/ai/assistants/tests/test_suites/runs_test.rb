@@ -4,7 +4,7 @@ require_relative "../../../../../test_helper"
 
 class Telnyx::Test::Resources::AI::Assistants::Tests::TestSuites::RunsTest < Telnyx::Test::ResourceTest
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.assistants.tests.test_suites.runs.list("suite_name")
 
@@ -38,7 +38,7 @@ class Telnyx::Test::Resources::AI::Assistants::Tests::TestSuites::RunsTest < Tel
   end
 
   def test_trigger
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.ai.assistants.tests.test_suites.runs.trigger("suite_name")
 

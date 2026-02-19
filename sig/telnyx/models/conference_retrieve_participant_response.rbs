@@ -1,0 +1,139 @@
+module Telnyx
+  module Models
+    type conference_retrieve_participant_response =
+      { data: Telnyx::Models::ConferenceRetrieveParticipantResponse::Data }
+
+    class ConferenceRetrieveParticipantResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::ConferenceRetrieveParticipantResponse::Data?
+
+      def data=: (
+        Telnyx::Models::ConferenceRetrieveParticipantResponse::Data
+      ) -> Telnyx::Models::ConferenceRetrieveParticipantResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::ConferenceRetrieveParticipantResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::ConferenceRetrieveParticipantResponse::Data
+      }
+
+      type data =
+        {
+          id: String,
+          call_control_id: String,
+          call_leg_id: String,
+          conference_id: String,
+          created_at: Time,
+          end_conference_on_exit: bool,
+          label: String,
+          muted: bool,
+          on_hold: bool,
+          soft_end_conference_on_exit: bool,
+          status: Telnyx::Models::ConferenceRetrieveParticipantResponse::Data::status,
+          updated_at: Time,
+          whisper_call_control_ids: ::Array[String]
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader call_control_id: String?
+
+        def call_control_id=: (String) -> String
+
+        attr_reader call_leg_id: String?
+
+        def call_leg_id=: (String) -> String
+
+        attr_reader conference_id: String?
+
+        def conference_id=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader end_conference_on_exit: bool?
+
+        def end_conference_on_exit=: (bool) -> bool
+
+        attr_reader label: String?
+
+        def label=: (String) -> String
+
+        attr_reader muted: bool?
+
+        def muted=: (bool) -> bool
+
+        attr_reader on_hold: bool?
+
+        def on_hold=: (bool) -> bool
+
+        attr_reader soft_end_conference_on_exit: bool?
+
+        def soft_end_conference_on_exit=: (bool) -> bool
+
+        attr_reader status: Telnyx::Models::ConferenceRetrieveParticipantResponse::Data::status?
+
+        def status=: (
+          Telnyx::Models::ConferenceRetrieveParticipantResponse::Data::status
+        ) -> Telnyx::Models::ConferenceRetrieveParticipantResponse::Data::status
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_reader whisper_call_control_ids: ::Array[String]?
+
+        def whisper_call_control_ids=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          ?id: String,
+          ?call_control_id: String,
+          ?call_leg_id: String,
+          ?conference_id: String,
+          ?created_at: Time,
+          ?end_conference_on_exit: bool,
+          ?label: String,
+          ?muted: bool,
+          ?on_hold: bool,
+          ?soft_end_conference_on_exit: bool,
+          ?status: Telnyx::Models::ConferenceRetrieveParticipantResponse::Data::status,
+          ?updated_at: Time,
+          ?whisper_call_control_ids: ::Array[String]
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          call_control_id: String,
+          call_leg_id: String,
+          conference_id: String,
+          created_at: Time,
+          end_conference_on_exit: bool,
+          label: String,
+          muted: bool,
+          on_hold: bool,
+          soft_end_conference_on_exit: bool,
+          status: Telnyx::Models::ConferenceRetrieveParticipantResponse::Data::status,
+          updated_at: Time,
+          whisper_call_control_ids: ::Array[String]
+        }
+
+        type status = :joining | :joined | :left
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          JOINING: :joining
+          JOINED: :joined
+          LEFT: :left
+
+          def self?.values: -> ::Array[Telnyx::Models::ConferenceRetrieveParticipantResponse::Data::status]
+        end
+      end
+    end
+  end
+end

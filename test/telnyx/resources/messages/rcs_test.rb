@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Messages::RcsTest < Telnyx::Test::ResourceTest
   def test_generate_deeplink
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.messages.rcs.generate_deeplink("agent_id")
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::Messages::RcsTest < Telnyx::Test::ResourceTest
   end
 
   def test_send__required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.messages.rcs.send_(

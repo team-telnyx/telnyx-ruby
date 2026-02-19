@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::PhoneNumbers::CsvDownloadsTest < Telnyx::Test::ResourceTest
   def test_create
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.phone_numbers.csv_downloads.create
 
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::PhoneNumbers::CsvDownloadsTest < Telnyx::Test::Re
   end
 
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.phone_numbers.csv_downloads.retrieve("id")
 
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::PhoneNumbers::CsvDownloadsTest < Telnyx::Test::Re
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.phone_numbers.csv_downloads.list
 
