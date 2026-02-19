@@ -1,0 +1,62 @@
+module Telnyx
+  module Models
+    type conference_update_participant_params =
+      {
+        id: String,
+        beep_enabled: Telnyx::Models::ConferenceUpdateParticipantParams::beep_enabled,
+        end_conference_on_exit: bool,
+        soft_end_conference_on_exit: bool
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class ConferenceUpdateParticipantParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor id: String
+
+      attr_reader beep_enabled: Telnyx::Models::ConferenceUpdateParticipantParams::beep_enabled?
+
+      def beep_enabled=: (
+        Telnyx::Models::ConferenceUpdateParticipantParams::beep_enabled
+      ) -> Telnyx::Models::ConferenceUpdateParticipantParams::beep_enabled
+
+      attr_reader end_conference_on_exit: bool?
+
+      def end_conference_on_exit=: (bool) -> bool
+
+      attr_reader soft_end_conference_on_exit: bool?
+
+      def soft_end_conference_on_exit=: (bool) -> bool
+
+      def initialize: (
+        id: String,
+        ?beep_enabled: Telnyx::Models::ConferenceUpdateParticipantParams::beep_enabled,
+        ?end_conference_on_exit: bool,
+        ?soft_end_conference_on_exit: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        beep_enabled: Telnyx::Models::ConferenceUpdateParticipantParams::beep_enabled,
+        end_conference_on_exit: bool,
+        soft_end_conference_on_exit: bool,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type beep_enabled = :always | :never | :on_enter | :on_exit
+
+      module BeepEnabled
+        extend Telnyx::Internal::Type::Enum
+
+        ALWAYS: :always
+        NEVER: :never
+        ON_ENTER: :on_enter
+        ON_EXIT: :on_exit
+
+        def self?.values: -> ::Array[Telnyx::Models::ConferenceUpdateParticipantParams::beep_enabled]
+      end
+    end
+  end
+end
