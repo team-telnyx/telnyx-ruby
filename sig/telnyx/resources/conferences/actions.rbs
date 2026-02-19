@@ -12,6 +12,33 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Conferences::ActionUpdateResponse
 
+        def end_conference: (
+          String id,
+          ?command_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Conferences::ActionEndConferenceResponse
+
+        def gather_dtmf_audio: (
+          String id,
+          call_control_id: String,
+          ?audio_url: String,
+          ?client_state: String,
+          ?gather_id: String,
+          ?initial_timeout_millis: Integer,
+          ?inter_digit_timeout_millis: Integer,
+          ?invalid_audio_url: String,
+          ?invalid_media_name: String,
+          ?maximum_digits: Integer,
+          ?maximum_tries: Integer,
+          ?media_name: String,
+          ?minimum_digits: Integer,
+          ?stop_playback_on_dtmf: bool,
+          ?terminating_digit: String,
+          ?timeout_millis: Integer,
+          ?valid_digits: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Conferences::ActionGatherDtmfAudioResponse
+
         def hold: (
           String id,
           ?audio_url: String,
@@ -101,6 +128,15 @@ module Telnyx
           ?region: Telnyx::Models::Conferences::ActionRecordStopParams::region,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Conferences::ActionRecordStopResponse
+
+        def send_dtmf: (
+          String id,
+          digits: String,
+          ?call_control_ids: ::Array[String],
+          ?client_state: String,
+          ?duration_millis: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Conferences::ActionSendDtmfResponse
 
         def speak: (
           String id,

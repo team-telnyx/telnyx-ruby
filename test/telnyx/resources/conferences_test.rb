@@ -106,4 +106,38 @@ class Telnyx::Test::Resources::ConferencesTest < Telnyx::Test::ResourceTest
       }
     end
   end
+
+  def test_retrieve_participant_required_params
+    skip("Prism tests are disabled")
+
+    response =
+      @telnyx.conferences.retrieve_participant("participant_id", id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Telnyx::Models::ConferenceRetrieveParticipantResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::ConferenceRetrieveParticipantResponse::Data | nil
+      }
+    end
+  end
+
+  def test_update_participant_required_params
+    skip("Prism tests are disabled")
+
+    response =
+      @telnyx.conferences.update_participant("participant_id", id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Telnyx::Models::ConferenceUpdateParticipantResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::ConferenceUpdateParticipantResponse::Data | nil
+      }
+    end
+  end
 end

@@ -24,6 +24,42 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
     end
   end
 
+  def test_end_conference
+    skip("Prism tests are disabled")
+
+    response = @telnyx.conferences.actions.end_conference("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Telnyx::Models::Conferences::ActionEndConferenceResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Conferences::ConferenceCommandResult | nil
+      }
+    end
+  end
+
+  def test_gather_dtmf_audio_required_params
+    skip("Prism tests are disabled")
+
+    response =
+      @telnyx.conferences.actions.gather_dtmf_audio(
+        "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        call_control_id: "v3:MdI91X4lWFEs7IgbBEOT9M4AigoY08M0WWZFISt1Yw2axZ_IiE4pqg"
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::Conferences::ActionGatherDtmfAudioResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Conferences::ConferenceCommandResult | nil
+      }
+    end
+  end
+
   def test_hold
     skip("Prism tests are disabled")
 
@@ -164,6 +200,22 @@ class Telnyx::Test::Resources::Conferences::ActionsTest < Telnyx::Test::Resource
 
     assert_pattern do
       response => Telnyx::Models::Conferences::ActionRecordStopResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Conferences::ConferenceCommandResult | nil
+      }
+    end
+  end
+
+  def test_send_dtmf_required_params
+    skip("Prism tests are disabled")
+
+    response = @telnyx.conferences.actions.send_dtmf("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", digits: "1234#")
+
+    assert_pattern do
+      response => Telnyx::Models::Conferences::ActionSendDtmfResponse
     end
 
     assert_pattern do

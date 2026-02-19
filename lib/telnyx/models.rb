@@ -381,6 +381,8 @@ module Telnyx
 
   ConferenceRetrieveParams = Telnyx::Models::ConferenceRetrieveParams
 
+  ConferenceRetrieveParticipantParams = Telnyx::Models::ConferenceRetrieveParticipantParams
+
   Conferences = Telnyx::Models::Conferences
 
   ConferenceSpeakEnded = Telnyx::Models::ConferenceSpeakEnded
@@ -390,6 +392,8 @@ module Telnyx
   ConferenceSpeakStarted = Telnyx::Models::ConferenceSpeakStarted
 
   ConferenceSpeakStartedWebhookEvent = Telnyx::Models::ConferenceSpeakStartedWebhookEvent
+
+  ConferenceUpdateParticipantParams = Telnyx::Models::ConferenceUpdateParticipantParams
 
   ConnectionJitterBuffer = Telnyx::Models::ConnectionJitterBuffer
 

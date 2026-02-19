@@ -43,6 +43,91 @@ module Telnyx
         )
         end
 
+        # End a conference and terminate all active participants.
+        sig do
+          params(
+            id: String,
+            command_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::Conferences::ActionEndConferenceResponse)
+        end
+        def end_conference(
+          # Uniquely identifies the conference.
+          id,
+          # Use this field to avoid duplicate commands. Telnyx will ignore any command with
+          # the same `command_id` for the same conference.
+          command_id: nil,
+          request_options: {}
+        )
+        end
+
+        # Play an audio file to a specific conference participant and gather DTMF input.
+        sig do
+          params(
+            id: String,
+            call_control_id: String,
+            audio_url: String,
+            client_state: String,
+            gather_id: String,
+            initial_timeout_millis: Integer,
+            inter_digit_timeout_millis: Integer,
+            invalid_audio_url: String,
+            invalid_media_name: String,
+            maximum_digits: Integer,
+            maximum_tries: Integer,
+            media_name: String,
+            minimum_digits: Integer,
+            stop_playback_on_dtmf: T::Boolean,
+            terminating_digit: String,
+            timeout_millis: Integer,
+            valid_digits: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::Conferences::ActionGatherDtmfAudioResponse)
+        end
+        def gather_dtmf_audio(
+          # Uniquely identifies the conference.
+          id,
+          # Unique identifier and token for controlling the call leg that will receive the
+          # gather prompt.
+          call_control_id:,
+          # The URL of the audio file to play as the gather prompt. Must be WAV or MP3
+          # format.
+          audio_url: nil,
+          # Use this field to add state to every subsequent webhook. Must be a valid Base-64
+          # encoded string.
+          client_state: nil,
+          # Identifier for this gather command. Will be included in the gather ended
+          # webhook. Maximum 100 characters.
+          gather_id: nil,
+          # Duration in milliseconds to wait for the first digit before timing out.
+          initial_timeout_millis: nil,
+          # Duration in milliseconds to wait between digits.
+          inter_digit_timeout_millis: nil,
+          # URL of audio file to play when invalid input is received.
+          invalid_audio_url: nil,
+          # Name of media file to play when invalid input is received.
+          invalid_media_name: nil,
+          # Maximum number of digits to gather.
+          maximum_digits: nil,
+          # Maximum number of times to play the prompt if no input is received.
+          maximum_tries: nil,
+          # The name of the media file uploaded to the Media Storage API to play as the
+          # gather prompt.
+          media_name: nil,
+          # Minimum number of digits to gather.
+          minimum_digits: nil,
+          # Whether to stop the audio playback when a DTMF digit is received.
+          stop_playback_on_dtmf: nil,
+          # Digit that terminates gathering.
+          terminating_digit: nil,
+          # Duration in milliseconds to wait for input before timing out.
+          timeout_millis: nil,
+          # Digits that are valid for gathering. All other digits will be ignored.
+          valid_digits: nil,
+          request_options: {}
+        )
+        end
+
         # Hold a list of participants in a conference call
         sig do
           params(
@@ -388,6 +473,35 @@ module Telnyx
           # Region where the conference data is located. Defaults to the region defined in
           # user's data locality settings (Europe or US).
           region: nil,
+          request_options: {}
+        )
+        end
+
+        # Send DTMF tones to one or more conference participants.
+        sig do
+          params(
+            id: String,
+            digits: String,
+            call_control_ids: T::Array[String],
+            client_state: String,
+            duration_millis: Integer,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::Conferences::ActionSendDtmfResponse)
+        end
+        def send_dtmf(
+          # Uniquely identifies the conference.
+          id,
+          # DTMF digits to send. Valid characters: 0-9, A-D, \*, #, w (0.5s pause), W (1s
+          # pause).
+          digits:,
+          # Array of participant call control IDs to send DTMF to. When empty, DTMF will be
+          # sent to all participants.
+          call_control_ids: nil,
+          # Use this field to add state to every subsequent webhook. Must be a valid Base-64
+          # encoded string.
+          client_state: nil,
+          # Duration of each DTMF digit in milliseconds.
+          duration_millis: nil,
           request_options: {}
         )
         end

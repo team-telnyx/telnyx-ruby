@@ -40,6 +40,90 @@ module Telnyx
         end
 
         # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Conferences::ActionEndConferenceParams} for more details.
+        #
+        # End a conference and terminate all active participants.
+        #
+        # @overload end_conference(id, command_id: nil, request_options: {})
+        #
+        # @param id [String] Uniquely identifies the conference.
+        #
+        # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Conferences::ActionEndConferenceResponse]
+        #
+        # @see Telnyx::Models::Conferences::ActionEndConferenceParams
+        def end_conference(id, params = {})
+          parsed, options = Telnyx::Conferences::ActionEndConferenceParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: ["conferences/%1$s/actions/end", id],
+            body: parsed,
+            model: Telnyx::Models::Conferences::ActionEndConferenceResponse,
+            options: options
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Conferences::ActionGatherDtmfAudioParams} for more details.
+        #
+        # Play an audio file to a specific conference participant and gather DTMF input.
+        #
+        # @overload gather_dtmf_audio(id, call_control_id:, audio_url: nil, client_state: nil, gather_id: nil, initial_timeout_millis: nil, inter_digit_timeout_millis: nil, invalid_audio_url: nil, invalid_media_name: nil, maximum_digits: nil, maximum_tries: nil, media_name: nil, minimum_digits: nil, stop_playback_on_dtmf: nil, terminating_digit: nil, timeout_millis: nil, valid_digits: nil, request_options: {})
+        #
+        # @param id [String] Uniquely identifies the conference.
+        #
+        # @param call_control_id [String] Unique identifier and token for controlling the call leg that will receive the g
+        #
+        # @param audio_url [String] The URL of the audio file to play as the gather prompt. Must be WAV or MP3 forma
+        #
+        # @param client_state [String] Use this field to add state to every subsequent webhook. Must be a valid Base-64
+        #
+        # @param gather_id [String] Identifier for this gather command. Will be included in the gather ended webhook
+        #
+        # @param initial_timeout_millis [Integer] Duration in milliseconds to wait for the first digit before timing out.
+        #
+        # @param inter_digit_timeout_millis [Integer] Duration in milliseconds to wait between digits.
+        #
+        # @param invalid_audio_url [String] URL of audio file to play when invalid input is received.
+        #
+        # @param invalid_media_name [String] Name of media file to play when invalid input is received.
+        #
+        # @param maximum_digits [Integer] Maximum number of digits to gather.
+        #
+        # @param maximum_tries [Integer] Maximum number of times to play the prompt if no input is received.
+        #
+        # @param media_name [String] The name of the media file uploaded to the Media Storage API to play as the gath
+        #
+        # @param minimum_digits [Integer] Minimum number of digits to gather.
+        #
+        # @param stop_playback_on_dtmf [Boolean] Whether to stop the audio playback when a DTMF digit is received.
+        #
+        # @param terminating_digit [String] Digit that terminates gathering.
+        #
+        # @param timeout_millis [Integer] Duration in milliseconds to wait for input before timing out.
+        #
+        # @param valid_digits [String] Digits that are valid for gathering. All other digits will be ignored.
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Conferences::ActionGatherDtmfAudioResponse]
+        #
+        # @see Telnyx::Models::Conferences::ActionGatherDtmfAudioParams
+        def gather_dtmf_audio(id, params)
+          parsed, options = Telnyx::Conferences::ActionGatherDtmfAudioParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: ["conferences/%1$s/actions/gather_using_audio", id],
+            body: parsed,
+            model: Telnyx::Models::Conferences::ActionGatherDtmfAudioResponse,
+            options: options
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Conferences::ActionHoldParams} for more details.
         #
         # Hold a list of participants in a conference call
@@ -372,6 +456,40 @@ module Telnyx
             path: ["conferences/%1$s/actions/record_stop", id],
             body: parsed,
             model: Telnyx::Models::Conferences::ActionRecordStopResponse,
+            options: options
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Conferences::ActionSendDtmfParams} for more details.
+        #
+        # Send DTMF tones to one or more conference participants.
+        #
+        # @overload send_dtmf(id, digits:, call_control_ids: nil, client_state: nil, duration_millis: nil, request_options: {})
+        #
+        # @param id [String] Uniquely identifies the conference.
+        #
+        # @param digits [String] DTMF digits to send. Valid characters: 0-9, A-D, \*, #, w (0.5s pause), W (1s
+        # pau
+        #
+        # @param call_control_ids [Array<String>] Array of participant call control IDs to send DTMF to. When empty, DTMF will be
+        #
+        # @param client_state [String] Use this field to add state to every subsequent webhook. Must be a valid Base-64
+        #
+        # @param duration_millis [Integer] Duration of each DTMF digit in milliseconds.
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Conferences::ActionSendDtmfResponse]
+        #
+        # @see Telnyx::Models::Conferences::ActionSendDtmfParams
+        def send_dtmf(id, params)
+          parsed, options = Telnyx::Conferences::ActionSendDtmfParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: ["conferences/%1$s/actions/send_dtmf", id],
+            body: parsed,
+            model: Telnyx::Models::Conferences::ActionSendDtmfResponse,
             options: options
           )
         end
