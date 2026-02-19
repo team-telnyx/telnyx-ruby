@@ -40,6 +40,7 @@ module Telnyx
         ?sip_region: Telnyx::Models::CallDialParams::sip_region,
         ?sip_transport_protocol: Telnyx::Models::CallDialParams::sip_transport_protocol,
         ?sound_modifications: Telnyx::SoundModifications,
+        ?stream_auth_token: String,
         ?stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
         ?stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
         ?stream_bidirectional_sampling_rate: Telnyx::Models::stream_bidirectional_sampling_rate,

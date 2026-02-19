@@ -71,6 +71,13 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::ActionSpeakParams::Language, nil]
         optional :language, enum: -> { Telnyx::Calls::ActionSpeakParams::Language }
 
+        # @!attribute loop_
+        #   The number of times to play the audio file. Use `infinity` to loop indefinitely.
+        #   Defaults to 1.
+        #
+        #   @return [String, Integer, nil]
+        optional :loop_, union: -> { Telnyx::Calls::Loopcount }, api_name: :loop
+
         # @!attribute payload_type
         #   The type of the provided payload. The payload can either be plain text, or
         #   Speech Synthesis Markup Language (SSML).
@@ -94,13 +101,19 @@ module Telnyx
         #   @return [String, nil]
         optional :stop, String
 
+        # @!attribute target_legs
+        #   Specifies which legs of the call should receive the spoken audio.
+        #
+        #   @return [Symbol, Telnyx::Models::Calls::ActionSpeakParams::TargetLegs, nil]
+        optional :target_legs, enum: -> { Telnyx::Calls::ActionSpeakParams::TargetLegs }
+
         # @!attribute voice_settings
         #   The settings associated with the voice selected
         #
         #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionSpeakParams::VoiceSettings }
 
-        # @!method initialize(payload:, voice:, client_state: nil, command_id: nil, language: nil, payload_type: nil, service_level: nil, stop: nil, voice_settings: nil, request_options: {})
+        # @!method initialize(payload:, voice:, client_state: nil, command_id: nil, language: nil, loop_: nil, payload_type: nil, service_level: nil, stop: nil, target_legs: nil, voice_settings: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionSpeakParams} for more details.
         #
@@ -114,11 +127,15 @@ module Telnyx
         #
         #   @param language [Symbol, Telnyx::Models::Calls::ActionSpeakParams::Language] The language you want spoken. This parameter is ignored when a `Polly.*` voice i
         #
+        #   @param loop_ [String, Integer] The number of times to play the audio file. Use `infinity` to loop indefinitely.
+        #
         #   @param payload_type [Symbol, Telnyx::Models::Calls::ActionSpeakParams::PayloadType] The type of the provided payload. The payload can either be plain text, or Speec
         #
         #   @param service_level [Symbol, Telnyx::Models::Calls::ActionSpeakParams::ServiceLevel] This parameter impacts speech quality, language options and payload types. When
         #
         #   @param stop [String] When specified, it stops the current audio being played. Specify `current` to st
+        #
+        #   @param target_legs [Symbol, Telnyx::Models::Calls::ActionSpeakParams::TargetLegs] Specifies which legs of the call should receive the spoken audio.
         #
         #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings] The settings associated with the voice selected
         #
@@ -182,6 +199,18 @@ module Telnyx
 
           BASIC = :basic
           PREMIUM = :premium
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Specifies which legs of the call should receive the spoken audio.
+        module TargetLegs
+          extend Telnyx::Internal::Type::Enum
+
+          SELF = :self
+          OPPOSITE = :opposite
+          BOTH = :both
 
           # @!method self.values
           #   @return [Array<Symbol>]

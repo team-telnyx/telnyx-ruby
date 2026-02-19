@@ -37,6 +37,13 @@ module Telnyx
         #   @return [String, nil]
         optional :command_id, String
 
+        # @!attribute gather_ended_speech
+        #   Text that will be played when the gathering has finished. There is a 3,000
+        #   character limit.
+        #
+        #   @return [String, nil]
+        optional :gather_ended_speech, String
+
         # @!attribute greeting
         #   Text that will be played when the gathering starts, if none then nothing will be
         #   played when the gathering starts. The greeting can be text for any voice or SSML
@@ -93,8 +100,7 @@ module Telnyx
         optional :transcription, -> { Telnyx::Calls::TranscriptionConfig }
 
         # @!attribute user_response_timeout_ms
-        #   The number of milliseconds to wait for a user response before the voice
-        #   assistant times out and check if the user is still there.
+        #   The maximum time in milliseconds to wait for user response before timing out.
         #
         #   @return [Integer, nil]
         optional :user_response_timeout_ms, Integer
@@ -132,7 +138,7 @@ module Telnyx
         #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings }
 
-        # @!method initialize(parameters:, assistant: nil, client_state: nil, command_id: nil, greeting: nil, interruption_settings: nil, language: nil, message_history: nil, send_message_history_updates: nil, send_partial_results: nil, transcription: nil, user_response_timeout_ms: nil, voice: nil, voice_settings: nil, request_options: {})
+        # @!method initialize(parameters:, assistant: nil, client_state: nil, command_id: nil, gather_ended_speech: nil, greeting: nil, interruption_settings: nil, language: nil, message_history: nil, send_message_history_updates: nil, send_partial_results: nil, transcription: nil, user_response_timeout_ms: nil, voice: nil, voice_settings: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionGatherUsingAIParams} for more details.
         #
@@ -143,6 +149,8 @@ module Telnyx
         #   @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #
         #   @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
+        #
+        #   @param gather_ended_speech [String] Text that will be played when the gathering has finished. There is a 3,000 chara
         #
         #   @param greeting [String] Text that will be played when the gathering starts, if none then nothing will be
         #
@@ -158,7 +166,7 @@ module Telnyx
         #
         #   @param transcription [Telnyx::Models::Calls::TranscriptionConfig] The settings associated with speech to text for the voice assistant. This is onl
         #
-        #   @param user_response_timeout_ms [Integer] The number of milliseconds to wait for a user response before the voice assistan
+        #   @param user_response_timeout_ms [Integer] The maximum time in milliseconds to wait for user response before timing out.
         #
         #   @param voice [String] The voice to be used by the voice assistant. Currently we support ElevenLabs, Te
         #

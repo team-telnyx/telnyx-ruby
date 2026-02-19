@@ -296,7 +296,7 @@ module Telnyx
         # - `call.ai_gather.message_history_updated` (if `send_message_history_updates` is
         #   set to `true`)
         #
-        # @overload gather_using_ai(call_control_id, parameters:, assistant: nil, client_state: nil, command_id: nil, greeting: nil, interruption_settings: nil, language: nil, message_history: nil, send_message_history_updates: nil, send_partial_results: nil, transcription: nil, user_response_timeout_ms: nil, voice: nil, voice_settings: nil, request_options: {})
+        # @overload gather_using_ai(call_control_id, parameters:, assistant: nil, client_state: nil, command_id: nil, gather_ended_speech: nil, greeting: nil, interruption_settings: nil, language: nil, message_history: nil, send_message_history_updates: nil, send_partial_results: nil, transcription: nil, user_response_timeout_ms: nil, voice: nil, voice_settings: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -307,6 +307,8 @@ module Telnyx
         # @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #
         # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
+        #
+        # @param gather_ended_speech [String] Text that will be played when the gathering has finished. There is a 3,000 chara
         #
         # @param greeting [String] Text that will be played when the gathering starts, if none then nothing will be
         #
@@ -322,7 +324,7 @@ module Telnyx
         #
         # @param transcription [Telnyx::Models::Calls::TranscriptionConfig] The settings associated with speech to text for the voice assistant. This is onl
         #
-        # @param user_response_timeout_ms [Integer] The number of milliseconds to wait for a user response before the voice assistan
+        # @param user_response_timeout_ms [Integer] The maximum time in milliseconds to wait for user response before timing out.
         #
         # @param voice [String] The voice to be used by the voice assistant. Currently we support ElevenLabs, Te
         #
@@ -779,7 +781,7 @@ module Telnyx
         # - `call.speak.started`
         # - `call.speak.ended`
         #
-        # @overload speak(call_control_id, payload:, voice:, client_state: nil, command_id: nil, language: nil, payload_type: nil, service_level: nil, stop: nil, voice_settings: nil, request_options: {})
+        # @overload speak(call_control_id, payload:, voice:, client_state: nil, command_id: nil, language: nil, loop_: nil, payload_type: nil, service_level: nil, stop: nil, target_legs: nil, voice_settings: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -793,11 +795,15 @@ module Telnyx
         #
         # @param language [Symbol, Telnyx::Models::Calls::ActionSpeakParams::Language] The language you want spoken. This parameter is ignored when a `Polly.*` voice i
         #
+        # @param loop_ [String, Integer] The number of times to play the audio file. Use `infinity` to loop indefinitely.
+        #
         # @param payload_type [Symbol, Telnyx::Models::Calls::ActionSpeakParams::PayloadType] The type of the provided payload. The payload can either be plain text, or Speec
         #
         # @param service_level [Symbol, Telnyx::Models::Calls::ActionSpeakParams::ServiceLevel] This parameter impacts speech quality, language options and payload types. When
         #
         # @param stop [String] When specified, it stops the current audio being played. Specify `current` to st
+        #
+        # @param target_legs [Symbol, Telnyx::Models::Calls::ActionSpeakParams::TargetLegs] Specifies which legs of the call should receive the spoken audio.
         #
         # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings] The settings associated with the voice selected
         #
@@ -1122,7 +1128,7 @@ module Telnyx
         # Please find more details about media streaming messages specification under the
         # [link](https://developers.telnyx.com/docs/voice/programmable-voice/media-streaming).
         #
-        # @overload start_streaming(call_control_id, client_state: nil, command_id: nil, dialogflow_config: nil, enable_dialogflow: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, request_options: {})
+        # @overload start_streaming(call_control_id, client_state: nil, command_id: nil, custom_parameters: nil, dialogflow_config: nil, enable_dialogflow: nil, stream_auth_token: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -1130,9 +1136,13 @@ module Telnyx
         #
         # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #
+        # @param custom_parameters [Array<Telnyx::Models::Calls::ActionStartStreamingParams::CustomParameter>] Custom parameters to be sent as part of the WebSocket connection.
+        #
         # @param dialogflow_config [Telnyx::Models::DialogflowConfig]
         #
         # @param enable_dialogflow [Boolean] Enables Dialogflow for the current call. The default value is false.
+        #
+        # @param stream_auth_token [String] An authentication token to be sent as part of the WebSocket connection. Maximum
         #
         # @param stream_bidirectional_codec [Symbol, Telnyx::Models::StreamBidirectionalCodec] Indicates codec for bidirectional streaming RTP payloads. Used only with
         # stream\_
@@ -1550,7 +1560,7 @@ module Telnyx
         # - `call.machine.premium.greeting.ended` if `answering_machine_detection=premium`
         #   was requested and a beep was detected
         #
-        # @overload transfer(call_control_id, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, client_state: nil, command_id: nil, custom_headers: nil, early_media: nil, from: nil, from_display_name: nil, media_encryption: nil, media_name: nil, mute_dtmf: nil, park_after_unbridge: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, target_leg_client_state: nil, time_limit_secs: nil, timeout_secs: nil, webhook_url: nil, webhook_url_method: nil, request_options: {})
+        # @overload transfer(call_control_id, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, client_state: nil, command_id: nil, custom_headers: nil, early_media: nil, from: nil, from_display_name: nil, media_encryption: nil, media_name: nil, mute_dtmf: nil, park_after_unbridge: nil, preferred_codecs: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, target_leg_client_state: nil, time_limit_secs: nil, timeout_secs: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -1581,6 +1591,8 @@ module Telnyx
         # @param mute_dtmf [Symbol, Telnyx::Models::Calls::ActionTransferParams::MuteDtmf] When enabled, DTMF tones are not passed to the call participant. The webhooks co
         #
         # @param park_after_unbridge [String] Specifies behavior after the bridge ends (i.e. the opposite leg either hangs up
+        #
+        # @param preferred_codecs [String] The list of comma-separated codecs in order of preference to be used during the
         #
         # @param record [Symbol, Telnyx::Models::Calls::ActionTransferParams::Record] Start recording automatically after an event. Disabled by default.
         #
@@ -1616,9 +1628,15 @@ module Telnyx
         #
         # @param timeout_secs [Integer] The number of seconds that Telnyx will wait for the call to be answered by the d
         #
+        # @param webhook_retries_policies [Hash{Symbol=>Telnyx::Models::Calls::ActionTransferParams::WebhookRetriesPolicy}] A map of event types to retry policies. Each retry policy contains an array of `
+        #
         # @param webhook_url [String] Use this field to override the URL for which Telnyx will send subsequent webhook
         #
         # @param webhook_url_method [Symbol, Telnyx::Models::Calls::ActionTransferParams::WebhookURLMethod] HTTP request type used for `webhook_url`.
+        #
+        # @param webhook_urls [Hash{Symbol=>String}] A map of event types to webhook URLs. When an event of the specified type occurs
+        #
+        # @param webhook_urls_method [Symbol, Telnyx::Models::Calls::ActionTransferParams::WebhookURLsMethod] HTTP request method to invoke `webhook_urls`.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

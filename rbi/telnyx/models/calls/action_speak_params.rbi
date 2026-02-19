@@ -82,6 +82,14 @@ module Telnyx
         end
         attr_writer :language
 
+        # The number of times to play the audio file. Use `infinity` to loop indefinitely.
+        # Defaults to 1.
+        sig { returns(T.nilable(Telnyx::Calls::Loopcount::Variants)) }
+        attr_reader :loop_
+
+        sig { params(loop_: Telnyx::Calls::Loopcount::Variants).void }
+        attr_writer :loop_
+
         # The type of the provided payload. The payload can either be plain text, or
         # Speech Synthesis Markup Language (SSML).
         sig do
@@ -126,6 +134,21 @@ module Telnyx
         sig { params(stop: String).void }
         attr_writer :stop
 
+        # Specifies which legs of the call should receive the spoken audio.
+        sig do
+          returns(
+            T.nilable(Telnyx::Calls::ActionSpeakParams::TargetLegs::OrSymbol)
+          )
+        end
+        attr_reader :target_legs
+
+        sig do
+          params(
+            target_legs: Telnyx::Calls::ActionSpeakParams::TargetLegs::OrSymbol
+          ).void
+        end
+        attr_writer :target_legs
+
         # The settings associated with the voice selected
         sig do
           returns(
@@ -161,11 +184,13 @@ module Telnyx
             client_state: String,
             command_id: String,
             language: Telnyx::Calls::ActionSpeakParams::Language::OrSymbol,
+            loop_: Telnyx::Calls::Loopcount::Variants,
             payload_type:
               Telnyx::Calls::ActionSpeakParams::PayloadType::OrSymbol,
             service_level:
               Telnyx::Calls::ActionSpeakParams::ServiceLevel::OrSymbol,
             stop: String,
+            target_legs: Telnyx::Calls::ActionSpeakParams::TargetLegs::OrSymbol,
             voice_settings:
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
@@ -220,6 +245,9 @@ module Telnyx
           # The language you want spoken. This parameter is ignored when a `Polly.*` voice
           # is specified.
           language: nil,
+          # The number of times to play the audio file. Use `infinity` to loop indefinitely.
+          # Defaults to 1.
+          loop_: nil,
           # The type of the provided payload. The payload can either be plain text, or
           # Speech Synthesis Markup Language (SSML).
           payload_type: nil,
@@ -231,6 +259,8 @@ module Telnyx
           # Specify `all` to stop the current audio file being played and to also clear all
           # audio files from the queue.
           stop: nil,
+          # Specifies which legs of the call should receive the spoken audio.
+          target_legs: nil,
           # The settings associated with the voice selected
           voice_settings: nil,
           request_options: {}
@@ -245,11 +275,14 @@ module Telnyx
               client_state: String,
               command_id: String,
               language: Telnyx::Calls::ActionSpeakParams::Language::OrSymbol,
+              loop_: Telnyx::Calls::Loopcount::Variants,
               payload_type:
                 Telnyx::Calls::ActionSpeakParams::PayloadType::OrSymbol,
               service_level:
                 Telnyx::Calls::ActionSpeakParams::ServiceLevel::OrSymbol,
               stop: String,
+              target_legs:
+                Telnyx::Calls::ActionSpeakParams::TargetLegs::OrSymbol,
               voice_settings:
                 T.any(
                   Telnyx::Calls::ElevenLabsVoiceSettings,
@@ -489,6 +522,43 @@ module Telnyx
             override.returns(
               T::Array[
                 Telnyx::Calls::ActionSpeakParams::ServiceLevel::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Specifies which legs of the call should receive the spoken audio.
+        module TargetLegs
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::Calls::ActionSpeakParams::TargetLegs)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          SELF =
+            T.let(
+              :self,
+              Telnyx::Calls::ActionSpeakParams::TargetLegs::TaggedSymbol
+            )
+          OPPOSITE =
+            T.let(
+              :opposite,
+              Telnyx::Calls::ActionSpeakParams::TargetLegs::TaggedSymbol
+            )
+          BOTH =
+            T.let(
+              :both,
+              Telnyx::Calls::ActionSpeakParams::TargetLegs::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Calls::ActionSpeakParams::TargetLegs::TaggedSymbol
               ]
             )
           end
