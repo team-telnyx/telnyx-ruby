@@ -3,8 +3,8 @@
 module Telnyx
   module Models
     module Conferences
-      # @see Telnyx::Resources::Conferences::Actions#gather_dtmf_audio
-      class ActionGatherDtmfAudioResponse < Telnyx::Internal::Type::BaseModel
+      # @see Telnyx::Resources::Conferences::Actions#end_
+      class ActionEndResponse < Telnyx::Internal::Type::BaseModel
         # @!attribute data
         #
         #   @return [Telnyx::Models::Conferences::ConferenceCommandResult, nil]

@@ -14,6 +14,13 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::DeepgramNova3Config::TranscriptionModel]
         required :transcription_model, enum: -> { Telnyx::Calls::DeepgramNova3Config::TranscriptionModel }
 
+        # @!attribute interim_results
+        #   Whether to send also interim results. If set to false, only final results will
+        #   be sent.
+        #
+        #   @return [Boolean, nil]
+        optional :interim_results, Telnyx::Internal::Type::Boolean
+
         # @!attribute keywords_boosting
         #   Keywords and their respective intensifiers (boosting values) to improve
         #   transcription accuracy for specific words or phrases. The intensifier should be
@@ -28,7 +35,14 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::DeepgramNova3Config::Language, nil]
         optional :language, enum: -> { Telnyx::Calls::DeepgramNova3Config::Language }
 
-        # @!method initialize(transcription_engine:, transcription_model:, keywords_boosting: nil, language: nil)
+        # @!attribute utterance_end_ms
+        #   Number of milliseconds of silence to consider an utterance ended. Ranges from 0
+        #   to 5000 ms.
+        #
+        #   @return [Integer, nil]
+        optional :utterance_end_ms, Integer
+
+        # @!method initialize(transcription_engine:, transcription_model:, interim_results: nil, keywords_boosting: nil, language: nil, utterance_end_ms: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::DeepgramNova3Config} for more details.
         #
@@ -36,9 +50,13 @@ module Telnyx
         #
         #   @param transcription_model [Symbol, Telnyx::Models::Calls::DeepgramNova3Config::TranscriptionModel]
         #
+        #   @param interim_results [Boolean] Whether to send also interim results. If set to false, only final results will b
+        #
         #   @param keywords_boosting [Hash{Symbol=>Float}] Keywords and their respective intensifiers (boosting values) to improve transcri
         #
         #   @param language [Symbol, Telnyx::Models::Calls::DeepgramNova3Config::Language] Language to use for speech recognition with nova-3 model
+        #
+        #   @param utterance_end_ms [Integer] Number of milliseconds of silence to consider an utterance ended. Ranges from 0
 
         # @see Telnyx::Models::Calls::DeepgramNova3Config#transcription_engine
         module TranscriptionEngine

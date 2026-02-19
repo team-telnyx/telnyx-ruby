@@ -12,13 +12,13 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Conferences::ActionUpdateResponse
 
-        def end_conference: (
+        def end_: (
           String id,
           ?command_id: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Conferences::ActionEndConferenceResponse
+        ) -> Telnyx::Models::Conferences::ActionEndResponse
 
-        def gather_dtmf_audio: (
+        def gather_using_audio: (
           String id,
           call_control_id: String,
           ?audio_url: String,
@@ -37,7 +37,7 @@ module Telnyx
           ?timeout_millis: Integer,
           ?valid_digits: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Conferences::ActionGatherDtmfAudioResponse
+        ) -> Telnyx::Models::Conferences::ActionGatherUsingAudioResponse
 
         def hold: (
           String id,

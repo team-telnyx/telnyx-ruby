@@ -3,11 +3,11 @@
 module Telnyx
   module Models
     module Conferences
-      class ActionEndConferenceResponse < Telnyx::Internal::Type::BaseModel
+      class ActionGatherUsingAudioResponse < Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Models::Conferences::ActionEndConferenceResponse,
+              Telnyx::Models::Conferences::ActionGatherUsingAudioResponse,
               Telnyx::Internal::AnyHash
             )
           end
