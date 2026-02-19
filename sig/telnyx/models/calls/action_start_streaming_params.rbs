@@ -5,8 +5,10 @@ module Telnyx
         {
           client_state: String,
           command_id: String,
+          custom_parameters: ::Array[Telnyx::Calls::ActionStartStreamingParams::CustomParameter],
           dialogflow_config: Telnyx::DialogflowConfig,
           enable_dialogflow: bool,
+          stream_auth_token: String,
           stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
           stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
           stream_bidirectional_sampling_rate: Telnyx::Models::stream_bidirectional_sampling_rate,
@@ -29,6 +31,12 @@ module Telnyx
 
         def command_id=: (String) -> String
 
+        attr_reader custom_parameters: ::Array[Telnyx::Calls::ActionStartStreamingParams::CustomParameter]?
+
+        def custom_parameters=: (
+          ::Array[Telnyx::Calls::ActionStartStreamingParams::CustomParameter]
+        ) -> ::Array[Telnyx::Calls::ActionStartStreamingParams::CustomParameter]
+
         attr_reader dialogflow_config: Telnyx::DialogflowConfig?
 
         def dialogflow_config=: (
@@ -38,6 +46,10 @@ module Telnyx
         attr_reader enable_dialogflow: bool?
 
         def enable_dialogflow=: (bool) -> bool
+
+        attr_reader stream_auth_token: String?
+
+        def stream_auth_token=: (String) -> String
 
         attr_reader stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec?
 
@@ -82,8 +94,10 @@ module Telnyx
         def initialize: (
           ?client_state: String,
           ?command_id: String,
+          ?custom_parameters: ::Array[Telnyx::Calls::ActionStartStreamingParams::CustomParameter],
           ?dialogflow_config: Telnyx::DialogflowConfig,
           ?enable_dialogflow: bool,
+          ?stream_auth_token: String,
           ?stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
           ?stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
           ?stream_bidirectional_sampling_rate: Telnyx::Models::stream_bidirectional_sampling_rate,
@@ -97,8 +111,10 @@ module Telnyx
         def to_hash: -> {
           client_state: String,
           command_id: String,
+          custom_parameters: ::Array[Telnyx::Calls::ActionStartStreamingParams::CustomParameter],
           dialogflow_config: Telnyx::DialogflowConfig,
           enable_dialogflow: bool,
+          stream_auth_token: String,
           stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
           stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
           stream_bidirectional_sampling_rate: Telnyx::Models::stream_bidirectional_sampling_rate,
@@ -108,6 +124,22 @@ module Telnyx
           stream_url: String,
           request_options: Telnyx::RequestOptions
         }
+
+        type custom_parameter = { name: String, value: String }
+
+        class CustomParameter < Telnyx::Internal::Type::BaseModel
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader value: String?
+
+          def value=: (String) -> String
+
+          def initialize: (?name: String, ?value: String) -> void
+
+          def to_hash: -> { name: String, value: String }
+        end
 
         type stream_track = :inbound_track | :outbound_track | :both_tracks
 

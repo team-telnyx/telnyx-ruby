@@ -8,9 +8,11 @@ module Telnyx
           client_state: String,
           command_id: String,
           language: Telnyx::Models::Calls::ActionSpeakParams::language,
+          loop_: Telnyx::Models::Calls::loopcount,
           payload_type: Telnyx::Models::Calls::ActionSpeakParams::payload_type,
           service_level: Telnyx::Models::Calls::ActionSpeakParams::service_level,
           stop: String,
+          target_legs: Telnyx::Models::Calls::ActionSpeakParams::target_legs,
           voice_settings: Telnyx::Models::Calls::ActionSpeakParams::voice_settings
         }
         & Telnyx::Internal::Type::request_parameters
@@ -37,6 +39,12 @@ module Telnyx
           Telnyx::Models::Calls::ActionSpeakParams::language
         ) -> Telnyx::Models::Calls::ActionSpeakParams::language
 
+        attr_reader loop_: Telnyx::Models::Calls::loopcount?
+
+        def loop_=: (
+          Telnyx::Models::Calls::loopcount
+        ) -> Telnyx::Models::Calls::loopcount
+
         attr_reader payload_type: Telnyx::Models::Calls::ActionSpeakParams::payload_type?
 
         def payload_type=: (
@@ -53,6 +61,12 @@ module Telnyx
 
         def stop=: (String) -> String
 
+        attr_reader target_legs: Telnyx::Models::Calls::ActionSpeakParams::target_legs?
+
+        def target_legs=: (
+          Telnyx::Models::Calls::ActionSpeakParams::target_legs
+        ) -> Telnyx::Models::Calls::ActionSpeakParams::target_legs
+
         attr_reader voice_settings: Telnyx::Models::Calls::ActionSpeakParams::voice_settings?
 
         def voice_settings=: (
@@ -65,9 +79,11 @@ module Telnyx
           ?client_state: String,
           ?command_id: String,
           ?language: Telnyx::Models::Calls::ActionSpeakParams::language,
+          ?loop_: Telnyx::Models::Calls::loopcount,
           ?payload_type: Telnyx::Models::Calls::ActionSpeakParams::payload_type,
           ?service_level: Telnyx::Models::Calls::ActionSpeakParams::service_level,
           ?stop: String,
+          ?target_legs: Telnyx::Models::Calls::ActionSpeakParams::target_legs,
           ?voice_settings: Telnyx::Models::Calls::ActionSpeakParams::voice_settings,
           ?request_options: Telnyx::request_opts
         ) -> void
@@ -78,9 +94,11 @@ module Telnyx
           client_state: String,
           command_id: String,
           language: Telnyx::Models::Calls::ActionSpeakParams::language,
+          loop_: Telnyx::Models::Calls::loopcount,
           payload_type: Telnyx::Models::Calls::ActionSpeakParams::payload_type,
           service_level: Telnyx::Models::Calls::ActionSpeakParams::service_level,
           stop: String,
+          target_legs: Telnyx::Models::Calls::ActionSpeakParams::target_legs,
           voice_settings: Telnyx::Models::Calls::ActionSpeakParams::voice_settings,
           request_options: Telnyx::RequestOptions
         }
@@ -172,6 +190,18 @@ module Telnyx
           PREMIUM: :premium
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::ActionSpeakParams::service_level]
+        end
+
+        type target_legs = :self | :opposite | :both
+
+        module TargetLegs
+          extend Telnyx::Internal::Type::Enum
+
+          SELF: :self
+          OPPOSITE: :opposite
+          BOTH: :both
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionSpeakParams::target_legs]
         end
 
         type voice_settings =

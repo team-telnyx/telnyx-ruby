@@ -22,6 +22,13 @@ module Telnyx
         #   @return [String, nil]
         optional :command_id, String
 
+        # @!attribute custom_parameters
+        #   Custom parameters to be sent as part of the WebSocket connection.
+        #
+        #   @return [Array<Telnyx::Models::Calls::ActionStartStreamingParams::CustomParameter>, nil]
+        optional :custom_parameters,
+                 -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Calls::ActionStartStreamingParams::CustomParameter] }
+
         # @!attribute dialogflow_config
         #
         #   @return [Telnyx::Models::DialogflowConfig, nil]
@@ -32,6 +39,13 @@ module Telnyx
         #
         #   @return [Boolean, nil]
         optional :enable_dialogflow, Telnyx::Internal::Type::Boolean
+
+        # @!attribute stream_auth_token
+        #   An authentication token to be sent as part of the WebSocket connection. Maximum
+        #   length is 4000 characters.
+        #
+        #   @return [String, nil]
+        optional :stream_auth_token, String
 
         # @!attribute stream_bidirectional_codec
         #   Indicates codec for bidirectional streaming RTP payloads. Used only with
@@ -77,7 +91,7 @@ module Telnyx
         #   @return [String, nil]
         optional :stream_url, String
 
-        # @!method initialize(client_state: nil, command_id: nil, dialogflow_config: nil, enable_dialogflow: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, request_options: {})
+        # @!method initialize(client_state: nil, command_id: nil, custom_parameters: nil, dialogflow_config: nil, enable_dialogflow: nil, stream_auth_token: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionStartStreamingParams} for more details.
         #
@@ -85,9 +99,13 @@ module Telnyx
         #
         #   @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #
+        #   @param custom_parameters [Array<Telnyx::Models::Calls::ActionStartStreamingParams::CustomParameter>] Custom parameters to be sent as part of the WebSocket connection.
+        #
         #   @param dialogflow_config [Telnyx::Models::DialogflowConfig]
         #
         #   @param enable_dialogflow [Boolean] Enables Dialogflow for the current call. The default value is false.
+        #
+        #   @param stream_auth_token [String] An authentication token to be sent as part of the WebSocket connection. Maximum
         #
         #   @param stream_bidirectional_codec [Symbol, Telnyx::Models::StreamBidirectionalCodec] Indicates codec for bidirectional streaming RTP payloads. Used only with
         #   stream\_
@@ -105,6 +123,25 @@ module Telnyx
         #   @param stream_url [String] The destination WebSocket address where the stream is going to be delivered.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
+
+        class CustomParameter < Telnyx::Internal::Type::BaseModel
+          # @!attribute name
+          #   The name of the custom parameter.
+          #
+          #   @return [String, nil]
+          optional :name, String
+
+          # @!attribute value
+          #   The value of the custom parameter.
+          #
+          #   @return [String, nil]
+          optional :value, String
+
+          # @!method initialize(name: nil, value: nil)
+          #   @param name [String] The name of the custom parameter.
+          #
+          #   @param value [String] The value of the custom parameter.
+        end
 
         # Specifies which track should be streamed.
         module StreamTrack

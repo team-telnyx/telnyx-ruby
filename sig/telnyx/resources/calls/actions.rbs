@@ -96,6 +96,7 @@ module Telnyx
           ?assistant: Telnyx::AI::Assistant,
           ?client_state: String,
           ?command_id: String,
+          ?gather_ended_speech: String,
           ?greeting: String,
           ?interruption_settings: Telnyx::Calls::InterruptionSettings,
           ?language: Telnyx::Models::Calls::google_transcription_language,
@@ -223,9 +224,11 @@ module Telnyx
           ?client_state: String,
           ?command_id: String,
           ?language: Telnyx::Models::Calls::ActionSpeakParams::language,
+          ?loop_: Telnyx::Models::Calls::loopcount,
           ?payload_type: Telnyx::Models::Calls::ActionSpeakParams::payload_type,
           ?service_level: Telnyx::Models::Calls::ActionSpeakParams::service_level,
           ?stop: String,
+          ?target_legs: Telnyx::Models::Calls::ActionSpeakParams::target_legs,
           ?voice_settings: Telnyx::Models::Calls::ActionSpeakParams::voice_settings,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionSpeakResponse
@@ -317,8 +320,10 @@ module Telnyx
           String call_control_id,
           ?client_state: String,
           ?command_id: String,
+          ?custom_parameters: ::Array[Telnyx::Calls::ActionStartStreamingParams::CustomParameter],
           ?dialogflow_config: Telnyx::DialogflowConfig,
           ?enable_dialogflow: bool,
+          ?stream_auth_token: String,
           ?stream_bidirectional_codec: Telnyx::Models::stream_bidirectional_codec,
           ?stream_bidirectional_mode: Telnyx::Models::stream_bidirectional_mode,
           ?stream_bidirectional_sampling_rate: Telnyx::Models::stream_bidirectional_sampling_rate,
@@ -429,6 +434,7 @@ module Telnyx
           ?media_name: String,
           ?mute_dtmf: Telnyx::Models::Calls::ActionTransferParams::mute_dtmf,
           ?park_after_unbridge: String,
+          ?preferred_codecs: String,
           ?record: Telnyx::Models::Calls::ActionTransferParams::record,
           ?record_channels: Telnyx::Models::Calls::ActionTransferParams::record_channels,
           ?record_custom_file_name: String,
@@ -446,8 +452,11 @@ module Telnyx
           ?target_leg_client_state: String,
           ?time_limit_secs: Integer,
           ?timeout_secs: Integer,
+          ?webhook_retries_policies: ::Hash[Symbol, Telnyx::Calls::ActionTransferParams::WebhookRetriesPolicy],
           ?webhook_url: String,
           ?webhook_url_method: Telnyx::Models::Calls::ActionTransferParams::webhook_url_method,
+          ?webhook_urls: ::Hash[Symbol, String],
+          ?webhook_urls_method: Telnyx::Models::Calls::ActionTransferParams::webhook_urls_method,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionTransferResponse
 

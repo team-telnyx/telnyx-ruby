@@ -387,6 +387,7 @@ module Telnyx
             assistant: Telnyx::AI::Assistant::OrHash,
             client_state: String,
             command_id: String,
+            gather_ended_speech: String,
             greeting: String,
             interruption_settings: Telnyx::Calls::InterruptionSettings::OrHash,
             language: Telnyx::Calls::GoogleTranscriptionLanguage::OrSymbol,
@@ -424,6 +425,9 @@ module Telnyx
           # Use this field to avoid duplicate commands. Telnyx will ignore any command with
           # the same `command_id` for the same `call_control_id`.
           command_id: nil,
+          # Text that will be played when the gathering has finished. There is a 3,000
+          # character limit.
+          gather_ended_speech: nil,
           # Text that will be played when the gathering starts, if none then nothing will be
           # played when the gathering starts. The greeting can be text for any voice or SSML
           # for `AWS.Polly.<voice_id>` voices. There is a 3,000 character limit.
@@ -450,8 +454,7 @@ module Telnyx
           # using a model with native audio support (e.g. `fixie-ai/ultravox-v0_4`) will
           # ignore this field.
           transcription: nil,
-          # The number of milliseconds to wait for a user response before the voice
-          # assistant times out and check if the user is still there.
+          # The maximum time in milliseconds to wait for user response before timing out.
           user_response_timeout_ms: nil,
           # The voice to be used by the voice assistant. Currently we support ElevenLabs,
           # Telnyx and AWS voices.
@@ -954,11 +957,13 @@ module Telnyx
             client_state: String,
             command_id: String,
             language: Telnyx::Calls::ActionSpeakParams::Language::OrSymbol,
+            loop_: Telnyx::Calls::Loopcount::Variants,
             payload_type:
               Telnyx::Calls::ActionSpeakParams::PayloadType::OrSymbol,
             service_level:
               Telnyx::Calls::ActionSpeakParams::ServiceLevel::OrSymbol,
             stop: String,
+            target_legs: Telnyx::Calls::ActionSpeakParams::TargetLegs::OrSymbol,
             voice_settings:
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
@@ -1015,6 +1020,9 @@ module Telnyx
           # The language you want spoken. This parameter is ignored when a `Polly.*` voice
           # is specified.
           language: nil,
+          # The number of times to play the audio file. Use `infinity` to loop indefinitely.
+          # Defaults to 1.
+          loop_: nil,
           # The type of the provided payload. The payload can either be plain text, or
           # Speech Synthesis Markup Language (SSML).
           payload_type: nil,
@@ -1026,6 +1034,8 @@ module Telnyx
           # Specify `all` to stop the current audio file being played and to also clear all
           # audio files from the queue.
           stop: nil,
+          # Specifies which legs of the call should receive the spoken audio.
+          target_legs: nil,
           # The settings associated with the voice selected
           voice_settings: nil,
           request_options: {}
@@ -1423,8 +1433,13 @@ module Telnyx
             call_control_id: String,
             client_state: String,
             command_id: String,
+            custom_parameters:
+              T::Array[
+                Telnyx::Calls::ActionStartStreamingParams::CustomParameter::OrHash
+              ],
             dialogflow_config: Telnyx::DialogflowConfig::OrHash,
             enable_dialogflow: T::Boolean,
+            stream_auth_token: String,
             stream_bidirectional_codec:
               Telnyx::StreamBidirectionalCodec::OrSymbol,
             stream_bidirectional_mode:
@@ -1449,9 +1464,14 @@ module Telnyx
           # Use this field to avoid duplicate commands. Telnyx will ignore any command with
           # the same `command_id` for the same `call_control_id`.
           command_id: nil,
+          # Custom parameters to be sent as part of the WebSocket connection.
+          custom_parameters: nil,
           dialogflow_config: nil,
           # Enables Dialogflow for the current call. The default value is false.
           enable_dialogflow: nil,
+          # An authentication token to be sent as part of the WebSocket connection. Maximum
+          # length is 4000 characters.
+          stream_auth_token: nil,
           # Indicates codec for bidirectional streaming RTP payloads. Used only with
           # stream_bidirectional_mode=rtp. Case sensitive.
           stream_bidirectional_codec: nil,
@@ -1819,6 +1839,7 @@ module Telnyx
             media_name: String,
             mute_dtmf: Telnyx::Calls::ActionTransferParams::MuteDtmf::OrSymbol,
             park_after_unbridge: String,
+            preferred_codecs: String,
             record: Telnyx::Calls::ActionTransferParams::Record::OrSymbol,
             record_channels:
               Telnyx::Calls::ActionTransferParams::RecordChannels::OrSymbol,
@@ -1842,9 +1863,17 @@ module Telnyx
             target_leg_client_state: String,
             time_limit_secs: Integer,
             timeout_secs: Integer,
+            webhook_retries_policies:
+              T::Hash[
+                Symbol,
+                Telnyx::Calls::ActionTransferParams::WebhookRetriesPolicy::OrHash
+              ],
             webhook_url: String,
             webhook_url_method:
               Telnyx::Calls::ActionTransferParams::WebhookURLMethod::OrSymbol,
+            webhook_urls: T::Hash[Symbol, String],
+            webhook_urls_method:
+              Telnyx::Calls::ActionTransferParams::WebhookURLsMethod::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionTransferResponse)
         end
@@ -1902,6 +1931,10 @@ module Telnyx
           # or is transferred). If supplied with the value `self`, the current leg will be
           # parked after unbridge. If not set, the default behavior is to hang up the leg.
           park_after_unbridge: nil,
+          # The list of comma-separated codecs in order of preference to be used during the
+          # call. The codecs supported are `G722`, `PCMU`, `PCMA`, `G729`, `OPUS`, `VP8`,
+          # `H264`, `AMR-WB`.
+          preferred_codecs: nil,
           # Start recording automatically after an event. Disabled by default.
           record: nil,
           # Defines which channel should be recorded ('single' or 'dual') when `record` is
@@ -1958,11 +1991,21 @@ module Telnyx
           # `hangup_cause` of `timeout` will be sent. Minimum value is 5 seconds. Maximum
           # value is 600 seconds.
           timeout_secs: nil,
+          # A map of event types to retry policies. Each retry policy contains an array of
+          # `retries_ms` specifying the delays between retry attempts in milliseconds.
+          # Maximum 5 retries, total delay cannot exceed 60 seconds.
+          webhook_retries_policies: nil,
           # Use this field to override the URL for which Telnyx will send subsequent
           # webhooks to for this call.
           webhook_url: nil,
           # HTTP request type used for `webhook_url`.
           webhook_url_method: nil,
+          # A map of event types to webhook URLs. When an event of the specified type
+          # occurs, the webhook URL associated with that event type will be called instead
+          # of `webhook_url`. Events not mapped here will use the default `webhook_url`.
+          webhook_urls: nil,
+          # HTTP request method to invoke `webhook_urls`.
+          webhook_urls_method: nil,
           request_options: {}
         )
         end

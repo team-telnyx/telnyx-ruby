@@ -31,6 +31,28 @@ module Telnyx
         sig { params(command_id: String).void }
         attr_writer :command_id
 
+        # Custom parameters to be sent as part of the WebSocket connection.
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                Telnyx::Calls::ActionStartStreamingParams::CustomParameter
+              ]
+            )
+          )
+        end
+        attr_reader :custom_parameters
+
+        sig do
+          params(
+            custom_parameters:
+              T::Array[
+                Telnyx::Calls::ActionStartStreamingParams::CustomParameter::OrHash
+              ]
+          ).void
+        end
+        attr_writer :custom_parameters
+
         sig { returns(T.nilable(Telnyx::DialogflowConfig)) }
         attr_reader :dialogflow_config
 
@@ -43,6 +65,14 @@ module Telnyx
 
         sig { params(enable_dialogflow: T::Boolean).void }
         attr_writer :enable_dialogflow
+
+        # An authentication token to be sent as part of the WebSocket connection. Maximum
+        # length is 4000 characters.
+        sig { returns(T.nilable(String)) }
+        attr_reader :stream_auth_token
+
+        sig { params(stream_auth_token: String).void }
+        attr_writer :stream_auth_token
 
         # Indicates codec for bidirectional streaming RTP payloads. Used only with
         # stream_bidirectional_mode=rtp. Case sensitive.
@@ -133,8 +163,13 @@ module Telnyx
           params(
             client_state: String,
             command_id: String,
+            custom_parameters:
+              T::Array[
+                Telnyx::Calls::ActionStartStreamingParams::CustomParameter::OrHash
+              ],
             dialogflow_config: Telnyx::DialogflowConfig::OrHash,
             enable_dialogflow: T::Boolean,
+            stream_auth_token: String,
             stream_bidirectional_codec:
               Telnyx::StreamBidirectionalCodec::OrSymbol,
             stream_bidirectional_mode:
@@ -157,9 +192,14 @@ module Telnyx
           # Use this field to avoid duplicate commands. Telnyx will ignore any command with
           # the same `command_id` for the same `call_control_id`.
           command_id: nil,
+          # Custom parameters to be sent as part of the WebSocket connection.
+          custom_parameters: nil,
           dialogflow_config: nil,
           # Enables Dialogflow for the current call. The default value is false.
           enable_dialogflow: nil,
+          # An authentication token to be sent as part of the WebSocket connection. Maximum
+          # length is 4000 characters.
+          stream_auth_token: nil,
           # Indicates codec for bidirectional streaming RTP payloads. Used only with
           # stream_bidirectional_mode=rtp. Case sensitive.
           stream_bidirectional_codec: nil,
@@ -185,8 +225,13 @@ module Telnyx
             {
               client_state: String,
               command_id: String,
+              custom_parameters:
+                T::Array[
+                  Telnyx::Calls::ActionStartStreamingParams::CustomParameter
+                ],
               dialogflow_config: Telnyx::DialogflowConfig,
               enable_dialogflow: T::Boolean,
+              stream_auth_token: String,
               stream_bidirectional_codec:
                 Telnyx::StreamBidirectionalCodec::OrSymbol,
               stream_bidirectional_mode:
@@ -204,6 +249,43 @@ module Telnyx
           )
         end
         def to_hash
+        end
+
+        class CustomParameter < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::Calls::ActionStartStreamingParams::CustomParameter,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # The name of the custom parameter.
+          sig { returns(T.nilable(String)) }
+          attr_reader :name
+
+          sig { params(name: String).void }
+          attr_writer :name
+
+          # The value of the custom parameter.
+          sig { returns(T.nilable(String)) }
+          attr_reader :value
+
+          sig { params(value: String).void }
+          attr_writer :value
+
+          sig { params(name: String, value: String).returns(T.attached_class) }
+          def self.new(
+            # The name of the custom parameter.
+            name: nil,
+            # The value of the custom parameter.
+            value: nil
+          )
+          end
+
+          sig { override.returns({ name: String, value: String }) }
+          def to_hash
+          end
         end
 
         # Specifies which track should be streamed.
