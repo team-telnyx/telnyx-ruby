@@ -121,7 +121,7 @@ class Telnyx::Test::Resources::Porting::LoaConfigurationsTest < Telnyx::Test::Re
   end
 
   def test_preview_0_required_params
-    skip("Mock server doesn't support application/pdf responses")
+    skip("Mock server tests are disabled")
 
     response =
       @telnyx.porting.loa_configurations.preview_0(
@@ -144,7 +144,7 @@ class Telnyx::Test::Resources::Porting::LoaConfigurationsTest < Telnyx::Test::Re
   end
 
   def test_preview_1
-    skip("Mock server doesn't support application/pdf responses")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.porting.loa_configurations.preview_1("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

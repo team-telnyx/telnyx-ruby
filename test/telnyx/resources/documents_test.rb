@@ -85,7 +85,7 @@ class Telnyx::Test::Resources::DocumentsTest < Telnyx::Test::ResourceTest
   end
 
   def test_download
-    skip("Mock server doesn't support application/octet-stream responses")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.documents.download("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 

@@ -63,7 +63,7 @@ class Telnyx::Test::Resources::MediaTest < Telnyx::Test::ResourceTest
   end
 
   def test_download
-    skip("Mock server doesn't support application/octet-stream responses")
+    skip("Mock server tests are disabled")
 
     response = @telnyx.media.download("media_name")
 
