@@ -5,6 +5,7 @@ module Telnyx
         id: String,
         created_at: Time,
         customer_reference: String,
+        errors: String,
         phone_numbers: ::Array[Telnyx::ReservedPhoneNumber],
         record_type: String,
         status: Telnyx::Models::NumberReservation::status,
@@ -30,6 +31,10 @@ module Telnyx
 
       def created_at=: (Time) -> Time
 
+      attr_reader errors: String?
+
+      def errors=: (String) -> String
+
       attr_reader record_type: String?
 
       def record_type=: (String) -> String
@@ -48,6 +53,7 @@ module Telnyx
         ?id: String,
         ?created_at: Time,
         ?customer_reference: String,
+        ?errors: String,
         ?phone_numbers: ::Array[Telnyx::ReservedPhoneNumber],
         ?record_type: String,
         ?status: Telnyx::Models::NumberReservation::status,
@@ -58,6 +64,7 @@ module Telnyx
         id: String,
         created_at: Time,
         customer_reference: String,
+        errors: String,
         phone_numbers: ::Array[Telnyx::ReservedPhoneNumber],
         record_type: String,
         status: Telnyx::Models::NumberReservation::status,

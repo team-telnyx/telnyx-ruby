@@ -13,10 +13,10 @@ module Telnyx
       attr_accessor :title
 
       sig { returns(T.nilable(String)) }
-      attr_reader :detail
+      attr_reader :description
 
-      sig { params(detail: String).void }
-      attr_writer :detail
+      sig { params(description: String).void }
+      attr_writer :description
 
       sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
       attr_reader :meta
@@ -34,12 +34,12 @@ module Telnyx
         params(
           code: String,
           title: String,
-          detail: String,
+          description: String,
           meta: T::Hash[Symbol, T.anything],
           source: Telnyx::APIError::Source::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(code:, title:, detail: nil, meta: nil, source: nil)
+      def self.new(code:, title:, description: nil, meta: nil, source: nil)
       end
 
       sig do
@@ -47,7 +47,7 @@ module Telnyx
           {
             code: String,
             title: String,
-            detail: String,
+            description: String,
             meta: T::Hash[Symbol, T.anything],
             source: Telnyx::APIError::Source
           }

@@ -23,7 +23,7 @@ class Telnyx::Test::Resources::FqdnsTest < Telnyx::Test::ResourceTest
   def test_retrieve
     skip("Mock server tests are disabled")
 
-    response = @telnyx.fqdns.retrieve("id")
+    response = @telnyx.fqdns.retrieve("1517907029795014409")
 
     assert_pattern do
       response => Telnyx::Models::FqdnRetrieveResponse
@@ -39,7 +39,7 @@ class Telnyx::Test::Resources::FqdnsTest < Telnyx::Test::ResourceTest
   def test_update
     skip("Mock server tests are disabled")
 
-    response = @telnyx.fqdns.update("id")
+    response = @telnyx.fqdns.update("1517907029795014409")
 
     assert_pattern do
       response => Telnyx::Models::FqdnUpdateResponse
@@ -85,7 +85,7 @@ class Telnyx::Test::Resources::FqdnsTest < Telnyx::Test::ResourceTest
   def test_delete
     skip("Mock server tests are disabled")
 
-    response = @telnyx.fqdns.delete("id")
+    response = @telnyx.fqdns.delete("1517907029795014409")
 
     assert_pattern do
       response => Telnyx::Models::FqdnDeleteResponse

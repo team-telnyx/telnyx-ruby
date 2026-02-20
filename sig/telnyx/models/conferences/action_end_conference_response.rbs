@@ -1,10 +1,10 @@
 module Telnyx
   module Models
     module Conferences
-      type action_end_response =
+      type action_end_conference_response =
         { data: Telnyx::Conferences::ConferenceCommandResult }
 
-      class ActionEndResponse < Telnyx::Internal::Type::BaseModel
+      class ActionEndConferenceResponse < Telnyx::Internal::Type::BaseModel
         attr_reader data: Telnyx::Conferences::ConferenceCommandResult?
 
         def data=: (

@@ -46,6 +46,12 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::RoomComposition::Format, nil]
       optional :file_format, enum: -> { Telnyx::RoomComposition::Format }, api_name: :format
 
+      # @!attribute resolution
+      #   The resolution of the room composition.
+      #
+      #   @return [String, nil]
+      optional :resolution, String
+
       # @!attribute room_id
       #   Identify the room associated with the room composition.
       #
@@ -122,7 +128,7 @@ module Telnyx
         optional :record_type, String
       end
 
-      # @!method initialize(id: nil, completed_at: nil, created_at: nil, download_url: nil, duration_secs: nil, ended_at: nil, file_format: nil, record_type: nil, room_id: nil, session_id: nil, size_mb: nil, started_at: nil, status: nil, updated_at: nil, user_id: nil, video_layout: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
+      # @!method initialize(id: nil, completed_at: nil, created_at: nil, download_url: nil, duration_secs: nil, ended_at: nil, file_format: nil, record_type: nil, resolution: nil, room_id: nil, session_id: nil, size_mb: nil, started_at: nil, status: nil, updated_at: nil, user_id: nil, video_layout: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::RoomComposition} for more details.
       #
@@ -141,6 +147,8 @@ module Telnyx
       #   @param file_format [Symbol, Telnyx::Models::RoomComposition::Format] Shows format of the room composition.
       #
       #   @param record_type [String]
+      #
+      #   @param resolution [String] The resolution of the room composition.
       #
       #   @param room_id [String] Identify the room associated with the room composition.
       #

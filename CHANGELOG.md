@@ -1,5 +1,19 @@
 # Changelog
 
+## 5.36.0 (2026-02-20)
+
+Full Changelog: [v5.35.0...v5.36.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.35.0...v5.36.0)
+
+### Features
+
+* **api:** manual updates ([eaf686d](https://github.com/team-telnyx/telnyx-ruby/commit/eaf686da95ddfdec3860bfe85233874e72ef44b8))
+* fix-stainless-sdk-timeout ([611e77c](https://github.com/team-telnyx/telnyx-ruby/commit/611e77c332f7c627976428a0f92648e06666224f))
+
+
+### Bug Fixes
+
+* move unsupported string formats to x-format ([52b1b5e](https://github.com/team-telnyx/telnyx-ruby/commit/52b1b5e2de3c0ade5595a4825f542ff4f896b0ac))
+
 ## 5.35.0 (2026-02-20)
 
 Full Changelog: [v5.34.0...v5.35.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.34.0...v5.35.0)

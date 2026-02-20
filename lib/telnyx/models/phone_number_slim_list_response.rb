@@ -107,6 +107,12 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :emergency_enabled, Telnyx::Internal::Type::Boolean
 
+        # @!attribute hd_voice_enabled
+        #   Indicates whether HD voice is enabled for this number.
+        #
+        #   @return [Boolean, nil]
+        optional :hd_voice_enabled, Telnyx::Internal::Type::Boolean
+
         # @!attribute phone_number
         #   The +E.164-formatted phone number associated with this record.
         #
@@ -144,9 +150,15 @@ module Telnyx
         #
         #   @return [Boolean, nil]
         optional :t38_fax_gateway_enabled, Telnyx::Internal::Type::Boolean
+
+        # @!attribute updated_at
+        #   ISO 8601 formatted date indicating when the resource was updated.
+        #
+        #   @return [String, nil]
+        optional :updated_at, String
       end
 
-      # @!method initialize(id: nil, billing_group_id: nil, call_forwarding_enabled: nil, call_recording_enabled: nil, caller_id_name_enabled: nil, cnam_listing_enabled: nil, connection_id: nil, country_iso_alpha2: nil, created_at: nil, customer_reference: nil, emergency_address_id: nil, emergency_enabled: nil, emergency_status: nil, external_pin: nil, inbound_call_screening: nil, phone_number: nil, phone_number_type: nil, purchased_at: nil, record_type: nil, status: nil, t38_fax_gateway_enabled: nil)
+      # @!method initialize(id: nil, billing_group_id: nil, call_forwarding_enabled: nil, call_recording_enabled: nil, caller_id_name_enabled: nil, cnam_listing_enabled: nil, connection_id: nil, country_iso_alpha2: nil, created_at: nil, customer_reference: nil, emergency_address_id: nil, emergency_enabled: nil, emergency_status: nil, external_pin: nil, hd_voice_enabled: nil, inbound_call_screening: nil, phone_number: nil, phone_number_type: nil, purchased_at: nil, record_type: nil, status: nil, t38_fax_gateway_enabled: nil, updated_at: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::PhoneNumberSlimListResponse} for more details.
       #
@@ -178,6 +190,8 @@ module Telnyx
       #
       #   @param external_pin [String] If someone attempts to port your phone number away from Telnyx and your phone nu
       #
+      #   @param hd_voice_enabled [Boolean] Indicates whether HD voice is enabled for this number.
+      #
       #   @param inbound_call_screening [Symbol, Telnyx::Models::PhoneNumberSlimListResponse::InboundCallScreening] The inbound_call_screening setting is a phone number configuration option variab
       #
       #   @param phone_number [String] The +E.164-formatted phone number associated with this record.
@@ -191,6 +205,8 @@ module Telnyx
       #   @param status [Symbol, Telnyx::Models::PhoneNumberSlimListResponse::Status] The phone number's current status.
       #
       #   @param t38_fax_gateway_enabled [Boolean] Indicates whether T38 Fax Gateway for inbound calls to this number.
+      #
+      #   @param updated_at [String] ISO 8601 formatted date indicating when the resource was updated.
 
       # Indicates the status of the provisioning of emergency services for the phone
       # number. This field contains information about activity that may be ongoing for a

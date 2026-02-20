@@ -17,6 +17,7 @@ module Telnyx
         parent_support_key: String?,
         phone_number_configuration: Telnyx::PortingOrderPhoneNumberConfiguration,
         phone_number_type: Telnyx::Models::PortingOrder::phone_number_type,
+        phone_numbers: ::Array[Telnyx::PortingOrder::PhoneNumber],
         porting_phone_numbers_count: Integer,
         record_type: String,
         requirements: ::Array[Telnyx::PortingOrderRequirement],
@@ -77,6 +78,12 @@ module Telnyx
       def phone_number_type=: (
         Telnyx::Models::PortingOrder::phone_number_type
       ) -> Telnyx::Models::PortingOrder::phone_number_type
+
+      attr_reader phone_numbers: ::Array[Telnyx::PortingOrder::PhoneNumber]?
+
+      def phone_numbers=: (
+        ::Array[Telnyx::PortingOrder::PhoneNumber]
+      ) -> ::Array[Telnyx::PortingOrder::PhoneNumber]
 
       attr_reader requirements: ::Array[Telnyx::PortingOrderRequirement]?
 
@@ -152,6 +159,7 @@ module Telnyx
         ?parent_support_key: String?,
         ?phone_number_configuration: Telnyx::PortingOrderPhoneNumberConfiguration,
         ?phone_number_type: Telnyx::Models::PortingOrder::phone_number_type,
+        ?phone_numbers: ::Array[Telnyx::PortingOrder::PhoneNumber],
         ?porting_phone_numbers_count: Integer,
         ?record_type: String,
         ?requirements: ::Array[Telnyx::PortingOrderRequirement],
@@ -180,6 +188,7 @@ module Telnyx
         parent_support_key: String?,
         phone_number_configuration: Telnyx::PortingOrderPhoneNumberConfiguration,
         phone_number_type: Telnyx::Models::PortingOrder::phone_number_type,
+        phone_numbers: ::Array[Telnyx::PortingOrder::PhoneNumber],
         porting_phone_numbers_count: Integer,
         record_type: String,
         requirements: ::Array[Telnyx::PortingOrderRequirement],
@@ -218,6 +227,196 @@ module Telnyx
         TOLL_FREE: :toll_free
 
         def self?.values: -> ::Array[Telnyx::Models::PortingOrder::phone_number_type]
+      end
+
+      type phone_number =
+        {
+          activation_status: Telnyx::Models::PortingOrder::PhoneNumber::activation_status,
+          phone_number: String,
+          phone_number_type: Telnyx::Models::PortingOrder::PhoneNumber::phone_number_type,
+          portability_status: Telnyx::Models::PortingOrder::PhoneNumber::portability_status,
+          porting_order_id: String,
+          porting_order_status: Telnyx::Models::PortingOrder::PhoneNumber::porting_order_status,
+          record_type: String,
+          requirements_status: Telnyx::Models::PortingOrder::PhoneNumber::requirements_status,
+          support_key: String
+        }
+
+      class PhoneNumber < Telnyx::Internal::Type::BaseModel
+        attr_reader activation_status: Telnyx::Models::PortingOrder::PhoneNumber::activation_status?
+
+        def activation_status=: (
+          Telnyx::Models::PortingOrder::PhoneNumber::activation_status
+        ) -> Telnyx::Models::PortingOrder::PhoneNumber::activation_status
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader phone_number_type: Telnyx::Models::PortingOrder::PhoneNumber::phone_number_type?
+
+        def phone_number_type=: (
+          Telnyx::Models::PortingOrder::PhoneNumber::phone_number_type
+        ) -> Telnyx::Models::PortingOrder::PhoneNumber::phone_number_type
+
+        attr_reader portability_status: Telnyx::Models::PortingOrder::PhoneNumber::portability_status?
+
+        def portability_status=: (
+          Telnyx::Models::PortingOrder::PhoneNumber::portability_status
+        ) -> Telnyx::Models::PortingOrder::PhoneNumber::portability_status
+
+        attr_reader porting_order_id: String?
+
+        def porting_order_id=: (String) -> String
+
+        attr_reader porting_order_status: Telnyx::Models::PortingOrder::PhoneNumber::porting_order_status?
+
+        def porting_order_status=: (
+          Telnyx::Models::PortingOrder::PhoneNumber::porting_order_status
+        ) -> Telnyx::Models::PortingOrder::PhoneNumber::porting_order_status
+
+        attr_reader requirements_status: Telnyx::Models::PortingOrder::PhoneNumber::requirements_status?
+
+        def requirements_status=: (
+          Telnyx::Models::PortingOrder::PhoneNumber::requirements_status
+        ) -> Telnyx::Models::PortingOrder::PhoneNumber::requirements_status
+
+        attr_reader support_key: String?
+
+        def support_key=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?activation_status: Telnyx::Models::PortingOrder::PhoneNumber::activation_status,
+          ?phone_number: String,
+          ?phone_number_type: Telnyx::Models::PortingOrder::PhoneNumber::phone_number_type,
+          ?portability_status: Telnyx::Models::PortingOrder::PhoneNumber::portability_status,
+          ?porting_order_id: String,
+          ?porting_order_status: Telnyx::Models::PortingOrder::PhoneNumber::porting_order_status,
+          ?record_type: String,
+          ?requirements_status: Telnyx::Models::PortingOrder::PhoneNumber::requirements_status,
+          ?support_key: String
+        ) -> void
+
+        def to_hash: -> {
+          activation_status: Telnyx::Models::PortingOrder::PhoneNumber::activation_status,
+          phone_number: String,
+          phone_number_type: Telnyx::Models::PortingOrder::PhoneNumber::phone_number_type,
+          portability_status: Telnyx::Models::PortingOrder::PhoneNumber::portability_status,
+          porting_order_id: String,
+          porting_order_status: Telnyx::Models::PortingOrder::PhoneNumber::porting_order_status,
+          record_type: String,
+          requirements_status: Telnyx::Models::PortingOrder::PhoneNumber::requirements_status,
+          support_key: String
+        }
+
+        type activation_status =
+          :New
+          | :Pending
+          | :Conflict
+          | :"Cancel Pending"
+          | :Failed
+          | :Concurred
+          | :"Activate RDY"
+          | :"Disconnect Pending"
+          | :"Concurrence Sent"
+          | :Old
+          | :Sending
+          | :Active
+          | :Cancelled
+
+        module ActivationStatus
+          extend Telnyx::Internal::Type::Enum
+
+          NEW: :New
+          PENDING: :Pending
+          CONFLICT: :Conflict
+          CANCEL_PENDING: :"Cancel Pending"
+          FAILED: :Failed
+          CONCURRED: :Concurred
+          ACTIVATE_RDY: :"Activate RDY"
+          DISCONNECT_PENDING: :"Disconnect Pending"
+          CONCURRENCE_SENT: :"Concurrence Sent"
+          OLD: :Old
+          SENDING: :Sending
+          ACTIVE: :Active
+          CANCELLED: :Cancelled
+
+          def self?.values: -> ::Array[Telnyx::Models::PortingOrder::PhoneNumber::activation_status]
+        end
+
+        type phone_number_type =
+          :landline | :local | :mobile | :national | :shared_cost | :toll_free
+
+        module PhoneNumberType
+          extend Telnyx::Internal::Type::Enum
+
+          LANDLINE: :landline
+          LOCAL: :local
+          MOBILE: :mobile
+          NATIONAL: :national
+          SHARED_COST: :shared_cost
+          TOLL_FREE: :toll_free
+
+          def self?.values: -> ::Array[Telnyx::Models::PortingOrder::PhoneNumber::phone_number_type]
+        end
+
+        type portability_status = :pending | :confirmed | :provisional
+
+        module PortabilityStatus
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          CONFIRMED: :confirmed
+          PROVISIONAL: :provisional
+
+          def self?.values: -> ::Array[Telnyx::Models::PortingOrder::PhoneNumber::portability_status]
+        end
+
+        type porting_order_status =
+          :draft
+          | :"in-process"
+          | :submitted
+          | :exception
+          | :"foc-date-confirmed"
+          | :"cancel-pending"
+          | :ported
+          | :cancelled
+
+        module PortingOrderStatus
+          extend Telnyx::Internal::Type::Enum
+
+          DRAFT: :draft
+          IN_PROCESS: :"in-process"
+          SUBMITTED: :submitted
+          EXCEPTION: :exception
+          FOC_DATE_CONFIRMED: :"foc-date-confirmed"
+          CANCEL_PENDING: :"cancel-pending"
+          PORTED: :ported
+          CANCELLED: :cancelled
+
+          def self?.values: -> ::Array[Telnyx::Models::PortingOrder::PhoneNumber::porting_order_status]
+        end
+
+        type requirements_status =
+          :"requirement-info-pending"
+          | :"requirement-info-under-review"
+          | :"requirement-info-exception"
+          | :approved
+
+        module RequirementsStatus
+          extend Telnyx::Internal::Type::Enum
+
+          REQUIREMENT_INFO_PENDING: :"requirement-info-pending"
+          REQUIREMENT_INFO_UNDER_REVIEW: :"requirement-info-under-review"
+          REQUIREMENT_INFO_EXCEPTION: :"requirement-info-exception"
+          APPROVED: :approved
+
+          def self?.values: -> ::Array[Telnyx::Models::PortingOrder::PhoneNumber::requirements_status]
+        end
       end
     end
   end

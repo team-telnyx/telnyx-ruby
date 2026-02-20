@@ -8,7 +8,7 @@ class Telnyx::Test::Resources::ExternalConnections::UploadsTest < Telnyx::Test::
 
     response =
       @telnyx.external_connections.uploads.create(
-        "id",
+        "1293384261075731499",
         number_ids: %w[
           3920457616934164700
           3920457616934164701
@@ -33,7 +33,10 @@ class Telnyx::Test::Resources::ExternalConnections::UploadsTest < Telnyx::Test::
     skip("Mock server tests are disabled")
 
     response =
-      @telnyx.external_connections.uploads.retrieve("7b6a6449-b055-45a6-81f6-f6f0dffa4cc6", id: "id")
+      @telnyx.external_connections.uploads.retrieve(
+        "7b6a6449-b055-45a6-81f6-f6f0dffa4cc6",
+        id: "1293384261075731499"
+      )
 
     assert_pattern do
       response => Telnyx::Models::ExternalConnections::UploadRetrieveResponse
@@ -49,7 +52,7 @@ class Telnyx::Test::Resources::ExternalConnections::UploadsTest < Telnyx::Test::
   def test_list
     skip("Mock server tests are disabled")
 
-    response = @telnyx.external_connections.uploads.list("id")
+    response = @telnyx.external_connections.uploads.list("1293384261075731499")
 
     assert_pattern do
       response => Telnyx::Internal::DefaultFlatPagination
@@ -79,7 +82,7 @@ class Telnyx::Test::Resources::ExternalConnections::UploadsTest < Telnyx::Test::
   def test_pending_count
     skip("Mock server tests are disabled")
 
-    response = @telnyx.external_connections.uploads.pending_count("id")
+    response = @telnyx.external_connections.uploads.pending_count("1293384261075731499")
 
     assert_pattern do
       response => Telnyx::Models::ExternalConnections::UploadPendingCountResponse
@@ -95,7 +98,7 @@ class Telnyx::Test::Resources::ExternalConnections::UploadsTest < Telnyx::Test::
   def test_refresh_status
     skip("Mock server tests are disabled")
 
-    response = @telnyx.external_connections.uploads.refresh_status("id")
+    response = @telnyx.external_connections.uploads.refresh_status("1293384261075731499")
 
     assert_pattern do
       response => Telnyx::Models::ExternalConnections::UploadRefreshStatusResponse
@@ -111,7 +114,11 @@ class Telnyx::Test::Resources::ExternalConnections::UploadsTest < Telnyx::Test::
   def test_retry__required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.external_connections.uploads.retry_("7b6a6449-b055-45a6-81f6-f6f0dffa4cc6", id: "id")
+    response =
+      @telnyx.external_connections.uploads.retry_(
+        "7b6a6449-b055-45a6-81f6-f6f0dffa4cc6",
+        id: "1293384261075731499"
+      )
 
     assert_pattern do
       response => Telnyx::Models::ExternalConnections::UploadRetryResponse

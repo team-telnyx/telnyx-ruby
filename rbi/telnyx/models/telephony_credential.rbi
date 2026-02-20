@@ -77,6 +77,13 @@ module Telnyx
       sig { params(updated_at: String).void }
       attr_writer :updated_at
 
+      # Identifies the user this credential is associated with.
+      sig { returns(T.nilable(String)) }
+      attr_reader :user_id
+
+      sig { params(user_id: String).void }
+      attr_writer :user_id
+
       sig do
         params(
           id: String,
@@ -88,7 +95,8 @@ module Telnyx
           resource_id: String,
           sip_password: String,
           sip_username: String,
-          updated_at: String
+          updated_at: String,
+          user_id: String
         ).returns(T.attached_class)
       end
       def self.new(
@@ -110,7 +118,9 @@ module Telnyx
         # The randomly generated SIP username for the credential.
         sip_username: nil,
         # ISO-8601 formatted date indicating when the resource was updated.
-        updated_at: nil
+        updated_at: nil,
+        # Identifies the user this credential is associated with.
+        user_id: nil
       )
       end
 
@@ -126,7 +136,8 @@ module Telnyx
             resource_id: String,
             sip_password: String,
             sip_username: String,
-            updated_at: String
+            updated_at: String,
+            user_id: String
           }
         )
       end

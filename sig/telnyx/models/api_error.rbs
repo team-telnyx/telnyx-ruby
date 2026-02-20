@@ -4,7 +4,7 @@ module Telnyx
       {
         code: String,
         title: String,
-        detail: String,
+        description: String,
         meta: ::Hash[Symbol, top],
         source: Telnyx::APIError::Source
       }
@@ -14,9 +14,9 @@ module Telnyx
 
       attr_accessor title: String
 
-      attr_reader detail: String?
+      attr_reader description: String?
 
-      def detail=: (String) -> String
+      def description=: (String) -> String
 
       attr_reader meta: ::Hash[Symbol, top]?
 
@@ -29,7 +29,7 @@ module Telnyx
       def initialize: (
         code: String,
         title: String,
-        ?detail: String,
+        ?description: String,
         ?meta: ::Hash[Symbol, top],
         ?source: Telnyx::APIError::Source
       ) -> void
@@ -37,7 +37,7 @@ module Telnyx
       def to_hash: -> {
         code: String,
         title: String,
-        detail: String,
+        description: String,
         meta: ::Hash[Symbol, top],
         source: Telnyx::APIError::Source
       }

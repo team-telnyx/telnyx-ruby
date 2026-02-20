@@ -442,7 +442,7 @@ module Telnyx
         #   api_error => {
         #     code: code,
         #     title: title,
-        #     detail: detail
+        #     description: description
         #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)

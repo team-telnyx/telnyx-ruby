@@ -32,6 +32,11 @@ module Telnyx
         optional :features,
                  -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::Feature] }
 
+        # @!attribute phone_number
+        #
+        #   @return [String, nil]
+        optional :phone_number, String
+
         # @!attribute range
         #
         #   @return [Integer, nil]
@@ -49,18 +54,13 @@ module Telnyx
         optional :region_information,
                  -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation] }
 
-        # @!attribute starting_number
-        #
-        #   @return [String, nil]
-        optional :starting_number, String
-
-        # @!method initialize(cost_information: nil, features: nil, range: nil, record_type: nil, region_information: nil, starting_number: nil)
+        # @!method initialize(cost_information: nil, features: nil, phone_number: nil, range: nil, record_type: nil, region_information: nil)
         #   @param cost_information [Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::CostInformation]
         #   @param features [Array<Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::Feature>]
+        #   @param phone_number [String]
         #   @param range [Integer]
         #   @param record_type [Symbol, Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RecordType]
         #   @param region_information [Array<Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation>]
-        #   @param starting_number [String]
 
         # @see Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data#cost_information
         class CostInformation < Telnyx::Internal::Type::BaseModel

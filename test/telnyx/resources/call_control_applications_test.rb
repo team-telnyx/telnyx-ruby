@@ -26,7 +26,7 @@ class Telnyx::Test::Resources::CallControlApplicationsTest < Telnyx::Test::Resou
   def test_retrieve
     skip("Mock server tests are disabled")
 
-    response = @telnyx.call_control_applications.retrieve("id")
+    response = @telnyx.call_control_applications.retrieve("1293384261075731499")
 
     assert_pattern do
       response => Telnyx::Models::CallControlApplicationRetrieveResponse
@@ -44,7 +44,7 @@ class Telnyx::Test::Resources::CallControlApplicationsTest < Telnyx::Test::Resou
 
     response =
       @telnyx.call_control_applications.update(
-        "id",
+        "1293384261075731499",
         application_name: "call-router",
         webhook_event_url: "https://example.com"
       )
@@ -104,7 +104,7 @@ class Telnyx::Test::Resources::CallControlApplicationsTest < Telnyx::Test::Resou
   def test_delete
     skip("Mock server tests are disabled")
 
-    response = @telnyx.call_control_applications.delete("id")
+    response = @telnyx.call_control_applications.delete("1293384261075731499")
 
     assert_pattern do
       response => Telnyx::Models::CallControlApplicationDeleteResponse

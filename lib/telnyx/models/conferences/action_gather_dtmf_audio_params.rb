@@ -3,8 +3,8 @@
 module Telnyx
   module Models
     module Conferences
-      # @see Telnyx::Resources::Conferences::Actions#gather_using_audio
-      class ActionGatherUsingAudioParams < Telnyx::Internal::Type::BaseModel
+      # @see Telnyx::Resources::Conferences::Actions#gather_dtmf_audio
+      class ActionGatherDtmfAudioParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
@@ -111,7 +111,7 @@ module Telnyx
 
         # @!method initialize(call_control_id:, audio_url: nil, client_state: nil, gather_id: nil, initial_timeout_millis: nil, inter_digit_timeout_millis: nil, invalid_audio_url: nil, invalid_media_name: nil, maximum_digits: nil, maximum_tries: nil, media_name: nil, minimum_digits: nil, stop_playback_on_dtmf: nil, terminating_digit: nil, timeout_millis: nil, valid_digits: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::Conferences::ActionGatherUsingAudioParams} for more details.
+        #   {Telnyx::Models::Conferences::ActionGatherDtmfAudioParams} for more details.
         #
         #   @param call_control_id [String] Unique identifier and token for controlling the call leg that will receive the g
         #

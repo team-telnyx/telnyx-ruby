@@ -33,10 +33,10 @@ module Telnyx
         {
           cost_information: Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::CostInformation,
           features: ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::Feature],
+          phone_number: String,
           range: Integer,
           record_type: Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::record_type,
-          region_information: ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation],
-          starting_number: String
+          region_information: ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation]
         }
 
       class Data < Telnyx::Internal::Type::BaseModel
@@ -51,6 +51,10 @@ module Telnyx
         def features=: (
           ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::Feature]
         ) -> ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::Feature]
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
 
         attr_reader range: Integer?
 
@@ -68,26 +72,22 @@ module Telnyx
           ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation]
         ) -> ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation]
 
-        attr_reader starting_number: String?
-
-        def starting_number=: (String) -> String
-
         def initialize: (
           ?cost_information: Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::CostInformation,
           ?features: ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::Feature],
+          ?phone_number: String,
           ?range: Integer,
           ?record_type: Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::record_type,
-          ?region_information: ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation],
-          ?starting_number: String
+          ?region_information: ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation]
         ) -> void
 
         def to_hash: -> {
           cost_information: Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::CostInformation,
           features: ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::Feature],
+          phone_number: String,
           range: Integer,
           record_type: Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::record_type,
-          region_information: ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation],
-          starting_number: String
+          region_information: ::Array[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation]
         }
 
         type cost_information =

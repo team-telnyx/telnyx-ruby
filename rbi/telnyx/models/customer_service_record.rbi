@@ -43,6 +43,13 @@ module Telnyx
       end
       attr_writer :status
 
+      # Callback URL to receive webhook notifications.
+      sig { returns(T.nilable(String)) }
+      attr_reader :webhook_url
+
+      sig { params(webhook_url: String).void }
+      attr_writer :webhook_url
+
       # Uniquely identifies this customer service record
       sig { returns(T.nilable(String)) }
       attr_reader :id
@@ -80,7 +87,8 @@ module Telnyx
           record_type: String,
           result: T.nilable(Telnyx::CustomerServiceRecord::Result::OrHash),
           status: Telnyx::CustomerServiceRecord::Status::OrSymbol,
-          updated_at: Time
+          updated_at: Time,
+          webhook_url: String
         ).returns(T.attached_class)
       end
       def self.new(
@@ -101,7 +109,9 @@ module Telnyx
         # The status of the customer service record
         status: nil,
         # ISO 8601 formatted date indicating when the resource was created.
-        updated_at: nil
+        updated_at: nil,
+        # Callback URL to receive webhook notifications.
+        webhook_url: nil
       )
       end
 
@@ -115,7 +125,8 @@ module Telnyx
             record_type: String,
             result: T.nilable(Telnyx::CustomerServiceRecord::Result),
             status: Telnyx::CustomerServiceRecord::Status::TaggedSymbol,
-            updated_at: Time
+            updated_at: Time,
+            webhook_url: String
           }
         )
       end

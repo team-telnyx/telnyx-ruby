@@ -56,6 +56,7 @@ class Telnyx::Test::Resources::NumberReservationsTest < Telnyx::Test::ResourceTe
         id: String | nil,
         created_at: Time | nil,
         customer_reference: String | nil,
+        errors: String | nil,
         phone_numbers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::ReservedPhoneNumber]) | nil,
         record_type: String | nil,
         status: Telnyx::NumberReservation::Status | nil,

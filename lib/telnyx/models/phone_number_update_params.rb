@@ -7,6 +7,12 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute address_id
+      #   Identifies the address associated with the phone number.
+      #
+      #   @return [String, nil]
+      optional :address_id, String
+
       # @!attribute billing_group_id
       #   Identifies the billing group associated with the phone number.
       #
@@ -46,9 +52,11 @@ module Telnyx
       #   @return [Array<String>, nil]
       optional :tags, Telnyx::Internal::Type::ArrayOf[String]
 
-      # @!method initialize(billing_group_id: nil, connection_id: nil, customer_reference: nil, external_pin: nil, hd_voice_enabled: nil, tags: nil, request_options: {})
+      # @!method initialize(address_id: nil, billing_group_id: nil, connection_id: nil, customer_reference: nil, external_pin: nil, hd_voice_enabled: nil, tags: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::PhoneNumberUpdateParams} for more details.
+      #
+      #   @param address_id [String] Identifies the address associated with the phone number.
       #
       #   @param billing_group_id [String] Identifies the billing group associated with the phone number.
       #

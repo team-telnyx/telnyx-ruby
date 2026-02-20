@@ -175,6 +175,13 @@ module Telnyx
         sig { params(emergency_enabled: T::Boolean).void }
         attr_writer :emergency_enabled
 
+        # Indicates whether HD voice is enabled for this number.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :hd_voice_enabled
+
+        sig { params(hd_voice_enabled: T::Boolean).void }
+        attr_writer :hd_voice_enabled
+
         # The +E.164-formatted phone number associated with this record.
         sig { returns(T.nilable(String)) }
         attr_reader :phone_number
@@ -263,6 +270,7 @@ module Telnyx
             emergency_address_id: String,
             emergency_enabled: T::Boolean,
             external_pin: String,
+            hd_voice_enabled: T::Boolean,
             messaging_profile_id: String,
             messaging_profile_name: String,
             phone_number: String,
@@ -314,6 +322,8 @@ module Telnyx
           # the correct external PIN to the winning carrier. Note that not all carriers
           # cooperate with this security mechanism.
           external_pin: nil,
+          # Indicates whether HD voice is enabled for this number.
+          hd_voice_enabled: nil,
           # Identifies the messaging profile associated with the phone number.
           messaging_profile_id: nil,
           # The name of the messaging profile associated with the phone number.
@@ -355,6 +365,7 @@ module Telnyx
               emergency_address_id: String,
               emergency_enabled: T::Boolean,
               external_pin: String,
+              hd_voice_enabled: T::Boolean,
               messaging_profile_id: String,
               messaging_profile_name: String,
               phone_number: String,

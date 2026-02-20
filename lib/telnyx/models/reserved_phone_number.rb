@@ -21,6 +21,12 @@ module Telnyx
         #   @return [Time, nil]
         optional :created_at, Time
 
+        # @!attribute errors
+        #   Errors the reservation could happen upon
+        #
+        #   @return [String, nil]
+        optional :errors, String
+
         # @!attribute expired_at
         #   An ISO 8901 datetime string for when the individual number reservation is going
         #   to expire
@@ -47,13 +53,15 @@ module Telnyx
         optional :updated_at, Time
       end
 
-      # @!method initialize(id: nil, created_at: nil, expired_at: nil, phone_number: nil, record_type: nil, status: nil, updated_at: nil)
+      # @!method initialize(id: nil, created_at: nil, errors: nil, expired_at: nil, phone_number: nil, record_type: nil, status: nil, updated_at: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::ReservedPhoneNumber} for more details.
       #
       #   @param id [String]
       #
       #   @param created_at [Time] An ISO 8901 datetime string denoting when the individual number reservation was
+      #
+      #   @param errors [String] Errors the reservation could happen upon
       #
       #   @param expired_at [Time] An ISO 8901 datetime string for when the individual number reservation is going
       #

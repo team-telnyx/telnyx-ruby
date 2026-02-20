@@ -1,10 +1,10 @@
 module Telnyx
   module Models
     module Conferences
-      type action_gather_using_audio_response =
+      type action_gather_dtmf_audio_response =
         { data: Telnyx::Conferences::ConferenceCommandResult }
 
-      class ActionGatherUsingAudioResponse < Telnyx::Internal::Type::BaseModel
+      class ActionGatherDtmfAudioResponse < Telnyx::Internal::Type::BaseModel
         attr_reader data: Telnyx::Conferences::ConferenceCommandResult?
 
         def data=: (
