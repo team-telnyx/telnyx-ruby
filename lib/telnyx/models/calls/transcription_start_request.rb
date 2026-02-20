@@ -27,7 +27,7 @@ module Telnyx
 
         # @!attribute transcription_engine_config
         #
-        #   @return [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config, nil]
+        #   @return [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config, nil]
         optional :transcription_engine_config,
                  union: -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig }
 
@@ -49,7 +49,7 @@ module Telnyx
         #
         #   @param transcription_engine [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngine] Engine to use for speech recognition. Legacy values `A` - `Google`, `B` - `Telny
         #
-        #   @param transcription_engine_config [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config]
+        #   @param transcription_engine_config [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config]
         #
         #   @param transcription_tracks [String] Indicates which leg of the call will be transcribed. Use `inbound` for the leg t
 
@@ -87,232 +87,12 @@ module Telnyx
 
           variant :B, -> { Telnyx::Calls::TranscriptionEngineBConfig }
 
-          variant -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config }
+          variant -> { Telnyx::Calls::DeepgramNova2Config }
 
-          variant -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config }
-
-          class DeepgramNova2Config < Telnyx::Internal::Type::BaseModel
-            # @!attribute transcription_engine
-            #
-            #   @return [Symbol, :Deepgram]
-            required :transcription_engine, const: :Deepgram
-
-            # @!attribute transcription_model
-            #
-            #   @return [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::TranscriptionModel]
-            required :transcription_model,
-                     enum: -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::TranscriptionModel }
-
-            # @!attribute interim_results
-            #   Whether to send also interim results. If set to false, only final results will
-            #   be sent.
-            #
-            #   @return [Boolean, nil]
-            optional :interim_results, Telnyx::Internal::Type::Boolean
-
-            # @!attribute keywords_boosting
-            #   Keywords and their respective intensifiers (boosting values) to improve
-            #   transcription accuracy for specific words or phrases. The intensifier should be
-            #   a numeric value. Example: `{"snuffleupagus": 5, "systrom": 2, "krieger": 1}`.
-            #
-            #   @return [Hash{Symbol=>Float}, nil]
-            optional :keywords_boosting, Telnyx::Internal::Type::HashOf[Float]
-
-            # @!attribute language
-            #   Language to use for speech recognition with nova-2 model
-            #
-            #   @return [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language, nil]
-            optional :language,
-                     enum: -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language }
-
-            # @!attribute utterance_end_ms
-            #   Number of milliseconds of silence to consider an utterance ended. Ranges from 0
-            #   to 5000 ms.
-            #
-            #   @return [Integer, nil]
-            optional :utterance_end_ms, Integer
-
-            # @!method initialize(transcription_model:, interim_results: nil, keywords_boosting: nil, language: nil, utterance_end_ms: nil, transcription_engine: :Deepgram)
-            #   Some parameter documentations has been truncated, see
-            #   {Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config}
-            #   for more details.
-            #
-            #   @param transcription_model [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::TranscriptionModel]
-            #
-            #   @param interim_results [Boolean] Whether to send also interim results. If set to false, only final results will b
-            #
-            #   @param keywords_boosting [Hash{Symbol=>Float}] Keywords and their respective intensifiers (boosting values) to improve transcri
-            #
-            #   @param language [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config::Language] Language to use for speech recognition with nova-2 model
-            #
-            #   @param utterance_end_ms [Integer] Number of milliseconds of silence to consider an utterance ended. Ranges from 0
-            #
-            #   @param transcription_engine [Symbol, :Deepgram]
-
-            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config#transcription_model
-            module TranscriptionModel
-              extend Telnyx::Internal::Type::Enum
-
-              DEEPGRAM_NOVA_2 = :"deepgram/nova-2"
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-
-            # Language to use for speech recognition with nova-2 model
-            #
-            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config#language
-            module Language
-              extend Telnyx::Internal::Type::Enum
-
-              BG = :bg
-              CA = :ca
-              ZH_CN = :"zh-CN"
-              ZH_HANS = :"zh-Hans"
-              ZH_TW = :"zh-TW"
-              ZH_HANT = :"zh-Hant"
-              ZH_HK = :"zh-HK"
-              CS = :cs
-              DA_DK = :"da-DK"
-              NL_BE = :"nl-BE"
-              EN_US = :"en-US"
-              EN_AU = :"en-AU"
-              EN_GB = :"en-GB"
-              EN_NZ = :"en-NZ"
-              EN_IN = :"en-IN"
-              ET = :et
-              FI = :fi
-              FR = :fr
-              FR_CA = :"fr-CA"
-              DE_CH = :"de-CH"
-              EL = :el
-              HI = :hi
-              HU = :hu
-              ID = :id
-              IT = :it
-              JA = :ja
-              KO_KR = :"ko-KR"
-              LV = :lv
-              LT = :lt
-              MS = :ms
-              NO = :no
-              PL = :pl
-              PT_BR = :"pt-BR"
-              PT_PT = :"pt-PT"
-              RO = :ro
-              RU = :ru
-              SK = :sk
-              ES_419 = :"es-419"
-              SV_SE = :"sv-SE"
-              TH_TH = :"th-TH"
-              TR = :tr
-              UK = :uk
-              VI = :vi
-              AUTO_DETECT = :auto_detect
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-          end
-
-          class DeepgramNova3Config < Telnyx::Internal::Type::BaseModel
-            # @!attribute transcription_engine
-            #
-            #   @return [Symbol, :Deepgram]
-            required :transcription_engine, const: :Deepgram
-
-            # @!attribute transcription_model
-            #
-            #   @return [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::TranscriptionModel]
-            required :transcription_model,
-                     enum: -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::TranscriptionModel }
-
-            # @!attribute interim_results
-            #   Whether to send also interim results. If set to false, only final results will
-            #   be sent.
-            #
-            #   @return [Boolean, nil]
-            optional :interim_results, Telnyx::Internal::Type::Boolean
-
-            # @!attribute keywords_boosting
-            #   Keywords and their respective intensifiers (boosting values) to improve
-            #   transcription accuracy for specific words or phrases. The intensifier should be
-            #   a numeric value. Example: `{"snuffleupagus": 5, "systrom": 2, "krieger": 1}`.
-            #
-            #   @return [Hash{Symbol=>Float}, nil]
-            optional :keywords_boosting, Telnyx::Internal::Type::HashOf[Float]
-
-            # @!attribute language
-            #   Language to use for speech recognition with nova-3 model
-            #
-            #   @return [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language, nil]
-            optional :language,
-                     enum: -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language }
-
-            # @!attribute utterance_end_ms
-            #   Number of milliseconds of silence to consider an utterance ended. Ranges from 0
-            #   to 5000 ms.
-            #
-            #   @return [Integer, nil]
-            optional :utterance_end_ms, Integer
-
-            # @!method initialize(transcription_model:, interim_results: nil, keywords_boosting: nil, language: nil, utterance_end_ms: nil, transcription_engine: :Deepgram)
-            #   Some parameter documentations has been truncated, see
-            #   {Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config}
-            #   for more details.
-            #
-            #   @param transcription_model [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::TranscriptionModel]
-            #
-            #   @param interim_results [Boolean] Whether to send also interim results. If set to false, only final results will b
-            #
-            #   @param keywords_boosting [Hash{Symbol=>Float}] Keywords and their respective intensifiers (boosting values) to improve transcri
-            #
-            #   @param language [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config::Language] Language to use for speech recognition with nova-3 model
-            #
-            #   @param utterance_end_ms [Integer] Number of milliseconds of silence to consider an utterance ended. Ranges from 0
-            #
-            #   @param transcription_engine [Symbol, :Deepgram]
-
-            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config#transcription_model
-            module TranscriptionModel
-              extend Telnyx::Internal::Type::Enum
-
-              DEEPGRAM_NOVA_3 = :"deepgram/nova-3"
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-
-            # Language to use for speech recognition with nova-3 model
-            #
-            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config#language
-            module Language
-              extend Telnyx::Internal::Type::Enum
-
-              EN_US = :"en-US"
-              EN_AU = :"en-AU"
-              EN_GB = :"en-GB"
-              EN_IN = :"en-IN"
-              EN_NZ = :"en-NZ"
-              DE = :de
-              NL = :nl
-              SV_SE = :"sv-SE"
-              DA_DK = :"da-DK"
-              ES = :es
-              ES_419 = :"es-419"
-              FR = :fr
-              FR_CA = :"fr-CA"
-              PT_BR = :"pt-BR"
-              PT_PT = :"pt-PT"
-              AUTO_DETECT = :auto_detect
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-          end
+          variant -> { Telnyx::Calls::DeepgramNova3Config }
 
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova2Config, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::DeepgramNova3Config)]
+          #   @return [Array(Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config)]
         end
       end
     end
