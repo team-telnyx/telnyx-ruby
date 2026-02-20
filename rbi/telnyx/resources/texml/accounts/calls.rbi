@@ -139,7 +139,7 @@ module Telnyx
                 Telnyx::Texml::Accounts::CallCallsParams::SupervisingRole::OrSymbol,
               texml: String,
               time_limit: Integer,
-              timeout: Integer,
+              timeout_seconds: Integer,
               trim: Telnyx::Texml::Accounts::CallCallsParams::Trim::OrSymbol,
               url: String,
               url_method:
@@ -250,7 +250,7 @@ module Telnyx
             # The number of seconds to wait for the called party to answer the call before the
             # call is canceled. The minimum value is 5 and the maximum value is 120. Default
             # is 30 seconds.
-            timeout: nil,
+            timeout_seconds: nil,
             # Whether to trim any leading and trailing silence from the recording. Defaults to
             # `trim-silence`.
             trim: nil,
