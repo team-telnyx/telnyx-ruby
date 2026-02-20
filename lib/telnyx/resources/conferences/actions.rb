@@ -40,11 +40,11 @@ module Telnyx
         end
 
         # Some parameter documentations has been truncated, see
-        # {Telnyx::Models::Conferences::ActionEndParams} for more details.
+        # {Telnyx::Models::Conferences::ActionEndConferenceParams} for more details.
         #
         # End a conference and terminate all active participants.
         #
-        # @overload end_(id, command_id: nil, request_options: {})
+        # @overload end_conference(id, command_id: nil, request_options: {})
         #
         # @param id [String] Uniquely identifies the conference.
         #
@@ -52,26 +52,26 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Conferences::ActionEndResponse]
+        # @return [Telnyx::Models::Conferences::ActionEndConferenceResponse]
         #
-        # @see Telnyx::Models::Conferences::ActionEndParams
-        def end_(id, params = {})
-          parsed, options = Telnyx::Conferences::ActionEndParams.dump_request(params)
+        # @see Telnyx::Models::Conferences::ActionEndConferenceParams
+        def end_conference(id, params = {})
+          parsed, options = Telnyx::Conferences::ActionEndConferenceParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["conferences/%1$s/actions/end", id],
             body: parsed,
-            model: Telnyx::Models::Conferences::ActionEndResponse,
+            model: Telnyx::Models::Conferences::ActionEndConferenceResponse,
             options: options
           )
         end
 
         # Some parameter documentations has been truncated, see
-        # {Telnyx::Models::Conferences::ActionGatherUsingAudioParams} for more details.
+        # {Telnyx::Models::Conferences::ActionGatherDtmfAudioParams} for more details.
         #
         # Play an audio file to a specific conference participant and gather DTMF input.
         #
-        # @overload gather_using_audio(id, call_control_id:, audio_url: nil, client_state: nil, gather_id: nil, initial_timeout_millis: nil, inter_digit_timeout_millis: nil, invalid_audio_url: nil, invalid_media_name: nil, maximum_digits: nil, maximum_tries: nil, media_name: nil, minimum_digits: nil, stop_playback_on_dtmf: nil, terminating_digit: nil, timeout_millis: nil, valid_digits: nil, request_options: {})
+        # @overload gather_dtmf_audio(id, call_control_id:, audio_url: nil, client_state: nil, gather_id: nil, initial_timeout_millis: nil, inter_digit_timeout_millis: nil, invalid_audio_url: nil, invalid_media_name: nil, maximum_digits: nil, maximum_tries: nil, media_name: nil, minimum_digits: nil, stop_playback_on_dtmf: nil, terminating_digit: nil, timeout_millis: nil, valid_digits: nil, request_options: {})
         #
         # @param id [String] Uniquely identifies the conference.
         #
@@ -109,16 +109,16 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Conferences::ActionGatherUsingAudioResponse]
+        # @return [Telnyx::Models::Conferences::ActionGatherDtmfAudioResponse]
         #
-        # @see Telnyx::Models::Conferences::ActionGatherUsingAudioParams
-        def gather_using_audio(id, params)
-          parsed, options = Telnyx::Conferences::ActionGatherUsingAudioParams.dump_request(params)
+        # @see Telnyx::Models::Conferences::ActionGatherDtmfAudioParams
+        def gather_dtmf_audio(id, params)
+          parsed, options = Telnyx::Conferences::ActionGatherDtmfAudioParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["conferences/%1$s/actions/gather_using_audio", id],
             body: parsed,
-            model: Telnyx::Models::Conferences::ActionGatherUsingAudioResponse,
+            model: Telnyx::Models::Conferences::ActionGatherDtmfAudioResponse,
             options: options
           )
         end

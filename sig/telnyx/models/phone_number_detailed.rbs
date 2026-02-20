@@ -24,11 +24,13 @@ module Telnyx
         emergency_address_id: String?,
         emergency_enabled: bool,
         emergency_status: Telnyx::Models::PhoneNumberDetailed::emergency_status,
+        hd_voice_enabled: bool,
         inbound_call_screening: Telnyx::Models::PhoneNumberDetailed::inbound_call_screening,
         messaging_profile_id: String?,
         messaging_profile_name: String?,
         source_type: Telnyx::Models::PhoneNumberDetailed::source_type?,
-        :t38_fax_gateway_enabled => bool
+        :t38_fax_gateway_enabled => bool,
+        updated_at: String
       }
 
     class PhoneNumberDetailed < Telnyx::Internal::Type::BaseModel
@@ -100,11 +102,19 @@ module Telnyx
 
       def emergency_enabled=: (bool) -> bool
 
+      attr_reader hd_voice_enabled: bool?
+
+      def hd_voice_enabled=: (bool) -> bool
+
       attr_accessor source_type: Telnyx::Models::PhoneNumberDetailed::source_type?
 
       attr_reader t38_fax_gateway_enabled: bool?
 
       def t38_fax_gateway_enabled=: (bool) -> bool
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
 
       def initialize: (
         id: String,
@@ -129,11 +139,13 @@ module Telnyx
         ?emergency_address_id: String?,
         ?emergency_enabled: bool,
         ?emergency_status: Telnyx::Models::PhoneNumberDetailed::emergency_status,
+        ?hd_voice_enabled: bool,
         ?inbound_call_screening: Telnyx::Models::PhoneNumberDetailed::inbound_call_screening,
         ?messaging_profile_id: String?,
         ?messaging_profile_name: String?,
         ?source_type: Telnyx::Models::PhoneNumberDetailed::source_type?,
-        ?t38_fax_gateway_enabled: bool
+        ?t38_fax_gateway_enabled: bool,
+        ?updated_at: String
       ) -> void
 
       def to_hash: -> {
@@ -159,11 +171,13 @@ module Telnyx
         emergency_address_id: String?,
         emergency_enabled: bool,
         emergency_status: Telnyx::Models::PhoneNumberDetailed::emergency_status,
+        hd_voice_enabled: bool,
         inbound_call_screening: Telnyx::Models::PhoneNumberDetailed::inbound_call_screening,
         messaging_profile_id: String?,
         messaging_profile_name: String?,
         source_type: Telnyx::Models::PhoneNumberDetailed::source_type?,
-        :t38_fax_gateway_enabled => bool
+        :t38_fax_gateway_enabled => bool,
+        updated_at: String
       }
 
       type phone_number_type =

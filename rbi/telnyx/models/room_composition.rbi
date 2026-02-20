@@ -59,6 +59,13 @@ module Telnyx
       end
       attr_writer :file_format
 
+      # The resolution of the room composition.
+      sig { returns(T.nilable(String)) }
+      attr_reader :resolution
+
+      sig { params(resolution: String).void }
+      attr_writer :resolution
+
       # Identify the room associated with the room composition.
       sig { returns(T.nilable(String)) }
       attr_reader :room_id
@@ -157,6 +164,7 @@ module Telnyx
           ended_at: Time,
           file_format: Telnyx::RoomComposition::Format::OrSymbol,
           record_type: String,
+          resolution: String,
           room_id: String,
           session_id: String,
           size_mb: Float,
@@ -186,6 +194,8 @@ module Telnyx
         # Shows format of the room composition.
         file_format: nil,
         record_type: nil,
+        # The resolution of the room composition.
+        resolution: nil,
         # Identify the room associated with the room composition.
         room_id: nil,
         # Identify the room session associated with the room composition.
@@ -225,6 +235,7 @@ module Telnyx
             ended_at: Time,
             file_format: Telnyx::RoomComposition::Format::TaggedSymbol,
             record_type: String,
+            resolution: String,
             room_id: String,
             session_id: String,
             size_mb: Float,

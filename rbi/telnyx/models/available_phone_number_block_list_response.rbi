@@ -111,6 +111,12 @@ module Telnyx
         end
         attr_writer :features
 
+        sig { returns(T.nilable(String)) }
+        attr_reader :phone_number
+
+        sig { params(phone_number: String).void }
+        attr_writer :phone_number
+
         sig { returns(T.nilable(Integer)) }
         attr_reader :range
 
@@ -155,12 +161,6 @@ module Telnyx
         end
         attr_writer :region_information
 
-        sig { returns(T.nilable(String)) }
-        attr_reader :starting_number
-
-        sig { params(starting_number: String).void }
-        attr_writer :starting_number
-
         sig do
           params(
             cost_information:
@@ -169,23 +169,23 @@ module Telnyx
               T::Array[
                 Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::Feature::OrHash
               ],
+            phone_number: String,
             range: Integer,
             record_type:
               Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RecordType::OrSymbol,
             region_information:
               T::Array[
                 Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation::OrHash
-              ],
-            starting_number: String
+              ]
           ).returns(T.attached_class)
         end
         def self.new(
           cost_information: nil,
           features: nil,
+          phone_number: nil,
           range: nil,
           record_type: nil,
-          region_information: nil,
-          starting_number: nil
+          region_information: nil
         )
         end
 
@@ -198,14 +198,14 @@ module Telnyx
                 T::Array[
                   Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::Feature
                 ],
+              phone_number: String,
               range: Integer,
               record_type:
                 Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RecordType::TaggedSymbol,
               region_information:
                 T::Array[
                   Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation
-                ],
-              starting_number: String
+                ]
             }
           )
         end

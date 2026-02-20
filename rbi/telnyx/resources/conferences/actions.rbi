@@ -49,9 +49,9 @@ module Telnyx
             id: String,
             command_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Conferences::ActionEndResponse)
+          ).returns(Telnyx::Models::Conferences::ActionEndConferenceResponse)
         end
-        def end_(
+        def end_conference(
           # Uniquely identifies the conference.
           id,
           # Use this field to avoid duplicate commands. Telnyx will ignore any command with
@@ -82,9 +82,9 @@ module Telnyx
             timeout_millis: Integer,
             valid_digits: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Conferences::ActionGatherUsingAudioResponse)
+          ).returns(Telnyx::Models::Conferences::ActionGatherDtmfAudioResponse)
         end
-        def gather_using_audio(
+        def gather_dtmf_audio(
           # Uniquely identifies the conference.
           id,
           # Unique identifier and token for controlling the call leg that will receive the

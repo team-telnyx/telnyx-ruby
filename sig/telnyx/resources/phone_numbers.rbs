@@ -20,6 +20,7 @@ module Telnyx
 
       def update: (
         String phone_number_id,
+        ?address_id: String,
         ?billing_group_id: String,
         ?connection_id: String,
         ?customer_reference: String,

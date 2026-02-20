@@ -28,6 +28,13 @@ module Telnyx
       sig { params(created_at: Time).void }
       attr_writer :created_at
 
+      # Errors the reservation could happen upon
+      sig { returns(T.nilable(String)) }
+      attr_reader :errors
+
+      sig { params(errors: String).void }
+      attr_writer :errors
+
       # An ISO 8901 datetime string for when the individual number reservation is going
       # to expire
       sig { returns(T.nilable(Time)) }
@@ -61,6 +68,7 @@ module Telnyx
         params(
           id: String,
           created_at: Time,
+          errors: String,
           expired_at: Time,
           phone_number: String,
           record_type: String,
@@ -73,6 +81,8 @@ module Telnyx
         # An ISO 8901 datetime string denoting when the individual number reservation was
         # created.
         created_at: nil,
+        # Errors the reservation could happen upon
+        errors: nil,
         # An ISO 8901 datetime string for when the individual number reservation is going
         # to expire
         expired_at: nil,
@@ -91,6 +101,7 @@ module Telnyx
           {
             id: String,
             created_at: Time,
+            errors: String,
             expired_at: Time,
             phone_number: String,
             record_type: String,

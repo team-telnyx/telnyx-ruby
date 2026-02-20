@@ -16,13 +16,15 @@ module Telnyx
         emergency_enabled: bool,
         emergency_status: Telnyx::Models::PhoneNumberSlimListResponse::emergency_status,
         external_pin: String,
+        hd_voice_enabled: bool,
         inbound_call_screening: Telnyx::Models::PhoneNumberSlimListResponse::inbound_call_screening,
         phone_number: String,
         phone_number_type: Telnyx::Models::PhoneNumberSlimListResponse::phone_number_type,
         purchased_at: String,
         record_type: String,
         status: Telnyx::Models::PhoneNumberSlimListResponse::status,
-        :t38_fax_gateway_enabled => bool
+        :t38_fax_gateway_enabled => bool,
+        updated_at: String
       }
 
     class PhoneNumberSlimListResponse < Telnyx::Internal::Type::BaseModel
@@ -90,6 +92,10 @@ module Telnyx
 
       def emergency_enabled=: (bool) -> bool
 
+      attr_reader hd_voice_enabled: bool?
+
+      def hd_voice_enabled=: (bool) -> bool
+
       attr_reader phone_number: String?
 
       def phone_number=: (String) -> String
@@ -118,6 +124,10 @@ module Telnyx
 
       def t38_fax_gateway_enabled=: (bool) -> bool
 
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
       def initialize: (
         ?id: String,
         ?billing_group_id: String,
@@ -133,13 +143,15 @@ module Telnyx
         ?emergency_enabled: bool,
         ?emergency_status: Telnyx::Models::PhoneNumberSlimListResponse::emergency_status,
         ?external_pin: String,
+        ?hd_voice_enabled: bool,
         ?inbound_call_screening: Telnyx::Models::PhoneNumberSlimListResponse::inbound_call_screening,
         ?phone_number: String,
         ?phone_number_type: Telnyx::Models::PhoneNumberSlimListResponse::phone_number_type,
         ?purchased_at: String,
         ?record_type: String,
         ?status: Telnyx::Models::PhoneNumberSlimListResponse::status,
-        ?t38_fax_gateway_enabled: bool
+        ?t38_fax_gateway_enabled: bool,
+        ?updated_at: String
       ) -> void
 
       def to_hash: -> {
@@ -157,13 +169,15 @@ module Telnyx
         emergency_enabled: bool,
         emergency_status: Telnyx::Models::PhoneNumberSlimListResponse::emergency_status,
         external_pin: String,
+        hd_voice_enabled: bool,
         inbound_call_screening: Telnyx::Models::PhoneNumberSlimListResponse::inbound_call_screening,
         phone_number: String,
         phone_number_type: Telnyx::Models::PhoneNumberSlimListResponse::phone_number_type,
         purchased_at: String,
         record_type: String,
         status: Telnyx::Models::PhoneNumberSlimListResponse::status,
-        :t38_fax_gateway_enabled => bool
+        :t38_fax_gateway_enabled => bool,
+        updated_at: String
       }
 
       type emergency_status =

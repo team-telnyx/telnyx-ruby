@@ -149,6 +149,13 @@ module Telnyx
       sig { params(emergency_enabled: T::Boolean).void }
       attr_writer :emergency_enabled
 
+      # Indicates whether HD voice is enabled for this number.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :hd_voice_enabled
+
+      sig { params(hd_voice_enabled: T::Boolean).void }
+      attr_writer :hd_voice_enabled
+
       # The +E.164-formatted phone number associated with this record.
       sig { returns(T.nilable(String)) }
       attr_reader :phone_number
@@ -214,6 +221,13 @@ module Telnyx
       sig { params(t38_fax_gateway_enabled: T::Boolean).void }
       attr_writer :t38_fax_gateway_enabled
 
+      # ISO 8601 formatted date indicating when the resource was updated.
+      sig { returns(T.nilable(String)) }
+      attr_reader :updated_at
+
+      sig { params(updated_at: String).void }
+      attr_writer :updated_at
+
       sig do
         params(
           id: String,
@@ -231,6 +245,7 @@ module Telnyx
           emergency_status:
             Telnyx::Models::PhoneNumberSlimListResponse::EmergencyStatus::OrSymbol,
           external_pin: String,
+          hd_voice_enabled: T::Boolean,
           inbound_call_screening:
             Telnyx::Models::PhoneNumberSlimListResponse::InboundCallScreening::OrSymbol,
           phone_number: String,
@@ -239,7 +254,8 @@ module Telnyx
           purchased_at: String,
           record_type: String,
           status: Telnyx::Models::PhoneNumberSlimListResponse::Status::OrSymbol,
-          t38_fax_gateway_enabled: T::Boolean
+          t38_fax_gateway_enabled: T::Boolean,
+          updated_at: String
         ).returns(T.attached_class)
       end
       def self.new(
@@ -279,6 +295,8 @@ module Telnyx
         # the correct external PIN to the winning carrier. Note that not all carriers
         # cooperate with this security mechanism.
         external_pin: nil,
+        # Indicates whether HD voice is enabled for this number.
+        hd_voice_enabled: nil,
         # The inbound_call_screening setting is a phone number configuration option
         # variable that allows users to configure their settings to block or flag
         # fraudulent calls. It can be set to disabled, reject_calls, or flag_calls. This
@@ -297,7 +315,9 @@ module Telnyx
         # The phone number's current status.
         status: nil,
         # Indicates whether T38 Fax Gateway for inbound calls to this number.
-        t38_fax_gateway_enabled: nil
+        t38_fax_gateway_enabled: nil,
+        # ISO 8601 formatted date indicating when the resource was updated.
+        updated_at: nil
       )
       end
 
@@ -319,6 +339,7 @@ module Telnyx
             emergency_status:
               Telnyx::Models::PhoneNumberSlimListResponse::EmergencyStatus::TaggedSymbol,
             external_pin: String,
+            hd_voice_enabled: T::Boolean,
             inbound_call_screening:
               Telnyx::Models::PhoneNumberSlimListResponse::InboundCallScreening::TaggedSymbol,
             phone_number: String,
@@ -328,7 +349,8 @@ module Telnyx
             record_type: String,
             status:
               Telnyx::Models::PhoneNumberSlimListResponse::Status::TaggedSymbol,
-            t38_fax_gateway_enabled: T::Boolean
+            t38_fax_gateway_enabled: T::Boolean,
+            updated_at: String
           }
         )
       end

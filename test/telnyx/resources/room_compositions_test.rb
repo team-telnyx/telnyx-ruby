@@ -61,6 +61,7 @@ class Telnyx::Test::Resources::RoomCompositionsTest < Telnyx::Test::ResourceTest
         ended_at: Time | nil,
         file_format: Telnyx::RoomComposition::Format | nil,
         record_type: String | nil,
+        resolution: String | nil,
         room_id: String | nil,
         session_id: String | nil,
         size_mb: Float | nil,

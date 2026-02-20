@@ -170,6 +170,12 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :emergency_enabled, Telnyx::Internal::Type::Boolean
 
+        # @!attribute hd_voice_enabled
+        #   Indicates whether HD voice is enabled for this number.
+        #
+        #   @return [Boolean, nil]
+        optional :hd_voice_enabled, Telnyx::Internal::Type::Boolean
+
         # @!attribute source_type
         #   Indicates if the phone number was purchased or ported in. For some numbers this
         #   information may not be available.
@@ -182,9 +188,15 @@ module Telnyx
         #
         #   @return [Boolean, nil]
         optional :t38_fax_gateway_enabled, Telnyx::Internal::Type::Boolean
+
+        # @!attribute updated_at
+        #   ISO 8601 formatted date indicating when the resource was updated.
+        #
+        #   @return [String, nil]
+        optional :updated_at, String
       end
 
-      # @!method initialize(id:, country_iso_alpha2:, created_at:, deletion_lock_enabled:, external_pin:, phone_number:, phone_number_type:, purchased_at:, record_type:, status:, tags:, billing_group_id: nil, call_forwarding_enabled: nil, call_recording_enabled: nil, caller_id_name_enabled: nil, cnam_listing_enabled: nil, connection_id: nil, connection_name: nil, customer_reference: nil, emergency_address_id: nil, emergency_enabled: nil, emergency_status: nil, inbound_call_screening: nil, messaging_profile_id: nil, messaging_profile_name: nil, source_type: nil, t38_fax_gateway_enabled: nil)
+      # @!method initialize(id:, country_iso_alpha2:, created_at:, deletion_lock_enabled:, external_pin:, phone_number:, phone_number_type:, purchased_at:, record_type:, status:, tags:, billing_group_id: nil, call_forwarding_enabled: nil, call_recording_enabled: nil, caller_id_name_enabled: nil, cnam_listing_enabled: nil, connection_id: nil, connection_name: nil, customer_reference: nil, emergency_address_id: nil, emergency_enabled: nil, emergency_status: nil, hd_voice_enabled: nil, inbound_call_screening: nil, messaging_profile_id: nil, messaging_profile_name: nil, source_type: nil, t38_fax_gateway_enabled: nil, updated_at: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::PhoneNumberDetailed} for more details.
       #
@@ -232,6 +244,8 @@ module Telnyx
       #
       #   @param emergency_status [Symbol, Telnyx::Models::PhoneNumberDetailed::EmergencyStatus] Indicates the status of the provisioning of emergency services for the phone num
       #
+      #   @param hd_voice_enabled [Boolean] Indicates whether HD voice is enabled for this number.
+      #
       #   @param inbound_call_screening [Symbol, Telnyx::Models::PhoneNumberDetailed::InboundCallScreening] The inbound_call_screening setting is a phone number configuration option variab
       #
       #   @param messaging_profile_id [String, nil] Identifies the messaging profile associated with the phone number.
@@ -241,6 +255,8 @@ module Telnyx
       #   @param source_type [Symbol, Telnyx::Models::PhoneNumberDetailed::SourceType, nil] Indicates if the phone number was purchased or ported in. For some numbers this
       #
       #   @param t38_fax_gateway_enabled [Boolean] Indicates whether T38 Fax Gateway for inbound calls to this number.
+      #
+      #   @param updated_at [String] ISO 8601 formatted date indicating when the resource was updated.
 
       # The phone number's type. Note: For numbers purchased prior to July 2023 or when
       # fetching a number's details immediately after a purchase completes, the legacy

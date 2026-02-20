@@ -30,6 +30,12 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::CustomerServiceRecord::Status, nil]
       optional :status, enum: -> { Telnyx::CustomerServiceRecord::Status }
 
+      # @!attribute webhook_url
+      #   Callback URL to receive webhook notifications.
+      #
+      #   @return [String, nil]
+      optional :webhook_url, String
+
       response_only do
         # @!attribute id
         #   Uniquely identifies this customer service record
@@ -56,7 +62,7 @@ module Telnyx
         optional :updated_at, Time
       end
 
-      # @!method initialize(id: nil, created_at: nil, error_message: nil, phone_number: nil, record_type: nil, result: nil, status: nil, updated_at: nil)
+      # @!method initialize(id: nil, created_at: nil, error_message: nil, phone_number: nil, record_type: nil, result: nil, status: nil, updated_at: nil, webhook_url: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CustomerServiceRecord} for more details.
       #
@@ -75,6 +81,8 @@ module Telnyx
       #   @param status [Symbol, Telnyx::Models::CustomerServiceRecord::Status] The status of the customer service record
       #
       #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was created.
+      #
+      #   @param webhook_url [String] Callback URL to receive webhook notifications.
 
       # @see Telnyx::Models::CustomerServiceRecord#result
       class Result < Telnyx::Internal::Type::BaseModel
