@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.35.0 (2026-02-20)
+
+Full Changelog: [v5.34.0...v5.35.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.34.0...v5.35.0)
+
+### Features
+
+* **api:** manual updates ([ad2fab1](https://github.com/team-telnyx/telnyx-ruby/commit/ad2fab10a925dcdc3b9d2ff1eeca3bf49ea2e5a8))
+
 ## 5.34.0 (2026-02-20)
 
 Full Changelog: [v5.33.0...v5.34.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.33.0...v5.34.0)
