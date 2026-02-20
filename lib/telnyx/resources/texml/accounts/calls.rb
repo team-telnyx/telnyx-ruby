@@ -100,7 +100,7 @@ module Telnyx
           # Initiate an outbound TeXML call. Telnyx will request TeXML from the XML Request
           # URL configured for the connection in the Mission Control Portal.
           #
-          # @overload calls(account_sid, application_sid:, from:, to:, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, detection_mode: nil, fallback_url: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, supervise_call_sid: nil, supervising_role: nil, texml: nil, time_limit: nil, timeout: nil, trim: nil, url: nil, url_method: nil, request_options: {})
+          # @overload calls(account_sid, application_sid:, from:, to:, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, detection_mode: nil, fallback_url: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, supervise_call_sid: nil, supervising_role: nil, texml: nil, time_limit: nil, timeout_seconds: nil, trim: nil, url: nil, url_method: nil, request_options: {})
           #
           # @param account_sid [String] The id of the account the resource belongs to.
           #
@@ -176,7 +176,7 @@ module Telnyx
           #
           # @param time_limit [Integer] The maximum duration of the call in seconds. The minimum value is 30 and the max
           #
-          # @param timeout [Integer] The number of seconds to wait for the called party to answer the call before the
+          # @param timeout_seconds [Integer] The number of seconds to wait for the called party to answer the call before the
           #
           # @param trim [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Trim] Whether to trim any leading and trailing silence from the recording. Defaults to
           #

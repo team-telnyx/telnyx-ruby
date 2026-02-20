@@ -40,7 +40,7 @@ module Telnyx
             supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::supervising_role,
             texml: String,
             time_limit: Integer,
-            timeout: Integer,
+            timeout_seconds: Integer,
             trim: Telnyx::Models::Texml::Accounts::CallCallsParams::trim,
             url: String,
             url_method: Telnyx::Models::Texml::Accounts::CallCallsParams::url_method
@@ -211,9 +211,9 @@ module Telnyx
 
           def time_limit=: (Integer) -> Integer
 
-          attr_reader timeout: Integer?
+          attr_reader timeout_seconds: Integer?
 
-          def timeout=: (Integer) -> Integer
+          def timeout_seconds=: (Integer) -> Integer
 
           attr_reader trim: Telnyx::Models::Texml::Accounts::CallCallsParams::trim?
 
@@ -268,7 +268,7 @@ module Telnyx
             ?supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::supervising_role,
             ?texml: String,
             ?time_limit: Integer,
-            ?timeout: Integer,
+            ?timeout_seconds: Integer,
             ?trim: Telnyx::Models::Texml::Accounts::CallCallsParams::trim,
             ?url: String,
             ?url_method: Telnyx::Models::Texml::Accounts::CallCallsParams::url_method,
@@ -312,7 +312,7 @@ module Telnyx
             supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::supervising_role,
             texml: String,
             time_limit: Integer,
-            timeout: Integer,
+            timeout_seconds: Integer,
             trim: Telnyx::Models::Texml::Accounts::CallCallsParams::trim,
             url: String,
             url_method: Telnyx::Models::Texml::Accounts::CallCallsParams::url_method,
