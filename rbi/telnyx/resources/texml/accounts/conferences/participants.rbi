@@ -123,6 +123,7 @@ module Telnyx
                 amd_status_callback: String,
                 amd_status_callback_method:
                   Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::AmdStatusCallbackMethod::OrSymbol,
+                application_sid: String,
                 beep:
                   Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::Beep::OrSymbol,
                 caller_id: String,
@@ -196,6 +197,10 @@ module Telnyx
               amd_status_callback: nil,
               # Body param: HTTP request type used for `AmdStatusCallback`. Defaults to `POST`.
               amd_status_callback_method: nil,
+              # Body param: The SID of the TeXML application that will handle the new
+              # participant's call. Required unless joining an existing conference by its
+              # ConferenceSid.
+              application_sid: nil,
               # Body param: Whether to play a notification beep to the conference when the
               # participant enters and exits.
               beep: nil,

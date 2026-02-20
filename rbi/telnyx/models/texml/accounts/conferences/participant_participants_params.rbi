@@ -45,6 +45,14 @@ module Telnyx
             end
             attr_writer :amd_status_callback_method
 
+            # The SID of the TeXML application that will handle the new participant's call.
+            # Required unless joining an existing conference by its ConferenceSid.
+            sig { returns(T.nilable(String)) }
+            attr_reader :application_sid
+
+            sig { params(application_sid: String).void }
+            attr_writer :application_sid
+
             # Whether to play a notification beep to the conference when the participant
             # enters and exits.
             sig do
@@ -549,6 +557,7 @@ module Telnyx
                 amd_status_callback: String,
                 amd_status_callback_method:
                   Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::AmdStatusCallbackMethod::OrSymbol,
+                application_sid: String,
                 beep:
                   Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::Beep::OrSymbol,
                 caller_id: String,
@@ -617,6 +626,9 @@ module Telnyx
               amd_status_callback: nil,
               # HTTP request type used for `AmdStatusCallback`. Defaults to `POST`.
               amd_status_callback_method: nil,
+              # The SID of the TeXML application that will handle the new participant's call.
+              # Required unless joining an existing conference by its ConferenceSid.
+              application_sid: nil,
               # Whether to play a notification beep to the conference when the participant
               # enters and exits.
               beep: nil,
@@ -759,6 +771,7 @@ module Telnyx
                   amd_status_callback: String,
                   amd_status_callback_method:
                     Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::AmdStatusCallbackMethod::OrSymbol,
+                  application_sid: String,
                   beep:
                     Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::Beep::OrSymbol,
                   caller_id: String,

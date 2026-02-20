@@ -41,6 +41,7 @@ module Telnyx
               account_sid: String,
               ?amd_status_callback: String,
               ?amd_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::amd_status_callback_method,
+              ?application_sid: String,
               ?beep: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::beep,
               ?caller_id: String,
               ?call_sid_to_coach: String,

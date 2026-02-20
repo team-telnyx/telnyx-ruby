@@ -8,6 +8,7 @@ module Telnyx
               account_sid: String,
               amd_status_callback: String,
               amd_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::amd_status_callback_method,
+              application_sid: String,
               beep: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::beep,
               caller_id: String,
               call_sid_to_coach: String,
@@ -71,6 +72,10 @@ module Telnyx
             def amd_status_callback_method=: (
               Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::amd_status_callback_method
             ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::amd_status_callback_method
+
+            attr_reader application_sid: String?
+
+            def application_sid=: (String) -> String
 
             attr_reader beep: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::beep?
 
@@ -280,6 +285,7 @@ module Telnyx
               account_sid: String,
               ?amd_status_callback: String,
               ?amd_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::amd_status_callback_method,
+              ?application_sid: String,
               ?beep: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::beep,
               ?caller_id: String,
               ?call_sid_to_coach: String,
@@ -332,6 +338,7 @@ module Telnyx
               account_sid: String,
               amd_status_callback: String,
               amd_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::amd_status_callback_method,
+              application_sid: String,
               beep: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::beep,
               caller_id: String,
               call_sid_to_coach: String,
