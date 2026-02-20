@@ -31,6 +31,13 @@ module Telnyx
                      },
                      api_name: :AmdStatusCallbackMethod
 
+            # @!attribute application_sid
+            #   The SID of the TeXML application that will handle the new participant's call.
+            #   Required unless joining an existing conference by its ConferenceSid.
+            #
+            #   @return [String, nil]
+            optional :application_sid, String, api_name: :ApplicationSid
+
             # @!attribute beep
             #   Whether to play a notification beep to the conference when the participant
             #   enters and exits.
@@ -398,7 +405,7 @@ module Telnyx
             #   @return [String, nil]
             optional :wait_url, String, api_name: :WaitUrl
 
-            # @!method initialize(account_sid:, amd_status_callback: nil, amd_status_callback_method: nil, beep: nil, caller_id: nil, call_sid_to_coach: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, coaching: nil, conference_record: nil, conference_recording_status_callback: nil, conference_recording_status_callback_event: nil, conference_recording_status_callback_method: nil, conference_recording_timeout: nil, conference_status_callback: nil, conference_status_callback_event: nil, conference_status_callback_method: nil, conference_trim: nil, custom_headers: nil, early_media: nil, end_conference_on_exit: nil, from: nil, label: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, max_participants: nil, muted: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_track: nil, sip_auth_password: nil, sip_auth_username: nil, start_conference_on_enter: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, time_limit: nil, timeout_seconds: nil, to: nil, trim: nil, wait_url: nil, request_options: {})
+            # @!method initialize(account_sid:, amd_status_callback: nil, amd_status_callback_method: nil, application_sid: nil, beep: nil, caller_id: nil, call_sid_to_coach: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, coaching: nil, conference_record: nil, conference_recording_status_callback: nil, conference_recording_status_callback_event: nil, conference_recording_status_callback_method: nil, conference_recording_timeout: nil, conference_status_callback: nil, conference_status_callback_event: nil, conference_status_callback_method: nil, conference_trim: nil, custom_headers: nil, early_media: nil, end_conference_on_exit: nil, from: nil, label: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, max_participants: nil, muted: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_track: nil, sip_auth_password: nil, sip_auth_username: nil, start_conference_on_enter: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, time_limit: nil, timeout_seconds: nil, to: nil, trim: nil, wait_url: nil, request_options: {})
             #   Some parameter documentations has been truncated, see
             #   {Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams}
             #   for more details.
@@ -408,6 +415,8 @@ module Telnyx
             #   @param amd_status_callback [String] The URL the result of answering machine detection will be sent to.
             #
             #   @param amd_status_callback_method [Symbol, Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::AmdStatusCallbackMethod] HTTP request type used for `AmdStatusCallback`. Defaults to `POST`.
+            #
+            #   @param application_sid [String] The SID of the TeXML application that will handle the new participant's call. Re
             #
             #   @param beep [Symbol, Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::Beep] Whether to play a notification beep to the conference when the participant enter
             #
