@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.34.0 (2026-02-20)
+
+Full Changelog: [v5.33.0...v5.34.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.33.0...v5.34.0)
+
+### Features
+
+* TELAPPS Add ApplicationSid param ([58cd7b1](https://github.com/team-telnyx/telnyx-ruby/commit/58cd7b1de2fef4b735a4d93d3342ea4f33652c2e))
+
 ## 5.33.0 (2026-02-20)
 
 Full Changelog: [v5.32.0...v5.33.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.32.0...v5.33.0)
