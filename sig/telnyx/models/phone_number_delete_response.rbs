@@ -32,6 +32,7 @@ module Telnyx
           emergency_address_id: String,
           emergency_enabled: bool,
           external_pin: String,
+          hd_voice_enabled: bool,
           messaging_profile_id: String,
           messaging_profile_name: String,
           phone_number: String,
@@ -113,6 +114,10 @@ module Telnyx
 
         def emergency_enabled=: (bool) -> bool
 
+        attr_reader hd_voice_enabled: bool?
+
+        def hd_voice_enabled=: (bool) -> bool
+
         attr_reader phone_number: String?
 
         def phone_number=: (String) -> String
@@ -160,6 +165,7 @@ module Telnyx
           ?emergency_address_id: String,
           ?emergency_enabled: bool,
           ?external_pin: String,
+          ?hd_voice_enabled: bool,
           ?messaging_profile_id: String,
           ?messaging_profile_name: String,
           ?phone_number: String,
@@ -187,6 +193,7 @@ module Telnyx
           emergency_address_id: String,
           emergency_enabled: bool,
           external_pin: String,
+          hd_voice_enabled: bool,
           messaging_profile_id: String,
           messaging_profile_name: String,
           phone_number: String,

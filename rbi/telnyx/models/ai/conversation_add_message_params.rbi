@@ -152,12 +152,12 @@ module Telnyx
                 Integer,
                 T::Boolean,
                 T::Array[
-                  Telnyx::AI::ConversationAddMessageParams::Metadata::UnionMember3::Variants
+                  Telnyx::AI::ConversationAddMessageParams::Metadata::UnionArrayVariant3::Variants
                 ]
               )
             end
 
-          module UnionMember3
+          module UnionArrayVariant3
             extend Telnyx::Internal::Type::Union
 
             Variants = T.type_alias { T.any(String, Integer, T::Boolean) }
@@ -165,7 +165,7 @@ module Telnyx
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::AI::ConversationAddMessageParams::Metadata::UnionMember3::Variants
+                  Telnyx::AI::ConversationAddMessageParams::Metadata::UnionArrayVariant3::Variants
                 ]
               )
             end
@@ -183,11 +183,11 @@ module Telnyx
           def self.variants
           end
 
-          UnionMember3Array =
+          UnionArrayVariant3Array =
             T.let(
               Telnyx::Internal::Type::ArrayOf[
                 union:
-                  Telnyx::AI::ConversationAddMessageParams::Metadata::UnionMember3
+                  Telnyx::AI::ConversationAddMessageParams::Metadata::UnionArrayVariant3
               ],
               Telnyx::Internal::Type::Converter
             )

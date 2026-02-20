@@ -38,6 +38,13 @@ module Telnyx
       sig { params(created_at: Time).void }
       attr_writer :created_at
 
+      # Errors the reservation could happen upon
+      sig { returns(T.nilable(String)) }
+      attr_reader :errors
+
+      sig { params(errors: String).void }
+      attr_writer :errors
+
       sig { returns(T.nilable(String)) }
       attr_reader :record_type
 
@@ -65,6 +72,7 @@ module Telnyx
           id: String,
           created_at: Time,
           customer_reference: String,
+          errors: String,
           phone_numbers: T::Array[Telnyx::ReservedPhoneNumber::OrHash],
           record_type: String,
           status: Telnyx::NumberReservation::Status::OrSymbol,
@@ -77,6 +85,8 @@ module Telnyx
         created_at: nil,
         # A customer reference string for customer look ups.
         customer_reference: nil,
+        # Errors the reservation could happen upon
+        errors: nil,
         phone_numbers: nil,
         record_type: nil,
         # The status of the entire reservation.
@@ -92,6 +102,7 @@ module Telnyx
             id: String,
             created_at: Time,
             customer_reference: String,
+            errors: String,
             phone_numbers: T::Array[Telnyx::ReservedPhoneNumber],
             record_type: String,
             status: Telnyx::NumberReservation::Status::TaggedSymbol,

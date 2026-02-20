@@ -27,6 +27,12 @@ module Telnyx
         #   @return [Time, nil]
         optional :created_at, Time
 
+        # @!attribute errors
+        #   Errors the reservation could happen upon
+        #
+        #   @return [String, nil]
+        optional :errors, String
+
         # @!attribute record_type
         #
         #   @return [String, nil]
@@ -45,12 +51,14 @@ module Telnyx
         optional :updated_at, Time
       end
 
-      # @!method initialize(id: nil, created_at: nil, customer_reference: nil, phone_numbers: nil, record_type: nil, status: nil, updated_at: nil)
+      # @!method initialize(id: nil, created_at: nil, customer_reference: nil, errors: nil, phone_numbers: nil, record_type: nil, status: nil, updated_at: nil)
       #   @param id [String]
       #
       #   @param created_at [Time] An ISO 8901 datetime string denoting when the numbers reservation was created.
       #
       #   @param customer_reference [String] A customer reference string for customer look ups.
+      #
+      #   @param errors [String] Errors the reservation could happen upon
       #
       #   @param phone_numbers [Array<Telnyx::Models::ReservedPhoneNumber>]
       #

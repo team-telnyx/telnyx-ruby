@@ -46,9 +46,11 @@ module Telnyx
       #
       # Update a phone number
       #
-      # @overload update(phone_number_id, billing_group_id: nil, connection_id: nil, customer_reference: nil, external_pin: nil, hd_voice_enabled: nil, tags: nil, request_options: {})
+      # @overload update(phone_number_id, address_id: nil, billing_group_id: nil, connection_id: nil, customer_reference: nil, external_pin: nil, hd_voice_enabled: nil, tags: nil, request_options: {})
       #
       # @param phone_number_id [String] Identifies the resource.
+      #
+      # @param address_id [String] Identifies the address associated with the phone number.
       #
       # @param billing_group_id [String] Identifies the billing group associated with the phone number.
       #

@@ -7,7 +7,10 @@ class Telnyx::Test::Resources::ExternalConnections::CivicAddressesTest < Telnyx:
     skip("Mock server tests are disabled")
 
     response =
-      @telnyx.external_connections.civic_addresses.retrieve("318fb664-d341-44d2-8405-e6bfb9ced6d9", id: "id")
+      @telnyx.external_connections.civic_addresses.retrieve(
+        "318fb664-d341-44d2-8405-e6bfb9ced6d9",
+        id: "1293384261075731499"
+      )
 
     assert_pattern do
       response => Telnyx::Models::ExternalConnections::CivicAddressRetrieveResponse
@@ -23,7 +26,7 @@ class Telnyx::Test::Resources::ExternalConnections::CivicAddressesTest < Telnyx:
   def test_list
     skip("Mock server tests are disabled")
 
-    response = @telnyx.external_connections.civic_addresses.list("id")
+    response = @telnyx.external_connections.civic_addresses.list("1293384261075731499")
 
     assert_pattern do
       response => Telnyx::Models::ExternalConnections::CivicAddressListResponse

@@ -3,14 +3,14 @@
 module Telnyx
   module Models
     module Conferences
-      class ActionGatherUsingAudioParams < Telnyx::Internal::Type::BaseModel
+      class ActionGatherDtmfAudioParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Conferences::ActionGatherUsingAudioParams,
+              Telnyx::Conferences::ActionGatherDtmfAudioParams,
               Telnyx::Internal::AnyHash
             )
           end

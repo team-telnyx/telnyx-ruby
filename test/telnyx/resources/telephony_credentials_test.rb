@@ -78,7 +78,8 @@ class Telnyx::Test::Resources::TelephonyCredentialsTest < Telnyx::Test::Resource
         resource_id: String | nil,
         sip_password: String | nil,
         sip_username: String | nil,
-        updated_at: String | nil
+        updated_at: String | nil,
+        user_id: String | nil
       }
     end
   end

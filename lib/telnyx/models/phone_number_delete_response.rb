@@ -125,6 +125,12 @@ module Telnyx
           #   @return [Boolean, nil]
           optional :emergency_enabled, Telnyx::Internal::Type::Boolean
 
+          # @!attribute hd_voice_enabled
+          #   Indicates whether HD voice is enabled for this number.
+          #
+          #   @return [Boolean, nil]
+          optional :hd_voice_enabled, Telnyx::Internal::Type::Boolean
+
           # @!attribute phone_number
           #   The +E.164-formatted phone number associated with this record.
           #
@@ -169,7 +175,7 @@ module Telnyx
           optional :updated_at, String
         end
 
-        # @!method initialize(id: nil, billing_group_id: nil, call_forwarding_enabled: nil, call_recording_enabled: nil, caller_id_name_enabled: nil, cnam_listing_enabled: nil, connection_id: nil, connection_name: nil, created_at: nil, customer_reference: nil, deletion_lock_enabled: nil, emergency_address_id: nil, emergency_enabled: nil, external_pin: nil, messaging_profile_id: nil, messaging_profile_name: nil, phone_number: nil, phone_number_type: nil, purchased_at: nil, record_type: nil, status: nil, t38_fax_gateway_enabled: nil, tags: nil, updated_at: nil)
+        # @!method initialize(id: nil, billing_group_id: nil, call_forwarding_enabled: nil, call_recording_enabled: nil, caller_id_name_enabled: nil, cnam_listing_enabled: nil, connection_id: nil, connection_name: nil, created_at: nil, customer_reference: nil, deletion_lock_enabled: nil, emergency_address_id: nil, emergency_enabled: nil, external_pin: nil, hd_voice_enabled: nil, messaging_profile_id: nil, messaging_profile_name: nil, phone_number: nil, phone_number_type: nil, purchased_at: nil, record_type: nil, status: nil, t38_fax_gateway_enabled: nil, tags: nil, updated_at: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::PhoneNumberDeleteResponse::Data} for more details.
         #
@@ -200,6 +206,8 @@ module Telnyx
         #   @param emergency_enabled [Boolean] Indicates whether emergency services are enabled for this number.
         #
         #   @param external_pin [String] If someone attempts to port your phone number away from Telnyx and your phone nu
+        #
+        #   @param hd_voice_enabled [Boolean] Indicates whether HD voice is enabled for this number.
         #
         #   @param messaging_profile_id [String] Identifies the messaging profile associated with the phone number.
         #

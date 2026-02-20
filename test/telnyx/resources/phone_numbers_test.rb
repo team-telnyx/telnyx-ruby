@@ -75,11 +75,13 @@ class Telnyx::Test::Resources::PhoneNumbersTest < Telnyx::Test::ResourceTest
         emergency_address_id: String | nil,
         emergency_enabled: Telnyx::Internal::Type::Boolean | nil,
         emergency_status: Telnyx::PhoneNumberDetailed::EmergencyStatus | nil,
+        hd_voice_enabled: Telnyx::Internal::Type::Boolean | nil,
         inbound_call_screening: Telnyx::PhoneNumberDetailed::InboundCallScreening | nil,
         messaging_profile_id: String | nil,
         messaging_profile_name: String | nil,
         source_type: Telnyx::PhoneNumberDetailed::SourceType | nil,
-        t38_fax_gateway_enabled: Telnyx::Internal::Type::Boolean | nil
+        t38_fax_gateway_enabled: Telnyx::Internal::Type::Boolean | nil,
+        updated_at: String | nil
       }
     end
   end
@@ -132,13 +134,15 @@ class Telnyx::Test::Resources::PhoneNumbersTest < Telnyx::Test::ResourceTest
         emergency_enabled: Telnyx::Internal::Type::Boolean | nil,
         emergency_status: Telnyx::Models::PhoneNumberSlimListResponse::EmergencyStatus | nil,
         external_pin: String | nil,
+        hd_voice_enabled: Telnyx::Internal::Type::Boolean | nil,
         inbound_call_screening: Telnyx::Models::PhoneNumberSlimListResponse::InboundCallScreening | nil,
         phone_number: String | nil,
         phone_number_type: Telnyx::Models::PhoneNumberSlimListResponse::PhoneNumberType | nil,
         purchased_at: String | nil,
         record_type: String | nil,
         status: Telnyx::Models::PhoneNumberSlimListResponse::Status | nil,
-        t38_fax_gateway_enabled: Telnyx::Internal::Type::Boolean | nil
+        t38_fax_gateway_enabled: Telnyx::Internal::Type::Boolean | nil,
+        updated_at: String | nil
       }
     end
   end

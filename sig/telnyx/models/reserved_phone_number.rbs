@@ -4,6 +4,7 @@ module Telnyx
       {
         id: String,
         created_at: Time,
+        errors: String,
         expired_at: Time,
         phone_number: String,
         record_type: String,
@@ -23,6 +24,10 @@ module Telnyx
       attr_reader created_at: Time?
 
       def created_at=: (Time) -> Time
+
+      attr_reader errors: String?
+
+      def errors=: (String) -> String
 
       attr_reader expired_at: Time?
 
@@ -45,6 +50,7 @@ module Telnyx
       def initialize: (
         ?id: String,
         ?created_at: Time,
+        ?errors: String,
         ?expired_at: Time,
         ?phone_number: String,
         ?record_type: String,
@@ -55,6 +61,7 @@ module Telnyx
       def to_hash: -> {
         id: String,
         created_at: Time,
+        errors: String,
         expired_at: Time,
         phone_number: String,
         record_type: String,

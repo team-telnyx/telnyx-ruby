@@ -13,10 +13,10 @@ module Telnyx
       #   @return [String]
       required :title, String
 
-      # @!attribute detail
+      # @!attribute description
       #
       #   @return [String, nil]
-      optional :detail, String
+      optional :description, String
 
       # @!attribute meta
       #
@@ -28,10 +28,10 @@ module Telnyx
       #   @return [Telnyx::Models::APIError::Source, nil]
       optional :source, -> { Telnyx::APIError::Source }
 
-      # @!method initialize(code:, title:, detail: nil, meta: nil, source: nil)
+      # @!method initialize(code:, title:, description: nil, meta: nil, source: nil)
       #   @param code [String]
       #   @param title [String]
-      #   @param detail [String]
+      #   @param description [String]
       #   @param meta [Hash{Symbol=>Object}]
       #   @param source [Telnyx::Models::APIError::Source]
 

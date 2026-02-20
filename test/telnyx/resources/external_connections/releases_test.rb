@@ -7,7 +7,10 @@ class Telnyx::Test::Resources::ExternalConnections::ReleasesTest < Telnyx::Test:
     skip("Mock server tests are disabled")
 
     response =
-      @telnyx.external_connections.releases.retrieve("7b6a6449-b055-45a6-81f6-f6f0dffa4cc6", id: "id")
+      @telnyx.external_connections.releases.retrieve(
+        "7b6a6449-b055-45a6-81f6-f6f0dffa4cc6",
+        id: "1293384261075731499"
+      )
 
     assert_pattern do
       response => Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse
@@ -23,7 +26,7 @@ class Telnyx::Test::Resources::ExternalConnections::ReleasesTest < Telnyx::Test:
   def test_list
     skip("Mock server tests are disabled")
 
-    response = @telnyx.external_connections.releases.list("id")
+    response = @telnyx.external_connections.releases.list("1293384261075731499")
 
     assert_pattern do
       response => Telnyx::Internal::DefaultFlatPagination

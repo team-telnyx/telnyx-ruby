@@ -9,7 +9,8 @@ module Telnyx
         record_type: String,
         result: Telnyx::CustomerServiceRecord::Result?,
         status: Telnyx::Models::CustomerServiceRecord::status,
-        updated_at: Time
+        updated_at: Time,
+        webhook_url: String
       }
 
     class CustomerServiceRecord < Telnyx::Internal::Type::BaseModel
@@ -26,6 +27,10 @@ module Telnyx
       def status=: (
         Telnyx::Models::CustomerServiceRecord::status
       ) -> Telnyx::Models::CustomerServiceRecord::status
+
+      attr_reader webhook_url: String?
+
+      def webhook_url=: (String) -> String
 
       attr_reader id: String?
 
@@ -51,7 +56,8 @@ module Telnyx
         ?record_type: String,
         ?result: Telnyx::CustomerServiceRecord::Result?,
         ?status: Telnyx::Models::CustomerServiceRecord::status,
-        ?updated_at: Time
+        ?updated_at: Time,
+        ?webhook_url: String
       ) -> void
 
       def to_hash: -> {
@@ -62,7 +68,8 @@ module Telnyx
         record_type: String,
         result: Telnyx::CustomerServiceRecord::Result?,
         status: Telnyx::Models::CustomerServiceRecord::status,
-        updated_at: Time
+        updated_at: Time,
+        webhook_url: String
       }
 
       type result =

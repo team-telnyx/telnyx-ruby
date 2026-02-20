@@ -39,6 +39,7 @@ module Telnyx
       sig do
         params(
           phone_number_id: String,
+          address_id: String,
           billing_group_id: String,
           connection_id: String,
           customer_reference: String,
@@ -51,6 +52,8 @@ module Telnyx
       def update(
         # Identifies the resource.
         phone_number_id,
+        # Identifies the address associated with the phone number.
+        address_id: nil,
         # Identifies the billing group associated with the phone number.
         billing_group_id: nil,
         # Identifies the connection associated with the phone number.

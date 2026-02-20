@@ -22,7 +22,7 @@ class Telnyx::Test::Resources::FqdnConnectionsTest < Telnyx::Test::ResourceTest
   def test_retrieve
     skip("Mock server tests are disabled")
 
-    response = @telnyx.fqdn_connections.retrieve("id")
+    response = @telnyx.fqdn_connections.retrieve("1293384261075731499")
 
     assert_pattern do
       response => Telnyx::Models::FqdnConnectionRetrieveResponse
@@ -38,7 +38,7 @@ class Telnyx::Test::Resources::FqdnConnectionsTest < Telnyx::Test::ResourceTest
   def test_update
     skip("Mock server tests are disabled")
 
-    response = @telnyx.fqdn_connections.update("id")
+    response = @telnyx.fqdn_connections.update("1293384261075731499")
 
     assert_pattern do
       response => Telnyx::Models::FqdnConnectionUpdateResponse
@@ -116,7 +116,7 @@ class Telnyx::Test::Resources::FqdnConnectionsTest < Telnyx::Test::ResourceTest
   def test_delete
     skip("Mock server tests are disabled")
 
-    response = @telnyx.fqdn_connections.delete("id")
+    response = @telnyx.fqdn_connections.delete("1293384261075731499")
 
     assert_pattern do
       response => Telnyx::Models::FqdnConnectionDeleteResponse

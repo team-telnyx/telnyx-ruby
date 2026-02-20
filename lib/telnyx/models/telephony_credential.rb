@@ -63,7 +63,13 @@ module Telnyx
       #   @return [String, nil]
       optional :updated_at, String
 
-      # @!method initialize(id: nil, created_at: nil, expired: nil, expires_at: nil, name: nil, record_type: nil, resource_id: nil, sip_password: nil, sip_username: nil, updated_at: nil)
+      # @!attribute user_id
+      #   Identifies the user this credential is associated with.
+      #
+      #   @return [String, nil]
+      optional :user_id, String
+
+      # @!method initialize(id: nil, created_at: nil, expired: nil, expires_at: nil, name: nil, record_type: nil, resource_id: nil, sip_password: nil, sip_username: nil, updated_at: nil, user_id: nil)
       #   @param id [String] Identifies the resource.
       #
       #   @param created_at [String] ISO-8601 formatted date indicating when the resource was created.
@@ -83,6 +89,8 @@ module Telnyx
       #   @param sip_username [String] The randomly generated SIP username for the credential.
       #
       #   @param updated_at [String] ISO-8601 formatted date indicating when the resource was updated.
+      #
+      #   @param user_id [String] Identifies the user this credential is associated with.
     end
   end
 end

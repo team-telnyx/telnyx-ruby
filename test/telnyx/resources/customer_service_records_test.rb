@@ -60,7 +60,8 @@ class Telnyx::Test::Resources::CustomerServiceRecordsTest < Telnyx::Test::Resour
         record_type: String | nil,
         result: Telnyx::CustomerServiceRecord::Result | nil,
         status: Telnyx::CustomerServiceRecord::Status | nil,
-        updated_at: Time | nil
+        updated_at: Time | nil,
+        webhook_url: String | nil
       }
     end
   end

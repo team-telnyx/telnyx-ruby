@@ -86,6 +86,7 @@ class Telnyx::Test::Resources::PortingOrdersTest < Telnyx::Test::ResourceTest
         parent_support_key: String | nil,
         phone_number_configuration: Telnyx::PortingOrderPhoneNumberConfiguration | nil,
         phone_number_type: Telnyx::PortingOrder::PhoneNumberType | nil,
+        phone_numbers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PortingOrder::PhoneNumber]) | nil,
         porting_phone_numbers_count: Integer | nil,
         record_type: String | nil,
         requirements: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PortingOrderRequirement]) | nil,

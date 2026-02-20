@@ -6,7 +6,7 @@ class Telnyx::Test::Resources::ExternalConnections::LogMessagesTest < Telnyx::Te
   def test_retrieve
     skip("Mock server tests are disabled")
 
-    response = @telnyx.external_connections.log_messages.retrieve("id")
+    response = @telnyx.external_connections.log_messages.retrieve("1293384261075731499")
 
     assert_pattern do
       response => Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse
@@ -49,7 +49,7 @@ class Telnyx::Test::Resources::ExternalConnections::LogMessagesTest < Telnyx::Te
   def test_dismiss
     skip("Mock server tests are disabled")
 
-    response = @telnyx.external_connections.log_messages.dismiss("id")
+    response = @telnyx.external_connections.log_messages.dismiss("1293384261075731499")
 
     assert_pattern do
       response => Telnyx::Models::ExternalConnections::LogMessageDismissResponse

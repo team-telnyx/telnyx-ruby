@@ -10,6 +10,7 @@ module Telnyx
         ended_at: Time,
         file_format: Telnyx::Models::RoomComposition::format_,
         record_type: String,
+        resolution: String,
         room_id: String,
         session_id: String,
         size_mb: Float,
@@ -53,6 +54,10 @@ module Telnyx
       def file_format=: (
         Telnyx::Models::RoomComposition::format_
       ) -> Telnyx::Models::RoomComposition::format_
+
+      attr_reader resolution: String?
+
+      def resolution=: (String) -> String
 
       attr_reader room_id: String?
 
@@ -115,6 +120,7 @@ module Telnyx
         ?ended_at: Time,
         ?file_format: Telnyx::Models::RoomComposition::format_,
         ?record_type: String,
+        ?resolution: String,
         ?room_id: String,
         ?session_id: String,
         ?size_mb: Float,
@@ -137,6 +143,7 @@ module Telnyx
         ended_at: Time,
         file_format: Telnyx::Models::RoomComposition::format_,
         record_type: String,
+        resolution: String,
         room_id: String,
         session_id: String,
         size_mb: Float,

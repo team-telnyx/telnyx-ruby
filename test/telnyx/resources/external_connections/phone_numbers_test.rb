@@ -6,7 +6,7 @@ class Telnyx::Test::Resources::ExternalConnections::PhoneNumbersTest < Telnyx::T
   def test_retrieve_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.external_connections.phone_numbers.retrieve("1234567889", id: "id")
+    response = @telnyx.external_connections.phone_numbers.retrieve("1234567889", id: "1293384261075731499")
 
     assert_pattern do
       response => Telnyx::Models::ExternalConnections::PhoneNumberRetrieveResponse
@@ -22,7 +22,7 @@ class Telnyx::Test::Resources::ExternalConnections::PhoneNumbersTest < Telnyx::T
   def test_update_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.external_connections.phone_numbers.update("1234567889", id: "id")
+    response = @telnyx.external_connections.phone_numbers.update("1234567889", id: "1293384261075731499")
 
     assert_pattern do
       response => Telnyx::Models::ExternalConnections::PhoneNumberUpdateResponse
@@ -38,7 +38,7 @@ class Telnyx::Test::Resources::ExternalConnections::PhoneNumbersTest < Telnyx::T
   def test_list
     skip("Mock server tests are disabled")
 
-    response = @telnyx.external_connections.phone_numbers.list("id")
+    response = @telnyx.external_connections.phone_numbers.list("1293384261075731499")
 
     assert_pattern do
       response => Telnyx::Internal::DefaultFlatPagination

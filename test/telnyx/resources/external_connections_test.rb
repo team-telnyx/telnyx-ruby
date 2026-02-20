@@ -22,7 +22,7 @@ class Telnyx::Test::Resources::ExternalConnectionsTest < Telnyx::Test::ResourceT
   def test_retrieve
     skip("Mock server tests are disabled")
 
-    response = @telnyx.external_connections.retrieve("id")
+    response = @telnyx.external_connections.retrieve("1293384261075731499")
 
     assert_pattern do
       response => Telnyx::Models::ExternalConnectionRetrieveResponse
@@ -40,8 +40,8 @@ class Telnyx::Test::Resources::ExternalConnectionsTest < Telnyx::Test::ResourceT
 
     response =
       @telnyx.external_connections.update(
-        "id",
-        outbound: {outbound_voice_profile_id: "outbound_voice_profile_id"}
+        "1293384261075731499",
+        outbound: {outbound_voice_profile_id: "1911630617284445511"}
       )
 
     assert_pattern do
@@ -94,7 +94,7 @@ class Telnyx::Test::Resources::ExternalConnectionsTest < Telnyx::Test::ResourceT
   def test_delete
     skip("Mock server tests are disabled")
 
-    response = @telnyx.external_connections.delete("id")
+    response = @telnyx.external_connections.delete("1293384261075731499")
 
     assert_pattern do
       response => Telnyx::Models::ExternalConnectionDeleteResponse

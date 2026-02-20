@@ -166,6 +166,13 @@ module Telnyx
       sig { params(emergency_enabled: T::Boolean).void }
       attr_writer :emergency_enabled
 
+      # Indicates whether HD voice is enabled for this number.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :hd_voice_enabled
+
+      sig { params(hd_voice_enabled: T::Boolean).void }
+      attr_writer :hd_voice_enabled
+
       # Indicates if the phone number was purchased or ported in. For some numbers this
       # information may not be available.
       sig do
@@ -181,6 +188,13 @@ module Telnyx
 
       sig { params(t38_fax_gateway_enabled: T::Boolean).void }
       attr_writer :t38_fax_gateway_enabled
+
+      # ISO 8601 formatted date indicating when the resource was updated.
+      sig { returns(T.nilable(String)) }
+      attr_reader :updated_at
+
+      sig { params(updated_at: String).void }
+      attr_writer :updated_at
 
       sig do
         params(
@@ -208,13 +222,15 @@ module Telnyx
           emergency_enabled: T::Boolean,
           emergency_status:
             Telnyx::PhoneNumberDetailed::EmergencyStatus::OrSymbol,
+          hd_voice_enabled: T::Boolean,
           inbound_call_screening:
             Telnyx::PhoneNumberDetailed::InboundCallScreening::OrSymbol,
           messaging_profile_id: T.nilable(String),
           messaging_profile_name: T.nilable(String),
           source_type:
             T.nilable(Telnyx::PhoneNumberDetailed::SourceType::OrSymbol),
-          t38_fax_gateway_enabled: T::Boolean
+          t38_fax_gateway_enabled: T::Boolean,
+          updated_at: String
         ).returns(T.attached_class)
       end
       def self.new(
@@ -274,6 +290,8 @@ module Telnyx
         # number where it either is being provisioned or deprovisioned but is not yet
         # enabled/disabled.
         emergency_status: nil,
+        # Indicates whether HD voice is enabled for this number.
+        hd_voice_enabled: nil,
         # The inbound_call_screening setting is a phone number configuration option
         # variable that allows users to configure their settings to block or flag
         # fraudulent calls. It can be set to disabled, reject_calls, or flag_calls. This
@@ -287,7 +305,9 @@ module Telnyx
         # information may not be available.
         source_type: nil,
         # Indicates whether T38 Fax Gateway for inbound calls to this number.
-        t38_fax_gateway_enabled: nil
+        t38_fax_gateway_enabled: nil,
+        # ISO 8601 formatted date indicating when the resource was updated.
+        updated_at: nil
       )
       end
 
@@ -318,13 +338,15 @@ module Telnyx
             emergency_enabled: T::Boolean,
             emergency_status:
               Telnyx::PhoneNumberDetailed::EmergencyStatus::TaggedSymbol,
+            hd_voice_enabled: T::Boolean,
             inbound_call_screening:
               Telnyx::PhoneNumberDetailed::InboundCallScreening::TaggedSymbol,
             messaging_profile_id: T.nilable(String),
             messaging_profile_name: T.nilable(String),
             source_type:
               T.nilable(Telnyx::PhoneNumberDetailed::SourceType::TaggedSymbol),
-            t38_fax_gateway_enabled: T::Boolean
+            t38_fax_gateway_enabled: T::Boolean,
+            updated_at: String
           }
         )
       end
