@@ -783,6 +783,8 @@ module Telnyx
 
   class Metadata = Telnyx::Models::Metadata
 
+  class MinimaxVoiceSettings = Telnyx::Models::MinimaxVoiceSettings
+
   class MobileNetworkOperatorListParams = Telnyx::Models::MobileNetworkOperatorListParams
 
   class MobilePhoneNumber = Telnyx::Models::MobilePhoneNumber

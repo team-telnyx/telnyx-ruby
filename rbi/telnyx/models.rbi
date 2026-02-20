@@ -905,6 +905,8 @@ module Telnyx
 
   Metadata = Telnyx::Models::Metadata
 
+  MinimaxVoiceSettings = Telnyx::Models::MinimaxVoiceSettings
+
   MobileNetworkOperatorListParams =
     Telnyx::Models::MobileNetworkOperatorListParams
 
