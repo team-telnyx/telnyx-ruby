@@ -86,7 +86,7 @@ module Telnyx
       type settings =
         {
           assertion_consumer_service_url: String,
-          idp_attribute_names: top,
+          idp_attribute_names: ::Hash[Symbol, top],
           idp_cert_fingerprint: String,
           idp_cert_fingerprint_algorithm: Telnyx::Models::AuthenticationProvider::Settings::idp_cert_fingerprint_algorithm,
           idp_certificate: String,
@@ -104,9 +104,9 @@ module Telnyx
 
         def assertion_consumer_service_url=: (String) -> String
 
-        attr_reader idp_attribute_names: top?
+        attr_reader idp_attribute_names: ::Hash[Symbol, top]?
 
-        def idp_attribute_names=: (top) -> top
+        def idp_attribute_names=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
         attr_reader idp_cert_fingerprint: String?
 
@@ -152,7 +152,7 @@ module Telnyx
 
         def initialize: (
           ?assertion_consumer_service_url: String,
-          ?idp_attribute_names: top,
+          ?idp_attribute_names: ::Hash[Symbol, top],
           ?idp_cert_fingerprint: String,
           ?idp_cert_fingerprint_algorithm: Telnyx::Models::AuthenticationProvider::Settings::idp_cert_fingerprint_algorithm,
           ?idp_certificate: String,
@@ -167,7 +167,7 @@ module Telnyx
 
         def to_hash: -> {
           assertion_consumer_service_url: String,
-          idp_attribute_names: top,
+          idp_attribute_names: ::Hash[Symbol, top],
           idp_cert_fingerprint: String,
           idp_cert_fingerprint_algorithm: Telnyx::Models::AuthenticationProvider::Settings::idp_cert_fingerprint_algorithm,
           idp_certificate: String,
