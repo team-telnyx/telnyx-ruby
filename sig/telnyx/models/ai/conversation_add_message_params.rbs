@@ -82,22 +82,22 @@ module Telnyx
           String
           | Integer
           | bool
-          | ::Array[Telnyx::Models::AI::ConversationAddMessageParams::Metadata::union_array_variant3]
+          | ::Array[Telnyx::Models::AI::ConversationAddMessageParams::Metadata::union_member3]
 
         module Metadata
           extend Telnyx::Internal::Type::Union
 
-          type union_array_variant3 = String | Integer | bool
+          type union_member3 = String | Integer | bool
 
-          module UnionArrayVariant3
+          module UnionMember3
             extend Telnyx::Internal::Type::Union
 
-            def self?.variants: -> ::Array[Telnyx::Models::AI::ConversationAddMessageParams::Metadata::union_array_variant3]
+            def self?.variants: -> ::Array[Telnyx::Models::AI::ConversationAddMessageParams::Metadata::union_member3]
           end
 
           def self?.variants: -> ::Array[Telnyx::Models::AI::ConversationAddMessageParams::metadata]
 
-          UnionArrayVariant3Array: Telnyx::Internal::Type::Converter
+          UnionMember3Array: Telnyx::Internal::Type::Converter
         end
 
         type tool_choice = String | ::Hash[Symbol, top]

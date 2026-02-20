@@ -1,5 +1,20 @@
 # Changelog
 
+## 5.33.0 (2026-02-20)
+
+Full Changelog: [v5.32.0...v5.33.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.32.0...v5.33.0)
+
+### Features
+
+* **api:** manual updates ([673a6f3](https://github.com/team-telnyx/telnyx-ruby/commit/673a6f37d7105932492e0d44abd7fda51f0abe9c))
+* **api:** manual updates ([be9fcae](https://github.com/team-telnyx/telnyx-ruby/commit/be9fcae3d1d762f8c7ea5def6081551dfdae38c1))
+* **api:** manual updates ([e6866c1](https://github.com/team-telnyx/telnyx-ruby/commit/e6866c10b985345f6b3ac5988957d130bede563e))
+
+
+### Documentation
+
+* add service_provider_login_url to authentication provider settings ([a786340](https://github.com/team-telnyx/telnyx-ruby/commit/a7863402c278e0a5cb133fc1d7081391922b56b4))
+
 ## 5.32.0 (2026-02-19)
 
 Full Changelog: [v5.31.0...v5.32.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.31.0...v5.32.0)

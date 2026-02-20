@@ -79,6 +79,7 @@ class Telnyx::Test::Resources::AuthenticationProvidersTest < Telnyx::Test::Resou
     assert_pattern do
       row => {
         id: String | nil,
+        activated_at: Time | nil,
         active: Telnyx::Internal::Type::Boolean | nil,
         created_at: Time | nil,
         name: String | nil,
