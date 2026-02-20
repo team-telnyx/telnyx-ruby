@@ -158,10 +158,10 @@ module Telnyx
         attr_writer :assertion_consumer_service_url
 
         # Mapping of SAML attribute names used by the identity provider (IdP).
-        sig { returns(T.nilable(T.anything)) }
+        sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
         attr_reader :idp_attribute_names
 
-        sig { params(idp_attribute_names: T.anything).void }
+        sig { params(idp_attribute_names: T::Hash[Symbol, T.anything]).void }
         attr_writer :idp_attribute_names
 
         # The certificate fingerprint for the identity provider (IdP)
@@ -253,7 +253,7 @@ module Telnyx
         sig do
           params(
             assertion_consumer_service_url: String,
-            idp_attribute_names: T.anything,
+            idp_attribute_names: T::Hash[Symbol, T.anything],
             idp_cert_fingerprint: String,
             idp_cert_fingerprint_algorithm:
               Telnyx::AuthenticationProvider::Settings::IdpCertFingerprintAlgorithm::OrSymbol,
@@ -303,7 +303,7 @@ module Telnyx
           override.returns(
             {
               assertion_consumer_service_url: String,
-              idp_attribute_names: T.anything,
+              idp_attribute_names: T::Hash[Symbol, T.anything],
               idp_cert_fingerprint: String,
               idp_cert_fingerprint_algorithm:
                 Telnyx::AuthenticationProvider::Settings::IdpCertFingerprintAlgorithm::TaggedSymbol,
