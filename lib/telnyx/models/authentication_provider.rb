@@ -101,8 +101,8 @@ module Telnyx
         # @!attribute idp_attribute_names
         #   Mapping of SAML attribute names used by the identity provider (IdP).
         #
-        #   @return [Object, nil]
-        optional :idp_attribute_names, Telnyx::Internal::Type::Unknown
+        #   @return [Hash{Symbol=>Object}, nil]
+        optional :idp_attribute_names, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
         # @!attribute idp_cert_fingerprint
         #   The certificate fingerprint for the identity provider (IdP)
@@ -177,7 +177,7 @@ module Telnyx
         #
         #   @param assertion_consumer_service_url [String] The Assertion Consumer Service URL for the service provider (Telnyx).
         #
-        #   @param idp_attribute_names [Object] Mapping of SAML attribute names used by the identity provider (IdP).
+        #   @param idp_attribute_names [Hash{Symbol=>Object}] Mapping of SAML attribute names used by the identity provider (IdP).
         #
         #   @param idp_cert_fingerprint [String] The certificate fingerprint for the identity provider (IdP)
         #
