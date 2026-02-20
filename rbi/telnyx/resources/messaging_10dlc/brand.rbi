@@ -273,6 +273,36 @@ module Telnyx
         def get_feedback(brand_id, request_options: {})
         end
 
+        # Query the status of an SMS OTP (One-Time Password) for Sole Proprietor brand
+        # verification.
+        #
+        # This endpoint allows you to check the delivery and verification status of an OTP
+        # sent during the Sole Proprietor brand verification process. You can query by
+        # either:
+        #
+        # - `referenceId` - The reference ID returned when the OTP was initially triggered
+        # - `brandId` - Query parameter for portal users to look up OTP status by Brand ID
+        #
+        # The response includes delivery status, verification dates, and detailed delivery
+        # information.
+        sig do
+          params(
+            reference_id: String,
+            brand_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(
+            Telnyx::Models::Messaging10dlc::BrandGetSMSOtpByReferenceResponse
+          )
+        end
+        def get_sms_otp_by_reference(
+          # The reference ID returned when the OTP was initially triggered
+          reference_id,
+          # Filter by Brand ID for easier lookup in portal applications
+          brand_id: nil,
+          request_options: {}
+        )
+        end
+
         # Resend brand 2FA email
         sig do
           params(
