@@ -4,6 +4,12 @@ module Telnyx
   module Models
     # @see Telnyx::Resources::MessagingProfiles#list
     class MessagingProfile < Telnyx::Internal::Type::BaseModel
+      # @!attribute ai_assistant_id
+      #   The AI assistant ID associated with this messaging profile.
+      #
+      #   @return [String, nil]
+      optional :ai_assistant_id, String, nil?: true
+
       # @!attribute alpha_sender
       #   The alphanumeric sender ID to use when sending to destinations that require an
       #   alphanumeric sender ID.
@@ -70,6 +76,12 @@ module Telnyx
       #   @return [Telnyx::Models::NumberPoolSettings, nil]
       optional :number_pool_settings, -> { Telnyx::NumberPoolSettings }, nil?: true
 
+      # @!attribute organization_id
+      #   The organization that owns this messaging profile.
+      #
+      #   @return [String, nil]
+      optional :organization_id, String
+
       # @!attribute redaction_enabled
       #   Indicates whether message content redaction is enabled for this profile.
       #
@@ -82,6 +94,12 @@ module Telnyx
       #
       #   @return [Integer, nil]
       optional :redaction_level, Integer
+
+      # @!attribute resource_group_id
+      #   The resource group ID associated with this messaging profile.
+      #
+      #   @return [String, nil]
+      optional :resource_group_id, String, nil?: true
 
       # @!attribute smart_encoding
       #   Enables automatic character encoding optimization for SMS messages. When
@@ -163,11 +181,13 @@ module Telnyx
         optional :updated_at, Time
       end
 
-      # @!method initialize(id: nil, alpha_sender: nil, created_at: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, health_webhook_url: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, record_type: nil, redaction_enabled: nil, redaction_level: nil, smart_encoding: nil, updated_at: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil)
+      # @!method initialize(id: nil, ai_assistant_id: nil, alpha_sender: nil, created_at: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, health_webhook_url: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, organization_id: nil, record_type: nil, redaction_enabled: nil, redaction_level: nil, resource_group_id: nil, smart_encoding: nil, updated_at: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessagingProfile} for more details.
       #
       #   @param id [String] Identifies the type of resource.
+      #
+      #   @param ai_assistant_id [String, nil] The AI assistant ID associated with this messaging profile.
       #
       #   @param alpha_sender [String, nil] The alphanumeric sender ID to use when sending to destinations that require an a
       #
@@ -191,11 +211,15 @@ module Telnyx
       #
       #   @param number_pool_settings [Telnyx::Models::NumberPoolSettings, nil] Number Pool allows you to send messages from a pool of numbers of different type
       #
+      #   @param organization_id [String] The organization that owns this messaging profile.
+      #
       #   @param record_type [Symbol, Telnyx::Models::MessagingProfile::RecordType] Identifies the type of the resource.
       #
       #   @param redaction_enabled [Boolean] Indicates whether message content redaction is enabled for this profile.
       #
       #   @param redaction_level [Integer] Determines how much information is redacted in messages for privacy or complianc
+      #
+      #   @param resource_group_id [String, nil] The resource group ID associated with this messaging profile.
       #
       #   @param smart_encoding [Boolean] Enables automatic character encoding optimization for SMS messages. When enabled
       #

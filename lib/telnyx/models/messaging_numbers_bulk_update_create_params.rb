@@ -24,13 +24,21 @@ module Telnyx
       #   @return [Array<String>]
       required :numbers, Telnyx::Internal::Type::ArrayOf[String]
 
-      # @!method initialize(messaging_profile_id:, numbers:, request_options: {})
+      # @!attribute assign_only
+      #   If true, only assign numbers to the profile without changing other settings.
+      #
+      #   @return [Boolean, nil]
+      optional :assign_only, Telnyx::Internal::Type::Boolean
+
+      # @!method initialize(messaging_profile_id:, numbers:, assign_only: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessagingNumbersBulkUpdateCreateParams} for more details.
       #
       #   @param messaging_profile_id [String] Configure the messaging profile these phone numbers are assigned to:
       #
       #   @param numbers [Array<String>] The list of phone numbers to update.
+      #
+      #   @param assign_only [Boolean] If true, only assign numbers to the profile without changing other settings.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end

@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    type messaging_profile_retrieve_metrics_response =
+      { data: ::Hash[Symbol, top] }
+
+    class MessagingProfileRetrieveMetricsResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Hash[Symbol, top]?
+
+      def data=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+      def initialize: (?data: ::Hash[Symbol, top]) -> void
+
+      def to_hash: -> { data: ::Hash[Symbol, top] }
+    end
+  end
+end

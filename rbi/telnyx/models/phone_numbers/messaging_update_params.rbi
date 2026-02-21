@@ -37,10 +37,18 @@ module Telnyx
         sig { params(messaging_profile_id: String).void }
         attr_writer :messaging_profile_id
 
+        # Tags to set on this phone number.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :tags
+
+        sig { params(tags: T::Array[String]).void }
+        attr_writer :tags
+
         sig do
           params(
             messaging_product: String,
             messaging_profile_id: String,
+            tags: T::Array[String],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -57,6 +65,8 @@ module Telnyx
           # - Set this field to a quoted UUID of a messaging profile to assign this number
           #   to that messaging profile
           messaging_profile_id: nil,
+          # Tags to set on this phone number.
+          tags: nil,
           request_options: {}
         )
         end
@@ -66,6 +76,7 @@ module Telnyx
             {
               messaging_product: String,
               messaging_profile_id: String,
+              tags: T::Array[String],
               request_options: Telnyx::RequestOptions
             }
           )

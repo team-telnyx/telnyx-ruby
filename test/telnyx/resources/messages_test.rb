@@ -62,6 +62,22 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
     end
   end
 
+  def test_retrieve_group_messages
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.messages.retrieve_group_messages("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Telnyx::Models::MessageRetrieveGroupMessagesResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::OutboundMessagePayload]) | nil
+      }
+    end
+  end
+
   def test_schedule_required_params
     skip("Mock server tests are disabled")
 
@@ -174,6 +190,28 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
     assert_pattern do
       response => {
         data: Telnyx::Models::MessageSendWhatsappResponse::Data | nil
+      }
+    end
+  end
+
+  def test_send_with_alphanumeric_sender_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.messages.send_with_alphanumeric_sender(
+        from: "MyCompany",
+        messaging_profile_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        text: "text",
+        to: "+E.164"
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::MessageSendWithAlphanumericSenderResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::OutboundMessagePayload | nil
       }
     end
   end

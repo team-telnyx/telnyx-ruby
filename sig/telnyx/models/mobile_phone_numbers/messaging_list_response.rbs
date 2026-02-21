@@ -9,8 +9,10 @@ module Telnyx
           features: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Features,
           messaging_product: String,
           messaging_profile_id: String?,
+          organization_id: String,
           phone_number: String,
           record_type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::record_type,
+          tags: ::Array[String],
           traffic_type: String,
           type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::type_,
           updated_at: Time
@@ -22,6 +24,14 @@ module Telnyx
         def messaging_product=: (String) -> String
 
         attr_accessor messaging_profile_id: String?
+
+        attr_reader organization_id: String?
+
+        def organization_id=: (String) -> String
+
+        attr_reader tags: ::Array[String]?
+
+        def tags=: (::Array[String]) -> ::Array[String]
 
         attr_reader id: String?
 
@@ -72,8 +82,10 @@ module Telnyx
           ?features: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Features,
           ?messaging_product: String,
           ?messaging_profile_id: String?,
+          ?organization_id: String,
           ?phone_number: String,
           ?record_type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::record_type,
+          ?tags: ::Array[String],
           ?traffic_type: String,
           ?type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::type_,
           ?updated_at: Time
@@ -86,8 +98,10 @@ module Telnyx
           features: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Features,
           messaging_product: String,
           messaging_profile_id: String?,
+          organization_id: String,
           phone_number: String,
           record_type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::record_type,
+          tags: ::Array[String],
           traffic_type: String,
           type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::type_,
           updated_at: Time

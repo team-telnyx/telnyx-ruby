@@ -1,0 +1,14 @@
+module Telnyx
+  module Resources
+    class MessagingProfiles
+      class Actions
+        def regenerate_secret: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::MessagingProfiles::ActionRegenerateSecretResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

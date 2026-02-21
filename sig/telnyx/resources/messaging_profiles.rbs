@@ -3,17 +3,22 @@ module Telnyx
     class MessagingProfiles
       attr_reader autoresp_configs: Telnyx::Resources::MessagingProfiles::AutorespConfigs
 
+      attr_reader actions: Telnyx::Resources::MessagingProfiles::Actions
+
       def create: (
         name: String,
         whitelisted_destinations: ::Array[String],
+        ?ai_assistant_id: String?,
         ?alpha_sender: String?,
         ?daily_spend_limit: String,
         ?daily_spend_limit_enabled: bool,
         ?enabled: bool,
+        ?health_webhook_url: String?,
         ?mms_fall_back_to_sms: bool,
         ?mms_transcoding: bool,
         ?mobile_only: bool,
         ?number_pool_settings: Telnyx::NumberPoolSettings?,
+        ?resource_group_id: String?,
         ?smart_encoding: bool,
         ?url_shortener_settings: Telnyx::URLShortenerSettings?,
         ?webhook_api_version: Telnyx::Models::MessagingProfileCreateParams::webhook_api_version,
@@ -50,6 +55,8 @@ module Telnyx
 
       def list: (
         ?filter: Telnyx::MessagingProfileListParams::Filter,
+        ?filter_name_contains: String,
+        ?filter_name_eq: String,
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
@@ -59,6 +66,13 @@ module Telnyx
         String messaging_profile_id,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::MessagingProfileDeleteResponse
+
+      def list_alphanumeric_sender_ids: (
+        String id,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse]
 
       def list_phone_numbers: (
         String messaging_profile_id,
@@ -73,6 +87,12 @@ module Telnyx
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::ShortCode]
+
+      def retrieve_metrics: (
+        String id,
+        ?time_frame: Telnyx::Models::MessagingProfileRetrieveMetricsParams::time_frame,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingProfileRetrieveMetricsResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

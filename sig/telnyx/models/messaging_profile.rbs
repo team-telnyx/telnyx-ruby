@@ -3,6 +3,7 @@ module Telnyx
     type messaging_profile =
       {
         id: String,
+        ai_assistant_id: String?,
         alpha_sender: String?,
         created_at: Time,
         daily_spend_limit: String,
@@ -14,9 +15,11 @@ module Telnyx
         mobile_only: bool,
         name: String,
         number_pool_settings: Telnyx::NumberPoolSettings?,
+        organization_id: String,
         record_type: Telnyx::Models::MessagingProfile::record_type,
         redaction_enabled: bool,
         redaction_level: Integer,
+        resource_group_id: String?,
         smart_encoding: bool,
         updated_at: Time,
         url_shortener_settings: Telnyx::URLShortenerSettings?,
@@ -28,6 +31,8 @@ module Telnyx
       }
 
     class MessagingProfile < Telnyx::Internal::Type::BaseModel
+      attr_accessor ai_assistant_id: String?
+
       attr_accessor alpha_sender: String?
 
       attr_reader daily_spend_limit: String?
@@ -62,6 +67,10 @@ module Telnyx
 
       attr_accessor number_pool_settings: Telnyx::NumberPoolSettings?
 
+      attr_reader organization_id: String?
+
+      def organization_id=: (String) -> String
+
       attr_reader redaction_enabled: bool?
 
       def redaction_enabled=: (bool) -> bool
@@ -69,6 +78,8 @@ module Telnyx
       attr_reader redaction_level: Integer?
 
       def redaction_level=: (Integer) -> Integer
+
+      attr_accessor resource_group_id: String?
 
       attr_reader smart_encoding: bool?
 
@@ -114,6 +125,7 @@ module Telnyx
 
       def initialize: (
         ?id: String,
+        ?ai_assistant_id: String?,
         ?alpha_sender: String?,
         ?created_at: Time,
         ?daily_spend_limit: String,
@@ -125,9 +137,11 @@ module Telnyx
         ?mobile_only: bool,
         ?name: String,
         ?number_pool_settings: Telnyx::NumberPoolSettings?,
+        ?organization_id: String,
         ?record_type: Telnyx::Models::MessagingProfile::record_type,
         ?redaction_enabled: bool,
         ?redaction_level: Integer,
+        ?resource_group_id: String?,
         ?smart_encoding: bool,
         ?updated_at: Time,
         ?url_shortener_settings: Telnyx::URLShortenerSettings?,
@@ -140,6 +154,7 @@ module Telnyx
 
       def to_hash: -> {
         id: String,
+        ai_assistant_id: String?,
         alpha_sender: String?,
         created_at: Time,
         daily_spend_limit: String,
@@ -151,9 +166,11 @@ module Telnyx
         mobile_only: bool,
         name: String,
         number_pool_settings: Telnyx::NumberPoolSettings?,
+        organization_id: String,
         record_type: Telnyx::Models::MessagingProfile::record_type,
         redaction_enabled: bool,
         redaction_level: Integer,
+        resource_group_id: String?,
         smart_encoding: bool,
         updated_at: Time,
         url_shortener_settings: Telnyx::URLShortenerSettings?,

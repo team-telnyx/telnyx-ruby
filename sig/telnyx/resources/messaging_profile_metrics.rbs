@@ -1,0 +1,12 @@
+module Telnyx
+  module Resources
+    class MessagingProfileMetrics
+      def list: (
+        ?time_frame: Telnyx::Models::MessagingProfileMetricListParams::time_frame,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingProfileMetricListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

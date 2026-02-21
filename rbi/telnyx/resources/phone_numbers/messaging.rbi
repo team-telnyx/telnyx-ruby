@@ -24,6 +24,7 @@ module Telnyx
             id: String,
             messaging_product: String,
             messaging_profile_id: String,
+            tags: T::Array[String],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::PhoneNumbers::MessagingUpdateResponse)
         end
@@ -42,6 +43,8 @@ module Telnyx
           # - Set this field to a quoted UUID of a messaging profile to assign this number
           #   to that messaging profile
           messaging_profile_id: nil,
+          # Tags to set on this phone number.
+          tags: nil,
           request_options: {}
         )
         end
@@ -49,8 +52,15 @@ module Telnyx
         # List phone numbers with messaging settings
         sig do
           params(
+            filter_messaging_profile_id: String,
+            filter_phone_number: String,
+            filter_phone_number_contains: String,
+            filter_type:
+              Telnyx::PhoneNumbers::MessagingListParams::FilterType::OrSymbol,
             page_number: Integer,
             page_size: Integer,
+            sort_phone_number:
+              Telnyx::PhoneNumbers::MessagingListParams::SortPhoneNumber::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultFlatPagination[
@@ -58,7 +68,21 @@ module Telnyx
             ]
           )
         end
-        def list(page_number: nil, page_size: nil, request_options: {})
+        def list(
+          # Filter by messaging profile ID.
+          filter_messaging_profile_id: nil,
+          # Filter by exact phone number (supports comma-separated list).
+          filter_phone_number: nil,
+          # Filter by phone number substring.
+          filter_phone_number_contains: nil,
+          # Filter by phone number type.
+          filter_type: nil,
+          page_number: nil,
+          page_size: nil,
+          # Sort by phone number.
+          sort_phone_number: nil,
+          request_options: {}
+        )
         end
 
         # @api private

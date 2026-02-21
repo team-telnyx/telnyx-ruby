@@ -1,0 +1,88 @@
+module Telnyx
+  module Models
+    type alphanumeric_sender_id_retrieve_response =
+      { data: Telnyx::Models::AlphanumericSenderIDRetrieveResponse::Data }
+
+    class AlphanumericSenderIDRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::AlphanumericSenderIDRetrieveResponse::Data?
+
+      def data=: (
+        Telnyx::Models::AlphanumericSenderIDRetrieveResponse::Data
+      ) -> Telnyx::Models::AlphanumericSenderIDRetrieveResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::AlphanumericSenderIDRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::AlphanumericSenderIDRetrieveResponse::Data
+      }
+
+      type data =
+        {
+          id: String,
+          alphanumeric_sender_id: String,
+          messaging_profile_id: String,
+          organization_id: String,
+          record_type: Telnyx::Models::AlphanumericSenderIDRetrieveResponse::Data::record_type,
+          us_long_code_fallback: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader alphanumeric_sender_id: String?
+
+        def alphanumeric_sender_id=: (String) -> String
+
+        attr_reader messaging_profile_id: String?
+
+        def messaging_profile_id=: (String) -> String
+
+        attr_reader organization_id: String?
+
+        def organization_id=: (String) -> String
+
+        attr_reader record_type: Telnyx::Models::AlphanumericSenderIDRetrieveResponse::Data::record_type?
+
+        def record_type=: (
+          Telnyx::Models::AlphanumericSenderIDRetrieveResponse::Data::record_type
+        ) -> Telnyx::Models::AlphanumericSenderIDRetrieveResponse::Data::record_type
+
+        attr_reader us_long_code_fallback: String?
+
+        def us_long_code_fallback=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?alphanumeric_sender_id: String,
+          ?messaging_profile_id: String,
+          ?organization_id: String,
+          ?record_type: Telnyx::Models::AlphanumericSenderIDRetrieveResponse::Data::record_type,
+          ?us_long_code_fallback: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          alphanumeric_sender_id: String,
+          messaging_profile_id: String,
+          organization_id: String,
+          record_type: Telnyx::Models::AlphanumericSenderIDRetrieveResponse::Data::record_type,
+          us_long_code_fallback: String
+        }
+
+        type record_type = :alphanumeric_sender_id
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          ALPHANUMERIC_SENDER_ID: :alphanumeric_sender_id
+
+          def self?.values: -> ::Array[Telnyx::Models::AlphanumericSenderIDRetrieveResponse::Data::record_type]
+        end
+      end
+    end
+  end
+end

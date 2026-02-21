@@ -4,14 +4,17 @@ module Telnyx
       {
         name: String,
         whitelisted_destinations: ::Array[String],
+        ai_assistant_id: String?,
         alpha_sender: String?,
         daily_spend_limit: String,
         daily_spend_limit_enabled: bool,
         enabled: bool,
+        health_webhook_url: String?,
         mms_fall_back_to_sms: bool,
         mms_transcoding: bool,
         mobile_only: bool,
         number_pool_settings: Telnyx::NumberPoolSettings?,
+        resource_group_id: String?,
         smart_encoding: bool,
         url_shortener_settings: Telnyx::URLShortenerSettings?,
         webhook_api_version: Telnyx::Models::MessagingProfileCreateParams::webhook_api_version,
@@ -28,6 +31,8 @@ module Telnyx
 
       attr_accessor whitelisted_destinations: ::Array[String]
 
+      attr_accessor ai_assistant_id: String?
+
       attr_accessor alpha_sender: String?
 
       attr_reader daily_spend_limit: String?
@@ -42,6 +47,8 @@ module Telnyx
 
       def enabled=: (bool) -> bool
 
+      attr_accessor health_webhook_url: String?
+
       attr_reader mms_fall_back_to_sms: bool?
 
       def mms_fall_back_to_sms=: (bool) -> bool
@@ -55,6 +62,8 @@ module Telnyx
       def mobile_only=: (bool) -> bool
 
       attr_accessor number_pool_settings: Telnyx::NumberPoolSettings?
+
+      attr_accessor resource_group_id: String?
 
       attr_reader smart_encoding: bool?
 
@@ -75,14 +84,17 @@ module Telnyx
       def initialize: (
         name: String,
         whitelisted_destinations: ::Array[String],
+        ?ai_assistant_id: String?,
         ?alpha_sender: String?,
         ?daily_spend_limit: String,
         ?daily_spend_limit_enabled: bool,
         ?enabled: bool,
+        ?health_webhook_url: String?,
         ?mms_fall_back_to_sms: bool,
         ?mms_transcoding: bool,
         ?mobile_only: bool,
         ?number_pool_settings: Telnyx::NumberPoolSettings?,
+        ?resource_group_id: String?,
         ?smart_encoding: bool,
         ?url_shortener_settings: Telnyx::URLShortenerSettings?,
         ?webhook_api_version: Telnyx::Models::MessagingProfileCreateParams::webhook_api_version,
@@ -94,14 +106,17 @@ module Telnyx
       def to_hash: -> {
         name: String,
         whitelisted_destinations: ::Array[String],
+        ai_assistant_id: String?,
         alpha_sender: String?,
         daily_spend_limit: String,
         daily_spend_limit_enabled: bool,
         enabled: bool,
+        health_webhook_url: String?,
         mms_fall_back_to_sms: bool,
         mms_transcoding: bool,
         mobile_only: bool,
         number_pool_settings: Telnyx::NumberPoolSettings?,
+        resource_group_id: String?,
         smart_encoding: bool,
         url_shortener_settings: Telnyx::URLShortenerSettings?,
         webhook_api_version: Telnyx::Models::MessagingProfileCreateParams::webhook_api_version,

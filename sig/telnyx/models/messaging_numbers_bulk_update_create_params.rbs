@@ -1,7 +1,11 @@
 module Telnyx
   module Models
     type messaging_numbers_bulk_update_create_params =
-      { messaging_profile_id: String, numbers: ::Array[String] }
+      {
+        messaging_profile_id: String,
+        numbers: ::Array[String],
+        assign_only: bool
+      }
       & Telnyx::Internal::Type::request_parameters
 
     class MessagingNumbersBulkUpdateCreateParams < Telnyx::Internal::Type::BaseModel
@@ -12,15 +16,21 @@ module Telnyx
 
       attr_accessor numbers: ::Array[String]
 
+      attr_reader assign_only: bool?
+
+      def assign_only=: (bool) -> bool
+
       def initialize: (
         messaging_profile_id: String,
         numbers: ::Array[String],
+        ?assign_only: bool,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         messaging_profile_id: String,
         numbers: ::Array[String],
+        assign_only: bool,
         request_options: Telnyx::RequestOptions
       }
     end

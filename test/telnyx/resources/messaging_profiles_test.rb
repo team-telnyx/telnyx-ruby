@@ -70,6 +70,7 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
     assert_pattern do
       row => {
         id: String | nil,
+        ai_assistant_id: String | nil,
         alpha_sender: String | nil,
         created_at: Time | nil,
         daily_spend_limit: String | nil,
@@ -81,9 +82,11 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
         mobile_only: Telnyx::Internal::Type::Boolean | nil,
         name: String | nil,
         number_pool_settings: Telnyx::NumberPoolSettings | nil,
+        organization_id: String | nil,
         record_type: Telnyx::MessagingProfile::RecordType | nil,
         redaction_enabled: Telnyx::Internal::Type::Boolean | nil,
         redaction_level: Integer | nil,
+        resource_group_id: String | nil,
         smart_encoding: Telnyx::Internal::Type::Boolean | nil,
         updated_at: Time | nil,
         url_shortener_settings: Telnyx::URLShortenerSettings | nil,
@@ -108,6 +111,35 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
     assert_pattern do
       response => {
         data: Telnyx::MessagingProfile | nil
+      }
+    end
+  end
+
+  def test_list_alphanumeric_sender_ids
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.messaging_profiles.list_alphanumeric_sender_ids("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse
+    end
+
+    assert_pattern do
+      row => {
+        id: String | nil,
+        alphanumeric_sender_id: String | nil,
+        messaging_profile_id: String | nil,
+        organization_id: String | nil,
+        record_type: Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse::RecordType | nil,
+        us_long_code_fallback: String | nil
       }
     end
   end
@@ -138,8 +170,10 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
         health: Telnyx::NumberHealthMetrics | nil,
         messaging_product: String | nil,
         messaging_profile_id: String | nil,
+        organization_id: String | nil,
         phone_number: String | nil,
         record_type: Telnyx::PhoneNumberWithMessagingSettings::RecordType | nil,
+        tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
         traffic_type: String | nil,
         type: Telnyx::PhoneNumberWithMessagingSettings::Type | nil,
         updated_at: Time | nil
@@ -173,6 +207,22 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
         short_code: String | nil,
         tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
         updated_at: Time | nil
+      }
+    end
+  end
+
+  def test_retrieve_metrics
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.messaging_profiles.retrieve_metrics("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Telnyx::Models::MessagingProfileRetrieveMetricsResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil
       }
     end
   end

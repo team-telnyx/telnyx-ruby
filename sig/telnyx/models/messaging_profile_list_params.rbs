@@ -3,6 +3,8 @@ module Telnyx
     type messaging_profile_list_params =
       {
         filter: Telnyx::MessagingProfileListParams::Filter,
+        filter_name_contains: String,
+        filter_name_eq: String,
         page_number: Integer,
         page_size: Integer
       }
@@ -18,6 +20,14 @@ module Telnyx
         Telnyx::MessagingProfileListParams::Filter
       ) -> Telnyx::MessagingProfileListParams::Filter
 
+      attr_reader filter_name_contains: String?
+
+      def filter_name_contains=: (String) -> String
+
+      attr_reader filter_name_eq: String?
+
+      def filter_name_eq=: (String) -> String
+
       attr_reader page_number: Integer?
 
       def page_number=: (Integer) -> Integer
@@ -28,6 +38,8 @@ module Telnyx
 
       def initialize: (
         ?filter: Telnyx::MessagingProfileListParams::Filter,
+        ?filter_name_contains: String,
+        ?filter_name_eq: String,
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
@@ -35,6 +47,8 @@ module Telnyx
 
       def to_hash: -> {
         filter: Telnyx::MessagingProfileListParams::Filter,
+        filter_name_contains: String,
+        filter_name_eq: String,
         page_number: Integer,
         page_size: Integer,
         request_options: Telnyx::RequestOptions

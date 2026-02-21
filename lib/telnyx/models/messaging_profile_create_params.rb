@@ -21,6 +21,12 @@ module Telnyx
       #   @return [Array<String>]
       required :whitelisted_destinations, Telnyx::Internal::Type::ArrayOf[String]
 
+      # @!attribute ai_assistant_id
+      #   The AI assistant ID to associate with this messaging profile.
+      #
+      #   @return [String, nil]
+      optional :ai_assistant_id, String, nil?: true
+
       # @!attribute alpha_sender
       #   The alphanumeric sender ID to use when sending to destinations that require an
       #   alphanumeric sender ID.
@@ -46,6 +52,12 @@ module Telnyx
       #
       #   @return [Boolean, nil]
       optional :enabled, Telnyx::Internal::Type::Boolean
+
+      # @!attribute health_webhook_url
+      #   A URL to receive health check webhooks for numbers in this profile.
+      #
+      #   @return [String, nil]
+      optional :health_webhook_url, String, nil?: true
 
       # @!attribute mms_fall_back_to_sms
       #   enables SMS fallback for MMS messages.
@@ -74,6 +86,12 @@ module Telnyx
       #
       #   @return [Telnyx::Models::NumberPoolSettings, nil]
       optional :number_pool_settings, -> { Telnyx::NumberPoolSettings }, nil?: true
+
+      # @!attribute resource_group_id
+      #   The resource group ID to associate with this messaging profile.
+      #
+      #   @return [String, nil]
+      optional :resource_group_id, String, nil?: true
 
       # @!attribute smart_encoding
       #   Enables automatic character encoding optimization for SMS messages. When
@@ -115,13 +133,15 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String, nil?: true
 
-      # @!method initialize(name:, whitelisted_destinations:, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, number_pool_settings: nil, smart_encoding: nil, url_shortener_settings: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @!method initialize(name:, whitelisted_destinations:, ai_assistant_id: nil, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, health_webhook_url: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, number_pool_settings: nil, resource_group_id: nil, smart_encoding: nil, url_shortener_settings: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessagingProfileCreateParams} for more details.
       #
       #   @param name [String] A user friendly name for the messaging profile.
       #
       #   @param whitelisted_destinations [Array<String>] Destinations to which the messaging profile is allowed to send. The elements in
+      #
+      #   @param ai_assistant_id [String, nil] The AI assistant ID to associate with this messaging profile.
       #
       #   @param alpha_sender [String, nil] The alphanumeric sender ID to use when sending to destinations that require an a
       #
@@ -131,6 +151,8 @@ module Telnyx
       #
       #   @param enabled [Boolean] Specifies whether the messaging profile is enabled or not.
       #
+      #   @param health_webhook_url [String, nil] A URL to receive health check webhooks for numbers in this profile.
+      #
       #   @param mms_fall_back_to_sms [Boolean] enables SMS fallback for MMS messages.
       #
       #   @param mms_transcoding [Boolean] enables automated resizing of MMS media.
@@ -138,6 +160,8 @@ module Telnyx
       #   @param mobile_only [Boolean] Send messages only to mobile phone numbers.
       #
       #   @param number_pool_settings [Telnyx::Models::NumberPoolSettings, nil] Number Pool allows you to send messages from a pool of numbers of different type
+      #
+      #   @param resource_group_id [String, nil] The resource group ID to associate with this messaging profile.
       #
       #   @param smart_encoding [Boolean] Enables automatic character encoding optimization for SMS messages. When enabled
       #

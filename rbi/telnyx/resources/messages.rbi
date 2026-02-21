@@ -38,6 +38,20 @@ module Telnyx
       )
       end
 
+      # Retrieve all messages in a group MMS conversation by the group message ID.
+      sig do
+        params(
+          message_id: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::Models::MessageRetrieveGroupMessagesResponse)
+      end
+      def retrieve_group_messages(
+        # The group message ID.
+        message_id,
+        request_options: {}
+      )
+      end
+
       # Schedule a message with a Phone Number, Alphanumeric Sender ID, Short Code or
       # Number Pool.
       #
@@ -406,6 +420,38 @@ module Telnyx
         # Message type - must be set to "WHATSAPP"
         type: nil,
         # The URL where webhooks related to this message will be sent.
+        webhook_url: nil,
+        request_options: {}
+      )
+      end
+
+      # Send an SMS message using an alphanumeric sender ID. This is SMS only.
+      sig do
+        params(
+          from: String,
+          messaging_profile_id: String,
+          text: String,
+          to: String,
+          use_profile_webhooks: T::Boolean,
+          webhook_failover_url: T.nilable(String),
+          webhook_url: T.nilable(String),
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::Models::MessageSendWithAlphanumericSenderResponse)
+      end
+      def send_with_alphanumeric_sender(
+        # A valid alphanumeric sender ID on the user's account.
+        from:,
+        # The messaging profile ID to use.
+        messaging_profile_id:,
+        # The message body.
+        text:,
+        # Receiving address (+E.164 formatted phone number).
+        to:,
+        # If true, use the messaging profile's webhook settings.
+        use_profile_webhooks: nil,
+        # Failover callback URL for delivery status updates.
+        webhook_failover_url: nil,
+        # Callback URL for delivery status updates.
         webhook_url: nil,
         request_options: {}
       )
