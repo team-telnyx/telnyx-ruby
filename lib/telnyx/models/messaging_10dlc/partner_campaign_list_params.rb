@@ -50,7 +50,7 @@ module Telnyx
           BRAND_DISPLAY_NAME = :brandDisplayName
           BRAND_DISPLAY_NAME_DESC = :"-brandDisplayName"
           TCR_BRAND_ID = :tcrBrandId
-          TCR_BRAN_ID_DESC = :"-tcrBranId"
+          TCR_BRAND_ID_DESC = :"-tcrBrandId"
           TCR_CAMPAIGN_ID = :tcrCampaignId
           TCR_CAMPAIGN_ID_DESC = :"-tcrCampaignId"
           CREATED_AT = :createdAt
