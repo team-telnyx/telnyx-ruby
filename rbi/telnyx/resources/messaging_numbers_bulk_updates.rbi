@@ -8,6 +8,7 @@ module Telnyx
         params(
           messaging_profile_id: String,
           numbers: T::Array[String],
+          assign_only: T::Boolean,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::MessagingNumbersBulkUpdateCreateResponse)
       end
@@ -21,6 +22,8 @@ module Telnyx
         messaging_profile_id:,
         # The list of phone numbers to update.
         numbers:,
+        # If true, only assign numbers to the profile without changing other settings.
+        assign_only: nil,
         request_options: {}
       )
       end

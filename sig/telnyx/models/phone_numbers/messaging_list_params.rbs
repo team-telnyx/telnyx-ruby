@@ -2,12 +2,38 @@ module Telnyx
   module Models
     module PhoneNumbers
       type messaging_list_params =
-        { page_number: Integer, page_size: Integer }
+        {
+          filter_messaging_profile_id: String,
+          filter_phone_number: String,
+          filter_phone_number_contains: String,
+          filter_type: Telnyx::Models::PhoneNumbers::MessagingListParams::filter_type,
+          page_number: Integer,
+          page_size: Integer,
+          sort_phone_number: Telnyx::Models::PhoneNumbers::MessagingListParams::sort_phone_number
+        }
         & Telnyx::Internal::Type::request_parameters
 
       class MessagingListParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter_messaging_profile_id: String?
+
+        def filter_messaging_profile_id=: (String) -> String
+
+        attr_reader filter_phone_number: String?
+
+        def filter_phone_number=: (String) -> String
+
+        attr_reader filter_phone_number_contains: String?
+
+        def filter_phone_number_contains=: (String) -> String
+
+        attr_reader filter_type: Telnyx::Models::PhoneNumbers::MessagingListParams::filter_type?
+
+        def filter_type=: (
+          Telnyx::Models::PhoneNumbers::MessagingListParams::filter_type
+        ) -> Telnyx::Models::PhoneNumbers::MessagingListParams::filter_type
 
         attr_reader page_number: Integer?
 
@@ -17,17 +43,56 @@ module Telnyx
 
         def page_size=: (Integer) -> Integer
 
+        attr_reader sort_phone_number: Telnyx::Models::PhoneNumbers::MessagingListParams::sort_phone_number?
+
+        def sort_phone_number=: (
+          Telnyx::Models::PhoneNumbers::MessagingListParams::sort_phone_number
+        ) -> Telnyx::Models::PhoneNumbers::MessagingListParams::sort_phone_number
+
         def initialize: (
+          ?filter_messaging_profile_id: String,
+          ?filter_phone_number: String,
+          ?filter_phone_number_contains: String,
+          ?filter_type: Telnyx::Models::PhoneNumbers::MessagingListParams::filter_type,
           ?page_number: Integer,
           ?page_size: Integer,
+          ?sort_phone_number: Telnyx::Models::PhoneNumbers::MessagingListParams::sort_phone_number,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
+          filter_messaging_profile_id: String,
+          filter_phone_number: String,
+          filter_phone_number_contains: String,
+          filter_type: Telnyx::Models::PhoneNumbers::MessagingListParams::filter_type,
           page_number: Integer,
           page_size: Integer,
+          sort_phone_number: Telnyx::Models::PhoneNumbers::MessagingListParams::sort_phone_number,
           request_options: Telnyx::RequestOptions
         }
+
+        type filter_type = :tollfree | :longcode | :shortcode
+
+        module FilterType
+          extend Telnyx::Internal::Type::Enum
+
+          TOLLFREE: :tollfree
+          LONGCODE: :longcode
+          SHORTCODE: :shortcode
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::MessagingListParams::filter_type]
+        end
+
+        type sort_phone_number = :asc | :desc
+
+        module SortPhoneNumber
+          extend Telnyx::Internal::Type::Enum
+
+          ASC: :asc
+          DESC: :desc
+
+          def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::MessagingListParams::sort_phone_number]
+        end
       end
     end
   end

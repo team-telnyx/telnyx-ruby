@@ -29,6 +29,20 @@ module Telnyx
       sig { returns(T.nilable(String)) }
       attr_accessor :messaging_profile_id
 
+      # The organization that owns this phone number.
+      sig { returns(T.nilable(String)) }
+      attr_reader :organization_id
+
+      sig { params(organization_id: String).void }
+      attr_writer :organization_id
+
+      # Tags associated with this phone number.
+      sig { returns(T.nilable(T::Array[String])) }
+      attr_reader :tags
+
+      sig { params(tags: T::Array[String]).void }
+      attr_writer :tags
+
       # Identifies the type of resource.
       sig { returns(T.nilable(String)) }
       attr_reader :id
@@ -135,9 +149,11 @@ module Telnyx
           health: Telnyx::NumberHealthMetrics::OrHash,
           messaging_product: String,
           messaging_profile_id: T.nilable(String),
+          organization_id: String,
           phone_number: String,
           record_type:
             Telnyx::PhoneNumberWithMessagingSettings::RecordType::OrSymbol,
+          tags: T::Array[String],
           traffic_type: String,
           type: Telnyx::PhoneNumberWithMessagingSettings::Type::OrSymbol,
           updated_at: Time
@@ -159,10 +175,14 @@ module Telnyx
         messaging_product: nil,
         # Unique identifier for a messaging profile.
         messaging_profile_id: nil,
+        # The organization that owns this phone number.
+        organization_id: nil,
         # +E.164 formatted phone number.
         phone_number: nil,
         # Identifies the type of the resource.
         record_type: nil,
+        # Tags associated with this phone number.
+        tags: nil,
         # The messaging traffic or use case for which the number is currently configured.
         traffic_type: nil,
         # The type of the phone number
@@ -183,9 +203,11 @@ module Telnyx
             health: Telnyx::NumberHealthMetrics,
             messaging_product: String,
             messaging_profile_id: T.nilable(String),
+            organization_id: String,
             phone_number: String,
             record_type:
               Telnyx::PhoneNumberWithMessagingSettings::RecordType::TaggedSymbol,
+            tags: T::Array[String],
             traffic_type: String,
             type: Telnyx::PhoneNumberWithMessagingSettings::Type::TaggedSymbol,
             updated_at: Time

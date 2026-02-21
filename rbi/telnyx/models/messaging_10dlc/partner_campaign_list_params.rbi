@@ -124,9 +124,9 @@ module Telnyx
               :tcrBrandId,
               Telnyx::Messaging10dlc::PartnerCampaignListParams::Sort::TaggedSymbol
             )
-          TCR_BRAN_ID_DESC =
+          TCR_BRAND_ID_DESC =
             T.let(
-              :"-tcrBranId",
+              :"-tcrBrandId",
               Telnyx::Messaging10dlc::PartnerCampaignListParams::Sort::TaggedSymbol
             )
           TCR_CAMPAIGN_ID =

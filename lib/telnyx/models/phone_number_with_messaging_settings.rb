@@ -21,6 +21,18 @@ module Telnyx
       #   @return [String, nil]
       optional :messaging_profile_id, String, nil?: true
 
+      # @!attribute organization_id
+      #   The organization that owns this phone number.
+      #
+      #   @return [String, nil]
+      optional :organization_id, String
+
+      # @!attribute tags
+      #   Tags associated with this phone number.
+      #
+      #   @return [Array<String>, nil]
+      optional :tags, Telnyx::Internal::Type::ArrayOf[String]
+
       response_only do
         # @!attribute id
         #   Identifies the type of resource.
@@ -82,7 +94,7 @@ module Telnyx
         optional :updated_at, Time
       end
 
-      # @!method initialize(id: nil, country_code: nil, created_at: nil, eligible_messaging_products: nil, features: nil, health: nil, messaging_product: nil, messaging_profile_id: nil, phone_number: nil, record_type: nil, traffic_type: nil, type: nil, updated_at: nil)
+      # @!method initialize(id: nil, country_code: nil, created_at: nil, eligible_messaging_products: nil, features: nil, health: nil, messaging_product: nil, messaging_profile_id: nil, organization_id: nil, phone_number: nil, record_type: nil, tags: nil, traffic_type: nil, type: nil, updated_at: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::PhoneNumberWithMessagingSettings} for more details.
       #
@@ -102,9 +114,13 @@ module Telnyx
       #
       #   @param messaging_profile_id [String, nil] Unique identifier for a messaging profile.
       #
+      #   @param organization_id [String] The organization that owns this phone number.
+      #
       #   @param phone_number [String] +E.164 formatted phone number.
       #
       #   @param record_type [Symbol, Telnyx::Models::PhoneNumberWithMessagingSettings::RecordType] Identifies the type of the resource.
+      #
+      #   @param tags [Array<String>] Tags associated with this phone number.
       #
       #   @param traffic_type [String] The messaging traffic or use case for which the number is currently configured.
       #

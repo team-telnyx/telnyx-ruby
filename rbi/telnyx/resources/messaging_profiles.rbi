@@ -6,19 +6,25 @@ module Telnyx
       sig { returns(Telnyx::Resources::MessagingProfiles::AutorespConfigs) }
       attr_reader :autoresp_configs
 
+      sig { returns(Telnyx::Resources::MessagingProfiles::Actions) }
+      attr_reader :actions
+
       # Create a messaging profile
       sig do
         params(
           name: String,
           whitelisted_destinations: T::Array[String],
+          ai_assistant_id: T.nilable(String),
           alpha_sender: T.nilable(String),
           daily_spend_limit: String,
           daily_spend_limit_enabled: T::Boolean,
           enabled: T::Boolean,
+          health_webhook_url: T.nilable(String),
           mms_fall_back_to_sms: T::Boolean,
           mms_transcoding: T::Boolean,
           mobile_only: T::Boolean,
           number_pool_settings: T.nilable(Telnyx::NumberPoolSettings::OrHash),
+          resource_group_id: T.nilable(String),
           smart_encoding: T::Boolean,
           url_shortener_settings:
             T.nilable(Telnyx::URLShortenerSettings::OrHash),
@@ -36,6 +42,8 @@ module Telnyx
         # the list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]` all
         # destinations will be allowed.
         whitelisted_destinations:,
+        # The AI assistant ID to associate with this messaging profile.
+        ai_assistant_id: nil,
         # The alphanumeric sender ID to use when sending to destinations that require an
         # alphanumeric sender ID.
         alpha_sender: nil,
@@ -46,6 +54,8 @@ module Telnyx
         daily_spend_limit_enabled: nil,
         # Specifies whether the messaging profile is enabled or not.
         enabled: nil,
+        # A URL to receive health check webhooks for numbers in this profile.
+        health_webhook_url: nil,
         # enables SMS fallback for MMS messages.
         mms_fall_back_to_sms: nil,
         # enables automated resizing of MMS media.
@@ -58,6 +68,8 @@ module Telnyx
         #
         # To disable this feature, set the object field to `null`.
         number_pool_settings: nil,
+        # The resource group ID to associate with this messaging profile.
+        resource_group_id: nil,
         # Enables automatic character encoding optimization for SMS messages. When
         # enabled, the system automatically selects the most efficient encoding (GSM-7 or
         # UCS-2) based on message content to maximize character limits and minimize costs.
@@ -184,6 +196,8 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::MessagingProfileListParams::Filter::OrHash,
+          filter_name_contains: String,
+          filter_name_eq: String,
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
@@ -194,6 +208,10 @@ module Telnyx
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[name]
         filter: nil,
+        # Filter profiles by name containing the given string.
+        filter_name_contains: nil,
+        # Filter profiles by exact name match.
+        filter_name_eq: nil,
         page_number: nil,
         page_size: nil,
         request_options: {}
@@ -210,6 +228,28 @@ module Telnyx
       def delete(
         # The id of the messaging profile to retrieve
         messaging_profile_id,
+        request_options: {}
+      )
+      end
+
+      # List all alphanumeric sender IDs associated with a specific messaging profile.
+      sig do
+        params(
+          id: String,
+          page_number: Integer,
+          page_size: Integer,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse
+          ]
+        )
+      end
+      def list_alphanumeric_sender_ids(
+        # The identifier of the messaging profile.
+        id,
+        page_number: nil,
+        page_size: nil,
         request_options: {}
       )
       end
@@ -250,6 +290,25 @@ module Telnyx
         messaging_profile_id,
         page_number: nil,
         page_size: nil,
+        request_options: {}
+      )
+      end
+
+      # Get detailed metrics for a specific messaging profile, broken down by time
+      # interval.
+      sig do
+        params(
+          id: String,
+          time_frame:
+            Telnyx::MessagingProfileRetrieveMetricsParams::TimeFrame::OrSymbol,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::Models::MessagingProfileRetrieveMetricsResponse)
+      end
+      def retrieve_metrics(
+        # The identifier of the messaging profile.
+        id,
+        # The time frame for metrics.
+        time_frame: nil,
         request_options: {}
       )
       end

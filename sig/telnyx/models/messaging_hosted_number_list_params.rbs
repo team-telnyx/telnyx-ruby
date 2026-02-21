@@ -1,0 +1,76 @@
+module Telnyx
+  module Models
+    type messaging_hosted_number_list_params =
+      {
+        filter_messaging_profile_id: String,
+        filter_phone_number: String,
+        filter_phone_number_contains: String,
+        page_number: Integer,
+        page_size: Integer,
+        sort_phone_number: Telnyx::Models::MessagingHostedNumberListParams::sort_phone_number
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class MessagingHostedNumberListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter_messaging_profile_id: String?
+
+      def filter_messaging_profile_id=: (String) -> String
+
+      attr_reader filter_phone_number: String?
+
+      def filter_phone_number=: (String) -> String
+
+      attr_reader filter_phone_number_contains: String?
+
+      def filter_phone_number_contains=: (String) -> String
+
+      attr_reader page_number: Integer?
+
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader sort_phone_number: Telnyx::Models::MessagingHostedNumberListParams::sort_phone_number?
+
+      def sort_phone_number=: (
+        Telnyx::Models::MessagingHostedNumberListParams::sort_phone_number
+      ) -> Telnyx::Models::MessagingHostedNumberListParams::sort_phone_number
+
+      def initialize: (
+        ?filter_messaging_profile_id: String,
+        ?filter_phone_number: String,
+        ?filter_phone_number_contains: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?sort_phone_number: Telnyx::Models::MessagingHostedNumberListParams::sort_phone_number,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter_messaging_profile_id: String,
+        filter_phone_number: String,
+        filter_phone_number_contains: String,
+        page_number: Integer,
+        page_size: Integer,
+        sort_phone_number: Telnyx::Models::MessagingHostedNumberListParams::sort_phone_number,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type sort_phone_number = :asc | :desc
+
+      module SortPhoneNumber
+        extend Telnyx::Internal::Type::Enum
+
+        ASC: :asc
+        DESC: :desc
+
+        def self?.values: -> ::Array[Telnyx::Models::MessagingHostedNumberListParams::sort_phone_number]
+      end
+    end
+  end
+end

@@ -6,16 +6,21 @@ module Telnyx
       # @return [Telnyx::Resources::MessagingProfiles::AutorespConfigs]
       attr_reader :autoresp_configs
 
+      # @return [Telnyx::Resources::MessagingProfiles::Actions]
+      attr_reader :actions
+
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MessagingProfileCreateParams} for more details.
       #
       # Create a messaging profile
       #
-      # @overload create(name:, whitelisted_destinations:, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, number_pool_settings: nil, smart_encoding: nil, url_shortener_settings: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @overload create(name:, whitelisted_destinations:, ai_assistant_id: nil, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, health_webhook_url: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, number_pool_settings: nil, resource_group_id: nil, smart_encoding: nil, url_shortener_settings: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #
       # @param name [String] A user friendly name for the messaging profile.
       #
       # @param whitelisted_destinations [Array<String>] Destinations to which the messaging profile is allowed to send. The elements in
+      #
+      # @param ai_assistant_id [String, nil] The AI assistant ID to associate with this messaging profile.
       #
       # @param alpha_sender [String, nil] The alphanumeric sender ID to use when sending to destinations that require an a
       #
@@ -25,6 +30,8 @@ module Telnyx
       #
       # @param enabled [Boolean] Specifies whether the messaging profile is enabled or not.
       #
+      # @param health_webhook_url [String, nil] A URL to receive health check webhooks for numbers in this profile.
+      #
       # @param mms_fall_back_to_sms [Boolean] enables SMS fallback for MMS messages.
       #
       # @param mms_transcoding [Boolean] enables automated resizing of MMS media.
@@ -32,6 +39,8 @@ module Telnyx
       # @param mobile_only [Boolean] Send messages only to mobile phone numbers.
       #
       # @param number_pool_settings [Telnyx::Models::NumberPoolSettings, nil] Number Pool allows you to send messages from a pool of numbers of different type
+      #
+      # @param resource_group_id [String, nil] The resource group ID to associate with this messaging profile.
       #
       # @param smart_encoding [Boolean] Enables automatic character encoding optimization for SMS messages. When enabled
       #
@@ -138,9 +147,13 @@ module Telnyx
 
       # List messaging profiles
       #
-      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
+      # @overload list(filter: nil, filter_name_contains: nil, filter_name_eq: nil, page_number: nil, page_size: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::MessagingProfileListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[name]
+      #
+      # @param filter_name_contains [String] Filter profiles by name containing the given string.
+      #
+      # @param filter_name_eq [String] Filter profiles by exact name match.
       #
       # @param page_number [Integer]
       #
@@ -156,7 +169,12 @@ module Telnyx
         @client.request(
           method: :get,
           path: "messaging_profiles",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: parsed.transform_keys(
+            filter_name_contains: "filter[name][contains]",
+            filter_name_eq: "filter[name][eq]",
+            page_number: "page[number]",
+            page_size: "page[size]"
+          ),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::MessagingProfile,
           options: options
@@ -180,6 +198,33 @@ module Telnyx
           path: ["messaging_profiles/%1$s", messaging_profile_id],
           model: Telnyx::Models::MessagingProfileDeleteResponse,
           options: params[:request_options]
+        )
+      end
+
+      # List all alphanumeric sender IDs associated with a specific messaging profile.
+      #
+      # @overload list_alphanumeric_sender_ids(id, page_number: nil, page_size: nil, request_options: {})
+      #
+      # @param id [String] The identifier of the messaging profile.
+      #
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse>]
+      #
+      # @see Telnyx::Models::MessagingProfileListAlphanumericSenderIDsParams
+      def list_alphanumeric_sender_ids(id, params = {})
+        parsed, options = Telnyx::MessagingProfileListAlphanumericSenderIDsParams.dump_request(params)
+        @client.request(
+          method: :get,
+          path: ["messaging_profiles/%1$s/alphanumeric_sender_ids", id],
+          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
+          model: Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse,
+          options: options
         )
       end
 
@@ -237,12 +282,38 @@ module Telnyx
         )
       end
 
+      # Get detailed metrics for a specific messaging profile, broken down by time
+      # interval.
+      #
+      # @overload retrieve_metrics(id, time_frame: nil, request_options: {})
+      #
+      # @param id [String] The identifier of the messaging profile.
+      #
+      # @param time_frame [Symbol, Telnyx::Models::MessagingProfileRetrieveMetricsParams::TimeFrame] The time frame for metrics.
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::MessagingProfileRetrieveMetricsResponse]
+      #
+      # @see Telnyx::Models::MessagingProfileRetrieveMetricsParams
+      def retrieve_metrics(id, params = {})
+        parsed, options = Telnyx::MessagingProfileRetrieveMetricsParams.dump_request(params)
+        @client.request(
+          method: :get,
+          path: ["messaging_profiles/%1$s/metrics", id],
+          query: parsed,
+          model: Telnyx::Models::MessagingProfileRetrieveMetricsResponse,
+          options: options
+        )
+      end
+
       # @api private
       #
       # @param client [Telnyx::Client]
       def initialize(client:)
         @client = client
         @autoresp_configs = Telnyx::Resources::MessagingProfiles::AutorespConfigs.new(client: client)
+        @actions = Telnyx::Resources::MessagingProfiles::Actions.new(client: client)
       end
     end
   end

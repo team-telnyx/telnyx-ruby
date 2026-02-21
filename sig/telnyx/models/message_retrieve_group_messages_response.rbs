@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type message_retrieve_group_messages_response =
+      { data: ::Array[Telnyx::OutboundMessagePayload] }
+
+    class MessageRetrieveGroupMessagesResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::OutboundMessagePayload]?
+
+      def data=: (
+        ::Array[Telnyx::OutboundMessagePayload]
+      ) -> ::Array[Telnyx::OutboundMessagePayload]
+
+      def initialize: (?data: ::Array[Telnyx::OutboundMessagePayload]) -> void
+
+      def to_hash: -> { data: ::Array[Telnyx::OutboundMessagePayload] }
+    end
+  end
+end

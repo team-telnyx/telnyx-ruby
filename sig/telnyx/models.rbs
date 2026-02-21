@@ -47,6 +47,14 @@ module Telnyx
 
   class AISummarizeParams = Telnyx::Models::AISummarizeParams
 
+  class AlphanumericSenderIDCreateParams = Telnyx::Models::AlphanumericSenderIDCreateParams
+
+  class AlphanumericSenderIDDeleteParams = Telnyx::Models::AlphanumericSenderIDDeleteParams
+
+  class AlphanumericSenderIDListParams = Telnyx::Models::AlphanumericSenderIDListParams
+
+  class AlphanumericSenderIDRetrieveParams = Telnyx::Models::AlphanumericSenderIDRetrieveParams
+
   module AnchorsiteOverride = Telnyx::Models::AnchorsiteOverride
 
   class APIError = Telnyx::Models::APIError
@@ -701,6 +709,8 @@ module Telnyx
 
   class MessageCancelScheduledParams = Telnyx::Models::MessageCancelScheduledParams
 
+  class MessageRetrieveGroupMessagesParams = Telnyx::Models::MessageRetrieveGroupMessagesParams
+
   class MessageRetrieveParams = Telnyx::Models::MessageRetrieveParams
 
   module Messages = Telnyx::Models::Messages
@@ -719,6 +729,8 @@ module Telnyx
 
   class MessageSendWhatsappParams = Telnyx::Models::MessageSendWhatsappParams
 
+  class MessageSendWithAlphanumericSenderParams = Telnyx::Models::MessageSendWithAlphanumericSenderParams
+
   class MessageTemplate = Telnyx::Models::MessageTemplate
 
   module Messaging = Telnyx::Models::Messaging
@@ -732,6 +744,8 @@ module Telnyx
   class MessagingFeatureSet = Telnyx::Models::MessagingFeatureSet
 
   class MessagingHostedNumberDeleteParams = Telnyx::Models::MessagingHostedNumberDeleteParams
+
+  class MessagingHostedNumberListParams = Telnyx::Models::MessagingHostedNumberListParams
 
   class MessagingHostedNumberOrder = Telnyx::Models::MessagingHostedNumberOrder
 
@@ -751,6 +765,10 @@ module Telnyx
 
   class MessagingHostedNumberOrderValidateCodesParams = Telnyx::Models::MessagingHostedNumberOrderValidateCodesParams
 
+  class MessagingHostedNumberRetrieveParams = Telnyx::Models::MessagingHostedNumberRetrieveParams
+
+  class MessagingHostedNumberUpdateParams = Telnyx::Models::MessagingHostedNumberUpdateParams
+
   class MessagingNumbersBulkUpdateCreateParams = Telnyx::Models::MessagingNumbersBulkUpdateCreateParams
 
   class MessagingNumbersBulkUpdateRetrieveParams = Telnyx::Models::MessagingNumbersBulkUpdateRetrieveParams
@@ -765,11 +783,17 @@ module Telnyx
 
   class MessagingProfileDeleteParams = Telnyx::Models::MessagingProfileDeleteParams
 
+  class MessagingProfileListAlphanumericSenderIDsParams = Telnyx::Models::MessagingProfileListAlphanumericSenderIDsParams
+
   class MessagingProfileListParams = Telnyx::Models::MessagingProfileListParams
 
   class MessagingProfileListPhoneNumbersParams = Telnyx::Models::MessagingProfileListPhoneNumbersParams
 
   class MessagingProfileListShortCodesParams = Telnyx::Models::MessagingProfileListShortCodesParams
+
+  class MessagingProfileMetricListParams = Telnyx::Models::MessagingProfileMetricListParams
+
+  class MessagingProfileRetrieveMetricsParams = Telnyx::Models::MessagingProfileRetrieveMetricsParams
 
   class MessagingProfileRetrieveParams = Telnyx::Models::MessagingProfileRetrieveParams
 

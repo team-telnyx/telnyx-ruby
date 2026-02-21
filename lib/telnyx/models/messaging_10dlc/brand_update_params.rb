@@ -42,7 +42,7 @@ module Telnyx
         #   Alternate business identifier such as DUNS, LEI, or GIIN
         #
         #   @return [String, nil]
-        optional :alt_business_id, String, api_name: :altBusiness_id
+        optional :alt_business_id, String, api_name: :altBusinessId
 
         # @!attribute alt_business_id_type
         #   An enumeration.

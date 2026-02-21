@@ -480,6 +480,12 @@ module Telnyx
     # @return [Telnyx::Resources::Organizations]
     attr_reader :organizations
 
+    # @return [Telnyx::Resources::AlphanumericSenderIDs]
+    attr_reader :alphanumeric_sender_ids
+
+    # @return [Telnyx::Resources::MessagingProfileMetrics]
+    attr_reader :messaging_profile_metrics
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -726,6 +732,8 @@ module Telnyx
       @messaging_10dlc = Telnyx::Resources::Messaging10dlc.new(client: self)
       @speech_to_text = Telnyx::Resources::SpeechToText.new(client: self)
       @organizations = Telnyx::Resources::Organizations.new(client: self)
+      @alphanumeric_sender_ids = Telnyx::Resources::AlphanumericSenderIDs.new(client: self)
+      @messaging_profile_metrics = Telnyx::Resources::MessagingProfileMetrics.new(client: self)
     end
   end
 end

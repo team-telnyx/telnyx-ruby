@@ -1,5 +1,14 @@
 # Changelog
 
+## 5.36.1 (2026-02-21)
+
+Full Changelog: [v5.36.0...v5.36.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.36.0...v5.36.1)
+
+### Bug Fixes
+
+* OAS drift — 10dlc.json (messaging-campaign-registry) ([de87287](https://github.com/team-telnyx/telnyx-ruby/commit/de872874a55bcb80a83d4e6d4e8e60cc4fb053a9))
+* OAS drift — messaging.json (messaging-settings + messaging-outbound) ([a8b8944](https://github.com/team-telnyx/telnyx-ruby/commit/a8b89448f1ad2d9c49687f2b71a846c5e8348941))
+
 ## 5.36.0 (2026-02-20)
 
 Full Changelog: [v5.35.0...v5.36.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.35.0...v5.36.0)

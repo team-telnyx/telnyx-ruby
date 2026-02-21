@@ -1,6 +1,29 @@
 module Telnyx
   module Resources
     class MessagingHostedNumbers
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingHostedNumberRetrieveResponse
+
+      def update: (
+        String id,
+        ?messaging_product: String,
+        ?messaging_profile_id: String,
+        ?tags: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessagingHostedNumberUpdateResponse
+
+      def list: (
+        ?filter_messaging_profile_id: String,
+        ?filter_phone_number: String,
+        ?filter_phone_number_contains: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?sort_phone_number: Telnyx::Models::MessagingHostedNumberListParams::sort_phone_number,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::PhoneNumberWithMessagingSettings]
+
       def delete: (
         String id,
         ?request_options: Telnyx::request_opts

@@ -475,6 +475,12 @@ module Telnyx
     sig { returns(Telnyx::Resources::Organizations) }
     attr_reader :organizations
 
+    sig { returns(Telnyx::Resources::AlphanumericSenderIDs) }
+    attr_reader :alphanumeric_sender_ids
+
+    sig { returns(Telnyx::Resources::MessagingProfileMetrics) }
+    attr_reader :messaging_profile_metrics
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers
