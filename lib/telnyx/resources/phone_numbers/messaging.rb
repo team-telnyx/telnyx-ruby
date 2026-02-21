@@ -29,13 +29,15 @@ module Telnyx
         #
         # Update the messaging profile and/or messaging product of a phone number
         #
-        # @overload update(id, messaging_product: nil, messaging_profile_id: nil, request_options: {})
+        # @overload update(id, messaging_product: nil, messaging_profile_id: nil, tags: nil, request_options: {})
         #
         # @param id [String] The phone number to update.
         #
         # @param messaging_product [String] Configure the messaging product for this number:
         #
         # @param messaging_profile_id [String] Configure the messaging profile this phone number is assigned to:
+        #
+        # @param tags [Array<String>] Tags to set on this phone number.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -55,10 +57,22 @@ module Telnyx
 
         # List phone numbers with messaging settings
         #
-        # @overload list(page_number: nil, page_size: nil, request_options: {})
+        # @overload list(filter_messaging_profile_id: nil, filter_phone_number: nil, filter_phone_number_contains: nil, filter_type: nil, page_number: nil, page_size: nil, sort_phone_number: nil, request_options: {})
+        #
+        # @param filter_messaging_profile_id [String] Filter by messaging profile ID.
+        #
+        # @param filter_phone_number [String] Filter by exact phone number (supports comma-separated list).
+        #
+        # @param filter_phone_number_contains [String] Filter by phone number substring.
+        #
+        # @param filter_type [Symbol, Telnyx::Models::PhoneNumbers::MessagingListParams::FilterType] Filter by phone number type.
         #
         # @param page_number [Integer]
+        #
         # @param page_size [Integer]
+        #
+        # @param sort_phone_number [Symbol, Telnyx::Models::PhoneNumbers::MessagingListParams::SortPhoneNumber] Sort by phone number.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PhoneNumberWithMessagingSettings>]
@@ -69,7 +83,15 @@ module Telnyx
           @client.request(
             method: :get,
             path: "phone_numbers/messaging",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: parsed.transform_keys(
+              filter_messaging_profile_id: "filter[messaging_profile_id]",
+              filter_phone_number: "filter[phone_number]",
+              filter_phone_number_contains: "filter[phone_number][contains]",
+              filter_type: "filter[type]",
+              page_number: "page[number]",
+              page_size: "page[size]",
+              sort_phone_number: "sort[phone_number]"
+            ),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::PhoneNumberWithMessagingSettings,
             options: options

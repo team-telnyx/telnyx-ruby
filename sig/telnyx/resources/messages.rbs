@@ -13,6 +13,11 @@ module Telnyx
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::MessageCancelScheduledResponse
 
+      def retrieve_group_messages: (
+        String message_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessageRetrieveGroupMessagesResponse
+
       def schedule: (
         to: String,
         ?auto_detect: bool,
@@ -111,6 +116,17 @@ module Telnyx
         ?webhook_url: String,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::MessageSendWhatsappResponse
+
+      def send_with_alphanumeric_sender: (
+        from: String,
+        messaging_profile_id: String,
+        text: String,
+        to: String,
+        ?use_profile_webhooks: bool,
+        ?webhook_failover_url: String?,
+        ?webhook_url: String?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MessageSendWithAlphanumericSenderResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

@@ -8,11 +8,13 @@ module Telnyx
       #
       # Bulk update phone number profiles
       #
-      # @overload create(messaging_profile_id:, numbers:, request_options: {})
+      # @overload create(messaging_profile_id:, numbers:, assign_only: nil, request_options: {})
       #
       # @param messaging_profile_id [String] Configure the messaging profile these phone numbers are assigned to:
       #
       # @param numbers [Array<String>] The list of phone numbers to update.
+      #
+      # @param assign_only [Boolean] If true, only assign numbers to the profile without changing other settings.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

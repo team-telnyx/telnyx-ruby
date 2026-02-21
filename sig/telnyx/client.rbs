@@ -318,6 +318,10 @@ module Telnyx
 
     attr_reader organizations: Telnyx::Resources::Organizations
 
+    attr_reader alphanumeric_sender_ids: Telnyx::Resources::AlphanumericSenderIDs
+
+    attr_reader messaging_profile_metrics: Telnyx::Resources::MessagingProfileMetrics
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]

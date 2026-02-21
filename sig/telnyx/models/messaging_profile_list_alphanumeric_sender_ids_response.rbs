@@ -1,0 +1,69 @@
+module Telnyx
+  module Models
+    type messaging_profile_list_alphanumeric_sender_ids_response =
+      {
+        id: String,
+        alphanumeric_sender_id: String,
+        messaging_profile_id: String,
+        organization_id: String,
+        record_type: Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse::record_type,
+        us_long_code_fallback: String
+      }
+
+    class MessagingProfileListAlphanumericSenderIDsResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader alphanumeric_sender_id: String?
+
+      def alphanumeric_sender_id=: (String) -> String
+
+      attr_reader messaging_profile_id: String?
+
+      def messaging_profile_id=: (String) -> String
+
+      attr_reader organization_id: String?
+
+      def organization_id=: (String) -> String
+
+      attr_reader record_type: Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse::record_type?
+
+      def record_type=: (
+        Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse::record_type
+      ) -> Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse::record_type
+
+      attr_reader us_long_code_fallback: String?
+
+      def us_long_code_fallback=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?alphanumeric_sender_id: String,
+        ?messaging_profile_id: String,
+        ?organization_id: String,
+        ?record_type: Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse::record_type,
+        ?us_long_code_fallback: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        alphanumeric_sender_id: String,
+        messaging_profile_id: String,
+        organization_id: String,
+        record_type: Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse::record_type,
+        us_long_code_fallback: String
+      }
+
+      type record_type = :alphanumeric_sender_id
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        ALPHANUMERIC_SENDER_ID: :alphanumeric_sender_id
+
+        def self?.values: -> ::Array[Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse::record_type]
+      end
+    end
+  end
+end

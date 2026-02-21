@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type messaging_hosted_number_update_response =
+      { data: Telnyx::PhoneNumberWithMessagingSettings }
+
+    class MessagingHostedNumberUpdateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::PhoneNumberWithMessagingSettings?
+
+      def data=: (
+        Telnyx::PhoneNumberWithMessagingSettings
+      ) -> Telnyx::PhoneNumberWithMessagingSettings
+
+      def initialize: (?data: Telnyx::PhoneNumberWithMessagingSettings) -> void
+
+      def to_hash: -> { data: Telnyx::PhoneNumberWithMessagingSettings }
+    end
+  end
+end

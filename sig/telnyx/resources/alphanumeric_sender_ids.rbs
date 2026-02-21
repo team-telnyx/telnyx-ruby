@@ -1,0 +1,31 @@
+module Telnyx
+  module Resources
+    class AlphanumericSenderIDs
+      def create: (
+        alphanumeric_sender_id: String,
+        messaging_profile_id: String,
+        ?us_long_code_fallback: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AlphanumericSenderIDCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AlphanumericSenderIDRetrieveResponse
+
+      def list: (
+        ?filter_messaging_profile_id: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AlphanumericSenderIDListResponse]
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AlphanumericSenderIDDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

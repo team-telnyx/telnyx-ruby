@@ -28,13 +28,21 @@ module Telnyx
         #   @return [String, nil]
         optional :messaging_profile_id, String
 
-        # @!method initialize(messaging_product: nil, messaging_profile_id: nil, request_options: {})
+        # @!attribute tags
+        #   Tags to set on this phone number.
+        #
+        #   @return [Array<String>, nil]
+        optional :tags, Telnyx::Internal::Type::ArrayOf[String]
+
+        # @!method initialize(messaging_product: nil, messaging_profile_id: nil, tags: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::PhoneNumbers::MessagingUpdateParams} for more details.
         #
         #   @param messaging_product [String] Configure the messaging product for this number:
         #
         #   @param messaging_profile_id [String] Configure the messaging profile this phone number is assigned to:
+        #
+        #   @param tags [Array<String>] Tags to set on this phone number.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end

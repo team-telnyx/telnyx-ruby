@@ -50,6 +50,26 @@ module Telnyx
         )
       end
 
+      # Retrieve all messages in a group MMS conversation by the group message ID.
+      #
+      # @overload retrieve_group_messages(message_id, request_options: {})
+      #
+      # @param message_id [String] The group message ID.
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::MessageRetrieveGroupMessagesResponse]
+      #
+      # @see Telnyx::Models::MessageRetrieveGroupMessagesParams
+      def retrieve_group_messages(message_id, params = {})
+        @client.request(
+          method: :get,
+          path: ["messages/group/%1$s", message_id],
+          model: Telnyx::Models::MessageRetrieveGroupMessagesResponse,
+          options: params[:request_options]
+        )
+      end
+
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MessageScheduleParams} for more details.
       #
@@ -356,6 +376,40 @@ module Telnyx
           path: "messages/whatsapp",
           body: parsed,
           model: Telnyx::Models::MessageSendWhatsappResponse,
+          options: options
+        )
+      end
+
+      # Send an SMS message using an alphanumeric sender ID. This is SMS only.
+      #
+      # @overload send_with_alphanumeric_sender(from:, messaging_profile_id:, text:, to:, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      #
+      # @param from [String] A valid alphanumeric sender ID on the user's account.
+      #
+      # @param messaging_profile_id [String] The messaging profile ID to use.
+      #
+      # @param text [String] The message body.
+      #
+      # @param to [String] Receiving address (+E.164 formatted phone number).
+      #
+      # @param use_profile_webhooks [Boolean] If true, use the messaging profile's webhook settings.
+      #
+      # @param webhook_failover_url [String, nil] Failover callback URL for delivery status updates.
+      #
+      # @param webhook_url [String, nil] Callback URL for delivery status updates.
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::MessageSendWithAlphanumericSenderResponse]
+      #
+      # @see Telnyx::Models::MessageSendWithAlphanumericSenderParams
+      def send_with_alphanumeric_sender(params)
+        parsed, options = Telnyx::MessageSendWithAlphanumericSenderParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "messages/alphanumeric_sender_id",
+          body: parsed,
+          model: Telnyx::Models::MessageSendWithAlphanumericSenderResponse,
           options: options
         )
       end

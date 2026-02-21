@@ -4,6 +4,7 @@ module Telnyx
       def create: (
         messaging_profile_id: String,
         numbers: ::Array[String],
+        ?assign_only: bool,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::MessagingNumbersBulkUpdateCreateResponse
 

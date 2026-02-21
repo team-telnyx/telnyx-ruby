@@ -43,8 +43,10 @@ class Telnyx::Test::Resources::MobilePhoneNumbers::MessagingTest < Telnyx::Test:
         features: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Features | nil,
         messaging_product: String | nil,
         messaging_profile_id: String | nil,
+        organization_id: String | nil,
         phone_number: String | nil,
         record_type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::RecordType | nil,
+        tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
         traffic_type: String | nil,
         type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Type | nil,
         updated_at: Time | nil

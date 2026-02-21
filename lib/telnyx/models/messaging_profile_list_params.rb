@@ -13,6 +13,18 @@ module Telnyx
       #   @return [Telnyx::Models::MessagingProfileListParams::Filter, nil]
       optional :filter, -> { Telnyx::MessagingProfileListParams::Filter }
 
+      # @!attribute filter_name_contains
+      #   Filter profiles by name containing the given string.
+      #
+      #   @return [String, nil]
+      optional :filter_name_contains, String
+
+      # @!attribute filter_name_eq
+      #   Filter profiles by exact name match.
+      #
+      #   @return [String, nil]
+      optional :filter_name_eq, String
+
       # @!attribute page_number
       #
       #   @return [Integer, nil]
@@ -23,8 +35,12 @@ module Telnyx
       #   @return [Integer, nil]
       optional :page_size, Integer
 
-      # @!method initialize(filter: nil, page_number: nil, page_size: nil, request_options: {})
+      # @!method initialize(filter: nil, filter_name_contains: nil, filter_name_eq: nil, page_number: nil, page_size: nil, request_options: {})
       #   @param filter [Telnyx::Models::MessagingProfileListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[name]
+      #
+      #   @param filter_name_contains [String] Filter profiles by name containing the given string.
+      #
+      #   @param filter_name_eq [String] Filter profiles by exact name match.
       #
       #   @param page_number [Integer]
       #

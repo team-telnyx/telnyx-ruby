@@ -8,6 +8,10 @@ module Telnyx
           T.any(Telnyx::MessagingProfile, Telnyx::Internal::AnyHash)
         end
 
+      # The AI assistant ID associated with this messaging profile.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :ai_assistant_id
+
       # The alphanumeric sender ID to use when sending to destinations that require an
       # alphanumeric sender ID.
       sig { returns(T.nilable(String)) }
@@ -82,6 +86,13 @@ module Telnyx
       end
       attr_writer :number_pool_settings
 
+      # The organization that owns this messaging profile.
+      sig { returns(T.nilable(String)) }
+      attr_reader :organization_id
+
+      sig { params(organization_id: String).void }
+      attr_writer :organization_id
+
       # Indicates whether message content redaction is enabled for this profile.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :redaction_enabled
@@ -96,6 +107,10 @@ module Telnyx
 
       sig { params(redaction_level: Integer).void }
       attr_writer :redaction_level
+
+      # The resource group ID associated with this messaging profile.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :resource_group_id
 
       # Enables automatic character encoding optimization for SMS messages. When
       # enabled, the system automatically selects the most efficient encoding (GSM-7 or
@@ -201,6 +216,7 @@ module Telnyx
       sig do
         params(
           id: String,
+          ai_assistant_id: T.nilable(String),
           alpha_sender: T.nilable(String),
           created_at: Time,
           daily_spend_limit: String,
@@ -212,9 +228,11 @@ module Telnyx
           mobile_only: T::Boolean,
           name: String,
           number_pool_settings: T.nilable(Telnyx::NumberPoolSettings::OrHash),
+          organization_id: String,
           record_type: Telnyx::MessagingProfile::RecordType::OrSymbol,
           redaction_enabled: T::Boolean,
           redaction_level: Integer,
+          resource_group_id: T.nilable(String),
           smart_encoding: T::Boolean,
           updated_at: Time,
           url_shortener_settings:
@@ -230,6 +248,8 @@ module Telnyx
       def self.new(
         # Identifies the type of resource.
         id: nil,
+        # The AI assistant ID associated with this messaging profile.
+        ai_assistant_id: nil,
         # The alphanumeric sender ID to use when sending to destinations that require an
         # alphanumeric sender ID.
         alpha_sender: nil,
@@ -258,6 +278,8 @@ module Telnyx
         #
         # To disable this feature, set the object field to `null`.
         number_pool_settings: nil,
+        # The organization that owns this messaging profile.
+        organization_id: nil,
         # Identifies the type of the resource.
         record_type: nil,
         # Indicates whether message content redaction is enabled for this profile.
@@ -265,6 +287,8 @@ module Telnyx
         # Determines how much information is redacted in messages for privacy or
         # compliance purposes.
         redaction_level: nil,
+        # The resource group ID associated with this messaging profile.
+        resource_group_id: nil,
         # Enables automatic character encoding optimization for SMS messages. When
         # enabled, the system automatically selects the most efficient encoding (GSM-7 or
         # UCS-2) based on message content to maximize character limits and minimize costs.
@@ -300,6 +324,7 @@ module Telnyx
         override.returns(
           {
             id: String,
+            ai_assistant_id: T.nilable(String),
             alpha_sender: T.nilable(String),
             created_at: Time,
             daily_spend_limit: String,
@@ -311,9 +336,11 @@ module Telnyx
             mobile_only: T::Boolean,
             name: String,
             number_pool_settings: T.nilable(Telnyx::NumberPoolSettings),
+            organization_id: String,
             record_type: Telnyx::MessagingProfile::RecordType::TaggedSymbol,
             redaction_enabled: T::Boolean,
             redaction_level: Integer,
+            resource_group_id: T.nilable(String),
             smart_encoding: T::Boolean,
             updated_at: Time,
             url_shortener_settings: T.nilable(Telnyx::URLShortenerSettings),

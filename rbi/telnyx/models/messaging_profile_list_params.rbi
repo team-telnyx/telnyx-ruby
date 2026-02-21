@@ -20,6 +20,20 @@ module Telnyx
       end
       attr_writer :filter
 
+      # Filter profiles by name containing the given string.
+      sig { returns(T.nilable(String)) }
+      attr_reader :filter_name_contains
+
+      sig { params(filter_name_contains: String).void }
+      attr_writer :filter_name_contains
+
+      # Filter profiles by exact name match.
+      sig { returns(T.nilable(String)) }
+      attr_reader :filter_name_eq
+
+      sig { params(filter_name_eq: String).void }
+      attr_writer :filter_name_eq
+
       sig { returns(T.nilable(Integer)) }
       attr_reader :page_number
 
@@ -35,6 +49,8 @@ module Telnyx
       sig do
         params(
           filter: Telnyx::MessagingProfileListParams::Filter::OrHash,
+          filter_name_contains: String,
+          filter_name_eq: String,
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
@@ -43,6 +59,10 @@ module Telnyx
       def self.new(
         # Consolidated filter parameter (deepObject style). Originally: filter[name]
         filter: nil,
+        # Filter profiles by name containing the given string.
+        filter_name_contains: nil,
+        # Filter profiles by exact name match.
+        filter_name_eq: nil,
         page_number: nil,
         page_size: nil,
         request_options: {}
@@ -53,6 +73,8 @@ module Telnyx
         override.returns(
           {
             filter: Telnyx::MessagingProfileListParams::Filter,
+            filter_name_contains: String,
+            filter_name_eq: String,
             page_number: Integer,
             page_size: Integer,
             request_options: Telnyx::RequestOptions
