@@ -45,9 +45,7 @@ module Telnyx
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::AlphanumericSenderIDListResponse
-          ]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::AlphanumericSenderID]
         )
       end
       def list(

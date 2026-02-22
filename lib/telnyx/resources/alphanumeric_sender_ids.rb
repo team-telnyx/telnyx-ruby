@@ -61,7 +61,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AlphanumericSenderIDListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AlphanumericSenderID>]
       #
       # @see Telnyx::Models::AlphanumericSenderIDListParams
       def list(params = {})
@@ -75,7 +75,7 @@ module Telnyx
             page_size: "page[size]"
           ),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::AlphanumericSenderIDListResponse,
+          model: Telnyx::AlphanumericSenderID,
           options: options
         )
       end

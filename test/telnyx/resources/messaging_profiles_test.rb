@@ -129,7 +129,7 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse
+      row => Telnyx::AlphanumericSenderID
     end
 
     assert_pattern do
@@ -138,7 +138,7 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
         alphanumeric_sender_id: String | nil,
         messaging_profile_id: String | nil,
         organization_id: String | nil,
-        record_type: Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse::RecordType | nil,
+        record_type: Telnyx::AlphanumericSenderID::RecordType | nil,
         us_long_code_fallback: String | nil
       }
     end

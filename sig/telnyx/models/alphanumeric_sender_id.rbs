@@ -1,16 +1,16 @@
 module Telnyx
   module Models
-    type alphanumeric_sender_id_list_response =
+    type alphanumeric_sender_id =
       {
         id: String,
         alphanumeric_sender_id: String,
         messaging_profile_id: String,
         organization_id: String,
-        record_type: Telnyx::Models::AlphanumericSenderIDListResponse::record_type,
+        record_type: Telnyx::Models::AlphanumericSenderID::record_type,
         us_long_code_fallback: String
       }
 
-    class AlphanumericSenderIDListResponse < Telnyx::Internal::Type::BaseModel
+    class AlphanumericSenderID < Telnyx::Internal::Type::BaseModel
       attr_reader id: String?
 
       def id=: (String) -> String
@@ -27,11 +27,11 @@ module Telnyx
 
       def organization_id=: (String) -> String
 
-      attr_reader record_type: Telnyx::Models::AlphanumericSenderIDListResponse::record_type?
+      attr_reader record_type: Telnyx::Models::AlphanumericSenderID::record_type?
 
       def record_type=: (
-        Telnyx::Models::AlphanumericSenderIDListResponse::record_type
-      ) -> Telnyx::Models::AlphanumericSenderIDListResponse::record_type
+        Telnyx::Models::AlphanumericSenderID::record_type
+      ) -> Telnyx::Models::AlphanumericSenderID::record_type
 
       attr_reader us_long_code_fallback: String?
 
@@ -42,7 +42,7 @@ module Telnyx
         ?alphanumeric_sender_id: String,
         ?messaging_profile_id: String,
         ?organization_id: String,
-        ?record_type: Telnyx::Models::AlphanumericSenderIDListResponse::record_type,
+        ?record_type: Telnyx::Models::AlphanumericSenderID::record_type,
         ?us_long_code_fallback: String
       ) -> void
 
@@ -51,7 +51,7 @@ module Telnyx
         alphanumeric_sender_id: String,
         messaging_profile_id: String,
         organization_id: String,
-        record_type: Telnyx::Models::AlphanumericSenderIDListResponse::record_type,
+        record_type: Telnyx::Models::AlphanumericSenderID::record_type,
         us_long_code_fallback: String
       }
 
@@ -62,7 +62,7 @@ module Telnyx
 
         ALPHANUMERIC_SENDER_ID: :alphanumeric_sender_id
 
-        def self?.values: -> ::Array[Telnyx::Models::AlphanumericSenderIDListResponse::record_type]
+        def self?.values: -> ::Array[Telnyx::Models::AlphanumericSenderID::record_type]
       end
     end
   end

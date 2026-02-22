@@ -50,6 +50,8 @@ module Telnyx
 
   AISummarizeParams = Telnyx::Models::AISummarizeParams
 
+  AlphanumericSenderID = Telnyx::Models::AlphanumericSenderID
+
   AlphanumericSenderIDCreateParams =
     Telnyx::Models::AlphanumericSenderIDCreateParams
 
