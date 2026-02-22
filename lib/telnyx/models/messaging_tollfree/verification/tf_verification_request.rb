@@ -74,12 +74,6 @@ module Telnyx
           #   @return [String]
           required :corporate_website, String, api_name: :corporateWebsite
 
-          # @!attribute isv_reseller
-          #   ISV name
-          #
-          #   @return [String]
-          required :isv_reseller, String, api_name: :isvReseller
-
           # @!attribute message_volume
           #   Message Volume Enums
           #
@@ -199,6 +193,12 @@ module Telnyx
           #   @return [String, nil]
           optional :help_message_response, String, api_name: :helpMessageResponse, nil?: true
 
+          # @!attribute isv_reseller
+          #   ISV name
+          #
+          #   @return [String, nil]
+          optional :isv_reseller, String, api_name: :isvReseller, nil?: true
+
           # @!attribute opt_in_confirmation_response
           #   Message sent to users confirming their opt-in to receive messages
           #
@@ -231,7 +231,7 @@ module Telnyx
           #   @return [String, nil]
           optional :webhook_url, String, api_name: :webhookUrl
 
-          # @!method initialize(additional_information:, business_addr1:, business_city:, business_contact_email:, business_contact_first_name:, business_contact_last_name:, business_contact_phone:, business_name:, business_state:, business_zip:, corporate_website:, isv_reseller:, message_volume:, opt_in_workflow:, opt_in_workflow_image_urls:, phone_numbers:, production_message_content:, use_case:, use_case_summary:, age_gated_content: nil, business_addr2: nil, business_registration_country: nil, business_registration_number: nil, business_registration_type: nil, campaign_verify_authorization_token: nil, doing_business_as: nil, entity_type: nil, help_message_response: nil, opt_in_confirmation_response: nil, opt_in_keywords: nil, privacy_policy_url: nil, terms_and_condition_url: nil, webhook_url: nil)
+          # @!method initialize(additional_information:, business_addr1:, business_city:, business_contact_email:, business_contact_first_name:, business_contact_last_name:, business_contact_phone:, business_name:, business_state:, business_zip:, corporate_website:, message_volume:, opt_in_workflow:, opt_in_workflow_image_urls:, phone_numbers:, production_message_content:, use_case:, use_case_summary:, age_gated_content: nil, business_addr2: nil, business_registration_country: nil, business_registration_number: nil, business_registration_type: nil, campaign_verify_authorization_token: nil, doing_business_as: nil, entity_type: nil, help_message_response: nil, isv_reseller: nil, opt_in_confirmation_response: nil, opt_in_keywords: nil, privacy_policy_url: nil, terms_and_condition_url: nil, webhook_url: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest} for
           #   more details.
@@ -259,8 +259,6 @@ module Telnyx
           #   @param business_zip [String] The ZIP code of the business address
           #
           #   @param corporate_website [String] A URL, including the scheme, pointing to the corporate website
-          #
-          #   @param isv_reseller [String] ISV name
           #
           #   @param message_volume [Symbol, Telnyx::Models::MessagingTollfree::Verification::Volume] Message Volume Enums
           #
@@ -293,6 +291,8 @@ module Telnyx
           #   @param entity_type [Symbol, Telnyx::Models::MessagingTollfree::Verification::TollFreeVerificationEntityType, nil] Business entity classification
           #
           #   @param help_message_response [String, nil] The message returned when users text 'HELP'
+          #
+          #   @param isv_reseller [String, nil] ISV name
           #
           #   @param opt_in_confirmation_response [String, nil] Message sent to users confirming their opt-in to receive messages
           #

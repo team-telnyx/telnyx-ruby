@@ -1252,6 +1252,8 @@ require_relative "telnyx/models/messaging_tollfree/verification/request_create_p
 require_relative "telnyx/models/messaging_tollfree/verification/request_delete_params"
 require_relative "telnyx/models/messaging_tollfree/verification/request_list_params"
 require_relative "telnyx/models/messaging_tollfree/verification/request_retrieve_params"
+require_relative "telnyx/models/messaging_tollfree/verification/request_retrieve_status_history_params"
+require_relative "telnyx/models/messaging_tollfree/verification/request_retrieve_status_history_response"
 require_relative "telnyx/models/messaging_tollfree/verification/request_update_params"
 require_relative "telnyx/models/messaging_tollfree/verification/tf_phone_number"
 require_relative "telnyx/models/messaging_tollfree/verification/tf_verification_status"

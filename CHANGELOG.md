@@ -1,5 +1,14 @@
 # Changelog
 
+## 5.36.2 (2026-02-22)
+
+Full Changelog: [v5.36.1...v5.36.2](https://github.com/team-telnyx/telnyx-ruby/compare/v5.36.1...v5.36.2)
+
+### Bug Fixes
+
+* OAS drift — toll-free-verification.json (messaging-tf-verify) ([007a611](https://github.com/team-telnyx/telnyx-ruby/commit/007a611caacedb05b551225b7a0a7f914e3f9ea2))
+* OAS drift — verify.json (messaging-2fa) ([83d03f2](https://github.com/team-telnyx/telnyx-ruby/commit/83d03f27f765c32eca8fbccad436e1da2b88a163))
+
 ## 5.36.1 (2026-02-21)
 
 Full Changelog: [v5.36.0...v5.36.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.36.0...v5.36.1)

@@ -19,7 +19,6 @@ module Telnyx
               business_state: String,
               business_zip: String,
               corporate_website: String,
-              isv_reseller: String,
               message_volume:
                 Telnyx::MessagingTollfree::Verification::Volume::OrSymbol,
               opt_in_workflow: String,
@@ -45,6 +44,7 @@ module Telnyx
                   Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::OrSymbol
                 ),
               help_message_response: T.nilable(String),
+              isv_reseller: T.nilable(String),
               opt_in_confirmation_response: T.nilable(String),
               opt_in_keywords: T.nilable(String),
               privacy_policy_url: T.nilable(String),
@@ -81,8 +81,6 @@ module Telnyx
             business_zip:,
             # A URL, including the scheme, pointing to the corporate website
             corporate_website:,
-            # ISV name
-            isv_reseller:,
             # Message Volume Enums
             message_volume:,
             # Human-readable description of how end users will opt into receiving messages
@@ -122,6 +120,8 @@ module Telnyx
             entity_type: nil,
             # The message returned when users text 'HELP'
             help_message_response: nil,
+            # ISV name
+            isv_reseller: nil,
             # Message sent to users confirming their opt-in to receive messages
             opt_in_confirmation_response: nil,
             # Keywords used to collect and process consumer opt-ins
@@ -166,7 +166,6 @@ module Telnyx
               business_state: String,
               business_zip: String,
               corporate_website: String,
-              isv_reseller: String,
               message_volume:
                 Telnyx::MessagingTollfree::Verification::Volume::OrSymbol,
               opt_in_workflow: String,
@@ -192,6 +191,7 @@ module Telnyx
                   Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::OrSymbol
                 ),
               help_message_response: T.nilable(String),
+              isv_reseller: T.nilable(String),
               opt_in_confirmation_response: T.nilable(String),
               opt_in_keywords: T.nilable(String),
               privacy_policy_url: T.nilable(String),
@@ -229,8 +229,6 @@ module Telnyx
             business_zip:,
             # A URL, including the scheme, pointing to the corporate website
             corporate_website:,
-            # ISV name
-            isv_reseller:,
             # Message Volume Enums
             message_volume:,
             # Human-readable description of how end users will opt into receiving messages
@@ -270,6 +268,8 @@ module Telnyx
             entity_type: nil,
             # The message returned when users text 'HELP'
             help_message_response: nil,
+            # ISV name
+            isv_reseller: nil,
             # Message sent to users confirming their opt-in to receive messages
             opt_in_confirmation_response: nil,
             # Keywords used to collect and process consumer opt-ins
@@ -291,6 +291,7 @@ module Telnyx
             params(
               page: Integer,
               page_size: Integer,
+              business_name: String,
               date_end: Time,
               date_start: Time,
               phone_number: String,
@@ -309,6 +310,8 @@ module Telnyx
             #
             #         This value is automatically clamped if the provided value is too large.
             page_size:,
+            # Filter verification requests by business name
+            business_name: nil,
             date_end: nil,
             date_start: nil,
             phone_number: nil,
@@ -332,6 +335,30 @@ module Telnyx
             ).void
           end
           def delete(id, request_options: {})
+          end
+
+          # Get the history of status changes for a verification request.
+          #
+          # Returns a paginated list of historical status changes including the reason for
+          # each change and when it occurred.
+          sig do
+            params(
+              id: String,
+              page_number: Integer,
+              page_size: Integer,
+              request_options: Telnyx::RequestOptions::OrHash
+            ).returns(
+              Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveStatusHistoryResponse
+            )
+          end
+          def retrieve_status_history(
+            id,
+            page_number:,
+            # Request this many records per page. This value is automatically clamped if the
+            # provided value is too large.
+            page_size:,
+            request_options: {}
+          )
           end
 
           # @api private
