@@ -8,6 +8,7 @@ module Telnyx
         flashcall: Telnyx::VerifyProfile::Flashcall,
         language: String,
         name: String,
+        rcs: Telnyx::VerifyProfile::Rcs,
         record_type: Telnyx::Models::VerifyProfile::record_type,
         sms: Telnyx::VerifyProfile::SMS,
         updated_at: String,
@@ -42,6 +43,10 @@ module Telnyx
 
       def name=: (String) -> String
 
+      attr_reader rcs: Telnyx::VerifyProfile::Rcs?
+
+      def rcs=: (Telnyx::VerifyProfile::Rcs) -> Telnyx::VerifyProfile::Rcs
+
       attr_reader record_type: Telnyx::Models::VerifyProfile::record_type?
 
       def record_type=: (
@@ -71,6 +76,7 @@ module Telnyx
         ?flashcall: Telnyx::VerifyProfile::Flashcall,
         ?language: String,
         ?name: String,
+        ?rcs: Telnyx::VerifyProfile::Rcs,
         ?record_type: Telnyx::Models::VerifyProfile::record_type,
         ?sms: Telnyx::VerifyProfile::SMS,
         ?updated_at: String,
@@ -85,6 +91,7 @@ module Telnyx
         flashcall: Telnyx::VerifyProfile::Flashcall,
         language: String,
         name: String,
+        rcs: Telnyx::VerifyProfile::Rcs,
         record_type: Telnyx::Models::VerifyProfile::record_type,
         sms: Telnyx::VerifyProfile::SMS,
         updated_at: String,
@@ -139,16 +146,81 @@ module Telnyx
         }
       end
 
-      type flashcall = { default_verification_timeout_secs: Integer }
+      type flashcall =
+        { app_name: String, default_verification_timeout_secs: Integer }
 
       class Flashcall < Telnyx::Internal::Type::BaseModel
+        attr_reader app_name: String?
+
+        def app_name=: (String) -> String
+
         attr_reader default_verification_timeout_secs: Integer?
 
         def default_verification_timeout_secs=: (Integer) -> Integer
 
-        def initialize: (?default_verification_timeout_secs: Integer) -> void
+        def initialize: (
+          ?app_name: String,
+          ?default_verification_timeout_secs: Integer
+        ) -> void
 
-        def to_hash: -> { default_verification_timeout_secs: Integer }
+        def to_hash: -> {
+          app_name: String,
+          default_verification_timeout_secs: Integer
+        }
+      end
+
+      type rcs =
+        {
+          app_name: String,
+          code_length: Integer,
+          default_verification_timeout_secs: Integer,
+          messaging_template_id: String,
+          sms_fallback: bool,
+          whitelisted_destinations: ::Array[String]
+        }
+
+      class Rcs < Telnyx::Internal::Type::BaseModel
+        attr_reader app_name: String?
+
+        def app_name=: (String) -> String
+
+        attr_reader code_length: Integer?
+
+        def code_length=: (Integer) -> Integer
+
+        attr_reader default_verification_timeout_secs: Integer?
+
+        def default_verification_timeout_secs=: (Integer) -> Integer
+
+        attr_reader messaging_template_id: String?
+
+        def messaging_template_id=: (String) -> String
+
+        attr_reader sms_fallback: bool?
+
+        def sms_fallback=: (bool) -> bool
+
+        attr_reader whitelisted_destinations: ::Array[String]?
+
+        def whitelisted_destinations=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          ?app_name: String,
+          ?code_length: Integer,
+          ?default_verification_timeout_secs: Integer,
+          ?messaging_template_id: String,
+          ?sms_fallback: bool,
+          ?whitelisted_destinations: ::Array[String]
+        ) -> void
+
+        def to_hash: -> {
+          app_name: String,
+          code_length: Integer,
+          default_verification_timeout_secs: Integer,
+          messaging_template_id: String,
+          sms_fallback: bool,
+          whitelisted_destinations: ::Array[String]
+        }
       end
 
       type record_type = :verification_profile

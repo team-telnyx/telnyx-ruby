@@ -75,6 +75,7 @@ class Telnyx::Test::Resources::VerifyProfilesTest < Telnyx::Test::ResourceTest
         flashcall: Telnyx::VerifyProfile::Flashcall | nil,
         language: String | nil,
         name: String | nil,
+        rcs: Telnyx::VerifyProfile::Rcs | nil,
         record_type: Telnyx::VerifyProfile::RecordType | nil,
         sms: Telnyx::VerifyProfile::SMS | nil,
         updated_at: String | nil,

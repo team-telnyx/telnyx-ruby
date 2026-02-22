@@ -34,6 +34,11 @@ module Telnyx
       #   @return [String, nil]
       optional :name, String
 
+      # @!attribute rcs
+      #
+      #   @return [Telnyx::Models::VerifyProfile::Rcs, nil]
+      optional :rcs, -> { Telnyx::VerifyProfile::Rcs }
+
       # @!attribute record_type
       #   The possible verification profile record types.
       #
@@ -60,7 +65,7 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String
 
-      # @!method initialize(id: nil, call: nil, created_at: nil, flashcall: nil, language: nil, name: nil, record_type: nil, sms: nil, updated_at: nil, webhook_failover_url: nil, webhook_url: nil)
+      # @!method initialize(id: nil, call: nil, created_at: nil, flashcall: nil, language: nil, name: nil, rcs: nil, record_type: nil, sms: nil, updated_at: nil, webhook_failover_url: nil, webhook_url: nil)
       #   @param id [String]
       #
       #   @param call [Telnyx::Models::VerifyProfile::Call]
@@ -72,6 +77,8 @@ module Telnyx
       #   @param language [String]
       #
       #   @param name [String]
+      #
+      #   @param rcs [Telnyx::Models::VerifyProfile::Rcs]
       #
       #   @param record_type [Symbol, Telnyx::Models::VerifyProfile::RecordType] The possible verification profile record types.
       #
@@ -138,6 +145,13 @@ module Telnyx
 
       # @see Telnyx::Models::VerifyProfile#flashcall
       class Flashcall < Telnyx::Internal::Type::BaseModel
+        # @!attribute app_name
+        #   The name that identifies the application requesting 2fa in the verification
+        #   message.
+        #
+        #   @return [String, nil]
+        optional :app_name, String
+
         # @!attribute default_verification_timeout_secs
         #   For every request that is initiated via this Verify profile, this sets the
         #   number of seconds before a verification request code expires. Once the
@@ -147,11 +161,74 @@ module Telnyx
         #   @return [Integer, nil]
         optional :default_verification_timeout_secs, Integer
 
-        # @!method initialize(default_verification_timeout_secs: nil)
+        # @!method initialize(app_name: nil, default_verification_timeout_secs: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::VerifyProfile::Flashcall} for more details.
         #
+        #   @param app_name [String] The name that identifies the application requesting 2fa in the verification mess
+        #
         #   @param default_verification_timeout_secs [Integer] For every request that is initiated via this Verify profile, this sets the numbe
+      end
+
+      # @see Telnyx::Models::VerifyProfile#rcs
+      class Rcs < Telnyx::Internal::Type::BaseModel
+        # @!attribute app_name
+        #   The name that identifies the application requesting 2fa in the verification
+        #   message.
+        #
+        #   @return [String, nil]
+        optional :app_name, String
+
+        # @!attribute code_length
+        #   The length of the verify code to generate.
+        #
+        #   @return [Integer, nil]
+        optional :code_length, Integer
+
+        # @!attribute default_verification_timeout_secs
+        #   For every request that is initiated via this Verify profile, this sets the
+        #   number of seconds before a verification request code expires. Once the
+        #   verification request expires, the user cannot use the code to verify their
+        #   identity.
+        #
+        #   @return [Integer, nil]
+        optional :default_verification_timeout_secs, Integer
+
+        # @!attribute messaging_template_id
+        #   The message template identifier selected from /verify_profiles/templates
+        #
+        #   @return [String, nil]
+        optional :messaging_template_id, String
+
+        # @!attribute sms_fallback
+        #   Enable SMS fallback when RCS delivery fails.
+        #
+        #   @return [Boolean, nil]
+        optional :sms_fallback, Telnyx::Internal::Type::Boolean
+
+        # @!attribute whitelisted_destinations
+        #   Enabled country destinations to send verification codes. The elements in the
+        #   list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]`, all
+        #   destinations will be allowed.
+        #
+        #   @return [Array<String>, nil]
+        optional :whitelisted_destinations, Telnyx::Internal::Type::ArrayOf[String]
+
+        # @!method initialize(app_name: nil, code_length: nil, default_verification_timeout_secs: nil, messaging_template_id: nil, sms_fallback: nil, whitelisted_destinations: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::VerifyProfile::Rcs} for more details.
+        #
+        #   @param app_name [String] The name that identifies the application requesting 2fa in the verification mess
+        #
+        #   @param code_length [Integer] The length of the verify code to generate.
+        #
+        #   @param default_verification_timeout_secs [Integer] For every request that is initiated via this Verify profile, this sets the numbe
+        #
+        #   @param messaging_template_id [String] The message template identifier selected from /verify_profiles/templates
+        #
+        #   @param sms_fallback [Boolean] Enable SMS fallback when RCS delivery fails.
+        #
+        #   @param whitelisted_destinations [Array<String>] Enabled country destinations to send verification codes. The elements in the lis
       end
 
       # The possible verification profile record types.
