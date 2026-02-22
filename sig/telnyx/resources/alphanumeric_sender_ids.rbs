@@ -18,7 +18,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AlphanumericSenderIDListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AlphanumericSenderID]
 
       def delete: (
         String id,

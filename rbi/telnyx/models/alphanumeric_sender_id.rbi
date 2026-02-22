@@ -2,13 +2,10 @@
 
 module Telnyx
   module Models
-    class MessagingProfileListAlphanumericSenderIDsResponse < Telnyx::Internal::Type::BaseModel
+    class AlphanumericSenderID < Telnyx::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
-          T.any(
-            Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse,
-            Telnyx::Internal::AnyHash
-          )
+          T.any(Telnyx::AlphanumericSenderID, Telnyx::Internal::AnyHash)
         end
 
       # Uniquely identifies the alphanumeric sender ID resource.
@@ -41,17 +38,14 @@ module Telnyx
 
       sig do
         returns(
-          T.nilable(
-            Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse::RecordType::TaggedSymbol
-          )
+          T.nilable(Telnyx::AlphanumericSenderID::RecordType::TaggedSymbol)
         )
       end
       attr_reader :record_type
 
       sig do
         params(
-          record_type:
-            Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse::RecordType::OrSymbol
+          record_type: Telnyx::AlphanumericSenderID::RecordType::OrSymbol
         ).void
       end
       attr_writer :record_type
@@ -69,8 +63,7 @@ module Telnyx
           alphanumeric_sender_id: String,
           messaging_profile_id: String,
           organization_id: String,
-          record_type:
-            Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse::RecordType::OrSymbol,
+          record_type: Telnyx::AlphanumericSenderID::RecordType::OrSymbol,
           us_long_code_fallback: String
         ).returns(T.attached_class)
       end
@@ -96,8 +89,7 @@ module Telnyx
             alphanumeric_sender_id: String,
             messaging_profile_id: String,
             organization_id: String,
-            record_type:
-              Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse::RecordType::TaggedSymbol,
+            record_type: Telnyx::AlphanumericSenderID::RecordType::TaggedSymbol,
             us_long_code_fallback: String
           }
         )
@@ -110,24 +102,19 @@ module Telnyx
 
         TaggedSymbol =
           T.type_alias do
-            T.all(
-              Symbol,
-              Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse::RecordType
-            )
+            T.all(Symbol, Telnyx::AlphanumericSenderID::RecordType)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ALPHANUMERIC_SENDER_ID =
           T.let(
             :alphanumeric_sender_id,
-            Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse::RecordType::TaggedSymbol
+            Telnyx::AlphanumericSenderID::RecordType::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[
-              Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse::RecordType::TaggedSymbol
-            ]
+            T::Array[Telnyx::AlphanumericSenderID::RecordType::TaggedSymbol]
           )
         end
         def self.values

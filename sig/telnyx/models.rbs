@@ -47,6 +47,8 @@ module Telnyx
 
   class AISummarizeParams = Telnyx::Models::AISummarizeParams
 
+  class AlphanumericSenderID = Telnyx::Models::AlphanumericSenderID
+
   class AlphanumericSenderIDCreateParams = Telnyx::Models::AlphanumericSenderIDCreateParams
 
   class AlphanumericSenderIDDeleteParams = Telnyx::Models::AlphanumericSenderIDDeleteParams
