@@ -5,12 +5,13 @@ module Telnyx
     class VerifyProfiles
       # Creates a new Verify profile to associate verifications with.
       #
-      # @overload create(name:, call: nil, flashcall: nil, language: nil, sms: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @overload create(name:, call: nil, flashcall: nil, language: nil, rcs: nil, sms: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #
       # @param name [String]
       # @param call [Telnyx::Models::VerifyProfileCreateParams::Call]
       # @param flashcall [Telnyx::Models::VerifyProfileCreateParams::Flashcall]
       # @param language [String]
+      # @param rcs [Telnyx::Models::VerifyProfileCreateParams::Rcs]
       # @param sms [Telnyx::Models::VerifyProfileCreateParams::SMS]
       # @param webhook_failover_url [String]
       # @param webhook_url [String]
@@ -52,7 +53,7 @@ module Telnyx
 
       # Update Verify profile
       #
-      # @overload update(verify_profile_id, call: nil, flashcall: nil, language: nil, name: nil, sms: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @overload update(verify_profile_id, call: nil, flashcall: nil, language: nil, name: nil, rcs: nil, sms: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #
       # @param verify_profile_id [String] The identifier of the Verify profile to update.
       #
@@ -63,6 +64,8 @@ module Telnyx
       # @param language [String]
       #
       # @param name [String]
+      #
+      # @param rcs [Telnyx::Models::VerifyProfileUpdateParams::Rcs]
       #
       # @param sms [Telnyx::Models::VerifyProfileUpdateParams::SMS]
       #
