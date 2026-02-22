@@ -11,7 +11,7 @@ module Telnyx
           #
           # Submit a new tollfree verification request
           #
-          # @overload create(additional_information:, business_addr1:, business_city:, business_contact_email:, business_contact_first_name:, business_contact_last_name:, business_contact_phone:, business_name:, business_state:, business_zip:, corporate_website:, isv_reseller:, message_volume:, opt_in_workflow:, opt_in_workflow_image_urls:, phone_numbers:, production_message_content:, use_case:, use_case_summary:, age_gated_content: nil, business_addr2: nil, business_registration_country: nil, business_registration_number: nil, business_registration_type: nil, campaign_verify_authorization_token: nil, doing_business_as: nil, entity_type: nil, help_message_response: nil, opt_in_confirmation_response: nil, opt_in_keywords: nil, privacy_policy_url: nil, terms_and_condition_url: nil, webhook_url: nil, request_options: {})
+          # @overload create(additional_information:, business_addr1:, business_city:, business_contact_email:, business_contact_first_name:, business_contact_last_name:, business_contact_phone:, business_name:, business_state:, business_zip:, corporate_website:, message_volume:, opt_in_workflow:, opt_in_workflow_image_urls:, phone_numbers:, production_message_content:, use_case:, use_case_summary:, age_gated_content: nil, business_addr2: nil, business_registration_country: nil, business_registration_number: nil, business_registration_type: nil, campaign_verify_authorization_token: nil, doing_business_as: nil, entity_type: nil, help_message_response: nil, isv_reseller: nil, opt_in_confirmation_response: nil, opt_in_keywords: nil, privacy_policy_url: nil, terms_and_condition_url: nil, webhook_url: nil, request_options: {})
           #
           # @param additional_information [String] Any additional information
           #
@@ -34,8 +34,6 @@ module Telnyx
           # @param business_zip [String] The ZIP code of the business address
           #
           # @param corporate_website [String] A URL, including the scheme, pointing to the corporate website
-          #
-          # @param isv_reseller [String] ISV name
           #
           # @param message_volume [Symbol, Telnyx::Models::MessagingTollfree::Verification::Volume] Message Volume Enums
           #
@@ -68,6 +66,8 @@ module Telnyx
           # @param entity_type [Symbol, Telnyx::Models::MessagingTollfree::Verification::TollFreeVerificationEntityType, nil] Business entity classification
           #
           # @param help_message_response [String, nil] The message returned when users text 'HELP'
+          #
+          # @param isv_reseller [String, nil] ISV name
           #
           # @param opt_in_confirmation_response [String, nil] Message sent to users confirming their opt-in to receive messages
           #
@@ -121,7 +121,7 @@ module Telnyx
           # Update an existing tollfree verification request. This is particularly useful
           # when there are pending customer actions to be taken.
           #
-          # @overload update(id, additional_information:, business_addr1:, business_city:, business_contact_email:, business_contact_first_name:, business_contact_last_name:, business_contact_phone:, business_name:, business_state:, business_zip:, corporate_website:, isv_reseller:, message_volume:, opt_in_workflow:, opt_in_workflow_image_urls:, phone_numbers:, production_message_content:, use_case:, use_case_summary:, age_gated_content: nil, business_addr2: nil, business_registration_country: nil, business_registration_number: nil, business_registration_type: nil, campaign_verify_authorization_token: nil, doing_business_as: nil, entity_type: nil, help_message_response: nil, opt_in_confirmation_response: nil, opt_in_keywords: nil, privacy_policy_url: nil, terms_and_condition_url: nil, webhook_url: nil, request_options: {})
+          # @overload update(id, additional_information:, business_addr1:, business_city:, business_contact_email:, business_contact_first_name:, business_contact_last_name:, business_contact_phone:, business_name:, business_state:, business_zip:, corporate_website:, message_volume:, opt_in_workflow:, opt_in_workflow_image_urls:, phone_numbers:, production_message_content:, use_case:, use_case_summary:, age_gated_content: nil, business_addr2: nil, business_registration_country: nil, business_registration_number: nil, business_registration_type: nil, campaign_verify_authorization_token: nil, doing_business_as: nil, entity_type: nil, help_message_response: nil, isv_reseller: nil, opt_in_confirmation_response: nil, opt_in_keywords: nil, privacy_policy_url: nil, terms_and_condition_url: nil, webhook_url: nil, request_options: {})
           #
           # @param id [String]
           #
@@ -146,8 +146,6 @@ module Telnyx
           # @param business_zip [String] The ZIP code of the business address
           #
           # @param corporate_website [String] A URL, including the scheme, pointing to the corporate website
-          #
-          # @param isv_reseller [String] ISV name
           #
           # @param message_volume [Symbol, Telnyx::Models::MessagingTollfree::Verification::Volume] Message Volume Enums
           #
@@ -181,6 +179,8 @@ module Telnyx
           #
           # @param help_message_response [String, nil] The message returned when users text 'HELP'
           #
+          # @param isv_reseller [String, nil] ISV name
+          #
           # @param opt_in_confirmation_response [String, nil] Message sent to users confirming their opt-in to receive messages
           #
           # @param opt_in_keywords [String, nil] Keywords used to collect and process consumer opt-ins
@@ -213,11 +213,13 @@ module Telnyx
           #
           # Get a list of previously-submitted tollfree verification requests
           #
-          # @overload list(page:, page_size:, date_end: nil, date_start: nil, phone_number: nil, status: nil, request_options: {})
+          # @overload list(page:, page_size:, business_name: nil, date_end: nil, date_start: nil, phone_number: nil, status: nil, request_options: {})
           #
           # @param page [Integer]
           #
           # @param page_size [Integer]
+          #
+          # @param business_name [String] Filter verification requests by business name
           #
           # @param date_end [Time]
           #
@@ -266,6 +268,40 @@ module Telnyx
               path: ["messaging_tollfree/verification/requests/%1$s", id],
               model: NilClass,
               options: params[:request_options]
+            )
+          end
+
+          # Some parameter documentations has been truncated, see
+          # {Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveStatusHistoryParams}
+          # for more details.
+          #
+          # Get the history of status changes for a verification request.
+          #
+          # Returns a paginated list of historical status changes including the reason for
+          # each change and when it occurred.
+          #
+          # @overload retrieve_status_history(id, page_number:, page_size:, request_options: {})
+          #
+          # @param id [String]
+          #
+          # @param page_number [Integer]
+          #
+          # @param page_size [Integer] Request this many records per page. This value is automatically clamped if the p
+          #
+          # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+          #
+          # @return [Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveStatusHistoryResponse]
+          #
+          # @see Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveStatusHistoryParams
+          def retrieve_status_history(id, params)
+            parsed, options =
+              Telnyx::MessagingTollfree::Verification::RequestRetrieveStatusHistoryParams.dump_request(params)
+            @client.request(
+              method: :get,
+              path: ["messaging_tollfree/verification/requests/%1$s/status_history", id],
+              query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+              model: Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveStatusHistoryResponse,
+              options: options
             )
           end
 

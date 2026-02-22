@@ -15,7 +15,6 @@ module Telnyx
             business_state: String,
             business_zip: String,
             corporate_website: String,
-            isv_reseller: String,
             message_volume: Telnyx::Models::MessagingTollfree::Verification::volume,
             opt_in_workflow: String,
             opt_in_workflow_image_urls: ::Array[Telnyx::MessagingTollfree::Verification::URL],
@@ -32,6 +31,7 @@ module Telnyx
             doing_business_as: String?,
             entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type?,
             help_message_response: String?,
+            isv_reseller: String?,
             opt_in_confirmation_response: String?,
             opt_in_keywords: String?,
             privacy_policy_url: String?,
@@ -61,8 +61,6 @@ module Telnyx
           attr_accessor business_zip: String
 
           attr_accessor corporate_website: String
-
-          attr_accessor isv_reseller: String
 
           attr_accessor message_volume: Telnyx::Models::MessagingTollfree::Verification::volume
 
@@ -100,6 +98,8 @@ module Telnyx
 
           attr_accessor help_message_response: String?
 
+          attr_accessor isv_reseller: String?
+
           attr_accessor opt_in_confirmation_response: String?
 
           attr_accessor opt_in_keywords: String?
@@ -124,7 +124,6 @@ module Telnyx
             business_state: String,
             business_zip: String,
             corporate_website: String,
-            isv_reseller: String,
             message_volume: Telnyx::Models::MessagingTollfree::Verification::volume,
             opt_in_workflow: String,
             opt_in_workflow_image_urls: ::Array[Telnyx::MessagingTollfree::Verification::URL],
@@ -141,6 +140,7 @@ module Telnyx
             ?doing_business_as: String?,
             ?entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type?,
             ?help_message_response: String?,
+            ?isv_reseller: String?,
             ?opt_in_confirmation_response: String?,
             ?opt_in_keywords: String?,
             ?privacy_policy_url: String?,
@@ -160,7 +160,6 @@ module Telnyx
             business_state: String,
             business_zip: String,
             corporate_website: String,
-            isv_reseller: String,
             message_volume: Telnyx::Models::MessagingTollfree::Verification::volume,
             opt_in_workflow: String,
             opt_in_workflow_image_urls: ::Array[Telnyx::MessagingTollfree::Verification::URL],
@@ -177,6 +176,7 @@ module Telnyx
             doing_business_as: String?,
             entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type?,
             help_message_response: String?,
+            isv_reseller: String?,
             opt_in_confirmation_response: String?,
             opt_in_keywords: String?,
             privacy_policy_url: String?,

@@ -6,6 +6,7 @@ module Telnyx
           {
             page: Integer,
             page_size: Integer,
+            business_name: String,
             date_end: Time,
             date_start: Time,
             phone_number: String,
@@ -20,6 +21,10 @@ module Telnyx
           attr_accessor page: Integer
 
           attr_accessor page_size: Integer
+
+          attr_reader business_name: String?
+
+          def business_name=: (String) -> String
 
           attr_reader date_end: Time?
 
@@ -42,6 +47,7 @@ module Telnyx
           def initialize: (
             page: Integer,
             page_size: Integer,
+            ?business_name: String,
             ?date_end: Time,
             ?date_start: Time,
             ?phone_number: String,
@@ -52,6 +58,7 @@ module Telnyx
           def to_hash: -> {
             page: Integer,
             page_size: Integer,
+            business_name: String,
             date_end: Time,
             date_start: Time,
             phone_number: String,

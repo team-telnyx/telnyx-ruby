@@ -22,6 +22,12 @@ module Telnyx
           #   @return [Integer]
           required :page_size, Integer
 
+          # @!attribute business_name
+          #   Filter verification requests by business name
+          #
+          #   @return [String, nil]
+          optional :business_name, String
+
           # @!attribute date_end
           #
           #   @return [Time, nil]
@@ -43,7 +49,7 @@ module Telnyx
           #   @return [Symbol, Telnyx::Models::MessagingTollfree::Verification::TfVerificationStatus, nil]
           optional :status, enum: -> { Telnyx::MessagingTollfree::Verification::TfVerificationStatus }
 
-          # @!method initialize(page:, page_size:, date_end: nil, date_start: nil, phone_number: nil, status: nil, request_options: {})
+          # @!method initialize(page:, page_size:, business_name: nil, date_end: nil, date_start: nil, phone_number: nil, status: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::MessagingTollfree::Verification::RequestListParams} for more
           #   details.
@@ -51,6 +57,8 @@ module Telnyx
           #   @param page [Integer]
           #
           #   @param page_size [Integer]
+          #
+          #   @param business_name [String] Filter verification requests by business name
           #
           #   @param date_end [Time]
           #

@@ -1,0 +1,56 @@
+module Telnyx
+  module Models
+    module MessagingTollfree
+      module Verification
+        type request_retrieve_status_history_response =
+          {
+            records: ::Array[Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveStatusHistoryResponse::Record],
+            total_records: Integer
+          }
+
+        class RequestRetrieveStatusHistoryResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor records: ::Array[Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveStatusHistoryResponse::Record]
+
+          attr_accessor total_records: Integer
+
+          def initialize: (
+            records: ::Array[Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveStatusHistoryResponse::Record],
+            total_records: Integer
+          ) -> void
+
+          def to_hash: -> {
+            records: ::Array[Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveStatusHistoryResponse::Record],
+            total_records: Integer
+          }
+
+          type record =
+            {
+              updated_at: Time,
+              verification_status: Telnyx::Models::MessagingTollfree::Verification::tf_verification_status,
+              reason: String?
+            }
+
+          class Record < Telnyx::Internal::Type::BaseModel
+            attr_accessor updated_at: Time
+
+            attr_accessor verification_status: Telnyx::Models::MessagingTollfree::Verification::tf_verification_status
+
+            attr_accessor reason: String?
+
+            def initialize: (
+              updated_at: Time,
+              verification_status: Telnyx::Models::MessagingTollfree::Verification::tf_verification_status,
+              ?reason: String?
+            ) -> void
+
+            def to_hash: -> {
+              updated_at: Time,
+              verification_status: Telnyx::Models::MessagingTollfree::Verification::tf_verification_status,
+              reason: String?
+            }
+          end
+        end
+      end
+    end
+  end
+end

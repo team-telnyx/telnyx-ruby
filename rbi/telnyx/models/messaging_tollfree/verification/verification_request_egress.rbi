@@ -51,9 +51,6 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :corporate_website
 
-          sig { returns(String) }
-          attr_accessor :isv_reseller
-
           # Message Volume Enums
           sig do
             returns(
@@ -160,6 +157,12 @@ module Telnyx
           attr_writer :help_message_response
 
           sig { returns(T.nilable(String)) }
+          attr_reader :isv_reseller
+
+          sig { params(isv_reseller: String).void }
+          attr_writer :isv_reseller
+
+          sig { returns(T.nilable(String)) }
           attr_reader :opt_in_confirmation_response
 
           sig { params(opt_in_confirmation_response: String).void }
@@ -222,7 +225,6 @@ module Telnyx
               business_state: String,
               business_zip: String,
               corporate_website: String,
-              isv_reseller: String,
               message_volume:
                 Telnyx::MessagingTollfree::Verification::Volume::OrSymbol,
               opt_in_workflow: String,
@@ -247,6 +249,7 @@ module Telnyx
               entity_type:
                 Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::OrSymbol,
               help_message_response: String,
+              isv_reseller: String,
               opt_in_confirmation_response: String,
               opt_in_keywords: String,
               privacy_policy_url: String,
@@ -269,7 +272,6 @@ module Telnyx
             business_state:,
             business_zip:,
             corporate_website:,
-            isv_reseller:,
             # Message Volume Enums
             message_volume:,
             opt_in_workflow:,
@@ -292,6 +294,7 @@ module Telnyx
             # Business entity classification
             entity_type: nil,
             help_message_response: nil,
+            isv_reseller: nil,
             opt_in_confirmation_response: nil,
             opt_in_keywords: nil,
             privacy_policy_url: nil,
@@ -317,7 +320,6 @@ module Telnyx
                 business_state: String,
                 business_zip: String,
                 corporate_website: String,
-                isv_reseller: String,
                 message_volume:
                   Telnyx::MessagingTollfree::Verification::Volume::TaggedSymbol,
                 opt_in_workflow: String,
@@ -342,6 +344,7 @@ module Telnyx
                 entity_type:
                   Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::TaggedSymbol,
                 help_message_response: String,
+                isv_reseller: String,
                 opt_in_confirmation_response: String,
                 opt_in_keywords: String,
                 privacy_policy_url: String,
