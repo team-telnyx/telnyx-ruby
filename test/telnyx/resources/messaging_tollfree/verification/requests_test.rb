@@ -19,7 +19,6 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
         business_state: "Texas",
         business_zip: "78701",
         corporate_website: "http://example.com",
-        isv_reseller: "isvReseller",
         message_volume: :"100,000",
         opt_in_workflow: "User signs into the Telnyx portal, enters a number and is prompted to select whether they want to use 2FA verification for security purposes. If they've opted in a confirmation message is sent out to the handset",
         opt_in_workflow_image_urls: [{url: "https://telnyx.com/sign-up"}, {url: "https://telnyx.com/company/data-privacy"}],
@@ -47,7 +46,6 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
         business_state: String,
         business_zip: String,
         corporate_website: String,
-        isv_reseller: String,
         message_volume: Telnyx::MessagingTollfree::Verification::Volume,
         opt_in_workflow: String,
         opt_in_workflow_image_urls: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingTollfree::Verification::URL]),
@@ -65,6 +63,7 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
         doing_business_as: String | nil,
         entity_type: Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType | nil,
         help_message_response: String | nil,
+        isv_reseller: String | nil,
         opt_in_confirmation_response: String | nil,
         opt_in_keywords: String | nil,
         privacy_policy_url: String | nil,
@@ -99,7 +98,6 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
         business_state: String,
         business_zip: String,
         corporate_website: String,
-        isv_reseller: String,
         message_volume: Telnyx::MessagingTollfree::Verification::Volume,
         opt_in_workflow: String,
         opt_in_workflow_image_urls: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingTollfree::Verification::URL]),
@@ -118,6 +116,7 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
         doing_business_as: String | nil,
         entity_type: Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType | nil,
         help_message_response: String | nil,
+        isv_reseller: String | nil,
         opt_in_confirmation_response: String | nil,
         opt_in_keywords: String | nil,
         privacy_policy_url: String | nil,
@@ -146,7 +145,6 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
         business_state: "Texas",
         business_zip: "78701",
         corporate_website: "http://example.com",
-        isv_reseller: "isvReseller",
         message_volume: :"100,000",
         opt_in_workflow: "User signs into the Telnyx portal, enters a number and is prompted to select whether they want to use 2FA verification for security purposes. If they've opted in a confirmation message is sent out to the handset",
         opt_in_workflow_image_urls: [{url: "https://telnyx.com/sign-up"}, {url: "https://telnyx.com/company/data-privacy"}],
@@ -174,7 +172,6 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
         business_state: String,
         business_zip: String,
         corporate_website: String,
-        isv_reseller: String,
         message_volume: Telnyx::MessagingTollfree::Verification::Volume,
         opt_in_workflow: String,
         opt_in_workflow_image_urls: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingTollfree::Verification::URL]),
@@ -192,6 +189,7 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
         doing_business_as: String | nil,
         entity_type: Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType | nil,
         help_message_response: String | nil,
+        isv_reseller: String | nil,
         opt_in_confirmation_response: String | nil,
         opt_in_keywords: String | nil,
         privacy_policy_url: String | nil,
@@ -232,7 +230,6 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
         business_state: String,
         business_zip: String,
         corporate_website: String,
-        isv_reseller: String,
         message_volume: Telnyx::MessagingTollfree::Verification::Volume,
         opt_in_workflow: String,
         opt_in_workflow_image_urls: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingTollfree::Verification::URL]),
@@ -251,6 +248,7 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
         doing_business_as: String | nil,
         entity_type: Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType | nil,
         help_message_response: String | nil,
+        isv_reseller: String | nil,
         opt_in_confirmation_response: String | nil,
         opt_in_keywords: String | nil,
         privacy_policy_url: String | nil,
@@ -270,6 +268,28 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
 
     assert_pattern do
       response => nil
+    end
+  end
+
+  def test_retrieve_status_history_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.messaging_tollfree.verification.requests.retrieve_status_history(
+        "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        page_number: 1,
+        page_size: 1
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveStatusHistoryResponse
+    end
+
+    assert_pattern do
+      response => {
+        records: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveStatusHistoryResponse::Record]),
+        total_records: Integer
+      }
     end
   end
 end

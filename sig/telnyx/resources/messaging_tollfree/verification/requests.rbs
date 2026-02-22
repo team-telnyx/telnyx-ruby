@@ -15,7 +15,6 @@ module Telnyx
             business_state: String,
             business_zip: String,
             corporate_website: String,
-            isv_reseller: String,
             message_volume: Telnyx::Models::MessagingTollfree::Verification::volume,
             opt_in_workflow: String,
             opt_in_workflow_image_urls: ::Array[Telnyx::MessagingTollfree::Verification::URL],
@@ -32,6 +31,7 @@ module Telnyx
             ?doing_business_as: String?,
             ?entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type?,
             ?help_message_response: String?,
+            ?isv_reseller: String?,
             ?opt_in_confirmation_response: String?,
             ?opt_in_keywords: String?,
             ?privacy_policy_url: String?,
@@ -58,7 +58,6 @@ module Telnyx
             business_state: String,
             business_zip: String,
             corporate_website: String,
-            isv_reseller: String,
             message_volume: Telnyx::Models::MessagingTollfree::Verification::volume,
             opt_in_workflow: String,
             opt_in_workflow_image_urls: ::Array[Telnyx::MessagingTollfree::Verification::URL],
@@ -75,6 +74,7 @@ module Telnyx
             ?doing_business_as: String?,
             ?entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type?,
             ?help_message_response: String?,
+            ?isv_reseller: String?,
             ?opt_in_confirmation_response: String?,
             ?opt_in_keywords: String?,
             ?privacy_policy_url: String?,
@@ -86,6 +86,7 @@ module Telnyx
           def list: (
             page: Integer,
             page_size: Integer,
+            ?business_name: String,
             ?date_end: Time,
             ?date_start: Time,
             ?phone_number: String,
@@ -94,6 +95,13 @@ module Telnyx
           ) -> Telnyx::Internal::DefaultPaginationForMessagingTollfree[Telnyx::MessagingTollfree::Verification::VerificationRequestStatus]
 
           def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
+
+          def retrieve_status_history: (
+            String id,
+            page_number: Integer,
+            page_size: Integer,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveStatusHistoryResponse
 
           def initialize: (client: Telnyx::Client) -> void
         end

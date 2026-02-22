@@ -60,10 +60,6 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :corporate_website
 
-          # ISV name
-          sig { returns(String) }
-          attr_accessor :isv_reseller
-
           # Message Volume Enums
           sig do
             returns(Telnyx::MessagingTollfree::Verification::Volume::OrSymbol)
@@ -159,6 +155,10 @@ module Telnyx
           sig { returns(T.nilable(String)) }
           attr_accessor :help_message_response
 
+          # ISV name
+          sig { returns(T.nilable(String)) }
+          attr_accessor :isv_reseller
+
           # Message sent to users confirming their opt-in to receive messages
           sig { returns(T.nilable(String)) }
           attr_accessor :opt_in_confirmation_response
@@ -198,7 +198,6 @@ module Telnyx
               business_state: String,
               business_zip: String,
               corporate_website: String,
-              isv_reseller: String,
               message_volume:
                 Telnyx::MessagingTollfree::Verification::Volume::OrSymbol,
               opt_in_workflow: String,
@@ -224,6 +223,7 @@ module Telnyx
                   Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::OrSymbol
                 ),
               help_message_response: T.nilable(String),
+              isv_reseller: T.nilable(String),
               opt_in_confirmation_response: T.nilable(String),
               opt_in_keywords: T.nilable(String),
               privacy_policy_url: T.nilable(String),
@@ -257,8 +257,6 @@ module Telnyx
             business_zip:,
             # A URL, including the scheme, pointing to the corporate website
             corporate_website:,
-            # ISV name
-            isv_reseller:,
             # Message Volume Enums
             message_volume:,
             # Human-readable description of how end users will opt into receiving messages
@@ -298,6 +296,8 @@ module Telnyx
             entity_type: nil,
             # The message returned when users text 'HELP'
             help_message_response: nil,
+            # ISV name
+            isv_reseller: nil,
             # Message sent to users confirming their opt-in to receive messages
             opt_in_confirmation_response: nil,
             # Keywords used to collect and process consumer opt-ins
@@ -327,7 +327,6 @@ module Telnyx
                 business_state: String,
                 business_zip: String,
                 corporate_website: String,
-                isv_reseller: String,
                 message_volume:
                   Telnyx::MessagingTollfree::Verification::Volume::OrSymbol,
                 opt_in_workflow: String,
@@ -353,6 +352,7 @@ module Telnyx
                     Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::OrSymbol
                   ),
                 help_message_response: T.nilable(String),
+                isv_reseller: T.nilable(String),
                 opt_in_confirmation_response: T.nilable(String),
                 opt_in_keywords: T.nilable(String),
                 privacy_policy_url: T.nilable(String),

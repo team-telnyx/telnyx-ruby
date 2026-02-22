@@ -25,6 +25,13 @@ module Telnyx
           sig { returns(Integer) }
           attr_accessor :page_size
 
+          # Filter verification requests by business name
+          sig { returns(T.nilable(String)) }
+          attr_reader :business_name
+
+          sig { params(business_name: String).void }
+          attr_writer :business_name
+
           sig { returns(T.nilable(Time)) }
           attr_reader :date_end
 
@@ -65,6 +72,7 @@ module Telnyx
             params(
               page: Integer,
               page_size: Integer,
+              business_name: String,
               date_end: Time,
               date_start: Time,
               phone_number: String,
@@ -79,6 +87,8 @@ module Telnyx
             #
             #         This value is automatically clamped if the provided value is too large.
             page_size:,
+            # Filter verification requests by business name
+            business_name: nil,
             date_end: nil,
             date_start: nil,
             phone_number: nil,
@@ -93,6 +103,7 @@ module Telnyx
               {
                 page: Integer,
                 page_size: Integer,
+                business_name: String,
                 date_end: Time,
                 date_start: Time,
                 phone_number: String,
