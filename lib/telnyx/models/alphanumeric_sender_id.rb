@@ -3,7 +3,7 @@
 module Telnyx
   module Models
     # @see Telnyx::Resources::AlphanumericSenderIDs#list
-    class AlphanumericSenderIDListResponse < Telnyx::Internal::Type::BaseModel
+    class AlphanumericSenderID < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Uniquely identifies the alphanumeric sender ID resource.
       #
@@ -30,8 +30,8 @@ module Telnyx
 
       # @!attribute record_type
       #
-      #   @return [Symbol, Telnyx::Models::AlphanumericSenderIDListResponse::RecordType, nil]
-      optional :record_type, enum: -> { Telnyx::Models::AlphanumericSenderIDListResponse::RecordType }
+      #   @return [Symbol, Telnyx::Models::AlphanumericSenderID::RecordType, nil]
+      optional :record_type, enum: -> { Telnyx::AlphanumericSenderID::RecordType }
 
       # @!attribute us_long_code_fallback
       #   A US long code number to use as fallback when sending to US destinations.
@@ -48,11 +48,11 @@ module Telnyx
       #
       #   @param organization_id [String] The organization that owns this sender ID.
       #
-      #   @param record_type [Symbol, Telnyx::Models::AlphanumericSenderIDListResponse::RecordType]
+      #   @param record_type [Symbol, Telnyx::Models::AlphanumericSenderID::RecordType]
       #
       #   @param us_long_code_fallback [String] A US long code number to use as fallback when sending to US destinations.
 
-      # @see Telnyx::Models::AlphanumericSenderIDListResponse#record_type
+      # @see Telnyx::Models::AlphanumericSenderID#record_type
       module RecordType
         extend Telnyx::Internal::Type::Enum
 

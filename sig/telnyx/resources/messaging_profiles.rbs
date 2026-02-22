@@ -72,7 +72,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AlphanumericSenderID]
 
       def list_phone_numbers: (
         String messaging_profile_id,

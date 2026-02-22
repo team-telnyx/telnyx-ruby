@@ -213,7 +213,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AlphanumericSenderID>]
       #
       # @see Telnyx::Models::MessagingProfileListAlphanumericSenderIDsParams
       def list_alphanumeric_sender_ids(id, params = {})
@@ -223,7 +223,7 @@ module Telnyx
           path: ["messaging_profiles/%1$s/alphanumeric_sender_ids", id],
           query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::MessagingProfileListAlphanumericSenderIDsResponse,
+          model: Telnyx::AlphanumericSenderID,
           options: options
         )
       end

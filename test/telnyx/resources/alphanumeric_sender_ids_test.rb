@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::AlphanumericSenderIDsTest < Telnyx::Test::Resourc
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::AlphanumericSenderIDCreateResponse::Data | nil
+        data: Telnyx::AlphanumericSenderID | nil
       }
     end
   end
@@ -34,7 +34,7 @@ class Telnyx::Test::Resources::AlphanumericSenderIDsTest < Telnyx::Test::Resourc
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::AlphanumericSenderIDRetrieveResponse::Data | nil
+        data: Telnyx::AlphanumericSenderID | nil
       }
     end
   end
@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::AlphanumericSenderIDsTest < Telnyx::Test::Resourc
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::AlphanumericSenderIDListResponse
+      row => Telnyx::AlphanumericSenderID
     end
 
     assert_pattern do
@@ -61,7 +61,7 @@ class Telnyx::Test::Resources::AlphanumericSenderIDsTest < Telnyx::Test::Resourc
         alphanumeric_sender_id: String | nil,
         messaging_profile_id: String | nil,
         organization_id: String | nil,
-        record_type: Telnyx::Models::AlphanumericSenderIDListResponse::RecordType | nil,
+        record_type: Telnyx::AlphanumericSenderID::RecordType | nil,
         us_long_code_fallback: String | nil
       }
     end
@@ -78,7 +78,7 @@ class Telnyx::Test::Resources::AlphanumericSenderIDsTest < Telnyx::Test::Resourc
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::AlphanumericSenderIDDeleteResponse::Data | nil
+        data: Telnyx::AlphanumericSenderID | nil
       }
     end
   end
