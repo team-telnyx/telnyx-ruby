@@ -18,7 +18,7 @@ module Telnyx
       #   @param global_ip_assignment_update_request [Telnyx::Models::GlobalIPAssignmentUpdateParams::GlobalIPAssignmentUpdateRequest]
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
-      class GlobalIPAssignmentUpdateRequest < Telnyx::Internal::Type::BaseModel
+      class GlobalIPAssignmentUpdateRequest < Telnyx::Models::GlobalIPAssignment
         # @!method initialize
       end
     end

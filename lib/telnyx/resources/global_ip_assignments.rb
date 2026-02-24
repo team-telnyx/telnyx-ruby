@@ -73,7 +73,7 @@ module Telnyx
       # @param page_size [Integer]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<GlobalIPAssignment>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::GlobalIPAssignment>]
       #
       # @see Telnyx::Models::GlobalIPAssignmentListParams
       def list(params = {})

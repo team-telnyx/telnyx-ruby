@@ -18,12 +18,233 @@ module Telnyx
         data: Telnyx::Models::VirtualCrossConnectDeleteResponse::Data
       }
 
-      type data = {  }
+      type data =
+        {
+          id: String,
+          created_at: String,
+          record_type: String,
+          updated_at: String,
+          name: String,
+          network_id: String,
+          status: Telnyx::Models::interface_status,
+          region_code: String,
+          bandwidth_mbps: Float,
+          bgp_asn: Float,
+          cloud_provider: Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::cloud_provider,
+          cloud_provider_region: String,
+          primary_bgp_key: String,
+          primary_cloud_account_id: String,
+          primary_cloud_ip: String,
+          primary_enabled: bool,
+          primary_routing_announcement: bool,
+          primary_telnyx_ip: String,
+          region: Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::Region,
+          secondary_bgp_key: String,
+          secondary_cloud_account_id: String,
+          secondary_cloud_ip: String,
+          secondary_enabled: bool,
+          secondary_routing_announcement: bool,
+          secondary_telnyx_ip: String
+        }
 
-      class Data < Telnyx::Models::NetworkInterfaceRegion
-        def initialize: -> void
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader name: String?
 
-        def to_hash: -> {  }
+        def name=: (String) -> String
+
+        attr_reader network_id: String?
+
+        def network_id=: (String) -> String
+
+        attr_reader region_code: String?
+
+        def region_code=: (String) -> String
+
+        attr_reader bandwidth_mbps: Float?
+
+        def bandwidth_mbps=: (Float) -> Float
+
+        attr_reader bgp_asn: Float?
+
+        def bgp_asn=: (Float) -> Float
+
+        attr_reader cloud_provider: Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::cloud_provider?
+
+        def cloud_provider=: (
+          Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::cloud_provider
+        ) -> Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::cloud_provider
+
+        attr_reader cloud_provider_region: String?
+
+        def cloud_provider_region=: (String) -> String
+
+        attr_reader primary_bgp_key: String?
+
+        def primary_bgp_key=: (String) -> String
+
+        attr_reader primary_cloud_account_id: String?
+
+        def primary_cloud_account_id=: (String) -> String
+
+        attr_reader primary_cloud_ip: String?
+
+        def primary_cloud_ip=: (String) -> String
+
+        attr_reader primary_enabled: bool?
+
+        def primary_enabled=: (bool) -> bool
+
+        attr_reader primary_routing_announcement: bool?
+
+        def primary_routing_announcement=: (bool) -> bool
+
+        attr_reader primary_telnyx_ip: String?
+
+        def primary_telnyx_ip=: (String) -> String
+
+        attr_reader region: Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::Region?
+
+        def region=: (
+          Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::Region
+        ) -> Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::Region
+
+        attr_reader secondary_bgp_key: String?
+
+        def secondary_bgp_key=: (String) -> String
+
+        attr_reader secondary_cloud_account_id: String?
+
+        def secondary_cloud_account_id=: (String) -> String
+
+        attr_reader secondary_cloud_ip: String?
+
+        def secondary_cloud_ip=: (String) -> String
+
+        attr_reader secondary_enabled: bool?
+
+        def secondary_enabled=: (bool) -> bool
+
+        attr_reader secondary_routing_announcement: bool?
+
+        def secondary_routing_announcement=: (bool) -> bool
+
+        attr_reader secondary_telnyx_ip: String?
+
+        def secondary_telnyx_ip=: (String) -> String
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: String?
+
+        def created_at=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader updated_at: String?
+
+        def updated_at=: (String) -> String
+
+        attr_reader status: Telnyx::Models::interface_status?
+
+        def status=: (
+          Telnyx::Models::interface_status
+        ) -> Telnyx::Models::interface_status
+
+        def initialize: (
+          ?id: String,
+          ?created_at: String,
+          ?record_type: String,
+          ?updated_at: String,
+          ?name: String,
+          ?network_id: String,
+          ?status: Telnyx::Models::interface_status,
+          ?region_code: String,
+          ?bandwidth_mbps: Float,
+          ?bgp_asn: Float,
+          ?cloud_provider: Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::cloud_provider,
+          ?cloud_provider_region: String,
+          ?primary_bgp_key: String,
+          ?primary_cloud_account_id: String,
+          ?primary_cloud_ip: String,
+          ?primary_enabled: bool,
+          ?primary_routing_announcement: bool,
+          ?primary_telnyx_ip: String,
+          ?region: Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::Region,
+          ?secondary_bgp_key: String,
+          ?secondary_cloud_account_id: String,
+          ?secondary_cloud_ip: String,
+          ?secondary_enabled: bool,
+          ?secondary_routing_announcement: bool,
+          ?secondary_telnyx_ip: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: String,
+          record_type: String,
+          updated_at: String,
+          name: String,
+          network_id: String,
+          status: Telnyx::Models::interface_status,
+          region_code: String,
+          bandwidth_mbps: Float,
+          bgp_asn: Float,
+          cloud_provider: Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::cloud_provider,
+          cloud_provider_region: String,
+          primary_bgp_key: String,
+          primary_cloud_account_id: String,
+          primary_cloud_ip: String,
+          primary_enabled: bool,
+          primary_routing_announcement: bool,
+          primary_telnyx_ip: String,
+          region: Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::Region,
+          secondary_bgp_key: String,
+          secondary_cloud_account_id: String,
+          secondary_cloud_ip: String,
+          secondary_enabled: bool,
+          secondary_routing_announcement: bool,
+          secondary_telnyx_ip: String
+        }
+
+        type cloud_provider = :aws | :azure | :gce
+
+        module CloudProvider
+          extend Telnyx::Internal::Type::Enum
+
+          AWS: :aws
+          AZURE: :azure
+          GCE: :gce
+
+          def self?.values: -> ::Array[Telnyx::Models::VirtualCrossConnectDeleteResponse::Data::cloud_provider]
+        end
+
+        type region = { code: String, name: String, record_type: String }
+
+        class Region < Telnyx::Internal::Type::BaseModel
+          attr_reader code: String?
+
+          def code=: (String) -> String
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          def initialize: (
+            ?code: String,
+            ?name: String,
+            ?record_type: String
+          ) -> void
+
+          def to_hash: -> { code: String, name: String, record_type: String }
+        end
       end
     end
   end
