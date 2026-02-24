@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    telnyx (5.38.0)
+    telnyx (5.38.1)
       cgi
       connection_pool
 
@@ -56,12 +56,12 @@ GEM
     csv (3.3.5)
     drb (2.2.3)
     erubi (1.13.1)
-    ffi (1.17.2-aarch64-linux-gnu)
-    ffi (1.17.2-aarch64-linux-musl)
-    ffi (1.17.2-arm64-darwin)
-    ffi (1.17.2-x86_64-darwin)
-    ffi (1.17.2-x86_64-linux-gnu)
-    ffi (1.17.2-x86_64-linux-musl)
+    ffi (1.17.3-aarch64-linux-gnu)
+    ffi (1.17.3-aarch64-linux-musl)
+    ffi (1.17.3-arm64-darwin)
+    ffi (1.17.3-x86_64-darwin)
+    ffi (1.17.3-x86_64-linux-gnu)
+    ffi (1.17.3-x86_64-linux-musl)
     fiber-annotation (0.2.0)
     fiber-local (1.1.0)
       fiber-storage
@@ -79,7 +79,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.10)
     logger (1.7.0)
     metrics (0.15.0)
-    minitest (5.26.0)
+    minitest (5.27.0)
     minitest-focus (1.4.0)
       minitest (>= 4, < 6)
     minitest-hooks (1.5.2)
@@ -181,7 +181,7 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
-    unicode-emoji (4.1.0)
+    unicode-emoji (4.2.0)
     uri (1.1.0)
     webmock (3.26.1)
       addressable (>= 2.8.0)
