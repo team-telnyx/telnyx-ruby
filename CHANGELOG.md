@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.38.1 (2026-02-24)
+
+Full Changelog: [v5.38.0...v5.38.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.38.0...v5.38.1)
+
 ## 5.38.0 (2026-02-24)
 
 Full Changelog: [v5.37.0...v5.38.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.37.0...v5.38.0)
