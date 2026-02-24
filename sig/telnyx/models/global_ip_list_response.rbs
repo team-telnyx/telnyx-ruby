@@ -2,54 +2,30 @@ module Telnyx
   module Models
     type global_ip_list_response =
       {
-        id: String,
-        created_at: String,
-        record_type: String,
-        updated_at: String,
         description: String,
         ip_address: String,
         name: String,
         ports: ::Hash[Symbol, top]
       }
 
-    class GlobalIPListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader description: String?
+    class GlobalIPListResponse < Telnyx::Models::Record
+      def description: -> String?
 
-      def description=: (String) -> String
+      def description=: (String _) -> String
 
-      attr_reader name: String?
+      def name: -> String?
 
-      def name=: (String) -> String
+      def name=: (String _) -> String
 
-      attr_reader ports: ::Hash[Symbol, top]?
+      def ports: -> ::Hash[Symbol, top]?
 
-      def ports=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+      def ports=: (::Hash[Symbol, top] _) -> ::Hash[Symbol, top]
 
-      attr_reader id: String?
+      def ip_address: -> String?
 
-      def id=: (String) -> String
-
-      attr_reader created_at: String?
-
-      def created_at=: (String) -> String
-
-      attr_reader record_type: String?
-
-      def record_type=: (String) -> String
-
-      attr_reader updated_at: String?
-
-      def updated_at=: (String) -> String
-
-      attr_reader ip_address: String?
-
-      def ip_address=: (String) -> String
+      def ip_address=: (String _) -> String
 
       def initialize: (
-        ?id: String,
-        ?created_at: String,
-        ?record_type: String,
-        ?updated_at: String,
         ?description: String,
         ?ip_address: String,
         ?name: String,
@@ -57,10 +33,6 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
-        id: String,
-        created_at: String,
-        record_type: String,
-        updated_at: String,
         description: String,
         ip_address: String,
         name: String,
