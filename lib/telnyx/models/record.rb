@@ -2,8 +2,7 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::GlobalIPAssignments#list
-    class GlobalIPAssignment < Telnyx::Internal::Type::BaseModel
+    class Record < Telnyx::Internal::Type::BaseModel
       response_only do
         # @!attribute id
         #   Identifies the resource.

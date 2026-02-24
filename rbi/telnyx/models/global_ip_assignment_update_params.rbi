@@ -51,7 +51,7 @@ module Telnyx
       def to_hash
       end
 
-      class GlobalIPAssignmentUpdateRequest < Telnyx::Internal::Type::BaseModel
+      class GlobalIPAssignmentUpdateRequest < Telnyx::Models::GlobalIPAssignment
         OrHash =
           T.type_alias do
             T.any(
@@ -65,16 +65,7 @@ module Telnyx
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              created_at: String,
-              record_type: String,
-              updated_at: String,
-              global_ip_id: String,
-              wireguard_peer_id: String
-            }
-          )
+          override.returns({ global_ip_id: String, wireguard_peer_id: String })
         end
         def to_hash
         end

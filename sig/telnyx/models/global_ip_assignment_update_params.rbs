@@ -23,26 +23,12 @@ module Telnyx
       }
 
       type global_ip_assignment_update_request =
-        {
-          id: String,
-          created_at: String,
-          record_type: String,
-          updated_at: String,
-          global_ip_id: String,
-          wireguard_peer_id: String
-        }
+        { global_ip_id: String, wireguard_peer_id: String }
 
-      class GlobalIPAssignmentUpdateRequest < Telnyx::Internal::Type::BaseModel
+      class GlobalIPAssignmentUpdateRequest < Telnyx::Models::GlobalIPAssignment
         def initialize: -> void
 
-        def to_hash: -> {
-          id: String,
-          created_at: String,
-          record_type: String,
-          updated_at: String,
-          global_ip_id: String,
-          wireguard_peer_id: String
-        }
+        def to_hash: -> { global_ip_id: String, wireguard_peer_id: String }
       end
     end
   end
