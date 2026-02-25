@@ -1,0 +1,116 @@
+module Telnyx
+  module Models
+    type payment_create_stored_payment_transaction_response =
+      {
+        data: Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data
+      }
+
+    class PaymentCreateStoredPaymentTransactionResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data?
+
+      def data=: (
+        Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data
+      ) -> Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data
+      }
+
+      type data =
+        {
+          id: String,
+          amount_cents: Integer,
+          amount_currency: String,
+          auto_recharge: bool,
+          created_at: Time,
+          processor_status: String,
+          record_type: Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data::record_type,
+          transaction_processing_type: Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data::transaction_processing_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader amount_cents: Integer?
+
+        def amount_cents=: (Integer) -> Integer
+
+        attr_reader amount_currency: String?
+
+        def amount_currency=: (String) -> String
+
+        attr_reader auto_recharge: bool?
+
+        def auto_recharge=: (bool) -> bool
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader processor_status: String?
+
+        def processor_status=: (String) -> String
+
+        attr_reader record_type: Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data::record_type?
+
+        def record_type=: (
+          Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data::record_type
+        ) -> Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data::record_type
+
+        attr_reader transaction_processing_type: Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data::transaction_processing_type?
+
+        def transaction_processing_type=: (
+          Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data::transaction_processing_type
+        ) -> Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data::transaction_processing_type
+
+        def initialize: (
+          ?id: String,
+          ?amount_cents: Integer,
+          ?amount_currency: String,
+          ?auto_recharge: bool,
+          ?created_at: Time,
+          ?processor_status: String,
+          ?record_type: Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data::record_type,
+          ?transaction_processing_type: Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data::transaction_processing_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          amount_cents: Integer,
+          amount_currency: String,
+          auto_recharge: bool,
+          created_at: Time,
+          processor_status: String,
+          record_type: Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data::record_type,
+          transaction_processing_type: Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data::transaction_processing_type
+        }
+
+        type record_type = :transaction
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          TRANSACTION: :transaction
+
+          def self?.values: -> ::Array[Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data::record_type]
+        end
+
+        type transaction_processing_type = :stored_payment
+
+        module TransactionProcessingType
+          extend Telnyx::Internal::Type::Enum
+
+          STORED_PAYMENT: :stored_payment
+
+          def self?.values: -> ::Array[Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse::Data::transaction_processing_type]
+        end
+      end
+    end
+  end
+end
