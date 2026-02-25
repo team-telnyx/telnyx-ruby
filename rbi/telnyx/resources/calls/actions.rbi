@@ -184,6 +184,7 @@ module Telnyx
             mute_dtmf: Telnyx::Calls::ActionBridgeParams::MuteDtmf::OrSymbol,
             park_after_unbridge: String,
             play_ringtone: T::Boolean,
+            prevent_double_bridge: T::Boolean,
             queue: String,
             record: Telnyx::Calls::ActionBridgeParams::Record::OrSymbol,
             record_channels:
@@ -225,6 +226,9 @@ module Telnyx
           # Specifies whether to play a ringtone if the call you want to bridge with has not
           # yet been answered.
           play_ringtone: nil,
+          # When set to `true`, it prevents bridging if the target call is already bridged
+          # to another call. Disabled by default.
+          prevent_double_bridge: nil,
           # The name of the queue you want to bridge with, can't be used together with
           # call_control_id parameter or video_room_id parameter. Bridging with a queue
           # means bridging with the first call in the queue. The call will always be removed
