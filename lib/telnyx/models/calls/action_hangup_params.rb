@@ -22,13 +22,21 @@ module Telnyx
         #   @return [String, nil]
         optional :command_id, String
 
-        # @!method initialize(client_state: nil, command_id: nil, request_options: {})
+        # @!attribute custom_headers
+        #   Custom headers to be added to the SIP BYE message.
+        #
+        #   @return [Array<Telnyx::Models::CustomSipHeader>, nil]
+        optional :custom_headers, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::CustomSipHeader] }
+
+        # @!method initialize(client_state: nil, command_id: nil, custom_headers: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionHangupParams} for more details.
         #
         #   @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #
         #   @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
+        #
+        #   @param custom_headers [Array<Telnyx::Models::CustomSipHeader>] Custom headers to be added to the SIP BYE message.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end

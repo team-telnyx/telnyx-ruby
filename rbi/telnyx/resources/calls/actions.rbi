@@ -86,9 +86,17 @@ module Telnyx
             transcription: T::Boolean,
             transcription_config:
               Telnyx::Calls::TranscriptionStartRequest::OrHash,
+            webhook_retries_policies:
+              T::Hash[
+                Symbol,
+                Telnyx::Calls::ActionAnswerParams::WebhookRetriesPolicy::OrHash
+              ],
             webhook_url: String,
             webhook_url_method:
               Telnyx::Calls::ActionAnswerParams::WebhookURLMethod::OrSymbol,
+            webhook_urls: T::Hash[Symbol, String],
+            webhook_urls_method:
+              Telnyx::Calls::ActionAnswerParams::WebhookURLsMethod::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionAnswerResponse)
         end
@@ -160,11 +168,21 @@ module Telnyx
           # Enable transcription upon call answer. The default value is false.
           transcription: nil,
           transcription_config: nil,
+          # A map of event types to retry policies. Each retry policy contains an array of
+          # `retries_ms` specifying the delays between retry attempts in milliseconds.
+          # Maximum 5 retries, total delay cannot exceed 60 seconds.
+          webhook_retries_policies: nil,
           # Use this field to override the URL for which Telnyx will send subsequent
           # webhooks to for this call.
           webhook_url: nil,
           # HTTP request type used for `webhook_url`.
           webhook_url_method: nil,
+          # A map of event types to webhook URLs. When an event of the specified type
+          # occurs, the webhook URL associated with that event type will be called instead
+          # of `webhook_url`. Events not mapped here will use the default `webhook_url`.
+          webhook_urls: nil,
+          # HTTP request method to invoke `webhook_urls`.
+          webhook_urls_method: nil,
           request_options: {}
         )
         end
@@ -181,6 +199,7 @@ module Telnyx
             call_control_id_to_bridge_with: String,
             client_state: String,
             command_id: String,
+            hold_after_unbridge: T::Boolean,
             mute_dtmf: Telnyx::Calls::ActionBridgeParams::MuteDtmf::OrSymbol,
             park_after_unbridge: String,
             play_ringtone: T::Boolean,
@@ -216,6 +235,9 @@ module Telnyx
           # Use this field to avoid duplicate commands. Telnyx will ignore any command with
           # the same `command_id` for the same `call_control_id`.
           command_id: nil,
+          # Specifies behavior after the bridge ends. If set to `true`, the current leg will
+          # be put on hold after unbridge instead of being hung up.
+          hold_after_unbridge: nil,
           # When enabled, DTMF tones are not passed to the call participant. The webhooks
           # containing the DTMF information will be sent.
           mute_dtmf: nil,
@@ -721,6 +743,7 @@ module Telnyx
             call_control_id: String,
             client_state: String,
             command_id: String,
+            custom_headers: T::Array[Telnyx::CustomSipHeader::OrHash],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionHangupResponse)
         end
@@ -733,6 +756,8 @@ module Telnyx
           # Use this field to avoid duplicate commands. Telnyx will ignore any command with
           # the same `command_id` for the same `call_control_id`.
           command_id: nil,
+          # Custom headers to be added to the SIP BYE message.
+          custom_headers: nil,
           request_options: {}
         )
         end
