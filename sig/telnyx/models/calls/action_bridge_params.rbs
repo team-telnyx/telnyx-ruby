@@ -9,6 +9,7 @@ module Telnyx
           mute_dtmf: Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf,
           park_after_unbridge: String,
           play_ringtone: bool,
+          prevent_double_bridge: bool,
           queue: String,
           record: Telnyx::Models::Calls::ActionBridgeParams::record,
           record_channels: Telnyx::Models::Calls::ActionBridgeParams::record_channels,
@@ -51,6 +52,10 @@ module Telnyx
         attr_reader play_ringtone: bool?
 
         def play_ringtone=: (bool) -> bool
+
+        attr_reader prevent_double_bridge: bool?
+
+        def prevent_double_bridge=: (bool) -> bool
 
         attr_reader queue: String?
 
@@ -119,6 +124,7 @@ module Telnyx
           ?mute_dtmf: Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf,
           ?park_after_unbridge: String,
           ?play_ringtone: bool,
+          ?prevent_double_bridge: bool,
           ?queue: String,
           ?record: Telnyx::Models::Calls::ActionBridgeParams::record,
           ?record_channels: Telnyx::Models::Calls::ActionBridgeParams::record_channels,
@@ -141,6 +147,7 @@ module Telnyx
           mute_dtmf: Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf,
           park_after_unbridge: String,
           play_ringtone: bool,
+          prevent_double_bridge: bool,
           queue: String,
           record: Telnyx::Models::Calls::ActionBridgeParams::record,
           record_channels: Telnyx::Models::Calls::ActionBridgeParams::record_channels,
