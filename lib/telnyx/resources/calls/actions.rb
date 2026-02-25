@@ -328,7 +328,7 @@ module Telnyx
         #
         # @param voice [String] The voice to be used by the voice assistant. Currently we support ElevenLabs, Te
         #
-        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings] The settings associated with the voice selected
+        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::Calls::ActionGatherUsingAIParams::VoiceSettings::Azure, Telnyx::Models::Calls::ActionGatherUsingAIParams::VoiceSettings::Rime, Telnyx::Models::Calls::ActionGatherUsingAIParams::VoiceSettings::Resemble] The settings associated with the voice selected
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -461,7 +461,7 @@ module Telnyx
         #
         # @param valid_digits [String] A list of all digits accepted as valid.
         #
-        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings] The settings associated with the voice selected
+        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Azure, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Rime, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Resemble] The settings associated with the voice selected
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -805,7 +805,7 @@ module Telnyx
         #
         # @param target_legs [Symbol, Telnyx::Models::Calls::ActionSpeakParams::TargetLegs] Specifies which legs of the call should receive the spoken audio.
         #
-        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings] The settings associated with the voice selected
+        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Azure, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Rime, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Resemble] The settings associated with the voice selected
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -851,7 +851,7 @@ module Telnyx
         #
         # @param voice [String] The voice to be used by the voice assistant. Currently we support ElevenLabs, Te
         #
-        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings] The settings associated with the voice selected
+        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::Calls::ActionStartAIAssistantParams::VoiceSettings::Azure, Telnyx::Models::Calls::ActionStartAIAssistantParams::VoiceSettings::Rime, Telnyx::Models::Calls::ActionStartAIAssistantParams::VoiceSettings::Resemble] The settings associated with the voice selected
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

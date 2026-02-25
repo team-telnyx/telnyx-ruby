@@ -27,25 +27,34 @@ module Telnyx
         #     the `VoiceId` (e.g., `AWS.Polly.Joanna-Neural`). Check the
         #     [available voices](https://docs.aws.amazon.com/polly/latest/dg/available-voices.html)
         #     for compatibility.
-        #   - **Azure:** Use `Azure.<VoiceId>. (e.g. Azure.en-CA-ClaraNeural,
-        #     Azure.en-CA-LiamNeural, Azure.en-US-BrianMultilingualNeural,
-        #     Azure.en-US-Ava:DragonHDLatestNeural. For a complete list of voices, go to
-        #     [Azure Voice Gallery](https://speech.microsoft.com/portal/voicegallery).)
+        #   - **Azure:** Use `Azure.<VoiceId>` (e.g., `Azure.en-CA-ClaraNeural`,
+        #     `Azure.en-US-BrianMultilingualNeural`,
+        #     `Azure.en-US-Ava:DragonHDLatestNeural`). For a complete list of voices, go to
+        #     [Azure Voice Gallery](https://speech.microsoft.com/portal/voicegallery). Use
+        #     `voice_settings` to configure custom deployments, regions, or API keys.
         #   - **ElevenLabs:** Use `ElevenLabs.<ModelId>.<VoiceId>` (e.g.,
         #     `ElevenLabs.eleven_multilingual_v2.21m00Tcm4TlvDq8ikWAM`). The `ModelId` part
         #     is optional. To use ElevenLabs, you must provide your ElevenLabs API key as an
         #     integration identifier secret in
-        #     `"voice_settings": {"api_key_ref": "<secret_identifier>"}`. Check
+        #     `"voice_settings": {"api_key_ref": "<secret_identifier>"}`. See
+        #     [integration secrets documentation](https://developers.telnyx.com/api/secrets-manager/integration-secrets/create-integration-secret)
+        #     for details. Check
         #     [available voices](https://elevenlabs.io/docs/api-reference/get-voices).
-        #   - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>`
+        #   - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>` (e.g., `Telnyx.KokoroTTS.af`).
+        #     Use `voice_settings` to configure voice_speed and other synthesis parameters.
         #   - **Minimax:** Use `Minimax.<ModelId>.<VoiceId>` (e.g.,
         #     `Minimax.speech-02-hd.Wise_Woman`). Supported models: `speech-02-turbo`,
-        #     `speech-02-hd`, `speech-2.6-turbo`, `speech-2.8-turbo`. Optional parameters:
-        #     `speed` (float, default 1.0), `vol` (float, default 1.0), `pitch` (integer,
-        #     default 0).
-        #   - **Resemble:** Use `Resemble.<ModelId>.<VoiceId>` (e.g.,
-        #     `Resemble.Pro.my_voice`). Supported models: `Pro` (multilingual) and `Turbo`
-        #     (English only).
+        #     `speech-02-hd`, `speech-2.6-turbo`, `speech-2.8-turbo`. Use `voice_settings`
+        #     to configure speed, volume, pitch, and language_boost.
+        #   - **Rime:** Use `Rime.<model_id>.<voice_id>` (e.g., `Rime.Arcana.cove`).
+        #     Supported model_ids: `Arcana`, `Mist`. Use `voice_settings` to configure
+        #     voice_speed.
+        #   - **Resemble:** Use `Resemble.Turbo.<voice_id>` (e.g.,
+        #     `Resemble.Turbo.my_voice`). Only `Turbo` model is supported. Use
+        #     `voice_settings` to configure precision, sample_rate, and format.
+        #
+        #   For service_level basic, you may define the gender of the speaker (male or
+        #   female).
         #
         #   @return [String]
         required :voice, String
@@ -142,7 +151,7 @@ module Telnyx
         # @!attribute voice_settings
         #   The settings associated with the voice selected
         #
-        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, nil]
+        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Azure, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Rime, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Resemble, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings }
 
         # @!method initialize(payload:, voice:, client_state: nil, command_id: nil, inter_digit_timeout_millis: nil, invalid_payload: nil, language: nil, maximum_digits: nil, maximum_tries: nil, minimum_digits: nil, payload_type: nil, service_level: nil, terminating_digit: nil, timeout_millis: nil, valid_digits: nil, voice_settings: nil, request_options: {})
@@ -180,7 +189,7 @@ module Telnyx
         #
         #   @param valid_digits [String] A list of all digits accepted as valid.
         #
-        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings] The settings associated with the voice selected
+        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Azure, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Rime, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Resemble] The settings associated with the voice selected
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -261,8 +270,202 @@ module Telnyx
 
           variant :minimax, -> { Telnyx::MinimaxVoiceSettings }
 
+          variant :azure, -> { Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Azure }
+
+          variant :rime, -> { Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Rime }
+
+          variant :resemble, -> { Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Resemble }
+
+          class Azure < Telnyx::Internal::Type::BaseModel
+            # @!attribute type
+            #   Voice settings provider type
+            #
+            #   @return [Symbol, :azure]
+            required :type, const: :azure
+
+            # @!attribute api_key_ref
+            #   The `identifier` for an integration secret that refers to your Azure Speech API
+            #   key.
+            #
+            #   @return [String, nil]
+            optional :api_key_ref, String
+
+            # @!attribute deployment_id
+            #   The deployment ID for a custom Azure neural voice.
+            #
+            #   @return [String, nil]
+            optional :deployment_id, String
+
+            # @!attribute effect
+            #   Audio effect to apply.
+            #
+            #   @return [Symbol, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Azure::Effect, nil]
+            optional :effect, enum: -> { Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Azure::Effect }
+
+            # @!attribute gender
+            #   Voice gender filter.
+            #
+            #   @return [Symbol, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Azure::Gender, nil]
+            optional :gender, enum: -> { Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Azure::Gender }
+
+            # @!attribute region
+            #   The Azure region for the Speech service (e.g., `eastus`, `westeurope`). Required
+            #   when using a custom API key.
+            #
+            #   @return [String, nil]
+            optional :region, String
+
+            # @!method initialize(api_key_ref: nil, deployment_id: nil, effect: nil, gender: nil, region: nil, type: :azure)
+            #   Some parameter documentations has been truncated, see
+            #   {Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Azure} for
+            #   more details.
+            #
+            #   @param api_key_ref [String] The `identifier` for an integration secret that refers to your Azure Speech API
+            #
+            #   @param deployment_id [String] The deployment ID for a custom Azure neural voice.
+            #
+            #   @param effect [Symbol, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Azure::Effect] Audio effect to apply.
+            #
+            #   @param gender [Symbol, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Azure::Gender] Voice gender filter.
+            #
+            #   @param region [String] The Azure region for the Speech service (e.g., `eastus`, `westeurope`). Required
+            #
+            #   @param type [Symbol, :azure] Voice settings provider type
+
+            # Audio effect to apply.
+            #
+            # @see Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Azure#effect
+            module Effect
+              extend Telnyx::Internal::Type::Enum
+
+              EQ_CAR = :eq_car
+              EQ_TELECOMHP8K = :eq_telecomhp8k
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Voice gender filter.
+            #
+            # @see Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Azure#gender
+            module Gender
+              extend Telnyx::Internal::Type::Enum
+
+              MALE = :Male
+              FEMALE = :Female
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
+          class Rime < Telnyx::Internal::Type::BaseModel
+            # @!attribute type
+            #   Voice settings provider type
+            #
+            #   @return [Symbol, :rime]
+            required :type, const: :rime
+
+            # @!attribute voice_speed
+            #   Speech speed multiplier. Default is 1.0.
+            #
+            #   @return [Float, nil]
+            optional :voice_speed, Float
+
+            # @!method initialize(voice_speed: nil, type: :rime)
+            #   @param voice_speed [Float] Speech speed multiplier. Default is 1.0.
+            #
+            #   @param type [Symbol, :rime] Voice settings provider type
+          end
+
+          class Resemble < Telnyx::Internal::Type::BaseModel
+            # @!attribute type
+            #   Voice settings provider type
+            #
+            #   @return [Symbol, :resemble]
+            required :type, const: :resemble
+
+            # @!attribute format_
+            #   Output audio format.
+            #
+            #   @return [Symbol, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Resemble::Format, nil]
+            optional :format_,
+                     enum: -> {
+                       Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Resemble::Format
+                     },
+                     api_name: :format
+
+            # @!attribute precision
+            #   Audio precision format.
+            #
+            #   @return [Symbol, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Resemble::Precision, nil]
+            optional :precision,
+                     enum: -> { Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Resemble::Precision }
+
+            # @!attribute sample_rate
+            #   Audio sample rate in Hz.
+            #
+            #   @return [Symbol, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Resemble::SampleRate, nil]
+            optional :sample_rate,
+                     enum: -> { Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Resemble::SampleRate }
+
+            # @!method initialize(format_: nil, precision: nil, sample_rate: nil, type: :resemble)
+            #   @param format_ [Symbol, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Resemble::Format] Output audio format.
+            #
+            #   @param precision [Symbol, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Resemble::Precision] Audio precision format.
+            #
+            #   @param sample_rate [Symbol, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Resemble::SampleRate] Audio sample rate in Hz.
+            #
+            #   @param type [Symbol, :resemble] Voice settings provider type
+
+            # Output audio format.
+            #
+            # @see Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Resemble#format_
+            module Format
+              extend Telnyx::Internal::Type::Enum
+
+              WAV = :wav
+              MP3 = :mp3
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Audio precision format.
+            #
+            # @see Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Resemble#precision
+            module Precision
+              extend Telnyx::Internal::Type::Enum
+
+              PCM_16 = :PCM_16
+              PCM_24 = :PCM_24
+              PCM_32 = :PCM_32
+              MULAW = :MULAW
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Audio sample rate in Hz.
+            #
+            # @see Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Resemble#sample_rate
+            module SampleRate
+              extend Telnyx::Internal::Type::Enum
+
+              SAMPLE_RATE_8000 = :"8000"
+              SAMPLE_RATE_16000 = :"16000"
+              SAMPLE_RATE_22050 = :"22050"
+              SAMPLE_RATE_32000 = :"32000"
+              SAMPLE_RATE_44100 = :"44100"
+              SAMPLE_RATE_48000 = :"48000"
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings)]
+          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Azure, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Rime, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Resemble)]
         end
       end
     end
