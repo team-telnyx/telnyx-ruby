@@ -2,7 +2,11 @@ module Telnyx
   module Models
     module Calls
       type action_hangup_params =
-        { client_state: String, command_id: String }
+        {
+          client_state: String,
+          command_id: String,
+          custom_headers: ::Array[Telnyx::CustomSipHeader]
+        }
         & Telnyx::Internal::Type::request_parameters
 
       class ActionHangupParams < Telnyx::Internal::Type::BaseModel
@@ -17,15 +21,23 @@ module Telnyx
 
         def command_id=: (String) -> String
 
+        attr_reader custom_headers: ::Array[Telnyx::CustomSipHeader]?
+
+        def custom_headers=: (
+          ::Array[Telnyx::CustomSipHeader]
+        ) -> ::Array[Telnyx::CustomSipHeader]
+
         def initialize: (
           ?client_state: String,
           ?command_id: String,
+          ?custom_headers: ::Array[Telnyx::CustomSipHeader],
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           client_state: String,
           command_id: String,
+          custom_headers: ::Array[Telnyx::CustomSipHeader],
           request_options: Telnyx::RequestOptions
         }
       end

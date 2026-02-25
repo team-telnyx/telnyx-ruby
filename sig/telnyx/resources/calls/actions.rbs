@@ -36,8 +36,11 @@ module Telnyx
           ?stream_url: String,
           ?transcription: bool,
           ?transcription_config: Telnyx::Calls::TranscriptionStartRequest,
+          ?webhook_retries_policies: ::Hash[Symbol, Telnyx::Calls::ActionAnswerParams::WebhookRetriesPolicy],
           ?webhook_url: String,
           ?webhook_url_method: Telnyx::Models::Calls::ActionAnswerParams::webhook_url_method,
+          ?webhook_urls: ::Hash[Symbol, String],
+          ?webhook_urls_method: Telnyx::Models::Calls::ActionAnswerParams::webhook_urls_method,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionAnswerResponse
 
@@ -46,6 +49,7 @@ module Telnyx
           call_control_id_to_bridge_with: String,
           ?client_state: String,
           ?command_id: String,
+          ?hold_after_unbridge: bool,
           ?mute_dtmf: Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf,
           ?park_after_unbridge: String,
           ?play_ringtone: bool,
@@ -154,6 +158,7 @@ module Telnyx
           String call_control_id,
           ?client_state: String,
           ?command_id: String,
+          ?custom_headers: ::Array[Telnyx::CustomSipHeader],
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionHangupResponse
 

@@ -169,6 +169,15 @@ module Telnyx
         #   @return [Telnyx::Models::Calls::TranscriptionStartRequest, nil]
         optional :transcription_config, -> { Telnyx::Calls::TranscriptionStartRequest }
 
+        # @!attribute webhook_retries_policies
+        #   A map of event types to retry policies. Each retry policy contains an array of
+        #   `retries_ms` specifying the delays between retry attempts in milliseconds.
+        #   Maximum 5 retries, total delay cannot exceed 60 seconds.
+        #
+        #   @return [Hash{Symbol=>Telnyx::Models::Calls::ActionAnswerParams::WebhookRetriesPolicy}, nil]
+        optional :webhook_retries_policies,
+                 -> { Telnyx::Internal::Type::HashOf[Telnyx::Calls::ActionAnswerParams::WebhookRetriesPolicy] }
+
         # @!attribute webhook_url
         #   Use this field to override the URL for which Telnyx will send subsequent
         #   webhooks to for this call.
@@ -182,7 +191,21 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::ActionAnswerParams::WebhookURLMethod, nil]
         optional :webhook_url_method, enum: -> { Telnyx::Calls::ActionAnswerParams::WebhookURLMethod }
 
-        # @!method initialize(billing_group_id: nil, client_state: nil, command_id: nil, custom_headers: nil, preferred_codecs: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_headers: nil, sound_modifications: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, transcription: nil, transcription_config: nil, webhook_url: nil, webhook_url_method: nil, request_options: {})
+        # @!attribute webhook_urls
+        #   A map of event types to webhook URLs. When an event of the specified type
+        #   occurs, the webhook URL associated with that event type will be called instead
+        #   of `webhook_url`. Events not mapped here will use the default `webhook_url`.
+        #
+        #   @return [Hash{Symbol=>String}, nil]
+        optional :webhook_urls, Telnyx::Internal::Type::HashOf[String]
+
+        # @!attribute webhook_urls_method
+        #   HTTP request method to invoke `webhook_urls`.
+        #
+        #   @return [Symbol, Telnyx::Models::Calls::ActionAnswerParams::WebhookURLsMethod, nil]
+        optional :webhook_urls_method, enum: -> { Telnyx::Calls::ActionAnswerParams::WebhookURLsMethod }
+
+        # @!method initialize(billing_group_id: nil, client_state: nil, command_id: nil, custom_headers: nil, preferred_codecs: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_headers: nil, sound_modifications: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, transcription: nil, transcription_config: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionAnswerParams} for more details.
         #
@@ -235,9 +258,15 @@ module Telnyx
         #
         #   @param transcription_config [Telnyx::Models::Calls::TranscriptionStartRequest]
         #
+        #   @param webhook_retries_policies [Hash{Symbol=>Telnyx::Models::Calls::ActionAnswerParams::WebhookRetriesPolicy}] A map of event types to retry policies. Each retry policy contains an array of `
+        #
         #   @param webhook_url [String] Use this field to override the URL for which Telnyx will send subsequent webhook
         #
         #   @param webhook_url_method [Symbol, Telnyx::Models::Calls::ActionAnswerParams::WebhookURLMethod] HTTP request type used for `webhook_url`.
+        #
+        #   @param webhook_urls [Hash{Symbol=>String}] A map of event types to webhook URLs. When an event of the specified type occurs
+        #
+        #   @param webhook_urls_method [Symbol, Telnyx::Models::Calls::ActionAnswerParams::WebhookURLsMethod] HTTP request method to invoke `webhook_urls`.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -322,8 +351,35 @@ module Telnyx
           #   @return [Array<Symbol>]
         end
 
+        class WebhookRetriesPolicy < Telnyx::Internal::Type::BaseModel
+          # @!attribute retries_ms
+          #   Array of delays in milliseconds between retry attempts. Total sum cannot exceed
+          #   60000ms.
+          #
+          #   @return [Array<Integer>, nil]
+          optional :retries_ms, Telnyx::Internal::Type::ArrayOf[Integer]
+
+          # @!method initialize(retries_ms: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::Calls::ActionAnswerParams::WebhookRetriesPolicy} for more
+          #   details.
+          #
+          #   @param retries_ms [Array<Integer>] Array of delays in milliseconds between retry attempts. Total sum cannot exceed
+        end
+
         # HTTP request type used for `webhook_url`.
         module WebhookURLMethod
+          extend Telnyx::Internal::Type::Enum
+
+          POST = :POST
+          GET = :GET
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # HTTP request method to invoke `webhook_urls`.
+        module WebhookURLsMethod
           extend Telnyx::Internal::Type::Enum
 
           POST = :POST
