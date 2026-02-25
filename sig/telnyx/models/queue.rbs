@@ -1,6 +1,6 @@
 module Telnyx
   module Models
-    type queue_list_response =
+    type queue =
       {
         id: String,
         average_wait_time_secs: Integer,
@@ -8,11 +8,11 @@ module Telnyx
         current_size: Integer,
         max_size: Integer,
         name: String,
-        record_type: Telnyx::Models::QueueListResponse::record_type,
+        record_type: Telnyx::Models::Queue::record_type,
         updated_at: String
       }
 
-    class QueueListResponse < Telnyx::Internal::Type::BaseModel
+    class Queue < Telnyx::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor average_wait_time_secs: Integer
@@ -25,7 +25,7 @@ module Telnyx
 
       attr_accessor name: String
 
-      attr_accessor record_type: Telnyx::Models::QueueListResponse::record_type
+      attr_accessor record_type: Telnyx::Models::Queue::record_type
 
       attr_accessor updated_at: String
 
@@ -36,7 +36,7 @@ module Telnyx
         current_size: Integer,
         max_size: Integer,
         name: String,
-        record_type: Telnyx::Models::QueueListResponse::record_type,
+        record_type: Telnyx::Models::Queue::record_type,
         updated_at: String
       ) -> void
 
@@ -47,7 +47,7 @@ module Telnyx
         current_size: Integer,
         max_size: Integer,
         name: String,
-        record_type: Telnyx::Models::QueueListResponse::record_type,
+        record_type: Telnyx::Models::Queue::record_type,
         updated_at: String
       }
 
@@ -58,7 +58,7 @@ module Telnyx
 
         QUEUE: :queue
 
-        def self?.values: -> ::Array[Telnyx::Models::QueueListResponse::record_type]
+        def self?.values: -> ::Array[Telnyx::Models::Queue::record_type]
       end
     end
   end
