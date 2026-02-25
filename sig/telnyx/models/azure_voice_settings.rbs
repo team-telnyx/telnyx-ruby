@@ -1,0 +1,91 @@
+module Telnyx
+  module Models
+    type azure_voice_settings =
+      {
+        type: Telnyx::Models::AzureVoiceSettings::type_,
+        api_key_ref: String,
+        deployment_id: String,
+        effect: Telnyx::Models::AzureVoiceSettings::effect,
+        gender: Telnyx::Models::AzureVoiceSettings::gender,
+        region: String
+      }
+
+    class AzureVoiceSettings < Telnyx::Internal::Type::BaseModel
+      attr_accessor type: Telnyx::Models::AzureVoiceSettings::type_
+
+      attr_reader api_key_ref: String?
+
+      def api_key_ref=: (String) -> String
+
+      attr_reader deployment_id: String?
+
+      def deployment_id=: (String) -> String
+
+      attr_reader effect: Telnyx::Models::AzureVoiceSettings::effect?
+
+      def effect=: (
+        Telnyx::Models::AzureVoiceSettings::effect
+      ) -> Telnyx::Models::AzureVoiceSettings::effect
+
+      attr_reader gender: Telnyx::Models::AzureVoiceSettings::gender?
+
+      def gender=: (
+        Telnyx::Models::AzureVoiceSettings::gender
+      ) -> Telnyx::Models::AzureVoiceSettings::gender
+
+      attr_reader region: String?
+
+      def region=: (String) -> String
+
+      def initialize: (
+        type: Telnyx::Models::AzureVoiceSettings::type_,
+        ?api_key_ref: String,
+        ?deployment_id: String,
+        ?effect: Telnyx::Models::AzureVoiceSettings::effect,
+        ?gender: Telnyx::Models::AzureVoiceSettings::gender,
+        ?region: String
+      ) -> void
+
+      def to_hash: -> {
+        type: Telnyx::Models::AzureVoiceSettings::type_,
+        api_key_ref: String,
+        deployment_id: String,
+        effect: Telnyx::Models::AzureVoiceSettings::effect,
+        gender: Telnyx::Models::AzureVoiceSettings::gender,
+        region: String
+      }
+
+      type type_ = :azure
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        AZURE: :azure
+
+        def self?.values: -> ::Array[Telnyx::Models::AzureVoiceSettings::type_]
+      end
+
+      type effect = :eq_car | :eq_telecomhp8k
+
+      module Effect
+        extend Telnyx::Internal::Type::Enum
+
+        EQ_CAR: :eq_car
+        EQ_TELECOMHP8K: :eq_telecomhp8k
+
+        def self?.values: -> ::Array[Telnyx::Models::AzureVoiceSettings::effect]
+      end
+
+      type gender = :Male | :Female
+
+      module Gender
+        extend Telnyx::Internal::Type::Enum
+
+        MALE: :Male
+        FEMALE: :Female
+
+        def self?.values: -> ::Array[Telnyx::Models::AzureVoiceSettings::gender]
+      end
+    end
+  end
+end
