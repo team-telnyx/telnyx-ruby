@@ -50,7 +50,7 @@ module Telnyx
         # When the `record` parameter is set to `record-from-answer`, the response will
         # include a `recording_id` field.
         #
-        # @overload answer(call_control_id, billing_group_id: nil, client_state: nil, command_id: nil, custom_headers: nil, preferred_codecs: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_headers: nil, sound_modifications: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, transcription: nil, transcription_config: nil, webhook_url: nil, webhook_url_method: nil, request_options: {})
+        # @overload answer(call_control_id, billing_group_id: nil, client_state: nil, command_id: nil, custom_headers: nil, preferred_codecs: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_headers: nil, sound_modifications: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, transcription: nil, transcription_config: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -103,9 +103,15 @@ module Telnyx
         #
         # @param transcription_config [Telnyx::Models::Calls::TranscriptionStartRequest]
         #
+        # @param webhook_retries_policies [Hash{Symbol=>Telnyx::Models::Calls::ActionAnswerParams::WebhookRetriesPolicy}] A map of event types to retry policies. Each retry policy contains an array of `
+        #
         # @param webhook_url [String] Use this field to override the URL for which Telnyx will send subsequent webhook
         #
         # @param webhook_url_method [Symbol, Telnyx::Models::Calls::ActionAnswerParams::WebhookURLMethod] HTTP request type used for `webhook_url`.
+        #
+        # @param webhook_urls [Hash{Symbol=>String}] A map of event types to webhook URLs. When an event of the specified type occurs
+        #
+        # @param webhook_urls_method [Symbol, Telnyx::Models::Calls::ActionAnswerParams::WebhookURLsMethod] HTTP request method to invoke `webhook_urls`.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -133,7 +139,7 @@ module Telnyx
         # - `call.bridged` for Leg A
         # - `call.bridged` for Leg B
         #
-        # @overload bridge(call_control_id_to_bridge, call_control_id_to_bridge_with:, client_state: nil, command_id: nil, mute_dtmf: nil, park_after_unbridge: nil, play_ringtone: nil, prevent_double_bridge: nil, queue: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, ringtone: nil, video_room_context: nil, video_room_id: nil, request_options: {})
+        # @overload bridge(call_control_id_to_bridge, call_control_id_to_bridge_with:, client_state: nil, command_id: nil, hold_after_unbridge: nil, mute_dtmf: nil, park_after_unbridge: nil, play_ringtone: nil, prevent_double_bridge: nil, queue: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, ringtone: nil, video_room_context: nil, video_room_id: nil, request_options: {})
         #
         # @param call_control_id_to_bridge [String] Unique identifier and token for controlling the call
         #
@@ -142,6 +148,8 @@ module Telnyx
         # @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #
         # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
+        #
+        # @param hold_after_unbridge [Boolean] Specifies behavior after the bridge ends. If set to `true`, the current leg will
         #
         # @param mute_dtmf [Symbol, Telnyx::Models::Calls::ActionBridgeParams::MuteDtmf] When enabled, DTMF tones are not passed to the call participant. The webhooks co
         #
@@ -491,13 +499,15 @@ module Telnyx
         # - `call.hangup`
         # - `call.recording.saved`
         #
-        # @overload hangup(call_control_id, client_state: nil, command_id: nil, request_options: {})
+        # @overload hangup(call_control_id, client_state: nil, command_id: nil, custom_headers: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
         # @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #
         # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
+        #
+        # @param custom_headers [Array<Telnyx::Models::CustomSipHeader>] Custom headers to be added to the SIP BYE message.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

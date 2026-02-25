@@ -29,6 +29,13 @@ module Telnyx
         #   @return [String, nil]
         optional :command_id, String
 
+        # @!attribute hold_after_unbridge
+        #   Specifies behavior after the bridge ends. If set to `true`, the current leg will
+        #   be put on hold after unbridge instead of being hung up.
+        #
+        #   @return [Boolean, nil]
+        optional :hold_after_unbridge, Telnyx::Internal::Type::Boolean
+
         # @!attribute mute_dtmf
         #   When enabled, DTMF tones are not passed to the call participant. The webhooks
         #   containing the DTMF information will be sent.
@@ -150,7 +157,7 @@ module Telnyx
         #   @return [String, nil]
         optional :video_room_id, String
 
-        # @!method initialize(call_control_id_to_bridge_with:, client_state: nil, command_id: nil, mute_dtmf: nil, park_after_unbridge: nil, play_ringtone: nil, prevent_double_bridge: nil, queue: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, ringtone: nil, video_room_context: nil, video_room_id: nil, request_options: {})
+        # @!method initialize(call_control_id_to_bridge_with:, client_state: nil, command_id: nil, hold_after_unbridge: nil, mute_dtmf: nil, park_after_unbridge: nil, play_ringtone: nil, prevent_double_bridge: nil, queue: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, ringtone: nil, video_room_context: nil, video_room_id: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionBridgeParams} for more details.
         #
@@ -159,6 +166,8 @@ module Telnyx
         #   @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #
         #   @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
+        #
+        #   @param hold_after_unbridge [Boolean] Specifies behavior after the bridge ends. If set to `true`, the current leg will
         #
         #   @param mute_dtmf [Symbol, Telnyx::Models::Calls::ActionBridgeParams::MuteDtmf] When enabled, DTMF tones are not passed to the call participant. The webhooks co
         #

@@ -1,5 +1,19 @@
 # Changelog
 
+## 5.42.0 (2026-02-25)
+
+Full Changelog: [v5.41.0...v5.42.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.41.0...v5.42.0)
+
+### Features
+
+* PORTAL-5923: Add stored_payment_transactions endpoint to OpenAPI docs ([24a4227](https://github.com/team-telnyx/telnyx-ruby/commit/24a422719b6c6d2c0926de5cc7cde8ce5f856d1e))
+
+
+### Documentation
+
+* **call-control:** Add missing params to hangup, bridge, answer ([226b831](https://github.com/team-telnyx/telnyx-ruby/commit/226b83115dc78fe81d8a2b261b7f410e5431a624))
+* **call-control:** Add queue CRUD endpoints ([a507591](https://github.com/team-telnyx/telnyx-ruby/commit/a50759135b22ff1ffd49fa05f511c7298850c7aa))
+
 ## 5.41.0 (2026-02-25)
 
 Full Changelog: [v5.40.0...v5.41.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.40.0...v5.41.0)

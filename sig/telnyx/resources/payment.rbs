@@ -3,6 +3,11 @@ module Telnyx
     class Payment
       attr_reader auto_recharge_prefs: Telnyx::Resources::Payment::AutoRechargePrefs
 
+      def create_stored_payment_transaction: (
+        amount: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse
+
       def initialize: (client: Telnyx::Client) -> void
     end
   end

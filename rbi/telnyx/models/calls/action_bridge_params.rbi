@@ -33,6 +33,14 @@ module Telnyx
         sig { params(command_id: String).void }
         attr_writer :command_id
 
+        # Specifies behavior after the bridge ends. If set to `true`, the current leg will
+        # be put on hold after unbridge instead of being hung up.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :hold_after_unbridge
+
+        sig { params(hold_after_unbridge: T::Boolean).void }
+        attr_writer :hold_after_unbridge
+
         # When enabled, DTMF tones are not passed to the call participant. The webhooks
         # containing the DTMF information will be sent.
         sig do
@@ -236,6 +244,7 @@ module Telnyx
             call_control_id_to_bridge_with: String,
             client_state: String,
             command_id: String,
+            hold_after_unbridge: T::Boolean,
             mute_dtmf: Telnyx::Calls::ActionBridgeParams::MuteDtmf::OrSymbol,
             park_after_unbridge: String,
             play_ringtone: T::Boolean,
@@ -269,6 +278,9 @@ module Telnyx
           # Use this field to avoid duplicate commands. Telnyx will ignore any command with
           # the same `command_id` for the same `call_control_id`.
           command_id: nil,
+          # Specifies behavior after the bridge ends. If set to `true`, the current leg will
+          # be put on hold after unbridge instead of being hung up.
+          hold_after_unbridge: nil,
           # When enabled, DTMF tones are not passed to the call participant. The webhooks
           # containing the DTMF information will be sent.
           mute_dtmf: nil,
@@ -336,6 +348,7 @@ module Telnyx
               call_control_id_to_bridge_with: String,
               client_state: String,
               command_id: String,
+              hold_after_unbridge: T::Boolean,
               mute_dtmf: Telnyx::Calls::ActionBridgeParams::MuteDtmf::OrSymbol,
               park_after_unbridge: String,
               play_ringtone: T::Boolean,

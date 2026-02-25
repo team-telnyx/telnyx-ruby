@@ -6,6 +6,7 @@ module Telnyx
           call_control_id_to_bridge_with: String,
           client_state: String,
           command_id: String,
+          hold_after_unbridge: bool,
           mute_dtmf: Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf,
           park_after_unbridge: String,
           play_ringtone: bool,
@@ -38,6 +39,10 @@ module Telnyx
         attr_reader command_id: String?
 
         def command_id=: (String) -> String
+
+        attr_reader hold_after_unbridge: bool?
+
+        def hold_after_unbridge=: (bool) -> bool
 
         attr_reader mute_dtmf: Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf?
 
@@ -121,6 +126,7 @@ module Telnyx
           call_control_id_to_bridge_with: String,
           ?client_state: String,
           ?command_id: String,
+          ?hold_after_unbridge: bool,
           ?mute_dtmf: Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf,
           ?park_after_unbridge: String,
           ?play_ringtone: bool,
@@ -144,6 +150,7 @@ module Telnyx
           call_control_id_to_bridge_with: String,
           client_state: String,
           command_id: String,
+          hold_after_unbridge: bool,
           mute_dtmf: Telnyx::Models::Calls::ActionBridgeParams::mute_dtmf,
           park_after_unbridge: String,
           play_ringtone: bool,

@@ -1025,6 +1025,8 @@ module Telnyx
 
   module Payment = Telnyx::Models::Payment
 
+  class PaymentCreateStoredPaymentTransactionParams = Telnyx::Models::PaymentCreateStoredPaymentTransactionParams
+
   class PhoneNumber = Telnyx::Models::PhoneNumber
 
   module PhoneNumberBlocks = Telnyx::Models::PhoneNumberBlocks
@@ -1145,9 +1147,17 @@ module Telnyx
 
   class PwgAssignedResourcesSummary = Telnyx::Models::PwgAssignedResourcesSummary
 
+  class QueueCreateParams = Telnyx::Models::QueueCreateParams
+
+  class QueueDeleteParams = Telnyx::Models::QueueDeleteParams
+
+  class QueueListParams = Telnyx::Models::QueueListParams
+
   class QueueRetrieveParams = Telnyx::Models::QueueRetrieveParams
 
   module Queues = Telnyx::Models::Queues
+
+  class QueueUpdateParams = Telnyx::Models::QueueUpdateParams
 
   class RcsAgent = Telnyx::Models::RcsAgent
 
