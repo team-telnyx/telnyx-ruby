@@ -1025,6 +1025,8 @@ module Telnyx
 
   module Payment = Telnyx::Models::Payment
 
+  class PaymentCreateStoredPaymentTransactionParams = Telnyx::Models::PaymentCreateStoredPaymentTransactionParams
+
   class PhoneNumber = Telnyx::Models::PhoneNumber
 
   module PhoneNumberBlocks = Telnyx::Models::PhoneNumberBlocks
