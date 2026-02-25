@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.39.0 (2026-02-25)
+
+Full Changelog: [v5.38.1...v5.39.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.38.1...v5.39.0)
+
+### Features
+
+* Add missing TTS voice settings schemas and update voice descriptions ([eb43986](https://github.com/team-telnyx/telnyx-ruby/commit/eb439865bd26c00206ecc63ded05f811a520d0b4))
+
 ## 5.38.1 (2026-02-24)
 
 Full Changelog: [v5.38.0...v5.38.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.38.0...v5.38.1)
