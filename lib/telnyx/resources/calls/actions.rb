@@ -133,7 +133,7 @@ module Telnyx
         # - `call.bridged` for Leg A
         # - `call.bridged` for Leg B
         #
-        # @overload bridge(call_control_id_to_bridge, call_control_id_to_bridge_with:, client_state: nil, command_id: nil, mute_dtmf: nil, park_after_unbridge: nil, play_ringtone: nil, queue: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, ringtone: nil, video_room_context: nil, video_room_id: nil, request_options: {})
+        # @overload bridge(call_control_id_to_bridge, call_control_id_to_bridge_with:, client_state: nil, command_id: nil, mute_dtmf: nil, park_after_unbridge: nil, play_ringtone: nil, prevent_double_bridge: nil, queue: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, ringtone: nil, video_room_context: nil, video_room_id: nil, request_options: {})
         #
         # @param call_control_id_to_bridge [String] Unique identifier and token for controlling the call
         #
@@ -148,6 +148,8 @@ module Telnyx
         # @param park_after_unbridge [String] Specifies behavior after the bridge ends (i.e. the opposite leg either hangs up
         #
         # @param play_ringtone [Boolean] Specifies whether to play a ringtone if the call you want to bridge with has not
+        #
+        # @param prevent_double_bridge [Boolean] When set to `true`, it prevents bridging if the target call is already bridged t
         #
         # @param queue [String] The name of the queue you want to bridge with, can't be used together with
         # call\_

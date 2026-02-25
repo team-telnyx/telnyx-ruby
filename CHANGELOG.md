@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.41.0 (2026-02-25)
+
+Full Changelog: [v5.40.0...v5.41.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.40.0...v5.41.0)
+
+### Features
+
+* TELAPPS Add prevent_double_bridge to bridge command ([80281e6](https://github.com/team-telnyx/telnyx-ruby/commit/80281e613a9204e6238b61f56d906323dc3f97ad))
+
 ## 5.40.0 (2026-02-25)
 
 Full Changelog: [v5.39.0...v5.40.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.39.0...v5.40.0)
