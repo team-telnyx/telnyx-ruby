@@ -1332,9 +1332,17 @@ module Telnyx
 
   PwgAssignedResourcesSummary = Telnyx::Models::PwgAssignedResourcesSummary
 
+  QueueCreateParams = Telnyx::Models::QueueCreateParams
+
+  QueueDeleteParams = Telnyx::Models::QueueDeleteParams
+
+  QueueListParams = Telnyx::Models::QueueListParams
+
   QueueRetrieveParams = Telnyx::Models::QueueRetrieveParams
 
   Queues = Telnyx::Models::Queues
+
+  QueueUpdateParams = Telnyx::Models::QueueUpdateParams
 
   RcsAgent = Telnyx::Models::RcsAgent
 

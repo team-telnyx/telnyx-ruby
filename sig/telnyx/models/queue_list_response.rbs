@@ -1,0 +1,65 @@
+module Telnyx
+  module Models
+    type queue_list_response =
+      {
+        id: String,
+        average_wait_time_secs: Integer,
+        created_at: String,
+        current_size: Integer,
+        max_size: Integer,
+        name: String,
+        record_type: Telnyx::Models::QueueListResponse::record_type,
+        updated_at: String
+      }
+
+    class QueueListResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor average_wait_time_secs: Integer
+
+      attr_accessor created_at: String
+
+      attr_accessor current_size: Integer
+
+      attr_accessor max_size: Integer
+
+      attr_accessor name: String
+
+      attr_accessor record_type: Telnyx::Models::QueueListResponse::record_type
+
+      attr_accessor updated_at: String
+
+      def initialize: (
+        id: String,
+        average_wait_time_secs: Integer,
+        created_at: String,
+        current_size: Integer,
+        max_size: Integer,
+        name: String,
+        record_type: Telnyx::Models::QueueListResponse::record_type,
+        updated_at: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        average_wait_time_secs: Integer,
+        created_at: String,
+        current_size: Integer,
+        max_size: Integer,
+        name: String,
+        record_type: Telnyx::Models::QueueListResponse::record_type,
+        updated_at: String
+      }
+
+      type record_type = :queue
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        QUEUE: :queue
+
+        def self?.values: -> ::Array[Telnyx::Models::QueueListResponse::record_type]
+      end
+    end
+  end
+end

@@ -3,10 +3,33 @@ module Telnyx
     class Queues
       attr_reader calls: Telnyx::Resources::Queues::Calls
 
+      def create: (
+        queue_name: String,
+        ?max_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::QueueCreateResponse
+
       def retrieve: (
         String queue_name,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::QueueRetrieveResponse
+
+      def update: (
+        String queue_name,
+        max_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::QueueUpdateResponse
+
+      def list: (
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::QueueListResponse]
+
+      def delete: (
+        String queue_name,
+        ?request_options: Telnyx::request_opts
+      ) -> nil
 
       def initialize: (client: Telnyx::Client) -> void
     end

@@ -1,0 +1,23 @@
+module Telnyx
+  module Models
+    type queue_update_params =
+      { max_size: Integer } & Telnyx::Internal::Type::request_parameters
+
+    class QueueUpdateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor max_size: Integer
+
+      def initialize: (
+        max_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        max_size: Integer,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end
