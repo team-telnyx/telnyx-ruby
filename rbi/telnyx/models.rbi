@@ -99,6 +99,8 @@ module Telnyx
 
   AzureConfigurationData = Telnyx::Models::AzureConfigurationData
 
+  AzureVoiceSettings = Telnyx::Models::AzureVoiceSettings
+
   BalanceRetrieveParams = Telnyx::Models::BalanceRetrieveParams
 
   BillingGroup = Telnyx::Models::BillingGroup
@@ -1408,7 +1410,11 @@ module Telnyx
 
   RequirementTypeRetrieveParams = Telnyx::Models::RequirementTypeRetrieveParams
 
+  ResembleVoiceSettings = Telnyx::Models::ResembleVoiceSettings
+
   ReservedPhoneNumber = Telnyx::Models::ReservedPhoneNumber
+
+  RimeVoiceSettings = Telnyx::Models::RimeVoiceSettings
 
   Room = Telnyx::Models::Room
 

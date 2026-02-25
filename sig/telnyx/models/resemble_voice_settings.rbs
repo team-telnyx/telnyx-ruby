@@ -1,0 +1,97 @@
+module Telnyx
+  module Models
+    type resemble_voice_settings =
+      {
+        type: Telnyx::Models::ResembleVoiceSettings::type_,
+        format_: Telnyx::Models::ResembleVoiceSettings::format_,
+        precision: Telnyx::Models::ResembleVoiceSettings::precision,
+        sample_rate: Telnyx::Models::ResembleVoiceSettings::sample_rate
+      }
+
+    class ResembleVoiceSettings < Telnyx::Internal::Type::BaseModel
+      attr_accessor type: Telnyx::Models::ResembleVoiceSettings::type_
+
+      attr_reader format_: Telnyx::Models::ResembleVoiceSettings::format_?
+
+      def format_=: (
+        Telnyx::Models::ResembleVoiceSettings::format_
+      ) -> Telnyx::Models::ResembleVoiceSettings::format_
+
+      attr_reader precision: Telnyx::Models::ResembleVoiceSettings::precision?
+
+      def precision=: (
+        Telnyx::Models::ResembleVoiceSettings::precision
+      ) -> Telnyx::Models::ResembleVoiceSettings::precision
+
+      attr_reader sample_rate: Telnyx::Models::ResembleVoiceSettings::sample_rate?
+
+      def sample_rate=: (
+        Telnyx::Models::ResembleVoiceSettings::sample_rate
+      ) -> Telnyx::Models::ResembleVoiceSettings::sample_rate
+
+      def initialize: (
+        type: Telnyx::Models::ResembleVoiceSettings::type_,
+        ?format_: Telnyx::Models::ResembleVoiceSettings::format_,
+        ?precision: Telnyx::Models::ResembleVoiceSettings::precision,
+        ?sample_rate: Telnyx::Models::ResembleVoiceSettings::sample_rate
+      ) -> void
+
+      def to_hash: -> {
+        type: Telnyx::Models::ResembleVoiceSettings::type_,
+        format_: Telnyx::Models::ResembleVoiceSettings::format_,
+        precision: Telnyx::Models::ResembleVoiceSettings::precision,
+        sample_rate: Telnyx::Models::ResembleVoiceSettings::sample_rate
+      }
+
+      type type_ = :resemble
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        RESEMBLE: :resemble
+
+        def self?.values: -> ::Array[Telnyx::Models::ResembleVoiceSettings::type_]
+      end
+
+      type format_ = :wav | :mp3
+
+      module Format
+        extend Telnyx::Internal::Type::Enum
+
+        WAV: :wav
+        MP3: :mp3
+
+        def self?.values: -> ::Array[Telnyx::Models::ResembleVoiceSettings::format_]
+      end
+
+      type precision = :PCM_16 | :PCM_24 | :PCM_32 | :MULAW
+
+      module Precision
+        extend Telnyx::Internal::Type::Enum
+
+        PCM_16: :PCM_16
+        PCM_24: :PCM_24
+        PCM_32: :PCM_32
+        MULAW: :MULAW
+
+        def self?.values: -> ::Array[Telnyx::Models::ResembleVoiceSettings::precision]
+      end
+
+      type sample_rate =
+        :"8000" | :"16000" | :"22050" | :"32000" | :"44100" | :"48000"
+
+      module SampleRate
+        extend Telnyx::Internal::Type::Enum
+
+        SAMPLE_RATE_8000: :"8000"
+        SAMPLE_RATE_16000: :"16000"
+        SAMPLE_RATE_22050: :"22050"
+        SAMPLE_RATE_32000: :"32000"
+        SAMPLE_RATE_44100: :"44100"
+        SAMPLE_RATE_48000: :"48000"
+
+        def self?.values: -> ::Array[Telnyx::Models::ResembleVoiceSettings::sample_rate]
+      end
+    end
+  end
+end
