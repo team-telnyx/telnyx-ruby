@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.40.0 (2026-02-25)
+
+Full Changelog: [v5.39.0...v5.40.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.39.0...v5.40.0)
+
+### Features
+
+* **api:** manual updates ([eccdf50](https://github.com/team-telnyx/telnyx-ruby/commit/eccdf50b6292e000beac27eb86803fd799785a91))
+
 ## 5.39.0 (2026-02-25)
 
 Full Changelog: [v5.38.1...v5.39.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.38.1...v5.39.0)

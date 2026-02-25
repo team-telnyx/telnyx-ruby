@@ -525,9 +525,9 @@ module Telnyx
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
                 Telnyx::MinimaxVoiceSettings::OrHash,
-                Telnyx::Conferences::ActionSpeakParams::VoiceSettings::Azure::OrHash,
-                Telnyx::Conferences::ActionSpeakParams::VoiceSettings::Rime::OrHash,
-                Telnyx::Conferences::ActionSpeakParams::VoiceSettings::Resemble::OrHash
+                Telnyx::AzureVoiceSettings::OrHash,
+                Telnyx::RimeVoiceSettings::OrHash,
+                Telnyx::ResembleVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionSpeakResponse)

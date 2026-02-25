@@ -405,9 +405,9 @@ module Telnyx
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
-                Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Azure::OrHash,
-                Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Rime::OrHash,
-                Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Resemble::OrHash
+                Telnyx::AzureVoiceSettings::OrHash,
+                Telnyx::RimeVoiceSettings::OrHash,
+                Telnyx::ResembleVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingAIResponse)
@@ -610,9 +610,9 @@ module Telnyx
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
                 Telnyx::MinimaxVoiceSettings::OrHash,
-                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Azure::OrHash,
-                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Rime::OrHash,
-                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Resemble::OrHash
+                Telnyx::AzureVoiceSettings::OrHash,
+                Telnyx::RimeVoiceSettings::OrHash,
+                Telnyx::ResembleVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingSpeakResponse)
@@ -985,9 +985,9 @@ module Telnyx
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
                 Telnyx::MinimaxVoiceSettings::OrHash,
-                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Azure::OrHash,
-                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Rime::OrHash,
-                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Resemble::OrHash
+                Telnyx::AzureVoiceSettings::OrHash,
+                Telnyx::RimeVoiceSettings::OrHash,
+                Telnyx::ResembleVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionSpeakResponse)
@@ -1091,9 +1091,9 @@ module Telnyx
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
-                Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings::Azure::OrHash,
-                Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings::Rime::OrHash,
-                Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings::Resemble::OrHash
+                Telnyx::AzureVoiceSettings::OrHash,
+                Telnyx::RimeVoiceSettings::OrHash,
+                Telnyx::ResembleVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartAIAssistantResponse)

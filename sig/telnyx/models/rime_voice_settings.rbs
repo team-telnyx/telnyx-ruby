@@ -1,0 +1,34 @@
+module Telnyx
+  module Models
+    type rime_voice_settings =
+      { type: Telnyx::Models::RimeVoiceSettings::type_, voice_speed: Float }
+
+    class RimeVoiceSettings < Telnyx::Internal::Type::BaseModel
+      attr_accessor type: Telnyx::Models::RimeVoiceSettings::type_
+
+      attr_reader voice_speed: Float?
+
+      def voice_speed=: (Float) -> Float
+
+      def initialize: (
+        type: Telnyx::Models::RimeVoiceSettings::type_,
+        ?voice_speed: Float
+      ) -> void
+
+      def to_hash: -> {
+        type: Telnyx::Models::RimeVoiceSettings::type_,
+        voice_speed: Float
+      }
+
+      type type_ = :rime
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        RIME: :rime
+
+        def self?.values: -> ::Array[Telnyx::Models::RimeVoiceSettings::type_]
+      end
+    end
+  end
+end
