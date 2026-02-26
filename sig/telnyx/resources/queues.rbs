@@ -24,7 +24,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::QueueListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Queue]
 
       def delete: (
         String queue_name,
