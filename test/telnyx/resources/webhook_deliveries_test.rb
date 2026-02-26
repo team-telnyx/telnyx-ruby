@@ -38,7 +38,7 @@ class Telnyx::Test::Resources::WebhookDeliveriesTest < Telnyx::Test::ResourceTes
     assert_pattern do
       row => {
         id: String | nil,
-        attempts: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::WebhookDeliveryListResponse::Attempt]) | nil,
+        attempts: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Attempt]) | nil,
         finished_at: Time | nil,
         record_type: String | nil,
         started_at: Time | nil,

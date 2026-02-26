@@ -9,7 +9,7 @@ module Telnyx
       #
       # @param body [String]
       # @param comment_record_id [String]
-      # @param comment_record_type [Symbol, Telnyx::Models::CommentCreateParams::CommentRecordType]
+      # @param comment_record_type [Symbol, Telnyx::Models::Comment::CommentRecordType]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::CommentCreateResponse]

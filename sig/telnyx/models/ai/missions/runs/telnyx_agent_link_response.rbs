@@ -4,43 +4,18 @@ module Telnyx
       module Missions
         module Runs
           type telnyx_agent_link_response =
-            {
-              data: Telnyx::Models::AI::Missions::Runs::TelnyxAgentLinkResponse::Data
-            }
+            { data: Telnyx::AI::Missions::Runs::TelnyxAgentData }
 
           class TelnyxAgentLinkResponse < Telnyx::Internal::Type::BaseModel
-            attr_accessor data: Telnyx::Models::AI::Missions::Runs::TelnyxAgentLinkResponse::Data
+            attr_accessor data: Telnyx::AI::Missions::Runs::TelnyxAgentData
 
             def initialize: (
-              data: Telnyx::Models::AI::Missions::Runs::TelnyxAgentLinkResponse::Data
+              data: Telnyx::AI::Missions::Runs::TelnyxAgentData
             ) -> void
 
             def to_hash: -> {
-              data: Telnyx::Models::AI::Missions::Runs::TelnyxAgentLinkResponse::Data
+              data: Telnyx::AI::Missions::Runs::TelnyxAgentData
             }
-
-            type data =
-              { created_at: Time, run_id: String, telnyx_agent_id: String }
-
-            class Data < Telnyx::Internal::Type::BaseModel
-              attr_accessor created_at: Time
-
-              attr_accessor run_id: String
-
-              attr_accessor telnyx_agent_id: String
-
-              def initialize: (
-                created_at: Time,
-                run_id: String,
-                telnyx_agent_id: String
-              ) -> void
-
-              def to_hash: -> {
-                created_at: Time,
-                run_id: String,
-                telnyx_agent_id: String
-              }
-            end
           end
         end
       end

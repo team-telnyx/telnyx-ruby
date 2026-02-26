@@ -154,9 +154,9 @@ module Telnyx
 
         # @!attribute optional_attributes
         #
-        #   @return [Telnyx::Models::Messaging10dlc::TelnyxBrand::OptionalAttributes, nil]
+        #   @return [Telnyx::Models::Messaging10dlc::BrandOptionalAttributes, nil]
         optional :optional_attributes,
-                 -> { Telnyx::Messaging10dlc::TelnyxBrand::OptionalAttributes },
+                 -> { Telnyx::Messaging10dlc::BrandOptionalAttributes },
                  api_name: :optionalAttributes
 
         # @!attribute phone
@@ -295,7 +295,7 @@ module Telnyx
         #
         #   @param mock [Boolean] Mock brand for testing purposes
         #
-        #   @param optional_attributes [Telnyx::Models::Messaging10dlc::TelnyxBrand::OptionalAttributes]
+        #   @param optional_attributes [Telnyx::Models::Messaging10dlc::BrandOptionalAttributes]
         #
         #   @param phone [String] Valid phone number in e.164 international format.
         #
@@ -339,18 +339,6 @@ module Telnyx
 
           # @!method self.values
           #   @return [Array<Symbol>]
-        end
-
-        # @see Telnyx::Models::Messaging10dlc::TelnyxBrand#optional_attributes
-        class OptionalAttributes < Telnyx::Internal::Type::BaseModel
-          # @!attribute tax_exempt_status
-          #   The tax exempt status of the brand
-          #
-          #   @return [String, nil]
-          optional :tax_exempt_status, String, api_name: :taxExemptStatus
-
-          # @!method initialize(tax_exempt_status: nil)
-          #   @param tax_exempt_status [String] The tax exempt status of the brand
         end
 
         # Status of the brand

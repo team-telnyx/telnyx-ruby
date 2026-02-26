@@ -14,21 +14,12 @@ module Telnyx
             )
           end
 
-        sig do
-          returns(
-            T.nilable(
-              T::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber]
-            )
-          )
-        end
+        sig { returns(T.nilable(T::Array[Telnyx::PhoneNumbersJobPhoneNumber])) }
         attr_reader :phone_numbers
 
         sig do
           params(
-            phone_numbers:
-              T::Array[
-                Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber::OrHash
-              ]
+            phone_numbers: T::Array[Telnyx::PhoneNumbersJobPhoneNumber::OrHash]
           ).void
         end
         attr_writer :phone_numbers
@@ -173,10 +164,7 @@ module Telnyx
               T::Array[
                 Telnyx::PhoneNumbers::PhoneNumbersJob::PendingOperation::OrHash
               ],
-            phone_numbers:
-              T::Array[
-                Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber::OrHash
-              ],
+            phone_numbers: T::Array[Telnyx::PhoneNumbersJobPhoneNumber::OrHash],
             record_type: String,
             status: Telnyx::PhoneNumbers::PhoneNumbersJob::Status::OrSymbol,
             successful_operations:
@@ -224,8 +212,7 @@ module Telnyx
                 T::Array[
                   Telnyx::PhoneNumbers::PhoneNumbersJob::PendingOperation
                 ],
-              phone_numbers:
-                T::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber],
+              phone_numbers: T::Array[Telnyx::PhoneNumbersJobPhoneNumber],
               record_type: String,
               status:
                 Telnyx::PhoneNumbers::PhoneNumbersJob::Status::TaggedSymbol,
@@ -331,46 +318,6 @@ module Telnyx
           # The phone numbers pending confirmation on update results. Entries in this list
           # are transient, and will be moved to either successful_operations or
           # failed_operations once the processing is done.
-          sig do
-            params(id: String, phone_number: String).returns(T.attached_class)
-          end
-          def self.new(
-            # The phone number's ID
-            id: nil,
-            # The phone number in e164 format.
-            phone_number: nil
-          )
-          end
-
-          sig { override.returns({ id: String, phone_number: String }) }
-          def to_hash
-          end
-        end
-
-        class PhoneNumber < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          # The phone number's ID
-          sig { returns(T.nilable(String)) }
-          attr_reader :id
-
-          sig { params(id: String).void }
-          attr_writer :id
-
-          # The phone number in e164 format.
-          sig { returns(T.nilable(String)) }
-          attr_reader :phone_number
-
-          sig { params(phone_number: String).void }
-          attr_writer :phone_number
-
-          # The unique phone numbers given as arguments in the job creation.
           sig do
             params(id: String, phone_number: String).returns(T.attached_class)
           end

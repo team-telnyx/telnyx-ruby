@@ -37,9 +37,9 @@ class Telnyx::Test::Resources::Portouts::EventsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       case row
-      in Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged
-      in Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment
-      in Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged
+      in Telnyx::Portouts::WebhookPortoutStatusChanged
+      in Telnyx::Portouts::WebhookPortoutNewComment
+      in Telnyx::Portouts::WebhookPortoutFocDateChanged
       end
     end
   end

@@ -9,34 +9,11 @@ module Telnyx
           class TelnyxAgentListResponse < Telnyx::Internal::Type::BaseModel
             # @!attribute data
             #
-            #   @return [Array<Telnyx::Models::AI::Missions::Runs::TelnyxAgentListResponse::Data>]
-            required :data,
-                     -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::Missions::Runs::TelnyxAgentListResponse::Data] }
+            #   @return [Array<Telnyx::Models::AI::Missions::Runs::TelnyxAgentData>]
+            required :data, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Missions::Runs::TelnyxAgentData] }
 
             # @!method initialize(data:)
-            #   @param data [Array<Telnyx::Models::AI::Missions::Runs::TelnyxAgentListResponse::Data>]
-
-            class Data < Telnyx::Internal::Type::BaseModel
-              # @!attribute created_at
-              #
-              #   @return [Time]
-              required :created_at, Time
-
-              # @!attribute run_id
-              #
-              #   @return [String]
-              required :run_id, String
-
-              # @!attribute telnyx_agent_id
-              #
-              #   @return [String]
-              required :telnyx_agent_id, String
-
-              # @!method initialize(created_at:, run_id:, telnyx_agent_id:)
-              #   @param created_at [Time]
-              #   @param run_id [String]
-              #   @param telnyx_agent_id [String]
-            end
+            #   @param data [Array<Telnyx::Models::AI::Missions::Runs::TelnyxAgentData>]
           end
         end
       end

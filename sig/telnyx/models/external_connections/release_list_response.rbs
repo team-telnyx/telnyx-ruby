@@ -6,7 +6,7 @@ module Telnyx
           created_at: String,
           error_message: String,
           status: Telnyx::Models::ExternalConnections::ReleaseListResponse::status,
-          telephone_numbers: ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::TelephoneNumber],
+          telephone_numbers: ::Array[Telnyx::ExternalConnections::TnReleaseEntry],
           tenant_id: String,
           ticket_id: String
         }
@@ -26,11 +26,11 @@ module Telnyx
           Telnyx::Models::ExternalConnections::ReleaseListResponse::status
         ) -> Telnyx::Models::ExternalConnections::ReleaseListResponse::status
 
-        attr_reader telephone_numbers: ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::TelephoneNumber]?
+        attr_reader telephone_numbers: ::Array[Telnyx::ExternalConnections::TnReleaseEntry]?
 
         def telephone_numbers=: (
-          ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::TelephoneNumber]
-        ) -> ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::TelephoneNumber]
+          ::Array[Telnyx::ExternalConnections::TnReleaseEntry]
+        ) -> ::Array[Telnyx::ExternalConnections::TnReleaseEntry]
 
         attr_reader tenant_id: String?
 
@@ -44,7 +44,7 @@ module Telnyx
           ?created_at: String,
           ?error_message: String,
           ?status: Telnyx::Models::ExternalConnections::ReleaseListResponse::status,
-          ?telephone_numbers: ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::TelephoneNumber],
+          ?telephone_numbers: ::Array[Telnyx::ExternalConnections::TnReleaseEntry],
           ?tenant_id: String,
           ?ticket_id: String
         ) -> void
@@ -53,7 +53,7 @@ module Telnyx
           created_at: String,
           error_message: String,
           status: Telnyx::Models::ExternalConnections::ReleaseListResponse::status,
-          telephone_numbers: ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::TelephoneNumber],
+          telephone_numbers: ::Array[Telnyx::ExternalConnections::TnReleaseEntry],
           tenant_id: String,
           ticket_id: String
         }
@@ -79,22 +79,6 @@ module Telnyx
           UNKNOWN: :unknown
 
           def self?.values: -> ::Array[Telnyx::Models::ExternalConnections::ReleaseListResponse::status]
-        end
-
-        type telephone_number = { number_id: String, phone_number: String }
-
-        class TelephoneNumber < Telnyx::Internal::Type::BaseModel
-          attr_reader number_id: String?
-
-          def number_id=: (String) -> String
-
-          attr_reader phone_number: String?
-
-          def phone_number=: (String) -> String
-
-          def initialize: (?number_id: String, ?phone_number: String) -> void
-
-          def to_hash: -> { number_id: String, phone_number: String }
         end
       end
     end

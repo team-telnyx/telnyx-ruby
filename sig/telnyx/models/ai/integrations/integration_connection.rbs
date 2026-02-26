@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    module AI
+      class IntegrationConnection = Integrations::IntegrationConnection
+
+      module Integrations
+        type integration_connection =
+          { id: String, allowed_tools: ::Array[String], integration_id: String }
+
+        class IntegrationConnection < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor allowed_tools: ::Array[String]
+
+          attr_accessor integration_id: String
+
+          def initialize: (
+            id: String,
+            allowed_tools: ::Array[String],
+            integration_id: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            allowed_tools: ::Array[String],
+            integration_id: String
+          }
+        end
+      end
+    end
+  end
+end

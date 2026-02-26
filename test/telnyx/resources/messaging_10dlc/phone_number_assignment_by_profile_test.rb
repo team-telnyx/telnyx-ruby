@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::Messaging10dlc::PhoneNumberAssignmentByProfileTes
 
     assert_pattern do
       response => {
-        records: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Messaging10dlc::PhoneNumberAssignmentByProfileListPhoneNumberStatusResponse::Record])
+        records: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Messaging10dlc::ProfileAssignmentPhoneNumbers])
       }
     end
   end
@@ -53,7 +53,7 @@ class Telnyx::Test::Resources::Messaging10dlc::PhoneNumberAssignmentByProfileTes
 
     assert_pattern do
       response => {
-        records: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Messaging10dlc::PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusResponse::Record])
+        records: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Messaging10dlc::ProfileAssignmentPhoneNumbers])
       }
     end
   end

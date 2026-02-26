@@ -22,7 +22,7 @@ class Telnyx::Test::Resources::RequirementGroupsTest < Telnyx::Test::ResourceTes
         customer_reference: String | nil,
         phone_number_type: String | nil,
         record_type: String | nil,
-        regulatory_requirements: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::RequirementGroup::RegulatoryRequirement]) | nil,
+        regulatory_requirements: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::UserRequirement]) | nil,
         status: Telnyx::RequirementGroup::Status | nil,
         updated_at: Time | nil
       }
@@ -47,7 +47,7 @@ class Telnyx::Test::Resources::RequirementGroupsTest < Telnyx::Test::ResourceTes
         customer_reference: String | nil,
         phone_number_type: String | nil,
         record_type: String | nil,
-        regulatory_requirements: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::RequirementGroup::RegulatoryRequirement]) | nil,
+        regulatory_requirements: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::UserRequirement]) | nil,
         status: Telnyx::RequirementGroup::Status | nil,
         updated_at: Time | nil
       }
@@ -72,7 +72,7 @@ class Telnyx::Test::Resources::RequirementGroupsTest < Telnyx::Test::ResourceTes
         customer_reference: String | nil,
         phone_number_type: String | nil,
         record_type: String | nil,
-        regulatory_requirements: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::RequirementGroup::RegulatoryRequirement]) | nil,
+        regulatory_requirements: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::UserRequirement]) | nil,
         status: Telnyx::RequirementGroup::Status | nil,
         updated_at: Time | nil
       }
@@ -107,7 +107,7 @@ class Telnyx::Test::Resources::RequirementGroupsTest < Telnyx::Test::ResourceTes
         customer_reference: String | nil,
         phone_number_type: String | nil,
         record_type: String | nil,
-        regulatory_requirements: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::RequirementGroup::RegulatoryRequirement]) | nil,
+        regulatory_requirements: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::UserRequirement]) | nil,
         status: Telnyx::RequirementGroup::Status | nil,
         updated_at: Time | nil
       }
@@ -132,7 +132,7 @@ class Telnyx::Test::Resources::RequirementGroupsTest < Telnyx::Test::ResourceTes
         customer_reference: String | nil,
         phone_number_type: String | nil,
         record_type: String | nil,
-        regulatory_requirements: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::RequirementGroup::RegulatoryRequirement]) | nil,
+        regulatory_requirements: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::UserRequirement]) | nil,
         status: Telnyx::RequirementGroup::Status | nil,
         updated_at: Time | nil
       }

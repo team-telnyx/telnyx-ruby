@@ -102,7 +102,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Calls::ActionGatherUsingAIResponse::Data | nil
+        data: Telnyx::Calls::CallControlCommandResultWithConversationID | nil
       }
     end
   end
@@ -302,7 +302,7 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Calls::ActionStartAIAssistantResponse::Data | nil
+        data: Telnyx::Calls::CallControlCommandResultWithConversationID | nil
       }
     end
   end

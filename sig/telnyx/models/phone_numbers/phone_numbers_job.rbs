@@ -10,7 +10,7 @@ module Telnyx
           etc: Time,
           failed_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation],
           pending_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PendingOperation],
-          phone_numbers: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber],
+          phone_numbers: ::Array[Telnyx::PhoneNumbersJobPhoneNumber],
           record_type: String,
           status: Telnyx::Models::PhoneNumbers::PhoneNumbersJob::status,
           successful_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::SuccessfulOperation],
@@ -19,11 +19,11 @@ module Telnyx
         }
 
       class PhoneNumbersJob < Telnyx::Internal::Type::BaseModel
-        attr_reader phone_numbers: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber]?
+        attr_reader phone_numbers: ::Array[Telnyx::PhoneNumbersJobPhoneNumber]?
 
         def phone_numbers=: (
-          ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber]
-        ) -> ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber]
+          ::Array[Telnyx::PhoneNumbersJobPhoneNumber]
+        ) -> ::Array[Telnyx::PhoneNumbersJobPhoneNumber]
 
         attr_reader id: String?
 
@@ -81,7 +81,7 @@ module Telnyx
           ?etc: Time,
           ?failed_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation],
           ?pending_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PendingOperation],
-          ?phone_numbers: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber],
+          ?phone_numbers: ::Array[Telnyx::PhoneNumbersJobPhoneNumber],
           ?record_type: String,
           ?status: Telnyx::Models::PhoneNumbers::PhoneNumbersJob::status,
           ?successful_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::SuccessfulOperation],
@@ -95,7 +95,7 @@ module Telnyx
           etc: Time,
           failed_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation],
           pending_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PendingOperation],
-          phone_numbers: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber],
+          phone_numbers: ::Array[Telnyx::PhoneNumbersJobPhoneNumber],
           record_type: String,
           status: Telnyx::Models::PhoneNumbers::PhoneNumbersJob::status,
           successful_operations: ::Array[Telnyx::PhoneNumbers::PhoneNumbersJob::SuccessfulOperation],
@@ -141,22 +141,6 @@ module Telnyx
         type pending_operation = { id: String, phone_number: String }
 
         class PendingOperation < Telnyx::Internal::Type::BaseModel
-          attr_reader id: String?
-
-          def id=: (String) -> String
-
-          attr_reader phone_number: String?
-
-          def phone_number=: (String) -> String
-
-          def initialize: (?id: String, ?phone_number: String) -> void
-
-          def to_hash: -> { id: String, phone_number: String }
-        end
-
-        type phone_number = { id: String, phone_number: String }
-
-        class PhoneNumber < Telnyx::Internal::Type::BaseModel
           attr_reader id: String?
 
           def id=: (String) -> String

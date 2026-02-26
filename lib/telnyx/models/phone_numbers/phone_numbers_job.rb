@@ -7,9 +7,8 @@ module Telnyx
       class PhoneNumbersJob < Telnyx::Internal::Type::BaseModel
         # @!attribute phone_numbers
         #
-        #   @return [Array<Telnyx::Models::PhoneNumbers::PhoneNumbersJob::PhoneNumber>, nil]
-        optional :phone_numbers,
-                 -> { Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber] }
+        #   @return [Array<Telnyx::Models::PhoneNumbersJobPhoneNumber>, nil]
+        optional :phone_numbers, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbersJobPhoneNumber] }
 
         response_only do
           # @!attribute id
@@ -88,7 +87,7 @@ module Telnyx
         #
         #   @param pending_operations [Array<Telnyx::Models::PhoneNumbers::PhoneNumbersJob::PendingOperation>]
         #
-        #   @param phone_numbers [Array<Telnyx::Models::PhoneNumbers::PhoneNumbersJob::PhoneNumber>]
+        #   @param phone_numbers [Array<Telnyx::Models::PhoneNumbersJobPhoneNumber>]
         #
         #   @param record_type [String] Identifies the type of the resource.
         #
@@ -143,27 +142,6 @@ module Telnyx
           #   The phone numbers pending confirmation on update results. Entries in this list
           #   are transient, and will be moved to either successful_operations or
           #   failed_operations once the processing is done.
-          #
-          #   @param id [String] The phone number's ID
-          #
-          #   @param phone_number [String] The phone number in e164 format.
-        end
-
-        class PhoneNumber < Telnyx::Internal::Type::BaseModel
-          # @!attribute id
-          #   The phone number's ID
-          #
-          #   @return [String, nil]
-          optional :id, String
-
-          # @!attribute phone_number
-          #   The phone number in e164 format.
-          #
-          #   @return [String, nil]
-          optional :phone_number, String
-
-          # @!method initialize(id: nil, phone_number: nil)
-          #   The unique phone numbers given as arguments in the job creation.
           #
           #   @param id [String] The phone number's ID
           #

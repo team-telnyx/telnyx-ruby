@@ -4,7 +4,7 @@ module Telnyx
       def create: (
         ?body: String,
         ?comment_record_id: String,
-        ?comment_record_type: Telnyx::Models::CommentCreateParams::comment_record_type,
+        ?comment_record_type: Telnyx::Models::Comment::comment_record_type,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::CommentCreateResponse
 

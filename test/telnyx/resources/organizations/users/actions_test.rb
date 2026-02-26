@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Organizations::Users::ActionsTest < Telnyx::Test:
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Organizations::Users::ActionRemoveResponse::Data | nil
+        data: Telnyx::Organizations::OrganizationUser | nil
       }
     end
   end

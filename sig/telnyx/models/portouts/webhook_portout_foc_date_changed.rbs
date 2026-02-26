@@ -1,0 +1,149 @@
+module Telnyx
+  module Models
+    module Portouts
+      type webhook_portout_foc_date_changed =
+        {
+          id: String,
+          available_notification_methods: ::Array[Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::available_notification_method],
+          created_at: Time,
+          event_type: Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::event_type,
+          payload: Telnyx::Portouts::WebhookPortoutFocDateChanged::Payload,
+          payload_status: Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::payload_status,
+          portout_id: String,
+          record_type: String,
+          updated_at: Time
+        }
+
+      class WebhookPortoutFocDateChanged < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader available_notification_methods: ::Array[Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::available_notification_method]?
+
+        def available_notification_methods=: (
+          ::Array[Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::available_notification_method]
+        ) -> ::Array[Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::available_notification_method]
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader event_type: Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::event_type?
+
+        def event_type=: (
+          Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::event_type
+        ) -> Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::event_type
+
+        attr_reader payload: Telnyx::Portouts::WebhookPortoutFocDateChanged::Payload?
+
+        def payload=: (
+          Telnyx::Portouts::WebhookPortoutFocDateChanged::Payload
+        ) -> Telnyx::Portouts::WebhookPortoutFocDateChanged::Payload
+
+        attr_reader payload_status: Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::payload_status?
+
+        def payload_status=: (
+          Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::payload_status
+        ) -> Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::payload_status
+
+        attr_reader portout_id: String?
+
+        def portout_id=: (String) -> String
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?available_notification_methods: ::Array[Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::available_notification_method],
+          ?created_at: Time,
+          ?event_type: Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::event_type,
+          ?payload: Telnyx::Portouts::WebhookPortoutFocDateChanged::Payload,
+          ?payload_status: Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::payload_status,
+          ?portout_id: String,
+          ?record_type: String,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          available_notification_methods: ::Array[Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::available_notification_method],
+          created_at: Time,
+          event_type: Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::event_type,
+          payload: Telnyx::Portouts::WebhookPortoutFocDateChanged::Payload,
+          payload_status: Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::payload_status,
+          portout_id: String,
+          record_type: String,
+          updated_at: Time
+        }
+
+        type available_notification_method = :email | :webhook
+
+        module AvailableNotificationMethod
+          extend Telnyx::Internal::Type::Enum
+
+          EMAIL: :email
+          WEBHOOK: :webhook
+
+          def self?.values: -> ::Array[Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::available_notification_method]
+        end
+
+        type event_type =
+          :"portout.status_changed"
+          | :"portout.foc_date_changed"
+          | :"portout.new_comment"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          PORTOUT_STATUS_CHANGED: :"portout.status_changed"
+          PORTOUT_FOC_DATE_CHANGED: :"portout.foc_date_changed"
+          PORTOUT_NEW_COMMENT: :"portout.new_comment"
+
+          def self?.values: -> ::Array[Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::event_type]
+        end
+
+        type payload = { id: String, foc_date: Time, user_id: String }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader foc_date: Time?
+
+          def foc_date=: (Time) -> Time
+
+          attr_reader user_id: String?
+
+          def user_id=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?foc_date: Time,
+            ?user_id: String
+          ) -> void
+
+          def to_hash: -> { id: String, foc_date: Time, user_id: String }
+        end
+
+        type payload_status = :created | :completed
+
+        module PayloadStatus
+          extend Telnyx::Internal::Type::Enum
+
+          CREATED: :created
+          COMPLETED: :completed
+
+          def self?.values: -> ::Array[Telnyx::Models::Portouts::WebhookPortoutFocDateChanged::payload_status]
+        end
+      end
+    end
+  end
+end

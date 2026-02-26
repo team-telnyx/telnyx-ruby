@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::MessagingNumbersBulkUpdatesTest < Telnyx::Test::R
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::MessagingNumbersBulkUpdateCreateResponse::Data | nil
+        data: Telnyx::BulkMessagingSettingsUpdatePhoneNumbers | nil
       }
     end
   end
@@ -34,7 +34,7 @@ class Telnyx::Test::Resources::MessagingNumbersBulkUpdatesTest < Telnyx::Test::R
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::MessagingNumbersBulkUpdateRetrieveResponse::Data | nil
+        data: Telnyx::BulkMessagingSettingsUpdatePhoneNumbers | nil
       }
     end
   end

@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Organizations::UsersTest < Telnyx::Test::Resource
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Organizations::UserRetrieveResponse::Data | nil
+        data: Telnyx::Organizations::OrganizationUser | nil
       }
     end
   end
@@ -32,7 +32,7 @@ class Telnyx::Test::Resources::Organizations::UsersTest < Telnyx::Test::Resource
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::Organizations::UserListResponse
+      row => Telnyx::Organizations::OrganizationUser
     end
 
     assert_pattern do
@@ -44,7 +44,7 @@ class Telnyx::Test::Resources::Organizations::UsersTest < Telnyx::Test::Resource
         last_sign_in_at: String | nil,
         organization_user_bypasses_sso: Telnyx::Internal::Type::Boolean | nil,
         record_type: String | nil,
-        user_status: Telnyx::Models::Organizations::UserListResponse::UserStatus | nil
+        user_status: Telnyx::Organizations::OrganizationUser::UserStatus | nil
       }
     end
   end

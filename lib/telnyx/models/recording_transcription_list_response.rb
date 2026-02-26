@@ -22,8 +22,8 @@ module Telnyx
       class Meta < Telnyx::Internal::Type::BaseModel
         # @!attribute cursors
         #
-        #   @return [Telnyx::Models::RecordingTranscriptionListResponse::Meta::Cursors, nil]
-        optional :cursors, -> { Telnyx::Models::RecordingTranscriptionListResponse::Meta::Cursors }
+        #   @return [Telnyx::Models::Cursor, nil]
+        optional :cursors, -> { Telnyx::Cursor }
 
         # @!attribute next_
         #   Path to next page.
@@ -38,31 +38,11 @@ module Telnyx
         optional :previous, String
 
         # @!method initialize(cursors: nil, next_: nil, previous: nil)
-        #   @param cursors [Telnyx::Models::RecordingTranscriptionListResponse::Meta::Cursors]
+        #   @param cursors [Telnyx::Models::Cursor]
         #
         #   @param next_ [String] Path to next page.
         #
         #   @param previous [String] Path to previous page.
-
-        # @see Telnyx::Models::RecordingTranscriptionListResponse::Meta#cursors
-        class Cursors < Telnyx::Internal::Type::BaseModel
-          # @!attribute after
-          #   Opaque identifier of next page.
-          #
-          #   @return [String, nil]
-          optional :after, String
-
-          # @!attribute before
-          #   Opaque identifier of previous page.
-          #
-          #   @return [String, nil]
-          optional :before, String
-
-          # @!method initialize(after: nil, before: nil)
-          #   @param after [String] Opaque identifier of next page.
-          #
-          #   @param before [String] Opaque identifier of previous page.
-        end
       end
     end
   end

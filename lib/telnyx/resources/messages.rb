@@ -358,7 +358,7 @@ module Telnyx
       #
       # @param to [String] Phone number in +E.164 format
       #
-      # @param whatsapp_message [Telnyx::Models::MessageSendWhatsappParams::WhatsappMessage]
+      # @param whatsapp_message [Telnyx::Models::WhatsappMessageContent]
       #
       # @param type [Symbol, Telnyx::Models::MessageSendWhatsappParams::Type] Message type - must be set to "WHATSAPP"
       #

@@ -8,34 +8,11 @@ module Telnyx
         class ConnectionListResponse < Telnyx::Internal::Type::BaseModel
           # @!attribute data
           #
-          #   @return [Array<Telnyx::Models::AI::Integrations::ConnectionListResponse::Data>]
-          required :data,
-                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::Integrations::ConnectionListResponse::Data] }
+          #   @return [Array<Telnyx::Models::AI::Integrations::IntegrationConnection>]
+          required :data, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Integrations::IntegrationConnection] }
 
           # @!method initialize(data:)
-          #   @param data [Array<Telnyx::Models::AI::Integrations::ConnectionListResponse::Data>]
-
-          class Data < Telnyx::Internal::Type::BaseModel
-            # @!attribute id
-            #
-            #   @return [String]
-            required :id, String
-
-            # @!attribute allowed_tools
-            #
-            #   @return [Array<String>]
-            required :allowed_tools, Telnyx::Internal::Type::ArrayOf[String]
-
-            # @!attribute integration_id
-            #
-            #   @return [String]
-            required :integration_id, String
-
-            # @!method initialize(id:, allowed_tools:, integration_id:)
-            #   @param id [String]
-            #   @param allowed_tools [Array<String>]
-            #   @param integration_id [String]
-          end
+          #   @param data [Array<Telnyx::Models::AI::Integrations::IntegrationConnection>]
         end
       end
     end

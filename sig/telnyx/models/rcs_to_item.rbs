@@ -1,0 +1,43 @@
+module Telnyx
+  module Models
+    type rcs_to_item =
+      {
+        carrier: String,
+        line_type: String,
+        phone_number: String,
+        status: String
+      }
+
+    class RcsToItem < Telnyx::Internal::Type::BaseModel
+      attr_reader carrier: String?
+
+      def carrier=: (String) -> String
+
+      attr_reader line_type: String?
+
+      def line_type=: (String) -> String
+
+      attr_reader phone_number: String?
+
+      def phone_number=: (String) -> String
+
+      attr_reader status: String?
+
+      def status=: (String) -> String
+
+      def initialize: (
+        ?carrier: String,
+        ?line_type: String,
+        ?phone_number: String,
+        ?status: String
+      ) -> void
+
+      def to_hash: -> {
+        carrier: String,
+        line_type: String,
+        phone_number: String,
+        status: String
+      }
+    end
+  end
+end

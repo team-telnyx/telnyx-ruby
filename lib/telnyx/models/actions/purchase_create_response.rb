@@ -13,68 +13,13 @@ module Telnyx
 
         # @!attribute errors
         #
-        #   @return [Array<Telnyx::Models::Actions::PurchaseCreateResponse::Error>, nil]
-        optional :errors,
-                 -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Actions::PurchaseCreateResponse::Error] }
+        #   @return [Array<Telnyx::Models::WirelessError>, nil]
+        optional :errors, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::WirelessError] }
 
         # @!method initialize(data: nil, errors: nil)
         #   @param data [Array<Telnyx::Models::SimpleSimCard>] Successfully registered SIM cards.
         #
-        #   @param errors [Array<Telnyx::Models::Actions::PurchaseCreateResponse::Error>]
-
-        class Error < Telnyx::Internal::Type::BaseModel
-          # @!attribute code
-          #
-          #   @return [String]
-          required :code, String
-
-          # @!attribute title
-          #
-          #   @return [String]
-          required :title, String
-
-          # @!attribute detail
-          #
-          #   @return [String, nil]
-          optional :detail, String
-
-          # @!attribute meta
-          #
-          #   @return [Hash{Symbol=>Object}, nil]
-          optional :meta, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
-
-          # @!attribute source
-          #
-          #   @return [Telnyx::Models::Actions::PurchaseCreateResponse::Error::Source, nil]
-          optional :source, -> { Telnyx::Models::Actions::PurchaseCreateResponse::Error::Source }
-
-          # @!method initialize(code:, title:, detail: nil, meta: nil, source: nil)
-          #   @param code [String]
-          #   @param title [String]
-          #   @param detail [String]
-          #   @param meta [Hash{Symbol=>Object}]
-          #   @param source [Telnyx::Models::Actions::PurchaseCreateResponse::Error::Source]
-
-          # @see Telnyx::Models::Actions::PurchaseCreateResponse::Error#source
-          class Source < Telnyx::Internal::Type::BaseModel
-            # @!attribute parameter
-            #   Indicates which query parameter caused the error.
-            #
-            #   @return [String, nil]
-            optional :parameter, String
-
-            # @!attribute pointer
-            #   JSON pointer (RFC6901) to the offending entity.
-            #
-            #   @return [String, nil]
-            optional :pointer, String
-
-            # @!method initialize(parameter: nil, pointer: nil)
-            #   @param parameter [String] Indicates which query parameter caused the error.
-            #
-            #   @param pointer [String] JSON pointer (RFC6901) to the offending entity.
-          end
-        end
+        #   @param errors [Array<Telnyx::Models::WirelessError>]
       end
     end
   end

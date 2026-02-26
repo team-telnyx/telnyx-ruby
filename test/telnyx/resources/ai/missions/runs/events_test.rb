@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::EventsTest < Telnyx::Test::Re
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::AI::Missions::Runs::EventListResponse
+      row => Telnyx::AI::Missions::Runs::EventData
     end
 
     assert_pattern do
@@ -29,7 +29,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::EventsTest < Telnyx::Test::Re
         run_id: String,
         summary: String,
         timestamp: Time,
-        type: Telnyx::Models::AI::Missions::Runs::EventListResponse::Type,
+        type: Telnyx::AI::Missions::Runs::EventData::Type,
         agent_id: String | nil,
         idempotency_key: String | nil,
         payload: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
@@ -54,7 +54,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::EventsTest < Telnyx::Test::Re
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::AI::Missions::Runs::EventGetEventDetailsResponse::Data
+        data: Telnyx::AI::Missions::Runs::EventData
       }
     end
   end
@@ -76,7 +76,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::EventsTest < Telnyx::Test::Re
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::AI::Missions::Runs::EventLogResponse::Data
+        data: Telnyx::AI::Missions::Runs::EventData
       }
     end
   end

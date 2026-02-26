@@ -26,7 +26,7 @@ module Telnyx
           last_name: String,
           mobile_phone: String,
           mock: bool,
-          optional_attributes: Telnyx::Messaging10dlc::TelnyxBrand::OptionalAttributes,
+          optional_attributes: Telnyx::Messaging10dlc::BrandOptionalAttributes,
           phone: String,
           postal_code: String,
           reference_id: String,
@@ -128,11 +128,11 @@ module Telnyx
 
         def mock=: (bool) -> bool
 
-        attr_reader optional_attributes: Telnyx::Messaging10dlc::TelnyxBrand::OptionalAttributes?
+        attr_reader optional_attributes: Telnyx::Messaging10dlc::BrandOptionalAttributes?
 
         def optional_attributes=: (
-          Telnyx::Messaging10dlc::TelnyxBrand::OptionalAttributes
-        ) -> Telnyx::Messaging10dlc::TelnyxBrand::OptionalAttributes
+          Telnyx::Messaging10dlc::BrandOptionalAttributes
+        ) -> Telnyx::Messaging10dlc::BrandOptionalAttributes
 
         attr_reader phone: String?
 
@@ -218,7 +218,7 @@ module Telnyx
           ?last_name: String,
           ?mobile_phone: String,
           ?mock: bool,
-          ?optional_attributes: Telnyx::Messaging10dlc::TelnyxBrand::OptionalAttributes,
+          ?optional_attributes: Telnyx::Messaging10dlc::BrandOptionalAttributes,
           ?phone: String,
           ?postal_code: String,
           ?reference_id: String,
@@ -259,7 +259,7 @@ module Telnyx
           last_name: String,
           mobile_phone: String,
           mock: bool,
-          optional_attributes: Telnyx::Messaging10dlc::TelnyxBrand::OptionalAttributes,
+          optional_attributes: Telnyx::Messaging10dlc::BrandOptionalAttributes,
           phone: String,
           postal_code: String,
           reference_id: String,
@@ -293,18 +293,6 @@ module Telnyx
           KEY_ACCOUNT: :KEY_ACCOUNT
 
           def self?.values: -> ::Array[Telnyx::Models::Messaging10dlc::TelnyxBrand::brand_relationship]
-        end
-
-        type optional_attributes = { tax_exempt_status: String }
-
-        class OptionalAttributes < Telnyx::Internal::Type::BaseModel
-          attr_reader tax_exempt_status: String?
-
-          def tax_exempt_status=: (String) -> String
-
-          def initialize: (?tax_exempt_status: String) -> void
-
-          def to_hash: -> { tax_exempt_status: String }
         end
 
         type status = :OK | :REGISTRATION_PENDING | :REGISTRATION_FAILED

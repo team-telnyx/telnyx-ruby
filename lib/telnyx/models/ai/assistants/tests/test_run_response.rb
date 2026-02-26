@@ -67,9 +67,9 @@ module Telnyx
             #   criteria from the rubric and status is the result of the evaluation. This list
             #   will have a result for every criteria in the rubric section.
             #
-            #   @return [Array<Telnyx::Models::AI::Assistants::Tests::TestRunResponse::DetailStatus>, nil]
+            #   @return [Array<Telnyx::Models::AI::Assistants::Tests::TestRunDetailResult>, nil]
             optional :detail_status,
-                     -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus] }
+                     -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::Tests::TestRunDetailResult] }
 
             # @!attribute logs
             #   Detailed execution logs and debug information.
@@ -114,42 +114,13 @@ module Telnyx
             #
             #   @param conversation_insights_id [String] Identifier for conversation analysis and insights data.
             #
-            #   @param detail_status [Array<Telnyx::Models::AI::Assistants::Tests::TestRunResponse::DetailStatus>] Detailed evaluation results for each rubric criteria. Name is name of the criter
+            #   @param detail_status [Array<Telnyx::Models::AI::Assistants::Tests::TestRunDetailResult>] Detailed evaluation results for each rubric criteria. Name is name of the criter
             #
             #   @param logs [String] Detailed execution logs and debug information.
             #
             #   @param test_suite_run_id [String] Identifier linking this run to a test suite execution batch.
             #
             #   @param updated_at [Time] Timestamp of the last update to this test run.
-
-            class DetailStatus < Telnyx::Internal::Type::BaseModel
-              # @!attribute name
-              #
-              #   @return [String]
-              required :name, String
-
-              # @!attribute status
-              #   Represents the lifecycle of a test:
-              #
-              #   - 'pending': Test is waiting to be executed.
-              #   - 'starting': Test execution is initializing.
-              #   - 'running': Test is currently executing.
-              #   - 'passed': Test completed successfully.
-              #   - 'failed': Test executed but did not pass.
-              #   - 'error': An error occurred during test execution.
-              #
-              #   @return [Symbol, Telnyx::Models::AI::Assistants::Tests::TestStatus]
-              required :status, enum: -> { Telnyx::AI::Assistants::Tests::TestStatus }
-
-              # @!method initialize(name:, status:)
-              #   Some parameter documentations has been truncated, see
-              #   {Telnyx::Models::AI::Assistants::Tests::TestRunResponse::DetailStatus} for more
-              #   details.
-              #
-              #   @param name [String]
-              #
-              #   @param status [Symbol, Telnyx::Models::AI::Assistants::Tests::TestStatus] Represents the lifecycle of a test:
-            end
           end
         end
 

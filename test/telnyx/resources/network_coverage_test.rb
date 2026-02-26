@@ -22,7 +22,7 @@ class Telnyx::Test::Resources::NetworkCoverageTest < Telnyx::Test::ResourceTest
     assert_pattern do
       row => {
         available_services: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AvailableService]) | nil,
-        location: Telnyx::Models::NetworkCoverageListResponse::Location | nil,
+        location: Telnyx::NetappsLocation | nil,
         record_type: String | nil
       }
     end

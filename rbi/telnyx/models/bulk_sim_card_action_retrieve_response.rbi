@@ -50,23 +50,13 @@ module Telnyx
             )
           end
 
-        sig do
-          returns(
-            T.nilable(
-              T::Array[
-                Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary
-              ]
-            )
-          )
-        end
+        sig { returns(T.nilable(T::Array[Telnyx::SimCardActionsSummary])) }
         attr_reader :sim_card_actions_summary
 
         sig do
           params(
             sim_card_actions_summary:
-              T::Array[
-                Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::OrHash
-              ]
+              T::Array[Telnyx::SimCardActionsSummary::OrHash]
           ).void
         end
         attr_writer :sim_card_actions_summary
@@ -136,9 +126,7 @@ module Telnyx
             record_type: String,
             settings: T::Hash[Symbol, T.anything],
             sim_card_actions_summary:
-              T::Array[
-                Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::OrHash
-              ],
+              T::Array[Telnyx::SimCardActionsSummary::OrHash],
             updated_at: String
           ).returns(T.attached_class)
         end
@@ -171,10 +159,7 @@ module Telnyx
               created_at: String,
               record_type: String,
               settings: T::Hash[Symbol, T.anything],
-              sim_card_actions_summary:
-                T::Array[
-                  Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary
-                ],
+              sim_card_actions_summary: T::Array[Telnyx::SimCardActionsSummary],
               updated_at: String
             }
           )
@@ -213,105 +198,6 @@ module Telnyx
             )
           end
           def self.values
-          end
-        end
-
-        class SimCardActionsSummary < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          sig { returns(T.nilable(Integer)) }
-          attr_reader :count
-
-          sig { params(count: Integer).void }
-          attr_writer :count
-
-          sig do
-            returns(
-              T.nilable(
-                Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::Status::TaggedSymbol
-              )
-            )
-          end
-          attr_reader :status
-
-          sig do
-            params(
-              status:
-                Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::Status::OrSymbol
-            ).void
-          end
-          attr_writer :status
-
-          sig do
-            params(
-              count: Integer,
-              status:
-                Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::Status::OrSymbol
-            ).returns(T.attached_class)
-          end
-          def self.new(count: nil, status: nil)
-          end
-
-          sig do
-            override.returns(
-              {
-                count: Integer,
-                status:
-                  Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::Status::TaggedSymbol
-              }
-            )
-          end
-          def to_hash
-          end
-
-          module Status
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::Status
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            IN_PROGRESS =
-              T.let(
-                :"in-progress",
-                Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::Status::TaggedSymbol
-              )
-            COMPLETED =
-              T.let(
-                :completed,
-                Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::Status::TaggedSymbol
-              )
-            FAILED =
-              T.let(
-                :failed,
-                Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::Status::TaggedSymbol
-              )
-            INTERRUPTED =
-              T.let(
-                :interrupted,
-                Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::Status::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::Status::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
           end
         end
       end

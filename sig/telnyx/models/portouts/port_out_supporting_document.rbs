@@ -1,0 +1,63 @@
+module Telnyx
+  module Models
+    module Portouts
+      type port_out_supporting_document =
+        {
+          id: String,
+          created_at: String,
+          document_id: String,
+          portout_id: String,
+          record_type: String,
+          type: Telnyx::Models::Portouts::PortOutSupportingDocument::type_,
+          updated_at: String
+        }
+
+      class PortOutSupportingDocument < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: String
+
+        attr_accessor document_id: String
+
+        attr_accessor updated_at: String
+
+        attr_accessor portout_id: String
+
+        attr_accessor record_type: String
+
+        attr_accessor type: Telnyx::Models::Portouts::PortOutSupportingDocument::type_
+
+        def initialize: (
+          id: String,
+          created_at: String,
+          document_id: String,
+          portout_id: String,
+          record_type: String,
+          type: Telnyx::Models::Portouts::PortOutSupportingDocument::type_,
+          updated_at: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: String,
+          document_id: String,
+          portout_id: String,
+          record_type: String,
+          type: Telnyx::Models::Portouts::PortOutSupportingDocument::type_,
+          updated_at: String
+        }
+
+        type type_ = :loa | :invoice
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          LOA: :loa
+          INVOICE: :invoice
+
+          def self?.values: -> ::Array[Telnyx::Models::Portouts::PortOutSupportingDocument::type_]
+        end
+      end
+    end
+  end
+end

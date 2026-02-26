@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::SubNumberOrdersReportTest < Telnyx::Test::Resourc
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::SubNumberOrdersReportCreateResponse::Data | nil
+        data: Telnyx::SubNumberOrdersReportAPI | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::SubNumberOrdersReportTest < Telnyx::Test::Resourc
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::SubNumberOrdersReportRetrieveResponse::Data | nil
+        data: Telnyx::SubNumberOrdersReportAPI | nil
       }
     end
   end

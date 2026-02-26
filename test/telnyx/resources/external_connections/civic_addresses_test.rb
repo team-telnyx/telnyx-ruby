@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::ExternalConnections::CivicAddressesTest < Telnyx:
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::ExternalConnections::CivicAddressRetrieveResponse::Data | nil
+        data: Telnyx::ExternalConnections::CivicAddress | nil
       }
     end
   end
@@ -34,7 +34,7 @@ class Telnyx::Test::Resources::ExternalConnections::CivicAddressesTest < Telnyx:
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::ExternalConnections::CivicAddressListResponse::Data]) | nil
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::ExternalConnections::CivicAddress]) | nil
       }
     end
   end

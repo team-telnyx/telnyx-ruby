@@ -37,12 +37,12 @@ class Telnyx::Test::Resources::Porting::EventsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       case row
-      in Telnyx::Models::Porting::EventListResponse::PortingEventDeletedPayload
-      in Telnyx::Models::Porting::EventListResponse::PortingEventMessagingChangedPayload
-      in Telnyx::Models::Porting::EventListResponse::PortingEventStatusChangedEvent
-      in Telnyx::Models::Porting::EventListResponse::PortingEventNewCommentEvent
-      in Telnyx::Models::Porting::EventListResponse::PortingEventSplitEvent
-      in Telnyx::Models::Porting::EventListResponse::PortingEventWithoutWebhook
+      in Telnyx::Porting::PortingEventDeletedPayload
+      in Telnyx::Porting::PortingEventMessagingChangedPayload
+      in Telnyx::Porting::PortingEventStatusChangedEvent
+      in Telnyx::Porting::PortingEventNewCommentEvent
+      in Telnyx::Porting::PortingEventSplitEvent
+      in Telnyx::Porting::PortingEventWithoutWebhook
       end
     end
   end

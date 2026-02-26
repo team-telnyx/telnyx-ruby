@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    type whatsapp_location =
+      { address: String, latitude: String, longitude: String, name: String }
+
+    class WhatsappLocation < Telnyx::Internal::Type::BaseModel
+      attr_reader address: String?
+
+      def address=: (String) -> String
+
+      attr_reader latitude: String?
+
+      def latitude=: (String) -> String
+
+      attr_reader longitude: String?
+
+      def longitude=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      def initialize: (
+        ?address: String,
+        ?latitude: String,
+        ?longitude: String,
+        ?name: String
+      ) -> void
+
+      def to_hash: -> {
+        address: String,
+        latitude: String,
+        longitude: String,
+        name: String
+      }
+    end
+  end
+end
