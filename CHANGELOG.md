@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.45.1 (2026-02-26)
+
+Full Changelog: [v5.45.0...v5.45.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.45.0...v5.45.1)
+
+### Bug Fixes
+
+* properly mock time in ruby ci tests ([57b4010](https://github.com/team-telnyx/telnyx-ruby/commit/57b4010bdd2b1cc5361c12163af826317850f2b7))
+
 ## 5.45.0 (2026-02-26)
 
 Full Changelog: [v5.44.0...v5.45.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.44.0...v5.45.0)
