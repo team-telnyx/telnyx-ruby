@@ -112,6 +112,7 @@ module Telnyx
         def record_start: (
           String id,
           format_: Telnyx::Models::Conferences::ActionRecordStartParams::format_,
+          ?channels: Telnyx::Models::Conferences::ActionRecordStartParams::channels,
           ?command_id: String,
           ?custom_file_name: String,
           ?play_beep: bool,

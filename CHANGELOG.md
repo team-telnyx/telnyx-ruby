@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.45.0 (2026-02-26)
+
+Full Changelog: [v5.44.0...v5.45.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.44.0...v5.45.0)
+
+### Features
+
+* TELAPPS-ENGDESK-48951 add channels to conf record start ([f6e45ec](https://github.com/team-telnyx/telnyx-ruby/commit/f6e45eca1aeab1f2db9c096f42714790049c823b))
+
 ## 5.44.0 (2026-02-26)
 
 Full Changelog: [v5.43.0...v5.44.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.43.0...v5.44.0)
