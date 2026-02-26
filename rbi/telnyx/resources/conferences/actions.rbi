@@ -410,6 +410,8 @@ module Telnyx
             id: String,
             format_:
               Telnyx::Conferences::ActionRecordStartParams::Format::OrSymbol,
+            channels:
+              Telnyx::Conferences::ActionRecordStartParams::Channels::OrSymbol,
             command_id: String,
             custom_file_name: String,
             play_beep: T::Boolean,
@@ -425,6 +427,9 @@ module Telnyx
           # The audio file format used when storing the conference recording. Can be either
           # `mp3` or `wav`.
           format_:,
+          # When `dual`, final audio file will be stereo recorded with the conference
+          # creator on the first channel, and the rest on the second channel.
+          channels: nil,
           # Use this field to avoid duplicate commands. Telnyx will ignore any command with
           # the same `command_id` for the same `conference_id`.
           command_id: nil,
