@@ -287,6 +287,8 @@ module Telnyx
 
   module CloudflareSyncStatus = Telnyx::Models::CloudflareSyncStatus
 
+  class Comment = Telnyx::Models::Comment
+
   class CommentCreateParams = Telnyx::Models::CommentCreateParams
 
   class CommentListParams = Telnyx::Models::CommentListParams
@@ -410,6 +412,8 @@ module Telnyx
   class CredentialInbound = Telnyx::Models::CredentialInbound
 
   class CredentialOutbound = Telnyx::Models::CredentialOutbound
+
+  class Cursor = Telnyx::Models::Cursor
 
   class CustomerServiceRecord = Telnyx::Models::CustomerServiceRecord
 

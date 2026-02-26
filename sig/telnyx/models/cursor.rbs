@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    type cursor = { after: String, before: String }
+
+    class Cursor < Telnyx::Internal::Type::BaseModel
+      attr_reader after: String?
+
+      def after=: (String) -> String
+
+      attr_reader before: String?
+
+      def before=: (String) -> String
+
+      def initialize: (?after: String, ?before: String) -> void
+
+      def to_hash: -> { after: String, before: String }
+    end
+  end
+end
