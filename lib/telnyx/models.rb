@@ -1203,8 +1203,6 @@ module Telnyx
 
   PwgAssignedResourcesSummary = Telnyx::Models::PwgAssignedResourcesSummary
 
-  Queue = Telnyx::Models::Queue
-
   QueueCreateParams = Telnyx::Models::QueueCreateParams
 
   QueueDeleteParams = Telnyx::Models::QueueDeleteParams
@@ -1488,9 +1486,9 @@ module Telnyx
 
   TexmlSecretsParams = Telnyx::Models::TexmlSecretsParams
 
-  TextToSpeechGenerateSpeechParams = Telnyx::Models::TextToSpeechGenerateSpeechParams
-
   TextToSpeechListVoicesParams = Telnyx::Models::TextToSpeechListVoicesParams
+
+  TextToSpeechStreamParams = Telnyx::Models::TextToSpeechStreamParams
 
   TrafficType = Telnyx::Models::TrafficType
 

@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::QueuesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Queue | nil
+        data: Telnyx::Models::QueueCreateResponse::Data | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::QueuesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Queue | nil
+        data: Telnyx::Models::QueueRetrieveResponse::Data | nil
       }
     end
   end
@@ -46,7 +46,7 @@ class Telnyx::Test::Resources::QueuesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Queue | nil
+        data: Telnyx::Models::QueueUpdateResponse::Data | nil
       }
     end
   end
@@ -64,7 +64,7 @@ class Telnyx::Test::Resources::QueuesTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Queue
+      row => Telnyx::Models::QueueListResponse
     end
 
     assert_pattern do
@@ -75,7 +75,7 @@ class Telnyx::Test::Resources::QueuesTest < Telnyx::Test::ResourceTest
         current_size: Integer,
         max_size: Integer,
         name: String,
-        record_type: Telnyx::Queue::RecordType,
+        record_type: Telnyx::Models::QueueListResponse::RecordType,
         updated_at: String
       }
     end
