@@ -62,21 +62,10 @@ module Telnyx
             )
           end
 
-        sig do
-          returns(
-            T.nilable(
-              Telnyx::Models::RecordingTranscriptionListResponse::Meta::Cursors
-            )
-          )
-        end
+        sig { returns(T.nilable(Telnyx::Cursor)) }
         attr_reader :cursors
 
-        sig do
-          params(
-            cursors:
-              Telnyx::Models::RecordingTranscriptionListResponse::Meta::Cursors::OrHash
-          ).void
-        end
+        sig { params(cursors: Telnyx::Cursor::OrHash).void }
         attr_writer :cursors
 
         # Path to next page.
@@ -95,8 +84,7 @@ module Telnyx
 
         sig do
           params(
-            cursors:
-              Telnyx::Models::RecordingTranscriptionListResponse::Meta::Cursors::OrHash,
+            cursors: Telnyx::Cursor::OrHash,
             next_: String,
             previous: String
           ).returns(T.attached_class)
@@ -112,54 +100,10 @@ module Telnyx
 
         sig do
           override.returns(
-            {
-              cursors:
-                Telnyx::Models::RecordingTranscriptionListResponse::Meta::Cursors,
-              next_: String,
-              previous: String
-            }
+            { cursors: Telnyx::Cursor, next_: String, previous: String }
           )
         end
         def to_hash
-        end
-
-        class Cursors < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::Models::RecordingTranscriptionListResponse::Meta::Cursors,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          # Opaque identifier of next page.
-          sig { returns(T.nilable(String)) }
-          attr_reader :after
-
-          sig { params(after: String).void }
-          attr_writer :after
-
-          # Opaque identifier of previous page.
-          sig { returns(T.nilable(String)) }
-          attr_reader :before
-
-          sig { params(before: String).void }
-          attr_writer :before
-
-          sig do
-            params(after: String, before: String).returns(T.attached_class)
-          end
-          def self.new(
-            # Opaque identifier of next page.
-            after: nil,
-            # Opaque identifier of previous page.
-            before: nil
-          )
-          end
-
-          sig { override.returns({ after: String, before: String }) }
-          def to_hash
-          end
         end
       end
     end

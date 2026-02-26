@@ -46,7 +46,7 @@ class Telnyx::Test::Resources::CommentsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::CommentListResponse::Data]) | nil,
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Comment]) | nil,
         meta: Telnyx::PaginationMeta | nil
       }
     end

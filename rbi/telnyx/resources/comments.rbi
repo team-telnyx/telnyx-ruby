@@ -8,8 +8,7 @@ module Telnyx
         params(
           body: String,
           comment_record_id: String,
-          comment_record_type:
-            Telnyx::CommentCreateParams::CommentRecordType::OrSymbol,
+          comment_record_type: Telnyx::Comment::CommentRecordType::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::CommentCreateResponse)
       end
