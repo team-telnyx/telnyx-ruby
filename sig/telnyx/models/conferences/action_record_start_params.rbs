@@ -4,7 +4,6 @@ module Telnyx
       type action_record_start_params =
         {
           format_: Telnyx::Models::Conferences::ActionRecordStartParams::format_,
-          channels: Telnyx::Models::Conferences::ActionRecordStartParams::channels,
           command_id: String,
           custom_file_name: String,
           play_beep: bool,
@@ -18,12 +17,6 @@ module Telnyx
         include Telnyx::Internal::Type::RequestParameters
 
         attr_accessor format_: Telnyx::Models::Conferences::ActionRecordStartParams::format_
-
-        attr_reader channels: Telnyx::Models::Conferences::ActionRecordStartParams::channels?
-
-        def channels=: (
-          Telnyx::Models::Conferences::ActionRecordStartParams::channels
-        ) -> Telnyx::Models::Conferences::ActionRecordStartParams::channels
 
         attr_reader command_id: String?
 
@@ -51,7 +44,6 @@ module Telnyx
 
         def initialize: (
           format_: Telnyx::Models::Conferences::ActionRecordStartParams::format_,
-          ?channels: Telnyx::Models::Conferences::ActionRecordStartParams::channels,
           ?command_id: String,
           ?custom_file_name: String,
           ?play_beep: bool,
@@ -62,7 +54,6 @@ module Telnyx
 
         def to_hash: -> {
           format_: Telnyx::Models::Conferences::ActionRecordStartParams::format_,
-          channels: Telnyx::Models::Conferences::ActionRecordStartParams::channels,
           command_id: String,
           custom_file_name: String,
           play_beep: bool,
@@ -80,17 +71,6 @@ module Telnyx
           MP3: :mp3
 
           def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionRecordStartParams::format_]
-        end
-
-        type channels = :single | :dual
-
-        module Channels
-          extend Telnyx::Internal::Type::Enum
-
-          SINGLE: :single
-          DUAL: :dual
-
-          def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionRecordStartParams::channels]
         end
 
         type region = :Australia | :Europe | :"Middle East" | :US

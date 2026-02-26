@@ -19,13 +19,6 @@ module Telnyx
                  },
                  api_name: :format
 
-        # @!attribute channels
-        #   When `dual`, final audio file will be stereo recorded with the conference
-        #   creator on the first channel, and the rest on the second channel.
-        #
-        #   @return [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Channels, nil]
-        optional :channels, enum: -> { Telnyx::Conferences::ActionRecordStartParams::Channels }
-
         # @!attribute command_id
         #   Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #   the same `command_id` for the same `conference_id`.
@@ -60,13 +53,11 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Trim, nil]
         optional :trim, enum: -> { Telnyx::Conferences::ActionRecordStartParams::Trim }
 
-        # @!method initialize(format_:, channels: nil, command_id: nil, custom_file_name: nil, play_beep: nil, region: nil, trim: nil, request_options: {})
+        # @!method initialize(format_:, command_id: nil, custom_file_name: nil, play_beep: nil, region: nil, trim: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::ActionRecordStartParams} for more details.
         #
         #   @param format_ [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Format] The audio file format used when storing the conference recording. Can be either
-        #
-        #   @param channels [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Channels] When `dual`, final audio file will be stereo recorded with the conference creato
         #
         #   @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #
@@ -87,18 +78,6 @@ module Telnyx
 
           WAV = :wav
           MP3 = :mp3
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # When `dual`, final audio file will be stereo recorded with the conference
-        # creator on the first channel, and the rest on the second channel.
-        module Channels
-          extend Telnyx::Internal::Type::Enum
-
-          SINGLE = :single
-          DUAL = :dual
 
           # @!method self.values
           #   @return [Array<Symbol>]
