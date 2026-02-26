@@ -1,5 +1,14 @@
 # Changelog
 
+## 5.44.0 (2026-02-26)
+
+Full Changelog: [v5.43.0...v5.44.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.43.0...v5.44.0)
+
+### Features
+
+* Add text-to-speech WebSocket streaming OpenAPI spec ([c6c082b](https://github.com/team-telnyx/telnyx-ruby/commit/c6c082b8a0d47d63c136f7c81e5bd4eceffb2872))
+* **api:** manual updates ([d834462](https://github.com/team-telnyx/telnyx-ruby/commit/d834462641d4d929399bf7dbdef9e1bac6dcde8a))
+
 ## 5.43.0 (2026-02-25)
 
 Full Changelog: [v5.42.0...v5.43.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.42.0...v5.43.0)
