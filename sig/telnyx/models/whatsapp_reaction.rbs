@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    type whatsapp_reaction = { emoji: String, message_id: String }
+
+    class WhatsappReaction < Telnyx::Internal::Type::BaseModel
+      attr_reader emoji: String?
+
+      def emoji=: (String) -> String
+
+      attr_reader message_id: String?
+
+      def message_id=: (String) -> String
+
+      def initialize: (?emoji: String, ?message_id: String) -> void
+
+      def to_hash: -> { emoji: String, message_id: String }
+    end
+  end
+end

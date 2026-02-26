@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    type phone_numbers_job_phone_number = { id: String, phone_number: String }
+
+    class PhoneNumbersJobPhoneNumber < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader phone_number: String?
+
+      def phone_number=: (String) -> String
+
+      def initialize: (?id: String, ?phone_number: String) -> void
+
+      def to_hash: -> { id: String, phone_number: String }
+    end
+  end
+end

@@ -39,7 +39,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Portouts::EventListResponse::WebhookPortoutStatusChanged, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutNewComment, Telnyx::Models::Portouts::EventListResponse::WebhookPortoutFocDateChanged>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Portouts::WebhookPortoutStatusChanged, Telnyx::Models::Portouts::WebhookPortoutNewComment, Telnyx::Models::Portouts::WebhookPortoutFocDateChanged>]
         #
         # @see Telnyx::Models::Portouts::EventListParams
         def list(params = {})

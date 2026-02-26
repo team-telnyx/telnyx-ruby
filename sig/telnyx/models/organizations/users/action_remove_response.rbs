@@ -3,106 +3,20 @@ module Telnyx
     module Organizations
       module Users
         type action_remove_response =
-          {
-            data: Telnyx::Models::Organizations::Users::ActionRemoveResponse::Data
-          }
+          { data: Telnyx::Organizations::OrganizationUser }
 
         class ActionRemoveResponse < Telnyx::Internal::Type::BaseModel
-          attr_reader data: Telnyx::Models::Organizations::Users::ActionRemoveResponse::Data?
+          attr_reader data: Telnyx::Organizations::OrganizationUser?
 
           def data=: (
-            Telnyx::Models::Organizations::Users::ActionRemoveResponse::Data
-          ) -> Telnyx::Models::Organizations::Users::ActionRemoveResponse::Data
+            Telnyx::Organizations::OrganizationUser
+          ) -> Telnyx::Organizations::OrganizationUser
 
           def initialize: (
-            ?data: Telnyx::Models::Organizations::Users::ActionRemoveResponse::Data
+            ?data: Telnyx::Organizations::OrganizationUser
           ) -> void
 
-          def to_hash: -> {
-            data: Telnyx::Models::Organizations::Users::ActionRemoveResponse::Data
-          }
-
-          type data =
-            {
-              id: String,
-              created_at: String,
-              email: String,
-              groups: ::Array[Telnyx::Organizations::UserGroupReference],
-              last_sign_in_at: String?,
-              organization_user_bypasses_sso: bool,
-              record_type: String,
-              user_status: Telnyx::Models::Organizations::Users::ActionRemoveResponse::Data::user_status
-            }
-
-          class Data < Telnyx::Internal::Type::BaseModel
-            attr_reader id: String?
-
-            def id=: (String) -> String
-
-            attr_reader created_at: String?
-
-            def created_at=: (String) -> String
-
-            attr_reader email: String?
-
-            def email=: (String) -> String
-
-            attr_reader groups: ::Array[Telnyx::Organizations::UserGroupReference]?
-
-            def groups=: (
-              ::Array[Telnyx::Organizations::UserGroupReference]
-            ) -> ::Array[Telnyx::Organizations::UserGroupReference]
-
-            attr_accessor last_sign_in_at: String?
-
-            attr_reader organization_user_bypasses_sso: bool?
-
-            def organization_user_bypasses_sso=: (bool) -> bool
-
-            attr_reader record_type: String?
-
-            def record_type=: (String) -> String
-
-            attr_reader user_status: Telnyx::Models::Organizations::Users::ActionRemoveResponse::Data::user_status?
-
-            def user_status=: (
-              Telnyx::Models::Organizations::Users::ActionRemoveResponse::Data::user_status
-            ) -> Telnyx::Models::Organizations::Users::ActionRemoveResponse::Data::user_status
-
-            def initialize: (
-              ?id: String,
-              ?created_at: String,
-              ?email: String,
-              ?groups: ::Array[Telnyx::Organizations::UserGroupReference],
-              ?last_sign_in_at: String?,
-              ?organization_user_bypasses_sso: bool,
-              ?record_type: String,
-              ?user_status: Telnyx::Models::Organizations::Users::ActionRemoveResponse::Data::user_status
-            ) -> void
-
-            def to_hash: -> {
-              id: String,
-              created_at: String,
-              email: String,
-              groups: ::Array[Telnyx::Organizations::UserGroupReference],
-              last_sign_in_at: String?,
-              organization_user_bypasses_sso: bool,
-              record_type: String,
-              user_status: Telnyx::Models::Organizations::Users::ActionRemoveResponse::Data::user_status
-            }
-
-            type user_status = :enabled | :disabled | :blocked
-
-            module UserStatus
-              extend Telnyx::Internal::Type::Enum
-
-              ENABLED: :enabled
-              DISABLED: :disabled
-              BLOCKED: :blocked
-
-              def self?.values: -> ::Array[Telnyx::Models::Organizations::Users::ActionRemoveResponse::Data::user_status]
-            end
-          end
+          def to_hash: -> { data: Telnyx::Organizations::OrganizationUser }
         end
       end
     end

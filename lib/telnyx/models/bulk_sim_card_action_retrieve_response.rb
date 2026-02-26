@@ -16,9 +16,8 @@ module Telnyx
       class Data < Telnyx::Internal::Type::BaseModel
         # @!attribute sim_card_actions_summary
         #
-        #   @return [Array<Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary>, nil]
-        optional :sim_card_actions_summary,
-                 -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary] }
+        #   @return [Array<Telnyx::Models::SimCardActionsSummary>, nil]
+        optional :sim_card_actions_summary, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::SimCardActionsSummary] }
 
         response_only do
           # @!attribute id
@@ -75,7 +74,7 @@ module Telnyx
         #
         #   @param settings [Hash{Symbol=>Object}] A JSON object representation of the bulk action payload.
         #
-        #   @param sim_card_actions_summary [Array<Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary>]
+        #   @param sim_card_actions_summary [Array<Telnyx::Models::SimCardActionsSummary>]
         #
         #   @param updated_at [String] ISO 8601 formatted date-time indicating when the resource was updated.
 
@@ -93,36 +92,6 @@ module Telnyx
 
           # @!method self.values
           #   @return [Array<Symbol>]
-        end
-
-        class SimCardActionsSummary < Telnyx::Internal::Type::BaseModel
-          # @!attribute count
-          #
-          #   @return [Integer, nil]
-          optional :count, Integer
-
-          # @!attribute status
-          #
-          #   @return [Symbol, Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::Status, nil]
-          optional :status,
-                   enum: -> { Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::Status }
-
-          # @!method initialize(count: nil, status: nil)
-          #   @param count [Integer]
-          #   @param status [Symbol, Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary::Status]
-
-          # @see Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::SimCardActionsSummary#status
-          module Status
-            extend Telnyx::Internal::Type::Enum
-
-            IN_PROGRESS = :"in-progress"
-            COMPLETED = :completed
-            FAILED = :failed
-            INTERRUPTED = :interrupted
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
         end
       end
     end

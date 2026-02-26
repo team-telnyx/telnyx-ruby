@@ -30,9 +30,8 @@ module Telnyx
 
       # @!attribute phone_numbers
       #
-      #   @return [Array<Telnyx::Models::NumberOrderListResponse::PhoneNumber>, nil]
-      optional :phone_numbers,
-               -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::NumberOrderListResponse::PhoneNumber] }
+      #   @return [Array<Telnyx::Models::PhoneNumbersJobPhoneNumber>, nil]
+      optional :phone_numbers, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbersJobPhoneNumber] }
 
       # @!attribute sub_number_orders_ids
       #
@@ -94,7 +93,7 @@ module Telnyx
       #
       #   @param messaging_profile_id [String] Identifies the messaging profile associated with the phone number.
       #
-      #   @param phone_numbers [Array<Telnyx::Models::NumberOrderListResponse::PhoneNumber>]
+      #   @param phone_numbers [Array<Telnyx::Models::PhoneNumbersJobPhoneNumber>]
       #
       #   @param phone_numbers_count [Integer] The count of phone numbers in the number order.
       #
@@ -107,27 +106,6 @@ module Telnyx
       #   @param sub_number_orders_ids [Array<String>]
       #
       #   @param updated_at [Time] An ISO 8901 datetime string for when the number order was updated.
-
-      class PhoneNumber < Telnyx::Internal::Type::BaseModel
-        # @!attribute id
-        #   The phone number's ID
-        #
-        #   @return [String, nil]
-        optional :id, String
-
-        # @!attribute phone_number
-        #   The phone number in e164 format.
-        #
-        #   @return [String, nil]
-        optional :phone_number, String
-
-        # @!method initialize(id: nil, phone_number: nil)
-        #   The unique phone numbers given as arguments in the job creation.
-        #
-        #   @param id [String] The phone number's ID
-        #
-        #   @param phone_number [String] The phone number in e164 format.
-      end
 
       # The status of the order.
       #

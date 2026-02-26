@@ -1,0 +1,74 @@
+module Telnyx
+  module Models
+    type http =
+      { request: Telnyx::HTTP::Request, response: Telnyx::HTTP::Response }
+
+    class HTTP < Telnyx::Internal::Type::BaseModel
+      attr_reader request: Telnyx::HTTP::Request?
+
+      def request=: (Telnyx::HTTP::Request) -> Telnyx::HTTP::Request
+
+      attr_reader response: Telnyx::HTTP::Response?
+
+      def response=: (Telnyx::HTTP::Response) -> Telnyx::HTTP::Response
+
+      def initialize: (
+        ?request: Telnyx::HTTP::Request,
+        ?response: Telnyx::HTTP::Response
+      ) -> void
+
+      def to_hash: -> {
+        request: Telnyx::HTTP::Request,
+        response: Telnyx::HTTP::Response
+      }
+
+      type request = { headers: ::Array[::Array[String]], url: String }
+
+      class Request < Telnyx::Internal::Type::BaseModel
+        attr_reader headers: ::Array[::Array[String]]?
+
+        def headers=: (::Array[::Array[String]]) -> ::Array[::Array[String]]
+
+        attr_reader url: String?
+
+        def url=: (String) -> String
+
+        def initialize: (
+          ?headers: ::Array[::Array[String]],
+          ?url: String
+        ) -> void
+
+        def to_hash: -> { headers: ::Array[::Array[String]], url: String }
+      end
+
+      type response =
+        { body: String, headers: ::Array[::Array[String]], status: Integer }
+
+      class Response < Telnyx::Internal::Type::BaseModel
+        attr_reader body: String?
+
+        def body=: (String) -> String
+
+        attr_reader headers: ::Array[::Array[String]]?
+
+        def headers=: (::Array[::Array[String]]) -> ::Array[::Array[String]]
+
+        attr_reader status: Integer?
+
+        def status=: (Integer) -> Integer
+
+        def initialize: (
+          ?body: String,
+          ?headers: ::Array[::Array[String]],
+          ?status: Integer
+        ) -> void
+
+        def to_hash: -> {
+          body: String,
+          headers: ::Array[::Array[String]],
+          status: Integer
+        }
+      end
+    end
+  end
+end

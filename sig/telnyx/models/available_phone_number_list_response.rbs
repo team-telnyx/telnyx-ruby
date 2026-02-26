@@ -41,12 +41,12 @@ module Telnyx
       type data =
         {
           best_effort: bool,
-          cost_information: Telnyx::Models::AvailablePhoneNumberListResponse::Data::CostInformation,
-          features: ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data::Feature],
+          cost_information: Telnyx::CostInformation,
+          features: ::Array[Telnyx::Feature],
           phone_number: String,
           quickship: bool,
           record_type: Telnyx::Models::AvailablePhoneNumberListResponse::Data::record_type,
-          region_information: ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data::RegionInformation],
+          region_information: ::Array[Telnyx::RegionInformation],
           reservable: bool,
           vanity_format: String
         }
@@ -56,17 +56,15 @@ module Telnyx
 
         def best_effort=: (bool) -> bool
 
-        attr_reader cost_information: Telnyx::Models::AvailablePhoneNumberListResponse::Data::CostInformation?
+        attr_reader cost_information: Telnyx::CostInformation?
 
         def cost_information=: (
-          Telnyx::Models::AvailablePhoneNumberListResponse::Data::CostInformation
-        ) -> Telnyx::Models::AvailablePhoneNumberListResponse::Data::CostInformation
+          Telnyx::CostInformation
+        ) -> Telnyx::CostInformation
 
-        attr_reader features: ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data::Feature]?
+        attr_reader features: ::Array[Telnyx::Feature]?
 
-        def features=: (
-          ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data::Feature]
-        ) -> ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data::Feature]
+        def features=: (::Array[Telnyx::Feature]) -> ::Array[Telnyx::Feature]
 
         attr_reader phone_number: String?
 
@@ -82,11 +80,11 @@ module Telnyx
           Telnyx::Models::AvailablePhoneNumberListResponse::Data::record_type
         ) -> Telnyx::Models::AvailablePhoneNumberListResponse::Data::record_type
 
-        attr_reader region_information: ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data::RegionInformation]?
+        attr_reader region_information: ::Array[Telnyx::RegionInformation]?
 
         def region_information=: (
-          ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data::RegionInformation]
-        ) -> ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data::RegionInformation]
+          ::Array[Telnyx::RegionInformation]
+        ) -> ::Array[Telnyx::RegionInformation]
 
         attr_reader reservable: bool?
 
@@ -98,68 +96,27 @@ module Telnyx
 
         def initialize: (
           ?best_effort: bool,
-          ?cost_information: Telnyx::Models::AvailablePhoneNumberListResponse::Data::CostInformation,
-          ?features: ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data::Feature],
+          ?cost_information: Telnyx::CostInformation,
+          ?features: ::Array[Telnyx::Feature],
           ?phone_number: String,
           ?quickship: bool,
           ?record_type: Telnyx::Models::AvailablePhoneNumberListResponse::Data::record_type,
-          ?region_information: ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data::RegionInformation],
+          ?region_information: ::Array[Telnyx::RegionInformation],
           ?reservable: bool,
           ?vanity_format: String
         ) -> void
 
         def to_hash: -> {
           best_effort: bool,
-          cost_information: Telnyx::Models::AvailablePhoneNumberListResponse::Data::CostInformation,
-          features: ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data::Feature],
+          cost_information: Telnyx::CostInformation,
+          features: ::Array[Telnyx::Feature],
           phone_number: String,
           quickship: bool,
           record_type: Telnyx::Models::AvailablePhoneNumberListResponse::Data::record_type,
-          region_information: ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data::RegionInformation],
+          region_information: ::Array[Telnyx::RegionInformation],
           reservable: bool,
           vanity_format: String
         }
-
-        type cost_information =
-          { currency: String, monthly_cost: String, upfront_cost: String }
-
-        class CostInformation < Telnyx::Internal::Type::BaseModel
-          attr_reader currency: String?
-
-          def currency=: (String) -> String
-
-          attr_reader monthly_cost: String?
-
-          def monthly_cost=: (String) -> String
-
-          attr_reader upfront_cost: String?
-
-          def upfront_cost=: (String) -> String
-
-          def initialize: (
-            ?currency: String,
-            ?monthly_cost: String,
-            ?upfront_cost: String
-          ) -> void
-
-          def to_hash: -> {
-            currency: String,
-            monthly_cost: String,
-            upfront_cost: String
-          }
-        end
-
-        type feature = { name: String }
-
-        class Feature < Telnyx::Internal::Type::BaseModel
-          attr_reader name: String?
-
-          def name=: (String) -> String
-
-          def initialize: (?name: String) -> void
-
-          def to_hash: -> { name: String }
-        end
 
         type record_type = :available_phone_number
 
@@ -169,47 +126,6 @@ module Telnyx
           AVAILABLE_PHONE_NUMBER: :available_phone_number
 
           def self?.values: -> ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data::record_type]
-        end
-
-        type region_information =
-          {
-            region_name: String,
-            region_type: Telnyx::Models::AvailablePhoneNumberListResponse::Data::RegionInformation::region_type
-          }
-
-        class RegionInformation < Telnyx::Internal::Type::BaseModel
-          attr_reader region_name: String?
-
-          def region_name=: (String) -> String
-
-          attr_reader region_type: Telnyx::Models::AvailablePhoneNumberListResponse::Data::RegionInformation::region_type?
-
-          def region_type=: (
-            Telnyx::Models::AvailablePhoneNumberListResponse::Data::RegionInformation::region_type
-          ) -> Telnyx::Models::AvailablePhoneNumberListResponse::Data::RegionInformation::region_type
-
-          def initialize: (
-            ?region_name: String,
-            ?region_type: Telnyx::Models::AvailablePhoneNumberListResponse::Data::RegionInformation::region_type
-          ) -> void
-
-          def to_hash: -> {
-            region_name: String,
-            region_type: Telnyx::Models::AvailablePhoneNumberListResponse::Data::RegionInformation::region_type
-          }
-
-          type region_type = :country_code | :rate_center | :state | :location
-
-          module RegionType
-            extend Telnyx::Internal::Type::Enum
-
-            COUNTRY_CODE: :country_code
-            RATE_CENTER: :rate_center
-            STATE: :state
-            LOCATION: :location
-
-            def self?.values: -> ::Array[Telnyx::Models::AvailablePhoneNumberListResponse::Data::RegionInformation::region_type]
-          end
         end
       end
     end

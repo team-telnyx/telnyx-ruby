@@ -1,0 +1,44 @@
+module Telnyx
+  module Models
+    type region_information =
+      {
+        region_name: String,
+        region_type: Telnyx::Models::RegionInformation::region_type
+      }
+
+    class RegionInformation < Telnyx::Internal::Type::BaseModel
+      attr_reader region_name: String?
+
+      def region_name=: (String) -> String
+
+      attr_reader region_type: Telnyx::Models::RegionInformation::region_type?
+
+      def region_type=: (
+        Telnyx::Models::RegionInformation::region_type
+      ) -> Telnyx::Models::RegionInformation::region_type
+
+      def initialize: (
+        ?region_name: String,
+        ?region_type: Telnyx::Models::RegionInformation::region_type
+      ) -> void
+
+      def to_hash: -> {
+        region_name: String,
+        region_type: Telnyx::Models::RegionInformation::region_type
+      }
+
+      type region_type = :country_code | :rate_center | :state | :location
+
+      module RegionType
+        extend Telnyx::Internal::Type::Enum
+
+        COUNTRY_CODE: :country_code
+        RATE_CENTER: :rate_center
+        STATE: :state
+        LOCATION: :location
+
+        def self?.values: -> ::Array[Telnyx::Models::RegionInformation::region_type]
+      end
+    end
+  end
+end

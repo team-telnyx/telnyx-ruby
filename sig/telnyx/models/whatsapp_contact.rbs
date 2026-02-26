@@ -1,0 +1,209 @@
+module Telnyx
+  module Models
+    type whatsapp_contact =
+      {
+        addresses: ::Array[Telnyx::WhatsappContact::Address],
+        birthday: String,
+        emails: ::Array[Telnyx::WhatsappContact::Email],
+        name: String,
+        org: Telnyx::WhatsappContact::Org,
+        phones: ::Array[Telnyx::WhatsappContact::Phone],
+        urls: ::Array[Telnyx::WhatsappContact::URL]
+      }
+
+    class WhatsappContact < Telnyx::Internal::Type::BaseModel
+      attr_reader addresses: ::Array[Telnyx::WhatsappContact::Address]?
+
+      def addresses=: (
+        ::Array[Telnyx::WhatsappContact::Address]
+      ) -> ::Array[Telnyx::WhatsappContact::Address]
+
+      attr_reader birthday: String?
+
+      def birthday=: (String) -> String
+
+      attr_reader emails: ::Array[Telnyx::WhatsappContact::Email]?
+
+      def emails=: (
+        ::Array[Telnyx::WhatsappContact::Email]
+      ) -> ::Array[Telnyx::WhatsappContact::Email]
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader org: Telnyx::WhatsappContact::Org?
+
+      def org=: (Telnyx::WhatsappContact::Org) -> Telnyx::WhatsappContact::Org
+
+      attr_reader phones: ::Array[Telnyx::WhatsappContact::Phone]?
+
+      def phones=: (
+        ::Array[Telnyx::WhatsappContact::Phone]
+      ) -> ::Array[Telnyx::WhatsappContact::Phone]
+
+      attr_reader urls: ::Array[Telnyx::WhatsappContact::URL]?
+
+      def urls=: (
+        ::Array[Telnyx::WhatsappContact::URL]
+      ) -> ::Array[Telnyx::WhatsappContact::URL]
+
+      def initialize: (
+        ?addresses: ::Array[Telnyx::WhatsappContact::Address],
+        ?birthday: String,
+        ?emails: ::Array[Telnyx::WhatsappContact::Email],
+        ?name: String,
+        ?org: Telnyx::WhatsappContact::Org,
+        ?phones: ::Array[Telnyx::WhatsappContact::Phone],
+        ?urls: ::Array[Telnyx::WhatsappContact::URL]
+      ) -> void
+
+      def to_hash: -> {
+        addresses: ::Array[Telnyx::WhatsappContact::Address],
+        birthday: String,
+        emails: ::Array[Telnyx::WhatsappContact::Email],
+        name: String,
+        org: Telnyx::WhatsappContact::Org,
+        phones: ::Array[Telnyx::WhatsappContact::Phone],
+        urls: ::Array[Telnyx::WhatsappContact::URL]
+      }
+
+      type address =
+        {
+          city: String,
+          country: String,
+          country_code: String,
+          state: String,
+          street: String,
+          type: String,
+          zip: String
+        }
+
+      class Address < Telnyx::Internal::Type::BaseModel
+        attr_reader city: String?
+
+        def city=: (String) -> String
+
+        attr_reader country: String?
+
+        def country=: (String) -> String
+
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader state: String?
+
+        def state=: (String) -> String
+
+        attr_reader street: String?
+
+        def street=: (String) -> String
+
+        attr_reader type: String?
+
+        def type=: (String) -> String
+
+        attr_reader zip: String?
+
+        def zip=: (String) -> String
+
+        def initialize: (
+          ?city: String,
+          ?country: String,
+          ?country_code: String,
+          ?state: String,
+          ?street: String,
+          ?type: String,
+          ?zip: String
+        ) -> void
+
+        def to_hash: -> {
+          city: String,
+          country: String,
+          country_code: String,
+          state: String,
+          street: String,
+          type: String,
+          zip: String
+        }
+      end
+
+      type email = { email: String, type: String }
+
+      class Email < Telnyx::Internal::Type::BaseModel
+        attr_reader email: String?
+
+        def email=: (String) -> String
+
+        attr_reader type: String?
+
+        def type=: (String) -> String
+
+        def initialize: (?email: String, ?type: String) -> void
+
+        def to_hash: -> { email: String, type: String }
+      end
+
+      type org = { company: String, department: String, title: String }
+
+      class Org < Telnyx::Internal::Type::BaseModel
+        attr_reader company: String?
+
+        def company=: (String) -> String
+
+        attr_reader department: String?
+
+        def department=: (String) -> String
+
+        attr_reader title: String?
+
+        def title=: (String) -> String
+
+        def initialize: (
+          ?company: String,
+          ?department: String,
+          ?title: String
+        ) -> void
+
+        def to_hash: -> { company: String, department: String, title: String }
+      end
+
+      type phone = { phone: String, type: String, wa_id: String }
+
+      class Phone < Telnyx::Internal::Type::BaseModel
+        attr_reader phone: String?
+
+        def phone=: (String) -> String
+
+        attr_reader type: String?
+
+        def type=: (String) -> String
+
+        attr_reader wa_id: String?
+
+        def wa_id=: (String) -> String
+
+        def initialize: (?phone: String, ?type: String, ?wa_id: String) -> void
+
+        def to_hash: -> { phone: String, type: String, wa_id: String }
+      end
+
+      type url = { type: String, url: String }
+
+      class URL < Telnyx::Internal::Type::BaseModel
+        attr_reader type: String?
+
+        def type=: (String) -> String
+
+        attr_reader url: String?
+
+        def url=: (String) -> String
+
+        def initialize: (?type: String, ?url: String) -> void
+
+        def to_hash: -> { type: String, url: String }
+      end
+    end
+  end
+end

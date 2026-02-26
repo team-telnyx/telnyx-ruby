@@ -8,7 +8,7 @@ module Telnyx
         created_at: Time,
         customer_reference: String,
         messaging_profile_id: String,
-        phone_numbers: ::Array[Telnyx::Models::NumberOrderListResponse::PhoneNumber],
+        phone_numbers: ::Array[Telnyx::PhoneNumbersJobPhoneNumber],
         phone_numbers_count: Integer,
         record_type: String,
         requirements_met: bool,
@@ -34,11 +34,11 @@ module Telnyx
 
       def messaging_profile_id=: (String) -> String
 
-      attr_reader phone_numbers: ::Array[Telnyx::Models::NumberOrderListResponse::PhoneNumber]?
+      attr_reader phone_numbers: ::Array[Telnyx::PhoneNumbersJobPhoneNumber]?
 
       def phone_numbers=: (
-        ::Array[Telnyx::Models::NumberOrderListResponse::PhoneNumber]
-      ) -> ::Array[Telnyx::Models::NumberOrderListResponse::PhoneNumber]
+        ::Array[Telnyx::PhoneNumbersJobPhoneNumber]
+      ) -> ::Array[Telnyx::PhoneNumbersJobPhoneNumber]
 
       attr_reader sub_number_orders_ids: ::Array[String]?
 
@@ -81,7 +81,7 @@ module Telnyx
         ?created_at: Time,
         ?customer_reference: String,
         ?messaging_profile_id: String,
-        ?phone_numbers: ::Array[Telnyx::Models::NumberOrderListResponse::PhoneNumber],
+        ?phone_numbers: ::Array[Telnyx::PhoneNumbersJobPhoneNumber],
         ?phone_numbers_count: Integer,
         ?record_type: String,
         ?requirements_met: bool,
@@ -97,7 +97,7 @@ module Telnyx
         created_at: Time,
         customer_reference: String,
         messaging_profile_id: String,
-        phone_numbers: ::Array[Telnyx::Models::NumberOrderListResponse::PhoneNumber],
+        phone_numbers: ::Array[Telnyx::PhoneNumbersJobPhoneNumber],
         phone_numbers_count: Integer,
         record_type: String,
         requirements_met: bool,
@@ -105,22 +105,6 @@ module Telnyx
         sub_number_orders_ids: ::Array[String],
         updated_at: Time
       }
-
-      type phone_number = { id: String, phone_number: String }
-
-      class PhoneNumber < Telnyx::Internal::Type::BaseModel
-        attr_reader id: String?
-
-        def id=: (String) -> String
-
-        attr_reader phone_number: String?
-
-        def phone_number=: (String) -> String
-
-        def initialize: (?id: String, ?phone_number: String) -> void
-
-        def to_hash: -> { id: String, phone_number: String }
-      end
 
       type status = :pending | :success | :failure
 

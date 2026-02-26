@@ -404,8 +404,7 @@ module Telnyx
         params(
           from: String,
           to: String,
-          whatsapp_message:
-            Telnyx::MessageSendWhatsappParams::WhatsappMessage::OrHash,
+          whatsapp_message: Telnyx::WhatsappMessageContent::OrHash,
           type: Telnyx::MessageSendWhatsappParams::Type::OrSymbol,
           webhook_url: String,
           request_options: Telnyx::RequestOptions::OrHash

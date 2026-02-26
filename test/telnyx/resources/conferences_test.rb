@@ -119,7 +119,7 @@ class Telnyx::Test::Resources::ConferencesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::ConferenceRetrieveParticipantResponse::Data | nil
+        data: Telnyx::ConferenceParticipant | nil
       }
     end
   end
@@ -136,7 +136,7 @@ class Telnyx::Test::Resources::ConferencesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::ConferenceUpdateParticipantResponse::Data | nil
+        data: Telnyx::ConferenceParticipant | nil
       }
     end
   end

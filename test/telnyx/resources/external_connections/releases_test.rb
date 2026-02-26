@@ -44,7 +44,7 @@ class Telnyx::Test::Resources::ExternalConnections::ReleasesTest < Telnyx::Test:
         created_at: String | nil,
         error_message: String | nil,
         status: Telnyx::Models::ExternalConnections::ReleaseListResponse::Status | nil,
-        telephone_numbers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::ExternalConnections::ReleaseListResponse::TelephoneNumber]) | nil,
+        telephone_numbers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::ExternalConnections::TnReleaseEntry]) | nil,
         tenant_id: String | nil,
         ticket_id: String | nil
       }

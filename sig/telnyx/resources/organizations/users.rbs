@@ -17,7 +17,7 @@ module Telnyx
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Organizations::UserListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Organizations::OrganizationUser]
 
         def get_groups_report: (
           ?accept: Telnyx::Models::Organizations::UserGetGroupsReportParams::accept,

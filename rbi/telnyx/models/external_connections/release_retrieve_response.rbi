@@ -92,11 +92,7 @@ module Telnyx
 
           sig do
             returns(
-              T.nilable(
-                T::Array[
-                  Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::TelephoneNumber
-                ]
-              )
+              T.nilable(T::Array[Telnyx::ExternalConnections::TnReleaseEntry])
             )
           end
           attr_reader :telephone_numbers
@@ -104,9 +100,7 @@ module Telnyx
           sig do
             params(
               telephone_numbers:
-                T::Array[
-                  Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::TelephoneNumber::OrHash
-                ]
+                T::Array[Telnyx::ExternalConnections::TnReleaseEntry::OrHash]
             ).void
           end
           attr_writer :telephone_numbers
@@ -131,9 +125,7 @@ module Telnyx
               status:
                 Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::Status::OrSymbol,
               telephone_numbers:
-                T::Array[
-                  Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::TelephoneNumber::OrHash
-                ],
+                T::Array[Telnyx::ExternalConnections::TnReleaseEntry::OrHash],
               tenant_id: String,
               ticket_id: String
             ).returns(T.attached_class)
@@ -160,9 +152,7 @@ module Telnyx
                 status:
                   Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::Status::TaggedSymbol,
                 telephone_numbers:
-                  T::Array[
-                    Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::TelephoneNumber
-                  ],
+                  T::Array[Telnyx::ExternalConnections::TnReleaseEntry],
                 tenant_id: String,
                 ticket_id: String
               }
@@ -228,49 +218,6 @@ module Telnyx
               )
             end
             def self.values
-            end
-          end
-
-          class TelephoneNumber < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::TelephoneNumber,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # Phone number ID from the Telnyx API.
-            sig { returns(T.nilable(String)) }
-            attr_reader :number_id
-
-            sig { params(number_id: String).void }
-            attr_writer :number_id
-
-            # Phone number in E164 format.
-            sig { returns(T.nilable(String)) }
-            attr_reader :phone_number
-
-            sig { params(phone_number: String).void }
-            attr_writer :phone_number
-
-            sig do
-              params(number_id: String, phone_number: String).returns(
-                T.attached_class
-              )
-            end
-            def self.new(
-              # Phone number ID from the Telnyx API.
-              number_id: nil,
-              # Phone number in E164 format.
-              phone_number: nil
-            )
-            end
-
-            sig do
-              override.returns({ number_id: String, phone_number: String })
-            end
-            def to_hash
             end
           end
         end

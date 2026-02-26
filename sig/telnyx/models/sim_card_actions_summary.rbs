@@ -1,0 +1,41 @@
+module Telnyx
+  module Models
+    type sim_card_actions_summary =
+      { count: Integer, status: Telnyx::Models::SimCardActionsSummary::status }
+
+    class SimCardActionsSummary < Telnyx::Internal::Type::BaseModel
+      attr_reader count: Integer?
+
+      def count=: (Integer) -> Integer
+
+      attr_reader status: Telnyx::Models::SimCardActionsSummary::status?
+
+      def status=: (
+        Telnyx::Models::SimCardActionsSummary::status
+      ) -> Telnyx::Models::SimCardActionsSummary::status
+
+      def initialize: (
+        ?count: Integer,
+        ?status: Telnyx::Models::SimCardActionsSummary::status
+      ) -> void
+
+      def to_hash: -> {
+        count: Integer,
+        status: Telnyx::Models::SimCardActionsSummary::status
+      }
+
+      type status = :"in-progress" | :completed | :failed | :interrupted
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        IN_PROGRESS: :"in-progress"
+        COMPLETED: :completed
+        FAILED: :failed
+        INTERRUPTED: :interrupted
+
+        def self?.values: -> ::Array[Telnyx::Models::SimCardActionsSummary::status]
+      end
+    end
+  end
+end

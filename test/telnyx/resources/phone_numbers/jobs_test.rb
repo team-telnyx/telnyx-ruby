@@ -42,7 +42,7 @@ class Telnyx::Test::Resources::PhoneNumbers::JobsTest < Telnyx::Test::ResourceTe
         etc: Time | nil,
         failed_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation]) | nil,
         pending_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJob::PendingOperation]) | nil,
-        phone_numbers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJob::PhoneNumber]) | nil,
+        phone_numbers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbersJobPhoneNumber]) | nil,
         record_type: String | nil,
         status: Telnyx::PhoneNumbers::PhoneNumbersJob::Status | nil,
         successful_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJob::SuccessfulOperation]) | nil,

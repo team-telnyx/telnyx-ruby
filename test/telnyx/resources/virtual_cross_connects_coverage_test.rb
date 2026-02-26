@@ -24,7 +24,7 @@ class Telnyx::Test::Resources::VirtualCrossConnectsCoverageTest < Telnyx::Test::
         available_bandwidth: ^(Telnyx::Internal::Type::ArrayOf[Float]) | nil,
         cloud_provider: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::CloudProvider | nil,
         cloud_provider_region: String | nil,
-        location: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Location | nil,
+        location: Telnyx::NetappsLocation | nil,
         record_type: String | nil
       }
     end

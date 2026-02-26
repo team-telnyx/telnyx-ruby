@@ -47,21 +47,10 @@ module Telnyx
       sig { params(cloud_provider_region: String).void }
       attr_writer :cloud_provider_region
 
-      sig do
-        returns(
-          T.nilable(
-            Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Location
-          )
-        )
-      end
+      sig { returns(T.nilable(Telnyx::NetappsLocation)) }
       attr_reader :location
 
-      sig do
-        params(
-          location:
-            Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Location::OrHash
-        ).void
-      end
+      sig { params(location: Telnyx::NetappsLocation::OrHash).void }
       attr_writer :location
 
       # Identifies the type of the resource.
@@ -77,8 +66,7 @@ module Telnyx
           cloud_provider:
             Telnyx::Models::VirtualCrossConnectsCoverageListResponse::CloudProvider::OrSymbol,
           cloud_provider_region: String,
-          location:
-            Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Location::OrHash,
+          location: Telnyx::NetappsLocation::OrHash,
           record_type: String
         ).returns(T.attached_class)
       end
@@ -106,8 +94,7 @@ module Telnyx
             cloud_provider:
               Telnyx::Models::VirtualCrossConnectsCoverageListResponse::CloudProvider::TaggedSymbol,
             cloud_provider_region: String,
-            location:
-              Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Location,
+            location: Telnyx::NetappsLocation,
             record_type: String
           }
         )
@@ -153,88 +140,6 @@ module Telnyx
           )
         end
         def self.values
-        end
-      end
-
-      class Location < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::Models::VirtualCrossConnectsCoverageListResponse::Location,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        # Location code.
-        sig { returns(T.nilable(String)) }
-        attr_reader :code
-
-        sig { params(code: String).void }
-        attr_writer :code
-
-        # Human readable name of location.
-        sig { returns(T.nilable(String)) }
-        attr_reader :name
-
-        sig { params(name: String).void }
-        attr_writer :name
-
-        # Point of presence of location.
-        sig { returns(T.nilable(String)) }
-        attr_reader :pop
-
-        sig { params(pop: String).void }
-        attr_writer :pop
-
-        # Identifies the geographical region of location.
-        sig { returns(T.nilable(String)) }
-        attr_reader :region
-
-        sig { params(region: String).void }
-        attr_writer :region
-
-        # Site of location.
-        sig { returns(T.nilable(String)) }
-        attr_reader :site
-
-        sig { params(site: String).void }
-        attr_writer :site
-
-        sig do
-          params(
-            code: String,
-            name: String,
-            pop: String,
-            region: String,
-            site: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Location code.
-          code: nil,
-          # Human readable name of location.
-          name: nil,
-          # Point of presence of location.
-          pop: nil,
-          # Identifies the geographical region of location.
-          region: nil,
-          # Site of location.
-          site: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              code: String,
-              name: String,
-              pop: String,
-              region: String,
-              site: String
-            }
-          )
-        end
-        def to_hash
         end
       end
     end

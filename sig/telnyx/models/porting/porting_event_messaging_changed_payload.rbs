@@ -1,0 +1,243 @@
+module Telnyx
+  module Models
+    class PortingEventMessagingChangedPayload = Porting::PortingEventMessagingChangedPayload
+
+    module Porting
+      type porting_event_messaging_changed_payload =
+        {
+          id: String,
+          available_notification_methods: ::Array[Telnyx::Models::Porting::PortingEventMessagingChangedPayload::available_notification_method],
+          created_at: Time,
+          event_type: Telnyx::Models::Porting::PortingEventMessagingChangedPayload::event_type,
+          payload: Telnyx::Porting::PortingEventMessagingChangedPayload::Payload,
+          payload_status: Telnyx::Models::Porting::PortingEventMessagingChangedPayload::payload_status,
+          porting_order_id: String,
+          record_type: String,
+          updated_at: Time
+        }
+
+      class PortingEventMessagingChangedPayload < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader available_notification_methods: ::Array[Telnyx::Models::Porting::PortingEventMessagingChangedPayload::available_notification_method]?
+
+        def available_notification_methods=: (
+          ::Array[Telnyx::Models::Porting::PortingEventMessagingChangedPayload::available_notification_method]
+        ) -> ::Array[Telnyx::Models::Porting::PortingEventMessagingChangedPayload::available_notification_method]
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader event_type: Telnyx::Models::Porting::PortingEventMessagingChangedPayload::event_type?
+
+        def event_type=: (
+          Telnyx::Models::Porting::PortingEventMessagingChangedPayload::event_type
+        ) -> Telnyx::Models::Porting::PortingEventMessagingChangedPayload::event_type
+
+        attr_reader payload: Telnyx::Porting::PortingEventMessagingChangedPayload::Payload?
+
+        def payload=: (
+          Telnyx::Porting::PortingEventMessagingChangedPayload::Payload
+        ) -> Telnyx::Porting::PortingEventMessagingChangedPayload::Payload
+
+        attr_reader payload_status: Telnyx::Models::Porting::PortingEventMessagingChangedPayload::payload_status?
+
+        def payload_status=: (
+          Telnyx::Models::Porting::PortingEventMessagingChangedPayload::payload_status
+        ) -> Telnyx::Models::Porting::PortingEventMessagingChangedPayload::payload_status
+
+        attr_reader porting_order_id: String?
+
+        def porting_order_id=: (String) -> String
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?available_notification_methods: ::Array[Telnyx::Models::Porting::PortingEventMessagingChangedPayload::available_notification_method],
+          ?created_at: Time,
+          ?event_type: Telnyx::Models::Porting::PortingEventMessagingChangedPayload::event_type,
+          ?payload: Telnyx::Porting::PortingEventMessagingChangedPayload::Payload,
+          ?payload_status: Telnyx::Models::Porting::PortingEventMessagingChangedPayload::payload_status,
+          ?porting_order_id: String,
+          ?record_type: String,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          available_notification_methods: ::Array[Telnyx::Models::Porting::PortingEventMessagingChangedPayload::available_notification_method],
+          created_at: Time,
+          event_type: Telnyx::Models::Porting::PortingEventMessagingChangedPayload::event_type,
+          payload: Telnyx::Porting::PortingEventMessagingChangedPayload::Payload,
+          payload_status: Telnyx::Models::Porting::PortingEventMessagingChangedPayload::payload_status,
+          porting_order_id: String,
+          record_type: String,
+          updated_at: Time
+        }
+
+        type available_notification_method = :email | :webhook | :webhook_v1
+
+        module AvailableNotificationMethod
+          extend Telnyx::Internal::Type::Enum
+
+          EMAIL: :email
+          WEBHOOK: :webhook
+          WEBHOOK_V1: :webhook_v1
+
+          def self?.values: -> ::Array[Telnyx::Models::Porting::PortingEventMessagingChangedPayload::available_notification_method]
+        end
+
+        type event_type =
+          :"porting_order.deleted"
+          | :"porting_order.loa_updated"
+          | :"porting_order.messaging_changed"
+          | :"porting_order.status_changed"
+          | :"porting_order.sharing_token_expired"
+          | :"porting_order.new_comment"
+          | :"porting_order.split"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          PORTING_ORDER_DELETED: :"porting_order.deleted"
+          PORTING_ORDER_LOA_UPDATED: :"porting_order.loa_updated"
+          PORTING_ORDER_MESSAGING_CHANGED: :"porting_order.messaging_changed"
+          PORTING_ORDER_STATUS_CHANGED: :"porting_order.status_changed"
+          PORTING_ORDER_SHARING_TOKEN_EXPIRED: :"porting_order.sharing_token_expired"
+          PORTING_ORDER_NEW_COMMENT: :"porting_order.new_comment"
+          PORTING_ORDER_SPLIT: :"porting_order.split"
+
+          def self?.values: -> ::Array[Telnyx::Models::Porting::PortingEventMessagingChangedPayload::event_type]
+        end
+
+        type payload =
+          {
+            id: String,
+            customer_reference: String,
+            messaging: Telnyx::Porting::PortingEventMessagingChangedPayload::Payload::Messaging,
+            support_key: String
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader customer_reference: String?
+
+          def customer_reference=: (String) -> String
+
+          attr_reader messaging: Telnyx::Porting::PortingEventMessagingChangedPayload::Payload::Messaging?
+
+          def messaging=: (
+            Telnyx::Porting::PortingEventMessagingChangedPayload::Payload::Messaging
+          ) -> Telnyx::Porting::PortingEventMessagingChangedPayload::Payload::Messaging
+
+          attr_reader support_key: String?
+
+          def support_key=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?customer_reference: String,
+            ?messaging: Telnyx::Porting::PortingEventMessagingChangedPayload::Payload::Messaging,
+            ?support_key: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            customer_reference: String,
+            messaging: Telnyx::Porting::PortingEventMessagingChangedPayload::Payload::Messaging,
+            support_key: String
+          }
+
+          type messaging =
+            {
+              enable_messaging: bool,
+              messaging_capable: bool,
+              messaging_port_completed: bool,
+              messaging_port_status: Telnyx::Models::Porting::PortingEventMessagingChangedPayload::Payload::Messaging::messaging_port_status
+            }
+
+          class Messaging < Telnyx::Internal::Type::BaseModel
+            attr_reader enable_messaging: bool?
+
+            def enable_messaging=: (bool) -> bool
+
+            attr_reader messaging_capable: bool?
+
+            def messaging_capable=: (bool) -> bool
+
+            attr_reader messaging_port_completed: bool?
+
+            def messaging_port_completed=: (bool) -> bool
+
+            attr_reader messaging_port_status: Telnyx::Models::Porting::PortingEventMessagingChangedPayload::Payload::Messaging::messaging_port_status?
+
+            def messaging_port_status=: (
+              Telnyx::Models::Porting::PortingEventMessagingChangedPayload::Payload::Messaging::messaging_port_status
+            ) -> Telnyx::Models::Porting::PortingEventMessagingChangedPayload::Payload::Messaging::messaging_port_status
+
+            def initialize: (
+              ?enable_messaging: bool,
+              ?messaging_capable: bool,
+              ?messaging_port_completed: bool,
+              ?messaging_port_status: Telnyx::Models::Porting::PortingEventMessagingChangedPayload::Payload::Messaging::messaging_port_status
+            ) -> void
+
+            def to_hash: -> {
+              enable_messaging: bool,
+              messaging_capable: bool,
+              messaging_port_completed: bool,
+              messaging_port_status: Telnyx::Models::Porting::PortingEventMessagingChangedPayload::Payload::Messaging::messaging_port_status
+            }
+
+            type messaging_port_status =
+              :not_applicable
+              | :pending
+              | :activating
+              | :exception
+              | :canceled
+              | :partial_port_complete
+              | :ported
+
+            module MessagingPortStatus
+              extend Telnyx::Internal::Type::Enum
+
+              NOT_APPLICABLE: :not_applicable
+              PENDING: :pending
+              ACTIVATING: :activating
+              EXCEPTION: :exception
+              CANCELED: :canceled
+              PARTIAL_PORT_COMPLETE: :partial_port_complete
+              PORTED: :ported
+
+              def self?.values: -> ::Array[Telnyx::Models::Porting::PortingEventMessagingChangedPayload::Payload::Messaging::messaging_port_status]
+            end
+          end
+        end
+
+        type payload_status = :created | :completed
+
+        module PayloadStatus
+          extend Telnyx::Internal::Type::Enum
+
+          CREATED: :created
+          COMPLETED: :completed
+
+          def self?.values: -> ::Array[Telnyx::Models::Porting::PortingEventMessagingChangedPayload::payload_status]
+        end
+      end
+    end
+  end
+end

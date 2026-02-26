@@ -22,15 +22,13 @@ module Telnyx
       class Data < Telnyx::Internal::Type::BaseModel
         # @!attribute cost_information
         #
-        #   @return [Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::CostInformation, nil]
-        optional :cost_information,
-                 -> { Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::CostInformation }
+        #   @return [Telnyx::Models::CostInformation, nil]
+        optional :cost_information, -> { Telnyx::CostInformation }
 
         # @!attribute features
         #
-        #   @return [Array<Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::Feature>, nil]
-        optional :features,
-                 -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::Feature] }
+        #   @return [Array<Telnyx::Models::Feature>, nil]
+        optional :features, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Feature] }
 
         # @!attribute phone_number
         #
@@ -50,53 +48,16 @@ module Telnyx
 
         # @!attribute region_information
         #
-        #   @return [Array<Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation>, nil]
-        optional :region_information,
-                 -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation] }
+        #   @return [Array<Telnyx::Models::RegionInformation>, nil]
+        optional :region_information, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::RegionInformation] }
 
         # @!method initialize(cost_information: nil, features: nil, phone_number: nil, range: nil, record_type: nil, region_information: nil)
-        #   @param cost_information [Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::CostInformation]
-        #   @param features [Array<Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::Feature>]
+        #   @param cost_information [Telnyx::Models::CostInformation]
+        #   @param features [Array<Telnyx::Models::Feature>]
         #   @param phone_number [String]
         #   @param range [Integer]
         #   @param record_type [Symbol, Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RecordType]
-        #   @param region_information [Array<Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation>]
-
-        # @see Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data#cost_information
-        class CostInformation < Telnyx::Internal::Type::BaseModel
-          # @!attribute currency
-          #   The ISO 4217 code for the currency.
-          #
-          #   @return [String, nil]
-          optional :currency, String
-
-          # @!attribute monthly_cost
-          #
-          #   @return [String, nil]
-          optional :monthly_cost, String
-
-          # @!attribute upfront_cost
-          #
-          #   @return [String, nil]
-          optional :upfront_cost, String
-
-          # @!method initialize(currency: nil, monthly_cost: nil, upfront_cost: nil)
-          #   @param currency [String] The ISO 4217 code for the currency.
-          #
-          #   @param monthly_cost [String]
-          #
-          #   @param upfront_cost [String]
-        end
-
-        class Feature < Telnyx::Internal::Type::BaseModel
-          # @!attribute name
-          #
-          #   @return [String, nil]
-          optional :name, String
-
-          # @!method initialize(name: nil)
-          #   @param name [String]
-        end
+        #   @param region_information [Array<Telnyx::Models::RegionInformation>]
 
         # @see Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data#record_type
         module RecordType
@@ -106,36 +67,6 @@ module Telnyx
 
           # @!method self.values
           #   @return [Array<Symbol>]
-        end
-
-        class RegionInformation < Telnyx::Internal::Type::BaseModel
-          # @!attribute region_name
-          #
-          #   @return [String, nil]
-          optional :region_name, String
-
-          # @!attribute region_type
-          #
-          #   @return [Symbol, Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation::RegionType, nil]
-          optional :region_type,
-                   enum: -> { Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation::RegionType }
-
-          # @!method initialize(region_name: nil, region_type: nil)
-          #   @param region_name [String]
-          #   @param region_type [Symbol, Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation::RegionType]
-
-          # @see Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation#region_type
-          module RegionType
-            extend Telnyx::Internal::Type::Enum
-
-            COUNTRY_CODE = :country_code
-            RATE_CENTER = :rate_center
-            STATE = :state
-            LOCATION = :location
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
         end
       end
     end

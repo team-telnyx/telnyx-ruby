@@ -15,7 +15,7 @@ class Telnyx::Test::Resources::Actions::PurchaseTest < Telnyx::Test::ResourceTes
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::SimpleSimCard]) | nil,
-        errors: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Actions::PurchaseCreateResponse::Error]) | nil
+        errors: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::WirelessError]) | nil
       }
     end
   end

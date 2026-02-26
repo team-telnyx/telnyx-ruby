@@ -72,9 +72,7 @@ module Telnyx
             sig do
               returns(
                 T.nilable(
-                  T::Array[
-                    Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus
-                  ]
+                  T::Array[Telnyx::AI::Assistants::Tests::TestRunDetailResult]
                 )
               )
             end
@@ -84,7 +82,7 @@ module Telnyx
               params(
                 detail_status:
                   T::Array[
-                    Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus::OrHash
+                    Telnyx::AI::Assistants::Tests::TestRunDetailResult::OrHash
                   ]
               ).void
             end
@@ -127,7 +125,7 @@ module Telnyx
                 conversation_insights_id: String,
                 detail_status:
                   T::Array[
-                    Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus::OrHash
+                    Telnyx::AI::Assistants::Tests::TestRunDetailResult::OrHash
                   ],
                 logs: String,
                 test_suite_run_id: String,
@@ -185,7 +183,7 @@ module Telnyx
                   conversation_insights_id: String,
                   detail_status:
                     T::Array[
-                      Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus
+                      Telnyx::AI::Assistants::Tests::TestRunDetailResult
                     ],
                   logs: String,
                   test_suite_run_id: String,
@@ -194,64 +192,6 @@ module Telnyx
               )
             end
             def to_hash
-            end
-
-            class DetailStatus < Telnyx::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus,
-                    Telnyx::Internal::AnyHash
-                  )
-                end
-
-              sig { returns(String) }
-              attr_accessor :name
-
-              # Represents the lifecycle of a test:
-              #
-              # - 'pending': Test is waiting to be executed.
-              # - 'starting': Test execution is initializing.
-              # - 'running': Test is currently executing.
-              # - 'passed': Test completed successfully.
-              # - 'failed': Test executed but did not pass.
-              # - 'error': An error occurred during test execution.
-              sig do
-                returns(Telnyx::AI::Assistants::Tests::TestStatus::TaggedSymbol)
-              end
-              attr_accessor :status
-
-              sig do
-                params(
-                  name: String,
-                  status: Telnyx::AI::Assistants::Tests::TestStatus::OrSymbol
-                ).returns(T.attached_class)
-              end
-              def self.new(
-                name:,
-                # Represents the lifecycle of a test:
-                #
-                # - 'pending': Test is waiting to be executed.
-                # - 'starting': Test execution is initializing.
-                # - 'running': Test is currently executing.
-                # - 'passed': Test completed successfully.
-                # - 'failed': Test executed but did not pass.
-                # - 'error': An error occurred during test execution.
-                status:
-              )
-              end
-
-              sig do
-                override.returns(
-                  {
-                    name: String,
-                    status:
-                      Telnyx::AI::Assistants::Tests::TestStatus::TaggedSymbol
-                  }
-                )
-              end
-              def to_hash
-              end
             end
           end
         end

@@ -112,23 +112,10 @@ module Telnyx
           sig { params(record_type: String).void }
           attr_writer :record_type
 
-          sig do
-            returns(
-              T.nilable(
-                T::Array[Telnyx::Models::Messages::RcSendResponse::Data::To]
-              )
-            )
-          end
+          sig { returns(T.nilable(T::Array[Telnyx::RcsToItem])) }
           attr_reader :to
 
-          sig do
-            params(
-              to:
-                T::Array[
-                  Telnyx::Models::Messages::RcSendResponse::Data::To::OrHash
-                ]
-            ).void
-          end
+          sig { params(to: T::Array[Telnyx::RcsToItem::OrHash]).void }
           attr_writer :to
 
           sig { returns(T.nilable(String)) }
@@ -149,10 +136,7 @@ module Telnyx
               organization_id: String,
               received_at: Time,
               record_type: String,
-              to:
-                T::Array[
-                  Telnyx::Models::Messages::RcSendResponse::Data::To::OrHash
-                ],
+              to: T::Array[Telnyx::RcsToItem::OrHash],
               type: String
             ).returns(T.attached_class)
           end
@@ -184,8 +168,7 @@ module Telnyx
                 organization_id: String,
                 received_at: Time,
                 record_type: String,
-                to:
-                  T::Array[Telnyx::Models::Messages::RcSendResponse::Data::To],
+                to: T::Array[Telnyx::RcsToItem],
                 type: String
               }
             )
@@ -239,69 +222,6 @@ module Telnyx
             sig do
               override.returns(
                 { agent_id: String, agent_name: String, carrier: String }
-              )
-            end
-            def to_hash
-            end
-          end
-
-          class To < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Models::Messages::RcSendResponse::Data::To,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            sig { returns(T.nilable(String)) }
-            attr_reader :carrier
-
-            sig { params(carrier: String).void }
-            attr_writer :carrier
-
-            sig { returns(T.nilable(String)) }
-            attr_reader :line_type
-
-            sig { params(line_type: String).void }
-            attr_writer :line_type
-
-            sig { returns(T.nilable(String)) }
-            attr_reader :phone_number
-
-            sig { params(phone_number: String).void }
-            attr_writer :phone_number
-
-            sig { returns(T.nilable(String)) }
-            attr_reader :status
-
-            sig { params(status: String).void }
-            attr_writer :status
-
-            sig do
-              params(
-                carrier: String,
-                line_type: String,
-                phone_number: String,
-                status: String
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              carrier: nil,
-              line_type: nil,
-              phone_number: nil,
-              status: nil
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  carrier: String,
-                  line_type: String,
-                  phone_number: String,
-                  status: String
-                }
               )
             end
             def to_hash

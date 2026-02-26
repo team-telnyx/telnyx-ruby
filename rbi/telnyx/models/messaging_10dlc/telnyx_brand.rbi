@@ -181,16 +181,14 @@ module Telnyx
         attr_writer :mock
 
         sig do
-          returns(
-            T.nilable(Telnyx::Messaging10dlc::TelnyxBrand::OptionalAttributes)
-          )
+          returns(T.nilable(Telnyx::Messaging10dlc::BrandOptionalAttributes))
         end
         attr_reader :optional_attributes
 
         sig do
           params(
             optional_attributes:
-              Telnyx::Messaging10dlc::TelnyxBrand::OptionalAttributes::OrHash
+              Telnyx::Messaging10dlc::BrandOptionalAttributes::OrHash
           ).void
         end
         attr_writer :optional_attributes
@@ -339,7 +337,7 @@ module Telnyx
             mobile_phone: String,
             mock: T::Boolean,
             optional_attributes:
-              Telnyx::Messaging10dlc::TelnyxBrand::OptionalAttributes::OrHash,
+              Telnyx::Messaging10dlc::BrandOptionalAttributes::OrHash,
             phone: String,
             postal_code: String,
             reference_id: String,
@@ -468,7 +466,7 @@ module Telnyx
               mobile_phone: String,
               mock: T::Boolean,
               optional_attributes:
-                Telnyx::Messaging10dlc::TelnyxBrand::OptionalAttributes,
+                Telnyx::Messaging10dlc::BrandOptionalAttributes,
               phone: String,
               postal_code: String,
               reference_id: String,
@@ -537,34 +535,6 @@ module Telnyx
             )
           end
           def self.values
-          end
-        end
-
-        class OptionalAttributes < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::Messaging10dlc::TelnyxBrand::OptionalAttributes,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          # The tax exempt status of the brand
-          sig { returns(T.nilable(String)) }
-          attr_reader :tax_exempt_status
-
-          sig { params(tax_exempt_status: String).void }
-          attr_writer :tax_exempt_status
-
-          sig { params(tax_exempt_status: String).returns(T.attached_class) }
-          def self.new(
-            # The tax exempt status of the brand
-            tax_exempt_status: nil
-          )
-          end
-
-          sig { override.returns({ tax_exempt_status: String }) }
-          def to_hash
           end
         end
 

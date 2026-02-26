@@ -63,8 +63,8 @@ module Telnyx
 
           # @!attribute to
           #
-          #   @return [Array<Telnyx::Models::Messages::RcSendResponse::Data::To>, nil]
-          optional :to, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Messages::RcSendResponse::Data::To] }
+          #   @return [Array<Telnyx::Models::RcsToItem>, nil]
+          optional :to, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::RcsToItem] }
 
           # @!attribute type
           #
@@ -90,7 +90,7 @@ module Telnyx
           #
           #   @param record_type [String]
           #
-          #   @param to [Array<Telnyx::Models::Messages::RcSendResponse::Data::To>]
+          #   @param to [Array<Telnyx::Models::RcsToItem>]
           #
           #   @param type [String]
 
@@ -118,34 +118,6 @@ module Telnyx
             #   @param agent_name [String]
             #
             #   @param carrier [String]
-          end
-
-          class To < Telnyx::Internal::Type::BaseModel
-            # @!attribute carrier
-            #
-            #   @return [String, nil]
-            optional :carrier, String
-
-            # @!attribute line_type
-            #
-            #   @return [String, nil]
-            optional :line_type, String
-
-            # @!attribute phone_number
-            #
-            #   @return [String, nil]
-            optional :phone_number, String
-
-            # @!attribute status
-            #
-            #   @return [String, nil]
-            optional :status, String
-
-            # @!method initialize(carrier: nil, line_type: nil, phone_number: nil, status: nil)
-            #   @param carrier [String]
-            #   @param line_type [String]
-            #   @param phone_number [String]
-            #   @param status [String]
           end
         end
       end

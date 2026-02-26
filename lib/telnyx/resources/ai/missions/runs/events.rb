@@ -26,7 +26,7 @@ module Telnyx
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::Missions::Runs::EventListResponse>]
+            # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::Missions::Runs::EventData>]
             #
             # @see Telnyx::Models::AI::Missions::Runs::EventListParams
             def list(run_id, params)
@@ -40,7 +40,7 @@ module Telnyx
                 path: ["ai/missions/%1$s/runs/%2$s/events", mission_id, run_id],
                 query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
                 page: Telnyx::Internal::DefaultFlatPagination,
-                model: Telnyx::Models::AI::Missions::Runs::EventListResponse,
+                model: Telnyx::AI::Missions::Runs::EventData,
                 options: options
               )
             end

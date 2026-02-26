@@ -3,47 +3,18 @@ module Telnyx
     module AI
       module Integrations
         type connection_retrieve_response =
-          {
-            data: Telnyx::Models::AI::Integrations::ConnectionRetrieveResponse::Data
-          }
+          { data: Telnyx::AI::Integrations::IntegrationConnection }
 
         class ConnectionRetrieveResponse < Telnyx::Internal::Type::BaseModel
-          attr_accessor data: Telnyx::Models::AI::Integrations::ConnectionRetrieveResponse::Data
+          attr_accessor data: Telnyx::AI::Integrations::IntegrationConnection
 
           def initialize: (
-            data: Telnyx::Models::AI::Integrations::ConnectionRetrieveResponse::Data
+            data: Telnyx::AI::Integrations::IntegrationConnection
           ) -> void
 
           def to_hash: -> {
-            data: Telnyx::Models::AI::Integrations::ConnectionRetrieveResponse::Data
+            data: Telnyx::AI::Integrations::IntegrationConnection
           }
-
-          type data =
-            {
-              id: String,
-              allowed_tools: ::Array[String],
-              integration_id: String
-            }
-
-          class Data < Telnyx::Internal::Type::BaseModel
-            attr_accessor id: String
-
-            attr_accessor allowed_tools: ::Array[String]
-
-            attr_accessor integration_id: String
-
-            def initialize: (
-              id: String,
-              allowed_tools: ::Array[String],
-              integration_id: String
-            ) -> void
-
-            def to_hash: -> {
-              id: String,
-              allowed_tools: ::Array[String],
-              integration_id: String
-            }
-          end
         end
       end
     end

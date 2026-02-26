@@ -1,0 +1,81 @@
+module Telnyx
+  module Models
+    type user_requirement =
+      {
+        created_at: Time,
+        expires_at: Time,
+        field_type: String,
+        field_value: String,
+        requirement_id: String,
+        status: Telnyx::Models::UserRequirement::status,
+        updated_at: Time
+      }
+
+    class UserRequirement < Telnyx::Internal::Type::BaseModel
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader expires_at: Time?
+
+      def expires_at=: (Time) -> Time
+
+      attr_reader field_type: String?
+
+      def field_type=: (String) -> String
+
+      attr_reader field_value: String?
+
+      def field_value=: (String) -> String
+
+      attr_reader requirement_id: String?
+
+      def requirement_id=: (String) -> String
+
+      attr_reader status: Telnyx::Models::UserRequirement::status?
+
+      def status=: (
+        Telnyx::Models::UserRequirement::status
+      ) -> Telnyx::Models::UserRequirement::status
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        ?created_at: Time,
+        ?expires_at: Time,
+        ?field_type: String,
+        ?field_value: String,
+        ?requirement_id: String,
+        ?status: Telnyx::Models::UserRequirement::status,
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        created_at: Time,
+        expires_at: Time,
+        field_type: String,
+        field_value: String,
+        requirement_id: String,
+        status: Telnyx::Models::UserRequirement::status,
+        updated_at: Time
+      }
+
+      type status =
+        :approved | :unapproved | :"pending-approval" | :declined | :expired
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        APPROVED: :approved
+        UNAPPROVED: :unapproved
+        PENDING_APPROVAL: :"pending-approval"
+        DECLINED: :declined
+        EXPIRED: :expired
+
+        def self?.values: -> ::Array[Telnyx::Models::UserRequirement::status]
+      end
+    end
+  end
+end

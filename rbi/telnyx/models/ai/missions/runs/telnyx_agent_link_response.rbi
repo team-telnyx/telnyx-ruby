@@ -14,25 +14,19 @@ module Telnyx
                 )
               end
 
-            sig do
-              returns(
-                Telnyx::Models::AI::Missions::Runs::TelnyxAgentLinkResponse::Data
-              )
-            end
+            sig { returns(Telnyx::AI::Missions::Runs::TelnyxAgentData) }
             attr_reader :data
 
             sig do
               params(
-                data:
-                  Telnyx::Models::AI::Missions::Runs::TelnyxAgentLinkResponse::Data::OrHash
+                data: Telnyx::AI::Missions::Runs::TelnyxAgentData::OrHash
               ).void
             end
             attr_writer :data
 
             sig do
               params(
-                data:
-                  Telnyx::Models::AI::Missions::Runs::TelnyxAgentLinkResponse::Data::OrHash
+                data: Telnyx::AI::Missions::Runs::TelnyxAgentData::OrHash
               ).returns(T.attached_class)
             end
             def self.new(data:)
@@ -40,50 +34,10 @@ module Telnyx
 
             sig do
               override.returns(
-                {
-                  data:
-                    Telnyx::Models::AI::Missions::Runs::TelnyxAgentLinkResponse::Data
-                }
+                { data: Telnyx::AI::Missions::Runs::TelnyxAgentData }
               )
             end
             def to_hash
-            end
-
-            class Data < Telnyx::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    Telnyx::Models::AI::Missions::Runs::TelnyxAgentLinkResponse::Data,
-                    Telnyx::Internal::AnyHash
-                  )
-                end
-
-              sig { returns(Time) }
-              attr_accessor :created_at
-
-              sig { returns(String) }
-              attr_accessor :run_id
-
-              sig { returns(String) }
-              attr_accessor :telnyx_agent_id
-
-              sig do
-                params(
-                  created_at: Time,
-                  run_id: String,
-                  telnyx_agent_id: String
-                ).returns(T.attached_class)
-              end
-              def self.new(created_at:, run_id:, telnyx_agent_id:)
-              end
-
-              sig do
-                override.returns(
-                  { created_at: Time, run_id: String, telnyx_agent_id: String }
-                )
-              end
-              def to_hash
-              end
             end
           end
         end

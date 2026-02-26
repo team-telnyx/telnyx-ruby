@@ -1,0 +1,24 @@
+module Telnyx
+  module Models
+    class CallControlCommandResultWithConversationID = Calls::CallControlCommandResultWithConversationID
+
+    module Calls
+      type call_control_command_result_with_conversation_id =
+        { conversation_id: String, result: String }
+
+      class CallControlCommandResultWithConversationID < Telnyx::Internal::Type::BaseModel
+        attr_reader conversation_id: String?
+
+        def conversation_id=: (String) -> String
+
+        attr_reader result: String?
+
+        def result=: (String) -> String
+
+        def initialize: (?conversation_id: String, ?result: String) -> void
+
+        def to_hash: -> { conversation_id: String, result: String }
+      end
+    end
+  end
+end
