@@ -1335,6 +1335,8 @@ module Telnyx
 
   PwgAssignedResourcesSummary = Telnyx::Models::PwgAssignedResourcesSummary
 
+  Queue = Telnyx::Models::Queue
+
   QueueCreateParams = Telnyx::Models::QueueCreateParams
 
   QueueDeleteParams = Telnyx::Models::QueueDeleteParams
