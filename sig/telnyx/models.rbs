@@ -1431,9 +1431,9 @@ module Telnyx
 
   class TexmlSecretsParams = Telnyx::Models::TexmlSecretsParams
 
-  class TextToSpeechListVoicesParams = Telnyx::Models::TextToSpeechListVoicesParams
+  class TextToSpeechGenerateSpeechParams = Telnyx::Models::TextToSpeechGenerateSpeechParams
 
-  class TextToSpeechStreamParams = Telnyx::Models::TextToSpeechStreamParams
+  class TextToSpeechListVoicesParams = Telnyx::Models::TextToSpeechListVoicesParams
 
   module TrafficType = Telnyx::Models::TrafficType
 

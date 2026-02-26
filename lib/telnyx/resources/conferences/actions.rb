@@ -391,13 +391,11 @@ module Telnyx
         #
         # - `conference.recording.saved`
         #
-        # @overload record_start(id, format_:, channels: nil, command_id: nil, custom_file_name: nil, play_beep: nil, region: nil, trim: nil, request_options: {})
+        # @overload record_start(id, format_:, command_id: nil, custom_file_name: nil, play_beep: nil, region: nil, trim: nil, request_options: {})
         #
         # @param id [String] Specifies the conference to record by id or name
         #
         # @param format_ [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Format] The audio file format used when storing the conference recording. Can be either
-        #
-        # @param channels [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Channels] When `dual`, final audio file will be stereo recorded with the conference creato
         #
         # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #

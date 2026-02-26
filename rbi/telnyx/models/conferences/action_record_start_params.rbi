@@ -24,25 +24,6 @@ module Telnyx
         end
         attr_accessor :format_
 
-        # When `dual`, final audio file will be stereo recorded with the conference
-        # creator on the first channel, and the rest on the second channel.
-        sig do
-          returns(
-            T.nilable(
-              Telnyx::Conferences::ActionRecordStartParams::Channels::OrSymbol
-            )
-          )
-        end
-        attr_reader :channels
-
-        sig do
-          params(
-            channels:
-              Telnyx::Conferences::ActionRecordStartParams::Channels::OrSymbol
-          ).void
-        end
-        attr_writer :channels
-
         # Use this field to avoid duplicate commands. Telnyx will ignore any command with
         # the same `command_id` for the same `conference_id`.
         sig { returns(T.nilable(String)) }
@@ -107,8 +88,6 @@ module Telnyx
           params(
             format_:
               Telnyx::Conferences::ActionRecordStartParams::Format::OrSymbol,
-            channels:
-              Telnyx::Conferences::ActionRecordStartParams::Channels::OrSymbol,
             command_id: String,
             custom_file_name: String,
             play_beep: T::Boolean,
@@ -122,9 +101,6 @@ module Telnyx
           # The audio file format used when storing the conference recording. Can be either
           # `mp3` or `wav`.
           format_:,
-          # When `dual`, final audio file will be stereo recorded with the conference
-          # creator on the first channel, and the rest on the second channel.
-          channels: nil,
           # Use this field to avoid duplicate commands. Telnyx will ignore any command with
           # the same `command_id` for the same `conference_id`.
           command_id: nil,
@@ -148,8 +124,6 @@ module Telnyx
             {
               format_:
                 Telnyx::Conferences::ActionRecordStartParams::Format::OrSymbol,
-              channels:
-                Telnyx::Conferences::ActionRecordStartParams::Channels::OrSymbol,
               command_id: String,
               custom_file_name: String,
               play_beep: T::Boolean,
@@ -193,42 +167,6 @@ module Telnyx
             override.returns(
               T::Array[
                 Telnyx::Conferences::ActionRecordStartParams::Format::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # When `dual`, final audio file will be stereo recorded with the conference
-        # creator on the first channel, and the rest on the second channel.
-        module Channels
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::Conferences::ActionRecordStartParams::Channels
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          SINGLE =
-            T.let(
-              :single,
-              Telnyx::Conferences::ActionRecordStartParams::Channels::TaggedSymbol
-            )
-          DUAL =
-            T.let(
-              :dual,
-              Telnyx::Conferences::ActionRecordStartParams::Channels::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Conferences::ActionRecordStartParams::Channels::TaggedSymbol
               ]
             )
           end
