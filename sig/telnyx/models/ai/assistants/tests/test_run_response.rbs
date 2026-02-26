@@ -15,7 +15,7 @@ module Telnyx
               completed_at: Time,
               conversation_id: String,
               conversation_insights_id: String,
-              detail_status: ::Array[Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus],
+              detail_status: ::Array[Telnyx::AI::Assistants::Tests::TestRunDetailResult],
               logs: String,
               test_suite_run_id: String,
               updated_at: Time
@@ -44,11 +44,11 @@ module Telnyx
 
             def conversation_insights_id=: (String) -> String
 
-            attr_reader detail_status: ::Array[Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus]?
+            attr_reader detail_status: ::Array[Telnyx::AI::Assistants::Tests::TestRunDetailResult]?
 
             def detail_status=: (
-              ::Array[Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus]
-            ) -> ::Array[Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus]
+              ::Array[Telnyx::AI::Assistants::Tests::TestRunDetailResult]
+            ) -> ::Array[Telnyx::AI::Assistants::Tests::TestRunDetailResult]
 
             attr_reader logs: String?
 
@@ -71,7 +71,7 @@ module Telnyx
               ?completed_at: Time,
               ?conversation_id: String,
               ?conversation_insights_id: String,
-              ?detail_status: ::Array[Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus],
+              ?detail_status: ::Array[Telnyx::AI::Assistants::Tests::TestRunDetailResult],
               ?logs: String,
               ?test_suite_run_id: String,
               ?updated_at: Time
@@ -86,33 +86,11 @@ module Telnyx
               completed_at: Time,
               conversation_id: String,
               conversation_insights_id: String,
-              detail_status: ::Array[Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus],
+              detail_status: ::Array[Telnyx::AI::Assistants::Tests::TestRunDetailResult],
               logs: String,
               test_suite_run_id: String,
               updated_at: Time
             }
-
-            type detail_status =
-              {
-                name: String,
-                status: Telnyx::Models::AI::Assistants::Tests::test_status
-              }
-
-            class DetailStatus < Telnyx::Internal::Type::BaseModel
-              attr_accessor name: String
-
-              attr_accessor status: Telnyx::Models::AI::Assistants::Tests::test_status
-
-              def initialize: (
-                name: String,
-                status: Telnyx::Models::AI::Assistants::Tests::test_status
-              ) -> void
-
-              def to_hash: -> {
-                name: String,
-                status: Telnyx::Models::AI::Assistants::Tests::test_status
-              }
-            end
           end
         end
       end

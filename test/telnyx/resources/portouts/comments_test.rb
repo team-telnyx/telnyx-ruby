@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Portouts::CommentsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Portouts::CommentCreateResponse::Data | nil
+        data: Telnyx::Portouts::PortoutComment | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::Portouts::CommentsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Portouts::CommentListResponse::Data]) | nil,
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Portouts::PortoutComment]) | nil,
         meta: Telnyx::Metadata | nil
       }
     end

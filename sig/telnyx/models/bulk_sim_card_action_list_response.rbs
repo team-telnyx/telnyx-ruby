@@ -7,16 +7,16 @@ module Telnyx
         created_at: String,
         record_type: String,
         settings: ::Hash[Symbol, top],
-        sim_card_actions_summary: ::Array[Telnyx::Models::BulkSimCardActionListResponse::SimCardActionsSummary],
+        sim_card_actions_summary: ::Array[Telnyx::SimCardActionsSummary],
         updated_at: String
       }
 
     class BulkSimCardActionListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader sim_card_actions_summary: ::Array[Telnyx::Models::BulkSimCardActionListResponse::SimCardActionsSummary]?
+      attr_reader sim_card_actions_summary: ::Array[Telnyx::SimCardActionsSummary]?
 
       def sim_card_actions_summary=: (
-        ::Array[Telnyx::Models::BulkSimCardActionListResponse::SimCardActionsSummary]
-      ) -> ::Array[Telnyx::Models::BulkSimCardActionListResponse::SimCardActionsSummary]
+        ::Array[Telnyx::SimCardActionsSummary]
+      ) -> ::Array[Telnyx::SimCardActionsSummary]
 
       attr_reader id: String?
 
@@ -50,7 +50,7 @@ module Telnyx
         ?created_at: String,
         ?record_type: String,
         ?settings: ::Hash[Symbol, top],
-        ?sim_card_actions_summary: ::Array[Telnyx::Models::BulkSimCardActionListResponse::SimCardActionsSummary],
+        ?sim_card_actions_summary: ::Array[Telnyx::SimCardActionsSummary],
         ?updated_at: String
       ) -> void
 
@@ -60,7 +60,7 @@ module Telnyx
         created_at: String,
         record_type: String,
         settings: ::Hash[Symbol, top],
-        sim_card_actions_summary: ::Array[Telnyx::Models::BulkSimCardActionListResponse::SimCardActionsSummary],
+        sim_card_actions_summary: ::Array[Telnyx::SimCardActionsSummary],
         updated_at: String
       }
 
@@ -72,47 +72,6 @@ module Telnyx
         BULK_SET_PUBLIC_IPS: :bulk_set_public_ips
 
         def self?.values: -> ::Array[Telnyx::Models::BulkSimCardActionListResponse::action_type]
-      end
-
-      type sim_card_actions_summary =
-        {
-          count: Integer,
-          status: Telnyx::Models::BulkSimCardActionListResponse::SimCardActionsSummary::status
-        }
-
-      class SimCardActionsSummary < Telnyx::Internal::Type::BaseModel
-        attr_reader count: Integer?
-
-        def count=: (Integer) -> Integer
-
-        attr_reader status: Telnyx::Models::BulkSimCardActionListResponse::SimCardActionsSummary::status?
-
-        def status=: (
-          Telnyx::Models::BulkSimCardActionListResponse::SimCardActionsSummary::status
-        ) -> Telnyx::Models::BulkSimCardActionListResponse::SimCardActionsSummary::status
-
-        def initialize: (
-          ?count: Integer,
-          ?status: Telnyx::Models::BulkSimCardActionListResponse::SimCardActionsSummary::status
-        ) -> void
-
-        def to_hash: -> {
-          count: Integer,
-          status: Telnyx::Models::BulkSimCardActionListResponse::SimCardActionsSummary::status
-        }
-
-        type status = :"in-progress" | :completed | :failed | :interrupted
-
-        module Status
-          extend Telnyx::Internal::Type::Enum
-
-          IN_PROGRESS: :"in-progress"
-          COMPLETED: :completed
-          FAILED: :failed
-          INTERRUPTED: :interrupted
-
-          def self?.values: -> ::Array[Telnyx::Models::BulkSimCardActionListResponse::SimCardActionsSummary::status]
-        end
       end
     end
   end

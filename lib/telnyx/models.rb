@@ -101,6 +101,8 @@ module Telnyx
 
   APIError = Telnyx::Models::APIError
 
+  Attempt = Telnyx::Models::Attempt
+
   AuditEventListParams = Telnyx::Models::AuditEventListParams
 
   AuthenticationProvider = Telnyx::Models::AuthenticationProvider
@@ -140,6 +142,8 @@ module Telnyx
   BillingGroupRetrieveParams = Telnyx::Models::BillingGroupRetrieveParams
 
   BillingGroupUpdateParams = Telnyx::Models::BillingGroupUpdateParams
+
+  BulkMessagingSettingsUpdatePhoneNumbers = Telnyx::Models::BulkMessagingSettingsUpdatePhoneNumbers
 
   BulkSimCardActionListParams = Telnyx::Models::BulkSimCardActionListParams
 
@@ -352,6 +356,8 @@ module Telnyx
 
   ConferenceListParticipantsParams = Telnyx::Models::ConferenceListParticipantsParams
 
+  ConferenceParticipant = Telnyx::Models::ConferenceParticipant
+
   ConferenceParticipantJoined = Telnyx::Models::ConferenceParticipantJoined
 
   ConferenceParticipantJoinedWebhookEvent = Telnyx::Models::ConferenceParticipantJoinedWebhookEvent
@@ -422,6 +428,10 @@ module Telnyx
   ConnectionsPaginationMeta = Telnyx::Models::ConnectionsPaginationMeta
 
   ConsumedData = Telnyx::Models::ConsumedData
+
+  CostInformation = Telnyx::Models::CostInformation
+
+  CountryCoverageAPI = Telnyx::Models::CountryCoverageAPI
 
   CountryCoverageRetrieveCountryParams = Telnyx::Models::CountryCoverageRetrieveCountryParams
 
@@ -582,6 +592,8 @@ module Telnyx
 
   FaxSendingStarted = Telnyx::Models::FaxSendingStarted
 
+  Feature = Telnyx::Models::Feature
+
   Fqdn = Telnyx::Models::Fqdn
 
   FqdnConnection = Telnyx::Models::FqdnConnection
@@ -651,6 +663,8 @@ module Telnyx
   GlobalIPUsageRetrieveParams = Telnyx::Models::GlobalIPUsageRetrieveParams
 
   HostedNumber = Telnyx::Models::HostedNumber
+
+  HTTP = Telnyx::Models::HTTP
 
   InboundChannelListParams = Telnyx::Models::InboundChannelListParams
 
@@ -900,6 +914,8 @@ module Telnyx
 
   MonthDetail = Telnyx::Models::MonthDetail
 
+  NetappsLocation = Telnyx::Models::NetappsLocation
+
   NetworkCoverageListParams = Telnyx::Models::NetworkCoverageListParams
 
   NetworkCreate = Telnyx::Models::NetworkCreate
@@ -1096,6 +1112,8 @@ module Telnyx
 
   PhoneNumbers = Telnyx::Models::PhoneNumbers
 
+  PhoneNumbersJobPhoneNumber = Telnyx::Models::PhoneNumbersJobPhoneNumber
+
   PhoneNumberSlimListParams = Telnyx::Models::PhoneNumberSlimListParams
 
   PhoneNumbersRegulatoryRequirementRetrieveParams =
@@ -1229,6 +1247,8 @@ module Telnyx
 
   RcsSuggestion = Telnyx::Models::RcsSuggestion
 
+  RcsToItem = Telnyx::Models::RcsToItem
+
   Record = Telnyx::Models::Record
 
   RecordingDeleteParams = Telnyx::Models::RecordingDeleteParams
@@ -1248,6 +1268,8 @@ module Telnyx
   RecordingTranscriptionListParams = Telnyx::Models::RecordingTranscriptionListParams
 
   RecordingTranscriptionRetrieveParams = Telnyx::Models::RecordingTranscriptionRetrieveParams
+
+  RegionInformation = Telnyx::Models::RegionInformation
 
   RegionListParams = Telnyx::Models::RegionListParams
 
@@ -1349,6 +1371,8 @@ module Telnyx
 
   SimCard = Telnyx::Models::SimCard
 
+  SimCardActionsSummary = Telnyx::Models::SimCardActionsSummary
+
   SimCardDataUsageNotification = Telnyx::Models::SimCardDataUsageNotification
 
   SimCardDataUsageNotificationCreateParams = Telnyx::Models::SimCardDataUsageNotificationCreateParams
@@ -1448,6 +1472,8 @@ module Telnyx
 
   SubNumberOrderRetrieveParams = Telnyx::Models::SubNumberOrderRetrieveParams
 
+  SubNumberOrdersReportAPI = Telnyx::Models::SubNumberOrdersReportAPI
+
   SubNumberOrdersReportCreateParams = Telnyx::Models::SubNumberOrdersReportCreateParams
 
   SubNumberOrdersReportDownloadParams = Telnyx::Models::SubNumberOrdersReportDownloadParams
@@ -1521,6 +1547,8 @@ module Telnyx
   UserAddressListParams = Telnyx::Models::UserAddressListParams
 
   UserAddressRetrieveParams = Telnyx::Models::UserAddressRetrieveParams
+
+  UserRequirement = Telnyx::Models::UserRequirement
 
   UserTagListParams = Telnyx::Models::UserTagListParams
 
@@ -1602,7 +1630,17 @@ module Telnyx
   WellKnownRetrieveProtectedResourceMetadataParams =
     Telnyx::Models::WellKnownRetrieveProtectedResourceMetadataParams
 
+  WhatsappContact = Telnyx::Models::WhatsappContact
+
+  WhatsappInteractive = Telnyx::Models::WhatsappInteractive
+
+  WhatsappLocation = Telnyx::Models::WhatsappLocation
+
   WhatsappMedia = Telnyx::Models::WhatsappMedia
+
+  WhatsappMessageContent = Telnyx::Models::WhatsappMessageContent
+
+  WhatsappReaction = Telnyx::Models::WhatsappReaction
 
   WireguardInterfaceCreateParams = Telnyx::Models::WireguardInterfaceCreateParams
 
@@ -1641,6 +1679,8 @@ module Telnyx
   WirelessBlocklistUpdateParams = Telnyx::Models::WirelessBlocklistUpdateParams
 
   WirelessBlocklistValueListParams = Telnyx::Models::WirelessBlocklistValueListParams
+
+  WirelessError = Telnyx::Models::WirelessError
 
   WirelessRetrieveRegionsParams = Telnyx::Models::WirelessRetrieveRegionsParams
 end

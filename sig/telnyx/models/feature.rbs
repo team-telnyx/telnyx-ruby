@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type feature = { name: String }
+
+    class Feature < Telnyx::Internal::Type::BaseModel
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      def initialize: (?name: String) -> void
+
+      def to_hash: -> { name: String }
+    end
+  end
+end

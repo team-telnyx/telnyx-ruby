@@ -35,9 +35,9 @@ module Telnyx
 
           # @!attribute telephone_numbers
           #
-          #   @return [Array<Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::TelephoneNumber>, nil]
+          #   @return [Array<Telnyx::Models::ExternalConnections::TnReleaseEntry>, nil]
           optional :telephone_numbers,
-                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::TelephoneNumber] }
+                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::ExternalConnections::TnReleaseEntry] }
 
           # @!attribute tenant_id
           #
@@ -57,7 +57,7 @@ module Telnyx
           #
           #   @param status [Symbol, Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::Status] Represents the status of the release on Microsoft Teams.
           #
-          #   @param telephone_numbers [Array<Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::TelephoneNumber>]
+          #   @param telephone_numbers [Array<Telnyx::Models::ExternalConnections::TnReleaseEntry>]
           #
           #   @param tenant_id [String]
           #
@@ -79,25 +79,6 @@ module Telnyx
 
             # @!method self.values
             #   @return [Array<Symbol>]
-          end
-
-          class TelephoneNumber < Telnyx::Internal::Type::BaseModel
-            # @!attribute number_id
-            #   Phone number ID from the Telnyx API.
-            #
-            #   @return [String, nil]
-            optional :number_id, String
-
-            # @!attribute phone_number
-            #   Phone number in E164 format.
-            #
-            #   @return [String, nil]
-            optional :phone_number, String
-
-            # @!method initialize(number_id: nil, phone_number: nil)
-            #   @param number_id [String] Phone number ID from the Telnyx API.
-            #
-            #   @param phone_number [String] Phone number in E164 format.
           end
         end
       end

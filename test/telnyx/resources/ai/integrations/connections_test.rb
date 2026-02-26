@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::AI::Integrations::ConnectionsTest < Telnyx::Test:
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::AI::Integrations::ConnectionRetrieveResponse::Data
+        data: Telnyx::AI::Integrations::IntegrationConnection
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::AI::Integrations::ConnectionsTest < Telnyx::Test:
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::Integrations::ConnectionListResponse::Data])
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Integrations::IntegrationConnection])
       }
     end
   end

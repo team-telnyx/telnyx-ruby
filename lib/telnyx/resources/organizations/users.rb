@@ -53,7 +53,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Organizations::UserListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Organizations::OrganizationUser>]
         #
         # @see Telnyx::Models::Organizations::UserListParams
         def list(params = {})
@@ -68,7 +68,7 @@ module Telnyx
               page_size: "page[size]"
             ),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::Organizations::UserListResponse,
+            model: Telnyx::Organizations::OrganizationUser,
             options: options
           )
         end

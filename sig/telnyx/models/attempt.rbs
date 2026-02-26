@@ -1,0 +1,63 @@
+module Telnyx
+  module Models
+    type attempt =
+      {
+        errors: ::Array[Integer],
+        finished_at: Time,
+        http: Telnyx::HTTP,
+        started_at: Time,
+        status: Telnyx::Models::Attempt::status
+      }
+
+    class Attempt < Telnyx::Internal::Type::BaseModel
+      attr_reader errors: ::Array[Integer]?
+
+      def errors=: (::Array[Integer]) -> ::Array[Integer]
+
+      attr_reader finished_at: Time?
+
+      def finished_at=: (Time) -> Time
+
+      attr_reader http: Telnyx::HTTP?
+
+      def http=: (Telnyx::HTTP) -> Telnyx::HTTP
+
+      attr_reader started_at: Time?
+
+      def started_at=: (Time) -> Time
+
+      attr_reader status: Telnyx::Models::Attempt::status?
+
+      def status=: (
+        Telnyx::Models::Attempt::status
+      ) -> Telnyx::Models::Attempt::status
+
+      def initialize: (
+        ?errors: ::Array[Integer],
+        ?finished_at: Time,
+        ?http: Telnyx::HTTP,
+        ?started_at: Time,
+        ?status: Telnyx::Models::Attempt::status
+      ) -> void
+
+      def to_hash: -> {
+        errors: ::Array[Integer],
+        finished_at: Time,
+        http: Telnyx::HTTP,
+        started_at: Time,
+        status: Telnyx::Models::Attempt::status
+      }
+
+      type status = :delivered | :failed
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        DELIVERED: :delivered
+        FAILED: :failed
+
+        def self?.values: -> ::Array[Telnyx::Models::Attempt::status]
+      end
+    end
+  end
+end

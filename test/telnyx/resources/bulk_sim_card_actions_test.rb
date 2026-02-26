@@ -42,7 +42,7 @@ class Telnyx::Test::Resources::BulkSimCardActionsTest < Telnyx::Test::ResourceTe
         created_at: String | nil,
         record_type: String | nil,
         settings: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
-        sim_card_actions_summary: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::BulkSimCardActionListResponse::SimCardActionsSummary]) | nil,
+        sim_card_actions_summary: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::SimCardActionsSummary]) | nil,
         updated_at: String | nil
       }
     end

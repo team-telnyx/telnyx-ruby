@@ -99,7 +99,7 @@ class Telnyx::Test::Resources::AI::MissionsTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::AI::MissionListEventsResponse
+      row => Telnyx::AI::Missions::Runs::EventData
     end
 
     assert_pattern do
@@ -108,7 +108,7 @@ class Telnyx::Test::Resources::AI::MissionsTest < Telnyx::Test::ResourceTest
         run_id: String,
         summary: String,
         timestamp: Time,
-        type: Telnyx::Models::AI::MissionListEventsResponse::Type,
+        type: Telnyx::AI::Missions::Runs::EventData::Type,
         agent_id: String | nil,
         idempotency_key: String | nil,
         payload: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,

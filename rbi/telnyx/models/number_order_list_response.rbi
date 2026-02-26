@@ -39,21 +39,12 @@ module Telnyx
       sig { params(messaging_profile_id: String).void }
       attr_writer :messaging_profile_id
 
-      sig do
-        returns(
-          T.nilable(
-            T::Array[Telnyx::Models::NumberOrderListResponse::PhoneNumber]
-          )
-        )
-      end
+      sig { returns(T.nilable(T::Array[Telnyx::PhoneNumbersJobPhoneNumber])) }
       attr_reader :phone_numbers
 
       sig do
         params(
-          phone_numbers:
-            T::Array[
-              Telnyx::Models::NumberOrderListResponse::PhoneNumber::OrHash
-            ]
+          phone_numbers: T::Array[Telnyx::PhoneNumbersJobPhoneNumber::OrHash]
         ).void
       end
       attr_writer :phone_numbers
@@ -129,10 +120,7 @@ module Telnyx
           created_at: Time,
           customer_reference: String,
           messaging_profile_id: String,
-          phone_numbers:
-            T::Array[
-              Telnyx::Models::NumberOrderListResponse::PhoneNumber::OrHash
-            ],
+          phone_numbers: T::Array[Telnyx::PhoneNumbersJobPhoneNumber::OrHash],
           phone_numbers_count: Integer,
           record_type: String,
           requirements_met: T::Boolean,
@@ -176,8 +164,7 @@ module Telnyx
             created_at: Time,
             customer_reference: String,
             messaging_profile_id: String,
-            phone_numbers:
-              T::Array[Telnyx::Models::NumberOrderListResponse::PhoneNumber],
+            phone_numbers: T::Array[Telnyx::PhoneNumbersJobPhoneNumber],
             phone_numbers_count: Integer,
             record_type: String,
             requirements_met: T::Boolean,
@@ -189,46 +176,6 @@ module Telnyx
         )
       end
       def to_hash
-      end
-
-      class PhoneNumber < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::Models::NumberOrderListResponse::PhoneNumber,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        # The phone number's ID
-        sig { returns(T.nilable(String)) }
-        attr_reader :id
-
-        sig { params(id: String).void }
-        attr_writer :id
-
-        # The phone number in e164 format.
-        sig { returns(T.nilable(String)) }
-        attr_reader :phone_number
-
-        sig { params(phone_number: String).void }
-        attr_writer :phone_number
-
-        # The unique phone numbers given as arguments in the job creation.
-        sig do
-          params(id: String, phone_number: String).returns(T.attached_class)
-        end
-        def self.new(
-          # The phone number's ID
-          id: nil,
-          # The phone number in e164 format.
-          phone_number: nil
-        )
-        end
-
-        sig { override.returns({ id: String, phone_number: String }) }
-        def to_hash
-        end
       end
 
       # The status of the order.

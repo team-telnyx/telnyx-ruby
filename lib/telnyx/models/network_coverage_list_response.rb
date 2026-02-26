@@ -12,8 +12,8 @@ module Telnyx
 
       # @!attribute location
       #
-      #   @return [Telnyx::Models::NetworkCoverageListResponse::Location, nil]
-      optional :location, -> { Telnyx::Models::NetworkCoverageListResponse::Location }
+      #   @return [Telnyx::Models::NetappsLocation, nil]
+      optional :location, -> { Telnyx::NetappsLocation }
 
       response_only do
         # @!attribute record_type
@@ -26,53 +26,9 @@ module Telnyx
       # @!method initialize(available_services: nil, location: nil, record_type: nil)
       #   @param available_services [Array<Symbol, Telnyx::Models::AvailableService>] List of interface types supported in this region.
       #
-      #   @param location [Telnyx::Models::NetworkCoverageListResponse::Location]
+      #   @param location [Telnyx::Models::NetappsLocation]
       #
       #   @param record_type [String] Identifies the type of the resource.
-
-      # @see Telnyx::Models::NetworkCoverageListResponse#location
-      class Location < Telnyx::Internal::Type::BaseModel
-        # @!attribute code
-        #   Location code.
-        #
-        #   @return [String, nil]
-        optional :code, String
-
-        # @!attribute name
-        #   Human readable name of location.
-        #
-        #   @return [String, nil]
-        optional :name, String
-
-        # @!attribute pop
-        #   Point of presence of location.
-        #
-        #   @return [String, nil]
-        optional :pop, String
-
-        # @!attribute region
-        #   Identifies the geographical region of location.
-        #
-        #   @return [String, nil]
-        optional :region, String
-
-        # @!attribute site
-        #   Site of location.
-        #
-        #   @return [String, nil]
-        optional :site, String
-
-        # @!method initialize(code: nil, name: nil, pop: nil, region: nil, site: nil)
-        #   @param code [String] Location code.
-        #
-        #   @param name [String] Human readable name of location.
-        #
-        #   @param pop [String] Point of presence of location.
-        #
-        #   @param region [String] Identifies the geographical region of location.
-        #
-        #   @param site [String] Site of location.
-      end
     end
   end
 end

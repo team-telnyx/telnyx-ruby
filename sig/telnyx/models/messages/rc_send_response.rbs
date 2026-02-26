@@ -28,7 +28,7 @@ module Telnyx
             organization_id: String,
             received_at: Time,
             record_type: String,
-            to: ::Array[Telnyx::Models::Messages::RcSendResponse::Data::To],
+            to: ::Array[Telnyx::RcsToItem],
             type: String
           }
 
@@ -71,11 +71,9 @@ module Telnyx
 
           def record_type=: (String) -> String
 
-          attr_reader to: ::Array[Telnyx::Models::Messages::RcSendResponse::Data::To]?
+          attr_reader to: ::Array[Telnyx::RcsToItem]?
 
-          def to=: (
-            ::Array[Telnyx::Models::Messages::RcSendResponse::Data::To]
-          ) -> ::Array[Telnyx::Models::Messages::RcSendResponse::Data::To]
+          def to=: (::Array[Telnyx::RcsToItem]) -> ::Array[Telnyx::RcsToItem]
 
           attr_reader type: String?
 
@@ -91,7 +89,7 @@ module Telnyx
             ?organization_id: String,
             ?received_at: Time,
             ?record_type: String,
-            ?to: ::Array[Telnyx::Models::Messages::RcSendResponse::Data::To],
+            ?to: ::Array[Telnyx::RcsToItem],
             ?type: String
           ) -> void
 
@@ -105,7 +103,7 @@ module Telnyx
             organization_id: String,
             received_at: Time,
             record_type: String,
-            to: ::Array[Telnyx::Models::Messages::RcSendResponse::Data::To],
+            to: ::Array[Telnyx::RcsToItem],
             type: String
           }
 
@@ -134,46 +132,6 @@ module Telnyx
               agent_id: String,
               agent_name: String,
               carrier: String
-            }
-          end
-
-          type to =
-            {
-              carrier: String,
-              line_type: String,
-              phone_number: String,
-              status: String
-            }
-
-          class To < Telnyx::Internal::Type::BaseModel
-            attr_reader carrier: String?
-
-            def carrier=: (String) -> String
-
-            attr_reader line_type: String?
-
-            def line_type=: (String) -> String
-
-            attr_reader phone_number: String?
-
-            def phone_number=: (String) -> String
-
-            attr_reader status: String?
-
-            def status=: (String) -> String
-
-            def initialize: (
-              ?carrier: String,
-              ?line_type: String,
-              ?phone_number: String,
-              ?status: String
-            ) -> void
-
-            def to_hash: -> {
-              carrier: String,
-              line_type: String,
-              phone_number: String,
-              status: String
             }
           end
         end

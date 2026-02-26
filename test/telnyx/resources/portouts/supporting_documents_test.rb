@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Portouts::SupportingDocumentsTest < Telnyx::Test:
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Portouts::SupportingDocumentCreateResponse::Data]) | nil
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Portouts::PortOutSupportingDocument]) | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::Portouts::SupportingDocumentsTest < Telnyx::Test:
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Portouts::SupportingDocumentListResponse::Data]) | nil
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Portouts::PortOutSupportingDocument]) | nil
       }
     end
   end

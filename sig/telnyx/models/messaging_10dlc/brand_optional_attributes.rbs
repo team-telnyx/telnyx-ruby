@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module Messaging10dlc
+      type brand_optional_attributes = { tax_exempt_status: String }
+
+      class BrandOptionalAttributes < Telnyx::Internal::Type::BaseModel
+        attr_reader tax_exempt_status: String?
+
+        def tax_exempt_status=: (String) -> String
+
+        def initialize: (?tax_exempt_status: String) -> void
+
+        def to_hash: -> { tax_exempt_status: String }
+      end
+    end
+  end
+end

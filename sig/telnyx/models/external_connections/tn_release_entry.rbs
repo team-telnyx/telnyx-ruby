@@ -1,0 +1,21 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type tn_release_entry = { number_id: String, phone_number: String }
+
+      class TnReleaseEntry < Telnyx::Internal::Type::BaseModel
+        attr_reader number_id: String?
+
+        def number_id=: (String) -> String
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        def initialize: (?number_id: String, ?phone_number: String) -> void
+
+        def to_hash: -> { number_id: String, phone_number: String }
+      end
+    end
+  end
+end

@@ -13,7 +13,7 @@ module Telnyx
               ?step_id: String,
               ?type: String,
               ?request_options: Telnyx::request_opts
-            ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AI::Missions::Runs::EventListResponse]
+            ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AI::Missions::Runs::EventData]
 
             def get_event_details: (
               String event_id,

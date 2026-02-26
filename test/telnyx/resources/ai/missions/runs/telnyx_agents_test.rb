@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::TelnyxAgentsTest < Telnyx::Te
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::Missions::Runs::TelnyxAgentListResponse::Data])
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Missions::Runs::TelnyxAgentData])
       }
     end
   end
@@ -39,7 +39,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::TelnyxAgentsTest < Telnyx::Te
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::AI::Missions::Runs::TelnyxAgentLinkResponse::Data
+        data: Telnyx::AI::Missions::Runs::TelnyxAgentData
       }
     end
   end

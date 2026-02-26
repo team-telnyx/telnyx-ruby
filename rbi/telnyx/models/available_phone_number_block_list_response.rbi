@@ -73,42 +73,16 @@ module Telnyx
             )
           end
 
-        sig do
-          returns(
-            T.nilable(
-              Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::CostInformation
-            )
-          )
-        end
+        sig { returns(T.nilable(Telnyx::CostInformation)) }
         attr_reader :cost_information
 
-        sig do
-          params(
-            cost_information:
-              Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::CostInformation::OrHash
-          ).void
-        end
+        sig { params(cost_information: Telnyx::CostInformation::OrHash).void }
         attr_writer :cost_information
 
-        sig do
-          returns(
-            T.nilable(
-              T::Array[
-                Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::Feature
-              ]
-            )
-          )
-        end
+        sig { returns(T.nilable(T::Array[Telnyx::Feature])) }
         attr_reader :features
 
-        sig do
-          params(
-            features:
-              T::Array[
-                Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::Feature::OrHash
-              ]
-          ).void
-        end
+        sig { params(features: T::Array[Telnyx::Feature::OrHash]).void }
         attr_writer :features
 
         sig { returns(T.nilable(String)) }
@@ -140,43 +114,25 @@ module Telnyx
         end
         attr_writer :record_type
 
-        sig do
-          returns(
-            T.nilable(
-              T::Array[
-                Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation
-              ]
-            )
-          )
-        end
+        sig { returns(T.nilable(T::Array[Telnyx::RegionInformation])) }
         attr_reader :region_information
 
         sig do
           params(
-            region_information:
-              T::Array[
-                Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation::OrHash
-              ]
+            region_information: T::Array[Telnyx::RegionInformation::OrHash]
           ).void
         end
         attr_writer :region_information
 
         sig do
           params(
-            cost_information:
-              Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::CostInformation::OrHash,
-            features:
-              T::Array[
-                Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::Feature::OrHash
-              ],
+            cost_information: Telnyx::CostInformation::OrHash,
+            features: T::Array[Telnyx::Feature::OrHash],
             phone_number: String,
             range: Integer,
             record_type:
               Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RecordType::OrSymbol,
-            region_information:
-              T::Array[
-                Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation::OrHash
-              ]
+            region_information: T::Array[Telnyx::RegionInformation::OrHash]
           ).returns(T.attached_class)
         end
         def self.new(
@@ -192,100 +148,17 @@ module Telnyx
         sig do
           override.returns(
             {
-              cost_information:
-                Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::CostInformation,
-              features:
-                T::Array[
-                  Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::Feature
-                ],
+              cost_information: Telnyx::CostInformation,
+              features: T::Array[Telnyx::Feature],
               phone_number: String,
               range: Integer,
               record_type:
                 Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RecordType::TaggedSymbol,
-              region_information:
-                T::Array[
-                  Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation
-                ]
+              region_information: T::Array[Telnyx::RegionInformation]
             }
           )
         end
         def to_hash
-        end
-
-        class CostInformation < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::CostInformation,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          # The ISO 4217 code for the currency.
-          sig { returns(T.nilable(String)) }
-          attr_reader :currency
-
-          sig { params(currency: String).void }
-          attr_writer :currency
-
-          sig { returns(T.nilable(String)) }
-          attr_reader :monthly_cost
-
-          sig { params(monthly_cost: String).void }
-          attr_writer :monthly_cost
-
-          sig { returns(T.nilable(String)) }
-          attr_reader :upfront_cost
-
-          sig { params(upfront_cost: String).void }
-          attr_writer :upfront_cost
-
-          sig do
-            params(
-              currency: String,
-              monthly_cost: String,
-              upfront_cost: String
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # The ISO 4217 code for the currency.
-            currency: nil,
-            monthly_cost: nil,
-            upfront_cost: nil
-          )
-          end
-
-          sig do
-            override.returns(
-              { currency: String, monthly_cost: String, upfront_cost: String }
-            )
-          end
-          def to_hash
-          end
-        end
-
-        class Feature < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::Feature,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          sig { returns(T.nilable(String)) }
-          attr_reader :name
-
-          sig { params(name: String).void }
-          attr_writer :name
-
-          sig { params(name: String).returns(T.attached_class) }
-          def self.new(name: nil)
-          end
-
-          sig { override.returns({ name: String }) }
-          def to_hash
-          end
         end
 
         module RecordType
@@ -314,105 +187,6 @@ module Telnyx
             )
           end
           def self.values
-          end
-        end
-
-        class RegionInformation < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          sig { returns(T.nilable(String)) }
-          attr_reader :region_name
-
-          sig { params(region_name: String).void }
-          attr_writer :region_name
-
-          sig do
-            returns(
-              T.nilable(
-                Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation::RegionType::TaggedSymbol
-              )
-            )
-          end
-          attr_reader :region_type
-
-          sig do
-            params(
-              region_type:
-                Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation::RegionType::OrSymbol
-            ).void
-          end
-          attr_writer :region_type
-
-          sig do
-            params(
-              region_name: String,
-              region_type:
-                Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation::RegionType::OrSymbol
-            ).returns(T.attached_class)
-          end
-          def self.new(region_name: nil, region_type: nil)
-          end
-
-          sig do
-            override.returns(
-              {
-                region_name: String,
-                region_type:
-                  Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation::RegionType::TaggedSymbol
-              }
-            )
-          end
-          def to_hash
-          end
-
-          module RegionType
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation::RegionType
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            COUNTRY_CODE =
-              T.let(
-                :country_code,
-                Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation::RegionType::TaggedSymbol
-              )
-            RATE_CENTER =
-              T.let(
-                :rate_center,
-                Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation::RegionType::TaggedSymbol
-              )
-            STATE =
-              T.let(
-                :state,
-                Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation::RegionType::TaggedSymbol
-              )
-            LOCATION =
-              T.let(
-                :location,
-                Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation::RegionType::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::Models::AvailablePhoneNumberBlockListResponse::Data::RegionInformation::RegionType::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
           end
         end
       end

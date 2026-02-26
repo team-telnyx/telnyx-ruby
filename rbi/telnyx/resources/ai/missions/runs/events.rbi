@@ -19,7 +19,7 @@ module Telnyx
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(
                 Telnyx::Internal::DefaultFlatPagination[
-                  Telnyx::Models::AI::Missions::Runs::EventListResponse
+                  Telnyx::AI::Missions::Runs::EventData
                 ]
               )
             end

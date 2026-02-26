@@ -1,0 +1,79 @@
+module Telnyx
+  module Models
+    module Payment
+      type auto_recharge_pref =
+        {
+          id: String,
+          enabled: bool,
+          invoice_enabled: bool,
+          preference: Telnyx::Models::Payment::AutoRechargePref::preference,
+          recharge_amount: String,
+          record_type: String,
+          threshold_amount: String
+        }
+
+      class AutoRechargePref < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader enabled: bool?
+
+        def enabled=: (bool) -> bool
+
+        attr_reader invoice_enabled: bool?
+
+        def invoice_enabled=: (bool) -> bool
+
+        attr_reader preference: Telnyx::Models::Payment::AutoRechargePref::preference?
+
+        def preference=: (
+          Telnyx::Models::Payment::AutoRechargePref::preference
+        ) -> Telnyx::Models::Payment::AutoRechargePref::preference
+
+        attr_reader recharge_amount: String?
+
+        def recharge_amount=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader threshold_amount: String?
+
+        def threshold_amount=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?enabled: bool,
+          ?invoice_enabled: bool,
+          ?preference: Telnyx::Models::Payment::AutoRechargePref::preference,
+          ?recharge_amount: String,
+          ?record_type: String,
+          ?threshold_amount: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          enabled: bool,
+          invoice_enabled: bool,
+          preference: Telnyx::Models::Payment::AutoRechargePref::preference,
+          recharge_amount: String,
+          record_type: String,
+          threshold_amount: String
+        }
+
+        type preference = :credit_paypal | :ach
+
+        module Preference
+          extend Telnyx::Internal::Type::Enum
+
+          CREDIT_PAYPAL: :credit_paypal
+          ACH: :ach
+
+          def self?.values: -> ::Array[Telnyx::Models::Payment::AutoRechargePref::preference]
+        end
+      end
+    end
+  end
+end

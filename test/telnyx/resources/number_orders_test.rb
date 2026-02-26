@@ -75,7 +75,7 @@ class Telnyx::Test::Resources::NumberOrdersTest < Telnyx::Test::ResourceTest
         created_at: Time | nil,
         customer_reference: String | nil,
         messaging_profile_id: String | nil,
-        phone_numbers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::NumberOrderListResponse::PhoneNumber]) | nil,
+        phone_numbers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbersJobPhoneNumber]) | nil,
         phone_numbers_count: Integer | nil,
         record_type: String | nil,
         requirements_met: Telnyx::Internal::Type::Boolean | nil,

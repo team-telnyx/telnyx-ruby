@@ -22,7 +22,7 @@ class Telnyx::Test::Resources::AI::Assistants::Tests::RunsTest < Telnyx::Test::R
         completed_at: Time | nil,
         conversation_id: String | nil,
         conversation_insights_id: String | nil,
-        detail_status: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus]) | nil,
+        detail_status: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::Tests::TestRunDetailResult]) | nil,
         logs: String | nil,
         test_suite_run_id: String | nil,
         updated_at: Time | nil
@@ -56,7 +56,7 @@ class Telnyx::Test::Resources::AI::Assistants::Tests::RunsTest < Telnyx::Test::R
         completed_at: Time | nil,
         conversation_id: String | nil,
         conversation_insights_id: String | nil,
-        detail_status: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus]) | nil,
+        detail_status: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::Tests::TestRunDetailResult]) | nil,
         logs: String | nil,
         test_suite_run_id: String | nil,
         updated_at: Time | nil
@@ -83,7 +83,7 @@ class Telnyx::Test::Resources::AI::Assistants::Tests::RunsTest < Telnyx::Test::R
         completed_at: Time | nil,
         conversation_id: String | nil,
         conversation_insights_id: String | nil,
-        detail_status: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::Tests::TestRunResponse::DetailStatus]) | nil,
+        detail_status: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::Tests::TestRunDetailResult]) | nil,
         logs: String | nil,
         test_suite_run_id: String | nil,
         updated_at: Time | nil

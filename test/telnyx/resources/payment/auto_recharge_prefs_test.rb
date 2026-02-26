@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Payment::AutoRechargePrefsTest < Telnyx::Test::Re
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Payment::AutoRechargePrefUpdateResponse::Data | nil
+        data: Telnyx::Payment::AutoRechargePref | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::Payment::AutoRechargePrefsTest < Telnyx::Test::Re
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Payment::AutoRechargePrefListResponse::Data | nil
+        data: Telnyx::Payment::AutoRechargePref | nil
       }
     end
   end

@@ -1,0 +1,127 @@
+module Telnyx
+  module Models
+    type whatsapp_message_content =
+      {
+        audio: Telnyx::WhatsappMedia,
+        biz_opaque_callback_data: String,
+        contacts: ::Array[Telnyx::WhatsappContact],
+        document: Telnyx::WhatsappMedia,
+        image: Telnyx::WhatsappMedia,
+        interactive: Telnyx::WhatsappInteractive,
+        location: Telnyx::WhatsappLocation,
+        reaction: Telnyx::WhatsappReaction,
+        sticker: Telnyx::WhatsappMedia,
+        type: Telnyx::Models::WhatsappMessageContent::type_,
+        video: Telnyx::WhatsappMedia
+      }
+
+    class WhatsappMessageContent < Telnyx::Internal::Type::BaseModel
+      attr_reader audio: Telnyx::WhatsappMedia?
+
+      def audio=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
+
+      attr_reader biz_opaque_callback_data: String?
+
+      def biz_opaque_callback_data=: (String) -> String
+
+      attr_reader contacts: ::Array[Telnyx::WhatsappContact]?
+
+      def contacts=: (
+        ::Array[Telnyx::WhatsappContact]
+      ) -> ::Array[Telnyx::WhatsappContact]
+
+      attr_reader document: Telnyx::WhatsappMedia?
+
+      def document=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
+
+      attr_reader image: Telnyx::WhatsappMedia?
+
+      def image=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
+
+      attr_reader interactive: Telnyx::WhatsappInteractive?
+
+      def interactive=: (
+        Telnyx::WhatsappInteractive
+      ) -> Telnyx::WhatsappInteractive
+
+      attr_reader location: Telnyx::WhatsappLocation?
+
+      def location=: (Telnyx::WhatsappLocation) -> Telnyx::WhatsappLocation
+
+      attr_reader reaction: Telnyx::WhatsappReaction?
+
+      def reaction=: (Telnyx::WhatsappReaction) -> Telnyx::WhatsappReaction
+
+      attr_reader sticker: Telnyx::WhatsappMedia?
+
+      def sticker=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
+
+      attr_reader type: Telnyx::Models::WhatsappMessageContent::type_?
+
+      def type=: (
+        Telnyx::Models::WhatsappMessageContent::type_
+      ) -> Telnyx::Models::WhatsappMessageContent::type_
+
+      attr_reader video: Telnyx::WhatsappMedia?
+
+      def video=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
+
+      def initialize: (
+        ?audio: Telnyx::WhatsappMedia,
+        ?biz_opaque_callback_data: String,
+        ?contacts: ::Array[Telnyx::WhatsappContact],
+        ?document: Telnyx::WhatsappMedia,
+        ?image: Telnyx::WhatsappMedia,
+        ?interactive: Telnyx::WhatsappInteractive,
+        ?location: Telnyx::WhatsappLocation,
+        ?reaction: Telnyx::WhatsappReaction,
+        ?sticker: Telnyx::WhatsappMedia,
+        ?type: Telnyx::Models::WhatsappMessageContent::type_,
+        ?video: Telnyx::WhatsappMedia
+      ) -> void
+
+      def to_hash: -> {
+        audio: Telnyx::WhatsappMedia,
+        biz_opaque_callback_data: String,
+        contacts: ::Array[Telnyx::WhatsappContact],
+        document: Telnyx::WhatsappMedia,
+        image: Telnyx::WhatsappMedia,
+        interactive: Telnyx::WhatsappInteractive,
+        location: Telnyx::WhatsappLocation,
+        reaction: Telnyx::WhatsappReaction,
+        sticker: Telnyx::WhatsappMedia,
+        type: Telnyx::Models::WhatsappMessageContent::type_,
+        video: Telnyx::WhatsappMedia
+      }
+
+      type type_ =
+        :audio
+        | :document
+        | :image
+        | :sticker
+        | :video
+        | :interactive
+        | :location
+        | :template
+        | :reaction
+        | :contacts
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        AUDIO: :audio
+        DOCUMENT: :document
+        IMAGE: :image
+        STICKER: :sticker
+        VIDEO: :video
+        INTERACTIVE: :interactive
+        LOCATION: :location
+        TEMPLATE: :template
+        REACTION: :reaction
+        CONTACTS: :contacts
+
+        def self?.values: -> ::Array[Telnyx::Models::WhatsappMessageContent::type_]
+      end
+    end
+  end
+end

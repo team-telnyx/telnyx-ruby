@@ -1,0 +1,33 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        class TestRunDetailResult = Tests::TestRunDetailResult
+
+        module Tests
+          type test_run_detail_result =
+            {
+              name: String,
+              status: Telnyx::Models::AI::Assistants::Tests::test_status
+            }
+
+          class TestRunDetailResult < Telnyx::Internal::Type::BaseModel
+            attr_accessor name: String
+
+            attr_accessor status: Telnyx::Models::AI::Assistants::Tests::test_status
+
+            def initialize: (
+              name: String,
+              status: Telnyx::Models::AI::Assistants::Tests::test_status
+            ) -> void
+
+            def to_hash: -> {
+              name: String,
+              status: Telnyx::Models::AI::Assistants::Tests::test_status
+            }
+          end
+        end
+      end
+    end
+  end
+end
