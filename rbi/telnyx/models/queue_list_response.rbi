@@ -2,8 +2,11 @@
 
 module Telnyx
   module Models
-    class Queue < Telnyx::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(Telnyx::Queue, Telnyx::Internal::AnyHash) }
+    class QueueListResponse < Telnyx::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias do
+          T.any(Telnyx::Models::QueueListResponse, Telnyx::Internal::AnyHash)
+        end
 
       # Uniquely identifies the queue
       sig { returns(String) }
@@ -30,7 +33,9 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :name
 
-      sig { returns(Telnyx::Queue::RecordType::TaggedSymbol) }
+      sig do
+        returns(Telnyx::Models::QueueListResponse::RecordType::TaggedSymbol)
+      end
       attr_accessor :record_type
 
       # ISO 8601 formatted date of when the queue was last updated
@@ -45,7 +50,7 @@ module Telnyx
           current_size: Integer,
           max_size: Integer,
           name: String,
-          record_type: Telnyx::Queue::RecordType::OrSymbol,
+          record_type: Telnyx::Models::QueueListResponse::RecordType::OrSymbol,
           updated_at: String
         ).returns(T.attached_class)
       end
@@ -78,7 +83,8 @@ module Telnyx
             current_size: Integer,
             max_size: Integer,
             name: String,
-            record_type: Telnyx::Queue::RecordType::TaggedSymbol,
+            record_type:
+              Telnyx::Models::QueueListResponse::RecordType::TaggedSymbol,
             updated_at: String
           }
         )
@@ -89,13 +95,24 @@ module Telnyx
       module RecordType
         extend Telnyx::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Telnyx::Queue::RecordType) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Telnyx::Models::QueueListResponse::RecordType)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        QUEUE = T.let(:queue, Telnyx::Queue::RecordType::TaggedSymbol)
+        QUEUE =
+          T.let(
+            :queue,
+            Telnyx::Models::QueueListResponse::RecordType::TaggedSymbol
+          )
 
         sig do
-          override.returns(T::Array[Telnyx::Queue::RecordType::TaggedSymbol])
+          override.returns(
+            T::Array[
+              Telnyx::Models::QueueListResponse::RecordType::TaggedSymbol
+            ]
+          )
         end
         def self.values
         end

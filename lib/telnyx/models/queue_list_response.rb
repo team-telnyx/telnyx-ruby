@@ -3,7 +3,7 @@
 module Telnyx
   module Models
     # @see Telnyx::Resources::Queues#list
-    class Queue < Telnyx::Internal::Type::BaseModel
+    class QueueListResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Uniquely identifies the queue
       #
@@ -43,8 +43,8 @@ module Telnyx
 
       # @!attribute record_type
       #
-      #   @return [Symbol, Telnyx::Models::Queue::RecordType]
-      required :record_type, enum: -> { Telnyx::Queue::RecordType }
+      #   @return [Symbol, Telnyx::Models::QueueListResponse::RecordType]
+      required :record_type, enum: -> { Telnyx::Models::QueueListResponse::RecordType }
 
       # @!attribute updated_at
       #   ISO 8601 formatted date of when the queue was last updated
@@ -53,8 +53,8 @@ module Telnyx
       required :updated_at, String
 
       # @!method initialize(id:, average_wait_time_secs:, created_at:, current_size:, max_size:, name:, record_type:, updated_at:)
-      #   Some parameter documentations has been truncated, see {Telnyx::Models::Queue}
-      #   for more details.
+      #   Some parameter documentations has been truncated, see
+      #   {Telnyx::Models::QueueListResponse} for more details.
       #
       #   @param id [String] Uniquely identifies the queue
       #
@@ -68,11 +68,11 @@ module Telnyx
       #
       #   @param name [String] Name of the queue
       #
-      #   @param record_type [Symbol, Telnyx::Models::Queue::RecordType]
+      #   @param record_type [Symbol, Telnyx::Models::QueueListResponse::RecordType]
       #
       #   @param updated_at [String] ISO 8601 formatted date of when the queue was last updated
 
-      # @see Telnyx::Models::Queue#record_type
+      # @see Telnyx::Models::QueueListResponse#record_type
       module RecordType
         extend Telnyx::Internal::Type::Enum
 
