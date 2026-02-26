@@ -3,6 +3,16 @@
 require_relative "../test_helper"
 
 class Telnyx::Test::Resources::TextToSpeechTest < Telnyx::Test::ResourceTest
+  def test_generate_speech_required_params
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.text_to_speech.generate_speech(text: "text", voice: "voice")
+
+    assert_pattern do
+      response => StringIO
+    end
+  end
+
   def test_list_voices
     skip("Mock server tests are disabled")
 
@@ -16,16 +26,6 @@ class Telnyx::Test::Resources::TextToSpeechTest < Telnyx::Test::ResourceTest
       response => {
         voices: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::TextToSpeechListVoicesResponse::Voice]) | nil
       }
-    end
-  end
-
-  def test_stream
-    skip("Mock server tests are disabled")
-
-    response = @telnyx.text_to_speech.stream
-
-    assert_pattern do
-      response => nil
     end
   end
 end
