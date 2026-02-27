@@ -16,12 +16,14 @@ module Telnyx
       sig do
         returns(T.nilable(Telnyx::ResembleVoiceSettings::Format::OrSymbol))
       end
-      attr_reader :format_
+      attr_reader :file_format
 
       sig do
-        params(format_: Telnyx::ResembleVoiceSettings::Format::OrSymbol).void
+        params(
+          file_format: Telnyx::ResembleVoiceSettings::Format::OrSymbol
+        ).void
       end
-      attr_writer :format_
+      attr_writer :file_format
 
       # Audio precision format.
       sig do
@@ -52,7 +54,7 @@ module Telnyx
       sig do
         params(
           type: Telnyx::ResembleVoiceSettings::Type::OrSymbol,
-          format_: Telnyx::ResembleVoiceSettings::Format::OrSymbol,
+          file_format: Telnyx::ResembleVoiceSettings::Format::OrSymbol,
           precision: Telnyx::ResembleVoiceSettings::Precision::OrSymbol,
           sample_rate: Telnyx::ResembleVoiceSettings::SampleRate::OrSymbol
         ).returns(T.attached_class)
@@ -61,7 +63,7 @@ module Telnyx
         # Voice settings provider type
         type:,
         # Output audio format.
-        format_: nil,
+        file_format: nil,
         # Audio precision format.
         precision: nil,
         # Audio sample rate in Hz.
@@ -73,7 +75,7 @@ module Telnyx
         override.returns(
           {
             type: Telnyx::ResembleVoiceSettings::Type::OrSymbol,
-            format_: Telnyx::ResembleVoiceSettings::Format::OrSymbol,
+            file_format: Telnyx::ResembleVoiceSettings::Format::OrSymbol,
             precision: Telnyx::ResembleVoiceSettings::Precision::OrSymbol,
             sample_rate: Telnyx::ResembleVoiceSettings::SampleRate::OrSymbol
           }

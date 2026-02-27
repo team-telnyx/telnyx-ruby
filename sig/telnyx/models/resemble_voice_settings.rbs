@@ -3,7 +3,7 @@ module Telnyx
     type resemble_voice_settings =
       {
         type: Telnyx::Models::ResembleVoiceSettings::type_,
-        format_: Telnyx::Models::ResembleVoiceSettings::format_,
+        file_format: Telnyx::Models::ResembleVoiceSettings::format_,
         precision: Telnyx::Models::ResembleVoiceSettings::precision,
         sample_rate: Telnyx::Models::ResembleVoiceSettings::sample_rate
       }
@@ -11,9 +11,9 @@ module Telnyx
     class ResembleVoiceSettings < Telnyx::Internal::Type::BaseModel
       attr_accessor type: Telnyx::Models::ResembleVoiceSettings::type_
 
-      attr_reader format_: Telnyx::Models::ResembleVoiceSettings::format_?
+      attr_reader file_format: Telnyx::Models::ResembleVoiceSettings::format_?
 
-      def format_=: (
+      def file_format=: (
         Telnyx::Models::ResembleVoiceSettings::format_
       ) -> Telnyx::Models::ResembleVoiceSettings::format_
 
@@ -31,14 +31,14 @@ module Telnyx
 
       def initialize: (
         type: Telnyx::Models::ResembleVoiceSettings::type_,
-        ?format_: Telnyx::Models::ResembleVoiceSettings::format_,
+        ?file_format: Telnyx::Models::ResembleVoiceSettings::format_,
         ?precision: Telnyx::Models::ResembleVoiceSettings::precision,
         ?sample_rate: Telnyx::Models::ResembleVoiceSettings::sample_rate
       ) -> void
 
       def to_hash: -> {
         type: Telnyx::Models::ResembleVoiceSettings::type_,
-        format_: Telnyx::Models::ResembleVoiceSettings::format_,
+        file_format: Telnyx::Models::ResembleVoiceSettings::format_,
         precision: Telnyx::Models::ResembleVoiceSettings::precision,
         sample_rate: Telnyx::Models::ResembleVoiceSettings::sample_rate
       }

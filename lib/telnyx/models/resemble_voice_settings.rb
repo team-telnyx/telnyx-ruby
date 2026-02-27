@@ -9,11 +9,11 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::ResembleVoiceSettings::Type]
       required :type, enum: -> { Telnyx::ResembleVoiceSettings::Type }
 
-      # @!attribute format_
+      # @!attribute file_format
       #   Output audio format.
       #
       #   @return [Symbol, Telnyx::Models::ResembleVoiceSettings::Format, nil]
-      optional :format_, enum: -> { Telnyx::ResembleVoiceSettings::Format }, api_name: :format
+      optional :file_format, enum: -> { Telnyx::ResembleVoiceSettings::Format }, api_name: :format
 
       # @!attribute precision
       #   Audio precision format.
@@ -27,10 +27,10 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::ResembleVoiceSettings::SampleRate, nil]
       optional :sample_rate, enum: -> { Telnyx::ResembleVoiceSettings::SampleRate }
 
-      # @!method initialize(type:, format_: nil, precision: nil, sample_rate: nil)
+      # @!method initialize(type:, file_format: nil, precision: nil, sample_rate: nil)
       #   @param type [Symbol, Telnyx::Models::ResembleVoiceSettings::Type] Voice settings provider type
       #
-      #   @param format_ [Symbol, Telnyx::Models::ResembleVoiceSettings::Format] Output audio format.
+      #   @param file_format [Symbol, Telnyx::Models::ResembleVoiceSettings::Format] Output audio format.
       #
       #   @param precision [Symbol, Telnyx::Models::ResembleVoiceSettings::Precision] Audio precision format.
       #
@@ -50,7 +50,7 @@ module Telnyx
 
       # Output audio format.
       #
-      # @see Telnyx::Models::ResembleVoiceSettings#format_
+      # @see Telnyx::Models::ResembleVoiceSettings#file_format
       module Format
         extend Telnyx::Internal::Type::Enum
 
