@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.51.1 (2026-02-27)
+
+Full Changelog: [v5.51.0...v5.51.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.51.0...v5.51.1)
+
+### Bug Fixes
+
+* **client:** serialize query parameters properly ([0124bf8](https://github.com/team-telnyx/telnyx-ruby/commit/0124bf86cff58fbf0da3171d5a645bb9bca3c3ad))
+
 ## 5.51.0 (2026-02-27)
 
 Full Changelog: [v5.50.0...v5.51.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.50.0...v5.51.0)
