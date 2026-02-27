@@ -129,7 +129,7 @@ module Telnyx
         type recording_settings =
           {
             channels: Telnyx::Models::AI::TelephonySettings::RecordingSettings::channels,
-            format_: Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_
+            file_format: Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_
           }
 
         class RecordingSettings < Telnyx::Internal::Type::BaseModel
@@ -139,20 +139,20 @@ module Telnyx
             Telnyx::Models::AI::TelephonySettings::RecordingSettings::channels
           ) -> Telnyx::Models::AI::TelephonySettings::RecordingSettings::channels
 
-          attr_reader format_: Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_?
+          attr_reader file_format: Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_?
 
-          def format_=: (
+          def file_format=: (
             Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_
           ) -> Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_
 
           def initialize: (
             ?channels: Telnyx::Models::AI::TelephonySettings::RecordingSettings::channels,
-            ?format_: Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_
+            ?file_format: Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_
           ) -> void
 
           def to_hash: -> {
             channels: Telnyx::Models::AI::TelephonySettings::RecordingSettings::channels,
-            format_: Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_
+            file_format: Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_
           }
 
           type channels = :single | :dual
