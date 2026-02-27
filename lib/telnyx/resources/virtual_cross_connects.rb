@@ -13,7 +13,9 @@ module Telnyx
       # this option. Azure requires both the primary and secondary connections to be
       # created at the same time and they can not be independantly disabled.
       #
-      # @overload create(bandwidth_mbps: nil, bgp_asn: nil, cloud_provider: nil, cloud_provider_region: nil, name: nil, network_id: nil, primary_bgp_key: nil, primary_cloud_account_id: nil, primary_cloud_ip: nil, primary_telnyx_ip: nil, secondary_bgp_key: nil, secondary_cloud_account_id: nil, secondary_cloud_ip: nil, secondary_telnyx_ip: nil, request_options: {})
+      # @overload create(region_code:, bandwidth_mbps: nil, bgp_asn: nil, cloud_provider: nil, cloud_provider_region: nil, name: nil, network_id: nil, primary_bgp_key: nil, primary_cloud_account_id: nil, primary_cloud_ip: nil, primary_telnyx_ip: nil, secondary_bgp_key: nil, secondary_cloud_account_id: nil, secondary_cloud_ip: nil, secondary_telnyx_ip: nil, request_options: {})
+      #
+      # @param region_code [String] The region the interface should be deployed to.
       #
       # @param bandwidth_mbps [Float] The desired throughput in Megabits per Second (Mbps) for your Virtual Cross Conn
       #
@@ -48,7 +50,7 @@ module Telnyx
       # @return [Telnyx::Models::VirtualCrossConnectCreateResponse]
       #
       # @see Telnyx::Models::VirtualCrossConnectCreateParams
-      def create(params = {})
+      def create(params)
         parsed, options = Telnyx::VirtualCrossConnectCreateParams.dump_request(params)
         @client.request(
           method: :post,

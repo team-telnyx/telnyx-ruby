@@ -7,6 +7,12 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute region_code
+      #   The region the interface should be deployed to.
+      #
+      #   @return [String]
+      required :region_code, String
+
       # @!attribute bandwidth_mbps
       #   The desired throughput in Megabits per Second (Mbps) for your Virtual Cross
       #   Connect.<br /><br />The available bandwidths can be found using the
@@ -112,9 +118,11 @@ module Telnyx
       #   @return [String, nil]
       optional :secondary_telnyx_ip, String
 
-      # @!method initialize(bandwidth_mbps: nil, bgp_asn: nil, cloud_provider: nil, cloud_provider_region: nil, name: nil, network_id: nil, primary_bgp_key: nil, primary_cloud_account_id: nil, primary_cloud_ip: nil, primary_telnyx_ip: nil, secondary_bgp_key: nil, secondary_cloud_account_id: nil, secondary_cloud_ip: nil, secondary_telnyx_ip: nil, request_options: {})
+      # @!method initialize(region_code:, bandwidth_mbps: nil, bgp_asn: nil, cloud_provider: nil, cloud_provider_region: nil, name: nil, network_id: nil, primary_bgp_key: nil, primary_cloud_account_id: nil, primary_cloud_ip: nil, primary_telnyx_ip: nil, secondary_bgp_key: nil, secondary_cloud_account_id: nil, secondary_cloud_ip: nil, secondary_telnyx_ip: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::VirtualCrossConnectCreateParams} for more details.
+      #
+      #   @param region_code [String] The region the interface should be deployed to.
       #
       #   @param bandwidth_mbps [Float] The desired throughput in Megabits per Second (Mbps) for your Virtual Cross Conn
       #
