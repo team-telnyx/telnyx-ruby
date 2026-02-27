@@ -3,17 +3,12 @@
 module Telnyx
   module Resources
     class WireguardPeers
-      # Some parameter documentations has been truncated, see
-      # {Telnyx::Models::WireguardPeerCreateParams} for more details.
-      #
       # Create a new WireGuard Peer. Current limitation of 5 peers per interface can be
       # created.
       #
-      # @overload create(wireguard_interface_id:, public_key: nil, request_options: {})
+      # @overload create(wireguard_interface_id:, request_options: {})
       #
       # @param wireguard_interface_id [String] The id of the wireguard interface associated with the peer.
-      #
-      # @param public_key [String] The WireGuard `PublicKey`.<br /><br />If you do not provide a Public Key, a new
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
