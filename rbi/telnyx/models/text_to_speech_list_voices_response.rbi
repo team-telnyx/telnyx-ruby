@@ -30,6 +30,7 @@ module Telnyx
       end
       attr_writer :voices
 
+      # List of available voices.
       sig do
         params(
           voices:
@@ -61,89 +62,73 @@ module Telnyx
             )
           end
 
-        sig { returns(T.nilable(String)) }
-        attr_reader :id
-
-        sig { params(id: String).void }
-        attr_writer :id
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :accent
-
-        sig { params(accent: String).void }
-        attr_writer :accent
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :age
-
-        sig { params(age: String).void }
-        attr_writer :age
-
+        # Voice gender.
         sig { returns(T.nilable(String)) }
         attr_reader :gender
 
         sig { params(gender: String).void }
         attr_writer :gender
 
-        sig { returns(T.nilable(String)) }
-        attr_reader :label
-
-        sig { params(label: String).void }
-        attr_writer :label
-
+        # Language code.
         sig { returns(T.nilable(String)) }
         attr_reader :language
 
         sig { params(language: String).void }
         attr_writer :language
 
+        # Voice name.
         sig { returns(T.nilable(String)) }
         attr_reader :name
 
         sig { params(name: String).void }
         attr_writer :name
 
+        # The TTS provider.
         sig { returns(T.nilable(String)) }
         attr_reader :provider
 
         sig { params(provider: String).void }
         attr_writer :provider
 
+        # Voice identifier.
+        sig { returns(T.nilable(String)) }
+        attr_reader :voice_id
+
+        sig { params(voice_id: String).void }
+        attr_writer :voice_id
+
+        # A voice available for text-to-speech synthesis.
         sig do
           params(
-            id: String,
-            accent: String,
-            age: String,
             gender: String,
-            label: String,
             language: String,
             name: String,
-            provider: String
+            provider: String,
+            voice_id: String
           ).returns(T.attached_class)
         end
         def self.new(
-          id: nil,
-          accent: nil,
-          age: nil,
+          # Voice gender.
           gender: nil,
-          label: nil,
+          # Language code.
           language: nil,
+          # Voice name.
           name: nil,
-          provider: nil
+          # The TTS provider.
+          provider: nil,
+          # Voice identifier.
+          voice_id: nil
         )
         end
 
         sig do
           override.returns(
             {
-              id: String,
-              accent: String,
-              age: String,
               gender: String,
-              label: String,
               language: String,
               name: String,
-              provider: String
+              provider: String,
+              voice_id: String
             }
           )
         end
