@@ -3,18 +3,22 @@
 module Telnyx
   module Resources
     class TextToSpeech
-      # Returns a list of voices that can be used with the text to speech commands.
+      # Retrieve a list of available voices from one or all TTS providers. When
+      # `provider` is specified, returns voices for that provider only. Otherwise,
+      # returns voices from all providers.
+      #
+      # Some providers (ElevenLabs, Resemble) require an API key to list voices.
       sig do
         params(
-          elevenlabs_api_key_ref: String,
+          api_key: String,
           provider: Telnyx::TextToSpeechListVoicesParams::Provider::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::TextToSpeechListVoicesResponse)
       end
       def list_voices(
-        # Reference to your ElevenLabs API key stored in the Telnyx Portal
-        elevenlabs_api_key_ref: nil,
-        # Filter voices by provider
+        # API key for providers that require one to list voices (e.g. ElevenLabs).
+        api_key: nil,
+        # Filter voices by provider. If omitted, voices from all providers are returned.
         provider: nil,
         request_options: {}
       )

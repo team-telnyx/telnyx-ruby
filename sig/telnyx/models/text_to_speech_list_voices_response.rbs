@@ -20,36 +20,17 @@ module Telnyx
 
       type voice =
         {
-          id: String,
-          accent: String,
-          age: String,
           gender: String,
-          label: String,
           language: String,
           name: String,
-          provider: String
+          provider: String,
+          voice_id: String
         }
 
       class Voice < Telnyx::Internal::Type::BaseModel
-        attr_reader id: String?
-
-        def id=: (String) -> String
-
-        attr_reader accent: String?
-
-        def accent=: (String) -> String
-
-        attr_reader age: String?
-
-        def age=: (String) -> String
-
         attr_reader gender: String?
 
         def gender=: (String) -> String
-
-        attr_reader label: String?
-
-        def label=: (String) -> String
 
         attr_reader language: String?
 
@@ -63,26 +44,24 @@ module Telnyx
 
         def provider=: (String) -> String
 
+        attr_reader voice_id: String?
+
+        def voice_id=: (String) -> String
+
         def initialize: (
-          ?id: String,
-          ?accent: String,
-          ?age: String,
           ?gender: String,
-          ?label: String,
           ?language: String,
           ?name: String,
-          ?provider: String
+          ?provider: String,
+          ?voice_id: String
         ) -> void
 
         def to_hash: -> {
-          id: String,
-          accent: String,
-          age: String,
           gender: String,
-          label: String,
           language: String,
           name: String,
-          provider: String
+          provider: String,
+          voice_id: String
         }
       end
     end

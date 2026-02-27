@@ -2,7 +2,7 @@ module Telnyx
   module Resources
     class TextToSpeech
       def list_voices: (
-        ?elevenlabs_api_key_ref: String,
+        ?api_key: String,
         ?provider: Telnyx::Models::TextToSpeechListVoicesParams::provider,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::TextToSpeechListVoicesResponse
