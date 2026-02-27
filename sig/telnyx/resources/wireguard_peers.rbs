@@ -3,7 +3,6 @@ module Telnyx
     class WireguardPeers
       def create: (
         wireguard_interface_id: String,
-        ?public_key: String,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::WireguardPeerCreateResponse
 
