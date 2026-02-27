@@ -11,14 +11,14 @@ module Telnyx
           T.any(Telnyx::TextToSpeechListVoicesParams, Telnyx::Internal::AnyHash)
         end
 
-      # Reference to your ElevenLabs API key stored in the Telnyx Portal
+      # API key for providers that require one to list voices (e.g. ElevenLabs).
       sig { returns(T.nilable(String)) }
-      attr_reader :elevenlabs_api_key_ref
+      attr_reader :api_key
 
-      sig { params(elevenlabs_api_key_ref: String).void }
-      attr_writer :elevenlabs_api_key_ref
+      sig { params(api_key: String).void }
+      attr_writer :api_key
 
-      # Filter voices by provider
+      # Filter voices by provider. If omitted, voices from all providers are returned.
       sig do
         returns(
           T.nilable(Telnyx::TextToSpeechListVoicesParams::Provider::OrSymbol)
@@ -35,15 +35,15 @@ module Telnyx
 
       sig do
         params(
-          elevenlabs_api_key_ref: String,
+          api_key: String,
           provider: Telnyx::TextToSpeechListVoicesParams::Provider::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
-        # Reference to your ElevenLabs API key stored in the Telnyx Portal
-        elevenlabs_api_key_ref: nil,
-        # Filter voices by provider
+        # API key for providers that require one to list voices (e.g. ElevenLabs).
+        api_key: nil,
+        # Filter voices by provider. If omitted, voices from all providers are returned.
         provider: nil,
         request_options: {}
       )
@@ -52,7 +52,7 @@ module Telnyx
       sig do
         override.returns(
           {
-            elevenlabs_api_key_ref: String,
+            api_key: String,
             provider: Telnyx::TextToSpeechListVoicesParams::Provider::OrSymbol,
             request_options: Telnyx::RequestOptions
           }
@@ -61,7 +61,7 @@ module Telnyx
       def to_hash
       end
 
-      # Filter voices by provider
+      # Filter voices by provider. If omitted, voices from all providers are returned.
       module Provider
         extend Telnyx::Internal::Type::Enum
 
@@ -76,6 +76,11 @@ module Telnyx
             :aws,
             Telnyx::TextToSpeechListVoicesParams::Provider::TaggedSymbol
           )
+        TELNYX =
+          T.let(
+            :telnyx,
+            Telnyx::TextToSpeechListVoicesParams::Provider::TaggedSymbol
+          )
         AZURE =
           T.let(
             :azure,
@@ -86,9 +91,19 @@ module Telnyx
             :elevenlabs,
             Telnyx::TextToSpeechListVoicesParams::Provider::TaggedSymbol
           )
-        TELNYX =
+        MINIMAX =
           T.let(
-            :telnyx,
+            :minimax,
+            Telnyx::TextToSpeechListVoicesParams::Provider::TaggedSymbol
+          )
+        RIME =
+          T.let(
+            :rime,
+            Telnyx::TextToSpeechListVoicesParams::Provider::TaggedSymbol
+          )
+        RESEMBLE =
+          T.let(
+            :resemble,
             Telnyx::TextToSpeechListVoicesParams::Provider::TaggedSymbol
           )
 
