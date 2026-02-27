@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    telnyx (5.48.0)
+    telnyx (5.49.0)
       cgi
       connection_pool
 
