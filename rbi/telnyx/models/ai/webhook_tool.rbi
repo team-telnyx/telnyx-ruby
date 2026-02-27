@@ -116,14 +116,14 @@ module Telnyx
               T.nilable(Telnyx::AI::WebhookTool::Webhook::Method::OrSymbol)
             )
           end
-          attr_reader :method_
+          attr_reader :http_method
 
           sig do
             params(
-              method_: Telnyx::AI::WebhookTool::Webhook::Method::OrSymbol
+              http_method: Telnyx::AI::WebhookTool::Webhook::Method::OrSymbol
             ).void
           end
-          attr_writer :method_
+          attr_writer :http_method
 
           # The path parameters the webhook tool accepts, described as a JSON Schema object.
           # These parameters will be passed to the webhook as the path of the request if the
@@ -172,7 +172,7 @@ module Telnyx
                 Telnyx::AI::WebhookTool::Webhook::BodyParameters::OrHash,
               headers:
                 T::Array[Telnyx::AI::WebhookTool::Webhook::Header::OrHash],
-              method_: Telnyx::AI::WebhookTool::Webhook::Method::OrSymbol,
+              http_method: Telnyx::AI::WebhookTool::Webhook::Method::OrSymbol,
               path_parameters:
                 Telnyx::AI::WebhookTool::Webhook::PathParameters::OrHash,
               query_parameters:
@@ -197,7 +197,7 @@ module Telnyx
             # The headers to be sent to the external tool.
             headers: nil,
             # The HTTP method to be used when calling the external tool.
-            method_: nil,
+            http_method: nil,
             # The path parameters the webhook tool accepts, described as a JSON Schema object.
             # These parameters will be passed to the webhook as the path of the request if the
             # URL contains a placeholder for a value. See the
@@ -222,7 +222,7 @@ module Telnyx
                 body_parameters:
                   Telnyx::AI::WebhookTool::Webhook::BodyParameters,
                 headers: T::Array[Telnyx::AI::WebhookTool::Webhook::Header],
-                method_: Telnyx::AI::WebhookTool::Webhook::Method::OrSymbol,
+                http_method: Telnyx::AI::WebhookTool::Webhook::Method::OrSymbol,
                 path_parameters:
                   Telnyx::AI::WebhookTool::Webhook::PathParameters,
                 query_parameters:

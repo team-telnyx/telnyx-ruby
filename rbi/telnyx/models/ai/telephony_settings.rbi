@@ -353,22 +353,22 @@ module Telnyx
               )
             )
           end
-          attr_reader :format_
+          attr_reader :file_format
 
           sig do
             params(
-              format_:
+              file_format:
                 Telnyx::AI::TelephonySettings::RecordingSettings::Format::OrSymbol
             ).void
           end
-          attr_writer :format_
+          attr_writer :file_format
 
           # Configuration for call recording format and channel settings.
           sig do
             params(
               channels:
                 Telnyx::AI::TelephonySettings::RecordingSettings::Channels::OrSymbol,
-              format_:
+              file_format:
                 Telnyx::AI::TelephonySettings::RecordingSettings::Format::OrSymbol
             ).returns(T.attached_class)
           end
@@ -376,7 +376,7 @@ module Telnyx
             # The number of channels for the recording. 'single' for mono, 'dual' for stereo.
             channels: nil,
             # The format of the recording file.
-            format_: nil
+            file_format: nil
           )
           end
 
@@ -385,7 +385,7 @@ module Telnyx
               {
                 channels:
                   Telnyx::AI::TelephonySettings::RecordingSettings::Channels::OrSymbol,
-                format_:
+                file_format:
                   Telnyx::AI::TelephonySettings::RecordingSettings::Format::OrSymbol
               }
             )

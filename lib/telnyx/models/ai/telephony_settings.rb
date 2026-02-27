@@ -146,20 +146,20 @@ module Telnyx
           #   @return [Symbol, Telnyx::Models::AI::TelephonySettings::RecordingSettings::Channels, nil]
           optional :channels, enum: -> { Telnyx::AI::TelephonySettings::RecordingSettings::Channels }
 
-          # @!attribute format_
+          # @!attribute file_format
           #   The format of the recording file.
           #
           #   @return [Symbol, Telnyx::Models::AI::TelephonySettings::RecordingSettings::Format, nil]
-          optional :format_,
+          optional :file_format,
                    enum: -> { Telnyx::AI::TelephonySettings::RecordingSettings::Format },
                    api_name: :format
 
-          # @!method initialize(channels: nil, format_: nil)
+          # @!method initialize(channels: nil, file_format: nil)
           #   Configuration for call recording format and channel settings.
           #
           #   @param channels [Symbol, Telnyx::Models::AI::TelephonySettings::RecordingSettings::Channels] The number of channels for the recording. 'single' for mono, 'dual' for stereo.
           #
-          #   @param format_ [Symbol, Telnyx::Models::AI::TelephonySettings::RecordingSettings::Format] The format of the recording file.
+          #   @param file_format [Symbol, Telnyx::Models::AI::TelephonySettings::RecordingSettings::Format] The format of the recording file.
 
           # The number of channels for the recording. 'single' for mono, 'dual' for stereo.
           #
@@ -176,7 +176,7 @@ module Telnyx
 
           # The format of the recording file.
           #
-          # @see Telnyx::Models::AI::TelephonySettings::RecordingSettings#format_
+          # @see Telnyx::Models::AI::TelephonySettings::RecordingSettings#file_format
           module Format
             extend Telnyx::Internal::Type::Enum
 
