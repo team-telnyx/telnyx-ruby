@@ -21,10 +21,11 @@ module Telnyx
       # @see Telnyx::Models::InventoryCoverageListParams
       def list(params = {})
         parsed, options = Telnyx::InventoryCoverageListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "inventory_coverage",
-          query: parsed,
+          query: query,
           model: Telnyx::Models::InventoryCoverageListResponse,
           options: options
         )

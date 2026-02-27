@@ -150,10 +150,11 @@ module Telnyx
       # @see Telnyx::Models::OutboundVoiceProfileListParams
       def list(params = {})
         parsed, options = Telnyx::OutboundVoiceProfileListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "outbound_voice_profiles",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::OutboundVoiceProfile,
           options: options

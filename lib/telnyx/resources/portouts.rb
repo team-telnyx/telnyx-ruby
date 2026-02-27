@@ -55,10 +55,11 @@ module Telnyx
       # @see Telnyx::Models::PortoutListParams
       def list(params = {})
         parsed, options = Telnyx::PortoutListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "portouts",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::PortoutDetails,
           options: options
@@ -83,10 +84,11 @@ module Telnyx
       # @see Telnyx::Models::PortoutListRejectionCodesParams
       def list_rejection_codes(portout_id, params = {})
         parsed, options = Telnyx::PortoutListRejectionCodesParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["portouts/rejections/%1$s", portout_id],
-          query: parsed,
+          query: query,
           model: Telnyx::Models::PortoutListRejectionCodesResponse,
           options: options
         )

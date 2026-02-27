@@ -17,10 +17,11 @@ module Telnyx
           # @see Telnyx::Models::Messaging10dlc::Campaign::UsecaseGetCostParams
           def get_cost(params)
             parsed, options = Telnyx::Messaging10dlc::Campaign::UsecaseGetCostParams.dump_request(params)
+            query = Telnyx::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
               path: "10dlc/campaign/usecase/cost",
-              query: parsed,
+              query: query,
               model: Telnyx::Models::Messaging10dlc::Campaign::UsecaseGetCostResponse,
               options: options
             )

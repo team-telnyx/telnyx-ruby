@@ -104,10 +104,11 @@ module Telnyx
           # @see Telnyx::Models::Texml::Accounts::ConferenceRetrieveConferencesParams
           def retrieve_conferences(account_sid, params = {})
             parsed, options = Telnyx::Texml::Accounts::ConferenceRetrieveConferencesParams.dump_request(params)
+            query = Telnyx::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
               path: ["texml/Accounts/%1$s/Conferences", account_sid],
-              query: parsed.transform_keys(
+              query: query.transform_keys(
                 date_created: "DateCreated",
                 date_updated: "DateUpdated",
                 friendly_name: "FriendlyName",

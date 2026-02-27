@@ -73,10 +73,11 @@ module Telnyx
             # @see Telnyx::Models::Legacy::Reporting::UsageReports::MessagingListParams
             def list(params = {})
               parsed, options = Telnyx::Legacy::Reporting::UsageReports::MessagingListParams.dump_request(params)
+              query = Telnyx::Internal::Util.encode_query_params(parsed)
               @client.request(
                 method: :get,
                 path: "legacy/reporting/usage_reports/messaging",
-                query: parsed,
+                query: query,
                 page: Telnyx::Internal::PerPagePagination,
                 model: Telnyx::Legacy::Reporting::UsageReports::MdrUsageReportResponseLegacy,
                 options: options

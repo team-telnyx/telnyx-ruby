@@ -92,10 +92,11 @@ module Telnyx
         # @see Telnyx::Models::AI::AssistantRetrieveParams
         def retrieve(assistant_id, params = {})
           parsed, options = Telnyx::AI::AssistantRetrieveParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["ai/assistants/%1$s", assistant_id],
-            query: parsed,
+            query: query,
             model: Telnyx::AI::InferenceEmbedding,
             options: options
           )

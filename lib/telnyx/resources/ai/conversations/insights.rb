@@ -96,10 +96,11 @@ module Telnyx
           # @see Telnyx::Models::AI::Conversations::InsightListParams
           def list(params = {})
             parsed, options = Telnyx::AI::Conversations::InsightListParams.dump_request(params)
+            query = Telnyx::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
               path: "ai/conversations/insights",
-              query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+              query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
               page: Telnyx::Internal::DefaultFlatPagination,
               model: Telnyx::AI::Conversations::InsightTemplate,
               options: options

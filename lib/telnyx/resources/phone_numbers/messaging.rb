@@ -80,10 +80,11 @@ module Telnyx
         # @see Telnyx::Models::PhoneNumbers::MessagingListParams
         def list(params = {})
           parsed, options = Telnyx::PhoneNumbers::MessagingListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "phone_numbers/messaging",
-            query: parsed.transform_keys(
+            query: query.transform_keys(
               filter_messaging_profile_id: "filter[messaging_profile_id]",
               filter_phone_number: "filter[phone_number]",
               filter_phone_number_contains: "filter[phone_number][contains]",

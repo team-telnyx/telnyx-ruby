@@ -22,10 +22,11 @@ module Telnyx
       # @see Telnyx::Models::TextToSpeechListVoicesParams
       def list_voices(params = {})
         parsed, options = Telnyx::TextToSpeechListVoicesParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "text-to-speech/voices",
-          query: parsed,
+          query: query,
           model: Telnyx::Models::TextToSpeechListVoicesResponse,
           options: options
         )
@@ -78,10 +79,11 @@ module Telnyx
       # @see Telnyx::Models::TextToSpeechStreamParams
       def stream(params = {})
         parsed, options = Telnyx::TextToSpeechStreamParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "text-to-speech/speech",
-          query: parsed,
+          query: query,
           model: NilClass,
           options: options
         )

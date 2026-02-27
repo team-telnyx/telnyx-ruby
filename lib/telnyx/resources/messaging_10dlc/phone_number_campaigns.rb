@@ -96,10 +96,11 @@ module Telnyx
         # @see Telnyx::Models::Messaging10dlc::PhoneNumberCampaignListParams
         def list(params = {})
           parsed, options = Telnyx::Messaging10dlc::PhoneNumberCampaignListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "10dlc/phone_number_campaigns",
-            query: parsed.transform_keys(records_per_page: "recordsPerPage"),
+            query: query.transform_keys(records_per_page: "recordsPerPage"),
             page: Telnyx::Internal::PerPagePaginationV2,
             model: Telnyx::Messaging10dlc::PhoneNumberCampaign,
             options: options

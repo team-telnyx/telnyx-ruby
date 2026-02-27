@@ -29,10 +29,11 @@ module Telnyx
               # @see Telnyx::Models::AI::Assistants::Tests::TestSuites::RunListParams
               def list(suite_name, params = {})
                 parsed, options = Telnyx::AI::Assistants::Tests::TestSuites::RunListParams.dump_request(params)
+                query = Telnyx::Internal::Util.encode_query_params(parsed)
                 @client.request(
                   method: :get,
                   path: ["ai/assistants/tests/test-suites/%1$s/runs", suite_name],
-                  query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+                  query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
                   page: Telnyx::Internal::DefaultFlatPagination,
                   model: Telnyx::AI::Assistants::Tests::TestRunResponse,
                   options: options

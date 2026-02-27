@@ -25,10 +25,11 @@ module Telnyx
       # @see Telnyx::Models::NetworkCoverageListParams
       def list(params = {})
         parsed, options = Telnyx::NetworkCoverageListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "network_coverage",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::NetworkCoverageListResponse,
           options: options

@@ -89,10 +89,11 @@ module Telnyx
       # @see Telnyx::Models::NetworkListParams
       def list(params = {})
         parsed, options = Telnyx::NetworkListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "networks",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::NetworkListResponse,
           options: options
@@ -141,10 +142,11 @@ module Telnyx
       # @see Telnyx::Models::NetworkListInterfacesParams
       def list_interfaces(id, params = {})
         parsed, options = Telnyx::NetworkListInterfacesParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["networks/%1$s/network_interfaces", id],
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::NetworkListInterfacesResponse,
           options: options

@@ -38,10 +38,11 @@ module Telnyx
       # @see Telnyx::Models::ReportListMdrsParams
       def list_mdrs(params = {})
         parsed, options = Telnyx::ReportListMdrsParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "reports/mdrs",
-          query: parsed,
+          query: query,
           model: Telnyx::Models::ReportListMdrsResponse,
           options: options
         )
@@ -87,10 +88,11 @@ module Telnyx
       # @see Telnyx::Models::ReportListWdrsParams
       def list_wdrs(params = {})
         parsed, options = Telnyx::ReportListWdrsParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "reports/wdrs",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::ReportListWdrsResponse,
           options: options

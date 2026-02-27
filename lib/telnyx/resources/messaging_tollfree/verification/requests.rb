@@ -236,10 +236,11 @@ module Telnyx
           # @see Telnyx::Models::MessagingTollfree::Verification::RequestListParams
           def list(params)
             parsed, options = Telnyx::MessagingTollfree::Verification::RequestListParams.dump_request(params)
+            query = Telnyx::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
               path: "messaging_tollfree/verification/requests",
-              query: parsed,
+              query: query,
               page: Telnyx::Internal::DefaultPaginationForMessagingTollfree,
               model: Telnyx::MessagingTollfree::Verification::VerificationRequestStatus,
               options: options
@@ -296,10 +297,11 @@ module Telnyx
           def retrieve_status_history(id, params)
             parsed, options =
               Telnyx::MessagingTollfree::Verification::RequestRetrieveStatusHistoryParams.dump_request(params)
+            query = Telnyx::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
               path: ["messaging_tollfree/verification/requests/%1$s/status_history", id],
-              query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+              query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
               model: Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveStatusHistoryResponse,
               options: options
             )

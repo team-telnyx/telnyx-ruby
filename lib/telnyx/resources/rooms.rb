@@ -59,10 +59,11 @@ module Telnyx
       # @see Telnyx::Models::RoomRetrieveParams
       def retrieve(room_id, params = {})
         parsed, options = Telnyx::RoomRetrieveParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["rooms/%1$s", room_id],
-          query: parsed,
+          query: query,
           model: Telnyx::Models::RoomRetrieveResponse,
           options: options
         )
@@ -127,10 +128,11 @@ module Telnyx
       # @see Telnyx::Models::RoomListParams
       def list(params = {})
         parsed, options = Telnyx::RoomListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "rooms",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Room,
           options: options

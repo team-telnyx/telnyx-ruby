@@ -66,10 +66,11 @@ module Telnyx
       # @see Telnyx::Models::AlphanumericSenderIDListParams
       def list(params = {})
         parsed, options = Telnyx::AlphanumericSenderIDListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "alphanumeric_sender_ids",
-          query: parsed.transform_keys(
+          query: query.transform_keys(
             filter_messaging_profile_id: "filter[messaging_profile_id]",
             page_number: "page[number]",
             page_size: "page[size]"

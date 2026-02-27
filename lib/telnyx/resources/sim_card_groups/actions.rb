@@ -48,10 +48,11 @@ module Telnyx
         # @see Telnyx::Models::SimCardGroups::ActionListParams
         def list(params = {})
           parsed, options = Telnyx::SimCardGroups::ActionListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "sim_card_group_actions",
-            query: parsed.transform_keys(
+            query: query.transform_keys(
               filter_sim_card_group_id: "filter[sim_card_group_id]",
               filter_status: "filter[status]",
               filter_type: "filter[type]",

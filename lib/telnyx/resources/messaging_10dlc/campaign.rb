@@ -99,10 +99,11 @@ module Telnyx
         # @see Telnyx::Models::Messaging10dlc::CampaignListParams
         def list(params)
           parsed, options = Telnyx::Messaging10dlc::CampaignListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "10dlc/campaign",
-            query: parsed.transform_keys(brand_id: "brandId", records_per_page: "recordsPerPage"),
+            query: query.transform_keys(brand_id: "brandId", records_per_page: "recordsPerPage"),
             page: Telnyx::Internal::PerPagePaginationV2,
             model: Telnyx::Models::Messaging10dlc::CampaignListResponse,
             options: options

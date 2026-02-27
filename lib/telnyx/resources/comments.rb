@@ -62,10 +62,11 @@ module Telnyx
       # @see Telnyx::Models::CommentListParams
       def list(params = {})
         parsed, options = Telnyx::CommentListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "comments",
-          query: parsed,
+          query: query,
           model: Telnyx::Models::CommentListResponse,
           options: options
         )

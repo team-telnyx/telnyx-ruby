@@ -24,10 +24,11 @@ module Telnyx
         # @see Telnyx::Models::AI::ClusterRetrieveParams
         def retrieve(task_id, params = {})
           parsed, options = Telnyx::AI::ClusterRetrieveParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["ai/clusters/%1$s", task_id],
-            query: parsed,
+            query: query,
             model: Telnyx::Models::AI::ClusterRetrieveResponse,
             options: options
           )
@@ -46,10 +47,11 @@ module Telnyx
         # @see Telnyx::Models::AI::ClusterListParams
         def list(params = {})
           parsed, options = Telnyx::AI::ClusterListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "ai/clusters",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::Models::AI::ClusterListResponse,
             options: options
@@ -123,10 +125,11 @@ module Telnyx
         # @see Telnyx::Models::AI::ClusterFetchGraphParams
         def fetch_graph(task_id, params = {})
           parsed, options = Telnyx::AI::ClusterFetchGraphParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["ai/clusters/%1$s/graph", task_id],
-            query: parsed,
+            query: query,
             headers: {"accept" => "image/png"},
             model: StringIO,
             options: options

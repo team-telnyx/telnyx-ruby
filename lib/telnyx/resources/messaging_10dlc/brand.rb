@@ -207,10 +207,11 @@ module Telnyx
         # @see Telnyx::Models::Messaging10dlc::BrandListParams
         def list(params = {})
           parsed, options = Telnyx::Messaging10dlc::BrandListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "10dlc/brand",
-            query: parsed.transform_keys(
+            query: query.transform_keys(
               brand_id: "brandId",
               display_name: "displayName",
               entity_type: "entityType",
@@ -301,10 +302,11 @@ module Telnyx
         # @see Telnyx::Models::Messaging10dlc::BrandGetSMSOtpByReferenceParams
         def get_sms_otp_by_reference(reference_id, params = {})
           parsed, options = Telnyx::Messaging10dlc::BrandGetSMSOtpByReferenceParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["10dlc/brand/smsOtp/%1$s", reference_id],
-            query: parsed.transform_keys(brand_id: "brandId"),
+            query: query.transform_keys(brand_id: "brandId"),
             model: Telnyx::Models::Messaging10dlc::BrandGetSMSOtpByReferenceResponse,
             options: options
           )

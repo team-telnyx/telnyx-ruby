@@ -21,10 +21,11 @@ module Telnyx
       # @see Telnyx::Models::SubNumberOrderRetrieveParams
       def retrieve(sub_number_order_id, params = {})
         parsed, options = Telnyx::SubNumberOrderRetrieveParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["sub_number_orders/%1$s", sub_number_order_id],
-          query: parsed,
+          query: query,
           model: Telnyx::Models::SubNumberOrderRetrieveResponse,
           options: options
         )
@@ -70,10 +71,11 @@ module Telnyx
       # @see Telnyx::Models::SubNumberOrderListParams
       def list(params = {})
         parsed, options = Telnyx::SubNumberOrderListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "sub_number_orders",
-          query: parsed,
+          query: query,
           model: Telnyx::Models::SubNumberOrderListResponse,
           options: options
         )

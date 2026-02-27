@@ -79,10 +79,11 @@ module Telnyx
       # @see Telnyx::Models::PrivateWirelessGatewayListParams
       def list(params = {})
         parsed, options = Telnyx::PrivateWirelessGatewayListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "private_wireless_gateways",
-          query: parsed.transform_keys(
+          query: query.transform_keys(
             filter_created_at: "filter[created_at]",
             filter_ip_range: "filter[ip_range]",
             filter_name: "filter[name]",

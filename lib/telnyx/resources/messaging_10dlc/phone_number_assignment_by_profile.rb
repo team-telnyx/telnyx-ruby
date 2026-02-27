@@ -56,10 +56,11 @@ module Telnyx
         def list_phone_number_status(task_id, params = {})
           parsed, options =
             Telnyx::Messaging10dlc::PhoneNumberAssignmentByProfileListPhoneNumberStatusParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["10dlc/phoneNumberAssignmentByProfile/%1$s/phoneNumbers", task_id],
-            query: parsed.transform_keys(records_per_page: "recordsPerPage"),
+            query: query.transform_keys(records_per_page: "recordsPerPage"),
             model: Telnyx::Models::Messaging10dlc::PhoneNumberAssignmentByProfileListPhoneNumberStatusResponse,
             options: options
           )
@@ -81,10 +82,11 @@ module Telnyx
         def retrieve_phone_number_status(task_id, params = {})
           parsed, options =
             Telnyx::Messaging10dlc::PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["10dlc/phoneNumberAssignmentByProfile/%1$s/phoneNumbers", task_id],
-            query: parsed.transform_keys(records_per_page: "recordsPerPage"),
+            query: query.transform_keys(records_per_page: "recordsPerPage"),
             model: Telnyx::Models::Messaging10dlc::PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusResponse,
             options: options
           )

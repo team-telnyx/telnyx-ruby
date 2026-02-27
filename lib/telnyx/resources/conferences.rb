@@ -81,10 +81,11 @@ module Telnyx
       # @see Telnyx::Models::ConferenceRetrieveParams
       def retrieve(id, params = {})
         parsed, options = Telnyx::ConferenceRetrieveParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["conferences/%1$s", id],
-          query: parsed,
+          query: query,
           model: Telnyx::Models::ConferenceRetrieveResponse,
           options: options
         )
@@ -115,10 +116,11 @@ module Telnyx
       # @see Telnyx::Models::ConferenceListParams
       def list(params = {})
         parsed, options = Telnyx::ConferenceListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "conferences",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Conference,
           options: options
@@ -149,10 +151,11 @@ module Telnyx
       # @see Telnyx::Models::ConferenceListParticipantsParams
       def list_participants(conference_id, params = {})
         parsed, options = Telnyx::ConferenceListParticipantsParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["conferences/%1$s/participants", conference_id],
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::ConferenceListParticipantsResponse,
           options: options

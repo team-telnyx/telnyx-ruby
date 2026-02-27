@@ -22,10 +22,11 @@ module Telnyx
         # @see Telnyx::Models::Rooms::SessionRetrieveParams
         def retrieve(room_session_id, params = {})
           parsed, options = Telnyx::Rooms::SessionRetrieveParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["room_sessions/%1$s", room_session_id],
-            query: parsed,
+            query: query,
             model: Telnyx::Models::Rooms::SessionRetrieveResponse,
             options: options
           )
@@ -53,10 +54,11 @@ module Telnyx
         # @see Telnyx::Models::Rooms::SessionList0Params
         def list_0(params = {})
           parsed, options = Telnyx::Rooms::SessionList0Params.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "room_sessions",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::RoomSession,
             options: options
@@ -87,10 +89,11 @@ module Telnyx
         # @see Telnyx::Models::Rooms::SessionList1Params
         def list_1(room_id, params = {})
           parsed, options = Telnyx::Rooms::SessionList1Params.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["rooms/%1$s/sessions", room_id],
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::RoomSession,
             options: options
@@ -119,10 +122,11 @@ module Telnyx
         # @see Telnyx::Models::Rooms::SessionRetrieveParticipantsParams
         def retrieve_participants(room_session_id, params = {})
           parsed, options = Telnyx::Rooms::SessionRetrieveParticipantsParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["room_sessions/%1$s/participants", room_session_id],
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::RoomParticipant,
             options: options

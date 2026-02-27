@@ -42,10 +42,11 @@ module Telnyx
       # @see Telnyx::Models::BulkSimCardActionListParams
       def list(params = {})
         parsed, options = Telnyx::BulkSimCardActionListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "bulk_sim_card_actions",
-          query: parsed.transform_keys(
+          query: query.transform_keys(
             filter_action_type: "filter[action_type]",
             page_number: "page[number]",
             page_size: "page[size]"

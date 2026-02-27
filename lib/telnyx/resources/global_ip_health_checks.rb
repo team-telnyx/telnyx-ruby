@@ -62,10 +62,11 @@ module Telnyx
       # @see Telnyx::Models::GlobalIPHealthCheckListParams
       def list(params = {})
         parsed, options = Telnyx::GlobalIPHealthCheckListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "global_ip_health_checks",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::GlobalIPHealthCheckListResponse,
           options: options

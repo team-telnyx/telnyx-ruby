@@ -57,10 +57,11 @@ module Telnyx
         # @see Telnyx::Models::PortingOrders::PhoneNumberBlockListParams
         def list(porting_order_id, params = {})
           parsed, options = Telnyx::PortingOrders::PhoneNumberBlockListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["porting_orders/%1$s/phone_number_blocks", porting_order_id],
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::PortingOrders::PortingPhoneNumberBlock,
             options: options

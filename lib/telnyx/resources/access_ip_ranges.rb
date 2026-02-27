@@ -45,10 +45,11 @@ module Telnyx
       # @see Telnyx::Models::AccessIPRangeListParams
       def list(params = {})
         parsed, options = Telnyx::AccessIPRangeListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "access_ip_ranges",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::AccessIPRange,
           options: options

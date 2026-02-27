@@ -126,10 +126,11 @@ module Telnyx
       # @see Telnyx::Models::OAuthClientListParams
       def list(params = {})
         parsed, options = Telnyx::OAuthClientListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "oauth_clients",
-          query: parsed.transform_keys(
+          query: query.transform_keys(
             filter_allowed_grant_types_contains: "filter[allowed_grant_types][contains]",
             filter_client_id: "filter[client_id]",
             filter_client_type: "filter[client_type]",

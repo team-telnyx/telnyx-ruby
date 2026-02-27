@@ -82,10 +82,11 @@ module Telnyx
       # @see Telnyx::Models::BillingGroupListParams
       def list(params = {})
         parsed, options = Telnyx::BillingGroupListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "billing_groups",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::BillingGroup,
           options: options

@@ -22,10 +22,11 @@ module Telnyx
       # @see Telnyx::Models::WirelessRetrieveRegionsParams
       def retrieve_regions(params)
         parsed, options = Telnyx::WirelessRetrieveRegionsParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "wireless/regions",
-          query: parsed,
+          query: query,
           model: Telnyx::Models::WirelessRetrieveRegionsResponse,
           options: options
         )

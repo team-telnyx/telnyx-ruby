@@ -17,10 +17,11 @@ module Telnyx
       # @see Telnyx::Models::MessagingProfileMetricListParams
       def list(params = {})
         parsed, options = Telnyx::MessagingProfileMetricListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "messaging_profile_metrics",
-          query: parsed,
+          query: query,
           model: Telnyx::Models::MessagingProfileMetricListResponse,
           options: options
         )

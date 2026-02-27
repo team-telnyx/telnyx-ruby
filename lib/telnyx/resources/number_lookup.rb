@@ -18,10 +18,11 @@ module Telnyx
       # @see Telnyx::Models::NumberLookupRetrieveParams
       def retrieve(phone_number, params = {})
         parsed, options = Telnyx::NumberLookupRetrieveParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["number_lookup/%1$s", phone_number],
-          query: parsed,
+          query: query,
           model: Telnyx::Models::NumberLookupRetrieveResponse,
           options: options
         )

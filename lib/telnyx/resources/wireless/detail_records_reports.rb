@@ -64,10 +64,11 @@ module Telnyx
         # @see Telnyx::Models::Wireless::DetailRecordsReportListParams
         def list(params = {})
           parsed, options = Telnyx::Wireless::DetailRecordsReportListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "wireless/detail_records_reports",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             model: Telnyx::Models::Wireless::DetailRecordsReportListResponse,
             options: options
           )

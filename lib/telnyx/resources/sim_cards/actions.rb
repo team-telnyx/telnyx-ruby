@@ -46,10 +46,11 @@ module Telnyx
         # @see Telnyx::Models::SimCards::ActionListParams
         def list(params = {})
           parsed, options = Telnyx::SimCards::ActionListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "sim_card_actions",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::SimCards::SimCardAction,
             options: options
@@ -180,10 +181,11 @@ module Telnyx
         # @see Telnyx::Models::SimCards::ActionSetPublicIPParams
         def set_public_ip(id, params = {})
           parsed, options = Telnyx::SimCards::ActionSetPublicIPParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :post,
             path: ["sim_cards/%1$s/actions/set_public_ip", id],
-            query: parsed,
+            query: query,
             model: Telnyx::Models::SimCards::ActionSetPublicIPResponse,
             options: options
           )

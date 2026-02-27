@@ -24,10 +24,11 @@ module Telnyx
       # @see Telnyx::Models::ChargesBreakdownRetrieveParams
       def retrieve(params)
         parsed, options = Telnyx::ChargesBreakdownRetrieveParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "charges_breakdown",
-          query: parsed.transform_keys(format_: "format"),
+          query: query.transform_keys(format_: "format"),
           model: Telnyx::Models::ChargesBreakdownRetrieveResponse,
           options: options
         )

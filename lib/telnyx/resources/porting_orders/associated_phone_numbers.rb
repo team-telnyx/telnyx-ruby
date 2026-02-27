@@ -59,10 +59,11 @@ module Telnyx
         # @see Telnyx::Models::PortingOrders::AssociatedPhoneNumberListParams
         def list(porting_order_id, params = {})
           parsed, options = Telnyx::PortingOrders::AssociatedPhoneNumberListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["porting_orders/%1$s/associated_phone_numbers", porting_order_id],
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::PortingOrders::PortingAssociatedPhoneNumber,
             options: options

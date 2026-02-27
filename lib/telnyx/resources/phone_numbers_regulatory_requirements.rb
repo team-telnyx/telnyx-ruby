@@ -20,10 +20,11 @@ module Telnyx
       # @see Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveParams
       def retrieve(params = {})
         parsed, options = Telnyx::PhoneNumbersRegulatoryRequirementRetrieveParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "phone_numbers_regulatory_requirements",
-          query: parsed,
+          query: query,
           model: Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveResponse,
           options: options
         )
