@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.49.0 (2026-02-27)
+
+Full Changelog: [v5.48.0...v5.49.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.48.0...v5.49.0)
+
+### Features
+
+* Add TTS file-based endpoint spec ([0952836](https://github.com/team-telnyx/telnyx-ruby/commit/09528368ab3c049ec7a279b11e39e716a1231ed3))
+
 ## 5.48.0 (2026-02-27)
 
 Full Changelog: [v5.47.0...v5.48.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.47.0...v5.48.0)
