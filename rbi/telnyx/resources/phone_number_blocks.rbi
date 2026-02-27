@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class PhoneNumberBlocks
+      # Background jobs performed over a phone-numbers block's phone numbers
       sig { returns(Telnyx::Resources::PhoneNumberBlocks::Jobs) }
       attr_reader :jobs
 

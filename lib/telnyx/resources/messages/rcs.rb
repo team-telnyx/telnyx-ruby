@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Messages
+      # Send RCS messages
       class Rcs
         # Generate a deeplink URL that can be used to start an RCS conversation with a
         # specific agent.

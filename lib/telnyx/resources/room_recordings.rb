@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Rooms Recordings operations.
     class RoomRecordings
       # View a room recording.
       #

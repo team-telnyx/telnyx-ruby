@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class AI
       class FineTuning
+        # Customize LLMs for your unique needs
         # @return [Telnyx::Resources::AI::FineTuning::Jobs]
         attr_reader :jobs
 

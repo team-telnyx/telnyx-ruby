@@ -3,7 +3,9 @@
 module Telnyx
   module Resources
     class Storage
+      # Migrate data from an external provider into Telnyx Cloud Storage
       class Migrations
+        # Migrate data from an external provider into Telnyx Cloud Storage
         # @return [Telnyx::Resources::Storage::Migrations::Actions]
         attr_reader :actions
 

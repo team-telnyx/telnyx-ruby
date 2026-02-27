@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Number orders
     class SubNumberOrdersReport
       # Create a CSV report for sub number orders. The report will be generated
       # asynchronously and can be downloaded once complete.

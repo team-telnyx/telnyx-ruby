@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class MessagingTollfree
       class Verification
+        # Manage your tollfree verification requests
         class Requests
           # Some parameter documentations has been truncated, see
           # {Telnyx::Models::MessagingTollfree::Verification::RequestCreateParams} for more

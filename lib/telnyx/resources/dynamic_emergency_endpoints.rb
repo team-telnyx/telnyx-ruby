@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Dynamic Emergency Endpoints
     class DynamicEmergencyEndpoints
       # Creates a dynamic emergency endpoints.
       #

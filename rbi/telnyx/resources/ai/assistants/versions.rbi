@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class AI
       class Assistants
+        # Configure AI assistant specifications
         class Versions
           # Retrieves a specific version of an assistant by assistant_id and version_id
           sig do

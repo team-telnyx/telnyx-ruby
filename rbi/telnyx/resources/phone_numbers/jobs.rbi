@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class PhoneNumbers
+      # Background jobs performed over a batch of phone numbers
       class Jobs
         # Retrieve a phone numbers job
         sig do

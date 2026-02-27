@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Documents
     class DocumentLinks
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::DocumentLinkListParams} for more details.

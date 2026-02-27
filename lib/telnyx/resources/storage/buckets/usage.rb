@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class Storage
       class Buckets
+        # Bucket Usage operations
         class Usage
           # Some parameter documentations has been truncated, see
           # {Telnyx::Models::Storage::Buckets::UsageGetAPIUsageParams} for more details.

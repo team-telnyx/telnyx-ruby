@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Virtual Cross Connect operations
     class VirtualCrossConnects
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::VirtualCrossConnectCreateParams} for more details.

@@ -3,7 +3,9 @@
 module Telnyx
   module Resources
     class AI
+      # Embed documents and perform text searches
       class Embeddings
+        # Embed documents and perform text searches
         # @return [Telnyx::Resources::AI::Embeddings::Buckets]
         attr_reader :buckets
 

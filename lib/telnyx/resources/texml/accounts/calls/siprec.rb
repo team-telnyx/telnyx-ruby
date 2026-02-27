@@ -5,6 +5,7 @@ module Telnyx
     class Texml
       class Accounts
         class Calls
+          # TeXML REST Commands
           class Siprec
             # Some parameter documentations has been truncated, see
             # {Telnyx::Models::Texml::Accounts::Calls::SiprecSiprecSidJsonParams} for more

@@ -2,16 +2,21 @@
 
 module Telnyx
   module Resources
+    # Number portout operations
     class Portouts
+      # Number portout operations
       # @return [Telnyx::Resources::Portouts::Events]
       attr_reader :events
 
+      # Number portout operations
       # @return [Telnyx::Resources::Portouts::Reports]
       attr_reader :reports
 
+      # Number portout operations
       # @return [Telnyx::Resources::Portouts::Comments]
       attr_reader :comments
 
+      # Number portout operations
       # @return [Telnyx::Resources::Portouts::SupportingDocuments]
       attr_reader :supporting_documents
 

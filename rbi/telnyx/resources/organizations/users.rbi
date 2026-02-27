@@ -3,7 +3,9 @@
 module Telnyx
   module Resources
     class Organizations
+      # Operations related to users in your organization
       class Users
+        # Operations related to users in your organization
         sig { returns(Telnyx::Resources::Organizations::Users::Actions) }
         attr_reader :actions
 

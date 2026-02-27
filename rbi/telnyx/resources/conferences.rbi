@@ -2,7 +2,9 @@
 
 module Telnyx
   module Resources
+    # Conference command operations
     class Conferences
+      # Conference command operations
       sig { returns(Telnyx::Resources::Conferences::Actions) }
       attr_reader :actions
 

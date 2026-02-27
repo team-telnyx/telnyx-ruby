@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # FQDN connection operations
     class FqdnConnections
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::FqdnConnectionCreateParams} for more details.

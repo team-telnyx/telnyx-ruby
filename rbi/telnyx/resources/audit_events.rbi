@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Audit log operations.
     class AuditEvents
       # Retrieve a list of audit log entries. Audit logs are a best-effort, eventually
       # consistent record of significant account-related changes.

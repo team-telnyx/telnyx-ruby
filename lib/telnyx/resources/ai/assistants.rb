@@ -3,19 +3,25 @@
 module Telnyx
   module Resources
     class AI
+      # Configure AI assistant specifications
       class Assistants
+        # Configure AI assistant specifications
         # @return [Telnyx::Resources::AI::Assistants::Tests]
         attr_reader :tests
 
+        # Configure AI assistant specifications
         # @return [Telnyx::Resources::AI::Assistants::CanaryDeploys]
         attr_reader :canary_deploys
 
+        # Configure AI assistant specifications
         # @return [Telnyx::Resources::AI::Assistants::ScheduledEvents]
         attr_reader :scheduled_events
 
+        # Configure AI assistant specifications
         # @return [Telnyx::Resources::AI::Assistants::Tools]
         attr_reader :tools
 
+        # Configure AI assistant specifications
         # @return [Telnyx::Resources::AI::Assistants::Versions]
         attr_reader :versions
 

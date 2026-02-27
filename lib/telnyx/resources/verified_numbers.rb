@@ -2,7 +2,9 @@
 
 module Telnyx
   module Resources
+    # Verified Numbers operations
     class VerifiedNumbers
+      # Verified Numbers operations
       # @return [Telnyx::Resources::VerifiedNumbers::Actions]
       attr_reader :actions
 

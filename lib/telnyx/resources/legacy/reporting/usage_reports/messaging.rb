@@ -5,6 +5,7 @@ module Telnyx
     class Legacy
       class Reporting
         class UsageReports
+          # Messaging usage reports
           class Messaging
             # Creates a new legacy usage V2 MDR report request with the specified filters
             #

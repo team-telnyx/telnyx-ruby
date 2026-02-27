@@ -2,7 +2,9 @@
 
 module Telnyx
   module Resources
+    # Queue commands operations
     class Queues
+      # Queue commands operations
       # @return [Telnyx::Resources::Queues::Calls]
       attr_reader :calls
 

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Regulatory Requirements
     class RegulatoryRequirements
       # Retrieve regulatory requirements
       sig do

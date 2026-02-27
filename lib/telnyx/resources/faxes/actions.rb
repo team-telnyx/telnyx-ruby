@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Faxes
+      # Programmable fax command operations
       class Actions
         # Cancel the outbound fax that is in one of the following states: `queued`,
         # `media.processed`, `originated` or `sending`

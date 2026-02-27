@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class MessagingHostedNumberOrders
+      # Manage your messaging hosted numbers
       class Actions
         # Upload hosted number document
         sig do

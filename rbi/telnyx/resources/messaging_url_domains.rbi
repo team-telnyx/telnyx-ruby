@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Messaging URL Domains
     class MessagingURLDomains
       # List messaging URL domains
       sig do

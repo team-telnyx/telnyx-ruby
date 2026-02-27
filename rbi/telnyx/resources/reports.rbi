@@ -3,9 +3,11 @@
 module Telnyx
   module Resources
     class Reports
+      # Voice usage reports
       sig { returns(Telnyx::Resources::Reports::CdrUsageReports) }
       attr_reader :cdr_usage_reports
 
+      # Messaging usage reports
       sig { returns(Telnyx::Resources::Reports::MdrUsageReports) }
       attr_reader :mdr_usage_reports
 

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Audit log operations.
     class AuditEvents
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::AuditEventListParams} for more details.

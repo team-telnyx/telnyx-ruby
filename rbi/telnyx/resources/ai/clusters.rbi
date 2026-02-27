@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class AI
+      # Identify common themes and patterns in your embedded documents
       class Clusters
         # Fetch a cluster
         sig do

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Voice Channels
     class List
       # Retrieve a list of all phone numbers using Channel Billing, grouped by Zone.
       sig do

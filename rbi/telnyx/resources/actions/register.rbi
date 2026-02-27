@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Actions
+      # SIM Cards operations
       class Register
         # Register the SIM cards associated with the provided registration codes to the
         # current user's account.<br/><br/> If <code>sim_card_group_id</code> is provided,

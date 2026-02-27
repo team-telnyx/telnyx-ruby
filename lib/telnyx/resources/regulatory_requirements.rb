@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Regulatory Requirements
     class RegulatoryRequirements
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::RegulatoryRequirementRetrieveParams} for more details.

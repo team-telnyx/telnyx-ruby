@@ -5,6 +5,7 @@ module Telnyx
     class Legacy
       class Reporting
         class BatchDetailRecords
+          # Voice batch detail records
           class Voice
             # Some parameter documentations has been truncated, see
             # {Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceCreateParams} for

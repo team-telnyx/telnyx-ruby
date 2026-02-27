@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class Messaging10dlc
       class Campaign
+        # Campaign operations
         class Usecase
           # Get Campaign Cost
           #

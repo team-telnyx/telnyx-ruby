@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class PhoneNumbers
+      # Configure your phone numbers
       class Actions
         # Change the bundle status for a phone number (set to being in a bundle or remove
         # from a bundle)

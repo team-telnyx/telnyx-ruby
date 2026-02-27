@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Store and retrieve integration secrets
     class IntegrationSecrets
       # Create a new secret with an associated identifier that can be used to securely
       # integrate with other services.

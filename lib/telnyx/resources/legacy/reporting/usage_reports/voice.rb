@@ -5,6 +5,7 @@ module Telnyx
     class Legacy
       class Reporting
         class UsageReports
+          # Voice usage reports
           class Voice
             # Some parameter documentations has been truncated, see
             # {Telnyx::Models::Legacy::Reporting::UsageReports::VoiceCreateParams} for more

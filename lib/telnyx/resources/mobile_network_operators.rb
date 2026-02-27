@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Mobile network operators operations
     class MobileNetworkOperators
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MobileNetworkOperatorListParams} for more details.

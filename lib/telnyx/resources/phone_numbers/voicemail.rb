@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class PhoneNumbers
+      # Voicemail API
       class Voicemail
         # Create voicemail settings for a phone number
         #

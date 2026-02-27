@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Notification settings operations
     class NotificationProfiles
       # Create a notification profile.
       sig do

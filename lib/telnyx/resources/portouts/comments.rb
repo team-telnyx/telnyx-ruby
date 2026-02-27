@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Portouts
+      # Number portout operations
       class Comments
         # Creates a comment on a portout request.
         #

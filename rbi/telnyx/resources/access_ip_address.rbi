@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # IP Address Operations
     class AccessIPAddress
       # Create new Access IP Address
       sig do

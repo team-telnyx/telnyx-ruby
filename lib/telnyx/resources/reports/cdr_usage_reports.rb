@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Reports
+      # Voice usage reports
       class CdrUsageReports
         # Generate and fetch voice usage report synchronously. This endpoint will both
         # generate and fetch the voice report over a specified time period. No polling is

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # TeXML Applications operations
     class TexmlApplications
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::TexmlApplicationCreateParams} for more details.

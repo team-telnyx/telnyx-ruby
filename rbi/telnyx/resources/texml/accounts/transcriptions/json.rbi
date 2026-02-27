@@ -5,6 +5,7 @@ module Telnyx
     class Texml
       class Accounts
         class Transcriptions
+          # TeXML REST Commands
           class Json
             # Permanently deletes a recording transcription.
             sig do

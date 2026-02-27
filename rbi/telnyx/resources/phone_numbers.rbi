@@ -2,22 +2,28 @@
 
 module Telnyx
   module Resources
+    # Configure your phone numbers
     class PhoneNumbers
+      # Configure your phone numbers
       sig { returns(Telnyx::Resources::PhoneNumbers::Actions) }
       attr_reader :actions
 
       sig { returns(Telnyx::Resources::PhoneNumbers::CsvDownloads) }
       attr_reader :csv_downloads
 
+      # Background jobs performed over a batch of phone numbers
       sig { returns(Telnyx::Resources::PhoneNumbers::Jobs) }
       attr_reader :jobs
 
+      # Configure your phone numbers
       sig { returns(Telnyx::Resources::PhoneNumbers::Messaging) }
       attr_reader :messaging
 
+      # Configure your phone numbers
       sig { returns(Telnyx::Resources::PhoneNumbers::Voice) }
       attr_reader :voice
 
+      # Voicemail API
       sig { returns(Telnyx::Resources::PhoneNumbers::Voicemail) }
       attr_reader :voicemail
 

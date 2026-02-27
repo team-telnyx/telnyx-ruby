@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class NumberReservations
+      # Number reservations
       class Actions
         # Extends reservation expiry time on all phone numbers.
         sig do

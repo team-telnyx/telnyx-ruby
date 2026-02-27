@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Short codes
     class ShortCodes
       # Retrieve a short code
       sig do

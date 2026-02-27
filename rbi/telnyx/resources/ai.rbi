@@ -2,22 +2,29 @@
 
 module Telnyx
   module Resources
+    # Generate text with LLMs
     class AI
+      # Configure AI assistant specifications
       sig { returns(Telnyx::Resources::AI::Assistants) }
       attr_reader :assistants
 
+      # Turn audio into text or text into audio.
       sig { returns(Telnyx::Resources::AI::Audio) }
       attr_reader :audio
 
+      # Generate text with LLMs
       sig { returns(Telnyx::Resources::AI::Chat) }
       attr_reader :chat
 
+      # Identify common themes and patterns in your embedded documents
       sig { returns(Telnyx::Resources::AI::Clusters) }
       attr_reader :clusters
 
+      # Manage historical AI assistant conversations
       sig { returns(Telnyx::Resources::AI::Conversations) }
       attr_reader :conversations
 
+      # Embed documents and perform text searches
       sig { returns(Telnyx::Resources::AI::Embeddings) }
       attr_reader :embeddings
 

@@ -3,21 +3,26 @@
 module Telnyx
   module Resources
     class Messaging10dlc
+      # Brand operations
       # @return [Telnyx::Resources::Messaging10dlc::Brand]
       attr_reader :brand
 
+      # Campaign operations
       # @return [Telnyx::Resources::Messaging10dlc::Campaign]
       attr_reader :campaign
 
+      # Campaign operations
       # @return [Telnyx::Resources::Messaging10dlc::CampaignBuilder]
       attr_reader :campaign_builder
 
       # @return [Telnyx::Resources::Messaging10dlc::PartnerCampaigns]
       attr_reader :partner_campaigns
 
+      # Phone number campaign assignment
       # @return [Telnyx::Resources::Messaging10dlc::PhoneNumberCampaigns]
       attr_reader :phone_number_campaigns
 
+      # Phone number campaign bulk assignment
       # @return [Telnyx::Resources::Messaging10dlc::PhoneNumberAssignmentByProfile]
       attr_reader :phone_number_assignment_by_profile
 

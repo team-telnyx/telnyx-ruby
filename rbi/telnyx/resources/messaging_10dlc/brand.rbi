@@ -3,7 +3,9 @@
 module Telnyx
   module Resources
     class Messaging10dlc
+      # Brand operations
       class Brand
+        # Brand operations
         sig do
           returns(Telnyx::Resources::Messaging10dlc::Brand::ExternalVetting)
         end

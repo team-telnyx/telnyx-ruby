@@ -3,7 +3,9 @@
 module Telnyx
   module Resources
     class Messaging10dlc
+      # Campaign operations
       class CampaignBuilder
+        # Campaign operations
         sig do
           returns(Telnyx::Resources::Messaging10dlc::CampaignBuilder::Brand)
         end

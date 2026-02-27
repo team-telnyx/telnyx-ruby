@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Messaging
+      # Send RCS messages
       # @return [Telnyx::Resources::Messaging::Rcs]
       attr_reader :rcs
 

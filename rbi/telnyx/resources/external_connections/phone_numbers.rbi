@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class ExternalConnections
+      # External Connections operations
       class PhoneNumbers
         # Return the details of a phone number associated with the given external
         # connection.

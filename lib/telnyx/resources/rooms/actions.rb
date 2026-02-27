@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Rooms
+      # Rooms Client Tokens operations.
       class Actions
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Rooms::ActionGenerateJoinClientTokenParams} for more details.

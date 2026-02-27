@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class PortingOrders
+      # Endpoints related to porting orders management.
       class Actions
         # Activate each number in a porting order asynchronously. This operation is
         # limited to US FastPort orders only.

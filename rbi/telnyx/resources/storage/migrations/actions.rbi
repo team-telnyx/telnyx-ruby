@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class Storage
       class Migrations
+        # Migrate data from an external provider into Telnyx Cloud Storage
         class Actions
           # Stop a Migration
           sig do

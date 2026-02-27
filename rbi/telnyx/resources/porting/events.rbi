@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Porting
+      # Endpoints related to porting orders management.
       class Events
         # Show a specific porting event.
         sig do

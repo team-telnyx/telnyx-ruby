@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class AI
       class Embeddings
+        # Embed documents and perform text searches
         class Buckets
           # Get all embedded files for a given user bucket, including their processing
           # status.

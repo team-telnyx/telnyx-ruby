@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Number search
     class AvailablePhoneNumbers
       # List available phone numbers
       sig do

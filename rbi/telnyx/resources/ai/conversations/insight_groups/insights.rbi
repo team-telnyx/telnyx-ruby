@@ -5,6 +5,7 @@ module Telnyx
     class AI
       class Conversations
         class InsightGroups
+          # Manage historical AI assistant conversations
           class Insights
             # Assign an insight to a group
             sig do

@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class AI
+      # Identify common themes and patterns in your embedded documents
       class Clusters
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::AI::ClusterRetrieveParams} for more details.

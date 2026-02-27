@@ -2,7 +2,9 @@
 
 module Telnyx
   module Resources
+    # Number reservations
     class NumberReservations
+      # Number reservations
       # @return [Telnyx::Resources::NumberReservations::Actions]
       attr_reader :actions
 

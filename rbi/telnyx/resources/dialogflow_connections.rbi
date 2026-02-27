@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Dialogflow Connection Operations.
     class DialogflowConnections
       # Save Dialogflow Credentiails to Telnyx, so it can be used with other Telnyx
       # services.

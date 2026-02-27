@@ -9,6 +9,7 @@ module Telnyx
         end
         attr_reader :batch_detail_records
 
+        # Speech to text usage reports
         sig { returns(Telnyx::Resources::Legacy::Reporting::UsageReports) }
         attr_reader :usage_reports
 

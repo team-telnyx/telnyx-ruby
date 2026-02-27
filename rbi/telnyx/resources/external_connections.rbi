@@ -2,19 +2,25 @@
 
 module Telnyx
   module Resources
+    # External Connections operations
     class ExternalConnections
+      # External Connections operations
       sig { returns(Telnyx::Resources::ExternalConnections::LogMessages) }
       attr_reader :log_messages
 
+      # External Connections operations
       sig { returns(Telnyx::Resources::ExternalConnections::CivicAddresses) }
       attr_reader :civic_addresses
 
+      # External Connections operations
       sig { returns(Telnyx::Resources::ExternalConnections::PhoneNumbers) }
       attr_reader :phone_numbers
 
+      # External Connections operations
       sig { returns(Telnyx::Resources::ExternalConnections::Releases) }
       attr_reader :releases
 
+      # External Connections operations
       sig { returns(Telnyx::Resources::ExternalConnections::Uploads) }
       attr_reader :uploads
 

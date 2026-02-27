@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Usage data reporting across Telnyx products
     class UsageReports
       # Get Telnyx usage data by product, broken out by the specified dimensions
       sig do

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # User-defined tags for Telnyx resources
     class UserTags
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::UserTagListParams} for more details.

@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Calls
+      # Call Control command operations
       class Actions
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams} for more details.

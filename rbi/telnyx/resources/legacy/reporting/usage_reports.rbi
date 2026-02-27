@@ -4,7 +4,9 @@ module Telnyx
   module Resources
     class Legacy
       class Reporting
+        # Speech to text usage reports
         class UsageReports
+          # Messaging usage reports
           sig do
             returns(
               Telnyx::Resources::Legacy::Reporting::UsageReports::Messaging
@@ -12,6 +14,7 @@ module Telnyx
           end
           attr_reader :messaging
 
+          # Number lookup usage reports
           sig do
             returns(
               Telnyx::Resources::Legacy::Reporting::UsageReports::NumberLookup
@@ -19,6 +22,7 @@ module Telnyx
           end
           attr_reader :number_lookup
 
+          # Voice usage reports
           sig do
             returns(Telnyx::Resources::Legacy::Reporting::UsageReports::Voice)
           end

@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class Messaging10dlc
       class CampaignBuilder
+        # Campaign operations
         class Brand
           # This endpoint allows you to see whether or not the supplied brand is suitable
           # for your desired campaign use case.

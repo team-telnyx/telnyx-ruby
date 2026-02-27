@@ -5,6 +5,7 @@ module Telnyx
     class Texml
       class Accounts
         class Calls
+          # TeXML REST Commands
           class Siprec
             # Updates siprec session identified by siprec_sid.
             sig do

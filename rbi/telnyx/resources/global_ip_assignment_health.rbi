@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Global IPs
     class GlobalIPAssignmentHealth
       # Global IP Assignment Health Check Metrics
       sig do

@@ -3,7 +3,9 @@
 module Telnyx
   module Resources
     class Messaging10dlc
+      # Brand operations
       class Brand
+        # Brand operations
         # @return [Telnyx::Resources::Messaging10dlc::Brand::ExternalVetting]
         attr_reader :external_vetting
 

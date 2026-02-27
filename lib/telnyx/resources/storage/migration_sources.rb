@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Storage
+      # Migrate data from an external provider into Telnyx Cloud Storage
       class MigrationSources
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Storage::MigrationSourceCreateParams} for more details.

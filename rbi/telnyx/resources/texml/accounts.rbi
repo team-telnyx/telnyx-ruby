@@ -3,10 +3,13 @@
 module Telnyx
   module Resources
     class Texml
+      # TeXML REST Commands
       class Accounts
+        # TeXML REST Commands
         sig { returns(Telnyx::Resources::Texml::Accounts::Calls) }
         attr_reader :calls
 
+        # TeXML REST Commands
         sig { returns(Telnyx::Resources::Texml::Accounts::Conferences) }
         attr_reader :conferences
 
@@ -16,6 +19,7 @@ module Telnyx
         sig { returns(Telnyx::Resources::Texml::Accounts::Transcriptions) }
         attr_reader :transcriptions
 
+        # TeXML REST Commands
         sig { returns(Telnyx::Resources::Texml::Accounts::Queues) }
         attr_reader :queues
 

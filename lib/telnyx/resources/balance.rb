@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Billing operations
     class Balance
       # Get user balance details
       #

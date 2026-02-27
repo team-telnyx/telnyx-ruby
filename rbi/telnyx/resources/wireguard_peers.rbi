@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # WireGuard Interface operations
     class WireguardPeers
       # Create a new WireGuard Peer. Current limitation of 5 peers per interface can be
       # created.

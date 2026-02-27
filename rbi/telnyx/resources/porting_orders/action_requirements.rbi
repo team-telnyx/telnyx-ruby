@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class PortingOrders
+      # Endpoints related to porting orders management.
       class ActionRequirements
         # Returns a list of action requirements for a specific porting order.
         sig do

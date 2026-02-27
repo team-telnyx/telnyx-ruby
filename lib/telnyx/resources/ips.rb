@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # IP operations
     class IPs
       # Create a new IP object.
       #

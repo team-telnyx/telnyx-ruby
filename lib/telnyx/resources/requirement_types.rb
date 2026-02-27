@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Types of requirements for international numbers and porting orders
     class RequirementTypes
       # Retrieve a requirement type by id
       #

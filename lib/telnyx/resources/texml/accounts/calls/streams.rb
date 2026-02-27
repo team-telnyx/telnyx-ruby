@@ -5,6 +5,7 @@ module Telnyx
     class Texml
       class Accounts
         class Calls
+          # TeXML REST Commands
           class Streams
             # Updates streaming resource for particular call.
             #

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Private Wireless Gateways operations
     class PrivateWirelessGateways
       # Asynchronously create a Private Wireless Gateway for SIM cards for a previously
       # created network. This operation may take several minutes so you can check the

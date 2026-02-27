@@ -2,34 +2,45 @@
 
 module Telnyx
   module Resources
+    # Endpoints related to porting orders management.
     class PortingOrders
+      # Endpoints related to porting orders management.
       # @return [Telnyx::Resources::PortingOrders::PhoneNumberConfigurations]
       attr_reader :phone_number_configurations
 
+      # Endpoints related to porting orders management.
       # @return [Telnyx::Resources::PortingOrders::Actions]
       attr_reader :actions
 
+      # Endpoints related to porting orders management.
       # @return [Telnyx::Resources::PortingOrders::ActivationJobs]
       attr_reader :activation_jobs
 
+      # Endpoints related to porting orders management.
       # @return [Telnyx::Resources::PortingOrders::AdditionalDocuments]
       attr_reader :additional_documents
 
+      # Endpoints related to porting orders management.
       # @return [Telnyx::Resources::PortingOrders::Comments]
       attr_reader :comments
 
+      # Endpoints related to porting orders management.
       # @return [Telnyx::Resources::PortingOrders::VerificationCodes]
       attr_reader :verification_codes
 
+      # Endpoints related to porting orders management.
       # @return [Telnyx::Resources::PortingOrders::ActionRequirements]
       attr_reader :action_requirements
 
+      # Endpoints related to porting orders management.
       # @return [Telnyx::Resources::PortingOrders::AssociatedPhoneNumbers]
       attr_reader :associated_phone_numbers
 
+      # Endpoints related to porting orders management.
       # @return [Telnyx::Resources::PortingOrders::PhoneNumberBlocks]
       attr_reader :phone_number_blocks
 
+      # Endpoints related to porting orders management.
       # @return [Telnyx::Resources::PortingOrders::PhoneNumberExtensions]
       attr_reader :phone_number_extensions
 

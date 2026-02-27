@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Requirements for international numbers and porting orders
     class Requirements
       # Retrieve a document requirement record
       sig do

@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Recordings
+      # Call Recordings operations.
       class Actions
         # Permanently deletes a list of call recordings.
         sig do

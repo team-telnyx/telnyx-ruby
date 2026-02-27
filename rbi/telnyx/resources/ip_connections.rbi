@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # IP connection operations
     class IPConnections
       # Creates an IP connection.
       sig do

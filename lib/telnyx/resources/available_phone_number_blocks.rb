@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Number search
     class AvailablePhoneNumberBlocks
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::AvailablePhoneNumberBlockListParams} for more details.

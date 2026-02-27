@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # SIPREC connectors configuration.
     class SiprecConnectors
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::SiprecConnectorCreateParams} for more details.

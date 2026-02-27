@@ -2,7 +2,9 @@
 
 module Telnyx
   module Resources
+    # TeXML REST Commands
     class Texml
+      # TeXML REST Commands
       # @return [Telnyx::Resources::Texml::Accounts]
       attr_reader :accounts
 

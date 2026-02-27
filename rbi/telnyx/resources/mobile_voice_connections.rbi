@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Mobile voice connection operations
     class MobileVoiceConnections
       # Create a Mobile Voice Connection
       sig do

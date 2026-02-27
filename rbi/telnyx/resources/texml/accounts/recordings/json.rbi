@@ -5,6 +5,7 @@ module Telnyx
     class Texml
       class Accounts
         class Recordings
+          # TeXML REST Commands
           class Json
             # Deletes recording resource identified by recording id.
             sig do

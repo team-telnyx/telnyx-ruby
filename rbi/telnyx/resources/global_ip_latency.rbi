@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Global IPs
     class GlobalIPLatency
       # Global IP Latency Metrics
       sig do

@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class MessagingTollfree
       class Verification
+        # Manage your tollfree verification requests
         # @return [Telnyx::Resources::MessagingTollfree::Verification::Requests]
         attr_reader :requests
 

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Detail Records operations
     class DetailRecords
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::DetailRecordListParams} for more details.

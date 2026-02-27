@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Portouts
+      # Number portout operations
       class SupportingDocuments
         # Creates a list of supporting documents on a portout request.
         #
