@@ -39,7 +39,7 @@ module Telnyx
             url: String,
             body_parameters: Telnyx::AI::WebhookTool::Webhook::BodyParameters,
             headers: ::Array[Telnyx::AI::WebhookTool::Webhook::Header],
-            method_: Telnyx::Models::AI::WebhookTool::Webhook::method_,
+            http_method: Telnyx::Models::AI::WebhookTool::Webhook::method_,
             path_parameters: Telnyx::AI::WebhookTool::Webhook::PathParameters,
             query_parameters: Telnyx::AI::WebhookTool::Webhook::QueryParameters
           }
@@ -63,9 +63,9 @@ module Telnyx
             ::Array[Telnyx::AI::WebhookTool::Webhook::Header]
           ) -> ::Array[Telnyx::AI::WebhookTool::Webhook::Header]
 
-          attr_reader method_: Telnyx::Models::AI::WebhookTool::Webhook::method_?
+          attr_reader http_method: Telnyx::Models::AI::WebhookTool::Webhook::method_?
 
-          def method_=: (
+          def http_method=: (
             Telnyx::Models::AI::WebhookTool::Webhook::method_
           ) -> Telnyx::Models::AI::WebhookTool::Webhook::method_
 
@@ -87,7 +87,7 @@ module Telnyx
             url: String,
             ?body_parameters: Telnyx::AI::WebhookTool::Webhook::BodyParameters,
             ?headers: ::Array[Telnyx::AI::WebhookTool::Webhook::Header],
-            ?method_: Telnyx::Models::AI::WebhookTool::Webhook::method_,
+            ?http_method: Telnyx::Models::AI::WebhookTool::Webhook::method_,
             ?path_parameters: Telnyx::AI::WebhookTool::Webhook::PathParameters,
             ?query_parameters: Telnyx::AI::WebhookTool::Webhook::QueryParameters
           ) -> void
@@ -98,7 +98,7 @@ module Telnyx
             url: String,
             body_parameters: Telnyx::AI::WebhookTool::Webhook::BodyParameters,
             headers: ::Array[Telnyx::AI::WebhookTool::Webhook::Header],
-            method_: Telnyx::Models::AI::WebhookTool::Webhook::method_,
+            http_method: Telnyx::Models::AI::WebhookTool::Webhook::method_,
             path_parameters: Telnyx::AI::WebhookTool::Webhook::PathParameters,
             query_parameters: Telnyx::AI::WebhookTool::Webhook::QueryParameters
           }
