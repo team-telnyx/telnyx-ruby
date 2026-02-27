@@ -25,10 +25,11 @@ module Telnyx
         # @see Telnyx::Models::Organizations::UserRetrieveParams
         def retrieve(id, params = {})
           parsed, options = Telnyx::Organizations::UserRetrieveParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["organizations/users/%1$s", id],
-            query: parsed,
+            query: query,
             model: Telnyx::Models::Organizations::UserRetrieveResponse,
             options: options
           )
@@ -58,10 +59,11 @@ module Telnyx
         # @see Telnyx::Models::Organizations::UserListParams
         def list(params = {})
           parsed, options = Telnyx::Organizations::UserListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "organizations/users",
-            query: parsed.transform_keys(
+            query: query.transform_keys(
               filter_email: "filter[email]",
               filter_user_status: "filter[user_status]",
               page_number: "page[number]",

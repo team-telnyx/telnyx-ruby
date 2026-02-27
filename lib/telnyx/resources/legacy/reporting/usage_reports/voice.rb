@@ -79,10 +79,11 @@ module Telnyx
             # @see Telnyx::Models::Legacy::Reporting::UsageReports::VoiceListParams
             def list(params = {})
               parsed, options = Telnyx::Legacy::Reporting::UsageReports::VoiceListParams.dump_request(params)
+              query = Telnyx::Internal::Util.encode_query_params(parsed)
               @client.request(
                 method: :get,
                 path: "legacy/reporting/usage_reports/voice",
-                query: parsed,
+                query: query,
                 page: Telnyx::Internal::PerPagePagination,
                 model: Telnyx::Legacy::Reporting::UsageReports::CdrUsageReportResponseLegacy,
                 options: options

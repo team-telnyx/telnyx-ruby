@@ -42,7 +42,6 @@ module Telnyx
       #
       # @see Telnyx::Models::UsageReportListParams
       def list(params)
-        parsed, options = Telnyx::UsageReportListParams.dump_request(params)
         query_params =
           [
             :dimensions,
@@ -58,10 +57,12 @@ module Telnyx
             :sort,
             :start_date
           ]
+        parsed, options = Telnyx::UsageReportListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed.slice(*query_params))
         @client.request(
           method: :get,
           path: "usage_reports",
-          query: parsed.slice(*query_params).transform_keys(
+          query: query.transform_keys(
             format_: "format",
             page_number: "page[number]",
             page_size: "page[size]"
@@ -91,12 +92,13 @@ module Telnyx
       #
       # @see Telnyx::Models::UsageReportGetOptionsParams
       def get_options(params = {})
-        parsed, options = Telnyx::UsageReportGetOptionsParams.dump_request(params)
         query_params = [:product]
+        parsed, options = Telnyx::UsageReportGetOptionsParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed.slice(*query_params))
         @client.request(
           method: :get,
           path: "usage_reports/options",
-          query: parsed.slice(*query_params),
+          query: query,
           headers: parsed.except(*query_params),
           model: Telnyx::Models::UsageReportGetOptionsResponse,
           options: options

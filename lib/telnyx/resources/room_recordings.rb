@@ -43,10 +43,11 @@ module Telnyx
       # @see Telnyx::Models::RoomRecordingListParams
       def list(params = {})
         parsed, options = Telnyx::RoomRecordingListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "room_recordings",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::RoomRecordingListResponse,
           options: options
@@ -93,10 +94,11 @@ module Telnyx
       # @see Telnyx::Models::RoomRecordingDeleteBulkParams
       def delete_bulk(params = {})
         parsed, options = Telnyx::RoomRecordingDeleteBulkParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :delete,
           path: "room_recordings",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           model: Telnyx::Models::RoomRecordingDeleteBulkResponse,
           options: options
         )

@@ -95,10 +95,11 @@ module Telnyx
       # @see Telnyx::Models::RequirementGroupListParams
       def list(params = {})
         parsed, options = Telnyx::RequirementGroupListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "requirement_groups",
-          query: parsed,
+          query: query,
           model: Telnyx::Internal::Type::ArrayOf[Telnyx::RequirementGroup],
           options: options
         )

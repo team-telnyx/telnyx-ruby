@@ -27,10 +27,11 @@ module Telnyx
       # @see Telnyx::Models::MobileNetworkOperatorListParams
       def list(params = {})
         parsed, options = Telnyx::MobileNetworkOperatorListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "mobile_network_operators",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::MobileNetworkOperatorListResponse,
           options: options

@@ -96,10 +96,11 @@ module Telnyx
       # @see Telnyx::Models::WirelessBlocklistListParams
       def list(params = {})
         parsed, options = Telnyx::WirelessBlocklistListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "wireless_blocklists",
-          query: parsed.transform_keys(
+          query: query.transform_keys(
             filter_name: "filter[name]",
             filter_type: "filter[type]",
             filter_values: "filter[values]",

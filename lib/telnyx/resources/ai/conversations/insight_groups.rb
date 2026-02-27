@@ -112,10 +112,11 @@ module Telnyx
           # @see Telnyx::Models::AI::Conversations::InsightGroupRetrieveInsightGroupsParams
           def retrieve_insight_groups(params = {})
             parsed, options = Telnyx::AI::Conversations::InsightGroupRetrieveInsightGroupsParams.dump_request(params)
+            query = Telnyx::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
               path: "ai/conversations/insight-groups",
-              query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+              query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
               page: Telnyx::Internal::DefaultFlatPagination,
               model: Telnyx::AI::Conversations::InsightTemplateGroup,
               options: options

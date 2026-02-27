@@ -70,10 +70,11 @@ module Telnyx
       # @see Telnyx::Models::NumberReservationListParams
       def list(params = {})
         parsed, options = Telnyx::NumberReservationListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "number_reservations",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::NumberReservation,
           options: options

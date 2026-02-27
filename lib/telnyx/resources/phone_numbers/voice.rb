@@ -89,10 +89,11 @@ module Telnyx
         # @see Telnyx::Models::PhoneNumbers::VoiceListParams
         def list(params = {})
           parsed, options = Telnyx::PhoneNumbers::VoiceListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "phone_numbers/voice",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::PhoneNumbers::PhoneNumberWithVoiceSettings,
             options: options

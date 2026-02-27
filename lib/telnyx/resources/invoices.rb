@@ -18,10 +18,11 @@ module Telnyx
       # @see Telnyx::Models::InvoiceRetrieveParams
       def retrieve(id, params = {})
         parsed, options = Telnyx::InvoiceRetrieveParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["invoices/%1$s", id],
-          query: parsed,
+          query: query,
           model: Telnyx::Models::InvoiceRetrieveResponse,
           options: options
         )
@@ -44,10 +45,11 @@ module Telnyx
       # @see Telnyx::Models::InvoiceListParams
       def list(params = {})
         parsed, options = Telnyx::InvoiceListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "invoices",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::InvoiceListResponse,
           options: options

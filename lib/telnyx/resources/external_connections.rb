@@ -144,10 +144,11 @@ module Telnyx
       # @see Telnyx::Models::ExternalConnectionListParams
       def list(params = {})
         parsed, options = Telnyx::ExternalConnectionListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "external_connections",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::ExternalConnection,
           options: options

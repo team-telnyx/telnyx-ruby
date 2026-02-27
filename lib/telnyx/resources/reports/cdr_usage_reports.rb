@@ -22,10 +22,11 @@ module Telnyx
         # @see Telnyx::Models::Reports::CdrUsageReportFetchSyncParams
         def fetch_sync(params)
           parsed, options = Telnyx::Reports::CdrUsageReportFetchSyncParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "reports/cdr_usage_reports/sync",
-            query: parsed,
+            query: query,
             model: Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse,
             options: options
           )

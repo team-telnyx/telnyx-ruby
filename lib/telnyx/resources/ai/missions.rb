@@ -76,10 +76,11 @@ module Telnyx
         # @see Telnyx::Models::AI::MissionListParams
         def list(params = {})
           parsed, options = Telnyx::AI::MissionListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "ai/missions",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::AI::MissionData,
             options: options
@@ -141,10 +142,11 @@ module Telnyx
         # @see Telnyx::Models::AI::MissionListEventsParams
         def list_events(params = {})
           parsed, options = Telnyx::AI::MissionListEventsParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "ai/missions/events",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::AI::Missions::Runs::EventData,
             options: options

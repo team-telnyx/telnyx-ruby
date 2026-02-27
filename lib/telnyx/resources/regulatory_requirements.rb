@@ -19,10 +19,11 @@ module Telnyx
       # @see Telnyx::Models::RegulatoryRequirementRetrieveParams
       def retrieve(params = {})
         parsed, options = Telnyx::RegulatoryRequirementRetrieveParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "regulatory_requirements",
-          query: parsed,
+          query: query,
           model: Telnyx::Models::RegulatoryRequirementRetrieveResponse,
           options: options
         )

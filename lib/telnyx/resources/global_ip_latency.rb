@@ -19,10 +19,11 @@ module Telnyx
       # @see Telnyx::Models::GlobalIPLatencyRetrieveParams
       def retrieve(params = {})
         parsed, options = Telnyx::GlobalIPLatencyRetrieveParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "global_ip_latency",
-          query: parsed,
+          query: query,
           model: Telnyx::Models::GlobalIPLatencyRetrieveResponse,
           options: options
         )

@@ -72,10 +72,11 @@ module Telnyx
       # @see Telnyx::Models::InexplicitNumberOrderListParams
       def list(params = {})
         parsed, options = Telnyx::InexplicitNumberOrderListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "inexplicit_number_orders",
-          query: parsed,
+          query: query,
           page: Telnyx::Internal::DefaultFlatPaginationForInexplicitNumberOrders,
           model: Telnyx::InexplicitNumberOrderResponse,
           options: options

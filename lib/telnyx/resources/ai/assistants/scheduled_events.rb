@@ -86,10 +86,11 @@ module Telnyx
           # @see Telnyx::Models::AI::Assistants::ScheduledEventListParams
           def list(assistant_id, params = {})
             parsed, options = Telnyx::AI::Assistants::ScheduledEventListParams.dump_request(params)
+            query = Telnyx::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
               path: ["ai/assistants/%1$s/scheduled_events", assistant_id],
-              query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+              query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
               page: Telnyx::Internal::DefaultFlatPagination,
               model: Telnyx::Models::AI::Assistants::ScheduledEventListResponse,
               options: options

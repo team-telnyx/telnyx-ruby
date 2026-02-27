@@ -114,10 +114,11 @@ module Telnyx
       # @see Telnyx::Models::MobileVoiceConnectionListParams
       def list(params = {})
         parsed, options = Telnyx::MobileVoiceConnectionListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v2/mobile_voice_connections",
-          query: parsed.transform_keys(
+          query: query.transform_keys(
             filter_connection_name_contains: "filter[connection_name][contains]",
             page_number: "page[number]",
             page_size: "page[size]"

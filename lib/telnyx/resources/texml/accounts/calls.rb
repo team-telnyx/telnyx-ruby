@@ -241,10 +241,11 @@ module Telnyx
           # @see Telnyx::Models::Texml::Accounts::CallRetrieveCallsParams
           def retrieve_calls(account_sid, params = {})
             parsed, options = Telnyx::Texml::Accounts::CallRetrieveCallsParams.dump_request(params)
+            query = Telnyx::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
               path: ["texml/Accounts/%1$s/Calls", account_sid],
-              query: parsed.transform_keys(
+              query: query.transform_keys(
                 end_time: "EndTime",
                 end_time_gt: "EndTime_gt",
                 end_time_lt: "EndTime_lt",

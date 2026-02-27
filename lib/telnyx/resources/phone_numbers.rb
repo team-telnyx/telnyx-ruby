@@ -104,10 +104,11 @@ module Telnyx
       # @see Telnyx::Models::PhoneNumberListParams
       def list(params = {})
         parsed, options = Telnyx::PhoneNumberListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "phone_numbers",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::PhoneNumberDetailed,
           options: options
@@ -161,10 +162,11 @@ module Telnyx
       # @see Telnyx::Models::PhoneNumberSlimListParams
       def slim_list(params = {})
         parsed, options = Telnyx::PhoneNumberSlimListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "phone_numbers/slim",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::PhoneNumberSlimListResponse,
           options: options

@@ -16,10 +16,11 @@ module Telnyx
       # @see Telnyx::Models::SetiRetrieveBlackBoxTestResultsParams
       def retrieve_black_box_test_results(params = {})
         parsed, options = Telnyx::SetiRetrieveBlackBoxTestResultsParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "seti/black_box_test_results",
-          query: parsed,
+          query: query,
           model: Telnyx::Models::SetiRetrieveBlackBoxTestResultsResponse,
           options: options
         )

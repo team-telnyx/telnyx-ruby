@@ -73,10 +73,11 @@ module Telnyx
       # @see Telnyx::Models::NumberBlockOrderListParams
       def list(params = {})
         parsed, options = Telnyx::NumberBlockOrderListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "number_block_orders",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::NumberBlockOrder,
           options: options

@@ -45,10 +45,11 @@ module Telnyx
       # @see Telnyx::Models::SimCardGroupRetrieveParams
       def retrieve(id, params = {})
         parsed, options = Telnyx::SimCardGroupRetrieveParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["sim_card_groups/%1$s", id],
-          query: parsed,
+          query: query,
           model: Telnyx::Models::SimCardGroupRetrieveResponse,
           options: options
         )
@@ -101,10 +102,11 @@ module Telnyx
       # @see Telnyx::Models::SimCardGroupListParams
       def list(params = {})
         parsed, options = Telnyx::SimCardGroupListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "sim_card_groups",
-          query: parsed.transform_keys(
+          query: query.transform_keys(
             filter_name: "filter[name]",
             filter_private_wireless_gateway_id: "filter[private_wireless_gateway_id]",
             filter_wireless_blocklist_id: "filter[wireless_blocklist_id]",

@@ -24,10 +24,11 @@ module Telnyx
       # @see Telnyx::Models::NotificationEventConditionListParams
       def list(params = {})
         parsed, options = Telnyx::NotificationEventConditionListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "notification_event_conditions",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::NotificationEventConditionListResponse,
           options: options

@@ -98,10 +98,11 @@ module Telnyx
       # @see Telnyx::Models::NotificationChannelListParams
       def list(params = {})
         parsed, options = Telnyx::NotificationChannelListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "notification_channels",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::NotificationChannel,
           options: options

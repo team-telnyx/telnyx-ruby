@@ -41,10 +41,11 @@ module Telnyx
       # @see Telnyx::Models::RequirementTypeListParams
       def list(params = {})
         parsed, options = Telnyx::RequirementTypeListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "requirement_types",
-          query: parsed,
+          query: query,
           model: Telnyx::Models::RequirementTypeListResponse,
           options: options
         )

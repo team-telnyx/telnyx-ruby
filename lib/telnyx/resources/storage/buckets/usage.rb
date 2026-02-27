@@ -24,10 +24,11 @@ module Telnyx
           # @see Telnyx::Models::Storage::Buckets::UsageGetAPIUsageParams
           def get_api_usage(bucket_name, params)
             parsed, options = Telnyx::Storage::Buckets::UsageGetAPIUsageParams.dump_request(params)
+            query = Telnyx::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
               path: ["storage/buckets/%1$s/usage/api", bucket_name],
-              query: parsed,
+              query: query,
               model: Telnyx::Models::Storage::Buckets::UsageGetAPIUsageResponse,
               options: options
             )

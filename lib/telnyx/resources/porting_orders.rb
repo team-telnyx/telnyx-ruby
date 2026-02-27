@@ -74,10 +74,11 @@ module Telnyx
       # @see Telnyx::Models::PortingOrderRetrieveParams
       def retrieve(id, params = {})
         parsed, options = Telnyx::PortingOrderRetrieveParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["porting_orders/%1$s", id],
-          query: parsed,
+          query: query,
           model: Telnyx::Models::PortingOrderRetrieveResponse,
           options: options
         )
@@ -164,10 +165,11 @@ module Telnyx
       # @see Telnyx::Models::PortingOrderListParams
       def list(params = {})
         parsed, options = Telnyx::PortingOrderListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "porting_orders",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::PortingOrder,
           options: options
@@ -251,10 +253,11 @@ module Telnyx
       # @see Telnyx::Models::PortingOrderRetrieveLoaTemplateParams
       def retrieve_loa_template(id, params = {})
         parsed, options = Telnyx::PortingOrderRetrieveLoaTemplateParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["porting_orders/%1$s/loa_template", id],
-          query: parsed,
+          query: query,
           headers: {"accept" => "application/pdf"},
           model: StringIO,
           options: options
@@ -279,10 +282,11 @@ module Telnyx
       # @see Telnyx::Models::PortingOrderRetrieveRequirementsParams
       def retrieve_requirements(id, params = {})
         parsed, options = Telnyx::PortingOrderRetrieveRequirementsParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["porting_orders/%1$s/requirements", id],
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::PortingOrderRetrieveRequirementsResponse,
           options: options

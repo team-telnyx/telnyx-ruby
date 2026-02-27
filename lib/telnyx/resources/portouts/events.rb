@@ -44,10 +44,11 @@ module Telnyx
         # @see Telnyx::Models::Portouts::EventListParams
         def list(params = {})
           parsed, options = Telnyx::Portouts::EventListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "portouts/events",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::Models::Portouts::EventListResponse,
             options: options

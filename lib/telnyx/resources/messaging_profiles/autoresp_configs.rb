@@ -112,10 +112,11 @@ module Telnyx
         # @see Telnyx::Models::MessagingProfiles::AutorespConfigListParams
         def list(profile_id, params = {})
           parsed, options = Telnyx::MessagingProfiles::AutorespConfigListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["messaging_profiles/%1$s/autoresp_configs", profile_id],
-            query: parsed,
+            query: query,
             model: Telnyx::Models::MessagingProfiles::AutorespConfigListResponse,
             options: options
           )

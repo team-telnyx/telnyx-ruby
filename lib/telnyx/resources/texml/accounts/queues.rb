@@ -116,10 +116,11 @@ module Telnyx
           # @see Telnyx::Models::Texml::Accounts::QueueListParams
           def list(account_sid, params = {})
             parsed, options = Telnyx::Texml::Accounts::QueueListParams.dump_request(params)
+            query = Telnyx::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
               path: ["texml/Accounts/%1$s/Queues", account_sid],
-              query: parsed.transform_keys(
+              query: query.transform_keys(
                 date_created: "DateCreated",
                 date_updated: "DateUpdated",
                 page: "Page",
