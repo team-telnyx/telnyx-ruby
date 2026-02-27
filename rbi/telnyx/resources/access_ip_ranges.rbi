@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # IP Range Operations
     class AccessIPRanges
       # Create new Access IP Range
       sig do

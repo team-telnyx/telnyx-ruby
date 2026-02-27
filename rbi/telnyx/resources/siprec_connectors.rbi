@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # SIPREC connectors configuration.
     class SiprecConnectors
       # Creates a new SIPREC connector configuration.
       sig do

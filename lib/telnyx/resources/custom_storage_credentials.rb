@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Call Recordings operations.
     class CustomStorageCredentials
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::CustomStorageCredentialCreateParams} for more details.

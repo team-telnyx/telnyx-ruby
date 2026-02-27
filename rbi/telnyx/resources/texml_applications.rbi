@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # TeXML Applications operations
     class TexmlApplications
       # Creates a TeXML Application.
       sig do

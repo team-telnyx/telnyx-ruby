@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Messaging10dlc
+      # Phone number campaign bulk assignment
       class PhoneNumberAssignmentByProfile
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Messaging10dlc::PhoneNumberAssignmentByProfileAssignParams} for

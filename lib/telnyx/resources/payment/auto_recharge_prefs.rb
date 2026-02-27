@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Payment
+      # V2 Auto Recharge Preferences API
       class AutoRechargePrefs
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Payment::AutoRechargePrefUpdateParams} for more details.

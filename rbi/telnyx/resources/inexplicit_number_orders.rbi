@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Inexplicit number orders for bulk purchasing without specifying exact numbers
     class InexplicitNumberOrders
       # Create an inexplicit number order to programmatically purchase phone numbers
       # without specifying exact numbers.

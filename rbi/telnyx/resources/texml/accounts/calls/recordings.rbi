@@ -5,6 +5,7 @@ module Telnyx
     class Texml
       class Accounts
         class Calls
+          # TeXML REST Commands
           class Recordings
             # Updates recording resource for particular call.
             sig do

@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Actions
+      # SIM Cards operations
       class Purchase
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Actions::PurchaseCreateParams} for more details.

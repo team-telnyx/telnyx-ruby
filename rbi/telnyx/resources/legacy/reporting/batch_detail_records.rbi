@@ -5,6 +5,7 @@ module Telnyx
     class Legacy
       class Reporting
         class BatchDetailRecords
+          # Messaging batch detail records
           sig do
             returns(
               Telnyx::Resources::Legacy::Reporting::BatchDetailRecords::Messaging
@@ -12,6 +13,7 @@ module Telnyx
           end
           attr_reader :messaging
 
+          # Speech to text batch detail records
           sig do
             returns(
               Telnyx::Resources::Legacy::Reporting::BatchDetailRecords::SpeechToText
@@ -19,6 +21,7 @@ module Telnyx
           end
           attr_reader :speech_to_text
 
+          # Voice batch detail records
           sig do
             returns(
               Telnyx::Resources::Legacy::Reporting::BatchDetailRecords::Voice

@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class PhoneNumbers
+      # Configure your phone numbers
       class Voice
         # Retrieve a phone number with voice settings
         #

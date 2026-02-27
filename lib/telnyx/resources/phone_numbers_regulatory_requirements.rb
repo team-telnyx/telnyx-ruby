@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Regulatory Requirements
     class PhoneNumbersRegulatoryRequirements
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveParams} for more

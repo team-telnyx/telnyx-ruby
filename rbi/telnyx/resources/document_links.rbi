@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Documents
     class DocumentLinks
       # List all documents links ordered by created_at descending.
       sig do

@@ -5,6 +5,7 @@ module Telnyx
     class Texml
       class Accounts
         class Calls
+          # TeXML REST Commands
           class RecordingsJson
             # Starts recording with specified parameters for call idientified by call_sid.
             sig do

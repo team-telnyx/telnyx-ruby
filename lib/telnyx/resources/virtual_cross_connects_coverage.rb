@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Virtual Cross Connect operations
     class VirtualCrossConnectsCoverage
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::VirtualCrossConnectsCoverageListParams} for more details.

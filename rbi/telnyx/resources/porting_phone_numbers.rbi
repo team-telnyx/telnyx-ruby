@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Endpoints related to porting orders management.
     class PortingPhoneNumbers
       # Returns a list of your porting phone numbers.
       sig do

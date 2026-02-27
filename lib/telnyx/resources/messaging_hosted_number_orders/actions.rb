@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class MessagingHostedNumberOrders
+      # Manage your messaging hosted numbers
       class Actions
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::MessagingHostedNumberOrders::ActionUploadFileParams} for more

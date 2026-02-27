@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class AI
       class Conversations
+        # Manage historical AI assistant conversations
         class Messages
           # Retrieve messages for a specific conversation, including tool calls made by the
           # assistant.

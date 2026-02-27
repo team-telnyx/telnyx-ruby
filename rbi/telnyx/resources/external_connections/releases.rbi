@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class ExternalConnections
+      # External Connections operations
       class Releases
         # Return the details of a Release request and its phone numbers.
         sig do

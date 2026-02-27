@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Customer Service Record operations
     class CustomerServiceRecords
       # Create a new customer service record for the provided phone number.
       sig do

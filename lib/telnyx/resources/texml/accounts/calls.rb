@@ -4,16 +4,21 @@ module Telnyx
   module Resources
     class Texml
       class Accounts
+        # TeXML REST Commands
         class Calls
+          # TeXML REST Commands
           # @return [Telnyx::Resources::Texml::Accounts::Calls::RecordingsJson]
           attr_reader :recordings_json
 
+          # TeXML REST Commands
           # @return [Telnyx::Resources::Texml::Accounts::Calls::Recordings]
           attr_reader :recordings
 
+          # TeXML REST Commands
           # @return [Telnyx::Resources::Texml::Accounts::Calls::Siprec]
           attr_reader :siprec
 
+          # TeXML REST Commands
           # @return [Telnyx::Resources::Texml::Accounts::Calls::Streams]
           attr_reader :streams
 

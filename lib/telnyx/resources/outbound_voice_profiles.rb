@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Outbound voice profiles operations
     class OutboundVoiceProfiles
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::OutboundVoiceProfileCreateParams} for more details.

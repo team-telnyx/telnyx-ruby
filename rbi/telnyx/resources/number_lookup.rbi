@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Look up phone number data
     class NumberLookup
       # Returns information about the provided phone number.
       sig do

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Mobile phone number operations
     class MobilePhoneNumbers
       sig { returns(Telnyx::Resources::MobilePhoneNumbers::Messaging) }
       attr_reader :messaging

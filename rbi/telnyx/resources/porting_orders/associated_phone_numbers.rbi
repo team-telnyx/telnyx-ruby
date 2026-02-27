@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class PortingOrders
+      # Endpoints related to porting orders management.
       class AssociatedPhoneNumbers
         # Creates a new associated phone number for a porting order. This is used for
         # partial porting in GB to specify which phone numbers should be kept or

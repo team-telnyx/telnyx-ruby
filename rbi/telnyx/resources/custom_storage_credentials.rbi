@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Call Recordings operations.
     class CustomStorageCredentials
       # Creates a custom storage credentials configuration.
       sig do

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Usage data reporting across Telnyx products
     class UsageReports
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::UsageReportListParams} for more details.

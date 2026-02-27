@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Global IPs
     class GlobalIPAssignments
       # Create a Global IP assignment.
       #

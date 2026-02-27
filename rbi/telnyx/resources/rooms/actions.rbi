@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Rooms
+      # Rooms Client Tokens operations.
       class Actions
         # Synchronously create an Client Token to join a Room. Client Token is necessary
         # to join a Telnyx Room. Client Token will expire after `token_ttl_secs`, a

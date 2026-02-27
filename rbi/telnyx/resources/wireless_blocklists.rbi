@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Wireless Blocklists operations
     class WirelessBlocklists
       # Create a Wireless Blocklist to prevent SIMs from connecting to certain networks.
       sig do

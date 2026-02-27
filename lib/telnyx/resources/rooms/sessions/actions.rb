@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class Rooms
       class Sessions
+        # Rooms Sessions operations.
         class Actions
           # Note: this will also kick all participants currently present in the room
           #

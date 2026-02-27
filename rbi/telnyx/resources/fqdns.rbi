@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # FQDN operations
     class Fqdns
       # Create a new FQDN object.
       sig do

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Private Wireless Gateways operations
     class PrivateWirelessGateways
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::PrivateWirelessGatewayCreateParams} for more details.

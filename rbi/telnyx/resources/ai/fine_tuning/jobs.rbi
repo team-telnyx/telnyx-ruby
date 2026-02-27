@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class AI
       class FineTuning
+        # Customize LLMs for your unique needs
         class Jobs
           # Create a new fine tuning job.
           sig do

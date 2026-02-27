@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class AI
+      # Generate text with LLMs
       class Chat
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::AI::ChatCreateCompletionParams} for more details.

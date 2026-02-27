@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class Storage
       class Buckets
+        # SSL certificate operations
         class SslCertificate
           # Uploads an SSL certificate and its matching secret so that you can use Telnyx's
           # storage as your CDN.

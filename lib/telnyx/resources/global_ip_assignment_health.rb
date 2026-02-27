@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Global IPs
     class GlobalIPAssignmentHealth
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::GlobalIPAssignmentHealthRetrieveParams} for more details.

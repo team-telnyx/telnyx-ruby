@@ -2,7 +2,9 @@
 
 module Telnyx
   module Resources
+    # Manage your messaging hosted numbers
     class MessagingHostedNumberOrders
+      # Manage your messaging hosted numbers
       sig { returns(Telnyx::Resources::MessagingHostedNumberOrders::Actions) }
       attr_reader :actions
 

@@ -2,7 +2,9 @@
 
 module Telnyx
   module Resources
+    # Managed Accounts operations
     class ManagedAccounts
+      # Managed Accounts operations
       # @return [Telnyx::Resources::ManagedAccounts::Actions]
       attr_reader :actions
 

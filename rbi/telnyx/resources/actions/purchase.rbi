@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Actions
+      # SIM Cards operations
       class Purchase
         # Purchases and registers the specified amount of eSIMs to the current user's
         # account.<br/><br/> If <code>sim_card_group_id</code> is provided, the eSIMs will

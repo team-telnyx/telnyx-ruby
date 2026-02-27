@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class MessagingTollfree
       class Verification
+        # Manage your tollfree verification requests
         sig do
           returns(Telnyx::Resources::MessagingTollfree::Verification::Requests)
         end

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # FQDN connection operations
     class FqdnConnections
       # Creates a FQDN connection.
       sig do

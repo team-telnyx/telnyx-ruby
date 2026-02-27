@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class OperatorConnect
+      # External Connections operations
       sig { returns(Telnyx::Resources::OperatorConnect::Actions) }
       attr_reader :actions
 

@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Messaging10dlc
+      # Phone number campaign assignment
       class PhoneNumberCampaigns
         # Create New Phone Number Campaign
         #

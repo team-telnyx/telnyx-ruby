@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Text to speech streaming command operations
     class TextToSpeech
       # Retrieve a list of available voices from one or all TTS providers. When
       # `provider` is specified, returns voices for that provider only. Otherwise,

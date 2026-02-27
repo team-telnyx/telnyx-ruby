@@ -4,7 +4,9 @@ module Telnyx
   module Resources
     class AI
       class Conversations
+        # Manage historical AI assistant conversations
         class InsightGroups
+          # Manage historical AI assistant conversations
           sig do
             returns(
               Telnyx::Resources::AI::Conversations::InsightGroups::Insights

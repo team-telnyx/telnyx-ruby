@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class PortingOrders
+      # Endpoints related to porting orders management.
       class PhoneNumberConfigurations
         # Creates a list of phone number configurations.
         #

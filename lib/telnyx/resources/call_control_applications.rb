@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Call Control applications operations
     class CallControlApplications
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::CallControlApplicationCreateParams} for more details.

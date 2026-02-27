@@ -2,6 +2,8 @@
 
 module Telnyx
   module Resources
+    # View SIM card actions, their progress and timestamps using the SIM Card Actions
+    # API
     class BulkSimCardActions
       # This API fetches information about a bulk SIM card action. A bulk SIM card
       # action contains details about a collection of individual SIM card actions.

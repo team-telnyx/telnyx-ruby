@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Media Storage operations
     class Media
       # Returns the information about a stored media file.
       sig do

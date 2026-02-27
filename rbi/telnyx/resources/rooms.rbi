@@ -2,7 +2,9 @@
 
 module Telnyx
   module Resources
+    # Rooms operations.
     class Rooms
+      # Rooms Client Tokens operations.
       sig { returns(Telnyx::Resources::Rooms::Actions) }
       attr_reader :actions
 

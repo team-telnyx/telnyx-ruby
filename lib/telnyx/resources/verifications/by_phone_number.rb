@@ -3,7 +3,9 @@
 module Telnyx
   module Resources
     class Verifications
+      # Two factor authentication API
       class ByPhoneNumber
+        # Two factor authentication API
         # @return [Telnyx::Resources::Verifications::ByPhoneNumber::Actions]
         attr_reader :actions
 

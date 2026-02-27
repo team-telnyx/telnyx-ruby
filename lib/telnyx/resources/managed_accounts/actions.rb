@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class ManagedAccounts
+      # Managed Accounts operations
       class Actions
         # Disables a managed account, forbidding it to use Telnyx services, including
         # sending or receiving phone calls and SMS messages. Ongoing phone calls will not

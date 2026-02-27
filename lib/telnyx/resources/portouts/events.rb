@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Portouts
+      # Number portout operations
       class Events
         # Show a specific port-out event.
         #

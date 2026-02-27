@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Ledger billing reports
     class LedgerBillingGroupReports
       # Create a ledger billing group report
       #

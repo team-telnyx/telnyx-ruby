@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Dynamic emergency address operations
     class DynamicEmergencyAddresses
       # Creates a dynamic emergency address.
       sig do

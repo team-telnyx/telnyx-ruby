@@ -5,6 +5,7 @@ module Telnyx
     class Legacy
       class Reporting
         class BatchDetailRecords
+          # Voice batch detail records
           class Voice
             # Creates a new CDR report request with the specified filters
             sig do

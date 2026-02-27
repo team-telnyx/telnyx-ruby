@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class Texml
       class Accounts
+        # TeXML REST Commands
         class Queues
           # Creates a new queue resource.
           sig do

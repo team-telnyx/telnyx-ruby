@@ -3,10 +3,13 @@
 module Telnyx
   module Resources
     class Messaging10dlc
+      # Campaign operations
       class Campaign
+        # Campaign operations
         sig { returns(Telnyx::Resources::Messaging10dlc::Campaign::Usecase) }
         attr_reader :usecase
 
+        # Campaign operations
         sig { returns(Telnyx::Resources::Messaging10dlc::Campaign::Osr) }
         attr_reader :osr
 

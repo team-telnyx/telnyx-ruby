@@ -2,13 +2,17 @@
 
 module Telnyx
   module Resources
+    # Migrate data from an external provider into Telnyx Cloud Storage
     class Storage
+      # Presigned object URL operations
       # @return [Telnyx::Resources::Storage::Buckets]
       attr_reader :buckets
 
+      # Migrate data from an external provider into Telnyx Cloud Storage
       # @return [Telnyx::Resources::Storage::MigrationSources]
       attr_reader :migration_sources
 
+      # Migrate data from an external provider into Telnyx Cloud Storage
       # @return [Telnyx::Resources::Storage::Migrations]
       attr_reader :migrations
 

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Rooms Compositions operations.
     class RoomCompositions
       # Asynchronously create a room composition.
       sig do

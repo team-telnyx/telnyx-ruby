@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Speech to text command operations
     class SpeechToText
       # Transcribe audio streams to text over WebSocket.
       #

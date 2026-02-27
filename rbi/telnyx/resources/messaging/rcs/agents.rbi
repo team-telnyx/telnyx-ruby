@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class Messaging
       class Rcs
+        # Send RCS messages
         class Agents
           # Retrieve an RCS agent
           sig do

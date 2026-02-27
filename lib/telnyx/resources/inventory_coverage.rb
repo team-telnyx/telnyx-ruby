@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Inventory Level
     class InventoryCoverage
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::InventoryCoverageListParams} for more details.

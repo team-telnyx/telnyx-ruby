@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Global IPs
     class GlobalIPUsage
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::GlobalIPUsageRetrieveParams} for more details.

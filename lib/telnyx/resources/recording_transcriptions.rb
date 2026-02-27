@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Call Recordings operations.
     class RecordingTranscriptions
       # Retrieves the details of an existing recording transcription.
       #

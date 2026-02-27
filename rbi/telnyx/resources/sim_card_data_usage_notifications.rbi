@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # SIM Cards operations
     class SimCardDataUsageNotifications
       # Creates a new SIM card data usage notification.
       sig do

@@ -5,6 +5,7 @@ module Telnyx
     class Legacy
       class Reporting
         class BatchDetailRecords
+          # Messaging batch detail records
           class Messaging
             # Creates a new MDR detailed report request with the specified filters
             sig do

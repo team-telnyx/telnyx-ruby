@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Inexplicit number orders for bulk purchasing without specifying exact numbers
     class InexplicitNumberOrders
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::InexplicitNumberOrderCreateParams} for more details.

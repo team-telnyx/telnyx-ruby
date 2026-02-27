@@ -2,6 +2,11 @@
 
 module Telnyx
   module Resources
+    # Operations for working with UserAddress records. UserAddress records are stored
+    # addresses that users can use for non-emergency-calling purposes, such as for
+    # shipping addresses for orders of wireless SIMs (or other physical items). They
+    # cannot be used for emergency calling and are distinct from Address records,
+    # which are used on phone numbers.
     class UserAddresses
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::UserAddressCreateParams} for more details.

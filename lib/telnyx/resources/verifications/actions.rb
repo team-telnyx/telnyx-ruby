@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Verifications
+      # Two factor authentication API
       class Actions
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Verifications::ActionVerifyParams} for more details.

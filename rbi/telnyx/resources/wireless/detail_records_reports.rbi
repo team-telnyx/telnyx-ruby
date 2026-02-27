@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Wireless
+      # Wireless reporting operations
       class DetailRecordsReports
         # Asynchronously create a report containing Wireless Detail Records (WDRs) for the
         # SIM cards that consumed wireless data in the given time period.

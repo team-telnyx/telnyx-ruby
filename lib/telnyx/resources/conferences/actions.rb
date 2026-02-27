@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Conferences
+      # Conference command operations
       class Actions
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Conferences::ActionUpdateParams} for more details.

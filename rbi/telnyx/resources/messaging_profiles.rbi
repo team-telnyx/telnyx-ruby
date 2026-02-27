@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class MessagingProfiles
+      # Opt-Out Management
       sig { returns(Telnyx::Resources::MessagingProfiles::AutorespConfigs) }
       attr_reader :autoresp_configs
 

@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class ExternalConnections
+      # External Connections operations
       class CivicAddresses
         # Return the details of an existing Civic Address with its Locations inside the
         # 'data' attribute of the response.

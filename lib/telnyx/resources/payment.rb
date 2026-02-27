@@ -2,7 +2,9 @@
 
 module Telnyx
   module Resources
+    # Operations for managing stored payment transactions.
     class Payment
+      # V2 Auto Recharge Preferences API
       # @return [Telnyx::Resources::Payment::AutoRechargePrefs]
       attr_reader :auto_recharge_prefs
 

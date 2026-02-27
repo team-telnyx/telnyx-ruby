@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class Storage
       class Buckets
+        # Bucket Usage operations
         class Usage
           # Returns the detail on API usage on a bucket of a particular time period, group
           # by method category.

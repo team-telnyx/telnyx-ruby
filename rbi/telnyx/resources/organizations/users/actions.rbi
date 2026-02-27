@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class Organizations
       class Users
+        # Operations related to users in your organization
         class Actions
           # Deletes a user in your organization.
           sig do

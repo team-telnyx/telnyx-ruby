@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Configure your phone numbers
     class MessagingNumbersBulkUpdates
       # Bulk update phone number profiles
       sig do

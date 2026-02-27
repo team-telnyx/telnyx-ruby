@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Opt-Out Management
     class MessagingOptouts
       # Retrieve a list of opt-out blocks.
       sig do

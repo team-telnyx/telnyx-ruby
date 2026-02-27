@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Voice Channels
     class ChannelZones
       # Update the number of Voice Channels for the Non-US Zones. This allows your
       # account to handle multiple simultaneous inbound calls to Non-US numbers. Use

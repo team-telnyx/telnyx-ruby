@@ -4,10 +4,13 @@ module Telnyx
   module Resources
     class AI
       class Assistants
+        # Configure AI assistant specifications
         class Tests
+          # Configure AI assistant specifications
           # @return [Telnyx::Resources::AI::Assistants::Tests::TestSuites]
           attr_reader :test_suites
 
+          # Configure AI assistant specifications
           # @return [Telnyx::Resources::AI::Assistants::Tests::Runs]
           attr_reader :runs
 

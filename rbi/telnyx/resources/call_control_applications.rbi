@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Call Control applications operations
     class CallControlApplications
       # Create a call control application.
       sig do

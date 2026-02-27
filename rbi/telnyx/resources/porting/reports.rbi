@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Porting
+      # Endpoints related to porting orders management.
       class Reports
         # Generate reports about porting operations.
         sig do

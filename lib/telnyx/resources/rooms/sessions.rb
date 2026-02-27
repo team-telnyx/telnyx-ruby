@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class Rooms
       class Sessions
+        # Rooms Sessions operations.
         # @return [Telnyx::Resources::Rooms::Sessions::Actions]
         attr_reader :actions
 

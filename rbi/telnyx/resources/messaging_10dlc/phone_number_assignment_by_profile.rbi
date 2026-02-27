@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Messaging10dlc
+      # Phone number campaign bulk assignment
       class PhoneNumberAssignmentByProfile
         # This endpoint allows you to link all phone numbers associated with a Messaging
         # Profile to a campaign. **Please note:** if you want to assign phone numbers to a

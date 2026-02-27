@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # SIM Card Orders operations
     class SimCardOrderPreview
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::SimCardOrderPreviewPreviewParams} for more details.

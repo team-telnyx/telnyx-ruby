@@ -2,7 +2,9 @@
 
 module Telnyx
   module Resources
+    # Credential connection operations
     class CredentialConnections
+      # Credential connection operations
       sig { returns(Telnyx::Resources::CredentialConnections::Actions) }
       attr_reader :actions
 

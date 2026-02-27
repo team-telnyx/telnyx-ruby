@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class PortingOrders
+      # Endpoints related to porting orders management.
       class VerificationCodes
         # Returns a list of verification codes for a porting order.
         #

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Webhooks operations
     class WebhookDeliveries
       # Provides webhook_delivery debug data, such as timestamps, delivery status and
       # attempts.

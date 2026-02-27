@@ -3,13 +3,17 @@
 module Telnyx
   module Resources
     class AI
+      # Manage historical AI assistant conversations
       class Conversations
+        # Manage historical AI assistant conversations
         sig { returns(Telnyx::Resources::AI::Conversations::InsightGroups) }
         attr_reader :insight_groups
 
+        # Manage historical AI assistant conversations
         sig { returns(Telnyx::Resources::AI::Conversations::Insights) }
         attr_reader :insights
 
+        # Manage historical AI assistant conversations
         sig { returns(Telnyx::Resources::AI::Conversations::Messages) }
         attr_reader :messages
 

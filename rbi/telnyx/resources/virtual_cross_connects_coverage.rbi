@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Virtual Cross Connect operations
     class VirtualCrossConnectsCoverage
       # List Virtual Cross Connects Cloud Coverage.<br /><br />This endpoint shows which
       # cloud regions are available for the `location_code` your Virtual Cross Connect

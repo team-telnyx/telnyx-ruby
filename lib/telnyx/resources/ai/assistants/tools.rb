@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class AI
       class Assistants
+        # Configure AI assistant specifications
         class Tools
           # Test a webhook tool for an assistant
           #

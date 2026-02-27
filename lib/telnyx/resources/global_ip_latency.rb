@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Global IPs
     class GlobalIPLatency
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::GlobalIPLatencyRetrieveParams} for more details.

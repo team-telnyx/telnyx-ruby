@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Two factor authentication API
     class VerifyProfiles
       # Creates a new Verify profile to associate verifications with.
       #

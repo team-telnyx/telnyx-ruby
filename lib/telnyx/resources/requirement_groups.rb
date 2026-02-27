@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Requirement Groups
     class RequirementGroups
       # Create a new requirement group
       #

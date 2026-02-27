@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Actions
+      # SIM Cards operations
       class Register
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Actions::RegisterCreateParams} for more details.

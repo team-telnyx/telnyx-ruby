@@ -5,6 +5,7 @@ module Telnyx
     class Legacy
       class Reporting
         class UsageReports
+          # Voice usage reports
           class Voice
             # Creates a new legacy usage V2 CDR report request with the specified filters
             sig do
