@@ -31,6 +31,7 @@ module Telnyx
             # @see Telnyx::Models::AI::Missions::Runs::EventListParams
             def list(run_id, params)
               parsed, options = Telnyx::AI::Missions::Runs::EventListParams.dump_request(params)
+              query = Telnyx::Internal::Util.encode_query_params(parsed)
               mission_id =
                 parsed.delete(:mission_id) do
                   raise ArgumentError.new("missing required path argument #{_1}")
@@ -38,7 +39,7 @@ module Telnyx
               @client.request(
                 method: :get,
                 path: ["ai/missions/%1$s/runs/%2$s/events", mission_id, run_id],
-                query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+                query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
                 page: Telnyx::Internal::DefaultFlatPagination,
                 model: Telnyx::AI::Missions::Runs::EventData,
                 options: options

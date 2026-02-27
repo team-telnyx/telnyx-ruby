@@ -24,10 +24,11 @@ module Telnyx
       # @see Telnyx::Models::SpeechToTextTranscribeParams
       def transcribe(params)
         parsed, options = Telnyx::SpeechToTextTranscribeParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "speech-to-text/transcription",
-          query: parsed,
+          query: query,
           model: NilClass,
           options: options
         )

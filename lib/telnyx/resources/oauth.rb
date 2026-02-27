@@ -133,10 +133,11 @@ module Telnyx
       # @see Telnyx::Models::OAuthRetrieveAuthorizeParams
       def retrieve_authorize(params)
         parsed, options = Telnyx::OAuthRetrieveAuthorizeParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "oauth/authorize",
-          query: parsed,
+          query: query,
           model: NilClass,
           options: options
         )

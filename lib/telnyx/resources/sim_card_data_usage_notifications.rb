@@ -91,10 +91,11 @@ module Telnyx
       # @see Telnyx::Models::SimCardDataUsageNotificationListParams
       def list(params = {})
         parsed, options = Telnyx::SimCardDataUsageNotificationListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "sim_card_data_usage_notifications",
-          query: parsed.transform_keys(
+          query: query.transform_keys(
             filter_sim_card_id: "filter[sim_card_id]",
             page_number: "page[number]",
             page_size: "page[size]"

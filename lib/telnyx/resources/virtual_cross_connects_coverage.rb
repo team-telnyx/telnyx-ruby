@@ -27,10 +27,11 @@ module Telnyx
       # @see Telnyx::Models::VirtualCrossConnectsCoverageListParams
       def list(params = {})
         parsed, options = Telnyx::VirtualCrossConnectsCoverageListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "virtual_cross_connects_coverage",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::VirtualCrossConnectsCoverageListResponse,
           options: options

@@ -50,10 +50,11 @@ module Telnyx
         # @see Telnyx::Models::ExternalConnections::CivicAddressListParams
         def list(id, params = {})
           parsed, options = Telnyx::ExternalConnections::CivicAddressListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["external_connections/%1$s/civic_addresses", id],
-            query: parsed,
+            query: query,
             model: Telnyx::Models::ExternalConnections::CivicAddressListResponse,
             options: options
           )

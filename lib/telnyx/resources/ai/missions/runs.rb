@@ -119,10 +119,11 @@ module Telnyx
           # @see Telnyx::Models::AI::Missions::RunListParams
           def list(mission_id, params = {})
             parsed, options = Telnyx::AI::Missions::RunListParams.dump_request(params)
+            query = Telnyx::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
               path: ["ai/missions/%1$s/runs", mission_id],
-              query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+              query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
               page: Telnyx::Internal::DefaultFlatPagination,
               model: Telnyx::AI::Missions::MissionRunData,
               options: options
@@ -171,10 +172,11 @@ module Telnyx
           # @see Telnyx::Models::AI::Missions::RunListRunsParams
           def list_runs(params = {})
             parsed, options = Telnyx::AI::Missions::RunListRunsParams.dump_request(params)
+            query = Telnyx::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
               path: "ai/missions/runs",
-              query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+              query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
               page: Telnyx::Internal::DefaultFlatPagination,
               model: Telnyx::AI::Missions::MissionRunData,
               options: options

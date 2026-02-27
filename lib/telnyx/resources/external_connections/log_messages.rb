@@ -45,10 +45,11 @@ module Telnyx
         # @see Telnyx::Models::ExternalConnections::LogMessageListParams
         def list(params = {})
           parsed, options = Telnyx::ExternalConnections::LogMessageListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "external_connections/log_messages",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultPaginationForLogMessages,
             model: Telnyx::Models::ExternalConnections::LogMessageListResponse,
             options: options

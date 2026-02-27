@@ -166,10 +166,11 @@ module Telnyx
       # @see Telnyx::Models::MessagingProfileListParams
       def list(params = {})
         parsed, options = Telnyx::MessagingProfileListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "messaging_profiles",
-          query: parsed.transform_keys(
+          query: query.transform_keys(
             filter_name_contains: "filter[name][contains]",
             filter_name_eq: "filter[name][eq]",
             page_number: "page[number]",
@@ -218,10 +219,11 @@ module Telnyx
       # @see Telnyx::Models::MessagingProfileListAlphanumericSenderIDsParams
       def list_alphanumeric_sender_ids(id, params = {})
         parsed, options = Telnyx::MessagingProfileListAlphanumericSenderIDsParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["messaging_profiles/%1$s/alphanumeric_sender_ids", id],
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::AlphanumericSenderID,
           options: options
@@ -245,10 +247,11 @@ module Telnyx
       # @see Telnyx::Models::MessagingProfileListPhoneNumbersParams
       def list_phone_numbers(messaging_profile_id, params = {})
         parsed, options = Telnyx::MessagingProfileListPhoneNumbersParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["messaging_profiles/%1$s/phone_numbers", messaging_profile_id],
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::PhoneNumberWithMessagingSettings,
           options: options
@@ -272,10 +275,11 @@ module Telnyx
       # @see Telnyx::Models::MessagingProfileListShortCodesParams
       def list_short_codes(messaging_profile_id, params = {})
         parsed, options = Telnyx::MessagingProfileListShortCodesParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["messaging_profiles/%1$s/short_codes", messaging_profile_id],
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::ShortCode,
           options: options
@@ -298,10 +302,11 @@ module Telnyx
       # @see Telnyx::Models::MessagingProfileRetrieveMetricsParams
       def retrieve_metrics(id, params = {})
         parsed, options = Telnyx::MessagingProfileRetrieveMetricsParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["messaging_profiles/%1$s/metrics", id],
-          query: parsed,
+          query: query,
           model: Telnyx::Models::MessagingProfileRetrieveMetricsResponse,
           options: options
         )

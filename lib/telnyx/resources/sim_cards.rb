@@ -26,10 +26,11 @@ module Telnyx
       # @see Telnyx::Models::SimCardRetrieveParams
       def retrieve(id, params = {})
         parsed, options = Telnyx::SimCardRetrieveParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["sim_cards/%1$s", id],
-          query: parsed,
+          query: query,
           model: Telnyx::Models::SimCardRetrieveResponse,
           options: options
         )
@@ -96,10 +97,11 @@ module Telnyx
       # @see Telnyx::Models::SimCardListParams
       def list(params = {})
         parsed, options = Telnyx::SimCardListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "sim_cards",
-          query: parsed.transform_keys(
+          query: query.transform_keys(
             filter_sim_card_group_id: "filter[sim_card_group_id]",
             page_number: "page[number]",
             page_size: "page[size]"
@@ -134,10 +136,11 @@ module Telnyx
       # @see Telnyx::Models::SimCardDeleteParams
       def delete(id, params = {})
         parsed, options = Telnyx::SimCardDeleteParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :delete,
           path: ["sim_cards/%1$s", id],
-          query: parsed,
+          query: query,
           model: Telnyx::Models::SimCardDeleteResponse,
           options: options
         )
@@ -223,10 +226,11 @@ module Telnyx
       # @see Telnyx::Models::SimCardListWirelessConnectivityLogsParams
       def list_wireless_connectivity_logs(id, params = {})
         parsed, options = Telnyx::SimCardListWirelessConnectivityLogsParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["sim_cards/%1$s/wireless_connectivity_logs", id],
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::SimCardListWirelessConnectivityLogsResponse,
           options: options

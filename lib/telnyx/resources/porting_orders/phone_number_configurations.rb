@@ -48,10 +48,11 @@ module Telnyx
         # @see Telnyx::Models::PortingOrders::PhoneNumberConfigurationListParams
         def list(params = {})
           parsed, options = Telnyx::PortingOrders::PhoneNumberConfigurationListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "porting_orders/phone_number_configurations",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse,
             options: options

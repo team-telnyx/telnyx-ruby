@@ -19,10 +19,11 @@ module Telnyx
       # @see Telnyx::Models::GlobalIPUsageRetrieveParams
       def retrieve(params = {})
         parsed, options = Telnyx::GlobalIPUsageRetrieveParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "global_ip_usage",
-          query: parsed,
+          query: query,
           model: Telnyx::Models::GlobalIPUsageRetrieveResponse,
           options: options
         )

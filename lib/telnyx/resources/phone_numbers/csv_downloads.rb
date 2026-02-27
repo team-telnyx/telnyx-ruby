@@ -22,10 +22,11 @@ module Telnyx
         # @see Telnyx::Models::PhoneNumbers::CsvDownloadCreateParams
         def create(params = {})
           parsed, options = Telnyx::PhoneNumbers::CsvDownloadCreateParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :post,
             path: "phone_numbers/csv_downloads",
-            query: parsed,
+            query: query,
             model: Telnyx::Models::PhoneNumbers::CsvDownloadCreateResponse,
             options: options
           )
@@ -64,10 +65,11 @@ module Telnyx
         # @see Telnyx::Models::PhoneNumbers::CsvDownloadListParams
         def list(params = {})
           parsed, options = Telnyx::PhoneNumbers::CsvDownloadListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "phone_numbers/csv_downloads",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::PhoneNumbers::CsvDownload,
             options: options

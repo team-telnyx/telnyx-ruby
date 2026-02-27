@@ -19,10 +19,11 @@ module Telnyx
       # @see Telnyx::Models::GlobalIPAssignmentHealthRetrieveParams
       def retrieve(params = {})
         parsed, options = Telnyx::GlobalIPAssignmentHealthRetrieveParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "global_ip_assignment_health",
-          query: parsed,
+          query: query,
           model: Telnyx::Models::GlobalIPAssignmentHealthRetrieveResponse,
           options: options
         )

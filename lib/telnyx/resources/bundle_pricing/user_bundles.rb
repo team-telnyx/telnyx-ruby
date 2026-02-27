@@ -80,15 +80,13 @@ module Telnyx
         #
         # @see Telnyx::Models::BundlePricing::UserBundleListParams
         def list(params = {})
-          parsed, options = Telnyx::BundlePricing::UserBundleListParams.dump_request(params)
           query_params = [:filter, :page_number, :page_size]
+          parsed, options = Telnyx::BundlePricing::UserBundleListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :get,
             path: "bundle_pricing/user_bundles",
-            query: parsed.slice(*query_params).transform_keys(
-              page_number: "page[number]",
-              page_size: "page[size]"
-            ),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             headers: parsed.except(*query_params),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::BundlePricing::UserBundle,
@@ -161,12 +159,13 @@ module Telnyx
         #
         # @see Telnyx::Models::BundlePricing::UserBundleListUnusedParams
         def list_unused(params = {})
-          parsed, options = Telnyx::BundlePricing::UserBundleListUnusedParams.dump_request(params)
           query_params = [:filter]
+          parsed, options = Telnyx::BundlePricing::UserBundleListUnusedParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :get,
             path: "bundle_pricing/user_bundles/unused",
-            query: parsed.slice(*query_params),
+            query: query,
             headers: parsed.except(*query_params),
             model: Telnyx::Models::BundlePricing::UserBundleListUnusedResponse,
             options: options

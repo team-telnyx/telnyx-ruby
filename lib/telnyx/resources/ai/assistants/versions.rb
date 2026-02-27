@@ -22,6 +22,7 @@ module Telnyx
           # @see Telnyx::Models::AI::Assistants::VersionRetrieveParams
           def retrieve(version_id, params)
             parsed, options = Telnyx::AI::Assistants::VersionRetrieveParams.dump_request(params)
+            query = Telnyx::Internal::Util.encode_query_params(parsed)
             assistant_id =
               parsed.delete(:assistant_id) do
                 raise ArgumentError.new("missing required path argument #{_1}")
@@ -29,7 +30,7 @@ module Telnyx
             @client.request(
               method: :get,
               path: ["ai/assistants/%1$s/versions/%2$s", assistant_id, version_id],
-              query: parsed,
+              query: query,
               model: Telnyx::AI::InferenceEmbedding,
               options: options
             )

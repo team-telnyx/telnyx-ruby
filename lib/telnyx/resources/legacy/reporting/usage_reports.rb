@@ -28,10 +28,11 @@ module Telnyx
           # @see Telnyx::Models::Legacy::Reporting::UsageReportRetrieveSpeechToTextParams
           def retrieve_speech_to_text(params = {})
             parsed, options = Telnyx::Legacy::Reporting::UsageReportRetrieveSpeechToTextParams.dump_request(params)
+            query = Telnyx::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
               path: "legacy/reporting/usage_reports/speech_to_text",
-              query: parsed,
+              query: query,
               model: Telnyx::Models::Legacy::Reporting::UsageReportRetrieveSpeechToTextResponse,
               options: options
             )

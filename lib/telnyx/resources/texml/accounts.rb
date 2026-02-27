@@ -41,10 +41,11 @@ module Telnyx
         # @see Telnyx::Models::Texml::AccountRetrieveRecordingsJsonParams
         def retrieve_recordings_json(account_sid, params = {})
           parsed, options = Telnyx::Texml::AccountRetrieveRecordingsJsonParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["texml/Accounts/%1$s/Recordings.json", account_sid],
-            query: parsed.transform_keys(date_created: "DateCreated", page: "Page", page_size: "PageSize"),
+            query: query.transform_keys(date_created: "DateCreated", page: "Page", page_size: "PageSize"),
             model: Telnyx::Models::Texml::AccountRetrieveRecordingsJsonResponse,
             options: options
           )
@@ -67,10 +68,11 @@ module Telnyx
         # @see Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonParams
         def retrieve_transcriptions_json(account_sid, params = {})
           parsed, options = Telnyx::Texml::AccountRetrieveTranscriptionsJsonParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["texml/Accounts/%1$s/Transcriptions.json", account_sid],
-            query: parsed.transform_keys(page_size: "PageSize", page_token: "PageToken"),
+            query: query.transform_keys(page_size: "PageSize", page_token: "PageToken"),
             model: Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonResponse,
             options: options
           )

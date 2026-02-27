@@ -19,10 +19,11 @@ module Telnyx
       # @see Telnyx::Models::AvailablePhoneNumberBlockListParams
       def list(params = {})
         parsed, options = Telnyx::AvailablePhoneNumberBlockListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "available_phone_number_blocks",
-          query: parsed,
+          query: query,
           model: Telnyx::Models::AvailablePhoneNumberBlockListResponse,
           options: options
         )

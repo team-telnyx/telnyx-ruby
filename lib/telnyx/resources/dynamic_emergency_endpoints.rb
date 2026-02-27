@@ -69,10 +69,11 @@ module Telnyx
       # @see Telnyx::Models::DynamicEmergencyEndpointListParams
       def list(params = {})
         parsed, options = Telnyx::DynamicEmergencyEndpointListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "dynamic_emergency_endpoints",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::DynamicEmergencyEndpoint,
           options: options

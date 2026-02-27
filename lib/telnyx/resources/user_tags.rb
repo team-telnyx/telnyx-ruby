@@ -19,10 +19,11 @@ module Telnyx
       # @see Telnyx::Models::UserTagListParams
       def list(params = {})
         parsed, options = Telnyx::UserTagListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "user_tags",
-          query: parsed,
+          query: query,
           model: Telnyx::Models::UserTagListResponse,
           options: options
         )

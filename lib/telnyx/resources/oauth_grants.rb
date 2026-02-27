@@ -38,10 +38,11 @@ module Telnyx
       # @see Telnyx::Models::OAuthGrantListParams
       def list(params = {})
         parsed, options = Telnyx::OAuthGrantListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "oauth_grants",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::OAuthGrant,
           options: options

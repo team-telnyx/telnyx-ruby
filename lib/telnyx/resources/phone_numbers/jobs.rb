@@ -46,10 +46,11 @@ module Telnyx
         # @see Telnyx::Models::PhoneNumbers::JobListParams
         def list(params = {})
           parsed, options = Telnyx::PhoneNumbers::JobListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "phone_numbers/jobs",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::PhoneNumbers::PhoneNumbersJob,
             options: options
@@ -119,12 +120,13 @@ module Telnyx
         #
         # @see Telnyx::Models::PhoneNumbers::JobUpdateBatchParams
         def update_batch(params)
-          parsed, options = Telnyx::PhoneNumbers::JobUpdateBatchParams.dump_request(params)
           query_params = [:filter]
+          parsed, options = Telnyx::PhoneNumbers::JobUpdateBatchParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :post,
             path: "phone_numbers/jobs/update_phone_numbers",
-            query: parsed.slice(*query_params),
+            query: query,
             body: parsed.except(*query_params),
             model: Telnyx::Models::PhoneNumbers::JobUpdateBatchResponse,
             options: options

@@ -37,10 +37,11 @@ module Telnyx
         # @see Telnyx::Models::MobilePhoneNumbers::MessagingListParams
         def list(params = {})
           parsed, options = Telnyx::MobilePhoneNumbers::MessagingListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "mobile_phone_numbers/messaging",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse,
             options: options

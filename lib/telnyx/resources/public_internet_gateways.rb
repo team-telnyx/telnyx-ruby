@@ -69,10 +69,11 @@ module Telnyx
       # @see Telnyx::Models::PublicInternetGatewayListParams
       def list(params = {})
         parsed, options = Telnyx::PublicInternetGatewayListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "public_internet_gateways",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::PublicInternetGatewayListResponse,
           options: options

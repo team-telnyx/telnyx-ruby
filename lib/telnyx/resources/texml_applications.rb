@@ -153,10 +153,11 @@ module Telnyx
       # @see Telnyx::Models::TexmlApplicationListParams
       def list(params = {})
         parsed, options = Telnyx::TexmlApplicationListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "texml_applications",
-          query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::TexmlApplication,
           options: options

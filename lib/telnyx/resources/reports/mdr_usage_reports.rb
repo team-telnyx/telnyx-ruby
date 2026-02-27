@@ -63,10 +63,11 @@ module Telnyx
         # @see Telnyx::Models::Reports::MdrUsageReportListParams
         def list(params = {})
           parsed, options = Telnyx::Reports::MdrUsageReportListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "reports/mdr_usage_reports",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::Reports::MdrUsageReport,
             options: options
@@ -109,10 +110,11 @@ module Telnyx
         # @see Telnyx::Models::Reports::MdrUsageReportFetchSyncParams
         def fetch_sync(params)
           parsed, options = Telnyx::Reports::MdrUsageReportFetchSyncParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "reports/mdr_usage_reports/sync",
-            query: parsed,
+            query: query,
             model: Telnyx::Models::Reports::MdrUsageReportFetchSyncResponse,
             options: options
           )

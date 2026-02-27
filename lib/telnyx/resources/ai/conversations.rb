@@ -129,10 +129,11 @@ module Telnyx
         # @see Telnyx::Models::AI::ConversationListParams
         def list(params = {})
           parsed, options = Telnyx::AI::ConversationListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "ai/conversations",
-            query: parsed.transform_keys(
+            query: query.transform_keys(
               metadata_assistant_id: "metadata->assistant_id",
               metadata_call_control_id: "metadata->call_control_id",
               metadata_telnyx_agent_target: "metadata->telnyx_agent_target",

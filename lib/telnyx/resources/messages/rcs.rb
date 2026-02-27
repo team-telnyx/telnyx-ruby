@@ -22,10 +22,11 @@ module Telnyx
         # @see Telnyx::Models::Messages::RcGenerateDeeplinkParams
         def generate_deeplink(agent_id, params = {})
           parsed, options = Telnyx::Messages::RcGenerateDeeplinkParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["messages/rcs/deeplinks/%1$s", agent_id],
-            query: parsed,
+            query: query,
             model: Telnyx::Models::Messages::RcGenerateDeeplinkResponse,
             options: options
           )

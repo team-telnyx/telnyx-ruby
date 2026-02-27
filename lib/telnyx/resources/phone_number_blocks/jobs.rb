@@ -46,10 +46,11 @@ module Telnyx
         # @see Telnyx::Models::PhoneNumberBlocks::JobListParams
         def list(params = {})
           parsed, options = Telnyx::PhoneNumberBlocks::JobListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "phone_number_blocks/jobs",
-            query: parsed.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::PhoneNumberBlocks::Job,
             options: options
