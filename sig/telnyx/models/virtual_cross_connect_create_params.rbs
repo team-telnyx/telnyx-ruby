@@ -2,7 +2,6 @@ module Telnyx
   module Models
     type virtual_cross_connect_create_params =
       {
-        region_code: String,
         bandwidth_mbps: Float,
         bgp_asn: Float,
         cloud_provider: Telnyx::Models::VirtualCrossConnectCreateParams::cloud_provider,
@@ -23,8 +22,6 @@ module Telnyx
     class VirtualCrossConnectCreateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
-
-      attr_accessor region_code: String
 
       attr_reader bandwidth_mbps: Float?
 
@@ -85,7 +82,6 @@ module Telnyx
       def secondary_telnyx_ip=: (String) -> String
 
       def initialize: (
-        region_code: String,
         ?bandwidth_mbps: Float,
         ?bgp_asn: Float,
         ?cloud_provider: Telnyx::Models::VirtualCrossConnectCreateParams::cloud_provider,
@@ -104,7 +100,6 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
-        region_code: String,
         bandwidth_mbps: Float,
         bgp_asn: Float,
         cloud_provider: Telnyx::Models::VirtualCrossConnectCreateParams::cloud_provider,

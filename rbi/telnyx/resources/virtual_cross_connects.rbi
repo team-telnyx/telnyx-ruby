@@ -11,7 +11,6 @@ module Telnyx
       # created at the same time and they can not be independantly disabled.
       sig do
         params(
-          region_code: String,
           bandwidth_mbps: Float,
           bgp_asn: Float,
           cloud_provider:
@@ -31,8 +30,6 @@ module Telnyx
         ).returns(Telnyx::Models::VirtualCrossConnectCreateResponse)
       end
       def create(
-        # The region the interface should be deployed to.
-        region_code:,
         # The desired throughput in Megabits per Second (Mbps) for your Virtual Cross
         # Connect.<br /><br />The available bandwidths can be found using the
         # /virtual_cross_connect_regions endpoint.
