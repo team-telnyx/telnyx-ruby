@@ -2,7 +2,6 @@ module Telnyx
   module Resources
     class VirtualCrossConnects
       def create: (
-        region_code: String,
         ?bandwidth_mbps: Float,
         ?bgp_asn: Float,
         ?cloud_provider: Telnyx::Models::VirtualCrossConnectCreateParams::cloud_provider,

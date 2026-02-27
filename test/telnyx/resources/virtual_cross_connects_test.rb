@@ -3,10 +3,10 @@
 require_relative "../test_helper"
 
 class Telnyx::Test::Resources::VirtualCrossConnectsTest < Telnyx::Test::ResourceTest
-  def test_create_required_params
+  def test_create
     skip("Mock server tests are disabled")
 
-    response = @telnyx.virtual_cross_connects.create(region_code: "ashburn-va")
+    response = @telnyx.virtual_cross_connects.create
 
     assert_pattern do
       response => Telnyx::Models::VirtualCrossConnectCreateResponse
