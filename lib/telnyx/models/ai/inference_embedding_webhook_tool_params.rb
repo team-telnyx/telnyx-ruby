@@ -74,11 +74,11 @@ module Telnyx
           optional :headers,
                    -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header] }
 
-          # @!attribute method_
+          # @!attribute http_method
           #   The HTTP method to be used when calling the external tool.
           #
           #   @return [Symbol, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::Method, nil]
-          optional :method_,
+          optional :http_method,
                    enum: -> { Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Method },
                    api_name: :method
 
@@ -110,7 +110,7 @@ module Telnyx
           #   @return [Integer, nil]
           optional :timeout_ms, Integer
 
-          # @!method initialize(description:, name:, url:, async: nil, body_parameters: nil, headers: nil, method_: nil, path_parameters: nil, query_parameters: nil, timeout_ms: nil)
+          # @!method initialize(description:, name:, url:, async: nil, body_parameters: nil, headers: nil, http_method: nil, path_parameters: nil, query_parameters: nil, timeout_ms: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook} for more
           #   details.
@@ -127,7 +127,7 @@ module Telnyx
           #
           #   @param headers [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header>] The headers to be sent to the external tool.
           #
-          #   @param method_ [Symbol, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::Method] The HTTP method to be used when calling the external tool.
+          #   @param http_method [Symbol, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::Method] The HTTP method to be used when calling the external tool.
           #
           #   @param path_parameters [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters] The path parameters the webhook tool accepts, described as a JSON Schema object.
           #
@@ -207,7 +207,7 @@ module Telnyx
 
           # The HTTP method to be used when calling the external tool.
           #
-          # @see Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook#method_
+          # @see Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook#http_method
           module Method
             extend Telnyx::Internal::Type::Enum
 

@@ -167,15 +167,15 @@ module Telnyx
               )
             )
           end
-          attr_reader :method_
+          attr_reader :http_method
 
           sig do
             params(
-              method_:
+              http_method:
                 Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Method::OrSymbol
             ).void
           end
-          attr_writer :method_
+          attr_writer :http_method
 
           # The path parameters the webhook tool accepts, described as a JSON Schema object.
           # These parameters will be passed to the webhook as the path of the request if the
@@ -241,7 +241,7 @@ module Telnyx
                 T::Array[
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header::OrHash
                 ],
-              method_:
+              http_method:
                 Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Method::OrSymbol,
               path_parameters:
                 Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters::OrHash,
@@ -271,7 +271,7 @@ module Telnyx
             # The headers to be sent to the external tool.
             headers: nil,
             # The HTTP method to be used when calling the external tool.
-            method_: nil,
+            http_method: nil,
             # The path parameters the webhook tool accepts, described as a JSON Schema object.
             # These parameters will be passed to the webhook as the path of the request if the
             # URL contains a placeholder for a value. See the
@@ -303,7 +303,7 @@ module Telnyx
                   T::Array[
                     Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header
                   ],
-                method_:
+                http_method:
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Method::OrSymbol,
                 path_parameters:
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters,

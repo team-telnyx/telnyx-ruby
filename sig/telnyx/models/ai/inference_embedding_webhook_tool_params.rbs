@@ -40,7 +40,7 @@ module Telnyx
             async: bool,
             body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters,
             headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header],
-            method_: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_,
+            http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_,
             path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters,
             query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters,
             timeout_ms: Integer
@@ -69,9 +69,9 @@ module Telnyx
             ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header]
           ) -> ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header]
 
-          attr_reader method_: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_?
+          attr_reader http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_?
 
-          def method_=: (
+          def http_method=: (
             Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_
           ) -> Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_
 
@@ -98,7 +98,7 @@ module Telnyx
             ?async: bool,
             ?body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters,
             ?headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header],
-            ?method_: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_,
+            ?http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_,
             ?path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters,
             ?query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters,
             ?timeout_ms: Integer
@@ -111,7 +111,7 @@ module Telnyx
             async: bool,
             body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters,
             headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header],
-            method_: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_,
+            http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_,
             path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters,
             query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters,
             timeout_ms: Integer
