@@ -1,5 +1,24 @@
 # Changelog
 
+## 5.52.0 (2026-03-02)
+
+Full Changelog: [v5.51.1...v5.52.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.51.1...v5.52.0)
+
+### Features
+
+* **api:** manual updates ([19fceaa](https://github.com/team-telnyx/telnyx-ruby/commit/19fceaad032b83edc9acfb47eac5f853637e910d))
+* Merge TTS file-based spec into text-to-speech.json ([d9ba0d6](https://github.com/team-telnyx/telnyx-ruby/commit/d9ba0d6e6a36d8cb8114ab2e27d091cf4a8a656d))
+
+
+### Bug Fixes
+
+* narrow porting event_type enums for SDK discriminator support ([8cbc74c](https://github.com/team-telnyx/telnyx-ruby/commit/8cbc74c8285e18a712b4d71e96fcc1d39afa8761))
+
+
+### Chores
+
+* **docs:** add missing descriptions ([d41fdd2](https://github.com/team-telnyx/telnyx-ruby/commit/d41fdd210591cb13b06e3823fb4a15c0ccb8ddf1))
+
 ## 5.51.1 (2026-02-27)
 
 Full Changelog: [v5.51.0...v5.51.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.51.0...v5.51.1)
