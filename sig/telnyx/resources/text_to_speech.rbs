@@ -1,6 +1,25 @@
 module Telnyx
   module Resources
     class TextToSpeech
+      def generate: (
+        ?aws: Telnyx::TextToSpeechGenerateParams::Aws,
+        ?azure: Telnyx::TextToSpeechGenerateParams::Azure,
+        ?disable_cache: bool,
+        ?elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs,
+        ?language: String,
+        ?minimax: Telnyx::TextToSpeechGenerateParams::Minimax,
+        ?output_type: Telnyx::Models::TextToSpeechGenerateParams::output_type,
+        ?provider: Telnyx::Models::TextToSpeechGenerateParams::provider,
+        ?resemble: Telnyx::TextToSpeechGenerateParams::Resemble,
+        ?rime: Telnyx::TextToSpeechGenerateParams::Rime,
+        ?telnyx: ::Telnyx::TextToSpeechGenerateParams::Telnyx,
+        ?text: String,
+        ?text_type: Telnyx::Models::TextToSpeechGenerateParams::text_type,
+        ?voice: String,
+        ?voice_settings: ::Hash[Symbol, top],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TextToSpeechGenerateResponse
+
       def list_voices: (
         ?api_key: String,
         ?provider: Telnyx::Models::TextToSpeechListVoicesParams::provider,

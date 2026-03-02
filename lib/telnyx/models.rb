@@ -1518,6 +1518,8 @@ module Telnyx
 
   TexmlSecretsParams = Telnyx::Models::TexmlSecretsParams
 
+  TextToSpeechGenerateParams = Telnyx::Models::TextToSpeechGenerateParams
+
   TextToSpeechListVoicesParams = Telnyx::Models::TextToSpeechListVoicesParams
 
   TextToSpeechStreamParams = Telnyx::Models::TextToSpeechStreamParams
