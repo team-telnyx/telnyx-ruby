@@ -9,15 +9,15 @@ module Telnyx
 
         discriminator :event_type
 
-        variant -> { Telnyx::Porting::PortingEventDeletedPayload }
+        variant :"porting_order.deleted", -> { Telnyx::Porting::PortingEventDeletedPayload }
 
-        variant -> { Telnyx::Porting::PortingEventMessagingChangedPayload }
+        variant :"porting_order.messaging_changed", -> { Telnyx::Porting::PortingEventMessagingChangedPayload }
 
-        variant -> { Telnyx::Porting::PortingEventStatusChangedEvent }
+        variant :"porting_order.status_changed", -> { Telnyx::Porting::PortingEventStatusChangedEvent }
 
-        variant -> { Telnyx::Porting::PortingEventNewCommentEvent }
+        variant :"porting_order.new_comment", -> { Telnyx::Porting::PortingEventNewCommentEvent }
 
-        variant -> { Telnyx::Porting::PortingEventSplitEvent }
+        variant :"porting_order.split", -> { Telnyx::Porting::PortingEventSplitEvent }
 
         variant -> { Telnyx::Porting::PortingEventWithoutWebhook }
 

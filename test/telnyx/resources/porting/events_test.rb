@@ -45,6 +45,63 @@ class Telnyx::Test::Resources::Porting::EventsTest < Telnyx::Test::ResourceTest
       in Telnyx::Porting::PortingEventWithoutWebhook
       end
     end
+
+    assert_pattern do
+      case row
+      in {
+        event_type: :"porting_order.deleted",
+        id: String | nil,
+        available_notification_methods: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Porting::PortingEventDeletedPayload::AvailableNotificationMethod]) | nil,
+        payload: Telnyx::Porting::PortingEventDeletedPayload::Payload | nil,
+        payload_status: Telnyx::Porting::PortingEventDeletedPayload::PayloadStatus | nil,
+        porting_order_id: String | nil
+      }
+      in {
+        event_type: :"porting_order.messaging_changed",
+        id: String | nil,
+        available_notification_methods: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Porting::PortingEventMessagingChangedPayload::AvailableNotificationMethod]) | nil,
+        created_at: Time | nil,
+        payload: Telnyx::Porting::PortingEventMessagingChangedPayload::Payload | nil,
+        payload_status: Telnyx::Porting::PortingEventMessagingChangedPayload::PayloadStatus | nil,
+        porting_order_id: String | nil,
+        record_type: String | nil,
+        updated_at: Time | nil
+      }
+      in {
+        event_type: :"porting_order.status_changed",
+        id: String | nil,
+        available_notification_methods: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Porting::PortingEventStatusChangedEvent::AvailableNotificationMethod]) | nil,
+        created_at: Time | nil,
+        payload: Telnyx::Porting::PortingEventStatusChangedEvent::Payload | nil,
+        payload_status: Telnyx::Porting::PortingEventStatusChangedEvent::PayloadStatus | nil,
+        porting_order_id: String | nil,
+        record_type: String | nil,
+        updated_at: Time | nil
+      }
+      in {
+        event_type: :"porting_order.new_comment",
+        id: String | nil,
+        available_notification_methods: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Porting::PortingEventNewCommentEvent::AvailableNotificationMethod]) | nil,
+        created_at: Time | nil,
+        payload: Telnyx::Porting::PortingEventNewCommentEvent::Payload | nil,
+        payload_status: Telnyx::Porting::PortingEventNewCommentEvent::PayloadStatus | nil,
+        porting_order_id: String | nil,
+        record_type: String | nil,
+        updated_at: Time | nil
+      }
+      in {
+        event_type: :"porting_order.split",
+        id: String | nil,
+        available_notification_methods: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Porting::PortingEventSplitEvent::AvailableNotificationMethod]) | nil,
+        created_at: Time | nil,
+        payload: Telnyx::Porting::PortingEventSplitEvent::Payload | nil,
+        payload_status: Telnyx::Porting::PortingEventSplitEvent::PayloadStatus | nil,
+        porting_order_id: String | nil,
+        record_type: String | nil,
+        updated_at: Time | nil
+      }
+      end
+    end
   end
 
   def test_republish
