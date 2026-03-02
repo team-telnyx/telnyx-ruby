@@ -520,7 +520,6 @@ module Telnyx
     sig { returns(Telnyx::Resources::TexmlApplications) }
     attr_reader :texml_applications
 
-    # Text to speech streaming command operations
     sig { returns(Telnyx::Resources::TextToSpeech) }
     attr_reader :text_to_speech
 
