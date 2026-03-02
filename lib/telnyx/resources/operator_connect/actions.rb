@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class OperatorConnect
+      # External Connections operations
       class Actions
         # This endpoint will make an asynchronous request to refresh the Operator Connect
         # integration with Microsoft Teams for the current user. This will create new

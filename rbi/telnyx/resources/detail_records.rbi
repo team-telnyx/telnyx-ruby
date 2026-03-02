@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Detail Records operations
     class DetailRecords
       # Search for any detail record across the Telnyx Platform
       sig do

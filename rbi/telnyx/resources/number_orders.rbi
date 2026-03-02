@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Number orders
     class NumberOrders
       # Creates a phone number order.
       sig do

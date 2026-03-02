@@ -7,6 +7,7 @@ module Telnyx
         # @return [Telnyx::Resources::Legacy::Reporting::BatchDetailRecords]
         attr_reader :batch_detail_records
 
+        # Speech to text usage reports
         # @return [Telnyx::Resources::Legacy::Reporting::UsageReports]
         attr_reader :usage_reports
 

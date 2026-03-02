@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class AI
       class Assistants
+        # Configure AI assistant specifications
         class CanaryDeploys
           # Endpoint to create a canary deploy configuration for an assistant.
           #

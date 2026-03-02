@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Wireless Blocklists operations
     class WirelessBlocklistValues
       # Retrieve all wireless blocklist values for a given blocklist type.
       sig do

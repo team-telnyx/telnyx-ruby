@@ -4,6 +4,8 @@ module Telnyx
   module Resources
     class AI
       class OpenAI
+        # OpenAI-compatible embeddings endpoints for generating vector representations of
+        # text
         class Embeddings
           # Creates an embedding vector representing the input text. This endpoint is
           # compatible with the

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Voice Channels
     class InboundChannels
       # Update the number of Voice Channels for the US Zone. This allows your account to
       # handle multiple simultaneous inbound calls to US numbers. Use this endpoint to

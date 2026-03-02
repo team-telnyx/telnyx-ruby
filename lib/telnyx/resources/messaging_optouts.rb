@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Opt-Out Management
     class MessagingOptouts
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MessagingOptoutListParams} for more details.

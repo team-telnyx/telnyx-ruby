@@ -4,6 +4,8 @@ module Telnyx
   module Resources
     class AI
       class OpenAI
+        # OpenAI-compatible embeddings endpoints for generating vector representations of
+        # text
         # @return [Telnyx::Resources::AI::OpenAI::Embeddings]
         attr_reader :embeddings
 

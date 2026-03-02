@@ -3,10 +3,13 @@
 module Telnyx
   module Resources
     class Storage
+      # Presigned object URL operations
       class Buckets
+        # SSL certificate operations
         sig { returns(Telnyx::Resources::Storage::Buckets::SslCertificate) }
         attr_reader :ssl_certificate
 
+        # Bucket Usage operations
         sig { returns(Telnyx::Resources::Storage::Buckets::Usage) }
         attr_reader :usage
 

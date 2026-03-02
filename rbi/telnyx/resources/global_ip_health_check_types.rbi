@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Global IPs
     class GlobalIPHealthCheckTypes
       # List all Global IP Health check types.
       sig do

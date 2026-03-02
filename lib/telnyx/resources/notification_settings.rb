@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Notification settings operations
     class NotificationSettings
       # Add a notification setting.
       #

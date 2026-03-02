@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Store and retrieve integration secrets
     class IntegrationSecrets
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::IntegrationSecretCreateParams} for more details.

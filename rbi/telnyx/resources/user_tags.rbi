@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # User-defined tags for Telnyx resources
     class UserTags
       # List all user tags.
       sig do

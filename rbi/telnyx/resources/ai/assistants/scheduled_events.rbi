@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class AI
       class Assistants
+        # Configure AI assistant specifications
         class ScheduledEvents
           # Create a scheduled event for an assistant
           sig do

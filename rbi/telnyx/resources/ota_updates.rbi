@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # OTA updates operations
     class OtaUpdates
       # This API returns the details of an Over the Air (OTA) update.
       sig do

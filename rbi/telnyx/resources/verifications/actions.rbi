@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Verifications
+      # Two factor authentication API
       class Actions
         # Verify verification code by ID
         sig do

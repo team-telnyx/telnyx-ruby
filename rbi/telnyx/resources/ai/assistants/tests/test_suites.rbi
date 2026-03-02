@@ -5,7 +5,9 @@ module Telnyx
     class AI
       class Assistants
         class Tests
+          # Configure AI assistant specifications
           class TestSuites
+            # Configure AI assistant specifications
             sig do
               returns(
                 Telnyx::Resources::AI::Assistants::Tests::TestSuites::Runs

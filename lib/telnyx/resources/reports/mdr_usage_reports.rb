@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Reports
+      # Messaging usage reports
       class MdrUsageReports
         # Submit request for new new messaging usage report. This endpoint will pull and
         # aggregate messaging data in specified time period.

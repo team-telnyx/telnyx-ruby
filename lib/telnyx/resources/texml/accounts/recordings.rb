@@ -5,6 +5,7 @@ module Telnyx
     class Texml
       class Accounts
         class Recordings
+          # TeXML REST Commands
           # @return [Telnyx::Resources::Texml::Accounts::Recordings::Json]
           attr_reader :json
 

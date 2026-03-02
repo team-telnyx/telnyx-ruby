@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Configure your phone numbers
     class MessagingNumbersBulkUpdates
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MessagingNumbersBulkUpdateCreateParams} for more details.

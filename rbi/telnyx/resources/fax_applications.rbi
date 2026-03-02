@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Fax Applications operations
     class FaxApplications
       # Creates a new Fax Application based on the parameters sent in the request. The
       # application name and webhook URL are required. Once created, you can assign

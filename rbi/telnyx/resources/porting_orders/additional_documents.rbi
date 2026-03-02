@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class PortingOrders
+      # Endpoints related to porting orders management.
       class AdditionalDocuments
         # Creates a list of additional documents for a porting order.
         sig do

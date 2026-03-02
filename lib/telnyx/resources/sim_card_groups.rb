@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # SIM Card Groups operations
     class SimCardGroups
       # @return [Telnyx::Resources::SimCardGroups::Actions]
       attr_reader :actions

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # SIM Card Orders operations
     class SimCardOrderPreview
       # Preview SIM card order purchases.
       sig do

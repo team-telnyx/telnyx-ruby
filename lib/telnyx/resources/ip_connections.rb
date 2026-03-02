@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # IP connection operations
     class IPConnections
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::IPConnectionCreateParams} for more details.

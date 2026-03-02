@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class Verifications
       class ByPhoneNumber
+        # Two factor authentication API
         class Actions
           # Verify verification code by phone number
           #

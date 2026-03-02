@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class PhoneNumbers
+      # Configure your phone numbers
       class Actions
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::PhoneNumbers::ActionChangeBundleStatusParams} for more details.

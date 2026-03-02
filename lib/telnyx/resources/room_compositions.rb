@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Rooms Compositions operations.
     class RoomCompositions
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::RoomCompositionCreateParams} for more details.

@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class PortingOrders
+      # Endpoints related to porting orders management.
       class PhoneNumberBlocks
         # Creates a new phone number block.
         sig do

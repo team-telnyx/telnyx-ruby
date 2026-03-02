@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class AI
       class Assistants
+        # Configure AI assistant specifications
         class ScheduledEvents
           # Some parameter documentations has been truncated, see
           # {Telnyx::Models::AI::Assistants::ScheduledEventCreateParams} for more details.

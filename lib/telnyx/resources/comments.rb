@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Number orders
     class Comments
       # Create a comment
       #

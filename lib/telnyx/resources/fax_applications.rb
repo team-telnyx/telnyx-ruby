@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Fax Applications operations
     class FaxApplications
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::FaxApplicationCreateParams} for more details.

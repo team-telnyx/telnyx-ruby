@@ -3,7 +3,9 @@
 module Telnyx
   module Resources
     class Verifications
+      # Two factor authentication API
       class ByPhoneNumber
+        # Two factor authentication API
         sig do
           returns(Telnyx::Resources::Verifications::ByPhoneNumber::Actions)
         end

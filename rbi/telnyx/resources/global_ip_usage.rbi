@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Global IPs
     class GlobalIPUsage
       # Global IP Usage Metrics
       sig do

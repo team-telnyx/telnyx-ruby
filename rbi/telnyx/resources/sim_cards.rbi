@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # SIM Cards operations
     class SimCards
       sig { returns(Telnyx::Resources::SimCards::Actions) }
       attr_reader :actions

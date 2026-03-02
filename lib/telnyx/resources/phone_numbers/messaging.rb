@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class PhoneNumbers
+      # Configure your phone numbers
       class Messaging
         # Retrieve a phone number with messaging settings
         #

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Observability into Telnyx platform stability and performance.
     class Seti
       # Returns the results of the various black box tests
       #

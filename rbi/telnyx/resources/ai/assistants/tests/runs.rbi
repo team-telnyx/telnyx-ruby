@@ -5,6 +5,7 @@ module Telnyx
     class AI
       class Assistants
         class Tests
+          # Configure AI assistant specifications
           class Runs
             # Retrieves detailed information about a specific test run execution
             sig do

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Endpoints related to porting orders management.
     class PortingPhoneNumbers
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::PortingPhoneNumberListParams} for more details.

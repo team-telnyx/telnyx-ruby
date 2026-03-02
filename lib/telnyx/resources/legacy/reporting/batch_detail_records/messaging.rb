@@ -5,6 +5,7 @@ module Telnyx
     class Legacy
       class Reporting
         class BatchDetailRecords
+          # Messaging batch detail records
           class Messaging
             # Some parameter documentations has been truncated, see
             # {Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingCreateParams}

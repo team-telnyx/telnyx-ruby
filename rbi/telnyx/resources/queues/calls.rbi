@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Queues
+      # Queue commands operations
       class Calls
         # Retrieve an existing call from an existing queue
         sig do

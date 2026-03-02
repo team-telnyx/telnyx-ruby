@@ -2,7 +2,9 @@
 
 module Telnyx
   module Resources
+    # Network operations
     class Networks
+      # Network operations
       # @return [Telnyx::Resources::Networks::DefaultGateway]
       attr_reader :default_gateway
 

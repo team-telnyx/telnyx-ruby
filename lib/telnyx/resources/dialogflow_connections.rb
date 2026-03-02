@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Dialogflow Connection Operations.
     class DialogflowConnections
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::DialogflowConnectionCreateParams} for more details.

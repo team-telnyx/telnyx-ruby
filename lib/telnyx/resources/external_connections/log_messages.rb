@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class ExternalConnections
+      # External Connections operations
       class LogMessages
         # Retrieve a log message for an external connection associated with your account.
         #

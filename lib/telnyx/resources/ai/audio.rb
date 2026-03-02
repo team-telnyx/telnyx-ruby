@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class AI
+      # Turn audio into text or text into audio.
       class Audio
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::AI::AudioTranscribeParams} for more details.

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Global IPs
     class GlobalIPAllowedPorts
       # List all Global IP Allowed Ports
       sig do

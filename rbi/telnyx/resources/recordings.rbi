@@ -2,7 +2,9 @@
 
 module Telnyx
   module Resources
+    # Call Recordings operations.
     class Recordings
+      # Call Recordings operations.
       sig { returns(Telnyx::Resources::Recordings::Actions) }
       attr_reader :actions
 

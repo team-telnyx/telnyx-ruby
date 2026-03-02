@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Portouts
+      # Number portout operations
       class Reports
         # Generate reports about port-out operations.
         sig do

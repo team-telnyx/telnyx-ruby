@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Determining portability of phone numbers
     class PortabilityChecks
       # Runs a portability check, returning the results immediately.
       #

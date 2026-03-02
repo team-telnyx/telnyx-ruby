@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Public Internet Gateway operations
     class PublicInternetGateways
       # Create a new Public Internet Gateway.
       #

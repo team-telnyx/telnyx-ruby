@@ -3,7 +3,9 @@
 module Telnyx
   module Resources
     class Messaging
+      # Send RCS messages
       class Rcs
+        # Send RCS messages
         sig { returns(Telnyx::Resources::Messaging::Rcs::Agents) }
         attr_reader :agents
 

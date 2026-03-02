@@ -97,12 +97,6 @@ module Telnyx
         module EventType
           extend Telnyx::Internal::Type::Enum
 
-          PORTING_ORDER_DELETED = :"porting_order.deleted"
-          PORTING_ORDER_LOA_UPDATED = :"porting_order.loa_updated"
-          PORTING_ORDER_MESSAGING_CHANGED = :"porting_order.messaging_changed"
-          PORTING_ORDER_STATUS_CHANGED = :"porting_order.status_changed"
-          PORTING_ORDER_SHARING_TOKEN_EXPIRED = :"porting_order.sharing_token_expired"
-          PORTING_ORDER_NEW_COMMENT = :"porting_order.new_comment"
           PORTING_ORDER_SPLIT = :"porting_order.split"
 
           # @!method self.values

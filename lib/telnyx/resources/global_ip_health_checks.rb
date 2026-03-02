@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Global IPs
     class GlobalIPHealthChecks
       # Create a Global IP health check.
       #

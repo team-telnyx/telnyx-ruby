@@ -2,7 +2,9 @@
 
 module Telnyx
   module Resources
+    # Regions for wireless services
     class Wireless
+      # Wireless reporting operations
       # @return [Telnyx::Resources::Wireless::DetailRecordsReports]
       attr_reader :detail_records_reports
 

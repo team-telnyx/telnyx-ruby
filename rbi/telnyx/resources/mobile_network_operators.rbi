@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Mobile network operators operations
     class MobileNetworkOperators
       # Telnyx has a set of GSM mobile operators partners that are available through our
       # mobile network roaming. This resource is entirely managed by Telnyx and may

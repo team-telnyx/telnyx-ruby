@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Country Coverage
     class CountryCoverage
       # Get country coverage
       sig do

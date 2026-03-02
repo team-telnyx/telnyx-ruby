@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Outbound voice profiles operations
     class OutboundVoiceProfiles
       # Create an outbound voice profile.
       sig do

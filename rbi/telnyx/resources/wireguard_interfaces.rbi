@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # WireGuard Interface operations
     class WireguardInterfaces
       # Create a new WireGuard Interface. Current limitation of 10 interfaces per user
       # can be created.

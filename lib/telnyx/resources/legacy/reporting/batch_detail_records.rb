@@ -5,12 +5,15 @@ module Telnyx
     class Legacy
       class Reporting
         class BatchDetailRecords
+          # Messaging batch detail records
           # @return [Telnyx::Resources::Legacy::Reporting::BatchDetailRecords::Messaging]
           attr_reader :messaging
 
+          # Speech to text batch detail records
           # @return [Telnyx::Resources::Legacy::Reporting::BatchDetailRecords::SpeechToText]
           attr_reader :speech_to_text
 
+          # Voice batch detail records
           # @return [Telnyx::Resources::Legacy::Reporting::BatchDetailRecords::Voice]
           attr_reader :voice
 

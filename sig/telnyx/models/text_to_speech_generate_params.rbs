@@ -1,0 +1,515 @@
+module Telnyx
+  module Models
+    type text_to_speech_generate_params =
+      {
+        aws: Telnyx::TextToSpeechGenerateParams::Aws,
+        azure: Telnyx::TextToSpeechGenerateParams::Azure,
+        disable_cache: bool,
+        elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs,
+        language: String,
+        minimax: Telnyx::TextToSpeechGenerateParams::Minimax,
+        output_type: Telnyx::Models::TextToSpeechGenerateParams::output_type,
+        provider: Telnyx::Models::TextToSpeechGenerateParams::provider,
+        resemble: Telnyx::TextToSpeechGenerateParams::Resemble,
+        rime: Telnyx::TextToSpeechGenerateParams::Rime,
+        telnyx: ::Telnyx::TextToSpeechGenerateParams::Telnyx,
+        text: String,
+        text_type: Telnyx::Models::TextToSpeechGenerateParams::text_type,
+        voice: String,
+        voice_settings: ::Hash[Symbol, top]
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class TextToSpeechGenerateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader aws: Telnyx::TextToSpeechGenerateParams::Aws?
+
+      def aws=: (
+        Telnyx::TextToSpeechGenerateParams::Aws
+      ) -> Telnyx::TextToSpeechGenerateParams::Aws
+
+      attr_reader azure: Telnyx::TextToSpeechGenerateParams::Azure?
+
+      def azure=: (
+        Telnyx::TextToSpeechGenerateParams::Azure
+      ) -> Telnyx::TextToSpeechGenerateParams::Azure
+
+      attr_reader disable_cache: bool?
+
+      def disable_cache=: (bool) -> bool
+
+      attr_reader elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs?
+
+      def elevenlabs=: (
+        Telnyx::TextToSpeechGenerateParams::Elevenlabs
+      ) -> Telnyx::TextToSpeechGenerateParams::Elevenlabs
+
+      attr_reader language: String?
+
+      def language=: (String) -> String
+
+      attr_reader minimax: Telnyx::TextToSpeechGenerateParams::Minimax?
+
+      def minimax=: (
+        Telnyx::TextToSpeechGenerateParams::Minimax
+      ) -> Telnyx::TextToSpeechGenerateParams::Minimax
+
+      attr_reader output_type: Telnyx::Models::TextToSpeechGenerateParams::output_type?
+
+      def output_type=: (
+        Telnyx::Models::TextToSpeechGenerateParams::output_type
+      ) -> Telnyx::Models::TextToSpeechGenerateParams::output_type
+
+      attr_reader provider: Telnyx::Models::TextToSpeechGenerateParams::provider?
+
+      def provider=: (
+        Telnyx::Models::TextToSpeechGenerateParams::provider
+      ) -> Telnyx::Models::TextToSpeechGenerateParams::provider
+
+      attr_reader resemble: Telnyx::TextToSpeechGenerateParams::Resemble?
+
+      def resemble=: (
+        Telnyx::TextToSpeechGenerateParams::Resemble
+      ) -> Telnyx::TextToSpeechGenerateParams::Resemble
+
+      attr_reader rime: Telnyx::TextToSpeechGenerateParams::Rime?
+
+      def rime=: (
+        Telnyx::TextToSpeechGenerateParams::Rime
+      ) -> Telnyx::TextToSpeechGenerateParams::Rime
+
+      attr_reader telnyx: ::Telnyx::TextToSpeechGenerateParams::Telnyx?
+
+      def telnyx=: (
+        ::Telnyx::TextToSpeechGenerateParams::Telnyx
+      ) -> ::Telnyx::TextToSpeechGenerateParams::Telnyx
+
+      attr_reader text: String?
+
+      def text=: (String) -> String
+
+      attr_reader text_type: Telnyx::Models::TextToSpeechGenerateParams::text_type?
+
+      def text_type=: (
+        Telnyx::Models::TextToSpeechGenerateParams::text_type
+      ) -> Telnyx::Models::TextToSpeechGenerateParams::text_type
+
+      attr_reader voice: String?
+
+      def voice=: (String) -> String
+
+      attr_reader voice_settings: ::Hash[Symbol, top]?
+
+      def voice_settings=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+      def initialize: (
+        ?aws: Telnyx::TextToSpeechGenerateParams::Aws,
+        ?azure: Telnyx::TextToSpeechGenerateParams::Azure,
+        ?disable_cache: bool,
+        ?elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs,
+        ?language: String,
+        ?minimax: Telnyx::TextToSpeechGenerateParams::Minimax,
+        ?output_type: Telnyx::Models::TextToSpeechGenerateParams::output_type,
+        ?provider: Telnyx::Models::TextToSpeechGenerateParams::provider,
+        ?resemble: Telnyx::TextToSpeechGenerateParams::Resemble,
+        ?rime: Telnyx::TextToSpeechGenerateParams::Rime,
+        ?telnyx: ::Telnyx::TextToSpeechGenerateParams::Telnyx,
+        ?text: String,
+        ?text_type: Telnyx::Models::TextToSpeechGenerateParams::text_type,
+        ?voice: String,
+        ?voice_settings: ::Hash[Symbol, top],
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        aws: Telnyx::TextToSpeechGenerateParams::Aws,
+        azure: Telnyx::TextToSpeechGenerateParams::Azure,
+        disable_cache: bool,
+        elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs,
+        language: String,
+        minimax: Telnyx::TextToSpeechGenerateParams::Minimax,
+        output_type: Telnyx::Models::TextToSpeechGenerateParams::output_type,
+        provider: Telnyx::Models::TextToSpeechGenerateParams::provider,
+        resemble: Telnyx::TextToSpeechGenerateParams::Resemble,
+        rime: Telnyx::TextToSpeechGenerateParams::Rime,
+        telnyx: ::Telnyx::TextToSpeechGenerateParams::Telnyx,
+        text: String,
+        text_type: Telnyx::Models::TextToSpeechGenerateParams::text_type,
+        voice: String,
+        voice_settings: ::Hash[Symbol, top],
+        request_options: Telnyx::RequestOptions
+      }
+
+      type aws =
+        {
+          language_code: String,
+          lexicon_names: ::Array[String],
+          output_format: String,
+          sample_rate: String,
+          text_type: Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type
+        }
+
+      class Aws < Telnyx::Internal::Type::BaseModel
+        attr_reader language_code: String?
+
+        def language_code=: (String) -> String
+
+        attr_reader lexicon_names: ::Array[String]?
+
+        def lexicon_names=: (::Array[String]) -> ::Array[String]
+
+        attr_reader output_format: String?
+
+        def output_format=: (String) -> String
+
+        attr_reader sample_rate: String?
+
+        def sample_rate=: (String) -> String
+
+        attr_reader text_type: Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type?
+
+        def text_type=: (
+          Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type
+        ) -> Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type
+
+        def initialize: (
+          ?language_code: String,
+          ?lexicon_names: ::Array[String],
+          ?output_format: String,
+          ?sample_rate: String,
+          ?text_type: Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type
+        ) -> void
+
+        def to_hash: -> {
+          language_code: String,
+          lexicon_names: ::Array[String],
+          output_format: String,
+          sample_rate: String,
+          text_type: Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type
+        }
+
+        type text_type = :text | :ssml
+
+        module TextType
+          extend Telnyx::Internal::Type::Enum
+
+          TEXT: :text
+          SSML: :ssml
+
+          def self?.values: -> ::Array[Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type]
+        end
+      end
+
+      type azure =
+        {
+          api_key: String,
+          deployment_id: String,
+          effect: String,
+          gender: String,
+          language_code: String,
+          output_format: String,
+          region: String,
+          text_type: Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type
+        }
+
+      class Azure < Telnyx::Internal::Type::BaseModel
+        attr_reader api_key: String?
+
+        def api_key=: (String) -> String
+
+        attr_reader deployment_id: String?
+
+        def deployment_id=: (String) -> String
+
+        attr_reader effect: String?
+
+        def effect=: (String) -> String
+
+        attr_reader gender: String?
+
+        def gender=: (String) -> String
+
+        attr_reader language_code: String?
+
+        def language_code=: (String) -> String
+
+        attr_reader output_format: String?
+
+        def output_format=: (String) -> String
+
+        attr_reader region: String?
+
+        def region=: (String) -> String
+
+        attr_reader text_type: Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type?
+
+        def text_type=: (
+          Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type
+        ) -> Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type
+
+        def initialize: (
+          ?api_key: String,
+          ?deployment_id: String,
+          ?effect: String,
+          ?gender: String,
+          ?language_code: String,
+          ?output_format: String,
+          ?region: String,
+          ?text_type: Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type
+        ) -> void
+
+        def to_hash: -> {
+          api_key: String,
+          deployment_id: String,
+          effect: String,
+          gender: String,
+          language_code: String,
+          output_format: String,
+          region: String,
+          text_type: Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type
+        }
+
+        type text_type = :text | :ssml
+
+        module TextType
+          extend Telnyx::Internal::Type::Enum
+
+          TEXT: :text
+          SSML: :ssml
+
+          def self?.values: -> ::Array[Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type]
+        end
+      end
+
+      type elevenlabs =
+        {
+          api_key: String,
+          language_code: String,
+          voice_settings: ::Hash[Symbol, top]
+        }
+
+      class Elevenlabs < Telnyx::Internal::Type::BaseModel
+        attr_reader api_key: String?
+
+        def api_key=: (String) -> String
+
+        attr_reader language_code: String?
+
+        def language_code=: (String) -> String
+
+        attr_reader voice_settings: ::Hash[Symbol, top]?
+
+        def voice_settings=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        def initialize: (
+          ?api_key: String,
+          ?language_code: String,
+          ?voice_settings: ::Hash[Symbol, top]
+        ) -> void
+
+        def to_hash: -> {
+          api_key: String,
+          language_code: String,
+          voice_settings: ::Hash[Symbol, top]
+        }
+      end
+
+      type minimax =
+        {
+          language_boost: String,
+          pitch: Integer,
+          response_format: String,
+          speed: Float,
+          vol: Float
+        }
+
+      class Minimax < Telnyx::Internal::Type::BaseModel
+        attr_reader language_boost: String?
+
+        def language_boost=: (String) -> String
+
+        attr_reader pitch: Integer?
+
+        def pitch=: (Integer) -> Integer
+
+        attr_reader response_format: String?
+
+        def response_format=: (String) -> String
+
+        attr_reader speed: Float?
+
+        def speed=: (Float) -> Float
+
+        attr_reader vol: Float?
+
+        def vol=: (Float) -> Float
+
+        def initialize: (
+          ?language_boost: String,
+          ?pitch: Integer,
+          ?response_format: String,
+          ?speed: Float,
+          ?vol: Float
+        ) -> void
+
+        def to_hash: -> {
+          language_boost: String,
+          pitch: Integer,
+          response_format: String,
+          speed: Float,
+          vol: Float
+        }
+      end
+
+      type output_type = :binary_output | :base64_output
+
+      module OutputType
+        extend Telnyx::Internal::Type::Enum
+
+        BINARY_OUTPUT: :binary_output
+        BASE64_OUTPUT: :base64_output
+
+        def self?.values: -> ::Array[Telnyx::Models::TextToSpeechGenerateParams::output_type]
+      end
+
+      type provider =
+        :aws | :telnyx | :azure | :elevenlabs | :minimax | :rime | :resemble
+
+      module Provider
+        extend Telnyx::Internal::Type::Enum
+
+        AWS: :aws
+        TELNYX: :telnyx
+        AZURE: :azure
+        ELEVENLABS: :elevenlabs
+        MINIMAX: :minimax
+        RIME: :rime
+        RESEMBLE: :resemble
+
+        def self?.values: -> ::Array[Telnyx::Models::TextToSpeechGenerateParams::provider]
+      end
+
+      type resemble =
+        {
+          api_key: String,
+          file_format: String,
+          precision: String,
+          sample_rate: String
+        }
+
+      class Resemble < Telnyx::Internal::Type::BaseModel
+        attr_reader api_key: String?
+
+        def api_key=: (String) -> String
+
+        attr_reader file_format: String?
+
+        def file_format=: (String) -> String
+
+        attr_reader precision: String?
+
+        def precision=: (String) -> String
+
+        attr_reader sample_rate: String?
+
+        def sample_rate=: (String) -> String
+
+        def initialize: (
+          ?api_key: String,
+          ?file_format: String,
+          ?precision: String,
+          ?sample_rate: String
+        ) -> void
+
+        def to_hash: -> {
+          api_key: String,
+          file_format: String,
+          precision: String,
+          sample_rate: String
+        }
+      end
+
+      type rime =
+        { response_format: String, sampling_rate: Integer, voice_speed: Float }
+
+      class Rime < Telnyx::Internal::Type::BaseModel
+        attr_reader response_format: String?
+
+        def response_format=: (String) -> String
+
+        attr_reader sampling_rate: Integer?
+
+        def sampling_rate=: (Integer) -> Integer
+
+        attr_reader voice_speed: Float?
+
+        def voice_speed=: (Float) -> Float
+
+        def initialize: (
+          ?response_format: String,
+          ?sampling_rate: Integer,
+          ?voice_speed: Float
+        ) -> void
+
+        def to_hash: -> {
+          response_format: String,
+          sampling_rate: Integer,
+          voice_speed: Float
+        }
+      end
+
+      type telnyx =
+        {
+          response_format: String,
+          sampling_rate: Integer,
+          temperature: Float,
+          voice_speed: Float
+        }
+
+      class Telnyx < ::Telnyx::Internal::Type::BaseModel
+        attr_reader response_format: String?
+
+        def response_format=: (String) -> String
+
+        attr_reader sampling_rate: Integer?
+
+        def sampling_rate=: (Integer) -> Integer
+
+        attr_reader temperature: Float?
+
+        def temperature=: (Float) -> Float
+
+        attr_reader voice_speed: Float?
+
+        def voice_speed=: (Float) -> Float
+
+        def initialize: (
+          ?response_format: String,
+          ?sampling_rate: Integer,
+          ?temperature: Float,
+          ?voice_speed: Float
+        ) -> void
+
+        def to_hash: -> {
+          response_format: String,
+          sampling_rate: Integer,
+          temperature: Float,
+          voice_speed: Float
+        }
+      end
+
+      type text_type = :text | :ssml
+
+      module TextType
+        extend Telnyx::Internal::Type::Enum
+
+        TEXT: :text
+        SSML: :ssml
+
+        def self?.values: -> ::Array[Telnyx::Models::TextToSpeechGenerateParams::text_type]
+      end
+    end
+  end
+end

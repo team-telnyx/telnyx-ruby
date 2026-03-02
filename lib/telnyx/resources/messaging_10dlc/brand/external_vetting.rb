@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class Messaging10dlc
       class Brand
+        # Brand operations
         class ExternalVetting
           # Get list of valid external vetting record for a given brand
           #

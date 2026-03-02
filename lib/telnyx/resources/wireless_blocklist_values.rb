@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Wireless Blocklists operations
     class WirelessBlocklistValues
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::WirelessBlocklistValueListParams} for more details.

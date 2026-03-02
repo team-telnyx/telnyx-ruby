@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class MessagingProfiles
+      # Opt-Out Management
       class AutorespConfigs
         # Create auto-response setting
         sig do

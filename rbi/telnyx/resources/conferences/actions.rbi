@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Conferences
+      # Conference command operations
       class Actions
         # Update conference participant supervisor_role
         sig do

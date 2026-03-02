@@ -2,7 +2,9 @@
 
 module Telnyx
   module Resources
+    # Programmable fax command operations
     class Faxes
+      # Programmable fax command operations
       # @return [Telnyx::Resources::Faxes::Actions]
       attr_reader :actions
 

@@ -5,6 +5,7 @@ module Telnyx
     class Texml
       class Accounts
         class Transcriptions
+          # TeXML REST Commands
           sig do
             returns(Telnyx::Resources::Texml::Accounts::Transcriptions::Json)
           end

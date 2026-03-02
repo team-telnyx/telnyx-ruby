@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # SIM Card Orders operations
     class SimCardOrders
       # Creates a new order for SIM cards.
       #

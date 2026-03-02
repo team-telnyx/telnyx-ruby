@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Calls
+      # Call Control command operations
       sig { returns(Telnyx::Resources::Calls::Actions) }
       attr_reader :actions
 

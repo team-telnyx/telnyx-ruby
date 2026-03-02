@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Virtual Cross Connect operations
     class VirtualCrossConnects
       # Create a new Virtual Cross Connect.<br /><br />For AWS and GCE, you have the
       # option of creating the primary connection first and the secondary connection

@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Notification settings operations
     class NotificationEvents
       # Returns a list of your notifications events.
       #

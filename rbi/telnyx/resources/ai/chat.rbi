@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class AI
+      # Generate text with LLMs
       class Chat
         # Chat with a language model. This endpoint is consistent with the
         # [OpenAI Chat Completions API](https://platform.openai.com/docs/api-reference/chat)

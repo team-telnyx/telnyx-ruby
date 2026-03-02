@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Call Control debugging
     class CallEvents
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::CallEventListParams} for more details.

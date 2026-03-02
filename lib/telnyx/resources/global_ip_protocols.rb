@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Global IPs
     class GlobalIPProtocols
       # List all Global IP Protocols
       #

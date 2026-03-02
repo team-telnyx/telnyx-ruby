@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class VerifiedNumbers
+      # Verified Numbers operations
       class Actions
         # Submit verification code
         sig do

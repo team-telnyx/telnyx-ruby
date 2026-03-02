@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Notification settings operations
     class NotificationEventConditions
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::NotificationEventConditionListParams} for more details.

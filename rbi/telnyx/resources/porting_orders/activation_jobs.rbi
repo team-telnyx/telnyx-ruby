@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class PortingOrders
+      # Endpoints related to porting orders management.
       class ActivationJobs
         # Returns a porting activation job.
         sig do

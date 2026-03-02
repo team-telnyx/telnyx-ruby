@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class MessagingTollfree
       class Verification
+        # Manage your tollfree verification requests
         class Requests
           # Submit a new tollfree verification request
           sig do

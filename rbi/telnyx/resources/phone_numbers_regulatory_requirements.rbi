@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Regulatory Requirements
     class PhoneNumbersRegulatoryRequirements
       # Retrieve regulatory requirements for a list of phone numbers
       sig do

@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Networks
+      # Network operations
       class DefaultGateway
         # Create Default Gateway.
         sig do

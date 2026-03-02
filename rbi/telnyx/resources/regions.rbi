@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Regions
     class Regions
       # List all regions and the interfaces that region supports
       sig do

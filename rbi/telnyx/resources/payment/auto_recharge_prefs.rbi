@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Payment
+      # V2 Auto Recharge Preferences API
       class AutoRechargePrefs
         # Update payment auto recharge preferences.
         sig do

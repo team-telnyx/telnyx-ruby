@@ -5,6 +5,7 @@ module Telnyx
     class Legacy
       class Reporting
         class BatchDetailRecords
+          # Speech to text batch detail records
           class SpeechToText
             # Creates a new Speech to Text batch report request with the specified filters
             #

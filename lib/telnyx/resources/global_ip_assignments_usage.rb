@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Global IPs
     class GlobalIPAssignmentsUsage
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::GlobalIPAssignmentsUsageRetrieveParams} for more details.

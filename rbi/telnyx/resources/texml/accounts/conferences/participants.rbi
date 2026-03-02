@@ -5,6 +5,7 @@ module Telnyx
     class Texml
       class Accounts
         class Conferences
+          # TeXML REST Commands
           class Participants
             # Gets conference participant resource
             sig do

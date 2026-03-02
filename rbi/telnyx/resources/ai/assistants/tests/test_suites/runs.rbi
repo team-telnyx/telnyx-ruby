@@ -6,6 +6,7 @@ module Telnyx
       class Assistants
         class Tests
           class TestSuites
+            # Configure AI assistant specifications
             class Runs
               # Retrieves paginated history of test runs for a specific test suite with
               # filtering options

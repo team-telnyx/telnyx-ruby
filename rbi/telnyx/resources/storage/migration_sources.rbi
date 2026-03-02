@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Storage
+      # Migrate data from an external provider into Telnyx Cloud Storage
       class MigrationSources
         # Create a source from which data can be migrated from.
         sig do

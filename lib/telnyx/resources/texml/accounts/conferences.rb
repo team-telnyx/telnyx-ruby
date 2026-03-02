@@ -4,7 +4,9 @@ module Telnyx
   module Resources
     class Texml
       class Accounts
+        # TeXML REST Commands
         class Conferences
+          # TeXML REST Commands
           # @return [Telnyx::Resources::Texml::Accounts::Conferences::Participants]
           attr_reader :participants
 

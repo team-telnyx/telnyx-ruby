@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Mobile push credential management
     class MobilePushCredentials
       # Creates a new mobile push credential
       #

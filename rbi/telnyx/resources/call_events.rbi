@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Call Control debugging
     class CallEvents
       # Filters call events by given filter parameters. Events are ordered by
       # `occurred_at`. If filter for `leg_id` or `application_session_id` is not

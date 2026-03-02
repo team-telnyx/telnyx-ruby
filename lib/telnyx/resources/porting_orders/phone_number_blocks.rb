@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class PortingOrders
+      # Endpoints related to porting orders management.
       class PhoneNumberBlocks
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::PortingOrders::PhoneNumberBlockCreateParams} for more details.

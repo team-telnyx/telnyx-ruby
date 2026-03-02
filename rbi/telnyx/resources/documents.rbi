@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Documents
     class Documents
       # Retrieve a document.
       sig do

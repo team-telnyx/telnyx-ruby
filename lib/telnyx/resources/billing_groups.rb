@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Billing groups operations
     class BillingGroups
       # Create a billing group
       #

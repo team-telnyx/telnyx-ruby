@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Rooms Participants operations.
     class RoomParticipants
       # View a room participant.
       sig do

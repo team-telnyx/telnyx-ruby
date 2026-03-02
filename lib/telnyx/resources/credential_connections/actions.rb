@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class CredentialConnections
+      # Credential connection operations
       class Actions
         # Checks the registration_status for a credential connection,
         # (`registration_status`) as well as the timestamp for the last SIP registration

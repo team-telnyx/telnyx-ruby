@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class Calls
+      # Call Control command operations
       class Actions
         # Add messages to the conversation started by an AI assistant on the call.
         sig do

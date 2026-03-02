@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class ExternalConnections
+      # External Connections operations
       class Uploads
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::ExternalConnections::UploadCreateParams} for more details.

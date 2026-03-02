@@ -3,9 +3,11 @@
 module Telnyx
   module Resources
     class Actions
+      # SIM Cards operations
       # @return [Telnyx::Resources::Actions::Purchase]
       attr_reader :purchase
 
+      # SIM Cards operations
       # @return [Telnyx::Resources::Actions::Register]
       attr_reader :register
 

@@ -5,6 +5,7 @@ module Telnyx
     class Legacy
       class Reporting
         class UsageReports
+          # Number lookup usage reports
           class NumberLookup
             # Submit a new telco data usage report
             sig do

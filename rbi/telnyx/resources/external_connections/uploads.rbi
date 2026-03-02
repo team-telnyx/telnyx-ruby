@@ -3,6 +3,7 @@
 module Telnyx
   module Resources
     class ExternalConnections
+      # External Connections operations
       class Uploads
         # Creates a new Upload request to Microsoft teams with the included phone numbers.
         # Only one of civic_address_id or location_id must be provided, not both. The

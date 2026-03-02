@@ -2,13 +2,17 @@
 
 module Telnyx
   module Resources
+    # Endpoints related to porting orders management.
     class Porting
+      # Endpoints related to porting orders management.
       sig { returns(Telnyx::Resources::Porting::Events) }
       attr_reader :events
 
+      # Endpoints related to porting orders management.
       sig { returns(Telnyx::Resources::Porting::Reports) }
       attr_reader :reports
 
+      # Endpoints related to porting orders management.
       sig { returns(Telnyx::Resources::Porting::LoaConfigurations) }
       attr_reader :loa_configurations
 
