@@ -792,10 +792,10 @@ module Telnyx
 
         # Audio output format.
         sig { returns(T.nilable(String)) }
-        attr_reader :format_
+        attr_reader :file_format
 
-        sig { params(format_: String).void }
-        attr_writer :format_
+        sig { params(file_format: String).void }
+        attr_writer :file_format
 
         # Synthesis precision.
         sig { returns(T.nilable(String)) }
@@ -815,7 +815,7 @@ module Telnyx
         sig do
           params(
             api_key: String,
-            format_: String,
+            file_format: String,
             precision: String,
             sample_rate: String
           ).returns(T.attached_class)
@@ -824,7 +824,7 @@ module Telnyx
           # Custom Resemble API key.
           api_key: nil,
           # Audio output format.
-          format_: nil,
+          file_format: nil,
           # Synthesis precision.
           precision: nil,
           # Audio sample rate.
@@ -836,7 +836,7 @@ module Telnyx
           override.returns(
             {
               api_key: String,
-              format_: String,
+              file_format: String,
               precision: String,
               sample_rate: String
             }

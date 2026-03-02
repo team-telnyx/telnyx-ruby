@@ -388,11 +388,11 @@ module Telnyx
         #   @return [String, nil]
         optional :api_key, String
 
-        # @!attribute format_
+        # @!attribute file_format
         #   Audio output format.
         #
         #   @return [String, nil]
-        optional :format_, String, api_name: :format
+        optional :file_format, String, api_name: :format
 
         # @!attribute precision
         #   Synthesis precision.
@@ -406,12 +406,12 @@ module Telnyx
         #   @return [String, nil]
         optional :sample_rate, String
 
-        # @!method initialize(api_key: nil, format_: nil, precision: nil, sample_rate: nil)
+        # @!method initialize(api_key: nil, file_format: nil, precision: nil, sample_rate: nil)
         #   Resemble AI provider-specific parameters.
         #
         #   @param api_key [String] Custom Resemble API key.
         #
-        #   @param format_ [String] Audio output format.
+        #   @param file_format [String] Audio output format.
         #
         #   @param precision [String] Synthesis precision.
         #

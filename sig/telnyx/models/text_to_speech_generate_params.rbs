@@ -394,7 +394,7 @@ module Telnyx
       type resemble =
         {
           api_key: String,
-          format_: String,
+          file_format: String,
           precision: String,
           sample_rate: String
         }
@@ -404,9 +404,9 @@ module Telnyx
 
         def api_key=: (String) -> String
 
-        attr_reader format_: String?
+        attr_reader file_format: String?
 
-        def format_=: (String) -> String
+        def file_format=: (String) -> String
 
         attr_reader precision: String?
 
@@ -418,14 +418,14 @@ module Telnyx
 
         def initialize: (
           ?api_key: String,
-          ?format_: String,
+          ?file_format: String,
           ?precision: String,
           ?sample_rate: String
         ) -> void
 
         def to_hash: -> {
           api_key: String,
-          format_: String,
+          file_format: String,
           precision: String,
           sample_rate: String
         }
