@@ -525,6 +525,7 @@ module Telnyx
     # @return [Telnyx::Resources::TexmlApplications]
     attr_reader :texml_applications
 
+    # Text to speech streaming command operations
     # @return [Telnyx::Resources::TextToSpeech]
     attr_reader :text_to_speech
 
