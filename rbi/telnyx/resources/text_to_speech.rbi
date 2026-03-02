@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Text to speech streaming command operations
     class TextToSpeech
       # Generate synthesized speech audio from text input. Returns audio in the
       # requested format (binary audio stream, base64-encoded JSON, or an audio URL for

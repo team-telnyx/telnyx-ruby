@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Text to speech streaming command operations
     class TextToSpeech
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::TextToSpeechGenerateParams} for more details.
