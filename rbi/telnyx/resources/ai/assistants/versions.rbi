@@ -53,6 +53,7 @@ module Telnyx
                     Telnyx::AI::AssistantTool::Handoff::OrHash,
                     Telnyx::AI::HangupTool::OrHash,
                     Telnyx::AI::AssistantTool::Transfer::OrHash,
+                    Telnyx::AI::AssistantTool::Invite::OrHash,
                     Telnyx::AI::AssistantTool::Refer::OrHash,
                     Telnyx::AI::AssistantTool::SendDtmf::OrHash,
                     Telnyx::AI::AssistantTool::SendMessage::OrHash,

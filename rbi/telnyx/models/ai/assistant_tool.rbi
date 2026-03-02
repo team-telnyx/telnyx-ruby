@@ -17,6 +17,7 @@ module Telnyx
               Telnyx::AI::AssistantTool::Handoff,
               Telnyx::AI::HangupTool,
               Telnyx::AI::AssistantTool::Transfer,
+              Telnyx::AI::AssistantTool::Invite,
               Telnyx::AI::AssistantTool::Refer,
               Telnyx::AI::AssistantTool::SendDtmf,
               Telnyx::AI::AssistantTool::SendMessage,
@@ -976,6 +977,385 @@ module Telnyx
                     end
                     def self.values
                     end
+                  end
+                end
+              end
+            end
+          end
+        end
+
+        class Invite < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::AssistantTool::Invite,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          sig { returns(Telnyx::AI::AssistantTool::Invite::Invite) }
+          attr_reader :invite
+
+          sig do
+            params(
+              invite: Telnyx::AI::AssistantTool::Invite::Invite::OrHash
+            ).void
+          end
+          attr_writer :invite
+
+          sig { returns(Symbol) }
+          attr_accessor :type
+
+          sig do
+            params(
+              invite: Telnyx::AI::AssistantTool::Invite::Invite::OrHash,
+              type: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(invite:, type: :invite)
+          end
+
+          sig do
+            override.returns(
+              {
+                invite: Telnyx::AI::AssistantTool::Invite::Invite,
+                type: Symbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class Invite < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::AI::AssistantTool::Invite::Invite,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # Custom headers to be added to the SIP INVITE for the invite command.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader
+                  ]
+                )
+              )
+            end
+            attr_reader :custom_headers
+
+            sig do
+              params(
+                custom_headers:
+                  T::Array[
+                    Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader::OrHash
+                  ]
+              ).void
+            end
+            attr_writer :custom_headers
+
+            # Number or SIP URI placing the call.
+            sig { returns(T.nilable(String)) }
+            attr_reader :from
+
+            sig { params(from: String).void }
+            attr_writer :from
+
+            # Configuration for voicemail detection (AMD - Answering Machine Detection) on the
+            # invited call.
+            sig do
+              returns(
+                T.nilable(
+                  Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection
+                )
+              )
+            end
+            attr_reader :voicemail_detection
+
+            sig do
+              params(
+                voicemail_detection:
+                  Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OrHash
+              ).void
+            end
+            attr_writer :voicemail_detection
+
+            sig do
+              params(
+                custom_headers:
+                  T::Array[
+                    Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader::OrHash
+                  ],
+                from: String,
+                voicemail_detection:
+                  Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OrHash
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Custom headers to be added to the SIP INVITE for the invite command.
+              custom_headers: nil,
+              # Number or SIP URI placing the call.
+              from: nil,
+              # Configuration for voicemail detection (AMD - Answering Machine Detection) on the
+              # invited call.
+              voicemail_detection: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  custom_headers:
+                    T::Array[
+                      Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader
+                    ],
+                  from: String,
+                  voicemail_detection:
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class CustomHeader < Telnyx::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader,
+                    Telnyx::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T.nilable(String)) }
+              attr_reader :name
+
+              sig { params(name: String).void }
+              attr_writer :name
+
+              # The value of the header. Note that we support mustache templating for the value.
+              # For example you can use
+              # `{{#integration_secret}}test-secret{{/integration_secret}}` to pass the value of
+              # the integration secret.
+              sig { returns(T.nilable(String)) }
+              attr_reader :value
+
+              sig { params(value: String).void }
+              attr_writer :value
+
+              sig do
+                params(name: String, value: String).returns(T.attached_class)
+              end
+              def self.new(
+                name: nil,
+                # The value of the header. Note that we support mustache templating for the value.
+                # For example you can use
+                # `{{#integration_secret}}test-secret{{/integration_secret}}` to pass the value of
+                # the integration secret.
+                value: nil
+              )
+              end
+
+              sig { override.returns({ name: String, value: String }) }
+              def to_hash
+              end
+            end
+
+            class VoicemailDetection < Telnyx::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection,
+                    Telnyx::Internal::AnyHash
+                  )
+                end
+
+              # The AMD detection mode to use. 'premium' enables premium answering machine
+              # detection. 'disabled' turns off AMD detection.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode::OrSymbol
+                  )
+                )
+              end
+              attr_reader :detection_mode
+
+              sig do
+                params(
+                  detection_mode:
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode::OrSymbol
+                ).void
+              end
+              attr_writer :detection_mode
+
+              # Action to take when voicemail is detected on the invited call.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected
+                  )
+                )
+              end
+              attr_reader :on_voicemail_detected
+
+              sig do
+                params(
+                  on_voicemail_detected:
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::OrHash
+                ).void
+              end
+              attr_writer :on_voicemail_detected
+
+              # Configuration for voicemail detection (AMD - Answering Machine Detection) on the
+              # invited call.
+              sig do
+                params(
+                  detection_mode:
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode::OrSymbol,
+                  on_voicemail_detected:
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::OrHash
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The AMD detection mode to use. 'premium' enables premium answering machine
+                # detection. 'disabled' turns off AMD detection.
+                detection_mode: nil,
+                # Action to take when voicemail is detected on the invited call.
+                on_voicemail_detected: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    detection_mode:
+                      Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode::OrSymbol,
+                    on_voicemail_detected:
+                      Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The AMD detection mode to use. 'premium' enables premium answering machine
+              # detection. 'disabled' turns off AMD detection.
+              module DetectionMode
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                DISABLED =
+                  T.let(
+                    :disabled,
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode::TaggedSymbol
+                  )
+                PREMIUM =
+                  T.let(
+                    :premium,
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              class OnVoicemailDetected < Telnyx::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected,
+                      Telnyx::Internal::AnyHash
+                    )
+                  end
+
+                # The action to take when voicemail is detected.
+                sig do
+                  returns(
+                    T.nilable(
+                      Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::Action::OrSymbol
+                    )
+                  )
+                end
+                attr_reader :action
+
+                sig do
+                  params(
+                    action:
+                      Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::Action::OrSymbol
+                  ).void
+                end
+                attr_writer :action
+
+                # Action to take when voicemail is detected on the invited call.
+                sig do
+                  params(
+                    action:
+                      Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::Action::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # The action to take when voicemail is detected.
+                  action: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      action:
+                        Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::Action::OrSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                # The action to take when voicemail is detected.
+                module Action
+                  extend Telnyx::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::Action
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  STOP_INVITE =
+                    T.let(
+                      :stop_invite,
+                      Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::Action::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::Action::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
                   end
                 end
               end
