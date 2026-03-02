@@ -209,36 +209,6 @@ module Telnyx
               :"porting_order.deleted",
               Telnyx::Porting::PortingEventDeletedPayload::EventType::TaggedSymbol
             )
-          PORTING_ORDER_LOA_UPDATED =
-            T.let(
-              :"porting_order.loa_updated",
-              Telnyx::Porting::PortingEventDeletedPayload::EventType::TaggedSymbol
-            )
-          PORTING_ORDER_MESSAGING_CHANGED =
-            T.let(
-              :"porting_order.messaging_changed",
-              Telnyx::Porting::PortingEventDeletedPayload::EventType::TaggedSymbol
-            )
-          PORTING_ORDER_STATUS_CHANGED =
-            T.let(
-              :"porting_order.status_changed",
-              Telnyx::Porting::PortingEventDeletedPayload::EventType::TaggedSymbol
-            )
-          PORTING_ORDER_SHARING_TOKEN_EXPIRED =
-            T.let(
-              :"porting_order.sharing_token_expired",
-              Telnyx::Porting::PortingEventDeletedPayload::EventType::TaggedSymbol
-            )
-          PORTING_ORDER_NEW_COMMENT =
-            T.let(
-              :"porting_order.new_comment",
-              Telnyx::Porting::PortingEventDeletedPayload::EventType::TaggedSymbol
-            )
-          PORTING_ORDER_SPLIT =
-            T.let(
-              :"porting_order.split",
-              Telnyx::Porting::PortingEventDeletedPayload::EventType::TaggedSymbol
-            )
 
           sig do
             override.returns(

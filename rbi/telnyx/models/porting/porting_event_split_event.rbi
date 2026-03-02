@@ -232,36 +232,6 @@ module Telnyx
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          PORTING_ORDER_DELETED =
-            T.let(
-              :"porting_order.deleted",
-              Telnyx::Porting::PortingEventSplitEvent::EventType::TaggedSymbol
-            )
-          PORTING_ORDER_LOA_UPDATED =
-            T.let(
-              :"porting_order.loa_updated",
-              Telnyx::Porting::PortingEventSplitEvent::EventType::TaggedSymbol
-            )
-          PORTING_ORDER_MESSAGING_CHANGED =
-            T.let(
-              :"porting_order.messaging_changed",
-              Telnyx::Porting::PortingEventSplitEvent::EventType::TaggedSymbol
-            )
-          PORTING_ORDER_STATUS_CHANGED =
-            T.let(
-              :"porting_order.status_changed",
-              Telnyx::Porting::PortingEventSplitEvent::EventType::TaggedSymbol
-            )
-          PORTING_ORDER_SHARING_TOKEN_EXPIRED =
-            T.let(
-              :"porting_order.sharing_token_expired",
-              Telnyx::Porting::PortingEventSplitEvent::EventType::TaggedSymbol
-            )
-          PORTING_ORDER_NEW_COMMENT =
-            T.let(
-              :"porting_order.new_comment",
-              Telnyx::Porting::PortingEventSplitEvent::EventType::TaggedSymbol
-            )
           PORTING_ORDER_SPLIT =
             T.let(
               :"porting_order.split",
