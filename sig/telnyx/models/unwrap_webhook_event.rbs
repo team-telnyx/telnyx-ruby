@@ -1,8 +1,8 @@
 module Telnyx
   module Models
     type unwrap_webhook_event =
-      Telnyx::CallAIGatherEndedWebhookEvent
-      | Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent
+      Telnyx::CallAIGatherEnded
+      | Telnyx::CallAIGatherMessageHistoryUpdated
       | Telnyx::CallAIGatherPartialResultsWebhookEvent
       | Telnyx::CallAnsweredWebhookEvent
       | Telnyx::CallBridgedWebhookEvent

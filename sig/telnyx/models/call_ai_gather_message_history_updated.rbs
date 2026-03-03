@@ -1,184 +1,201 @@
 module Telnyx
   module Models
     type call_ai_gather_message_history_updated =
-      {
-        id: String,
-        event_type: Telnyx::Models::CallAIGatherMessageHistoryUpdated::event_type,
-        occurred_at: Time,
-        payload: Telnyx::CallAIGatherMessageHistoryUpdated::Payload,
-        record_type: Telnyx::Models::CallAIGatherMessageHistoryUpdated::record_type
-      }
+      { data: Telnyx::CallAIGatherMessageHistoryUpdated::Data }
 
     class CallAIGatherMessageHistoryUpdated < Telnyx::Internal::Type::BaseModel
-      attr_reader id: String?
+      attr_reader data: Telnyx::CallAIGatherMessageHistoryUpdated::Data?
 
-      def id=: (String) -> String
-
-      attr_reader event_type: Telnyx::Models::CallAIGatherMessageHistoryUpdated::event_type?
-
-      def event_type=: (
-        Telnyx::Models::CallAIGatherMessageHistoryUpdated::event_type
-      ) -> Telnyx::Models::CallAIGatherMessageHistoryUpdated::event_type
-
-      attr_reader occurred_at: Time?
-
-      def occurred_at=: (Time) -> Time
-
-      attr_reader payload: Telnyx::CallAIGatherMessageHistoryUpdated::Payload?
-
-      def payload=: (
-        Telnyx::CallAIGatherMessageHistoryUpdated::Payload
-      ) -> Telnyx::CallAIGatherMessageHistoryUpdated::Payload
-
-      attr_reader record_type: Telnyx::Models::CallAIGatherMessageHistoryUpdated::record_type?
-
-      def record_type=: (
-        Telnyx::Models::CallAIGatherMessageHistoryUpdated::record_type
-      ) -> Telnyx::Models::CallAIGatherMessageHistoryUpdated::record_type
+      def data=: (
+        Telnyx::CallAIGatherMessageHistoryUpdated::Data
+      ) -> Telnyx::CallAIGatherMessageHistoryUpdated::Data
 
       def initialize: (
-        ?id: String,
-        ?event_type: Telnyx::Models::CallAIGatherMessageHistoryUpdated::event_type,
-        ?occurred_at: Time,
-        ?payload: Telnyx::CallAIGatherMessageHistoryUpdated::Payload,
-        ?record_type: Telnyx::Models::CallAIGatherMessageHistoryUpdated::record_type
+        ?data: Telnyx::CallAIGatherMessageHistoryUpdated::Data
       ) -> void
 
-      def to_hash: -> {
-        id: String,
-        event_type: Telnyx::Models::CallAIGatherMessageHistoryUpdated::event_type,
-        occurred_at: Time,
-        payload: Telnyx::CallAIGatherMessageHistoryUpdated::Payload,
-        record_type: Telnyx::Models::CallAIGatherMessageHistoryUpdated::record_type
-      }
+      def to_hash: -> { data: Telnyx::CallAIGatherMessageHistoryUpdated::Data }
 
-      type event_type = :"call.ai_gather.message_history_updated"
-
-      module EventType
-        extend Telnyx::Internal::Type::Enum
-
-        CALL_AI_GATHER_MESSAGE_HISTORY_UPDATED: :"call.ai_gather.message_history_updated"
-
-        def self?.values: -> ::Array[Telnyx::Models::CallAIGatherMessageHistoryUpdated::event_type]
-      end
-
-      type payload =
+      type data =
         {
-          call_control_id: String,
-          call_leg_id: String,
-          call_session_id: String,
-          client_state: String,
-          connection_id: String,
-          from: String,
-          message_history: ::Array[Telnyx::CallAIGatherMessageHistoryUpdated::Payload::MessageHistory],
-          to: String
+          id: String,
+          event_type: Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::CallAIGatherMessageHistoryUpdated::Data::Payload,
+          record_type: Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::record_type
         }
 
-      class Payload < Telnyx::Internal::Type::BaseModel
-        attr_reader call_control_id: String?
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
 
-        def call_control_id=: (String) -> String
+        def id=: (String) -> String
 
-        attr_reader call_leg_id: String?
+        attr_reader event_type: Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::event_type?
 
-        def call_leg_id=: (String) -> String
+        def event_type=: (
+          Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::event_type
+        ) -> Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::event_type
 
-        attr_reader call_session_id: String?
+        attr_reader occurred_at: Time?
 
-        def call_session_id=: (String) -> String
+        def occurred_at=: (Time) -> Time
 
-        attr_reader client_state: String?
+        attr_reader payload: Telnyx::CallAIGatherMessageHistoryUpdated::Data::Payload?
 
-        def client_state=: (String) -> String
+        def payload=: (
+          Telnyx::CallAIGatherMessageHistoryUpdated::Data::Payload
+        ) -> Telnyx::CallAIGatherMessageHistoryUpdated::Data::Payload
 
-        attr_reader connection_id: String?
+        attr_reader record_type: Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::record_type?
 
-        def connection_id=: (String) -> String
-
-        attr_reader from: String?
-
-        def from=: (String) -> String
-
-        attr_reader message_history: ::Array[Telnyx::CallAIGatherMessageHistoryUpdated::Payload::MessageHistory]?
-
-        def message_history=: (
-          ::Array[Telnyx::CallAIGatherMessageHistoryUpdated::Payload::MessageHistory]
-        ) -> ::Array[Telnyx::CallAIGatherMessageHistoryUpdated::Payload::MessageHistory]
-
-        attr_reader to: String?
-
-        def to=: (String) -> String
+        def record_type=: (
+          Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::record_type
+        ) -> Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::record_type
 
         def initialize: (
-          ?call_control_id: String,
-          ?call_leg_id: String,
-          ?call_session_id: String,
-          ?client_state: String,
-          ?connection_id: String,
-          ?from: String,
-          ?message_history: ::Array[Telnyx::CallAIGatherMessageHistoryUpdated::Payload::MessageHistory],
-          ?to: String
+          ?id: String,
+          ?event_type: Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::event_type,
+          ?occurred_at: Time,
+          ?payload: Telnyx::CallAIGatherMessageHistoryUpdated::Data::Payload,
+          ?record_type: Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::record_type
         ) -> void
 
         def to_hash: -> {
-          call_control_id: String,
-          call_leg_id: String,
-          call_session_id: String,
-          client_state: String,
-          connection_id: String,
-          from: String,
-          message_history: ::Array[Telnyx::CallAIGatherMessageHistoryUpdated::Payload::MessageHistory],
-          to: String
+          id: String,
+          event_type: Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::CallAIGatherMessageHistoryUpdated::Data::Payload,
+          record_type: Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::record_type
         }
 
-        type message_history =
+        type event_type = :"call.ai_gather.message_history_updated"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          CALL_AI_GATHER_MESSAGE_HISTORY_UPDATED: :"call.ai_gather.message_history_updated"
+
+          def self?.values: -> ::Array[Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::event_type]
+        end
+
+        type payload =
           {
-            content: String,
-            role: Telnyx::Models::CallAIGatherMessageHistoryUpdated::Payload::MessageHistory::role
+            call_control_id: String,
+            call_leg_id: String,
+            call_session_id: String,
+            client_state: String,
+            connection_id: String,
+            from: String,
+            message_history: ::Array[Telnyx::CallAIGatherMessageHistoryUpdated::Data::Payload::MessageHistory],
+            to: String
           }
 
-        class MessageHistory < Telnyx::Internal::Type::BaseModel
-          attr_reader content: String?
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_reader call_control_id: String?
 
-          def content=: (String) -> String
+          def call_control_id=: (String) -> String
 
-          attr_reader role: Telnyx::Models::CallAIGatherMessageHistoryUpdated::Payload::MessageHistory::role?
+          attr_reader call_leg_id: String?
 
-          def role=: (
-            Telnyx::Models::CallAIGatherMessageHistoryUpdated::Payload::MessageHistory::role
-          ) -> Telnyx::Models::CallAIGatherMessageHistoryUpdated::Payload::MessageHistory::role
+          def call_leg_id=: (String) -> String
+
+          attr_reader call_session_id: String?
+
+          def call_session_id=: (String) -> String
+
+          attr_reader client_state: String?
+
+          def client_state=: (String) -> String
+
+          attr_reader connection_id: String?
+
+          def connection_id=: (String) -> String
+
+          attr_reader from: String?
+
+          def from=: (String) -> String
+
+          attr_reader message_history: ::Array[Telnyx::CallAIGatherMessageHistoryUpdated::Data::Payload::MessageHistory]?
+
+          def message_history=: (
+            ::Array[Telnyx::CallAIGatherMessageHistoryUpdated::Data::Payload::MessageHistory]
+          ) -> ::Array[Telnyx::CallAIGatherMessageHistoryUpdated::Data::Payload::MessageHistory]
+
+          attr_reader to: String?
+
+          def to=: (String) -> String
 
           def initialize: (
-            ?content: String,
-            ?role: Telnyx::Models::CallAIGatherMessageHistoryUpdated::Payload::MessageHistory::role
+            ?call_control_id: String,
+            ?call_leg_id: String,
+            ?call_session_id: String,
+            ?client_state: String,
+            ?connection_id: String,
+            ?from: String,
+            ?message_history: ::Array[Telnyx::CallAIGatherMessageHistoryUpdated::Data::Payload::MessageHistory],
+            ?to: String
           ) -> void
 
           def to_hash: -> {
-            content: String,
-            role: Telnyx::Models::CallAIGatherMessageHistoryUpdated::Payload::MessageHistory::role
+            call_control_id: String,
+            call_leg_id: String,
+            call_session_id: String,
+            client_state: String,
+            connection_id: String,
+            from: String,
+            message_history: ::Array[Telnyx::CallAIGatherMessageHistoryUpdated::Data::Payload::MessageHistory],
+            to: String
           }
 
-          type role = :assistant | :user
+          type message_history =
+            {
+              content: String,
+              role: Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::Payload::MessageHistory::role
+            }
 
-          module Role
-            extend Telnyx::Internal::Type::Enum
+          class MessageHistory < Telnyx::Internal::Type::BaseModel
+            attr_reader content: String?
 
-            ASSISTANT: :assistant
-            USER: :user
+            def content=: (String) -> String
 
-            def self?.values: -> ::Array[Telnyx::Models::CallAIGatherMessageHistoryUpdated::Payload::MessageHistory::role]
+            attr_reader role: Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::Payload::MessageHistory::role?
+
+            def role=: (
+              Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::Payload::MessageHistory::role
+            ) -> Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::Payload::MessageHistory::role
+
+            def initialize: (
+              ?content: String,
+              ?role: Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::Payload::MessageHistory::role
+            ) -> void
+
+            def to_hash: -> {
+              content: String,
+              role: Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::Payload::MessageHistory::role
+            }
+
+            type role = :assistant | :user
+
+            module Role
+              extend Telnyx::Internal::Type::Enum
+
+              ASSISTANT: :assistant
+              USER: :user
+
+              def self?.values: -> ::Array[Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::Payload::MessageHistory::role]
+            end
           end
         end
-      end
 
-      type record_type = :event
+        type record_type = :event
 
-      module RecordType
-        extend Telnyx::Internal::Type::Enum
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
 
-        EVENT: :event
+          EVENT: :event
 
-        def self?.values: -> ::Array[Telnyx::Models::CallAIGatherMessageHistoryUpdated::record_type]
+          def self?.values: -> ::Array[Telnyx::Models::CallAIGatherMessageHistoryUpdated::Data::record_type]
+        end
       end
     end
   end

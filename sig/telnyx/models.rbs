@@ -113,11 +113,7 @@ module Telnyx
 
   class CallAIGatherEnded = Telnyx::Models::CallAIGatherEnded
 
-  class CallAIGatherEndedWebhookEvent = Telnyx::Models::CallAIGatherEndedWebhookEvent
-
   class CallAIGatherMessageHistoryUpdated = Telnyx::Models::CallAIGatherMessageHistoryUpdated
-
-  class CallAIGatherMessageHistoryUpdatedWebhookEvent = Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent
 
   class CallAIGatherPartialResults = Telnyx::Models::CallAIGatherPartialResults
 
