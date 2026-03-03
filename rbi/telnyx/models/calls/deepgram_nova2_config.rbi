@@ -122,9 +122,9 @@ module Telnyx
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          DEEPGRAM =
+          DEEPGRAM_NOVA_2 =
             T.let(
-              :Deepgram,
+              :"deepgram/nova-2",
               Telnyx::Calls::DeepgramNova2Config::TranscriptionEngine::TaggedSymbol
             )
 

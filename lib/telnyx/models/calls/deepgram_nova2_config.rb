@@ -62,7 +62,7 @@ module Telnyx
         module TranscriptionEngine
           extend Telnyx::Internal::Type::Enum
 
-          DEEPGRAM = :Deepgram
+          DEEPGRAM_NOVA_2 = :"deepgram/nova-2"
 
           # @!method self.values
           #   @return [Array<Symbol>]

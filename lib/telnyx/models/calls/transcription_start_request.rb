@@ -87,9 +87,9 @@ module Telnyx
 
           variant :B, -> { Telnyx::Calls::TranscriptionEngineBConfig }
 
-          variant -> { Telnyx::Calls::DeepgramNova2Config }
+          variant :"deepgram/nova-2", -> { Telnyx::Calls::DeepgramNova2Config }
 
-          variant -> { Telnyx::Calls::DeepgramNova3Config }
+          variant :"deepgram/nova-3", -> { Telnyx::Calls::DeepgramNova3Config }
 
           # @!method self.variants
           #   @return [Array(Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config)]
