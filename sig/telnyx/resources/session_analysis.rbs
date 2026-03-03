@@ -1,0 +1,19 @@
+module Telnyx
+  module Resources
+    class SessionAnalysis
+      attr_reader metadata: Telnyx::Resources::SessionAnalysis::Metadata
+
+      def retrieve: (
+        String event_id,
+        record_type: String,
+        ?date_time: Time,
+        ?expand: Telnyx::Models::SessionAnalysisRetrieveParams::expand,
+        ?include_children: bool,
+        ?max_depth: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SessionAnalysisRetrieveResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end
