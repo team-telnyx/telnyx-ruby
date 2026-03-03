@@ -620,6 +620,10 @@ module Telnyx
     # @return [Telnyx::Resources::MessagingProfileMetrics]
     attr_reader :messaging_profile_metrics
 
+    # Analyze voice AI sessions, costs, and event hierarchies across Telnyx products.
+    # @return [Telnyx::Resources::SessionAnalysis]
+    attr_reader :session_analysis
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -868,6 +872,7 @@ module Telnyx
       @organizations = Telnyx::Resources::Organizations.new(client: self)
       @alphanumeric_sender_ids = Telnyx::Resources::AlphanumericSenderIDs.new(client: self)
       @messaging_profile_metrics = Telnyx::Resources::MessagingProfileMetrics.new(client: self)
+      @session_analysis = Telnyx::Resources::SessionAnalysis.new(client: self)
     end
   end
 end

@@ -1500,6 +1500,10 @@ module Telnyx
 
   ServicePlan = Telnyx::Models::ServicePlan
 
+  SessionAnalysis = Telnyx::Models::SessionAnalysis
+
+  SessionAnalysisRetrieveParams = Telnyx::Models::SessionAnalysisRetrieveParams
+
   SetiRetrieveBlackBoxTestResultsParams =
     Telnyx::Models::SetiRetrieveBlackBoxTestResultsParams
 

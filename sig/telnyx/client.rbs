@@ -322,6 +322,8 @@ module Telnyx
 
     attr_reader messaging_profile_metrics: Telnyx::Resources::MessagingProfileMetrics
 
+    attr_reader session_analysis: Telnyx::Resources::SessionAnalysis
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]

@@ -1,0 +1,270 @@
+module Telnyx
+  module Models
+    module SessionAnalysis
+      type metadata_retrieve_response =
+        {
+          meta: Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::Meta,
+          query_parameters: ::Hash[Symbol, Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::QueryParameter],
+          record_types: ::Array[Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType]
+        }
+
+      class MetadataRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor meta: Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::Meta
+
+        attr_accessor query_parameters: ::Hash[Symbol, Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::QueryParameter]
+
+        attr_accessor record_types: ::Array[Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType]
+
+        def initialize: (
+          meta: Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::Meta,
+          query_parameters: ::Hash[Symbol, Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::QueryParameter],
+          record_types: ::Array[Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType]
+        ) -> void
+
+        def to_hash: -> {
+          meta: Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::Meta,
+          query_parameters: ::Hash[Symbol, Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::QueryParameter],
+          record_types: ::Array[Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType]
+        }
+
+        type meta = { last_updated: Time, total_record_types: Integer }
+
+        class Meta < Telnyx::Internal::Type::BaseModel
+          attr_accessor last_updated: Time
+
+          attr_accessor total_record_types: Integer
+
+          def initialize: (
+            last_updated: Time,
+            total_record_types: Integer
+          ) -> void
+
+          def to_hash: -> { last_updated: Time, total_record_types: Integer }
+        end
+
+        type query_parameter =
+          {
+            default: String,
+            description: String,
+            type: String,
+            enum_values: ::Array[String]?,
+            max: Integer?,
+            min: Integer?
+          }
+
+        class QueryParameter < Telnyx::Internal::Type::BaseModel
+          attr_accessor default: String
+
+          attr_accessor description: String
+
+          attr_accessor type: String
+
+          attr_accessor enum_values: ::Array[String]?
+
+          attr_accessor max: Integer?
+
+          attr_accessor min: Integer?
+
+          def initialize: (
+            default: String,
+            description: String,
+            type: String,
+            ?enum_values: ::Array[String]?,
+            ?max: Integer?,
+            ?min: Integer?
+          ) -> void
+
+          def to_hash: -> {
+            default: String,
+            description: String,
+            type: String,
+            enum_values: ::Array[String]?,
+            max: Integer?,
+            min: Integer?
+          }
+        end
+
+        type record_type =
+          {
+            aliases: ::Array[String],
+            child_relationships: ::Array[Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship],
+            description: String,
+            event: String,
+            parent_relationships: ::Array[Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship],
+            product: String,
+            record_type: String
+          }
+
+        class RecordType < Telnyx::Internal::Type::BaseModel
+          attr_accessor aliases: ::Array[String]
+
+          attr_accessor child_relationships: ::Array[Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship]
+
+          attr_accessor description: String
+
+          attr_accessor event: String
+
+          attr_accessor parent_relationships: ::Array[Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship]
+
+          attr_accessor product: String
+
+          attr_accessor record_type: String
+
+          def initialize: (
+            aliases: ::Array[String],
+            child_relationships: ::Array[Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship],
+            description: String,
+            event: String,
+            parent_relationships: ::Array[Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship],
+            product: String,
+            record_type: String
+          ) -> void
+
+          def to_hash: -> {
+            aliases: ::Array[String],
+            child_relationships: ::Array[Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship],
+            description: String,
+            event: String,
+            parent_relationships: ::Array[Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship],
+            product: String,
+            record_type: String
+          }
+
+          type child_relationship =
+            {
+              child_event: String,
+              child_product: String,
+              child_record_type: String,
+              cost_rollup: bool,
+              description: String,
+              relationship_type: String,
+              traversal_enabled: bool,
+              via: Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship::Via
+            }
+
+          class ChildRelationship < Telnyx::Internal::Type::BaseModel
+            attr_accessor child_event: String
+
+            attr_accessor child_product: String
+
+            attr_accessor child_record_type: String
+
+            attr_accessor cost_rollup: bool
+
+            attr_accessor description: String
+
+            attr_accessor relationship_type: String
+
+            attr_accessor traversal_enabled: bool
+
+            attr_accessor via: Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship::Via
+
+            def initialize: (
+              child_event: String,
+              child_product: String,
+              child_record_type: String,
+              cost_rollup: bool,
+              description: String,
+              relationship_type: String,
+              traversal_enabled: bool,
+              via: Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship::Via
+            ) -> void
+
+            def to_hash: -> {
+              child_event: String,
+              child_product: String,
+              child_record_type: String,
+              cost_rollup: bool,
+              description: String,
+              relationship_type: String,
+              traversal_enabled: bool,
+              via: Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship::Via
+            }
+
+            type via = { local_field: String, parent_field: String }
+
+            class Via < Telnyx::Internal::Type::BaseModel
+              attr_accessor local_field: String
+
+              attr_accessor parent_field: String
+
+              def initialize: (
+                local_field: String,
+                parent_field: String
+              ) -> void
+
+              def to_hash: -> { local_field: String, parent_field: String }
+            end
+          end
+
+          type parent_relationship =
+            {
+              cost_rollup: bool,
+              description: String,
+              parent_event: String,
+              parent_product: String,
+              parent_record_type: String,
+              relationship_type: String,
+              traversal_enabled: bool,
+              via: Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship::Via
+            }
+
+          class ParentRelationship < Telnyx::Internal::Type::BaseModel
+            attr_accessor cost_rollup: bool
+
+            attr_accessor description: String
+
+            attr_accessor parent_event: String
+
+            attr_accessor parent_product: String
+
+            attr_accessor parent_record_type: String
+
+            attr_accessor relationship_type: String
+
+            attr_accessor traversal_enabled: bool
+
+            attr_accessor via: Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship::Via
+
+            def initialize: (
+              cost_rollup: bool,
+              description: String,
+              parent_event: String,
+              parent_product: String,
+              parent_record_type: String,
+              relationship_type: String,
+              traversal_enabled: bool,
+              via: Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship::Via
+            ) -> void
+
+            def to_hash: -> {
+              cost_rollup: bool,
+              description: String,
+              parent_event: String,
+              parent_product: String,
+              parent_record_type: String,
+              relationship_type: String,
+              traversal_enabled: bool,
+              via: Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship::Via
+            }
+
+            type via = { local_field: String, parent_field: String }
+
+            class Via < Telnyx::Internal::Type::BaseModel
+              attr_accessor local_field: String
+
+              attr_accessor parent_field: String
+
+              def initialize: (
+                local_field: String,
+                parent_field: String
+              ) -> void
+
+              def to_hash: -> { local_field: String, parent_field: String }
+            end
+          end
+        end
+      end
+    end
+  end
+end

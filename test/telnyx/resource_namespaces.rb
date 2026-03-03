@@ -231,6 +231,9 @@ module Telnyx
       module Runs
       end
 
+      module SessionAnalysis
+      end
+
       module Sessions
       end
 

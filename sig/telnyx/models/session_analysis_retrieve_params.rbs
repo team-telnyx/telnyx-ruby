@@ -1,0 +1,67 @@
+module Telnyx
+  module Models
+    type session_analysis_retrieve_params =
+      {
+        record_type: String,
+        date_time: Time,
+        expand: Telnyx::Models::SessionAnalysisRetrieveParams::expand,
+        include_children: bool,
+        max_depth: Integer
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class SessionAnalysisRetrieveParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor record_type: String
+
+      attr_reader date_time: Time?
+
+      def date_time=: (Time) -> Time
+
+      attr_reader expand: Telnyx::Models::SessionAnalysisRetrieveParams::expand?
+
+      def expand=: (
+        Telnyx::Models::SessionAnalysisRetrieveParams::expand
+      ) -> Telnyx::Models::SessionAnalysisRetrieveParams::expand
+
+      attr_reader include_children: bool?
+
+      def include_children=: (bool) -> bool
+
+      attr_reader max_depth: Integer?
+
+      def max_depth=: (Integer) -> Integer
+
+      def initialize: (
+        record_type: String,
+        ?date_time: Time,
+        ?expand: Telnyx::Models::SessionAnalysisRetrieveParams::expand,
+        ?include_children: bool,
+        ?max_depth: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        record_type: String,
+        date_time: Time,
+        expand: Telnyx::Models::SessionAnalysisRetrieveParams::expand,
+        include_children: bool,
+        max_depth: Integer,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type expand = :record | :none
+
+      module Expand
+        extend Telnyx::Internal::Type::Enum
+
+        RECORD: :record
+        NONE: :none
+
+        def self?.values: -> ::Array[Telnyx::Models::SessionAnalysisRetrieveParams::expand]
+      end
+    end
+  end
+end

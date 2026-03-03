@@ -615,6 +615,10 @@ module Telnyx
     sig { returns(Telnyx::Resources::MessagingProfileMetrics) }
     attr_reader :messaging_profile_metrics
 
+    # Analyze voice AI sessions, costs, and event hierarchies across Telnyx products.
+    sig { returns(Telnyx::Resources::SessionAnalysis) }
+    attr_reader :session_analysis
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers
