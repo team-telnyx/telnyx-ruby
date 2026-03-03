@@ -1,5 +1,19 @@
 # Changelog
 
+## 5.53.0 (2026-03-03)
+
+Full Changelog: [v5.52.0...v5.53.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.52.0...v5.53.0)
+
+### Features
+
+* AI-2106: Add invite tool schema to inference OpenAPI spec ([391100d](https://github.com/team-telnyx/telnyx-ruby/commit/391100da84170317cdb5c734e10b92459b32e9c9))
+* Changing the tag for TTS endpoint ([a599955](https://github.com/team-telnyx/telnyx-ruby/commit/a59995523397299ea840246b7371a3236981666c))
+
+
+### Chores
+
+* **ci:** add build step ([1a4ac85](https://github.com/team-telnyx/telnyx-ruby/commit/1a4ac85a3e3a2527e6410f0710a5aa1a8e74342b))
+
 ## 5.52.0 (2026-03-02)
 
 Full Changelog: [v5.51.1...v5.52.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.51.1...v5.52.0)
