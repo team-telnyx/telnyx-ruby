@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::SessionAnalysisTest < Telnyx::Test::ResourceTest
         cost: Telnyx::Models::SessionAnalysisRetrieveResponse::Cost,
         created_at: Time,
         meta: Telnyx::Models::SessionAnalysisRetrieveResponse::Meta,
-        root: Telnyx::Models::SessionAnalysisRetrieveResponse::Root,
+        root: Telnyx::EventNode,
         session_id: String,
         status: String,
         completed_at: Time | nil

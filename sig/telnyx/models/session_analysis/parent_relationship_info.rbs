@@ -1,0 +1,57 @@
+module Telnyx
+  module Models
+    module SessionAnalysis
+      type parent_relationship_info =
+        {
+          cost_rollup: bool,
+          description: String,
+          parent_event: String,
+          parent_product: String,
+          parent_record_type: String,
+          relationship_type: String,
+          traversal_enabled: bool,
+          via: Telnyx::SessionAnalysis::MetadataFieldMapping
+        }
+
+      class ParentRelationshipInfo < Telnyx::Internal::Type::BaseModel
+        attr_accessor cost_rollup: bool
+
+        attr_accessor description: String
+
+        attr_accessor parent_event: String
+
+        attr_accessor parent_product: String
+
+        attr_accessor parent_record_type: String
+
+        attr_accessor relationship_type: String
+
+        attr_accessor traversal_enabled: bool
+
+        attr_accessor via: Telnyx::SessionAnalysis::MetadataFieldMapping
+
+        def initialize: (
+          cost_rollup: bool,
+          description: String,
+          parent_event: String,
+          parent_product: String,
+          parent_record_type: String,
+          relationship_type: String,
+          traversal_enabled: bool,
+          via: Telnyx::SessionAnalysis::MetadataFieldMapping
+        ) -> void
+
+        def to_hash: -> {
+          cost_rollup: bool,
+          description: String,
+          parent_event: String,
+          parent_product: String,
+          parent_record_type: String,
+          relationship_type: String,
+          traversal_enabled: bool,
+          via: Telnyx::SessionAnalysis::MetadataFieldMapping
+        }
+      end
+    end
+  end
+end

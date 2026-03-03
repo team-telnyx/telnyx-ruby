@@ -198,11 +198,7 @@ module Telnyx
           attr_accessor :aliases
 
           sig do
-            returns(
-              T::Array[
-                Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship
-              ]
-            )
+            returns(T::Array[Telnyx::SessionAnalysis::ChildRelationshipInfo])
           end
           attr_accessor :child_relationships
 
@@ -213,11 +209,7 @@ module Telnyx
           attr_accessor :event
 
           sig do
-            returns(
-              T::Array[
-                Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship
-              ]
-            )
+            returns(T::Array[Telnyx::SessionAnalysis::ParentRelationshipInfo])
           end
           attr_accessor :parent_relationships
 
@@ -232,13 +224,13 @@ module Telnyx
               aliases: T::Array[String],
               child_relationships:
                 T::Array[
-                  Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship::OrHash
+                  Telnyx::SessionAnalysis::ChildRelationshipInfo::OrHash
                 ],
               description: String,
               event: String,
               parent_relationships:
                 T::Array[
-                  Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship::OrHash
+                  Telnyx::SessionAnalysis::ParentRelationshipInfo::OrHash
                 ],
               product: String,
               record_type: String
@@ -260,259 +252,17 @@ module Telnyx
               {
                 aliases: T::Array[String],
                 child_relationships:
-                  T::Array[
-                    Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship
-                  ],
+                  T::Array[Telnyx::SessionAnalysis::ChildRelationshipInfo],
                 description: String,
                 event: String,
                 parent_relationships:
-                  T::Array[
-                    Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship
-                  ],
+                  T::Array[Telnyx::SessionAnalysis::ParentRelationshipInfo],
                 product: String,
                 record_type: String
               }
             )
           end
           def to_hash
-          end
-
-          class ChildRelationship < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            sig { returns(String) }
-            attr_accessor :child_event
-
-            sig { returns(String) }
-            attr_accessor :child_product
-
-            sig { returns(String) }
-            attr_accessor :child_record_type
-
-            sig { returns(T::Boolean) }
-            attr_accessor :cost_rollup
-
-            sig { returns(String) }
-            attr_accessor :description
-
-            sig { returns(String) }
-            attr_accessor :relationship_type
-
-            sig { returns(T::Boolean) }
-            attr_accessor :traversal_enabled
-
-            sig do
-              returns(
-                Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship::Via
-              )
-            end
-            attr_reader :via
-
-            sig do
-              params(
-                via:
-                  Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship::Via::OrHash
-              ).void
-            end
-            attr_writer :via
-
-            sig do
-              params(
-                child_event: String,
-                child_product: String,
-                child_record_type: String,
-                cost_rollup: T::Boolean,
-                description: String,
-                relationship_type: String,
-                traversal_enabled: T::Boolean,
-                via:
-                  Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship::Via::OrHash
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              child_event:,
-              child_product:,
-              child_record_type:,
-              cost_rollup:,
-              description:,
-              relationship_type:,
-              traversal_enabled:,
-              via:
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  child_event: String,
-                  child_product: String,
-                  child_record_type: String,
-                  cost_rollup: T::Boolean,
-                  description: String,
-                  relationship_type: String,
-                  traversal_enabled: T::Boolean,
-                  via:
-                    Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship::Via
-                }
-              )
-            end
-            def to_hash
-            end
-
-            class Via < Telnyx::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship::Via,
-                    Telnyx::Internal::AnyHash
-                  )
-                end
-
-              sig { returns(String) }
-              attr_accessor :local_field
-
-              sig { returns(String) }
-              attr_accessor :parent_field
-
-              sig do
-                params(local_field: String, parent_field: String).returns(
-                  T.attached_class
-                )
-              end
-              def self.new(local_field:, parent_field:)
-              end
-
-              sig do
-                override.returns({ local_field: String, parent_field: String })
-              end
-              def to_hash
-              end
-            end
-          end
-
-          class ParentRelationship < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            sig { returns(T::Boolean) }
-            attr_accessor :cost_rollup
-
-            sig { returns(String) }
-            attr_accessor :description
-
-            sig { returns(String) }
-            attr_accessor :parent_event
-
-            sig { returns(String) }
-            attr_accessor :parent_product
-
-            sig { returns(String) }
-            attr_accessor :parent_record_type
-
-            sig { returns(String) }
-            attr_accessor :relationship_type
-
-            sig { returns(T::Boolean) }
-            attr_accessor :traversal_enabled
-
-            sig do
-              returns(
-                Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship::Via
-              )
-            end
-            attr_reader :via
-
-            sig do
-              params(
-                via:
-                  Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship::Via::OrHash
-              ).void
-            end
-            attr_writer :via
-
-            sig do
-              params(
-                cost_rollup: T::Boolean,
-                description: String,
-                parent_event: String,
-                parent_product: String,
-                parent_record_type: String,
-                relationship_type: String,
-                traversal_enabled: T::Boolean,
-                via:
-                  Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship::Via::OrHash
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              cost_rollup:,
-              description:,
-              parent_event:,
-              parent_product:,
-              parent_record_type:,
-              relationship_type:,
-              traversal_enabled:,
-              via:
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  cost_rollup: T::Boolean,
-                  description: String,
-                  parent_event: String,
-                  parent_product: String,
-                  parent_record_type: String,
-                  relationship_type: String,
-                  traversal_enabled: T::Boolean,
-                  via:
-                    Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship::Via
-                }
-              )
-            end
-            def to_hash
-            end
-
-            class Via < Telnyx::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship::Via,
-                    Telnyx::Internal::AnyHash
-                  )
-                end
-
-              sig { returns(String) }
-              attr_accessor :local_field
-
-              sig { returns(String) }
-              attr_accessor :parent_field
-
-              sig do
-                params(local_field: String, parent_field: String).returns(
-                  T.attached_class
-                )
-              end
-              def self.new(local_field:, parent_field:)
-              end
-
-              sig do
-                override.returns({ local_field: String, parent_field: String })
-              end
-              def to_hash
-              end
-            end
           end
         end
       end

@@ -33,11 +33,11 @@ class Telnyx::Test::Resources::SessionAnalysis::MetadataTest < Telnyx::Test::Res
     assert_pattern do
       response => {
         aliases: ^(Telnyx::Internal::Type::ArrayOf[String]),
-        child_relationships: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::SessionAnalysis::MetadataRetrieveRecordTypeResponse::ChildRelationship]),
+        child_relationships: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::SessionAnalysis::ChildRelationshipInfo]),
         event: String,
         examples: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]),
         meta: Telnyx::Models::SessionAnalysis::MetadataRetrieveRecordTypeResponse::Meta,
-        parent_relationships: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::SessionAnalysis::MetadataRetrieveRecordTypeResponse::ParentRelationship]),
+        parent_relationships: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::SessionAnalysis::ParentRelationshipInfo]),
         product: String,
         record_type: String
       }

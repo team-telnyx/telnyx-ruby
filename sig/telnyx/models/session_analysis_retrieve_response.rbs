@@ -5,7 +5,7 @@ module Telnyx
         cost: Telnyx::Models::SessionAnalysisRetrieveResponse::Cost,
         created_at: Time,
         meta: Telnyx::Models::SessionAnalysisRetrieveResponse::Meta,
-        root: Telnyx::Models::SessionAnalysisRetrieveResponse::Root,
+        root: Telnyx::EventNode,
         session_id: String,
         status: String,
         completed_at: Time?
@@ -18,7 +18,7 @@ module Telnyx
 
       attr_accessor meta: Telnyx::Models::SessionAnalysisRetrieveResponse::Meta
 
-      attr_accessor root: Telnyx::Models::SessionAnalysisRetrieveResponse::Root
+      attr_accessor root: Telnyx::EventNode
 
       attr_accessor session_id: String
 
@@ -30,7 +30,7 @@ module Telnyx
         cost: Telnyx::Models::SessionAnalysisRetrieveResponse::Cost,
         created_at: Time,
         meta: Telnyx::Models::SessionAnalysisRetrieveResponse::Meta,
-        root: Telnyx::Models::SessionAnalysisRetrieveResponse::Root,
+        root: Telnyx::EventNode,
         session_id: String,
         status: String,
         ?completed_at: Time?
@@ -40,7 +40,7 @@ module Telnyx
         cost: Telnyx::Models::SessionAnalysisRetrieveResponse::Cost,
         created_at: Time,
         meta: Telnyx::Models::SessionAnalysisRetrieveResponse::Meta,
-        root: Telnyx::Models::SessionAnalysisRetrieveResponse::Root,
+        root: Telnyx::EventNode,
         session_id: String,
         status: String,
         completed_at: Time?
@@ -71,132 +71,6 @@ module Telnyx
         ) -> void
 
         def to_hash: -> { event_count: Integer, products: ::Array[String] }
-      end
-
-      type root =
-        {
-          id: String,
-          children: ::Array[top],
-          cost: Telnyx::Models::SessionAnalysisRetrieveResponse::Root::Cost,
-          event_name: String,
-          links: Telnyx::Models::SessionAnalysisRetrieveResponse::Root::Links,
-          product: String,
-          record: ::Hash[Symbol, top],
-          relationship: Telnyx::Models::SessionAnalysisRetrieveResponse::Root::Relationship?
-        }
-
-      class Root < Telnyx::Internal::Type::BaseModel
-        attr_accessor id: String
-
-        attr_accessor children: ::Array[top]
-
-        attr_accessor cost: Telnyx::Models::SessionAnalysisRetrieveResponse::Root::Cost
-
-        attr_accessor event_name: String
-
-        attr_accessor links: Telnyx::Models::SessionAnalysisRetrieveResponse::Root::Links
-
-        attr_accessor product: String
-
-        attr_accessor record: ::Hash[Symbol, top]
-
-        attr_accessor relationship: Telnyx::Models::SessionAnalysisRetrieveResponse::Root::Relationship?
-
-        def initialize: (
-          id: String,
-          children: ::Array[top],
-          cost: Telnyx::Models::SessionAnalysisRetrieveResponse::Root::Cost,
-          event_name: String,
-          links: Telnyx::Models::SessionAnalysisRetrieveResponse::Root::Links,
-          product: String,
-          record: ::Hash[Symbol, top],
-          ?relationship: Telnyx::Models::SessionAnalysisRetrieveResponse::Root::Relationship?
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          children: ::Array[top],
-          cost: Telnyx::Models::SessionAnalysisRetrieveResponse::Root::Cost,
-          event_name: String,
-          links: Telnyx::Models::SessionAnalysisRetrieveResponse::Root::Links,
-          product: String,
-          record: ::Hash[Symbol, top],
-          relationship: Telnyx::Models::SessionAnalysisRetrieveResponse::Root::Relationship?
-        }
-
-        type cost =
-          { cumulative_cost: String, currency: String, event_cost: String }
-
-        class Cost < Telnyx::Internal::Type::BaseModel
-          attr_accessor cumulative_cost: String
-
-          attr_accessor currency: String
-
-          attr_accessor event_cost: String
-
-          def initialize: (
-            cumulative_cost: String,
-            currency: String,
-            event_cost: String
-          ) -> void
-
-          def to_hash: -> {
-            cumulative_cost: String,
-            currency: String,
-            event_cost: String
-          }
-        end
-
-        type links = { records: String, self_: String }
-
-        class Links < Telnyx::Internal::Type::BaseModel
-          attr_accessor records: String
-
-          attr_accessor self_: String
-
-          def initialize: (records: String, self_: String) -> void
-
-          def to_hash: -> { records: String, self_: String }
-        end
-
-        type relationship =
-          {
-            parent_id: String,
-            type: String,
-            via: Telnyx::Models::SessionAnalysisRetrieveResponse::Root::Relationship::Via
-          }
-
-        class Relationship < Telnyx::Internal::Type::BaseModel
-          attr_accessor parent_id: String
-
-          attr_accessor type: String
-
-          attr_accessor via: Telnyx::Models::SessionAnalysisRetrieveResponse::Root::Relationship::Via
-
-          def initialize: (
-            parent_id: String,
-            type: String,
-            via: Telnyx::Models::SessionAnalysisRetrieveResponse::Root::Relationship::Via
-          ) -> void
-
-          def to_hash: -> {
-            parent_id: String,
-            type: String,
-            via: Telnyx::Models::SessionAnalysisRetrieveResponse::Root::Relationship::Via
-          }
-
-          type via = { local_field: String, parent_field: String }
-
-          class Via < Telnyx::Internal::Type::BaseModel
-            attr_accessor local_field: String
-
-            attr_accessor parent_field: String
-
-            def initialize: (local_field: String, parent_field: String) -> void
-
-            def to_hash: -> { local_field: String, parent_field: String }
-          end
-        end
       end
     end
   end

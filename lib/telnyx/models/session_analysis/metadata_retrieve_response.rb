@@ -95,9 +95,9 @@ module Telnyx
 
           # @!attribute child_relationships
           #
-          #   @return [Array<Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship>]
+          #   @return [Array<Telnyx::Models::SessionAnalysis::ChildRelationshipInfo>]
           required :child_relationships,
-                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship] }
+                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::SessionAnalysis::ChildRelationshipInfo] }
 
           # @!attribute description
           #
@@ -111,9 +111,9 @@ module Telnyx
 
           # @!attribute parent_relationships
           #
-          #   @return [Array<Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship>]
+          #   @return [Array<Telnyx::Models::SessionAnalysis::ParentRelationshipInfo>]
           required :parent_relationships,
-                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship] }
+                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::SessionAnalysis::ParentRelationshipInfo] }
 
           # @!attribute product
           #
@@ -127,152 +127,12 @@ module Telnyx
 
           # @!method initialize(aliases:, child_relationships:, description:, event:, parent_relationships:, product:, record_type:)
           #   @param aliases [Array<String>]
-          #   @param child_relationships [Array<Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship>]
+          #   @param child_relationships [Array<Telnyx::Models::SessionAnalysis::ChildRelationshipInfo>]
           #   @param description [String]
           #   @param event [String]
-          #   @param parent_relationships [Array<Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship>]
+          #   @param parent_relationships [Array<Telnyx::Models::SessionAnalysis::ParentRelationshipInfo>]
           #   @param product [String]
           #   @param record_type [String]
-
-          class ChildRelationship < Telnyx::Internal::Type::BaseModel
-            # @!attribute child_event
-            #
-            #   @return [String]
-            required :child_event, String
-
-            # @!attribute child_product
-            #
-            #   @return [String]
-            required :child_product, String
-
-            # @!attribute child_record_type
-            #
-            #   @return [String]
-            required :child_record_type, String
-
-            # @!attribute cost_rollup
-            #
-            #   @return [Boolean]
-            required :cost_rollup, Telnyx::Internal::Type::Boolean
-
-            # @!attribute description
-            #
-            #   @return [String]
-            required :description, String
-
-            # @!attribute relationship_type
-            #
-            #   @return [String]
-            required :relationship_type, String
-
-            # @!attribute traversal_enabled
-            #
-            #   @return [Boolean]
-            required :traversal_enabled, Telnyx::Internal::Type::Boolean
-
-            # @!attribute via
-            #
-            #   @return [Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship::Via]
-            required :via,
-                     -> { Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship::Via }
-
-            # @!method initialize(child_event:, child_product:, child_record_type:, cost_rollup:, description:, relationship_type:, traversal_enabled:, via:)
-            #   @param child_event [String]
-            #   @param child_product [String]
-            #   @param child_record_type [String]
-            #   @param cost_rollup [Boolean]
-            #   @param description [String]
-            #   @param relationship_type [String]
-            #   @param traversal_enabled [Boolean]
-            #   @param via [Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship::Via]
-
-            # @see Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ChildRelationship#via
-            class Via < Telnyx::Internal::Type::BaseModel
-              # @!attribute local_field
-              #
-              #   @return [String]
-              required :local_field, String
-
-              # @!attribute parent_field
-              #
-              #   @return [String]
-              required :parent_field, String
-
-              # @!method initialize(local_field:, parent_field:)
-              #   @param local_field [String]
-              #   @param parent_field [String]
-            end
-          end
-
-          class ParentRelationship < Telnyx::Internal::Type::BaseModel
-            # @!attribute cost_rollup
-            #
-            #   @return [Boolean]
-            required :cost_rollup, Telnyx::Internal::Type::Boolean
-
-            # @!attribute description
-            #
-            #   @return [String]
-            required :description, String
-
-            # @!attribute parent_event
-            #
-            #   @return [String]
-            required :parent_event, String
-
-            # @!attribute parent_product
-            #
-            #   @return [String]
-            required :parent_product, String
-
-            # @!attribute parent_record_type
-            #
-            #   @return [String]
-            required :parent_record_type, String
-
-            # @!attribute relationship_type
-            #
-            #   @return [String]
-            required :relationship_type, String
-
-            # @!attribute traversal_enabled
-            #
-            #   @return [Boolean]
-            required :traversal_enabled, Telnyx::Internal::Type::Boolean
-
-            # @!attribute via
-            #
-            #   @return [Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship::Via]
-            required :via,
-                     -> { Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship::Via }
-
-            # @!method initialize(cost_rollup:, description:, parent_event:, parent_product:, parent_record_type:, relationship_type:, traversal_enabled:, via:)
-            #   @param cost_rollup [Boolean]
-            #   @param description [String]
-            #   @param parent_event [String]
-            #   @param parent_product [String]
-            #   @param parent_record_type [String]
-            #   @param relationship_type [String]
-            #   @param traversal_enabled [Boolean]
-            #   @param via [Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship::Via]
-
-            # @see Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse::RecordType::ParentRelationship#via
-            class Via < Telnyx::Internal::Type::BaseModel
-              # @!attribute local_field
-              #
-              #   @return [String]
-              required :local_field, String
-
-              # @!attribute parent_field
-              #
-              #   @return [String]
-              required :parent_field, String
-
-              # @!method initialize(local_field:, parent_field:)
-              #   @param local_field [String]
-              #   @param parent_field [String]
-            end
-          end
         end
       end
     end
