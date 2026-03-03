@@ -588,6 +588,8 @@ module Telnyx
 
   EncryptedMedia = Telnyx::Models::EncryptedMedia
 
+  EventNode = Telnyx::Models::EventNode
+
   ExternalConnection = Telnyx::Models::ExternalConnection
 
   ExternalConnectionCreateParams =
