@@ -1,0 +1,119 @@
+module Telnyx
+  module Models
+    type stream_server_event =
+      Telnyx::Models::StreamServerEvent::AudioChunkFrame
+      | Telnyx::Models::StreamServerEvent::FinalFrame
+      | Telnyx::Models::StreamServerEvent::ErrorFrame
+
+    module StreamServerEvent
+      extend Telnyx::Internal::Type::Union
+
+      type audio_chunk_frame =
+        {
+          audio: String?,
+          cached: bool,
+          is_final: bool,
+          text: String?,
+          time_to_first_audio_frame_ms: Integer
+        }
+
+      class AudioChunkFrame < Telnyx::Internal::Type::BaseModel
+        attr_accessor audio: String?
+
+        attr_reader cached: bool?
+
+        def cached=: (bool) -> bool
+
+        attr_reader is_final: bool?
+
+        def is_final=: (bool) -> bool
+
+        attr_accessor text: String?
+
+        attr_reader time_to_first_audio_frame_ms: Integer?
+
+        def time_to_first_audio_frame_ms=: (Integer) -> Integer
+
+        def initialize: (
+          ?audio: String?,
+          ?cached: bool,
+          ?is_final: bool,
+          ?text: String?,
+          ?time_to_first_audio_frame_ms: Integer
+        ) -> void
+
+        def to_hash: -> {
+          audio: String?,
+          cached: bool,
+          is_final: bool,
+          text: String?,
+          time_to_first_audio_frame_ms: Integer
+        }
+      end
+
+      type final_frame =
+        {
+          audio: nil,
+          is_final: Telnyx::Models::StreamServerEvent::FinalFrame::is_final,
+          text: String,
+          time_to_first_audio_frame_ms: Integer
+        }
+
+      class FinalFrame < Telnyx::Internal::Type::BaseModel
+        attr_accessor audio: nil
+
+        attr_reader is_final: Telnyx::Models::StreamServerEvent::FinalFrame::is_final?
+
+        def is_final=: (
+          Telnyx::Models::StreamServerEvent::FinalFrame::is_final
+        ) -> Telnyx::Models::StreamServerEvent::FinalFrame::is_final
+
+        attr_reader text: String?
+
+        def text=: (String) -> String
+
+        attr_reader time_to_first_audio_frame_ms: Integer?
+
+        def time_to_first_audio_frame_ms=: (Integer) -> Integer
+
+        def initialize: (
+          ?audio: nil,
+          ?is_final: Telnyx::Models::StreamServerEvent::FinalFrame::is_final,
+          ?text: String,
+          ?time_to_first_audio_frame_ms: Integer
+        ) -> void
+
+        def to_hash: -> {
+          audio: nil,
+          is_final: Telnyx::Models::StreamServerEvent::FinalFrame::is_final,
+          text: String,
+          time_to_first_audio_frame_ms: Integer
+        }
+
+        type is_final = true
+
+        module IsFinal
+          extend Telnyx::Internal::Type::Enum
+
+          TRUE: true
+
+          def self?.values: -> ::Array[Telnyx::Models::StreamServerEvent::FinalFrame::is_final]
+        end
+      end
+
+      type error_frame = { error: String }
+
+      class ErrorFrame < Telnyx::Internal::Type::BaseModel
+        attr_reader error: String?
+
+        def error=: (String) -> String
+
+        def initialize: (?error: String) -> void
+
+        def to_hash: -> { error: String }
+      end
+
+      def self?.variants: -> ::Array[Telnyx::Models::stream_server_event]
+    end
+  end
+end

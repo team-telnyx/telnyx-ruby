@@ -1,0 +1,30 @@
+module Telnyx
+  module Models
+    type stream_client_event =
+      { text: String, force: bool, voice_settings: ::Hash[Symbol, top] }
+
+    class StreamClientEvent < Telnyx::Internal::Type::BaseModel
+      attr_accessor text: String
+
+      attr_reader force: bool?
+
+      def force=: (bool) -> bool
+
+      attr_reader voice_settings: ::Hash[Symbol, top]?
+
+      def voice_settings=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+      def initialize: (
+        text: String,
+        ?force: bool,
+        ?voice_settings: ::Hash[Symbol, top]
+      ) -> void
+
+      def to_hash: -> {
+        text: String,
+        force: bool,
+        voice_settings: ::Hash[Symbol, top]
+      }
+    end
+  end
+end
