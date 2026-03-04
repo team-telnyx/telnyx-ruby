@@ -9,17 +9,17 @@ module Telnyx
       Variants =
         T.type_alias do
           T.any(
-            Telnyx::Models::StreamServerEvent::AudioChunkFrame,
-            Telnyx::Models::StreamServerEvent::FinalFrame,
-            Telnyx::Models::StreamServerEvent::ErrorFrame
+            Telnyx::Models::StreamServerEvent::AudioChunk,
+            Telnyx::Models::StreamServerEvent::Final,
+            Telnyx::Models::StreamServerEvent::Error
           )
         end
 
-      class AudioChunkFrame < Telnyx::Internal::Type::BaseModel
+      class AudioChunk < Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Models::StreamServerEvent::AudioChunkFrame,
+              Telnyx::Models::StreamServerEvent::AudioChunk,
               Telnyx::Internal::AnyHash
             )
           end
@@ -56,6 +56,23 @@ module Telnyx
         sig { params(time_to_first_audio_frame_ms: Integer).void }
         attr_writer :time_to_first_audio_frame_ms
 
+        # Frame type identifier.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::Models::StreamServerEvent::AudioChunk::Type::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :type
+
+        sig do
+          params(
+            type: Telnyx::Models::StreamServerEvent::AudioChunk::Type::OrSymbol
+          ).void
+        end
+        attr_writer :type
+
         # Server-to-client frame containing a base64-encoded audio chunk.
         sig do
           params(
@@ -63,7 +80,8 @@ module Telnyx
             cached: T::Boolean,
             is_final: T::Boolean,
             text: T.nilable(String),
-            time_to_first_audio_frame_ms: Integer
+            time_to_first_audio_frame_ms: Integer,
+            type: Telnyx::Models::StreamServerEvent::AudioChunk::Type::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -79,7 +97,9 @@ module Telnyx
           text: nil,
           # Milliseconds from the start-of-speech request to the first audio frame. Only
           # present on the first audio chunk of a synthesis request.
-          time_to_first_audio_frame_ms: nil
+          time_to_first_audio_frame_ms: nil,
+          # Frame type identifier.
+          type: nil
         )
         end
 
@@ -90,19 +110,48 @@ module Telnyx
               cached: T::Boolean,
               is_final: T::Boolean,
               text: T.nilable(String),
-              time_to_first_audio_frame_ms: Integer
+              time_to_first_audio_frame_ms: Integer,
+              type:
+                Telnyx::Models::StreamServerEvent::AudioChunk::Type::TaggedSymbol
             }
           )
         end
         def to_hash
         end
+
+        # Frame type identifier.
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::Models::StreamServerEvent::AudioChunk::Type)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          AUDIO_CHUNK =
+            T.let(
+              :audio_chunk,
+              Telnyx::Models::StreamServerEvent::AudioChunk::Type::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Models::StreamServerEvent::AudioChunk::Type::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
       end
 
-      class FinalFrame < Telnyx::Internal::Type::BaseModel
+      class Final < Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Models::StreamServerEvent::FinalFrame,
+              Telnyx::Models::StreamServerEvent::Final,
               Telnyx::Internal::AnyHash
             )
           end
@@ -115,7 +164,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::Models::StreamServerEvent::FinalFrame::IsFinal::TaggedBoolean
+              Telnyx::Models::StreamServerEvent::Final::IsFinal::TaggedBoolean
             )
           )
         end
@@ -124,7 +173,7 @@ module Telnyx
         sig do
           params(
             is_final:
-              Telnyx::Models::StreamServerEvent::FinalFrame::IsFinal::OrBoolean
+              Telnyx::Models::StreamServerEvent::Final::IsFinal::OrBoolean
           ).void
         end
         attr_writer :is_final
@@ -143,14 +192,32 @@ module Telnyx
         sig { params(time_to_first_audio_frame_ms: Integer).void }
         attr_writer :time_to_first_audio_frame_ms
 
+        # Frame type identifier.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::Models::StreamServerEvent::Final::Type::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :type
+
+        sig do
+          params(
+            type: Telnyx::Models::StreamServerEvent::Final::Type::OrSymbol
+          ).void
+        end
+        attr_writer :type
+
         # Server-to-client frame indicating synthesis is complete for the current text.
         sig do
           params(
             audio: NilClass,
             is_final:
-              Telnyx::Models::StreamServerEvent::FinalFrame::IsFinal::OrBoolean,
+              Telnyx::Models::StreamServerEvent::Final::IsFinal::OrBoolean,
             text: String,
-            time_to_first_audio_frame_ms: Integer
+            time_to_first_audio_frame_ms: Integer,
+            type: Telnyx::Models::StreamServerEvent::Final::Type::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -161,7 +228,9 @@ module Telnyx
           # Empty string.
           text: nil,
           # Present if this was the first response frame.
-          time_to_first_audio_frame_ms: nil
+          time_to_first_audio_frame_ms: nil,
+          # Frame type identifier.
+          type: nil
         )
         end
 
@@ -170,9 +239,10 @@ module Telnyx
             {
               audio: NilClass,
               is_final:
-                Telnyx::Models::StreamServerEvent::FinalFrame::IsFinal::TaggedBoolean,
+                Telnyx::Models::StreamServerEvent::Final::IsFinal::TaggedBoolean,
               text: String,
-              time_to_first_audio_frame_ms: Integer
+              time_to_first_audio_frame_ms: Integer,
+              type: Telnyx::Models::StreamServerEvent::Final::Type::TaggedSymbol
             }
           )
         end
@@ -187,7 +257,7 @@ module Telnyx
             T.type_alias do
               T.all(
                 T::Boolean,
-                Telnyx::Models::StreamServerEvent::FinalFrame::IsFinal
+                Telnyx::Models::StreamServerEvent::Final::IsFinal
               )
             end
           OrBoolean = T.type_alias { T::Boolean }
@@ -195,13 +265,40 @@ module Telnyx
           TRUE =
             T.let(
               true,
-              Telnyx::Models::StreamServerEvent::FinalFrame::IsFinal::TaggedBoolean
+              Telnyx::Models::StreamServerEvent::Final::IsFinal::TaggedBoolean
             )
 
           sig do
             override.returns(
               T::Array[
-                Telnyx::Models::StreamServerEvent::FinalFrame::IsFinal::TaggedBoolean
+                Telnyx::Models::StreamServerEvent::Final::IsFinal::TaggedBoolean
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Frame type identifier.
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::Models::StreamServerEvent::Final::Type)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          FINAL =
+            T.let(
+              :final,
+              Telnyx::Models::StreamServerEvent::Final::Type::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Models::StreamServerEvent::Final::Type::TaggedSymbol
               ]
             )
           end
@@ -210,11 +307,11 @@ module Telnyx
         end
       end
 
-      class ErrorFrame < Telnyx::Internal::Type::BaseModel
+      class Error < Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Models::StreamServerEvent::ErrorFrame,
+              Telnyx::Models::StreamServerEvent::Error,
               Telnyx::Internal::AnyHash
             )
           end
@@ -226,17 +323,75 @@ module Telnyx
         sig { params(error: String).void }
         attr_writer :error
 
+        # Frame type identifier.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::Models::StreamServerEvent::Error::Type::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :type
+
+        sig do
+          params(
+            type: Telnyx::Models::StreamServerEvent::Error::Type::OrSymbol
+          ).void
+        end
+        attr_writer :type
+
         # Server-to-client frame indicating an error during synthesis. The connection is
         # closed shortly after.
-        sig { params(error: String).returns(T.attached_class) }
+        sig do
+          params(
+            error: String,
+            type: Telnyx::Models::StreamServerEvent::Error::Type::OrSymbol
+          ).returns(T.attached_class)
+        end
         def self.new(
           # Error message describing what went wrong.
-          error: nil
+          error: nil,
+          # Frame type identifier.
+          type: nil
         )
         end
 
-        sig { override.returns({ error: String }) }
+        sig do
+          override.returns(
+            {
+              error: String,
+              type: Telnyx::Models::StreamServerEvent::Error::Type::TaggedSymbol
+            }
+          )
+        end
         def to_hash
+        end
+
+        # Frame type identifier.
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::Models::StreamServerEvent::Error::Type)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          ERROR =
+            T.let(
+              :error,
+              Telnyx::Models::StreamServerEvent::Error::Type::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Models::StreamServerEvent::Error::Type::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
 
