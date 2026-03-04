@@ -607,10 +607,6 @@ module Telnyx
     # @return [Telnyx::Resources::Messaging10dlc]
     attr_reader :messaging_10dlc
 
-    # Speech to text command operations
-    # @return [Telnyx::Resources::SpeechToText]
-    attr_reader :speech_to_text
-
     # @return [Telnyx::Resources::Organizations]
     attr_reader :organizations
 
@@ -868,7 +864,6 @@ module Telnyx
       @mobile_phone_numbers = Telnyx::Resources::MobilePhoneNumbers.new(client: self)
       @mobile_voice_connections = Telnyx::Resources::MobileVoiceConnections.new(client: self)
       @messaging_10dlc = Telnyx::Resources::Messaging10dlc.new(client: self)
-      @speech_to_text = Telnyx::Resources::SpeechToText.new(client: self)
       @organizations = Telnyx::Resources::Organizations.new(client: self)
       @alphanumeric_sender_ids = Telnyx::Resources::AlphanumericSenderIDs.new(client: self)
       @messaging_profile_metrics = Telnyx::Resources::MessagingProfileMetrics.new(client: self)
