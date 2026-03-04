@@ -71,32 +71,32 @@ module Telnyx
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        TIME_FRAME_1_H =
+        TIME_FRAME_1H =
           T.let(
             :"1h",
             Telnyx::MessagingProfileRetrieveMetricsParams::TimeFrame::TaggedSymbol
           )
-        TIME_FRAME_3_H =
+        TIME_FRAME_3H =
           T.let(
             :"3h",
             Telnyx::MessagingProfileRetrieveMetricsParams::TimeFrame::TaggedSymbol
           )
-        TIME_FRAME_24_H =
+        TIME_FRAME_24H =
           T.let(
             :"24h",
             Telnyx::MessagingProfileRetrieveMetricsParams::TimeFrame::TaggedSymbol
           )
-        TIME_FRAME_3_D =
+        TIME_FRAME_3D =
           T.let(
             :"3d",
             Telnyx::MessagingProfileRetrieveMetricsParams::TimeFrame::TaggedSymbol
           )
-        TIME_FRAME_7_D =
+        TIME_FRAME_7D =
           T.let(
             :"7d",
             Telnyx::MessagingProfileRetrieveMetricsParams::TimeFrame::TaggedSymbol
           )
-        TIME_FRAME_30_D =
+        TIME_FRAME_30D =
           T.let(
             :"30d",
             Telnyx::MessagingProfileRetrieveMetricsParams::TimeFrame::TaggedSymbol

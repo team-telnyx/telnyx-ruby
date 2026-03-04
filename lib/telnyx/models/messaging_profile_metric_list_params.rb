@@ -22,12 +22,12 @@ module Telnyx
       module TimeFrame
         extend Telnyx::Internal::Type::Enum
 
-        TIME_FRAME_1_H = :"1h"
-        TIME_FRAME_3_H = :"3h"
-        TIME_FRAME_24_H = :"24h"
-        TIME_FRAME_3_D = :"3d"
-        TIME_FRAME_7_D = :"7d"
-        TIME_FRAME_30_D = :"30d"
+        TIME_FRAME_1H = :"1h"
+        TIME_FRAME_3H = :"3h"
+        TIME_FRAME_24H = :"24h"
+        TIME_FRAME_3D = :"3d"
+        TIME_FRAME_7D = :"7d"
+        TIME_FRAME_30D = :"30d"
 
         # @!method self.values
         #   @return [Array<Symbol>]
