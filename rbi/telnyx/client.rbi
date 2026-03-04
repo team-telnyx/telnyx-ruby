@@ -602,10 +602,6 @@ module Telnyx
     sig { returns(Telnyx::Resources::Messaging10dlc) }
     attr_reader :messaging_10dlc
 
-    # Speech to text command operations
-    sig { returns(Telnyx::Resources::SpeechToText) }
-    attr_reader :speech_to_text
-
     sig { returns(Telnyx::Resources::Organizations) }
     attr_reader :organizations
 
