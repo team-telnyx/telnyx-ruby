@@ -43,6 +43,7 @@ module Telnyx
           method: :get,
           path: "speech-to-text/transcription",
           query: query,
+          headers: {"content-type" => "application/octet-stream"},
           model: NilClass,
           options: options
         )
