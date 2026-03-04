@@ -6,16 +6,18 @@ module Telnyx
     module StreamServerEvent
       extend Telnyx::Internal::Type::Union
 
+      discriminator :type
+
       # Server-to-client frame containing a base64-encoded audio chunk.
-      variant -> { Telnyx::Models::StreamServerEvent::AudioChunkFrame }
+      variant :audio_chunk, -> { Telnyx::Models::StreamServerEvent::AudioChunk }
 
       # Server-to-client frame indicating synthesis is complete for the current text.
-      variant -> { Telnyx::Models::StreamServerEvent::FinalFrame }
+      variant :final, -> { Telnyx::Models::StreamServerEvent::Final }
 
       # Server-to-client frame indicating an error during synthesis. The connection is closed shortly after.
-      variant -> { Telnyx::Models::StreamServerEvent::ErrorFrame }
+      variant :error, -> { Telnyx::Models::StreamServerEvent::Error }
 
-      class AudioChunkFrame < Telnyx::Internal::Type::BaseModel
+      class AudioChunk < Telnyx::Internal::Type::BaseModel
         # @!attribute audio
         #   Base64-encoded audio data. May be `null` for providers that use
         #   `drop_concatenated_audio` mode (Telnyx Natural/NaturalHD, Rime, Minimax, MurfAI,
@@ -49,9 +51,15 @@ module Telnyx
         #   @return [Integer, nil]
         optional :time_to_first_audio_frame_ms, Integer, api_name: :timeToFirstAudioFrameMs
 
-        # @!method initialize(audio: nil, cached: nil, is_final: nil, text: nil, time_to_first_audio_frame_ms: nil)
+        # @!attribute type
+        #   Frame type identifier.
+        #
+        #   @return [Symbol, Telnyx::Models::StreamServerEvent::AudioChunk::Type, nil]
+        optional :type, enum: -> { Telnyx::Models::StreamServerEvent::AudioChunk::Type }
+
+        # @!method initialize(audio: nil, cached: nil, is_final: nil, text: nil, time_to_first_audio_frame_ms: nil, type: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::StreamServerEvent::AudioChunkFrame} for more details.
+        #   {Telnyx::Models::StreamServerEvent::AudioChunk} for more details.
         #
         #   Server-to-client frame containing a base64-encoded audio chunk.
         #
@@ -64,9 +72,23 @@ module Telnyx
         #   @param text [String, nil] The text segment that this audio chunk corresponds to.
         #
         #   @param time_to_first_audio_frame_ms [Integer] Milliseconds from the start-of-speech request to the first audio frame. Only pre
+        #
+        #   @param type [Symbol, Telnyx::Models::StreamServerEvent::AudioChunk::Type] Frame type identifier.
+
+        # Frame type identifier.
+        #
+        # @see Telnyx::Models::StreamServerEvent::AudioChunk#type
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          AUDIO_CHUNK = :audio_chunk
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
 
-      class FinalFrame < Telnyx::Internal::Type::BaseModel
+      class Final < Telnyx::Internal::Type::BaseModel
         # @!attribute audio
         #   Always `null` for the final frame.
         #
@@ -76,10 +98,8 @@ module Telnyx
         # @!attribute is_final
         #   Always `true`.
         #
-        #   @return [Boolean, Telnyx::Models::StreamServerEvent::FinalFrame::IsFinal, nil]
-        optional :is_final,
-                 enum: -> { Telnyx::Models::StreamServerEvent::FinalFrame::IsFinal },
-                 api_name: :isFinal
+        #   @return [Boolean, Telnyx::Models::StreamServerEvent::Final::IsFinal, nil]
+        optional :is_final, enum: -> { Telnyx::Models::StreamServerEvent::Final::IsFinal }, api_name: :isFinal
 
         # @!attribute text
         #   Empty string.
@@ -93,20 +113,28 @@ module Telnyx
         #   @return [Integer, nil]
         optional :time_to_first_audio_frame_ms, Integer, api_name: :timeToFirstAudioFrameMs
 
-        # @!method initialize(audio: nil, is_final: nil, text: nil, time_to_first_audio_frame_ms: nil)
+        # @!attribute type
+        #   Frame type identifier.
+        #
+        #   @return [Symbol, Telnyx::Models::StreamServerEvent::Final::Type, nil]
+        optional :type, enum: -> { Telnyx::Models::StreamServerEvent::Final::Type }
+
+        # @!method initialize(audio: nil, is_final: nil, text: nil, time_to_first_audio_frame_ms: nil, type: nil)
         #   Server-to-client frame indicating synthesis is complete for the current text.
         #
         #   @param audio [nil] Always `null` for the final frame.
         #
-        #   @param is_final [Boolean, Telnyx::Models::StreamServerEvent::FinalFrame::IsFinal] Always `true`.
+        #   @param is_final [Boolean, Telnyx::Models::StreamServerEvent::Final::IsFinal] Always `true`.
         #
         #   @param text [String] Empty string.
         #
         #   @param time_to_first_audio_frame_ms [Integer] Present if this was the first response frame.
+        #
+        #   @param type [Symbol, Telnyx::Models::StreamServerEvent::Final::Type] Frame type identifier.
 
         # Always `true`.
         #
-        # @see Telnyx::Models::StreamServerEvent::FinalFrame#is_final
+        # @see Telnyx::Models::StreamServerEvent::Final#is_final
         module IsFinal
           extend Telnyx::Internal::Type::Enum
 
@@ -115,24 +143,56 @@ module Telnyx
           # @!method self.values
           #   @return [Array<Boolean>]
         end
+
+        # Frame type identifier.
+        #
+        # @see Telnyx::Models::StreamServerEvent::Final#type
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          FINAL = :final
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
 
-      class ErrorFrame < Telnyx::Internal::Type::BaseModel
+      class Error < Telnyx::Internal::Type::BaseModel
         # @!attribute error
         #   Error message describing what went wrong.
         #
         #   @return [String, nil]
         optional :error, String
 
-        # @!method initialize(error: nil)
+        # @!attribute type
+        #   Frame type identifier.
+        #
+        #   @return [Symbol, Telnyx::Models::StreamServerEvent::Error::Type, nil]
+        optional :type, enum: -> { Telnyx::Models::StreamServerEvent::Error::Type }
+
+        # @!method initialize(error: nil, type: nil)
         #   Server-to-client frame indicating an error during synthesis. The connection is
         #   closed shortly after.
         #
         #   @param error [String] Error message describing what went wrong.
+        #
+        #   @param type [Symbol, Telnyx::Models::StreamServerEvent::Error::Type] Frame type identifier.
+
+        # Frame type identifier.
+        #
+        # @see Telnyx::Models::StreamServerEvent::Error#type
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          ERROR = :error
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
 
       # @!method self.variants
-      #   @return [Array(Telnyx::Models::StreamServerEvent::AudioChunkFrame, Telnyx::Models::StreamServerEvent::FinalFrame, Telnyx::Models::StreamServerEvent::ErrorFrame)]
+      #   @return [Array(Telnyx::Models::StreamServerEvent::AudioChunk, Telnyx::Models::StreamServerEvent::Final, Telnyx::Models::StreamServerEvent::Error)]
     end
   end
 end
