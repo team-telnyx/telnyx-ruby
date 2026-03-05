@@ -28,6 +28,7 @@ module Telnyx
         to: ::Array[Telnyx::OutboundMessagePayload::To],
         type: Telnyx::Models::OutboundMessagePayload::type_,
         valid_until: Time?,
+        wait_seconds: Float?,
         webhook_failover_url: String?,
         webhook_url: String?
       }
@@ -137,6 +138,8 @@ module Telnyx
 
       attr_accessor valid_until: Time?
 
+      attr_accessor wait_seconds: Float?
+
       attr_accessor webhook_failover_url: String?
 
       attr_accessor webhook_url: String?
@@ -168,6 +171,7 @@ module Telnyx
         ?to: ::Array[Telnyx::OutboundMessagePayload::To],
         ?type: Telnyx::Models::OutboundMessagePayload::type_,
         ?valid_until: Time?,
+        ?wait_seconds: Float?,
         ?webhook_failover_url: String?,
         ?webhook_url: String?
       ) -> void
@@ -199,6 +203,7 @@ module Telnyx
         to: ::Array[Telnyx::OutboundMessagePayload::To],
         type: Telnyx::Models::OutboundMessagePayload::type_,
         valid_until: Time?,
+        wait_seconds: Float?,
         webhook_failover_url: String?,
         webhook_url: String?
       }

@@ -71,7 +71,18 @@ module Telnyx
           #   @return [String, nil]
           optional :type, String
 
-          # @!method initialize(id: nil, body: nil, direction: nil, encoding: nil, from: nil, messaging_profile_id: nil, organization_id: nil, received_at: nil, record_type: nil, to: nil, type: nil)
+          # @!attribute wait_seconds
+          #   Seconds the message is queued due to rate limiting before being sent to the
+          #   carrier. Represents the maximum wait across all applicable rate limits (account,
+          #   carrier, campaign). 0.0 = no queuing delay.
+          #
+          #   @return [Float, nil]
+          optional :wait_seconds, Float, nil?: true
+
+          # @!method initialize(id: nil, body: nil, direction: nil, encoding: nil, from: nil, messaging_profile_id: nil, organization_id: nil, received_at: nil, record_type: nil, to: nil, type: nil, wait_seconds: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::Messages::RcSendResponse::Data} for more details.
+          #
           #   @param id [String] message ID
           #
           #   @param body [Telnyx::Models::RcsAgentMessage]
@@ -93,6 +104,8 @@ module Telnyx
           #   @param to [Array<Telnyx::Models::RcsToItem>]
           #
           #   @param type [String]
+          #
+          #   @param wait_seconds [Float, nil] Seconds the message is queued due to rate limiting before being sent to the carr
 
           # @see Telnyx::Models::Messages::RcSendResponse::Data#from
           class From < Telnyx::Internal::Type::BaseModel

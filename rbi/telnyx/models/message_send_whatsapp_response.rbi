@@ -124,6 +124,12 @@ module Telnyx
         sig { params(type: String).void }
         attr_writer :type
 
+        # Seconds the message is queued due to rate limiting before being sent to the
+        # carrier. Represents the maximum wait across all applicable rate limits (account,
+        # carrier, campaign). 0.0 = no queuing delay.
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :wait_seconds
+
         sig do
           params(
             id: String,
@@ -137,7 +143,8 @@ module Telnyx
             received_at: Time,
             record_type: String,
             to: T::Array[Telnyx::RcsToItem::OrHash],
-            type: String
+            type: String,
+            wait_seconds: T.nilable(Float)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -152,7 +159,11 @@ module Telnyx
           received_at: nil,
           record_type: nil,
           to: nil,
-          type: nil
+          type: nil,
+          # Seconds the message is queued due to rate limiting before being sent to the
+          # carrier. Represents the maximum wait across all applicable rate limits (account,
+          # carrier, campaign). 0.0 = no queuing delay.
+          wait_seconds: nil
         )
         end
 
@@ -169,7 +180,8 @@ module Telnyx
               received_at: Time,
               record_type: String,
               to: T::Array[Telnyx::RcsToItem],
-              type: String
+              type: String,
+              wait_seconds: T.nilable(Float)
             }
           )
         end

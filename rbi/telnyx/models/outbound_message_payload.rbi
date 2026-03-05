@@ -213,6 +213,12 @@ module Telnyx
       sig { returns(T.nilable(Time)) }
       attr_accessor :valid_until
 
+      # Seconds the message is queued due to rate limiting before being sent to the
+      # carrier. Represents the maximum wait across all applicable rate limits (account,
+      # carrier, campaign). 0.0 = no queuing delay.
+      sig { returns(T.nilable(Float)) }
+      attr_accessor :wait_seconds
+
       # The failover URL where webhooks related to this message will be sent if sending
       # to the primary URL fails.
       sig { returns(T.nilable(String)) }
@@ -251,6 +257,7 @@ module Telnyx
           to: T::Array[Telnyx::OutboundMessagePayload::To::OrHash],
           type: Telnyx::OutboundMessagePayload::Type::OrSymbol,
           valid_until: T.nilable(Time),
+          wait_seconds: T.nilable(Float),
           webhook_failover_url: T.nilable(String),
           webhook_url: T.nilable(String)
         ).returns(T.attached_class)
@@ -312,6 +319,10 @@ module Telnyx
         # marked as 'sending_failed'. Once the message moves out of the queue, this field
         # will be nulled
         valid_until: nil,
+        # Seconds the message is queued due to rate limiting before being sent to the
+        # carrier. Represents the maximum wait across all applicable rate limits (account,
+        # carrier, campaign). 0.0 = no queuing delay.
+        wait_seconds: nil,
         # The failover URL where webhooks related to this message will be sent if sending
         # to the primary URL fails.
         webhook_failover_url: nil,
@@ -351,6 +362,7 @@ module Telnyx
             to: T::Array[Telnyx::OutboundMessagePayload::To],
             type: Telnyx::OutboundMessagePayload::Type::TaggedSymbol,
             valid_until: T.nilable(Time),
+            wait_seconds: T.nilable(Float),
             webhook_failover_url: T.nilable(String),
             webhook_url: T.nilable(String)
           }

@@ -163,6 +163,14 @@ module Telnyx
       #   @return [Time, nil]
       optional :valid_until, Time, nil?: true
 
+      # @!attribute wait_seconds
+      #   Seconds the message is queued due to rate limiting before being sent to the
+      #   carrier. Represents the maximum wait across all applicable rate limits (account,
+      #   carrier, campaign). 0.0 = no queuing delay.
+      #
+      #   @return [Float, nil]
+      optional :wait_seconds, Float, nil?: true
+
       # @!attribute webhook_failover_url
       #   The failover URL where webhooks related to this message will be sent if sending
       #   to the primary URL fails.
@@ -176,7 +184,7 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String, nil?: true
 
-      # @!method initialize(id: nil, cc: nil, completed_at: nil, cost: nil, cost_breakdown: nil, direction: nil, encoding: nil, errors: nil, from: nil, media: nil, messaging_profile_id: nil, organization_id: nil, parts: nil, received_at: nil, record_type: nil, sent_at: nil, smart_encoding_applied: nil, subject: nil, tags: nil, tcr_campaign_billable: nil, tcr_campaign_id: nil, tcr_campaign_registered: nil, text: nil, to: nil, type: nil, valid_until: nil, webhook_failover_url: nil, webhook_url: nil)
+      # @!method initialize(id: nil, cc: nil, completed_at: nil, cost: nil, cost_breakdown: nil, direction: nil, encoding: nil, errors: nil, from: nil, media: nil, messaging_profile_id: nil, organization_id: nil, parts: nil, received_at: nil, record_type: nil, sent_at: nil, smart_encoding_applied: nil, subject: nil, tags: nil, tcr_campaign_billable: nil, tcr_campaign_id: nil, tcr_campaign_registered: nil, text: nil, to: nil, type: nil, valid_until: nil, wait_seconds: nil, webhook_failover_url: nil, webhook_url: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::OutboundMessagePayload} for more details.
       #
@@ -231,6 +239,8 @@ module Telnyx
       #   @param type [Symbol, Telnyx::Models::OutboundMessagePayload::Type] The type of message.
       #
       #   @param valid_until [Time, nil] Message must be out of the queue by this time or else it will be discarded and m
+      #
+      #   @param wait_seconds [Float, nil] Seconds the message is queued due to rate limiting before being sent to the carr
       #
       #   @param webhook_failover_url [String, nil] The failover URL where webhooks related to this message will be sent if sending
       #
