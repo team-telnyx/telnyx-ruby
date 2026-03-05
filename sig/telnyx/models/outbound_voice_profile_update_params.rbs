@@ -2,6 +2,7 @@ module Telnyx
   module Models
     type outbound_voice_profile_update_params =
       {
+        id: String,
         name: String,
         billing_group_id: String?,
         call_recording: Telnyx::OutboundCallRecording,
@@ -22,6 +23,8 @@ module Telnyx
     class OutboundVoiceProfileUpdateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor id: String
 
       attr_accessor name: String
 
@@ -84,6 +87,7 @@ module Telnyx
       def whitelisted_destinations=: (::Array[String]) -> ::Array[String]
 
       def initialize: (
+        id: String,
         name: String,
         ?billing_group_id: String?,
         ?call_recording: Telnyx::OutboundCallRecording,
@@ -102,6 +106,7 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
+        id: String,
         name: String,
         billing_group_id: String?,
         call_recording: Telnyx::OutboundCallRecording,

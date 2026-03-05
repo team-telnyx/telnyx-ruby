@@ -2,6 +2,7 @@ module Telnyx
   module Models
     type virtual_cross_connect_update_params =
       {
+        id: String,
         primary_cloud_ip: String,
         primary_enabled: bool,
         primary_routing_announcement: bool,
@@ -14,6 +15,8 @@ module Telnyx
     class VirtualCrossConnectUpdateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor id: String
 
       attr_reader primary_cloud_ip: String?
 
@@ -40,6 +43,7 @@ module Telnyx
       def secondary_routing_announcement=: (bool) -> bool
 
       def initialize: (
+        id: String,
         ?primary_cloud_ip: String,
         ?primary_enabled: bool,
         ?primary_routing_announcement: bool,
@@ -50,6 +54,7 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
+        id: String,
         primary_cloud_ip: String,
         primary_enabled: bool,
         primary_routing_announcement: bool,

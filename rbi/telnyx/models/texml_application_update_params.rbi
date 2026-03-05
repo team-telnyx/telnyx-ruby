@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::TexmlApplicationUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # A user-assigned name to help manage the application.
       sig { returns(String) }
       attr_accessor :friendly_name
@@ -147,6 +150,7 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           friendly_name: String,
           voice_url: String,
           active: T::Boolean,
@@ -168,6 +172,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # A user-assigned name to help manage the application.
         friendly_name:,
         # URL to which Telnyx will deliver your XML Translator webhooks.
@@ -210,6 +215,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             friendly_name: String,
             voice_url: String,
             active: T::Boolean,

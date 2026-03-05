@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::BillingGroupUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # A name for the billing group
       sig { returns(T.nilable(String)) }
       attr_reader :name
@@ -20,11 +23,13 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           name: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # A name for the billing group
         name: nil,
         request_options: {}
@@ -33,7 +38,7 @@ module Telnyx
 
       sig do
         override.returns(
-          { name: String, request_options: Telnyx::RequestOptions }
+          { id: String, name: String, request_options: Telnyx::RequestOptions }
         )
       end
       def to_hash

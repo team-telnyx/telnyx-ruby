@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute loa_configuration_id
       #   The identifier of the LOA configuration to use for the template. If not
       #   provided, the default LOA configuration will be used.
@@ -14,9 +19,11 @@ module Telnyx
       #   @return [String, nil]
       optional :loa_configuration_id, String
 
-      # @!method initialize(loa_configuration_id: nil, request_options: {})
+      # @!method initialize(id:, loa_configuration_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::PortingOrderRetrieveLoaTemplateParams} for more details.
+      #
+      #   @param id [String]
       #
       #   @param loa_configuration_id [String] The identifier of the LOA configuration to use for the template. If not provided
       #

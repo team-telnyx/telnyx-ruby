@@ -20,6 +20,9 @@ module Telnyx
             sig { returns(String) }
             attr_accessor :mission_id
 
+            sig { returns(String) }
+            attr_accessor :run_id
+
             # The Telnyx AI agent ID to link
             sig { returns(String) }
             attr_accessor :telnyx_agent_id
@@ -27,12 +30,14 @@ module Telnyx
             sig do
               params(
                 mission_id: String,
+                run_id: String,
                 telnyx_agent_id: String,
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(T.attached_class)
             end
             def self.new(
               mission_id:,
+              run_id:,
               # The Telnyx AI agent ID to link
               telnyx_agent_id:,
               request_options: {}
@@ -43,6 +48,7 @@ module Telnyx
               override.returns(
                 {
                   mission_id: String,
+                  run_id: String,
                   telnyx_agent_id: String,
                   request_options: Telnyx::RequestOptions
                 }

@@ -2,6 +2,7 @@ module Telnyx
   module Models
     type messaging_profile_retrieve_metrics_params =
       {
+        id: String,
         time_frame: Telnyx::Models::MessagingProfileRetrieveMetricsParams::time_frame
       }
       & Telnyx::Internal::Type::request_parameters
@@ -10,6 +11,8 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      attr_accessor id: String
+
       attr_reader time_frame: Telnyx::Models::MessagingProfileRetrieveMetricsParams::time_frame?
 
       def time_frame=: (
@@ -17,11 +20,13 @@ module Telnyx
       ) -> Telnyx::Models::MessagingProfileRetrieveMetricsParams::time_frame
 
       def initialize: (
+        id: String,
         ?time_frame: Telnyx::Models::MessagingProfileRetrieveMetricsParams::time_frame,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
+        id: String,
         time_frame: Telnyx::Models::MessagingProfileRetrieveMetricsParams::time_frame,
         request_options: Telnyx::RequestOptions
       }

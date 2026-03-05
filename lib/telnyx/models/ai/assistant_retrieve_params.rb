@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute assistant_id
+        #
+        #   @return [String]
+        required :assistant_id, String
+
         # @!attribute call_control_id
         #
         #   @return [String, nil]
@@ -28,7 +33,8 @@ module Telnyx
         #   @return [String, nil]
         optional :to, String
 
-        # @!method initialize(call_control_id: nil, fetch_dynamic_variables_from_webhook: nil, from: nil, to: nil, request_options: {})
+        # @!method initialize(assistant_id:, call_control_id: nil, fetch_dynamic_variables_from_webhook: nil, from: nil, to: nil, request_options: {})
+        #   @param assistant_id [String]
         #   @param call_control_id [String]
         #   @param fetch_dynamic_variables_from_webhook [Boolean]
         #   @param from [String]

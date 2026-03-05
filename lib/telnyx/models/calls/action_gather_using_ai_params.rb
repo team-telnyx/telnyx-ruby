@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute call_control_id
+        #
+        #   @return [String]
+        required :call_control_id, String
+
         # @!attribute parameters
         #   The parameters described as a JSON Schema object that needs to be gathered by
         #   the voice assistant. See the
@@ -138,9 +143,11 @@ module Telnyx
         #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings }
 
-        # @!method initialize(parameters:, assistant: nil, client_state: nil, command_id: nil, gather_ended_speech: nil, greeting: nil, interruption_settings: nil, language: nil, message_history: nil, send_message_history_updates: nil, send_partial_results: nil, transcription: nil, user_response_timeout_ms: nil, voice: nil, voice_settings: nil, request_options: {})
+        # @!method initialize(call_control_id:, parameters:, assistant: nil, client_state: nil, command_id: nil, gather_ended_speech: nil, greeting: nil, interruption_settings: nil, language: nil, message_history: nil, send_message_history_updates: nil, send_partial_results: nil, transcription: nil, user_response_timeout_ms: nil, voice: nil, voice_settings: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionGatherUsingAIParams} for more details.
+        #
+        #   @param call_control_id [String]
         #
         #   @param parameters [Hash{Symbol=>Object}] The parameters described as a JSON Schema object that needs to be gathered by th
         #

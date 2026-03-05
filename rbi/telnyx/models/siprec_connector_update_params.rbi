@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::SiprecConnectorUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :connector_name
+
       # Hostname/IPv4 address of the SIPREC SRS.
       sig { returns(String) }
       attr_accessor :host
@@ -32,6 +35,7 @@ module Telnyx
 
       sig do
         params(
+          connector_name: String,
           host: String,
           name: String,
           port: Integer,
@@ -40,6 +44,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        connector_name:,
         # Hostname/IPv4 address of the SIPREC SRS.
         host:,
         # Name for the SIPREC connector resource.
@@ -55,6 +60,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            connector_name: String,
             host: String,
             name: String,
             port: Integer,

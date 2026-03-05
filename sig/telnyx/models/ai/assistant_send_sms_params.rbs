@@ -3,6 +3,7 @@ module Telnyx
     module AI
       type assistant_send_sms_params =
         {
+          assistant_id: String,
           from: String,
           to: String,
           conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::AssistantSendSMSParams::conversation_metadata],
@@ -14,6 +15,8 @@ module Telnyx
       class AssistantSendSMSParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor assistant_id: String
 
         attr_accessor from: String
 
@@ -34,6 +37,7 @@ module Telnyx
         def text=: (String) -> String
 
         def initialize: (
+          assistant_id: String,
           from: String,
           to: String,
           ?conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::AssistantSendSMSParams::conversation_metadata],
@@ -43,6 +47,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          assistant_id: String,
           from: String,
           to: String,
           conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::AssistantSendSMSParams::conversation_metadata],

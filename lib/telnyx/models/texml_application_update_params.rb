@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute friendly_name
       #   A user-assigned name to help manage the application.
       #
@@ -102,9 +107,11 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::TexmlApplicationUpdateParams::VoiceMethod, nil]
       optional :voice_method, enum: -> { Telnyx::TexmlApplicationUpdateParams::VoiceMethod }
 
-      # @!method initialize(friendly_name:, voice_url:, active: nil, anchorsite_override: nil, call_cost_in_webhooks: nil, dtmf_type: nil, first_command_timeout: nil, first_command_timeout_secs: nil, inbound: nil, outbound: nil, status_callback: nil, status_callback_method: nil, tags: nil, voice_fallback_url: nil, voice_method: nil, request_options: {})
+      # @!method initialize(id:, friendly_name:, voice_url:, active: nil, anchorsite_override: nil, call_cost_in_webhooks: nil, dtmf_type: nil, first_command_timeout: nil, first_command_timeout_secs: nil, inbound: nil, outbound: nil, status_callback: nil, status_callback_method: nil, tags: nil, voice_fallback_url: nil, voice_method: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::TexmlApplicationUpdateParams} for more details.
+      #
+      #   @param id [String]
       #
       #   @param friendly_name [String] A user-assigned name to help manage the application.
       #

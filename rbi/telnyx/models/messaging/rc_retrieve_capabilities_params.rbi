@@ -18,18 +18,26 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :agent_id
 
+        sig { returns(String) }
+        attr_accessor :phone_number
+
         sig do
           params(
             agent_id: String,
+            phone_number: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(agent_id:, request_options: {})
+        def self.new(agent_id:, phone_number:, request_options: {})
         end
 
         sig do
           override.returns(
-            { agent_id: String, request_options: Telnyx::RequestOptions }
+            {
+              agent_id: String,
+              phone_number: String,
+              request_options: Telnyx::RequestOptions
+            }
           )
         end
         def to_hash

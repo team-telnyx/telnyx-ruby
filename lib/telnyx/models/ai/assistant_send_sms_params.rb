@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute assistant_id
+        #
+        #   @return [String]
+        required :assistant_id, String
+
         # @!attribute from
         #
         #   @return [String]
@@ -34,7 +39,8 @@ module Telnyx
         #   @return [String, nil]
         optional :text, String
 
-        # @!method initialize(from:, to:, conversation_metadata: nil, should_create_conversation: nil, text: nil, request_options: {})
+        # @!method initialize(assistant_id:, from:, to:, conversation_metadata: nil, should_create_conversation: nil, text: nil, request_options: {})
+        #   @param assistant_id [String]
         #   @param from [String]
         #   @param to [String]
         #   @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}]

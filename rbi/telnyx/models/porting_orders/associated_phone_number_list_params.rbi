@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :porting_order_id
+
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[phone_number], filter[action]
         sig do
@@ -66,6 +69,7 @@ module Telnyx
 
         sig do
           params(
+            porting_order_id: String,
             filter:
               Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Filter::OrHash,
             page_number: Integer,
@@ -76,6 +80,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          porting_order_id:,
           # Consolidated filter parameter (deepObject style). Originally:
           # filter[phone_number], filter[action]
           filter: nil,
@@ -90,6 +95,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              porting_order_id: String,
               filter:
                 Telnyx::PortingOrders::AssociatedPhoneNumberListParams::Filter,
               page_number: Integer,

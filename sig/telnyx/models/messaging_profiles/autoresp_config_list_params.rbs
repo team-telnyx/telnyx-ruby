@@ -3,6 +3,7 @@ module Telnyx
     module MessagingProfiles
       type autoresp_config_list_params =
         {
+          profile_id: String,
           country_code: String,
           created_at: Telnyx::MessagingProfiles::AutorespConfigListParams::CreatedAt,
           updated_at: Telnyx::MessagingProfiles::AutorespConfigListParams::UpdatedAt
@@ -12,6 +13,8 @@ module Telnyx
       class AutorespConfigListParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor profile_id: String
 
         attr_reader country_code: String?
 
@@ -30,6 +33,7 @@ module Telnyx
         ) -> Telnyx::MessagingProfiles::AutorespConfigListParams::UpdatedAt
 
         def initialize: (
+          profile_id: String,
           ?country_code: String,
           ?created_at: Telnyx::MessagingProfiles::AutorespConfigListParams::CreatedAt,
           ?updated_at: Telnyx::MessagingProfiles::AutorespConfigListParams::UpdatedAt,
@@ -37,6 +41,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          profile_id: String,
           country_code: String,
           created_at: Telnyx::MessagingProfiles::AutorespConfigListParams::CreatedAt,
           updated_at: Telnyx::MessagingProfiles::AutorespConfigListParams::UpdatedAt,

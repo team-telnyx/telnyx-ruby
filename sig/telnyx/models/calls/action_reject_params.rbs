@@ -3,6 +3,7 @@ module Telnyx
     module Calls
       type action_reject_params =
         {
+          call_control_id: String,
           cause: Telnyx::Models::Calls::ActionRejectParams::cause,
           client_state: String,
           command_id: String
@@ -12,6 +13,8 @@ module Telnyx
       class ActionRejectParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
 
         attr_accessor cause: Telnyx::Models::Calls::ActionRejectParams::cause
 
@@ -24,6 +27,7 @@ module Telnyx
         def command_id=: (String) -> String
 
         def initialize: (
+          call_control_id: String,
           cause: Telnyx::Models::Calls::ActionRejectParams::cause,
           ?client_state: String,
           ?command_id: String,
@@ -31,6 +35,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          call_control_id: String,
           cause: Telnyx::Models::Calls::ActionRejectParams::cause,
           client_state: String,
           command_id: String,

@@ -13,14 +13,21 @@ module Telnyx
         #   @return [String]
         required :id, String
 
+        # @!attribute phone_number_id
+        #
+        #   @return [String]
+        required :phone_number_id, String
+
         # @!attribute location_id
         #   Identifies the location to assign the phone number to.
         #
         #   @return [String, nil]
         optional :location_id, String
 
-        # @!method initialize(id:, location_id: nil, request_options: {})
+        # @!method initialize(id:, phone_number_id:, location_id: nil, request_options: {})
         #   @param id [String]
+        #
+        #   @param phone_number_id [String]
         #
         #   @param location_id [String] Identifies the location to assign the phone number to.
         #

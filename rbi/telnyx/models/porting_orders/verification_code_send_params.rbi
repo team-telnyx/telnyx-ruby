@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :phone_numbers
 
@@ -40,6 +43,7 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             phone_numbers: T::Array[String],
             verification_method:
               Telnyx::PortingOrders::VerificationCodeSendParams::VerificationMethod::OrSymbol,
@@ -47,6 +51,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           phone_numbers: nil,
           verification_method: nil,
           request_options: {}
@@ -56,6 +61,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               phone_numbers: T::Array[String],
               verification_method:
                 Telnyx::PortingOrders::VerificationCodeSendParams::VerificationMethod::OrSymbol,

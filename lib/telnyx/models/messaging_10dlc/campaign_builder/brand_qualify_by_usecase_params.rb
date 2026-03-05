@@ -14,8 +14,14 @@ module Telnyx
           #   @return [String]
           required :brand_id, String
 
-          # @!method initialize(brand_id:, request_options: {})
+          # @!attribute usecase
+          #
+          #   @return [String]
+          required :usecase, String
+
+          # @!method initialize(brand_id:, usecase:, request_options: {})
           #   @param brand_id [String]
+          #   @param usecase [String]
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end
       end

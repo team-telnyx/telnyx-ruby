@@ -2,6 +2,7 @@ module Telnyx
   module Models
     type messaging_hosted_number_order_create_verification_codes_params =
       {
+        id: String,
         phone_numbers: ::Array[String],
         verification_method: Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesParams::verification_method
       }
@@ -11,17 +12,21 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      attr_accessor id: String
+
       attr_accessor phone_numbers: ::Array[String]
 
       attr_accessor verification_method: Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesParams::verification_method
 
       def initialize: (
+        id: String,
         phone_numbers: ::Array[String],
         verification_method: Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesParams::verification_method,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
+        id: String,
         phone_numbers: ::Array[String],
         verification_method: Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesParams::verification_method,
         request_options: Telnyx::RequestOptions

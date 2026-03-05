@@ -9,6 +9,12 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
+          # @!attribute phone_number
+          #   +E164 formatted phone number.
+          #
+          #   @return [String]
+          required :phone_number, String
+
           # @!attribute code
           #   This is the code the user submits for verification.
           #
@@ -21,7 +27,9 @@ module Telnyx
           #   @return [String]
           required :verify_profile_id, String
 
-          # @!method initialize(code:, verify_profile_id:, request_options: {})
+          # @!method initialize(phone_number:, code:, verify_profile_id:, request_options: {})
+          #   @param phone_number [String] +E164 formatted phone number.
+          #
           #   @param code [String] This is the code the user submits for verification.
           #
           #   @param verify_profile_id [String] The identifier of the associated Verify profile.

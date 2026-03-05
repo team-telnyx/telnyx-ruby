@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::IPUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # IP adddress represented by this resource.
       sig { returns(String) }
       attr_accessor :ip_address
@@ -31,6 +34,7 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           ip_address: String,
           connection_id: String,
           port: Integer,
@@ -38,6 +42,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # IP adddress represented by this resource.
         ip_address:,
         # ID of the IP Connection to which this IP should be attached.
@@ -51,6 +56,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             ip_address: String,
             connection_id: String,
             port: Integer,

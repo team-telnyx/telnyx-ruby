@@ -8,7 +8,13 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
-        # @!method initialize(request_options: {})
+        # @!attribute profile_id
+        #
+        #   @return [String]
+        required :profile_id, String
+
+        # @!method initialize(profile_id:, request_options: {})
+        #   @param profile_id [String]
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end
     end

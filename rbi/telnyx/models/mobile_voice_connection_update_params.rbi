@@ -14,6 +14,9 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :active
 
@@ -87,6 +90,7 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           active: T::Boolean,
           connection_name: String,
           inbound: Telnyx::MobileVoiceConnectionUpdateParams::Inbound::OrHash,
@@ -101,6 +105,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         active: nil,
         connection_name: nil,
         inbound: nil,
@@ -117,6 +122,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             active: T::Boolean,
             connection_name: String,
             inbound: Telnyx::MobileVoiceConnectionUpdateParams::Inbound,

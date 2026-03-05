@@ -3,6 +3,7 @@ module Telnyx
     module PortingOrders
       type phone_number_block_create_params =
         {
+          porting_order_id: String,
           activation_ranges: ::Array[Telnyx::PortingOrders::PhoneNumberBlockCreateParams::ActivationRange],
           phone_number_range: Telnyx::PortingOrders::PhoneNumberBlockCreateParams::PhoneNumberRange
         }
@@ -12,17 +13,21 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        attr_accessor porting_order_id: String
+
         attr_accessor activation_ranges: ::Array[Telnyx::PortingOrders::PhoneNumberBlockCreateParams::ActivationRange]
 
         attr_accessor phone_number_range: Telnyx::PortingOrders::PhoneNumberBlockCreateParams::PhoneNumberRange
 
         def initialize: (
+          porting_order_id: String,
           activation_ranges: ::Array[Telnyx::PortingOrders::PhoneNumberBlockCreateParams::ActivationRange],
           phone_number_range: Telnyx::PortingOrders::PhoneNumberBlockCreateParams::PhoneNumberRange,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
+          porting_order_id: String,
           activation_ranges: ::Array[Telnyx::PortingOrders::PhoneNumberBlockCreateParams::ActivationRange],
           phone_number_range: Telnyx::PortingOrders::PhoneNumberBlockCreateParams::PhoneNumberRange,
           request_options: Telnyx::RequestOptions

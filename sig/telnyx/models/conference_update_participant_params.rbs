@@ -3,6 +3,7 @@ module Telnyx
     type conference_update_participant_params =
       {
         id: String,
+        participant_id: String,
         beep_enabled: Telnyx::Models::ConferenceUpdateParticipantParams::beep_enabled,
         end_conference_on_exit: bool,
         soft_end_conference_on_exit: bool
@@ -14,6 +15,8 @@ module Telnyx
       include Telnyx::Internal::Type::RequestParameters
 
       attr_accessor id: String
+
+      attr_accessor participant_id: String
 
       attr_reader beep_enabled: Telnyx::Models::ConferenceUpdateParticipantParams::beep_enabled?
 
@@ -31,6 +34,7 @@ module Telnyx
 
       def initialize: (
         id: String,
+        participant_id: String,
         ?beep_enabled: Telnyx::Models::ConferenceUpdateParticipantParams::beep_enabled,
         ?end_conference_on_exit: bool,
         ?soft_end_conference_on_exit: bool,
@@ -39,6 +43,7 @@ module Telnyx
 
       def to_hash: -> {
         id: String,
+        participant_id: String,
         beep_enabled: Telnyx::Models::ConferenceUpdateParticipantParams::beep_enabled,
         end_conference_on_exit: bool,
         soft_end_conference_on_exit: bool,

@@ -3,6 +3,7 @@ module Telnyx
     module ExternalConnections
       type upload_create_params =
         {
+          id: String,
           number_ids: ::Array[String],
           additional_usages: ::Array[Telnyx::Models::ExternalConnections::UploadCreateParams::additional_usage],
           civic_address_id: String,
@@ -14,6 +15,8 @@ module Telnyx
       class UploadCreateParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor id: String
 
         attr_accessor number_ids: ::Array[String]
 
@@ -38,6 +41,7 @@ module Telnyx
         ) -> Telnyx::Models::ExternalConnections::UploadCreateParams::usage
 
         def initialize: (
+          id: String,
           number_ids: ::Array[String],
           ?additional_usages: ::Array[Telnyx::Models::ExternalConnections::UploadCreateParams::additional_usage],
           ?civic_address_id: String,
@@ -47,6 +51,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          id: String,
           number_ids: ::Array[String],
           additional_usages: ::Array[Telnyx::Models::ExternalConnections::UploadCreateParams::additional_usage],
           civic_address_id: String,

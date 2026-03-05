@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :porting_order_id
+
         # Specifies the action to take with this phone number during partial porting.
         sig do
           returns(
@@ -40,6 +43,7 @@ module Telnyx
 
         sig do
           params(
+            porting_order_id: String,
             action:
               Telnyx::PortingOrders::AssociatedPhoneNumberCreateParams::Action::OrSymbol,
             phone_number_range:
@@ -48,6 +52,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          porting_order_id:,
           # Specifies the action to take with this phone number during partial porting.
           action:,
           phone_number_range:,
@@ -58,6 +63,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              porting_order_id: String,
               action:
                 Telnyx::PortingOrders::AssociatedPhoneNumberCreateParams::Action::OrSymbol,
               phone_number_range:

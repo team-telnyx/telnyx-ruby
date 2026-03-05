@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # DTMF digits to send. Valid digits are 0-9, A-D, \*, and #. Pauses can be added
         # using w (0.5s) and W (1s).
         sig { returns(String) }
@@ -46,6 +49,7 @@ module Telnyx
 
         sig do
           params(
+            call_control_id: String,
             digits: String,
             client_state: String,
             command_id: String,
@@ -54,6 +58,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id:,
           # DTMF digits to send. Valid digits are 0-9, A-D, \*, and #. Pauses can be added
           # using w (0.5s) and W (1s).
           digits:,
@@ -73,6 +78,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              call_control_id: String,
               digits: String,
               client_state: String,
               command_id: String,

@@ -3,6 +3,7 @@ module Telnyx
     module Conferences
       type action_leave_params =
         {
+          id: String,
           call_control_id: String,
           beep_enabled: Telnyx::Models::Conferences::ActionLeaveParams::beep_enabled,
           command_id: String,
@@ -13,6 +14,8 @@ module Telnyx
       class ActionLeaveParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor id: String
 
         attr_accessor call_control_id: String
 
@@ -33,6 +36,7 @@ module Telnyx
         ) -> Telnyx::Models::Conferences::ActionLeaveParams::region
 
         def initialize: (
+          id: String,
           call_control_id: String,
           ?beep_enabled: Telnyx::Models::Conferences::ActionLeaveParams::beep_enabled,
           ?command_id: String,
@@ -41,6 +45,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          id: String,
           call_control_id: String,
           beep_enabled: Telnyx::Models::Conferences::ActionLeaveParams::beep_enabled,
           command_id: String,

@@ -14,6 +14,9 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :portout_id
+
       # Consolidated filter parameter (deepObject style). Originally: filter[code],
       # filter[code][in]
       sig do
@@ -30,11 +33,13 @@ module Telnyx
 
       sig do
         params(
+          portout_id: String,
           filter: Telnyx::PortoutListRejectionCodesParams::Filter::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        portout_id:,
         # Consolidated filter parameter (deepObject style). Originally: filter[code],
         # filter[code][in]
         filter: nil,
@@ -45,6 +50,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            portout_id: String,
             filter: Telnyx::PortoutListRejectionCodesParams::Filter,
             request_options: Telnyx::RequestOptions
           }

@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute mission_id
+        #
+        #   @return [String]
+        required :mission_id, String
+
         # @!attribute description
         #
         #   @return [String, nil]
@@ -38,7 +43,8 @@ module Telnyx
         #   @return [String, nil]
         optional :name, String
 
-        # @!method initialize(description: nil, execution_mode: nil, instructions: nil, metadata: nil, model: nil, name: nil, request_options: {})
+        # @!method initialize(mission_id:, description: nil, execution_mode: nil, instructions: nil, metadata: nil, model: nil, name: nil, request_options: {})
+        #   @param mission_id [String]
         #   @param description [String]
         #   @param execution_mode [Symbol, Telnyx::Models::AI::MissionUpdateMissionParams::ExecutionMode]
         #   @param instructions [String]

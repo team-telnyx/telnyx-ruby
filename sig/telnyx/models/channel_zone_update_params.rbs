@@ -1,20 +1,25 @@
 module Telnyx
   module Models
     type channel_zone_update_params =
-      { channels: Integer } & Telnyx::Internal::Type::request_parameters
+      { channel_zone_id: String, channels: Integer }
+      & Telnyx::Internal::Type::request_parameters
 
     class ChannelZoneUpdateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      attr_accessor channel_zone_id: String
+
       attr_accessor channels: Integer
 
       def initialize: (
+        channel_zone_id: String,
         channels: Integer,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
+        channel_zone_id: String,
         channels: Integer,
         request_options: Telnyx::RequestOptions
       }

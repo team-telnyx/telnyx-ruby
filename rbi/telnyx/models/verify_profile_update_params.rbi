@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::VerifyProfileUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :verify_profile_id
+
       sig { returns(T.nilable(Telnyx::VerifyProfileUpdateParams::Call)) }
       attr_reader :call
 
@@ -65,6 +68,7 @@ module Telnyx
 
       sig do
         params(
+          verify_profile_id: String,
           call: Telnyx::VerifyProfileUpdateParams::Call::OrHash,
           flashcall: Telnyx::VerifyProfileUpdateParams::Flashcall::OrHash,
           language: String,
@@ -77,6 +81,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        verify_profile_id:,
         call: nil,
         flashcall: nil,
         language: nil,
@@ -92,6 +97,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            verify_profile_id: String,
             call: Telnyx::VerifyProfileUpdateParams::Call,
             flashcall: Telnyx::VerifyProfileUpdateParams::Flashcall,
             language: String,

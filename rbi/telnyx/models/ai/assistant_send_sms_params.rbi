@@ -13,6 +13,9 @@ module Telnyx
           end
 
         sig { returns(String) }
+        attr_accessor :assistant_id
+
+        sig { returns(String) }
         attr_accessor :from
 
         sig { returns(String) }
@@ -55,6 +58,7 @@ module Telnyx
 
         sig do
           params(
+            assistant_id: String,
             from: String,
             to: String,
             conversation_metadata:
@@ -68,6 +72,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          assistant_id:,
           from:,
           to:,
           conversation_metadata: nil,
@@ -80,6 +85,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              assistant_id: String,
               from: String,
               to: String,
               conversation_metadata:

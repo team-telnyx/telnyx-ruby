@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute task_id
+        #
+        #   @return [String]
+        required :task_id, String
+
         # @!attribute show_subclusters
         #   Whether or not to include subclusters and their nodes in the response.
         #
@@ -21,9 +26,11 @@ module Telnyx
         #   @return [Integer, nil]
         optional :top_n_nodes, Integer
 
-        # @!method initialize(show_subclusters: nil, top_n_nodes: nil, request_options: {})
+        # @!method initialize(task_id:, show_subclusters: nil, top_n_nodes: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::ClusterRetrieveParams} for more details.
+        #
+        #   @param task_id [String]
         #
         #   @param show_subclusters [Boolean] Whether or not to include subclusters and their nodes in the response.
         #

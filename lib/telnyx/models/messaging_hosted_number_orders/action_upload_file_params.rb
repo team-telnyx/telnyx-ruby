@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute bill
         #   Must be the last month's bill with proof of ownership of all of the numbers in
         #   the order in PDF format.
@@ -21,10 +26,12 @@ module Telnyx
         #   @return [Pathname, StringIO, IO, String, Telnyx::FilePart, nil]
         optional :loa, Telnyx::Internal::Type::FileInput
 
-        # @!method initialize(bill: nil, loa: nil, request_options: {})
+        # @!method initialize(id:, bill: nil, loa: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::MessagingHostedNumberOrders::ActionUploadFileParams} for more
         #   details.
+        #
+        #   @param id [String]
         #
         #   @param bill [Pathname, StringIO, IO, String, Telnyx::FilePart] Must be the last month's bill with proof of ownership of all of the numbers in t
         #

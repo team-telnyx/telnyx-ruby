@@ -16,15 +16,23 @@ module Telnyx
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :bucket_name
+
           sig do
-            params(request_options: Telnyx::RequestOptions::OrHash).returns(
-              T.attached_class
-            )
+            params(
+              bucket_name: String,
+              request_options: Telnyx::RequestOptions::OrHash
+            ).returns(T.attached_class)
           end
-          def self.new(request_options: {})
+          def self.new(bucket_name:, request_options: {})
           end
 
-          sig { override.returns({ request_options: Telnyx::RequestOptions }) }
+          sig do
+            override.returns(
+              { bucket_name: String, request_options: Telnyx::RequestOptions }
+            )
+          end
           def to_hash
           end
         end

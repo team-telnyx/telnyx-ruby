@@ -14,6 +14,9 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # Integer value that indicates the number of allocatable global outbound channels
       # that should be allocated to the managed account. Must be 0 or more. If the value
       # is 0 then the account will have no usable channels and will not be able to
@@ -26,11 +29,13 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           channel_limit: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # Integer value that indicates the number of allocatable global outbound channels
         # that should be allocated to the managed account. Must be 0 or more. If the value
         # is 0 then the account will have no usable channels and will not be able to
@@ -42,7 +47,11 @@ module Telnyx
 
       sig do
         override.returns(
-          { channel_limit: Integer, request_options: Telnyx::RequestOptions }
+          {
+            id: String,
+            channel_limit: Integer,
+            request_options: Telnyx::RequestOptions
+          }
         )
       end
       def to_hash

@@ -19,6 +19,9 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :account_sid
 
+          sig { returns(String) }
+          attr_accessor :queue_sid
+
           # The maximum size of the queue.
           sig { returns(T.nilable(Integer)) }
           attr_reader :max_size
@@ -29,12 +32,14 @@ module Telnyx
           sig do
             params(
               account_sid: String,
+              queue_sid: String,
               max_size: Integer,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
             account_sid:,
+            queue_sid:,
             # The maximum size of the queue.
             max_size: nil,
             request_options: {}
@@ -45,6 +50,7 @@ module Telnyx
             override.returns(
               {
                 account_sid: String,
+                queue_sid: String,
                 max_size: Integer,
                 request_options: Telnyx::RequestOptions
               }

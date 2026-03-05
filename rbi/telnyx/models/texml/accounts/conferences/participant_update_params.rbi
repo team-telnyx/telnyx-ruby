@@ -23,6 +23,9 @@ module Telnyx
             sig { returns(String) }
             attr_accessor :conference_sid
 
+            sig { returns(String) }
+            attr_accessor :call_sid_or_participant_label
+
             # The HTTP method used to call the `AnnounceUrl`. Defaults to `POST`.
             sig do
               returns(
@@ -134,6 +137,7 @@ module Telnyx
               params(
                 account_sid: String,
                 conference_sid: String,
+                call_sid_or_participant_label: String,
                 announce_method:
                   Telnyx::Texml::Accounts::Conferences::ParticipantUpdateParams::AnnounceMethod::OrSymbol,
                 announce_url: String,
@@ -153,6 +157,7 @@ module Telnyx
             def self.new(
               account_sid:,
               conference_sid:,
+              call_sid_or_participant_label:,
               # The HTTP method used to call the `AnnounceUrl`. Defaults to `POST`.
               announce_method: nil,
               # The URL to call to announce something to the participant. The URL may return an
@@ -192,6 +197,7 @@ module Telnyx
                 {
                   account_sid: String,
                   conference_sid: String,
+                  call_sid_or_participant_label: String,
                   announce_method:
                     Telnyx::Texml::Accounts::Conferences::ParticipantUpdateParams::AnnounceMethod::OrSymbol,
                   announce_url: String,

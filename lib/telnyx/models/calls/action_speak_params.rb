@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute call_control_id
+        #
+        #   @return [String]
+        required :call_control_id, String
+
         # @!attribute payload
         #   The text or SSML to be converted into speech. There is a 3,000 character limit.
         #
@@ -122,9 +127,11 @@ module Telnyx
         #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionSpeakParams::VoiceSettings }
 
-        # @!method initialize(payload:, voice:, client_state: nil, command_id: nil, language: nil, loop_: nil, payload_type: nil, service_level: nil, stop: nil, target_legs: nil, voice_settings: nil, request_options: {})
+        # @!method initialize(call_control_id:, payload:, voice:, client_state: nil, command_id: nil, language: nil, loop_: nil, payload_type: nil, service_level: nil, stop: nil, target_legs: nil, voice_settings: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionSpeakParams} for more details.
+        #
+        #   @param call_control_id [String]
         #
         #   @param payload [String] The text or SSML to be converted into speech. There is a 3,000 character limit.
         #

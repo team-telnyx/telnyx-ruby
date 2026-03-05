@@ -2,22 +2,27 @@ module Telnyx
   module Models
     module SimCards
       type action_set_public_ip_params =
-        { region_code: String } & Telnyx::Internal::Type::request_parameters
+        { id: String, region_code: String }
+        & Telnyx::Internal::Type::request_parameters
 
       class ActionSetPublicIPParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor id: String
 
         attr_reader region_code: String?
 
         def region_code=: (String) -> String
 
         def initialize: (
+          id: String,
           ?region_code: String,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
+          id: String,
           region_code: String,
           request_options: Telnyx::RequestOptions
         }

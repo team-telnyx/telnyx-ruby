@@ -15,15 +15,23 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :record_type
+
         sig do
-          params(request_options: Telnyx::RequestOptions::OrHash).returns(
-            T.attached_class
-          )
+          params(
+            record_type: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
-        def self.new(request_options: {})
+        def self.new(record_type:, request_options: {})
         end
 
-        sig { override.returns({ request_options: Telnyx::RequestOptions }) }
+        sig do
+          override.returns(
+            { record_type: String, request_options: Telnyx::RequestOptions }
+          )
+        end
         def to_hash
         end
       end

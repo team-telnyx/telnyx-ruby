@@ -9,6 +9,12 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
+          # @!attribute insight_id
+          #   The ID of the insight
+          #
+          #   @return [String]
+          required :insight_id, String
+
           # @!attribute instructions
           #
           #   @return [String, nil]
@@ -29,11 +35,17 @@ module Telnyx
           #   @return [String, nil]
           optional :webhook, String
 
-          # @!method initialize(instructions: nil, json_schema: nil, name: nil, webhook: nil, request_options: {})
+          # @!method initialize(insight_id:, instructions: nil, json_schema: nil, name: nil, webhook: nil, request_options: {})
+          #   @param insight_id [String] The ID of the insight
+          #
           #   @param instructions [String]
+          #
           #   @param json_schema [String, Hash{Symbol=>Object}]
+          #
           #   @param name [String]
+          #
           #   @param webhook [String]
+          #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
           module JsonSchema

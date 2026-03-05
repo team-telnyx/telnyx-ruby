@@ -1,12 +1,17 @@
 module Telnyx
   module Models
     type portout_list_rejection_codes_params =
-      { filter: Telnyx::PortoutListRejectionCodesParams::Filter }
+      {
+        portout_id: String,
+        filter: Telnyx::PortoutListRejectionCodesParams::Filter
+      }
       & Telnyx::Internal::Type::request_parameters
 
     class PortoutListRejectionCodesParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor portout_id: String
 
       attr_reader filter: Telnyx::PortoutListRejectionCodesParams::Filter?
 
@@ -15,11 +20,13 @@ module Telnyx
       ) -> Telnyx::PortoutListRejectionCodesParams::Filter
 
       def initialize: (
+        portout_id: String,
         ?filter: Telnyx::PortoutListRejectionCodesParams::Filter,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
+        portout_id: String,
         filter: Telnyx::PortoutListRejectionCodesParams::Filter,
         request_options: Telnyx::RequestOptions
       }

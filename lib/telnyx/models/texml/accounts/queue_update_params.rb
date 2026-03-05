@@ -14,14 +14,21 @@ module Telnyx
           #   @return [String]
           required :account_sid, String
 
+          # @!attribute queue_sid
+          #
+          #   @return [String]
+          required :queue_sid, String
+
           # @!attribute max_size
           #   The maximum size of the queue.
           #
           #   @return [Integer, nil]
           optional :max_size, Integer, api_name: :MaxSize
 
-          # @!method initialize(account_sid:, max_size: nil, request_options: {})
+          # @!method initialize(account_sid:, queue_sid:, max_size: nil, request_options: {})
           #   @param account_sid [String]
+          #
+          #   @param queue_sid [String]
           #
           #   @param max_size [Integer] The maximum size of the queue.
           #

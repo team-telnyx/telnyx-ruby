@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::FqdnUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # ID of the FQDN connection to which this IP should be attached.
       sig { returns(T.nilable(String)) }
       attr_reader :connection_id
@@ -41,6 +44,7 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           connection_id: String,
           dns_record_type: String,
           fqdn: String,
@@ -49,6 +53,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # ID of the FQDN connection to which this IP should be attached.
         connection_id: nil,
         # The DNS record type for the FQDN. For cases where a port is not set, the DNS
@@ -67,6 +72,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             connection_id: String,
             dns_record_type: String,
             fqdn: String,

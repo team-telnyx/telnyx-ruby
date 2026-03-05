@@ -12,6 +12,9 @@ module Telnyx
             T.any(Telnyx::Calls::ActionEnqueueParams, Telnyx::Internal::AnyHash)
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # The name of the queue the call should be put in. If a queue with a given name
         # doesn't exist yet it will be created.
         sig { returns(String) }
@@ -59,6 +62,7 @@ module Telnyx
 
         sig do
           params(
+            call_control_id: String,
             queue_name: String,
             client_state: String,
             command_id: String,
@@ -69,6 +73,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id:,
           # The name of the queue the call should be put in. If a queue with a given name
           # doesn't exist yet it will be created.
           queue_name:,
@@ -94,6 +99,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              call_control_id: String,
               queue_name: String,
               client_state: String,
               command_id: String,

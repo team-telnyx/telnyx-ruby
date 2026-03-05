@@ -2,12 +2,19 @@ module Telnyx
   module Models
     module AI
       type assistant_chat_params =
-        { content: String, conversation_id: String, name: String }
+        {
+          assistant_id: String,
+          content: String,
+          conversation_id: String,
+          name: String
+        }
         & Telnyx::Internal::Type::request_parameters
 
       class AssistantChatParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor assistant_id: String
 
         attr_accessor content: String
 
@@ -18,6 +25,7 @@ module Telnyx
         def name=: (String) -> String
 
         def initialize: (
+          assistant_id: String,
           content: String,
           conversation_id: String,
           ?name: String,
@@ -25,6 +33,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          assistant_id: String,
           content: String,
           conversation_id: String,
           name: String,

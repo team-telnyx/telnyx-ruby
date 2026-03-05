@@ -3,12 +3,19 @@ module Telnyx
     module AI
       module Conversations
         type insight_group_update_params =
-          { description: String, name: String, webhook: String }
+          {
+            group_id: String,
+            description: String,
+            name: String,
+            webhook: String
+          }
           & Telnyx::Internal::Type::request_parameters
 
         class InsightGroupUpdateParams < Telnyx::Internal::Type::BaseModel
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor group_id: String
 
           attr_reader description: String?
 
@@ -23,6 +30,7 @@ module Telnyx
           def webhook=: (String) -> String
 
           def initialize: (
+            group_id: String,
             ?description: String,
             ?name: String,
             ?webhook: String,
@@ -30,6 +38,7 @@ module Telnyx
           ) -> void
 
           def to_hash: -> {
+            group_id: String,
             description: String,
             name: String,
             webhook: String,

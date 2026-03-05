@@ -9,7 +9,13 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
-          # @!method initialize(request_options: {})
+          # @!attribute conversation_id
+          #
+          #   @return [String]
+          required :conversation_id, String
+
+          # @!method initialize(conversation_id:, request_options: {})
+          #   @param conversation_id [String]
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end
       end

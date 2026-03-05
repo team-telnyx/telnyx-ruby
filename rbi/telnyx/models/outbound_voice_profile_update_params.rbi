@@ -14,6 +14,9 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # A user-supplied name to help with organization.
       sig { returns(String) }
       attr_accessor :name
@@ -121,6 +124,7 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           name: String,
           billing_group_id: T.nilable(String),
           call_recording: Telnyx::OutboundCallRecording::OrHash,
@@ -140,6 +144,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # A user-supplied name to help with organization.
         name:,
         # The ID of the billing group associated with the outbound proflile. Defaults to
@@ -180,6 +185,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             name: String,
             billing_group_id: T.nilable(String),
             call_recording: Telnyx::OutboundCallRecording,

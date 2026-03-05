@@ -3,6 +3,7 @@ module Telnyx
     module PortingOrders
       type action_share_params =
         {
+          id: String,
           expires_in_seconds: Integer,
           permissions: Telnyx::Models::PortingOrders::ActionShareParams::permissions
         }
@@ -11,6 +12,8 @@ module Telnyx
       class ActionShareParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor id: String
 
         attr_reader expires_in_seconds: Integer?
 
@@ -23,12 +26,14 @@ module Telnyx
         ) -> Telnyx::Models::PortingOrders::ActionShareParams::permissions
 
         def initialize: (
+          id: String,
           ?expires_in_seconds: Integer,
           ?permissions: Telnyx::Models::PortingOrders::ActionShareParams::permissions,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
+          id: String,
           expires_in_seconds: Integer,
           permissions: Telnyx::Models::PortingOrders::ActionShareParams::permissions,
           request_options: Telnyx::RequestOptions

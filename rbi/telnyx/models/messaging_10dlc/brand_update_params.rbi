@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :brand_id
+
         # ISO2 2 characters country code. Example: US - United States
         sig { returns(String) }
         attr_accessor :country
@@ -204,6 +207,7 @@ module Telnyx
 
         sig do
           params(
+            brand_id: String,
             country: String,
             display_name: String,
             email: String,
@@ -235,6 +239,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          brand_id:,
           # ISO2 2 characters country code. Example: US - United States
           country:,
           # Display or marketing name of the brand.
@@ -295,6 +300,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              brand_id: String,
               country: String,
               display_name: String,
               email: String,

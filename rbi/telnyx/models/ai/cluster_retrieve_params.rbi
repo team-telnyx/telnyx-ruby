@@ -12,6 +12,9 @@ module Telnyx
             T.any(Telnyx::AI::ClusterRetrieveParams, Telnyx::Internal::AnyHash)
           end
 
+        sig { returns(String) }
+        attr_accessor :task_id
+
         # Whether or not to include subclusters and their nodes in the response.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :show_subclusters
@@ -29,12 +32,14 @@ module Telnyx
 
         sig do
           params(
+            task_id: String,
             show_subclusters: T::Boolean,
             top_n_nodes: Integer,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          task_id:,
           # Whether or not to include subclusters and their nodes in the response.
           show_subclusters: nil,
           # The number of nodes in the cluster to return in the response. Nodes will be
@@ -47,6 +52,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              task_id: String,
               show_subclusters: T::Boolean,
               top_n_nodes: Integer,
               request_options: Telnyx::RequestOptions

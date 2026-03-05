@@ -9,6 +9,11 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
+          # @!attribute mission_id
+          #
+          #   @return [String]
+          required :mission_id, String
+
           # @!attribute page_number
           #   Page number (1-based)
           #
@@ -26,7 +31,9 @@ module Telnyx
           #   @return [String, nil]
           optional :status, String
 
-          # @!method initialize(page_number: nil, page_size: nil, status: nil, request_options: {})
+          # @!method initialize(mission_id:, page_number: nil, page_size: nil, status: nil, request_options: {})
+          #   @param mission_id [String]
+          #
           #   @param page_number [Integer] Page number (1-based)
           #
           #   @param page_size [Integer] Number of items per page

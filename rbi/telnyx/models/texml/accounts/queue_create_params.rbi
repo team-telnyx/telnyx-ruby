@@ -16,6 +16,9 @@ module Telnyx
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :account_sid
+
           # A human readable name for the queue.
           sig { returns(T.nilable(String)) }
           attr_reader :friendly_name
@@ -32,12 +35,14 @@ module Telnyx
 
           sig do
             params(
+              account_sid: String,
               friendly_name: String,
               max_size: Integer,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
+            account_sid:,
             # A human readable name for the queue.
             friendly_name: nil,
             # The maximum size of the queue.
@@ -49,6 +54,7 @@ module Telnyx
           sig do
             override.returns(
               {
+                account_sid: String,
                 friendly_name: String,
                 max_size: Integer,
                 request_options: Telnyx::RequestOptions

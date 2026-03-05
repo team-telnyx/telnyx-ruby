@@ -7,13 +7,20 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute time_frame
       #   The time frame for metrics.
       #
       #   @return [Symbol, Telnyx::Models::MessagingProfileRetrieveMetricsParams::TimeFrame, nil]
       optional :time_frame, enum: -> { Telnyx::MessagingProfileRetrieveMetricsParams::TimeFrame }
 
-      # @!method initialize(time_frame: nil, request_options: {})
+      # @!method initialize(id:, time_frame: nil, request_options: {})
+      #   @param id [String]
+      #
       #   @param time_frame [Symbol, Telnyx::Models::MessagingProfileRetrieveMetricsParams::TimeFrame] The time frame for metrics.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]

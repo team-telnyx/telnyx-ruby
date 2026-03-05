@@ -20,6 +20,9 @@ module Telnyx
             sig { returns(String) }
             attr_accessor :mission_id
 
+            sig { returns(String) }
+            attr_accessor :run_id
+
             sig do
               returns(
                 T::Array[
@@ -32,6 +35,7 @@ module Telnyx
             sig do
               params(
                 mission_id: String,
+                run_id: String,
                 steps:
                   T::Array[
                     Telnyx::AI::Missions::Runs::PlanAddStepsToPlanParams::Step::OrHash
@@ -39,13 +43,14 @@ module Telnyx
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(T.attached_class)
             end
-            def self.new(mission_id:, steps:, request_options: {})
+            def self.new(mission_id:, run_id:, steps:, request_options: {})
             end
 
             sig do
               override.returns(
                 {
                   mission_id: String,
+                  run_id: String,
                   steps:
                     T::Array[
                       Telnyx::AI::Missions::Runs::PlanAddStepsToPlanParams::Step

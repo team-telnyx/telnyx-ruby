@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute include_pin_puk_codes
       #   When set to true, includes the PIN and PUK codes in the response. These codes
       #   are used for SIM card security and unlocking purposes. Available for both
@@ -21,9 +26,11 @@ module Telnyx
       #   @return [Boolean, nil]
       optional :include_sim_card_group, Telnyx::Internal::Type::Boolean
 
-      # @!method initialize(include_pin_puk_codes: nil, include_sim_card_group: nil, request_options: {})
+      # @!method initialize(id:, include_pin_puk_codes: nil, include_sim_card_group: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::SimCardRetrieveParams} for more details.
+      #
+      #   @param id [String]
       #
       #   @param include_pin_puk_codes [Boolean] When set to true, includes the PIN and PUK codes in the response. These codes ar
       #

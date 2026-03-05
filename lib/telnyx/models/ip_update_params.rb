@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute ip_address
       #   IP adddress represented by this resource.
       #
@@ -25,7 +30,9 @@ module Telnyx
       #   @return [Integer, nil]
       optional :port, Integer
 
-      # @!method initialize(ip_address:, connection_id: nil, port: nil, request_options: {})
+      # @!method initialize(id:, ip_address:, connection_id: nil, port: nil, request_options: {})
+      #   @param id [String]
+      #
       #   @param ip_address [String] IP adddress represented by this resource.
       #
       #   @param connection_id [String] ID of the IP Connection to which this IP should be attached.

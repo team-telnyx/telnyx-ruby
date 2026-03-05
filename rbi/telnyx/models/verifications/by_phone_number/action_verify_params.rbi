@@ -16,6 +16,10 @@ module Telnyx
               )
             end
 
+          # +E164 formatted phone number.
+          sig { returns(String) }
+          attr_accessor :phone_number
+
           # This is the code the user submits for verification.
           sig { returns(String) }
           attr_accessor :code
@@ -26,12 +30,15 @@ module Telnyx
 
           sig do
             params(
+              phone_number: String,
               code: String,
               verify_profile_id: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
+            # +E164 formatted phone number.
+            phone_number:,
             # This is the code the user submits for verification.
             code:,
             # The identifier of the associated Verify profile.
@@ -43,6 +50,7 @@ module Telnyx
           sig do
             override.returns(
               {
+                phone_number: String,
                 code: String,
                 verify_profile_id: String,
                 request_options: Telnyx::RequestOptions

@@ -16,6 +16,9 @@ module Telnyx
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :account_sid
+
           # Filters calls by their end date. Expected format is YYYY-MM-DD
           sig { returns(T.nilable(String)) }
           attr_reader :end_time
@@ -114,6 +117,7 @@ module Telnyx
 
           sig do
             params(
+              account_sid: String,
               end_time: String,
               end_time_gt: String,
               end_time_lt: String,
@@ -131,6 +135,7 @@ module Telnyx
             ).returns(T.attached_class)
           end
           def self.new(
+            account_sid:,
             # Filters calls by their end date. Expected format is YYYY-MM-DD
             end_time: nil,
             # Filters calls by their end date (after). Expected format is YYYY-MM-DD
@@ -163,6 +168,7 @@ module Telnyx
           sig do
             override.returns(
               {
+                account_sid: String,
                 end_time: String,
                 end_time_gt: String,
                 end_time_lt: String,

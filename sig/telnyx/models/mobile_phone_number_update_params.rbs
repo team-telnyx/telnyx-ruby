@@ -2,6 +2,7 @@ module Telnyx
   module Models
     type mobile_phone_number_update_params =
       {
+        id: String,
         call_forwarding: Telnyx::MobilePhoneNumberUpdateParams::CallForwarding,
         call_recording: Telnyx::MobilePhoneNumberUpdateParams::CallRecording,
         caller_id_name_enabled: bool,
@@ -19,6 +20,8 @@ module Telnyx
     class MobilePhoneNumberUpdateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor id: String
 
       attr_reader call_forwarding: Telnyx::MobilePhoneNumberUpdateParams::CallForwarding?
 
@@ -73,6 +76,7 @@ module Telnyx
       def tags=: (::Array[String]) -> ::Array[String]
 
       def initialize: (
+        id: String,
         ?call_forwarding: Telnyx::MobilePhoneNumberUpdateParams::CallForwarding,
         ?call_recording: Telnyx::MobilePhoneNumberUpdateParams::CallRecording,
         ?caller_id_name_enabled: bool,
@@ -88,6 +92,7 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
+        id: String,
         call_forwarding: Telnyx::MobilePhoneNumberUpdateParams::CallForwarding,
         call_recording: Telnyx::MobilePhoneNumberUpdateParams::CallRecording,
         caller_id_name_enabled: bool,

@@ -8,6 +8,12 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute conversation_id
+        #   The ID of the conversation
+        #
+        #   @return [String]
+        required :conversation_id, String
+
         # @!attribute role
         #
         #   @return [String]
@@ -50,15 +56,25 @@ module Telnyx
         #   @return [String, Hash{Symbol=>Object}, nil]
         optional :tool_choice, union: -> { Telnyx::AI::ConversationAddMessageParams::ToolChoice }
 
-        # @!method initialize(role:, content: nil, metadata: nil, name: nil, sent_at: nil, tool_call_id: nil, tool_calls: nil, tool_choice: nil, request_options: {})
+        # @!method initialize(conversation_id:, role:, content: nil, metadata: nil, name: nil, sent_at: nil, tool_call_id: nil, tool_calls: nil, tool_choice: nil, request_options: {})
+        #   @param conversation_id [String] The ID of the conversation
+        #
         #   @param role [String]
+        #
         #   @param content [String]
+        #
         #   @param metadata [Hash{Symbol=>String, Integer, Boolean, Array<String, Integer, Boolean>}]
+        #
         #   @param name [String]
+        #
         #   @param sent_at [Time]
+        #
         #   @param tool_call_id [String]
+        #
         #   @param tool_calls [Array<Hash{Symbol=>Object}>]
+        #
         #   @param tool_choice [String, Hash{Symbol=>Object}]
+        #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
         module Metadata

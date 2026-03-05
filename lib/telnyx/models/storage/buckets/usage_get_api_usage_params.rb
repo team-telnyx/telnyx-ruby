@@ -9,6 +9,11 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
+          # @!attribute bucket_name
+          #
+          #   @return [String]
+          required :bucket_name, String
+
           # @!attribute filter
           #   Consolidated filter parameter (deepObject style). Originally:
           #   filter[start_time], filter[end_time]
@@ -16,9 +21,11 @@ module Telnyx
           #   @return [Telnyx::Models::Storage::Buckets::UsageGetAPIUsageParams::Filter]
           required :filter, -> { Telnyx::Storage::Buckets::UsageGetAPIUsageParams::Filter }
 
-          # @!method initialize(filter:, request_options: {})
+          # @!method initialize(bucket_name:, filter:, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Storage::Buckets::UsageGetAPIUsageParams} for more details.
+          #
+          #   @param bucket_name [String]
           #
           #   @param filter [Telnyx::Models::Storage::Buckets::UsageGetAPIUsageParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[start_time]
           #

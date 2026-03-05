@@ -2,6 +2,7 @@ module Telnyx
   module Models
     type porting_order_update_params =
       {
+        id: String,
         activation_settings: Telnyx::PortingOrderUpdateParams::ActivationSettings,
         customer_group_reference: String,
         customer_reference: String,
@@ -20,6 +21,8 @@ module Telnyx
     class PortingOrderUpdateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor id: String
 
       attr_reader activation_settings: Telnyx::PortingOrderUpdateParams::ActivationSettings?
 
@@ -82,6 +85,7 @@ module Telnyx
       def webhook_url=: (String) -> String
 
       def initialize: (
+        id: String,
         ?activation_settings: Telnyx::PortingOrderUpdateParams::ActivationSettings,
         ?customer_group_reference: String,
         ?customer_reference: String,
@@ -98,6 +102,7 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
+        id: String,
         activation_settings: Telnyx::PortingOrderUpdateParams::ActivationSettings,
         customer_group_reference: String,
         customer_reference: String,

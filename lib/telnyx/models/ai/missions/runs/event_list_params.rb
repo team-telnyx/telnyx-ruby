@@ -15,6 +15,11 @@ module Telnyx
             #   @return [String]
             required :mission_id, String
 
+            # @!attribute run_id
+            #
+            #   @return [String]
+            required :run_id, String
+
             # @!attribute agent_id
             #
             #   @return [String, nil]
@@ -42,8 +47,10 @@ module Telnyx
             #   @return [String, nil]
             optional :type, String
 
-            # @!method initialize(mission_id:, agent_id: nil, page_number: nil, page_size: nil, step_id: nil, type: nil, request_options: {})
+            # @!method initialize(mission_id:, run_id:, agent_id: nil, page_number: nil, page_size: nil, step_id: nil, type: nil, request_options: {})
             #   @param mission_id [String]
+            #
+            #   @param run_id [String]
             #
             #   @param agent_id [String]
             #

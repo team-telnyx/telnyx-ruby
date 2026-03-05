@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # Use this field to add state to every subsequent webhook. It must be a valid
         # Base-64 encoded string.
         sig { returns(String) }
@@ -22,11 +25,13 @@ module Telnyx
 
         sig do
           params(
+            call_control_id: String,
             client_state: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id:,
           # Use this field to add state to every subsequent webhook. It must be a valid
           # Base-64 encoded string.
           client_state:,
@@ -36,7 +41,11 @@ module Telnyx
 
         sig do
           override.returns(
-            { client_state: String, request_options: Telnyx::RequestOptions }
+            {
+              call_control_id: String,
+              client_state: String,
+              request_options: Telnyx::RequestOptions
+            }
           )
         end
         def to_hash

@@ -8,13 +8,20 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute address_uuid
+        #
+        #   @return [String]
+        required :address_uuid, String
+
         # @!attribute id
         #   The ID of the address.
         #
         #   @return [String, nil]
         optional :id, String
 
-        # @!method initialize(id: nil, request_options: {})
+        # @!method initialize(address_uuid:, id: nil, request_options: {})
+        #   @param address_uuid [String]
+        #
         #   @param id [String] The ID of the address.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]

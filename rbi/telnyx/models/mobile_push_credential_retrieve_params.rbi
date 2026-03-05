@@ -14,15 +14,26 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :push_credential_id
+
       sig do
-        params(request_options: Telnyx::RequestOptions::OrHash).returns(
-          T.attached_class
-        )
+        params(
+          push_credential_id: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(request_options: {})
+      def self.new(push_credential_id:, request_options: {})
       end
 
-      sig { override.returns({ request_options: Telnyx::RequestOptions }) }
+      sig do
+        override.returns(
+          {
+            push_credential_id: String,
+            request_options: Telnyx::RequestOptions
+          }
+        )
+      end
       def to_hash
       end
     end

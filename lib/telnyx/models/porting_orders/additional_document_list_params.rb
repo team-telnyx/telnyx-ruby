@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute filter
         #   Consolidated filter parameter (deepObject style). Originally:
         #   filter[document_type]
@@ -31,9 +36,11 @@ module Telnyx
         #   @return [Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Sort, nil]
         optional :sort, -> { Telnyx::PortingOrders::AdditionalDocumentListParams::Sort }
 
-        # @!method initialize(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+        # @!method initialize(id:, filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::PortingOrders::AdditionalDocumentListParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param filter [Telnyx::Models::PortingOrders::AdditionalDocumentListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[document_ty
         #

@@ -8,7 +8,13 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
-        # @!method initialize(request_options: {})
+        # @!attribute mcp_server_id
+        #
+        #   @return [String]
+        required :mcp_server_id, String
+
+        # @!method initialize(mcp_server_id:, request_options: {})
+        #   @param mcp_server_id [String]
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end
     end

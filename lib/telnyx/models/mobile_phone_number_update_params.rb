@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute call_forwarding
       #
       #   @return [Telnyx::Models::MobilePhoneNumberUpdateParams::CallForwarding, nil]
@@ -62,7 +67,8 @@ module Telnyx
       #   @return [Array<String>, nil]
       optional :tags, Telnyx::Internal::Type::ArrayOf[String]
 
-      # @!method initialize(call_forwarding: nil, call_recording: nil, caller_id_name_enabled: nil, cnam_listing: nil, connection_id: nil, customer_reference: nil, inbound: nil, inbound_call_screening: nil, noise_suppression: nil, outbound: nil, tags: nil, request_options: {})
+      # @!method initialize(id:, call_forwarding: nil, call_recording: nil, caller_id_name_enabled: nil, cnam_listing: nil, connection_id: nil, customer_reference: nil, inbound: nil, inbound_call_screening: nil, noise_suppression: nil, outbound: nil, tags: nil, request_options: {})
+      #   @param id [String]
       #   @param call_forwarding [Telnyx::Models::MobilePhoneNumberUpdateParams::CallForwarding]
       #   @param call_recording [Telnyx::Models::MobilePhoneNumberUpdateParams::CallRecording]
       #   @param caller_id_name_enabled [Boolean]

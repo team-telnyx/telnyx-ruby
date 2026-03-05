@@ -21,6 +21,9 @@ module Telnyx
             attr_accessor :mission_id
 
             sig { returns(String) }
+            attr_accessor :run_id
+
+            sig { returns(String) }
             attr_accessor :summary
 
             sig do
@@ -58,6 +61,7 @@ module Telnyx
             sig do
               params(
                 mission_id: String,
+                run_id: String,
                 summary: String,
                 type:
                   Telnyx::AI::Missions::Runs::EventLogParams::Type::OrSymbol,
@@ -70,6 +74,7 @@ module Telnyx
             end
             def self.new(
               mission_id:,
+              run_id:,
               summary:,
               type:,
               agent_id: nil,
@@ -85,6 +90,7 @@ module Telnyx
               override.returns(
                 {
                   mission_id: String,
+                  run_id: String,
                   summary: String,
                   type:
                     Telnyx::AI::Missions::Runs::EventLogParams::Type::OrSymbol,

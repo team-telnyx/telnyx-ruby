@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # Filter parameter for civic addresses (deepObject style). Supports filtering by
         # country.
         sig do
@@ -36,12 +39,14 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             filter:
               Telnyx::ExternalConnections::CivicAddressListParams::Filter::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # Filter parameter for civic addresses (deepObject style). Supports filtering by
           # country.
           filter: nil,
@@ -52,6 +57,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               filter:
                 Telnyx::ExternalConnections::CivicAddressListParams::Filter,
               request_options: Telnyx::RequestOptions

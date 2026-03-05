@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # The new bundle_id setting for the number. If you are assigning the number to a
         # bundle, this is the unique ID of the bundle you wish to use. If you are removing
         # the number from a bundle, this must be null. You cannot assign a number from one
@@ -25,11 +28,13 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             bundle_id: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # The new bundle_id setting for the number. If you are assigning the number to a
           # bundle, this is the unique ID of the bundle you wish to use. If you are removing
           # the number from a bundle, this must be null. You cannot assign a number from one
@@ -42,7 +47,11 @@ module Telnyx
 
         sig do
           override.returns(
-            { bundle_id: String, request_options: Telnyx::RequestOptions }
+            {
+              id: String,
+              bundle_id: String,
+              request_options: Telnyx::RequestOptions
+            }
           )
         end
         def to_hash

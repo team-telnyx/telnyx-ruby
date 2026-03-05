@@ -16,6 +16,10 @@ module Telnyx
               )
             end
 
+          # The ID of the insight
+          sig { returns(String) }
+          attr_accessor :insight_id
+
           sig { returns(T.nilable(String)) }
           attr_reader :instructions
 
@@ -53,6 +57,7 @@ module Telnyx
 
           sig do
             params(
+              insight_id: String,
               instructions: String,
               json_schema:
                 Telnyx::AI::Conversations::InsightUpdateParams::JsonSchema::Variants,
@@ -62,6 +67,8 @@ module Telnyx
             ).returns(T.attached_class)
           end
           def self.new(
+            # The ID of the insight
+            insight_id:,
             instructions: nil,
             json_schema: nil,
             name: nil,
@@ -73,6 +80,7 @@ module Telnyx
           sig do
             override.returns(
               {
+                insight_id: String,
                 instructions: String,
                 json_schema:
                   Telnyx::AI::Conversations::InsightUpdateParams::JsonSchema::Variants,

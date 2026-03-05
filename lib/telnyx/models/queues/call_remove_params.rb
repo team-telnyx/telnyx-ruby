@@ -13,8 +13,14 @@ module Telnyx
         #   @return [String]
         required :queue_name, String
 
-        # @!method initialize(queue_name:, request_options: {})
+        # @!attribute call_control_id
+        #
+        #   @return [String]
+        required :call_control_id, String
+
+        # @!method initialize(queue_name:, call_control_id:, request_options: {})
         #   @param queue_name [String]
+        #   @param call_control_id [String]
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end
     end

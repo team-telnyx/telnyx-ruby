@@ -14,6 +14,9 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # The time frame for metrics.
       sig do
         returns(
@@ -34,12 +37,14 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           time_frame:
             Telnyx::MessagingProfileRetrieveMetricsParams::TimeFrame::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # The time frame for metrics.
         time_frame: nil,
         request_options: {}
@@ -49,6 +54,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             time_frame:
               Telnyx::MessagingProfileRetrieveMetricsParams::TimeFrame::OrSymbol,
             request_options: Telnyx::RequestOptions

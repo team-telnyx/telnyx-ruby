@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute campaign_id
+        #
+        #   @return [String]
+        required :campaign_id, String
+
         # @!attribute appeal_reason
         #   Detailed explanation of why the campaign should be reconsidered and what changes
         #   have been made to address the rejection reason.
@@ -15,9 +20,11 @@ module Telnyx
         #   @return [String]
         required :appeal_reason, String
 
-        # @!method initialize(appeal_reason:, request_options: {})
+        # @!method initialize(campaign_id:, appeal_reason:, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Messaging10dlc::CampaignSubmitAppealParams} for more details.
+        #
+        #   @param campaign_id [String]
         #
         #   @param appeal_reason [String] Detailed explanation of why the campaign should be reconsidered and what changes
         #

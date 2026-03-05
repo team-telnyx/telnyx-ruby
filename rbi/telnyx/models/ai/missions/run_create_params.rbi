@@ -16,6 +16,9 @@ module Telnyx
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :mission_id
+
           sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
           attr_reader :input
 
@@ -30,17 +33,24 @@ module Telnyx
 
           sig do
             params(
+              mission_id: String,
               input: T::Hash[Symbol, T.anything],
               metadata: T::Hash[Symbol, T.anything],
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
-          def self.new(input: nil, metadata: nil, request_options: {})
+          def self.new(
+            mission_id:,
+            input: nil,
+            metadata: nil,
+            request_options: {}
+          )
           end
 
           sig do
             override.returns(
               {
+                mission_id: String,
                 input: T::Hash[Symbol, T.anything],
                 metadata: T::Hash[Symbol, T.anything],
                 request_options: Telnyx::RequestOptions

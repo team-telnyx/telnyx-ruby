@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute campaign_id
+        #
+        #   @return [String]
+        required :campaign_id, String
+
         # @!attribute auto_renewal
         #   Help message of the campaign.
         #
@@ -75,9 +80,11 @@ module Telnyx
         #   @return [String, nil]
         optional :webhook_url, String, api_name: :webhookURL
 
-        # @!method initialize(auto_renewal: nil, help_message: nil, message_flow: nil, reseller_id: nil, sample1: nil, sample2: nil, sample3: nil, sample4: nil, sample5: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+        # @!method initialize(campaign_id:, auto_renewal: nil, help_message: nil, message_flow: nil, reseller_id: nil, sample1: nil, sample2: nil, sample3: nil, sample4: nil, sample5: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Messaging10dlc::CampaignUpdateParams} for more details.
+        #
+        #   @param campaign_id [String]
         #
         #   @param auto_renewal [Boolean] Help message of the campaign.
         #

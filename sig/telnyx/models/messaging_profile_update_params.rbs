@@ -2,6 +2,7 @@ module Telnyx
   module Models
     type messaging_profile_update_params =
       {
+        messaging_profile_id: String,
         alpha_sender: String?,
         daily_spend_limit: String,
         daily_spend_limit_enabled: bool,
@@ -24,6 +25,8 @@ module Telnyx
     class MessagingProfileUpdateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor messaging_profile_id: String
 
       attr_accessor alpha_sender: String?
 
@@ -82,6 +85,7 @@ module Telnyx
       def whitelisted_destinations=: (::Array[String]) -> ::Array[String]
 
       def initialize: (
+        messaging_profile_id: String,
         ?alpha_sender: String?,
         ?daily_spend_limit: String,
         ?daily_spend_limit_enabled: bool,
@@ -102,6 +106,7 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
+        messaging_profile_id: String,
         alpha_sender: String?,
         daily_spend_limit: String,
         daily_spend_limit_enabled: bool,

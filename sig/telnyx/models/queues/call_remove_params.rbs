@@ -2,7 +2,8 @@ module Telnyx
   module Models
     module Queues
       type call_remove_params =
-        { queue_name: String } & Telnyx::Internal::Type::request_parameters
+        { queue_name: String, call_control_id: String }
+        & Telnyx::Internal::Type::request_parameters
 
       class CallRemoveParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
@@ -10,13 +11,17 @@ module Telnyx
 
         attr_accessor queue_name: String
 
+        attr_accessor call_control_id: String
+
         def initialize: (
           queue_name: String,
+          call_control_id: String,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           queue_name: String,
+          call_control_id: String,
           request_options: Telnyx::RequestOptions
         }
       end

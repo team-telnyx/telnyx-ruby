@@ -3,6 +3,7 @@ module Telnyx
     module PhoneNumbers
       type messaging_update_params =
         {
+          id: String,
           messaging_product: String,
           messaging_profile_id: String,
           tags: ::Array[String]
@@ -12,6 +13,8 @@ module Telnyx
       class MessagingUpdateParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor id: String
 
         attr_reader messaging_product: String?
 
@@ -26,6 +29,7 @@ module Telnyx
         def tags=: (::Array[String]) -> ::Array[String]
 
         def initialize: (
+          id: String,
           ?messaging_product: String,
           ?messaging_profile_id: String,
           ?tags: ::Array[String],
@@ -33,6 +37,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          id: String,
           messaging_product: String,
           messaging_profile_id: String,
           tags: ::Array[String],

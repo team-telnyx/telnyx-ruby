@@ -15,17 +15,22 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # The identification of the related Private Wireless Gateway resource.
         sig { returns(String) }
         attr_accessor :private_wireless_gateway_id
 
         sig do
           params(
+            id: String,
             private_wireless_gateway_id: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # The identification of the related Private Wireless Gateway resource.
           private_wireless_gateway_id:,
           request_options: {}
@@ -35,6 +40,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               private_wireless_gateway_id: String,
               request_options: Telnyx::RequestOptions
             }

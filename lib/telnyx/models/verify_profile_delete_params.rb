@@ -7,7 +7,13 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      # @!method initialize(request_options: {})
+      # @!attribute verify_profile_id
+      #
+      #   @return [String]
+      required :verify_profile_id, String
+
+      # @!method initialize(verify_profile_id:, request_options: {})
+      #   @param verify_profile_id [String]
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end
   end

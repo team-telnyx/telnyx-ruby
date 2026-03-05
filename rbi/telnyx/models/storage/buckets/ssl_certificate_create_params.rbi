@@ -16,6 +16,9 @@ module Telnyx
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :bucket_name
+
           # The SSL certificate file
           sig { returns(T.nilable(Telnyx::Internal::FileInput)) }
           attr_reader :certificate
@@ -32,12 +35,14 @@ module Telnyx
 
           sig do
             params(
+              bucket_name: String,
               certificate: Telnyx::Internal::FileInput,
               private_key: Telnyx::Internal::FileInput,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
+            bucket_name:,
             # The SSL certificate file
             certificate: nil,
             # The private key file
@@ -49,6 +54,7 @@ module Telnyx
           sig do
             override.returns(
               {
+                bucket_name: String,
                 certificate: Telnyx::Internal::FileInput,
                 private_key: Telnyx::Internal::FileInput,
                 request_options: Telnyx::RequestOptions

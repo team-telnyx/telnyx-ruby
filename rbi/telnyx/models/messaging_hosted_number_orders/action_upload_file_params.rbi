@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # Must be the last month's bill with proof of ownership of all of the numbers in
         # the order in PDF format.
         sig { returns(T.nilable(Telnyx::Internal::FileInput)) }
@@ -32,12 +35,14 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             bill: Telnyx::Internal::FileInput,
             loa: Telnyx::Internal::FileInput,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # Must be the last month's bill with proof of ownership of all of the numbers in
           # the order in PDF format.
           bill: nil,
@@ -50,6 +55,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               bill: Telnyx::Internal::FileInput,
               loa: Telnyx::Internal::FileInput,
               request_options: Telnyx::RequestOptions

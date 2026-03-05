@@ -9,6 +9,12 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
+          # @!attribute group_id
+          #   The ID of the insight group
+          #
+          #   @return [String]
+          required :group_id, String
+
           # @!attribute description
           #
           #   @return [String, nil]
@@ -24,10 +30,15 @@ module Telnyx
           #   @return [String, nil]
           optional :webhook, String
 
-          # @!method initialize(description: nil, name: nil, webhook: nil, request_options: {})
+          # @!method initialize(group_id:, description: nil, name: nil, webhook: nil, request_options: {})
+          #   @param group_id [String] The ID of the insight group
+          #
           #   @param description [String]
+          #
           #   @param name [String]
+          #
           #   @param webhook [String]
+          #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end
       end

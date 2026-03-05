@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute account_sid
+        #
+        #   @return [String]
+        required :account_sid, String
+
         # @!attribute date_created
         #   Filters recording by the creation date. Expected format is ISO8601 date or
         #   date-time, ie. {YYYY}-{MM}-{DD} or {YYYY}-{MM}-{DD}T{hh}:{mm}:{ss}Z. Also
@@ -29,9 +34,11 @@ module Telnyx
         #   @return [Integer, nil]
         optional :page_size, Integer
 
-        # @!method initialize(date_created: nil, page: nil, page_size: nil, request_options: {})
+        # @!method initialize(account_sid:, date_created: nil, page: nil, page_size: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Texml::AccountRetrieveRecordingsJsonParams} for more details.
+        #
+        #   @param account_sid [String]
         #
         #   @param date_created [Time] Filters recording by the creation date. Expected format is ISO8601 date or date-
         #

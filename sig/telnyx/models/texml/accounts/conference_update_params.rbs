@@ -5,6 +5,7 @@ module Telnyx
         type conference_update_params =
           {
             account_sid: String,
+            conference_sid: String,
             announce_method: Telnyx::Models::Texml::Accounts::ConferenceUpdateParams::announce_method,
             announce_url: String,
             status: String
@@ -16,6 +17,8 @@ module Telnyx
           include Telnyx::Internal::Type::RequestParameters
 
           attr_accessor account_sid: String
+
+          attr_accessor conference_sid: String
 
           attr_reader announce_method: Telnyx::Models::Texml::Accounts::ConferenceUpdateParams::announce_method?
 
@@ -33,6 +36,7 @@ module Telnyx
 
           def initialize: (
             account_sid: String,
+            conference_sid: String,
             ?announce_method: Telnyx::Models::Texml::Accounts::ConferenceUpdateParams::announce_method,
             ?announce_url: String,
             ?status: String,
@@ -41,6 +45,7 @@ module Telnyx
 
           def to_hash: -> {
             account_sid: String,
+            conference_sid: String,
             announce_method: Telnyx::Models::Texml::Accounts::ConferenceUpdateParams::announce_method,
             announce_url: String,
             status: String,

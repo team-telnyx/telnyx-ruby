@@ -12,6 +12,9 @@ module Telnyx
             T.any(Telnyx::Calls::ActionSpeakParams, Telnyx::Internal::AnyHash)
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # The text or SSML to be converted into speech. There is a 3,000 character limit.
         sig { returns(String) }
         attr_accessor :payload
@@ -194,6 +197,7 @@ module Telnyx
 
         sig do
           params(
+            call_control_id: String,
             payload: String,
             voice: String,
             client_state: String,
@@ -220,6 +224,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id:,
           # The text or SSML to be converted into speech. There is a 3,000 character limit.
           payload:,
           # Specifies the voice used in speech synthesis.
@@ -297,6 +302,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              call_control_id: String,
               payload: String,
               voice: String,
               client_state: String,

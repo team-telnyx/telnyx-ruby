@@ -20,6 +20,9 @@ module Telnyx
             sig { returns(String) }
             attr_accessor :account_sid
 
+            sig { returns(String) }
+            attr_accessor :call_sid
+
             # Whether to play a beep when recording is started.
             sig { returns(T.nilable(T::Boolean)) }
             attr_reader :play_beep
@@ -108,6 +111,7 @@ module Telnyx
             sig do
               params(
                 account_sid: String,
+                call_sid: String,
                 play_beep: T::Boolean,
                 recording_channels:
                   Telnyx::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::RecordingChannels::OrSymbol,
@@ -123,6 +127,7 @@ module Telnyx
             end
             def self.new(
               account_sid:,
+              call_sid:,
               # Whether to play a beep when recording is started.
               play_beep: nil,
               # When `dual`, final audio file has the first leg on channel A, and the rest on
@@ -148,6 +153,7 @@ module Telnyx
               override.returns(
                 {
                   account_sid: String,
+                  call_sid: String,
                   play_beep: T::Boolean,
                   recording_channels:
                     Telnyx::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::RecordingChannels::OrSymbol,

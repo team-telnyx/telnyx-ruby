@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute activation_settings
       #
       #   @return [Telnyx::Models::PortingOrderUpdateParams::ActivationSettings, nil]
@@ -75,9 +80,11 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String
 
-      # @!method initialize(activation_settings: nil, customer_group_reference: nil, customer_reference: nil, documents: nil, end_user: nil, messaging: nil, misc: nil, phone_number_configuration: nil, requirement_group_id: nil, requirements: nil, user_feedback: nil, webhook_url: nil, request_options: {})
+      # @!method initialize(id:, activation_settings: nil, customer_group_reference: nil, customer_reference: nil, documents: nil, end_user: nil, messaging: nil, misc: nil, phone_number_configuration: nil, requirement_group_id: nil, requirements: nil, user_feedback: nil, webhook_url: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::PortingOrderUpdateParams} for more details.
+      #
+      #   @param id [String]
       #
       #   @param activation_settings [Telnyx::Models::PortingOrderUpdateParams::ActivationSettings]
       #

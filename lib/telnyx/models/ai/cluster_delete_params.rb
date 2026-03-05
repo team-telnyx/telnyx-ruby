@@ -8,7 +8,13 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
-        # @!method initialize(request_options: {})
+        # @!attribute task_id
+        #
+        #   @return [String]
+        required :task_id, String
+
+        # @!method initialize(task_id:, request_options: {})
+        #   @param task_id [String]
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end
     end

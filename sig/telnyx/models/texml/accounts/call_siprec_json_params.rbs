@@ -5,6 +5,7 @@ module Telnyx
         type call_siprec_json_params =
           {
             account_sid: String,
+            call_sid: String,
             connector_name: String,
             include_metadata_custom_headers: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::include_metadata_custom_headers,
             name: String,
@@ -22,6 +23,8 @@ module Telnyx
           include Telnyx::Internal::Type::RequestParameters
 
           attr_accessor account_sid: String
+
+          attr_accessor call_sid: String
 
           attr_reader connector_name: String?
 
@@ -71,6 +74,7 @@ module Telnyx
 
           def initialize: (
             account_sid: String,
+            call_sid: String,
             ?connector_name: String,
             ?include_metadata_custom_headers: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::include_metadata_custom_headers,
             ?name: String,
@@ -85,6 +89,7 @@ module Telnyx
 
           def to_hash: -> {
             account_sid: String,
+            call_sid: String,
             connector_name: String,
             include_metadata_custom_headers: Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::include_metadata_custom_headers,
             name: String,

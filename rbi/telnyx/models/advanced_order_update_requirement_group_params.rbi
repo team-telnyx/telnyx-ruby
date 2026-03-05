@@ -14,15 +14,23 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :advanced_order_id
+
       sig do
-        params(request_options: Telnyx::RequestOptions::OrHash).returns(
-          T.attached_class
-        )
+        params(
+          advanced_order_id: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(request_options: {})
+      def self.new(advanced_order_id:, request_options: {})
       end
 
-      sig { override.returns({ request_options: Telnyx::RequestOptions }) }
+      sig do
+        override.returns(
+          { advanced_order_id: String, request_options: Telnyx::RequestOptions }
+        )
+      end
       def to_hash
       end
     end

@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # List of unique identifiers and tokens for controlling the call. Enter each call
         # control ID to be unmuted. When empty all participants will be unmuted.
         sig { returns(T.nilable(T::Array[String])) }
@@ -41,12 +44,14 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             call_control_ids: T::Array[String],
             region: Telnyx::Conferences::ActionUnmuteParams::Region::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # List of unique identifiers and tokens for controlling the call. Enter each call
           # control ID to be unmuted. When empty all participants will be unmuted.
           call_control_ids: nil,
@@ -60,6 +65,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               call_control_ids: T::Array[String],
               region: Telnyx::Conferences::ActionUnmuteParams::Region::OrSymbol,
               request_options: Telnyx::RequestOptions

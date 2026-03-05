@@ -18,6 +18,9 @@ module Telnyx
                   )
                 end
 
+              sig { returns(String) }
+              attr_accessor :suite_name
+
               # Optional assistant version ID to use for all test runs in this suite. If
               # provided, the version must exist or a 400 error will be returned. If not
               # provided, test will run on main version
@@ -29,11 +32,13 @@ module Telnyx
 
               sig do
                 params(
+                  suite_name: String,
                   destination_version_id: String,
                   request_options: Telnyx::RequestOptions::OrHash
                 ).returns(T.attached_class)
               end
               def self.new(
+                suite_name:,
                 # Optional assistant version ID to use for all test runs in this suite. If
                 # provided, the version must exist or a 400 error will be returned. If not
                 # provided, test will run on main version
@@ -45,6 +50,7 @@ module Telnyx
               sig do
                 override.returns(
                   {
+                    suite_name: String,
                     destination_version_id: String,
                     request_options: Telnyx::RequestOptions
                   }

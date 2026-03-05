@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # The audio file format used when storing the conference recording. Can be either
         # `mp3` or `wav`.
         sig do
@@ -105,6 +108,7 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             format_:
               Telnyx::Conferences::ActionRecordStartParams::Format::OrSymbol,
             channels:
@@ -119,6 +123,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # The audio file format used when storing the conference recording. Can be either
           # `mp3` or `wav`.
           format_:,
@@ -146,6 +151,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               format_:
                 Telnyx::Conferences::ActionRecordStartParams::Format::OrSymbol,
               channels:

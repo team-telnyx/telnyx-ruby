@@ -20,6 +20,11 @@ module Telnyx
             #   @return [String]
             required :call_sid, String
 
+            # @!attribute recording_sid
+            #
+            #   @return [String]
+            required :recording_sid, String
+
             # @!attribute status
             #
             #   @return [Symbol, Telnyx::Models::Texml::Accounts::Calls::RecordingRecordingSidJsonParams::Status, nil]
@@ -27,9 +32,10 @@ module Telnyx
                      enum: -> { Telnyx::Texml::Accounts::Calls::RecordingRecordingSidJsonParams::Status },
                      api_name: :Status
 
-            # @!method initialize(account_sid:, call_sid:, status: nil, request_options: {})
+            # @!method initialize(account_sid:, call_sid:, recording_sid:, status: nil, request_options: {})
             #   @param account_sid [String]
             #   @param call_sid [String]
+            #   @param recording_sid [String]
             #   @param status [Symbol, Telnyx::Models::Texml::Accounts::Calls::RecordingRecordingSidJsonParams::Status]
             #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

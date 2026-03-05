@@ -23,6 +23,9 @@ module Telnyx
             sig { returns(String) }
             attr_accessor :run_id
 
+            sig { returns(String) }
+            attr_accessor :step_id
+
             sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
             attr_reader :metadata
 
@@ -50,6 +53,7 @@ module Telnyx
               params(
                 mission_id: String,
                 run_id: String,
+                step_id: String,
                 metadata: T::Hash[Symbol, T.anything],
                 status:
                   Telnyx::AI::Missions::Runs::PlanUpdateStepParams::Status::OrSymbol,
@@ -59,6 +63,7 @@ module Telnyx
             def self.new(
               mission_id:,
               run_id:,
+              step_id:,
               metadata: nil,
               status: nil,
               request_options: {}
@@ -70,6 +75,7 @@ module Telnyx
                 {
                   mission_id: String,
                   run_id: String,
+                  step_id: String,
                   metadata: T::Hash[Symbol, T.anything],
                   status:
                     Telnyx::AI::Missions::Runs::PlanUpdateStepParams::Status::OrSymbol,

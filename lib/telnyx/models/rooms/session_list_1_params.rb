@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute room_id
+        #
+        #   @return [String]
+        required :room_id, String
+
         # @!attribute filter
         #   Consolidated filter parameter (deepObject style). Originally:
         #   filter[date_created_at][eq], filter[date_created_at][gte],
@@ -35,9 +40,11 @@ module Telnyx
         #   @return [Integer, nil]
         optional :page_size, Integer
 
-        # @!method initialize(filter: nil, include_participants: nil, page_number: nil, page_size: nil, request_options: {})
+        # @!method initialize(room_id:, filter: nil, include_participants: nil, page_number: nil, page_size: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Rooms::SessionList1Params} for more details.
+        #
+        #   @param room_id [String]
         #
         #   @param filter [Telnyx::Models::Rooms::SessionList1Params::Filter] Consolidated filter parameter (deepObject style). Originally: filter[date_create
         #

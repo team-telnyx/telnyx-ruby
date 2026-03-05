@@ -6,6 +6,7 @@ module Telnyx
           type plan_add_steps_to_plan_params =
             {
               mission_id: String,
+              run_id: String,
               steps: ::Array[Telnyx::AI::Missions::Runs::PlanAddStepsToPlanParams::Step]
             }
             & Telnyx::Internal::Type::request_parameters
@@ -16,16 +17,20 @@ module Telnyx
 
             attr_accessor mission_id: String
 
+            attr_accessor run_id: String
+
             attr_accessor steps: ::Array[Telnyx::AI::Missions::Runs::PlanAddStepsToPlanParams::Step]
 
             def initialize: (
               mission_id: String,
+              run_id: String,
               steps: ::Array[Telnyx::AI::Missions::Runs::PlanAddStepsToPlanParams::Step],
               ?request_options: Telnyx::request_opts
             ) -> void
 
             def to_hash: -> {
               mission_id: String,
+              run_id: String,
               steps: ::Array[Telnyx::AI::Missions::Runs::PlanAddStepsToPlanParams::Step],
               request_options: Telnyx::RequestOptions
             }

@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute agent_id
+        #
+        #   @return [String]
+        required :agent_id, String
+
         # @!attribute body
         #   Pre-filled message body (URL encoded)
         #
@@ -20,7 +25,9 @@ module Telnyx
         #   @return [String, nil]
         optional :phone_number, String
 
-        # @!method initialize(body: nil, phone_number: nil, request_options: {})
+        # @!method initialize(agent_id:, body: nil, phone_number: nil, request_options: {})
+        #   @param agent_id [String]
+        #
         #   @param body [String] Pre-filled message body (URL encoded)
         #
         #   @param phone_number [String] Phone number in E164 format (URL encoded)

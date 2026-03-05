@@ -3,6 +3,7 @@ module Telnyx
     module Verifications
       type action_verify_params =
         {
+          verification_id: String,
           code: String,
           status: Telnyx::Models::Verifications::ActionVerifyParams::status
         }
@@ -11,6 +12,8 @@ module Telnyx
       class ActionVerifyParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor verification_id: String
 
         attr_reader code: String?
 
@@ -23,12 +26,14 @@ module Telnyx
         ) -> Telnyx::Models::Verifications::ActionVerifyParams::status
 
         def initialize: (
+          verification_id: String,
           ?code: String,
           ?status: Telnyx::Models::Verifications::ActionVerifyParams::status,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
+          verification_id: String,
           code: String,
           status: Telnyx::Models::Verifications::ActionVerifyParams::status,
           request_options: Telnyx::RequestOptions

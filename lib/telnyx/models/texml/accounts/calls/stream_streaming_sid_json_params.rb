@@ -20,6 +20,11 @@ module Telnyx
             #   @return [String]
             required :call_sid, String
 
+            # @!attribute streaming_sid
+            #
+            #   @return [String]
+            required :streaming_sid, String
+
             # @!attribute status
             #   The status of the Stream you wish to update.
             #
@@ -28,10 +33,12 @@ module Telnyx
                      enum: -> { Telnyx::Texml::Accounts::Calls::StreamStreamingSidJsonParams::Status },
                      api_name: :Status
 
-            # @!method initialize(account_sid:, call_sid:, status: nil, request_options: {})
+            # @!method initialize(account_sid:, call_sid:, streaming_sid:, status: nil, request_options: {})
             #   @param account_sid [String]
             #
             #   @param call_sid [String]
+            #
+            #   @param streaming_sid [String]
             #
             #   @param status [Symbol, Telnyx::Models::Texml::Accounts::Calls::StreamStreamingSidJsonParams::Status] The status of the Stream you wish to update.
             #

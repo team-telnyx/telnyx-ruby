@@ -14,8 +14,14 @@ module Telnyx
           #   @return [String]
           required :mission_id, String
 
-          # @!method initialize(mission_id:, request_options: {})
+          # @!attribute tool_id
+          #
+          #   @return [String]
+          required :tool_id, String
+
+          # @!method initialize(mission_id:, tool_id:, request_options: {})
           #   @param mission_id [String]
+          #   @param tool_id [String]
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end
       end

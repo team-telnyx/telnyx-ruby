@@ -16,6 +16,9 @@ module Telnyx
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :account_sid
+
           # Filters conferences by the creation date. Expected format is YYYY-MM-DD. Also
           # accepts inequality operators, e.g. DateCreated>=2023-05-22.
           sig { returns(T.nilable(String)) }
@@ -81,6 +84,7 @@ module Telnyx
 
           sig do
             params(
+              account_sid: String,
               date_created: String,
               date_updated: String,
               friendly_name: String,
@@ -93,6 +97,7 @@ module Telnyx
             ).returns(T.attached_class)
           end
           def self.new(
+            account_sid:,
             # Filters conferences by the creation date. Expected format is YYYY-MM-DD. Also
             # accepts inequality operators, e.g. DateCreated>=2023-05-22.
             date_created: nil,
@@ -117,6 +122,7 @@ module Telnyx
           sig do
             override.returns(
               {
+                account_sid: String,
                 date_created: String,
                 date_updated: String,
                 friendly_name: String,

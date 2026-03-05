@@ -16,6 +16,9 @@ module Telnyx
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :assistant_id
+
           # The datetime at which the event should be scheduled. Formatted as ISO 8601.
           sig { returns(Time) }
           attr_accessor :scheduled_at_fixed_datetime
@@ -75,6 +78,7 @@ module Telnyx
 
           sig do
             params(
+              assistant_id: String,
               scheduled_at_fixed_datetime: Time,
               telnyx_agent_target: String,
               telnyx_conversation_channel:
@@ -91,6 +95,7 @@ module Telnyx
             ).returns(T.attached_class)
           end
           def self.new(
+            assistant_id:,
             # The datetime at which the event should be scheduled. Formatted as ISO 8601.
             scheduled_at_fixed_datetime:,
             # The phone number, SIP URI, to schedule the call or text from.
@@ -113,6 +118,7 @@ module Telnyx
           sig do
             override.returns(
               {
+                assistant_id: String,
                 scheduled_at_fixed_datetime: Time,
                 telnyx_agent_target: String,
                 telnyx_conversation_channel:

@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # List of supporting documents parameters
         sig do
           returns(
@@ -39,6 +42,7 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             documents:
               T::Array[
                 Telnyx::Portouts::SupportingDocumentCreateParams::Document::OrHash
@@ -47,6 +51,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # List of supporting documents parameters
           documents: nil,
           request_options: {}
@@ -56,6 +61,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               documents:
                 T::Array[
                   Telnyx::Portouts::SupportingDocumentCreateParams::Document

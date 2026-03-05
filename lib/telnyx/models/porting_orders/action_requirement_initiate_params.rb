@@ -13,6 +13,11 @@ module Telnyx
         #   @return [String]
         required :porting_order_id, String
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute params
         #   Required information for initiating the action requirement for AU ID
         #   verification.
@@ -20,12 +25,14 @@ module Telnyx
         #   @return [Telnyx::Models::PortingOrders::ActionRequirementInitiateParams::Params]
         required :params, -> { Telnyx::PortingOrders::ActionRequirementInitiateParams::Params }
 
-        # @!method initialize(porting_order_id:, params:, request_options: {})
+        # @!method initialize(porting_order_id:, id:, params:, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::PortingOrders::ActionRequirementInitiateParams} for more
         #   details.
         #
         #   @param porting_order_id [String]
+        #
+        #   @param id [String]
         #
         #   @param params [Telnyx::Models::PortingOrders::ActionRequirementInitiateParams::Params] Required information for initiating the action requirement for AU ID verificatio
         #

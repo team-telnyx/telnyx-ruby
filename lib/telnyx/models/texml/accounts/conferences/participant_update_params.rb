@@ -20,6 +20,11 @@ module Telnyx
             #   @return [String]
             required :conference_sid, String
 
+            # @!attribute call_sid_or_participant_label
+            #
+            #   @return [String]
+            required :call_sid_or_participant_label, String
+
             # @!attribute announce_method
             #   The HTTP method used to call the `AnnounceUrl`. Defaults to `POST`.
             #
@@ -100,7 +105,7 @@ module Telnyx
             #   @return [String, nil]
             optional :wait_url, String, api_name: :WaitUrl
 
-            # @!method initialize(account_sid:, conference_sid:, announce_method: nil, announce_url: nil, beep_on_exit: nil, call_sid_to_coach: nil, coaching: nil, end_conference_on_exit: nil, hold: nil, hold_method: nil, hold_url: nil, muted: nil, wait_url: nil, request_options: {})
+            # @!method initialize(account_sid:, conference_sid:, call_sid_or_participant_label:, announce_method: nil, announce_url: nil, beep_on_exit: nil, call_sid_to_coach: nil, coaching: nil, end_conference_on_exit: nil, hold: nil, hold_method: nil, hold_url: nil, muted: nil, wait_url: nil, request_options: {})
             #   Some parameter documentations has been truncated, see
             #   {Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateParams} for more
             #   details.
@@ -108,6 +113,8 @@ module Telnyx
             #   @param account_sid [String]
             #
             #   @param conference_sid [String]
+            #
+            #   @param call_sid_or_participant_label [String]
             #
             #   @param announce_method [Symbol, Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateParams::AnnounceMethod] The HTTP method used to call the `AnnounceUrl`. Defaults to `POST`.
             #

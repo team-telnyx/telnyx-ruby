@@ -14,6 +14,9 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :connection_id
+
       # The JSON map to connect your Dialoglow account.
       sig { returns(T::Hash[Symbol, T.anything]) }
       attr_accessor :service_account
@@ -60,6 +63,7 @@ module Telnyx
 
       sig do
         params(
+          connection_id: String,
           service_account: T::Hash[Symbol, T.anything],
           conversation_profile_id: String,
           dialogflow_api:
@@ -70,6 +74,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        connection_id:,
         # The JSON map to connect your Dialoglow account.
         service_account:,
         # The id of a configured conversation profile on your Dialogflow account. (If you
@@ -88,6 +93,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            connection_id: String,
             service_account: T::Hash[Symbol, T.anything],
             conversation_profile_id: String,
             dialogflow_api:

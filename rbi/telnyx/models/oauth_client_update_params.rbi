@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::OAuthClientUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # List of allowed OAuth grant types
       sig do
         returns(
@@ -84,6 +87,7 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           allowed_grant_types:
             T::Array[
               Telnyx::OAuthClientUpdateParams::AllowedGrantType::OrSymbol
@@ -99,6 +103,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # List of allowed OAuth grant types
         allowed_grant_types: nil,
         # List of allowed OAuth scopes
@@ -122,6 +127,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             allowed_grant_types:
               T::Array[
                 Telnyx::OAuthClientUpdateParams::AllowedGrantType::OrSymbol

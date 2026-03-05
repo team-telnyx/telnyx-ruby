@@ -16,6 +16,9 @@ module Telnyx
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :mission_id
+
           # Page number (1-based)
           sig { returns(T.nilable(Integer)) }
           attr_reader :page_number
@@ -38,6 +41,7 @@ module Telnyx
 
           sig do
             params(
+              mission_id: String,
               page_number: Integer,
               page_size: Integer,
               status: String,
@@ -45,6 +49,7 @@ module Telnyx
             ).returns(T.attached_class)
           end
           def self.new(
+            mission_id:,
             # Page number (1-based)
             page_number: nil,
             # Number of items per page
@@ -57,6 +62,7 @@ module Telnyx
           sig do
             override.returns(
               {
+                mission_id: String,
                 page_number: Integer,
                 page_size: Integer,
                 status: String,

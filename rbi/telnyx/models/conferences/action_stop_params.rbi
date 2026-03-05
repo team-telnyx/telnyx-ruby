@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # List of call control ids identifying participants the audio file should stop be
         # played to. If not given, the audio will be stoped to the entire conference.
         sig { returns(T.nilable(T::Array[String])) }
@@ -41,12 +44,14 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             call_control_ids: T::Array[String],
             region: Telnyx::Conferences::ActionStopParams::Region::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # List of call control ids identifying participants the audio file should stop be
           # played to. If not given, the audio will be stoped to the entire conference.
           call_control_ids: nil,
@@ -60,6 +65,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               call_control_ids: T::Array[String],
               region: Telnyx::Conferences::ActionStopParams::Region::OrSymbol,
               request_options: Telnyx::RequestOptions

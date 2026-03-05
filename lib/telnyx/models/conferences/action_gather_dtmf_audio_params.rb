@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute call_control_id
         #   Unique identifier and token for controlling the call leg that will receive the
         #   gather prompt.
@@ -109,9 +114,11 @@ module Telnyx
         #   @return [String, nil]
         optional :valid_digits, String
 
-        # @!method initialize(call_control_id:, audio_url: nil, client_state: nil, gather_id: nil, initial_timeout_millis: nil, inter_digit_timeout_millis: nil, invalid_audio_url: nil, invalid_media_name: nil, maximum_digits: nil, maximum_tries: nil, media_name: nil, minimum_digits: nil, stop_playback_on_dtmf: nil, terminating_digit: nil, timeout_millis: nil, valid_digits: nil, request_options: {})
+        # @!method initialize(id:, call_control_id:, audio_url: nil, client_state: nil, gather_id: nil, initial_timeout_millis: nil, inter_digit_timeout_millis: nil, invalid_audio_url: nil, invalid_media_name: nil, maximum_digits: nil, maximum_tries: nil, media_name: nil, minimum_digits: nil, stop_playback_on_dtmf: nil, terminating_digit: nil, timeout_millis: nil, valid_digits: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::ActionGatherDtmfAudioParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param call_control_id [String] Unique identifier and token for controlling the call leg that will receive the g
         #

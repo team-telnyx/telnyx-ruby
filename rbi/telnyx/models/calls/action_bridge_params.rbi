@@ -12,6 +12,9 @@ module Telnyx
             T.any(Telnyx::Calls::ActionBridgeParams, Telnyx::Internal::AnyHash)
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id_to_bridge
+
         # The Call Control ID of the call you want to bridge with, can't be used together
         # with queue parameter or video_room_id parameter.
         sig { returns(String) }
@@ -241,6 +244,7 @@ module Telnyx
 
         sig do
           params(
+            call_control_id_to_bridge: String,
             call_control_id_to_bridge_with: String,
             client_state: String,
             command_id: String,
@@ -269,6 +273,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id_to_bridge:,
           # The Call Control ID of the call you want to bridge with, can't be used together
           # with queue parameter or video_room_id parameter.
           call_control_id_to_bridge_with:,
@@ -345,6 +350,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              call_control_id_to_bridge: String,
               call_control_id_to_bridge_with: String,
               client_state: String,
               command_id: String,

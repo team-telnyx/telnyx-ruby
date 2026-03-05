@@ -14,6 +14,9 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :global_ip_assignment_id
+
       sig do
         returns(
           Telnyx::GlobalIPAssignmentUpdateParams::GlobalIPAssignmentUpdateRequest
@@ -31,17 +34,23 @@ module Telnyx
 
       sig do
         params(
+          global_ip_assignment_id: String,
           global_ip_assignment_update_request:
             Telnyx::GlobalIPAssignmentUpdateParams::GlobalIPAssignmentUpdateRequest::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(global_ip_assignment_update_request:, request_options: {})
+      def self.new(
+        global_ip_assignment_id:,
+        global_ip_assignment_update_request:,
+        request_options: {}
+      )
       end
 
       sig do
         override.returns(
           {
+            global_ip_assignment_id: String,
             global_ip_assignment_update_request:
               Telnyx::GlobalIPAssignmentUpdateParams::GlobalIPAssignmentUpdateRequest,
             request_options: Telnyx::RequestOptions

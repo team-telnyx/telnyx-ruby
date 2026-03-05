@@ -19,6 +19,9 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :assistant_id
 
+          sig { returns(String) }
+          attr_accessor :tool_id
+
           # Key-value arguments to use for the webhook test
           sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
           attr_reader :arguments
@@ -36,6 +39,7 @@ module Telnyx
           sig do
             params(
               assistant_id: String,
+              tool_id: String,
               arguments: T::Hash[Symbol, T.anything],
               dynamic_variables: T::Hash[Symbol, T.anything],
               request_options: Telnyx::RequestOptions::OrHash
@@ -43,6 +47,7 @@ module Telnyx
           end
           def self.new(
             assistant_id:,
+            tool_id:,
             # Key-value arguments to use for the webhook test
             arguments: nil,
             # Key-value dynamic variables to use for the webhook test
@@ -55,6 +60,7 @@ module Telnyx
             override.returns(
               {
                 assistant_id: String,
+                tool_id: String,
                 arguments: T::Hash[Symbol, T.anything],
                 dynamic_variables: T::Hash[Symbol, T.anything],
                 request_options: Telnyx::RequestOptions

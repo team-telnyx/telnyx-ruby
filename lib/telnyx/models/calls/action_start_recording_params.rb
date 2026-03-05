@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute call_control_id
+        #
+        #   @return [String]
+        required :call_control_id, String
+
         # @!attribute channels
         #   When `dual`, final audio file will be stereo recorded with the first leg on
         #   channel A, and the rest on channel B.
@@ -130,9 +135,11 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::Trim, nil]
         optional :trim, enum: -> { Telnyx::Calls::ActionStartRecordingParams::Trim }
 
-        # @!method initialize(channels:, format_:, client_state: nil, command_id: nil, custom_file_name: nil, max_length: nil, play_beep: nil, recording_track: nil, timeout_secs: nil, transcription: nil, transcription_engine: nil, transcription_language: nil, transcription_max_speaker_count: nil, transcription_min_speaker_count: nil, transcription_profanity_filter: nil, transcription_speaker_diarization: nil, trim: nil, request_options: {})
+        # @!method initialize(call_control_id:, channels:, format_:, client_state: nil, command_id: nil, custom_file_name: nil, max_length: nil, play_beep: nil, recording_track: nil, timeout_secs: nil, transcription: nil, transcription_engine: nil, transcription_language: nil, transcription_max_speaker_count: nil, transcription_min_speaker_count: nil, transcription_profanity_filter: nil, transcription_speaker_diarization: nil, trim: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionStartRecordingParams} for more details.
+        #
+        #   @param call_control_id [String]
         #
         #   @param channels [Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::Channels] When `dual`, final audio file will be stereo recorded with the first leg on chan
         #

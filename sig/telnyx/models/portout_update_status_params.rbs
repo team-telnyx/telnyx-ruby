@@ -1,7 +1,12 @@
 module Telnyx
   module Models
     type portout_update_status_params =
-      { id: String, reason: String, host_messaging: bool }
+      {
+        id: String,
+        status: Telnyx::Models::PortoutUpdateStatusParams::status,
+        reason: String,
+        host_messaging: bool
+      }
       & Telnyx::Internal::Type::request_parameters
 
     class PortoutUpdateStatusParams < Telnyx::Internal::Type::BaseModel
@@ -9,6 +14,8 @@ module Telnyx
       include Telnyx::Internal::Type::RequestParameters
 
       attr_accessor id: String
+
+      attr_accessor status: Telnyx::Models::PortoutUpdateStatusParams::status
 
       attr_accessor reason: String
 
@@ -18,6 +25,7 @@ module Telnyx
 
       def initialize: (
         id: String,
+        status: Telnyx::Models::PortoutUpdateStatusParams::status,
         reason: String,
         ?host_messaging: bool,
         ?request_options: Telnyx::request_opts
@@ -25,6 +33,7 @@ module Telnyx
 
       def to_hash: -> {
         id: String,
+        status: Telnyx::Models::PortoutUpdateStatusParams::status,
         reason: String,
         host_messaging: bool,
         request_options: Telnyx::RequestOptions

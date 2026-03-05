@@ -12,8 +12,14 @@ module Telnyx
       #   @return [String]
       required :id, String
 
-      # @!method initialize(id:, request_options: {})
+      # @!attribute participant_id
+      #
+      #   @return [String]
+      required :participant_id, String
+
+      # @!method initialize(id:, participant_id:, request_options: {})
       #   @param id [String]
+      #   @param participant_id [String]
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end
   end

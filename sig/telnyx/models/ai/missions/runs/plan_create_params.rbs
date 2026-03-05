@@ -6,6 +6,7 @@ module Telnyx
           type plan_create_params =
             {
               mission_id: String,
+              run_id: String,
               steps: ::Array[Telnyx::AI::Missions::Runs::PlanCreateParams::Step]
             }
             & Telnyx::Internal::Type::request_parameters
@@ -16,16 +17,20 @@ module Telnyx
 
             attr_accessor mission_id: String
 
+            attr_accessor run_id: String
+
             attr_accessor steps: ::Array[Telnyx::AI::Missions::Runs::PlanCreateParams::Step]
 
             def initialize: (
               mission_id: String,
+              run_id: String,
               steps: ::Array[Telnyx::AI::Missions::Runs::PlanCreateParams::Step],
               ?request_options: Telnyx::request_opts
             ) -> void
 
             def to_hash: -> {
               mission_id: String,
+              run_id: String,
               steps: ::Array[Telnyx::AI::Missions::Runs::PlanCreateParams::Step],
               request_options: Telnyx::RequestOptions
             }

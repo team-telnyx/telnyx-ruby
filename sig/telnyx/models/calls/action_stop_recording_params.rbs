@@ -2,15 +2,25 @@ module Telnyx
   module Models
     module Calls
       type action_stop_recording_params =
-        {  } & Telnyx::Internal::Type::request_parameters
+        { call_control_id: String } & Telnyx::Internal::Type::request_parameters
 
       class ActionStopRecordingParams < Telnyx::Models::Calls::StopRecordingRequest
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
-        def initialize: (?request_options: Telnyx::request_opts) -> void
+        def call_control_id: -> String
 
-        def to_hash: -> { request_options: Telnyx::RequestOptions }
+        def call_control_id=: (String _) -> String
+
+        def initialize: (
+          call_control_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          call_control_id: String,
+          request_options: Telnyx::RequestOptions
+        }
       end
     end
   end

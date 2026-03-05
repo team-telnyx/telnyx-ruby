@@ -4,7 +4,11 @@ module Telnyx
       module Accounts
         module Conferences
           type participant_delete_params =
-            { account_sid: String, conference_sid: String }
+            {
+              account_sid: String,
+              conference_sid: String,
+              call_sid_or_participant_label: String
+            }
             & Telnyx::Internal::Type::request_parameters
 
           class ParticipantDeleteParams < Telnyx::Internal::Type::BaseModel
@@ -15,15 +19,19 @@ module Telnyx
 
             attr_accessor conference_sid: String
 
+            attr_accessor call_sid_or_participant_label: String
+
             def initialize: (
               account_sid: String,
               conference_sid: String,
+              call_sid_or_participant_label: String,
               ?request_options: Telnyx::request_opts
             ) -> void
 
             def to_hash: -> {
               account_sid: String,
               conference_sid: String,
+              call_sid_or_participant_label: String,
               request_options: Telnyx::RequestOptions
             }
           end

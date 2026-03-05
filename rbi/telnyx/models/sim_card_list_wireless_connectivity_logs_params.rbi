@@ -14,6 +14,9 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # The page number to load.
       sig { returns(T.nilable(Integer)) }
       attr_reader :page_number
@@ -30,12 +33,14 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # The page number to load.
         page_number: nil,
         # The size of the page.
@@ -47,6 +52,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             page_number: Integer,
             page_size: Integer,
             request_options: Telnyx::RequestOptions

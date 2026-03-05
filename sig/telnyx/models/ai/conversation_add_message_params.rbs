@@ -3,6 +3,7 @@ module Telnyx
     module AI
       type conversation_add_message_params =
         {
+          conversation_id: String,
           role: String,
           content: String,
           metadata: ::Hash[Symbol, Telnyx::Models::AI::ConversationAddMessageParams::metadata],
@@ -17,6 +18,8 @@ module Telnyx
       class ConversationAddMessageParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor conversation_id: String
 
         attr_accessor role: String
 
@@ -55,6 +58,7 @@ module Telnyx
         ) -> Telnyx::Models::AI::ConversationAddMessageParams::tool_choice
 
         def initialize: (
+          conversation_id: String,
           role: String,
           ?content: String,
           ?metadata: ::Hash[Symbol, Telnyx::Models::AI::ConversationAddMessageParams::metadata],
@@ -67,6 +71,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          conversation_id: String,
           role: String,
           content: String,
           metadata: ::Hash[Symbol, Telnyx::Models::AI::ConversationAddMessageParams::metadata],

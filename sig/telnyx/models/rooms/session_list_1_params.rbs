@@ -3,6 +3,7 @@ module Telnyx
     module Rooms
       type session_list1_params =
         {
+          room_id: String,
           filter: Telnyx::Rooms::SessionList1Params::Filter,
           include_participants: bool,
           page_number: Integer,
@@ -13,6 +14,8 @@ module Telnyx
       class SessionList1Params < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor room_id: String
 
         attr_reader filter: Telnyx::Rooms::SessionList1Params::Filter?
 
@@ -33,6 +36,7 @@ module Telnyx
         def page_size=: (Integer) -> Integer
 
         def initialize: (
+          room_id: String,
           ?filter: Telnyx::Rooms::SessionList1Params::Filter,
           ?include_participants: bool,
           ?page_number: Integer,
@@ -41,6 +45,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          room_id: String,
           filter: Telnyx::Rooms::SessionList1Params::Filter,
           include_participants: bool,
           page_number: Integer,

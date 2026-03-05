@@ -14,6 +14,9 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # A user-assigned name to help manage the application.
       sig { returns(String) }
       attr_accessor :application_name
@@ -153,6 +156,7 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           application_name: String,
           webhook_event_url: String,
           active: T::Boolean,
@@ -175,6 +179,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # A user-assigned name to help manage the application.
         application_name:,
         # The URL where webhooks related to this connection will be sent. Must include a
@@ -219,6 +224,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             application_name: String,
             webhook_event_url: String,
             active: T::Boolean,

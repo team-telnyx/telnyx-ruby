@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :network_identifier
+
         # Wireguard peer ID.
         sig { returns(T.nilable(String)) }
         attr_reader :wireguard_peer_id
@@ -24,11 +27,13 @@ module Telnyx
 
         sig do
           params(
+            network_identifier: String,
             wireguard_peer_id: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          network_identifier:,
           # Wireguard peer ID.
           wireguard_peer_id: nil,
           request_options: {}
@@ -38,6 +43,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              network_identifier: String,
               wireguard_peer_id: String,
               request_options: Telnyx::RequestOptions
             }

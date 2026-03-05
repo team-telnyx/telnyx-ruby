@@ -13,8 +13,14 @@ module Telnyx
         #   @return [String]
         required :porting_order_id, String
 
-        # @!method initialize(porting_order_id:, request_options: {})
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
+        # @!method initialize(porting_order_id:, id:, request_options: {})
         #   @param porting_order_id [String]
+        #   @param id [String]
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end
     end

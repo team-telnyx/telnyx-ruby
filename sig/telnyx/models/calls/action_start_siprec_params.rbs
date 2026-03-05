@@ -3,6 +3,7 @@ module Telnyx
     module Calls
       type action_start_siprec_params =
         {
+          call_control_id: String,
           client_state: String,
           connector_name: String,
           include_metadata_custom_headers: Telnyx::Models::Calls::ActionStartSiprecParams::include_metadata_custom_headers,
@@ -16,6 +17,8 @@ module Telnyx
       class ActionStartSiprecParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
 
         attr_reader client_state: String?
 
@@ -54,6 +57,7 @@ module Telnyx
         ) -> Telnyx::Models::Calls::ActionStartSiprecParams::siprec_track
 
         def initialize: (
+          call_control_id: String,
           ?client_state: String,
           ?connector_name: String,
           ?include_metadata_custom_headers: Telnyx::Models::Calls::ActionStartSiprecParams::include_metadata_custom_headers,
@@ -65,6 +69,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          call_control_id: String,
           client_state: String,
           connector_name: String,
           include_metadata_custom_headers: Telnyx::Models::Calls::ActionStartSiprecParams::include_metadata_custom_headers,

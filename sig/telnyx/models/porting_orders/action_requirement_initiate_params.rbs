@@ -4,6 +4,7 @@ module Telnyx
       type action_requirement_initiate_params =
         {
           porting_order_id: String,
+          id: String,
           params: Telnyx::PortingOrders::ActionRequirementInitiateParams::Params
         }
         & Telnyx::Internal::Type::request_parameters
@@ -14,16 +15,20 @@ module Telnyx
 
         attr_accessor porting_order_id: String
 
+        attr_accessor id: String
+
         attr_accessor params: Telnyx::PortingOrders::ActionRequirementInitiateParams::Params
 
         def initialize: (
           porting_order_id: String,
+          id: String,
           params: Telnyx::PortingOrders::ActionRequirementInitiateParams::Params,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           porting_order_id: String,
+          id: String,
           params: Telnyx::PortingOrders::ActionRequirementInitiateParams::Params,
           request_options: Telnyx::RequestOptions
         }

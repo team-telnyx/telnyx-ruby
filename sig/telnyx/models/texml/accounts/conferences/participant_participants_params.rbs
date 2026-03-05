@@ -6,6 +6,7 @@ module Telnyx
           type participant_participants_params =
             {
               account_sid: String,
+              conference_sid: String,
               amd_status_callback: String,
               amd_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::amd_status_callback_method,
               application_sid: String,
@@ -62,6 +63,8 @@ module Telnyx
             include Telnyx::Internal::Type::RequestParameters
 
             attr_accessor account_sid: String
+
+            attr_accessor conference_sid: String
 
             attr_reader amd_status_callback: String?
 
@@ -283,6 +286,7 @@ module Telnyx
 
             def initialize: (
               account_sid: String,
+              conference_sid: String,
               ?amd_status_callback: String,
               ?amd_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::amd_status_callback_method,
               ?application_sid: String,
@@ -336,6 +340,7 @@ module Telnyx
 
             def to_hash: -> {
               account_sid: String,
+              conference_sid: String,
               amd_status_callback: String,
               amd_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::amd_status_callback_method,
               application_sid: String,

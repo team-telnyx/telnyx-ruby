@@ -23,6 +23,9 @@ module Telnyx
             sig { returns(String) }
             attr_accessor :call_sid
 
+            sig { returns(String) }
+            attr_accessor :streaming_sid
+
             # The status of the Stream you wish to update.
             sig do
               returns(
@@ -45,6 +48,7 @@ module Telnyx
               params(
                 account_sid: String,
                 call_sid: String,
+                streaming_sid: String,
                 status:
                   Telnyx::Texml::Accounts::Calls::StreamStreamingSidJsonParams::Status::OrSymbol,
                 request_options: Telnyx::RequestOptions::OrHash
@@ -53,6 +57,7 @@ module Telnyx
             def self.new(
               account_sid:,
               call_sid:,
+              streaming_sid:,
               # The status of the Stream you wish to update.
               status: nil,
               request_options: {}
@@ -64,6 +69,7 @@ module Telnyx
                 {
                   account_sid: String,
                   call_sid: String,
+                  streaming_sid: String,
                   status:
                     Telnyx::Texml::Accounts::Calls::StreamStreamingSidJsonParams::Status::OrSymbol,
                   request_options: Telnyx::RequestOptions

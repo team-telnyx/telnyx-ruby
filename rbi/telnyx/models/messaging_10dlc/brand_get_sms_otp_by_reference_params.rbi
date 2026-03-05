@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :reference_id
+
         # Filter by Brand ID for easier lookup in portal applications
         sig { returns(T.nilable(String)) }
         attr_reader :brand_id
@@ -24,11 +27,13 @@ module Telnyx
 
         sig do
           params(
+            reference_id: String,
             brand_id: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          reference_id:,
           # Filter by Brand ID for easier lookup in portal applications
           brand_id: nil,
           request_options: {}
@@ -37,7 +42,11 @@ module Telnyx
 
         sig do
           override.returns(
-            { brand_id: String, request_options: Telnyx::RequestOptions }
+            {
+              reference_id: String,
+              brand_id: String,
+              request_options: Telnyx::RequestOptions
+            }
           )
         end
         def to_hash

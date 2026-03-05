@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :account_sid
+
         # Filters recording by the creation date. Expected format is ISO8601 date or
         # date-time, ie. {YYYY}-{MM}-{DD} or {YYYY}-{MM}-{DD}T{hh}:{mm}:{ss}Z. Also
         # accepts inequality operators, e.g. DateCreated>=2023-05-22.
@@ -41,6 +44,7 @@ module Telnyx
 
         sig do
           params(
+            account_sid: String,
             date_created: Time,
             page: Integer,
             page_size: Integer,
@@ -48,6 +52,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          account_sid:,
           # Filters recording by the creation date. Expected format is ISO8601 date or
           # date-time, ie. {YYYY}-{MM}-{DD} or {YYYY}-{MM}-{DD}T{hh}:{mm}:{ss}Z. Also
           # accepts inequality operators, e.g. DateCreated>=2023-05-22.
@@ -64,6 +69,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              account_sid: String,
               date_created: Time,
               page: Integer,
               page_size: Integer,

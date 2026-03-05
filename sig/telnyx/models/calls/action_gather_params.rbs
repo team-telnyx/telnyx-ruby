@@ -3,6 +3,7 @@ module Telnyx
     module Calls
       type action_gather_params =
         {
+          call_control_id: String,
           client_state: String,
           command_id: String,
           gather_id: String,
@@ -19,6 +20,8 @@ module Telnyx
       class ActionGatherParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
 
         attr_reader client_state: String?
 
@@ -61,6 +64,7 @@ module Telnyx
         def valid_digits=: (String) -> String
 
         def initialize: (
+          call_control_id: String,
           ?client_state: String,
           ?command_id: String,
           ?gather_id: String,
@@ -75,6 +79,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          call_control_id: String,
           client_state: String,
           command_id: String,
           gather_id: String,

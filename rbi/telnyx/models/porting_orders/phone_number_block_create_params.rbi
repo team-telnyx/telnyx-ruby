@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :porting_order_id
+
         # Specifies the activation ranges for this porting phone number block. The
         # activation range must be within the block range and should not overlap with
         # other activation ranges.
@@ -44,6 +47,7 @@ module Telnyx
 
         sig do
           params(
+            porting_order_id: String,
             activation_ranges:
               T::Array[
                 Telnyx::PortingOrders::PhoneNumberBlockCreateParams::ActivationRange::OrHash
@@ -54,6 +58,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          porting_order_id:,
           # Specifies the activation ranges for this porting phone number block. The
           # activation range must be within the block range and should not overlap with
           # other activation ranges.
@@ -66,6 +71,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              porting_order_id: String,
               activation_ranges:
                 T::Array[
                   Telnyx::PortingOrders::PhoneNumberBlockCreateParams::ActivationRange

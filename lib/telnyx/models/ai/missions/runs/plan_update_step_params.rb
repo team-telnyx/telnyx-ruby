@@ -20,6 +20,11 @@ module Telnyx
             #   @return [String]
             required :run_id, String
 
+            # @!attribute step_id
+            #
+            #   @return [String]
+            required :step_id, String
+
             # @!attribute metadata
             #
             #   @return [Hash{Symbol=>Object}, nil]
@@ -30,9 +35,10 @@ module Telnyx
             #   @return [Symbol, Telnyx::Models::AI::Missions::Runs::PlanUpdateStepParams::Status, nil]
             optional :status, enum: -> { Telnyx::AI::Missions::Runs::PlanUpdateStepParams::Status }
 
-            # @!method initialize(mission_id:, run_id:, metadata: nil, status: nil, request_options: {})
+            # @!method initialize(mission_id:, run_id:, step_id:, metadata: nil, status: nil, request_options: {})
             #   @param mission_id [String]
             #   @param run_id [String]
+            #   @param step_id [String]
             #   @param metadata [Hash{Symbol=>Object}]
             #   @param status [Symbol, Telnyx::Models::AI::Missions::Runs::PlanUpdateStepParams::Status]
             #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]

@@ -9,6 +9,11 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
+          # @!attribute brand_id
+          #
+          #   @return [String]
+          required :brand_id, String
+
           # @!attribute evp_id
           #   External vetting provider ID for the brand.
           #
@@ -28,10 +33,12 @@ module Telnyx
           #   @return [String, nil]
           optional :vetting_token, String, api_name: :vettingToken
 
-          # @!method initialize(evp_id:, vetting_id:, vetting_token: nil, request_options: {})
+          # @!method initialize(brand_id:, evp_id:, vetting_id:, vetting_token: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Messaging10dlc::Brand::ExternalVettingImportsParams} for more
           #   details.
+          #
+          #   @param brand_id [String]
           #
           #   @param evp_id [String] External vetting provider ID for the brand.
           #

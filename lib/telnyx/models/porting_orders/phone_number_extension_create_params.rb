@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute porting_order_id
+        #
+        #   @return [String]
+        required :porting_order_id, String
+
         # @!attribute activation_ranges
         #   Specifies the activation ranges for this porting phone number extension. The
         #   activation range must be within the extension range and should not overlap with
@@ -29,10 +34,12 @@ module Telnyx
         #   @return [String]
         required :porting_phone_number_id, String
 
-        # @!method initialize(activation_ranges:, extension_range:, porting_phone_number_id:, request_options: {})
+        # @!method initialize(porting_order_id:, activation_ranges:, extension_range:, porting_phone_number_id:, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::PortingOrders::PhoneNumberExtensionCreateParams} for more
         #   details.
+        #
+        #   @param porting_order_id [String]
         #
         #   @param activation_ranges [Array<Telnyx::Models::PortingOrders::PhoneNumberExtensionCreateParams::ActivationRange>] Specifies the activation ranges for this porting phone number extension. The act
         #
