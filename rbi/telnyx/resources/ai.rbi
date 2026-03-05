@@ -8,7 +8,6 @@ module Telnyx
       sig { returns(Telnyx::Resources::AI::Assistants) }
       attr_reader :assistants
 
-      # Turn audio into text or text into audio.
       sig { returns(Telnyx::Resources::AI::Audio) }
       attr_reader :audio
 
