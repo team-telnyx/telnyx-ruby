@@ -29,7 +29,8 @@ module Telnyx
             received_at: Time,
             record_type: String,
             to: ::Array[Telnyx::RcsToItem],
-            type: String
+            type: String,
+            wait_seconds: Float?
           }
 
         class Data < Telnyx::Internal::Type::BaseModel
@@ -79,6 +80,8 @@ module Telnyx
 
           def type=: (String) -> String
 
+          attr_accessor wait_seconds: Float?
+
           def initialize: (
             ?id: String,
             ?body: Telnyx::RcsAgentMessage,
@@ -90,7 +93,8 @@ module Telnyx
             ?received_at: Time,
             ?record_type: String,
             ?to: ::Array[Telnyx::RcsToItem],
-            ?type: String
+            ?type: String,
+            ?wait_seconds: Float?
           ) -> void
 
           def to_hash: -> {
@@ -104,7 +108,8 @@ module Telnyx
             received_at: Time,
             record_type: String,
             to: ::Array[Telnyx::RcsToItem],
-            type: String
+            type: String,
+            wait_seconds: Float?
           }
 
           type from = { agent_id: String, agent_name: String, carrier: String }
