@@ -3,7 +3,6 @@
 module Telnyx
   module Resources
     class AI
-      # Turn audio into text or text into audio.
       class Audio
         # Transcribe speech to text. This endpoint is consistent with the
         # [OpenAI Transcription API](https://platform.openai.com/docs/api-reference/audio/createTranscription)

@@ -8,7 +8,6 @@ module Telnyx
       # @return [Telnyx::Resources::AI::Assistants]
       attr_reader :assistants
 
-      # Turn audio into text or text into audio.
       # @return [Telnyx::Resources::AI::Audio]
       attr_reader :audio
 
