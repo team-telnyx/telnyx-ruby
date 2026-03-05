@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute account_sid
+        #
+        #   @return [String]
+        required :account_sid, String
+
         # @!attribute page_size
         #   The number of records to be displayed on a page
         #
@@ -20,7 +25,9 @@ module Telnyx
         #   @return [String, nil]
         optional :page_token, String
 
-        # @!method initialize(page_size: nil, page_token: nil, request_options: {})
+        # @!method initialize(account_sid:, page_size: nil, page_token: nil, request_options: {})
+        #   @param account_sid [String]
+        #
         #   @param page_size [Integer] The number of records to be displayed on a page
         #
         #   @param page_token [String] Used to request the next page of results.

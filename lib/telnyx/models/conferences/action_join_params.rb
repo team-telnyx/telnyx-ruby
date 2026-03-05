@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute call_control_id
         #   Unique identifier and token for controlling the call
         #
@@ -119,9 +124,11 @@ module Telnyx
         #   @return [Array<String>, nil]
         optional :whisper_call_control_ids, Telnyx::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(call_control_id:, beep_enabled: nil, client_state: nil, command_id: nil, end_conference_on_exit: nil, hold: nil, hold_audio_url: nil, hold_media_name: nil, mute: nil, region: nil, soft_end_conference_on_exit: nil, start_conference_on_enter: nil, supervisor_role: nil, whisper_call_control_ids: nil, request_options: {})
+        # @!method initialize(id:, call_control_id:, beep_enabled: nil, client_state: nil, command_id: nil, end_conference_on_exit: nil, hold: nil, hold_audio_url: nil, hold_media_name: nil, mute: nil, region: nil, soft_end_conference_on_exit: nil, start_conference_on_enter: nil, supervisor_role: nil, whisper_call_control_ids: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::ActionJoinParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param call_control_id [String] Unique identifier and token for controlling the call
         #

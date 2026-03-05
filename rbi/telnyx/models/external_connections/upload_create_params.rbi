@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         sig { returns(T::Array[String]) }
         attr_accessor :number_ids
 
@@ -74,6 +77,7 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             number_ids: T::Array[String],
             additional_usages:
               T::Array[
@@ -87,6 +91,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           number_ids:,
           additional_usages: nil,
           # Identifies the civic address to assign all phone numbers to.
@@ -103,6 +108,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               number_ids: T::Array[String],
               additional_usages:
                 T::Array[

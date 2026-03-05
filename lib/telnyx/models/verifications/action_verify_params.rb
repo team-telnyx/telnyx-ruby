@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute verification_id
+        #
+        #   @return [String]
+        required :verification_id, String
+
         # @!attribute code
         #   This is the code the user submits for verification.
         #
@@ -21,9 +26,11 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Verifications::ActionVerifyParams::Status, nil]
         optional :status, enum: -> { Telnyx::Verifications::ActionVerifyParams::Status }
 
-        # @!method initialize(code: nil, status: nil, request_options: {})
+        # @!method initialize(verification_id:, code: nil, status: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Verifications::ActionVerifyParams} for more details.
+        #
+        #   @param verification_id [String]
         #
         #   @param code [String] This is the code the user submits for verification.
         #

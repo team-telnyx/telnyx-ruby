@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute allowed_grant_types
       #   List of allowed OAuth grant types
       #
@@ -56,7 +61,9 @@ module Telnyx
       #   @return [String, nil]
       optional :tos_uri, String
 
-      # @!method initialize(allowed_grant_types: nil, allowed_scopes: nil, logo_uri: nil, name: nil, policy_uri: nil, redirect_uris: nil, require_pkce: nil, tos_uri: nil, request_options: {})
+      # @!method initialize(id:, allowed_grant_types: nil, allowed_scopes: nil, logo_uri: nil, name: nil, policy_uri: nil, redirect_uris: nil, require_pkce: nil, tos_uri: nil, request_options: {})
+      #   @param id [String]
+      #
       #   @param allowed_grant_types [Array<Symbol, Telnyx::Models::OAuthClientUpdateParams::AllowedGrantType>] List of allowed OAuth grant types
       #
       #   @param allowed_scopes [Array<String>] List of allowed OAuth scopes

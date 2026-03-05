@@ -3,6 +3,7 @@ module Telnyx
     module Calls
       type action_gather_using_speak_params =
         {
+          call_control_id: String,
           payload: String,
           voice: String,
           client_state: String,
@@ -25,6 +26,8 @@ module Telnyx
       class ActionGatherUsingSpeakParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
 
         attr_accessor payload: String
 
@@ -95,6 +98,7 @@ module Telnyx
         ) -> Telnyx::Models::Calls::ActionGatherUsingSpeakParams::voice_settings
 
         def initialize: (
+          call_control_id: String,
           payload: String,
           voice: String,
           ?client_state: String,
@@ -115,6 +119,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          call_control_id: String,
           payload: String,
           voice: String,
           client_state: String,

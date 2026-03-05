@@ -14,6 +14,9 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # The identifier of the LOA configuration to use for the template. If not
       # provided, the default LOA configuration will be used.
       sig { returns(T.nilable(String)) }
@@ -24,11 +27,13 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           loa_configuration_id: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # The identifier of the LOA configuration to use for the template. If not
         # provided, the default LOA configuration will be used.
         loa_configuration_id: nil,
@@ -39,6 +44,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             loa_configuration_id: String,
             request_options: Telnyx::RequestOptions
           }

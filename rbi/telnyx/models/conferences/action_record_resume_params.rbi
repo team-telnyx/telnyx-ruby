@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # Use this field to avoid duplicate commands. Telnyx will ignore any command with
         # the same `command_id` for the same `call_control_id`.
         sig { returns(T.nilable(String)) }
@@ -51,6 +54,7 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             command_id: String,
             recording_id: String,
             region:
@@ -59,6 +63,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # Use this field to avoid duplicate commands. Telnyx will ignore any command with
           # the same `command_id` for the same `call_control_id`.
           command_id: nil,
@@ -74,6 +79,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               command_id: String,
               recording_id: String,
               region:

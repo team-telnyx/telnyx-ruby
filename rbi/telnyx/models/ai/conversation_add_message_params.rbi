@@ -15,6 +15,10 @@ module Telnyx
             )
           end
 
+        # The ID of the conversation
+        sig { returns(String) }
+        attr_accessor :conversation_id
+
         sig { returns(String) }
         attr_accessor :role
 
@@ -90,6 +94,7 @@ module Telnyx
 
         sig do
           params(
+            conversation_id: String,
             role: String,
             content: String,
             metadata:
@@ -107,6 +112,8 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          # The ID of the conversation
+          conversation_id:,
           role:,
           content: nil,
           metadata: nil,
@@ -122,6 +129,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              conversation_id: String,
               role: String,
               content: String,
               metadata:

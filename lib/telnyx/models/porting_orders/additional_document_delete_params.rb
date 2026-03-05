@@ -13,8 +13,14 @@ module Telnyx
         #   @return [String]
         required :id, String
 
-        # @!method initialize(id:, request_options: {})
+        # @!attribute additional_document_id
+        #
+        #   @return [String]
+        required :additional_document_id, String
+
+        # @!method initialize(id:, additional_document_id:, request_options: {})
         #   @param id [String]
+        #   @param additional_document_id [String]
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end
     end

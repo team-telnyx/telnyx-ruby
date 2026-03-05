@@ -13,8 +13,14 @@ module Telnyx
         #   @return [String]
         required :id, String
 
-        # @!method initialize(id:, request_options: {})
+        # @!attribute address_id
+        #
+        #   @return [String]
+        required :address_id, String
+
+        # @!method initialize(id:, address_id:, request_options: {})
         #   @param id [String]
+        #   @param address_id [String]
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end
     end

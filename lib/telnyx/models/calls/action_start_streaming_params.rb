@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute call_control_id
+        #
+        #   @return [String]
+        required :call_control_id, String
+
         # @!attribute client_state
         #   Use this field to add state to every subsequent webhook. It must be a valid
         #   Base-64 encoded string.
@@ -91,9 +96,11 @@ module Telnyx
         #   @return [String, nil]
         optional :stream_url, String
 
-        # @!method initialize(client_state: nil, command_id: nil, custom_parameters: nil, dialogflow_config: nil, enable_dialogflow: nil, stream_auth_token: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, request_options: {})
+        # @!method initialize(call_control_id:, client_state: nil, command_id: nil, custom_parameters: nil, dialogflow_config: nil, enable_dialogflow: nil, stream_auth_token: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionStartStreamingParams} for more details.
+        #
+        #   @param call_control_id [String]
         #
         #   @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #

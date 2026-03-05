@@ -14,6 +14,9 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :conference_id
+
       # Consolidated filter parameter (deepObject style). Originally: filter[muted],
       # filter[on_hold], filter[whispering]
       sig do
@@ -57,6 +60,7 @@ module Telnyx
 
       sig do
         params(
+          conference_id: String,
           filter: Telnyx::ConferenceListParticipantsParams::Filter::OrHash,
           page_number: Integer,
           page_size: Integer,
@@ -65,6 +69,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        conference_id:,
         # Consolidated filter parameter (deepObject style). Originally: filter[muted],
         # filter[on_hold], filter[whispering]
         filter: nil,
@@ -79,6 +84,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            conference_id: String,
             filter: Telnyx::ConferenceListParticipantsParams::Filter,
             page_number: Integer,
             page_size: Integer,

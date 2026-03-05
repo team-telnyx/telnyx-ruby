@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute command_id
         #   Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #   the same `command_id` for the same conference.
@@ -15,9 +20,11 @@ module Telnyx
         #   @return [String, nil]
         optional :command_id, String
 
-        # @!method initialize(command_id: nil, request_options: {})
+        # @!method initialize(id:, command_id: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::ActionEndConferenceParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #

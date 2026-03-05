@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute active
       #   The active status of the authentication provider
       #
@@ -39,9 +44,11 @@ module Telnyx
       #   @return [String, nil]
       optional :short_name, String
 
-      # @!method initialize(active: nil, name: nil, settings: nil, settings_url: nil, short_name: nil, request_options: {})
+      # @!method initialize(id:, active: nil, name: nil, settings: nil, settings_url: nil, short_name: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::AuthenticationProviderUpdateParams} for more details.
+      #
+      #   @param id [String]
       #
       #   @param active [Boolean] The active status of the authentication provider
       #

@@ -12,6 +12,9 @@ module Telnyx
             T.any(Telnyx::Rooms::SessionList1Params, Telnyx::Internal::AnyHash)
           end
 
+        sig { returns(String) }
+        attr_accessor :room_id
+
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[date_created_at][eq], filter[date_created_at][gte],
         # filter[date_created_at][lte], filter[date_updated_at][eq],
@@ -47,6 +50,7 @@ module Telnyx
 
         sig do
           params(
+            room_id: String,
             filter: Telnyx::Rooms::SessionList1Params::Filter::OrHash,
             include_participants: T::Boolean,
             page_number: Integer,
@@ -55,6 +59,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          room_id:,
           # Consolidated filter parameter (deepObject style). Originally:
           # filter[date_created_at][eq], filter[date_created_at][gte],
           # filter[date_created_at][lte], filter[date_updated_at][eq],
@@ -73,6 +78,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              room_id: String,
               filter: Telnyx::Rooms::SessionList1Params::Filter,
               include_participants: T::Boolean,
               page_number: Integer,

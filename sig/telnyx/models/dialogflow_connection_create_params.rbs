@@ -2,6 +2,7 @@ module Telnyx
   module Models
     type dialogflow_connection_create_params =
       {
+        connection_id: String,
         service_account: ::Hash[Symbol, top],
         conversation_profile_id: String,
         dialogflow_api: Telnyx::Models::DialogflowConnectionCreateParams::dialogflow_api,
@@ -13,6 +14,8 @@ module Telnyx
     class DialogflowConnectionCreateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor connection_id: String
 
       attr_accessor service_account: ::Hash[Symbol, top]
 
@@ -35,6 +38,7 @@ module Telnyx
       def location=: (String) -> String
 
       def initialize: (
+        connection_id: String,
         service_account: ::Hash[Symbol, top],
         ?conversation_profile_id: String,
         ?dialogflow_api: Telnyx::Models::DialogflowConnectionCreateParams::dialogflow_api,
@@ -44,6 +48,7 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
+        connection_id: String,
         service_account: ::Hash[Symbol, top],
         conversation_profile_id: String,
         dialogflow_api: Telnyx::Models::DialogflowConnectionCreateParams::dialogflow_api,

@@ -1,15 +1,25 @@
 module Telnyx
   module Models
     type sim_card_update_params =
-      {  } & Telnyx::Internal::Type::request_parameters
+      { sim_card_id: String } & Telnyx::Internal::Type::request_parameters
 
     class SimCardUpdateParams < Telnyx::Models::SimCard
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      def initialize: (?request_options: Telnyx::request_opts) -> void
+      def sim_card_id: -> String
 
-      def to_hash: -> { request_options: Telnyx::RequestOptions }
+      def sim_card_id=: (String _) -> String
+
+      def initialize: (
+        sim_card_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        sim_card_id: String,
+        request_options: Telnyx::RequestOptions
+      }
     end
   end
 end

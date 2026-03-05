@@ -11,15 +11,23 @@ module Telnyx
           T.any(Telnyx::CallRetrieveStatusParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :call_control_id
+
       sig do
-        params(request_options: Telnyx::RequestOptions::OrHash).returns(
-          T.attached_class
-        )
+        params(
+          call_control_id: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(request_options: {})
+      def self.new(call_control_id:, request_options: {})
       end
 
-      sig { override.returns({ request_options: Telnyx::RequestOptions }) }
+      sig do
+        override.returns(
+          { call_control_id: String, request_options: Telnyx::RequestOptions }
+        )
+      end
       def to_hash
       end
     end

@@ -14,6 +14,11 @@ module Telnyx
           #   @return [String]
           required :account_sid, String
 
+          # @!attribute conference_sid
+          #
+          #   @return [String]
+          required :conference_sid, String
+
           # @!attribute announce_method
           #   The HTTP method used to call the `AnnounceUrl`. Defaults to `POST`.
           #
@@ -37,11 +42,13 @@ module Telnyx
           #   @return [String, nil]
           optional :status, String, api_name: :Status
 
-          # @!method initialize(account_sid:, announce_method: nil, announce_url: nil, status: nil, request_options: {})
+          # @!method initialize(account_sid:, conference_sid:, announce_method: nil, announce_url: nil, status: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Texml::Accounts::ConferenceUpdateParams} for more details.
           #
           #   @param account_sid [String]
+          #
+          #   @param conference_sid [String]
           #
           #   @param announce_method [Symbol, Telnyx::Models::Texml::Accounts::ConferenceUpdateParams::AnnounceMethod] The HTTP method used to call the `AnnounceUrl`. Defaults to `POST`.
           #

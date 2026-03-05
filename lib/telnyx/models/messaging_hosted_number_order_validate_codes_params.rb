@@ -7,13 +7,19 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute verification_codes
       #
       #   @return [Array<Telnyx::Models::MessagingHostedNumberOrderValidateCodesParams::VerificationCode>]
       required :verification_codes,
                -> { Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingHostedNumberOrderValidateCodesParams::VerificationCode] }
 
-      # @!method initialize(verification_codes:, request_options: {})
+      # @!method initialize(id:, verification_codes:, request_options: {})
+      #   @param id [String]
       #   @param verification_codes [Array<Telnyx::Models::MessagingHostedNumberOrderValidateCodesParams::VerificationCode>]
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

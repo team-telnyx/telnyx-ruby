@@ -2,6 +2,7 @@ module Telnyx
   module Models
     type fqdn_connection_update_params =
       {
+        id: String,
         active: bool,
         anchorsite_override: Telnyx::Models::anchorsite_override,
         android_push_credential_id: String?,
@@ -31,6 +32,8 @@ module Telnyx
     class FqdnConnectionUpdateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor id: String
 
       attr_reader active: bool?
 
@@ -129,6 +132,7 @@ module Telnyx
       attr_accessor webhook_timeout_secs: Integer?
 
       def initialize: (
+        id: String,
         ?active: bool,
         ?anchorsite_override: Telnyx::Models::anchorsite_override,
         ?android_push_credential_id: String?,
@@ -156,6 +160,7 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
+        id: String,
         active: bool,
         anchorsite_override: Telnyx::Models::anchorsite_override,
         android_push_credential_id: String?,

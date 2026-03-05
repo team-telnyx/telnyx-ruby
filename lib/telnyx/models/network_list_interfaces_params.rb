@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute filter
       #   Consolidated filter parameter (deepObject style). Originally: filter[name],
       #   filter[type], filter[status]
@@ -24,9 +29,11 @@ module Telnyx
       #   @return [Integer, nil]
       optional :page_size, Integer
 
-      # @!method initialize(filter: nil, page_number: nil, page_size: nil, request_options: {})
+      # @!method initialize(id:, filter: nil, page_number: nil, page_size: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::NetworkListInterfacesParams} for more details.
+      #
+      #   @param id [String]
       #
       #   @param filter [Telnyx::Models::NetworkListInterfacesParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[name], filt
       #

@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::RequirementGroupUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # Reference for the customer
       sig { returns(T.nilable(String)) }
       attr_reader :customer_reference
@@ -41,6 +44,7 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           customer_reference: String,
           regulatory_requirements:
             T::Array[
@@ -50,6 +54,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # Reference for the customer
         customer_reference: nil,
         regulatory_requirements: nil,
@@ -60,6 +65,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             customer_reference: String,
             regulatory_requirements:
               T::Array[

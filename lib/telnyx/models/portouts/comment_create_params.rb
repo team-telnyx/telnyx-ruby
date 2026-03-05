@@ -8,13 +8,20 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute body
         #   Comment to post on this portout request
         #
         #   @return [String, nil]
         optional :body, String
 
-        # @!method initialize(body: nil, request_options: {})
+        # @!method initialize(id:, body: nil, request_options: {})
+        #   @param id [String]
+        #
         #   @param body [String] Comment to post on this portout request
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]

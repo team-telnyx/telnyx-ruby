@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # The text or SSML to be converted into speech. There is a 3,000 character limit.
         sig { returns(String) }
         attr_accessor :payload
@@ -168,6 +171,7 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             payload: String,
             voice: String,
             call_control_ids: T::Array[String],
@@ -191,6 +195,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # The text or SSML to be converted into speech. There is a 3,000 character limit.
           payload:,
           # Specifies the voice used in speech synthesis.
@@ -259,6 +264,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               payload: String,
               voice: String,
               call_control_ids: T::Array[String],

@@ -12,6 +12,9 @@ module Telnyx
             T.any(Telnyx::Calls::ActionAnswerParams, Telnyx::Internal::AnyHash)
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # Use this field to set the Billing Group ID for the call. Must be a valid and
         # existing Billing Group ID.
         sig { returns(T.nilable(String)) }
@@ -368,6 +371,7 @@ module Telnyx
 
         sig do
           params(
+            call_control_id: String,
             billing_group_id: String,
             client_state: String,
             command_id: String,
@@ -417,6 +421,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id:,
           # Use this field to set the Billing Group ID for the call. Must be a valid and
           # existing Billing Group ID.
           billing_group_id: nil,
@@ -504,6 +509,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              call_control_id: String,
               billing_group_id: String,
               client_state: String,
               command_id: String,

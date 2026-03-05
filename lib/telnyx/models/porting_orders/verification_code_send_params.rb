@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute phone_numbers
         #
         #   @return [Array<String>, nil]
@@ -19,7 +24,8 @@ module Telnyx
         optional :verification_method,
                  enum: -> { Telnyx::PortingOrders::VerificationCodeSendParams::VerificationMethod }
 
-        # @!method initialize(phone_numbers: nil, verification_method: nil, request_options: {})
+        # @!method initialize(id:, phone_numbers: nil, verification_method: nil, request_options: {})
+        #   @param id [String]
         #   @param phone_numbers [Array<String>]
         #   @param verification_method [Symbol, Telnyx::Models::PortingOrders::VerificationCodeSendParams::VerificationMethod]
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]

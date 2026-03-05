@@ -13,14 +13,21 @@ module Telnyx
         #   @return [String]
         required :queue_name, String
 
+        # @!attribute call_control_id
+        #
+        #   @return [String]
+        required :call_control_id, String
+
         # @!attribute keep_after_hangup
         #   Whether the call should remain in queue after hangup.
         #
         #   @return [Boolean, nil]
         optional :keep_after_hangup, Telnyx::Internal::Type::Boolean
 
-        # @!method initialize(queue_name:, keep_after_hangup: nil, request_options: {})
+        # @!method initialize(queue_name:, call_control_id:, keep_after_hangup: nil, request_options: {})
         #   @param queue_name [String]
+        #
+        #   @param call_control_id [String]
         #
         #   @param keep_after_hangup [Boolean] Whether the call should remain in queue after hangup.
         #

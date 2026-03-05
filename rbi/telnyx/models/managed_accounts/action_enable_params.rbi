@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # When true, all connections owned by this managed account will automatically be
         # re-enabled. Note: Any connections that do not pass validations will not be
         # re-enabled.
@@ -26,11 +29,13 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             reenable_all_connections: T::Boolean,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # When true, all connections owned by this managed account will automatically be
           # re-enabled. Note: Any connections that do not pass validations will not be
           # re-enabled.
@@ -42,6 +47,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               reenable_all_connections: T::Boolean,
               request_options: Telnyx::RequestOptions
             }

@@ -3,6 +3,7 @@ module Telnyx
     module AI
       type assistant_update_params =
         {
+          assistant_id: String,
           description: String,
           dynamic_variables: ::Hash[Symbol, top],
           dynamic_variables_webhook_url: String,
@@ -27,6 +28,8 @@ module Telnyx
       class AssistantUpdateParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor assistant_id: String
 
         attr_reader description: String?
 
@@ -119,6 +122,7 @@ module Telnyx
         ) -> Telnyx::AI::WidgetSettings
 
         def initialize: (
+          assistant_id: String,
           ?description: String,
           ?dynamic_variables: ::Hash[Symbol, top],
           ?dynamic_variables_webhook_url: String,
@@ -141,6 +145,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          assistant_id: String,
           description: String,
           dynamic_variables: ::Hash[Symbol, top],
           dynamic_variables_webhook_url: String,

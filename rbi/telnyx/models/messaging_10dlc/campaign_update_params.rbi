@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :campaign_id
+
         # Help message of the campaign.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :auto_renewal
@@ -95,6 +98,7 @@ module Telnyx
 
         sig do
           params(
+            campaign_id: String,
             auto_renewal: T::Boolean,
             help_message: String,
             message_flow: String,
@@ -110,6 +114,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          campaign_id:,
           # Help message of the campaign.
           auto_renewal: nil,
           # Help message of the campaign.
@@ -140,6 +145,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              campaign_id: String,
               auto_renewal: T::Boolean,
               help_message: String,
               message_flow: String,

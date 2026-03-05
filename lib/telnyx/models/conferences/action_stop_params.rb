@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute call_control_ids
         #   List of call control ids identifying participants the audio file should stop be
         #   played to. If not given, the audio will be stoped to the entire conference.
@@ -22,9 +27,11 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Conferences::ActionStopParams::Region, nil]
         optional :region, enum: -> { Telnyx::Conferences::ActionStopParams::Region }
 
-        # @!method initialize(call_control_ids: nil, region: nil, request_options: {})
+        # @!method initialize(id:, call_control_ids: nil, region: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::ActionStopParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param call_control_ids [Array<String>] List of call control ids identifying participants the audio file should stop be
         #

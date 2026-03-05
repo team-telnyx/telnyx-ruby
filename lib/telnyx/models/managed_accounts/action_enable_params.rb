@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute reenable_all_connections
         #   When true, all connections owned by this managed account will automatically be
         #   re-enabled. Note: Any connections that do not pass validations will not be
@@ -16,9 +21,11 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :reenable_all_connections, Telnyx::Internal::Type::Boolean
 
-        # @!method initialize(reenable_all_connections: nil, request_options: {})
+        # @!method initialize(id:, reenable_all_connections: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::ManagedAccounts::ActionEnableParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param reenable_all_connections [Boolean] When true, all connections owned by this managed account will automatically be r
         #

@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute application_name
       #   A user-assigned name to help manage the application.
       #
@@ -70,9 +75,11 @@ module Telnyx
       #   @return [Integer, nil]
       optional :webhook_timeout_secs, Integer, nil?: true
 
-      # @!method initialize(application_name:, webhook_event_url:, active: nil, anchorsite_override: nil, fax_email_recipient: nil, inbound: nil, outbound: nil, tags: nil, webhook_event_failover_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @!method initialize(id:, application_name:, webhook_event_url:, active: nil, anchorsite_override: nil, fax_email_recipient: nil, inbound: nil, outbound: nil, tags: nil, webhook_event_failover_url: nil, webhook_timeout_secs: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::FaxApplicationUpdateParams} for more details.
+      #
+      #   @param id [String]
       #
       #   @param application_name [String] A user-assigned name to help manage the application.
       #

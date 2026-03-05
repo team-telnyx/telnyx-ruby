@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute channel_limit
       #   Integer value that indicates the number of allocatable global outbound channels
       #   that should be allocated to the managed account. Must be 0 or more. If the value
@@ -16,9 +21,11 @@ module Telnyx
       #   @return [Integer, nil]
       optional :channel_limit, Integer
 
-      # @!method initialize(channel_limit: nil, request_options: {})
+      # @!method initialize(id:, channel_limit: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::ManagedAccountUpdateGlobalChannelLimitParams} for more details.
+      #
+      #   @param id [String]
       #
       #   @param channel_limit [Integer] Integer value that indicates the number of allocatable global outbound channels
       #

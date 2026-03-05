@@ -14,6 +14,9 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :messaging_profile_id
+
       sig { returns(T.nilable(Integer)) }
       attr_reader :page_number
 
@@ -28,17 +31,24 @@ module Telnyx
 
       sig do
         params(
+          messaging_profile_id: String,
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(page_number: nil, page_size: nil, request_options: {})
+      def self.new(
+        messaging_profile_id:,
+        page_number: nil,
+        page_size: nil,
+        request_options: {}
+      )
       end
 
       sig do
         override.returns(
           {
+            messaging_profile_id: String,
             page_number: Integer,
             page_size: Integer,
             request_options: Telnyx::RequestOptions

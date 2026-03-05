@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # Filter parameter for releases (deepObject style). Supports filtering by status,
         # civic_address_id, location_id, and phone_number with eq/contains operations.
         sig do
@@ -46,6 +49,7 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             filter:
               Telnyx::ExternalConnections::ReleaseListParams::Filter::OrHash,
             page_number: Integer,
@@ -54,6 +58,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # Filter parameter for releases (deepObject style). Supports filtering by status,
           # civic_address_id, location_id, and phone_number with eq/contains operations.
           filter: nil,
@@ -66,6 +71,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               filter: Telnyx::ExternalConnections::ReleaseListParams::Filter,
               page_number: Integer,
               page_size: Integer,

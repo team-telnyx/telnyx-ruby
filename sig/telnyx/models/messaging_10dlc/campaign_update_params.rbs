@@ -3,6 +3,7 @@ module Telnyx
     module Messaging10dlc
       type campaign_update_params =
         {
+          campaign_id: String,
           auto_renewal: bool,
           help_message: String,
           message_flow: String,
@@ -20,6 +21,8 @@ module Telnyx
       class CampaignUpdateParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor campaign_id: String
 
         attr_reader auto_renewal: bool?
 
@@ -66,6 +69,7 @@ module Telnyx
         def webhook_url=: (String) -> String
 
         def initialize: (
+          campaign_id: String,
           ?auto_renewal: bool,
           ?help_message: String,
           ?message_flow: String,
@@ -81,6 +85,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          campaign_id: String,
           auto_renewal: bool,
           help_message: String,
           message_flow: String,

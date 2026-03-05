@@ -15,18 +15,26 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :queue_name
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         sig do
           params(
             queue_name: String,
+            call_control_id: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(queue_name:, request_options: {})
+        def self.new(queue_name:, call_control_id:, request_options: {})
         end
 
         sig do
           override.returns(
-            { queue_name: String, request_options: Telnyx::RequestOptions }
+            {
+              queue_name: String,
+              call_control_id: String,
+              request_options: Telnyx::RequestOptions
+            }
           )
         end
         def to_hash

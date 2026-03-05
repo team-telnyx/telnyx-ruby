@@ -8,12 +8,18 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute task_id
+        #
+        #   @return [String]
+        required :task_id, String
+
         # @!attribute cluster_id
         #
         #   @return [Integer, nil]
         optional :cluster_id, Integer
 
-        # @!method initialize(cluster_id: nil, request_options: {})
+        # @!method initialize(task_id:, cluster_id: nil, request_options: {})
+        #   @param task_id [String]
         #   @param cluster_id [Integer]
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end

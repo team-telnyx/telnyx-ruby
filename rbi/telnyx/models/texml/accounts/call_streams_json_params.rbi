@@ -19,6 +19,9 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :account_sid
 
+          sig { returns(String) }
+          attr_accessor :call_sid
+
           # Indicates codec for bidirectional streaming RTP payloads. Used only with
           # stream_bidirectional_mode=rtp. Case sensitive.
           sig do
@@ -116,6 +119,7 @@ module Telnyx
           sig do
             params(
               account_sid: String,
+              call_sid: String,
               bidirectional_codec:
                 Telnyx::Texml::Accounts::CallStreamsJsonParams::BidirectionalCodec::OrSymbol,
               bidirectional_mode:
@@ -132,6 +136,7 @@ module Telnyx
           end
           def self.new(
             account_sid:,
+            call_sid:,
             # Indicates codec for bidirectional streaming RTP payloads. Used only with
             # stream_bidirectional_mode=rtp. Case sensitive.
             bidirectional_codec: nil,
@@ -155,6 +160,7 @@ module Telnyx
             override.returns(
               {
                 account_sid: String,
+                call_sid: String,
                 bidirectional_codec:
                   Telnyx::Texml::Accounts::CallStreamsJsonParams::BidirectionalCodec::OrSymbol,
                 bidirectional_mode:

@@ -12,6 +12,9 @@ module Telnyx
             T.any(Telnyx::Calls::ActionRejectParams, Telnyx::Internal::AnyHash)
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # Cause for call rejection.
         sig { returns(Telnyx::Calls::ActionRejectParams::Cause::OrSymbol) }
         attr_accessor :cause
@@ -34,6 +37,7 @@ module Telnyx
 
         sig do
           params(
+            call_control_id: String,
             cause: Telnyx::Calls::ActionRejectParams::Cause::OrSymbol,
             client_state: String,
             command_id: String,
@@ -41,6 +45,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id:,
           # Cause for call rejection.
           cause:,
           # Use this field to add state to every subsequent webhook. It must be a valid
@@ -56,6 +61,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              call_control_id: String,
               cause: Telnyx::Calls::ActionRejectParams::Cause::OrSymbol,
               client_state: String,
               command_id: String,

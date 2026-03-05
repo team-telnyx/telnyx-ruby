@@ -8,13 +8,20 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute reference_id
+        #
+        #   @return [String]
+        required :reference_id, String
+
         # @!attribute brand_id
         #   Filter by Brand ID for easier lookup in portal applications
         #
         #   @return [String, nil]
         optional :brand_id, String
 
-        # @!method initialize(brand_id: nil, request_options: {})
+        # @!method initialize(reference_id:, brand_id: nil, request_options: {})
+        #   @param reference_id [String]
+        #
         #   @param brand_id [String] Filter by Brand ID for easier lookup in portal applications
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]

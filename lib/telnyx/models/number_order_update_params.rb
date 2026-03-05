@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute number_order_id
+      #
+      #   @return [String]
+      required :number_order_id, String
+
       # @!attribute customer_reference
       #   A customer reference string for customer look ups.
       #
@@ -19,7 +24,9 @@ module Telnyx
       optional :regulatory_requirements,
                -> { Telnyx::Internal::Type::ArrayOf[Telnyx::UpdateRegulatoryRequirement] }
 
-      # @!method initialize(customer_reference: nil, regulatory_requirements: nil, request_options: {})
+      # @!method initialize(number_order_id:, customer_reference: nil, regulatory_requirements: nil, request_options: {})
+      #   @param number_order_id [String]
+      #
       #   @param customer_reference [String] A customer reference string for customer look ups.
       #
       #   @param regulatory_requirements [Array<Telnyx::Models::UpdateRegulatoryRequirement>]

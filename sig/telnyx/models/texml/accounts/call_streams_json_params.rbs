@@ -5,6 +5,7 @@ module Telnyx
         type call_streams_json_params =
           {
             account_sid: String,
+            call_sid: String,
             bidirectional_codec: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_codec,
             bidirectional_mode: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_mode,
             name: String,
@@ -20,6 +21,8 @@ module Telnyx
           include Telnyx::Internal::Type::RequestParameters
 
           attr_accessor account_sid: String
+
+          attr_accessor call_sid: String
 
           attr_reader bidirectional_codec: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_codec?
 
@@ -59,6 +62,7 @@ module Telnyx
 
           def initialize: (
             account_sid: String,
+            call_sid: String,
             ?bidirectional_codec: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_codec,
             ?bidirectional_mode: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_mode,
             ?name: String,
@@ -71,6 +75,7 @@ module Telnyx
 
           def to_hash: -> {
             account_sid: String,
+            call_sid: String,
             bidirectional_codec: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_codec,
             bidirectional_mode: Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::bidirectional_mode,
             name: String,

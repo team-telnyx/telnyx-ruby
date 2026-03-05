@@ -8,13 +8,20 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute room_session_id
+        #
+        #   @return [String]
+        required :room_session_id, String
+
         # @!attribute include_participants
         #   To decide if room participants should be included in the response.
         #
         #   @return [Boolean, nil]
         optional :include_participants, Telnyx::Internal::Type::Boolean
 
-        # @!method initialize(include_participants: nil, request_options: {})
+        # @!method initialize(room_session_id:, include_participants: nil, request_options: {})
+        #   @param room_session_id [String]
+        #
         #   @param include_participants [Boolean] To decide if room participants should be included in the response.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]

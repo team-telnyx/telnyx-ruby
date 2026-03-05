@@ -6,6 +6,7 @@ module Telnyx
           type recordings_json_recordings_json_params =
             {
               account_sid: String,
+              call_sid: String,
               play_beep: bool,
               recording_channels: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_channels,
               recording_status_callback: String,
@@ -21,6 +22,8 @@ module Telnyx
             include Telnyx::Internal::Type::RequestParameters
 
             attr_accessor account_sid: String
+
+            attr_accessor call_sid: String
 
             attr_reader play_beep: bool?
 
@@ -58,6 +61,7 @@ module Telnyx
 
             def initialize: (
               account_sid: String,
+              call_sid: String,
               ?play_beep: bool,
               ?recording_channels: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_channels,
               ?recording_status_callback: String,
@@ -70,6 +74,7 @@ module Telnyx
 
             def to_hash: -> {
               account_sid: String,
+              call_sid: String,
               play_beep: bool,
               recording_channels: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_channels,
               recording_status_callback: String,

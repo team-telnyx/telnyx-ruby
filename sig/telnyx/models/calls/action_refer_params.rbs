@@ -3,6 +3,7 @@ module Telnyx
     module Calls
       type action_refer_params =
         {
+          call_control_id: String,
           sip_address: String,
           client_state: String,
           command_id: String,
@@ -16,6 +17,8 @@ module Telnyx
       class ActionReferParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
 
         attr_accessor sip_address: String
 
@@ -48,6 +51,7 @@ module Telnyx
         ) -> ::Array[Telnyx::SipHeader]
 
         def initialize: (
+          call_control_id: String,
           sip_address: String,
           ?client_state: String,
           ?command_id: String,
@@ -59,6 +63,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          call_control_id: String,
           sip_address: String,
           client_state: String,
           command_id: String,

@@ -9,6 +9,11 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
+          # @!attribute id
+          #
+          #   @return [String]
+          required :id, String
+
           # @!attribute profile_id
           #   Messaging profile ID associated with the RCS Agent
           #
@@ -27,7 +32,9 @@ module Telnyx
           #   @return [String, nil]
           optional :webhook_url, String, nil?: true
 
-          # @!method initialize(profile_id: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+          # @!method initialize(id:, profile_id: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+          #   @param id [String]
+          #
           #   @param profile_id [String, nil] Messaging profile ID associated with the RCS Agent
           #
           #   @param webhook_failover_url [String, nil] Failover URL to receive RCS events

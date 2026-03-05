@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute managed_account_allow_custom_pricing
       #   Boolean value that indicates if the managed account is able to have custom
       #   pricing set for it or not. If false, uses the pricing of the manager account.
@@ -16,9 +21,11 @@ module Telnyx
       #   @return [Boolean, nil]
       optional :managed_account_allow_custom_pricing, Telnyx::Internal::Type::Boolean
 
-      # @!method initialize(managed_account_allow_custom_pricing: nil, request_options: {})
+      # @!method initialize(id:, managed_account_allow_custom_pricing: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::ManagedAccountUpdateParams} for more details.
+      #
+      #   @param id [String]
       #
       #   @param managed_account_allow_custom_pricing [Boolean] Boolean value that indicates if the managed account is able to have custom prici
       #

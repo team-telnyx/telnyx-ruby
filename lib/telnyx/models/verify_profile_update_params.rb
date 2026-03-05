@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute verify_profile_id
+      #
+      #   @return [String]
+      required :verify_profile_id, String
+
       # @!attribute call
       #
       #   @return [Telnyx::Models::VerifyProfileUpdateParams::Call, nil]
@@ -47,7 +52,8 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String
 
-      # @!method initialize(call: nil, flashcall: nil, language: nil, name: nil, rcs: nil, sms: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @!method initialize(verify_profile_id:, call: nil, flashcall: nil, language: nil, name: nil, rcs: nil, sms: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      #   @param verify_profile_id [String]
       #   @param call [Telnyx::Models::VerifyProfileUpdateParams::Call]
       #   @param flashcall [Telnyx::Models::VerifyProfileUpdateParams::Flashcall]
       #   @param language [String]

@@ -4,6 +4,7 @@ module Telnyx
       module Assistants
         type scheduled_event_list_params =
           {
+            assistant_id: String,
             conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
             from_date: Time,
             page_number: Integer,
@@ -15,6 +16,8 @@ module Telnyx
         class ScheduledEventListParams < Telnyx::Internal::Type::BaseModel
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor assistant_id: String
 
           attr_reader conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type?
 
@@ -39,6 +42,7 @@ module Telnyx
           def to_date=: (Time) -> Time
 
           def initialize: (
+            assistant_id: String,
             ?conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
             ?from_date: Time,
             ?page_number: Integer,
@@ -48,6 +52,7 @@ module Telnyx
           ) -> void
 
           def to_hash: -> {
+            assistant_id: String,
             conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
             from_date: Time,
             page_number: Integer,

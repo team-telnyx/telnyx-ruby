@@ -11,15 +11,23 @@ module Telnyx
           T.any(Telnyx::SiprecConnectorDeleteParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :connector_name
+
       sig do
-        params(request_options: Telnyx::RequestOptions::OrHash).returns(
-          T.attached_class
-        )
+        params(
+          connector_name: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(request_options: {})
+      def self.new(connector_name:, request_options: {})
       end
 
-      sig { override.returns({ request_options: Telnyx::RequestOptions }) }
+      sig do
+        override.returns(
+          { connector_name: String, request_options: Telnyx::RequestOptions }
+        )
+      end
       def to_hash
       end
     end

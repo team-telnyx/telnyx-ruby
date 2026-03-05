@@ -14,6 +14,9 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # Identifies the Credential Connection this credential is associated with.
       sig { returns(T.nilable(String)) }
       attr_reader :connection_id
@@ -43,6 +46,7 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           connection_id: String,
           expires_at: String,
           name: String,
@@ -51,6 +55,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # Identifies the Credential Connection this credential is associated with.
         connection_id: nil,
         # ISO-8601 formatted date indicating when the credential will expire.
@@ -65,6 +70,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             connection_id: String,
             expires_at: String,
             name: String,

@@ -3,6 +3,7 @@ module Telnyx
     module PortingOrders
       type additional_document_create_params =
         {
+          id: String,
           additional_documents: ::Array[Telnyx::PortingOrders::AdditionalDocumentCreateParams::AdditionalDocument]
         }
         & Telnyx::Internal::Type::request_parameters
@@ -11,6 +12,8 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        attr_accessor id: String
+
         attr_reader additional_documents: ::Array[Telnyx::PortingOrders::AdditionalDocumentCreateParams::AdditionalDocument]?
 
         def additional_documents=: (
@@ -18,11 +21,13 @@ module Telnyx
         ) -> ::Array[Telnyx::PortingOrders::AdditionalDocumentCreateParams::AdditionalDocument]
 
         def initialize: (
+          id: String,
           ?additional_documents: ::Array[Telnyx::PortingOrders::AdditionalDocumentCreateParams::AdditionalDocument],
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
+          id: String,
           additional_documents: ::Array[Telnyx::PortingOrders::AdditionalDocumentCreateParams::AdditionalDocument],
           request_options: Telnyx::RequestOptions
         }

@@ -20,6 +20,9 @@ module Telnyx
             sig { returns(String) }
             attr_accessor :account_sid
 
+            sig { returns(String) }
+            attr_accessor :conference_sid
+
             # The URL the result of answering machine detection will be sent to.
             sig { returns(T.nilable(String)) }
             attr_reader :amd_status_callback
@@ -554,6 +557,7 @@ module Telnyx
             sig do
               params(
                 account_sid: String,
+                conference_sid: String,
                 amd_status_callback: String,
                 amd_status_callback_method:
                   Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::AmdStatusCallbackMethod::OrSymbol,
@@ -622,6 +626,7 @@ module Telnyx
             end
             def self.new(
               account_sid:,
+              conference_sid:,
               # The URL the result of answering machine detection will be sent to.
               amd_status_callback: nil,
               # HTTP request type used for `AmdStatusCallback`. Defaults to `POST`.
@@ -768,6 +773,7 @@ module Telnyx
               override.returns(
                 {
                   account_sid: String,
+                  conference_sid: String,
                   amd_status_callback: String,
                   amd_status_callback_method:
                     Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::AmdStatusCallbackMethod::OrSymbol,

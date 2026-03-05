@@ -3,15 +3,26 @@ module Telnyx
     module Rooms
       module Sessions
         type action_unmute_params =
-          {  } & Telnyx::Internal::Type::request_parameters
+          { room_session_id: String }
+          & Telnyx::Internal::Type::request_parameters
 
         class ActionUnmuteParams < Telnyx::Models::Rooms::Sessions::ActionsParticipantsRequest
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
-          def initialize: (?request_options: Telnyx::request_opts) -> void
+          def room_session_id: -> String
 
-          def to_hash: -> { request_options: Telnyx::RequestOptions }
+          def room_session_id=: (String _) -> String
+
+          def initialize: (
+            room_session_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            room_session_id: String,
+            request_options: Telnyx::RequestOptions
+          }
         end
       end
     end

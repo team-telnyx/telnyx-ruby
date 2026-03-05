@@ -9,6 +9,11 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
+          # @!attribute assistant_id
+          #
+          #   @return [String]
+          required :assistant_id, String
+
           # @!attribute scheduled_at_fixed_datetime
           #   The datetime at which the event should be scheduled. Formatted as ISO 8601.
           #
@@ -53,9 +58,11 @@ module Telnyx
           #   @return [String, nil]
           optional :text, String
 
-          # @!method initialize(scheduled_at_fixed_datetime:, telnyx_agent_target:, telnyx_conversation_channel:, telnyx_end_user_target:, conversation_metadata: nil, dynamic_variables: nil, text: nil, request_options: {})
+          # @!method initialize(assistant_id:, scheduled_at_fixed_datetime:, telnyx_agent_target:, telnyx_conversation_channel:, telnyx_end_user_target:, conversation_metadata: nil, dynamic_variables: nil, text: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::Assistants::ScheduledEventCreateParams} for more details.
+          #
+          #   @param assistant_id [String]
           #
           #   @param scheduled_at_fixed_datetime [Time] The datetime at which the event should be scheduled. Formatted as ISO 8601.
           #

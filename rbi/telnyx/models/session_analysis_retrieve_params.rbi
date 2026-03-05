@@ -17,6 +17,9 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :record_type
 
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # ISO 8601 timestamp to narrow index selection for faster lookups.
       sig { returns(T.nilable(Time)) }
       attr_reader :date_time
@@ -56,6 +59,7 @@ module Telnyx
       sig do
         params(
           record_type: String,
+          event_id: String,
           date_time: Time,
           expand: Telnyx::SessionAnalysisRetrieveParams::Expand::OrSymbol,
           include_children: T::Boolean,
@@ -65,6 +69,7 @@ module Telnyx
       end
       def self.new(
         record_type:,
+        event_id:,
         # ISO 8601 timestamp to narrow index selection for faster lookups.
         date_time: nil,
         # Controls what data to expand on each event node.
@@ -81,6 +86,7 @@ module Telnyx
         override.returns(
           {
             record_type: String,
+            event_id: String,
             date_time: Time,
             expand: Telnyx::SessionAnalysisRetrieveParams::Expand::OrSymbol,
             include_children: T::Boolean,

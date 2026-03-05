@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # The address of the company.
         sig { returns(Telnyx::Porting::LoaConfigurationUpdateParams::Address) }
         attr_reader :address
@@ -60,6 +63,7 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             address:
               Telnyx::Porting::LoaConfigurationUpdateParams::Address::OrHash,
             company_name: String,
@@ -71,6 +75,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # The address of the company.
           address:,
           # The name of the company
@@ -88,6 +93,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               address: Telnyx::Porting::LoaConfigurationUpdateParams::Address,
               company_name: String,
               contact: Telnyx::Porting::LoaConfigurationUpdateParams::Contact,

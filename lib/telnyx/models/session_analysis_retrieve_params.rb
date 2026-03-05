@@ -12,6 +12,11 @@ module Telnyx
       #   @return [String]
       required :record_type, String
 
+      # @!attribute event_id
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute date_time
       #   ISO 8601 timestamp to narrow index selection for faster lookups.
       #
@@ -36,8 +41,10 @@ module Telnyx
       #   @return [Integer, nil]
       optional :max_depth, Integer
 
-      # @!method initialize(record_type:, date_time: nil, expand: nil, include_children: nil, max_depth: nil, request_options: {})
+      # @!method initialize(record_type:, event_id:, date_time: nil, expand: nil, include_children: nil, max_depth: nil, request_options: {})
       #   @param record_type [String]
+      #
+      #   @param event_id [String]
       #
       #   @param date_time [Time] ISO 8601 timestamp to narrow index selection for faster lookups.
       #

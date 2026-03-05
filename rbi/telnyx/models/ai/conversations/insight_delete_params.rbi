@@ -16,15 +16,28 @@ module Telnyx
               )
             end
 
+          # The ID of the insight
+          sig { returns(String) }
+          attr_accessor :insight_id
+
           sig do
-            params(request_options: Telnyx::RequestOptions::OrHash).returns(
-              T.attached_class
-            )
+            params(
+              insight_id: String,
+              request_options: Telnyx::RequestOptions::OrHash
+            ).returns(T.attached_class)
           end
-          def self.new(request_options: {})
+          def self.new(
+            # The ID of the insight
+            insight_id:,
+            request_options: {}
+          )
           end
 
-          sig { override.returns({ request_options: Telnyx::RequestOptions }) }
+          sig do
+            override.returns(
+              { insight_id: String, request_options: Telnyx::RequestOptions }
+            )
+          end
           def to_hash
           end
         end

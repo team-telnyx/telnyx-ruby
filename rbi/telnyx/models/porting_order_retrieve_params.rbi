@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::PortingOrderRetrieveParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # Include the first 50 phone number objects in the results
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :include_phone_numbers
@@ -20,11 +23,13 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           include_phone_numbers: T::Boolean,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # Include the first 50 phone number objects in the results
         include_phone_numbers: nil,
         request_options: {}
@@ -34,6 +39,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             include_phone_numbers: T::Boolean,
             request_options: Telnyx::RequestOptions
           }

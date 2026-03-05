@@ -3,6 +3,7 @@ module Telnyx
     module Calls
       type action_stop_forking_params =
         {
+          call_control_id: String,
           client_state: String,
           command_id: String,
           stream_type: Telnyx::Models::Calls::ActionStopForkingParams::stream_type
@@ -12,6 +13,8 @@ module Telnyx
       class ActionStopForkingParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
 
         attr_reader client_state: String?
 
@@ -28,6 +31,7 @@ module Telnyx
         ) -> Telnyx::Models::Calls::ActionStopForkingParams::stream_type
 
         def initialize: (
+          call_control_id: String,
           ?client_state: String,
           ?command_id: String,
           ?stream_type: Telnyx::Models::Calls::ActionStopForkingParams::stream_type,
@@ -35,6 +39,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          call_control_id: String,
           client_state: String,
           command_id: String,
           stream_type: Telnyx::Models::Calls::ActionStopForkingParams::stream_type,

@@ -18,6 +18,9 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :porting_order_id
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # Required information for initiating the action requirement for AU ID
         # verification.
         sig do
@@ -38,6 +41,7 @@ module Telnyx
         sig do
           params(
             porting_order_id: String,
+            id: String,
             params:
               Telnyx::PortingOrders::ActionRequirementInitiateParams::Params::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
@@ -45,6 +49,7 @@ module Telnyx
         end
         def self.new(
           porting_order_id:,
+          id:,
           # Required information for initiating the action requirement for AU ID
           # verification.
           params:,
@@ -56,6 +61,7 @@ module Telnyx
           override.returns(
             {
               porting_order_id: String,
+              id: String,
               params:
                 Telnyx::PortingOrders::ActionRequirementInitiateParams::Params,
               request_options: Telnyx::RequestOptions

@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute call_control_id
+        #
+        #   @return [String]
+        required :call_control_id, String
+
         # @!attribute queue_name
         #   The name of the queue the call should be put in. If a queue with a given name
         #   doesn't exist yet it will be created.
@@ -50,9 +55,11 @@ module Telnyx
         #   @return [Integer, nil]
         optional :max_wait_time_secs, Integer
 
-        # @!method initialize(queue_name:, client_state: nil, command_id: nil, keep_after_hangup: nil, max_size: nil, max_wait_time_secs: nil, request_options: {})
+        # @!method initialize(call_control_id:, queue_name:, client_state: nil, command_id: nil, keep_after_hangup: nil, max_size: nil, max_wait_time_secs: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionEnqueueParams} for more details.
+        #
+        #   @param call_control_id [String]
         #
         #   @param queue_name [String] The name of the queue the call should be put in. If a queue with a given name do
         #

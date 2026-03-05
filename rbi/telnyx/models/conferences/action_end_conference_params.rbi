@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # Use this field to avoid duplicate commands. Telnyx will ignore any command with
         # the same `command_id` for the same conference.
         sig { returns(T.nilable(String)) }
@@ -25,11 +28,13 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             command_id: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # Use this field to avoid duplicate commands. Telnyx will ignore any command with
           # the same `command_id` for the same conference.
           command_id: nil,
@@ -39,7 +44,11 @@ module Telnyx
 
         sig do
           override.returns(
-            { command_id: String, request_options: Telnyx::RequestOptions }
+            {
+              id: String,
+              command_id: String,
+              request_options: Telnyx::RequestOptions
+            }
           )
         end
         def to_hash

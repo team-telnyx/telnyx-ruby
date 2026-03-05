@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[document_type]
         sig do
@@ -64,6 +67,7 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             filter:
               Telnyx::PortingOrders::AdditionalDocumentListParams::Filter::OrHash,
             page_number: Integer,
@@ -74,6 +78,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # Consolidated filter parameter (deepObject style). Originally:
           # filter[document_type]
           filter: nil,
@@ -88,6 +93,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               filter:
                 Telnyx::PortingOrders::AdditionalDocumentListParams::Filter,
               page_number: Integer,

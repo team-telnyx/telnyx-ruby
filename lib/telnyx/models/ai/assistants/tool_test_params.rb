@@ -14,6 +14,11 @@ module Telnyx
           #   @return [String]
           required :assistant_id, String
 
+          # @!attribute tool_id
+          #
+          #   @return [String]
+          required :tool_id, String
+
           # @!attribute arguments
           #   Key-value arguments to use for the webhook test
           #
@@ -26,8 +31,10 @@ module Telnyx
           #   @return [Hash{Symbol=>Object}, nil]
           optional :dynamic_variables, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
-          # @!method initialize(assistant_id:, arguments: nil, dynamic_variables: nil, request_options: {})
+          # @!method initialize(assistant_id:, tool_id:, arguments: nil, dynamic_variables: nil, request_options: {})
           #   @param assistant_id [String]
+          #
+          #   @param tool_id [String]
           #
           #   @param arguments [Hash{Symbol=>Object}] Key-value arguments to use for the webhook test
           #

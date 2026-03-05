@@ -7,13 +7,20 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute action
       #   Invoice action
       #
       #   @return [Symbol, Telnyx::Models::InvoiceRetrieveParams::Action, nil]
       optional :action, enum: -> { Telnyx::InvoiceRetrieveParams::Action }
 
-      # @!method initialize(action: nil, request_options: {})
+      # @!method initialize(id:, action: nil, request_options: {})
+      #   @param id [String]
+      #
       #   @param action [Symbol, Telnyx::Models::InvoiceRetrieveParams::Action] Invoice action
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]

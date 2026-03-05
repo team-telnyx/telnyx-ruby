@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute call_control_id
+        #
+        #   @return [String]
+        required :call_control_id, String
+
         # @!attribute client_state
         #   Use this field to add state to every subsequent webhook. It must be a valid
         #   Base-64 encoded string.
@@ -57,9 +62,11 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::ActionStartSiprecParams::SiprecTrack, nil]
         optional :siprec_track, enum: -> { Telnyx::Calls::ActionStartSiprecParams::SiprecTrack }
 
-        # @!method initialize(client_state: nil, connector_name: nil, include_metadata_custom_headers: nil, secure: nil, session_timeout_secs: nil, sip_transport: nil, siprec_track: nil, request_options: {})
+        # @!method initialize(call_control_id:, client_state: nil, connector_name: nil, include_metadata_custom_headers: nil, secure: nil, session_timeout_secs: nil, sip_transport: nil, siprec_track: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionStartSiprecParams} for more details.
+        #
+        #   @param call_control_id [String]
         #
         #   @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #

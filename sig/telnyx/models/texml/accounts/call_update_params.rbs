@@ -3,7 +3,8 @@ module Telnyx
     module Texml
       module Accounts
         type call_update_params =
-          { account_sid: String } & Telnyx::Internal::Type::request_parameters
+          { account_sid: String, call_sid: String }
+          & Telnyx::Internal::Type::request_parameters
 
         class CallUpdateParams < Telnyx::Models::Texml::Accounts::UpdateCall
           extend Telnyx::Internal::Type::RequestParameters::Converter
@@ -13,13 +14,19 @@ module Telnyx
 
           def account_sid=: (String _) -> String
 
+          def call_sid: -> String
+
+          def call_sid=: (String _) -> String
+
           def initialize: (
             account_sid: String,
+            call_sid: String,
             ?request_options: Telnyx::request_opts
           ) -> void
 
           def to_hash: -> {
             account_sid: String,
+            call_sid: String,
             request_options: Telnyx::RequestOptions
           }
         end

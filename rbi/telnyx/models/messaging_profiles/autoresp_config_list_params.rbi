@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :profile_id
+
         sig { returns(T.nilable(String)) }
         attr_reader :country_code
 
@@ -61,6 +64,7 @@ module Telnyx
 
         sig do
           params(
+            profile_id: String,
             country_code: String,
             created_at:
               Telnyx::MessagingProfiles::AutorespConfigListParams::CreatedAt::OrHash,
@@ -70,6 +74,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          profile_id:,
           country_code: nil,
           # Consolidated created_at parameter (deepObject style). Originally:
           # created_at[gte], created_at[lte]
@@ -84,6 +89,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              profile_id: String,
               country_code: String,
               created_at:
                 Telnyx::MessagingProfiles::AutorespConfigListParams::CreatedAt,

@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # The parameters described as a JSON Schema object that needs to be gathered by
         # the voice assistant. See the
         # [JSON Schema reference](https://json-schema.org/understanding-json-schema) for
@@ -210,6 +213,7 @@ module Telnyx
 
         sig do
           params(
+            call_control_id: String,
             parameters: T::Hash[Symbol, T.anything],
             assistant: Telnyx::AI::Assistant::OrHash,
             client_state: String,
@@ -240,6 +244,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id:,
           # The parameters described as a JSON Schema object that needs to be gathered by
           # the voice assistant. See the
           # [JSON Schema reference](https://json-schema.org/understanding-json-schema) for
@@ -316,6 +321,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              call_control_id: String,
               parameters: T::Hash[Symbol, T.anything],
               assistant: Telnyx::AI::Assistant,
               client_state: String,

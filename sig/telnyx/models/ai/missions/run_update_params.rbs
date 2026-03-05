@@ -5,6 +5,7 @@ module Telnyx
         type run_update_params =
           {
             mission_id: String,
+            run_id: String,
             error: String,
             metadata: ::Hash[Symbol, top],
             result_payload: ::Hash[Symbol, top],
@@ -18,6 +19,8 @@ module Telnyx
           include Telnyx::Internal::Type::RequestParameters
 
           attr_accessor mission_id: String
+
+          attr_accessor run_id: String
 
           attr_reader error: String?
 
@@ -43,6 +46,7 @@ module Telnyx
 
           def initialize: (
             mission_id: String,
+            run_id: String,
             ?error: String,
             ?metadata: ::Hash[Symbol, top],
             ?result_payload: ::Hash[Symbol, top],
@@ -53,6 +57,7 @@ module Telnyx
 
           def to_hash: -> {
             mission_id: String,
+            run_id: String,
             error: String,
             metadata: ::Hash[Symbol, top],
             result_payload: ::Hash[Symbol, top],

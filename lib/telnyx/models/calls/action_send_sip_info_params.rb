@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute call_control_id
+        #
+        #   @return [String]
+        required :call_control_id, String
+
         # @!attribute body
         #   Content of the SIP INFO
         #
@@ -35,9 +40,11 @@ module Telnyx
         #   @return [String, nil]
         optional :command_id, String
 
-        # @!method initialize(body:, content_type:, client_state: nil, command_id: nil, request_options: {})
+        # @!method initialize(call_control_id:, body:, content_type:, client_state: nil, command_id: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionSendSipInfoParams} for more details.
+        #
+        #   @param call_control_id [String]
         #
         #   @param body [String] Content of the SIP INFO
         #

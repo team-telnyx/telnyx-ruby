@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::SimCardGroupUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # Upper limit on the amount of data the SIM cards, within the group, can use.
       sig { returns(T.nilable(Telnyx::SimCardGroupUpdateParams::DataLimit)) }
       attr_reader :data_limit
@@ -31,12 +34,14 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           data_limit: Telnyx::SimCardGroupUpdateParams::DataLimit::OrHash,
           name: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # Upper limit on the amount of data the SIM cards, within the group, can use.
         data_limit: nil,
         # A user friendly name for the SIM card group.
@@ -48,6 +53,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             data_limit: Telnyx::SimCardGroupUpdateParams::DataLimit,
             name: String,
             request_options: Telnyx::RequestOptions

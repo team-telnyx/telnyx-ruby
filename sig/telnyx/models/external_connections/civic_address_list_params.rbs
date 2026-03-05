@@ -2,12 +2,17 @@ module Telnyx
   module Models
     module ExternalConnections
       type civic_address_list_params =
-        { filter: Telnyx::ExternalConnections::CivicAddressListParams::Filter }
+        {
+          id: String,
+          filter: Telnyx::ExternalConnections::CivicAddressListParams::Filter
+        }
         & Telnyx::Internal::Type::request_parameters
 
       class CivicAddressListParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor id: String
 
         attr_reader filter: Telnyx::ExternalConnections::CivicAddressListParams::Filter?
 
@@ -16,11 +21,13 @@ module Telnyx
         ) -> Telnyx::ExternalConnections::CivicAddressListParams::Filter
 
         def initialize: (
+          id: String,
           ?filter: Telnyx::ExternalConnections::CivicAddressListParams::Filter,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
+          id: String,
           filter: Telnyx::ExternalConnections::CivicAddressListParams::Filter,
           request_options: Telnyx::RequestOptions
         }

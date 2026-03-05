@@ -23,14 +23,23 @@ module Telnyx
             sig { returns(String) }
             attr_accessor :conference_sid
 
+            sig { returns(String) }
+            attr_accessor :call_sid_or_participant_label
+
             sig do
               params(
                 account_sid: String,
                 conference_sid: String,
+                call_sid_or_participant_label: String,
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(T.attached_class)
             end
-            def self.new(account_sid:, conference_sid:, request_options: {})
+            def self.new(
+              account_sid:,
+              conference_sid:,
+              call_sid_or_participant_label:,
+              request_options: {}
+            )
             end
 
             sig do
@@ -38,6 +47,7 @@ module Telnyx
                 {
                   account_sid: String,
                   conference_sid: String,
+                  call_sid_or_participant_label: String,
                   request_options: Telnyx::RequestOptions
                 }
               )

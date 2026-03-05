@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute sub_number_order_id
+      #
+      #   @return [String]
+      required :sub_number_order_id, String
+
       # @!attribute filter
       #   Consolidated filter parameter (deepObject style). Originally:
       #   filter[include_phone_numbers]
@@ -14,9 +19,11 @@ module Telnyx
       #   @return [Telnyx::Models::SubNumberOrderRetrieveParams::Filter, nil]
       optional :filter, -> { Telnyx::SubNumberOrderRetrieveParams::Filter }
 
-      # @!method initialize(filter: nil, request_options: {})
+      # @!method initialize(sub_number_order_id:, filter: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::SubNumberOrderRetrieveParams} for more details.
+      #
+      #   @param sub_number_order_id [String]
       #
       #   @param filter [Telnyx::Models::SubNumberOrderRetrieveParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[include_pho
       #

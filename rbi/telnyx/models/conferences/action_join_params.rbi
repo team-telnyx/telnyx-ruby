@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # Unique identifier and token for controlling the call
         sig { returns(String) }
         attr_accessor :call_control_id
@@ -169,6 +172,7 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             call_control_id: String,
             beep_enabled:
               Telnyx::Conferences::ActionJoinParams::BeepEnabled::OrSymbol,
@@ -189,6 +193,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # Unique identifier and token for controlling the call
           call_control_id:,
           # Whether a beep sound should be played when the participant joins and/or leaves
@@ -251,6 +256,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               call_control_id: String,
               beep_enabled:
                 Telnyx::Conferences::ActionJoinParams::BeepEnabled::OrSymbol,

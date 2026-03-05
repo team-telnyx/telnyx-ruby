@@ -20,6 +20,11 @@ module Telnyx
             #   @return [String]
             required :call_sid, String
 
+            # @!attribute siprec_sid
+            #
+            #   @return [String]
+            required :siprec_sid, String
+
             # @!attribute status
             #   The new status of the resource. Specifying `stopped` will end the siprec
             #   session.
@@ -29,7 +34,7 @@ module Telnyx
                      enum: -> { Telnyx::Texml::Accounts::Calls::SiprecSiprecSidJsonParams::Status },
                      api_name: :Status
 
-            # @!method initialize(account_sid:, call_sid:, status: nil, request_options: {})
+            # @!method initialize(account_sid:, call_sid:, siprec_sid:, status: nil, request_options: {})
             #   Some parameter documentations has been truncated, see
             #   {Telnyx::Models::Texml::Accounts::Calls::SiprecSiprecSidJsonParams} for more
             #   details.
@@ -37,6 +42,8 @@ module Telnyx
             #   @param account_sid [String]
             #
             #   @param call_sid [String]
+            #
+            #   @param siprec_sid [String]
             #
             #   @param status [Symbol, Telnyx::Models::Texml::Accounts::Calls::SiprecSiprecSidJsonParams::Status] The new status of the resource. Specifying `stopped` will end the siprec session
             #

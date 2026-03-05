@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute mcp_server_id
+        #
+        #   @return [String]
+        required :mcp_server_id, String
+
         # @!attribute id
         #
         #   @return [String, nil]
@@ -43,7 +48,8 @@ module Telnyx
         #   @return [String, nil]
         optional :url, String
 
-        # @!method initialize(id: nil, allowed_tools: nil, api_key_ref: nil, created_at: nil, name: nil, type: nil, url: nil, request_options: {})
+        # @!method initialize(mcp_server_id:, id: nil, allowed_tools: nil, api_key_ref: nil, created_at: nil, name: nil, type: nil, url: nil, request_options: {})
+        #   @param mcp_server_id [String]
         #   @param id [String]
         #   @param allowed_tools [Array<String>, nil]
         #   @param api_key_ref [String, nil]

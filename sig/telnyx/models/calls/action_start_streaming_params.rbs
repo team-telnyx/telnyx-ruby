@@ -3,6 +3,7 @@ module Telnyx
     module Calls
       type action_start_streaming_params =
         {
+          call_control_id: String,
           client_state: String,
           command_id: String,
           custom_parameters: ::Array[Telnyx::Calls::ActionStartStreamingParams::CustomParameter],
@@ -22,6 +23,8 @@ module Telnyx
       class ActionStartStreamingParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
 
         attr_reader client_state: String?
 
@@ -92,6 +95,7 @@ module Telnyx
         def stream_url=: (String) -> String
 
         def initialize: (
+          call_control_id: String,
           ?client_state: String,
           ?command_id: String,
           ?custom_parameters: ::Array[Telnyx::Calls::ActionStartStreamingParams::CustomParameter],
@@ -109,6 +113,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          call_control_id: String,
           client_state: String,
           command_id: String,
           custom_parameters: ::Array[Telnyx::Calls::ActionStartStreamingParams::CustomParameter],

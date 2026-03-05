@@ -13,8 +13,14 @@ module Telnyx
         #   @return [String]
         required :profile_id, String
 
-        # @!method initialize(profile_id:, request_options: {})
+        # @!attribute autoresp_cfg_id
+        #
+        #   @return [String]
+        required :autoresp_cfg_id, String
+
+        # @!method initialize(profile_id:, autoresp_cfg_id:, request_options: {})
         #   @param profile_id [String]
+        #   @param autoresp_cfg_id [String]
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end
     end

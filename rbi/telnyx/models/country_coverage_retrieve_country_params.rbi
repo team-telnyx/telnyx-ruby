@@ -14,15 +14,23 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :country_code
+
       sig do
-        params(request_options: Telnyx::RequestOptions::OrHash).returns(
-          T.attached_class
-        )
+        params(
+          country_code: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(request_options: {})
+      def self.new(country_code:, request_options: {})
       end
 
-      sig { override.returns({ request_options: Telnyx::RequestOptions }) }
+      sig do
+        override.returns(
+          { country_code: String, request_options: Telnyx::RequestOptions }
+        )
+      end
       def to_hash
       end
     end

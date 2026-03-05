@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # Unique identifier and token for controlling the call leg that will receive the
         # gather prompt.
         sig { returns(String) }
@@ -131,6 +134,7 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             call_control_id: String,
             audio_url: String,
             client_state: String,
@@ -151,6 +155,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # Unique identifier and token for controlling the call leg that will receive the
           # gather prompt.
           call_control_id:,
@@ -195,6 +200,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               call_control_id: String,
               audio_url: String,
               client_state: String,

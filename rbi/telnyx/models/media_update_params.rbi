@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::MediaUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :media_name
+
       # The URL where the media to be stored in Telnyx network is currently hosted. The
       # maximum allowed size is 20 MB.
       sig { returns(T.nilable(String)) }
@@ -29,12 +32,14 @@ module Telnyx
 
       sig do
         params(
+          media_name: String,
           media_url: String,
           ttl_secs: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        media_name:,
         # The URL where the media to be stored in Telnyx network is currently hosted. The
         # maximum allowed size is 20 MB.
         media_url: nil,
@@ -48,6 +53,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            media_name: String,
             media_url: String,
             ttl_secs: Integer,
             request_options: Telnyx::RequestOptions

@@ -12,6 +12,11 @@ module Telnyx
       #   @return [String]
       required :id, String
 
+      # @!attribute status
+      #
+      #   @return [Symbol, Telnyx::Models::PortoutUpdateStatusParams::Status]
+      required :status, enum: -> { Telnyx::PortoutUpdateStatusParams::Status }
+
       # @!attribute reason
       #   Provide a reason if rejecting the port out request
       #
@@ -25,11 +30,13 @@ module Telnyx
       #   @return [Boolean, nil]
       optional :host_messaging, Telnyx::Internal::Type::Boolean
 
-      # @!method initialize(id:, reason:, host_messaging: nil, request_options: {})
+      # @!method initialize(id:, status:, reason:, host_messaging: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::PortoutUpdateStatusParams} for more details.
       #
       #   @param id [String]
+      #
+      #   @param status [Symbol, Telnyx::Models::PortoutUpdateStatusParams::Status]
       #
       #   @param reason [String] Provide a reason if rejecting the port out request
       #

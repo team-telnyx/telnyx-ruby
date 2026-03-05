@@ -2,6 +2,7 @@ module Telnyx
   module Models
     type number_order_update_params =
       {
+        number_order_id: String,
         customer_reference: String,
         regulatory_requirements: ::Array[Telnyx::UpdateRegulatoryRequirement]
       }
@@ -10,6 +11,8 @@ module Telnyx
     class NumberOrderUpdateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor number_order_id: String
 
       attr_reader customer_reference: String?
 
@@ -22,12 +25,14 @@ module Telnyx
       ) -> ::Array[Telnyx::UpdateRegulatoryRequirement]
 
       def initialize: (
+        number_order_id: String,
         ?customer_reference: String,
         ?regulatory_requirements: ::Array[Telnyx::UpdateRegulatoryRequirement],
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
+        number_order_id: String,
         customer_reference: String,
         regulatory_requirements: ::Array[Telnyx::UpdateRegulatoryRequirement],
         request_options: Telnyx::RequestOptions

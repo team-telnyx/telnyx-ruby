@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # Specifies the type of audio provided in `audio_url` or `playback_content`.
         sig do
           returns(
@@ -122,6 +125,7 @@ module Telnyx
 
         sig do
           params(
+            call_control_id: String,
             audio_type:
               Telnyx::Calls::ActionStartPlaybackParams::AudioType::OrSymbol,
             audio_url: String,
@@ -138,6 +142,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id:,
           # Specifies the type of audio provided in `audio_url` or `playback_content`.
           audio_type: nil,
           # The URL of a file to be played back on the call. The URL can point to either a
@@ -184,6 +189,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              call_control_id: String,
               audio_type:
                 Telnyx::Calls::ActionStartPlaybackParams::AudioType::OrSymbol,
               audio_url: String,

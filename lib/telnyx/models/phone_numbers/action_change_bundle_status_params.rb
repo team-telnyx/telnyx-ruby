@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute bundle_id
         #   The new bundle_id setting for the number. If you are assigning the number to a
         #   bundle, this is the unique ID of the bundle you wish to use. If you are removing
@@ -18,9 +23,11 @@ module Telnyx
         #   @return [String]
         required :bundle_id, String
 
-        # @!method initialize(bundle_id:, request_options: {})
+        # @!method initialize(id:, bundle_id:, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::PhoneNumbers::ActionChangeBundleStatusParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param bundle_id [String] The new bundle_id setting for the number. If you are assigning the number to a b
         #

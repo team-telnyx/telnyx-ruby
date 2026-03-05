@@ -14,8 +14,14 @@ module Telnyx
           #   @return [String]
           required :mission_id, String
 
-          # @!method initialize(mission_id:, request_options: {})
+          # @!attribute knowledge_base_id
+          #
+          #   @return [String]
+          required :knowledge_base_id, String
+
+          # @!method initialize(mission_id:, knowledge_base_id:, request_options: {})
           #   @param mission_id [String]
+          #   @param knowledge_base_id [String]
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end
       end

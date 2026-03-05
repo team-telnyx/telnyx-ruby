@@ -2,6 +2,7 @@ module Telnyx
   module Models
     type texml_application_update_params =
       {
+        id: String,
         friendly_name: String,
         voice_url: String,
         active: bool,
@@ -23,6 +24,8 @@ module Telnyx
     class TexmlApplicationUpdateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor id: String
 
       attr_accessor friendly_name: String
 
@@ -91,6 +94,7 @@ module Telnyx
       ) -> Telnyx::Models::TexmlApplicationUpdateParams::voice_method
 
       def initialize: (
+        id: String,
         friendly_name: String,
         voice_url: String,
         ?active: bool,
@@ -110,6 +114,7 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
+        id: String,
         friendly_name: String,
         voice_url: String,
         active: bool,

@@ -3,6 +3,7 @@ module Telnyx
     module Calls
       type action_transfer_params =
         {
+          call_control_id: String,
           to: String,
           answering_machine_detection: Telnyx::Models::Calls::ActionTransferParams::answering_machine_detection,
           answering_machine_detection_config: Telnyx::Calls::ActionTransferParams::AnsweringMachineDetectionConfig,
@@ -46,6 +47,8 @@ module Telnyx
       class ActionTransferParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
 
         attr_accessor to: String
 
@@ -228,6 +231,7 @@ module Telnyx
         ) -> Telnyx::Models::Calls::ActionTransferParams::webhook_urls_method
 
         def initialize: (
+          call_control_id: String,
           to: String,
           ?answering_machine_detection: Telnyx::Models::Calls::ActionTransferParams::answering_machine_detection,
           ?answering_machine_detection_config: Telnyx::Calls::ActionTransferParams::AnsweringMachineDetectionConfig,
@@ -269,6 +273,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          call_control_id: String,
           to: String,
           answering_machine_detection: Telnyx::Models::Calls::ActionTransferParams::answering_machine_detection,
           answering_machine_detection_config: Telnyx::Calls::ActionTransferParams::AnsweringMachineDetectionConfig,

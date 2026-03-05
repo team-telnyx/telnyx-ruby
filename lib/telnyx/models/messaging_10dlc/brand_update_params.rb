@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute brand_id
+        #
+        #   @return [String]
+        required :brand_id, String
+
         # @!attribute country
         #   ISO2 2 characters country code. Example: US - United States
         #
@@ -165,9 +170,11 @@ module Telnyx
         #   @return [String, nil]
         optional :website, String
 
-        # @!method initialize(country:, display_name:, email:, entity_type:, vertical:, alt_business_id: nil, alt_business_id_type: nil, business_contact_email: nil, city: nil, company_name: nil, ein: nil, first_name: nil, identity_status: nil, ip_address: nil, is_reseller: nil, last_name: nil, phone: nil, postal_code: nil, state: nil, stock_exchange: nil, stock_symbol: nil, street: nil, webhook_failover_url: nil, webhook_url: nil, website: nil, request_options: {})
+        # @!method initialize(brand_id:, country:, display_name:, email:, entity_type:, vertical:, alt_business_id: nil, alt_business_id_type: nil, business_contact_email: nil, city: nil, company_name: nil, ein: nil, first_name: nil, identity_status: nil, ip_address: nil, is_reseller: nil, last_name: nil, phone: nil, postal_code: nil, state: nil, stock_exchange: nil, stock_symbol: nil, street: nil, webhook_failover_url: nil, webhook_url: nil, website: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Messaging10dlc::BrandUpdateParams} for more details.
+        #
+        #   @param brand_id [String]
         #
         #   @param country [String] ISO2 2 characters country code. Example: US - United States
         #

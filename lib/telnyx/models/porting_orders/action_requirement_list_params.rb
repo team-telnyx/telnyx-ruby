@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute porting_order_id
+        #
+        #   @return [String]
+        required :porting_order_id, String
+
         # @!attribute filter
         #   Consolidated filter parameter (deepObject style). Originally: filter[id][in][],
         #   filter[requirement_type_id], filter[action_type], filter[status]
@@ -31,9 +36,11 @@ module Telnyx
         #   @return [Telnyx::Models::PortingOrders::ActionRequirementListParams::Sort, nil]
         optional :sort, -> { Telnyx::PortingOrders::ActionRequirementListParams::Sort }
 
-        # @!method initialize(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+        # @!method initialize(porting_order_id:, filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::PortingOrders::ActionRequirementListParams} for more details.
+        #
+        #   @param porting_order_id [String]
         #
         #   @param filter [Telnyx::Models::PortingOrders::ActionRequirementListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[id][in][],
         #

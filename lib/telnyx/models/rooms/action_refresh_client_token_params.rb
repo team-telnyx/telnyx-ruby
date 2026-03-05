@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute room_id
+        #
+        #   @return [String]
+        required :room_id, String
+
         # @!attribute refresh_token
         #
         #   @return [String]
@@ -20,9 +25,11 @@ module Telnyx
         #   @return [Integer, nil]
         optional :token_ttl_secs, Integer
 
-        # @!method initialize(refresh_token:, token_ttl_secs: nil, request_options: {})
+        # @!method initialize(room_id:, refresh_token:, token_ttl_secs: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Rooms::ActionRefreshClientTokenParams} for more details.
+        #
+        #   @param room_id [String]
         #
         #   @param refresh_token [String]
         #

@@ -11,17 +11,22 @@ module Telnyx
           T.any(Telnyx::ChannelZoneUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :channel_zone_id
+
       # The number of reserved channels
       sig { returns(Integer) }
       attr_accessor :channels
 
       sig do
         params(
+          channel_zone_id: String,
           channels: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        channel_zone_id:,
         # The number of reserved channels
         channels:,
         request_options: {}
@@ -30,7 +35,11 @@ module Telnyx
 
       sig do
         override.returns(
-          { channels: Integer, request_options: Telnyx::RequestOptions }
+          {
+            channel_zone_id: String,
+            channels: Integer,
+            request_options: Telnyx::RequestOptions
+          }
         )
       end
       def to_hash

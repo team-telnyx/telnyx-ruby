@@ -15,17 +15,22 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :brand_id
+
         # The OTP PIN received via SMS
         sig { returns(String) }
         attr_accessor :otp_pin
 
         sig do
           params(
+            brand_id: String,
             otp_pin: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          brand_id:,
           # The OTP PIN received via SMS
           otp_pin:,
           request_options: {}
@@ -34,7 +39,11 @@ module Telnyx
 
         sig do
           override.returns(
-            { otp_pin: String, request_options: Telnyx::RequestOptions }
+            {
+              brand_id: String,
+              otp_pin: String,
+              request_options: Telnyx::RequestOptions
+            }
           )
         end
         def to_hash

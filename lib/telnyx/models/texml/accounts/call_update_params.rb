@@ -14,8 +14,14 @@ module Telnyx
           #   @return [String]
           required :account_sid, String
 
-          # @!method initialize(account_sid:, request_options: {})
+          # @!attribute call_sid
+          #
+          #   @return [String]
+          required :call_sid, String
+
+          # @!method initialize(account_sid:, call_sid:, request_options: {})
           #   @param account_sid [String]
+          #   @param call_sid [String]
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end
       end

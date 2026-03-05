@@ -3,6 +3,7 @@ module Telnyx
     module Calls
       type action_send_sip_info_params =
         {
+          call_control_id: String,
           body: String,
           content_type: String,
           client_state: String,
@@ -13,6 +14,8 @@ module Telnyx
       class ActionSendSipInfoParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
 
         attr_accessor body: String
 
@@ -27,6 +30,7 @@ module Telnyx
         def command_id=: (String) -> String
 
         def initialize: (
+          call_control_id: String,
           body: String,
           content_type: String,
           ?client_state: String,
@@ -35,6 +39,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          call_control_id: String,
           body: String,
           content_type: String,
           client_state: String,

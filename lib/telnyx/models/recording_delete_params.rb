@@ -7,7 +7,13 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      # @!method initialize(request_options: {})
+      # @!attribute recording_id
+      #
+      #   @return [String]
+      required :recording_id, String
+
+      # @!method initialize(recording_id:, request_options: {})
+      #   @param recording_id [String]
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end
   end

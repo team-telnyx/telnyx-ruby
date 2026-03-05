@@ -16,6 +16,9 @@ module Telnyx
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :account_sid
+
           # The ID of the TeXML Application.
           sig { returns(String) }
           attr_accessor :application_sid
@@ -462,6 +465,7 @@ module Telnyx
 
           sig do
             params(
+              account_sid: String,
               application_sid: String,
               from: String,
               to: String,
@@ -520,6 +524,7 @@ module Telnyx
             ).returns(T.attached_class)
           end
           def self.new(
+            account_sid:,
             # The ID of the TeXML Application.
             application_sid:,
             # The phone number of the party that initiated the call. Phone numbers are
@@ -636,6 +641,7 @@ module Telnyx
           sig do
             override.returns(
               {
+                account_sid: String,
                 application_sid: String,
                 from: String,
                 to: String,

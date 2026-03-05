@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute call_control_ids
         #   Array of unique identifiers and tokens for controlling the call. When empty all
         #   participants will be muted.
@@ -22,9 +27,11 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Conferences::ActionMuteParams::Region, nil]
         optional :region, enum: -> { Telnyx::Conferences::ActionMuteParams::Region }
 
-        # @!method initialize(call_control_ids: nil, region: nil, request_options: {})
+        # @!method initialize(id:, call_control_ids: nil, region: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::ActionMuteParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param call_control_ids [Array<String>] Array of unique identifiers and tokens for controlling the call. When empty all
         #

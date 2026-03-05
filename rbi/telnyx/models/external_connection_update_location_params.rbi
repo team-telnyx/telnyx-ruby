@@ -17,6 +17,9 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :id
 
+      sig { returns(String) }
+      attr_accessor :location_id
+
       # A new static emergency address ID to update the location with
       sig { returns(String) }
       attr_accessor :static_emergency_address_id
@@ -24,12 +27,14 @@ module Telnyx
       sig do
         params(
           id: String,
+          location_id: String,
           static_emergency_address_id: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
         id:,
+        location_id:,
         # A new static emergency address ID to update the location with
         static_emergency_address_id:,
         request_options: {}
@@ -40,6 +45,7 @@ module Telnyx
         override.returns(
           {
             id: String,
+            location_id: String,
             static_emergency_address_id: String,
             request_options: Telnyx::RequestOptions
           }

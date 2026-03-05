@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::NumberLookupRetrieveParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :phone_number
+
       # Specifies the type of number lookup to be performed
       sig do
         returns(T.nilable(Telnyx::NumberLookupRetrieveParams::Type::OrSymbol))
@@ -24,11 +27,13 @@ module Telnyx
 
       sig do
         params(
+          phone_number: String,
           type: Telnyx::NumberLookupRetrieveParams::Type::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        phone_number:,
         # Specifies the type of number lookup to be performed
         type: nil,
         request_options: {}
@@ -38,6 +43,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            phone_number: String,
             type: Telnyx::NumberLookupRetrieveParams::Type::OrSymbol,
             request_options: Telnyx::RequestOptions
           }

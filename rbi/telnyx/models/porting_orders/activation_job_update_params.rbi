@@ -18,6 +18,9 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :id
 
+        sig { returns(String) }
+        attr_accessor :activation_job_id
+
         # The desired activation time. The activation time should be between any of the
         # activation windows.
         sig { returns(T.nilable(Time)) }
@@ -29,12 +32,14 @@ module Telnyx
         sig do
           params(
             id: String,
+            activation_job_id: String,
             activate_at: Time,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
           id:,
+          activation_job_id:,
           # The desired activation time. The activation time should be between any of the
           # activation windows.
           activate_at: nil,
@@ -46,6 +51,7 @@ module Telnyx
           override.returns(
             {
               id: String,
+              activation_job_id: String,
               activate_at: Time,
               request_options: Telnyx::RequestOptions
             }

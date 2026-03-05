@@ -14,6 +14,9 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       sig { returns(Telnyx::ExternalConnectionUpdateParams::Outbound) }
       attr_reader :outbound
 
@@ -69,6 +72,7 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           outbound: Telnyx::ExternalConnectionUpdateParams::Outbound::OrHash,
           active: T::Boolean,
           inbound: Telnyx::ExternalConnectionUpdateParams::Inbound::OrHash,
@@ -80,6 +84,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         outbound:,
         # Specifies whether the connection can be used.
         active: nil,
@@ -101,6 +106,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             outbound: Telnyx::ExternalConnectionUpdateParams::Outbound,
             active: T::Boolean,
             inbound: Telnyx::ExternalConnectionUpdateParams::Inbound,

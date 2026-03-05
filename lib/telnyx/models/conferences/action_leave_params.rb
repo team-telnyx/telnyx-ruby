@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute call_control_id
         #   Unique identifier and token for controlling the call
         #
@@ -36,9 +41,11 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Conferences::ActionLeaveParams::Region, nil]
         optional :region, enum: -> { Telnyx::Conferences::ActionLeaveParams::Region }
 
-        # @!method initialize(call_control_id:, beep_enabled: nil, command_id: nil, region: nil, request_options: {})
+        # @!method initialize(id:, call_control_id:, beep_enabled: nil, command_id: nil, region: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::ActionLeaveParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param call_control_id [String] Unique identifier and token for controlling the call
         #

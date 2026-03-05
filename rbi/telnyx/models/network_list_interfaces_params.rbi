@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::NetworkListInterfacesParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # Consolidated filter parameter (deepObject style). Originally: filter[name],
       # filter[type], filter[status]
       sig { returns(T.nilable(Telnyx::NetworkListInterfacesParams::Filter)) }
@@ -35,6 +38,7 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           filter: Telnyx::NetworkListInterfacesParams::Filter::OrHash,
           page_number: Integer,
           page_size: Integer,
@@ -42,6 +46,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # Consolidated filter parameter (deepObject style). Originally: filter[name],
         # filter[type], filter[status]
         filter: nil,
@@ -54,6 +59,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             filter: Telnyx::NetworkListInterfacesParams::Filter,
             page_number: Integer,
             page_size: Integer,

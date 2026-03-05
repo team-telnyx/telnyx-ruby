@@ -15,15 +15,26 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :campaign_phone_number
+
         sig do
-          params(request_options: Telnyx::RequestOptions::OrHash).returns(
-            T.attached_class
-          )
+          params(
+            campaign_phone_number: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
-        def self.new(request_options: {})
+        def self.new(campaign_phone_number:, request_options: {})
         end
 
-        sig { override.returns({ request_options: Telnyx::RequestOptions }) }
+        sig do
+          override.returns(
+            {
+              campaign_phone_number: String,
+              request_options: Telnyx::RequestOptions
+            }
+          )
+        end
         def to_hash
         end
       end

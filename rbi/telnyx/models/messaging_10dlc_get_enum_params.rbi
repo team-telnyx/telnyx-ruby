@@ -11,15 +11,26 @@ module Telnyx
           T.any(Telnyx::Messaging10dlcGetEnumParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(Telnyx::Messaging10dlcGetEnumParams::Endpoint::OrSymbol) }
+      attr_accessor :endpoint
+
       sig do
-        params(request_options: Telnyx::RequestOptions::OrHash).returns(
-          T.attached_class
-        )
+        params(
+          endpoint: Telnyx::Messaging10dlcGetEnumParams::Endpoint::OrSymbol,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(request_options: {})
+      def self.new(endpoint:, request_options: {})
       end
 
-      sig { override.returns({ request_options: Telnyx::RequestOptions }) }
+      sig do
+        override.returns(
+          {
+            endpoint: Telnyx::Messaging10dlcGetEnumParams::Endpoint::OrSymbol,
+            request_options: Telnyx::RequestOptions
+          }
+        )
+      end
       def to_hash
       end
 

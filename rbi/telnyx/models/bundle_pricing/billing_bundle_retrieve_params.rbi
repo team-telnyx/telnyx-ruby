@@ -15,6 +15,10 @@ module Telnyx
             )
           end
 
+        # Billing bundle's ID, this is used to identify the billing bundle in the API.
+        sig { returns(String) }
+        attr_accessor :bundle_id
+
         # Authenticates the request with your Telnyx API V2 KEY
         sig { returns(T.nilable(String)) }
         attr_reader :authorization_bearer
@@ -24,11 +28,14 @@ module Telnyx
 
         sig do
           params(
+            bundle_id: String,
             authorization_bearer: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          # Billing bundle's ID, this is used to identify the billing bundle in the API.
+          bundle_id:,
           # Authenticates the request with your Telnyx API V2 KEY
           authorization_bearer: nil,
           request_options: {}
@@ -38,6 +45,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              bundle_id: String,
               authorization_bearer: String,
               request_options: Telnyx::RequestOptions
             }

@@ -18,6 +18,9 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :bucket_name
 
+        sig { returns(String) }
+        attr_accessor :object_name
+
         # The time to live of the token in seconds
         sig { returns(T.nilable(Integer)) }
         attr_reader :ttl
@@ -28,12 +31,14 @@ module Telnyx
         sig do
           params(
             bucket_name: String,
+            object_name: String,
             ttl: Integer,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
           bucket_name:,
+          object_name:,
           # The time to live of the token in seconds
           ttl: nil,
           request_options: {}
@@ -44,6 +49,7 @@ module Telnyx
           override.returns(
             {
               bucket_name: String,
+              object_name: String,
               ttl: Integer,
               request_options: Telnyx::RequestOptions
             }

@@ -18,6 +18,9 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :id
 
+        sig { returns(String) }
+        attr_accessor :phone_number_id
+
         # Identifies the location to assign the phone number to.
         sig { returns(T.nilable(String)) }
         attr_reader :location_id
@@ -28,12 +31,14 @@ module Telnyx
         sig do
           params(
             id: String,
+            phone_number_id: String,
             location_id: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
           id:,
+          phone_number_id:,
           # Identifies the location to assign the phone number to.
           location_id: nil,
           request_options: {}
@@ -44,6 +49,7 @@ module Telnyx
           override.returns(
             {
               id: String,
+              phone_number_id: String,
               location_id: String,
               request_options: Telnyx::RequestOptions
             }

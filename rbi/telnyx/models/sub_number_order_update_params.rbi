@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::SubNumberOrderUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :sub_number_order_id
+
       sig { returns(T.nilable(T::Array[Telnyx::UpdateRegulatoryRequirement])) }
       attr_reader :regulatory_requirements
 
@@ -24,17 +27,23 @@ module Telnyx
 
       sig do
         params(
+          sub_number_order_id: String,
           regulatory_requirements:
             T::Array[Telnyx::UpdateRegulatoryRequirement::OrHash],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(regulatory_requirements: nil, request_options: {})
+      def self.new(
+        sub_number_order_id:,
+        regulatory_requirements: nil,
+        request_options: {}
+      )
       end
 
       sig do
         override.returns(
           {
+            sub_number_order_id: String,
             regulatory_requirements:
               T::Array[Telnyx::UpdateRegulatoryRequirement],
             request_options: Telnyx::RequestOptions

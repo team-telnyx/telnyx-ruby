@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :brand_id
+
         # SMS message template to send the OTP. Must include `@OTP_PIN@` placeholder which
         # will be replaced with the actual PIN
         sig { returns(String) }
@@ -26,12 +29,14 @@ module Telnyx
 
         sig do
           params(
+            brand_id: String,
             pin_sms: String,
             success_sms: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          brand_id:,
           # SMS message template to send the OTP. Must include `@OTP_PIN@` placeholder which
           # will be replaced with the actual PIN
           pin_sms:,
@@ -44,6 +49,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              brand_id: String,
               pin_sms: String,
               success_sms: String,
               request_options: Telnyx::RequestOptions

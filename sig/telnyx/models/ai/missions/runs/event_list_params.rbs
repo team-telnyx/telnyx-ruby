@@ -6,6 +6,7 @@ module Telnyx
           type event_list_params =
             {
               mission_id: String,
+              run_id: String,
               agent_id: String,
               page_number: Integer,
               page_size: Integer,
@@ -19,6 +20,8 @@ module Telnyx
             include Telnyx::Internal::Type::RequestParameters
 
             attr_accessor mission_id: String
+
+            attr_accessor run_id: String
 
             attr_reader agent_id: String?
 
@@ -42,6 +45,7 @@ module Telnyx
 
             def initialize: (
               mission_id: String,
+              run_id: String,
               ?agent_id: String,
               ?page_number: Integer,
               ?page_size: Integer,
@@ -52,6 +56,7 @@ module Telnyx
 
             def to_hash: -> {
               mission_id: String,
+              run_id: String,
               agent_id: String,
               page_number: Integer,
               page_size: Integer,

@@ -9,6 +9,11 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
+          # @!attribute brand_id
+          #
+          #   @return [String]
+          required :brand_id, String
+
           # @!attribute evp_id
           #   External vetting provider ID for the brand.
           #
@@ -21,7 +26,9 @@ module Telnyx
           #   @return [String]
           required :vetting_class, String, api_name: :vettingClass
 
-          # @!method initialize(evp_id:, vetting_class:, request_options: {})
+          # @!method initialize(brand_id:, evp_id:, vetting_class:, request_options: {})
+          #   @param brand_id [String]
+          #
           #   @param evp_id [String] External vetting provider ID for the brand.
           #
           #   @param vetting_class [String] Identifies the vetting classification.

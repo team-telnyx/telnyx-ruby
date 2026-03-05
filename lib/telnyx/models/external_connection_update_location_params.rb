@@ -12,14 +12,21 @@ module Telnyx
       #   @return [String]
       required :id, String
 
+      # @!attribute location_id
+      #
+      #   @return [String]
+      required :location_id, String
+
       # @!attribute static_emergency_address_id
       #   A new static emergency address ID to update the location with
       #
       #   @return [String]
       required :static_emergency_address_id, String
 
-      # @!method initialize(id:, static_emergency_address_id:, request_options: {})
+      # @!method initialize(id:, location_id:, static_emergency_address_id:, request_options: {})
       #   @param id [String]
+      #
+      #   @param location_id [String]
       #
       #   @param static_emergency_address_id [String] A new static emergency address ID to update the location with
       #

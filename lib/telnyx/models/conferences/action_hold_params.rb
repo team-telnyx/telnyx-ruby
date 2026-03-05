@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute audio_url
         #   The URL of a file to be played to the participants when they are put on hold.
         #   media_name and audio_url cannot be used together in one request.
@@ -38,9 +43,11 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Conferences::ActionHoldParams::Region, nil]
         optional :region, enum: -> { Telnyx::Conferences::ActionHoldParams::Region }
 
-        # @!method initialize(audio_url: nil, call_control_ids: nil, media_name: nil, region: nil, request_options: {})
+        # @!method initialize(id:, audio_url: nil, call_control_ids: nil, media_name: nil, region: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::ActionHoldParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param audio_url [String] The URL of a file to be played to the participants when they are put on hold. me
         #

@@ -2,6 +2,7 @@ module Telnyx
   module Models
     type mobile_voice_connection_update_params =
       {
+        id: String,
         active: bool,
         connection_name: String,
         inbound: Telnyx::MobileVoiceConnectionUpdateParams::Inbound,
@@ -17,6 +18,8 @@ module Telnyx
     class MobileVoiceConnectionUpdateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor id: String
 
       attr_reader active: bool?
 
@@ -57,6 +60,7 @@ module Telnyx
       def webhook_timeout_secs=: (Integer) -> Integer
 
       def initialize: (
+        id: String,
         ?active: bool,
         ?connection_name: String,
         ?inbound: Telnyx::MobileVoiceConnectionUpdateParams::Inbound,
@@ -70,6 +74,7 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
+        id: String,
         active: bool,
         connection_name: String,
         inbound: Telnyx::MobileVoiceConnectionUpdateParams::Inbound,

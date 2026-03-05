@@ -19,18 +19,26 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :mission_id
 
+          sig { returns(String) }
+          attr_accessor :tool_id
+
           sig do
             params(
               mission_id: String,
+              tool_id: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
-          def self.new(mission_id:, request_options: {})
+          def self.new(mission_id:, tool_id:, request_options: {})
           end
 
           sig do
             override.returns(
-              { mission_id: String, request_options: Telnyx::RequestOptions }
+              {
+                mission_id: String,
+                tool_id: String,
+                request_options: Telnyx::RequestOptions
+              }
             )
           end
           def to_hash

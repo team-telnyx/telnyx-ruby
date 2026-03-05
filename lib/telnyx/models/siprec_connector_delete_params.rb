@@ -7,7 +7,13 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      # @!method initialize(request_options: {})
+      # @!attribute connector_name
+      #
+      #   @return [String]
+      required :connector_name, String
+
+      # @!method initialize(connector_name:, request_options: {})
+      #   @param connector_name [String]
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end
   end

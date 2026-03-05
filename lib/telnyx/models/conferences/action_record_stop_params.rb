@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute client_state
         #   Use this field to add state to every subsequent webhook. It must be a valid
         #   Base-64 encoded string.
@@ -35,9 +40,11 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Conferences::ActionRecordStopParams::Region, nil]
         optional :region, enum: -> { Telnyx::Conferences::ActionRecordStopParams::Region }
 
-        # @!method initialize(client_state: nil, command_id: nil, recording_id: nil, region: nil, request_options: {})
+        # @!method initialize(id:, client_state: nil, command_id: nil, recording_id: nil, region: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::ActionRecordStopParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #

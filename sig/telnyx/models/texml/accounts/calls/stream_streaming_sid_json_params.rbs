@@ -7,6 +7,7 @@ module Telnyx
             {
               account_sid: String,
               call_sid: String,
+              streaming_sid: String,
               status: Telnyx::Models::Texml::Accounts::Calls::StreamStreamingSidJsonParams::status
             }
             & Telnyx::Internal::Type::request_parameters
@@ -19,6 +20,8 @@ module Telnyx
 
             attr_accessor call_sid: String
 
+            attr_accessor streaming_sid: String
+
             attr_reader status: Telnyx::Models::Texml::Accounts::Calls::StreamStreamingSidJsonParams::status?
 
             def status=: (
@@ -28,6 +31,7 @@ module Telnyx
             def initialize: (
               account_sid: String,
               call_sid: String,
+              streaming_sid: String,
               ?status: Telnyx::Models::Texml::Accounts::Calls::StreamStreamingSidJsonParams::status,
               ?request_options: Telnyx::request_opts
             ) -> void
@@ -35,6 +39,7 @@ module Telnyx
             def to_hash: -> {
               account_sid: String,
               call_sid: String,
+              streaming_sid: String,
               status: Telnyx::Models::Texml::Accounts::Calls::StreamStreamingSidJsonParams::status,
               request_options: Telnyx::RequestOptions
             }

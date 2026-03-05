@@ -7,13 +7,20 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute requirement_group_id
       #   The ID of the requirement group to associate
       #
       #   @return [String]
       required :requirement_group_id, String
 
-      # @!method initialize(requirement_group_id:, request_options: {})
+      # @!method initialize(id:, requirement_group_id:, request_options: {})
+      #   @param id [String]
+      #
       #   @param requirement_group_id [String] The ID of the requirement group to associate
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]

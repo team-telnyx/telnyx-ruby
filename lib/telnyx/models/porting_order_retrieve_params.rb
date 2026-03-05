@@ -7,13 +7,20 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute include_phone_numbers
       #   Include the first 50 phone number objects in the results
       #
       #   @return [Boolean, nil]
       optional :include_phone_numbers, Telnyx::Internal::Type::Boolean
 
-      # @!method initialize(include_phone_numbers: nil, request_options: {})
+      # @!method initialize(id:, include_phone_numbers: nil, request_options: {})
+      #   @param id [String]
+      #
       #   @param include_phone_numbers [Boolean] Include the first 50 phone number objects in the results
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]

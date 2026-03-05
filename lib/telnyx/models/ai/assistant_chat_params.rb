@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute assistant_id
+        #
+        #   @return [String]
+        required :assistant_id, String
+
         # @!attribute content
         #   The message content sent by the client to the assistant
         #
@@ -26,7 +31,9 @@ module Telnyx
         #   @return [String, nil]
         optional :name, String
 
-        # @!method initialize(content:, conversation_id:, name: nil, request_options: {})
+        # @!method initialize(assistant_id:, content:, conversation_id:, name: nil, request_options: {})
+        #   @param assistant_id [String]
+        #
         #   @param content [String] The message content sent by the client to the assistant
         #
         #   @param conversation_id [String] A unique identifier for the conversation thread, used to maintain context

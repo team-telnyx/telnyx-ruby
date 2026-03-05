@@ -7,6 +7,7 @@ module Telnyx
             {
               mission_id: String,
               run_id: String,
+              step_id: String,
               metadata: ::Hash[Symbol, top],
               status: Telnyx::Models::AI::Missions::Runs::PlanUpdateStepParams::status
             }
@@ -19,6 +20,8 @@ module Telnyx
             attr_accessor mission_id: String
 
             attr_accessor run_id: String
+
+            attr_accessor step_id: String
 
             attr_reader metadata: ::Hash[Symbol, top]?
 
@@ -33,6 +36,7 @@ module Telnyx
             def initialize: (
               mission_id: String,
               run_id: String,
+              step_id: String,
               ?metadata: ::Hash[Symbol, top],
               ?status: Telnyx::Models::AI::Missions::Runs::PlanUpdateStepParams::status,
               ?request_options: Telnyx::request_opts
@@ -41,6 +45,7 @@ module Telnyx
             def to_hash: -> {
               mission_id: String,
               run_id: String,
+              step_id: String,
               metadata: ::Hash[Symbol, top],
               status: Telnyx::Models::AI::Missions::Runs::PlanUpdateStepParams::status,
               request_options: Telnyx::RequestOptions

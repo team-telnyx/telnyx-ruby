@@ -16,6 +16,9 @@ module Telnyx
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :test_id
+
           # Updated description of the test's purpose and evaluation criteria.
           sig { returns(T.nilable(String)) }
           attr_reader :description
@@ -98,6 +101,7 @@ module Telnyx
 
           sig do
             params(
+              test_id: String,
               description: String,
               destination: String,
               instructions: String,
@@ -114,6 +118,7 @@ module Telnyx
             ).returns(T.attached_class)
           end
           def self.new(
+            test_id:,
             # Updated description of the test's purpose and evaluation criteria.
             description: nil,
             # Updated target destination for test conversations.
@@ -137,6 +142,7 @@ module Telnyx
           sig do
             override.returns(
               {
+                test_id: String,
                 description: String,
                 destination: String,
                 instructions: String,

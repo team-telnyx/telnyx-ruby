@@ -6,6 +6,7 @@ module Telnyx
           type event_log_params =
             {
               mission_id: String,
+              run_id: String,
               summary: String,
               type: Telnyx::Models::AI::Missions::Runs::EventLogParams::type_,
               agent_id: String,
@@ -20,6 +21,8 @@ module Telnyx
             include Telnyx::Internal::Type::RequestParameters
 
             attr_accessor mission_id: String
+
+            attr_accessor run_id: String
 
             attr_accessor summary: String
 
@@ -43,6 +46,7 @@ module Telnyx
 
             def initialize: (
               mission_id: String,
+              run_id: String,
               summary: String,
               type: Telnyx::Models::AI::Missions::Runs::EventLogParams::type_,
               ?agent_id: String,
@@ -54,6 +58,7 @@ module Telnyx
 
             def to_hash: -> {
               mission_id: String,
+              run_id: String,
               summary: String,
               type: Telnyx::Models::AI::Missions::Runs::EventLogParams::type_,
               agent_id: String,

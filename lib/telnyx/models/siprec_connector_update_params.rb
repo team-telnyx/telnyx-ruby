@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute connector_name
+      #
+      #   @return [String]
+      required :connector_name, String
+
       # @!attribute host
       #   Hostname/IPv4 address of the SIPREC SRS.
       #
@@ -31,9 +36,11 @@ module Telnyx
       #   @return [String, nil]
       optional :app_subdomain, String
 
-      # @!method initialize(host:, name:, port:, app_subdomain: nil, request_options: {})
+      # @!method initialize(connector_name:, host:, name:, port:, app_subdomain: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::SiprecConnectorUpdateParams} for more details.
+      #
+      #   @param connector_name [String]
       #
       #   @param host [String] Hostname/IPv4 address of the SIPREC SRS.
       #

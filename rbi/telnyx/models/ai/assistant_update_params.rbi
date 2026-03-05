@@ -12,6 +12,9 @@ module Telnyx
             T.any(Telnyx::AI::AssistantUpdateParams, Telnyx::Internal::AnyHash)
           end
 
+        sig { returns(String) }
+        attr_accessor :assistant_id
+
         sig { returns(T.nilable(String)) }
         attr_reader :description
 
@@ -201,6 +204,7 @@ module Telnyx
 
         sig do
           params(
+            assistant_id: String,
             description: String,
             dynamic_variables: T::Hash[Symbol, T.anything],
             dynamic_variables_webhook_url: String,
@@ -237,6 +241,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          assistant_id:,
           description: nil,
           # Map of dynamic variables and their default values
           dynamic_variables: nil,
@@ -288,6 +293,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              assistant_id: String,
               description: String,
               dynamic_variables: T::Hash[Symbol, T.anything],
               dynamic_variables_webhook_url: String,

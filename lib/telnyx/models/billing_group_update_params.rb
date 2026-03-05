@@ -7,13 +7,20 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute name
       #   A name for the billing group
       #
       #   @return [String, nil]
       optional :name, String
 
-      # @!method initialize(name: nil, request_options: {})
+      # @!method initialize(id:, name: nil, request_options: {})
+      #   @param id [String]
+      #
       #   @param name [String] A name for the billing group
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]

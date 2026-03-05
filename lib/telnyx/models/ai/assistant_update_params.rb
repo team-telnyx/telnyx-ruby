@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute assistant_id
+        #
+        #   @return [String]
+        required :assistant_id, String
+
         # @!attribute description
         #
         #   @return [String, nil]
@@ -124,9 +129,11 @@ module Telnyx
         #   @return [Telnyx::Models::AI::WidgetSettings, nil]
         optional :widget_settings, -> { Telnyx::AI::WidgetSettings }
 
-        # @!method initialize(description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, privacy_settings: nil, promote_to_main: nil, telephony_settings: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
+        # @!method initialize(assistant_id:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, privacy_settings: nil, promote_to_main: nil, telephony_settings: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::AssistantUpdateParams} for more details.
+        #
+        #   @param assistant_id [String]
         #
         #   @param description [String]
         #

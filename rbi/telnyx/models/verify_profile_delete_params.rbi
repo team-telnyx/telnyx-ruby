@@ -11,15 +11,23 @@ module Telnyx
           T.any(Telnyx::VerifyProfileDeleteParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :verify_profile_id
+
       sig do
-        params(request_options: Telnyx::RequestOptions::OrHash).returns(
-          T.attached_class
-        )
+        params(
+          verify_profile_id: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(request_options: {})
+      def self.new(verify_profile_id:, request_options: {})
       end
 
-      sig { override.returns({ request_options: Telnyx::RequestOptions }) }
+      sig do
+        override.returns(
+          { verify_profile_id: String, request_options: Telnyx::RequestOptions }
+        )
+      end
       def to_hash
       end
     end

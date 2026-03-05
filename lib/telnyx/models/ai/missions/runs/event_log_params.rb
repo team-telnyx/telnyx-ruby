@@ -15,6 +15,11 @@ module Telnyx
             #   @return [String]
             required :mission_id, String
 
+            # @!attribute run_id
+            #
+            #   @return [String]
+            required :run_id, String
+
             # @!attribute summary
             #
             #   @return [String]
@@ -46,8 +51,10 @@ module Telnyx
             #   @return [String, nil]
             optional :step_id, String
 
-            # @!method initialize(mission_id:, summary:, type:, agent_id: nil, idempotency_key: nil, payload: nil, step_id: nil, request_options: {})
+            # @!method initialize(mission_id:, run_id:, summary:, type:, agent_id: nil, idempotency_key: nil, payload: nil, step_id: nil, request_options: {})
             #   @param mission_id [String]
+            #
+            #   @param run_id [String]
             #
             #   @param summary [String]
             #

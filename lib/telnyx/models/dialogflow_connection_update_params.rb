@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute connection_id
+      #
+      #   @return [String]
+      required :connection_id, String
+
       # @!attribute service_account
       #   The JSON map to connect your Dialoglow account.
       #
@@ -38,9 +43,11 @@ module Telnyx
       #   @return [String, nil]
       optional :location, String
 
-      # @!method initialize(service_account:, conversation_profile_id: nil, dialogflow_api: nil, environment: nil, location: nil, request_options: {})
+      # @!method initialize(connection_id:, service_account:, conversation_profile_id: nil, dialogflow_api: nil, environment: nil, location: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::DialogflowConnectionUpdateParams} for more details.
+      #
+      #   @param connection_id [String]
       #
       #   @param service_account [Hash{Symbol=>Object}] The JSON map to connect your Dialoglow account.
       #

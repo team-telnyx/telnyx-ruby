@@ -3,6 +3,7 @@ module Telnyx
     module AI
       type mcp_server_update_params =
         {
+          mcp_server_id: String,
           id: String,
           allowed_tools: ::Array[String]?,
           api_key_ref: String?,
@@ -16,6 +17,8 @@ module Telnyx
       class McpServerUpdateParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor mcp_server_id: String
 
         attr_reader id: String?
 
@@ -42,6 +45,7 @@ module Telnyx
         def url=: (String) -> String
 
         def initialize: (
+          mcp_server_id: String,
           ?id: String,
           ?allowed_tools: ::Array[String]?,
           ?api_key_ref: String?,
@@ -53,6 +57,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          mcp_server_id: String,
           id: String,
           allowed_tools: ::Array[String]?,
           api_key_ref: String?,

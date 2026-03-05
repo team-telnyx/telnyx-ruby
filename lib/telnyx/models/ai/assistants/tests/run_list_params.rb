@@ -10,6 +10,11 @@ module Telnyx
             extend Telnyx::Internal::Type::RequestParameters::Converter
             include Telnyx::Internal::Type::RequestParameters
 
+            # @!attribute test_id
+            #
+            #   @return [String]
+            required :test_id, String
+
             # @!attribute page_number
             #
             #   @return [Integer, nil]
@@ -26,7 +31,9 @@ module Telnyx
             #   @return [String, nil]
             optional :status, String
 
-            # @!method initialize(page_number: nil, page_size: nil, status: nil, request_options: {})
+            # @!method initialize(test_id:, page_number: nil, page_size: nil, status: nil, request_options: {})
+            #   @param test_id [String]
+            #
             #   @param page_number [Integer]
             #
             #   @param page_size [Integer]

@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # AI Assistant configuration
         sig do
           returns(
@@ -141,6 +144,7 @@ module Telnyx
 
         sig do
           params(
+            call_control_id: String,
             assistant:
               Telnyx::Calls::ActionStartAIAssistantParams::Assistant::OrHash,
             client_state: String,
@@ -162,6 +166,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id:,
           # AI Assistant configuration
           assistant: nil,
           # Use this field to add state to every subsequent webhook. It must be a valid
@@ -213,6 +218,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              call_control_id: String,
               assistant: Telnyx::Calls::ActionStartAIAssistantParams::Assistant,
               client_state: String,
               command_id: String,

@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute call_control_id
+        #
+        #   @return [String]
+        required :call_control_id, String
+
         # @!attribute role
         #   The supervisor role to switch to. 'barge' allows speaking to both parties,
         #   'whisper' allows speaking to caller only, 'monitor' allows listening only.
@@ -15,9 +20,11 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::ActionSwitchSupervisorRoleParams::Role]
         required :role, enum: -> { Telnyx::Calls::ActionSwitchSupervisorRoleParams::Role }
 
-        # @!method initialize(role:, request_options: {})
+        # @!method initialize(call_control_id:, role:, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionSwitchSupervisorRoleParams} for more details.
+        #
+        #   @param call_control_id [String]
         #
         #   @param role [Symbol, Telnyx::Models::Calls::ActionSwitchSupervisorRoleParams::Role] The supervisor role to switch to. 'barge' allows speaking to both parties, 'whis
         #

@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :room_session_id
+
         # To decide if room participants should be included in the response.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :include_participants
@@ -24,11 +27,13 @@ module Telnyx
 
         sig do
           params(
+            room_session_id: String,
             include_participants: T::Boolean,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          room_session_id:,
           # To decide if room participants should be included in the response.
           include_participants: nil,
           request_options: {}
@@ -38,6 +43,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              room_session_id: String,
               include_participants: T::Boolean,
               request_options: Telnyx::RequestOptions
             }

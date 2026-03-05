@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::ShortCodeUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # Unique identifier for a messaging profile.
       sig { returns(String) }
       attr_accessor :messaging_profile_id
@@ -23,12 +26,14 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           messaging_profile_id: String,
           tags: T::Array[String],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # Unique identifier for a messaging profile.
         messaging_profile_id:,
         tags: nil,
@@ -39,6 +44,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             messaging_profile_id: String,
             tags: T::Array[String],
             request_options: Telnyx::RequestOptions

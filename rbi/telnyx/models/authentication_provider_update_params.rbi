@@ -14,6 +14,9 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # The active status of the authentication provider
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :active
@@ -53,6 +56,7 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           active: T::Boolean,
           name: String,
           settings: Telnyx::Settings::OrHash,
@@ -62,6 +66,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # The active status of the authentication provider
         active: nil,
         # The name associated with the authentication provider.
@@ -81,6 +86,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             active: T::Boolean,
             name: String,
             settings: Telnyx::Settings,

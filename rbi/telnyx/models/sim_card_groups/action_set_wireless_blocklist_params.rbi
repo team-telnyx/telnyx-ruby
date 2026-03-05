@@ -15,17 +15,22 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # The identification of the related Wireless Blocklist resource.
         sig { returns(String) }
         attr_accessor :wireless_blocklist_id
 
         sig do
           params(
+            id: String,
             wireless_blocklist_id: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # The identification of the related Wireless Blocklist resource.
           wireless_blocklist_id:,
           request_options: {}
@@ -35,6 +40,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               wireless_blocklist_id: String,
               request_options: Telnyx::RequestOptions
             }

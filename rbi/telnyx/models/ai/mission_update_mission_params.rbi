@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :mission_id
+
         sig { returns(T.nilable(String)) }
         attr_reader :description
 
@@ -64,6 +67,7 @@ module Telnyx
 
         sig do
           params(
+            mission_id: String,
             description: String,
             execution_mode:
               Telnyx::AI::MissionUpdateMissionParams::ExecutionMode::OrSymbol,
@@ -75,6 +79,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          mission_id:,
           description: nil,
           execution_mode: nil,
           instructions: nil,
@@ -88,6 +93,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              mission_id: String,
               description: String,
               execution_mode:
                 Telnyx::AI::MissionUpdateMissionParams::ExecutionMode::OrSymbol,

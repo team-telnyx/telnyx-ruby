@@ -14,6 +14,9 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # The IP address assigned for your side of the Virtual Cross
       # Connect.<br /><br />If none is provided, one will be generated for
       # you.<br /><br />This value can not be patched once the VXC has bene provisioned.
@@ -64,6 +67,7 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           primary_cloud_ip: String,
           primary_enabled: T::Boolean,
           primary_routing_announcement: T::Boolean,
@@ -74,6 +78,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # The IP address assigned for your side of the Virtual Cross
         # Connect.<br /><br />If none is provided, one will be generated for
         # you.<br /><br />This value can not be patched once the VXC has bene provisioned.
@@ -99,6 +104,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             primary_cloud_ip: String,
             primary_enabled: T::Boolean,
             primary_routing_announcement: T::Boolean,

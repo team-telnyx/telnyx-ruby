@@ -3,6 +3,7 @@ module Telnyx
     type session_analysis_retrieve_params =
       {
         record_type: String,
+        event_id: String,
         date_time: Time,
         expand: Telnyx::Models::SessionAnalysisRetrieveParams::expand,
         include_children: bool,
@@ -15,6 +16,8 @@ module Telnyx
       include Telnyx::Internal::Type::RequestParameters
 
       attr_accessor record_type: String
+
+      attr_accessor event_id: String
 
       attr_reader date_time: Time?
 
@@ -36,6 +39,7 @@ module Telnyx
 
       def initialize: (
         record_type: String,
+        event_id: String,
         ?date_time: Time,
         ?expand: Telnyx::Models::SessionAnalysisRetrieveParams::expand,
         ?include_children: bool,
@@ -45,6 +49,7 @@ module Telnyx
 
       def to_hash: -> {
         record_type: String,
+        event_id: String,
         date_time: Time,
         expand: Telnyx::Models::SessionAnalysisRetrieveParams::expand,
         include_children: bool,

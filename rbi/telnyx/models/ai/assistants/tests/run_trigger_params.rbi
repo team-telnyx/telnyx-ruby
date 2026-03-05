@@ -17,6 +17,9 @@ module Telnyx
                 )
               end
 
+            sig { returns(String) }
+            attr_accessor :test_id
+
             # Optional assistant version ID to use for this test run. If provided, the version
             # must exist or a 400 error will be returned. If not provided, test will run on
             # main version
@@ -28,11 +31,13 @@ module Telnyx
 
             sig do
               params(
+                test_id: String,
                 destination_version_id: String,
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(T.attached_class)
             end
             def self.new(
+              test_id:,
               # Optional assistant version ID to use for this test run. If provided, the version
               # must exist or a 400 error will be returned. If not provided, test will run on
               # main version
@@ -44,6 +49,7 @@ module Telnyx
             sig do
               override.returns(
                 {
+                  test_id: String,
                   destination_version_id: String,
                   request_options: Telnyx::RequestOptions
                 }

@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute conversation_id
+        #
+        #   @return [String]
+        required :conversation_id, String
+
         # @!attribute metadata
         #   Metadata associated with the conversation. Set `ai_disabled` to `true` to stop
         #   AI from responding to messages (e.g., when a human agent takes over). Set to
@@ -16,9 +21,11 @@ module Telnyx
         #   @return [Hash{Symbol=>String}, nil]
         optional :metadata, Telnyx::Internal::Type::HashOf[String]
 
-        # @!method initialize(metadata: nil, request_options: {})
+        # @!method initialize(conversation_id:, metadata: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::ConversationUpdateParams} for more details.
+        #
+        #   @param conversation_id [String]
         #
         #   @param metadata [Hash{Symbol=>String}] Metadata associated with the conversation. Set `ai_disabled` to `true` to stop A
         #

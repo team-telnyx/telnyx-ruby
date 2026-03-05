@@ -18,6 +18,9 @@ module Telnyx
                   )
                 end
 
+              sig { returns(String) }
+              attr_accessor :suite_name
+
               sig { returns(T.nilable(Integer)) }
               attr_reader :page_number
 
@@ -46,6 +49,7 @@ module Telnyx
 
               sig do
                 params(
+                  suite_name: String,
                   page_number: Integer,
                   page_size: Integer,
                   status: String,
@@ -54,6 +58,7 @@ module Telnyx
                 ).returns(T.attached_class)
               end
               def self.new(
+                suite_name:,
                 page_number: nil,
                 page_size: nil,
                 # Filter runs by execution status (pending, running, completed, failed, timeout)
@@ -67,6 +72,7 @@ module Telnyx
               sig do
                 override.returns(
                   {
+                    suite_name: String,
                     page_number: Integer,
                     page_size: Integer,
                     status: String,

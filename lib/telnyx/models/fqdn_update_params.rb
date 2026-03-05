@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute connection_id
       #   ID of the FQDN connection to which this IP should be attached.
       #
@@ -34,9 +39,11 @@ module Telnyx
       #   @return [Integer, nil]
       optional :port, Integer, nil?: true
 
-      # @!method initialize(connection_id: nil, dns_record_type: nil, fqdn: nil, port: nil, request_options: {})
+      # @!method initialize(id:, connection_id: nil, dns_record_type: nil, fqdn: nil, port: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::FqdnUpdateParams} for more details.
+      #
+      #   @param id [String]
       #
       #   @param connection_id [String] ID of the FQDN connection to which this IP should be attached.
       #
