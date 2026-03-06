@@ -25,6 +25,10 @@ module Telnyx
         sig { returns(Telnyx::Resources::AI::Assistants::Versions) }
         attr_reader :versions
 
+        # Configure AI assistant specifications
+        sig { returns(Telnyx::Resources::AI::Assistants::Tags) }
+        attr_reader :tags
+
         # Create a new AI Assistant.
         sig do
           params(
