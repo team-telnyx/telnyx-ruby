@@ -8,8 +8,8 @@ module Telnyx
       Variants =
         T.type_alias do
           T.any(
-            Telnyx::CallAIGatherEndedWebhookEvent,
-            Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent,
+            Telnyx::CallAIGatherEnded,
+            Telnyx::CallAIGatherMessageHistoryUpdated,
             Telnyx::CallAIGatherPartialResultsWebhookEvent,
             Telnyx::CallAnsweredWebhookEvent,
             Telnyx::CallBridgedWebhookEvent,
