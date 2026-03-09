@@ -3,8 +3,8 @@ module Telnyx
     class Webhooks
       def unsafe_unwrap: (
         String payload
-      ) -> (Telnyx::CallAIGatherEnded
-      | Telnyx::CallAIGatherMessageHistoryUpdated
+      ) -> (Telnyx::CallAIGatherEndedWebhookEvent
+      | Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent
       | Telnyx::CallAIGatherPartialResultsWebhookEvent
       | Telnyx::CallAnsweredWebhookEvent
       | Telnyx::CallBridgedWebhookEvent
@@ -66,8 +66,8 @@ module Telnyx
 
       def unwrap: (
         String payload
-      ) -> (Telnyx::CallAIGatherEnded
-      | Telnyx::CallAIGatherMessageHistoryUpdated
+      ) -> (Telnyx::CallAIGatherEndedWebhookEvent
+      | Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent
       | Telnyx::CallAIGatherPartialResultsWebhookEvent
       | Telnyx::CallAnsweredWebhookEvent
       | Telnyx::CallBridgedWebhookEvent

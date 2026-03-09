@@ -1,8 +1,8 @@
 module Telnyx
   module Models
     type unsafe_unwrap_webhook_event =
-      Telnyx::CallAIGatherEnded
-      | Telnyx::CallAIGatherMessageHistoryUpdated
+      Telnyx::CallAIGatherEndedWebhookEvent
+      | Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent
       | Telnyx::CallAIGatherPartialResultsWebhookEvent
       | Telnyx::CallAnsweredWebhookEvent
       | Telnyx::CallBridgedWebhookEvent

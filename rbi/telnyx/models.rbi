@@ -129,8 +129,13 @@ module Telnyx
 
   CallAIGatherEnded = Telnyx::Models::CallAIGatherEnded
 
+  CallAIGatherEndedWebhookEvent = Telnyx::Models::CallAIGatherEndedWebhookEvent
+
   CallAIGatherMessageHistoryUpdated =
     Telnyx::Models::CallAIGatherMessageHistoryUpdated
+
+  CallAIGatherMessageHistoryUpdatedWebhookEvent =
+    Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent
 
   CallAIGatherPartialResults = Telnyx::Models::CallAIGatherPartialResults
 

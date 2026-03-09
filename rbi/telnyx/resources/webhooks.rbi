@@ -6,8 +6,8 @@ module Telnyx
       sig do
         params(payload: String).returns(
           T.any(
-            Telnyx::CallAIGatherEnded,
-            Telnyx::CallAIGatherMessageHistoryUpdated,
+            Telnyx::CallAIGatherEndedWebhookEvent,
+            Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent,
             Telnyx::CallAIGatherPartialResultsWebhookEvent,
             Telnyx::CallAnsweredWebhookEvent,
             Telnyx::CallBridgedWebhookEvent,
@@ -78,8 +78,8 @@ module Telnyx
       sig do
         params(payload: String).returns(
           T.any(
-            Telnyx::CallAIGatherEnded,
-            Telnyx::CallAIGatherMessageHistoryUpdated,
+            Telnyx::CallAIGatherEndedWebhookEvent,
+            Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent,
             Telnyx::CallAIGatherPartialResultsWebhookEvent,
             Telnyx::CallAnsweredWebhookEvent,
             Telnyx::CallBridgedWebhookEvent,
