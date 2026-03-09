@@ -148,11 +148,6 @@ module Telnyx
               :call,
               Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::Type::TaggedSymbol
             )
-          FLASHCALL =
-            T.let(
-              :flashcall,
-              Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::Type::TaggedSymbol
-            )
 
           sig do
             override.returns(

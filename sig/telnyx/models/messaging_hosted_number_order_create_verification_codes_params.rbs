@@ -32,14 +32,13 @@ module Telnyx
         request_options: Telnyx::RequestOptions
       }
 
-      type verification_method = :sms | :call | :flashcall
+      type verification_method = :sms | :call
 
       module VerificationMethod
         extend Telnyx::Internal::Type::Enum
 
         SMS: :sms
         CALL: :call
-        FLASHCALL: :flashcall
 
         def self?.values: -> ::Array[Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesParams::verification_method]
       end

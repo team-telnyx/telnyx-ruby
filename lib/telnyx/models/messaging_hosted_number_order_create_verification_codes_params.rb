@@ -34,7 +34,6 @@ module Telnyx
 
         SMS = :sms
         CALL = :call
-        FLASHCALL = :flashcall
 
         # @!method self.values
         #   @return [Array<Symbol>]
