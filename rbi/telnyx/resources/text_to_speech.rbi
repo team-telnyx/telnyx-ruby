@@ -17,13 +17,14 @@ module Telnyx
       # parameters.
       #
       # Supported providers: `aws`, `telnyx`, `azure`, `elevenlabs`, `minimax`, `rime`,
-      # `resemble`.
+      # `resemble`, `inworld`.
       sig do
         params(
           aws: Telnyx::TextToSpeechGenerateParams::Aws::OrHash,
           azure: Telnyx::TextToSpeechGenerateParams::Azure::OrHash,
           disable_cache: T::Boolean,
           elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs::OrHash,
+          inworld: T.anything,
           language: String,
           minimax: Telnyx::TextToSpeechGenerateParams::Minimax::OrHash,
           output_type: Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol,
@@ -47,6 +48,8 @@ module Telnyx
         disable_cache: nil,
         # ElevenLabs provider-specific parameters.
         elevenlabs: nil,
+        # Inworld provider-specific parameters.
+        inworld: nil,
         # Language code (e.g. `en-US`). Usage varies by provider.
         language: nil,
         # Minimax provider-specific parameters.

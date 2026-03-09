@@ -6,6 +6,7 @@ module Telnyx
         ?azure: Telnyx::TextToSpeechGenerateParams::Azure,
         ?disable_cache: bool,
         ?elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs,
+        ?inworld: top,
         ?language: String,
         ?minimax: Telnyx::TextToSpeechGenerateParams::Minimax,
         ?output_type: Telnyx::Models::TextToSpeechGenerateParams::output_type,
