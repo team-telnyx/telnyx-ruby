@@ -45,6 +45,13 @@ module Telnyx
       end
       attr_writer :elevenlabs
 
+      # Inworld provider-specific parameters.
+      sig { returns(T.nilable(T.anything)) }
+      attr_reader :inworld
+
+      sig { params(inworld: T.anything).void }
+      attr_writer :inworld
+
       # Language code (e.g. `en-US`). Usage varies by provider.
       sig { returns(T.nilable(String)) }
       attr_reader :language
@@ -172,6 +179,7 @@ module Telnyx
           azure: Telnyx::TextToSpeechGenerateParams::Azure::OrHash,
           disable_cache: T::Boolean,
           elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs::OrHash,
+          inworld: T.anything,
           language: String,
           minimax: Telnyx::TextToSpeechGenerateParams::Minimax::OrHash,
           output_type: Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol,
@@ -195,6 +203,8 @@ module Telnyx
         disable_cache: nil,
         # ElevenLabs provider-specific parameters.
         elevenlabs: nil,
+        # Inworld provider-specific parameters.
+        inworld: nil,
         # Language code (e.g. `en-US`). Usage varies by provider.
         language: nil,
         # Minimax provider-specific parameters.
@@ -234,6 +244,7 @@ module Telnyx
             azure: Telnyx::TextToSpeechGenerateParams::Azure,
             disable_cache: T::Boolean,
             elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs,
+            inworld: T.anything,
             language: String,
             minimax: Telnyx::TextToSpeechGenerateParams::Minimax,
             output_type:
@@ -762,6 +773,11 @@ module Telnyx
         RESEMBLE =
           T.let(
             :resemble,
+            Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+          )
+        INWORLD =
+          T.let(
+            :inworld,
             Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
           )
 

@@ -31,6 +31,12 @@ module Telnyx
       #   @return [Telnyx::Models::TextToSpeechGenerateParams::Elevenlabs, nil]
       optional :elevenlabs, -> { Telnyx::TextToSpeechGenerateParams::Elevenlabs }
 
+      # @!attribute inworld
+      #   Inworld provider-specific parameters.
+      #
+      #   @return [Object, nil]
+      optional :inworld, Telnyx::Internal::Type::Unknown
+
       # @!attribute language
       #   Language code (e.g. `en-US`). Usage varies by provider.
       #
@@ -103,7 +109,7 @@ module Telnyx
       #   @return [Hash{Symbol=>Object}, nil]
       optional :voice_settings, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
-      # @!method initialize(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, request_options: {})
+      # @!method initialize(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, inworld: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::TextToSpeechGenerateParams} for more details.
       #
@@ -114,6 +120,8 @@ module Telnyx
       #   @param disable_cache [Boolean] When `true`, bypass the audio cache and generate fresh audio.
       #
       #   @param elevenlabs [Telnyx::Models::TextToSpeechGenerateParams::Elevenlabs] ElevenLabs provider-specific parameters.
+      #
+      #   @param inworld [Object] Inworld provider-specific parameters.
       #
       #   @param language [String] Language code (e.g. `en-US`). Usage varies by provider.
       #
@@ -376,6 +384,7 @@ module Telnyx
         MINIMAX = :minimax
         RIME = :rime
         RESEMBLE = :resemble
+        INWORLD = :inworld
 
         # @!method self.values
         #   @return [Array<Symbol>]

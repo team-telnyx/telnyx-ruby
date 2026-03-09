@@ -23,6 +23,7 @@ module Telnyx
         media_name: String,
         park_after_unbridge: String,
         preferred_codecs: String,
+        prevent_double_bridge: bool,
         record: Telnyx::Models::CallDialParams::record,
         record_channels: Telnyx::Models::CallDialParams::record_channels,
         record_custom_file_name: String,
@@ -151,6 +152,10 @@ module Telnyx
       attr_reader preferred_codecs: String?
 
       def preferred_codecs=: (String) -> String
+
+      attr_reader prevent_double_bridge: bool?
+
+      def prevent_double_bridge=: (bool) -> bool
 
       attr_reader record: Telnyx::Models::CallDialParams::record?
 
@@ -338,6 +343,7 @@ module Telnyx
         ?media_name: String,
         ?park_after_unbridge: String,
         ?preferred_codecs: String,
+        ?prevent_double_bridge: bool,
         ?record: Telnyx::Models::CallDialParams::record,
         ?record_channels: Telnyx::Models::CallDialParams::record_channels,
         ?record_custom_file_name: String,
@@ -395,6 +401,7 @@ module Telnyx
         media_name: String,
         park_after_unbridge: String,
         preferred_codecs: String,
+        prevent_double_bridge: bool,
         record: Telnyx::Models::CallDialParams::record,
         record_channels: Telnyx::Models::CallDialParams::record_channels,
         record_custom_file_name: String,

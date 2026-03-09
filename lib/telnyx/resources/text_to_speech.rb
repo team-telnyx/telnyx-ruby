@@ -20,9 +20,9 @@ module Telnyx
       # parameters.
       #
       # Supported providers: `aws`, `telnyx`, `azure`, `elevenlabs`, `minimax`, `rime`,
-      # `resemble`.
+      # `resemble`, `inworld`.
       #
-      # @overload generate(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, request_options: {})
+      # @overload generate(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, inworld: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, request_options: {})
       #
       # @param aws [Telnyx::Models::TextToSpeechGenerateParams::Aws] AWS Polly provider-specific parameters.
       #
@@ -31,6 +31,8 @@ module Telnyx
       # @param disable_cache [Boolean] When `true`, bypass the audio cache and generate fresh audio.
       #
       # @param elevenlabs [Telnyx::Models::TextToSpeechGenerateParams::Elevenlabs] ElevenLabs provider-specific parameters.
+      #
+      # @param inworld [Object] Inworld provider-specific parameters.
       #
       # @param language [String] Language code (e.g. `en-US`). Usage varies by provider.
       #

@@ -106,6 +106,11 @@ module Telnyx
             :resemble,
             Telnyx::TextToSpeechListVoicesParams::Provider::TaggedSymbol
           )
+        INWORLD =
+          T.let(
+            :inworld,
+            Telnyx::TextToSpeechListVoicesParams::Provider::TaggedSymbol
+          )
 
         sig do
           override.returns(

@@ -182,9 +182,20 @@ module Telnyx
           | Telnyx::AzureVoiceSettings
           | Telnyx::RimeVoiceSettings
           | Telnyx::ResembleVoiceSettings
+          | Telnyx::Conferences::ActionSpeakParams::VoiceSettings::Inworld
 
         module VoiceSettings
           extend Telnyx::Internal::Type::Union
+
+          type inworld = { type: :inworld }
+
+          class Inworld < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: :inworld
+
+            def initialize: (?type: :inworld) -> void
+
+            def to_hash: -> { type: :inworld }
+          end
 
           def self?.variants: -> ::Array[Telnyx::Models::Conferences::ActionSpeakParams::voice_settings]
         end
