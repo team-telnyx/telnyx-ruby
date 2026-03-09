@@ -55,14 +55,13 @@ module Telnyx
           verification_code_id: String
         }
 
-        type type_ = :sms | :call | :flashcall
+        type type_ = :sms | :call
 
         module Type
           extend Telnyx::Internal::Type::Enum
 
           SMS: :sms
           CALL: :call
-          FLASHCALL: :flashcall
 
           def self?.values: -> ::Array[Telnyx::Models::MessagingHostedNumberOrderCreateVerificationCodesResponse::Data::type_]
         end
