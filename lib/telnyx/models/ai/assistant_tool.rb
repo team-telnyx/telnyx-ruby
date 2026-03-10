@@ -472,28 +472,28 @@ module Telnyx
         end
 
         class Invite < Telnyx::Internal::Type::BaseModel
-          # @!attribute invite
+          # @!attribute invite_config
           #
-          #   @return [Telnyx::Models::AI::AssistantTool::Invite::Invite]
-          required :invite, -> { Telnyx::AI::AssistantTool::Invite::Invite }
+          #   @return [Telnyx::Models::AI::AssistantTool::Invite::InviteConfig]
+          required :invite_config, -> { Telnyx::AI::AssistantTool::Invite::InviteConfig }
 
           # @!attribute type
           #
           #   @return [Symbol, :invite]
           required :type, const: :invite
 
-          # @!method initialize(invite:, type: :invite)
-          #   @param invite [Telnyx::Models::AI::AssistantTool::Invite::Invite]
+          # @!method initialize(invite_config:, type: :invite)
+          #   @param invite_config [Telnyx::Models::AI::AssistantTool::Invite::InviteConfig]
           #   @param type [Symbol, :invite]
 
-          # @see Telnyx::Models::AI::AssistantTool::Invite#invite
-          class Invite < Telnyx::Internal::Type::BaseModel
+          # @see Telnyx::Models::AI::AssistantTool::Invite#invite_config
+          class InviteConfig < Telnyx::Internal::Type::BaseModel
             # @!attribute custom_headers
             #   Custom headers to be added to the SIP INVITE for the invite command.
             #
-            #   @return [Array<Telnyx::Models::AI::AssistantTool::Invite::Invite::CustomHeader>, nil]
+            #   @return [Array<Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::CustomHeader>, nil]
             optional :custom_headers,
-                     -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader] }
+                     -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantTool::Invite::InviteConfig::CustomHeader] }
 
             # @!attribute from
             #   Number or SIP URI placing the call.
@@ -505,18 +505,18 @@ module Telnyx
             #   Configuration for voicemail detection (AMD - Answering Machine Detection) on the
             #   invited call.
             #
-            #   @return [Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection, nil]
-            optional :voicemail_detection, -> { Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection }
+            #   @return [Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection, nil]
+            optional :voicemail_detection, -> { Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection }
 
             # @!method initialize(custom_headers: nil, from: nil, voicemail_detection: nil)
             #   Some parameter documentations has been truncated, see
-            #   {Telnyx::Models::AI::AssistantTool::Invite::Invite} for more details.
+            #   {Telnyx::Models::AI::AssistantTool::Invite::InviteConfig} for more details.
             #
-            #   @param custom_headers [Array<Telnyx::Models::AI::AssistantTool::Invite::Invite::CustomHeader>] Custom headers to be added to the SIP INVITE for the invite command.
+            #   @param custom_headers [Array<Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::CustomHeader>] Custom headers to be added to the SIP INVITE for the invite command.
             #
             #   @param from [String] Number or SIP URI placing the call.
             #
-            #   @param voicemail_detection [Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection] Configuration for voicemail detection (AMD - Answering Machine Detection) on the
+            #   @param voicemail_detection [Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection] Configuration for voicemail detection (AMD - Answering Machine Detection) on the
 
             class CustomHeader < Telnyx::Internal::Type::BaseModel
               # @!attribute name
@@ -535,7 +535,7 @@ module Telnyx
 
               # @!method initialize(name: nil, value: nil)
               #   Some parameter documentations has been truncated, see
-              #   {Telnyx::Models::AI::AssistantTool::Invite::Invite::CustomHeader} for more
+              #   {Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::CustomHeader} for more
               #   details.
               #
               #   @param name [String]
@@ -543,39 +543,39 @@ module Telnyx
               #   @param value [String] The value of the header. Note that we support mustache templating for the value.
             end
 
-            # @see Telnyx::Models::AI::AssistantTool::Invite::Invite#voicemail_detection
+            # @see Telnyx::Models::AI::AssistantTool::Invite::InviteConfig#voicemail_detection
             class VoicemailDetection < Telnyx::Internal::Type::BaseModel
               # @!attribute detection_mode
               #   The AMD detection mode to use. 'premium' enables premium answering machine
               #   detection. 'disabled' turns off AMD detection.
               #
-              #   @return [Symbol, Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode, nil]
+              #   @return [Symbol, Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::DetectionMode, nil]
               optional :detection_mode,
-                       enum: -> { Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode }
+                       enum: -> { Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::DetectionMode }
 
               # @!attribute on_voicemail_detected
               #   Action to take when voicemail is detected on the invited call.
               #
-              #   @return [Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected, nil]
+              #   @return [Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected, nil]
               optional :on_voicemail_detected,
-                       -> { Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected }
+                       -> { Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected }
 
               # @!method initialize(detection_mode: nil, on_voicemail_detected: nil)
               #   Some parameter documentations has been truncated, see
-              #   {Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection} for more
-              #   details.
+              #   {Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection}
+              #   for more details.
               #
               #   Configuration for voicemail detection (AMD - Answering Machine Detection) on the
               #   invited call.
               #
-              #   @param detection_mode [Symbol, Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode] The AMD detection mode to use. 'premium' enables premium answering machine detec
+              #   @param detection_mode [Symbol, Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::DetectionMode] The AMD detection mode to use. 'premium' enables premium answering machine detec
               #
-              #   @param on_voicemail_detected [Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected] Action to take when voicemail is detected on the invited call.
+              #   @param on_voicemail_detected [Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected] Action to take when voicemail is detected on the invited call.
 
               # The AMD detection mode to use. 'premium' enables premium answering machine
               # detection. 'disabled' turns off AMD detection.
               #
-              # @see Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection#detection_mode
+              # @see Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection#detection_mode
               module DetectionMode
                 extend Telnyx::Internal::Type::Enum
 
@@ -586,23 +586,23 @@ module Telnyx
                 #   @return [Array<Symbol>]
               end
 
-              # @see Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection#on_voicemail_detected
+              # @see Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection#on_voicemail_detected
               class OnVoicemailDetected < Telnyx::Internal::Type::BaseModel
                 # @!attribute action
                 #   The action to take when voicemail is detected.
                 #
-                #   @return [Symbol, Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::Action, nil]
+                #   @return [Symbol, Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::Action, nil]
                 optional :action,
-                         enum: -> { Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::Action }
+                         enum: -> { Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::Action }
 
                 # @!method initialize(action: nil)
                 #   Action to take when voicemail is detected on the invited call.
                 #
-                #   @param action [Symbol, Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::Action] The action to take when voicemail is detected.
+                #   @param action [Symbol, Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::Action] The action to take when voicemail is detected.
 
                 # The action to take when voicemail is detected.
                 #
-                # @see Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected#action
+                # @see Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected#action
                 module Action
                   extend Telnyx::Internal::Type::Enum
 
