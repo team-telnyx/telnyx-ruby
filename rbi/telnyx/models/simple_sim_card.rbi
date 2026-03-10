@@ -159,6 +159,13 @@ module Telnyx
       sig { params(version: String).void }
       attr_writer :version
 
+      # Indicates whether voice services are enabled for the SIM card.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :voice_enabled
+
+      sig { params(voice_enabled: T::Boolean).void }
+      attr_writer :voice_enabled
+
       sig do
         params(
           id: String,
@@ -182,7 +189,8 @@ module Telnyx
           tags: T::Array[String],
           type: Telnyx::SimpleSimCard::Type::OrSymbol,
           updated_at: String,
-          version: String
+          version: String,
+          voice_enabled: T::Boolean
         ).returns(T.attached_class)
       end
       def self.new(
@@ -234,7 +242,9 @@ module Telnyx
         # ISO 8601 formatted date-time indicating when the resource was updated.
         updated_at: nil,
         # The version of the SIM card.
-        version: nil
+        version: nil,
+        # Indicates whether voice services are enabled for the SIM card.
+        voice_enabled: nil
       )
       end
 
@@ -264,7 +274,8 @@ module Telnyx
             tags: T::Array[String],
             type: Telnyx::SimpleSimCard::Type::TaggedSymbol,
             updated_at: String,
-            version: String
+            version: String,
+            voice_enabled: T::Boolean
           }
         )
       end

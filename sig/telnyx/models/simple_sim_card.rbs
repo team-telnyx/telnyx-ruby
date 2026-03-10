@@ -20,7 +20,8 @@ module Telnyx
         tags: ::Array[String],
         type: Telnyx::Models::SimpleSimCard::type_,
         updated_at: String,
-        version: String
+        version: String,
+        voice_enabled: bool
       }
 
     class SimpleSimCard < Telnyx::Internal::Type::BaseModel
@@ -102,6 +103,10 @@ module Telnyx
 
       def version=: (String) -> String
 
+      attr_reader voice_enabled: bool?
+
+      def voice_enabled=: (bool) -> bool
+
       def initialize: (
         ?id: String,
         ?actions_in_progress: bool,
@@ -121,7 +126,8 @@ module Telnyx
         ?tags: ::Array[String],
         ?type: Telnyx::Models::SimpleSimCard::type_,
         ?updated_at: String,
-        ?version: String
+        ?version: String,
+        ?voice_enabled: bool
       ) -> void
 
       def to_hash: -> {
@@ -143,7 +149,8 @@ module Telnyx
         tags: ::Array[String],
         type: Telnyx::Models::SimpleSimCard::type_,
         updated_at: String,
-        version: String
+        version: String,
+        voice_enabled: bool
       }
 
       type current_billing_period_consumed_data =

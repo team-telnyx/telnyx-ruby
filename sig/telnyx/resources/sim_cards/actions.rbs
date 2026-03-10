@@ -14,6 +14,16 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::SimCards::SimCardAction]
 
+        def bulk_disable_voice: (
+          sim_card_group_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse
+
+        def bulk_enable_voice: (
+          sim_card_group_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse
+
         def bulk_set_public_ips: (
           sim_card_ids: ::Array[String],
           ?request_options: Telnyx::request_opts

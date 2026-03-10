@@ -3,22 +3,22 @@
 module Telnyx
   module Models
     module SimCards
-      # @see Telnyx::Resources::SimCards::Actions#bulk_set_public_ips
-      class ActionBulkSetPublicIPsResponse < Telnyx::Internal::Type::BaseModel
+      # @see Telnyx::Resources::SimCards::Actions#bulk_disable_voice
+      class ActionBulkDisableVoiceResponse < Telnyx::Internal::Type::BaseModel
         # @!attribute data
         #   This object represents a bulk SIM card action. It groups SIM card actions
         #   created through a bulk endpoint under a single resource for further lookup.
         #
-        #   @return [Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data, nil]
-        optional :data, -> { Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data }
+        #   @return [Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data, nil]
+        optional :data, -> { Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data }
 
         # @!method initialize(data: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse} for more details.
+        #   {Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse} for more details.
         #
-        #   @param data [Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data] This object represents a bulk SIM card action. It groups SIM card actions create
+        #   @param data [Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data] This object represents a bulk SIM card action. It groups SIM card actions create
 
-        # @see Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse#data
+        # @see Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse#data
         class Data < Telnyx::Internal::Type::BaseModel
           response_only do
             # @!attribute id
@@ -36,9 +36,9 @@ module Telnyx
             #   <li><code>bulk_set_public_ips</code> - set a public IP for each specified SIM Card.</li>
             #   </ul>
             #
-            #   @return [Symbol, Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::ActionType, nil]
+            #   @return [Symbol, Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data::ActionType, nil]
             optional :action_type,
-                     enum: -> { Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::ActionType }
+                     enum: -> { Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data::ActionType }
 
             # @!attribute created_at
             #   ISO 8601 formatted date-time indicating when the resource was created.
@@ -66,7 +66,7 @@ module Telnyx
 
           # @!method initialize(id: nil, action_type: nil, created_at: nil, record_type: nil, settings: nil, updated_at: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data} for more
+          #   {Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data} for more
           #   details.
           #
           #   This object represents a bulk SIM card action. It groups SIM card actions
@@ -74,7 +74,7 @@ module Telnyx
           #
           #   @param id [String] Identifies the resource.
           #
-          #   @param action_type [Symbol, Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::ActionType] The action type. It can be one of the following: <br/>
+          #   @param action_type [Symbol, Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data::ActionType] The action type. It can be one of the following: <br/>
           #
           #   @param created_at [String] ISO 8601 formatted date-time indicating when the resource was created.
           #
@@ -92,7 +92,7 @@ module Telnyx
           # <li><code>bulk_set_public_ips</code> - set a public IP for each specified SIM Card.</li>
           # </ul>
           #
-          # @see Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data#action_type
+          # @see Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data#action_type
           module ActionType
             extend Telnyx::Internal::Type::Enum
 
