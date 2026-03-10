@@ -2,91 +2,18 @@ module Telnyx
   module Models
     module SimCards
       type action_bulk_enable_voice_response =
-        { data: Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse::Data }
+        { data: Telnyx::SimCards::BulkSimCardAction }
 
       class ActionBulkEnableVoiceResponse < Telnyx::Internal::Type::BaseModel
-        attr_reader data: Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse::Data?
+        attr_reader data: Telnyx::SimCards::BulkSimCardAction?
 
         def data=: (
-          Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse::Data
-        ) -> Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse::Data
+          Telnyx::SimCards::BulkSimCardAction
+        ) -> Telnyx::SimCards::BulkSimCardAction
 
-        def initialize: (
-          ?data: Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse::Data
-        ) -> void
+        def initialize: (?data: Telnyx::SimCards::BulkSimCardAction) -> void
 
-        def to_hash: -> {
-          data: Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse::Data
-        }
-
-        type data =
-          {
-            id: String,
-            action_type: Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse::Data::action_type,
-            created_at: String,
-            record_type: String,
-            settings: ::Hash[Symbol, top],
-            updated_at: String
-          }
-
-        class Data < Telnyx::Internal::Type::BaseModel
-          attr_reader id: String?
-
-          def id=: (String) -> String
-
-          attr_reader action_type: Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse::Data::action_type?
-
-          def action_type=: (
-            Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse::Data::action_type
-          ) -> Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse::Data::action_type
-
-          attr_reader created_at: String?
-
-          def created_at=: (String) -> String
-
-          attr_reader record_type: String?
-
-          def record_type=: (String) -> String
-
-          attr_reader settings: ::Hash[Symbol, top]?
-
-          def settings=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
-
-          attr_reader updated_at: String?
-
-          def updated_at=: (String) -> String
-
-          def initialize: (
-            ?id: String,
-            ?action_type: Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse::Data::action_type,
-            ?created_at: String,
-            ?record_type: String,
-            ?settings: ::Hash[Symbol, top],
-            ?updated_at: String
-          ) -> void
-
-          def to_hash: -> {
-            id: String,
-            action_type: Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse::Data::action_type,
-            created_at: String,
-            record_type: String,
-            settings: ::Hash[Symbol, top],
-            updated_at: String
-          }
-
-          type action_type =
-            :bulk_disable_voice | :bulk_enable_voice | :bulk_set_public_ips
-
-          module ActionType
-            extend Telnyx::Internal::Type::Enum
-
-            BULK_DISABLE_VOICE: :bulk_disable_voice
-            BULK_ENABLE_VOICE: :bulk_enable_voice
-            BULK_SET_PUBLIC_IPS: :bulk_set_public_ips
-
-            def self?.values: -> ::Array[Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse::Data::action_type]
-          end
-        end
+        def to_hash: -> { data: Telnyx::SimCards::BulkSimCardAction }
       end
     end
   end
