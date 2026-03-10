@@ -27,10 +27,12 @@ module Telnyx
           optional :id, String
 
           # @!attribute action_type
-          #   The operation type. It can be one of the following: <br/>
+          #   The action type. It can be one of the following: <br/>
           #
           #   <ul>
-          #   <li><code>bulk_set_public_ips</code> - set a public IP for each specified SIM card.</li>
+          #   <li><code>bulk_disable_voice</code> - disable voice for every SIM Card in a SIM Card Group.</li>
+          #   <li><code>bulk_enable_voice</code> - enable voice for every SIM Card in a SIM Card Group.</li>
+          #   <li><code>bulk_set_public_ips</code> - set a public IP for each specified SIM Card.</li>
           #   </ul>
           #
           #   @return [Symbol, Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::ActionType, nil]
@@ -66,7 +68,7 @@ module Telnyx
         #
         #   @param id [String] Identifies the resource.
         #
-        #   @param action_type [Symbol, Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::ActionType] The operation type. It can be one of the following: <br/>
+        #   @param action_type [Symbol, Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::ActionType] The action type. It can be one of the following: <br/>
         #
         #   @param created_at [String] ISO 8601 formatted date-time indicating when the resource was created.
         #
@@ -78,16 +80,20 @@ module Telnyx
         #
         #   @param updated_at [String] ISO 8601 formatted date-time indicating when the resource was updated.
 
-        # The operation type. It can be one of the following: <br/>
+        # The action type. It can be one of the following: <br/>
         #
         # <ul>
-        # <li><code>bulk_set_public_ips</code> - set a public IP for each specified SIM card.</li>
+        # <li><code>bulk_disable_voice</code> - disable voice for every SIM Card in a SIM Card Group.</li>
+        # <li><code>bulk_enable_voice</code> - enable voice for every SIM Card in a SIM Card Group.</li>
+        # <li><code>bulk_set_public_ips</code> - set a public IP for each specified SIM Card.</li>
         # </ul>
         #
         # @see Telnyx::Models::BulkSimCardActionRetrieveResponse::Data#action_type
         module ActionType
           extend Telnyx::Internal::Type::Enum
 
+          BULK_DISABLE_VOICE = :bulk_disable_voice
+          BULK_ENABLE_VOICE = :bulk_enable_voice
           BULK_SET_PUBLIC_IPS = :bulk_set_public_ips
 
           # @!method self.values

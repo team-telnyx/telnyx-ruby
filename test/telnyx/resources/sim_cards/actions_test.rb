@@ -49,6 +49,40 @@ class Telnyx::Test::Resources::SimCards::ActionsTest < Telnyx::Test::ResourceTes
     end
   end
 
+  def test_bulk_disable_voice_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.sim_cards.actions.bulk_disable_voice(sim_card_group_id: "6b14e151-8493-4fa1-8664-1cc4e6d14158")
+
+    assert_pattern do
+      response => Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data | nil
+      }
+    end
+  end
+
+  def test_bulk_enable_voice_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.sim_cards.actions.bulk_enable_voice(sim_card_group_id: "6b14e151-8493-4fa1-8664-1cc4e6d14158")
+
+    assert_pattern do
+      response => Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse::Data | nil
+      }
+    end
+  end
+
   def test_bulk_set_public_ips_required_params
     skip("Mock server tests are disabled")
 

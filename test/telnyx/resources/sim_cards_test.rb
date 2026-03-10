@@ -71,7 +71,8 @@ class Telnyx::Test::Resources::SimCardsTest < Telnyx::Test::ResourceTest
         tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
         type: Telnyx::SimpleSimCard::Type | nil,
         updated_at: String | nil,
-        version: String | nil
+        version: String | nil,
+        voice_enabled: Telnyx::Internal::Type::Boolean | nil
       }
     end
   end

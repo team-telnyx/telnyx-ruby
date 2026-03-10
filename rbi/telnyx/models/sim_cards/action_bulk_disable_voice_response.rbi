@@ -3,11 +3,11 @@
 module Telnyx
   module Models
     module SimCards
-      class ActionBulkSetPublicIPsResponse < Telnyx::Internal::Type::BaseModel
+      class ActionBulkDisableVoiceResponse < Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse,
+              Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse,
               Telnyx::Internal::AnyHash
             )
           end
@@ -17,7 +17,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data
+              Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data
             )
           )
         end
@@ -26,7 +26,7 @@ module Telnyx
         sig do
           params(
             data:
-              Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::OrHash
+              Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data::OrHash
           ).void
         end
         attr_writer :data
@@ -34,7 +34,7 @@ module Telnyx
         sig do
           params(
             data:
-              Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::OrHash
+              Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
@@ -48,7 +48,7 @@ module Telnyx
           override.returns(
             {
               data:
-                Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data
+                Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data
             }
           )
         end
@@ -59,7 +59,7 @@ module Telnyx
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data,
+                Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data,
                 Telnyx::Internal::AnyHash
               )
             end
@@ -81,7 +81,7 @@ module Telnyx
           sig do
             returns(
               T.nilable(
-                Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::ActionType::TaggedSymbol
+                Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data::ActionType::TaggedSymbol
               )
             )
           end
@@ -90,7 +90,7 @@ module Telnyx
           sig do
             params(
               action_type:
-                Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::ActionType::OrSymbol
+                Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data::ActionType::OrSymbol
             ).void
           end
           attr_writer :action_type
@@ -128,7 +128,7 @@ module Telnyx
             params(
               id: String,
               action_type:
-                Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::ActionType::OrSymbol,
+                Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data::ActionType::OrSymbol,
               created_at: String,
               record_type: String,
               settings: T::Hash[Symbol, T.anything],
@@ -161,7 +161,7 @@ module Telnyx
               {
                 id: String,
                 action_type:
-                  Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::ActionType::TaggedSymbol,
+                  Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data::ActionType::TaggedSymbol,
                 created_at: String,
                 record_type: String,
                 settings: T::Hash[Symbol, T.anything],
@@ -186,7 +186,7 @@ module Telnyx
               T.type_alias do
                 T.all(
                   Symbol,
-                  Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::ActionType
+                  Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data::ActionType
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -194,23 +194,23 @@ module Telnyx
             BULK_DISABLE_VOICE =
               T.let(
                 :bulk_disable_voice,
-                Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::ActionType::TaggedSymbol
+                Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data::ActionType::TaggedSymbol
               )
             BULK_ENABLE_VOICE =
               T.let(
                 :bulk_enable_voice,
-                Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::ActionType::TaggedSymbol
+                Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data::ActionType::TaggedSymbol
               )
             BULK_SET_PUBLIC_IPS =
               T.let(
                 :bulk_set_public_ips,
-                Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::ActionType::TaggedSymbol
+                Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data::ActionType::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data::ActionType::TaggedSymbol
+                  Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data::ActionType::TaggedSymbol
                 ]
               )
             end
