@@ -61,7 +61,7 @@ class Telnyx::Test::Resources::SimCards::ActionsTest < Telnyx::Test::ResourceTes
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse::Data | nil
+        data: Telnyx::SimCards::BulkSimCardAction | nil
       }
     end
   end
@@ -78,7 +78,7 @@ class Telnyx::Test::Resources::SimCards::ActionsTest < Telnyx::Test::ResourceTes
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse::Data | nil
+        data: Telnyx::SimCards::BulkSimCardAction | nil
       }
     end
   end
@@ -95,7 +95,7 @@ class Telnyx::Test::Resources::SimCards::ActionsTest < Telnyx::Test::ResourceTes
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::SimCards::ActionBulkSetPublicIPsResponse::Data | nil
+        data: Telnyx::SimCards::BulkSimCardAction | nil
       }
     end
   end
