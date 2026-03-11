@@ -34,10 +34,10 @@ module Telnyx
       end
       attr_writer :category
 
-      sig { returns(T.nilable(T::Array[T::Hash[Symbol, T.anything]])) }
+      sig { returns(T.nilable(T::Array[T.anything])) }
       attr_reader :components
 
-      sig { params(components: T::Array[T::Hash[Symbol, T.anything]]).void }
+      sig { params(components: T::Array[T.anything]).void }
       attr_writer :components
 
       sig do
@@ -45,7 +45,7 @@ module Telnyx
           id: String,
           category:
             Telnyx::WhatsappMessageTemplateUpdateParams::Category::OrSymbol,
-          components: T::Array[T::Hash[Symbol, T.anything]],
+          components: T::Array[T.anything],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -58,7 +58,7 @@ module Telnyx
             id: String,
             category:
               Telnyx::WhatsappMessageTemplateUpdateParams::Category::OrSymbol,
-            components: T::Array[T::Hash[Symbol, T.anything]],
+            components: T::Array[T.anything],
             request_options: Telnyx::RequestOptions
           }
         )

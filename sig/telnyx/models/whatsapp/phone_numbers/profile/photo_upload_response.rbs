@@ -4,22 +4,127 @@ module Telnyx
       module PhoneNumbers
         module Profile
           type photo_upload_response =
-            { data: Telnyx::Whatsapp::PhoneNumbers::WhatsappProfileData }
+            {
+              data: Telnyx::Models::Whatsapp::PhoneNumbers::Profile::PhotoUploadResponse::Data
+            }
 
           class PhotoUploadResponse < Telnyx::Internal::Type::BaseModel
-            attr_reader data: Telnyx::Whatsapp::PhoneNumbers::WhatsappProfileData?
+            attr_reader data: Telnyx::Models::Whatsapp::PhoneNumbers::Profile::PhotoUploadResponse::Data?
 
             def data=: (
-              Telnyx::Whatsapp::PhoneNumbers::WhatsappProfileData
-            ) -> Telnyx::Whatsapp::PhoneNumbers::WhatsappProfileData
+              Telnyx::Models::Whatsapp::PhoneNumbers::Profile::PhotoUploadResponse::Data
+            ) -> Telnyx::Models::Whatsapp::PhoneNumbers::Profile::PhotoUploadResponse::Data
 
             def initialize: (
-              ?data: Telnyx::Whatsapp::PhoneNumbers::WhatsappProfileData
+              ?data: Telnyx::Models::Whatsapp::PhoneNumbers::Profile::PhotoUploadResponse::Data
             ) -> void
 
             def to_hash: -> {
-              data: Telnyx::Whatsapp::PhoneNumbers::WhatsappProfileData
+              data: Telnyx::Models::Whatsapp::PhoneNumbers::Profile::PhotoUploadResponse::Data
             }
+
+            type data =
+              {
+                id: String,
+                about: String,
+                address: String,
+                category: String,
+                created_at: Time,
+                description: String,
+                display_name: String,
+                email: String,
+                phone_number_id: String,
+                profile_photo_url: String,
+                record_type: String,
+                updated_at: Time,
+                website: String
+              }
+
+            class Data < Telnyx::Internal::Type::BaseModel
+              attr_reader id: String?
+
+              def id=: (String) -> String
+
+              attr_reader about: String?
+
+              def about=: (String) -> String
+
+              attr_reader address: String?
+
+              def address=: (String) -> String
+
+              attr_reader category: String?
+
+              def category=: (String) -> String
+
+              attr_reader created_at: Time?
+
+              def created_at=: (Time) -> Time
+
+              attr_reader description: String?
+
+              def description=: (String) -> String
+
+              attr_reader display_name: String?
+
+              def display_name=: (String) -> String
+
+              attr_reader email: String?
+
+              def email=: (String) -> String
+
+              attr_reader phone_number_id: String?
+
+              def phone_number_id=: (String) -> String
+
+              attr_reader profile_photo_url: String?
+
+              def profile_photo_url=: (String) -> String
+
+              attr_reader record_type: String?
+
+              def record_type=: (String) -> String
+
+              attr_reader updated_at: Time?
+
+              def updated_at=: (Time) -> Time
+
+              attr_reader website: String?
+
+              def website=: (String) -> String
+
+              def initialize: (
+                ?id: String,
+                ?about: String,
+                ?address: String,
+                ?category: String,
+                ?created_at: Time,
+                ?description: String,
+                ?display_name: String,
+                ?email: String,
+                ?phone_number_id: String,
+                ?profile_photo_url: String,
+                ?record_type: String,
+                ?updated_at: Time,
+                ?website: String
+              ) -> void
+
+              def to_hash: -> {
+                id: String,
+                about: String,
+                address: String,
+                category: String,
+                created_at: Time,
+                description: String,
+                display_name: String,
+                email: String,
+                phone_number_id: String,
+                profile_photo_url: String,
+                record_type: String,
+                updated_at: Time,
+                website: String
+              }
+            end
           end
         end
       end

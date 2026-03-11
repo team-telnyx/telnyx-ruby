@@ -3,22 +3,99 @@ module Telnyx
     module Whatsapp
       module BusinessAccounts
         type setting_retrieve_response =
-          { data: Telnyx::Whatsapp::BusinessAccounts::WabaSettings }
+          {
+            data: Telnyx::Models::Whatsapp::BusinessAccounts::SettingRetrieveResponse::Data
+          }
 
         class SettingRetrieveResponse < Telnyx::Internal::Type::BaseModel
-          attr_reader data: Telnyx::Whatsapp::BusinessAccounts::WabaSettings?
+          attr_reader data: Telnyx::Models::Whatsapp::BusinessAccounts::SettingRetrieveResponse::Data?
 
           def data=: (
-            Telnyx::Whatsapp::BusinessAccounts::WabaSettings
-          ) -> Telnyx::Whatsapp::BusinessAccounts::WabaSettings
+            Telnyx::Models::Whatsapp::BusinessAccounts::SettingRetrieveResponse::Data
+          ) -> Telnyx::Models::Whatsapp::BusinessAccounts::SettingRetrieveResponse::Data
 
           def initialize: (
-            ?data: Telnyx::Whatsapp::BusinessAccounts::WabaSettings
+            ?data: Telnyx::Models::Whatsapp::BusinessAccounts::SettingRetrieveResponse::Data
           ) -> void
 
           def to_hash: -> {
-            data: Telnyx::Whatsapp::BusinessAccounts::WabaSettings
+            data: Telnyx::Models::Whatsapp::BusinessAccounts::SettingRetrieveResponse::Data
           }
+
+          type data =
+            {
+              id: String,
+              name: String,
+              record_type: String,
+              timezone: String,
+              updated_at: Time,
+              webhook_enabled: bool,
+              webhook_events: ::Array[String],
+              webhook_failover_url: String,
+              webhook_url: String
+            }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_reader id: String?
+
+            def id=: (String) -> String
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader record_type: String?
+
+            def record_type=: (String) -> String
+
+            attr_reader timezone: String?
+
+            def timezone=: (String) -> String
+
+            attr_reader updated_at: Time?
+
+            def updated_at=: (Time) -> Time
+
+            attr_reader webhook_enabled: bool?
+
+            def webhook_enabled=: (bool) -> bool
+
+            attr_reader webhook_events: ::Array[String]?
+
+            def webhook_events=: (::Array[String]) -> ::Array[String]
+
+            attr_reader webhook_failover_url: String?
+
+            def webhook_failover_url=: (String) -> String
+
+            attr_reader webhook_url: String?
+
+            def webhook_url=: (String) -> String
+
+            def initialize: (
+              ?id: String,
+              ?name: String,
+              ?record_type: String,
+              ?timezone: String,
+              ?updated_at: Time,
+              ?webhook_enabled: bool,
+              ?webhook_events: ::Array[String],
+              ?webhook_failover_url: String,
+              ?webhook_url: String
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              name: String,
+              record_type: String,
+              timezone: String,
+              updated_at: Time,
+              webhook_enabled: bool,
+              webhook_events: ::Array[String],
+              webhook_failover_url: String,
+              webhook_url: String
+            }
+          end
         end
       end
     end

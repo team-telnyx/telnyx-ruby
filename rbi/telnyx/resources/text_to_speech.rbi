@@ -24,7 +24,7 @@ module Telnyx
           azure: Telnyx::TextToSpeechGenerateParams::Azure::OrHash,
           disable_cache: T::Boolean,
           elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs::OrHash,
-          inworld: T::Hash[Symbol, T.anything],
+          inworld: T.anything,
           language: String,
           minimax: Telnyx::TextToSpeechGenerateParams::Minimax::OrHash,
           output_type: Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol,

@@ -46,10 +46,10 @@ module Telnyx
       attr_writer :elevenlabs
 
       # Inworld provider-specific parameters.
-      sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+      sig { returns(T.nilable(T.anything)) }
       attr_reader :inworld
 
-      sig { params(inworld: T::Hash[Symbol, T.anything]).void }
+      sig { params(inworld: T.anything).void }
       attr_writer :inworld
 
       # Language code (e.g. `en-US`). Usage varies by provider.
@@ -179,7 +179,7 @@ module Telnyx
           azure: Telnyx::TextToSpeechGenerateParams::Azure::OrHash,
           disable_cache: T::Boolean,
           elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs::OrHash,
-          inworld: T::Hash[Symbol, T.anything],
+          inworld: T.anything,
           language: String,
           minimax: Telnyx::TextToSpeechGenerateParams::Minimax::OrHash,
           output_type: Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol,
@@ -244,7 +244,7 @@ module Telnyx
             azure: Telnyx::TextToSpeechGenerateParams::Azure,
             disable_cache: T::Boolean,
             elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs,
-            inworld: T::Hash[Symbol, T.anything],
+            inworld: T.anything,
             language: String,
             minimax: Telnyx::TextToSpeechGenerateParams::Minimax,
             output_type:

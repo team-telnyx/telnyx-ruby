@@ -1,27 +1,10 @@
 module Telnyx
   module Models
-    type whatsapp_message_template_update_response =
-      { data: Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data }
-
-    class WhatsappMessageTemplateUpdateResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data?
-
-      def data=: (
-        Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data
-      ) -> Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data
-
-      def initialize: (
-        ?data: Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data
-      ) -> void
-
-      def to_hash: -> {
-        data: Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data
-      }
-
-      type data =
+    module Whatsapp
+      type message_template_list_response =
         {
           id: String,
-          category: Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data::category,
+          category: Telnyx::Models::Whatsapp::MessageTemplateListResponse::category,
           components: ::Array[top],
           created_at: Time,
           language: String,
@@ -31,19 +14,19 @@ module Telnyx
           status: String,
           template_id: String,
           updated_at: Time,
-          whatsapp_business_account: Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data::WhatsappBusinessAccount
+          whatsapp_business_account: Telnyx::Models::Whatsapp::MessageTemplateListResponse::WhatsappBusinessAccount
         }
 
-      class Data < Telnyx::Internal::Type::BaseModel
+      class MessageTemplateListResponse < Telnyx::Internal::Type::BaseModel
         attr_reader id: String?
 
         def id=: (String) -> String
 
-        attr_reader category: Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data::category?
+        attr_reader category: Telnyx::Models::Whatsapp::MessageTemplateListResponse::category?
 
         def category=: (
-          Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data::category
-        ) -> Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data::category
+          Telnyx::Models::Whatsapp::MessageTemplateListResponse::category
+        ) -> Telnyx::Models::Whatsapp::MessageTemplateListResponse::category
 
         attr_reader components: ::Array[top]?
 
@@ -81,15 +64,15 @@ module Telnyx
 
         def updated_at=: (Time) -> Time
 
-        attr_reader whatsapp_business_account: Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data::WhatsappBusinessAccount?
+        attr_reader whatsapp_business_account: Telnyx::Models::Whatsapp::MessageTemplateListResponse::WhatsappBusinessAccount?
 
         def whatsapp_business_account=: (
-          Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data::WhatsappBusinessAccount
-        ) -> Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data::WhatsappBusinessAccount
+          Telnyx::Models::Whatsapp::MessageTemplateListResponse::WhatsappBusinessAccount
+        ) -> Telnyx::Models::Whatsapp::MessageTemplateListResponse::WhatsappBusinessAccount
 
         def initialize: (
           ?id: String,
-          ?category: Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data::category,
+          ?category: Telnyx::Models::Whatsapp::MessageTemplateListResponse::category,
           ?components: ::Array[top],
           ?created_at: Time,
           ?language: String,
@@ -99,12 +82,12 @@ module Telnyx
           ?status: String,
           ?template_id: String,
           ?updated_at: Time,
-          ?whatsapp_business_account: Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data::WhatsappBusinessAccount
+          ?whatsapp_business_account: Telnyx::Models::Whatsapp::MessageTemplateListResponse::WhatsappBusinessAccount
         ) -> void
 
         def to_hash: -> {
           id: String,
-          category: Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data::category,
+          category: Telnyx::Models::Whatsapp::MessageTemplateListResponse::category,
           components: ::Array[top],
           created_at: Time,
           language: String,
@@ -114,7 +97,7 @@ module Telnyx
           status: String,
           template_id: String,
           updated_at: Time,
-          whatsapp_business_account: Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data::WhatsappBusinessAccount
+          whatsapp_business_account: Telnyx::Models::Whatsapp::MessageTemplateListResponse::WhatsappBusinessAccount
         }
 
         type category = :MARKETING | :UTILITY | :AUTHENTICATION
@@ -126,7 +109,7 @@ module Telnyx
           UTILITY: :UTILITY
           AUTHENTICATION: :AUTHENTICATION
 
-          def self?.values: -> ::Array[Telnyx::Models::WhatsappMessageTemplateUpdateResponse::Data::category]
+          def self?.values: -> ::Array[Telnyx::Models::Whatsapp::MessageTemplateListResponse::category]
         end
 
         type whatsapp_business_account = { id: String }
