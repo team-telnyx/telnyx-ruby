@@ -10,7 +10,7 @@ module Telnyx
         # @overload create(category:, components:, language:, name:, waba_id:, request_options: {})
         #
         # @param category [Symbol, Telnyx::Models::Whatsapp::TemplateCreateParams::Category]
-        # @param components [Array<Object>]
+        # @param components [Array<Hash{Symbol=>Object}>]
         # @param language [String]
         # @param name [String]
         # @param waba_id [String]

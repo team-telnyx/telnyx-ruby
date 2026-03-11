@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::Whatsapp::TemplatesTest < Telnyx::Test::ResourceT
     response =
       @telnyx.whatsapp.templates.create(
         category: :MARKETING,
-        components: [{}],
+        components: [{foo: "bar"}],
         language: "language",
         name: "name",
         waba_id: "waba_id"
@@ -46,7 +46,7 @@ class Telnyx::Test::Resources::Whatsapp::TemplatesTest < Telnyx::Test::ResourceT
       row => {
         id: String | nil,
         category: Telnyx::WhatsappTemplateData::Category | nil,
-        components: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]) | nil,
+        components: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]) | nil,
         created_at: Time | nil,
         language: String | nil,
         name: String | nil,

@@ -10,7 +10,7 @@ module Telnyx
           params(
             category:
               Telnyx::Whatsapp::TemplateCreateParams::Category::OrSymbol,
-            components: T::Array[T.anything],
+            components: T::Array[T::Hash[Symbol, T.anything]],
             language: String,
             name: String,
             waba_id: String,

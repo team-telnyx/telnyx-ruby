@@ -20,7 +20,7 @@ module Telnyx
         end
         attr_accessor :category
 
-        sig { returns(T::Array[T.anything]) }
+        sig { returns(T::Array[T::Hash[Symbol, T.anything]]) }
         attr_accessor :components
 
         sig { returns(String) }
@@ -36,7 +36,7 @@ module Telnyx
           params(
             category:
               Telnyx::Whatsapp::TemplateCreateParams::Category::OrSymbol,
-            components: T::Array[T.anything],
+            components: T::Array[T::Hash[Symbol, T.anything]],
             language: String,
             name: String,
             waba_id: String,
@@ -58,7 +58,7 @@ module Telnyx
             {
               category:
                 Telnyx::Whatsapp::TemplateCreateParams::Category::OrSymbol,
-              components: T::Array[T.anything],
+              components: T::Array[T::Hash[Symbol, T.anything]],
               language: String,
               name: String,
               waba_id: String,

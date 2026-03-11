@@ -25,10 +25,10 @@ module Telnyx
       attr_writer :category
 
       # Whatsapp template components (header, body, footer, buttons)
-      sig { returns(T.nilable(T::Array[T.anything])) }
+      sig { returns(T.nilable(T::Array[T::Hash[Symbol, T.anything]])) }
       attr_reader :components
 
-      sig { params(components: T::Array[T.anything]).void }
+      sig { params(components: T::Array[T::Hash[Symbol, T.anything]]).void }
       attr_writer :components
 
       sig { returns(T.nilable(Time)) }
@@ -98,7 +98,7 @@ module Telnyx
         params(
           id: String,
           category: Telnyx::WhatsappTemplateData::Category::OrSymbol,
-          components: T::Array[T.anything],
+          components: T::Array[T::Hash[Symbol, T.anything]],
           created_at: Time,
           language: String,
           name: String,
@@ -133,7 +133,7 @@ module Telnyx
           {
             id: String,
             category: Telnyx::WhatsappTemplateData::Category::TaggedSymbol,
-            components: T::Array[T.anything],
+            components: T::Array[T::Hash[Symbol, T.anything]],
             created_at: Time,
             language: String,
             name: String,
