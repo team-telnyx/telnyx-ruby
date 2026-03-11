@@ -4,7 +4,7 @@ module Telnyx
       {
         id: String,
         category: Telnyx::Models::WhatsappTemplateData::category,
-        components: ::Array[top],
+        components: ::Array[::Hash[Symbol, top]],
         created_at: Time,
         language: String,
         name: String,
@@ -27,9 +27,11 @@ module Telnyx
         Telnyx::Models::WhatsappTemplateData::category
       ) -> Telnyx::Models::WhatsappTemplateData::category
 
-      attr_reader components: ::Array[top]?
+      attr_reader components: ::Array[::Hash[Symbol, top]]?
 
-      def components=: (::Array[top]) -> ::Array[top]
+      def components=: (
+        ::Array[::Hash[Symbol, top]]
+      ) -> ::Array[::Hash[Symbol, top]]
 
       attr_reader created_at: Time?
 
@@ -72,7 +74,7 @@ module Telnyx
       def initialize: (
         ?id: String,
         ?category: Telnyx::Models::WhatsappTemplateData::category,
-        ?components: ::Array[top],
+        ?components: ::Array[::Hash[Symbol, top]],
         ?created_at: Time,
         ?language: String,
         ?name: String,
@@ -87,7 +89,7 @@ module Telnyx
       def to_hash: -> {
         id: String,
         category: Telnyx::Models::WhatsappTemplateData::category,
-        components: ::Array[top],
+        components: ::Array[::Hash[Symbol, top]],
         created_at: Time,
         language: String,
         name: String,

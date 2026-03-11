@@ -16,8 +16,9 @@ module Telnyx
       # @!attribute components
       #   Whatsapp template components (header, body, footer, buttons)
       #
-      #   @return [Array<Object>, nil]
-      optional :components, Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]
+      #   @return [Array<Hash{Symbol=>Object}>, nil]
+      optional :components,
+               Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]
 
       # @!attribute created_at
       #
@@ -69,7 +70,7 @@ module Telnyx
       #
       #   @param category [Symbol, Telnyx::Models::WhatsappTemplateData::Category]
       #
-      #   @param components [Array<Object>] Whatsapp template components (header, body, footer, buttons)
+      #   @param components [Array<Hash{Symbol=>Object}>] Whatsapp template components (header, body, footer, buttons)
       #
       #   @param created_at [Time]
       #

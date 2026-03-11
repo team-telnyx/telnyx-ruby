@@ -15,8 +15,9 @@ module Telnyx
 
         # @!attribute components
         #
-        #   @return [Array<Object>]
-        required :components, Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]
+        #   @return [Array<Hash{Symbol=>Object}>]
+        required :components,
+                 Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]
 
         # @!attribute language
         #
@@ -35,7 +36,7 @@ module Telnyx
 
         # @!method initialize(category:, components:, language:, name:, waba_id:, request_options: {})
         #   @param category [Symbol, Telnyx::Models::Whatsapp::TemplateCreateParams::Category]
-        #   @param components [Array<Object>]
+        #   @param components [Array<Hash{Symbol=>Object}>]
         #   @param language [String]
         #   @param name [String]
         #   @param waba_id [String]
