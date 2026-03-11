@@ -12,7 +12,7 @@ module Telnyx
       variant :audio_chunk, -> { Telnyx::Models::StreamServerEvent::AudioChunk }
 
       # Server-to-client frame indicating synthesis is complete for the current text.
-      variant :final, -> { Telnyx::Models::StreamServerEvent::Final }
+      variant :final, -> { Telnyx::Models::StreamServerEvent::FinalFrameEvent }
 
       # Server-to-client frame indicating an error during synthesis. The connection is closed shortly after.
       variant :error, -> { Telnyx::Models::StreamServerEvent::Error }
@@ -88,7 +88,7 @@ module Telnyx
         end
       end
 
-      class Final < Telnyx::Internal::Type::BaseModel
+      class FinalFrameEvent < Telnyx::Internal::Type::BaseModel
         # @!attribute audio
         #   Always `null` for the final frame.
         #
@@ -98,8 +98,10 @@ module Telnyx
         # @!attribute is_final
         #   Always `true`.
         #
-        #   @return [Boolean, Telnyx::Models::StreamServerEvent::Final::IsFinal, nil]
-        optional :is_final, enum: -> { Telnyx::Models::StreamServerEvent::Final::IsFinal }, api_name: :isFinal
+        #   @return [Boolean, Telnyx::Models::StreamServerEvent::FinalFrameEvent::IsFinal, nil]
+        optional :is_final,
+                 enum: -> { Telnyx::Models::StreamServerEvent::FinalFrameEvent::IsFinal },
+                 api_name: :isFinal
 
         # @!attribute text
         #   Empty string.
@@ -116,25 +118,25 @@ module Telnyx
         # @!attribute type
         #   Frame type identifier.
         #
-        #   @return [Symbol, Telnyx::Models::StreamServerEvent::Final::Type, nil]
-        optional :type, enum: -> { Telnyx::Models::StreamServerEvent::Final::Type }
+        #   @return [Symbol, Telnyx::Models::StreamServerEvent::FinalFrameEvent::Type, nil]
+        optional :type, enum: -> { Telnyx::Models::StreamServerEvent::FinalFrameEvent::Type }
 
         # @!method initialize(audio: nil, is_final: nil, text: nil, time_to_first_audio_frame_ms: nil, type: nil)
         #   Server-to-client frame indicating synthesis is complete for the current text.
         #
         #   @param audio [nil] Always `null` for the final frame.
         #
-        #   @param is_final [Boolean, Telnyx::Models::StreamServerEvent::Final::IsFinal] Always `true`.
+        #   @param is_final [Boolean, Telnyx::Models::StreamServerEvent::FinalFrameEvent::IsFinal] Always `true`.
         #
         #   @param text [String] Empty string.
         #
         #   @param time_to_first_audio_frame_ms [Integer] Present if this was the first response frame.
         #
-        #   @param type [Symbol, Telnyx::Models::StreamServerEvent::Final::Type] Frame type identifier.
+        #   @param type [Symbol, Telnyx::Models::StreamServerEvent::FinalFrameEvent::Type] Frame type identifier.
 
         # Always `true`.
         #
-        # @see Telnyx::Models::StreamServerEvent::Final#is_final
+        # @see Telnyx::Models::StreamServerEvent::FinalFrameEvent#is_final
         module IsFinal
           extend Telnyx::Internal::Type::Enum
 
@@ -146,7 +148,7 @@ module Telnyx
 
         # Frame type identifier.
         #
-        # @see Telnyx::Models::StreamServerEvent::Final#type
+        # @see Telnyx::Models::StreamServerEvent::FinalFrameEvent#type
         module Type
           extend Telnyx::Internal::Type::Enum
 
@@ -192,7 +194,7 @@ module Telnyx
       end
 
       # @!method self.variants
-      #   @return [Array(Telnyx::Models::StreamServerEvent::AudioChunk, Telnyx::Models::StreamServerEvent::Final, Telnyx::Models::StreamServerEvent::Error)]
+      #   @return [Array(Telnyx::Models::StreamServerEvent::AudioChunk, Telnyx::Models::StreamServerEvent::FinalFrameEvent, Telnyx::Models::StreamServerEvent::Error)]
     end
   end
 end
