@@ -3,8 +3,8 @@
 module Telnyx
   module Models
     module Whatsapp
-      # @see Telnyx::Resources::Whatsapp::MessageTemplates#list
-      class MessageTemplateListResponse < Telnyx::Internal::Type::BaseModel
+      # @see Telnyx::Resources::Whatsapp::Templates#list
+      class TemplateListResponse < Telnyx::Internal::Type::BaseModel
         # @!attribute id
         #
         #   @return [String, nil]
@@ -12,8 +12,8 @@ module Telnyx
 
         # @!attribute category
         #
-        #   @return [Symbol, Telnyx::Models::Whatsapp::MessageTemplateListResponse::Category, nil]
-        optional :category, enum: -> { Telnyx::Models::Whatsapp::MessageTemplateListResponse::Category }
+        #   @return [Symbol, Telnyx::Models::Whatsapp::TemplateListResponse::Category, nil]
+        optional :category, enum: -> { Telnyx::Models::Whatsapp::TemplateListResponse::Category }
 
         # @!attribute components
         #   Whatsapp template components (header, body, footer, buttons)
@@ -63,14 +63,14 @@ module Telnyx
 
         # @!attribute whatsapp_business_account
         #
-        #   @return [Telnyx::Models::Whatsapp::MessageTemplateListResponse::WhatsappBusinessAccount, nil]
+        #   @return [Telnyx::Models::Whatsapp::TemplateListResponse::WhatsappBusinessAccount, nil]
         optional :whatsapp_business_account,
-                 -> { Telnyx::Models::Whatsapp::MessageTemplateListResponse::WhatsappBusinessAccount }
+                 -> { Telnyx::Models::Whatsapp::TemplateListResponse::WhatsappBusinessAccount }
 
         # @!method initialize(id: nil, category: nil, components: nil, created_at: nil, language: nil, name: nil, record_type: nil, rejection_reason: nil, status: nil, template_id: nil, updated_at: nil, whatsapp_business_account: nil)
         #   @param id [String]
         #
-        #   @param category [Symbol, Telnyx::Models::Whatsapp::MessageTemplateListResponse::Category]
+        #   @param category [Symbol, Telnyx::Models::Whatsapp::TemplateListResponse::Category]
         #
         #   @param components [Array<Object>] Whatsapp template components (header, body, footer, buttons)
         #
@@ -90,9 +90,9 @@ module Telnyx
         #
         #   @param updated_at [Time]
         #
-        #   @param whatsapp_business_account [Telnyx::Models::Whatsapp::MessageTemplateListResponse::WhatsappBusinessAccount]
+        #   @param whatsapp_business_account [Telnyx::Models::Whatsapp::TemplateListResponse::WhatsappBusinessAccount]
 
-        # @see Telnyx::Models::Whatsapp::MessageTemplateListResponse#category
+        # @see Telnyx::Models::Whatsapp::TemplateListResponse#category
         module Category
           extend Telnyx::Internal::Type::Enum
 
@@ -104,7 +104,7 @@ module Telnyx
           #   @return [Array<Symbol>]
         end
 
-        # @see Telnyx::Models::Whatsapp::MessageTemplateListResponse#whatsapp_business_account
+        # @see Telnyx::Models::Whatsapp::TemplateListResponse#whatsapp_business_account
         class WhatsappBusinessAccount < Telnyx::Internal::Type::BaseModel
           # @!attribute id
           #
