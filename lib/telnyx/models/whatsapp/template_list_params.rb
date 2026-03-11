@@ -3,16 +3,16 @@
 module Telnyx
   module Models
     module Whatsapp
-      # @see Telnyx::Resources::Whatsapp::MessageTemplates#list
-      class MessageTemplateListParams < Telnyx::Internal::Type::BaseModel
+      # @see Telnyx::Resources::Whatsapp::Templates#list
+      class TemplateListParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
         # @!attribute filter_category
         #   Filter by category
         #
-        #   @return [Symbol, Telnyx::Models::Whatsapp::MessageTemplateListParams::FilterCategory, nil]
-        optional :filter_category, enum: -> { Telnyx::Whatsapp::MessageTemplateListParams::FilterCategory }
+        #   @return [Symbol, Telnyx::Models::Whatsapp::TemplateListParams::FilterCategory, nil]
+        optional :filter_category, enum: -> { Telnyx::Whatsapp::TemplateListParams::FilterCategory }
 
         # @!attribute filter_search
         #   Search templates by name
@@ -43,7 +43,7 @@ module Telnyx
         optional :page_size, Integer
 
         # @!method initialize(filter_category: nil, filter_search: nil, filter_status: nil, filter_waba_id: nil, page_number: nil, page_size: nil, request_options: {})
-        #   @param filter_category [Symbol, Telnyx::Models::Whatsapp::MessageTemplateListParams::FilterCategory] Filter by category
+        #   @param filter_category [Symbol, Telnyx::Models::Whatsapp::TemplateListParams::FilterCategory] Filter by category
         #
         #   @param filter_search [String] Search templates by name
         #

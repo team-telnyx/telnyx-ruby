@@ -1,25 +1,25 @@
 module Telnyx
   module Resources
     class Whatsapp
-      class MessageTemplates
+      class Templates
         def create: (
-          category: Telnyx::Models::Whatsapp::MessageTemplateCreateParams::category,
+          category: Telnyx::Models::Whatsapp::TemplateCreateParams::category,
           components: ::Array[top],
           language: String,
           name: String,
           waba_id: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Whatsapp::MessageTemplateCreateResponse
+        ) -> Telnyx::Models::Whatsapp::TemplateCreateResponse
 
         def list: (
-          ?filter_category: Telnyx::Models::Whatsapp::MessageTemplateListParams::filter_category,
+          ?filter_category: Telnyx::Models::Whatsapp::TemplateListParams::filter_category,
           ?filter_search: String,
           ?filter_status: String,
           ?filter_waba_id: String,
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Whatsapp::MessageTemplateListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Whatsapp::TemplateListResponse]
 
         def initialize: (client: Telnyx::Client) -> void
       end

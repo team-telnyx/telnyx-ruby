@@ -3,36 +3,32 @@
 module Telnyx
   module Models
     module Whatsapp
-      class MessageTemplateCreateResponse < Telnyx::Internal::Type::BaseModel
+      class TemplateCreateResponse < Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Models::Whatsapp::MessageTemplateCreateResponse,
+              Telnyx::Models::Whatsapp::TemplateCreateResponse,
               Telnyx::Internal::AnyHash
             )
           end
 
         sig do
           returns(
-            T.nilable(
-              Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data
-            )
+            T.nilable(Telnyx::Models::Whatsapp::TemplateCreateResponse::Data)
           )
         end
         attr_reader :data
 
         sig do
           params(
-            data:
-              Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data::OrHash
+            data: Telnyx::Models::Whatsapp::TemplateCreateResponse::Data::OrHash
           ).void
         end
         attr_writer :data
 
         sig do
           params(
-            data:
-              Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data::OrHash
+            data: Telnyx::Models::Whatsapp::TemplateCreateResponse::Data::OrHash
           ).returns(T.attached_class)
         end
         def self.new(data: nil)
@@ -40,10 +36,7 @@ module Telnyx
 
         sig do
           override.returns(
-            {
-              data:
-                Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data
-            }
+            { data: Telnyx::Models::Whatsapp::TemplateCreateResponse::Data }
           )
         end
         def to_hash
@@ -53,7 +46,7 @@ module Telnyx
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data,
+                Telnyx::Models::Whatsapp::TemplateCreateResponse::Data,
                 Telnyx::Internal::AnyHash
               )
             end
@@ -67,7 +60,7 @@ module Telnyx
           sig do
             returns(
               T.nilable(
-                Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data::Category::TaggedSymbol
+                Telnyx::Models::Whatsapp::TemplateCreateResponse::Data::Category::TaggedSymbol
               )
             )
           end
@@ -76,7 +69,7 @@ module Telnyx
           sig do
             params(
               category:
-                Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data::Category::OrSymbol
+                Telnyx::Models::Whatsapp::TemplateCreateResponse::Data::Category::OrSymbol
             ).void
           end
           attr_writer :category
@@ -139,7 +132,7 @@ module Telnyx
           sig do
             returns(
               T.nilable(
-                Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data::WhatsappBusinessAccount
+                Telnyx::Models::Whatsapp::TemplateCreateResponse::Data::WhatsappBusinessAccount
               )
             )
           end
@@ -148,7 +141,7 @@ module Telnyx
           sig do
             params(
               whatsapp_business_account:
-                Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data::WhatsappBusinessAccount::OrHash
+                Telnyx::Models::Whatsapp::TemplateCreateResponse::Data::WhatsappBusinessAccount::OrHash
             ).void
           end
           attr_writer :whatsapp_business_account
@@ -157,7 +150,7 @@ module Telnyx
             params(
               id: String,
               category:
-                Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data::Category::OrSymbol,
+                Telnyx::Models::Whatsapp::TemplateCreateResponse::Data::Category::OrSymbol,
               components: T::Array[T.anything],
               created_at: Time,
               language: String,
@@ -168,7 +161,7 @@ module Telnyx
               template_id: String,
               updated_at: Time,
               whatsapp_business_account:
-                Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data::WhatsappBusinessAccount::OrHash
+                Telnyx::Models::Whatsapp::TemplateCreateResponse::Data::WhatsappBusinessAccount::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
@@ -193,7 +186,7 @@ module Telnyx
               {
                 id: String,
                 category:
-                  Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data::Category::TaggedSymbol,
+                  Telnyx::Models::Whatsapp::TemplateCreateResponse::Data::Category::TaggedSymbol,
                 components: T::Array[T.anything],
                 created_at: Time,
                 language: String,
@@ -204,7 +197,7 @@ module Telnyx
                 template_id: String,
                 updated_at: Time,
                 whatsapp_business_account:
-                  Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data::WhatsappBusinessAccount
+                  Telnyx::Models::Whatsapp::TemplateCreateResponse::Data::WhatsappBusinessAccount
               }
             )
           end
@@ -218,7 +211,7 @@ module Telnyx
               T.type_alias do
                 T.all(
                   Symbol,
-                  Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data::Category
+                  Telnyx::Models::Whatsapp::TemplateCreateResponse::Data::Category
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -226,23 +219,23 @@ module Telnyx
             MARKETING =
               T.let(
                 :MARKETING,
-                Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data::Category::TaggedSymbol
+                Telnyx::Models::Whatsapp::TemplateCreateResponse::Data::Category::TaggedSymbol
               )
             UTILITY =
               T.let(
                 :UTILITY,
-                Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data::Category::TaggedSymbol
+                Telnyx::Models::Whatsapp::TemplateCreateResponse::Data::Category::TaggedSymbol
               )
             AUTHENTICATION =
               T.let(
                 :AUTHENTICATION,
-                Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data::Category::TaggedSymbol
+                Telnyx::Models::Whatsapp::TemplateCreateResponse::Data::Category::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data::Category::TaggedSymbol
+                  Telnyx::Models::Whatsapp::TemplateCreateResponse::Data::Category::TaggedSymbol
                 ]
               )
             end
@@ -254,7 +247,7 @@ module Telnyx
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data::WhatsappBusinessAccount,
+                  Telnyx::Models::Whatsapp::TemplateCreateResponse::Data::WhatsappBusinessAccount,
                   Telnyx::Internal::AnyHash
                 )
               end
