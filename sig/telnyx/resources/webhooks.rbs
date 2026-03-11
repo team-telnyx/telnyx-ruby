@@ -65,7 +65,9 @@ module Telnyx
       | Telnyx::TranscriptionWebhookEvent)
 
       def unwrap: (
-        String payload
+        String payload,
+        headers: ::Hash[String, String],
+        ?key: String?
       ) -> (Telnyx::CallAIGatherEndedWebhookEvent
       | Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent
       | Telnyx::CallAIGatherPartialResultsWebhookEvent
