@@ -1,0 +1,24 @@
+module Telnyx
+  module Resources
+    class Whatsapp
+      class PhoneNumbers
+        class Profile
+          class Photo
+            def delete: (
+              String phone_number,
+              ?request_options: Telnyx::request_opts
+            ) -> nil
+
+            def upload: (
+              String phone_number,
+              file: Telnyx::Internal::file_input,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Whatsapp::PhoneNumbers::Profile::PhotoUploadResponse
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

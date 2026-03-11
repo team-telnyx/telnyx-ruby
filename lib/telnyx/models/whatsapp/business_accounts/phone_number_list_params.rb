@@ -1,0 +1,36 @@
+# frozen_string_literal: true
+
+module Telnyx
+  module Models
+    module Whatsapp
+      module BusinessAccounts
+        # @see Telnyx::Resources::Whatsapp::BusinessAccounts::PhoneNumbers#list
+        class PhoneNumberListParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          # @!attribute id
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute page_number
+          #
+          #   @return [Integer, nil]
+          optional :page_number, Integer
+
+          # @!attribute page_size
+          #
+          #   @return [Integer, nil]
+          optional :page_size, Integer
+
+          # @!method initialize(id:, page_number: nil, page_size: nil, request_options: {})
+          #   @param id [String]
+          #   @param page_number [Integer]
+          #   @param page_size [Integer]
+          #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
+        end
+      end
+    end
+  end
+end

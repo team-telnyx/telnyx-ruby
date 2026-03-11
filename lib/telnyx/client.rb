@@ -620,6 +620,13 @@ module Telnyx
     # @return [Telnyx::Resources::SessionAnalysis]
     attr_reader :session_analysis
 
+    # @return [Telnyx::Resources::Whatsapp]
+    attr_reader :whatsapp
+
+    # Manage Whatsapp message templates
+    # @return [Telnyx::Resources::WhatsappMessageTemplates]
+    attr_reader :whatsapp_message_templates
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -868,6 +875,8 @@ module Telnyx
       @alphanumeric_sender_ids = Telnyx::Resources::AlphanumericSenderIDs.new(client: self)
       @messaging_profile_metrics = Telnyx::Resources::MessagingProfileMetrics.new(client: self)
       @session_analysis = Telnyx::Resources::SessionAnalysis.new(client: self)
+      @whatsapp = Telnyx::Resources::Whatsapp.new(client: self)
+      @whatsapp_message_templates = Telnyx::Resources::WhatsappMessageTemplates.new(client: self)
     end
   end
 end

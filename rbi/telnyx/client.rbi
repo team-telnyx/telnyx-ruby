@@ -615,6 +615,13 @@ module Telnyx
     sig { returns(Telnyx::Resources::SessionAnalysis) }
     attr_reader :session_analysis
 
+    sig { returns(Telnyx::Resources::Whatsapp) }
+    attr_reader :whatsapp
+
+    # Manage Whatsapp message templates
+    sig { returns(Telnyx::Resources::WhatsappMessageTemplates) }
+    attr_reader :whatsapp_message_templates
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

@@ -1,0 +1,27 @@
+module Telnyx
+  module Resources
+    class Whatsapp
+      class BusinessAccounts
+        class PhoneNumbers
+          def list: (
+            String id,
+            ?page_number: Integer,
+            ?page_size: Integer,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberListResponse]
+
+          def initialize_verification: (
+            String id,
+            display_name: String,
+            phone_number: String,
+            ?language: String,
+            ?verification_method: Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberInitializeVerificationParams::verification_method,
+            ?request_options: Telnyx::request_opts
+          ) -> nil
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

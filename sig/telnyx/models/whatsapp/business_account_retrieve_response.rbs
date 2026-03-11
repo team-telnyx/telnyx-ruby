@@ -1,0 +1,108 @@
+module Telnyx
+  module Models
+    module Whatsapp
+      type business_account_retrieve_response =
+        {
+          data: Telnyx::Models::Whatsapp::BusinessAccountRetrieveResponse::Data
+        }
+
+      class BusinessAccountRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::Whatsapp::BusinessAccountRetrieveResponse::Data?
+
+        def data=: (
+          Telnyx::Models::Whatsapp::BusinessAccountRetrieveResponse::Data
+        ) -> Telnyx::Models::Whatsapp::BusinessAccountRetrieveResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::Whatsapp::BusinessAccountRetrieveResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::Whatsapp::BusinessAccountRetrieveResponse::Data
+        }
+
+        type data =
+          {
+            id: String,
+            account_review_status: String,
+            business_verification_status: String,
+            country: String,
+            created_at: Time,
+            name: String,
+            phone_numbers_count: Integer,
+            record_type: String,
+            status: String,
+            waba_id: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader account_review_status: String?
+
+          def account_review_status=: (String) -> String
+
+          attr_reader business_verification_status: String?
+
+          def business_verification_status=: (String) -> String
+
+          attr_reader country: String?
+
+          def country=: (String) -> String
+
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader phone_numbers_count: Integer?
+
+          def phone_numbers_count=: (Integer) -> Integer
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_reader status: String?
+
+          def status=: (String) -> String
+
+          attr_reader waba_id: String?
+
+          def waba_id=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?account_review_status: String,
+            ?business_verification_status: String,
+            ?country: String,
+            ?created_at: Time,
+            ?name: String,
+            ?phone_numbers_count: Integer,
+            ?record_type: String,
+            ?status: String,
+            ?waba_id: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            account_review_status: String,
+            business_verification_status: String,
+            country: String,
+            created_at: Time,
+            name: String,
+            phone_numbers_count: Integer,
+            record_type: String,
+            status: String,
+            waba_id: String
+          }
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,94 @@
+module Telnyx
+  module Models
+    module Whatsapp
+      type phone_number_list_response =
+        {
+          calling_enabled: bool,
+          created_at: Time,
+          display_name: String,
+          enabled: bool,
+          phone_number: String,
+          phone_number_id: String,
+          quality_rating: String,
+          record_type: String,
+          status: String,
+          user_id: String,
+          waba_id: String
+        }
+
+      class PhoneNumberListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader calling_enabled: bool?
+
+        def calling_enabled=: (bool) -> bool
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader display_name: String?
+
+        def display_name=: (String) -> String
+
+        attr_reader enabled: bool?
+
+        def enabled=: (bool) -> bool
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader phone_number_id: String?
+
+        def phone_number_id=: (String) -> String
+
+        attr_reader quality_rating: String?
+
+        def quality_rating=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader status: String?
+
+        def status=: (String) -> String
+
+        attr_reader user_id: String?
+
+        def user_id=: (String) -> String
+
+        attr_reader waba_id: String?
+
+        def waba_id=: (String) -> String
+
+        def initialize: (
+          ?calling_enabled: bool,
+          ?created_at: Time,
+          ?display_name: String,
+          ?enabled: bool,
+          ?phone_number: String,
+          ?phone_number_id: String,
+          ?quality_rating: String,
+          ?record_type: String,
+          ?status: String,
+          ?user_id: String,
+          ?waba_id: String
+        ) -> void
+
+        def to_hash: -> {
+          calling_enabled: bool,
+          created_at: Time,
+          display_name: String,
+          enabled: bool,
+          phone_number: String,
+          phone_number_id: String,
+          quality_rating: String,
+          record_type: String,
+          status: String,
+          user_id: String,
+          waba_id: String
+        }
+      end
+    end
+  end
+end

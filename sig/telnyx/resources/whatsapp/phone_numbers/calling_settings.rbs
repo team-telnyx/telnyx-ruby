@@ -1,0 +1,22 @@
+module Telnyx
+  module Resources
+    class Whatsapp
+      class PhoneNumbers
+        class CallingSettings
+          def retrieve: (
+            String phone_number,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Whatsapp::PhoneNumbers::CallingSettingRetrieveResponse
+
+          def update: (
+            String phone_number,
+            enabled: bool,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Whatsapp::PhoneNumbers::CallingSettingUpdateResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

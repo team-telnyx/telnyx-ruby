@@ -1,0 +1,68 @@
+module Telnyx
+  module Models
+    module Whatsapp
+      module PhoneNumbers
+        type calling_setting_update_response =
+          {
+            data: Telnyx::Models::Whatsapp::PhoneNumbers::CallingSettingUpdateResponse::Data
+          }
+
+        class CallingSettingUpdateResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: Telnyx::Models::Whatsapp::PhoneNumbers::CallingSettingUpdateResponse::Data?
+
+          def data=: (
+            Telnyx::Models::Whatsapp::PhoneNumbers::CallingSettingUpdateResponse::Data
+          ) -> Telnyx::Models::Whatsapp::PhoneNumbers::CallingSettingUpdateResponse::Data
+
+          def initialize: (
+            ?data: Telnyx::Models::Whatsapp::PhoneNumbers::CallingSettingUpdateResponse::Data
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::Models::Whatsapp::PhoneNumbers::CallingSettingUpdateResponse::Data
+          }
+
+          type data =
+            {
+              enabled: bool,
+              phone_number: String,
+              record_type: String,
+              updated_at: Time
+            }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_reader enabled: bool?
+
+            def enabled=: (bool) -> bool
+
+            attr_reader phone_number: String?
+
+            def phone_number=: (String) -> String
+
+            attr_reader record_type: String?
+
+            def record_type=: (String) -> String
+
+            attr_reader updated_at: Time?
+
+            def updated_at=: (Time) -> Time
+
+            def initialize: (
+              ?enabled: bool,
+              ?phone_number: String,
+              ?record_type: String,
+              ?updated_at: Time
+            ) -> void
+
+            def to_hash: -> {
+              enabled: bool,
+              phone_number: String,
+              record_type: String,
+              updated_at: Time
+            }
+          end
+        end
+      end
+    end
+  end
+end
