@@ -1,0 +1,26 @@
+module Telnyx
+  module Resources
+    class Whatsapp
+      class BusinessAccounts
+        attr_reader phone_numbers: Telnyx::Resources::Whatsapp::BusinessAccounts::PhoneNumbers
+
+        attr_reader settings: Telnyx::Resources::Whatsapp::BusinessAccounts::Settings
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Whatsapp::BusinessAccountRetrieveResponse
+
+        def list: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Whatsapp::BusinessAccountListResponse]
+
+        def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

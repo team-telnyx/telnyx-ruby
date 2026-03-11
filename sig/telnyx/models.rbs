@@ -1581,6 +1581,8 @@ module Telnyx
 
   class WellKnownRetrieveProtectedResourceMetadataParams = Telnyx::Models::WellKnownRetrieveProtectedResourceMetadataParams
 
+  module Whatsapp = Telnyx::Models::Whatsapp
+
   class WhatsappContact = Telnyx::Models::WhatsappContact
 
   class WhatsappInteractive = Telnyx::Models::WhatsappInteractive
@@ -1590,6 +1592,12 @@ module Telnyx
   class WhatsappMedia = Telnyx::Models::WhatsappMedia
 
   class WhatsappMessageContent = Telnyx::Models::WhatsappMessageContent
+
+  class WhatsappMessageTemplateDeleteParams = Telnyx::Models::WhatsappMessageTemplateDeleteParams
+
+  class WhatsappMessageTemplateRetrieveParams = Telnyx::Models::WhatsappMessageTemplateRetrieveParams
+
+  class WhatsappMessageTemplateUpdateParams = Telnyx::Models::WhatsappMessageTemplateUpdateParams
 
   class WhatsappReaction = Telnyx::Models::WhatsappReaction
 

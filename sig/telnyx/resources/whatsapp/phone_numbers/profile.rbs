@@ -1,0 +1,30 @@
+module Telnyx
+  module Resources
+    class Whatsapp
+      class PhoneNumbers
+        class Profile
+          attr_reader photo: Telnyx::Resources::Whatsapp::PhoneNumbers::Profile::Photo
+
+          def retrieve: (
+            String phone_number,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Whatsapp::PhoneNumbers::ProfileRetrieveResponse
+
+          def update: (
+            String phone_number,
+            ?about: String,
+            ?address: String,
+            ?category: String,
+            ?description: String,
+            ?display_name: String,
+            ?email: String,
+            ?website: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Whatsapp::PhoneNumbers::ProfileUpdateResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,27 @@
+module Telnyx
+  module Resources
+    class Whatsapp
+      class BusinessAccounts
+        class Settings
+          def retrieve: (
+            String id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Whatsapp::BusinessAccounts::SettingRetrieveResponse
+
+          def update: (
+            String id,
+            ?name: String,
+            ?timezone: String,
+            ?webhook_enabled: bool,
+            ?webhook_events: ::Array[String],
+            ?webhook_failover_url: String,
+            ?webhook_url: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Whatsapp::BusinessAccounts::SettingUpdateResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end
