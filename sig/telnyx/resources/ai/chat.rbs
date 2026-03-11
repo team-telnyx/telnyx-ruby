@@ -7,6 +7,7 @@ module Telnyx
           ?api_key_ref: String,
           ?best_of: Integer,
           ?early_stopping: bool,
+          ?enable_thinking: bool,
           ?frequency_penalty: Float,
           ?guided_choice: ::Array[String],
           ?guided_json: ::Hash[Symbol, top],

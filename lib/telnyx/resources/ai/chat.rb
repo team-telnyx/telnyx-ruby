@@ -12,7 +12,7 @@ module Telnyx
         # [OpenAI Chat Completions API](https://platform.openai.com/docs/api-reference/chat)
         # and may be used with the OpenAI JS or Python SDK.
         #
-        # @overload create_completion(messages:, api_key_ref: nil, best_of: nil, early_stopping: nil, frequency_penalty: nil, guided_choice: nil, guided_json: nil, guided_regex: nil, length_penalty: nil, logprobs: nil, max_tokens: nil, min_p: nil, model: nil, n: nil, presence_penalty: nil, response_format: nil, stream: nil, temperature: nil, tool_choice: nil, tools: nil, top_logprobs: nil, top_p: nil, use_beam_search: nil, request_options: {})
+        # @overload create_completion(messages:, api_key_ref: nil, best_of: nil, early_stopping: nil, enable_thinking: nil, frequency_penalty: nil, guided_choice: nil, guided_json: nil, guided_regex: nil, length_penalty: nil, logprobs: nil, max_tokens: nil, min_p: nil, model: nil, n: nil, presence_penalty: nil, response_format: nil, stream: nil, temperature: nil, tool_choice: nil, tools: nil, top_logprobs: nil, top_p: nil, use_beam_search: nil, request_options: {})
         #
         # @param messages [Array<Telnyx::Models::AI::ChatCreateCompletionParams::Message>] A list of the previous chat messages for context.
         #
@@ -21,6 +21,8 @@ module Telnyx
         # @param best_of [Integer] This is used with `use_beam_search` to determine how many candidate beams to exp
         #
         # @param early_stopping [Boolean] This is used with `use_beam_search`. If `true`, generation stops as soon as ther
+        #
+        # @param enable_thinking [Boolean] Whether to enable the thinking/reasoning phase for models that support it (e.g.,
         #
         # @param frequency_penalty [Float] Higher values will penalize the model from repeating the same output tokens.
         #
