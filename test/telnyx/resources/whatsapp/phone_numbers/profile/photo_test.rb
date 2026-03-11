@@ -25,7 +25,7 @@ class Telnyx::Test::Resources::Whatsapp::PhoneNumbers::Profile::PhotoTest < Teln
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Whatsapp::PhoneNumbers::Profile::PhotoUploadResponse::Data | nil
+        data: Telnyx::Whatsapp::PhoneNumbers::WhatsappProfileData | nil
       }
     end
   end

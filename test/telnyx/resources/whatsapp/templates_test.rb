@@ -21,7 +21,7 @@ class Telnyx::Test::Resources::Whatsapp::TemplatesTest < Telnyx::Test::ResourceT
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Whatsapp::TemplateCreateResponse::Data | nil
+        data: Telnyx::WhatsappTemplateData | nil
       }
     end
   end
@@ -39,13 +39,13 @@ class Telnyx::Test::Resources::Whatsapp::TemplatesTest < Telnyx::Test::ResourceT
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::Whatsapp::TemplateListResponse
+      row => Telnyx::WhatsappTemplateData
     end
 
     assert_pattern do
       row => {
         id: String | nil,
-        category: Telnyx::Models::Whatsapp::TemplateListResponse::Category | nil,
+        category: Telnyx::WhatsappTemplateData::Category | nil,
         components: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]) | nil,
         created_at: Time | nil,
         language: String | nil,
@@ -55,7 +55,7 @@ class Telnyx::Test::Resources::Whatsapp::TemplatesTest < Telnyx::Test::ResourceT
         status: String | nil,
         template_id: String | nil,
         updated_at: Time | nil,
-        whatsapp_business_account: Telnyx::Models::Whatsapp::TemplateListResponse::WhatsappBusinessAccount | nil
+        whatsapp_business_account: Telnyx::WhatsappTemplateData::WhatsappBusinessAccount | nil
       }
     end
   end
