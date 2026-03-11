@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Whatsapp::BusinessAccounts::SettingsTest < Telnyx
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Whatsapp::BusinessAccounts::SettingRetrieveResponse::Data | nil
+        data: Telnyx::Whatsapp::BusinessAccounts::WabaSettings | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::Whatsapp::BusinessAccounts::SettingsTest < Telnyx
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Whatsapp::BusinessAccounts::SettingUpdateResponse::Data | nil
+        data: Telnyx::Whatsapp::BusinessAccounts::WabaSettings | nil
       }
     end
   end

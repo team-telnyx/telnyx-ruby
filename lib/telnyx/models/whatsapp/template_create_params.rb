@@ -3,20 +3,21 @@
 module Telnyx
   module Models
     module Whatsapp
-      # @see Telnyx::Resources::Whatsapp::MessageTemplates#create
-      class MessageTemplateCreateParams < Telnyx::Internal::Type::BaseModel
+      # @see Telnyx::Resources::Whatsapp::Templates#create
+      class TemplateCreateParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
         # @!attribute category
         #
-        #   @return [Symbol, Telnyx::Models::Whatsapp::MessageTemplateCreateParams::Category]
-        required :category, enum: -> { Telnyx::Whatsapp::MessageTemplateCreateParams::Category }
+        #   @return [Symbol, Telnyx::Models::Whatsapp::TemplateCreateParams::Category]
+        required :category, enum: -> { Telnyx::Whatsapp::TemplateCreateParams::Category }
 
         # @!attribute components
         #
-        #   @return [Array<Object>]
-        required :components, Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]
+        #   @return [Array<Hash{Symbol=>Object}>]
+        required :components,
+                 Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]
 
         # @!attribute language
         #
@@ -34,8 +35,8 @@ module Telnyx
         required :waba_id, String
 
         # @!method initialize(category:, components:, language:, name:, waba_id:, request_options: {})
-        #   @param category [Symbol, Telnyx::Models::Whatsapp::MessageTemplateCreateParams::Category]
-        #   @param components [Array<Object>]
+        #   @param category [Symbol, Telnyx::Models::Whatsapp::TemplateCreateParams::Category]
+        #   @param components [Array<Hash{Symbol=>Object}>]
         #   @param language [String]
         #   @param name [String]
         #   @param waba_id [String]

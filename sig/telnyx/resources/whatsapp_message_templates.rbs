@@ -9,7 +9,7 @@ module Telnyx
       def update: (
         String id,
         ?category: Telnyx::Models::WhatsappMessageTemplateUpdateParams::category,
-        ?components: ::Array[top],
+        ?components: ::Array[::Hash[Symbol, top]],
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::WhatsappMessageTemplateUpdateResponse
 

@@ -1,0 +1,129 @@
+module Telnyx
+  module Models
+    type whatsapp_template_data =
+      {
+        id: String,
+        category: Telnyx::Models::WhatsappTemplateData::category,
+        components: ::Array[::Hash[Symbol, top]],
+        created_at: Time,
+        language: String,
+        name: String,
+        record_type: String,
+        rejection_reason: String,
+        status: String,
+        template_id: String,
+        updated_at: Time,
+        whatsapp_business_account: Telnyx::WhatsappTemplateData::WhatsappBusinessAccount
+      }
+
+    class WhatsappTemplateData < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader category: Telnyx::Models::WhatsappTemplateData::category?
+
+      def category=: (
+        Telnyx::Models::WhatsappTemplateData::category
+      ) -> Telnyx::Models::WhatsappTemplateData::category
+
+      attr_reader components: ::Array[::Hash[Symbol, top]]?
+
+      def components=: (
+        ::Array[::Hash[Symbol, top]]
+      ) -> ::Array[::Hash[Symbol, top]]
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader language: String?
+
+      def language=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader rejection_reason: String?
+
+      def rejection_reason=: (String) -> String
+
+      attr_reader status: String?
+
+      def status=: (String) -> String
+
+      attr_reader template_id: String?
+
+      def template_id=: (String) -> String
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      attr_reader whatsapp_business_account: Telnyx::WhatsappTemplateData::WhatsappBusinessAccount?
+
+      def whatsapp_business_account=: (
+        Telnyx::WhatsappTemplateData::WhatsappBusinessAccount
+      ) -> Telnyx::WhatsappTemplateData::WhatsappBusinessAccount
+
+      def initialize: (
+        ?id: String,
+        ?category: Telnyx::Models::WhatsappTemplateData::category,
+        ?components: ::Array[::Hash[Symbol, top]],
+        ?created_at: Time,
+        ?language: String,
+        ?name: String,
+        ?record_type: String,
+        ?rejection_reason: String,
+        ?status: String,
+        ?template_id: String,
+        ?updated_at: Time,
+        ?whatsapp_business_account: Telnyx::WhatsappTemplateData::WhatsappBusinessAccount
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        category: Telnyx::Models::WhatsappTemplateData::category,
+        components: ::Array[::Hash[Symbol, top]],
+        created_at: Time,
+        language: String,
+        name: String,
+        record_type: String,
+        rejection_reason: String,
+        status: String,
+        template_id: String,
+        updated_at: Time,
+        whatsapp_business_account: Telnyx::WhatsappTemplateData::WhatsappBusinessAccount
+      }
+
+      type category = :MARKETING | :UTILITY | :AUTHENTICATION
+
+      module Category
+        extend Telnyx::Internal::Type::Enum
+
+        MARKETING: :MARKETING
+        UTILITY: :UTILITY
+        AUTHENTICATION: :AUTHENTICATION
+
+        def self?.values: -> ::Array[Telnyx::Models::WhatsappTemplateData::category]
+      end
+
+      type whatsapp_business_account = { id: String }
+
+      class WhatsappBusinessAccount < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        def initialize: (?id: String) -> void
+
+        def to_hash: -> { id: String }
+      end
+    end
+  end
+end
