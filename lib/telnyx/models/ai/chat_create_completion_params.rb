@@ -39,6 +39,14 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :early_stopping, Telnyx::Internal::Type::Boolean
 
+        # @!attribute enable_thinking
+        #   Whether to enable the thinking/reasoning phase for models that support it (e.g.,
+        #   QwQ, Qwen3). When set to false, the model will skip the internal reasoning step
+        #   and respond directly, which can reduce latency. Defaults to true.
+        #
+        #   @return [Boolean, nil]
+        optional :enable_thinking, Telnyx::Internal::Type::Boolean
+
         # @!attribute frequency_penalty
         #   Higher values will penalize the model from repeating the same output tokens.
         #
@@ -170,7 +178,7 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :use_beam_search, Telnyx::Internal::Type::Boolean
 
-        # @!method initialize(messages:, api_key_ref: nil, best_of: nil, early_stopping: nil, frequency_penalty: nil, guided_choice: nil, guided_json: nil, guided_regex: nil, length_penalty: nil, logprobs: nil, max_tokens: nil, min_p: nil, model: nil, n: nil, presence_penalty: nil, response_format: nil, stream: nil, temperature: nil, tool_choice: nil, tools: nil, top_logprobs: nil, top_p: nil, use_beam_search: nil, request_options: {})
+        # @!method initialize(messages:, api_key_ref: nil, best_of: nil, early_stopping: nil, enable_thinking: nil, frequency_penalty: nil, guided_choice: nil, guided_json: nil, guided_regex: nil, length_penalty: nil, logprobs: nil, max_tokens: nil, min_p: nil, model: nil, n: nil, presence_penalty: nil, response_format: nil, stream: nil, temperature: nil, tool_choice: nil, tools: nil, top_logprobs: nil, top_p: nil, use_beam_search: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::ChatCreateCompletionParams} for more details.
         #
@@ -181,6 +189,8 @@ module Telnyx
         #   @param best_of [Integer] This is used with `use_beam_search` to determine how many candidate beams to exp
         #
         #   @param early_stopping [Boolean] This is used with `use_beam_search`. If `true`, generation stops as soon as ther
+        #
+        #   @param enable_thinking [Boolean] Whether to enable the thinking/reasoning phase for models that support it (e.g.,
         #
         #   @param frequency_penalty [Float] Higher values will penalize the model from repeating the same output tokens.
         #
