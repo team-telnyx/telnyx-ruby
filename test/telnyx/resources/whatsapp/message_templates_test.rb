@@ -2,26 +2,26 @@
 
 require_relative "../../test_helper"
 
-class Telnyx::Test::Resources::Whatsapp::TemplatesTest < Telnyx::Test::ResourceTest
+class Telnyx::Test::Resources::Whatsapp::MessageTemplatesTest < Telnyx::Test::ResourceTest
   def test_create_required_params
     skip("Mock server tests are disabled")
 
     response =
-      @telnyx.whatsapp.templates.create(
+      @telnyx.whatsapp.message_templates.create(
         category: :MARKETING,
-        components: [{foo: "bar"}],
+        components: [{}],
         language: "language",
         name: "name",
         waba_id: "waba_id"
       )
 
     assert_pattern do
-      response => Telnyx::Models::Whatsapp::TemplateCreateResponse
+      response => Telnyx::Models::Whatsapp::MessageTemplateCreateResponse
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::WhatsappTemplateData | nil
+        data: Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data | nil
       }
     end
   end
@@ -29,7 +29,7 @@ class Telnyx::Test::Resources::Whatsapp::TemplatesTest < Telnyx::Test::ResourceT
   def test_list
     skip("Mock server tests are disabled")
 
-    response = @telnyx.whatsapp.templates.list
+    response = @telnyx.whatsapp.message_templates.list
 
     assert_pattern do
       response => Telnyx::Internal::DefaultFlatPagination
@@ -39,14 +39,14 @@ class Telnyx::Test::Resources::Whatsapp::TemplatesTest < Telnyx::Test::ResourceT
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::WhatsappTemplateData
+      row => Telnyx::Models::Whatsapp::MessageTemplateListResponse
     end
 
     assert_pattern do
       row => {
         id: String | nil,
-        category: Telnyx::WhatsappTemplateData::Category | nil,
-        components: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]) | nil,
+        category: Telnyx::Models::Whatsapp::MessageTemplateListResponse::Category | nil,
+        components: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]) | nil,
         created_at: Time | nil,
         language: String | nil,
         name: String | nil,
@@ -55,7 +55,7 @@ class Telnyx::Test::Resources::Whatsapp::TemplatesTest < Telnyx::Test::ResourceT
         status: String | nil,
         template_id: String | nil,
         updated_at: Time | nil,
-        whatsapp_business_account: Telnyx::WhatsappTemplateData::WhatsappBusinessAccount | nil
+        whatsapp_business_account: Telnyx::Models::Whatsapp::MessageTemplateListResponse::WhatsappBusinessAccount | nil
       }
     end
   end

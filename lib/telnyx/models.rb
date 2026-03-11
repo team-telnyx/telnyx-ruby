@@ -1660,8 +1660,6 @@ module Telnyx
 
   WhatsappReaction = Telnyx::Models::WhatsappReaction
 
-  WhatsappTemplateData = Telnyx::Models::WhatsappTemplateData
-
   WireguardInterfaceCreateParams = Telnyx::Models::WireguardInterfaceCreateParams
 
   WireguardInterfaceDeleteParams = Telnyx::Models::WireguardInterfaceDeleteParams

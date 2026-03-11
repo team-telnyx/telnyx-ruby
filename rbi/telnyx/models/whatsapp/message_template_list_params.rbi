@@ -3,14 +3,14 @@
 module Telnyx
   module Models
     module Whatsapp
-      class TemplateListParams < Telnyx::Internal::Type::BaseModel
+      class MessageTemplateListParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Whatsapp::TemplateListParams,
+              Telnyx::Whatsapp::MessageTemplateListParams,
               Telnyx::Internal::AnyHash
             )
           end
@@ -19,7 +19,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::Whatsapp::TemplateListParams::FilterCategory::OrSymbol
+              Telnyx::Whatsapp::MessageTemplateListParams::FilterCategory::OrSymbol
             )
           )
         end
@@ -28,7 +28,7 @@ module Telnyx
         sig do
           params(
             filter_category:
-              Telnyx::Whatsapp::TemplateListParams::FilterCategory::OrSymbol
+              Telnyx::Whatsapp::MessageTemplateListParams::FilterCategory::OrSymbol
           ).void
         end
         attr_writer :filter_category
@@ -69,7 +69,7 @@ module Telnyx
         sig do
           params(
             filter_category:
-              Telnyx::Whatsapp::TemplateListParams::FilterCategory::OrSymbol,
+              Telnyx::Whatsapp::MessageTemplateListParams::FilterCategory::OrSymbol,
             filter_search: String,
             filter_status: String,
             filter_waba_id: String,
@@ -97,7 +97,7 @@ module Telnyx
           override.returns(
             {
               filter_category:
-                Telnyx::Whatsapp::TemplateListParams::FilterCategory::OrSymbol,
+                Telnyx::Whatsapp::MessageTemplateListParams::FilterCategory::OrSymbol,
               filter_search: String,
               filter_status: String,
               filter_waba_id: String,
@@ -118,7 +118,7 @@ module Telnyx
             T.type_alias do
               T.all(
                 Symbol,
-                Telnyx::Whatsapp::TemplateListParams::FilterCategory
+                Telnyx::Whatsapp::MessageTemplateListParams::FilterCategory
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -126,23 +126,23 @@ module Telnyx
           MARKETING =
             T.let(
               :MARKETING,
-              Telnyx::Whatsapp::TemplateListParams::FilterCategory::TaggedSymbol
+              Telnyx::Whatsapp::MessageTemplateListParams::FilterCategory::TaggedSymbol
             )
           UTILITY =
             T.let(
               :UTILITY,
-              Telnyx::Whatsapp::TemplateListParams::FilterCategory::TaggedSymbol
+              Telnyx::Whatsapp::MessageTemplateListParams::FilterCategory::TaggedSymbol
             )
           AUTHENTICATION =
             T.let(
               :AUTHENTICATION,
-              Telnyx::Whatsapp::TemplateListParams::FilterCategory::TaggedSymbol
+              Telnyx::Whatsapp::MessageTemplateListParams::FilterCategory::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Telnyx::Whatsapp::TemplateListParams::FilterCategory::TaggedSymbol
+                Telnyx::Whatsapp::MessageTemplateListParams::FilterCategory::TaggedSymbol
               ]
             )
           end

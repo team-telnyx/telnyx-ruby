@@ -4,18 +4,18 @@ module Telnyx
   module Resources
     class Whatsapp
       # Manage Whatsapp message templates
-      class Templates
+      class MessageTemplates
         # Create a Whatsapp message template
         sig do
           params(
             category:
-              Telnyx::Whatsapp::TemplateCreateParams::Category::OrSymbol,
-            components: T::Array[T::Hash[Symbol, T.anything]],
+              Telnyx::Whatsapp::MessageTemplateCreateParams::Category::OrSymbol,
+            components: T::Array[T.anything],
             language: String,
             name: String,
             waba_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Whatsapp::TemplateCreateResponse)
+          ).returns(Telnyx::Models::Whatsapp::MessageTemplateCreateResponse)
         end
         def create(
           category:,
@@ -31,7 +31,7 @@ module Telnyx
         sig do
           params(
             filter_category:
-              Telnyx::Whatsapp::TemplateListParams::FilterCategory::OrSymbol,
+              Telnyx::Whatsapp::MessageTemplateListParams::FilterCategory::OrSymbol,
             filter_search: String,
             filter_status: String,
             filter_waba_id: String,
@@ -40,7 +40,7 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultFlatPagination[
-              Telnyx::WhatsappTemplateData
+              Telnyx::Models::Whatsapp::MessageTemplateListResponse
             ]
           )
         end

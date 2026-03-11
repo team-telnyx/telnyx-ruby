@@ -3,24 +3,26 @@
 module Telnyx
   module Models
     module Whatsapp
-      class TemplateCreateParams < Telnyx::Internal::Type::BaseModel
+      class MessageTemplateCreateParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Whatsapp::TemplateCreateParams,
+              Telnyx::Whatsapp::MessageTemplateCreateParams,
               Telnyx::Internal::AnyHash
             )
           end
 
         sig do
-          returns(Telnyx::Whatsapp::TemplateCreateParams::Category::OrSymbol)
+          returns(
+            Telnyx::Whatsapp::MessageTemplateCreateParams::Category::OrSymbol
+          )
         end
         attr_accessor :category
 
-        sig { returns(T::Array[T::Hash[Symbol, T.anything]]) }
+        sig { returns(T::Array[T.anything]) }
         attr_accessor :components
 
         sig { returns(String) }
@@ -35,8 +37,8 @@ module Telnyx
         sig do
           params(
             category:
-              Telnyx::Whatsapp::TemplateCreateParams::Category::OrSymbol,
-            components: T::Array[T::Hash[Symbol, T.anything]],
+              Telnyx::Whatsapp::MessageTemplateCreateParams::Category::OrSymbol,
+            components: T::Array[T.anything],
             language: String,
             name: String,
             waba_id: String,
@@ -57,8 +59,8 @@ module Telnyx
           override.returns(
             {
               category:
-                Telnyx::Whatsapp::TemplateCreateParams::Category::OrSymbol,
-              components: T::Array[T::Hash[Symbol, T.anything]],
+                Telnyx::Whatsapp::MessageTemplateCreateParams::Category::OrSymbol,
+              components: T::Array[T.anything],
               language: String,
               name: String,
               waba_id: String,
@@ -74,30 +76,33 @@ module Telnyx
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Telnyx::Whatsapp::TemplateCreateParams::Category)
+              T.all(
+                Symbol,
+                Telnyx::Whatsapp::MessageTemplateCreateParams::Category
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           MARKETING =
             T.let(
               :MARKETING,
-              Telnyx::Whatsapp::TemplateCreateParams::Category::TaggedSymbol
+              Telnyx::Whatsapp::MessageTemplateCreateParams::Category::TaggedSymbol
             )
           UTILITY =
             T.let(
               :UTILITY,
-              Telnyx::Whatsapp::TemplateCreateParams::Category::TaggedSymbol
+              Telnyx::Whatsapp::MessageTemplateCreateParams::Category::TaggedSymbol
             )
           AUTHENTICATION =
             T.let(
               :AUTHENTICATION,
-              Telnyx::Whatsapp::TemplateCreateParams::Category::TaggedSymbol
+              Telnyx::Whatsapp::MessageTemplateCreateParams::Category::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Telnyx::Whatsapp::TemplateCreateParams::Category::TaggedSymbol
+                Telnyx::Whatsapp::MessageTemplateCreateParams::Category::TaggedSymbol
               ]
             )
           end

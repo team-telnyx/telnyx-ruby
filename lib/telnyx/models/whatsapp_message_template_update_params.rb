@@ -19,14 +19,13 @@ module Telnyx
 
       # @!attribute components
       #
-      #   @return [Array<Hash{Symbol=>Object}>, nil]
-      optional :components,
-               Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]
+      #   @return [Array<Object>, nil]
+      optional :components, Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]
 
       # @!method initialize(id:, category: nil, components: nil, request_options: {})
       #   @param id [String]
       #   @param category [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Category]
-      #   @param components [Array<Hash{Symbol=>Object}>]
+      #   @param components [Array<Object>]
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
       module Category

@@ -2,44 +2,56 @@ module Telnyx
   module Models
     module Messaging10dlc
       type vertical =
-        :REAL_ESTATE
-        | :HEALTHCARE
+        :AGRICULTURE
+        | :COMMUNICATION
+        | :CONSTRUCTION
+        | :EDUCATION
         | :ENERGY
         | :ENTERTAINMENT
-        | :RETAIL
-        | :AGRICULTURE
-        | :INSURANCE
-        | :EDUCATION
-        | :HOSPITALITY
         | :FINANCIAL
         | :GAMBLING
-        | :CONSTRUCTION
-        | :NGO
-        | :MANUFACTURING
         | :GOVERNMENT
+        | :HEALTHCARE
+        | :HOSPITALITY
+        | :HUMAN_RESOURCES
+        | :INSURANCE
+        | :LEGAL
+        | :MANUFACTURING
+        | :NGO
+        | :POLITICAL
+        | :POSTAL
+        | :PROFESSIONAL
+        | :REAL_ESTATE
+        | :RETAIL
         | :TECHNOLOGY
-        | :COMMUNICATION
+        | :TRANSPORTATION
 
       module Vertical
         extend Telnyx::Internal::Type::Enum
 
-        REAL_ESTATE: :REAL_ESTATE
-        HEALTHCARE: :HEALTHCARE
+        AGRICULTURE: :AGRICULTURE
+        COMMUNICATION: :COMMUNICATION
+        CONSTRUCTION: :CONSTRUCTION
+        EDUCATION: :EDUCATION
         ENERGY: :ENERGY
         ENTERTAINMENT: :ENTERTAINMENT
-        RETAIL: :RETAIL
-        AGRICULTURE: :AGRICULTURE
-        INSURANCE: :INSURANCE
-        EDUCATION: :EDUCATION
-        HOSPITALITY: :HOSPITALITY
         FINANCIAL: :FINANCIAL
         GAMBLING: :GAMBLING
-        CONSTRUCTION: :CONSTRUCTION
-        NGO: :NGO
-        MANUFACTURING: :MANUFACTURING
         GOVERNMENT: :GOVERNMENT
+        HEALTHCARE: :HEALTHCARE
+        HOSPITALITY: :HOSPITALITY
+        HUMAN_RESOURCES: :HUMAN_RESOURCES
+        INSURANCE: :INSURANCE
+        LEGAL: :LEGAL
+        MANUFACTURING: :MANUFACTURING
+        NGO: :NGO
+        POLITICAL: :POLITICAL
+        POSTAL: :POSTAL
+        PROFESSIONAL: :PROFESSIONAL
+        REAL_ESTATE: :REAL_ESTATE
+        RETAIL: :RETAIL
         TECHNOLOGY: :TECHNOLOGY
-        COMMUNICATION: :COMMUNICATION
+        TRANSPORTATION: :TRANSPORTATION
 
         def self?.values: -> ::Array[Telnyx::Models::Messaging10dlc::vertical]
       end
