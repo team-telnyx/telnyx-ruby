@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    module Whatsapp
+      type template_create_response = { data: Telnyx::WhatsappTemplateData }
+
+      class TemplateCreateResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::WhatsappTemplateData?
+
+        def data=: (
+          Telnyx::WhatsappTemplateData
+        ) -> Telnyx::WhatsappTemplateData
+
+        def initialize: (?data: Telnyx::WhatsappTemplateData) -> void
+
+        def to_hash: -> { data: Telnyx::WhatsappTemplateData }
+      end
+    end
+  end
+end

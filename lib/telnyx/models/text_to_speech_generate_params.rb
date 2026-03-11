@@ -34,8 +34,8 @@ module Telnyx
       # @!attribute inworld
       #   Inworld provider-specific parameters.
       #
-      #   @return [Object, nil]
-      optional :inworld, Telnyx::Internal::Type::Unknown
+      #   @return [Hash{Symbol=>Object}, nil]
+      optional :inworld, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
       # @!attribute language
       #   Language code (e.g. `en-US`). Usage varies by provider.
@@ -121,7 +121,7 @@ module Telnyx
       #
       #   @param elevenlabs [Telnyx::Models::TextToSpeechGenerateParams::Elevenlabs] ElevenLabs provider-specific parameters.
       #
-      #   @param inworld [Object] Inworld provider-specific parameters.
+      #   @param inworld [Hash{Symbol=>Object}] Inworld provider-specific parameters.
       #
       #   @param language [String] Language code (e.g. `en-US`). Usage varies by provider.
       #
