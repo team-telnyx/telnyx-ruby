@@ -1795,6 +1795,36 @@ module Telnyx
   VirtualCrossConnectUpdateParams =
     Telnyx::Models::VirtualCrossConnectUpdateParams
 
+  VoiceCloneCreateFromUploadParams =
+    Telnyx::Models::VoiceCloneCreateFromUploadParams
+
+  VoiceCloneCreateParams = Telnyx::Models::VoiceCloneCreateParams
+
+  VoiceCloneDeleteParams = Telnyx::Models::VoiceCloneDeleteParams
+
+  VoiceCloneDownloadSampleParams =
+    Telnyx::Models::VoiceCloneDownloadSampleParams
+
+  VoiceCloneListParams = Telnyx::Models::VoiceCloneListParams
+
+  VoiceCloneUpdateParams = Telnyx::Models::VoiceCloneUpdateParams
+
+  VoiceDesignCreateParams = Telnyx::Models::VoiceDesignCreateParams
+
+  VoiceDesignDeleteParams = Telnyx::Models::VoiceDesignDeleteParams
+
+  VoiceDesignDeleteVersionParams =
+    Telnyx::Models::VoiceDesignDeleteVersionParams
+
+  VoiceDesignDownloadSampleParams =
+    Telnyx::Models::VoiceDesignDownloadSampleParams
+
+  VoiceDesignListParams = Telnyx::Models::VoiceDesignListParams
+
+  VoiceDesignRenameParams = Telnyx::Models::VoiceDesignRenameParams
+
+  VoiceDesignRetrieveParams = Telnyx::Models::VoiceDesignRetrieveParams
+
   WebhookAPIVersion = Telnyx::Models::WebhookAPIVersion
 
   WebhookDeliveryListParams = Telnyx::Models::WebhookDeliveryListParams
