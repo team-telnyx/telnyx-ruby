@@ -326,6 +326,10 @@ module Telnyx
 
     attr_reader whatsapp_message_templates: Telnyx::Resources::WhatsappMessageTemplates
 
+    attr_reader voice_clones: Telnyx::Resources::VoiceClones
+
+    attr_reader voice_designs: Telnyx::Resources::VoiceDesigns
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]

@@ -627,6 +627,15 @@ module Telnyx
     # @return [Telnyx::Resources::WhatsappMessageTemplates]
     attr_reader :whatsapp_message_templates
 
+    # Capture and manage voice identities as clones for use in text-to-speech
+    # synthesis.
+    # @return [Telnyx::Resources::VoiceClones]
+    attr_reader :voice_clones
+
+    # Create and manage AI-generated voice designs using natural language prompts.
+    # @return [Telnyx::Resources::VoiceDesigns]
+    attr_reader :voice_designs
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -877,6 +886,8 @@ module Telnyx
       @session_analysis = Telnyx::Resources::SessionAnalysis.new(client: self)
       @whatsapp = Telnyx::Resources::Whatsapp.new(client: self)
       @whatsapp_message_templates = Telnyx::Resources::WhatsappMessageTemplates.new(client: self)
+      @voice_clones = Telnyx::Resources::VoiceClones.new(client: self)
+      @voice_designs = Telnyx::Resources::VoiceDesigns.new(client: self)
     end
   end
 end

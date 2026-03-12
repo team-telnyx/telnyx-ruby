@@ -1,0 +1,55 @@
+module Telnyx
+  module Resources
+    class VoiceDesigns
+      def create: (
+        prompt: String,
+        text: String,
+        ?language: String,
+        ?max_new_tokens: Integer,
+        ?name: String,
+        ?repetition_penalty: Float,
+        ?temperature: Float,
+        ?top_k: Integer,
+        ?top_p: Float,
+        ?voice_design_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VoiceDesignCreateResponse
+
+      def retrieve: (
+        String id,
+        ?version: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VoiceDesignRetrieveResponse
+
+      def list: (
+        ?filter_name: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?sort: Telnyx::Models::VoiceDesignListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::VoiceDesignListResponse]
+
+      def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
+
+      def delete_version: (
+        Integer version,
+        id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> nil
+
+      def download_sample: (
+        String id,
+        ?version: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> StringIO
+
+      def rename: (
+        String id,
+        name: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VoiceDesignRenameResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

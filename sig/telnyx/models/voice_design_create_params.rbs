@@ -1,0 +1,87 @@
+module Telnyx
+  module Models
+    type voice_design_create_params =
+      {
+        prompt: String,
+        text: String,
+        language: String,
+        max_new_tokens: Integer,
+        name: String,
+        repetition_penalty: Float,
+        temperature: Float,
+        top_k: Integer,
+        top_p: Float,
+        voice_design_id: String
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class VoiceDesignCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor prompt: String
+
+      attr_accessor text: String
+
+      attr_reader language: String?
+
+      def language=: (String) -> String
+
+      attr_reader max_new_tokens: Integer?
+
+      def max_new_tokens=: (Integer) -> Integer
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader repetition_penalty: Float?
+
+      def repetition_penalty=: (Float) -> Float
+
+      attr_reader temperature: Float?
+
+      def temperature=: (Float) -> Float
+
+      attr_reader top_k: Integer?
+
+      def top_k=: (Integer) -> Integer
+
+      attr_reader top_p: Float?
+
+      def top_p=: (Float) -> Float
+
+      attr_reader voice_design_id: String?
+
+      def voice_design_id=: (String) -> String
+
+      def initialize: (
+        prompt: String,
+        text: String,
+        ?language: String,
+        ?max_new_tokens: Integer,
+        ?name: String,
+        ?repetition_penalty: Float,
+        ?temperature: Float,
+        ?top_k: Integer,
+        ?top_p: Float,
+        ?voice_design_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        prompt: String,
+        text: String,
+        language: String,
+        max_new_tokens: Integer,
+        name: String,
+        repetition_penalty: Float,
+        temperature: Float,
+        top_k: Integer,
+        top_p: Float,
+        voice_design_id: String,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

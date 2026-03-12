@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    type voice_design_delete_version_params =
+      { id: String, version: Integer }
+      & Telnyx::Internal::Type::request_parameters
+
+    class VoiceDesignDeleteVersionParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor id: String
+
+      attr_accessor version: Integer
+
+      def initialize: (
+        id: String,
+        version: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        version: Integer,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end
