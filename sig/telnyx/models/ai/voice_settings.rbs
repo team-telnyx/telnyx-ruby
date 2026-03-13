@@ -6,6 +6,7 @@ module Telnyx
           voice: String,
           api_key_ref: String,
           background_audio: Telnyx::Models::AI::VoiceSettings::background_audio,
+          expressive_mode: bool,
           language_boost: Telnyx::Models::AI::VoiceSettings::language_boost?,
           similarity_boost: Float,
           speed: Float,
@@ -27,6 +28,10 @@ module Telnyx
         def background_audio=: (
           Telnyx::Models::AI::VoiceSettings::background_audio
         ) -> Telnyx::Models::AI::VoiceSettings::background_audio
+
+        attr_reader expressive_mode: bool?
+
+        def expressive_mode=: (bool) -> bool
 
         attr_accessor language_boost: Telnyx::Models::AI::VoiceSettings::language_boost?
 
@@ -58,6 +63,7 @@ module Telnyx
           voice: String,
           ?api_key_ref: String,
           ?background_audio: Telnyx::Models::AI::VoiceSettings::background_audio,
+          ?expressive_mode: bool,
           ?language_boost: Telnyx::Models::AI::VoiceSettings::language_boost?,
           ?similarity_boost: Float,
           ?speed: Float,
@@ -71,6 +77,7 @@ module Telnyx
           voice: String,
           api_key_ref: String,
           background_audio: Telnyx::Models::AI::VoiceSettings::background_audio,
+          expressive_mode: bool,
           language_boost: Telnyx::Models::AI::VoiceSettings::language_boost?,
           similarity_boost: Float,
           speed: Float,
