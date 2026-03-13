@@ -330,6 +330,8 @@ module Telnyx
 
     attr_reader voice_designs: Telnyx::Resources::VoiceDesigns
 
+    attr_reader x402: Telnyx::Resources::X402
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]

@@ -1917,4 +1917,6 @@ module Telnyx
   WirelessError = Telnyx::Models::WirelessError
 
   WirelessRetrieveRegionsParams = Telnyx::Models::WirelessRetrieveRegionsParams
+
+  X402 = Telnyx::Models::X402
 end

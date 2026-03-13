@@ -1,0 +1,9 @@
+module Telnyx
+  module Resources
+    class X402
+      attr_reader credit_account: Telnyx::Resources::X402::CreditAccount
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end
