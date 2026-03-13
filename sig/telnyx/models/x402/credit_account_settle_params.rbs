@@ -4,8 +4,8 @@ module Telnyx
       type credit_account_settle_params =
         {
           id: String,
-          body_payment_signature: String,
-          header_payment_signature: String
+          payment_signature: String,
+          payment_signature_header: String
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -15,25 +15,25 @@ module Telnyx
 
         attr_accessor id: String
 
-        attr_reader body_payment_signature: String?
+        attr_reader payment_signature: String?
 
-        def body_payment_signature=: (String) -> String
+        def payment_signature=: (String) -> String
 
-        attr_reader header_payment_signature: String?
+        attr_reader payment_signature_header: String?
 
-        def header_payment_signature=: (String) -> String
+        def payment_signature_header=: (String) -> String
 
         def initialize: (
           id: String,
-          ?body_payment_signature: String,
-          ?header_payment_signature: String,
+          ?payment_signature: String,
+          ?payment_signature_header: String,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           id: String,
-          body_payment_signature: String,
-          header_payment_signature: String,
+          payment_signature: String,
+          payment_signature_header: String,
           request_options: Telnyx::RequestOptions
         }
       end

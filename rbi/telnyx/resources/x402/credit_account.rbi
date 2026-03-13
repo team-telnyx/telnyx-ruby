@@ -29,8 +29,8 @@ module Telnyx
         sig do
           params(
             id: String,
-            body_payment_signature: String,
-            header_payment_signature: String,
+            payment_signature: String,
+            payment_signature_header: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::X402::CreditAccountSettleResponse)
         end
@@ -39,10 +39,10 @@ module Telnyx
           id:,
           # Body param: Base64-encoded signed payment authorization (x402 PaymentPayload).
           # Can alternatively be provided via the PAYMENT-SIGNATURE header.
-          body_payment_signature: nil,
+          payment_signature: nil,
           # Header param: Signed payment authorization for the quote. Alternative to
           # providing `payment_signature` in the request body.
-          header_payment_signature: nil,
+          payment_signature_header: nil,
           request_options: {}
         )
         end

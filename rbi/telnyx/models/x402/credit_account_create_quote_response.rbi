@@ -547,7 +547,7 @@ module Telnyx
                 end
               OrInteger = T.type_alias { Integer }
 
-              X402_VERSION_2 =
+              V2 =
                 T.let(
                   2,
                   Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::X402Version::TaggedInteger
