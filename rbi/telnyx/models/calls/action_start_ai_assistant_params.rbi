@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # AI Assistant configuration
         sig do
           returns(
@@ -101,6 +104,8 @@ module Telnyx
         #   for details. Check
         #   [available voices](https://elevenlabs.io/docs/api-reference/get-voices).
         # - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>`
+        # - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
+        #   `Inworld.Max.Oliver`). Supported models: `Mini`, `Max`.
         sig { returns(T.nilable(String)) }
         attr_reader :voice
 
@@ -141,6 +146,7 @@ module Telnyx
 
         sig do
           params(
+            call_control_id: String,
             assistant:
               Telnyx::Calls::ActionStartAIAssistantParams::Assistant::OrHash,
             client_state: String,
@@ -162,6 +168,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id:,
           # AI Assistant configuration
           assistant: nil,
           # Use this field to add state to every subsequent webhook. It must be a valid
@@ -203,6 +210,8 @@ module Telnyx
           #   for details. Check
           #   [available voices](https://elevenlabs.io/docs/api-reference/get-voices).
           # - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>`
+          # - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
+          #   `Inworld.Max.Oliver`). Supported models: `Mini`, `Max`.
           voice: nil,
           # The settings associated with the voice selected
           voice_settings: nil,
@@ -213,6 +222,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              call_control_id: String,
               assistant: Telnyx::Calls::ActionStartAIAssistantParams::Assistant,
               client_state: String,
               command_id: String,

@@ -3,7 +3,7 @@ module Telnyx
     module Texml
       module Accounts
         type queue_update_params =
-          { account_sid: String, max_size: Integer }
+          { account_sid: String, queue_sid: String, max_size: Integer }
           & Telnyx::Internal::Type::request_parameters
 
         class QueueUpdateParams < Telnyx::Internal::Type::BaseModel
@@ -12,18 +12,22 @@ module Telnyx
 
           attr_accessor account_sid: String
 
+          attr_accessor queue_sid: String
+
           attr_reader max_size: Integer?
 
           def max_size=: (Integer) -> Integer
 
           def initialize: (
             account_sid: String,
+            queue_sid: String,
             ?max_size: Integer,
             ?request_options: Telnyx::request_opts
           ) -> void
 
           def to_hash: -> {
             account_sid: String,
+            queue_sid: String,
             max_size: Integer,
             request_options: Telnyx::RequestOptions
           }

@@ -1,0 +1,89 @@
+module Telnyx
+  module Models
+    module SessionAnalysis
+      type metadata_retrieve_record_type_response =
+        {
+          aliases: ::Array[String],
+          child_relationships: ::Array[Telnyx::SessionAnalysis::ChildRelationshipInfo],
+          event: String,
+          examples: ::Hash[Symbol, top],
+          meta: Telnyx::Models::SessionAnalysis::MetadataRetrieveRecordTypeResponse::Meta,
+          parent_relationships: ::Array[Telnyx::SessionAnalysis::ParentRelationshipInfo],
+          product: String,
+          record_type: String
+        }
+
+      class MetadataRetrieveRecordTypeResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor aliases: ::Array[String]
+
+        attr_accessor child_relationships: ::Array[Telnyx::SessionAnalysis::ChildRelationshipInfo]
+
+        attr_accessor event: String
+
+        attr_accessor examples: ::Hash[Symbol, top]
+
+        attr_accessor meta: Telnyx::Models::SessionAnalysis::MetadataRetrieveRecordTypeResponse::Meta
+
+        attr_accessor parent_relationships: ::Array[Telnyx::SessionAnalysis::ParentRelationshipInfo]
+
+        attr_accessor product: String
+
+        attr_accessor record_type: String
+
+        def initialize: (
+          aliases: ::Array[String],
+          child_relationships: ::Array[Telnyx::SessionAnalysis::ChildRelationshipInfo],
+          event: String,
+          examples: ::Hash[Symbol, top],
+          meta: Telnyx::Models::SessionAnalysis::MetadataRetrieveRecordTypeResponse::Meta,
+          parent_relationships: ::Array[Telnyx::SessionAnalysis::ParentRelationshipInfo],
+          product: String,
+          record_type: String
+        ) -> void
+
+        def to_hash: -> {
+          aliases: ::Array[String],
+          child_relationships: ::Array[Telnyx::SessionAnalysis::ChildRelationshipInfo],
+          event: String,
+          examples: ::Hash[Symbol, top],
+          meta: Telnyx::Models::SessionAnalysis::MetadataRetrieveRecordTypeResponse::Meta,
+          parent_relationships: ::Array[Telnyx::SessionAnalysis::ParentRelationshipInfo],
+          product: String,
+          record_type: String
+        }
+
+        type meta =
+          {
+            max_recommended_depth: Integer,
+            total_children: Integer,
+            total_parents: Integer,
+            total_siblings: Integer
+          }
+
+        class Meta < Telnyx::Internal::Type::BaseModel
+          attr_accessor max_recommended_depth: Integer
+
+          attr_accessor total_children: Integer
+
+          attr_accessor total_parents: Integer
+
+          attr_accessor total_siblings: Integer
+
+          def initialize: (
+            max_recommended_depth: Integer,
+            total_children: Integer,
+            total_parents: Integer,
+            total_siblings: Integer
+          ) -> void
+
+          def to_hash: -> {
+            max_recommended_depth: Integer,
+            total_children: Integer,
+            total_parents: Integer,
+            total_siblings: Integer
+          }
+        end
+      end
+    end
+  end
+end

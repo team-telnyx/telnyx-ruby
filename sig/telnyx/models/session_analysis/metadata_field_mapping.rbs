@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    module SessionAnalysis
+      type metadata_field_mapping =
+        { local_field: String, parent_field: String }
+
+      class MetadataFieldMapping < Telnyx::Internal::Type::BaseModel
+        attr_accessor local_field: String
+
+        attr_accessor parent_field: String
+
+        def initialize: (local_field: String, parent_field: String) -> void
+
+        def to_hash: -> { local_field: String, parent_field: String }
+      end
+    end
+  end
+end

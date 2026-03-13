@@ -497,6 +497,8 @@ module Telnyx
 
   module EncryptedMedia = Telnyx::Models::EncryptedMedia
 
+  class EventNode = Telnyx::Models::EventNode
+
   class ExternalConnection = Telnyx::Models::ExternalConnection
 
   class ExternalConnectionCreateParams = Telnyx::Models::ExternalConnectionCreateParams
@@ -1305,6 +1307,10 @@ module Telnyx
 
   module ServicePlan = Telnyx::Models::ServicePlan
 
+  module SessionAnalysis = Telnyx::Models::SessionAnalysis
+
+  class SessionAnalysisRetrieveParams = Telnyx::Models::SessionAnalysisRetrieveParams
+
   class SetiRetrieveBlackBoxTestResultsParams = Telnyx::Models::SetiRetrieveBlackBoxTestResultsParams
 
   class Settings = Telnyx::Models::Settings
@@ -1390,8 +1396,6 @@ module Telnyx
   class SiprecConnectorUpdateParams = Telnyx::Models::SiprecConnectorUpdateParams
 
   class SoundModifications = Telnyx::Models::SoundModifications
-
-  class SpeechToTextTranscribeParams = Telnyx::Models::SpeechToTextTranscribeParams
 
   module Storage = Telnyx::Models::Storage
 
@@ -1563,6 +1567,36 @@ module Telnyx
 
   class VirtualCrossConnectUpdateParams = Telnyx::Models::VirtualCrossConnectUpdateParams
 
+  class VoiceCloneCreateFromUploadParams = Telnyx::Models::VoiceCloneCreateFromUploadParams
+
+  class VoiceCloneCreateParams = Telnyx::Models::VoiceCloneCreateParams
+
+  class VoiceCloneData = Telnyx::Models::VoiceCloneData
+
+  class VoiceCloneDeleteParams = Telnyx::Models::VoiceCloneDeleteParams
+
+  class VoiceCloneDownloadSampleParams = Telnyx::Models::VoiceCloneDownloadSampleParams
+
+  class VoiceCloneListParams = Telnyx::Models::VoiceCloneListParams
+
+  class VoiceCloneUpdateParams = Telnyx::Models::VoiceCloneUpdateParams
+
+  class VoiceDesignCreateParams = Telnyx::Models::VoiceDesignCreateParams
+
+  class VoiceDesignData = Telnyx::Models::VoiceDesignData
+
+  class VoiceDesignDeleteParams = Telnyx::Models::VoiceDesignDeleteParams
+
+  class VoiceDesignDeleteVersionParams = Telnyx::Models::VoiceDesignDeleteVersionParams
+
+  class VoiceDesignDownloadSampleParams = Telnyx::Models::VoiceDesignDownloadSampleParams
+
+  class VoiceDesignListParams = Telnyx::Models::VoiceDesignListParams
+
+  class VoiceDesignRenameParams = Telnyx::Models::VoiceDesignRenameParams
+
+  class VoiceDesignRetrieveParams = Telnyx::Models::VoiceDesignRetrieveParams
+
   module WebhookAPIVersion = Telnyx::Models::WebhookAPIVersion
 
   class WebhookDeliveryListParams = Telnyx::Models::WebhookDeliveryListParams
@@ -1577,6 +1611,8 @@ module Telnyx
 
   class WellKnownRetrieveProtectedResourceMetadataParams = Telnyx::Models::WellKnownRetrieveProtectedResourceMetadataParams
 
+  module Whatsapp = Telnyx::Models::Whatsapp
+
   class WhatsappContact = Telnyx::Models::WhatsappContact
 
   class WhatsappInteractive = Telnyx::Models::WhatsappInteractive
@@ -1587,7 +1623,15 @@ module Telnyx
 
   class WhatsappMessageContent = Telnyx::Models::WhatsappMessageContent
 
+  class WhatsappMessageTemplateDeleteParams = Telnyx::Models::WhatsappMessageTemplateDeleteParams
+
+  class WhatsappMessageTemplateRetrieveParams = Telnyx::Models::WhatsappMessageTemplateRetrieveParams
+
+  class WhatsappMessageTemplateUpdateParams = Telnyx::Models::WhatsappMessageTemplateUpdateParams
+
   class WhatsappReaction = Telnyx::Models::WhatsappReaction
+
+  class WhatsappTemplateData = Telnyx::Models::WhatsappTemplateData
 
   class WireguardInterfaceCreateParams = Telnyx::Models::WireguardInterfaceCreateParams
 
@@ -1630,4 +1674,6 @@ module Telnyx
   class WirelessError = Telnyx::Models::WirelessError
 
   class WirelessRetrieveRegionsParams = Telnyx::Models::WirelessRetrieveRegionsParams
+
+  module X402 = Telnyx::Models::X402
 end

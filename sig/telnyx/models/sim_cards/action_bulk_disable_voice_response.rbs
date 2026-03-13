@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module SimCards
+      type action_bulk_disable_voice_response =
+        { data: Telnyx::SimCards::BulkSimCardAction }
+
+      class ActionBulkDisableVoiceResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::SimCards::BulkSimCardAction?
+
+        def data=: (
+          Telnyx::SimCards::BulkSimCardAction
+        ) -> Telnyx::SimCards::BulkSimCardAction
+
+        def initialize: (?data: Telnyx::SimCards::BulkSimCardAction) -> void
+
+        def to_hash: -> { data: Telnyx::SimCards::BulkSimCardAction }
+      end
+    end
+  end
+end

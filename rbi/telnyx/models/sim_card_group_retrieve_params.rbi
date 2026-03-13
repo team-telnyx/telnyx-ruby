@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::SimCardGroupRetrieveParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # It includes a list of associated ICCIDs.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :include_iccids
@@ -20,11 +23,13 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           include_iccids: T::Boolean,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # It includes a list of associated ICCIDs.
         include_iccids: nil,
         request_options: {}
@@ -34,6 +39,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             include_iccids: T::Boolean,
             request_options: Telnyx::RequestOptions
           }

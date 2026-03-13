@@ -12,6 +12,9 @@ module Telnyx
             T.any(Telnyx::Queues::CallListParams, Telnyx::Internal::AnyHash)
           end
 
+        sig { returns(String) }
+        attr_accessor :queue_name
+
         sig { returns(T.nilable(Integer)) }
         attr_reader :page_number
 
@@ -26,17 +29,24 @@ module Telnyx
 
         sig do
           params(
+            queue_name: String,
             page_number: Integer,
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(page_number: nil, page_size: nil, request_options: {})
+        def self.new(
+          queue_name:,
+          page_number: nil,
+          page_size: nil,
+          request_options: {}
+        )
         end
 
         sig do
           override.returns(
             {
+              queue_name: String,
               page_number: Integer,
               page_size: Integer,
               request_options: Telnyx::RequestOptions

@@ -15,21 +15,32 @@ module Telnyx
             )
           end
 
+        # +E164 formatted phone number.
+        sig { returns(String) }
+        attr_accessor :phone_number
+
         sig { returns(String) }
         attr_accessor :verification_code
 
         sig do
           params(
+            phone_number: String,
             verification_code: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(verification_code:, request_options: {})
+        def self.new(
+          # +E164 formatted phone number.
+          phone_number:,
+          verification_code:,
+          request_options: {}
+        )
         end
 
         sig do
           override.returns(
             {
+              phone_number: String,
               verification_code: String,
               request_options: Telnyx::RequestOptions
             }

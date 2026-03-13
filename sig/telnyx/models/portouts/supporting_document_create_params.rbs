@@ -3,6 +3,7 @@ module Telnyx
     module Portouts
       type supporting_document_create_params =
         {
+          id: String,
           documents: ::Array[Telnyx::Portouts::SupportingDocumentCreateParams::Document]
         }
         & Telnyx::Internal::Type::request_parameters
@@ -11,6 +12,8 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        attr_accessor id: String
+
         attr_reader documents: ::Array[Telnyx::Portouts::SupportingDocumentCreateParams::Document]?
 
         def documents=: (
@@ -18,11 +21,13 @@ module Telnyx
         ) -> ::Array[Telnyx::Portouts::SupportingDocumentCreateParams::Document]
 
         def initialize: (
+          id: String,
           ?documents: ::Array[Telnyx::Portouts::SupportingDocumentCreateParams::Document],
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
+          id: String,
           documents: ::Array[Telnyx::Portouts::SupportingDocumentCreateParams::Document],
           request_options: Telnyx::RequestOptions
         }

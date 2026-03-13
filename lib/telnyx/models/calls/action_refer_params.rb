@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute call_control_id
+        #
+        #   @return [String]
+        required :call_control_id, String
+
         # @!attribute sip_address
         #   The SIP URI to which the call will be referred to.
         #
@@ -54,9 +59,11 @@ module Telnyx
         #   @return [Array<Telnyx::Models::SipHeader>, nil]
         optional :sip_headers, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::SipHeader] }
 
-        # @!method initialize(sip_address:, client_state: nil, command_id: nil, custom_headers: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, request_options: {})
+        # @!method initialize(call_control_id:, sip_address:, client_state: nil, command_id: nil, custom_headers: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionReferParams} for more details.
+        #
+        #   @param call_control_id [String]
         #
         #   @param sip_address [String] The SIP URI to which the call will be referred to.
         #

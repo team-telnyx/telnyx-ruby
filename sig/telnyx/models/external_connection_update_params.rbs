@@ -2,6 +2,7 @@ module Telnyx
   module Models
     type external_connection_update_params =
       {
+        id: String,
         outbound: Telnyx::ExternalConnectionUpdateParams::Outbound,
         active: bool,
         inbound: Telnyx::ExternalConnectionUpdateParams::Inbound,
@@ -15,6 +16,8 @@ module Telnyx
     class ExternalConnectionUpdateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor id: String
 
       attr_accessor outbound: Telnyx::ExternalConnectionUpdateParams::Outbound
 
@@ -41,6 +44,7 @@ module Telnyx
       attr_accessor webhook_timeout_secs: Integer?
 
       def initialize: (
+        id: String,
         outbound: Telnyx::ExternalConnectionUpdateParams::Outbound,
         ?active: bool,
         ?inbound: Telnyx::ExternalConnectionUpdateParams::Inbound,
@@ -52,6 +56,7 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
+        id: String,
         outbound: Telnyx::ExternalConnectionUpdateParams::Outbound,
         active: bool,
         inbound: Telnyx::ExternalConnectionUpdateParams::Inbound,

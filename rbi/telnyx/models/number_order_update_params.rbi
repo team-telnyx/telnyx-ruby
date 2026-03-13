@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::NumberOrderUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :number_order_id
+
       # A customer reference string for customer look ups.
       sig { returns(T.nilable(String)) }
       attr_reader :customer_reference
@@ -31,6 +34,7 @@ module Telnyx
 
       sig do
         params(
+          number_order_id: String,
           customer_reference: String,
           regulatory_requirements:
             T::Array[Telnyx::UpdateRegulatoryRequirement::OrHash],
@@ -38,6 +42,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        number_order_id:,
         # A customer reference string for customer look ups.
         customer_reference: nil,
         regulatory_requirements: nil,
@@ -48,6 +53,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            number_order_id: String,
             customer_reference: String,
             regulatory_requirements:
               T::Array[Telnyx::UpdateRegulatoryRequirement],

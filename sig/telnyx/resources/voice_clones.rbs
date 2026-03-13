@@ -1,0 +1,48 @@
+module Telnyx
+  module Resources
+    class VoiceClones
+      def create: (
+        gender: Telnyx::Models::VoiceCloneCreateParams::gender,
+        language: String,
+        name: String,
+        voice_design_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VoiceCloneCreateResponse
+
+      def update: (
+        String id,
+        name: String,
+        ?gender: Telnyx::Models::VoiceCloneUpdateParams::gender,
+        ?language: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VoiceCloneUpdateResponse
+
+      def list: (
+        ?filter_name: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?sort: Telnyx::Models::VoiceCloneListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::VoiceCloneData]
+
+      def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
+
+      def create_from_upload: (
+        audio_file: Telnyx::Internal::file_input,
+        language: String,
+        name: String,
+        ?gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::gender,
+        ?label: String,
+        ?ref_text: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VoiceCloneCreateFromUploadResponse
+
+      def download_sample: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> StringIO
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

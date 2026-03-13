@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :campaign_id
+
         # Webhook failover to which campaign status updates are sent.
         sig { returns(T.nilable(String)) }
         attr_reader :webhook_failover_url
@@ -31,12 +34,14 @@ module Telnyx
 
         sig do
           params(
+            campaign_id: String,
             webhook_failover_url: String,
             webhook_url: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          campaign_id:,
           # Webhook failover to which campaign status updates are sent.
           webhook_failover_url: nil,
           # Webhook to which campaign status updates are sent.
@@ -48,6 +53,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              campaign_id: String,
               webhook_failover_url: String,
               webhook_url: String,
               request_options: Telnyx::RequestOptions

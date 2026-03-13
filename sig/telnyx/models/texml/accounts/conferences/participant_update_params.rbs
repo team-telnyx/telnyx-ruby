@@ -7,6 +7,7 @@ module Telnyx
             {
               account_sid: String,
               conference_sid: String,
+              call_sid_or_participant_label: String,
               announce_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateParams::announce_method,
               announce_url: String,
               beep_on_exit: bool,
@@ -28,6 +29,8 @@ module Telnyx
             attr_accessor account_sid: String
 
             attr_accessor conference_sid: String
+
+            attr_accessor call_sid_or_participant_label: String
 
             attr_reader announce_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateParams::announce_method?
 
@@ -80,6 +83,7 @@ module Telnyx
             def initialize: (
               account_sid: String,
               conference_sid: String,
+              call_sid_or_participant_label: String,
               ?announce_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateParams::announce_method,
               ?announce_url: String,
               ?beep_on_exit: bool,
@@ -97,6 +101,7 @@ module Telnyx
             def to_hash: -> {
               account_sid: String,
               conference_sid: String,
+              call_sid_or_participant_label: String,
               announce_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateParams::announce_method,
               announce_url: String,
               beep_on_exit: bool,

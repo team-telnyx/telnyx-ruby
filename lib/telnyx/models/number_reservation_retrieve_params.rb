@@ -7,7 +7,13 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      # @!method initialize(request_options: {})
+      # @!attribute number_reservation_id
+      #
+      #   @return [String]
+      required :number_reservation_id, String
+
+      # @!method initialize(number_reservation_id:, request_options: {})
+      #   @param number_reservation_id [String]
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end
   end

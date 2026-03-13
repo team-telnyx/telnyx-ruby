@@ -52,6 +52,7 @@ module Telnyx
           media_name: String,
           park_after_unbridge: String,
           preferred_codecs: String,
+          prevent_double_bridge: T::Boolean,
           record: Telnyx::CallDialParams::Record::OrSymbol,
           record_channels: Telnyx::CallDialParams::RecordChannels::OrSymbol,
           record_custom_file_name: String,
@@ -173,6 +174,9 @@ module Telnyx
         # The list of comma-separated codecs in a preferred order for the forked media to
         # be received.
         preferred_codecs: nil,
+        # Prevents bridging and hangs up the call if the target is already bridged.
+        # Disabled by default.
+        prevent_double_bridge: nil,
         # Start recording automatically after an event. Disabled by default.
         record: nil,
         # Defines which channel should be recorded ('single' or 'dual') when `record` is

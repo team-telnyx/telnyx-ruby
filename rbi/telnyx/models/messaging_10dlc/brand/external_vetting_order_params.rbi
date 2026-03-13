@@ -16,6 +16,9 @@ module Telnyx
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :brand_id
+
           # External vetting provider ID for the brand.
           sig { returns(String) }
           attr_accessor :evp_id
@@ -26,12 +29,14 @@ module Telnyx
 
           sig do
             params(
+              brand_id: String,
               evp_id: String,
               vetting_class: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
+            brand_id:,
             # External vetting provider ID for the brand.
             evp_id:,
             # Identifies the vetting classification.
@@ -43,6 +48,7 @@ module Telnyx
           sig do
             override.returns(
               {
+                brand_id: String,
                 evp_id: String,
                 vetting_class: String,
                 request_options: Telnyx::RequestOptions

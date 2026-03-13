@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :room_id
+
         # The time to live in seconds of the Refresh Token, after that time the Refresh
         # Token is invalid and can't be used to refresh Client Token.
         sig { returns(T.nilable(Integer)) }
@@ -33,12 +36,14 @@ module Telnyx
 
         sig do
           params(
+            room_id: String,
             refresh_token_ttl_secs: Integer,
             token_ttl_secs: Integer,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          room_id:,
           # The time to live in seconds of the Refresh Token, after that time the Refresh
           # Token is invalid and can't be used to refresh Client Token.
           refresh_token_ttl_secs: nil,
@@ -52,6 +57,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              room_id: String,
               refresh_token_ttl_secs: Integer,
               token_ttl_secs: Integer,
               request_options: Telnyx::RequestOptions

@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    module Whatsapp
+      module PhoneNumbers
+        module Profile
+          type photo_upload_response =
+            { data: Telnyx::Whatsapp::PhoneNumbers::WhatsappProfileData }
+
+          class PhotoUploadResponse < Telnyx::Internal::Type::BaseModel
+            attr_reader data: Telnyx::Whatsapp::PhoneNumbers::WhatsappProfileData?
+
+            def data=: (
+              Telnyx::Whatsapp::PhoneNumbers::WhatsappProfileData
+            ) -> Telnyx::Whatsapp::PhoneNumbers::WhatsappProfileData
+
+            def initialize: (
+              ?data: Telnyx::Whatsapp::PhoneNumbers::WhatsappProfileData
+            ) -> void
+
+            def to_hash: -> {
+              data: Telnyx::Whatsapp::PhoneNumbers::WhatsappProfileData
+            }
+          end
+        end
+      end
+    end
+  end
+end

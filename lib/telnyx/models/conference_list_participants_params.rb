@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute conference_id
+      #
+      #   @return [String]
+      required :conference_id, String
+
       # @!attribute filter
       #   Consolidated filter parameter (deepObject style). Originally: filter[muted],
       #   filter[on_hold], filter[whispering]
@@ -30,9 +35,11 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::ConferenceListParticipantsParams::Region, nil]
       optional :region, enum: -> { Telnyx::ConferenceListParticipantsParams::Region }
 
-      # @!method initialize(filter: nil, page_number: nil, page_size: nil, region: nil, request_options: {})
+      # @!method initialize(conference_id:, filter: nil, page_number: nil, page_size: nil, region: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::ConferenceListParticipantsParams} for more details.
+      #
+      #   @param conference_id [String]
       #
       #   @param filter [Telnyx::Models::ConferenceListParticipantsParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[muted], fil
       #

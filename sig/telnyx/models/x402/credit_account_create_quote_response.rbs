@@ -1,0 +1,280 @@
+module Telnyx
+  module Models
+    module X402
+      type credit_account_create_quote_response =
+        { data: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data }
+
+      class CreditAccountCreateQuoteResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data?
+
+        def data=: (
+          Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data
+        ) -> Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data
+        }
+
+        type data =
+          {
+            id: String,
+            amount_crypto: String,
+            amount_usd: String,
+            expires_at: Time,
+            network: String,
+            payment_requirements: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements,
+            record_type: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::record_type
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader amount_crypto: String?
+
+          def amount_crypto=: (String) -> String
+
+          attr_reader amount_usd: String?
+
+          def amount_usd=: (String) -> String
+
+          attr_reader expires_at: Time?
+
+          def expires_at=: (Time) -> Time
+
+          attr_reader network: String?
+
+          def network=: (String) -> String
+
+          attr_reader payment_requirements: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements?
+
+          def payment_requirements=: (
+            Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements
+          ) -> Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements
+
+          attr_reader record_type: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::record_type?
+
+          def record_type=: (
+            Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::record_type
+          ) -> Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::record_type
+
+          def initialize: (
+            ?id: String,
+            ?amount_crypto: String,
+            ?amount_usd: String,
+            ?expires_at: Time,
+            ?network: String,
+            ?payment_requirements: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements,
+            ?record_type: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::record_type
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            amount_crypto: String,
+            amount_usd: String,
+            expires_at: Time,
+            network: String,
+            payment_requirements: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements,
+            record_type: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::record_type
+          }
+
+          type payment_requirements =
+            {
+              accepts: ::Array[Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::Accept],
+              resource: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::Resource,
+              :x402_version => Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::x402_version
+            }
+
+          class PaymentRequirements < Telnyx::Internal::Type::BaseModel
+            attr_reader accepts: ::Array[Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::Accept]?
+
+            def accepts=: (
+              ::Array[Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::Accept]
+            ) -> ::Array[Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::Accept]
+
+            attr_reader resource: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::Resource?
+
+            def resource=: (
+              Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::Resource
+            ) -> Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::Resource
+
+            attr_reader x402_version: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::x402_version?
+
+            def x402_version=: (
+              Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::x402_version
+            ) -> Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::x402_version
+
+            def initialize: (
+              ?accepts: ::Array[Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::Accept],
+              ?resource: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::Resource,
+              ?x402_version: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::x402_version
+            ) -> void
+
+            def to_hash: -> {
+              accepts: ::Array[Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::Accept],
+              resource: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::Resource,
+              :x402_version => Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::x402_version
+            }
+
+            type accept =
+              {
+                amount: String,
+                asset: String,
+                extra: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::Accept::Extra,
+                max_timeout_seconds: Integer,
+                network: String,
+                pay_to: String,
+                scheme: String
+              }
+
+            class Accept < Telnyx::Internal::Type::BaseModel
+              attr_reader amount: String?
+
+              def amount=: (String) -> String
+
+              attr_reader asset: String?
+
+              def asset=: (String) -> String
+
+              attr_reader extra: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::Accept::Extra?
+
+              def extra=: (
+                Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::Accept::Extra
+              ) -> Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::Accept::Extra
+
+              attr_reader max_timeout_seconds: Integer?
+
+              def max_timeout_seconds=: (Integer) -> Integer
+
+              attr_reader network: String?
+
+              def network=: (String) -> String
+
+              attr_reader pay_to: String?
+
+              def pay_to=: (String) -> String
+
+              attr_reader scheme: String?
+
+              def scheme=: (String) -> String
+
+              def initialize: (
+                ?amount: String,
+                ?asset: String,
+                ?extra: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::Accept::Extra,
+                ?max_timeout_seconds: Integer,
+                ?network: String,
+                ?pay_to: String,
+                ?scheme: String
+              ) -> void
+
+              def to_hash: -> {
+                amount: String,
+                asset: String,
+                extra: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::Accept::Extra,
+                max_timeout_seconds: Integer,
+                network: String,
+                pay_to: String,
+                scheme: String
+              }
+
+              type extra =
+                {
+                  facilitator_url: String,
+                  name: String,
+                  quote_id: String,
+                  version: String
+                }
+
+              class Extra < Telnyx::Internal::Type::BaseModel
+                attr_reader facilitator_url: String?
+
+                def facilitator_url=: (String) -> String
+
+                attr_reader name: String?
+
+                def name=: (String) -> String
+
+                attr_reader quote_id: String?
+
+                def quote_id=: (String) -> String
+
+                attr_reader version: String?
+
+                def version=: (String) -> String
+
+                def initialize: (
+                  ?facilitator_url: String,
+                  ?name: String,
+                  ?quote_id: String,
+                  ?version: String
+                ) -> void
+
+                def to_hash: -> {
+                  facilitator_url: String,
+                  name: String,
+                  quote_id: String,
+                  version: String
+                }
+              end
+            end
+
+            type resource =
+              { description: String, mime_type: String, url: String }
+
+            class Resource < Telnyx::Internal::Type::BaseModel
+              attr_reader description: String?
+
+              def description=: (String) -> String
+
+              attr_reader mime_type: String?
+
+              def mime_type=: (String) -> String
+
+              attr_reader url: String?
+
+              def url=: (String) -> String
+
+              def initialize: (
+                ?description: String,
+                ?mime_type: String,
+                ?url: String
+              ) -> void
+
+              def to_hash: -> {
+                description: String,
+                mime_type: String,
+                url: String
+              }
+            end
+
+            type x402_version = 2
+
+            module X402Version
+              extend Telnyx::Internal::Type::Enum
+
+              V2: 2
+
+              def self?.values: -> ::Array[Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::PaymentRequirements::x402_version]
+            end
+          end
+
+          type record_type = :quote
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            QUOTE: :quote
+
+            def self?.values: -> ::Array[Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data::record_type]
+          end
+        end
+      end
+    end
+  end
+end

@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute task_id
+        #
+        #   @return [String]
+        required :task_id, String
+
         # @!attribute page
         #
         #   @return [Integer, nil]
@@ -18,7 +23,8 @@ module Telnyx
         #   @return [Integer, nil]
         optional :records_per_page, Integer
 
-        # @!method initialize(page: nil, records_per_page: nil, request_options: {})
+        # @!method initialize(task_id:, page: nil, records_per_page: nil, request_options: {})
+        #   @param task_id [String]
         #   @param page [Integer]
         #   @param records_per_page [Integer]
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]

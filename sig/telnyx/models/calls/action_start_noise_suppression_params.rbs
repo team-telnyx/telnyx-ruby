@@ -3,6 +3,7 @@ module Telnyx
     module Calls
       type action_start_noise_suppression_params =
         {
+          call_control_id: String,
           client_state: String,
           command_id: String,
           direction: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction,
@@ -14,6 +15,8 @@ module Telnyx
       class ActionStartNoiseSuppressionParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
 
         attr_reader client_state: String?
 
@@ -42,6 +45,7 @@ module Telnyx
         ) -> Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig
 
         def initialize: (
+          call_control_id: String,
           ?client_state: String,
           ?command_id: String,
           ?direction: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction,
@@ -51,6 +55,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          call_control_id: String,
           client_state: String,
           command_id: String,
           direction: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction,

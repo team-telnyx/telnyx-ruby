@@ -14,6 +14,11 @@ module Telnyx
           #   @return [String]
           required :account_sid, String
 
+          # @!attribute call_sid
+          #
+          #   @return [String]
+          required :call_sid, String
+
           # @!attribute connector_name
           #   The name of the connector to use for the SIPREC session.
           #
@@ -86,11 +91,13 @@ module Telnyx
           #   @return [Symbol, Telnyx::Models::Texml::Accounts::CallSiprecJsonParams::Track, nil]
           optional :track, enum: -> { Telnyx::Texml::Accounts::CallSiprecJsonParams::Track }, api_name: :Track
 
-          # @!method initialize(account_sid:, connector_name: nil, include_metadata_custom_headers: nil, name: nil, secure: nil, session_timeout_secs: nil, sip_transport: nil, status_callback: nil, status_callback_method: nil, track: nil, request_options: {})
+          # @!method initialize(account_sid:, call_sid:, connector_name: nil, include_metadata_custom_headers: nil, name: nil, secure: nil, session_timeout_secs: nil, sip_transport: nil, status_callback: nil, status_callback_method: nil, track: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Texml::Accounts::CallSiprecJsonParams} for more details.
           #
           #   @param account_sid [String]
+          #
+          #   @param call_sid [String]
           #
           #   @param connector_name [String] The name of the connector to use for the SIPREC session.
           #

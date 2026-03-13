@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute name
       #   A user-supplied name to help with organization.
       #
@@ -96,9 +101,11 @@ module Telnyx
       #   @return [Array<String>, nil]
       optional :whitelisted_destinations, Telnyx::Internal::Type::ArrayOf[String]
 
-      # @!method initialize(name:, billing_group_id: nil, call_recording: nil, calling_window: nil, concurrent_call_limit: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, max_destination_rate: nil, service_plan: nil, tags: nil, traffic_type: nil, usage_payment_method: nil, whitelisted_destinations: nil, request_options: {})
+      # @!method initialize(id:, name:, billing_group_id: nil, call_recording: nil, calling_window: nil, concurrent_call_limit: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, max_destination_rate: nil, service_plan: nil, tags: nil, traffic_type: nil, usage_payment_method: nil, whitelisted_destinations: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::OutboundVoiceProfileUpdateParams} for more details.
+      #
+      #   @param id [String]
       #
       #   @param name [String] A user-supplied name to help with organization.
       #

@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute filter
         #   Filter parameter for civic addresses (deepObject style). Supports filtering by
         #   country.
@@ -15,9 +20,11 @@ module Telnyx
         #   @return [Telnyx::Models::ExternalConnections::CivicAddressListParams::Filter, nil]
         optional :filter, -> { Telnyx::ExternalConnections::CivicAddressListParams::Filter }
 
-        # @!method initialize(filter: nil, request_options: {})
+        # @!method initialize(id:, filter: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::ExternalConnections::CivicAddressListParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param filter [Telnyx::Models::ExternalConnections::CivicAddressListParams::Filter] Filter parameter for civic addresses (deepObject style). Supports filtering by c
         #

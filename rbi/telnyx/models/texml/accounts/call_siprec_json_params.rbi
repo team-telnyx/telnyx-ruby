@@ -19,6 +19,9 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :account_sid
 
+          sig { returns(String) }
+          attr_accessor :call_sid
+
           # The name of the connector to use for the SIPREC session.
           sig { returns(T.nilable(String)) }
           attr_reader :connector_name
@@ -148,6 +151,7 @@ module Telnyx
           sig do
             params(
               account_sid: String,
+              call_sid: String,
               connector_name: String,
               include_metadata_custom_headers:
                 Telnyx::Texml::Accounts::CallSiprecJsonParams::IncludeMetadataCustomHeaders::OrBoolean,
@@ -167,6 +171,7 @@ module Telnyx
           end
           def self.new(
             account_sid:,
+            call_sid:,
             # The name of the connector to use for the SIPREC session.
             connector_name: nil,
             # When set, custom parameters will be added as metadata
@@ -201,6 +206,7 @@ module Telnyx
             override.returns(
               {
                 account_sid: String,
+                call_sid: String,
                 connector_name: String,
                 include_metadata_custom_headers:
                   Telnyx::Texml::Accounts::CallSiprecJsonParams::IncludeMetadataCustomHeaders::OrBoolean,

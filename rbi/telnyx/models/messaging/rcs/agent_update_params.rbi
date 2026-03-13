@@ -16,6 +16,9 @@ module Telnyx
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :id
+
           # Messaging profile ID associated with the RCS Agent
           sig { returns(T.nilable(String)) }
           attr_accessor :profile_id
@@ -30,6 +33,7 @@ module Telnyx
 
           sig do
             params(
+              id: String,
               profile_id: T.nilable(String),
               webhook_failover_url: T.nilable(String),
               webhook_url: T.nilable(String),
@@ -37,6 +41,7 @@ module Telnyx
             ).returns(T.attached_class)
           end
           def self.new(
+            id:,
             # Messaging profile ID associated with the RCS Agent
             profile_id: nil,
             # Failover URL to receive RCS events
@@ -50,6 +55,7 @@ module Telnyx
           sig do
             override.returns(
               {
+                id: String,
                 profile_id: T.nilable(String),
                 webhook_failover_url: T.nilable(String),
                 webhook_url: T.nilable(String),

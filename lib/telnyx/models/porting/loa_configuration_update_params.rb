@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute address
         #   The address of the company.
         #
@@ -38,7 +43,9 @@ module Telnyx
         #   @return [String]
         required :name, String
 
-        # @!method initialize(address:, company_name:, contact:, logo:, name:, request_options: {})
+        # @!method initialize(id:, address:, company_name:, contact:, logo:, name:, request_options: {})
+        #   @param id [String]
+        #
         #   @param address [Telnyx::Models::Porting::LoaConfigurationUpdateParams::Address] The address of the company.
         #
         #   @param company_name [String] The name of the company

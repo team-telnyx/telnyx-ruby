@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :account_sid
+
         # The number of records to be displayed on a page
         sig { returns(T.nilable(Integer)) }
         attr_reader :page_size
@@ -31,12 +34,14 @@ module Telnyx
 
         sig do
           params(
+            account_sid: String,
             page_size: Integer,
             page_token: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          account_sid:,
           # The number of records to be displayed on a page
           page_size: nil,
           # Used to request the next page of results.
@@ -48,6 +53,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              account_sid: String,
               page_size: Integer,
               page_token: String,
               request_options: Telnyx::RequestOptions

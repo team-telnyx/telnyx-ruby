@@ -1,15 +1,24 @@
 module Telnyx
   module Models
     type messaging10dlc_get_enum_params =
-      {  } & Telnyx::Internal::Type::request_parameters
+      { endpoint: Telnyx::Models::Messaging10dlcGetEnumParams::endpoint }
+      & Telnyx::Internal::Type::request_parameters
 
     class Messaging10dlcGetEnumParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      def initialize: (?request_options: Telnyx::request_opts) -> void
+      attr_accessor endpoint: Telnyx::Models::Messaging10dlcGetEnumParams::endpoint
 
-      def to_hash: -> { request_options: Telnyx::RequestOptions }
+      def initialize: (
+        endpoint: Telnyx::Models::Messaging10dlcGetEnumParams::endpoint,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        endpoint: Telnyx::Models::Messaging10dlcGetEnumParams::endpoint,
+        request_options: Telnyx::RequestOptions
+      }
 
       type endpoint =
         :mno

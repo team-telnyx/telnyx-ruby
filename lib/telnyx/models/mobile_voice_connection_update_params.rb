@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute active
       #
       #   @return [Boolean, nil]
@@ -52,7 +57,8 @@ module Telnyx
       #   @return [Integer, nil]
       optional :webhook_timeout_secs, Integer
 
-      # @!method initialize(active: nil, connection_name: nil, inbound: nil, outbound: nil, tags: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @!method initialize(id:, active: nil, connection_name: nil, inbound: nil, outbound: nil, tags: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
+      #   @param id [String]
       #   @param active [Boolean]
       #   @param connection_name [String]
       #   @param inbound [Telnyx::Models::MobileVoiceConnectionUpdateParams::Inbound]

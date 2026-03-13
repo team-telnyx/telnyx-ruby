@@ -23,6 +23,9 @@ module Telnyx
             sig { returns(String) }
             attr_accessor :call_sid
 
+            sig { returns(String) }
+            attr_accessor :recording_sid
+
             sig do
               returns(
                 T.nilable(
@@ -44,6 +47,7 @@ module Telnyx
               params(
                 account_sid: String,
                 call_sid: String,
+                recording_sid: String,
                 status:
                   Telnyx::Texml::Accounts::Calls::RecordingRecordingSidJsonParams::Status::OrSymbol,
                 request_options: Telnyx::RequestOptions::OrHash
@@ -52,6 +56,7 @@ module Telnyx
             def self.new(
               account_sid:,
               call_sid:,
+              recording_sid:,
               status: nil,
               request_options: {}
             )
@@ -62,6 +67,7 @@ module Telnyx
                 {
                   account_sid: String,
                   call_sid: String,
+                  recording_sid: String,
                   status:
                     Telnyx::Texml::Accounts::Calls::RecordingRecordingSidJsonParams::Status::OrSymbol,
                   request_options: Telnyx::RequestOptions

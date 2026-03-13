@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::MessagingProfileUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :messaging_profile_id
+
       # The alphanumeric sender ID to use when sending to destinations that require an
       # alphanumeric sender ID.
       sig { returns(T.nilable(String)) }
@@ -156,6 +159,7 @@ module Telnyx
 
       sig do
         params(
+          messaging_profile_id: String,
           alpha_sender: T.nilable(String),
           daily_spend_limit: String,
           daily_spend_limit_enabled: T::Boolean,
@@ -178,6 +182,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        messaging_profile_id:,
         # The alphanumeric sender ID to use when sending to destinations that require an
         # alphanumeric sender ID.
         alpha_sender: nil,
@@ -237,6 +242,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            messaging_profile_id: String,
             alpha_sender: T.nilable(String),
             daily_spend_limit: String,
             daily_spend_limit_enabled: T::Boolean,

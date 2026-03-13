@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # The DID or SIP URI to dial out to.
         sig { returns(String) }
         attr_accessor :to
@@ -478,6 +481,7 @@ module Telnyx
 
         sig do
           params(
+            call_control_id: String,
             to: String,
             answering_machine_detection:
               Telnyx::Calls::ActionTransferParams::AnsweringMachineDetection::OrSymbol,
@@ -534,6 +538,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id:,
           # The DID or SIP URI to dial out to.
           to:,
           # Enables Answering Machine Detection. When a call is answered, Telnyx runs
@@ -667,6 +672,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              call_control_id: String,
               to: String,
               answering_machine_detection:
                 Telnyx::Calls::ActionTransferParams::AnsweringMachineDetection::OrSymbol,

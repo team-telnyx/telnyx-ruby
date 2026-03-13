@@ -23,6 +23,9 @@ module Telnyx
             sig { returns(String) }
             attr_accessor :call_sid
 
+            sig { returns(String) }
+            attr_accessor :siprec_sid
+
             # The new status of the resource. Specifying `stopped` will end the siprec
             # session.
             sig do
@@ -46,6 +49,7 @@ module Telnyx
               params(
                 account_sid: String,
                 call_sid: String,
+                siprec_sid: String,
                 status:
                   Telnyx::Texml::Accounts::Calls::SiprecSiprecSidJsonParams::Status::OrSymbol,
                 request_options: Telnyx::RequestOptions::OrHash
@@ -54,6 +58,7 @@ module Telnyx
             def self.new(
               account_sid:,
               call_sid:,
+              siprec_sid:,
               # The new status of the resource. Specifying `stopped` will end the siprec
               # session.
               status: nil,
@@ -66,6 +71,7 @@ module Telnyx
                 {
                   account_sid: String,
                   call_sid: String,
+                  siprec_sid: String,
                   status:
                     Telnyx::Texml::Accounts::Calls::SiprecSiprecSidJsonParams::Status::OrSymbol,
                   request_options: Telnyx::RequestOptions

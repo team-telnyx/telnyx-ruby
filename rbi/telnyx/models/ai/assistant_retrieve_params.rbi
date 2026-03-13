@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :assistant_id
+
         sig { returns(T.nilable(String)) }
         attr_reader :call_control_id
 
@@ -41,6 +44,7 @@ module Telnyx
 
         sig do
           params(
+            assistant_id: String,
             call_control_id: String,
             fetch_dynamic_variables_from_webhook: T::Boolean,
             from: String,
@@ -49,6 +53,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          assistant_id:,
           call_control_id: nil,
           fetch_dynamic_variables_from_webhook: nil,
           from: nil,
@@ -60,6 +65,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              assistant_id: String,
               call_control_id: String,
               fetch_dynamic_variables_from_webhook: T::Boolean,
               from: String,

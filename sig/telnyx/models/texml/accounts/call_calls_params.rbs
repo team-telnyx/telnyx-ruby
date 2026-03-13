@@ -4,6 +4,7 @@ module Telnyx
       module Accounts
         type call_calls_params =
           {
+            account_sid: String,
             application_sid: String,
             from: String,
             to: String,
@@ -50,6 +51,8 @@ module Telnyx
         class CallCallsParams < Telnyx::Internal::Type::BaseModel
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor account_sid: String
 
           attr_accessor application_sid: String
 
@@ -232,6 +235,7 @@ module Telnyx
           ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::url_method
 
           def initialize: (
+            account_sid: String,
             application_sid: String,
             from: String,
             to: String,
@@ -276,6 +280,7 @@ module Telnyx
           ) -> void
 
           def to_hash: -> {
+            account_sid: String,
             application_sid: String,
             from: String,
             to: String,

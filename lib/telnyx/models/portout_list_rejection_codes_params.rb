@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute portout_id
+      #
+      #   @return [String]
+      required :portout_id, String
+
       # @!attribute filter
       #   Consolidated filter parameter (deepObject style). Originally: filter[code],
       #   filter[code][in]
@@ -14,9 +19,11 @@ module Telnyx
       #   @return [Telnyx::Models::PortoutListRejectionCodesParams::Filter, nil]
       optional :filter, -> { Telnyx::PortoutListRejectionCodesParams::Filter }
 
-      # @!method initialize(filter: nil, request_options: {})
+      # @!method initialize(portout_id:, filter: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::PortoutListRejectionCodesParams} for more details.
+      #
+      #   @param portout_id [String]
       #
       #   @param filter [Telnyx::Models::PortoutListRejectionCodesParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[code], filt
       #

@@ -3,6 +3,7 @@ module Telnyx
     module Calls
       type action_gather_using_ai_params =
         {
+          call_control_id: String,
           parameters: ::Hash[Symbol, top],
           assistant: Telnyx::AI::Assistant,
           client_state: String,
@@ -24,6 +25,8 @@ module Telnyx
       class ActionGatherUsingAIParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
 
         attr_accessor parameters: ::Hash[Symbol, top]
 
@@ -94,6 +97,7 @@ module Telnyx
         ) -> Telnyx::Models::Calls::ActionGatherUsingAIParams::voice_settings
 
         def initialize: (
+          call_control_id: String,
           parameters: ::Hash[Symbol, top],
           ?assistant: Telnyx::AI::Assistant,
           ?client_state: String,
@@ -113,6 +117,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          call_control_id: String,
           parameters: ::Hash[Symbol, top],
           assistant: Telnyx::AI::Assistant,
           client_state: String,

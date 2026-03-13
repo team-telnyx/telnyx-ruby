@@ -9,6 +9,11 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
+          # @!attribute assistant_id
+          #
+          #   @return [String]
+          required :assistant_id, String
+
           # @!attribute conversation_channel
           #
           #   @return [Symbol, Telnyx::Models::AI::Assistants::ConversationChannelType, nil]
@@ -34,7 +39,8 @@ module Telnyx
           #   @return [Time, nil]
           optional :to_date, Time
 
-          # @!method initialize(conversation_channel: nil, from_date: nil, page_number: nil, page_size: nil, to_date: nil, request_options: {})
+          # @!method initialize(assistant_id:, conversation_channel: nil, from_date: nil, page_number: nil, page_size: nil, to_date: nil, request_options: {})
+          #   @param assistant_id [String]
           #   @param conversation_channel [Symbol, Telnyx::Models::AI::Assistants::ConversationChannelType]
           #   @param from_date [Time]
           #   @param page_number [Integer]

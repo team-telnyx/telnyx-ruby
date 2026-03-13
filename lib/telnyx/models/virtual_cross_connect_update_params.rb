@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute primary_cloud_ip
       #   The IP address assigned for your side of the Virtual Cross
       #   Connect.<br /><br />If none is provided, one will be generated for
@@ -49,9 +54,11 @@ module Telnyx
       #   @return [Boolean, nil]
       optional :secondary_routing_announcement, Telnyx::Internal::Type::Boolean
 
-      # @!method initialize(primary_cloud_ip: nil, primary_enabled: nil, primary_routing_announcement: nil, secondary_cloud_ip: nil, secondary_enabled: nil, secondary_routing_announcement: nil, request_options: {})
+      # @!method initialize(id:, primary_cloud_ip: nil, primary_enabled: nil, primary_routing_announcement: nil, secondary_cloud_ip: nil, secondary_enabled: nil, secondary_routing_announcement: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::VirtualCrossConnectUpdateParams} for more details.
+      #
+      #   @param id [String]
       #
       #   @param primary_cloud_ip [String] The IP address assigned for your side of the Virtual Cross Connect.<br /><br />I
       #

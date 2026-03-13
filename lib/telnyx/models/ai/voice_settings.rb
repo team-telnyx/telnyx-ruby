@@ -33,6 +33,14 @@ module Telnyx
         #   @return [Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaURL, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaName, nil]
         optional :background_audio, union: -> { Telnyx::AI::VoiceSettings::BackgroundAudio }
 
+        # @!attribute expressive_mode
+        #   Enables emotionally expressive speech using SSML emotion tags. When enabled, the
+        #   assistant uses audio tags like angry, excited, content, and sad to add emotional
+        #   nuance. Only supported for Telnyx Ultra voices.
+        #
+        #   @return [Boolean, nil]
+        optional :expressive_mode, Telnyx::Internal::Type::Boolean
+
         # @!attribute language_boost
         #   Enhances recognition for specific languages and dialects during MiniMax TTS
         #   synthesis. Default is null (no boost). Set to 'auto' for automatic language
@@ -86,7 +94,7 @@ module Telnyx
         #   @return [Float, nil]
         optional :voice_speed, Float
 
-        # @!method initialize(voice:, api_key_ref: nil, background_audio: nil, language_boost: nil, similarity_boost: nil, speed: nil, style: nil, temperature: nil, use_speaker_boost: nil, voice_speed: nil)
+        # @!method initialize(voice:, api_key_ref: nil, background_audio: nil, expressive_mode: nil, language_boost: nil, similarity_boost: nil, speed: nil, style: nil, temperature: nil, use_speaker_boost: nil, voice_speed: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::VoiceSettings} for more details.
         #
@@ -95,6 +103,8 @@ module Telnyx
         #   @param api_key_ref [String] The `identifier` for an integration secret [/v2/integration_secrets](https://dev
         #
         #   @param background_audio [Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaURL, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::MediaName] Optional background audio to play on the call. Use a predefined media bed, or su
+        #
+        #   @param expressive_mode [Boolean] Enables emotionally expressive speech using SSML emotion tags. When enabled, the
         #
         #   @param language_boost [Symbol, Telnyx::Models::AI::VoiceSettings::LanguageBoost, nil] Enhances recognition for specific languages and dialects during MiniMax TTS synt
         #

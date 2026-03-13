@@ -1,0 +1,26 @@
+module Telnyx
+  module Models
+    module Whatsapp
+      module BusinessAccounts
+        type setting_update_response =
+          { data: Telnyx::Whatsapp::BusinessAccounts::WabaSettings }
+
+        class SettingUpdateResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: Telnyx::Whatsapp::BusinessAccounts::WabaSettings?
+
+          def data=: (
+            Telnyx::Whatsapp::BusinessAccounts::WabaSettings
+          ) -> Telnyx::Whatsapp::BusinessAccounts::WabaSettings
+
+          def initialize: (
+            ?data: Telnyx::Whatsapp::BusinessAccounts::WabaSettings
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::Whatsapp::BusinessAccounts::WabaSettings
+          }
+        end
+      end
+    end
+  end
+end

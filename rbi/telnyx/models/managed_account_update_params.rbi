@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::ManagedAccountUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # Boolean value that indicates if the managed account is able to have custom
       # pricing set for it or not. If false, uses the pricing of the manager account.
       # Defaults to false. This value may be changed, but there may be time lag between
@@ -23,11 +26,13 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           managed_account_allow_custom_pricing: T::Boolean,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # Boolean value that indicates if the managed account is able to have custom
         # pricing set for it or not. If false, uses the pricing of the manager account.
         # Defaults to false. This value may be changed, but there may be time lag between
@@ -40,6 +45,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             managed_account_allow_custom_pricing: T::Boolean,
             request_options: Telnyx::RequestOptions
           }

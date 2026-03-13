@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # Identifies the address to be used with emergency services.
         sig { returns(String) }
         attr_accessor :emergency_address_id
@@ -25,12 +28,14 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             emergency_address_id: String,
             emergency_enabled: T::Boolean,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # Identifies the address to be used with emergency services.
           emergency_address_id:,
           # Indicates whether to enable emergency services on this number.
@@ -42,6 +47,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               emergency_address_id: String,
               emergency_enabled: T::Boolean,
               request_options: Telnyx::RequestOptions

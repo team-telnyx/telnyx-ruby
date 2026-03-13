@@ -9,7 +9,13 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
-          # @!method initialize(request_options: {})
+          # @!attribute bucket_name
+          #
+          #   @return [String]
+          required :bucket_name, String
+
+          # @!method initialize(bucket_name:, request_options: {})
+          #   @param bucket_name [String]
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end
       end

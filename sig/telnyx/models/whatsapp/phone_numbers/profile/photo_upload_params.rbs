@@ -1,0 +1,34 @@
+module Telnyx
+  module Models
+    module Whatsapp
+      module PhoneNumbers
+        module Profile
+          type photo_upload_params =
+            { phone_number: String, file: Telnyx::Internal::file_input }
+            & Telnyx::Internal::Type::request_parameters
+
+          class PhotoUploadParams < Telnyx::Internal::Type::BaseModel
+            extend Telnyx::Internal::Type::RequestParameters::Converter
+            include Telnyx::Internal::Type::RequestParameters
+
+            attr_accessor phone_number: String
+
+            attr_accessor file: Telnyx::Internal::file_input
+
+            def initialize: (
+              phone_number: String,
+              file: Telnyx::Internal::file_input,
+              ?request_options: Telnyx::request_opts
+            ) -> void
+
+            def to_hash: -> {
+              phone_number: String,
+              file: Telnyx::Internal::file_input,
+              request_options: Telnyx::RequestOptions
+            }
+          end
+        end
+      end
+    end
+  end
+end

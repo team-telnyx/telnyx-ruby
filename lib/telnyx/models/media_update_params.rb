@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute media_name
+      #
+      #   @return [String]
+      required :media_name, String
+
       # @!attribute media_url
       #   The URL where the media to be stored in Telnyx network is currently hosted. The
       #   maximum allowed size is 20 MB.
@@ -21,9 +26,11 @@ module Telnyx
       #   @return [Integer, nil]
       optional :ttl_secs, Integer
 
-      # @!method initialize(media_url: nil, ttl_secs: nil, request_options: {})
+      # @!method initialize(media_name:, media_url: nil, ttl_secs: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MediaUpdateParams} for more details.
+      #
+      #   @param media_name [String]
       #
       #   @param media_url [String] The URL where the media to be stored in Telnyx network is currently hosted. The
       #

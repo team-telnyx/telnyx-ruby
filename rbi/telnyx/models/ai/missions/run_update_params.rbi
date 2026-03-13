@@ -19,6 +19,9 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :mission_id
 
+          sig { returns(String) }
+          attr_accessor :run_id
+
           sig { returns(T.nilable(String)) }
           attr_reader :error
 
@@ -60,6 +63,7 @@ module Telnyx
           sig do
             params(
               mission_id: String,
+              run_id: String,
               error: String,
               metadata: T::Hash[Symbol, T.anything],
               result_payload: T::Hash[Symbol, T.anything],
@@ -70,6 +74,7 @@ module Telnyx
           end
           def self.new(
             mission_id:,
+            run_id:,
             error: nil,
             metadata: nil,
             result_payload: nil,
@@ -83,6 +88,7 @@ module Telnyx
             override.returns(
               {
                 mission_id: String,
+                run_id: String,
                 error: String,
                 metadata: T::Hash[Symbol, T.anything],
                 result_payload: T::Hash[Symbol, T.anything],

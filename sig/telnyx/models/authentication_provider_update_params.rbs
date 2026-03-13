@@ -2,6 +2,7 @@ module Telnyx
   module Models
     type authentication_provider_update_params =
       {
+        id: String,
         active: bool,
         name: String,
         settings: Telnyx::Settings,
@@ -13,6 +14,8 @@ module Telnyx
     class AuthenticationProviderUpdateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor id: String
 
       attr_reader active: bool?
 
@@ -35,6 +38,7 @@ module Telnyx
       def short_name=: (String) -> String
 
       def initialize: (
+        id: String,
         ?active: bool,
         ?name: String,
         ?settings: Telnyx::Settings,
@@ -44,6 +48,7 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
+        id: String,
         active: bool,
         name: String,
         settings: Telnyx::Settings,

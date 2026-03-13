@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute command_id
         #   Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #   the same `command_id` for the same `call_control_id`.
@@ -28,9 +33,11 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Conferences::ActionRecordResumeParams::Region, nil]
         optional :region, enum: -> { Telnyx::Conferences::ActionRecordResumeParams::Region }
 
-        # @!method initialize(command_id: nil, recording_id: nil, region: nil, request_options: {})
+        # @!method initialize(id:, command_id: nil, recording_id: nil, region: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::ActionRecordResumeParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #

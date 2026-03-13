@@ -10,7 +10,7 @@ module Telnyx
           params(
             ids: T::Array[String],
             request_options: Telnyx::RequestOptions::OrHash
-          ).void
+          ).returns(Telnyx::Models::Recordings::ActionDeleteResponse)
         end
         def delete(
           # List of call recording IDs to delete.

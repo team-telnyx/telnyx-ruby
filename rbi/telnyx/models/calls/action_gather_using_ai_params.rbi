@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # The parameters described as a JSON Schema object that needs to be gathered by
         # the voice assistant. See the
         # [JSON Schema reference](https://json-schema.org/understanding-json-schema) for
@@ -170,6 +173,8 @@ module Telnyx
         #   for details. Check
         #   [available voices](https://elevenlabs.io/docs/api-reference/get-voices).
         # - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>`
+        # - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
+        #   `Inworld.Max.Oliver`). Supported models: `Mini`, `Max`.
         sig { returns(T.nilable(String)) }
         attr_reader :voice
 
@@ -210,6 +215,7 @@ module Telnyx
 
         sig do
           params(
+            call_control_id: String,
             parameters: T::Hash[Symbol, T.anything],
             assistant: Telnyx::AI::Assistant::OrHash,
             client_state: String,
@@ -240,6 +246,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id:,
           # The parameters described as a JSON Schema object that needs to be gathered by
           # the voice assistant. See the
           # [JSON Schema reference](https://json-schema.org/understanding-json-schema) for
@@ -306,6 +313,8 @@ module Telnyx
           #   for details. Check
           #   [available voices](https://elevenlabs.io/docs/api-reference/get-voices).
           # - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>`
+          # - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
+          #   `Inworld.Max.Oliver`). Supported models: `Mini`, `Max`.
           voice: nil,
           # The settings associated with the voice selected
           voice_settings: nil,
@@ -316,6 +325,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              call_control_id: String,
               parameters: T::Hash[Symbol, T.anything],
               assistant: Telnyx::AI::Assistant,
               client_state: String,

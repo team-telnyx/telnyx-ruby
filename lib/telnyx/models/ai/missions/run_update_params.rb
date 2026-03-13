@@ -14,6 +14,11 @@ module Telnyx
           #   @return [String]
           required :mission_id, String
 
+          # @!attribute run_id
+          #
+          #   @return [String]
+          required :run_id, String
+
           # @!attribute error
           #
           #   @return [String, nil]
@@ -39,8 +44,9 @@ module Telnyx
           #   @return [Symbol, Telnyx::Models::AI::Missions::RunUpdateParams::Status, nil]
           optional :status, enum: -> { Telnyx::AI::Missions::RunUpdateParams::Status }
 
-          # @!method initialize(mission_id:, error: nil, metadata: nil, result_payload: nil, result_summary: nil, status: nil, request_options: {})
+          # @!method initialize(mission_id:, run_id:, error: nil, metadata: nil, result_payload: nil, result_summary: nil, status: nil, request_options: {})
           #   @param mission_id [String]
+          #   @param run_id [String]
           #   @param error [String]
           #   @param metadata [Hash{Symbol=>Object}]
           #   @param result_payload [Hash{Symbol=>Object}]

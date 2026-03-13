@@ -3,6 +3,7 @@ module Telnyx
     module Calls
       type action_add_ai_assistant_messages_params =
         {
+          call_control_id: String,
           client_state: String,
           command_id: String,
           messages: ::Array[Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::message]
@@ -12,6 +13,8 @@ module Telnyx
       class ActionAddAIAssistantMessagesParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
 
         attr_reader client_state: String?
 
@@ -28,6 +31,7 @@ module Telnyx
         ) -> ::Array[Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::message]
 
         def initialize: (
+          call_control_id: String,
           ?client_state: String,
           ?command_id: String,
           ?messages: ::Array[Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::message],
@@ -35,6 +39,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          call_control_id: String,
           client_state: String,
           command_id: String,
           messages: ::Array[Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::message],

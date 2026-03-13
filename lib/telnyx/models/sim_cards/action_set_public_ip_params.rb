@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute region_code
         #   The code of the region where the public IP should be assigned. A list of
         #   available regions can be found at the regions endpoint
@@ -15,9 +20,11 @@ module Telnyx
         #   @return [String, nil]
         optional :region_code, String
 
-        # @!method initialize(region_code: nil, request_options: {})
+        # @!method initialize(id:, region_code: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::SimCards::ActionSetPublicIPParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param region_code [String] The code of the region where the public IP should be assigned. A list of availab
         #

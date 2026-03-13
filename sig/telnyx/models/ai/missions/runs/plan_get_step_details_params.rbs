@@ -4,7 +4,7 @@ module Telnyx
       module Missions
         module Runs
           type plan_get_step_details_params =
-            { mission_id: String, run_id: String }
+            { mission_id: String, run_id: String, step_id: String }
             & Telnyx::Internal::Type::request_parameters
 
           class PlanGetStepDetailsParams < Telnyx::Internal::Type::BaseModel
@@ -15,15 +15,19 @@ module Telnyx
 
             attr_accessor run_id: String
 
+            attr_accessor step_id: String
+
             def initialize: (
               mission_id: String,
               run_id: String,
+              step_id: String,
               ?request_options: Telnyx::request_opts
             ) -> void
 
             def to_hash: -> {
               mission_id: String,
               run_id: String,
+              step_id: String,
               request_options: Telnyx::RequestOptions
             }
           end

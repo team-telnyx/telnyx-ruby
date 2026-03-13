@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute call_control_id
+        #
+        #   @return [String]
+        required :call_control_id, String
+
         # @!attribute assistant
         #   AI Assistant configuration
         #
@@ -74,6 +79,8 @@ module Telnyx
         #     for details. Check
         #     [available voices](https://elevenlabs.io/docs/api-reference/get-voices).
         #   - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>`
+        #   - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
+        #     `Inworld.Max.Oliver`). Supported models: `Mini`, `Max`.
         #
         #   @return [String, nil]
         optional :voice, String
@@ -84,9 +91,11 @@ module Telnyx
         #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings }
 
-        # @!method initialize(assistant: nil, client_state: nil, command_id: nil, greeting: nil, interruption_settings: nil, transcription: nil, voice: nil, voice_settings: nil, request_options: {})
+        # @!method initialize(call_control_id:, assistant: nil, client_state: nil, command_id: nil, greeting: nil, interruption_settings: nil, transcription: nil, voice: nil, voice_settings: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionStartAIAssistantParams} for more details.
+        #
+        #   @param call_control_id [String]
         #
         #   @param assistant [Telnyx::Models::Calls::ActionStartAIAssistantParams::Assistant] AI Assistant configuration
         #

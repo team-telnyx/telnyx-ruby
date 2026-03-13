@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute format_
         #   The audio file format used when storing the conference recording. Can be either
         #   `mp3` or `wav`.
@@ -60,9 +65,11 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Trim, nil]
         optional :trim, enum: -> { Telnyx::Conferences::ActionRecordStartParams::Trim }
 
-        # @!method initialize(format_:, channels: nil, command_id: nil, custom_file_name: nil, play_beep: nil, region: nil, trim: nil, request_options: {})
+        # @!method initialize(id:, format_:, channels: nil, command_id: nil, custom_file_name: nil, play_beep: nil, region: nil, trim: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::ActionRecordStartParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param format_ [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Format] The audio file format used when storing the conference recording. Can be either
         #

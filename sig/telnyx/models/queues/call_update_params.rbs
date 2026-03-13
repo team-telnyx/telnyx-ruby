@@ -2,7 +2,7 @@ module Telnyx
   module Models
     module Queues
       type call_update_params =
-        { queue_name: String, keep_after_hangup: bool }
+        { queue_name: String, call_control_id: String, keep_after_hangup: bool }
         & Telnyx::Internal::Type::request_parameters
 
       class CallUpdateParams < Telnyx::Internal::Type::BaseModel
@@ -11,18 +11,22 @@ module Telnyx
 
         attr_accessor queue_name: String
 
+        attr_accessor call_control_id: String
+
         attr_reader keep_after_hangup: bool?
 
         def keep_after_hangup=: (bool) -> bool
 
         def initialize: (
           queue_name: String,
+          call_control_id: String,
           ?keep_after_hangup: bool,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           queue_name: String,
+          call_control_id: String,
           keep_after_hangup: bool,
           request_options: Telnyx::RequestOptions
         }

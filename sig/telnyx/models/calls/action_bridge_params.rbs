@@ -3,6 +3,7 @@ module Telnyx
     module Calls
       type action_bridge_params =
         {
+          call_control_id_to_bridge: String,
           call_control_id_to_bridge_with: String,
           client_state: String,
           command_id: String,
@@ -29,6 +30,8 @@ module Telnyx
       class ActionBridgeParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id_to_bridge: String
 
         attr_accessor call_control_id_to_bridge_with: String
 
@@ -123,6 +126,7 @@ module Telnyx
         def video_room_id=: (String) -> String
 
         def initialize: (
+          call_control_id_to_bridge: String,
           call_control_id_to_bridge_with: String,
           ?client_state: String,
           ?command_id: String,
@@ -147,6 +151,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          call_control_id_to_bridge: String,
           call_control_id_to_bridge_with: String,
           client_state: String,
           command_id: String,

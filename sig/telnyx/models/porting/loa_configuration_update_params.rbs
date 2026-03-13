@@ -3,6 +3,7 @@ module Telnyx
     module Porting
       type loa_configuration_update_params =
         {
+          id: String,
           address: Telnyx::Porting::LoaConfigurationUpdateParams::Address,
           company_name: String,
           contact: Telnyx::Porting::LoaConfigurationUpdateParams::Contact,
@@ -15,6 +16,8 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        attr_accessor id: String
+
         attr_accessor address: Telnyx::Porting::LoaConfigurationUpdateParams::Address
 
         attr_accessor company_name: String
@@ -26,6 +29,7 @@ module Telnyx
         attr_accessor name: String
 
         def initialize: (
+          id: String,
           address: Telnyx::Porting::LoaConfigurationUpdateParams::Address,
           company_name: String,
           contact: Telnyx::Porting::LoaConfigurationUpdateParams::Contact,
@@ -35,6 +39,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          id: String,
           address: Telnyx::Porting::LoaConfigurationUpdateParams::Address,
           company_name: String,
           contact: Telnyx::Porting::LoaConfigurationUpdateParams::Contact,

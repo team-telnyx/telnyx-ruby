@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute call_control_id
+        #
+        #   @return [String]
+        required :call_control_id, String
+
         # @!attribute audio_url
         #   The URL of a file to be played back at the beginning of each prompt. The URL can
         #   point to either a WAV or MP3 file. media_name and audio_url cannot be used
@@ -103,9 +108,11 @@ module Telnyx
         #   @return [String, nil]
         optional :valid_digits, String
 
-        # @!method initialize(audio_url: nil, client_state: nil, command_id: nil, inter_digit_timeout_millis: nil, invalid_audio_url: nil, invalid_media_name: nil, maximum_digits: nil, maximum_tries: nil, media_name: nil, minimum_digits: nil, terminating_digit: nil, timeout_millis: nil, valid_digits: nil, request_options: {})
+        # @!method initialize(call_control_id:, audio_url: nil, client_state: nil, command_id: nil, inter_digit_timeout_millis: nil, invalid_audio_url: nil, invalid_media_name: nil, maximum_digits: nil, maximum_tries: nil, media_name: nil, minimum_digits: nil, terminating_digit: nil, timeout_millis: nil, valid_digits: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionGatherUsingAudioParams} for more details.
+        #
+        #   @param call_control_id [String]
         #
         #   @param audio_url [String] The URL of a file to be played back at the beginning of each prompt. The URL can
         #

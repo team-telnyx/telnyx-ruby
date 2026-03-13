@@ -9,6 +9,11 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
+          # @!attribute test_id
+          #
+          #   @return [String]
+          required :test_id, String
+
           # @!attribute description
           #   Updated description of the test's purpose and evaluation criteria.
           #
@@ -57,7 +62,9 @@ module Telnyx
           #   @return [String, nil]
           optional :test_suite, String
 
-          # @!method initialize(description: nil, destination: nil, instructions: nil, max_duration_seconds: nil, name: nil, rubric: nil, telnyx_conversation_channel: nil, test_suite: nil, request_options: {})
+          # @!method initialize(test_id:, description: nil, destination: nil, instructions: nil, max_duration_seconds: nil, name: nil, rubric: nil, telnyx_conversation_channel: nil, test_suite: nil, request_options: {})
+          #   @param test_id [String]
+          #
           #   @param description [String] Updated description of the test's purpose and evaluation criteria.
           #
           #   @param destination [String] Updated target destination for test conversations.

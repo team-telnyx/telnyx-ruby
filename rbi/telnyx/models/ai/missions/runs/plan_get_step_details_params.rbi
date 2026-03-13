@@ -23,14 +23,18 @@ module Telnyx
             sig { returns(String) }
             attr_accessor :run_id
 
+            sig { returns(String) }
+            attr_accessor :step_id
+
             sig do
               params(
                 mission_id: String,
                 run_id: String,
+                step_id: String,
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(T.attached_class)
             end
-            def self.new(mission_id:, run_id:, request_options: {})
+            def self.new(mission_id:, run_id:, step_id:, request_options: {})
             end
 
             sig do
@@ -38,6 +42,7 @@ module Telnyx
                 {
                   mission_id: String,
                   run_id: String,
+                  step_id: String,
                   request_options: Telnyx::RequestOptions
                 }
               )

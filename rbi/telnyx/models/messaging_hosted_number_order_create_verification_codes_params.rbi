@@ -14,6 +14,9 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       sig { returns(T::Array[String]) }
       attr_accessor :phone_numbers
 
@@ -26,18 +29,25 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           phone_numbers: T::Array[String],
           verification_method:
             Telnyx::MessagingHostedNumberOrderCreateVerificationCodesParams::VerificationMethod::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(phone_numbers:, verification_method:, request_options: {})
+      def self.new(
+        id:,
+        phone_numbers:,
+        verification_method:,
+        request_options: {}
+      )
       end
 
       sig do
         override.returns(
           {
+            id: String,
             phone_numbers: T::Array[String],
             verification_method:
               Telnyx::MessagingHostedNumberOrderCreateVerificationCodesParams::VerificationMethod::OrSymbol,
@@ -68,11 +78,6 @@ module Telnyx
         CALL =
           T.let(
             :call,
-            Telnyx::MessagingHostedNumberOrderCreateVerificationCodesParams::VerificationMethod::TaggedSymbol
-          )
-        FLASHCALL =
-          T.let(
-            :flashcall,
             Telnyx::MessagingHostedNumberOrderCreateVerificationCodesParams::VerificationMethod::TaggedSymbol
           )
 

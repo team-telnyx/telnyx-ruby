@@ -15,14 +15,20 @@ module Telnyx
             #   @return [String]
             required :mission_id, String
 
+            # @!attribute run_id
+            #
+            #   @return [String]
+            required :run_id, String
+
             # @!attribute steps
             #
             #   @return [Array<Telnyx::Models::AI::Missions::Runs::PlanCreateParams::Step>]
             required :steps,
                      -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Missions::Runs::PlanCreateParams::Step] }
 
-            # @!method initialize(mission_id:, steps:, request_options: {})
+            # @!method initialize(mission_id:, run_id:, steps:, request_options: {})
             #   @param mission_id [String]
+            #   @param run_id [String]
             #   @param steps [Array<Telnyx::Models::AI::Missions::Runs::PlanCreateParams::Step>]
             #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

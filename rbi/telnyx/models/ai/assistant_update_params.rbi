@@ -12,6 +12,9 @@ module Telnyx
             T.any(Telnyx::AI::AssistantUpdateParams, Telnyx::Internal::AnyHash)
           end
 
+        sig { returns(String) }
+        attr_accessor :assistant_id
+
         sig { returns(T.nilable(String)) }
         attr_reader :description
 
@@ -145,6 +148,7 @@ module Telnyx
                   Telnyx::AI::AssistantTool::Handoff,
                   Telnyx::AI::HangupTool,
                   Telnyx::AI::AssistantTool::Transfer,
+                  Telnyx::AI::AssistantTool::Invite,
                   Telnyx::AI::AssistantTool::Refer,
                   Telnyx::AI::AssistantTool::SendDtmf,
                   Telnyx::AI::AssistantTool::SendMessage,
@@ -166,6 +170,7 @@ module Telnyx
                   Telnyx::AI::AssistantTool::Handoff::OrHash,
                   Telnyx::AI::HangupTool::OrHash,
                   Telnyx::AI::AssistantTool::Transfer::OrHash,
+                  Telnyx::AI::AssistantTool::Invite::OrHash,
                   Telnyx::AI::AssistantTool::Refer::OrHash,
                   Telnyx::AI::AssistantTool::SendDtmf::OrHash,
                   Telnyx::AI::AssistantTool::SendMessage::OrHash,
@@ -199,6 +204,7 @@ module Telnyx
 
         sig do
           params(
+            assistant_id: String,
             description: String,
             dynamic_variables: T::Hash[Symbol, T.anything],
             dynamic_variables_webhook_url: String,
@@ -221,6 +227,7 @@ module Telnyx
                   Telnyx::AI::AssistantTool::Handoff::OrHash,
                   Telnyx::AI::HangupTool::OrHash,
                   Telnyx::AI::AssistantTool::Transfer::OrHash,
+                  Telnyx::AI::AssistantTool::Invite::OrHash,
                   Telnyx::AI::AssistantTool::Refer::OrHash,
                   Telnyx::AI::AssistantTool::SendDtmf::OrHash,
                   Telnyx::AI::AssistantTool::SendMessage::OrHash,
@@ -234,6 +241,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          assistant_id:,
           description: nil,
           # Map of dynamic variables and their default values
           dynamic_variables: nil,
@@ -285,6 +293,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              assistant_id: String,
               description: String,
               dynamic_variables: T::Hash[Symbol, T.anything],
               dynamic_variables_webhook_url: String,
@@ -307,6 +316,7 @@ module Telnyx
                     Telnyx::AI::AssistantTool::Handoff,
                     Telnyx::AI::HangupTool,
                     Telnyx::AI::AssistantTool::Transfer,
+                    Telnyx::AI::AssistantTool::Invite,
                     Telnyx::AI::AssistantTool::Refer,
                     Telnyx::AI::AssistantTool::SendDtmf,
                     Telnyx::AI::AssistantTool::SendMessage,

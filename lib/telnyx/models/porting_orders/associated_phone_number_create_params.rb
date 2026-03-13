@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute porting_order_id
+        #
+        #   @return [String]
+        required :porting_order_id, String
+
         # @!attribute action
         #   Specifies the action to take with this phone number during partial porting.
         #
@@ -20,7 +25,9 @@ module Telnyx
         required :phone_number_range,
                  -> { Telnyx::PortingOrders::AssociatedPhoneNumberCreateParams::PhoneNumberRange }
 
-        # @!method initialize(action:, phone_number_range:, request_options: {})
+        # @!method initialize(porting_order_id:, action:, phone_number_range:, request_options: {})
+        #   @param porting_order_id [String]
+        #
         #   @param action [Symbol, Telnyx::Models::PortingOrders::AssociatedPhoneNumberCreateParams::Action] Specifies the action to take with this phone number during partial porting.
         #
         #   @param phone_number_range [Telnyx::Models::PortingOrders::AssociatedPhoneNumberCreateParams::PhoneNumberRange]

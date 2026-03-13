@@ -43,14 +43,18 @@ class Telnyx::Test::Resources::RecordingsTest < Telnyx::Test::ResourceTest
         call_session_id: String | nil,
         channels: Telnyx::RecordingResponseData::Channels | nil,
         conference_id: String | nil,
+        connection_id: String | nil,
         created_at: String | nil,
         download_urls: Telnyx::RecordingResponseData::DownloadURLs | nil,
         duration_millis: Integer | nil,
+        from: String | nil,
+        initiated_by: String | nil,
         record_type: Telnyx::RecordingResponseData::RecordType | nil,
         recording_ended_at: String | nil,
         recording_started_at: String | nil,
         source: Telnyx::RecordingResponseData::Source | nil,
         status: Telnyx::RecordingResponseData::Status | nil,
+        to: String | nil,
         updated_at: String | nil
       }
     end

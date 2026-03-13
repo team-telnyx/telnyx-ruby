@@ -9,6 +9,11 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
+          # @!attribute id
+          #
+          #   @return [String]
+          required :id, String
+
           # @!attribute page_number
           #
           #   @return [Integer]
@@ -21,10 +26,12 @@ module Telnyx
           #   @return [Integer]
           required :page_size, Integer
 
-          # @!method initialize(page_number:, page_size:, request_options: {})
+          # @!method initialize(id:, page_number:, page_size:, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveStatusHistoryParams}
           #   for more details.
+          #
+          #   @param id [String]
           #
           #   @param page_number [Integer]
           #

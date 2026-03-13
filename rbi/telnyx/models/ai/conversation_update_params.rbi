@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :conversation_id
+
         # Metadata associated with the conversation. Set `ai_disabled` to `true` to stop
         # AI from responding to messages (e.g., when a human agent takes over). Set to
         # `false` to re-enable AI responses.
@@ -26,11 +29,13 @@ module Telnyx
 
         sig do
           params(
+            conversation_id: String,
             metadata: T::Hash[Symbol, String],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          conversation_id:,
           # Metadata associated with the conversation. Set `ai_disabled` to `true` to stop
           # AI from responding to messages (e.g., when a human agent takes over). Set to
           # `false` to re-enable AI responses.
@@ -42,6 +47,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              conversation_id: String,
               metadata: T::Hash[Symbol, String],
               request_options: Telnyx::RequestOptions
             }

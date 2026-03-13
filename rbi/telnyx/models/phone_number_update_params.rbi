@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::PhoneNumberUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :phone_number_id
+
       # Identifies the address associated with the phone number.
       sig { returns(T.nilable(String)) }
       attr_reader :address_id
@@ -65,6 +68,7 @@ module Telnyx
 
       sig do
         params(
+          phone_number_id: String,
           address_id: String,
           billing_group_id: String,
           connection_id: String,
@@ -76,6 +80,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        phone_number_id:,
         # Identifies the address associated with the phone number.
         address_id: nil,
         # Identifies the billing group associated with the phone number.
@@ -100,6 +105,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            phone_number_id: String,
             address_id: String,
             billing_group_id: String,
             connection_id: String,

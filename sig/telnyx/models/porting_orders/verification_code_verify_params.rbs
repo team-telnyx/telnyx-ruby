@@ -3,6 +3,7 @@ module Telnyx
     module PortingOrders
       type verification_code_verify_params =
         {
+          id: String,
           verification_codes: ::Array[Telnyx::PortingOrders::VerificationCodeVerifyParams::VerificationCode]
         }
         & Telnyx::Internal::Type::request_parameters
@@ -11,6 +12,8 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        attr_accessor id: String
+
         attr_reader verification_codes: ::Array[Telnyx::PortingOrders::VerificationCodeVerifyParams::VerificationCode]?
 
         def verification_codes=: (
@@ -18,11 +21,13 @@ module Telnyx
         ) -> ::Array[Telnyx::PortingOrders::VerificationCodeVerifyParams::VerificationCode]
 
         def initialize: (
+          id: String,
           ?verification_codes: ::Array[Telnyx::PortingOrders::VerificationCodeVerifyParams::VerificationCode],
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
+          id: String,
           verification_codes: ::Array[Telnyx::PortingOrders::VerificationCodeVerifyParams::VerificationCode],
           request_options: Telnyx::RequestOptions
         }

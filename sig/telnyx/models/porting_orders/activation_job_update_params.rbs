@@ -2,7 +2,7 @@ module Telnyx
   module Models
     module PortingOrders
       type activation_job_update_params =
-        { id: String, activate_at: Time }
+        { id: String, activation_job_id: String, activate_at: Time }
         & Telnyx::Internal::Type::request_parameters
 
       class ActivationJobUpdateParams < Telnyx::Internal::Type::BaseModel
@@ -11,18 +11,22 @@ module Telnyx
 
         attr_accessor id: String
 
+        attr_accessor activation_job_id: String
+
         attr_reader activate_at: Time?
 
         def activate_at=: (Time) -> Time
 
         def initialize: (
           id: String,
+          activation_job_id: String,
           ?activate_at: Time,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           id: String,
+          activation_job_id: String,
           activate_at: Time,
           request_options: Telnyx::RequestOptions
         }

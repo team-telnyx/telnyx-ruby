@@ -9,6 +9,11 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
+          # @!attribute account_sid
+          #
+          #   @return [String]
+          required :account_sid, String
+
           # @!attribute friendly_name
           #   A human readable name for the queue.
           #
@@ -21,7 +26,9 @@ module Telnyx
           #   @return [Integer, nil]
           optional :max_size, Integer, api_name: :MaxSize
 
-          # @!method initialize(friendly_name: nil, max_size: nil, request_options: {})
+          # @!method initialize(account_sid:, friendly_name: nil, max_size: nil, request_options: {})
+          #   @param account_sid [String]
+          #
           #   @param friendly_name [String] A human readable name for the queue.
           #
           #   @param max_size [Integer] The maximum size of the queue.

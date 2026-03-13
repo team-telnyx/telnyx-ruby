@@ -20,11 +20,24 @@ module Telnyx
 
       # Returns a list of your recording transcriptions.
       sig do
-        params(request_options: Telnyx::RequestOptions::OrHash).returns(
-          Telnyx::Models::RecordingTranscriptionListResponse
+        params(
+          filter: Telnyx::RecordingTranscriptionListParams::Filter::OrHash,
+          page_number: Integer,
+          page_size: Integer,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::RecordingTranscription
+          ]
         )
       end
-      def list(request_options: {})
+      def list(
+        # Filter recording transcriptions by various attributes.
+        filter: nil,
+        page_number: nil,
+        page_size: nil,
+        request_options: {}
+      )
       end
 
       # Permanently deletes a recording transcription.

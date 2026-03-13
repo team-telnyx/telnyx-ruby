@@ -2,7 +2,7 @@ module Telnyx
   module Models
     module PortingOrders
       type phone_number_extension_delete_params =
-        { porting_order_id: String }
+        { porting_order_id: String, id: String }
         & Telnyx::Internal::Type::request_parameters
 
       class PhoneNumberExtensionDeleteParams < Telnyx::Internal::Type::BaseModel
@@ -11,13 +11,17 @@ module Telnyx
 
         attr_accessor porting_order_id: String
 
+        attr_accessor id: String
+
         def initialize: (
           porting_order_id: String,
+          id: String,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           porting_order_id: String,
+          id: String,
           request_options: Telnyx::RequestOptions
         }
       end

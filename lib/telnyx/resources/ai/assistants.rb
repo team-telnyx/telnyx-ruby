@@ -25,6 +25,10 @@ module Telnyx
         # @return [Telnyx::Resources::AI::Assistants::Versions]
         attr_reader :versions
 
+        # Configure AI assistant specifications
+        # @return [Telnyx::Resources::AI::Assistants::Tags]
+        attr_reader :tags
+
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::AI::AssistantCreateParams} for more details.
         #
@@ -58,7 +62,7 @@ module Telnyx
         #
         # @param telephony_settings [Telnyx::Models::AI::TelephonySettings]
         #
-        # @param tools [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn>] The tools that the assistant can use. These may be templated with [dynamic varia
+        # @param tools [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn>] The tools that the assistant can use. These may be templated with [dynamic varia
         #
         # @param transcription [Telnyx::Models::AI::TranscriptionSettings]
         #
@@ -145,7 +149,7 @@ module Telnyx
         #
         # @param telephony_settings [Telnyx::Models::AI::TelephonySettings]
         #
-        # @param tools [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn>] The tools that the assistant can use. These may be templated with [dynamic varia
+        # @param tools [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn>] The tools that the assistant can use. These may be templated with [dynamic varia
         #
         # @param transcription [Telnyx::Models::AI::TranscriptionSettings]
         #
@@ -356,6 +360,7 @@ module Telnyx
           @scheduled_events = Telnyx::Resources::AI::Assistants::ScheduledEvents.new(client: client)
           @tools = Telnyx::Resources::AI::Assistants::Tools.new(client: client)
           @versions = Telnyx::Resources::AI::Assistants::Versions.new(client: client)
+          @tags = Telnyx::Resources::AI::Assistants::Tags.new(client: client)
         end
       end
     end

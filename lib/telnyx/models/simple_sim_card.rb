@@ -134,9 +134,15 @@ module Telnyx
         #
         #   @return [String, nil]
         optional :version, String
+
+        # @!attribute voice_enabled
+        #   Indicates whether voice services are enabled for the SIM card.
+        #
+        #   @return [Boolean, nil]
+        optional :voice_enabled, Telnyx::Internal::Type::Boolean
       end
 
-      # @!method initialize(id: nil, actions_in_progress: nil, authorized_imeis: nil, created_at: nil, current_billing_period_consumed_data: nil, data_limit: nil, eid: nil, esim_installation_status: nil, iccid: nil, imsi: nil, msisdn: nil, record_type: nil, resources_with_in_progress_actions: nil, sim_card_group_id: nil, status: nil, tags: nil, type: nil, updated_at: nil, version: nil)
+      # @!method initialize(id: nil, actions_in_progress: nil, authorized_imeis: nil, created_at: nil, current_billing_period_consumed_data: nil, data_limit: nil, eid: nil, esim_installation_status: nil, iccid: nil, imsi: nil, msisdn: nil, record_type: nil, resources_with_in_progress_actions: nil, sim_card_group_id: nil, status: nil, tags: nil, type: nil, updated_at: nil, version: nil, voice_enabled: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::SimpleSimCard} for more details.
       #
@@ -177,6 +183,8 @@ module Telnyx
       #   @param updated_at [String] ISO 8601 formatted date-time indicating when the resource was updated.
       #
       #   @param version [String] The version of the SIM card.
+      #
+      #   @param voice_enabled [Boolean] Indicates whether voice services are enabled for the SIM card.
 
       # @see Telnyx::Models::SimpleSimCard#current_billing_period_consumed_data
       class CurrentBillingPeriodConsumedData < Telnyx::Internal::Type::BaseModel

@@ -1,0 +1,36 @@
+module Telnyx
+  module Resources
+    class Whatsapp
+      class PhoneNumbers
+        attr_reader calling_settings: Telnyx::Resources::Whatsapp::PhoneNumbers::CallingSettings
+
+        attr_reader profile: Telnyx::Resources::Whatsapp::PhoneNumbers::Profile
+
+        def list: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Whatsapp::PhoneNumberListResponse]
+
+        def delete: (
+          String phone_number,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def resend_verification: (
+          String phone_number,
+          ?verification_method: Telnyx::Models::Whatsapp::PhoneNumberResendVerificationParams::verification_method,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def verify: (
+          String phone_number,
+          code: String,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

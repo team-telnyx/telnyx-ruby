@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::SimCardDeleteParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # Enables deletion of disabled eSIMs that can't be uninstalled from a device. This
       # is irreversible and the eSIM cannot be re-registered.
       sig { returns(T.nilable(T::Boolean)) }
@@ -21,11 +24,13 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           report_lost: T::Boolean,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # Enables deletion of disabled eSIMs that can't be uninstalled from a device. This
         # is irreversible and the eSIM cannot be re-registered.
         report_lost: nil,
@@ -35,7 +40,11 @@ module Telnyx
 
       sig do
         override.returns(
-          { report_lost: T::Boolean, request_options: Telnyx::RequestOptions }
+          {
+            id: String,
+            report_lost: T::Boolean,
+            request_options: Telnyx::RequestOptions
+          }
         )
       end
       def to_hash

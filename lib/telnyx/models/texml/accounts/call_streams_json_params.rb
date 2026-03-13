@@ -14,6 +14,11 @@ module Telnyx
           #   @return [String]
           required :account_sid, String
 
+          # @!attribute call_sid
+          #
+          #   @return [String]
+          required :call_sid, String
+
           # @!attribute bidirectional_codec
           #   Indicates codec for bidirectional streaming RTP payloads. Used only with
           #   stream_bidirectional_mode=rtp. Case sensitive.
@@ -67,11 +72,13 @@ module Telnyx
           #   @return [String, nil]
           optional :url, String, api_name: :Url
 
-          # @!method initialize(account_sid:, bidirectional_codec: nil, bidirectional_mode: nil, name: nil, status_callback: nil, status_callback_method: nil, track: nil, url: nil, request_options: {})
+          # @!method initialize(account_sid:, call_sid:, bidirectional_codec: nil, bidirectional_mode: nil, name: nil, status_callback: nil, status_callback_method: nil, track: nil, url: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Texml::Accounts::CallStreamsJsonParams} for more details.
           #
           #   @param account_sid [String]
+          #
+          #   @param call_sid [String]
           #
           #   @param bidirectional_codec [Symbol, Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::BidirectionalCodec] Indicates codec for bidirectional streaming RTP payloads. Used only with
           #   stream\_

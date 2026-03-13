@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::ConferenceRetrieveParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # Region where the conference data is located
       sig do
         returns(T.nilable(Telnyx::ConferenceRetrieveParams::Region::OrSymbol))
@@ -24,11 +27,13 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           region: Telnyx::ConferenceRetrieveParams::Region::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # Region where the conference data is located
         region: nil,
         request_options: {}
@@ -38,6 +43,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             region: Telnyx::ConferenceRetrieveParams::Region::OrSymbol,
             request_options: Telnyx::RequestOptions
           }

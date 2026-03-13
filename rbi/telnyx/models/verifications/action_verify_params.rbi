@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :verification_id
+
         # This is the code the user submits for verification.
         sig { returns(T.nilable(String)) }
         attr_reader :code
@@ -42,12 +45,14 @@ module Telnyx
 
         sig do
           params(
+            verification_id: String,
             code: String,
             status: Telnyx::Verifications::ActionVerifyParams::Status::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          verification_id:,
           # This is the code the user submits for verification.
           code: nil,
           # Identifies if the verification code has been accepted or rejected. Only
@@ -60,6 +65,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              verification_id: String,
               code: String,
               status:
                 Telnyx::Verifications::ActionVerifyParams::Status::OrSymbol,

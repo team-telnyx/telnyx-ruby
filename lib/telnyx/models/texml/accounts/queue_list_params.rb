@@ -9,6 +9,11 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
+          # @!attribute account_sid
+          #
+          #   @return [String]
+          required :account_sid, String
+
           # @!attribute date_created
           #   Filters conferences by the creation date. Expected format is YYYY-MM-DD. Also
           #   accepts inequality operators, e.g. DateCreated>=2023-05-22.
@@ -42,9 +47,11 @@ module Telnyx
           #   @return [String, nil]
           optional :page_token, String
 
-          # @!method initialize(date_created: nil, date_updated: nil, page: nil, page_size: nil, page_token: nil, request_options: {})
+          # @!method initialize(account_sid:, date_created: nil, date_updated: nil, page: nil, page_size: nil, page_token: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Texml::Accounts::QueueListParams} for more details.
+          #
+          #   @param account_sid [String]
           #
           #   @param date_created [String] Filters conferences by the creation date. Expected format is YYYY-MM-DD. Also ac
           #

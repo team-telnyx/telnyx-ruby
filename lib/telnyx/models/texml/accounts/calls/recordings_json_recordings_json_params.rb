@@ -15,6 +15,11 @@ module Telnyx
             #   @return [String]
             required :account_sid, String
 
+            # @!attribute call_sid
+            #
+            #   @return [String]
+            required :call_sid, String
+
             # @!attribute play_beep
             #   Whether to play a beep when recording is started.
             #
@@ -72,12 +77,14 @@ module Telnyx
             #   @return [Boolean, nil]
             optional :send_recording_url, Telnyx::Internal::Type::Boolean, api_name: :SendRecordingUrl
 
-            # @!method initialize(account_sid:, play_beep: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_track: nil, send_recording_url: nil, request_options: {})
+            # @!method initialize(account_sid:, call_sid:, play_beep: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_track: nil, send_recording_url: nil, request_options: {})
             #   Some parameter documentations has been truncated, see
             #   {Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams} for
             #   more details.
             #
             #   @param account_sid [String]
+            #
+            #   @param call_sid [String]
             #
             #   @param play_beep [Boolean] Whether to play a beep when recording is started.
             #

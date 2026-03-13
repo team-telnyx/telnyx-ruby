@@ -9,6 +9,11 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
+          # @!attribute bucket_name
+          #
+          #   @return [String]
+          required :bucket_name, String
+
           # @!attribute certificate
           #   The SSL certificate file
           #
@@ -21,7 +26,9 @@ module Telnyx
           #   @return [Pathname, StringIO, IO, String, Telnyx::FilePart, nil]
           optional :private_key, Telnyx::Internal::Type::FileInput
 
-          # @!method initialize(certificate: nil, private_key: nil, request_options: {})
+          # @!method initialize(bucket_name:, certificate: nil, private_key: nil, request_options: {})
+          #   @param bucket_name [String]
+          #
           #   @param certificate [Pathname, StringIO, IO, String, Telnyx::FilePart] The SSL certificate file
           #
           #   @param private_key [Pathname, StringIO, IO, String, Telnyx::FilePart] The private key file

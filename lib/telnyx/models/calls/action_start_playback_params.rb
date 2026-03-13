@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute call_control_id
+        #
+        #   @return [String]
+        required :call_control_id, String
+
         # @!attribute audio_type
         #   Specifies the type of audio provided in `audio_url` or `playback_content`.
         #
@@ -91,9 +96,11 @@ module Telnyx
         #   @return [String, nil]
         optional :target_legs, String
 
-        # @!method initialize(audio_type: nil, audio_url: nil, cache_audio: nil, client_state: nil, command_id: nil, loop_: nil, media_name: nil, overlay: nil, playback_content: nil, stop: nil, target_legs: nil, request_options: {})
+        # @!method initialize(call_control_id:, audio_type: nil, audio_url: nil, cache_audio: nil, client_state: nil, command_id: nil, loop_: nil, media_name: nil, overlay: nil, playback_content: nil, stop: nil, target_legs: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionStartPlaybackParams} for more details.
+        #
+        #   @param call_control_id [String]
         #
         #   @param audio_type [Symbol, Telnyx::Models::Calls::ActionStartPlaybackParams::AudioType] Specifies the type of audio provided in `audio_url` or `playback_content`.
         #

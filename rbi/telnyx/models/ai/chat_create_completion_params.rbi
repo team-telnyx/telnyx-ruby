@@ -48,6 +48,15 @@ module Telnyx
         sig { params(early_stopping: T::Boolean).void }
         attr_writer :early_stopping
 
+        # Whether to enable the thinking/reasoning phase for models that support it (e.g.,
+        # QwQ, Qwen3). When set to false, the model will skip the internal reasoning step
+        # and respond directly, which can reduce latency. Defaults to true.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :enable_thinking
+
+        sig { params(enable_thinking: T::Boolean).void }
+        attr_writer :enable_thinking
+
         # Higher values will penalize the model from repeating the same output tokens.
         sig { returns(T.nilable(Float)) }
         attr_reader :frequency_penalty
@@ -245,6 +254,7 @@ module Telnyx
             api_key_ref: String,
             best_of: Integer,
             early_stopping: T::Boolean,
+            enable_thinking: T::Boolean,
             frequency_penalty: Float,
             guided_choice: T::Array[String],
             guided_json: T::Hash[Symbol, T.anything],
@@ -290,6 +300,10 @@ module Telnyx
           # there are `best_of` complete candidates; if `false`, a heuristic is applied and
           # the generation stops when is it very unlikely to find better candidates.
           early_stopping: nil,
+          # Whether to enable the thinking/reasoning phase for models that support it (e.g.,
+          # QwQ, Qwen3). When set to false, the model will skip the internal reasoning step
+          # and respond directly, which can reduce latency. Defaults to true.
+          enable_thinking: nil,
           # Higher values will penalize the model from repeating the same output tokens.
           frequency_penalty: nil,
           # If specified, the output will be exactly one of the choices.
@@ -356,6 +370,7 @@ module Telnyx
               api_key_ref: String,
               best_of: Integer,
               early_stopping: T::Boolean,
+              enable_thinking: T::Boolean,
               frequency_penalty: Float,
               guided_choice: T::Array[String],
               guided_json: T::Hash[Symbol, T.anything],

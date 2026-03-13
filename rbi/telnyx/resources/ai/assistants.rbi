@@ -25,6 +25,10 @@ module Telnyx
         sig { returns(Telnyx::Resources::AI::Assistants::Versions) }
         attr_reader :versions
 
+        # Configure AI assistant specifications
+        sig { returns(Telnyx::Resources::AI::Assistants::Tags) }
+        attr_reader :tags
+
         # Create a new AI Assistant.
         sig do
           params(
@@ -49,6 +53,7 @@ module Telnyx
                   Telnyx::AI::AssistantTool::Handoff::OrHash,
                   Telnyx::AI::HangupTool::OrHash,
                   Telnyx::AI::AssistantTool::Transfer::OrHash,
+                  Telnyx::AI::AssistantTool::Invite::OrHash,
                   Telnyx::AI::AssistantTool::Refer::OrHash,
                   Telnyx::AI::AssistantTool::SendDtmf::OrHash,
                   Telnyx::AI::AssistantTool::SendMessage::OrHash,
@@ -154,6 +159,7 @@ module Telnyx
                   Telnyx::AI::AssistantTool::Handoff::OrHash,
                   Telnyx::AI::HangupTool::OrHash,
                   Telnyx::AI::AssistantTool::Transfer::OrHash,
+                  Telnyx::AI::AssistantTool::Invite::OrHash,
                   Telnyx::AI::AssistantTool::Refer::OrHash,
                   Telnyx::AI::AssistantTool::SendDtmf::OrHash,
                   Telnyx::AI::AssistantTool::SendMessage::OrHash,

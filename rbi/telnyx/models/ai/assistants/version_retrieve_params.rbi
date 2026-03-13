@@ -19,6 +19,9 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :assistant_id
 
+          sig { returns(String) }
+          attr_accessor :version_id
+
           sig { returns(T.nilable(T::Boolean)) }
           attr_reader :include_mcp_servers
 
@@ -28,12 +31,14 @@ module Telnyx
           sig do
             params(
               assistant_id: String,
+              version_id: String,
               include_mcp_servers: T::Boolean,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
             assistant_id:,
+            version_id:,
             include_mcp_servers: nil,
             request_options: {}
           )
@@ -43,6 +48,7 @@ module Telnyx
             override.returns(
               {
                 assistant_id: String,
+                version_id: String,
                 include_mcp_servers: T::Boolean,
                 request_options: Telnyx::RequestOptions
               }

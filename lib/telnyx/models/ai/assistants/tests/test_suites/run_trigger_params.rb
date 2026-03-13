@@ -11,6 +11,11 @@ module Telnyx
               extend Telnyx::Internal::Type::RequestParameters::Converter
               include Telnyx::Internal::Type::RequestParameters
 
+              # @!attribute suite_name
+              #
+              #   @return [String]
+              required :suite_name, String
+
               # @!attribute destination_version_id
               #   Optional assistant version ID to use for all test runs in this suite. If
               #   provided, the version must exist or a 400 error will be returned. If not
@@ -19,10 +24,12 @@ module Telnyx
               #   @return [String, nil]
               optional :destination_version_id, String
 
-              # @!method initialize(destination_version_id: nil, request_options: {})
+              # @!method initialize(suite_name:, destination_version_id: nil, request_options: {})
               #   Some parameter documentations has been truncated, see
               #   {Telnyx::Models::AI::Assistants::Tests::TestSuites::RunTriggerParams} for more
               #   details.
+              #
+              #   @param suite_name [String]
               #
               #   @param destination_version_id [String] Optional assistant version ID to use for all test runs in this suite. If provide
               #

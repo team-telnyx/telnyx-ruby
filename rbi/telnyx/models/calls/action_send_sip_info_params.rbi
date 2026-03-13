@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # Content of the SIP INFO
         sig { returns(String) }
         attr_accessor :body
@@ -42,6 +45,7 @@ module Telnyx
 
         sig do
           params(
+            call_control_id: String,
             body: String,
             content_type: String,
             client_state: String,
@@ -50,6 +54,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id:,
           # Content of the SIP INFO
           body:,
           # Content type of the INFO body. Must be MIME type compliant. There is a 1,400
@@ -68,6 +73,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              call_control_id: String,
               body: String,
               content_type: String,
               client_state: String,

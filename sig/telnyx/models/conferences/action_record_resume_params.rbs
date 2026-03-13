@@ -3,6 +3,7 @@ module Telnyx
     module Conferences
       type action_record_resume_params =
         {
+          id: String,
           command_id: String,
           recording_id: String,
           region: Telnyx::Models::Conferences::ActionRecordResumeParams::region
@@ -12,6 +13,8 @@ module Telnyx
       class ActionRecordResumeParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor id: String
 
         attr_reader command_id: String?
 
@@ -28,6 +31,7 @@ module Telnyx
         ) -> Telnyx::Models::Conferences::ActionRecordResumeParams::region
 
         def initialize: (
+          id: String,
           ?command_id: String,
           ?recording_id: String,
           ?region: Telnyx::Models::Conferences::ActionRecordResumeParams::region,
@@ -35,6 +39,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          id: String,
           command_id: String,
           recording_id: String,
           region: Telnyx::Models::Conferences::ActionRecordResumeParams::region,

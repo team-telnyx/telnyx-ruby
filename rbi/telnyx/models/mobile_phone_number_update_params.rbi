@@ -14,6 +14,9 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       sig do
         returns(
           T.nilable(Telnyx::MobilePhoneNumberUpdateParams::CallForwarding)
@@ -120,6 +123,7 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           call_forwarding:
             Telnyx::MobilePhoneNumberUpdateParams::CallForwarding::OrHash,
           call_recording:
@@ -139,6 +143,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         call_forwarding: nil,
         call_recording: nil,
         caller_id_name_enabled: nil,
@@ -157,6 +162,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             call_forwarding:
               Telnyx::MobilePhoneNumberUpdateParams::CallForwarding,
             call_recording:

@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # The number of seconds the token will be valid for
         sig { returns(T.nilable(Integer)) }
         attr_reader :expires_in_seconds
@@ -42,6 +45,7 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             expires_in_seconds: Integer,
             permissions:
               Telnyx::PortingOrders::ActionShareParams::Permissions::OrSymbol,
@@ -49,6 +53,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # The number of seconds the token will be valid for
           expires_in_seconds: nil,
           # The permissions the token will have
@@ -60,6 +65,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               expires_in_seconds: Integer,
               permissions:
                 Telnyx::PortingOrders::ActionShareParams::Permissions::OrSymbol,

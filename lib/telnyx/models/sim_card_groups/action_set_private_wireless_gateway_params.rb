@@ -8,13 +8,20 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute private_wireless_gateway_id
         #   The identification of the related Private Wireless Gateway resource.
         #
         #   @return [String]
         required :private_wireless_gateway_id, String
 
-        # @!method initialize(private_wireless_gateway_id:, request_options: {})
+        # @!method initialize(id:, private_wireless_gateway_id:, request_options: {})
+        #   @param id [String]
+        #
         #   @param private_wireless_gateway_id [String] The identification of the related Private Wireless Gateway resource.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]

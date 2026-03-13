@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # Configure the messaging product for this number:
         #
         # - Omit this field or set its value to `null` to keep the current value.
@@ -46,6 +49,7 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             messaging_product: String,
             messaging_profile_id: String,
             tags: T::Array[String],
@@ -53,6 +57,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # Configure the messaging product for this number:
           #
           # - Omit this field or set its value to `null` to keep the current value.
@@ -74,6 +79,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               messaging_product: String,
               messaging_profile_id: String,
               tags: T::Array[String],

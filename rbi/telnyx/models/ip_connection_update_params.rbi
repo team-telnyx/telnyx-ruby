@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::IPConnectionUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # Defaults to true
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :active
@@ -217,6 +220,7 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           active: T::Boolean,
           anchorsite_override: Telnyx::AnchorsiteOverride::OrSymbol,
           android_push_credential_id: T.nilable(String),
@@ -248,6 +252,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # Defaults to true
         active: nil,
         # `Latency` directs Telnyx to route media through the site with the lowest
@@ -319,6 +324,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             active: T::Boolean,
             anchorsite_override: Telnyx::AnchorsiteOverride::OrSymbol,
             android_push_credential_id: T.nilable(String),

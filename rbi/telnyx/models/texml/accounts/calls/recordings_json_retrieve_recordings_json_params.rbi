@@ -20,18 +20,26 @@ module Telnyx
             sig { returns(String) }
             attr_accessor :account_sid
 
+            sig { returns(String) }
+            attr_accessor :call_sid
+
             sig do
               params(
                 account_sid: String,
+                call_sid: String,
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(T.attached_class)
             end
-            def self.new(account_sid:, request_options: {})
+            def self.new(account_sid:, call_sid:, request_options: {})
             end
 
             sig do
               override.returns(
-                { account_sid: String, request_options: Telnyx::RequestOptions }
+                {
+                  account_sid: String,
+                  call_sid: String,
+                  request_options: Telnyx::RequestOptions
+                }
               )
             end
             def to_hash

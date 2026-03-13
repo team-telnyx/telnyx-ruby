@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :task_id
+
         sig { returns(T.nilable(Integer)) }
         attr_reader :cluster_id
 
@@ -23,16 +26,21 @@ module Telnyx
 
         sig do
           params(
+            task_id: String,
             cluster_id: Integer,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(cluster_id: nil, request_options: {})
+        def self.new(task_id:, cluster_id: nil, request_options: {})
         end
 
         sig do
           override.returns(
-            { cluster_id: Integer, request_options: Telnyx::RequestOptions }
+            {
+              task_id: String,
+              cluster_id: Integer,
+              request_options: Telnyx::RequestOptions
+            }
           )
         end
         def to_hash

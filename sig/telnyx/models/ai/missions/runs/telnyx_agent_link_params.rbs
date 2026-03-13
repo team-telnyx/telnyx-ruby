@@ -4,7 +4,7 @@ module Telnyx
       module Missions
         module Runs
           type telnyx_agent_link_params =
-            { mission_id: String, telnyx_agent_id: String }
+            { mission_id: String, run_id: String, telnyx_agent_id: String }
             & Telnyx::Internal::Type::request_parameters
 
           class TelnyxAgentLinkParams < Telnyx::Internal::Type::BaseModel
@@ -13,16 +13,20 @@ module Telnyx
 
             attr_accessor mission_id: String
 
+            attr_accessor run_id: String
+
             attr_accessor telnyx_agent_id: String
 
             def initialize: (
               mission_id: String,
+              run_id: String,
               telnyx_agent_id: String,
               ?request_options: Telnyx::request_opts
             ) -> void
 
             def to_hash: -> {
               mission_id: String,
+              run_id: String,
               telnyx_agent_id: String,
               request_options: Telnyx::RequestOptions
             }

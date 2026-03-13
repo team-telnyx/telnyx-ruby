@@ -11,15 +11,23 @@ module Telnyx
           T.any(Telnyx::QueueRetrieveParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :queue_name
+
       sig do
-        params(request_options: Telnyx::RequestOptions::OrHash).returns(
-          T.attached_class
-        )
+        params(
+          queue_name: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(request_options: {})
+      def self.new(queue_name:, request_options: {})
       end
 
-      sig { override.returns({ request_options: Telnyx::RequestOptions }) }
+      sig do
+        override.returns(
+          { queue_name: String, request_options: Telnyx::RequestOptions }
+        )
+      end
       def to_hash
       end
     end

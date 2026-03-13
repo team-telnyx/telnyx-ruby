@@ -52,12 +52,12 @@ module Telnyx
           utterance_end_ms: Integer
         }
 
-        type transcription_engine = :Deepgram
+        type transcription_engine = :"deepgram/nova-3"
 
         module TranscriptionEngine
           extend Telnyx::Internal::Type::Enum
 
-          DEEPGRAM: :Deepgram
+          DEEPGRAM_NOVA_3: :"deepgram/nova-3"
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::DeepgramNova3Config::transcription_engine]
         end

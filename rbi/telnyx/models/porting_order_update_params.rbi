@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::PortingOrderUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       sig do
         returns(T.nilable(Telnyx::PortingOrderUpdateParams::ActivationSettings))
       end
@@ -119,6 +122,7 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           activation_settings:
             Telnyx::PortingOrderUpdateParams::ActivationSettings::OrHash,
           customer_group_reference: String,
@@ -138,6 +142,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         activation_settings: nil,
         customer_group_reference: nil,
         customer_reference: nil,
@@ -164,6 +169,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             activation_settings:
               Telnyx::PortingOrderUpdateParams::ActivationSettings,
             customer_group_reference: String,

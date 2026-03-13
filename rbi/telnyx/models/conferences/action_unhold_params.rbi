@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # List of unique identifiers and tokens for controlling the call. Enter each call
         # control ID to be unheld.
         sig { returns(T::Array[String]) }
@@ -38,12 +41,14 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             call_control_ids: T::Array[String],
             region: Telnyx::Conferences::ActionUnholdParams::Region::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # List of unique identifiers and tokens for controlling the call. Enter each call
           # control ID to be unheld.
           call_control_ids:,
@@ -57,6 +62,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               call_control_ids: T::Array[String],
               region: Telnyx::Conferences::ActionUnholdParams::Region::OrSymbol,
               request_options: Telnyx::RequestOptions

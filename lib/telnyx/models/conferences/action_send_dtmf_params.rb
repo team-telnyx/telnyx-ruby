@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute digits
         #   DTMF digits to send. Valid characters: 0-9, A-D, \*, #, w (0.5s pause), W (1s
         #   pause).
@@ -35,9 +40,11 @@ module Telnyx
         #   @return [Integer, nil]
         optional :duration_millis, Integer
 
-        # @!method initialize(digits:, call_control_ids: nil, client_state: nil, duration_millis: nil, request_options: {})
+        # @!method initialize(id:, digits:, call_control_ids: nil, client_state: nil, duration_millis: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::ActionSendDtmfParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param digits [String] DTMF digits to send. Valid characters: 0-9, A-D, \*, #, w (0.5s pause), W (1s
         #   pau

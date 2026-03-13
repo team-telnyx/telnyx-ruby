@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::RoomUpdateParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :room_id
+
       # Enable or disable recording for that room.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :enable_recording
@@ -58,6 +61,7 @@ module Telnyx
 
       sig do
         params(
+          room_id: String,
           enable_recording: T::Boolean,
           max_participants: Integer,
           unique_name: String,
@@ -68,6 +72,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        room_id:,
         # Enable or disable recording for that room.
         enable_recording: nil,
         # The maximum amount of participants allowed in a room. If new participants try to
@@ -90,6 +95,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            room_id: String,
             enable_recording: T::Boolean,
             max_participants: Integer,
             unique_name: String,

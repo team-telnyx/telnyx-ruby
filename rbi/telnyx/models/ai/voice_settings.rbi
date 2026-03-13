@@ -57,6 +57,15 @@ module Telnyx
         end
         attr_writer :background_audio
 
+        # Enables emotionally expressive speech using SSML emotion tags. When enabled, the
+        # assistant uses audio tags like angry, excited, content, and sad to add emotional
+        # nuance. Only supported for Telnyx Ultra voices.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :expressive_mode
+
+        sig { params(expressive_mode: T::Boolean).void }
+        attr_writer :expressive_mode
+
         # Enhances recognition for specific languages and dialects during MiniMax TTS
         # synthesis. Default is null (no boost). Set to 'auto' for automatic language
         # detection. Only applicable when using MiniMax voices.
@@ -126,6 +135,7 @@ module Telnyx
                 Telnyx::AI::VoiceSettings::BackgroundAudio::MediaURL::OrHash,
                 Telnyx::AI::VoiceSettings::BackgroundAudio::MediaName::OrHash
               ),
+            expressive_mode: T::Boolean,
             language_boost:
               T.nilable(Telnyx::AI::VoiceSettings::LanguageBoost::OrSymbol),
             similarity_boost: Float,
@@ -154,6 +164,10 @@ module Telnyx
           # supply a looped MP3 URL. If a media URL is chosen in the portal, customers can
           # preview it before saving.
           background_audio: nil,
+          # Enables emotionally expressive speech using SSML emotion tags. When enabled, the
+          # assistant uses audio tags like angry, excited, content, and sad to add emotional
+          # nuance. Only supported for Telnyx Ultra voices.
+          expressive_mode: nil,
           # Enhances recognition for specific languages and dialects during MiniMax TTS
           # synthesis. Default is null (no boost). Set to 'auto' for automatic language
           # detection. Only applicable when using MiniMax voices.
@@ -193,6 +207,7 @@ module Telnyx
                   Telnyx::AI::VoiceSettings::BackgroundAudio::MediaURL,
                   Telnyx::AI::VoiceSettings::BackgroundAudio::MediaName
                 ),
+              expressive_mode: T::Boolean,
               language_boost:
                 T.nilable(Telnyx::AI::VoiceSettings::LanguageBoost::OrSymbol),
               similarity_boost: Float,

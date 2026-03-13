@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         sig do
           returns(
             T.nilable(
@@ -38,6 +41,7 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             additional_documents:
               T::Array[
                 Telnyx::PortingOrders::AdditionalDocumentCreateParams::AdditionalDocument::OrHash
@@ -45,12 +49,13 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(additional_documents: nil, request_options: {})
+        def self.new(id:, additional_documents: nil, request_options: {})
         end
 
         sig do
           override.returns(
             {
+              id: String,
               additional_documents:
                 T::Array[
                   Telnyx::PortingOrders::AdditionalDocumentCreateParams::AdditionalDocument

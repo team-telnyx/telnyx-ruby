@@ -1,0 +1,102 @@
+# frozen_string_literal: true
+
+module Telnyx
+  module Models
+    # @see Telnyx::Resources::SessionAnalysis#retrieve
+    class SessionAnalysisRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      # @!attribute cost
+      #
+      #   @return [Telnyx::Models::SessionAnalysisRetrieveResponse::Cost]
+      required :cost, -> { Telnyx::Models::SessionAnalysisRetrieveResponse::Cost }
+
+      # @!attribute created_at
+      #   When the session started.
+      #
+      #   @return [Time]
+      required :created_at, Time
+
+      # @!attribute meta
+      #
+      #   @return [Telnyx::Models::SessionAnalysisRetrieveResponse::Meta]
+      required :meta, -> { Telnyx::Models::SessionAnalysisRetrieveResponse::Meta }
+
+      # @!attribute root
+      #
+      #   @return [Telnyx::Models::EventNode]
+      required :root, -> { Telnyx::EventNode }
+
+      # @!attribute session_id
+      #   Identifier for the analyzed session.
+      #
+      #   @return [String]
+      required :session_id, String
+
+      # @!attribute status
+      #   Analysis status (e.g. "completed").
+      #
+      #   @return [String]
+      required :status, String
+
+      # @!attribute completed_at
+      #   When the session completed.
+      #
+      #   @return [Time, nil]
+      optional :completed_at, Time, nil?: true
+
+      # @!method initialize(cost:, created_at:, meta:, root:, session_id:, status:, completed_at: nil)
+      #   @param cost [Telnyx::Models::SessionAnalysisRetrieveResponse::Cost]
+      #
+      #   @param created_at [Time] When the session started.
+      #
+      #   @param meta [Telnyx::Models::SessionAnalysisRetrieveResponse::Meta]
+      #
+      #   @param root [Telnyx::Models::EventNode]
+      #
+      #   @param session_id [String] Identifier for the analyzed session.
+      #
+      #   @param status [String] Analysis status (e.g. "completed").
+      #
+      #   @param completed_at [Time, nil] When the session completed.
+
+      # @see Telnyx::Models::SessionAnalysisRetrieveResponse#cost
+      class Cost < Telnyx::Internal::Type::BaseModel
+        # @!attribute currency
+        #   ISO 4217 currency code.
+        #
+        #   @return [String]
+        required :currency, String
+
+        # @!attribute total
+        #   Total session cost as a decimal string.
+        #
+        #   @return [String]
+        required :total, String
+
+        # @!method initialize(currency:, total:)
+        #   @param currency [String] ISO 4217 currency code.
+        #
+        #   @param total [String] Total session cost as a decimal string.
+      end
+
+      # @see Telnyx::Models::SessionAnalysisRetrieveResponse#meta
+      class Meta < Telnyx::Internal::Type::BaseModel
+        # @!attribute event_count
+        #   Total number of events in the session tree.
+        #
+        #   @return [Integer]
+        required :event_count, Integer
+
+        # @!attribute products
+        #   List of distinct products involved in the session.
+        #
+        #   @return [Array<String>]
+        required :products, Telnyx::Internal::Type::ArrayOf[String]
+
+        # @!method initialize(event_count:, products:)
+        #   @param event_count [Integer] Total number of events in the session tree.
+        #
+        #   @param products [Array<String>] List of distinct products involved in the session.
+      end
+    end
+  end
+end

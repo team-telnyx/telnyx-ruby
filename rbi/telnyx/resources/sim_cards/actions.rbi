@@ -44,6 +44,44 @@ module Telnyx
         )
         end
 
+        # This API triggers an asynchronous operation to disable voice on SIM cards
+        # belonging to a specified SIM Card Group.<br/> For each SIM Card a SIM Card
+        # Action will be generated. The status of the SIM Card Actions can be followed
+        # through the
+        # [List SIM Card Action](https://developers.telnyx.com/api-reference/sim-card-actions/list-sim-card-actions)
+        # API.
+        #
+        # The overall status of the Bulk SIM Card Action can be followed through the
+        # [List Bulk SIM Card Action](https://developers.telnyx.com/api-reference/sim-card-actions/list-bulk-sim-card-actions)
+        # API.
+        sig do
+          params(
+            sim_card_group_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::SimCards::ActionBulkDisableVoiceResponse)
+        end
+        def bulk_disable_voice(sim_card_group_id:, request_options: {})
+        end
+
+        # This API triggers an asynchronous operation to enable voice on SIM cards
+        # belonging to a specified SIM Card Group.<br/> For each SIM Card a SIM Card
+        # Action will be generated. The status of the SIM Card Actions can be followed
+        # through the
+        # [List SIM Card Action](https://developers.telnyx.com/api-reference/sim-card-actions/list-sim-card-actions)
+        # API.
+        #
+        # The overall status of the Bulk SIM Card Action can be followed through the
+        # [List Bulk SIM Card Action](https://developers.telnyx.com/api-reference/sim-card-actions/list-bulk-sim-card-actions)
+        # API.
+        sig do
+          params(
+            sim_card_group_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse)
+        end
+        def bulk_enable_voice(sim_card_group_id:, request_options: {})
+        end
+
         # This API triggers an asynchronous operation to set a public IP for each of the
         # specified SIM cards.<br/> For each SIM Card a SIM Card Action will be generated.
         # The status of the SIM Card Action can be followed through the

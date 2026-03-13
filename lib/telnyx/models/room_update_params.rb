@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute room_id
+      #
+      #   @return [String]
+      required :room_id, String
+
       # @!attribute enable_recording
       #   Enable or disable recording for that room.
       #
@@ -46,9 +51,11 @@ module Telnyx
       #   @return [Integer, nil]
       optional :webhook_timeout_secs, Integer
 
-      # @!method initialize(enable_recording: nil, max_participants: nil, unique_name: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @!method initialize(room_id:, enable_recording: nil, max_participants: nil, unique_name: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::RoomUpdateParams} for more details.
+      #
+      #   @param room_id [String]
       #
       #   @param enable_recording [Boolean] Enable or disable recording for that room.
       #

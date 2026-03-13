@@ -12,6 +12,9 @@ module Telnyx
             T.any(Telnyx::AI::McpServerUpdateParams, Telnyx::Internal::AnyHash)
           end
 
+        sig { returns(String) }
+        attr_accessor :mcp_server_id
+
         sig { returns(T.nilable(String)) }
         attr_reader :id
 
@@ -50,6 +53,7 @@ module Telnyx
 
         sig do
           params(
+            mcp_server_id: String,
             id: String,
             allowed_tools: T.nilable(T::Array[String]),
             api_key_ref: T.nilable(String),
@@ -61,6 +65,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          mcp_server_id:,
           id: nil,
           allowed_tools: nil,
           api_key_ref: nil,
@@ -75,6 +80,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              mcp_server_id: String,
               id: String,
               allowed_tools: T.nilable(T::Array[String]),
               api_key_ref: T.nilable(String),

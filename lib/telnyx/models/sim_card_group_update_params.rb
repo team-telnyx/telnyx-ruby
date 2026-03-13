@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute data_limit
       #   Upper limit on the amount of data the SIM cards, within the group, can use.
       #
@@ -19,7 +24,9 @@ module Telnyx
       #   @return [String, nil]
       optional :name, String
 
-      # @!method initialize(data_limit: nil, name: nil, request_options: {})
+      # @!method initialize(id:, data_limit: nil, name: nil, request_options: {})
+      #   @param id [String]
+      #
       #   @param data_limit [Telnyx::Models::SimCardGroupUpdateParams::DataLimit] Upper limit on the amount of data the SIM cards, within the group, can use.
       #
       #   @param name [String] A user friendly name for the SIM card group.

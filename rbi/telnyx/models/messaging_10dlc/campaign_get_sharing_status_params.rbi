@@ -15,15 +15,28 @@ module Telnyx
             )
           end
 
+        # ID of the campaign in question
+        sig { returns(String) }
+        attr_accessor :campaign_id
+
         sig do
-          params(request_options: Telnyx::RequestOptions::OrHash).returns(
-            T.attached_class
-          )
+          params(
+            campaign_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
-        def self.new(request_options: {})
+        def self.new(
+          # ID of the campaign in question
+          campaign_id:,
+          request_options: {}
+        )
         end
 
-        sig { override.returns({ request_options: Telnyx::RequestOptions }) }
+        sig do
+          override.returns(
+            { campaign_id: String, request_options: Telnyx::RequestOptions }
+          )
+        end
         def to_hash
         end
       end

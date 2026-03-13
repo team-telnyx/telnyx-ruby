@@ -12,6 +12,9 @@ module Telnyx
             T.any(Telnyx::Calls::ActionSpeakParams, Telnyx::Internal::AnyHash)
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # The text or SSML to be converted into speech. There is a 3,000 character limit.
         sig { returns(String) }
         attr_accessor :payload
@@ -53,6 +56,8 @@ module Telnyx
         # - **Resemble:** Use `Resemble.Turbo.<voice_id>` (e.g.,
         #   `Resemble.Turbo.my_voice`). Only `Turbo` model is supported. Use
         #   `voice_settings` to configure precision, sample_rate, and format.
+        # - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
+        #   `Inworld.Max.Oliver`). Supported models: `Mini`, `Max`.
         #
         # For service_level basic, you may define the gender of the speaker (male or
         # female).
@@ -169,7 +174,8 @@ module Telnyx
                 Telnyx::MinimaxVoiceSettings,
                 Telnyx::AzureVoiceSettings,
                 Telnyx::RimeVoiceSettings,
-                Telnyx::ResembleVoiceSettings
+                Telnyx::ResembleVoiceSettings,
+                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld
               )
             )
           )
@@ -186,7 +192,8 @@ module Telnyx
                 Telnyx::MinimaxVoiceSettings::OrHash,
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
-                Telnyx::ResembleVoiceSettings::OrHash
+                Telnyx::ResembleVoiceSettings::OrHash,
+                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld::OrHash
               )
           ).void
         end
@@ -194,6 +201,7 @@ module Telnyx
 
         sig do
           params(
+            call_control_id: String,
             payload: String,
             voice: String,
             client_state: String,
@@ -214,12 +222,14 @@ module Telnyx
                 Telnyx::MinimaxVoiceSettings::OrHash,
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
-                Telnyx::ResembleVoiceSettings::OrHash
+                Telnyx::ResembleVoiceSettings::OrHash,
+                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id:,
           # The text or SSML to be converted into speech. There is a 3,000 character limit.
           payload:,
           # Specifies the voice used in speech synthesis.
@@ -259,6 +269,8 @@ module Telnyx
           # - **Resemble:** Use `Resemble.Turbo.<voice_id>` (e.g.,
           #   `Resemble.Turbo.my_voice`). Only `Turbo` model is supported. Use
           #   `voice_settings` to configure precision, sample_rate, and format.
+          # - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
+          #   `Inworld.Max.Oliver`). Supported models: `Mini`, `Max`.
           #
           # For service_level basic, you may define the gender of the speaker (male or
           # female).
@@ -297,6 +309,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              call_control_id: String,
               payload: String,
               voice: String,
               client_state: String,
@@ -318,7 +331,8 @@ module Telnyx
                   Telnyx::MinimaxVoiceSettings,
                   Telnyx::AzureVoiceSettings,
                   Telnyx::RimeVoiceSettings,
-                  Telnyx::ResembleVoiceSettings
+                  Telnyx::ResembleVoiceSettings,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld
                 ),
               request_options: Telnyx::RequestOptions
             }
@@ -609,9 +623,35 @@ module Telnyx
                 Telnyx::MinimaxVoiceSettings,
                 Telnyx::AzureVoiceSettings,
                 Telnyx::RimeVoiceSettings,
-                Telnyx::ResembleVoiceSettings
+                Telnyx::ResembleVoiceSettings,
+                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld
               )
             end
+
+          class Inworld < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # Voice settings provider type
+            sig { returns(Symbol) }
+            attr_accessor :type
+
+            sig { params(type: Symbol).returns(T.attached_class) }
+            def self.new(
+              # Voice settings provider type
+              type: :inworld
+            )
+            end
+
+            sig { override.returns({ type: Symbol }) }
+            def to_hash
+            end
+          end
 
           sig do
             override.returns(

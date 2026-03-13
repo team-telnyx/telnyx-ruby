@@ -5,6 +5,7 @@ module Telnyx
         type tool_test_params =
           {
             assistant_id: String,
+            tool_id: String,
             arguments: ::Hash[Symbol, top],
             dynamic_variables: ::Hash[Symbol, top]
           }
@@ -16,6 +17,8 @@ module Telnyx
 
           attr_accessor assistant_id: String
 
+          attr_accessor tool_id: String
+
           attr_reader arguments: ::Hash[Symbol, top]?
 
           def arguments=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
@@ -26,6 +29,7 @@ module Telnyx
 
           def initialize: (
             assistant_id: String,
+            tool_id: String,
             ?arguments: ::Hash[Symbol, top],
             ?dynamic_variables: ::Hash[Symbol, top],
             ?request_options: Telnyx::request_opts
@@ -33,6 +37,7 @@ module Telnyx
 
           def to_hash: -> {
             assistant_id: String,
+            tool_id: String,
             arguments: ::Hash[Symbol, top],
             dynamic_variables: ::Hash[Symbol, top],
             request_options: Telnyx::RequestOptions

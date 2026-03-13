@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :task_id
+
         sig { returns(T.nilable(Integer)) }
         attr_reader :page
 
@@ -29,17 +32,24 @@ module Telnyx
 
         sig do
           params(
+            task_id: String,
             page: Integer,
             records_per_page: Integer,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(page: nil, records_per_page: nil, request_options: {})
+        def self.new(
+          task_id:,
+          page: nil,
+          records_per_page: nil,
+          request_options: {}
+        )
         end
 
         sig do
           override.returns(
             {
+              task_id: String,
               page: Integer,
               records_per_page: Integer,
               request_options: Telnyx::RequestOptions

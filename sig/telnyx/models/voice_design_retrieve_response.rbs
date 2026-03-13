@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type voice_design_retrieve_response = { data: Telnyx::VoiceDesignData }
+
+    class VoiceDesignRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::VoiceDesignData?
+
+      def data=: (Telnyx::VoiceDesignData) -> Telnyx::VoiceDesignData
+
+      def initialize: (?data: Telnyx::VoiceDesignData) -> void
+
+      def to_hash: -> { data: Telnyx::VoiceDesignData }
+    end
+  end
+end

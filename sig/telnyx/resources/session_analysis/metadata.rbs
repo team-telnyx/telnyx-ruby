@@ -1,0 +1,18 @@
+module Telnyx
+  module Resources
+    class SessionAnalysis
+      class Metadata
+        def retrieve: (
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SessionAnalysis::MetadataRetrieveResponse
+
+        def retrieve_record_type: (
+          String record_type,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SessionAnalysis::MetadataRetrieveRecordTypeResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

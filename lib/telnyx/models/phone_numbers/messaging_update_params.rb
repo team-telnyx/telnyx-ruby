@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute messaging_product
         #   Configure the messaging product for this number:
         #
@@ -34,9 +39,11 @@ module Telnyx
         #   @return [Array<String>, nil]
         optional :tags, Telnyx::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(messaging_product: nil, messaging_profile_id: nil, tags: nil, request_options: {})
+        # @!method initialize(id:, messaging_product: nil, messaging_profile_id: nil, tags: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::PhoneNumbers::MessagingUpdateParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param messaging_product [String] Configure the messaging product for this number:
         #

@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::SimCardRetrieveParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # When set to true, includes the PIN and PUK codes in the response. These codes
       # are used for SIM card security and unlocking purposes. Available for both
       # physical SIM cards and eSIMs.
@@ -29,12 +32,14 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           include_pin_puk_codes: T::Boolean,
           include_sim_card_group: T::Boolean,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # When set to true, includes the PIN and PUK codes in the response. These codes
         # are used for SIM card security and unlocking purposes. Available for both
         # physical SIM cards and eSIMs.
@@ -48,6 +53,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             include_pin_puk_codes: T::Boolean,
             include_sim_card_group: T::Boolean,
             request_options: Telnyx::RequestOptions

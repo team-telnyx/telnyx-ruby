@@ -34,7 +34,14 @@ module Telnyx
       }
 
       type provider =
-        :aws | :telnyx | :azure | :elevenlabs | :minimax | :rime | :resemble
+        :aws
+        | :telnyx
+        | :azure
+        | :elevenlabs
+        | :minimax
+        | :rime
+        | :resemble
+        | :inworld
 
       module Provider
         extend Telnyx::Internal::Type::Enum
@@ -46,6 +53,7 @@ module Telnyx
         MINIMAX: :minimax
         RIME: :rime
         RESEMBLE: :resemble
+        INWORLD: :inworld
 
         def self?.values: -> ::Array[Telnyx::Models::TextToSpeechListVoicesParams::provider]
       end

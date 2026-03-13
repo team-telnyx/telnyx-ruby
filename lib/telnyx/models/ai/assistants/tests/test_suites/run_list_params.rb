@@ -11,6 +11,11 @@ module Telnyx
               extend Telnyx::Internal::Type::RequestParameters::Converter
               include Telnyx::Internal::Type::RequestParameters
 
+              # @!attribute suite_name
+              #
+              #   @return [String]
+              required :suite_name, String
+
               # @!attribute page_number
               #
               #   @return [Integer, nil]
@@ -33,7 +38,9 @@ module Telnyx
               #   @return [String, nil]
               optional :test_suite_run_id, String
 
-              # @!method initialize(page_number: nil, page_size: nil, status: nil, test_suite_run_id: nil, request_options: {})
+              # @!method initialize(suite_name:, page_number: nil, page_size: nil, status: nil, test_suite_run_id: nil, request_options: {})
+              #   @param suite_name [String]
+              #
               #   @param page_number [Integer]
               #
               #   @param page_size [Integer]

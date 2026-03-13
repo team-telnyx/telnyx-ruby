@@ -7,7 +7,13 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      # @!method initialize(request_options: {})
+      # @!attribute access_ip_range_id
+      #
+      #   @return [String]
+      required :access_ip_range_id, String
+
+      # @!method initialize(access_ip_range_id:, request_options: {})
+      #   @param access_ip_range_id [String]
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end
   end

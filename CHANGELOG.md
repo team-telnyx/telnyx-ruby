@@ -1,5 +1,72 @@
 # Changelog
 
+## 5.53.0 (2026-03-13)
+
+Full Changelog: [v5.52.0...v5.53.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.52.0...v5.53.0)
+
+### Features
+
+* [TDA-6425] Add Session Analysis API spec to public docs ([cde4776](https://github.com/team-telnyx/telnyx-ruby/commit/cde47769b44a33c99daada42abd30234f719c6e7))
+* Add enable_thinking parameter to chat completions API ([9c855e2](https://github.com/team-telnyx/telnyx-ruby/commit/9c855e27ef2c4d4b67703549d684ad96aba19ec2))
+* add public x402 payment endpoints to external specs ([b77a145](https://github.com/team-telnyx/telnyx-ruby/commit/b77a145a44f6c7aae9199a3ebab1b901488314f1))
+* Add Voice Designs and Voice Clones API specification ([b0b7ab9](https://github.com/team-telnyx/telnyx-ruby/commit/b0b7ab924c7da7d6b92612ee3b4dcc3f486b6b08))
+* AI-2106: Add invite tool schema to inference OpenAPI spec ([391100d](https://github.com/team-telnyx/telnyx-ruby/commit/391100da84170317cdb5c734e10b92459b32e9c9))
+* AI-2131: Add expressive_mode boolean to VoiceSettings ([39ce32f](https://github.com/team-telnyx/telnyx-ruby/commit/39ce32f1ac9000310f397d43fba95a7c64e89a0d))
+* **api:** manual updates ([246cb23](https://github.com/team-telnyx/telnyx-ruby/commit/246cb233a98bee61d20f758c102a3ccc4e78d030))
+* **api:** manual updates ([5885025](https://github.com/team-telnyx/telnyx-ruby/commit/5885025d8432eecdc2e381c7fa780bdea3b69145))
+* **api:** manual updates ([4290d14](https://github.com/team-telnyx/telnyx-ruby/commit/4290d1455bcc10ee1fa0431a217423c92e49dcd7))
+* **api:** manual updates ([0ca6bd8](https://github.com/team-telnyx/telnyx-ruby/commit/0ca6bd817a2018469df769ab75c1b539b0915ec3))
+* **api:** manual updates ([fc7c151](https://github.com/team-telnyx/telnyx-ruby/commit/fc7c151c1671eb7cb18f99442e0830f01d20b1df))
+* **api:** manual updates ([de2c310](https://github.com/team-telnyx/telnyx-ruby/commit/de2c310b0170013872e53cada26b502ff8784b6b))
+* **api:** manual updates ([fc8e43e](https://github.com/team-telnyx/telnyx-ruby/commit/fc8e43ee7bd1cf0dea4be8cb43e3109b40ed3039))
+* **api:** manual updates ([9126e80](https://github.com/team-telnyx/telnyx-ruby/commit/9126e80e3d169a23d557c355a0ef24edfe0e61ff))
+* **api:** manual updates ([de9ee8c](https://github.com/team-telnyx/telnyx-ruby/commit/de9ee8c84af96e4f782fd6c715d32eaca474c22b))
+* **api:** manual updates ([5a630bd](https://github.com/team-telnyx/telnyx-ruby/commit/5a630bd8eb532ff274387579d73c86628b3324ec))
+* **api:** manual updates ([cfc2411](https://github.com/team-telnyx/telnyx-ruby/commit/cfc241117d72c9da79a85b3371c921ff84bebeb6))
+* **api:** manual updates ([4f5e8a9](https://github.com/team-telnyx/telnyx-ruby/commit/4f5e8a9c487e2db413555165f710ab9701f2184d))
+* **api:** manual updates ([3dea266](https://github.com/team-telnyx/telnyx-ruby/commit/3dea266fbc8a848d3d7bf9cb3723a8827bfa4934))
+* **api:** Merge pull request [#27](https://github.com/team-telnyx/telnyx-ruby/issues/27) from stainless-sdks/fix/whatsapp-message-templates-conflict ([d1eee4d](https://github.com/team-telnyx/telnyx-ruby/commit/d1eee4d0125d6a3566db34c0ba42bd069c69e6a0))
+* **api:** Merge pull request [#29](https://github.com/team-telnyx/telnyx-ruby/issues/29) from stainless-sdks/fix-add-voice-model ([6e7adfa](https://github.com/team-telnyx/telnyx-ruby/commit/6e7adfa3cb0caacf0fd636ad8c8524aee79c1fea))
+* **api:** update OpenAPI spec or Stainless config ([6e7adfa](https://github.com/team-telnyx/telnyx-ruby/commit/6e7adfa3cb0caacf0fd636ad8c8524aee79c1fea))
+* Assistant tags ([54d4bfb](https://github.com/team-telnyx/telnyx-ruby/commit/54d4bfbcb379adb73bb9a680702b4350b99ce320))
+* Changing a tag for filebased STT endpoint ([44092df](https://github.com/team-telnyx/telnyx-ruby/commit/44092df79d8df8b9d4e91a97827326b678ea55f8))
+* Changing the tag for TTS endpoint ([a599955](https://github.com/team-telnyx/telnyx-ruby/commit/a59995523397299ea840246b7371a3236981666c))
+* **client:** add webhook support ([4bd478f](https://github.com/team-telnyx/telnyx-ruby/commit/4bd478f3d96d36180287167effab11bac211d401))
+* CW-2881 publish wireless VoLTE docs to prod ([5998149](https://github.com/team-telnyx/telnyx-ruby/commit/5998149352b7fee4b9f3b8833b5552697fb97f19))
+* **messaging:** add wait_seconds to OutboundMessagePayload example ([ea445fc](https://github.com/team-telnyx/telnyx-ruby/commit/ea445fc51b27db788d4d465bbe4ce3589acb76d0))
+* MSG-6418: remove flashcall from hosted number verification codes endpoint ([0cdf41c](https://github.com/team-telnyx/telnyx-ruby/commit/0cdf41cfd2108ebef06d7fbadf12121dfd007aa0))
+* **stt:** add SttClientEvent schema for Stainless WebSocket config ([16f97d5](https://github.com/team-telnyx/telnyx-ruby/commit/16f97d5889f9367fec6f8dbf1cf5d1b26a81ef48))
+* **stt:** add WebSocket event schemas for Stainless SDK generation ([a4ffb4f](https://github.com/team-telnyx/telnyx-ruby/commit/a4ffb4f2961ace29f3fbad5d2159e483ac8830f5))
+* TELAPPS-ENGDESK-49737 Add prevent_double_bridge param to dial ([92e67bf](https://github.com/team-telnyx/telnyx-ruby/commit/92e67bffcd419556149a9291ee56e8c03d60ad41))
+
+
+### Bug Fixes
+
+* add discriminator to TtsServerEvent for Stainless SDK generation ([67b9099](https://github.com/team-telnyx/telnyx-ruby/commit/67b9099d49e5863be819a1715a49103db5cecdb0))
+* add missing vertical enum values for 10DLC brand creation (ENGDESK-49040) ([a3d7772](https://github.com/team-telnyx/telnyx-ruby/commit/a3d77722451a07a013cf36958172fac1679d9988))
+* add title to InviteTool.invite for Stainless SDK ([30df5ff](https://github.com/team-telnyx/telnyx-ruby/commit/30df5ffab50f8c58487b97102f1057c5fe287fde))
+* **call-recordings:** align OpenAPI spec with implementation ([28954e2](https://github.com/team-telnyx/telnyx-ruby/commit/28954e29e666eaf532fd115041794f8663b7c8bd))
+* **client:** add types for path params, and update structure of unions nested in params ([e7ed7df](https://github.com/team-telnyx/telnyx-ruby/commit/e7ed7dffe7ff253351e862bb0f47137dcff75cf7))
+* rename whatsapp.message_templates to whatsapp.templates to avoid conflict ([d1eee4d](https://github.com/team-telnyx/telnyx-ruby/commit/d1eee4d0125d6a3566db34c0ba42bd069c69e6a0))
+* resolve Ruby constant shadowing in TextToSpeechGenerateParams ([369610b](https://github.com/team-telnyx/telnyx-ruby/commit/369610b345e6e3b56e90c96a4a7989087f28fa99))
+* update wait_seconds example to 0.5 ([024c86d](https://github.com/team-telnyx/telnyx-ruby/commit/024c86da5c50da33d863dc8e754f9b5211eefb29))
+
+
+### Reverts
+
+* restore stainless.yml changes removed in 1de6067 ([98406a7](https://github.com/team-telnyx/telnyx-ruby/commit/98406a7b558e74eb2f53794a9e3934c2e0043454))
+
+
+### Chores
+
+* **ci:** add build step ([1a4ac85](https://github.com/team-telnyx/telnyx-ruby/commit/1a4ac85a3e3a2527e6410f0710a5aa1a8e74342b))
+* **ci:** skip uploading artifacts on stainless-internal branches ([604f81c](https://github.com/team-telnyx/telnyx-ruby/commit/604f81ca4edd6d299405fa74af4d1afee4baf190))
+
+
+### Documentation
+
+* **messaging:** Add wait_seconds to message response schemas ([073583c](https://github.com/team-telnyx/telnyx-ruby/commit/073583cf0652671bdfb77ccd3201d95ed130732c))
+
 ## 5.52.0 (2026-03-02)
 
 Full Changelog: [v5.51.1...v5.52.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.51.1...v5.52.0)

@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute outbound
       #
       #   @return [Telnyx::Models::ExternalConnectionUpdateParams::Outbound]
@@ -49,9 +54,11 @@ module Telnyx
       #   @return [Integer, nil]
       optional :webhook_timeout_secs, Integer, nil?: true
 
-      # @!method initialize(outbound:, active: nil, inbound: nil, tags: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @!method initialize(id:, outbound:, active: nil, inbound: nil, tags: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::ExternalConnectionUpdateParams} for more details.
+      #
+      #   @param id [String]
       #
       #   @param outbound [Telnyx::Models::ExternalConnectionUpdateParams::Outbound]
       #

@@ -12,6 +12,8 @@ module Telnyx
 
         attr_reader versions: Telnyx::Resources::AI::Assistants::Versions
 
+        attr_reader tags: Telnyx::Resources::AI::Assistants::Tags
+
         def create: (
           instructions: String,
           model: String,

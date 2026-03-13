@@ -1,0 +1,70 @@
+# typed: strong
+
+module Telnyx
+  module Models
+    module X402
+      class CreditAccountSettleParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::X402::CreditAccountSettleParams,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        # The quote ID to settle.
+        sig { returns(String) }
+        attr_accessor :id
+
+        # Base64-encoded signed payment authorization (x402 PaymentPayload). Can
+        # alternatively be provided via the PAYMENT-SIGNATURE header.
+        sig { returns(T.nilable(String)) }
+        attr_reader :payment_signature
+
+        sig { params(payment_signature: String).void }
+        attr_writer :payment_signature
+
+        sig { returns(T.nilable(String)) }
+        attr_reader :payment_signature_header
+
+        sig { params(payment_signature_header: String).void }
+        attr_writer :payment_signature_header
+
+        sig do
+          params(
+            id: String,
+            payment_signature: String,
+            payment_signature_header: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The quote ID to settle.
+          id:,
+          # Base64-encoded signed payment authorization (x402 PaymentPayload). Can
+          # alternatively be provided via the PAYMENT-SIGNATURE header.
+          payment_signature: nil,
+          payment_signature_header: nil,
+          request_options: {}
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              payment_signature: String,
+              payment_signature_header: String,
+              request_options: Telnyx::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
+      end
+    end
+  end
+end

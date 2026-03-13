@@ -16,6 +16,9 @@ module Telnyx
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :id
+
           sig { returns(Integer) }
           attr_accessor :page_number
 
@@ -26,12 +29,14 @@ module Telnyx
 
           sig do
             params(
+              id: String,
               page_number: Integer,
               page_size: Integer,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
+            id:,
             page_number:,
             # Request this many records per page. This value is automatically clamped if the
             # provided value is too large.
@@ -43,6 +48,7 @@ module Telnyx
           sig do
             override.returns(
               {
+                id: String,
                 page_number: Integer,
                 page_size: Integer,
                 request_options: Telnyx::RequestOptions

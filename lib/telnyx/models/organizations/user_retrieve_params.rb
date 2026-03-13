@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute include_groups
         #   When set to true, includes the groups array for each user in the response. The
         #   groups array contains objects with id and name for each group the user belongs
@@ -16,9 +21,11 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :include_groups, Telnyx::Internal::Type::Boolean
 
-        # @!method initialize(include_groups: nil, request_options: {})
+        # @!method initialize(id:, include_groups: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Organizations::UserRetrieveParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param include_groups [Boolean] When set to true, includes the groups array for each user in the response. The g
         #

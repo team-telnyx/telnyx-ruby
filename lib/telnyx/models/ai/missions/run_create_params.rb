@@ -9,6 +9,11 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
+          # @!attribute mission_id
+          #
+          #   @return [String]
+          required :mission_id, String
+
           # @!attribute input
           #
           #   @return [Hash{Symbol=>Object}, nil]
@@ -19,7 +24,8 @@ module Telnyx
           #   @return [Hash{Symbol=>Object}, nil]
           optional :metadata, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
-          # @!method initialize(input: nil, metadata: nil, request_options: {})
+          # @!method initialize(mission_id:, input: nil, metadata: nil, request_options: {})
+          #   @param mission_id [String]
           #   @param input [Hash{Symbol=>Object}]
           #   @param metadata [Hash{Symbol=>Object}]
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]

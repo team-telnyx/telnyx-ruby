@@ -7,13 +7,20 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute time_frame
       #   The time frame for metrics.
       #
       #   @return [Symbol, Telnyx::Models::MessagingProfileRetrieveMetricsParams::TimeFrame, nil]
       optional :time_frame, enum: -> { Telnyx::MessagingProfileRetrieveMetricsParams::TimeFrame }
 
-      # @!method initialize(time_frame: nil, request_options: {})
+      # @!method initialize(id:, time_frame: nil, request_options: {})
+      #   @param id [String]
+      #
       #   @param time_frame [Symbol, Telnyx::Models::MessagingProfileRetrieveMetricsParams::TimeFrame] The time frame for metrics.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
@@ -22,12 +29,12 @@ module Telnyx
       module TimeFrame
         extend Telnyx::Internal::Type::Enum
 
-        TIME_FRAME_1H = :"1h"
-        TIME_FRAME_3H = :"3h"
-        TIME_FRAME_24H = :"24h"
-        TIME_FRAME_3D = :"3d"
-        TIME_FRAME_7D = :"7d"
-        TIME_FRAME_30D = :"30d"
+        TIME_FRAME_1_H = :"1h"
+        TIME_FRAME_3_H = :"3h"
+        TIME_FRAME_24_H = :"24h"
+        TIME_FRAME_3_D = :"3d"
+        TIME_FRAME_7_D = :"7d"
+        TIME_FRAME_30_D = :"30d"
 
         # @!method self.values
         #   @return [Array<Symbol>]

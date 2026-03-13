@@ -14,17 +14,22 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # The ID of the requirement group to associate
       sig { returns(String) }
       attr_accessor :requirement_group_id
 
       sig do
         params(
+          id: String,
           requirement_group_id: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # The ID of the requirement group to associate
         requirement_group_id:,
         request_options: {}
@@ -34,6 +39,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             requirement_group_id: String,
             request_options: Telnyx::RequestOptions
           }

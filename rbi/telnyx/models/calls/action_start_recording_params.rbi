@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # When `dual`, final audio file will be stereo recorded with the first leg on
         # channel A, and the rest on channel B.
         sig do
@@ -193,6 +196,7 @@ module Telnyx
 
         sig do
           params(
+            call_control_id: String,
             channels:
               Telnyx::Calls::ActionStartRecordingParams::Channels::OrSymbol,
             format_:
@@ -219,6 +223,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id:,
           # When `dual`, final audio file will be stereo recorded with the first leg on
           # channel A, and the rest on channel B.
           channels:,
@@ -278,6 +283,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              call_control_id: String,
               channels:
                 Telnyx::Calls::ActionStartRecordingParams::Channels::OrSymbol,
               format_:

@@ -3,6 +3,7 @@ module Telnyx
     module Calls
       type action_start_ai_assistant_params =
         {
+          call_control_id: String,
           assistant: Telnyx::Calls::ActionStartAIAssistantParams::Assistant,
           client_state: String,
           command_id: String,
@@ -17,6 +18,8 @@ module Telnyx
       class ActionStartAIAssistantParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
 
         attr_reader assistant: Telnyx::Calls::ActionStartAIAssistantParams::Assistant?
 
@@ -59,6 +62,7 @@ module Telnyx
         ) -> Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings
 
         def initialize: (
+          call_control_id: String,
           ?assistant: Telnyx::Calls::ActionStartAIAssistantParams::Assistant,
           ?client_state: String,
           ?command_id: String,
@@ -71,6 +75,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          call_control_id: String,
           assistant: Telnyx::Calls::ActionStartAIAssistantParams::Assistant,
           client_state: String,
           command_id: String,

@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute brand_id
+        #
+        #   @return [String]
+        required :brand_id, String
+
         # @!attribute pin_sms
         #   SMS message template to send the OTP. Must include `@OTP_PIN@` placeholder which
         #   will be replaced with the actual PIN
@@ -21,9 +26,11 @@ module Telnyx
         #   @return [String]
         required :success_sms, String, api_name: :successSms
 
-        # @!method initialize(pin_sms:, success_sms:, request_options: {})
+        # @!method initialize(brand_id:, pin_sms:, success_sms:, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Messaging10dlc::BrandTriggerSMSOtpParams} for more details.
+        #
+        #   @param brand_id [String]
         #
         #   @param pin_sms [String] SMS message template to send the OTP. Must include `@OTP_PIN@` placeholder which
         #

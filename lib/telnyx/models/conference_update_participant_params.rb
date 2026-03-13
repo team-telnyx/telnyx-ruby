@@ -12,6 +12,11 @@ module Telnyx
       #   @return [String]
       required :id, String
 
+      # @!attribute participant_id
+      #
+      #   @return [String]
+      required :participant_id, String
+
       # @!attribute beep_enabled
       #   Whether entry/exit beeps are enabled for this participant.
       #
@@ -32,11 +37,13 @@ module Telnyx
       #   @return [Boolean, nil]
       optional :soft_end_conference_on_exit, Telnyx::Internal::Type::Boolean
 
-      # @!method initialize(id:, beep_enabled: nil, end_conference_on_exit: nil, soft_end_conference_on_exit: nil, request_options: {})
+      # @!method initialize(id:, participant_id:, beep_enabled: nil, end_conference_on_exit: nil, soft_end_conference_on_exit: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::ConferenceUpdateParticipantParams} for more details.
       #
       #   @param id [String]
+      #
+      #   @param participant_id [String]
       #
       #   @param beep_enabled [Symbol, Telnyx::Models::ConferenceUpdateParticipantParams::BeepEnabled] Whether entry/exit beeps are enabled for this participant.
       #

@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute number_ids
         #
         #   @return [Array<String>]
@@ -38,9 +43,11 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::ExternalConnections::UploadCreateParams::Usage, nil]
         optional :usage, enum: -> { Telnyx::ExternalConnections::UploadCreateParams::Usage }
 
-        # @!method initialize(number_ids:, additional_usages: nil, civic_address_id: nil, location_id: nil, usage: nil, request_options: {})
+        # @!method initialize(id:, number_ids:, additional_usages: nil, civic_address_id: nil, location_id: nil, usage: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::ExternalConnections::UploadCreateParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param number_ids [Array<String>]
         #

@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # The supervisor role to switch to. 'barge' allows speaking to both parties,
         # 'whisper' allows speaking to caller only, 'monitor' allows listening only.
         sig do
@@ -26,12 +29,14 @@ module Telnyx
 
         sig do
           params(
+            call_control_id: String,
             role:
               Telnyx::Calls::ActionSwitchSupervisorRoleParams::Role::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id:,
           # The supervisor role to switch to. 'barge' allows speaking to both parties,
           # 'whisper' allows speaking to caller only, 'monitor' allows listening only.
           role:,
@@ -42,6 +47,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              call_control_id: String,
               role:
                 Telnyx::Calls::ActionSwitchSupervisorRoleParams::Role::OrSymbol,
               request_options: Telnyx::RequestOptions

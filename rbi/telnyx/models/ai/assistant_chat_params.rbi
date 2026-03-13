@@ -12,6 +12,9 @@ module Telnyx
             T.any(Telnyx::AI::AssistantChatParams, Telnyx::Internal::AnyHash)
           end
 
+        sig { returns(String) }
+        attr_accessor :assistant_id
+
         # The message content sent by the client to the assistant
         sig { returns(String) }
         attr_accessor :content
@@ -29,6 +32,7 @@ module Telnyx
 
         sig do
           params(
+            assistant_id: String,
             content: String,
             conversation_id: String,
             name: String,
@@ -36,6 +40,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          assistant_id:,
           # The message content sent by the client to the assistant
           content:,
           # A unique identifier for the conversation thread, used to maintain context
@@ -49,6 +54,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              assistant_id: String,
               content: String,
               conversation_id: String,
               name: String,

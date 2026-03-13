@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::InvoiceRetrieveParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # Invoice action
       sig do
         returns(T.nilable(Telnyx::InvoiceRetrieveParams::Action::OrSymbol))
@@ -24,11 +27,13 @@ module Telnyx
 
       sig do
         params(
+          id: String,
           action: Telnyx::InvoiceRetrieveParams::Action::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # Invoice action
         action: nil,
         request_options: {}
@@ -38,6 +43,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            id: String,
             action: Telnyx::InvoiceRetrieveParams::Action::OrSymbol,
             request_options: Telnyx::RequestOptions
           }

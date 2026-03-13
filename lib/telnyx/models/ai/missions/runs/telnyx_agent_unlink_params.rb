@@ -20,9 +20,15 @@ module Telnyx
             #   @return [String]
             required :run_id, String
 
-            # @!method initialize(mission_id:, run_id:, request_options: {})
+            # @!attribute telnyx_agent_id
+            #
+            #   @return [String]
+            required :telnyx_agent_id, String
+
+            # @!method initialize(mission_id:, run_id:, telnyx_agent_id:, request_options: {})
             #   @param mission_id [String]
             #   @param run_id [String]
+            #   @param telnyx_agent_id [String]
             #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
           end
         end

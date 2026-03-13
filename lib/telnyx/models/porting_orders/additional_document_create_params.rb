@@ -8,13 +8,19 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute additional_documents
         #
         #   @return [Array<Telnyx::Models::PortingOrders::AdditionalDocumentCreateParams::AdditionalDocument>, nil]
         optional :additional_documents,
                  -> { Telnyx::Internal::Type::ArrayOf[Telnyx::PortingOrders::AdditionalDocumentCreateParams::AdditionalDocument] }
 
-        # @!method initialize(additional_documents: nil, request_options: {})
+        # @!method initialize(id:, additional_documents: nil, request_options: {})
+        #   @param id [String]
         #   @param additional_documents [Array<Telnyx::Models::PortingOrders::AdditionalDocumentCreateParams::AdditionalDocument>]
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

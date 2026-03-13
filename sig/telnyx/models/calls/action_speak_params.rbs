@@ -3,6 +3,7 @@ module Telnyx
     module Calls
       type action_speak_params =
         {
+          call_control_id: String,
           payload: String,
           voice: String,
           client_state: String,
@@ -20,6 +21,8 @@ module Telnyx
       class ActionSpeakParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
 
         attr_accessor payload: String
 
@@ -74,6 +77,7 @@ module Telnyx
         ) -> Telnyx::Models::Calls::ActionSpeakParams::voice_settings
 
         def initialize: (
+          call_control_id: String,
           payload: String,
           voice: String,
           ?client_state: String,
@@ -89,6 +93,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          call_control_id: String,
           payload: String,
           voice: String,
           client_state: String,
@@ -212,9 +217,20 @@ module Telnyx
           | Telnyx::AzureVoiceSettings
           | Telnyx::RimeVoiceSettings
           | Telnyx::ResembleVoiceSettings
+          | Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld
 
         module VoiceSettings
           extend Telnyx::Internal::Type::Union
+
+          type inworld = { type: :inworld }
+
+          class Inworld < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: :inworld
+
+            def initialize: (?type: :inworld) -> void
+
+            def to_hash: -> { type: :inworld }
+          end
 
           def self?.variants: -> ::Array[Telnyx::Models::Calls::ActionSpeakParams::voice_settings]
         end

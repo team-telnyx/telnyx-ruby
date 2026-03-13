@@ -7,6 +7,7 @@ module Telnyx
           api_key_ref: String,
           best_of: Integer,
           early_stopping: bool,
+          enable_thinking: bool,
           frequency_penalty: Float,
           guided_choice: ::Array[String],
           guided_json: ::Hash[Symbol, top],
@@ -46,6 +47,10 @@ module Telnyx
         attr_reader early_stopping: bool?
 
         def early_stopping=: (bool) -> bool
+
+        attr_reader enable_thinking: bool?
+
+        def enable_thinking=: (bool) -> bool
 
         attr_reader frequency_penalty: Float?
 
@@ -134,6 +139,7 @@ module Telnyx
           ?api_key_ref: String,
           ?best_of: Integer,
           ?early_stopping: bool,
+          ?enable_thinking: bool,
           ?frequency_penalty: Float,
           ?guided_choice: ::Array[String],
           ?guided_json: ::Hash[Symbol, top],
@@ -161,6 +167,7 @@ module Telnyx
           api_key_ref: String,
           best_of: Integer,
           early_stopping: bool,
+          enable_thinking: bool,
           frequency_penalty: Float,
           guided_choice: ::Array[String],
           guided_json: ::Hash[Symbol, top],

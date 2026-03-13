@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute call_control_id
+        #
+        #   @return [String]
+        required :call_control_id, String
+
         # @!attribute payload
         #   The text or SSML to be converted into speech. There is a 3,000 character limit.
         #
@@ -52,6 +57,8 @@ module Telnyx
         #   - **Resemble:** Use `Resemble.Turbo.<voice_id>` (e.g.,
         #     `Resemble.Turbo.my_voice`). Only `Turbo` model is supported. Use
         #     `voice_settings` to configure precision, sample_rate, and format.
+        #   - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
+        #     `Inworld.Max.Oliver`). Supported models: `Mini`, `Max`.
         #
         #   For service_level basic, you may define the gender of the speaker (male or
         #   female).
@@ -119,12 +126,14 @@ module Telnyx
         # @!attribute voice_settings
         #   The settings associated with the voice selected
         #
-        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, nil]
+        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionSpeakParams::VoiceSettings }
 
-        # @!method initialize(payload:, voice:, client_state: nil, command_id: nil, language: nil, loop_: nil, payload_type: nil, service_level: nil, stop: nil, target_legs: nil, voice_settings: nil, request_options: {})
+        # @!method initialize(call_control_id:, payload:, voice:, client_state: nil, command_id: nil, language: nil, loop_: nil, payload_type: nil, service_level: nil, stop: nil, target_legs: nil, voice_settings: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionSpeakParams} for more details.
+        #
+        #   @param call_control_id [String]
         #
         #   @param payload [String] The text or SSML to be converted into speech. There is a 3,000 character limit.
         #
@@ -146,7 +155,7 @@ module Telnyx
         #
         #   @param target_legs [Symbol, Telnyx::Models::Calls::ActionSpeakParams::TargetLegs] Specifies which legs of the call should receive the spoken audio.
         #
-        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings] The settings associated with the voice selected
+        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld] The settings associated with the voice selected
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -245,8 +254,21 @@ module Telnyx
 
           variant :resemble, -> { Telnyx::ResembleVoiceSettings }
 
+          variant :inworld, -> { Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld }
+
+          class Inworld < Telnyx::Internal::Type::BaseModel
+            # @!attribute type
+            #   Voice settings provider type
+            #
+            #   @return [Symbol, :inworld]
+            required :type, const: :inworld
+
+            # @!method initialize(type: :inworld)
+            #   @param type [Symbol, :inworld] Voice settings provider type
+          end
+
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings)]
+          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld)]
         end
       end
     end

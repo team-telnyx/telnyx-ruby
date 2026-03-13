@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # Comment to post on this portout request
         sig { returns(T.nilable(String)) }
         attr_reader :body
@@ -24,11 +27,13 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             body: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # Comment to post on this portout request
           body: nil,
           request_options: {}
@@ -37,7 +42,11 @@ module Telnyx
 
         sig do
           override.returns(
-            { body: String, request_options: Telnyx::RequestOptions }
+            {
+              id: String,
+              body: String,
+              request_options: Telnyx::RequestOptions
+            }
           )
         end
         def to_hash

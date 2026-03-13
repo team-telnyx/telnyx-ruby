@@ -13,6 +13,11 @@ module Telnyx
         #   @return [String]
         required :id, String
 
+        # @!attribute activation_job_id
+        #
+        #   @return [String]
+        required :activation_job_id, String
+
         # @!attribute activate_at
         #   The desired activation time. The activation time should be between any of the
         #   activation windows.
@@ -20,11 +25,13 @@ module Telnyx
         #   @return [Time, nil]
         optional :activate_at, Time
 
-        # @!method initialize(id:, activate_at: nil, request_options: {})
+        # @!method initialize(id:, activation_job_id:, activate_at: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::PortingOrders::ActivationJobUpdateParams} for more details.
         #
         #   @param id [String]
+        #
+        #   @param activation_job_id [String]
         #
         #   @param activate_at [Time] The desired activation time. The activation time should be between any of the ac
         #

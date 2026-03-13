@@ -15,6 +15,9 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :queue_name
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # Whether the call should remain in queue after hangup.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :keep_after_hangup
@@ -25,12 +28,14 @@ module Telnyx
         sig do
           params(
             queue_name: String,
+            call_control_id: String,
             keep_after_hangup: T::Boolean,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
           queue_name:,
+          call_control_id:,
           # Whether the call should remain in queue after hangup.
           keep_after_hangup: nil,
           request_options: {}
@@ -41,6 +46,7 @@ module Telnyx
           override.returns(
             {
               queue_name: String,
+              call_control_id: String,
               keep_after_hangup: T::Boolean,
               request_options: Telnyx::RequestOptions
             }

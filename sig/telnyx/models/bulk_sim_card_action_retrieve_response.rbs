@@ -82,11 +82,14 @@ module Telnyx
           updated_at: String
         }
 
-        type action_type = :bulk_set_public_ips
+        type action_type =
+          :bulk_disable_voice | :bulk_enable_voice | :bulk_set_public_ips
 
         module ActionType
           extend Telnyx::Internal::Type::Enum
 
+          BULK_DISABLE_VOICE: :bulk_disable_voice
+          BULK_ENABLE_VOICE: :bulk_enable_voice
           BULK_SET_PUBLIC_IPS: :bulk_set_public_ips
 
           def self?.values: -> ::Array[Telnyx::Models::BulkSimCardActionRetrieveResponse::Data::action_type]

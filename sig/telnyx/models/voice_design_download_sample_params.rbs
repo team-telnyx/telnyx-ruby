@@ -1,0 +1,30 @@
+module Telnyx
+  module Models
+    type voice_design_download_sample_params =
+      { id: String, version: Integer }
+      & Telnyx::Internal::Type::request_parameters
+
+    class VoiceDesignDownloadSampleParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor id: String
+
+      attr_reader version: Integer?
+
+      def version=: (Integer) -> Integer
+
+      def initialize: (
+        id: String,
+        ?version: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        version: Integer,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

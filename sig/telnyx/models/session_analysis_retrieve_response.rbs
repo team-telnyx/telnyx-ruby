@@ -1,0 +1,77 @@
+module Telnyx
+  module Models
+    type session_analysis_retrieve_response =
+      {
+        cost: Telnyx::Models::SessionAnalysisRetrieveResponse::Cost,
+        created_at: Time,
+        meta: Telnyx::Models::SessionAnalysisRetrieveResponse::Meta,
+        root: Telnyx::EventNode,
+        session_id: String,
+        status: String,
+        completed_at: Time?
+      }
+
+    class SessionAnalysisRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor cost: Telnyx::Models::SessionAnalysisRetrieveResponse::Cost
+
+      attr_accessor created_at: Time
+
+      attr_accessor meta: Telnyx::Models::SessionAnalysisRetrieveResponse::Meta
+
+      attr_accessor root: Telnyx::EventNode
+
+      attr_accessor session_id: String
+
+      attr_accessor status: String
+
+      attr_accessor completed_at: Time?
+
+      def initialize: (
+        cost: Telnyx::Models::SessionAnalysisRetrieveResponse::Cost,
+        created_at: Time,
+        meta: Telnyx::Models::SessionAnalysisRetrieveResponse::Meta,
+        root: Telnyx::EventNode,
+        session_id: String,
+        status: String,
+        ?completed_at: Time?
+      ) -> void
+
+      def to_hash: -> {
+        cost: Telnyx::Models::SessionAnalysisRetrieveResponse::Cost,
+        created_at: Time,
+        meta: Telnyx::Models::SessionAnalysisRetrieveResponse::Meta,
+        root: Telnyx::EventNode,
+        session_id: String,
+        status: String,
+        completed_at: Time?
+      }
+
+      type cost = { currency: String, total: String }
+
+      class Cost < Telnyx::Internal::Type::BaseModel
+        attr_accessor currency: String
+
+        attr_accessor total: String
+
+        def initialize: (currency: String, total: String) -> void
+
+        def to_hash: -> { currency: String, total: String }
+      end
+
+      type meta = { event_count: Integer, products: ::Array[String] }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor event_count: Integer
+
+        attr_accessor products: ::Array[String]
+
+        def initialize: (
+          event_count: Integer,
+          products: ::Array[String]
+        ) -> void
+
+        def to_hash: -> { event_count: Integer, products: ::Array[String] }
+      end
+    end
+  end
+end

@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute call_control_ids
         #   List of unique identifiers and tokens for controlling the call. Enter each call
         #   control ID to be unheld.
@@ -22,9 +27,11 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Conferences::ActionUnholdParams::Region, nil]
         optional :region, enum: -> { Telnyx::Conferences::ActionUnholdParams::Region }
 
-        # @!method initialize(call_control_ids:, region: nil, request_options: {})
+        # @!method initialize(id:, call_control_ids:, region: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::ActionUnholdParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param call_control_ids [Array<String>] List of unique identifiers and tokens for controlling the call. Enter each call
         #

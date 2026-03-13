@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute call_control_id
+        #
+        #   @return [String]
+        required :call_control_id, String
+
         # @!attribute client_state
         #   Use this field to add state to every subsequent webhook. It must be a valid
         #   Base-64 encoded string.
@@ -28,9 +33,11 @@ module Telnyx
         #   @return [Array<Telnyx::Models::CustomSipHeader>, nil]
         optional :custom_headers, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::CustomSipHeader] }
 
-        # @!method initialize(client_state: nil, command_id: nil, custom_headers: nil, request_options: {})
+        # @!method initialize(call_control_id:, client_state: nil, command_id: nil, custom_headers: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionHangupParams} for more details.
+        #
+        #   @param call_control_id [String]
         #
         #   @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #

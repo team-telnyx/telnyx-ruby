@@ -16,6 +16,9 @@ module Telnyx
           end
 
         sig { returns(String) }
+        attr_accessor :room_id
+
+        sig { returns(String) }
         attr_accessor :refresh_token
 
         # The time to live in seconds of the Client Token, after that time the Client
@@ -28,12 +31,14 @@ module Telnyx
 
         sig do
           params(
+            room_id: String,
             refresh_token: String,
             token_ttl_secs: Integer,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          room_id:,
           refresh_token:,
           # The time to live in seconds of the Client Token, after that time the Client
           # Token is invalid and can't be used to join a Room.
@@ -45,6 +50,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              room_id: String,
               refresh_token: String,
               token_ttl_secs: Integer,
               request_options: Telnyx::RequestOptions

@@ -3,6 +3,7 @@ module Telnyx
     module Conferences
       type action_play_params =
         {
+          id: String,
           audio_url: String,
           call_control_ids: ::Array[String],
           loop_: Telnyx::Models::Calls::loopcount,
@@ -14,6 +15,8 @@ module Telnyx
       class ActionPlayParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor id: String
 
         attr_reader audio_url: String?
 
@@ -40,6 +43,7 @@ module Telnyx
         ) -> Telnyx::Models::Conferences::ActionPlayParams::region
 
         def initialize: (
+          id: String,
           ?audio_url: String,
           ?call_control_ids: ::Array[String],
           ?loop_: Telnyx::Models::Calls::loopcount,
@@ -49,6 +53,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          id: String,
           audio_url: String,
           call_control_ids: ::Array[String],
           loop_: Telnyx::Models::Calls::loopcount,

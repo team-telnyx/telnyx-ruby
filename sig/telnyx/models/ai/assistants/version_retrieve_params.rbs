@@ -3,7 +3,11 @@ module Telnyx
     module AI
       module Assistants
         type version_retrieve_params =
-          { assistant_id: String, include_mcp_servers: bool }
+          {
+            assistant_id: String,
+            version_id: String,
+            include_mcp_servers: bool
+          }
           & Telnyx::Internal::Type::request_parameters
 
         class VersionRetrieveParams < Telnyx::Internal::Type::BaseModel
@@ -12,18 +16,22 @@ module Telnyx
 
           attr_accessor assistant_id: String
 
+          attr_accessor version_id: String
+
           attr_reader include_mcp_servers: bool?
 
           def include_mcp_servers=: (bool) -> bool
 
           def initialize: (
             assistant_id: String,
+            version_id: String,
             ?include_mcp_servers: bool,
             ?request_options: Telnyx::request_opts
           ) -> void
 
           def to_hash: -> {
             assistant_id: String,
+            version_id: String,
             include_mcp_servers: bool,
             request_options: Telnyx::RequestOptions
           }

@@ -8,13 +8,20 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute wireless_blocklist_id
         #   The identification of the related Wireless Blocklist resource.
         #
         #   @return [String]
         required :wireless_blocklist_id, String
 
-        # @!method initialize(wireless_blocklist_id:, request_options: {})
+        # @!method initialize(id:, wireless_blocklist_id:, request_options: {})
+        #   @param id [String]
+        #
         #   @param wireless_blocklist_id [String] The identification of the related Wireless Blocklist resource.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]

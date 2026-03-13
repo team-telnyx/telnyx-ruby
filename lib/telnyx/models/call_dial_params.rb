@@ -171,6 +171,13 @@ module Telnyx
       #   @return [String, nil]
       optional :preferred_codecs, String
 
+      # @!attribute prevent_double_bridge
+      #   Prevents bridging and hangs up the call if the target is already bridged.
+      #   Disabled by default.
+      #
+      #   @return [Boolean, nil]
+      optional :prevent_double_bridge, Telnyx::Internal::Type::Boolean
+
       # @!attribute record
       #   Start recording automatically after an event. Disabled by default.
       #
@@ -392,7 +399,7 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::CallDialParams::WebhookURLMethod, nil]
       optional :webhook_url_method, enum: -> { Telnyx::CallDialParams::WebhookURLMethod }
 
-      # @!method initialize(connection_id:, from:, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, billing_group_id: nil, bridge_intent: nil, bridge_on_answer: nil, client_state: nil, command_id: nil, conference_config: nil, custom_headers: nil, dialogflow_config: nil, enable_dialogflow: nil, from_display_name: nil, link_to: nil, media_encryption: nil, media_name: nil, park_after_unbridge: nil, preferred_codecs: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, stream_auth_token: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_establish_before_call_originate: nil, stream_track: nil, stream_url: nil, supervise_call_control_id: nil, supervisor_role: nil, time_limit_secs: nil, timeout_secs: nil, transcription: nil, transcription_config: nil, webhook_url: nil, webhook_url_method: nil, request_options: {})
+      # @!method initialize(connection_id:, from:, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, billing_group_id: nil, bridge_intent: nil, bridge_on_answer: nil, client_state: nil, command_id: nil, conference_config: nil, custom_headers: nil, dialogflow_config: nil, enable_dialogflow: nil, from_display_name: nil, link_to: nil, media_encryption: nil, media_name: nil, park_after_unbridge: nil, preferred_codecs: nil, prevent_double_bridge: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, stream_auth_token: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_establish_before_call_originate: nil, stream_track: nil, stream_url: nil, supervise_call_control_id: nil, supervisor_role: nil, time_limit_secs: nil, timeout_secs: nil, transcription: nil, transcription_config: nil, webhook_url: nil, webhook_url_method: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CallDialParams} for more details.
       #
@@ -437,6 +444,8 @@ module Telnyx
       #   @param park_after_unbridge [String] If supplied with the value `self`, the current leg will be parked after unbridge
       #
       #   @param preferred_codecs [String] The list of comma-separated codecs in a preferred order for the forked media to
+      #
+      #   @param prevent_double_bridge [Boolean] Prevents bridging and hangs up the call if the target is already bridged. Disabl
       #
       #   @param record [Symbol, Telnyx::Models::CallDialParams::Record] Start recording automatically after an event. Disabled by default.
       #

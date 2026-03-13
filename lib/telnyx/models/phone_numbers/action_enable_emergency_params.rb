@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute emergency_address_id
         #   Identifies the address to be used with emergency services.
         #
@@ -20,7 +25,9 @@ module Telnyx
         #   @return [Boolean]
         required :emergency_enabled, Telnyx::Internal::Type::Boolean
 
-        # @!method initialize(emergency_address_id:, emergency_enabled:, request_options: {})
+        # @!method initialize(id:, emergency_address_id:, emergency_enabled:, request_options: {})
+        #   @param id [String]
+        #
         #   @param emergency_address_id [String] Identifies the address to be used with emergency services.
         #
         #   @param emergency_enabled [Boolean] Indicates whether to enable emergency services on this number.

@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute filter
         #   Filter parameter for uploads (deepObject style). Supports filtering by status,
         #   civic_address_id, location_id, and phone_number with eq/contains operations.
@@ -25,9 +30,11 @@ module Telnyx
         #   @return [Integer, nil]
         optional :page_size, Integer
 
-        # @!method initialize(filter: nil, page_number: nil, page_size: nil, request_options: {})
+        # @!method initialize(id:, filter: nil, page_number: nil, page_size: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::ExternalConnections::UploadListParams} for more details.
+        #
+        #   @param id [String]
         #
         #   @param filter [Telnyx::Models::ExternalConnections::UploadListParams::Filter] Filter parameter for uploads (deepObject style). Supports filtering by status, c
         #

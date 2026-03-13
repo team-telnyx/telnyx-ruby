@@ -25,13 +25,26 @@ class Telnyx::Test::Resources::RecordingTranscriptionsTest < Telnyx::Test::Resou
     response = @telnyx.recording_transcriptions.list
 
     assert_pattern do
-      response => Telnyx::Models::RecordingTranscriptionListResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::RecordingTranscription
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::RecordingTranscription]) | nil,
-        meta: Telnyx::Models::RecordingTranscriptionListResponse::Meta | nil
+      row => {
+        id: String | nil,
+        created_at: String | nil,
+        duration_millis: Integer | nil,
+        record_type: Telnyx::RecordingTranscription::RecordType | nil,
+        recording_id: String | nil,
+        status: Telnyx::RecordingTranscription::Status | nil,
+        transcription_text: String | nil,
+        updated_at: String | nil
       }
     end
   end

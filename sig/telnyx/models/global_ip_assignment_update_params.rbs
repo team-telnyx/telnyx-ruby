@@ -2,6 +2,7 @@ module Telnyx
   module Models
     type global_ip_assignment_update_params =
       {
+        global_ip_assignment_id: String,
         global_ip_assignment_update_request: Telnyx::GlobalIPAssignmentUpdateParams::GlobalIPAssignmentUpdateRequest
       }
       & Telnyx::Internal::Type::request_parameters
@@ -10,14 +11,18 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      attr_accessor global_ip_assignment_id: String
+
       attr_accessor global_ip_assignment_update_request: Telnyx::GlobalIPAssignmentUpdateParams::GlobalIPAssignmentUpdateRequest
 
       def initialize: (
+        global_ip_assignment_id: String,
         global_ip_assignment_update_request: Telnyx::GlobalIPAssignmentUpdateParams::GlobalIPAssignmentUpdateRequest,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
+        global_ip_assignment_id: String,
         global_ip_assignment_update_request: Telnyx::GlobalIPAssignmentUpdateParams::GlobalIPAssignmentUpdateRequest,
         request_options: Telnyx::RequestOptions
       }

@@ -7,6 +7,11 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute messaging_profile_id
       #   Unique identifier for a messaging profile.
       #
@@ -18,7 +23,9 @@ module Telnyx
       #   @return [Array<String>, nil]
       optional :tags, Telnyx::Internal::Type::ArrayOf[String]
 
-      # @!method initialize(messaging_profile_id:, tags: nil, request_options: {})
+      # @!method initialize(id:, messaging_profile_id:, tags: nil, request_options: {})
+      #   @param id [String]
+      #
       #   @param messaging_profile_id [String] Unique identifier for a messaging profile.
       #
       #   @param tags [Array<String>]

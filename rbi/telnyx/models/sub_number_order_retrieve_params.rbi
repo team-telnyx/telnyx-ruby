@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::SubNumberOrderRetrieveParams, Telnyx::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :sub_number_order_id
+
       # Consolidated filter parameter (deepObject style). Originally:
       # filter[include_phone_numbers]
       sig { returns(T.nilable(Telnyx::SubNumberOrderRetrieveParams::Filter)) }
@@ -25,11 +28,13 @@ module Telnyx
 
       sig do
         params(
+          sub_number_order_id: String,
           filter: Telnyx::SubNumberOrderRetrieveParams::Filter::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        sub_number_order_id:,
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[include_phone_numbers]
         filter: nil,
@@ -40,6 +45,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            sub_number_order_id: String,
             filter: Telnyx::SubNumberOrderRetrieveParams::Filter,
             request_options: Telnyx::RequestOptions
           }

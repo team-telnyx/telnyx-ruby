@@ -28,15 +28,11 @@ module Telnyx
         )
       end
 
-      # Some parameter documentations has been truncated, see
-      # {Telnyx::Models::RecordingListParams} for more details.
-      #
       # Returns a list of your call recordings.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
-      # @param filter [Telnyx::Models::RecordingListParams::Filter] Consolidated filter parameter (deepObject style). Originally:
-      # filter[conference\_
+      # @param filter [Telnyx::Models::RecordingListParams::Filter] Filter recordings by various attributes.
       #
       # @param page_number [Integer]
       #

@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute profile_id
+        #
+        #   @return [String]
+        required :profile_id, String
+
         # @!attribute country_code
         #
         #   @return [String, nil]
@@ -27,9 +32,11 @@ module Telnyx
         #   @return [Telnyx::Models::MessagingProfiles::AutorespConfigListParams::UpdatedAt, nil]
         optional :updated_at, -> { Telnyx::MessagingProfiles::AutorespConfigListParams::UpdatedAt }
 
-        # @!method initialize(country_code: nil, created_at: nil, updated_at: nil, request_options: {})
+        # @!method initialize(profile_id:, country_code: nil, created_at: nil, updated_at: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::MessagingProfiles::AutorespConfigListParams} for more details.
+        #
+        #   @param profile_id [String]
         #
         #   @param country_code [String]
         #

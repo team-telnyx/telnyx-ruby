@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute campaign_id
+        #
+        #   @return [String]
+        required :campaign_id, String
+
         # @!attribute webhook_failover_url
         #   Webhook failover to which campaign status updates are sent.
         #
@@ -20,7 +25,9 @@ module Telnyx
         #   @return [String, nil]
         optional :webhook_url, String, api_name: :webhookURL
 
-        # @!method initialize(webhook_failover_url: nil, webhook_url: nil, request_options: {})
+        # @!method initialize(campaign_id:, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+        #   @param campaign_id [String]
+        #
         #   @param webhook_failover_url [String] Webhook failover to which campaign status updates are sent.
         #
         #   @param webhook_url [String] Webhook to which campaign status updates are sent.

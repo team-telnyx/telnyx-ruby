@@ -2,12 +2,14 @@ module Telnyx
   module Models
     module Rooms
       type action_refresh_client_token_params =
-        { refresh_token: String, token_ttl_secs: Integer }
+        { room_id: String, refresh_token: String, token_ttl_secs: Integer }
         & Telnyx::Internal::Type::request_parameters
 
       class ActionRefreshClientTokenParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor room_id: String
 
         attr_accessor refresh_token: String
 
@@ -16,12 +18,14 @@ module Telnyx
         def token_ttl_secs=: (Integer) -> Integer
 
         def initialize: (
+          room_id: String,
           refresh_token: String,
           ?token_ttl_secs: Integer,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
+          room_id: String,
           refresh_token: String,
           token_ttl_secs: Integer,
           request_options: Telnyx::RequestOptions

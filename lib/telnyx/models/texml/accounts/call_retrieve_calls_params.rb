@@ -9,6 +9,11 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
+          # @!attribute account_sid
+          #
+          #   @return [String]
+          required :account_sid, String
+
           # @!attribute end_time
           #   Filters calls by their end date. Expected format is YYYY-MM-DD
           #
@@ -82,9 +87,11 @@ module Telnyx
           #   @return [String, nil]
           optional :to, String
 
-          # @!method initialize(end_time: nil, end_time_gt: nil, end_time_lt: nil, from: nil, page: nil, page_size: nil, page_token: nil, start_time: nil, start_time_gt: nil, start_time_lt: nil, status: nil, to: nil, request_options: {})
+          # @!method initialize(account_sid:, end_time: nil, end_time_gt: nil, end_time_lt: nil, from: nil, page: nil, page_size: nil, page_token: nil, start_time: nil, start_time_gt: nil, start_time_lt: nil, status: nil, to: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Texml::Accounts::CallRetrieveCallsParams} for more details.
+          #
+          #   @param account_sid [String]
           #
           #   @param end_time [String] Filters calls by their end date. Expected format is YYYY-MM-DD
           #

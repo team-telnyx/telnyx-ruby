@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :address_uuid
+
         # The ID of the address.
         sig { returns(T.nilable(String)) }
         attr_reader :id
@@ -24,11 +27,13 @@ module Telnyx
 
         sig do
           params(
+            address_uuid: String,
             id: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          address_uuid:,
           # The ID of the address.
           id: nil,
           request_options: {}
@@ -37,7 +42,11 @@ module Telnyx
 
         sig do
           override.returns(
-            { id: String, request_options: Telnyx::RequestOptions }
+            {
+              address_uuid: String,
+              id: String,
+              request_options: Telnyx::RequestOptions
+            }
           )
         end
         def to_hash

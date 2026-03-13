@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :room_session_id
+
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[date_joined_at][eq], filter[date_joined_at][gte],
         # filter[date_joined_at][lte], filter[date_updated_at][eq],
@@ -50,6 +53,7 @@ module Telnyx
 
         sig do
           params(
+            room_session_id: String,
             filter:
               Telnyx::Rooms::SessionRetrieveParticipantsParams::Filter::OrHash,
             page_number: Integer,
@@ -58,6 +62,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          room_session_id:,
           # Consolidated filter parameter (deepObject style). Originally:
           # filter[date_joined_at][eq], filter[date_joined_at][gte],
           # filter[date_joined_at][lte], filter[date_updated_at][eq],
@@ -74,6 +79,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              room_session_id: String,
               filter: Telnyx::Rooms::SessionRetrieveParticipantsParams::Filter,
               page_number: Integer,
               page_size: Integer,

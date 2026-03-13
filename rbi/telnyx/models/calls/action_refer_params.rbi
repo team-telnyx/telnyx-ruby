@@ -12,6 +12,9 @@ module Telnyx
             T.any(Telnyx::Calls::ActionReferParams, Telnyx::Internal::AnyHash)
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # The SIP URI to which the call will be referred to.
         sig { returns(String) }
         attr_accessor :sip_address
@@ -66,6 +69,7 @@ module Telnyx
 
         sig do
           params(
+            call_control_id: String,
             sip_address: String,
             client_state: String,
             command_id: String,
@@ -77,6 +81,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id:,
           # The SIP URI to which the call will be referred to.
           sip_address:,
           # Use this field to add state to every subsequent webhook. It must be a valid
@@ -102,6 +107,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              call_control_id: String,
               sip_address: String,
               client_state: String,
               command_id: String,

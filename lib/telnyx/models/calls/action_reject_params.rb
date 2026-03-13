@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute call_control_id
+        #
+        #   @return [String]
+        required :call_control_id, String
+
         # @!attribute cause
         #   Cause for call rejection.
         #
@@ -28,9 +33,11 @@ module Telnyx
         #   @return [String, nil]
         optional :command_id, String
 
-        # @!method initialize(cause:, client_state: nil, command_id: nil, request_options: {})
+        # @!method initialize(call_control_id:, cause:, client_state: nil, command_id: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionRejectParams} for more details.
+        #
+        #   @param call_control_id [String]
         #
         #   @param cause [Symbol, Telnyx::Models::Calls::ActionRejectParams::Cause] Cause for call rejection.
         #

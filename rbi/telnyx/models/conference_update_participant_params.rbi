@@ -17,6 +17,9 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :id
 
+      sig { returns(String) }
+      attr_accessor :participant_id
+
       # Whether entry/exit beeps are enabled for this participant.
       sig do
         returns(
@@ -54,6 +57,7 @@ module Telnyx
       sig do
         params(
           id: String,
+          participant_id: String,
           beep_enabled:
             Telnyx::ConferenceUpdateParticipantParams::BeepEnabled::OrSymbol,
           end_conference_on_exit: T::Boolean,
@@ -63,6 +67,7 @@ module Telnyx
       end
       def self.new(
         id:,
+        participant_id:,
         # Whether entry/exit beeps are enabled for this participant.
         beep_enabled: nil,
         # Whether the conference should end when this participant exits.
@@ -79,6 +84,7 @@ module Telnyx
         override.returns(
           {
             id: String,
+            participant_id: String,
             beep_enabled:
               Telnyx::ConferenceUpdateParticipantParams::BeepEnabled::OrSymbol,
             end_conference_on_exit: T::Boolean,

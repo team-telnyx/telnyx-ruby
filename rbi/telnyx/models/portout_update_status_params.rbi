@@ -14,6 +14,9 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :id
 
+      sig { returns(Telnyx::PortoutUpdateStatusParams::Status::OrSymbol) }
+      attr_accessor :status
+
       # Provide a reason if rejecting the port out request
       sig { returns(String) }
       attr_accessor :reason
@@ -29,6 +32,7 @@ module Telnyx
       sig do
         params(
           id: String,
+          status: Telnyx::PortoutUpdateStatusParams::Status::OrSymbol,
           reason: String,
           host_messaging: T::Boolean,
           request_options: Telnyx::RequestOptions::OrHash
@@ -36,6 +40,7 @@ module Telnyx
       end
       def self.new(
         id:,
+        status:,
         # Provide a reason if rejecting the port out request
         reason:,
         # Indicates whether messaging services should be maintained with Telnyx after the
@@ -49,6 +54,7 @@ module Telnyx
         override.returns(
           {
             id: String,
+            status: Telnyx::PortoutUpdateStatusParams::Status::OrSymbol,
             reason: String,
             host_messaging: T::Boolean,
             request_options: Telnyx::RequestOptions

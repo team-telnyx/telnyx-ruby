@@ -16,6 +16,9 @@ module Telnyx
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :assistant_id
+
           sig do
             returns(
               T.nilable(
@@ -59,6 +62,7 @@ module Telnyx
 
           sig do
             params(
+              assistant_id: String,
               conversation_channel:
                 Telnyx::AI::Assistants::ConversationChannelType::OrSymbol,
               from_date: Time,
@@ -69,6 +73,7 @@ module Telnyx
             ).returns(T.attached_class)
           end
           def self.new(
+            assistant_id:,
             conversation_channel: nil,
             from_date: nil,
             page_number: nil,
@@ -81,6 +86,7 @@ module Telnyx
           sig do
             override.returns(
               {
+                assistant_id: String,
                 conversation_channel:
                   Telnyx::AI::Assistants::ConversationChannelType::OrSymbol,
                 from_date: Time,

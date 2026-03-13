@@ -16,6 +16,9 @@ module Telnyx
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :bucket_name
+
           # Consolidated filter parameter (deepObject style). Originally:
           # filter[start_time], filter[end_time]
           sig do
@@ -33,12 +36,14 @@ module Telnyx
 
           sig do
             params(
+              bucket_name: String,
               filter:
                 Telnyx::Storage::Buckets::UsageGetAPIUsageParams::Filter::OrHash,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
+            bucket_name:,
             # Consolidated filter parameter (deepObject style). Originally:
             # filter[start_time], filter[end_time]
             filter:,
@@ -49,6 +54,7 @@ module Telnyx
           sig do
             override.returns(
               {
+                bucket_name: String,
                 filter:
                   Telnyx::Storage::Buckets::UsageGetAPIUsageParams::Filter,
                 request_options: Telnyx::RequestOptions

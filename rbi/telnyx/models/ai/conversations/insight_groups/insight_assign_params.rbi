@@ -21,22 +21,33 @@ module Telnyx
             sig { returns(String) }
             attr_accessor :group_id
 
+            # The ID of the insight
+            sig { returns(String) }
+            attr_accessor :insight_id
+
             sig do
               params(
                 group_id: String,
+                insight_id: String,
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(T.attached_class)
             end
             def self.new(
               # The ID of the insight group
               group_id:,
+              # The ID of the insight
+              insight_id:,
               request_options: {}
             )
             end
 
             sig do
               override.returns(
-                { group_id: String, request_options: Telnyx::RequestOptions }
+                {
+                  group_id: String,
+                  insight_id: String,
+                  request_options: Telnyx::RequestOptions
+                }
               )
             end
             def to_hash

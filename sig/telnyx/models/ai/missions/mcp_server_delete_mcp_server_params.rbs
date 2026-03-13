@@ -3,7 +3,8 @@ module Telnyx
     module AI
       module Missions
         type mcp_server_delete_mcp_server_params =
-          { mission_id: String } & Telnyx::Internal::Type::request_parameters
+          { mission_id: String, mcp_server_id: String }
+          & Telnyx::Internal::Type::request_parameters
 
         class McpServerDeleteMcpServerParams < Telnyx::Internal::Type::BaseModel
           extend Telnyx::Internal::Type::RequestParameters::Converter
@@ -11,13 +12,17 @@ module Telnyx
 
           attr_accessor mission_id: String
 
+          attr_accessor mcp_server_id: String
+
           def initialize: (
             mission_id: String,
+            mcp_server_id: String,
             ?request_options: Telnyx::request_opts
           ) -> void
 
           def to_hash: -> {
             mission_id: String,
+            mcp_server_id: String,
             request_options: Telnyx::RequestOptions
           }
         end

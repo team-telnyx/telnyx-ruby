@@ -15,14 +15,21 @@ module Telnyx
             #   @return [String]
             required :mission_id, String
 
+            # @!attribute run_id
+            #
+            #   @return [String]
+            required :run_id, String
+
             # @!attribute telnyx_agent_id
             #   The Telnyx AI agent ID to link
             #
             #   @return [String]
             required :telnyx_agent_id, String
 
-            # @!method initialize(mission_id:, telnyx_agent_id:, request_options: {})
+            # @!method initialize(mission_id:, run_id:, telnyx_agent_id:, request_options: {})
             #   @param mission_id [String]
+            #
+            #   @param run_id [String]
             #
             #   @param telnyx_agent_id [String] The Telnyx AI agent ID to link
             #

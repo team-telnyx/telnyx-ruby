@@ -73,6 +73,9 @@ module Telnyx
       module BundlePricing
       end
 
+      module BusinessAccounts
+      end
+
       module ByPhoneNumber
       end
 
@@ -192,6 +195,8 @@ module Telnyx
       end
 
       module PhoneNumbers
+        module Profile
+        end
       end
 
       module Porting
@@ -201,6 +206,9 @@ module Telnyx
       end
 
       module Portouts
+      end
+
+      module Profile
       end
 
       module Queues
@@ -229,6 +237,9 @@ module Telnyx
       end
 
       module Runs
+      end
+
+      module SessionAnalysis
       end
 
       module Sessions
@@ -292,7 +303,20 @@ module Telnyx
       module VerifiedNumbers
       end
 
+      module Whatsapp
+        module BusinessAccounts
+        end
+
+        module PhoneNumbers
+          module Profile
+          end
+        end
+      end
+
       module Wireless
+      end
+
+      module X402
       end
     end
   end

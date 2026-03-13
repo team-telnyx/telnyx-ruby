@@ -4,6 +4,7 @@ module Telnyx
       module Rcs
         type agent_update_params =
           {
+            id: String,
             profile_id: String?,
             webhook_failover_url: String?,
             webhook_url: String?
@@ -14,6 +15,8 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
+          attr_accessor id: String
+
           attr_accessor profile_id: String?
 
           attr_accessor webhook_failover_url: String?
@@ -21,6 +24,7 @@ module Telnyx
           attr_accessor webhook_url: String?
 
           def initialize: (
+            id: String,
             ?profile_id: String?,
             ?webhook_failover_url: String?,
             ?webhook_url: String?,
@@ -28,6 +32,7 @@ module Telnyx
           ) -> void
 
           def to_hash: -> {
+            id: String,
             profile_id: String?,
             webhook_failover_url: String?,
             webhook_url: String?,

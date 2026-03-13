@@ -1,0 +1,48 @@
+module Telnyx
+  module Models
+    module Whatsapp
+      type phone_number_resend_verification_params =
+        {
+          phone_number: String,
+          verification_method: Telnyx::Models::Whatsapp::PhoneNumberResendVerificationParams::verification_method
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class PhoneNumberResendVerificationParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor phone_number: String
+
+        attr_reader verification_method: Telnyx::Models::Whatsapp::PhoneNumberResendVerificationParams::verification_method?
+
+        def verification_method=: (
+          Telnyx::Models::Whatsapp::PhoneNumberResendVerificationParams::verification_method
+        ) -> Telnyx::Models::Whatsapp::PhoneNumberResendVerificationParams::verification_method
+
+        def initialize: (
+          phone_number: String,
+          ?verification_method: Telnyx::Models::Whatsapp::PhoneNumberResendVerificationParams::verification_method,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          phone_number: String,
+          verification_method: Telnyx::Models::Whatsapp::PhoneNumberResendVerificationParams::verification_method,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type verification_method = :sms | :voice
+
+        module VerificationMethod
+          extend Telnyx::Internal::Type::Enum
+
+          SMS: :sms
+          VOICE: :voice
+
+          def self?.values: -> ::Array[Telnyx::Models::Whatsapp::PhoneNumberResendVerificationParams::verification_method]
+        end
+      end
+    end
+  end
+end

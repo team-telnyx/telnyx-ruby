@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # When set to true, includes the groups array for each user in the response. The
         # groups array contains objects with id and name for each group the user belongs
         # to.
@@ -26,11 +29,13 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             include_groups: T::Boolean,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # When set to true, includes the groups array for each user in the response. The
           # groups array contains objects with id and name for each group the user belongs
           # to.
@@ -42,6 +47,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               include_groups: T::Boolean,
               request_options: Telnyx::RequestOptions
             }

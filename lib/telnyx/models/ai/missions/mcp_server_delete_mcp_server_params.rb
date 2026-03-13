@@ -14,8 +14,14 @@ module Telnyx
           #   @return [String]
           required :mission_id, String
 
-          # @!method initialize(mission_id:, request_options: {})
+          # @!attribute mcp_server_id
+          #
+          #   @return [String]
+          required :mcp_server_id, String
+
+          # @!method initialize(mission_id:, mcp_server_id:, request_options: {})
           #   @param mission_id [String]
+          #   @param mcp_server_id [String]
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end
       end

@@ -2,7 +2,7 @@ module Telnyx
   module Models
     module Storage
       type bucket_create_presigned_url_params =
-        { bucket_name: String, ttl: Integer }
+        { bucket_name: String, object_name: String, ttl: Integer }
         & Telnyx::Internal::Type::request_parameters
 
       class BucketCreatePresignedURLParams < Telnyx::Internal::Type::BaseModel
@@ -11,18 +11,22 @@ module Telnyx
 
         attr_accessor bucket_name: String
 
+        attr_accessor object_name: String
+
         attr_reader ttl: Integer?
 
         def ttl=: (Integer) -> Integer
 
         def initialize: (
           bucket_name: String,
+          object_name: String,
           ?ttl: Integer,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           bucket_name: String,
+          object_name: String,
           ttl: Integer,
           request_options: Telnyx::RequestOptions
         }

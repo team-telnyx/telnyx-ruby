@@ -3,6 +3,7 @@ module Telnyx
     module Conferences
       type action_unhold_params =
         {
+          id: String,
           call_control_ids: ::Array[String],
           region: Telnyx::Models::Conferences::ActionUnholdParams::region
         }
@@ -11,6 +12,8 @@ module Telnyx
       class ActionUnholdParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor id: String
 
         attr_accessor call_control_ids: ::Array[String]
 
@@ -21,12 +24,14 @@ module Telnyx
         ) -> Telnyx::Models::Conferences::ActionUnholdParams::region
 
         def initialize: (
+          id: String,
           call_control_ids: ::Array[String],
           ?region: Telnyx::Models::Conferences::ActionUnholdParams::region,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
+          id: String,
           call_control_ids: ::Array[String],
           region: Telnyx::Models::Conferences::ActionUnholdParams::region,
           request_options: Telnyx::RequestOptions

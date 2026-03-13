@@ -16,6 +16,10 @@ module Telnyx
               )
             end
 
+          # The ID of the insight group
+          sig { returns(String) }
+          attr_accessor :group_id
+
           sig { returns(T.nilable(String)) }
           attr_reader :description
 
@@ -36,6 +40,7 @@ module Telnyx
 
           sig do
             params(
+              group_id: String,
               description: String,
               name: String,
               webhook: String,
@@ -43,6 +48,8 @@ module Telnyx
             ).returns(T.attached_class)
           end
           def self.new(
+            # The ID of the insight group
+            group_id:,
             description: nil,
             name: nil,
             webhook: nil,
@@ -53,6 +60,7 @@ module Telnyx
           sig do
             override.returns(
               {
+                group_id: String,
                 description: String,
                 name: String,
                 webhook: String,

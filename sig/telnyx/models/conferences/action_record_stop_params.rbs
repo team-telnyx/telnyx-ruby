@@ -3,6 +3,7 @@ module Telnyx
     module Conferences
       type action_record_stop_params =
         {
+          id: String,
           client_state: String,
           command_id: String,
           recording_id: String,
@@ -13,6 +14,8 @@ module Telnyx
       class ActionRecordStopParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor id: String
 
         attr_reader client_state: String?
 
@@ -33,6 +36,7 @@ module Telnyx
         ) -> Telnyx::Models::Conferences::ActionRecordStopParams::region
 
         def initialize: (
+          id: String,
           ?client_state: String,
           ?command_id: String,
           ?recording_id: String,
@@ -41,6 +45,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          id: String,
           client_state: String,
           command_id: String,
           recording_id: String,

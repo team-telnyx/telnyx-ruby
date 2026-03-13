@@ -8,6 +8,11 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
+        # @!attribute porting_order_id
+        #
+        #   @return [String]
+        required :porting_order_id, String
+
         # @!attribute filter
         #   Consolidated filter parameter (deepObject style). Originally:
         #   filter[porting_order_id], filter[support_key], filter[status],
@@ -32,9 +37,11 @@ module Telnyx
         #   @return [Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Sort, nil]
         optional :sort, -> { Telnyx::PortingOrders::PhoneNumberBlockListParams::Sort }
 
-        # @!method initialize(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+        # @!method initialize(porting_order_id:, filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::PortingOrders::PhoneNumberBlockListParams} for more details.
+        #
+        #   @param porting_order_id [String]
         #
         #   @param filter [Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[porting_ord
         #

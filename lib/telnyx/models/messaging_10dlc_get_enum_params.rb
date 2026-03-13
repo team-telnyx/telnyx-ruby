@@ -7,7 +7,13 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      # @!method initialize(request_options: {})
+      # @!attribute endpoint
+      #
+      #   @return [Symbol, Telnyx::Models::Messaging10dlcGetEnumParams::Endpoint]
+      required :endpoint, enum: -> { Telnyx::Messaging10dlcGetEnumParams::Endpoint }
+
+      # @!method initialize(endpoint:, request_options: {})
+      #   @param endpoint [Symbol, Telnyx::Models::Messaging10dlcGetEnumParams::Endpoint]
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
       module Endpoint

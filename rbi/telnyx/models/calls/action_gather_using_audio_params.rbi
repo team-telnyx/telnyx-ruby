@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :call_control_id
+
         # The URL of a file to be played back at the beginning of each prompt. The URL can
         # point to either a WAV or MP3 file. media_name and audio_url cannot be used
         # together in one request.
@@ -125,6 +128,7 @@ module Telnyx
 
         sig do
           params(
+            call_control_id: String,
             audio_url: String,
             client_state: String,
             command_id: String,
@@ -142,6 +146,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          call_control_id:,
           # The URL of a file to be played back at the beginning of each prompt. The URL can
           # point to either a WAV or MP3 file. media_name and audio_url cannot be used
           # together in one request.
@@ -192,6 +197,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              call_control_id: String,
               audio_url: String,
               client_state: String,
               command_id: String,

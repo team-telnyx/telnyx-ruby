@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # The code of the region where the public IP should be assigned. A list of
         # available regions can be found at the regions endpoint
         sig { returns(T.nilable(String)) }
@@ -25,11 +28,13 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             region_code: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # The code of the region where the public IP should be assigned. A list of
           # available regions can be found at the regions endpoint
           region_code: nil,
@@ -39,7 +44,11 @@ module Telnyx
 
         sig do
           override.returns(
-            { region_code: String, request_options: Telnyx::RequestOptions }
+            {
+              id: String,
+              region_code: String,
+              request_options: Telnyx::RequestOptions
+            }
           )
         end
         def to_hash

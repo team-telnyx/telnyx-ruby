@@ -2,6 +2,7 @@ module Telnyx
   module Models
     type fax_application_update_params =
       {
+        id: String,
         application_name: String,
         webhook_event_url: String,
         active: bool,
@@ -18,6 +19,8 @@ module Telnyx
     class FaxApplicationUpdateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor id: String
 
       attr_accessor application_name: String
 
@@ -56,6 +59,7 @@ module Telnyx
       attr_accessor webhook_timeout_secs: Integer?
 
       def initialize: (
+        id: String,
         application_name: String,
         webhook_event_url: String,
         ?active: bool,
@@ -70,6 +74,7 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
+        id: String,
         application_name: String,
         webhook_event_url: String,
         active: bool,

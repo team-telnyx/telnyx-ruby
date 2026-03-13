@@ -20,9 +20,15 @@ module Telnyx
             #   @return [String]
             required :conference_sid, String
 
-            # @!method initialize(account_sid:, conference_sid:, request_options: {})
+            # @!attribute call_sid_or_participant_label
+            #
+            #   @return [String]
+            required :call_sid_or_participant_label, String
+
+            # @!method initialize(account_sid:, conference_sid:, call_sid_or_participant_label:, request_options: {})
             #   @param account_sid [String]
             #   @param conference_sid [String]
+            #   @param call_sid_or_participant_label [String]
             #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
           end
         end

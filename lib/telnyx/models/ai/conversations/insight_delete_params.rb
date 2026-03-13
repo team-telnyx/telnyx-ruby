@@ -9,7 +9,15 @@ module Telnyx
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
-          # @!method initialize(request_options: {})
+          # @!attribute insight_id
+          #   The ID of the insight
+          #
+          #   @return [String]
+          required :insight_id, String
+
+          # @!method initialize(insight_id:, request_options: {})
+          #   @param insight_id [String] The ID of the insight
+          #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end
       end

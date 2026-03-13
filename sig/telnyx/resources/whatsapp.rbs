@@ -1,0 +1,13 @@
+module Telnyx
+  module Resources
+    class Whatsapp
+      attr_reader business_accounts: Telnyx::Resources::Whatsapp::BusinessAccounts
+
+      attr_reader templates: Telnyx::Resources::Whatsapp::Templates
+
+      attr_reader phone_numbers: Telnyx::Resources::Whatsapp::PhoneNumbers
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

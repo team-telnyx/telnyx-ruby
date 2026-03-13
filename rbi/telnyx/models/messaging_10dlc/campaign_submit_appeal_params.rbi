@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :campaign_id
+
         # Detailed explanation of why the campaign should be reconsidered and what changes
         # have been made to address the rejection reason.
         sig { returns(String) }
@@ -22,11 +25,13 @@ module Telnyx
 
         sig do
           params(
+            campaign_id: String,
             appeal_reason: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          campaign_id:,
           # Detailed explanation of why the campaign should be reconsidered and what changes
           # have been made to address the rejection reason.
           appeal_reason:,
@@ -36,7 +41,11 @@ module Telnyx
 
         sig do
           override.returns(
-            { appeal_reason: String, request_options: Telnyx::RequestOptions }
+            {
+              campaign_id: String,
+              appeal_reason: String,
+              request_options: Telnyx::RequestOptions
+            }
           )
         end
         def to_hash

@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # The URL of a file to be played back in the conference. media_name and audio_url
         # cannot be used together in one request.
         sig { returns(T.nilable(String)) }
@@ -67,6 +70,7 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             audio_url: String,
             call_control_ids: T::Array[String],
             loop_: Telnyx::Calls::Loopcount::Variants,
@@ -76,6 +80,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # The URL of a file to be played back in the conference. media_name and audio_url
           # cannot be used together in one request.
           audio_url: nil,
@@ -100,6 +105,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               audio_url: String,
               call_control_ids: T::Array[String],
               loop_: Telnyx::Calls::Loopcount::Variants,

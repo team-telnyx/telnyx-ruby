@@ -29,10 +29,12 @@ module Telnyx
       sig { params(id: String).void }
       attr_writer :id
 
-      # The operation type. It can be one of the following: <br/>
+      # The action type. It can be one of the following: <br/>
       #
       # <ul>
-      # <li><code>bulk_set_public_ips</code> - set a public IP for each specified SIM card.</li>
+      # <li><code>bulk_disable_voice</code> - disable voice for every SIM Card in a SIM Card Group.</li>
+      # <li><code>bulk_enable_voice</code> - enable voice for every SIM Card in a SIM Card Group.</li>
+      # <li><code>bulk_set_public_ips</code> - set a public IP for each specified SIM Card.</li>
       # </ul>
       sig do
         returns(
@@ -94,10 +96,12 @@ module Telnyx
       def self.new(
         # Identifies the resource.
         id: nil,
-        # The operation type. It can be one of the following: <br/>
+        # The action type. It can be one of the following: <br/>
         #
         # <ul>
-        # <li><code>bulk_set_public_ips</code> - set a public IP for each specified SIM card.</li>
+        # <li><code>bulk_disable_voice</code> - disable voice for every SIM Card in a SIM Card Group.</li>
+        # <li><code>bulk_enable_voice</code> - enable voice for every SIM Card in a SIM Card Group.</li>
+        # <li><code>bulk_set_public_ips</code> - set a public IP for each specified SIM Card.</li>
         # </ul>
         action_type: nil,
         # ISO 8601 formatted date-time indicating when the resource was created.
@@ -128,10 +132,12 @@ module Telnyx
       def to_hash
       end
 
-      # The operation type. It can be one of the following: <br/>
+      # The action type. It can be one of the following: <br/>
       #
       # <ul>
-      # <li><code>bulk_set_public_ips</code> - set a public IP for each specified SIM card.</li>
+      # <li><code>bulk_disable_voice</code> - disable voice for every SIM Card in a SIM Card Group.</li>
+      # <li><code>bulk_enable_voice</code> - enable voice for every SIM Card in a SIM Card Group.</li>
+      # <li><code>bulk_set_public_ips</code> - set a public IP for each specified SIM Card.</li>
       # </ul>
       module ActionType
         extend Telnyx::Internal::Type::Enum
@@ -145,6 +151,16 @@ module Telnyx
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+        BULK_DISABLE_VOICE =
+          T.let(
+            :bulk_disable_voice,
+            Telnyx::Models::BulkSimCardActionListResponse::ActionType::TaggedSymbol
+          )
+        BULK_ENABLE_VOICE =
+          T.let(
+            :bulk_enable_voice,
+            Telnyx::Models::BulkSimCardActionListResponse::ActionType::TaggedSymbol
+          )
         BULK_SET_PUBLIC_IPS =
           T.let(
             :bulk_set_public_ips,

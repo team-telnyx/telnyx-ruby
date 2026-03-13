@@ -8,7 +8,15 @@ module Telnyx
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
-        # @!method initialize(request_options: {})
+        # @!attribute campaign_id
+        #   ID of the campaign in question
+        #
+        #   @return [String]
+        required :campaign_id, String
+
+        # @!method initialize(campaign_id:, request_options: {})
+        #   @param campaign_id [String] ID of the campaign in question
+        #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end
     end

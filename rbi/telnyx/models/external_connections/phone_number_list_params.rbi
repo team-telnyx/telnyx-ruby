@@ -15,6 +15,9 @@ module Telnyx
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # Filter parameter for phone numbers (deepObject style). Supports filtering by
         # phone_number, civic_address_id, and location_id with eq/contains operations.
         sig do
@@ -48,6 +51,7 @@ module Telnyx
 
         sig do
           params(
+            id: String,
             filter:
               Telnyx::ExternalConnections::PhoneNumberListParams::Filter::OrHash,
             page_number: Integer,
@@ -56,6 +60,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # Filter parameter for phone numbers (deepObject style). Supports filtering by
           # phone_number, civic_address_id, and location_id with eq/contains operations.
           filter: nil,
@@ -68,6 +73,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              id: String,
               filter:
                 Telnyx::ExternalConnections::PhoneNumberListParams::Filter,
               page_number: Integer,

@@ -14,17 +14,22 @@ module Telnyx
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :template_id
+
       # The text content of the message template.
       sig { returns(String) }
       attr_accessor :text
 
       sig do
         params(
+          template_id: String,
           text: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        template_id:,
         # The text content of the message template.
         text:,
         request_options: {}
@@ -33,7 +38,11 @@ module Telnyx
 
       sig do
         override.returns(
-          { text: String, request_options: Telnyx::RequestOptions }
+          {
+            template_id: String,
+            text: String,
+            request_options: Telnyx::RequestOptions
+          }
         )
       end
       def to_hash

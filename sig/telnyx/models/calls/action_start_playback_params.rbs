@@ -3,6 +3,7 @@ module Telnyx
     module Calls
       type action_start_playback_params =
         {
+          call_control_id: String,
           audio_type: Telnyx::Models::Calls::ActionStartPlaybackParams::audio_type,
           audio_url: String,
           cache_audio: bool,
@@ -20,6 +21,8 @@ module Telnyx
       class ActionStartPlaybackParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
 
         attr_reader audio_type: Telnyx::Models::Calls::ActionStartPlaybackParams::audio_type?
 
@@ -70,6 +73,7 @@ module Telnyx
         def target_legs=: (String) -> String
 
         def initialize: (
+          call_control_id: String,
           ?audio_type: Telnyx::Models::Calls::ActionStartPlaybackParams::audio_type,
           ?audio_url: String,
           ?cache_audio: bool,
@@ -85,6 +89,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          call_control_id: String,
           audio_type: Telnyx::Models::Calls::ActionStartPlaybackParams::audio_type,
           audio_url: String,
           cache_audio: bool,
