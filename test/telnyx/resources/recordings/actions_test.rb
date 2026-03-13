@@ -12,7 +12,13 @@ class Telnyx::Test::Resources::Recordings::ActionsTest < Telnyx::Test::ResourceT
       )
 
     assert_pattern do
-      response => nil
+      response => Telnyx::Models::Recordings::ActionDeleteResponse
+    end
+
+    assert_pattern do
+      response => {
+        status: Telnyx::Models::Recordings::ActionDeleteResponse::Status | nil
+      }
     end
   end
 end

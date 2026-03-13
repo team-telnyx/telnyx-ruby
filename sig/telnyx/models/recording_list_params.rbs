@@ -42,17 +42,25 @@ module Telnyx
 
       type filter =
         {
+          call_control_id: String,
           call_leg_id: String,
           call_session_id: String,
           conference_id: String,
+          conference_region: String,
           connection_id: String,
           created_at: Telnyx::RecordingListParams::Filter::CreatedAt,
+          end_time: Telnyx::RecordingListParams::Filter::EndTime,
           from: String,
           sip_call_id: String,
+          start_time: Telnyx::RecordingListParams::Filter::StartTime,
           to: String
         }
 
       class Filter < Telnyx::Internal::Type::BaseModel
+        attr_reader call_control_id: String?
+
+        def call_control_id=: (String) -> String
+
         attr_reader call_leg_id: String?
 
         def call_leg_id=: (String) -> String
@@ -65,6 +73,10 @@ module Telnyx
 
         def conference_id=: (String) -> String
 
+        attr_reader conference_region: String?
+
+        def conference_region=: (String) -> String
+
         attr_reader connection_id: String?
 
         def connection_id=: (String) -> String
@@ -75,6 +87,12 @@ module Telnyx
           Telnyx::RecordingListParams::Filter::CreatedAt
         ) -> Telnyx::RecordingListParams::Filter::CreatedAt
 
+        attr_reader end_time: Telnyx::RecordingListParams::Filter::EndTime?
+
+        def end_time=: (
+          Telnyx::RecordingListParams::Filter::EndTime
+        ) -> Telnyx::RecordingListParams::Filter::EndTime
+
         attr_reader from: String?
 
         def from=: (String) -> String
@@ -83,35 +101,81 @@ module Telnyx
 
         def sip_call_id=: (String) -> String
 
+        attr_reader start_time: Telnyx::RecordingListParams::Filter::StartTime?
+
+        def start_time=: (
+          Telnyx::RecordingListParams::Filter::StartTime
+        ) -> Telnyx::RecordingListParams::Filter::StartTime
+
         attr_reader to: String?
 
         def to=: (String) -> String
 
         def initialize: (
+          ?call_control_id: String,
           ?call_leg_id: String,
           ?call_session_id: String,
           ?conference_id: String,
+          ?conference_region: String,
           ?connection_id: String,
           ?created_at: Telnyx::RecordingListParams::Filter::CreatedAt,
+          ?end_time: Telnyx::RecordingListParams::Filter::EndTime,
           ?from: String,
           ?sip_call_id: String,
+          ?start_time: Telnyx::RecordingListParams::Filter::StartTime,
           ?to: String
         ) -> void
 
         def to_hash: -> {
+          call_control_id: String,
           call_leg_id: String,
           call_session_id: String,
           conference_id: String,
+          conference_region: String,
           connection_id: String,
           created_at: Telnyx::RecordingListParams::Filter::CreatedAt,
+          end_time: Telnyx::RecordingListParams::Filter::EndTime,
           from: String,
           sip_call_id: String,
+          start_time: Telnyx::RecordingListParams::Filter::StartTime,
           to: String
         }
 
         type created_at = { gte: String, lte: String }
 
         class CreatedAt < Telnyx::Internal::Type::BaseModel
+          attr_reader gte: String?
+
+          def gte=: (String) -> String
+
+          attr_reader lte: String?
+
+          def lte=: (String) -> String
+
+          def initialize: (?gte: String, ?lte: String) -> void
+
+          def to_hash: -> { gte: String, lte: String }
+        end
+
+        type end_time = { gte: String, lte: String }
+
+        class EndTime < Telnyx::Internal::Type::BaseModel
+          attr_reader gte: String?
+
+          def gte=: (String) -> String
+
+          attr_reader lte: String?
+
+          def lte=: (String) -> String
+
+          def initialize: (?gte: String, ?lte: String) -> void
+
+          def to_hash: -> { gte: String, lte: String }
+        end
+
+        type start_time = { gte: String, lte: String }
+
+        class StartTime < Telnyx::Internal::Type::BaseModel
           attr_reader gte: String?
 
           def gte=: (String) -> String

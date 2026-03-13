@@ -26,19 +26,29 @@ module Telnyx
 
       # Returns a list of your recording transcriptions.
       #
-      # @overload list(request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
+      #
+      # @param filter [Telnyx::Models::RecordingTranscriptionListParams::Filter] Filter recording transcriptions by various attributes.
+      #
+      # @param page_number [Integer]
+      #
+      # @param page_size [Integer]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::RecordingTranscriptionListResponse]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::RecordingTranscription>]
       #
       # @see Telnyx::Models::RecordingTranscriptionListParams
       def list(params = {})
+        parsed, options = Telnyx::RecordingTranscriptionListParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "recording_transcriptions",
-          model: Telnyx::Models::RecordingTranscriptionListResponse,
-          options: params[:request_options]
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
+          model: Telnyx::RecordingTranscription,
+          options: options
         )
       end
 

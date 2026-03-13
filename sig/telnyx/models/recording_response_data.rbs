@@ -8,14 +8,18 @@ module Telnyx
         call_session_id: String,
         channels: Telnyx::Models::RecordingResponseData::channels,
         conference_id: String,
+        connection_id: String,
         created_at: String,
         download_urls: Telnyx::RecordingResponseData::DownloadURLs,
         duration_millis: Integer,
+        from: String,
+        initiated_by: String,
         record_type: Telnyx::Models::RecordingResponseData::record_type,
         recording_ended_at: String,
         recording_started_at: String,
         source: Telnyx::Models::RecordingResponseData::source,
         status: Telnyx::Models::RecordingResponseData::status,
+        to: String,
         updated_at: String
       }
 
@@ -46,6 +50,10 @@ module Telnyx
 
       def conference_id=: (String) -> String
 
+      attr_reader connection_id: String?
+
+      def connection_id=: (String) -> String
+
       attr_reader created_at: String?
 
       def created_at=: (String) -> String
@@ -59,6 +67,14 @@ module Telnyx
       attr_reader duration_millis: Integer?
 
       def duration_millis=: (Integer) -> Integer
+
+      attr_reader from: String?
+
+      def from=: (String) -> String
+
+      attr_reader initiated_by: String?
+
+      def initiated_by=: (String) -> String
 
       attr_reader record_type: Telnyx::Models::RecordingResponseData::record_type?
 
@@ -86,6 +102,10 @@ module Telnyx
         Telnyx::Models::RecordingResponseData::status
       ) -> Telnyx::Models::RecordingResponseData::status
 
+      attr_reader to: String?
+
+      def to=: (String) -> String
+
       attr_reader updated_at: String?
 
       def updated_at=: (String) -> String
@@ -97,14 +117,18 @@ module Telnyx
         ?call_session_id: String,
         ?channels: Telnyx::Models::RecordingResponseData::channels,
         ?conference_id: String,
+        ?connection_id: String,
         ?created_at: String,
         ?download_urls: Telnyx::RecordingResponseData::DownloadURLs,
         ?duration_millis: Integer,
+        ?from: String,
+        ?initiated_by: String,
         ?record_type: Telnyx::Models::RecordingResponseData::record_type,
         ?recording_ended_at: String,
         ?recording_started_at: String,
         ?source: Telnyx::Models::RecordingResponseData::source,
         ?status: Telnyx::Models::RecordingResponseData::status,
+        ?to: String,
         ?updated_at: String
       ) -> void
 
@@ -115,14 +139,18 @@ module Telnyx
         call_session_id: String,
         channels: Telnyx::Models::RecordingResponseData::channels,
         conference_id: String,
+        connection_id: String,
         created_at: String,
         download_urls: Telnyx::RecordingResponseData::DownloadURLs,
         duration_millis: Integer,
+        from: String,
+        initiated_by: String,
         record_type: Telnyx::Models::RecordingResponseData::record_type,
         recording_ended_at: String,
         recording_started_at: String,
         source: Telnyx::Models::RecordingResponseData::source,
         status: Telnyx::Models::RecordingResponseData::status,
+        to: String,
         updated_at: String
       }
 

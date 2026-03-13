@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::RecordingTranscriptions#list
     class RecordingTranscription < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Uniquely identifies the recording transcription.

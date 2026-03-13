@@ -13,7 +13,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [nil]
+        # @return [Telnyx::Models::Recordings::ActionDeleteResponse]
         #
         # @see Telnyx::Models::Recordings::ActionDeleteParams
         def delete(params)
@@ -22,7 +22,7 @@ module Telnyx
             method: :post,
             path: "recordings/actions/delete",
             body: parsed,
-            model: NilClass,
+            model: Telnyx::Models::Recordings::ActionDeleteResponse,
             options: options
           )
         end

@@ -7,8 +7,11 @@ module Telnyx
       ) -> Telnyx::Models::RecordingTranscriptionRetrieveResponse
 
       def list: (
+        ?filter: Telnyx::RecordingTranscriptionListParams::Filter,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::RecordingTranscriptionListResponse
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::RecordingTranscription]
 
       def delete: (
         String recording_transcription_id,

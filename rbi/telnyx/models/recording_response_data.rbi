@@ -59,6 +59,14 @@ module Telnyx
       sig { params(conference_id: String).void }
       attr_writer :conference_id
 
+      # Identifies the Telnyx application (Call Control, TeXML) or SIP connection
+      # resource associated with this recording.
+      sig { returns(T.nilable(String)) }
+      attr_reader :connection_id
+
+      sig { params(connection_id: String).void }
+      attr_writer :connection_id
+
       # ISO 8601 formatted date indicating when the resource was created.
       sig { returns(T.nilable(String)) }
       attr_reader :created_at
@@ -83,6 +91,22 @@ module Telnyx
 
       sig { params(duration_millis: Integer).void }
       attr_writer :duration_millis
+
+      # The `from` (caller) number for the call that generated this recording.
+      sig { returns(T.nilable(String)) }
+      attr_reader :from
+
+      sig { params(from: String).void }
+      attr_writer :from
+
+      # Indicates what triggered the recording. Possible values include `DialVerb`,
+      # `Conference`, `OutboundAPI`, `Trunking`, `RecordVerb`, `StartCallRecordingAPI`,
+      # `StartConferenceRecordingAPI`.
+      sig { returns(T.nilable(String)) }
+      attr_reader :initiated_by
+
+      sig { params(initiated_by: String).void }
+      attr_writer :initiated_by
 
       sig do
         returns(
@@ -135,6 +159,13 @@ module Telnyx
       end
       attr_writer :status
 
+      # The `to` (callee) number for the call that generated this recording.
+      sig { returns(T.nilable(String)) }
+      attr_reader :to
+
+      sig { params(to: String).void }
+      attr_writer :to
+
       # ISO 8601 formatted date indicating when the resource was updated.
       sig { returns(T.nilable(String)) }
       attr_reader :updated_at
@@ -150,14 +181,18 @@ module Telnyx
           call_session_id: String,
           channels: Telnyx::RecordingResponseData::Channels::OrSymbol,
           conference_id: String,
+          connection_id: String,
           created_at: String,
           download_urls: Telnyx::RecordingResponseData::DownloadURLs::OrHash,
           duration_millis: Integer,
+          from: String,
+          initiated_by: String,
           record_type: Telnyx::RecordingResponseData::RecordType::OrSymbol,
           recording_ended_at: String,
           recording_started_at: String,
           source: Telnyx::RecordingResponseData::Source::OrSymbol,
           status: Telnyx::RecordingResponseData::Status::OrSymbol,
+          to: String,
           updated_at: String
         ).returns(T.attached_class)
       end
@@ -177,12 +212,21 @@ module Telnyx
         channels: nil,
         # Uniquely identifies the conference.
         conference_id: nil,
+        # Identifies the Telnyx application (Call Control, TeXML) or SIP connection
+        # resource associated with this recording.
+        connection_id: nil,
         # ISO 8601 formatted date indicating when the resource was created.
         created_at: nil,
         # Links to download the recording files.
         download_urls: nil,
         # The duration of the recording in milliseconds.
         duration_millis: nil,
+        # The `from` (caller) number for the call that generated this recording.
+        from: nil,
+        # Indicates what triggered the recording. Possible values include `DialVerb`,
+        # `Conference`, `OutboundAPI`, `Trunking`, `RecordVerb`, `StartCallRecordingAPI`,
+        # `StartConferenceRecordingAPI`.
+        initiated_by: nil,
         record_type: nil,
         # ISO 8601 formatted date of when the recording ended.
         recording_ended_at: nil,
@@ -193,6 +237,8 @@ module Telnyx
         # The status of the recording. Only `completed` recordings are currently
         # supported.
         status: nil,
+        # The `to` (callee) number for the call that generated this recording.
+        to: nil,
         # ISO 8601 formatted date indicating when the resource was updated.
         updated_at: nil
       )
@@ -207,15 +253,19 @@ module Telnyx
             call_session_id: String,
             channels: Telnyx::RecordingResponseData::Channels::TaggedSymbol,
             conference_id: String,
+            connection_id: String,
             created_at: String,
             download_urls: Telnyx::RecordingResponseData::DownloadURLs,
             duration_millis: Integer,
+            from: String,
+            initiated_by: String,
             record_type:
               Telnyx::RecordingResponseData::RecordType::TaggedSymbol,
             recording_ended_at: String,
             recording_started_at: String,
             source: Telnyx::RecordingResponseData::Source::TaggedSymbol,
             status: Telnyx::RecordingResponseData::Status::TaggedSymbol,
+            to: String,
             updated_at: String
           }
         )
