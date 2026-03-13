@@ -5,7 +5,7 @@ module Telnyx
         def delete: (
           ids: ::Array[String],
           ?request_options: Telnyx::request_opts
-        ) -> nil
+        ) -> Telnyx::Models::Recordings::ActionDeleteResponse
 
         def initialize: (client: Telnyx::Client) -> void
       end

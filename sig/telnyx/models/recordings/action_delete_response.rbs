@@ -1,0 +1,34 @@
+module Telnyx
+  module Models
+    module Recordings
+      type action_delete_response =
+        { status: Telnyx::Models::Recordings::ActionDeleteResponse::status }
+
+      class ActionDeleteResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader status: Telnyx::Models::Recordings::ActionDeleteResponse::status?
+
+        def status=: (
+          Telnyx::Models::Recordings::ActionDeleteResponse::status
+        ) -> Telnyx::Models::Recordings::ActionDeleteResponse::status
+
+        def initialize: (
+          ?status: Telnyx::Models::Recordings::ActionDeleteResponse::status
+        ) -> void
+
+        def to_hash: -> {
+          status: Telnyx::Models::Recordings::ActionDeleteResponse::status
+        }
+
+        type status = :ok
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          OK: :ok
+
+          def self?.values: -> ::Array[Telnyx::Models::Recordings::ActionDeleteResponse::status]
+        end
+      end
+    end
+  end
+end

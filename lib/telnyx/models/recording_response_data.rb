@@ -43,6 +43,13 @@ module Telnyx
       #   @return [String, nil]
       optional :conference_id, String
 
+      # @!attribute connection_id
+      #   Identifies the Telnyx application (Call Control, TeXML) or SIP connection
+      #   resource associated with this recording.
+      #
+      #   @return [String, nil]
+      optional :connection_id, String
+
       # @!attribute created_at
       #   ISO 8601 formatted date indicating when the resource was created.
       #
@@ -60,6 +67,20 @@ module Telnyx
       #
       #   @return [Integer, nil]
       optional :duration_millis, Integer
+
+      # @!attribute from
+      #   The `from` (caller) number for the call that generated this recording.
+      #
+      #   @return [String, nil]
+      optional :from, String
+
+      # @!attribute initiated_by
+      #   Indicates what triggered the recording. Possible values include `DialVerb`,
+      #   `Conference`, `OutboundAPI`, `Trunking`, `RecordVerb`, `StartCallRecordingAPI`,
+      #   `StartConferenceRecordingAPI`.
+      #
+      #   @return [String, nil]
+      optional :initiated_by, String
 
       # @!attribute record_type
       #
@@ -91,13 +112,19 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::RecordingResponseData::Status, nil]
       optional :status, enum: -> { Telnyx::RecordingResponseData::Status }
 
+      # @!attribute to
+      #   The `to` (callee) number for the call that generated this recording.
+      #
+      #   @return [String, nil]
+      optional :to, String
+
       # @!attribute updated_at
       #   ISO 8601 formatted date indicating when the resource was updated.
       #
       #   @return [String, nil]
       optional :updated_at, String
 
-      # @!method initialize(id: nil, call_control_id: nil, call_leg_id: nil, call_session_id: nil, channels: nil, conference_id: nil, created_at: nil, download_urls: nil, duration_millis: nil, record_type: nil, recording_ended_at: nil, recording_started_at: nil, source: nil, status: nil, updated_at: nil)
+      # @!method initialize(id: nil, call_control_id: nil, call_leg_id: nil, call_session_id: nil, channels: nil, conference_id: nil, connection_id: nil, created_at: nil, download_urls: nil, duration_millis: nil, from: nil, initiated_by: nil, record_type: nil, recording_ended_at: nil, recording_started_at: nil, source: nil, status: nil, to: nil, updated_at: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::RecordingResponseData} for more details.
       #
@@ -113,11 +140,17 @@ module Telnyx
       #
       #   @param conference_id [String] Uniquely identifies the conference.
       #
+      #   @param connection_id [String] Identifies the Telnyx application (Call Control, TeXML) or SIP connection resour
+      #
       #   @param created_at [String] ISO 8601 formatted date indicating when the resource was created.
       #
       #   @param download_urls [Telnyx::Models::RecordingResponseData::DownloadURLs] Links to download the recording files.
       #
       #   @param duration_millis [Integer] The duration of the recording in milliseconds.
+      #
+      #   @param from [String] The `from` (caller) number for the call that generated this recording.
+      #
+      #   @param initiated_by [String] Indicates what triggered the recording. Possible values include `DialVerb`, `Con
       #
       #   @param record_type [Symbol, Telnyx::Models::RecordingResponseData::RecordType]
       #
@@ -128,6 +161,8 @@ module Telnyx
       #   @param source [Symbol, Telnyx::Models::RecordingResponseData::Source] The kind of event that led to this recording being created.
       #
       #   @param status [Symbol, Telnyx::Models::RecordingResponseData::Status] The status of the recording. Only `completed` recordings are currently supported
+      #
+      #   @param to [String] The `to` (callee) number for the call that generated this recording.
       #
       #   @param updated_at [String] ISO 8601 formatted date indicating when the resource was updated.
 
