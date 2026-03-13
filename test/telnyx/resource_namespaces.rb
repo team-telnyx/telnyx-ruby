@@ -315,6 +315,9 @@ module Telnyx
 
       module Wireless
       end
+
+      module X402
+      end
     end
   end
 end

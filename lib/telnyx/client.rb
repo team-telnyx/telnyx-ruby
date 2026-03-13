@@ -636,6 +636,9 @@ module Telnyx
     # @return [Telnyx::Resources::VoiceDesigns]
     attr_reader :voice_designs
 
+    # @return [Telnyx::Resources::X402]
+    attr_reader :x402
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -888,6 +891,7 @@ module Telnyx
       @whatsapp_message_templates = Telnyx::Resources::WhatsappMessageTemplates.new(client: self)
       @voice_clones = Telnyx::Resources::VoiceClones.new(client: self)
       @voice_designs = Telnyx::Resources::VoiceDesigns.new(client: self)
+      @x402 = Telnyx::Resources::X402.new(client: self)
     end
   end
 end
