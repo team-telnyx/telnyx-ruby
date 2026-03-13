@@ -1800,6 +1800,8 @@ module Telnyx
 
   VoiceCloneCreateParams = Telnyx::Models::VoiceCloneCreateParams
 
+  VoiceCloneData = Telnyx::Models::VoiceCloneData
+
   VoiceCloneDeleteParams = Telnyx::Models::VoiceCloneDeleteParams
 
   VoiceCloneDownloadSampleParams =
@@ -1810,6 +1812,8 @@ module Telnyx
   VoiceCloneUpdateParams = Telnyx::Models::VoiceCloneUpdateParams
 
   VoiceDesignCreateParams = Telnyx::Models::VoiceDesignCreateParams
+
+  VoiceDesignData = Telnyx::Models::VoiceDesignData
 
   VoiceDesignDeleteParams = Telnyx::Models::VoiceDesignDeleteParams
 
