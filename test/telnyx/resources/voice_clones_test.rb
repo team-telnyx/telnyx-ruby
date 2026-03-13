@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::VoiceCloneCreateResponse::Data | nil
+        data: Telnyx::VoiceCloneData | nil
       }
     end
   end
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::VoiceCloneUpdateResponse::Data | nil
+        data: Telnyx::VoiceCloneData | nil
       }
     end
   end
@@ -54,18 +54,18 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::VoiceCloneListResponse
+      row => Telnyx::VoiceCloneData
     end
 
     assert_pattern do
       row => {
         id: String | nil,
         created_at: Time | nil,
-        gender: Telnyx::Models::VoiceCloneListResponse::Gender | nil,
+        gender: Telnyx::VoiceCloneData::Gender | nil,
         label: String | nil,
         language: String | nil,
         name: String | nil,
-        record_type: Telnyx::Models::VoiceCloneListResponse::RecordType | nil,
+        record_type: Telnyx::VoiceCloneData::RecordType | nil,
         source_voice_design_id: String | nil,
         source_voice_design_version: Integer | nil,
         updated_at: Time | nil
@@ -99,7 +99,7 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data | nil
+        data: Telnyx::VoiceCloneData | nil
       }
     end
   end
