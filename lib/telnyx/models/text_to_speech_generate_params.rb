@@ -3,39 +3,39 @@
 module Telnyx
   module Models
     # @see Telnyx::Resources::TextToSpeech#generate
-    class TextToSpeechGenerateParams < Telnyx::Internal::Type::BaseModel
-      extend Telnyx::Internal::Type::RequestParameters::Converter
-      include Telnyx::Internal::Type::RequestParameters
+    class TextToSpeechGenerateParams < ::Telnyx::Internal::Type::BaseModel
+      extend ::Telnyx::Internal::Type::RequestParameters::Converter
+      include ::Telnyx::Internal::Type::RequestParameters
 
       # @!attribute aws
       #   AWS Polly provider-specific parameters.
       #
-      #   @return [Telnyx::Models::TextToSpeechGenerateParams::Aws, nil]
-      optional :aws, -> { Telnyx::TextToSpeechGenerateParams::Aws }
+      #   @return [::Telnyx::Models::TextToSpeechGenerateParams::Aws, nil]
+      optional :aws, -> { ::Telnyx::TextToSpeechGenerateParams::Aws }
 
       # @!attribute azure
       #   Azure Cognitive Services provider-specific parameters.
       #
-      #   @return [Telnyx::Models::TextToSpeechGenerateParams::Azure, nil]
-      optional :azure, -> { Telnyx::TextToSpeechGenerateParams::Azure }
+      #   @return [::Telnyx::Models::TextToSpeechGenerateParams::Azure, nil]
+      optional :azure, -> { ::Telnyx::TextToSpeechGenerateParams::Azure }
 
       # @!attribute disable_cache
       #   When `true`, bypass the audio cache and generate fresh audio.
       #
       #   @return [Boolean, nil]
-      optional :disable_cache, Telnyx::Internal::Type::Boolean
+      optional :disable_cache, ::Telnyx::Internal::Type::Boolean
 
       # @!attribute elevenlabs
       #   ElevenLabs provider-specific parameters.
       #
-      #   @return [Telnyx::Models::TextToSpeechGenerateParams::Elevenlabs, nil]
-      optional :elevenlabs, -> { Telnyx::TextToSpeechGenerateParams::Elevenlabs }
+      #   @return [::Telnyx::Models::TextToSpeechGenerateParams::Elevenlabs, nil]
+      optional :elevenlabs, -> { ::Telnyx::TextToSpeechGenerateParams::Elevenlabs }
 
       # @!attribute inworld
       #   Inworld provider-specific parameters.
       #
       #   @return [Hash{Symbol=>Object}, nil]
-      optional :inworld, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+      optional :inworld, ::Telnyx::Internal::Type::HashOf[::Telnyx::Internal::Type::Unknown]
 
       # @!attribute language
       #   Language code (e.g. `en-US`). Usage varies by provider.
@@ -46,33 +46,33 @@ module Telnyx
       # @!attribute minimax
       #   Minimax provider-specific parameters.
       #
-      #   @return [Telnyx::Models::TextToSpeechGenerateParams::Minimax, nil]
-      optional :minimax, -> { Telnyx::TextToSpeechGenerateParams::Minimax }
+      #   @return [::Telnyx::Models::TextToSpeechGenerateParams::Minimax, nil]
+      optional :minimax, -> { ::Telnyx::TextToSpeechGenerateParams::Minimax }
 
       # @!attribute output_type
       #   Determines the response format. `binary_output` returns raw audio bytes,
       #   `base64_output` returns base64-encoded audio in JSON.
       #
-      #   @return [Symbol, Telnyx::Models::TextToSpeechGenerateParams::OutputType, nil]
-      optional :output_type, enum: -> { Telnyx::TextToSpeechGenerateParams::OutputType }
+      #   @return [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::OutputType, nil]
+      optional :output_type, enum: -> { ::Telnyx::TextToSpeechGenerateParams::OutputType }
 
       # @!attribute provider
       #   TTS provider. Required unless `voice` is provided.
       #
-      #   @return [Symbol, Telnyx::Models::TextToSpeechGenerateParams::Provider, nil]
-      optional :provider, enum: -> { Telnyx::TextToSpeechGenerateParams::Provider }
+      #   @return [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::Provider, nil]
+      optional :provider, enum: -> { ::Telnyx::TextToSpeechGenerateParams::Provider }
 
       # @!attribute resemble
       #   Resemble AI provider-specific parameters.
       #
-      #   @return [Telnyx::Models::TextToSpeechGenerateParams::Resemble, nil]
-      optional :resemble, -> { Telnyx::TextToSpeechGenerateParams::Resemble }
+      #   @return [::Telnyx::Models::TextToSpeechGenerateParams::Resemble, nil]
+      optional :resemble, -> { ::Telnyx::TextToSpeechGenerateParams::Resemble }
 
       # @!attribute rime
       #   Rime provider-specific parameters.
       #
-      #   @return [Telnyx::Models::TextToSpeechGenerateParams::Rime, nil]
-      optional :rime, -> { Telnyx::TextToSpeechGenerateParams::Rime }
+      #   @return [::Telnyx::Models::TextToSpeechGenerateParams::Rime, nil]
+      optional :rime, -> { ::Telnyx::TextToSpeechGenerateParams::Rime }
 
       # @!attribute telnyx
       #   Telnyx provider-specific parameters.
@@ -89,8 +89,8 @@ module Telnyx
       # @!attribute text_type
       #   Text type. Use `ssml` for SSML-formatted input (supported by AWS and Azure).
       #
-      #   @return [Symbol, Telnyx::Models::TextToSpeechGenerateParams::TextType, nil]
-      optional :text_type, enum: -> { Telnyx::TextToSpeechGenerateParams::TextType }
+      #   @return [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::TextType, nil]
+      optional :text_type, enum: -> { ::Telnyx::TextToSpeechGenerateParams::TextType }
 
       # @!attribute voice
       #   Voice identifier in the format `provider.model_id.voice_id` or
@@ -107,47 +107,47 @@ module Telnyx
       #   provider-specific parameter objects below.
       #
       #   @return [Hash{Symbol=>Object}, nil]
-      optional :voice_settings, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+      optional :voice_settings, ::Telnyx::Internal::Type::HashOf[::Telnyx::Internal::Type::Unknown]
 
       # @!method initialize(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, inworld: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
-      #   {Telnyx::Models::TextToSpeechGenerateParams} for more details.
+      #   {::Telnyx::Models::TextToSpeechGenerateParams} for more details.
       #
-      #   @param aws [Telnyx::Models::TextToSpeechGenerateParams::Aws] AWS Polly provider-specific parameters.
+      #   @param aws [::Telnyx::Models::TextToSpeechGenerateParams::Aws] AWS Polly provider-specific parameters.
       #
-      #   @param azure [Telnyx::Models::TextToSpeechGenerateParams::Azure] Azure Cognitive Services provider-specific parameters.
+      #   @param azure [::Telnyx::Models::TextToSpeechGenerateParams::Azure] Azure Cognitive Services provider-specific parameters.
       #
       #   @param disable_cache [Boolean] When `true`, bypass the audio cache and generate fresh audio.
       #
-      #   @param elevenlabs [Telnyx::Models::TextToSpeechGenerateParams::Elevenlabs] ElevenLabs provider-specific parameters.
+      #   @param elevenlabs [::Telnyx::Models::TextToSpeechGenerateParams::Elevenlabs] ElevenLabs provider-specific parameters.
       #
       #   @param inworld [Hash{Symbol=>Object}] Inworld provider-specific parameters.
       #
       #   @param language [String] Language code (e.g. `en-US`). Usage varies by provider.
       #
-      #   @param minimax [Telnyx::Models::TextToSpeechGenerateParams::Minimax] Minimax provider-specific parameters.
+      #   @param minimax [::Telnyx::Models::TextToSpeechGenerateParams::Minimax] Minimax provider-specific parameters.
       #
-      #   @param output_type [Symbol, Telnyx::Models::TextToSpeechGenerateParams::OutputType] Determines the response format. `binary_output` returns raw audio bytes, `base64
+      #   @param output_type [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::OutputType] Determines the response format. `binary_output` returns raw audio bytes, `base64
       #
-      #   @param provider [Symbol, Telnyx::Models::TextToSpeechGenerateParams::Provider] TTS provider. Required unless `voice` is provided.
+      #   @param provider [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::Provider] TTS provider. Required unless `voice` is provided.
       #
-      #   @param resemble [Telnyx::Models::TextToSpeechGenerateParams::Resemble] Resemble AI provider-specific parameters.
+      #   @param resemble [::Telnyx::Models::TextToSpeechGenerateParams::Resemble] Resemble AI provider-specific parameters.
       #
-      #   @param rime [Telnyx::Models::TextToSpeechGenerateParams::Rime] Rime provider-specific parameters.
+      #   @param rime [::Telnyx::Models::TextToSpeechGenerateParams::Rime] Rime provider-specific parameters.
       #
       #   @param telnyx [::Telnyx::Models::TextToSpeechGenerateParams::Telnyx] Telnyx provider-specific parameters.
       #
       #   @param text [String] The text to convert to speech.
       #
-      #   @param text_type [Symbol, Telnyx::Models::TextToSpeechGenerateParams::TextType] Text type. Use `ssml` for SSML-formatted input (supported by AWS and Azure).
+      #   @param text_type [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::TextType] Text type. Use `ssml` for SSML-formatted input (supported by AWS and Azure).
       #
       #   @param voice [String] Voice identifier in the format `provider.model_id.voice_id` or `provider.voice_i
       #
       #   @param voice_settings [Hash{Symbol=>Object}] Provider-specific voice settings. Contents vary by provider — see provider-speci
       #
-      #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
+      #   @param request_options [::Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
-      class Aws < Telnyx::Internal::Type::BaseModel
+      class Aws < ::Telnyx::Internal::Type::BaseModel
         # @!attribute language_code
         #   Language code (e.g. `en-US`, `es-ES`).
         #
@@ -158,7 +158,7 @@ module Telnyx
         #   List of lexicon names to apply.
         #
         #   @return [Array<String>, nil]
-        optional :lexicon_names, Telnyx::Internal::Type::ArrayOf[String]
+        optional :lexicon_names, ::Telnyx::Internal::Type::ArrayOf[String]
 
         # @!attribute output_format
         #   Audio output format.
@@ -175,8 +175,8 @@ module Telnyx
         # @!attribute text_type
         #   Input text type.
         #
-        #   @return [Symbol, Telnyx::Models::TextToSpeechGenerateParams::Aws::TextType, nil]
-        optional :text_type, enum: -> { Telnyx::TextToSpeechGenerateParams::Aws::TextType }
+        #   @return [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::Aws::TextType, nil]
+        optional :text_type, enum: -> { ::Telnyx::TextToSpeechGenerateParams::Aws::TextType }
 
         # @!method initialize(language_code: nil, lexicon_names: nil, output_format: nil, sample_rate: nil, text_type: nil)
         #   AWS Polly provider-specific parameters.
@@ -189,13 +189,13 @@ module Telnyx
         #
         #   @param sample_rate [String] Audio sample rate.
         #
-        #   @param text_type [Symbol, Telnyx::Models::TextToSpeechGenerateParams::Aws::TextType] Input text type.
+        #   @param text_type [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::Aws::TextType] Input text type.
 
         # Input text type.
         #
         # @see Telnyx::Models::TextToSpeechGenerateParams::Aws#text_type
         module TextType
-          extend Telnyx::Internal::Type::Enum
+          extend ::Telnyx::Internal::Type::Enum
 
           TEXT = :text
           SSML = :ssml
@@ -205,7 +205,7 @@ module Telnyx
         end
       end
 
-      class Azure < Telnyx::Internal::Type::BaseModel
+      class Azure < ::Telnyx::Internal::Type::BaseModel
         # @!attribute api_key
         #   Custom Azure API key. If not provided, the default Telnyx key is used.
         #
@@ -251,8 +251,8 @@ module Telnyx
         # @!attribute text_type
         #   Input text type. Use `ssml` for SSML-formatted input.
         #
-        #   @return [Symbol, Telnyx::Models::TextToSpeechGenerateParams::Azure::TextType, nil]
-        optional :text_type, enum: -> { Telnyx::TextToSpeechGenerateParams::Azure::TextType }
+        #   @return [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::Azure::TextType, nil]
+        optional :text_type, enum: -> { ::Telnyx::TextToSpeechGenerateParams::Azure::TextType }
 
         # @!method initialize(api_key: nil, deployment_id: nil, effect: nil, gender: nil, language_code: nil, output_format: nil, region: nil, text_type: nil)
         #   Azure Cognitive Services provider-specific parameters.
@@ -271,13 +271,13 @@ module Telnyx
         #
         #   @param region [String] Azure region (e.g. `eastus`, `westeurope`).
         #
-        #   @param text_type [Symbol, Telnyx::Models::TextToSpeechGenerateParams::Azure::TextType] Input text type. Use `ssml` for SSML-formatted input.
+        #   @param text_type [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::Azure::TextType] Input text type. Use `ssml` for SSML-formatted input.
 
         # Input text type. Use `ssml` for SSML-formatted input.
         #
         # @see Telnyx::Models::TextToSpeechGenerateParams::Azure#text_type
         module TextType
-          extend Telnyx::Internal::Type::Enum
+          extend ::Telnyx::Internal::Type::Enum
 
           TEXT = :text
           SSML = :ssml
@@ -287,7 +287,7 @@ module Telnyx
         end
       end
 
-      class Elevenlabs < Telnyx::Internal::Type::BaseModel
+      class Elevenlabs < ::Telnyx::Internal::Type::BaseModel
         # @!attribute api_key
         #   Custom ElevenLabs API key. If not provided, the default Telnyx key is used.
         #
@@ -304,7 +304,7 @@ module Telnyx
         #   ElevenLabs voice settings (stability, similarity_boost, etc.).
         #
         #   @return [Hash{Symbol=>Object}, nil]
-        optional :voice_settings, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+        optional :voice_settings, ::Telnyx::Internal::Type::HashOf[::Telnyx::Internal::Type::Unknown]
 
         # @!method initialize(api_key: nil, language_code: nil, voice_settings: nil)
         #   ElevenLabs provider-specific parameters.
@@ -316,7 +316,7 @@ module Telnyx
         #   @param voice_settings [Hash{Symbol=>Object}] ElevenLabs voice settings (stability, similarity_boost, etc.).
       end
 
-      class Minimax < Telnyx::Internal::Type::BaseModel
+      class Minimax < ::Telnyx::Internal::Type::BaseModel
         # @!attribute language_boost
         #   Language code to boost pronunciation for.
         #
@@ -364,7 +364,7 @@ module Telnyx
       # Determines the response format. `binary_output` returns raw audio bytes,
       # `base64_output` returns base64-encoded audio in JSON.
       module OutputType
-        extend Telnyx::Internal::Type::Enum
+        extend ::Telnyx::Internal::Type::Enum
 
         BINARY_OUTPUT = :binary_output
         BASE64_OUTPUT = :base64_output
@@ -375,7 +375,7 @@ module Telnyx
 
       # TTS provider. Required unless `voice` is provided.
       module Provider
-        extend Telnyx::Internal::Type::Enum
+        extend ::Telnyx::Internal::Type::Enum
 
         AWS = :aws
         TELNYX = :telnyx
@@ -390,7 +390,7 @@ module Telnyx
         #   @return [Array<Symbol>]
       end
 
-      class Resemble < Telnyx::Internal::Type::BaseModel
+      class Resemble < ::Telnyx::Internal::Type::BaseModel
         # @!attribute api_key
         #   Custom Resemble API key.
         #
@@ -427,7 +427,7 @@ module Telnyx
         #   @param sample_rate [String] Audio sample rate.
       end
 
-      class Rime < Telnyx::Internal::Type::BaseModel
+      class Rime < ::Telnyx::Internal::Type::BaseModel
         # @!attribute response_format
         #   Audio output format.
         #
@@ -495,7 +495,7 @@ module Telnyx
 
       # Text type. Use `ssml` for SSML-formatted input (supported by AWS and Azure).
       module TextType
-        extend Telnyx::Internal::Type::Enum
+        extend ::Telnyx::Internal::Type::Enum
 
         TEXT = :text
         SSML = :ssml

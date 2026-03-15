@@ -2,28 +2,33 @@
 
 module Telnyx
   module Models
-    class TextToSpeechGenerateParams < Telnyx::Internal::Type::BaseModel
-      extend Telnyx::Internal::Type::RequestParameters::Converter
-      include Telnyx::Internal::Type::RequestParameters
+    class TextToSpeechGenerateParams < ::Telnyx::Internal::Type::BaseModel
+      extend ::Telnyx::Internal::Type::RequestParameters::Converter
+      include ::Telnyx::Internal::Type::RequestParameters
 
       OrHash =
         T.type_alias do
-          T.any(Telnyx::TextToSpeechGenerateParams, Telnyx::Internal::AnyHash)
+          T.any(
+            ::Telnyx::TextToSpeechGenerateParams,
+            ::Telnyx::Internal::AnyHash
+          )
         end
 
       # AWS Polly provider-specific parameters.
-      sig { returns(T.nilable(Telnyx::TextToSpeechGenerateParams::Aws)) }
+      sig { returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Aws)) }
       attr_reader :aws
 
-      sig { params(aws: Telnyx::TextToSpeechGenerateParams::Aws::OrHash).void }
+      sig do
+        params(aws: ::Telnyx::TextToSpeechGenerateParams::Aws::OrHash).void
+      end
       attr_writer :aws
 
       # Azure Cognitive Services provider-specific parameters.
-      sig { returns(T.nilable(Telnyx::TextToSpeechGenerateParams::Azure)) }
+      sig { returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Azure)) }
       attr_reader :azure
 
       sig do
-        params(azure: Telnyx::TextToSpeechGenerateParams::Azure::OrHash).void
+        params(azure: ::Telnyx::TextToSpeechGenerateParams::Azure::OrHash).void
       end
       attr_writer :azure
 
@@ -35,12 +40,14 @@ module Telnyx
       attr_writer :disable_cache
 
       # ElevenLabs provider-specific parameters.
-      sig { returns(T.nilable(Telnyx::TextToSpeechGenerateParams::Elevenlabs)) }
+      sig do
+        returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Elevenlabs))
+      end
       attr_reader :elevenlabs
 
       sig do
         params(
-          elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs::OrHash
+          elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs::OrHash
         ).void
       end
       attr_writer :elevenlabs
@@ -60,12 +67,12 @@ module Telnyx
       attr_writer :language
 
       # Minimax provider-specific parameters.
-      sig { returns(T.nilable(Telnyx::TextToSpeechGenerateParams::Minimax)) }
+      sig { returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Minimax)) }
       attr_reader :minimax
 
       sig do
         params(
-          minimax: Telnyx::TextToSpeechGenerateParams::Minimax::OrHash
+          minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax::OrHash
         ).void
       end
       attr_writer :minimax
@@ -74,14 +81,15 @@ module Telnyx
       # `base64_output` returns base64-encoded audio in JSON.
       sig do
         returns(
-          T.nilable(Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol)
+          T.nilable(::Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol)
         )
       end
       attr_reader :output_type
 
       sig do
         params(
-          output_type: Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol
+          output_type:
+            ::Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol
         ).void
       end
       attr_writer :output_type
@@ -89,35 +97,35 @@ module Telnyx
       # TTS provider. Required unless `voice` is provided.
       sig do
         returns(
-          T.nilable(Telnyx::TextToSpeechGenerateParams::Provider::OrSymbol)
+          T.nilable(::Telnyx::TextToSpeechGenerateParams::Provider::OrSymbol)
         )
       end
       attr_reader :provider
 
       sig do
         params(
-          provider: Telnyx::TextToSpeechGenerateParams::Provider::OrSymbol
+          provider: ::Telnyx::TextToSpeechGenerateParams::Provider::OrSymbol
         ).void
       end
       attr_writer :provider
 
       # Resemble AI provider-specific parameters.
-      sig { returns(T.nilable(Telnyx::TextToSpeechGenerateParams::Resemble)) }
+      sig { returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Resemble)) }
       attr_reader :resemble
 
       sig do
         params(
-          resemble: Telnyx::TextToSpeechGenerateParams::Resemble::OrHash
+          resemble: ::Telnyx::TextToSpeechGenerateParams::Resemble::OrHash
         ).void
       end
       attr_writer :resemble
 
       # Rime provider-specific parameters.
-      sig { returns(T.nilable(Telnyx::TextToSpeechGenerateParams::Rime)) }
+      sig { returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Rime)) }
       attr_reader :rime
 
       sig do
-        params(rime: Telnyx::TextToSpeechGenerateParams::Rime::OrHash).void
+        params(rime: ::Telnyx::TextToSpeechGenerateParams::Rime::OrHash).void
       end
       attr_writer :rime
 
@@ -142,14 +150,14 @@ module Telnyx
       # Text type. Use `ssml` for SSML-formatted input (supported by AWS and Azure).
       sig do
         returns(
-          T.nilable(Telnyx::TextToSpeechGenerateParams::TextType::OrSymbol)
+          T.nilable(::Telnyx::TextToSpeechGenerateParams::TextType::OrSymbol)
         )
       end
       attr_reader :text_type
 
       sig do
         params(
-          text_type: Telnyx::TextToSpeechGenerateParams::TextType::OrSymbol
+          text_type: ::Telnyx::TextToSpeechGenerateParams::TextType::OrSymbol
         ).void
       end
       attr_writer :text_type
@@ -175,23 +183,24 @@ module Telnyx
 
       sig do
         params(
-          aws: Telnyx::TextToSpeechGenerateParams::Aws::OrHash,
-          azure: Telnyx::TextToSpeechGenerateParams::Azure::OrHash,
+          aws: ::Telnyx::TextToSpeechGenerateParams::Aws::OrHash,
+          azure: ::Telnyx::TextToSpeechGenerateParams::Azure::OrHash,
           disable_cache: T::Boolean,
-          elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs::OrHash,
+          elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs::OrHash,
           inworld: T::Hash[Symbol, T.anything],
           language: String,
-          minimax: Telnyx::TextToSpeechGenerateParams::Minimax::OrHash,
-          output_type: Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol,
-          provider: Telnyx::TextToSpeechGenerateParams::Provider::OrSymbol,
-          resemble: Telnyx::TextToSpeechGenerateParams::Resemble::OrHash,
-          rime: Telnyx::TextToSpeechGenerateParams::Rime::OrHash,
+          minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax::OrHash,
+          output_type:
+            ::Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol,
+          provider: ::Telnyx::TextToSpeechGenerateParams::Provider::OrSymbol,
+          resemble: ::Telnyx::TextToSpeechGenerateParams::Resemble::OrHash,
+          rime: ::Telnyx::TextToSpeechGenerateParams::Rime::OrHash,
           telnyx: ::Telnyx::TextToSpeechGenerateParams::Telnyx::OrHash,
           text: String,
-          text_type: Telnyx::TextToSpeechGenerateParams::TextType::OrSymbol,
+          text_type: ::Telnyx::TextToSpeechGenerateParams::TextType::OrSymbol,
           voice: String,
           voice_settings: T::Hash[Symbol, T.anything],
-          request_options: Telnyx::RequestOptions::OrHash
+          request_options: ::Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
@@ -240,36 +249,36 @@ module Telnyx
       sig do
         override.returns(
           {
-            aws: Telnyx::TextToSpeechGenerateParams::Aws,
-            azure: Telnyx::TextToSpeechGenerateParams::Azure,
+            aws: ::Telnyx::TextToSpeechGenerateParams::Aws,
+            azure: ::Telnyx::TextToSpeechGenerateParams::Azure,
             disable_cache: T::Boolean,
-            elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs,
+            elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs,
             inworld: T::Hash[Symbol, T.anything],
             language: String,
-            minimax: Telnyx::TextToSpeechGenerateParams::Minimax,
+            minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax,
             output_type:
-              Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol,
-            provider: Telnyx::TextToSpeechGenerateParams::Provider::OrSymbol,
-            resemble: Telnyx::TextToSpeechGenerateParams::Resemble,
-            rime: Telnyx::TextToSpeechGenerateParams::Rime,
+              ::Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol,
+            provider: ::Telnyx::TextToSpeechGenerateParams::Provider::OrSymbol,
+            resemble: ::Telnyx::TextToSpeechGenerateParams::Resemble,
+            rime: ::Telnyx::TextToSpeechGenerateParams::Rime,
             telnyx: ::Telnyx::TextToSpeechGenerateParams::Telnyx,
             text: String,
-            text_type: Telnyx::TextToSpeechGenerateParams::TextType::OrSymbol,
+            text_type: ::Telnyx::TextToSpeechGenerateParams::TextType::OrSymbol,
             voice: String,
             voice_settings: T::Hash[Symbol, T.anything],
-            request_options: Telnyx::RequestOptions
+            request_options: ::Telnyx::RequestOptions
           }
         )
       end
       def to_hash
       end
 
-      class Aws < Telnyx::Internal::Type::BaseModel
+      class Aws < ::Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::TextToSpeechGenerateParams::Aws,
-              Telnyx::Internal::AnyHash
+              ::Telnyx::TextToSpeechGenerateParams::Aws,
+              ::Telnyx::Internal::AnyHash
             )
           end
 
@@ -305,7 +314,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::TextToSpeechGenerateParams::Aws::TextType::OrSymbol
+              ::Telnyx::TextToSpeechGenerateParams::Aws::TextType::OrSymbol
             )
           )
         end
@@ -314,7 +323,7 @@ module Telnyx
         sig do
           params(
             text_type:
-              Telnyx::TextToSpeechGenerateParams::Aws::TextType::OrSymbol
+              ::Telnyx::TextToSpeechGenerateParams::Aws::TextType::OrSymbol
           ).void
         end
         attr_writer :text_type
@@ -327,7 +336,7 @@ module Telnyx
             output_format: String,
             sample_rate: String,
             text_type:
-              Telnyx::TextToSpeechGenerateParams::Aws::TextType::OrSymbol
+              ::Telnyx::TextToSpeechGenerateParams::Aws::TextType::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -352,7 +361,7 @@ module Telnyx
               output_format: String,
               sample_rate: String,
               text_type:
-                Telnyx::TextToSpeechGenerateParams::Aws::TextType::OrSymbol
+                ::Telnyx::TextToSpeechGenerateParams::Aws::TextType::OrSymbol
             }
           )
         end
@@ -361,29 +370,29 @@ module Telnyx
 
         # Input text type.
         module TextType
-          extend Telnyx::Internal::Type::Enum
+          extend ::Telnyx::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Telnyx::TextToSpeechGenerateParams::Aws::TextType)
+              T.all(Symbol, ::Telnyx::TextToSpeechGenerateParams::Aws::TextType)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           TEXT =
             T.let(
               :text,
-              Telnyx::TextToSpeechGenerateParams::Aws::TextType::TaggedSymbol
+              ::Telnyx::TextToSpeechGenerateParams::Aws::TextType::TaggedSymbol
             )
           SSML =
             T.let(
               :ssml,
-              Telnyx::TextToSpeechGenerateParams::Aws::TextType::TaggedSymbol
+              ::Telnyx::TextToSpeechGenerateParams::Aws::TextType::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Telnyx::TextToSpeechGenerateParams::Aws::TextType::TaggedSymbol
+                ::Telnyx::TextToSpeechGenerateParams::Aws::TextType::TaggedSymbol
               ]
             )
           end
@@ -392,12 +401,12 @@ module Telnyx
         end
       end
 
-      class Azure < Telnyx::Internal::Type::BaseModel
+      class Azure < ::Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::TextToSpeechGenerateParams::Azure,
-              Telnyx::Internal::AnyHash
+              ::Telnyx::TextToSpeechGenerateParams::Azure,
+              ::Telnyx::Internal::AnyHash
             )
           end
 
@@ -454,7 +463,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::TextToSpeechGenerateParams::Azure::TextType::OrSymbol
+              ::Telnyx::TextToSpeechGenerateParams::Azure::TextType::OrSymbol
             )
           )
         end
@@ -463,7 +472,7 @@ module Telnyx
         sig do
           params(
             text_type:
-              Telnyx::TextToSpeechGenerateParams::Azure::TextType::OrSymbol
+              ::Telnyx::TextToSpeechGenerateParams::Azure::TextType::OrSymbol
           ).void
         end
         attr_writer :text_type
@@ -479,7 +488,7 @@ module Telnyx
             output_format: String,
             region: String,
             text_type:
-              Telnyx::TextToSpeechGenerateParams::Azure::TextType::OrSymbol
+              ::Telnyx::TextToSpeechGenerateParams::Azure::TextType::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -513,7 +522,7 @@ module Telnyx
               output_format: String,
               region: String,
               text_type:
-                Telnyx::TextToSpeechGenerateParams::Azure::TextType::OrSymbol
+                ::Telnyx::TextToSpeechGenerateParams::Azure::TextType::OrSymbol
             }
           )
         end
@@ -522,29 +531,32 @@ module Telnyx
 
         # Input text type. Use `ssml` for SSML-formatted input.
         module TextType
-          extend Telnyx::Internal::Type::Enum
+          extend ::Telnyx::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Telnyx::TextToSpeechGenerateParams::Azure::TextType)
+              T.all(
+                Symbol,
+                ::Telnyx::TextToSpeechGenerateParams::Azure::TextType
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           TEXT =
             T.let(
               :text,
-              Telnyx::TextToSpeechGenerateParams::Azure::TextType::TaggedSymbol
+              ::Telnyx::TextToSpeechGenerateParams::Azure::TextType::TaggedSymbol
             )
           SSML =
             T.let(
               :ssml,
-              Telnyx::TextToSpeechGenerateParams::Azure::TextType::TaggedSymbol
+              ::Telnyx::TextToSpeechGenerateParams::Azure::TextType::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Telnyx::TextToSpeechGenerateParams::Azure::TextType::TaggedSymbol
+                ::Telnyx::TextToSpeechGenerateParams::Azure::TextType::TaggedSymbol
               ]
             )
           end
@@ -553,12 +565,12 @@ module Telnyx
         end
       end
 
-      class Elevenlabs < Telnyx::Internal::Type::BaseModel
+      class Elevenlabs < ::Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::TextToSpeechGenerateParams::Elevenlabs,
-              Telnyx::Internal::AnyHash
+              ::Telnyx::TextToSpeechGenerateParams::Elevenlabs,
+              ::Telnyx::Internal::AnyHash
             )
           end
 
@@ -614,12 +626,12 @@ module Telnyx
         end
       end
 
-      class Minimax < Telnyx::Internal::Type::BaseModel
+      class Minimax < ::Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::TextToSpeechGenerateParams::Minimax,
-              Telnyx::Internal::AnyHash
+              ::Telnyx::TextToSpeechGenerateParams::Minimax,
+              ::Telnyx::Internal::AnyHash
             )
           end
 
@@ -700,29 +712,29 @@ module Telnyx
       # Determines the response format. `binary_output` returns raw audio bytes,
       # `base64_output` returns base64-encoded audio in JSON.
       module OutputType
-        extend Telnyx::Internal::Type::Enum
+        extend ::Telnyx::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Telnyx::TextToSpeechGenerateParams::OutputType)
+            T.all(Symbol, ::Telnyx::TextToSpeechGenerateParams::OutputType)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         BINARY_OUTPUT =
           T.let(
             :binary_output,
-            Telnyx::TextToSpeechGenerateParams::OutputType::TaggedSymbol
+            ::Telnyx::TextToSpeechGenerateParams::OutputType::TaggedSymbol
           )
         BASE64_OUTPUT =
           T.let(
             :base64_output,
-            Telnyx::TextToSpeechGenerateParams::OutputType::TaggedSymbol
+            ::Telnyx::TextToSpeechGenerateParams::OutputType::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              Telnyx::TextToSpeechGenerateParams::OutputType::TaggedSymbol
+              ::Telnyx::TextToSpeechGenerateParams::OutputType::TaggedSymbol
             ]
           )
         end
@@ -732,70 +744,72 @@ module Telnyx
 
       # TTS provider. Required unless `voice` is provided.
       module Provider
-        extend Telnyx::Internal::Type::Enum
+        extend ::Telnyx::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Telnyx::TextToSpeechGenerateParams::Provider)
+            T.all(Symbol, ::Telnyx::TextToSpeechGenerateParams::Provider)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         AWS =
           T.let(
             :aws,
-            Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+            ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
           )
         TELNYX =
           T.let(
             :telnyx,
-            Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+            ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
           )
         AZURE =
           T.let(
             :azure,
-            Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+            ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
           )
         ELEVENLABS =
           T.let(
             :elevenlabs,
-            Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+            ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
           )
         MINIMAX =
           T.let(
             :minimax,
-            Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+            ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
           )
         RIME =
           T.let(
             :rime,
-            Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+            ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
           )
         RESEMBLE =
           T.let(
             :resemble,
-            Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+            ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
           )
         INWORLD =
           T.let(
             :inworld,
-            Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+            ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol]
+            T::Array[
+              ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+            ]
           )
         end
         def self.values
         end
       end
 
-      class Resemble < Telnyx::Internal::Type::BaseModel
+      class Resemble < ::Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::TextToSpeechGenerateParams::Resemble,
-              Telnyx::Internal::AnyHash
+              ::Telnyx::TextToSpeechGenerateParams::Resemble,
+              ::Telnyx::Internal::AnyHash
             )
           end
 
@@ -862,12 +876,12 @@ module Telnyx
         end
       end
 
-      class Rime < Telnyx::Internal::Type::BaseModel
+      class Rime < ::Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::TextToSpeechGenerateParams::Rime,
-              Telnyx::Internal::AnyHash
+              ::Telnyx::TextToSpeechGenerateParams::Rime,
+              ::Telnyx::Internal::AnyHash
             )
           end
 
@@ -997,28 +1011,30 @@ module Telnyx
 
       # Text type. Use `ssml` for SSML-formatted input (supported by AWS and Azure).
       module TextType
-        extend Telnyx::Internal::Type::Enum
+        extend ::Telnyx::Internal::Type::Enum
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Telnyx::TextToSpeechGenerateParams::TextType)
+            T.all(Symbol, ::Telnyx::TextToSpeechGenerateParams::TextType)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         TEXT =
           T.let(
             :text,
-            Telnyx::TextToSpeechGenerateParams::TextType::TaggedSymbol
+            ::Telnyx::TextToSpeechGenerateParams::TextType::TaggedSymbol
           )
         SSML =
           T.let(
             :ssml,
-            Telnyx::TextToSpeechGenerateParams::TextType::TaggedSymbol
+            ::Telnyx::TextToSpeechGenerateParams::TextType::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Telnyx::TextToSpeechGenerateParams::TextType::TaggedSymbol]
+            T::Array[
+              ::Telnyx::TextToSpeechGenerateParams::TextType::TaggedSymbol
+            ]
           )
         end
         def self.values

@@ -2,50 +2,50 @@ module Telnyx
   module Models
     type text_to_speech_generate_params =
       {
-        aws: Telnyx::TextToSpeechGenerateParams::Aws,
-        azure: Telnyx::TextToSpeechGenerateParams::Azure,
+        aws: ::Telnyx::TextToSpeechGenerateParams::Aws,
+        azure: ::Telnyx::TextToSpeechGenerateParams::Azure,
         disable_cache: bool,
-        elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs,
+        elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs,
         inworld: ::Hash[Symbol, top],
         language: String,
-        minimax: Telnyx::TextToSpeechGenerateParams::Minimax,
-        output_type: Telnyx::Models::TextToSpeechGenerateParams::output_type,
-        provider: Telnyx::Models::TextToSpeechGenerateParams::provider,
-        resemble: Telnyx::TextToSpeechGenerateParams::Resemble,
-        rime: Telnyx::TextToSpeechGenerateParams::Rime,
+        minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax,
+        output_type: ::Telnyx::Models::TextToSpeechGenerateParams::output_type,
+        provider: ::Telnyx::Models::TextToSpeechGenerateParams::provider,
+        resemble: ::Telnyx::TextToSpeechGenerateParams::Resemble,
+        rime: ::Telnyx::TextToSpeechGenerateParams::Rime,
         telnyx: ::Telnyx::TextToSpeechGenerateParams::Telnyx,
         text: String,
-        text_type: Telnyx::Models::TextToSpeechGenerateParams::text_type,
+        text_type: ::Telnyx::Models::TextToSpeechGenerateParams::text_type,
         voice: String,
         voice_settings: ::Hash[Symbol, top]
       }
-      & Telnyx::Internal::Type::request_parameters
+      & ::Telnyx::Internal::Type::request_parameters
 
-    class TextToSpeechGenerateParams < Telnyx::Internal::Type::BaseModel
-      extend Telnyx::Internal::Type::RequestParameters::Converter
-      include Telnyx::Internal::Type::RequestParameters
+    class TextToSpeechGenerateParams < ::Telnyx::Internal::Type::BaseModel
+      extend ::Telnyx::Internal::Type::RequestParameters::Converter
+      include ::Telnyx::Internal::Type::RequestParameters
 
-      attr_reader aws: Telnyx::TextToSpeechGenerateParams::Aws?
+      attr_reader aws: ::Telnyx::TextToSpeechGenerateParams::Aws?
 
       def aws=: (
-        Telnyx::TextToSpeechGenerateParams::Aws
-      ) -> Telnyx::TextToSpeechGenerateParams::Aws
+        ::Telnyx::TextToSpeechGenerateParams::Aws
+      ) -> ::Telnyx::TextToSpeechGenerateParams::Aws
 
-      attr_reader azure: Telnyx::TextToSpeechGenerateParams::Azure?
+      attr_reader azure: ::Telnyx::TextToSpeechGenerateParams::Azure?
 
       def azure=: (
-        Telnyx::TextToSpeechGenerateParams::Azure
-      ) -> Telnyx::TextToSpeechGenerateParams::Azure
+        ::Telnyx::TextToSpeechGenerateParams::Azure
+      ) -> ::Telnyx::TextToSpeechGenerateParams::Azure
 
       attr_reader disable_cache: bool?
 
       def disable_cache=: (bool) -> bool
 
-      attr_reader elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs?
+      attr_reader elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs?
 
       def elevenlabs=: (
-        Telnyx::TextToSpeechGenerateParams::Elevenlabs
-      ) -> Telnyx::TextToSpeechGenerateParams::Elevenlabs
+        ::Telnyx::TextToSpeechGenerateParams::Elevenlabs
+      ) -> ::Telnyx::TextToSpeechGenerateParams::Elevenlabs
 
       attr_reader inworld: ::Hash[Symbol, top]?
 
@@ -55,35 +55,35 @@ module Telnyx
 
       def language=: (String) -> String
 
-      attr_reader minimax: Telnyx::TextToSpeechGenerateParams::Minimax?
+      attr_reader minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax?
 
       def minimax=: (
-        Telnyx::TextToSpeechGenerateParams::Minimax
-      ) -> Telnyx::TextToSpeechGenerateParams::Minimax
+        ::Telnyx::TextToSpeechGenerateParams::Minimax
+      ) -> ::Telnyx::TextToSpeechGenerateParams::Minimax
 
-      attr_reader output_type: Telnyx::Models::TextToSpeechGenerateParams::output_type?
+      attr_reader output_type: ::Telnyx::Models::TextToSpeechGenerateParams::output_type?
 
       def output_type=: (
-        Telnyx::Models::TextToSpeechGenerateParams::output_type
-      ) -> Telnyx::Models::TextToSpeechGenerateParams::output_type
+        ::Telnyx::Models::TextToSpeechGenerateParams::output_type
+      ) -> ::Telnyx::Models::TextToSpeechGenerateParams::output_type
 
-      attr_reader provider: Telnyx::Models::TextToSpeechGenerateParams::provider?
+      attr_reader provider: ::Telnyx::Models::TextToSpeechGenerateParams::provider?
 
       def provider=: (
-        Telnyx::Models::TextToSpeechGenerateParams::provider
-      ) -> Telnyx::Models::TextToSpeechGenerateParams::provider
+        ::Telnyx::Models::TextToSpeechGenerateParams::provider
+      ) -> ::Telnyx::Models::TextToSpeechGenerateParams::provider
 
-      attr_reader resemble: Telnyx::TextToSpeechGenerateParams::Resemble?
+      attr_reader resemble: ::Telnyx::TextToSpeechGenerateParams::Resemble?
 
       def resemble=: (
-        Telnyx::TextToSpeechGenerateParams::Resemble
-      ) -> Telnyx::TextToSpeechGenerateParams::Resemble
+        ::Telnyx::TextToSpeechGenerateParams::Resemble
+      ) -> ::Telnyx::TextToSpeechGenerateParams::Resemble
 
-      attr_reader rime: Telnyx::TextToSpeechGenerateParams::Rime?
+      attr_reader rime: ::Telnyx::TextToSpeechGenerateParams::Rime?
 
       def rime=: (
-        Telnyx::TextToSpeechGenerateParams::Rime
-      ) -> Telnyx::TextToSpeechGenerateParams::Rime
+        ::Telnyx::TextToSpeechGenerateParams::Rime
+      ) -> ::Telnyx::TextToSpeechGenerateParams::Rime
 
       attr_reader telnyx: ::Telnyx::TextToSpeechGenerateParams::Telnyx?
 
@@ -95,11 +95,11 @@ module Telnyx
 
       def text=: (String) -> String
 
-      attr_reader text_type: Telnyx::Models::TextToSpeechGenerateParams::text_type?
+      attr_reader text_type: ::Telnyx::Models::TextToSpeechGenerateParams::text_type?
 
       def text_type=: (
-        Telnyx::Models::TextToSpeechGenerateParams::text_type
-      ) -> Telnyx::Models::TextToSpeechGenerateParams::text_type
+        ::Telnyx::Models::TextToSpeechGenerateParams::text_type
+      ) -> ::Telnyx::Models::TextToSpeechGenerateParams::text_type
 
       attr_reader voice: String?
 
@@ -110,43 +110,43 @@ module Telnyx
       def voice_settings=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
       def initialize: (
-        ?aws: Telnyx::TextToSpeechGenerateParams::Aws,
-        ?azure: Telnyx::TextToSpeechGenerateParams::Azure,
+        ?aws: ::Telnyx::TextToSpeechGenerateParams::Aws,
+        ?azure: ::Telnyx::TextToSpeechGenerateParams::Azure,
         ?disable_cache: bool,
-        ?elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs,
+        ?elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs,
         ?inworld: ::Hash[Symbol, top],
         ?language: String,
-        ?minimax: Telnyx::TextToSpeechGenerateParams::Minimax,
-        ?output_type: Telnyx::Models::TextToSpeechGenerateParams::output_type,
-        ?provider: Telnyx::Models::TextToSpeechGenerateParams::provider,
-        ?resemble: Telnyx::TextToSpeechGenerateParams::Resemble,
-        ?rime: Telnyx::TextToSpeechGenerateParams::Rime,
+        ?minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax,
+        ?output_type: ::Telnyx::Models::TextToSpeechGenerateParams::output_type,
+        ?provider: ::Telnyx::Models::TextToSpeechGenerateParams::provider,
+        ?resemble: ::Telnyx::TextToSpeechGenerateParams::Resemble,
+        ?rime: ::Telnyx::TextToSpeechGenerateParams::Rime,
         ?telnyx: ::Telnyx::TextToSpeechGenerateParams::Telnyx,
         ?text: String,
-        ?text_type: Telnyx::Models::TextToSpeechGenerateParams::text_type,
+        ?text_type: ::Telnyx::Models::TextToSpeechGenerateParams::text_type,
         ?voice: String,
         ?voice_settings: ::Hash[Symbol, top],
-        ?request_options: Telnyx::request_opts
+        ?request_options: ::Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
-        aws: Telnyx::TextToSpeechGenerateParams::Aws,
-        azure: Telnyx::TextToSpeechGenerateParams::Azure,
+        aws: ::Telnyx::TextToSpeechGenerateParams::Aws,
+        azure: ::Telnyx::TextToSpeechGenerateParams::Azure,
         disable_cache: bool,
-        elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs,
+        elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs,
         inworld: ::Hash[Symbol, top],
         language: String,
-        minimax: Telnyx::TextToSpeechGenerateParams::Minimax,
-        output_type: Telnyx::Models::TextToSpeechGenerateParams::output_type,
-        provider: Telnyx::Models::TextToSpeechGenerateParams::provider,
-        resemble: Telnyx::TextToSpeechGenerateParams::Resemble,
-        rime: Telnyx::TextToSpeechGenerateParams::Rime,
+        minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax,
+        output_type: ::Telnyx::Models::TextToSpeechGenerateParams::output_type,
+        provider: ::Telnyx::Models::TextToSpeechGenerateParams::provider,
+        resemble: ::Telnyx::TextToSpeechGenerateParams::Resemble,
+        rime: ::Telnyx::TextToSpeechGenerateParams::Rime,
         telnyx: ::Telnyx::TextToSpeechGenerateParams::Telnyx,
         text: String,
-        text_type: Telnyx::Models::TextToSpeechGenerateParams::text_type,
+        text_type: ::Telnyx::Models::TextToSpeechGenerateParams::text_type,
         voice: String,
         voice_settings: ::Hash[Symbol, top],
-        request_options: Telnyx::RequestOptions
+        request_options: ::Telnyx::RequestOptions
       }
 
       type aws =
@@ -155,10 +155,10 @@ module Telnyx
           lexicon_names: ::Array[String],
           output_format: String,
           sample_rate: String,
-          text_type: Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type
+          text_type: ::Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type
         }
 
-      class Aws < Telnyx::Internal::Type::BaseModel
+      class Aws < ::Telnyx::Internal::Type::BaseModel
         attr_reader language_code: String?
 
         def language_code=: (String) -> String
@@ -175,18 +175,18 @@ module Telnyx
 
         def sample_rate=: (String) -> String
 
-        attr_reader text_type: Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type?
+        attr_reader text_type: ::Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type?
 
         def text_type=: (
-          Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type
-        ) -> Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type
+          ::Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type
+        ) -> ::Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type
 
         def initialize: (
           ?language_code: String,
           ?lexicon_names: ::Array[String],
           ?output_format: String,
           ?sample_rate: String,
-          ?text_type: Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type
+          ?text_type: ::Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type
         ) -> void
 
         def to_hash: -> {
@@ -194,18 +194,18 @@ module Telnyx
           lexicon_names: ::Array[String],
           output_format: String,
           sample_rate: String,
-          text_type: Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type
+          text_type: ::Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type
         }
 
         type text_type = :text | :ssml
 
         module TextType
-          extend Telnyx::Internal::Type::Enum
+          extend ::Telnyx::Internal::Type::Enum
 
           TEXT: :text
           SSML: :ssml
 
-          def self?.values: -> ::Array[Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type]
+          def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateParams::Aws::text_type]
         end
       end
 
@@ -218,10 +218,10 @@ module Telnyx
           language_code: String,
           output_format: String,
           region: String,
-          text_type: Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type
+          text_type: ::Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type
         }
 
-      class Azure < Telnyx::Internal::Type::BaseModel
+      class Azure < ::Telnyx::Internal::Type::BaseModel
         attr_reader api_key: String?
 
         def api_key=: (String) -> String
@@ -250,11 +250,11 @@ module Telnyx
 
         def region=: (String) -> String
 
-        attr_reader text_type: Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type?
+        attr_reader text_type: ::Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type?
 
         def text_type=: (
-          Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type
-        ) -> Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type
+          ::Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type
+        ) -> ::Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type
 
         def initialize: (
           ?api_key: String,
@@ -264,7 +264,7 @@ module Telnyx
           ?language_code: String,
           ?output_format: String,
           ?region: String,
-          ?text_type: Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type
+          ?text_type: ::Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type
         ) -> void
 
         def to_hash: -> {
@@ -275,18 +275,18 @@ module Telnyx
           language_code: String,
           output_format: String,
           region: String,
-          text_type: Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type
+          text_type: ::Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type
         }
 
         type text_type = :text | :ssml
 
         module TextType
-          extend Telnyx::Internal::Type::Enum
+          extend ::Telnyx::Internal::Type::Enum
 
           TEXT: :text
           SSML: :ssml
 
-          def self?.values: -> ::Array[Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type]
+          def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateParams::Azure::text_type]
         end
       end
 
@@ -297,7 +297,7 @@ module Telnyx
           voice_settings: ::Hash[Symbol, top]
         }
 
-      class Elevenlabs < Telnyx::Internal::Type::BaseModel
+      class Elevenlabs < ::Telnyx::Internal::Type::BaseModel
         attr_reader api_key: String?
 
         def api_key=: (String) -> String
@@ -332,7 +332,7 @@ module Telnyx
           vol: Float
         }
 
-      class Minimax < Telnyx::Internal::Type::BaseModel
+      class Minimax < ::Telnyx::Internal::Type::BaseModel
         attr_reader language_boost: String?
 
         def language_boost=: (String) -> String
@@ -373,12 +373,12 @@ module Telnyx
       type output_type = :binary_output | :base64_output
 
       module OutputType
-        extend Telnyx::Internal::Type::Enum
+        extend ::Telnyx::Internal::Type::Enum
 
         BINARY_OUTPUT: :binary_output
         BASE64_OUTPUT: :base64_output
 
-        def self?.values: -> ::Array[Telnyx::Models::TextToSpeechGenerateParams::output_type]
+        def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateParams::output_type]
       end
 
       type provider =
@@ -392,7 +392,7 @@ module Telnyx
         | :inworld
 
       module Provider
-        extend Telnyx::Internal::Type::Enum
+        extend ::Telnyx::Internal::Type::Enum
 
         AWS: :aws
         TELNYX: :telnyx
@@ -403,7 +403,7 @@ module Telnyx
         RESEMBLE: :resemble
         INWORLD: :inworld
 
-        def self?.values: -> ::Array[Telnyx::Models::TextToSpeechGenerateParams::provider]
+        def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateParams::provider]
       end
 
       type resemble =
@@ -414,7 +414,7 @@ module Telnyx
           sample_rate: String
         }
 
-      class Resemble < Telnyx::Internal::Type::BaseModel
+      class Resemble < ::Telnyx::Internal::Type::BaseModel
         attr_reader api_key: String?
 
         def api_key=: (String) -> String
@@ -449,7 +449,7 @@ module Telnyx
       type rime =
         { response_format: String, sampling_rate: Integer, voice_speed: Float }
 
-      class Rime < Telnyx::Internal::Type::BaseModel
+      class Rime < ::Telnyx::Internal::Type::BaseModel
         attr_reader response_format: String?
 
         def response_format=: (String) -> String
@@ -518,12 +518,12 @@ module Telnyx
       type text_type = :text | :ssml
 
       module TextType
-        extend Telnyx::Internal::Type::Enum
+        extend ::Telnyx::Internal::Type::Enum
 
         TEXT: :text
         SSML: :ssml
 
-        def self?.values: -> ::Array[Telnyx::Models::TextToSpeechGenerateParams::text_type]
+        def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateParams::text_type]
       end
     end
   end
