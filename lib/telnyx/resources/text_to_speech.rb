@@ -24,33 +24,33 @@ module Telnyx
       #
       # @overload generate(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, inworld: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, request_options: {})
       #
-      # @param aws [Telnyx::Models::TextToSpeechGenerateParams::Aws] AWS Polly provider-specific parameters.
+      # @param aws [::Telnyx::Models::TextToSpeechGenerateParams::Aws] AWS Polly provider-specific parameters.
       #
-      # @param azure [Telnyx::Models::TextToSpeechGenerateParams::Azure] Azure Cognitive Services provider-specific parameters.
+      # @param azure [::Telnyx::Models::TextToSpeechGenerateParams::Azure] Azure Cognitive Services provider-specific parameters.
       #
       # @param disable_cache [Boolean] When `true`, bypass the audio cache and generate fresh audio.
       #
-      # @param elevenlabs [Telnyx::Models::TextToSpeechGenerateParams::Elevenlabs] ElevenLabs provider-specific parameters.
+      # @param elevenlabs [::Telnyx::Models::TextToSpeechGenerateParams::Elevenlabs] ElevenLabs provider-specific parameters.
       #
       # @param inworld [Hash{Symbol=>Object}] Inworld provider-specific parameters.
       #
       # @param language [String] Language code (e.g. `en-US`). Usage varies by provider.
       #
-      # @param minimax [Telnyx::Models::TextToSpeechGenerateParams::Minimax] Minimax provider-specific parameters.
+      # @param minimax [::Telnyx::Models::TextToSpeechGenerateParams::Minimax] Minimax provider-specific parameters.
       #
-      # @param output_type [Symbol, Telnyx::Models::TextToSpeechGenerateParams::OutputType] Determines the response format. `binary_output` returns raw audio bytes, `base64
+      # @param output_type [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::OutputType] Determines the response format. `binary_output` returns raw audio bytes, `base64
       #
-      # @param provider [Symbol, Telnyx::Models::TextToSpeechGenerateParams::Provider] TTS provider. Required unless `voice` is provided.
+      # @param provider [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::Provider] TTS provider. Required unless `voice` is provided.
       #
-      # @param resemble [Telnyx::Models::TextToSpeechGenerateParams::Resemble] Resemble AI provider-specific parameters.
+      # @param resemble [::Telnyx::Models::TextToSpeechGenerateParams::Resemble] Resemble AI provider-specific parameters.
       #
-      # @param rime [Telnyx::Models::TextToSpeechGenerateParams::Rime] Rime provider-specific parameters.
+      # @param rime [::Telnyx::Models::TextToSpeechGenerateParams::Rime] Rime provider-specific parameters.
       #
       # @param telnyx [::Telnyx::Models::TextToSpeechGenerateParams::Telnyx] Telnyx provider-specific parameters.
       #
       # @param text [String] The text to convert to speech.
       #
-      # @param text_type [Symbol, Telnyx::Models::TextToSpeechGenerateParams::TextType] Text type. Use `ssml` for SSML-formatted input (supported by AWS and Azure).
+      # @param text_type [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::TextType] Text type. Use `ssml` for SSML-formatted input (supported by AWS and Azure).
       #
       # @param voice [String] Voice identifier in the format `provider.model_id.voice_id` or `provider.voice_i
       #

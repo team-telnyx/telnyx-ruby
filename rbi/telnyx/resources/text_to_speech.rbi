@@ -20,20 +20,21 @@ module Telnyx
       # `resemble`, `inworld`.
       sig do
         params(
-          aws: Telnyx::TextToSpeechGenerateParams::Aws::OrHash,
-          azure: Telnyx::TextToSpeechGenerateParams::Azure::OrHash,
+          aws: ::Telnyx::TextToSpeechGenerateParams::Aws::OrHash,
+          azure: ::Telnyx::TextToSpeechGenerateParams::Azure::OrHash,
           disable_cache: T::Boolean,
-          elevenlabs: Telnyx::TextToSpeechGenerateParams::Elevenlabs::OrHash,
+          elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs::OrHash,
           inworld: T::Hash[Symbol, T.anything],
           language: String,
-          minimax: Telnyx::TextToSpeechGenerateParams::Minimax::OrHash,
-          output_type: Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol,
-          provider: Telnyx::TextToSpeechGenerateParams::Provider::OrSymbol,
-          resemble: Telnyx::TextToSpeechGenerateParams::Resemble::OrHash,
-          rime: Telnyx::TextToSpeechGenerateParams::Rime::OrHash,
+          minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax::OrHash,
+          output_type:
+            ::Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol,
+          provider: ::Telnyx::TextToSpeechGenerateParams::Provider::OrSymbol,
+          resemble: ::Telnyx::TextToSpeechGenerateParams::Resemble::OrHash,
+          rime: ::Telnyx::TextToSpeechGenerateParams::Rime::OrHash,
           telnyx: ::Telnyx::TextToSpeechGenerateParams::Telnyx::OrHash,
           text: String,
-          text_type: Telnyx::TextToSpeechGenerateParams::TextType::OrSymbol,
+          text_type: ::Telnyx::TextToSpeechGenerateParams::TextType::OrSymbol,
           voice: String,
           voice_settings: T::Hash[Symbol, T.anything],
           request_options: Telnyx::RequestOptions::OrHash

@@ -8,14 +8,19 @@ module Telnyx
 
       OrHash =
         T.type_alias do
-          T.any(::Telnyx::TextToSpeechGenerateParams, ::Telnyx::Internal::AnyHash)
+          T.any(
+            ::Telnyx::TextToSpeechGenerateParams,
+            ::Telnyx::Internal::AnyHash
+          )
         end
 
       # AWS Polly provider-specific parameters.
       sig { returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Aws)) }
       attr_reader :aws
 
-      sig { params(aws: ::Telnyx::TextToSpeechGenerateParams::Aws::OrHash).void }
+      sig do
+        params(aws: ::Telnyx::TextToSpeechGenerateParams::Aws::OrHash).void
+      end
       attr_writer :aws
 
       # Azure Cognitive Services provider-specific parameters.
@@ -35,7 +40,9 @@ module Telnyx
       attr_writer :disable_cache
 
       # ElevenLabs provider-specific parameters.
-      sig { returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Elevenlabs)) }
+      sig do
+        returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Elevenlabs))
+      end
       attr_reader :elevenlabs
 
       sig do
@@ -81,7 +88,8 @@ module Telnyx
 
       sig do
         params(
-          output_type: ::Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol
+          output_type:
+            ::Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol
         ).void
       end
       attr_writer :output_type
@@ -526,7 +534,10 @@ module Telnyx
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, ::Telnyx::TextToSpeechGenerateParams::Azure::TextType)
+              T.all(
+                Symbol,
+                ::Telnyx::TextToSpeechGenerateParams::Azure::TextType
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -783,7 +794,9 @@ module Telnyx
 
         sig do
           override.returns(
-            T::Array[::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol]
+            T::Array[
+              ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+            ]
           )
         end
         def self.values
@@ -1018,7 +1031,9 @@ module Telnyx
 
         sig do
           override.returns(
-            T::Array[::Telnyx::TextToSpeechGenerateParams::TextType::TaggedSymbol]
+            T::Array[
+              ::Telnyx::TextToSpeechGenerateParams::TextType::TaggedSymbol
+            ]
           )
         end
         def self.values
