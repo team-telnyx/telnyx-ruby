@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.54.0 (2026-03-16)
+
+Full Changelog: [v5.53.0...v5.54.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.53.0...v5.54.0)
+
+### Features
+
+* AI-2132: Add warm_message_delay_ms to transfer tool OpenAPI spec ([d3866f2](https://github.com/team-telnyx/telnyx-ruby/commit/d3866f266405b2bb897852f55bf4a0d0aa47e74f))
+
+
+### Bug Fixes
+
+* **client:** use absolutely qualified names ([13b1134](https://github.com/team-telnyx/telnyx-ruby/commit/13b1134826b4dc6c54e59ae560cc4c1a4b90c66d))
+
 ## 5.53.0 (2026-03-13)
 
 Full Changelog: [v5.52.0...v5.53.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.52.0...v5.53.0)
