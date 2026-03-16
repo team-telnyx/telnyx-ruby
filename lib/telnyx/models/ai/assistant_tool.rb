@@ -161,6 +161,15 @@ module Telnyx
             #   @return [Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection, nil]
             optional :voicemail_detection, -> { Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection }
 
+            # @!attribute warm_message_delay_ms
+            #   Optional delay in milliseconds before playing the warm message audio when the
+            #   transferred call is answered. When set, the audio_url is not included in the
+            #   dial command; instead, playback starts after the specified delay. When not set,
+            #   existing behavior (audio_url in dial) is preserved.
+            #
+            #   @return [Integer, nil]
+            optional :warm_message_delay_ms, Integer, nil?: true
+
             # @!attribute warm_transfer_instructions
             #   Natural language instructions for your agent for how to provide context for the
             #   transfer recipient.
@@ -168,7 +177,7 @@ module Telnyx
             #   @return [String, nil]
             optional :warm_transfer_instructions, String
 
-            # @!method initialize(from:, targets:, custom_headers: nil, voicemail_detection: nil, warm_transfer_instructions: nil)
+            # @!method initialize(from:, targets:, custom_headers: nil, voicemail_detection: nil, warm_message_delay_ms: nil, warm_transfer_instructions: nil)
             #   Some parameter documentations has been truncated, see
             #   {Telnyx::Models::AI::AssistantTool::Transfer::Transfer} for more details.
             #
@@ -179,6 +188,8 @@ module Telnyx
             #   @param custom_headers [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::CustomHeader>] Custom headers to be added to the SIP INVITE for the transfer command.
             #
             #   @param voicemail_detection [Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection] Configuration for voicemail detection (AMD - Answering Machine Detection) on the
+            #
+            #   @param warm_message_delay_ms [Integer, nil] Optional delay in milliseconds before playing the warm message audio when the tr
             #
             #   @param warm_transfer_instructions [String] Natural language instructions for your agent for how to provide context for the
 
