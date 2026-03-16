@@ -38,6 +38,8 @@ module Telnyx
       module FilterActionType
         extend Telnyx::Internal::Type::Enum
 
+        BULK_DISABLE_VOICE = :bulk_disable_voice
+        BULK_ENABLE_VOICE = :bulk_enable_voice
         BULK_SET_PUBLIC_IPS = :bulk_set_public_ips
 
         # @!method self.values
