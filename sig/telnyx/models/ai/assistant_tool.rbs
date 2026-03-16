@@ -114,6 +114,7 @@ module Telnyx
               targets: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::Target],
               custom_headers: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader],
               voicemail_detection: Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection,
+              warm_message_delay_ms: Integer?,
               warm_transfer_instructions: String
             }
 
@@ -134,6 +135,8 @@ module Telnyx
               Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection
             ) -> Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection
 
+            attr_accessor warm_message_delay_ms: Integer?
+
             attr_reader warm_transfer_instructions: String?
 
             def warm_transfer_instructions=: (String) -> String
@@ -143,6 +146,7 @@ module Telnyx
               targets: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::Target],
               ?custom_headers: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader],
               ?voicemail_detection: Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection,
+              ?warm_message_delay_ms: Integer?,
               ?warm_transfer_instructions: String
             ) -> void
 
@@ -151,6 +155,7 @@ module Telnyx
               targets: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::Target],
               custom_headers: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader],
               voicemail_detection: Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection,
+              warm_message_delay_ms: Integer?,
               warm_transfer_instructions: String
             }
 

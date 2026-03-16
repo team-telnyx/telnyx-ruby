@@ -323,6 +323,13 @@ module Telnyx
             end
             attr_writer :voicemail_detection
 
+            # Optional delay in milliseconds before playing the warm message audio when the
+            # transferred call is answered. When set, the audio_url is not included in the
+            # dial command; instead, playback starts after the specified delay. When not set,
+            # existing behavior (audio_url in dial) is preserved.
+            sig { returns(T.nilable(Integer)) }
+            attr_accessor :warm_message_delay_ms
+
             # Natural language instructions for your agent for how to provide context for the
             # transfer recipient.
             sig { returns(T.nilable(String)) }
@@ -344,6 +351,7 @@ module Telnyx
                   ],
                 voicemail_detection:
                   Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OrHash,
+                warm_message_delay_ms: T.nilable(Integer),
                 warm_transfer_instructions: String
               ).returns(T.attached_class)
             end
@@ -359,6 +367,11 @@ module Telnyx
               # transferred call. Allows the assistant to detect when a voicemail system answers
               # the transferred call and take appropriate action.
               voicemail_detection: nil,
+              # Optional delay in milliseconds before playing the warm message audio when the
+              # transferred call is answered. When set, the audio_url is not included in the
+              # dial command; instead, playback starts after the specified delay. When not set,
+              # existing behavior (audio_url in dial) is preserved.
+              warm_message_delay_ms: nil,
               # Natural language instructions for your agent for how to provide context for the
               # transfer recipient.
               warm_transfer_instructions: nil
@@ -379,6 +392,7 @@ module Telnyx
                     ],
                   voicemail_detection:
                     Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection,
+                  warm_message_delay_ms: T.nilable(Integer),
                   warm_transfer_instructions: String
                 }
               )
