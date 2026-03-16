@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.55.0 (2026-03-16)
+
+Full Changelog: [v5.54.0...v5.55.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.54.0...v5.55.0)
+
+### Features
+
+* CW-2881 update `filter[action_type]` enum ([fd2d525](https://github.com/team-telnyx/telnyx-ruby/commit/fd2d52506f8fb5b45a5cc73bf918500528b0ce0b))
+
+
+### Chores
+
+* **internal:** tweak CI branches ([e611101](https://github.com/team-telnyx/telnyx-ruby/commit/e611101cffd78d386e297c0cfe40e4b38743f382))
+
 ## 5.54.0 (2026-03-16)
 
 Full Changelog: [v5.53.0...v5.54.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.53.0...v5.54.0)
