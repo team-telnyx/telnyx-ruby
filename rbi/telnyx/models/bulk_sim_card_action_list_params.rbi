@@ -87,6 +87,16 @@ module Telnyx
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+        BULK_DISABLE_VOICE =
+          T.let(
+            :bulk_disable_voice,
+            Telnyx::BulkSimCardActionListParams::FilterActionType::TaggedSymbol
+          )
+        BULK_ENABLE_VOICE =
+          T.let(
+            :bulk_enable_voice,
+            Telnyx::BulkSimCardActionListParams::FilterActionType::TaggedSymbol
+          )
         BULK_SET_PUBLIC_IPS =
           T.let(
             :bulk_set_public_ips,
