@@ -34,4 +34,14 @@ class Telnyx::Test::Resources::TextToSpeechTest < Telnyx::Test::ResourceTest
       }
     end
   end
+
+  def test_stream
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.text_to_speech.stream
+
+    assert_pattern do
+      response => nil
+    end
+  end
 end

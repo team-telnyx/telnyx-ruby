@@ -768,6 +768,35 @@ module Telnyx
         )
         end
 
+        # Add a participant to an existing AI assistant conversation. Use this command to
+        # bring an additional call leg into a running AI conversation.
+        sig do
+          params(
+            call_control_id: String,
+            conversation_id: String,
+            participant:
+              Telnyx::Calls::ActionJoinAIAssistantParams::Participant::OrHash,
+            client_state: String,
+            command_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::Calls::ActionJoinAIAssistantResponse)
+        end
+        def join_ai_assistant(
+          # Unique identifier and token for controlling the call
+          call_control_id,
+          # The ID of the AI assistant conversation to join.
+          conversation_id:,
+          participant:,
+          # Use this field to add state to every subsequent webhook. It must be a valid
+          # Base-64 encoded string.
+          client_state: nil,
+          # Use this field to avoid duplicate commands. Telnyx will ignore any command with
+          # the same `command_id` for the same `call_control_id`.
+          command_id: nil,
+          request_options: {}
+        )
+        end
+
         # Removes the call from a queue.
         sig do
           params(

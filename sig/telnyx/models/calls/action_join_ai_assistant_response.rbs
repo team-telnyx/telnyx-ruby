@@ -1,0 +1,24 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_join_ai_assistant_response =
+        { data: Telnyx::Calls::CallControlCommandResultWithConversationID }
+
+      class ActionJoinAIAssistantResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Calls::CallControlCommandResultWithConversationID?
+
+        def data=: (
+          Telnyx::Calls::CallControlCommandResultWithConversationID
+        ) -> Telnyx::Calls::CallControlCommandResultWithConversationID
+
+        def initialize: (
+          ?data: Telnyx::Calls::CallControlCommandResultWithConversationID
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Calls::CallControlCommandResultWithConversationID
+        }
+      end
+    end
+  end
+end
