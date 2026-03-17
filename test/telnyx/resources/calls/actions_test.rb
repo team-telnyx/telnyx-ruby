@@ -156,6 +156,27 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
     end
   end
 
+  def test_join_ai_assistant_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.calls.actions.join_ai_assistant(
+        "call_control_id",
+        conversation_id: "v3:abc123",
+        participant: {id: "v3:abc123def456", role: :user}
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::Calls::ActionJoinAIAssistantResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Calls::CallControlCommandResultWithConversationID | nil
+      }
+    end
+  end
+
   def test_leave_queue
     skip("Mock server tests are disabled")
 

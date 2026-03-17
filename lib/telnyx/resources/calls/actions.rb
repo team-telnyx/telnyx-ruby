@@ -527,6 +527,40 @@ module Telnyx
         end
 
         # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Calls::ActionJoinAIAssistantParams} for more details.
+        #
+        # Add a participant to an existing AI assistant conversation. Use this command to
+        # bring an additional call leg into a running AI conversation.
+        #
+        # @overload join_ai_assistant(call_control_id, conversation_id:, participant:, client_state: nil, command_id: nil, request_options: {})
+        #
+        # @param call_control_id [String] Unique identifier and token for controlling the call
+        #
+        # @param conversation_id [String] The ID of the AI assistant conversation to join.
+        #
+        # @param participant [Telnyx::Models::Calls::ActionJoinAIAssistantParams::Participant]
+        #
+        # @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
+        #
+        # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Calls::ActionJoinAIAssistantResponse]
+        #
+        # @see Telnyx::Models::Calls::ActionJoinAIAssistantParams
+        def join_ai_assistant(call_control_id, params)
+          parsed, options = Telnyx::Calls::ActionJoinAIAssistantParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: ["calls/%1$s/actions/ai_assistant_join", call_control_id],
+            body: parsed,
+            model: Telnyx::Models::Calls::ActionJoinAIAssistantResponse,
+            options: options
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Calls::ActionLeaveQueueParams} for more details.
         #
         # Removes the call from a queue.

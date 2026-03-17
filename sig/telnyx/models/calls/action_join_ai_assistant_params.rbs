@@ -1,0 +1,111 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_join_ai_assistant_params =
+        {
+          call_control_id: String,
+          conversation_id: String,
+          participant: Telnyx::Calls::ActionJoinAIAssistantParams::Participant,
+          client_state: String,
+          command_id: String
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionJoinAIAssistantParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
+
+        attr_accessor conversation_id: String
+
+        attr_accessor participant: Telnyx::Calls::ActionJoinAIAssistantParams::Participant
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader command_id: String?
+
+        def command_id=: (String) -> String
+
+        def initialize: (
+          call_control_id: String,
+          conversation_id: String,
+          participant: Telnyx::Calls::ActionJoinAIAssistantParams::Participant,
+          ?client_state: String,
+          ?command_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          call_control_id: String,
+          conversation_id: String,
+          participant: Telnyx::Calls::ActionJoinAIAssistantParams::Participant,
+          client_state: String,
+          command_id: String,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type participant =
+          {
+            id: String,
+            role: Telnyx::Models::Calls::ActionJoinAIAssistantParams::Participant::role,
+            name: String,
+            on_hangup: Telnyx::Models::Calls::ActionJoinAIAssistantParams::Participant::on_hangup
+          }
+
+        class Participant < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor role: Telnyx::Models::Calls::ActionJoinAIAssistantParams::Participant::role
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader on_hangup: Telnyx::Models::Calls::ActionJoinAIAssistantParams::Participant::on_hangup?
+
+          def on_hangup=: (
+            Telnyx::Models::Calls::ActionJoinAIAssistantParams::Participant::on_hangup
+          ) -> Telnyx::Models::Calls::ActionJoinAIAssistantParams::Participant::on_hangup
+
+          def initialize: (
+            id: String,
+            role: Telnyx::Models::Calls::ActionJoinAIAssistantParams::Participant::role,
+            ?name: String,
+            ?on_hangup: Telnyx::Models::Calls::ActionJoinAIAssistantParams::Participant::on_hangup
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            role: Telnyx::Models::Calls::ActionJoinAIAssistantParams::Participant::role,
+            name: String,
+            on_hangup: Telnyx::Models::Calls::ActionJoinAIAssistantParams::Participant::on_hangup
+          }
+
+          type role = :user
+
+          module Role
+            extend Telnyx::Internal::Type::Enum
+
+            USER: :user
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::ActionJoinAIAssistantParams::Participant::role]
+          end
+
+          type on_hangup = :continue_conversation | :end_conversation
+
+          module OnHangup
+            extend Telnyx::Internal::Type::Enum
+
+            CONTINUE_CONVERSATION: :continue_conversation
+            END_CONVERSATION: :end_conversation
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::ActionJoinAIAssistantParams::Participant::on_hangup]
+          end
+        end
+      end
+    end
+  end
+end
