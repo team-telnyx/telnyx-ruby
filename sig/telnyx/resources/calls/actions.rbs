@@ -162,6 +162,15 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionHangupResponse
 
+        def join_ai_assistant: (
+          String call_control_id,
+          conversation_id: String,
+          participant: Telnyx::Calls::ActionJoinAIAssistantParams::Participant,
+          ?client_state: String,
+          ?command_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionJoinAIAssistantResponse
+
         def leave_queue: (
           String call_control_id,
           ?client_state: String,

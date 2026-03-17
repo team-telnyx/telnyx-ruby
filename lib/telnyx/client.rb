@@ -639,6 +639,10 @@ module Telnyx
     # @return [Telnyx::Resources::X402]
     attr_reader :x402
 
+    # Speech to text command operations
+    # @return [Telnyx::Resources::SpeechToText]
+    attr_reader :speech_to_text
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -892,6 +896,7 @@ module Telnyx
       @voice_clones = Telnyx::Resources::VoiceClones.new(client: self)
       @voice_designs = Telnyx::Resources::VoiceDesigns.new(client: self)
       @x402 = Telnyx::Resources::X402.new(client: self)
+      @speech_to_text = Telnyx::Resources::SpeechToText.new(client: self)
     end
   end
 end
