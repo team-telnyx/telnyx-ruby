@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.56.0 (2026-03-17)
+
+Full Changelog: [v5.55.0...v5.56.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.55.0...v5.56.0)
+
+### Features
+
+* add ai_assistant_join call control command OpenAPI spec ([5ab91f5](https://github.com/team-telnyx/telnyx-ruby/commit/5ab91f5327fd55aa5338bdaf1ba33de84994f3e1))
+
 ## 5.55.0 (2026-03-16)
 
 Full Changelog: [v5.54.0...v5.55.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.54.0...v5.55.0)
