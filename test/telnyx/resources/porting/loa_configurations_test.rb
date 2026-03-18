@@ -120,11 +120,11 @@ class Telnyx::Test::Resources::Porting::LoaConfigurationsTest < Telnyx::Test::Re
     end
   end
 
-  def test_preview_0_required_params
+  def test_preview_required_params
     skip("Mock server tests are disabled")
 
     response =
-      @telnyx.porting.loa_configurations.preview_0(
+      @telnyx.porting.loa_configurations.preview(
         address: {
           city: "Austin",
           country_code: "US",

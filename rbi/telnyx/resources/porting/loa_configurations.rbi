@@ -112,16 +112,16 @@ module Telnyx
         sig do
           params(
             address:
-              Telnyx::Porting::LoaConfigurationPreview0Params::Address::OrHash,
+              Telnyx::Porting::LoaConfigurationPreviewParams::Address::OrHash,
             company_name: String,
             contact:
-              Telnyx::Porting::LoaConfigurationPreview0Params::Contact::OrHash,
-            logo: Telnyx::Porting::LoaConfigurationPreview0Params::Logo::OrHash,
+              Telnyx::Porting::LoaConfigurationPreviewParams::Contact::OrHash,
+            logo: Telnyx::Porting::LoaConfigurationPreviewParams::Logo::OrHash,
             name: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(StringIO)
         end
-        def preview_0(
+        def preview(
           # The address of the company.
           address:,
           # The name of the company

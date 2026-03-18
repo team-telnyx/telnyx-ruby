@@ -34,11 +34,11 @@ module Telnyx
 
         def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 
-        def preview_0: (
-          address: Telnyx::Porting::LoaConfigurationPreview0Params::Address,
+        def preview: (
+          address: Telnyx::Porting::LoaConfigurationPreviewParams::Address,
           company_name: String,
-          contact: Telnyx::Porting::LoaConfigurationPreview0Params::Contact,
-          logo: Telnyx::Porting::LoaConfigurationPreview0Params::Logo,
+          contact: Telnyx::Porting::LoaConfigurationPreviewParams::Contact,
+          logo: Telnyx::Porting::LoaConfigurationPreviewParams::Logo,
           name: String,
           ?request_options: Telnyx::request_opts
         ) -> StringIO
