@@ -1,5 +1,14 @@
 # Changelog
 
+## 5.57.0 (2026-03-18)
+
+Full Changelog: [v5.56.0...v5.57.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.56.0...v5.57.0)
+
+### Features
+
+* add message_history, send_message_history_updates, participants to AIAssistantStartRequest ([db0e6fc](https://github.com/team-telnyx/telnyx-ruby/commit/db0e6fc8c78a08159aa2e9e73472c3fa2c092405))
+* port-4690: fix LOA configuration preview path (singular → plural) ([faa937b](https://github.com/team-telnyx/telnyx-ruby/commit/faa937bce19e78bcc88bb13155e0ef57c897b97d))
+
 ## 5.56.0 (2026-03-17)
 
 Full Changelog: [v5.55.0...v5.56.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.55.0...v5.56.0)
