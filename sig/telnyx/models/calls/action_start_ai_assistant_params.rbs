@@ -9,6 +9,9 @@ module Telnyx
           command_id: String,
           greeting: String,
           interruption_settings: Telnyx::Calls::InterruptionSettings,
+          message_history: ::Array[Telnyx::Models::Calls::ActionStartAIAssistantParams::message_history],
+          participants: ::Array[Telnyx::Calls::ActionStartAIAssistantParams::Participant],
+          send_message_history_updates: bool,
           transcription: Telnyx::Calls::TranscriptionConfig,
           voice: String,
           voice_settings: Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings
@@ -45,6 +48,22 @@ module Telnyx
           Telnyx::Calls::InterruptionSettings
         ) -> Telnyx::Calls::InterruptionSettings
 
+        attr_reader message_history: ::Array[Telnyx::Models::Calls::ActionStartAIAssistantParams::message_history]?
+
+        def message_history=: (
+          ::Array[Telnyx::Models::Calls::ActionStartAIAssistantParams::message_history]
+        ) -> ::Array[Telnyx::Models::Calls::ActionStartAIAssistantParams::message_history]
+
+        attr_reader participants: ::Array[Telnyx::Calls::ActionStartAIAssistantParams::Participant]?
+
+        def participants=: (
+          ::Array[Telnyx::Calls::ActionStartAIAssistantParams::Participant]
+        ) -> ::Array[Telnyx::Calls::ActionStartAIAssistantParams::Participant]
+
+        attr_reader send_message_history_updates: bool?
+
+        def send_message_history_updates=: (bool) -> bool
+
         attr_reader transcription: Telnyx::Calls::TranscriptionConfig?
 
         def transcription=: (
@@ -68,6 +87,9 @@ module Telnyx
           ?command_id: String,
           ?greeting: String,
           ?interruption_settings: Telnyx::Calls::InterruptionSettings,
+          ?message_history: ::Array[Telnyx::Models::Calls::ActionStartAIAssistantParams::message_history],
+          ?participants: ::Array[Telnyx::Calls::ActionStartAIAssistantParams::Participant],
+          ?send_message_history_updates: bool,
           ?transcription: Telnyx::Calls::TranscriptionConfig,
           ?voice: String,
           ?voice_settings: Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings,
@@ -81,6 +103,9 @@ module Telnyx
           command_id: String,
           greeting: String,
           interruption_settings: Telnyx::Calls::InterruptionSettings,
+          message_history: ::Array[Telnyx::Models::Calls::ActionStartAIAssistantParams::message_history],
+          participants: ::Array[Telnyx::Calls::ActionStartAIAssistantParams::Participant],
+          send_message_history_updates: bool,
           transcription: Telnyx::Calls::TranscriptionConfig,
           voice: String,
           voice_settings: Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings,
@@ -114,6 +139,274 @@ module Telnyx
             instructions: String,
             openai_api_key_ref: String
           }
+        end
+
+        type message_history =
+          Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::User
+          | Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant
+          | Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Tool
+          | Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::System
+          | Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Developer
+
+        module MessageHistory
+          extend Telnyx::Internal::Type::Union
+
+          type user =
+            { content: String, role: :user, metadata: ::Hash[Symbol, top] }
+
+          class User < Telnyx::Internal::Type::BaseModel
+            attr_accessor content: String
+
+            attr_accessor role: :user
+
+            attr_reader metadata: ::Hash[Symbol, top]?
+
+            def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+            def initialize: (
+              content: String,
+              ?metadata: ::Hash[Symbol, top],
+              ?role: :user
+            ) -> void
+
+            def to_hash: -> {
+              content: String,
+              role: :user,
+              metadata: ::Hash[Symbol, top]
+            }
+          end
+
+          type assistant =
+            {
+              role: :assistant,
+              content: String,
+              metadata: ::Hash[Symbol, top],
+              tool_calls: ::Array[Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall]
+            }
+
+          class Assistant < Telnyx::Internal::Type::BaseModel
+            attr_accessor role: :assistant
+
+            attr_reader content: String?
+
+            def content=: (String) -> String
+
+            attr_reader metadata: ::Hash[Symbol, top]?
+
+            def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+            attr_reader tool_calls: ::Array[Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall]?
+
+            def tool_calls=: (
+              ::Array[Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall]
+            ) -> ::Array[Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall]
+
+            def initialize: (
+              ?content: String,
+              ?metadata: ::Hash[Symbol, top],
+              ?tool_calls: ::Array[Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall],
+              ?role: :assistant
+            ) -> void
+
+            def to_hash: -> {
+              role: :assistant,
+              content: String,
+              metadata: ::Hash[Symbol, top],
+              tool_calls: ::Array[Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall]
+            }
+
+            type tool_call =
+              {
+                id: String,
+                function: Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Function,
+                type: Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::type_
+              }
+
+            class ToolCall < Telnyx::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor function: Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Function
+
+              attr_accessor type: Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::type_
+
+              def initialize: (
+                id: String,
+                function: Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Function,
+                type: Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::type_
+              ) -> void
+
+              def to_hash: -> {
+                id: String,
+                function: Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Function,
+                type: Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::type_
+              }
+
+              type function = { name: String }
+
+              class Function < Telnyx::Internal::Type::BaseModel
+                attr_accessor name: String
+
+                def initialize: (name: String) -> void
+
+                def to_hash: -> { name: String }
+              end
+
+              type type_ = :function
+
+              module Type
+                extend Telnyx::Internal::Type::Enum
+
+                FUNCTION: :function
+
+                def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::type_]
+              end
+            end
+          end
+
+          type tool =
+            {
+              content: String,
+              role: :tool,
+              tool_call_id: String,
+              metadata: ::Hash[Symbol, top]
+            }
+
+          class Tool < Telnyx::Internal::Type::BaseModel
+            attr_accessor content: String
+
+            attr_accessor role: :tool
+
+            attr_accessor tool_call_id: String
+
+            attr_reader metadata: ::Hash[Symbol, top]?
+
+            def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+            def initialize: (
+              content: String,
+              tool_call_id: String,
+              ?metadata: ::Hash[Symbol, top],
+              ?role: :tool
+            ) -> void
+
+            def to_hash: -> {
+              content: String,
+              role: :tool,
+              tool_call_id: String,
+              metadata: ::Hash[Symbol, top]
+            }
+          end
+
+          type system_ =
+            { content: String, role: :system, metadata: ::Hash[Symbol, top] }
+
+          class System < Telnyx::Internal::Type::BaseModel
+            attr_accessor content: String
+
+            attr_accessor role: :system
+
+            attr_reader metadata: ::Hash[Symbol, top]?
+
+            def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+            def initialize: (
+              content: String,
+              ?metadata: ::Hash[Symbol, top],
+              ?role: :system
+            ) -> void
+
+            def to_hash: -> {
+              content: String,
+              role: :system,
+              metadata: ::Hash[Symbol, top]
+            }
+          end
+
+          type developer =
+            { content: String, role: :developer, metadata: ::Hash[Symbol, top] }
+
+          class Developer < Telnyx::Internal::Type::BaseModel
+            attr_accessor content: String
+
+            attr_accessor role: :developer
+
+            attr_reader metadata: ::Hash[Symbol, top]?
+
+            def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+            def initialize: (
+              content: String,
+              ?metadata: ::Hash[Symbol, top],
+              ?role: :developer
+            ) -> void
+
+            def to_hash: -> {
+              content: String,
+              role: :developer,
+              metadata: ::Hash[Symbol, top]
+            }
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::Calls::ActionStartAIAssistantParams::message_history]
+        end
+
+        type participant =
+          {
+            id: String,
+            role: Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant::role,
+            name: String,
+            on_hangup: Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant::on_hangup
+          }
+
+        class Participant < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor role: Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant::role
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader on_hangup: Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant::on_hangup?
+
+          def on_hangup=: (
+            Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant::on_hangup
+          ) -> Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant::on_hangup
+
+          def initialize: (
+            id: String,
+            role: Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant::role,
+            ?name: String,
+            ?on_hangup: Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant::on_hangup
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            role: Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant::role,
+            name: String,
+            on_hangup: Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant::on_hangup
+          }
+
+          type role = :user
+
+          module Role
+            extend Telnyx::Internal::Type::Enum
+
+            USER: :user
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant::role]
+          end
+
+          type on_hangup = :continue_conversation | :end_conversation
+
+          module OnHangup
+            extend Telnyx::Internal::Type::Enum
+
+            CONTINUE_CONVERSATION: :continue_conversation
+            END_CONVERSATION: :end_conversation
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant::on_hangup]
+          end
         end
 
         type voice_settings =

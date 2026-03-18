@@ -47,6 +47,28 @@ module Telnyx
         #   @return [Telnyx::Models::Calls::InterruptionSettings, nil]
         optional :interruption_settings, -> { Telnyx::Calls::InterruptionSettings }
 
+        # @!attribute message_history
+        #   A list of messages to seed the conversation history before the assistant starts.
+        #   Follows the same message format as the `ai_assistant_add_messages` command.
+        #
+        #   @return [Array<Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::User, Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant, Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Tool, Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::System, Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Developer>, nil]
+        optional :message_history,
+                 -> { Telnyx::Internal::Type::ArrayOf[union: Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory] }
+
+        # @!attribute participants
+        #   A list of participants to add to the conversation when it starts.
+        #
+        #   @return [Array<Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant>, nil]
+        optional :participants,
+                 -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Calls::ActionStartAIAssistantParams::Participant] }
+
+        # @!attribute send_message_history_updates
+        #   When `true`, a webhook is sent each time the conversation message history is
+        #   updated.
+        #
+        #   @return [Boolean, nil]
+        optional :send_message_history_updates, Telnyx::Internal::Type::Boolean
+
         # @!attribute transcription
         #   The settings associated with speech to text for the voice assistant. This is
         #   only relevant if the assistant uses a text-to-text language model. Any assistant
@@ -91,7 +113,7 @@ module Telnyx
         #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings }
 
-        # @!method initialize(call_control_id:, assistant: nil, client_state: nil, command_id: nil, greeting: nil, interruption_settings: nil, transcription: nil, voice: nil, voice_settings: nil, request_options: {})
+        # @!method initialize(call_control_id:, assistant: nil, client_state: nil, command_id: nil, greeting: nil, interruption_settings: nil, message_history: nil, participants: nil, send_message_history_updates: nil, transcription: nil, voice: nil, voice_settings: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionStartAIAssistantParams} for more details.
         #
@@ -106,6 +128,12 @@ module Telnyx
         #   @param greeting [String] Text that will be played when the assistant starts, if none then nothing will be
         #
         #   @param interruption_settings [Telnyx::Models::Calls::InterruptionSettings] Settings for handling user interruptions during assistant speech
+        #
+        #   @param message_history [Array<Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::User, Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant, Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Tool, Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::System, Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Developer>] A list of messages to seed the conversation history before the assistant starts.
+        #
+        #   @param participants [Array<Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant>] A list of participants to add to the conversation when it starts.
+        #
+        #   @param send_message_history_updates [Boolean] When `true`, a webhook is sent each time the conversation message history is upd
         #
         #   @param transcription [Telnyx::Models::Calls::TranscriptionConfig] The settings associated with speech to text for the voice assistant. This is onl
         #
@@ -148,6 +176,309 @@ module Telnyx
           #   @param instructions [String] The system instructions that the voice assistant uses during the start assistant
           #
           #   @param openai_api_key_ref [String] Reference to the OpenAI API key. Required only when using OpenAI models
+        end
+
+        # Messages sent by an end user
+        module MessageHistory
+          extend Telnyx::Internal::Type::Union
+
+          discriminator :role
+
+          # Messages sent by an end user
+          variant :user, -> { Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::User }
+
+          # Messages sent by the model in response to user messages.
+          variant :assistant, -> { Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant }
+
+          variant :tool, -> { Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Tool }
+
+          # Developer-provided instructions that the model should follow, regardless of messages sent by the user.
+          variant :system, -> { Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::System }
+
+          # Developer-provided instructions that the model should follow, regardless of messages sent by the user.
+          variant :developer, -> { Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Developer }
+
+          class User < Telnyx::Internal::Type::BaseModel
+            # @!attribute content
+            #   The contents of the user message.
+            #
+            #   @return [String]
+            required :content, String
+
+            # @!attribute role
+            #   The role of the messages author, in this case `user`.
+            #
+            #   @return [Symbol, :user]
+            required :role, const: :user
+
+            # @!attribute metadata
+            #   Metadata to add to the message
+            #
+            #   @return [Hash{Symbol=>Object}, nil]
+            optional :metadata, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+
+            # @!method initialize(content:, metadata: nil, role: :user)
+            #   Messages sent by an end user
+            #
+            #   @param content [String] The contents of the user message.
+            #
+            #   @param metadata [Hash{Symbol=>Object}] Metadata to add to the message
+            #
+            #   @param role [Symbol, :user] The role of the messages author, in this case `user`.
+          end
+
+          class Assistant < Telnyx::Internal::Type::BaseModel
+            # @!attribute role
+            #   The role of the messages author, in this case `assistant`.
+            #
+            #   @return [Symbol, :assistant]
+            required :role, const: :assistant
+
+            # @!attribute content
+            #   The contents of the assistant message. Required unless `tool_calls`
+            #
+            #   @return [String, nil]
+            optional :content, String
+
+            # @!attribute metadata
+            #   Metadata to add to the message
+            #
+            #   @return [Hash{Symbol=>Object}, nil]
+            optional :metadata, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+
+            # @!attribute tool_calls
+            #   The tool calls generated by the model, such as function calls.
+            #
+            #   @return [Array<Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall>, nil]
+            optional :tool_calls,
+                     -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall] }
+
+            # @!method initialize(content: nil, metadata: nil, tool_calls: nil, role: :assistant)
+            #   Messages sent by the model in response to user messages.
+            #
+            #   @param content [String] The contents of the assistant message. Required unless `tool_calls`
+            #
+            #   @param metadata [Hash{Symbol=>Object}] Metadata to add to the message
+            #
+            #   @param tool_calls [Array<Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall>] The tool calls generated by the model, such as function calls.
+            #
+            #   @param role [Symbol, :assistant] The role of the messages author, in this case `assistant`.
+
+            class ToolCall < Telnyx::Internal::Type::BaseModel
+              # @!attribute id
+              #   The ID of the tool call.
+              #
+              #   @return [String]
+              required :id, String
+
+              # @!attribute function
+              #   The function that the model called.
+              #
+              #   @return [Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Function]
+              required :function,
+                       -> { Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Function }
+
+              # @!attribute type
+              #   The type of the tool. Currently, only `function` is supported.
+              #
+              #   @return [Symbol, Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Type]
+              required :type,
+                       enum: -> { Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Type }
+
+              # @!method initialize(id:, function:, type:)
+              #   A call to a function tool created by the model.
+              #
+              #   @param id [String] The ID of the tool call.
+              #
+              #   @param function [Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Function] The function that the model called.
+              #
+              #   @param type [Symbol, Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Type] The type of the tool. Currently, only `function` is supported.
+
+              # @see Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall#function
+              class Function < Telnyx::Internal::Type::BaseModel
+                # @!attribute name
+                #   The name of the function to call.
+                #
+                #   @return [String]
+                required :name, String
+
+                # @!method initialize(name:)
+                #   The function that the model called.
+                #
+                #   @param name [String] The name of the function to call.
+              end
+
+              # The type of the tool. Currently, only `function` is supported.
+              #
+              # @see Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall#type
+              module Type
+                extend Telnyx::Internal::Type::Enum
+
+                FUNCTION = :function
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+            end
+          end
+
+          class Tool < Telnyx::Internal::Type::BaseModel
+            # @!attribute content
+            #   The contents of the tool message.
+            #
+            #   @return [String]
+            required :content, String
+
+            # @!attribute role
+            #   The role of the messages author, in this case `tool`.
+            #
+            #   @return [Symbol, :tool]
+            required :role, const: :tool
+
+            # @!attribute tool_call_id
+            #   Tool call that this message is responding to.
+            #
+            #   @return [String]
+            required :tool_call_id, String
+
+            # @!attribute metadata
+            #   Metadata to add to the message
+            #
+            #   @return [Hash{Symbol=>Object}, nil]
+            optional :metadata, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+
+            # @!method initialize(content:, tool_call_id:, metadata: nil, role: :tool)
+            #   @param content [String] The contents of the tool message.
+            #
+            #   @param tool_call_id [String] Tool call that this message is responding to.
+            #
+            #   @param metadata [Hash{Symbol=>Object}] Metadata to add to the message
+            #
+            #   @param role [Symbol, :tool] The role of the messages author, in this case `tool`.
+          end
+
+          class System < Telnyx::Internal::Type::BaseModel
+            # @!attribute content
+            #   The contents of the system message.
+            #
+            #   @return [String]
+            required :content, String
+
+            # @!attribute role
+            #   The role of the messages author, in this case `system`.
+            #
+            #   @return [Symbol, :system]
+            required :role, const: :system
+
+            # @!attribute metadata
+            #   Metadata to add to the message
+            #
+            #   @return [Hash{Symbol=>Object}, nil]
+            optional :metadata, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+
+            # @!method initialize(content:, metadata: nil, role: :system)
+            #   Developer-provided instructions that the model should follow, regardless of
+            #   messages sent by the user.
+            #
+            #   @param content [String] The contents of the system message.
+            #
+            #   @param metadata [Hash{Symbol=>Object}] Metadata to add to the message
+            #
+            #   @param role [Symbol, :system] The role of the messages author, in this case `system`.
+          end
+
+          class Developer < Telnyx::Internal::Type::BaseModel
+            # @!attribute content
+            #   The contents of the developer message.
+            #
+            #   @return [String]
+            required :content, String
+
+            # @!attribute role
+            #   The role of the messages author, in this case developer.
+            #
+            #   @return [Symbol, :developer]
+            required :role, const: :developer
+
+            # @!attribute metadata
+            #   Metadata to add to the message
+            #
+            #   @return [Hash{Symbol=>Object}, nil]
+            optional :metadata, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+
+            # @!method initialize(content:, metadata: nil, role: :developer)
+            #   Developer-provided instructions that the model should follow, regardless of
+            #   messages sent by the user.
+            #
+            #   @param content [String] The contents of the developer message.
+            #
+            #   @param metadata [Hash{Symbol=>Object}] Metadata to add to the message
+            #
+            #   @param role [Symbol, :developer] The role of the messages author, in this case developer.
+          end
+
+          # @!method self.variants
+          #   @return [Array(Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::User, Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant, Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Tool, Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::System, Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Developer)]
+        end
+
+        class Participant < Telnyx::Internal::Type::BaseModel
+          # @!attribute id
+          #   The call_control_id of the participant to add to the conversation.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute role
+          #   The role of the participant in the conversation.
+          #
+          #   @return [Symbol, Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant::Role]
+          required :role, enum: -> { Telnyx::Calls::ActionStartAIAssistantParams::Participant::Role }
+
+          # @!attribute name
+          #   Display name for the participant.
+          #
+          #   @return [String, nil]
+          optional :name, String
+
+          # @!attribute on_hangup
+          #   Determines what happens to the conversation when this participant hangs up.
+          #
+          #   @return [Symbol, Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant::OnHangup, nil]
+          optional :on_hangup, enum: -> { Telnyx::Calls::ActionStartAIAssistantParams::Participant::OnHangup }
+
+          # @!method initialize(id:, role:, name: nil, on_hangup: nil)
+          #   @param id [String] The call_control_id of the participant to add to the conversation.
+          #
+          #   @param role [Symbol, Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant::Role] The role of the participant in the conversation.
+          #
+          #   @param name [String] Display name for the participant.
+          #
+          #   @param on_hangup [Symbol, Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant::OnHangup] Determines what happens to the conversation when this participant hangs up.
+
+          # The role of the participant in the conversation.
+          #
+          # @see Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant#role
+          module Role
+            extend Telnyx::Internal::Type::Enum
+
+            USER = :user
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Determines what happens to the conversation when this participant hangs up.
+          #
+          # @see Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant#on_hangup
+          module OnHangup
+            extend Telnyx::Internal::Type::Enum
+
+            CONTINUE_CONVERSATION = :continue_conversation
+            END_CONVERSATION = :end_conversation
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # The settings associated with the voice selected

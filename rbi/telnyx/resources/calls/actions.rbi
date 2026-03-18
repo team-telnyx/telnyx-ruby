@@ -1151,6 +1151,21 @@ module Telnyx
             command_id: String,
             greeting: String,
             interruption_settings: Telnyx::Calls::InterruptionSettings::OrHash,
+            message_history:
+              T::Array[
+                T.any(
+                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::User::OrHash,
+                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::OrHash,
+                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Tool::OrHash,
+                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::System::OrHash,
+                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Developer::OrHash
+                )
+              ],
+            participants:
+              T::Array[
+                Telnyx::Calls::ActionStartAIAssistantParams::Participant::OrHash
+              ],
+            send_message_history_updates: T::Boolean,
             transcription: Telnyx::Calls::TranscriptionConfig::OrHash,
             voice: String,
             voice_settings:
@@ -1182,6 +1197,14 @@ module Telnyx
           greeting: nil,
           # Settings for handling user interruptions during assistant speech
           interruption_settings: nil,
+          # A list of messages to seed the conversation history before the assistant starts.
+          # Follows the same message format as the `ai_assistant_add_messages` command.
+          message_history: nil,
+          # A list of participants to add to the conversation when it starts.
+          participants: nil,
+          # When `true`, a webhook is sent each time the conversation message history is
+          # updated.
+          send_message_history_updates: nil,
           # The settings associated with speech to text for the voice assistant. This is
           # only relevant if the assistant uses a text-to-text language model. Any assistant
           # using a model with native audio support (e.g. `fixie-ai/ultravox-v0_4`) will
