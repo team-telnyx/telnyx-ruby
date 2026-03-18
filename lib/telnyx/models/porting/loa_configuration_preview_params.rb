@@ -3,16 +3,16 @@
 module Telnyx
   module Models
     module Porting
-      # @see Telnyx::Resources::Porting::LoaConfigurations#preview_0
-      class LoaConfigurationPreview0Params < Telnyx::Internal::Type::BaseModel
+      # @see Telnyx::Resources::Porting::LoaConfigurations#preview
+      class LoaConfigurationPreviewParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
         # @!attribute address
         #   The address of the company.
         #
-        #   @return [Telnyx::Models::Porting::LoaConfigurationPreview0Params::Address]
-        required :address, -> { Telnyx::Porting::LoaConfigurationPreview0Params::Address }
+        #   @return [Telnyx::Models::Porting::LoaConfigurationPreviewParams::Address]
+        required :address, -> { Telnyx::Porting::LoaConfigurationPreviewParams::Address }
 
         # @!attribute company_name
         #   The name of the company
@@ -23,14 +23,14 @@ module Telnyx
         # @!attribute contact
         #   The contact information of the company.
         #
-        #   @return [Telnyx::Models::Porting::LoaConfigurationPreview0Params::Contact]
-        required :contact, -> { Telnyx::Porting::LoaConfigurationPreview0Params::Contact }
+        #   @return [Telnyx::Models::Porting::LoaConfigurationPreviewParams::Contact]
+        required :contact, -> { Telnyx::Porting::LoaConfigurationPreviewParams::Contact }
 
         # @!attribute logo
         #   The logo of the LOA configuration
         #
-        #   @return [Telnyx::Models::Porting::LoaConfigurationPreview0Params::Logo]
-        required :logo, -> { Telnyx::Porting::LoaConfigurationPreview0Params::Logo }
+        #   @return [Telnyx::Models::Porting::LoaConfigurationPreviewParams::Logo]
+        required :logo, -> { Telnyx::Porting::LoaConfigurationPreviewParams::Logo }
 
         # @!attribute name
         #   The name of the LOA configuration
@@ -39,13 +39,13 @@ module Telnyx
         required :name, String
 
         # @!method initialize(address:, company_name:, contact:, logo:, name:, request_options: {})
-        #   @param address [Telnyx::Models::Porting::LoaConfigurationPreview0Params::Address] The address of the company.
+        #   @param address [Telnyx::Models::Porting::LoaConfigurationPreviewParams::Address] The address of the company.
         #
         #   @param company_name [String] The name of the company
         #
-        #   @param contact [Telnyx::Models::Porting::LoaConfigurationPreview0Params::Contact] The contact information of the company.
+        #   @param contact [Telnyx::Models::Porting::LoaConfigurationPreviewParams::Contact] The contact information of the company.
         #
-        #   @param logo [Telnyx::Models::Porting::LoaConfigurationPreview0Params::Logo] The logo of the LOA configuration
+        #   @param logo [Telnyx::Models::Porting::LoaConfigurationPreviewParams::Logo] The logo of the LOA configuration
         #
         #   @param name [String] The name of the LOA configuration
         #

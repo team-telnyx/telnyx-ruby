@@ -3,28 +3,26 @@
 module Telnyx
   module Models
     module Porting
-      class LoaConfigurationPreview0Params < Telnyx::Internal::Type::BaseModel
+      class LoaConfigurationPreviewParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Porting::LoaConfigurationPreview0Params,
+              Telnyx::Porting::LoaConfigurationPreviewParams,
               Telnyx::Internal::AnyHash
             )
           end
 
         # The address of the company.
-        sig do
-          returns(Telnyx::Porting::LoaConfigurationPreview0Params::Address)
-        end
+        sig { returns(Telnyx::Porting::LoaConfigurationPreviewParams::Address) }
         attr_reader :address
 
         sig do
           params(
             address:
-              Telnyx::Porting::LoaConfigurationPreview0Params::Address::OrHash
+              Telnyx::Porting::LoaConfigurationPreviewParams::Address::OrHash
           ).void
         end
         attr_writer :address
@@ -34,26 +32,24 @@ module Telnyx
         attr_accessor :company_name
 
         # The contact information of the company.
-        sig do
-          returns(Telnyx::Porting::LoaConfigurationPreview0Params::Contact)
-        end
+        sig { returns(Telnyx::Porting::LoaConfigurationPreviewParams::Contact) }
         attr_reader :contact
 
         sig do
           params(
             contact:
-              Telnyx::Porting::LoaConfigurationPreview0Params::Contact::OrHash
+              Telnyx::Porting::LoaConfigurationPreviewParams::Contact::OrHash
           ).void
         end
         attr_writer :contact
 
         # The logo of the LOA configuration
-        sig { returns(Telnyx::Porting::LoaConfigurationPreview0Params::Logo) }
+        sig { returns(Telnyx::Porting::LoaConfigurationPreviewParams::Logo) }
         attr_reader :logo
 
         sig do
           params(
-            logo: Telnyx::Porting::LoaConfigurationPreview0Params::Logo::OrHash
+            logo: Telnyx::Porting::LoaConfigurationPreviewParams::Logo::OrHash
           ).void
         end
         attr_writer :logo
@@ -65,11 +61,11 @@ module Telnyx
         sig do
           params(
             address:
-              Telnyx::Porting::LoaConfigurationPreview0Params::Address::OrHash,
+              Telnyx::Porting::LoaConfigurationPreviewParams::Address::OrHash,
             company_name: String,
             contact:
-              Telnyx::Porting::LoaConfigurationPreview0Params::Contact::OrHash,
-            logo: Telnyx::Porting::LoaConfigurationPreview0Params::Logo::OrHash,
+              Telnyx::Porting::LoaConfigurationPreviewParams::Contact::OrHash,
+            logo: Telnyx::Porting::LoaConfigurationPreviewParams::Logo::OrHash,
             name: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -92,10 +88,10 @@ module Telnyx
         sig do
           override.returns(
             {
-              address: Telnyx::Porting::LoaConfigurationPreview0Params::Address,
+              address: Telnyx::Porting::LoaConfigurationPreviewParams::Address,
               company_name: String,
-              contact: Telnyx::Porting::LoaConfigurationPreview0Params::Contact,
-              logo: Telnyx::Porting::LoaConfigurationPreview0Params::Logo,
+              contact: Telnyx::Porting::LoaConfigurationPreviewParams::Contact,
+              logo: Telnyx::Porting::LoaConfigurationPreviewParams::Logo,
               name: String,
               request_options: Telnyx::RequestOptions
             }
@@ -108,7 +104,7 @@ module Telnyx
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::Porting::LoaConfigurationPreview0Params::Address,
+                Telnyx::Porting::LoaConfigurationPreviewParams::Address,
                 Telnyx::Internal::AnyHash
               )
             end
@@ -187,7 +183,7 @@ module Telnyx
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::Porting::LoaConfigurationPreview0Params::Contact,
+                Telnyx::Porting::LoaConfigurationPreviewParams::Contact,
                 Telnyx::Internal::AnyHash
               )
             end
@@ -223,7 +219,7 @@ module Telnyx
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::Porting::LoaConfigurationPreview0Params::Logo,
+                Telnyx::Porting::LoaConfigurationPreviewParams::Logo,
                 Telnyx::Internal::AnyHash
               )
             end

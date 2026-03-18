@@ -134,15 +134,15 @@ module Telnyx
         # Preview the LOA template that would be generated without need to create LOA
         # configuration.
         #
-        # @overload preview_0(address:, company_name:, contact:, logo:, name:, request_options: {})
+        # @overload preview(address:, company_name:, contact:, logo:, name:, request_options: {})
         #
-        # @param address [Telnyx::Models::Porting::LoaConfigurationPreview0Params::Address] The address of the company.
+        # @param address [Telnyx::Models::Porting::LoaConfigurationPreviewParams::Address] The address of the company.
         #
         # @param company_name [String] The name of the company
         #
-        # @param contact [Telnyx::Models::Porting::LoaConfigurationPreview0Params::Contact] The contact information of the company.
+        # @param contact [Telnyx::Models::Porting::LoaConfigurationPreviewParams::Contact] The contact information of the company.
         #
-        # @param logo [Telnyx::Models::Porting::LoaConfigurationPreview0Params::Logo] The logo of the LOA configuration
+        # @param logo [Telnyx::Models::Porting::LoaConfigurationPreviewParams::Logo] The logo of the LOA configuration
         #
         # @param name [String] The name of the LOA configuration
         #
@@ -150,12 +150,12 @@ module Telnyx
         #
         # @return [StringIO]
         #
-        # @see Telnyx::Models::Porting::LoaConfigurationPreview0Params
-        def preview_0(params)
-          parsed, options = Telnyx::Porting::LoaConfigurationPreview0Params.dump_request(params)
+        # @see Telnyx::Models::Porting::LoaConfigurationPreviewParams
+        def preview(params)
+          parsed, options = Telnyx::Porting::LoaConfigurationPreviewParams.dump_request(params)
           @client.request(
             method: :post,
-            path: "porting/loa_configuration/preview",
+            path: "porting/loa_configurations/preview",
             headers: {"accept" => "application/pdf"},
             body: parsed,
             model: StringIO,
