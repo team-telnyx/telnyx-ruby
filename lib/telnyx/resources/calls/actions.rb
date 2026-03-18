@@ -880,7 +880,7 @@ module Telnyx
         # - `call.conversation.ended`
         # - `call.conversation_insights.generated`
         #
-        # @overload start_ai_assistant(call_control_id, assistant: nil, client_state: nil, command_id: nil, greeting: nil, interruption_settings: nil, transcription: nil, voice: nil, voice_settings: nil, request_options: {})
+        # @overload start_ai_assistant(call_control_id, assistant: nil, client_state: nil, command_id: nil, greeting: nil, interruption_settings: nil, message_history: nil, participants: nil, send_message_history_updates: nil, transcription: nil, voice: nil, voice_settings: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -893,6 +893,12 @@ module Telnyx
         # @param greeting [String] Text that will be played when the assistant starts, if none then nothing will be
         #
         # @param interruption_settings [Telnyx::Models::Calls::InterruptionSettings] Settings for handling user interruptions during assistant speech
+        #
+        # @param message_history [Array<Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::User, Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant, Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Tool, Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::System, Telnyx::Models::Calls::ActionStartAIAssistantParams::MessageHistory::Developer>] A list of messages to seed the conversation history before the assistant starts.
+        #
+        # @param participants [Array<Telnyx::Models::Calls::ActionStartAIAssistantParams::Participant>] A list of participants to add to the conversation when it starts.
+        #
+        # @param send_message_history_updates [Boolean] When `true`, a webhook is sent each time the conversation message history is upd
         #
         # @param transcription [Telnyx::Models::Calls::TranscriptionConfig] The settings associated with speech to text for the voice assistant. This is onl
         #
