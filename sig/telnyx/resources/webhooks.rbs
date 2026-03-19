@@ -10,6 +10,7 @@ module Telnyx
       | Telnyx::CallBridgedWebhookEvent
       | Telnyx::CallConversationEndedWebhookEvent
       | Telnyx::CallConversationInsightsGeneratedWebhookEvent
+      | Telnyx::CallCostWebhookEvent
       | Telnyx::CallDtmfReceivedWebhookEvent
       | Telnyx::CallEnqueuedWebhookEvent
       | Telnyx::CallForkStartedWebhookEvent
@@ -75,6 +76,7 @@ module Telnyx
       | Telnyx::CallBridgedWebhookEvent
       | Telnyx::CallConversationEndedWebhookEvent
       | Telnyx::CallConversationInsightsGeneratedWebhookEvent
+      | Telnyx::CallCostWebhookEvent
       | Telnyx::CallDtmfReceivedWebhookEvent
       | Telnyx::CallEnqueuedWebhookEvent
       | Telnyx::CallForkStartedWebhookEvent

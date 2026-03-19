@@ -183,6 +183,8 @@ module Telnyx
   CallConversationInsightsGeneratedWebhookEvent =
     Telnyx::Models::CallConversationInsightsGeneratedWebhookEvent
 
+  CallCostWebhookEvent = Telnyx::Models::CallCostWebhookEvent
+
   CallDialParams = Telnyx::Models::CallDialParams
 
   CallDtmfReceived = Telnyx::Models::CallDtmfReceived
@@ -1795,11 +1797,10 @@ module Telnyx
   VirtualCrossConnectUpdateParams =
     Telnyx::Models::VirtualCrossConnectUpdateParams
 
-  VoiceCloneCreateFromDesignParams =
-    Telnyx::Models::VoiceCloneCreateFromDesignParams
-
   VoiceCloneCreateFromUploadParams =
     Telnyx::Models::VoiceCloneCreateFromUploadParams
+
+  VoiceCloneCreateParams = Telnyx::Models::VoiceCloneCreateParams
 
   VoiceCloneDeleteParams = Telnyx::Models::VoiceCloneDeleteParams
 

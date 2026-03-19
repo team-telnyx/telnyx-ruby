@@ -3,6 +3,28 @@
 require_relative "../test_helper"
 
 class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
+  def test_create_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.voice_clones.create(
+        gender: :male,
+        language: "en",
+        name: "clone-narrator",
+        voice_design_id: "550e8400-e29b-41d4-a716-446655440000"
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::VoiceCloneCreateResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::VoiceCloneCreateResponse::Data | nil
+      }
+    end
+  end
+
   def test_update_required_params
     skip("Mock server tests are disabled")
 
@@ -58,28 +80,6 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => nil
-    end
-  end
-
-  def test_create_from_design_required_params
-    skip("Mock server tests are disabled")
-
-    response =
-      @telnyx.voice_clones.create_from_design(
-        gender: :male,
-        language: "en",
-        name: "clone-narrator",
-        voice_design_id: "550e8400-e29b-41d4-a716-446655440000"
-      )
-
-    assert_pattern do
-      response => Telnyx::Models::VoiceCloneCreateFromDesignResponse
-    end
-
-    assert_pattern do
-      response => {
-        data: Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data | nil
-      }
     end
   end
 

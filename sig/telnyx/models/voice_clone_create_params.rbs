@@ -1,19 +1,19 @@
 module Telnyx
   module Models
-    type voice_clone_create_from_design_params =
+    type voice_clone_create_params =
       {
-        gender: Telnyx::Models::VoiceCloneCreateFromDesignParams::gender,
+        gender: Telnyx::Models::VoiceCloneCreateParams::gender,
         language: String,
         name: String,
         voice_design_id: String
       }
       & Telnyx::Internal::Type::request_parameters
 
-    class VoiceCloneCreateFromDesignParams < Telnyx::Internal::Type::BaseModel
+    class VoiceCloneCreateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      attr_accessor gender: Telnyx::Models::VoiceCloneCreateFromDesignParams::gender
+      attr_accessor gender: Telnyx::Models::VoiceCloneCreateParams::gender
 
       attr_accessor language: String
 
@@ -22,7 +22,7 @@ module Telnyx
       attr_accessor voice_design_id: String
 
       def initialize: (
-        gender: Telnyx::Models::VoiceCloneCreateFromDesignParams::gender,
+        gender: Telnyx::Models::VoiceCloneCreateParams::gender,
         language: String,
         name: String,
         voice_design_id: String,
@@ -30,7 +30,7 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
-        gender: Telnyx::Models::VoiceCloneCreateFromDesignParams::gender,
+        gender: Telnyx::Models::VoiceCloneCreateParams::gender,
         language: String,
         name: String,
         voice_design_id: String,
@@ -46,7 +46,7 @@ module Telnyx
         FEMALE: :female
         NEUTRAL: :neutral
 
-        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromDesignParams::gender]
+        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateParams::gender]
       end
     end
   end

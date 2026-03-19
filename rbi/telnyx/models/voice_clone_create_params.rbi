@@ -2,22 +2,17 @@
 
 module Telnyx
   module Models
-    class VoiceCloneCreateFromDesignParams < Telnyx::Internal::Type::BaseModel
+    class VoiceCloneCreateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
       OrHash =
         T.type_alias do
-          T.any(
-            Telnyx::VoiceCloneCreateFromDesignParams,
-            Telnyx::Internal::AnyHash
-          )
+          T.any(Telnyx::VoiceCloneCreateParams, Telnyx::Internal::AnyHash)
         end
 
       # Gender of the voice clone.
-      sig do
-        returns(Telnyx::VoiceCloneCreateFromDesignParams::Gender::OrSymbol)
-      end
+      sig { returns(Telnyx::VoiceCloneCreateParams::Gender::OrSymbol) }
       attr_accessor :gender
 
       # ISO 639-1 language code for the clone (e.g. `en`, `fr`, `de`).
@@ -34,7 +29,7 @@ module Telnyx
 
       sig do
         params(
-          gender: Telnyx::VoiceCloneCreateFromDesignParams::Gender::OrSymbol,
+          gender: Telnyx::VoiceCloneCreateParams::Gender::OrSymbol,
           language: String,
           name: String,
           voice_design_id: String,
@@ -57,7 +52,7 @@ module Telnyx
       sig do
         override.returns(
           {
-            gender: Telnyx::VoiceCloneCreateFromDesignParams::Gender::OrSymbol,
+            gender: Telnyx::VoiceCloneCreateParams::Gender::OrSymbol,
             language: String,
             name: String,
             voice_design_id: String,
@@ -73,32 +68,19 @@ module Telnyx
         extend Telnyx::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Telnyx::VoiceCloneCreateFromDesignParams::Gender)
-          end
+          T.type_alias { T.all(Symbol, Telnyx::VoiceCloneCreateParams::Gender) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         MALE =
-          T.let(
-            :male,
-            Telnyx::VoiceCloneCreateFromDesignParams::Gender::TaggedSymbol
-          )
+          T.let(:male, Telnyx::VoiceCloneCreateParams::Gender::TaggedSymbol)
         FEMALE =
-          T.let(
-            :female,
-            Telnyx::VoiceCloneCreateFromDesignParams::Gender::TaggedSymbol
-          )
+          T.let(:female, Telnyx::VoiceCloneCreateParams::Gender::TaggedSymbol)
         NEUTRAL =
-          T.let(
-            :neutral,
-            Telnyx::VoiceCloneCreateFromDesignParams::Gender::TaggedSymbol
-          )
+          T.let(:neutral, Telnyx::VoiceCloneCreateParams::Gender::TaggedSymbol)
 
         sig do
           override.returns(
-            T::Array[
-              Telnyx::VoiceCloneCreateFromDesignParams::Gender::TaggedSymbol
-            ]
+            T::Array[Telnyx::VoiceCloneCreateParams::Gender::TaggedSymbol]
           )
         end
         def self.values
