@@ -5,30 +5,6 @@ module Telnyx
     # Capture and manage voice identities as clones for use in text-to-speech
     # synthesis.
     class VoiceClones
-      # Creates a new voice clone by capturing the voice identity of an existing voice
-      # design. The clone can then be used for text-to-speech synthesis.
-      sig do
-        params(
-          gender: Telnyx::VoiceCloneCreateParams::Gender::OrSymbol,
-          language: String,
-          name: String,
-          voice_design_id: String,
-          request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::VoiceCloneCreateResponse)
-      end
-      def create(
-        # Gender of the voice clone.
-        gender:,
-        # ISO 639-1 language code for the clone (e.g. `en`, `fr`, `de`).
-        language:,
-        # Name for the voice clone.
-        name:,
-        # UUID of the source voice design to clone.
-        voice_design_id:,
-        request_options: {}
-      )
-      end
-
       # Updates the name, language, or gender of a voice clone.
       sig do
         params(
@@ -61,7 +37,9 @@ module Telnyx
           sort: Telnyx::VoiceCloneListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[Telnyx::VoiceCloneData]
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Models::VoiceCloneListResponse
+          ]
         )
       end
       def list(
@@ -84,6 +62,30 @@ module Telnyx
       def delete(
         # The voice clone UUID.
         id,
+        request_options: {}
+      )
+      end
+
+      # Creates a new voice clone by capturing the voice identity of an existing voice
+      # design. The clone can then be used for text-to-speech synthesis.
+      sig do
+        params(
+          gender: Telnyx::VoiceCloneCreateFromDesignParams::Gender::OrSymbol,
+          language: String,
+          name: String,
+          voice_design_id: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::Models::VoiceCloneCreateFromDesignResponse)
+      end
+      def create_from_design(
+        # Gender of the voice clone.
+        gender:,
+        # ISO 639-1 language code for the clone (e.g. `en`, `fr`, `de`).
+        language:,
+        # Name for the voice clone.
+        name:,
+        # UUID of the source voice design to clone.
+        voice_design_id:,
         request_options: {}
       )
       end

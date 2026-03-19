@@ -1397,8 +1397,6 @@ module Telnyx
 
   class SoundModifications = Telnyx::Models::SoundModifications
 
-  class SpeechToTextTranscribeParams = Telnyx::Models::SpeechToTextTranscribeParams
-
   module Storage = Telnyx::Models::Storage
 
   class StorageListMigrationSourceCoverageParams = Telnyx::Models::StorageListMigrationSourceCoverageParams
@@ -1569,11 +1567,9 @@ module Telnyx
 
   class VirtualCrossConnectUpdateParams = Telnyx::Models::VirtualCrossConnectUpdateParams
 
+  class VoiceCloneCreateFromDesignParams = Telnyx::Models::VoiceCloneCreateFromDesignParams
+
   class VoiceCloneCreateFromUploadParams = Telnyx::Models::VoiceCloneCreateFromUploadParams
-
-  class VoiceCloneCreateParams = Telnyx::Models::VoiceCloneCreateParams
-
-  class VoiceCloneData = Telnyx::Models::VoiceCloneData
 
   class VoiceCloneDeleteParams = Telnyx::Models::VoiceCloneDeleteParams
 
@@ -1584,8 +1580,6 @@ module Telnyx
   class VoiceCloneUpdateParams = Telnyx::Models::VoiceCloneUpdateParams
 
   class VoiceDesignCreateParams = Telnyx::Models::VoiceDesignCreateParams
-
-  class VoiceDesignData = Telnyx::Models::VoiceDesignData
 
   class VoiceDesignDeleteParams = Telnyx::Models::VoiceDesignDeleteParams
 

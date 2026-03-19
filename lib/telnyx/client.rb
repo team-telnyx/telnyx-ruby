@@ -627,6 +627,9 @@ module Telnyx
     # @return [Telnyx::Resources::WhatsappMessageTemplates]
     attr_reader :whatsapp_message_templates
 
+    # @return [Telnyx::Resources::X402]
+    attr_reader :x402
+
     # Capture and manage voice identities as clones for use in text-to-speech
     # synthesis.
     # @return [Telnyx::Resources::VoiceClones]
@@ -635,13 +638,6 @@ module Telnyx
     # Create and manage AI-generated voice designs using natural language prompts.
     # @return [Telnyx::Resources::VoiceDesigns]
     attr_reader :voice_designs
-
-    # @return [Telnyx::Resources::X402]
-    attr_reader :x402
-
-    # Speech to text command operations
-    # @return [Telnyx::Resources::SpeechToText]
-    attr_reader :speech_to_text
 
     # @api private
     #
@@ -893,10 +889,9 @@ module Telnyx
       @session_analysis = Telnyx::Resources::SessionAnalysis.new(client: self)
       @whatsapp = Telnyx::Resources::Whatsapp.new(client: self)
       @whatsapp_message_templates = Telnyx::Resources::WhatsappMessageTemplates.new(client: self)
+      @x402 = Telnyx::Resources::X402.new(client: self)
       @voice_clones = Telnyx::Resources::VoiceClones.new(client: self)
       @voice_designs = Telnyx::Resources::VoiceDesigns.new(client: self)
-      @x402 = Telnyx::Resources::X402.new(client: self)
-      @speech_to_text = Telnyx::Resources::SpeechToText.new(client: self)
     end
   end
 end

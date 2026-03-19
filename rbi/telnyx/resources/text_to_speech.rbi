@@ -12,19 +12,22 @@ module Telnyx
       # header.
       #
       # The `voice` parameter provides a convenient shorthand to specify provider,
-      # model, and voice in a single string (e.g. `telnyx.NaturalHD.Alloy`).
-      # Alternatively, specify `provider` explicitly along with provider-specific
-      # parameters.
+      # model, and voice in a single string (e.g. `telnyx.NaturalHD.Alloy` or
+      # `Telnyx.Ultra.<voice_id>`). Alternatively, specify `provider` explicitly along
+      # with provider-specific parameters.
       #
       # Supported providers: `aws`, `telnyx`, `azure`, `elevenlabs`, `minimax`, `rime`,
-      # `resemble`, `inworld`.
+      # `resemble`.
+      #
+      # The Telnyx `Ultra` model supports 44 languages with emotion control, speed
+      # adjustment, and volume control. Use the `telnyx` provider-specific parameters to
+      # configure these features.
       sig do
         params(
           aws: ::Telnyx::TextToSpeechGenerateParams::Aws::OrHash,
           azure: ::Telnyx::TextToSpeechGenerateParams::Azure::OrHash,
           disable_cache: T::Boolean,
           elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs::OrHash,
-          inworld: T::Hash[Symbol, T.anything],
           language: String,
           minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax::OrHash,
           output_type:
@@ -49,8 +52,6 @@ module Telnyx
         disable_cache: nil,
         # ElevenLabs provider-specific parameters.
         elevenlabs: nil,
-        # Inworld provider-specific parameters.
-        inworld: nil,
         # Language code (e.g. `en-US`). Usage varies by provider.
         language: nil,
         # Minimax provider-specific parameters.
@@ -64,7 +65,9 @@ module Telnyx
         resemble: nil,
         # Rime provider-specific parameters.
         rime: nil,
-        # Telnyx provider-specific parameters.
+        # Telnyx provider-specific parameters. Use `voice_speed` and `temperature` for
+        # `Natural` and `NaturalHD` models. For the `Ultra` model, use `voice_speed`,
+        # `volume`, and `emotion`.
         telnyx: nil,
         # The text to convert to speech.
         text: nil,
@@ -72,9 +75,10 @@ module Telnyx
         text_type: nil,
         # Voice identifier in the format `provider.model_id.voice_id` or
         # `provider.voice_id`. Examples: `telnyx.NaturalHD.Alloy`,
-        # `azure.en-US-AvaMultilingualNeural`, `aws.Polly.Generative.Lucia`. When
-        # provided, `provider`, `model_id`, and `voice_id` are extracted automatically and
-        # take precedence over individual parameters.
+        # `Telnyx.Ultra.<voice_id>`, `azure.en-US-AvaMultilingualNeural`,
+        # `aws.Polly.Generative.Lucia`. When provided, `provider`, `model_id`, and
+        # `voice_id` are extracted automatically and take precedence over individual
+        # parameters.
         voice: nil,
         # Provider-specific voice settings. Contents vary by provider — see
         # provider-specific parameter objects below.
@@ -100,65 +104,6 @@ module Telnyx
         api_key: nil,
         # Filter voices by provider. If omitted, voices from all providers are returned.
         provider: nil,
-        request_options: {}
-      )
-      end
-
-      # Open a WebSocket connection to stream text and receive synthesized audio in real
-      # time. Authentication is provided via the standard
-      # `Authorization: Bearer <API_KEY>` header. Send JSON frames with text to
-      # synthesize; receive JSON frames containing base64-encoded audio chunks.
-      #
-      # Supported providers: `aws`, `telnyx`, `azure`, `murfai`, `minimax`, `rime`,
-      # `resemble`, `elevenlabs`, `inworld`.
-      #
-      # **Connection flow:**
-      #
-      # 1. Open WebSocket with query parameters specifying provider, voice, and model.
-      # 2. Send an initial handshake message `{"text": " "}` (single space) with
-      #    optional `voice_settings` to initialize the session.
-      # 3. Send text messages as `{"text": "Hello world"}`.
-      # 4. Receive audio chunks as JSON frames with base64-encoded audio.
-      # 5. A final frame with `isFinal: true` indicates the end of audio for the current
-      #    text.
-      #
-      # To interrupt and restart synthesis mid-stream, send `{"force": true}` — the
-      # current worker is stopped and a new one is started.
-      sig do
-        params(
-          audio_format: Telnyx::TextToSpeechStreamParams::AudioFormat::OrSymbol,
-          disable_cache: T::Boolean,
-          model_id: String,
-          provider: Telnyx::TextToSpeechStreamParams::Provider::OrSymbol,
-          socket_id: String,
-          voice: String,
-          voice_id: String,
-          request_options: Telnyx::RequestOptions::OrHash
-        ).void
-      end
-      def stream(
-        # Audio output format override. Supported for Telnyx `Natural`/`NaturalHD` models
-        # only. Accepted values: `pcm`, `wav`.
-        audio_format: nil,
-        # When `true`, bypass the audio cache and generate fresh audio.
-        disable_cache: nil,
-        # Model identifier for the chosen provider. Examples: `Natural`, `NaturalHD`
-        # (Telnyx); `Polly.Generative` (AWS).
-        model_id: nil,
-        # TTS provider. Defaults to `telnyx` if not specified. Ignored when `voice` is
-        # provided.
-        provider: nil,
-        # Client-provided socket identifier for tracking. If not provided, one is
-        # generated server-side.
-        socket_id: nil,
-        # Voice identifier in the format `provider.model_id.voice_id` or
-        # `provider.voice_id` (e.g. `telnyx.NaturalHD.Telnyx_Alloy` or
-        # `azure.en-US-AvaMultilingualNeural`). When provided, the `provider`, `model_id`,
-        # and `voice_id` are extracted automatically. Takes precedence over individual
-        # `provider`/`model_id`/`voice_id` parameters.
-        voice: nil,
-        # Voice identifier for the chosen provider.
-        voice_id: nil,
         request_options: {}
       )
       end

@@ -1,32 +1,32 @@
 module Telnyx
   module Models
-    type voice_clone_create_from_upload_response =
-      { data: Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data }
+    type voice_clone_create_from_design_response =
+      { data: Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data }
 
-    class VoiceCloneCreateFromUploadResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data?
+    class VoiceCloneCreateFromDesignResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data?
 
       def data=: (
-        Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data
-      ) -> Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data
+        Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data
+      ) -> Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data
 
       def initialize: (
-        ?data: Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data
+        ?data: Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data
       ) -> void
 
       def to_hash: -> {
-        data: Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data
+        data: Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data
       }
 
       type data =
         {
           id: String,
           created_at: Time,
-          gender: Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data::gender?,
+          gender: Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data::gender?,
           label: String?,
           language: String?,
           name: String,
-          record_type: Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data::record_type,
+          record_type: Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data::record_type,
           source_voice_design_id: String?,
           source_voice_design_version: Integer?,
           updated_at: Time
@@ -41,7 +41,7 @@ module Telnyx
 
         def created_at=: (Time) -> Time
 
-        attr_accessor gender: Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data::gender?
+        attr_accessor gender: Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data::gender?
 
         attr_accessor label: String?
 
@@ -51,11 +51,11 @@ module Telnyx
 
         def name=: (String) -> String
 
-        attr_reader record_type: Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data::record_type?
+        attr_reader record_type: Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data::record_type?
 
         def record_type=: (
-          Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data::record_type
-        ) -> Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data::record_type
+          Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data::record_type
+        ) -> Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data::record_type
 
         attr_accessor source_voice_design_id: String?
 
@@ -68,11 +68,11 @@ module Telnyx
         def initialize: (
           ?id: String,
           ?created_at: Time,
-          ?gender: Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data::gender?,
+          ?gender: Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data::gender?,
           ?label: String?,
           ?language: String?,
           ?name: String,
-          ?record_type: Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data::record_type,
+          ?record_type: Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data::record_type,
           ?source_voice_design_id: String?,
           ?source_voice_design_version: Integer?,
           ?updated_at: Time
@@ -81,11 +81,11 @@ module Telnyx
         def to_hash: -> {
           id: String,
           created_at: Time,
-          gender: Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data::gender?,
+          gender: Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data::gender?,
           label: String?,
           language: String?,
           name: String,
-          record_type: Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data::record_type,
+          record_type: Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data::record_type,
           source_voice_design_id: String?,
           source_voice_design_version: Integer?,
           updated_at: Time
@@ -100,7 +100,7 @@ module Telnyx
           FEMALE: :female
           NEUTRAL: :neutral
 
-          def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data::gender]
+          def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data::gender]
         end
 
         type record_type = :voice_clone
@@ -110,7 +110,7 @@ module Telnyx
 
           VOICE_CLONE: :voice_clone
 
-          def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data::record_type]
+          def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data::record_type]
         end
       end
     end

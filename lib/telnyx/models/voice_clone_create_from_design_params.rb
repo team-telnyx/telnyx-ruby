@@ -2,16 +2,16 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::VoiceClones#create
-    class VoiceCloneCreateParams < Telnyx::Internal::Type::BaseModel
+    # @see Telnyx::Resources::VoiceClones#create_from_design
+    class VoiceCloneCreateFromDesignParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
       # @!attribute gender
       #   Gender of the voice clone.
       #
-      #   @return [Symbol, Telnyx::Models::VoiceCloneCreateParams::Gender]
-      required :gender, enum: -> { Telnyx::VoiceCloneCreateParams::Gender }
+      #   @return [Symbol, Telnyx::Models::VoiceCloneCreateFromDesignParams::Gender]
+      required :gender, enum: -> { Telnyx::VoiceCloneCreateFromDesignParams::Gender }
 
       # @!attribute language
       #   ISO 639-1 language code for the clone (e.g. `en`, `fr`, `de`).
@@ -32,7 +32,7 @@ module Telnyx
       required :voice_design_id, String
 
       # @!method initialize(gender:, language:, name:, voice_design_id:, request_options: {})
-      #   @param gender [Symbol, Telnyx::Models::VoiceCloneCreateParams::Gender] Gender of the voice clone.
+      #   @param gender [Symbol, Telnyx::Models::VoiceCloneCreateFromDesignParams::Gender] Gender of the voice clone.
       #
       #   @param language [String] ISO 639-1 language code for the clone (e.g. `en`, `fr`, `de`).
       #

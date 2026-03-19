@@ -622,6 +622,9 @@ module Telnyx
     sig { returns(Telnyx::Resources::WhatsappMessageTemplates) }
     attr_reader :whatsapp_message_templates
 
+    sig { returns(Telnyx::Resources::X402) }
+    attr_reader :x402
+
     # Capture and manage voice identities as clones for use in text-to-speech
     # synthesis.
     sig { returns(Telnyx::Resources::VoiceClones) }
@@ -630,13 +633,6 @@ module Telnyx
     # Create and manage AI-generated voice designs using natural language prompts.
     sig { returns(Telnyx::Resources::VoiceDesigns) }
     attr_reader :voice_designs
-
-    sig { returns(Telnyx::Resources::X402) }
-    attr_reader :x402
-
-    # Speech to text command operations
-    sig { returns(Telnyx::Resources::SpeechToText) }
-    attr_reader :speech_to_text
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }

@@ -52,13 +52,6 @@ module Telnyx
       end
       attr_writer :elevenlabs
 
-      # Inworld provider-specific parameters.
-      sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-      attr_reader :inworld
-
-      sig { params(inworld: T::Hash[Symbol, T.anything]).void }
-      attr_writer :inworld
-
       # Language code (e.g. `en-US`). Usage varies by provider.
       sig { returns(T.nilable(String)) }
       attr_reader :language
@@ -129,7 +122,9 @@ module Telnyx
       end
       attr_writer :rime
 
-      # Telnyx provider-specific parameters.
+      # Telnyx provider-specific parameters. Use `voice_speed` and `temperature` for
+      # `Natural` and `NaturalHD` models. For the `Ultra` model, use `voice_speed`,
+      # `volume`, and `emotion`.
       sig { returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Telnyx)) }
       attr_reader :telnyx
 
@@ -164,9 +159,10 @@ module Telnyx
 
       # Voice identifier in the format `provider.model_id.voice_id` or
       # `provider.voice_id`. Examples: `telnyx.NaturalHD.Alloy`,
-      # `azure.en-US-AvaMultilingualNeural`, `aws.Polly.Generative.Lucia`. When
-      # provided, `provider`, `model_id`, and `voice_id` are extracted automatically and
-      # take precedence over individual parameters.
+      # `Telnyx.Ultra.<voice_id>`, `azure.en-US-AvaMultilingualNeural`,
+      # `aws.Polly.Generative.Lucia`. When provided, `provider`, `model_id`, and
+      # `voice_id` are extracted automatically and take precedence over individual
+      # parameters.
       sig { returns(T.nilable(String)) }
       attr_reader :voice
 
@@ -187,7 +183,6 @@ module Telnyx
           azure: ::Telnyx::TextToSpeechGenerateParams::Azure::OrHash,
           disable_cache: T::Boolean,
           elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs::OrHash,
-          inworld: T::Hash[Symbol, T.anything],
           language: String,
           minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax::OrHash,
           output_type:
@@ -212,8 +207,6 @@ module Telnyx
         disable_cache: nil,
         # ElevenLabs provider-specific parameters.
         elevenlabs: nil,
-        # Inworld provider-specific parameters.
-        inworld: nil,
         # Language code (e.g. `en-US`). Usage varies by provider.
         language: nil,
         # Minimax provider-specific parameters.
@@ -227,7 +220,9 @@ module Telnyx
         resemble: nil,
         # Rime provider-specific parameters.
         rime: nil,
-        # Telnyx provider-specific parameters.
+        # Telnyx provider-specific parameters. Use `voice_speed` and `temperature` for
+        # `Natural` and `NaturalHD` models. For the `Ultra` model, use `voice_speed`,
+        # `volume`, and `emotion`.
         telnyx: nil,
         # The text to convert to speech.
         text: nil,
@@ -235,9 +230,10 @@ module Telnyx
         text_type: nil,
         # Voice identifier in the format `provider.model_id.voice_id` or
         # `provider.voice_id`. Examples: `telnyx.NaturalHD.Alloy`,
-        # `azure.en-US-AvaMultilingualNeural`, `aws.Polly.Generative.Lucia`. When
-        # provided, `provider`, `model_id`, and `voice_id` are extracted automatically and
-        # take precedence over individual parameters.
+        # `Telnyx.Ultra.<voice_id>`, `azure.en-US-AvaMultilingualNeural`,
+        # `aws.Polly.Generative.Lucia`. When provided, `provider`, `model_id`, and
+        # `voice_id` are extracted automatically and take precedence over individual
+        # parameters.
         voice: nil,
         # Provider-specific voice settings. Contents vary by provider — see
         # provider-specific parameter objects below.
@@ -253,7 +249,6 @@ module Telnyx
             azure: ::Telnyx::TextToSpeechGenerateParams::Azure,
             disable_cache: T::Boolean,
             elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs,
-            inworld: T::Hash[Symbol, T.anything],
             language: String,
             minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax,
             output_type:
@@ -787,11 +782,6 @@ module Telnyx
             :resemble,
             ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
           )
-        INWORLD =
-          T.let(
-            :inworld,
-            ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
-          )
 
         sig do
           override.returns(
@@ -946,6 +936,25 @@ module Telnyx
             )
           end
 
+        # Emotion control for the Ultra model. Adjusts the emotional tone of the
+        # synthesized speech.
+        sig do
+          returns(
+            T.nilable(
+              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::OrSymbol
+            )
+          )
+        end
+        attr_reader :emotion
+
+        sig do
+          params(
+            emotion:
+              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::OrSymbol
+          ).void
+        end
+        attr_writer :emotion
+
         # Audio response format.
         sig { returns(T.nilable(String)) }
         attr_reader :response_format
@@ -960,52 +969,133 @@ module Telnyx
         sig { params(sampling_rate: Integer).void }
         attr_writer :sampling_rate
 
-        # Sampling temperature.
+        # Sampling temperature. Applies to `Natural` and `NaturalHD` models only.
         sig { returns(T.nilable(Float)) }
         attr_reader :temperature
 
         sig { params(temperature: Float).void }
         attr_writer :temperature
 
-        # Voice speed multiplier.
+        # Voice speed multiplier. Applies to all models. Range: 0.5 to 2.0.
         sig { returns(T.nilable(Float)) }
         attr_reader :voice_speed
 
         sig { params(voice_speed: Float).void }
         attr_writer :voice_speed
 
-        # Telnyx provider-specific parameters.
+        # Volume level for the Ultra model. Range: 0.0 to 2.0.
+        sig { returns(T.nilable(Float)) }
+        attr_reader :volume
+
+        sig { params(volume: Float).void }
+        attr_writer :volume
+
+        # Telnyx provider-specific parameters. Use `voice_speed` and `temperature` for
+        # `Natural` and `NaturalHD` models. For the `Ultra` model, use `voice_speed`,
+        # `volume`, and `emotion`.
         sig do
           params(
+            emotion:
+              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::OrSymbol,
             response_format: String,
             sampling_rate: Integer,
             temperature: Float,
-            voice_speed: Float
+            voice_speed: Float,
+            volume: Float
           ).returns(T.attached_class)
         end
         def self.new(
+          # Emotion control for the Ultra model. Adjusts the emotional tone of the
+          # synthesized speech.
+          emotion: nil,
           # Audio response format.
           response_format: nil,
           # Audio sampling rate in Hz.
           sampling_rate: nil,
-          # Sampling temperature.
+          # Sampling temperature. Applies to `Natural` and `NaturalHD` models only.
           temperature: nil,
-          # Voice speed multiplier.
-          voice_speed: nil
+          # Voice speed multiplier. Applies to all models. Range: 0.5 to 2.0.
+          voice_speed: nil,
+          # Volume level for the Ultra model. Range: 0.0 to 2.0.
+          volume: nil
         )
         end
 
         sig do
           override.returns(
             {
+              emotion:
+                ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::OrSymbol,
               response_format: String,
               sampling_rate: Integer,
               temperature: Float,
-              voice_speed: Float
+              voice_speed: Float,
+              volume: Float
             }
           )
         end
         def to_hash
+        end
+
+        # Emotion control for the Ultra model. Adjusts the emotional tone of the
+        # synthesized speech.
+        module Emotion
+          extend ::Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          NEUTRAL =
+            T.let(
+              :neutral,
+              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::TaggedSymbol
+            )
+          HAPPY =
+            T.let(
+              :happy,
+              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::TaggedSymbol
+            )
+          SAD =
+            T.let(
+              :sad,
+              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::TaggedSymbol
+            )
+          ANGRY =
+            T.let(
+              :angry,
+              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::TaggedSymbol
+            )
+          FEARFUL =
+            T.let(
+              :fearful,
+              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::TaggedSymbol
+            )
+          DISGUSTED =
+            T.let(
+              :disgusted,
+              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::TaggedSymbol
+            )
+          SURPRISED =
+            T.let(
+              :surprised,
+              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
 

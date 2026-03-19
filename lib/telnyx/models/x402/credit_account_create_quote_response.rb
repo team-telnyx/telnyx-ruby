@@ -251,7 +251,7 @@ module Telnyx
             module X402Version
               extend Telnyx::Internal::Type::Enum
 
-              V2 = 2
+              X402_VERSION_2 = 2
 
               # @!method self.values
               #   @return [Array<Integer>]
