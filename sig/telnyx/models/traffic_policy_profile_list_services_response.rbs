@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    type traffic_policy_profile_list_services_response =
+      { id: String, group: String, name: String, resource_type: String }
+
+    class TrafficPolicyProfileListServicesResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader group: String?
+
+      def group=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader resource_type: String?
+
+      def resource_type=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?group: String,
+        ?name: String,
+        ?resource_type: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        group: String,
+        name: String,
+        resource_type: String
+      }
+    end
+  end
+end

@@ -36,11 +36,11 @@ class Telnyx::Test::Resources::Whatsapp::BusinessAccounts::PhoneNumbersTest < Te
     end
   end
 
-  def test_initialize_verification_required_params
+  def test_create_verification_required_params
     skip("Mock server tests are disabled")
 
     response =
-      @telnyx.whatsapp.business_accounts.phone_numbers.initialize_verification(
+      @telnyx.whatsapp.business_accounts.phone_numbers.create_verification(
         "id",
         display_name: "display_name",
         phone_number: "phone_number"

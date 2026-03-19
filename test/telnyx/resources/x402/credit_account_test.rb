@@ -3,34 +3,34 @@
 require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::X402::CreditAccountTest < Telnyx::Test::ResourceTest
-  def test_create_quote_required_params
+  def test_create_payment_quote_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.x402.credit_account.create_quote(amount_usd: "50.00")
+    response = @telnyx.x402.credit_account.create_payment_quote(amount_usd: "50.00")
 
     assert_pattern do
-      response => Telnyx::Models::X402::CreditAccountCreateQuoteResponse
+      response => Telnyx::Models::X402::CreditAccountCreatePaymentQuoteResponse
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::X402::CreditAccountCreateQuoteResponse::Data | nil
+        data: Telnyx::Models::X402::CreditAccountCreatePaymentQuoteResponse::Data | nil
       }
     end
   end
 
-  def test_settle_required_params
+  def test_settle_payment_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.x402.credit_account.settle(id: "quote_abc123")
+    response = @telnyx.x402.credit_account.settle_payment(id: "quote_abc123")
 
     assert_pattern do
-      response => Telnyx::Models::X402::CreditAccountSettleResponse
+      response => Telnyx::Models::X402::CreditAccountSettlePaymentResponse
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::X402::CreditAccountSettleResponse::Data | nil
+        data: Telnyx::Models::X402::CreditAccountSettlePaymentResponse::Data | nil
       }
     end
   end

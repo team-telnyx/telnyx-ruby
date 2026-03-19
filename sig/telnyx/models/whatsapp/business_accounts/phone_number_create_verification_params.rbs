@@ -1,0 +1,67 @@
+module Telnyx
+  module Models
+    module Whatsapp
+      module BusinessAccounts
+        type phone_number_create_verification_params =
+          {
+            id: String,
+            display_name: String,
+            phone_number: String,
+            language: String,
+            verification_method: Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberCreateVerificationParams::verification_method
+          }
+          & Telnyx::Internal::Type::request_parameters
+
+        class PhoneNumberCreateVerificationParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor id: String
+
+          attr_accessor display_name: String
+
+          attr_accessor phone_number: String
+
+          attr_reader language: String?
+
+          def language=: (String) -> String
+
+          attr_reader verification_method: Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberCreateVerificationParams::verification_method?
+
+          def verification_method=: (
+            Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberCreateVerificationParams::verification_method
+          ) -> Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberCreateVerificationParams::verification_method
+
+          def initialize: (
+            id: String,
+            display_name: String,
+            phone_number: String,
+            ?language: String,
+            ?verification_method: Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberCreateVerificationParams::verification_method,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            display_name: String,
+            phone_number: String,
+            language: String,
+            verification_method: Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberCreateVerificationParams::verification_method,
+            request_options: Telnyx::RequestOptions
+          }
+
+          type verification_method = :sms | :voice
+
+          module VerificationMethod
+            extend Telnyx::Internal::Type::Enum
+
+            SMS: :sms
+            VOICE: :voice
+
+            def self?.values: -> ::Array[Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberCreateVerificationParams::verification_method]
+          end
+        end
+      end
+    end
+  end
+end

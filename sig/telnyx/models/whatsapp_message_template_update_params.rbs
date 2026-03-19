@@ -4,7 +4,7 @@ module Telnyx
       {
         id: String,
         category: Telnyx::Models::WhatsappMessageTemplateUpdateParams::category,
-        components: ::Array[::Hash[Symbol, top]]
+        components: ::Array[top]
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -20,23 +20,21 @@ module Telnyx
         Telnyx::Models::WhatsappMessageTemplateUpdateParams::category
       ) -> Telnyx::Models::WhatsappMessageTemplateUpdateParams::category
 
-      attr_reader components: ::Array[::Hash[Symbol, top]]?
+      attr_reader components: ::Array[top]?
 
-      def components=: (
-        ::Array[::Hash[Symbol, top]]
-      ) -> ::Array[::Hash[Symbol, top]]
+      def components=: (::Array[top]) -> ::Array[top]
 
       def initialize: (
         id: String,
         ?category: Telnyx::Models::WhatsappMessageTemplateUpdateParams::category,
-        ?components: ::Array[::Hash[Symbol, top]],
+        ?components: ::Array[top],
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         id: String,
         category: Telnyx::Models::WhatsappMessageTemplateUpdateParams::category,
-        components: ::Array[::Hash[Symbol, top]],
+        components: ::Array[top],
         request_options: Telnyx::RequestOptions
       }
 

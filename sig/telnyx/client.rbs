@@ -322,6 +322,8 @@ module Telnyx
 
     attr_reader session_analysis: Telnyx::Resources::SessionAnalysis
 
+    attr_reader traffic_policy_profiles: Telnyx::Resources::TrafficPolicyProfiles
+
     attr_reader whatsapp: Telnyx::Resources::Whatsapp
 
     attr_reader whatsapp_message_templates: Telnyx::Resources::WhatsappMessageTemplates

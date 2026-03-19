@@ -35,7 +35,7 @@ module Telnyx
 
           # Initialize Whatsapp phone number verification
           #
-          # @overload initialize_verification(id, display_name:, phone_number:, language: nil, verification_method: nil, request_options: {})
+          # @overload create_verification(id, display_name:, phone_number:, language: nil, verification_method: nil, request_options: {})
           #
           # @param id [String] Whatsapp Business Account ID
           #
@@ -45,16 +45,16 @@ module Telnyx
           #
           # @param language [String]
           #
-          # @param verification_method [Symbol, Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberInitializeVerificationParams::VerificationMethod]
+          # @param verification_method [Symbol, Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberCreateVerificationParams::VerificationMethod]
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [nil]
           #
-          # @see Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberInitializeVerificationParams
-          def initialize_verification(id, params)
+          # @see Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberCreateVerificationParams
+          def create_verification(id, params)
             parsed, options =
-              Telnyx::Whatsapp::BusinessAccounts::PhoneNumberInitializeVerificationParams.dump_request(params)
+              Telnyx::Whatsapp::BusinessAccounts::PhoneNumberCreateVerificationParams.dump_request(params)
             @client.request(
               method: :post,
               path: ["v2/whatsapp/business_accounts/%1$s/phone_numbers", id],
