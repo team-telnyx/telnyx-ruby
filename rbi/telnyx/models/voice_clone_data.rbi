@@ -2,13 +2,10 @@
 
 module Telnyx
   module Models
-    class VoiceCloneListResponse < Telnyx::Internal::Type::BaseModel
+    class VoiceCloneData < Telnyx::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
-          T.any(
-            Telnyx::Models::VoiceCloneListResponse,
-            Telnyx::Internal::AnyHash
-          )
+          T.any(Telnyx::VoiceCloneData, Telnyx::Internal::AnyHash)
         end
 
       # Unique identifier for the voice clone.
@@ -26,13 +23,7 @@ module Telnyx
       attr_writer :created_at
 
       # Gender of the voice clone.
-      sig do
-        returns(
-          T.nilable(
-            Telnyx::Models::VoiceCloneListResponse::Gender::TaggedSymbol
-          )
-        )
-      end
+      sig { returns(T.nilable(Telnyx::VoiceCloneData::Gender::TaggedSymbol)) }
       attr_accessor :gender
 
       # Voice style description. If not explicitly set on upload, falls back to the
@@ -53,19 +44,12 @@ module Telnyx
 
       # Identifies the resource type.
       sig do
-        returns(
-          T.nilable(
-            Telnyx::Models::VoiceCloneListResponse::RecordType::TaggedSymbol
-          )
-        )
+        returns(T.nilable(Telnyx::VoiceCloneData::RecordType::TaggedSymbol))
       end
       attr_reader :record_type
 
       sig do
-        params(
-          record_type:
-            Telnyx::Models::VoiceCloneListResponse::RecordType::OrSymbol
-        ).void
+        params(record_type: Telnyx::VoiceCloneData::RecordType::OrSymbol).void
       end
       attr_writer :record_type
 
@@ -89,13 +73,11 @@ module Telnyx
         params(
           id: String,
           created_at: Time,
-          gender:
-            T.nilable(Telnyx::Models::VoiceCloneListResponse::Gender::OrSymbol),
+          gender: T.nilable(Telnyx::VoiceCloneData::Gender::OrSymbol),
           label: T.nilable(String),
           language: T.nilable(String),
           name: String,
-          record_type:
-            Telnyx::Models::VoiceCloneListResponse::RecordType::OrSymbol,
+          record_type: Telnyx::VoiceCloneData::RecordType::OrSymbol,
           source_voice_design_id: T.nilable(String),
           source_voice_design_version: T.nilable(Integer),
           updated_at: Time
@@ -131,15 +113,11 @@ module Telnyx
           {
             id: String,
             created_at: Time,
-            gender:
-              T.nilable(
-                Telnyx::Models::VoiceCloneListResponse::Gender::TaggedSymbol
-              ),
+            gender: T.nilable(Telnyx::VoiceCloneData::Gender::TaggedSymbol),
             label: T.nilable(String),
             language: T.nilable(String),
             name: String,
-            record_type:
-              Telnyx::Models::VoiceCloneListResponse::RecordType::TaggedSymbol,
+            record_type: Telnyx::VoiceCloneData::RecordType::TaggedSymbol,
             source_voice_design_id: T.nilable(String),
             source_voice_design_version: T.nilable(Integer),
             updated_at: Time
@@ -154,32 +132,16 @@ module Telnyx
         extend Telnyx::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Telnyx::Models::VoiceCloneListResponse::Gender)
-          end
+          T.type_alias { T.all(Symbol, Telnyx::VoiceCloneData::Gender) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        MALE =
-          T.let(
-            :male,
-            Telnyx::Models::VoiceCloneListResponse::Gender::TaggedSymbol
-          )
-        FEMALE =
-          T.let(
-            :female,
-            Telnyx::Models::VoiceCloneListResponse::Gender::TaggedSymbol
-          )
-        NEUTRAL =
-          T.let(
-            :neutral,
-            Telnyx::Models::VoiceCloneListResponse::Gender::TaggedSymbol
-          )
+        MALE = T.let(:male, Telnyx::VoiceCloneData::Gender::TaggedSymbol)
+        FEMALE = T.let(:female, Telnyx::VoiceCloneData::Gender::TaggedSymbol)
+        NEUTRAL = T.let(:neutral, Telnyx::VoiceCloneData::Gender::TaggedSymbol)
 
         sig do
           override.returns(
-            T::Array[
-              Telnyx::Models::VoiceCloneListResponse::Gender::TaggedSymbol
-            ]
+            T::Array[Telnyx::VoiceCloneData::Gender::TaggedSymbol]
           )
         end
         def self.values
@@ -191,22 +153,15 @@ module Telnyx
         extend Telnyx::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Telnyx::Models::VoiceCloneListResponse::RecordType)
-          end
+          T.type_alias { T.all(Symbol, Telnyx::VoiceCloneData::RecordType) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         VOICE_CLONE =
-          T.let(
-            :voice_clone,
-            Telnyx::Models::VoiceCloneListResponse::RecordType::TaggedSymbol
-          )
+          T.let(:voice_clone, Telnyx::VoiceCloneData::RecordType::TaggedSymbol)
 
         sig do
           override.returns(
-            T::Array[
-              Telnyx::Models::VoiceCloneListResponse::RecordType::TaggedSymbol
-            ]
+            T::Array[Telnyx::VoiceCloneData::RecordType::TaggedSymbol]
           )
         end
         def self.values

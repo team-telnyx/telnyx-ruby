@@ -1530,6 +1530,8 @@ module Telnyx
 
   TextToSpeechStreamParams = Telnyx::Models::TextToSpeechStreamParams
 
+  TrafficPolicyProfile = Telnyx::Models::TrafficPolicyProfile
+
   TrafficPolicyProfileCreateParams = Telnyx::Models::TrafficPolicyProfileCreateParams
 
   TrafficPolicyProfileDeleteParams = Telnyx::Models::TrafficPolicyProfileDeleteParams
@@ -1642,6 +1644,8 @@ module Telnyx
 
   VoiceCloneCreateParams = Telnyx::Models::VoiceCloneCreateParams
 
+  VoiceCloneData = Telnyx::Models::VoiceCloneData
+
   VoiceCloneDeleteParams = Telnyx::Models::VoiceCloneDeleteParams
 
   VoiceCloneDownloadSampleParams = Telnyx::Models::VoiceCloneDownloadSampleParams
@@ -1651,6 +1655,8 @@ module Telnyx
   VoiceCloneUpdateParams = Telnyx::Models::VoiceCloneUpdateParams
 
   VoiceDesignCreateParams = Telnyx::Models::VoiceDesignCreateParams
+
+  VoiceDesignData = Telnyx::Models::VoiceDesignData
 
   VoiceDesignDeleteParams = Telnyx::Models::VoiceDesignDeleteParams
 
