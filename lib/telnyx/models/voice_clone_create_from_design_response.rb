@@ -2,20 +2,20 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::VoiceClones#create_from_upload
-    class VoiceCloneCreateFromUploadResponse < Telnyx::Internal::Type::BaseModel
+    # @see Telnyx::Resources::VoiceClones#create_from_design
+    class VoiceCloneCreateFromDesignResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #   A voice clone object.
       #
-      #   @return [Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data, nil]
-      optional :data, -> { Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data }
+      #   @return [Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data, nil]
+      optional :data, -> { Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data }
 
       # @!method initialize(data: nil)
       #   Response envelope for a single voice clone.
       #
-      #   @param data [Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data] A voice clone object.
+      #   @param data [Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data] A voice clone object.
 
-      # @see Telnyx::Models::VoiceCloneCreateFromUploadResponse#data
+      # @see Telnyx::Models::VoiceCloneCreateFromDesignResponse#data
       class Data < Telnyx::Internal::Type::BaseModel
         # @!attribute id
         #   Unique identifier for the voice clone.
@@ -32,9 +32,9 @@ module Telnyx
         # @!attribute gender
         #   Gender of the voice clone.
         #
-        #   @return [Symbol, Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data::Gender, nil]
+        #   @return [Symbol, Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data::Gender, nil]
         optional :gender,
-                 enum: -> { Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data::Gender },
+                 enum: -> { Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data::Gender },
                  nil?: true
 
         # @!attribute label
@@ -59,8 +59,8 @@ module Telnyx
         # @!attribute record_type
         #   Identifies the resource type.
         #
-        #   @return [Symbol, Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data::RecordType, nil]
-        optional :record_type, enum: -> { Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data::RecordType }
+        #   @return [Symbol, Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data::RecordType, nil]
+        optional :record_type, enum: -> { Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data::RecordType }
 
         # @!attribute source_voice_design_id
         #   UUID of the source voice design. `null` for upload-based clones.
@@ -82,7 +82,7 @@ module Telnyx
 
         # @!method initialize(id: nil, created_at: nil, gender: nil, label: nil, language: nil, name: nil, record_type: nil, source_voice_design_id: nil, source_voice_design_version: nil, updated_at: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data} for more details.
+        #   {Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data} for more details.
         #
         #   A voice clone object.
         #
@@ -90,7 +90,7 @@ module Telnyx
         #
         #   @param created_at [Time] Timestamp when the voice clone was created.
         #
-        #   @param gender [Symbol, Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data::Gender, nil] Gender of the voice clone.
+        #   @param gender [Symbol, Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data::Gender, nil] Gender of the voice clone.
         #
         #   @param label [String, nil] Voice style description. If not explicitly set on upload, falls back to the sour
         #
@@ -98,7 +98,7 @@ module Telnyx
         #
         #   @param name [String] Name of the voice clone.
         #
-        #   @param record_type [Symbol, Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data::RecordType] Identifies the resource type.
+        #   @param record_type [Symbol, Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data::RecordType] Identifies the resource type.
         #
         #   @param source_voice_design_id [String, nil] UUID of the source voice design. `null` for upload-based clones.
         #
@@ -108,7 +108,7 @@ module Telnyx
 
         # Gender of the voice clone.
         #
-        # @see Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data#gender
+        # @see Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data#gender
         module Gender
           extend Telnyx::Internal::Type::Enum
 
@@ -122,7 +122,7 @@ module Telnyx
 
         # Identifies the resource type.
         #
-        # @see Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data#record_type
+        # @see Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data#record_type
         module RecordType
           extend Telnyx::Internal::Type::Enum
 

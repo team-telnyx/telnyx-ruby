@@ -31,12 +31,6 @@ module Telnyx
       #   @return [::Telnyx::Models::TextToSpeechGenerateParams::Elevenlabs, nil]
       optional :elevenlabs, -> { ::Telnyx::TextToSpeechGenerateParams::Elevenlabs }
 
-      # @!attribute inworld
-      #   Inworld provider-specific parameters.
-      #
-      #   @return [Hash{Symbol=>Object}, nil]
-      optional :inworld, ::Telnyx::Internal::Type::HashOf[::Telnyx::Internal::Type::Unknown]
-
       # @!attribute language
       #   Language code (e.g. `en-US`). Usage varies by provider.
       #
@@ -75,7 +69,9 @@ module Telnyx
       optional :rime, -> { ::Telnyx::TextToSpeechGenerateParams::Rime }
 
       # @!attribute telnyx
-      #   Telnyx provider-specific parameters.
+      #   Telnyx provider-specific parameters. Use `voice_speed` and `temperature` for
+      #   `Natural` and `NaturalHD` models. For the `Ultra` model, use `voice_speed`,
+      #   `volume`, and `emotion`.
       #
       #   @return [::Telnyx::Models::TextToSpeechGenerateParams::Telnyx, nil]
       optional :telnyx, -> { ::Telnyx::TextToSpeechGenerateParams::Telnyx }
@@ -95,9 +91,10 @@ module Telnyx
       # @!attribute voice
       #   Voice identifier in the format `provider.model_id.voice_id` or
       #   `provider.voice_id`. Examples: `telnyx.NaturalHD.Alloy`,
-      #   `azure.en-US-AvaMultilingualNeural`, `aws.Polly.Generative.Lucia`. When
-      #   provided, `provider`, `model_id`, and `voice_id` are extracted automatically and
-      #   take precedence over individual parameters.
+      #   `Telnyx.Ultra.<voice_id>`, `azure.en-US-AvaMultilingualNeural`,
+      #   `aws.Polly.Generative.Lucia`. When provided, `provider`, `model_id`, and
+      #   `voice_id` are extracted automatically and take precedence over individual
+      #   parameters.
       #
       #   @return [String, nil]
       optional :voice, String
@@ -109,7 +106,7 @@ module Telnyx
       #   @return [Hash{Symbol=>Object}, nil]
       optional :voice_settings, ::Telnyx::Internal::Type::HashOf[::Telnyx::Internal::Type::Unknown]
 
-      # @!method initialize(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, inworld: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, request_options: {})
+      # @!method initialize(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {::Telnyx::Models::TextToSpeechGenerateParams} for more details.
       #
@@ -120,8 +117,6 @@ module Telnyx
       #   @param disable_cache [Boolean] When `true`, bypass the audio cache and generate fresh audio.
       #
       #   @param elevenlabs [::Telnyx::Models::TextToSpeechGenerateParams::Elevenlabs] ElevenLabs provider-specific parameters.
-      #
-      #   @param inworld [Hash{Symbol=>Object}] Inworld provider-specific parameters.
       #
       #   @param language [String] Language code (e.g. `en-US`). Usage varies by provider.
       #
@@ -135,7 +130,7 @@ module Telnyx
       #
       #   @param rime [::Telnyx::Models::TextToSpeechGenerateParams::Rime] Rime provider-specific parameters.
       #
-      #   @param telnyx [::Telnyx::Models::TextToSpeechGenerateParams::Telnyx] Telnyx provider-specific parameters.
+      #   @param telnyx [::Telnyx::Models::TextToSpeechGenerateParams::Telnyx] Telnyx provider-specific parameters. Use `voice_speed` and `temperature` for `Na
       #
       #   @param text [String] The text to convert to speech.
       #
@@ -384,7 +379,6 @@ module Telnyx
         MINIMAX = :minimax
         RIME = :rime
         RESEMBLE = :resemble
-        INWORLD = :inworld
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -457,6 +451,13 @@ module Telnyx
       end
 
       class Telnyx < ::Telnyx::Internal::Type::BaseModel
+        # @!attribute emotion
+        #   Emotion control for the Ultra model. Adjusts the emotional tone of the
+        #   synthesized speech.
+        #
+        #   @return [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::Telnyx::Emotion, nil]
+        optional :emotion, enum: -> { ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion }
+
         # @!attribute response_format
         #   Audio response format.
         #
@@ -470,27 +471,61 @@ module Telnyx
         optional :sampling_rate, Integer
 
         # @!attribute temperature
-        #   Sampling temperature.
+        #   Sampling temperature. Applies to `Natural` and `NaturalHD` models only.
         #
         #   @return [Float, nil]
         optional :temperature, Float
 
         # @!attribute voice_speed
-        #   Voice speed multiplier.
+        #   Voice speed multiplier. Applies to all models. Range: 0.5 to 2.0.
         #
         #   @return [Float, nil]
         optional :voice_speed, Float
 
-        # @!method initialize(response_format: nil, sampling_rate: nil, temperature: nil, voice_speed: nil)
-        #   Telnyx provider-specific parameters.
+        # @!attribute volume
+        #   Volume level for the Ultra model. Range: 0.0 to 2.0.
+        #
+        #   @return [Float, nil]
+        optional :volume, Float
+
+        # @!method initialize(emotion: nil, response_format: nil, sampling_rate: nil, temperature: nil, voice_speed: nil, volume: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {::Telnyx::Models::TextToSpeechGenerateParams::Telnyx} for more details.
+        #
+        #   Telnyx provider-specific parameters. Use `voice_speed` and `temperature` for
+        #   `Natural` and `NaturalHD` models. For the `Ultra` model, use `voice_speed`,
+        #   `volume`, and `emotion`.
+        #
+        #   @param emotion [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::Telnyx::Emotion] Emotion control for the Ultra model. Adjusts the emotional tone of the synthesiz
         #
         #   @param response_format [String] Audio response format.
         #
         #   @param sampling_rate [Integer] Audio sampling rate in Hz.
         #
-        #   @param temperature [Float] Sampling temperature.
+        #   @param temperature [Float] Sampling temperature. Applies to `Natural` and `NaturalHD` models only.
         #
-        #   @param voice_speed [Float] Voice speed multiplier.
+        #   @param voice_speed [Float] Voice speed multiplier. Applies to all models. Range: 0.5 to 2.0.
+        #
+        #   @param volume [Float] Volume level for the Ultra model. Range: 0.0 to 2.0.
+
+        # Emotion control for the Ultra model. Adjusts the emotional tone of the
+        # synthesized speech.
+        #
+        # @see Telnyx::Models::TextToSpeechGenerateParams::Telnyx#emotion
+        module Emotion
+          extend ::Telnyx::Internal::Type::Enum
+
+          NEUTRAL = :neutral
+          HAPPY = :happy
+          SAD = :sad
+          ANGRY = :angry
+          FEARFUL = :fearful
+          DISGUSTED = :disgusted
+          SURPRISED = :surprised
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
 
       # Text type. Use `ssml` for SSML-formatted input (supported by AWS and Azure).

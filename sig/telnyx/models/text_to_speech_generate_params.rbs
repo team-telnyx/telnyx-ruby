@@ -6,7 +6,6 @@ module Telnyx
         azure: ::Telnyx::TextToSpeechGenerateParams::Azure,
         disable_cache: bool,
         elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs,
-        inworld: ::Hash[Symbol, top],
         language: String,
         minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax,
         output_type: ::Telnyx::Models::TextToSpeechGenerateParams::output_type,
@@ -46,10 +45,6 @@ module Telnyx
       def elevenlabs=: (
         ::Telnyx::TextToSpeechGenerateParams::Elevenlabs
       ) -> ::Telnyx::TextToSpeechGenerateParams::Elevenlabs
-
-      attr_reader inworld: ::Hash[Symbol, top]?
-
-      def inworld=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
       attr_reader language: String?
 
@@ -114,7 +109,6 @@ module Telnyx
         ?azure: ::Telnyx::TextToSpeechGenerateParams::Azure,
         ?disable_cache: bool,
         ?elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs,
-        ?inworld: ::Hash[Symbol, top],
         ?language: String,
         ?minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax,
         ?output_type: ::Telnyx::Models::TextToSpeechGenerateParams::output_type,
@@ -134,7 +128,6 @@ module Telnyx
         azure: ::Telnyx::TextToSpeechGenerateParams::Azure,
         disable_cache: bool,
         elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs,
-        inworld: ::Hash[Symbol, top],
         language: String,
         minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax,
         output_type: ::Telnyx::Models::TextToSpeechGenerateParams::output_type,
@@ -382,14 +375,7 @@ module Telnyx
       end
 
       type provider =
-        :aws
-        | :telnyx
-        | :azure
-        | :elevenlabs
-        | :minimax
-        | :rime
-        | :resemble
-        | :inworld
+        :aws | :telnyx | :azure | :elevenlabs | :minimax | :rime | :resemble
 
       module Provider
         extend ::Telnyx::Internal::Type::Enum
@@ -401,7 +387,6 @@ module Telnyx
         MINIMAX: :minimax
         RIME: :rime
         RESEMBLE: :resemble
-        INWORLD: :inworld
 
         def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateParams::provider]
       end
@@ -477,13 +462,21 @@ module Telnyx
 
       type telnyx =
         {
+          emotion: ::Telnyx::Models::TextToSpeechGenerateParams::Telnyx::emotion,
           response_format: String,
           sampling_rate: Integer,
           temperature: Float,
-          voice_speed: Float
+          voice_speed: Float,
+          volume: Float
         }
 
       class Telnyx < ::Telnyx::Internal::Type::BaseModel
+        attr_reader emotion: ::Telnyx::Models::TextToSpeechGenerateParams::Telnyx::emotion?
+
+        def emotion=: (
+          ::Telnyx::Models::TextToSpeechGenerateParams::Telnyx::emotion
+        ) -> ::Telnyx::Models::TextToSpeechGenerateParams::Telnyx::emotion
+
         attr_reader response_format: String?
 
         def response_format=: (String) -> String
@@ -500,19 +493,44 @@ module Telnyx
 
         def voice_speed=: (Float) -> Float
 
+        attr_reader volume: Float?
+
+        def volume=: (Float) -> Float
+
         def initialize: (
+          ?emotion: ::Telnyx::Models::TextToSpeechGenerateParams::Telnyx::emotion,
           ?response_format: String,
           ?sampling_rate: Integer,
           ?temperature: Float,
-          ?voice_speed: Float
+          ?voice_speed: Float,
+          ?volume: Float
         ) -> void
 
         def to_hash: -> {
+          emotion: ::Telnyx::Models::TextToSpeechGenerateParams::Telnyx::emotion,
           response_format: String,
           sampling_rate: Integer,
           temperature: Float,
-          voice_speed: Float
+          voice_speed: Float,
+          volume: Float
         }
+
+        type emotion =
+          :neutral | :happy | :sad | :angry | :fearful | :disgusted | :surprised
+
+        module Emotion
+          extend ::Telnyx::Internal::Type::Enum
+
+          NEUTRAL: :neutral
+          HAPPY: :happy
+          SAD: :sad
+          ANGRY: :angry
+          FEARFUL: :fearful
+          DISGUSTED: :disgusted
+          SURPRISED: :surprised
+
+          def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateParams::Telnyx::emotion]
+        end
       end
 
       type text_type = :text | :ssml
