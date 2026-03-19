@@ -2,7 +2,7 @@ module Telnyx
   module Models
     type stream_server_event =
       Telnyx::Models::StreamServerEvent::AudioChunk
-      | Telnyx::Models::StreamServerEvent::Final
+      | Telnyx::Models::StreamServerEvent::FinalFrameEvent
       | Telnyx::Models::StreamServerEvent::Error
 
     module StreamServerEvent
@@ -70,23 +70,23 @@ module Telnyx
         end
       end
 
-      type final =
+      type final_frame_event =
         {
           audio: nil,
-          is_final: Telnyx::Models::StreamServerEvent::Final::is_final,
+          is_final: Telnyx::Models::StreamServerEvent::FinalFrameEvent::is_final,
           text: String,
           time_to_first_audio_frame_ms: Integer,
-          type: Telnyx::Models::StreamServerEvent::Final::type_
+          type: Telnyx::Models::StreamServerEvent::FinalFrameEvent::type_
         }
 
-      class Final < Telnyx::Internal::Type::BaseModel
+      class FinalFrameEvent < Telnyx::Internal::Type::BaseModel
         attr_accessor audio: nil
 
-        attr_reader is_final: Telnyx::Models::StreamServerEvent::Final::is_final?
+        attr_reader is_final: Telnyx::Models::StreamServerEvent::FinalFrameEvent::is_final?
 
         def is_final=: (
-          Telnyx::Models::StreamServerEvent::Final::is_final
-        ) -> Telnyx::Models::StreamServerEvent::Final::is_final
+          Telnyx::Models::StreamServerEvent::FinalFrameEvent::is_final
+        ) -> Telnyx::Models::StreamServerEvent::FinalFrameEvent::is_final
 
         attr_reader text: String?
 
@@ -96,26 +96,26 @@ module Telnyx
 
         def time_to_first_audio_frame_ms=: (Integer) -> Integer
 
-        attr_reader type: Telnyx::Models::StreamServerEvent::Final::type_?
+        attr_reader type: Telnyx::Models::StreamServerEvent::FinalFrameEvent::type_?
 
         def type=: (
-          Telnyx::Models::StreamServerEvent::Final::type_
-        ) -> Telnyx::Models::StreamServerEvent::Final::type_
+          Telnyx::Models::StreamServerEvent::FinalFrameEvent::type_
+        ) -> Telnyx::Models::StreamServerEvent::FinalFrameEvent::type_
 
         def initialize: (
           ?audio: nil,
-          ?is_final: Telnyx::Models::StreamServerEvent::Final::is_final,
+          ?is_final: Telnyx::Models::StreamServerEvent::FinalFrameEvent::is_final,
           ?text: String,
           ?time_to_first_audio_frame_ms: Integer,
-          ?type: Telnyx::Models::StreamServerEvent::Final::type_
+          ?type: Telnyx::Models::StreamServerEvent::FinalFrameEvent::type_
         ) -> void
 
         def to_hash: -> {
           audio: nil,
-          is_final: Telnyx::Models::StreamServerEvent::Final::is_final,
+          is_final: Telnyx::Models::StreamServerEvent::FinalFrameEvent::is_final,
           text: String,
           time_to_first_audio_frame_ms: Integer,
-          type: Telnyx::Models::StreamServerEvent::Final::type_
+          type: Telnyx::Models::StreamServerEvent::FinalFrameEvent::type_
         }
 
         type is_final = true
@@ -125,7 +125,7 @@ module Telnyx
 
           TRUE: true
 
-          def self?.values: -> ::Array[Telnyx::Models::StreamServerEvent::Final::is_final]
+          def self?.values: -> ::Array[Telnyx::Models::StreamServerEvent::FinalFrameEvent::is_final]
         end
 
         type type_ = :final
@@ -135,7 +135,7 @@ module Telnyx
 
           FINAL: :final
 
-          def self?.values: -> ::Array[Telnyx::Models::StreamServerEvent::Final::type_]
+          def self?.values: -> ::Array[Telnyx::Models::StreamServerEvent::FinalFrameEvent::type_]
         end
       end
 

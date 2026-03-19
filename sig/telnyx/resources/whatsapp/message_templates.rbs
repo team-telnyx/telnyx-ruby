@@ -4,12 +4,24 @@ module Telnyx
       class MessageTemplates
         def create: (
           category: Telnyx::Models::Whatsapp::MessageTemplateCreateParams::category,
-          components: ::Array[top],
+          components: ::Array[::Hash[Symbol, top]],
           language: String,
           name: String,
           waba_id: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Whatsapp::MessageTemplateCreateResponse
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Whatsapp::MessageTemplateRetrieveResponse
+
+        def update: (
+          String id,
+          ?category: Telnyx::Models::Whatsapp::MessageTemplateUpdateParams::category,
+          ?components: ::Array[::Hash[Symbol, top]],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Whatsapp::MessageTemplateUpdateResponse
 
         def list: (
           ?filter_category: Telnyx::Models::Whatsapp::MessageTemplateListParams::filter_category,
@@ -19,7 +31,9 @@ module Telnyx
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Whatsapp::MessageTemplateListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::WhatsappTemplateData]
+
+        def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 
         def initialize: (client: Telnyx::Client) -> void
       end

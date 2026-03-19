@@ -627,10 +627,6 @@ module Telnyx
     # @return [Telnyx::Resources::Whatsapp]
     attr_reader :whatsapp
 
-    # Manage Whatsapp message templates
-    # @return [Telnyx::Resources::WhatsappMessageTemplates]
-    attr_reader :whatsapp_message_templates
-
     # @return [Telnyx::Resources::X402]
     attr_reader :x402
 
@@ -893,7 +889,6 @@ module Telnyx
       @session_analysis = Telnyx::Resources::SessionAnalysis.new(client: self)
       @traffic_policy_profiles = Telnyx::Resources::TrafficPolicyProfiles.new(client: self)
       @whatsapp = Telnyx::Resources::Whatsapp.new(client: self)
-      @whatsapp_message_templates = Telnyx::Resources::WhatsappMessageTemplates.new(client: self)
       @x402 = Telnyx::Resources::X402.new(client: self)
       @voice_clones = Telnyx::Resources::VoiceClones.new(client: self)
       @voice_designs = Telnyx::Resources::VoiceDesigns.new(client: self)

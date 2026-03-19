@@ -10,7 +10,7 @@ module Telnyx
           params(
             category:
               Telnyx::Whatsapp::MessageTemplateCreateParams::Category::OrSymbol,
-            components: T::Array[T.anything],
+            components: T::Array[T::Hash[Symbol, T.anything]],
             language: String,
             name: String,
             waba_id: String,
@@ -23,6 +23,39 @@ module Telnyx
           language:,
           name:,
           waba_id:,
+          request_options: {}
+        )
+        end
+
+        # Get a Whatsapp message template by ID
+        sig do
+          params(
+            id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::Whatsapp::MessageTemplateRetrieveResponse)
+        end
+        def retrieve(
+          # Whatsapp message template ID
+          id,
+          request_options: {}
+        )
+        end
+
+        # Update a Whatsapp message template
+        sig do
+          params(
+            id: String,
+            category:
+              Telnyx::Whatsapp::MessageTemplateUpdateParams::Category::OrSymbol,
+            components: T::Array[T::Hash[Symbol, T.anything]],
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::Whatsapp::MessageTemplateUpdateResponse)
+        end
+        def update(
+          # Whatsapp message template ID
+          id,
+          category: nil,
+          components: nil,
           request_options: {}
         )
         end
@@ -40,7 +73,7 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultFlatPagination[
-              Telnyx::Models::Whatsapp::MessageTemplateListResponse
+              Telnyx::WhatsappTemplateData
             ]
           )
         end
@@ -55,6 +88,20 @@ module Telnyx
           filter_waba_id: nil,
           page_number: nil,
           page_size: nil,
+          request_options: {}
+        )
+        end
+
+        # Delete a Whatsapp message template
+        sig do
+          params(
+            id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).void
+        end
+        def delete(
+          # Whatsapp message template ID
+          id,
           request_options: {}
         )
         end
