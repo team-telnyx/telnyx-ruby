@@ -1,0 +1,99 @@
+module Telnyx
+  module Models
+    type voice_clone_list_response =
+      {
+        id: String,
+        created_at: Time,
+        gender: Telnyx::Models::VoiceCloneListResponse::gender?,
+        label: String?,
+        language: String?,
+        name: String,
+        record_type: Telnyx::Models::VoiceCloneListResponse::record_type,
+        source_voice_design_id: String?,
+        source_voice_design_version: Integer?,
+        updated_at: Time
+      }
+
+    class VoiceCloneListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_accessor gender: Telnyx::Models::VoiceCloneListResponse::gender?
+
+      attr_accessor label: String?
+
+      attr_accessor language: String?
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader record_type: Telnyx::Models::VoiceCloneListResponse::record_type?
+
+      def record_type=: (
+        Telnyx::Models::VoiceCloneListResponse::record_type
+      ) -> Telnyx::Models::VoiceCloneListResponse::record_type
+
+      attr_accessor source_voice_design_id: String?
+
+      attr_accessor source_voice_design_version: Integer?
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        ?id: String,
+        ?created_at: Time,
+        ?gender: Telnyx::Models::VoiceCloneListResponse::gender?,
+        ?label: String?,
+        ?language: String?,
+        ?name: String,
+        ?record_type: Telnyx::Models::VoiceCloneListResponse::record_type,
+        ?source_voice_design_id: String?,
+        ?source_voice_design_version: Integer?,
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        gender: Telnyx::Models::VoiceCloneListResponse::gender?,
+        label: String?,
+        language: String?,
+        name: String,
+        record_type: Telnyx::Models::VoiceCloneListResponse::record_type,
+        source_voice_design_id: String?,
+        source_voice_design_version: Integer?,
+        updated_at: Time
+      }
+
+      type gender = :male | :female | :neutral
+
+      module Gender
+        extend Telnyx::Internal::Type::Enum
+
+        MALE: :male
+        FEMALE: :female
+        NEUTRAL: :neutral
+
+        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneListResponse::gender]
+      end
+
+      type record_type = :voice_clone
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        VOICE_CLONE: :voice_clone
+
+        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneListResponse::record_type]
+      end
+    end
+  end
+end

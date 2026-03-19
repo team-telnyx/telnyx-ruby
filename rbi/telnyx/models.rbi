@@ -1601,8 +1601,6 @@ module Telnyx
 
   SoundModifications = Telnyx::Models::SoundModifications
 
-  SpeechToTextTranscribeParams = Telnyx::Models::SpeechToTextTranscribeParams
-
   Storage = Telnyx::Models::Storage
 
   StorageListMigrationSourceCoverageParams =
@@ -1690,6 +1688,24 @@ module Telnyx
   TextToSpeechListVoicesParams = Telnyx::Models::TextToSpeechListVoicesParams
 
   TextToSpeechStreamParams = Telnyx::Models::TextToSpeechStreamParams
+
+  TrafficPolicyProfileCreateParams =
+    Telnyx::Models::TrafficPolicyProfileCreateParams
+
+  TrafficPolicyProfileDeleteParams =
+    Telnyx::Models::TrafficPolicyProfileDeleteParams
+
+  TrafficPolicyProfileListParams =
+    Telnyx::Models::TrafficPolicyProfileListParams
+
+  TrafficPolicyProfileListServicesParams =
+    Telnyx::Models::TrafficPolicyProfileListServicesParams
+
+  TrafficPolicyProfileRetrieveParams =
+    Telnyx::Models::TrafficPolicyProfileRetrieveParams
+
+  TrafficPolicyProfileUpdateParams =
+    Telnyx::Models::TrafficPolicyProfileUpdateParams
 
   TrafficType = Telnyx::Models::TrafficType
 
@@ -1797,12 +1813,11 @@ module Telnyx
   VirtualCrossConnectUpdateParams =
     Telnyx::Models::VirtualCrossConnectUpdateParams
 
+  VoiceCloneCreateFromDesignParams =
+    Telnyx::Models::VoiceCloneCreateFromDesignParams
+
   VoiceCloneCreateFromUploadParams =
     Telnyx::Models::VoiceCloneCreateFromUploadParams
-
-  VoiceCloneCreateParams = Telnyx::Models::VoiceCloneCreateParams
-
-  VoiceCloneData = Telnyx::Models::VoiceCloneData
 
   VoiceCloneDeleteParams = Telnyx::Models::VoiceCloneDeleteParams
 
@@ -1815,8 +1830,6 @@ module Telnyx
 
   VoiceDesignCreateParams = Telnyx::Models::VoiceDesignCreateParams
 
-  VoiceDesignData = Telnyx::Models::VoiceDesignData
-
   VoiceDesignDeleteParams = Telnyx::Models::VoiceDesignDeleteParams
 
   VoiceDesignDeleteVersionParams =
@@ -1827,9 +1840,9 @@ module Telnyx
 
   VoiceDesignListParams = Telnyx::Models::VoiceDesignListParams
 
-  VoiceDesignRenameParams = Telnyx::Models::VoiceDesignRenameParams
-
   VoiceDesignRetrieveParams = Telnyx::Models::VoiceDesignRetrieveParams
+
+  VoiceDesignUpdateParams = Telnyx::Models::VoiceDesignUpdateParams
 
   WebhookAPIVersion = Telnyx::Models::WebhookAPIVersion
 
@@ -1858,15 +1871,6 @@ module Telnyx
   WhatsappMedia = Telnyx::Models::WhatsappMedia
 
   WhatsappMessageContent = Telnyx::Models::WhatsappMessageContent
-
-  WhatsappMessageTemplateDeleteParams =
-    Telnyx::Models::WhatsappMessageTemplateDeleteParams
-
-  WhatsappMessageTemplateRetrieveParams =
-    Telnyx::Models::WhatsappMessageTemplateRetrieveParams
-
-  WhatsappMessageTemplateUpdateParams =
-    Telnyx::Models::WhatsappMessageTemplateUpdateParams
 
   WhatsappReaction = Telnyx::Models::WhatsappReaction
 

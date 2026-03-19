@@ -1,0 +1,180 @@
+module Telnyx
+  module Models
+    type stream_server_event =
+      Telnyx::Models::StreamServerEvent::AudioChunk
+      | Telnyx::Models::StreamServerEvent::FinalFrameEvent
+      | Telnyx::Models::StreamServerEvent::Error
+
+    module StreamServerEvent
+      extend Telnyx::Internal::Type::Union
+
+      type audio_chunk =
+        {
+          audio: String?,
+          cached: bool,
+          is_final: bool,
+          text: String?,
+          time_to_first_audio_frame_ms: Integer,
+          type: Telnyx::Models::StreamServerEvent::AudioChunk::type_
+        }
+
+      class AudioChunk < Telnyx::Internal::Type::BaseModel
+        attr_accessor audio: String?
+
+        attr_reader cached: bool?
+
+        def cached=: (bool) -> bool
+
+        attr_reader is_final: bool?
+
+        def is_final=: (bool) -> bool
+
+        attr_accessor text: String?
+
+        attr_reader time_to_first_audio_frame_ms: Integer?
+
+        def time_to_first_audio_frame_ms=: (Integer) -> Integer
+
+        attr_reader type: Telnyx::Models::StreamServerEvent::AudioChunk::type_?
+
+        def type=: (
+          Telnyx::Models::StreamServerEvent::AudioChunk::type_
+        ) -> Telnyx::Models::StreamServerEvent::AudioChunk::type_
+
+        def initialize: (
+          ?audio: String?,
+          ?cached: bool,
+          ?is_final: bool,
+          ?text: String?,
+          ?time_to_first_audio_frame_ms: Integer,
+          ?type: Telnyx::Models::StreamServerEvent::AudioChunk::type_
+        ) -> void
+
+        def to_hash: -> {
+          audio: String?,
+          cached: bool,
+          is_final: bool,
+          text: String?,
+          time_to_first_audio_frame_ms: Integer,
+          type: Telnyx::Models::StreamServerEvent::AudioChunk::type_
+        }
+
+        type type_ = :audio_chunk
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          AUDIO_CHUNK: :audio_chunk
+
+          def self?.values: -> ::Array[Telnyx::Models::StreamServerEvent::AudioChunk::type_]
+        end
+      end
+
+      type final_frame_event =
+        {
+          audio: nil,
+          is_final: Telnyx::Models::StreamServerEvent::FinalFrameEvent::is_final,
+          text: String,
+          time_to_first_audio_frame_ms: Integer,
+          type: Telnyx::Models::StreamServerEvent::FinalFrameEvent::type_
+        }
+
+      class FinalFrameEvent < Telnyx::Internal::Type::BaseModel
+        attr_accessor audio: nil
+
+        attr_reader is_final: Telnyx::Models::StreamServerEvent::FinalFrameEvent::is_final?
+
+        def is_final=: (
+          Telnyx::Models::StreamServerEvent::FinalFrameEvent::is_final
+        ) -> Telnyx::Models::StreamServerEvent::FinalFrameEvent::is_final
+
+        attr_reader text: String?
+
+        def text=: (String) -> String
+
+        attr_reader time_to_first_audio_frame_ms: Integer?
+
+        def time_to_first_audio_frame_ms=: (Integer) -> Integer
+
+        attr_reader type: Telnyx::Models::StreamServerEvent::FinalFrameEvent::type_?
+
+        def type=: (
+          Telnyx::Models::StreamServerEvent::FinalFrameEvent::type_
+        ) -> Telnyx::Models::StreamServerEvent::FinalFrameEvent::type_
+
+        def initialize: (
+          ?audio: nil,
+          ?is_final: Telnyx::Models::StreamServerEvent::FinalFrameEvent::is_final,
+          ?text: String,
+          ?time_to_first_audio_frame_ms: Integer,
+          ?type: Telnyx::Models::StreamServerEvent::FinalFrameEvent::type_
+        ) -> void
+
+        def to_hash: -> {
+          audio: nil,
+          is_final: Telnyx::Models::StreamServerEvent::FinalFrameEvent::is_final,
+          text: String,
+          time_to_first_audio_frame_ms: Integer,
+          type: Telnyx::Models::StreamServerEvent::FinalFrameEvent::type_
+        }
+
+        type is_final = true
+
+        module IsFinal
+          extend Telnyx::Internal::Type::Enum
+
+          TRUE: true
+
+          def self?.values: -> ::Array[Telnyx::Models::StreamServerEvent::FinalFrameEvent::is_final]
+        end
+
+        type type_ = :final
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          FINAL: :final
+
+          def self?.values: -> ::Array[Telnyx::Models::StreamServerEvent::FinalFrameEvent::type_]
+        end
+      end
+
+      type error =
+        { error: String, type: Telnyx::Models::StreamServerEvent::Error::type_ }
+
+      class Error < Telnyx::Internal::Type::BaseModel
+        attr_reader error: String?
+
+        def error=: (String) -> String
+
+        attr_reader type: Telnyx::Models::StreamServerEvent::Error::type_?
+
+        def type=: (
+          Telnyx::Models::StreamServerEvent::Error::type_
+        ) -> Telnyx::Models::StreamServerEvent::Error::type_
+
+        def initialize: (
+          ?error: String,
+          ?type: Telnyx::Models::StreamServerEvent::Error::type_
+        ) -> void
+
+        def to_hash: -> {
+          error: String,
+          type: Telnyx::Models::StreamServerEvent::Error::type_
+        }
+
+        type type_ = :error
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          ERROR: :error
+
+          def self?.values: -> ::Array[Telnyx::Models::StreamServerEvent::Error::type_]
+        end
+      end
+
+      def self?.variants: -> ::Array[Telnyx::Models::stream_server_event]
+    end
+  end
+end

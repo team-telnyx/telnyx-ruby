@@ -1,14 +1,6 @@
 module Telnyx
   module Resources
     class VoiceClones
-      def create: (
-        gender: Telnyx::Models::VoiceCloneCreateParams::gender,
-        language: String,
-        name: String,
-        voice_design_id: String,
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::VoiceCloneCreateResponse
-
       def update: (
         String id,
         name: String,
@@ -23,9 +15,17 @@ module Telnyx
         ?page_size: Integer,
         ?sort: Telnyx::Models::VoiceCloneListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::VoiceCloneData]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::VoiceCloneListResponse]
 
       def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
+
+      def create_from_design: (
+        gender: Telnyx::Models::VoiceCloneCreateFromDesignParams::gender,
+        language: String,
+        name: String,
+        voice_design_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VoiceCloneCreateFromDesignResponse
 
       def create_from_upload: (
         audio_file: Telnyx::Internal::file_input,

@@ -8,8 +8,8 @@ module Telnyx
       attr_reader :business_accounts
 
       # Manage Whatsapp message templates
-      sig { returns(Telnyx::Resources::Whatsapp::Templates) }
-      attr_reader :templates
+      sig { returns(Telnyx::Resources::Whatsapp::MessageTemplates) }
+      attr_reader :message_templates
 
       # Manage Whatsapp phone numbers
       sig { returns(Telnyx::Resources::Whatsapp::PhoneNumbers) }

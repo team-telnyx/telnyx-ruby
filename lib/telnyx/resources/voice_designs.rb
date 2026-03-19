@@ -76,6 +76,30 @@ module Telnyx
         )
       end
 
+      # Updates the name of a voice design. All versions retain their other properties.
+      #
+      # @overload update(id, name:, request_options: {})
+      #
+      # @param id [String] The voice design UUID or name.
+      #
+      # @param name [String] New name for the voice design.
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::VoiceDesignUpdateResponse]
+      #
+      # @see Telnyx::Models::VoiceDesignUpdateParams
+      def update(id, params)
+        parsed, options = Telnyx::VoiceDesignUpdateParams.dump_request(params)
+        @client.request(
+          method: :patch,
+          path: ["voice_designs/%1$s", id],
+          body: parsed,
+          model: Telnyx::Models::VoiceDesignUpdateResponse,
+          options: options
+        )
+      end
+
       # Returns a paginated list of voice designs belonging to the authenticated
       # account.
       #
@@ -187,30 +211,6 @@ module Telnyx
           query: query,
           headers: {"accept" => "audio/wav"},
           model: StringIO,
-          options: options
-        )
-      end
-
-      # Updates the name of a voice design. All versions retain their other properties.
-      #
-      # @overload rename(id, name:, request_options: {})
-      #
-      # @param id [String] The voice design UUID or name.
-      #
-      # @param name [String] New name for the voice design.
-      #
-      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [Telnyx::Models::VoiceDesignRenameResponse]
-      #
-      # @see Telnyx::Models::VoiceDesignRenameParams
-      def rename(id, params)
-        parsed, options = Telnyx::VoiceDesignRenameParams.dump_request(params)
-        @client.request(
-          method: :patch,
-          path: ["voice_designs/%1$s", id],
-          body: parsed,
-          model: Telnyx::Models::VoiceDesignRenameResponse,
           options: options
         )
       end

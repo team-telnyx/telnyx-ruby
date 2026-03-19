@@ -1,0 +1,78 @@
+module Telnyx
+  module Models
+    type traffic_policy_profile_create_params =
+      {
+        type: Telnyx::Models::TrafficPolicyProfileCreateParams::type_,
+        domains: ::Array[String],
+        ip_ranges: ::Array[String],
+        limit_bw_kbps: Telnyx::Models::TrafficPolicyProfileCreateParams::limit_bw_kbps,
+        services: ::Array[String]
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class TrafficPolicyProfileCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor type: Telnyx::Models::TrafficPolicyProfileCreateParams::type_
+
+      attr_reader domains: ::Array[String]?
+
+      def domains=: (::Array[String]) -> ::Array[String]
+
+      attr_reader ip_ranges: ::Array[String]?
+
+      def ip_ranges=: (::Array[String]) -> ::Array[String]
+
+      attr_reader limit_bw_kbps: Telnyx::Models::TrafficPolicyProfileCreateParams::limit_bw_kbps?
+
+      def limit_bw_kbps=: (
+        Telnyx::Models::TrafficPolicyProfileCreateParams::limit_bw_kbps
+      ) -> Telnyx::Models::TrafficPolicyProfileCreateParams::limit_bw_kbps
+
+      attr_reader services: ::Array[String]?
+
+      def services=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        type: Telnyx::Models::TrafficPolicyProfileCreateParams::type_,
+        ?domains: ::Array[String],
+        ?ip_ranges: ::Array[String],
+        ?limit_bw_kbps: Telnyx::Models::TrafficPolicyProfileCreateParams::limit_bw_kbps,
+        ?services: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        type: Telnyx::Models::TrafficPolicyProfileCreateParams::type_,
+        domains: ::Array[String],
+        ip_ranges: ::Array[String],
+        limit_bw_kbps: Telnyx::Models::TrafficPolicyProfileCreateParams::limit_bw_kbps,
+        services: ::Array[String],
+        request_options: Telnyx::RequestOptions
+      }
+
+      type type_ = :whitelist | :blacklist
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        WHITELIST: :whitelist
+        BLACKLIST: :blacklist
+
+        def self?.values: -> ::Array[Telnyx::Models::TrafficPolicyProfileCreateParams::type_]
+      end
+
+      type limit_bw_kbps = 512 | 1024
+
+      module LimitBwKbps
+        extend Telnyx::Internal::Type::Enum
+
+        LIMIT_BW_KBPS_512: 512
+        LIMIT_BW_KBPS_1024: 1024
+
+        def self?.values: -> ::Array[Telnyx::Models::TrafficPolicyProfileCreateParams::limit_bw_kbps]
+      end
+    end
+  end
+end

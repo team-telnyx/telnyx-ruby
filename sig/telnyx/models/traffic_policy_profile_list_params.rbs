@@ -1,0 +1,85 @@
+module Telnyx
+  module Models
+    type traffic_policy_profile_list_params =
+      {
+        filter_service: String,
+        filter_type: Telnyx::Models::TrafficPolicyProfileListParams::filter_type,
+        page_number: Integer,
+        page_size: Integer,
+        sort: Telnyx::Models::TrafficPolicyProfileListParams::sort
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class TrafficPolicyProfileListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter_service: String?
+
+      def filter_service=: (String) -> String
+
+      attr_reader filter_type: Telnyx::Models::TrafficPolicyProfileListParams::filter_type?
+
+      def filter_type=: (
+        Telnyx::Models::TrafficPolicyProfileListParams::filter_type
+      ) -> Telnyx::Models::TrafficPolicyProfileListParams::filter_type
+
+      attr_reader page_number: Integer?
+
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader sort: Telnyx::Models::TrafficPolicyProfileListParams::sort?
+
+      def sort=: (
+        Telnyx::Models::TrafficPolicyProfileListParams::sort
+      ) -> Telnyx::Models::TrafficPolicyProfileListParams::sort
+
+      def initialize: (
+        ?filter_service: String,
+        ?filter_type: Telnyx::Models::TrafficPolicyProfileListParams::filter_type,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?sort: Telnyx::Models::TrafficPolicyProfileListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter_service: String,
+        filter_type: Telnyx::Models::TrafficPolicyProfileListParams::filter_type,
+        page_number: Integer,
+        page_size: Integer,
+        sort: Telnyx::Models::TrafficPolicyProfileListParams::sort,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter_type = :whitelist | :blacklist | :throttling
+
+      module FilterType
+        extend Telnyx::Internal::Type::Enum
+
+        WHITELIST: :whitelist
+        BLACKLIST: :blacklist
+        THROTTLING: :throttling
+
+        def self?.values: -> ::Array[Telnyx::Models::TrafficPolicyProfileListParams::filter_type]
+      end
+
+      type sort = :service | :"-service" | :type | :"-type"
+
+      module Sort
+        extend Telnyx::Internal::Type::Enum
+
+        SERVICE: :service
+        MINUS_SERVICE: :"-service"
+        TYPE: :type
+        MINUS_TYPE: :"-type"
+
+        def self?.values: -> ::Array[Telnyx::Models::TrafficPolicyProfileListParams::sort]
+      end
+    end
+  end
+end

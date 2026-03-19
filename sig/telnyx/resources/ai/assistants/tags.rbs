@@ -3,21 +3,21 @@ module Telnyx
     class AI
       class Assistants
         class Tags
+          def create: (
+            String assistant_id,
+            tag: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Assistants::TagCreateResponse
+
           def list: (
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::Models::AI::Assistants::TagListResponse
 
-          def add: (
-            String assistant_id,
-            tag: String,
-            ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::AI::Assistants::TagAddResponse
-
-          def remove: (
+          def delete: (
             String tag,
             assistant_id: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::AI::Assistants::TagRemoveResponse
+          ) -> Telnyx::Models::AI::Assistants::TagDeleteResponse
 
           def initialize: (client: Telnyx::Client) -> void
         end

@@ -620,12 +620,15 @@ module Telnyx
     # @return [Telnyx::Resources::SessionAnalysis]
     attr_reader :session_analysis
 
+    # Traffic Policy Profiles operations
+    # @return [Telnyx::Resources::TrafficPolicyProfiles]
+    attr_reader :traffic_policy_profiles
+
     # @return [Telnyx::Resources::Whatsapp]
     attr_reader :whatsapp
 
-    # Manage Whatsapp message templates
-    # @return [Telnyx::Resources::WhatsappMessageTemplates]
-    attr_reader :whatsapp_message_templates
+    # @return [Telnyx::Resources::X402]
+    attr_reader :x402
 
     # Capture and manage voice identities as clones for use in text-to-speech
     # synthesis.
@@ -635,13 +638,6 @@ module Telnyx
     # Create and manage AI-generated voice designs using natural language prompts.
     # @return [Telnyx::Resources::VoiceDesigns]
     attr_reader :voice_designs
-
-    # @return [Telnyx::Resources::X402]
-    attr_reader :x402
-
-    # Speech to text command operations
-    # @return [Telnyx::Resources::SpeechToText]
-    attr_reader :speech_to_text
 
     # @api private
     #
@@ -891,12 +887,11 @@ module Telnyx
       @alphanumeric_sender_ids = Telnyx::Resources::AlphanumericSenderIDs.new(client: self)
       @messaging_profile_metrics = Telnyx::Resources::MessagingProfileMetrics.new(client: self)
       @session_analysis = Telnyx::Resources::SessionAnalysis.new(client: self)
+      @traffic_policy_profiles = Telnyx::Resources::TrafficPolicyProfiles.new(client: self)
       @whatsapp = Telnyx::Resources::Whatsapp.new(client: self)
-      @whatsapp_message_templates = Telnyx::Resources::WhatsappMessageTemplates.new(client: self)
+      @x402 = Telnyx::Resources::X402.new(client: self)
       @voice_clones = Telnyx::Resources::VoiceClones.new(client: self)
       @voice_designs = Telnyx::Resources::VoiceDesigns.new(client: self)
-      @x402 = Telnyx::Resources::X402.new(client: self)
-      @speech_to_text = Telnyx::Resources::SpeechToText.new(client: self)
     end
   end
 end

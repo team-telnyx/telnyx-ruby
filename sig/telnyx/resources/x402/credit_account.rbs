@@ -2,17 +2,17 @@ module Telnyx
   module Resources
     class X402
       class CreditAccount
-        def create_quote: (
+        def create_payment_quote: (
           amount_usd: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::X402::CreditAccountCreateQuoteResponse
+        ) -> Telnyx::Models::X402::CreditAccountCreatePaymentQuoteResponse
 
-        def settle: (
+        def settle_payment: (
           id: String,
-          ?payment_signature: String,
-          ?payment_signature_header: String,
+          ?body_payment_signature: String,
+          ?header_payment_signature: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::X402::CreditAccountSettleResponse
+        ) -> Telnyx::Models::X402::CreditAccountSettlePaymentResponse
 
         def initialize: (client: Telnyx::Client) -> void
       end
