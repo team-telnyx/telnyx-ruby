@@ -32,7 +32,7 @@ module Telnyx
       #
       # @param category [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Category]
       #
-      # @param components [Array<Hash{Symbol=>Object}>]
+      # @param components [Array<Object>]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

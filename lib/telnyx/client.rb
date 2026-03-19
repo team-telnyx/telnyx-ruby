@@ -620,6 +620,10 @@ module Telnyx
     # @return [Telnyx::Resources::SessionAnalysis]
     attr_reader :session_analysis
 
+    # Traffic Policy Profiles operations
+    # @return [Telnyx::Resources::TrafficPolicyProfiles]
+    attr_reader :traffic_policy_profiles
+
     # @return [Telnyx::Resources::Whatsapp]
     attr_reader :whatsapp
 
@@ -887,6 +891,7 @@ module Telnyx
       @alphanumeric_sender_ids = Telnyx::Resources::AlphanumericSenderIDs.new(client: self)
       @messaging_profile_metrics = Telnyx::Resources::MessagingProfileMetrics.new(client: self)
       @session_analysis = Telnyx::Resources::SessionAnalysis.new(client: self)
+      @traffic_policy_profiles = Telnyx::Resources::TrafficPolicyProfiles.new(client: self)
       @whatsapp = Telnyx::Resources::Whatsapp.new(client: self)
       @whatsapp_message_templates = Telnyx::Resources::WhatsappMessageTemplates.new(client: self)
       @x402 = Telnyx::Resources::X402.new(client: self)

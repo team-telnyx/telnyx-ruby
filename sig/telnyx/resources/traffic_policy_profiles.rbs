@@ -1,0 +1,53 @@
+module Telnyx
+  module Resources
+    class TrafficPolicyProfiles
+      def create: (
+        type: Telnyx::Models::TrafficPolicyProfileCreateParams::type_,
+        ?domains: ::Array[String],
+        ?ip_ranges: ::Array[String],
+        ?limit_bw_kbps: Telnyx::Models::TrafficPolicyProfileCreateParams::limit_bw_kbps,
+        ?services: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TrafficPolicyProfileCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TrafficPolicyProfileRetrieveResponse
+
+      def update: (
+        String id,
+        ?domains: ::Array[String],
+        ?ip_ranges: ::Array[String],
+        ?limit_bw_kbps: Telnyx::Models::TrafficPolicyProfileUpdateParams::limit_bw_kbps?,
+        ?services: ::Array[String],
+        ?type: Telnyx::Models::TrafficPolicyProfileUpdateParams::type_,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TrafficPolicyProfileUpdateResponse
+
+      def list: (
+        ?filter_service: String,
+        ?filter_type: Telnyx::Models::TrafficPolicyProfileListParams::filter_type,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?sort: Telnyx::Models::TrafficPolicyProfileListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::TrafficPolicyProfileListResponse]
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TrafficPolicyProfileDeleteResponse
+
+      def list_services: (
+        ?filter_group: String,
+        ?filter_name: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::TrafficPolicyProfileListServicesResponse]
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

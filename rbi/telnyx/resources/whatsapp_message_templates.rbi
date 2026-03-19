@@ -24,7 +24,7 @@ module Telnyx
           id: String,
           category:
             Telnyx::WhatsappMessageTemplateUpdateParams::Category::OrSymbol,
-          components: T::Array[T::Hash[Symbol, T.anything]],
+          components: T::Array[T.anything],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::WhatsappMessageTemplateUpdateResponse)
       end

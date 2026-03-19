@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        type tag_delete_response = { tags: ::Array[String] }
+
+        class TagDeleteResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor tags: ::Array[String]
+
+          def initialize: (tags: ::Array[String]) -> void
+
+          def to_hash: -> { tags: ::Array[String] }
+        end
+      end
+    end
+  end
+end

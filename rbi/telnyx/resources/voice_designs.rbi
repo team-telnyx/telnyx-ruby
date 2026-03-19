@@ -75,6 +75,23 @@ module Telnyx
       )
       end
 
+      # Updates the name of a voice design. All versions retain their other properties.
+      sig do
+        params(
+          id: String,
+          name: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::Models::VoiceDesignUpdateResponse)
+      end
+      def update(
+        # The voice design UUID or name.
+        id,
+        # New name for the voice design.
+        name:,
+        request_options: {}
+      )
+      end
+
       # Returns a paginated list of voice designs belonging to the authenticated
       # account.
       sig do
@@ -149,23 +166,6 @@ module Telnyx
         # Specific version number to download the sample for. Defaults to the latest
         # version.
         version: nil,
-        request_options: {}
-      )
-      end
-
-      # Updates the name of a voice design. All versions retain their other properties.
-      sig do
-        params(
-          id: String,
-          name: String,
-          request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::VoiceDesignRenameResponse)
-      end
-      def rename(
-        # The voice design UUID or name.
-        id,
-        # New name for the voice design.
-        name:,
         request_options: {}
       )
       end

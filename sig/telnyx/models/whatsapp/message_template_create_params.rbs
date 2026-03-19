@@ -1,0 +1,60 @@
+module Telnyx
+  module Models
+    module Whatsapp
+      type message_template_create_params =
+        {
+          category: Telnyx::Models::Whatsapp::MessageTemplateCreateParams::category,
+          components: ::Array[top],
+          language: String,
+          name: String,
+          waba_id: String
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class MessageTemplateCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor category: Telnyx::Models::Whatsapp::MessageTemplateCreateParams::category
+
+        attr_accessor components: ::Array[top]
+
+        attr_accessor language: String
+
+        attr_accessor name: String
+
+        attr_accessor waba_id: String
+
+        def initialize: (
+          category: Telnyx::Models::Whatsapp::MessageTemplateCreateParams::category,
+          components: ::Array[top],
+          language: String,
+          name: String,
+          waba_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          category: Telnyx::Models::Whatsapp::MessageTemplateCreateParams::category,
+          components: ::Array[top],
+          language: String,
+          name: String,
+          waba_id: String,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type category = :MARKETING | :UTILITY | :AUTHENTICATION
+
+        module Category
+          extend Telnyx::Internal::Type::Enum
+
+          MARKETING: :MARKETING
+          UTILITY: :UTILITY
+          AUTHENTICATION: :AUTHENTICATION
+
+          def self?.values: -> ::Array[Telnyx::Models::Whatsapp::MessageTemplateCreateParams::category]
+        end
+      end
+    end
+  end
+end

@@ -10,7 +10,7 @@ module Telnyx
         T.type_alias do
           T.any(
             Telnyx::Models::StreamServerEvent::AudioChunk,
-            Telnyx::Models::StreamServerEvent::FinalFrameEvent,
+            Telnyx::Models::StreamServerEvent::Final,
             Telnyx::Models::StreamServerEvent::Error
           )
         end
@@ -147,11 +147,11 @@ module Telnyx
         end
       end
 
-      class FinalFrameEvent < Telnyx::Internal::Type::BaseModel
+      class Final < Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Models::StreamServerEvent::FinalFrameEvent,
+              Telnyx::Models::StreamServerEvent::Final,
               Telnyx::Internal::AnyHash
             )
           end
@@ -164,7 +164,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::Models::StreamServerEvent::FinalFrameEvent::IsFinal::TaggedBoolean
+              Telnyx::Models::StreamServerEvent::Final::IsFinal::TaggedBoolean
             )
           )
         end
@@ -173,7 +173,7 @@ module Telnyx
         sig do
           params(
             is_final:
-              Telnyx::Models::StreamServerEvent::FinalFrameEvent::IsFinal::OrBoolean
+              Telnyx::Models::StreamServerEvent::Final::IsFinal::OrBoolean
           ).void
         end
         attr_writer :is_final
@@ -196,7 +196,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::Models::StreamServerEvent::FinalFrameEvent::Type::TaggedSymbol
+              Telnyx::Models::StreamServerEvent::Final::Type::TaggedSymbol
             )
           )
         end
@@ -204,8 +204,7 @@ module Telnyx
 
         sig do
           params(
-            type:
-              Telnyx::Models::StreamServerEvent::FinalFrameEvent::Type::OrSymbol
+            type: Telnyx::Models::StreamServerEvent::Final::Type::OrSymbol
           ).void
         end
         attr_writer :type
@@ -215,11 +214,10 @@ module Telnyx
           params(
             audio: NilClass,
             is_final:
-              Telnyx::Models::StreamServerEvent::FinalFrameEvent::IsFinal::OrBoolean,
+              Telnyx::Models::StreamServerEvent::Final::IsFinal::OrBoolean,
             text: String,
             time_to_first_audio_frame_ms: Integer,
-            type:
-              Telnyx::Models::StreamServerEvent::FinalFrameEvent::Type::OrSymbol
+            type: Telnyx::Models::StreamServerEvent::Final::Type::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -241,11 +239,10 @@ module Telnyx
             {
               audio: NilClass,
               is_final:
-                Telnyx::Models::StreamServerEvent::FinalFrameEvent::IsFinal::TaggedBoolean,
+                Telnyx::Models::StreamServerEvent::Final::IsFinal::TaggedBoolean,
               text: String,
               time_to_first_audio_frame_ms: Integer,
-              type:
-                Telnyx::Models::StreamServerEvent::FinalFrameEvent::Type::TaggedSymbol
+              type: Telnyx::Models::StreamServerEvent::Final::Type::TaggedSymbol
             }
           )
         end
@@ -260,7 +257,7 @@ module Telnyx
             T.type_alias do
               T.all(
                 T::Boolean,
-                Telnyx::Models::StreamServerEvent::FinalFrameEvent::IsFinal
+                Telnyx::Models::StreamServerEvent::Final::IsFinal
               )
             end
           OrBoolean = T.type_alias { T::Boolean }
@@ -268,13 +265,13 @@ module Telnyx
           TRUE =
             T.let(
               true,
-              Telnyx::Models::StreamServerEvent::FinalFrameEvent::IsFinal::TaggedBoolean
+              Telnyx::Models::StreamServerEvent::Final::IsFinal::TaggedBoolean
             )
 
           sig do
             override.returns(
               T::Array[
-                Telnyx::Models::StreamServerEvent::FinalFrameEvent::IsFinal::TaggedBoolean
+                Telnyx::Models::StreamServerEvent::Final::IsFinal::TaggedBoolean
               ]
             )
           end
@@ -288,23 +285,20 @@ module Telnyx
 
           TaggedSymbol =
             T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::Models::StreamServerEvent::FinalFrameEvent::Type
-              )
+              T.all(Symbol, Telnyx::Models::StreamServerEvent::Final::Type)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           FINAL =
             T.let(
               :final,
-              Telnyx::Models::StreamServerEvent::FinalFrameEvent::Type::TaggedSymbol
+              Telnyx::Models::StreamServerEvent::Final::Type::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Telnyx::Models::StreamServerEvent::FinalFrameEvent::Type::TaggedSymbol
+                Telnyx::Models::StreamServerEvent::Final::Type::TaggedSymbol
               ]
             )
           end

@@ -1471,6 +1471,18 @@ module Telnyx
 
   class TextToSpeechStreamParams = Telnyx::Models::TextToSpeechStreamParams
 
+  class TrafficPolicyProfileCreateParams = Telnyx::Models::TrafficPolicyProfileCreateParams
+
+  class TrafficPolicyProfileDeleteParams = Telnyx::Models::TrafficPolicyProfileDeleteParams
+
+  class TrafficPolicyProfileListParams = Telnyx::Models::TrafficPolicyProfileListParams
+
+  class TrafficPolicyProfileListServicesParams = Telnyx::Models::TrafficPolicyProfileListServicesParams
+
+  class TrafficPolicyProfileRetrieveParams = Telnyx::Models::TrafficPolicyProfileRetrieveParams
+
+  class TrafficPolicyProfileUpdateParams = Telnyx::Models::TrafficPolicyProfileUpdateParams
+
   module TrafficType = Telnyx::Models::TrafficType
 
   class Transcription = Telnyx::Models::Transcription
@@ -1589,9 +1601,9 @@ module Telnyx
 
   class VoiceDesignListParams = Telnyx::Models::VoiceDesignListParams
 
-  class VoiceDesignRenameParams = Telnyx::Models::VoiceDesignRenameParams
-
   class VoiceDesignRetrieveParams = Telnyx::Models::VoiceDesignRetrieveParams
+
+  class VoiceDesignUpdateParams = Telnyx::Models::VoiceDesignUpdateParams
 
   module WebhookAPIVersion = Telnyx::Models::WebhookAPIVersion
 
@@ -1626,8 +1638,6 @@ module Telnyx
   class WhatsappMessageTemplateUpdateParams = Telnyx::Models::WhatsappMessageTemplateUpdateParams
 
   class WhatsappReaction = Telnyx::Models::WhatsappReaction
-
-  class WhatsappTemplateData = Telnyx::Models::WhatsappTemplateData
 
   class WireguardInterfaceCreateParams = Telnyx::Models::WireguardInterfaceCreateParams
 

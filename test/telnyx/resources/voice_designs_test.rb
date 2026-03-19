@@ -39,6 +39,22 @@ class Telnyx::Test::Resources::VoiceDesignsTest < Telnyx::Test::ResourceTest
     end
   end
 
+  def test_update_required_params
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.voice_designs.update("id", name: "updated-narrator")
+
+    assert_pattern do
+      response => Telnyx::Models::VoiceDesignUpdateResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::VoiceDesignUpdateResponse::Data | nil
+      }
+    end
+  end
+
   def test_list
     skip("Mock server tests are disabled")
 
@@ -93,22 +109,6 @@ class Telnyx::Test::Resources::VoiceDesignsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => StringIO
-    end
-  end
-
-  def test_rename_required_params
-    skip("Mock server tests are disabled")
-
-    response = @telnyx.voice_designs.rename("id", name: "updated-narrator")
-
-    assert_pattern do
-      response => Telnyx::Models::VoiceDesignRenameResponse
-    end
-
-    assert_pattern do
-      response => {
-        data: Telnyx::Models::VoiceDesignRenameResponse::Data | nil
-      }
     end
   end
 end

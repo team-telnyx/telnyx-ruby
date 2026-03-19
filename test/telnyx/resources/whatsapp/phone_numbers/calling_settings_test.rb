@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Whatsapp::PhoneNumbers::CallingSettingsTest < Tel
 
     assert_pattern do
       response => {
-        data: Telnyx::Whatsapp::PhoneNumbers::WhatsappCallingSettingsData | nil
+        data: Telnyx::Models::Whatsapp::PhoneNumbers::CallingSettingRetrieveResponse::Data | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::Whatsapp::PhoneNumbers::CallingSettingsTest < Tel
 
     assert_pattern do
       response => {
-        data: Telnyx::Whatsapp::PhoneNumbers::WhatsappCallingSettingsData | nil
+        data: Telnyx::Models::Whatsapp::PhoneNumbers::CallingSettingUpdateResponse::Data | nil
       }
     end
   end

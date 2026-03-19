@@ -6,6 +6,28 @@ module Telnyx
       class Assistants
         # Configure AI assistant specifications
         class Tags
+          # Add Assistant Tag
+          #
+          # @overload create(assistant_id, tag:, request_options: {})
+          #
+          # @param assistant_id [String]
+          # @param tag [String]
+          # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+          #
+          # @return [Telnyx::Models::AI::Assistants::TagCreateResponse]
+          #
+          # @see Telnyx::Models::AI::Assistants::TagCreateParams
+          def create(assistant_id, params)
+            parsed, options = Telnyx::AI::Assistants::TagCreateParams.dump_request(params)
+            @client.request(
+              method: :post,
+              path: ["ai/assistants/%1$s/tags", assistant_id],
+              body: parsed,
+              model: Telnyx::Models::AI::Assistants::TagCreateResponse,
+              options: options
+            )
+          end
+
           # Get All Tags
           #
           # @overload list(request_options: {})
@@ -24,41 +46,19 @@ module Telnyx
             )
           end
 
-          # Add Assistant Tag
-          #
-          # @overload add(assistant_id, tag:, request_options: {})
-          #
-          # @param assistant_id [String]
-          # @param tag [String]
-          # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
-          #
-          # @return [Telnyx::Models::AI::Assistants::TagAddResponse]
-          #
-          # @see Telnyx::Models::AI::Assistants::TagAddParams
-          def add(assistant_id, params)
-            parsed, options = Telnyx::AI::Assistants::TagAddParams.dump_request(params)
-            @client.request(
-              method: :post,
-              path: ["ai/assistants/%1$s/tags", assistant_id],
-              body: parsed,
-              model: Telnyx::Models::AI::Assistants::TagAddResponse,
-              options: options
-            )
-          end
-
           # Remove Assistant Tag
           #
-          # @overload remove(tag, assistant_id:, request_options: {})
+          # @overload delete(tag, assistant_id:, request_options: {})
           #
           # @param tag [String]
           # @param assistant_id [String]
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::AI::Assistants::TagRemoveResponse]
+          # @return [Telnyx::Models::AI::Assistants::TagDeleteResponse]
           #
-          # @see Telnyx::Models::AI::Assistants::TagRemoveParams
-          def remove(tag, params)
-            parsed, options = Telnyx::AI::Assistants::TagRemoveParams.dump_request(params)
+          # @see Telnyx::Models::AI::Assistants::TagDeleteParams
+          def delete(tag, params)
+            parsed, options = Telnyx::AI::Assistants::TagDeleteParams.dump_request(params)
             assistant_id =
               parsed.delete(:assistant_id) do
                 raise ArgumentError.new("missing required path argument #{_1}")
@@ -66,7 +66,7 @@ module Telnyx
             @client.request(
               method: :delete,
               path: ["ai/assistants/%1$s/tags/%2$s", assistant_id, tag],
-              model: Telnyx::Models::AI::Assistants::TagRemoveResponse,
+              model: Telnyx::Models::AI::Assistants::TagDeleteResponse,
               options: options
             )
           end

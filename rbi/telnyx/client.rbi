@@ -615,6 +615,10 @@ module Telnyx
     sig { returns(Telnyx::Resources::SessionAnalysis) }
     attr_reader :session_analysis
 
+    # Traffic Policy Profiles operations
+    sig { returns(Telnyx::Resources::TrafficPolicyProfiles) }
+    attr_reader :traffic_policy_profiles
+
     sig { returns(Telnyx::Resources::Whatsapp) }
     attr_reader :whatsapp
 
