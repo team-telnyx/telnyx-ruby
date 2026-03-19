@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::Whatsapp::MessageTemplatesTest < Telnyx::Test::Re
     response =
       @telnyx.whatsapp.message_templates.create(
         category: :MARKETING,
-        components: [{}],
+        components: [{foo: "bar"}],
         language: "language",
         name: "name",
         waba_id: "waba_id"
@@ -21,7 +21,39 @@ class Telnyx::Test::Resources::Whatsapp::MessageTemplatesTest < Telnyx::Test::Re
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Whatsapp::MessageTemplateCreateResponse::Data | nil
+        data: Telnyx::WhatsappTemplateData | nil
+      }
+    end
+  end
+
+  def test_retrieve
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.whatsapp.message_templates.retrieve("id")
+
+    assert_pattern do
+      response => Telnyx::Models::Whatsapp::MessageTemplateRetrieveResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::WhatsappTemplateData | nil
+      }
+    end
+  end
+
+  def test_update
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.whatsapp.message_templates.update("id")
+
+    assert_pattern do
+      response => Telnyx::Models::Whatsapp::MessageTemplateUpdateResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::WhatsappTemplateData | nil
       }
     end
   end
@@ -39,14 +71,14 @@ class Telnyx::Test::Resources::Whatsapp::MessageTemplatesTest < Telnyx::Test::Re
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::Whatsapp::MessageTemplateListResponse
+      row => Telnyx::WhatsappTemplateData
     end
 
     assert_pattern do
       row => {
         id: String | nil,
-        category: Telnyx::Models::Whatsapp::MessageTemplateListResponse::Category | nil,
-        components: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]) | nil,
+        category: Telnyx::WhatsappTemplateData::Category | nil,
+        components: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]) | nil,
         created_at: Time | nil,
         language: String | nil,
         name: String | nil,
@@ -55,8 +87,18 @@ class Telnyx::Test::Resources::Whatsapp::MessageTemplatesTest < Telnyx::Test::Re
         status: String | nil,
         template_id: String | nil,
         updated_at: Time | nil,
-        whatsapp_business_account: Telnyx::Models::Whatsapp::MessageTemplateListResponse::WhatsappBusinessAccount | nil
+        whatsapp_business_account: Telnyx::WhatsappTemplateData::WhatsappBusinessAccount | nil
       }
+    end
+  end
+
+  def test_delete
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.whatsapp.message_templates.delete("id")
+
+    assert_pattern do
+      response => nil
     end
   end
 end

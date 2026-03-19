@@ -1692,13 +1692,9 @@ module Telnyx
 
   WhatsappMessageContent = Telnyx::Models::WhatsappMessageContent
 
-  WhatsappMessageTemplateDeleteParams = Telnyx::Models::WhatsappMessageTemplateDeleteParams
-
-  WhatsappMessageTemplateRetrieveParams = Telnyx::Models::WhatsappMessageTemplateRetrieveParams
-
-  WhatsappMessageTemplateUpdateParams = Telnyx::Models::WhatsappMessageTemplateUpdateParams
-
   WhatsappReaction = Telnyx::Models::WhatsappReaction
+
+  WhatsappTemplateData = Telnyx::Models::WhatsappTemplateData
 
   WireguardInterfaceCreateParams = Telnyx::Models::WireguardInterfaceCreateParams
 

@@ -622,10 +622,6 @@ module Telnyx
     sig { returns(Telnyx::Resources::Whatsapp) }
     attr_reader :whatsapp
 
-    # Manage Whatsapp message templates
-    sig { returns(Telnyx::Resources::WhatsappMessageTemplates) }
-    attr_reader :whatsapp_message_templates
-
     sig { returns(Telnyx::Resources::X402) }
     attr_reader :x402
 

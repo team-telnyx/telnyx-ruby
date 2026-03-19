@@ -10,7 +10,7 @@ module Telnyx
         # @overload create(category:, components:, language:, name:, waba_id:, request_options: {})
         #
         # @param category [Symbol, Telnyx::Models::Whatsapp::MessageTemplateCreateParams::Category]
-        # @param components [Array<Object>]
+        # @param components [Array<Hash{Symbol=>Object}>]
         # @param language [String]
         # @param name [String]
         # @param waba_id [String]
@@ -26,6 +26,52 @@ module Telnyx
             path: "v2/whatsapp/message_templates",
             body: parsed,
             model: Telnyx::Models::Whatsapp::MessageTemplateCreateResponse,
+            options: options
+          )
+        end
+
+        # Get a Whatsapp message template by ID
+        #
+        # @overload retrieve(id, request_options: {})
+        #
+        # @param id [String] Whatsapp message template ID
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Whatsapp::MessageTemplateRetrieveResponse]
+        #
+        # @see Telnyx::Models::Whatsapp::MessageTemplateRetrieveParams
+        def retrieve(id, params = {})
+          @client.request(
+            method: :get,
+            path: ["v2/whatsapp_message_templates/%1$s", id],
+            model: Telnyx::Models::Whatsapp::MessageTemplateRetrieveResponse,
+            options: params[:request_options]
+          )
+        end
+
+        # Update a Whatsapp message template
+        #
+        # @overload update(id, category: nil, components: nil, request_options: {})
+        #
+        # @param id [String] Whatsapp message template ID
+        #
+        # @param category [Symbol, Telnyx::Models::Whatsapp::MessageTemplateUpdateParams::Category]
+        #
+        # @param components [Array<Hash{Symbol=>Object}>]
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Whatsapp::MessageTemplateUpdateResponse]
+        #
+        # @see Telnyx::Models::Whatsapp::MessageTemplateUpdateParams
+        def update(id, params = {})
+          parsed, options = Telnyx::Whatsapp::MessageTemplateUpdateParams.dump_request(params)
+          @client.request(
+            method: :patch,
+            path: ["v2/whatsapp_message_templates/%1$s", id],
+            body: parsed,
+            model: Telnyx::Models::Whatsapp::MessageTemplateUpdateResponse,
             options: options
           )
         end
@@ -48,7 +94,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Whatsapp::MessageTemplateListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::WhatsappTemplateData>]
         #
         # @see Telnyx::Models::Whatsapp::MessageTemplateListParams
         def list(params = {})
@@ -66,8 +112,28 @@ module Telnyx
               page_size: "page[size]"
             ),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::Whatsapp::MessageTemplateListResponse,
+            model: Telnyx::WhatsappTemplateData,
             options: options
+          )
+        end
+
+        # Delete a Whatsapp message template
+        #
+        # @overload delete(id, request_options: {})
+        #
+        # @param id [String] Whatsapp message template ID
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [nil]
+        #
+        # @see Telnyx::Models::Whatsapp::MessageTemplateDeleteParams
+        def delete(id, params = {})
+          @client.request(
+            method: :delete,
+            path: ["v2/whatsapp_message_templates/%1$s", id],
+            model: NilClass,
+            options: params[:request_options]
           )
         end
 

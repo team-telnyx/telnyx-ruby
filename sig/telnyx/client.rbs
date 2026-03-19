@@ -326,8 +326,6 @@ module Telnyx
 
     attr_reader whatsapp: Telnyx::Resources::Whatsapp
 
-    attr_reader whatsapp_message_templates: Telnyx::Resources::WhatsappMessageTemplates
-
     attr_reader x402: Telnyx::Resources::X402
 
     attr_reader voice_clones: Telnyx::Resources::VoiceClones

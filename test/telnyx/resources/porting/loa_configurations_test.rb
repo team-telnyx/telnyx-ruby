@@ -143,6 +143,29 @@ class Telnyx::Test::Resources::Porting::LoaConfigurationsTest < Telnyx::Test::Re
     end
   end
 
+  def test_preview_0_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.porting.loa_configurations.preview_0(
+        address: {
+          city: "Austin",
+          country_code: "US",
+          state: "TX",
+          street_address: "600 Congress Avenue",
+          zip_code: "78701"
+        },
+        company_name: "Telnyx",
+        contact: {email: "testing@telnyx.com", phone_number: "+12003270001"},
+        logo: {document_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"},
+        name: "My LOA Configuration"
+      )
+
+    assert_pattern do
+      response => StringIO
+    end
+  end
+
   def test_preview_1
     skip("Mock server tests are disabled")
 

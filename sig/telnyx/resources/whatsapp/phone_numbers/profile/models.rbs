@@ -1,0 +1,13 @@
+module Telnyx
+  module Resources
+    class Whatsapp
+      class PhoneNumbers
+        class Profile
+          class Models
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

@@ -163,6 +163,38 @@ module Telnyx
           )
         end
 
+        # Preview the LOA template that would be generated without need to create LOA
+        # configuration.
+        #
+        # @overload preview_0(address:, company_name:, contact:, logo:, name:, request_options: {})
+        #
+        # @param address [Telnyx::Models::Porting::LoaConfigurationPreview0Params::Address] The address of the company.
+        #
+        # @param company_name [String] The name of the company
+        #
+        # @param contact [Telnyx::Models::Porting::LoaConfigurationPreview0Params::Contact] The contact information of the company.
+        #
+        # @param logo [Telnyx::Models::Porting::LoaConfigurationPreview0Params::Logo] The logo of the LOA configuration
+        #
+        # @param name [String] The name of the LOA configuration
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [StringIO]
+        #
+        # @see Telnyx::Models::Porting::LoaConfigurationPreview0Params
+        def preview_0(params)
+          parsed, options = Telnyx::Porting::LoaConfigurationPreview0Params.dump_request(params)
+          @client.request(
+            method: :post,
+            path: "porting/loa_configurations/preview",
+            headers: {"accept" => "application/pdf"},
+            body: parsed,
+            model: StringIO,
+            options: options
+          )
+        end
+
         # Preview a specific LOA configuration.
         #
         # @overload preview_1(id, request_options: {})
