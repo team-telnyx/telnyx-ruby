@@ -43,6 +43,15 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> StringIO
 
+        def preview_0: (
+          address: Telnyx::Porting::LoaConfigurationPreview0Params::Address,
+          company_name: String,
+          contact: Telnyx::Porting::LoaConfigurationPreview0Params::Contact,
+          logo: Telnyx::Porting::LoaConfigurationPreview0Params::Logo,
+          name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> StringIO
+
         def preview_1: (
           String id,
           ?request_options: Telnyx::request_opts
