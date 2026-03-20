@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.60.0 (2026-03-20)
+
+Full Changelog: [v5.59.0...v5.60.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.59.0...v5.60.0)
+
+### Features
+
+* **api:** manual updates ([de7ba26](https://github.com/team-telnyx/telnyx-ruby/commit/de7ba26010eaa0b927c15529f8b3b6227cee0b43))
+
+
+### Chores
+
+* **internal:** version bump ([b889b09](https://github.com/team-telnyx/telnyx-ruby/commit/b889b0938490b818314eb6eac76f92c112f630bc))
+
 ## 5.58.0 (2026-03-18)
 
 Full Changelog: [v5.57.0...v5.58.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.57.0...v5.58.0)
