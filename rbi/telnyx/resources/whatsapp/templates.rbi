@@ -10,7 +10,16 @@ module Telnyx
           params(
             category:
               Telnyx::Whatsapp::TemplateCreateParams::Category::OrSymbol,
-            components: T::Array[T::Hash[Symbol, T.anything]],
+            components:
+              T::Array[
+                T.any(
+                  Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent::OrHash,
+                  Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateBodyComponent::OrHash,
+                  Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateFooterComponent::OrHash,
+                  Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::OrHash,
+                  Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateCarouselComponent::OrHash
+                )
+              ],
             language: String,
             name: String,
             waba_id: String,
@@ -18,10 +27,17 @@ module Telnyx
           ).returns(Telnyx::Models::Whatsapp::TemplateCreateResponse)
         end
         def create(
+          # Template category: AUTHENTICATION, UTILITY, or MARKETING.
           category:,
+          # Template components defining message structure. Passed through to Meta Graph
+          # API. Templates with variables must include example values. Supports HEADER,
+          # BODY, FOOTER, BUTTONS, CAROUSEL and any future Meta component types.
           components:,
+          # Template language code (e.g. en_US, es, pt_BR).
           language:,
+          # Template name. Lowercase letters, numbers, and underscores only.
           name:,
+          # The WhatsApp Business Account ID.
           waba_id:,
           request_options: {}
         )

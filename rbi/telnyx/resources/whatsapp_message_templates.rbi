@@ -24,7 +24,16 @@ module Telnyx
           id: String,
           category:
             Telnyx::WhatsappMessageTemplateUpdateParams::Category::OrSymbol,
-          components: T::Array[T::Hash[Symbol, T.anything]],
+          components:
+            T::Array[
+              T.any(
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::OrHash,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::OrHash,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent::OrHash,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::OrHash,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::OrHash
+              )
+            ],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::WhatsappMessageTemplateUpdateResponse)
       end
@@ -32,6 +41,7 @@ module Telnyx
         # Whatsapp message template ID
         id,
         category: nil,
+        # Updated template components. Same structure as the create request.
         components: nil,
         request_options: {}
       )

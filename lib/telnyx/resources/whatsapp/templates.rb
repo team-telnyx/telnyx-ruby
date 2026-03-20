@@ -5,15 +5,23 @@ module Telnyx
     class Whatsapp
       # Manage Whatsapp message templates
       class Templates
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Whatsapp::TemplateCreateParams} for more details.
+        #
         # Create a Whatsapp message template
         #
         # @overload create(category:, components:, language:, name:, waba_id:, request_options: {})
         #
-        # @param category [Symbol, Telnyx::Models::Whatsapp::TemplateCreateParams::Category]
-        # @param components [Array<Hash{Symbol=>Object}>]
-        # @param language [String]
-        # @param name [String]
-        # @param waba_id [String]
+        # @param category [Symbol, Telnyx::Models::Whatsapp::TemplateCreateParams::Category] Template category: AUTHENTICATION, UTILITY, or MARKETING.
+        #
+        # @param components [Array<Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent, Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateBodyComponent, Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateFooterComponent, Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent, Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateCarouselComponent>] Template components defining message structure. Passed through to Meta Graph API
+        #
+        # @param language [String] Template language code (e.g. en_US, es, pt_BR).
+        #
+        # @param name [String] Template name. Lowercase letters, numbers, and underscores only.
+        #
+        # @param waba_id [String] The WhatsApp Business Account ID.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::Whatsapp::TemplateCreateResponse]
