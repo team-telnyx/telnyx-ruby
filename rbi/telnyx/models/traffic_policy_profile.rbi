@@ -2,13 +2,10 @@
 
 module Telnyx
   module Models
-    class TrafficPolicyProfileListResponse < Telnyx::Internal::Type::BaseModel
+    class TrafficPolicyProfile < Telnyx::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
-          T.any(
-            Telnyx::Models::TrafficPolicyProfileListResponse,
-            Telnyx::Internal::AnyHash
-          )
+          T.any(Telnyx::TrafficPolicyProfile, Telnyx::Internal::AnyHash)
         end
 
       # Array of domain names.
@@ -38,19 +35,11 @@ module Telnyx
 
       # The type of the traffic policy profile.
       sig do
-        returns(
-          T.nilable(
-            Telnyx::Models::TrafficPolicyProfileListResponse::Type::TaggedSymbol
-          )
-        )
+        returns(T.nilable(Telnyx::TrafficPolicyProfile::Type::TaggedSymbol))
       end
       attr_reader :type
 
-      sig do
-        params(
-          type: Telnyx::Models::TrafficPolicyProfileListResponse::Type::OrSymbol
-        ).void
-      end
+      sig { params(type: Telnyx::TrafficPolicyProfile::Type::OrSymbol).void }
       attr_writer :type
 
       # Identifies the resource.
@@ -89,8 +78,7 @@ module Telnyx
           limit_bw_kbps: T.nilable(Integer),
           record_type: String,
           services: T::Array[String],
-          type:
-            Telnyx::Models::TrafficPolicyProfileListResponse::Type::OrSymbol,
+          type: Telnyx::TrafficPolicyProfile::Type::OrSymbol,
           updated_at: String
         ).returns(T.attached_class)
       end
@@ -125,8 +113,7 @@ module Telnyx
             limit_bw_kbps: T.nilable(Integer),
             record_type: String,
             services: T::Array[String],
-            type:
-              Telnyx::Models::TrafficPolicyProfileListResponse::Type::TaggedSymbol,
+            type: Telnyx::TrafficPolicyProfile::Type::TaggedSymbol,
             updated_at: String
           }
         )
@@ -139,35 +126,19 @@ module Telnyx
         extend Telnyx::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(
-              Symbol,
-              Telnyx::Models::TrafficPolicyProfileListResponse::Type
-            )
-          end
+          T.type_alias { T.all(Symbol, Telnyx::TrafficPolicyProfile::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         WHITELIST =
-          T.let(
-            :whitelist,
-            Telnyx::Models::TrafficPolicyProfileListResponse::Type::TaggedSymbol
-          )
+          T.let(:whitelist, Telnyx::TrafficPolicyProfile::Type::TaggedSymbol)
         BLACKLIST =
-          T.let(
-            :blacklist,
-            Telnyx::Models::TrafficPolicyProfileListResponse::Type::TaggedSymbol
-          )
+          T.let(:blacklist, Telnyx::TrafficPolicyProfile::Type::TaggedSymbol)
         THROTTLING =
-          T.let(
-            :throttling,
-            Telnyx::Models::TrafficPolicyProfileListResponse::Type::TaggedSymbol
-          )
+          T.let(:throttling, Telnyx::TrafficPolicyProfile::Type::TaggedSymbol)
 
         sig do
           override.returns(
-            T::Array[
-              Telnyx::Models::TrafficPolicyProfileListResponse::Type::TaggedSymbol
-            ]
+            T::Array[Telnyx::TrafficPolicyProfile::Type::TaggedSymbol]
           )
         end
         def self.values

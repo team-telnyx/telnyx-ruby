@@ -1,6 +1,6 @@
 module Telnyx
   module Models
-    type traffic_policy_profile_list_response =
+    type traffic_policy_profile =
       {
         id: String,
         created_at: String,
@@ -9,11 +9,11 @@ module Telnyx
         limit_bw_kbps: Integer?,
         record_type: String,
         services: ::Array[String],
-        type: Telnyx::Models::TrafficPolicyProfileListResponse::type_,
+        type: Telnyx::Models::TrafficPolicyProfile::type_,
         updated_at: String
       }
 
-    class TrafficPolicyProfileListResponse < Telnyx::Internal::Type::BaseModel
+    class TrafficPolicyProfile < Telnyx::Internal::Type::BaseModel
       attr_reader domains: ::Array[String]?
 
       def domains=: (::Array[String]) -> ::Array[String]
@@ -28,11 +28,11 @@ module Telnyx
 
       def services=: (::Array[String]) -> ::Array[String]
 
-      attr_reader type: Telnyx::Models::TrafficPolicyProfileListResponse::type_?
+      attr_reader type: Telnyx::Models::TrafficPolicyProfile::type_?
 
       def type=: (
-        Telnyx::Models::TrafficPolicyProfileListResponse::type_
-      ) -> Telnyx::Models::TrafficPolicyProfileListResponse::type_
+        Telnyx::Models::TrafficPolicyProfile::type_
+      ) -> Telnyx::Models::TrafficPolicyProfile::type_
 
       attr_reader id: String?
 
@@ -58,7 +58,7 @@ module Telnyx
         ?limit_bw_kbps: Integer?,
         ?record_type: String,
         ?services: ::Array[String],
-        ?type: Telnyx::Models::TrafficPolicyProfileListResponse::type_,
+        ?type: Telnyx::Models::TrafficPolicyProfile::type_,
         ?updated_at: String
       ) -> void
 
@@ -70,7 +70,7 @@ module Telnyx
         limit_bw_kbps: Integer?,
         record_type: String,
         services: ::Array[String],
-        type: Telnyx::Models::TrafficPolicyProfileListResponse::type_,
+        type: Telnyx::Models::TrafficPolicyProfile::type_,
         updated_at: String
       }
 
@@ -83,7 +83,7 @@ module Telnyx
         BLACKLIST: :blacklist
         THROTTLING: :throttling
 
-        def self?.values: -> ::Array[Telnyx::Models::TrafficPolicyProfileListResponse::type_]
+        def self?.values: -> ::Array[Telnyx::Models::TrafficPolicyProfile::type_]
       end
     end
   end

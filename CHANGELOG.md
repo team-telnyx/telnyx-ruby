@@ -1,20 +1,17 @@
 # Changelog
 
-## 5.59.0 (2026-03-19)
+## 5.60.0 (2026-03-20)
 
-Full Changelog: [v5.58.0...v5.59.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.58.0...v5.59.0)
+Full Changelog: [v5.59.0...v5.60.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.59.0...v5.60.0)
 
 ### Features
 
-* **api:** manual updates ([8105361](https://github.com/team-telnyx/telnyx-ruby/commit/81053613aee31cb01061ad1e55c4997d727ff9e8))
-* **api:** manual updates ([bd1eab5](https://github.com/team-telnyx/telnyx-ruby/commit/bd1eab5de098d98d53fc00aefc35dbe825fcd825))
-* TELAPPS-5668: Add call.cost webhook event documentation ([ad13577](https://github.com/team-telnyx/telnyx-ruby/commit/ad1357775aeffb088773216f099dc0ba7ac667e9))
-* **wireless:** add traffic policy profiles endpoints to OpenAPI spec ([9d09743](https://github.com/team-telnyx/telnyx-ruby/commit/9d09743b1ddd22f8a9c296fc19636a0b07137554))
+* **api:** manual updates ([de7ba26](https://github.com/team-telnyx/telnyx-ruby/commit/de7ba26010eaa0b927c15529f8b3b6227cee0b43))
 
 
-### Documentation
+### Chores
 
-* **tts:** Add Telnyx.Ultra model documentation ([fd748f2](https://github.com/team-telnyx/telnyx-ruby/commit/fd748f289da493776d1c1e35322abd2333e0b650))
+* **internal:** version bump ([b889b09](https://github.com/team-telnyx/telnyx-ruby/commit/b889b0938490b818314eb6eac76f92c112f630bc))
 
 ## 5.58.0 (2026-03-18)
 
