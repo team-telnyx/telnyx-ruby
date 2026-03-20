@@ -1,5 +1,24 @@
 # Changelog
 
+## 5.61.0 (2026-03-20)
+
+Full Changelog: [v5.60.0...v5.61.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.60.0...v5.61.0)
+
+### Features
+
+* Add Minimax provider support to Voice Designs and Voice Clones API spec ([3a2097f](https://github.com/team-telnyx/telnyx-ruby/commit/3a2097fe94eccb0272cd8583d8d7671240bcd62c))
+* **api:** manual updates ([aa786f5](https://github.com/team-telnyx/telnyx-ruby/commit/aa786f59305152f954f4f3e8c58520af06d4d67d))
+
+
+### Bug Fixes
+
+* add missing VoiceClone constant definitions in models.rbi ([2467121](https://github.com/team-telnyx/telnyx-ruby/commit/246712128f0966723dd43cff7ced6037af5cb48a))
+
+
+### Refactors
+
+* move webhook verification to separate module to avoid merge conflicts ([9d9bd3c](https://github.com/team-telnyx/telnyx-ruby/commit/9d9bd3ca8b0cea43176a9fc0556ffe15dc5258f9))
+
 ## 5.60.0 (2026-03-20)
 
 Full Changelog: [v5.59.0...v5.60.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.59.0...v5.60.0)
