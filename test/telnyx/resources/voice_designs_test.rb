@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::VoiceDesignsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::VoiceDesignCreateResponse::Data | nil
+        data: Telnyx::VoiceDesignData | nil
       }
     end
   end
@@ -34,7 +34,7 @@ class Telnyx::Test::Resources::VoiceDesignsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::VoiceDesignRetrieveResponse::Data | nil
+        data: Telnyx::VoiceDesignData | nil
       }
     end
   end

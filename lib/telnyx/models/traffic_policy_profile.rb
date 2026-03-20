@@ -3,7 +3,7 @@
 module Telnyx
   module Models
     # @see Telnyx::Resources::TrafficPolicyProfiles#list
-    class TrafficPolicyProfileListResponse < Telnyx::Internal::Type::BaseModel
+    class TrafficPolicyProfile < Telnyx::Internal::Type::BaseModel
       # @!attribute domains
       #   Array of domain names.
       #
@@ -31,8 +31,8 @@ module Telnyx
       # @!attribute type
       #   The type of the traffic policy profile.
       #
-      #   @return [Symbol, Telnyx::Models::TrafficPolicyProfileListResponse::Type, nil]
-      optional :type, enum: -> { Telnyx::Models::TrafficPolicyProfileListResponse::Type }
+      #   @return [Symbol, Telnyx::Models::TrafficPolicyProfile::Type, nil]
+      optional :type, enum: -> { Telnyx::TrafficPolicyProfile::Type }
 
       response_only do
         # @!attribute id
@@ -74,13 +74,13 @@ module Telnyx
       #
       #   @param services [Array<String>] Array of PCEF service IDs included in the profile.
       #
-      #   @param type [Symbol, Telnyx::Models::TrafficPolicyProfileListResponse::Type] The type of the traffic policy profile.
+      #   @param type [Symbol, Telnyx::Models::TrafficPolicyProfile::Type] The type of the traffic policy profile.
       #
       #   @param updated_at [String] ISO 8601 formatted date-time indicating when the resource was updated.
 
       # The type of the traffic policy profile.
       #
-      # @see Telnyx::Models::TrafficPolicyProfileListResponse#type
+      # @see Telnyx::Models::TrafficPolicyProfile#type
       module Type
         extend Telnyx::Internal::Type::Enum
 

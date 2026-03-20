@@ -47,7 +47,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::VoiceCloneListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::VoiceCloneData>]
       #
       # @see Telnyx::Models::VoiceCloneListParams
       def list(params = {})
@@ -62,7 +62,7 @@ module Telnyx
             page_size: "page[size]"
           ),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::VoiceCloneListResponse,
+          model: Telnyx::VoiceCloneData,
           options: options
         )
       end

@@ -32,7 +32,7 @@ module Telnyx
         ?page_size: Integer,
         ?sort: Telnyx::Models::TrafficPolicyProfileListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::TrafficPolicyProfileListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::TrafficPolicyProfile]
 
       def delete: (
         String id,
