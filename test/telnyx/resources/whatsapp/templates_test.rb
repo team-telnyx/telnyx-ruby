@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::Whatsapp::TemplatesTest < Telnyx::Test::ResourceT
     response =
       @telnyx.whatsapp.templates.create(
         category: :MARKETING,
-        components: [{foo: "bar"}],
+        components: [{format: :TEXT, type: :HEADER}],
         language: "language",
         name: "name",
         waba_id: "waba_id"

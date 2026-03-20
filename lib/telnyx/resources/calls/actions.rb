@@ -983,7 +983,7 @@ module Telnyx
         #
         # @param noise_suppression_engine [Symbol, Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine] The engine to use for noise suppression.
         #
-        # @param noise_suppression_engine_config [Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig] Configuration parameters for noise suppression engines.
+        # @param noise_suppression_engine_config [Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig] Configuration parameters for noise suppression engines. Different engines suppor
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

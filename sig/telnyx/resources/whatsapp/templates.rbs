@@ -4,7 +4,7 @@ module Telnyx
       class Templates
         def create: (
           category: Telnyx::Models::Whatsapp::TemplateCreateParams::category,
-          components: ::Array[::Hash[Symbol, top]],
+          components: ::Array[Telnyx::Models::Whatsapp::TemplateCreateParams::component],
           language: String,
           name: String,
           waba_id: String,

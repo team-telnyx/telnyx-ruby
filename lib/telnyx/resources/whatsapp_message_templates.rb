@@ -32,7 +32,7 @@ module Telnyx
       #
       # @param category [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Category]
       #
-      # @param components [Array<Hash{Symbol=>Object}>]
+      # @param components [Array<Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent>] Updated template components. Same structure as the create request.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

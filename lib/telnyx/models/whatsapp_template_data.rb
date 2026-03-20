@@ -14,7 +14,8 @@ module Telnyx
       optional :category, enum: -> { Telnyx::WhatsappTemplateData::Category }
 
       # @!attribute components
-      #   Whatsapp template components (header, body, footer, buttons)
+      #   Template components (header, body, footer, buttons) as submitted, including
+      #   example values.
       #
       #   @return [Array<Hash{Symbol=>Object}>, nil]
       optional :components,
@@ -46,6 +47,9 @@ module Telnyx
       optional :rejection_reason, String
 
       # @!attribute status
+      #   Current template status from Meta (e.g. PENDING, APPROVED, REJECTED, PAUSED,
+      #   DISABLED). Additional statuses may be returned as Meta evolves the template
+      #   lifecycle.
       #
       #   @return [String, nil]
       optional :status, String
@@ -66,11 +70,14 @@ module Telnyx
       optional :whatsapp_business_account, -> { Telnyx::WhatsappTemplateData::WhatsappBusinessAccount }
 
       # @!method initialize(id: nil, category: nil, components: nil, created_at: nil, language: nil, name: nil, record_type: nil, rejection_reason: nil, status: nil, template_id: nil, updated_at: nil, whatsapp_business_account: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Telnyx::Models::WhatsappTemplateData} for more details.
+      #
       #   @param id [String]
       #
       #   @param category [Symbol, Telnyx::Models::WhatsappTemplateData::Category]
       #
-      #   @param components [Array<Hash{Symbol=>Object}>] Whatsapp template components (header, body, footer, buttons)
+      #   @param components [Array<Hash{Symbol=>Object}>] Template components (header, body, footer, buttons) as submitted, including exam
       #
       #   @param created_at [Time]
       #
@@ -82,7 +89,7 @@ module Telnyx
       #
       #   @param rejection_reason [String]
       #
-      #   @param status [String]
+      #   @param status [String] Current template status from Meta (e.g. PENDING, APPROVED, REJECTED, PAUSED, DIS
       #
       #   @param template_id [String]
       #

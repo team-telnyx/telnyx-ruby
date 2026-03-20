@@ -76,7 +76,8 @@ module Telnyx
           def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::direction]
         end
 
-        type noise_suppression_engine = :Denoiser | :DeepFilterNet | :Krisp
+        type noise_suppression_engine =
+          :Denoiser | :DeepFilterNet | :Krisp | :AiCoustics
 
         module NoiseSuppressionEngine
           extend Telnyx::Internal::Type::Enum
@@ -84,20 +85,139 @@ module Telnyx
           DENOISER: :Denoiser
           DEEP_FILTER_NET: :DeepFilterNet
           KRISP: :Krisp
+          AI_COUSTICS: :AiCoustics
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::noise_suppression_engine]
         end
 
-        type noise_suppression_engine_config = { attenuation_limit: Integer }
+        type noise_suppression_engine_config =
+          {
+            attenuation_limit: Integer,
+            enhancement_level: Float,
+            family: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::family,
+            mode: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::mode,
+            model: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::model,
+            size: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::size,
+            suppression_level: Float,
+            voice_gain: Float
+          }
 
         class NoiseSuppressionEngineConfig < Telnyx::Internal::Type::BaseModel
           attr_reader attenuation_limit: Integer?
 
           def attenuation_limit=: (Integer) -> Integer
 
-          def initialize: (?attenuation_limit: Integer) -> void
+          attr_reader enhancement_level: Float?
 
-          def to_hash: -> { attenuation_limit: Integer }
+          def enhancement_level=: (Float) -> Float
+
+          attr_reader family: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::family?
+
+          def family=: (
+            Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::family
+          ) -> Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::family
+
+          attr_reader mode: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::mode?
+
+          def mode=: (
+            Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::mode
+          ) -> Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::mode
+
+          attr_reader model: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::model?
+
+          def model=: (
+            Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::model
+          ) -> Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::model
+
+          attr_reader size: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::size?
+
+          def size=: (
+            Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::size
+          ) -> Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::size
+
+          attr_reader suppression_level: Float?
+
+          def suppression_level=: (Float) -> Float
+
+          attr_reader voice_gain: Float?
+
+          def voice_gain=: (Float) -> Float
+
+          def initialize: (
+            ?attenuation_limit: Integer,
+            ?enhancement_level: Float,
+            ?family: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::family,
+            ?mode: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::mode,
+            ?model: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::model,
+            ?size: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::size,
+            ?suppression_level: Float,
+            ?voice_gain: Float
+          ) -> void
+
+          def to_hash: -> {
+            attenuation_limit: Integer,
+            enhancement_level: Float,
+            family: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::family,
+            mode: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::mode,
+            model: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::model,
+            size: Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::size,
+            suppression_level: Float,
+            voice_gain: Float
+          }
+
+          type family = :sparrow | :quail
+
+          module Family
+            extend Telnyx::Internal::Type::Enum
+
+            SPARROW: :sparrow
+            QUAIL: :quail
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::family]
+          end
+
+          type mode = :standard | :advanced
+
+          module Mode
+            extend Telnyx::Internal::Type::Enum
+
+            STANDARD: :standard
+            ADVANCED: :advanced
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::mode]
+          end
+
+          type model =
+            :"krisp-viva-tel-v2.kef"
+            | :"krisp-viva-tel-lite-v1.kef"
+            | :"krisp-viva-pro-v1.kef"
+            | :"krisp-viva-ss-v1.kef"
+
+          module Model
+            extend Telnyx::Internal::Type::Enum
+
+            KRISP_VIVA_TEL_V2_KEF: :"krisp-viva-tel-v2.kef"
+            KRISP_VIVA_TEL_LITE_V1_KEF: :"krisp-viva-tel-lite-v1.kef"
+            KRISP_VIVA_PRO_V1_KEF: :"krisp-viva-pro-v1.kef"
+            KRISP_VIVA_SS_V1_KEF: :"krisp-viva-ss-v1.kef"
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::model]
+          end
+
+          type size = :s | :l | :xs | :xxs | :vf_l | :vf_1_1_l
+
+          module Size
+            extend Telnyx::Internal::Type::Enum
+
+            S: :s
+            L: :l
+            XS: :xs
+            XXS: :xxs
+            VF_L: :vf_l
+            VF_1_1_L: :vf_1_1_l
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngineConfig::size]
+          end
         end
       end
     end
