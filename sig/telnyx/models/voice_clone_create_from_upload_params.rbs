@@ -7,6 +7,7 @@ module Telnyx
         name: String,
         gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::gender,
         label: String,
+        provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::provider,
         ref_text: String
       }
       & Telnyx::Internal::Type::request_parameters
@@ -31,6 +32,12 @@ module Telnyx
 
       def label=: (String) -> String
 
+      attr_reader provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::provider?
+
+      def provider=: (
+        Telnyx::Models::VoiceCloneCreateFromUploadParams::provider
+      ) -> Telnyx::Models::VoiceCloneCreateFromUploadParams::provider
+
       attr_reader ref_text: String?
 
       def ref_text=: (String) -> String
@@ -41,6 +48,7 @@ module Telnyx
         name: String,
         ?gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::gender,
         ?label: String,
+        ?provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::provider,
         ?ref_text: String,
         ?request_options: Telnyx::request_opts
       ) -> void
@@ -51,6 +59,7 @@ module Telnyx
         name: String,
         gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::gender,
         label: String,
+        provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::provider,
         ref_text: String,
         request_options: Telnyx::RequestOptions
       }
@@ -65,6 +74,19 @@ module Telnyx
         NEUTRAL: :neutral
 
         def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::gender]
+      end
+
+      type provider = :telnyx | :minimax | :Telnyx | :Minimax
+
+      module Provider
+        extend Telnyx::Internal::Type::Enum
+
+        TELNYX: :telnyx
+        TELNYX_2: :Telnyx
+        MINIMAX: :minimax
+        MINIMAX_2: :Minimax
+
+        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::provider]
       end
     end
   end

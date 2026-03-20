@@ -224,15 +224,5 @@ module Telnyx
     class InternalServerError < Telnyx::Errors::APIStatusError
       HTTP_STATUS = (500..)
     end
-
-    # Raised when webhook signature verification fails.
-    class WebhookVerificationError < Telnyx::Errors::Error
-      # @api private
-      #
-      # @param message [String]
-      def initialize(message:)
-        super(message)
-      end
-    end
   end
 end

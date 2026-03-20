@@ -32,6 +32,23 @@ module Telnyx
       sig { params(name: String).void }
       attr_writer :name
 
+      # Voice synthesis provider used for this design.
+      sig do
+        returns(
+          T.nilable(
+            Telnyx::Models::VoiceDesignListResponse::Provider::TaggedSymbol
+          )
+        )
+      end
+      attr_accessor :provider
+
+      # List of TTS model identifiers supported by this design's provider.
+      sig { returns(T.nilable(T::Array[String])) }
+      attr_reader :provider_supported_models
+
+      sig { params(provider_supported_models: T::Array[String]).void }
+      attr_writer :provider_supported_models
+
       # Identifies the resource type.
       sig do
         returns(
@@ -63,6 +80,11 @@ module Telnyx
           id: String,
           created_at: Time,
           name: String,
+          provider:
+            T.nilable(
+              Telnyx::Models::VoiceDesignListResponse::Provider::OrSymbol
+            ),
+          provider_supported_models: T::Array[String],
           record_type:
             Telnyx::Models::VoiceDesignListResponse::RecordType::OrSymbol,
           updated_at: Time
@@ -75,6 +97,10 @@ module Telnyx
         created_at: nil,
         # Name of the voice design.
         name: nil,
+        # Voice synthesis provider used for this design.
+        provider: nil,
+        # List of TTS model identifiers supported by this design's provider.
+        provider_supported_models: nil,
         # Identifies the resource type.
         record_type: nil,
         # Timestamp when the voice design was last updated.
@@ -88,6 +114,11 @@ module Telnyx
             id: String,
             created_at: Time,
             name: String,
+            provider:
+              T.nilable(
+                Telnyx::Models::VoiceDesignListResponse::Provider::TaggedSymbol
+              ),
+            provider_supported_models: T::Array[String],
             record_type:
               Telnyx::Models::VoiceDesignListResponse::RecordType::TaggedSymbol,
             updated_at: Time
@@ -95,6 +126,48 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      # Voice synthesis provider used for this design.
+      module Provider
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Telnyx::Models::VoiceDesignListResponse::Provider)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        TELNYX =
+          T.let(
+            :telnyx,
+            Telnyx::Models::VoiceDesignListResponse::Provider::TaggedSymbol
+          )
+        TELNYX_2 =
+          T.let(
+            :Telnyx,
+            Telnyx::Models::VoiceDesignListResponse::Provider::TaggedSymbol
+          )
+        MINIMAX =
+          T.let(
+            :minimax,
+            Telnyx::Models::VoiceDesignListResponse::Provider::TaggedSymbol
+          )
+        MINIMAX_2 =
+          T.let(
+            :Minimax,
+            Telnyx::Models::VoiceDesignListResponse::Provider::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Telnyx::Models::VoiceDesignListResponse::Provider::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       # Identifies the resource type.

@@ -185,7 +185,8 @@ module Telnyx
           elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs::OrHash,
           language: String,
           minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax::OrHash,
-          output_type: ::Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol,
+          output_type:
+            ::Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol,
           provider: ::Telnyx::TextToSpeechGenerateParams::Provider::OrSymbol,
           resemble: ::Telnyx::TextToSpeechGenerateParams::Resemble::OrHash,
           rime: ::Telnyx::TextToSpeechGenerateParams::Rime::OrHash,

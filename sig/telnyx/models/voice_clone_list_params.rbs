@@ -3,6 +3,7 @@ module Telnyx
     type voice_clone_list_params =
       {
         filter_name: String,
+        filter_provider: Telnyx::Models::VoiceCloneListParams::filter_provider,
         page_number: Integer,
         page_size: Integer,
         sort: Telnyx::Models::VoiceCloneListParams::sort
@@ -16,6 +17,12 @@ module Telnyx
       attr_reader filter_name: String?
 
       def filter_name=: (String) -> String
+
+      attr_reader filter_provider: Telnyx::Models::VoiceCloneListParams::filter_provider?
+
+      def filter_provider=: (
+        Telnyx::Models::VoiceCloneListParams::filter_provider
+      ) -> Telnyx::Models::VoiceCloneListParams::filter_provider
 
       attr_reader page_number: Integer?
 
@@ -33,6 +40,7 @@ module Telnyx
 
       def initialize: (
         ?filter_name: String,
+        ?filter_provider: Telnyx::Models::VoiceCloneListParams::filter_provider,
         ?page_number: Integer,
         ?page_size: Integer,
         ?sort: Telnyx::Models::VoiceCloneListParams::sort,
@@ -41,11 +49,25 @@ module Telnyx
 
       def to_hash: -> {
         filter_name: String,
+        filter_provider: Telnyx::Models::VoiceCloneListParams::filter_provider,
         page_number: Integer,
         page_size: Integer,
         sort: Telnyx::Models::VoiceCloneListParams::sort,
         request_options: Telnyx::RequestOptions
       }
+
+      type filter_provider = :telnyx | :minimax | :Telnyx | :Minimax
+
+      module FilterProvider
+        extend Telnyx::Internal::Type::Enum
+
+        TELNYX: :telnyx
+        TELNYX_2: :Telnyx
+        MINIMAX: :minimax
+        MINIMAX_2: :Minimax
+
+        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneListParams::filter_provider]
+      end
 
       type sort = :name | :"-name" | :created_at | :"-created_at"
 

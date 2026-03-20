@@ -14,6 +14,7 @@ module Telnyx
           language: String,
           max_new_tokens: Integer,
           name: String,
+          provider: Telnyx::VoiceDesignCreateParams::Provider::OrSymbol,
           repetition_penalty: Float,
           temperature: Float,
           top_k: Integer,
@@ -37,6 +38,9 @@ module Telnyx
         # (`voice_design_id` is not provided); ignored when adding a version. Cannot be a
         # UUID.
         name: nil,
+        # Voice synthesis provider. `telnyx` uses the Qwen3TTS model; `minimax` uses the
+        # Minimax speech models. Case-insensitive. Defaults to `telnyx`.
+        provider: nil,
         # Repetition penalty to reduce repeated patterns in generated audio. Default:
         # 1.05.
         repetition_penalty: nil,
@@ -71,23 +75,6 @@ module Telnyx
         id,
         # Specific version number to retrieve. Defaults to the latest version.
         version: nil,
-        request_options: {}
-      )
-      end
-
-      # Updates the name of a voice design. All versions retain their other properties.
-      sig do
-        params(
-          id: String,
-          name: String,
-          request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::VoiceDesignUpdateResponse)
-      end
-      def update(
-        # The voice design UUID or name.
-        id,
-        # New name for the voice design.
-        name:,
         request_options: {}
       )
       end
@@ -166,6 +153,23 @@ module Telnyx
         # Specific version number to download the sample for. Defaults to the latest
         # version.
         version: nil,
+        request_options: {}
+      )
+      end
+
+      # Updates the name of a voice design. All versions retain their other properties.
+      sig do
+        params(
+          id: String,
+          name: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::Models::VoiceDesignRenameResponse)
+      end
+      def rename(
+        # The voice design UUID or name.
+        id,
+        # New name for the voice design.
+        name:,
         request_options: {}
       )
       end

@@ -1,0 +1,235 @@
+module Telnyx
+  module Models
+    type call_cost_webhook_event = { data: Telnyx::CallCostWebhookEvent::Data }
+
+    class CallCostWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::CallCostWebhookEvent::Data?
+
+      def data=: (
+        Telnyx::CallCostWebhookEvent::Data
+      ) -> Telnyx::CallCostWebhookEvent::Data
+
+      def initialize: (?data: Telnyx::CallCostWebhookEvent::Data) -> void
+
+      def to_hash: -> { data: Telnyx::CallCostWebhookEvent::Data }
+
+      type data =
+        {
+          id: String,
+          event_type: Telnyx::Models::CallCostWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::CallCostWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::CallCostWebhookEvent::Data::record_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader event_type: Telnyx::Models::CallCostWebhookEvent::Data::event_type?
+
+        def event_type=: (
+          Telnyx::Models::CallCostWebhookEvent::Data::event_type
+        ) -> Telnyx::Models::CallCostWebhookEvent::Data::event_type
+
+        attr_reader occurred_at: Time?
+
+        def occurred_at=: (Time) -> Time
+
+        attr_reader payload: Telnyx::CallCostWebhookEvent::Data::Payload?
+
+        def payload=: (
+          Telnyx::CallCostWebhookEvent::Data::Payload
+        ) -> Telnyx::CallCostWebhookEvent::Data::Payload
+
+        attr_reader record_type: Telnyx::Models::CallCostWebhookEvent::Data::record_type?
+
+        def record_type=: (
+          Telnyx::Models::CallCostWebhookEvent::Data::record_type
+        ) -> Telnyx::Models::CallCostWebhookEvent::Data::record_type
+
+        def initialize: (
+          ?id: String,
+          ?event_type: Telnyx::Models::CallCostWebhookEvent::Data::event_type,
+          ?occurred_at: Time,
+          ?payload: Telnyx::CallCostWebhookEvent::Data::Payload,
+          ?record_type: Telnyx::Models::CallCostWebhookEvent::Data::record_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: Telnyx::Models::CallCostWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::CallCostWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::CallCostWebhookEvent::Data::record_type
+        }
+
+        type event_type = :"call.cost"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          CALL_COST: :"call.cost"
+
+          def self?.values: -> ::Array[Telnyx::Models::CallCostWebhookEvent::Data::event_type]
+        end
+
+        type payload =
+          {
+            billed_duration_secs: Integer?,
+            billing_group_id: String?,
+            call_control_id: String,
+            call_leg_id: String,
+            call_session_id: String,
+            client_state: String,
+            connection_id: String,
+            cost_parts: ::Array[Telnyx::CallCostWebhookEvent::Data::Payload::CostPart],
+            occurred_at: Time,
+            status: Telnyx::Models::CallCostWebhookEvent::Data::Payload::status,
+            total_cost: String?
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_accessor billed_duration_secs: Integer?
+
+          attr_accessor billing_group_id: String?
+
+          attr_reader call_control_id: String?
+
+          def call_control_id=: (String) -> String
+
+          attr_reader call_leg_id: String?
+
+          def call_leg_id=: (String) -> String
+
+          attr_reader call_session_id: String?
+
+          def call_session_id=: (String) -> String
+
+          attr_reader client_state: String?
+
+          def client_state=: (String) -> String
+
+          attr_reader connection_id: String?
+
+          def connection_id=: (String) -> String
+
+          attr_reader cost_parts: ::Array[Telnyx::CallCostWebhookEvent::Data::Payload::CostPart]?
+
+          def cost_parts=: (
+            ::Array[Telnyx::CallCostWebhookEvent::Data::Payload::CostPart]
+          ) -> ::Array[Telnyx::CallCostWebhookEvent::Data::Payload::CostPart]
+
+          attr_reader occurred_at: Time?
+
+          def occurred_at=: (Time) -> Time
+
+          attr_reader status: Telnyx::Models::CallCostWebhookEvent::Data::Payload::status?
+
+          def status=: (
+            Telnyx::Models::CallCostWebhookEvent::Data::Payload::status
+          ) -> Telnyx::Models::CallCostWebhookEvent::Data::Payload::status
+
+          attr_accessor total_cost: String?
+
+          def initialize: (
+            ?billed_duration_secs: Integer?,
+            ?billing_group_id: String?,
+            ?call_control_id: String,
+            ?call_leg_id: String,
+            ?call_session_id: String,
+            ?client_state: String,
+            ?connection_id: String,
+            ?cost_parts: ::Array[Telnyx::CallCostWebhookEvent::Data::Payload::CostPart],
+            ?occurred_at: Time,
+            ?status: Telnyx::Models::CallCostWebhookEvent::Data::Payload::status,
+            ?total_cost: String?
+          ) -> void
+
+          def to_hash: -> {
+            billed_duration_secs: Integer?,
+            billing_group_id: String?,
+            call_control_id: String,
+            call_leg_id: String,
+            call_session_id: String,
+            client_state: String,
+            connection_id: String,
+            cost_parts: ::Array[Telnyx::CallCostWebhookEvent::Data::Payload::CostPart],
+            occurred_at: Time,
+            status: Telnyx::Models::CallCostWebhookEvent::Data::Payload::status,
+            total_cost: String?
+          }
+
+          type cost_part =
+            {
+              billed_duration_secs: Integer,
+              call_part: String,
+              cost: String,
+              currency: String,
+              rate: String
+            }
+
+          class CostPart < Telnyx::Internal::Type::BaseModel
+            attr_reader billed_duration_secs: Integer?
+
+            def billed_duration_secs=: (Integer) -> Integer
+
+            attr_reader call_part: String?
+
+            def call_part=: (String) -> String
+
+            attr_reader cost: String?
+
+            def cost=: (String) -> String
+
+            attr_reader currency: String?
+
+            def currency=: (String) -> String
+
+            attr_reader rate: String?
+
+            def rate=: (String) -> String
+
+            def initialize: (
+              ?billed_duration_secs: Integer,
+              ?call_part: String,
+              ?cost: String,
+              ?currency: String,
+              ?rate: String
+            ) -> void
+
+            def to_hash: -> {
+              billed_duration_secs: Integer,
+              call_part: String,
+              cost: String,
+              currency: String,
+              rate: String
+            }
+          end
+
+          type status = :success | :error
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            SUCCESS: :success
+            ERROR: :error
+
+            def self?.values: -> ::Array[Telnyx::Models::CallCostWebhookEvent::Data::Payload::status]
+          end
+        end
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::CallCostWebhookEvent::Data::record_type]
+        end
+      end
+    end
+  end
+end

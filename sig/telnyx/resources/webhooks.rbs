@@ -10,6 +10,7 @@ module Telnyx
       | Telnyx::CallBridgedWebhookEvent
       | Telnyx::CallConversationEndedWebhookEvent
       | Telnyx::CallConversationInsightsGeneratedWebhookEvent
+      | Telnyx::CallCostWebhookEvent
       | Telnyx::CallDtmfReceivedWebhookEvent
       | Telnyx::CallEnqueuedWebhookEvent
       | Telnyx::CallForkStartedWebhookEvent
@@ -65,7 +66,9 @@ module Telnyx
       | Telnyx::TranscriptionWebhookEvent)
 
       def unwrap: (
-        String payload
+        String payload,
+        headers: ::Hash[String, String],
+        ?key: String?
       ) -> (Telnyx::CallAIGatherEndedWebhookEvent
       | Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent
       | Telnyx::CallAIGatherPartialResultsWebhookEvent
@@ -73,6 +76,7 @@ module Telnyx
       | Telnyx::CallBridgedWebhookEvent
       | Telnyx::CallConversationEndedWebhookEvent
       | Telnyx::CallConversationInsightsGeneratedWebhookEvent
+      | Telnyx::CallCostWebhookEvent
       | Telnyx::CallDtmfReceivedWebhookEvent
       | Telnyx::CallEnqueuedWebhookEvent
       | Telnyx::CallForkStartedWebhookEvent

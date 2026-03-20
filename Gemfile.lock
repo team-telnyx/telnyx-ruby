@@ -143,6 +143,7 @@ GEM
       rexml (>= 3.2.6)
       sorbet-static-and-runtime (>= 0.5.10187)
       thor (>= 0.19.2)
+    standardwebhooks (1.0.1)
     steep (1.10.0)
       activesupport (>= 5.1)
       concurrent-ruby (>= 1.1.10)
@@ -215,6 +216,7 @@ DEPENDENCIES
   redcarpet
   rubocop
   sorbet
+  standardwebhooks (~> 1.0)
   steep
   syntax_tree
   syntax_tree-rbs!
