@@ -11,7 +11,7 @@ module Telnyx
       # `voice_design_id` is provided, adds a new version to the existing design
       # instead. A design can have at most 50 versions.
       #
-      # @overload create(prompt:, text:, language: nil, max_new_tokens: nil, name: nil, repetition_penalty: nil, temperature: nil, top_k: nil, top_p: nil, voice_design_id: nil, request_options: {})
+      # @overload create(prompt:, text:, language: nil, max_new_tokens: nil, name: nil, provider: nil, repetition_penalty: nil, temperature: nil, top_k: nil, top_p: nil, voice_design_id: nil, request_options: {})
       #
       # @param prompt [String] Natural language description of the voice style, e.g. 'Speak in a warm, friendly
       #
@@ -22,6 +22,8 @@ module Telnyx
       # @param max_new_tokens [Integer] Maximum number of tokens to generate. Default: 2048.
       #
       # @param name [String] Name for the voice design. Required when creating a new design (`voice_design_id
+      #
+      # @param provider [Symbol, Telnyx::Models::VoiceDesignCreateParams::Provider] Voice synthesis provider. `telnyx` uses the Qwen3TTS model; `minimax` uses the M
       #
       # @param repetition_penalty [Float] Repetition penalty to reduce repeated patterns in generated audio. Default: 1.05
       #
@@ -72,30 +74,6 @@ module Telnyx
           path: ["voice_designs/%1$s", id],
           query: query,
           model: Telnyx::Models::VoiceDesignRetrieveResponse,
-          options: options
-        )
-      end
-
-      # Updates the name of a voice design. All versions retain their other properties.
-      #
-      # @overload update(id, name:, request_options: {})
-      #
-      # @param id [String] The voice design UUID or name.
-      #
-      # @param name [String] New name for the voice design.
-      #
-      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [Telnyx::Models::VoiceDesignUpdateResponse]
-      #
-      # @see Telnyx::Models::VoiceDesignUpdateParams
-      def update(id, params)
-        parsed, options = Telnyx::VoiceDesignUpdateParams.dump_request(params)
-        @client.request(
-          method: :patch,
-          path: ["voice_designs/%1$s", id],
-          body: parsed,
-          model: Telnyx::Models::VoiceDesignUpdateResponse,
           options: options
         )
       end
@@ -211,6 +189,30 @@ module Telnyx
           query: query,
           headers: {"accept" => "audio/wav"},
           model: StringIO,
+          options: options
+        )
+      end
+
+      # Updates the name of a voice design. All versions retain their other properties.
+      #
+      # @overload rename(id, name:, request_options: {})
+      #
+      # @param id [String] The voice design UUID or name.
+      #
+      # @param name [String] New name for the voice design.
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::VoiceDesignRenameResponse]
+      #
+      # @see Telnyx::Models::VoiceDesignRenameParams
+      def rename(id, params)
+        parsed, options = Telnyx::VoiceDesignRenameParams.dump_request(params)
+        @client.request(
+          method: :patch,
+          path: ["voice_designs/%1$s", id],
+          body: parsed,
+          model: Telnyx::Models::VoiceDesignRenameResponse,
           options: options
         )
       end

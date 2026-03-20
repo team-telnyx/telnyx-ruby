@@ -41,6 +41,25 @@ module Telnyx
       #   @return [String, nil]
       optional :name, String
 
+      # @!attribute provider
+      #   Voice synthesis provider used for this clone.
+      #
+      #   @return [Symbol, Telnyx::Models::VoiceCloneData::Provider, nil]
+      optional :provider, enum: -> { Telnyx::VoiceCloneData::Provider }
+
+      # @!attribute provider_supported_models
+      #   List of TTS model identifiers supported by this clone's provider.
+      #
+      #   @return [Array<String>, nil]
+      optional :provider_supported_models, Telnyx::Internal::Type::ArrayOf[String]
+
+      # @!attribute provider_voice_id
+      #   Provider-specific voice identifier used for TTS synthesis. For Telnyx clones
+      #   this equals the clone ID; for Minimax it is the Minimax-assigned voice ID.
+      #
+      #   @return [String, nil]
+      optional :provider_voice_id, String, nil?: true
+
       # @!attribute record_type
       #   Identifies the resource type.
       #
@@ -65,7 +84,7 @@ module Telnyx
       #   @return [Time, nil]
       optional :updated_at, Time
 
-      # @!method initialize(id: nil, created_at: nil, gender: nil, label: nil, language: nil, name: nil, record_type: nil, source_voice_design_id: nil, source_voice_design_version: nil, updated_at: nil)
+      # @!method initialize(id: nil, created_at: nil, gender: nil, label: nil, language: nil, name: nil, provider: nil, provider_supported_models: nil, provider_voice_id: nil, record_type: nil, source_voice_design_id: nil, source_voice_design_version: nil, updated_at: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::VoiceCloneData} for more details.
       #
@@ -82,6 +101,12 @@ module Telnyx
       #   @param language [String, nil] ISO 639-1 language code of the voice clone.
       #
       #   @param name [String] Name of the voice clone.
+      #
+      #   @param provider [Symbol, Telnyx::Models::VoiceCloneData::Provider] Voice synthesis provider used for this clone.
+      #
+      #   @param provider_supported_models [Array<String>] List of TTS model identifiers supported by this clone's provider.
+      #
+      #   @param provider_voice_id [String, nil] Provider-specific voice identifier used for TTS synthesis. For Telnyx clones thi
       #
       #   @param record_type [Symbol, Telnyx::Models::VoiceCloneData::RecordType] Identifies the resource type.
       #
@@ -100,6 +125,21 @@ module Telnyx
         MALE = :male
         FEMALE = :female
         NEUTRAL = :neutral
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # Voice synthesis provider used for this clone.
+      #
+      # @see Telnyx::Models::VoiceCloneData#provider
+      module Provider
+        extend Telnyx::Internal::Type::Enum
+
+        TELNYX = :telnyx
+        TELNYX_2 = :Telnyx
+        MINIMAX = :minimax
+        MINIMAX_2 = :Minimax
 
         # @!method self.values
         #   @return [Array<Symbol>]

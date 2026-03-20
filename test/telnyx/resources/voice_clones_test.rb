@@ -3,6 +3,28 @@
 require_relative "../test_helper"
 
 class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
+  def test_create_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.voice_clones.create(
+        gender: :male,
+        language: "en",
+        name: "clone-narrator",
+        voice_design_id: "550e8400-e29b-41d4-a716-446655440000"
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::VoiceCloneCreateResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::VoiceCloneData | nil
+      }
+    end
+  end
+
   def test_update_required_params
     skip("Mock server tests are disabled")
 
@@ -14,7 +36,7 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::VoiceCloneUpdateResponse::Data | nil
+        data: Telnyx::VoiceCloneData | nil
       }
     end
   end
@@ -32,18 +54,21 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::VoiceCloneListResponse
+      row => Telnyx::VoiceCloneData
     end
 
     assert_pattern do
       row => {
         id: String | nil,
         created_at: Time | nil,
-        gender: Telnyx::Models::VoiceCloneListResponse::Gender | nil,
+        gender: Telnyx::VoiceCloneData::Gender | nil,
         label: String | nil,
         language: String | nil,
         name: String | nil,
-        record_type: Telnyx::Models::VoiceCloneListResponse::RecordType | nil,
+        provider: Telnyx::VoiceCloneData::Provider | nil,
+        provider_supported_models: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
+        provider_voice_id: String | nil,
+        record_type: Telnyx::VoiceCloneData::RecordType | nil,
         source_voice_design_id: String | nil,
         source_voice_design_version: Integer | nil,
         updated_at: Time | nil
@@ -58,28 +83,6 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => nil
-    end
-  end
-
-  def test_create_from_design_required_params
-    skip("Mock server tests are disabled")
-
-    response =
-      @telnyx.voice_clones.create_from_design(
-        gender: :male,
-        language: "en",
-        name: "clone-narrator",
-        voice_design_id: "550e8400-e29b-41d4-a716-446655440000"
-      )
-
-    assert_pattern do
-      response => Telnyx::Models::VoiceCloneCreateFromDesignResponse
-    end
-
-    assert_pattern do
-      response => {
-        data: Telnyx::Models::VoiceCloneCreateFromDesignResponse::Data | nil
-      }
     end
   end
 
@@ -99,7 +102,7 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::VoiceCloneCreateFromUploadResponse::Data | nil
+        data: Telnyx::VoiceCloneData | nil
       }
     end
   end

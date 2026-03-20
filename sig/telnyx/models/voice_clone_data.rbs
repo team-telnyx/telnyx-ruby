@@ -8,6 +8,9 @@ module Telnyx
         label: String?,
         language: String?,
         name: String,
+        provider: Telnyx::Models::VoiceCloneData::provider,
+        provider_supported_models: ::Array[String],
+        provider_voice_id: String?,
         record_type: Telnyx::Models::VoiceCloneData::record_type,
         source_voice_design_id: String?,
         source_voice_design_version: Integer?,
@@ -33,6 +36,18 @@ module Telnyx
 
       def name=: (String) -> String
 
+      attr_reader provider: Telnyx::Models::VoiceCloneData::provider?
+
+      def provider=: (
+        Telnyx::Models::VoiceCloneData::provider
+      ) -> Telnyx::Models::VoiceCloneData::provider
+
+      attr_reader provider_supported_models: ::Array[String]?
+
+      def provider_supported_models=: (::Array[String]) -> ::Array[String]
+
+      attr_accessor provider_voice_id: String?
+
       attr_reader record_type: Telnyx::Models::VoiceCloneData::record_type?
 
       def record_type=: (
@@ -54,6 +69,9 @@ module Telnyx
         ?label: String?,
         ?language: String?,
         ?name: String,
+        ?provider: Telnyx::Models::VoiceCloneData::provider,
+        ?provider_supported_models: ::Array[String],
+        ?provider_voice_id: String?,
         ?record_type: Telnyx::Models::VoiceCloneData::record_type,
         ?source_voice_design_id: String?,
         ?source_voice_design_version: Integer?,
@@ -67,6 +85,9 @@ module Telnyx
         label: String?,
         language: String?,
         name: String,
+        provider: Telnyx::Models::VoiceCloneData::provider,
+        provider_supported_models: ::Array[String],
+        provider_voice_id: String?,
         record_type: Telnyx::Models::VoiceCloneData::record_type,
         source_voice_design_id: String?,
         source_voice_design_version: Integer?,
@@ -83,6 +104,19 @@ module Telnyx
         NEUTRAL: :neutral
 
         def self?.values: -> ::Array[Telnyx::Models::VoiceCloneData::gender]
+      end
+
+      type provider = :telnyx | :minimax | :Telnyx | :Minimax
+
+      module Provider
+        extend Telnyx::Internal::Type::Enum
+
+        TELNYX: :telnyx
+        TELNYX_2: :Telnyx
+        MINIMAX: :minimax
+        MINIMAX_2: :Minimax
+
+        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneData::provider]
       end
 
       type record_type = :voice_clone

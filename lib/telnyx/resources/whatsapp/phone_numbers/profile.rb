@@ -10,9 +10,6 @@ module Telnyx
           # @return [Telnyx::Resources::Whatsapp::PhoneNumbers::Profile::Photo]
           attr_reader :photo
 
-          # @return [Telnyx::Resources::Whatsapp::PhoneNumbers::Profile::Models]
-          attr_reader :models
-
           # Get phone number business profile
           #
           # @overload retrieve(phone_number, request_options: {})
@@ -75,7 +72,6 @@ module Telnyx
           def initialize(client:)
             @client = client
             @photo = Telnyx::Resources::Whatsapp::PhoneNumbers::Profile::Photo.new(client: client)
-            @models = Telnyx::Resources::Whatsapp::PhoneNumbers::Profile::Models.new(client: client)
           end
         end
       end

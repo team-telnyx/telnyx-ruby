@@ -12,11 +12,6 @@ module Telnyx
           end
           attr_reader :photo
 
-          sig do
-            returns(Telnyx::Resources::Whatsapp::PhoneNumbers::Profile::Models)
-          end
-          attr_reader :models
-
           # Get phone number business profile
           sig do
             params(

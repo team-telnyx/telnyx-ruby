@@ -197,6 +197,8 @@ module Telnyx
   CallConversationInsightsGeneratedWebhookEvent =
     Telnyx::Models::CallConversationInsightsGeneratedWebhookEvent
 
+  CallCostWebhookEvent = Telnyx::Models::CallCostWebhookEvent
+
   CallDialParams = Telnyx::Models::CallDialParams
 
   CallDtmfReceived = Telnyx::Models::CallDtmfReceived
@@ -1638,9 +1640,9 @@ module Telnyx
 
   VirtualCrossConnectUpdateParams = Telnyx::Models::VirtualCrossConnectUpdateParams
 
-  VoiceCloneCreateFromDesignParams = Telnyx::Models::VoiceCloneCreateFromDesignParams
-
   VoiceCloneCreateFromUploadParams = Telnyx::Models::VoiceCloneCreateFromUploadParams
+
+  VoiceCloneCreateParams = Telnyx::Models::VoiceCloneCreateParams
 
   VoiceCloneData = Telnyx::Models::VoiceCloneData
 
@@ -1664,9 +1666,9 @@ module Telnyx
 
   VoiceDesignListParams = Telnyx::Models::VoiceDesignListParams
 
-  VoiceDesignRetrieveParams = Telnyx::Models::VoiceDesignRetrieveParams
+  VoiceDesignRenameParams = Telnyx::Models::VoiceDesignRenameParams
 
-  VoiceDesignUpdateParams = Telnyx::Models::VoiceDesignUpdateParams
+  VoiceDesignRetrieveParams = Telnyx::Models::VoiceDesignRetrieveParams
 
   WebhookAPIVersion = Telnyx::Models::WebhookAPIVersion
 
@@ -1695,6 +1697,12 @@ module Telnyx
   WhatsappMedia = Telnyx::Models::WhatsappMedia
 
   WhatsappMessageContent = Telnyx::Models::WhatsappMessageContent
+
+  WhatsappMessageTemplateDeleteParams = Telnyx::Models::WhatsappMessageTemplateDeleteParams
+
+  WhatsappMessageTemplateRetrieveParams = Telnyx::Models::WhatsappMessageTemplateRetrieveParams
+
+  WhatsappMessageTemplateUpdateParams = Telnyx::Models::WhatsappMessageTemplateUpdateParams
 
   WhatsappReaction = Telnyx::Models::WhatsappReaction
 

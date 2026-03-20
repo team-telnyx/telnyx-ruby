@@ -18,6 +18,22 @@ module Telnyx
       sig { params(filter_name: String).void }
       attr_writer :filter_name
 
+      # Filter by voice synthesis provider. Case-insensitive.
+      sig do
+        returns(
+          T.nilable(Telnyx::VoiceCloneListParams::FilterProvider::OrSymbol)
+        )
+      end
+      attr_reader :filter_provider
+
+      sig do
+        params(
+          filter_provider:
+            Telnyx::VoiceCloneListParams::FilterProvider::OrSymbol
+        ).void
+      end
+      attr_writer :filter_provider
+
       # Page number for pagination (1-based).
       sig { returns(T.nilable(Integer)) }
       attr_reader :page_number
@@ -42,6 +58,8 @@ module Telnyx
       sig do
         params(
           filter_name: String,
+          filter_provider:
+            Telnyx::VoiceCloneListParams::FilterProvider::OrSymbol,
           page_number: Integer,
           page_size: Integer,
           sort: Telnyx::VoiceCloneListParams::Sort::OrSymbol,
@@ -51,6 +69,8 @@ module Telnyx
       def self.new(
         # Case-insensitive substring filter on the name field.
         filter_name: nil,
+        # Filter by voice synthesis provider. Case-insensitive.
+        filter_provider: nil,
         # Page number for pagination (1-based).
         page_number: nil,
         # Number of results per page.
@@ -65,6 +85,8 @@ module Telnyx
         override.returns(
           {
             filter_name: String,
+            filter_provider:
+              Telnyx::VoiceCloneListParams::FilterProvider::OrSymbol,
             page_number: Integer,
             page_size: Integer,
             sort: Telnyx::VoiceCloneListParams::Sort::OrSymbol,
@@ -73,6 +95,46 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      # Filter by voice synthesis provider. Case-insensitive.
+      module FilterProvider
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Telnyx::VoiceCloneListParams::FilterProvider)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        TELNYX =
+          T.let(
+            :telnyx,
+            Telnyx::VoiceCloneListParams::FilterProvider::TaggedSymbol
+          )
+        TELNYX_2 =
+          T.let(
+            :Telnyx,
+            Telnyx::VoiceCloneListParams::FilterProvider::TaggedSymbol
+          )
+        MINIMAX =
+          T.let(
+            :minimax,
+            Telnyx::VoiceCloneListParams::FilterProvider::TaggedSymbol
+          )
+        MINIMAX_2 =
+          T.let(
+            :Minimax,
+            Telnyx::VoiceCloneListParams::FilterProvider::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::VoiceCloneListParams::FilterProvider::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # Sort order. Prefix with `-` for descending. Defaults to `-created_at`.

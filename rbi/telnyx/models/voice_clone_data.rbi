@@ -42,6 +42,25 @@ module Telnyx
       sig { params(name: String).void }
       attr_writer :name
 
+      # Voice synthesis provider used for this clone.
+      sig { returns(T.nilable(Telnyx::VoiceCloneData::Provider::TaggedSymbol)) }
+      attr_reader :provider
+
+      sig { params(provider: Telnyx::VoiceCloneData::Provider::OrSymbol).void }
+      attr_writer :provider
+
+      # List of TTS model identifiers supported by this clone's provider.
+      sig { returns(T.nilable(T::Array[String])) }
+      attr_reader :provider_supported_models
+
+      sig { params(provider_supported_models: T::Array[String]).void }
+      attr_writer :provider_supported_models
+
+      # Provider-specific voice identifier used for TTS synthesis. For Telnyx clones
+      # this equals the clone ID; for Minimax it is the Minimax-assigned voice ID.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :provider_voice_id
+
       # Identifies the resource type.
       sig do
         returns(T.nilable(Telnyx::VoiceCloneData::RecordType::TaggedSymbol))
@@ -77,6 +96,9 @@ module Telnyx
           label: T.nilable(String),
           language: T.nilable(String),
           name: String,
+          provider: Telnyx::VoiceCloneData::Provider::OrSymbol,
+          provider_supported_models: T::Array[String],
+          provider_voice_id: T.nilable(String),
           record_type: Telnyx::VoiceCloneData::RecordType::OrSymbol,
           source_voice_design_id: T.nilable(String),
           source_voice_design_version: T.nilable(Integer),
@@ -97,6 +119,13 @@ module Telnyx
         language: nil,
         # Name of the voice clone.
         name: nil,
+        # Voice synthesis provider used for this clone.
+        provider: nil,
+        # List of TTS model identifiers supported by this clone's provider.
+        provider_supported_models: nil,
+        # Provider-specific voice identifier used for TTS synthesis. For Telnyx clones
+        # this equals the clone ID; for Minimax it is the Minimax-assigned voice ID.
+        provider_voice_id: nil,
         # Identifies the resource type.
         record_type: nil,
         # UUID of the source voice design. `null` for upload-based clones.
@@ -117,6 +146,9 @@ module Telnyx
             label: T.nilable(String),
             language: T.nilable(String),
             name: String,
+            provider: Telnyx::VoiceCloneData::Provider::TaggedSymbol,
+            provider_supported_models: T::Array[String],
+            provider_voice_id: T.nilable(String),
             record_type: Telnyx::VoiceCloneData::RecordType::TaggedSymbol,
             source_voice_design_id: T.nilable(String),
             source_voice_design_version: T.nilable(Integer),
@@ -142,6 +174,31 @@ module Telnyx
         sig do
           override.returns(
             T::Array[Telnyx::VoiceCloneData::Gender::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+
+      # Voice synthesis provider used for this clone.
+      module Provider
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Telnyx::VoiceCloneData::Provider) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        TELNYX = T.let(:telnyx, Telnyx::VoiceCloneData::Provider::TaggedSymbol)
+        TELNYX_2 =
+          T.let(:Telnyx, Telnyx::VoiceCloneData::Provider::TaggedSymbol)
+        MINIMAX =
+          T.let(:minimax, Telnyx::VoiceCloneData::Provider::TaggedSymbol)
+        MINIMAX_2 =
+          T.let(:Minimax, Telnyx::VoiceCloneData::Provider::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::VoiceCloneData::Provider::TaggedSymbol]
           )
         end
         def self.values

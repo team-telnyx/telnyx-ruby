@@ -5,6 +5,37 @@ module Telnyx
     # Capture and manage voice identities as clones for use in text-to-speech
     # synthesis.
     class VoiceClones
+      # Creates a new voice clone by capturing the voice identity of an existing voice
+      # design. The clone can then be used for text-to-speech synthesis.
+      #
+      # @overload create(gender:, language:, name:, voice_design_id:, provider: nil, request_options: {})
+      #
+      # @param gender [Symbol, Telnyx::Models::VoiceCloneCreateParams::Gender] Gender of the voice clone.
+      #
+      # @param language [String] ISO 639-1 language code for the clone (e.g. `en`, `fr`, `de`).
+      #
+      # @param name [String] Name for the voice clone.
+      #
+      # @param voice_design_id [String] UUID of the source voice design to clone.
+      #
+      # @param provider [Symbol, Telnyx::Models::VoiceCloneCreateParams::Provider] Voice synthesis provider. Case-insensitive. Defaults to `telnyx`.
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::VoiceCloneCreateResponse]
+      #
+      # @see Telnyx::Models::VoiceCloneCreateParams
+      def create(params)
+        parsed, options = Telnyx::VoiceCloneCreateParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "voice_clones",
+          body: parsed,
+          model: Telnyx::Models::VoiceCloneCreateResponse,
+          options: options
+        )
+      end
+
       # Updates the name, language, or gender of a voice clone.
       #
       # @overload update(id, name:, gender: nil, language: nil, request_options: {})
@@ -35,9 +66,11 @@ module Telnyx
 
       # Returns a paginated list of voice clones belonging to the authenticated account.
       #
-      # @overload list(filter_name: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @overload list(filter_name: nil, filter_provider: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
       #
       # @param filter_name [String] Case-insensitive substring filter on the name field.
+      #
+      # @param filter_provider [Symbol, Telnyx::Models::VoiceCloneListParams::FilterProvider] Filter by voice synthesis provider. Case-insensitive.
       #
       # @param page_number [Integer] Page number for pagination (1-based).
       #
@@ -58,6 +91,7 @@ module Telnyx
           path: "voice_clones",
           query: query.transform_keys(
             filter_name: "filter[name]",
+            filter_provider: "filter[provider]",
             page_number: "page[number]",
             page_size: "page[size]"
           ),
@@ -87,35 +121,6 @@ module Telnyx
         )
       end
 
-      # Creates a new voice clone by capturing the voice identity of an existing voice
-      # design. The clone can then be used for text-to-speech synthesis.
-      #
-      # @overload create_from_design(gender:, language:, name:, voice_design_id:, request_options: {})
-      #
-      # @param gender [Symbol, Telnyx::Models::VoiceCloneCreateFromDesignParams::Gender] Gender of the voice clone.
-      #
-      # @param language [String] ISO 639-1 language code for the clone (e.g. `en`, `fr`, `de`).
-      #
-      # @param name [String] Name for the voice clone.
-      #
-      # @param voice_design_id [String] UUID of the source voice design to clone.
-      #
-      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [Telnyx::Models::VoiceCloneCreateFromDesignResponse]
-      #
-      # @see Telnyx::Models::VoiceCloneCreateFromDesignParams
-      def create_from_design(params)
-        parsed, options = Telnyx::VoiceCloneCreateFromDesignParams.dump_request(params)
-        @client.request(
-          method: :post,
-          path: "voice_clones",
-          body: parsed,
-          model: Telnyx::Models::VoiceCloneCreateFromDesignResponse,
-          options: options
-        )
-      end
-
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::VoiceCloneCreateFromUploadParams} for more details.
       #
@@ -123,7 +128,7 @@ module Telnyx
       # formats: WAV, MP3, FLAC, OGG, M4A. For best results, provide 5–10 seconds of
       # clear speech. Maximum file size: 2MB.
       #
-      # @overload create_from_upload(audio_file:, language:, name:, gender: nil, label: nil, ref_text: nil, request_options: {})
+      # @overload create_from_upload(audio_file:, language:, name:, gender: nil, label: nil, provider: nil, ref_text: nil, request_options: {})
       #
       # @param audio_file [Pathname, StringIO, IO, String, Telnyx::FilePart] Audio file to clone the voice from. Supported formats: WAV, MP3, FLAC, OGG, M4A.
       #
@@ -134,6 +139,8 @@ module Telnyx
       # @param gender [Symbol, Telnyx::Models::VoiceCloneCreateFromUploadParams::Gender] Gender of the voice clone.
       #
       # @param label [String] Optional custom label describing the voice style. If omitted, falls back to the
+      #
+      # @param provider [Symbol, Telnyx::Models::VoiceCloneCreateFromUploadParams::Provider] Voice synthesis provider. Case-insensitive. Defaults to `telnyx`.
       #
       # @param ref_text [String] Optional transcript of the audio file. Providing this improves clone quality.
       #

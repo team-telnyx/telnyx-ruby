@@ -8,8 +8,8 @@ module Telnyx
       attr_reader :business_accounts
 
       # Manage Whatsapp message templates
-      # @return [Telnyx::Resources::Whatsapp::MessageTemplates]
-      attr_reader :message_templates
+      # @return [Telnyx::Resources::Whatsapp::Templates]
+      attr_reader :templates
 
       # Manage Whatsapp phone numbers
       # @return [Telnyx::Resources::Whatsapp::PhoneNumbers]
@@ -21,7 +21,7 @@ module Telnyx
       def initialize(client:)
         @client = client
         @business_accounts = Telnyx::Resources::Whatsapp::BusinessAccounts.new(client: client)
-        @message_templates = Telnyx::Resources::Whatsapp::MessageTemplates.new(client: client)
+        @templates = Telnyx::Resources::Whatsapp::Templates.new(client: client)
         @phone_numbers = Telnyx::Resources::Whatsapp::PhoneNumbers.new(client: client)
       end
     end

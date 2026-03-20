@@ -13,6 +13,7 @@ module Telnyx
             Telnyx::CallBridgedWebhookEvent,
             Telnyx::CallConversationEndedWebhookEvent,
             Telnyx::CallConversationInsightsGeneratedWebhookEvent,
+            Telnyx::CallCostWebhookEvent,
             Telnyx::CallDtmfReceivedWebhookEvent,
             Telnyx::CallEnqueuedWebhookEvent,
             Telnyx::CallForkStartedWebhookEvent,
@@ -76,7 +77,11 @@ module Telnyx
       end
 
       sig do
-        params(payload: String).returns(
+        params(
+          payload: String,
+          headers: T::Hash[String, String],
+          key: T.nilable(String)
+        ).returns(
           T.any(
             Telnyx::CallAIGatherEndedWebhookEvent,
             Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent,
@@ -85,6 +90,7 @@ module Telnyx
             Telnyx::CallBridgedWebhookEvent,
             Telnyx::CallConversationEndedWebhookEvent,
             Telnyx::CallConversationInsightsGeneratedWebhookEvent,
+            Telnyx::CallCostWebhookEvent,
             Telnyx::CallDtmfReceivedWebhookEvent,
             Telnyx::CallEnqueuedWebhookEvent,
             Telnyx::CallForkStartedWebhookEvent,
@@ -143,7 +149,11 @@ module Telnyx
       end
       def unwrap(
         # The raw webhook payload as a string
-        payload
+        payload,
+        # The raw HTTP headers that came with the payload
+        headers:,
+        # The webhook signing key
+        key: @client.public_key
       )
       end
 

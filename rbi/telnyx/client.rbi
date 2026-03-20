@@ -615,12 +615,12 @@ module Telnyx
     sig { returns(Telnyx::Resources::SessionAnalysis) }
     attr_reader :session_analysis
 
-    # Traffic Policy Profiles operations
-    sig { returns(Telnyx::Resources::TrafficPolicyProfiles) }
-    attr_reader :traffic_policy_profiles
-
     sig { returns(Telnyx::Resources::Whatsapp) }
     attr_reader :whatsapp
+
+    # Manage Whatsapp message templates
+    sig { returns(Telnyx::Resources::WhatsappMessageTemplates) }
+    attr_reader :whatsapp_message_templates
 
     sig { returns(Telnyx::Resources::X402) }
     attr_reader :x402
@@ -633,6 +633,10 @@ module Telnyx
     # Create and manage AI-generated voice designs using natural language prompts.
     sig { returns(Telnyx::Resources::VoiceDesigns) }
     attr_reader :voice_designs
+
+    # Traffic Policy Profiles operations
+    sig { returns(Telnyx::Resources::TrafficPolicyProfiles) }
+    attr_reader :traffic_policy_profiles
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }

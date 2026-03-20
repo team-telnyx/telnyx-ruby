@@ -10,7 +10,7 @@ module Telnyx
       # @!attribute audio_file
       #   Audio file to clone the voice from. Supported formats: WAV, MP3, FLAC, OGG, M4A.
       #   For best quality, provide 5–10 seconds of clear, uninterrupted speech. Maximum
-      #   size: 2MB.
+      #   size: 5MB for Telnyx, 20MB for Minimax.
       #
       #   @return [Pathname, StringIO, IO, String, Telnyx::FilePart]
       required :audio_file, Telnyx::Internal::Type::FileInput
@@ -40,13 +40,19 @@ module Telnyx
       #   @return [String, nil]
       optional :label, String
 
+      # @!attribute provider
+      #   Voice synthesis provider. Case-insensitive. Defaults to `telnyx`.
+      #
+      #   @return [Symbol, Telnyx::Models::VoiceCloneCreateFromUploadParams::Provider, nil]
+      optional :provider, enum: -> { Telnyx::VoiceCloneCreateFromUploadParams::Provider }
+
       # @!attribute ref_text
       #   Optional transcript of the audio file. Providing this improves clone quality.
       #
       #   @return [String, nil]
       optional :ref_text, String
 
-      # @!method initialize(audio_file:, language:, name:, gender: nil, label: nil, ref_text: nil, request_options: {})
+      # @!method initialize(audio_file:, language:, name:, gender: nil, label: nil, provider: nil, ref_text: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::VoiceCloneCreateFromUploadParams} for more details.
       #
@@ -60,6 +66,8 @@ module Telnyx
       #
       #   @param label [String] Optional custom label describing the voice style. If omitted, falls back to the
       #
+      #   @param provider [Symbol, Telnyx::Models::VoiceCloneCreateFromUploadParams::Provider] Voice synthesis provider. Case-insensitive. Defaults to `telnyx`.
+      #
       #   @param ref_text [String] Optional transcript of the audio file. Providing this improves clone quality.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
@@ -71,6 +79,19 @@ module Telnyx
         MALE = :male
         FEMALE = :female
         NEUTRAL = :neutral
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # Voice synthesis provider. Case-insensitive. Defaults to `telnyx`.
+      module Provider
+        extend Telnyx::Internal::Type::Enum
+
+        TELNYX = :telnyx
+        TELNYX_2 = :Telnyx
+        MINIMAX = :minimax
+        MINIMAX_2 = :Minimax
 
         # @!method self.values
         #   @return [Array<Symbol>]

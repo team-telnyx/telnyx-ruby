@@ -7,6 +7,7 @@ module Telnyx
         language: String,
         max_new_tokens: Integer,
         name: String,
+        provider: Telnyx::Models::VoiceDesignCreateParams::provider,
         repetition_penalty: Float,
         temperature: Float,
         top_k: Integer,
@@ -35,6 +36,12 @@ module Telnyx
 
       def name=: (String) -> String
 
+      attr_reader provider: Telnyx::Models::VoiceDesignCreateParams::provider?
+
+      def provider=: (
+        Telnyx::Models::VoiceDesignCreateParams::provider
+      ) -> Telnyx::Models::VoiceDesignCreateParams::provider
+
       attr_reader repetition_penalty: Float?
 
       def repetition_penalty=: (Float) -> Float
@@ -61,6 +68,7 @@ module Telnyx
         ?language: String,
         ?max_new_tokens: Integer,
         ?name: String,
+        ?provider: Telnyx::Models::VoiceDesignCreateParams::provider,
         ?repetition_penalty: Float,
         ?temperature: Float,
         ?top_k: Integer,
@@ -75,6 +83,7 @@ module Telnyx
         language: String,
         max_new_tokens: Integer,
         name: String,
+        provider: Telnyx::Models::VoiceDesignCreateParams::provider,
         repetition_penalty: Float,
         temperature: Float,
         top_k: Integer,
@@ -82,6 +91,19 @@ module Telnyx
         voice_design_id: String,
         request_options: Telnyx::RequestOptions
       }
+
+      type provider = :telnyx | :minimax | :Telnyx | :Minimax
+
+      module Provider
+        extend Telnyx::Internal::Type::Enum
+
+        TELNYX: :telnyx
+        TELNYX_2: :Telnyx
+        MINIMAX: :minimax
+        MINIMAX_2: :Minimax
+
+        def self?.values: -> ::Array[Telnyx::Models::VoiceDesignCreateParams::provider]
+      end
     end
   end
 end

@@ -2,7 +2,7 @@
 
 module Telnyx
   module Models
-    # @see ::Telnyx::Resources::TextToSpeech#generate
+    # @see Telnyx::Resources::TextToSpeech#generate
     class TextToSpeechGenerateParams < ::Telnyx::Internal::Type::BaseModel
       extend ::Telnyx::Internal::Type::RequestParameters::Converter
       include ::Telnyx::Internal::Type::RequestParameters
@@ -188,7 +188,7 @@ module Telnyx
 
         # Input text type.
         #
-        # @see ::Telnyx::Models::TextToSpeechGenerateParams::Aws#text_type
+        # @see Telnyx::Models::TextToSpeechGenerateParams::Aws#text_type
         module TextType
           extend ::Telnyx::Internal::Type::Enum
 
@@ -270,7 +270,7 @@ module Telnyx
 
         # Input text type. Use `ssml` for SSML-formatted input.
         #
-        # @see ::Telnyx::Models::TextToSpeechGenerateParams::Azure#text_type
+        # @see Telnyx::Models::TextToSpeechGenerateParams::Azure#text_type
         module TextType
           extend ::Telnyx::Internal::Type::Enum
 

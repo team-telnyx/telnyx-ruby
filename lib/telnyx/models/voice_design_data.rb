@@ -27,6 +27,26 @@ module Telnyx
       #   @return [String, nil]
       optional :prompt, String
 
+      # @!attribute provider
+      #   Voice synthesis provider used for this design.
+      #
+      #   @return [Symbol, Telnyx::Models::VoiceDesignData::Provider, nil]
+      optional :provider, enum: -> { Telnyx::VoiceDesignData::Provider }, nil?: true
+
+      # @!attribute provider_supported_models
+      #   List of TTS model identifiers supported by this design's provider (e.g.
+      #   `Qwen3TTS`, `speech-02-turbo`).
+      #
+      #   @return [Array<String>, nil]
+      optional :provider_supported_models, Telnyx::Internal::Type::ArrayOf[String]
+
+      # @!attribute provider_voice_id
+      #   Provider-specific voice identifier. For Telnyx designs this is the design
+      #   version ID; for Minimax it is the Minimax-assigned voice ID.
+      #
+      #   @return [String, nil]
+      optional :provider_voice_id, String, nil?: true
+
       # @!attribute record_type
       #   Identifies the resource type.
       #
@@ -63,7 +83,10 @@ module Telnyx
       #   @return [Integer, nil]
       optional :voice_sample_size, Integer
 
-      # @!method initialize(id: nil, created_at: nil, name: nil, prompt: nil, record_type: nil, text: nil, updated_at: nil, version: nil, version_created_at: nil, voice_sample_size: nil)
+      # @!method initialize(id: nil, created_at: nil, name: nil, prompt: nil, provider: nil, provider_supported_models: nil, provider_voice_id: nil, record_type: nil, text: nil, updated_at: nil, version: nil, version_created_at: nil, voice_sample_size: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Telnyx::Models::VoiceDesignData} for more details.
+      #
       #   A voice design object with full version detail.
       #
       #   @param id [String] Unique identifier for the voice design.
@@ -73,6 +96,12 @@ module Telnyx
       #   @param name [String] Name of the voice design.
       #
       #   @param prompt [String] Natural language prompt used to define the voice style for this version.
+      #
+      #   @param provider [Symbol, Telnyx::Models::VoiceDesignData::Provider, nil] Voice synthesis provider used for this design.
+      #
+      #   @param provider_supported_models [Array<String>] List of TTS model identifiers supported by this design's provider (e.g. `Qwen3TT
+      #
+      #   @param provider_voice_id [String, nil] Provider-specific voice identifier. For Telnyx designs this is the design versio
       #
       #   @param record_type [Symbol, Telnyx::Models::VoiceDesignData::RecordType] Identifies the resource type.
       #
@@ -85,6 +114,21 @@ module Telnyx
       #   @param version_created_at [Time] Timestamp when this specific version was created.
       #
       #   @param voice_sample_size [Integer] Size of the voice sample audio in bytes.
+
+      # Voice synthesis provider used for this design.
+      #
+      # @see Telnyx::Models::VoiceDesignData#provider
+      module Provider
+        extend Telnyx::Internal::Type::Enum
+
+        TELNYX = :telnyx
+        TELNYX_2 = :Telnyx
+        MINIMAX = :minimax
+        MINIMAX_2 = :Minimax
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
       # Identifies the resource type.
       #
