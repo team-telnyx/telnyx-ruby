@@ -6,6 +6,7 @@ module Telnyx
         language: String,
         name: String,
         voice_design_id: String,
+        ?provider: Telnyx::Models::VoiceCloneCreateParams::provider,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::VoiceCloneCreateResponse
 
@@ -19,11 +20,12 @@ module Telnyx
 
       def list: (
         ?filter_name: String,
+        ?filter_provider: Telnyx::Models::VoiceCloneListParams::filter_provider,
         ?page_number: Integer,
         ?page_size: Integer,
         ?sort: Telnyx::Models::VoiceCloneListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::VoiceCloneData]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::VoiceCloneListResponse]
 
       def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 
@@ -33,6 +35,7 @@ module Telnyx
         name: String,
         ?gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::gender,
         ?label: String,
+        ?provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::provider,
         ?ref_text: String,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::VoiceCloneCreateFromUploadResponse

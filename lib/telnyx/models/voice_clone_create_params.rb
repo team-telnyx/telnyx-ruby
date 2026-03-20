@@ -31,7 +31,13 @@ module Telnyx
       #   @return [String]
       required :voice_design_id, String
 
-      # @!method initialize(gender:, language:, name:, voice_design_id:, request_options: {})
+      # @!attribute provider
+      #   Voice synthesis provider. Case-insensitive. Defaults to `telnyx`.
+      #
+      #   @return [Symbol, Telnyx::Models::VoiceCloneCreateParams::Provider, nil]
+      optional :provider, enum: -> { Telnyx::VoiceCloneCreateParams::Provider }
+
+      # @!method initialize(gender:, language:, name:, voice_design_id:, provider: nil, request_options: {})
       #   @param gender [Symbol, Telnyx::Models::VoiceCloneCreateParams::Gender] Gender of the voice clone.
       #
       #   @param language [String] ISO 639-1 language code for the clone (e.g. `en`, `fr`, `de`).
@@ -39,6 +45,8 @@ module Telnyx
       #   @param name [String] Name for the voice clone.
       #
       #   @param voice_design_id [String] UUID of the source voice design to clone.
+      #
+      #   @param provider [Symbol, Telnyx::Models::VoiceCloneCreateParams::Provider] Voice synthesis provider. Case-insensitive. Defaults to `telnyx`.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -49,6 +57,19 @@ module Telnyx
         MALE = :male
         FEMALE = :female
         NEUTRAL = :neutral
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # Voice synthesis provider. Case-insensitive. Defaults to `telnyx`.
+      module Provider
+        extend Telnyx::Internal::Type::Enum
+
+        TELNYX = :telnyx
+        TELNYX_2 = :Telnyx
+        MINIMAX = :minimax
+        MINIMAX_2 = :Minimax
 
         # @!method self.values
         #   @return [Array<Symbol>]

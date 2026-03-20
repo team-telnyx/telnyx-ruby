@@ -7,6 +7,7 @@ module Telnyx
         ?language: String,
         ?max_new_tokens: Integer,
         ?name: String,
+        ?provider: Telnyx::Models::VoiceDesignCreateParams::provider,
         ?repetition_penalty: Float,
         ?temperature: Float,
         ?top_k: Integer,
@@ -20,12 +21,6 @@ module Telnyx
         ?version: Integer,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::VoiceDesignRetrieveResponse
-
-      def update: (
-        String id,
-        name: String,
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::VoiceDesignUpdateResponse
 
       def list: (
         ?filter_name: String,
@@ -48,6 +43,12 @@ module Telnyx
         ?version: Integer,
         ?request_options: Telnyx::request_opts
       ) -> StringIO
+
+      def rename: (
+        String id,
+        name: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::VoiceDesignRenameResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

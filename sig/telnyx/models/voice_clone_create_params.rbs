@@ -5,7 +5,8 @@ module Telnyx
         gender: Telnyx::Models::VoiceCloneCreateParams::gender,
         language: String,
         name: String,
-        voice_design_id: String
+        voice_design_id: String,
+        provider: Telnyx::Models::VoiceCloneCreateParams::provider
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -21,11 +22,18 @@ module Telnyx
 
       attr_accessor voice_design_id: String
 
+      attr_reader provider: Telnyx::Models::VoiceCloneCreateParams::provider?
+
+      def provider=: (
+        Telnyx::Models::VoiceCloneCreateParams::provider
+      ) -> Telnyx::Models::VoiceCloneCreateParams::provider
+
       def initialize: (
         gender: Telnyx::Models::VoiceCloneCreateParams::gender,
         language: String,
         name: String,
         voice_design_id: String,
+        ?provider: Telnyx::Models::VoiceCloneCreateParams::provider,
         ?request_options: Telnyx::request_opts
       ) -> void
 
@@ -34,6 +42,7 @@ module Telnyx
         language: String,
         name: String,
         voice_design_id: String,
+        provider: Telnyx::Models::VoiceCloneCreateParams::provider,
         request_options: Telnyx::RequestOptions
       }
 
@@ -47,6 +56,19 @@ module Telnyx
         NEUTRAL: :neutral
 
         def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateParams::gender]
+      end
+
+      type provider = :telnyx | :minimax | :Telnyx | :Minimax
+
+      module Provider
+        extend Telnyx::Internal::Type::Enum
+
+        TELNYX: :telnyx
+        TELNYX_2: :Telnyx
+        MINIMAX: :minimax
+        MINIMAX_2: :Minimax
+
+        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateParams::provider]
       end
     end
   end

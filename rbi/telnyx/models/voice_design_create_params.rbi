@@ -44,6 +44,20 @@ module Telnyx
       sig { params(name: String).void }
       attr_writer :name
 
+      # Voice synthesis provider. `telnyx` uses the Qwen3TTS model; `minimax` uses the
+      # Minimax speech models. Case-insensitive. Defaults to `telnyx`.
+      sig do
+        returns(T.nilable(Telnyx::VoiceDesignCreateParams::Provider::OrSymbol))
+      end
+      attr_reader :provider
+
+      sig do
+        params(
+          provider: Telnyx::VoiceDesignCreateParams::Provider::OrSymbol
+        ).void
+      end
+      attr_writer :provider
+
       # Repetition penalty to reduce repeated patterns in generated audio. Default:
       # 1.05.
       sig { returns(T.nilable(Float)) }
@@ -91,6 +105,7 @@ module Telnyx
           language: String,
           max_new_tokens: Integer,
           name: String,
+          provider: Telnyx::VoiceDesignCreateParams::Provider::OrSymbol,
           repetition_penalty: Float,
           temperature: Float,
           top_k: Integer,
@@ -114,6 +129,9 @@ module Telnyx
         # (`voice_design_id` is not provided); ignored when adding a version. Cannot be a
         # UUID.
         name: nil,
+        # Voice synthesis provider. `telnyx` uses the Qwen3TTS model; `minimax` uses the
+        # Minimax speech models. Case-insensitive. Defaults to `telnyx`.
+        provider: nil,
         # Repetition penalty to reduce repeated patterns in generated audio. Default:
         # 1.05.
         repetition_penalty: nil,
@@ -141,6 +159,7 @@ module Telnyx
             language: String,
             max_new_tokens: Integer,
             name: String,
+            provider: Telnyx::VoiceDesignCreateParams::Provider::OrSymbol,
             repetition_penalty: Float,
             temperature: Float,
             top_k: Integer,
@@ -151,6 +170,47 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      # Voice synthesis provider. `telnyx` uses the Qwen3TTS model; `minimax` uses the
+      # Minimax speech models. Case-insensitive. Defaults to `telnyx`.
+      module Provider
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Telnyx::VoiceDesignCreateParams::Provider)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        TELNYX =
+          T.let(
+            :telnyx,
+            Telnyx::VoiceDesignCreateParams::Provider::TaggedSymbol
+          )
+        TELNYX_2 =
+          T.let(
+            :Telnyx,
+            Telnyx::VoiceDesignCreateParams::Provider::TaggedSymbol
+          )
+        MINIMAX =
+          T.let(
+            :minimax,
+            Telnyx::VoiceDesignCreateParams::Provider::TaggedSymbol
+          )
+        MINIMAX_2 =
+          T.let(
+            :Minimax,
+            Telnyx::VoiceDesignCreateParams::Provider::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::VoiceDesignCreateParams::Provider::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

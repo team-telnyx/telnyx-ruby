@@ -35,11 +35,11 @@ module Telnyx
               phone_number: String,
               language: String,
               verification_method:
-                Telnyx::Whatsapp::BusinessAccounts::PhoneNumberCreateVerificationParams::VerificationMethod::OrSymbol,
+                Telnyx::Whatsapp::BusinessAccounts::PhoneNumberInitializeVerificationParams::VerificationMethod::OrSymbol,
               request_options: Telnyx::RequestOptions::OrHash
             ).void
           end
-          def create_verification(
+          def initialize_verification(
             # Whatsapp Business Account ID
             id,
             display_name:,

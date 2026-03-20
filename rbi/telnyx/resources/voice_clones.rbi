@@ -13,6 +13,7 @@ module Telnyx
           language: String,
           name: String,
           voice_design_id: String,
+          provider: Telnyx::VoiceCloneCreateParams::Provider::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::VoiceCloneCreateResponse)
       end
@@ -25,6 +26,8 @@ module Telnyx
         name:,
         # UUID of the source voice design to clone.
         voice_design_id:,
+        # Voice synthesis provider. Case-insensitive. Defaults to `telnyx`.
+        provider: nil,
         request_options: {}
       )
       end
@@ -56,17 +59,23 @@ module Telnyx
       sig do
         params(
           filter_name: String,
+          filter_provider:
+            Telnyx::VoiceCloneListParams::FilterProvider::OrSymbol,
           page_number: Integer,
           page_size: Integer,
           sort: Telnyx::VoiceCloneListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[Telnyx::VoiceCloneData]
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Models::VoiceCloneListResponse
+          ]
         )
       end
       def list(
         # Case-insensitive substring filter on the name field.
         filter_name: nil,
+        # Filter by voice synthesis provider. Case-insensitive.
+        filter_provider: nil,
         # Page number for pagination (1-based).
         page_number: nil,
         # Number of results per page.
@@ -98,6 +107,8 @@ module Telnyx
           name: String,
           gender: Telnyx::VoiceCloneCreateFromUploadParams::Gender::OrSymbol,
           label: String,
+          provider:
+            Telnyx::VoiceCloneCreateFromUploadParams::Provider::OrSymbol,
           ref_text: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::VoiceCloneCreateFromUploadResponse)
@@ -105,7 +116,7 @@ module Telnyx
       def create_from_upload(
         # Audio file to clone the voice from. Supported formats: WAV, MP3, FLAC, OGG, M4A.
         # For best quality, provide 5–10 seconds of clear, uninterrupted speech. Maximum
-        # size: 2MB.
+        # size: 5MB for Telnyx, 20MB for Minimax.
         audio_file:,
         # ISO 639-1 language code (e.g. `en`, `fr`) or `auto` for automatic detection.
         language:,
@@ -116,6 +127,8 @@ module Telnyx
         # Optional custom label describing the voice style. If omitted, falls back to the
         # source design's prompt text.
         label: nil,
+        # Voice synthesis provider. Case-insensitive. Defaults to `telnyx`.
+        provider: nil,
         # Optional transcript of the audio file. Providing this improves clone quality.
         ref_text: nil,
         request_options: {}

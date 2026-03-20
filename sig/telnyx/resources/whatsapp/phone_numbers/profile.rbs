@@ -5,8 +5,6 @@ module Telnyx
         class Profile
           attr_reader photo: Telnyx::Resources::Whatsapp::PhoneNumbers::Profile::Photo
 
-          attr_reader models: Telnyx::Resources::Whatsapp::PhoneNumbers::Profile::Models
-
           def retrieve: (
             String phone_number,
             ?request_options: Telnyx::request_opts

@@ -13,11 +13,9 @@ module Telnyx
           params(
             amount_usd: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(
-            Telnyx::Models::X402::CreditAccountCreatePaymentQuoteResponse
-          )
+          ).returns(Telnyx::Models::X402::CreditAccountCreateQuoteResponse)
         end
-        def create_payment_quote(
+        def create_quote(
           # Amount in USD to fund (minimum 5.00, maximum 10000.00).
           amount_usd:,
           request_options: {}
@@ -34,9 +32,9 @@ module Telnyx
             body_payment_signature: String,
             header_payment_signature: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::X402::CreditAccountSettlePaymentResponse)
+          ).returns(Telnyx::Models::X402::CreditAccountSettleResponse)
         end
-        def settle_payment(
+        def settle(
           # Body param: The quote ID to settle.
           id:,
           # Body param: Base64-encoded signed payment authorization (x402 PaymentPayload).

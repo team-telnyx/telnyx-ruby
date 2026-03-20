@@ -22,6 +22,18 @@ module Telnyx
       #   @return [String, nil]
       optional :name, String
 
+      # @!attribute provider
+      #   Voice synthesis provider used for this design.
+      #
+      #   @return [Symbol, Telnyx::Models::VoiceDesignListResponse::Provider, nil]
+      optional :provider, enum: -> { Telnyx::Models::VoiceDesignListResponse::Provider }, nil?: true
+
+      # @!attribute provider_supported_models
+      #   List of TTS model identifiers supported by this design's provider.
+      #
+      #   @return [Array<String>, nil]
+      optional :provider_supported_models, Telnyx::Internal::Type::ArrayOf[String]
+
       # @!attribute record_type
       #   Identifies the resource type.
       #
@@ -34,7 +46,7 @@ module Telnyx
       #   @return [Time, nil]
       optional :updated_at, Time
 
-      # @!method initialize(id: nil, created_at: nil, name: nil, record_type: nil, updated_at: nil)
+      # @!method initialize(id: nil, created_at: nil, name: nil, provider: nil, provider_supported_models: nil, record_type: nil, updated_at: nil)
       #   A summarized voice design object (without version-specific fields).
       #
       #   @param id [String] Unique identifier for the voice design.
@@ -43,9 +55,28 @@ module Telnyx
       #
       #   @param name [String] Name of the voice design.
       #
+      #   @param provider [Symbol, Telnyx::Models::VoiceDesignListResponse::Provider, nil] Voice synthesis provider used for this design.
+      #
+      #   @param provider_supported_models [Array<String>] List of TTS model identifiers supported by this design's provider.
+      #
       #   @param record_type [Symbol, Telnyx::Models::VoiceDesignListResponse::RecordType] Identifies the resource type.
       #
       #   @param updated_at [Time] Timestamp when the voice design was last updated.
+
+      # Voice synthesis provider used for this design.
+      #
+      # @see Telnyx::Models::VoiceDesignListResponse#provider
+      module Provider
+        extend Telnyx::Internal::Type::Enum
+
+        TELNYX = :telnyx
+        TELNYX_2 = :Telnyx
+        MINIMAX = :minimax
+        MINIMAX_2 = :Minimax
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
       # Identifies the resource type.
       #
