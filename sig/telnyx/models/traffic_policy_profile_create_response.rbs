@@ -1,109 +1,16 @@
 module Telnyx
   module Models
     type traffic_policy_profile_create_response =
-      { data: Telnyx::Models::TrafficPolicyProfileCreateResponse::Data }
+      { data: Telnyx::TrafficPolicyProfile }
 
     class TrafficPolicyProfileCreateResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::Models::TrafficPolicyProfileCreateResponse::Data?
+      attr_reader data: Telnyx::TrafficPolicyProfile?
 
-      def data=: (
-        Telnyx::Models::TrafficPolicyProfileCreateResponse::Data
-      ) -> Telnyx::Models::TrafficPolicyProfileCreateResponse::Data
+      def data=: (Telnyx::TrafficPolicyProfile) -> Telnyx::TrafficPolicyProfile
 
-      def initialize: (
-        ?data: Telnyx::Models::TrafficPolicyProfileCreateResponse::Data
-      ) -> void
+      def initialize: (?data: Telnyx::TrafficPolicyProfile) -> void
 
-      def to_hash: -> {
-        data: Telnyx::Models::TrafficPolicyProfileCreateResponse::Data
-      }
-
-      type data =
-        {
-          id: String,
-          created_at: String,
-          domains: ::Array[String],
-          ip_ranges: ::Array[String],
-          limit_bw_kbps: Integer?,
-          record_type: String,
-          services: ::Array[String],
-          type: Telnyx::Models::TrafficPolicyProfileCreateResponse::Data::type_,
-          updated_at: String
-        }
-
-      class Data < Telnyx::Internal::Type::BaseModel
-        attr_reader domains: ::Array[String]?
-
-        def domains=: (::Array[String]) -> ::Array[String]
-
-        attr_reader ip_ranges: ::Array[String]?
-
-        def ip_ranges=: (::Array[String]) -> ::Array[String]
-
-        attr_accessor limit_bw_kbps: Integer?
-
-        attr_reader services: ::Array[String]?
-
-        def services=: (::Array[String]) -> ::Array[String]
-
-        attr_reader type: Telnyx::Models::TrafficPolicyProfileCreateResponse::Data::type_?
-
-        def type=: (
-          Telnyx::Models::TrafficPolicyProfileCreateResponse::Data::type_
-        ) -> Telnyx::Models::TrafficPolicyProfileCreateResponse::Data::type_
-
-        attr_reader id: String?
-
-        def id=: (String) -> String
-
-        attr_reader created_at: String?
-
-        def created_at=: (String) -> String
-
-        attr_reader record_type: String?
-
-        def record_type=: (String) -> String
-
-        attr_reader updated_at: String?
-
-        def updated_at=: (String) -> String
-
-        def initialize: (
-          ?id: String,
-          ?created_at: String,
-          ?domains: ::Array[String],
-          ?ip_ranges: ::Array[String],
-          ?limit_bw_kbps: Integer?,
-          ?record_type: String,
-          ?services: ::Array[String],
-          ?type: Telnyx::Models::TrafficPolicyProfileCreateResponse::Data::type_,
-          ?updated_at: String
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          created_at: String,
-          domains: ::Array[String],
-          ip_ranges: ::Array[String],
-          limit_bw_kbps: Integer?,
-          record_type: String,
-          services: ::Array[String],
-          type: Telnyx::Models::TrafficPolicyProfileCreateResponse::Data::type_,
-          updated_at: String
-        }
-
-        type type_ = :whitelist | :blacklist | :throttling
-
-        module Type
-          extend Telnyx::Internal::Type::Enum
-
-          WHITELIST: :whitelist
-          BLACKLIST: :blacklist
-          THROTTLING: :throttling
-
-          def self?.values: -> ::Array[Telnyx::Models::TrafficPolicyProfileCreateResponse::Data::type_]
-        end
-      end
+      def to_hash: -> { data: Telnyx::TrafficPolicyProfile }
     end
   end
 end
