@@ -1817,10 +1817,21 @@ module Telnyx
   VirtualCrossConnectUpdateParams =
     Telnyx::Models::VirtualCrossConnectUpdateParams
 
+  VoiceCloneCreateFromDesignParams =
+    Telnyx::Models::VoiceCloneCreateFromDesignParams
+
+  VoiceCloneCreateFromDesignResponse =
+    Telnyx::Models::VoiceCloneCreateFromDesignResponse
+
   VoiceCloneCreateFromUploadParams =
     Telnyx::Models::VoiceCloneCreateFromUploadParams
 
+  VoiceCloneCreateFromUploadResponse =
+    Telnyx::Models::VoiceCloneCreateFromUploadResponse
+
   VoiceCloneCreateParams = Telnyx::Models::VoiceCloneCreateParams
+
+  VoiceCloneCreateResponse = Telnyx::Models::VoiceCloneCreateResponse
 
   VoiceCloneData = Telnyx::Models::VoiceCloneData
 
@@ -1832,6 +1843,8 @@ module Telnyx
   VoiceCloneListParams = Telnyx::Models::VoiceCloneListParams
 
   VoiceCloneUpdateParams = Telnyx::Models::VoiceCloneUpdateParams
+
+  VoiceCloneUpdateResponse = Telnyx::Models::VoiceCloneUpdateResponse
 
   VoiceDesignCreateParams = Telnyx::Models::VoiceDesignCreateParams
 
