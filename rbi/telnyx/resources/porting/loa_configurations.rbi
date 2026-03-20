@@ -136,6 +136,35 @@ module Telnyx
         )
         end
 
+        # Preview the LOA template that would be generated without need to create LOA
+        # configuration.
+        sig do
+          params(
+            address:
+              Telnyx::Porting::LoaConfigurationPreview0Params::Address::OrHash,
+            company_name: String,
+            contact:
+              Telnyx::Porting::LoaConfigurationPreview0Params::Contact::OrHash,
+            logo: Telnyx::Porting::LoaConfigurationPreview0Params::Logo::OrHash,
+            name: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(StringIO)
+        end
+        def preview_0(
+          # The address of the company.
+          address:,
+          # The name of the company
+          company_name:,
+          # The contact information of the company.
+          contact:,
+          # The logo of the LOA configuration
+          logo:,
+          # The name of the LOA configuration
+          name:,
+          request_options: {}
+        )
+        end
+
         # Preview a specific LOA configuration.
         sig do
           params(
