@@ -441,16 +441,18 @@ module Telnyx
             type: Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::type_
           }
 
-          type card = { components: ::Array[top] }
+          type card = { components: ::Array[::Hash[Symbol, top]] }
 
           class Card < Telnyx::Internal::Type::BaseModel
-            attr_reader components: ::Array[top]?
+            attr_reader components: ::Array[::Hash[Symbol, top]]?
 
-            def components=: (::Array[top]) -> ::Array[top]
+            def components=: (
+              ::Array[::Hash[Symbol, top]]
+            ) -> ::Array[::Hash[Symbol, top]]
 
-            def initialize: (?components: ::Array[top]) -> void
+            def initialize: (?components: ::Array[::Hash[Symbol, top]]) -> void
 
-            def to_hash: -> { components: ::Array[top] }
+            def to_hash: -> { components: ::Array[::Hash[Symbol, top]] }
           end
 
           type type_ = :CAROUSEL

@@ -502,11 +502,12 @@ module Telnyx
             class Card < Telnyx::Internal::Type::BaseModel
               # @!attribute components
               #
-              #   @return [Array<Object>, nil]
-              optional :components, Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]
+              #   @return [Array<Hash{Symbol=>Object}>, nil]
+              optional :components,
+                       Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]
 
               # @!method initialize(components: nil)
-              #   @param components [Array<Object>]
+              #   @param components [Array<Hash{Symbol=>Object}>]
             end
 
             # @see Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateCarouselComponent#type

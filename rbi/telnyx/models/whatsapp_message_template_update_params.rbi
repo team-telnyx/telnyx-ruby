@@ -1108,19 +1108,27 @@ module Telnyx
                 )
               end
 
-            sig { returns(T.nilable(T::Array[T.anything])) }
+            sig { returns(T.nilable(T::Array[T::Hash[Symbol, T.anything]])) }
             attr_reader :components
 
-            sig { params(components: T::Array[T.anything]).void }
+            sig do
+              params(components: T::Array[T::Hash[Symbol, T.anything]]).void
+            end
             attr_writer :components
 
             sig do
-              params(components: T::Array[T.anything]).returns(T.attached_class)
+              params(components: T::Array[T::Hash[Symbol, T.anything]]).returns(
+                T.attached_class
+              )
             end
             def self.new(components: nil)
             end
 
-            sig { override.returns({ components: T::Array[T.anything] }) }
+            sig do
+              override.returns(
+                { components: T::Array[T::Hash[Symbol, T.anything]] }
+              )
+            end
             def to_hash
             end
           end
