@@ -1313,10 +1313,11 @@ module Telnyx
           # The direction of the audio stream to be noise suppressed.
           direction: nil,
           # The engine to use for noise suppression. For backward compatibility, engines A,
-          # B, and C are also supported, but are deprecated: A - Denoiser B - DeepFilterNet
-          # C - Krisp
+          # B, C, and D are also supported, but are deprecated: A - Denoiser B -
+          # DeepFilterNet C - Krisp D - AiCoustics
           noise_suppression_engine: nil,
-          # Configuration parameters for noise suppression engines.
+          # Configuration parameters for noise suppression engines. Different engines
+          # support different parameters.
           noise_suppression_engine_config: nil,
           request_options: {}
         )

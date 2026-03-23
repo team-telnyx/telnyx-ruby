@@ -1,5 +1,23 @@
 # Changelog
 
+## 5.62.0 (2026-03-23)
+
+Full Changelog: [v5.61.0...v5.62.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.61.0...v5.62.0)
+
+### Features
+
+* **api:** manual updates ([f355790](https://github.com/team-telnyx/telnyx-ruby/commit/f3557900d968ec0cce119384b42716aaa504f86e))
+
+
+### Chores
+
+* **internal:** update gitignore ([517ddb7](https://github.com/team-telnyx/telnyx-ruby/commit/517ddb716f3fb40bb16b9001fe93439cc01e2e8a))
+
+
+### Documentation
+
+* WhatsApp template components schema ([8364546](https://github.com/team-telnyx/telnyx-ruby/commit/8364546c3f8b7c21290e464fddd50f4b0d137da5))
+
 ## 5.61.0 (2026-03-20)
 
 Full Changelog: [v5.60.0...v5.61.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.60.0...v5.61.0)

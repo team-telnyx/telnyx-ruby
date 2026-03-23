@@ -24,7 +24,8 @@ module Telnyx
       end
       attr_writer :category
 
-      # Whatsapp template components (header, body, footer, buttons)
+      # Template components (header, body, footer, buttons) as submitted, including
+      # example values.
       sig { returns(T.nilable(T::Array[T::Hash[Symbol, T.anything]])) }
       attr_reader :components
 
@@ -61,6 +62,9 @@ module Telnyx
       sig { params(rejection_reason: String).void }
       attr_writer :rejection_reason
 
+      # Current template status from Meta (e.g. PENDING, APPROVED, REJECTED, PAUSED,
+      # DISABLED). Additional statuses may be returned as Meta evolves the template
+      # lifecycle.
       sig { returns(T.nilable(String)) }
       attr_reader :status
 
@@ -114,13 +118,17 @@ module Telnyx
       def self.new(
         id: nil,
         category: nil,
-        # Whatsapp template components (header, body, footer, buttons)
+        # Template components (header, body, footer, buttons) as submitted, including
+        # example values.
         components: nil,
         created_at: nil,
         language: nil,
         name: nil,
         record_type: nil,
         rejection_reason: nil,
+        # Current template status from Meta (e.g. PENDING, APPROVED, REJECTED, PAUSED,
+        # DISABLED). Additional statuses may be returned as Meta evolves the template
+        # lifecycle.
         status: nil,
         template_id: nil,
         updated_at: nil,
