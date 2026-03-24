@@ -56,49 +56,49 @@ module Telnyx
         end
 
         type component =
-          Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent
-          | Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateBodyComponent
-          | Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateFooterComponent
-          | Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent
-          | Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateCarouselComponent
+          Telnyx::Whatsapp::TemplateCreateParams::Component::Header
+          | Telnyx::Whatsapp::TemplateCreateParams::Component::Body
+          | Telnyx::Whatsapp::TemplateCreateParams::Component::Footer
+          | Telnyx::Whatsapp::TemplateCreateParams::Component::Buttons
+          | Telnyx::Whatsapp::TemplateCreateParams::Component::Carousel
 
         module Component
           extend Telnyx::Internal::Type::Union
 
-          type whatsapp_template_header_component =
+          type header =
             {
-              format_: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent::format_,
-              type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent::type_,
-              example: Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent::Example,
+              file_format: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Header::format_,
+              type: :HEADER,
+              example: Telnyx::Whatsapp::TemplateCreateParams::Component::Header::Example,
               text: String
             }
 
-          class WhatsappTemplateHeaderComponent < Telnyx::Internal::Type::BaseModel
-            attr_accessor format_: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent::format_
+          class Header < Telnyx::Internal::Type::BaseModel
+            attr_accessor file_format: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Header::format_
 
-            attr_accessor type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent::type_
+            attr_accessor type: :HEADER
 
-            attr_reader example: Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent::Example?
+            attr_reader example: Telnyx::Whatsapp::TemplateCreateParams::Component::Header::Example?
 
             def example=: (
-              Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent::Example
-            ) -> Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent::Example
+              Telnyx::Whatsapp::TemplateCreateParams::Component::Header::Example
+            ) -> Telnyx::Whatsapp::TemplateCreateParams::Component::Header::Example
 
             attr_reader text: String?
 
             def text=: (String) -> String
 
             def initialize: (
-              format_: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent::format_,
-              type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent::type_,
-              ?example: Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent::Example,
-              ?text: String
+              file_format: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Header::format_,
+              ?example: Telnyx::Whatsapp::TemplateCreateParams::Component::Header::Example,
+              ?text: String,
+              ?type: :HEADER
             ) -> void
 
             def to_hash: -> {
-              format_: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent::format_,
-              type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent::type_,
-              example: Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent::Example,
+              file_format: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Header::format_,
+              type: :HEADER,
+              example: Telnyx::Whatsapp::TemplateCreateParams::Component::Header::Example,
               text: String
             }
 
@@ -113,17 +113,7 @@ module Telnyx
               DOCUMENT: :DOCUMENT
               LOCATION: :LOCATION
 
-              def self?.values: -> ::Array[Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent::format_]
-            end
-
-            type type_ = :HEADER
-
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              HEADER: :HEADER
-
-              def self?.values: -> ::Array[Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent::type_]
+              def self?.values: -> ::Array[Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Header::format_]
             end
 
             type example =
@@ -150,47 +140,37 @@ module Telnyx
             end
           end
 
-          type whatsapp_template_body_component =
+          type body =
             {
-              type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateBodyComponent::type_,
-              example: Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateBodyComponent::Example,
+              type: :BODY,
+              example: Telnyx::Whatsapp::TemplateCreateParams::Component::Body::Example,
               text: String
             }
 
-          class WhatsappTemplateBodyComponent < Telnyx::Internal::Type::BaseModel
-            attr_accessor type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateBodyComponent::type_
+          class Body < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: :BODY
 
-            attr_reader example: Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateBodyComponent::Example?
+            attr_reader example: Telnyx::Whatsapp::TemplateCreateParams::Component::Body::Example?
 
             def example=: (
-              Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateBodyComponent::Example
-            ) -> Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateBodyComponent::Example
+              Telnyx::Whatsapp::TemplateCreateParams::Component::Body::Example
+            ) -> Telnyx::Whatsapp::TemplateCreateParams::Component::Body::Example
 
             attr_reader text: String?
 
             def text=: (String) -> String
 
             def initialize: (
-              type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateBodyComponent::type_,
-              ?example: Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateBodyComponent::Example,
-              ?text: String
+              ?example: Telnyx::Whatsapp::TemplateCreateParams::Component::Body::Example,
+              ?text: String,
+              ?type: :BODY
             ) -> void
 
             def to_hash: -> {
-              type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateBodyComponent::type_,
-              example: Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateBodyComponent::Example,
+              type: :BODY,
+              example: Telnyx::Whatsapp::TemplateCreateParams::Component::Body::Example,
               text: String
             }
-
-            type type_ = :BODY
-
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              BODY: :BODY
-
-              def self?.values: -> ::Array[Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateBodyComponent::type_]
-            end
 
             type example = { body_text: ::Array[::Array[String]] }
 
@@ -207,15 +187,11 @@ module Telnyx
             end
           end
 
-          type whatsapp_template_footer_component =
-            {
-              type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateFooterComponent::type_,
-              code_expiration_minutes: Integer,
-              text: String
-            }
+          type footer =
+            { type: :FOOTER, code_expiration_minutes: Integer, text: String }
 
-          class WhatsappTemplateFooterComponent < Telnyx::Internal::Type::BaseModel
-            attr_accessor type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateFooterComponent::type_
+          class Footer < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: :FOOTER
 
             attr_reader code_expiration_minutes: Integer?
 
@@ -226,58 +202,48 @@ module Telnyx
             def text=: (String) -> String
 
             def initialize: (
-              type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateFooterComponent::type_,
               ?code_expiration_minutes: Integer,
-              ?text: String
+              ?text: String,
+              ?type: :FOOTER
             ) -> void
 
             def to_hash: -> {
-              type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateFooterComponent::type_,
+              type: :FOOTER,
               code_expiration_minutes: Integer,
               text: String
             }
-
-            type type_ = :FOOTER
-
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              FOOTER: :FOOTER
-
-              def self?.values: -> ::Array[Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateFooterComponent::type_]
-            end
           end
 
-          type whatsapp_template_buttons_component =
+          type buttons =
             {
-              buttons: ::Array[Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button],
-              type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::type_
+              buttons: ::Array[Telnyx::Whatsapp::TemplateCreateParams::Component::Buttons::Button],
+              type: :BUTTONS
             }
 
-          class WhatsappTemplateButtonsComponent < Telnyx::Internal::Type::BaseModel
-            attr_accessor buttons: ::Array[Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button]
+          class Buttons < Telnyx::Internal::Type::BaseModel
+            attr_accessor buttons: ::Array[Telnyx::Whatsapp::TemplateCreateParams::Component::Buttons::Button]
 
-            attr_accessor type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::type_
+            attr_accessor type: :BUTTONS
 
             def initialize: (
-              buttons: ::Array[Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button],
-              type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::type_
+              buttons: ::Array[Telnyx::Whatsapp::TemplateCreateParams::Component::Buttons::Button],
+              ?type: :BUTTONS
             ) -> void
 
             def to_hash: -> {
-              buttons: ::Array[Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button],
-              type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::type_
+              buttons: ::Array[Telnyx::Whatsapp::TemplateCreateParams::Component::Buttons::Button],
+              type: :BUTTONS
             }
 
             type button =
               {
-                type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::type_,
+                type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::type_,
                 autofill_text: String,
                 example: ::Array[String],
-                flow_action: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::flow_action,
+                flow_action: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::flow_action,
                 flow_id: String,
                 navigate_screen: String,
-                otp_type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::otp_type,
+                otp_type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::otp_type,
                 package_name: String,
                 phone_number: String,
                 signature_hash: String,
@@ -287,7 +253,7 @@ module Telnyx
               }
 
             class Button < Telnyx::Internal::Type::BaseModel
-              attr_accessor type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::type_
+              attr_accessor type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::type_
 
               attr_reader autofill_text: String?
 
@@ -297,11 +263,11 @@ module Telnyx
 
               def example=: (::Array[String]) -> ::Array[String]
 
-              attr_reader flow_action: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::flow_action?
+              attr_reader flow_action: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::flow_action?
 
               def flow_action=: (
-                Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::flow_action
-              ) -> Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::flow_action
+                Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::flow_action
+              ) -> Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::flow_action
 
               attr_reader flow_id: String?
 
@@ -311,11 +277,11 @@ module Telnyx
 
               def navigate_screen=: (String) -> String
 
-              attr_reader otp_type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::otp_type?
+              attr_reader otp_type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::otp_type?
 
               def otp_type=: (
-                Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::otp_type
-              ) -> Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::otp_type
+                Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::otp_type
+              ) -> Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::otp_type
 
               attr_reader package_name: String?
 
@@ -342,13 +308,13 @@ module Telnyx
               def zero_tap_terms_accepted=: (bool) -> bool
 
               def initialize: (
-                type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::type_,
+                type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::type_,
                 ?autofill_text: String,
                 ?example: ::Array[String],
-                ?flow_action: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::flow_action,
+                ?flow_action: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::flow_action,
                 ?flow_id: String,
                 ?navigate_screen: String,
-                ?otp_type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::otp_type,
+                ?otp_type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::otp_type,
                 ?package_name: String,
                 ?phone_number: String,
                 ?signature_hash: String,
@@ -358,13 +324,13 @@ module Telnyx
               ) -> void
 
               def to_hash: -> {
-                type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::type_,
+                type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::type_,
                 autofill_text: String,
                 example: ::Array[String],
-                flow_action: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::flow_action,
+                flow_action: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::flow_action,
                 flow_id: String,
                 navigate_screen: String,
-                otp_type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::otp_type,
+                otp_type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::otp_type,
                 package_name: String,
                 phone_number: String,
                 signature_hash: String,
@@ -386,7 +352,7 @@ module Telnyx
                 COPY_CODE: :COPY_CODE
                 FLOW: :FLOW
 
-                def self?.values: -> ::Array[Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::type_]
+                def self?.values: -> ::Array[Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::type_]
               end
 
               type flow_action = :navigate | :data_exchange
@@ -397,7 +363,7 @@ module Telnyx
                 NAVIGATE: :navigate
                 DATA_EXCHANGE: :data_exchange
 
-                def self?.values: -> ::Array[Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::flow_action]
+                def self?.values: -> ::Array[Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::flow_action]
               end
 
               type otp_type = :COPY_CODE | :ONE_TAP
@@ -408,40 +374,30 @@ module Telnyx
                 COPY_CODE: :COPY_CODE
                 ONE_TAP: :ONE_TAP
 
-                def self?.values: -> ::Array[Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::Button::otp_type]
+                def self?.values: -> ::Array[Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons::Button::otp_type]
               end
-            end
-
-            type type_ = :BUTTONS
-
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              BUTTONS: :BUTTONS
-
-              def self?.values: -> ::Array[Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::type_]
             end
           end
 
-          type whatsapp_template_carousel_component =
+          type carousel =
             {
-              cards: ::Array[Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateCarouselComponent::Card],
-              type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateCarouselComponent::type_
+              cards: ::Array[Telnyx::Whatsapp::TemplateCreateParams::Component::Carousel::Card],
+              type: :CAROUSEL
             }
 
-          class WhatsappTemplateCarouselComponent < Telnyx::Internal::Type::BaseModel
-            attr_accessor cards: ::Array[Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateCarouselComponent::Card]
+          class Carousel < Telnyx::Internal::Type::BaseModel
+            attr_accessor cards: ::Array[Telnyx::Whatsapp::TemplateCreateParams::Component::Carousel::Card]
 
-            attr_accessor type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateCarouselComponent::type_
+            attr_accessor type: :CAROUSEL
 
             def initialize: (
-              cards: ::Array[Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateCarouselComponent::Card],
-              type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateCarouselComponent::type_
+              cards: ::Array[Telnyx::Whatsapp::TemplateCreateParams::Component::Carousel::Card],
+              ?type: :CAROUSEL
             ) -> void
 
             def to_hash: -> {
-              cards: ::Array[Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateCarouselComponent::Card],
-              type: Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateCarouselComponent::type_
+              cards: ::Array[Telnyx::Whatsapp::TemplateCreateParams::Component::Carousel::Card],
+              type: :CAROUSEL
             }
 
             type card = { components: ::Array[::Hash[Symbol, top]] }
@@ -458,16 +414,6 @@ module Telnyx
               ) -> void
 
               def to_hash: -> { components: ::Array[::Hash[Symbol, top]] }
-            end
-
-            type type_ = :CAROUSEL
-
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              CAROUSEL: :CAROUSEL
-
-              def self?.values: -> ::Array[Telnyx::Models::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateCarouselComponent::type_]
             end
           end
 

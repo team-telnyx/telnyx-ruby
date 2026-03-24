@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.63.0 (2026-03-24)
+
+Full Changelog: [v5.62.0...v5.63.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.62.0...v5.63.0)
+
+### Features
+
+* **api:** Merge pull request [#30](https://github.com/team-telnyx/telnyx-ruby/issues/30) from stainless-sdks/fix-schemaUnionDiscriminatorMissing ([b9ed56b](https://github.com/team-telnyx/telnyx-ruby/commit/b9ed56b769872b129f507586f133acaa21a33415))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([dc7c75f](https://github.com/team-telnyx/telnyx-ruby/commit/dc7c75f0f80071e8450550ac939c946ab3638249))
+
 ## 5.62.0 (2026-03-23)
 
 Full Changelog: [v5.61.0...v5.62.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.61.0...v5.62.0)
