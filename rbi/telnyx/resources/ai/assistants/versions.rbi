@@ -45,6 +45,7 @@ module Telnyx
               name: String,
               privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
               telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
+              tool_ids: T::Array[String],
               tools:
                 T::Array[
                   T.any(
@@ -112,6 +113,8 @@ module Telnyx
             privacy_settings: nil,
             # Body param
             telephony_settings: nil,
+            # Body param
+            tool_ids: nil,
             # Body param: The tools that the assistant can use. These may be templated with
             # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
             tools: nil,

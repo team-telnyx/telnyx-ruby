@@ -3,6 +3,18 @@ module Telnyx
     class AI
       class Assistants
         class Tools
+          def add: (
+            String tool_id,
+            assistant_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> top
+
+          def remove: (
+            String tool_id,
+            assistant_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> top
+
           def test_: (
             String tool_id,
             assistant_id: String,
