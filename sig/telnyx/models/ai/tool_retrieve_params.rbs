@@ -1,0 +1,25 @@
+module Telnyx
+  module Models
+    module AI
+      type tool_retrieve_params =
+        { tool_id: String } & Telnyx::Internal::Type::request_parameters
+
+      class ToolRetrieveParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor tool_id: String
+
+        def initialize: (
+          tool_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          tool_id: String,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

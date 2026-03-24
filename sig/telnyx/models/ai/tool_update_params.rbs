@@ -1,0 +1,84 @@
+module Telnyx
+  module Models
+    module AI
+      type tool_update_params =
+        {
+          tool_id: String,
+          display_name: String,
+          function: ::Hash[Symbol, top],
+          handoff: ::Hash[Symbol, top],
+          invite: ::Hash[Symbol, top],
+          retrieval: ::Hash[Symbol, top],
+          timeout_ms: Integer,
+          type: String,
+          webhook: ::Hash[Symbol, top]
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ToolUpdateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor tool_id: String
+
+        attr_reader display_name: String?
+
+        def display_name=: (String) -> String
+
+        attr_reader function: ::Hash[Symbol, top]?
+
+        def function=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        attr_reader handoff: ::Hash[Symbol, top]?
+
+        def handoff=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        attr_reader invite: ::Hash[Symbol, top]?
+
+        def invite=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        attr_reader retrieval: ::Hash[Symbol, top]?
+
+        def retrieval=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        attr_reader timeout_ms: Integer?
+
+        def timeout_ms=: (Integer) -> Integer
+
+        attr_reader type: String?
+
+        def type=: (String) -> String
+
+        attr_reader webhook: ::Hash[Symbol, top]?
+
+        def webhook=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        def initialize: (
+          tool_id: String,
+          ?display_name: String,
+          ?function: ::Hash[Symbol, top],
+          ?handoff: ::Hash[Symbol, top],
+          ?invite: ::Hash[Symbol, top],
+          ?retrieval: ::Hash[Symbol, top],
+          ?timeout_ms: Integer,
+          ?type: String,
+          ?webhook: ::Hash[Symbol, top],
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          tool_id: String,
+          display_name: String,
+          function: ::Hash[Symbol, top],
+          handoff: ::Hash[Symbol, top],
+          invite: ::Hash[Symbol, top],
+          retrieval: ::Hash[Symbol, top],
+          timeout_ms: Integer,
+          type: String,
+          webhook: ::Hash[Symbol, top],
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end
