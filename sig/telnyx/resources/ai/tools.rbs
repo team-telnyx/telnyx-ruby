@@ -1,0 +1,52 @@
+module Telnyx
+  module Resources
+    class AI
+      class Tools
+        def create: (
+          display_name: String,
+          type: String,
+          ?function: ::Hash[Symbol, top],
+          ?handoff: ::Hash[Symbol, top],
+          ?invite: ::Hash[Symbol, top],
+          ?retrieval: ::Hash[Symbol, top],
+          ?timeout_ms: Integer,
+          ?webhook: ::Hash[Symbol, top],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::ToolCreateResponse
+
+        def retrieve: (
+          String tool_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::ToolRetrieveResponse
+
+        def update: (
+          String tool_id,
+          ?display_name: String,
+          ?function: ::Hash[Symbol, top],
+          ?handoff: ::Hash[Symbol, top],
+          ?invite: ::Hash[Symbol, top],
+          ?retrieval: ::Hash[Symbol, top],
+          ?timeout_ms: Integer,
+          ?type: String,
+          ?webhook: ::Hash[Symbol, top],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::ToolUpdateResponse
+
+        def list: (
+          ?filter_name: String,
+          ?filter_type: String,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AI::ToolListResponse]
+
+        def delete: (
+          String tool_id,
+          ?request_options: Telnyx::request_opts
+        ) -> top
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

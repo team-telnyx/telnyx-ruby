@@ -26,6 +26,7 @@ module Telnyx
             ?name: String,
             ?privacy_settings: Telnyx::AI::PrivacySettings,
             ?telephony_settings: Telnyx::AI::TelephonySettings,
+            ?tool_ids: ::Array[String],
             ?tools: ::Array[Telnyx::Models::AI::assistant_tool],
             ?transcription: Telnyx::AI::TranscriptionSettings,
             ?voice_settings: Telnyx::AI::VoiceSettings,

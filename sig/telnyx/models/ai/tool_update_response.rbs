@@ -1,0 +1,53 @@
+module Telnyx
+  module Models
+    module AI
+      type tool_update_response =
+        {
+          id: String,
+          tool_definition: ::Hash[Symbol, top],
+          type: String,
+          created_at: String,
+          display_name: String,
+          timeout_ms: Integer
+        }
+
+      class ToolUpdateResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor tool_definition: ::Hash[Symbol, top]
+
+        attr_accessor type: String
+
+        attr_reader created_at: String?
+
+        def created_at=: (String) -> String
+
+        attr_reader display_name: String?
+
+        def display_name=: (String) -> String
+
+        attr_reader timeout_ms: Integer?
+
+        def timeout_ms=: (Integer) -> Integer
+
+        def initialize: (
+          id: String,
+          tool_definition: ::Hash[Symbol, top],
+          type: String,
+          ?created_at: String,
+          ?display_name: String,
+          ?timeout_ms: Integer
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          tool_definition: ::Hash[Symbol, top],
+          type: String,
+          created_at: String,
+          display_name: String,
+          timeout_ms: Integer
+        }
+      end
+    end
+  end
+end

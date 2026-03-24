@@ -132,6 +132,12 @@ module Telnyx
           end
           attr_writer :telephony_settings
 
+          sig { returns(T.nilable(T::Array[String])) }
+          attr_reader :tool_ids
+
+          sig { params(tool_ids: T::Array[String]).void }
+          attr_writer :tool_ids
+
           # The tools that the assistant can use. These may be templated with
           # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
           sig do
@@ -217,6 +223,7 @@ module Telnyx
               name: String,
               privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
               telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
+              tool_ids: T::Array[String],
               tools:
                 T::Array[
                   T.any(
@@ -272,6 +279,7 @@ module Telnyx
             name: nil,
             privacy_settings: nil,
             telephony_settings: nil,
+            tool_ids: nil,
             # The tools that the assistant can use. These may be templated with
             # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
             tools: nil,
@@ -299,6 +307,7 @@ module Telnyx
                 name: String,
                 privacy_settings: Telnyx::AI::PrivacySettings,
                 telephony_settings: Telnyx::AI::TelephonySettings,
+                tool_ids: T::Array[String],
                 tools:
                   T::Array[
                     T.any(

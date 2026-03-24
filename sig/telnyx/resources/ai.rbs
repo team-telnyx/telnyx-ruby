@@ -23,6 +23,8 @@ module Telnyx
 
       attr_reader openai: Telnyx::Resources::AI::OpenAI
 
+      attr_reader tools: Telnyx::Resources::AI::Tools
+
       def retrieve_models: (
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::AIRetrieveModelsResponse

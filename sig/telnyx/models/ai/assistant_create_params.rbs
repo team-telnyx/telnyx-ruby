@@ -16,6 +16,7 @@ module Telnyx
           messaging_settings: Telnyx::AI::MessagingSettings,
           privacy_settings: Telnyx::AI::PrivacySettings,
           telephony_settings: Telnyx::AI::TelephonySettings,
+          tool_ids: ::Array[String],
           tools: ::Array[Telnyx::Models::AI::assistant_tool],
           transcription: Telnyx::AI::TranscriptionSettings,
           voice_settings: Telnyx::AI::VoiceSettings,
@@ -83,6 +84,10 @@ module Telnyx
           Telnyx::AI::TelephonySettings
         ) -> Telnyx::AI::TelephonySettings
 
+        attr_reader tool_ids: ::Array[String]?
+
+        def tool_ids=: (::Array[String]) -> ::Array[String]
+
         attr_reader tools: ::Array[Telnyx::Models::AI::assistant_tool]?
 
         def tools=: (
@@ -121,6 +126,7 @@ module Telnyx
           ?messaging_settings: Telnyx::AI::MessagingSettings,
           ?privacy_settings: Telnyx::AI::PrivacySettings,
           ?telephony_settings: Telnyx::AI::TelephonySettings,
+          ?tool_ids: ::Array[String],
           ?tools: ::Array[Telnyx::Models::AI::assistant_tool],
           ?transcription: Telnyx::AI::TranscriptionSettings,
           ?voice_settings: Telnyx::AI::VoiceSettings,
@@ -142,6 +148,7 @@ module Telnyx
           messaging_settings: Telnyx::AI::MessagingSettings,
           privacy_settings: Telnyx::AI::PrivacySettings,
           telephony_settings: Telnyx::AI::TelephonySettings,
+          tool_ids: ::Array[String],
           tools: ::Array[Telnyx::Models::AI::assistant_tool],
           transcription: Telnyx::AI::TranscriptionSettings,
           voice_settings: Telnyx::AI::VoiceSettings,

@@ -6,6 +6,28 @@ module Telnyx
       class Assistants
         # Configure AI assistant specifications
         class Tools
+          # Add Assistant Tool
+          sig do
+            params(
+              tool_id: String,
+              assistant_id: String,
+              request_options: Telnyx::RequestOptions::OrHash
+            ).returns(T.anything)
+          end
+          def add(tool_id, assistant_id:, request_options: {})
+          end
+
+          # Remove Assistant Tool
+          sig do
+            params(
+              tool_id: String,
+              assistant_id: String,
+              request_options: Telnyx::RequestOptions::OrHash
+            ).returns(T.anything)
+          end
+          def remove(tool_id, assistant_id:, request_options: {})
+          end
+
           # Test a webhook tool for an assistant
           sig do
             params(

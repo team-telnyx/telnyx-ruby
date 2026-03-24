@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.65.0 (2026-03-24)
+
+Full Changelog: [v5.64.0...v5.65.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.64.0...v5.65.0)
+
+### Features
+
+* New tools api ([0d4a318](https://github.com/team-telnyx/telnyx-ruby/commit/0d4a318b82132d25a28f85620da0bb05599c3ea2))
+
 ## 5.64.0 (2026-03-24)
 
 Full Changelog: [v5.63.0...v5.64.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.63.0...v5.64.0)
