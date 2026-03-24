@@ -27,11 +27,11 @@ module Telnyx
           components:
             T::Array[
               T.any(
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::OrHash,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::OrHash,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent::OrHash,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::OrHash,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::OrHash
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::OrHash,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Body::OrHash,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Footer::OrHash,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::OrHash,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Carousel::OrHash
               )
             ],
           request_options: Telnyx::RequestOptions::OrHash

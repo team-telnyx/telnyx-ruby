@@ -183,12 +183,8 @@ module Telnyx
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         TELNYX = T.let(:telnyx, Telnyx::VoiceDesignData::Provider::TaggedSymbol)
-        TELNYX_2 =
-          T.let(:Telnyx, Telnyx::VoiceDesignData::Provider::TaggedSymbol)
         MINIMAX =
           T.let(:minimax, Telnyx::VoiceDesignData::Provider::TaggedSymbol)
-        MINIMAX_2 =
-          T.let(:Minimax, Telnyx::VoiceDesignData::Provider::TaggedSymbol)
 
         sig do
           override.returns(
