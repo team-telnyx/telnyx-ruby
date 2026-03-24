@@ -221,6 +221,30 @@ module Telnyx
           end
           attr_writer :query_parameters
 
+          # A list of mappings that extract values from the webhook response and store them
+          # as dynamic variables. Each mapping specifies a dynamic variable name and a
+          # dot-notation path to the value in the response body.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable
+                ]
+              )
+            )
+          end
+          attr_reader :store_fields_as_variables
+
+          sig do
+            params(
+              store_fields_as_variables:
+                T::Array[
+                  Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable::OrHash
+                ]
+            ).void
+          end
+          attr_writer :store_fields_as_variables
+
           # The maximum number of milliseconds to wait for the webhook to respond. Only
           # applicable when async is false.
           sig { returns(T.nilable(Integer)) }
@@ -247,6 +271,10 @@ module Telnyx
                 Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters::OrHash,
               query_parameters:
                 Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters::OrHash,
+              store_fields_as_variables:
+                T::Array[
+                  Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable::OrHash
+                ],
               timeout_ms: Integer
             ).returns(T.attached_class)
           end
@@ -284,6 +312,10 @@ module Telnyx
             # [JSON Schema reference](https://json-schema.org/understanding-json-schema) for
             # documentation about the format
             query_parameters: nil,
+            # A list of mappings that extract values from the webhook response and store them
+            # as dynamic variables. Each mapping specifies a dynamic variable name and a
+            # dot-notation path to the value in the response body.
+            store_fields_as_variables: nil,
             # The maximum number of milliseconds to wait for the webhook to respond. Only
             # applicable when async is false.
             timeout_ms: nil
@@ -309,6 +341,10 @@ module Telnyx
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters,
                 query_parameters:
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters,
+                store_fields_as_variables:
+                  T::Array[
+                    Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable
+                  ],
                 timeout_ms: Integer
               }
             )
@@ -724,6 +760,41 @@ module Telnyx
               end
               def self.values
               end
+            end
+          end
+
+          class StoreFieldsAsVariable < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # The name of the dynamic variable to store the extracted value in.
+            sig { returns(String) }
+            attr_accessor :name
+
+            # A dot-notation path to the value in the webhook response body (e.g.
+            # 'customer.name' or 'id').
+            sig { returns(String) }
+            attr_accessor :value_path
+
+            sig do
+              params(name: String, value_path: String).returns(T.attached_class)
+            end
+            def self.new(
+              # The name of the dynamic variable to store the extracted value in.
+              name:,
+              # A dot-notation path to the value in the webhook response body (e.g.
+              # 'customer.name' or 'id').
+              value_path:
+            )
+            end
+
+            sig { override.returns({ name: String, value_path: String }) }
+            def to_hash
             end
           end
         end
