@@ -103,6 +103,15 @@ module Telnyx
           optional :query_parameters,
                    -> { Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters }
 
+          # @!attribute store_fields_as_variables
+          #   A list of mappings that extract values from the webhook response and store them
+          #   as dynamic variables. Each mapping specifies a dynamic variable name and a
+          #   dot-notation path to the value in the response body.
+          #
+          #   @return [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable>, nil]
+          optional :store_fields_as_variables,
+                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable] }
+
           # @!attribute timeout_ms
           #   The maximum number of milliseconds to wait for the webhook to respond. Only
           #   applicable when async is false.
@@ -110,7 +119,7 @@ module Telnyx
           #   @return [Integer, nil]
           optional :timeout_ms, Integer
 
-          # @!method initialize(description:, name:, url:, async: nil, body_parameters: nil, headers: nil, http_method: nil, path_parameters: nil, query_parameters: nil, timeout_ms: nil)
+          # @!method initialize(description:, name:, url:, async: nil, body_parameters: nil, headers: nil, http_method: nil, path_parameters: nil, query_parameters: nil, store_fields_as_variables: nil, timeout_ms: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook} for more
           #   details.
@@ -132,6 +141,8 @@ module Telnyx
           #   @param path_parameters [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters] The path parameters the webhook tool accepts, described as a JSON Schema object.
           #
           #   @param query_parameters [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters] The query parameters the webhook tool accepts, described as a JSON Schema object
+          #
+          #   @param store_fields_as_variables [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable>] A list of mappings that extract values from the webhook response and store them
           #
           #   @param timeout_ms [Integer] The maximum number of milliseconds to wait for the webhook to respond. Only appl
 
@@ -307,6 +318,30 @@ module Telnyx
               # @!method self.values
               #   @return [Array<Symbol>]
             end
+          end
+
+          class StoreFieldsAsVariable < Telnyx::Internal::Type::BaseModel
+            # @!attribute name
+            #   The name of the dynamic variable to store the extracted value in.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute value_path
+            #   A dot-notation path to the value in the webhook response body (e.g.
+            #   'customer.name' or 'id').
+            #
+            #   @return [String]
+            required :value_path, String
+
+            # @!method initialize(name:, value_path:)
+            #   Some parameter documentations has been truncated, see
+            #   {Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable}
+            #   for more details.
+            #
+            #   @param name [String] The name of the dynamic variable to store the extracted value in.
+            #
+            #   @param value_path [String] A dot-notation path to the value in the webhook response body (e.g. 'customer.na
           end
         end
       end
