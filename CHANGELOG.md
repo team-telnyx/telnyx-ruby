@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.64.0 (2026-03-24)
+
+Full Changelog: [v5.63.0...v5.64.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.63.0...v5.64.0)
+
+### Features
+
+* TELAPPS-5685: Add store_fields_as_variables to WebhookToolParams ([603352b](https://github.com/team-telnyx/telnyx-ruby/commit/603352b0959551b578a0092f2b060ff008a17c47))
+
 ## 5.63.0 (2026-03-24)
 
 Full Changelog: [v5.62.0...v5.63.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.62.0...v5.63.0)
