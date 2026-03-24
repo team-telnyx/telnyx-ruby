@@ -106,15 +106,13 @@ module Telnyx
         def self?.values: -> ::Array[Telnyx::Models::VoiceCloneData::gender]
       end
 
-      type provider = :telnyx | :minimax | :Telnyx | :Minimax
+      type provider = :telnyx | :minimax
 
       module Provider
         extend Telnyx::Internal::Type::Enum
 
         TELNYX: :telnyx
-        TELNYX_2: :Telnyx
         MINIMAX: :minimax
-        MINIMAX_2: :Minimax
 
         def self?.values: -> ::Array[Telnyx::Models::VoiceCloneData::provider]
       end

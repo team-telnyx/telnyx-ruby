@@ -112,19 +112,9 @@ module Telnyx
             :telnyx,
             Telnyx::VoiceCloneListParams::FilterProvider::TaggedSymbol
           )
-        TELNYX_2 =
-          T.let(
-            :Telnyx,
-            Telnyx::VoiceCloneListParams::FilterProvider::TaggedSymbol
-          )
         MINIMAX =
           T.let(
             :minimax,
-            Telnyx::VoiceCloneListParams::FilterProvider::TaggedSymbol
-          )
-        MINIMAX_2 =
-          T.let(
-            :Minimax,
             Telnyx::VoiceCloneListParams::FilterProvider::TaggedSymbol
           )
 

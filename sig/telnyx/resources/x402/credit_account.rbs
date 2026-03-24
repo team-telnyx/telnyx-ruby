@@ -9,7 +9,7 @@ module Telnyx
 
         def settle: (
           id: String,
-          ?body_payment_signature: String,
+          ?payment_signature: String,
           ?header_payment_signature: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::X402::CreditAccountSettleResponse
