@@ -84,7 +84,7 @@ module Telnyx
           #   Filter porting orders by status(es). Originally: filter[status],
           #   filter[status][in][]
           #
-          #   @return [Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus, Array<Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1>, nil]
+          #   @return [Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus, Array<Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusArray>, nil]
           optional :status, union: -> { Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status }
 
           # @!attribute support_key
@@ -111,7 +111,7 @@ module Telnyx
           #
           #   @param porting_order_id [Array<String>] Filter results by a list of porting order ids
           #
-          #   @param status [Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus, Array<Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1>] Filter porting orders by status(es). Originally: filter[status], filter[status]
+          #   @param status [Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus, Array<Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusArray>] Filter porting orders by status(es). Originally: filter[status], filter[status]
           #
           #   @param support_key [String, Array<String>] Filter results by support key(s). Originally: filter[support_key][eq], filter[su
 
@@ -164,7 +164,7 @@ module Telnyx
             variant enum: -> { Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus }
 
             # Filter by multiple statuses (in operation)
-            variant -> { Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1Array }
+            variant -> { Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatus2DArray }
 
             # Filter by single status
             module PortingOrderSingleStatus
@@ -183,7 +183,7 @@ module Telnyx
               #   @return [Array<Symbol>]
             end
 
-            module UnionArrayVariant1
+            module PortingOrderStatusArray
               extend Telnyx::Internal::Type::Enum
 
               DRAFT = :draft
@@ -200,12 +200,12 @@ module Telnyx
             end
 
             # @!method self.variants
-            #   @return [Array(Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus, Array<Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1>)]
+            #   @return [Array(Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus, Array<Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusArray>)]
 
             # @type [Telnyx::Internal::Type::Converter]
-            UnionArrayVariant1Array =
+            PortingOrderStatus2DArray =
               Telnyx::Internal::Type::ArrayOf[enum: -> {
-                Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1
+                Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusArray
               }]
           end
 
