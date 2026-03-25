@@ -1,0 +1,70 @@
+module Telnyx
+  module Resources
+    class Enterprises
+      attr_reader reputation: Telnyx::Resources::Enterprises::Reputation
+
+      def create: (
+        billing_address: Telnyx::EnterpriseCreateParams::BillingAddress,
+        billing_contact: Telnyx::EnterpriseCreateParams::BillingContact,
+        country_code: String,
+        doing_business_as: String,
+        fein: String,
+        industry: String,
+        legal_name: String,
+        number_of_employees: Telnyx::Models::EnterpriseCreateParams::number_of_employees,
+        organization_contact: Telnyx::EnterpriseCreateParams::OrganizationContact,
+        organization_legal_type: Telnyx::Models::EnterpriseCreateParams::organization_legal_type,
+        organization_physical_address: Telnyx::EnterpriseCreateParams::OrganizationPhysicalAddress,
+        organization_type: Telnyx::Models::EnterpriseCreateParams::organization_type,
+        website: String,
+        ?corporate_registration_number: String,
+        ?customer_reference: String,
+        ?dun_bradstreet_number: String,
+        ?primary_business_domain_sic_code: String,
+        ?professional_license_number: String,
+        ?role_type: Telnyx::Models::EnterpriseCreateParams::role_type,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::EnterpriseCreateResponse
+
+      def retrieve: (
+        String enterprise_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::EnterpriseRetrieveResponse
+
+      def update: (
+        String enterprise_id,
+        ?billing_address: Telnyx::EnterpriseUpdateParams::BillingAddress,
+        ?billing_contact: Telnyx::EnterpriseUpdateParams::BillingContact,
+        ?corporate_registration_number: String,
+        ?customer_reference: String,
+        ?doing_business_as: String,
+        ?dun_bradstreet_number: String,
+        ?fein: String,
+        ?industry: String,
+        ?legal_name: String,
+        ?number_of_employees: Telnyx::Models::EnterpriseUpdateParams::number_of_employees,
+        ?organization_contact: Telnyx::EnterpriseUpdateParams::OrganizationContact,
+        ?organization_legal_type: Telnyx::Models::EnterpriseUpdateParams::organization_legal_type,
+        ?organization_physical_address: Telnyx::EnterpriseUpdateParams::OrganizationPhysicalAddress,
+        ?primary_business_domain_sic_code: String,
+        ?professional_license_number: String,
+        ?website: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::EnterpriseUpdateResponse
+
+      def list: (
+        ?legal_name: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::EnterpriseListResponse]
+
+      def delete: (
+        String enterprise_id,
+        ?request_options: Telnyx::request_opts
+      ) -> nil
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

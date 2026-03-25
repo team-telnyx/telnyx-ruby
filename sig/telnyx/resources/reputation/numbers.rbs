@@ -1,0 +1,27 @@
+module Telnyx
+  module Resources
+    class Reputation
+      class Numbers
+        def retrieve: (
+          String phone_number,
+          ?fresh: bool,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Reputation::NumberRetrieveResponse
+
+        def list: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?phone_number: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Reputation::NumberListResponse]
+
+        def delete: (
+          String phone_number,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

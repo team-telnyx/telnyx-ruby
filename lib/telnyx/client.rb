@@ -643,6 +643,16 @@ module Telnyx
     # @return [Telnyx::Resources::TrafficPolicyProfiles]
     attr_reader :traffic_policy_profiles
 
+    # Enterprise management for Branded Calling and Number Reputation services
+    # @return [Telnyx::Resources::Enterprises]
+    attr_reader :enterprises
+
+    # @return [Telnyx::Resources::Reputation]
+    attr_reader :reputation
+
+    # @return [Telnyx::Resources::TermsOfService]
+    attr_reader :terms_of_service
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -897,6 +907,9 @@ module Telnyx
       @voice_clones = Telnyx::Resources::VoiceClones.new(client: self)
       @voice_designs = Telnyx::Resources::VoiceDesigns.new(client: self)
       @traffic_policy_profiles = Telnyx::Resources::TrafficPolicyProfiles.new(client: self)
+      @enterprises = Telnyx::Resources::Enterprises.new(client: self)
+      @reputation = Telnyx::Resources::Reputation.new(client: self)
+      @terms_of_service = Telnyx::Resources::TermsOfService.new(client: self)
     end
   end
 end

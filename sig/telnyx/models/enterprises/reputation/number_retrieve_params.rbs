@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    module Enterprises
+      module Reputation
+        type number_retrieve_params =
+          { enterprise_id: String, phone_number: String, fresh: bool }
+          & Telnyx::Internal::Type::request_parameters
+
+        class NumberRetrieveParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor enterprise_id: String
+
+          attr_accessor phone_number: String
+
+          attr_reader fresh: bool?
+
+          def fresh=: (bool) -> bool
+
+          def initialize: (
+            enterprise_id: String,
+            phone_number: String,
+            ?fresh: bool,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            enterprise_id: String,
+            phone_number: String,
+            fresh: bool,
+            request_options: Telnyx::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

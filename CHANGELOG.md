@@ -1,5 +1,19 @@
 # Changelog
 
+## 5.66.0 (2026-03-25)
+
+Full Changelog: [v5.65.0...v5.66.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.65.0...v5.66.0)
+
+### Features
+
+* **api:** manual updates ([803c2e9](https://github.com/team-telnyx/telnyx-ruby/commit/803c2e9a375cc947c6a38be2011d153d6fd36dbb))
+* **api:** manual updates ([48ff892](https://github.com/team-telnyx/telnyx-ruby/commit/48ff892d54e1c2653dbb808bc53d81fa126e2c42))
+
+
+### Documentation
+
+* **branded-calling:** add Number Reputation API specs ([10bb825](https://github.com/team-telnyx/telnyx-ruby/commit/10bb825c550afb98853b6bcf77a9548ae5bebe22))
+
 ## 5.65.0 (2026-03-24)
 
 Full Changelog: [v5.64.0...v5.65.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.64.0...v5.65.0)

@@ -638,6 +638,16 @@ module Telnyx
     sig { returns(Telnyx::Resources::TrafficPolicyProfiles) }
     attr_reader :traffic_policy_profiles
 
+    # Enterprise management for Branded Calling and Number Reputation services
+    sig { returns(Telnyx::Resources::Enterprises) }
+    attr_reader :enterprises
+
+    sig { returns(Telnyx::Resources::Reputation) }
+    attr_reader :reputation
+
+    sig { returns(Telnyx::Resources::TermsOfService) }
+    attr_reader :terms_of_service
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

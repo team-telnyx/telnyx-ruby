@@ -334,6 +334,12 @@ module Telnyx
 
     attr_reader traffic_policy_profiles: Telnyx::Resources::TrafficPolicyProfiles
 
+    attr_reader enterprises: Telnyx::Resources::Enterprises
+
+    attr_reader reputation: Telnyx::Resources::Reputation
+
+    attr_reader terms_of_service: Telnyx::Resources::TermsOfService
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]

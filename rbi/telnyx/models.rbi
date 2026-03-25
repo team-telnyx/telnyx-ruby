@@ -590,6 +590,18 @@ module Telnyx
 
   EncryptedMedia = Telnyx::Models::EncryptedMedia
 
+  EnterpriseCreateParams = Telnyx::Models::EnterpriseCreateParams
+
+  EnterpriseDeleteParams = Telnyx::Models::EnterpriseDeleteParams
+
+  EnterpriseListParams = Telnyx::Models::EnterpriseListParams
+
+  EnterpriseRetrieveParams = Telnyx::Models::EnterpriseRetrieveParams
+
+  Enterprises = Telnyx::Models::Enterprises
+
+  EnterpriseUpdateParams = Telnyx::Models::EnterpriseUpdateParams
+
   EventNode = Telnyx::Models::EventNode
 
   ExternalConnection = Telnyx::Models::ExternalConnection
@@ -1430,6 +1442,8 @@ module Telnyx
 
   Reports = Telnyx::Models::Reports
 
+  Reputation = Telnyx::Models::Reputation
+
   RequirementGroup = Telnyx::Models::RequirementGroup
 
   RequirementGroupCreateParams = Telnyx::Models::RequirementGroupCreateParams
@@ -1667,6 +1681,8 @@ module Telnyx
 
   TelephonyCredentialUpdateParams =
     Telnyx::Models::TelephonyCredentialUpdateParams
+
+  TermsOfService = Telnyx::Models::TermsOfService
 
   Texml = Telnyx::Models::Texml
 
