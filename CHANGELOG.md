@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.66.1 (2026-03-25)
+
+Full Changelog: [v5.66.0...v5.66.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.66.0...v5.66.1)
+
+### Bug Fixes
+
+* rename number-reputation ToS route to use underscores ([b8cee64](https://github.com/team-telnyx/telnyx-ruby/commit/b8cee644a9425b9adf2e63131d9ea1c6f27cfdf4))
+
 ## 5.66.0 (2026-03-25)
 
 Full Changelog: [v5.65.0...v5.66.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.65.0...v5.66.0)
