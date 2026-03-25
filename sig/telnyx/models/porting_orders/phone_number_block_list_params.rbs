@@ -165,7 +165,7 @@ module Telnyx
 
           type status =
             Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::porting_order_single_status
-            | ::Array[Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::porting_order_status_array]
+            | ::Array[Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::union_member1]
 
           module Status
             extend Telnyx::Internal::Type::Union
@@ -195,7 +195,7 @@ module Telnyx
               def self?.values: -> ::Array[Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::porting_order_single_status]
             end
 
-            type porting_order_status_array =
+            type union_member1 =
               :draft
               | :"in-process"
               | :submitted
@@ -205,7 +205,7 @@ module Telnyx
               | :ported
               | :cancelled
 
-            module PortingOrderStatusArray
+            module UnionMember1
               extend Telnyx::Internal::Type::Enum
 
               DRAFT: :draft
@@ -217,12 +217,12 @@ module Telnyx
               PORTED: :ported
               CANCELLED: :cancelled
 
-              def self?.values: -> ::Array[Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::porting_order_status_array]
+              def self?.values: -> ::Array[Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::union_member1]
             end
 
             def self?.variants: -> ::Array[Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::status]
 
-            PortingOrderStatus2DArray: Telnyx::Internal::Type::Converter
+            UnionMember1Array: Telnyx::Internal::Type::Converter
           end
 
           type support_key = String | ::Array[String]

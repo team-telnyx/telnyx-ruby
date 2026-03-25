@@ -1,0 +1,9 @@
+module Telnyx
+  module Resources
+    class TermsOfService
+      attr_reader number_reputation: Telnyx::Resources::TermsOfService::NumberReputation
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end
