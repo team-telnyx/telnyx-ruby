@@ -1,0 +1,34 @@
+module Telnyx
+  module Resources
+    class Enterprises
+      class Reputation
+        attr_reader numbers: Telnyx::Resources::Enterprises::Reputation::Numbers
+
+        def create: (
+          String enterprise_id,
+          loa_document_id: String,
+          ?check_frequency: Telnyx::Models::Enterprises::ReputationCreateParams::check_frequency,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Enterprises::ReputationCreateResponse
+
+        def list: (
+          String enterprise_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Enterprises::ReputationListResponse
+
+        def delete_all: (
+          String enterprise_id,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def update_frequency: (
+          String enterprise_id,
+          check_frequency: Telnyx::Models::Enterprises::ReputationUpdateFrequencyParams::check_frequency,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Enterprises::ReputationUpdateFrequencyResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

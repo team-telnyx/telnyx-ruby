@@ -102,6 +102,11 @@ module Telnyx
       module Embeddings
       end
 
+      module Enterprises
+        module Reputation
+        end
+      end
+
       module ExternalConnections
       end
 
@@ -231,6 +236,9 @@ module Telnyx
       module Reports
       end
 
+      module Reputation
+      end
+
       module Rooms
         module Sessions
         end
@@ -257,6 +265,9 @@ module Telnyx
 
         module Migrations
         end
+      end
+
+      module TermsOfService
       end
 
       module Tests
