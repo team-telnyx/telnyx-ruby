@@ -21,7 +21,7 @@ module Telnyx
         def agree(params = {})
           @client.request(
             method: :post,
-            path: "terms-of-service/number-reputation/agree",
+            path: "terms_of_service/number_reputation/agree",
             model: NilClass,
             options: params[:request_options]
           )
