@@ -91,6 +91,10 @@ module Telnyx
 
   class BalanceRetrieveParams = Telnyx::Models::BalanceRetrieveParams
 
+  class BillingAddress = Telnyx::Models::BillingAddress
+
+  class BillingContact = Telnyx::Models::BillingContact
+
   class BillingGroup = Telnyx::Models::BillingGroup
 
   class BillingGroupCreateParams = Telnyx::Models::BillingGroupCreateParams
@@ -505,6 +509,8 @@ module Telnyx
 
   class EnterpriseListParams = Telnyx::Models::EnterpriseListParams
 
+  class EnterprisePublic = Telnyx::Models::EnterprisePublic
+
   class EnterpriseRetrieveParams = Telnyx::Models::EnterpriseRetrieveParams
 
   module Enterprises = Telnyx::Models::Enterprises
@@ -845,6 +851,8 @@ module Telnyx
 
   class Metadata = Telnyx::Models::Metadata
 
+  class MetaInfo = Telnyx::Models::MetaInfo
+
   class MinimaxVoiceSettings = Telnyx::Models::MinimaxVoiceSettings
 
   class MobileNetworkOperatorListParams = Telnyx::Models::MobileNetworkOperatorListParams
@@ -1025,6 +1033,8 @@ module Telnyx
 
   module OperatorConnect = Telnyx::Models::OperatorConnect
 
+  class OrganizationContact = Telnyx::Models::OrganizationContact
+
   module Organizations = Telnyx::Models::Organizations
 
   class OtaUpdateListParams = Telnyx::Models::OtaUpdateListParams
@@ -1086,6 +1096,8 @@ module Telnyx
   class PhoneNumberUpdateParams = Telnyx::Models::PhoneNumberUpdateParams
 
   class PhoneNumberWithMessagingSettings = Telnyx::Models::PhoneNumberWithMessagingSettings
+
+  class PhysicalAddress = Telnyx::Models::PhysicalAddress
 
   class PortabilityCheckRunParams = Telnyx::Models::PortabilityCheckRunParams
 
@@ -1250,6 +1262,10 @@ module Telnyx
   module Reports = Telnyx::Models::Reports
 
   module Reputation = Telnyx::Models::Reputation
+
+  class ReputationData = Telnyx::Models::ReputationData
+
+  class ReputationPhoneNumberWithReputationData = Telnyx::Models::ReputationPhoneNumberWithReputationData
 
   class RequirementGroup = Telnyx::Models::RequirementGroup
 

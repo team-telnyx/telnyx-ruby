@@ -22,7 +22,7 @@ module Telnyx
             ?page_size: Integer,
             ?phone_number: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Enterprises::Reputation::NumberListResponse]
+          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::ReputationPhoneNumberWithReputationData]
 
           def delete: (
             String phone_number,

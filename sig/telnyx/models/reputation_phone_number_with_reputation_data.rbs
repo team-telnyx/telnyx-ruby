@@ -1,0 +1,69 @@
+module Telnyx
+  module Models
+    type reputation_phone_number_with_reputation_data =
+      {
+        id: String,
+        created_at: Time,
+        enterprise_id: String,
+        phone_number: String,
+        reputation_data: Telnyx::Models::ReputationPhoneNumberWithReputationData::reputation_data?,
+        updated_at: Time
+      }
+
+    class ReputationPhoneNumberWithReputationData < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader enterprise_id: String?
+
+      def enterprise_id=: (String) -> String
+
+      attr_reader phone_number: String?
+
+      def phone_number=: (String) -> String
+
+      attr_reader reputation_data: Telnyx::Models::ReputationPhoneNumberWithReputationData::reputation_data?
+
+      def reputation_data=: (
+        Telnyx::Models::ReputationPhoneNumberWithReputationData::reputation_data?
+      ) -> Telnyx::Models::ReputationPhoneNumberWithReputationData::reputation_data?
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        ?id: String,
+        ?created_at: Time,
+        ?enterprise_id: String,
+        ?phone_number: String,
+        ?reputation_data: Telnyx::Models::ReputationPhoneNumberWithReputationData::reputation_data?,
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        enterprise_id: String,
+        phone_number: String,
+        reputation_data: Telnyx::Models::ReputationPhoneNumberWithReputationData::reputation_data?,
+        updated_at: Time
+      }
+
+      type reputation_data = (Telnyx::ReputationData | ::Hash[Symbol, top])?
+
+      module ReputationData
+        extend Telnyx::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Telnyx::Models::ReputationPhoneNumberWithReputationData::reputation_data]
+
+        EmptyReputationDataMap: Telnyx::Internal::Type::Converter
+      end
+    end
+  end
+end
