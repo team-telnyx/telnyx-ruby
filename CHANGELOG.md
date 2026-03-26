@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.67.0 (2026-03-26)
+
+Full Changelog: [v5.66.1...v5.67.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.66.1...v5.67.0)
+
+### Features
+
+* **websocket:** add STT/TTS WebSocket streaming support ([34b7363](https://github.com/team-telnyx/telnyx-ruby/commit/34b73633e8b5c86b17b046746e798365628c2a66))
+
+
+### Bug Fixes
+
+* **websocket:** add Sorbet RBI type definitions ([efe7e55](https://github.com/team-telnyx/telnyx-ruby/commit/efe7e550f9f781453cf69827fe8bfca9b23d9a87))
+
 ## 5.66.1 (2026-03-25)
 
 Full Changelog: [v5.66.0...v5.66.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.66.0...v5.66.1)
