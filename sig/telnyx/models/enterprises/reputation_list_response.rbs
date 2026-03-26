@@ -2,112 +2,22 @@ module Telnyx
   module Models
     module Enterprises
       type reputation_list_response =
-        { data: Telnyx::Models::Enterprises::ReputationListResponse::Data }
+        { data: Telnyx::Enterprises::EnterpriseReputationPublic }
 
       class ReputationListResponse < Telnyx::Internal::Type::BaseModel
-        attr_reader data: Telnyx::Models::Enterprises::ReputationListResponse::Data?
+        attr_reader data: Telnyx::Enterprises::EnterpriseReputationPublic?
 
         def data=: (
-          Telnyx::Models::Enterprises::ReputationListResponse::Data
-        ) -> Telnyx::Models::Enterprises::ReputationListResponse::Data
+          Telnyx::Enterprises::EnterpriseReputationPublic
+        ) -> Telnyx::Enterprises::EnterpriseReputationPublic
 
         def initialize: (
-          ?data: Telnyx::Models::Enterprises::ReputationListResponse::Data
+          ?data: Telnyx::Enterprises::EnterpriseReputationPublic
         ) -> void
 
         def to_hash: -> {
-          data: Telnyx::Models::Enterprises::ReputationListResponse::Data
+          data: Telnyx::Enterprises::EnterpriseReputationPublic
         }
-
-        type data =
-          {
-            check_frequency: Telnyx::Models::Enterprises::ReputationListResponse::Data::check_frequency,
-            created_at: Time,
-            enterprise_id: String,
-            loa_document_id: String?,
-            rejection_reasons: ::Array[String]?,
-            status: Telnyx::Models::Enterprises::ReputationListResponse::Data::status,
-            updated_at: Time
-          }
-
-        class Data < Telnyx::Internal::Type::BaseModel
-          attr_reader check_frequency: Telnyx::Models::Enterprises::ReputationListResponse::Data::check_frequency?
-
-          def check_frequency=: (
-            Telnyx::Models::Enterprises::ReputationListResponse::Data::check_frequency
-          ) -> Telnyx::Models::Enterprises::ReputationListResponse::Data::check_frequency
-
-          attr_reader created_at: Time?
-
-          def created_at=: (Time) -> Time
-
-          attr_reader enterprise_id: String?
-
-          def enterprise_id=: (String) -> String
-
-          attr_accessor loa_document_id: String?
-
-          attr_accessor rejection_reasons: ::Array[String]?
-
-          attr_reader status: Telnyx::Models::Enterprises::ReputationListResponse::Data::status?
-
-          def status=: (
-            Telnyx::Models::Enterprises::ReputationListResponse::Data::status
-          ) -> Telnyx::Models::Enterprises::ReputationListResponse::Data::status
-
-          attr_reader updated_at: Time?
-
-          def updated_at=: (Time) -> Time
-
-          def initialize: (
-            ?check_frequency: Telnyx::Models::Enterprises::ReputationListResponse::Data::check_frequency,
-            ?created_at: Time,
-            ?enterprise_id: String,
-            ?loa_document_id: String?,
-            ?rejection_reasons: ::Array[String]?,
-            ?status: Telnyx::Models::Enterprises::ReputationListResponse::Data::status,
-            ?updated_at: Time
-          ) -> void
-
-          def to_hash: -> {
-            check_frequency: Telnyx::Models::Enterprises::ReputationListResponse::Data::check_frequency,
-            created_at: Time,
-            enterprise_id: String,
-            loa_document_id: String?,
-            rejection_reasons: ::Array[String]?,
-            status: Telnyx::Models::Enterprises::ReputationListResponse::Data::status,
-            updated_at: Time
-          }
-
-          type check_frequency =
-            :business_daily | :daily | :weekly | :biweekly | :monthly | :never
-
-          module CheckFrequency
-            extend Telnyx::Internal::Type::Enum
-
-            BUSINESS_DAILY: :business_daily
-            DAILY: :daily
-            WEEKLY: :weekly
-            BIWEEKLY: :biweekly
-            MONTHLY: :monthly
-            NEVER: :never
-
-            def self?.values: -> ::Array[Telnyx::Models::Enterprises::ReputationListResponse::Data::check_frequency]
-          end
-
-          type status = :pending | :approved | :rejected | :deleted
-
-          module Status
-            extend Telnyx::Internal::Type::Enum
-
-            PENDING: :pending
-            APPROVED: :approved
-            REJECTED: :rejected
-            DELETED: :deleted
-
-            def self?.values: -> ::Array[Telnyx::Models::Enterprises::ReputationListResponse::Data::status]
-          end
-        end
       end
     end
   end

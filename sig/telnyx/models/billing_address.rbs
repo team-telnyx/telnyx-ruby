@@ -1,0 +1,45 @@
+module Telnyx
+  module Models
+    type billing_address =
+      {
+        administrative_area: String,
+        city: String,
+        country: String,
+        postal_code: String,
+        street_address: String,
+        extended_address: String?
+      }
+
+    class BillingAddress < Telnyx::Internal::Type::BaseModel
+      attr_accessor administrative_area: String
+
+      attr_accessor city: String
+
+      attr_accessor country: String
+
+      attr_accessor postal_code: String
+
+      attr_accessor street_address: String
+
+      attr_accessor extended_address: String?
+
+      def initialize: (
+        administrative_area: String,
+        city: String,
+        country: String,
+        postal_code: String,
+        street_address: String,
+        ?extended_address: String?
+      ) -> void
+
+      def to_hash: -> {
+        administrative_area: String,
+        city: String,
+        country: String,
+        postal_code: String,
+        street_address: String,
+        extended_address: String?
+      }
+    end
+  end
+end

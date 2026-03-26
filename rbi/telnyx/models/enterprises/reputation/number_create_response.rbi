@@ -34,21 +34,10 @@ module Telnyx
           end
           attr_writer :data
 
-          sig do
-            returns(
-              T.nilable(
-                Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Meta
-              )
-            )
-          end
+          sig { returns(T.nilable(Telnyx::MetaInfo)) }
           attr_reader :meta
 
-          sig do
-            params(
-              meta:
-                Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Meta::OrHash
-            ).void
-          end
+          sig { params(meta: Telnyx::MetaInfo::OrHash).void }
           attr_writer :meta
 
           sig do
@@ -57,8 +46,7 @@ module Telnyx
                 T::Array[
                   Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Data::OrHash
                 ],
-              meta:
-                Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Meta::OrHash
+              meta: Telnyx::MetaInfo::OrHash
             ).returns(T.attached_class)
           end
           def self.new(data: nil, meta: nil)
@@ -71,8 +59,7 @@ module Telnyx
                   T::Array[
                     Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Data
                   ],
-                meta:
-                  Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Meta
+                meta: Telnyx::MetaInfo
               }
             )
           end
@@ -154,77 +141,6 @@ module Telnyx
                   enterprise_id: String,
                   phone_number: String,
                   updated_at: Time
-                }
-              )
-            end
-            def to_hash
-            end
-          end
-
-          class Meta < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Meta,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # Current page number
-            sig { returns(T.nilable(Integer)) }
-            attr_reader :page_number
-
-            sig { params(page_number: Integer).void }
-            attr_writer :page_number
-
-            # Items per page
-            sig { returns(T.nilable(Integer)) }
-            attr_reader :page_size
-
-            sig { params(page_size: Integer).void }
-            attr_writer :page_size
-
-            # Total number of pages
-            sig { returns(T.nilable(Integer)) }
-            attr_reader :total_pages
-
-            sig { params(total_pages: Integer).void }
-            attr_writer :total_pages
-
-            # Total number of results
-            sig { returns(T.nilable(Integer)) }
-            attr_reader :total_results
-
-            sig { params(total_results: Integer).void }
-            attr_writer :total_results
-
-            sig do
-              params(
-                page_number: Integer,
-                page_size: Integer,
-                total_pages: Integer,
-                total_results: Integer
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # Current page number
-              page_number: nil,
-              # Items per page
-              page_size: nil,
-              # Total number of pages
-              total_pages: nil,
-              # Total number of results
-              total_results: nil
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  page_number: Integer,
-                  page_size: Integer,
-                  total_pages: Integer,
-                  total_results: Integer
                 }
               )
             end
