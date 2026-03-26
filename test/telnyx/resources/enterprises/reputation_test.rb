@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::Enterprises::ReputationTest < Telnyx::Test::Resou
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Enterprises::ReputationCreateResponse::Data | nil
+        data: Telnyx::Enterprises::EnterpriseReputationPublic | nil
       }
     end
   end
@@ -34,7 +34,7 @@ class Telnyx::Test::Resources::Enterprises::ReputationTest < Telnyx::Test::Resou
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Enterprises::ReputationListResponse::Data | nil
+        data: Telnyx::Enterprises::EnterpriseReputationPublic | nil
       }
     end
   end
@@ -64,7 +64,7 @@ class Telnyx::Test::Resources::Enterprises::ReputationTest < Telnyx::Test::Resou
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Enterprises::ReputationUpdateFrequencyResponse::Data | nil
+        data: Telnyx::Enterprises::EnterpriseReputationPublic | nil
       }
     end
   end

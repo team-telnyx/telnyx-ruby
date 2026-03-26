@@ -4,17 +4,17 @@ module Telnyx
       attr_reader reputation: Telnyx::Resources::Enterprises::Reputation
 
       def create: (
-        billing_address: Telnyx::EnterpriseCreateParams::BillingAddress,
-        billing_contact: Telnyx::EnterpriseCreateParams::BillingContact,
+        billing_address: Telnyx::BillingAddress,
+        billing_contact: Telnyx::BillingContact,
         country_code: String,
         doing_business_as: String,
         fein: String,
         industry: String,
         legal_name: String,
         number_of_employees: Telnyx::Models::EnterpriseCreateParams::number_of_employees,
-        organization_contact: Telnyx::EnterpriseCreateParams::OrganizationContact,
+        organization_contact: Telnyx::OrganizationContact,
         organization_legal_type: Telnyx::Models::EnterpriseCreateParams::organization_legal_type,
-        organization_physical_address: Telnyx::EnterpriseCreateParams::OrganizationPhysicalAddress,
+        organization_physical_address: Telnyx::PhysicalAddress,
         organization_type: Telnyx::Models::EnterpriseCreateParams::organization_type,
         website: String,
         ?corporate_registration_number: String,
@@ -33,8 +33,8 @@ module Telnyx
 
       def update: (
         String enterprise_id,
-        ?billing_address: Telnyx::EnterpriseUpdateParams::BillingAddress,
-        ?billing_contact: Telnyx::EnterpriseUpdateParams::BillingContact,
+        ?billing_address: Telnyx::BillingAddress,
+        ?billing_contact: Telnyx::BillingContact,
         ?corporate_registration_number: String,
         ?customer_reference: String,
         ?doing_business_as: String,
@@ -43,9 +43,9 @@ module Telnyx
         ?industry: String,
         ?legal_name: String,
         ?number_of_employees: Telnyx::Models::EnterpriseUpdateParams::number_of_employees,
-        ?organization_contact: Telnyx::EnterpriseUpdateParams::OrganizationContact,
+        ?organization_contact: Telnyx::OrganizationContact,
         ?organization_legal_type: Telnyx::Models::EnterpriseUpdateParams::organization_legal_type,
-        ?organization_physical_address: Telnyx::EnterpriseUpdateParams::OrganizationPhysicalAddress,
+        ?organization_physical_address: Telnyx::PhysicalAddress,
         ?primary_business_domain_sic_code: String,
         ?professional_license_number: String,
         ?website: String,
@@ -57,7 +57,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::EnterpriseListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::EnterprisePublic]
 
       def delete: (
         String enterprise_id,
