@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.67.1 (2026-03-26)
+
+Full Changelog: [v5.67.0...v5.67.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.67.0...v5.67.1)
+
+### Bug Fixes
+
+* **internal:** correct multipart form field name encoding ([af64e39](https://github.com/team-telnyx/telnyx-ruby/commit/af64e39b5752e0960ad60aaa3fd7fff809ae7ef6))
+
 ## 5.67.0 (2026-03-26)
 
 Full Changelog: [v5.66.1...v5.67.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.66.1...v5.67.0)
