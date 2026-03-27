@@ -28,10 +28,10 @@ module Telnyx
       optional :phone_number, String
 
       # @!attribute reputation_data
-      #   Reputation metrics (null if not yet fetched)
+      #   Reputation metrics
       #
-      #   @return [Telnyx::Models::ReputationData, Hash{Symbol=>Object}, nil]
-      optional :reputation_data, union: -> { Telnyx::ReputationPhoneNumberWithReputationData::ReputationData }
+      #   @return [Telnyx::Models::ReputationData, nil]
+      optional :reputation_data, -> { Telnyx::ReputationData }
 
       # @!attribute updated_at
       #   When the record was last updated
@@ -48,27 +48,9 @@ module Telnyx
       #
       #   @param phone_number [String] Phone number in E.164 format
       #
-      #   @param reputation_data [Telnyx::Models::ReputationData, Hash{Symbol=>Object}, nil] Reputation metrics (null if not yet fetched)
+      #   @param reputation_data [Telnyx::Models::ReputationData] Reputation metrics
       #
       #   @param updated_at [Time] When the record was last updated
-
-      # Reputation metrics (null if not yet fetched)
-      #
-      # @see Telnyx::Models::ReputationPhoneNumberWithReputationData#reputation_data
-      module ReputationData
-        extend Telnyx::Internal::Type::Union
-
-        # Reputation metrics
-        variant -> { Telnyx::ReputationData }
-
-        variant -> { Telnyx::Models::ReputationPhoneNumberWithReputationData::ReputationData::EmptyReputationDataMap }
-
-        # @!method self.variants
-        #   @return [Array(Telnyx::Models::ReputationData, Hash{Symbol=>Object})]
-
-        # @type [Telnyx::Internal::Type::Converter]
-        EmptyReputationDataMap = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
-      end
     end
   end
 end

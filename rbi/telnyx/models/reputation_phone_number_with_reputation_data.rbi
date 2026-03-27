@@ -39,24 +39,11 @@ module Telnyx
       sig { params(phone_number: String).void }
       attr_writer :phone_number
 
-      # Reputation metrics (null if not yet fetched)
-      sig do
-        returns(
-          T.nilable(
-            Telnyx::ReputationPhoneNumberWithReputationData::ReputationData::Variants
-          )
-        )
-      end
+      # Reputation metrics
+      sig { returns(T.nilable(Telnyx::ReputationData)) }
       attr_reader :reputation_data
 
-      sig do
-        params(
-          reputation_data:
-            T.nilable(
-              T.any(Telnyx::ReputationData::OrHash, T::Hash[Symbol, T.anything])
-            )
-        ).void
-      end
+      sig { params(reputation_data: Telnyx::ReputationData::OrHash).void }
       attr_writer :reputation_data
 
       # When the record was last updated
@@ -72,10 +59,7 @@ module Telnyx
           created_at: Time,
           enterprise_id: String,
           phone_number: String,
-          reputation_data:
-            T.nilable(
-              T.any(Telnyx::ReputationData::OrHash, T::Hash[Symbol, T.anything])
-            ),
+          reputation_data: Telnyx::ReputationData::OrHash,
           updated_at: Time
         ).returns(T.attached_class)
       end
@@ -88,7 +72,7 @@ module Telnyx
         enterprise_id: nil,
         # Phone number in E.164 format
         phone_number: nil,
-        # Reputation metrics (null if not yet fetched)
+        # Reputation metrics
         reputation_data: nil,
         # When the record was last updated
         updated_at: nil
@@ -102,43 +86,12 @@ module Telnyx
             created_at: Time,
             enterprise_id: String,
             phone_number: String,
-            reputation_data:
-              T.nilable(
-                Telnyx::ReputationPhoneNumberWithReputationData::ReputationData::Variants
-              ),
+            reputation_data: Telnyx::ReputationData,
             updated_at: Time
           }
         )
       end
       def to_hash
-      end
-
-      # Reputation metrics (null if not yet fetched)
-      module ReputationData
-        extend Telnyx::Internal::Type::Union
-
-        Variants =
-          T.type_alias do
-            T.nilable(
-              T.any(Telnyx::ReputationData, T::Hash[Symbol, T.anything])
-            )
-          end
-
-        sig do
-          override.returns(
-            T::Array[
-              Telnyx::ReputationPhoneNumberWithReputationData::ReputationData::Variants
-            ]
-          )
-        end
-        def self.variants
-        end
-
-        EmptyReputationDataMap =
-          T.let(
-            Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
-            Telnyx::Internal::Type::Converter
-          )
       end
     end
   end
