@@ -41,7 +41,7 @@ class Telnyx::Test::Resources::Reputation::NumbersTest < Telnyx::Test::ResourceT
         created_at: Time | nil,
         enterprise_id: String | nil,
         phone_number: String | nil,
-        reputation_data: Telnyx::ReputationPhoneNumberWithReputationData::ReputationData | nil,
+        reputation_data: Telnyx::ReputationData | nil,
         updated_at: Time | nil
       }
     end
