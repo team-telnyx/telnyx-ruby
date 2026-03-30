@@ -1,5 +1,28 @@
 # Changelog
 
+## 5.68.0 (2026-03-30)
+
+Full Changelog: [v5.67.1...v5.68.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.67.1...v5.68.0)
+
+### Features
+
+* **ci:** switch to OIDC auth for RubyGems publishing ([9adb006](https://github.com/team-telnyx/telnyx-ruby/commit/9adb006d99fa6afb39568e5252f5445f13130a23))
+
+
+### Chores
+
+* **ci:** support opting out of skipping builds on metadata-only commits ([b965999](https://github.com/team-telnyx/telnyx-ruby/commit/b965999a809754eec80ea0a52d484e0af183fabe))
+
+
+### Documentation
+
+* fix voice settings available voices link ([0c73354](https://github.com/team-telnyx/telnyx-ruby/commit/0c73354fc70981237f2bfbdefd59b1229dfdcbf3))
+
+
+### Build System
+
+* **deps-dev:** bump activesupport from 8.1.1 to 8.1.2.1 ([#188](https://github.com/team-telnyx/telnyx-ruby/issues/188)) ([322ba2a](https://github.com/team-telnyx/telnyx-ruby/commit/322ba2afdc721a3126faa981d663b2d41cac86ea))
+
 ## 5.67.1 (2026-03-26)
 
 Full Changelog: [v5.67.0...v5.67.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.67.0...v5.67.1)
