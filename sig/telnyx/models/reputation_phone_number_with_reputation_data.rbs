@@ -6,7 +6,7 @@ module Telnyx
         created_at: Time,
         enterprise_id: String,
         phone_number: String,
-        reputation_data: Telnyx::Models::ReputationPhoneNumberWithReputationData::reputation_data?,
+        reputation_data: Telnyx::ReputationData,
         updated_at: Time
       }
 
@@ -27,11 +27,9 @@ module Telnyx
 
       def phone_number=: (String) -> String
 
-      attr_reader reputation_data: Telnyx::Models::ReputationPhoneNumberWithReputationData::reputation_data?
+      attr_reader reputation_data: Telnyx::ReputationData?
 
-      def reputation_data=: (
-        Telnyx::Models::ReputationPhoneNumberWithReputationData::reputation_data?
-      ) -> Telnyx::Models::ReputationPhoneNumberWithReputationData::reputation_data?
+      def reputation_data=: (Telnyx::ReputationData) -> Telnyx::ReputationData
 
       attr_reader updated_at: Time?
 
@@ -42,7 +40,7 @@ module Telnyx
         ?created_at: Time,
         ?enterprise_id: String,
         ?phone_number: String,
-        ?reputation_data: Telnyx::Models::ReputationPhoneNumberWithReputationData::reputation_data?,
+        ?reputation_data: Telnyx::ReputationData,
         ?updated_at: Time
       ) -> void
 
@@ -51,19 +49,9 @@ module Telnyx
         created_at: Time,
         enterprise_id: String,
         phone_number: String,
-        reputation_data: Telnyx::Models::ReputationPhoneNumberWithReputationData::reputation_data?,
+        reputation_data: Telnyx::ReputationData,
         updated_at: Time
       }
-
-      type reputation_data = (Telnyx::ReputationData | ::Hash[Symbol, top])?
-
-      module ReputationData
-        extend Telnyx::Internal::Type::Union
-
-        def self?.variants: -> ::Array[Telnyx::Models::ReputationPhoneNumberWithReputationData::reputation_data]
-
-        EmptyReputationDataMap: Telnyx::Internal::Type::Converter
-      end
     end
   end
 end

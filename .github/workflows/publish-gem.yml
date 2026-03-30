@@ -12,6 +12,9 @@ jobs:
   publish:
     name: publish
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
 
     steps:
       - uses: actions/checkout@v6
@@ -22,10 +25,8 @@ jobs:
       - run: |-
           bundle install
 
+      - uses: rubygems/configure-rubygems-credentials@v1
+
       - name: Publish to RubyGems.org
         run: |
           bash ./bin/publish-gem
-        env:
-          # `RUBYGEMS_HOST` is only required for private gem repositories, not https://rubygems.org
-          RUBYGEMS_HOST: ${{ secrets.TELNYX_RUBYGEMS_HOST || secrets.RUBYGEMS_HOST }}
-          GEM_HOST_API_KEY: ${{ secrets.TELNYX_GEM_HOST_API_KEY || secrets.GEM_HOST_API_KEY }}
