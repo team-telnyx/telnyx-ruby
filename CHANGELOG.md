@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.68.1 (2026-03-31)
+
+Full Changelog: [v5.68.0...v5.68.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.68.0...v5.68.1)
+
+### Bug Fixes
+
+* **ci:** use correct rubygems OIDC action reference ([25859b2](https://github.com/team-telnyx/telnyx-ruby/commit/25859b2521364b0bbdf2e7d69ef709e22b30e3a4))
+
 ## 5.68.0 (2026-03-30)
 
 Full Changelog: [v5.67.1...v5.68.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.67.1...v5.68.0)
