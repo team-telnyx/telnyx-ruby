@@ -2,6 +2,7 @@
 
 require "base64"
 require "openssl"
+require_relative "webhook_verification_error"
 
 module Telnyx
   module Lib

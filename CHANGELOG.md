@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.68.2 (2026-03-31)
+
+Full Changelog: [v5.68.1...v5.68.2](https://github.com/team-telnyx/telnyx-ruby/compare/v5.68.1...v5.68.2)
+
 ## 5.68.1 (2026-03-31)
 
 Full Changelog: [v5.68.0...v5.68.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.68.0...v5.68.1)
