@@ -81,6 +81,11 @@ module Telnyx
           #   @return [String, nil]
           optional :name, String
 
+          # @!attribute observability_settings
+          #
+          #   @return [Telnyx::Models::AI::Assistants::UpdateAssistant::ObservabilitySettings, nil]
+          optional :observability_settings, -> { Telnyx::AI::Assistants::UpdateAssistant::ObservabilitySettings }
+
           # @!attribute privacy_settings
           #
           #   @return [Telnyx::Models::AI::PrivacySettings, nil]
@@ -119,7 +124,7 @@ module Telnyx
           #   @return [Telnyx::Models::AI::WidgetSettings, nil]
           optional :widget_settings, -> { Telnyx::AI::WidgetSettings }
 
-          # @!method initialize(description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, privacy_settings: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil)
+          # @!method initialize(description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, privacy_settings: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::Assistants::UpdateAssistant} for more details.
           #
@@ -145,6 +150,8 @@ module Telnyx
           #
           #   @param name [String]
           #
+          #   @param observability_settings [Telnyx::Models::AI::Assistants::UpdateAssistant::ObservabilitySettings]
+          #
           #   @param privacy_settings [Telnyx::Models::AI::PrivacySettings]
           #
           #   @param telephony_settings [Telnyx::Models::AI::TelephonySettings]
@@ -158,6 +165,46 @@ module Telnyx
           #   @param voice_settings [Telnyx::Models::AI::VoiceSettings]
           #
           #   @param widget_settings [Telnyx::Models::AI::WidgetSettings] Configuration settings for the assistant's web widget.
+
+          # @see Telnyx::Models::AI::Assistants::UpdateAssistant#observability_settings
+          class ObservabilitySettings < Telnyx::Internal::Type::BaseModel
+            # @!attribute host
+            #
+            #   @return [String, nil]
+            optional :host, String
+
+            # @!attribute public_key_ref
+            #
+            #   @return [String, nil]
+            optional :public_key_ref, String
+
+            # @!attribute secret_key_ref
+            #
+            #   @return [String, nil]
+            optional :secret_key_ref, String
+
+            # @!attribute status
+            #
+            #   @return [Symbol, Telnyx::Models::AI::Assistants::UpdateAssistant::ObservabilitySettings::Status, nil]
+            optional :status, enum: -> { Telnyx::AI::Assistants::UpdateAssistant::ObservabilitySettings::Status }
+
+            # @!method initialize(host: nil, public_key_ref: nil, secret_key_ref: nil, status: nil)
+            #   @param host [String]
+            #   @param public_key_ref [String]
+            #   @param secret_key_ref [String]
+            #   @param status [Symbol, Telnyx::Models::AI::Assistants::UpdateAssistant::ObservabilitySettings::Status]
+
+            # @see Telnyx::Models::AI::Assistants::UpdateAssistant::ObservabilitySettings#status
+            module Status
+              extend Telnyx::Internal::Type::Enum
+
+              ENABLED = :enabled
+              DISABLED = :disabled
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
       end
 

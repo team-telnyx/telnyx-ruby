@@ -111,6 +111,21 @@ module Telnyx
         end
         attr_writer :messaging_settings
 
+        sig do
+          returns(
+            T.nilable(Telnyx::AI::InferenceEmbedding::ObservabilitySettings)
+          )
+        end
+        attr_reader :observability_settings
+
+        sig do
+          params(
+            observability_settings:
+              Telnyx::AI::InferenceEmbedding::ObservabilitySettings::OrHash
+          ).void
+        end
+        attr_writer :observability_settings
+
         sig { returns(T.nilable(Telnyx::AI::PrivacySettings)) }
         attr_reader :privacy_settings
 
@@ -192,6 +207,8 @@ module Telnyx
             insight_settings: Telnyx::AI::InsightSettings::OrHash,
             llm_api_key_ref: String,
             messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
+            observability_settings:
+              Telnyx::AI::InferenceEmbedding::ObservabilitySettings::OrHash,
             privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
             telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
             tools:
@@ -250,6 +267,7 @@ module Telnyx
           # work with this integration.
           llm_api_key_ref: nil,
           messaging_settings: nil,
+          observability_settings: nil,
           privacy_settings: nil,
           telephony_settings: nil,
           # The tools that the assistant can use. These may be templated with
@@ -280,6 +298,8 @@ module Telnyx
               insight_settings: Telnyx::AI::InsightSettings,
               llm_api_key_ref: String,
               messaging_settings: Telnyx::AI::MessagingSettings,
+              observability_settings:
+                Telnyx::AI::InferenceEmbedding::ObservabilitySettings,
               privacy_settings: Telnyx::AI::PrivacySettings,
               telephony_settings: Telnyx::AI::TelephonySettings,
               tools: T::Array[Telnyx::AI::AssistantTool::Variants],
@@ -290,6 +310,116 @@ module Telnyx
           )
         end
         def to_hash
+        end
+
+        class ObservabilitySettings < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::InferenceEmbedding::ObservabilitySettings,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :host
+
+          sig { params(host: String).void }
+          attr_writer :host
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :public_key_ref
+
+          sig { params(public_key_ref: String).void }
+          attr_writer :public_key_ref
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :secret_key_ref
+
+          sig { params(secret_key_ref: String).void }
+          attr_writer :secret_key_ref
+
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::AI::InferenceEmbedding::ObservabilitySettings::Status::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :status
+
+          sig do
+            params(
+              status:
+                Telnyx::AI::InferenceEmbedding::ObservabilitySettings::Status::OrSymbol
+            ).void
+          end
+          attr_writer :status
+
+          sig do
+            params(
+              host: String,
+              public_key_ref: String,
+              secret_key_ref: String,
+              status:
+                Telnyx::AI::InferenceEmbedding::ObservabilitySettings::Status::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            host: nil,
+            public_key_ref: nil,
+            secret_key_ref: nil,
+            status: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                host: String,
+                public_key_ref: String,
+                secret_key_ref: String,
+                status:
+                  Telnyx::AI::InferenceEmbedding::ObservabilitySettings::Status::TaggedSymbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::AI::InferenceEmbedding::ObservabilitySettings::Status
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            ENABLED =
+              T.let(
+                :enabled,
+                Telnyx::AI::InferenceEmbedding::ObservabilitySettings::Status::TaggedSymbol
+              )
+            DISABLED =
+              T.let(
+                :disabled,
+                Telnyx::AI::InferenceEmbedding::ObservabilitySettings::Status::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::AI::InferenceEmbedding::ObservabilitySettings::Status::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
         end
       end
     end
