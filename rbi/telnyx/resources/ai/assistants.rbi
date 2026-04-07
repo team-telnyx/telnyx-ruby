@@ -43,6 +43,8 @@ module Telnyx
             insight_settings: Telnyx::AI::InsightSettings::OrHash,
             llm_api_key_ref: String,
             messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
+            observability_settings:
+              Telnyx::AI::AssistantCreateParams::ObservabilitySettings::OrHash,
             privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
             telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
             tool_ids: T::Array[String],
@@ -100,6 +102,7 @@ module Telnyx
           # work with this integration.
           llm_api_key_ref: nil,
           messaging_settings: nil,
+          observability_settings: nil,
           privacy_settings: nil,
           telephony_settings: nil,
           tool_ids: nil,
@@ -150,6 +153,8 @@ module Telnyx
             messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
             model: String,
             name: String,
+            observability_settings:
+              Telnyx::AI::AssistantUpdateParams::ObservabilitySettings::OrHash,
             privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
             promote_to_main: T::Boolean,
             telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
@@ -209,6 +214,7 @@ module Telnyx
           # to see all of your available models,
           model: nil,
           name: nil,
+          observability_settings: nil,
           privacy_settings: nil,
           # Indicates whether the assistant should be promoted to the main version. Defaults
           # to true.

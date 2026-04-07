@@ -14,6 +14,7 @@ module Telnyx
           insight_settings: Telnyx::AI::InsightSettings,
           llm_api_key_ref: String,
           messaging_settings: Telnyx::AI::MessagingSettings,
+          observability_settings: Telnyx::AI::AssistantCreateParams::ObservabilitySettings,
           privacy_settings: Telnyx::AI::PrivacySettings,
           telephony_settings: Telnyx::AI::TelephonySettings,
           tool_ids: ::Array[String],
@@ -72,6 +73,12 @@ module Telnyx
           Telnyx::AI::MessagingSettings
         ) -> Telnyx::AI::MessagingSettings
 
+        attr_reader observability_settings: Telnyx::AI::AssistantCreateParams::ObservabilitySettings?
+
+        def observability_settings=: (
+          Telnyx::AI::AssistantCreateParams::ObservabilitySettings
+        ) -> Telnyx::AI::AssistantCreateParams::ObservabilitySettings
+
         attr_reader privacy_settings: Telnyx::AI::PrivacySettings?
 
         def privacy_settings=: (
@@ -124,6 +131,7 @@ module Telnyx
           ?insight_settings: Telnyx::AI::InsightSettings,
           ?llm_api_key_ref: String,
           ?messaging_settings: Telnyx::AI::MessagingSettings,
+          ?observability_settings: Telnyx::AI::AssistantCreateParams::ObservabilitySettings,
           ?privacy_settings: Telnyx::AI::PrivacySettings,
           ?telephony_settings: Telnyx::AI::TelephonySettings,
           ?tool_ids: ::Array[String],
@@ -146,6 +154,7 @@ module Telnyx
           insight_settings: Telnyx::AI::InsightSettings,
           llm_api_key_ref: String,
           messaging_settings: Telnyx::AI::MessagingSettings,
+          observability_settings: Telnyx::AI::AssistantCreateParams::ObservabilitySettings,
           privacy_settings: Telnyx::AI::PrivacySettings,
           telephony_settings: Telnyx::AI::TelephonySettings,
           tool_ids: ::Array[String],
@@ -155,6 +164,59 @@ module Telnyx
           widget_settings: Telnyx::AI::WidgetSettings,
           request_options: Telnyx::RequestOptions
         }
+
+        type observability_settings =
+          {
+            host: String,
+            public_key_ref: String,
+            secret_key_ref: String,
+            status: Telnyx::Models::AI::AssistantCreateParams::ObservabilitySettings::status
+          }
+
+        class ObservabilitySettings < Telnyx::Internal::Type::BaseModel
+          attr_reader host: String?
+
+          def host=: (String) -> String
+
+          attr_reader public_key_ref: String?
+
+          def public_key_ref=: (String) -> String
+
+          attr_reader secret_key_ref: String?
+
+          def secret_key_ref=: (String) -> String
+
+          attr_reader status: Telnyx::Models::AI::AssistantCreateParams::ObservabilitySettings::status?
+
+          def status=: (
+            Telnyx::Models::AI::AssistantCreateParams::ObservabilitySettings::status
+          ) -> Telnyx::Models::AI::AssistantCreateParams::ObservabilitySettings::status
+
+          def initialize: (
+            ?host: String,
+            ?public_key_ref: String,
+            ?secret_key_ref: String,
+            ?status: Telnyx::Models::AI::AssistantCreateParams::ObservabilitySettings::status
+          ) -> void
+
+          def to_hash: -> {
+            host: String,
+            public_key_ref: String,
+            secret_key_ref: String,
+            status: Telnyx::Models::AI::AssistantCreateParams::ObservabilitySettings::status
+          }
+
+          type status = :enabled | :disabled
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            ENABLED: :enabled
+            DISABLED: :disabled
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::AssistantCreateParams::ObservabilitySettings::status]
+          end
+        end
       end
     end
   end
