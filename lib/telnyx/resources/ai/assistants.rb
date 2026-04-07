@@ -58,7 +58,7 @@ module Telnyx
         #
         # @param messaging_settings [Telnyx::Models::AI::MessagingSettings]
         #
-        # @param observability_settings [Telnyx::Models::AI::AssistantCreateParams::ObservabilitySettings]
+        # @param observability_settings [Telnyx::Models::AI::ObservabilityReq]
         #
         # @param privacy_settings [Telnyx::Models::AI::PrivacySettings]
         #
@@ -147,7 +147,7 @@ module Telnyx
         #
         # @param name [String]
         #
-        # @param observability_settings [Telnyx::Models::AI::AssistantUpdateParams::ObservabilitySettings]
+        # @param observability_settings [Telnyx::Models::AI::ObservabilityReq]
         #
         # @param privacy_settings [Telnyx::Models::AI::PrivacySettings]
         #

@@ -91,8 +91,8 @@ module Telnyx
 
         # @!attribute observability_settings
         #
-        #   @return [Telnyx::Models::AI::AssistantUpdateParams::ObservabilitySettings, nil]
-        optional :observability_settings, -> { Telnyx::AI::AssistantUpdateParams::ObservabilitySettings }
+        #   @return [Telnyx::Models::AI::ObservabilityReq, nil]
+        optional :observability_settings, -> { Telnyx::AI::ObservabilityReq }
 
         # @!attribute privacy_settings
         #
@@ -167,7 +167,7 @@ module Telnyx
         #
         #   @param name [String]
         #
-        #   @param observability_settings [Telnyx::Models::AI::AssistantUpdateParams::ObservabilitySettings]
+        #   @param observability_settings [Telnyx::Models::AI::ObservabilityReq]
         #
         #   @param privacy_settings [Telnyx::Models::AI::PrivacySettings]
         #
@@ -186,45 +186,6 @@ module Telnyx
         #   @param widget_settings [Telnyx::Models::AI::WidgetSettings] Configuration settings for the assistant's web widget.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-        class ObservabilitySettings < Telnyx::Internal::Type::BaseModel
-          # @!attribute host
-          #
-          #   @return [String, nil]
-          optional :host, String
-
-          # @!attribute public_key_ref
-          #
-          #   @return [String, nil]
-          optional :public_key_ref, String
-
-          # @!attribute secret_key_ref
-          #
-          #   @return [String, nil]
-          optional :secret_key_ref, String
-
-          # @!attribute status
-          #
-          #   @return [Symbol, Telnyx::Models::AI::AssistantUpdateParams::ObservabilitySettings::Status, nil]
-          optional :status, enum: -> { Telnyx::AI::AssistantUpdateParams::ObservabilitySettings::Status }
-
-          # @!method initialize(host: nil, public_key_ref: nil, secret_key_ref: nil, status: nil)
-          #   @param host [String]
-          #   @param public_key_ref [String]
-          #   @param secret_key_ref [String]
-          #   @param status [Symbol, Telnyx::Models::AI::AssistantUpdateParams::ObservabilitySettings::Status]
-
-          # @see Telnyx::Models::AI::AssistantUpdateParams::ObservabilitySettings#status
-          module Status
-            extend Telnyx::Internal::Type::Enum
-
-            ENABLED = :enabled
-            DISABLED = :disabled
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
-        end
       end
     end
   end
