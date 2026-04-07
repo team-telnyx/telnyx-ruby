@@ -11,6 +11,8 @@ module Telnyx
         location: Telnyx::WhatsappLocation,
         reaction: Telnyx::WhatsappReaction,
         sticker: Telnyx::WhatsappMedia,
+        template: Telnyx::WhatsappMessageContent::Template,
+        text: Telnyx::WhatsappMessageContent::Text,
         type: Telnyx::Models::WhatsappMessageContent::type_,
         video: Telnyx::WhatsappMedia
       }
@@ -56,6 +58,18 @@ module Telnyx
 
       def sticker=: (Telnyx::WhatsappMedia) -> Telnyx::WhatsappMedia
 
+      attr_reader template: Telnyx::WhatsappMessageContent::Template?
+
+      def template=: (
+        Telnyx::WhatsappMessageContent::Template
+      ) -> Telnyx::WhatsappMessageContent::Template
+
+      attr_reader text: Telnyx::WhatsappMessageContent::Text?
+
+      def text=: (
+        Telnyx::WhatsappMessageContent::Text
+      ) -> Telnyx::WhatsappMessageContent::Text
+
       attr_reader type: Telnyx::Models::WhatsappMessageContent::type_?
 
       def type=: (
@@ -76,6 +90,8 @@ module Telnyx
         ?location: Telnyx::WhatsappLocation,
         ?reaction: Telnyx::WhatsappReaction,
         ?sticker: Telnyx::WhatsappMedia,
+        ?template: Telnyx::WhatsappMessageContent::Template,
+        ?text: Telnyx::WhatsappMessageContent::Text,
         ?type: Telnyx::Models::WhatsappMessageContent::type_,
         ?video: Telnyx::WhatsappMedia
       ) -> void
@@ -90,9 +106,196 @@ module Telnyx
         location: Telnyx::WhatsappLocation,
         reaction: Telnyx::WhatsappReaction,
         sticker: Telnyx::WhatsappMedia,
+        template: Telnyx::WhatsappMessageContent::Template,
+        text: Telnyx::WhatsappMessageContent::Text,
         type: Telnyx::Models::WhatsappMessageContent::type_,
         video: Telnyx::WhatsappMedia
       }
+
+      type template =
+        {
+          components: ::Array[Telnyx::WhatsappMessageContent::Template::Component],
+          language: Telnyx::WhatsappMessageContent::Template::Language,
+          name: String,
+          template_id: String
+        }
+
+      class Template < Telnyx::Internal::Type::BaseModel
+        attr_reader components: ::Array[Telnyx::WhatsappMessageContent::Template::Component]?
+
+        def components=: (
+          ::Array[Telnyx::WhatsappMessageContent::Template::Component]
+        ) -> ::Array[Telnyx::WhatsappMessageContent::Template::Component]
+
+        attr_reader language: Telnyx::WhatsappMessageContent::Template::Language?
+
+        def language=: (
+          Telnyx::WhatsappMessageContent::Template::Language
+        ) -> Telnyx::WhatsappMessageContent::Template::Language
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader template_id: String?
+
+        def template_id=: (String) -> String
+
+        def initialize: (
+          ?components: ::Array[Telnyx::WhatsappMessageContent::Template::Component],
+          ?language: Telnyx::WhatsappMessageContent::Template::Language,
+          ?name: String,
+          ?template_id: String
+        ) -> void
+
+        def to_hash: -> {
+          components: ::Array[Telnyx::WhatsappMessageContent::Template::Component],
+          language: Telnyx::WhatsappMessageContent::Template::Language,
+          name: String,
+          template_id: String
+        }
+
+        type component =
+          {
+            index: Integer,
+            parameters: ::Array[Telnyx::WhatsappMessageContent::Template::Component::Parameter],
+            sub_type: Telnyx::Models::WhatsappMessageContent::Template::Component::sub_type,
+            type: Telnyx::Models::WhatsappMessageContent::Template::Component::type_
+          }
+
+        class Component < Telnyx::Internal::Type::BaseModel
+          attr_reader index: Integer?
+
+          def index=: (Integer) -> Integer
+
+          attr_reader parameters: ::Array[Telnyx::WhatsappMessageContent::Template::Component::Parameter]?
+
+          def parameters=: (
+            ::Array[Telnyx::WhatsappMessageContent::Template::Component::Parameter]
+          ) -> ::Array[Telnyx::WhatsappMessageContent::Template::Component::Parameter]
+
+          attr_reader sub_type: Telnyx::Models::WhatsappMessageContent::Template::Component::sub_type?
+
+          def sub_type=: (
+            Telnyx::Models::WhatsappMessageContent::Template::Component::sub_type
+          ) -> Telnyx::Models::WhatsappMessageContent::Template::Component::sub_type
+
+          attr_reader type: Telnyx::Models::WhatsappMessageContent::Template::Component::type_?
+
+          def type=: (
+            Telnyx::Models::WhatsappMessageContent::Template::Component::type_
+          ) -> Telnyx::Models::WhatsappMessageContent::Template::Component::type_
+
+          def initialize: (
+            ?index: Integer,
+            ?parameters: ::Array[Telnyx::WhatsappMessageContent::Template::Component::Parameter],
+            ?sub_type: Telnyx::Models::WhatsappMessageContent::Template::Component::sub_type,
+            ?type: Telnyx::Models::WhatsappMessageContent::Template::Component::type_
+          ) -> void
+
+          def to_hash: -> {
+            index: Integer,
+            parameters: ::Array[Telnyx::WhatsappMessageContent::Template::Component::Parameter],
+            sub_type: Telnyx::Models::WhatsappMessageContent::Template::Component::sub_type,
+            type: Telnyx::Models::WhatsappMessageContent::Template::Component::type_
+          }
+
+          type parameter =
+            {
+              text: String,
+              type: Telnyx::Models::WhatsappMessageContent::Template::Component::Parameter::type_
+            }
+
+          class Parameter < Telnyx::Internal::Type::BaseModel
+            attr_reader text: String?
+
+            def text=: (String) -> String
+
+            attr_reader type: Telnyx::Models::WhatsappMessageContent::Template::Component::Parameter::type_?
+
+            def type=: (
+              Telnyx::Models::WhatsappMessageContent::Template::Component::Parameter::type_
+            ) -> Telnyx::Models::WhatsappMessageContent::Template::Component::Parameter::type_
+
+            def initialize: (
+              ?text: String,
+              ?type: Telnyx::Models::WhatsappMessageContent::Template::Component::Parameter::type_
+            ) -> void
+
+            def to_hash: -> {
+              text: String,
+              type: Telnyx::Models::WhatsappMessageContent::Template::Component::Parameter::type_
+            }
+
+            type type_ =
+              :text | :image | :video | :document | :currency | :date_time
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              TEXT: :text
+              IMAGE: :image
+              VIDEO: :video
+              DOCUMENT: :document
+              CURRENCY: :currency
+              DATE_TIME: :date_time
+
+              def self?.values: -> ::Array[Telnyx::Models::WhatsappMessageContent::Template::Component::Parameter::type_]
+            end
+          end
+
+          type sub_type = :quick_reply | :url
+
+          module SubType
+            extend Telnyx::Internal::Type::Enum
+
+            QUICK_REPLY: :quick_reply
+            URL: :url
+
+            def self?.values: -> ::Array[Telnyx::Models::WhatsappMessageContent::Template::Component::sub_type]
+          end
+
+          type type_ = :header | :body | :button
+
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            HEADER: :header
+            BODY: :body
+            BUTTON: :button
+
+            def self?.values: -> ::Array[Telnyx::Models::WhatsappMessageContent::Template::Component::type_]
+          end
+        end
+
+        type language = { code: String, policy: String }
+
+        class Language < Telnyx::Internal::Type::BaseModel
+          attr_accessor code: String
+
+          attr_reader policy: String?
+
+          def policy=: (String) -> String
+
+          def initialize: (code: String, ?policy: String) -> void
+
+          def to_hash: -> { code: String, policy: String }
+        end
+      end
+
+      type text = { body: String, preview_url: bool }
+
+      class Text < Telnyx::Internal::Type::BaseModel
+        attr_accessor body: String
+
+        attr_reader preview_url: bool?
+
+        def preview_url=: (bool) -> bool
+
+        def initialize: (body: String, ?preview_url: bool) -> void
+
+        def to_hash: -> { body: String, preview_url: bool }
+      end
 
       type type_ =
         :audio
@@ -105,6 +308,7 @@ module Telnyx
         | :template
         | :reaction
         | :contacts
+        | :text
 
       module Type
         extend Telnyx::Internal::Type::Enum
@@ -119,6 +323,7 @@ module Telnyx
         TEMPLATE: :template
         REACTION: :reaction
         CONTACTS: :contacts
+        TEXT: :text
 
         def self?.values: -> ::Array[Telnyx::Models::WhatsappMessageContent::type_]
       end
