@@ -34,6 +34,14 @@ module Telnyx
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::CreateVerificationResponse
 
+      def trigger_whatsapp_verification: (
+        phone_number: String,
+        verify_profile_id: String,
+        ?custom_code: String?,
+        ?timeout_secs: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::CreateVerificationResponse
+
       def initialize: (client: Telnyx::Client) -> void
     end
   end

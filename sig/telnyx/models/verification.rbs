@@ -109,7 +109,7 @@ module Telnyx
         def self?.values: -> ::Array[Telnyx::Models::Verification::status]
       end
 
-      type type_ = :sms | :call | :flashcall
+      type type_ = :sms | :call | :flashcall | :whatsapp
 
       module Type
         extend Telnyx::Internal::Type::Enum
@@ -117,6 +117,7 @@ module Telnyx
         SMS: :sms
         CALL: :call
         FLASHCALL: :flashcall
+        WHATSAPP: :whatsapp
 
         def self?.values: -> ::Array[Telnyx::Models::Verification::type_]
       end

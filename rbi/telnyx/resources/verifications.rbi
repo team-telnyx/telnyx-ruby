@@ -96,6 +96,29 @@ module Telnyx
       )
       end
 
+      # Trigger WhatsApp verification
+      sig do
+        params(
+          phone_number: String,
+          verify_profile_id: String,
+          custom_code: T.nilable(String),
+          timeout_secs: Integer,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::CreateVerificationResponse)
+      end
+      def trigger_whatsapp_verification(
+        # +E164 formatted phone number.
+        phone_number:,
+        # The identifier of the associated Verify profile.
+        verify_profile_id:,
+        # Send a self-generated numeric code to the end-user
+        custom_code: nil,
+        # The number of seconds the verification code is valid for.
+        timeout_secs: nil,
+        request_options: {}
+      )
+      end
+
       # @api private
       sig { params(client: Telnyx::Client).returns(T.attached_class) }
       def self.new(client:)

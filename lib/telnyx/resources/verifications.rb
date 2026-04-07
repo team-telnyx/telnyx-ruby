@@ -119,6 +119,34 @@ module Telnyx
         )
       end
 
+      # Trigger WhatsApp verification
+      #
+      # @overload trigger_whatsapp_verification(phone_number:, verify_profile_id:, custom_code: nil, timeout_secs: nil, request_options: {})
+      #
+      # @param phone_number [String] +E164 formatted phone number.
+      #
+      # @param verify_profile_id [String] The identifier of the associated Verify profile.
+      #
+      # @param custom_code [String, nil] Send a self-generated numeric code to the end-user
+      #
+      # @param timeout_secs [Integer] The number of seconds the verification code is valid for.
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::CreateVerificationResponse]
+      #
+      # @see Telnyx::Models::VerificationTriggerWhatsappVerificationParams
+      def trigger_whatsapp_verification(params)
+        parsed, options = Telnyx::VerificationTriggerWhatsappVerificationParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "verifications/whatsapp",
+          body: parsed,
+          model: Telnyx::CreateVerificationResponse,
+          options: options
+        )
+      end
+
       # @api private
       #
       # @param client [Telnyx::Client]
