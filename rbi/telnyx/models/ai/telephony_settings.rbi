@@ -345,6 +345,14 @@ module Telnyx
           end
           attr_writer :channels
 
+          # Whether call recording is enabled. When set to false, calls will not be recorded
+          # regardless of other recording configuration.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :enabled
+
+          sig { params(enabled: T::Boolean).void }
+          attr_writer :enabled
+
           # The format of the recording file.
           sig do
             returns(
@@ -368,6 +376,7 @@ module Telnyx
             params(
               channels:
                 Telnyx::AI::TelephonySettings::RecordingSettings::Channels::OrSymbol,
+              enabled: T::Boolean,
               file_format:
                 Telnyx::AI::TelephonySettings::RecordingSettings::Format::OrSymbol
             ).returns(T.attached_class)
@@ -375,6 +384,9 @@ module Telnyx
           def self.new(
             # The number of channels for the recording. 'single' for mono, 'dual' for stereo.
             channels: nil,
+            # Whether call recording is enabled. When set to false, calls will not be recorded
+            # regardless of other recording configuration.
+            enabled: nil,
             # The format of the recording file.
             file_format: nil
           )
@@ -385,6 +397,7 @@ module Telnyx
               {
                 channels:
                   Telnyx::AI::TelephonySettings::RecordingSettings::Channels::OrSymbol,
+                enabled: T::Boolean,
                 file_format:
                   Telnyx::AI::TelephonySettings::RecordingSettings::Format::OrSymbol
               }
