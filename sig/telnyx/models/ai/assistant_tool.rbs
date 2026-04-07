@@ -720,22 +720,35 @@ module Telnyx
         end
 
         type send_message =
-          { send_message: ::Hash[Symbol, top], type: :send_message }
+          {
+            send_message: Telnyx::AI::AssistantTool::SendMessage::SendMessage,
+            type: :send_message
+          }
 
         class SendMessage < Telnyx::Internal::Type::BaseModel
-          attr_accessor send_message: ::Hash[Symbol, top]
+          attr_accessor send_message: Telnyx::AI::AssistantTool::SendMessage::SendMessage
 
           attr_accessor type: :send_message
 
           def initialize: (
-            send_message: ::Hash[Symbol, top],
+            send_message: Telnyx::AI::AssistantTool::SendMessage::SendMessage,
             ?type: :send_message
           ) -> void
 
           def to_hash: -> {
-            send_message: ::Hash[Symbol, top],
+            send_message: Telnyx::AI::AssistantTool::SendMessage::SendMessage,
             type: :send_message
           }
+
+          type send_message = { message_template: String? }
+
+          class SendMessage < Telnyx::Internal::Type::BaseModel
+            attr_accessor message_template: String?
+
+            def initialize: (?message_template: String?) -> void
+
+            def to_hash: -> { message_template: String? }
+          end
         end
 
         type skip_turn =
