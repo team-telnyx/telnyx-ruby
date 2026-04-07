@@ -123,6 +123,7 @@ module Telnyx
         SMS = :sms
         CALL = :call
         FLASHCALL = :flashcall
+        WHATSAPP = :whatsapp
 
         # @!method self.values
         #   @return [Array<Symbol>]

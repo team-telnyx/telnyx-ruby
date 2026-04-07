@@ -1791,6 +1791,9 @@ module Telnyx
 
   VerificationTriggerSMSParams = Telnyx::Models::VerificationTriggerSMSParams
 
+  VerificationTriggerWhatsappVerificationParams =
+    Telnyx::Models::VerificationTriggerWhatsappVerificationParams
+
   VerifiedNumber = Telnyx::Models::VerifiedNumber
 
   VerifiedNumberCreateParams = Telnyx::Models::VerifiedNumberCreateParams

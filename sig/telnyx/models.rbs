@@ -1565,6 +1565,8 @@ module Telnyx
 
   class VerificationTriggerSMSParams = Telnyx::Models::VerificationTriggerSMSParams
 
+  class VerificationTriggerWhatsappVerificationParams = Telnyx::Models::VerificationTriggerWhatsappVerificationParams
+
   class VerifiedNumber = Telnyx::Models::VerifiedNumber
 
   class VerifiedNumberCreateParams = Telnyx::Models::VerifiedNumberCreateParams

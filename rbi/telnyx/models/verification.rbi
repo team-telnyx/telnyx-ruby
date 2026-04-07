@@ -182,6 +182,7 @@ module Telnyx
         SMS = T.let(:sms, Telnyx::Verification::Type::TaggedSymbol)
         CALL = T.let(:call, Telnyx::Verification::Type::TaggedSymbol)
         FLASHCALL = T.let(:flashcall, Telnyx::Verification::Type::TaggedSymbol)
+        WHATSAPP = T.let(:whatsapp, Telnyx::Verification::Type::TaggedSymbol)
 
         sig do
           override.returns(T::Array[Telnyx::Verification::Type::TaggedSymbol])

@@ -6,7 +6,7 @@ module Telnyx
     class VerifyProfiles
       # Creates a new Verify profile to associate verifications with.
       #
-      # @overload create(name:, call: nil, flashcall: nil, language: nil, rcs: nil, sms: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @overload create(name:, call: nil, flashcall: nil, language: nil, rcs: nil, sms: nil, webhook_failover_url: nil, webhook_url: nil, whatsapp: nil, request_options: {})
       #
       # @param name [String]
       # @param call [Telnyx::Models::VerifyProfileCreateParams::Call]
@@ -16,6 +16,7 @@ module Telnyx
       # @param sms [Telnyx::Models::VerifyProfileCreateParams::SMS]
       # @param webhook_failover_url [String]
       # @param webhook_url [String]
+      # @param whatsapp [Telnyx::Models::VerifyProfileCreateParams::Whatsapp]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::VerifyProfileData]
@@ -54,7 +55,7 @@ module Telnyx
 
       # Update Verify profile
       #
-      # @overload update(verify_profile_id, call: nil, flashcall: nil, language: nil, name: nil, rcs: nil, sms: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @overload update(verify_profile_id, call: nil, flashcall: nil, language: nil, name: nil, rcs: nil, sms: nil, webhook_failover_url: nil, webhook_url: nil, whatsapp: nil, request_options: {})
       #
       # @param verify_profile_id [String] The identifier of the Verify profile to update.
       #
@@ -73,6 +74,8 @@ module Telnyx
       # @param webhook_failover_url [String]
       #
       # @param webhook_url [String]
+      #
+      # @param whatsapp [Telnyx::Models::VerifyProfileUpdateParams::Whatsapp]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
