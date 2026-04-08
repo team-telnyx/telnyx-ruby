@@ -180,9 +180,19 @@ module Telnyx
             :telnyx,
             Telnyx::VoiceCloneCreateFromUploadParams::Provider::TaggedSymbol
           )
+        TELNYX_2 =
+          T.let(
+            :Telnyx,
+            Telnyx::VoiceCloneCreateFromUploadParams::Provider::TaggedSymbol
+          )
         MINIMAX =
           T.let(
             :minimax,
+            Telnyx::VoiceCloneCreateFromUploadParams::Provider::TaggedSymbol
+          )
+        MINIMAX_2 =
+          T.let(
+            :Minimax,
             Telnyx::VoiceCloneCreateFromUploadParams::Provider::TaggedSymbol
           )
 

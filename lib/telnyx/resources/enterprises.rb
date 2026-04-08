@@ -25,9 +25,9 @@ module Telnyx
       #
       # @overload create(billing_address:, billing_contact:, country_code:, doing_business_as:, fein:, industry:, legal_name:, number_of_employees:, organization_contact:, organization_legal_type:, organization_physical_address:, organization_type:, website:, corporate_registration_number: nil, customer_reference: nil, dun_bradstreet_number: nil, primary_business_domain_sic_code: nil, professional_license_number: nil, role_type: nil, request_options: {})
       #
-      # @param billing_address [Telnyx::Models::BillingAddress]
+      # @param billing_address [Telnyx::Models::EnterpriseCreateParams::BillingAddress]
       #
-      # @param billing_contact [Telnyx::Models::BillingContact]
+      # @param billing_contact [Telnyx::Models::EnterpriseCreateParams::BillingContact]
       #
       # @param country_code [String] Country code. Currently only 'US' is accepted.
       #
@@ -41,11 +41,11 @@ module Telnyx
       #
       # @param number_of_employees [Symbol, Telnyx::Models::EnterpriseCreateParams::NumberOfEmployees] Employee count range
       #
-      # @param organization_contact [Telnyx::Models::OrganizationContact] Organization contact information. Note: the response returns this object with th
+      # @param organization_contact [Telnyx::Models::EnterpriseCreateParams::OrganizationContact] Organization contact information. Note: the response returns this object with th
       #
       # @param organization_legal_type [Symbol, Telnyx::Models::EnterpriseCreateParams::OrganizationLegalType] Legal structure type
       #
-      # @param organization_physical_address [Telnyx::Models::PhysicalAddress]
+      # @param organization_physical_address [Telnyx::Models::EnterpriseCreateParams::OrganizationPhysicalAddress]
       #
       # @param organization_type [Symbol, Telnyx::Models::EnterpriseCreateParams::OrganizationType] Type of organization
       #
@@ -109,9 +109,9 @@ module Telnyx
       #
       # @param enterprise_id [String] Unique identifier of the enterprise (UUID)
       #
-      # @param billing_address [Telnyx::Models::BillingAddress]
+      # @param billing_address [Telnyx::Models::EnterpriseUpdateParams::BillingAddress]
       #
-      # @param billing_contact [Telnyx::Models::BillingContact]
+      # @param billing_contact [Telnyx::Models::EnterpriseUpdateParams::BillingContact]
       #
       # @param corporate_registration_number [String] Corporate registration number
       #
@@ -129,11 +129,11 @@ module Telnyx
       #
       # @param number_of_employees [Symbol, Telnyx::Models::EnterpriseUpdateParams::NumberOfEmployees] Employee count range
       #
-      # @param organization_contact [Telnyx::Models::OrganizationContact] Organization contact information. Note: the response returns this object with th
+      # @param organization_contact [Telnyx::Models::EnterpriseUpdateParams::OrganizationContact] Organization contact information. Note: the response returns this object with th
       #
       # @param organization_legal_type [Symbol, Telnyx::Models::EnterpriseUpdateParams::OrganizationLegalType] Legal structure type
       #
-      # @param organization_physical_address [Telnyx::Models::PhysicalAddress]
+      # @param organization_physical_address [Telnyx::Models::EnterpriseUpdateParams::OrganizationPhysicalAddress]
       #
       # @param primary_business_domain_sic_code [String] SIC Code
       #
@@ -169,7 +169,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::EnterprisePublic>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::EnterpriseListResponse>]
       #
       # @see Telnyx::Models::EnterpriseListParams
       def list(params = {})
@@ -180,7 +180,7 @@ module Telnyx
           path: "enterprises",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::EnterprisePublic,
+          model: Telnyx::Models::EnterpriseListResponse,
           options: options
         )
       end

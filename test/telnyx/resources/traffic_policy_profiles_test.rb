@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::TrafficPolicyProfilesTest < Telnyx::Test::Resourc
 
     assert_pattern do
       response => {
-        data: Telnyx::TrafficPolicyProfile | nil
+        data: Telnyx::Models::TrafficPolicyProfileCreateResponse::Data | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::TrafficPolicyProfilesTest < Telnyx::Test::Resourc
 
     assert_pattern do
       response => {
-        data: Telnyx::TrafficPolicyProfile | nil
+        data: Telnyx::Models::TrafficPolicyProfileRetrieveResponse::Data | nil
       }
     end
   end
@@ -46,7 +46,7 @@ class Telnyx::Test::Resources::TrafficPolicyProfilesTest < Telnyx::Test::Resourc
 
     assert_pattern do
       response => {
-        data: Telnyx::TrafficPolicyProfile | nil
+        data: Telnyx::Models::TrafficPolicyProfileUpdateResponse::Data | nil
       }
     end
   end
@@ -64,7 +64,7 @@ class Telnyx::Test::Resources::TrafficPolicyProfilesTest < Telnyx::Test::Resourc
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::TrafficPolicyProfile
+      row => Telnyx::Models::TrafficPolicyProfileListResponse
     end
 
     assert_pattern do
@@ -76,7 +76,7 @@ class Telnyx::Test::Resources::TrafficPolicyProfilesTest < Telnyx::Test::Resourc
         limit_bw_kbps: Integer | nil,
         record_type: String | nil,
         services: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
-        type: Telnyx::TrafficPolicyProfile::Type | nil,
+        type: Telnyx::Models::TrafficPolicyProfileListResponse::Type | nil,
         updated_at: String | nil
       }
     end

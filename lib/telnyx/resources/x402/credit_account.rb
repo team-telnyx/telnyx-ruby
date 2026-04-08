@@ -38,11 +38,11 @@ module Telnyx
         # `payment_signature` body parameter. Settlement is idempotent — submitting the
         # same quote ID multiple times returns the existing transaction.
         #
-        # @overload settle(id:, payment_signature: nil, header_payment_signature: nil, request_options: {})
+        # @overload settle(id:, body_payment_signature: nil, header_payment_signature: nil, request_options: {})
         #
         # @param id [String] Body param: The quote ID to settle.
         #
-        # @param payment_signature [String] Body param: Base64-encoded signed payment authorization (x402 PaymentPayload). C
+        # @param body_payment_signature [String] Body param: Base64-encoded signed payment authorization (x402 PaymentPayload). C
         #
         # @param header_payment_signature [String] Header param: Signed payment authorization for the quote. Alternative to providi
         #

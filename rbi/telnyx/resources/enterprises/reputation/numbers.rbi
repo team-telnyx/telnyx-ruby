@@ -7,39 +7,6 @@ module Telnyx
         # Associate phone numbers with an enterprise for reputation monitoring and
         # retrieve reputation scores
         class Numbers
-          # Associate one or more phone numbers with an enterprise for Number Reputation
-          # monitoring.
-          #
-          # **Validations:**
-          #
-          # - Phone numbers must be in E.164 format (e.g., `+16035551234`)
-          # - Phone numbers must be in-service and belong to your account (verified via
-          #   Warehouse)
-          # - Phone numbers must be US local numbers
-          # - Phone numbers cannot already be associated with any enterprise
-          #
-          # **Note:** This operation is atomic — if any number fails validation, the entire
-          # request fails.
-          #
-          # **Maximum:** 100 phone numbers per request.
-          sig do
-            params(
-              enterprise_id: String,
-              phone_numbers: T::Array[String],
-              request_options: Telnyx::RequestOptions::OrHash
-            ).returns(
-              Telnyx::Models::Enterprises::Reputation::NumberCreateResponse
-            )
-          end
-          def create(
-            # Unique identifier of the enterprise (UUID)
-            enterprise_id,
-            # List of phone numbers to associate for reputation monitoring (max 100)
-            phone_numbers:,
-            request_options: {}
-          )
-          end
-
           # Get detailed reputation data for a specific phone number associated with an
           # enterprise.
           #
@@ -94,7 +61,7 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
               Telnyx::Internal::DefaultFlatPagination[
-                Telnyx::ReputationPhoneNumberWithReputationData
+                Telnyx::Models::Enterprises::Reputation::NumberListResponse
               ]
             )
           end
@@ -111,6 +78,39 @@ module Telnyx
           )
           end
 
+          # Associate one or more phone numbers with an enterprise for Number Reputation
+          # monitoring.
+          #
+          # **Validations:**
+          #
+          # - Phone numbers must be in E.164 format (e.g., `+16035551234`)
+          # - Phone numbers must be in-service and belong to your account (verified via
+          #   Warehouse)
+          # - Phone numbers must be US local numbers
+          # - Phone numbers cannot already be associated with any enterprise
+          #
+          # **Note:** This operation is atomic — if any number fails validation, the entire
+          # request fails.
+          #
+          # **Maximum:** 100 phone numbers per request.
+          sig do
+            params(
+              enterprise_id: String,
+              phone_numbers: T::Array[String],
+              request_options: Telnyx::RequestOptions::OrHash
+            ).returns(
+              Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse
+            )
+          end
+          def associate(
+            # Unique identifier of the enterprise (UUID)
+            enterprise_id,
+            # List of phone numbers to associate for reputation monitoring (max 100)
+            phone_numbers:,
+            request_options: {}
+          )
+          end
+
           # Remove a phone number from Number Reputation monitoring for an enterprise.
           #
           # The number will no longer be tracked and reputation data will no longer be
@@ -122,7 +122,7 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).void
           end
-          def delete(
+          def disassociate(
             # Phone number in E.164 format
             phone_number,
             # Unique identifier of the enterprise (UUID)

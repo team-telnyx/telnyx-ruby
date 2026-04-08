@@ -107,7 +107,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::TrafficPolicyProfile>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::TrafficPolicyProfileListResponse>]
       #
       # @see Telnyx::Models::TrafficPolicyProfileListParams
       def list(params = {})
@@ -123,7 +123,7 @@ module Telnyx
             page_size: "page[size]"
           ),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::TrafficPolicyProfile,
+          model: Telnyx::Models::TrafficPolicyProfileListResponse,
           options: options
         )
       end

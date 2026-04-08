@@ -66,7 +66,9 @@ module Telnyx
           sort: Telnyx::VoiceCloneListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[Telnyx::VoiceCloneData]
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Models::VoiceCloneListResponse
+          ]
         )
       end
       def list(

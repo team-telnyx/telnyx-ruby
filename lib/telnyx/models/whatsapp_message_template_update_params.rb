@@ -20,7 +20,7 @@ module Telnyx
       # @!attribute components
       #   Updated template components. Same structure as the create request.
       #
-      #   @return [Array<Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Header, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Body, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Footer, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Buttons, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Carousel>, nil]
+      #   @return [Array<Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent>, nil]
       optional :components,
                -> { Telnyx::Internal::Type::ArrayOf[union: Telnyx::WhatsappMessageTemplateUpdateParams::Component] }
 
@@ -29,7 +29,7 @@ module Telnyx
       #
       #   @param category [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Category]
       #
-      #   @param components [Array<Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Header, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Body, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Footer, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Buttons, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Carousel>] Updated template components. Same structure as the create request.
+      #   @param components [Array<Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent>] Updated template components. Same structure as the create request.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -49,43 +49,45 @@ module Telnyx
       module Component
         extend Telnyx::Internal::Type::Union
 
-        discriminator :type
-
         # Optional header displayed at the top of the message.
-        variant :HEADER, -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header }
+        variant -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent }
 
         # The main text content of the message. Supports multiple variable parameters ({{1}}, {{2}}, etc.). Variables cannot be at the start or end. Maximum 1024 characters.
-        variant :BODY, -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::Body }
+        variant -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent }
 
         # Optional footer displayed at the bottom of the message. Does not support variables.
-        variant :FOOTER, -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::Footer }
+        variant -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent }
 
         # Optional interactive buttons. Maximum 3 buttons per template.
-        variant :BUTTONS, -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons }
+        variant -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent }
 
         # Carousel component for multi-card templates. Each card can contain its own header, body, and buttons.
-        variant :CAROUSEL, -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::Carousel }
+        variant -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent }
 
-        class Header < Telnyx::Internal::Type::BaseModel
-          # @!attribute file_format
+        class WhatsappTemplateHeaderComponent < Telnyx::Internal::Type::BaseModel
+          # @!attribute format_
           #   Header format type: TEXT (supports one variable), IMAGE, VIDEO, DOCUMENT, or
           #   LOCATION.
           #
-          #   @return [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Header::Format]
-          required :file_format,
-                   enum: -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::Format },
+          #   @return [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Format]
+          required :format_,
+                   enum: -> {
+                     Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Format
+                   },
                    api_name: :format
 
           # @!attribute type
           #
-          #   @return [Symbol, :HEADER]
-          required :type, const: :HEADER
+          #   @return [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Type]
+          required :type,
+                   enum: -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Type }
 
           # @!attribute example
           #   Sample values for header variables.
           #
-          #   @return [Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Header::Example, nil]
-          optional :example, -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::Example }
+          #   @return [Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Example, nil]
+          optional :example,
+                   -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Example }
 
           # @!attribute text
           #   Header text. Required when format is TEXT. Supports one variable ({{1}}).
@@ -94,25 +96,25 @@ module Telnyx
           #   @return [String, nil]
           optional :text, String
 
-          # @!method initialize(file_format:, example: nil, text: nil, type: :HEADER)
+          # @!method initialize(format_:, type:, example: nil, text: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Header} for
-          #   more details.
+          #   {Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent}
+          #   for more details.
           #
           #   Optional header displayed at the top of the message.
           #
-          #   @param file_format [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Header::Format] Header format type: TEXT (supports one variable), IMAGE, VIDEO, DOCUMENT, or LOC
+          #   @param format_ [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Format] Header format type: TEXT (supports one variable), IMAGE, VIDEO, DOCUMENT, or LOC
           #
-          #   @param example [Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Header::Example] Sample values for header variables.
+          #   @param type [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Type]
+          #
+          #   @param example [Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Example] Sample values for header variables.
           #
           #   @param text [String] Header text. Required when format is TEXT. Supports one variable ({{1}}). Variab
-          #
-          #   @param type [Symbol, :HEADER]
 
           # Header format type: TEXT (supports one variable), IMAGE, VIDEO, DOCUMENT, or
           # LOCATION.
           #
-          # @see Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Header#file_format
+          # @see Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent#format_
           module Format
             extend Telnyx::Internal::Type::Enum
 
@@ -126,7 +128,17 @@ module Telnyx
             #   @return [Array<Symbol>]
           end
 
-          # @see Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Header#example
+          # @see Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent#type
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            HEADER = :HEADER
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent#example
           class Example < Telnyx::Internal::Type::BaseModel
             # @!attribute header_handle
             #   Media handle for IMAGE, VIDEO, or DOCUMENT headers.
@@ -149,17 +161,19 @@ module Telnyx
           end
         end
 
-        class Body < Telnyx::Internal::Type::BaseModel
+        class WhatsappTemplateBodyComponent < Telnyx::Internal::Type::BaseModel
           # @!attribute type
           #
-          #   @return [Symbol, :BODY]
-          required :type, const: :BODY
+          #   @return [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::Type]
+          required :type,
+                   enum: -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::Type }
 
           # @!attribute example
           #   Sample values for body variables. Required when body text contains parameters.
           #
-          #   @return [Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Body::Example, nil]
-          optional :example, -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::Body::Example }
+          #   @return [Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::Example, nil]
+          optional :example,
+                   -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::Example }
 
           # @!attribute text
           #   Body text content. Use {{1}}, {{2}}, etc. for variable placeholders. Required
@@ -169,22 +183,32 @@ module Telnyx
           #   @return [String, nil]
           optional :text, String
 
-          # @!method initialize(example: nil, text: nil, type: :BODY)
+          # @!method initialize(type:, example: nil, text: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Body} for more
-          #   details.
+          #   {Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent}
+          #   for more details.
           #
           #   The main text content of the message. Supports multiple variable parameters
           #   ({{1}}, {{2}}, etc.). Variables cannot be at the start or end. Maximum 1024
           #   characters.
           #
-          #   @param example [Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Body::Example] Sample values for body variables. Required when body text contains parameters.
+          #   @param type [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::Type]
+          #
+          #   @param example [Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::Example] Sample values for body variables. Required when body text contains parameters.
           #
           #   @param text [String] Body text content. Use {{1}}, {{2}}, etc. for variable placeholders. Required fo
-          #
-          #   @param type [Symbol, :BODY]
 
-          # @see Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Body#example
+          # @see Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent#type
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            BODY = :BODY
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent#example
           class Example < Telnyx::Internal::Type::BaseModel
             # @!attribute body_text
             #   Array containing one array of sample values, one per variable in order.
@@ -199,11 +223,12 @@ module Telnyx
           end
         end
 
-        class Footer < Telnyx::Internal::Type::BaseModel
+        class WhatsappTemplateFooterComponent < Telnyx::Internal::Type::BaseModel
           # @!attribute type
           #
-          #   @return [Symbol, :FOOTER]
-          required :type, const: :FOOTER
+          #   @return [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent::Type]
+          required :type,
+                   enum: -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent::Type }
 
           # @!attribute code_expiration_minutes
           #   OTP code expiration time in minutes. Used in AUTHENTICATION template footers
@@ -218,46 +243,58 @@ module Telnyx
           #   @return [String, nil]
           optional :text, String
 
-          # @!method initialize(code_expiration_minutes: nil, text: nil, type: :FOOTER)
+          # @!method initialize(type:, code_expiration_minutes: nil, text: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Footer} for
-          #   more details.
+          #   {Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent}
+          #   for more details.
           #
           #   Optional footer displayed at the bottom of the message. Does not support
           #   variables.
           #
+          #   @param type [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent::Type]
+          #
           #   @param code_expiration_minutes [Integer] OTP code expiration time in minutes. Used in AUTHENTICATION template footers ins
           #
           #   @param text [String] Footer text. Maximum 60 characters. For non-authentication templates.
-          #
-          #   @param type [Symbol, :FOOTER]
+
+          # @see Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent#type
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            FOOTER = :FOOTER
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
-        class Buttons < Telnyx::Internal::Type::BaseModel
+        class WhatsappTemplateButtonsComponent < Telnyx::Internal::Type::BaseModel
           # @!attribute buttons
           #   Array of button objects. Meta supports various combinations of button types.
           #
-          #   @return [Array<Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button>]
+          #   @return [Array<Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button>]
           required :buttons,
-                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button] }
+                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button] }
 
           # @!attribute type
           #
-          #   @return [Symbol, :BUTTONS]
-          required :type, const: :BUTTONS
+          #   @return [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Type]
+          required :type,
+                   enum: -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Type }
 
-          # @!method initialize(buttons:, type: :BUTTONS)
+          # @!method initialize(buttons:, type:)
           #   Optional interactive buttons. Maximum 3 buttons per template.
           #
-          #   @param buttons [Array<Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button>] Array of button objects. Meta supports various combinations of button types.
+          #   @param buttons [Array<Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button>] Array of button objects. Meta supports various combinations of button types.
           #
-          #   @param type [Symbol, :BUTTONS]
+          #   @param type [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Type]
 
           class Button < Telnyx::Internal::Type::BaseModel
             # @!attribute type
             #
-            #   @return [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::Type]
-            required :type, enum: -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::Type }
+            #   @return [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::Type]
+            required :type,
+                     enum: -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::Type }
 
             # @!attribute autofill_text
             #   Custom autofill button text for ONE_TAP OTP buttons.
@@ -274,9 +311,9 @@ module Telnyx
             # @!attribute flow_action
             #   Flow action type for FLOW-type buttons.
             #
-            #   @return [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::FlowAction, nil]
+            #   @return [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::FlowAction, nil]
             optional :flow_action,
-                     enum: -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::FlowAction }
+                     enum: -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::FlowAction }
 
             # @!attribute flow_id
             #   Flow ID for FLOW-type buttons.
@@ -292,9 +329,9 @@ module Telnyx
 
             # @!attribute otp_type
             #
-            #   @return [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::OtpType, nil]
+            #   @return [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::OtpType, nil]
             optional :otp_type,
-                     enum: -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::OtpType }
+                     enum: -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::OtpType }
 
             # @!attribute package_name
             #   Android package name. Required for ONE_TAP OTP buttons.
@@ -335,22 +372,22 @@ module Telnyx
 
             # @!method initialize(type:, autofill_text: nil, example: nil, flow_action: nil, flow_id: nil, navigate_screen: nil, otp_type: nil, package_name: nil, phone_number: nil, signature_hash: nil, text: nil, url: nil, zero_tap_terms_accepted: nil)
             #   Some parameter documentations has been truncated, see
-            #   {Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button}
+            #   {Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button}
             #   for more details.
             #
-            #   @param type [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::Type]
+            #   @param type [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::Type]
             #
             #   @param autofill_text [String] Custom autofill button text for ONE_TAP OTP buttons.
             #
             #   @param example [Array<String>] Sample values for URL variable.
             #
-            #   @param flow_action [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::FlowAction] Flow action type for FLOW-type buttons.
+            #   @param flow_action [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::FlowAction] Flow action type for FLOW-type buttons.
             #
             #   @param flow_id [String] Flow ID for FLOW-type buttons.
             #
             #   @param navigate_screen [String] Target screen name for FLOW buttons with navigate action.
             #
-            #   @param otp_type [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::OtpType]
+            #   @param otp_type [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::OtpType]
             #
             #   @param package_name [String] Android package name. Required for ONE_TAP OTP buttons.
             #
@@ -364,7 +401,7 @@ module Telnyx
             #
             #   @param zero_tap_terms_accepted [Boolean] Whether zero-tap terms have been accepted.
 
-            # @see Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button#type
+            # @see Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button#type
             module Type
               extend Telnyx::Internal::Type::Enum
 
@@ -381,7 +418,7 @@ module Telnyx
 
             # Flow action type for FLOW-type buttons.
             #
-            # @see Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button#flow_action
+            # @see Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button#flow_action
             module FlowAction
               extend Telnyx::Internal::Type::Enum
 
@@ -392,7 +429,7 @@ module Telnyx
               #   @return [Array<Symbol>]
             end
 
-            # @see Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button#otp_type
+            # @see Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button#otp_type
             module OtpType
               extend Telnyx::Internal::Type::Enum
 
@@ -403,43 +440,63 @@ module Telnyx
               #   @return [Array<Symbol>]
             end
           end
+
+          # @see Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent#type
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            BUTTONS = :BUTTONS
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
-        class Carousel < Telnyx::Internal::Type::BaseModel
+        class WhatsappTemplateCarouselComponent < Telnyx::Internal::Type::BaseModel
           # @!attribute cards
           #   Array of card objects, each with its own components.
           #
-          #   @return [Array<Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Carousel::Card>]
+          #   @return [Array<Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::Card>]
           required :cards,
-                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::WhatsappMessageTemplateUpdateParams::Component::Carousel::Card] }
+                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::Card] }
 
           # @!attribute type
           #
-          #   @return [Symbol, :CAROUSEL]
-          required :type, const: :CAROUSEL
+          #   @return [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::Type]
+          required :type,
+                   enum: -> { Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::Type }
 
-          # @!method initialize(cards:, type: :CAROUSEL)
+          # @!method initialize(cards:, type:)
           #   Carousel component for multi-card templates. Each card can contain its own
           #   header, body, and buttons.
           #
-          #   @param cards [Array<Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Carousel::Card>] Array of card objects, each with its own components.
+          #   @param cards [Array<Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::Card>] Array of card objects, each with its own components.
           #
-          #   @param type [Symbol, :CAROUSEL]
+          #   @param type [Symbol, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::Type]
 
           class Card < Telnyx::Internal::Type::BaseModel
             # @!attribute components
             #
-            #   @return [Array<Hash{Symbol=>Object}>, nil]
-            optional :components,
-                     Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]
+            #   @return [Array<Object>, nil]
+            optional :components, Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]
 
             # @!method initialize(components: nil)
-            #   @param components [Array<Hash{Symbol=>Object}>]
+            #   @param components [Array<Object>]
+          end
+
+          # @see Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent#type
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            CAROUSEL = :CAROUSEL
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
         # @!method self.variants
-        #   @return [Array(Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Header, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Body, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Footer, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Buttons, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::Carousel)]
+        #   @return [Array(Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent, Telnyx::Models::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent)]
       end
     end
   end

@@ -188,6 +188,27 @@ module Telnyx
           sig { params(machine_detection_timeout: Integer).void }
           attr_writer :machine_detection_timeout
 
+          # Defines whether media should be encrypted on the call. When set to `SRTP`, the
+          # call will use Secure Real-time Transport Protocol for media encryption. When set
+          # to `DTLS`, the call will use DTLS for media encryption. Only supported for SIP
+          # destinations.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Texml::Accounts::CallCallsParams::MediaEncryption::OrSymbol
+              )
+            )
+          end
+          attr_reader :media_encryption
+
+          sig do
+            params(
+              media_encryption:
+                Telnyx::Texml::Accounts::CallCallsParams::MediaEncryption::OrSymbol
+            ).void
+          end
+          attr_writer :media_encryption
+
           # The list of comma-separated codecs to be offered on a call.
           sig { returns(T.nilable(String)) }
           attr_reader :preferred_codecs
@@ -489,6 +510,8 @@ module Telnyx
               machine_detection_speech_end_threshold: Integer,
               machine_detection_speech_threshold: Integer,
               machine_detection_timeout: Integer,
+              media_encryption:
+                Telnyx::Texml::Accounts::CallCallsParams::MediaEncryption::OrSymbol,
               preferred_codecs: String,
               record: T::Boolean,
               recording_channels:
@@ -572,6 +595,11 @@ module Telnyx
             machine_detection_speech_threshold: nil,
             # Maximum timeout threshold in milliseconds for overall detection.
             machine_detection_timeout: nil,
+            # Defines whether media should be encrypted on the call. When set to `SRTP`, the
+            # call will use Secure Real-time Transport Protocol for media encryption. When set
+            # to `DTLS`, the call will use DTLS for media encryption. Only supported for SIP
+            # destinations.
+            media_encryption: nil,
             # The list of comma-separated codecs to be offered on a call.
             preferred_codecs: nil,
             # Whether to record the entire participant's call leg. Defaults to `false`.
@@ -665,6 +693,8 @@ module Telnyx
                 machine_detection_speech_end_threshold: Integer,
                 machine_detection_speech_threshold: Integer,
                 machine_detection_timeout: Integer,
+                media_encryption:
+                  Telnyx::Texml::Accounts::CallCallsParams::MediaEncryption::OrSymbol,
                 preferred_codecs: String,
                 record: T::Boolean,
                 recording_channels:
@@ -840,6 +870,49 @@ module Telnyx
               override.returns(
                 T::Array[
                   Telnyx::Texml::Accounts::CallCallsParams::MachineDetection::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Defines whether media should be encrypted on the call. When set to `SRTP`, the
+          # call will use Secure Real-time Transport Protocol for media encryption. When set
+          # to `DTLS`, the call will use DTLS for media encryption. Only supported for SIP
+          # destinations.
+          module MediaEncryption
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Texml::Accounts::CallCallsParams::MediaEncryption
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            DISABLED =
+              T.let(
+                :disabled,
+                Telnyx::Texml::Accounts::CallCallsParams::MediaEncryption::TaggedSymbol
+              )
+            SRTP =
+              T.let(
+                :SRTP,
+                Telnyx::Texml::Accounts::CallCallsParams::MediaEncryption::TaggedSymbol
+              )
+            DTLS =
+              T.let(
+                :DTLS,
+                Telnyx::Texml::Accounts::CallCallsParams::MediaEncryption::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Texml::Accounts::CallCallsParams::MediaEncryption::TaggedSymbol
                 ]
               )
             end

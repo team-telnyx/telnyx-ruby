@@ -40,7 +40,7 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultFlatPagination[
-              Telnyx::ReputationPhoneNumberWithReputationData
+              Telnyx::Models::Reputation::NumberListResponse
             ]
           )
         end

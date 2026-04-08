@@ -50,6 +50,7 @@ module Telnyx
             ?machine_detection_speech_end_threshold: Integer,
             ?machine_detection_speech_threshold: Integer,
             ?machine_detection_timeout: Integer,
+            ?media_encryption: Telnyx::Models::Texml::Accounts::CallCallsParams::media_encryption,
             ?preferred_codecs: String,
             ?record: bool,
             ?recording_channels: Telnyx::Models::Texml::Accounts::CallCallsParams::recording_channels,
