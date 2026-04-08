@@ -40,11 +40,11 @@ module Telnyx
           T.nilable(
             T::Array[
               T.any(
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Body,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Footer,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Carousel
               )
             ]
           )
@@ -57,11 +57,11 @@ module Telnyx
           components:
             T::Array[
               T.any(
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::OrHash,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::OrHash,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent::OrHash,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::OrHash,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::OrHash
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::OrHash,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Body::OrHash,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Footer::OrHash,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::OrHash,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Carousel::OrHash
               )
             ]
         ).void
@@ -76,11 +76,11 @@ module Telnyx
           components:
             T::Array[
               T.any(
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::OrHash,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::OrHash,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent::OrHash,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::OrHash,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::OrHash
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::OrHash,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Body::OrHash,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Footer::OrHash,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::OrHash,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Carousel::OrHash
               )
             ],
           request_options: Telnyx::RequestOptions::OrHash
@@ -104,11 +104,11 @@ module Telnyx
             components:
               T::Array[
                 T.any(
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header,
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Body,
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Footer,
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons,
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Carousel
                 )
               ],
             request_options: Telnyx::RequestOptions
@@ -162,19 +162,19 @@ module Telnyx
         Variants =
           T.type_alias do
             T.any(
-              Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent,
-              Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent,
-              Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent,
-              Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent,
-              Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent
+              Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header,
+              Telnyx::WhatsappMessageTemplateUpdateParams::Component::Body,
+              Telnyx::WhatsappMessageTemplateUpdateParams::Component::Footer,
+              Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons,
+              Telnyx::WhatsappMessageTemplateUpdateParams::Component::Carousel
             )
           end
 
-        class WhatsappTemplateHeaderComponent < Telnyx::Internal::Type::BaseModel
+        class Header < Telnyx::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header,
                 Telnyx::Internal::AnyHash
               )
             end
@@ -183,23 +183,19 @@ module Telnyx
           # LOCATION.
           sig do
             returns(
-              Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Format::OrSymbol
+              Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::Format::OrSymbol
             )
           end
-          attr_accessor :format_
+          attr_accessor :file_format
 
-          sig do
-            returns(
-              Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Type::OrSymbol
-            )
-          end
+          sig { returns(Symbol) }
           attr_accessor :type
 
           # Sample values for header variables.
           sig do
             returns(
               T.nilable(
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Example
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::Example
               )
             )
           end
@@ -208,7 +204,7 @@ module Telnyx
           sig do
             params(
               example:
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Example::OrHash
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::Example::OrHash
             ).void
           end
           attr_writer :example
@@ -224,37 +220,35 @@ module Telnyx
           # Optional header displayed at the top of the message.
           sig do
             params(
-              format_:
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Format::OrSymbol,
-              type:
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Type::OrSymbol,
+              file_format:
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::Format::OrSymbol,
               example:
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Example::OrHash,
-              text: String
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::Example::OrHash,
+              text: String,
+              type: Symbol
             ).returns(T.attached_class)
           end
           def self.new(
             # Header format type: TEXT (supports one variable), IMAGE, VIDEO, DOCUMENT, or
             # LOCATION.
-            format_:,
-            type:,
+            file_format:,
             # Sample values for header variables.
             example: nil,
             # Header text. Required when format is TEXT. Supports one variable ({{1}}).
             # Variables cannot be at the start or end.
-            text: nil
+            text: nil,
+            type: :HEADER
           )
           end
 
           sig do
             override.returns(
               {
-                format_:
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Format::OrSymbol,
-                type:
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Type::OrSymbol,
+                file_format:
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::Format::OrSymbol,
+                type: Symbol,
                 example:
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Example,
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::Example,
                 text: String
               }
             )
@@ -271,7 +265,7 @@ module Telnyx
               T.type_alias do
                 T.all(
                   Symbol,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Format
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::Format
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -279,62 +273,33 @@ module Telnyx
             TEXT =
               T.let(
                 :TEXT,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Format::TaggedSymbol
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::Format::TaggedSymbol
               )
             IMAGE =
               T.let(
                 :IMAGE,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Format::TaggedSymbol
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::Format::TaggedSymbol
               )
             VIDEO =
               T.let(
                 :VIDEO,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Format::TaggedSymbol
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::Format::TaggedSymbol
               )
             DOCUMENT =
               T.let(
                 :DOCUMENT,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Format::TaggedSymbol
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::Format::TaggedSymbol
               )
             LOCATION =
               T.let(
                 :LOCATION,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Format::TaggedSymbol
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::Format::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Format::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
-
-          module Type
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Type
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            HEADER =
-              T.let(
-                :HEADER,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Type::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Type::TaggedSymbol
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::Format::TaggedSymbol
                 ]
               )
             end
@@ -346,7 +311,7 @@ module Telnyx
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateHeaderComponent::Example,
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Header::Example,
                   Telnyx::Internal::AnyHash
                 )
               end
@@ -393,27 +358,23 @@ module Telnyx
           end
         end
 
-        class WhatsappTemplateBodyComponent < Telnyx::Internal::Type::BaseModel
+        class Body < Telnyx::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Body,
                 Telnyx::Internal::AnyHash
               )
             end
 
-          sig do
-            returns(
-              Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::Type::OrSymbol
-            )
-          end
+          sig { returns(Symbol) }
           attr_accessor :type
 
           # Sample values for body variables. Required when body text contains parameters.
           sig do
             returns(
               T.nilable(
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::Example
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Body::Example
               )
             )
           end
@@ -422,7 +383,7 @@ module Telnyx
           sig do
             params(
               example:
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::Example::OrHash
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Body::Example::OrHash
             ).void
           end
           attr_writer :example
@@ -441,31 +402,29 @@ module Telnyx
           # characters.
           sig do
             params(
-              type:
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::Type::OrSymbol,
               example:
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::Example::OrHash,
-              text: String
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Body::Example::OrHash,
+              text: String,
+              type: Symbol
             ).returns(T.attached_class)
           end
           def self.new(
-            type:,
             # Sample values for body variables. Required when body text contains parameters.
             example: nil,
             # Body text content. Use {{1}}, {{2}}, etc. for variable placeholders. Required
             # for MARKETING and UTILITY templates. Optional for AUTHENTICATION templates where
             # Meta provides the built-in OTP body.
-            text: nil
+            text: nil,
+            type: :BODY
           )
           end
 
           sig do
             override.returns(
               {
-                type:
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::Type::OrSymbol,
+                type: Symbol,
                 example:
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::Example,
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Body::Example,
                 text: String
               }
             )
@@ -473,40 +432,11 @@ module Telnyx
           def to_hash
           end
 
-          module Type
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::Type
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            BODY =
-              T.let(
-                :BODY,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::Type::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::Type::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
-
           class Example < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateBodyComponent::Example,
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Body::Example,
                   Telnyx::Internal::AnyHash
                 )
               end
@@ -536,20 +466,16 @@ module Telnyx
           end
         end
 
-        class WhatsappTemplateFooterComponent < Telnyx::Internal::Type::BaseModel
+        class Footer < Telnyx::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Footer,
                 Telnyx::Internal::AnyHash
               )
             end
 
-          sig do
-            returns(
-              Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent::Type::OrSymbol
-            )
-          end
+          sig { returns(Symbol) }
           attr_accessor :type
 
           # OTP code expiration time in minutes. Used in AUTHENTICATION template footers
@@ -571,70 +497,35 @@ module Telnyx
           # variables.
           sig do
             params(
-              type:
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent::Type::OrSymbol,
               code_expiration_minutes: Integer,
-              text: String
+              text: String,
+              type: Symbol
             ).returns(T.attached_class)
           end
           def self.new(
-            type:,
             # OTP code expiration time in minutes. Used in AUTHENTICATION template footers
             # instead of free-form text.
             code_expiration_minutes: nil,
             # Footer text. Maximum 60 characters. For non-authentication templates.
-            text: nil
+            text: nil,
+            type: :FOOTER
           )
           end
 
           sig do
             override.returns(
-              {
-                type:
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent::Type::OrSymbol,
-                code_expiration_minutes: Integer,
-                text: String
-              }
+              { type: Symbol, code_expiration_minutes: Integer, text: String }
             )
           end
           def to_hash
           end
-
-          module Type
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent::Type
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            FOOTER =
-              T.let(
-                :FOOTER,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent::Type::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateFooterComponent::Type::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
         end
 
-        class WhatsappTemplateButtonsComponent < Telnyx::Internal::Type::BaseModel
+        class Buttons < Telnyx::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons,
                 Telnyx::Internal::AnyHash
               )
             end
@@ -643,17 +534,13 @@ module Telnyx
           sig do
             returns(
               T::Array[
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button
               ]
             )
           end
           attr_accessor :buttons
 
-          sig do
-            returns(
-              Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Type::OrSymbol
-            )
-          end
+          sig { returns(Symbol) }
           attr_accessor :type
 
           # Optional interactive buttons. Maximum 3 buttons per template.
@@ -661,16 +548,15 @@ module Telnyx
             params(
               buttons:
                 T::Array[
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::OrHash
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::OrHash
                 ],
-              type:
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Type::OrSymbol
+              type: Symbol
             ).returns(T.attached_class)
           end
           def self.new(
             # Array of button objects. Meta supports various combinations of button types.
             buttons:,
-            type:
+            type: :BUTTONS
           )
           end
 
@@ -679,10 +565,9 @@ module Telnyx
               {
                 buttons:
                   T::Array[
-                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button
+                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button
                   ],
-                type:
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Type::OrSymbol
+                type: Symbol
               }
             )
           end
@@ -693,14 +578,14 @@ module Telnyx
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button,
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button,
                   Telnyx::Internal::AnyHash
                 )
               end
 
             sig do
               returns(
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::Type::OrSymbol
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::Type::OrSymbol
               )
             end
             attr_accessor :type
@@ -723,7 +608,7 @@ module Telnyx
             sig do
               returns(
                 T.nilable(
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::FlowAction::OrSymbol
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::FlowAction::OrSymbol
                 )
               )
             end
@@ -732,7 +617,7 @@ module Telnyx
             sig do
               params(
                 flow_action:
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::FlowAction::OrSymbol
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::FlowAction::OrSymbol
               ).void
             end
             attr_writer :flow_action
@@ -754,7 +639,7 @@ module Telnyx
             sig do
               returns(
                 T.nilable(
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::OtpType::OrSymbol
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::OtpType::OrSymbol
                 )
               )
             end
@@ -763,7 +648,7 @@ module Telnyx
             sig do
               params(
                 otp_type:
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::OtpType::OrSymbol
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::OtpType::OrSymbol
               ).void
             end
             attr_writer :otp_type
@@ -814,15 +699,15 @@ module Telnyx
             sig do
               params(
                 type:
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::Type::OrSymbol,
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::Type::OrSymbol,
                 autofill_text: String,
                 example: T::Array[String],
                 flow_action:
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::FlowAction::OrSymbol,
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::FlowAction::OrSymbol,
                 flow_id: String,
                 navigate_screen: String,
                 otp_type:
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::OtpType::OrSymbol,
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::OtpType::OrSymbol,
                 package_name: String,
                 phone_number: String,
                 signature_hash: String,
@@ -864,15 +749,15 @@ module Telnyx
               override.returns(
                 {
                   type:
-                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::Type::OrSymbol,
+                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::Type::OrSymbol,
                   autofill_text: String,
                   example: T::Array[String],
                   flow_action:
-                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::FlowAction::OrSymbol,
+                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::FlowAction::OrSymbol,
                   flow_id: String,
                   navigate_screen: String,
                   otp_type:
-                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::OtpType::OrSymbol,
+                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::OtpType::OrSymbol,
                   package_name: String,
                   phone_number: String,
                   signature_hash: String,
@@ -892,7 +777,7 @@ module Telnyx
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::Type
+                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::Type
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -900,38 +785,38 @@ module Telnyx
               URL =
                 T.let(
                   :URL,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::Type::TaggedSymbol
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::Type::TaggedSymbol
                 )
               PHONE_NUMBER =
                 T.let(
                   :PHONE_NUMBER,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::Type::TaggedSymbol
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::Type::TaggedSymbol
                 )
               QUICK_REPLY =
                 T.let(
                   :QUICK_REPLY,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::Type::TaggedSymbol
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::Type::TaggedSymbol
                 )
               OTP =
                 T.let(
                   :OTP,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::Type::TaggedSymbol
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::Type::TaggedSymbol
                 )
               COPY_CODE =
                 T.let(
                   :COPY_CODE,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::Type::TaggedSymbol
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::Type::TaggedSymbol
                 )
               FLOW =
                 T.let(
                   :FLOW,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::Type::TaggedSymbol
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::Type::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::Type::TaggedSymbol
+                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::Type::TaggedSymbol
                   ]
                 )
               end
@@ -947,7 +832,7 @@ module Telnyx
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::FlowAction
+                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::FlowAction
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -955,18 +840,18 @@ module Telnyx
               NAVIGATE =
                 T.let(
                   :navigate,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::FlowAction::TaggedSymbol
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::FlowAction::TaggedSymbol
                 )
               DATA_EXCHANGE =
                 T.let(
                   :data_exchange,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::FlowAction::TaggedSymbol
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::FlowAction::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::FlowAction::TaggedSymbol
+                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::FlowAction::TaggedSymbol
                   ]
                 )
               end
@@ -981,7 +866,7 @@ module Telnyx
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::OtpType
+                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::OtpType
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -989,18 +874,18 @@ module Telnyx
               COPY_CODE =
                 T.let(
                   :COPY_CODE,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::OtpType::TaggedSymbol
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::OtpType::TaggedSymbol
                 )
               ONE_TAP =
                 T.let(
                   :ONE_TAP,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::OtpType::TaggedSymbol
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::OtpType::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Button::OtpType::TaggedSymbol
+                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::Buttons::Button::OtpType::TaggedSymbol
                   ]
                 )
               end
@@ -1008,42 +893,13 @@ module Telnyx
               end
             end
           end
-
-          module Type
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Type
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            BUTTONS =
-              T.let(
-                :BUTTONS,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Type::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateButtonsComponent::Type::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
         end
 
-        class WhatsappTemplateCarouselComponent < Telnyx::Internal::Type::BaseModel
+        class Carousel < Telnyx::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent,
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Carousel,
                 Telnyx::Internal::AnyHash
               )
             end
@@ -1052,17 +908,13 @@ module Telnyx
           sig do
             returns(
               T::Array[
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::Card
+                Telnyx::WhatsappMessageTemplateUpdateParams::Component::Carousel::Card
               ]
             )
           end
           attr_accessor :cards
 
-          sig do
-            returns(
-              Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::Type::OrSymbol
-            )
-          end
+          sig { returns(Symbol) }
           attr_accessor :type
 
           # Carousel component for multi-card templates. Each card can contain its own
@@ -1071,16 +923,15 @@ module Telnyx
             params(
               cards:
                 T::Array[
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::Card::OrHash
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Carousel::Card::OrHash
                 ],
-              type:
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::Type::OrSymbol
+              type: Symbol
             ).returns(T.attached_class)
           end
           def self.new(
             # Array of card objects, each with its own components.
             cards:,
-            type:
+            type: :CAROUSEL
           )
           end
 
@@ -1089,10 +940,9 @@ module Telnyx
               {
                 cards:
                   T::Array[
-                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::Card
+                    Telnyx::WhatsappMessageTemplateUpdateParams::Component::Carousel::Card
                   ],
-                type:
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::Type::OrSymbol
+                type: Symbol
               }
             )
           end
@@ -1103,54 +953,33 @@ module Telnyx
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::Card,
+                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::Carousel::Card,
                   Telnyx::Internal::AnyHash
                 )
               end
 
-            sig { returns(T.nilable(T::Array[T.anything])) }
+            sig { returns(T.nilable(T::Array[T::Hash[Symbol, T.anything]])) }
             attr_reader :components
 
-            sig { params(components: T::Array[T.anything]).void }
+            sig do
+              params(components: T::Array[T::Hash[Symbol, T.anything]]).void
+            end
             attr_writer :components
 
             sig do
-              params(components: T::Array[T.anything]).returns(T.attached_class)
+              params(components: T::Array[T::Hash[Symbol, T.anything]]).returns(
+                T.attached_class
+              )
             end
             def self.new(components: nil)
             end
 
-            sig { override.returns({ components: T::Array[T.anything] }) }
-            def to_hash
-            end
-          end
-
-          module Type
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::Type
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            CAROUSEL =
-              T.let(
-                :CAROUSEL,
-                Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::Type::TaggedSymbol
-              )
-
             sig do
               override.returns(
-                T::Array[
-                  Telnyx::WhatsappMessageTemplateUpdateParams::Component::WhatsappTemplateCarouselComponent::Type::TaggedSymbol
-                ]
+                { components: T::Array[T::Hash[Symbol, T.anything]] }
               )
             end
-            def self.values
+            def to_hash
             end
           end
         end

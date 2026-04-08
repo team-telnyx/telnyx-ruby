@@ -98,8 +98,8 @@ module Telnyx
 
         # @!attribute observability_settings
         #
-        #   @return [Telnyx::Models::AI::InferenceEmbedding::ObservabilitySettings, nil]
-        optional :observability_settings, -> { Telnyx::AI::InferenceEmbedding::ObservabilitySettings }
+        #   @return [Telnyx::Models::AI::Observability, nil]
+        optional :observability_settings, -> { Telnyx::AI::Observability }
 
         # @!attribute privacy_settings
         #
@@ -166,7 +166,7 @@ module Telnyx
         #
         #   @param messaging_settings [Telnyx::Models::AI::MessagingSettings]
         #
-        #   @param observability_settings [Telnyx::Models::AI::InferenceEmbedding::ObservabilitySettings]
+        #   @param observability_settings [Telnyx::Models::AI::Observability]
         #
         #   @param privacy_settings [Telnyx::Models::AI::PrivacySettings]
         #
@@ -179,46 +179,6 @@ module Telnyx
         #   @param voice_settings [Telnyx::Models::AI::VoiceSettings]
         #
         #   @param widget_settings [Telnyx::Models::AI::WidgetSettings] Configuration settings for the assistant's web widget.
-
-        # @see Telnyx::Models::AI::InferenceEmbedding#observability_settings
-        class ObservabilitySettings < Telnyx::Internal::Type::BaseModel
-          # @!attribute host
-          #
-          #   @return [String, nil]
-          optional :host, String
-
-          # @!attribute public_key_ref
-          #
-          #   @return [String, nil]
-          optional :public_key_ref, String
-
-          # @!attribute secret_key_ref
-          #
-          #   @return [String, nil]
-          optional :secret_key_ref, String
-
-          # @!attribute status
-          #
-          #   @return [Symbol, Telnyx::Models::AI::InferenceEmbedding::ObservabilitySettings::Status, nil]
-          optional :status, enum: -> { Telnyx::AI::InferenceEmbedding::ObservabilitySettings::Status }
-
-          # @!method initialize(host: nil, public_key_ref: nil, secret_key_ref: nil, status: nil)
-          #   @param host [String]
-          #   @param public_key_ref [String]
-          #   @param secret_key_ref [String]
-          #   @param status [Symbol, Telnyx::Models::AI::InferenceEmbedding::ObservabilitySettings::Status]
-
-          # @see Telnyx::Models::AI::InferenceEmbedding::ObservabilitySettings#status
-          module Status
-            extend Telnyx::Internal::Type::Enum
-
-            ENABLED = :enabled
-            DISABLED = :disabled
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
-        end
       end
     end
   end

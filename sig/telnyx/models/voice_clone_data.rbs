@@ -1,23 +1,23 @@
 module Telnyx
   module Models
-    type voice_clone_list_response =
+    type voice_clone_data =
       {
         id: String,
         created_at: Time,
-        gender: Telnyx::Models::VoiceCloneListResponse::gender?,
+        gender: Telnyx::Models::VoiceCloneData::gender?,
         label: String?,
         language: String?,
         name: String,
-        provider: Telnyx::Models::VoiceCloneListResponse::provider,
+        provider: Telnyx::Models::VoiceCloneData::provider,
         provider_supported_models: ::Array[String],
         provider_voice_id: String?,
-        record_type: Telnyx::Models::VoiceCloneListResponse::record_type,
+        record_type: Telnyx::Models::VoiceCloneData::record_type,
         source_voice_design_id: String?,
         source_voice_design_version: Integer?,
         updated_at: Time
       }
 
-    class VoiceCloneListResponse < Telnyx::Internal::Type::BaseModel
+    class VoiceCloneData < Telnyx::Internal::Type::BaseModel
       attr_reader id: String?
 
       def id=: (String) -> String
@@ -26,7 +26,7 @@ module Telnyx
 
       def created_at=: (Time) -> Time
 
-      attr_accessor gender: Telnyx::Models::VoiceCloneListResponse::gender?
+      attr_accessor gender: Telnyx::Models::VoiceCloneData::gender?
 
       attr_accessor label: String?
 
@@ -36,11 +36,11 @@ module Telnyx
 
       def name=: (String) -> String
 
-      attr_reader provider: Telnyx::Models::VoiceCloneListResponse::provider?
+      attr_reader provider: Telnyx::Models::VoiceCloneData::provider?
 
       def provider=: (
-        Telnyx::Models::VoiceCloneListResponse::provider
-      ) -> Telnyx::Models::VoiceCloneListResponse::provider
+        Telnyx::Models::VoiceCloneData::provider
+      ) -> Telnyx::Models::VoiceCloneData::provider
 
       attr_reader provider_supported_models: ::Array[String]?
 
@@ -48,11 +48,11 @@ module Telnyx
 
       attr_accessor provider_voice_id: String?
 
-      attr_reader record_type: Telnyx::Models::VoiceCloneListResponse::record_type?
+      attr_reader record_type: Telnyx::Models::VoiceCloneData::record_type?
 
       def record_type=: (
-        Telnyx::Models::VoiceCloneListResponse::record_type
-      ) -> Telnyx::Models::VoiceCloneListResponse::record_type
+        Telnyx::Models::VoiceCloneData::record_type
+      ) -> Telnyx::Models::VoiceCloneData::record_type
 
       attr_accessor source_voice_design_id: String?
 
@@ -65,14 +65,14 @@ module Telnyx
       def initialize: (
         ?id: String,
         ?created_at: Time,
-        ?gender: Telnyx::Models::VoiceCloneListResponse::gender?,
+        ?gender: Telnyx::Models::VoiceCloneData::gender?,
         ?label: String?,
         ?language: String?,
         ?name: String,
-        ?provider: Telnyx::Models::VoiceCloneListResponse::provider,
+        ?provider: Telnyx::Models::VoiceCloneData::provider,
         ?provider_supported_models: ::Array[String],
         ?provider_voice_id: String?,
-        ?record_type: Telnyx::Models::VoiceCloneListResponse::record_type,
+        ?record_type: Telnyx::Models::VoiceCloneData::record_type,
         ?source_voice_design_id: String?,
         ?source_voice_design_version: Integer?,
         ?updated_at: Time
@@ -81,14 +81,14 @@ module Telnyx
       def to_hash: -> {
         id: String,
         created_at: Time,
-        gender: Telnyx::Models::VoiceCloneListResponse::gender?,
+        gender: Telnyx::Models::VoiceCloneData::gender?,
         label: String?,
         language: String?,
         name: String,
-        provider: Telnyx::Models::VoiceCloneListResponse::provider,
+        provider: Telnyx::Models::VoiceCloneData::provider,
         provider_supported_models: ::Array[String],
         provider_voice_id: String?,
-        record_type: Telnyx::Models::VoiceCloneListResponse::record_type,
+        record_type: Telnyx::Models::VoiceCloneData::record_type,
         source_voice_design_id: String?,
         source_voice_design_version: Integer?,
         updated_at: Time
@@ -103,20 +103,18 @@ module Telnyx
         FEMALE: :female
         NEUTRAL: :neutral
 
-        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneListResponse::gender]
+        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneData::gender]
       end
 
-      type provider = :telnyx | :minimax | :Telnyx | :Minimax
+      type provider = :telnyx | :minimax
 
       module Provider
         extend Telnyx::Internal::Type::Enum
 
         TELNYX: :telnyx
-        TELNYX_2: :Telnyx
         MINIMAX: :minimax
-        MINIMAX_2: :Minimax
 
-        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneListResponse::provider]
+        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneData::provider]
       end
 
       type record_type = :voice_clone
@@ -126,7 +124,7 @@ module Telnyx
 
         VOICE_CLONE: :voice_clone
 
-        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneListResponse::record_type]
+        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneData::record_type]
       end
     end
   end

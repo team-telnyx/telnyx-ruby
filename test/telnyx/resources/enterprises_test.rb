@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::EnterpriseCreateResponse::Data | nil
+        data: Telnyx::EnterprisePublic | nil
       }
     end
   end
@@ -68,7 +68,7 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::EnterpriseRetrieveResponse::Data | nil
+        data: Telnyx::EnterprisePublic | nil
       }
     end
   end
@@ -84,7 +84,7 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::EnterpriseUpdateResponse::Data | nil
+        data: Telnyx::EnterprisePublic | nil
       }
     end
   end
@@ -102,14 +102,14 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::EnterpriseListResponse
+      row => Telnyx::EnterprisePublic
     end
 
     assert_pattern do
       row => {
         id: String | nil,
-        billing_address: Telnyx::Models::EnterpriseListResponse::BillingAddress | nil,
-        billing_contact: Telnyx::Models::EnterpriseListResponse::BillingContact | nil,
+        billing_address: Telnyx::BillingAddress | nil,
+        billing_contact: Telnyx::BillingContact | nil,
         corporate_registration_number: String | nil,
         country_code: String | nil,
         created_at: Time | nil,
@@ -119,14 +119,14 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
         fein: String | nil,
         industry: String | nil,
         legal_name: String | nil,
-        number_of_employees: Telnyx::Models::EnterpriseListResponse::NumberOfEmployees | nil,
-        organization_contact: Telnyx::Models::EnterpriseListResponse::OrganizationContact | nil,
-        organization_legal_type: Telnyx::Models::EnterpriseListResponse::OrganizationLegalType | nil,
-        organization_physical_address: Telnyx::Models::EnterpriseListResponse::OrganizationPhysicalAddress | nil,
-        organization_type: Telnyx::Models::EnterpriseListResponse::OrganizationType | nil,
+        number_of_employees: Telnyx::EnterprisePublic::NumberOfEmployees | nil,
+        organization_contact: Telnyx::OrganizationContact | nil,
+        organization_legal_type: Telnyx::EnterprisePublic::OrganizationLegalType | nil,
+        organization_physical_address: Telnyx::PhysicalAddress | nil,
+        organization_type: Telnyx::EnterprisePublic::OrganizationType | nil,
         primary_business_domain_sic_code: String | nil,
         professional_license_number: String | nil,
-        role_type: Telnyx::Models::EnterpriseListResponse::RoleType | nil,
+        role_type: Telnyx::EnterprisePublic::RoleType | nil,
         updated_at: Time | nil,
         website: String | nil
       }

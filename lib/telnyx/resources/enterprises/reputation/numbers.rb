@@ -77,7 +77,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Enterprises::Reputation::NumberListResponse>]
+          # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::ReputationPhoneNumberWithReputationData>]
           #
           # @see Telnyx::Models::Enterprises::Reputation::NumberListParams
           def list(enterprise_id, params = {})
@@ -88,7 +88,7 @@ module Telnyx
               path: ["enterprises/%1$s/reputation/numbers", enterprise_id],
               query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
               page: Telnyx::Internal::DefaultFlatPagination,
-              model: Telnyx::Models::Enterprises::Reputation::NumberListResponse,
+              model: Telnyx::ReputationPhoneNumberWithReputationData,
               options: options
             )
           end

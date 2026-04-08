@@ -3,7 +3,7 @@
 module Telnyx
   module Models
     # @see Telnyx::Resources::VoiceClones#list
-    class VoiceCloneListResponse < Telnyx::Internal::Type::BaseModel
+    class VoiceCloneData < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #   Unique identifier for the voice clone.
       #
@@ -19,8 +19,8 @@ module Telnyx
       # @!attribute gender
       #   Gender of the voice clone.
       #
-      #   @return [Symbol, Telnyx::Models::VoiceCloneListResponse::Gender, nil]
-      optional :gender, enum: -> { Telnyx::Models::VoiceCloneListResponse::Gender }, nil?: true
+      #   @return [Symbol, Telnyx::Models::VoiceCloneData::Gender, nil]
+      optional :gender, enum: -> { Telnyx::VoiceCloneData::Gender }, nil?: true
 
       # @!attribute label
       #   Voice style description. If not explicitly set on upload, falls back to the
@@ -44,8 +44,8 @@ module Telnyx
       # @!attribute provider
       #   Voice synthesis provider used for this clone.
       #
-      #   @return [Symbol, Telnyx::Models::VoiceCloneListResponse::Provider, nil]
-      optional :provider, enum: -> { Telnyx::Models::VoiceCloneListResponse::Provider }
+      #   @return [Symbol, Telnyx::Models::VoiceCloneData::Provider, nil]
+      optional :provider, enum: -> { Telnyx::VoiceCloneData::Provider }
 
       # @!attribute provider_supported_models
       #   List of TTS model identifiers supported by this clone's provider.
@@ -63,8 +63,8 @@ module Telnyx
       # @!attribute record_type
       #   Identifies the resource type.
       #
-      #   @return [Symbol, Telnyx::Models::VoiceCloneListResponse::RecordType, nil]
-      optional :record_type, enum: -> { Telnyx::Models::VoiceCloneListResponse::RecordType }
+      #   @return [Symbol, Telnyx::Models::VoiceCloneData::RecordType, nil]
+      optional :record_type, enum: -> { Telnyx::VoiceCloneData::RecordType }
 
       # @!attribute source_voice_design_id
       #   UUID of the source voice design. `null` for upload-based clones.
@@ -86,7 +86,7 @@ module Telnyx
 
       # @!method initialize(id: nil, created_at: nil, gender: nil, label: nil, language: nil, name: nil, provider: nil, provider_supported_models: nil, provider_voice_id: nil, record_type: nil, source_voice_design_id: nil, source_voice_design_version: nil, updated_at: nil)
       #   Some parameter documentations has been truncated, see
-      #   {Telnyx::Models::VoiceCloneListResponse} for more details.
+      #   {Telnyx::Models::VoiceCloneData} for more details.
       #
       #   A voice clone object.
       #
@@ -94,7 +94,7 @@ module Telnyx
       #
       #   @param created_at [Time] Timestamp when the voice clone was created.
       #
-      #   @param gender [Symbol, Telnyx::Models::VoiceCloneListResponse::Gender, nil] Gender of the voice clone.
+      #   @param gender [Symbol, Telnyx::Models::VoiceCloneData::Gender, nil] Gender of the voice clone.
       #
       #   @param label [String, nil] Voice style description. If not explicitly set on upload, falls back to the sour
       #
@@ -102,13 +102,13 @@ module Telnyx
       #
       #   @param name [String] Name of the voice clone.
       #
-      #   @param provider [Symbol, Telnyx::Models::VoiceCloneListResponse::Provider] Voice synthesis provider used for this clone.
+      #   @param provider [Symbol, Telnyx::Models::VoiceCloneData::Provider] Voice synthesis provider used for this clone.
       #
       #   @param provider_supported_models [Array<String>] List of TTS model identifiers supported by this clone's provider.
       #
       #   @param provider_voice_id [String, nil] Provider-specific voice identifier used for TTS synthesis. For Telnyx clones thi
       #
-      #   @param record_type [Symbol, Telnyx::Models::VoiceCloneListResponse::RecordType] Identifies the resource type.
+      #   @param record_type [Symbol, Telnyx::Models::VoiceCloneData::RecordType] Identifies the resource type.
       #
       #   @param source_voice_design_id [String, nil] UUID of the source voice design. `null` for upload-based clones.
       #
@@ -118,7 +118,7 @@ module Telnyx
 
       # Gender of the voice clone.
       #
-      # @see Telnyx::Models::VoiceCloneListResponse#gender
+      # @see Telnyx::Models::VoiceCloneData#gender
       module Gender
         extend Telnyx::Internal::Type::Enum
 
@@ -132,14 +132,12 @@ module Telnyx
 
       # Voice synthesis provider used for this clone.
       #
-      # @see Telnyx::Models::VoiceCloneListResponse#provider
+      # @see Telnyx::Models::VoiceCloneData#provider
       module Provider
         extend Telnyx::Internal::Type::Enum
 
         TELNYX = :telnyx
-        TELNYX_2 = :Telnyx
         MINIMAX = :minimax
-        MINIMAX_2 = :Minimax
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -147,7 +145,7 @@ module Telnyx
 
       # Identifies the resource type.
       #
-      # @see Telnyx::Models::VoiceCloneListResponse#record_type
+      # @see Telnyx::Models::VoiceCloneData#record_type
       module RecordType
         extend Telnyx::Internal::Type::Enum
 

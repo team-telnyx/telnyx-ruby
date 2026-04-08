@@ -2,17 +2,17 @@ module Telnyx
   module Models
     type enterprise_create_params =
       {
-        billing_address: Telnyx::EnterpriseCreateParams::BillingAddress,
-        billing_contact: Telnyx::EnterpriseCreateParams::BillingContact,
+        billing_address: Telnyx::BillingAddress,
+        billing_contact: Telnyx::BillingContact,
         country_code: String,
         doing_business_as: String,
         fein: String,
         industry: String,
         legal_name: String,
         number_of_employees: Telnyx::Models::EnterpriseCreateParams::number_of_employees,
-        organization_contact: Telnyx::EnterpriseCreateParams::OrganizationContact,
+        organization_contact: Telnyx::OrganizationContact,
         organization_legal_type: Telnyx::Models::EnterpriseCreateParams::organization_legal_type,
-        organization_physical_address: Telnyx::EnterpriseCreateParams::OrganizationPhysicalAddress,
+        organization_physical_address: Telnyx::PhysicalAddress,
         organization_type: Telnyx::Models::EnterpriseCreateParams::organization_type,
         website: String,
         corporate_registration_number: String,
@@ -28,9 +28,9 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      attr_accessor billing_address: Telnyx::EnterpriseCreateParams::BillingAddress
+      attr_accessor billing_address: Telnyx::BillingAddress
 
-      attr_accessor billing_contact: Telnyx::EnterpriseCreateParams::BillingContact
+      attr_accessor billing_contact: Telnyx::BillingContact
 
       attr_accessor country_code: String
 
@@ -44,11 +44,11 @@ module Telnyx
 
       attr_accessor number_of_employees: Telnyx::Models::EnterpriseCreateParams::number_of_employees
 
-      attr_accessor organization_contact: Telnyx::EnterpriseCreateParams::OrganizationContact
+      attr_accessor organization_contact: Telnyx::OrganizationContact
 
       attr_accessor organization_legal_type: Telnyx::Models::EnterpriseCreateParams::organization_legal_type
 
-      attr_accessor organization_physical_address: Telnyx::EnterpriseCreateParams::OrganizationPhysicalAddress
+      attr_accessor organization_physical_address: Telnyx::PhysicalAddress
 
       attr_accessor organization_type: Telnyx::Models::EnterpriseCreateParams::organization_type
 
@@ -81,17 +81,17 @@ module Telnyx
       ) -> Telnyx::Models::EnterpriseCreateParams::role_type
 
       def initialize: (
-        billing_address: Telnyx::EnterpriseCreateParams::BillingAddress,
-        billing_contact: Telnyx::EnterpriseCreateParams::BillingContact,
+        billing_address: Telnyx::BillingAddress,
+        billing_contact: Telnyx::BillingContact,
         country_code: String,
         doing_business_as: String,
         fein: String,
         industry: String,
         legal_name: String,
         number_of_employees: Telnyx::Models::EnterpriseCreateParams::number_of_employees,
-        organization_contact: Telnyx::EnterpriseCreateParams::OrganizationContact,
+        organization_contact: Telnyx::OrganizationContact,
         organization_legal_type: Telnyx::Models::EnterpriseCreateParams::organization_legal_type,
-        organization_physical_address: Telnyx::EnterpriseCreateParams::OrganizationPhysicalAddress,
+        organization_physical_address: Telnyx::PhysicalAddress,
         organization_type: Telnyx::Models::EnterpriseCreateParams::organization_type,
         website: String,
         ?corporate_registration_number: String,
@@ -104,17 +104,17 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
-        billing_address: Telnyx::EnterpriseCreateParams::BillingAddress,
-        billing_contact: Telnyx::EnterpriseCreateParams::BillingContact,
+        billing_address: Telnyx::BillingAddress,
+        billing_contact: Telnyx::BillingContact,
         country_code: String,
         doing_business_as: String,
         fein: String,
         industry: String,
         legal_name: String,
         number_of_employees: Telnyx::Models::EnterpriseCreateParams::number_of_employees,
-        organization_contact: Telnyx::EnterpriseCreateParams::OrganizationContact,
+        organization_contact: Telnyx::OrganizationContact,
         organization_legal_type: Telnyx::Models::EnterpriseCreateParams::organization_legal_type,
-        organization_physical_address: Telnyx::EnterpriseCreateParams::OrganizationPhysicalAddress,
+        organization_physical_address: Telnyx::PhysicalAddress,
         organization_type: Telnyx::Models::EnterpriseCreateParams::organization_type,
         website: String,
         corporate_registration_number: String,
@@ -125,80 +125,6 @@ module Telnyx
         role_type: Telnyx::Models::EnterpriseCreateParams::role_type,
         request_options: Telnyx::RequestOptions
       }
-
-      type billing_address =
-        {
-          administrative_area: String,
-          city: String,
-          country: String,
-          postal_code: String,
-          street_address: String,
-          extended_address: String?
-        }
-
-      class BillingAddress < Telnyx::Internal::Type::BaseModel
-        attr_accessor administrative_area: String
-
-        attr_accessor city: String
-
-        attr_accessor country: String
-
-        attr_accessor postal_code: String
-
-        attr_accessor street_address: String
-
-        attr_accessor extended_address: String?
-
-        def initialize: (
-          administrative_area: String,
-          city: String,
-          country: String,
-          postal_code: String,
-          street_address: String,
-          ?extended_address: String?
-        ) -> void
-
-        def to_hash: -> {
-          administrative_area: String,
-          city: String,
-          country: String,
-          postal_code: String,
-          street_address: String,
-          extended_address: String?
-        }
-      end
-
-      type billing_contact =
-        {
-          email: String,
-          first_name: String,
-          last_name: String,
-          phone_number: String
-        }
-
-      class BillingContact < Telnyx::Internal::Type::BaseModel
-        attr_accessor email: String
-
-        attr_accessor first_name: String
-
-        attr_accessor last_name: String
-
-        attr_accessor phone_number: String
-
-        def initialize: (
-          email: String,
-          first_name: String,
-          last_name: String,
-          phone_number: String
-        ) -> void
-
-        def to_hash: -> {
-          email: String,
-          first_name: String,
-          last_name: String,
-          phone_number: String
-        }
-      end
 
       type number_of_employees =
         :"1-10"
@@ -218,46 +144,9 @@ module Telnyx
         NUMBER_OF_EMPLOYEES_201_500: :"201-500"
         NUMBER_OF_EMPLOYEES_501_2000: :"501-2000"
         NUMBER_OF_EMPLOYEES_2001_10000: :"2001-10000"
-        NUMBER_OF_EMPLOYEES_10001: :"10001+"
+        NUMBER_OF_EMPLOYEES_10001_PLUS: :"10001+"
 
         def self?.values: -> ::Array[Telnyx::Models::EnterpriseCreateParams::number_of_employees]
-      end
-
-      type organization_contact =
-        {
-          email: String,
-          first_name: String,
-          job_title: String,
-          last_name: String,
-          phone: String
-        }
-
-      class OrganizationContact < Telnyx::Internal::Type::BaseModel
-        attr_accessor email: String
-
-        attr_accessor first_name: String
-
-        attr_accessor job_title: String
-
-        attr_accessor last_name: String
-
-        attr_accessor phone: String
-
-        def initialize: (
-          email: String,
-          first_name: String,
-          job_title: String,
-          last_name: String,
-          phone: String
-        ) -> void
-
-        def to_hash: -> {
-          email: String,
-          first_name: String,
-          job_title: String,
-          last_name: String,
-          phone: String
-        }
       end
 
       type organization_legal_type =
@@ -273,48 +162,6 @@ module Telnyx
         OTHER: :other
 
         def self?.values: -> ::Array[Telnyx::Models::EnterpriseCreateParams::organization_legal_type]
-      end
-
-      type organization_physical_address =
-        {
-          administrative_area: String,
-          city: String,
-          country: String,
-          postal_code: String,
-          street_address: String,
-          extended_address: String?
-        }
-
-      class OrganizationPhysicalAddress < Telnyx::Internal::Type::BaseModel
-        attr_accessor administrative_area: String
-
-        attr_accessor city: String
-
-        attr_accessor country: String
-
-        attr_accessor postal_code: String
-
-        attr_accessor street_address: String
-
-        attr_accessor extended_address: String?
-
-        def initialize: (
-          administrative_area: String,
-          city: String,
-          country: String,
-          postal_code: String,
-          street_address: String,
-          ?extended_address: String?
-        ) -> void
-
-        def to_hash: -> {
-          administrative_area: String,
-          city: String,
-          country: String,
-          postal_code: String,
-          street_address: String,
-          extended_address: String?
-        }
       end
 
       type organization_type = :commercial | :government | :non_profit

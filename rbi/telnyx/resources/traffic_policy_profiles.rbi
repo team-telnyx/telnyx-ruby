@@ -90,9 +90,7 @@ module Telnyx
           sort: Telnyx::TrafficPolicyProfileListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::TrafficPolicyProfileListResponse
-          ]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::TrafficPolicyProfile]
         )
       end
       def list(

@@ -170,9 +170,9 @@ module Telnyx
             returns(
               T.nilable(
                 T.any(
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus::OrSymbol,
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderMultipleStatus::OrSymbol,
                   T::Array[
-                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1::OrSymbol
+                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusList::OrSymbol
                   ]
                 )
               )
@@ -184,9 +184,9 @@ module Telnyx
             params(
               status:
                 T.any(
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus::OrSymbol,
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderMultipleStatus::OrSymbol,
                   T::Array[
-                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1::OrSymbol
+                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusList::OrSymbol
                   ]
                 )
             ).void
@@ -225,9 +225,9 @@ module Telnyx
               porting_order_id: T::Array[String],
               status:
                 T.any(
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus::OrSymbol,
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderMultipleStatus::OrSymbol,
                   T::Array[
-                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1::OrSymbol
+                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusList::OrSymbol
                   ]
                 ),
               support_key:
@@ -263,9 +263,9 @@ module Telnyx
                 porting_order_id: T::Array[String],
                 status:
                   T.any(
-                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus::OrSymbol,
+                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderMultipleStatus::OrSymbol,
                     T::Array[
-                      Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1::OrSymbol
+                      Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusList::OrSymbol
                     ]
                   ),
                 support_key:
@@ -414,22 +414,22 @@ module Telnyx
             Variants =
               T.type_alias do
                 T.any(
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus::TaggedSymbol,
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderMultipleStatus::TaggedSymbol,
                   T::Array[
-                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1::TaggedSymbol
+                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusList::TaggedSymbol
                   ]
                 )
               end
 
             # Filter by single status
-            module PortingOrderSingleStatus
+            module PortingOrderMultipleStatus
               extend Telnyx::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus
+                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderMultipleStatus
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -437,48 +437,48 @@ module Telnyx
               DRAFT =
                 T.let(
                   :draft,
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus::TaggedSymbol
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderMultipleStatus::TaggedSymbol
                 )
               IN_PROCESS =
                 T.let(
                   :"in-process",
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus::TaggedSymbol
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderMultipleStatus::TaggedSymbol
                 )
               SUBMITTED =
                 T.let(
                   :submitted,
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus::TaggedSymbol
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderMultipleStatus::TaggedSymbol
                 )
               EXCEPTION =
                 T.let(
                   :exception,
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus::TaggedSymbol
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderMultipleStatus::TaggedSymbol
                 )
               FOC_DATE_CONFIRMED =
                 T.let(
                   :"foc-date-confirmed",
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus::TaggedSymbol
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderMultipleStatus::TaggedSymbol
                 )
               CANCEL_PENDING =
                 T.let(
                   :"cancel-pending",
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus::TaggedSymbol
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderMultipleStatus::TaggedSymbol
                 )
               PORTED =
                 T.let(
                   :ported,
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus::TaggedSymbol
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderMultipleStatus::TaggedSymbol
                 )
               CANCELLED =
                 T.let(
                   :cancelled,
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus::TaggedSymbol
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderMultipleStatus::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderSingleStatus::TaggedSymbol
+                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderMultipleStatus::TaggedSymbol
                   ]
                 )
               end
@@ -486,14 +486,14 @@ module Telnyx
               end
             end
 
-            module UnionArrayVariant1
+            module PortingOrderStatusList
               extend Telnyx::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1
+                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusList
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -501,48 +501,48 @@ module Telnyx
               DRAFT =
                 T.let(
                   :draft,
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1::TaggedSymbol
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusList::TaggedSymbol
                 )
               IN_PROCESS =
                 T.let(
                   :"in-process",
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1::TaggedSymbol
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusList::TaggedSymbol
                 )
               SUBMITTED =
                 T.let(
                   :submitted,
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1::TaggedSymbol
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusList::TaggedSymbol
                 )
               EXCEPTION =
                 T.let(
                   :exception,
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1::TaggedSymbol
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusList::TaggedSymbol
                 )
               FOC_DATE_CONFIRMED =
                 T.let(
                   :"foc-date-confirmed",
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1::TaggedSymbol
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusList::TaggedSymbol
                 )
               CANCEL_PENDING =
                 T.let(
                   :"cancel-pending",
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1::TaggedSymbol
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusList::TaggedSymbol
                 )
               PORTED =
                 T.let(
                   :ported,
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1::TaggedSymbol
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusList::TaggedSymbol
                 )
               CANCELLED =
                 T.let(
                   :cancelled,
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1::TaggedSymbol
+                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusList::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1::TaggedSymbol
+                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusList::TaggedSymbol
                   ]
                 )
               end
@@ -560,11 +560,11 @@ module Telnyx
             def self.variants
             end
 
-            UnionArrayVariant1Array =
+            PortingOrderStatusListArray =
               T.let(
                 Telnyx::Internal::Type::ArrayOf[
                   enum:
-                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::UnionArrayVariant1
+                    Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusList
                 ],
                 Telnyx::Internal::Type::Converter
               )
